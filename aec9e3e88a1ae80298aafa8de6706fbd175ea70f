@@ -1,4 +1,96 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1583826286 -0700\nnonce ACmAMkwydqg0TLd91+sNG1OxBj56SyXr1WYxtzJ3yvisjUeEt2LNw/JXPX3Y1ZhS9ct3oMfTZPge\n\n0000000000000000000000000000000000000000 aec9e3e88a1ae80298aafa8de6706fbd175ea70f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl5nRW4ACgkQqzYtYVpm\n/XuFvAf9EUe7oVogKqU/Ns2dPw7XdjLPt+pGEWWk1IWvFTMwSMtvTbpOMPrCaLcJ\nFBnHswm/bHVFLKKbslEnlIQVcBKAaDPOqmEgey5kucVYSQ4FwPPzM2ALTSXrRtY1\n0Dopklx0cMpJYzHWaieL+EL+wnUQ7kKacyEnSIAMjWHXufsgPjq5QaCRUd33IiWF\nNvl4/NvmMzwEYckjjWlr3X+qwmVOs97FprwNUIfFUBrxHDedkFjkLUctWrG7F9GA\n18jynz3HcG2RGLEvcRkkcVbpMSI6VJJSvletzJwTAKmq9lfJFOEdXiKKuMzcI6pu\n3MDEDH+7uto2GtU9nih48j6slOlgwA\u003d\u003d\n\u003d+2Op\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0965b414_0ca3915a",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T21:14:24Z",
+      "side": 1,
+      "message": "At some point, might want something like the reverse check: If SMaskInData\u003d1/2, that there\u0027s actually an alpha channel to read.",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cd5b0b0_07b3fb8b",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T21:14:24Z",
+      "side": 1,
+      "message": "No action required at this time, but these long function bodies indicate to me a need to refactor at some point.",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb9a6d60_13e268c0",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T21:14:24Z",
+      "side": 1,
+      "message": "Should we worry about overflow?",
+      "range": {
+        "startLine": 718,
+        "startChar": 35,
+        "endLine": 718,
+        "endChar": 71
+      },
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca0f079_c9b56786",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T21:14:24Z",
+      "side": 1,
+      "message": "I think these calculations are OK, but they make me a bit nervous. (I\u0027d feel better if these calculations were unit tested.)\n\nThere\u0027s a FXARGB_MUL_ALPHA() macro, does it do something similar?",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7959dd_bbcda536",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T21:14:24Z",
+      "side": 1,
+      "message": "Optional: Maybe could extract as a template, at least.",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
