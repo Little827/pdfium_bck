@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "962f4c41_bb05a00a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T20:55:43Z",
+      "side": 1,
+      "message": "Was looking at the spec again, and /SMaskInData 2 is also a valid (and distinct) value (premultiplied alpha). Maybe could be a follow-up.",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "6ede3c45d1c4d74b1f9cc1010f89aef80f233ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
