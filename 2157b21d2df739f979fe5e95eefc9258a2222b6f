@@ -1,0 +1,533 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cb890b7_42fad9ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "Can we restructure the commit description like this:\n\nCurrently X happens. This CL adds a check here to prevent X.\nSomething along these lines.\n\nAlso mention test has been added for the same.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ab5e77_009647c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "Any character or just space/enter checks/unchecks the controls.",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b76314_9a5e6ce8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "Space before this.\nChange",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b4b78cf_c8ef5c79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "control",
+      "range": {
+        "startLine": 15,
+        "startChar": 64,
+        "endLine": 15,
+        "endChar": 70
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1523740a_b2c06baa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "period.",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966420fc_9129e5a8",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT_TRUE\nIf document doesn\u0027t open we should end the test.",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 13
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae359426_6bf771f5",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT_TRUE\nIf page isn\u0027t loaded then we should end the test.",
+      "range": {
+        "startLine": 766,
+        "startChar": 2,
+        "endLine": 766,
+        "endChar": 13
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e3ddc5_1c7d4812",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "Checkbox",
+      "range": {
+        "startLine": 769,
+        "startChar": 26,
+        "endLine": 769,
+        "endChar": 34
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95cf2774_b72016df",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "read only",
+      "range": {
+        "startLine": 769,
+        "startChar": 17,
+        "endLine": 769,
+        "endChar": 25
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8800b1d2_58e2f049",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "period at the end.\n\nFor all comments.",
+      "range": {
+        "startLine": 769,
+        "startChar": 35,
+        "endLine": 769,
+        "endChar": 41
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d5f24c_3b337c31",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "just Checkbox.",
+      "range": {
+        "startLine": 769,
+        "startChar": 26,
+        "endLine": 769,
+        "endChar": 41
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8cd1ad3_0fbbda99",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT_TRUE\nif focused annotation is not updated, end the test.",
+      "range": {
+        "startLine": 771,
+        "startChar": 4,
+        "endLine": 771,
+        "endChar": 15
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355d839d_525ccf58",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "the previous",
+      "range": {
+        "startLine": 773,
+        "startChar": 20,
+        "endLine": 773,
+        "endChar": 28
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad91e67c_0f01cdeb",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT_TRUE",
+      "range": {
+        "startLine": 774,
+        "startChar": 4,
+        "endLine": 774,
+        "endChar": 15
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b342b5_bf5af8e5",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT",
+      "range": {
+        "startLine": 778,
+        "startChar": 4,
+        "endLine": 778,
+        "endChar": 15
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb5f36c_60b32290",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "read only",
+      "range": {
+        "startLine": 788,
+        "startChar": 17,
+        "endLine": 788,
+        "endChar": 25
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ccd15a_9550b083",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "button",
+      "range": {
+        "startLine": 788,
+        "startChar": 32,
+        "endLine": 788,
+        "endChar": 38
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6fa45c0_8d7d273c",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "Any reason for resetting this. I see this is unchanged from the previous value. Lets not close the annot at 786 and this change shouldn\u0027t be needed.",
+      "range": {
+        "startLine": 789,
+        "startChar": 4,
+        "endLine": 789,
+        "endChar": 52
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7046b69_2ad7848a",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT",
+      "range": {
+        "startLine": 790,
+        "startChar": 4,
+        "endLine": 790,
+        "endChar": 15
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f13df57_bcf9b1f8",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "the next",
+      "range": {
+        "startLine": 792,
+        "startChar": 14,
+        "endLine": 792,
+        "endChar": 18
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9019fe0_2a22aca1",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT",
+      "range": {
+        "startLine": 793,
+        "startChar": 4,
+        "endLine": 793,
+        "endChar": 15
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a8e16d_e0fd99f4",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT",
+      "range": {
+        "startLine": 795,
+        "startChar": 4,
+        "endLine": 795,
+        "endChar": 15
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e55e6b53_9bdc13e8",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-10T07:27:37Z",
+      "side": 1,
+      "message": "ASSERT",
+      "range": {
+        "startLine": 797,
+        "startChar": 4,
+        "endLine": 797,
+        "endChar": 15
+      },
+      "revId": "2157b21d2df739f979fe5e95eefc9258a2222b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
