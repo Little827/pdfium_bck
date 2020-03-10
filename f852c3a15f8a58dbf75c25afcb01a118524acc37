@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51c98f0a_ffbd55ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T20:28:28Z",
+      "side": 1,
+      "message": "PNGs are commonplace and folks can generate them easily with their favorite image edtior. Whereas JPEG2000 is a less common, so I wanted to leave a note about how it was created, for future readers.",
+      "parentUuid": "c409ba4e_d958e499",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19c801c0_a5297e4a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-10T19:37:24Z",
       "side": 1,
       "message": "Just curious: Is this a limitation of our current implementation, or of the spec? The only thing I can find in the spec about this is that SMaskInData is \"optional for images that use the JPXDecode filter, meaningless otherwise\"; I\u0027m finding the word \"use\" ambiguous here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86d4608_49273f82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T20:28:28Z",
+      "side": 1,
+      "message": "This is how Acrobat\u0027s implementation works. The next CL in the chain has a TODO regarding that. I intend to do so some follow-up work to resolve that TODO, but its a secondary issue that can be resolved later.\n\nThe spec indeed did not have much detail about SMaskInData. It is tacked on in version 1.5 and this behavior reinforces that feeling.",
+      "parentUuid": "19c801c0_a5297e4a",
       "range": {
         "startLine": 10,
         "startChar": 22,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "05015a03_c67a0812",
+        "filename": "testing/resources/pixel/bug_1469.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T20:28:28Z",
+      "side": 1,
+      "message": "After a while, one gets used to having the origin at the bottom-left. Would comments regarding where each image is be helpful?",
+      "parentUuid": "f542a3e9_0b90088a",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f713c91_803305b5",
         "filename": "testing/resources/pixel/bug_1469.in",
         "patchSetId": 2
@@ -82,6 +154,24 @@
       "writtenOn": "2020-03-10T19:37:24Z",
       "side": 1,
       "message": "Optional: I think it might be easier to read if the varying entry (/SMaskInData) was at the bottom, rather than sticking to an alphabetical order.\n\nAlternately, maybe inserting a comment where the /SMaskInData entry doesn\u0027t exist in the first XObject would draw attention to the fact that it\u0027s missing there.",
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f48311_d4dcd4dc",
+        "filename": "testing/resources/pixel/bug_1469.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T20:28:28Z",
+      "side": 1,
+      "message": "Will take the alternate suggestions.",
+      "parentUuid": "5f713c91_803305b5",
       "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
