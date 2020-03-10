@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c409ba4e_d958e499",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T19:37:24Z",
+      "side": 1,
+      "message": "Given that the original PNG isn\u0027t being checked in, not sure if how the image was created is that relevant...\n\nOn the other hand, I think it would be useful to describe briefly what /SMaskInData\u003d1 does, to make interpretation of the reference image more straightforward.",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19c801c0_a5297e4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T19:37:24Z",
+      "side": 1,
+      "message": "Just curious: Is this a limitation of our current implementation, or of the spec? The only thing I can find in the spec about this is that SMaskInData is \"optional for images that use the JPXDecode filter, meaningless otherwise\"; I\u0027m finding the word \"use\" ambiguous here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f542a3e9_0b90088a",
+        "filename": "testing/resources/pixel/bug_1469.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T19:37:24Z",
+      "side": 1,
+      "message": "Nit: These coordinates go clockwise from the lower left corner; I\u0027d have found a more typical left-to-right, top-to-bottom order easier to associate in my head.",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f713c91_803305b5",
+        "filename": "testing/resources/pixel/bug_1469.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T19:37:24Z",
+      "side": 1,
+      "message": "Optional: I think it might be easier to read if the varying entry (/SMaskInData) was at the bottom, rather than sticking to an alphabetical order.\n\nAlternately, maybe inserting a comment where the /SMaskInData entry doesn\u0027t exist in the first XObject would draw attention to the fact that it\u0027s missing there.",
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
