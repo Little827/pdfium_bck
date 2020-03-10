@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "7956fa67_0ef27dfc",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T21:30:33Z",
+      "side": 1,
+      "message": "Leaving this open, but ack.",
+      "parentUuid": "0965b414_0ca3915a",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cd5b0b0_07b3fb8b",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-03-10T21:14:24Z",
       "side": 1,
       "message": "No action required at this time, but these long function bodies indicate to me a need to refactor at some point.",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afd5ba96_43d4ce02",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T21:30:33Z",
+      "side": 1,
+      "message": "The for-loops below may be shortened with some follow-up refactoring.",
+      "parentUuid": "5cd5b0b0_07b3fb8b",
       "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
@@ -60,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a303df22_185c2fce",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T21:30:33Z",
+      "side": 1,
+      "message": "No, this code comes right after creating |rgb_bitmap|, which has these dimensions. If there was an overflow, line 710 above would have returned early.",
+      "parentUuid": "bb9a6d60_13e268c0",
+      "range": {
+        "startLine": 718,
+        "startChar": 35,
+        "endLine": 718,
+        "endChar": 71
+      },
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fca0f079_c9b56786",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -77,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "6163e045_e39a1c50",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T21:30:33Z",
+      "side": 1,
+      "message": "I may have copy-pasted this from elsewhere, so the TODO below on line 741 likely applies here as well. I will consolidate later, once I find all the repeats. Just want to get this fixed for M82.\n\nLooking at FXARGB_MUL_ALPHA() hurts my eyes right now. X_X",
+      "parentUuid": "fca0f079_c9b56786",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e7959dd_bbcda536",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -88,6 +166,24 @@
       "writtenOn": "2020-03-10T21:14:24Z",
       "side": 1,
       "message": "Optional: Maybe could extract as a template, at least.",
+      "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ea1410_fb279025",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T21:30:33Z",
+      "side": 1,
+      "message": "Later. The TODO will get taken care of.",
+      "parentUuid": "9e7959dd_bbcda536",
       "revId": "aec9e3e88a1ae80298aafa8de6706fbd175ea70f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
