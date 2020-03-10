@@ -16,6 +16,24 @@
       "revId": "6a2588d71cfead1b94191f102ef240be2b5da086",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f85888_3571fe5b",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1004106.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-10T23:06:50Z",
+      "side": 1,
+      "message": "Yep.  Tested against old version to ensure it still fails in the same way even without this event.",
+      "parentUuid": "3bab11f7_08f33092",
+      "revId": "6a2588d71cfead1b94191f102ef240be2b5da086",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
