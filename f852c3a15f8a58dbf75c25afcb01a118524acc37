@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0370406c_c352bb2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T20:38:08Z",
+      "side": 1,
+      "message": "Ack\n\nLeaving this open for the second part of my comment (\"describe what SMaskInData does\").",
+      "parentUuid": "51c98f0a_ffbd55ae",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19c801c0_a5297e4a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "55bf0a45_5abc1bba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T20:38:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e86d4608_49273f82",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f542a3e9_0b90088a",
         "filename": "testing/resources/pixel/bug_1469.in",
         "patchSetId": 2
@@ -140,6 +188,30 @@
       "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b0682a_1cb6f4ed",
+        "filename": "testing/resources/pixel/bug_1469.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-10T20:38:08Z",
+      "side": 1,
+      "message": "If you find that order more logical, I don\u0027t think there\u0027s anything to be done, as it\u0027s just subjective at that point.\n\nI also thought of a couple other variations, if those would seem any more logical:\n\n1. Strictly top to bottom:\n\n   Default\n   0\n   1\n\n2. Strictly left to right:\n\n   Default 0 1",
+      "parentUuid": "05015a03_c67a0812",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "f852c3a15f8a58dbf75c25afcb01a118524acc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
