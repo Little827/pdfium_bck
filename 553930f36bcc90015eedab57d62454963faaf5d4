@@ -16,6 +16,24 @@
       "revId": "553930f36bcc90015eedab57d62454963faaf5d4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9196f7c_5a210b2e",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5158,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-10T23:20:42Z",
+      "side": 1,
+      "message": "I think so. I was originally concerned about all the reentrancy in the loop at 5162 causing invalidation of the args, but as long as we check the length anew each time around, I think it remains consistent.",
+      "parentUuid": "3dc08313_9b971974",
+      "revId": "553930f36bcc90015eedab57d62454963faaf5d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
