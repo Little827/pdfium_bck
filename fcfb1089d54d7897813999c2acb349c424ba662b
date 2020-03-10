@@ -22,6 +22,30 @@
       "revId": "fcfb1089d54d7897813999c2acb349c424ba662b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868db31f_2453e09e",
+        "filename": "fxjs/cfx_v8.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T22:59:52Z",
+      "side": 1,
+      "message": "Sure. Maybe ReentrantToInt32Helper() and such?",
+      "parentUuid": "216f68a5_e61422f5",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 26
+      },
+      "revId": "fcfb1089d54d7897813999c2acb349c424ba662b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
