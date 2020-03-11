@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4528963c_35f98073",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-11T00:04:44Z",
+      "side": 1,
+      "message": "A final metapoint: N is always supposed to be max(object number) + 1, which seems like a pretty easy rule to follow (no counting necessary). In the (currently) rare cases you need a custom trailer, it doesn\u0027t seem that onerous to maintain this manually.",
+      "range": {
+        "startLine": 27,
+        "startChar": 61,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8eae4e7_4dd51875",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 2
