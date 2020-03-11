@@ -14,6 +14,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "v8/include/v8.h"
 
+class CFXJS_Engine;
 class CFXJSE_Class;
 class CFXJSE_HostObject;
 class CFXJSE_Value;

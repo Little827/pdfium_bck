@@ -47,7 +47,7 @@ int32_t CBC_TextEncoder::EncodeChar(wchar_t c, WideString* sb) {
     *sb += (wchar_t)(c - 48 + 4);
     return 1;
   }
-  if (FXSYS_IsLowerASCII(c)) {
+  if (c >= 'a' && c <= 'z') {
     *sb += (wchar_t)(c - 97 + 14);
     return 1;
   }
@@ -76,7 +76,7 @@ int32_t CBC_TextEncoder::EncodeChar(wchar_t c, WideString* sb) {
     *sb += (wchar_t)(c - 96);
     return 2;
   }
-  if (FXSYS_IsUpperASCII(c)) {
+  if (c >= 'A' && c <= 'Z') {
     *sb += (wchar_t)'\2';
     *sb += (wchar_t)(c - 65 + 1);
     return 2;

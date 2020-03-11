@@ -8,23 +8,27 @@
 
 #include <utility>
 
-CFX_CSSTextBuf::CFX_CSSTextBuf() {
-  m_Buffer.reserve(32);
-}
+CFX_CSSTextBuf::CFX_CSSTextBuf() = default;
 
 CFX_CSSTextBuf::~CFX_CSSTextBuf() = default;
 
 void CFX_CSSTextBuf::AppendCharIfNotLeadingBlank(wchar_t wch) {
-  if (m_Buffer.empty() && wch <= ' ')
+  if (m_iDatLen == 0 && wch <= ' ')
     return;
 
-  m_Buffer.push_back(wch);
+  if (m_iDatLen >= m_iBufLen) {
+    size_t iDesiredSize = std::max<size_t>(32, 2 * m_iBufLen);
+    m_pBuffer.reset(FX_Realloc(wchar_t, m_pBuffer.release(), iDesiredSize));
+    m_iBufLen = iDesiredSize;
+  }
+
+  m_pBuffer.get()[m_iDatLen++] = wch;
 }
 
 WideStringView CFX_CSSTextBuf::GetTrailingBlankTrimmedString() const {
-  WideStringView result(m_Buffer.data(), m_Buffer.size());
-  while (!result.IsEmpty() && result.Back() <= ' ')
-    result = result.First(result.GetLength() - 1);
+  size_t current_len = m_iDatLen;
+  while (current_len && m_pBuffer.get()[current_len - 1] <= ' ')
+    --current_len;
 
-  return result;
+  return WideStringView(m_pBuffer.get(), current_len);
 }

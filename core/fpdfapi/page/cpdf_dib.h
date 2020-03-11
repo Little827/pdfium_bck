@@ -79,15 +79,6 @@ class CPDF_DIB final : public CFX_DIBBase {
   CPDF_DIB();
   ~CPDF_DIB() override;
 
-  struct JpxSMaskInlineData {
-    JpxSMaskInlineData();
-    ~JpxSMaskInlineData();
-
-    int width;
-    int height;
-    std::vector<uint8_t> data;
-  };
-
   LoadState StartLoadMask();
   LoadState StartLoadMaskDIB(RetainPtr<const CPDF_Stream> mask);
   bool ContinueToLoadMask();
@@ -162,7 +153,6 @@ class CPDF_DIB final : public CFX_DIBBase {
   RetainPtr<CPDF_DIB> m_pMask;
   RetainPtr<CPDF_StreamAcc> m_pGlobalAcc;
   std::unique_ptr<fxcodec::ScanlineDecoder> m_pDecoder;
-  JpxSMaskInlineData m_JpxInlineData;
 
   // Must come after |m_pCachedBitmap|.
   std::unique_ptr<fxcodec::Jbig2Context> m_pJbig2Context;

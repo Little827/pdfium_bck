@@ -22,7 +22,6 @@
 
 #include "fxbarcode/oned/BC_OnedCodaBarWriter.h"
 
-#include "core/fxcrt/fx_extension.h"
 #include "fxbarcode/BC_Writer.h"
 #include "fxbarcode/common/BC_CommonBitMatrix.h"
 #include "fxbarcode/oned/BC_OneDimWriter.h"
@@ -140,7 +139,10 @@ uint8_t* CBC_OnedCodaBarWriter::EncodeImpl(const ByteString& contents,
   char ch;
   int32_t position = 0;
   for (size_t index = 0; index < data.GetLength(); index++) {
-    ch = FXSYS_ToUpperASCII(data[index]);
+    ch = data[index];
+    if (((ch >= 'a') && (ch <= 'z'))) {
+      ch = ch - 32;
+    }
     switch (ch) {
       case 'T':
         ch = 'A';

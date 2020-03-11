@@ -232,6 +232,16 @@ bool CXFA_FFComboBox::CanRedo() {
          ToComboBox(GetNormalWidget())->EditCanRedo();
 }
 
+bool CXFA_FFComboBox::Undo() {
+  return m_pNode->IsChoiceListAllowTextEntry() &&
+         ToComboBox(GetNormalWidget())->EditUndo();
+}
+
+bool CXFA_FFComboBox::Redo() {
+  return m_pNode->IsChoiceListAllowTextEntry() &&
+         ToComboBox(GetNormalWidget())->EditRedo();
+}
+
 bool CXFA_FFComboBox::CanCopy() {
   return ToComboBox(GetNormalWidget())->EditCanCopy();
 }
@@ -249,33 +259,11 @@ bool CXFA_FFComboBox::CanSelectAll() {
   return ToComboBox(GetNormalWidget())->EditCanSelectAll();
 }
 
-bool CXFA_FFComboBox::Undo() {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
-  return m_pNode->IsChoiceListAllowTextEntry() &&
-         ToComboBox(GetNormalWidget())->EditUndo();
-}
-
-bool CXFA_FFComboBox::Redo() {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
-  return m_pNode->IsChoiceListAllowTextEntry() &&
-         ToComboBox(GetNormalWidget())->EditRedo();
-}
-
 Optional<WideString> CXFA_FFComboBox::Copy() {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   return ToComboBox(GetNormalWidget())->EditCopy();
 }
 
 Optional<WideString> CXFA_FFComboBox::Cut() {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   if (!m_pNode->IsChoiceListAllowTextEntry())
     return {};
 
@@ -283,31 +271,19 @@ Optional<WideString> CXFA_FFComboBox::Cut() {
 }
 
 bool CXFA_FFComboBox::Paste(const WideString& wsPaste) {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   return m_pNode->IsChoiceListAllowTextEntry() &&
          ToComboBox(GetNormalWidget())->EditPaste(wsPaste);
 }
 
 void CXFA_FFComboBox::SelectAll() {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   ToComboBox(GetNormalWidget())->EditSelectAll();
 }
 
 void CXFA_FFComboBox::Delete() {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   ToComboBox(GetNormalWidget())->EditDelete();
 }
 
 void CXFA_FFComboBox::DeSelect() {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   ToComboBox(GetNormalWidget())->EditDeSelect();
 }
 

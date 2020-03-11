@@ -7,8 +7,7 @@
 #ifndef CORE_FXCRT_CSS_CFX_CSSTEXTBUF_H_
 #define CORE_FXCRT_CSS_CFX_CSSTEXTBUF_H_
 
-#include <vector>
-
+#include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_string.h"
 
 class CFX_CSSTextBuf {
@@ -16,13 +15,15 @@ class CFX_CSSTextBuf {
   CFX_CSSTextBuf();
   ~CFX_CSSTextBuf();
 
-  void Clear() { m_Buffer.clear(); }
-  bool IsEmpty() const { return m_Buffer.empty(); }
+  void Clear() { m_iDatLen = 0; }
+  bool IsEmpty() const { return m_iDatLen == 0; }
   void AppendCharIfNotLeadingBlank(wchar_t wch);
   WideStringView GetTrailingBlankTrimmedString() const;
 
  protected:
-  std::vector<wchar_t> m_Buffer;
+  std::unique_ptr<wchar_t, FxFreeDeleter> m_pBuffer;
+  size_t m_iBufLen = 0;
+  size_t m_iDatLen = 0;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSTEXTBUF_H_
