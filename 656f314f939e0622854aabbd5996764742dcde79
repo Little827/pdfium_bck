@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f4f97c5e_c9cf3791",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-03-11T00:08:14Z",
+      "side": 1,
+      "message": "pdfobjsize perhaps?\nor pdfsize?\n\nI\u0027m open to bikeshed.",
+      "parentUuid": "a8eae4e7_4dd51875",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "553681c3_01c67faa",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "606e6f55_1cf6708a",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-03-11T00:08:14Z",
+      "side": 1,
+      "message": "That\u0027s what I had in PS1. I changed my mind and thought this would be \"cleaner\".",
+      "parentUuid": "553681c3_01c67faa",
+      "range": {
+        "startLine": 48,
+        "startChar": 54,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "475d6e36_23242d39",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2020-03-11T00:00:45Z",
       "side": 1,
       "message": "Of course, this means there\u0027s an order-dependence between this branch and the next one, which doesn\u0027t apply to any of the other replacements.\n\nI would note this in a comment, or even better, avoid the double-replacement behavior entirely by just duplicating the logic for the /Size entry.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 62
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5dc2df5_e3c3454c",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-03-11T00:08:14Z",
+      "side": 1,
+      "message": "Duplication seems reasonable, but maybe isn\u0027t as clean looking.",
+      "parentUuid": "475d6e36_23242d39",
       "range": {
         "startLine": 108,
         "startChar": 0,
