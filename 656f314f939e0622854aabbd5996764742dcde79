@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "09410d58_5c21777f",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-11T00:19:22Z",
+      "side": 1,
+      "message": "On a side note (since you\u0027ve used this term multiple times now), I\u0027d be more selective in using the term \"bikeshed\". 😊 Not every naming discussion is a bikeshed.",
+      "parentUuid": "f4f97c5e_c9cf3791",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "553681c3_01c67faa",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 2
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "Duplication seems reasonable, but maybe isn\u0027t as clean looking.",
       "parentUuid": "475d6e36_23242d39",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 62
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab86c217_8f7031c3",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-11T00:19:22Z",
+      "side": 1,
+      "message": "A helper method could address that, but it\u0027s basically self.SIZE_TOKEN vs. (self.max_object_number + 1), which doesn\u0027t seem worth extracting.",
+      "parentUuid": "a5dc2df5_e3c3454c",
       "range": {
         "startLine": 108,
         "startChar": 0,
