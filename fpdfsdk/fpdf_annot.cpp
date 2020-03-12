@@ -426,6 +426,36 @@ FPDFAnnot_UpdateObject(FPDF_ANNOTATION annot, FPDF_PAGEOBJECT obj) {
   return true;
 }
 
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_AddInkStroke(FPDF_ANNOTATION annot,
+                                                     size_t point_count,
+                                                     const FS_POINTF* points) {
+  if (!annot || !points || point_count == 0 || point_count > ULONG_MAX / 2)
+    return -1;
+
+  if (FPDFAnnot_GetSubtype(annot) != FPDF_ANNOT_INK)
+    return -1;
+
+  CPDF_Dictionary* annot_dict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!annot_dict)
+    return -1;
+
+  CPDF_Array* inklist = annot_dict->GetArrayFor("InkList");
+  if (!inklist) {
+    inklist = annot_dict->SetNewFor<CPDF_Array>("InkList");
+  }
+
+  if (static_cast<int64_t>(inklist->size()) >= INT_MAX)
+    return -1;
+
+  CPDF_Array* ink_coord_list = inklist->AddNew<CPDF_Array>();
+  for (size_t i = 0; i < point_count; i++) {
+    ink_coord_list->AddNew<CPDF_Number>(points[i].x);
+    ink_coord_list->AddNew<CPDF_Number>(points[i].y);
+  }
+
+  return static_cast<int>(inklist->size() - 1);
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_AppendObject(FPDF_ANNOTATION annot, FPDF_PAGEOBJECT obj) {
   CPDF_AnnotContext* pAnnot = CPDFAnnotContextFromFPDFAnnotation(annot);

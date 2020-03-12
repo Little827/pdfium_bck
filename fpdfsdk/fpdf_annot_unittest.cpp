@@ -9,6 +9,7 @@
 #include "constants/annotation_common.h"
 #include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
+#include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
@@ -134,4 +135,88 @@ TEST_F(PDFAnnotTest, SetAPWithOpacity) {
   EXPECT_EQ("Normal", blend_mode);
   bool alpha_source_flag = gs_dict->GetBooleanFor("AIS", true);
   EXPECT_FALSE(alpha_source_flag);
+}
+
+TEST_F(PDFAnnotTest, InkListAPIValidations) {
+  ScopedFPDFDocument doc(FPDF_CreateNewDocument());
+  ASSERT_TRUE(doc);
+  ScopedFPDFPage page(FPDFPage_New(doc.get(), 0, 100, 100));
+  ASSERT_TRUE(page);
+
+  // Create a new ink annotation.
+  ScopedFPDFAnnotation ink_annot(
+      FPDFPage_CreateAnnot(page.get(), FPDF_ANNOT_INK));
+  ASSERT_TRUE(ink_annot);
+  CPDF_AnnotContext* context =
+      CPDFAnnotContextFromFPDFAnnotation(ink_annot.get());
+  ASSERT_TRUE(context);
+  CPDF_Dictionary* annot_dict = context->GetAnnotDict();
+  ASSERT_TRUE(annot_dict);
+
+  static constexpr unsigned long kPointCountStroke_1 = 6;
+  static constexpr FS_POINTF kInkStroke_1[kPointCountStroke_1] = {
+      {80.0f, 90.0f}, {81.0f, 91.0f}, {82.0f, 92.0f},
+      {83.0f, 93.0f}, {84.0f, 94.0f}, {85.0f, 95.0f}};
+
+  static constexpr unsigned long kPointCountStroke_2 = 3;
+  static constexpr FS_POINTF kInkStroke_2[kPointCountStroke_2] = {
+      {70.0f, 90.0f}, {71.0f, 91.0f}, {72.0f, 92.0f}};
+
+  static constexpr unsigned long kPointCountStroke_3 = 5;
+  static constexpr FS_POINTF kInkStroke_3[kPointCountStroke_3] = {
+      {60.0f, 90.0f},
+      {61.0f, 91.0f},
+      {62.0f, 92.0f},
+      {63.0f, 93.0f},
+      {64.0f, 94.0f}};
+
+  // Negative test: |annot| is passed as nullptr.
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(nullptr, kPointCountStroke_1,
+                                       &kInkStroke_1[0]));
+
+  // Negative test: |annot| is not ink annotation.
+  // Create a new highlight annotation.
+  ScopedFPDFAnnotation highlight_annot(
+      FPDFPage_CreateAnnot(page.get(), FPDF_ANNOT_HIGHLIGHT));
+  ASSERT_TRUE(highlight_annot);
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(highlight_annot.get(),
+                                       kPointCountStroke_1, &kInkStroke_1[0]));
+
+  // Negative test: passing |point_count| as  0.
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(ink_annot.get(), 0, &kInkStroke_1[0]));
+
+  // Negative test: passing |points| array as nullptr.
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(ink_annot.get(), kPointCountStroke_1,
+                                       nullptr));
+
+  // Negative test: passing |point_count| more than ULONG_MAX/2.
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(ink_annot.get(), ULONG_MAX / 2 + 1,
+                                       &kInkStroke_2[0]));
+
+  // InkStroke should get added to ink annotation. Also inklist should get
+  // created.
+  EXPECT_EQ(0, FPDFAnnot_AddInkStroke(ink_annot.get(), kPointCountStroke_1,
+                                      &kInkStroke_1[0]));
+
+  CPDF_Array* inkList = annot_dict->GetArrayFor("InkList");
+  ASSERT_TRUE(annot_dict);
+  EXPECT_EQ(1, static_cast<int64_t>(inkList->size()));
+  EXPECT_EQ(kPointCountStroke_1 * 2,
+            static_cast<uint64_t>(inkList->GetArrayAt(0)->size()));
+
+  // Adding another inkStroke to ink annotation with all valid paremeters.
+  // InkList already exists in ink_annot.
+  EXPECT_EQ(1, FPDFAnnot_AddInkStroke(ink_annot.get(), kPointCountStroke_2,
+                                      &kInkStroke_2[0]));
+  EXPECT_EQ(2, static_cast<int64_t>(inkList->size()));
+  EXPECT_EQ(kPointCountStroke_2 * 2,
+            static_cast<uint64_t>(inkList->GetArrayAt(1)->size()));
+
+  // Adding one more InkStroke to the ink annotation. |point_count| passed is
+  // less than the data available in |buffer|.
+  EXPECT_EQ(2, FPDFAnnot_AddInkStroke(ink_annot.get(), kPointCountStroke_3 - 1,
+                                      &kInkStroke_3[0]));
+  EXPECT_EQ(3, static_cast<int64_t>(inkList->size()));
+  EXPECT_EQ((kPointCountStroke_3 - 1) * 2,
+            static_cast<uint64_t>(inkList->GetArrayAt(2)->size()));
 }
