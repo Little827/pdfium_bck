@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "468c2d64_b18bcc26",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-12T05:48:26Z",
+      "side": 1,
+      "message": "pdfium:1495\nI have created a bug for the scenario i mentioned.\nIrregardless of whether this enhancement could support the scenario in the bug or not, we should update it here to have it documented on how a developer can create trailer with additional keys apart from Root and Size.",
+      "parentUuid": "97c99333_ffa87d48",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 72
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8eae4e7_4dd51875",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 2
