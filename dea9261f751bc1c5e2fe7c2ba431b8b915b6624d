@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac6c1f34_336b0d9a",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-13T08:37:27Z",
+      "side": 1,
+      "message": "I think we can also revert the changes in this file?",
+      "revId": "dea9261f751bc1c5e2fe7c2ba431b8b915b6624d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea412fcc_2da56d85",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-13T08:37:27Z",
+      "side": 1,
+      "message": "There\u0027s now just a lonely newline in this file. Let\u0027s revert it.",
+      "revId": "dea9261f751bc1c5e2fe7c2ba431b8b915b6624d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237772de_a9804e28",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-13T08:37:27Z",
+      "side": 1,
+      "message": "Excess parenthesis.",
+      "revId": "dea9261f751bc1c5e2fe7c2ba431b8b915b6624d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9458dec_35f6c105",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-13T08:37:27Z",
+      "side": 1,
+      "message": "Add braces.",
+      "revId": "dea9261f751bc1c5e2fe7c2ba431b8b915b6624d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

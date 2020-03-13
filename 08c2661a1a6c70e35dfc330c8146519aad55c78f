@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "c63e818e_4afee596",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-13T08:37:27Z",
+      "side": 1,
+      "message": "Thanks for looking deeper into the hidden annotation flag and its interactions. I would suggest fixing those issues in follow-up CLs.",
+      "parentUuid": "7b10be55_9759cd49",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6aa7c08_d512cc43",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
@@ -247,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "8ca352a0_a35859a3",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-13T08:37:27Z",
+      "side": 1,
+      "message": "I see red try bots related to this suggestion. Not sure why this is happening, as CPDFSDK_AnnotHandlerMgr should be sending widget operations to CPDFSDK_WidgetHandler. Maybe I missed something?",
+      "parentUuid": "3fa55804_53927347",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ae87185_79758563",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
@@ -314,6 +350,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee5f6289_e9e34e03",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-13T08:37:27Z",
+      "side": 1,
+      "message": "Please remove the unneeded #include.",
+      "parentUuid": "24e80fe3_4a158d4e",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
