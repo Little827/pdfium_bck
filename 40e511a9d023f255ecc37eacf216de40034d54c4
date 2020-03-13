@@ -16,6 +16,24 @@
       "revId": "40e511a9d023f255ecc37eacf216de40034d54c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c7a25f_ecf376fb",
+        "filename": "fxjs/cfx_v8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-13T16:52:44Z",
+      "side": 1,
+      "message": "These become public in a follow-up.  But for now, funnel all access through the friended classes.",
+      "parentUuid": "a3195843_edf87cef",
+      "revId": "40e511a9d023f255ecc37eacf216de40034d54c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
