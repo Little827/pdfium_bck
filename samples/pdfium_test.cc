@@ -840,34 +840,10 @@ void RenderPdf(const std::string& name,
 
   const char* password =
       options.password.empty() ? nullptr : options.password.c_str();
-  bool is_linearized = false;
   if (options.use_load_mem_document) {
     doc.reset(FPDF_LoadMemDocument(buf, len, password));
   } else {
-    if (FPDFAvail_IsLinearized(pdf_avail.get()) == PDF_LINEARIZED) {
-      int avail_status = PDF_DATA_NOTAVAIL;
-      doc.reset(FPDFAvail_GetDocument(pdf_avail.get(), password));
-      if (doc) {
-        while (avail_status == PDF_DATA_NOTAVAIL)
-          avail_status = FPDFAvail_IsDocAvail(pdf_avail.get(), &hints);
-
-        if (avail_status == PDF_DATA_ERROR) {
-          fprintf(stderr, "Unknown error in checking if doc was available.\n");
-          return;
-        }
-        avail_status = FPDFAvail_IsFormAvail(pdf_avail.get(), &hints);
-        if (avail_status == PDF_FORM_ERROR ||
-            avail_status == PDF_FORM_NOTAVAIL) {
-          fprintf(stderr,
-                  "Error %d was returned in checking if form was available.\n",
-                  avail_status);
-          return;
-        }
-        is_linearized = true;
-      }
-    } else {
-      doc.reset(FPDF_LoadCustomDocument(&file_access, password));
-    }
+    doc.reset(FPDF_LoadCustomDocument(&file_access, password));
   }
 
   if (!doc) {
@@ -947,17 +923,6 @@ void RenderPdf(const std::string& name,
   int first_page = options.pages ? options.first_page : 0;
   int last_page = options.pages ? options.last_page + 1 : page_count;
   for (int i = first_page; i < last_page; ++i) {
-    if (is_linearized) {
-      int avail_status = PDF_DATA_NOTAVAIL;
-      while (avail_status == PDF_DATA_NOTAVAIL)
-        avail_status = FPDFAvail_IsPageAvail(pdf_avail.get(), i, &hints);
-
-      if (avail_status == PDF_DATA_ERROR) {
-        fprintf(stderr, "Unknown error in checking if page %d is available.\n",
-                i);
-        return;
-      }
-    }
     if (RenderPage(name, doc.get(), form.get(), &form_callbacks, i, options,
                    events)) {
       ++rendered_pages;
