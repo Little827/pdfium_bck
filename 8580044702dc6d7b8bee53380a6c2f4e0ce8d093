@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce24f687_c38b7237",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-13T06:23:36Z",
+      "side": 1,
+      "message": "Instead do kPointCountStroke_1 \u003d FX_ArraySize(kInkStroke_1) after the array has been declared.",
+      "range": {
+        "startLine": 156,
+        "startChar": 33,
+        "endLine": 156,
+        "endChar": 52
+      },
+      "revId": "8580044702dc6d7b8bee53380a6c2f4e0ce8d093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6eed30_48245edc",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-13T06:23:36Z",
+      "side": 1,
+      "message": "static constexpr FS_POINTF kInkStroke_1[] \u003d \n\nadding length is not needed.",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 62
+      },
+      "revId": "8580044702dc6d7b8bee53380a6c2f4e0ce8d093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7a46310_173b572f",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-13T06:23:36Z",
+      "side": 1,
+      "message": "KFoo_i doesn\u0027t sound like the best name, instead do kFirstInkStroke and kFirstInkStrokeCount",
+      "range": {
+        "startLine": 161,
+        "startChar": 33,
+        "endLine": 161,
+        "endChar": 52
+      },
+      "revId": "8580044702dc6d7b8bee53380a6c2f4e0ce8d093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501c5d2f_5ad156a7",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-13T06:23:36Z",
+      "side": 1,
+      "message": "inklist",
+      "range": {
+        "startLine": 201,
+        "startChar": 14,
+        "endLine": 201,
+        "endChar": 21
+      },
+      "revId": "8580044702dc6d7b8bee53380a6c2f4e0ce8d093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96d79e8_4aaeeca9",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-13T06:23:36Z",
+      "side": 1,
+      "message": "You should assert this before dereferencing at 201. But i see this assert at line 154 as well. Am i missing something? I don\u0027t expect the annotation dictionary to be destroyed.",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "8580044702dc6d7b8bee53380a6c2f4e0ce8d093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
