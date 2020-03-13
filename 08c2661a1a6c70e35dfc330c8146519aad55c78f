@@ -195,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "36259417_66804379",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-13T09:54:33Z",
+      "side": 1,
+      "message": "Sure. Will take up those fixes in follow-up CLs.",
+      "parentUuid": "c63e818e_4afee596",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6aa7c08_d512cc43",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
@@ -283,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "78f8ceb8_2c3bb530",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-13T09:54:33Z",
+      "side": 1,
+      "message": "CPDFSDK_BAAnnotHandlerTest::TabToInvalidAnnot is failing since it was expecting a false value using EXPECT_FALSE. I tried to replace the same with ASSERT_THROW and not able to succeed on the trial. So I have reverted the code in CPDFSDK_BAAnnotHandler::IsFocusableAnnot to return false instead of ASSERT. Kindly share your thoughts.",
+      "parentUuid": "8ca352a0_a35859a3",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ae87185_79758563",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
@@ -368,6 +404,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942f66b2_26a872ee",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-13T09:54:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee5f6289_e9e34e03",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
