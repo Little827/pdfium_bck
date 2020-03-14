@@ -619,6 +619,24 @@
     },
     {
       "key": {
+        "uuid": "7ad18f99_cd10acae",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "The discussion here was helpful, but didn\u0027t answer my original question. So if the caller calls:\n\nconstexpr FPDF_ANNOTATION_SUBTYPE kFocusableSubtypes[] \u003d {FPDF_ANNOT_LINK};\nFPDFAnnot_SetFocusableSubtypes(handle, kFocusableSubtypes, 1);\n\nThen annots of type FPDF_ANNOT_WIDGET won\u0027t be focusable, per (b). Now only links are focusable. But my original question is, if the caller wanted no annotations to be focusable, should they be allowed to do so via this API?",
+      "parentUuid": "fc7c336e_5491fff5",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da96de83_19db70d2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26

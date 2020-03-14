@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d4f2faf_88739d56",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "This can be const-ref. i.e. Use the existing vector inside of |form_fill_environment_|, instead of creating a copy. Or don\u0027t bother declaring the variable, and just call:\n\nreturn pdfium::ContainsValue(\n    form_fill_environment_-\u003eGetFocusableAnnotSubtypes(), annot_type);",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b80715ae_93a17cae",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "Why not just initialize |m_FocusableAnnotTypes| by default to {CPDF_Annot::Subtype::WIDGET} ?",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d660fd3_ba2ebbca",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "Just inline this method, since it is a trivial setter. Just as GetFocusableAnnotSubtypes(), a trivial getter, is inlined.",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e94bae3_3cd9b2e0",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "Let\u0027s check this first, like in the other functions.",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9967995_ec464953",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "Let\u0027s remove this comment, since the logic on lines 1119-1120 is very simple. There\u0027s no need to write a comment that\u0027s longer than the code to explain it in this case.",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79d1c1d8_beb1be50",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "Let\u0027s loosen this requirement slightly by changing this to a less than comparison. Then a caller than write code like this:\n\nconstexpr size_t kCount \u003d 5;\nFPDF_ANNOTATION_SUBTYPE subtypes[kCount];\nint actual_count \u003d FPDFAnnot_GetFocusableSubtypesCount(handle);\nif (actual_count \u003c 0 || actual_count \u003e kCount)\n  return false;\n\n// Here, the caller does not need to dynamically allocate the right size\n// for |subtypes|, or lie about the size of |subtypes|.\nif (!FPDFAnnot_GetFocusableSubtypes(handle, subtypes, kCount))\n  return false;\n\nfor (int i \u003d 0; i \u003c actual_count; ++i)\n  // Do something with subtypes[i].\nreturn true;",
+      "range": {
+        "startLine": 1119,
+        "startChar": 12,
+        "endLine": 1119,
+        "endChar": 14
+      },
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

@@ -319,6 +319,24 @@
     },
     {
       "key": {
+        "uuid": "c898f070_7b677fa9",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-14T09:24:54Z",
+      "side": 1,
+      "message": "Upon closer look, CPDFSDK_BAAnnotHandlerTest,TabToInvalidAnnot is testing something that would normally never happen. Can we remove that test and put back the ASSERT?",
+      "parentUuid": "78f8ceb8_2c3bb530",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ae87185_79758563",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
