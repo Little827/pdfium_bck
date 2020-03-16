@@ -16,6 +16,47 @@
       "revId": "1f50728de2bf664c4747719a7b4a0ca4f735d68e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd13ad14_41b7aad5",
+        "filename": "fxjs/xfa/cfxjse_class.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-16T21:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c152deec_6c06af75",
+      "revId": "1f50728de2bf664c4747719a7b4a0ca4f735d68e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7f3f73f_d69c6627",
+        "filename": "fxjs/xfa/cfxjse_class.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-16T21:01:47Z",
+      "side": 1,
+      "message": "also use two-arg form of ctor to avoid this call.",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "1f50728de2bf664c4747719a7b4a0ca4f735d68e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
