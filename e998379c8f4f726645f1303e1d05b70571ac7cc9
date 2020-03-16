@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d0ddf5f_e05ae21c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-16T16:47:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8d4f2faf_88739d56",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b80715ae_93a17cae",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 36
@@ -33,6 +51,24 @@
       "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e86796_0ffde9dc",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-16T16:47:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b80715ae_93a17cae",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "593e713e_82afbb07",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-16T16:47:57Z",
+      "side": 1,
+      "message": "Have updated SetFocusableAnnotSubtypes. It is no more just a trivial setter. So not making it as inlined. Kindly let us know if you feel otherwise.",
+      "parentUuid": "6d660fd3_ba2ebbca",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e94bae3_3cd9b2e0",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 36
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "05372561_65ea1f15",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-16T16:47:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6e94bae3_3cd9b2e0",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9967995_ec464953",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 36
@@ -84,6 +156,24 @@
       "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ec71f0_69e6959e",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-16T16:47:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e9967995_ec464953",
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +197,30 @@
       "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a4391f_2d75468a",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-16T16:47:57Z",
+      "side": 1,
+      "message": "Changed the comparison from \u0027not equal to\u0027 to \u0027less than\u0027. Also changed the expression in below for loop.",
+      "parentUuid": "79d1c1d8_beb1be50",
+      "range": {
+        "startLine": 1119,
+        "startChar": 12,
+        "endLine": 1119,
+        "endChar": 14
+      },
+      "revId": "e998379c8f4f726645f1303e1d05b70571ac7cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

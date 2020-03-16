@@ -637,6 +637,24 @@
     },
     {
       "key": {
+        "uuid": "e7b4a19d_1dc04503",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-16T16:47:57Z",
+      "side": 1,
+      "message": "Lei,\n\nThis is indeed a helpful discussion which made us think about many scenario\u0027s. So here is our proposal.\n\n1. FPDF_ANNOT_WIDGET will be focusable by default today. So to retain that behavior, FPDF_ANNOT_WIDGET will continue to be focusable by default.\n2. When host make an API call FPDFAnnot_SetFocusableSubtypes() with FPDF_ANNOT_LINK \u0026 FPDF_ANNOT_HIGHLIGHT, they will be appended on top of FPDF_ANNOT_WIDGET. So after this API call with FPDF_ANNOT_LINK \u0026 FPDF_ANNOT_HIGHLIGHT as subtype value, FPDF_ANNOT_LINK, FPDF_ANNOT_HIGHLIGHT and FPDF_ANNOT_WIDGET will be focusable subtypes.\nHere, we have changed our stand(previous mentioned per (b)).\n\nNow to answer your original question, if caller wanted no annotations to be focusable, they are not allowed to do so via this API. ie. If caller makes an API call FPDFAnnot_SetFocusableSubtypes() with count as 0 and subtypes as nullptr, then this API will return false.\n\nCode is updated and comments are added to reflect the same. Kindly let us know if you have any conflicting thoughts.",
+      "parentUuid": "7ad18f99_cd10acae",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da96de83_19db70d2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26
