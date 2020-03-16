@@ -44,6 +44,8 @@ CPDFSDK_FormFillEnvironment::CPDFSDK_FormFillEnvironment(
       m_pAnnotHandlerMgr(std::move(pHandlerMgr)) {
   ASSERT(m_pCPDFDoc);
   m_pAnnotHandlerMgr->SetFormFillEnv(this);
+  // Annotations of type WIDGET are by default focusable.
+  m_FocusableAnnotTypes.push_back(CPDF_Annot::Subtype::WIDGET);
 }
 
 CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
@@ -659,8 +661,10 @@ IPDF_Page* CPDFSDK_FormFillEnvironment::GetPage(int nIndex) {
 }
 
 CPDFSDK_InteractiveForm* CPDFSDK_FormFillEnvironment::GetInteractiveForm() {
-  if (!m_pInteractiveForm)
+  if (!m_pInteractiveForm) {
     m_pInteractiveForm = pdfium::MakeUnique<CPDFSDK_InteractiveForm>(this);
+  }
+
   return m_pInteractiveForm.get();
 }
 
@@ -778,4 +782,15 @@ void CPDFSDK_FormFillEnvironment::SendOnFocusChange(
       FPDFAnnotationFromCPDFAnnotContext(focused_annot.get());
 
   m_pInfo->FFI_OnFocusChange(m_pInfo, fpdf_annot, pPageView->GetPageIndex());
+}
+
+void CPDFSDK_FormFillEnvironment::SetFocusableAnnotSubtypes(
+    const std::vector<CPDF_Annot::Subtype>& focusableAnnotTypes) {
+  // Adding incoming focusableAnnotTypes to existing m_FocusableAnnotTypes if
+  // it does not exist already.
+  for (size_t i = 0; i < focusableAnnotTypes.size(); ++i) {
+    if (!pdfium::ContainsValue(m_FocusableAnnotTypes, focusableAnnotTypes[i])) {
+      m_FocusableAnnotTypes.push_back(focusableAnnotTypes[i]);
+    }
+  }
 }
