@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37d26cdc_ec205769",
+        "filename": "core/fxcrt/css/cfx_cssexttextbuf.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-16T20:56:41Z",
+      "side": 1,
+      "message": "explicit",
+      "revId": "30243af4912dcc3c37303f0f4d915c7c6d078cb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee41d61_f25de130",
+        "filename": "core/fxcrt/css/cfx_cssexttextbuf.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-16T20:56:41Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "30243af4912dcc3c37303f0f4d915c7c6d078cb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5c33dd_62725b40",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-16T20:56:41Z",
+      "side": 1,
+      "message": "explict",
+      "revId": "30243af4912dcc3c37303f0f4d915c7c6d078cb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
