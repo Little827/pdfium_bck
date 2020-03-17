@@ -22,6 +22,30 @@
       "revId": "81782c525eeee3c26efcdd62e439e9288a8322ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f693d001_ce02bdd9",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T23:56:38Z",
+      "side": 1,
+      "message": "Is there any reason to do this? Are you trying to prevent a .in author from shooting themselves in the foot?",
+      "parentUuid": "6bf1147b_bfeaa021",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 8
+      },
+      "revId": "81782c525eeee3c26efcdd62e439e9288a8322ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
