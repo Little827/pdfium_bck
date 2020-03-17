@@ -221,7 +221,7 @@ CPDF_Dictionary* CPDF_Document::GetPageDictionary(int iPage) {
   const uint32_t objnum = m_PageList[iPage];
   if (objnum) {
     CPDF_Dictionary* result = ToDictionary(GetOrParseIndirectObject(objnum));
-    if (result)
+    if (result && result->KeyExist("Contents"))
       return result;
   }
 
