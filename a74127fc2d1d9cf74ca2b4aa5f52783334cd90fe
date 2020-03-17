@@ -506,6 +506,24 @@
     },
     {
       "key": {
+        "uuid": "16efa40c_3148ef9f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T08:26:02Z",
+      "side": 1,
+      "message": "Correct. APIs that make the differentiation are nicer. If the caller made a mistake, the API can either tell the caller \"you made a mistake\", so the developer can detect their problem, or it can tell the caller \"no focused annotation\" and leave the developer confused as to why.\n\nAlso, as mentioned before, APIs that return a bool and has out parameters tend to use the return value to indicate out parameter validity. Following this pattern makes it easier for callers to learn the behavior of this new API, and it gives the APIs more consistency.",
+      "parentUuid": "058627e6_66cc5dc7",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a7aa818_d114cd17",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 7
@@ -574,6 +592,24 @@
       "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ccdd51_5ddb6e4f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T08:26:02Z",
+      "side": 1,
+      "message": "I don\u0027t think there is one that\u0027s better than the other. It depends on what the caller needs. So thank you for discussing with me. Let\u0027s keep the API.",
+      "parentUuid": "2abe0096_40245c6a",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
