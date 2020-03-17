@@ -271,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "f6a4a89e_53261cc5",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T20:25:13Z",
+      "side": 1,
+      "message": "After calling GetPDFPage(), if the |page| pointer is null, the function now returns true. Perhaps this should say \"will report no focused annotation\" ?",
+      "parentUuid": "ed177cc7_466b0200",
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6c73088_39df49d9",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 12
