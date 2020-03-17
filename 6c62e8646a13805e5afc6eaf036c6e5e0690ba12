@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57c84732_51442337",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "APIs?",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee9ab62_e6158267",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "Since we changed the code below to set |page_index| before |annot|, let\u0027s flip the order here too.",
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b8b14e5_e248c8d7",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "Keep this comment close to |annot|.",
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e588b524_972ca739",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "Change this value as well, like line 651.",
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7749b9b_0cc3bddc",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "Capitalize, also on the next line.",
+      "range": {
+        "startLine": 1582,
+        "startChar": 25,
+        "endLine": 1582,
+        "endChar": 31
+      },
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40558bad_a3df361f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "Elaborate on what true / false means here, in terms of what happens with |page_index| and |annot|.",
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82569f52_8a51db62",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "Is this still true?",
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c73088_39df49d9",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "set",
+      "range": {
+        "startLine": 1603,
+        "startChar": 38,
+        "endLine": 1603,
+        "endChar": 41
+      },
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fbb2fe_eb16136b",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T18:48:12Z",
+      "side": 1,
+      "message": "Capitallize, also on the next line.",
+      "range": {
+        "startLine": 1607,
+        "startChar": 25,
+        "endLine": 1607,
+        "endChar": 31
+      },
+      "revId": "6c62e8646a13805e5afc6eaf036c6e5e0690ba12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
