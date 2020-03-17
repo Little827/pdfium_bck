@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c45feaf1_f54b831e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T23:10:03Z",
+      "side": 1,
+      "message": "It is a simple rule to follow, but actually always following it is hard. e.g. One may edit the .in file to add a new object, but forget to update the /Size. There\u0027s probably a few of these in testing/resources.\n\nFor more examples, just look at files in chrome/common/ that say \"please keep this list in alphabetical order\". Chances are, they are not sorted, even though most software engineers know how to.",
+      "parentUuid": "4528963c_35f98073",
+      "range": {
+        "startLine": 27,
+        "startChar": 61,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "297db3e7_36ebc3c1",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 2
@@ -90,6 +114,23 @@
         "endLine": 13,
         "endChar": 72
       },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb52576d_4ccf681d",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T23:10:03Z",
+      "side": 1,
+      "message": "Please update the comments here.",
       "revId": "656f314f939e0622854aabbd5996764742dcde79",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -167,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "9c26b0d0_9d7cb414",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T23:10:03Z",
+      "side": 1,
+      "message": "I would also prefer {{trailersize}}, so it is more obvious where this should be used.\n\n\"size\" is too generic.\n\"pdfobjsize\" could mean the size of a PDF object. What does that mean?\n\"pdfsize\" could mean the size of the PDF.",
+      "parentUuid": "09410d58_5c21777f",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "553681c3_01c67faa",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 2
@@ -202,6 +267,30 @@
       "side": 1,
       "message": "That\u0027s what I had in PS1. I changed my mind and thought this would be \"cleaner\".",
       "parentUuid": "553681c3_01c67faa",
+      "range": {
+        "startLine": 48,
+        "startChar": 54,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "656f314f939e0622854aabbd5996764742dcde79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4575ca29_f250be1c",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T23:10:03Z",
+      "side": 1,
+      "message": "Just leave |TRAILER_REPLACEMENT| alone, so there\u0027s no ordering requirement between |TRAILER_TOKEN| and |SIZE_TOKEN| replacements.",
+      "parentUuid": "606e6f55_1cf6708a",
       "range": {
         "startLine": 48,
         "startChar": 54,
