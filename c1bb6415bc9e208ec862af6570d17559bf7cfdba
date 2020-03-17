@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70fc53a6_bff7cf93",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 37
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T08:39:38Z",
+      "side": 1,
+      "message": "Just initialize this in cpdfsdk_formfillenvironment.h:\n\nm_FocusableAnnotTypes \u003d {CPDF_Annot::Subtype::WIDGET};",
+      "revId": "c1bb6415bc9e208ec862af6570d17559bf7cfdba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a6e473_c9bd9237",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 37
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T08:39:38Z",
+      "side": 1,
+      "message": "Since we undid the changes here, let\u0027s also remove the newly added curly braces.",
+      "revId": "c1bb6415bc9e208ec862af6570d17559bf7cfdba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4b2a75_c09d4455",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T08:39:38Z",
+      "side": 1,
+      "message": "Please update the documentation to reflect the change in patchset 37. Also, space before the word \"Caller\".",
+      "range": {
+        "startLine": 692,
+        "startChar": 21,
+        "endLine": 692,
+        "endChar": 41
+      },
+      "revId": "c1bb6415bc9e208ec862af6570d17559bf7cfdba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
