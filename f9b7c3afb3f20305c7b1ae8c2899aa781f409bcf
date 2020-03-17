@@ -655,6 +655,24 @@
     },
     {
       "key": {
+        "uuid": "8d1b49be_baeb34f8",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-17T08:35:18Z",
+      "side": 1,
+      "message": "I agree FPDF_ANNOT_WIDGET should be the default focusable type, just like it is without this CL. I also clearly understand your stance on what you the API should do, but what I want to understand is why you don\u0027t want to let the caller have the ability to make no annotations focusable. What issue(s) are you concerned with, if this API lets the caller do that?",
+      "parentUuid": "e7b4a19d_1dc04503",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da96de83_19db70d2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26
