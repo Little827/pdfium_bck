@@ -524,6 +524,24 @@
     },
     {
       "key": {
+        "uuid": "3d454a04_016d9395",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-17T11:20:14Z",
+      "side": 1,
+      "message": "I have modified the API to return true if there is no focused annotation. I have also added a comment in formfill.h to denote that even if there is no focused annotation, out params are filled with values and it returns true given that it\u0027s not straightforward from the API name.",
+      "parentUuid": "16efa40c_3148ef9f",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a7aa818_d114cd17",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 7
