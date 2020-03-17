@@ -673,6 +673,24 @@
     },
     {
       "key": {
+        "uuid": "b62170b1_9a427beb",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-17T17:30:37Z",
+      "side": 1,
+      "message": "Shared my view here.\nI don\u0027t see any issues as such if this API let the caller have the ability make no annotation focusable. I am just trying to understand what could be the best experience for the caller.\nAs discussed earlier FPDF_ANNOT_WIDGET is by default focusable type. \nWhen user makes an API call with FPDF_ANNOT_LINK \u0026 FPDF_ANNOT_HIGHLIGHT as subtype, then the list of focusable sub types are FPDF_ANNOT_LINK, FPDF_ANNOT_HIGHLIGHT \u0026 FPDF_ANNOT_WIDGET.\nNow, when a user make an API call with nullptr as subtype value, should we provide an experience of removing only FPDF_ANNOT_LINK \u0026 FPDF_ANNOT_HIGHLIGHT or we should end up removing FPDF_ANNOT_WIDGET also ?\nKindly share your thoughts on this.\nIf required, we can also have another API ClearFocusableSubtypes() which will clear all the subtypes value if we think of any user scenario where we need to let the caller to have the ability to make no annotations focusable.",
+      "parentUuid": "8d1b49be_baeb34f8",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da96de83_19db70d2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26
