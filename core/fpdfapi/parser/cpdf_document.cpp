@@ -215,14 +215,25 @@ bool CPDF_Document::IsPageLoaded(int iPage) const {
 }
 
 CPDF_Dictionary* CPDF_Document::GetPageDictionary(int iPage) {
+  return GetPageDictionaryWithTypeCheckOption(iPage,
+                                              /*check_type_is_page=*/true);
+}
+
+CPDF_Dictionary* CPDF_Document::GetPageDictionaryWithTypeCheckOption(
+    int iPage,
+    bool check_type_is_page) {
   if (!pdfium::IndexInBounds(m_PageList, iPage))
     return nullptr;
 
   const uint32_t objnum = m_PageList[iPage];
   if (objnum) {
     CPDF_Dictionary* result = ToDictionary(GetOrParseIndirectObject(objnum));
-    if (result)
+    if (result &&
+        (!check_type_is_page || result->GetStringFor("Type") == "Page"))
       return result;
+    // Reset m_PageList[iPage] if the |objnum| doesn't point to a valid page
+    // object.
+    m_PageList[iPage] = 0;
   }
 
   CPDF_Dictionary* pPages = GetPagesDict();

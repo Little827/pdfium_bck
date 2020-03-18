@@ -251,7 +251,8 @@ TEST_F(cpdf_document_test, UseCachedPageObjNumIfHaveNotPagesDict) {
 
   document.SetPageObjNum(test_page_num, obj_num);
   EXPECT_TRUE(document.IsPageLoaded(test_page_num));
-  EXPECT_EQ(page_stub, document.GetPageDictionary(test_page_num));
+  EXPECT_EQ(page_stub, document.GetPageDictionaryWithTypeCheckOption(
+                           test_page_num, false));
 }
 
 TEST_F(cpdf_document_test, CountGreaterThanPageTree) {
@@ -259,19 +260,20 @@ TEST_F(cpdf_document_test, CountGreaterThanPageTree) {
       pdfium::MakeUnique<CPDF_TestDocumentForPages>();
   document->SetTreeSize(kNumTestPages + 3);
   for (int i = 0; i < kNumTestPages; i++)
-    EXPECT_TRUE(document->GetPageDictionary(i));
+    EXPECT_TRUE(document->GetPageDictionaryWithTypeCheckOption(i, false));
   for (int i = kNumTestPages; i < kNumTestPages + 4; i++)
-    EXPECT_FALSE(document->GetPageDictionary(i));
-  EXPECT_TRUE(document->GetPageDictionary(kNumTestPages - 1));
+    EXPECT_FALSE(document->GetPageDictionaryWithTypeCheckOption(i, false));
+  EXPECT_TRUE(
+      document->GetPageDictionaryWithTypeCheckOption(kNumTestPages - 1, false));
 }
 
 TEST_F(cpdf_document_test, PagesWithoutKids) {
   // Set up a document with Pages dict without kids, and Count = 3
   auto pDoc = pdfium::MakeUnique<CPDF_TestDocPagesWithoutKids>();
-  EXPECT_TRUE(pDoc->GetPageDictionary(0));
+  EXPECT_TRUE(pDoc->GetPageDictionaryWithTypeCheckOption(0, false));
   // Test GetPage does not fetch pages out of range
   for (int i = 1; i < 5; i++)
-    EXPECT_FALSE(pDoc->GetPageDictionary(i));
+    EXPECT_FALSE(pDoc->GetPageDictionaryWithTypeCheckOption(i, false));
 
-  EXPECT_TRUE(pDoc->GetPageDictionary(0));
+  EXPECT_TRUE(pDoc->GetPageDictionaryWithTypeCheckOption(0, false));
 }
