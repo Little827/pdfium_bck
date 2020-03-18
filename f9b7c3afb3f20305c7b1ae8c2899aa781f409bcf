@@ -709,6 +709,24 @@
     },
     {
       "key": {
+        "uuid": "c278cbb0_be344e74",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-18T10:26:43Z",
+      "side": 1,
+      "message": "Lei,\nThanks for the detailed reply. This really helps.\nOur initial hesitation was if we make focusable annot subtypes as nullptr, then we are not sure\nwhat will break in pdfium.\nWe will try various scenario and make sure no scenario break in pdfium.\nLet us know if this is fine and also let us know if there are any things to check it out.\n\nUpdate:\nIn the latest patch set, I have made changes to let the caller do (3). This API can be used now as a \"set\" API and not \"append\" API.\nI have also verified by changing the subtypes values using FPDFAnnot_SetFocusableSubtypes() during runtime and made sure only focusable subtypes changes and no valid scenarios are affected.",
+      "parentUuid": "a6076a45_08ac2ed5",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da96de83_19db70d2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26
