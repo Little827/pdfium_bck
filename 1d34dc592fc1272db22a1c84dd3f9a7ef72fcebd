@@ -22,6 +22,30 @@
       "revId": "1d34dc592fc1272db22a1c84dd3f9a7ef72fcebd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1831a182_e9c55826",
+        "filename": "testing/resources/split_streams.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-03-18T17:20:43Z",
+      "side": 1,
+      "message": "I just looked at what the ID field does, and it has no influence over the contents of the PDF or how they might render. ID just contains file identifiers to aid external file references. \n\nSo we can probably remove it in this .in file and others. However, the non-standard {{trailersize}} isn\u0027t necessary just for trailers containing an ID field. It\u0027s mostly to accommodate to files like bug_557223.in and others that we intend to check-in in the near future.",
+      "parentUuid": "d9f66887_35cc85a1",
+      "range": {
+        "startLine": 121,
+        "startChar": 42,
+        "endLine": 121,
+        "endChar": 74
+      },
+      "revId": "1d34dc592fc1272db22a1c84dd3f9a7ef72fcebd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
