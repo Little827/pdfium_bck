@@ -98,7 +98,13 @@ class CPDF_Document : public Observable,
   void DeletePage(int iPage);
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
+  // Returns a valid pointer only when it is from a page object.
   CPDF_Dictionary* GetPageDictionary(int iPage);
+  // When this method is called with param |check_type_is_page| set to false,
+  // it's usually for testing on mocked up data.
+  CPDF_Dictionary* GetPageDictionaryWithTypeCheckOption(
+      int iPage,
+      bool check_type_is_page);
   int GetPageIndex(uint32_t objnum);
   uint32_t GetUserPermissions() const;
 
