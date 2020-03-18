@@ -691,6 +691,24 @@
     },
     {
       "key": {
+        "uuid": "a6076a45_08ac2ed5",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-18T07:52:12Z",
+      "side": 1,
+      "message": "Let\u0027s step away from the C API we have here for a second, and just think about the underlying C++ implementation, where we start with:\n\nstd::vector\u003cCPDF_Annot::Subtype\u003e m_FocusableAnnotTypes \u003d {CPDF_Annot::Subtype::WIDGET};\n\nWould it be ok for the caller to do all of the following, in this order?\n\n1) m_FocusableAnnotTypes \u003d {CPDF_Annot::Subtype::WIDGET, CPDF_Annot::Subtype::LINK};\n2) m_FocusableAnnotTypes \u003d {CPDF_Annot::Subtype::LINK};\n3) m_FocusableAnnotTypes \u003d {};\n4) m_FocusableAnnotTypes \u003d {CPDF_Annot::Subtype::WIDGET};\n\nIf they are all ok, then going back to the C API, I would say:\n- Prior to patch set 37, (1), (2), and (4) were possible, but (3) was not, which is why I started this discussion. I just wanted to make (3) possible.\n- In patch set 37, FPDFAnnot_SetFocusableSubtypes() has turned from a \"set\" API to an \"append\" API. So with patch set 37, if the caller calls FPDFAnnot_SetFocusableSubtypes() to append FPDF_ANNOT_LINK, i.e. do the set operation in (1), then the caller cannot do (2), (3), or (4) after that.\n\nSo from my point of view, you are to avoid letting the caller do (3) and I don\u0027t understand why. Which is why I wanted to better understand your thoughts.\n\nIf you are ok with letting the caller do (3), then I would suggest relaxing the check for |count| in FPDFAnnot_SetFocusableSubtypes(). For (3), the C++ operation would be to assign a vector of size 0 to |m_FocusableAnnotTypes|. Letting a caller call FPDFAnnot_SetFocusableSubtypes() with |count| \u003d 0 is roughly the same thing. The API can just accept that as valid, rather than rejecting it and requiring a separate ClearFocusableSubtypes() API.",
+      "parentUuid": "b62170b1_9a427beb",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da96de83_19db70d2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26
