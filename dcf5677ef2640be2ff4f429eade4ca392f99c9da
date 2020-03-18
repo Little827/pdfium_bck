@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "327ad9d2_104594ca",
+        "filename": "fxjs/fxv8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-18T23:12:32Z",
+      "side": 1,
+      "message": "I went back and forth on this a couple of times.  In the end, if the file were fx_v8.h, the namespace ought to be fx_v8.  I thought that writing\nfx_v8::Mumble() looked too visually similar to v8::Mumble(), wheres\nfxv8::Mumble() looked decidedly different.  At least when squinting.",
+      "parentUuid": "80a3098b_a43702b4",
+      "revId": "dcf5677ef2640be2ff4f429eade4ca392f99c9da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bfe68d7_52b33bc6",
         "filename": "fxjs/fxv8.h",
         "patchSetId": 4
@@ -86,6 +104,30 @@
       "revId": "dcf5677ef2640be2ff4f429eade4ca392f99c9da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd211fb_0ef45d2e",
+        "filename": "fxjs/fxv8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-18T23:12:32Z",
+      "side": 1,
+      "message": "Argh, manually updated this to the wrong year!",
+      "parentUuid": "3bfe68d7_52b33bc6",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "dcf5677ef2640be2ff4f429eade4ca392f99c9da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
