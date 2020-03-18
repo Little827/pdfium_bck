@@ -661,6 +661,7 @@ IPDF_Page* CPDFSDK_FormFillEnvironment::GetPage(int nIndex) {
 CPDFSDK_InteractiveForm* CPDFSDK_FormFillEnvironment::GetInteractiveForm() {
   if (!m_pInteractiveForm)
     m_pInteractiveForm = pdfium::MakeUnique<CPDFSDK_InteractiveForm>(this);
+
   return m_pInteractiveForm.get();
 }
 
