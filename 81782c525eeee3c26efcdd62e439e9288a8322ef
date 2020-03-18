@@ -70,6 +70,30 @@
       "revId": "81782c525eeee3c26efcdd62e439e9288a8322ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e62955_e44aab97",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-18T00:07:56Z",
+      "side": 1,
+      "message": "Nothing prevents one from having two {{trailer}}s, right? Let .in file authors do what they want.",
+      "parentUuid": "e520a4c7_586aa191",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 8
+      },
+      "revId": "81782c525eeee3c26efcdd62e439e9288a8322ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
