@@ -107,15 +107,29 @@ CPDF_Parser::Error CPDF_Document::LoadLinearizedDoc(
 void CPDF_Document::LoadPages() {
   const CPDF_LinearizedHeader* linearized_header =
       m_pParser->GetLinearizedHeader();
-  if (!linearized_header) {
-    m_PageList.resize(RetrievePageCount());
-    return;
-  }
+  if (linearized_header) {
+    m_PageList.resize(linearized_header->GetPageCount());
+    ASSERT(linearized_header->GetFirstPageNo() < m_PageList.size());
 
-  m_PageList.resize(linearized_header->GetPageCount());
-  ASSERT(linearized_header->GetFirstPageNo() < m_PageList.size());
-  m_PageList[linearized_header->GetFirstPageNo()] =
-      linearized_header->GetFirstPageObjNum();
+    // If object number matches a valid page, set |m_PageList|.
+    if (IsObjValidPage(linearized_header->GetFirstPageObjNum())) {
+      m_PageList[linearized_header->GetFirstPageNo()] =
+          linearized_header->GetFirstPageObjNum();
+      return;
+    } else {
+      // Clean up the trace of linearized header here? It seems like a lot of
+      // elements inside CPDF_Document needs to be reset.
+    }
+  }
+  // This will work if we are rendering an actual PDF file with page tree since
+  // RetrievePageCount() will traverse the tree and count the page number.
+  // But this will fail unit tests bc unit tests often use mocked data and
+  // m_PageList gets resized to 0, because no tree for RetriebePageCount() to
+  // traverse through.
+  // (e.g cpdf_document_test.UseCachedPageObjNumIfHaveNotPagesDict deliberately
+  // uses dictionary that doesn't contain "/Type/Page", related issue see:
+  // codereview.chromium.org/2437773003)
+  m_PageList.resize(RetrievePageCount());
 }
 
 CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
@@ -212,6 +226,21 @@ CPDF_Dictionary* CPDF_Document::GetPagesDict() {
 
 bool CPDF_Document::IsPageLoaded(int iPage) const {
   return !!m_PageList[iPage];
+}
+
+bool CPDF_Document::IsObjValidPage(const uint32_t objnum) {
+  if (!objnum)
+    return false;
+
+  CPDF_Dictionary* result = ToDictionary(GetOrParseIndirectObject(objnum));
+  if (!result)
+    return false;
+
+  const CPDF_Object* typeobj = result->GetObjectFor("Type");
+  if (typeobj && typeobj->IsName() && typeobj->GetString() == "Page") {
+    return true;
+  }
+  return false;
 }
 
 CPDF_Dictionary* CPDF_Document::GetPageDictionary(int iPage) {
