@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf41d744_26efabae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T21:23:43Z",
+      "side": 1,
+      "message": "Please mention \"Version 8.3.31\" here.",
+      "revId": "9b50c69fc648e12f64db4f656599f15c5ddacd83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
