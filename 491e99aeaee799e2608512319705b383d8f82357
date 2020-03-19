@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a4670ee_38871eed",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 40
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T04:45:14Z",
+      "side": 1,
+      "message": "I would recommend doing the following here:\n\nif (count \u003e 0 \u0026\u0026 !subtypes)\n  return false;\n\nTo explain:\n- count \u003e 0 \u0026\u0026 subtypes \u003d\u003e ok.\n- count \u003d\u003d 0 \u003d\u003e ok. Just ignoring |subtypes|, as the for-loop won\u0027t ever read from |subtypes|.",
+      "revId": "491e99aeaee799e2608512319705b383d8f82357",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c62f947_fe389a71",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 40
+      },
+      "lineNbr": 2386,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T04:45:14Z",
+      "side": 1,
+      "message": "Let\u0027s add another test case to cover the no focusable subtypes case.",
+      "revId": "491e99aeaee799e2608512319705b383d8f82357",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd37941_e47b0131",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 40
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T04:45:14Z",
+      "side": 1,
+      "message": "This needs to be updated.",
+      "range": {
+        "startLine": 661,
+        "startChar": 29,
+        "endLine": 662,
+        "endChar": 25
+      },
+      "revId": "491e99aeaee799e2608512319705b383d8f82357",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583cb614_14ff88f5",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 40
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T04:45:14Z",
+      "side": 1,
+      "message": "Let\u0027s write FPDF_ANNOT_WIDGET here (and above/below) to be clearer.",
+      "range": {
+        "startLine": 682,
+        "startChar": 30,
+        "endLine": 682,
+        "endChar": 36
+      },
+      "revId": "491e99aeaee799e2608512319705b383d8f82357",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
