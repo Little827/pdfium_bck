@@ -109,4 +109,12 @@ bool ReentrantPutObjectPropertyHelper(v8::Isolate* pIsolate,
   return pObj->Set(pIsolate->GetCurrentContext(), name, pPut).IsJust();
 }
 
+void ThrowExceptionHelper(v8::Isolate* pIsolate, ByteStringView str) {
+  pIsolate->ThrowException(NewStringHelper(pIsolate, str));
+}
+
+void ThrowExceptionHelper(v8::Isolate* pIsolate, WideStringView str) {
+  pIsolate->ThrowException(NewStringHelper(pIsolate, str));
+}
+
 }  // namespace fxv8
