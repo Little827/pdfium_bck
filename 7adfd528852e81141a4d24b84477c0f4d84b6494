@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5fd5e47_ba585a84",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T05:48:35Z",
+      "side": 1,
+      "message": "Over-parenthesized.",
+      "range": {
+        "startLine": 1079,
+        "startChar": 6,
+        "endLine": 1079,
+        "endChar": 7
+      },
+      "revId": "7adfd528852e81141a4d24b84477c0f4d84b6494",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466d83c4_ba2bf7a3",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T05:48:35Z",
+      "side": 1,
+      "message": "The |count| variable is not strictly necessary. One can just write:\n\nEXPECT_EQ(1, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));",
+      "revId": "7adfd528852e81141a4d24b84477c0f4d84b6494",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7deaaf72_29ffb699",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T05:48:35Z",
+      "side": 1,
+      "message": "Use EXPECT_EQ(), like line 2416.",
+      "revId": "7adfd528852e81141a4d24b84477c0f4d84b6494",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4441287a_d26b9730",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 2397,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T05:48:35Z",
+      "side": 1,
+      "message": "As is, I think this is roughly going to do the same thing as the call on lines 2409-2410. It would be more interesting to get rid of |kNoFocusableSubtypes| and pass in nullptr here.",
+      "revId": "7adfd528852e81141a4d24b84477c0f4d84b6494",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ef69fe_183c5acb",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 2409,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T05:48:35Z",
+      "side": 1,
+      "message": "- Add a blank line above this, to separate it out from the failing cases.\n- Add a FPDFAnnot_GetFocusableSubtypesCount() call after and check the return value.",
+      "revId": "7adfd528852e81141a4d24b84477c0f4d84b6494",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
