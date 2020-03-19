@@ -80,6 +80,24 @@
       "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c1d8d2_65c8537f",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-19T19:11:31Z",
+      "side": 1,
+      "message": "A fix like this might address crbug.com/1058366, too. Maybe we could focus on fixing that first, and then maybe this bug goes away, and we don\u0027t need to check in a separate test case for it? (Although that would be nice.)",
+      "parentUuid": "f746c94a_aebfe0fc",
+      "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
