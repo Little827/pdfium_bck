@@ -27,6 +27,18 @@ WideString ReentrantToWideStringHelper(v8::Isolate* pIsolate,
 ByteString ReentrantToByteStringHelper(v8::Isolate* pIsolate,
                                        v8::Local<v8::Value> pValue);
 
+v8::Local<v8::Value> ReentrantGetObjectPropertyHelper(
+    v8::Isolate* pIsolate,
+    v8::Local<v8::Object> pObj,
+    ByteStringView bsUTF8PropertyName);
+std::vector<WideString> ReentrantGetObjectPropertyNamesHelper(
+    v8::Isolate* pIsolate,
+    v8::Local<v8::Object> pObj);
+bool ReentrantPutObjectPropertyHelper(v8::Isolate* pIsolate,
+                                      v8::Local<v8::Object> pObj,
+                                      ByteStringView bsUTF8PropertyName,
+                                      v8::Local<v8::Value> pPut);
+
 }  // namespace fxv8
 
 #endif  // FXJS_FXV8_H_
