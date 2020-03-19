@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ef47a78_28343bc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Please mention the newly added public APIs in the CL description.",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47c89311_af2f80bd",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Can this be const?",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d69251e0_478c5be8",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Let\u0027s check this first, as it is a faster check than IsFocusableAnnot().",
+      "range": {
+        "startLine": 80,
+        "startChar": 38,
+        "endLine": 80,
+        "endChar": 60
+      },
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c14399_9d898b66",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Over-parenthesized.",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 7
+      },
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931df7f4_ffde75bf",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Not needed. The next line make it obvious that |annot| is expected to be non-null.",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a54b73c6_0be931b0",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Same here. See OnMouseEnter() for comparison.",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa00211_f4adb1da",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c45f2e_7e661ca1",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "This comment should go immediately above line 1120.",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f16e1c_4121d90f",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 2405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "It\u0027ll be more interesting to put lines 2405-2407 after lines 2408-2411. Then we can see the APIs making the FPDFAnnot_GetFocusableSubtypesCount() result go from 0 to 1 to 0.",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7301c849_fe3958f3",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 2451,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Check |count| using ASSERT_EQ(). If FPDFAnnot_GetFocusableSubtypesCount() were to misbehave, we want the test to stop, rather than continuing to line 2454 and creating a vector of unexpected size.",
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0719ad4a_786443c9",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 2454,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:02:41Z",
+      "side": 1,
+      "message": "Can this variable just be named \"subtypes\" ?",
+      "range": {
+        "startLine": 2454,
+        "startChar": 39,
+        "endLine": 2454,
+        "endChar": 51
+      },
+      "revId": "af5da432c667250bbe1964f09298fb15bcb8c974",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
