@@ -62,6 +62,24 @@
       "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f746c94a_aebfe0fc",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T04:27:36Z",
+      "side": 1,
+      "message": "To elaborate: By allowing |m_PageList| to contain the wrong object number in the first place, there may be other code that gets data from |m_PageList| that will take incorrect action based on the bad data. So we\u0027d either need to check in all the getters from |m_PageList| or all the setters to |m_PageList|. Some getters, e.g. CPDF_Document::IsPageLoaded() are const methods that can\u0027t make changes. So if we were to fix all the getters or all the setters, I would pick all the setters.\n\nFor the scope of this CL, we don\u0027t need to fix all the setters. Just the one that fixed the bug is sufficient. We can consider adding the same check to the other setters later.",
+      "parentUuid": "43a21fbf_40c62a5d",
+      "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
