@@ -93,6 +93,69 @@
     },
     {
       "key": {
+        "uuid": "33260a80_7846ed3d",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T08:01:28Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 159,
+        "startChar": 19,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c82c3ca_6d469215",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T08:01:28Z",
+      "side": 1,
+      "message": "I think this can be omitted?",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c393fdf_d7726ebb",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T08:01:28Z",
+      "side": 1,
+      "message": "Instead of casting to int64_t, just make the left side value unsigned. e.g. EXPECT_EQ(1u, inklist-\u003esize());",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e5ce3cd_25a714db",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 6
