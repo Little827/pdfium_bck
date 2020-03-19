@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64ee058f_d02e783e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T02:54:13Z",
+      "side": 1,
+      "message": "There\u0027s not enough context to tell what this refers to exactly, or whether GetPageDictionary() is a standalone function, or if it belongs to a class. It may help to instead say \"which causes CPDF_Document to put the wrong but existing object number into its page list.\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1402d043_515e13a3",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T02:54:13Z",
+      "side": 1,
+      "message": "This check is not strict enough. In the PDF, the proper syntax is \"/Type /Page\". The significance of the slash in \"/Page\" is that it is a name object.\n\nCPDF_Dictionary::GetStringFor() calls GetString() for the CPDF_Object keyed at \"Type\". Here, both CPDF_Name and CPDF_String are potential CPDF_Object subclasses that can return the value \"Page\". We don\u0027t want to allow a CPDF_String when we want a CPDF_Name.",
+      "range": {
+        "startLine": 232,
+        "startChar": 32,
+        "endLine": 232,
+        "endChar": 71
+      },
+      "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a21fbf_40c62a5d",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T02:54:13Z",
+      "side": 1,
+      "message": "Instead of putting the wrong object number into |m_PageList|, and then adjusting for that here, can we just avoid putting the wrong object number into |m_PageList| in the first place? i.e. Do the check in CPDF_Document::LoadPages().",
+      "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
