@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cdc8e20_bb1291f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "- Any plans to make a deletion API?\n- Assuming the answer to my question in https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1160#c9 is yes, can we find some way of initializing the Inklist to an empty array?",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "232288ef_b7a9da4d",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "Use FX_SAFE_SIZE_T to do the calculation instead and see if the result is still valid.",
+      "range": {
+        "startLine": 432,
+        "startChar": 47,
+        "endLine": 432,
+        "endChar": 74
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52769a4d_6ece8bbe",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "If this gets moved up to be the first check, then the conditional on line 432 won\u0027t need to check |annot|.",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95cbee0c_01d1f8ab",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "Braces aren\u0027t needed, just like line 439 and line 447.",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901daf94_60e1002b",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "- Try to avoid casting of size_t to a signed integer type like this. Use pdfium::base::IsValueInRangeForNumericType() to make sure the size of |inklist| fits in an int first, and then cast to int.\n- If the size is |INT_MAX|, I think that\u0027s actually ok. If |INT_MAX| was 32767 for simplicity, and the size of |inklist| is 32767. Then the code below will make the size 32768, but line 456 subtracts 1 again, so the function returns 32767 at the end, which still fits in an int.\n- Save the size as an int here and just return it on line 456. Then line 456 will be simpler.",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5ce3cd_25a714db",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "There\u0027s no need to explain what this is. Why don\u0027t we just omit this paragraph, and refer readers to ISO 32000-1:2008 section 12.5.6.13 in the next paragraph?",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f7b767_d260e875",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 201,
+        "startChar": 28,
+        "endLine": 201,
+        "endChar": 29
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458ba825_b6dd1247",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-19T07:59:23Z",
+      "side": 1,
+      "message": "In https://pdfium-review.googlesource.com/c/60011/ and in most PDFium public APIs, we point the pointer parameter in front of the size parameter. Can we do that here as well for consistency?",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
