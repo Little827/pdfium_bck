@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b429078_1fd4afde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-19T20:20:37Z",
+      "side": 1,
+      "message": "Are we supposed to delete these lines? Not sure if this is something new or not.",
+      "revId": "60642e5109c1042ab48b4b05162bf64e7030c52e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
