@@ -147,15 +147,17 @@ CPDF_Parser::Error CPDF_Document::LoadLinearizedDoc(
 void CPDF_Document::LoadPages() {
   const CPDF_LinearizedHeader* linearized_header =
       m_pParser->GetLinearizedHeader();
-  if (!linearized_header) {
-    m_PageList.resize(RetrievePageCount());
-    return;
-  }
+  if (linearized_header) {
+    m_PageList.resize(linearized_header->GetPageCount());
+    ASSERT(linearized_header->GetFirstPageNo() < m_PageList.size());
 
-  m_PageList.resize(linearized_header->GetPageCount());
-  ASSERT(linearized_header->GetFirstPageNo() < m_PageList.size());
-  m_PageList[linearized_header->GetFirstPageNo()] =
-      linearized_header->GetFirstPageObjNum();
+    if (IsObjValidPage(linearized_header->GetFirstPageObjNum())) {
+      m_PageList[linearized_header->GetFirstPageNo()] =
+          linearized_header->GetFirstPageObjNum();
+      return;
+    }
+  }
+  m_PageList.resize(RetrievePageCount());
 }
 
 CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
@@ -252,6 +254,21 @@ CPDF_Dictionary* CPDF_Document::GetPagesDict() {
 
 bool CPDF_Document::IsPageLoaded(int iPage) const {
   return !!m_PageList[iPage];
+}
+
+bool CPDF_Document::IsObjValidPage(const uint32_t objnum) {
+  if (!objnum)
+    return false;
+
+  CPDF_Dictionary* result = ToDictionary(GetOrParseIndirectObject(objnum));
+  if (!result)
+    return false;
+
+  const CPDF_Object* typeobj = result->GetObjectFor("Type");
+  if (typeobj && typeobj->IsName() && typeobj->GetString() == "Page") {
+    return true;
+  }
+  return false;
 }
 
 CPDF_Dictionary* CPDF_Document::GetPageDictionary(int iPage) {
