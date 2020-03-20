@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1584746670 -0700\nnonce ACmAMkyjo4/zR8vXFBLSa4vDMBIki//7Eb3QzeypAuRzbE6LweT16i4zF2R/khYkknx/OKGkObUP\n\n0000000000000000000000000000000000000000 69eb1a0b82668dca3673e7a104c03ea5d2fc52a7 refs/for/refs/heads/master%notify\u003dNONE,m\u003dASAN\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl51UK4ACgkQqzYtYVpm\n/XtMHQf/fl3l7VG4gPEZ242jPfP+amu0FJOxDgz6wyBmR4EuqaxxZFZc0pW4rEcU\nHoh80MvEfmwz6BNknBU9rw4IhvbAk+FK3PKoqwvIvRfZPDIAgG70yIMzGnF7mJUG\nAhhCGychmkmEcmZGg83ijnLYRGMwdF4g9YuY7EuXcwvxXVN5Mz7iVP9t5o2dyuts\nwQfa+KBHIXENslndeiCYc+12Nu5qSBtyOoXWUDjXF9FdwT+tzX6OdCrhjHnYMX99\njYZcxi4VFO+/4RYt1makllaAjTWRU2wsm1NqF3p1NTvMf2m1YFmKPvDoGShF9VS1\n1cC79Mj/9LAcBSqaAbatB7UrBOAytQ\u003d\u003d\n\u003dUXep\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca1e92f1_adcc1102",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-20T23:56:47Z",
+      "side": 1,
+      "message": "I didn\u0027t think resizing a vector downward was allowed to reallocate, but yes, safer than relying on that quirk.  Did this hit an asan error?",
+      "range": {
+        "startLine": 102,
+        "startChar": 30,
+        "endLine": 102,
+        "endChar": 33
+      },
+      "revId": "69eb1a0b82668dca3673e7a104c03ea5d2fc52a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
