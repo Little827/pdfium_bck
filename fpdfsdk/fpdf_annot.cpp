@@ -27,6 +27,7 @@
 #include "core/fpdfdoc/cpdf_formfield.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fpdfdoc/cpvt_generateap.h"
+#include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/cfx_color.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
@@ -424,6 +425,39 @@ FPDFAnnot_UpdateObject(FPDF_ANNOTATION annot, FPDF_PAGEOBJECT obj) {
   // Update the content stream data in the annotation's AP stream.
   UpdateContentStream(pForm, pStream);
   return true;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_AddInkStroke(FPDF_ANNOTATION annot,
+                                                     const FS_POINTF* points,
+                                                     size_t point_count) {
+  FX_SAFE_SIZE_T safe_point_count = point_count;
+  if (FPDFAnnot_GetSubtype(annot) != FPDF_ANNOT_INK || !points ||
+      point_count == 0 || !safe_point_count.IsValid<long>())
+    return -1;
+
+  if (FPDFAnnot_GetSubtype(annot) != FPDF_ANNOT_INK)
+    return -1;
+
+  CPDF_Dictionary* annot_dict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!annot_dict)
+    return -1;
+
+  CPDF_Array* inklist = annot_dict->GetArrayFor("InkList");
+  if (!inklist)
+    inklist = annot_dict->SetNewFor<CPDF_Array>("InkList");
+
+  size_t ink_list_size = inklist->size();
+  if (pdfium::base::IsValueInRangeForNumericType<int64_t>(ink_list_size) &&
+      static_cast<int64_t>(ink_list_size) > INT_MAX)
+    return -1;
+
+  CPDF_Array* ink_coord_list = inklist->AddNew<CPDF_Array>();
+  for (size_t i = 0; i < point_count; i++) {
+    ink_coord_list->AddNew<CPDF_Number>(points[i].x);
+    ink_coord_list->AddNew<CPDF_Number>(points[i].y);
+  }
+
+  return static_cast<int>(inklist->size() - 1);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
