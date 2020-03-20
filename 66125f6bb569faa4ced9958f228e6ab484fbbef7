@@ -98,6 +98,24 @@
       "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8bb6756_7250e8cf",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-03-20T00:46:11Z",
+      "side": 1,
+      "message": "Thanks Kahmy! The current fix does solve the rendering issue in crbug.com/1058366.\n \nI did another new fix https://pdfium-review.googlesource.com/c/pdfium/+/62750/13 (just a test CL, for you to see the changes, it will cause red bots) with comments and questions in the code. As Lei suggested, the new fix does the validation inside CPDF_Document::LoadPages(). If the check fails, go through the process as if there is no linearized header.\n\nThis new fix can render the PDF from crbug.com/1012237 correctly but it will fail the following unit test: cpdf_document_test.UseCachedPageObjNumIfHaveNotPagesDict. This test was added for issue https://codereview.chromium.org/2437773003/, which deliberately sets |m_PageList| with hint table data without validation for the page dictionary.\n\nBTW, the new fix doesn\u0027t solve the rendering issue in crbug.com/1058366.\n\nNeeds some input on some concerns:\n1. The unit test for https://codereview.chromium.org/2437773003/ seem to go the opposite direction as what we are trying to do. The test wants to load hint data without page dictionary (judging by the name of the test). We do not have the PDF file which that bug was originally filed for, and we don\u0027t know whether that PDF file actually has no valid Page objects (no valid pages? sounds like a rare thing to happen and I doubt that pdf can render). If I modify that unit test to have valid Page dictionary and make it test on loading the hint table, I am worried about this might cause future regression.\n\n2. If we are going to follow the path to add validation in CPDF_Document::LoadPages(), I think it will still be a good idea to add the page-type validation into CPDF_Document::GetPageDictionary() in a future CL, since it\u0027s been used for validation in a lot of callers.",
+      "parentUuid": "18c1d8d2_65c8537f",
+      "revId": "66125f6bb569faa4ced9958f228e6ab484fbbef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
