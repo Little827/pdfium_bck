@@ -17,6 +17,24 @@
       "revId": "c60918d922ffcb28c08404b70d1e7d87356c8bf5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0076145c_dc001a5b",
+        "filename": "core/fpdfapi/page/cpdf_textstate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T20:18:11Z",
+      "side": 1,
+      "message": "With 4 elements, this still fits on 1 line, so not too bad.",
+      "parentUuid": "c335764e_8f5a2401",
+      "revId": "c60918d922ffcb28c08404b70d1e7d87356c8bf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
