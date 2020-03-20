@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "241850ec_146bc558",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T23:15:12Z",
+      "side": 1,
+      "message": "With the new arrangement in this method, sometimes it will resize |m_PageList| twice. Can we avoid that?",
+      "revId": "c3eee4655e70423460b49918271783941ce5583a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d00ef1_538386f9",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T23:15:12Z",
+      "side": 1,
+      "message": "There may be places where the code needs to do this check on an existing CPDF_Object. So instead of taking an object number as the input, take a const CPDF_Object*. Then this method will be more useful. Once it takes a const CPDF_Object*, it can be a standalone function instead of a method.",
+      "revId": "c3eee4655e70423460b49918271783941ce5583a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae0be06_b05c36f7",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T23:15:12Z",
+      "side": 1,
+      "message": "Lines 267-271 shortens to:\n\nconst CPDF_Name* name \u003d ToName(dict-\u003eGetObjectFor(\"Type\"));  // ToName() takes care of IsName().\nreturn name \u0026\u0026 name-\u003eGetString() \u003d\u003d \"Page\";  // Only 2 conditions , instead of 3.",
+      "revId": "c3eee4655e70423460b49918271783941ce5583a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5d65b1_711e5fd9",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T23:15:12Z",
+      "side": 1,
+      "message": "Whenever one ends up with:\n\nif (cond)\n  return true;\nreturn false;\n\nThan becomes just: return cond;",
+      "revId": "c3eee4655e70423460b49918271783941ce5583a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
