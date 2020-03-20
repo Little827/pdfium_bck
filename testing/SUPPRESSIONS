@@ -323,6 +323,13 @@ resolve_nodes_1.pdf * * *
 #
 # Pixel tests
 #
+
+# TODO(chromium:451366): Remove after associated bug is fixed
+bug_451366.in * * *
+
+# TODO(chromium:1058366): Remove after associated bug is fixed
+bug_1058366.in * * *
+
 bug_492.in * nov8 *
 
 # TODO(pdfium:304): Remove after associated bug is fixed
@@ -334,14 +341,11 @@ bug_1331.in * * *
 # TODO(pdfium:1461): Remove after associated bug is fixed
 bug_1402.in win * *
 
-# TODO(pdfium:1457): Remove after associated bug is fixed
-bug_1457.in * * *
-
-# TODO(chromium:451366): Remove after associated bug is fixed
-bug_451366.in * * *
-
 # TODO(pdfium:1466): Remove after associated bug is fixed
 bug_1449.in linux * *
+
+# TODO(pdfium:1457): Remove after associated bug is fixed
+bug_1457.in * * *
 
 # xfa_specific
 
