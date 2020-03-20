@@ -81,7 +81,7 @@ RetainPtr<CFX_Face> LoadFileImp(FXFT_LibraryRec* library,
 #endif  // PDF_ENABLE_XFA
 
 void Outline_CheckEmptyContour(OUTLINE_PARAMS* param) {
-  std::vector<FX_PATHPOINT>& points = param->m_pPath->GetPoints();
+  pdfium::span<const FX_PATHPOINT> points = param->m_pPath->GetPoints();
   size_t size = points.size();
 
   if (size >= 2 && points[size - 2].IsTypeAndOpen(FXPT_TYPE::MoveTo) &&
@@ -95,7 +95,7 @@ void Outline_CheckEmptyContour(OUTLINE_PARAMS* param) {
       points[size - 1].m_Point == points[size - 4].m_Point) {
     size -= 4;
   }
-  points.resize(size);
+  param->m_pPath->GetPoints().resize(size);
 }
 
 int Outline_MoveTo(const FT_Vector* to, void* user) {

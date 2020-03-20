@@ -348,7 +348,7 @@ void CPDF_PageContentGenerator::ProcessPath(std::ostringstream* buf,
 
   *buf << pPathObj->matrix() << " cm ";
 
-  const auto& points = pPathObj->path().GetPoints();
+  pdfium::span<const FX_PATHPOINT> points = pPathObj->path().GetPoints();
   if (pPathObj->path().IsRect()) {
     CFX_PointF diff = points[2].m_Point - points[0].m_Point;
     *buf << points[0].m_Point << " " << diff << " re";

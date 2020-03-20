@@ -313,7 +313,7 @@ bool IsEvenOddFillType(SkPathFillType fill) {
 
 SkPath BuildPath(const CFX_PathData* pPathData) {
   SkPath sk_path;
-  const std::vector<FX_PATHPOINT>& points = pPathData->GetPoints();
+  pdfium::span<const FX_PATHPOINT> points = pPathData->GetPoints();
   for (size_t i = 0; i < points.size(); ++i) {
     const CFX_PointF& point = points[i].m_Point;
     FXPT_TYPE point_type = points[i].m_Type;

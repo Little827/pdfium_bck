@@ -81,7 +81,7 @@ FPDFPath_GetPathSegment(FPDF_PAGEOBJECT path, int index) {
   if (!pPathObj)
     return nullptr;
 
-  const std::vector<FX_PATHPOINT>& points = pPathObj->path().GetPoints();
+  pdfium::span<const FX_PATHPOINT> points = pPathObj->path().GetPoints();
   if (!pdfium::IndexInBounds(points, index))
     return nullptr;
 
