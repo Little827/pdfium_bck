@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f8087d9_110fab49",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T03:50:59Z",
+      "side": 1,
+      "message": "This block isn\u0027t getting test coverage. Can we try to add a test that calls FPDFAnnot_SetFocusableSubtypes() to make links or highlights focusable, and then give a link/highlight focus?",
+      "revId": "1eb6dddb7893553df94022b4ad85bf0003973ec8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9de92bf_7539fc23",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T03:50:59Z",
+      "side": 1,
+      "message": "And then this block and InvalidateRect() will get test coverage too.",
+      "revId": "1eb6dddb7893553df94022b4ad85bf0003973ec8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9201d1e8_210c069c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T03:50:59Z",
+      "side": 1,
+      "message": "And if the save test then kills focus, this piece of code will get test coverage.",
+      "revId": "1eb6dddb7893553df94022b4ad85bf0003973ec8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a355058f_7bc371db",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 2457,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-20T03:50:59Z",
+      "side": 1,
+      "message": "Also call: EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(nullptr, subtypes.data(), count)); to get slightly more test coverage.",
+      "revId": "1eb6dddb7893553df94022b4ad85bf0003973ec8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
