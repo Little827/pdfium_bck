@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dbf94c3b_b76f53a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "An ink annotation with an empty inklist can render in Adobe but it is not erasable in Adobe. This is not an ideal behaviour and is the reason for not allowing an empty inklist. \n\n\u003c\u003cAny plans to make a deletion API?\u003e\u003e\nPlease elaborate on need and expectation from this API.",
+      "parentUuid": "2cdc8e20_bb1291f9",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "232288ef_b7a9da4d",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "94d3649a_13cb5ee7",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "232288ef_b7a9da4d",
+      "range": {
+        "startLine": 432,
+        "startChar": 47,
+        "endLine": 432,
+        "endChar": 74
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52769a4d_6ece8bbe",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eaae8aa_5aeefb79",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52769a4d_6ece8bbe",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "c552b36d_ba5b5211",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95cbee0c_01d1f8ab",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901daf94_60e1002b",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 6
@@ -90,6 +168,24 @@
       "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9610b8_21e31b04",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Addressed first 2 points. Need more understanding on Point 3. Inklist size needs to be recalculated before returning as we have added more members to it.",
+      "parentUuid": "901daf94_60e1002b",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "21930239_d2b88192",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33260a80_7846ed3d",
+      "range": {
+        "startLine": 159,
+        "startChar": 19,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c82c3ca_6d469215",
         "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
         "patchSetId": 6
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "6bf1a941_81c50738",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c82c3ca_6d469215",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c393fdf_d7726ebb",
         "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
         "patchSetId": 6
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "05784714_00d89e06",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c393fdf_d7726ebb",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e5ce3cd_25a714db",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 6
@@ -170,6 +332,24 @@
       "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a544c0f_e6f2d807",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Removed this paragraph.",
+      "parentUuid": "1e5ce3cd_25a714db",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "6c170719_fb14de7d",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f7b767_d260e875",
+      "range": {
+        "startLine": 201,
+        "startChar": 28,
+        "endLine": 201,
+        "endChar": 29
+      },
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458ba825_b6dd1247",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 6
@@ -210,6 +414,24 @@
       "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c31b46_7a44eb7f",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-03-20T14:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458ba825_b6dd1247",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
