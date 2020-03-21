@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c458ece6_393e7401",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:24:48Z",
+      "side": 1,
+      "message": "Can we retain the original logic? This function can look like:\n\nif (!linearized_header) {\n  ...;\n  return;\n}\n\nif (/* not valid data */) {\n  ...;\n  return;\n}\n\n// valid data, use it.\n...\n\nThen the diff will be a lot smaller and it will have achieved the same functionality.",
+      "revId": "0c925bf439e1168d15d2498f058be9c114b076e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03253132_266f1de5",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:24:48Z",
+      "side": 1,
+      "message": "There\u0027s no need to validate the linearized header, if it does not even contain a valid first page number. So just do this later, after validation.",
+      "revId": "0c925bf439e1168d15d2498f058be9c114b076e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bcf51ae_d37fab55",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:24:48Z",
+      "side": 1,
+      "message": "|obj| is only used in one place, so it can probably just be merged with the line that uses it.",
+      "revId": "0c925bf439e1168d15d2498f058be9c114b076e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7a4b51_77258c3b",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:24:48Z",
+      "side": 1,
+      "message": "Not needed, ToDictionary() does this already. When one knows a CPDF_Object pointer is not null, then one can call obj-\u003eAsDictionary().",
+      "revId": "0c925bf439e1168d15d2498f058be9c114b076e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270aa9e2_bfaabcbc",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:24:48Z",
+      "side": 1,
+      "message": "Over-parenthesized. (Whereas line 126 does not use them.)",
+      "range": {
+        "startLine": 271,
+        "startChar": 9,
+        "endLine": 271,
+        "endChar": 10
+      },
+      "revId": "0c925bf439e1168d15d2498f058be9c114b076e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01213a87_fd054dc1",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:24:48Z",
+      "side": 1,
+      "message": "IsValidPageObject?",
+      "range": {
+        "startLine": 94,
+        "startChar": 7,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "0c925bf439e1168d15d2498f058be9c114b076e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75bde7f_0e651b68",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:24:48Z",
+      "side": 1,
+      "message": "If this is exposed for testing, make it a static method.",
+      "revId": "0c925bf439e1168d15d2498f058be9c114b076e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
