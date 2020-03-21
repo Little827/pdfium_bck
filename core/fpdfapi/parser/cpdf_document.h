@@ -91,6 +91,7 @@ class CPDF_Document : public Observable,
 
   void DeletePage(int iPage);
   int GetPageCount() const;
+  bool IsObjValidPage(const CPDF_Object* obj);
   bool IsPageLoaded(int iPage) const;
   CPDF_Dictionary* GetPageDictionary(int iPage);
   int GetPageIndex(uint32_t objnum);
