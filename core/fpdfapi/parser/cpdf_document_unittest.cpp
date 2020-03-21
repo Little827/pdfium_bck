@@ -41,6 +41,12 @@ CPDF_Dictionary* CreatePageTreeNode(RetainPtr<CPDF_Array> kids,
   return pageNode;
 }
 
+RetainPtr<CPDF_Dictionary> CreateDictWithType(const ByteString& name) {
+  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  dict->SetNewFor<CPDF_Name>("Type", name);
+  return dict;
+}
+
 RetainPtr<CPDF_Dictionary> CreateNumberedPage(size_t number) {
   auto page = pdfium::MakeRetain<CPDF_Dictionary>();
   page->SetNewFor<CPDF_Name>("Type", "Page");
@@ -222,6 +228,22 @@ TEST_F(cpdf_document_test, GetPagesInDisorder) {
   ASSERT_TRUE(page);
   ASSERT_TRUE(page->KeyExist("PageNumbering"));
   EXPECT_EQ(6, page->GetIntegerFor("PageNumbering"));
+}
+
+TEST_F(cpdf_document_test, IsObjValidPage) {
+  std::unique_ptr<CPDF_TestDocumentForPages> document =
+      pdfium::MakeUnique<CPDF_TestDocumentForPages>();
+
+  CPDF_Object* no_type_obj = document->NewIndirect<CPDF_Dictionary>();
+  EXPECT_FALSE(document->IsObjValidPage(no_type_obj));
+
+  CPDF_Object* page_obj =
+      document->AddIndirectObject(CreateDictWithType("Page"));
+  EXPECT_TRUE(document->IsObjValidPage(page_obj));
+
+  CPDF_Object* non_page_type_obj =
+      document->AddIndirectObject(CreateDictWithType("Font"));
+  EXPECT_FALSE(document->IsObjValidPage(non_page_type_obj));
 }
 
 TEST_F(cpdf_document_test, UseCachedPageObjNumIfHaveNotPagesDict) {
