@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87f1fe6c_7d1fe294",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T05:21:56Z",
+      "side": 1,
+      "message": "Update.",
+      "range": {
+        "startLine": 16,
+        "startChar": 49,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "2e45e06909435e6c3551324587ed78fd368361e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d3ff62_2fe29c25",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T05:21:56Z",
+      "side": 1,
+      "message": "Add a comment above this: // static\n\ne.g. CPDF_LinearizedHeader::Parse().",
+      "revId": "2e45e06909435e6c3551324587ed78fd368361e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da74bf90_44e772a8",
+        "filename": "core/fpdfapi/parser/cpdf_document_unittest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T05:21:56Z",
+      "side": 1,
+      "message": "With static methods, just call it directly. i.e. CPDF_Document::IsValidPageObject(...);",
+      "range": {
+        "startLine": 232,
+        "startChar": 14,
+        "endLine": 232,
+        "endChar": 23
+      },
+      "revId": "2e45e06909435e6c3551324587ed78fd368361e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
