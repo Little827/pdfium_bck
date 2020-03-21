@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50c1ed83_976385d3",
+        "filename": "core/fpdfapi/parser/cpdf_document_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:32:09Z",
+      "side": 1,
+      "message": "Since this always create a CPDF_Name, it can\u0027t test cases where /Type is of the wrong object type. e.g. the CPDF_String case.",
+      "revId": "c1902f7440579a86c15284283022acf13f9c6ca3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb8a3289_901ebd5a",
+        "filename": "core/fpdfapi/parser/cpdf_document_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:32:09Z",
+      "side": 1,
+      "message": "Does this have to be allocated on the heap? Can this just be: CPDF_TestDocumentForPages document; ?",
+      "revId": "c1902f7440579a86c15284283022acf13f9c6ca3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60507e0_52fc83c9",
+        "filename": "core/fpdfapi/parser/cpdf_document_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-21T02:32:09Z",
+      "side": 1,
+      "message": "If the ordering does not matter, then group all the negative cases together, rather than having it as negative / positive / negative.",
+      "revId": "c1902f7440579a86c15284283022acf13f9c6ca3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
