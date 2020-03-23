@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1584997867 -0700\nnonce ACmAMkyaTu0jLJ1ROKlwE6NEfb2wqODlOcXLFf3kjk3+GnauE8PXR7BXEvAn5lBVgNEMIhT0mI21\n\n0000000000000000000000000000000000000000 0448f338571f92387c1300d596e2d93df0af39b5 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl55JesACgkQqzYtYVpm\n/XsM1Af+MxQtG2sBJ7HyxGPZSTMBtuXISmLh2vnGGlQwEROIIAEz5YS28EI7PxQP\nctVARcB64g/synRNKvsJ7jp9i9akuvYR3m5JSHuMJUVhXZclo/HkNM26e2kik91m\nO2NlomkO1avQimwjZszFPFmHxn1u8uewHIOuW/BwLj0noNoOAWu2puPxCq3ZO+uA\nrrldLSxC2pyO5Ec49FifAddrrdeKocYdTiVQanCklTR3sjaTTFCVZS5pXLtFy/1u\nd6qIQYBL1xUFpuctOxXb5tFMP8GyKds2O36EPwhfW/0C1W66IReW+PPrbbgyOA90\nDM4HMMXbmZHSvIOYEnEZDwr8bF8vFg\u003d\u003d\n\u003di1Qr\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd3dbf58_3efc2efd",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-23T21:19:37Z",
+      "side": 1,
+      "message": "nit:  Assigning a bytestring is just a refcount increase, not a full copy, so if we want to avoid the possibility of the array not being constant donw the road, we can omit the \u0026",
+      "range": {
+        "startLine": 400,
+        "startChar": 12,
+        "endLine": 400,
+        "endChar": 22
+      },
+      "revId": "0448f338571f92387c1300d596e2d93df0af39b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
