@@ -30,8 +30,7 @@ class CPDFSDK_BAAnnotHandlerTest : public EmbedderTest {
     m_page = LoadPage(0);
     ASSERT_TRUE(m_page);
 
-    CPDFSDK_FormFillEnvironment* pFormFillEnv =
-        CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle());
+    pFormFillEnv = CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle());
     ASSERT_TRUE(pFormFillEnv);
     m_pPageView = pFormFillEnv->GetPageView(IPDFPageFromFPDFPage(m_page), true);
     ASSERT_TRUE(m_pPageView);
@@ -48,25 +47,53 @@ class CPDFSDK_BAAnnotHandlerTest : public EmbedderTest {
     return m_pBAAnnotHandler;
   }
 
+  CPDFSDK_Annot* GetLinkAnnot() const {
+    CPDFSDK_AnnotIterator ai(GetPageView(),
+                             pFormFillEnv->GetFocusableAnnotSubtypes());
+    return ai.GetNextAnnot(ai.GetFirstAnnot());
+  }
+
+  CPDFSDK_Annot* GetHighlightAnnot() const {
+    CPDFSDK_AnnotIterator ai(GetPageView(),
+                             pFormFillEnv->GetFocusableAnnotSubtypes());
+    CPDFSDK_Annot* pAnnot = ai.GetFirstAnnot();
+    pAnnot = ai.GetNextAnnot(pAnnot);
+    pAnnot = ai.GetNextAnnot(pAnnot);
+    pAnnot = ai.GetNextAnnot(pAnnot);
+
+    return pAnnot;
+  }
+
  private:
   FPDF_PAGE m_page = nullptr;
   CPDFSDK_PageView* m_pPageView = nullptr;
+  CPDFSDK_FormFillEnvironment* pFormFillEnv = nullptr;
   CPDFSDK_BAAnnotHandler* m_pBAAnnotHandler = nullptr;
 };
 
 TEST_F(CPDFSDK_BAAnnotHandlerTest, TabToLinkOrHighlightAnnot) {
-  // TODO(crbug.com/994500): Create annot iterator with list of supported
-  // focusable subtypes as provided by host.
-  CPDFSDK_AnnotIterator ai(GetPageView(), CPDF_Annot::Subtype::LINK);
-  CPDFSDK_Annot* pAnnot = ai.GetFirstAnnot();
+  constexpr FPDF_ANNOTATION_SUBTYPE kFocusableSubtypes[] = {
+      FPDF_ANNOT_WIDGET, FPDF_ANNOT_LINK, FPDF_ANNOT_HIGHLIGHT};
+  constexpr size_t kSubtypeCount = FX_ArraySize(kFocusableSubtypes);
+
+  FPDFAnnot_SetFocusableSubtypes(form_handle(), kFocusableSubtypes,
+                                 kSubtypeCount);
+
+  // Get link annot
+  CPDFSDK_Annot* pAnnot = GetLinkAnnot();
   ASSERT_TRUE(pAnnot);
   EXPECT_EQ(pAnnot->GetAnnotSubtype(), CPDF_Annot::Subtype::LINK);
 
-  ObservedPtr<CPDFSDK_Annot> pNonWidgetAnnot(pAnnot);
+  ObservedPtr<CPDFSDK_Annot> pLinkAnnot(pAnnot);
+  EXPECT_TRUE(GetBAAnnotHandler()->OnSetFocus(&pLinkAnnot, 0));
+  EXPECT_TRUE(GetBAAnnotHandler()->OnKillFocus(&pLinkAnnot, 0));
 
-  // TODO(crbug.com/994500): Change expected value as true once
-  // links & highlights are supported.
-  EXPECT_FALSE(GetBAAnnotHandler()->OnSetFocus(&pNonWidgetAnnot, 0));
+  // Get highlight annot
+  pAnnot = GetHighlightAnnot();
+  ASSERT_TRUE(pAnnot);
+  EXPECT_EQ(pAnnot->GetAnnotSubtype(), CPDF_Annot::Subtype::HIGHLIGHT);
 
-  EXPECT_FALSE(GetBAAnnotHandler()->OnKillFocus(&pNonWidgetAnnot, 0));
+  ObservedPtr<CPDFSDK_Annot> pHighlightAnnot(pAnnot);
+  EXPECT_TRUE(GetBAAnnotHandler()->OnSetFocus(&pHighlightAnnot, 0));
+  EXPECT_TRUE(GetBAAnnotHandler()->OnKillFocus(&pHighlightAnnot, 0));
 }
