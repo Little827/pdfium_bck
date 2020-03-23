@@ -23,6 +23,30 @@
       "revId": "3404d648d5e2295bbc26d570ce1819270087d208",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c165f878_d1aa2418",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-23T17:12:03Z",
+      "side": 1,
+      "message": "Oversight on my part, fixed.",
+      "parentUuid": "e92cf7e5_5ae98cb8",
+      "range": {
+        "startLine": 459,
+        "startChar": 14,
+        "endLine": 459,
+        "endChar": 15
+      },
+      "revId": "3404d648d5e2295bbc26d570ce1819270087d208",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
