@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1584996639 -0700\nnonce ACmAMkyj4qHqPerDMZjtf9DhdscHlMEeJ5mVFNuvtWPEWUYAjtlmAc4cV7ssFXTkd+Cp2qXNUfAo\n\n0000000000000000000000000000000000000000 792ed896107c4cf48c0161e6b7bf8f2ee5839727 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl55IR8ACgkQqzYtYVpm\n/XtWOQgAvdwSJoCjnx830WPTQcT/35KDgGXy9PZxqqNBIhAE1RTGdkh5i8ACEeKI\n8z7p2hpy6YlWRfKAzKRtyLaC1HxrCoZX+SUZKVRqt4gqaW39XNwfr6JLBNJfhQ5y\nXgnR8xSMQGvGSmOITykkwQ1sBYMTJs8oDWuMmrLA7LGEFdjRR8sG6X/3YeGBsc50\n4jj1e8YVEsE37lcVelhNYdd+ixtK9+8Vd08gYFQMQ2117u+a9XSGupfZBNzdRvdu\nK7n1q5XdVFto+6IY/hpQ4VVKv0jFj6AJ/FizAiE79qbIx3sbh0HV8QeytBoQbhTO\nAOmhWIdlDa74JrwIvy9XnhcfdK9YTw\u003d\u003d\n\u003dqLjR\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b2ef249_f63affa1",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-23T21:09:02Z",
+      "side": 1,
+      "message": "This does better checking vs. the code removed below, and does it earlier / more consistently.",
+      "revId": "792ed896107c4cf48c0161e6b7bf8f2ee5839727",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d40dc14c_9e922cbc",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-23T21:09:02Z",
+      "side": 1,
+      "message": "Just like the ValidateDecoderPipeline() failure handler.",
+      "revId": "792ed896107c4cf48c0161e6b7bf8f2ee5839727",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
