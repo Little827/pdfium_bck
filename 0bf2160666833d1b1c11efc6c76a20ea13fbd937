@@ -94,6 +94,30 @@
       "revId": "0bf2160666833d1b1c11efc6c76a20ea13fbd937",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7a50e1b_5bdcaec2",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-23T17:11:35Z",
+      "side": 1,
+      "message": "yeah, just put me out to pasture and shoot me :).",
+      "parentUuid": "d3171145_9b61673b",
+      "range": {
+        "startLine": 505,
+        "startChar": 27,
+        "endLine": 505,
+        "endChar": 46
+      },
+      "revId": "0bf2160666833d1b1c11efc6c76a20ea13fbd937",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
