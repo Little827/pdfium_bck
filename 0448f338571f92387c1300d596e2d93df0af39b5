@@ -23,6 +23,30 @@
       "revId": "0448f338571f92387c1300d596e2d93df0af39b5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56273076_028ff618",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-23T21:35:27Z",
+      "side": 1,
+      "message": "I only added |filter| for readability. It\u0027s lifetime is very short and we also don\u0027t expect the array to change.",
+      "parentUuid": "bd3dbf58_3efc2efd",
+      "range": {
+        "startLine": 400,
+        "startChar": 12,
+        "endLine": 400,
+        "endChar": 22
+      },
+      "revId": "0448f338571f92387c1300d596e2d93df0af39b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
