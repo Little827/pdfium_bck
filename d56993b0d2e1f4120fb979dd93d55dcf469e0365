@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa92d210_50006182",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-24T10:37:32Z",
+      "side": 1,
+      "message": "Enabling makes it sound like a disabled test has been enabled.\n\nCan we rewrite the heading and description to reflect what we are doing in the CL.\n\nSuggestion:\n\nModify test to validate tabbing for links and highlights\n\nThe CL modifies the existing test for tabbing to links and highlights. We recently added support for tabbing to links and highlights in CL:60011 \n(https://pdfium-review.googlesource.com/c/pdfium/+/60011). This adds more test coverage for FPDFAnnot_SetFocusableSubtypes() API.\n\nAlso add slightly more test coverage for FPDFAnnot_GetFocusableSubtypes() API.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "d56993b0d2e1f4120fb979dd93d55dcf469e0365",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f9b510b_b8287675",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-24T10:37:32Z",
+      "side": 1,
+      "message": "We need to assert that this is not nullptr. Same for every time we call GetNextAnnot(). You should probably loop GetNextAnnot() calls.",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "d56993b0d2e1f4120fb979dd93d55dcf469e0365",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72370699_0a7dac3e",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-24T10:37:32Z",
+      "side": 1,
+      "message": "ASSERT_TRUE on this.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 32
+      },
+      "revId": "d56993b0d2e1f4120fb979dd93d55dcf469e0365",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a169b34_3869d29e",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-24T10:37:32Z",
+      "side": 1,
+      "message": "period at the end. Same for line 91.",
+      "range": {
+        "startLine": 82,
+        "startChar": 14,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "d56993b0d2e1f4120fb979dd93d55dcf469e0365",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
