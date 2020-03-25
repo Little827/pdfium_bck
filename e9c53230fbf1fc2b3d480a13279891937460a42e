@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b37de3_e5b57f2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-25T01:24:29Z",
+      "side": 1,
+      "message": "I\u0027m very surprised a straight-forward rendering of rectangles.pdf fails to be pixel perfect for the |kOriginalMD5| cases. At 300% zoom, I can see some very small differences. Can you? It will be good to at least be able to determine if this difference is an improvement or a regression.",
+      "revId": "e9c53230fbf1fc2b3d480a13279891937460a42e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
