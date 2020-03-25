@@ -16,6 +16,24 @@
       "revId": "e9c53230fbf1fc2b3d480a13279891937460a42e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c77f9a3_4df7e8e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-25T17:07:20Z",
+      "side": 1,
+      "message": "To be clear, what I mean is rendering the image at scale \u003d 100%, then zooming into the rendered image helps see the differences. Rendering rectangles.pdf with pdfium_test using different values for --scale sometimes results in matching rendering between AGG and Skia, and sometimes does not.",
+      "parentUuid": "02b37de3_e5b57f2d",
+      "revId": "e9c53230fbf1fc2b3d480a13279891937460a42e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
