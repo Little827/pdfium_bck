@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c302799_2551e45c",
+        "filename": "fpdfsdk/fpdf_transformpage_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-25T01:35:38Z",
+      "side": 1,
+      "message": "As a separate task, it may be good to take the most commonly used hashes and consolidate them, so if we do need to change their hashes, we can do it in 1 place instead of N places.",
+      "revId": "f94ff989197c415ffb0cabf9ed5c97d9ad08e5e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
