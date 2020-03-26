@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9bd0130_983b0b47",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-03-26T03:29:41Z",
+      "side": 1,
+      "message": "This is to revert to the original font weight before trying to find the font face.\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxge/cfx_fontmapper.cpp?rcl\u003d7bb6613a0b68569f94e9ff271a111dfe8de88097\u0026l\u003d388.\nfont weight was changed for \"Chrome Serif\" family before looking for a font face.",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 517,
+        "endChar": 28
+      },
+      "revId": "396a8f34f1be82ce7b4b63266c809b854d220623",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
