@@ -506,6 +506,18 @@ bool CFX_Font::IsFixedWidth() const {
   return m_Face && FXFT_Is_Face_fixedwidth(m_Face->GetRec()) != 0;
 }
 
+bool CFX_Font::IsSubstFontBold() const {
+  CFX_SubstFont* subst_font = GetSubstFont();
+  if (!subst_font)
+    return false;
+
+  int weight =
+      subst_font->m_bSubstCJK ? subst_font->m_WeightCJK : subst_font->m_Weight;
+  if (subst_font->m_Family == "Chrome Serif")
+    weight = weight * 5 / 4;
+  return weight >= FXFONT_FW_BOLD;
+}
+
 ByteString CFX_Font::GetPsName() const {
   if (!m_Face)
     return ByteString();
