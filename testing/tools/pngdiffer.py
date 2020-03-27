@@ -35,12 +35,16 @@ class PNGDiffer():
       expected_path = path_templates.GetExpectedPath(page)
       platform_expected_path = path_templates.GetPlatformExpectedPath(
           self.os_name, page)
-      if os.path.exists(platform_expected_path):
-        expected_path = platform_expected_path
-      elif not os.path.exists(expected_path):
+      skia_expected_path = path_templates.GetSkiaExpectedPath(page)
+      skia_platform_expected_path = path_templates.GetSkiaPlatformExpectedPath(
+          self.os_name, page)
+      if (os.path.exists(expected_path) or
+          os.path.exists(platform_expected_path) or
+          os.path.exists(skia_expected_path) or
+          os.path.exists(skia_platform_expected_path)):
+        actual_paths.append(actual_path)
+      else:
         break
-      actual_paths.append(actual_path)
-
     return actual_paths
 
   def HasDifferences(self, input_filename, source_dir, working_dir):
@@ -53,8 +57,13 @@ class PNGDiffer():
       # used to capture platform dependent implementations.
       platform_expected_path = path_templates.GetPlatformExpectedPath(
           self.os_name, page)
+      skia_expected_path = path_templates.GetSkiaExpectedPath(page)
+      skia_platform_expected_path = path_templates.GetSkiaPlatformExpectedPath(
+          self.os_name, page)
       if (not os.path.exists(expected_path) and
-          not os.path.exists(platform_expected_path)):
+          not os.path.exists(platform_expected_path) and
+          not os.path.exists(skia_expected_path) and
+          not os.path.exists(skia_platform_expected_path)):
         if page == 0:
           print "WARNING: no expected results files for " + input_filename
         if os.path.exists(actual_path):
@@ -72,6 +81,7 @@ class PNGDiffer():
         error = common.RunCommand(cmd)
       else:
         error = 1
+
       if error:
         # When failed, we check against platform based results.
         if os.path.exists(platform_expected_path):
@@ -80,9 +90,34 @@ class PNGDiffer():
             cmd.append('--reverse-byte-order')
           cmd.extend([platform_expected_path, actual_path])
           error = common.RunCommand(cmd)
-        if error:
-          print "FAILURE: " + input_filename + "; " + str(error)
-          return True
+        else:
+          error = 1
+
+      if error:
+        # When failed, we check against Skia results
+        if os.path.exists(skia_expected_path):
+          cmd = [self.pdfium_diff_path]
+          if self.reverse_byte_order:
+            cmd.append('--reverse-byte-order')
+          cmd.extend([skia_expected_path, actual_path])
+          error = common.RunCommand(cmd)
+        else:
+          error = 1
+
+      if error:
+        # When failed, we check against platformed based skia results.
+        if os.path.exists(skia_platform_expected_path):
+          cmd = [self.pdfium_diff_path]
+          if self.reverse_byte_order:
+            cmd.append('--reverse-byte-order')
+          cmd.extend([skia_platform_expected_path, actual_path])
+          error = common.RunCommand(cmd)
+        else:
+          error = 1
+
+      if error:
+        print "FAILURE: " + input_filename + "; " + str(error)
+        return True
 
     return False
 
@@ -116,6 +151,8 @@ class PNGDiffer():
 ACTUAL_TEMPLATE = '.pdf.%d.png'
 EXPECTED_TEMPLATE = '_expected' + ACTUAL_TEMPLATE
 PLATFORM_EXPECTED_TEMPLATE = '_expected_%s' + ACTUAL_TEMPLATE
+SKIA_EXPECTED_TEMPLATE = '_expected_skia' + ACTUAL_TEMPLATE
+SKIA_PLATFORM_EXPECTED_TEMPLATE = '_expected_skia_%s' + ACTUAL_TEMPLATE
 
 
 class PathTemplates(object):
@@ -128,6 +165,10 @@ class PathTemplates(object):
                                       input_root + EXPECTED_TEMPLATE)
     self.platform_expected_path = os.path.join(
         source_dir, input_root + PLATFORM_EXPECTED_TEMPLATE)
+    self.skia_expected_path = os.path.join(source_dir,
+                                           input_root + SKIA_EXPECTED_TEMPLATE)
+    self.skia_platform_expected_path = os.path.join(
+        source_dir, input_root + SKIA_PLATFORM_EXPECTED_TEMPLATE)
 
   def GetActualPath(self, page):
     return self.actual_path_template % page
@@ -137,3 +178,9 @@ class PathTemplates(object):
 
   def GetPlatformExpectedPath(self, platform, page):
     return self.platform_expected_path % (platform, page)
+
+  def GetSkiaExpectedPath(self, page):
+    return self.skia_expected_path % (page)
+
+  def GetSkiaPlatformExpectedPath(self, platform, page):
+    return self.skia_platform_expected_path % (platform, page)
