@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1585338540 -0700\nnonce ACmAMkz/j02QQF9tg/QcCDpuFm/wQNV9K7cN2O184IzEa2Bse21hMexb7SL9KGC54GCtyWXbxeJy\n\n0000000000000000000000000000000000000000 79930d380d2fb8ae79f12d8b91337137211a8bec refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl5+WKwACgkQqzYtYVpm\n/XtzaQgAg0TzzHmFZzz76xQ5c4o105rplz/pES1PFOTPijEPbCg5NLQ2Jox28N/g\nbRmP+toqqchxNr3lAAOp8LpRTkM29p6PKdGMKBZR9VQALc9so0Tg9Kg1u/T6tLvi\nNdaQLl9EoprkpQKaC4LICYRLvr7zheWUtke6Uh2/NiHskd1UU7A6Dcw0/2/2wh6J\nKdrByM8sTfjrYLP0Po9xiFK3sekB+ra4t6BXl2tt1cLt5npCE/IwL0h+Ziq9XKk1\n3JN454Hi99z6UnaHnxlBuRCzGvF08xbvIDSHmkkPNsWQ5o01yXiNyRRbAz2Xs4ua\n4cCfAP/5NzD2jX5nq7X5Zo/VNewVrw\u003d\u003d\n\u003dLJja\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "937023bc_7ef86527",
+        "filename": "testing/resources/hebrew_mirrored.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-27T20:37:54Z",
+      "side": 1,
+      "message": "goodness, what is this stream?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "79930d380d2fb8ae79f12d8b91337137211a8bec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
