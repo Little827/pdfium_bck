@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "67ce338c_3db95c56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-27T16:57:02Z",
+      "side": 1,
+      "message": "Ack\n\nOptional: It may or may not be worthwhile to explain why it\u0027s not feasible to change this right now; up to you.",
+      "parentUuid": "8b864dd7_150a4f2f",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "af7806096b93d3f8c3cb952bba256ce7fc7e9f11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87381fae_08610d38",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "In PDFium, there is a list of fonts which are fully loaded and can be used. See https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxge/cfx_fontmapper.cpp?rcl\u003d7bb6613a0b68569f94e9ff271a111dfe8de88097\u0026l\u003d54.",
       "parentUuid": "87381fae_08610d38",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "af7806096b93d3f8c3cb952bba256ce7fc7e9f11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb1f84c_1d5c8796",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-27T16:57:02Z",
+      "side": 1,
+      "message": "Can you mention the file or variable where this list comes from in the description?",
+      "parentUuid": "dba96240_05e87e5c",
       "range": {
         "startLine": 29,
         "startChar": 7,
@@ -140,6 +188,30 @@
       "revId": "af7806096b93d3f8c3cb952bba256ce7fc7e9f11",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e402141_9c5ed011",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-27T16:57:02Z",
+      "side": 1,
+      "message": "It\u0027s still there (on patchset 2). But if this needs explanation, the explanation needs to be in the source code, not just a code review thread. It\u0027s just a magic number as is.",
+      "parentUuid": "d7f3d349_da511137",
+      "range": {
+        "startLine": 517,
+        "startChar": 22,
+        "endLine": 517,
+        "endChar": 27
+      },
+      "revId": "af7806096b93d3f8c3cb952bba256ce7fc7e9f11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
