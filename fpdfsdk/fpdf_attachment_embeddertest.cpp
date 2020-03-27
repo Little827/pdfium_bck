@@ -22,8 +22,14 @@ TEST_F(FPDFAttachmentEmbedderTest, ExtractAttachments) {
   ASSERT_TRUE(OpenDocument("embedded_attachments.pdf"));
   EXPECT_EQ(2, FPDFDoc_GetAttachmentCount(document()));
 
+  // Try to retrieve an attachment at bad indices.
+  FPDF_ATTACHMENT attachment = FPDFDoc_GetAttachment(document(), -1);
+  EXPECT_FALSE(attachment);
+  attachment = FPDFDoc_GetAttachment(document(), 2);
+  EXPECT_FALSE(attachment);
+
   // Retrieve the first attachment.
-  FPDF_ATTACHMENT attachment = FPDFDoc_GetAttachment(document(), 0);
+  attachment = FPDFDoc_GetAttachment(document(), 0);
   ASSERT_TRUE(attachment);
 
   // Check that the name of the first attachment is correct.
@@ -85,6 +91,18 @@ TEST_F(FPDFAttachmentEmbedderTest, ExtractAttachments) {
   EXPECT_EQ(70u, FPDFAttachment_GetStringValue(attachment, kChecksumKey,
                                                buf.data(), length_bytes));
   EXPECT_EQ(kCheckSumW, GetPlatformWString(buf.data()));
+}
+
+TEST_F(FPDFAttachmentEmbedderTest, NoAttachmentToExtract) {
+  // Open a file with no attachments.
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  EXPECT_EQ(0, FPDFDoc_GetAttachmentCount(document()));
+
+  // Try to retrieve an attachment at bad indices.
+  FPDF_ATTACHMENT attachment = FPDFDoc_GetAttachment(document(), -1);
+  EXPECT_FALSE(attachment);
+  attachment = FPDFDoc_GetAttachment(document(), 0);
+  EXPECT_FALSE(attachment);
 }
 
 TEST_F(FPDFAttachmentEmbedderTest, AddAttachments) {
@@ -224,6 +242,20 @@ TEST_F(FPDFAttachmentEmbedderTest, AddAttachmentsWithParams) {
                                                buf.data(), length_bytes));
   EXPECT_EQ(L"<D41D8CD98F00B204E9800998ECF8427E>",
             GetPlatformWString(buf.data()));
+}
+
+TEST_F(FPDFAttachmentEmbedderTest, AddAttachmentsToFileWithNoAttachments) {
+  // Open a file with two attachments.
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  EXPECT_EQ(0, FPDFDoc_GetAttachmentCount(document()));
+
+  // Add an attachment to the beginning of the embedded file list.
+  ScopedFPDFWideString file_name = GetFPDFWideString(L"0.txt");
+  FPDF_ATTACHMENT attachment =
+      FPDFDoc_AddAttachment(document(), file_name.get());
+  // TODO(crbug.com/pdfium/1502): This should return true. Fix the bug and do
+  // additional verifications here.
+  EXPECT_FALSE(attachment);
 }
 
 TEST_F(FPDFAttachmentEmbedderTest, DeleteAttachment) {
