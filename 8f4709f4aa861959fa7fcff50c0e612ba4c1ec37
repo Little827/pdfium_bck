@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8237a16f_bf0a9c91",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-27T23:19:03Z",
+      "side": 1,
+      "message": "When this has been repeated 4 times, that is a sign that maybe it is time to put it in a helper function.",
+      "revId": "8f4709f4aa861959fa7fcff50c0e612ba4c1ec37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
