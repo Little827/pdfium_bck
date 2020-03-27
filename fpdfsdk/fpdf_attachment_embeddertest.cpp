@@ -99,6 +99,7 @@ TEST_F(FPDFAttachmentEmbedderTest, AddAttachments) {
   ScopedFPDFWideString file_name = GetFPDFWideString(L"0.txt");
   FPDF_ATTACHMENT attachment =
       FPDFDoc_AddAttachment(document(), file_name.get());
+  ASSERT_TRUE(attachment);
 
   // Check that writing to a file with nullptr but non-zero bytes would fail.
   EXPECT_FALSE(FPDFAttachment_SetFile(attachment, document(), nullptr, 10));
@@ -127,6 +128,7 @@ TEST_F(FPDFAttachmentEmbedderTest, AddAttachments) {
   // Add an attachment to the end of the embedded file list and set its file.
   file_name = GetFPDFWideString(L"z.txt");
   attachment = FPDFDoc_AddAttachment(document(), file_name.get());
+  ASSERT_TRUE(attachment);
   constexpr char kContents2[] = "World!";
   EXPECT_TRUE(FPDFAttachment_SetFile(attachment, document(), kContents2,
                                      strlen(kContents2)));
@@ -159,6 +161,7 @@ TEST_F(FPDFAttachmentEmbedderTest, AddAttachmentsWithParams) {
   ScopedFPDFWideString file_name = GetFPDFWideString(L"5.txt");
   FPDF_ATTACHMENT attachment =
       FPDFDoc_AddAttachment(document(), file_name.get());
+  ASSERT_TRUE(attachment);
   constexpr char kContents[] = "Hello World!";
   EXPECT_TRUE(FPDFAttachment_SetFile(attachment, document(), kContents,
                                      strlen(kContents)));
