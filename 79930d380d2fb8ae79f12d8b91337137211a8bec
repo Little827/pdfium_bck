@@ -23,6 +23,30 @@
       "revId": "79930d380d2fb8ae79f12d8b91337137211a8bec",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e7d25c_629e2d27",
+        "filename": "testing/resources/hebrew_mirrored.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-27T20:48:18Z",
+      "side": 1,
+      "message": "A subsetted TrueType font. I thought I started with Noto Sans, but somehow got DejaVu Sans. Whoops. I should fix that, and see if I can make it smaller. This is encoded with tools/encode_pdf_filter.py, BTW.",
+      "parentUuid": "937023bc_7ef86527",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "79930d380d2fb8ae79f12d8b91337137211a8bec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
