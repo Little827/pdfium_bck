@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1585343601 -0700\nnonce ACmAMkxPz12WVOTLncsWHXEtLJ/fv1fJxbjzniExE1PfVWDbNbNedWe+x9HWrT/kGkalXUPsHLl8\n\n0000000000000000000000000000000000000000 030095bd60287a2eeafa908ba332d8706f6f8886 refs/for/refs/heads/master%notify\u003dNONE,m\u003dclean\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl5+bHEACgkQqzYtYVpm\n/XsTVQf/bJKejD54cd07ibu5xw6/UcR7453ksNlZiI2eFl/EPPgO245ZiqkS0CLs\nRS96qVaOLgoFwgn4K3iVuhoOR53iZs7xVf2PtUrbI34FYS1NZpuHSPPsOv5mok/D\noO7BjkcBXgLguF6nw3HoK03E2vwSFw36RKJ4q53iGF/ZySvRl7B27+t8d+QPk7eR\nFLqe6iEZSMkesgBvtMnI3Qv0AMcIweQr+FQy5OI791gxfAhtNSSY8bMwS4ztjoBf\ng92BVT6yMK/pr32NIBXEGxjGDB7gMgVoL4j0HaWf7LsHh7c6WlCh7g1OcLWl28+c\n8TLPWiA2U2f1nGDVgqYKzoIDkP9EaQ\u003d\u003d\n\u003dtjr4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "31a277ff_87977b4a",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-27T21:30:46Z",
+      "side": 1,
+      "message": "I can see that keeping this signed avoids underflow in a production build where there aren\u0027t asserts.",
+      "range": {
+        "startLine": 899,
+        "startChar": 0,
+        "endLine": 899,
+        "endChar": 58
+      },
+      "revId": "030095bd60287a2eeafa908ba332d8706f6f8886",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b2df43_5321aae3",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-27T21:30:46Z",
+      "side": 1,
+      "message": "nit: should these be size_t or at least unsigned?",
+      "range": {
+        "startLine": 132,
+        "startChar": 23,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "030095bd60287a2eeafa908ba332d8706f6f8886",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
