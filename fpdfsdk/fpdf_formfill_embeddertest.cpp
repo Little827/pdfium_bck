@@ -21,6 +21,8 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 using testing::_;
+using testing::InSequence;
+using testing::NiceMock;
 
 using FPDFFormFillEmbedderTest = EmbedderTest;
 
@@ -538,6 +540,8 @@ TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
   EXPECT_CALL(mock, SetTimer(_, _)).Times(0);
   EXPECT_CALL(mock, KillTimer(_)).Times(0);
   EXPECT_CALL(mock, OnFocusChange(_, _, _)).Times(0);
+  EXPECT_CALL(mock, DoURIAction(_)).Times(0);
+  EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, _)).Times(0);
   SetDelegate(&mock);
 
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
@@ -638,91 +642,83 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_901654_2) {
   UnloadPage(page);
 }
 
-TEST_F(FPDFFormFillEmbedderTest, GetFocusedAnnotation) {
-  ASSERT_TRUE(OpenDocument("annotiter.pdf"));
-  std::vector<FPDF_PAGE> pages;
-  for (size_t i = 0; i < 3; ++i) {
-    pages.push_back(LoadPage(i));
-    ASSERT_TRUE(pages.back());
+class FPDFFormFillActionUriTest : public EmbedderTest {
+ protected:
+  FPDFFormFillActionUriTest() = default;
+  ~FPDFFormFillActionUriTest() override = default;
+
+  void SetUp() override {
+    EmbedderTest::SetUp();
+    // Set Widget, Link and Highlight as supported annots
+    // tabbing should iterate over these annot subtypes via GetNextAnnot API.
+    constexpr FPDF_ANNOTATION_SUBTYPE supported_annot_subtypes[] = {
+        FPDF_ANNOT_WIDGET, FPDF_ANNOT_LINK, FPDF_ANNOT_HIGHLIGHT};
+    constexpr unsigned int supported_annot_subtypes_count =
+        FX_ArraySize(supported_annot_subtypes);
+
+    FPDFAnnot_SetFocusableSubtypes(form_handle(), supported_annot_subtypes,
+                                   supported_annot_subtypes_count);
+    ASSERT_TRUE(OpenDocument("links_highlights_annots.pdf"));
+    page_ = LoadPage(0);
+    ASSERT_TRUE(page_);
   }
 
-  // Ensure that there is no focused annotation.
-  FPDF_ANNOTATION annot = nullptr;
-  int page_index = -2;
-  ASSERT_TRUE(FORM_GetFocusedAnnot(form_handle(), &page_index, &annot));
-  EXPECT_FALSE(annot);
-  EXPECT_EQ(-1, page_index);
-
-  // Validate that nullptr values are handled properly.
-  EXPECT_FALSE(FORM_GetFocusedAnnot(nullptr, &page_index, &annot));
-  EXPECT_FALSE(FORM_GetFocusedAnnot(form_handle(), &page_index, nullptr));
-  EXPECT_FALSE(FORM_GetFocusedAnnot(form_handle(), nullptr, &annot));
-
-  const CFX_PointF right_bottom_annot_point(410.0f, 210.0f);
-  constexpr int kExpectedAnnotIndex = 3;
-
-  for (size_t i = 0; i < pages.size(); ++i) {
-    // Invoke click on the form field to bring it to focus.
-    FORM_OnMouseMove(form_handle(), pages[i], 0, right_bottom_annot_point.x,
-                     right_bottom_annot_point.y);
-    FORM_OnLButtonDown(form_handle(), pages[i], 0, right_bottom_annot_point.x,
-                       right_bottom_annot_point.y);
-    FORM_OnLButtonUp(form_handle(), pages[i], 0, right_bottom_annot_point.x,
-                     right_bottom_annot_point.y);
-
-    ASSERT_TRUE(FORM_GetFocusedAnnot(form_handle(), &page_index, &annot));
-    ASSERT_TRUE(annot);
-
-    EXPECT_EQ(kExpectedAnnotIndex, FPDFPage_GetAnnotIndex(pages[i], annot));
-    EXPECT_EQ(static_cast<int>(i), page_index);
-
-    FPDFPage_CloseAnnot(annot);
+  void TearDown() override {
+    UnloadPage(page_);
+    EmbedderTest::TearDown();
   }
 
-  for (FPDF_PAGE page : pages)
-    UnloadPage(page);
-}
+  FPDF_PAGE page() { return page_; }
 
-TEST_F(FPDFFormFillEmbedderTest, SetFocusedAnnotation) {
-  ASSERT_TRUE(OpenDocument("annotiter.pdf"));
-  std::vector<FPDF_PAGE> pages;
-  for (size_t i = 0; i < 3; ++i) {
-    pages.push_back(LoadPage(i));
-    ASSERT_TRUE(pages.back());
+ private:
+  FPDF_PAGE page_ = nullptr;
+};
+
+TEST_F(FPDFFormFillActionUriTest, LinkKeyboardActionInvokeTest) {
+  NiceMock<EmbedderTestMockDelegate> mock;
+  {
+    InSequence sequence;
+
+    EXPECT_CALL(mock, DoURIAction(_)).Times(0);
+    // TODO(crbug.com/994500): Following comments has to be removed after the
+    // implementation of Action handling of links through keyboard when
+    // different modifiers are down.
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 0));
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 2));
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 1));
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 3));
   }
+  SetDelegate(&mock);
 
-  // Ensure that there is no focused annotation.
-  FPDF_ANNOTATION annot = nullptr;
-  int page_index = -2;
-  ASSERT_TRUE(FORM_GetFocusedAnnot(form_handle(), &page_index, &annot));
-  EXPECT_FALSE(annot);
-  EXPECT_EQ(-1, page_index);
+  constexpr FPDF_ANNOTATION_SUBTYPE focusable_subtypes[] = {FPDF_ANNOT_WIDGET,
+                                                            FPDF_ANNOT_LINK};
+  constexpr unsigned int subtype_count = FX_ArraySize(focusable_subtypes);
 
-  // Validate that nullptr values are handled properly.
-  EXPECT_FALSE(FORM_SetFocusedAnnot(nullptr, pages[0], annot));
-  EXPECT_FALSE(FORM_SetFocusedAnnot(form_handle(), nullptr, annot));
-  EXPECT_FALSE(FORM_SetFocusedAnnot(form_handle(), pages[0], nullptr));
+  FPDFAnnot_SetFocusableSubtypes(form_handle(), focusable_subtypes,
+                                 subtype_count);
 
-  constexpr int kExpectedAnnotIndex = 2;
+  // Click on the textfield
+  EXPECT_EQ(FPDF_FORMFIELD_TEXTFIELD,
+            FPDFPage_HasFormFieldAtPoint(form_handle(), page(), 150, 680));
 
-  for (size_t i = 0; i < pages.size(); ++i) {
-    // Setting focus on an annotation on page i.
-    ScopedFPDFAnnotation focused_annot(
-        FPDFPage_GetAnnot(pages[i], kExpectedAnnotIndex));
-    ASSERT_TRUE(focused_annot);
+  ASSERT_TRUE(FORM_OnMouseMove(form_handle(), page(), 0, 150, 680));
+  ASSERT_TRUE(FORM_OnLButtonDown(form_handle(), page(), 0, 150, 680));
+  ASSERT_TRUE(FORM_OnLButtonUp(form_handle(), page(), 0, 150, 680));
 
-    ASSERT_TRUE(
-        FORM_SetFocusedAnnot(form_handle(), pages[i], focused_annot.get()));
+  // Invoking tab once on the page to bring link annotation to focus.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Tab, 0));
 
-    ASSERT_TRUE(FORM_GetFocusedAnnot(form_handle(), &page_index, &annot));
-    EXPECT_EQ(kExpectedAnnotIndex, FPDFPage_GetAnnotIndex(pages[i], annot));
-    EXPECT_EQ(static_cast<int>(i), page_index);
-
-    FPDFPage_CloseAnnot(annot);
-  }
-
-  for (FPDF_PAGE page : pages)
-    UnloadPage(page);
+  int modifier = 0;
+  // TODO(crbug.com/994500): Following checks has to be changed to ASSERT_TRUE
+  // after the implementation of Action handling of links through keyboard when
+  // different modifiers are down.
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier = FWL_EVENTFLAG_ControlKey;
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier = FWL_EVENTFLAG_ShiftKey;
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier |= FWL_EVENTFLAG_ControlKey;
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
 }
 
 class DoURIActionBlockedDelegate final : public EmbedderTest::Delegate {
