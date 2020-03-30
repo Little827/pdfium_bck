@@ -238,9 +238,10 @@ bool CFFL_InteractiveFormFiller::OnLButtonUp(CPDFSDK_PageView* pPageView,
   return bRet;
 }
 
-bool CFFL_InteractiveFormFiller::OnButtonUp(ObservedPtr<CPDFSDK_Annot>* pAnnot,
-                                            CPDFSDK_PageView* pPageView,
-                                            uint32_t nFlag) {
+bool CFFL_InteractiveFormFiller::PerformAction(
+    ObservedPtr<CPDFSDK_Annot>* pAnnot,
+    CPDFSDK_PageView* pPageView,
+    uint32_t nFlag) {
   if (m_bNotifying)
     return false;
 
@@ -261,13 +262,21 @@ bool CFFL_InteractiveFormFiller::OnButtonUp(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   m_bNotifying = false;
   if (!pAnnot->HasObservable() || !IsValidAnnot(pPageView, pWidget))
     return true;
-  if (nAge == pWidget->GetAppearanceAge())
-    return false;
 
-  CFFL_FormFiller* pFormFiller = GetFormFiller(pWidget);
-  if (pFormFiller)
-    pFormFiller->ResetPWLWindow(pPageView, nValueAge == pWidget->GetValueAge());
+  if (nAge != pWidget->GetAppearanceAge()) {
+    CFFL_FormFiller* pFormFiller = GetFormFiller(pWidget);
+    if (pFormFiller)
+      pFormFiller->ResetPWLWindow(pPageView,
+                                  nValueAge == pWidget->GetValueAge());
+  }
+
   return true;
+}
+
+bool CFFL_InteractiveFormFiller::OnButtonUp(ObservedPtr<CPDFSDK_Annot>* pAnnot,
+                                            CPDFSDK_PageView* pPageView,
+                                            uint32_t nFlag) {
+  return PerformAction(pAnnot, pPageView, nFlag);
 }
 
 bool CFFL_InteractiveFormFiller::SetIndexSelected(
@@ -356,7 +365,15 @@ bool CFFL_InteractiveFormFiller::OnChar(CPDFSDK_Annot* pAnnot,
     return true;
 
   CFFL_FormFiller* pFormFiller = GetFormFiller(pAnnot);
-  return pFormFiller && pFormFiller->OnChar(pAnnot, nChar, nFlags);
+  bool bHandled = pFormFiller && pFormFiller->OnChar(pAnnot, nChar, nFlags);
+
+  if (nChar == FWL_VKEY_Return) {
+    ObservedPtr<CPDFSDK_Annot> annot(pAnnot);
+    if (PerformAction(&annot, pAnnot->GetPageView(), nFlags))
+      return true;
+  }
+
+  return bHandled;
 }
 
 bool CFFL_InteractiveFormFiller::OnSetFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot,

@@ -563,9 +563,7 @@ class FPDFFormFillActionUriTest : public EmbedderTest {
 
 TEST_F(FPDFFormFillActionUriTest, ButtonActionInvokeTest) {
   NiceMock<EmbedderTestMockDelegate> mock;
-  // TODO(crbug.com/1028991): DoURIAction expect call should be changed to 1
-  // after implementation of TODO.
-  EXPECT_CALL(mock, DoURIAction(_)).Times(0);
+  EXPECT_CALL(mock, DoURIAction(_)).Times(1);
   SetDelegate(&mock);
 
   SetFocusOnFirstForm();
@@ -574,9 +572,7 @@ TEST_F(FPDFFormFillActionUriTest, ButtonActionInvokeTest) {
   ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Tab, 0));
 
   int modifier = 0;
-  // TODO(crbug.com/1028991): Following should be changed to ASSERT_TRUE after
-  // handling key press implementation on buttons.
-  ASSERT_FALSE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, modifier));
+  ASSERT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, modifier));
 }
 
 TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
