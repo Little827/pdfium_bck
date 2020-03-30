@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "9dab7b29_58ba527d",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-30T20:19:51Z",
+      "side": 1,
+      "message": "If the logic here is that \"check if any of these affected paths exist\", maybe it\u0027d make more sense to accumulate all the paths into a list, and then iterate over the list, rather than having a bunch of separate local variables?\n\nSomething like:\n\n  expected_paths \u003d [\n    ... populate expected_paths ...\n  ]\n  if any(itertools.imap(os.path.exists, expected_paths)):\n    actual_paths.append(actual_path)\n  else:\n    break",
+      "revId": "8f4709f4aa861959fa7fcff50c0e612ba4c1ec37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4f6db7_44ecae4a",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-30T20:19:51Z",
+      "side": 1,
+      "message": "The construction of the lists of expected paths doesn\u0027t seem to care that much about the \"type\" of each expected path, just the order. Maybe we can treat these more uniformly?\n\nAlternately, we could introduce some sort of class to capture any type-specific details about each path, and not have conditionals everywhere else.",
+      "revId": "8f4709f4aa861959fa7fcff50c0e612ba4c1ec37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8237a16f_bf0a9c91",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 4
