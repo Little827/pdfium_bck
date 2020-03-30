@@ -19,6 +19,11 @@ class PNGDiffer():
     self.pdfium_diff_path = finder.ExecutablePath('pdfium_diff')
     self.os_name = finder.os_name
     self.reverse_byte_order = reverse_byte_order
+    if (common.GetBooleanGnArg('pdf_use_skia', finder.build_dir) or
+        common.GetBooleanGnArg('pdf_use_skia_paths', finder.build_dir)):
+      self.skia_enabled = True
+    else:
+      self.skia_enabled = False
 
   def CheckMissingTools(self, regenerate_expected):
     if (regenerate_expected and self.os_name == 'linux' and
@@ -35,13 +40,29 @@ class PNGDiffer():
       expected_path = path_templates.GetExpectedPath(page)
       platform_expected_path = path_templates.GetPlatformExpectedPath(
           self.os_name, page)
-      if os.path.exists(platform_expected_path):
-        expected_path = platform_expected_path
-      elif not os.path.exists(expected_path):
+      skia_expected_path = path_templates.GetSkiaExpectedPath(page)
+      skia_platform_expected_path = path_templates.GetSkiaPlatformExpectedPath(
+          self.os_name, page)
+      if (os.path.exists(expected_path) or
+          os.path.exists(platform_expected_path) or
+          (self.skia_enabled and
+           (os.path.exists(skia_expected_path) or
+            os.path.exists(skia_platform_expected_path)))):
+        actual_paths.append(actual_path)
+      else:
         break
-      actual_paths.append(actual_path)
-
     return actual_paths
+
+  def _ImageDiffError(self, expected_path, actual_path):
+    if os.path.exists(expected_path):
+      cmd = [self.pdfium_diff_path]
+      if self.reverse_byte_order:
+        cmd.append('--reverse-byte-order')
+      cmd.extend([expected_path, actual_path])
+      error = common.RunCommand(cmd)
+    else:
+      error = 1
+    return error
 
   def HasDifferences(self, input_filename, source_dir, working_dir):
     path_templates = PathTemplates(input_filename, source_dir, working_dir)
@@ -53,8 +74,13 @@ class PNGDiffer():
       # used to capture platform dependent implementations.
       platform_expected_path = path_templates.GetPlatformExpectedPath(
           self.os_name, page)
+      skia_expected_path = path_templates.GetSkiaExpectedPath(page)
+      skia_platform_expected_path = path_templates.GetSkiaPlatformExpectedPath(
+          self.os_name, page)
       if (not os.path.exists(expected_path) and
-          not os.path.exists(platform_expected_path)):
+          not os.path.exists(platform_expected_path) and
+          not os.path.exists(skia_expected_path) and
+          not os.path.exists(skia_platform_expected_path)):
         if page == 0:
           print "WARNING: no expected results files for " + input_filename
         if os.path.exists(actual_path):
@@ -64,23 +90,18 @@ class PNGDiffer():
         break
       print "Checking " + actual_path
       sys.stdout.flush()
-      if os.path.exists(expected_path):
-        cmd = [self.pdfium_diff_path]
-        if self.reverse_byte_order:
-          cmd.append('--reverse-byte-order')
-        cmd.extend([expected_path, actual_path])
-        error = common.RunCommand(cmd)
-      else:
-        error = 1
-      if error:
-        # When failed, we check against platform based results.
-        if os.path.exists(platform_expected_path):
-          cmd = [self.pdfium_diff_path]
-          if self.reverse_byte_order:
-            cmd.append('--reverse-byte-order')
-          cmd.extend([platform_expected_path, actual_path])
-          error = common.RunCommand(cmd)
-        if error:
+
+      error = 0
+      if self._ImageDiffError(expected_path, actual_path):
+        if self._ImageDiffError(platform_expected_path, actual_path):
+          error = 1
+          if not self.skia_enabled:
+            print "FAILURE: " + input_filename + "; " + str(error)
+            return True
+
+      # When Skia/SkiaPaths is enabled, check against skia expected results
+      if error and self._ImageDiffError(skia_expected_path, actual_path):
+        if self._ImageDiffError(skia_platform_expected_path, actual_path):
           print "FAILURE: " + input_filename + "; " + str(error)
           return True
 
@@ -116,6 +137,8 @@ class PNGDiffer():
 ACTUAL_TEMPLATE = '.pdf.%d.png'
 EXPECTED_TEMPLATE = '_expected' + ACTUAL_TEMPLATE
 PLATFORM_EXPECTED_TEMPLATE = '_expected_%s' + ACTUAL_TEMPLATE
+SKIA_EXPECTED_TEMPLATE = '_expected_skia' + ACTUAL_TEMPLATE
+SKIA_PLATFORM_EXPECTED_TEMPLATE = '_expected_skia_%s' + ACTUAL_TEMPLATE
 
 
 class PathTemplates(object):
@@ -128,6 +151,10 @@ class PathTemplates(object):
                                       input_root + EXPECTED_TEMPLATE)
     self.platform_expected_path = os.path.join(
         source_dir, input_root + PLATFORM_EXPECTED_TEMPLATE)
+    self.skia_expected_path = os.path.join(source_dir,
+                                           input_root + SKIA_EXPECTED_TEMPLATE)
+    self.skia_platform_expected_path = os.path.join(
+        source_dir, input_root + SKIA_PLATFORM_EXPECTED_TEMPLATE)
 
   def GetActualPath(self, page):
     return self.actual_path_template % page
@@ -137,3 +164,9 @@ class PathTemplates(object):
 
   def GetPlatformExpectedPath(self, platform, page):
     return self.platform_expected_path % (platform, page)
+
+  def GetSkiaExpectedPath(self, page):
+    return self.skia_expected_path % (page)
+
+  def GetSkiaPlatformExpectedPath(self, platform, page):
+    return self.skia_platform_expected_path % (platform, page)
