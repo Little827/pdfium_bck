@@ -506,6 +506,23 @@ bool CFX_Font::IsFixedWidth() const {
   return m_Face && FXFT_Is_Face_fixedwidth(m_Face->GetRec()) != 0;
 }
 
+bool CFX_Font::IsSubstFontBold() const {
+  CFX_SubstFont* subst_font = GetSubstFont();
+  if (!subst_font)
+    return false;
+
+  int weight =
+      subst_font->m_bSubstCJK ? subst_font->m_WeightCJK : subst_font->m_Weight;
+  // In CFX_FontMapper::UseInternalSubst(), the substitute font of a Roman
+  // family font, is assigned with the family name "Chrome Serif", and its font
+  // weight is adjusted to 4/5 of its original value before looking for a font
+  // face. To decide whether a substitute font is bold, need to retrieve its
+  // original weight for checking.
+  if (subst_font->m_Family == "Chrome Serif")
+    weight = weight * 5 / 4;
+  return weight >= FXFONT_FW_BOLD;
+}
+
 ByteString CFX_Font::GetPsName() const {
   if (!m_Face)
     return ByteString();
