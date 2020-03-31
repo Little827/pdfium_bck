@@ -1,0 +1,75 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm [5 0 R 6 0 R]
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /Kids [3 0 R]
+>>
+endobj
+% Page number 1.
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 4 0 R
+  /Annots [5 0 R 6 0 R]
+  /Tabs /R
+>>
+endobj
+{{object 4 0}} <<
+  {{streamlen}}
+>>
+stream
+BT
+70 700 Td
+/F1 18 Tf
+(Sample Text) Tj
+ET
+endstream
+endobj
+{{object 5 0}} <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Tx
+  /Parent 3 0 R
+  /T (Sub_LeftBottom)
+  /Rect [69 670 220 690]
+>>
+endobj
+{{object 6 0}} <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Btn
+  /BS <<
+    /S /S
+    /W 1
+  >>
+  /Rect [69 360 220 380]
+  /A <<
+    /URI (https://www.google.com)
+    /S /URI
+  >>
+  /F 4
+  /AP <<
+    /N <<
+      /1 4 0 R
+      /Off /Off
+    >>
+  >>
+  /T (button)
+  /Ff 65536
+  /DA (/F1 0 Tf 0.0 0.0 0.4 rg)
+  /MK <<
+    /BC [0.0 0.0 0.4]
+    /BG [0.9 0.9 0.9]
+  >>
+>>
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
