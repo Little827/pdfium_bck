@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "481f62de_83cd6e1a",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-31T14:04:02Z",
+      "side": 1,
+      "message": "/*modifier\u003d*/",
+      "range": {
+        "startLine": 553,
+        "startChar": 43,
+        "endLine": 553,
+        "endChar": 59
+      },
+      "revId": "bb2a3cd3ba6456dccdb59f7782adb659968086f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "468dbe2f_1b0f16bc",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-31T14:04:02Z",
+      "side": 1,
+      "message": "Either use the function or the member variable consistently. I would recommend using the function for consistency.",
+      "range": {
+        "startLine": 554,
+        "startChar": 38,
+        "endLine": 554,
+        "endChar": 44
+      },
+      "revId": "bb2a3cd3ba6456dccdb59f7782adb659968086f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b299c3e0_718ca72b",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-31T14:04:02Z",
+      "side": 1,
+      "message": "Just win or * as i expect this to fail across all platforms.",
+      "range": {
+        "startLine": 347,
+        "startChar": 16,
+        "endLine": 347,
+        "endChar": 19
+      },
+      "revId": "bb2a3cd3ba6456dccdb59f7782adb659968086f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c4e8869_844832ed",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-31T14:04:02Z",
+      "side": 1,
+      "message": "move into single line.",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "bb2a3cd3ba6456dccdb59f7782adb659968086f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a186171_24c346ea",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-31T14:04:02Z",
+      "side": 1,
+      "message": "move into single line.",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "bb2a3cd3ba6456dccdb59f7782adb659968086f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f692f32_3bfd8b0f",
+        "filename": "testing/resources/pixel/reset_button_expected.pdf.0.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-31T14:04:02Z",
+      "side": 1,
+      "message": "Compress the PNG using optipng.",
+      "revId": "bb2a3cd3ba6456dccdb59f7782adb659968086f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
