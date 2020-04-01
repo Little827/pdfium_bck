@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4468e28_00e6e26c",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:13:14Z",
+      "side": 1,
+      "message": "Combine with the previous if statement so |nKeyCode| does not need to be checked twice?\n\nif (!pAnnot) {\n  if (nKeyCode !\u003d FWL_VKEY_Tab)\n    return false;\n\n  ...\n}",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628bb1eb_746ec70c",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:13:14Z",
+      "side": 1,
+      "message": "GetFirstFocusableAnnot() and GetLastFocusableAnnot() are very similar. So are CPDFXFA_Page::GetFirstXFAAnnot() and GetLastXFAAnnot(). Do we want to follow the pattern in CPDFXFA_Page::GetNextXFAAnnot() and combine two methods into one with an additional boolean parameter?",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b418251_68aa8bbb",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:13:14Z",
+      "side": 1,
+      "message": "nit: \"XFA\" for consistency.",
+      "range": {
+        "startLine": 364,
+        "startChar": 11,
+        "endLine": 364,
+        "endChar": 14
+      },
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84243c55_958d18e0",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:13:14Z",
+      "side": 1,
+      "message": "With https://pdfium.googlesource.com/pdfium/+/1eb6dddb, isn\u0027t this out of date?",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831b252e_dd7ed740",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:13:14Z",
+      "side": 1,
+      "message": "nit: Over parenthesized. Also check begin() before end()?",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49779d38_65967b29",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:13:14Z",
+      "side": 1,
+      "message": "After calling this, can we use FORM_GetFocusedAnnot() and FPDFPage_GetAnnotIndex() to do further checks?",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
