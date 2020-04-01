@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcd0758a_0675deb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:35:53Z",
+      "side": 1,
+      "message": "On this line, just write: https://pdfium-review.googlesource.com/60011.",
+      "revId": "1c8f5db2eac1a3caf565b5c31a0d064e407e1632",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8be1a169_b3f0c5d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:35:53Z",
+      "side": 1,
+      "message": "Grammar: adds",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "1c8f5db2eac1a3caf565b5c31a0d064e407e1632",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf55c17_45e9708d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:35:53Z",
+      "side": 1,
+      "message": "nit: Remove 1 excess blank line.",
+      "revId": "1c8f5db2eac1a3caf565b5c31a0d064e407e1632",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f134cb3_277a951f",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:35:53Z",
+      "side": 1,
+      "message": "This comment can be removed now.",
+      "revId": "1c8f5db2eac1a3caf565b5c31a0d064e407e1632",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1e0fd2_2fa9c5a6",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:35:53Z",
+      "side": 1,
+      "message": "If we add more CPDFSDK_BAAnnotHandlerTest test cases, then depending on what arguments FPDFAnnot_SetFocusableSubtypes() gets, the behavior of these two methods are going to change. e.g. If one does not call FPDFAnnot_SetFocusableSubtypes(), then GetHighlightAnnot() won\u0027t return the highlight annotation. i.e. GetLinkAnnot() and GetHighlightAnnot() are catering too much to the one and existing test case.\n\nPerhaps there can be a GetNthFocusableAnnot(int n) method instead?",
+      "revId": "1c8f5db2eac1a3caf565b5c31a0d064e407e1632",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4613206e_c20cbf7c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:35:53Z",
+      "side": 1,
+      "message": "This needs a \"m_\" prefix to indicate it is a member variable.",
+      "revId": "1c8f5db2eac1a3caf565b5c31a0d064e407e1632",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea150abd_27dcbd1f",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T08:35:53Z",
+      "side": 1,
+      "message": "Just call CPDFSDK_FormFillEnvironment::SetFocusableAnnotSubtypes(), since this file does not directly use any other FPDF APIs?",
+      "revId": "1c8f5db2eac1a3caf565b5c31a0d064e407e1632",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
