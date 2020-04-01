@@ -43,6 +43,21 @@ class PNGDiffer():
 
     return actual_paths
 
+  def _ImageDiffError(self, expected_path, actual_path, orig_error):
+    if os.path.exists(expected_path):
+      cmd = [self.pdfium_diff_path]
+      if self.reverse_byte_order:
+        cmd.append('--reverse-byte-order')
+      cmd.extend([expected_path, actual_path])
+      error = common.RunCommand(cmd)
+    elif orig_error:
+      # Get the error number from previous check.
+      error = orig_error
+    else:
+      # Return error of missing expected file.
+      error = 1
+    return error
+
   def HasDifferences(self, input_filename, source_dir, working_dir):
     path_templates = PathTemplates(input_filename, source_dir, working_dir)
 
@@ -64,22 +79,11 @@ class PNGDiffer():
         break
       print "Checking " + actual_path
       sys.stdout.flush()
-      if os.path.exists(expected_path):
-        cmd = [self.pdfium_diff_path]
-        if self.reverse_byte_order:
-          cmd.append('--reverse-byte-order')
-        cmd.extend([expected_path, actual_path])
-        error = common.RunCommand(cmd)
-      else:
-        error = 1
+
+      error = self._ImageDiffError(expected_path, actual_path, 0)
       if error:
         # When failed, we check against platform based results.
-        if os.path.exists(platform_expected_path):
-          cmd = [self.pdfium_diff_path]
-          if self.reverse_byte_order:
-            cmd.append('--reverse-byte-order')
-          cmd.extend([platform_expected_path, actual_path])
-          error = common.RunCommand(cmd)
+        error = self._ImageDiffError(platform_expected_path, actual_path, error)
         if error:
           print "FAILURE: " + input_filename + "; " + str(error)
           return True
