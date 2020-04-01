@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00ea7688_d6ba4335",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-01T18:30:32Z",
+      "side": 1,
+      "message": "note that the public/ header already has a comment saying that this argument to the callback will always be NULL and remains for compaitiblity.",
+      "range": {
+        "startLine": 465,
+        "startChar": 69,
+        "endLine": 465,
+        "endChar": 76
+      },
+      "revId": "b1a50043060b12912f8202a9995288b2d1612b71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
