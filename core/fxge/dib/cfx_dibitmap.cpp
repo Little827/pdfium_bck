@@ -55,12 +55,12 @@ bool CFX_DIBitmap::Create(int width,
     size_t bufferSize = calculatedSize + 4;
     if (bufferSize >= kMaxOOMLimit) {
       m_pBuffer = std::unique_ptr<uint8_t, FxFreeDeleter>(
-          FX_TryAlloc(uint8_t, bufferSize));
+          FX_TryCalloc(uint8_t, bufferSize));
       if (!m_pBuffer)
         return false;
     } else {
       m_pBuffer = std::unique_ptr<uint8_t, FxFreeDeleter>(
-          FX_Alloc(uint8_t, bufferSize));
+          FX_Calloc(uint8_t, bufferSize));
     }
   }
   m_Width = width;

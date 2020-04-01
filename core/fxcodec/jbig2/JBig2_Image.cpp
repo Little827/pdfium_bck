@@ -51,7 +51,7 @@ CJBig2_Image::CJBig2_Image(int32_t w, int32_t h) {
   m_nHeight = h;
   m_nStride = stride_pixels / 8;
   m_pData.Reset(std::unique_ptr<uint8_t, FxFreeDeleter>(
-      FX_Alloc2D(uint8_t, m_nStride, m_nHeight)));
+      FX_Calloc2D(uint8_t, m_nStride, m_nHeight)));
 }
 
 CJBig2_Image::CJBig2_Image(int32_t w,
