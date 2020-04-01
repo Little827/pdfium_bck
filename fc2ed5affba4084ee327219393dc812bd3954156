@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b8b8144f_e18a9974",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-01T12:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4468e28_00e6e26c",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "628bb1eb_746ec70c",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
         "patchSetId": 13
@@ -33,6 +51,24 @@
       "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6001bffc_62828cba",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-01T12:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628bb1eb_746ec70c",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "33d1c8f2_657f6d88",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-01T12:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b418251_68aa8bbb",
+      "range": {
+        "startLine": 364,
+        "startChar": 11,
+        "endLine": 364,
+        "endChar": 14
+      },
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84243c55_958d18e0",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
         "patchSetId": 13
@@ -73,6 +133,24 @@
       "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e232ca_d13b3b8b",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-01T12:12:30Z",
+      "side": 1,
+      "message": "Updated this to use GetFocusableAnnotSubtypes() instead.",
+      "parentUuid": "84243c55_958d18e0",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "f1158e82_6cd4e8c8",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-01T12:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "831b252e_dd7ed740",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49779d38_65967b29",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 13
@@ -107,6 +203,24 @@
       "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57fd558_484e01f5",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-01T12:12:30Z",
+      "side": 1,
+      "message": "I have modified the Non-XFA tests to include them but since FORM_GetFocusedAnnot() doesn\u0027t work for XFA, i have kept them as is.",
+      "parentUuid": "49779d38_65967b29",
+      "revId": "fc2ed5affba4084ee327219393dc812bd3954156",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
