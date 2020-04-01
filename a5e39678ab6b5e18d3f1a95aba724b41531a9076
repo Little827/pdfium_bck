@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ff99bbb_5d9c93f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T20:35:32Z",
+      "side": 1,
+      "message": "\"Refactor image comparison code\" ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "a5e39678ab6b5e18d3f1a95aba724b41531a9076",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a284d7e_ed23ea23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T20:35:32Z",
+      "side": 1,
+      "message": "\"happens\"\n\nAs in, it already happens in the existing code.",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "a5e39678ab6b5e18d3f1a95aba724b41531a9076",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b42e199_b4e893f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T20:35:32Z",
+      "side": 1,
+      "message": "omit, since FunctionName() is sufficiently clear.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a5e39678ab6b5e18d3f1a95aba724b41531a9076",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "606aa791_3b4b9ede",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T20:35:32Z",
+      "side": 1,
+      "message": "This makes the function\u0027s behavior less intuitive. I would recommend keeping the logic for dealing with that outside of this function. Instead, use more variables, and maybe a sentinel value for when |expected_path| does not exist.",
+      "range": {
+        "startLine": 46,
+        "startChar": 56,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "a5e39678ab6b5e18d3f1a95aba724b41531a9076",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
