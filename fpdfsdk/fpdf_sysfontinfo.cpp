@@ -217,7 +217,7 @@ FPDF_EXPORT FPDF_SYSFONTINFO* FPDF_CALLCONV FPDF_GetDefaultSystemFontInfo() {
     return nullptr;
 
   FPDF_SYSFONTINFO_DEFAULT* pFontInfoExt =
-      FX_Alloc(FPDF_SYSFONTINFO_DEFAULT, 1);
+      FX_Calloc(FPDF_SYSFONTINFO_DEFAULT, 1);
   pFontInfoExt->DeleteFont = DefaultDeleteFont;
   pFontInfoExt->EnumFonts = DefaultEnumFonts;
   pFontInfoExt->GetFaceName = DefaultGetFaceName;

@@ -31,21 +31,35 @@ pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator();
 void FXMEM_InitializePartitionAlloc();
 NOINLINE void FX_OutOfMemoryTerminate();
 
-// These never return nullptr, and must return cleared memory.
+// These never return nullptr, but return uninitialized memory.
 #define FX_Alloc(type, size) \
-  static_cast<type*>(internal::CallocOrDie(size, sizeof(type)))
+  static_cast<type*>(internal::AllocOrDie(size, sizeof(type)))
 #define FX_Alloc2D(type, w, h) \
-  static_cast<type*>(internal::CallocOrDie2D(w, h, sizeof(type)))
+  static_cast<type*>(internal::AllocOrDie2D(w, h, sizeof(type)))
 #define FX_Realloc(type, ptr, size) \
   static_cast<type*>(internal::ReallocOrDie(ptr, size, sizeof(type)))
 
-// May return nullptr, but returns cleared memory otherwise.
+// May return nullptr, and returns uncleared memory.
 #define FX_TryAlloc(type, size) \
-  static_cast<type*>(internal::Calloc(size, sizeof(type)))
+  static_cast<type*>(internal::Alloc(size, sizeof(type)))
 #define FX_TryRealloc(type, ptr, size) \
   static_cast<type*>(internal::Realloc(ptr, size, sizeof(type)))
 
+// These never return nullptr, and must return cleared memory.
+#define FX_Calloc(type, size) \
+  static_cast<type*>(internal::CallocOrDie(size, sizeof(type)))
+#define FX_Calloc2D(type, w, h) \
+  static_cast<type*>(internal::CallocOrDie2D(w, h, sizeof(type)))
+
+// May return nullptr, but returns cleared memory otherwise.
+#define FX_TryCalloc(type, size) \
+  static_cast<type*>(internal::Alloc(size, sizeof(type)))
+
 namespace internal {
+
+void* Alloc(size_t num_members, size_t member_size);
+void* AllocOrDie(size_t num_members, size_t member_size);
+void* AllocOrDie2D(size_t w, size_t h, size_t member_size);
 
 void* Calloc(size_t num_members, size_t member_size);
 void* Realloc(void* ptr, size_t num_members, size_t member_size);
