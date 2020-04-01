@@ -94,6 +94,14 @@ TEST(fxcrt, DISABLED_FXMEM_DefaultOOM) {
   FXMEM_DefaultFree(ptr);
 }
 
+TEST(fxcrt, CallocZeroesMemory) {
+  uint8_t* ptr = FX_Calloc(uint8_t, 32);
+  ASSERT_TRUE(ptr);
+  for (size_t i = 0; i < 32; ++i)
+    EXPECT_EQ(0, ptr[i]);
+  FX_Free(ptr);
+}
+
 TEST(fxcrt, FXAlign) {
   static_assert(std::numeric_limits<size_t>::max() % 2 == 1,
                 "numeric limit must be odd for this test");
