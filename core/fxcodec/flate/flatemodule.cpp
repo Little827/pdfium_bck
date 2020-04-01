@@ -31,7 +31,7 @@ extern "C" {
 static void* my_alloc_func(void* opaque,
                            unsigned int items,
                            unsigned int size) {
-  return FX_Alloc2D(uint8_t, items, size);
+  return FX_Calloc2D(uint8_t, items, size);
 }
 
 static void my_free_func(void* opaque, void* address) {
@@ -63,7 +63,7 @@ bool FlateCompress(unsigned char* dest_buf,
 }
 
 z_stream* FlateInit() {
-  z_stream* p = FX_Alloc(z_stream, 1);
+  z_stream* p = FX_Calloc(z_stream, 1);
   p->zalloc = my_alloc_func;
   p->zfree = my_free_func;
   inflateInit(p);
@@ -191,7 +191,7 @@ bool CLZWDecoder::Decode() {
   // In one PDF test set, 40% of Decode() calls did not need to realloc with
   // this size.
   dest_buf_size_ = 512;
-  dest_buf_.reset(FX_Alloc(uint8_t, dest_buf_size_));
+  dest_buf_.reset(FX_Calloc(uint8_t, dest_buf_size_));
   while (1) {
     if (src_bit_pos_ + code_len_ > src_span_.size() * 8)
       break;
@@ -371,7 +371,7 @@ bool PNG_Predictor(int Colors,
     return false;
   const int last_row_size = *data_size % (row_size + 1);
   std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf(
-      FX_Alloc2D(uint8_t, row_size, row_count));
+      FX_Calloc2D(uint8_t, row_size, row_count));
   uint32_t byte_cnt = 0;
   uint8_t* pSrcData = data_buf->get();
   uint8_t* pDestData = dest_buf.get();
@@ -532,7 +532,7 @@ void FlateUncompress(pdfium::span<const uint8_t> src_buf,
   uint32_t buf_size = guess_size;
   uint32_t last_buf_size = buf_size;
   std::unique_ptr<uint8_t, FxFreeDeleter> guess_buf(
-      FX_Alloc(uint8_t, guess_size + 1));
+      FX_Calloc(uint8_t, guess_size + 1));
   guess_buf.get()[guess_size] = '\0';
 
   std::vector<std::unique_ptr<uint8_t, FxFreeDeleter>> result_tmp_bufs;
@@ -547,7 +547,7 @@ void FlateUncompress(pdfium::span<const uint8_t> src_buf,
         break;
       }
       result_tmp_bufs.push_back(std::move(cur_buf));
-      cur_buf.reset(FX_Alloc(uint8_t, buf_size + 1));
+      cur_buf.reset(FX_Calloc(uint8_t, buf_size + 1));
       cur_buf.get()[buf_size] = '\0';
     }
   }
@@ -563,7 +563,7 @@ void FlateUncompress(pdfium::span<const uint8_t> src_buf,
   }
 
   std::unique_ptr<uint8_t, FxFreeDeleter> result_buf(
-      FX_Alloc(uint8_t, *dest_size));
+      FX_Calloc(uint8_t, *dest_size));
   uint32_t result_pos = 0;
   uint32_t remaining = *dest_size;
   for (size_t i = 0; i < result_tmp_bufs.size(); i++) {
@@ -623,7 +623,7 @@ FlateScanlineDecoder::FlateScanlineDecoder(pdfium::span<const uint8_t> src_span,
                       bpc,
                       CalculatePitch8(bpc, nComps, width).ValueOrDie()),
       m_SrcBuf(src_span),
-      m_pScanline(FX_Alloc(uint8_t, m_Pitch)) {}
+      m_pScanline(FX_Calloc(uint8_t, m_Pitch)) {}
 
 FlateScanlineDecoder::~FlateScanlineDecoder() = default;
 
@@ -854,7 +854,7 @@ bool FlateModule::Encode(const uint8_t* src_buf,
                          std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
                          uint32_t* dest_size) {
   *dest_size = src_size + src_size / 1000 + 12;
-  dest_buf->reset(FX_Alloc(uint8_t, *dest_size));
+  dest_buf->reset(FX_Calloc(uint8_t, *dest_size));
   unsigned long temp_size = *dest_size;
   if (!FlateCompress(dest_buf->get(), &temp_size, src_buf, src_size))
     return false;

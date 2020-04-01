@@ -116,7 +116,7 @@ void outline_aa::allocate_block()
 {
     if(m_cur_block >= m_num_blocks) {
         if(m_num_blocks >= m_max_blocks) {
-            cell_aa** new_cells = FX_Alloc( cell_aa*, m_max_blocks + cell_block_pool);
+            cell_aa** new_cells = FX_Calloc( cell_aa*, m_max_blocks + cell_block_pool);
             if(m_cells) {
               memcpy(new_cells, m_cells, m_max_blocks * sizeof(cell_aa*));
               FX_Free(m_cells);
@@ -124,7 +124,7 @@ void outline_aa::allocate_block()
             m_cells = new_cells;
             m_max_blocks += cell_block_pool;
         }
-        m_cells[m_num_blocks++] = FX_Alloc(cell_aa, cell_block_size);
+        m_cells[m_num_blocks++] = FX_Calloc(cell_aa, cell_block_size);
     }
     m_cur_cell_ptr = m_cells[m_cur_block++];
 }

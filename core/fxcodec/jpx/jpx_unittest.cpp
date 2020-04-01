@@ -406,7 +406,7 @@ TEST(fxcodec, YUV420ToRGB) {
   memset(&img, 0, sizeof(img));
   img.numcomps = 3;
   img.color_space = OPJ_CLRSPC_SYCC;
-  img.comps = FX_Alloc(opj_image_comp_t, 3);
+  img.comps = FX_Calloc(opj_image_comp_t, 3);
   const struct {
     OPJ_UINT32 w;
     bool expected;

@@ -32,15 +32,15 @@ void FXMEM_InitializePartitionAlloc();
 NOINLINE void FX_OutOfMemoryTerminate();
 
 // These never return nullptr, and must return cleared memory.
-#define FX_Alloc(type, size) \
+#define FX_Calloc(type, size) \
   static_cast<type*>(internal::CallocOrDie(size, sizeof(type)))
-#define FX_Alloc2D(type, w, h) \
+#define FX_Calloc2D(type, w, h) \
   static_cast<type*>(internal::CallocOrDie2D(w, h, sizeof(type)))
 #define FX_Realloc(type, ptr, size) \
   static_cast<type*>(internal::ReallocOrDie(ptr, size, sizeof(type)))
 
 // May return nullptr, but returns cleared memory otherwise.
-#define FX_TryAlloc(type, size) \
+#define FX_TryCalloc(type, size) \
   static_cast<type*>(internal::Calloc(size, sizeof(type)))
 #define FX_TryRealloc(type, ptr, size) \
   static_cast<type*>(internal::Realloc(ptr, size, sizeof(type)))

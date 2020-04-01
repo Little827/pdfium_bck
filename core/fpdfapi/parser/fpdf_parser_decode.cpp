@@ -147,7 +147,7 @@ uint32_t A85Decode(pdfium::span<const uint8_t> src_span,
   if (!size.IsValid())
     return FX_INVALID_OFFSET;
 
-  dest_buf->reset(FX_Alloc(uint8_t, size.ValueOrDie()));
+  dest_buf->reset(FX_Calloc(uint8_t, size.ValueOrDie()));
   uint8_t* dest_buf_ptr = dest_buf->get();
   size_t state = 0;
   uint32_t res = 0;
@@ -207,7 +207,7 @@ uint32_t HexDecode(pdfium::span<const uint8_t> src_span,
   while (i < src_span.size() && src_span[i] != '>')
     ++i;
 
-  dest_buf->reset(FX_Alloc(uint8_t, i / 2 + 1));
+  dest_buf->reset(FX_Calloc(uint8_t, i / 2 + 1));
   uint8_t* dest_buf_ptr = dest_buf->get();
   bool bFirst = true;
   for (i = 0; i < src_span.size(); ++i) {
@@ -259,7 +259,7 @@ uint32_t RunLengthDecode(pdfium::span<const uint8_t> src_span,
   if (*dest_size >= kMaxStreamSize)
     return FX_INVALID_OFFSET;
 
-  dest_buf->reset(FX_Alloc(uint8_t, *dest_size));
+  dest_buf->reset(FX_Calloc(uint8_t, *dest_size));
   pdfium::span<uint8_t> dest_span(dest_buf->get(), *dest_size);
   i = 0;
   int dest_count = 0;

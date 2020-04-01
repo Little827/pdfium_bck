@@ -19,9 +19,9 @@ const size_t kOverflowIntAlloc2D = kMaxIntAlloc / kWidth + 10;
 
 }  // namespace
 
-TEST(fxcrt, FX_AllocZero) {
-  uint8_t* ptr = FX_Alloc(uint8_t, 0);
-  uint8_t* ptr2 = FX_Alloc(uint8_t, 0);
+TEST(fxcrt, FX_CallocZero) {
+  uint8_t* ptr = FX_Calloc(uint8_t, 0);
+  uint8_t* ptr2 = FX_Calloc(uint8_t, 0);
   EXPECT_TRUE(ptr);      // Malloc(0) is distinguishable from OOM.
   EXPECT_NE(ptr, ptr2);  // Each malloc(0) is distinguishable.
   FX_Free(ptr2);
@@ -30,53 +30,53 @@ TEST(fxcrt, FX_AllocZero) {
 
 // TODO(tsepez): re-enable OOM tests if we can find a way to
 // prevent it from hosing the bots.
-TEST(fxcrt, DISABLED_FX_AllocOOM) {
-  EXPECT_DEATH_IF_SUPPORTED((void)FX_Alloc(int, kMaxIntAlloc), "");
+TEST(fxcrt, DISABLED_FX_CallocOOM) {
+  EXPECT_DEATH_IF_SUPPORTED((void)FX_Calloc(int, kMaxIntAlloc), "");
 
-  int* ptr = FX_Alloc(int, 1);
+  int* ptr = FX_Calloc(int, 1);
   EXPECT_TRUE(ptr);
   EXPECT_DEATH_IF_SUPPORTED((void)FX_Realloc(int, ptr, kMaxIntAlloc), "");
   FX_Free(ptr);
 }
 
-TEST(fxcrt, FX_AllocOverflow) {
+TEST(fxcrt, FX_CallocOverflow) {
   // |ptr| needs to be defined and used to avoid Clang optimizes away the
-  // FX_Alloc() statement overzealously for optimized builds.
+  // FX_Calloc() statement overzealously for optimized builds.
   int* ptr = nullptr;
-  EXPECT_DEATH_IF_SUPPORTED(ptr = FX_Alloc(int, kOverflowIntAlloc), "") << ptr;
+  EXPECT_DEATH_IF_SUPPORTED(ptr = FX_Calloc(int, kOverflowIntAlloc), "") << ptr;
 
-  ptr = FX_Alloc(int, 1);
+  ptr = FX_Calloc(int, 1);
   EXPECT_TRUE(ptr);
   EXPECT_DEATH_IF_SUPPORTED((void)FX_Realloc(int, ptr, kOverflowIntAlloc), "");
   FX_Free(ptr);
 }
 
-TEST(fxcrt, FX_AllocOverflow2D) {
+TEST(fxcrt, FX_CallocOverflow2D) {
   // |ptr| needs to be defined and used to avoid Clang optimizes away the
-  // FX_Alloc() statement overzealously for optimized builds.
+  // FX_Calloc() statement overzealously for optimized builds.
   int* ptr = nullptr;
-  EXPECT_DEATH_IF_SUPPORTED(ptr = FX_Alloc2D(int, kWidth, kOverflowIntAlloc2D),
+  EXPECT_DEATH_IF_SUPPORTED(ptr = FX_Calloc2D(int, kWidth, kOverflowIntAlloc2D),
                             "")
       << ptr;
 }
 
-TEST(fxcrt, DISABLED_FX_TryAllocOOM) {
-  EXPECT_FALSE(FX_TryAlloc(int, kMaxIntAlloc));
+TEST(fxcrt, DISABLED_FX_TryCallocOOM) {
+  EXPECT_FALSE(FX_TryCalloc(int, kMaxIntAlloc));
 
-  int* ptr = FX_Alloc(int, 1);
+  int* ptr = FX_Calloc(int, 1);
   EXPECT_TRUE(ptr);
   EXPECT_FALSE(FX_TryRealloc(int, ptr, kMaxIntAlloc));
   FX_Free(ptr);
 }
 
 #if !defined(COMPILER_GCC)
-TEST(fxcrt, FX_TryAllocOverflow) {
+TEST(fxcrt, FX_TryCallocOverflow) {
   // |ptr| needs to be defined and used to avoid Clang optimizes away the
   // calloc() statement overzealously for optimized builds.
   int* ptr = (int*)calloc(sizeof(int), kOverflowIntAlloc);
   EXPECT_FALSE(ptr) << ptr;
 
-  ptr = FX_Alloc(int, 1);
+  ptr = FX_Calloc(int, 1);
   EXPECT_TRUE(ptr);
   *ptr = 1492;  // Arbitrary sentinel.
   EXPECT_FALSE(FX_TryRealloc(int, ptr, kOverflowIntAlloc));

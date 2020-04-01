@@ -17,8 +17,8 @@ struct FxFreeDeleter {
 };
 
 // Used with std::vector<> to put purely numeric vectors into
-// the same "general" parition used by FX_Alloc(). Otherwise,
-// replacing FX_Alloc/FX_Free pairs with std::vector<> may undo
+// the same "general" parition used by FX_Calloc(). Otherwise,
+// replacing FX_Calloc/FX_Free pairs with std::vector<> may undo
 // some of the nice segregation that we get from partition alloc.
 template <class T>
 struct FxAllocAllocator {
@@ -49,7 +49,7 @@ struct FxAllocAllocator {
   pointer address(reference x) const noexcept { return &x; }
   const_pointer address(const_reference x) const noexcept { return &x; }
   pointer allocate(size_type n, const void* hint = 0) {
-    return FX_Alloc(value_type, n);
+    return FX_Calloc(value_type, n);
   }
   void deallocate(pointer p, size_type n) { FX_Free(p); }
   size_type max_size() const noexcept {

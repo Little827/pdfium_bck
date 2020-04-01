@@ -870,7 +870,7 @@ void CJX_Object::SetMapModuleBuffer(
   XFA_MAPDATABLOCK*& pBuffer = CreateMapModuleData()->m_BufferMap[pKey];
   if (!pBuffer) {
     pBuffer = reinterpret_cast<XFA_MAPDATABLOCK*>(
-        FX_Alloc(uint8_t, sizeof(XFA_MAPDATABLOCK) + iBytes));
+        FX_Calloc(uint8_t, sizeof(XFA_MAPDATABLOCK) + iBytes));
   } else if (pBuffer->iBytes != iBytes) {
     if (pBuffer->pCallbackInfo && pBuffer->pCallbackInfo->pFree)
       pBuffer->pCallbackInfo->pFree(*(void**)pBuffer->GetData());
@@ -986,7 +986,7 @@ void CJX_Object::MergeAllData(CXFA_Object* pDstModule) {
       continue;
     }
     if (!pDstBuffer) {
-      pDstBuffer = (XFA_MAPDATABLOCK*)FX_Alloc(
+      pDstBuffer = (XFA_MAPDATABLOCK*)FX_Calloc(
           uint8_t, sizeof(XFA_MAPDATABLOCK) + pSrcBuffer->iBytes);
     } else if (pDstBuffer->iBytes != pSrcBuffer->iBytes) {
       if (pDstBuffer->pCallbackInfo && pDstBuffer->pCallbackInfo->pFree) {

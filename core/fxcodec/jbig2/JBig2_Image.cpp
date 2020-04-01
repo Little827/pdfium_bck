@@ -51,7 +51,7 @@ CJBig2_Image::CJBig2_Image(int32_t w, int32_t h) {
   m_nHeight = h;
   m_nStride = stride_pixels / 8;
   m_pData.Reset(std::unique_ptr<uint8_t, FxFreeDeleter>(
-      FX_Alloc2D(uint8_t, m_nStride, m_nHeight)));
+      FX_Calloc2D(uint8_t, m_nStride, m_nHeight)));
 }
 
 CJBig2_Image::CJBig2_Image(int32_t w,
@@ -81,7 +81,7 @@ CJBig2_Image::CJBig2_Image(const CJBig2_Image& other)
       m_nStride(other.m_nStride) {
   if (other.m_pData) {
     m_pData.Reset(std::unique_ptr<uint8_t, FxFreeDeleter>(
-        FX_Alloc2D(uint8_t, m_nStride, m_nHeight)));
+        FX_Calloc2D(uint8_t, m_nStride, m_nHeight)));
     memcpy(data(), other.data(), m_nStride * m_nHeight);
   }
 }
@@ -249,7 +249,7 @@ void CJBig2_Image::Expand(int32_t h, bool v) {
   } else {
     uint8_t* pExternalBuffer = data();
     m_pData.Reset(std::unique_ptr<uint8_t, FxFreeDeleter>(
-        FX_Alloc(uint8_t, h * m_nStride)));
+        FX_Calloc(uint8_t, h * m_nStride)));
     memcpy(data(), pExternalBuffer, m_nHeight * m_nStride);
   }
   memset(data() + m_nHeight * m_nStride, v ? 0xff : 0,

@@ -83,7 +83,7 @@ void* ContextFromNextGlobalSeed() {
 }  // namespace
 
 void* FX_Random_MT_Start(uint32_t dwSeed) {
-  MTContext* pContext = FX_Alloc(MTContext, 1);
+  MTContext* pContext = FX_Calloc(MTContext, 1);
   uint32_t* pBuf = pContext->mt;
   pBuf[0] = dwSeed;
   for (uint32_t i = 1; i < MT_N; i++)

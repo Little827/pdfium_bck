@@ -7,7 +7,7 @@
 #include <algorithm>
 
 CFX_CodecMemory::CFX_CodecMemory(size_t buffer_size)
-    : buffer_(FX_Alloc(uint8_t, buffer_size)), size_(buffer_size) {}
+    : buffer_(FX_Calloc(uint8_t, buffer_size)), size_(buffer_size) {}
 
 CFX_CodecMemory::~CFX_CodecMemory() = default;
 

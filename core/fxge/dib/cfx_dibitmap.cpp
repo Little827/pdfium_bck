@@ -55,12 +55,12 @@ bool CFX_DIBitmap::Create(int width,
     size_t bufferSize = calculatedSize + 4;
     if (bufferSize >= kMaxOOMLimit) {
       m_pBuffer = std::unique_ptr<uint8_t, FxFreeDeleter>(
-          FX_TryAlloc(uint8_t, bufferSize));
+          FX_TryCalloc(uint8_t, bufferSize));
       if (!m_pBuffer)
         return false;
     } else {
       m_pBuffer = std::unique_ptr<uint8_t, FxFreeDeleter>(
-          FX_Alloc(uint8_t, bufferSize));
+          FX_Calloc(uint8_t, bufferSize));
     }
   }
   m_Width = width;
@@ -1224,7 +1224,7 @@ bool CFX_DIBitmap::ConvertFormat(FXDIB_Format dest_format) {
   int dest_bpp = GetBppFromFormat(dest_format);
   int dest_pitch = (dest_bpp * m_Width + 31) / 32 * 4;
   std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf(
-      FX_TryAlloc(uint8_t, dest_pitch * m_Height + 4));
+      FX_TryCalloc(uint8_t, dest_pitch * m_Height + 4));
   if (!dest_buf)
     return false;
 

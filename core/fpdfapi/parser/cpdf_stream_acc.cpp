@@ -91,7 +91,7 @@ std::unique_ptr<uint8_t, FxFreeDeleter> CPDF_StreamAcc::DetachData() {
     m_dwSize = 0;
     return p;
   }
-  std::unique_ptr<uint8_t, FxFreeDeleter> p(FX_Alloc(uint8_t, m_dwSize));
+  std::unique_ptr<uint8_t, FxFreeDeleter> p(FX_Calloc(uint8_t, m_dwSize));
   memcpy(p.get(), m_pData.Get(), m_dwSize);
   return p;
 }
@@ -163,7 +163,7 @@ std::unique_ptr<uint8_t, FxFreeDeleter> CPDF_StreamAcc::ReadRawStream() const {
   uint32_t dwSrcSize = m_pStream->GetRawSize();
   ASSERT(dwSrcSize);
   std::unique_ptr<uint8_t, FxFreeDeleter> pSrcData(
-      FX_Alloc(uint8_t, dwSrcSize));
+      FX_Calloc(uint8_t, dwSrcSize));
   if (!m_pStream->ReadRawData(0, pSrcData.get(), dwSrcSize))
     return nullptr;
   return pSrcData;

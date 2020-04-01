@@ -114,7 +114,7 @@ void* CPDF_CryptoHandler::CryptStart(uint32_t objnum,
     return this;
   }
   if (m_Cipher == FXCIPHER_AES && m_KeyLen == 32) {
-    AESCryptContext* pContext = FX_Alloc(AESCryptContext, 1);
+    AESCryptContext* pContext = FX_Calloc(AESCryptContext, 1);
     pContext->m_bIV = true;
     pContext->m_BlockOffset = 0;
     CRYPT_AESSetKey(&pContext->m_Context, m_EncryptKey, 32, bEncrypt);
@@ -138,7 +138,7 @@ void* CPDF_CryptoHandler::CryptStart(uint32_t objnum,
   size_t realkeylen = std::min(m_KeyLen + 5, sizeof(realkey));
 
   if (m_Cipher == FXCIPHER_AES) {
-    AESCryptContext* pContext = FX_Alloc(AESCryptContext, 1);
+    AESCryptContext* pContext = FX_Calloc(AESCryptContext, 1);
     pContext->m_bIV = true;
     pContext->m_BlockOffset = 0;
     CRYPT_AESSetKey(&pContext->m_Context, realkey, 16, bEncrypt);
@@ -150,7 +150,7 @@ void* CPDF_CryptoHandler::CryptStart(uint32_t objnum,
     }
     return pContext;
   }
-  CRYPT_rc4_context* pContext = FX_Alloc(CRYPT_rc4_context, 1);
+  CRYPT_rc4_context* pContext = FX_Calloc(CRYPT_rc4_context, 1);
   CRYPT_ArcFourSetup(pContext, {realkey, realkeylen});
   return pContext;
 }
@@ -390,7 +390,7 @@ CPDF_CryptoHandler::CPDF_CryptoHandler(int cipher,
     memcpy(m_EncryptKey, key, m_KeyLen);
 
   if (m_Cipher == FXCIPHER_AES)
-    m_pAESContext.reset(FX_Alloc(CRYPT_aes_context, 1));
+    m_pAESContext.reset(FX_Calloc(CRYPT_aes_context, 1));
 }
 
 CPDF_CryptoHandler::~CPDF_CryptoHandler() = default;

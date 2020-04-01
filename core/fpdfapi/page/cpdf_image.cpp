@@ -227,7 +227,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
       pCS->AppendNew<CPDF_Name>("DeviceRGB");
       pCS->AppendNew<CPDF_Number>(static_cast<int>(palette_size - 1));
       std::unique_ptr<uint8_t, FxFreeDeleter> pColorTable(
-          FX_Alloc2D(uint8_t, palette_size, 3));
+          FX_Calloc2D(uint8_t, palette_size, 3));
       uint8_t* ptr = pColorTable.get();
       for (size_t i = 0; i < palette_size; i++) {
         uint32_t argb = pBitmap->GetPaletteArgb(i);
@@ -268,7 +268,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
     pMaskDict->SetNewFor<CPDF_Name>("ColorSpace", "DeviceGray");
     pMaskDict->SetNewFor<CPDF_Number>("BitsPerComponent", 8);
     if (pMaskBitmap->GetFormat() != FXDIB_1bppMask) {
-      mask_buf.reset(FX_Alloc2D(uint8_t, maskHeight, maskWidth));
+      mask_buf.reset(FX_Calloc2D(uint8_t, maskHeight, maskWidth));
       mask_size = maskHeight * maskWidth;  // Safe since checked alloc returned.
       for (int32_t a = 0; a < maskHeight; a++) {
         memcpy(mask_buf.get() + a * maskWidth, pMaskBitmap->GetScanline(a),
@@ -285,7 +285,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
   uint8_t* src_buf = pBitmap->GetBuffer();
   int32_t src_pitch = pBitmap->GetPitch();
   std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf(
-      FX_Alloc2D(uint8_t, dest_pitch, BitmapHeight));
+      FX_Calloc2D(uint8_t, dest_pitch, BitmapHeight));
   // Safe as checked alloc returned.
   size_t dest_size = dest_pitch * BitmapHeight;
   auto dest_span = pdfium::make_span(dest_buf.get(), dest_size);

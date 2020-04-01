@@ -195,7 +195,7 @@ bool Tiff_Exif_GetInfo(TIFF* tif_ctx, ttag_t tag, CFX_DIBAttribute* pAttr) {
   TIFFGetField(tif_ctx, tag, &val);
   if (!val)
     return false;
-  T* ptr = FX_Alloc(T, 1);
+  T* ptr = FX_Calloc(T, 1);
   *ptr = val;
   pAttr->m_Exif[tag] = ptr;
   return true;
@@ -209,7 +209,7 @@ void Tiff_Exif_GetStringInfo(TIFF* tif_ctx,
   if (!buf)
     return;
   size_t size = strlen(buf);
-  uint8_t* ptr = FX_Alloc(uint8_t, size + 1);
+  uint8_t* ptr = FX_Calloc(uint8_t, size + 1);
   memcpy(ptr, buf, size);
   ptr[size] = 0;
   pAttr->m_Exif[tag] = ptr;

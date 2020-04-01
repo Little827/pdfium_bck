@@ -104,7 +104,7 @@ uint8_t* CBC_OnedEAN13Writer::EncodeImpl(const ByteString& contents,
   int32_t parities = kFirstDigitEncodings[firstDigit];
   outLength = m_codeWidth;
   std::unique_ptr<uint8_t, FxFreeDeleter> result(
-      FX_Alloc(uint8_t, m_codeWidth));
+      FX_Calloc(uint8_t, m_codeWidth));
   int32_t pos = 0;
   pos += AppendPattern(result.get(), pos, kOnedEAN13StartPattern, 3, true);
 

@@ -421,7 +421,7 @@ JBig2_Result CJBig2_Context::ParseSymbolDict(CJBig2_Segment* pSegment) {
 
   std::unique_ptr<CJBig2_Image*, FxFreeDeleter> SDINSYMS;
   if (pSymbolDictDecoder->SDNUMINSYMS != 0) {
-    SDINSYMS.reset(FX_Alloc(CJBig2_Image*, pSymbolDictDecoder->SDNUMINSYMS));
+    SDINSYMS.reset(FX_Calloc(CJBig2_Image*, pSymbolDictDecoder->SDNUMINSYMS));
     uint32_t dwTemp = 0;
     for (int32_t i = 0; i < pSegment->m_nReferred_to_segment_count; ++i) {
       CJBig2_Segment* pSeg =
@@ -635,7 +635,7 @@ JBig2_Result CJBig2_Context::ParseTextRegion(CJBig2_Segment* pSegment) {
 
   std::unique_ptr<CJBig2_Image*, FxFreeDeleter> SBSYMS;
   if (pTRD->SBNUMSYMS > 0) {
-    SBSYMS.reset(FX_Alloc(CJBig2_Image*, pTRD->SBNUMSYMS));
+    SBSYMS.reset(FX_Calloc(CJBig2_Image*, pTRD->SBNUMSYMS));
     dwTemp = 0;
     for (int32_t i = 0; i < pSegment->m_nReferred_to_segment_count; ++i) {
       CJBig2_Segment* pSeg =
@@ -776,7 +776,7 @@ JBig2_Result CJBig2_Context::ParseTextRegion(CJBig2_Segment* pSegment) {
   std::unique_ptr<JBig2ArithCtx, FxFreeDeleter> grContext;
   if (pTRD->SBREFINE == 1) {
     const size_t size = GetRefAggContextSize(pTRD->SBRTEMPLATE);
-    grContext.reset(FX_Alloc(JBig2ArithCtx, size));
+    grContext.reset(FX_Calloc(JBig2ArithCtx, size));
   }
   if (pTRD->SBHUFF == 0) {
     auto pArithDecoder =
@@ -829,7 +829,7 @@ JBig2_Result CJBig2_Context::ParsePatternDict(CJBig2_Segment* pSegment,
   if (pPDD->HDMMR == 0) {
     const size_t size = GetHuffContextSize(pPDD->HDTEMPLATE);
     std::unique_ptr<JBig2ArithCtx, FxFreeDeleter> gbContext(
-        FX_Alloc(JBig2ArithCtx, size));
+        FX_Calloc(JBig2ArithCtx, size));
     auto pArithDecoder =
         pdfium::MakeUnique<CJBig2_ArithDecoder>(m_pStream.get());
     pSegment->m_PatternDict =
@@ -897,7 +897,7 @@ JBig2_Result CJBig2_Context::ParseHalftoneRegion(CJBig2_Segment* pSegment,
   if (pHRD->HMMR == 0) {
     const size_t size = GetHuffContextSize(pHRD->HTEMPLATE);
     std::unique_ptr<JBig2ArithCtx, FxFreeDeleter> gbContext(
-        FX_Alloc(JBig2ArithCtx, size));
+        FX_Calloc(JBig2ArithCtx, size));
     auto pArithDecoder =
         pdfium::MakeUnique<CJBig2_ArithDecoder>(m_pStream.get());
     pSegment->m_Image =
@@ -1079,7 +1079,7 @@ JBig2_Result CJBig2_Context::ParseGenericRefinementRegion(
   pGRRD->GRREFERENCEDY = 0;
   const size_t size = GetRefAggContextSize(pGRRD->GRTEMPLATE);
   std::unique_ptr<JBig2ArithCtx, FxFreeDeleter> grContext(
-      FX_Alloc(JBig2ArithCtx, size));
+      FX_Calloc(JBig2ArithCtx, size));
   auto pArithDecoder = pdfium::MakeUnique<CJBig2_ArithDecoder>(m_pStream.get());
   pSegment->m_nResultType = JBIG2_IMAGE_POINTER;
   pSegment->m_Image = pGRRD->Decode(pArithDecoder.get(), grContext.get());

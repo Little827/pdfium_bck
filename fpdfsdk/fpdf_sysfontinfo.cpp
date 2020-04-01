@@ -97,7 +97,7 @@ class CFX_ExternalFontInfo final : public SystemFontInfoIface {
     uint32_t size = m_pInfo->GetFaceName(m_pInfo, hFont, nullptr, 0);
     if (size == 0)
       return false;
-    char* buffer = FX_Alloc(char, size);
+    char* buffer = FX_Calloc(char, size);
     size = m_pInfo->GetFaceName(m_pInfo, hFont, buffer, size);
     *name = ByteString(buffer, size);
     FX_Free(buffer);
@@ -217,7 +217,7 @@ FPDF_EXPORT FPDF_SYSFONTINFO* FPDF_CALLCONV FPDF_GetDefaultSystemFontInfo() {
     return nullptr;
 
   FPDF_SYSFONTINFO_DEFAULT* pFontInfoExt =
-      FX_Alloc(FPDF_SYSFONTINFO_DEFAULT, 1);
+      FX_Calloc(FPDF_SYSFONTINFO_DEFAULT, 1);
   pFontInfoExt->DeleteFont = DefaultDeleteFont;
   pFontInfoExt->EnumFonts = DefaultEnumFonts;
   pFontInfoExt->GetFaceName = DefaultGetFaceName;

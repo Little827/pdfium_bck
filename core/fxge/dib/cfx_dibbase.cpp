@@ -773,7 +773,7 @@ void CFX_DIBBase::BuildPalette() {
     return;
 
   if (GetBPP() == 1) {
-    m_pPalette.reset(FX_Alloc(uint32_t, 2));
+    m_pPalette.reset(FX_Calloc(uint32_t, 2));
     if (IsCmykImage()) {
       m_pPalette.get()[0] = 0xff;
       m_pPalette.get()[1] = 0;
@@ -782,7 +782,7 @@ void CFX_DIBBase::BuildPalette() {
       m_pPalette.get()[1] = 0xffffffff;
     }
   } else if (GetBPP() == 8) {
-    m_pPalette.reset(FX_Alloc(uint32_t, 256));
+    m_pPalette.reset(FX_Calloc(uint32_t, 256));
     if (IsCmykImage()) {
       for (int i = 0; i < 256; ++i)
         m_pPalette.get()[i] = 0xff - i;
@@ -927,7 +927,7 @@ void CFX_DIBBase::SetPalette(const uint32_t* pSrc) {
   }
   uint32_t pal_size = 1 << GetBPP();
   if (!m_pPalette)
-    m_pPalette.reset(FX_Alloc(uint32_t, pal_size));
+    m_pPalette.reset(FX_Calloc(uint32_t, pal_size));
   pal_size = std::min(pal_size, kPaletteSize);
   memcpy(m_pPalette.get(), pSrc, pal_size * sizeof(uint32_t));
 }
@@ -1264,7 +1264,7 @@ bool CFX_DIBBase::ConvertBuffer(
         return ConvertBuffer(FXDIB_8bppMask, dest_buf, dest_pitch, width,
                              height, pSrcBitmap, src_left, src_top, p_pal);
       }
-      p_pal->reset(FX_Alloc(uint32_t, 256));
+      p_pal->reset(FX_Calloc(uint32_t, 256));
       if (bpp_1_or_8 && pSrcBitmap->GetPalette()) {
         ConvertBuffer_Plt2PltRgb8(dest_buf, dest_pitch, width, height,
                                   pSrcBitmap, src_left, src_top, p_pal->get());

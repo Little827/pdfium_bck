@@ -72,7 +72,7 @@ public:
         m_stride = stride;
         if(height > m_max_height) {
             FX_Free(m_rows);
-            m_rows = FX_Alloc(int8u*, m_max_height = height);
+            m_rows = FX_Calloc(int8u*, m_max_height = height);
         }
         int8u* row_ptr = m_buf;
         if(stride < 0) {

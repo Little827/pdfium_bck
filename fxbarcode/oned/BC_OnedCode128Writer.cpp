@@ -152,7 +152,7 @@ uint8_t* CBC_OnedCode128Writer::EncodeImpl(const ByteString& contents,
       codeWidth += pattern[i];
   }
   outLength = codeWidth;
-  std::unique_ptr<uint8_t, FxFreeDeleter> result(FX_Alloc(uint8_t, outLength));
+  std::unique_ptr<uint8_t, FxFreeDeleter> result(FX_Calloc(uint8_t, outLength));
   int32_t pos = 0;
   for (size_t i = 0; i < patterns.size(); ++i) {
     const int8_t* pattern = CODE_PATTERNS[patterns[i]];

@@ -202,7 +202,7 @@ bool CPDF_DIB::Load(CPDF_Document* pDoc, const CPDF_Stream* pStream) {
   if (!pitch.IsValid())
     return false;
 
-  m_pLineBuf.reset(FX_Alloc(uint8_t, pitch.ValueOrDie()));
+  m_pLineBuf.reset(FX_Calloc(uint8_t, pitch.ValueOrDie()));
   LoadPalette();
   if (m_bColorKey) {
     m_bpp = 32;
@@ -211,7 +211,7 @@ bool CPDF_DIB::Load(CPDF_Document* pDoc, const CPDF_Stream* pStream) {
     if (!pitch.IsValid())
       return false;
 
-    m_pMaskedLine.reset(FX_Alloc(uint8_t, pitch.ValueOrDie()));
+    m_pMaskedLine.reset(FX_Calloc(uint8_t, pitch.ValueOrDie()));
   }
   m_Pitch = pitch.ValueOrDie();
   return true;
@@ -231,7 +231,7 @@ bool CPDF_DIB::ContinueToLoadMask() {
   if (!pitch.IsValid())
     return false;
 
-  m_pLineBuf.reset(FX_Alloc(uint8_t, pitch.ValueOrDie()));
+  m_pLineBuf.reset(FX_Calloc(uint8_t, pitch.ValueOrDie()));
   if (m_pColorSpace && m_bStdCS) {
     m_pColorSpace->EnableStdConversion(true);
   }
@@ -242,7 +242,7 @@ bool CPDF_DIB::ContinueToLoadMask() {
     pitch = fxcodec::CalculatePitch32(m_bpp, m_Width);
     if (!pitch.IsValid())
       return false;
-    m_pMaskedLine.reset(FX_Alloc(uint8_t, pitch.ValueOrDie()));
+    m_pMaskedLine.reset(FX_Calloc(uint8_t, pitch.ValueOrDie()));
   }
   m_Pitch = pitch.ValueOrDie();
   return true;

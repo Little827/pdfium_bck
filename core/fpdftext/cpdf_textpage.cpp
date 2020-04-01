@@ -637,7 +637,7 @@ void CPDF_TextPage::AddCharInfoByLRDirection(wchar_t wChar,
     return;
   }
 
-  std::unique_ptr<wchar_t, FxFreeDeleter> pDst(FX_Alloc(wchar_t, nCount));
+  std::unique_ptr<wchar_t, FxFreeDeleter> pDst(FX_Calloc(wchar_t, nCount));
   Unicode_GetNormalization(wChar, pDst.get());
   for (size_t nIndex = 0; nIndex < nCount; ++nIndex) {
     info2.m_Unicode = pDst.get()[nIndex];
@@ -666,7 +666,7 @@ void CPDF_TextPage::AddCharInfoByRLDirection(wchar_t wChar,
     return;
   }
 
-  std::unique_ptr<wchar_t, FxFreeDeleter> pDst(FX_Alloc(wchar_t, nCount));
+  std::unique_ptr<wchar_t, FxFreeDeleter> pDst(FX_Calloc(wchar_t, nCount));
   Unicode_GetNormalization(wChar, pDst.get());
   for (size_t nIndex = 0; nIndex < nCount; ++nIndex) {
     info2.m_Unicode = pDst.get()[nIndex];

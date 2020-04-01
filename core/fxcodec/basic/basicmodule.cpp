@@ -101,7 +101,7 @@ bool RLScanlineDecoder::Create(pdfium::span<const uint8_t> src_buf,
   m_Pitch = pitch.ValueOrDie();
   // Overflow should already have been checked before this is called.
   m_dwLineBytes = (static_cast<uint32_t>(width) * nComps * bpc + 7) / 8;
-  m_pScanline.reset(FX_Alloc(uint8_t, m_Pitch));
+  m_pScanline.reset(FX_Calloc(uint8_t, m_Pitch));
   return CheckDestSize();
 }
 
@@ -223,7 +223,7 @@ bool BasicModule::RunLengthEncode(
   // Edge case
   if (src_span.size() == 1) {
     *dest_size = 3;
-    dest_buf->reset(FX_Alloc(uint8_t, *dest_size));
+    dest_buf->reset(FX_Calloc(uint8_t, *dest_size));
     auto dest_buf_span = pdfium::make_span(dest_buf->get(), *dest_size);
     dest_buf_span[0] = 0;
     dest_buf_span[1] = src_span[0];
@@ -239,7 +239,7 @@ bool BasicModule::RunLengthEncode(
   estimated_size /= 3;
   estimated_size *= 4;
   estimated_size += 1;
-  dest_buf->reset(FX_Alloc(uint8_t, estimated_size.ValueOrDie()));
+  dest_buf->reset(FX_Calloc(uint8_t, estimated_size.ValueOrDie()));
 
   // Set up pointers.
   uint8_t* out = dest_buf->get();
@@ -319,7 +319,7 @@ bool BasicModule::A85Encode(pdfium::span<const uint8_t> src_span,
   estimated_size += 4;
   estimated_size += src_span.size() / 30;
   estimated_size += 2;
-  dest_buf->reset(FX_Alloc(uint8_t, estimated_size.ValueOrDie()));
+  dest_buf->reset(FX_Calloc(uint8_t, estimated_size.ValueOrDie()));
 
   // Set up pointers.
   uint8_t* out = dest_buf->get();

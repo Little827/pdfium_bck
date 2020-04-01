@@ -431,7 +431,7 @@ Gdiplus::GpPen* GdipCreatePenImpl(const CFX_GraphStateData* pGraphState,
   CallFunc(GdipSetPenLineJoin)(pPen, lineJoin);
   if (!pGraphState->m_DashArray.empty()) {
     float* pDashArray =
-        FX_Alloc(float, FxAlignToBoundary<2>(pGraphState->m_DashArray.size()));
+        FX_Calloc(float, FxAlignToBoundary<2>(pGraphState->m_DashArray.size()));
     int nCount = 0;
     float on_leftover = 0, off_leftover = 0;
     for (size_t i = 0; i < pGraphState->m_DashArray.size(); i += 2) {
@@ -694,7 +694,7 @@ PREVIEW3_DIBITMAP* LoadDIBitmap(WINDIB_Open_Args_ args) {
     bpp = 32;
     dest_pixel_format = PixelFormat32bppARGB;
   }
-  LPBYTE buf = FX_Alloc(BYTE, info_size);
+  LPBYTE buf = FX_Calloc(BYTE, info_size);
   BITMAPINFOHEADER* pbmih = (BITMAPINFOHEADER*)buf;
   pbmih->biBitCount = bpp;
   pbmih->biCompression = BI_RGB;
@@ -702,7 +702,7 @@ PREVIEW3_DIBITMAP* LoadDIBitmap(WINDIB_Open_Args_ args) {
   pbmih->biPlanes = 1;
   pbmih->biWidth = width;
   Gdiplus::Rect rect(0, 0, width, height);
-  Gdiplus::BitmapData* pBitmapData = FX_Alloc(Gdiplus::BitmapData, 1);
+  Gdiplus::BitmapData* pBitmapData = FX_Calloc(Gdiplus::BitmapData, 1);
   CallFunc(GdipBitmapLockBits)(pBitmap, &rect, Gdiplus::ImageLockModeRead,
                                dest_pixel_format, pBitmapData);
   if (pixel_format == PixelFormat1bppIndexed ||
@@ -721,7 +721,7 @@ PREVIEW3_DIBITMAP* LoadDIBitmap(WINDIB_Open_Args_ args) {
       ppal[i] = pal.Entries[i] & 0x00ffffff;
     }
   }
-  PREVIEW3_DIBITMAP* pInfo = FX_Alloc(PREVIEW3_DIBITMAP, 1);
+  PREVIEW3_DIBITMAP* pInfo = FX_Calloc(PREVIEW3_DIBITMAP, 1);
   pInfo->pbmi = (BITMAPINFO*)buf;
   pInfo->pScan0 = (LPBYTE)pBitmapData->Scan0;
   pInfo->Stride = pBitmapData->Stride;
@@ -974,7 +974,7 @@ RetainPtr<CFX_DIBitmap> CGdiplusExt::LoadDIBitmap(WINDIB_Open_Args_ args) {
   int height = abs(pInfo->pbmi->bmiHeader.biHeight);
   int width = pInfo->pbmi->bmiHeader.biWidth;
   int dest_pitch = (width * pInfo->pbmi->bmiHeader.biBitCount + 31) / 32 * 4;
-  LPBYTE pData = FX_Alloc2D(BYTE, dest_pitch, height);
+  LPBYTE pData = FX_Calloc2D(BYTE, dest_pitch, height);
   if (dest_pitch == pInfo->Stride) {
     memcpy(pData, pInfo->pScan0, dest_pitch * height);
   } else {

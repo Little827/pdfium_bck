@@ -12,8 +12,8 @@
 
 TEST(fxcrt, FxFreeDeleter) {
   std::unique_ptr<int, FxFreeDeleter> empty(nullptr);
-  std::unique_ptr<int, FxFreeDeleter> thing(FX_Alloc(int, 1));
-  std::unique_ptr<int, FxFreeDeleter> several(FX_Alloc(int, 100));
+  std::unique_ptr<int, FxFreeDeleter> thing(FX_Calloc(int, 1));
+  std::unique_ptr<int, FxFreeDeleter> several(FX_Calloc(int, 100));
   EXPECT_FALSE(empty);
   EXPECT_TRUE(thing);
   EXPECT_TRUE(several);

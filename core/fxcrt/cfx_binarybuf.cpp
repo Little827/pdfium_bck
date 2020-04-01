@@ -65,7 +65,7 @@ void CFX_BinaryBuf::ExpandBuf(size_t add_size) {
   m_AllocSize = new_size.ValueOrDie();
   m_pBuffer.reset(m_pBuffer
                       ? FX_Realloc(uint8_t, m_pBuffer.release(), m_AllocSize)
-                      : FX_Alloc(uint8_t, m_AllocSize));
+                      : FX_Calloc(uint8_t, m_AllocSize));
 }
 
 void CFX_BinaryBuf::AppendSpan(pdfium::span<const uint8_t> span) {

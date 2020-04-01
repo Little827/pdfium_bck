@@ -70,7 +70,7 @@ ByteString GetPSNameFromTT(HDC hDC) {
   ByteString result;
   DWORD size = ::GetFontData(hDC, 'eman', 0, nullptr, 0);
   if (size != GDI_ERROR) {
-    LPBYTE buffer = FX_Alloc(BYTE, size);
+    LPBYTE buffer = FX_Calloc(BYTE, size);
     ::GetFontData(hDC, 'eman', 0, buffer, size);
     result = GetNameFromTT({buffer, size}, 6);
     FX_Free(buffer);
@@ -550,7 +550,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
     return nullptr;
   }
 
-  LPBYTE tm_buf = FX_Alloc(BYTE, tm_size);
+  LPBYTE tm_buf = FX_Calloc(BYTE, tm_size);
   OUTLINETEXTMETRIC* ptm = reinterpret_cast<OUTLINETEXTMETRIC*>(tm_buf);
   GetOutlineTextMetrics(hDC, tm_size, ptm);
   int flags = CalculateFlags(false, pLogFont->lfItalic != 0,

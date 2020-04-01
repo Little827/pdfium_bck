@@ -91,7 +91,7 @@ bool CFX_MemoryStream::WriteBlockAtOffset(const void* buffer,
     if (m_data)
       m_data.reset(FX_Realloc(uint8_t, m_data.release(), m_nTotalSize));
     else
-      m_data.reset(FX_Alloc(uint8_t, m_nTotalSize));
+      m_data.reset(FX_Calloc(uint8_t, m_nTotalSize));
   }
   m_nCurPos = new_pos;
 

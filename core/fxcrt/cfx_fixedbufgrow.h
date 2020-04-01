@@ -16,7 +16,7 @@ class CFX_FixedBufGrow {
  public:
   explicit CFX_FixedBufGrow(size_t data_size) {
     if (data_size > FixedSize) {
-      m_pGrowData.reset(FX_Alloc(DataType, data_size));
+      m_pGrowData.reset(FX_Calloc(DataType, data_size));
       return;
     }
     memset(m_FixedData, 0, sizeof(DataType) * FixedSize);

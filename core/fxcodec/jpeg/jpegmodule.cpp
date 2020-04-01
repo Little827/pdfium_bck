@@ -119,7 +119,7 @@ static void src_skip_data1(jpeg_decompress_struct* cinfo, long num) {
 }
 
 static void* jpeg_alloc_func(unsigned int size) {
-  return FX_Alloc(char, size);
+  return FX_Calloc(char, size);
 }
 
 static void jpeg_free_func(void* p) {
@@ -365,7 +365,7 @@ bool JpegDecoder::Create(pdfium::span<const uint8_t> src_span,
     return false;
 
   CalcPitch();
-  m_pScanlineBuf.reset(FX_Alloc(uint8_t, m_Pitch));
+  m_pScanlineBuf.reset(FX_Calloc(uint8_t, m_Pitch));
   m_nComps = m_Cinfo.num_components;
   m_bpc = 8;
   m_bStarted = false;
@@ -607,11 +607,11 @@ bool JpegModule::JpegEncode(const RetainPtr<CFX_DIBBase>& pSource,
     return false;
 
   uint32_t dest_buf_length = safe_buf_len.ValueOrDie();
-  *dest_buf = FX_TryAlloc(uint8_t, dest_buf_length);
+  *dest_buf = FX_TryCalloc(uint8_t, dest_buf_length);
   const int MIN_TRY_BUF_LEN = 1024;
   while (!(*dest_buf) && dest_buf_length > MIN_TRY_BUF_LEN) {
     dest_buf_length >>= 1;
-    *dest_buf = FX_TryAlloc(uint8_t, dest_buf_length);
+    *dest_buf = FX_TryCalloc(uint8_t, dest_buf_length);
   }
   if (!(*dest_buf))
     return false;
@@ -635,7 +635,7 @@ bool JpegModule::JpegEncode(const RetainPtr<CFX_DIBBase>& pSource,
   }
   uint8_t* line_buf = nullptr;
   if (nComponents > 1)
-    line_buf = FX_Alloc2D(uint8_t, width, nComponents);
+    line_buf = FX_Calloc2D(uint8_t, width, nComponents);
 
   jpeg_set_defaults(&cinfo);
   jpeg_start_compress(&cinfo, TRUE);

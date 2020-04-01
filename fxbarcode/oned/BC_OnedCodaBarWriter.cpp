@@ -136,7 +136,8 @@ uint8_t* CBC_OnedCodaBarWriter::EncodeImpl(const ByteString& contents,
                                            int32_t& outLength) {
   ByteString data = m_chStart + contents + m_chEnd;
   m_iContentLen = data.GetLength();
-  uint8_t* result = FX_Alloc2D(uint8_t, m_iWideNarrRatio * 7, data.GetLength());
+  uint8_t* result =
+      FX_Calloc2D(uint8_t, m_iWideNarrRatio * 7, data.GetLength());
   char ch;
   int32_t position = 0;
   for (size_t index = 0; index < data.GetLength(); index++) {

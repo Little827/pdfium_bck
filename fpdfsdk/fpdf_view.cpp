@@ -1057,7 +1057,7 @@ FPDF_EXPORT FPDF_RESULT FPDF_CALLCONV FPDF_BStr_Set(FPDF_BSTR* bstr,
   if (bstr->str && bstr->len < length)
     bstr->str = FX_Realloc(char, bstr->str, length + 1);
   else if (!bstr->str)
-    bstr->str = FX_Alloc(char, length + 1);
+    bstr->str = FX_Calloc(char, length + 1);
 
   bstr->str[length] = 0;
   memcpy(bstr->str, cstr, length);

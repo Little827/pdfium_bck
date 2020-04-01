@@ -58,8 +58,8 @@ public:
         if(max_len > m_max_len) {
             FX_Free(m_spans);
             FX_Free(m_covers);
-            m_covers  = FX_Alloc( cover_type , max_len);
-            m_spans   = FX_Alloc( span       , max_len);
+            m_covers  = FX_Calloc( cover_type , max_len);
+            m_spans   = FX_Calloc( span       , max_len);
             m_max_len = max_len;
         }
         m_last_x        = 0x7FFFFFF0;

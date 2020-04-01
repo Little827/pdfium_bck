@@ -54,7 +54,7 @@ void path_storage::allocate_block(unsigned nb)
 {
     if(nb >= m_max_blocks) {
         float** new_coords =
-            FX_Alloc2D(float*, m_max_blocks + block_pool, 2);
+            FX_Calloc2D(float*, m_max_blocks + block_pool, 2);
         unsigned char** new_cmds =
             (unsigned char**)(new_coords + m_max_blocks + block_pool);
         if(m_coord_blocks) {
@@ -67,7 +67,7 @@ void path_storage::allocate_block(unsigned nb)
         m_max_blocks += block_pool;
     }
     m_coord_blocks[nb] =
-        FX_Alloc( float, block_size * 2 +
+        FX_Calloc( float, block_size * 2 +
                   block_size /
                   (sizeof(float) / sizeof(unsigned char)));
     m_cmd_blocks[nb]  =

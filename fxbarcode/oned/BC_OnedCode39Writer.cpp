@@ -183,7 +183,7 @@ uint8_t* CBC_OnedCode39Writer::EncodeImpl(const ByteString& contents,
     }
   }
   outlength = codeWidth;
-  std::unique_ptr<uint8_t, FxFreeDeleter> result(FX_Alloc(uint8_t, codeWidth));
+  std::unique_ptr<uint8_t, FxFreeDeleter> result(FX_Calloc(uint8_t, codeWidth));
   ToIntArray(kOnedCode39CharacterEncoding[39], widths);
   int32_t pos = AppendPattern(result.get(), 0, widths, 9, true);
 

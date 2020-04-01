@@ -704,7 +704,7 @@ std::unique_ptr<uint8_t, FxFreeDeleter> CFX_FontMapper::RawBytesForIndex(
     return nullptr;
 
   std::unique_ptr<uint8_t, FxFreeDeleter> pBuffer(
-      FX_Alloc(uint8_t, required_size + 1));
+      FX_Calloc(uint8_t, required_size + 1));
   *returned_length =
       m_pFontInfo->GetFontData(hFont, 0, {pBuffer.get(), required_size});
   return pBuffer;
@@ -731,7 +731,7 @@ RetainPtr<CFX_Face> CFX_FontMapper::GetCachedTTCFace(void* hFont,
       m_pFontMgr->GetCachedTTCFontDesc(ttc_size, checksum);
   if (!pFontDesc) {
     std::unique_ptr<uint8_t, FxFreeDeleter> pFontData(
-        FX_Alloc(uint8_t, ttc_size));
+        FX_Calloc(uint8_t, ttc_size));
     m_pFontInfo->GetFontData(hFont, kTableTTCF, {pFontData.get(), ttc_size});
     pFontDesc = m_pFontMgr->AddCachedTTCFontDesc(
         ttc_size, checksum, std::move(pFontData), ttc_size);
@@ -762,7 +762,7 @@ RetainPtr<CFX_Face> CFX_FontMapper::GetCachedFace(void* hFont,
       m_pFontMgr->GetCachedFontDesc(SubstName, weight, bItalic);
   if (!pFontDesc) {
     std::unique_ptr<uint8_t, FxFreeDeleter> pFontData(
-        FX_Alloc(uint8_t, font_size));
+        FX_Calloc(uint8_t, font_size));
     m_pFontInfo->GetFontData(hFont, 0, {pFontData.get(), font_size});
     pFontDesc = m_pFontMgr->AddCachedFontDesc(SubstName, weight, bItalic,
                                               std::move(pFontData), font_size);

@@ -205,7 +205,7 @@ void CFX_FolderFontInfo::ScanFile(const ByteString& path) {
 
   const size_t face_bytes = safe_face_bytes.ValueOrDie();
   std::unique_ptr<uint8_t, FxFreeDeleter> offsets(
-      FX_Alloc(uint8_t, face_bytes));
+      FX_Calloc(uint8_t, face_bytes));
   readCnt = fread(offsets.get(), 1, face_bytes, pFile.get());
   if (readCnt != face_bytes)
     return;

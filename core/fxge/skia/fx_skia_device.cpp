@@ -191,7 +191,7 @@ void DebugShowSkiaPath(const SkPath& path) {
   SkDynamicMemoryWStream stream;
   path.dump(&stream, false, false);
   std::unique_ptr<char, FxFreeDeleter> storage;
-  storage.reset(FX_Alloc(char, stream.bytesWritten()));
+  storage.reset(FX_Calloc(char, stream.bytesWritten()));
   stream.copyTo(storage.get());
   printf("%.*s", (int)stream.bytesWritten(), storage.get());
 #endif  // SHOW_SKIA_PATH_SHORTHAND
@@ -640,7 +640,7 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
   int rowBytes = pSource->GetPitch();
   switch (pSource->GetBPP()) {
     case 1: {
-      dst8Storage.reset(FX_Alloc2D(uint8_t, width, height));
+      dst8Storage.reset(FX_Calloc2D(uint8_t, width, height));
       uint8_t* dst8Pixels = dst8Storage.get();
       for (int y = 0; y < height; ++y) {
         const uint8_t* srcRow =
@@ -656,7 +656,7 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
     case 8:
       // we upscale ctables to 32bit.
       if (pSource->GetPalette()) {
-        dst32Storage.reset(FX_Alloc2D(uint32_t, width, height));
+        dst32Storage.reset(FX_Calloc2D(uint32_t, width, height));
         SkPMColor* dst32Pixels = dst32Storage.get();
         const SkPMColor* ctable = pSource->GetPalette();
         const unsigned ctableSize = pSource->GetPaletteSize();
@@ -678,7 +678,7 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
       }
       break;
     case 24: {
-      dst32Storage.reset(FX_Alloc2D(uint32_t, width, height));
+      dst32Storage.reset(FX_Calloc2D(uint32_t, width, height));
       uint32_t* dst32Pixels = dst32Storage.get();
       for (int y = 0; y < height; ++y) {
         const uint8_t* srcRow =
@@ -1573,7 +1573,7 @@ void CFX_SkiaDeviceDriver::PaintStroke(SkPaint* spaint,
   if (!pGraphState->m_DashArray.empty()) {
     size_t count = (pGraphState->m_DashArray.size() + 1) / 2;
     std::unique_ptr<SkScalar, FxFreeDeleter> intervals(
-        FX_Alloc2D(SkScalar, count, sizeof(SkScalar)));
+        FX_Calloc2D(SkScalar, count, sizeof(SkScalar)));
     // Set dash pattern
     for (size_t i = 0; i < count; i++) {
       float on = pGraphState->m_DashArray[i * 2];

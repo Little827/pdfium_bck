@@ -2825,7 +2825,7 @@ void CFX_ScanlineCompositor::InitSourcePalette(FXDIB_Format src_format,
   m_pSrcPalette = nullptr;
   if (pSrcPalette) {
     if (bIsDestBpp8) {
-      uint8_t* gray_pal = FX_Alloc(uint8_t, pal_count);
+      uint8_t* gray_pal = FX_Calloc(uint8_t, pal_count);
       m_pSrcPalette.reset(reinterpret_cast<uint32_t*>(gray_pal));
       if (bIsSrcCmyk) {
         for (int i = 0; i < pal_count; ++i) {
@@ -2847,7 +2847,7 @@ void CFX_ScanlineCompositor::InitSourcePalette(FXDIB_Format src_format,
       }
       return;
     }
-    m_pSrcPalette.reset(FX_Alloc(uint32_t, pal_count));
+    m_pSrcPalette.reset(FX_Calloc(uint32_t, pal_count));
     uint32_t* pPalette = m_pSrcPalette.get();
     if (bIsDstCmyk == bIsSrcCmyk) {
       memcpy(pPalette, pSrcPalette, pal_count * sizeof(uint32_t));
@@ -2866,7 +2866,7 @@ void CFX_ScanlineCompositor::InitSourcePalette(FXDIB_Format src_format,
     return;
   }
   if (bIsDestBpp8) {
-    uint8_t* gray_pal = FX_Alloc(uint8_t, pal_count);
+    uint8_t* gray_pal = FX_Calloc(uint8_t, pal_count);
     if (pal_count == 2) {
       gray_pal[0] = 0;
       gray_pal[1] = 255;
@@ -2877,7 +2877,7 @@ void CFX_ScanlineCompositor::InitSourcePalette(FXDIB_Format src_format,
     m_pSrcPalette.reset(reinterpret_cast<uint32_t*>(gray_pal));
     return;
   }
-  m_pSrcPalette.reset(FX_Alloc(uint32_t, pal_count));
+  m_pSrcPalette.reset(FX_Calloc(uint32_t, pal_count));
   uint32_t* pPalette = m_pSrcPalette.get();
   if (pal_count == 2) {
     pPalette[0] = bIsSrcCmyk ? 255 : 0xff000000;
