@@ -108,6 +108,24 @@
       "revId": "a5e39678ab6b5e18d3f1a95aba724b41531a9076",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe413815_5e9f45c6",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-01T20:52:51Z",
+      "side": 1,
+      "message": "Of course, since the chained CL has red bots and does not look ready to be reviewed yet, it may change, so don\u0027t take this suggestion if the chained CL changes significantly and this no longer makes sense.",
+      "parentUuid": "c8a349a1_3783ced3",
+      "revId": "a5e39678ab6b5e18d3f1a95aba724b41531a9076",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
