@@ -138,6 +138,7 @@ def GetBooleanGnArg(arg_name, build_dir, verbose=False):
   '''Extract the value of a boolean flag in args.gn'''
   cwd = os.getcwd()
   os.chdir(build_dir)
+  print "GetBooleanGnArg: build_dir = " + build_dir
   gn_args_output = subprocess.check_output(
       ['gn', 'args', '.', '--list=%s' % arg_name, '--short'])
   os.chdir(cwd)
