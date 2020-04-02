@@ -28,12 +28,16 @@ CPDF_Dest CPDF_Link::GetDest(CPDF_Document* pDoc) {
     return CPDF_Dest();
 
   if (pDest->IsString() || pDest->IsName()) {
-    CPDF_NameTree name_tree(pDoc, "Dests");
-    return CPDF_Dest(name_tree.LookupNamedDest(pDoc, pDest->GetUnicodeText()));
+    auto name_tree = CPDF_NameTree::Create(pDoc, "Dests");
+    if (!name_tree)
+      return CPDF_Dest();
+    return CPDF_Dest(name_tree->LookupNamedDest(pDoc, pDest->GetUnicodeText()));
   }
-  if (CPDF_Array* pArray = pDest->AsArray())
-    return CPDF_Dest(pArray);
-  return CPDF_Dest();
+
+  const CPDF_Array* pArray = pDest->AsArray();
+  if (!pArray)
+    return CPDF_Dest();
+  return CPDF_Dest(pArray);
 }
 
 CPDF_Action CPDF_Link::GetAction() {

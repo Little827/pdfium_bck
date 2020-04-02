@@ -25,7 +25,7 @@ class CPDF_Bookmark {
   const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
 
   WideString GetTitle() const;
-  CPDF_Dest GetDest(CPDF_Document* pDocument) const;
+  CPDF_Dest GetDest(CPDF_Document* pDoc) const;
   CPDF_Action GetAction() const;
 
  private:

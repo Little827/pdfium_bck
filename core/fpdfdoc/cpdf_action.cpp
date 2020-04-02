@@ -61,14 +61,18 @@ CPDF_Dest CPDF_Action::GetDest(CPDF_Document* pDoc) const {
   const CPDF_Object* pDest = m_pDict->GetDirectObjectFor("D");
   if (!pDest)
     return CPDF_Dest();
-  if (pDest->IsString() || pDest->IsName()) {
-    CPDF_NameTree name_tree(pDoc, "Dests");
-    return CPDF_Dest(name_tree.LookupNamedDest(pDoc, pDest->GetUnicodeText()));
-  }
-  if (const CPDF_Array* pArray = pDest->AsArray())
-    return CPDF_Dest(pArray);
 
-  return CPDF_Dest();
+  if (pDest->IsString() || pDest->IsName()) {
+    auto name_tree = CPDF_NameTree::Create(pDoc, "Dests");
+    if (!name_tree)
+      return CPDF_Dest();
+    return CPDF_Dest(name_tree->LookupNamedDest(pDoc, pDest->GetUnicodeText()));
+  }
+
+  const CPDF_Array* pArray = pDest->AsArray();
+  if (!pArray)
+    return CPDF_Dest();
+  return CPDF_Dest(pArray);
 }
 
 WideString CPDF_Action::GetFilePath() const {
