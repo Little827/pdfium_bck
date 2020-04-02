@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4bb4db7_ae134cd5",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-02T18:52:52Z",
+      "side": 1,
+      "message": "This CL only updated the comment but forgot to update the actual regex pattern.",
+      "revId": "ddb5f509d59adff3a450df4edc6330678e7d7ab7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
