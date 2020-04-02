@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92058757_a020e3bc",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-02T20:16:39Z",
+      "side": 1,
+      "message": "If you look in common.py, you\u0027ll see RunCommand() returns either None on success or subprocess.CalledProcessError on failure, or raises an exception. Given Python errors have names like \"CalledProcessError\" or \"ValueError\", having a function called \"_ImageDiffError\" is confusing. Can you give this function a better name to reflect what it does?",
+      "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "977653e8_fea0ea6e",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-02T20:16:39Z",
+      "side": 1,
+      "message": "- Use early returns to simplify the code.\n- No need for the |error| variable anymore.\n\nif not os.path.exists(expected_path):\n  return 1\n\n...\nreturn common.RunCommand(cmd)",
+      "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce5c2507_7732c3e3",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-02T20:16:39Z",
+      "side": 1,
+      "message": "Since this is now used in 2 places, and they are not sitting close to each other, consider add a user defined exception and using that in both places, instead of an arbitrary value of 1 that could mean anything.",
+      "range": {
+        "startLine": 55,
+        "startChar": 14,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
