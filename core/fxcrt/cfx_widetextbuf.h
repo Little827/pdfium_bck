@@ -34,7 +34,7 @@ class CFX_WideTextBuf final : public CFX_BinaryBuf {
   CFX_WideTextBuf& operator<<(const CFX_WideTextBuf& buf);
 
  private:
-  void ExpandWideBuf(size_t char_count);
+  pdfium::span<wchar_t> ExpandWideBuf(size_t char_count);
 };
 
 #endif  // CORE_FXCRT_CFX_WIDETEXTBUF_H_
