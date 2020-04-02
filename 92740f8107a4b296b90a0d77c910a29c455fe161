@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4006f7be_9299e097",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-02T17:31:35Z",
+      "side": 1,
+      "message": "Nit: I feel like this isn\u0027t a very readable way to construct the templates, but I don\u0027t have a better suggestion, and it\u0027s not urgent.",
+      "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde83105_241f4b0e",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-02T17:31:35Z",
+      "side": 1,
+      "message": "Don\u0027t need this local variable; just return the list directly. (You may want to keep it if you want to make the contents conditional on the supported features, however.)",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 18
+      },
+      "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b425938_d375a896",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-02T17:31:35Z",
+      "side": 1,
+      "message": "A terminal \",\" here will ensure the formatter always breaks this list with one element per line . (Although maybe it does this already; have you run \"git cl format\" on this change?)",
+      "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

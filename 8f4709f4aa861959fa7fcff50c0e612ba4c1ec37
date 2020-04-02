@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "58f8969c_65694029",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-02T17:31:35Z",
+      "side": 1,
+      "message": "To clarify, based on our earlier conversation:\n\nIf you have expected_paths \u003d [a, b, c, d, e], why can\u0027t you just do something like:\n\n  for expected_path in expected_paths:\n    diff \u003d HasDiff(expected_path, actual_path)\n    if diff is fatal:\n      fail\n      break\n\nWhy is it important to have a separate if block for each kind of path?",
+      "parentUuid": "9a4f6db7_44ecae4a",
+      "revId": "8f4709f4aa861959fa7fcff50c0e612ba4c1ec37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8237a16f_bf0a9c91",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 4
