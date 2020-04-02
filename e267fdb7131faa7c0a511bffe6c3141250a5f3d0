@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1585784768 -0700\nnonce AM5BpQXGfgjbLfTVRk5GlO+Y4Yg3rCwQLf/tk/zz0p26Ztmwbo/gAJjTr12hFHxeKY1dsv2GQr6y\n\n0000000000000000000000000000000000000000 e267fdb7131faa7c0a511bffe6c3141250a5f3d0 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6FJ8AACgkQqzYtYVpm\n/XtF1AgAkUzR4lcIvHxEDpHGRQ6X7OJBNfY59Cg/Y/RnvusWEO7AwwwJ5mR8ycc2\noi+Lxm+dfeuaqCnq5fjUqPRhVXEoNuujRGxr1EUD5t5xIXXPnWhFa1MT0FHzv5Su\n/smicngpFUydYipNYRdzte5+59jPBd7FFJfmM6NBgmB8WFKDwBPIo/mNqq2ebP6L\nNPjHsAIKkDq94XbWPyJxGwHOJlaXT7fd+P+mvj8Oqorn1fMeQD7r0BRkE7FTMhGa\nsiOfbD7RhhoaAMfdoXXXQvmGotXTllPAWw3mq7uj8ZZ4HcaNH0zbcXUqsX8hD18K\nR64BRcqFBWfMLHMt+0Af7NxnLLHyXw\u003d\u003d\n\u003dO+qZ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e38b14bc_c1a4c746",
+        "filename": "core/fpdfdoc/cpdf_nametree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-02T01:10:08Z",
+      "side": 1,
+      "message": "follow-up: maybe the logic in here should be part of a new static CPDF_NameTree::Create() so it could return nullptr.",
+      "range": {
+        "startLine": 301,
+        "startChar": 15,
+        "endLine": 301,
+        "endChar": 28
+      },
+      "revId": "e267fdb7131faa7c0a511bffe6c3141250a5f3d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc577536_53875965",
+        "filename": "core/fpdfdoc/cpdf_nametree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-02T01:10:08Z",
+      "side": 1,
+      "message": "nit: maybe add // Private ctor.\nto \u0027splain why we aren\u0027t using MakeUnique\u003c\u003e",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 54
+      },
+      "revId": "e267fdb7131faa7c0a511bffe6c3141250a5f3d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
