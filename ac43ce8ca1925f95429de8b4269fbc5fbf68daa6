@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "4a3b6320_5b4bf474",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T00:27:06Z",
+      "side": 1,
+      "message": "As always, once the CL changes, remember to keep the CL description in sync.",
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26689b94_a9648b78",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T00:27:06Z",
+      "side": 1,
+      "message": "NotFoundError(\"put an error message here\"), otherwise line 93 will only print: \"\"FAILURE: input_filename.pdf; \", with an empty string where the error message should go.",
+      "range": {
+        "startLine": 54,
+        "startChar": 14,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8157b3_58d0cf43",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T00:27:06Z",
+      "side": 1,
+      "message": "Just return the NotFoundError(). Raising the error, catching it, and then returning it is a convoluted way of accomplishing the same thing.",
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "228da9c9_d4f81f6a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 7
@@ -13,6 +70,30 @@
       "writtenOn": "2020-04-03T00:08:34Z",
       "side": 1,
       "message": "To check whether the error is NotFoundError type, I am using __class__.__name__  to check the class name. It doesn\u0027t look good to me but it\u0027s so far the only solution I can find. Do you have any suggestion on improving this?",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 64
+      },
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36914d7_30d1a0cb",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T00:27:06Z",
+      "side": 1,
+      "message": "Use isinstance().",
+      "parentUuid": "228da9c9_d4f81f6a",
       "range": {
         "startLine": 91,
         "startChar": 13,
