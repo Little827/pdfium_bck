@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5752b6f_216ed536",
+        "filename": "testing/resources/pixel/reset_button_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T06:51:27Z",
+      "side": 1,
+      "message": "Please remember to optimize this PNG, like in patch set 2. It should come out to about 400 bytes.",
+      "revId": "791a91c28f52b7436d9b22cb998e2f675d760d6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
