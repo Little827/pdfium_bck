@@ -16,6 +16,24 @@
       "revId": "791a91c28f52b7436d9b22cb998e2f675d760d6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff23ce4_8b04cf1d",
+        "filename": "testing/resources/pixel/reset_button_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-03T07:52:34Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. Optimized it now.",
+      "parentUuid": "f5752b6f_216ed536",
+      "revId": "791a91c28f52b7436d9b22cb998e2f675d760d6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
