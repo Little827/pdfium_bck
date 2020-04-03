@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "eb9d5e21_f576be82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-04-03T10:24:28Z",
+      "side": 1,
+      "message": "Got it. I can work on deletion API and raise another CL for the same after this CL.",
+      "parentUuid": "6110e622_186876e3",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "232288ef_b7a9da4d",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 6
@@ -190,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "e453d55d_7a96b300",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-04-03T10:24:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cf41c8f_5b2c15f5",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901daf94_60e1002b",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 6
@@ -237,6 +273,24 @@
       "side": 1,
       "message": "Nevermind on point 3.",
       "parentUuid": "6f9610b8_21e31b04",
+      "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6ecac43_61126490",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2020-04-03T10:24:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96d8542f_dcdc4cb6",
       "revId": "530cf9e48c48daf33e3fea4b9e9d74ea639365a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
