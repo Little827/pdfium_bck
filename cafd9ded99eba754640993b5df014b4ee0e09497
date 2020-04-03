@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1ed7bdb_13425aa8",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T22:45:13Z",
+      "side": 1,
+      "message": "How about we use int32_t, which is always 32-bits, rather than long, which is 32 bits or more? That makes the limit consistent across platforms.",
+      "range": {
+        "startLine": 436,
+        "startChar": 50,
+        "endLine": 436,
+        "endChar": 54
+      },
+      "revId": "cafd9ded99eba754640993b5df014b4ee0e09497",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bd2e9c_3b861894",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T22:45:13Z",
+      "side": 1,
+      "message": "nit: Needs a space after the period.",
+      "range": {
+        "startLine": 204,
+        "startChar": 50,
+        "endLine": 204,
+        "endChar": 60
+      },
+      "revId": "cafd9ded99eba754640993b5df014b4ee0e09497",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
