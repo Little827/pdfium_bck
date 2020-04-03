@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "228da9c9_d4f81f6a",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-03T00:08:34Z",
+      "side": 1,
+      "message": "To check whether the error is NotFoundError type, I am using __class__.__name__  to check the class name. It doesn\u0027t look good to me but it\u0027s so far the only solution I can find. Do you have any suggestion on improving this?",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 64
+      },
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

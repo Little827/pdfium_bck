@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76813d8c_c45c2f2d",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-03T00:08:34Z",
+      "side": 1,
+      "message": "After using user defined exception NotFoundError, this function returns None, NotFoundError, or Error with printing out the diff percentage. Renamed it to _GetImageDiff() in the new patch set.",
+      "parentUuid": "92058757_a020e3bc",
+      "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "977653e8_fea0ea6e",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ddc7be_ca60d850",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-03T00:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "977653e8_fea0ea6e",
+      "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3eda4db_d9bc0e47",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-03T00:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce5c2507_7732c3e3",
+      "range": {
+        "startLine": 55,
+        "startChar": 14,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "54c3627fef8bc27c6cc4acc6f5cb25a4fa9464ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
