@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a55fd88d_c6516e7c",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T06:40:27Z",
+      "side": 1,
+      "message": "Maybe \"platform_error\" ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "44f8947c5ad64aa57ea42078054546be9fd054c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
