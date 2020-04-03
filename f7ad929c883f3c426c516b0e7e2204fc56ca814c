@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "823c7a5c_2e81ed2c",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "When the conditional is multi-line, add braces.",
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93095ec_55017e6f",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "If the goal is to just check if |point_count| will fit in a long, then just use IsValueInRangeForNumericType(), not FX_SAFE_SIZE_T.",
+      "range": {
+        "startLine": 435,
+        "startChar": 26,
+        "endLine": 435,
+        "endChar": 59
+      },
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67e520b_c1571b09",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "This is a repeat of line 434. (Got copied instead of moved.)",
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5e6b17_a1284892",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "If the code above already verified |annot| is of type FPDF_ANNOT_INK, then this cannot happen.",
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6dff2a1_f7805f67",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "Here, use a FX_SAFE_SIZE_T, because we need to do math operations to perform the check. Suggested code:\n\nFX_SAFE_SIZE_T safe_ink_size \u003d inklist-\u003esize();\nsafe_ink_size +\u003d 1;\nif (!safe_ink_size.IsValid\u003cint\u003e())\n  return -1;",
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a1f421_40d68940",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "Please sync your local tree before uploading a new patchset. This method got renamed to AppendNew.",
+      "range": {
+        "startLine": 454,
+        "startChar": 40,
+        "endLine": 454,
+        "endChar": 46
+      },
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe12558_e974379c",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "The static_casts here and below are unnecessary.",
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01a7976e_1ae2003c",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "Let\u0027s also keep the documentation in sync. Please also flip the ordering here.",
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2da21c_39219381",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T01:25:39Z",
+      "side": 1,
+      "message": "Please add a note that |point_count| has a limit.",
+      "revId": "f7ad929c883f3c426c516b0e7e2204fc56ca814c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
