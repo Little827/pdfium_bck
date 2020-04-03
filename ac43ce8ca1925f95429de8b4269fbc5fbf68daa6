@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "41fab17c_31857c99",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-03T00:37:16Z",
+      "side": 1,
+      "message": "Or \"_RunImageDiffCommand\" if that\u0027s not too long. GetImageDiff() makes me think it\u0027s going to return some representation of the difference between images.",
+      "parentUuid": "82fbfc24_7ace542f",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26689b94_a9648b78",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 7
