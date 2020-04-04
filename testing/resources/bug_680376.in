@@ -85,7 +85,7 @@ endobj
 >>
 endobj
 % Old-style top-level Dests dictionary. Note that FirstAlternate
-% intentionally references non-exisstant page 11 and LastAlternate
+% intentionally references non-existant page 11 and LastAlternate
 % intentionally references non-existant object 999.
 {{object 14 0}} <<
   /FirstAlternate [11 /XYZ 200 400 800]
