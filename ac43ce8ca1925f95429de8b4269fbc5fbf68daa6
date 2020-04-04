@@ -226,6 +226,24 @@
     },
     {
       "key": {
+        "uuid": "763e158e_30bae582",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-04T01:16:12Z",
+      "side": 1,
+      "message": "I don\u0027t think consistency with common.RunCommand() should be the goal here; we should build the abstraction that makes sense to the caller of _RunImageDiffCommand().\n\nLet\u0027s say we rewrote the function to raise NotFoundError instead of returning:\n\n  def _RunImageDiffCommand(self, expected_path, actual_path):\n    if not os.path.exists(expected_path):\n      raise NotFoundError(\u0027%s does not exist.\u0027 % expected_path)\n    ...\n\nThen instead of this:\n\n  # When failed, we check against platform based results.\n  platform_error \u003d self._RunImageDiffCommand(platform_expected_path,\n                                             actual_path)\n  if platform_error:\n    if not isinstance(platform_error, NotFoundError):\n      error \u003d platform_error\n    print \"FAILURE: \" + input_filename + \"; \" + str(error)\n    return True\n\nwe could have written this:\n\n  # When failed, we check against platform based results.\n  try:\n    error \u003d self._RunImageDiffCommand(platform_expected_path,\n                                      actual_path)\n  except NotFoundError:\n    pass\n  if error:\n    print \"FAILURE: \" + input_filename + \"; \" + str(error)\n    return True\n\nwhich I find easier to follow than the nested if\u0027s and conditional manipulation of the error variable. Fundamentally, we handle NotFoundError differently than CalledProcessError: NotFoundError \u003d ignore the more specific check, while CalledProcessError \u003d override the more generic check.\n\n(I also think it\u0027d make more sense to either return the exit code as a bare integer from _RunImageDiffCommand(), or a structured \"DiffResult\" object if we expect more useful details than just the exit code. A DiffResult also is more consistent than returning 2 types of exceptions, and dispatching based on the type.)",
+      "parentUuid": "c7a329c6_bb26a3d0",
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "228da9c9_d4f81f6a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 7

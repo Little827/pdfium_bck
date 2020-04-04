@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e9c9a8ea_b26a637b",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-04T01:16:12Z",
+      "side": 1,
+      "message": "Not much difference, but the style guide prefers it:\nhttp://google.github.io/styleguide/pyguide.html#244-decision\n\"Make use of built-in exception classes when it makes sense. For example, raise a ValueError to indicate a programming mistake like a violated precondition (such as if you were passed a negative number but required a positive one).\"\n\nGoogle C++ doesn\u0027t make use of exceptions, but in languages that do use them (like Python, Java, etc.), there\u0027s been a fair bit of discussion about how to use them properly. One debate is over how specific to be with exception types. I would say the distinction comes down to if you expect the caller to be able to \"group\" handling of similar classes of errors or not.\n\nIOError and friends also provide additional standard fields to describe things like the file path that triggered the exception, which could have been useful here.",
+      "parentUuid": "74acedc7_38be453b",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "cb8e9242979498239431868547c89ce7725f51e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd80197e_94d26998",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 12
