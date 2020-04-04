@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "c7a329c6_bb26a3d0",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-04T00:13:59Z",
+      "side": 1,
+      "message": "RunCommand() already returns (not raise) an exception, so this is just going with the flow. It\u0027s awkward to use return values half the time and catch exceptions the other half.",
+      "parentUuid": "49f098b8_e4f020fe",
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "228da9c9_d4f81f6a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 7
