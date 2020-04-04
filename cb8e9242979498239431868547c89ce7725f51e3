@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dbb7851_1ea33e31",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-04T00:01:20Z",
+      "side": 1,
+      "message": "Was IOError considered for this instead? (Either by itself, or as a base class.)",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "cb8e9242979498239431868547c89ce7725f51e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd80197e_94d26998",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-04T00:01:20Z",
+      "side": 1,
+      "message": "It\u0027s not actually raised, it\u0027s being returned.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "cb8e9242979498239431868547c89ce7725f51e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

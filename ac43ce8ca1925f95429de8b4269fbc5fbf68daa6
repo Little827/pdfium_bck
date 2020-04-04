@@ -190,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "49f098b8_e4f020fe",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-04T00:01:20Z",
+      "side": 1,
+      "message": "I disagree with this, but mostly because I think this function should let the exception bubble out and be caught by the caller, instead of trying to return it.\n\nFor example, now we have an awkward isinstance() check in the outer code.",
+      "parentUuid": "228feed9_c33e6d5f",
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "228da9c9_d4f81f6a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 7
