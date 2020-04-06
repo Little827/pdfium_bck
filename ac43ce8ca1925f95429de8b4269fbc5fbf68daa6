@@ -262,6 +262,24 @@
     },
     {
       "key": {
+        "uuid": "499ed9dc_59c5cdb5",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-06T22:30:27Z",
+      "side": 1,
+      "message": "Sure, let\u0027s discuss anything that\u0027s still relevant in the context of the follow-up change (https://pdfium-review.googlesource.com/c/pdfium/+/67871).",
+      "parentUuid": "ad61d35f_9fc27c9d",
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "228da9c9_d4f81f6a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 7
