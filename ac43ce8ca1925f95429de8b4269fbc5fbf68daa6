@@ -244,6 +244,24 @@
     },
     {
       "key": {
+        "uuid": "ad61d35f_9fc27c9d",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-06T21:50:25Z",
+      "side": 1,
+      "message": "I agree the isinstance() usage is not ideal and I\u0027m sure there\u0027s always room for improvement and to be more Pythonic. I still think it would be weird for _RunImageDiffCommand() to raise an exception or return an exception, or return None. Maybe the deeper issue is RunCommand() returns an exception, and I don\u0027t remember why I wrote that 5 years ago.\n\nIn any case, I\u0027m wondering if this is:\na) Something major that will prevent us from diffing against Skia expectation files in a sane way.\nor\nb) Something minor that we can improve upon later.\n\nLet\u0027s determine the important of this issue and deal with it accordingly.",
+      "parentUuid": "763e158e_30bae582",
+      "revId": "ac43ce8ca1925f95429de8b4269fbc5fbf68daa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "228da9c9_d4f81f6a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 7
