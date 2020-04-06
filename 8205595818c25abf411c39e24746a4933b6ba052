@@ -1,4 +1,68 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1586192148 -0700\nnonce AM5BpQWDWTSKKPfEW4Nv3Xx/b6U5+nHmpLZ+ZWiZVAkRbl6jvWWG7aHHVeaK2kaQtJHsZEfhmP5C\n\n0000000000000000000000000000000000000000 8205595818c25abf411c39e24746a4933b6ba052 refs/for/refs/heads/master%notify\u003dNONE,m\u003dtypo\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6LXxQACgkQqzYtYVpm\n/XsPlQgAl2IE8jHh/Fb+uTpSqzpbQ83hhMvo4AfgmQ0HGhGkQ8F7tLaEineRsPl+\nP+JQK0wr77ggtV80Xj7bdEuzAWD44lTAKdKRNGl5oEu8ow4gzZdTMoRwmOvIHD4X\nIAUzslsI3FxfIsp5o+Nt2PVb/mAYFLuFfAPzzoyGpfd5GFldvD8UCuFNQO/OtSpb\nF7eqvoWM24lBNoq3/EipleW1RKR1H2jlpLTpU+1hwhD0hs/BOuq17pcfrS3OS6tt\nI2sUPoA8ZeoZzoAN0T76cJo3zCEIAFsmLPbvOlDu6N40ENLyrnninmqio9rDKH8D\n/UUkCrxVdQGHEINrXxOCIrW09Xgorw\u003d\u003d\n\u003dORj1\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e042d212_c35ed533",
+        "filename": "testing/resources/named_dests_old_style.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-06T17:21:39Z",
+      "side": 1,
+      "message": "nit: not sure this comment adds much value.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "8205595818c25abf411c39e24746a4933b6ba052",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d843b8_de65e3ef",
+        "filename": "testing/resources/named_dests_old_style.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-06T17:21:39Z",
+      "side": 1,
+      "message": "nit: indent on new line?",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "8205595818c25abf411c39e24746a4933b6ba052",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb212e98_4a853299",
+        "filename": "testing/resources/named_dests_old_style.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-06T17:21:39Z",
+      "side": 1,
+      "message": "nit: indent on new line?",
+      "revId": "8205595818c25abf411c39e24746a4933b6ba052",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
