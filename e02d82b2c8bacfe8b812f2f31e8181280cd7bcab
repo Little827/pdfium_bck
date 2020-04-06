@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5ccad39_3c5f5a62",
+        "filename": "fxjs/cfx_globaldata_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-06T21:57:15Z",
+      "side": 1,
+      "message": "Awkward formatting here.",
+      "revId": "e02d82b2c8bacfe8b812f2f31e8181280cd7bcab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
