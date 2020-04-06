@@ -116,6 +116,24 @@
       "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e0c0f8a_7d686973",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-06T19:16:25Z",
+      "side": 1,
+      "message": "It looks like you already changed this, but for reference, see the style guide here:\nhttp://google.github.io/styleguide/pyguide.html#341-trailing-commas-in-sequences-of-items",
+      "parentUuid": "43737317_9e06097f",
+      "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
