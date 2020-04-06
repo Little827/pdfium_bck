@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a18a08a5_6a9e26c1",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-06T22:37:30Z",
+      "side": 1,
+      "message": "This doesn\u0027t vary, either.",
+      "range": {
+        "startLine": 55,
+        "startChar": 55,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "0081fbb886d1f64eb9131547b2f7a00bab8d1c1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

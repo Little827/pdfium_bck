@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "b94d4d6d_8b306c6e",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-06T22:37:30Z",
+      "side": 1,
+      "message": "But that\u0027s already handled in PathTemplates.GetExpectedPaths()?\n\nI don\u0027t understand the problem that\u0027s being solved. Do you have an example of when there would be a path returned by GetExpectedPaths() that we would exclude here?",
+      "parentUuid": "c5e9ad1e_310afbf7",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c187107_b43bb84f",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 19
@@ -198,6 +216,24 @@
       "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76f6a62f_35e17ec4",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-06T22:37:30Z",
+      "side": 1,
+      "message": "This is Python; there is no static type checking enforcing this. It\u0027s perfectly possible to pass in mode\u003d4 by accident at run time.",
+      "parentUuid": "bdf67350_d7097594",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
