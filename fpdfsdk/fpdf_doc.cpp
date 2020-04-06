@@ -15,6 +15,8 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
+#include "core/fpdfapi/parser/cpdf_string.h"
+#include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfdoc/cpdf_bookmark.h"
 #include "core/fpdfdoc/cpdf_bookmarktree.h"
 #include "core/fpdfdoc/cpdf_dest.h"
@@ -392,6 +394,40 @@ FPDFLink_GetQuadPoints(FPDF_LINK link_annot,
 
   return GetQuadPointsAtIndex(pArray, static_cast<size_t>(quad_index),
                               quad_points);
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_GetFileIdentifier(FPDF_DOCUMENT document,
+                       FPDF_FILEIDTYPE id_type,
+                       void* buffer,
+                       unsigned long buflen) {
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return 0;
+
+  // Check if |id_type| is valid.
+  if (id_type != PERMANENT && id_type != CHANGING)
+    return 0;
+
+  const CPDF_Array* pFileId = pDoc->GetFileIdentifier();
+  if (!pFileId)
+    return 0;
+
+  size_t nIndex = id_type == PERMANENT ? 0 : 1;
+  const CPDF_Object* pValue = pFileId->GetDirectObjectAt(nIndex);
+  if (!pValue || !pValue->IsString())
+    return 0;
+
+  WideString wsIdValue;
+  const CPDF_String* pStr = pValue->AsString();
+  if (pStr->IsHex()) {
+    ByteString bsEncoded = PDF_EncodeString(pStr->GetString(), /*bHex=*/true);
+    wsIdValue = PDF_DecodeText(bsEncoded.raw_span());
+  } else {
+    wsIdValue = pStr->GetUnicodeText();
+  }
+
+  return Utf16EncodeMaybeCopyAndReturnLength(wsIdValue, buffer, buflen);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetMetaText(FPDF_DOCUMENT document,
