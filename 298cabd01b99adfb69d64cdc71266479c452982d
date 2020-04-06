@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "430a8577_0ec7791c",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8b41ff6_0c52fdbc",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "318333f9_97e9f447",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 19
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "be0a580c_a79d5da0",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "Create a new class for FindMatchStatus instead of using exception to handle the return value of  _FindMatchProcessStatus().",
+      "parentUuid": "318333f9_97e9f447",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df26a5cb_027e40e6",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 19
@@ -56,6 +98,24 @@
       "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e9ad1e_310afbf7",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "Iterate over all expected_paths was the original implementation for this CL. But we want to implement the logic of checking the build config so that we can avoid checking extra paths when skia/skiapaths is not enabled, and this will also help us notice the cases that if non-skia/non-skiapaths results end up matching expected results which doesn\u0027t match their build configs.",
+      "parentUuid": "df26a5cb_027e40e6",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f3519f0e_882ecdc9",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c187107_b43bb84f",
+      "range": {
+        "startLine": 178,
+        "startChar": 12,
+        "endLine": 178,
+        "endChar": 14
+      },
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "158662b4_dd9a45b1",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 19
@@ -96,6 +180,24 @@
       "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf67350_d7097594",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "\"else\" condition equals to condition: |mode| \u003d\u003d 2.\n|mode|\u0027s value can only be 0,1,or 2, which was strictly controlled by the while loop and increased by 1 every time.",
+      "parentUuid": "158662b4_dd9a45b1",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "a5a92606_98b43d8f",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7365173_4a6fc1cb",
+      "range": {
+        "startLine": 193,
+        "startChar": 56,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bbef95e_e972eb32",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 19
@@ -136,6 +262,24 @@
       "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2adb6c09_d6365cab",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbef95e_e972eb32",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -159,6 +303,30 @@
       "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7e4a36_0ac4a820",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T22:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985b8d8d_fd33ef32",
+      "range": {
+        "startLine": 202,
+        "startChar": 45,
+        "endLine": 202,
+        "endChar": 57
+      },
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
