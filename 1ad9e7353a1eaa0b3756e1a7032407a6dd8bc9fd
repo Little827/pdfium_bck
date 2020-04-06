@@ -16,6 +16,24 @@
       "revId": "1ad9e7353a1eaa0b3756e1a7032407a6dd8bc9fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3623ece0_e0b615e9",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T17:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57148c65_ae9ea82c",
+      "revId": "1ad9e7353a1eaa0b3756e1a7032407a6dd8bc9fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

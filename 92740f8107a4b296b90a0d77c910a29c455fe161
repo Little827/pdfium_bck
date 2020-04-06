@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0c42dd8a_21de4502",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T17:12:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4006f7be_9299e097",
+      "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cde83105_241f4b0e",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 13
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e83c4029_190b14a6",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T17:12:42Z",
+      "side": 1,
+      "message": "I added additional conditions to this function in the new patch, and this variable is kept.",
+      "parentUuid": "cde83105_241f4b0e",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 18
+      },
+      "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b425938_d375a896",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 13
@@ -56,6 +98,24 @@
       "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43737317_9e06097f",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T17:12:42Z",
+      "side": 1,
+      "message": "Added the terminal \",\" in the new patch and tested that git cl format didn\u0027t automatically add \",\" for this issue.",
+      "parentUuid": "8b425938_d375a896",
+      "revId": "92740f8107a4b296b90a0d77c910a29c455fe161",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

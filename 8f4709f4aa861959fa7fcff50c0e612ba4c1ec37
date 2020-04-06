@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "14382ce1_e1e990f9",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T17:12:42Z",
+      "side": 1,
+      "message": "Some paths have higher priority than others, that\u0027s why they need to be executed in a certain order. In the new patch I used a while loop to iterate through all 3 different groups of paths instead of 3 separate blocks.",
+      "parentUuid": "58f8969c_65694029",
+      "revId": "8f4709f4aa861959fa7fcff50c0e612ba4c1ec37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8237a16f_bf0a9c91",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 4
@@ -122,6 +140,24 @@
       "revId": "8f4709f4aa861959fa7fcff50c0e612ba4c1ec37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e265cd7b_d17af0ac",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-06T17:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c41a43c_852630f9",
+      "revId": "8f4709f4aa861959fa7fcff50c0e612ba4c1ec37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
