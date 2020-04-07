@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69a4b7ac_90bdf34e",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T01:31:09Z",
+      "side": 1,
+      "message": "This is a MSVC-only constant. Let\u0027s just write \"This should not exceed the maximum value that can be represented by an int32_t.\"",
+      "range": {
+        "startLine": 205,
+        "startChar": 19,
+        "endLine": 205,
+        "endChar": 27
+      },
+      "revId": "db62366a1efd98c33cf95e8cf95b7de47570d9a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
