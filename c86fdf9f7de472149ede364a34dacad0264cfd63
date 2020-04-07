@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7976de5_3bc9e8ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T20:59:14Z",
+      "side": 1,
+      "message": "BTW, PDFium tries to follow Chromium style, and there is a well defined way of referring to functions and variables: https://chromium.googlesource.com/chromium/src/+/master/styleguide/c++/c++-dos-and-donts.md#comment-style\n\nSo we can write FindPageIndex() and |skip_count| here. Folks used to the style can easily comprehend they are a function and a variable, respectively.",
+      "revId": "c86fdf9f7de472149ede364a34dacad0264cfd63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c48d63b1_748e05dd",
         "filename": "core/fpdfapi/parser/cpdf_document.cpp",
         "patchSetId": 1
