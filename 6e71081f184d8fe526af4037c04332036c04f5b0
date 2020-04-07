@@ -49,6 +49,47 @@
     },
     {
       "key": {
+        "uuid": "b1958c8c_c975ffff",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T19:29:41Z",
+      "side": 1,
+      "message": "Or \"end_annot\" ? Since this is either the first or last annotation.\n\nThough its use exists, in PDFium, camelCase is never the right style. It\u0027s either Hungarian style or snake_case. Having 2 styles is already not good. Let\u0027s not have 3.",
+      "parentUuid": "10f236e7_7a3e6e27",
+      "range": {
+        "startLine": 247,
+        "startChar": 31,
+        "endLine": 247,
+        "endChar": 40
+      },
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbf718e_447a8369",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T19:29:41Z",
+      "side": 1,
+      "message": "Is this always the same pointer as |pPageView|?",
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9b6b0c9_8019e0d3",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
         "patchSetId": 15
@@ -78,6 +119,24 @@
       "side": 1,
       "message": "The function above this is named GetNextAnnot() where we get next and previous annot, so i modeled it in the same way. \nChanging it to the suggested name as its more informative than the current name.\n\nRenamed the function in XFA as well.",
       "parentUuid": "c9b6b0c9_8019e0d3",
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d379f1d4_6c7e8f63",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T19:29:41Z",
+      "side": 1,
+      "message": "The existing code may not always be the best.",
+      "parentUuid": "9d65c28c_49c6c343",
       "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
