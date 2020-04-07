@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f236e7_7a3e6e27",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T18:49:33Z",
+      "side": 1,
+      "message": "nit: last_annot?",
+      "range": {
+        "startLine": 247,
+        "startChar": 31,
+        "endLine": 247,
+        "endChar": 40
+      },
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b6b0c9_8019e0d3",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T18:49:33Z",
+      "side": 1,
+      "message": "I don\u0027t think this name is very clear, but at the same time, I don\u0027t have a great suggestion. Maybe GetFirstOrLastFocusableAnnot() ?",
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73493481_79ebd54e",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T18:49:33Z",
+      "side": 1,
+      "message": "Wrap this in EXPECT_TRUE(). Even though the out parameters are being checked, it is just good form to consistently check return results.",
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7064f876_d5b49403",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T18:49:33Z",
+      "side": 1,
+      "message": "FX_ArraySize(kExpectedAnnotIndex)",
+      "range": {
+        "startLine": 772,
+        "startChar": 25,
+        "endLine": 772,
+        "endChar": 26
+      },
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26908fd6_65427dfb",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T18:49:33Z",
+      "side": 1,
+      "message": "How about using a ternary operator like in the other \"GetLast\" methods?\n\nreturn page_view-\u003eGetAnnotByXFAWidget(last ? widget_iterator-\u003eMoveToLast() : widget_iterator-\u003eMoveToFirst());\n\nMaybe shorten |widget_iterator| to \"it\" as there are no other iterators to be confused with.",
+      "revId": "6e71081f184d8fe526af4037c04332036c04f5b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
