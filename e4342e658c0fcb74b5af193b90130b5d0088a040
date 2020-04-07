@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df5d6d54_c135ed66",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T18:52:35Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be used, except on the next line. Do we want to take this into account in PathTemplates? (And if so, we may want to make this a single PathMode field, instead of multiple boolean fields.)",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e281c3_7040d321",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T18:52:35Z",
+      "side": 1,
+      "message": "All the negative conditions make the logic harder to read. Maybe something like this would be better:\n\n  if isinstance(new_error, NotFoundError):\n    pass\n  else:\n    error \u003d new_error\n\nAlso, the first condition (\"not new_error or not isinstance(new_error, ...)\" can be simplified, because isinstance(..., NotFoundError) is always going to be false for any value that \"not new_error\" is true. So this would also be fine:\n\n  if not isinstance(new_error, NotFoundError):\n    error \u003d new_error",
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c926d83_1a5738bd",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T18:52:35Z",
+      "side": 1,
+      "message": "Re: TODO: For a future CL, one approach might be to return an object from GetExpectedPaths(), instead of just strings, to provide more information about the type of the expected path.\n\nIt also might be possible to just iterate over the expected paths in reverse (with the idea that reversed(expected_paths) go from most specific to least specific, and we only want to overwrite the most specific path that exists).",
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2cdd94_9012d79f",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T18:52:35Z",
+      "side": 1,
+      "message": "Optional: Now that this only depends on |page|, we could go back to pre-creating the templates in the constructor...",
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
