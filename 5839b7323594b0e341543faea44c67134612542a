@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4804b9ca_6aeb27d8",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-07T20:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e0b0b7_bf09a8b4",
+      "range": {
+        "startLine": 249,
+        "startChar": 11,
+        "endLine": 249,
+        "endChar": 12
+      },
+      "revId": "5839b7323594b0e341543faea44c67134612542a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f17c24f_0139cbd4",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-07T20:16:30Z",
       "side": 1,
       "message": "Probably not needed, as CPDFSDK_PageView::GetXFAPage(), by definition, returns an XFA page.",
+      "range": {
+        "startLine": 359,
+        "startChar": 10,
+        "endLine": 359,
+        "endChar": 32
+      },
+      "revId": "5839b7323594b0e341543faea44c67134612542a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cadcb389_bdad8505",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-07T20:40:24Z",
+      "side": 1,
+      "message": "We should only enter this if the XFA pages are not backed by PDF pages and hence the check.",
+      "parentUuid": "9f17c24f_0139cbd4",
       "range": {
         "startLine": 359,
         "startChar": 10,
@@ -68,6 +116,30 @@
       "revId": "5839b7323594b0e341543faea44c67134612542a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff8d3805_787a2f54",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-07T20:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f44a52_21dc680a",
+      "range": {
+        "startLine": 361,
+        "startChar": 11,
+        "endLine": 361,
+        "endChar": 43
+      },
+      "revId": "5839b7323594b0e341543faea44c67134612542a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
