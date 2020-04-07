@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "c56043f6_f4e6bab4",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-07T01:49:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b94d4d6d_8b306c6e",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c187107_b43bb84f",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 19
@@ -231,6 +249,24 @@
       "side": 1,
       "message": "This is Python; there is no static type checking enforcing this. It\u0027s perfectly possible to pass in mode\u003d4 by accident at run time.",
       "parentUuid": "bdf67350_d7097594",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99091948_d9483daf",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-07T01:49:27Z",
+      "side": 1,
+      "message": "To not break the callers of this function, any suggestion on a not-existed path to be returned as error? I\u0027m thinking maybe using an empty string.",
+      "parentUuid": "76f6a62f_35e17ec4",
       "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
