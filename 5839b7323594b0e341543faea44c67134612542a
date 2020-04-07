@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9e0b0b7_bf09a8b4",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T20:16:30Z",
+      "side": 1,
+      "message": "nit: not needed.",
+      "range": {
+        "startLine": 249,
+        "startChar": 11,
+        "endLine": 249,
+        "endChar": 12
+      },
+      "revId": "5839b7323594b0e341543faea44c67134612542a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f17c24f_0139cbd4",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T20:16:30Z",
+      "side": 1,
+      "message": "Probably not needed, as CPDFSDK_PageView::GetXFAPage(), by definition, returns an XFA page.",
+      "range": {
+        "startLine": 359,
+        "startChar": 10,
+        "endLine": 359,
+        "endChar": 32
+      },
+      "revId": "5839b7323594b0e341543faea44c67134612542a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f44a52_21dc680a",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T20:16:30Z",
+      "side": 1,
+      "message": "Use the existing conversion method instead of manual casting: page-\u003eAsXFAPage()",
+      "range": {
+        "startLine": 361,
+        "startChar": 11,
+        "endLine": 361,
+        "endChar": 43
+      },
+      "revId": "5839b7323594b0e341543faea44c67134612542a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
