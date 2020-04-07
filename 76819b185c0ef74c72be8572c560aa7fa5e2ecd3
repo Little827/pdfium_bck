@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "08b1c962_6ef561f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "Capitalize \"SkiaPaths\" consistently.",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e871f561_2b033c6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "an -\u003e a",
+      "range": {
+        "startLine": 11,
+        "startChar": 69,
+        "endLine": 11,
+        "endChar": 71
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef38b774_4959e60a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "skia -\u003e Skia",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5e3de1_65d53acd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "This sentence runs a bit long, and I\u0027m not sure what it\u0027s trying to say.",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cffdd58a_5d080355",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "added -\u003e adds (match verb tense with \"modifies\")",
+      "range": {
+        "startLine": 18,
+        "startChar": 60,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "832a1ad2_8f5fd885",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -16,6 +125,23 @@
       "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b61b6f_6b7c3bb6",
+        "filename": "PRESUBMIT_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "Thanks for setting up PRESUBMIT_test!",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -36,6 +162,29 @@
     },
     {
       "key": {
+        "uuid": "8964f42e_f7ea7b31",
+        "filename": "PRESUBMIT_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "Parentheses aren\u0027t needed here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30f9085e_f49764dc",
         "filename": "PRESUBMIT_test.py",
         "patchSetId": 7
@@ -47,6 +196,40 @@
       "writtenOn": "2020-04-07T22:32:49Z",
       "side": 1,
       "message": "Not needed?",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8797a074_c3d50b52",
+        "filename": "PRESUBMIT_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "Was this for debugging?",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b98479_c1da5ac5",
+        "filename": "PRESUBMIT_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "Maybe map(MockFile, [...])?",
       "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -93,6 +276,40 @@
     },
     {
       "key": {
+        "uuid": "66e521d4_b2ec2b0d",
+        "filename": "PRESUBMIT_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "How about a single assertEqual() instead?\n\n  self.assertEqual(map(str, errors), [...])\n\n(Can also reverse the first and second arguments, although I think this formats a bit better.)",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fcca19_79c91bf7",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "In chromium/src, this file is named PRESUBMIT_test_mocks.py.\n\nI\u0027m going to assume the contents don\u0027t need to be reviewed.",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef158f66_e904bb1e",
         "filename": "presubmit_test_mocks.py",
         "patchSetId": 7
@@ -116,6 +333,29 @@
     },
     {
       "key": {
+        "uuid": "da7a1285_c063a75e",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "This is PDFium, not Chromium. I\u0027m not sure if we need to cite Chromium as well, though...\n\nI think the copyright statement is too long, too. It\u0027s not the format we use today.",
+      "range": {
+        "startLine": 1,
+        "startChar": 21,
+        "endLine": 1,
+        "endChar": 41
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c82e3b73_35cfe28a",
         "filename": "presubmit_test_mocks.py",
         "patchSetId": 7
@@ -127,6 +367,29 @@
       "writtenOn": "2020-04-07T22:32:49Z",
       "side": 1,
       "message": "There\u0027s no need to write this?",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17868a7e_e57e080f",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T22:34:05Z",
+      "side": 1,
+      "message": "This seems a little silly. I\u0027d just list the URL (breaking to the next line).",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 30
+      },
       "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
