@@ -273,6 +273,24 @@
     },
     {
       "key": {
+        "uuid": "2377f704_2460ddf7",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T17:23:12Z",
+      "side": 1,
+      "message": "Not sure if you followed the discussion on the prior CL which pointed to http://google.github.io/styleguide/pyguide.html#244-decision. Given the example in that section on the document, I would change this to:\n\nelif mode \u003d\u003d CheckMode.CHECK_SKIAPATHS:\n  expected_str \u003d \u0027_expected_skiapaths\u0027\nelse\n  assert False, \u0027Unexpected CheckMode: %d.\u0027 % mode\n\nSince this is an internal function, use assert() to ensure internal correctness.\n\n\nIn C++, if we had enum InputEnum { val1, val2, val3}, we would still write:\n\nswitch (input) {\n  case val1:\n    ...\n  case val2:\n    ...\n  case val3:\n    ...\n};\n\nand not:\n\nswitch (input) {\n  case val1:\n    ...\n  case val2:\n    ...\n  default:  // Just assume val3\n    ...\n};",
+      "parentUuid": "99091948_d9483daf",
+      "revId": "298cabd01b99adfb69d64cdc71266479c452982d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7365173_4a6fc1cb",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 19
