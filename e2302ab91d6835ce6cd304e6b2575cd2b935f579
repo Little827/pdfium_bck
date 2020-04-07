@@ -22,6 +22,30 @@
       "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc89b6c_62e93a32",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-07T04:34:03Z",
+      "side": 1,
+      "message": "This is consistent with other PDFium APIs that output through a buffer. See FPDF_GetMetaText(), FPDFTextObj_GetFontName(), and FPDFText_GetFontInfo().",
+      "parentUuid": "b895d399_284b7356",
+      "range": {
+        "startLine": 402,
+        "startChar": 23,
+        "endLine": 402,
+        "endChar": 35
+      },
+      "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
