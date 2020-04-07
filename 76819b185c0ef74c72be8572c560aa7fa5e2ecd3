@@ -356,6 +356,47 @@
     },
     {
       "key": {
+        "uuid": "64586d74_75b05f25",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T22:42:25Z",
+      "side": 1,
+      "message": "We\u0027ve kept the \"Chromium authors\" line for many files cloned from Chromium, so this is fine.",
+      "parentUuid": "da7a1285_c063a75e",
+      "range": {
+        "startLine": 1,
+        "startChar": 21,
+        "endLine": 1,
+        "endChar": 41
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d11fc57b_baa3d6a5",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-07T22:42:25Z",
+      "side": 1,
+      "message": "Yes, please use the modern copyright header, as seen in Chromium\u0027s PRESUBMIT_test_mocks.py. Despite being the original, it has been better maintained than the WebRTC one.",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c82e3b73_35cfe28a",
         "filename": "presubmit_test_mocks.py",
         "patchSetId": 7
