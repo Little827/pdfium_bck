@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "100210d5_246e84fc",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-07T19:07:31Z",
+      "side": 1,
+      "message": "For example, you could do something like this one-liner:\n\n  expected_path \u003d next(itertools.ifilter(os.path.exists, reversed(expected_paths)), expected_paths[0])\n\nThis will return the last expected_paths element that exists, or the first element if none exist.",
+      "parentUuid": "1c926d83_1a5738bd",
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b2cdd94_9012d79f",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 25
