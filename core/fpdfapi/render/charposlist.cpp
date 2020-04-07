@@ -12,6 +12,38 @@
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/text_char_pos.h"
 
+namespace {
+
+bool InitializeCharPosFromFontAndCharCode(CPDF_Font* font,
+                                          uint32_t char_code,
+                                          TextCharPos* charpos) {
+  WideString unicode = font->UnicodeFromCharCode(char_code);
+  charpos->m_Unicode = !unicode.IsEmpty() ? unicode[0] : char_code;
+
+  bool vertical_glyph = false;
+  charpos->m_GlyphIndex = font->GlyphFromCharCode(char_code, &vertical_glyph);
+
+#if defined(OS_MACOSX)
+  charpos->m_ExtGID = font->GlyphFromCharCodeExt(char_code);
+#endif
+
+  if (font->AsCIDFont())
+    charpos->m_bFontStyle = true;
+
+  return vertical_glyph;
+}
+
+uint32_t GetGlyphID(const TextCharPos& charpos) {
+#if defined(OS_MACOSX)
+  return charpos.m_ExtGID != static_cast<uint32_t>(-1) ? charpos.m_ExtGID
+                                                       : charpos.m_GlyphIndex;
+#else
+  return charpos.m_GlyphIndex;
+#endif
+}
+
+}  // namespace
+
 std::vector<TextCharPos> GetCharPosList(const std::vector<uint32_t>& charCodes,
                                         const std::vector<float>& charPos,
                                         CPDF_Font* pFont,
@@ -27,23 +59,14 @@ std::vector<TextCharPos> GetCharPosList(const std::vector<uint32_t>& charCodes,
     if (CharCode == static_cast<uint32_t>(-1))
       continue;
 
-    bool bVert = false;
     results.emplace_back();
     TextCharPos& charpos = results.back();
-    if (pCIDFont)
-      charpos.m_bFontStyle = true;
-    WideString unicode = pFont->UnicodeFromCharCode(CharCode);
-    charpos.m_Unicode = !unicode.IsEmpty() ? unicode[0] : CharCode;
-    charpos.m_GlyphIndex = pFont->GlyphFromCharCode(CharCode, &bVert);
-    uint32_t GlyphID = charpos.m_GlyphIndex;
-#if defined(OS_MACOSX)
-    charpos.m_ExtGID = pFont->GlyphFromCharCodeExt(CharCode);
-    GlyphID = charpos.m_ExtGID != static_cast<uint32_t>(-1)
-                  ? charpos.m_ExtGID
-                  : charpos.m_GlyphIndex;
-#endif
-    bool bIsInvalidGlyph = GlyphID == static_cast<uint32_t>(-1);
-    bool bIsTrueTypeZeroGlyph = GlyphID == 0 && pFont->IsTrueTypeFont();
+    bool vertical_glyph =
+        InitializeCharPosFromFontAndCharCode(pFont, CharCode, &charpos);
+
+    uint32_t glyph_id = GetGlyphID(charpos);
+    bool bIsInvalidGlyph = glyph_id == static_cast<uint32_t>(-1);
+    bool bIsTrueTypeZeroGlyph = glyph_id == 0 && pFont->IsTrueTypeFont();
     bool bUseFallbackFont = false;
     if (bIsInvalidGlyph || bIsTrueTypeZeroGlyph) {
       charpos.m_FallbackFontPosition =
@@ -81,11 +104,8 @@ std::vector<TextCharPos> GetCharPosList(const std::vector<uint32_t>& charCodes,
 
     if (!pFont->IsEmbedded() && !pFont->IsCIDFont())
       charpos.m_FontCharWidth = pFont->GetCharWidthF(CharCode);
-    else
-      charpos.m_FontCharWidth = 0;
 
     charpos.m_Origin = CFX_PointF(i > 0 ? charPos[i - 1] : 0, 0);
-    charpos.m_bGlyphAdjust = false;
 
     float scalingFactor = 1.0f;
     if (!pFont->IsEmbedded() && pFont->HasFontWidths() && !bVertWriting &&
@@ -123,7 +143,7 @@ std::vector<TextCharPos> GetCharPosList(const std::vector<uint32_t>& charCodes,
     }
 
     const uint8_t* pTransform = pCIDFont->GetCIDTransform(CID);
-    if (pTransform && !bVert) {
+    if (pTransform && !vertical_glyph) {
       charpos.m_AdjustMatrix[0] =
           pCIDFont->CIDTransformToFloat(pTransform[0]) * scalingFactor;
       charpos.m_AdjustMatrix[1] =
