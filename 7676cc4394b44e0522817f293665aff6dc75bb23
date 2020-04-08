@@ -16,6 +16,24 @@
       "revId": "7676cc4394b44e0522817f293665aff6dc75bb23",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc0eae03_2f5e7318",
+        "filename": "testing/resources/listbox_form.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-08T18:43:47Z",
+      "side": 1,
+      "message": "Oh, I wasn\u0027t aware that /I entry is not there in legacy PDFs. Latest specs showed it as required entry for multi select list.\n\nGiven above scenarios, CPDF_FormField::IsItemSelected() should consider both /I and /V entries. I see the above mentioned CL already propose this change. But I don\u0027t see any updates on it since last year. Do you have any plans to raise the proposed change anytime soon? If not, do you mind if I make the necessary change in IsItemSelected()?",
+      "parentUuid": "f1fad136_3243e197",
+      "revId": "7676cc4394b44e0522817f293665aff6dc75bb23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
