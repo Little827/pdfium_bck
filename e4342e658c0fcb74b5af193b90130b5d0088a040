@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be28210f_8115313a",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-08T15:52:38Z",
+      "side": 1,
+      "message": "In the new patch set, I removed |skiapaths_enabled| and |skia_enabled|, and used |max_path_mode| to represent these boolean fields. |max_path_mode| is also passed in the constructor of PathTemplates.",
+      "parentUuid": "df5d6d54_c135ed66",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55e281c3_7040d321",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 25
@@ -39,6 +63,24 @@
       "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c82e2a_cb6e4271",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-08T15:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55e281c3_7040d321",
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "6c97a9a6_b2282069",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-08T15:52:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "100210d5_246e84fc",
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b2cdd94_9012d79f",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 25
@@ -91,6 +151,24 @@
       "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664d0857_c3fcf0d3",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-08T15:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b2cdd94_9012d79f",
+      "revId": "e4342e658c0fcb74b5af193b90130b5d0088a040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
