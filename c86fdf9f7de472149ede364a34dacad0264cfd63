@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b95fa86_3eee59ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7856
+      },
+      "writtenOn": "2020-04-08T09:42:36Z",
+      "side": 1,
+      "message": "Ah thanks, good to know. Will fix that.",
+      "parentUuid": "f7976de5_3bc9e8ba",
+      "revId": "c86fdf9f7de472149ede364a34dacad0264cfd63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c48d63b1_748e05dd",
         "filename": "core/fpdfapi/parser/cpdf_document.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-07T16:38:51Z",
       "side": 1,
       "message": "I mistakened \"*skip_count !\u003d 0\" for \"skip_count !\u003d nullptr\" :\\",
+      "revId": "c86fdf9f7de472149ede364a34dacad0264cfd63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "711ffa84_95ab93cc",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7856
+      },
+      "writtenOn": "2020-04-08T09:42:36Z",
+      "side": 1,
+      "message": "Easily done! Took me a while to see it hah",
+      "parentUuid": "c48d63b1_748e05dd",
       "revId": "c86fdf9f7de472149ede364a34dacad0264cfd63",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
