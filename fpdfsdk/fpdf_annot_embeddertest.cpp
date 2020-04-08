@@ -2383,87 +2383,90 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldNameComboBox) {
   UnloadPage(page);
 }
 
-TEST_F(FPDFAnnotEmbedderTest, SetFocusableAnnotSubtypes) {
-  ASSERT_TRUE(OpenDocument("text_form.pdf"));
+TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotSubtypes) {
+  ASSERT_TRUE(OpenDocument("link_annots.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
-  // Annotations of type FPDF_ANNOT_WIDGET are by default focusable.
-  EXPECT_EQ(1, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
-
-  EXPECT_TRUE(FPDFAnnot_SetFocusableSubtypes(form_handle(), nullptr, 0));
-  EXPECT_EQ(0, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
-
-  constexpr FPDF_ANNOTATION_SUBTYPE kFocusableSubtypes[] = {FPDF_ANNOT_WIDGET};
-  constexpr size_t kSubtypeCount = FX_ArraySize(kFocusableSubtypes);
-
-  EXPECT_FALSE(FPDFAnnot_SetFocusableSubtypes(nullptr, kFocusableSubtypes,
-                                              kSubtypeCount));
-  EXPECT_FALSE(
-      FPDFAnnot_SetFocusableSubtypes(form_handle(), nullptr, kSubtypeCount));
-
-  EXPECT_TRUE(FPDFAnnot_SetFocusableSubtypes(form_handle(), kFocusableSubtypes,
-                                             kSubtypeCount));
-  EXPECT_EQ(static_cast<int>(kSubtypeCount),
+  // Widgets are by default focusable.
+  constexpr int kInitialFocusableCount = 1;
+  std::vector<FPDF_ANNOTATION_SUBTYPE> subtypes(kInitialFocusableCount);
+  ASSERT_EQ(kInitialFocusableCount,
             FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
+  ASSERT_TRUE(FPDFAnnot_GetFocusableSubtypes(form_handle(), subtypes.data(),
+                                             kInitialFocusableCount));
+  ASSERT_EQ(FPDF_ANNOT_WIDGET, subtypes[0]);
 
-  EXPECT_TRUE(
-      FPDFAnnot_SetFocusableSubtypes(form_handle(), kFocusableSubtypes, 0));
-  EXPECT_EQ(0, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
+  // Check all the annotations' types and see if they can be focused.
+  static constexpr FPDF_ANNOTATION_SUBTYPE kAnnotTypes[] = {
+      FPDF_ANNOT_LINK,  FPDF_ANNOT_LINK,      FPDF_ANNOT_LINK,
+      FPDF_ANNOT_LINK,  FPDF_ANNOT_HIGHLIGHT, FPDF_ANNOT_HIGHLIGHT,
+      FPDF_ANNOT_POPUP, FPDF_ANNOT_HIGHLIGHT,
+  };
+  ASSERT_EQ(static_cast<int>(FX_ArraySize(kAnnotTypes)),
+            FPDFPage_GetAnnotCount(page));
+  for (size_t i = 0; i < FX_ArraySize(kAnnotTypes); ++i) {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, i));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(kAnnotTypes[i], FPDFAnnot_GetSubtype(annot.get()));
+    // TODO(bug_NNN): Popups should not be focusable.
+    bool expected_focusable = kAnnotTypes[i] == FPDF_ANNOT_POPUP;
+    EXPECT_EQ(expected_focusable,
+              FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
+  }
 
-  UnloadPage(page);
-}
+  // Now make no annotation type focusable using two different valid ways.
+  // Though the former is preferred.
+  ASSERT_TRUE(FPDFAnnot_SetFocusableSubtypes(form_handle(), nullptr, 0));
+  ASSERT_EQ(0, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
+  ASSERT_TRUE(
+      FPDFAnnot_SetFocusableSubtypes(form_handle(), subtypes.data(), 0));
+  ASSERT_EQ(0, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
 
-TEST_F(FPDFAnnotEmbedderTest, GetFocusableAnnotSubtypesCount) {
-  ASSERT_TRUE(OpenDocument("text_form.pdf"));
-  FPDF_PAGE page = LoadPage(0);
-  ASSERT_TRUE(page);
+  // Check all the annotations again to see if they can be focused.
+  for (size_t i = 0; i < FX_ArraySize(kAnnotTypes); ++i) {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, i));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(kAnnotTypes[i], FPDFAnnot_GetSubtype(annot.get()));
+    // TODO(bug_NNN): Popups should not be focusable.
+    bool expected_focusable = kAnnotTypes[i] == FPDF_ANNOT_POPUP;
+    EXPECT_EQ(expected_focusable,
+              FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
+  }
 
+  // Now make links focusable.
+  subtypes.push_back(FPDF_ANNOT_LINK);
+  ASSERT_TRUE(FPDFAnnot_SetFocusableSubtypes(form_handle(), subtypes.data(),
+                                             subtypes.size()));
+  ASSERT_EQ(static_cast<int>(subtypes.size()),
+            FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
+  ASSERT_TRUE(FPDFAnnot_GetFocusableSubtypes(form_handle(), subtypes.data(),
+                                             subtypes.size()));
+  ASSERT_EQ(FPDF_ANNOT_WIDGET, subtypes[0]);
+  ASSERT_EQ(FPDF_ANNOT_LINK, subtypes[1]);
+
+  // Check all the annotations again to see if they can be focused.
+  for (size_t i = 0; i < FX_ArraySize(kAnnotTypes); ++i) {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, i));
+    ASSERT_TRUE(annot);
+    // TODO(bug_NNN): Popups should not be focusable.
+    bool expected_focusable =
+        kAnnotTypes[i] == FPDF_ANNOT_LINK || kAnnotTypes[i] == FPDF_ANNOT_POPUP;
+    EXPECT_EQ(expected_focusable,
+              FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
+  }
+
+  // Test invalid parameters.
+  EXPECT_FALSE(FPDFAnnot_SetFocusableSubtypes(nullptr, subtypes.data(),
+                                              subtypes.size()));
+  EXPECT_FALSE(
+      FPDFAnnot_SetFocusableSubtypes(form_handle(), nullptr, subtypes.size()));
   EXPECT_EQ(-1, FPDFAnnot_GetFocusableSubtypesCount(nullptr));
 
-  // FPDF_ANNOT_WIDGET is default annot subtype which is focusable,
-  // hence 1 is default count.
-  EXPECT_EQ(1, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
-
-  constexpr FPDF_ANNOTATION_SUBTYPE kFocusableSubtypes[] = {FPDF_ANNOT_WIDGET,
-                                                            FPDF_ANNOT_LINK};
-  constexpr size_t kSubtypeCount = FX_ArraySize(kFocusableSubtypes);
-
-  FPDFAnnot_SetFocusableSubtypes(form_handle(), kFocusableSubtypes,
-                                 kSubtypeCount);
-
-  EXPECT_EQ(static_cast<int>(kSubtypeCount),
-            FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
-
-  UnloadPage(page);
-}
-
-TEST_F(FPDFAnnotEmbedderTest, GetFocusableAnnotSubtypes) {
-  ASSERT_TRUE(OpenDocument("text_form.pdf"));
-  FPDF_PAGE page = LoadPage(0);
-  ASSERT_TRUE(page);
-
-  constexpr FPDF_ANNOTATION_SUBTYPE kFocusableSubtypes[] = {FPDF_ANNOT_WIDGET};
-  constexpr size_t kSubtypeCount = FX_ArraySize(kFocusableSubtypes);
-
-  FPDFAnnot_SetFocusableSubtypes(form_handle(), kFocusableSubtypes,
-                                 kSubtypeCount);
-
-  int count = FPDFAnnot_GetFocusableSubtypesCount(form_handle());
-  ASSERT_EQ(1, count);
-  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(form_handle(), nullptr, count));
-
-  std::vector<FPDF_ANNOTATION_SUBTYPE> subtypes(count, FPDF_ANNOT_UNKNOWN);
   EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(form_handle(), subtypes.data(),
-                                              count - 1));
-  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(nullptr, subtypes.data(), count));
-
-  EXPECT_TRUE(
-      FPDFAnnot_GetFocusableSubtypes(form_handle(), subtypes.data(), count));
-
-  for (int i = 0; i < count; ++i) {
-    EXPECT_EQ(kFocusableSubtypes[i], subtypes[i]);
-  }
+                                              subtypes.size() - 1));
+  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(nullptr, subtypes.data(),
+                                              subtypes.size()));
 
   UnloadPage(page);
 }
