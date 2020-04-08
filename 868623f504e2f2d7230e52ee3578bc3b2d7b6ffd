@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41e4338b_84f18260",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-08T16:58:54Z",
+      "side": 1,
+      "message": "Note: If this got much longer, we might want to make it a dict.",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c52151_36d61f5f",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-08T16:58:54Z",
+      "side": 1,
+      "message": "Optional: If we expect to fix this as part of 1501, could use that bug. Or file a follow-up one.",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ff8c61_0d7145e1",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-08T16:58:54Z",
+      "side": 1,
+      "message": "This probably would be better as a for-range loop:\n\n  for mode in range(PathMode.DEFAULT, max_path_mode + 1):\n    ...",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fe19885_a3b069bf",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-08T16:58:54Z",
+      "side": 1,
+      "message": "Maybe start with expected_str \u003d \u0027_expected\u0027?",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8504f7_17cd1e57",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-08T16:58:54Z",
+      "side": 1,
+      "message": "Maybe use +\u003d to indicate string appending?",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e52966ee_5f6f6f6c",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-08T16:58:54Z",
+      "side": 1,
+      "message": "This is an easy one-liner with list comprehensions or map():\n\n  return [template % page for template in self.expected_templates]",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
