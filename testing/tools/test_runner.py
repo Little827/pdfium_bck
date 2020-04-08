@@ -360,7 +360,7 @@ class TestRunner:
     self.test_suppressor = suppressor.Suppressor(
         finder, self.features, self.options.disable_javascript,
         self.options.disable_xfa)
-    self.image_differ = pngdiffer.PNGDiffer(finder,
+    self.image_differ = pngdiffer.PNGDiffer(finder, self.features,
                                             self.options.reverse_byte_order)
     error_message = self.image_differ.CheckMissingTools(
         self.options.regenerate_expected)
