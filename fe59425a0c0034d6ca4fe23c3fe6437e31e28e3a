@@ -3,6 +3,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ee0897c0_1fefad46",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-08T17:14:52Z",
+      "side": 1,
+      "message": "howzabout: delete, newline, space, and carriage return?",
+      "range": {
+        "startLine": 852,
+        "startChar": 54,
+        "endLine": 852,
+        "endChar": 65
+      },
+      "revId": "fe59425a0c0034d6ca4fe23c3fe6437e31e28e3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90fdd036_d95b4244",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-08T17:14:52Z",
+      "side": 1,
+      "message": "nit: Randomly pressing",
+      "range": {
+        "startLine": 855,
+        "startChar": 7,
+        "endLine": 855,
+        "endChar": 24
+      },
+      "revId": "fe59425a0c0034d6ca4fe23c3fe6437e31e28e3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dece8780_9466e802",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 1
