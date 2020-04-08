@@ -2470,3 +2470,50 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotSubtypes) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotRendering) {
+  ASSERT_TRUE(OpenDocument("link_annots.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    // Check the initial rendering.
+    ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+    CompareBitmap(bitmap.get(), 612, 792, "f1de6544ee25ed4d3632ee60a36b8dc6");
+  }
+
+  // Make links and highlights focusable.
+  static constexpr FPDF_ANNOTATION_SUBTYPE kSubTypes[] = {FPDF_ANNOT_LINK,
+                                                          FPDF_ANNOT_HIGHLIGHT};
+  constexpr int kSubTypesCount = FX_ArraySize(kSubTypes);
+  ASSERT_TRUE(
+      FPDFAnnot_SetFocusableSubtypes(form_handle(), kSubTypes, kSubTypesCount));
+  ASSERT_EQ(kSubTypesCount, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
+  std::vector<FPDF_ANNOTATION_SUBTYPE> subtypes(kSubTypesCount);
+  ASSERT_TRUE(FPDFAnnot_GetFocusableSubtypes(form_handle(), subtypes.data(),
+                                             subtypes.size()));
+  ASSERT_EQ(FPDF_ANNOT_LINK, subtypes[0]);
+  ASSERT_EQ(FPDF_ANNOT_HIGHLIGHT, subtypes[1]);
+
+  {
+    // Focus the first link and check the rendering.
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(FPDF_ANNOT_LINK, FPDFAnnot_GetSubtype(annot.get()));
+    EXPECT_TRUE(FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
+    ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+    CompareBitmap(bitmap.get(), 612, 792, "f630c24ce35d01c13a8479b8fe920389");
+  }
+
+  {
+    // Focus the first highlight and check the rendering.
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 4));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(FPDF_ANNOT_HIGHLIGHT, FPDFAnnot_GetSubtype(annot.get()));
+    EXPECT_TRUE(FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
+    ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+    CompareBitmap(bitmap.get(), 612, 792, "3f1831ac62f28e4026644ef1314efea1");
+  }
+
+  UnloadPage(page);
+}
