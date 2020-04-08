@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1fad136_3243e197",
+        "filename": "testing/resources/listbox_form.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-08T18:30:49Z",
+      "side": 1,
+      "message": "I was looking at PDF forms many months ago, but if I remember correctly, I omitted this entry so we can correctly handle malformed PDFs like this one. I had a fix in CPDF_FormField::IsItemSelected() in [1], so maybe I should revive that CL which needs a lot of work. \n\nAlso the /I entry has only been required since PDF 1.4 and we\u0027d want to handle legacy PDFs. I assume the entry was only made required to allow for more efficient reading of forms, but it\u0027s practically redundant with /V. The spec also says that /V takes precedent if its values differ from those of /I, which would require reading both /V and /I. Essentially, I interpret the /I entry as optional if the /V entry is present. \n\n[1] https://pdfium-review.googlesource.com/c/pdfium/+/59190",
+      "revId": "7676cc4394b44e0522817f293665aff6dc75bb23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
