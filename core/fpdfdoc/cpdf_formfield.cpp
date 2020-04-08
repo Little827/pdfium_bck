@@ -476,34 +476,10 @@ bool CPDF_FormField::IsItemSelected(int index) const {
   ASSERT(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions())
     return false;
-  if (IsOptionSelected(index))
-    return true;
 
-  WideString opt_value = GetOptionValue(index);
-  const CPDF_Object* pValue = GetValueOrSelectedIndicesObject();
-  if (!pValue)
-    return false;
-
-  if (pValue->IsString())
-    return pValue->GetUnicodeText() == opt_value;
-
-  if (pValue->IsNumber()) {
-    if (pValue->GetString().IsEmpty())
-      return false;
-    return (pValue->GetInteger() == index);
-  }
-
-  const CPDF_Array* pArray = pValue->AsArray();
-  if (!pArray)
-    return false;
-
-  for (int i = 0; i < CountSelectedOptions(); ++i) {
-    if (GetSelectedOptionIndex(i) == index) {
-      const CPDF_Object* pDirectObj = pArray->GetDirectObjectAt(i);
-      return pDirectObj && pDirectObj->GetUnicodeText() == opt_value;
-    }
-  }
-  return false;
+  // First consider the /V entry, then fall back to the /I entry.
+  // See section 12.7.4.4 "Choice Fields" of the ISO 32000-1 standard.
+  return IsSelectedOption(GetOptionValue(index)) || IsSelectedIndex(index);
 }
 
 bool CPDF_FormField::SetItemSelection(int index,
@@ -755,17 +731,38 @@ int CPDF_FormField::GetSelectedOptionIndex(int index) const {
   return pArray->GetIntegerAt(index);
 }
 
-bool CPDF_FormField::IsOptionSelected(int iOptIndex) const {
-  const CPDF_Array* pArray = ToArray(GetSelectedIndicesObject());
-  if (!pArray)
+bool CPDF_FormField::IsSelectedOption(WideString wsOptValue) const {
+  const CPDF_Object* pValueObject = GetValueObject();
+  if (!pValueObject)
     return false;
 
-  CPDF_ArrayLocker locker(pArray);
-  for (const auto& pObj : locker) {
-    if (pObj->GetInteger() == iOptIndex)
-      return true;
+  if (pValueObject->IsArray()) {
+    CPDF_ArrayLocker locker(pValueObject->AsArray());
+    for (const auto& pObj : locker) {
+      if (pObj->IsString() && pObj->GetUnicodeText() == wsOptValue)
+        return true;
+    }
   }
-  return false;
+
+  return (pValueObject->IsString() &&
+          pValueObject->GetUnicodeText() == wsOptValue);
+}
+
+bool CPDF_FormField::IsSelectedIndex(int iOptIndex) const {
+  const CPDF_Object* pSelectedIndicesObject = GetSelectedIndicesObject();
+  if (!pSelectedIndicesObject)
+    return false;
+
+  if (pSelectedIndicesObject->IsArray()) {
+    CPDF_ArrayLocker locker(pSelectedIndicesObject->AsArray());
+    for (const auto& pObj : locker) {
+      if (pObj->IsNumber() && pObj->GetInteger() == iOptIndex)
+        return true;
+    }
+  }
+
+  return (pSelectedIndicesObject->IsNumber() &&
+          pSelectedIndicesObject->GetInteger() == iOptIndex);
 }
 
 bool CPDF_FormField::SelectOption(int iOptIndex,

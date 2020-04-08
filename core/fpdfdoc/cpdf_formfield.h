@@ -130,7 +130,8 @@ class CPDF_FormField {
   int GetTopVisibleIndex() const;
   int CountSelectedOptions() const;
   int GetSelectedOptionIndex(int index) const;
-  bool IsOptionSelected(int iOptIndex) const;
+  bool IsSelectedOption(WideString wsOptValue) const;
+  bool IsSelectedIndex(int iOptIndex) const;
   bool SelectOption(int iOptIndex, bool bSelected, NotificationOption notify);
 
   float GetFontSize() const { return m_FontSize; }
