@@ -97,6 +97,24 @@
       "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a02fa32_92a37b46",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-08T05:26:45Z",
+      "side": 1,
+      "message": "While the PDF 1.7 spec says that the ID field is a byte string, the 1.4 spec just says that it\u0027s a string. \n\nThe spec also doesn\u0027t say that the file identifier has to be an MD5 hash.",
+      "parentUuid": "85426d76_4158520a",
+      "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
