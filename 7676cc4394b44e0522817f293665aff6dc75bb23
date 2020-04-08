@@ -52,6 +52,24 @@
       "revId": "7676cc4394b44e0522817f293665aff6dc75bb23",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9632a75_260b350e",
+        "filename": "testing/resources/listbox_form.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-08T18:58:32Z",
+      "side": 1,
+      "message": "Thanks! That will be great.",
+      "parentUuid": "7a408820_a71c3b35",
+      "revId": "7676cc4394b44e0522817f293665aff6dc75bb23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
