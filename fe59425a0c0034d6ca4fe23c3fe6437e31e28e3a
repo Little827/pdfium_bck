@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1586328645 -0700\nnonce AM5BpQUYwqy+R+0XrVQhOt5kV4HWqpdA0/GSQGDkuhVfKEbvmCUEKurw1PRKOjG2d/aphxeXrMsA\n\n0000000000000000000000000000000000000000 fe59425a0c0034d6ca4fe23c3fe6437e31e28e3a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6NdEUACgkQqzYtYVpm\n/XsD1AgA0MBHHQHbqa3scWMV5m+kf0n8WCUKjTVWDxog/LwmTqQXQqjpTP0DHhDb\ncyEKhwBufwIVqVJ5Ddq0YhazmMlQCeToDb30WGekEpRvwGL77k5BEfn1ekNxOYfK\nTCK7myO/hQtO5RkxejybYHWEgT5/wOc8QLN+4p3GOq1VrojTrt42BGjOzwE/VfNO\nWw2NP7TMt+5k3QdWem/QHYg1zfd88hmrIKAUi7me4oMG8z8Jn5tlhqOtjtfELvnV\n/WU6PiYYf/nBmIEaIDexOi5XgXi9vL6lsEHjOfXpFqDAjjF9qHm8fjJMWv4IsdOB\n7bAFkJ/UHzeZzzn8WU3egFZfyQmb9g\u003d\u003d\n\u003do3sq\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "dece8780_9466e802",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2924,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T16:33:46Z",
+      "side": 1,
+      "message": "I imagine this is caused by Windows vs. Linux text editors. I\u0027m not spending any time trying to dig into why, but just accepting the new line when they get added.",
+      "revId": "fe59425a0c0034d6ca4fe23c3fe6437e31e28e3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
