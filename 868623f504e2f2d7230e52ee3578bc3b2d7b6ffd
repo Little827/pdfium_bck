@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "83da2c60_c651beee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 28
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T17:51:25Z",
+      "side": 1,
+      "message": "Remove this set of parenthesis, as the Skia expected results will always have \"_skia\" in the name. Same on line 23 for SkiaPaths.",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b99cdc2_f377a1ab",
+        "filename": "testing/resources/pixel/bug_842_expected_skia.pdf.0.png",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T17:51:25Z",
+      "side": 1,
+      "message": "Since this CL contains both new PNG files as well as Python code changes, please mention that in the CL description.",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db772e1a_25cf880a",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T17:51:25Z",
+      "side": 1,
+      "message": "Since the ordering matters, please add a brief comment to mention why the values are in this particular order?",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41e4338b_84f18260",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28
@@ -30,6 +87,29 @@
       "writtenOn": "2020-04-08T16:58:54Z",
       "side": 1,
       "message": "Optional: If we expect to fix this as part of 1501, could use that bug. Or file a follow-up one.",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930f793b_8c77ebce",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T17:51:25Z",
+      "side": 1,
+      "message": "Name this \"os_name\" for consistency, so readers do not have to remember 2 variable names?",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 17
+      },
       "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
