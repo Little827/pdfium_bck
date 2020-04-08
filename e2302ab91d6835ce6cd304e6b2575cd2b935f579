@@ -46,6 +46,57 @@
       "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3c7267_756d8e64",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T04:59:37Z",
+      "side": 1,
+      "message": "The enum values need to have more unique names. As is, PDFium embedders cannot use \"PERMANENT\" in their code.",
+      "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2ad6e3_a97a56b3",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T04:59:37Z",
+      "side": 1,
+      "message": "Need a comment to mark this as an experimental API.",
+      "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85426d76_4158520a",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-08T04:59:37Z",
+      "side": 1,
+      "message": "The ID field is a byte string, right? Why return a byte string encoded as UTF-16?",
+      "revId": "e2302ab91d6835ce6cd304e6b2575cd2b935f579",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
