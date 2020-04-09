@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "4651cc08_b47a09c7",
+        "filename": "testing/resources/pixel/bug_842_expected_skia.pdf.0.png",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T23:13:35Z",
+      "side": 1,
+      "message": "Indeed it does. I think what can help is to describe why these Skia-specific PNGs are correct. For bug_842_expected_skia.pdf.0.png, you and I understand the gradient is correct but not pixel perfect, due to differences between how AGG and Skia draws gradients. It will be helpful to convey that knowledge in the CL description.",
+      "parentUuid": "d1a98235_c06fe11b",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db772e1a_25cf880a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28

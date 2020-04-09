@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83d607db_39b6adfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T23:13:35Z",
+      "side": 1,
+      "message": "Skia",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af2c4c3d_0bb379b9",
+        "filename": "testing/resources/pixel/bug_733528_expected_skia.pdf.0.png",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T23:13:35Z",
+      "side": 1,
+      "message": "So what about this set of bug_733528* PNGs? Can you explain why we want to accept the rendering difference here?",
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
