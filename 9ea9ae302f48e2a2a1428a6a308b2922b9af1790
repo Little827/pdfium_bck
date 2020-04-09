@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf4bd887_ea2dafa7",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2387,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T05:15:31Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I prepended a CL to this CL chain to do that. It indeed found another issue.",
+      "parentUuid": "13702a26_f1bc0518",
+      "range": {
+        "startLine": 2387,
+        "startChar": 28,
+        "endLine": 2387,
+        "endChar": 39
+      },
+      "revId": "9ea9ae302f48e2a2a1428a6a308b2922b9af1790",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458e3f3c_389b51f4",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "9ea9ae302f48e2a2a1428a6a308b2922b9af1790",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ef2bd3_781fe901",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2466,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T05:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458e3f3c_389b51f4",
+      "range": {
+        "startLine": 2466,
+        "startChar": 15,
+        "endLine": 2466,
+        "endChar": 45
+      },
+      "revId": "9ea9ae302f48e2a2a1428a6a308b2922b9af1790",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
