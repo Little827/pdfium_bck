@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c32f79ce_c7d5ff6d",
+        "filename": "PRESUBMIT_test_mocks.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T17:24:17Z",
+      "side": 1,
+      "message": "Copied over typo.",
+      "range": {
+        "startLine": 27,
+        "startChar": 69,
+        "endLine": 27,
+        "endChar": 78
+      },
+      "revId": "bba37daed3d46502bb0646ca61ba43052dbaa709",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
