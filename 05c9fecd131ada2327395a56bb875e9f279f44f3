@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92ff82c4_b813017d",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2442,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-09T15:13:17Z",
+      "side": 1,
+      "message": "We need to call FORM_ForceToKillFocus() after every block like this.\n\nI was looking at FORM_SetFocusedAnnot() API and found a small issue in this test. The API is supposed to set focus to an annotation and if the annotation is already focused, it will return true.\n\nWhen we used FORM_SetFocusedAnnot() to set focus to an annotation in the previous block, the widget annotation was focused. Now when we clear all focusable types and then try setting focus to annotations, for widget FORM_SetFocusedAnnot() would return true because it\u0027s the current focused annotation.\n\nThis test didn\u0027t see this issue because we have a bug on FPDF_ANNOT_WIDGET being focusable by default.",
+      "range": {
+        "startLine": 2433,
+        "startChar": 2,
+        "endLine": 2442,
+        "endChar": 3
+      },
+      "revId": "05c9fecd131ada2327395a56bb875e9f279f44f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
