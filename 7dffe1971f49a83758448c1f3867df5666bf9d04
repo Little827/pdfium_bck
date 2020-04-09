@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b21ea97_cb9c50ee",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-09T11:06:20Z",
+      "side": 1,
+      "message": "If we consider /V entry as a source of truth, then what are the scenario we would want to refer to /I entry?\n\nAn excerpt from PDF spec for /I entry -\n\"This entry shall be used when two or more elements in the Opt array have different names but the same export value or when the value of the choice field is an array. If the items identified by this entry differ from those in the V entry of the field dictionary, the V entry shall be used.\"\n\nIt seems like we should refer to /I entry first and use V as fallback?",
+      "range": {
+        "startLine": 480,
+        "startChar": 5,
+        "endLine": 480,
+        "endChar": 32
+      },
+      "revId": "7dffe1971f49a83758448c1f3867df5666bf9d04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99af213_55ba8079",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-09T11:06:20Z",
+      "side": 1,
+      "message": "Can we add a test case with fallback scenario?",
+      "range": {
+        "startLine": 482,
+        "startChar": 52,
+        "endLine": 482,
+        "endChar": 74
+      },
+      "revId": "7dffe1971f49a83758448c1f3867df5666bf9d04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
