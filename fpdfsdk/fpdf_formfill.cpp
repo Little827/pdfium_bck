@@ -636,6 +636,8 @@ FORM_SetFocusedAnnot(FPDF_FORMHANDLE handle,
 
   ObservedPtr<CPDFSDK_Annot> cpdfsdk_annot(
       page_view->GetAnnotByDict(annot_dict));
+  if (!cpdfsdk_annot)
+    return false;
   return form_fill_env->SetFocusAnnot(&cpdfsdk_annot);
 }
 
