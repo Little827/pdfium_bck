@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1586407125 -0700\nnonce AM5BpQXbf+8uuc6oN8ugG4A/XuWT6JVomDBxJOYESzr9yrOpARK/au2rf8uIEQCznxe08jcqEmdc\n\n0000000000000000000000000000000000000000 1cbd200b9953edcd3598574a0a56500998b96224 refs/for/refs/heads/master%notify\u003dNONE,m\u003dgreen%3F\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6OptUACgkQqzYtYVpm\n/Xvr5gf+PSm4m0fAayTNBUiUsFOLZwoFTssc5KkvXpXHMFGj9zoYEXCWIDKIOLdJ\nNQBp+HtcF5vULayb+AcXp25dVWEtUlkVvRQImbIx6WpSkG93ajei/fJAK68IIS0W\nuAGm3OsNyM+LCngnwcByxDDyQFRrLkzUHWsfF5ZXye49lLKRLu0J09RWE6Yv+SIy\nFsl5qbkQVnQK5k4ZTWcot9hWgc9ODcPmibQ64OeiDJhgL11kvdIXX1hlBlQR6k3D\nbGd1+h+EyFo8YcZDvHYHOBpOda4x0F7exnZGBSqy0mmk+MlXqQOTmVR+2gm5/4VO\n1W/Zn+wXmcBBcD48Te2bYeEY6Ekk0A\u003d\u003d\n\u003d+93K\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "b022748e_99dddf8f",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-09T21:56:29Z",
+      "side": 1,
+      "message": "nit: prefer  (tokens.size() \u003c 5 || tokens.size() \u003e 6)  for some reason (like less change if we add an optional seventh arg and \u0027and\u0027 and \u0027not\u0027 make head hurt), esp. given the \u003e\u003d in line 136.",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "1cbd200b9953edcd3598574a0a56500998b96224",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b68b8d9f_4f21be3f",
+        "filename": "testing/resources/pixel/scrollable_widgets.evt",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-09T21:56:29Z",
+      "side": 1,
+      "message": "can we test some negative numbers and wind up in the middle of the list rather than on zuchhini?",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "1cbd200b9953edcd3598574a0a56500998b96224",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
