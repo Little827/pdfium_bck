@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "c182d706_3eb54098",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2424,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2568b0_9fd5d870",
+      "range": {
+        "startLine": 2423,
+        "startChar": 2,
+        "endLine": 2424,
+        "endChar": 73
+      },
+      "revId": "508218f223f44ee8ad606bdb9ccd508c76c0a5ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "754dd919_942b1adf",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 5
@@ -46,6 +70,30 @@
       "revId": "508218f223f44ee8ad606bdb9ccd508c76c0a5ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460c3154_77b36763",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2433,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T07:15:03Z",
+      "side": 1,
+      "message": "I added a comment on the bug and updated the CL description.",
+      "parentUuid": "754dd919_942b1adf",
+      "range": {
+        "startLine": 2433,
+        "startChar": 30,
+        "endLine": 2433,
+        "endChar": 65
+      },
+      "revId": "508218f223f44ee8ad606bdb9ccd508c76c0a5ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
