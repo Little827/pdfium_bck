@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "4461c069_9996246a",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1285,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T22:11:22Z",
+      "side": 1,
+      "message": "I once had a mouse with a horizontal scroll wheel. It\u0027s a (rare) thing. I think I donated/recycled it, alas.\n\nOther wheel event data structures support 2 directions. e.g. Chromium ui::MouseWheelEvent has a 2D offset, and GDK\u0027s GdkEventScroll has a direction field with up/down/left/right values.\n\nI imagine the potential use case is in an edit field, where one can scroll the cursor horizontally.",
+      "parentUuid": "3095c4fd_aed8e9ce",
+      "range": {
+        "startLine": 1285,
+        "startChar": 9,
+        "endLine": 1285,
+        "endChar": 16
+      },
+      "revId": "1cbd200b9953edcd3598574a0a56500998b96224",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b022748e_99dddf8f",
         "filename": "samples/pdfium_test_event_helper.cc",
         "patchSetId": 4
