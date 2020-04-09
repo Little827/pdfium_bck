@@ -101,6 +101,7 @@ class UnownedPtr {
     return !(*this == that);
   }
 
+  explicit operator T*() const { return Get(); }
   T* Get() const noexcept { return m_pObj; }
 
   T* Release() {

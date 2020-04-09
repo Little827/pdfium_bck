@@ -17,8 +17,8 @@ class CXFA_NodeIteratorTemplate {
   explicit CXFA_NodeIteratorTemplate(NodeType* pRoot)
       : m_pRoot(pRoot), m_pCurrent(pRoot) {}
 
-  NodeType* GetRoot() const { return m_pRoot.Get(); }
-  NodeType* GetCurrent() const { return m_pCurrent.Get(); }
+  NodeType* GetRoot() const { return static_cast<NodeType*>(m_pRoot); }
+  NodeType* GetCurrent() const { return static_cast<NodeType*>(m_pCurrent); }
 
   void Reset() { m_pCurrent = m_pRoot; }
   bool SetCurrent(NodeType* pNode) {
@@ -34,15 +34,16 @@ class CXFA_NodeIteratorTemplate {
     if (!m_pRoot)
       return nullptr;
     if (!m_pCurrent) {
-      m_pCurrent.Reset(LastDescendant(m_pRoot.Get()));
-      return m_pCurrent.Get();
+      m_pCurrent.Reset(LastDescendant(static_cast<NodeType*>(m_pRoot)));
+      return static_cast<NodeType*>(m_pCurrent);
     }
-    NodeType* pSibling = PreviousSiblingWithinSubtree(m_pCurrent.Get());
+    NodeType* pSibling =
+        PreviousSiblingWithinSubtree(static_cast<NodeType*>(m_pCurrent));
     if (pSibling) {
       m_pCurrent.Reset(LastDescendant(pSibling));
-      return m_pCurrent.Get();
+      return static_cast<NodeType*>(m_pCurrent);
     }
-    NodeType* pParent = ParentWithinSubtree(m_pCurrent.Get());
+    NodeType* pParent = ParentWithinSubtree(static_cast<NodeType*>(m_pCurrent));
     if (pParent)
       m_pCurrent.Reset(pParent);
     return pParent;
@@ -51,7 +52,8 @@ class CXFA_NodeIteratorTemplate {
   NodeType* MoveToNext() {
     if (!m_pRoot || !m_pCurrent)
       return nullptr;
-    NodeType* pChild = TraverseStrategy::GetFirstChild(m_pCurrent.Get());
+    NodeType* pChild =
+        TraverseStrategy::GetFirstChild(static_cast<NodeType*>(m_pCurrent));
     if (pChild) {
       m_pCurrent.Reset(pChild);
       return pChild;
@@ -62,7 +64,7 @@ class CXFA_NodeIteratorTemplate {
   NodeType* SkipChildrenAndMoveToNext() {
     if (!m_pRoot)
       return nullptr;
-    NodeType* pNode = m_pCurrent.Get();
+    NodeType* pNode = static_cast<NodeType*>(m_pCurrent);
     while (pNode) {
       NodeType* pSibling = NextSiblingWithinSubtree(pNode);
       if (pSibling) {
