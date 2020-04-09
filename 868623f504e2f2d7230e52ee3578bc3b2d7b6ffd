@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22e006b4_6a192705",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 28
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83da2c60_c651beee",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b99cdc2_f377a1ab",
         "filename": "testing/resources/pixel/bug_842_expected_skia.pdf.0.png",
         "patchSetId": 28
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "d1a98235_c06fe11b",
+        "filename": "testing/resources/pixel/bug_842_expected_skia.pdf.0.png",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "This was mentioned in the second paragraph in the previous patchset, since it\u0027s for testing script change of format \"NAME_expected_skia?(_(win|mac|linux))?.pdf.#.png\" only. I made it more obvious by adding \"PNG files\" to it.",
+      "parentUuid": "6b99cdc2_f377a1ab",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db772e1a_25cf880a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28
@@ -53,6 +95,24 @@
       "writtenOn": "2020-04-08T17:51:25Z",
       "side": 1,
       "message": "Since the ordering matters, please add a brief comment to mention why the values are in this particular order?",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a864734c_a54ce14c",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Ended up adding super long comments inside this class in the new patchset. I figure the explanation for the 3 PathModes should be in the code instead of just in the comment of the bug ticket. I tried my best at wording it, but may still need some guidance on polishing it.",
+      "parentUuid": "db772e1a_25cf880a",
       "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -93,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "14ad030e_18f70d35",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Filed crbug.com/pdfium/1508 for this TODO item.",
+      "parentUuid": "64c52151_36d61f5f",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "930f793b_8c77ebce",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28
@@ -116,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "cdbca736_71d735d7",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930f793b_8c77ebce",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 17
+      },
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7ff8c61_0d7145e1",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28
@@ -130,6 +232,24 @@
       "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf43da5_6427b7e5",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ff8c61_0d7145e1",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +270,24 @@
     },
     {
       "key": {
+        "uuid": "79e8687c_be380a5f",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe19885_a3b069bf",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8504f7_17cd1e57",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28
@@ -167,6 +305,24 @@
     },
     {
       "key": {
+        "uuid": "706a1cfc_bcbe911a",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8504f7_17cd1e57",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e52966ee_5f6f6f6c",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28
@@ -181,6 +337,24 @@
       "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "479ca406_c50d519a",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-09T16:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e52966ee_5f6f6f6c",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
