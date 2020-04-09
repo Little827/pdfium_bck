@@ -39,6 +39,52 @@
       "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f89e0e_14e863d7",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 34
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T23:21:03Z",
+      "side": 1,
+      "message": "precedence?",
+      "range": {
+        "startLine": 33,
+        "startChar": 31,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833df1e6_e04fa93a",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 34
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-09T23:21:03Z",
+      "side": 1,
+      "message": "Maybe use |PathMode.DEFAULT| here?",
+      "range": {
+        "startLine": 160,
+        "startChar": 28,
+        "endLine": 160,
+        "endChar": 29
+      },
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
