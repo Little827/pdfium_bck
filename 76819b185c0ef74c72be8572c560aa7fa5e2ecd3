@@ -359,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "48af0ba1_b55ff06d",
+        "filename": "PRESUBMIT_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-09T00:20:59Z",
+      "side": 1,
+      "message": "It\u0027s subjective, but in general, we don\u0027t write code that isn\u0027t needed. There\u0027s no need for the parentheses, and they don\u0027t improve readability.",
+      "parentUuid": "fe08336e_e81dc2f4",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30f9085e_f49764dc",
         "filename": "PRESUBMIT_test.py",
         "patchSetId": 7
@@ -616,6 +640,24 @@
     },
     {
       "key": {
+        "uuid": "8c29b178_fa8e7728",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-09T00:20:59Z",
+      "side": 1,
+      "message": "Why would we want to indicate that the code is modified using different capitalization? I suspect what happened here is that someone thought an all-lower name was better stylistically.\n\nIn any case, we should pick a name that makes sense: PRESUBMIT_test_mocks.py is derived from PRESUBMIT_test.py.",
+      "parentUuid": "3459153b_9785f329",
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef158f66_e904bb1e",
         "filename": "presubmit_test_mocks.py",
         "patchSetId": 7
@@ -703,6 +745,30 @@
         "startChar": 12,
         "endLine": 1,
         "endChar": 16
+      },
+      "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9db5efb6_b8af34a7",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-09T00:20:59Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "64586d74_75b05f25",
+      "range": {
+        "startLine": 1,
+        "startChar": 21,
+        "endLine": 1,
+        "endChar": 41
       },
       "revId": "76819b185c0ef74c72be8572c560aa7fa5e2ecd3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",

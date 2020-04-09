@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efd48d1e_ae4b3b0f",
+        "filename": "PRESUBMIT_test.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-09T00:20:59Z",
+      "side": 1,
+      "message": "self.assertIn(path, error) is probably a better way to express this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "f6ce2cfee7aaca4a1a897b7c9cd95a3279f1e51f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00516f88_88ca042e",
+        "filename": "presubmit_test_mocks.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-09T00:20:59Z",
+      "side": 1,
+      "message": "This will cause problems, because the [] is a mutable singleton.\nhttp://google.github.io/styleguide/pyguide.html#2124-decision",
+      "range": {
+        "startLine": 53,
+        "startChar": 46,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "f6ce2cfee7aaca4a1a897b7c9cd95a3279f1e51f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
