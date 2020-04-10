@@ -85,6 +85,30 @@
       "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ba45ee_f6ad51a0",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 34
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-10T18:58:50Z",
+      "side": 1,
+      "message": "Also, just wanted to leave a drive-by tip: Python will let you do a \u003c\u003d b \u003c\u003d c:\nhttps://docs.python.org/2/reference/expressions.html#comparisons",
+      "parentUuid": "833df1e6_e04fa93a",
+      "range": {
+        "startLine": 160,
+        "startChar": 28,
+        "endLine": 160,
+        "endChar": 29
+      },
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
