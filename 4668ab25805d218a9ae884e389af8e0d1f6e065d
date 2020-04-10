@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85282cac_e111db9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-10T23:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d607db_39b6adfd",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af2c4c3d_0bb379b9",
         "filename": "testing/resources/pixel/bug_733528_expected_skia.pdf.0.png",
         "patchSetId": 34
@@ -62,6 +86,30 @@
       "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2edb2caf_a0c37205",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 34
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-10T23:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f89e0e_14e863d7",
+      "range": {
+        "startLine": 33,
+        "startChar": 31,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -109,6 +157,30 @@
       "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207f9c86_0723cea6",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 34
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-10T23:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "833df1e6_e04fa93a",
+      "range": {
+        "startLine": 160,
+        "startChar": 28,
+        "endLine": 160,
+        "endChar": 29
+      },
+      "revId": "4668ab25805d218a9ae884e389af8e0d1f6e065d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

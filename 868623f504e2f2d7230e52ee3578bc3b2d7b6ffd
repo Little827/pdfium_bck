@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "96a9c8f0_77273b21",
+        "filename": "testing/resources/pixel/bug_842_expected_skia.pdf.0.png",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-10T23:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4651cc08_b47a09c7",
+      "revId": "868623f504e2f2d7230e52ee3578bc3b2d7b6ffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db772e1a_25cf880a",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 28
