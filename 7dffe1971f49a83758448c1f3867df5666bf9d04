@@ -69,6 +69,30 @@
       "revId": "7dffe1971f49a83758448c1f3867df5666bf9d04",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "801ab204_032d0114",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-10T03:50:41Z",
+      "side": 1,
+      "message": "Done in upstream CL.",
+      "parentUuid": "c99af213_55ba8079",
+      "range": {
+        "startLine": 482,
+        "startChar": 52,
+        "endLine": 482,
+        "endChar": 74
+      },
+      "revId": "7dffe1971f49a83758448c1f3867df5666bf9d04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
