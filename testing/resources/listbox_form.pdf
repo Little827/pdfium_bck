@@ -4,7 +4,7 @@
   /Type /Catalog
   /Pages 2 0 R
   /AcroForm <<
-    /Fields [ 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R ]
+    /Fields [ 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R ]
     /DR 4 0 R
   >>
 >>
@@ -21,7 +21,7 @@ endobj
   /Resources 4 0 R
   /MediaBox [ 0 0 300 600 ]
   /Contents 7 0 R
-  /Annots [ 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R ]
+  /Annots [ 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R ]
 >>
 endobj
 4 0 obj <<
@@ -58,7 +58,7 @@ endobj
   /T (Listbox_SingleSelect)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 350 200 380 ]
-  /Opt [[(foo) (Foo)] [(bar) (Bar)] [(qux) (Qux)]]
+  /Opt [ [ (foo) (Foo) ] [ (bar) (Bar) ] [ (qux) (Qux) ] ]
 >>
 endobj
 9 0 obj <<
@@ -69,10 +69,10 @@ endobj
   /T (Listbox_MultiSelect)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 400 200 430 ]
-  /Opt [(Apple) (Banana) (Cherry) (Date) (Elderberry) (Fig) (Guava) (Honeydew)
-        (Indian Fig) (Jackfruit) (Kiwi) (Lemon) (Mango) (Nectarine) (Orange)
-        (Persimmon) (Quince) (Raspberry) (Strawberry) (Tamarind) (Ugli Fruit)
-        (Voavanga) (Wolfberry) (Xigua) (Yangmei) (Zucchini)]
+  /Opt [ (Apple) (Banana) (Cherry) (Date) (Elderberry) (Fig) (Guava) (Honeydew)
+         (Indian Fig) (Jackfruit) (Kiwi) (Lemon) (Mango) (Nectarine) (Orange)
+         (Persimmon) (Quince) (Raspberry) (Strawberry) (Tamarind) (Ugli Fruit)
+         (Voavanga) (Wolfberry) (Xigua) (Yangmei) (Zucchini) ]
   /V (Banana)
 >>
 endobj
@@ -84,7 +84,7 @@ endobj
   /T (Listbox_ReadOnly)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 500 200 530 ]
-  /Opt [(Dog) (Elephant) (Frog)]
+  /Opt [ (Dog) (Elephant) (Frog) ]
 >>
 endobj
 11 0 obj <<
@@ -92,14 +92,39 @@ endobj
   /Subtype /Widget
   /FT /Ch
   /Ff 2097152
-  /T (Listbox_MultiSelectMultipleSelected)
+  /T (Listbox_MultiSelectMultipleIndices)
   /DA (0 0 0 rg /F1 12 Tf)
-  /Rect [ 100 200 200 230 ]
-  /Opt [(Alpha) (Beta) (Gamma) (Delta) (Epsilon)]
-  /V [(Epsilon) (Gamma)]
+  /Rect [ 100 250 200 280 ]
+  /Opt [ (Albania) (Belgium) (Croatia) (Denmark) (Estonia) ]
+  /I [ 1 3 ]
 >>
 endobj
 12 0 obj <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Ch
+  /Ff 2097152
+  /T (Listbox_MultiSelectMultipleValues)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 200 200 230 ]
+  /Opt [ (Alpha) (Beta) (Gamma) (Delta) (Epsilon) ]
+  /V [ (Epsilon) (Gamma) ]
+>>
+endobj
+13 0 obj <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Ch
+  /Ff 2097152
+  /T (Listbox_MultiSelectMultipleMismatch)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 150 200 180 ]
+  /Opt [ (Alligator) (Bear) (Cougar) (Deer) (Echidna) ]
+  /V [ (Alligator) (Cougar) ]
+  /I [ 1 3 4 ]
+>>
+endobj
+14 0 obj <<
   /Type /Annot
   /Subtype /Widget
   /FT /Ch
@@ -107,32 +132,34 @@ endobj
   /T (Listbox_SingleSelectLastSelected)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 100 200 130 ]
-  /Opt [(Alberta) (British Columbia) (Manitoba) (New Brunswick)
-        (Newfoundland and Labrador) (Nova Scotia) (Ontario)
-        (Prince Edward Island) (Quebec) (Saskatchewan) ]
+  /Opt [ (Alberta) (British Columbia) (Manitoba) (New Brunswick)
+         (Newfoundland and Labrador) (Nova Scotia) (Ontario)
+         (Prince Edward Island) (Quebec) (Saskatchewan) ]
   /V (Saskatchewan)
   /TI 9
 >>
 endobj
 xref
-0 13
+0 15
 0000000000 65535 f 
 0000000015 00000 n 
-0000000151 00000 n 
-0000000216 00000 n 
-0000000379 00000 n 
-0000000414 00000 n 
-0000000447 00000 n 
-0000000523 00000 n 
-0000000625 00000 n 
-0000000832 00000 n 
-0000001302 00000 n 
-0000001488 00000 n 
-0000001741 00000 n 
+0000000165 00000 n 
+0000000230 00000 n 
+0000000407 00000 n 
+0000000442 00000 n 
+0000000475 00000 n 
+0000000551 00000 n 
+0000000653 00000 n 
+0000000868 00000 n 
+0000001343 00000 n 
+0000001531 00000 n 
+0000001782 00000 n 
+0000002037 00000 n 
+0000002316 00000 n 
 trailer <<
   /Root 1 0 R
-  /Size 13
+  /Size 15
 >>
 startxref
-2119
+2697
 %%EOF
