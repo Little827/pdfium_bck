@@ -23,6 +23,30 @@
       "revId": "9d391495e104c25035db0c9f677612b752f613f2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eaa8a22_feeb8983",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-10T23:11:31Z",
+      "side": 1,
+      "message": "The concern is that callers may think FORM_SetFocusedAnnot(form_handle, NULL) will kill focus. But they should use FORM_ForceToKillFocus() instead.\n\nI think the intention is to keep this sentence close to the next one, so the discussion is all in one place.",
+      "parentUuid": "3b3b63ba_bc7ce028",
+      "range": {
+        "startLine": 1613,
+        "startChar": 9,
+        "endLine": 1613,
+        "endChar": 31
+      },
+      "revId": "9d391495e104c25035db0c9f677612b752f613f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
