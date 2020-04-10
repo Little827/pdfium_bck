@@ -130,7 +130,8 @@ class CPDF_FormField {
   int GetTopVisibleIndex() const;
   int CountSelectedOptions() const;
   int GetSelectedOptionIndex(int index) const;
-  bool IsOptionSelected(int iOptIndex) const;
+  bool IsSelectedOption(WideString wsOptValue) const;
+  bool IsSelectedIndex(int iOptIndex) const;
   bool SelectOption(int iOptIndex, bool bSelected, NotificationOption notify);
 
   float GetFontSize() const { return m_FontSize; }
@@ -164,6 +165,10 @@ class CPDF_FormField {
   bool NotifyListOrComboBoxBeforeChange(const WideString& value);
   void NotifyListOrComboBoxAfterChange();
 
+  // Verifies if there is a valid selected indicies object and whether its
+  // entries are consistent with the value object.
+  bool UseSelectedIndicesObject() const;
+
   const CPDF_Object* GetDefaultValueObject() const;
   const CPDF_Object* GetValueObject() const;
 
@@ -181,6 +186,7 @@ class CPDF_FormField {
   bool m_bNoExport = false;
   bool m_bIsMultiSelectListBox = false;
   bool m_bIsUnison = false;
+  bool m_bUseSelectedIndices = false;
   float m_FontSize = 0;
   UnownedPtr<CPDF_InteractiveForm> const m_pForm;
   RetainPtr<CPDF_Dictionary> const m_pDict;
