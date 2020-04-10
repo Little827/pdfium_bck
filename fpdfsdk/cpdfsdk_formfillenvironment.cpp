@@ -768,14 +768,13 @@ void CPDFSDK_FormFillEnvironment::SendOnFocusChange(
   if (!pPageView->IsValid())
     return;
 
-  CPDF_Page* cpdf_page = (*pAnnot)->GetPDFPage();
-  if (!cpdf_page)
+  IPDF_Page* page = (*pAnnot)->GetPage();
+  if (!page)
     return;
 
   CPDF_Dictionary* annot_dict = (*pAnnot)->GetPDFAnnot()->GetAnnotDict();
 
-  auto focused_annot =
-      pdfium::MakeUnique<CPDF_AnnotContext>(annot_dict, cpdf_page);
+  auto focused_annot = pdfium::MakeUnique<CPDF_AnnotContext>(annot_dict, page);
   FPDF_ANNOTATION fpdf_annot =
       FPDFAnnotationFromCPDFAnnotContext(focused_annot.get());
 
