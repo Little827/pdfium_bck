@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2c70e812_6d821633",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-10T18:23:38Z",
+      "side": 1,
+      "message": "It\u0027s copy-pasted from above. Fixed all the instances.",
+      "parentUuid": "b022748e_99dddf8f",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "1cbd200b9953edcd3598574a0a56500998b96224",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b68b8d9f_4f21be3f",
         "filename": "testing/resources/pixel/scrollable_widgets.evt",
         "patchSetId": 4
@@ -108,6 +132,30 @@
       "writtenOn": "2020-04-09T21:56:29Z",
       "side": 1,
       "message": "can we test some negative numbers and wind up in the middle of the list rather than on zuchhini?",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "1cbd200b9953edcd3598574a0a56500998b96224",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26c872f_5fc9dcdf",
+        "filename": "testing/resources/pixel/scrollable_widgets.evt",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-10T18:23:38Z",
+      "side": 1,
+      "message": "Will add a second widget and scroll that.",
+      "parentUuid": "b68b8d9f_4f21be3f",
       "range": {
         "startLine": 23,
         "startChar": 11,
