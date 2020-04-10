@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5cd4e87_5eeef571",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-10T22:52:16Z",
+      "side": 1,
+      "message": "The background colors for the text annotations are also different. What\u0027s going on there? Per offline discussion, let\u0027s drop bug_733528*.png from this CL and add them later.",
+      "revId": "69d321b58c1ebedb0dbf696cdc22f819950d3e3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b61e359_33df2f79",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 37
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-10T22:52:16Z",
+      "side": 1,
+      "message": "Typo.",
+      "range": {
+        "startLine": 33,
+        "startChar": 31,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "69d321b58c1ebedb0dbf696cdc22f819950d3e3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
