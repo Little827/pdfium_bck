@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ed012f0_64c51583",
+        "filename": "testing/resources/listbox_form.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-10T19:46:24Z",
+      "side": 1,
+      "message": "If you want the brackets to be more consistent, I would ask that you go in the other direction. Since parenthesis and curly braces don\u0027t have extra spaces, brackets shouldn\u0027t either.\n\nIf you want to do that in a separate CL, that also renames \"MultiSelectMultipleSelected\" to \"MultiSelectMultipleValues\", it will be a bit cleaner.\n\nWDYT?",
+      "revId": "ad15114e73442ac002057b110cb0bbe9663dd0fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
