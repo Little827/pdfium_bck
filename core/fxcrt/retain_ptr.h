@@ -53,6 +53,7 @@ class RetainPtr {
     m_pObj.reset(obj);
   }
 
+  explicit operator T*() const { return Get(); }
   T* Get() const { return m_pObj.get(); }
   UnownedPtr<T> BackPointer() const { return UnownedPtr<T>(Get()); }
   void Swap(RetainPtr& that) { m_pObj.swap(that.m_pObj); }
