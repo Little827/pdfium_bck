@@ -2414,6 +2414,10 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotSubtypes) {
               FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
   }
 
+  // TODO(crbug.com/pdfium/1511): Handle focused annotation correctly when list
+  // of focusable annotation type changes.
+  FORM_ForceToKillFocus(form_handle());
+
   // Make no annotation type focusable using the preferred method.
   ASSERT_TRUE(FPDFAnnot_SetFocusableSubtypes(form_handle(), nullptr, 0));
   ASSERT_EQ(0, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
@@ -2432,10 +2436,7 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotSubtypes) {
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, i));
     ASSERT_TRUE(annot);
     EXPECT_EQ(kAnnotTypes[i], FPDFAnnot_GetSubtype(annot.get()));
-    // TODO(crbug.com/pdfium/1507): Widgets should not be focusable.
-    bool expected_focusable = kAnnotTypes[i] == FPDF_ANNOT_WIDGET;
-    EXPECT_EQ(expected_focusable,
-              FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
+    EXPECT_FALSE(FORM_SetFocusedAnnot(form_handle(), page, annot.get()));
   }
 
   // Now make links focusable.
