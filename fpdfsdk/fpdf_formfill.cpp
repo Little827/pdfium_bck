@@ -612,9 +612,7 @@ FORM_GetFocusedAnnot(FPDF_FORMHANDLE handle,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FORM_SetFocusedAnnot(FPDF_FORMHANDLE handle,
-                     FPDF_PAGE page,
-                     FPDF_ANNOTATION annot) {
+FORM_SetFocusedAnnot(FPDF_FORMHANDLE handle, FPDF_ANNOTATION annot) {
   CPDFSDK_FormFillEnvironment* form_fill_env =
       CPDFSDKFormFillEnvironmentFromFPDFFormHandle(handle);
   if (!form_fill_env)
@@ -624,11 +622,8 @@ FORM_SetFocusedAnnot(FPDF_FORMHANDLE handle,
   if (!annot_context)
     return false;
 
-  IPDF_Page* pdf_page = IPDFPageFromFPDFPage(page);
-  if (!pdf_page)
-    return false;
-
-  CPDFSDK_PageView* page_view = form_fill_env->GetPageView(pdf_page, true);
+  CPDFSDK_PageView* page_view =
+      form_fill_env->GetPageView(annot_context->GetPage(), true);
   if (!page_view->IsValid())
     return false;
 

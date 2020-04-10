@@ -6,6 +6,7 @@
 
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "constants/annotation_common.h"
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
@@ -329,7 +330,8 @@ FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV FPDFPage_GetAnnot(FPDF_PAGE page,
   if (!pDict)
     return nullptr;
 
-  auto pNewAnnot = pdfium::MakeUnique<CPDF_AnnotContext>(pDict, pPage);
+  auto pNewAnnot =
+      pdfium::MakeUnique<CPDF_AnnotContext>(pDict, IPDFPageFromFPDFPage(page));
 
   // Caller takes ownership.
   return FPDFAnnotationFromCPDFAnnotContext(pNewAnnot.release());
