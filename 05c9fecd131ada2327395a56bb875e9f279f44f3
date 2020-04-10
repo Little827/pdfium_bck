@@ -94,6 +94,30 @@
       "revId": "05c9fecd131ada2327395a56bb875e9f279f44f3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28b51d4_253f918b",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2442,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-10T02:37:23Z",
+      "side": 1,
+      "message": "Thanks for filing the bug.\n\nI added a FORM_ForceToKillFocus() call before every FORM_SetFocusedAnnot() call.",
+      "parentUuid": "2cd18c7b_81174786",
+      "range": {
+        "startLine": 2433,
+        "startChar": 2,
+        "endLine": 2442,
+        "endChar": 3
+      },
+      "revId": "05c9fecd131ada2327395a56bb875e9f279f44f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
