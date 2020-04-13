@@ -22,6 +22,30 @@
       "revId": "b8b3f5ffc0ea33f06402e03145f26ed6d581b552",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9dfe026_496b9bee",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2020-04-13T18:56:53Z",
+      "side": 0,
+      "message": "We\u0027ve been using PDFium with large files over 2GB on Linux for several years with a custom patch that\u0027s virtually identical to FPDF_LoadMemDocument64. I haven\u0027t tested this for other ways of loading PDFs, however.",
+      "parentUuid": "5e067407_bae52776",
+      "range": {
+        "startLine": 64,
+        "startChar": 45,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "b8b3f5ffc0ea33f06402e03145f26ed6d581b552",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
