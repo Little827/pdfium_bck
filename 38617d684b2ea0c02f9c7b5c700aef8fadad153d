@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab2ed717_408191c8",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-13T20:15:18Z",
+      "side": 1,
+      "message": "Alternatively, you can use ToString() on the previous line. Up to you.",
+      "range": {
+        "startLine": 418,
+        "startChar": 13,
+        "endLine": 418,
+        "endChar": 37
+      },
+      "revId": "38617d684b2ea0c02f9c7b5c700aef8fadad153d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4669d69_662fb61a",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-13T20:15:18Z",
+      "side": 1,
+      "message": "How often do we do this? Should we have a helper function like Utf16EncodeMaybeCopyAndReturnLength(), but for ByteString, without doing any coding?",
+      "revId": "38617d684b2ea0c02f9c7b5c700aef8fadad153d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45cf4afa_6d3bffca",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-13T20:15:18Z",
+      "side": 1,
+      "message": "Will there ever be more than 1? Should this be \"NUL terminator\" ?",
+      "range": {
+        "startLine": 330,
+        "startChar": 65,
+        "endLine": 330,
+        "endChar": 79
+      },
+      "revId": "38617d684b2ea0c02f9c7b5c700aef8fadad153d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98939700_1d9be7ca",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-13T20:15:18Z",
+      "side": 1,
+      "message": "a NUL terminator.",
+      "range": {
+        "startLine": 332,
+        "startChar": 69,
+        "endLine": 333,
+        "endChar": 35
+      },
+      "revId": "38617d684b2ea0c02f9c7b5c700aef8fadad153d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
