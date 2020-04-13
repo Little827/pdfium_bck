@@ -22,6 +22,30 @@
       "revId": "870e35b37f9e61bcde8e330e9eff39d11d7c4ec5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53c15421_7dcc1aac",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-13T20:24:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b3782ba_ef3cbe4b",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "870e35b37f9e61bcde8e330e9eff39d11d7c4ec5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
