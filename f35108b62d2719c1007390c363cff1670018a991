@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c947355_a4b83825",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-13T08:12:37Z",
+      "side": 1,
+      "message": "We can remove this, FPDFAnnot_GetSubtype() will take care of this.",
+      "range": {
+        "startLine": 465,
+        "startChar": 6,
+        "endLine": 465,
+        "endChar": 13
+      },
+      "revId": "f35108b62d2719c1007390c363cff1670018a991",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85569260_254005f2",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-13T08:12:37Z",
+      "side": 1,
+      "message": "period",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 19
+      },
+      "revId": "f35108b62d2719c1007390c363cff1670018a991",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8603225c_ef53a061",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-13T08:12:37Z",
+      "side": 1,
+      "message": "need to indent it to make it inline with other API comments.",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 8
+      },
+      "revId": "f35108b62d2719c1007390c363cff1670018a991",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af844e6d_80071c29",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-13T08:12:37Z",
+      "side": 1,
+      "message": "period at the end.",
+      "range": {
+        "startLine": 219,
+        "startChar": 18,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "f35108b62d2719c1007390c363cff1670018a991",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
