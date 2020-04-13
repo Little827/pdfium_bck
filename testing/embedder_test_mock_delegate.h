@@ -17,6 +17,10 @@ class EmbedderTestMockDelegate : public EmbedderTest::Delegate {
   MOCK_METHOD2(SetTimer, int(int msecs, TimerCallback fn));
   MOCK_METHOD1(KillTimer, void(int msecs));
   MOCK_METHOD1(DoURIAction, void(FPDF_BYTESTRING uri));
+  MOCK_METHOD3(DoURIActionWithKeyboardModifier,
+               void(FPDF_FORMFILLINFO* info,
+                    FPDF_BYTESTRING uri,
+                    int modifiers));
   MOCK_METHOD3(OnFocusChange,
                void(FPDF_FORMFILLINFO* info,
                     FPDF_ANNOTATION annot,
