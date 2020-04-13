@@ -22,6 +22,30 @@
       "revId": "18bf0135945b780656bbaa9a0d7ae3652abfbdad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a9c995_d32b27cc",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2020-04-13T18:09:11Z",
+      "side": 1,
+      "message": "Hmm, according to https://docs.microsoft.com/en-us/cpp/c-runtime-library/standard-types?view\u003dvs-2019, off_t exists, but I don\u0027t have access to the Windows/MSVC version of the header.\n\nAccording to https://stackoverflow.com/questions/9073667/where-to-find-the-complete-definition-of-off-t-type, off_t is not in the C standard. It is in the POSIX standard, but off_t is only defined as a \"signed integer type\".",
+      "parentUuid": "9e0bce02_359080e6",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "18bf0135945b780656bbaa9a0d7ae3652abfbdad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
