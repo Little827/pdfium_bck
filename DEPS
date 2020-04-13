@@ -77,6 +77,10 @@ vars = {
   # and whatever else without interference from each other.
   'markupsafe_revision': '8f45f5cfa0009d2a70589bcda0349b8cb2b72783',
   # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling nasm_source
+  # and whatever else without interference from each other.
+  'nasm_source_revision': '21eb595319746a669a742d210eaa413c728e7fad',
+  # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling pdfium_tests
   # and whatever else without interference from each other.
   'pdfium_tests_revision': 'b4e9a126d289b49002d0f0acac71d1fdc26953b3',
@@ -159,13 +163,17 @@ deps = {
     Var('chromium_git') + "/chromium/src/third_party/jinja2.git@" +
         Var('jinja2_revision'),
 
+  "third_party/libjpeg_turbo":
+    Var('chromium_git') + "/chromium/deps/libjpeg_turbo.git@" +
+        Var('jpeg_turbo_revision'),
+
   "third_party/markupsafe":
     Var('chromium_git') + "/chromium/src/third_party/markupsafe.git@" +
         Var('markupsafe_revision'),
 
-  "third_party/libjpeg_turbo":
-    Var('chromium_git') + "/chromium/deps/libjpeg_turbo.git@" +
-        Var('jpeg_turbo_revision'),
+  'third_party/nasm':
+    Var('chromium_git') + '/chromium/deps/nasm.git@' +
+        Var('nasm_source_revision'),
 
   "third_party/skia":
     Var('chromium_git') + '/skia.git@' +  Var('skia_revision'),
