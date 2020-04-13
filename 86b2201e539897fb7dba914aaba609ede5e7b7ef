@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1586819503 -0700\nnonce AM5BpQVANrX1DIGVPJNCQvo4B93a032aBT6RHCEbOhfEOM8dB15iJlSPYPG6jpoa8+ivxYfWhDmg\n\n0000000000000000000000000000000000000000 86b2201e539897fb7dba914aaba609ede5e7b7ef refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6U8a8ACgkQqzYtYVpm\n/XtCjgf/dFFJcip+eJ65O7rWn/XGTPYvTTNnr8PAQ1V7BQdYr5wJzvlDZDCDQnDI\nUZapTSSdxWVVCy7qL0Ft5x15qzflC/V6/QCfcpBz/q5QCLm60IQlPxY8ZQ6BU2Hw\nNKwYNU+dVHRy8kgH4aUuQEnbBo35/LQk7ulkWsNx3l4+F1tqK1y+ZVeYufguxCBp\nssSxGAaXrFMurT5hHcweNzH7axWwe+z/UGB1ftzCCzDG2s0ZuHE6j7sqpjQhaKr6\niSWGfFHDXnwJfeVsvc8Ep+tLTOU3ZehoPYy0FbyZJ4xneB+MH/wqkW61tdz1HI3c\nvVALlwCiwxDp6ACmMiWNY3rqQuIdlw\u003d\u003d\n\u003d7JzC\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
