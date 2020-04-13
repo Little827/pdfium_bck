@@ -22,6 +22,47 @@
       "revId": "9aeaec691e256cdfd3ee132956d4de1d90a1b304",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d58e7e4d_dd180581",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-13T21:38:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe1fbfbc_5e2f8832",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 219,
+        "endChar": 15
+      },
+      "revId": "9aeaec691e256cdfd3ee132956d4de1d90a1b304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2ab410_41e91abe",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1069700.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-13T21:38:23Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "revId": "9aeaec691e256cdfd3ee132956d4de1d90a1b304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
