@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b3782ba_ef3cbe4b",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-13T19:42:03Z",
+      "side": 1,
+      "message": "note: made this a uint32_t after the move.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "870e35b37f9e61bcde8e330e9eff39d11d7c4ec5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
