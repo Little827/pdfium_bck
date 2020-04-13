@@ -14,6 +14,7 @@
 #include "testing/fx_string_testhelpers.h"
 
 namespace {
+
 void SendCharCodeEvent(FPDF_FORMHANDLE form,
                        FPDF_PAGE page,
                        const std::vector<std::string>& tokens) {
@@ -29,14 +30,15 @@ void SendCharCodeEvent(FPDF_FORMHANDLE form,
 void SendKeyCodeEvent(FPDF_FORMHANDLE form,
                       FPDF_PAGE page,
                       const std::vector<std::string>& tokens) {
-  if (tokens.size() != 2) {
+  if (tokens.size() < 2 || tokens.size() > 3) {
     fprintf(stderr, "keycode: bad args\n");
     return;
   }
 
   int keycode = atoi(tokens[1].c_str());
-  FORM_OnKeyDown(form, page, keycode, 0);
-  FORM_OnKeyUp(form, page, keycode, 0);
+  int modifier = tokens.size() >= 3 ? atoi(tokens[2].c_str()) : 0;
+  FORM_OnKeyDown(form, page, keycode, modifier);
+  FORM_OnKeyUp(form, page, keycode, modifier);
 }
 
 uint32_t GetModifiers(std::string modifiers_string) {
