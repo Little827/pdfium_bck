@@ -23,6 +23,30 @@
       "revId": "19e686ccd975771bf7beb7f6a38c19e82d215b9a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09cff9b2_6138949a",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5760
+      },
+      "writtenOn": "2020-04-13T23:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287539c2_274a6eef",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 6
+      },
+      "revId": "19e686ccd975771bf7beb7f6a38c19e82d215b9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
