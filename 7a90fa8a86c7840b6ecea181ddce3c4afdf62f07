@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "4ec121f1_6d818e85",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T23:46:42Z",
+      "side": 1,
+      "message": "std::unordered_map exists for that. Unless there\u0027s some hot spot that can really benefit from base::flat_map, it\u0027s just easier to keep it simple with std::map.",
+      "parentUuid": "c9d5b33e_26cb23cc",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d647ba2_d71912ad",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 4
@@ -370,6 +388,24 @@
       "side": 1,
       "message": "I think(!) it might be possible, but I\u0027ll need to probably do that in another CL before this one lands.\n\nI\u0027d have to instantiate a CPDF_FormField without passing in a CPDF_InteractiveForm, which is currently not possible.",
       "parentUuid": "d0dd1837_306b73e7",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c830dfec_3cc2be8d",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T23:46:42Z",
+      "side": 1,
+      "message": "Maybe we can pull out a standalone function that takes two CPDF_Object pointers for /V and /I?",
+      "parentUuid": "c20fb2fd_4ed0c183",
       "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
