@@ -16,6 +16,24 @@
       "revId": "f94ff989197c415ffb0cabf9ed5c97d9ad08e5e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6195e0c0_8a29329a",
+        "filename": "fpdfsdk/fpdf_transformpage_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-14T17:27:29Z",
+      "side": 1,
+      "message": "Since it\u0027s not too many changes, I consolidates the common hash values within this file in this CL. Will have a follow-up CL for consolidates the common hash values within fpdfsdk directory.",
+      "parentUuid": "6c302799_2551e45c",
+      "revId": "f94ff989197c415ffb0cabf9ed5c97d9ad08e5e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
