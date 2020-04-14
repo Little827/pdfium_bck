@@ -23,6 +23,30 @@
       "revId": "a33bdd79a81bf46c16107db38b4404bf0832ec19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a573d15_41b250d6",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T00:47:36Z",
+      "side": 1,
+      "message": "Done. But now all the initializer lists passed in have to be explicitly declared, as they are no longer implicitly std::vectors.",
+      "parentUuid": "0861f5a9_bcfb4009",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "a33bdd79a81bf46c16107db38b4404bf0832ec19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
