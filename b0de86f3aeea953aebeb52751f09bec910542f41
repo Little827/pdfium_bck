@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe0b0be8_2870c708",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Yes, that is correct. Edited the description.",
+      "parentUuid": "8780d3bc_89ea1244",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15793b30_95c4695f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82302da_bdbe0042",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Yes, we would need another new public API to pass in the FPDF_COLORSCHEME when rendering PDF annotation widgets, parallel to FPDF_FFLDraw.\nAlso, will need addition in color scheme to be used in button rendering.\nI am planning to add those with the CL for supporting forced color for forms.",
+      "parentUuid": "15793b30_95c4695f",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a02ae61e_0508ac52",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Renamed to TranslateObjectColor().",
+      "parentUuid": "b3d98e2c_9c26c470",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "421b50b7_4f2c4cad",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 12
@@ -79,6 +139,30 @@
       "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e42b3cc_b03e3502",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Corrected the same.",
+      "parentUuid": "421b50b7_4f2c4cad",
+      "range": {
+        "startLine": 415,
+        "startChar": 44,
+        "endLine": 415,
+        "endChar": 49
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "67356bf8_f8c80b7d",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Removed the keyword.",
+      "parentUuid": "19120433_4165d209",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b41fa8f_8cd1ce61",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 12
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "741e7239_9fff2581",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6b41fa8f_8cd1ce61",
+      "range": {
+        "startLine": 348,
+        "startChar": 2,
+        "endLine": 348,
+        "endChar": 13
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b14f9d7_2de0af0a",
         "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
         "patchSetId": 12
@@ -142,6 +274,24 @@
       "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7855220b_c90d2dab",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "That is correct. Removed the unnecessary check.",
+      "parentUuid": "9b14f9d7_2de0af0a",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "6cbe51c7_bb675fdb",
+        "filename": "fpdfsdk/cpdfsdk_renderpage.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Forward declared the struct.",
+      "parentUuid": "a3112ec6_d95e5721",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e51fc63b_53e07981",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 12
@@ -176,6 +344,24 @@
       "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fd9b1c4_bf224fa3",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "True, the flag is redundant.\nThis also solves the issue of the scenario where if both FPDF_GRAYSCALE and FPDF_FORCEDCOLOR are set it would become ambiguous as to which color scheme to apply.\nRemoved the flag and updated the rest of the code accordingly.",
+      "parentUuid": "e51fc63b_53e07981",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "f7d0e3cb_1e668684",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Using \"less\" would definitely be more appropriate. Thank you for pointing out.\nUpdated the comment.",
+      "parentUuid": "a4fbd01b_3190dc3a",
+      "range": {
+        "startLine": 739,
+        "startChar": 41,
+        "endLine": 739,
+        "endChar": 48
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d67c113a_1d2124f1",
         "filename": "public/fpdfview.h",
         "patchSetId": 12
@@ -222,6 +432,30 @@
       "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f916f889_15cad318",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-14T20:25:47Z",
+      "side": 1,
+      "message": "Corrected the same.",
+      "parentUuid": "d67c113a_1d2124f1",
+      "range": {
+        "startLine": 743,
+        "startChar": 33,
+        "endLine": 743,
+        "endChar": 42
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
