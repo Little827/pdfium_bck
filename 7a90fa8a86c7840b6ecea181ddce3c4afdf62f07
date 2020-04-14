@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4bd0274_7cae1d50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "This makes it sound like a refactoring CL, which I don\u0027t believe it is, given test expectations are changing.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "303a3603_8f5800a8",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "Instead of calling IsArray() and AsArray(), just call AsArray() and check if the returned pointer is null.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6763869e_cd22d03f",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 754,
+        "startChar": 9,
+        "endLine": 754,
+        "endChar": 10
+      },
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1b0e2b_7f24a3d0",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "No need to call AsArray() here. It already exists as |pValueArray|.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6d61ff_74c06277",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "Save the find() result to an iterator variable, and then use it on line 970-972 to avoid more lookups.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d647ba2_d71912ad",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "ASSERT() this instead.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2efef9_c6564abe",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "pdfium::ContainsKey() ?",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49553967_e6938262",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "Pass by const-ref, like most of the surrounding methods that take a WideString?",
+      "range": {
+        "startLine": 133,
+        "startChar": 24,
+        "endLine": 133,
+        "endChar": 34
+      },
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde1a2a7_05c85765",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "It may be helpful to reference /I and /V here.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0dd1837_306b73e7",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T18:46:10Z",
+      "side": 1,
+      "message": "Is it easy to unit test this? It\u0027s a long-ish method with a lot of branching.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
