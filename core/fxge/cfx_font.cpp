@@ -506,6 +506,14 @@ bool CFX_Font::IsFixedWidth() const {
   return m_Face && FXFT_Is_Face_fixedwidth(m_Face->GetRec()) != 0;
 }
 
+bool CFX_Font::IsSubstFontBold() const {
+  CFX_SubstFont* subst_font = GetSubstFont();
+  if (!subst_font)
+    return false;
+
+  return subst_font->GetOriginalWeight() >= FXFONT_FW_BOLD;
+}
+
 ByteString CFX_Font::GetPsName() const {
   if (!m_Face)
     return ByteString();
