@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7eaf338_c1a1608e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-14T19:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93ad04bc_54e60583",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31744525_5a6d4a5a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "c9ea537d_a039107e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-14T19:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a49172b_18709321",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e74d597f_ccf1e5cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-14T19:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31744525_5a6d4a5a",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a95424a_e2184578",
         "filename": "core/fxge/cfx_font.cpp",
         "patchSetId": 10
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "c5baf18b_0afeed2f",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-14T19:08:20Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! That cuts down the length of the comment by A LOT.",
+      "parentUuid": "5a95424a_e2184578",
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b7a1e2_05d1617a",
         "filename": "testing/resources/pixel/bug_846.in",
         "patchSetId": 10
@@ -102,6 +192,24 @@
       "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "078ae7e8_e7ee20e3",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-14T19:08:20Z",
+      "side": 1,
+      "message": "We don\u0027t necessarily have to choose this font, as long as a font that\u0027s not on the list of the PDFium-supported fonts then it will trigger the issue.\n\nI happened to choose DejaVuSans because it was used as an example on Skia\u0027s website explaining font style difference.",
+      "parentUuid": "83b7a1e2_05d1617a",
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
