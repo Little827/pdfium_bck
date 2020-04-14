@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31249b2e_dd6ba542",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-04-14T11:31:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d822dd81_360302b2",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 8
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d40b231_671e108d",
         "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448c413a_fdc47c23",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-04-14T11:31:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d40b231_671e108d",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 70
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "94625944_6c226c92",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-04-14T11:31:44Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "a31a9b62_066e5bfb",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 14
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d6d72dd_7dad28ea",
         "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ffc9a1a_aec260d1",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-04-14T11:31:44Z",
+      "side": 1,
+      "message": "yes. We want to maintain the previous code flow for keys other than ENTER/SPACE.\nEarlier it did not matter if combobox window is null or not, the call was forwarded to CFFL_TextObject for all keys.\n\nThis change just intercepts the ENTER and SPACE key and alters it\u0027s behavior.",
+      "parentUuid": "5d6d72dd_7dad28ea",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
