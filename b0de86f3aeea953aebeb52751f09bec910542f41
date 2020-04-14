@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "8780d3bc_89ea1244",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "By forms, do you mean PDF annotation widgets like text boxes and combo boxes?",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15793b30_95c4695f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "Do you foresee needing more public APIs, or changing struct FPDF_COLORSCHEME in the future?",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d98e2c_9c26c470",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "Can we give this method a unique name to easily distinguish it from the existing TranslateColor()?",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "421b50b7_4f2c4cad",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 415,
+        "startChar": 44,
+        "endLine": 415,
+        "endChar": 49
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19120433_4165d209",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "No need for static keyword inside an anonymous namespace.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b41fa8f_8cd1ce61",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 12
@@ -18,6 +121,103 @@
         "startChar": 2,
         "endLine": 348,
         "endChar": 13
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b14f9d7_2de0af0a",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "As is, I don\u0027t think this can evaluate to true.",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3112ec6_d95e5721",
+        "filename": "fpdfsdk/cpdfsdk_renderpage.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "Just forward declare struct FPDF_COLORSCHEME instead.",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51fc63b_53e07981",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "Do we need |FPDF_FORCEDCOLOR| if this parameter exists? Wouldn\u0027t a non-null |color_scheme| parameter be a strong indicator that the callers wants to force the color to a particular scheme?",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fbd01b_3190dc3a",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "Did you mean \"less\" here?",
+      "range": {
+        "startLine": 739,
+        "startChar": 41,
+        "endLine": 739,
+        "endChar": 48
+      },
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67c113a_1d2124f1",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T07:48:05Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 743,
+        "startChar": 33,
+        "endLine": 743,
+        "endChar": 42
       },
       "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
