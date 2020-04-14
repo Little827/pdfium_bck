@@ -686,6 +686,30 @@ typedef struct _FPDF_FORMFILLINFO {
   void (*FFI_DoURIAction)(struct _FPDF_FORMFILLINFO* pThis,
                           FPDF_BYTESTRING bsURI);
 
+  /**
+   * Method: FFI_DoURIActionWithKeyboardModifier
+   *       Ask the implementation to navigate to a uniform resource identifier
+   *       with the specified modifiers.
+   * Interface Version:
+   *       Ignored if |version| < 2.
+   * Implementation Required:
+   *       No
+   * Parameters:
+   *       this            -   Pointer to the interface structure itself.
+   *       uri             -   A byte string which indicates the uniform
+   *                           resource identifier, terminated by 0.
+   *       modifiers       -   Keyboard modifier that indicates which of
+   *                           the virtual keys are down, if any.
+   * Return value:
+   *       None.
+   * Comments:
+   *       See the URI actions description of <<PDF Reference, version 1.7>>
+   *       for more details.
+   */
+  void (*FFI_DoURIActionWithKeyboardModifier)(struct _FPDF_FORMFILLINFO* info,
+                                              FPDF_BYTESTRING uri,
+                                              int modifiers);
+
   /*
    * Method: FFI_DoGoToAction
    *       This action changes the view to a specified destination.
