@@ -2840,8 +2840,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckIfMultipleSelectedValues) {
   // opening.
   FocusOnMultiSelectMultipleValuesForm();
   for (int i = 0; i < 5; i++) {
-    // TODO(bug_1505): Should be selected at index 2 and index 4.
-    bool expected = false;
+    bool expected = (i == 2 || i == 4);
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -2851,8 +2850,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckIfMultipleSelectedMismatch) {
   // opening.
   FocusOnMultiSelectMultipleMismatchForm();
   for (int i = 0; i < 5; i++) {
-    // TODO(bug_1505): Should be selected at index 0 and index 2.
-    bool expected = (i == 1 || i == 3 || i == 4);
+    bool expected = (i == 0 || i == 2);
     CheckIsIndexSelected(i, expected);
   }
 }
