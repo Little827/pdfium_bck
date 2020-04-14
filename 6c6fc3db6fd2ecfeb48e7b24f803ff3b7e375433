@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3b51b45_7d78001b",
+        "filename": "fpdfsdk/formfiller/cffl_radiobutton.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-14T14:18:14Z",
+      "side": 1,
+      "message": "For a ready only radio button/check box, on pressing enter/space, there is no action required.\nWhy not add this check early and return if the control is read only ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ff6ac1_5ad2ff7e",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-14T14:18:14Z",
+      "side": 1,
+      "message": "Good to add a comment that since the check box is already checked, we are expecting true value.\nSame in line# 1005",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 4
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e23f18d5_c6db2ea1",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-14T14:18:14Z",
+      "side": 1,
+      "message": "This is not required. As just tabbing once will take you to read only radio button.",
+      "range": {
+        "startLine": 998,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 70
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
