@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d822dd81_360302b2",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-14T09:52:57Z",
+      "side": 1,
+      "message": "default case.",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 8
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d40b231_671e108d",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-14T09:52:57Z",
+      "side": 1,
+      "message": "Can we reuse the function at line 294. CFFL_ComboBox::GetComboBox",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 70
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31a9b62_066e5bfb",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-14T09:52:57Z",
+      "side": 1,
+      "message": "can this be null?",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 14
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6d72dd_7dad28ea",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-14T09:52:57Z",
+      "side": 1,
+      "message": "Just to confirm, if pWnd is null do we want to fall through to line 91 or return?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "a36bfac2dd1b230a7eb1d6ce9f24a8a9f23a11a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
