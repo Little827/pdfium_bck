@@ -47,6 +47,30 @@
       "revId": "dba03cacf294193a437a9476e74a19cb4d63098c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497a70ce_7eaf2e89",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-14T05:50:15Z",
+      "side": 1,
+      "message": "I did mean the line should be removed after we fix pdfium:1511. I agree on the point that we should add a separate test for 1511.\n\nActually shouldn\u0027t this be done after FORM_SetFocusedAnnot() is called. If the last focused annotation was of type X and in the new world the type X annotations are not focusable, will FORM_ForceToKillFocus() kill focus? \nhttps://cs.chromium.org/chromium/src/third_party/pdfium/fpdfsdk/cpdfsdk_baannothandler.cpp?l\u003d215-223",
+      "parentUuid": "681b8d50_4f615501",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "dba03cacf294193a437a9476e74a19cb4d63098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
