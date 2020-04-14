@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0226a7e5_2f339c0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "Can we mention the new pixel test?",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc64c792_53a28ac2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "is greater than or equal to",
+      "range": {
+        "startLine": 16,
+        "startChar": 61,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2698d718_e00b5972",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "If you\u0027d like:\n\nreturn subst_font \u0026\u0026 subst_font-\u003eGetOriginalWeight() \u003e\u003d FXFONT_FW_BOLD;",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c625b0_90a01e1d",
+        "filename": "core/fxge/cfx_substfont.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "Will the adjustment on line 19 ever apply to |m_WeightCJK|?",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898f73e2_b8d836b3",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "After the type fields, maybe just sort the rest?",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c8f65c_13ca804e",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "- Do we need this long of a list when we are just rendering the letter A? Can we trim this list, and also adjust /FirstChar and /LastChar?\n- If we keep this, wrap at 80 columns?",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82ca0d2_776962c3",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "Do we need the char space, especially considering it\u0027s initialized to 0 already?",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a38a00_0bbf84c1",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T20:16:24Z",
+      "side": 1,
+      "message": "Do we need the word space?",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
