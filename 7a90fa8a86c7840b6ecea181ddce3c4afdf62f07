@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "42764c4b_528cdf75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4bd0274_7cae1d50",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "303a3603_8f5800a8",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ec6e2e_5b5af15e",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "303a3603_8f5800a8",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "761b8916_b31b78ec",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6763869e_cd22d03f",
+      "range": {
+        "startLine": 754,
+        "startChar": 9,
+        "endLine": 754,
+        "endChar": 10
+      },
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e1b0e2b_7f24a3d0",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 4
@@ -73,6 +133,24 @@
       "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f12c5a_3f940f93",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e1b0e2b_7f24a3d0",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "c9d5b33e_26cb23cc",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Doh, I keep thinking std::map is actually a hash/unordered map and that lookups are trivial. By the way, should PDFium import base::flat_map and base::flat_set?",
+      "parentUuid": "eb6d61ff_74c06277",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d647ba2_d71912ad",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 4
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "1792d76c_3895efc4",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d647ba2_d71912ad",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2efef9_c6564abe",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 4
@@ -124,6 +238,24 @@
       "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d5072f0_fcfe62fa",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2efef9_c6564abe",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "cc0918d6_e329b848",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49553967_e6938262",
+      "range": {
+        "startLine": 133,
+        "startChar": 24,
+        "endLine": 133,
+        "endChar": 34
+      },
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dde1a2a7_05c85765",
         "filename": "core/fpdfdoc/cpdf_formfield.h",
         "patchSetId": 4
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "51b33468_10421935",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde1a2a7_05c85765",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0dd1837_306b73e7",
         "filename": "core/fpdfdoc/cpdf_formfield.h",
         "patchSetId": 4
@@ -178,6 +352,24 @@
       "writtenOn": "2020-04-14T18:46:10Z",
       "side": 1,
       "message": "Is it easy to unit test this? It\u0027s a long-ish method with a lot of branching.",
+      "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20fb2fd_4ed0c183",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-14T22:45:12Z",
+      "side": 1,
+      "message": "I think(!) it might be possible, but I\u0027ll need to probably do that in another CL before this one lands.\n\nI\u0027d have to instantiate a CPDF_FormField without passing in a CPDF_InteractiveForm, which is currently not possible.",
+      "parentUuid": "d0dd1837_306b73e7",
       "revId": "7a90fa8a86c7840b6ecea181ddce3c4afdf62f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
