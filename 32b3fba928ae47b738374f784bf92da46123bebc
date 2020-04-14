@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2c980ac_e8eb52d2",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-14T15:21:07Z",
+      "side": 1,
+      "message": "can be updated as read only combo box after making fix. Check comment on line# 77.",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1772c86_48ff6671",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-14T15:21:07Z",
+      "side": 1,
+      "message": "We need to check if the control is not read only. For read only combo box, we do not have to open the combo box.\nCheck combobox_form.pdf which is being used for testing here. With this fix, we might be able to open read only combo box.",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "961e7ff4_cabd4b83",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2174,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-14T15:21:07Z",
+      "side": 1,
+      "message": "Add tests for read only combo box.",
+      "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
