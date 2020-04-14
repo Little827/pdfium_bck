@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1586822500 -0700\nnonce AM5BpQVvTt+z3wiW9XIsRqBo0dbiHXPhYWB6CbZI5x0VKfJAJc0uE66niar6kDvP9EQIOqfzkzoK\n\n0000000000000000000000000000000000000000 a33bdd79a81bf46c16107db38b4404bf0832ec19 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6U/WQACgkQqzYtYVpm\n/XsnGQf9FFAltsyejkIe5kY+leWEzd2zB2/nAkFylElknGqAnucheUBfzE+WvRr3\nds2n7G8PgsvCZRsIE4RpC/b0TFwpUaY5d2MSsFN9Va+Cgqb28r43tXB6I7h6wOT7\nBJv0YIQzVDmOYKrbzQ2vAZk3jZWVTn0EozQjDyqDv2ZiixWvPlVErjPlfRTD3c2w\neOMt0fSJXJbpDIa7i3z17QIZrMjdricSF4siJK0VoO32OK9xwbeGRvSOVrx8BgsR\nxtcpHNQyQITXpf/dVDwHk4Sef2FhCYTOmE2rWVcV1O73/zaqUGXKcwiZLp5vjj1h\nZDimkWEUW/wxD0nVjly5Cr8u00hZug\u003d\u003d\n\u003dlQ8x\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0861f5a9_bcfb4009",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-14T00:26:27Z",
+      "side": 1,
+      "message": "nit: can this be a span? since vectors implicitly convert to spans, we might gain some flexibility here if we don\u0027t need special vector methods.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "a33bdd79a81bf46c16107db38b4404bf0832ec19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
