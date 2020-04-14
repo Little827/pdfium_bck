@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f7b890f_d92c7223",
+        "filename": "fpdfsdk/cpdfsdk_helpers_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T00:27:10Z",
+      "side": 1,
+      "message": "Not sure this is worth testing. Since NulTerminateMaybeCopyAndReturnLength() takes |null_buf| by value, there\u0027s no reason to believe the variable passed in would ever change.",
+      "revId": "81389c7ca26afb0048135c1ca3c0aceddbda6ea3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5049ddc1_cea642fc",
+        "filename": "fpdfsdk/cpdfsdk_helpers_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T00:27:10Z",
+      "side": 1,
+      "message": "Just declare |good_buf| here, but lie about its size when passing to NulTerminateMaybeCopyAndReturnLength().",
+      "revId": "81389c7ca26afb0048135c1ca3c0aceddbda6ea3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1ca25a_927d8077",
+        "filename": "fpdfsdk/cpdfsdk_helpers_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T00:27:10Z",
+      "side": 1,
+      "message": "Set this to something like 0x42.",
+      "revId": "81389c7ca26afb0048135c1ca3c0aceddbda6ea3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827433e3_4ab0eee6",
+        "filename": "fpdfsdk/cpdfsdk_helpers_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T00:27:10Z",
+      "side": 1,
+      "message": "Then directly verify the buffer has not been modified, rather than turning it into a ByteString.",
+      "revId": "81389c7ca26afb0048135c1ca3c0aceddbda6ea3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
