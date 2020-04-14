@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93ad04bc_54e60583",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T17:17:31Z",
+      "side": 1,
+      "message": "nit: Put a space after this.\n\nLooking at the \"git log --pretty\u003doneline\" output in Chromium, nearly everyone puts a space there.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31744525_5a6d4a5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T17:17:31Z",
+      "side": 1,
+      "message": "Just write cfx_fontmapper.cpp, or write the complete relative path.",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a49172b_18709321",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T17:17:31Z",
+      "side": 1,
+      "message": "There\u0027s no variable by this name in the code base. (Anymore?)",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a95424a_e2184578",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T17:17:31Z",
+      "side": 1,
+      "message": "While this comment is helpful, I think what may be better is to add a couple of methods in CFX_SubstFont:\n\n// Sets |m_Family| and adjusts |m_Weight|.\nvoid UseChromeSerif();\n\n// Returns |m_Weight| with the inverse adjustment if necessary.\nint GetOriginalWeight();\n\nThen we can encapsulate the weight adjustment logic entirely in one class.",
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b7a1e2_05d1617a",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-14T17:17:31Z",
+      "side": 1,
+      "message": "Is DejaVuSans chosen for a specific reason?",
+      "revId": "fc2c6b4a6fb2dc49e5952112c164c2c84a5f2cb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
