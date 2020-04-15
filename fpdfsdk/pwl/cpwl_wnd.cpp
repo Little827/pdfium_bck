@@ -91,7 +91,7 @@ class CPWL_MsgControl final : public Observable {
 
   void ReleaseCapture() { m_aMousePath.clear(); }
 
-  CPWL_Wnd* GetFocusedWindow() const { return m_pMainKeyboardWnd.Get(); }
+  CPWL_Wnd* GetFocusedWindow() const { return m_pMainKeyboardWnd; }
 
  private:
   std::vector<CPWL_Wnd*> m_aMousePath;
@@ -471,7 +471,7 @@ const CPWL_Dash& CPWL_Wnd::GetBorderDash() const {
 }
 
 CPWL_ScrollBar* CPWL_Wnd::GetVScrollBar() const {
-  return HasFlag(PWS_VSCROLL) ? m_pVScrollBar.Get() : nullptr;
+  return HasFlag(PWS_VSCROLL) ? m_pVScrollBar : nullptr;
 }
 
 void CPWL_Wnd::CreateScrollBar(const CreateParams& cp) {

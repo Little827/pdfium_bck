@@ -55,8 +55,8 @@ RetainPtr<CPDF_Font> CPVT_FontMap::GetPDFFont(int32_t nFontIndex) {
       return m_pDefFont;
     case 1:
       if (!m_pSysFont) {
-        m_pSysFont = GetAnnotSysPDFFont(m_pDocument.Get(), m_pResDict.Get(),
-                                        &m_sSysFontAlias);
+        m_pSysFont =
+            GetAnnotSysPDFFont(m_pDocument, m_pResDict.Get(), &m_sSysFontAlias);
       }
       return m_pSysFont;
     default:
@@ -70,8 +70,8 @@ ByteString CPVT_FontMap::GetPDFFontAlias(int32_t nFontIndex) {
       return m_sDefFontAlias;
     case 1:
       if (!m_pSysFont) {
-        m_pSysFont = GetAnnotSysPDFFont(m_pDocument.Get(), m_pResDict.Get(),
-                                        &m_sSysFontAlias);
+        m_pSysFont =
+            GetAnnotSysPDFFont(m_pDocument, m_pResDict.Get(), &m_sSysFontAlias);
       }
       return m_sSysFontAlias;
     default:

@@ -63,7 +63,7 @@ bool CFWL_NoteDriver::SetFocus(CFWL_Widget* pFocus) {
   if (m_pFocus == pFocus)
     return true;
 
-  CFWL_Widget* pPrev = m_pFocus.Get();
+  CFWL_Widget* pPrev = m_pFocus;
   m_pFocus = pFocus;
   if (pPrev) {
     if (IFWL_WidgetDelegate* pDelegate = pPrev->GetDelegate()) {
@@ -170,8 +170,8 @@ bool CFWL_NoteDriver::DoKey(CFWL_Message* pMessage, CFWL_Widget* pMessageForm) {
       pMsg->m_dwKeyCode == XFA_FWL_VKEY_Tab) {
     CFWL_WidgetMgr* pWidgetMgr = pMessageForm->GetOwnerApp()->GetWidgetMgr();
     CFWL_Widget* pForm = GetMessageForm(pMsg->GetDstTarget());
-    CFWL_Widget* pFocus = m_pFocus.Get();
-    if (m_pFocus && pWidgetMgr->GetSystemFormWidget(m_pFocus.Get()) != pForm)
+    CFWL_Widget* pFocus = m_pFocus;
+    if (m_pFocus && pWidgetMgr->GetSystemFormWidget(m_pFocus) != pForm)
       pFocus = nullptr;
 
     CFWL_Widget* pNextTabStop = nullptr;
@@ -189,7 +189,7 @@ bool CFWL_NoteDriver::DoKey(CFWL_Message* pMessage, CFWL_Widget* pMessageForm) {
 #endif
 
   if (m_pFocus) {
-    pMsg->SetDstTarget(m_pFocus.Get());
+    pMsg->SetDstTarget(m_pFocus);
     return true;
   }
 
@@ -238,7 +238,7 @@ bool CFWL_NoteDriver::DoMouseEx(CFWL_Message* pMessage,
   CFWL_WidgetMgr* pWidgetMgr = pMessageForm->GetOwnerApp()->GetWidgetMgr();
   CFWL_Widget* pTarget = nullptr;
   if (m_pGrab)
-    pTarget = m_pGrab.Get();
+    pTarget = m_pGrab;
 
   CFWL_MessageMouse* pMsg = static_cast<CFWL_MessageMouse*>(pMessage);
   if (!pTarget)
@@ -259,9 +259,8 @@ void CFWL_NoteDriver::MouseSecondary(CFWL_Message* pMessage) {
 
   CFWL_MessageMouse* pMsg = static_cast<CFWL_MessageMouse*>(pMessage);
   if (m_pHover) {
-    CFWL_MessageMouse msLeave(
-        m_pHover.Get(), FWL_MouseCommand::Leave, 0,
-        pTarget->TransformTo(m_pHover.Get(), pMsg->m_pos));
+    CFWL_MessageMouse msLeave(m_pHover, FWL_MouseCommand::Leave, 0,
+                              pTarget->TransformTo(m_pHover, pMsg->m_pos));
     DispatchMessage(&msLeave, nullptr);
   }
   if (pTarget->GetClassID() == FWL_Type::Form) {

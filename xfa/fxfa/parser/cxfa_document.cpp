@@ -360,8 +360,7 @@ CXFA_Node* FindDataRefDataNode(CXFA_Document* pDocument,
   }
 
   if (rs.dwFlags == XFA_ResolveNode_RSType_CreateNodeOne) {
-    CXFA_Object* pObject =
-        !rs.objects.empty() ? rs.objects.front().Get() : nullptr;
+    CXFA_Object* pObject = !rs.objects.empty() ? rs.objects.front() : nullptr;
     CXFA_Node* pNode = ToNode(pObject);
     return (bForceBind || !pNode || !pNode->HasBindItem()) ? pNode : nullptr;
   }
@@ -1201,7 +1200,7 @@ void UpdateBindingRelations(CXFA_Document* pDocument,
           pDocument->GetScriptContext()->ResolveObjects(
               pDataScope, wsRef.AsStringView(), &rs, dFlags, pTemplateNode);
           CXFA_Object* pObject =
-              !rs.objects.empty() ? rs.objects.front().Get() : nullptr;
+              !rs.objects.empty() ? rs.objects.front() : nullptr;
           pDataNode = ToNode(pObject);
           if (pDataNode) {
             CreateDataBinding(pFormNode, pDataNode,
@@ -1543,7 +1542,7 @@ void CXFA_Document::DoProtoMerge() {
       XFA_RESOLVENODE_RS resolveNodeRS;
       if (m_pScriptContext->ResolveObjects(pUseHrefNode, wsSOM, &resolveNodeRS,
                                            dwFlag, nullptr)) {
-        auto* pFirstObject = resolveNodeRS.objects.front().Get();
+        auto& pFirstObject = resolveNodeRS.objects.front();
         if (pFirstObject && pFirstObject->IsNode())
           pProtoNode = pFirstObject->AsNode();
       }

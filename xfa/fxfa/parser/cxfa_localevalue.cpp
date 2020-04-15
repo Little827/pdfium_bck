@@ -127,7 +127,7 @@ bool CXFA_LocaleValue::ValidateValue(const WideString& wsValue,
   if (!m_pLocaleMgr)
     return false;
 
-  ScopedLocale scoped_locale(m_pLocaleMgr.Get(), pLocale);
+  ScopedLocale scoped_locale(m_pLocaleMgr, pLocale);
   std::vector<WideString> wsPatterns =
       CFGAS_StringFormatter::SplitOnBars(wsPattern);
 
@@ -137,7 +137,7 @@ bool CXFA_LocaleValue::ValidateValue(const WideString& wsValue,
   for (; !bRet && i < wsPatterns.size(); i++) {
     const WideString& wsFormat = wsPatterns[i];
     auto pFormat =
-        pdfium::MakeUnique<CFGAS_StringFormatter>(m_pLocaleMgr.Get(), wsFormat);
+        pdfium::MakeUnique<CFGAS_StringFormatter>(m_pLocaleMgr, wsFormat);
     switch (ValueCategory(pFormat->GetCategory(), m_dwType)) {
       case FX_LOCALECATEGORY_Null:
         bRet = pFormat->ParseNull(wsValue);
@@ -274,12 +274,12 @@ bool CXFA_LocaleValue::FormatSinglePattern(WideString& wsResult,
   if (!m_pLocaleMgr)
     return false;
 
-  ScopedLocale scoped_locale(m_pLocaleMgr.Get(), pLocale);
+  ScopedLocale scoped_locale(m_pLocaleMgr, pLocale);
 
   wsResult.clear();
   bool bRet = false;
   auto pFormat =
-      pdfium::MakeUnique<CFGAS_StringFormatter>(m_pLocaleMgr.Get(), wsFormat);
+      pdfium::MakeUnique<CFGAS_StringFormatter>(m_pLocaleMgr, wsFormat);
   FX_LOCALECATEGORY eCategory = ValueCategory(pFormat->GetCategory(), m_dwType);
   switch (eCategory) {
     case FX_LOCALECATEGORY_Null:
@@ -549,12 +549,12 @@ bool CXFA_LocaleValue::ParsePatternValue(const WideString& wsValue,
   std::vector<WideString> wsPatterns =
       CFGAS_StringFormatter::SplitOnBars(wsPattern);
 
-  ScopedLocale scoped_locale(m_pLocaleMgr.Get(), pLocale);
+  ScopedLocale scoped_locale(m_pLocaleMgr, pLocale);
   bool bRet = false;
   for (size_t i = 0; !bRet && i < wsPatterns.size(); i++) {
     const WideString& wsFormat = wsPatterns[i];
     auto pFormat =
-        pdfium::MakeUnique<CFGAS_StringFormatter>(m_pLocaleMgr.Get(), wsFormat);
+        pdfium::MakeUnique<CFGAS_StringFormatter>(m_pLocaleMgr, wsFormat);
     switch (ValueCategory(pFormat->GetCategory(), m_dwType)) {
       case FX_LOCALECATEGORY_Null:
         bRet = pFormat->ParseNull(wsValue);

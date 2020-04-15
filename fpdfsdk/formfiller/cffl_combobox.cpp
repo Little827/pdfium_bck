@@ -106,7 +106,7 @@ void CFFL_ComboBox::SaveData(CPDFSDK_PageView* pPageView) {
     m_pWidget->SetOptionSelection(nCurSel, true,
                                   NotificationOption::kDoNotNotify);
   }
-  ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget.Get());
+  ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget);
   ObservedPtr<CFFL_ComboBox> observed_this(this);
   m_pWidget->ResetFieldAppearance();
   if (!observed_widget)

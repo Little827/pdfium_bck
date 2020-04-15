@@ -191,7 +191,7 @@ std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
 void CXFA_FFNotify::StartFieldDrawLayout(CXFA_Node* pItem,
                                          float* pCalcWidth,
                                          float* pCalcHeight) {
-  pItem->StartWidgetLayout(m_pDoc.Get(), pCalcWidth, pCalcHeight);
+  pItem->StartWidgetLayout(m_pDoc, pCalcWidth, pCalcHeight);
 }
 
 bool CXFA_FFNotify::RunScript(CXFA_Script* script, CXFA_Node* item) {
@@ -436,7 +436,7 @@ void CXFA_FFNotify::OnChildAdded(CXFA_Node* pSender) {
       !(pDocView->m_bInLayoutStatus) &&
       (pDocView->GetLayoutStatus() == XFA_DOCVIEW_LAYOUTSTATUS_End);
   if (bLayoutReady)
-    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc.Get());
+    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc);
 }
 
 void CXFA_FFNotify::OnChildRemoved() {
@@ -448,7 +448,7 @@ void CXFA_FFNotify::OnChildRemoved() {
       !(pDocView->m_bInLayoutStatus) &&
       (pDocView->GetLayoutStatus() == XFA_DOCVIEW_LAYOUTSTATUS_End);
   if (bLayoutReady)
-    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc.Get());
+    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc);
 }
 
 void CXFA_FFNotify::OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,

@@ -484,8 +484,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ContinueDecode(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
@@ -587,8 +587,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -645,8 +645,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Unopt(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
@@ -746,8 +746,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (uint32_t h = 0; h < GBH; h++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -800,8 +800,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Unopt(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
@@ -902,8 +902,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -956,8 +956,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Unopt(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
@@ -1043,8 +1043,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext.Get();
-  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
+  JBig2ArithCtx* gbContext = pState->gbContext;
+  CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())

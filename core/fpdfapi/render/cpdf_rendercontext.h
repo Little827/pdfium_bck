@@ -60,9 +60,9 @@ class CPDF_RenderContext {
   size_t CountLayers() const { return m_Layers.size(); }
   Layer* GetLayer(uint32_t index) { return &m_Layers[index]; }
 
-  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+  CPDF_Document* GetDocument() const { return m_pDocument; }
   CPDF_Dictionary* GetPageResources() const { return m_pPageResources.Get(); }
-  CPDF_PageRenderCache* GetPageCache() const { return m_pPageCache.Get(); }
+  CPDF_PageRenderCache* GetPageCache() const { return m_pPageCache; }
 
  protected:
   UnownedPtr<CPDF_Document> const m_pDocument;

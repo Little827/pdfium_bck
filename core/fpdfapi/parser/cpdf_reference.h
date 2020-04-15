@@ -38,7 +38,7 @@ class CPDF_Reference final : public CPDF_Object {
   RetainPtr<CPDF_Object> MakeReference(
       CPDF_IndirectObjectHolder* holder) const override;
 
-  CPDF_IndirectObjectHolder* GetObjList() const { return m_pObjList.Get(); }
+  CPDF_IndirectObjectHolder* GetObjList() const { return m_pObjList; }
   uint32_t GetRefObjNum() const { return m_RefObjNum; }
   void SetRef(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum);
 

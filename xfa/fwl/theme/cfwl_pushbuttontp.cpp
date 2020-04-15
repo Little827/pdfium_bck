@@ -25,7 +25,7 @@ CFWL_PushButtonTP::~CFWL_PushButtonTP() {}
 void CFWL_PushButtonTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
   switch (pParams.m_iPart) {
     case CFWL_Part::Border: {
-      DrawBorder(pParams.m_pGraphics.Get(), pParams.m_rtPart, pParams.m_matrix);
+      DrawBorder(pParams.m_pGraphics, pParams.m_rtPart, pParams.m_matrix);
       break;
     }
     case CFWL_Part::Background: {
@@ -52,7 +52,7 @@ void CFWL_PushButtonTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
       CXFA_GEPath fillPath;
       fillPath.AddSubpath(&strokePath);
 
-      CXFA_Graphics* pGraphics = pParams.m_pGraphics.Get();
+      CXFA_Graphics* pGraphics = pParams.m_pGraphics;
       pGraphics->SaveGraphState();
 
       CFX_RectF rtInner(rect);

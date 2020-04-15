@@ -135,14 +135,14 @@ bool CPDFXFA_Context::LoadXFADoc() {
   m_nLoadStatus = FXFA_LOADSTATUS_LOADING;
   m_XFAPageList.clear();
 
-  auto stream = CreateXFAMultiStream(m_pPDFDoc.Get());
+  auto stream = CreateXFAMultiStream(m_pPDFDoc);
   if (!stream) {
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);
     return false;
   }
 
-  m_pXFADoc = CXFA_FFDoc::CreateAndOpen(m_pXFAApp.get(), &m_DocEnv,
-                                        m_pPDFDoc.Get(), stream);
+  m_pXFADoc =
+      CXFA_FFDoc::CreateAndOpen(m_pXFAApp.get(), &m_DocEnv, m_pPDFDoc, stream);
   if (!m_pXFADoc) {
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);
     return false;
@@ -227,7 +227,7 @@ RetainPtr<CPDFXFA_Page> CPDFXFA_Context::GetXFAPage(
 }
 
 CPDF_Document* CPDFXFA_Context::GetPDFDoc() const {
-  return m_pPDFDoc.Get();
+  return m_pPDFDoc;
 }
 
 void CPDFXFA_Context::DeletePage(int page_index) {

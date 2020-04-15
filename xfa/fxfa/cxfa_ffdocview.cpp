@@ -137,7 +137,7 @@ void CXFA_FFDocView::StopLayout() {
 
   m_CalculateNodes.clear();
   if (m_pFocusNode && !m_pFocusWidget)
-    SetFocusNode(m_pFocusNode.Get());
+    SetFocusNode(m_pFocusNode);
 
   m_iStatus = XFA_DOCVIEW_LAYOUTSTATUS_End;
 }
@@ -267,7 +267,7 @@ void CXFA_FFDocView::ResetNode(CXFA_Node* pNode) {
     }
   }
   if (bChanged)
-    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc.Get());
+    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc);
 }
 
 CXFA_FFWidget* CXFA_FFDocView::GetWidgetForNode(CXFA_Node* node) {
@@ -323,8 +323,8 @@ bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
     m_pFocusNode = node->IsWidgetReady() ? node : nullptr;
     m_pFocusWidget.Reset(pNewFocus);
   } else {
-    m_pFocusNode.Reset();
-    m_pFocusWidget.Reset();
+    m_pFocusNode = nullptr;
+    m_pFocusWidget.Reset(nullptr);
   }
 
   return true;
@@ -339,15 +339,14 @@ void CXFA_FFDocView::SetFocusNode(CXFA_Node* node) {
   if (m_iStatus != XFA_DOCVIEW_LAYOUTSTATUS_End)
     return;
 
-  m_pDoc->GetDocEnvironment()->SetFocusWidget(m_pDoc.Get(),
-                                              m_pFocusWidget.Get());
+  m_pDoc->GetDocEnvironment()->SetFocusWidget(m_pDoc, m_pFocusWidget.Get());
 }
 
 void CXFA_FFDocView::DeleteLayoutItem(CXFA_FFWidget* pWidget) {
   if (m_pFocusNode != pWidget->GetNode())
     return;
 
-  m_pFocusNode.Reset();
+  m_pFocusNode = nullptr;
   m_pFocusWidget.Reset();
 }
 
@@ -563,7 +562,7 @@ size_t CXFA_FFDocView::RunCalculateRecursive(size_t index) {
 }
 
 XFA_EventError CXFA_FFDocView::RunCalculateWidgets() {
-  if (!m_pDoc->GetDocEnvironment()->IsCalculationsEnabled(m_pDoc.Get()))
+  if (!m_pDoc->GetDocEnvironment()->IsCalculationsEnabled(m_pDoc))
     return XFA_EventError::kDisabled;
 
   if (!m_CalculateNodes.empty())
@@ -593,7 +592,7 @@ void CXFA_FFDocView::ProcessValueChanged(CXFA_Node* node) {
 }
 
 bool CXFA_FFDocView::InitValidate(CXFA_Node* pNode) {
-  if (!m_pDoc->GetDocEnvironment()->IsValidationsEnabled(m_pDoc.Get()))
+  if (!m_pDoc->GetDocEnvironment()->IsValidationsEnabled(m_pDoc))
     return false;
 
   ExecEventActivityByDeepFirst(pNode, XFA_EVENT_Validate, false, true);
@@ -602,7 +601,7 @@ bool CXFA_FFDocView::InitValidate(CXFA_Node* pNode) {
 }
 
 bool CXFA_FFDocView::RunValidate() {
-  if (!m_pDoc->GetDocEnvironment()->IsValidationsEnabled(m_pDoc.Get()))
+  if (!m_pDoc->GetDocEnvironment()->IsValidationsEnabled(m_pDoc))
     return false;
 
   while (!m_ValidateNodes.empty()) {
@@ -693,7 +692,7 @@ void CXFA_FFDocView::SetChangeMark() {
   if (m_iStatus < XFA_DOCVIEW_LAYOUTSTATUS_End)
     return;
 
-  m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc.Get());
+  m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc);
 }
 
 CXFA_Subform* CXFA_FFDocView::GetRootSubform() {

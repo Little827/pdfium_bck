@@ -41,7 +41,7 @@ class CXFA_Object : public CFXJSE_HostObject {
   // CFXJSE_HostObject:
   CXFA_Object* AsCXFAObject() override;
 
-  CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
+  CXFA_Document* GetDocument() const { return m_pDocument; }
   XFA_ObjectType GetObjectType() const { return m_objectType; }
 
   bool IsList() const {

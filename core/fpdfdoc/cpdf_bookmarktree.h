@@ -19,7 +19,7 @@ class CPDF_BookmarkTree {
 
   CPDF_Bookmark GetFirstChild(CPDF_Bookmark* parent) const;
   CPDF_Bookmark GetNextSibling(CPDF_Bookmark* bookmark) const;
-  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+  CPDF_Document* GetDocument() const { return m_pDocument; }
 
  private:
   UnownedPtr<CPDF_Document> const m_pDocument;

@@ -64,7 +64,7 @@ class CPDF_PageObjectHolder {
   void ContinueParse(PauseIndicatorIface* pPause);
   ParseState GetParseState() const { return m_ParseState; }
 
-  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+  CPDF_Document* GetDocument() const { return m_pDocument; }
 
   CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
   size_t GetPageObjectCount() const { return m_PageObjectList.size(); }

@@ -23,8 +23,8 @@ void CFWL_CaretTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
       if (!(pParams.m_dwStates & CFWL_PartState_HightLight))
         return;
 
-      DrawCaretBK(pParams.m_pGraphics.Get(), pParams.m_dwStates,
-                  pParams.m_rtPart, pParams.m_matrix);
+      DrawCaretBK(pParams.m_pGraphics, pParams.m_dwStates, pParams.m_rtPart,
+                  pParams.m_matrix);
       break;
     }
     default:

@@ -293,7 +293,7 @@ void CPWL_ComboBox::CreateEdit(const CreateParams& cp) {
 
   auto pEdit = pdfium::MakeUnique<CPWL_Edit>(ecp, CloneAttachedData());
   m_pEdit = pEdit.get();
-  m_pEdit->AttachFFLData(m_pFormFiller.Get());
+  m_pEdit->AttachFFLData(m_pFormFiller);
   AddChild(std::move(pEdit));
   m_pEdit->Realize();
 }
@@ -340,7 +340,7 @@ void CPWL_ComboBox::CreateListBox(const CreateParams& cp) {
 
   auto pList = pdfium::MakeUnique<CPWL_CBListBox>(lcp, CloneAttachedData());
   m_pList = pList.get();
-  m_pList->AttachFFLData(m_pFormFiller.Get());
+  m_pList->AttachFFLData(m_pFormFiller);
   AddChild(std::move(pList));
   m_pList->Realize();
 }

@@ -477,27 +477,23 @@ CFFL_FormFiller* CFFL_InteractiveFormFiller::GetOrCreateFormFiller(
   switch (pWidget->GetFieldType()) {
     case FormFieldType::kPushButton:
       pFormFiller =
-          pdfium::MakeUnique<CFFL_PushButton>(m_pFormFillEnv.Get(), pWidget);
+          pdfium::MakeUnique<CFFL_PushButton>(m_pFormFillEnv, pWidget);
       break;
     case FormFieldType::kCheckBox:
-      pFormFiller =
-          pdfium::MakeUnique<CFFL_CheckBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormFiller = pdfium::MakeUnique<CFFL_CheckBox>(m_pFormFillEnv, pWidget);
       break;
     case FormFieldType::kRadioButton:
       pFormFiller =
-          pdfium::MakeUnique<CFFL_RadioButton>(m_pFormFillEnv.Get(), pWidget);
+          pdfium::MakeUnique<CFFL_RadioButton>(m_pFormFillEnv, pWidget);
       break;
     case FormFieldType::kTextField:
-      pFormFiller =
-          pdfium::MakeUnique<CFFL_TextField>(m_pFormFillEnv.Get(), pWidget);
+      pFormFiller = pdfium::MakeUnique<CFFL_TextField>(m_pFormFillEnv, pWidget);
       break;
     case FormFieldType::kListBox:
-      pFormFiller =
-          pdfium::MakeUnique<CFFL_ListBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormFiller = pdfium::MakeUnique<CFFL_ListBox>(m_pFormFillEnv, pWidget);
       break;
     case FormFieldType::kComboBox:
-      pFormFiller =
-          pdfium::MakeUnique<CFFL_ComboBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormFiller = pdfium::MakeUnique<CFFL_ComboBox>(m_pFormFillEnv, pWidget);
       break;
     case FormFieldType::kUnknown:
     default:

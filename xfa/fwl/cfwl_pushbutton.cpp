@@ -53,7 +53,7 @@ void CFWL_PushButton::DrawWidget(CXFA_Graphics* pGraphics,
   if (!pGraphics)
     return;
 
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (!pTheme)
     return;
 

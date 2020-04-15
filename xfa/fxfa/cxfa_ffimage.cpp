@@ -27,7 +27,7 @@ bool CXFA_FFImage::IsLoaded() {
 
 bool CXFA_FFImage::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   if (GetNode()->GetImageImage())
     return true;

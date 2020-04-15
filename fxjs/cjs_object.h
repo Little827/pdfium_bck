@@ -49,7 +49,7 @@ class CJS_Object {
   virtual ~CJS_Object();
 
   v8::Local<v8::Object> ToV8Object() { return m_pV8Object.Get(GetIsolate()); }
-  v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
+  v8::Isolate* GetIsolate() const { return m_pIsolate; }
   CJS_Runtime* GetRuntime() const { return m_pRuntime.Get(); }
 
  private:

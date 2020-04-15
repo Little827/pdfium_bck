@@ -1053,7 +1053,7 @@ void CXFA_ContentLayoutProcessor::DoLayoutPositionedContainer(
       continue;
 
     auto pProcessor = pdfium::MakeUnique<CXFA_ContentLayoutProcessor>(
-        m_pCurChildNode, m_pViewLayoutProcessor.Get());
+        m_pCurChildNode, m_pViewLayoutProcessor);
     if (pContext && pContext->m_prgSpecifiedColumnWidths) {
       int32_t iColSpan =
           m_pCurChildNode->JSObject()->GetInteger(XFA_Attribute::ColSpan);
@@ -1188,7 +1188,7 @@ void CXFA_ContentLayoutProcessor::DoLayoutTableContainer(
       continue;
 
     auto pProcessor = pdfium::MakeUnique<CXFA_ContentLayoutProcessor>(
-        m_pCurChildNode, m_pViewLayoutProcessor.Get());
+        m_pCurChildNode, m_pViewLayoutProcessor);
     pProcessor->DoLayoutInternal(false, FLT_MAX, FLT_MAX, pLayoutContext);
     if (!pProcessor->HasLayoutItem())
       continue;
@@ -1725,7 +1725,7 @@ CXFA_ContentLayoutProcessor::DoLayoutFlowedContainer(
                 m_pViewLayoutProcessor->ProcessBookendLeader(m_pCurChildNode);
             if (pLeaderNode) {
               pProcessor = pdfium::MakeUnique<CXFA_ContentLayoutProcessor>(
-                  pLeaderNode, m_pViewLayoutProcessor.Get());
+                  pLeaderNode, m_pViewLayoutProcessor);
             }
           }
 
@@ -1753,7 +1753,7 @@ CXFA_ContentLayoutProcessor::DoLayoutFlowedContainer(
                 m_pViewLayoutProcessor->ProcessBookendTrailer(m_pCurChildNode);
             if (pTrailerNode) {
               pProcessor = pdfium::MakeUnique<CXFA_ContentLayoutProcessor>(
-                  pTrailerNode, m_pViewLayoutProcessor.Get());
+                  pTrailerNode, m_pViewLayoutProcessor);
             }
           }
           if (pProcessor) {
@@ -1790,7 +1790,7 @@ CXFA_ContentLayoutProcessor::DoLayoutFlowedContainer(
             bNewRow = true;
           } else {
             pProcessor = pdfium::MakeUnique<CXFA_ContentLayoutProcessor>(
-                m_pCurChildNode, m_pViewLayoutProcessor.Get());
+                m_pCurChildNode, m_pViewLayoutProcessor);
           }
 
           pProcessor->InsertPendingItems(m_pCurChildNode);
@@ -2387,7 +2387,7 @@ CXFA_ContentLayoutProcessor::InsertFlowedItem(
     pFormNode =
         m_pViewLayoutProcessor->QueryOverflow(pProcessor->GetFormNode());
     if (!pFormNode && pLayoutContext && pLayoutContext->m_pOverflowProcessor) {
-      pFormNode = pLayoutContext->m_pOverflowNode.Get();
+      pFormNode = pLayoutContext->m_pOverflowNode;
       bUseInherited = true;
     }
     Optional<CXFA_ViewLayoutProcessor::OverflowData> overflow_data =

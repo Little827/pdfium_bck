@@ -172,7 +172,7 @@ void CBC_OneDimWriter::ShowDeviceChars(CFX_RenderDevice* device,
   if (matrix) {
     affine_matrix.Concat(*matrix);
   }
-  device->DrawNormalText(str.GetLength(), pCharPos, m_pFont.Get(),
+  device->DrawNormalText(str.GetLength(), pCharPos, m_pFont,
                          static_cast<float>(iFontSize), affine_matrix,
                          m_fontColor, FXTEXT_CLEARTYPE);
 }
@@ -198,8 +198,7 @@ bool CBC_OneDimWriter::ShowChars(WideStringView contents,
   }
   int32_t iFontSize = (int32_t)fabs(m_fFontSize);
   int32_t iTextHeight = iFontSize + 1;
-  CalcTextInfo(str, charpos.data(), m_pFont.Get(), geWidth, iFontSize,
-               charsLen);
+  CalcTextInfo(str, charpos.data(), m_pFont, geWidth, iFontSize, charsLen);
   if (charsLen < 1)
     return true;
 

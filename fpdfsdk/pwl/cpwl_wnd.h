@@ -219,7 +219,7 @@ class CPWL_Wnd : public Observable {
   void SetClipRect(const CFX_FloatRect& rect);
   const CFX_FloatRect& GetClipRect() const;
 
-  CPWL_Wnd* GetParentWindow() const { return m_pParent.Get(); }
+  CPWL_Wnd* GetParentWindow() const { return m_pParent; }
   const IPWL_SystemHandler::PerWindowData* GetAttachedData() const {
     return m_pAttachedData.get();
   }
@@ -236,12 +236,12 @@ class CPWL_Wnd : public Observable {
   bool IsReadOnly() const;
   CPWL_ScrollBar* GetVScrollBar() const;
 
-  IPVT_FontMap* GetFontMap() const { return m_CreationParams.pFontMap.Get(); }
+  IPVT_FontMap* GetFontMap() const { return m_CreationParams.pFontMap; }
   ProviderIface* GetProvider() const {
     return m_CreationParams.pProvider.Get();
   }
   FocusHandlerIface* GetFocusHandler() const {
-    return m_CreationParams.pFocusHandler.Get();
+    return m_CreationParams.pFocusHandler;
   }
 
   int32_t GetTransparency();
@@ -271,10 +271,10 @@ class CPWL_Wnd : public Observable {
   bool IsValid() const { return m_bCreated; }
   CreateParams* GetCreationParams() { return &m_CreationParams; }
   TimerHandlerIface* GetTimerHandler() const {
-    return m_CreationParams.pTimerHandler.Get();
+    return m_CreationParams.pTimerHandler;
   }
   IPWL_SystemHandler* GetSystemHandler() const {
-    return m_CreationParams.pSystemHandler.Get();
+    return m_CreationParams.pSystemHandler;
   }
 
   // Returns |true| iff this instance is still allocated.

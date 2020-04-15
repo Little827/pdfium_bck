@@ -142,12 +142,12 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   virtual WideString GetText();
   virtual FormFieldType GetFormFieldType();
 
-  CXFA_Node* GetNode() const { return m_pNode.Get(); }
-  CXFA_ContentLayoutItem* GetLayoutItem() const { return m_pLayoutItem.Get(); }
+  CXFA_Node* GetNode() const { return m_pNode; }
+  CXFA_ContentLayoutItem* GetLayoutItem() const { return m_pLayoutItem; }
   void SetLayoutItem(CXFA_ContentLayoutItem* pItem) { m_pLayoutItem = pItem; }
   CXFA_FFPageView* GetPageView() const { return m_pPageView.Get(); }
   void SetPageView(CXFA_FFPageView* pPageView) { m_pPageView.Reset(pPageView); }
-  CXFA_FFDocView* GetDocView() const { return m_pDocView.Get(); }
+  CXFA_FFDocView* GetDocView() const { return m_pDocView; }
   void SetDocView(CXFA_FFDocView* pDocView) { m_pDocView = pDocView; }
 
   CXFA_FFWidget* GetNextFFWidget() const;

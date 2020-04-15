@@ -122,7 +122,7 @@ void CFFL_ListBox::SaveData(CPDFSDK_PageView* pPageView) {
     m_pWidget->SetOptionSelection(pListBox->GetCurSel(), true,
                                   NotificationOption::kDoNotNotify);
   }
-  ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget.Get());
+  ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget);
   ObservedPtr<CFFL_ListBox> observed_this(this);
   m_pWidget->SetTopVisibleIndex(nNewTopIndex);
   if (!observed_widget)

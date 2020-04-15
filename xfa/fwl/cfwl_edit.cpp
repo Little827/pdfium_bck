@@ -85,7 +85,7 @@ CFX_RectF CFWL_Edit::GetAutosizedWidgetRect() {
 
   if (m_pEditEngine->GetLength() > 0) {
     CFX_SizeF size = CalcTextSize(
-        m_pEditEngine->GetText(), m_pProperties->m_pThemeProvider.Get(),
+        m_pEditEngine->GetText(), m_pProperties->m_pThemeProvider,
         !!(m_pProperties->m_dwStyleExes & FWL_STYLEEXT_EDT_MultiLine));
     rect = CFX_RectF(0, 0, size);
   }
@@ -141,7 +141,7 @@ void CFWL_Edit::DrawWidget(CXFA_Graphics* pGraphics, const CFX_Matrix& matrix) {
   if (m_rtClient.IsEmpty())
     return;
 
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (!pTheme)
     return;
 
@@ -879,8 +879,8 @@ void CFWL_Edit::InitVerticalScrollBar() {
   prop->m_dwStates = FWL_WGTSTATE_Disabled | FWL_WGTSTATE_Invisible;
   prop->m_pParent = this;
   prop->m_pThemeProvider = m_pProperties->m_pThemeProvider;
-  m_pVertScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp.Get(),
-                                                        std::move(prop), this);
+  m_pVertScrollBar =
+      pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp, std::move(prop), this);
 }
 
 void CFWL_Edit::InitHorizontalScrollBar() {
@@ -892,8 +892,8 @@ void CFWL_Edit::InitHorizontalScrollBar() {
   prop->m_dwStates = FWL_WGTSTATE_Disabled | FWL_WGTSTATE_Invisible;
   prop->m_pParent = this;
   prop->m_pThemeProvider = m_pProperties->m_pThemeProvider;
-  m_pHorzScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp.Get(),
-                                                        std::move(prop), this);
+  m_pHorzScrollBar =
+      pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp, std::move(prop), this);
 }
 
 void CFWL_Edit::ShowCaret(CFX_RectF* pRect) {
@@ -965,7 +965,7 @@ void CFWL_Edit::InitCaret() {
     return;
 
   m_pCaret = pdfium::MakeUnique<CFWL_Caret>(
-      m_pOwnerApp.Get(), pdfium::MakeUnique<CFWL_WidgetProperties>(), this);
+      m_pOwnerApp, pdfium::MakeUnique<CFWL_WidgetProperties>(), this);
   m_pCaret->SetParent(this);
   m_pCaret->SetStates(m_pProperties->m_dwStates);
   UpdateCursorRect();

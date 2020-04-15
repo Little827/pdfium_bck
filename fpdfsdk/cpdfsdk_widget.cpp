@@ -104,7 +104,7 @@ CXFA_FFWidgetHandler* CPDFSDK_Widget::GetXFAWidgetHandler() const {
     if (pDocView)
       m_pWidgetHandler = pDocView->GetWidgetHandler();
   }
-  return m_pWidgetHandler.Get();
+  return m_pWidgetHandler;
 }
 
 static XFA_EVENTTYPE GetXFAEventType(PDFSDK_XFAAActionType eXFAAAT) {

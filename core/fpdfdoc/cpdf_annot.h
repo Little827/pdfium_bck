@@ -77,7 +77,7 @@ class CPDF_Annot {
   CPDF_Annot::Subtype GetSubtype() const;
   uint32_t GetFlags() const;
   CFX_FloatRect GetRect() const;
-  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+  CPDF_Document* GetDocument() const { return m_pDocument; }
   const CPDF_Dictionary* GetAnnotDict() const { return m_pAnnotDict.Get(); }
   CPDF_Dictionary* GetAnnotDict() { return m_pAnnotDict.Get(); }
 
@@ -99,7 +99,7 @@ class CPDF_Annot {
                   const CPDF_RenderOptions* pOptions);
   CPDF_Form* GetAPForm(const CPDF_Page* pPage, AppearanceMode mode);
   void SetOpenState(bool bOpenState) { m_bOpenState = bOpenState; }
-  CPDF_Annot* GetPopupAnnot() const { return m_pPopupAnnot.Get(); }
+  CPDF_Annot* GetPopupAnnot() const { return m_pPopupAnnot; }
   void SetPopupAnnot(CPDF_Annot* pAnnot) { m_pPopupAnnot = pAnnot; }
 
  private:

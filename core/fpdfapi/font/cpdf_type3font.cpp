@@ -120,7 +120,7 @@ CPDF_Type3Char* CPDF_Type3Font::LoadChar(uint32_t charcode) {
     return nullptr;
 
   std::unique_ptr<CPDF_Font::FormIface> pForm = m_pFormFactory->CreateForm(
-      m_pDocument.Get(),
+      m_pDocument,
       m_pFontResources ? m_pFontResources.Get() : m_pPageResources.Get(),
       pStream);
 
