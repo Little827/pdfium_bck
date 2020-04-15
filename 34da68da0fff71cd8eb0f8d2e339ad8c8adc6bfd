@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ea8f810_633f55da",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T19:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc541fc8_9fc4d3d5",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "34da68da0fff71cd8eb0f8d2e339ad8c8adc6bfd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f4025f3_b4758132",
         "filename": "testing/resources/pixel/bug_846.in",
         "patchSetId": 14
@@ -62,6 +86,24 @@
       "revId": "34da68da0fff71cd8eb0f8d2e339ad8c8adc6bfd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "795b5128_81452ad2",
+        "filename": "testing/resources/pixel/bug_846_expected_skia.pdf.0.png",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T19:11:55Z",
+      "side": 1,
+      "message": "This is an acceptable result. The bottom two letters are rendered as the same font as AGG but taller, this is due to Skia emboldens glyphs on both x and y directions. Currently Skia doesn\u0027t support emboldening on only x direction.",
+      "parentUuid": "35546c5c_88491540",
+      "revId": "34da68da0fff71cd8eb0f8d2e339ad8c8adc6bfd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
