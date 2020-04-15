@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ee3da0e8_4f023b10",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-15T18:05:49Z",
+      "side": 1,
+      "message": "Why would the behavior change for read only combo box? Editing a read only field is not allowed but viewing the options, shouldn\u0027t that be allowed.",
+      "parentUuid": "b1772c86_48ff6671",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "961e7ff4_cabd4b83",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 4
