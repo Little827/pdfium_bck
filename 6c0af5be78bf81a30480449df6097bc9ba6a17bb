@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6935040_25267acf",
+        "filename": "core/fpdfdoc/cpdf_formfield_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-15T23:44:10Z",
+      "side": 1,
+      "message": "Is this |kChoiceMultiSelect|?",
+      "range": {
+        "startLine": 50,
+        "startChar": 44,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "6c0af5be78bf81a30480449df6097bc9ba6a17bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5780c48f_f22c84cf",
+        "filename": "core/fpdfdoc/cpdf_formfield_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-15T23:44:10Z",
+      "side": 1,
+      "message": "I think this is suppose to be \"Ff\".",
+      "range": {
+        "startLine": 50,
+        "startChar": 37,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "6c0af5be78bf81a30480449df6097bc9ba6a17bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb02f43_821bfd56",
+        "filename": "core/fpdfdoc/cpdf_formfield_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-15T23:44:10Z",
+      "side": 1,
+      "message": "For some of the potentially optional fields, do we want to set them to an empty value, or not set them at all? e.g. If |selected_indices| is const std::vector\u003cint\u003e*, then this line can only set it if the pointer is non-null. That can potentially get us more test coverage.",
+      "revId": "6c0af5be78bf81a30480449df6097bc9ba6a17bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
