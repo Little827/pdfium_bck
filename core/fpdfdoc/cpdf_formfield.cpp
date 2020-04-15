@@ -823,6 +823,9 @@ bool CPDF_FormField::SelectOption(int iOptIndex,
 }
 
 void CPDF_FormField::LoadDA() {
+  if (!m_pForm)
+    return;
+
   CPDF_Dictionary* pFormDict = m_pForm->GetFormDict();
   if (!pFormDict)
     return;
