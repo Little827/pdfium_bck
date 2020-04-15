@@ -1141,7 +1141,7 @@ CXFA_LocaleMgr::~CXFA_LocaleMgr() {}
 
 LocaleIface* CXFA_LocaleMgr::GetDefLocale() {
   if (m_pDefLocale)
-    return m_pDefLocale.Get();
+    return m_pDefLocale;
 
   if (!m_LocaleArray.empty())
     return m_LocaleArray[0].get();
@@ -1154,7 +1154,7 @@ LocaleIface* CXFA_LocaleMgr::GetDefLocale() {
   if (locale)
     m_XMLLocaleArray.push_back(std::move(locale));
 
-  return m_pDefLocale.Get();
+  return m_pDefLocale;
 }
 
 std::unique_ptr<LocaleIface> CXFA_LocaleMgr::GetLocale(uint16_t lcid) {

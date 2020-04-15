@@ -31,7 +31,7 @@ class CPDFXFA_Widget final : public CPDFSDK_Annot {
 
   CXFA_FFWidget* GetXFAFFWidget() const { return m_pXFAFFWidget.Get(); }
   CPDFSDK_InteractiveForm* GetInteractiveForm() const {
-    return m_pInteractiveForm.Get();
+    return m_pInteractiveForm;
   }
 
  private:

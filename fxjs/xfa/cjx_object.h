@@ -104,13 +104,13 @@ class CJX_Object {
   JSE_PROP(className);
 
   CXFA_Document* GetDocument() const;
-  CXFA_Object* GetXFAObject() const { return object_.Get(); }
+  CXFA_Object* GetXFAObject() const { return object_; }
 
   void SetCalcRecursionCount(size_t count) { calc_recursion_count_ = count; }
   size_t GetCalcRecursionCount() const { return calc_recursion_count_; }
 
-  void SetLayoutItem(CXFA_LayoutItem* item) { layout_item_.Reset(item); }
-  CXFA_LayoutItem* GetLayoutItem() const { return layout_item_.Get(); }
+  void SetLayoutItem(CXFA_LayoutItem* item) { layout_item_ = item; }
+  CXFA_LayoutItem* GetLayoutItem() const { return layout_item_; }
 
   bool HasMethod(const WideString& func) const;
   CJS_Result RunMethod(const WideString& func,

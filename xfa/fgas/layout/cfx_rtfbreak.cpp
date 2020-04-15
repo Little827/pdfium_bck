@@ -357,7 +357,7 @@ bool CFX_RTFBreak::EndBreak_SplitLine(CFX_BreakLine* pNextLine,
       case FX_CHARTYPE::kSpace:
         break;
       default:
-        SplitTextLine(m_pCurLine.Get(), pNextLine, !m_bPagination && bAllChars);
+        SplitTextLine(m_pCurLine, pNextLine, !m_bPagination && bAllChars);
         bDone = true;
         break;
     }

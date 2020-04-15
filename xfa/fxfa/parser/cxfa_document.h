@@ -57,7 +57,7 @@ class CXFA_Document final : public CXFA_NodeOwner {
     virtual void AddChangedContainer(CXFA_Node* pContainer) = 0;
 
     void SetDocument(CXFA_Document* pDocument) { m_pDocument = pDocument; }
-    CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
+    CXFA_Document* GetDocument() const { return m_pDocument; }
 
    private:
     UnownedPtr<CXFA_Document> m_pDocument;
@@ -76,7 +76,7 @@ class CXFA_Document final : public CXFA_NodeOwner {
   // won't have an isolate set into it.
   CFXJSE_Engine* GetScriptContext() const;
 
-  CXFA_FFNotify* GetNotify() const { return notify_.Get(); }
+  CXFA_FFNotify* GetNotify() const { return notify_; }
   CXFA_LocaleMgr* GetLocaleMgr();
   CXFA_Object* GetXFAObject(XFA_HashCode wsNodeNameHash);
   CXFA_Node* GetNodeByID(CXFA_Node* pRoot, WideStringView wsID) const;

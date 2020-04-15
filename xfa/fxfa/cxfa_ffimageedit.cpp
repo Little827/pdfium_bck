@@ -34,7 +34,7 @@ bool CXFA_FFImageEdit::LoadWidget() {
   ASSERT(!IsLoaded());
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   auto pNew = pdfium::MakeUnique<CFWL_PictureBox>(GetFWLApp());
   CFWL_PictureBox* pPictureBox = pNew.get();
@@ -107,7 +107,7 @@ bool CXFA_FFImageEdit::AcceptsFocusOnButtonDown(uint32_t dwFlags,
 bool CXFA_FFImageEdit::OnLButtonDown(uint32_t dwFlags,
                                      const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   SetButtonDown(true);
   SendMessageToFWLWidget(pdfium::MakeUnique<CFWL_MessageMouse>(
@@ -140,14 +140,14 @@ bool CXFA_FFImageEdit::UpdateFWLData() {
 
 void CXFA_FFImageEdit::OnProcessMessage(CFWL_Message* pMessage) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFImageEdit::OnProcessEvent(CFWL_Event* pEvent) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   CXFA_FFField::OnProcessEvent(pEvent);
   m_pOldDelegate->OnProcessEvent(pEvent);
@@ -156,7 +156,7 @@ void CXFA_FFImageEdit::OnProcessEvent(CFWL_Event* pEvent) {
 void CXFA_FFImageEdit::OnDrawWidget(CXFA_Graphics* pGraphics,
                                     const CFX_Matrix& matrix) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   m_pOldDelegate->OnDrawWidget(pGraphics, matrix);
 }

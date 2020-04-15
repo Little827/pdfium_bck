@@ -49,17 +49,15 @@ class CXFA_FFDoc {
 
   ~CXFA_FFDoc();
 
-  IXFA_DocEnvironment* GetDocEnvironment() const {
-    return m_pDocEnvironment.Get();
-  }
+  IXFA_DocEnvironment* GetDocEnvironment() const { return m_pDocEnvironment; }
   FormType GetFormType() const { return m_FormType; }
   CFX_XMLDocument* GetXMLDocument() const { return m_pXMLDoc.get(); }
 
   CXFA_FFDocView* CreateDocView();
 
   CXFA_Document* GetXFADoc() const { return m_pDocument.get(); }
-  CXFA_FFApp* GetApp() const { return m_pApp.Get(); }
-  CPDF_Document* GetPDFDoc() const { return m_pPDFDoc.Get(); }
+  CXFA_FFApp* GetApp() const { return m_pApp; }
+  CPDF_Document* GetPDFDoc() const { return m_pPDFDoc; }
   CXFA_FFDocView* GetDocView(CXFA_LayoutProcessor* pLayout);
   CXFA_FFDocView* GetDocView();
   RetainPtr<CFX_DIBitmap> GetPDFNamedImage(WideStringView wsName,

@@ -343,7 +343,7 @@ CPWL_Wnd* CFFL_FormFiller::GetPWLWindow(CPDFSDK_PageView* pPageView,
 
     CPWL_Wnd::CreateParams cp = GetCreateParam();
     auto pPrivateData = pdfium::MakeUnique<CFFL_PrivateData>();
-    pPrivateData->pWidget.Reset(m_pWidget.Get());
+    pPrivateData->pWidget.Reset(m_pWidget);
     pPrivateData->pPageView = pPageView;
     pPrivateData->nWidgetAppearanceAge = m_pWidget->GetAppearanceAge();
     pPrivateData->nWidgetValueAge = 0;
@@ -454,7 +454,7 @@ bool CFFL_FormFiller::CommitData(CPDFSDK_PageView* pPageView, uint32_t nFlag) {
 
   CFFL_InteractiveFormFiller* pFormFiller =
       m_pFormFillEnv->GetInteractiveFormFiller();
-  ObservedPtr<CPDFSDK_Annot> pObserved(m_pWidget.Get());
+  ObservedPtr<CPDFSDK_Annot> pObserved(m_pWidget);
 
   if (!pFormFiller->OnKeyStrokeCommit(&pObserved, pPageView, nFlag)) {
     if (!pObserved)

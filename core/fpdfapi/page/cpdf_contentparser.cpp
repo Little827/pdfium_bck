@@ -186,9 +186,8 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
     m_pParsedSet = pdfium::MakeUnique<std::set<const uint8_t*>>();
     m_pParser = pdfium::MakeUnique<CPDF_StreamContentParser>(
         m_pObjectHolder->GetDocument(), m_pObjectHolder->m_pPageResources.Get(),
-        nullptr, nullptr, m_pObjectHolder.Get(),
-        m_pObjectHolder->m_pResources.Get(), m_pObjectHolder->GetBBox(),
-        nullptr, m_pParsedSet.get());
+        nullptr, nullptr, m_pObjectHolder, m_pObjectHolder->m_pResources.Get(),
+        m_pObjectHolder->GetBBox(), nullptr, m_pParsedSet.get());
     m_pParser->GetCurStates()->m_ColorState.SetDefault();
   }
   if (m_CurrentOffset >= m_Size)

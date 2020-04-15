@@ -170,7 +170,7 @@ class CFXJS_ObjDefinition {
     holder->SetAlignedPointerInInternalField(1, nullptr);
   }
 
-  v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
+  v8::Isolate* GetIsolate() const { return m_pIsolate; }
 
   void DefineConst(const char* sConstName, v8::Local<v8::Value> pDefault) {
     GetInstanceTemplate()->Set(GetIsolate(), sConstName, pDefault);

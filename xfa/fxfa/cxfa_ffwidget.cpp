@@ -320,7 +320,7 @@ bool CXFA_FFWidget::IsLoaded() {
 
 bool CXFA_FFWidget::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   PerformLayout();
   return true;
@@ -426,7 +426,7 @@ bool CXFA_FFWidget::OnRButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   CXFA_FFWidget* pParent = GetFFWidget(ToContentLayoutItem(GetParent()));
   if (pParent && !pParent->IsAncestorOf(pOldWidget)) {
@@ -437,14 +437,14 @@ bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 
   CXFA_EventParam eParam;
   eParam.m_eType = XFA_EVENT_Enter;
-  eParam.m_pTarget = m_pNode.Get();
+  eParam.m_pTarget = m_pNode;
   m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Enter, &eParam);
   return true;
 }
 
 bool CXFA_FFWidget::OnKillFocus(CXFA_FFWidget* pNewWidget) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   ObservedPtr<CXFA_FFWidget> pNewWatched(pNewWidget);
   GetLayoutItem()->ClearStatusBits(XFA_WidgetStatus_Focused);
@@ -668,7 +668,7 @@ void CXFA_FFWidget::EventKillFocus() {
   }
   CXFA_EventParam eParam;
   eParam.m_eType = XFA_EVENT_Exit;
-  eParam.m_pTarget = m_pNode.Get();
+  eParam.m_pTarget = m_pNode;
   m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Exit, &eParam);
 }
 

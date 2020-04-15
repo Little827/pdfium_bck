@@ -62,7 +62,7 @@ bool CPDF_ImageRenderer::StartLoadDIBBase() {
   if (!GetUnitRect().has_value())
     return false;
 
-  if (!m_Loader.Start(m_pImageObject.Get(), m_pRenderStatus.Get(), m_bStdCS))
+  if (!m_Loader.Start(m_pImageObject, m_pRenderStatus, m_bStdCS))
     return false;
 
   m_Mode = Mode::kDefault;
@@ -97,7 +97,7 @@ bool CPDF_ImageRenderer::StartRenderDIBBase() {
       if (m_pPattern)
         m_bPatternColor = true;
     }
-    m_FillArgb = m_pRenderStatus->GetFillArgb(m_pImageObject.Get());
+    m_FillArgb = m_pRenderStatus->GetFillArgb(m_pImageObject);
   } else if (GetRenderOptions().ColorModeIs(CPDF_RenderOptions::kGray)) {
     RetainPtr<CFX_DIBitmap> pClone = m_pDIBBase->Clone(nullptr);
     if (!pClone)
@@ -290,11 +290,11 @@ bool CPDF_ImageRenderer::DrawPatternImage() {
   patternDevice.Translate(static_cast<float>(-rect.left),
                           static_cast<float>(-rect.top));
   if (CPDF_TilingPattern* pTilingPattern = m_pPattern->AsTilingPattern()) {
-    bitmap_render.DrawTilingPattern(pTilingPattern, m_pImageObject.Get(),
+    bitmap_render.DrawTilingPattern(pTilingPattern, m_pImageObject,
                                     patternDevice, false);
   } else if (CPDF_ShadingPattern* pShadingPattern =
                  m_pPattern->AsShadingPattern()) {
-    bitmap_render.DrawShadingPattern(pShadingPattern, m_pImageObject.Get(),
+    bitmap_render.DrawShadingPattern(pShadingPattern, m_pImageObject,
                                      patternDevice, false);
   }
 
@@ -545,7 +545,7 @@ bool CPDF_ImageRenderer::Continue(PauseIndicatorIface* pPause) {
 }
 
 bool CPDF_ImageRenderer::ContinueDefault(PauseIndicatorIface* pPause) {
-  if (m_Loader.Continue(pPause, m_pRenderStatus.Get()))
+  if (m_Loader.Continue(pPause, m_pRenderStatus))
     return true;
 
   if (!StartRenderDIBBase())

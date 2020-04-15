@@ -30,7 +30,7 @@ uint32_t CFX_BitStream::GetBits(uint32_t nBits) {
 
   const uint32_t bit_pos = m_BitPos % 8;
   uint32_t byte_pos = m_BitPos / 8;
-  const uint8_t* data = m_pData.Get();
+  const uint8_t* data = m_pData;
   uint8_t current_byte = data[byte_pos];
 
   if (nBits == 1) {

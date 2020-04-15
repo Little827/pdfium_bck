@@ -38,7 +38,7 @@ class CFWL_App {
   explicit CFWL_App(AdapterIface* pAdapter);
   ~CFWL_App();
 
-  AdapterIface* GetAdapterNative() const { return m_pAdapterNative.Get(); }
+  AdapterIface* GetAdapterNative() const { return m_pAdapterNative; }
   CFWL_WidgetMgr* GetWidgetMgr() const { return m_pWidgetMgr.get(); }
   CFWL_NoteDriver* GetNoteDriver() const { return m_pNoteDriver.get(); }
 

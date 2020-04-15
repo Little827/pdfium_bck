@@ -34,7 +34,7 @@ class CXFA_FFApp : public CFWL_App::AdapterIface {
   CFGAS_FontMgr* GetFDEFontMgr();
   CXFA_FWLTheme* GetFWLTheme(CXFA_FFDoc* doc);
 
-  IXFA_AppProvider* GetAppProvider() const { return m_pProvider.Get(); }
+  IXFA_AppProvider* GetAppProvider() const { return m_pProvider; }
   const CFWL_App* GetFWLApp() const { return m_pFWLApp.get(); }
   CXFA_FontMgr* GetXFAFontMgr() { return &m_pFontMgr; }
 

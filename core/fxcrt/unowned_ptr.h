@@ -62,11 +62,6 @@ class UnownedPtr {
 
   ~UnownedPtr() { ProbeForLowSeverityLifetimeIssue(); }
 
-  void Reset(T* obj = nullptr) {
-    ProbeForLowSeverityLifetimeIssue();
-    m_pObj = obj;
-  }
-
   UnownedPtr& operator=(T* that) noexcept {
     Reset(that);
     return *this;
@@ -92,7 +87,6 @@ class UnownedPtr {
   }
 
   operator T*() const noexcept { return Get(); }
-  T* Get() const noexcept { return m_pObj; }
 
   T* Release() {
     ProbeForLowSeverityLifetimeIssue();
@@ -107,6 +101,13 @@ class UnownedPtr {
 
  private:
   friend class pdfium::span<T>;
+
+  inline T* Get() const noexcept { return m_pObj; }
+
+  inline void Reset(T* obj = nullptr) {
+    ProbeForLowSeverityLifetimeIssue();
+    m_pObj = obj;
+  }
 
   inline void ProbeForLowSeverityLifetimeIssue() {
 #if defined(ADDRESS_SANITIZER)

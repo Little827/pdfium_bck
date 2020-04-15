@@ -310,8 +310,8 @@ class CFXJSE_FormCalcContext final : public CFXJSE_HostObject {
                                 const v8::FunctionCallbackInfo<v8::Value>& info,
                                 bool bDotAccessor);
 
-  v8::Isolate* GetScriptRuntime() const { return m_pIsolate.Get(); }
-  CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
+  v8::Isolate* GetScriptRuntime() const { return m_pIsolate; }
+  CXFA_Document* GetDocument() const { return m_pDocument; }
 
   void ThrowNoDefaultPropertyException(ByteStringView name) const;
   void ThrowCompilerErrorException() const;

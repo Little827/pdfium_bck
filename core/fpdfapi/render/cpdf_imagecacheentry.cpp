@@ -65,7 +65,7 @@ CPDF_DIB::LoadState CPDF_ImageCacheEntry::StartGetCachedBitmap(
 
   m_pCurBitmap = pdfium::MakeRetain<CPDF_DIB>();
   CPDF_DIB::LoadState ret = m_pCurBitmap.As<CPDF_DIB>()->StartLoadDIBBase(
-      m_pDocument.Get(), m_pImage->GetStream(), true,
+      m_pDocument, m_pImage->GetStream(), true,
       pRenderStatus->GetFormResource(), pPageResources, bStdCS,
       pRenderStatus->GetGroupFamily(), pRenderStatus->GetLoadMask());
   if (ret == CPDF_DIB::LoadState::kContinue)

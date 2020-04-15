@@ -811,7 +811,7 @@ class SkiaState {
 #ifdef _SKIA_SUPPORT_PATHS_
       m_pDriver->PreMultiply();
 #endif  // _SKIA_SUPPORT_PATHS_
-      DebugShowSkiaDrawPath(m_pDriver.Get(), skCanvas, skPaint, *fillPath);
+      DebugShowSkiaDrawPath(m_pDriver, skCanvas, skPaint, *fillPath);
       skCanvas->drawPath(*fillPath, skPaint);
     }
     if (stroke_alpha && do_stroke) {
@@ -820,7 +820,7 @@ class SkiaState {
 #ifdef _SKIA_SUPPORT_PATHS_
       m_pDriver->PreMultiply();
 #endif  // _SKIA_SUPPORT_PATHS_
-      DebugShowSkiaDrawPath(m_pDriver.Get(), skCanvas, skPaint, m_skPath);
+      DebugShowSkiaDrawPath(m_pDriver, skCanvas, skPaint, m_skPath);
       skCanvas->drawPath(m_skPath, skPaint);
     }
     m_drawIndex = INT_MAX;

@@ -29,7 +29,7 @@ class CPDF_TransferFunc final : public Retainable, public Observable {
   FX_COLORREF TranslateColor(FX_COLORREF colorref) const;
   RetainPtr<CFX_DIBBase> TranslateImage(const RetainPtr<CFX_DIBBase>& pSrc);
 
-  const CPDF_Document* GetDocument() const { return m_pPDFDoc.Get(); }
+  const CPDF_Document* GetDocument() const { return m_pPDFDoc; }
 
   // Spans are |kChannelSampleSize| in size.
   pdfium::span<const uint8_t> GetSamplesR() const;

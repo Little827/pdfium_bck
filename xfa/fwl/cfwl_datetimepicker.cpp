@@ -34,7 +34,7 @@ CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
   monthProp->m_pParent = this;
   monthProp->m_pThemeProvider = m_pProperties->m_pThemeProvider;
   m_pMonthCal = pdfium::MakeUnique<CFWL_MonthCalendar>(
-      m_pOwnerApp.Get(), std::move(monthProp), this);
+      m_pOwnerApp, std::move(monthProp), this);
 
   m_pMonthCal->SetWidgetRect(
       CFX_RectF(0, 0, m_pMonthCal->GetAutosizedWidgetRect().Size()));
@@ -43,7 +43,7 @@ CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
   editProp->m_pParent = this;
   editProp->m_pThemeProvider = m_pProperties->m_pThemeProvider;
 
-  m_pEdit = pdfium::MakeUnique<CFWL_DateTimeEdit>(m_pOwnerApp.Get(),
+  m_pEdit = pdfium::MakeUnique<CFWL_DateTimeEdit>(m_pOwnerApp,
                                                   std::move(editProp), this);
   RegisterEventTarget(m_pMonthCal.get());
   RegisterEventTarget(m_pEdit.get());
@@ -63,13 +63,13 @@ void CFWL_DateTimePicker::Update() {
 
   if (!m_pProperties->m_pThemeProvider)
     m_pProperties->m_pThemeProvider = GetAvailableTheme();
-  m_pEdit->SetThemeProvider(m_pProperties->m_pThemeProvider.Get());
+  m_pEdit->SetThemeProvider(m_pProperties->m_pThemeProvider);
   m_rtClient = GetClientRect();
   m_pEdit->SetWidgetRect(m_rtClient);
   ResetEditAlignment();
   m_pEdit->Update();
   if (!m_pMonthCal->GetThemeProvider())
-    m_pMonthCal->SetThemeProvider(m_pProperties->m_pThemeProvider.Get());
+    m_pMonthCal->SetThemeProvider(m_pProperties->m_pThemeProvider);
 
   IFWL_ThemeProvider* theme = GetAvailableTheme();
   if (!theme)
@@ -104,7 +104,7 @@ void CFWL_DateTimePicker::DrawWidget(CXFA_Graphics* pGraphics,
   if (!pGraphics)
     return;
 
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (!pTheme)
     return;
 

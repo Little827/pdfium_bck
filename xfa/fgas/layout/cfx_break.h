@@ -57,9 +57,7 @@ class CFX_Break {
   void ClearBreakPieces();
 
   CFX_Char* GetLastChar(int32_t index, bool bOmitChar, bool bRichText) const;
-  const CFX_BreakLine* GetCurrentLineForTesting() const {
-    return m_pCurLine.Get();
-  }
+  const CFX_BreakLine* GetCurrentLineForTesting() const { return m_pCurLine; }
 
  protected:
   static const int kMinimumTabWidth;

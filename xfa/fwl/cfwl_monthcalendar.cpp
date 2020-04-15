@@ -130,7 +130,7 @@ void CFWL_MonthCalendar::DrawWidget(CXFA_Graphics* pGraphics,
   if (!m_pProperties->m_pThemeProvider)
     m_pProperties->m_pThemeProvider = GetAvailableTheme();
 
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, pTheme, matrix);
 
@@ -220,8 +220,8 @@ void CFWL_MonthCalendar::DrawCaption(CXFA_Graphics* pGraphics,
   textParam.m_dwStates = CFWL_PartState_Normal;
   textParam.m_pGraphics = pGraphics;
   textParam.m_wsText = GetHeadText(m_iCurYear, m_iCurMonth);
-  m_szHead = CalcTextSize(textParam.m_wsText,
-                          m_pProperties->m_pThemeProvider.Get(), false);
+  m_szHead =
+      CalcTextSize(textParam.m_wsText, m_pProperties->m_pThemeProvider, false);
   CalcHeadSize();
   textParam.m_rtPart = m_rtHeadText;
   textParam.m_dwTTOStyles.single_line_ = true;
@@ -312,8 +312,8 @@ void CFWL_MonthCalendar::DrawToday(CXFA_Graphics* pGraphics,
   params.m_iTTOAlign = FDE_TextAlignment::kCenterLeft;
   params.m_wsText = GetTodayText(m_iYear, m_iMonth, m_iDay);
 
-  m_szToday = CalcTextSize(params.m_wsText,
-                           m_pProperties->m_pThemeProvider.Get(), false);
+  m_szToday =
+      CalcTextSize(params.m_wsText, m_pProperties->m_pThemeProvider, false);
   CalcTodaySize();
   params.m_rtPart = m_rtToday;
   params.m_dwTTOStyles.single_line_ = true;
@@ -388,7 +388,7 @@ void CFWL_MonthCalendar::DrawDatesInCircle(CXFA_Graphics* pGraphics,
 }
 
 CFX_SizeF CFWL_MonthCalendar::CalcSize() {
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (!pTheme)
     return CFX_SizeF();
 

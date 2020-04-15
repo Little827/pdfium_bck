@@ -121,9 +121,9 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
 
     std::ostringstream* buf = it->second.get();
     empty_streams.erase(stream_index);
-    current_content_marks[stream_index] = ProcessContentMarks(
-        buf, pPageObj.Get(), current_content_marks[stream_index]);
-    ProcessPageObject(buf, pPageObj.Get());
+    current_content_marks[stream_index] =
+        ProcessContentMarks(buf, pPageObj, current_content_marks[stream_index]);
+    ProcessPageObject(buf, pPageObj);
   }
 
   // Finish dirty streams.
@@ -149,7 +149,7 @@ void CPDF_PageContentGenerator::UpdateContentStreams(
   if (new_stream_data->empty())
     return;
 
-  CPDF_PageContentManager page_content_manager(m_pObjHolder.Get());
+  CPDF_PageContentManager page_content_manager(m_pObjHolder);
 
   for (auto& pair : *new_stream_data) {
     int32_t stream_index = pair.first;
@@ -183,8 +183,7 @@ ByteString CPDF_PageContentGenerator::RealizeResource(
     m_pObjHolder->m_pResources.Reset(
         m_pDocument->NewIndirect<CPDF_Dictionary>());
     m_pObjHolder->GetDict()->SetNewFor<CPDF_Reference>(
-        "Resources", m_pDocument.Get(),
-        m_pObjHolder->m_pResources->GetObjNum());
+        "Resources", m_pDocument, m_pObjHolder->m_pResources->GetObjNum());
   }
   CPDF_Dictionary* pResList = m_pObjHolder->m_pResources->GetDictFor(bsType);
   if (!pResList)
@@ -199,7 +198,7 @@ ByteString CPDF_PageContentGenerator::RealizeResource(
 
     idnum++;
   }
-  pResList->SetNewFor<CPDF_Reference>(name, m_pDocument.Get(),
+  pResList->SetNewFor<CPDF_Reference>(name, m_pDocument,
                                       pResource->GetObjNum());
   return name;
 }
@@ -215,8 +214,8 @@ bool CPDF_PageContentGenerator::ProcessPageObjects(std::ostringstream* buf) {
       continue;
 
     bDirty = true;
-    content_marks = ProcessContentMarks(buf, pPageObj.Get(), content_marks);
-    ProcessPageObject(buf, pPageObj.Get());
+    content_marks = ProcessContentMarks(buf, pPageObj, content_marks);
+    ProcessPageObject(buf, pPageObj);
   }
   FinishMarks(buf, content_marks);
   return bDirty;
@@ -325,7 +324,7 @@ void CPDF_PageContentGenerator::ProcessImage(std::ostringstream* buf,
 
   ByteString name = RealizeResource(pStream, "XObject");
   if (bWasInline) {
-    auto* pPageData = CPDF_DocPageData::FromDocument(m_pDocument.Get());
+    auto* pPageData = CPDF_DocPageData::FromDocument(m_pDocument);
     pImageObj->SetImage(pPageData->GetImage(pStream->GetObjNum()));
   }
 
@@ -496,7 +495,7 @@ void CPDF_PageContentGenerator::ProcessText(std::ostringstream* buf,
   *buf << "BT " << pTextObj->GetTextMatrix() << " Tm ";
   RetainPtr<CPDF_Font> pFont(pTextObj->GetFont());
   if (!pFont)
-    pFont = CPDF_Font::GetStockFont(m_pDocument.Get(), "Helvetica");
+    pFont = CPDF_Font::GetStockFont(m_pDocument, "Helvetica");
 
   FontData data;
   const CPDF_FontEncoding* pEncoding = nullptr;

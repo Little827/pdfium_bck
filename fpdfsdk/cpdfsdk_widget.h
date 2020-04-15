@@ -103,7 +103,7 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
                  CPDFSDK_PageView* pPageView);
 
   CPDFSDK_InteractiveForm* GetInteractiveForm() const {
-    return m_pInteractiveForm.Get();
+    return m_pInteractiveForm;
   }
   CPDF_FormField* GetFormField() const;
   CPDF_FormControl* GetFormControl() const;

@@ -228,11 +228,11 @@ XFA_EventError CXFA_FFWidgetHandler::ProcessEvent(CXFA_Node* pNode,
 
   switch (pParam->m_eType) {
     case XFA_EVENT_Calculate:
-      return pNode->ProcessCalculate(m_pDocView.Get());
+      return pNode->ProcessCalculate(m_pDocView);
     case XFA_EVENT_Validate:
       if (m_pDocView->GetDoc()->GetDocEnvironment()->IsValidationsEnabled(
               m_pDocView->GetDoc())) {
-        return pNode->ProcessValidate(m_pDocView.Get(), 0);
+        return pNode->ProcessValidate(m_pDocView, 0);
       }
       return XFA_EventError::kDisabled;
     case XFA_EVENT_InitCalculate: {
@@ -241,12 +241,12 @@ XFA_EventError CXFA_FFWidgetHandler::ProcessEvent(CXFA_Node* pNode,
         return XFA_EventError::kNotExist;
       if (pNode->IsUserInteractive())
         return XFA_EventError::kDisabled;
-      return pNode->ExecuteScript(m_pDocView.Get(), calc->GetScriptIfExists(),
+      return pNode->ExecuteScript(m_pDocView, calc->GetScriptIfExists(),
                                   pParam);
     }
     default:
       break;
   }
-  return pNode->ProcessEvent(m_pDocView.Get(),
-                             gs_EventActivity[pParam->m_eType], pParam);
+  return pNode->ProcessEvent(m_pDocView, gs_EventActivity[pParam->m_eType],
+                             pParam);
 }

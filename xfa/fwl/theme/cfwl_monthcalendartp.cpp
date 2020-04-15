@@ -35,7 +35,7 @@ CFWL_MonthCalendarTP::~CFWL_MonthCalendarTP() = default;
 void CFWL_MonthCalendarTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
   switch (pParams.m_iPart) {
     case CFWL_Part::Border: {
-      DrawBorder(pParams.m_pGraphics.Get(), pParams.m_rtPart, pParams.m_matrix);
+      DrawBorder(pParams.m_pGraphics, pParams.m_rtPart, pParams.m_matrix);
       break;
     }
     case CFWL_Part::Background: {
@@ -48,13 +48,13 @@ void CFWL_MonthCalendarTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
     }
     case CFWL_Part::LBtn: {
       FWLTHEME_STATE eState = GetState(pParams.m_dwStates);
-      DrawArrowBtn(pParams.m_pGraphics.Get(), pParams.m_rtPart,
+      DrawArrowBtn(pParams.m_pGraphics, pParams.m_rtPart,
                    FWLTHEME_DIRECTION_Left, eState, pParams.m_matrix);
       break;
     }
     case CFWL_Part::RBtn: {
       FWLTHEME_STATE eState = GetState(pParams.m_dwStates);
-      DrawArrowBtn(pParams.m_pGraphics.Get(), pParams.m_rtPart,
+      DrawArrowBtn(pParams.m_pGraphics, pParams.m_rtPart,
                    FWLTHEME_DIRECTION_Right, eState, pParams.m_matrix);
       break;
     }

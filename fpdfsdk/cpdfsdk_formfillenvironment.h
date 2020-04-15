@@ -101,7 +101,7 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
                     float* fPosArray,
                     int sizeOfArray);
 
-  CPDF_Document* GetPDFDocument() const { return m_pCPDFDoc.Get(); }
+  CPDF_Document* GetPDFDocument() const { return m_pCPDFDoc; }
   CPDF_Document::Extension* GetDocExtension() const {
     return m_pCPDFDoc->GetExtension();
   }

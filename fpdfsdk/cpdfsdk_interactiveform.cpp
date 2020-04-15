@@ -130,7 +130,7 @@ CPDFSDK_Widget* CPDFSDK_InteractiveForm::GetWidget(
   CPDFSDK_Widget* pWidget = nullptr;
   const auto it = m_Map.find(pControl);
   if (it != m_Map.end())
-    pWidget = it->second.Get();
+    pWidget = it->second;
   if (pWidget)
     return pWidget;
 
@@ -360,7 +360,7 @@ bool CPDFSDK_InteractiveForm::OnKeyStrokeCommit(CPDF_FormField* pFormField,
   fa.bShift = false;
   fa.sValue = csValue;
   m_pFormFillEnv->GetActionHandler()->DoAction_FieldJavaScript(
-      action, CPDF_AAction::kKeyStroke, m_pFormFillEnv.Get(), pFormField, &fa);
+      action, CPDF_AAction::kKeyStroke, m_pFormFillEnv, pFormField, &fa);
   return fa.bRC;
 }
 
@@ -379,7 +379,7 @@ bool CPDFSDK_InteractiveForm::OnValidate(CPDF_FormField* pFormField,
   fa.bShift = false;
   fa.sValue = csValue;
   m_pFormFillEnv->GetActionHandler()->DoAction_FieldJavaScript(
-      action, CPDF_AAction::kValidate, m_pFormFillEnv.Get(), pFormField, &fa);
+      action, CPDF_AAction::kValidate, m_pFormFillEnv, pFormField, &fa);
   return fa.bRC;
 }
 

@@ -807,9 +807,9 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
       if (!pPageDict)
         return DataError;
 
-      auto page_num_obj = std::make_pair(
-          dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
-                      GetValidator(), m_pDocument.Get(), pPageDict));
+      auto page_num_obj =
+          std::make_pair(dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
+                                     GetValidator(), m_pDocument, pPageDict));
 
       CPDF_PageObjectAvail* page_obj_avail =
           m_PagesObjAvail.insert(std::move(page_num_obj)).first->second.get();
@@ -859,9 +859,9 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
     return DataError;
 
   {
-    auto page_num_obj = std::make_pair(
-        dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
-                    GetValidator(), m_pDocument.Get(), pPageDict));
+    auto page_num_obj =
+        std::make_pair(dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
+                                   GetValidator(), m_pDocument, pPageDict));
     CPDF_PageObjectAvail* page_obj_avail =
         m_PagesObjAvail.insert(std::move(page_num_obj)).first->second.get();
     const DocAvailStatus status = page_obj_avail->CheckAvail();
@@ -892,9 +892,9 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::CheckResources(
 
   CPDF_PageObjectAvail* resource_avail =
       m_PagesResourcesAvail
-          .insert(std::make_pair(
-              resources, pdfium::MakeUnique<CPDF_PageObjectAvail>(
-                             GetValidator(), m_pDocument.Get(), resources)))
+          .insert(std::make_pair(resources,
+                                 pdfium::MakeUnique<CPDF_PageObjectAvail>(
+                                     GetValidator(), m_pDocument, resources)))
           .first->second.get();
   return resource_avail->CheckAvail();
 }
@@ -937,8 +937,7 @@ CPDF_Dictionary* CPDF_DataAvail::GetPageDictionary(int index) const {
   // Page object already can be parsed in document.
   if (!m_pDocument->GetIndirectObject(dwObjNum)) {
     m_pDocument->ReplaceIndirectObjectIfHigherGeneration(
-        dwObjNum,
-        ParseIndirectObjectAt(szPageStartPos, dwObjNum, m_pDocument.Get()));
+        dwObjNum, ParseIndirectObjectAt(szPageStartPos, dwObjNum, m_pDocument));
   }
   if (!ValidatePage(index))
     return nullptr;
@@ -973,7 +972,7 @@ CPDF_DataAvail::DocFormStatus CPDF_DataAvail::CheckAcroForm() {
       return FormNotExist;
 
     m_pFormAvail = pdfium::MakeUnique<CPDF_PageObjectAvail>(
-        GetValidator(), m_pDocument.Get(), pAcroForm);
+        GetValidator(), m_pDocument, pAcroForm);
   }
   switch (m_pFormAvail->CheckAvail()) {
     case DocAvailStatus::DataError:
@@ -993,7 +992,7 @@ bool CPDF_DataAvail::ValidatePage(uint32_t dwPage) const {
   auto* pPageDict = m_pDocument->GetPageDictionary(iPage);
   if (!pPageDict)
     return false;
-  CPDF_PageObjectAvail obj_avail(GetValidator(), m_pDocument.Get(), pPageDict);
+  CPDF_PageObjectAvail obj_avail(GetValidator(), m_pDocument, pPageDict);
   return obj_avail.CheckAvail() == DocAvailStatus::DataAvailable;
 }
 

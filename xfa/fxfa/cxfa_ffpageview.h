@@ -24,7 +24,7 @@ class CXFA_FFPageView : public Observable {
   CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea);
   ~CXFA_FFPageView();
 
-  CXFA_ViewLayoutItem* GetLayoutItem() const { return m_pLayoutItem.Get(); }
+  CXFA_ViewLayoutItem* GetLayoutItem() const { return m_pLayoutItem; }
   void SetLayoutItem(CXFA_ViewLayoutItem* pItem) { m_pLayoutItem = pItem; }
 
   CXFA_FFDocView* GetDocView() const;
@@ -73,7 +73,7 @@ class CXFA_TabParam {
 
   void AppendTabParam(CXFA_TabParam* pParam);
   void ClearChildren();
-  CXFA_FFWidget* GetWidget() const { return m_pWidget.Get(); }
+  CXFA_FFWidget* GetWidget() const { return m_pWidget; }
   const std::vector<CXFA_FFWidget*>& GetChildren() const { return m_Children; }
 
  private:

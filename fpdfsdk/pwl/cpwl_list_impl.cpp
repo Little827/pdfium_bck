@@ -562,7 +562,7 @@ WideString CPWL_ListCtrl::GetText() const {
 
 void CPWL_ListCtrl::AddItem(const WideString& str) {
   auto pListItem = pdfium::MakeUnique<Item>();
-  pListItem->SetFontMap(m_pFontMap.Get());
+  pListItem->SetFontMap(m_pFontMap);
   pListItem->SetFontSize(m_fFontSize);
   pListItem->SetText(str);
   m_ListItems.push_back(std::move(pListItem));
