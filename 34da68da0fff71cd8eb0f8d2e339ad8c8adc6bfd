@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cc541fc8_9fc4d3d5",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-15T17:29:35Z",
+      "side": 1,
+      "message": "nit: Remove the excess space.",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "34da68da0fff71cd8eb0f8d2e339ad8c8adc6bfd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f4025f3_b4758132",
         "filename": "testing/resources/pixel/bug_846.in",
         "patchSetId": 14
@@ -22,6 +45,23 @@
       "revId": "34da68da0fff71cd8eb0f8d2e339ad8c8adc6bfd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35546c5c_88491540",
+        "filename": "testing/resources/pixel/bug_846_expected_skia.pdf.0.png",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-15T17:29:35Z",
+      "side": 1,
+      "message": "The bottom two letters still look quite different from the AGG rendering. Is that acceptable, or is there more work to be done in the future?",
+      "revId": "34da68da0fff71cd8eb0f8d2e339ad8c8adc6bfd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
