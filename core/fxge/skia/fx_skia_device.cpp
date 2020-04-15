@@ -1622,7 +1622,7 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(
                      : kGray_8_SkColorType;
   } else {
     ASSERT(bpp == 32);
-    color_type = kN32_SkColorType;
+    color_type = bRgbByteOrder ? kRGBA_8888_SkColorType : kN32_SkColorType;
   }
 
   SkImageInfo imageInfo =
