@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f37145e_be71d223",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-15T17:42:36Z",
+      "side": 1,
+      "message": "for handling Enter/Space key events",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3b51b45_7d78001b",
         "filename": "fpdfsdk/formfiller/cffl_radiobutton.cpp",
         "patchSetId": 10
@@ -13,6 +36,30 @@
       "writtenOn": "2020-04-14T14:18:14Z",
       "side": 1,
       "message": "For a ready only radio button/check box, on pressing enter/space, there is no action required.\nWhy not add this check early and return if the control is read only ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d613375_2f0bf498",
+        "filename": "fpdfsdk/formfiller/cffl_radiobutton.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-15T17:42:36Z",
+      "side": 1,
+      "message": "I believe CommitData() would do exactly that, return true without performing any operations. \n\nHimadri can correct me if i am wrong.",
+      "parentUuid": "f3b51b45_7d78001b",
       "range": {
         "startLine": 62,
         "startChar": 19,
@@ -64,6 +111,29 @@
         "startChar": 0,
         "endLine": 999,
         "endChar": 70
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c18728_60ba3a52",
+        "filename": "fpdfsdk/pwl/cpwl_special_button.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-15T17:42:36Z",
+      "side": 1,
+      "message": "nit: add a new line after this. Same after line 65.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 17
       },
       "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
