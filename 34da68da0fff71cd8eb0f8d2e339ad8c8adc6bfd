@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f4025f3_b4758132",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Even though we are only rendering \u0027A\u0027 which uses 778 as the glyph width, completely removing the rest of the widths results in substitute font face change, for which the bold styles are not as obvious as before. This is the shortest length for Widths for both DejaVuSans fonts I can cut down to to maintain the same substitute font face as before.",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 37
+      },
+      "revId": "34da68da0fff71cd8eb0f8d2e339ad8c8adc6bfd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}

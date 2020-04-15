@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b07918cc_d0ffef11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0226a7e5_2f339c0c",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc64c792_53a28ac2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4dff980a_05e10f1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc64c792_53a28ac2",
+      "range": {
+        "startLine": 16,
+        "startChar": 61,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2698d718_e00b5972",
         "filename": "core/fxge/cfx_font.cpp",
         "patchSetId": 12
@@ -56,6 +98,24 @@
       "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7020995_afd0b301",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2698d718_e00b5972",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "853283da_3f215a58",
+        "filename": "core/fxge/cfx_substfont.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "This adjustment should not apply to |m_WeightCJK|.\nSince CFX_FontMapper::FindSubstFontalways() always updates |m_Weight| with calculated |weight| if font substitution is needed, we can omit the check for CJK substitute font weight here.",
+      "parentUuid": "51c625b0_90a01e1d",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "898f73e2_b8d836b3",
         "filename": "testing/resources/pixel/bug_846.in",
         "patchSetId": 12
@@ -90,6 +168,24 @@
       "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eccdfe4_9553c80a",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898f73e2_b8d836b3",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "853debd6_d05f6e39",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c8f65c_13ca804e",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e82ca0d2_776962c3",
         "filename": "testing/resources/pixel/bug_846.in",
         "patchSetId": 12
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "4ffa8b71_de4922a4",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82ca0d2_776962c3",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78a38a00_0bbf84c1",
         "filename": "testing/resources/pixel/bug_846.in",
         "patchSetId": 12
@@ -141,6 +273,24 @@
       "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b106e09_c91a6583",
+        "filename": "testing/resources/pixel/bug_846.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-15T16:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a38a00_0bbf84c1",
+      "revId": "53e369f0232c25a49989cbaf013b4ec11568d917",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
