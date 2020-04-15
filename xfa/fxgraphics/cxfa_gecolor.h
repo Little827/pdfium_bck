@@ -30,11 +30,11 @@ class CXFA_GEColor {
   }
   CXFA_GEPattern* GetPattern() const {
     ASSERT(m_type == Pattern);
-    return m_pPattern.Get();
+    return m_pPattern;
   }
   CXFA_GEShading* GetShading() const {
     ASSERT(m_type == Shading);
-    return m_pShading.Get();
+    return m_pShading;
   }
 
   CXFA_GEColor& operator=(const CXFA_GEColor& that);

@@ -241,7 +241,7 @@ void CPWL_Edit::DrawThisAppearance(CFX_RenderDevice* pDevice,
   CPWL_EditImpl::DrawEdit(pDevice, mtUser2Device, m_pEdit.get(),
                           GetTextColor().ToFXColor(GetTransparency()), rcClip,
                           CFX_PointF(), pRange, GetSystemHandler(),
-                          m_pFormFiller.Get());
+                          m_pFormFiller);
 }
 
 bool CPWL_Edit::OnLButtonDown(const CFX_PointF& point, uint32_t nFlag) {

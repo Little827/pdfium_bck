@@ -97,7 +97,7 @@ FWL_WidgetHit CFWL_ComboBox::HitTest(const CFX_PointF& point) {
 
 void CFWL_ComboBox::DrawWidget(CXFA_Graphics* pGraphics,
                                const CFX_Matrix& matrix) {
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   pGraphics->SaveGraphState();
   pGraphics->ConcatMatrix(&matrix);
   if (!m_rtBtn.IsEmpty(0.1f)) {
@@ -317,7 +317,7 @@ void CFWL_ComboBox::ResetTheme() {
   if (!m_pProperties->m_pThemeProvider)
     m_pProperties->m_pThemeProvider = GetAvailableTheme();
 
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (m_pListBox && !m_pListBox->GetThemeProvider())
     m_pListBox->SetThemeProvider(pTheme);
   if (m_pEdit && !m_pEdit->GetThemeProvider())
@@ -409,8 +409,8 @@ void CFWL_ComboBox::InitComboList() {
   prop->m_dwStyles = FWL_WGTSTYLE_Border | FWL_WGTSTYLE_VScroll;
   prop->m_dwStates = FWL_WGTSTATE_Invisible;
   prop->m_pThemeProvider = m_pProperties->m_pThemeProvider;
-  m_pListBox = pdfium::MakeUnique<CFWL_ComboList>(m_pOwnerApp.Get(),
-                                                  std::move(prop), this);
+  m_pListBox =
+      pdfium::MakeUnique<CFWL_ComboList>(m_pOwnerApp, std::move(prop), this);
 }
 
 void CFWL_ComboBox::InitComboEdit() {
@@ -421,8 +421,8 @@ void CFWL_ComboBox::InitComboEdit() {
   prop->m_pParent = this;
   prop->m_pThemeProvider = m_pProperties->m_pThemeProvider;
 
-  m_pEdit = pdfium::MakeUnique<CFWL_ComboEdit>(m_pOwnerApp.Get(),
-                                               std::move(prop), this);
+  m_pEdit =
+      pdfium::MakeUnique<CFWL_ComboEdit>(m_pOwnerApp, std::move(prop), this);
   m_pEdit->SetOuter(this);
 }
 

@@ -44,7 +44,7 @@ CPDF_StructElement::CPDF_StructElement(CPDF_StructTree* pTree,
     : m_pTree(pTree),
       m_pParent(pParent),
       m_pDict(pDict),
-      m_Type(GetStructElementType(m_pTree.Get(), m_pDict.Get())) {
+      m_Type(GetStructElementType(m_pTree, m_pDict.Get())) {
   LoadKids(m_pDict.Get());
 }
 

@@ -60,7 +60,7 @@ void CFWL_CheckBox::DrawWidget(CXFA_Graphics* pGraphics,
   if (!pGraphics)
     return;
 
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (!pTheme)
     return;
 
@@ -128,7 +128,7 @@ void CFWL_CheckBox::Layout() {
   m_rtCaption.Inflate(-kCaptionMargin, -kCaptionMargin);
 
   CFX_RectF rtFocus = m_rtCaption;
-  CalcTextRect(L"Check box", m_pProperties->m_pThemeProvider.Get(), m_TTOStyles,
+  CalcTextRect(L"Check box", m_pProperties->m_pThemeProvider, m_TTOStyles,
                m_iTTOAlign, &rtFocus);
 
   m_rtFocus = CFX_RectF(m_rtCaption.TopLeft(),

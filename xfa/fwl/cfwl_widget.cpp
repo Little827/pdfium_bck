@@ -233,7 +233,7 @@ CFX_RectF CFWL_Widget::GetRelativeRect() const {
 
 IFWL_ThemeProvider* CFWL_Widget::GetAvailableTheme() const {
   if (m_pProperties->m_pThemeProvider)
-    return m_pProperties->m_pThemeProvider.Get();
+    return m_pProperties->m_pThemeProvider;
 
   const CFWL_Widget* pUp = this;
   do {

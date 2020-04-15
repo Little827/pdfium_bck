@@ -132,7 +132,7 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
   CPDFSDK_PageView* GetCurPageView();
   void SetChangeMark();
 
-  CPDFSDK_Annot* GetSDKAnnot() const { return m_pWidget.Get(); }
+  CPDFSDK_Annot* GetSDKAnnot() const { return m_pWidget; }
 
  protected:
   // If the inheriting widget has its own fontmap and a PWL_Edit widget that

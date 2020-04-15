@@ -5417,7 +5417,7 @@ bool CFXJSE_FormCalcContext::GetObjectForName(CFXJSE_HostObject* pThis,
       dwFlags, nullptr);
   if (bRet && resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
     accessorValue->Assign(pScriptContext->GetOrCreateJSBindingFromMap(
-        resolveNodeRS.objects.front().Get()));
+        resolveNodeRS.objects.front()));
     return true;
   }
   return false;
@@ -5495,7 +5495,7 @@ void CFXJSE_FormCalcContext::ParseResolveResult(
     for (auto& pObject : resolveNodeRS.objects) {
       resultValues->push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
       resultValues->back()->Assign(
-          pScriptContext->GetOrCreateJSBindingFromMap(pObject.Get()));
+          pScriptContext->GetOrCreateJSBindingFromMap(pObject));
     }
     return;
   }

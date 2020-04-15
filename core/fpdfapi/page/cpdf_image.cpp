@@ -239,8 +239,8 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
       auto pNewDict = m_pDocument->New<CPDF_Dictionary>();
       CPDF_Stream* pCTS = m_pDocument->NewIndirect<CPDF_Stream>(
           std::move(pColorTable), palette_size * 3, std::move(pNewDict));
-      pCS->AppendNew<CPDF_Reference>(m_pDocument.Get(), pCTS->GetObjNum());
-      pDict->SetNewFor<CPDF_Reference>("ColorSpace", m_pDocument.Get(),
+      pCS->AppendNew<CPDF_Reference>(m_pDocument, pCTS->GetObjNum());
+      pDict->SetNewFor<CPDF_Reference>("ColorSpace", m_pDocument,
                                        pCS->GetObjNum());
     } else {
       pDict->SetNewFor<CPDF_Name>("ColorSpace", "DeviceGray");
@@ -278,7 +278,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
     pMaskDict->SetNewFor<CPDF_Number>("Length", mask_size);
     CPDF_Stream* pNewStream = m_pDocument->NewIndirect<CPDF_Stream>(
         std::move(mask_buf), mask_size, std::move(pMaskDict));
-    pDict->SetNewFor<CPDF_Reference>("SMask", m_pDocument.Get(),
+    pDict->SetNewFor<CPDF_Reference>("SMask", m_pDocument,
                                      pNewStream->GetObjNum());
   }
 
@@ -332,7 +332,7 @@ void CPDF_Image::ResetCache(CPDF_Page* pPage) {
 
 RetainPtr<CFX_DIBBase> CPDF_Image::LoadDIBBase() const {
   auto source = pdfium::MakeRetain<CPDF_DIB>();
-  if (!source->Load(m_pDocument.Get(), m_pStream.Get()))
+  if (!source->Load(m_pDocument, m_pStream.Get()))
     return nullptr;
 
   if (!source->IsJBigImage())
@@ -359,8 +359,8 @@ bool CPDF_Image::StartLoadDIBBase(const CPDF_Dictionary* pFormResource,
                                   bool bLoadMask) {
   auto source = pdfium::MakeRetain<CPDF_DIB>();
   CPDF_DIB::LoadState ret = source->StartLoadDIBBase(
-      m_pDocument.Get(), m_pStream.Get(), true, pFormResource, pPageResource,
-      bStdCS, GroupFamily, bLoadMask);
+      m_pDocument, m_pStream.Get(), true, pFormResource, pPageResource, bStdCS,
+      GroupFamily, bLoadMask);
   if (ret == CPDF_DIB::LoadState::kFail) {
     m_pDIBBase.Reset();
     return false;

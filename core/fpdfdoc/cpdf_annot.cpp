@@ -121,7 +121,7 @@ void CPDF_Annot::Init() {
 void CPDF_Annot::GenerateAPIfNeeded() {
   if (!ShouldGenerateAP())
     return;
-  if (!CPVT_GenerateAP::GenerateAnnotAP(m_pDocument.Get(), m_pAnnotDict.Get(),
+  if (!CPVT_GenerateAP::GenerateAnnotAP(m_pDocument, m_pAnnotDict.Get(),
                                         m_nSubtype)) {
     return;
   }
@@ -199,7 +199,7 @@ CPDF_Form* CPDF_Annot::GetAPForm(const CPDF_Page* pPage, AppearanceMode mode) {
     return it->second.get();
 
   auto pNewForm = pdfium::MakeUnique<CPDF_Form>(
-      m_pDocument.Get(), pPage->m_pResources.Get(), pStream);
+      m_pDocument, pPage->m_pResources.Get(), pStream);
   pNewForm->ParseContent();
 
   CPDF_Form* pResult = pNewForm.get();

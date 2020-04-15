@@ -34,7 +34,7 @@ bool CXFA_FFCheckButton::LoadWidget() {
   ASSERT(!IsLoaded());
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   auto pNew = pdfium::MakeUnique<CFWL_CheckBox>(GetFWLApp());
   CFWL_CheckBox* pCheckBox = pNew.get();
@@ -255,7 +255,7 @@ bool CXFA_FFCheckButton::OnLButtonUp(uint32_t dwFlags,
     return false;
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   SetButtonDown(false);
   SendMessageToFWLWidget(pdfium::MakeUnique<CFWL_MessageMouse>(
@@ -299,7 +299,7 @@ bool CXFA_FFCheckButton::UpdateFWLData() {
     return false;
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
   SetFWLCheckState(m_pNode->GetCheckState());
   GetNormalWidget()->Update();
   return true;
@@ -307,14 +307,14 @@ bool CXFA_FFCheckButton::UpdateFWLData() {
 
 void CXFA_FFCheckButton::OnProcessMessage(CFWL_Message* pMessage) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   CXFA_FFField::OnProcessEvent(pEvent);
   switch (pEvent->GetType()) {
@@ -332,7 +332,7 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
           exclNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Change,
                                  &eParam);
         }
-        eParam.m_pTarget = m_pNode.Get();
+        eParam.m_pTarget = m_pNode;
         m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Change,
                               &eParam);
       } else {
@@ -343,7 +343,7 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
         exclNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Click,
                                &eParam);
       }
-      eParam.m_pTarget = m_pNode.Get();
+      eParam.m_pTarget = m_pNode;
       m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Click, &eParam);
       break;
     }
@@ -356,7 +356,7 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
 void CXFA_FFCheckButton::OnDrawWidget(CXFA_Graphics* pGraphics,
                                       const CFX_Matrix& matrix) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   m_pOldDelegate->OnDrawWidget(pGraphics, matrix);
 }

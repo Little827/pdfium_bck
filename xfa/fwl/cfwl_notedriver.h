@@ -31,7 +31,7 @@ class CFWL_NoteDriver {
   void UnregisterEventTarget(CFWL_Widget* pListener);
   void ClearEventTargets();
 
-  CFWL_Widget* GetFocus() const { return m_pFocus.Get(); }
+  CFWL_Widget* GetFocus() const { return m_pFocus; }
   bool SetFocus(CFWL_Widget* pFocus);
   void SetGrab(CFWL_Widget* pGrab, bool bSet) {
     m_pGrab = bSet ? pGrab : nullptr;

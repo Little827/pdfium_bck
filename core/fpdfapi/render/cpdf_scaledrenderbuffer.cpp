@@ -60,13 +60,15 @@ bool CPDF_ScaledRenderBuffer::Initialize(CPDF_RenderContext* pContext,
     }
     m_Matrix.Scale(0.5f, 0.5f);
   }
-  m_pContext->GetBackground(m_pBitmapDevice->GetBitmap(), m_pObject.Get(),
-                            pOptions, m_Matrix);
+  m_pContext->GetBackground(m_pBitmapDevice->GetBitmap(), m_pObject, pOptions,
+                            m_Matrix);
   return true;
 }
 
 CFX_RenderDevice* CPDF_ScaledRenderBuffer::GetDevice() const {
-  return m_pBitmapDevice ? m_pBitmapDevice.get() : m_pDevice.Get();
+  if (m_pBitmapDevice)
+    return m_pBitmapDevice.get();
+  return m_pDevice;
 }
 
 void CPDF_ScaledRenderBuffer::OutputToDevice() {

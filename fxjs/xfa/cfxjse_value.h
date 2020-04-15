@@ -85,7 +85,7 @@ class CFXJSE_Value {
   CFXJSE_Value(const CFXJSE_Value&) = delete;
   CFXJSE_Value& operator=(const CFXJSE_Value&) = delete;
 
-  v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
+  v8::Isolate* GetIsolate() const { return m_pIsolate; }
 
   UnownedPtr<v8::Isolate> const m_pIsolate;
   v8::Global<v8::Value> m_hValue;

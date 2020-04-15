@@ -121,7 +121,7 @@ CXFA_FFPageView::CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea)
 CXFA_FFPageView::~CXFA_FFPageView() {}
 
 CXFA_FFDocView* CXFA_FFPageView::GetDocView() const {
-  return m_pDocView.Get();
+  return m_pDocView;
 }
 
 CFX_RectF CXFA_FFPageView::GetPageViewRect() const {

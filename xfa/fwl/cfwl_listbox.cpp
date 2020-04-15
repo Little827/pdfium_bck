@@ -87,7 +87,7 @@ void CFWL_ListBox::DrawWidget(CXFA_Graphics* pGraphics,
   if (!pGraphics)
     return;
 
-  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider;
   if (!pTheme)
     return;
 
@@ -592,8 +592,8 @@ float CFWL_ListBox::GetMaxTextWidth() {
     if (!pItem)
       continue;
 
-    CFX_SizeF sz = CalcTextSize(pItem->GetText(),
-                                m_pProperties->m_pThemeProvider.Get(), false);
+    CFX_SizeF sz =
+        CalcTextSize(pItem->GetText(), m_pProperties->m_pThemeProvider, false);
     fRet = std::max(fRet, sz.width);
   }
   return fRet;
@@ -620,8 +620,8 @@ void CFWL_ListBox::InitVerticalScrollBar() {
   prop->m_dwStates = FWL_WGTSTATE_Invisible;
   prop->m_pParent = this;
   prop->m_pThemeProvider = m_pScrollBarTP;
-  m_pVertScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp.Get(),
-                                                        std::move(prop), this);
+  m_pVertScrollBar =
+      pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp, std::move(prop), this);
 }
 
 void CFWL_ListBox::InitHorizontalScrollBar() {
@@ -633,8 +633,8 @@ void CFWL_ListBox::InitHorizontalScrollBar() {
   prop->m_dwStates = FWL_WGTSTATE_Invisible;
   prop->m_pParent = this;
   prop->m_pThemeProvider = m_pScrollBarTP;
-  m_pHorzScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp.Get(),
-                                                        std::move(prop), this);
+  m_pHorzScrollBar =
+      pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp, std::move(prop), this);
 }
 
 bool CFWL_ListBox::IsShowScrollBar(bool bVert) {

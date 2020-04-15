@@ -112,18 +112,18 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
   CFX_PointF TransformTo(CFWL_Widget* pWidget, const CFX_PointF& point);
   CFX_Matrix GetMatrix() const;
   IFWL_ThemeProvider* GetThemeProvider() const {
-    return m_pProperties->m_pThemeProvider.Get();
+    return m_pProperties->m_pThemeProvider;
   }
 
   void SetDelegate(IFWL_WidgetDelegate* delegate) { m_pDelegate = delegate; }
   IFWL_WidgetDelegate* GetDelegate() {
-    return m_pDelegate ? m_pDelegate.Get() : this;
+    return m_pDelegate ? m_pDelegate : this;
   }
   const IFWL_WidgetDelegate* GetDelegate() const {
-    return m_pDelegate ? m_pDelegate.Get() : this;
+    return m_pDelegate ? m_pDelegate : this;
   }
 
-  const CFWL_App* GetOwnerApp() const { return m_pOwnerApp.Get(); }
+  const CFWL_App* GetOwnerApp() const { return m_pOwnerApp; }
   uint32_t GetEventKey() const { return m_nEventKey; }
   void SetEventKey(uint32_t key) { m_nEventKey = key; }
 

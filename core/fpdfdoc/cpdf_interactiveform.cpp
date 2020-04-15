@@ -786,7 +786,7 @@ int CPDF_InteractiveForm::FindFieldInCalculationOrder(
 
 RetainPtr<CPDF_Font> CPDF_InteractiveForm::GetFormFont(
     ByteString csNameTag) const {
-  return GetFont(m_pFormDict.Get(), m_pDocument.Get(), csNameTag);
+  return GetFont(m_pFormDict.Get(), m_pDocument, csNameTag);
 }
 
 CPDF_DefaultAppearance CPDF_InteractiveForm::GetDefaultAppearance() const {

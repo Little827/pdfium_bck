@@ -41,7 +41,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
 
   bool LoadXFADoc();
   CXFA_FFDoc* GetXFADoc() { return m_pXFADoc.get(); }
-  CXFA_FFDocView* GetXFADocView() const { return m_pXFADocView.Get(); }
+  CXFA_FFDocView* GetXFADocView() const { return m_pXFADocView; }
   FormType GetFormType() const { return m_FormType; }
   CPDFSDK_FormFillEnvironment* GetFormFillEnv() const {
     return m_pFormFillEnv.Get();

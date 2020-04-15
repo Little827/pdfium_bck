@@ -296,7 +296,7 @@ void CFX_TxtBreak::EndBreak_SplitLine(CFX_BreakLine* pNextLine,
       case FX_CHARTYPE::kSpace:
         break;
       default:
-        SplitTextLine(m_pCurLine.Get(), pNextLine, bAllChars);
+        SplitTextLine(m_pCurLine, pNextLine, bAllChars);
         bDone = true;
         break;
     }

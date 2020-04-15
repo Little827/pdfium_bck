@@ -294,7 +294,7 @@ std::unique_ptr<CJBig2_SymbolDict> CJBig2_SDDProc::DecodeHuffman(
   NSYMSDECODED = 0;
   std::unique_ptr<CJBig2_Image> BS;
   while (NSYMSDECODED < SDNUMNEWSYMS) {
-    if (pHuffmanDecoder->DecodeAValue(SDHUFFDH.Get(), &HCDH) != 0)
+    if (pHuffmanDecoder->DecodeAValue(SDHUFFDH, &HCDH) != 0)
       return nullptr;
 
     HCHEIGHT = HCHEIGHT + HCDH;
@@ -305,7 +305,7 @@ std::unique_ptr<CJBig2_SymbolDict> CJBig2_SDDProc::DecodeHuffman(
     TOTWIDTH = 0;
     HCFIRSTSYM = NSYMSDECODED;
     for (;;) {
-      nVal = pHuffmanDecoder->DecodeAValue(SDHUFFDW.Get(), &DW);
+      nVal = pHuffmanDecoder->DecodeAValue(SDHUFFDW, &DW);
       if (nVal == JBIG2_OOB)
         break;
       if (nVal != 0)
@@ -324,8 +324,8 @@ std::unique_ptr<CJBig2_SymbolDict> CJBig2_SDDProc::DecodeHuffman(
       }
       TOTWIDTH = TOTWIDTH + SYMWIDTH;
       if (SDREFAGG == 1) {
-        if (pHuffmanDecoder->DecodeAValue(SDHUFFAGGINST.Get(),
-                                          (int*)&REFAGGNINST) != 0) {
+        if (pHuffmanDecoder->DecodeAValue(SDHUFFAGGINST, (int*)&REFAGGNINST) !=
+            0) {
           return nullptr;
         }
         BS = nullptr;
@@ -446,8 +446,7 @@ std::unique_ptr<CJBig2_SymbolDict> CJBig2_SDDProc::DecodeHuffman(
       NSYMSDECODED = NSYMSDECODED + 1;
     }
     if (SDREFAGG == 0) {
-      if (pHuffmanDecoder->DecodeAValue(SDHUFFBMSIZE.Get(),
-                                        (int32_t*)&BMSIZE) != 0) {
+      if (pHuffmanDecoder->DecodeAValue(SDHUFFBMSIZE, (int32_t*)&BMSIZE) != 0) {
         return nullptr;
       }
       pStream->alignByte();

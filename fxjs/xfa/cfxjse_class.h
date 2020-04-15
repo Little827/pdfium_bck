@@ -24,7 +24,7 @@ class CFXJSE_Class {
   explicit CFXJSE_Class(CFXJSE_Context* lpContext);
   ~CFXJSE_Class();
 
-  CFXJSE_Context* GetContext() const { return m_pContext.Get(); }
+  CFXJSE_Context* GetContext() const { return m_pContext; }
   v8::Global<v8::FunctionTemplate>& GetTemplate() { return m_hTemplate; }
 
  protected:

@@ -140,7 +140,7 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
   if (eScriptType == CXFA_Script::Type::Formcalc) {
     if (!m_FM2JSContext) {
       m_FM2JSContext = pdfium::MakeUnique<CFXJSE_FormCalcContext>(
-          GetIsolate(), m_JsContext.get(), m_pDocument.Get());
+          GetIsolate(), m_JsContext.get(), m_pDocument);
     }
     CFX_WideTextBuf wsJavaScript;
     if (!CFXJSE_FormCalcContext::Translate(wsScript, &wsJavaScript)) {
@@ -156,7 +156,7 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
 
   CFXJSE_Value* pValue =
       pThisObject ? GetOrCreateJSBindingFromMap(pThisObject) : nullptr;
-  IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime.Get());
+  IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime);
   return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
 }
 
@@ -172,8 +172,7 @@ bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
   if (!ResolveObjects(refNode, propname, &resolveRs, dwFlag, nullptr))
     return false;
   if (resolveRs.dwFlags == XFA_ResolveNode_RSType_Nodes) {
-    pValue->Assign(
-        GetOrCreateJSBindingFromMap(resolveRs.objects.front().Get()));
+    pValue->Assign(GetOrCreateJSBindingFromMap(resolveRs.objects.front()));
     return true;
   }
   if (resolveRs.dwFlags == XFA_ResolveNode_RSType_Attribute &&
@@ -661,7 +660,8 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
         }
         dwStyles |= XFA_RESOLVENODE_Bind;
         findObjects.clear();
-        findObjects.emplace_back(pNodeHelper->m_pAllStartParent.Get());
+        findObjects.emplace_back(
+            static_cast<CXFA_Node*>(pNodeHelper->m_pAllStartParent));
         continue;
       }
       break;
@@ -686,7 +686,7 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
         m_ResolveProcessor->SetIndexDataBind(rndBind.m_wsCondition, i, nNodes);
         bDataBind = true;
       }
-      rndFind.m_CurObject = findObjects[i++].Get();
+      rndFind.m_CurObject = findObjects[i++];
       rndFind.m_nLevel = nLevel;
       rndFind.m_dwFlag = XFA_ResolveNode_RSType_Nodes;
       if (!m_ResolveProcessor->Resolve(rndFind))
@@ -718,7 +718,7 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
       if (dwStyles & XFA_RESOLVENODE_CreateNode) {
         bNextCreate = true;
         if (!pNodeHelper->m_pCreateParent) {
-          pNodeHelper->m_pCreateParent = ToNode(rndFind.m_CurObject.Get());
+          pNodeHelper->m_pCreateParent = ToNode(rndFind.m_CurObject);
           pNodeHelper->m_iCreateCount = 1;
         }
         int32_t checked_length =
@@ -753,7 +753,8 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
   if (dwStyles & (XFA_RESOLVENODE_CreateNode | XFA_RESOLVENODE_Bind |
                   XFA_RESOLVENODE_BindNew)) {
     if (pNodeHelper->m_pCreateParent)
-      resolveNodeRS->objects.emplace_back(pNodeHelper->m_pCreateParent.Get());
+      resolveNodeRS->objects.emplace_back(
+          static_cast<CXFA_Node*>(pNodeHelper->m_pCreateParent));
     else
       pNodeHelper->CreateNodeForCondition(rndFind.m_wsCondition);
 
@@ -784,7 +785,7 @@ CFXJSE_Value* CFXJSE_Engine::GetOrCreateJSBindingFromMap(CXFA_Object* pObject) {
     return iter->second.get();
 
   auto jsValue = pdfium::MakeUnique<CFXJSE_Value>(GetIsolate());
-  jsValue->SetHostObject(pObject, m_pJsClass.Get());
+  jsValue->SetHostObject(pObject, m_pJsClass);
 
   CFXJSE_Value* pValue = jsValue.get();
   m_mapObjectToValue.insert(std::make_pair(pObject, std::move(jsValue)));

@@ -75,7 +75,7 @@ class CPDF_ColorSpace : public Retainable, public Observable {
   static bool IsValidIccComponents(int components);
 
   const CPDF_Array* GetArray() const { return m_pArray.Get(); }
-  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+  CPDF_Document* GetDocument() const { return m_pDocument; }
 
   // Should only be called if this colorspace is not a pattern.
   std::vector<float> CreateBufAndSetDefaultColor() const;

@@ -53,7 +53,7 @@ bool CXFA_FFPushButton::LoadWidget() {
   ASSERT(!IsLoaded());
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   auto pNew = pdfium::MakeUnique<CFWL_PushButton>(GetFWLApp());
   CFWL_PushButton* pPushButton = pNew.get();
@@ -139,7 +139,7 @@ void CXFA_FFPushButton::LoadHighlightCaption() {
   if (m_pNode->HasButtonRollover()) {
     if (!m_pRollProvider) {
       m_pRollProvider = pdfium::MakeUnique<CXFA_TextProvider>(
-          m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Rollover);
+          m_pNode, XFA_TEXTPROVIDERTYPE_Rollover);
     }
     m_pRolloverTextLayout =
         pdfium::MakeUnique<CXFA_TextLayout>(GetDoc(), m_pRollProvider.get());
@@ -148,7 +148,7 @@ void CXFA_FFPushButton::LoadHighlightCaption() {
   if (m_pNode->HasButtonDown()) {
     if (!m_pDownProvider) {
       m_pDownProvider = pdfium::MakeUnique<CXFA_TextProvider>(
-          m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Down);
+          m_pNode, XFA_TEXTPROVIDERTYPE_Down);
     }
     m_pDownTextLayout =
         pdfium::MakeUnique<CXFA_TextLayout>(GetDoc(), m_pDownProvider.get());
@@ -196,14 +196,14 @@ void CXFA_FFPushButton::RenderHighlightCaption(CXFA_Graphics* pGS,
 
 void CXFA_FFPushButton::OnProcessMessage(CFWL_Message* pMessage) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFPushButton::OnProcessEvent(CFWL_Event* pEvent) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem);
 
   m_pOldDelegate->OnProcessEvent(pEvent);
   CXFA_FFField::OnProcessEvent(pEvent);
@@ -212,7 +212,7 @@ void CXFA_FFPushButton::OnProcessEvent(CFWL_Event* pEvent) {
 void CXFA_FFPushButton::OnDrawWidget(CXFA_Graphics* pGraphics,
                                      const CFX_Matrix& matrix) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem);
 
   auto* pWidget = GetNormalWidget();
   if (pWidget->GetStylesEx() & XFA_FWL_PSBSTYLEEXT_HiliteInverted) {

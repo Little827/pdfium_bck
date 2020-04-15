@@ -56,7 +56,7 @@ CJS_Result CJX_Tree::resolveNode(
   }
 
   if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
-    CXFA_Object* pObject = resolveNodeRS.objects.front().Get();
+    CXFA_Object* pObject = resolveNodeRS.objects.front();
     CFXJSE_Value* value =
         GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pObject);
 

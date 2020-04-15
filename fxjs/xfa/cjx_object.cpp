@@ -1163,7 +1163,7 @@ void CJX_Object::ScriptAttributeInteger(CFXJSE_Value* pValue,
 void CJX_Object::ScriptSomFontColor(CFXJSE_Value* pValue,
                                     bool bSetting,
                                     XFA_Attribute eAttribute) {
-  CXFA_Font* font = ToNode(object_.Get())->GetOrCreateFontIfPossible();
+  CXFA_Font* font = ToNode(object_)->GetOrCreateFontIfPossible();
   if (!font)
     return;
 
@@ -1188,7 +1188,7 @@ void CJX_Object::ScriptSomFontColor(CFXJSE_Value* pValue,
 void CJX_Object::ScriptSomFillColor(CFXJSE_Value* pValue,
                                     bool bSetting,
                                     XFA_Attribute eAttribute) {
-  CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
+  CXFA_Border* border = ToNode(object_)->GetOrCreateBorderIfPossible();
   CXFA_Fill* borderfill = border->GetOrCreateFillIfPossible();
   if (!borderfill)
     return;
@@ -1216,7 +1216,7 @@ void CJX_Object::ScriptSomFillColor(CFXJSE_Value* pValue,
 void CJX_Object::ScriptSomBorderColor(CFXJSE_Value* pValue,
                                       bool bSetting,
                                       XFA_Attribute eAttribute) {
-  CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
+  CXFA_Border* border = ToNode(object_)->GetOrCreateBorderIfPossible();
   int32_t iSize = border->CountEdges();
   if (bSetting) {
     int32_t r = 0;
@@ -1247,7 +1247,7 @@ void CJX_Object::ScriptSomBorderColor(CFXJSE_Value* pValue,
 void CJX_Object::ScriptSomBorderWidth(CFXJSE_Value* pValue,
                                       bool bSetting,
                                       XFA_Attribute eAttribute) {
-  CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
+  CXFA_Border* border = ToNode(object_)->GetOrCreateBorderIfPossible();
   if (bSetting) {
     CXFA_Edge* edge = border->GetEdgeIfExists(0);
     CXFA_Measurement thickness =
@@ -1271,9 +1271,9 @@ void CJX_Object::ScriptSomMessage(CFXJSE_Value* pValue,
                                   bool bSetting,
                                   XFA_SOM_MESSAGETYPE iMessageType) {
   bool bNew = false;
-  CXFA_Validate* validate = ToNode(object_.Get())->GetValidateIfExists();
+  CXFA_Validate* validate = ToNode(object_)->GetValidateIfExists();
   if (!validate) {
-    validate = ToNode(object_.Get())->GetOrCreateValidateIfPossible();
+    validate = ToNode(object_)->GetOrCreateValidateIfPossible();
     bNew = true;
   }
 
@@ -1451,8 +1451,7 @@ void CJX_Object::ScriptSomDataNode(CFXJSE_Value* pValue,
 void CJX_Object::ScriptSomMandatory(CFXJSE_Value* pValue,
                                     bool bSetting,
                                     XFA_Attribute eAttribute) {
-  CXFA_Validate* validate =
-      ToNode(object_.Get())->GetOrCreateValidateIfPossible();
+  CXFA_Validate* validate = ToNode(object_)->GetOrCreateValidateIfPossible();
   if (!validate)
     return;
 

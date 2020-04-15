@@ -49,7 +49,7 @@ class CXFA_FFDocView {
   explicit CXFA_FFDocView(CXFA_FFDoc* pDoc);
   ~CXFA_FFDocView();
 
-  CXFA_FFDoc* GetDoc() const { return m_pDoc.Get(); }
+  CXFA_FFDoc* GetDoc() const { return m_pDoc; }
   int32_t StartLayout();
   int32_t DoLayout();
   void StopLayout();
@@ -87,7 +87,7 @@ class CXFA_FFDocView {
   bool RunLayout();
   void AddNewFormNode(CXFA_Node* pNode);
   void AddIndexChangedSubform(CXFA_Node* pNode);
-  CXFA_Node* GetFocusNode() const { return m_pFocusNode.Get(); }
+  CXFA_Node* GetFocusNode() const { return m_pFocusNode; }
   void SetFocusNode(CXFA_Node* pNode);
   void DeleteLayoutItem(CXFA_FFWidget* pWidget);
   XFA_EventError ExecEventActivityByDeepFirst(CXFA_Node* pFormNode,
