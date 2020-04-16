@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aeae1569_6566751a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-16T20:43:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7df6fcc_ff084a50",
+      "revId": "ca620d3c82f9fa03a4c453c442cb67c300c5b727",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13644bfc_c8e8f715",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6c5dfa9c_0fa05644",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-16T20:43:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13644bfc_c8e8f715",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "ca620d3c82f9fa03a4c453c442cb67c300c5b727",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bedbe04f_56ba15ca",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "ca620d3c82f9fa03a4c453c442cb67c300c5b727",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82f12f1b_ab64fae6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-16T20:43:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bedbe04f_56ba15ca",
+      "revId": "ca620d3c82f9fa03a4c453c442cb67c300c5b727",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
