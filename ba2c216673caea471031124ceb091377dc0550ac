@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aea1016_b2700c63",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:17:05Z",
+      "side": 1,
+      "message": "nit: I would remove this blank line to group the |annot_dict| declaration and usage together.",
+      "revId": "ba2c216673caea471031124ceb091377dc0550ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7307ddca_231cbba1",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:17:05Z",
+      "side": 1,
+      "message": "This should be an ASSERT_EQ(). Otherwise, if |inklist| is empty, the next line will crash the unit test program. Same reason that line 260 is an ASSERT_TRUE() and not an EXPECT_TRUE().",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "ba2c216673caea471031124ceb091377dc0550ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
