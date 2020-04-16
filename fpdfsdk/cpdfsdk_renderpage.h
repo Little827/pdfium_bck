@@ -11,13 +11,15 @@ class CFX_Matrix;
 class CPDFSDK_PauseAdapter;
 class CPDF_Page;
 class CPDF_PageRenderContext;
+typedef struct FPDF_COLORSCHEME_ FPDF_COLORSCHEME;
 struct FX_RECT;
 
 void CPDFSDK_RenderPage(CPDF_PageRenderContext* pContext,
                         CPDF_Page* pPage,
                         const CFX_Matrix& matrix,
                         const FX_RECT& clipping_rect,
-                        int flags);
+                        int flags,
+                        const FPDF_COLORSCHEME* color_scheme);
 
 // TODO(thestig): Consider giving this a better name, and make its parameters
 // more similar to those of CPDFSDK_RenderPage().
@@ -29,6 +31,7 @@ void CPDFSDK_RenderPageWithContext(CPDF_PageRenderContext* pContext,
                                    int size_y,
                                    int rotate,
                                    int flags,
+                                   const FPDF_COLORSCHEME* color_scheme,
                                    bool need_to_restore,
                                    CPDFSDK_PauseAdapter* pause);
 
