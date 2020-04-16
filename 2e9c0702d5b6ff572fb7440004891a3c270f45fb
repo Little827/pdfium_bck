@@ -16,6 +16,24 @@
       "revId": "2e9c0702d5b6ff572fb7440004891a3c270f45fb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09690db6_6f586285",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-04-16T18:36:29Z",
+      "side": 1,
+      "message": "I\u0027d genuinely be fine with changing this, but I don\u0027t have access to a windows machine to regenerate the expected files. So if it isn\u0027t big enough of a deal to avoid the hassle of regenerating the expectations, I\u0027ll kindly ask to keep them as is.",
+      "parentUuid": "b4238732_6fb9e2a5",
+      "revId": "2e9c0702d5b6ff572fb7440004891a3c270f45fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
