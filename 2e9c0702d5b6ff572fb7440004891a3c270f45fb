@@ -34,6 +34,24 @@
       "revId": "2e9c0702d5b6ff572fb7440004891a3c270f45fb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ef4fcc_e57c98e4",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-16T22:27:14Z",
+      "side": 1,
+      "message": "So we have two goals in tension here:\n1. Long-term readability: The test PDF is harder to understand, which has a long-term maintenance cost.\n2. Short-term writability: Lack of a Windows machine makes it hard to update this test right now.\n\nNormally, we optimize for readability, not writability. Also, not having a Windows machine is going to be hindrance for future work, too, so it seems like you\u0027ll have to climb that hill eventually.\n\nOn the other hand, the readability cost here is probably pretty small, given that all the strings are used together. (If this PDF were loaded and used in a separate C++ test, my concern would be much greater.)\n\nI think I still would rather have these names changed, but I won\u0027t make it a hard blocker.\n\nI am concerned about lack of access to Windows being the primary motivation for not changing this, though. One workaround I can think of is having someone with a Windows machine generate the expectations for you, but I don\u0027t think that\u0027s scalable, long-term.\n\nCan you try to come up with a solution to the Windows problem, and if you can\u0027t solve it quickly (say, 24 hours?), then we can check this in as is?",
+      "parentUuid": "09690db6_6f586285",
+      "revId": "2e9c0702d5b6ff572fb7440004891a3c270f45fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
