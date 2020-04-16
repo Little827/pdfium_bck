@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d1ec912_cef730f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T00:14:42Z",
+      "side": 1,
+      "message": "chromium:587182 - In PDFium, bug numbers can confuse some tools, so always add the project prefix.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "7260cab8683aa937890b11a454fc63f293c8b7b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
