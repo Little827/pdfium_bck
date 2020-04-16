@@ -212,7 +212,7 @@ CPDF_Action CPDFSDK_BAAnnot::GetAAction(CPDF_AAction::AActionType eAAT) {
   if (AAction.ActionExist(eAAT))
     return AAction.GetAction(eAAT);
 
-  if (eAAT == CPDF_AAction::kButtonUp)
+  if ((eAAT == CPDF_AAction::kButtonUp) || (eAAT == CPDF_AAction::kKeyStroke))
     return GetAction();
 
   return CPDF_Action(nullptr);
@@ -221,6 +221,18 @@ CPDF_Action CPDFSDK_BAAnnot::GetAAction(CPDF_AAction::AActionType eAAT) {
 void CPDFSDK_BAAnnot::SetOpenState(bool bOpenState) {
   if (CPDF_Annot* pAnnot = m_pAnnot->GetPopupAnnot())
     pAnnot->SetOpenState(bOpenState);
+}
+
+bool CPDFSDK_BAAnnot::DoAAction(CPDF_AAction::AActionType type,
+                                CPDFSDK_PageView* page_view,
+                                int modifier) {
+  CPDFSDK_FormFillEnvironment* form_fill_env = page_view->GetFormFillEnv();
+  CPDF_Action action = GetAAction(type);
+  if (action.GetType() == CPDF_Action::URI) {
+    return form_fill_env->GetActionHandler()->DoAction_LinkInvocation(
+        action, form_fill_env, modifier);
+  }
+  return false;
 }
 
 int CPDFSDK_BAAnnot::GetLayoutOrder() const {

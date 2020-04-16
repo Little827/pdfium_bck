@@ -12,10 +12,10 @@
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 
 class CFX_Matrix;
 class CFX_RenderDevice;
-class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_BAAnnotHandler;
 class CPDFSDK_WidgetHandler;
 class CPDFSDK_PageView;
@@ -101,6 +101,7 @@ class CPDFSDK_AnnotHandlerMgr {
                        CPDFSDK_Annot* pAnnot,
                        int nKeyCode,
                        int nFlag);
+  bool Annot_OnKeyUp(CPDFSDK_Annot* annot, int key_code, int flag);
   bool Annot_OnSetFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot, uint32_t nFlag);
   bool Annot_OnKillFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot, uint32_t nFlag);
   bool Annot_SetIndexSelected(ObservedPtr<CPDFSDK_Annot>* pAnnot,

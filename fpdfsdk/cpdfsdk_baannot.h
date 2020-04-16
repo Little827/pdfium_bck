@@ -66,6 +66,10 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot {
 
   void SetOpenState(bool bOpenState);
 
+  bool DoAAction(CPDF_AAction::AActionType type,
+                 CPDFSDK_PageView* page_view,
+                 int modifiers);
+
  protected:
   CPDF_Dictionary* GetAPDict() const;
 
