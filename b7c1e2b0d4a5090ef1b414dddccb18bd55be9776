@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e304d051_0ebcea72",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec2bac8_1fdf1d94",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83d4378f_4f6cc25b",
         "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
         "patchSetId": 15
@@ -39,6 +63,24 @@
       "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa0ac5b_7cb22107",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d4378f_4f6cc25b",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2ce36141_a2a3905d",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0dd60ad_6fcfc630",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce7ada10_e5b3fbf9",
         "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
         "patchSetId": 15
@@ -85,6 +151,30 @@
       "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9d662a_8f7ee522",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce7ada10_e5b3fbf9",
+      "range": {
+        "startLine": 66,
+        "startChar": 41,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "80029541_30d911cf",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8510bc60_e4653915",
+      "range": {
+        "startLine": 85,
+        "startChar": 31,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba53f10f_a508f670",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 15
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "7192e6ea_4b8c1429",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba53f10f_a508f670",
+      "range": {
+        "startLine": 427,
+        "startChar": 13,
+        "endLine": 427,
+        "endChar": 18
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f56511f_90f65c56",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 15
@@ -148,6 +286,24 @@
       "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9201d36_9834c137",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "The current pdf (test_form.pdf\") contains a text which will honor forced color mode. Hence I have created a form file without the text content and have called VerifyRenderingWithColorScheme() with a null color scheme.",
+      "parentUuid": "6f56511f_90f65c56",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "2132c2db_eb91c178",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f88ae6f_defd2929",
+      "range": {
+        "startLine": 447,
+        "startChar": 34,
+        "endLine": 447,
+        "endChar": 45
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "679464f7_63e72d1c",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 15
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "e8f59636_e9ea08a3",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "679464f7_63e72d1c",
+      "range": {
+        "startLine": 74,
+        "startChar": 41,
+        "endLine": 74,
+        "endChar": 77
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0b96320_38941c95",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 15
@@ -211,6 +415,24 @@
       "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cd1a30_dd6436d2",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "Removed this and line 121 as well.",
+      "parentUuid": "a0b96320_38941c95",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +456,30 @@
       "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2eeda1a_a3cac39e",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "I did this in order to forward declare the FPDF_COLORSCHEME in cpdfsdk_renderpage.h, since it was leading to the compile error when keeping the struct name and the typedef name different, \"redeclaration of FPDF_COLORSCHEME\".\nNow that I have added the trailing underscore, I have forward declared it as \"typedef struct FPDF_COLORSCHEME_ FPDF_COLORSCHEME\" in cpdfsdk_renderpage.h.\n\nPlease let me know if there is an alternative to this.",
+      "parentUuid": "7f5bf97a_c80cbe41",
+      "range": {
+        "startLine": 769,
+        "startChar": 15,
+        "endLine": 769,
+        "endChar": 31
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

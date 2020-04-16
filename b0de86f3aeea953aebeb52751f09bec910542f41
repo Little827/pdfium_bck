@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "177cbd51_640606ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-16T17:30:50Z",
+      "side": 1,
+      "message": "We will need to add 2 more color values in FPDF_COLORSCHEME for button border and button text color. This will be done with the CL for adding forced color support for forms. Post that the struct will remain the same over time.\nDo you think we should have a versioning for the FPDF_COLORSCHEME struct?",
+      "parentUuid": "c2780106_0f53213b",
+      "revId": "b0de86f3aeea953aebeb52751f09bec910542f41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3d98e2c_9c26c470",
         "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
         "patchSetId": 12
