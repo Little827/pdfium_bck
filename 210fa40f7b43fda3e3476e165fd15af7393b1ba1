@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f19bcbe_a19eb701",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T19:00:24Z",
+      "side": 1,
+      "message": "Use only AsArray() like line 746?",
+      "revId": "210fa40f7b43fda3e3476e165fd15af7393b1ba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c402ec_73b03cbd",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T19:00:24Z",
+      "side": 1,
+      "message": "Extra parenthesis.",
+      "range": {
+        "startLine": 772,
+        "startChar": 9,
+        "endLine": 772,
+        "endChar": 10
+      },
+      "revId": "210fa40f7b43fda3e3476e165fd15af7393b1ba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6793e84c_e223fada",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T19:00:24Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "210fa40f7b43fda3e3476e165fd15af7393b1ba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aeefd53_8fd6285f",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T19:00:24Z",
+      "side": 1,
+      "message": "Can this be: values.erase(it) ? The iterator variant of std::map::erase() is faster.",
+      "range": {
+        "startLine": 892,
+        "startChar": 8,
+        "endLine": 892,
+        "endChar": 33
+      },
+      "revId": "210fa40f7b43fda3e3476e165fd15af7393b1ba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
