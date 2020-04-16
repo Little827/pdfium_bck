@@ -16,6 +16,7 @@
 #include "fpdfsdk/cpdfsdk_baannot.h"
 #include "fpdfsdk/cpdfsdk_baannothandler.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/cpdfsdk_widgethandler.h"
@@ -270,6 +271,16 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_PageView* pPageView,
     return false;
 
   return GetAnnotHandler(pAnnot)->OnKeyDown(pAnnot, nKeyCode, nFlag);
+}
+
+bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyUp(CPDFSDK_Annot* pAnnot,
+                                            int nKeyCode,
+                                            int nFlag) {
+  if (pAnnot && nKeyCode == FWL_VKEY_Return) {
+    return GetAnnotHandler(pAnnot)->OnKeyUp(pAnnot, nKeyCode, nFlag);
+  }
+
+  return false;
 }
 
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnSetFocus(
