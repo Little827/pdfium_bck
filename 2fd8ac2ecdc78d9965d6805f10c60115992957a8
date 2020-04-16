@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf20d122_5627b086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T20:51:19Z",
+      "side": 1,
+      "message": "The CL description got messed up here.",
+      "revId": "2fd8ac2ecdc78d9965d6805f10c60115992957a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f763a76c_1697e6d5",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2962,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T20:51:19Z",
+      "side": 1,
+      "message": "Clearer to write \"number\".",
+      "range": {
+        "startLine": 2962,
+        "startChar": 44,
+        "endLine": 2962,
+        "endChar": 46
+      },
+      "revId": "2fd8ac2ecdc78d9965d6805f10c60115992957a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2d538f_893ead7e",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2994,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T20:51:19Z",
+      "side": 1,
+      "message": "This should be the same as line 2964.",
+      "range": {
+        "startLine": 2994,
+        "startChar": 7,
+        "endLine": 2994,
+        "endChar": 31
+      },
+      "revId": "2fd8ac2ecdc78d9965d6805f10c60115992957a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50cbbd31_66233d51",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T20:51:19Z",
+      "side": 1,
+      "message": "This comments section should discuss the FFI_DoURIAction vs. FFI_DoURIActionWithKeyboardModifier interaction, and same in the comments section for FFI_DoURIAction.",
+      "revId": "2fd8ac2ecdc78d9965d6805f10c60115992957a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
