@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "770f628c_c928e85e",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T19:38:34Z",
+      "side": 1,
+      "message": "Don\u0027t need to init to 0.",
+      "range": {
+        "startLine": 845,
+        "startChar": 30,
+        "endLine": 845,
+        "endChar": 34
+      },
+      "revId": "07ff051c8e4a5bff7e0f0f89a1ee42919b699218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
