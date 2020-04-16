@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aec2bac8_1fdf1d94",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "nit: object_type and render_type",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d4378f_4f6cc25b",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "Negate this conditional to call TranslateColor() and return early. Then the bulk of this method can have less indentation.",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0dd60ad_6fcfc630",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "nit: Usually straight forward ternary statements like this don\u0027t need the parenthesis.",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce7ada10_e5b3fbf9",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "nit: color_scheme",
+      "range": {
+        "startLine": 66,
+        "startChar": 41,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8510bc60_e4653915",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 85,
+        "startChar": 31,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba53f10f_a508f670",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 427,
+        "startChar": 13,
+        "endLine": 427,
+        "endChar": 18
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f56511f_90f65c56",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "Consider calling VerifyRenderingWithColorScheme() with a null color scheme to help verify this. One cannot easily look at the hash and see this is correct.",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f88ae6f_defd2929",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "nit: color_scheme",
+      "range": {
+        "startLine": 447,
+        "startChar": 34,
+        "endLine": 447,
+        "endChar": 45
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679464f7_63e72d1c",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "If null, this function will work",
+      "range": {
+        "startLine": 74,
+        "startChar": 41,
+        "endLine": 74,
+        "endChar": 77
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b96320_38941c95",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "nit: Remove this line. (Line 121 is similarly an excess comment line.)",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f5bf97a_c80cbe41",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:46:25Z",
+      "side": 1,
+      "message": "Add a trailing underscore to help distinguish this from line 774.",
+      "range": {
+        "startLine": 769,
+        "startChar": 15,
+        "endLine": 769,
+        "endChar": 31
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
