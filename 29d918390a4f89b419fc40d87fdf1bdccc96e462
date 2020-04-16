@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3180e28_ef25e446",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2957,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "Should this test check and see if DoURIAction() gets triggered?",
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ef18c2_3c017765",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2995,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "This will be a known URL, right?",
+      "range": {
+        "startLine": 2995,
+        "startChar": 60,
+        "endLine": 2995,
+        "endChar": 61
+      },
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab84cf8_9db26a0a",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2996,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "Put FWL_EVENTFLAG_ControlKey here?",
+      "range": {
+        "startLine": 2996,
+        "startChar": 63,
+        "endLine": 2996,
+        "endChar": 64
+      },
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "359bf92f_dd0800bc",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "This has to be appended to the end on the struct, after FFI_OnFocusChange.",
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6586fb8e_46b32ed8",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "Can the PDFium embedder implement both FFI_DoURIAction and FFI_DoURIActionWithKeyboardModifier? If so, what happens?",
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429c6c49_d7590922",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "Let\u0027s call this \"param\" to be consistent with FFI_OnFocusChange.",
+      "range": {
+        "startLine": 698,
+        "startChar": 11,
+        "endLine": 698,
+        "endChar": 15
+      },
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4842f26_6dae0f25",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "Similarly, put this after FFI_OnFocusChange.",
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dc431b6_a657ca9f",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 15
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:10:47Z",
+      "side": 1,
+      "message": "Maybe use a different URL, so if one wants to test the actions with object 6 0 vs. 7 0, they can see the difference. google.com vs google.com/ is a bit too subtle.",
+      "revId": "29d918390a4f89b419fc40d87fdf1bdccc96e462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
