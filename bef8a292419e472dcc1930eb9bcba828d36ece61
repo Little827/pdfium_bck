@@ -209,6 +209,23 @@
     },
     {
       "key": {
+        "uuid": "4cf1f749_996e0900",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-16T09:04:29Z",
+      "side": 1,
+      "message": "This breaks FFI_DoURIAction. For example, if the PDFium embedder is only using a version 1 FPDF_FORMFILLINFO, their FFI_DoURIAction callback would suddenly stop working.",
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd52df2e_58c0c82c",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
         "patchSetId": 2
