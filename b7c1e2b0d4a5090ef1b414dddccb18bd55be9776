@@ -307,6 +307,24 @@
     },
     {
       "key": {
+        "uuid": "a3df2107_fcb25144",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T01:02:44Z",
+      "side": 1,
+      "message": "Sorry for being a bit unclear, I was suggesting rendering test_form.pdf twice, with and without the color scheme. Then one can see the hashes are different, and thus know the color scheme is making a difference.",
+      "parentUuid": "e9201d36_9834c137",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f88ae6f_defd2929",
         "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
         "patchSetId": 15
@@ -480,6 +498,30 @@
       "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e92cf6af_21270883",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T01:02:44Z",
+      "side": 1,
+      "message": "I would recommend just including public/fpdfview.h then. Not everything can be forward declared. Sometimes it\u0027s better to just use a #include, instead of trying to work around the issue.",
+      "parentUuid": "a2eeda1a_a3cac39e",
+      "range": {
+        "startLine": 769,
+        "startChar": 15,
+        "endLine": 769,
+        "endChar": 31
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

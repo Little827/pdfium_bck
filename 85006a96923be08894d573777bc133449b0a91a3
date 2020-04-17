@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9150f4cd_09c42317",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T01:02:44Z",
+      "side": 1,
+      "message": "Out of date comment.",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "85006a96923be08894d573777bc133449b0a91a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1096a75c_7dbbcca5",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T01:02:44Z",
+      "side": 1,
+      "message": "It may be better to call CloseDocument() at the end of this function. Then VerifyRenderingWithColorScheme() can be more self contained. As is, this mean calling VerifyRenderingWithColorScheme(\"foo.pdf\", ...); VerifyRenderingWithColorScheme(\"bar.pdf\" ...); does not work correctly.",
+      "revId": "85006a96923be08894d573777bc133449b0a91a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
