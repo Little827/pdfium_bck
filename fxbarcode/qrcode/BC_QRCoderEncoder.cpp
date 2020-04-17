@@ -40,6 +40,7 @@
 #include "fxbarcode/qrcode/BC_QRCoderVersion.h"
 #include "third_party/base/optional.h"
 #include "third_party/base/ptr_util.h"
+#include "third_party/base/span.h"
 
 using ModeStringPair = std::pair<CBC_QRCoderMode*, ByteString>;
 
@@ -387,16 +388,14 @@ bool InterleaveWithECBytes(CBC_QRCoderBitVector* bits,
 
   for (size_t x = 0; x < maxNumDataBytes; x++) {
     for (size_t j = 0; j < blocks.size(); j++) {
-      const std::vector<uint8_t, FxAllocAllocator<uint8_t>>& dataBytes =
-          blocks[j].data;
+      pdfium::span<const uint8_t> dataBytes = blocks[j].data;
       if (x < dataBytes.size())
         result->AppendBits(dataBytes[x], 8);
     }
   }
   for (size_t y = 0; y < maxNumEcBytes; y++) {
     for (size_t l = 0; l < blocks.size(); l++) {
-      const std::vector<uint8_t, FxAllocAllocator<uint8_t>>& ecBytes =
-          blocks[l].ecc;
+      pdfium::span<const uint8_t> ecBytes = blocks[l].ecc;
       if (y < ecBytes.size())
         result->AppendBits(ecBytes[y], 8);
     }
