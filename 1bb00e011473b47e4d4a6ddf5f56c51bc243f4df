@@ -16,6 +16,24 @@
       "revId": "1bb00e011473b47e4d4a6ddf5f56c51bc243f4df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931e499a_b214a33a",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-17T22:48:36Z",
+      "side": 1,
+      "message": "In theory, yes, in practice, no.  ByteStrings are shared copy-on-write buffers, and this is enforced via it\u0027s methods, so one shouldn\u0027t really be extracting a pointer to its buffer and then allowing it to be modified since the modification would propagate to other sharers.  Here, I think this is the only sharer of the buffer, and the caller probably doesn\u0027t modify it, but with the lack of const in this API, this is the way to ensure absolute correctness.",
+      "parentUuid": "4ef38f75_db657413",
+      "revId": "1bb00e011473b47e4d4a6ddf5f56c51bc243f4df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
