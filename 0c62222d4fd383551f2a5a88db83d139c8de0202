@@ -22,6 +22,30 @@
       "revId": "0c62222d4fd383551f2a5a88db83d139c8de0202",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc9c1a8_bfbb69e7",
+        "filename": "core/fpdfapi/render/charposlist.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T17:50:37Z",
+      "side": 1,
+      "message": "This file is a rename of cpdf_charposlist.h, but it also changed enough that git cannot figure out it\u0027s the same file. So even though it shows up in code review as an add+delete, it is really a rename and should retain the original copyright.\n\nWhereas if this was truly a brand new file, then it gets a newer copyright date.",
+      "parentUuid": "19654b24_eb4a585d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0c62222d4fd383551f2a5a88db83d139c8de0202",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
