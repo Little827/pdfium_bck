@@ -10,7 +10,9 @@
 
 #include "core/fxcrt/timerhandler_iface.h"
 #include "fxjs/cjs_app.h"
+#include "third_party/base/logging.h"
 #include "third_party/base/no_destructor.h"
+#include "third_party/base/stl_util.h"
 
 namespace {
 
@@ -34,8 +36,10 @@ GlobalTimer::GlobalTimer(CJS_App* pObj,
       m_swJScript(script),
       m_pRuntime(pRuntime),
       m_pEmbedApp(pObj) {
-  if (HasValidID())
+  if (HasValidID()) {
+    DCHECK(!pdfium::ContainsKey(GetGlobalTimerMap(), m_nTimerID));
     GetGlobalTimerMap()[m_nTimerID] = this;
+  }
 }
 
 GlobalTimer::~GlobalTimer() {
@@ -45,7 +49,8 @@ GlobalTimer::~GlobalTimer() {
   if (m_pRuntime && m_pRuntime->GetTimerHandler())
     m_pRuntime->GetTimerHandler()->KillTimer(m_nTimerID);
 
-  GetGlobalTimerMap().erase(m_nTimerID);
+  size_t erased = GetGlobalTimerMap().erase(m_nTimerID);
+  DCHECK_EQ(1u, erased);
 }
 
 // static
