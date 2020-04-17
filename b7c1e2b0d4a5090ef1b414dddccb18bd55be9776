@@ -325,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "593e22c6_5727a834",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-17T10:31:58Z",
+      "side": 1,
+      "message": "This is a negative test where we are trying to confirm that form rendering does not change when forced color mode is enabled.\nThis means the presence of the |color_scheme| should not make a difference in the rendering, hence the same md5 hash should ideally work for both the scenarios.\nFrom that perspective this looks like the better thing to do here.\n\nFor other tests I could call VerifyRenderingWithColorScheme() with null |color_scheme| to make sure they are different from the call with a valid |color_scheme|.\n\nPlease let me know if you think otherwise.",
+      "parentUuid": "a3df2107_fcb25144",
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f88ae6f_defd2929",
         "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
         "patchSetId": 15
@@ -522,6 +540,30 @@
       "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cd70c6_f2581aa6",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-17T10:31:58Z",
+      "side": 1,
+      "message": "Edited to use #include instead.",
+      "parentUuid": "e92cf6af_21270883",
+      "range": {
+        "startLine": 769,
+        "startChar": 15,
+        "endLine": 769,
+        "endChar": 31
+      },
+      "revId": "b7c1e2b0d4a5090ef1b414dddccb18bd55be9776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

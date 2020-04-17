@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c4f412a_5dd3f2cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-17T10:31:58Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "9150f4cd_09c42317",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "85006a96923be08894d573777bc133449b0a91a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1096a75c_7dbbcca5",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 17
@@ -39,6 +63,24 @@
       "revId": "85006a96923be08894d573777bc133449b0a91a3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e03a768_745188de",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-17T10:31:58Z",
+      "side": 1,
+      "message": "The |loader_| in embedder_test is set in OpenDocument() (expects |loader_| to be null when OpenDocument() is called) and resets in TearDown(), which means in a single embedder_test we cannot have multiple OpenDocument() calls.\nThis means calling VerifyRenderingWithColorScheme(\"foo.pdf\", ...); VerifyRenderingWithColorScheme(\"bar.pdf\" ...); in a single test will not work anyways.\nHence I have changed the API to not take in the |file _name| as a param.\n\nPlease let me know if I am missing something I can probably do.",
+      "parentUuid": "1096a75c_7dbbcca5",
+      "revId": "85006a96923be08894d573777bc133449b0a91a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
