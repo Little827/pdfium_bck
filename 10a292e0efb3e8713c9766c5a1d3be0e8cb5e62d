@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1587150283 -0700\nnonce AM5BpQUYbwWG1R5EHULznSY6OSVGUQGuK2mKMMI8dh0QM43omsUQVCoEklcUWXg2JURXpqd/hCFt\n\n0000000000000000000000000000000000000000 10a292e0efb3e8713c9766c5a1d3be0e8cb5e62d refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6Z/csACgkQqzYtYVpm\n/Xt/YQgAzxVRtfeeoD+Zx7NBqtwVkyE52kqqzse/Yx8Ivk8AYEwoaWBiCw6jiXQn\n0e2NnZYH5PU9HH58zG/a8Zxypk++WAN2u8my+a8Mtytxq9BYnsPbuxAg26ezKbYQ\n8i2/AWtZ7osrqWBG5JDM7S6boPyzXCim9OjSocCg64fradTyX03JY6asfXDUiZlq\nZCDNYuGSiBXDDtnDtVpUcEmriqlQt1VIexWmfPULNg0yYbRX++QNQUopsQUIuu47\n1qNMf37YOr3zLuTJYDiKNPkv7+LH3crmOot1TLJanv//BFJ4aRfxKx9jPQuqghtW\ncZDDIPzkwPUjSEZe2bt6eB+rrJ7QAg\u003d\u003d\n\u003dDgop\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a15eedc1_48e1d9bf",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T20:21:26Z",
+      "side": 1,
+      "message": "|bVert| didn\u0027t explain what is vertical.",
+      "revId": "10a292e0efb3e8713c9766c5a1d3be0e8cb5e62d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cf99649_d816519c",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T20:21:26Z",
+      "side": 1,
+      "message": "Renamed to |text_char_pos|, to better distinguish from |char_pos|. Previously, this was |charpos| and |charPos|.",
+      "revId": "10a292e0efb3e8713c9766c5a1d3be0e8cb5e62d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
