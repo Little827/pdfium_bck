@@ -71,6 +71,30 @@
       "revId": "dba03cacf294193a437a9476e74a19cb4d63098c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec4b498_9e9fcf48",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T09:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "497a70ce_7eaf2e89",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "dba03cacf294193a437a9476e74a19cb4d63098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
