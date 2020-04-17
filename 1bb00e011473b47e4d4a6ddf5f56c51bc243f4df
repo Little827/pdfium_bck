@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ef38f75_db657413",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-17T22:37:37Z",
+      "side": 1,
+      "message": "Di we even need this? Can we just pass |sTextBuf| to JS_docmailForm()?",
+      "revId": "1bb00e011473b47e4d4a6ddf5f56c51bc243f4df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
