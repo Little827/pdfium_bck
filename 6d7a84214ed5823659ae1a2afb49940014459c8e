@@ -16,6 +16,24 @@
       "revId": "6d7a84214ed5823659ae1a2afb49940014459c8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "502704db_4f34b52b",
+        "filename": "fxbarcode/qrcode/BC_QRCoderEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-17T20:58:46Z",
+      "side": 1,
+      "message": "I\u0027d imagined it would all get optimized out of existence and give the same code.  Lemme see if I can tell if that\u0027s the case.",
+      "parentUuid": "e197f13b_bc30bab5",
+      "revId": "6d7a84214ed5823659ae1a2afb49940014459c8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
