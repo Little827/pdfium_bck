@@ -12,6 +12,40 @@
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/text_char_pos.h"
 
+namespace {
+
+bool InitializeCharPosFromFontAndCharCode(CPDF_Font* font,
+                                          uint32_t char_code,
+                                          TextCharPos* text_char_pos) {
+  WideString unicode = font->UnicodeFromCharCode(char_code);
+  text_char_pos->m_Unicode = !unicode.IsEmpty() ? unicode[0] : char_code;
+
+  bool is_vertical_glyph = false;
+  text_char_pos->m_GlyphIndex =
+      font->GlyphFromCharCode(char_code, &is_vertical_glyph);
+
+#if defined(OS_MACOSX)
+  text_char_pos->m_ExtGID = font->GlyphFromCharCodeExt(char_code);
+#endif
+
+  if (font->AsCIDFont())
+    text_char_pos->m_bFontStyle = true;
+
+  return is_vertical_glyph;
+}
+
+uint32_t GetGlyphID(const TextCharPos& text_char_pos) {
+#if defined(OS_MACOSX)
+  return text_char_pos.m_ExtGID != static_cast<uint32_t>(-1)
+             ? text_char_pos.m_ExtGID
+             : text_char_pos.m_GlyphIndex;
+#else
+  return text_char_pos.m_GlyphIndex;
+#endif
+}
+
+}  // namespace
+
 std::vector<TextCharPos> GetCharPosList(pdfium::span<const uint32_t> char_codes,
                                         pdfium::span<const float> char_pos,
                                         CPDF_Font* font,
@@ -27,22 +61,12 @@ std::vector<TextCharPos> GetCharPosList(pdfium::span<const uint32_t> char_codes,
     if (char_code == static_cast<uint32_t>(-1))
       continue;
 
-    bool is_vertical_glyph = false;
     results.emplace_back();
     TextCharPos& text_char_pos = results.back();
-    if (cid_font)
-      text_char_pos.m_bFontStyle = true;
-    WideString unicode = font->UnicodeFromCharCode(char_code);
-    text_char_pos.m_Unicode = !unicode.IsEmpty() ? unicode[0] : char_code;
-    text_char_pos.m_GlyphIndex =
-        font->GlyphFromCharCode(char_code, &is_vertical_glyph);
-    uint32_t glyph_id = text_char_pos.m_GlyphIndex;
-#if defined(OS_MACOSX)
-    text_char_pos.m_ExtGID = font->GlyphFromCharCodeExt(char_code);
-    glyph_id = text_char_pos.m_ExtGID != static_cast<uint32_t>(-1)
-                   ? text_char_pos.m_ExtGID
-                   : text_char_pos.m_GlyphIndex;
-#endif
+    bool is_vertical_glyph =
+        InitializeCharPosFromFontAndCharCode(font, char_code, &text_char_pos);
+    uint32_t glyph_id = GetGlyphID(text_char_pos);
+
     bool is_invalid_glyph = glyph_id == static_cast<uint32_t>(-1);
     bool is_true_type_zero_glyph = glyph_id == 0 && font->IsTrueTypeFont();
     bool use_fallback_font = false;
@@ -83,11 +107,8 @@ std::vector<TextCharPos> GetCharPosList(pdfium::span<const uint32_t> char_codes,
 
     if (!font->IsEmbedded() && !font->IsCIDFont())
       text_char_pos.m_FontCharWidth = font->GetCharWidthF(char_code);
-    else
-      text_char_pos.m_FontCharWidth = 0;
 
     text_char_pos.m_Origin = CFX_PointF(i > 0 ? char_pos[i - 1] : 0, 0);
-    text_char_pos.m_bGlyphAdjust = false;
 
     float scaling_factor = 1.0f;
     if (!font->IsEmbedded() && font->HasFontWidths() && !is_vertical_writing &&
