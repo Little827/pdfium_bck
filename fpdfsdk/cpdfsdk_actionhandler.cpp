@@ -16,6 +16,7 @@
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fxjs/ijs_event_context.h"
 #include "fxjs/ijs_runtime.h"
+#include "public/fpdf_fwlevent.h"
 #include "third_party/base/logging.h"
 #include "third_party/base/stl_util.h"
 
@@ -105,7 +106,7 @@ bool CPDFSDK_ActionHandler::ExecuteDocumentOpenAction(
     }
   } else {
     DoAction_NoJs(action, CPDF_AAction::AActionType::kDocumentOpen,
-                  pFormFillEnv);
+                  pFormFillEnv, /*modifiers=*/0);
   }
 
   for (int32_t i = 0, sz = action.GetSubActionsCount(); i < sz; i++) {
@@ -136,7 +137,7 @@ bool CPDFSDK_ActionHandler::ExecuteDocumentPageAction(
         RunDocumentPageJavaScript(pFormFillEnv, type, swJS);
     }
   } else {
-    DoAction_NoJs(action, type, pFormFillEnv);
+    DoAction_NoJs(action, type, pFormFillEnv, /*modifiers=*/0);
   }
 
   ASSERT(pFormFillEnv);
@@ -184,7 +185,7 @@ bool CPDFSDK_ActionHandler::ExecuteFieldAction(
       }
     }
   } else {
-    DoAction_NoJs(action, type, pFormFillEnv);
+    DoAction_NoJs(action, type, pFormFillEnv, /*modifiers=*/0);
   }
 
   for (int32_t i = 0, sz = action.GetSubActionsCount(); i < sz; i++) {
@@ -200,7 +201,8 @@ bool CPDFSDK_ActionHandler::ExecuteFieldAction(
 void CPDFSDK_ActionHandler::DoAction_NoJs(
     const CPDF_Action& action,
     CPDF_AAction::AActionType type,
-    CPDFSDK_FormFillEnvironment* pFormFillEnv) {
+    CPDFSDK_FormFillEnvironment* pFormFillEnv,
+    int modifiers) {
   ASSERT(pFormFillEnv);
 
   switch (action.GetType()) {
@@ -208,8 +210,10 @@ void CPDFSDK_ActionHandler::DoAction_NoJs(
       DoAction_GoTo(pFormFillEnv, action);
       break;
     case CPDF_Action::URI:
-      if (CPDF_AAction::IsUserClick(type))
-        DoAction_URI(pFormFillEnv, action);
+      if ((CPDF_AAction::IsUserClick(type)) ||
+          (CPDF_AAction::IsUserPress(type))) {
+        DoAction_URI(pFormFillEnv, action, modifiers);
+      }
       break;
     case CPDF_Action::Hide:
       DoAction_Hide(action, pFormFillEnv);
@@ -268,11 +272,12 @@ void CPDFSDK_ActionHandler::DoAction_GoTo(
 
 void CPDFSDK_ActionHandler::DoAction_URI(
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
-    const CPDF_Action& action) {
+    const CPDF_Action& action,
+    int modifiers) {
   ASSERT(action.GetDict());
 
   ByteString sURI = action.GetURI(pFormFillEnv->GetPDFDocument());
-  pFormFillEnv->DoURIAction(sURI.c_str());
+  pFormFillEnv->DoURIAction(sURI.c_str(), modifiers);
 }
 
 void CPDFSDK_ActionHandler::DoAction_Named(
@@ -423,4 +428,21 @@ void CPDFSDK_ActionHandler::RunScript(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   cb(pContext.Get());
   pContext->RunScript(script);
   // TODO(dsinclair): Return error if RunScript returns a IJS_Runtime::JS_Error.
+}
+
+bool CPDFSDK_ActionHandler::DoAction_LinkInvocation(
+    const CPDF_Action& action,
+    CPDF_AAction::AActionType type,
+    CPDFSDK_FormFillEnvironment* form_fill_env,
+    int modifiers) {
+  ASSERT(form_fill_env);
+  if (action.GetType() != CPDF_Action::URI)
+    return false;
+
+  if ((CPDF_AAction::IsUserClick(type)) || (CPDF_AAction::IsUserPress(type))) {
+    DoAction_URI(form_fill_env, action, modifiers);
+    return true;
+  }
+
+  return false;
 }
