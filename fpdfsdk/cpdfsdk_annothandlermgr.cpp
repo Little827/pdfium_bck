@@ -272,6 +272,16 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_PageView* pPageView,
   return GetAnnotHandler(pAnnot)->OnKeyDown(pAnnot, nKeyCode, nFlag);
 }
 
+bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyUp(CPDFSDK_Annot* annot,
+                                            int key_code,
+                                            int flag) {
+  if (annot && key_code == FWL_VKEY_Return) {
+    return GetAnnotHandler(annot)->OnKeyUp(annot, key_code, flag);
+  }
+
+  return false;
+}
+
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnSetFocus(
     ObservedPtr<CPDFSDK_Annot>* pAnnot,
     uint32_t nFlag) {
