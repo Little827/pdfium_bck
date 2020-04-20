@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "521388c9_21abcbd2",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-20T23:13:34Z",
+      "side": 1,
+      "message": "IWYU: third_party/base/stl_util.h",
+      "revId": "2d9072c6a40af685620308a00f8430920ca3e443",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
