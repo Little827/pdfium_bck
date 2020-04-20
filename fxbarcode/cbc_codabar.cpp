@@ -30,10 +30,11 @@
 CBC_Codabar::CBC_Codabar()
     : CBC_OneCode(pdfium::MakeUnique<CBC_OnedCodaBarWriter>()) {}
 
-CBC_Codabar::~CBC_Codabar() {}
+CBC_Codabar::~CBC_Codabar() = default;
 
 bool CBC_Codabar::Encode(WideStringView contents) {
-  if (contents.IsEmpty() || contents.GetLength() > kMaxInputLengthBytes)
+  auto* pWriter = GetOnedCodaBarWriter();
+  if (!pWriter->CheckContentValidity(contents))
     return false;
 
   BCFORMAT format = BCFORMAT_CODABAR;
@@ -41,7 +42,6 @@ bool CBC_Codabar::Encode(WideStringView contents) {
   int32_t outHeight = 0;
   m_renderContents = GetOnedCodaBarWriter()->FilterContents(contents);
   ByteString byteString = m_renderContents.ToUTF8();
-  auto* pWriter = GetOnedCodaBarWriter();
   std::unique_ptr<uint8_t, FxFreeDeleter> data(
       pWriter->Encode(byteString, format, outWidth, outHeight));
   return data && pWriter->RenderResult(m_renderContents.AsStringView(),
