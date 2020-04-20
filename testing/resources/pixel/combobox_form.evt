@@ -1,0 +1,7 @@
+# Check the checkbox
+mousemove,102,410
+mousedown,left,102,410
+mouseup,left,102,410
+
+# Press Enter to open the pop-up menu
+charcode,13
