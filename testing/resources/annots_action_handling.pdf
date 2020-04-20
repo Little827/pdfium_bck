@@ -8,30 +8,39 @@
 endobj
 2 0 obj <<
   /Type /Pages
-  /Count 1
-  /Kids [3 0 R]
+  /Count 2
+  /Kids [3 0 R 4 0 R]
 >>
 endobj
 3 0 obj <<
   /Type /Page
   /Parent 2 0 R
-  /Annots [5 0 R 6 0 R 7 0 R]
-  /Contents 4 0 R
+  /Annots [6 0 R 7 0 R 8 0 R 9 0 R]
+  /Contents 5 0 R
   /Tabs /R
 >>
 endobj
 4 0 obj <<
-  /Length 42
+  /Type /Page
+  /Parent 2 0 R
+  /Tabs /R
+>>
+endobj
+5 0 obj <<
+  /Length 77
 >>
 stream
 BT
 70 340 Td
 14 Tf
 (External Link ) Tj
+0 -35 Td
+14 Tf
+(Internal Link ) Tj
 ET
 endstream
 endobj
-5 0 obj <<
+6 0 obj <<
   /Type /Annot
   /Subtype /Widget
   /FT /Tx
@@ -40,7 +49,7 @@ endobj
   /Rect [69 670 220 690]
 >>
 endobj
-6 0 obj <<
+7 0 obj <<
   /Type /Annot
   /Subtype /Widget
   /FT /Btn
@@ -54,7 +63,7 @@ endobj
   /Ff 65536
 >>
 endobj
-7 0 obj <<
+8 0 obj <<
   /Type /Annot
   /Subtype /Link
   /Rect [69 338 180 358]
@@ -66,20 +75,32 @@ endobj
   /F 4
 >>
 endobj
+9 0 obj <<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [69 305 180 325]
+  /BS <<
+    /W 0
+  >>
+  /Dest [4 0 R /XYZ 200 725 0]
+  /F 4
+>>
 xref
-0 8
+0 10
 0000000000 65535 f 
 0000000015 00000 n 
 0000000094 00000 n 
-0000000157 00000 n 
-0000000267 00000 n 
-0000000360 00000 n 
-0000000483 00000 n 
-0000000666 00000 n 
+0000000163 00000 n 
+0000000279 00000 n 
+0000000341 00000 n 
+0000000469 00000 n 
+0000000592 00000 n 
+0000000775 00000 n 
+0000000943 00000 n 
 trailer <<
   /Root 1 0 R
-  /Size 8
+  /Size 10
 >>
 startxref
-834
+1075
 %%EOF

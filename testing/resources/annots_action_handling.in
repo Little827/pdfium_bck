@@ -7,19 +7,25 @@
 endobj
 {{object 2 0}} <<
   /Type /Pages
-  /Count 1
-  /Kids [3 0 R]
+  /Count 2
+  /Kids [3 0 R 4 0 R]
 >>
 endobj
 {{object 3 0}} <<
   /Type /Page
   /Parent 2 0 R
-  /Annots [5 0 R 6 0 R 7 0 R]
-  /Contents 4 0 R
+  /Annots [6 0 R 7 0 R 8 0 R 9 0 R]
+  /Contents 5 0 R
   /Tabs /R
 >>
 endobj
 {{object 4 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Tabs /R
+>>
+endobj
+{{object 5 0}} <<
   {{streamlen}}
 >>
 stream
@@ -27,10 +33,13 @@ BT
 70 340 Td
 14 Tf
 (External Link ) Tj
+0 -35 Td
+14 Tf
+(Internal Link ) Tj
 ET
 endstream
 endobj
-{{object 5 0}} <<
+{{object 6 0}} <<
   /Type /Annot
   /Subtype /Widget
   /FT /Tx
@@ -39,7 +48,7 @@ endobj
   /Rect [69 670 220 690]
 >>
 endobj
-{{object 6 0}} <<
+{{object 7 0}} <<
   /Type /Annot
   /Subtype /Widget
   /FT /Btn
@@ -53,7 +62,7 @@ endobj
   /Ff 65536
 >>
 endobj
-{{object 7 0}} <<
+{{object 8 0}} <<
   /Type /Annot
   /Subtype /Link
   /Rect [69 338 180 358]
@@ -65,6 +74,16 @@ endobj
   /F 4
 >>
 endobj
+{{object 9 0}} <<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [69 305 180 325]
+  /BS <<
+    /W 0
+  >>
+  /Dest [4 0 R /XYZ 200 725 0]
+  /F 4
+>>
 {{xref}}
 {{trailer}}
 {{startxref}}

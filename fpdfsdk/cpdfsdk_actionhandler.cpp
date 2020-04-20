@@ -257,16 +257,7 @@ void CPDFSDK_ActionHandler::DoAction_GoTo(
   ASSERT(pPDFDocument);
 
   CPDF_Dest MyDest = action.GetDest(pPDFDocument);
-  int nPageIndex = MyDest.GetDestPageIndex(pPDFDocument);
-  int nFitType = MyDest.GetZoomMode();
-  const CPDF_Array* pMyArray = MyDest.GetArray();
-  std::vector<float> posArray;
-  if (pMyArray) {
-    for (size_t i = 2; i < pMyArray->size(); i++)
-      posArray.push_back(pMyArray->GetNumberAt(i));
-  }
-  pFormFillEnv->DoGoToAction(nPageIndex, nFitType, posArray.data(),
-                             posArray.size());
+  DoAction_Destination(MyDest, pFormFillEnv);
 }
 
 void CPDFSDK_ActionHandler::DoAction_URI(
@@ -435,13 +426,42 @@ bool CPDFSDK_ActionHandler::DoAction_Link(
     CPDFSDK_FormFillEnvironment* form_fill_env,
     int modifiers) {
   ASSERT(form_fill_env);
-  if (action.GetType() != CPDF_Action::URI)
+  if ((!CPDF_AAction::IsUserClick(type)) &&
+      (!CPDF_AAction::IsUserPress(type))) {
     return false;
-
-  if ((CPDF_AAction::IsUserClick(type)) || (CPDF_AAction::IsUserPress(type))) {
-    DoAction_URI(form_fill_env, action, modifiers);
-    return true;
   }
 
-  return false;
+  switch (action.GetType()) {
+    case CPDF_Action::GoTo:
+      DoAction_GoTo(form_fill_env, action);
+      break;
+    case CPDF_Action::URI:
+      DoAction_URI(form_fill_env, action, modifiers);
+      break;
+    default:
+      return false;
+  }
+
+  return true;
+}
+
+bool CPDFSDK_ActionHandler::DoAction_Destination(
+    CPDF_Dest dest,
+    CPDFSDK_FormFillEnvironment* form_fill_env) {
+  CPDF_Document* pPDFDocument = form_fill_env->GetPDFDocument();
+  ASSERT(pPDFDocument);
+
+  int page_index = dest.GetDestPageIndex(pPDFDocument);
+  int zoom_mode = dest.GetZoomMode();
+  const CPDF_Array* dest_array = dest.GetArray();
+  std::vector<float> position_array;
+  if (!dest_array)
+    return false;
+
+  for (size_t i = 2; i < dest_array->size(); i++)
+    position_array.push_back(dest_array->GetNumberAt(i));
+
+  form_fill_env->DoGoToAction(page_index, zoom_mode, position_array.data(),
+                              position_array.size());
+  return true;
 }
