@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3d48130_dd82e0e5",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-04-20T13:22:26Z",
+      "side": 1,
+      "message": "I think we should allow the user to view the options even if it is a read only control.\nLet me know if you think otherwise",
+      "parentUuid": "e2c980ac_e8eb52d2",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1772c86_48ff6671",
         "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4e4283e0_220e4727",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-04-20T13:22:26Z",
+      "side": 1,
+      "message": "+ 1 on Ankit\u0027s suggestion.",
+      "parentUuid": "ee3da0e8_4f023b10",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "961e7ff4_cabd4b83",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 4
@@ -86,6 +134,24 @@
       "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48942efb_9322f330",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2174,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-04-20T13:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "961e7ff4_cabd4b83",
+      "revId": "32b3fba928ae47b738374f784bf92da46123bebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
