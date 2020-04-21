@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ba4e319_a534f21c",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-21T22:29:45Z",
+      "side": 1,
+      "message": "crrev.com/c/2128836 added a unit test, which triggered this GN assertion on Android:\n\n  ERROR at //testing/test.gni:35:5: Assertion failed.\n      assert(_use_raw_android_executable || enable_java_templates)\n      ^-----\n  See //third_party/zlib/BUILD.gn:395:1: whence it was called.\n  test(\"zlib_unittests\") {\n  ^-----------------------\n  See //third_party/BUILD.gn:359:21: which caused the file to be included.\n      public_deps \u003d [ \"//third_party/zlib\" ]\n                      ^-------------------",
+      "revId": "8344c787d2d5390b259797349e527e906231662c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
