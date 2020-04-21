@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f97cb5_c34b9a61",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-21T20:53:46Z",
+      "side": 1,
+      "message": "With nested #ifs, it will be helpful to add a comment here to distinguish it from line 1259.",
+      "revId": "7e266c240b759c9d9589774b26dfc2c59d446017",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
