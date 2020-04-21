@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c1c371d_158ef2c4",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-21T09:29:05Z",
+      "side": 1,
+      "message": "key_code",
+      "range": {
+        "startLine": 104,
+        "startChar": 47,
+        "endLine": 104,
+        "endChar": 54
+      },
+      "revId": "00545644eee51888995b662178694df9c750b8e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccb59aa5_1623af0a",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-21T09:29:05Z",
+      "side": 1,
+      "message": "Can be moved outside if check.",
+      "range": {
+        "startLine": 195,
+        "startChar": 7,
+        "endLine": 195,
+        "endChar": 53
+      },
+      "revId": "00545644eee51888995b662178694df9c750b8e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f83085a_e466e8cd",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-21T09:29:05Z",
+      "side": 1,
+      "message": "Can be rewritten as - \n\nif (action.GetType() !\u003d CPDF_Action::URI)\n  return false;\nreturn form_fill_environment_-\u003eGetActionHandler()-\u003eDoAction_Link(\n    action, CPDF_AAction::kKeyStroke, form_fill_environment_.Get(), nFlag);",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 14
+      },
+      "revId": "00545644eee51888995b662178694df9c750b8e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8071b31b_ad276b76",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-21T09:29:05Z",
+      "side": 1,
+      "message": "return early.\n\nif (!m_pInfo)\n  return;",
+      "range": {
+        "startLine": 389,
+        "startChar": 2,
+        "endLine": 389,
+        "endChar": 15
+      },
+      "revId": "00545644eee51888995b662178694df9c750b8e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac91660_6d139676",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-21T09:29:05Z",
+      "side": 1,
+      "message": "Can be rewritten as-\n\nif (m_pInfo-\u003eversion \u003e\u003d 2 \u0026\u0026 m_pInfo-\u003eFFI_DoURIActionWithKeyboardModifier) {\n  m_pInfo-\u003eFFI_DoURIActionWithKeyboardModifier(m_pInfo, bsURI, modifiers);\n  return;\n}\n\nif (m_pInfo-\u003eFFI_DoURIAction) {\n  m_pInfo-\u003eFFI_DoURIAction(m_pInfo, bsURI);\n}",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 47
+      },
+      "revId": "00545644eee51888995b662178694df9c750b8e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8faad6_4dd3d762",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-21T09:29:05Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 481,
+        "startChar": 2,
+        "endLine": 481,
+        "endChar": 27
+      },
+      "revId": "00545644eee51888995b662178694df9c750b8e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
