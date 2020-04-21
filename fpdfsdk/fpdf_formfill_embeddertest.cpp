@@ -1238,13 +1238,12 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_765384) {
 }
 #endif  // PDF_ENABLE_V8
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(FPDFFormFillEmbedderTest, FormText) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_FormText DISABLED_FormText
+  const char md5_1[] = "17efe329169f5b7681fbe939894a35de";
+  const char md5_2[] = "42af2135e20deb09cbdbfb6418d86382";
+  const char md5_3[] = "4a961599a512a08468b26b89d389c30a";
 #else
-#define MAYBE_FormText FormText
-#endif
-TEST_F(FPDFFormFillEmbedderTest, MAYBE_FormText) {
 #if defined(OS_MACOSX)
   const char md5_1[] = "d485541d958fef08d24e8eca3e537023";
   const char md5_2[] = "c6e4a2fb10661116771ee74f54d9c5e0";
@@ -1258,12 +1257,15 @@ TEST_F(FPDFFormFillEmbedderTest, MAYBE_FormText) {
   const char md5_2[] = "11487d5597599a26e8912b9c1d9422cb";
   const char md5_3[] = "bffe0ecea9a533f217047ee41d6be466";
 #endif
+#endif
   {
     EXPECT_TRUE(OpenDocument("text_form.pdf"));
     FPDF_PAGE page = LoadPage(0);
     ASSERT_TRUE(page);
     ScopedFPDFBitmap bitmap1 = RenderLoadedPage(page);
     CompareBitmap(bitmap1.get(), 300, 300, md5_1);
+    // WriteBitmapToPng(bitmap1.get(),
+    // "/usr/local/google/home/username/Downloads/skia_1.png");
 
     // Click on the textfield
     EXPECT_EQ(FPDF_FORMFIELD_TEXTFIELD,
@@ -1280,6 +1282,8 @@ TEST_F(FPDFFormFillEmbedderTest, MAYBE_FormText) {
     FORM_OnChar(form_handle(), page, 67, 0);
     ScopedFPDFBitmap bitmap2 = RenderLoadedPage(page);
     CompareBitmap(bitmap2.get(), 300, 300, md5_2);
+    // WriteBitmapToPng(bitmap2.get(),
+    // "/usr/local/google/home/username/Downloads/skia_2.png");
 
     // Focus remains despite right clicking out of the textfield
     FORM_OnMouseMove(form_handle(), page, 0, 15.0, 15.0);
@@ -1287,6 +1291,8 @@ TEST_F(FPDFFormFillEmbedderTest, MAYBE_FormText) {
     FORM_OnRButtonUp(form_handle(), page, 0, 15.0, 15.0);
     ScopedFPDFBitmap bitmap3 = RenderLoadedPage(page);
     CompareBitmap(bitmap3.get(), 300, 300, md5_2);
+    // WriteBitmapToPng(bitmap3.get(),
+    // "/usr/local/google/home/username/Downloads/skia_3.png");
 
     // Take out focus by clicking out of the textfield
     FORM_OnMouseMove(form_handle(), page, 0, 15.0, 15.0);
@@ -1294,6 +1300,8 @@ TEST_F(FPDFFormFillEmbedderTest, MAYBE_FormText) {
     FORM_OnLButtonUp(form_handle(), page, 0, 15.0, 15.0);
     ScopedFPDFBitmap bitmap4 = RenderLoadedPage(page);
     CompareBitmap(bitmap4.get(), 300, 300, md5_3);
+    // WriteBitmapToPng(bitmap4.get(),
+    // "/usr/local/google/home/username/Downloads/skia_4.png");
 
     EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
 
