@@ -605,12 +605,6 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_SetText) {
   CloseSavedDocument();
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_RemovePageObject DISABLED_RemovePageObject
-#else
-#define MAYBE_RemovePageObject RemovePageObject
-#endif
 TEST_F(FPDFEditEmbedderTest, MAYBE_RemovePageObject) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
@@ -619,12 +613,16 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_RemovePageObject) {
 
   // Show what the original file looks like.
   {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    const char kOriginalMD5[] = "66ecb880a880dd263ff495b28aeda0d1";
+#else
 #if defined(OS_MACOSX)
     const char kOriginalMD5[] = "c38b75e16a13852aee3b97d77a0f0ee7";
 #elif defined(OS_WIN)
     const char kOriginalMD5[] = "795b7ce1626931aa06af0fa23b7d80bb";
 #else
     const char kOriginalMD5[] = "2baa4c0e1758deba1b9c908e1fbd04ed";
+#endif
 #endif
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kOriginalMD5);
