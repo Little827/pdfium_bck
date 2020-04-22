@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "748a6550_359138eb",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-22T05:38:25Z",
+      "side": 1,
+      "message": "Over-parenthesized, here and elsewhere.",
+      "range": {
+        "startLine": 212,
+        "startChar": 10,
+        "endLine": 212,
+        "endChar": 11
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77083d6a_fd145660",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-22T05:38:25Z",
+      "side": 1,
+      "message": "Can you keep this in the same order as the header? i.e. Put it after DoAction_FieldJavaScript().",
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eaa7105_8dbdae27",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-22T05:38:25Z",
+      "side": 1,
+      "message": "Use AsBAAnnot() instead?",
+      "range": {
+        "startLine": 195,
+        "startChar": 30,
+        "endLine": 195,
+        "endChar": 41
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707976aa_491a5c02",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-22T05:38:25Z",
+      "side": 1,
+      "message": "Can you elaborate on why the link navigation is handled on key up, rather than on key down?",
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
