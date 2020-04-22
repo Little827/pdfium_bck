@@ -473,7 +473,12 @@ bool CPDFSDK_PageView::OnKeyDown(int nKeyCode, int nFlag) {
 }
 
 bool CPDFSDK_PageView::OnKeyUp(int nKeyCode, int nFlag) {
-  return false;
+  CPDFSDK_Annot* annot = GetFocusAnnot();
+  if (!annot)
+    return false;
+  CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
+      m_pFormFillEnv->GetAnnotHandlerMgr();
+  return pAnnotHandlerMgr->Annot_OnKeyUp(annot, nKeyCode, nFlag);
 }
 
 void CPDFSDK_PageView::LoadFXAnnots() {

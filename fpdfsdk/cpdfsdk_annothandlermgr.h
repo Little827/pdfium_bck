@@ -101,6 +101,7 @@ class CPDFSDK_AnnotHandlerMgr {
                        CPDFSDK_Annot* pAnnot,
                        int nKeyCode,
                        int nFlag);
+  bool Annot_OnKeyUp(CPDFSDK_Annot* annot, int key_code, int flag);
   bool Annot_OnSetFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot, uint32_t nFlag);
   bool Annot_OnKillFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot, uint32_t nFlag);
   bool Annot_SetIndexSelected(ObservedPtr<CPDFSDK_Annot>* pAnnot,
