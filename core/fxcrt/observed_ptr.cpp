@@ -4,12 +4,24 @@
 
 #include "core/fxcrt/observed_ptr.h"
 
+#include "third_party/base/stl_util.h"
+
 namespace fxcrt {
 
 Observable::Observable() = default;
 
 Observable::~Observable() {
   NotifyObservers();
+}
+
+void Observable::AddObserver(ObserverIface* pObserver) {
+  ASSERT(!pdfium::ContainsKey(m_Observers, pObserver));
+  m_Observers.insert(pObserver);
+}
+
+void Observable::RemoveObserver(ObserverIface* pObserver) {
+  ASSERT(pdfium::ContainsKey(m_Observers, pObserver));
+  m_Observers.erase(pObserver);
 }
 
 }  // namespace fxcrt
