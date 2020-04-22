@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b41cbe7_149d9e5f",
+        "filename": "core/fpdfdoc/cpdf_aaction.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e73ffdc6_a197431c",
+      "range": {
+        "startLine": 52,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 43
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "748a6550_359138eb",
         "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ccf1641f_c8f2b69a",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "748a6550_359138eb",
+      "range": {
+        "startLine": 212,
+        "startChar": 10,
+        "endLine": 212,
+        "endChar": 11
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77083d6a_fd145660",
         "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f4fd7c_a9f9d162",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77083d6a_fd145660",
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "02b50d08_4e8e0432",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b06f2df_a6cd8a23",
+      "range": {
+        "startLine": 441,
+        "startChar": 38,
+        "endLine": 441,
+        "endChar": 39
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92798daf_0f9efee6",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
         "patchSetId": 6
@@ -108,6 +198,30 @@
       "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec615bf_9c053511",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92798daf_0f9efee6",
+      "range": {
+        "startLine": 278,
+        "startChar": 44,
+        "endLine": 278,
+        "endChar": 45
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "2c9c77ce_2e9a4e12",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a23f052_13085a37",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 17
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eaa7105_8dbdae27",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 6
@@ -154,6 +292,30 @@
       "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff5d33f_8dcf2ddf",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eaa7105_8dbdae27",
+      "range": {
+        "startLine": 195,
+        "startChar": 30,
+        "endLine": 195,
+        "endChar": 41
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "8e032f88_d84512c1",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f68c5f6a_f1e87c3c",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 17
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "707976aa_491a5c02",
         "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
         "patchSetId": 6
@@ -194,6 +380,24 @@
       "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685771a3_2ac82daa",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-22T08:03:27Z",
+      "side": 1,
+      "message": "It makes more sense to handle it in keydown. In fact I spent sometime in understanding what is the right place between OnKeyDown/OnChar/OnKeyUp.\nAnd for this scenario, where we want to open links in new tab/window foreground/background, OnKeyDown() is the right place. Will make changes accordingly.",
+      "parentUuid": "707976aa_491a5c02",
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
