@@ -605,13 +605,7 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_SetText) {
   CloseSavedDocument();
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_RemovePageObject DISABLED_RemovePageObject
-#else
-#define MAYBE_RemovePageObject RemovePageObject
-#endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_RemovePageObject) {
+TEST_F(FPDFEditEmbedderTest, RemovePageObject) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -619,6 +613,9 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_RemovePageObject) {
 
   // Show what the original file looks like.
   {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    const char kOriginalMD5[] = "66ecb880a880dd263ff495b28aeda0d1";
+#else
 #if defined(OS_MACOSX)
     const char kOriginalMD5[] = "c38b75e16a13852aee3b97d77a0f0ee7";
 #elif defined(OS_WIN)
@@ -626,6 +623,7 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_RemovePageObject) {
 #else
     const char kOriginalMD5[] = "2baa4c0e1758deba1b9c908e1fbd04ed";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kOriginalMD5);
   }
@@ -638,6 +636,9 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_RemovePageObject) {
 
   // Verify the "Hello, world!" text is gone.
   {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    const char kRemovedMD5[] = "0c79dc1065b1d06991e3ac4aaa35d25c";
+#else
 #if defined(OS_MACOSX)
     const char kRemovedMD5[] = "17ca3778fd8bb395b46532f1fa17f702";
 #elif defined(OS_WIN)
@@ -645,6 +646,7 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_RemovePageObject) {
 #else
     const char kRemovedMD5[] = "b76df015fe88009c3c342395df96abf1";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kRemovedMD5);
   }
