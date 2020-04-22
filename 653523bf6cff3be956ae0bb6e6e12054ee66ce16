@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e73ffdc6_a197431c",
+        "filename": "core/fpdfdoc/cpdf_aaction.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-22T06:26:10Z",
+      "side": 1,
+      "message": "nit: type (new coding convention)",
+      "range": {
+        "startLine": 52,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 43
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "748a6550_359138eb",
         "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
         "patchSetId": 6
@@ -42,6 +65,75 @@
     },
     {
       "key": {
+        "uuid": "9b06f2df_a6cd8a23",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-22T06:26:10Z",
+      "side": 1,
+      "message": "Extra parenthesis. Same for next item.",
+      "range": {
+        "startLine": 441,
+        "startChar": 38,
+        "endLine": 441,
+        "endChar": 39
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92798daf_0f9efee6",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-22T06:26:10Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 278,
+        "startChar": 44,
+        "endLine": 278,
+        "endChar": 45
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a23f052_13085a37",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-22T06:26:10Z",
+      "side": 1,
+      "message": "merge the conditions?",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 17
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6eaa7105_8dbdae27",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 6
@@ -58,6 +150,29 @@
         "startChar": 30,
         "endLine": 195,
         "endChar": 41
+      },
+      "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68c5f6a_f1e87c3c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-04-22T06:26:10Z",
+      "side": 1,
+      "message": "merge the conditions.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 17
       },
       "revId": "653523bf6cff3be956ae0bb6e6e12054ee66ce16",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
