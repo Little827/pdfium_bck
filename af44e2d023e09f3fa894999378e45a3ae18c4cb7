@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6d6f183_62c68e1c",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-22T16:22:55Z",
+      "side": 1,
+      "message": "As this is private method and the caller is already doing this check. Do we need to do it again?",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 77
+      },
+      "revId": "af44e2d023e09f3fa894999378e45a3ae18c4cb7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede1c67b_0bb886e0",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3037,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-22T16:22:55Z",
+      "side": 1,
+      "message": "Is there a possibility to write a test following tests\n- Modifier keys are preserved during the flow.\n- We don\u0027t get a call to DoURIActionWithKeyboardModifier when we invoke anything apart from FWL_VKEY_Return.",
+      "range": {
+        "startLine": 3037,
+        "startChar": 4,
+        "endLine": 3037,
+        "endChar": 65
+      },
+      "revId": "af44e2d023e09f3fa894999378e45a3ae18c4cb7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
