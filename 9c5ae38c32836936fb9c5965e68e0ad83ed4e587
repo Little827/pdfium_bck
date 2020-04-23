@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a16b2c_aa8696b7",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-23T23:40:21Z",
+      "side": 1,
+      "message": "Since |md5_1| in the old version was consolidated and replaced by |kTextFormOriginalMD5|, this section is renaming old |md5_2| into |md5_1|, and old |md5_3| into |md5_2|.",
+      "range": {
+        "startLine": 1261,
+        "startChar": 0,
+        "endLine": 1272,
+        "endChar": 58
+      },
+      "revId": "9c5ae38c32836936fb9c5965e68e0ad83ed4e587",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
