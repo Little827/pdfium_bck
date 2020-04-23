@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f77b1c30_ce79540d",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "return true after both cases.",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abec9e2_a06c6b58",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "move the check before declaring the float array.",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f20fa38_12a13fd6",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "I see a change in behavior between this function and the earlier set of calls. In case MyDest.GetArray() is empty we return false now while earlier we continued with the operation.",
+      "range": {
+        "startLine": 302,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 22
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9490a79_b01b783d",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "Does this work?\n\nif (!dest_dict || !dest_dict-\u003eIsArray())\n    return CPDF_Dest();\nreturn CPDF_Dest(dest_dict-\u003eAsArray());",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 21
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd45a11a_84f6e6a6",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "nit: we don\u0027t need to store this variable.",
+      "range": {
+        "startLine": 195,
+        "startChar": 8,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e88f66f_bb1a277f",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "Flip this if and return false early.",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 23
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03d93ab_3dead7f7",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "Unknown or URI?",
+      "range": {
+        "startLine": 197,
+        "startChar": 41,
+        "endLine": 197,
+        "endChar": 48
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "247f3560_52f1da5f",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3066,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:29:48Z",
+      "side": 1,
+      "message": "can we not validate the params.",
+      "range": {
+        "startLine": 3066,
+        "startChar": 33,
+        "endLine": 3066,
+        "endChar": 34
+      },
+      "revId": "539b0d92a7f9ad140fcafdf53dbf3153ece4a5af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
