@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4719d3c9_0b5ede8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T22:35:12Z",
+      "side": 1,
+      "message": "Well, disabled tests don\u0027t pass. Maybe what you mean to say is \"these tests do not fail\" or \"the test suite can pass\" ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "856bea8574354c14a5781447c479328f983083e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
