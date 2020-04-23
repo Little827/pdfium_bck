@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b188190_8ddc4c83",
+        "filename": "BUILD.gn",
+        "patchSetId": 19
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "Instead of adding this dependency here to all EmbedderTest targets, add it to the specific EmbedderTest target that needs it. i.e. in core/fpdfapi/render/BUILD.gn as \"../../fxge\".",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33bd0d0a_74dcae95",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "Can we just go without initializing the color fields to a default? The only legitimate use of this struct will initialize all the fields anyway.",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c0b215d_2ae134a6",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "Can we omit the constructors since they don\u0027t do anything special and they are not required?",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "279cad6f_09461363",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "This is no longer needed, since the latest patch set no longer passes filenames around.",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a76f7b7_86e66a6e",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "Please add a comment to mention this is an experimental API. Just \"// Experimental API.\" on its own line will suffice.",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3829bfc2_64c387d7",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "FPDF_FORCEDCOLOR no longer exists. Please update the documentation here.",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20392cd1_1391fb69",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "rendering",
+      "range": {
+        "startLine": 758,
+        "startChar": 59,
+        "endLine": 758,
+        "endChar": 73
+      },
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b405b7_21d1dd2a",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "How about \"This is a sample color scheme with distinct colors\" ?",
+      "range": {
+        "startLine": 759,
+        "startChar": 9,
+        "endLine": 759,
+        "endChar": 52
+      },
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60ff014_b4fce009",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:25:15Z",
+      "side": 1,
+      "message": "Mark this const?",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
