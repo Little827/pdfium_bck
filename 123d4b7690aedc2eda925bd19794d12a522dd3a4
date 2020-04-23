@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58690632_446fd1be",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2809,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-23T19:46:53Z",
+      "side": 0,
+      "message": "note: totally incompatible with push_back on 2811, wanted reserve instead.",
+      "range": {
+        "startLine": 2809,
+        "startChar": 22,
+        "endLine": 2809,
+        "endChar": 37
+      },
+      "revId": "123d4b7690aedc2eda925bd19794d12a522dd3a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "889b53b9_a8893467",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2815,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-23T19:46:53Z",
+      "side": 0,
+      "message": "note: wouldn\u0027t calculate what the examples seem to indicate.",
+      "range": {
+        "startLine": 2815,
+        "startChar": 16,
+        "endLine": 2815,
+        "endChar": 17
+      },
+      "revId": "123d4b7690aedc2eda925bd19794d12a522dd3a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
