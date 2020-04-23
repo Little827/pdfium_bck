@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "91843e9b_5906af6a",
+        "filename": "BUILD.gn",
+        "patchSetId": 19
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b188190_8ddc4c83",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33bd0d0a_74dcae95",
         "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
         "patchSetId": 19
@@ -33,6 +51,24 @@
       "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6620aa5_28b85740",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Yes, it is no more required. Removed.",
+      "parentUuid": "33bd0d0a_74dcae95",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bf024e1f_ab9297b6",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "4c0b215d_2ae134a6",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "279cad6f_09461363",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 19
@@ -67,6 +121,24 @@
       "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db043617_063e022b",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "279cad6f_09461363",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +205,24 @@
     },
     {
       "key": {
+        "uuid": "a69cdfa1_474fc512",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "8a76f7b7_86e66a6e",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3829bfc2_64c387d7",
         "filename": "public/fpdfview.h",
         "patchSetId": 19
@@ -147,6 +237,24 @@
       "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a60785_67823e7d",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3829bfc2_64c387d7",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +281,30 @@
     },
     {
       "key": {
+        "uuid": "726b9647_a9b59967",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20392cd1_1391fb69",
+      "range": {
+        "startLine": 758,
+        "startChar": 59,
+        "endLine": 758,
+        "endChar": 73
+      },
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69b405b7_21d1dd2a",
         "filename": "samples/pdfium_test.cc",
         "patchSetId": 19
@@ -196,6 +328,30 @@
     },
     {
       "key": {
+        "uuid": "adf80166_fd2c84f3",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "That sounds better. Updated.",
+      "parentUuid": "69b405b7_21d1dd2a",
+      "range": {
+        "startLine": 759,
+        "startChar": 9,
+        "endLine": 759,
+        "endChar": 52
+      },
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d60ff014_b4fce009",
         "filename": "samples/pdfium_test.cc",
         "patchSetId": 19
@@ -210,6 +366,24 @@
       "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0222a344_a7844137",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2020-04-23T18:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60ff014_b4fce009",
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
