@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "core/fxcrt/fx_system.h"
+#include "fpdfsdk/fpdf_embeddertest_constants.h"
 #include "public/fpdf_edit.h"
 #include "testing/embedder_test.h"
 
@@ -15,7 +16,6 @@ class FPDFEditPageEmbedderTest : public EmbedderTest {};
 #define MAYBE_Rotation Rotation
 #endif
 TEST_F(FPDFEditPageEmbedderTest, MAYBE_Rotation) {
-  const char kOriginalMD5[] = "0a90de37f52127619c3dfb642b5fa2fe";
   const char kRotatedMD5[] = "d599429574ff0dcad3bc898ea8b874ca";
 
   {
@@ -31,7 +31,8 @@ TEST_F(FPDFEditPageEmbedderTest, MAYBE_Rotation) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    fpdfsdk::kRectanglesOriginalMD5);
     }
 
     FPDFPage_SetRotation(page, 1);

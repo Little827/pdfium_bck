@@ -5,23 +5,12 @@
 #include "public/fpdf_transformpage.h"
 
 #include "build/build_config.h"
+#include "fpdfsdk/fpdf_embeddertest_constants.h"
 #include "testing/embedder_test.h"
 
 #if defined(OS_LINUX) || defined(OS_FUCHSIA)
 #include "third_party/base/test/scoped_locale.h"
 #endif
-
-namespace {
-
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-constexpr char kOriginalMD5[] = "b4e411a6b5ffa59a50efede2efece597";
-constexpr char kShrunkMD5[] = "78c52d6029283090036e6db6683401e2";
-#else
-constexpr char kOriginalMD5[] = "0a90de37f52127619c3dfb642b5fa2fe";
-constexpr char kShrunkMD5[] = "f4136cc9209207ab60eb8381a3df2e69";
-#endif
-
-}  // namespace
 
 class FPDFTransformEmbedderTest : public EmbedderTest {};
 
@@ -227,7 +216,8 @@ TEST_F(FPDFTransformEmbedderTest, SetCropBox) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    fpdfsdk::kRectanglesOriginalMD5);
     }
 
     FPDFPage_SetCropBox(page, 10, 20, 100, 150);
@@ -303,7 +293,8 @@ TEST_F(FPDFTransformEmbedderTest, SetMediaBox) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    fpdfsdk::kRectanglesOriginalMD5);
     }
 
     FPDFPage_SetMediaBox(page, 20, 30, 100, 150);
@@ -431,14 +422,16 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSave) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    fpdfsdk::kRectanglesOriginalMD5);
     }
 
     {
       // Render the page after transforming.
       // Note that the change should affect the rendering, but does not.
       // It should behaves just like the case below, rather than the case above.
-      // TODO(bug_1328): The checksum below should be |kShrunkMD5|.
+      // TODO(bug_1328): The checksum below should be
+      // |fpdfsdk::kRectanglesShrunkMD5|.
       const FS_MATRIX half_matrix{0.5, 0, 0, 0.5, 0, 0};
       EXPECT_TRUE(FPDFPage_TransFormWithClip(page, &half_matrix, nullptr));
       const int page_width = static_cast<int>(FPDF_GetPageWidth(page));
@@ -446,7 +439,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSave) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    fpdfsdk::kRectanglesOriginalMD5);
     }
 
     UnloadPage(page);
@@ -465,7 +459,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSave) {
     EXPECT_EQ(200, page_width);
     EXPECT_EQ(300, page_height);
     ScopedFPDFBitmap bitmap = RenderSavedPage(saved_page);
-    CompareBitmap(bitmap.get(), page_width, page_height, kShrunkMD5);
+    CompareBitmap(bitmap.get(), page_width, page_height,
+                  fpdfsdk::kRectanglesShrunkMD5);
 
     CloseSavedPage(saved_page);
     CloseSavedDocument();
@@ -488,14 +483,16 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSaveWithLocale) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    fpdfsdk::kRectanglesOriginalMD5);
     }
 
     {
       // Render the page after transforming.
       // Note that the change should affect the rendering, but does not.
       // It should behaves just like the case below, rather than the case above.
-      // TODO(bug_1328): The checksum below should be |kShrunkMD5|.
+      // TODO(bug_1328): The checksum below should be
+      // |fpdfsdk::kRectanglesShrunkMD5|.
       const FS_MATRIX half_matrix{0.5, 0, 0, 0.5, 0, 0};
       EXPECT_TRUE(FPDFPage_TransFormWithClip(page, &half_matrix, nullptr));
       const int page_width = static_cast<int>(FPDF_GetPageWidth(page));
@@ -503,7 +500,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSaveWithLocale) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    fpdfsdk::kRectanglesOriginalMD5);
     }
 
     UnloadPage(page);
@@ -522,7 +520,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSaveWithLocale) {
     EXPECT_EQ(200, page_width);
     EXPECT_EQ(300, page_height);
     ScopedFPDFBitmap bitmap = RenderSavedPage(saved_page);
-    CompareBitmap(bitmap.get(), page_width, page_height, kShrunkMD5);
+    CompareBitmap(bitmap.get(), page_width, page_height,
+                  fpdfsdk::kRectanglesShrunkMD5);
 
     CloseSavedPage(saved_page);
     CloseSavedDocument();
