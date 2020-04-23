@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c6461cc_cea99195",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T23:01:45Z",
+      "side": 1,
+      "message": "Did you mean: hash?",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 37
+      },
+      "revId": "dfe40006ca985613f62211c113276554d622922c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9657fc_770af97d",
+        "filename": "testing/resources/bug_889099.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T23:01:45Z",
+      "side": 1,
+      "message": "Put /Type first.",
+      "revId": "dfe40006ca985613f62211c113276554d622922c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22bf874_b7e88070",
+        "filename": "testing/resources/bug_889099.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T23:01:45Z",
+      "side": 1,
+      "message": "Put /FT (field type) after /Subtype.",
+      "revId": "dfe40006ca985613f62211c113276554d622922c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0aff43_ca37bff9",
+        "filename": "testing/resources/bug_889099.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T23:01:45Z",
+      "side": 1,
+      "message": "Inline this object into object 5 0.",
+      "revId": "dfe40006ca985613f62211c113276554d622922c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
