@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfdoc/cpdf_action.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxge/cfx_drawutils.h"
 #include "fpdfsdk/cpdfsdk_actionhandler.h"
@@ -198,6 +199,32 @@ bool CPDFSDK_BAAnnotHandler::OnKeyDown(CPDFSDK_Annot* pAnnot,
 bool CPDFSDK_BAAnnotHandler::OnKeyUp(CPDFSDK_Annot* pAnnot,
                                      int nKeyCode,
                                      int nFlag) {
+  ASSERT(pAnnot);
+
+  // OnKeyUp() is implemented only for link annotations for now. As
+  // OnKeyUp() is implemented for other subtypes, following check
+  // should be modified.
+  if (pAnnot->GetAnnotSubtype() != CPDF_Annot::Subtype::LINK)
+    return false;
+
+  if (nKeyCode != FWL_VKEY_Return)
+    return false;
+
+  CPDFSDK_BAAnnot* ba_annot = static_cast<CPDFSDK_BAAnnot*>(pAnnot);
+
+  if (!ba_annot->GetAAction(CPDF_AAction::kKeyStroke).GetDict()) {
+    CPDF_Dest dest = ba_annot->GetDestination();
+    return form_fill_environment_->GetActionHandler()->DoAction_Destination(
+        dest, form_fill_environment_.Get());
+  } else {
+    CPDF_Action action = ba_annot->GetAAction(CPDF_AAction::kKeyStroke);
+    if (action.GetType() != CPDF_Action::Unknown) {
+      return form_fill_environment_->GetActionHandler()->DoAction_Link(
+          action, CPDF_AAction::kKeyStroke, form_fill_environment_.Get(),
+          nFlag);
+    }
+  }
+
   return false;
 }
 

@@ -229,3 +229,13 @@ int CPDFSDK_BAAnnot::GetLayoutOrder() const {
 
   return CPDFSDK_Annot::GetLayoutOrder();
 }
+
+CPDF_Dest CPDFSDK_BAAnnot::GetDestination() const {
+  CPDF_Object* dest_dict = GetAnnotDict()->GetDirectObjectFor("Dest");
+  if (!dest_dict)
+    return CPDF_Dest();
+
+  if (CPDF_Array* dest_array = dest_dict->AsArray())
+    return CPDF_Dest(dest_array);
+  return CPDF_Dest();
+}
