@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "7d657d78_25a5bf95",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T21:47:35Z",
+      "side": 1,
+      "message": "Replaced with |fWidth|. That\u0027s just silly.",
+      "parentUuid": "602135f2_0f93e221",
+      "range": {
+        "startLine": 1253,
+        "startChar": 30,
+        "endLine": 1253,
+        "endChar": 45
+      },
+      "revId": "421dfda1c7d427e41e90a45d1f19af88c77a5ca1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3032a9f8_807bfa94",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "421dfda1c7d427e41e90a45d1f19af88c77a5ca1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880bad6d_f3321a6f",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T21:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3032a9f8_807bfa94",
+      "range": {
+        "startLine": 1278,
+        "startChar": 29,
+        "endLine": 1278,
+        "endChar": 39
+      },
+      "revId": "421dfda1c7d427e41e90a45d1f19af88c77a5ca1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
