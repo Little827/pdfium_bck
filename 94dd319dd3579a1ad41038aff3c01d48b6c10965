@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1587663560 -0700\nnonce AM5BpQUZH2LuXvPMgjY9tm3rNopbrTC8Z85SbZRFvKuosRR1GPrlg9xH4YjQHcUKSNAB9G7m+JJV\n\n0000000000000000000000000000000000000000 94dd319dd3579a1ad41038aff3c01d48b6c10965 refs/for/refs/heads/master%notify\u003dNONE,m\u003dless_copying\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6h0sgACgkQqzYtYVpm\n/XsTPgf/bng7l/bjCs4bKeJ/pj3866SACykNVjHrPgw9JJ2jhE1n+Al0NlqC/r3f\ndVdyHDbffD/rjcaUNP9r6rJsjXKwFH9oJHCzwMvtqgFDRxRlSyDAAIiNYqcanl1V\nAuTTL2m4FszG1yFHaFmOOhRK7iAO0VG5BWjdwLxRzCyCURO5C7y0iX/NdOORiVbF\n5mAdKlNo1Y6M5nhg5MlKVu91i9DIuuTe1v1GaRsHIYHy6sZ5/kiqKYkr1w6SoqXL\nB3SY7mAiWItekkBXvcfMOmI0x5kpRfydF0MIHLC5VEH6/3t+7sGaNpJH6Oguvk7m\nEN+1l51Eq89PTOo+TUxUnO7z7Kun7w\u003d\u003d\n\u003doAIb\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "27b6796e_7eb170f7",
+        "filename": "fxbarcode/datamatrix/BC_SymbolInfo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-23T19:09:58Z",
+      "side": 1,
+      "message": "follow-up:  maybe add IsRectangular() and avoid caching this comparison.",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "94dd319dd3579a1ad41038aff3c01d48b6c10965",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2852e3_a0f62cb6",
+        "filename": "fxbarcode/datamatrix/BC_SymbolInfo.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-23T19:09:58Z",
+      "side": 1,
+      "message": "follow-up: swapping these two might take out 2 bytes per struct, or 60 bytes total from your const array.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "94dd319dd3579a1ad41038aff3c01d48b6c10965",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
