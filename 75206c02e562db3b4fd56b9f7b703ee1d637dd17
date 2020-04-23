@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1587630588 -0700\nnonce AM5BpQXHScbvcLIv50ofz5l1wqSqeTCra4QmhidGBro2AnmchsdPP+wHGoHeFn6AMWZ2LcKni5X4\n\n0000000000000000000000000000000000000000 75206c02e562db3b4fd56b9f7b703ee1d637dd17 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6hUfwACgkQqzYtYVpm\n/Xv/Pgf+IiSgGENlBkbaxqOvQJf7/8b02+Mc1jASrx5cuPHsPDs1AB+2zHnZQSoi\nNYTrSuAUFyTeLO9/od5UmccmJXhSv7zNdrQnhrBzNf03qJXYPP+WeIBojIbZaoKu\nKSQAY6HwTlEW4pqczZqpfEjovTtGTxlQFdVIcu3+NodTEkrNxeyz/VYAMjoABvqM\ndqDBBfeEBpGfvOZMGv68i//LHem1vjmrFXmfyj/sAy8Va6TOCnu6geQn2W/sHxpB\nAtP9uLGHLRkwSmzYC/7yL+Gflz5XJgp6uqJp2qGQP/1pXOuNyFpiTDaDO0o9cahy\neMpSN5vUeNFC9st0Kka5rhfEIo981Q\u003d\u003d\n\u003dmFHd\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8929d66_26a6bfa4",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-23T16:52:22Z",
+      "side": 1,
+      "message": "should these args/return values be size_t?",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "75206c02e562db3b4fd56b9f7b703ee1d637dd17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211496bb_dd34318e",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-23T16:52:22Z",
+      "side": 1,
+      "message": "maybe BitIndexToByte(index) \u0026 ~3",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "75206c02e562db3b4fd56b9f7b703ee1d637dd17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
