@@ -594,6 +594,7 @@ TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
   EXPECT_CALL(mock, OnFocusChange(_, _, _)).Times(0);
   EXPECT_CALL(mock, DoURIAction(_)).Times(0);
   EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, _)).Times(0);
+  EXPECT_CALL(mock, DoGoToAction(_, _, _, _, _)).Times(0);
   SetDelegate(&mock);
 
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
@@ -3058,6 +3059,22 @@ TEST_F(FPDFFormFillActionUriTest, LinkActionInvokeTest) {
   ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Space, modifier));
   ASSERT_FALSE(
       FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Control, modifier));
+}
+
+TEST_F(FPDFFormFillActionUriTest, InternalLinkActionInvokeTest) {
+  NiceMock<EmbedderTestMockDelegate> mock;
+  EXPECT_CALL(mock, DoGoToAction(_, _, _, _, _)).Times(4);
+  SetDelegate(&mock);
+
+  SetFocusOnNthAnnot(4);
+  int modifier = 0;
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier = FWL_EVENTFLAG_ControlKey;
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier = FWL_EVENTFLAG_ShiftKey;
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier |= FWL_EVENTFLAG_ControlKey;
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Return, modifier));
 }
 
 class FPDFFormFillActionUriTestVersion2 : public FPDFFormFillActionUriTest {
