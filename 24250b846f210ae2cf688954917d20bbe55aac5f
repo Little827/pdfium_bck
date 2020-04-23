@@ -70,6 +70,52 @@
     },
     {
       "key": {
+        "uuid": "b9177391_d4b39c1a",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:37:32Z",
+      "side": 1,
+      "message": "Is this meant to be |kBlack|?",
+      "range": {
+        "startLine": 375,
+        "startChar": 32,
+        "endLine": 375,
+        "endChar": 33
+      },
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb0088b_2b183bc9",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T06:37:32Z",
+      "side": 1,
+      "message": "The first page of annotiter.pdf has the same properties as form.pdf, so we can avoid adding it.",
+      "range": {
+        "startLine": 492,
+        "startChar": 28,
+        "endLine": 492,
+        "endChar": 36
+      },
+      "revId": "24250b846f210ae2cf688954917d20bbe55aac5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a76f7b7_86e66a6e",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 19
