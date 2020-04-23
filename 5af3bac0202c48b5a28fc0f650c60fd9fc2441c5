@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "30a6471d_bed29744",
+        "filename": "core/fpdfdoc/cpdf_aaction.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T07:40:12Z",
+      "side": 1,
+      "message": "Alternatively, combine this with IsUserClick() into IsUserAction() or IsUserInput(). I think every place that checks IsUserClick() probably should check IsUserKeyPress() as well.",
+      "revId": "5af3bac0202c48b5a28fc0f650c60fd9fc2441c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dd5fa2c_68b1a4e8",
         "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
         "patchSetId": 9
