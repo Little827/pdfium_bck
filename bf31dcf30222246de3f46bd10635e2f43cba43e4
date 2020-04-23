@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49506231_b5223aca",
+        "filename": "testing/resources/pixel/combobox_form.evt",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:51:48Z",
+      "side": 1,
+      "message": "checkbox??",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "bf31dcf30222246de3f46bd10635e2f43cba43e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7920a407_34de501a",
+        "filename": "testing/resources/pixel/combobox_form.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:51:48Z",
+      "side": 1,
+      "message": "Do we need all three annotations. Looking at the pixel test it seems we can get by with one.",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "bf31dcf30222246de3f46bd10635e2f43cba43e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c4b0b7_0cb13bb8",
+        "filename": "testing/resources/pixel/combobox_form.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-04-23T19:51:48Z",
+      "side": 1,
+      "message": "Do we need content in this file.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "bf31dcf30222246de3f46bd10635e2f43cba43e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
