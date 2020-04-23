@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "52bcaec5_c751c0d6",
+        "filename": "fxbarcode/datamatrix/BC_SymbolInfo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T19:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b6796e_7eb170f7",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "94dd319dd3579a1ad41038aff3c01d48b6c10965",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce2852e3_a0f62cb6",
         "filename": "fxbarcode/datamatrix/BC_SymbolInfo.h",
         "patchSetId": 2
@@ -46,6 +70,30 @@
       "revId": "94dd319dd3579a1ad41038aff3c01d48b6c10965",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aceea54d_33ea7a6c",
+        "filename": "fxbarcode/datamatrix/BC_SymbolInfo.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-23T19:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce2852e3_a0f62cb6",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "94dd319dd3579a1ad41038aff3c01d48b6c10965",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
