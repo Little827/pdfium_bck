@@ -34,6 +34,115 @@
       "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86169e6a_27bb57b3",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T01:00:21Z",
+      "side": 1,
+      "message": "Yes, testing/ would be a much better place, as that directory is accessibly by all tests and does not have any issues with layering violations.",
+      "parentUuid": "df498392_e88db132",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b505eb9b_85af4c70",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T01:00:21Z",
+      "side": 1,
+      "message": "PDFium",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fcbfc6_8ef2e6eb",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T01:00:21Z",
+      "side": 1,
+      "message": "Please define the strings in a .cpp file. See https://groups.google.com/a/chromium.org/d/topic/chromium-dev/SyIIaptlkrA/discussion",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc72e33_d25f4f28",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T01:00:21Z",
+      "side": 1,
+      "message": "To keep this list of filenames organized, please consider having a consistent naming scheme. e.g. Why does this one have \"Original\" in the name, but not |kBlankPage612By792MD5|?",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27debc99_722ae66b",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T01:00:21Z",
+      "side": 1,
+      "message": "Win/Mac/Linux is a more common ordering than Mac/Win/Linux.",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97759f7_6b6a33af",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T01:00:21Z",
+      "side": 1,
+      "message": "Another idea for better organization is to add a comment to mention what PDF file a hash corresponds to.",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
