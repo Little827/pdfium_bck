@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bb3a378_4baba65d",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T00:11:16Z",
+      "side": 1,
+      "message": "There are embedder tests in core/ as well. Have you thought about putting these constants in a place where they can be shared with core/?",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
