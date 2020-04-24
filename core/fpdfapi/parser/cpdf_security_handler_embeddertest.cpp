@@ -234,7 +234,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, BadOkeyVersion3) {
       OpenDocumentWithPassword("encrypted_hello_world_r3_bad_okey.pdf", "a"));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion2UTF8 DISABLED_OwnerPasswordVersion2UTF8
+#else
+#define MAYBE_OwnerPasswordVersion2UTF8 OwnerPasswordVersion2UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion2UTF8) {
   // The password is "age", where the 'a' has a circumflex. Encoding the
   // password as UTF-8 works.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
@@ -267,7 +273,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion2Latin1 DISABLED_OwnerPasswordVersion2Latin1
+#else
+#define MAYBE_OwnerPasswordVersion2Latin1 OwnerPasswordVersion2Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion2Latin1) {
   // The same password encoded as Latin-1 also works at revision 2.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
                                               kAgeLatin1);
@@ -291,7 +303,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion3UTF8 DISABLED_OwnerPasswordVersion3UTF8
+#else
+#define MAYBE_OwnerPasswordVersion3UTF8 OwnerPasswordVersion3UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion3UTF8) {
   // Same as OwnerPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kAgeUTF8);
@@ -315,7 +333,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion3Latin1 DISABLED_OwnerPasswordVersion3Latin1
+#else
+#define MAYBE_OwnerPasswordVersion3Latin1 OwnerPasswordVersion3Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion3Latin1) {
   // Same as OwnerPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kAgeLatin1);
@@ -339,7 +363,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion5UTF8 DISABLED_OwnerPasswordVersion5UTF8
+#else
+#define MAYBE_OwnerPasswordVersion5UTF8 OwnerPasswordVersion5UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion5UTF8) {
   // Same as OwnerPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kAgeUTF8);
@@ -367,7 +397,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion5Latin1 DISABLED_OwnerPasswordVersion5Latin1
+#else
+#define MAYBE_OwnerPasswordVersion5Latin1 OwnerPasswordVersion5Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion5Latin1) {
   // Same as OwnerPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kAgeLatin1);
@@ -395,7 +431,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion6UTF8 DISABLED_OwnerPasswordVersion6UTF8
+#else
+#define MAYBE_OwnerPasswordVersion6UTF8 OwnerPasswordVersion6UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion6UTF8) {
   // Same as OwnerPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kAgeUTF8);
@@ -423,7 +465,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_OwnerPasswordVersion6Latin1 DISABLED_OwnerPasswordVersion6Latin1
+#else
+#define MAYBE_OwnerPasswordVersion6Latin1 OwnerPasswordVersion6Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_OwnerPasswordVersion6Latin1) {
   // Same as OwnerPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kAgeLatin1);
@@ -451,7 +499,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion2UTF8 DISABLED_UserPasswordVersion2UTF8
+#else
+#define MAYBE_UserPasswordVersion2UTF8 UserPasswordVersion2UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion2UTF8) {
   // The password is "hotel", where the 'o' has a circumflex. Encoding the
   // password as UTF-8 works.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
@@ -484,7 +538,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion2Latin1 DISABLED_UserPasswordVersion2Latin1
+#else
+#define MAYBE_UserPasswordVersion2Latin1 UserPasswordVersion2Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion2Latin1) {
   // The same password encoded as Latin-1 also works at revision 2.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
                                               kHotelLatin1);
@@ -512,7 +572,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion3UTF8 DISABLED_UserPasswordVersion3UTF8
+#else
+#define MAYBE_UserPasswordVersion3UTF8 UserPasswordVersion3UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion3UTF8) {
   // Same as UserPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kHotelUTF8);
@@ -540,7 +606,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion3Latin1 DISABLED_UserPasswordVersion3Latin1
+#else
+#define MAYBE_UserPasswordVersion3Latin1 UserPasswordVersion3Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion3Latin1) {
   // Same as UserPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kHotelLatin1);
@@ -568,7 +640,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion5UTF8 DISABLED_UserPasswordVersion5UTF8
+#else
+#define MAYBE_UserPasswordVersion5UTF8 UserPasswordVersion5UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion5UTF8) {
   // Same as UserPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kHotelUTF8);
@@ -596,7 +674,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion5Latin1 DISABLED_UserPasswordVersion5Latin1
+#else
+#define MAYBE_UserPasswordVersion5Latin1 UserPasswordVersion5Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion5Latin1) {
   // Same as UserPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kHotelLatin1);
@@ -624,7 +708,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6UTF8) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion6UTF8 DISABLED_UserPasswordVersion6UTF8
+#else
+#define MAYBE_UserPasswordVersion6UTF8 UserPasswordVersion6UTF8
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion6UTF8) {
   // Same as UserPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kHotelUTF8);
@@ -652,7 +742,13 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6Latin1) {
+// TODO(crbug.com/pdfium/11): Fix this test and enable.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#define MAYBE_UserPasswordVersion6Latin1 DISABLED_UserPasswordVersion6Latin1
+#else
+#define MAYBE_UserPasswordVersion6Latin1 UserPasswordVersion6Latin1
+#endif
+TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_UserPasswordVersion6Latin1) {
   // Same as UserPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kHotelLatin1);
