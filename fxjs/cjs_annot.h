@@ -18,7 +18,7 @@ class CJS_Annot final : public CJS_Object {
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
   CJS_Annot(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Annot() override;
+  ~CJS_Annot();
 
   void SetSDKAnnot(CPDFSDK_BAAnnot* annot);
 

@@ -12,6 +12,8 @@
 class CJS_GlobalArrays final : public CJS_Object {
  public:
   static void DefineJSObjects(CJS_Runtime* pRuntmie);
+
+  CJS_GlobalArrays() = delete;
 };
 
 #endif  // FXJS_CJS_GLOBALARRAYS_H_

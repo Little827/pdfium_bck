@@ -12,6 +12,8 @@
 class CJS_GlobalConsts final : public CJS_Object {
  public:
   static void DefineJSObjects(CJS_Runtime* pRuntime);
+
+  CJS_GlobalConsts() = delete;
 };
 
 #endif  // FXJS_CJS_GLOBALCONSTS_H_

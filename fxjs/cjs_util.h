@@ -24,7 +24,7 @@ class CJS_Util final : public CJS_Object {
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
   CJS_Util(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Util() override;
+  ~CJS_Util();
 
   // Ensure that |sFormat| contains at most one well-understood printf
   // formatting directive which is safe to use with a single argument, and

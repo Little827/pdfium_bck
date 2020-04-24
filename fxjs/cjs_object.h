@@ -46,7 +46,7 @@ class CJS_Object {
                             pdfium::span<const JSMethodSpec> consts);
 
   CJS_Object(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  virtual ~CJS_Object();
+  ~CJS_Object();
 
   v8::Local<v8::Object> ToV8Object() { return m_pV8Object.Get(GetIsolate()); }
   v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }

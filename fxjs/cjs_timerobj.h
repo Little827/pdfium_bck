@@ -17,7 +17,7 @@ class CJS_TimerObj final : public CJS_Object {
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
   CJS_TimerObj(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_TimerObj() override;
+  ~CJS_TimerObj();
 
   void SetTimer(GlobalTimer* pTimer);
   int GetTimerID() const { return m_nTimerID; }

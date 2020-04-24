@@ -35,7 +35,7 @@ class CJS_Field final : public CJS_Object {
                       CJS_DelayData* pData);
 
   CJS_Field(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Field() override;
+  ~CJS_Field();
 
   bool AttachField(CJS_Document* pDocument, const WideString& csFieldName);
 
