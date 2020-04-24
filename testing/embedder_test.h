@@ -74,6 +74,13 @@ class EmbedderTest : public ::testing::Test,
     virtual void DoURIActionWithKeyboardModifier(FPDF_FORMFILLINFO* info,
                                                  FPDF_BYTESTRING uri,
                                                  int modifiers) {}
+
+    // Equivalent to FPDF_FORMFILLINFO::FFI_DoGoToAction().
+    virtual void DoGoToAction(FPDF_FORMFILLINFO* info,
+                              int page_index,
+                              int zoom_mode,
+                              float* pos_arry,
+                              int array_size) {}
   };
 
   EmbedderTest();
@@ -310,6 +317,11 @@ class EmbedderTest : public ::testing::Test,
   static void DoURIActionWithKeyboardModifierTrampoline(FPDF_FORMFILLINFO* info,
                                                         FPDF_BYTESTRING uri,
                                                         int modifiers);
+  static void DoGoToActionTrampoline(FPDF_FORMFILLINFO* info,
+                                     int page_index,
+                                     int zoom_mode,
+                                     float* pos_array,
+                                     int array_size);
   static int WriteBlockCallback(FPDF_FILEWRITE* pFileWrite,
                                 const void* data,
                                 unsigned long size);
