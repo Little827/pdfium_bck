@@ -22,6 +22,97 @@
       "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d36dfe6_6cd73c22",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T19:54:11Z",
+      "side": 1,
+      "message": "Are indirect destinations valid?",
+      "range": {
+        "startLine": 234,
+        "startChar": 43,
+        "endLine": 234,
+        "endChar": 61
+      },
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9280eec8_d7a80e2a",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T19:54:11Z",
+      "side": 1,
+      "message": "No else after a return.",
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f2ac65d_d0c8c047",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T19:54:11Z",
+      "side": 1,
+      "message": "Same here and below, re: ordering.",
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4685f3_d97f938b",
+        "filename": "testing/embedder_test_mock_delegate.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T19:54:11Z",
+      "side": 1,
+      "message": "Keep these in the same order as public/fpdf_formfill.h, so put DoGoToAction after DoURIAction.",
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b172a56d_fb754acc",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T19:54:11Z",
+      "side": 1,
+      "message": "Update.",
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
