@@ -12,6 +12,7 @@
 #include <utility>
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fdrm/fx_crypt.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
