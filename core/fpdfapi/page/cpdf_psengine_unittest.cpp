@@ -10,6 +10,14 @@
 
 namespace {
 
+float DoOperator0(CPDF_PSEngine* engine, PDF_PSOP op) {
+  EXPECT_EQ(0u, engine->GetStackSize());
+  engine->DoOperator(op);
+  float ret = engine->Pop();
+  EXPECT_EQ(0u, engine->GetStackSize());
+  return ret;
+}
+
 float DoOperator1(CPDF_PSEngine* engine, float v1, PDF_PSOP op) {
   EXPECT_EQ(0u, engine->GetStackSize());
   engine->Push(v1);
@@ -202,18 +210,36 @@ TEST(CPDF_PSEngine, Truncate) {
 TEST(CPDF_PSEngine, Comparisons) {
   CPDF_PSEngine engine;
 
+  EXPECT_FLOAT_EQ(1.0f, DoOperator0(&engine, PSOP_TRUE));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator0(&engine, PSOP_FALSE));
+
   EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 0.0f, 0.0f, PSOP_EQ));
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 0.0f, 1.0f, PSOP_EQ));
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 255.0f, 1.0f, PSOP_EQ));
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, -1.0f, 0.0f, PSOP_EQ));
+
+  EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 0.0f, 0.0f, PSOP_NE));
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 0.0f, 1.0f, PSOP_NE));
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 255.0f, 1.0f, PSOP_NE));
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, -1.0f, 0.0f, PSOP_NE));
 
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 0.0f, 0.0f, PSOP_GT));
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 0.0f, 1.0f, PSOP_GT));
   EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 255.0f, 1.0f, PSOP_GT));
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, -1.0f, 0.0f, PSOP_GT));
 
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 0.0f, 0.0f, PSOP_GE));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 0.0f, 1.0f, PSOP_GE));
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 255.0f, 1.0f, PSOP_GE));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, -1.0f, 0.0f, PSOP_GE));
+
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 0.0f, 0.0f, PSOP_LT));
   EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 0.0f, 1.0f, PSOP_LT));
   EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 255.0f, 1.0f, PSOP_LT));
   EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, -1.0f, 0.0f, PSOP_LT));
+
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 0.0f, 0.0f, PSOP_LE));
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, 0.0f, 1.0f, PSOP_LE));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator2(&engine, 255.0f, 1.0f, PSOP_LE));
+  EXPECT_FLOAT_EQ(1.0f, DoOperator2(&engine, -1.0f, 0.0f, PSOP_LE));
 }
