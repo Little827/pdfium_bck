@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "4043c983_a6f3be88",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T00:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b6a90cd_e18160e1",
+      "range": {
+        "startLine": 257,
+        "startChar": 6,
+        "endLine": 257,
+        "endChar": 14
+      },
+      "revId": "d5424455312a88d3fae19c597730ba5f431050a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a42a1347_3865daf1",
         "filename": "fpdfsdk/pwl/cpwl_combo_box.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-04-23T20:41:15Z",
       "side": 1,
       "message": "pity we don\u0027t have struct selection {} which could be the single argument here and the return value.",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 60
+      },
+      "revId": "d5424455312a88d3fae19c597730ba5f431050a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd6cf82_432d02e7",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T00:36:28Z",
+      "side": 1,
+      "message": "Maybe another day.",
+      "parentUuid": "a42a1347_3865daf1",
       "range": {
         "startLine": 83,
         "startChar": 24,
@@ -69,6 +117,30 @@
       "revId": "d5424455312a88d3fae19c597730ba5f431050a1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aed1c66_ee4fc106",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-24T00:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa56d78e_d82ddfdb",
+      "range": {
+        "startLine": 716,
+        "startChar": 30,
+        "endLine": 716,
+        "endChar": 37
+      },
+      "revId": "d5424455312a88d3fae19c597730ba5f431050a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
