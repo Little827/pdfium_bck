@@ -16,6 +16,24 @@
       "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df498392_e88db132",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-24T00:37:06Z",
+      "side": 1,
+      "message": "Thank you for pointing it out!\n\n2 constants (|kBlankPage612By792MD5| and |kHelloWorldOriginalMD5|) in this header file are used under core/ directory. \n\nEven though 3 out of 5 of the constants in this file are used in fpdfsdk directory only, it\u0027s pretty messy to have header file of constants at different level of the directory. I am thinking about adding a header file \"embedder_test_constants.h\" in directory testing/, so that this header can be used for all existing and future PDFium embedder tests (in case more testing PDFs are used for embedder tests in both core/ and fpdfsdk/ in the future).\n\n@thestig @kmoon\nWhat\u0027s your opinion on this plan? If testing/ directory is the place to go, I will go ahead and move this header file there, and add another follow-up CL to consolidate the repetitive hash values in core/ directory.",
+      "parentUuid": "2bb3a378_4baba65d",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
