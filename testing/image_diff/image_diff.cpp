@@ -325,7 +325,7 @@ int main(int argc, const char* argv[]) {
 
   bool histograms = false;
   bool produce_diff_image = false;
-  bool reverse_byte_order = false;
+  bool reverse_byte_order = true;
   std::string filename1;
   std::string filename2;
   std::string diff_filename;

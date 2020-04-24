@@ -114,7 +114,7 @@ struct Options {
   bool no_smoothtext = false;
   bool no_smoothimage = false;
   bool no_smoothpath = false;
-  bool reverse_byte_order = false;
+  bool reverse_byte_order = true;
   bool save_attachments = false;
   bool save_images = false;
   bool save_thumbnails = false;
