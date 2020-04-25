@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "dd2b3c3b_56cf968d",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-04-25T19:29:17Z",
+      "side": 1,
+      "message": "ASSERT",
+      "range": {
+        "startLine": 86,
+        "startChar": 33,
+        "endLine": 86,
+        "endChar": 46
+      },
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ddfd34_6216d21e",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-04-25T19:29:17Z",
+      "side": 1,
+      "message": "Destination is not a PDF Action. I am thinking if we should just create a CPDF_Action of GoTo type in CPDFSDK_BAAnnotHandler::OnKeyDown() and pass it to DoAction_Link() instead.\n\nAnother possibility could be to rename the method to NavigateToDestination().\n\n@Lei, WDYT?",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d36dfe6_6cd73c22",
         "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
         "patchSetId": 5
@@ -93,6 +139,53 @@
       "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52254241_faab0ffb",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-04-25T19:29:17Z",
+      "side": 1,
+      "message": "PDF specification[1] says that \"Dest\" entry is present only for link annotations (other than action dictionaries), and should be defined as an explicit array. I\u0027d suggest adding a comment here.\n\n[1] https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#page\u003d373",
+      "parentUuid": "29c48718_0f3b0ce0",
+      "range": {
+        "startLine": 234,
+        "startChar": 43,
+        "endLine": 234,
+        "endChar": 61
+      },
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f158f7_00447235",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-04-25T19:29:17Z",
+      "side": 1,
+      "message": "Given \"Dest\" dictionary should be present only for Link annotations, please add a check for the sub-type and early return if it is not the case.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 70
+      },
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
