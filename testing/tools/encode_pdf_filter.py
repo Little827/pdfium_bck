@@ -21,6 +21,33 @@ import sys
 import zlib
 
 
+class _FilterSettings:
+
+  def __init__(self):
+    self.filter_names = []
+    self.decode_parms = []
+
+  def AddFilter(self, name, decode_parms=None):
+    self.filter_names.append(name)
+    self.decode_parms.append(decode_parms)
+
+  def GetEntries(self):
+    entries = collections.OrderedDict()
+
+    if len(self.filter_names) == 1:
+      entries['/Filter'] = self.filter_names[0]
+    elif len(self.filter_names) > 1:
+      entries['/Filter'] = self.filter_names
+
+    if any(item is not None for item in self.decode_parms):
+      if len(self.decode_parms) == 1:
+        entries['/DecodeParms'] = self.decode_parms[0]
+      else:
+        entries['/DecodeParms'] = self.decode_parms
+
+    return entries
+
+
 class _PdfStream:
   _unique_filter_classes = []
   _filter_classes = {}
@@ -65,23 +92,9 @@ class _PdfStream:
                                             ', '.join(filter_class.aliases))
     return text
 
-  @classmethod
-  def AddEntries(cls, entries):
-    _PdfStream.AddListEntry(entries, 'Filter', cls.name)
-
-  @staticmethod
-  def AddListEntry(entries, key, value):
-    old_value = entries.get(key)
-    if old_value is None:
-      entries[key] = value
-    else:
-      if not isinstance(old_value, collections.abc.MutableSequence):
-        old_value = [old_value]
-        entries[key] = old_value
-      old_value.append(value)
-
-  def __init__(self, out_buffer, **kwargs):
+  def __init__(self, filter_settings, out_buffer, **kwargs):
     del kwargs
+    self.filter_settings = filter_settings
     self.buffer = out_buffer
 
   def write(self, data):
@@ -92,12 +105,16 @@ class _PdfStream:
 
   def close(self):
     self.buffer.close()
+    self.AddEntries()
+
+  def AddEntries(self):
+    self.filter_settings.AddFilter(self.name)
 
 
 class _SinkPdfStream(_PdfStream):
 
-  def __init__(self):
-    super().__init__(io.BytesIO())
+  def __init__(self, filter_settings):
+    super().__init__(filter_settings, io.BytesIO())
 
   def close(self):
     # Don't call io.BytesIO.close(); this deallocates the written data.
@@ -109,8 +126,8 @@ class _SinkPdfStream(_PdfStream):
 
 class _AsciiPdfStream(_PdfStream):
 
-  def __init__(self, out_buffer, wrapcol=0, **kwargs):
-    super().__init__(out_buffer, **kwargs)
+  def __init__(self, filter_settings, out_buffer, wrapcol=0, **kwargs):
+    super().__init__(filter_settings, out_buffer, **kwargs)
     self.wrapcol = wrapcol
     self.column = 0
 
@@ -137,8 +154,8 @@ class _Ascii85DecodePdfStream(_AsciiPdfStream):
   name = '/ASCII85Decode'
   aliases = ('ascii85', 'base85')
 
-  def __init__(self, out_buffer, **kwargs):
-    super().__init__(out_buffer, **kwargs)
+  def __init__(self, filter_settings, out_buffer, **kwargs):
+    super().__init__(filter_settings, out_buffer, **kwargs)
     self.trailer = b''
 
   def write(self, data):
@@ -154,15 +171,15 @@ class _Ascii85DecodePdfStream(_AsciiPdfStream):
     if self.wrapcol and self.column > self.wrapcol - 2:
       self.buffer.write(b'\n')
     self.buffer.write(b'~>')
-    self.buffer.close()
+    super().close()
 
 
 class _AsciiHexDecodePdfStream(_AsciiPdfStream):
   name = '/ASCIIHexDecode'
   aliases = ('base16', 'hex', 'hexadecimal')
 
-  def __init__(self, out_buffer, **kwargs):
-    super().__init__(out_buffer, **kwargs)
+  def __init__(self, filter_settings, out_buffer, **kwargs):
+    super().__init__(filter_settings, out_buffer, **kwargs)
 
   def write(self, data):
     super().write(base64.b16encode(data))
@@ -172,8 +189,8 @@ class _FlateDecodePdfStream(_PdfStream):
   name = '/FlateDecode'
   aliases = ('deflate', 'flate', 'zlib')
 
-  def __init__(self, out_buffer, **kwargs):
-    super().__init__(out_buffer, **kwargs)
+  def __init__(self, filter_settings, out_buffer, **kwargs):
+    super().__init__(filter_settings, out_buffer, **kwargs)
     self.deflate = zlib.compressobj(level=9, memLevel=9)
 
   def write(self, data):
@@ -184,7 +201,7 @@ class _FlateDecodePdfStream(_PdfStream):
 
   def close(self):
     self.buffer.write(self.deflate.flush())
-    self.buffer.close()
+    super().close()
 
 
 class _VirtualPdfStream(_PdfStream):
@@ -193,8 +210,7 @@ class _VirtualPdfStream(_PdfStream):
   def RegisterByName(cls):
     pass
 
-  @classmethod
-  def AddEntries(cls, entries):
+  def AddEntries(self):
     pass
 
 
@@ -215,14 +231,8 @@ class _PngIdatPdfStream(_VirtualPdfStream):
   _PNG_HEADER = 0x89504E470D0A1A0A
   _PNG_CHUNK_IDAT = 0x49444154
 
-  @classmethod
-  def AddEntries(cls, entries):
-    # Technically only true for compression method 0 (zlib), but no other
-    # methods have been standardized.
-    _PdfStream.AddListEntry(entries, 'Filter', '/FlateDecode')
-
-  def __init__(self, out_buffer, **kwargs):
-    super().__init__(out_buffer, **kwargs)
+  def __init__(self, filter_settings, out_buffer, **kwargs):
+    super().__init__(filter_settings, out_buffer, **kwargs)
     self.chunk = _PngIdatPdfStream._EXPECT_HEADER
     self.remaining = 8
     self.accumulator = 0
@@ -268,6 +278,11 @@ class _PngIdatPdfStream(_VirtualPdfStream):
     self.accumulator = self.accumulator << 8 | byte
     self.remaining -= 1
     return self.remaining == 0
+
+  def AddEntries(self):
+    # Technically only true for compression method 0 (zlib), but no other
+    # methods have been standardized.
+    self.filter_settings.AddFilter('/FlateDecode', {})
 
 
 _Ascii85DecodePdfStream.Register()
@@ -327,9 +342,9 @@ def _ParseCommandLine(argv):
   return args
 
 
-def _WrapWithFilters(out_buffer, filter_classes, **kwargs):
+def _WrapWithFilters(filter_settings, out_buffer, filter_classes, **kwargs):
   for filter_class in filter_classes:
-    out_buffer = filter_class(out_buffer, **kwargs)
+    out_buffer = filter_class(filter_settings, out_buffer, **kwargs)
   return out_buffer
 
 
@@ -342,52 +357,108 @@ def _CopyBytes(in_buffer, out_buffer):
     out_buffer.write(data[:data_length])
 
 
-def _WritePdfStreamObject(out_buffer,
+class _PdfValuePrinter:
+
+  def __init__(self, out_buffer):
+    self.out_buffer = out_buffer
+    self.indent = b''
+    self.line_length = 0
+
+  def write(self, data):
+    if not self.line_length:
+      self.out_buffer.write(self.indent)
+      self.line_length += len(self.indent)
+    self.out_buffer.write(data)
+    self.line_length += len(data)
+
+  def IncreaseIndent(self):
+    self.indent = b' ' * (len(self.indent) + 2)
+
+  def DecreaseIndent(self):
+    self.indent = b' ' * (len(self.indent) - 2)
+
+  def PrintLineBreak(self):
+    if self.line_length:
+      self.write(b'\n')
+      self.line_length = 0
+
+  def PrintValue(self, value):
+    if isinstance(value, (str, collections.abc.ByteString)):
+      self._PrintPrimitive(value)
+    elif isinstance(value, collections.abc.Sequence):
+      self._PrintArray(value)
+    elif isinstance(value, collections.abc.Mapping):
+      self._PrintDict(value)
+    else:
+      self._PrintPrimitive(value)
+
+  def _PrintPrimitive(self, value):
+    if value is None:
+      value = b'null'
+    else:
+      value = str(value).encode('ascii')
+    self.write(value)
+
+  def _PrintArray(self, value):
+    self.write(b'[')
+    self.PrintLineBreak()
+    self.IncreaseIndent()
+    for item in value:
+      self.PrintValue(item)
+      self.PrintLineBreak()
+    self.DecreaseIndent()
+    self.write(b']')
+
+  def _PrintDict(self, value):
+    self.write(b'<<')
+    self.PrintLineBreak()
+    self.IncreaseIndent()
+    for item_key, item_value in value.items():
+      if item_key != '/Length' or item_value != '{{streamlen}}':
+        self.PrintValue(item_key)
+        self.write(b' ')
+      self.PrintValue(item_value)
+      self.PrintLineBreak()
+    self.DecreaseIndent()
+    self.write(b'>>')
+
+
+def _WritePdfStreamObject(printer,
                           data,
                           entries,
                           raw=False,
                           use_streamlen=False):
   if not raw:
-    out_buffer.write(b'<<\n')
-    entries['Length'] = len(data)
-    for k, v in entries.items():
-      v = _EncodePdfValue(v)
-      if k == 'Length' and use_streamlen:
-        out_buffer.write(b'  {{streamlen}}\n')
-      else:
-        out_buffer.write('  /{} {}\n'.format(k, v).encode('ascii'))
-    out_buffer.write(b'>>\nstream\n')
+    entries['/Length'] = '{{streamlen}}' if use_streamlen else len(data)
+    printer.PrintValue(entries)
+    printer.PrintLineBreak()
+    printer.write(b'stream')
+    printer.PrintLineBreak()
 
-  out_buffer.write(data)
+  printer.write(data)
 
   if not raw:
     if data and data[-1] != '\n':
-      out_buffer.write(b'\n')
-    out_buffer.write(b'endstream\n')
-
-
-def _EncodePdfValue(value):
-  if isinstance(value, collections.abc.MutableSequence):
-    value = '[' + ' '.join(value) + ']'
-  return value
+      printer.PrintLineBreak()
+    printer.write(b'endstream')
+    printer.PrintLineBreak()
 
 
 def main(argv):
   args = _ParseCommandLine(argv)
 
-  encoded_sink = _SinkPdfStream()
+  filter_settings = _FilterSettings()
+  encoded_sink = _SinkPdfStream(filter_settings)
   with args.infile:
-    out_buffer = _WrapWithFilters(encoded_sink, args.filter, wrapcol=args.wrap)
+    out_buffer = _WrapWithFilters(
+        filter_settings, encoded_sink, args.filter, wrapcol=args.wrap)
     _CopyBytes(args.infile.buffer, out_buffer)
     out_buffer.close()
 
-  entries = collections.OrderedDict()
-  for f in args.filter:
-    f.AddEntries(entries)
   _WritePdfStreamObject(
-      args.outfile.buffer,
-      data=encoded_sink.getbuffer(),
-      entries=entries,
+      _PdfValuePrinter(args.outfile.buffer),
+      encoded_sink.getbuffer(),
+      filter_settings.GetEntries(),
       raw=args.raw,
       use_streamlen=not args.length)
   return args.outfile.close()
