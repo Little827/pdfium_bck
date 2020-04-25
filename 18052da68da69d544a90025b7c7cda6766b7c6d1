@@ -244,6 +244,30 @@
     },
     {
       "key": {
+        "uuid": "32d2810e_a6244876",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-25T17:35:03Z",
+      "side": 1,
+      "message": "SGTM; \"Hash\" might be another good option (if you\u0027re looking for something shorter), since that terminology is used widely for this. I feel like it\u0027s less specific than \"Checksum\" or \"Digest,\" though.",
+      "parentUuid": "413eff2c_c68a3ed4",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fc72e33_d25f4f28",
         "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
         "patchSetId": 6
@@ -294,6 +318,24 @@
       "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78e874e3_8a1959ef",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-25T17:35:03Z",
+      "side": 1,
+      "message": "Given that it\u0027s a test-generated blank page, I wonder if it\u0027d be better to have two assertions instead of a single checksum:\n\n1. All the pixels are blank.\n2. The image has specific dimensions.\n\nIf this test fails, these assertions would provide more information than a single checksum failure.",
+      "parentUuid": "70d0c5a1_af58b48e",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {

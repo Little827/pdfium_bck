@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f43f312a_e4199419",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-25T17:35:03Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1963dfc2_7ed37b5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-25T17:35:03Z",
+      "side": 1,
+      "message": "Aside: It might make sense to consolidate all of these in the future (if we do mechanical generation), even if they\u0027re only used by one test.",
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591951b4_5338b996",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-25T17:35:03Z",
+      "side": 1,
+      "message": "The \"testing\" namespace is already used by googletest; I would try to avoid adding to it.\n\nI would consider using some sort of plain \"pdfium\" namespace (collisions are unlikely, and resolvable within PDFium alone), or something like \"pdfium_testing\" (but that\u0027s longer, although using statements could be used to shorten that in individual test files).",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702c5e15_fe44c2ad",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-25T17:35:03Z",
+      "side": 1,
+      "message": "Personal opinion: I feel like this would be easier to read with extra vertical whitespace.",
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
