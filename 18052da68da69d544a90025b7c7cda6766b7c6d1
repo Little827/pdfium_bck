@@ -55,6 +55,42 @@
     },
     {
       "key": {
+        "uuid": "d53be39b_14f17b46",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86169e6a_27bb57b3",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ff5b1e7_b9b700d5",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86169e6a_27bb57b3",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b505eb9b_85af4c70",
         "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
         "patchSetId": 6
@@ -75,6 +111,54 @@
       "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa9e19d_7b5255e2",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b505eb9b_85af4c70",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af787fa_ae381d81",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b505eb9b_85af4c70",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +190,48 @@
       "writtenOn": "2020-04-24T17:14:01Z",
       "side": 1,
       "message": "This should be \"Md5\", not \"MD5\". The original naming is not consistent about this, but since these constants will be used in multiple files, I suggest following the style guide-compliant naming convention.\n\nI think some of this could be avoided by calling these \"Checksum\", \"Digest\", etc., instead of tagging them with an explicit algorithm like \"MD5\".",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049f6159_96d6ba45",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74fcbfc6_8ef2e6eb",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "413eff2c_c68a3ed4",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "MD5/Md5/Md5sum/md5 have been widely used for embedder tests in both core/ and fpdfsdk/ diretories, and sometimes they are at the beginning of the filenames while sometimes at the end. To make it easier to unify the hash values\u0027 naming scheme in the future, I am naming all repetitive hash values in the format of \"kFiLENAME(ACTION)?Checksum\".",
+      "parentUuid": "37fc3f97_fd85f82d",
       "range": {
         "startLine": 10,
         "startChar": 40,
@@ -153,6 +279,24 @@
     },
     {
       "key": {
+        "uuid": "70d0c5a1_af58b48e",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "|kBlankPage612By792MD5| doesn\u0027t have \"Original\" in its name, because it\u0027s not a hash value coming from a specific PDF testing file. It\u0027s the hash value for a 612x792 blank page.\nI will change the naming scheme together once they are moved into the testing directory and add comments for these hash values.",
+      "parentUuid": "2417964f_65f38430",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27debc99_722ae66b",
         "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
         "patchSetId": 6
@@ -170,6 +314,24 @@
     },
     {
       "key": {
+        "uuid": "9292bda6_e2d27588",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27debc99_722ae66b",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97759f7_6b6a33af",
         "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
         "patchSetId": 6
@@ -184,6 +346,24 @@
       "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beafda83_1e208ef4",
+        "filename": "fpdfsdk/fpdf_embeddertest_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-25T02:21:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d97759f7_6b6a33af",
+      "revId": "18052da68da69d544a90025b7c7cda6766b7c6d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
