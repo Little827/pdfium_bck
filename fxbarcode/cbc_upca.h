@@ -7,7 +7,6 @@
 #ifndef FXBARCODE_CBC_UPCA_H_
 #define FXBARCODE_CBC_UPCA_H_
 
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "fxbarcode/cbc_eancode.h"
 
