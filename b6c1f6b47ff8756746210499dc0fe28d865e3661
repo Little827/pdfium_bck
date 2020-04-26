@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d11a353_40c628bf",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-26T16:32:35Z",
+      "side": 1,
+      "message": "Made it as dest_positions.",
+      "parentUuid": "d0560d3d_01dd819e",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8053fe77_02cfba83",
         "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f81b26ad_bf231adf",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-26T16:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8053fe77_02cfba83",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b353f490_a5b63f43",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-26T16:32:35Z",
+      "side": 1,
+      "message": "There are cases where dest can be \"[page /Fit]\" and need not have parameters. So position_array can be empty. So not adding ASSERT.",
+      "parentUuid": "8652b187_3d46a1c6",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6c43638_e1378db1",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 6
@@ -85,6 +157,24 @@
       "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04054389_49fbabf2",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-26T16:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6c43638_e1378db1",
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "7a15c9ca_bbea4e48",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-26T16:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b6514f0_40c8b84c",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 66
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4388850c_1ae41ff1",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 6
@@ -131,6 +245,30 @@
       "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a35e1a_f9ea61de",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3083,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-04-26T16:32:35Z",
+      "side": 1,
+      "message": "AFAIK, we wont handle it. But for any scenario, if we start handling Shift/Control, then this ASSERT will fail. So added this comment just to make sure this comment can be removed at that point of time.",
+      "parentUuid": "4388850c_1ae41ff1",
+      "range": {
+        "startLine": 3082,
+        "startChar": 0,
+        "endLine": 3083,
+        "endChar": 38
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
