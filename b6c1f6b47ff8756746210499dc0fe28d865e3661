@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "d0560d3d_01dd819e",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-26T09:52:16Z",
+      "side": 1,
+      "message": "should it be simply |positions| or |dest_positions|?",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8053fe77_02cfba83",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-26T09:52:16Z",
+      "side": 1,
+      "message": "A comment explaining why the loop starts from two? Mentioning the values which are at [0] and [1] will be helpful.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8652b187_3d46a1c6",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-26T09:52:16Z",
+      "side": 1,
+      "message": "do we need to assert that position_array has some values? Or it could be empty as well per PDF spec?\n\nJust to confirm, I am assuming that in coming changes we will update PDFiumFormFiller::Form_DoGoToAction to handle position_array as well?",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c43638_e1378db1",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-26T09:52:16Z",
+      "side": 1,
+      "message": "Can we reverse this, I think true case be the first one to be handled.",
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b6514f0_40c8b84c",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 6
@@ -18,6 +104,29 @@
         "startChar": 2,
         "endLine": 194,
         "endChar": 66
+      },
+      "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4388850c_1ae41ff1",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3083,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-04-26T09:52:16Z",
+      "side": 1,
+      "message": "FWL_VKEY_Shift and FWL_VKEY_Control should be modifier keys, will they ever be handled by Form_OnKeyDown?",
+      "range": {
+        "startLine": 3082,
+        "startChar": 0,
+        "endLine": 3083,
+        "endChar": 38
       },
       "revId": "b6c1f6b47ff8756746210499dc0fe28d865e3661",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
