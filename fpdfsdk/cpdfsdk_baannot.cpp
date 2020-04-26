@@ -229,3 +229,15 @@ int CPDFSDK_BAAnnot::GetLayoutOrder() const {
 
   return CPDFSDK_Annot::GetLayoutOrder();
 }
+
+CPDF_Dest CPDFSDK_BAAnnot::GetDestination() const {
+  if (m_pAnnot->GetSubtype() != CPDF_Annot::Subtype::LINK)
+    return CPDF_Dest();
+
+  // Link annotations can have "Dest" entry defined as an explicit array.
+  // https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#page=373
+  CPDF_Object* dest_dict = GetAnnotDict()->GetDirectObjectFor("Dest");
+  if (!dest_dict || !dest_dict->IsArray())
+    return CPDF_Dest();
+  return CPDF_Dest(dest_dict->AsArray());
+}
