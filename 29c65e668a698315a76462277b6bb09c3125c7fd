@@ -71,6 +71,30 @@
       "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc700310_898fe872",
+        "filename": "third_party/libtiff/0000-build-config.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-27T22:20:43Z",
+      "side": 1,
+      "message": "\"#define ZIP_SUPPORT\" still defines it. The other alternative to commenting it out is to do \"#undef ZIP_SUPPORT\". Do you like that better?",
+      "parentUuid": "7faae1a4_e1fae29b",
+      "range": {
+        "startLine": 279,
+        "startChar": 24,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
