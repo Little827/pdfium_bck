@@ -119,6 +119,30 @@
       "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a41e9b0_b9970951",
+        "filename": "third_party/libtiff/0000-build-config.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-27T22:31:58Z",
+      "side": 1,
+      "message": "So running ./configure in a standalone libtiff source checkout generates the code snippet below. I think the intention with this build config is to have something like that. How about I do what autoconf would do?\n\n/* Support Deflate compression */\n#define ZIP_SUPPORT 1\n\n/* Support zstd compression */\n/* #undef ZSTD_SUPPORT */",
+      "parentUuid": "9f0468c1_d239065d",
+      "range": {
+        "startLine": 279,
+        "startChar": 24,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
