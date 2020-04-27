@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "2f9ab66b_ad0b0ebb",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-27T23:35:37Z",
+      "side": 1,
+      "message": "As per Lei\u0027s reference, \"testing\" is a well-known top-level namespace (to the extent that Google Test is well-known), so it should still be avoided.\n\nhttps://abseil.io/tips/130 has the fuller guidance (even mentioning \"testing\" explicitly), and goes beyond the style guide in recommending best practices. You shouldn\u0027t use existing examples as justification, as they may not even be using Google style, or may predate the style guidance. (This is a fairly recent change.)",
+      "parentUuid": "897ef857_060c05fb",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "702c5e15_fe44c2ad",
         "filename": "testing/embedder_test_constants.h",
         "patchSetId": 11
