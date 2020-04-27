@@ -50,6 +50,24 @@
       "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57b06bb_338ae85b",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-27T17:55:44Z",
+      "side": 1,
+      "message": "Just guessing here, but the order seems dictated by the order in the .cc file, which seems dictated by grouping similar #if guards.\n\nI don\u0027t think that\u0027s a logical ordering, so the alternatives appear to be:\n\n1. Order the .h differently than the .cc file.\n2. Break up the #if guard blocks so the .h and the .cc have the same order.\n3. Introduce a prefix scheme such that alphabetical order matches the #if guard order.\n\nI think (2) would make more sense if we generate these files, but (1) is probably more reasonable in the short term. I think (3) probably is a bad idea in general, since it encodes implementation details into the name.",
+      "parentUuid": "830d1b19_1d11270c",
+      "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

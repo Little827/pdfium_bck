@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "d52529df_c5c6d859",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-27T17:55:44Z",
+      "side": 1,
+      "message": "The style guide discourages nested namespaces (particularly those that resemble top-level namespaces), so I think we should avoid pdfium::testing.\n\nMy vote would be to put everything into pdfium.",
+      "parentUuid": "27561300_b4843640",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "702c5e15_fe44c2ad",
         "filename": "testing/embedder_test_constants.h",
         "patchSetId": 11
