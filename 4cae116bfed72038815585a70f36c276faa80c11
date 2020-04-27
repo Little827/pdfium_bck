@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "897ef857_060c05fb",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-27T21:53:26Z",
+      "side": 1,
+      "message": "I did find nested namespace examples in a lot thirdparty codes. In PDFium we have examples like \"pdfium::access_permissions\". Will use keep it consistent by using pdfium::testing in the new patchset and use using statement depending on the scope of the hash value.",
+      "parentUuid": "1e435922_46a0cfb5",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "702c5e15_fe44c2ad",
         "filename": "testing/embedder_test_constants.h",
         "patchSetId": 11
@@ -151,6 +175,24 @@
       "revId": "4cae116bfed72038815585a70f36c276faa80c11",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6e3abb_b84e7164",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-27T21:53:26Z",
+      "side": 1,
+      "message": "Agree and done~",
+      "parentUuid": "702c5e15_fe44c2ad",
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

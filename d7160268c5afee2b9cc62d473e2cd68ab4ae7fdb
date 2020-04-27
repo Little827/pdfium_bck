@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba0a92c0_e79ef717",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-27T21:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7661e317_97454935",
+      "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4bc383f_43beb3c9",
         "filename": "testing/embedder_test_constants.h",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "735f40e6_b2adcdbf",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-27T21:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4bc383f_43beb3c9",
+      "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +101,24 @@
       "side": 1,
       "message": "Just guessing here, but the order seems dictated by the order in the .cc file, which seems dictated by grouping similar #if guards.\n\nI don\u0027t think that\u0027s a logical ordering, so the alternatives appear to be:\n\n1. Order the .h differently than the .cc file.\n2. Break up the #if guard blocks so the .h and the .cc have the same order.\n3. Introduce a prefix scheme such that alphabetical order matches the #if guard order.\n\nI think (2) would make more sense if we generate these files, but (1) is probably more reasonable in the short term. I think (3) probably is a bad idea in general, since it encodes implementation details into the name.",
       "parentUuid": "830d1b19_1d11270c",
+      "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e8547a_d8f06759",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-27T21:53:26Z",
+      "side": 1,
+      "message": "@kmoon was right, the .h file was ordered the same as the .cpp file. But the order of the hash values were ordered alphabetically inside each #if guards, not across the whole file, which was due to the concern of having redundant #if guards.\n\nUsing (2) does make more sense, so that both .cpp and .h files can have variables ordered alphabetically. The only trade off is redundant #if guards. I think in the long run, since we are possibly going to add more Skia/SkiaPaths checks in the if guards, (2) might help reduce the size of changes in the future.\n\nI will implement according to (2) in the new patchset to see how it looks.",
+      "parentUuid": "f57b06bb_338ae85b",
       "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
