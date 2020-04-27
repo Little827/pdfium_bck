@@ -95,6 +95,30 @@
       "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f0468c1_d239065d",
+        "filename": "third_party/libtiff/0000-build-config.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-27T22:24:31Z",
+      "side": 1,
+      "message": "Ah, sorry if I wasn\u0027t being clear.  I meant remove the |1| from all the *other* #defines that we want to keep enabled, as the lack of a value indicates that the definition is important, not the value. I think commenting out is better -- given an additive model where you might add -D from the command line that would no longer work given an #undef.",
+      "parentUuid": "fc700310_898fe872",
+      "range": {
+        "startLine": 279,
+        "startChar": 24,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
