@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1588009082 -0700\nnonce AM5BpQVIiMtew8xps7hT1VeOs9gP9gJlpCLE8ef65KpL7rkSbRd6XR7RVNUn5x7L3c6kVkLxvUis\n\n0000000000000000000000000000000000000000 1cf49192aeb03d43e4a42305955e67a25b8348c0 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6nGHoACgkQqzYtYVpm\n/XvGpggAlMo9t4sSie0u8b4+E6+7rrzpRBG0u9gQH3ktSDujrgjxU6WUdbSXWAfv\nRwoumMai6dyfyc1VWPATrxzJ/ZEqwpqv0+AZGpVR2T/wsLlVALAhBmv6S60YlwLY\nIW4nS805NxDThZofLHYHVl0TjiMIt+k8EXlo+HdB5/BfCSjJwQl08p1GXZEXYEWa\nkqU0WjxQxjTfrHatMpPnr4LfXc1E82bglaLG1nOXPeu1BolcepsyiSCPVCuPdAAX\nT9UPn2TFmorFBYqsdmENF39riMJPDH5Hj4RWqTH1sygnOK1k4lXJPKPjgCiB36vL\nkLzaKJRUpUiXyvFWmRdj0G1VO/Wkfg\u003d\u003d\n\u003d0I8J\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "783b274c_19722e3f",
+        "filename": "third_party/libtiff/0000-build-config.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-27T18:42:21Z",
+      "side": 1,
+      "message": "nit: or define as 0?",
+      "range": {
+        "startLine": 267,
+        "startChar": 26,
+        "endLine": 267,
+        "endChar": 27
+      },
+      "revId": "1cf49192aeb03d43e4a42305955e67a25b8348c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
