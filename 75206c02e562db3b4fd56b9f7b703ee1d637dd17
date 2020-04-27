@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "98461fa7_0b8b55fb",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-27T19:28:08Z",
+      "side": 1,
+      "message": "The usage below is all signed, so I\u0027d just leave it as is.",
+      "parentUuid": "a8929d66_26a6bfa4",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "75206c02e562db3b4fd56b9f7b703ee1d637dd17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "211496bb_dd34318e",
         "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-04-23T16:52:22Z",
       "side": 1,
       "message": "maybe BitIndexToByte(index) \u0026 ~3",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "75206c02e562db3b4fd56b9f7b703ee1d637dd17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503c50f0_b238cb60",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-27T19:28:08Z",
+      "side": 1,
+      "message": "We use \"val / 32 * 4\" in a bunch of places. I feel it\u0027s easier to read.",
+      "parentUuid": "211496bb_dd34318e",
       "range": {
         "startLine": 42,
         "startChar": 9,
