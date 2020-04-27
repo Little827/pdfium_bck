@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7661e317_97454935",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-27T17:37:12Z",
+      "side": 1,
+      "message": "Since we gave |md5_1| a more meaningful name, let\u0027s keep going and do the same for these 2. Looking at the test below, maybe \"kFocusedTextFormWithAbcChecksum\" and \"kUnfocusedTextFormWithAbcChecksum\" ?",
+      "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4bc383f_43beb3c9",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-27T17:37:12Z",
+      "side": 1,
+      "message": "Not needed here. Move to .cpp file?",
+      "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830d1b19_1d11270c",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-27T17:37:12Z",
+      "side": 1,
+      "message": "What\u0027s the scheme for ordering these constants? It looks like it\u0027s alphabetical order, but |kBug890322Checksum| is not in order.\n\nIf someone wants to add a new constant, where should they put it?",
+      "revId": "d7160268c5afee2b9cc62d473e2cd68ab4ae7fdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
