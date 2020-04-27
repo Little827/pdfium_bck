@@ -47,6 +47,30 @@
       "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7faae1a4_e1fae29b",
+        "filename": "third_party/libtiff/0000-build-config.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-04-27T22:02:23Z",
+      "side": 1,
+      "message": "Ah, didn\u0027t look that far ahead.  So we could remove the |1| from all of these to make it more obvious that we\u0027re using #ifdefs and not #ifs",
+      "parentUuid": "a516ab0a_dc09d5a8",
+      "range": {
+        "startLine": 279,
+        "startChar": 24,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "29c65e668a698315a76462277b6bb09c3125c7fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
