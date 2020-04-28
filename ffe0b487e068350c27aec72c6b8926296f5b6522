@@ -16,6 +16,24 @@
       "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b81da04_44629b46",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-28T18:36:11Z",
+      "side": 1,
+      "message": "I couldn\u0027t find any specific style guide on which is preferred for using-declaration (declare right before use or at the top of the scope), as long as it\u0027s in the smallest scope of where it\u0027s being used. But judging by https://abseil.io/tips/119, it says \"More generally, the closer a declaration is to the point of use, the smaller is the set of scopes that can break your code.\" Maybe putting using-declaration right before use is the preferred way?",
+      "parentUuid": "63d82d60_2c556b99",
+      "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
