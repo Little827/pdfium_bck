@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "acde02f4_02c05cd6",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-28T22:23:28Z",
+      "side": 1,
+      "message": "Remove and just use |kHelloWorldChecksum| directly?\n\nAs is, |kGreetingsRemovedChecksum| is not a true constant, as one can write kGreetingsRemovedChecksum \u003d nullptr on the next line and it still compiles.",
+      "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cc543a_a21871d0",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-28T22:23:28Z",
+      "side": 1,
+      "message": "Put using statements with global scope outside of (above) the anonymous namespace.\n\nIn a Chromium checkout, run \"git grep -l \u0027using content::\u0027 chrome\" and see just about every file does it that way.",
+      "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d82d60_2c556b99",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 15
