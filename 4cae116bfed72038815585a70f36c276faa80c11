@@ -185,6 +185,30 @@
     },
     {
       "key": {
+        "uuid": "d5359237_8267f610",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-28T01:03:21Z",
+      "side": 1,
+      "message": "Thanks for the fuller guidance! I changed the namespace name to \"pdfium_testing\", since this will actually match the path name, which is following the general style guide as well.",
+      "parentUuid": "2f9ab66b_ad0b0ebb",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "4cae116bfed72038815585a70f36c276faa80c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "702c5e15_fe44c2ad",
         "filename": "testing/embedder_test_constants.h",
         "patchSetId": 11
