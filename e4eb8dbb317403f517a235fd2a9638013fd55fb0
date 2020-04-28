@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "7590fcb5_94b2e118",
+        "filename": "fpdfsdk/pwl/cpwl_edit.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-28T17:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47a64cdc_ed87105e",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 9
+      },
+      "revId": "e4eb8dbb317403f517a235fd2a9638013fd55fb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7054beab_dfb5ab48",
         "filename": "fpdfsdk/pwl/cpwl_edit.cpp",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2020-04-24T16:24:19Z",
       "side": 1,
       "message": "yeah, ok, generally I\u0027d prefer immutability to de-duplicated construction; do we know if the generated code is any worse/better for these optimizations we\u0027ve been making?",
+      "range": {
+        "startLine": 188,
+        "startChar": 15,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "e4eb8dbb317403f517a235fd2a9638013fd55fb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90789525_260fc409",
+        "filename": "fpdfsdk/pwl/cpwl_edit.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-28T17:51:21Z",
+      "side": 1,
+      "message": "Compared to having this in the inner loop:\n\nint x \u003d rcClient.left + width * (i + 1);\npath.AppendPoint(CFX_PointF(x, rcClient.bottom), FXPT_TYPE::MoveTo);\npath.AppendPoint(CFX_PointF(x, rcClient.top), FXPT_TYPE::LineTo);\n\nLooking at the disassembly, pulling out the construction of |top| and |bottom| saves 7 instructions in the inner loop, with more instructions executed once before branching for the for-loop.\n\nSimplified example:\n\nhttps://godbolt.org/z/CNW5Wk\nhttps://godbolt.org/z/pJZFgd",
+      "parentUuid": "7054beab_dfb5ab48",
       "range": {
         "startLine": 188,
         "startChar": 15,
