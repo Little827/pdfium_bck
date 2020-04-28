@@ -34,6 +34,24 @@
       "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc504d8b_f5e1a966",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-28T22:04:05Z",
+      "side": 1,
+      "message": "I think this is fine. Though given it\u0027s |kHelloWorldChecksum|, this may end up at the top of the file eventually anyway, if another test reuses hello_world.pdf.",
+      "parentUuid": "0b81da04_44629b46",
+      "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
