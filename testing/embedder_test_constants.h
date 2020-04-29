@@ -16,6 +16,9 @@ extern const char kBug890322Checksum[];
 // MD5 hash for rendering hello_world.pdf or bug_455199.pdf.
 extern const char kHelloWorldChecksum[];
 
+// MD5 hash for rendering hello_world.pdf with flag FPDF_NO_NATIVETEXT.
+extern const char kHelloWorldNoNativeTextChecksum[];
+
 // MD5 hash for rendering hello_world.pdf after removing "Goodbye, world!".
 extern const char kHelloWorldRemovedChecksum[];
 

@@ -32,6 +32,19 @@ const char kHelloWorldChecksum[] = "2baa4c0e1758deba1b9c908e1fbd04ed";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
+#if defined(OS_WIN)
+const char kHelloWorldNoNativeTextChecksum[] =
+    "7fca5790ce81c715d74d955ea9939fd8";
+#elif defined(OS_MACOSX)
+// FPDF_NO_NATIVETEXT removes native text support for MacOS, therefore this hash
+// value is the same as Linux's.
+const char kHelloWorldNoNativeTextChecksum[] =
+    "2baa4c0e1758deba1b9c908e1fbd04ed";
+#else
+const char kHelloWorldNoNativeTextChecksum[] =
+    "2baa4c0e1758deba1b9c908e1fbd04ed";
+#endif
+
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 const char kHelloWorldRemovedChecksum[] = "f87c63cbbc83fbb0f5b7b1d9e67448d0";
 #else
