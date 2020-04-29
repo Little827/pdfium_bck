@@ -37,7 +37,7 @@ CXFA_Line::CXFA_Line(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Line,
                 kLinePropertyData,
                 kLineAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Line::~CXFA_Line() = default;
 

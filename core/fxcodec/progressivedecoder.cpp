@@ -2306,7 +2306,7 @@ FXCODEC_STATUS ProgressiveDecoder::ContinueDecode() {
 }
 
 std::unique_ptr<ProgressiveDecoder> ModuleMgr::CreateProgressiveDecoder() {
-  return pdfium::MakeUnique<ProgressiveDecoder>(this);
+  return std::make_unique<ProgressiveDecoder>(this);
 }
 
 }  // namespace fxcodec

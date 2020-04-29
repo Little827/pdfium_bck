@@ -26,6 +26,6 @@ CXFA_Producer::CXFA_Producer(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Producer,
                 {},
                 kProducerAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Producer::~CXFA_Producer() = default;

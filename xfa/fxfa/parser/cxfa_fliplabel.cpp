@@ -26,6 +26,6 @@ CXFA_FlipLabel::CXFA_FlipLabel(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::FlipLabel,
                 {},
                 kFlipLabelAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_FlipLabel::~CXFA_FlipLabel() = default;

@@ -73,10 +73,10 @@ void CPDF_Form::ParseContentInternal(const CPDF_AllStates* pGraphicStates,
   if (GetParseState() == ParseState::kNotParsed) {
     if (!pParsedSet) {
       if (!m_ParsedSet)
-        m_ParsedSet = pdfium::MakeUnique<std::set<const uint8_t*>>();
+        m_ParsedSet = std::make_unique<std::set<const uint8_t*>>();
       pParsedSet = m_ParsedSet.get();
     }
-    StartParse(pdfium::MakeUnique<CPDF_ContentParser>(
+    StartParse(std::make_unique<CPDF_ContentParser>(
         this, pGraphicStates, pParentMatrix, pType3Char, pParsedSet));
   }
 

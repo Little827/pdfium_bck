@@ -1133,7 +1133,7 @@ CXFA_LocaleMgr::CXFA_LocaleMgr(CXFA_Node* pLocaleSet, WideString wsDeflcid)
 
   for (CXFA_Node* pNodeLocale = pLocaleSet->GetFirstChild(); pNodeLocale;
        pNodeLocale = pNodeLocale->GetNextSibling()) {
-    m_LocaleArray.push_back(pdfium::MakeUnique<CXFA_NodeLocale>(pNodeLocale));
+    m_LocaleArray.push_back(std::make_unique<CXFA_NodeLocale>(pNodeLocale));
   }
 }
 

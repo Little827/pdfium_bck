@@ -60,6 +60,6 @@ CXFA_ExclGroup::CXFA_ExclGroup(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::ExclGroup,
                 kExclGroupPropertyData,
                 kExclGroupAttributeData,
-                pdfium::MakeUnique<CJX_ExclGroup>(this)) {}
+                std::make_unique<CJX_ExclGroup>(this)) {}
 
 CXFA_ExclGroup::~CXFA_ExclGroup() = default;

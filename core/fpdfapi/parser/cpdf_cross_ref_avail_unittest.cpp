@@ -16,7 +16,7 @@ namespace {
 
 std::unique_ptr<CPDF_SyntaxParser> MakeParserForBuffer(
     pdfium::span<const uint8_t> buffer) {
-  return pdfium::MakeUnique<CPDF_SyntaxParser>(
+  return std::make_unique<CPDF_SyntaxParser>(
       pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(buffer));
 }
 
@@ -39,8 +39,8 @@ TEST(CPDF_CrossRefAvailTest, CheckCrossRefV4) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(xref_table);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
 
   EXPECT_EQ(CPDF_DataAvail::DataAvailable, cross_ref_avail->CheckAvail());
 }
@@ -56,8 +56,8 @@ TEST(CPDF_CrossRefAvailTest, CheckCrossRefStream) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(xref_stream);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
 
   EXPECT_EQ(CPDF_DataAvail::DataAvailable, cross_ref_avail->CheckAvail());
 }
@@ -74,8 +74,8 @@ TEST(CPDF_CrossRefAvailTest, IncorrectStartOffset) {
   const FX_FILESIZE last_crossref_offset = 70000;
 
   auto parser = MakeParserForBuffer(xref_stream);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
 
   EXPECT_EQ(CPDF_DataAvail::DataError, cross_ref_avail->CheckAvail());
 }
@@ -91,8 +91,8 @@ TEST(CPDF_CrossRefAvailTest, IncorrectPrevOffset) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(xref_stream);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataError, cross_ref_avail->CheckAvail());
 }
 
@@ -113,8 +113,8 @@ TEST(CPDF_CrossRefAvailTest, IncorrectPrevStreamOffset) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(xref_table);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataError, cross_ref_avail->CheckAvail());
 }
 
@@ -125,8 +125,8 @@ TEST(CPDF_CrossRefAvailTest, IncorrectData) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(incorrect_data);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataError, cross_ref_avail->CheckAvail());
 }
 
@@ -173,8 +173,8 @@ TEST(CPDF_CrossRefAvailTest, ThreeCrossRefV4) {
   const FX_FILESIZE last_crossref_offset = static_cast<FX_FILESIZE>(cur_offset);
 
   auto parser = MakeParserForBuffer(pdfium::as_bytes(pdfium::make_span(table)));
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataAvailable, cross_ref_avail->CheckAvail());
 }
 
@@ -217,8 +217,8 @@ TEST(CPDF_CrossRefAvailTest, ThreeCrossRefV5) {
   const FX_FILESIZE last_crossref_offset = static_cast<FX_FILESIZE>(cur_offset);
 
   auto parser = MakeParserForBuffer(pdfium::as_bytes(pdfium::make_span(table)));
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataAvailable, cross_ref_avail->CheckAvail());
 }
 
@@ -266,8 +266,8 @@ TEST(CPDF_CrossRefAvailTest, Mixed) {
   const FX_FILESIZE last_crossref_offset = last_v4_table_offset;
 
   auto parser = MakeParserForBuffer(pdfium::as_bytes(pdfium::make_span(table)));
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataAvailable, cross_ref_avail->CheckAvail());
 }
 
@@ -280,8 +280,8 @@ TEST(CPDF_CrossRefAvailTest, CrossRefV5IsNotStream) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(invalid_xref_stream);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataError, cross_ref_avail->CheckAvail());
 }
 
@@ -303,8 +303,8 @@ TEST(CPDF_CrossRefAvailTest, CrossRefV4WithEncryptRef) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(xref_table);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataError, cross_ref_avail->CheckAvail());
 }
 
@@ -319,7 +319,7 @@ TEST(CPDF_CrossRefAvailTest, CrossRefStreamWithEncryptRef) {
   const FX_FILESIZE last_crossref_offset = 0;
 
   auto parser = MakeParserForBuffer(xref_stream);
-  auto cross_ref_avail = pdfium::MakeUnique<CPDF_CrossRefAvail>(
-      parser.get(), last_crossref_offset);
+  auto cross_ref_avail =
+      std::make_unique<CPDF_CrossRefAvail>(parser.get(), last_crossref_offset);
   EXPECT_EQ(CPDF_DataAvail::DataError, cross_ref_avail->CheckAvail());
 }

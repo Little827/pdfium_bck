@@ -157,7 +157,7 @@ RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::GetProperty(
 void CFX_CSSDeclaration::AddPropertyHolder(CFX_CSSProperty eProperty,
                                            RetainPtr<CFX_CSSValue> pValue,
                                            bool bImportant) {
-  auto pHolder = pdfium::MakeUnique<CFX_CSSPropertyHolder>();
+  auto pHolder = std::make_unique<CFX_CSSPropertyHolder>();
   pHolder->bImportant = bImportant;
   pHolder->eProperty = eProperty;
   pHolder->pValue = pValue;
@@ -282,7 +282,7 @@ void CFX_CSSDeclaration::AddProperty(const CFX_CSSData::Property* property,
 void CFX_CSSDeclaration::AddProperty(const WideString& prop,
                                      const WideString& value) {
   custom_properties_.push_back(
-      pdfium::MakeUnique<CFX_CSSCustomProperty>(prop, value));
+      std::make_unique<CFX_CSSCustomProperty>(prop, value));
 }
 
 RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::ParseNumber(const wchar_t* pszValue,

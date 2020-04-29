@@ -97,7 +97,7 @@ class PDFObjectsTest : public testing::Test {
       m_DirectObjs.emplace_back(objs[i]);
 
     // Indirect references to indirect objects.
-    m_ObjHolder = pdfium::MakeUnique<CPDF_IndirectObjectHolder>();
+    m_ObjHolder = std::make_unique<CPDF_IndirectObjectHolder>();
     m_IndirectObjs = {m_ObjHolder->AddIndirectObject(boolean_true_obj->Clone()),
                       m_ObjHolder->AddIndirectObject(number_int_obj->Clone()),
                       m_ObjHolder->AddIndirectObject(str_spec_obj->Clone()),
@@ -735,7 +735,7 @@ TEST(PDFArrayTest, AddStringAndName) {
 }
 
 TEST(PDFArrayTest, AddReferenceAndGetObjectAt) {
-  auto holder = pdfium::MakeUnique<CPDF_IndirectObjectHolder>();
+  auto holder = std::make_unique<CPDF_IndirectObjectHolder>();
   auto boolean_obj = pdfium::MakeRetain<CPDF_Boolean>(true);
   auto int_obj = pdfium::MakeRetain<CPDF_Number>(-1234);
   auto float_obj = pdfium::MakeRetain<CPDF_Number>(2345.089f);
@@ -986,7 +986,7 @@ TEST(PDFDictionaryTest, ExtractObjectOnRemove) {
 }
 
 TEST(PDFRefernceTest, MakeReferenceToReference) {
-  auto obj_holder = pdfium::MakeUnique<CPDF_IndirectObjectHolder>();
+  auto obj_holder = std::make_unique<CPDF_IndirectObjectHolder>();
   auto original_ref = pdfium::MakeRetain<CPDF_Reference>(obj_holder.get(), 42);
   original_ref->SetObjNum(1952);
   ASSERT_FALSE(original_ref->IsInline());

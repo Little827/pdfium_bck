@@ -42,6 +42,6 @@ CXFA_Connect::CXFA_Connect(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Connect,
                 kConnectPropertyData,
                 kConnectAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Connect::~CXFA_Connect() = default;

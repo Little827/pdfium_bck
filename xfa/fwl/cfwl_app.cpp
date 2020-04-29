@@ -14,8 +14,8 @@
 CFWL_App::CFWL_App(AdapterIface* pAdapter)
     : m_pAdapterNative(pAdapter),
       m_pWidgetMgr(
-          pdfium::MakeUnique<CFWL_WidgetMgr>(pAdapter->GetWidgetMgrAdapter())),
-      m_pNoteDriver(pdfium::MakeUnique<CFWL_NoteDriver>()) {
+          std::make_unique<CFWL_WidgetMgr>(pAdapter->GetWidgetMgrAdapter())),
+      m_pNoteDriver(std::make_unique<CFWL_NoteDriver>()) {
   ASSERT(m_pAdapterNative);
 }
 

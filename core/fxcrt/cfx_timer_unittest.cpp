@@ -45,8 +45,8 @@ TEST(CFX_Timer, ValidTimers) {
   MockTimerCallback cb2;
   EXPECT_CALL(cb2, OnTimerFired()).Times(2);
 
-  auto timer1 = pdfium::MakeUnique<CFX_Timer>(&scheduler, &cb1, 100);
-  auto timer2 = pdfium::MakeUnique<CFX_Timer>(&scheduler, &cb2, 200);
+  auto timer1 = std::make_unique<CFX_Timer>(&scheduler, &cb1, 100);
+  auto timer2 = std::make_unique<CFX_Timer>(&scheduler, &cb2, 200);
   EXPECT_TRUE(timer1->HasValidID());
   EXPECT_TRUE(timer2->HasValidID());
 
@@ -70,7 +70,7 @@ TEST(CFX_Timer, MisbehavingEmbedder) {
   EXPECT_CALL(cb1, OnTimerFired()).Times(0);
 
   {
-    auto timer1 = pdfium::MakeUnique<CFX_Timer>(&scheduler, &cb1, 100);
+    auto timer1 = std::make_unique<CFX_Timer>(&scheduler, &cb1, 100);
     EXPECT_TRUE(timer1->HasValidID());
 
     // Fire callback with bad arguments.

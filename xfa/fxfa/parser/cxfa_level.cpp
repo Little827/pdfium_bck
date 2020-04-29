@@ -26,6 +26,6 @@ CXFA_Level::CXFA_Level(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Level,
                 {},
                 kLevelAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Level::~CXFA_Level() = default;

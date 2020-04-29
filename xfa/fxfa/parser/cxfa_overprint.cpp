@@ -26,6 +26,6 @@ CXFA_Overprint::CXFA_Overprint(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Overprint,
                 {},
                 kOverprintAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Overprint::~CXFA_Overprint() = default;

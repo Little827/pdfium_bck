@@ -29,6 +29,6 @@ CXFA_Handler::CXFA_Handler(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Handler,
                 {},
                 kHandlerAttributeData,
-                pdfium::MakeUnique<CJX_Handler>(this)) {}
+                std::make_unique<CJX_Handler>(this)) {}
 
 CXFA_Handler::~CXFA_Handler() = default;

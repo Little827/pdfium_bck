@@ -38,9 +38,9 @@ std::unique_ptr<IJS_Runtime> IJS_Runtime::Create(
     CPDFSDK_FormFillEnvironment* pFormFillEnv) {
 #ifdef PDF_ENABLE_V8
   if (pFormFillEnv->IsJSPlatformPresent())
-    return pdfium::MakeUnique<CJS_Runtime>(pFormFillEnv);
+    return std::make_unique<CJS_Runtime>(pFormFillEnv);
 #endif
-  return pdfium::MakeUnique<CJS_RuntimeStub>(pFormFillEnv);
+  return std::make_unique<CJS_RuntimeStub>(pFormFillEnv);
 }
 
 IJS_Runtime::~IJS_Runtime() = default;

@@ -118,7 +118,7 @@ CXFA_Graphics::~CXFA_Graphics() = default;
 
 void CXFA_Graphics::SaveGraphState() {
   m_renderDevice->SaveState();
-  m_infoStack.push_back(pdfium::MakeUnique<TInfo>(m_info));
+  m_infoStack.push_back(std::make_unique<TInfo>(m_info));
 }
 
 void CXFA_Graphics::RestoreGraphState() {

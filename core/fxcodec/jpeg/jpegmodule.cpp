@@ -485,7 +485,7 @@ std::unique_ptr<ScanlineDecoder> JpegModule::CreateDecoder(
     bool ColorTransform) {
   ASSERT(!src_span.empty());
 
-  auto pDecoder = pdfium::MakeUnique<JpegDecoder>();
+  auto pDecoder = std::make_unique<JpegDecoder>();
   if (!pDecoder->Create(src_span, width, height, nComps, ColorTransform))
     return nullptr;
 

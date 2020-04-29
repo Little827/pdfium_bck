@@ -29,6 +29,6 @@ CXFA_Extras::CXFA_Extras(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Extras,
                 {},
                 kExtrasAttributeData,
-                pdfium::MakeUnique<CJX_Extras>(this)) {}
+                std::make_unique<CJX_Extras>(this)) {}
 
 CXFA_Extras::~CXFA_Extras() = default;

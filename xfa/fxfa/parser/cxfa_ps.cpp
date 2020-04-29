@@ -34,6 +34,6 @@ CXFA_Ps::CXFA_Ps(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Ps,
                 kPsPropertyData,
                 kPsAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Ps::~CXFA_Ps() = default;

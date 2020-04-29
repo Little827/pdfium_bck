@@ -32,6 +32,6 @@ CXFA_Config::CXFA_Config(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Config,
                 kConfigPropertyData,
                 kConfigAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Config::~CXFA_Config() = default;

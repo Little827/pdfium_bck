@@ -26,6 +26,6 @@ CXFA_NameAttr::CXFA_NameAttr(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::NameAttr,
                 {},
                 kNameAttrAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_NameAttr::~CXFA_NameAttr() = default;

@@ -368,7 +368,7 @@ FPDF_EXPORT FPDF_CLIPPATH FPDF_CALLCONV FPDF_CreateClipPath(float left,
   CPDF_Path Path;
   Path.AppendRect(left, bottom, right, top);
 
-  auto pNewClipPath = pdfium::MakeUnique<CPDF_ClipPath>();
+  auto pNewClipPath = std::make_unique<CPDF_ClipPath>();
   pNewClipPath->AppendPath(Path, FXFILL_ALTERNATE, false);
 
   // Caller takes ownership.

@@ -29,6 +29,6 @@ CXFA_EffectiveInputPolicy::CXFA_EffectiveInputPolicy(CXFA_Document* doc,
                 XFA_Element::EffectiveInputPolicy,
                 {},
                 kEffectiveInputPolicyAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_EffectiveInputPolicy::~CXFA_EffectiveInputPolicy() = default;

@@ -26,6 +26,6 @@ CXFA_MeridiemNames::CXFA_MeridiemNames(CXFA_Document* doc,
                 XFA_Element::MeridiemNames,
                 kMeridiemNamesPropertyData,
                 {},
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_MeridiemNames::~CXFA_MeridiemNames() = default;

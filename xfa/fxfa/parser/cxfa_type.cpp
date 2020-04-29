@@ -26,6 +26,6 @@ CXFA_Type::CXFA_Type(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Type,
                 {},
                 kTypeAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Type::~CXFA_Type() = default;

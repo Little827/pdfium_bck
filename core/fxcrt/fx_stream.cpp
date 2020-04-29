@@ -123,7 +123,7 @@ bool IFX_SeekableStream::WriteString(ByteStringView str) {
 }
 
 FX_FolderHandle* FX_OpenFolder(const char* path) {
-  auto handle = pdfium::MakeUnique<FX_FolderHandle>();
+  auto handle = std::make_unique<FX_FolderHandle>();
 #if defined(OS_WIN)
   handle->m_Handle =
       FindFirstFileExA((ByteString(path) + "/*.*").c_str(), FindExInfoStandard,

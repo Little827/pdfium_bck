@@ -27,6 +27,6 @@ CXFA_BehaviorOverride::CXFA_BehaviorOverride(CXFA_Document* doc,
                 XFA_Element::BehaviorOverride,
                 {},
                 kBehaviorOverrideAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_BehaviorOverride::~CXFA_BehaviorOverride() = default;

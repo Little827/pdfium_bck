@@ -27,6 +27,6 @@ CXFA_FormFieldFilling::CXFA_FormFieldFilling(CXFA_Document* doc,
                 XFA_Element::FormFieldFilling,
                 {},
                 kFormFieldFillingAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_FormFieldFilling::~CXFA_FormFieldFilling() = default;

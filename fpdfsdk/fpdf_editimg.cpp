@@ -95,7 +95,7 @@ FPDFPageObj_NewImageObj(FPDF_DOCUMENT document) {
   if (!pDoc)
     return nullptr;
 
-  auto pImageObj = pdfium::MakeUnique<CPDF_ImageObject>();
+  auto pImageObj = std::make_unique<CPDF_ImageObject>();
   pImageObj->SetImage(pdfium::MakeRetain<CPDF_Image>(pDoc));
 
   // Caller takes ownership.

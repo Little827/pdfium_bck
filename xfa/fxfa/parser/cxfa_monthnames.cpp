@@ -29,6 +29,6 @@ CXFA_MonthNames::CXFA_MonthNames(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::MonthNames,
                 kMonthNamesPropertyData,
                 kMonthNamesAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_MonthNames::~CXFA_MonthNames() = default;

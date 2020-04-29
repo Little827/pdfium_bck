@@ -28,7 +28,7 @@ CXFA_BindItems::CXFA_BindItems(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::BindItems,
                 {},
                 kBindItemsAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_BindItems::~CXFA_BindItems() = default;
 

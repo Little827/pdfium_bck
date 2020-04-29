@@ -30,6 +30,6 @@ CXFA_Decimal::CXFA_Decimal(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Decimal,
                 {},
                 kDecimalAttributeData,
-                pdfium::MakeUnique<CJX_Object>(this)) {}
+                std::make_unique<CJX_Object>(this)) {}
 
 CXFA_Decimal::~CXFA_Decimal() = default;

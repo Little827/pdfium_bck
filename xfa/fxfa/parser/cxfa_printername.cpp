@@ -26,6 +26,6 @@ CXFA_PrinterName::CXFA_PrinterName(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::PrinterName,
                 {},
                 kPrinterNameAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_PrinterName::~CXFA_PrinterName() = default;

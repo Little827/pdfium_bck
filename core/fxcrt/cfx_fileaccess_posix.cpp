@@ -43,7 +43,7 @@ void GetFileMode(uint32_t dwModes, int32_t& nFlags, int32_t& nMasks) {
 
 // static
 std::unique_ptr<FileAccessIface> FileAccessIface::Create() {
-  return pdfium::MakeUnique<CFX_FileAccess_Posix>();
+  return std::make_unique<CFX_FileAccess_Posix>();
 }
 
 CFX_FileAccess_Posix::CFX_FileAccess_Posix() : m_nFD(-1) {}

@@ -37,6 +37,6 @@ CXFA_Medium::CXFA_Medium(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Medium,
                 {},
                 kMediumAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Medium::~CXFA_Medium() = default;

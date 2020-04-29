@@ -35,7 +35,7 @@ CXFA_Stipple::CXFA_Stipple(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Stipple,
                 kStipplePropertyData,
                 kStippleAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Stipple::~CXFA_Stipple() = default;
 

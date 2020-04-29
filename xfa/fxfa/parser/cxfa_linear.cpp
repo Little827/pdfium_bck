@@ -37,7 +37,7 @@ CXFA_Linear::CXFA_Linear(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Linear,
                 kLinearPropertyData,
                 kLinearAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Linear::~CXFA_Linear() = default;
 

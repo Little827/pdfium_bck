@@ -28,6 +28,6 @@ CXFA_Select::CXFA_Select(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Select,
                 {},
                 kSelectAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Select::~CXFA_Select() = default;

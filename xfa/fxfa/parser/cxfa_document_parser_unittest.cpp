@@ -13,8 +13,8 @@
 class CXFA_DocumentParserTest : public testing::Test {
  public:
   void SetUp() override {
-    doc_ = pdfium::MakeUnique<CXFA_Document>(nullptr, nullptr);
-    parser_ = pdfium::MakeUnique<CXFA_DocumentParser>(doc_.get());
+    doc_ = std::make_unique<CXFA_Document>(nullptr, nullptr);
+    parser_ = std::make_unique<CXFA_DocumentParser>(doc_.get());
   }
 
   void TearDown() override {

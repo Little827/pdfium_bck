@@ -596,9 +596,8 @@ std::unique_ptr<ScanlineDecoder> FaxModule::CreateDecoder(
     return nullptr;
   }
 
-  return pdfium::MakeUnique<FaxDecoder>(src_span, actual_width, actual_height,
-                                        K, EndOfLine, EncodedByteAlign,
-                                        BlackIs1);
+  return std::make_unique<FaxDecoder>(src_span, actual_width, actual_height, K,
+                                      EndOfLine, EncodedByteAlign, BlackIs1);
 }
 
 // static

@@ -32,6 +32,6 @@ CXFA_Map::CXFA_Map(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Map,
                 {},
                 kMapAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Map::~CXFA_Map() = default;

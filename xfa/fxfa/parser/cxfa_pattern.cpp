@@ -37,7 +37,7 @@ CXFA_Pattern::CXFA_Pattern(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Pattern,
                 kPatternPropertyData,
                 kPatternAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Pattern::~CXFA_Pattern() = default;
 

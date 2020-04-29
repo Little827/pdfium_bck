@@ -26,6 +26,6 @@ CXFA_Interactive::CXFA_Interactive(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Interactive,
                 {},
                 kInteractiveAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Interactive::~CXFA_Interactive() {}

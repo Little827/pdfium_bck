@@ -274,7 +274,7 @@ void CPDF_Font::LoadUnicodeMap() const {
   if (!pStream)
     return;
 
-  m_pToUnicodeMap = pdfium::MakeUnique<CPDF_ToUnicodeMap>(pStream);
+  m_pToUnicodeMap = std::make_unique<CPDF_ToUnicodeMap>(pStream);
 }
 
 uint32_t CPDF_Font::GetStringWidth(ByteStringView pString) {
@@ -380,7 +380,7 @@ const char* CPDF_Font::GetAdobeCharName(
 
 uint32_t CPDF_Font::FallbackFontFromCharcode(uint32_t charcode) {
   if (m_FontFallbacks.empty()) {
-    m_FontFallbacks.push_back(pdfium::MakeUnique<CFX_Font>());
+    m_FontFallbacks.push_back(std::make_unique<CFX_Font>());
     FX_SAFE_INT32 safeWeight = m_StemV;
     safeWeight *= 5;
     m_FontFallbacks[0]->LoadSubst("Arial", IsTrueTypeFont(), m_Flags,

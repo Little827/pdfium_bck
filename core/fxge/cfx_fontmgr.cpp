@@ -86,7 +86,7 @@ CFX_Face* CFX_FontMgr::FontDesc::GetFace(size_t index) const {
 
 CFX_FontMgr::CFX_FontMgr()
     : m_FTLibrary(FTLibraryInitHelper()),
-      m_pBuiltinMapper(pdfium::MakeUnique<CFX_FontMapper>(this)),
+      m_pBuiltinMapper(std::make_unique<CFX_FontMapper>(this)),
       m_FTLibrarySupportsHinting(SetLcdFilterMode() ||
                                  FreeTypeVersionSupportsHinting()) {}
 

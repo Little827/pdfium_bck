@@ -43,7 +43,7 @@ class CPDF_TestParser final : public CPDF_Parser {
       return false;
 
     // For the test file, the header is set at the beginning.
-    m_pSyntax = pdfium::MakeUnique<CPDF_SyntaxParser>(pFileAccess);
+    m_pSyntax = std::make_unique<CPDF_SyntaxParser>(pFileAccess);
     return true;
   }
 

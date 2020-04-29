@@ -29,7 +29,7 @@ void RenderPageImpl(CPDF_PageRenderContext* pContext,
                     bool need_to_restore,
                     CPDFSDK_PauseAdapter* pause) {
   if (!pContext->m_pOptions)
-    pContext->m_pOptions = pdfium::MakeUnique<CPDF_RenderOptions>();
+    pContext->m_pOptions = std::make_unique<CPDF_RenderOptions>();
 
   auto& options = pContext->m_pOptions->GetOptions();
   options.bClearType = !!(flags & FPDF_LCD_TEXT);
@@ -58,14 +58,14 @@ void RenderPageImpl(CPDF_PageRenderContext* pContext,
   pContext->m_pDevice->SaveState();
   pContext->m_pDevice->SetBaseClip(clipping_rect);
   pContext->m_pDevice->SetClip_Rect(clipping_rect);
-  pContext->m_pContext = pdfium::MakeUnique<CPDF_RenderContext>(
+  pContext->m_pContext = std::make_unique<CPDF_RenderContext>(
       pPage->GetDocument(), pPage->m_pPageResources.Get(),
       static_cast<CPDF_PageRenderCache*>(pPage->GetRenderCache()));
 
   pContext->m_pContext->AppendLayer(pPage, &matrix);
 
   if (flags & FPDF_ANNOT) {
-    auto pOwnedList = pdfium::MakeUnique<CPDF_AnnotList>(pPage);
+    auto pOwnedList = std::make_unique<CPDF_AnnotList>(pPage);
     CPDF_AnnotList* pList = pOwnedList.get();
     pContext->m_pAnnots = std::move(pOwnedList);
     bool bPrinting =
@@ -74,7 +74,7 @@ void RenderPageImpl(CPDF_PageRenderContext* pContext,
                          false, nullptr);
   }
 
-  pContext->m_pRenderer = pdfium::MakeUnique<CPDF_ProgressiveRenderer>(
+  pContext->m_pRenderer = std::make_unique<CPDF_ProgressiveRenderer>(
       pContext->m_pContext.get(), pContext->m_pDevice.get(),
       pContext->m_pOptions.get());
   pContext->m_pRenderer->Start(pause);

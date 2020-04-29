@@ -37,6 +37,6 @@ CXFA_Arc::CXFA_Arc(CXFA_Document* doc, XFA_PacketType packet)
                XFA_Element::Arc,
                kArcPropertyData,
                kArcAttributeData,
-               pdfium::MakeUnique<CJX_Node>(this)) {}
+               std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Arc::~CXFA_Arc() = default;

@@ -47,7 +47,7 @@ std::unique_ptr<CFX_UnicodeEncodingEx> FXFM_CreateFontEncoding(
     uint32_t nEncodingID) {
   if (FXFT_Select_Charmap(pFont->GetFaceRec(), nEncodingID))
     return nullptr;
-  return pdfium::MakeUnique<CFX_UnicodeEncodingEx>(pFont, nEncodingID);
+  return std::make_unique<CFX_UnicodeEncodingEx>(pFont, nEncodingID);
 }
 
 }  // namespace

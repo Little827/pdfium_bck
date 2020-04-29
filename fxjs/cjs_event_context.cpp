@@ -16,7 +16,7 @@
 
 CJS_EventContext::CJS_EventContext(CJS_Runtime* pRuntime)
     : m_pRuntime(pRuntime),
-      m_pEventRecorder(pdfium::MakeUnique<CJS_EventRecorder>()) {
+      m_pEventRecorder(std::make_unique<CJS_EventRecorder>()) {
   ASSERT(pRuntime);
 }
 

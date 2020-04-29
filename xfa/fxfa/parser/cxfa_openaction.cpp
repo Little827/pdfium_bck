@@ -30,6 +30,6 @@ CXFA_OpenAction::CXFA_OpenAction(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::OpenAction,
                 kOpenActionPropertyData,
                 kOpenActionAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_OpenAction::~CXFA_OpenAction() = default;

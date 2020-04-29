@@ -39,6 +39,6 @@ CXFA_RecordSet::CXFA_RecordSet(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::RecordSet,
                 {},
                 kRecordSetAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_RecordSet::~CXFA_RecordSet() = default;

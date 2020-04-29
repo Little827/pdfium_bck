@@ -27,6 +27,6 @@ CXFA_NumberOfCopies::CXFA_NumberOfCopies(CXFA_Document* doc,
                 XFA_Element::NumberOfCopies,
                 {},
                 kNumberOfCopiesAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_NumberOfCopies::~CXFA_NumberOfCopies() = default;

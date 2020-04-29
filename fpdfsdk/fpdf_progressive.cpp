@@ -59,12 +59,12 @@ FPDF_RenderPageBitmapWithColorScheme_Start(FPDF_BITMAP bitmap,
   if (!pPage)
     return FPDF_RENDER_FAILED;
 
-  auto pOwnedContext = pdfium::MakeUnique<CPDF_PageRenderContext>();
+  auto pOwnedContext = std::make_unique<CPDF_PageRenderContext>();
   CPDF_PageRenderContext* pContext = pOwnedContext.get();
   pPage->SetRenderContext(std::move(pOwnedContext));
 
   RetainPtr<CFX_DIBitmap> pBitmap(CFXDIBitmapFromFPDFBitmap(bitmap));
-  auto pOwnedDevice = pdfium::MakeUnique<CFX_DefaultRenderDevice>();
+  auto pOwnedDevice = std::make_unique<CFX_DefaultRenderDevice>();
   CFX_DefaultRenderDevice* pDevice = pOwnedDevice.get();
   pContext->m_pDevice = std::move(pOwnedDevice);
   pDevice->Attach(pBitmap, !!(flags & FPDF_REVERSE_BYTE_ORDER), nullptr, false);

@@ -555,7 +555,7 @@ void CFWL_MonthCalendar::ResetDateItem() {
       dwStates |= FWL_ITEMSTATE_MCD_Selected;
 
     CFX_RectF rtDate;
-    m_arrDates.push_back(pdfium::MakeUnique<DATEINFO>(
+    m_arrDates.push_back(std::make_unique<DATEINFO>(
         i + 1, iDayOfWeek, dwStates, rtDate, WideString::Format(L"%d", i + 1)));
     iDayOfWeek++;
   }

@@ -27,6 +27,6 @@ CXFA_Sharptext::CXFA_Sharptext(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Sharptext,
                 {},
                 kSharptextAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Sharptext::~CXFA_Sharptext() = default;

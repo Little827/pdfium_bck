@@ -28,6 +28,6 @@ CXFA_SoapAddress::CXFA_SoapAddress(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::SoapAddress,
                 {},
                 kSoapAddressAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_SoapAddress::~CXFA_SoapAddress() = default;

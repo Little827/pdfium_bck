@@ -35,7 +35,7 @@ CXFA_ImageEdit::CXFA_ImageEdit(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::ImageEdit,
                 kImageEditPropertyData,
                 kImageEditAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_ImageEdit::~CXFA_ImageEdit() = default;
 

@@ -27,6 +27,6 @@ CXFA_PaginationOverride::CXFA_PaginationOverride(CXFA_Document* doc,
                 XFA_Element::PaginationOverride,
                 {},
                 kPaginationOverrideAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_PaginationOverride::~CXFA_PaginationOverride() = default;

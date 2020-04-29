@@ -26,6 +26,6 @@ CXFA_MsgId::CXFA_MsgId(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::MsgId,
                 {},
                 kMsgIdAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_MsgId::~CXFA_MsgId() = default;

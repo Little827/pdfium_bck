@@ -327,7 +327,7 @@ CPDF_DIB::LoadState CPDF_DIB::ContinueLoadDIBBase(PauseIndicatorIface* pPause) {
   Jbig2Module* pJbig2Module =
       fxcodec::ModuleMgr::GetInstance()->GetJbig2Module();
   if (!m_pJbig2Context) {
-    m_pJbig2Context = pdfium::MakeUnique<Jbig2Context>();
+    m_pJbig2Context = std::make_unique<Jbig2Context>();
     if (m_pStreamAcc->GetImageParam()) {
       const CPDF_Stream* pGlobals =
           m_pStreamAcc->GetImageParam()->GetStreamFor("JBIG2Globals");

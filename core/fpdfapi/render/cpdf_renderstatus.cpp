@@ -277,7 +277,7 @@ bool CPDF_RenderStatus::ContinueSingleObject(CPDF_PageObject* pObj,
     return false;
   }
 
-  m_pImageRenderer = pdfium::MakeUnique<CPDF_ImageRenderer>();
+  m_pImageRenderer = std::make_unique<CPDF_ImageRenderer>();
   if (!m_pImageRenderer->Start(this, pObj->AsImage(), mtObj2Device, false,
                                BlendMode::kNormal)) {
     if (!m_pImageRenderer->GetResult())
@@ -557,7 +557,7 @@ void CPDF_RenderStatus::ProcessClipPath(const CPDF_ClipPath& ClipPath,
     CPDF_TextObject* pText = ClipPath.GetText(i);
     if (pText) {
       if (!pTextClippingPath)
-        pTextClippingPath = pdfium::MakeUnique<CFX_PathData>();
+        pTextClippingPath = std::make_unique<CFX_PathData>();
       ProcessText(pText, mtObj2Device, pTextClippingPath.get());
       continue;
     }
@@ -820,7 +820,7 @@ std::unique_ptr<CPDF_GraphicStates> CPDF_RenderStatus::CloneObjStates(
   if (!pSrcStates)
     return nullptr;
 
-  auto pStates = pdfium::MakeUnique<CPDF_GraphicStates>();
+  auto pStates = std::make_unique<CPDF_GraphicStates>();
   pStates->CopyStates(*pSrcStates);
   const CPDF_Color* pObjColor = bStroke
                                     ? pSrcStates->m_ColorState.GetStrokeColor()

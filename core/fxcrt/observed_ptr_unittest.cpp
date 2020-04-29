@@ -34,7 +34,7 @@ TEST(ObservePtr, Null) {
 TEST(ObservePtr, LivesLonger) {
   ObservedPtr<PseudoObservable> ptr;
   {
-    auto pObs = pdfium::MakeUnique<PseudoObservable>();
+    auto pObs = std::make_unique<PseudoObservable>();
     ptr.Reset(pObs.get());
     EXPECT_NE(nullptr, ptr.Get());
     EXPECT_EQ(1u, pObs->ActiveObservedPtrs());

@@ -355,7 +355,7 @@ void CFWL_ScrollBar::OnLButtonDown(const CFX_PointF& point) {
     DoMouseDown(4, m_rtMaxTrack, m_iMaxTrackState, point);
 
   if (!SendEvent()) {
-    m_pTimer = pdfium::MakeUnique<CFX_Timer>(
+    m_pTimer = std::make_unique<CFX_Timer>(
         GetOwnerApp()->GetAdapterNative()->GetTimerHandler(), this,
         FWL_SCROLLBAR_Elapse);
   }
@@ -462,7 +462,7 @@ void CFWL_ScrollBar::DoMouseHover(int32_t iItem,
 void CFWL_ScrollBar::OnTimerFired() {
   m_pTimer.reset();
   if (!SendEvent()) {
-    m_pTimer = pdfium::MakeUnique<CFX_Timer>(
+    m_pTimer = std::make_unique<CFX_Timer>(
         GetOwnerApp()->GetAdapterNative()->GetTimerHandler(), this, 0);
   }
 }

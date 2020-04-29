@@ -26,6 +26,6 @@ CXFA_Relevant::CXFA_Relevant(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Relevant,
                 {},
                 kRelevantAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Relevant::~CXFA_Relevant() = default;

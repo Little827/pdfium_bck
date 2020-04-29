@@ -89,9 +89,9 @@ TEST(fpdf_parser_utility, ValidateDictAllResourcesOfType) {
 
   {
     // Indirect dictionary.
-    auto doc = pdfium::MakeUnique<CPDF_Document>(
-        pdfium::MakeUnique<CPDF_DocRenderData>(),
-        pdfium::MakeUnique<CPDF_DocPageData>());
+    auto doc =
+        std::make_unique<CPDF_Document>(std::make_unique<CPDF_DocRenderData>(),
+                                        std::make_unique<CPDF_DocPageData>());
 
     auto dict = doc->New<CPDF_Dictionary>();
 

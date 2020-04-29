@@ -396,7 +396,7 @@ bool CBC_PDF417::GenerateBarcodeLogic(WideStringView msg,
     return false;
 
   WideString fullCodewords = dataCodewords + ec.value();
-  m_barcodeMatrix = pdfium::MakeUnique<CBC_BarcodeMatrix>(cols, rows);
+  m_barcodeMatrix = std::make_unique<CBC_BarcodeMatrix>(cols, rows);
   encodeLowLevel(fullCodewords, cols, rows, errorCorrectionLevel,
                  m_barcodeMatrix.get());
   return true;

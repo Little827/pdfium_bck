@@ -31,7 +31,7 @@ CXFA_Text::CXFA_Text(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Text,
                 {},
                 kTextAttributeData,
-                pdfium::MakeUnique<CJX_Object>(this)) {}
+                std::make_unique<CJX_Object>(this)) {}
 
 CXFA_Text::~CXFA_Text() = default;
 

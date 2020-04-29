@@ -13,6 +13,6 @@ CScript_LayoutPseudoModel::CScript_LayoutPseudoModel(CXFA_Document* pDocument)
     : CXFA_Object(pDocument,
                   XFA_ObjectType::Object,
                   XFA_Element::LayoutPseudoModel,
-                  pdfium::MakeUnique<CJX_LayoutPseudoModel>(this)) {}
+                  std::make_unique<CJX_LayoutPseudoModel>(this)) {}
 
 CScript_LayoutPseudoModel::~CScript_LayoutPseudoModel() = default;

@@ -133,7 +133,7 @@ bool CFX_MacFontInfo::ParseFontCfg(const char** pUserPaths) {
 
 std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
     const char** pUserPaths) {
-  auto pInfo = pdfium::MakeUnique<CFX_MacFontInfo>();
+  auto pInfo = std::make_unique<CFX_MacFontInfo>();
   if (!pInfo->ParseFontCfg(pUserPaths)) {
     pInfo->AddPath("~/Library/Fonts");
     pInfo->AddPath("/Library/Fonts");
@@ -155,5 +155,5 @@ void CApplePlatform::Init() {
 // static
 std::unique_ptr<CFX_GEModule::PlatformIface>
 CFX_GEModule::PlatformIface::Create() {
-  return pdfium::MakeUnique<CApplePlatform>();
+  return std::make_unique<CApplePlatform>();
 }

@@ -32,6 +32,6 @@ CXFA_Format::CXFA_Format(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Format,
                 kFormatPropertyData,
                 kFormatAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Format::~CXFA_Format() = default;

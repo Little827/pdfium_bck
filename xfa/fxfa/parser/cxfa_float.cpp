@@ -28,6 +28,6 @@ CXFA_Float::CXFA_Float(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Float,
                 {},
                 kFloatAttributeData,
-                pdfium::MakeUnique<CJX_Object>(this)) {}
+                std::make_unique<CJX_Object>(this)) {}
 
 CXFA_Float::~CXFA_Float() = default;

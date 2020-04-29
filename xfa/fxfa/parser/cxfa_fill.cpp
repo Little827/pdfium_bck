@@ -47,7 +47,7 @@ CXFA_Fill::CXFA_Fill(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Fill,
                 kFillPropertyData,
                 kFillAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Fill::~CXFA_Fill() = default;
 

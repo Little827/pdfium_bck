@@ -26,6 +26,6 @@ CXFA_DatePattern::CXFA_DatePattern(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::DatePattern,
                 {},
                 kDatePatternAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DatePattern::~CXFA_DatePattern() = default;

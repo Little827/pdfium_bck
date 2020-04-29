@@ -494,7 +494,7 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
   }
 
   if (m_PSFontList.empty() || m_PSFontList.back()->m_nGlyphs == 256) {
-    m_PSFontList.push_back(pdfium::MakeUnique<CPSFont>());
+    m_PSFontList.push_back(std::make_unique<CPSFont>());
     m_PSFontList.back()->m_nGlyphs = 0;
     std::ostringstream buf;
     buf << "8 dict begin/FontType 3 def/FontMatrix[1 0 0 1 0 0]def\n"

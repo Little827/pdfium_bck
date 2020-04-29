@@ -17,7 +17,7 @@ CXFA_TreeList::CXFA_TreeList(CXFA_Document* pDocument)
     : CXFA_List(pDocument,
                 XFA_ObjectType::TreeList,
                 XFA_Element::TreeList,
-                pdfium::MakeUnique<CJX_TreeList>(this)) {}
+                std::make_unique<CJX_TreeList>(this)) {}
 
 CXFA_TreeList::~CXFA_TreeList() = default;
 

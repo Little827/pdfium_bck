@@ -29,6 +29,6 @@ CXFA_DefaultTypeface::CXFA_DefaultTypeface(CXFA_Document* doc,
                 XFA_Element::DefaultTypeface,
                 {},
                 kDefaultTypefaceAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DefaultTypeface::~CXFA_DefaultTypeface() = default;

@@ -525,7 +525,7 @@ class PDFiumFormCalcContextFuzzer : public PDFiumFuzzerHelper {
     script_context->SetEventParam(&params);
     ByteStringView data_view(data_, size_);
 
-    auto value = pdfium::MakeUnique<CFXJSE_Value>(script_context->GetIsolate());
+    auto value = std::make_unique<CFXJSE_Value>(script_context->GetIsolate());
     script_context->RunScript(CXFA_Script::Type::Formcalc,
                               WideString::FromUTF8(data_view).AsStringView(),
                               value.get(), xfa_document->GetRoot());

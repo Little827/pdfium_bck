@@ -26,6 +26,6 @@ CXFA_To::CXFA_To(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::To,
                 {},
                 kToAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_To::~CXFA_To() = default;

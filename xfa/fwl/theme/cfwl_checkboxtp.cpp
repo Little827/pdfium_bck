@@ -160,7 +160,7 @@ void CFWL_CheckBoxTP::DrawSignStar(CXFA_Graphics* pGraphics,
 
 void CFWL_CheckBoxTP::InitCheckPath(float fCheckLen) {
   if (!m_pCheckPath) {
-    m_pCheckPath = pdfium::MakeUnique<CXFA_GEPath>();
+    m_pCheckPath = std::make_unique<CXFA_GEPath>();
 
     float fWidth = kSignPath;
     float fHeight = -kSignPath;

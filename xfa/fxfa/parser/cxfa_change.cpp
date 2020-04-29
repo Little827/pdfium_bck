@@ -26,6 +26,6 @@ CXFA_Change::CXFA_Change(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Change,
                 {},
                 kChangeAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Change::~CXFA_Change() = default;

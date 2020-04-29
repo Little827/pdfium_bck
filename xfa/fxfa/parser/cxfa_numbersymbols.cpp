@@ -26,6 +26,6 @@ CXFA_NumberSymbols::CXFA_NumberSymbols(CXFA_Document* doc,
                 XFA_Element::NumberSymbols,
                 kNumberSymbolsPropertyData,
                 {},
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_NumberSymbols::~CXFA_NumberSymbols() = default;

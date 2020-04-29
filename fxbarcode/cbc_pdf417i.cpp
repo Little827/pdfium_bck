@@ -36,7 +36,7 @@ constexpr size_t kMaxPDF417InputLengthBytes = 2710;
 }  // namespace
 
 CBC_PDF417I::CBC_PDF417I()
-    : CBC_CodeBase(pdfium::MakeUnique<CBC_PDF417Writer>()) {}
+    : CBC_CodeBase(std::make_unique<CBC_PDF417Writer>()) {}
 
 CBC_PDF417I::~CBC_PDF417I() {}
 

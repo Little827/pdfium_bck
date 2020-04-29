@@ -38,7 +38,7 @@ CXFA_Calculate::CXFA_Calculate(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Calculate,
                 kCalculatePropertyData,
                 kCalculateAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Calculate::~CXFA_Calculate() = default;
 

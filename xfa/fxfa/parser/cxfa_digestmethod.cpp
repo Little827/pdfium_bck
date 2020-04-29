@@ -27,6 +27,6 @@ CXFA_DigestMethod::CXFA_DigestMethod(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::DigestMethod,
                 {},
                 kDigestMethodAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DigestMethod::~CXFA_DigestMethod() = default;

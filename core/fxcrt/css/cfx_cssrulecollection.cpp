@@ -45,7 +45,7 @@ void CFX_CSSRuleCollection::AddRulesFrom(const CFX_CSSStyleSheet* pStyleSheet,
   for (int32_t i = 0; i < iSelectors; ++i) {
     CFX_CSSSelector* pSelector = pStyleRule->GetSelectorList(i);
     m_TagRules[pSelector->GetNameHash()].push_back(
-        pdfium::MakeUnique<Data>(pSelector, pDeclaration));
+        std::make_unique<Data>(pSelector, pDeclaration));
     m_iSelectors++;
   }
 }

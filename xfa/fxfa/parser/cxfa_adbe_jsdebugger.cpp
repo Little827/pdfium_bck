@@ -27,6 +27,6 @@ CXFA_ADBE_JSDebugger::CXFA_ADBE_JSDebugger(CXFA_Document* doc,
                 XFA_Element::ADBE_JSDebugger,
                 {},
                 kADBE_JSDebuggerAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_ADBE_JSDebugger::~CXFA_ADBE_JSDebugger() = default;

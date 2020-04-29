@@ -379,8 +379,8 @@ int CFXJS_Engine::DefineObj(const char* sObjName,
   FXJS_PerIsolateData::SetUp(GetIsolate());
   FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
   return pIsolateData->AssignIDForObjDefinition(
-      pdfium::MakeUnique<CFXJS_ObjDefinition>(GetIsolate(), sObjName, eObjType,
-                                              pConstructor, pDestructor));
+      std::make_unique<CFXJS_ObjDefinition>(GetIsolate(), sObjName, eObjType,
+                                            pConstructor, pDestructor));
 }
 
 void CFXJS_Engine::DefineObjMethod(int nObjDefnID,

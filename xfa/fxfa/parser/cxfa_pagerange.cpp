@@ -26,6 +26,6 @@ CXFA_PageRange::CXFA_PageRange(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::PageRange,
                 {},
                 kPageRangeAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_PageRange::~CXFA_PageRange() = default;

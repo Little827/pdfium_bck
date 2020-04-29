@@ -37,6 +37,6 @@ CXFA_SubformSet::CXFA_SubformSet(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::SubformSet,
                 kSubformSetPropertyData,
                 kSubformSetAttributeData,
-                pdfium::MakeUnique<CJX_Container>(this)) {}
+                std::make_unique<CJX_Container>(this)) {}
 
 CXFA_SubformSet::~CXFA_SubformSet() = default;

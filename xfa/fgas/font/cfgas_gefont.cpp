@@ -83,7 +83,7 @@ bool CFGAS_GEFont::LoadFontInternal(const wchar_t* pszFontFamily,
 
   int32_t iWeight =
       FontStyleIsForceBold(dwFontStyles) ? FXFONT_FW_BOLD : FXFONT_FW_NORMAL;
-  m_pFont = pdfium::MakeUnique<CFX_Font>();
+  m_pFont = std::make_unique<CFX_Font>();
   if (FontStyleIsItalic(dwFontStyles) && FontStyleIsForceBold(dwFontStyles))
     csFontFamily += ",BoldItalic";
   else if (FontStyleIsForceBold(dwFontStyles))

@@ -34,7 +34,7 @@ CXFA_Occur::CXFA_Occur(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Occur,
                 kOccurPropertyData,
                 kOccurAttributeData,
-                pdfium::MakeUnique<CJX_Occur>(this)) {}
+                std::make_unique<CJX_Occur>(this)) {}
 
 CXFA_Occur::~CXFA_Occur() = default;
 

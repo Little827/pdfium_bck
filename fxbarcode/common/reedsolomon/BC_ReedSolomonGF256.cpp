@@ -43,10 +43,10 @@ CBC_ReedSolomonGF256::CBC_ReedSolomonGF256(int32_t primitive) {
 }
 
 void CBC_ReedSolomonGF256::Init() {
-  m_zero = pdfium::MakeUnique<CBC_ReedSolomonGF256Poly>(
-      this, std::vector<int32_t>{0});
-  m_one = pdfium::MakeUnique<CBC_ReedSolomonGF256Poly>(this,
-                                                       std::vector<int32_t>{1});
+  m_zero =
+      std::make_unique<CBC_ReedSolomonGF256Poly>(this, std::vector<int32_t>{0});
+  m_one =
+      std::make_unique<CBC_ReedSolomonGF256Poly>(this, std::vector<int32_t>{1});
 }
 
 CBC_ReedSolomonGF256::~CBC_ReedSolomonGF256() {}
@@ -62,7 +62,7 @@ std::unique_ptr<CBC_ReedSolomonGF256Poly> CBC_ReedSolomonGF256::BuildMonomial(
 
   std::vector<int32_t> coefficients(degree + 1);
   coefficients[0] = coefficient;
-  return pdfium::MakeUnique<CBC_ReedSolomonGF256Poly>(this, coefficients);
+  return std::make_unique<CBC_ReedSolomonGF256Poly>(this, coefficients);
 }
 
 // static

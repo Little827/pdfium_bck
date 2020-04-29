@@ -27,6 +27,6 @@ CXFA_ADBE_JSConsole::CXFA_ADBE_JSConsole(CXFA_Document* doc,
                 XFA_Element::ADBE_JSConsole,
                 {},
                 kADBE_JSConsoleAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_ADBE_JSConsole::~CXFA_ADBE_JSConsole() = default;

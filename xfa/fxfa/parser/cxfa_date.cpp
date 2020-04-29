@@ -28,6 +28,6 @@ CXFA_Date::CXFA_Date(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Date,
                 {},
                 kDateAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Date::~CXFA_Date() = default;

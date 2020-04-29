@@ -14,6 +14,6 @@ CScript_SignaturePseudoModel::CScript_SignaturePseudoModel(
     : CXFA_Object(pDocument,
                   XFA_ObjectType::Object,
                   XFA_Element::SignaturePseudoModel,
-                  pdfium::MakeUnique<CJX_SignaturePseudoModel>(this)) {}
+                  std::make_unique<CJX_SignaturePseudoModel>(this)) {}
 
 CScript_SignaturePseudoModel::~CScript_SignaturePseudoModel() = default;

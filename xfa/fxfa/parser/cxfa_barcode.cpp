@@ -50,7 +50,7 @@ CXFA_Barcode::CXFA_Barcode(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Barcode,
                 {},
                 kBarcodeAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Barcode::~CXFA_Barcode() = default;
 

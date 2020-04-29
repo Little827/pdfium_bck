@@ -61,7 +61,7 @@ CXFA_Font::CXFA_Font(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Font,
           kFontPropertyData,
           kFontAttributeData,
-          pdfium::MakeUnique<CJX_Node>(this)) {}
+          std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Font::~CXFA_Font() = default;
 

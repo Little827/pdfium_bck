@@ -76,7 +76,7 @@ int CPDF_SyntaxParser::s_CurrentRecursionDepth = 0;
 std::unique_ptr<CPDF_SyntaxParser> CPDF_SyntaxParser::CreateForTesting(
     const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
     FX_FILESIZE HeaderOffset) {
-  return pdfium::MakeUnique<CPDF_SyntaxParser>(
+  return std::make_unique<CPDF_SyntaxParser>(
       pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr),
       HeaderOffset);
 }

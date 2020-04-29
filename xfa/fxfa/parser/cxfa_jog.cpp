@@ -26,6 +26,6 @@ CXFA_Jog::CXFA_Jog(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Jog,
                 {},
                 kJogAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Jog::~CXFA_Jog() = default;

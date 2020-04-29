@@ -21,7 +21,7 @@
 class CFX_CSSStyleSheetTest : public testing::Test {
  public:
   void SetUp() override {
-    sheet_ = pdfium::MakeUnique<CFX_CSSStyleSheet>();
+    sheet_ = std::make_unique<CFX_CSSStyleSheet>();
     decl_ = nullptr;
   }
 

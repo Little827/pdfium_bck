@@ -26,6 +26,6 @@ CXFA_SubmitUrl::CXFA_SubmitUrl(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::SubmitUrl,
                 {},
                 kSubmitUrlAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_SubmitUrl::~CXFA_SubmitUrl() = default;

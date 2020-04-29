@@ -82,7 +82,7 @@ RetainPtr<CPDF_SeekableMultiStream> CreateXFAMultiStream(
 
 CPDFXFA_Context::CPDFXFA_Context(CPDF_Document* pPDFDoc)
     : m_pPDFDoc(pPDFDoc),
-      m_pXFAApp(pdfium::MakeUnique<CXFA_FFApp>(this)),
+      m_pXFAApp(std::make_unique<CXFA_FFApp>(this)),
       m_DocEnv(this) {
   ASSERT(m_pPDFDoc);
 }

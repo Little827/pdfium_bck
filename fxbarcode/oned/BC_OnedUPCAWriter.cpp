@@ -63,7 +63,7 @@ WideString CBC_OnedUPCAWriter::FilterContents(WideStringView contents) {
 }
 
 void CBC_OnedUPCAWriter::InitEANWriter() {
-  m_subWriter = pdfium::MakeUnique<CBC_OnedEAN13Writer>();
+  m_subWriter = std::make_unique<CBC_OnedEAN13Writer>();
 }
 
 int32_t CBC_OnedUPCAWriter::CalcChecksum(const ByteString& contents) {

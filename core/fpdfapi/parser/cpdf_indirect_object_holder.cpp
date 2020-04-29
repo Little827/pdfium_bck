@@ -23,8 +23,7 @@ CPDF_Object* FilterInvalidObjNum(CPDF_Object* obj) {
 }  // namespace
 
 CPDF_IndirectObjectHolder::CPDF_IndirectObjectHolder()
-    : m_LastObjNum(0),
-      m_pByteStringPool(pdfium::MakeUnique<ByteStringPool>()) {}
+    : m_LastObjNum(0), m_pByteStringPool(std::make_unique<ByteStringPool>()) {}
 
 CPDF_IndirectObjectHolder::~CPDF_IndirectObjectHolder() {
   m_pByteStringPool.DeleteObject();  // Make weak.

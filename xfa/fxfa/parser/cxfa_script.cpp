@@ -41,7 +41,7 @@ CXFA_Script::CXFA_Script(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Script,
           kScriptPropertyData,
           kScriptAttributeData,
-          pdfium::MakeUnique<CJX_Script>(this)) {}
+          std::make_unique<CJX_Script>(this)) {}
 
 CXFA_Script::~CXFA_Script() = default;
 

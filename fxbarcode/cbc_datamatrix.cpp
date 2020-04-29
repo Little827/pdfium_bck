@@ -28,7 +28,7 @@
 #include "third_party/base/ptr_util.h"
 
 CBC_DataMatrix::CBC_DataMatrix()
-    : CBC_CodeBase(pdfium::MakeUnique<CBC_DataMatrixWriter>()) {}
+    : CBC_CodeBase(std::make_unique<CBC_DataMatrixWriter>()) {}
 
 CBC_DataMatrix::~CBC_DataMatrix() = default;
 

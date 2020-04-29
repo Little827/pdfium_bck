@@ -32,7 +32,7 @@ std::unique_ptr<CPDF_StructTree> CPDF_StructTree::LoadPage(
   if (!IsTagged(pDoc))
     return nullptr;
 
-  auto pTree = pdfium::MakeUnique<CPDF_StructTree>(pDoc);
+  auto pTree = std::make_unique<CPDF_StructTree>(pDoc);
   pTree->LoadPageTree(pPageDict);
   return pTree;
 }

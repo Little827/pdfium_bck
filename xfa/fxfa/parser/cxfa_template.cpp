@@ -35,6 +35,6 @@ CXFA_Template::CXFA_Template(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Template,
           kTemplatePropertyData,
           kTemplateAttributeData,
-          pdfium::MakeUnique<CJX_Template>(this)) {}
+          std::make_unique<CJX_Template>(this)) {}
 
 CXFA_Template::~CXFA_Template() = default;

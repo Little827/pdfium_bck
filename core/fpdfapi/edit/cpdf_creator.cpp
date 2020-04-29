@@ -147,7 +147,7 @@ CPDF_Creator::CPDF_Creator(CPDF_Document* pDoc,
       m_pEncryptDict(m_pParser ? m_pParser->GetEncryptDict() : nullptr),
       m_pSecurityHandler(m_pParser ? m_pParser->GetSecurityHandler() : nullptr),
       m_dwLastObjNum(m_pDocument->GetLastObjNum()),
-      m_Archive(pdfium::MakeUnique<CFX_FileBufferArchive>(archive)) {}
+      m_Archive(std::make_unique<CFX_FileBufferArchive>(archive)) {}
 
 CPDF_Creator::~CPDF_Creator() {}
 
@@ -157,7 +157,7 @@ bool CPDF_Creator::WriteIndirectObj(uint32_t objnum, const CPDF_Object* pObj) {
 
   std::unique_ptr<CPDF_Encryptor> encryptor;
   if (GetCryptoHandler() && pObj != m_pEncryptDict)
-    encryptor = pdfium::MakeUnique<CPDF_Encryptor>(GetCryptoHandler(), objnum);
+    encryptor = std::make_unique<CPDF_Encryptor>(GetCryptoHandler(), objnum);
 
   if (!pObj->WriteTo(m_Archive.get(), encryptor.get()))
     return false;

@@ -26,6 +26,6 @@ CXFA_ModifyAnnots::CXFA_ModifyAnnots(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::ModifyAnnots,
                 {},
                 kModifyAnnotsAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_ModifyAnnots::~CXFA_ModifyAnnots() = default;

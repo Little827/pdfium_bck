@@ -820,7 +820,7 @@ void CJX_Object::SetUserData(
 
 XFA_MAPMODULEDATA* CJX_Object::CreateMapModuleData() {
   if (!map_module_data_)
-    map_module_data_ = pdfium::MakeUnique<XFA_MAPMODULEDATA>();
+    map_module_data_ = std::make_unique<XFA_MAPMODULEDATA>();
   return map_module_data_.get();
 }
 

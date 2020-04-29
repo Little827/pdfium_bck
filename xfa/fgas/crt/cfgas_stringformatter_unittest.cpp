@@ -47,8 +47,8 @@ class CFGAS_StringFormatterTest : public testing::Test {
   CFGAS_StringFormatter* fmt(const WideString& locale,
                              const WideString& pattern) {
     fmt_.reset();  // Can't outlive |mgr_|.
-    mgr_ = pdfium::MakeUnique<CXFA_LocaleMgr>(nullptr, locale);
-    fmt_ = pdfium::MakeUnique<CFGAS_StringFormatter>(mgr_.get(), pattern);
+    mgr_ = std::make_unique<CXFA_LocaleMgr>(nullptr, locale);
+    fmt_ = std::make_unique<CFGAS_StringFormatter>(mgr_.get(), pattern);
     return fmt_.get();
   }
 

@@ -25,6 +25,6 @@ CXFA_Form::CXFA_Form(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Form,
                 {},
                 kFormAttributeData,
-                pdfium::MakeUnique<CJX_Form>(this)) {}
+                std::make_unique<CJX_Form>(this)) {}
 
 CXFA_Form::~CXFA_Form() = default;

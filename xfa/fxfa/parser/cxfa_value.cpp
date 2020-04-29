@@ -51,7 +51,7 @@ CXFA_Value::CXFA_Value(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Value,
                 kValuePropertyData,
                 kValueAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Value::~CXFA_Value() = default;
 

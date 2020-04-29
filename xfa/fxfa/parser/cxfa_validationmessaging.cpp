@@ -27,6 +27,6 @@ CXFA_ValidationMessaging::CXFA_ValidationMessaging(CXFA_Document* doc,
                 XFA_Element::ValidationMessaging,
                 {},
                 kValidationMessagingAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_ValidationMessaging::~CXFA_ValidationMessaging() = default;

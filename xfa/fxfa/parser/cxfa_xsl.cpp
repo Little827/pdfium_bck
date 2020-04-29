@@ -31,6 +31,6 @@ CXFA_Xsl::CXFA_Xsl(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Xsl,
                 kXslPropertyData,
                 kXslAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Xsl::~CXFA_Xsl() = default;

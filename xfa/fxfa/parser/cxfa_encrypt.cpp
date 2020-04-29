@@ -34,6 +34,6 @@ CXFA_Encrypt::CXFA_Encrypt(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Encrypt,
           kEncryptPropertyData,
           kEncryptAttributeData,
-          pdfium::MakeUnique<CJX_Encrypt>(this)) {}
+          std::make_unique<CJX_Encrypt>(this)) {}
 
 CXFA_Encrypt::~CXFA_Encrypt() = default;

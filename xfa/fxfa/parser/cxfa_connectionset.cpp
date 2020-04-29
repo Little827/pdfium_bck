@@ -18,6 +18,6 @@ CXFA_ConnectionSet::CXFA_ConnectionSet(CXFA_Document* doc,
                 XFA_Element::ConnectionSet,
                 {},
                 {},
-                pdfium::MakeUnique<CJX_Model>(this)) {}
+                std::make_unique<CJX_Model>(this)) {}
 
 CXFA_ConnectionSet::~CXFA_ConnectionSet() = default;

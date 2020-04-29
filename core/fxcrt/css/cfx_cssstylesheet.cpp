@@ -28,7 +28,7 @@ CFX_CSSStyleRule* CFX_CSSStyleSheet::GetRule(size_t index) const {
 
 bool CFX_CSSStyleSheet::LoadBuffer(WideStringView buffer) {
   m_RuleArray.clear();
-  auto pSyntax = pdfium::MakeUnique<CFX_CSSSyntaxParser>(buffer);
+  auto pSyntax = std::make_unique<CFX_CSSSyntaxParser>(buffer);
   while (1) {
     CFX_CSSSyntaxStatus eStatus = pSyntax->DoSyntaxParse();
     if (eStatus == CFX_CSSSyntaxStatus::kStyleRule)
@@ -80,7 +80,7 @@ CFX_CSSSyntaxStatus CFX_CSSStyleSheet::LoadStyleRule(
       }
       case CFX_CSSSyntaxStatus::kDeclOpen: {
         if (!pStyleRule && !selectors.empty()) {
-          auto rule = pdfium::MakeUnique<CFX_CSSStyleRule>();
+          auto rule = std::make_unique<CFX_CSSStyleRule>();
           pStyleRule = rule.get();
           pStyleRule->SetSelector(&selectors);
           m_RuleArray.push_back(std::move(rule));

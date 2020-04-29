@@ -23,7 +23,7 @@ class XFATestEnvironment final : public testing::Environment {
  public:
   // testing::Environment:
   void SetUp() override {
-    auto font_mgr = pdfium::MakeUnique<CFGAS_FontMgr>();
+    auto font_mgr = std::make_unique<CFGAS_FontMgr>();
     if (font_mgr->EnumFonts())
       font_mgr_ = std::move(font_mgr);
   }

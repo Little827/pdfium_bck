@@ -32,6 +32,6 @@ CXFA_Items::CXFA_Items(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Items,
                 {},
                 kItemsAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Items::~CXFA_Items() = default;

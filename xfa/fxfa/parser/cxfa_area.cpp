@@ -40,6 +40,6 @@ CXFA_Area::CXFA_Area(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Area,
           kAreaPropertyData,
           kAreaAttributeData,
-          pdfium::MakeUnique<CJX_Container>(this)) {}
+          std::make_unique<CJX_Container>(this)) {}
 
 CXFA_Area::~CXFA_Area() = default;

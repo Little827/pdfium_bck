@@ -42,7 +42,7 @@ CXFA_Caption::CXFA_Caption(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Caption,
                 kCaptionPropertyData,
                 kCaptionAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Caption::~CXFA_Caption() = default;
 

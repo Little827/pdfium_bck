@@ -29,6 +29,6 @@ CXFA_SubjectDN::CXFA_SubjectDN(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::SubjectDN,
                 {},
                 kSubjectDNAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_SubjectDN::~CXFA_SubjectDN() = default;

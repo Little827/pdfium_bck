@@ -134,7 +134,7 @@ FPDF_SetSystemFontInfo(FPDF_SYSFONTINFO* pFontInfoExt) {
     return;
 
   CFX_GEModule::Get()->GetFontMgr()->SetSystemFontInfo(
-      pdfium::MakeUnique<CFX_ExternalFontInfo>(pFontInfoExt));
+      std::make_unique<CFX_ExternalFontInfo>(pFontInfoExt));
 }
 
 FPDF_EXPORT const FPDF_CharsetFontMap* FPDF_CALLCONV FPDF_GetDefaultTTFMap() {

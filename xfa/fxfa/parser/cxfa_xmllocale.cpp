@@ -50,7 +50,7 @@ std::unique_ptr<CXFA_XMLLocale> CXFA_XMLLocale::Create(
   if (!locale)
     return nullptr;
 
-  return pdfium::MakeUnique<CXFA_XMLLocale>(std::move(doc), locale);
+  return std::make_unique<CXFA_XMLLocale>(std::move(doc), locale);
 }
 
 CXFA_XMLLocale::CXFA_XMLLocale(std::unique_ptr<CFX_XMLDocument> doc,

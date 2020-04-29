@@ -370,7 +370,7 @@ CJS_Result CJX_LayoutPseudoModel::pageContent(
     return CJS_Result::Success();
 
   auto* pDocLayout = CXFA_LayoutProcessor::FromDocument(GetDocument());
-  auto pArrayNodeList = pdfium::MakeUnique<CXFA_ArrayNodeList>(GetDocument());
+  auto pArrayNodeList = std::make_unique<CXFA_ArrayNodeList>(GetDocument());
   pArrayNodeList->SetArrayNodeList(
       GetObjArray(pDocLayout, iIndex, wsType, bOnPageArea));
 

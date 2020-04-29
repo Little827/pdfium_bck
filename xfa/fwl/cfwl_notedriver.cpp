@@ -44,7 +44,7 @@ void CFWL_NoteDriver::RegisterEventTarget(CFWL_Widget* pListener,
     pListener->SetEventKey(key);
   }
   if (!m_eventTargets[key])
-    m_eventTargets[key] = pdfium::MakeUnique<CFWL_EventTarget>(pListener);
+    m_eventTargets[key] = std::make_unique<CFWL_EventTarget>(pListener);
 
   m_eventTargets[key]->SetEventSource(pEventSource);
 }

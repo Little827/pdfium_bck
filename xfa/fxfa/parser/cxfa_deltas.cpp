@@ -10,6 +10,6 @@
 #include "third_party/base/ptr_util.h"
 
 CXFA_Deltas::CXFA_Deltas(CXFA_Document* doc)
-    : CXFA_List(doc, pdfium::MakeUnique<CJX_List>(this)) {}
+    : CXFA_List(doc, std::make_unique<CJX_List>(this)) {}
 
 CXFA_Deltas::~CXFA_Deltas() {}

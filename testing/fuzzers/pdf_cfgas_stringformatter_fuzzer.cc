@@ -28,7 +28,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   static std::vector<std::unique_ptr<CXFA_LocaleMgr>> mgrs;
   if (mgrs.empty()) {
     for (const auto* locale : kLocales)
-      mgrs.push_back(pdfium::MakeUnique<CXFA_LocaleMgr>(nullptr, locale));
+      mgrs.push_back(std::make_unique<CXFA_LocaleMgr>(nullptr, locale));
   }
 
   uint8_t test_selector = data[0] % 10;
@@ -44,7 +44,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   WideString value =
       WideString::FromLatin1(ByteStringView(data + pattern_len, value_len));
 
-  auto fmt = pdfium::MakeUnique<CFGAS_StringFormatter>(
+  auto fmt = std::make_unique<CFGAS_StringFormatter>(
       mgrs[locale_selector].get(), pattern);
 
   WideString result;

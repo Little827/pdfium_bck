@@ -25,6 +25,6 @@ CXFA_DSigData::CXFA_DSigData(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::DSigData,
                 {},
                 kDSigDataAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DSigData::~CXFA_DSigData() = default;

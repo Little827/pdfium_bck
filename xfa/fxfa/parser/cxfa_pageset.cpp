@@ -38,6 +38,6 @@ CXFA_PageSet::CXFA_PageSet(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::PageSet,
                 kPageSetPropertyData,
                 kPageSetAttributeData,
-                pdfium::MakeUnique<CJX_Container>(this)) {}
+                std::make_unique<CJX_Container>(this)) {}
 
 CXFA_PageSet::~CXFA_PageSet() = default;

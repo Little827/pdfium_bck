@@ -244,8 +244,8 @@ void CFX_FolderFontInfo::ReportFace(const ByteString& path,
   if (pdfium::ContainsKey(m_FontList, facename))
     return;
 
-  auto pInfo = pdfium::MakeUnique<FontFaceInfo>(path, facename, tables, offset,
-                                                filesize);
+  auto pInfo =
+      std::make_unique<FontFaceInfo>(path, facename, tables, offset, filesize);
   ByteString os2 =
       LoadTableFromTT(pFile, tables.raw_str(), nTables, 0x4f532f32, filesize);
   if (os2.GetLength() >= 86) {

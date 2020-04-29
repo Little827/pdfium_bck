@@ -43,7 +43,7 @@ CXFA_Event::CXFA_Event(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Event,
                 kEventPropertyData,
                 kEventAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Event::~CXFA_Event() = default;
 

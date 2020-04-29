@@ -63,6 +63,6 @@ CXFA_Field::CXFA_Field(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Field,
                 kFieldPropertyData,
                 kFieldAttributeData,
-                pdfium::MakeUnique<CJX_Field>(this)) {}
+                std::make_unique<CJX_Field>(this)) {}
 
 CXFA_Field::~CXFA_Field() = default;

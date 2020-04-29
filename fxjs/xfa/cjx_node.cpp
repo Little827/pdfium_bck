@@ -269,7 +269,7 @@ CJS_Result CJX_Node::loadXML(CFX_V8* runtime,
   if (params.size() >= 3)
     bOverwrite = runtime->ToBoolean(params[2]);
 
-  auto pParser = pdfium::MakeUnique<CXFA_DocumentParser>(GetDocument());
+  auto pParser = std::make_unique<CXFA_DocumentParser>(GetDocument());
   CFX_XMLNode* pXMLNode = pParser->ParseXMLData(expression);
   if (!pXMLNode)
     return CJS_Result::Success();

@@ -26,6 +26,6 @@ CXFA_Creator::CXFA_Creator(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Creator,
                 {},
                 kCreatorAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Creator::~CXFA_Creator() = default;

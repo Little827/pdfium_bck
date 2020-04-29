@@ -28,6 +28,6 @@ CXFA_CompressLogicalStructure::CXFA_CompressLogicalStructure(
                 XFA_Element::CompressLogicalStructure,
                 {},
                 kCompressLogicalStructureAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_CompressLogicalStructure::~CXFA_CompressLogicalStructure() = default;

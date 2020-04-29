@@ -32,6 +32,6 @@ CXFA_XsdConnection::CXFA_XsdConnection(CXFA_Document* doc,
                 XFA_Element::XsdConnection,
                 kXsdConnectionPropertyData,
                 kXsdConnectionAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_XsdConnection::~CXFA_XsdConnection() = default;

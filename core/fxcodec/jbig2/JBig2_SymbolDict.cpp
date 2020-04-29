@@ -14,9 +14,9 @@ CJBig2_SymbolDict::CJBig2_SymbolDict() {}
 CJBig2_SymbolDict::~CJBig2_SymbolDict() {}
 
 std::unique_ptr<CJBig2_SymbolDict> CJBig2_SymbolDict::DeepCopy() const {
-  auto dst = pdfium::MakeUnique<CJBig2_SymbolDict>();
+  auto dst = std::make_unique<CJBig2_SymbolDict>();
   for (const auto& image : m_SDEXSYMS) {
-    dst->m_SDEXSYMS.push_back(image ? pdfium::MakeUnique<CJBig2_Image>(*image)
+    dst->m_SDEXSYMS.push_back(image ? std::make_unique<CJBig2_Image>(*image)
                                     : nullptr);
   }
   dst->m_gbContext = m_gbContext;

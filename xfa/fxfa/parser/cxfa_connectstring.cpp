@@ -29,6 +29,6 @@ CXFA_ConnectString::CXFA_ConnectString(CXFA_Document* doc,
                 XFA_Element::ConnectString,
                 {},
                 kConnectStringAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_ConnectString::~CXFA_ConnectString() = default;

@@ -30,6 +30,6 @@ CXFA_Mdp::CXFA_Mdp(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Mdp,
                 {},
                 kMdpAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Mdp::~CXFA_Mdp() = default;

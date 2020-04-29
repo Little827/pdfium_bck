@@ -20,7 +20,7 @@ GifModule::GifModule() = default;
 GifModule::~GifModule() = default;
 
 std::unique_ptr<ModuleIface::Context> GifModule::Start(Delegate* pDelegate) {
-  return pdfium::MakeUnique<CFX_GifContext>(this, pDelegate);
+  return std::make_unique<CFX_GifContext>(this, pDelegate);
 }
 
 CFX_GifDecodeStatus GifModule::ReadHeader(Context* pContext,

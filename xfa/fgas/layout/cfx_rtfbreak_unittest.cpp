@@ -27,7 +27,7 @@ class CFX_RTFBreakTest : public testing::Test {
   }
 
   std::unique_ptr<CFX_RTFBreak> CreateBreak(uint32_t layout_styles) {
-    auto rtf_break = pdfium::MakeUnique<CFX_RTFBreak>(layout_styles);
+    auto rtf_break = std::make_unique<CFX_RTFBreak>(layout_styles);
     rtf_break->SetFont(font_);
     return rtf_break;
   }

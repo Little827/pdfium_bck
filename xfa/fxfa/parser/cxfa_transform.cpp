@@ -34,6 +34,6 @@ CXFA_Transform::CXFA_Transform(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Transform,
                 kTransformPropertyData,
                 kTransformAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Transform::~CXFA_Transform() = default;

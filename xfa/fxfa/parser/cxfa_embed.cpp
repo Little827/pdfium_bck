@@ -26,6 +26,6 @@ CXFA_Embed::CXFA_Embed(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Embed,
                 {},
                 kEmbedAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Embed::~CXFA_Embed() = default;

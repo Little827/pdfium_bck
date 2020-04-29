@@ -40,7 +40,7 @@ CXFA_TextEdit::CXFA_TextEdit(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::TextEdit,
                 kTextEditPropertyData,
                 kTextEditAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_TextEdit::~CXFA_TextEdit() = default;
 

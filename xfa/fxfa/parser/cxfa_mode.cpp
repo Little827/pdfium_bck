@@ -26,6 +26,6 @@ CXFA_Mode::CXFA_Mode(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Mode,
                 {},
                 kModeAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Mode::~CXFA_Mode() = default;

@@ -27,6 +27,6 @@ CXFA_Encoding::CXFA_Encoding(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Encoding,
                 {},
                 kEncodingAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Encoding::~CXFA_Encoding() = default;

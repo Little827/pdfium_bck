@@ -611,7 +611,7 @@ CFX_FontDescriptor::CFX_FontDescriptor()
 CFX_FontDescriptor::~CFX_FontDescriptor() {}
 
 CFGAS_FontMgr::CFGAS_FontMgr()
-    : m_pFontSource(pdfium::MakeUnique<CFX_FontSourceEnum_File>()) {}
+    : m_pFontSource(std::make_unique<CFX_FontSourceEnum_File>()) {}
 
 CFGAS_FontMgr::~CFGAS_FontMgr() {}
 
@@ -659,7 +659,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByUnicodeImpl(
   std::vector<CFX_FontDescriptorInfo>* sortedFontInfos =
       m_Hash2CandidateList[dwHash].get();
   if (!sortedFontInfos) {
-    auto pNewFonts = pdfium::MakeUnique<std::vector<CFX_FontDescriptorInfo>>();
+    auto pNewFonts = std::make_unique<std::vector<CFX_FontDescriptorInfo>>();
     sortedFontInfos = pNewFonts.get();
     MatchFonts(sortedFontInfos, wCodePage, dwFontStyles,
                WideString(pszFontFamily), wUnicode);
@@ -690,7 +690,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFontInternal(
   if (!pFontStream)
     return nullptr;
 
-  auto pInternalFont = pdfium::MakeUnique<CFX_Font>();
+  auto pInternalFont = std::make_unique<CFX_Font>();
   if (!pInternalFont->LoadFile(pFontStream, iFaceIndex))
     return nullptr;
 
@@ -727,7 +727,7 @@ void CFGAS_FontMgr::RegisterFace(RetainPtr<CFX_Face> pFace,
   if ((pFace->GetRec()->face_flags & FT_FACE_FLAG_SCALABLE) == 0)
     return;
 
-  auto pFont = pdfium::MakeUnique<CFX_FontDescriptor>();
+  auto pFont = std::make_unique<CFX_FontDescriptor>();
   pFont->m_dwFontStyles |= GetFlags(pFace->GetRec());
 
   GetUSBCSB(pFace->GetRec(), pFont->m_dwUsb, pFont->m_dwCsb);
@@ -807,7 +807,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByCodePage(
   std::vector<CFX_FontDescriptorInfo>* sortedFontInfos =
       m_Hash2CandidateList[dwHash].get();
   if (!sortedFontInfos) {
-    auto pNewFonts = pdfium::MakeUnique<std::vector<CFX_FontDescriptorInfo>>();
+    auto pNewFonts = std::make_unique<std::vector<CFX_FontDescriptorInfo>>();
     sortedFontInfos = pNewFonts.get();
     MatchFonts(sortedFontInfos, wCodePage, dwFontStyles,
                WideString(pszFontFamily), 0);

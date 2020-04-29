@@ -42,7 +42,7 @@ class CFDE_TextEditEngineTest : public testing::Test {
         CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0, GetGlobalFontManager());
     ASSERT_TRUE(font_.Get() != nullptr);
 
-    engine_ = pdfium::MakeUnique<CFDE_TextEditEngine>();
+    engine_ = std::make_unique<CFDE_TextEditEngine>();
     engine_->SetFont(font_);
     engine_->SetFontSize(12.0f);
   }
@@ -94,7 +94,7 @@ TEST_F(CFDE_TextEditEngineTest, Insert) {
   engine()->Clear();
 
   // With Delegate
-  auto delegate = pdfium::MakeUnique<CFDE_TextEditEngineTest::Delegate>();
+  auto delegate = std::make_unique<CFDE_TextEditEngineTest::Delegate>();
   engine()->SetDelegate(delegate.get());
 
   engine()->SetCharacterLimit(5);

@@ -16,7 +16,7 @@ CJS_RuntimeStub::~CJS_RuntimeStub() = default;
 
 IJS_EventContext* CJS_RuntimeStub::NewEventContext() {
   if (!m_pContext)
-    m_pContext = pdfium::MakeUnique<CJS_EventContextStub>();
+    m_pContext = std::make_unique<CJS_EventContextStub>();
   return m_pContext.get();
 }
 

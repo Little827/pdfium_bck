@@ -50,14 +50,14 @@ CFX_ImageRenderer::CFX_ImageRenderer(const RetainPtr<CFX_DIBitmap>& pDevice,
       m_Composer.Compose(pDevice, pClipRgn, bitmap_alpha, mask_color, m_ClipBox,
                          true, m_Matrix.c > 0, m_Matrix.b < 0, m_bRgbByteOrder,
                          BlendMode::kNormal);
-      m_Stretcher = pdfium::MakeUnique<CFX_ImageStretcher>(
+      m_Stretcher = std::make_unique<CFX_ImageStretcher>(
           &m_Composer, pSource, dest_height, dest_width, bitmap_clip, options);
       if (m_Stretcher->Start())
         m_Status = 1;
       return;
     }
     m_Status = 2;
-    m_pTransformer = pdfium::MakeUnique<CFX_ImageTransformer>(
+    m_pTransformer = std::make_unique<CFX_ImageTransformer>(
         pSource, m_Matrix, options, &m_ClipBox);
     return;
   }
@@ -78,7 +78,7 @@ CFX_ImageRenderer::CFX_ImageRenderer(const RetainPtr<CFX_DIBitmap>& pDevice,
   m_Composer.Compose(pDevice, pClipRgn, bitmap_alpha, mask_color, m_ClipBox,
                      false, false, false, m_bRgbByteOrder, BlendMode::kNormal);
   m_Status = 1;
-  m_Stretcher = pdfium::MakeUnique<CFX_ImageStretcher>(
+  m_Stretcher = std::make_unique<CFX_ImageStretcher>(
       &m_Composer, pSource, dest_width, dest_height, bitmap_clip, options);
   m_Stretcher->Start();
 }

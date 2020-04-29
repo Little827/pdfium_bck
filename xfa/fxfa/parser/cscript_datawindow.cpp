@@ -16,6 +16,6 @@ CScript_DataWindow::CScript_DataWindow(CXFA_Document* pDocument)
     : CXFA_Object(pDocument,
                   XFA_ObjectType::Object,
                   XFA_Element::DataWindow,
-                  pdfium::MakeUnique<CJX_DataWindow>(this)) {}
+                  std::make_unique<CJX_DataWindow>(this)) {}
 
 CScript_DataWindow::~CScript_DataWindow() {}

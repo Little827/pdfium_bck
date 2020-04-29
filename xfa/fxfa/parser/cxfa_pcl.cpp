@@ -34,6 +34,6 @@ CXFA_Pcl::CXFA_Pcl(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Pcl,
                 kPclPropertyData,
                 kPclAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Pcl::~CXFA_Pcl() = default;

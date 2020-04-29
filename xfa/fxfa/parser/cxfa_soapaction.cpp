@@ -28,6 +28,6 @@ CXFA_SoapAction::CXFA_SoapAction(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::SoapAction,
                 {},
                 kSoapActionAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_SoapAction::~CXFA_SoapAction() = default;

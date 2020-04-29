@@ -30,6 +30,6 @@ CXFA_Overflow::CXFA_Overflow(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Overflow,
                 {},
                 kOverflowAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Overflow::~CXFA_Overflow() = default;

@@ -34,6 +34,6 @@ CXFA_Acrobat::CXFA_Acrobat(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Acrobat,
                 kAcrobatPropertyData,
                 kAcrobatAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Acrobat::~CXFA_Acrobat() = default;

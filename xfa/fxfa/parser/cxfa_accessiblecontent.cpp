@@ -27,6 +27,6 @@ CXFA_AccessibleContent::CXFA_AccessibleContent(CXFA_Document* doc,
                 XFA_Element::AccessibleContent,
                 {},
                 kAccessibleContentAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_AccessibleContent::~CXFA_AccessibleContent() = default;

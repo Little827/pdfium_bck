@@ -28,6 +28,6 @@ CXFA_Comb::CXFA_Comb(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Comb,
                 {},
                 kCombAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Comb::~CXFA_Comb() {}

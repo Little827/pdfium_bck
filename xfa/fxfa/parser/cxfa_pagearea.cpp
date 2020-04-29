@@ -44,6 +44,6 @@ CXFA_PageArea::CXFA_PageArea(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::PageArea,
                 kPageAreaPropertyData,
                 kPageAreaAttributeData,
-                pdfium::MakeUnique<CJX_Container>(this)) {}
+                std::make_unique<CJX_Container>(this)) {}
 
 CXFA_PageArea::~CXFA_PageArea() = default;

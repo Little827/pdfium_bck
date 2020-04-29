@@ -21,7 +21,7 @@ BmpModule::BmpModule() = default;
 BmpModule::~BmpModule() = default;
 
 std::unique_ptr<ModuleIface::Context> BmpModule::Start(Delegate* pDelegate) {
-  return pdfium::MakeUnique<CFX_BmpContext>(this, pDelegate);
+  return std::make_unique<CFX_BmpContext>(this, pDelegate);
 }
 
 BmpModule::Status BmpModule::ReadHeader(Context* pContext,

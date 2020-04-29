@@ -43,6 +43,6 @@ CXFA_Present::CXFA_Present(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Present,
                 kPresentPropertyData,
                 kPresentAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Present::~CXFA_Present() = default;

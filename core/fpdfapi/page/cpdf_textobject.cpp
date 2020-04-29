@@ -155,7 +155,7 @@ WideString CPDF_TextObject::GetWordString(int nWordIndex) const {
 }
 
 std::unique_ptr<CPDF_TextObject> CPDF_TextObject::Clone() const {
-  auto obj = pdfium::MakeUnique<CPDF_TextObject>();
+  auto obj = std::make_unique<CPDF_TextObject>();
   obj->CopyData(this);
   obj->m_CharCodes = m_CharCodes;
   obj->m_CharPos = m_CharPos;

@@ -114,7 +114,7 @@ bool FDFToURLEncodedData(
 CPDFSDK_InteractiveForm::CPDFSDK_InteractiveForm(
     CPDFSDK_FormFillEnvironment* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv),
-      m_pInteractiveForm(pdfium::MakeUnique<CPDF_InteractiveForm>(
+      m_pInteractiveForm(std::make_unique<CPDF_InteractiveForm>(
           m_pFormFillEnv->GetPDFDocument())) {
   m_pInteractiveForm->SetNotifierIface(this);
   RemoveAllHighLights();

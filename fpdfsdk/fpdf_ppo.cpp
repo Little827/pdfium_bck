@@ -623,7 +623,7 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
 
       auto pSrcPage = pdfium::MakeRetain<CPDF_Page>(src(), pSrcPageDict);
       pSrcPage->SetRenderCache(
-          pdfium::MakeUnique<CPDF_PageRenderCache>(pSrcPage.Get()));
+          std::make_unique<CPDF_PageRenderCache>(pSrcPage.Get()));
       NupPageSettings settings =
           nupState.CalculateNewPagePosition(pSrcPage->GetPageSize());
       bsContent += AddSubPage(pSrcPageDict, settings);

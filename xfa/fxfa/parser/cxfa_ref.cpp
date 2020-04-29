@@ -27,6 +27,6 @@ CXFA_Ref::CXFA_Ref(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Ref,
                 {},
                 kRefAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Ref::~CXFA_Ref() = default;

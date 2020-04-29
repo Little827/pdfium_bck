@@ -27,6 +27,6 @@ CXFA_IncludeXDPContent::CXFA_IncludeXDPContent(CXFA_Document* doc,
                 XFA_Element::IncludeXDPContent,
                 {},
                 kIncludeXDPContentAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_IncludeXDPContent::~CXFA_IncludeXDPContent() = default;

@@ -25,6 +25,6 @@ CXFA_DataGroup::CXFA_DataGroup(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::DataGroup,
                 {},
                 kDataGroupAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DataGroup::~CXFA_DataGroup() = default;

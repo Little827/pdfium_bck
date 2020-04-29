@@ -22,7 +22,7 @@ CFDF_Document::CFDF_Document() = default;
 CFDF_Document::~CFDF_Document() = default;
 
 std::unique_ptr<CFDF_Document> CFDF_Document::CreateNewDoc() {
-  auto pDoc = pdfium::MakeUnique<CFDF_Document>();
+  auto pDoc = std::make_unique<CFDF_Document>();
   pDoc->m_pRootDict.Reset(pDoc->NewIndirect<CPDF_Dictionary>());
   pDoc->m_pRootDict->SetNewFor<CPDF_Dictionary>("FDF");
   return pDoc;
@@ -30,7 +30,7 @@ std::unique_ptr<CFDF_Document> CFDF_Document::CreateNewDoc() {
 
 std::unique_ptr<CFDF_Document> CFDF_Document::ParseMemory(
     pdfium::span<const uint8_t> span) {
-  auto pDoc = pdfium::MakeUnique<CFDF_Document>();
+  auto pDoc = std::make_unique<CFDF_Document>();
   pDoc->ParseStream(pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(span));
   return pDoc->m_pRootDict ? std::move(pDoc) : nullptr;
 }

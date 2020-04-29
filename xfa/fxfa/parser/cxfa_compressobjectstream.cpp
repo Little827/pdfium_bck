@@ -27,6 +27,6 @@ CXFA_CompressObjectStream::CXFA_CompressObjectStream(CXFA_Document* doc,
                 XFA_Element::CompressObjectStream,
                 {},
                 kCompressObjectStreamAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_CompressObjectStream::~CXFA_CompressObjectStream() = default;

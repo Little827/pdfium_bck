@@ -204,7 +204,7 @@ std::unique_ptr<ScanlineDecoder> BasicModule::CreateRunLengthDecoder(
     int height,
     int nComps,
     int bpc) {
-  auto pDecoder = pdfium::MakeUnique<RLScanlineDecoder>();
+  auto pDecoder = std::make_unique<RLScanlineDecoder>();
   if (!pDecoder->Create(src_buf, width, height, nComps, bpc))
     return nullptr;
 

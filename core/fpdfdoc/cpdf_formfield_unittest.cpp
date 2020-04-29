@@ -36,8 +36,8 @@ class ScopedCPDF_PageModule {
 class CPDF_TestEmptyDocument final : public CPDF_Document {
  public:
   CPDF_TestEmptyDocument()
-      : CPDF_Document(pdfium::MakeUnique<CPDF_DocRenderData>(),
-                      pdfium::MakeUnique<CPDF_DocPageData>()) {}
+      : CPDF_Document(std::make_unique<CPDF_DocRenderData>(),
+                      std::make_unique<CPDF_DocPageData>()) {}
 };
 
 void TestMultiselectFieldDict(RetainPtr<CPDF_Array> opt_array,

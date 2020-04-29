@@ -224,7 +224,7 @@ std::unique_ptr<CPDFSDK_Annot> CPDFXFA_WidgetHandler::NewAnnotForXFA(
     CXFA_FFWidget* pAnnot,
     CPDFSDK_PageView* pPageView) {
   CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
-  return pdfium::MakeUnique<CPDFXFA_Widget>(pAnnot, pPageView, pForm);
+  return std::make_unique<CPDFXFA_Widget>(pAnnot, pPageView, pForm);
 }
 
 void CPDFXFA_WidgetHandler::OnDraw(CPDFSDK_PageView* pPageView,

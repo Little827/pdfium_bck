@@ -142,7 +142,7 @@ CPDF_Parser::Error CPDF_Document::LoadDoc(
     const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
     const char* password) {
   if (!m_pParser)
-    SetParser(pdfium::MakeUnique<CPDF_Parser>(this));
+    SetParser(std::make_unique<CPDF_Parser>(this));
 
   return HandleLoadResult(m_pParser->StartParse(pFileAccess, password));
 }
@@ -151,7 +151,7 @@ CPDF_Parser::Error CPDF_Document::LoadLinearizedDoc(
     const RetainPtr<CPDF_ReadValidator>& validator,
     const char* password) {
   if (!m_pParser)
-    SetParser(pdfium::MakeUnique<CPDF_Parser>(this));
+    SetParser(std::make_unique<CPDF_Parser>(this));
 
   return HandleLoadResult(m_pParser->StartLinearizedParse(validator, password));
 }

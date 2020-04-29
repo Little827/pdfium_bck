@@ -26,6 +26,6 @@ CXFA_DuplexOption::CXFA_DuplexOption(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::DuplexOption,
                 {},
                 kDuplexOptionAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DuplexOption::~CXFA_DuplexOption() = default;

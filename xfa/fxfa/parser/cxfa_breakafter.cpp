@@ -37,6 +37,6 @@ CXFA_BreakAfter::CXFA_BreakAfter(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::BreakAfter,
                 kBreakAfterPropertyData,
                 kBreakAfterAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_BreakAfter::~CXFA_BreakAfter() = default;

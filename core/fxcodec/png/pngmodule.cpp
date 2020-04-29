@@ -189,7 +189,7 @@ PngModule::PngModule() = default;
 PngModule::~PngModule() = default;
 
 std::unique_ptr<ModuleIface::Context> PngModule::Start(Delegate* pDelegate) {
-  auto p = pdfium::MakeUnique<CPngContext>(pDelegate);
+  auto p = std::make_unique<CPngContext>(pDelegate);
   p->m_pPng =
       png_create_read_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
   if (!p->m_pPng)

@@ -59,7 +59,7 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
 #if !defined(OS_WIN)
   uint32_t dwFontStyle = pFont->GetFontStyles();
   CFX_Font FxFont;
-  auto SubstFxFont = pdfium::MakeUnique<CFX_SubstFont>();
+  auto SubstFxFont = std::make_unique<CFX_SubstFont>();
   SubstFxFont->m_Weight = FontStyleIsForceBold(dwFontStyle) ? 700 : 400;
   SubstFxFont->m_ItalicAngle = FontStyleIsItalic(dwFontStyle) ? -12 : 0;
   SubstFxFont->m_WeightCJK = SubstFxFont->m_Weight;
@@ -128,7 +128,7 @@ FDE_TTOPIECE::FDE_TTOPIECE(const FDE_TTOPIECE& that) = default;
 FDE_TTOPIECE::~FDE_TTOPIECE() = default;
 
 CFDE_TextOut::CFDE_TextOut()
-    : m_pTxtBreak(pdfium::MakeUnique<CFX_TxtBreak>()), m_ttoLines(5) {}
+    : m_pTxtBreak(std::make_unique<CFX_TxtBreak>()), m_ttoLines(5) {}
 
 CFDE_TextOut::~CFDE_TextOut() = default;
 

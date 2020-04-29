@@ -449,7 +449,7 @@ bool CBC_QRCoderEncoder::Encode(WideStringView content,
     return false;
   }
 
-  auto matrix = pdfium::MakeUnique<CBC_CommonByteMatrix>(
+  auto matrix = std::make_unique<CBC_CommonByteMatrix>(
       qrCode->GetMatrixWidth(), qrCode->GetMatrixWidth());
   Optional<int32_t> maskPattern = ChooseMaskPattern(
       &finalBits, qrCode->GetECLevel(), qrCode->GetVersion(), matrix.get());

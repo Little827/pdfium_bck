@@ -29,6 +29,6 @@ CXFA_Boolean::CXFA_Boolean(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Boolean,
                 {},
                 kBooleanAttributeData,
-                pdfium::MakeUnique<CJX_Boolean>(this)) {}
+                std::make_unique<CJX_Boolean>(this)) {}
 
 CXFA_Boolean::~CXFA_Boolean() {}

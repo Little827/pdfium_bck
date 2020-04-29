@@ -424,7 +424,7 @@ bool CPDF_ImageRenderer::StartDIBBase() {
     FX_RECT clip_box = m_pRenderStatus->GetRenderDevice()->GetClipBox();
     clip_box.Intersect(image_rect.value());
     m_Mode = Mode::kTransform;
-    m_pTransformer = pdfium::MakeUnique<CFX_ImageTransformer>(
+    m_pTransformer = std::make_unique<CFX_ImageTransformer>(
         m_pDIBBase, m_ImageMatrix, m_ResampleOptions, &clip_box);
     return true;
   }

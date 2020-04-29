@@ -31,6 +31,6 @@ CXFA_XmlConnection::CXFA_XmlConnection(CXFA_Document* doc,
                 XFA_Element::XmlConnection,
                 kXmlConnectionPropertyData,
                 kXmlConnectionAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_XmlConnection::~CXFA_XmlConnection() = default;

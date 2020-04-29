@@ -22,8 +22,8 @@
 class CPDF_TestDocument final : public CPDF_Document {
  public:
   CPDF_TestDocument()
-      : CPDF_Document(pdfium::MakeUnique<CPDF_DocRenderData>(),
-                      pdfium::MakeUnique<CPDF_DocPageData>()) {}
+      : CPDF_Document(std::make_unique<CPDF_DocRenderData>(),
+                      std::make_unique<CPDF_DocPageData>()) {}
 
   void SetRoot(CPDF_Dictionary* root) { SetRootForTesting(root); }
 };
@@ -32,7 +32,7 @@ class PDFCatalogTest : public testing::Test {
  public:
   void SetUp() override {
     CPDF_PageModule::Create();
-    auto pTestDoc = pdfium::MakeUnique<CPDF_TestDocument>();
+    auto pTestDoc = std::make_unique<CPDF_TestDocument>();
     m_pDoc.reset(FPDFDocumentFromCPDFDocument(pTestDoc.release()));
     m_pRootObj = pdfium::MakeRetain<CPDF_Dictionary>();
   }

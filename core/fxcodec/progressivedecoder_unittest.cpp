@@ -371,7 +371,7 @@ TEST(ProgressiveDecoder, BUG_895009) {
       0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
   ModuleMgr::Create();
-  ModuleMgr::GetInstance()->SetGifModule(pdfium::MakeUnique<GifModule>());
+  ModuleMgr::GetInstance()->SetGifModule(std::make_unique<GifModule>());
   {
     std::unique_ptr<ProgressiveDecoder> decoder =
         ModuleMgr::GetInstance()->CreateProgressiveDecoder();

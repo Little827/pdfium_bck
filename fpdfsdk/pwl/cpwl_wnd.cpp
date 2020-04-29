@@ -490,7 +490,7 @@ void CPWL_Wnd::CreateVScrollBar(const CreateParams& cp) {
   scp.nTransparency = PWL_SCROLLBAR_TRANSPARENCY;
 
   auto pBar =
-      pdfium::MakeUnique<CPWL_ScrollBar>(scp, CloneAttachedData(), SBT_VSCROLL);
+      std::make_unique<CPWL_ScrollBar>(scp, CloneAttachedData(), SBT_VSCROLL);
   m_pVScrollBar = pBar.get();
   AddChild(std::move(pBar));
   m_pVScrollBar->Realize();

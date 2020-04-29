@@ -31,7 +31,7 @@
 
 CBC_ReedSolomonEncoder::CBC_ReedSolomonEncoder(CBC_ReedSolomonGF256* field)
     : m_field(field) {
-  m_cachedGenerators.push_back(pdfium::MakeUnique<CBC_ReedSolomonGF256Poly>(
+  m_cachedGenerators.push_back(std::make_unique<CBC_ReedSolomonGF256Poly>(
       m_field.Get(), std::vector<int32_t>{1}));
 }
 

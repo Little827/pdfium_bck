@@ -27,6 +27,6 @@ CXFA_DocumentAssembly::CXFA_DocumentAssembly(CXFA_Document* doc,
                 XFA_Element::DocumentAssembly,
                 {},
                 kDocumentAssemblyAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DocumentAssembly::~CXFA_DocumentAssembly() = default;

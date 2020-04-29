@@ -71,6 +71,6 @@ CXFA_Subform::CXFA_Subform(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Subform,
                 kSubformPropertyData,
                 kSubformAttributeData,
-                pdfium::MakeUnique<CJX_Subform>(this)) {}
+                std::make_unique<CJX_Subform>(this)) {}
 
 CXFA_Subform::~CXFA_Subform() = default;

@@ -29,6 +29,6 @@ CXFA_EffectiveOutputPolicy::CXFA_EffectiveOutputPolicy(CXFA_Document* doc,
                 XFA_Element::EffectiveOutputPolicy,
                 {},
                 kEffectiveOutputPolicyAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_EffectiveOutputPolicy::~CXFA_EffectiveOutputPolicy() = default;

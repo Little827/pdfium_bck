@@ -30,6 +30,6 @@ CXFA_EncryptionMethods::CXFA_EncryptionMethods(CXFA_Document* doc,
                 XFA_Element::EncryptionMethods,
                 {},
                 kEncryptionMethodsAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_EncryptionMethods::~CXFA_EncryptionMethods() = default;

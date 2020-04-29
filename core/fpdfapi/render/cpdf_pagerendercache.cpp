@@ -82,8 +82,8 @@ bool CPDF_PageRenderCache::StartGetCachedBitmap(
   if (m_bCurFindCache) {
     m_pCurImageCacheEntry = it->second.get();
   } else {
-    m_pCurImageCacheEntry = pdfium::MakeUnique<CPDF_ImageCacheEntry>(
-        m_pPage->GetDocument(), pImage);
+    m_pCurImageCacheEntry =
+        std::make_unique<CPDF_ImageCacheEntry>(m_pPage->GetDocument(), pImage);
   }
   CPDF_DIB::LoadState ret = m_pCurImageCacheEntry->StartGetCachedBitmap(
       m_pPage->m_pPageResources.Get(), pRenderStatus, bStdCS);

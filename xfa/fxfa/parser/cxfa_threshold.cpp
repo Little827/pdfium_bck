@@ -26,6 +26,6 @@ CXFA_Threshold::CXFA_Threshold(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Threshold,
                 {},
                 kThresholdAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Threshold::~CXFA_Threshold() = default;

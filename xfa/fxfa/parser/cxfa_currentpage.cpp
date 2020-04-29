@@ -26,6 +26,6 @@ CXFA_CurrentPage::CXFA_CurrentPage(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::CurrentPage,
                 {},
                 kCurrentPageAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_CurrentPage::~CXFA_CurrentPage() = default;

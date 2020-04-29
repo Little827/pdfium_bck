@@ -53,7 +53,7 @@ FPDFDoc_GetJavaScriptAction(FPDF_DOCUMENT document, int index) {
   if (!script.has_value())
     return nullptr;
 
-  auto js = pdfium::MakeUnique<CPDF_JavaScript>();
+  auto js = std::make_unique<CPDF_JavaScript>();
   js->name = name;
   js->script = script.value();
   return FPDFJavaScriptActionFromCPDFJavaScriptAction(js.release());

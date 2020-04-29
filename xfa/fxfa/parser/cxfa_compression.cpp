@@ -33,6 +33,6 @@ CXFA_Compression::CXFA_Compression(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Compression,
                 kCompressionPropertyData,
                 kCompressionAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Compression::~CXFA_Compression() = default;

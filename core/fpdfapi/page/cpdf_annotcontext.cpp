@@ -30,7 +30,7 @@ void CPDF_AnnotContext::SetForm(CPDF_Stream* pStream) {
   // appearance stream already takes matrix into account.
   pStream->GetDict()->SetMatrixFor("Matrix", CFX_Matrix());
 
-  m_pAnnotForm = pdfium::MakeUnique<CPDF_Form>(
+  m_pAnnotForm = std::make_unique<CPDF_Form>(
       m_pPage->GetDocument(), m_pPage->AsPDFPage()->m_pResources.Get(),
       pStream);
   m_pAnnotForm->ParseContent();

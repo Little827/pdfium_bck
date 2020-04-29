@@ -17,6 +17,6 @@ CXFA_Month::CXFA_Month(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Month,
                 {},
                 {},
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Month::~CXFA_Month() = default;

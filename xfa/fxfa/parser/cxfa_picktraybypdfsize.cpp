@@ -27,6 +27,6 @@ CXFA_PickTrayByPDFSize::CXFA_PickTrayByPDFSize(CXFA_Document* doc,
                 XFA_Element::PickTrayByPDFSize,
                 {},
                 kPickTrayByPDFSizeAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_PickTrayByPDFSize::~CXFA_PickTrayByPDFSize() = default;

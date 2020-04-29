@@ -13,6 +13,6 @@ CScript_HostPseudoModel::CScript_HostPseudoModel(CXFA_Document* pDocument)
     : CXFA_Object(pDocument,
                   XFA_ObjectType::Object,
                   XFA_Element::HostPseudoModel,
-                  pdfium::MakeUnique<CJX_HostPseudoModel>(this)) {}
+                  std::make_unique<CJX_HostPseudoModel>(this)) {}
 
 CScript_HostPseudoModel::~CScript_HostPseudoModel() = default;

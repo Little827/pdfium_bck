@@ -30,6 +30,6 @@ CXFA_Uri::CXFA_Uri(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Uri,
                 {},
                 kUriAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Uri::~CXFA_Uri() = default;

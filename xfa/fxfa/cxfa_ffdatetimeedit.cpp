@@ -47,7 +47,7 @@ bool CXFA_FFDateTimeEdit::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
   RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
-  auto pNewPicker = pdfium::MakeUnique<CFWL_DateTimePicker>(GetFWLApp());
+  auto pNewPicker = std::make_unique<CFWL_DateTimePicker>(GetFWLApp());
   CFWL_DateTimePicker* pWidget = pNewPicker.get();
   SetNormalWidget(std::move(pNewPicker));
   pWidget->SetAdapterIface(this);

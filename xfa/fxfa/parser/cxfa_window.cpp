@@ -26,6 +26,6 @@ CXFA_Window::CXFA_Window(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Window,
                 {},
                 kWindowAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Window::~CXFA_Window() = default;

@@ -48,7 +48,7 @@ CXFA_Para::CXFA_Para(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Para,
                 kParaPropertyData,
                 kParaAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Para::~CXFA_Para() = default;
 

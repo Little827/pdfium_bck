@@ -28,7 +28,7 @@
 #include "third_party/base/ptr_util.h"
 
 CBC_Codabar::CBC_Codabar()
-    : CBC_OneCode(pdfium::MakeUnique<CBC_OnedCodaBarWriter>()) {}
+    : CBC_OneCode(std::make_unique<CBC_OnedCodaBarWriter>()) {}
 
 CBC_Codabar::~CBC_Codabar() = default;
 

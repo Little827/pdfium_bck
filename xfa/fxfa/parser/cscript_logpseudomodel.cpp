@@ -13,6 +13,6 @@ CScript_LogPseudoModel::CScript_LogPseudoModel(CXFA_Document* pDocument)
     : CXFA_Object(pDocument,
                   XFA_ObjectType::Object,
                   XFA_Element::LogPseudoModel,
-                  pdfium::MakeUnique<CJX_LogPseudoModel>(this)) {}
+                  std::make_unique<CJX_LogPseudoModel>(this)) {}
 
 CScript_LogPseudoModel::~CScript_LogPseudoModel() {}

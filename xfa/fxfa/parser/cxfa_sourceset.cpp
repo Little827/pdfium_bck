@@ -28,6 +28,6 @@ CXFA_SourceSet::CXFA_SourceSet(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::SourceSet,
                 {},
                 kSourceSetAttributeData,
-                pdfium::MakeUnique<CJX_Model>(this)) {}
+                std::make_unique<CJX_Model>(this)) {}
 
 CXFA_SourceSet::~CXFA_SourceSet() = default;

@@ -28,6 +28,6 @@ CXFA_TemplateCache::CXFA_TemplateCache(CXFA_Document* doc,
                 XFA_Element::TemplateCache,
                 {},
                 kTemplateCacheAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_TemplateCache::~CXFA_TemplateCache() = default;

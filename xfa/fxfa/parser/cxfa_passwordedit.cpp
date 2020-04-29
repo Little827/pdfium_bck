@@ -36,7 +36,7 @@ CXFA_PasswordEdit::CXFA_PasswordEdit(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::PasswordEdit,
                 kPasswordEditPropertyData,
                 kPasswordEditAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_PasswordEdit::~CXFA_PasswordEdit() = default;
 

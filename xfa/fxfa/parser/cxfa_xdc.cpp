@@ -31,6 +31,6 @@ CXFA_Xdc::CXFA_Xdc(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Xdc,
                 kXdcPropertyData,
                 kXdcAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Xdc::~CXFA_Xdc() = default;

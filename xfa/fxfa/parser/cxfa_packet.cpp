@@ -17,6 +17,6 @@ CXFA_Packet::CXFA_Packet(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Packet,
                 {},
                 {},
-                pdfium::MakeUnique<CJX_Packet>(this)) {}
+                std::make_unique<CJX_Packet>(this)) {}
 
 CXFA_Packet::~CXFA_Packet() = default;

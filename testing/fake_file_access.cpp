@@ -76,9 +76,9 @@ class DownloadHintsImpl final : public FX_DOWNLOADHINTS {
 
 FakeFileAccess::FakeFileAccess(FPDF_FILEACCESS* file_access)
     : file_access_(file_access),
-      file_access_wrapper_(pdfium::MakeUnique<FileAccessWrapper>(this)),
-      file_avail_(pdfium::MakeUnique<FileAvailImpl>(this)),
-      download_hints_(pdfium::MakeUnique<DownloadHintsImpl>(this)) {
+      file_access_wrapper_(std::make_unique<FileAccessWrapper>(this)),
+      file_avail_(std::make_unique<FileAvailImpl>(this)),
+      download_hints_(std::make_unique<DownloadHintsImpl>(this)) {
   ASSERT(file_access_);
 }
 

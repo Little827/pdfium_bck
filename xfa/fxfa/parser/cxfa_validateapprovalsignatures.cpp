@@ -28,6 +28,6 @@ CXFA_ValidateApprovalSignatures::CXFA_ValidateApprovalSignatures(
                 XFA_Element::ValidateApprovalSignatures,
                 {},
                 kValidateApprovalSignaturesAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_ValidateApprovalSignatures::~CXFA_ValidateApprovalSignatures() = default;

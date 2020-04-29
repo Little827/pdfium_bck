@@ -36,7 +36,7 @@ bool CXFA_FFCheckButton::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
   RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
-  auto pNew = pdfium::MakeUnique<CFWL_CheckBox>(GetFWLApp());
+  auto pNew = std::make_unique<CFWL_CheckBox>(GetFWLApp());
   CFWL_CheckBox* pCheckBox = pNew.get();
   SetNormalWidget(std::move(pNew));
   pCheckBox->SetAdapterIface(this);
@@ -258,7 +258,7 @@ bool CXFA_FFCheckButton::OnLButtonUp(uint32_t dwFlags,
   RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   SetButtonDown(false);
-  SendMessageToFWLWidget(pdfium::MakeUnique<CFWL_MessageMouse>(
+  SendMessageToFWLWidget(std::make_unique<CFWL_MessageMouse>(
       GetNormalWidget(), FWL_MouseCommand::LeftButtonUp, dwFlags,
       FWLToClient(point)));
 

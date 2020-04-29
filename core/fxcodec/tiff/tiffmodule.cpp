@@ -485,7 +485,7 @@ namespace fxcodec {
 
 std::unique_ptr<ModuleIface::Context> TiffModule::CreateDecoder(
     const RetainPtr<IFX_SeekableReadStream>& file_ptr) {
-  auto pDecoder = pdfium::MakeUnique<CTiffContext>();
+  auto pDecoder = std::make_unique<CTiffContext>();
   if (!pDecoder->InitDecoder(file_ptr))
     return nullptr;
 

@@ -27,6 +27,6 @@ CXFA_CurrencySymbol::CXFA_CurrencySymbol(CXFA_Document* doc,
                 XFA_Element::CurrencySymbol,
                 {},
                 kCurrencySymbolAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_CurrencySymbol::~CXFA_CurrencySymbol() = default;

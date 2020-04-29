@@ -35,6 +35,6 @@ CXFA_Desc::CXFA_Desc(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Desc,
                 kDescPropertyData,
                 kDescAttributeData,
-                pdfium::MakeUnique<CJX_Desc>(this)) {}
+                std::make_unique<CJX_Desc>(this)) {}
 
 CXFA_Desc::~CXFA_Desc() = default;

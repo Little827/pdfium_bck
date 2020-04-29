@@ -39,6 +39,6 @@ CXFA_ViewerPreferences::CXFA_ViewerPreferences(CXFA_Document* doc,
                 XFA_Element::ViewerPreferences,
                 kViewerPreferencesPropertyData,
                 kViewerPreferencesAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_ViewerPreferences::~CXFA_ViewerPreferences() = default;

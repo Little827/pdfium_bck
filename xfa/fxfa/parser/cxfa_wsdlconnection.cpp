@@ -36,6 +36,6 @@ CXFA_WsdlConnection::CXFA_WsdlConnection(CXFA_Document* doc,
                 XFA_Element::WsdlConnection,
                 kWsdlConnectionPropertyData,
                 kWsdlConnectionAttributeData,
-                pdfium::MakeUnique<CJX_WsdlConnection>(this)) {}
+                std::make_unique<CJX_WsdlConnection>(this)) {}
 
 CXFA_WsdlConnection::~CXFA_WsdlConnection() = default;

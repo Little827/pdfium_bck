@@ -24,7 +24,7 @@ class CFX_TxtBreakTest : public testing::Test {
   }
 
   std::unique_ptr<CFX_TxtBreak> CreateBreak() {
-    auto txt_break = pdfium::MakeUnique<CFX_TxtBreak>();
+    auto txt_break = std::make_unique<CFX_TxtBreak>();
     txt_break->SetFont(font_);
     return txt_break;
   }

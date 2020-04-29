@@ -192,7 +192,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_Image::SubImage(int32_t x,
                                                      int32_t y,
                                                      int32_t w,
                                                      int32_t h) {
-  auto pImage = pdfium::MakeUnique<CJBig2_Image>(w, h);
+  auto pImage = std::make_unique<CJBig2_Image>(w, h);
   if (!pImage->data() || !m_pData)
     return pImage;
 

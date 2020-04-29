@@ -17,6 +17,6 @@ CXFA_DataModel::CXFA_DataModel(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::DataModel,
                 {},
                 {},
-                pdfium::MakeUnique<CJX_Model>(this)) {}
+                std::make_unique<CJX_Model>(this)) {}
 
 CXFA_DataModel::~CXFA_DataModel() = default;

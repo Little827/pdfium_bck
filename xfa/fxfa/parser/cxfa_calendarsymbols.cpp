@@ -34,6 +34,6 @@ CXFA_CalendarSymbols::CXFA_CalendarSymbols(CXFA_Document* doc,
                 XFA_Element::CalendarSymbols,
                 kCalendarSymbolsPropertyData,
                 kCalendarSymbolsAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_CalendarSymbols::~CXFA_CalendarSymbols() = default;

@@ -28,6 +28,6 @@ CXFA_Staple::CXFA_Staple(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Staple,
                 {},
                 kStapleAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Staple::~CXFA_Staple() = default;

@@ -42,8 +42,7 @@ void DoPredicateFilter(WideString wsCondition,
 
   wsExpression = wsCondition.Substr(2, wsCondition.GetLength() - 3);
   for (size_t i = iFoundCount; i > 0; --i) {
-    auto pRetValue =
-        pdfium::MakeUnique<CFXJSE_Value>(pRnd->m_pSC->GetIsolate());
+    auto pRetValue = std::make_unique<CFXJSE_Value>(pRnd->m_pSC->GetIsolate());
     bool bRet =
         pRnd->m_pSC->RunScript(eLangType, wsExpression.AsStringView(),
                                pRetValue.get(), pRnd->m_Objects[i - 1].Get());
@@ -55,7 +54,7 @@ void DoPredicateFilter(WideString wsCondition,
 }  // namespace
 
 CFXJSE_ResolveProcessor::CFXJSE_ResolveProcessor()
-    : m_pNodeHelper(pdfium::MakeUnique<CXFA_NodeHelper>()) {}
+    : m_pNodeHelper(std::make_unique<CXFA_NodeHelper>()) {}
 
 CFXJSE_ResolveProcessor::~CFXJSE_ResolveProcessor() = default;
 

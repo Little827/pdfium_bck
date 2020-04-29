@@ -33,6 +33,6 @@ CXFA_Assist::CXFA_Assist(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Assist,
                 kAssistPropertyData,
                 kAssistAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Assist::~CXFA_Assist() = default;

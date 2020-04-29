@@ -27,6 +27,6 @@ CXFA_DynamicRender::CXFA_DynamicRender(CXFA_Document* doc,
                 XFA_Element::DynamicRender,
                 {},
                 kDynamicRenderAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_DynamicRender::~CXFA_DynamicRender() = default;

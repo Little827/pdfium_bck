@@ -28,6 +28,6 @@ CXFA_WsdlAddress::CXFA_WsdlAddress(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::WsdlAddress,
                 {},
                 kWsdlAddressAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_WsdlAddress::~CXFA_WsdlAddress() = default;

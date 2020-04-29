@@ -27,6 +27,6 @@ CXFA_EncryptionLevel::CXFA_EncryptionLevel(CXFA_Document* doc,
                 XFA_Element::EncryptionLevel,
                 {},
                 kEncryptionLevelAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_EncryptionLevel::~CXFA_EncryptionLevel() = default;

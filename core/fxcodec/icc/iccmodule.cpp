@@ -105,8 +105,7 @@ std::unique_ptr<CLcmsCmm> IccModule::CreateTransformSRGB(
   if (!hTransform)
     return nullptr;
 
-  return pdfium::MakeUnique<CLcmsCmm>(hTransform, nSrcComponents, bLab,
-                                      bNormal);
+  return std::make_unique<CLcmsCmm>(hTransform, nSrcComponents, bLab, bNormal);
 }
 
 // static

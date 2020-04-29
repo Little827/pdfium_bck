@@ -48,8 +48,8 @@ void CPDF_ProgressiveRenderer::Continue(PauseIndicatorIface* pPause) {
       }
       m_pCurrentLayer = m_pContext->GetLayer(m_LayerIndex);
       m_LastObjectRendered = m_pCurrentLayer->m_pObjectHolder->end();
-      m_pRenderStatus = pdfium::MakeUnique<CPDF_RenderStatus>(m_pContext.Get(),
-                                                              m_pDevice.Get());
+      m_pRenderStatus = std::make_unique<CPDF_RenderStatus>(m_pContext.Get(),
+                                                            m_pDevice.Get());
       if (m_pOptions)
         m_pRenderStatus->SetOptions(*m_pOptions);
       m_pRenderStatus->SetTransparency(

@@ -27,8 +27,7 @@
 #include "fxbarcode/qrcode/BC_QRCodeWriter.h"
 #include "third_party/base/ptr_util.h"
 
-CBC_QRCode::CBC_QRCode()
-    : CBC_CodeBase(pdfium::MakeUnique<CBC_QRCodeWriter>()) {}
+CBC_QRCode::CBC_QRCode() : CBC_CodeBase(std::make_unique<CBC_QRCodeWriter>()) {}
 
 CBC_QRCode::~CBC_QRCode() = default;
 

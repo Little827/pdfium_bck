@@ -26,6 +26,6 @@ CXFA_OutputBin::CXFA_OutputBin(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::OutputBin,
                 {},
                 kOutputBinAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_OutputBin::~CXFA_OutputBin() = default;

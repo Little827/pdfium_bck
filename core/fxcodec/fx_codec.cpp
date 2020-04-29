@@ -46,22 +46,22 @@ ModuleMgr* ModuleMgr::GetInstance() {
 }
 
 ModuleMgr::ModuleMgr()
-    : m_pJpegModule(pdfium::MakeUnique<JpegModule>()),
-      m_pJbig2Module(pdfium::MakeUnique<Jbig2Module>()) {
+    : m_pJpegModule(std::make_unique<JpegModule>()),
+      m_pJbig2Module(std::make_unique<Jbig2Module>()) {
 #ifdef PDF_ENABLE_XFA_BMP
-  SetBmpModule(pdfium::MakeUnique<BmpModule>());
+  SetBmpModule(std::make_unique<BmpModule>());
 #endif
 
 #ifdef PDF_ENABLE_XFA_GIF
-  SetGifModule(pdfium::MakeUnique<GifModule>());
+  SetGifModule(std::make_unique<GifModule>());
 #endif
 
 #ifdef PDF_ENABLE_XFA_PNG
-  SetPngModule(pdfium::MakeUnique<PngModule>());
+  SetPngModule(std::make_unique<PngModule>());
 #endif
 
 #ifdef PDF_ENABLE_XFA_TIFF
-  SetTiffModule(pdfium::MakeUnique<TiffModule>());
+  SetTiffModule(std::make_unique<TiffModule>());
 #endif
 }
 

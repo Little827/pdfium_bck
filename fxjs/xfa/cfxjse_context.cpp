@@ -176,7 +176,7 @@ std::unique_ptr<CFXJSE_Context> CFXJSE_Context::Create(
     const FXJSE_CLASS_DESCRIPTOR* pGlobalClass,
     CFXJSE_HostObject* pGlobalObject) {
   CFXJSE_ScopeUtil_IsolateHandle scope(pIsolate);
-  auto pContext = pdfium::MakeUnique<CFXJSE_Context>(pIsolate);
+  auto pContext = std::make_unique<CFXJSE_Context>(pIsolate);
   v8::Local<v8::ObjectTemplate> hObjectTemplate;
   if (pGlobalClass) {
     CFXJSE_Class* pGlobalClassObj =
@@ -213,7 +213,7 @@ CFXJSE_Context::CFXJSE_Context(v8::Isolate* pIsolate) : m_pIsolate(pIsolate) {}
 CFXJSE_Context::~CFXJSE_Context() {}
 
 std::unique_ptr<CFXJSE_Value> CFXJSE_Context::GetGlobalObject() {
-  auto pValue = pdfium::MakeUnique<CFXJSE_Value>(GetIsolate());
+  auto pValue = std::make_unique<CFXJSE_Value>(GetIsolate());
   CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
   v8::Local<v8::Context> hContext =
       v8::Local<v8::Context>::New(GetIsolate(), m_hContext);

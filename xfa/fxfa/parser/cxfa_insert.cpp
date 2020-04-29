@@ -28,6 +28,6 @@ CXFA_Insert::CXFA_Insert(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Insert,
                 {},
                 kInsertAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Insert::~CXFA_Insert() = default;

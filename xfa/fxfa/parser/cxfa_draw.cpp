@@ -57,6 +57,6 @@ CXFA_Draw::CXFA_Draw(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Draw,
                 kDrawPropertyData,
                 kDrawAttributeData,
-                pdfium::MakeUnique<CJX_Draw>(this)) {}
+                std::make_unique<CJX_Draw>(this)) {}
 
 CXFA_Draw::~CXFA_Draw() = default;

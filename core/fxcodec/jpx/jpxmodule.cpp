@@ -14,7 +14,7 @@ namespace fxcodec {
 std::unique_ptr<CJPX_Decoder> JpxModule::CreateDecoder(
     pdfium::span<const uint8_t> src_span,
     CJPX_Decoder::ColorSpaceOption option) {
-  auto decoder = pdfium::MakeUnique<CJPX_Decoder>(option);
+  auto decoder = std::make_unique<CJPX_Decoder>(option);
   if (!decoder->Init(src_span))
     return nullptr;
 

@@ -67,7 +67,7 @@ void CPDF_Page::ParseContent() {
     return;
 
   if (GetParseState() == ParseState::kNotParsed)
-    StartParse(pdfium::MakeUnique<CPDF_ContentParser>(this));
+    StartParse(std::make_unique<CPDF_ContentParser>(this));
 
   ASSERT(GetParseState() == ParseState::kParsing);
   ContinueParse(nullptr);

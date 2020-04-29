@@ -51,7 +51,7 @@ CXFA_Validate::CXFA_Validate(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Validate,
           kValidatePropertyData,
           kValidateAttributeData,
-          pdfium::MakeUnique<CJX_Node>(this)) {}
+          std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Validate::~CXFA_Validate() = default;
 

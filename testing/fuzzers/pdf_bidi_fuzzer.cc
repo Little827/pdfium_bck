@@ -14,9 +14,9 @@
 #include "xfa/fgas/layout/cfx_rtfbreak.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-  auto fontmgr = pdfium::MakeUnique<CFGAS_FontMgr>();
+  auto fontmgr = std::make_unique<CFGAS_FontMgr>();
 
-  auto font = pdfium::MakeUnique<CFX_Font>();
+  auto font = std::make_unique<CFX_Font>();
   font->LoadSubst("Arial", true, 0, FXFONT_FW_NORMAL, 0, 0, 0);
   assert(font);
 

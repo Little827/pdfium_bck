@@ -30,6 +30,6 @@ CXFA_Operation::CXFA_Operation(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Operation,
                 {},
                 kOperationAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Operation::~CXFA_Operation() = default;

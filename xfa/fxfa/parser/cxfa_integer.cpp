@@ -29,6 +29,6 @@ CXFA_Integer::CXFA_Integer(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Integer,
                 {},
                 kIntegerAttributeData,
-                pdfium::MakeUnique<CJX_Object>(this)) {}
+                std::make_unique<CJX_Object>(this)) {}
 
 CXFA_Integer::~CXFA_Integer() = default;

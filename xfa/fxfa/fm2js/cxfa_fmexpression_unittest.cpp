@@ -29,7 +29,7 @@ TEST(CXFA_FMExpressionTest, VarExpressionInitBlank) {
   CXFA_FMToJavaScriptDepth::Reset();
   CFX_WideTextBuf accumulator;
 
-  auto init = pdfium::MakeUnique<CXFA_FMStringExpression>(LR"("")");
+  auto init = std::make_unique<CXFA_FMStringExpression>(LR"("")");
   CXFA_FMVarExpression(L"s", std::move(init))
       .ToJavaScript(&accumulator, ReturnType::kInfered);
   EXPECT_STREQ(
@@ -43,7 +43,7 @@ TEST(CXFA_FMExpressionTest, VarExpressionInitString) {
   CXFA_FMToJavaScriptDepth::Reset();
   CFX_WideTextBuf accumulator;
 
-  auto init = pdfium::MakeUnique<CXFA_FMStringExpression>(LR"("foo")");
+  auto init = std::make_unique<CXFA_FMStringExpression>(LR"("foo")");
   CXFA_FMVarExpression(L"s", std::move(init))
       .ToJavaScript(&accumulator, ReturnType::kInfered);
   EXPECT_STREQ(
@@ -57,7 +57,7 @@ TEST(CXFA_FMExpressionTest, VarExpressionInitNumeric) {
   CXFA_FMToJavaScriptDepth::Reset();
   CFX_WideTextBuf accumulator;
 
-  auto init = pdfium::MakeUnique<CXFA_FMNumberExpression>(L"112");
+  auto init = std::make_unique<CXFA_FMNumberExpression>(L"112");
   CXFA_FMVarExpression(L"s", std::move(init))
       .ToJavaScript(&accumulator, ReturnType::kInfered);
   EXPECT_STREQ(

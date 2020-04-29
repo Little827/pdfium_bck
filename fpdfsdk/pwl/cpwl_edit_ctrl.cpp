@@ -21,7 +21,7 @@ CPWL_EditCtrl::CPWL_EditCtrl(
     const CreateParams& cp,
     std::unique_ptr<IPWL_SystemHandler::PerWindowData> pAttachedData)
     : CPWL_Wnd(cp, std::move(pAttachedData)),
-      m_pEdit(pdfium::MakeUnique<CPWL_EditImpl>()) {
+      m_pEdit(std::make_unique<CPWL_EditImpl>()) {
   GetCreationParams()->eCursorType = FXCT_VBEAM;
 }
 
@@ -86,7 +86,7 @@ void CPWL_EditCtrl::CreateEditCaret(const CreateParams& cp) {
   ecp.nBorderStyle = BorderStyle::SOLID;
   ecp.rcRectWnd = CFX_FloatRect();
 
-  auto pCaret = pdfium::MakeUnique<CPWL_Caret>(ecp, CloneAttachedData());
+  auto pCaret = std::make_unique<CPWL_Caret>(ecp, CloneAttachedData());
   m_pEditCaret = pCaret.get();
   m_pEditCaret->SetInvalidRect(GetClientRect());
   AddChild(std::move(pCaret));

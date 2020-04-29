@@ -28,6 +28,6 @@ CXFA_Password::CXFA_Password(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Password,
                 {},
                 kPasswordAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Password::~CXFA_Password() = default;

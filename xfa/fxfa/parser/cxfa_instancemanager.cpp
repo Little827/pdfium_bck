@@ -30,6 +30,6 @@ CXFA_InstanceManager::CXFA_InstanceManager(CXFA_Document* doc,
                 XFA_Element::InstanceManager,
                 kInstanceManagerPropertyData,
                 kInstanceManagerAttributeData,
-                pdfium::MakeUnique<CJX_InstanceManager>(this)) {}
+                std::make_unique<CJX_InstanceManager>(this)) {}
 
 CXFA_InstanceManager::~CXFA_InstanceManager() = default;

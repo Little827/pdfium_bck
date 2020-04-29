@@ -62,7 +62,7 @@ std::unique_ptr<CPDFSDK_Annot> CPDFSDK_WidgetHandler::NewAnnot(
   if (!pCtrl)
     return nullptr;
 
-  auto pWidget = pdfium::MakeUnique<CPDFSDK_Widget>(pAnnot, pPageView, pForm);
+  auto pWidget = std::make_unique<CPDFSDK_Widget>(pAnnot, pPageView, pForm);
   pForm->AddMap(pCtrl, pWidget.get());
   if (pPDFForm->NeedConstructAP())
     pWidget->ResetAppearance(pdfium::nullopt, false);

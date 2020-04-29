@@ -31,6 +31,6 @@ CXFA_Speak::CXFA_Speak(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Speak,
                 {},
                 kSpeakAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Speak::~CXFA_Speak() = default;

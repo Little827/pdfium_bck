@@ -28,6 +28,6 @@ CXFA_Update::CXFA_Update(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Update,
                 {},
                 kUpdateAttributeData,
-                pdfium::MakeUnique<CJX_TextNode>(this)) {}
+                std::make_unique<CJX_TextNode>(this)) {}
 
 CXFA_Update::~CXFA_Update() = default;

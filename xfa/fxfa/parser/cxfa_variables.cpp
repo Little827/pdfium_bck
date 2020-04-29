@@ -27,6 +27,6 @@ CXFA_Variables::CXFA_Variables(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Variables,
                 {},
                 kVariablesAttributeData,
-                pdfium::MakeUnique<CJX_Container>(this)) {}
+                std::make_unique<CJX_Container>(this)) {}
 
 CXFA_Variables::~CXFA_Variables() = default;

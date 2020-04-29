@@ -54,7 +54,7 @@ bool CXFA_FFComboBox::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
   RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
-  auto pNew = pdfium::MakeUnique<CFWL_ComboBox>(GetFWLApp());
+  auto pNew = std::make_unique<CFWL_ComboBox>(GetFWLApp());
   CFWL_ComboBox* pComboBox = pNew.get();
   SetNormalWidget(std::move(pNew));
   pComboBox->SetAdapterIface(this);

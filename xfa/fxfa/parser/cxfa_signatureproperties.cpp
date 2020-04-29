@@ -27,6 +27,6 @@ CXFA_SignatureProperties::CXFA_SignatureProperties(CXFA_Document* doc,
                 XFA_Element::SignatureProperties,
                 {},
                 kSignaturePropertiesAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_SignatureProperties::~CXFA_SignatureProperties() = default;

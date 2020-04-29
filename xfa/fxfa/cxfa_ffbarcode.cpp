@@ -144,7 +144,7 @@ bool CXFA_FFBarcode::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
   RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
-  auto pNew = pdfium::MakeUnique<CFWL_Barcode>(GetFWLApp());
+  auto pNew = std::make_unique<CFWL_Barcode>(GetFWLApp());
   CFWL_Barcode* pFWLBarcode = pNew.get();
   SetNormalWidget(std::move(pNew));
   pFWLBarcode->SetAdapterIface(this);

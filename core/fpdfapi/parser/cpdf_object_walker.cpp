@@ -119,11 +119,11 @@ CPDF_ObjectWalker::SubobjectIterator::SubobjectIterator(
 std::unique_ptr<CPDF_ObjectWalker::SubobjectIterator>
 CPDF_ObjectWalker::MakeIterator(const CPDF_Object* object) {
   if (object->IsStream())
-    return pdfium::MakeUnique<StreamIterator>(object->AsStream());
+    return std::make_unique<StreamIterator>(object->AsStream());
   if (object->IsDictionary())
-    return pdfium::MakeUnique<DictionaryIterator>(object->AsDictionary());
+    return std::make_unique<DictionaryIterator>(object->AsDictionary());
   if (object->IsArray())
-    return pdfium::MakeUnique<ArrayIterator>(object->AsArray());
+    return std::make_unique<ArrayIterator>(object->AsArray());
   return nullptr;
 }
 

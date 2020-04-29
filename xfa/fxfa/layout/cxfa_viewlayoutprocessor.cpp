@@ -577,7 +577,7 @@ CXFA_ViewLayoutProcessor::CXFA_ViewRecord*
 CXFA_ViewLayoutProcessor::CreateViewRecord(CXFA_Node* pPageNode,
                                            bool bCreateNew) {
   ASSERT(pPageNode);
-  auto pNewRecord = pdfium::MakeUnique<CXFA_ViewRecord>();
+  auto pNewRecord = std::make_unique<CXFA_ViewRecord>();
   if (!HasCurrentViewRecord()) {
     CXFA_Node* pPageSet = pPageNode->GetParent();
     if (pPageSet == m_pPageSetNode) {
@@ -642,7 +642,7 @@ CXFA_ViewLayoutProcessor::CreateViewRecord(CXFA_Node* pPageNode,
 
 CXFA_ViewLayoutProcessor::CXFA_ViewRecord*
 CXFA_ViewLayoutProcessor::CreateViewRecordSimple() {
-  auto pNewRecord = pdfium::MakeUnique<CXFA_ViewRecord>();
+  auto pNewRecord = std::make_unique<CXFA_ViewRecord>();
   if (HasCurrentViewRecord())
     *pNewRecord = *GetCurrentViewRecord();
   else

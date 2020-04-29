@@ -29,6 +29,6 @@ CXFA_LockDocument::CXFA_LockDocument(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::LockDocument,
                 {},
                 kLockDocumentAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_LockDocument::~CXFA_LockDocument() = default;

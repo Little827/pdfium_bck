@@ -29,6 +29,6 @@ CXFA_Equate::CXFA_Equate(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Equate,
                 {},
                 kEquateAttributeData,
-                pdfium::MakeUnique<CJX_Node>(this)) {}
+                std::make_unique<CJX_Node>(this)) {}
 
 CXFA_Equate::~CXFA_Equate() = default;
