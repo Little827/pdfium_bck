@@ -1174,6 +1174,16 @@ TEST_F(FPDFViewEmbedderTest, RenderManyRectanglesWithExternalMemory) {
 TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
   static const char kLcdTextMD5[] = "825e881f39e48254e64e2808987a6b8c";
   static const char kNoSmoothtextMD5[] = "3d01e234120b783a3fffb27273ea1ea8";
+#if defined(OS_WIN)
+  static const char kNoNativeTextChecksum[] =
+      "795b7ce1626931aa06af0fa23b7d80bb";
+#elif defined(OS_MACOSX)
+  static const char kNoNativeTextChecksum[] =
+      "c38b75e16a13852aee3b97d77a0f0ee7";
+#else
+  static const char kNoNativeTextChecksum[] =
+      "2baa4c0e1758deba1b9c908e1fbd04ed";
+#endif
 
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -1183,7 +1193,8 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
   TestRenderPageBitmapWithFlags(page, 0, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_ANNOT, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextMD5);
-  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT, kHelloWorldChecksum);
+  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT,
+                                kNoNativeTextChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_GRAYSCALE, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_RENDER_LIMITEDIMAGECACHE,
                                 kHelloWorldChecksum);
