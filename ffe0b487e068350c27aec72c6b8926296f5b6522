@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "ff64058d_e94fc96f",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-29T16:21:56Z",
+      "side": 1,
+      "message": "https://abseil.io/tips/119 does suggest prefixing with :: for using-declaration, but due to this hasn\u0027t happened in PDFium code base, I didn\u0027t make that shift in this CL.\nHowever, prefixing with :: is quite common in Chromium code base.\nMaybe we can consult Lei whether to make the move of switching to using prefixed \"::\" in PDFium as well? Less discrepancy between PDFium and Chromium styles will make things less confusing in the future.",
+      "parentUuid": "effebd1e_1fd1cf7b",
+      "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63d82d60_2c556b99",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 15
