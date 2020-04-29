@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b87c9cd_08fc3aad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-29T01:06:02Z",
+      "side": 1,
+      "message": "Yes, we talked about the font rendering discrepancy regarding to some FPDFFormFill embedder tests before, which are using text_form.pdf.\n\ntext_form.pdf contains Helvetica font and hello_world.pdf contains Helvetica and Times-Roman.\n\nThe font rendering discrepancy here is the same simple font issue as that of text_form.pdf. It happens for font faces which are supported by PDFium, such as Helvetica, Arial, Times-Roman.(See comment https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c7) \n\nSkia rendering results are sufficiently correct, and as scale goes up, it gets more and more difficult to spot visual difference between Skia and AGG results by human eyes.",
+      "parentUuid": "0fe40695_d97aef82",
+      "revId": "d52afae93d6ae0cdb7ad0cdad98e5ca63992af6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "473d6079_ea69c0fd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fbcedc75_0ed23985",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-29T01:06:02Z",
+      "side": 1,
+      "message": "Oops, there are 4. I was counting the diffs between patches.",
+      "parentUuid": "473d6079_ea69c0fd",
+      "revId": "d52afae93d6ae0cdb7ad0cdad98e5ca63992af6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6c7f79f_92144517",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -50,6 +86,24 @@
       "revId": "d52afae93d6ae0cdb7ad0cdad98e5ca63992af6d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc5df706_55cd84b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-29T01:06:02Z",
+      "side": 1,
+      "message": "That\u0027s way cleaner, thanks!",
+      "parentUuid": "d6c7f79f_92144517",
+      "revId": "d52afae93d6ae0cdb7ad0cdad98e5ca63992af6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
