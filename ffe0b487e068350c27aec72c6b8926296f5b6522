@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "effebd1e_1fd1cf7b",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-29T15:23:17Z",
+      "side": 1,
+      "message": "I don\u0027t think this is too harmful, but this advice runs counter to https://abseil.io/tips/119; see \"Unnamed Namespaces.\" Maybe worth another thread on cxx@ to draw attention to this?\n\nIt also suggests prefixing with :: for using-declarations.",
+      "parentUuid": "b77a2756_2f952bfe",
+      "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63d82d60_2c556b99",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 15
