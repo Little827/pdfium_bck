@@ -1201,6 +1201,19 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
 }
 #endif  // defined(OS_LINUX)
 
+TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithNoNativeText) {
+
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  using pdfium::kHelloWorldChecksum;
+  TestRenderPageBitmapWithFlags(page, 0, kHelloWorldChecksum);
+  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT, kHelloWorldChecksum);
+
+  UnloadPage(page);
+}
+
 #if defined(OS_WIN)
 TEST_F(FPDFViewEmbedderTest, FPDFRenderPageEmf) {
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
