@@ -277,8 +277,7 @@ const CFX_GlyphBitmap* CFX_GlyphCache::LoadGlyphBitmap(const CFX_Font* pFont,
                              bFontStyle, dest_width, anti_alias);
   }
 
-#if defined(OS_MACOSX) && !defined _SKIA_SUPPORT_ && \
-    !defined _SKIA_SUPPORT_PATHS_
+#if defined(OS_MACOSX)
   std::unique_ptr<CFX_GlyphBitmap> pGlyphBitmap;
   auto it = m_SizeMap.find(FaceGlyphsKey);
   if (it != m_SizeMap.end()) {

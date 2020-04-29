@@ -1164,6 +1164,7 @@ TEST_F(FPDFViewEmbedderTest, RenderManyRectanglesWithExternalMemory) {
   UnloadPage(page);
 }
 
+/*
 #if defined(OS_LINUX)
 // TODO(crbug.com/pdfium/11): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
@@ -1171,9 +1172,12 @@ TEST_F(FPDFViewEmbedderTest, RenderManyRectanglesWithExternalMemory) {
 #else
 #define MAYBE_RenderHelloWorldWithFlags RenderHelloWorldWithFlags
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
+*/
+TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithFlags) {
   static const char kLcdTextMD5[] = "825e881f39e48254e64e2808987a6b8c";
   static const char kNoSmoothtextMD5[] = "3d01e234120b783a3fffb27273ea1ea8";
+  static const char kNoNativeTextChecksum[] =
+      "2baa4c0e1758deba1b9c908e1fbd04ed";
 
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -1183,7 +1187,8 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
   TestRenderPageBitmapWithFlags(page, 0, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_ANNOT, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextMD5);
-  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT, kHelloWorldChecksum);
+  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT,
+                                kNoNativeTextChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_GRAYSCALE, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_RENDER_LIMITEDIMAGECACHE,
                                 kHelloWorldChecksum);
@@ -1199,7 +1204,6 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
 
   UnloadPage(page);
 }
-#endif  // defined(OS_LINUX)
 
 #if defined(OS_WIN)
 TEST_F(FPDFViewEmbedderTest, FPDFRenderPageEmf) {
