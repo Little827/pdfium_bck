@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "f61a9ddd_41cae913",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-29T19:53:11Z",
+      "side": 1,
+      "message": "I\u0027m generally in favor of consistency between PDFium and Chromium. I also generally prefer Chromium style over Google style/Abseil tip of the week, should they conflict. In case of conflict, if it is an important issue worth discussing, bring it up on the appropriate mailing list, build consensus, and then resolve the issue.\n\nFor prefixing with ::, there\u0027s already an existing cxx@ thread on this topic with no conclusion: https://groups.google.com/a/chromium.org/d/topic/cxx/faUcFCvZA4M/discussion\n\nI share Jan\u0027s sentiment: \"While adding the global namespace prefix doesn\u0027t hurt, there shouldn\u0027t be a need for it as long as we follow the \u0027Avoid collisions between nested namespaces and well-known top-level namespaces.\u0027 style guide rule.\"\n\nAlthough the Abseil advice is good, it is trying to solve/prevent problems that we rarely encounter. Given the number of libraries PDFium interacts with, and us avoiding a nested testing namespace earlier in this CL, the chances of name collisions are relatively low.\n\nTo add some data points from Chromium:\n- \"using content::\u0027 in Chromium currently outnumbers \"using ::content::\" 1661 to 1. Likely because there\u0027s little risk of collision.\n- Whereas \"using testing\" shows an almost a 1:1 ratio, leaning towards no prefix. This is because some parts of Chromium do use a nested testing namespace.\n- \"using ::testing\" makes up 83% of all prefix usage.\n- Overall, the no prefix to prefix ratio is 19:1.\n\nWith these numbers, I would like PDFium to generally have no prefix for consistency with Chromium. Use prefixes only when necessary. If Chromium as a whole changes in the future, it\u0027s not too hard to follow along.\n\nSimilarly, sampling Chromium code shows most existing code declares using statements outside of unnamed namespaces, which is why I added a comment to ask for it to be done this way.",
+      "parentUuid": "ff64058d_e94fc96f",
+      "revId": "ffe0b487e068350c27aec72c6b8926296f5b6522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63d82d60_2c556b99",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 15
