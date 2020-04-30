@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21cce321_080ae281",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T21:11:31Z",
+      "side": 1,
+      "message": "The operating system for Macs formerly known as \"Mac OS X\" is now called \"macOS\", without the capital \u0027M\u0027.",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa0b6d3_d37e1934",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T21:11:31Z",
+      "side": 1,
+      "message": "This part of the sentence would make more sense with some context: \"the Linux-only FPDFViewEmbedderTest.RenderHelloWorldWithFlags test case cannot ...\"",
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e49a5b_f95defd5",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T21:11:31Z",
+      "side": 1,
+      "message": "I tried out the new test case on Mac, and this change seems to make no difference whether it\u0027s applied or not. So if the intent is to use the test to show this is a good change, it\u0027s not working as expected.",
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
