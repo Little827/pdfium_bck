@@ -1103,6 +1103,29 @@ TEST_F(FPDFViewEmbedderTest, LoadDocumentWithEmptyXRefConsistently) {
   }
 }
 
+TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithNoNativeText) {
+// FPDF_NO_NATIVETEXT flag disables native text support on MacOS, therefore
+// Windows and Linux rendering results remain the same as rendering with no
+// flag. Since the native text support on MacOS is disabled, MacOS will have the
+// same rendering result as Linux.
+#if defined(OS_WIN)
+  static const char kNoNativeTextChecksum[] =
+      "795b7ce1626931aa06af0fa23b7d80bb";
+#else
+  static const char kNoNativeTextChecksum[] =
+      "2baa4c0e1758deba1b9c908e1fbd04ed";
+#endif
+
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT,
+                                kNoNativeTextChecksum);
+
+  UnloadPage(page);
+}
+
 // TODO(crbug.com/pdfium/11): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 #define MAYBE_RenderManyRectanglesWithFlags \
@@ -1183,7 +1206,6 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
   TestRenderPageBitmapWithFlags(page, 0, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_ANNOT, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextMD5);
-  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_GRAYSCALE, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_RENDER_LIMITEDIMAGECACHE,
                                 kHelloWorldChecksum);
