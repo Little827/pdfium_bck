@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "cde173fa_5afd22f9",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T06:06:19Z",
+      "side": 1,
+      "message": "A few weeks ago, I added CPDF_Dest::Create(). It covers (1), (3) and (4). To provide the CPDF_Document* from here, use m_pPageView-\u003eGetPDFDocument().\n\nI see all the other CPDF_Dest::Create() callers use it in conjunction with GetDirectObjectFor(), so it looks like all the other call sites do not deal with (2). Having the code here be consistent with the other callers is fine.",
+      "parentUuid": "0ab53d6a_e27ecfa9",
+      "range": {
+        "startLine": 234,
+        "startChar": 43,
+        "endLine": 234,
+        "endChar": 61
+      },
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9280eec8_d7a80e2a",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 5
