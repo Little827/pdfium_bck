@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e5408c9_325a9d4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-30T16:35:01Z",
+      "side": 1,
+      "message": "Nit: Typically, there\u0027s a space after \"#.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ce5362_d65f9f16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-30T16:35:01Z",
+      "side": 1,
+      "message": "Is it because this test is Linux-only? I\u0027m generally supportive of breaking this test up into smaller tests, as it seems like it\u0027s testing many different underlying behaviors.",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7086e80c_b9e5cda8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-30T16:35:01Z",
+      "side": 1,
+      "message": "This should either not be capitalized, or the preceding sentence should be terminated with a period.",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01850cc5_6b5fd64c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-30T16:35:01Z",
+      "side": 1,
+      "message": "Are you just trying to say that Skia/SkiaPaths no longer ignores FPDF_NO_NATIVETEXT? You spent a lot of time talking about how Skia/SkiaPaths always uses native text, so I was led to believe this was intentional.",
+      "range": {
+        "startLine": 24,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a56ca61_c335b2c4",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-30T16:35:01Z",
+      "side": 1,
+      "message": "I\u0027m a little surprised Windows is different. Can you explain why in a comment?",
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5049e6ab_05e3d2b8",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 2
@@ -22,6 +131,30 @@
       "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b26d288_3f7e12f5",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-04-30T16:35:01Z",
+      "side": 1,
+      "message": "Can we have a separate test for this? Otherwise, we\u0027re potentially testing this twice.",
+      "parentUuid": "5049e6ab_05e3d2b8",
+      "range": {
+        "startLine": 1220,
+        "startChar": 2,
+        "endLine": 1220,
+        "endChar": 70
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
