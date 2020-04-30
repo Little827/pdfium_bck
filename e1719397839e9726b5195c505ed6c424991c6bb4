@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af3eed52_438a30cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T19:08:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e5408c9_325a9d4b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ce5362_d65f9f16",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05352371_5c02dadf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T19:08:42Z",
+      "side": 1,
+      "message": "Yes, it\u0027s due to this test is Linux-only and FPDF_NO_NATIVETEXT only affects MacOS. So we need the a test running on different platforms to see the difference between rendering with and without this flag. \n\nCurrently there are 2 other broken tests within RenderHelloWorldWithFlags which require fixing. Even for those flag tests which pass right now for Linux, they may not be fully tested either. I agree we should have smaller tests depending on whether these flags are platform based or the testing files they are using.",
+      "parentUuid": "30ce5362_d65f9f16",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "193b6654_d518601c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T19:08:42Z",
+      "side": 1,
+      "message": "There is a small difference between Skia using native text and using native text when Skia is enabled. Skia\u0027s rendering method doesn\u0027t support FPDF_NO_NATIVETEXT, therefore the rendering process intentionally falls back to what AGG is currently using.\n\nSince Skia\u0027s own special rendering process is not involved when FPDF_NO_NATIVETEXT is used, this change keeps AGG intact and Skia\u0027s own rendering method intact. \n\nIt only makes sure when Skia status is enabled, the rendering behavior remains the same as when we are using AGG. I consider this change as preserving the use of this flag for some APIs, in case we turn off AGG and use Skia instead in the future.\n\nAs we are heading towards the direction to make Skia works better or at least the same as AGG, I think not dumping the use of this flag is the right move.",
+      "parentUuid": "01850cc5_6b5fd64c",
+      "range": {
+        "startLine": 24,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a56ca61_c335b2c4",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 2
@@ -108,6 +180,24 @@
       "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ed0bc8_b003c8dd",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T19:08:42Z",
+      "side": 1,
+      "message": "Windows hash value is the same as rendering without a flag, since FPDF_NO_NATIVETEXT only affects MacOS.\nI updated the comment in the new patchset to cover all 3 platforms.",
+      "parentUuid": "7a56ca61_c335b2c4",
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +245,30 @@
       "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560cf8a8_75237fb5",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T19:08:42Z",
+      "side": 1,
+      "message": "TestRenderPageBitmapWithFlags() tested with flag\u003d0 in FPDFViewEmbedderTest.MAYBE_RenderManyRectanglesWithFlags, which is currently disabled if Skia/SkiaPaths is enabled.\n\nI will remove this test for flag\u003d0 in this CL.\n\nAfter fixing all failed tests within RenderHelloWorldWithFlags, I think it\u0027s good have separate tests for different flags across all platforms.",
+      "parentUuid": "8b26d288_3f7e12f5",
+      "range": {
+        "startLine": 1220,
+        "startChar": 2,
+        "endLine": 1220,
+        "endChar": 70
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
