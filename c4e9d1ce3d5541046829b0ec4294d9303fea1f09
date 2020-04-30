@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90e8af86_b0b3c072",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T19:39:07Z",
+      "side": 1,
+      "message": "The bottom end of this file is all platform-specific tests. So let\u0027s avoid putting this test here. Right now, this CL makes the file look like:\n\n// Platform agnostic tests.\n\n#if defined(OS_LINUX)\n// Linux-only tests here.\n#endif\n\n// New test sits here.\n\n#if defined(OS_WIN)\n// Windows-only tests here.\n#endif",
+      "revId": "c4e9d1ce3d5541046829b0ec4294d9303fea1f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e069f6c4_9305777c",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T19:39:07Z",
+      "side": 1,
+      "message": "flag",
+      "range": {
+        "startLine": 1204,
+        "startChar": 22,
+        "endLine": 1204,
+        "endChar": 27
+      },
+      "revId": "c4e9d1ce3d5541046829b0ec4294d9303fea1f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706e3dbd_797cadaf",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T19:39:07Z",
+      "side": 1,
+      "message": "omit?",
+      "range": {
+        "startLine": 1207,
+        "startChar": 33,
+        "endLine": 1207,
+        "endChar": 35
+      },
+      "revId": "c4e9d1ce3d5541046829b0ec4294d9303fea1f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
