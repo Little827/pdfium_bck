@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "0ab53d6a_e27ecfa9",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-04-30T05:49:10Z",
+      "side": 1,
+      "message": "Thanks for the reference. It say \"A destination may be specified either explicitly by an array of parameters defining its properties or indirectly by name.\"\n\nLooking through some sample PDFs, I see many forms of /Dest:\n(1) /Dest [...]\n(2) /Dest 99 0 R\n(3) /Dest (SomeString)\n(4) /Dest /SomeName\n\nThis CL covers (1). I was thinking about (2). The spec refers to (3) and (4). Note that (3) and (4) are common, and (2) is rarer.\n\nWe don\u0027t have to cover all the cases at once. We can start with (1) if you would like to. Just add a TODO, so we have a reminder to take care of the rest later. It shouldn\u0027t be too hard to continue adding to annots_action_handling.pdf, so we have tests for these cases. We can also sanity check how Acrobat behaves, to make sure (2) is valid.",
+      "parentUuid": "55410363_01179709",
+      "range": {
+        "startLine": 234,
+        "startChar": 43,
+        "endLine": 234,
+        "endChar": 61
+      },
+      "revId": "a6dca5f3927028ab9fc0a12e4de62bcbd6df609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9280eec8_d7a80e2a",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 5
