@@ -1183,7 +1183,6 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
   TestRenderPageBitmapWithFlags(page, 0, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_ANNOT, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextMD5);
-  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_GRAYSCALE, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_RENDER_LIMITEDIMAGECACHE,
                                 kHelloWorldChecksum);
@@ -1200,6 +1199,30 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
   UnloadPage(page);
 }
 #endif  // defined(OS_LINUX)
+
+TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithNoNativeText) {
+#if defined(OS_WIN)
+  static const char kNoNativeTextChecksum[] =
+      "795b7ce1626931aa06af0fa23b7d80bb";
+#else
+  // When render with no flag, MacOS' rendering result is different from Linux's
+  // due to MacOS' native text support. Since FPDF_NO_NATIVETEXT disables native
+  // text support for MacOS, the expected hash values are the same for Linux and
+  // MacOS.
+  static const char kNoNativeTextChecksum[] =
+      "2baa4c0e1758deba1b9c908e1fbd04ed";
+#endif
+
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  TestRenderPageBitmapWithFlags(page, 0, pdfium::kHelloWorldChecksum);
+  TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT,
+                                kNoNativeTextChecksum);
+
+  UnloadPage(page);
+}
 
 #if defined(OS_WIN)
 TEST_F(FPDFViewEmbedderTest, FPDFRenderPageEmf) {
