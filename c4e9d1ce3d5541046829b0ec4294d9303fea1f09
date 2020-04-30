@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7130b580_488f84e0",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T20:53:11Z",
+      "side": 1,
+      "message": "In the new patchset, this test is moved between LoadDocumentWithEmptyXRefConsistently and  (MAYBE_)RenderManyRectanglesWithFlags tests following the alphabetic order.\n\nSince there will be more flag rendering tests added for all platforms in the future, they can be put in this \"bundled\" flag test section as well.",
+      "parentUuid": "90e8af86_b0b3c072",
+      "revId": "c4e9d1ce3d5541046829b0ec4294d9303fea1f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e069f6c4_9305777c",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cd25caad_9c39c05d",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T20:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e069f6c4_9305777c",
+      "range": {
+        "startLine": 1204,
+        "startChar": 22,
+        "endLine": 1204,
+        "endChar": 27
+      },
+      "revId": "c4e9d1ce3d5541046829b0ec4294d9303fea1f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706e3dbd_797cadaf",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 4
@@ -62,6 +104,30 @@
       "revId": "c4e9d1ce3d5541046829b0ec4294d9303fea1f09",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e826c8_c9b1b659",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T20:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "706e3dbd_797cadaf",
+      "range": {
+        "startLine": 1207,
+        "startChar": 33,
+        "endLine": 1207,
+        "endChar": 35
+      },
+      "revId": "c4e9d1ce3d5541046829b0ec4294d9303fea1f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
