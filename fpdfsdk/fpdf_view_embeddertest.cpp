@@ -1103,6 +1103,22 @@ TEST_F(FPDFViewEmbedderTest, LoadDocumentWithEmptyXRefConsistently) {
   }
 }
 
+TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithLcdTextFlags) {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  static const char kLcdTextMD5[] = "693563ed2a3f1f6545856377be4bf3b3";
+#else
+  static const char kLcdTextMD5[] = "825e881f39e48254e64e2808987a6b8c";
+#endif
+
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextMD5);
+
+  UnloadPage(page);
+}
+
 // TODO(crbug.com/pdfium/11): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 #define MAYBE_RenderManyRectanglesWithFlags \
