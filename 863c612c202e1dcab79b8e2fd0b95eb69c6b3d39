@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1588283876 -0700\nnonce AM5BpQVzcR815LtSNUAC7N4sAb4BvIf8B2c7D7yRF4zLevVcLQNk5iAg4sWJ1kIoWb8x2bkIEnCS\n\n0000000000000000000000000000000000000000 863c612c202e1dcab79b8e2fd0b95eb69c6b3d39 refs/for/refs/heads/master%notify\u003dNONE,m\u003dMark_more_values_as_XFA%2Donly%2E\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl6rSeQACgkQqzYtYVpm\n/Xud/AgAsAtwdd/9YeIpCR+4ZonMwDiNn1E5yS2ZH8dkOze4xAfNPTNTfxxXtRQD\nYHlNoA6bHSFBUgmnS5kxckj1oCPOtbNQhGwyIKPboAWXiYRecKnlsnr5qhesFzYv\njNBh8GpTTa0kyyQ0eLvS+Gg57bDkCJKUsixkdDjsQjR+kCv0tT/lAONTVCfMPfhH\nSt0kIh23qTYFk5zKw6CRIR5QxQ8A0t1opLneFdecM6R04FVD3z85nmb6/70vtxUT\n3W0azM6upG7vDCP5+t9glE/0Q1pBrH8JrGGNHLnZ9YB3tdz+7901x0e0ZnNhLRhi\n96wzoKGLlByaNnOSy7c5k20Okaz+wA\u003d\u003d\n\u003d3+BT\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
