@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5049e6ab_05e3d2b8",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-04-30T15:15:32Z",
+      "side": 1,
+      "message": "For comparing rendering results\u0027 difference across platforms.",
+      "range": {
+        "startLine": 1220,
+        "startChar": 2,
+        "endLine": 1220,
+        "endChar": 70
+      },
+      "revId": "e1719397839e9726b5195c505ed6c424991c6bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
