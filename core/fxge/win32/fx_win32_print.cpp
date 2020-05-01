@@ -205,7 +205,8 @@ bool CGdiPrinterDriver::DrawDeviceText(int nChars,
                                        CFX_Font* pFont,
                                        const CFX_Matrix& mtObject2Device,
                                        float font_size,
-                                       uint32_t color) {
+                                       uint32_t color,
+                                       uint32_t text_flags) {
 #if defined(PDFIUM_PRINT_TEXT_WITH_GDI)
   if (!g_pdfium_print_text_with_gdi)
     return false;
@@ -509,7 +510,8 @@ bool CPSPrinterDriver::DrawDeviceText(int nChars,
                                       CFX_Font* pFont,
                                       const CFX_Matrix& mtObject2Device,
                                       float font_size,
-                                      uint32_t color) {
+                                      uint32_t color,
+                                      uint32_t text_flags) {
   return m_PSRenderer.DrawText(nChars, pCharPos, pFont, mtObject2Device,
                                font_size, color);
 }
@@ -622,7 +624,8 @@ bool CTextOnlyPrinterDriver::DrawDeviceText(int nChars,
                                             CFX_Font* pFont,
                                             const CFX_Matrix& mtObject2Device,
                                             float font_size,
-                                            uint32_t color) {
+                                            uint32_t color,
+                                            uint32_t text_flags) {
   if (g_pdfium_print_mode != 1)
     return false;
   if (nChars < 1 || !pFont || !pFont->IsEmbedded() || !pFont->IsTTFont())
