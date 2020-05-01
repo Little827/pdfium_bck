@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a194674_c282f723",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-05-01T04:32:31Z",
+      "side": 1,
+      "message": "of enter key by buttons.\n\nJust re-phrasing of the text.",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d500d41_9b9d06aa",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-05-01T04:32:31Z",
+      "side": 1,
+      "message": "To confirm, should this line not be in the end. Do we want to do either of the two action or both the actions in case of enter key is pressed.\n\nActions being pFormFiller-\u003eOnChar and PerformAction(\u0026annot, pAnnot-\u003eGetPageView(), nFlags)",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 76
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8d9396_6192beb8",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-05-01T04:32:31Z",
+      "side": 1,
+      "message": "A suggestion, I think it will be beneficial to do bHandled \u003d PerformAction(\u0026annot, pAnnot-\u003eGetPageView(), nFlags);\n\nand return bHandled in the end.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 18
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
