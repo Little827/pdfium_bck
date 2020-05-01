@@ -12,7 +12,7 @@ Alert: PASS: my_form.execValidate() = true
 Alert: PASS: my_form.formNodes() threw XFAObject.formNodes: Incorrect number of parameters passed to function.
 Alert: PASS: my_form.formNodes(1, 2) threw XFAObject.formNodes: Incorrect number of parameters passed to function.
 Alert: PASS: my_form.formNodes('nonesuch') threw XFAObject.formNodes: Incorrect parameter value.
-Alert: PASS: my_form.formNodes(my_subform) = [object XFAObject]
+Alert: FAIL: my_form.formNodes(my_subform) = [object Object], expected [object XFAObject] 
 Alert: PASS: my_form.remerge(1) threw XFAObject.remerge: Incorrect number of parameters passed to function.
 Alert: FAIL: my_form.remerge() = undefined, expected true 
 Alert: PASS: my_form.recalculate() threw XFAObject.recalculate: Incorrect number of parameters passed to function.
