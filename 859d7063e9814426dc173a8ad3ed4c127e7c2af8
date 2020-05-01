@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6fb74c3_cf72fe29",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-01T16:18:04Z",
+      "side": 1,
+      "message": "When rendering with default setting, |text_flags| \u003d 0.",
+      "range": {
+        "startLine": 1528,
+        "startChar": 2,
+        "endLine": 1528,
+        "endChar": 27
+      },
+      "revId": "859d7063e9814426dc173a8ad3ed4c127e7c2af8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85119367_0ec83491",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-01T16:18:04Z",
+      "side": 1,
+      "message": "When rendering with default setting, |text_flags| \u003d 0.",
+      "range": {
+        "startLine": 69,
+        "startChar": 48,
+        "endLine": 69,
+        "endChar": 50
+      },
+      "revId": "859d7063e9814426dc173a8ad3ed4c127e7c2af8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
