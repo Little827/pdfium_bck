@@ -134,6 +134,24 @@
       "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56159bd1_2d88c6e3",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-01T19:17:58Z",
+      "side": 1,
+      "message": "Hi Lei, I am wondering with patchset 9, if Skia is enabled on macOS, does the new embedder test succeed?\n\nOn macOS, I was expecting the following hash value change to happen when rendering with FPDF_NO_NATIVETEXT flag and Skia enabled:\n\nWith out this change:  \"41ada106c6133b52ea45280eaaa38ae1\" (the same as rendering with no flag)\nWith this change: \"d64d6b0fc39a8cefc43de39da5c60b17\" (different from rendering with no flag)\n\nCould you let me know if the hash value change described above is happening on macOS? If the hash values you got from testing doesn\u0027t match the ones above, could you provide more detail so that it can help me investigate? \n\nThanks Lei! I know it\u0027s a lot to ask and I really appreciate it!",
+      "parentUuid": "e1465ec9_473cb7c7",
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
