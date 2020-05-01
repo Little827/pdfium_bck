@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6560758a_29db1413",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-01T01:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21cce321_080ae281",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faa0b6d3_d37e1934",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "cbab2072_f61920d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-01T01:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faa0b6d3_d37e1934",
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e49a5b_f95defd5",
         "filename": "core/fxge/cfx_glyphcache.cpp",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88fb550e_4c1e2089",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-01T01:46:40Z",
+      "side": 1,
+      "message": "By using hello_world.pdf, it can simply prove that Skia rendering result has synced with AGG\u0027s.\n\nBut for the purpose of purely testing rendering with FPDF_NO_NATIVETEXT flag, hello_world.pdf is certainly not a good enough testing case, since AGG renders it exactly the same disregarding whether native text is enabled or not.\n\nI tested some other fonts in the testing/resources directory, and found out Arial renders differently on macOS depending on whether using native text or not. So in the new patchset, I updated the embedder test to use bug_664284.pdf instead of hello_world.pdf and commit message is updated accordingly. \n\nOn macOS, the expected hash value for rendering this PDF with no flag is \"41ada106c6133b52ea45280eaaa38ae1\", and hash value for rendering with FPDF_NO_NATIVETEXT is \"d64d6b0fc39a8cefc43de39da5c60b17\". (Tested through try bots.)\n\nSince I can\u0027t test Skia/SkiaPaths on macOS at the moment, judging by the rendering process it goes through on Linux, Skia/SkiaPaths should generate the same hash values as AGG across all platforms.",
+      "parentUuid": "e1e49a5b_f95defd5",
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
