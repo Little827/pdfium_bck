@@ -23,7 +23,7 @@ Alert: PASS: xfa.layout.page(1, 2) threw XFAObject.page: Incorrect number of par
 Alert: PASS: xfa.layout.page(my_doc) = 1
 Alert: PASS: xfa.layout.pageContent() threw XFAObject.pageContent: Incorrect number of parameters passed to function.
 Alert: PASS: xfa.layout.pageContent(4, 'is', 'too', 'many') threw XFAObject.pageContent: Incorrect number of parameters passed to function.
-Alert: PASS: xfa.layout.pageContent(1) = [object XFAObject]
+Alert: FAIL: xfa.layout.pageContent(1) = [object Object], expected [object XFAObject] 
 Alert: PASS: xfa.layout.pageContent(1).length = 2
 Alert: PASS: xfa.layout.pageCount() = 2
 Alert: PASS: xfa.layout.pageCount('all', 'args', ['ignored']) = 2

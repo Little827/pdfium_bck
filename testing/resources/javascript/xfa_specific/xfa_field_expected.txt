@@ -16,7 +16,7 @@ Alert: PASS: mandatory = disabled
 Alert: PASS: mandatory = solid
 Alert: PASS: mandatoryMessage = 
 Alert: PASS: mandatoryMessage = keep out
-Alert: PASS: dataNode = [object XFAObject]
+Alert: FAIL: dataNode = [object Object], expected = [object XFAObject]
 Alert: PASS: dataNode threw Error: Invalid property set operation.
 Alert: PASS: length = 2
 Alert: PASS: length threw Error: Invalid property set operation.
