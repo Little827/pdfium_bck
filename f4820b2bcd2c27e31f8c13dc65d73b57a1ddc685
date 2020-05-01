@@ -22,6 +22,30 @@
       "revId": "f4820b2bcd2c27e31f8c13dc65d73b57a1ddc685",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9226db28_ab9b32fd",
+        "filename": "testing/resources/javascript/xfa_specific/xfa_tree_expected.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-05-01T23:57:04Z",
+      "side": 0,
+      "message": "Ah. My bad. I\u0027ll change that right now.",
+      "parentUuid": "25dd2c68_f59f4d00",
+      "range": {
+        "startLine": 20,
+        "startChar": 54,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "f4820b2bcd2c27e31f8c13dc65d73b57a1ddc685",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
