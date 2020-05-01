@@ -1103,6 +1103,34 @@ TEST_F(FPDFViewEmbedderTest, LoadDocumentWithEmptyXRefConsistently) {
   }
 }
 
+TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithLcdTextFlags) {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_WIN)
+  static const char kLcdTextChecksum[] = "fa4b12e9db8316f699624250307e5106";
+#elif defined(OS_MACOSX)
+  static const char kLcdTextChecksum[] = "b0a33a2ab9f26d225bbad1c714d95beb";
+#else
+  static const char kLcdTextChecksum[] = "693563ed2a3f1f6545856377be4bf3b3";
+#endif
+#else
+#if defined(OS_WIN)
+  static const char kLcdTextChecksum[] = "6e32f5a9c46e4e0730481081fe80617d";
+#elif defined(OS_MACOSX)
+  static const char kLcdTextChecksum[] = "c38b75e16a13852aee3b97d77a0f0ee7";
+#else
+  static const char kLcdTextChecksum[] = "825e881f39e48254e64e2808987a6b8c";
+#endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextChecksum);
+
+  UnloadPage(page);
+}
+
 // TODO(crbug.com/pdfium/11): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 #define MAYBE_RenderManyRectanglesWithFlags \
@@ -1172,7 +1200,6 @@ TEST_F(FPDFViewEmbedderTest, RenderManyRectanglesWithExternalMemory) {
 #define MAYBE_RenderHelloWorldWithFlags RenderHelloWorldWithFlags
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
-  static const char kLcdTextMD5[] = "825e881f39e48254e64e2808987a6b8c";
   static const char kNoSmoothtextMD5[] = "3d01e234120b783a3fffb27273ea1ea8";
 
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
@@ -1182,7 +1209,6 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderHelloWorldWithFlags) {
   using pdfium::kHelloWorldChecksum;
   TestRenderPageBitmapWithFlags(page, 0, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_ANNOT, kHelloWorldChecksum);
-  TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextMD5);
   TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_GRAYSCALE, kHelloWorldChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_RENDER_LIMITEDIMAGECACHE,
