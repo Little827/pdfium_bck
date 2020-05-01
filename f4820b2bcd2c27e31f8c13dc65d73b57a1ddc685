@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25dd2c68_f59f4d00",
+        "filename": "testing/resources/javascript/xfa_specific/xfa_tree_expected.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-05-01T23:43:59Z",
+      "side": 0,
+      "message": "actually, I mean changing these to be [object Object] and keeping the test passing.  Sorry if I wasn\u0027t clear about that :( .",
+      "range": {
+        "startLine": 20,
+        "startChar": 54,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "f4820b2bcd2c27e31f8c13dc65d73b57a1ddc685",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
