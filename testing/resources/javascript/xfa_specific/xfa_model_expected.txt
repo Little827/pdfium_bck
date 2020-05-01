@@ -8,7 +8,7 @@ Alert: PASS: typeof xfa.form.isCompatibleNS = function
 Alert: PASS: xfa.form.clearErrorList('args', 'ignored') = undefined
 Alert: PASS: xfa.form.createNode() threw XFAObject.createNode: Incorrect number of parameters passed to function.
 Alert: PASS: xfa.form.createNode('bogus') = null
-Alert: PASS: xfa.form.createNode('template') = [object XFAObject]
+Alert: FAIL: xfa.form.createNode('template') = [object Object], expected [object XFAObject] 
 Alert: PASS: xfa.form.isCompatibleNS() threw XFAObject.isCompatibleNS: Incorrect number of parameters passed to function.
 Alert: PASS: xfa.form.isCompatibleNS('bogus') = false
 Alert: PASS: xfa.form.isCompatibleNS('') = true

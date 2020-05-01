@@ -61,9 +61,9 @@ Alert: PASS: xfa.host.response('Are you sure?', 'Launch Missiles', 'Yes', 1) = N
 Alert: PASS: xfa.host.setFocus() threw XFAObject.setFocus: Incorrect number of parameters passed to function.
 Alert: PASS: xfa.host.setFocus('one', 'two') threw XFAObject.setFocus: Incorrect number of parameters passed to function.
 Alert: PASS: xfa.host.setFocus('my_doc.subform_combox_0') = undefined
-Alert: PASS: xfa.host.getFocus() = [object XFAObject]
+Alert: FAIL: xfa.host.getFocus() = [object Object], expected [object XFAObject] 
 Alert: PASS: xfa.host.setFocus(eval('my_doc.subform_combox_0')) = undefined
-Alert: PASS: xfa.host.getFocus() = [object XFAObject]
+Alert: FAIL: xfa.host.getFocus() = [object Object], expected [object XFAObject] 
 Alert: PASS: xfa.host.resetData(1, 2) threw XFAObject.resetData: Incorrect number of parameters passed to function.
 Alert: PASS: xfa.host.resetData() = undefined
 Alert: PASS: xfa.host.resetData('xfa.host') = undefined

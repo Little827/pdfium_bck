@@ -199,7 +199,7 @@ Alert: PASS: isContainer = true
 Alert: PASS: isContainer threw Error: Invalid property set operation.
 Alert: PASS: isNull = false
 Alert: PASS: isNull threw Error: Invalid property set operation.
-Alert: PASS: model = [object XFAObject]
+Alert: FAIL: model = [object Object], expected = [object XFAObject]
 Alert: PASS: model threw Error: Invalid property set operation.
 Alert: PASS: ns = 
 Alert: PASS: ns threw Error: Invalid property set operation.
@@ -221,14 +221,14 @@ Alert: PASS: my_doc.applyXSL(42) = undefined
 Alert: PASS: my_doc.assignNode() threw XFAObject.assignNode: Incorrect number of parameters passed to function.
 Alert: PASS: my_doc.assignNode(42) = undefined
 Alert: PASS: my_doc.clone() threw XFAObject.clone: Incorrect number of parameters passed to function.
-Alert: PASS: my_doc.clone(true) = [object XFAObject]
-Alert: PASS: my_doc.clone(false) = [object XFAObject]
+Alert: FAIL: my_doc.clone(true) = [object Object], expected [object XFAObject] 
+Alert: FAIL: my_doc.clone(false) = [object Object], expected [object XFAObject] 
 Alert: PASS: my_doc.getAttribute() threw XFAObject.getAttribute: Incorrect number of parameters passed to function.
 Alert: PASS: my_doc.getAttribute('bogus') = 
 Alert: PASS: my_doc.getAttribute('layout') = tb
 Alert: PASS: my_doc.getElement() threw XFAObject.getElement: Incorrect number of parameters passed to function.
 Alert: PASS: my_doc.getElement('bogus') = null
-Alert: PASS: my_doc.getElement('pageSet') = [object XFAObject]
+Alert: FAIL: my_doc.getElement('pageSet') = [object Object], expected [object XFAObject] 
 Alert: PASS: my_doc.isPropertySpecified() threw XFAObject.isPropertySpecified: Incorrect number of parameters passed to function.
 Alert: PASS: my_doc.isPropertySpecified('bogus') = false
 Alert: PASS: my_doc.isPropertySpecified('pageSet') = true
