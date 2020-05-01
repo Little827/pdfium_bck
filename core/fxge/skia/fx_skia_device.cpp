@@ -870,7 +870,8 @@ class SkiaState {
                 CFX_Font* pFont,
                 const CFX_Matrix& matrix,
                 float font_size,
-                uint32_t color) {
+                uint32_t color,
+                uint32_t text_flags) {
     if (m_debugDisable)
       return false;
     Dump(__func__);
@@ -884,7 +885,7 @@ class SkiaState {
     int drawIndex = std::min(m_drawIndex, m_commands.count());
     if (Accumulator::kPath == m_type || drawIndex != m_commandIndex ||
         (Accumulator::kText == m_type &&
-         (FontChanged(pFont, matrix, font_size, scaleX, color) ||
+         (FontChanged(pFont, matrix, font_size, scaleX, color, text_flags) ||
           hasRSX == m_rsxform.isEmpty()))) {
       Flush();
     }
@@ -900,6 +901,7 @@ class SkiaState {
       m_fontSize = font_size;
       m_scaleX = scaleX;
       m_fillColor = color;
+      m_textFlags = text_flags;
       m_drawMatrix = matrix;
       m_drawIndex = m_commandIndex;
       m_type = Accumulator::kText;
@@ -975,6 +977,8 @@ class SkiaState {
     font.setSkewX(tanf(m_italicAngle * FX_PI / 180.0));
     font.setSize(SkTAbs(m_fontSize));
     font.setSubpixel(true);
+    if (!(m_textFlags & FXTEXT_NOSMOOTH) && (m_textFlags & FXTEXT_CLEARTYPE))
+      font.setEdging(SkFont::Edging::kSubpixelAntiAlias);
 
     SkCanvas* skCanvas = m_pDriver->SkiaCanvas();
     SkAutoCanvasRestore scoped_save_restore(skCanvas, /*doSave=*/true);
@@ -1183,12 +1187,13 @@ class SkiaState {
                    const CFX_Matrix& matrix,
                    float font_size,
                    float scaleX,
-                   uint32_t color) const {
+                   uint32_t color,
+                   uint32_t text_flags) const {
     CFX_TypeFace* typeface =
         pFont->GetFaceRec() ? pFont->GetDeviceCache() : nullptr;
     return typeface != m_pTypeFace.get() || MatrixChanged(&matrix) ||
            font_size != m_fontSize || scaleX != m_scaleX ||
-           color != m_fillColor ||
+           color != m_fillColor || text_flags != m_textFlags ||
            pFont->GetSubstFontItalicAngle() != m_italicAngle ||
            pFont->IsSubstFontBold() != m_isSubstFontBold;
   }
@@ -1520,6 +1525,7 @@ class SkiaState {
   float m_scaleX = 0;
   uint32_t m_fillColor = 0;
   uint32_t m_strokeColor = 0;
+  uint32_t m_textFlags = 0;
   BlendMode m_blendType = BlendMode::kNormal;
   int m_commandIndex = 0;     // active position in clip command stack
   int m_drawIndex = INT_MAX;  // position of the pending path or text draw
@@ -1682,9 +1688,10 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
                                           CFX_Font* pFont,
                                           const CFX_Matrix& mtObject2Device,
                                           float font_size,
-                                          uint32_t color) {
+                                          uint32_t color,
+                                          uint32_t text_flags) {
   if (m_pCache->DrawText(nChars, pCharPos, pFont, mtObject2Device, font_size,
-                         color)) {
+                         color, text_flags)) {
     return true;
   }
   sk_sp<SkTypeface> typeface(SkSafeRef(pFont->GetDeviceCache()));
@@ -1699,6 +1706,8 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
   font.setSize(SkTAbs(font_size));
   font.setSubpixel(true);
   font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FX_PI / 180.0));
+  if (!(text_flags & FXTEXT_NOSMOOTH) && (text_flags & FXTEXT_CLEARTYPE))
+    font.setEdging(SkFont::Edging::kSubpixelAntiAlias);
 
   SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
   SkScalar flip = font_size < 0 ? -1 : 1;
