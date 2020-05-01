@@ -1131,6 +1131,38 @@ TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithLcdTextFlags) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithNoSmoothText) {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_WIN)
+  static const char kNoSmoothtextChecksum[] = "xxxx1";
+#elif defined(OS_MACOSX)
+  static const char kNoSmoothtextChecksum[] = "xxxx2";
+#else
+  static const char kNoSmoothtextChecksum[] =
+      "66ecb880a880dd263ff495b28aeda0d1";
+#endif
+#else
+#if defined(OS_WIN)
+  static const char kNoSmoothtextChecksum[] =
+      "a728a18c9515ecddf77cfcf45fb6c375";
+#elif defined(OS_MACOSX)
+  static const char kNoSmoothtextChecksum[] =
+      "c38b75e16a13852aee3b97d77a0f0ee7";
+#else
+  static const char kNoSmoothtextChecksum[] =
+      "3d01e234120b783a3fffb27273ea1ea8";
+#endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  TestRenderPageBitmapWithFlags(page, FPDF_RENDER_NO_SMOOTHTEXT,
+                                kNoSmoothtextChecksum);
+  UnloadPage(page);
+}
+
 // TODO(crbug.com/pdfium/11): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 #define MAYBE_RenderManyRectanglesWithFlags \

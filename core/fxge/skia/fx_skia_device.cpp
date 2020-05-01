@@ -963,8 +963,9 @@ class SkiaState {
 
   void FlushText() {
     Dump(__func__);
+    bool is_smooth_text = !(m_textFlags & FXTEXT_NOSMOOTH);
     SkPaint skPaint;
-    skPaint.setAntiAlias(true);
+    skPaint.setAntiAlias(is_smooth_text);
     skPaint.setColor(m_fillColor);
 
     SkFont font;
@@ -977,7 +978,7 @@ class SkiaState {
     font.setSkewX(tanf(m_italicAngle * FX_PI / 180.0));
     font.setSize(SkTAbs(m_fontSize));
     font.setSubpixel(true);
-    if (!(m_textFlags & FXTEXT_NOSMOOTH) && (m_textFlags & FXTEXT_CLEARTYPE))
+    if (is_smooth_text && (m_textFlags & FXTEXT_CLEARTYPE))
       font.setEdging(SkFont::Edging::kSubpixelAntiAlias);
 
     SkCanvas* skCanvas = m_pDriver->SkiaCanvas();
@@ -1695,8 +1696,9 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
     return true;
   }
   sk_sp<SkTypeface> typeface(SkSafeRef(pFont->GetDeviceCache()));
+  bool is_smooth_text = !(text_flags & FXTEXT_NOSMOOTH);
   SkPaint paint;
-  paint.setAntiAlias(true);
+  paint.setAntiAlias(is_smooth_text);
   paint.setColor(color);
 
   SkFont font;
@@ -1706,7 +1708,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
   font.setSize(SkTAbs(font_size));
   font.setSubpixel(true);
   font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FX_PI / 180.0));
-  if (!(text_flags & FXTEXT_NOSMOOTH) && (text_flags & FXTEXT_CLEARTYPE))
+  if (is_smooth_text && (text_flags & FXTEXT_CLEARTYPE))
     font.setEdging(SkFont::Edging::kSubpixelAntiAlias);
 
   SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
