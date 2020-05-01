@@ -4,9 +4,15 @@
 
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
 
+#include <algorithm>
 #include <limits>
 
+#include "core/fxcrt/fx_extension.h"
 #include "testing/gtest/include/gtest/gtest.h"
+
+bool SafeCompare(const float& x, const float& y) {
+  return FXSYS_SafeLT(x, y);
+}
 
 // See https://crbug.com/852273
 TEST(CPDFPageObjectHolder, GraphicsDataAsKey) {
@@ -24,6 +30,13 @@ TEST(CPDFPageObjectHolder, GraphicsDataAsKey) {
   }
 
   std::map<GraphicsData, int> graphics_map;
+
+  float data[] = {fMax, fMin, fInf, fNan};
+  std::sort(&data[0], &data[_countof(data)], SafeCompare);
+  EXPECT_EQ(data[0], fMin);
+  EXPECT_EQ(data[1], fMax);
+  EXPECT_EQ(data[2], fInf);
+  EXPECT_EQ(std::isnan(data[3]), std::isnan(fNan));
 
   // Insert in reverse index permuted order.
   size_t x = 0;
