@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "61151338_0e316b98",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-05-01T12:14:42Z",
+      "side": 1,
+      "message": "This method can return a null value. Given that we are not checking for the CPDF_Annot::Subtype::WIDGET sub type here, does it make sense to include a null check here?",
+      "range": {
+        "startLine": 248,
+        "startChar": 28,
+        "endLine": 248,
+        "endChar": 43
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37fea5ea_12a292fd",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-05-01T12:14:42Z",
+      "side": 1,
+      "message": "Performing action on button up is not the usual case. Any specific reason for using onButtonUp, I think we should do it on onButtonDown?\n\nIs it specifically a case with PDF that button action handlers are invoked at key up?",
+      "range": {
+        "startLine": 276,
+        "startChar": 33,
+        "endLine": 276,
+        "endChar": 43
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d500d41_9b9d06aa",
         "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
         "patchSetId": 20
