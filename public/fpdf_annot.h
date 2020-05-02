@@ -729,6 +729,16 @@ FPDFAnnot_GetFocusableSubtypes(FPDF_FORMHANDLE hHandle,
                                FPDF_ANNOTATION_SUBTYPE* subtypes,
                                size_t count);
 
+// Experimental API.
+// Generates FPDF_LINK from the FPDF_ANNOTATION
+//
+//   annot   - handle to an annotation.
+//
+// Returns FPDF_LINK from the FPDF_ANNOTATION. Returns nullptr on failure,
+// if the input annot is nullptr or input annot's subtype is not link.
+FPDF_EXPORT FPDF_LINK FPDF_CALLCONV
+FPDFLinkFromFPDFAnnotation(FPDF_ANNOTATION annot);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus
