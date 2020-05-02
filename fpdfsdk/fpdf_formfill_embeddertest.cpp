@@ -3170,18 +3170,24 @@ class FPDFFormFillActionUriTest : public EmbedderTest {
 
 TEST_F(FPDFFormFillActionUriTest, ButtonActionInvokeTest) {
   NiceMock<EmbedderTestMockDelegate> mock;
-  // TODO(crbug.com/1028991): DoURIAction expect call should be 1.
-  EXPECT_CALL(mock, DoURIAction(_)).Times(0);
+  {
+    InSequence sequence;
+    const char kExpectedUri[] = "https://www.google.com";
+#ifdef PDF_ENABLE_XFA
+    EXPECT_CALL(mock,
+                DoURIActionWithKeyboardModifier(_, StrEq(kExpectedUri), _))
+        .Times(1);
+#else   // PDF_ENABLE_XFA
+    EXPECT_CALL(mock, DoURIAction(StrEq(kExpectedUri))).Times(1);
+    EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, _)).Times(0);
+#endif  // PDF_ENABLE_XFA
+  }
   SetDelegate(&mock);
-
   SetFocusOnNthAnnot(1);
 
   // Tab once from first form to go to button widget.
   ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Tab, 0));
-
-  // TODO(crbug.com/1028991): Following should be changed to ASSERT_TRUE after
-  // handling key press implementation on buttons.
-  ASSERT_FALSE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, 0));
+  ASSERT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, 0));
 }
 
 TEST_F(FPDFFormFillActionUriTest, LinkActionInvokeTest) {
