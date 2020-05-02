@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83e17444_efe3cfbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-02T09:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a194674_c282f723",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61151338_0e316b98",
         "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
         "patchSetId": 20
@@ -45,6 +69,30 @@
       "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a3c410_7a3c2c21",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-02T09:52:50Z",
+      "side": 1,
+      "message": "Function calls to CFFL_InteractiveFormFiller is received from CPDFSDK_WidgetHandler only which is of widget type. So should not be required. This is what is followed throughout this file.",
+      "parentUuid": "61151338_0e316b98",
+      "range": {
+        "startLine": 248,
+        "startChar": 28,
+        "endLine": 248,
+        "endChar": 43
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b318cecd_cd9127b1",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-02T09:52:50Z",
+      "side": 1,
+      "message": "Enter key is a character code which is handled as part of OnChar(). Changes what you see here in OnButtonUp() is some parts of OnButtonUp() can be used by other input events also. So separated them out as PerformAction(). We are not handling the enter key buttons in OnButtonUp().",
+      "parentUuid": "37fea5ea_12a292fd",
+      "range": {
+        "startLine": 276,
+        "startChar": 33,
+        "endLine": 276,
+        "endChar": 43
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d500d41_9b9d06aa",
         "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
         "patchSetId": 20
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "05045a59_c5cfad0a",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-02T09:52:50Z",
+      "side": 1,
+      "message": "Need not be. We want both the actions to be performed.",
+      "parentUuid": "5d500d41_9b9d06aa",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 76
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8d9396_6192beb8",
         "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
         "patchSetId": 20
@@ -114,6 +210,30 @@
       "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927b5dee_dd58a5d3",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-02T09:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c8d9396_6192beb8",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 18
+      },
+      "revId": "36c1716bf5023bfaa9ecc8d7184a22486f175795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
