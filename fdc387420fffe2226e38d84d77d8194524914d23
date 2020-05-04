@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68cd499a_e0504255",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-04T10:38:50Z",
+      "side": 1,
+      "message": "leave an empty line after.",
+      "range": {
+        "startLine": 1179,
+        "startChar": 4,
+        "endLine": 1179,
+        "endChar": 19
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced774a8_01842f30",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3081,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-04T10:38:50Z",
+      "side": 1,
+      "message": "LinkActionFromAnnot?",
+      "range": {
+        "startLine": 3081,
+        "startChar": 34,
+        "endLine": 3081,
+        "endChar": 60
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55923053_8eca8503",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3085,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-04T10:38:50Z",
+      "side": 1,
+      "message": "Add a test for testing this API too.",
+      "range": {
+        "startLine": 3085,
+        "startChar": 25,
+        "endLine": 3085,
+        "endChar": 51
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e93505_0628a0fa",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3112,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-04T10:38:50Z",
+      "side": 1,
+      "message": "The test should be at fpdf_annot_embeddertest.cpp.",
+      "range": {
+        "startLine": 3081,
+        "startChar": 0,
+        "endLine": 3112,
+        "endChar": 0
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9996a3f8_0961a5a1",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-04T10:38:50Z",
+      "side": 1,
+      "message": "Gets FPDF_LINK object for |annot|. Intended to use for link annotations.",
+      "range": {
+        "startLine": 733,
+        "startChar": 3,
+        "endLine": 733,
+        "endChar": 47
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58078b61_3b9b4f9d",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-04T10:38:50Z",
+      "side": 1,
+      "message": "FPDFAnnot_GetLink?",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 26
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
