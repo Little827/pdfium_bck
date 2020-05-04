@@ -170,8 +170,7 @@ int CPDFSDK_FormFillEnvironment::JS_appAlert(const WideString& Msg,
                                              const WideString& Title,
                                              int Type,
                                              int Icon) {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->app_alert) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->app_alert) {
     return -1;
   }
 
@@ -189,8 +188,7 @@ int CPDFSDK_FormFillEnvironment::JS_appResponse(const WideString& Question,
                                                 FPDF_BOOL bPassword,
                                                 void* response,
                                                 int length) {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->app_response) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->app_response) {
     return -1;
   }
   ByteString bsQuestion = Question.ToUTF16LE();
@@ -204,16 +202,14 @@ int CPDFSDK_FormFillEnvironment::JS_appResponse(const WideString& Question,
 }
 
 void CPDFSDK_FormFillEnvironment::JS_appBeep(int nType) {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->app_beep) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->app_beep) {
     return;
   }
   m_pInfo->m_pJsPlatform->app_beep(m_pInfo->m_pJsPlatform, nType);
 }
 
 WideString CPDFSDK_FormFillEnvironment::JS_fieldBrowse() {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->Field_browse) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->Field_browse) {
     return WideString();
   }
   const int nRequiredLen =
@@ -240,8 +236,7 @@ void CPDFSDK_FormFillEnvironment::JS_docmailForm(void* mailData,
                                                  const WideString& CC,
                                                  const WideString& BCC,
                                                  const WideString& Msg) {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->Doc_mail) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->Doc_mail) {
     return;
   }
   ByteString bsTo = To.ToUTF16LE();
@@ -263,8 +258,7 @@ void CPDFSDK_FormFillEnvironment::JS_docprint(FPDF_BOOL bUI,
                                               FPDF_BOOL bPrintAsImage,
                                               FPDF_BOOL bReverse,
                                               FPDF_BOOL bAnnotations) {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->Doc_print) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->Doc_print) {
     return;
   }
   m_pInfo->m_pJsPlatform->Doc_print(m_pInfo->m_pJsPlatform, bUI, nStart, nEnd,
@@ -273,8 +267,7 @@ void CPDFSDK_FormFillEnvironment::JS_docprint(FPDF_BOOL bUI,
 }
 
 void CPDFSDK_FormFillEnvironment::JS_docgotoPage(int nPageNum) {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->Doc_gotoPage) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->Doc_gotoPage) {
     return;
   }
   m_pInfo->m_pJsPlatform->Doc_gotoPage(m_pInfo->m_pJsPlatform, nPageNum);
@@ -286,8 +279,7 @@ WideString CPDFSDK_FormFillEnvironment::JS_docGetFilePath() {
 #endif  // PDF_ENABLE_V8
 
 WideString CPDFSDK_FormFillEnvironment::GetFilePath() const {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->Doc_getFilePath) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->Doc_getFilePath) {
     return WideString();
   }
   const int nRequiredLen = m_pInfo->m_pJsPlatform->Doc_getFilePath(
@@ -308,8 +300,7 @@ WideString CPDFSDK_FormFillEnvironment::GetFilePath() const {
 
 void CPDFSDK_FormFillEnvironment::SubmitForm(pdfium::span<uint8_t> form_data,
                                              const WideString& URL) {
-  if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
-      !m_pInfo->m_pJsPlatform->Doc_submitForm) {
+  if (!IsJSPlatformPresent() || !m_pInfo->m_pJsPlatform->Doc_submitForm) {
     return;
   }
   ByteString bsUrl = URL.ToUTF16LE();
