@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e566c9f6_805ef102",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-04T15:59:06Z",
+      "side": 1,
+      "message": "FXTEXT_NOSMOOTH is for disabling anti aliasing. If anti aliasing is disabled, there is not need to set SkFont::Edging::kSubpixelAntiAlias for font anymore.\n\nRight now Skia\u0027s text rendering always enables anti aliasing. A follow-up CL will be chained to set the correct anti-aliasing status depending on |text_flags| and add a embedder test for it.",
+      "range": {
+        "startLine": 980,
+        "startChar": 8,
+        "endLine": 980,
+        "endChar": 40
+      },
+      "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
