@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "df8c4f6c_b692ceeb",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-04T21:33:03Z",
+      "side": 1,
+      "message": "For AGG, CFX_AggDeviceDriver::DrawDeviceText() just returns false, and text drawing takes this code path. There\u0027s a bit of logic here. How much of it should be shared with CFX_SkiaDeviceDriver? Are there parts that are irrelevant? Are there parts that Skia already handle internally?",
+      "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0e8923d_69b65757",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-04T21:33:03Z",
+      "side": 1,
+      "message": "Instead of passing the text flags as a uint32_t, and then performing a bunch of bitwise operations, you may want to first convert the existing flags into a struct, like we did with struct CPDF_RenderOptions::Options. Then it will be easier to flip/check flags.",
+      "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e566c9f6_805ef102",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 5
