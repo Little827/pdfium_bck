@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a87521c_34d1f066",
+        "filename": "testing/resources/pixel/bug_1519.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-04T15:43:48Z",
+      "side": 1,
+      "message": "A bezier path starting at (130, 130), end at (200, 200), with two control points(150, 150) and (180, 180). All points on the same straight line.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "8771f905b89e4cc3971a78cb38bfd0f89a4717bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cacb1854_e79c06c3",
+        "filename": "testing/resources/pixel/bug_1519.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-04T15:43:48Z",
+      "side": 1,
+      "message": "This is to test avoiding repeatedly stroking the same path.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "8771f905b89e4cc3971a78cb38bfd0f89a4717bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
