@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49bdbaf6_94175809",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-04T17:19:27Z",
+      "side": 1,
+      "message": "What do you think about adding GetJSPlatform()? Then the code can be:\n\nIPDF_JSPLATFORM* js_platform \u003d GetJSPlatform();\nif (!js_platform-\u003eapp_alert)\n  return -1;\n\n...\nreturn js_platform-\u003eapp_alert(js_platform, ...);",
+      "revId": "1f4fb7f548d74e65a4d1c7f52483fa2eb49f1297",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
