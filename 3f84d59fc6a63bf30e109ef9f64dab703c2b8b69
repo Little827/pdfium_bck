@@ -152,6 +152,24 @@
       "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307d7343_3685833a",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-04T18:19:07Z",
+      "side": 1,
+      "message": "Yes, the new test succeeds, with our without the changes to core/. Since the test is passing, the hash is therefore d64d6b...",
+      "parentUuid": "56159bd1_2d88c6e3",
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
