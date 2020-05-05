@@ -170,6 +170,24 @@
       "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39f5dae_cecfda4f",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-05T20:24:03Z",
+      "side": 1,
+      "message": "Found the reason why this change is not affecting Skia result:\n\nThe flag indicating whether using  native text support is |bNative|, which only has the condition check for macOS, and no extra checks for Skia/SkiaPaths.\n\nAs for |bDoLookUp|, it doesn\u0027t mean \"look up the native text\", which I got wrong before. It means \"look up glyph by glyph index\" and \"do not use native text support\". By default, |bDoLookUp| is true, and it only becomes false when using macOS and native text support is enabled. And when native text support is enabled (not using flag FPDF_NO_NATIVETEXT), Skia rendering process doesn\u0027t reach this part of the code, instead, Skia rendering is done in CFX_SkiaDeviceDriver::DrawDeviceText(). That\u0027s why this change is not needed and not going to affect Skia rendering results.\n\nIn the new patchset, I reverted all changes in cfx_glyphcache.cpp and made this CL simply add a test with better test coverage.",
+      "parentUuid": "307d7343_3685833a",
+      "revId": "3f84d59fc6a63bf30e109ef9f64dab703c2b8b69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
