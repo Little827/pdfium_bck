@@ -11,11 +11,11 @@
 #include <utility>
 #include <vector>
 
-#include "core/fxcrt/fx_memory.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "third_party/base/ptr_util.h"
+#include "third_party/base/stl_util.h"
 
 namespace {
 
@@ -199,13 +199,13 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
                                             5.0f, 3.0f, 5.0f};
       static constexpr float kOffsetsMinY[] = {4.0f, 3.0f, 5.0f, 3.0f,
                                                4.0f, 6.0f, 4.0f};
-      static_assert(FX_ArraySize(kOffsetsX) == FX_ArraySize(kOffsetsY),
+      static_assert(pdfium::size(kOffsetsX) == pdfium::size(kOffsetsY),
                     "Wrong offset count");
-      static_assert(FX_ArraySize(kOffsetsX) == FX_ArraySize(kOffsetsMinY),
+      static_assert(pdfium::size(kOffsetsX) == pdfium::size(kOffsetsMinY),
                     "Wrong offset count");
       const float* pOffsetsY =
           m_eSBButtonType == PSBT_MIN ? kOffsetsMinY : kOffsetsY;
-      for (size_t i = 0; i < FX_ArraySize(kOffsetsX); ++i)
+      for (size_t i = 0; i < pdfium::size(kOffsetsX); ++i)
         pts.push_back(CFX_PointF(fX + kOffsetsX[i], fY + pOffsetsY[i]));
       pDevice->DrawFillArea(mtUser2Device, pts,
                             IsEnabled()
