@@ -258,7 +258,8 @@ const CFX_GlyphBitmap* CFX_GlyphCache::LoadGlyphBitmap(const CFX_Font* pFont,
     return nullptr;
 
   UniqueKeyGen keygen;
-#if defined(OS_MACOSX)
+#if defined(OS_MACOSX) && !defined _SKIA_SUPPORT_ && \
+    !defined _SKIA_SUPPORT_PATHS_
   const bool bNative = !(*pTextFlags & FXTEXT_NO_NATIVETEXT);
 #else
   const bool bNative = false;
@@ -277,8 +278,7 @@ const CFX_GlyphBitmap* CFX_GlyphCache::LoadGlyphBitmap(const CFX_Font* pFont,
                              bFontStyle, dest_width, anti_alias);
   }
 
-#if defined(OS_MACOSX) && !defined _SKIA_SUPPORT_ && \
-    !defined _SKIA_SUPPORT_PATHS_
+#if defined(OS_MACOSX)
   std::unique_ptr<CFX_GlyphBitmap> pGlyphBitmap;
   auto it = m_SizeMap.find(FaceGlyphsKey);
   if (it != m_SizeMap.end()) {
