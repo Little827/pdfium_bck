@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7f1f5144_7cc89a3d",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-05T01:24:31Z",
+      "side": 1,
+      "message": "+1, although I can see maybe worrying about micro-optimizations if text is being drawn in a tight loop.\n\nWondering in general how much font size, color, text flags, etc. could all be combined into a single painting context object, rather than messing with the function signatures every time we want to add a new set of options.",
+      "parentUuid": "a0e8923d_69b65757",
+      "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e566c9f6_805ef102",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 5
@@ -56,6 +74,70 @@
       "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f58620c_7f028af7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-05T01:24:31Z",
+      "side": 1,
+      "message": "Typically, if you feel the need to mention something in the code review, it\u0027s worth mentioning in the source code itself. (Even if you\u0027re going to replace it soon...)",
+      "parentUuid": "e566c9f6_805ef102",
+      "range": {
+        "startLine": 980,
+        "startChar": 8,
+        "endLine": 980,
+        "endChar": 40
+      },
+      "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca167b30_b2ac3f69",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-05T01:24:31Z",
+      "side": 1,
+      "message": "I see some redundancy here. Can we consolidate any of this code?",
+      "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844e7e1b_0316bb17",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-05T01:24:31Z",
+      "side": 1,
+      "message": "Can we replace this with ScopedFPDFPage?",
+      "range": {
+        "startLine": 1126,
+        "startChar": 2,
+        "endLine": 1126,
+        "endChar": 11
+      },
+      "revId": "272792d4813e151a4bcb253cdf28110cfa66cb9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
