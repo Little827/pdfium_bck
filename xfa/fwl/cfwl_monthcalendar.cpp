@@ -551,7 +551,7 @@ void CFWL_MonthCalendar::ResetDateItem() {
     uint32_t dwStates = 0;
     if (m_iYear == m_iCurYear && m_iMonth == m_iCurMonth && m_iDay == (i + 1))
       dwStates |= FWL_ITEMSTATE_MCD_Flag;
-    if (pdfium::ContainsValue(m_arrSelDays, i + 1))
+    if (pdfium::Contains(m_arrSelDays, i + 1))
       dwStates |= FWL_ITEMSTATE_MCD_Selected;
 
     CFX_RectF rtDate;
@@ -618,7 +618,7 @@ void CFWL_MonthCalendar::RemoveSelDay() {
 
 void CFWL_MonthCalendar::AddSelDay(int32_t iDay) {
   ASSERT(iDay > 0);
-  if (!pdfium::ContainsValue(m_arrSelDays, iDay))
+  if (!pdfium::Contains(m_arrSelDays, iDay))
     return;
 
   RemoveSelDay();
@@ -637,7 +637,7 @@ void CFWL_MonthCalendar::JumpToToday() {
     return;
   }
 
-  if (!pdfium::ContainsValue(m_arrSelDays, m_iDay))
+  if (!pdfium::Contains(m_arrSelDays, m_iDay))
     AddSelDay(m_iDay);
 }
 
