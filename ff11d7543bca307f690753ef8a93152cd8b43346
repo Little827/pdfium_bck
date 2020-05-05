@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af2ca1a1_44418198",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-05-05T21:14:03Z",
+      "side": 1,
+      "message": "NOTE: this one line gives the only clue to naming ...",
+      "range": {
+        "startLine": 926,
+        "startChar": 29,
+        "endLine": 926,
+        "endChar": 40
+      },
+      "revId": "ff11d7543bca307f690753ef8a93152cd8b43346",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
