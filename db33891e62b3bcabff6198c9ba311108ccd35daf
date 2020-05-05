@@ -34,6 +34,24 @@
       "revId": "db33891e62b3bcabff6198c9ba311108ccd35daf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35fc9a96_4d3ebbf2",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-05T19:29:46Z",
+      "side": 1,
+      "message": "As previously mentioned, there\u0027s insufficient testing. Although you have added more tests, which is very helpful, it still does not cover all cases. To give you an example of what I\u0027m concerned about:\n\n1) Apply this CL in Chromium and rebuild.\n2) Open Chromium and open multiple_form_types.pdf.\n3) Click the checkbox at the bottom to give it focus.\n4) Press the Enter key.\n\nWhen (4) occurs, CFFL_InteractiveFormFiller::PerformAction() gets called twice. This does not seem right.\n\nLooking at how the existing code is structured, CFFL_InteractiveFormFiller::OnChar() delegates the work to CFFL_FormFiller::OnChar() and its overrides. So to make the enter key work in buttons, like it does with checkboxes, I would suggest following the same pattern. Please take a look at CFFL_CheckBox::OnChar() and consider applying the same pattern to CFFL_PushButton.",
+      "parentUuid": "67dcce95_13b85772",
+      "revId": "db33891e62b3bcabff6198c9ba311108ccd35daf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
