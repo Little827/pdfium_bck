@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c203688d_f576f817",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-06T08:53:11Z",
+      "side": 1,
+      "message": "Does the annotation have to be focused? If i pass a non-focused annotation will this not work? Adding focused in the change makes it look like this should only work for focused annotation.",
+      "range": {
+        "startLine": 7,
+        "startChar": 53,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68cd499a_e0504255",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 4,
         "endLine": 1179,
         "endChar": 19
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "879922a5_0e8d39ce",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-06T08:53:11Z",
+      "side": 1,
+      "message": "rewrite:\n  return FPDFLinkFromCPDFDictionary(annot_context-\u003eGetAnnotDict());\n\nFPDFLinkFromCPDFDictionary() will handle nullptr properly.",
+      "range": {
+        "startLine": 1184,
+        "startChar": 2,
+        "endLine": 1187,
+        "endChar": 48
       },
       "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
@@ -71,6 +117,75 @@
     },
     {
       "key": {
+        "uuid": "854e784b_8b1c6e1a",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3094,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-06T08:53:11Z",
+      "side": 1,
+      "message": "FX_ArraySize instead.",
+      "range": {
+        "startLine": 3094,
+        "startChar": 44,
+        "endLine": 3094,
+        "endChar": 50
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ababa3_6db1bc0e",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3108,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-06T08:53:11Z",
+      "side": 1,
+      "message": "period at the end.",
+      "range": {
+        "startLine": 3108,
+        "startChar": 54,
+        "endLine": 3108,
+        "endChar": 61
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97284e1c_18cdc05d",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3110,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-06T08:53:11Z",
+      "side": 1,
+      "message": "Move this to the block where we are testing action. action related calls are separated into two blocks which isn\u0027t needed.",
+      "range": {
+        "startLine": 3109,
+        "startChar": 2,
+        "endLine": 3110,
+        "endChar": 72
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60e93505_0628a0fa",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 2
@@ -82,6 +197,30 @@
       "writtenOn": "2020-05-04T10:38:50Z",
       "side": 1,
       "message": "The test should be at fpdf_annot_embeddertest.cpp.",
+      "range": {
+        "startLine": 3081,
+        "startChar": 0,
+        "endLine": 3112,
+        "endChar": 0
+      },
+      "revId": "fdc387420fffe2226e38d84d77d8194524914d23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ec8b8f_ccf95aab",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3112,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-06T08:53:11Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "60e93505_0628a0fa",
       "range": {
         "startLine": 3081,
         "startChar": 0,
