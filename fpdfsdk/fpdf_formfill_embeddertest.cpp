@@ -1351,12 +1351,10 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_1281) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFFormFillEmbedderTest, RemoveFormFieldHighlight) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_RemoveFormFieldHighlight DISABLED_RemoveFormFieldHighlight
+  const char kMd5NoHighlight[] = "6fe3921e4fe3f4190c248acf34e9bd3b";
 #else
-#define MAYBE_RemoveFormFieldHighlight RemoveFormFieldHighlight
-#endif
-TEST_F(FPDFFormFillEmbedderTest, MAYBE_RemoveFormFieldHighlight) {
 #if defined(OS_MACOSX)
   const char kMd5NoHighlight[] = "5e4b87c5b304c6fa9bd5f6311260494e";
 #elif defined(OS_WIN)
@@ -1364,6 +1362,7 @@ TEST_F(FPDFFormFillEmbedderTest, MAYBE_RemoveFormFieldHighlight) {
 #else
   const char kMd5NoHighlight[] = "006010c318457810a518aa5e0b33c498";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
   EXPECT_TRUE(OpenDocument("text_form.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -3075,6 +3074,38 @@ TEST_F(FPDFFormFillActionUriTest, LinkActionInvokeTest) {
   ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Space, modifier));
   ASSERT_FALSE(
       FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Control, modifier));
+}
+
+TEST_F(FPDFFormFillActionUriTest, LinkActionFromAnnot) {
+  ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page(), 2));
+  ASSERT_TRUE(annot);
+
+  FPDF_LINK link_annot = FPDFAnnot_GetLink(annot.get());
+  ASSERT_TRUE(link_annot);
+
+  FPDF_ACTION action = FPDFLink_GetAction(link_annot);
+  ASSERT_TRUE(action);
+  EXPECT_EQ(static_cast<unsigned long>(PDFACTION_URI),
+            FPDFAction_GetType(action));
+
+  constexpr char kExpectedResult[] = "https://cs.chromium.org/";
+  constexpr unsigned long kExpectedLength = FX_ArraySize(kExpectedResult);
+  unsigned long bufsize = FPDFAction_GetURIPath(document(), action, nullptr, 0);
+  ASSERT_EQ(kExpectedLength, bufsize);
+
+  char buffer[1024];
+  EXPECT_EQ(bufsize,
+            FPDFAction_GetURIPath(document(), action, buffer, bufsize));
+  EXPECT_STREQ(kExpectedResult, buffer);
+
+  ScopedFPDFAnnotation widget_annot(FPDFPage_GetAnnot(page(), 1));
+  ASSERT_TRUE(widget_annot);
+  ASSERT_FALSE(FPDFAnnot_GetLink(widget_annot.get()));
+
+  ASSERT_FALSE(FPDFAnnot_GetLink(nullptr));
+  // Other public methods are not appropriate for URI actions.
+  EXPECT_EQ(nullptr, FPDFAction_GetDest(document(), action));
+  EXPECT_EQ(0u, FPDFAction_GetFilePath(action, buffer, sizeof(buffer)));
 }
 
 TEST_F(FPDFFormFillActionUriTest, InternalLinkActionInvokeTest) {
