@@ -81,7 +81,7 @@ class CFWL_ThemePart {
   CFWL_ThemePart();
 
   CFX_Matrix m_matrix;
-  CFX_RectF m_rtPart;
+  CFX_RectF m_PartRect;
   CFWL_Widget* m_pWidget;
   CFWL_Part m_iPart;
   uint32_t m_dwStates;
