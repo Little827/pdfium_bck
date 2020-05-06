@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "584bd91f_505d6c37",
+        "filename": "xfa/fxfa/cxfa_rendercontext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-05-06T22:16:59Z",
+      "side": 1,
+      "message": "Also ClipRectRect (was already ending in rect).",
+      "range": {
+        "startLine": 33,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "d7ae52d1bcec7bf654b080a01d04eee354d2e45f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
