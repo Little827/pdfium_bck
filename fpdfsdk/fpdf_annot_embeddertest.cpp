@@ -2573,3 +2573,26 @@ TEST_F(FPDFAnnotEmbedderTest, MAYBE_FocusableAnnotRendering) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFAnnotEmbedderTest, GetLinkFromAnnotation) {
+  ASSERT_TRUE(OpenDocument("annots.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_ANNOTATION annot = FPDFPage_GetAnnot(page, 0);
+  ASSERT_TRUE(annot);
+  EXPECT_EQ(FPDF_ANNOT_LINK, FPDFAnnot_GetSubtype(annot));
+  ASSERT_TRUE(FPDFAnnot_GetLink(annot));
+
+  annot = FPDFPage_GetAnnot(page, 4);
+  ASSERT_TRUE(annot);
+  EXPECT_EQ(FPDF_ANNOT_HIGHLIGHT, FPDFAnnot_GetSubtype(annot));
+  ASSERT_FALSE(FPDFAnnot_GetLink(annot));
+
+  annot = FPDFPage_GetAnnot(page, 8);
+  ASSERT_TRUE(annot);
+  EXPECT_EQ(FPDF_ANNOT_WIDGET, FPDFAnnot_GetSubtype(annot));
+  ASSERT_FALSE(FPDFAnnot_GetLink(annot));
+
+  UnloadPage(page);
+}
