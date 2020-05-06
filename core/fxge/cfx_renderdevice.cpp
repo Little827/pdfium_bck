@@ -863,8 +863,9 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
   if (m_DeviceType != DeviceType::kDisplay) {
     if (!(text_flags & FXTEXT_PRINTGRAPHICTEXT)) {
       if (ShouldDrawDeviceText(pFont, text_flags) &&
-          m_pDeviceDriver->DrawDeviceText(
-              nChars, pCharPos, pFont, mtText2Device, font_size, fill_color)) {
+          m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont,
+                                          mtText2Device, font_size, fill_color,
+                                          text_flags)) {
         return true;
       }
     }
@@ -873,7 +874,7 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
   } else if (!(text_flags & FXTEXT_NO_NATIVETEXT)) {
     if (ShouldDrawDeviceText(pFont, text_flags) &&
         m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
-                                        font_size, fill_color)) {
+                                        font_size, fill_color, text_flags)) {
       return true;
     }
   }
