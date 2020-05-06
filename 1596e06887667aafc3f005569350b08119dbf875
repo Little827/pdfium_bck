@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19bc360d_bad87511",
+        "filename": "xfa/fwl/cfwl_listbox.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-06T21:49:09Z",
+      "side": 1,
+      "message": "BTW, this one has an existing typo. Probably should be \"content\".",
+      "revId": "1596e06887667aafc3f005569350b08119dbf875",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
