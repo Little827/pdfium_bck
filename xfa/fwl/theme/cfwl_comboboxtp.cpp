@@ -21,12 +21,12 @@ CFWL_ComboBoxTP::~CFWL_ComboBoxTP() = default;
 void CFWL_ComboBoxTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
   switch (pParams.m_iPart) {
     case CFWL_Part::Border: {
-      DrawBorder(pParams.m_pGraphics.Get(), pParams.m_rtPart, pParams.m_matrix);
+      DrawBorder(pParams.m_pGraphics.Get(), pParams.m_rect, pParams.m_matrix);
       break;
     }
     case CFWL_Part::Background: {
       CXFA_GEPath path;
-      const CFX_RectF& rect = pParams.m_rtPart;
+      const CFX_RectF& rect = pParams.m_rect;
       path.AddRectangle(rect.left, rect.top, rect.width, rect.height);
       FX_ARGB argb_color;
       switch (pParams.m_dwStates) {
@@ -78,6 +78,6 @@ void CFWL_ComboBoxTP::DrawDropDownButton(const CFWL_ThemeBackground& pParams,
     default:
       break;
   }
-  DrawArrowBtn(pParams.m_pGraphics.Get(), pParams.m_rtPart,
+  DrawArrowBtn(pParams.m_pGraphics.Get(), pParams.m_rect,
                FWLTHEME_DIRECTION_Down, eState, pParams.m_matrix);
 }
