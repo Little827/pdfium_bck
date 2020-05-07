@@ -343,29 +343,20 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetPageBoundingBox(FPDF_PAGE page,
 #if defined(OS_WIN)
 namespace {
 
-const double kEpsilonSize = 0.01f;
+constexpr float kEpsilonSize = 0.01f;
 
-void GetScaling(CPDF_Page* pPage,
-                int size_x,
-                int size_y,
-                int rotate,
-                double* scale_x,
-                double* scale_y) {
-  ASSERT(pPage);
-  ASSERT(scale_x);
-  ASSERT(scale_y);
-  double page_width = pPage->GetPageWidth();
-  double page_height = pPage->GetPageHeight();
-  if (page_width < kEpsilonSize || page_height < kEpsilonSize)
-    return;
+std::pair<float, float> GetScaling(const CPDF_Page* pPage,
+                                   int size_x,
+                                   int size_y,
+                                   int rotate) {
+  // Note that |page_size| already takes page rotation into account.
+  const CFX_SizeF& page_size = pPage->GetPageSize();
+  if (page_size.width < kEpsilonSize || page_size.height < kEpsilonSize)
+    return std::make_pair(0.0f, 0.0f);
 
-  if (rotate % 2 == 0) {
-    *scale_x = size_x / page_width;
-    *scale_y = size_y / page_height;
-  } else {
-    *scale_x = size_y / page_width;
-    *scale_y = size_x / page_height;
-  }
+  if (rotate % 2 != 0)
+    std::swap(size_x, size_y);
+  return std::make_pair(size_x / page_size.width, size_y / page_size.height);
 }
 
 FX_RECT GetMaskDimensionsAndOffsets(CPDF_Page* pPage,
@@ -375,9 +366,9 @@ FX_RECT GetMaskDimensionsAndOffsets(CPDF_Page* pPage,
                                     int size_y,
                                     int rotate,
                                     const CFX_FloatRect& mask_box) {
-  double scale_x = 0.0f;
-  double scale_y = 0.0f;
-  GetScaling(pPage, size_x, size_y, rotate, &scale_x, &scale_y);
+  float scale_x;
+  float scale_y;
+  std::tie(scale_x, scale_y) = GetScaling(pPage, size_x, size_y, rotate);
   if (scale_x < kEpsilonSize || scale_y < kEpsilonSize)
     return FX_RECT();
 
