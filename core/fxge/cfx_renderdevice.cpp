@@ -21,6 +21,7 @@
 #include "core/fxge/cfx_glyphcache.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
+#include "core/fxge/cfx_renderoptions.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagerenderer.h"
 #include "core/fxge/fx_font.h"
@@ -859,39 +860,11 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
                                       const CFX_Matrix& mtText2Device,
                                       uint32_t fill_color,
                                       uint32_t text_flags) {
-  int nativetext_flags = text_flags;
-  if (m_DeviceType != DeviceType::kDisplay) {
-    if (!(text_flags & FXTEXT_PRINTGRAPHICTEXT)) {
-      if (ShouldDrawDeviceText(pFont, text_flags) &&
-          m_pDeviceDriver->DrawDeviceText(
-              nChars, pCharPos, pFont, mtText2Device, font_size, fill_color)) {
-        return true;
-      }
-    }
-    if (FXARGB_A(fill_color) < 255)
-      return false;
-  } else if (!(text_flags & FXTEXT_NO_NATIVETEXT)) {
-    if (ShouldDrawDeviceText(pFont, text_flags) &&
-        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
-                                        font_size, fill_color)) {
-      return true;
-    }
-  }
-  CFX_Matrix char2device = mtText2Device;
-  CFX_Matrix text2Device = mtText2Device;
-  char2device.Scale(font_size, -font_size);
-  if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
-      (m_DeviceType == DeviceType::kPrinter &&
-       !(text_flags & FXTEXT_PRINTIMAGETEXT))) {
-    if (pFont->GetFaceRec()) {
-      int nPathFlags =
-          (text_flags & FXTEXT_NOSMOOTH) == 0 ? 0 : FXFILL_NOPATHSMOOTH;
-      return DrawTextPath(nChars, pCharPos, pFont, font_size, mtText2Device,
-                          nullptr, nullptr, fill_color, 0, nullptr, nPathFlags);
-    }
-  }
   int anti_alias = FT_RENDER_MODE_MONO;
   bool bNormal = false;
+  CFX_RenderOptions render_options;
+  render_options.InitializeFromTextFlags(text_flags);
+
   if ((text_flags & FXTEXT_NOSMOOTH) == 0) {
     if (m_DeviceType == DeviceType::kDisplay && m_bpp > 1) {
       if (!CFX_GEModule::Get()->GetFontMgr()->FTLibrarySupportsHinting()) {
@@ -914,8 +887,47 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
           bClearType = !!(text_flags & FXTEXT_CLEARTYPE);
         bNormal = !bClearType;
       }
+
+      // Force turn off LCD antialiasing in rendering options
+      if (anti_alias == FT_RENDER_MODE_NORMAL)
+        render_options.bClearType = false;
     }
   }
+
+  int nativetext_flags = text_flags;
+  if (m_DeviceType != DeviceType::kDisplay) {
+    if (!(text_flags & FXTEXT_PRINTGRAPHICTEXT)) {
+      if (ShouldDrawDeviceText(pFont, text_flags) &&
+          m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont,
+                                          mtText2Device, font_size, fill_color,
+                                          render_options)) {
+        return true;
+      }
+    }
+    if (FXARGB_A(fill_color) < 255)
+      return false;
+  } else if (!(text_flags & FXTEXT_NO_NATIVETEXT)) {
+    if (ShouldDrawDeviceText(pFont, text_flags) &&
+        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
+                                        font_size, fill_color,
+                                        render_options)) {
+      return true;
+    }
+  }
+  CFX_Matrix char2device = mtText2Device;
+  CFX_Matrix text2Device = mtText2Device;
+  char2device.Scale(font_size, -font_size);
+  if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
+      (m_DeviceType == DeviceType::kPrinter &&
+       !(text_flags & FXTEXT_PRINTIMAGETEXT))) {
+    if (pFont->GetFaceRec()) {
+      int nPathFlags =
+          (text_flags & FXTEXT_NOSMOOTH) == 0 ? 0 : FXFILL_NOPATHSMOOTH;
+      return DrawTextPath(nChars, pCharPos, pFont, font_size, mtText2Device,
+                          nullptr, nullptr, fill_color, 0, nullptr, nPathFlags);
+    }
+  }
+
   std::vector<TextGlyphPos> glyphs(nChars);
   CFX_Matrix deviceCtm = char2device;
 
