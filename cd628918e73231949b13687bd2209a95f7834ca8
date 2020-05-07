@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05705c08_b9331bbf",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-07T21:15:06Z",
+      "side": 0,
+      "message": "Moved this part of the code further down, so that rendering options can be processed before calling DrawDeviceText().",
+      "range": {
+        "startLine": 862,
+        "startChar": 1,
+        "endLine": 892,
+        "endChar": 3
+      },
+      "revId": "cd628918e73231949b13687bd2209a95f7834ca8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
