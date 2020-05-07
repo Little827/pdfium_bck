@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d8f894f_d91c5b65",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-07T14:29:32Z",
+      "side": 1,
+      "message": "Rather than doing ASSERT_TRUE, we can get the FPDF_LINK object and verify if the returned link object is correct. You can validate some FPDF_LINK properties.",
+      "range": {
+        "startLine": 2586,
+        "startChar": 4,
+        "endLine": 2586,
+        "endChar": 15
+      },
+      "revId": "e4ce8861368d07b7919a975d322a8cc69671047c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fef61a1_61cac253",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-07T14:29:32Z",
+      "side": 1,
+      "message": "This test case is not needed. Highlight one is enough for checking incorrect annotation.",
+      "range": {
+        "startLine": 2597,
+        "startChar": 0,
+        "endLine": 2601,
+        "endChar": 3
+      },
+      "revId": "e4ce8861368d07b7919a975d322a8cc69671047c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342014a7_6a534fd2",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2603,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-07T14:29:32Z",
+      "side": 1,
+      "message": "Use EXPECT_FALSE instead. Similarly in above test cases.",
+      "range": {
+        "startLine": 2603,
+        "startChar": 2,
+        "endLine": 2603,
+        "endChar": 14
+      },
+      "revId": "e4ce8861368d07b7919a975d322a8cc69671047c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6944ca5b_e48122f0",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3079,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-05-07T14:29:32Z",
+      "side": 1,
+      "message": "This test is not related to this CL. Maybe raise another CL for this test.",
+      "range": {
+        "startLine": 3079,
+        "startChar": 34,
+        "endLine": 3079,
+        "endChar": 53
+      },
+      "revId": "e4ce8861368d07b7919a975d322a8cc69671047c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
