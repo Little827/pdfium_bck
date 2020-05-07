@@ -12,6 +12,7 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxge/cfx_renderoptions.h"
 #include "core/fxge/fx_dib.h"
 
 class CFX_DIBBase;
@@ -101,7 +102,8 @@ class RenderDeviceDriverIface {
                               CFX_Font* pFont,
                               const CFX_Matrix& mtObject2Device,
                               float font_size,
-                              uint32_t color);
+                              uint32_t color,
+                              const CFX_RenderOptions& options);
   virtual int GetDriverType() const;
   virtual void ClearDriver();
   virtual bool DrawShading(const CPDF_ShadingPattern* pPattern,
