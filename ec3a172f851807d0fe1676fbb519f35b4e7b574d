@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d0cd507_dde82305",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-07T18:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b02c566c_8e41743b",
+      "range": {
+        "startLine": 1177,
+        "startChar": 6,
+        "endLine": 1177,
+        "endChar": 16
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "698d7cdd_2588b7a6",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc5dc847_9e7da953",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-07T18:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698d7cdd_2588b7a6",
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "99ec2305_4d7c7f5a",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3079,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-07T18:21:33Z",
+      "side": 1,
+      "message": "FPDFFormFillActionUriTest tests action handling of links, internal links and buttons. \nThis test case was initially placed here because we check the action associated with the link annot. \nBut it makes more sense to have this as part of FPDFAnnotEmbedderTest. Will move this test case to FPDFAnnotEmbedderTest",
+      "parentUuid": "78f2752a_940c01d7",
+      "range": {
+        "startLine": 3079,
+        "startChar": 7,
+        "endLine": 3079,
+        "endChar": 32
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ef4a640_ac500dca",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 7
@@ -155,6 +221,30 @@
       "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24889cc3_31ad9539",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-05-07T18:21:33Z",
+      "side": 1,
+      "message": "Named FPDF_LINK as link_annot in line no 3083. That\u0027s  why ended up naming this as \u0027annot\u0027",
+      "parentUuid": "2ef4a640_ac500dca",
+      "range": {
+        "startLine": 3080,
+        "startChar": 23,
+        "endLine": 3080,
+        "endChar": 28
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
