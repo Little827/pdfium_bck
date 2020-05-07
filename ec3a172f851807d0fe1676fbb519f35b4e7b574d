@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abf5e9c6_dc7e2161",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-07T10:58:36Z",
+      "side": 1,
+      "message": "Add a line in the test where annot is nullptr.",
+      "range": {
+        "startLine": 2586,
+        "startChar": 16,
+        "endLine": 2586,
+        "endChar": 33
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e049b60e_1cb3a4eb",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3079,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-07T10:58:36Z",
+      "side": 1,
+      "message": "This test should ideally be in another CL.",
+      "range": {
+        "startLine": 3079,
+        "startChar": 34,
+        "endLine": 3079,
+        "endChar": 53
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aefeeb0c_750d634f",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3105,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-07T10:58:36Z",
+      "side": 1,
+      "message": "nit: These are testing FPDFAnnot_GetLink() but the test is supposed to test action data for a link.",
+      "range": {
+        "startLine": 3101,
+        "startChar": 2,
+        "endLine": 3105,
+        "endChar": 43
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
