@@ -3076,6 +3076,33 @@ TEST_F(FPDFFormFillActionUriTest, LinkActionInvokeTest) {
       FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Control, modifier));
 }
 
+TEST_F(FPDFFormFillActionUriTest, LinkActionFromAnnot) {
+  ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page(), 2));
+  ASSERT_TRUE(annot);
+
+  FPDF_LINK link_annot = FPDFAnnot_GetLink(annot.get());
+  ASSERT_TRUE(link_annot);
+
+  FPDF_ACTION action = FPDFLink_GetAction(link_annot);
+  ASSERT_TRUE(action);
+  EXPECT_EQ(static_cast<unsigned long>(PDFACTION_URI),
+            FPDFAction_GetType(action));
+
+  constexpr char kExpectedResult[] = "https://cs.chromium.org/";
+  constexpr unsigned long kExpectedLength = FX_ArraySize(kExpectedResult);
+  unsigned long bufsize = FPDFAction_GetURIPath(document(), action, nullptr, 0);
+  ASSERT_EQ(kExpectedLength, bufsize);
+
+  char buffer[1024];
+  EXPECT_EQ(bufsize,
+            FPDFAction_GetURIPath(document(), action, buffer, bufsize));
+  EXPECT_STREQ(kExpectedResult, buffer);
+
+  // Other public methods are not appropriate for URI actions.
+  EXPECT_EQ(nullptr, FPDFAction_GetDest(document(), action));
+  EXPECT_EQ(0u, FPDFAction_GetFilePath(action, buffer, sizeof(buffer)));
+}
+
 TEST_F(FPDFFormFillActionUriTest, InternalLinkActionInvokeTest) {
   NiceMock<EmbedderTestMockDelegate> mock;
   EXPECT_CALL(mock, DoGoToAction(_, _, 1, _, _)).Times(12);
