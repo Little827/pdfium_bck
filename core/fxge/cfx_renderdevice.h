@@ -26,6 +26,7 @@ class CFX_PathData;
 class PauseIndicatorIface;
 class TextCharPos;
 struct CFX_Color;
+struct CFX_RenderOptions;
 
 enum class BorderStyle { SOLID, DASH, BEVELED, INSET, UNDERLINE };
 
