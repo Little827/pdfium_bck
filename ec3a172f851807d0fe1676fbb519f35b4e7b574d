@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "b02c566c_8e41743b",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-07T17:24:47Z",
+      "side": 1,
+      "message": "FPDFAnnot_GetSubtype() already does this check.",
+      "range": {
+        "startLine": 1177,
+        "startChar": 6,
+        "endLine": 1177,
+        "endChar": 16
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698d7cdd_2588b7a6",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-07T17:24:47Z",
+      "side": 1,
+      "message": "Can\u0027t eval to true if FPDFAnnot_GetSubtype() succeeded.",
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abf5e9c6_dc7e2161",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 7
@@ -69,6 +109,52 @@
       "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78f2752a_940c01d7",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3079,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-07T17:24:47Z",
+      "side": 1,
+      "message": "How much extra work is it to make this test case part of FPDFAnnotEmbedderTest? It\u0027s not really testing form filling. Is it here because some part of FPDFFormFillActionUriTest makes it convenient?",
+      "range": {
+        "startLine": 3079,
+        "startChar": 7,
+        "endLine": 3079,
+        "endChar": 32
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ef4a640_ac500dca",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-07T17:24:47Z",
+      "side": 1,
+      "message": "How about naming this \"link_annot\" ?",
+      "range": {
+        "startLine": 3080,
+        "startChar": 23,
+        "endLine": 3080,
+        "endChar": 28
+      },
+      "revId": "ec3a172f851807d0fe1676fbb519f35b4e7b574d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
