@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1588895019 -0700\nnonce AM5BpQVe6hNXnhigOTVe/inIGEHZ7cK0TNfwyqNJsJuEoz5jZSQwOneTjLh9xdb5X32bcmDXGR8O\n\n0000000000000000000000000000000000000000 b9368d6829ae8f343248b4fed260520180907fda refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl60nSsACgkQqzYtYVpm\n/Xsi1wgA0UCGcmjYyVrd7J5Wz0SmSquudUdAPpLAqOX4q5KSpKzEIYKvXiKE9h1B\nK436ZUdIKJRcF+OfoUzqAUSz+/+A5KiM4tx6oVLGyB3niKNnJPnrydmNLt9dNqo+\nMiwyy0H8pv0+npLIv0lnol2uk28nVqvh7KplWhDiJhk9iuGztNDBJCRSUEtQzMn9\nX2OvvqJfTxIB1iJWHoSKGeEFqLbRvwbGLnYXhVi2BoEilHGNk3gT8+lw774Posji\n+LIOnUzCKiHsH9FRw8VHsy0a5GfqulQ66h0VMwCmmG/unTGPK/+lYFibG3vVBJ3E\n5GQwoQQEC3cQlWvuXSpDQE7spg1tpA\u003d\u003d\n\u003dC4qJ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "39663ad2_971ac77a",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-05-08T00:36:55Z",
+      "side": 1,
+      "message": "The only reason that I\u0027d be opposed to using std::pair is that now it isn\u0027t clear to the caller  what\u0027s being returned. I would at least add a comment above the function.\n\nAlso is there anything wrong with CFX_SizeF? Or is that just too clunky to pass out?\n\nIf clunkiness is an issue, PDFium should have lightweight gfx struct equivalents.",
+      "revId": "b9368d6829ae8f343248b4fed260520180907fda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
