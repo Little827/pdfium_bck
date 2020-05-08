@@ -88,6 +88,24 @@
       "revId": "8752c97f8bbca004cc69c42a6113d0db69cb27b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f2bbacd_4ca9bdcb",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-05-08T03:58:36Z",
+      "side": 0,
+      "message": "Thank you 😊",
+      "parentUuid": "a7c41e79_2d075a70",
+      "revId": "8752c97f8bbca004cc69c42a6113d0db69cb27b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
