@@ -17,6 +17,24 @@
       "revId": "b9368d6829ae8f343248b4fed260520180907fda",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403474f8_529d175c",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-08T01:01:40Z",
+      "side": 1,
+      "message": "I can add a comment.\n\nEven though there are 2 components, the returned values do not represent a size, point, or vector. So none of the data structures in core/fxcrt/fx_coordinates.h are appropriate.",
+      "parentUuid": "39663ad2_971ac77a",
+      "revId": "b9368d6829ae8f343248b4fed260520180907fda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
