@@ -1027,12 +1027,11 @@ FPDF_GetNamedDestByName(FPDF_DOCUMENT document, FPDF_BYTESTRING name) {
   if (!pDoc)
     return nullptr;
 
-  auto name_tree = CPDF_NameTree::Create(pDoc, "Dests");
-  if (!name_tree)
-    return nullptr;
-
   ByteString dest_name(name);
-  return FPDFDestFromCPDFArray(name_tree->LookupNamedDest(pDoc, dest_name));
+  CPDF_Array* dest_array = CPDF_NameTree::LookupNamedDest(pDoc, dest_name);
+  if (!dest_array)
+    return nullptr;
+  return FPDFDestFromCPDFArray(dest_array);
 }
 
 #ifdef PDF_ENABLE_V8

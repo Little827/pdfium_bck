@@ -365,6 +365,15 @@ std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateForTesting(
   return pdfium::WrapUnique(new CPDF_NameTree(pRoot));  // Private ctor.
 }
 
+// static
+CPDF_Array* CPDF_NameTree::LookupNamedDest(CPDF_Document* pDoc,
+                                           const ByteString& name) {
+  auto name_tree = CPDF_NameTree::Create(pDoc, "Dests");
+  if (!name_tree)
+    return nullptr;
+  return name_tree->LookupNamedDestImpl(pDoc, name);
+}
+
 size_t CPDF_NameTree::GetCount() const {
   return CountNamesInternal(m_pRoot.Get(), 0);
 }
@@ -460,8 +469,8 @@ CPDF_Object* CPDF_NameTree::LookupValue(const WideString& csName) const {
                               nullptr);
 }
 
-CPDF_Array* CPDF_NameTree::LookupNamedDest(CPDF_Document* pDoc,
-                                           const ByteString& name) {
+CPDF_Array* CPDF_NameTree::LookupNamedDestImpl(CPDF_Document* pDoc,
+                                               const ByteString& name) {
   CPDF_Object* pValue = LookupValue(PDF_DecodeText(name.raw_span()));
   if (!pValue) {
     CPDF_Dictionary* pDests = pDoc->GetRoot()->GetDictFor("Dests");
