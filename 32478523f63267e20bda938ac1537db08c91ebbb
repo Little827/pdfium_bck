@@ -23,6 +23,30 @@
       "revId": "32478523f63267e20bda938ac1537db08c91ebbb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51010357_67a5cab3",
+        "filename": "core/fpdfdoc/cpdf_nametree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-09T00:41:40Z",
+      "side": 1,
+      "message": "Done. Also removed Hungarian notation.",
+      "parentUuid": "42d04973_e6a4d71c",
+      "range": {
+        "startLine": 302,
+        "startChar": 5,
+        "endLine": 302,
+        "endChar": 42
+      },
+      "revId": "32478523f63267e20bda938ac1537db08c91ebbb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
