@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6bb962d_796080f0",
+        "filename": "core/fpdfdoc/cpdf_dest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-09T00:22:13Z",
+      "side": 0,
+      "message": "CPDF_Dest(nullptr) is the same as CPDF_Dest(). Maybe the 0 param version of CPDF_Dest() should just go away...",
+      "revId": "32478523f63267e20bda938ac1537db08c91ebbb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
