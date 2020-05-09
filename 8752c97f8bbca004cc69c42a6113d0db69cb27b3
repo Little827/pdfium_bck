@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "287d4a14_5dc7b5ae",
+        "filename": "core/fpdfdoc/cpdf_dest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-09T00:16:06Z",
+      "side": 0,
+      "message": "Note GetUnicodeText() internally does a ByteString to WideString conversion.",
+      "range": {
+        "startLine": 52,
+        "startChar": 61,
+        "endLine": 52,
+        "endChar": 75
+      },
+      "revId": "8752c97f8bbca004cc69c42a6113d0db69cb27b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
