@@ -2049,6 +2049,135 @@ TEST_F(FPDFAnnotEmbedderTest, GetOptionLabelInvalidAnnotations) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFAnnotEmbedderTest, IsOptionSelectedCombobox) {
+  // Open a file with combobox widget annotations and load its first page.
+  ASSERT_TRUE(OpenDocument("combobox_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+
+    // Checks for Combobox with no Values (/V) or Selected Indices (/I) objects.
+    for (int index = 0; index < 3; index++) {
+      EXPECT_FALSE(
+          FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), index));
+    }
+
+    annot.reset(FPDFPage_GetAnnot(page, 1));
+    ASSERT_TRUE(annot);
+
+    // Checks for Combobox with Values (/V) object which is just a string.
+    for (int index = 0; index < 26; index++) {
+      EXPECT_EQ(index == 1,
+                FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), index));
+    }
+
+    // Checks for index outside bound ie (index >= CountOption()).
+    EXPECT_FALSE(FPDFAnnot_IsOptionSelected(form_handle(), annot.get(),
+                                            /*index=*/26));
+    // Checks for negetive index.
+    EXPECT_FALSE(FPDFAnnot_IsOptionSelected(form_handle(), annot.get(),
+                                            /*index=*/-1));
+
+    // Checks for bad form handle/annot.
+    EXPECT_FALSE(FPDFAnnot_IsOptionSelected(nullptr, nullptr, /*index=*/0));
+    EXPECT_FALSE(
+        FPDFAnnot_IsOptionSelected(form_handle(), nullptr, /*index=*/0));
+    EXPECT_FALSE(FPDFAnnot_IsOptionSelected(nullptr, annot.get(), /*index=*/0));
+  }
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFAnnotEmbedderTest, IsOptionSelectedListbox) {
+  // Open a file with listbox widget annotations and load its first page.
+  ASSERT_TRUE(OpenDocument("listbox_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+
+    // Checks for Listbox with no Values (/V) or Selected Indices (/I) objects.
+    for (int index = 0; index < 3; index++) {
+      EXPECT_FALSE(
+          FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), index));
+    }
+
+    annot.reset(FPDFPage_GetAnnot(page, 1));
+    ASSERT_TRUE(annot);
+
+    // Checks for Listbox with Values (/V) object which is just a string.
+    for (int index = 0; index < 26; index++) {
+      EXPECT_EQ(index == 1,
+                FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), index));
+    }
+
+    annot.reset(FPDFPage_GetAnnot(page, 3));
+    ASSERT_TRUE(annot);
+
+    // Checks for Listbox with only Selected indices (/I) object which is an
+    // array with multiple objects.
+    for (int index = 0; index < 5; index++) {
+      bool expected = (index == 1 || index == 3);
+      EXPECT_EQ(expected,
+                FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), index));
+    }
+
+    annot.reset(FPDFPage_GetAnnot(page, 4));
+    ASSERT_TRUE(annot);
+
+    // Checks for Listbox with Values (/V) object which is an array with
+    // multiple objects.
+    for (int index = 0; index < 5; index++) {
+      bool expected = (index == 2 || index == 4);
+      EXPECT_EQ(expected,
+                FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), index));
+    }
+
+    annot.reset(FPDFPage_GetAnnot(page, 5));
+    ASSERT_TRUE(annot);
+
+    // Checks for Listbox with both Values (/V) and Selected Indices (/I)
+    // objects conflict with different lengths.
+    for (int index = 0; index < 5; index++) {
+      bool expected = (index == 0 || index == 2);
+      EXPECT_EQ(expected,
+                FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), index));
+    }
+  }
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFAnnotEmbedderTest, IsOptionSelectedInvalidAnnotations) {
+  // Open a file with multiple form field annotations and load its first page.
+  ASSERT_TRUE(OpenDocument("multiple_form_types.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+
+    // Checks for link annotation.
+    EXPECT_FALSE(FPDFAnnot_IsOptionSelected(form_handle(), annot.get(),
+                                            /*index = */ 0));
+
+    annot.reset(FPDFPage_GetAnnot(page, 3));
+    ASSERT_TRUE(annot);
+
+    // Checks for text field annotation.
+    EXPECT_FALSE(FPDFAnnot_IsOptionSelected(form_handle(), annot.get(),
+                                            /*index = */ 0));
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbedderTest, GetFontSizeCombobox) {
   // Open a file with combobox annotations and load its first page.
   ASSERT_TRUE(OpenDocument("combobox_form.pdf"));
