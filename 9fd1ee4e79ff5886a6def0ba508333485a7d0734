@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "365b70f4_3652f474",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-11T21:46:47Z",
+      "side": 1,
+      "message": "Can we consistently use \"object\" to refer to PDF objects, and avoid introducing a synonym? Both in the CL description and in the cpdf_document.cpp comment.",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "9fd1ee4e79ff5886a6def0ba508333485a7d0734",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
