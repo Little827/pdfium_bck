@@ -10,7 +10,6 @@
 
 #include "build/build_config.h"
 #include "constants/annotation_common.h"
-#include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
@@ -2312,7 +2311,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldType) {
                                          FPDF_FORMFIELD_CHECKBOX,
                                          FPDF_FORMFIELD_RADIOBUTTON};
 
-  for (size_t i = 0; i < FX_ArraySize(kExpectedAnnotTypes); ++i) {
+  for (size_t i = 0; i < pdfium::size(kExpectedAnnotTypes); ++i) {
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, i));
     ASSERT_TRUE(annot);
     EXPECT_EQ(kExpectedAnnotTypes[i],
@@ -2484,9 +2483,9 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotSubtypes) {
 
   // Test invalid parameters.
   EXPECT_FALSE(FPDFAnnot_SetFocusableSubtypes(nullptr, kDefaultSubtypes,
-                                              FX_ArraySize(kDefaultSubtypes)));
+                                              pdfium::size(kDefaultSubtypes)));
   EXPECT_FALSE(FPDFAnnot_SetFocusableSubtypes(form_handle(), nullptr,
-                                              FX_ArraySize(kDefaultSubtypes)));
+                                              pdfium::size(kDefaultSubtypes)));
   EXPECT_EQ(-1, FPDFAnnot_GetFocusableSubtypesCount(nullptr));
 
   std::vector<FPDF_ANNOTATION_SUBTYPE> subtypes(1);
@@ -2527,7 +2526,7 @@ TEST_F(FPDFAnnotEmbedderTest, MAYBE_FocusableAnnotRendering) {
   // Make links and highlights focusable.
   static constexpr FPDF_ANNOTATION_SUBTYPE kSubTypes[] = {FPDF_ANNOT_LINK,
                                                           FPDF_ANNOT_HIGHLIGHT};
-  constexpr int kSubTypesCount = FX_ArraySize(kSubTypes);
+  constexpr int kSubTypesCount = pdfium::size(kSubTypes);
   ASSERT_TRUE(
       FPDFAnnot_SetFocusableSubtypes(form_handle(), kSubTypes, kSubTypesCount));
   ASSERT_EQ(kSubTypesCount, FPDFAnnot_GetFocusableSubtypesCount(form_handle()));
@@ -2593,7 +2592,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetLinkFromAnnotation) {
     constexpr char kExpectedResult[] =
         "https://cs.chromium.org/chromium/src/third_party/pdfium/public/"
         "fpdf_text.h";
-    constexpr unsigned long kExpectedLength = FX_ArraySize(kExpectedResult);
+    constexpr unsigned long kExpectedLength = pdfium::size(kExpectedResult);
     unsigned long bufsize =
         FPDFAction_GetURIPath(document(), action, nullptr, 0);
     ASSERT_EQ(kExpectedLength, bufsize);
