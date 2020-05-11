@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fe63a0c_413eaa2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-11T19:06:11Z",
+      "side": 1,
+      "message": "\"Goto\" \u003d\u003e \"GoTo\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "76e7244a08e8cc145226a65b25b3ad708ddc5a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f0bb1d_ec37d150",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-11T19:06:11Z",
+      "side": 1,
+      "message": "\"will remain unchanged\" might be better, as it\u0027s not relevant here to know that the existing value is 0.",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "76e7244a08e8cc145226a65b25b3ad708ddc5a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
