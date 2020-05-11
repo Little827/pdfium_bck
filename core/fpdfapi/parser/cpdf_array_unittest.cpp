@@ -10,9 +10,9 @@
 #include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
-#include "core/fxcrt/fx_memory.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/ptr_util.h"
+#include "third_party/base/stl_util.h"
 
 TEST(cpdf_array, GetBooleanAt) {
   auto arr = pdfium::MakeRetain<CPDF_Array>();
@@ -38,29 +38,29 @@ TEST(cpdf_array, RemoveAt) {
   {
     const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     auto arr = pdfium::MakeRetain<CPDF_Array>();
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+    for (size_t i = 0; i < pdfium::size(elems); ++i)
       arr->AppendNew<CPDF_Number>(elems[i]);
     for (size_t i = 0; i < 3; ++i)
       arr->RemoveAt(3);
     const int expected[] = {1, 2, 3, 7, 8, 9, 10};
-    ASSERT_EQ(FX_ArraySize(expected), arr->size());
-    for (size_t i = 0; i < FX_ArraySize(expected); ++i)
+    ASSERT_EQ(pdfium::size(expected), arr->size());
+    for (size_t i = 0; i < pdfium::size(expected); ++i)
       EXPECT_EQ(expected[i], arr->GetIntegerAt(i));
     arr->RemoveAt(4);
     arr->RemoveAt(4);
     const int expected2[] = {1, 2, 3, 7, 10};
-    ASSERT_EQ(FX_ArraySize(expected2), arr->size());
-    for (size_t i = 0; i < FX_ArraySize(expected2); ++i)
+    ASSERT_EQ(pdfium::size(expected2), arr->size());
+    for (size_t i = 0; i < pdfium::size(expected2); ++i)
       EXPECT_EQ(expected2[i], arr->GetIntegerAt(i));
   }
   {
     // When the range is out of bound, RemoveAt() has no effect.
     const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     auto arr = pdfium::MakeRetain<CPDF_Array>();
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+    for (size_t i = 0; i < pdfium::size(elems); ++i)
       arr->AppendNew<CPDF_Number>(elems[i]);
     arr->RemoveAt(11);
-    EXPECT_EQ(FX_ArraySize(elems), arr->size());
+    EXPECT_EQ(pdfium::size(elems), arr->size());
   }
 }
 
@@ -68,9 +68,9 @@ TEST(cpdf_array, Clear) {
   const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   auto arr = pdfium::MakeRetain<CPDF_Array>();
   EXPECT_EQ(0U, arr->size());
-  for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+  for (size_t i = 0; i < pdfium::size(elems); ++i)
     arr->AppendNew<CPDF_Number>(elems[i]);
-  EXPECT_EQ(FX_ArraySize(elems), arr->size());
+  EXPECT_EQ(pdfium::size(elems), arr->size());
   arr->Clear();
   EXPECT_EQ(0U, arr->size());
 }
@@ -79,17 +79,17 @@ TEST(cpdf_array, InsertAt) {
   {
     const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     auto arr = pdfium::MakeRetain<CPDF_Array>();
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+    for (size_t i = 0; i < pdfium::size(elems); ++i)
       arr->InsertNewAt<CPDF_Number>(i, elems[i]);
-    ASSERT_EQ(FX_ArraySize(elems), arr->size());
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+    ASSERT_EQ(pdfium::size(elems), arr->size());
+    for (size_t i = 0; i < pdfium::size(elems); ++i)
       EXPECT_EQ(elems[i], arr->GetIntegerAt(i));
     arr->InsertNewAt<CPDF_Number>(3, 33);
     arr->InsertNewAt<CPDF_Number>(6, 55);
     arr->InsertNewAt<CPDF_Number>(12, 12);
     const int expected[] = {1, 2, 3, 33, 4, 5, 55, 6, 7, 8, 9, 10, 12};
-    ASSERT_EQ(FX_ArraySize(expected), arr->size());
-    for (size_t i = 0; i < FX_ArraySize(expected); ++i)
+    ASSERT_EQ(pdfium::size(expected), arr->size());
+    for (size_t i = 0; i < pdfium::size(expected); ++i)
       EXPECT_EQ(expected[i], arr->GetIntegerAt(i));
   }
   {
@@ -98,13 +98,13 @@ TEST(cpdf_array, InsertAt) {
     // positions have nullptr.
     const int elems[] = {1, 2};
     auto arr = pdfium::MakeRetain<CPDF_Array>();
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+    for (size_t i = 0; i < pdfium::size(elems); ++i)
       arr->InsertNewAt<CPDF_Number>(i, elems[i]);
     arr->InsertNewAt<CPDF_Number>(10, 10);
     ASSERT_EQ(11u, arr->size());
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+    for (size_t i = 0; i < pdfium::size(elems); ++i)
       EXPECT_EQ(elems[i], arr->GetIntegerAt(i));
-    for (size_t i = FX_ArraySize(elems); i < 10; ++i)
+    for (size_t i = pdfium::size(elems); i < 10; ++i)
       EXPECT_EQ(nullptr, arr->GetObjectAt(i));
     EXPECT_EQ(10, arr->GetIntegerAt(10));
   }
@@ -115,11 +115,11 @@ TEST(cpdf_array, Clone) {
     // Basic case.
     const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     auto arr = pdfium::MakeRetain<CPDF_Array>();
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+    for (size_t i = 0; i < pdfium::size(elems); ++i)
       arr->InsertNewAt<CPDF_Number>(i, elems[i]);
     RetainPtr<CPDF_Array> arr2 = ToArray(arr->Clone());
     ASSERT_EQ(arr->size(), arr2->size());
-    for (size_t i = 0; i < FX_ArraySize(elems); ++i) {
+    for (size_t i = 0; i < pdfium::size(elems); ++i) {
       // Clone() always create new objects.
       EXPECT_NE(arr->GetObjectAt(i), arr2->GetObjectAt(i));
       EXPECT_EQ(arr->GetIntegerAt(i), arr2->GetIntegerAt(i));
@@ -197,12 +197,12 @@ TEST(cpdf_array, Iterator) {
   const int elems[] = {-23, -11,     3,         455,   2345877,
                        0,   7895330, -12564334, 10000, -100000};
   auto arr = pdfium::MakeRetain<CPDF_Array>();
-  for (size_t i = 0; i < FX_ArraySize(elems); ++i)
+  for (size_t i = 0; i < pdfium::size(elems); ++i)
     arr->InsertNewAt<CPDF_Number>(i, elems[i]);
   size_t index = 0;
 
   CPDF_ArrayLocker locker(arr.Get());
   for (const auto& it : locker)
     EXPECT_EQ(elems[index++], it->AsNumber()->GetInteger());
-  EXPECT_EQ(FX_ArraySize(elems), index);
+  EXPECT_EQ(pdfium::size(elems), index);
 }
