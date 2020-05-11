@@ -858,7 +858,7 @@ FPDFAnnot_SetAP(FPDF_ANNOTATION annot,
 
   static constexpr const char* kModeKeyForMode[] = {"N", "R", "D"};
   static_assert(
-      FX_ArraySize(kModeKeyForMode) == FPDF_ANNOT_APPEARANCEMODE_COUNT,
+      pdfium::size(kModeKeyForMode) == FPDF_ANNOT_APPEARANCEMODE_COUNT,
       "length of kModeKeyForMode should be equal to "
       "FPDF_ANNOT_APPEARANCEMODE_COUNT");
   const char* modeKey = kModeKeyForMode[appearanceMode];
