@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f678ff6_d83b18b3",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T07:05:13Z",
+      "side": 1,
+      "message": "nit: add curly braces.",
+      "revId": "4ed3bf5d500ffab6ef1e8e2e4c204a8d62b236b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850bf2b4_ccb99c42",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2063,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T07:05:13Z",
+      "side": 1,
+      "message": "WDYT about hard coding these vs. using FPDFAnnot_GetOptionCount()?",
+      "range": {
+        "startLine": 2063,
+        "startChar": 32,
+        "endLine": 2063,
+        "endChar": 33
+      },
+      "revId": "4ed3bf5d500ffab6ef1e8e2e4c204a8d62b236b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b9ac09b_56a5d88b",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2063,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T07:05:13Z",
+      "side": 1,
+      "message": "nit: just |i|?",
+      "range": {
+        "startLine": 2063,
+        "startChar": 13,
+        "endLine": 2063,
+        "endChar": 18
+      },
+      "revId": "4ed3bf5d500ffab6ef1e8e2e4c204a8d62b236b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcacb534_7fbe9181",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2077,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T07:05:13Z",
+      "side": 1,
+      "message": "i.e.",
+      "range": {
+        "startLine": 2077,
+        "startChar": 38,
+        "endLine": 2077,
+        "endChar": 40
+      },
+      "revId": "4ed3bf5d500ffab6ef1e8e2e4c204a8d62b236b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
