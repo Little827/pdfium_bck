@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3856c264_f57be732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-12T04:56:54Z",
+      "side": 1,
+      "message": "and is",
+      "range": {
+        "startLine": 11,
+        "startChar": 54,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "11786bd90a4d4e38a359052902e40eeff40b5534",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e33dbb6_66b3891c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-12T04:56:54Z",
+      "side": 1,
+      "message": "listbox and combobox widget annotations.",
+      "range": {
+        "startLine": 14,
+        "startChar": 52,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "11786bd90a4d4e38a359052902e40eeff40b5534",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ba0398_f4383843",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-12T04:56:54Z",
+      "side": 1,
+      "message": "/*index\u003d*/0\n\nsame at 2175.",
+      "range": {
+        "startLine": 2168,
+        "startChar": 44,
+        "endLine": 2168,
+        "endChar": 58
+      },
+      "revId": "11786bd90a4d4e38a359052902e40eeff40b5534",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4eeac8f_6cfdeaee",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-05-12T04:56:54Z",
+      "side": 1,
+      "message": "nit: , false otherwise.",
+      "range": {
+        "startLine": 669,
+        "startChar": 11,
+        "endLine": 669,
+        "endChar": 37
+      },
+      "revId": "11786bd90a4d4e38a359052902e40eeff40b5534",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
