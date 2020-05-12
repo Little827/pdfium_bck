@@ -23,6 +23,30 @@
       "revId": "5d86944ecf43445eb825f5365b35b0e5e4554d48",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc472d1_26bb6bbb",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T17:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1dce210_5826ec01",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 55
+      },
+      "revId": "5d86944ecf43445eb825f5365b35b0e5e4554d48",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
