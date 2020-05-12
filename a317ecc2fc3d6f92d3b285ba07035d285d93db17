@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1878499b_9d1d2644",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-12T23:15:27Z",
+      "side": 1,
+      "message": "Not ideal, but works for me.",
+      "parentUuid": "7c1f119c_958b7d19",
+      "revId": "a317ecc2fc3d6f92d3b285ba07035d285d93db17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe6c2b46_b8b0936a",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 1
@@ -81,6 +99,30 @@
       "revId": "a317ecc2fc3d6f92d3b285ba07035d285d93db17",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c750fa6b_a22e06d9",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-12T23:15:27Z",
+      "side": 1,
+      "message": "Thanks for the clarification!",
+      "parentUuid": "28272ffa_09196cdb",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "a317ecc2fc3d6f92d3b285ba07035d285d93db17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
