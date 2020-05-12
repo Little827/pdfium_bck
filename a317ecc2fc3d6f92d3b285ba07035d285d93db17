@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c1f119c_958b7d19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T23:01:09Z",
+      "side": 1,
+      "message": "Upload them to the bug?",
+      "parentUuid": "38107149_c8e27cda",
+      "revId": "a317ecc2fc3d6f92d3b285ba07035d285d93db17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe6c2b46_b8b0936a",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-05-12T22:49:04Z",
       "side": 1,
       "message": "Commentary/question: Not sure what the practice is in PDFium, but find these comments slightly confusing, since the comment ends up being closer to the block where !defined(OS_LINUX).",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "a317ecc2fc3d6f92d3b285ba07035d285d93db17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28272ffa_09196cdb",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T23:01:09Z",
+      "side": 1,
+      "message": "In PDFium, we add comments to the #endif when:\n1) There\u0027s nesting\n2) The #if is far away from the #endif\n\nWe consistently make the #endif comment mirror the #if comment, to show which #if it corresponds to.\n\nWith a #else in the middle, some people like to use the #endif comment to show what the #else corresponds to. While I understand why one may want to do that, it can be confusing to readers who expect the #endif to mirrors the #if.",
+      "parentUuid": "fe6c2b46_b8b0936a",
       "range": {
         "startLine": 38,
         "startChar": 8,
