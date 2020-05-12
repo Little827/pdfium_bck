@@ -46,6 +46,30 @@
       "revId": "3ea38438da69868f33aac23ce7d1b3575479fb0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "990c265b_e4757f12",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-12T19:18:56Z",
+      "side": 0,
+      "message": "There\u0027s actually two rounds of checks against |kEpsilonSize|, so I added more checks to be more like the existing code. PTAL.",
+      "parentUuid": "23974224_5cb84203",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 62
+      },
+      "revId": "3ea38438da69868f33aac23ce7d1b3575479fb0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
