@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2a99c75_b56ab45c",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-13T17:34:51Z",
+      "side": 1,
+      "message": "In HTML \u003cselect\u003e elements, both the space and enter key opens the drop down. However, only the enter key closes the drop down. Do we want to make this consistent with the HTML behavior?",
+      "revId": "85ca47bd138709af84001c68799f2cca2dd726d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82821ec_189efaa4",
+        "filename": "testing/resources/pixel/combobox_form.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-13T17:34:51Z",
+      "side": 1,
+      "message": "nit: Let\u0027s consistently write arrays without the inner spaces, like line 29. e.g. [4 0 R] here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "85ca47bd138709af84001c68799f2cca2dd726d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
