@@ -14,6 +14,7 @@
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/pwl/cpwl_combo_box.h"
+#include "public/fpdf_fwlevent.h"
 #include "third_party/base/ptr_util.h"
 
 CFFL_ComboBox::CFFL_ComboBox(CPDFSDK_FormFillEnvironment* pApp,
@@ -70,6 +71,24 @@ std::unique_ptr<CPWL_Wnd> CFFL_ComboBox::NewPWLWindow(
 bool CFFL_ComboBox::OnChar(CPDFSDK_Annot* pAnnot,
                            uint32_t nChar,
                            uint32_t nFlags) {
+  // In a combo box if the ENTER/SPACE key is pressed, show the combo box
+  // options.
+  switch (nChar) {
+    case FWL_VKEY_Return:
+    case FWL_VKEY_Space: {
+      CPDFSDK_PageView* pPageView = pAnnot->GetPageView();
+      ASSERT(pPageView);
+
+      CPWL_ComboBox* pWnd = GetComboBox(pPageView, false);
+      if (pWnd) {
+        pWnd->SetPopup(!pWnd->IsPopup());
+        pWnd->SetSelectText();
+        return true;
+      }
+    } break;
+    default:
+      break;
+  }
   return CFFL_TextObject::OnChar(pAnnot, nChar, nFlags);
 }
 
