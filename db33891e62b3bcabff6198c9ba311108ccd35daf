@@ -52,6 +52,24 @@
       "revId": "db33891e62b3bcabff6198c9ba311108ccd35daf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c5a185c_335111d2",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-13T17:00:14Z",
+      "side": 1,
+      "message": "e.g. https://pdfium-review.googlesource.com/68614 does this for combo boxes.",
+      "parentUuid": "35fc9a96_4d3ebbf2",
+      "revId": "db33891e62b3bcabff6198c9ba311108ccd35daf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
