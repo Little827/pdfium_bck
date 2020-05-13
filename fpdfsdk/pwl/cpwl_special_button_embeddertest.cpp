@@ -110,11 +110,7 @@ TEST_F(CPWLSpecialButtonEmbedderTest, EnterOnReadOnlyCheckBox) {
   CPWL_CheckBox* check_box = static_cast<CPWL_CheckBox*>(GetWindow());
   EXPECT_TRUE(GetCPDFSDKFormFillEnv()->GetInteractiveFormFiller()->OnChar(
       GetCPDFSDKAnnotReadOnlyCheckBox(), '\r', 0));
-  // The check box is checked by default. Since it is a read only checkbox,
-  // clicking Enter shouldn't change its state.
-  // TODO(http://crbug.com/pdfium/1431) : Change this to EXPECT_TRUE
-  // as part of the fix.
-  EXPECT_FALSE(check_box->IsChecked());
+  EXPECT_TRUE(check_box->IsChecked());
 }
 
 TEST_F(CPWLSpecialButtonEmbedderTest, EnterOnCheckBox) {
@@ -134,9 +130,7 @@ TEST_F(CPWLSpecialButtonEmbedderTest, EnterOnReadOnlyRadioButton) {
   CPWL_RadioButton* radio_button = static_cast<CPWL_RadioButton*>(GetWindow());
   EXPECT_TRUE(GetCPDFSDKFormFillEnv()->GetInteractiveFormFiller()->OnChar(
       GetCPDFSDKAnnotReadOnlyRadioButton(), '\r', 0));
-  // TODO(http://crbug.com/pdfium/1431) : Change this to EXPECT_FALSE
-  // as part of the fix.
-  EXPECT_TRUE(radio_button->IsChecked());
+  EXPECT_FALSE(radio_button->IsChecked());
 }
 
 TEST_F(CPWLSpecialButtonEmbedderTest, EnterOnRadioButton) {
