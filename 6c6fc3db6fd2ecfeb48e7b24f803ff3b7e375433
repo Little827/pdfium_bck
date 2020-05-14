@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e811495a_f81f7ddd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-05-14T07:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3302a309_2a9e179e",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3b51b45_7d78001b",
         "filename": "fpdfsdk/formfiller/cffl_radiobutton.cpp",
         "patchSetId": 10
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d81cbd0c_202c81cf",
+        "filename": "fpdfsdk/formfiller/cffl_radiobutton.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-05-14T07:14:30Z",
+      "side": 1,
+      "message": "I am scoping the change to not set the state for checkbox if it not read only. If I put the check earlier, other actions will also be inhibited.",
+      "parentUuid": "6d613375_2f0bf498",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61ff6ac1_5ad2ff7e",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 10
@@ -116,6 +164,30 @@
       "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf1e8b1_a816c158",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-05-14T07:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ff6ac1_5ad2ff7e",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 4
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "74ef7bd9_f339bd11",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-05-14T07:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23f18d5_c6db2ea1",
+      "range": {
+        "startLine": 998,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 70
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65c18728_60ba3a52",
         "filename": "fpdfsdk/pwl/cpwl_special_button.cpp",
         "patchSetId": 10
@@ -162,6 +258,30 @@
       "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79413d08_93adcf78",
+        "filename": "fpdfsdk/pwl/cpwl_special_button.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-05-14T07:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65c18728_60ba3a52",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "6c6fc3db6fd2ecfeb48e7b24f803ff3b7e375433",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
