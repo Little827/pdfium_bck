@@ -4,11 +4,15 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCODEC_CODEC_MODULE_IFACE_H_
-#define CORE_FXCODEC_CODEC_MODULE_IFACE_H_
+#ifndef CORE_FXCODEC_PROGRESSIVEDECODER_IFACE_H_
+#define CORE_FXCODEC_PROGRESSIVEDECODER_IFACE_H_
 
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+
+#ifndef PDF_ENABLE_XFA
+#error "XFA only"
+#endif
 
 class CFX_CodecMemory;
 
@@ -16,14 +20,14 @@ namespace fxcodec {
 
 class CFX_DIBAttribute;
 
-class ModuleIface {
+class ProgressiveDecoderIface {
  public:
   class Context {
    public:
     virtual ~Context() = default;
   };
 
-  virtual ~ModuleIface() = default;
+  virtual ~ProgressiveDecoderIface() = default;
 
   // Returns the number of unprocessed bytes remaining in the input buffer.
   virtual FX_FILESIZE GetAvailInput(Context* pContext) const = 0;
@@ -38,6 +42,6 @@ class ModuleIface {
 
 }  // namespace fxcodec
 
-using fxcodec::ModuleIface;
+using fxcodec::ProgressiveDecoderIface;
 
-#endif  // CORE_FXCODEC_CODEC_MODULE_IFACE_H_
+#endif  // CORE_FXCODEC_PROGRESSIVEDECODER_IFACE_H_
