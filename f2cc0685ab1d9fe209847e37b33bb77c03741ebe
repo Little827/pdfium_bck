@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efe1e89c_cfd760f7",
+        "filename": "fpdfsdk/cpdfsdk_widget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-05-14T17:04:31Z",
+      "side": 1,
+      "message": "Consider renaming it to GetExportValue().",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 28
+      },
+      "revId": "f2cc0685ab1d9fe209847e37b33bb77c03741ebe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ccaa7e_6b0226db",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-05-14T17:04:31Z",
+      "side": 1,
+      "message": "nit: GetRadioButtonOrCheckBoxWidget",
+      "range": {
+        "startLine": 275,
+        "startChar": 16,
+        "endLine": 275,
+        "endChar": 40
+      },
+      "revId": "f2cc0685ab1d9fe209847e37b33bb77c03741ebe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b3a148_f9daf738",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-05-14T17:04:31Z",
+      "side": 1,
+      "message": "nit: update comment since each test is testing either checkbox or radio button. Similarly for below tests as well.",
+      "range": {
+        "startLine": 2620,
+        "startChar": 22,
+        "endLine": 2620,
+        "endChar": 34
+      },
+      "revId": "f2cc0685ab1d9fe209847e37b33bb77c03741ebe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3796b19d_f4e5dff3",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-05-14T17:04:31Z",
+      "side": 1,
+      "message": "This looks okay to me, but would like Lei\u0027s view on the API name here.\n\nAnother alternative could be FPDFAnnot_GetFormFieldExportValue() which is being more explicit, but a rather long name. Lei, WDYT?",
+      "range": {
+        "startLine": 784,
+        "startChar": 0,
+        "endLine": 784,
+        "endChar": 27
+      },
+      "revId": "f2cc0685ab1d9fe209847e37b33bb77c03741ebe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
