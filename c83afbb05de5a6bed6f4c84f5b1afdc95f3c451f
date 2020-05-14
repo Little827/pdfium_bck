@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1589495203 -0700\nnonce ALC2d18uqNC/B2YxiU+DzLWmgFAPqf49urq5Ng1V2pq1WzSNeNP6T/ZGcyDsqYxiIUxN6584v0HY\n\n0000000000000000000000000000000000000000 c83afbb05de5a6bed6f4c84f5b1afdc95f3c451f refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl69xaMACgkQqzYtYVpm\n/Xt5twf+NXPOSQgIJO10j8FOMft7MVJpb7ewMHHctOnBzCBYDxRH43w6U3vx851Y\nfBaxRemMnq/2Rhr5k+Gk6DZOefszmP/Qz2JlZxNfNs+wuX8CWOV7glPLnmVAQpZ/\niE3YKDwJxgfa5bMaAz42rELgobAcHNf6afWLL9W9kQQ5IUMCLN3gBK55iLS1uFAa\n5P9DDJshOqawK+24Orq+T3Aph5dJZkc9dfs8Otr9fdLMYZA+EkoapLAYdg3N+dRA\nhRhb7bYvcQaTpI8dQwwgFNMQZrRnrjnIoJNVgQxqyX5OmWREb3is9PfrFDPlR31k\nQNUBBeaqL9Tlgv0UKkWuT4z8sSkMhw\u003d\u003d\n\u003dm8Zk\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ffdc32_48206170",
+        "filename": "core/fxcodec/jpeg/jpeg_progressive_decoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-05-14T22:54:41Z",
+      "side": 1,
+      "message": "just curious, can be private (isn\u0027t this a base:nodestructor singleton)?  or better yet | \u003d delete;| ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "c83afbb05de5a6bed6f4c84f5b1afdc95f3c451f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
