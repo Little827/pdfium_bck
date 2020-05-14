@@ -22,6 +22,30 @@
       "revId": "73f77add34c9a03757bfcec64fb928dabca345b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd203b02_157b2499",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-14T17:40:04Z",
+      "side": 1,
+      "message": "Not too hard to figure out.",
+      "parentUuid": "7d2bc5a4_47eb004d",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "73f77add34c9a03757bfcec64fb928dabca345b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
