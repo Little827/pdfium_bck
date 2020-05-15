@@ -22,6 +22,30 @@
       "revId": "6bded1673d2bd3a4c114ae916855311610b9836f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28fe159f_51a70a67",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-15T21:28:37Z",
+      "side": 1,
+      "message": "There\u0027s some discussion here: https://groups.google.com/a/chromium.org/d/topic/cxx/2UTgWpM5N0c/discussion\n\nI\u0027m going with: pdfium::size(foo) wherever possible, and std::extent\u003cdecltype(bar)\u003e() only when needed. Does that sound reasonable?",
+      "parentUuid": "585dcb95_60aaf399",
+      "range": {
+        "startLine": 847,
+        "startChar": 6,
+        "endLine": 847,
+        "endChar": 35
+      },
+      "revId": "6bded1673d2bd3a4c114ae916855311610b9836f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
