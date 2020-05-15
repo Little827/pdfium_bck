@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30203a43_3b76a630",
+        "filename": "core/fxcodec/png/pngmodule.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-05-15T18:09:49Z",
+      "side": 1,
+      "message": "some might argue that this pattern of returning the context from one method and then requiring the caller to pass it back implies that maybe this class is stateful and should just hold that information as a member.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 72
+      },
+      "revId": "02ce4c79386af00b7b711f25d448ad2475fce79a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
