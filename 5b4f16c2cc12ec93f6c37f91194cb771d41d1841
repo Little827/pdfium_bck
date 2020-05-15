@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87e6f58b_eef98388",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-15T08:01:35Z",
+      "side": 1,
+      "message": "Remove this blank line to bring the declaration of |pFormField| closer to its use. Same for line 294.",
+      "revId": "5b4f16c2cc12ec93f6c37f91194cb771d41d1841",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450d4cb3_50da4eae",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-15T08:01:35Z",
+      "side": 1,
+      "message": "No need for this check. CPDF_FormField::GetControlIndex() will do it anyway.",
+      "range": {
+        "startLine": 1204,
+        "startChar": 20,
+        "endLine": 1204,
+        "endChar": 35
+      },
+      "revId": "5b4f16c2cc12ec93f6c37f91194cb771d41d1841",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53c3d289_21534f80",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-15T08:01:35Z",
+      "side": 1,
+      "message": "Use \"Gets\", to be consistent with \"Returns\" and with line 770. Same for line 756.",
+      "range": {
+        "startLine": 742,
+        "startChar": 3,
+        "endLine": 742,
+        "endChar": 6
+      },
+      "revId": "5b4f16c2cc12ec93f6c37f91194cb771d41d1841",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce41ad5b_49552567",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-15T08:01:35Z",
+      "side": 1,
+      "message": "Please end the sentence with a period, like line 751.",
+      "revId": "5b4f16c2cc12ec93f6c37f91194cb771d41d1841",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b6fc1a_ddda597d",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-15T08:01:35Z",
+      "side": 1,
+      "message": "All the similar APIs in this file say \"string value\", so why don\u0027t we do that for consistency?",
+      "range": {
+        "startLine": 782,
+        "startChar": 29,
+        "endLine": 782,
+        "endChar": 41
+      },
+      "revId": "5b4f16c2cc12ec93f6c37f91194cb771d41d1841",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
