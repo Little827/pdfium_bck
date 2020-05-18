@@ -8,9 +8,11 @@
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/ptr_util.h"
+#include "v8/include/cppgc/platform.h"
+#include "v8/include/libplatform/libplatform.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
-class CXFA_DocumentParserTest : public testing::Test {
+class CXFA_DocumentParserTest : public testing::Test, public ScopedHeap {
  public:
   void SetUp() override {
     doc_ = pdfium::MakeUnique<CXFA_Document>(nullptr, nullptr);

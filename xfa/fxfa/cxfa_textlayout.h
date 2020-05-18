@@ -15,6 +15,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "xfa/fgas/layout/cfx_char.h"
 #include "xfa/fxfa/cxfa_textparser.h"
+#include "xfa/fxfa/heap.h"
 
 class CFDE_RenderDevice;
 class CFX_CSSComputedStyle;
@@ -31,7 +32,7 @@ class TextCharPos;
 struct CXFA_LoaderContext;
 struct FX_RTFTEXTOBJ;
 
-class CXFA_TextLayout {
+class CXFA_TextLayout final : public cppgc::GarbageCollected<CXFA_TextLayout> {
  public:
   CXFA_TextLayout(CXFA_FFDoc* doc, CXFA_TextProvider* pTextProvider);
   ~CXFA_TextLayout();
@@ -60,6 +61,8 @@ class CXFA_TextLayout {
   bool HasBlock() const { return m_bHasBlock; }
   void ClearBlocks() { m_Blocks.clear(); }
   void ResetHasBlock() { m_bHasBlock = false; }
+
+  virtual void Trace(cppgc::Visitor*) const {}
 
  private:
   struct BlockData {
