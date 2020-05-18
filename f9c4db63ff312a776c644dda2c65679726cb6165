@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "eae48450_16591f0d",
+        "filename": "core/fxge/cfx_renderoptions.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:41:40Z",
+      "side": 1,
+      "message": "Also, it may be worth introducing a three-valued enum instead of using 2 boolean fields, if one of the 4 allowed states is invalid (no smoothing + LCD).",
+      "parentUuid": "535b2c6b_c9362a8d",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8de8ca6_7827a0dd",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 9
