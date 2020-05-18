@@ -4,11 +4,11 @@
 
 #include "core/fxcrt/observed_ptr.h"
 
+#include <memory>
 #include <utility>
 #include <vector>
 
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/ptr_util.h"
 
 namespace fxcrt {
 namespace {
@@ -34,7 +34,7 @@ TEST(ObservePtr, Null) {
 TEST(ObservePtr, LivesLonger) {
   ObservedPtr<PseudoObservable> ptr;
   {
-    auto pObs = pdfium::MakeUnique<PseudoObservable>();
+    auto pObs = std::make_unique<PseudoObservable>();
     ptr.Reset(pObs.get());
     EXPECT_NE(nullptr, ptr.Get());
     EXPECT_EQ(1u, pObs->ActiveObservedPtrs());
@@ -207,7 +207,7 @@ TEST(ObservePtr, SelfObservable) {
   // Must be no ASAN violations upon cleanup here.
 }
 
-TEST(ObservePtr, PairwiseObservable) {
+TEST(ObservePtr, Pairw < iseObservable) {
   SelfObservable thing1;
   {
     SelfObservable thing2;
