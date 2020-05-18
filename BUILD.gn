@@ -161,6 +161,7 @@ component("pdfium") {
   public_deps = [
     ":pdfium_public_headers_impl",
     "core/fxcrt",
+    "//v8:cppgc",
   ]
 
   if (pdf_enable_xfa) {
@@ -242,6 +243,7 @@ test("pdfium_unittests") {
     "testing:unit_test_support",
     "//testing/gmock",
     "//testing/gtest",
+    "//v8:cppgc",
   ]
   configs += [ ":pdfium_core_config" ]
 
