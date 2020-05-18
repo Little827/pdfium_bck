@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "916adfc6_541db512",
+        "filename": "core/fxge/cfx_renderoptions.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:39:55Z",
+      "side": 1,
+      "message": "Rather than explicitly testing text_flags \u003d\u003d 0, it\u0027d be better to just let this behavior naturally fall out of having no other flags set. This is going to happen case if flags are set that haven\u0027t been defined yet, anyway.",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535b2c6b_c9362a8d",
+        "filename": "core/fxge/cfx_renderoptions.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:39:55Z",
+      "side": 1,
+      "message": "The documentation on the struct should mention this behavior.",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8de8ca6_7827a0dd",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 9
@@ -19,6 +53,93 @@
     },
     {
       "key": {
+        "uuid": "5b892f59_21e1ded9",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:39:55Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "a8de8ca6_7827a0dd",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4985ff9e_7f61b922",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:39:55Z",
+      "side": 1,
+      "message": "This could reasonably be used multiple times on the same instance of the struct, so I would name this something else than \"Initialize\". Maybe just \"SetTextOptionsFromFlags\", or something along those lines.\n\nIt\u0027d be good to have a documentation comment here, too; in particular, it\u0027s unclear how \"flags\" are defined.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6616294d_ef5278ce",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:39:55Z",
+      "side": 1,
+      "message": "What \"smooth\" does might be ambiguous; it\u0027s probably better to use a more precise technical term, like antialiasing.",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b74bbff_6eb6ff72",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:39:55Z",
+      "side": 1,
+      "message": "I wonder if it would make sense to have a sub-structure for just text options?",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7371d2e2_bfef533a",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 9
@@ -30,6 +151,29 @@
       "writtenOn": "2020-05-14T23:37:31Z",
       "side": 1,
       "message": "Are these comparison operators actually used?",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f0697fc_19c166f9",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-18T17:39:55Z",
+      "side": 1,
+      "message": "It\u0027s unexpected that the \"therefore\" applies to Windows/Linux, when this clause mentions macOS; maybe change this to \"only disables\", so it\u0027s clearer that the other platforms are different.",
+      "range": {
+        "startLine": 1107,
+        "startChar": 27,
+        "endLine": 1107,
+        "endChar": 35
+      },
       "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
