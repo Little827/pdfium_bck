@@ -17,6 +17,7 @@
 #include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/heap.h"
 
 class CXFA_BindItems;
 class CXFA_FFDoc;
@@ -44,7 +45,7 @@ enum XFA_DOCVIEW_LAYOUTSTATUS {
   XFA_DOCVIEW_LAYOUTSTATUS_End
 };
 
-class CXFA_FFDocView {
+class CXFA_FFDocView final : public cppgc::GarbageCollected<CXFA_FFDocView> {
  public:
   explicit CXFA_FFDocView(CXFA_FFDoc* pDoc);
   ~CXFA_FFDocView();
@@ -103,6 +104,8 @@ class CXFA_FFDocView {
 
   void ResetLayoutProcessor() { m_pXFADocLayout.Release(); }
 
+  void Trace(cppgc::Visitor*) const;
+
  private:
   bool RunEventLayoutReady();
   void RunBindItems();
@@ -119,7 +122,7 @@ class CXFA_FFDocView {
   XFA_EventError RunCalculateWidgets();
   void RunSubformIndexChange();
 
-  UnownedPtr<CXFA_FFDoc> const m_pDoc;
+  const cppgc::Member<CXFA_FFDoc> m_pDoc;
   std::unique_ptr<CXFA_FFWidgetHandler> m_pWidgetHandler;
   UnownedPtr<CXFA_LayoutProcessor> m_pXFADocLayout;
   UnownedPtr<CXFA_Node> m_pFocusNode;

@@ -18,6 +18,7 @@
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cscript_datawindow.h"
 #include "xfa/fxfa/parser/cscript_eventpseudomodel.h"
 #include "xfa/fxfa/parser/cscript_hostpseudomodel.h"
@@ -1288,12 +1289,12 @@ void CXFA_Document::ClearLayoutData() {
   m_pLayoutProcessor.reset();
   m_pScriptContext.reset();
   m_pLocaleMgr.reset();
-  m_pScriptDataWindow.reset();
-  m_pScriptEvent.reset();
-  m_pScriptHost.reset();
-  m_pScriptLog.reset();
-  m_pScriptLayout.reset();
-  m_pScriptSignature.reset();
+  m_pScriptDataWindow.Clear();
+  m_pScriptEvent.Clear();
+  m_pScriptHost.Clear();
+  m_pScriptLog.Clear();
+  m_pScriptLayout.Clear();
+  m_pScriptSignature.Clear();
 }
 
 CXFA_Object* CXFA_Document::GetXFAObject(XFA_HashCode dwNodeNameHash) {
@@ -1335,34 +1336,41 @@ CXFA_Object* CXFA_Document::GetXFAObject(XFA_HashCode dwNodeNameHash) {
     }
     case XFA_HASHCODE_DataWindow: {
       if (!m_pScriptDataWindow)
-        m_pScriptDataWindow = pdfium::MakeUnique<CScript_DataWindow>(this);
-      return m_pScriptDataWindow.get();
+        m_pScriptDataWindow =
+            cppgc::MakeGarbageCollected<CScript_DataWindow>(GetHeap(), this);
+      return m_pScriptDataWindow.Get();
     }
     case XFA_HASHCODE_Event: {
       if (!m_pScriptEvent)
-        m_pScriptEvent = pdfium::MakeUnique<CScript_EventPseudoModel>(this);
-      return m_pScriptEvent.get();
+        m_pScriptEvent = cppgc::MakeGarbageCollected<CScript_EventPseudoModel>(
+            GetHeap(), this);
+      return m_pScriptEvent.Get();
     }
     case XFA_HASHCODE_Host: {
       if (!m_pScriptHost)
-        m_pScriptHost = pdfium::MakeUnique<CScript_HostPseudoModel>(this);
-      return m_pScriptHost.get();
+        m_pScriptHost = cppgc::MakeGarbageCollected<CScript_HostPseudoModel>(
+            GetHeap(), this);
+      return m_pScriptHost.Get();
     }
     case XFA_HASHCODE_Log: {
       if (!m_pScriptLog)
-        m_pScriptLog = pdfium::MakeUnique<CScript_LogPseudoModel>(this);
-      return m_pScriptLog.get();
+        m_pScriptLog = cppgc::MakeGarbageCollected<CScript_LogPseudoModel>(
+            GetHeap(), this);
+      return m_pScriptLog.Get();
     }
     case XFA_HASHCODE_Signature: {
       if (!m_pScriptSignature)
         m_pScriptSignature =
-            pdfium::MakeUnique<CScript_SignaturePseudoModel>(this);
-      return m_pScriptSignature.get();
+            cppgc::MakeGarbageCollected<CScript_SignaturePseudoModel>(GetHeap(),
+                                                                      this);
+      return m_pScriptSignature.Get();
     }
     case XFA_HASHCODE_Layout: {
       if (!m_pScriptLayout)
-        m_pScriptLayout = pdfium::MakeUnique<CScript_LayoutPseudoModel>(this);
-      return m_pScriptLayout.get();
+        m_pScriptLayout =
+            cppgc::MakeGarbageCollected<CScript_LayoutPseudoModel>(GetHeap(),
+                                                                   this);
+      return m_pScriptLayout.Get();
     }
     default:
       return m_pRootNode->GetFirstChildByName(dwNodeNameHash);

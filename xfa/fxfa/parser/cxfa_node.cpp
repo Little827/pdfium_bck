@@ -834,22 +834,22 @@ class CXFA_TextLayoutData final : public CXFA_WidgetLayoutData {
 
   CXFA_TextLayoutData* AsTextLayoutData() override { return this; }
 
-  CXFA_TextLayout* GetTextLayout() const { return m_pTextLayout.get(); }
-  CXFA_TextProvider* GetTextProvider() const { return m_pTextProvider.get(); }
+  CXFA_TextLayout* GetTextLayout() const { return m_pTextLayout.Get(); }
+  CXFA_TextProvider* GetTextProvider() const { return m_pTextProvider.Get(); }
 
   void LoadText(CXFA_FFDoc* doc, CXFA_Node* pNode) {
     if (m_pTextLayout)
       return;
 
-    m_pTextProvider =
-        pdfium::MakeUnique<CXFA_TextProvider>(pNode, XFA_TEXTPROVIDERTYPE_Text);
-    m_pTextLayout =
-        pdfium::MakeUnique<CXFA_TextLayout>(doc, m_pTextProvider.get());
+    m_pTextProvider = cppgc::MakeGarbageCollected<CXFA_TextProvider>(
+        GetHeap(), pNode, XFA_TEXTPROVIDERTYPE_Text);
+    m_pTextLayout = cppgc::MakeGarbageCollected<CXFA_TextLayout>(
+        GetHeap(), doc, m_pTextProvider.Get());
   }
 
  private:
-  std::unique_ptr<CXFA_TextLayout> m_pTextLayout;
-  std::unique_ptr<CXFA_TextProvider> m_pTextProvider;
+  cppgc::Persistent<CXFA_TextLayout> m_pTextLayout;
+  cppgc::Persistent<CXFA_TextProvider> m_pTextProvider;
 };
 
 class CXFA_ImageLayoutData final : public CXFA_WidgetLayoutData {
@@ -899,15 +899,15 @@ class CXFA_FieldLayoutData : public CXFA_WidgetLayoutData {
     if (!caption || caption->IsHidden())
       return false;
 
-    m_pCapTextProvider = pdfium::MakeUnique<CXFA_TextProvider>(
-        pNode, XFA_TEXTPROVIDERTYPE_Caption);
-    m_pCapTextLayout =
-        pdfium::MakeUnique<CXFA_TextLayout>(doc, m_pCapTextProvider.get());
+    m_pCapTextProvider = cppgc::MakeGarbageCollected<CXFA_TextProvider>(
+        GetHeap(), pNode, XFA_TEXTPROVIDERTYPE_Caption);
+    m_pCapTextLayout = cppgc::MakeGarbageCollected<CXFA_TextLayout>(
+        GetHeap(), doc, m_pCapTextProvider.Get());
     return true;
   }
 
-  std::unique_ptr<CXFA_TextLayout> m_pCapTextLayout;
-  std::unique_ptr<CXFA_TextProvider> m_pCapTextProvider;
+  cppgc::Persistent<CXFA_TextLayout> m_pCapTextLayout;
+  cppgc::Persistent<CXFA_TextProvider> m_pCapTextProvider;
   std::unique_ptr<CFDE_TextOut> m_pTextOut;
   std::vector<float> m_FieldSplitArray;
 };
@@ -3137,7 +3137,7 @@ void CXFA_Node::CalcCaptionSize(CXFA_FFDoc* doc, CFX_SizeF* pszCap) {
   const bool bVert = iCapPlacement == XFA_AttributeValue::Top ||
                      iCapPlacement == XFA_AttributeValue::Bottom;
   CXFA_TextLayout* pCapTextLayout =
-      m_pLayoutData->AsFieldLayoutData()->m_pCapTextLayout.get();
+      m_pLayoutData->AsFieldLayoutData()->m_pCapTextLayout.Get();
   if (pCapTextLayout) {
     if (!bVert && GetFFWidgetType() != XFA_FFWidgetType::kButton)
       pszCap->width = fCapReserve;
@@ -3861,7 +3861,7 @@ bool CXFA_Node::LoadCaption(CXFA_FFDoc* doc) {
 
 CXFA_TextLayout* CXFA_Node::GetCaptionTextLayout() {
   return m_pLayoutData
-             ? m_pLayoutData->AsFieldLayoutData()->m_pCapTextLayout.get()
+             ? m_pLayoutData->AsFieldLayoutData()->m_pCapTextLayout.Get()
              : nullptr;
 }
 
@@ -5089,919 +5089,959 @@ CFX_XMLDocument* CXFA_Node::GetXMLDocument() const {
 }
 
 // static
-std::unique_ptr<CXFA_Node> CXFA_Node::Create(CXFA_Document* doc,
-                                             XFA_Element element,
-                                             XFA_PacketType packet) {
-  std::unique_ptr<CXFA_Node> node;
+CXFA_Node* CXFA_Node::Create(CXFA_Document* doc,
+                             XFA_Element element,
+                             XFA_PacketType packet) {
+  CXFA_Node* node;
+  auto* heap = GetHeap();
   switch (element) {
     case XFA_Element::Ps:
-      node = pdfium::MakeUnique<CXFA_Ps>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Ps>(heap, doc, packet);
       break;
     case XFA_Element::To:
-      node = pdfium::MakeUnique<CXFA_To>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_To>(heap, doc, packet);
       break;
     case XFA_Element::Ui:
-      node = pdfium::MakeUnique<CXFA_Ui>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Ui>(heap, doc, packet);
       break;
     case XFA_Element::RecordSet:
-      node = pdfium::MakeUnique<CXFA_RecordSet>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_RecordSet>(heap, doc, packet);
       break;
     case XFA_Element::SubsetBelow:
-      node = pdfium::MakeUnique<CXFA_SubsetBelow>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SubsetBelow>(heap, doc, packet);
       break;
     case XFA_Element::SubformSet:
-      node = pdfium::MakeUnique<CXFA_SubformSet>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SubformSet>(heap, doc, packet);
       break;
     case XFA_Element::AdobeExtensionLevel:
-      node = pdfium::MakeUnique<CXFA_AdobeExtensionLevel>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_AdobeExtensionLevel>(heap, doc,
+                                                                   packet);
       break;
     case XFA_Element::Typeface:
-      node = pdfium::MakeUnique<CXFA_Typeface>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Typeface>(heap, doc, packet);
       break;
     case XFA_Element::Break:
-      node = pdfium::MakeUnique<CXFA_Break>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Break>(heap, doc, packet);
       break;
     case XFA_Element::FontInfo:
-      node = pdfium::MakeUnique<CXFA_FontInfo>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_FontInfo>(heap, doc, packet);
       break;
     case XFA_Element::NumberPattern:
-      node = pdfium::MakeUnique<CXFA_NumberPattern>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_NumberPattern>(heap, doc, packet);
       break;
     case XFA_Element::DynamicRender:
-      node = pdfium::MakeUnique<CXFA_DynamicRender>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DynamicRender>(heap, doc, packet);
       break;
     case XFA_Element::PrintScaling:
-      node = pdfium::MakeUnique<CXFA_PrintScaling>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PrintScaling>(heap, doc, packet);
       break;
     case XFA_Element::CheckButton:
-      node = pdfium::MakeUnique<CXFA_CheckButton>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_CheckButton>(heap, doc, packet);
       break;
     case XFA_Element::DatePatterns:
-      node = pdfium::MakeUnique<CXFA_DatePatterns>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DatePatterns>(heap, doc, packet);
       break;
     case XFA_Element::SourceSet:
-      node = pdfium::MakeUnique<CXFA_SourceSet>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SourceSet>(heap, doc, packet);
       break;
     case XFA_Element::Amd:
-      node = pdfium::MakeUnique<CXFA_Amd>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Amd>(heap, doc, packet);
       break;
     case XFA_Element::Arc:
-      node = pdfium::MakeUnique<CXFA_Arc>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Arc>(heap, doc, packet);
       break;
     case XFA_Element::Day:
-      node = pdfium::MakeUnique<CXFA_Day>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Day>(heap, doc, packet);
       break;
     case XFA_Element::Era:
-      node = pdfium::MakeUnique<CXFA_Era>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Era>(heap, doc, packet);
       break;
     case XFA_Element::Jog:
-      node = pdfium::MakeUnique<CXFA_Jog>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Jog>(heap, doc, packet);
       break;
     case XFA_Element::Log:
-      node = pdfium::MakeUnique<CXFA_Log>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Log>(heap, doc, packet);
       break;
     case XFA_Element::Map:
-      node = pdfium::MakeUnique<CXFA_Map>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Map>(heap, doc, packet);
       break;
     case XFA_Element::Mdp:
-      node = pdfium::MakeUnique<CXFA_Mdp>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Mdp>(heap, doc, packet);
       break;
     case XFA_Element::BreakBefore:
-      node = pdfium::MakeUnique<CXFA_BreakBefore>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_BreakBefore>(heap, doc, packet);
       break;
     case XFA_Element::Oid:
-      node = pdfium::MakeUnique<CXFA_Oid>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Oid>(heap, doc, packet);
       break;
     case XFA_Element::Pcl:
-      node = pdfium::MakeUnique<CXFA_Pcl>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Pcl>(heap, doc, packet);
       break;
     case XFA_Element::Pdf:
-      node = pdfium::MakeUnique<CXFA_Pdf>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Pdf>(heap, doc, packet);
       break;
     case XFA_Element::Ref:
-      node = pdfium::MakeUnique<CXFA_Ref>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Ref>(heap, doc, packet);
       break;
     case XFA_Element::Uri:
-      node = pdfium::MakeUnique<CXFA_Uri>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Uri>(heap, doc, packet);
       break;
     case XFA_Element::Xdc:
-      node = pdfium::MakeUnique<CXFA_Xdc>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Xdc>(heap, doc, packet);
       break;
     case XFA_Element::Xdp:
-      node = pdfium::MakeUnique<CXFA_Xdp>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Xdp>(heap, doc, packet);
       break;
     case XFA_Element::Xfa:
-      node = pdfium::MakeUnique<CXFA_Xfa>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Xfa>(heap, doc, packet);
       break;
     case XFA_Element::Xsl:
-      node = pdfium::MakeUnique<CXFA_Xsl>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Xsl>(heap, doc, packet);
       break;
     case XFA_Element::Zpl:
-      node = pdfium::MakeUnique<CXFA_Zpl>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Zpl>(heap, doc, packet);
       break;
     case XFA_Element::Cache:
-      node = pdfium::MakeUnique<CXFA_Cache>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Cache>(heap, doc, packet);
       break;
     case XFA_Element::Margin:
-      node = pdfium::MakeUnique<CXFA_Margin>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Margin>(heap, doc, packet);
       break;
     case XFA_Element::KeyUsage:
-      node = pdfium::MakeUnique<CXFA_KeyUsage>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_KeyUsage>(heap, doc, packet);
       break;
     case XFA_Element::Exclude:
-      node = pdfium::MakeUnique<CXFA_Exclude>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Exclude>(heap, doc, packet);
       break;
     case XFA_Element::ChoiceList:
-      node = pdfium::MakeUnique<CXFA_ChoiceList>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ChoiceList>(heap, doc, packet);
       break;
     case XFA_Element::Level:
-      node = pdfium::MakeUnique<CXFA_Level>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Level>(heap, doc, packet);
       break;
     case XFA_Element::LabelPrinter:
-      node = pdfium::MakeUnique<CXFA_LabelPrinter>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_LabelPrinter>(heap, doc, packet);
       break;
     case XFA_Element::CalendarSymbols:
-      node = pdfium::MakeUnique<CXFA_CalendarSymbols>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_CalendarSymbols>(heap, doc, packet);
       break;
     case XFA_Element::Para:
-      node = pdfium::MakeUnique<CXFA_Para>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Para>(heap, doc, packet);
       break;
     case XFA_Element::Part:
-      node = pdfium::MakeUnique<CXFA_Part>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Part>(heap, doc, packet);
       break;
     case XFA_Element::Pdfa:
-      node = pdfium::MakeUnique<CXFA_Pdfa>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Pdfa>(heap, doc, packet);
       break;
     case XFA_Element::Filter:
-      node = pdfium::MakeUnique<CXFA_Filter>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Filter>(heap, doc, packet);
       break;
     case XFA_Element::Present:
-      node = pdfium::MakeUnique<CXFA_Present>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Present>(heap, doc, packet);
       break;
     case XFA_Element::Pagination:
-      node = pdfium::MakeUnique<CXFA_Pagination>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Pagination>(heap, doc, packet);
       break;
     case XFA_Element::Encoding:
-      node = pdfium::MakeUnique<CXFA_Encoding>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Encoding>(heap, doc, packet);
       break;
     case XFA_Element::Event:
-      node = pdfium::MakeUnique<CXFA_Event>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Event>(heap, doc, packet);
       break;
     case XFA_Element::Whitespace:
-      node = pdfium::MakeUnique<CXFA_Whitespace>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Whitespace>(heap, doc, packet);
       break;
     case XFA_Element::DefaultUi:
-      node = pdfium::MakeUnique<CXFA_DefaultUi>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DefaultUi>(heap, doc, packet);
       break;
     case XFA_Element::DataModel:
-      node = pdfium::MakeUnique<CXFA_DataModel>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DataModel>(heap, doc, packet);
       break;
     case XFA_Element::Barcode:
-      node = pdfium::MakeUnique<CXFA_Barcode>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Barcode>(heap, doc, packet);
       break;
     case XFA_Element::TimePattern:
-      node = pdfium::MakeUnique<CXFA_TimePattern>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_TimePattern>(heap, doc, packet);
       break;
     case XFA_Element::BatchOutput:
-      node = pdfium::MakeUnique<CXFA_BatchOutput>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_BatchOutput>(heap, doc, packet);
       break;
     case XFA_Element::Enforce:
-      node = pdfium::MakeUnique<CXFA_Enforce>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Enforce>(heap, doc, packet);
       break;
     case XFA_Element::CurrencySymbols:
-      node = pdfium::MakeUnique<CXFA_CurrencySymbols>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_CurrencySymbols>(heap, doc, packet);
       break;
     case XFA_Element::AddSilentPrint:
-      node = pdfium::MakeUnique<CXFA_AddSilentPrint>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_AddSilentPrint>(heap, doc, packet);
       break;
     case XFA_Element::Rename:
-      node = pdfium::MakeUnique<CXFA_Rename>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Rename>(heap, doc, packet);
       break;
     case XFA_Element::Operation:
-      node = pdfium::MakeUnique<CXFA_Operation>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Operation>(heap, doc, packet);
       break;
     case XFA_Element::Typefaces:
-      node = pdfium::MakeUnique<CXFA_Typefaces>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Typefaces>(heap, doc, packet);
       break;
     case XFA_Element::SubjectDNs:
-      node = pdfium::MakeUnique<CXFA_SubjectDNs>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SubjectDNs>(heap, doc, packet);
       break;
     case XFA_Element::Issuers:
-      node = pdfium::MakeUnique<CXFA_Issuers>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Issuers>(heap, doc, packet);
       break;
     case XFA_Element::WsdlConnection:
-      node = pdfium::MakeUnique<CXFA_WsdlConnection>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_WsdlConnection>(heap, doc, packet);
       break;
     case XFA_Element::Debug:
-      node = pdfium::MakeUnique<CXFA_Debug>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Debug>(heap, doc, packet);
       break;
     case XFA_Element::Delta:
-      node = pdfium::MakeUnique<CXFA_Delta>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Delta>(heap, doc, packet);
       break;
     case XFA_Element::EraNames:
-      node = pdfium::MakeUnique<CXFA_EraNames>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_EraNames>(heap, doc, packet);
       break;
     case XFA_Element::ModifyAnnots:
-      node = pdfium::MakeUnique<CXFA_ModifyAnnots>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ModifyAnnots>(heap, doc, packet);
       break;
     case XFA_Element::StartNode:
-      node = pdfium::MakeUnique<CXFA_StartNode>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_StartNode>(heap, doc, packet);
       break;
     case XFA_Element::Button:
-      node = pdfium::MakeUnique<CXFA_Button>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Button>(heap, doc, packet);
       break;
     case XFA_Element::Format:
-      node = pdfium::MakeUnique<CXFA_Format>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Format>(heap, doc, packet);
       break;
     case XFA_Element::Border:
-      node = pdfium::MakeUnique<CXFA_Border>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Border>(heap, doc, packet);
       break;
     case XFA_Element::Area:
-      node = pdfium::MakeUnique<CXFA_Area>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Area>(heap, doc, packet);
       break;
     case XFA_Element::Hyphenation:
-      node = pdfium::MakeUnique<CXFA_Hyphenation>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Hyphenation>(heap, doc, packet);
       break;
     case XFA_Element::Text:
-      node = pdfium::MakeUnique<CXFA_Text>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Text>(heap, doc, packet);
       break;
     case XFA_Element::Time:
-      node = pdfium::MakeUnique<CXFA_Time>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Time>(heap, doc, packet);
       break;
     case XFA_Element::Type:
-      node = pdfium::MakeUnique<CXFA_Type>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Type>(heap, doc, packet);
       break;
     case XFA_Element::Overprint:
-      node = pdfium::MakeUnique<CXFA_Overprint>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Overprint>(heap, doc, packet);
       break;
     case XFA_Element::Certificates:
-      node = pdfium::MakeUnique<CXFA_Certificates>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Certificates>(heap, doc, packet);
       break;
     case XFA_Element::EncryptionMethods:
-      node = pdfium::MakeUnique<CXFA_EncryptionMethods>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_EncryptionMethods>(heap, doc,
+                                                                 packet);
       break;
     case XFA_Element::SetProperty:
-      node = pdfium::MakeUnique<CXFA_SetProperty>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SetProperty>(heap, doc, packet);
       break;
     case XFA_Element::PrinterName:
-      node = pdfium::MakeUnique<CXFA_PrinterName>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PrinterName>(heap, doc, packet);
       break;
     case XFA_Element::StartPage:
-      node = pdfium::MakeUnique<CXFA_StartPage>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_StartPage>(heap, doc, packet);
       break;
     case XFA_Element::PageOffset:
-      node = pdfium::MakeUnique<CXFA_PageOffset>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PageOffset>(heap, doc, packet);
       break;
     case XFA_Element::DateTime:
-      node = pdfium::MakeUnique<CXFA_DateTime>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DateTime>(heap, doc, packet);
       break;
     case XFA_Element::Comb:
-      node = pdfium::MakeUnique<CXFA_Comb>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Comb>(heap, doc, packet);
       break;
     case XFA_Element::Pattern:
-      node = pdfium::MakeUnique<CXFA_Pattern>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Pattern>(heap, doc, packet);
       break;
     case XFA_Element::IfEmpty:
-      node = pdfium::MakeUnique<CXFA_IfEmpty>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_IfEmpty>(heap, doc, packet);
       break;
     case XFA_Element::SuppressBanner:
-      node = pdfium::MakeUnique<CXFA_SuppressBanner>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_SuppressBanner>(heap, doc, packet);
       break;
     case XFA_Element::OutputBin:
-      node = pdfium::MakeUnique<CXFA_OutputBin>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_OutputBin>(heap, doc, packet);
       break;
     case XFA_Element::Field:
-      node = pdfium::MakeUnique<CXFA_Field>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Field>(heap, doc, packet);
       break;
     case XFA_Element::Agent:
-      node = pdfium::MakeUnique<CXFA_Agent>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Agent>(heap, doc, packet);
       break;
     case XFA_Element::OutputXSL:
-      node = pdfium::MakeUnique<CXFA_OutputXSL>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_OutputXSL>(heap, doc, packet);
       break;
     case XFA_Element::AdjustData:
-      node = pdfium::MakeUnique<CXFA_AdjustData>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_AdjustData>(heap, doc, packet);
       break;
     case XFA_Element::AutoSave:
-      node = pdfium::MakeUnique<CXFA_AutoSave>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_AutoSave>(heap, doc, packet);
       break;
     case XFA_Element::ContentArea:
-      node = pdfium::MakeUnique<CXFA_ContentArea>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ContentArea>(heap, doc, packet);
       break;
     case XFA_Element::WsdlAddress:
-      node = pdfium::MakeUnique<CXFA_WsdlAddress>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_WsdlAddress>(heap, doc, packet);
       break;
     case XFA_Element::Solid:
-      node = pdfium::MakeUnique<CXFA_Solid>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Solid>(heap, doc, packet);
       break;
     case XFA_Element::DateTimeSymbols:
-      node = pdfium::MakeUnique<CXFA_DateTimeSymbols>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_DateTimeSymbols>(heap, doc, packet);
       break;
     case XFA_Element::EncryptionLevel:
-      node = pdfium::MakeUnique<CXFA_EncryptionLevel>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_EncryptionLevel>(heap, doc, packet);
       break;
     case XFA_Element::Edge:
-      node = pdfium::MakeUnique<CXFA_Edge>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Edge>(heap, doc, packet);
       break;
     case XFA_Element::Stipple:
-      node = pdfium::MakeUnique<CXFA_Stipple>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Stipple>(heap, doc, packet);
       break;
     case XFA_Element::Attributes:
-      node = pdfium::MakeUnique<CXFA_Attributes>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Attributes>(heap, doc, packet);
       break;
     case XFA_Element::VersionControl:
-      node = pdfium::MakeUnique<CXFA_VersionControl>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_VersionControl>(heap, doc, packet);
       break;
     case XFA_Element::Meridiem:
-      node = pdfium::MakeUnique<CXFA_Meridiem>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Meridiem>(heap, doc, packet);
       break;
     case XFA_Element::ExclGroup:
-      node = pdfium::MakeUnique<CXFA_ExclGroup>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ExclGroup>(heap, doc, packet);
       break;
     case XFA_Element::ToolTip:
-      node = pdfium::MakeUnique<CXFA_ToolTip>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ToolTip>(heap, doc, packet);
       break;
     case XFA_Element::Compress:
-      node = pdfium::MakeUnique<CXFA_Compress>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Compress>(heap, doc, packet);
       break;
     case XFA_Element::Reason:
-      node = pdfium::MakeUnique<CXFA_Reason>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Reason>(heap, doc, packet);
       break;
     case XFA_Element::Execute:
-      node = pdfium::MakeUnique<CXFA_Execute>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Execute>(heap, doc, packet);
       break;
     case XFA_Element::ContentCopy:
-      node = pdfium::MakeUnique<CXFA_ContentCopy>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ContentCopy>(heap, doc, packet);
       break;
     case XFA_Element::DateTimeEdit:
-      node = pdfium::MakeUnique<CXFA_DateTimeEdit>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DateTimeEdit>(heap, doc, packet);
       break;
     case XFA_Element::Config:
-      node = pdfium::MakeUnique<CXFA_Config>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Config>(heap, doc, packet);
       break;
     case XFA_Element::Image:
-      node = pdfium::MakeUnique<CXFA_Image>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Image>(heap, doc, packet);
       break;
     case XFA_Element::SharpxHTML:
-      node = pdfium::MakeUnique<CXFA_SharpxHTML>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SharpxHTML>(heap, doc, packet);
       break;
     case XFA_Element::NumberOfCopies:
-      node = pdfium::MakeUnique<CXFA_NumberOfCopies>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_NumberOfCopies>(heap, doc, packet);
       break;
     case XFA_Element::BehaviorOverride:
-      node = pdfium::MakeUnique<CXFA_BehaviorOverride>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_BehaviorOverride>(heap, doc, packet);
       break;
     case XFA_Element::TimeStamp:
-      node = pdfium::MakeUnique<CXFA_TimeStamp>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_TimeStamp>(heap, doc, packet);
       break;
     case XFA_Element::Month:
-      node = pdfium::MakeUnique<CXFA_Month>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Month>(heap, doc, packet);
       break;
     case XFA_Element::ViewerPreferences:
-      node = pdfium::MakeUnique<CXFA_ViewerPreferences>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ViewerPreferences>(heap, doc,
+                                                                 packet);
       break;
     case XFA_Element::ScriptModel:
-      node = pdfium::MakeUnique<CXFA_ScriptModel>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ScriptModel>(heap, doc, packet);
       break;
     case XFA_Element::Decimal:
-      node = pdfium::MakeUnique<CXFA_Decimal>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Decimal>(heap, doc, packet);
       break;
     case XFA_Element::Subform:
-      node = pdfium::MakeUnique<CXFA_Subform>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Subform>(heap, doc, packet);
       break;
     case XFA_Element::Select:
-      node = pdfium::MakeUnique<CXFA_Select>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Select>(heap, doc, packet);
       break;
     case XFA_Element::Window:
-      node = pdfium::MakeUnique<CXFA_Window>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Window>(heap, doc, packet);
       break;
     case XFA_Element::LocaleSet:
-      node = pdfium::MakeUnique<CXFA_LocaleSet>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_LocaleSet>(heap, doc, packet);
       break;
     case XFA_Element::Handler:
-      node = pdfium::MakeUnique<CXFA_Handler>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Handler>(heap, doc, packet);
       break;
     case XFA_Element::Presence:
-      node = pdfium::MakeUnique<CXFA_Presence>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Presence>(heap, doc, packet);
       break;
     case XFA_Element::Record:
-      node = pdfium::MakeUnique<CXFA_Record>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Record>(heap, doc, packet);
       break;
     case XFA_Element::Embed:
-      node = pdfium::MakeUnique<CXFA_Embed>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Embed>(heap, doc, packet);
       break;
     case XFA_Element::Version:
-      node = pdfium::MakeUnique<CXFA_Version>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Version>(heap, doc, packet);
       break;
     case XFA_Element::Command:
-      node = pdfium::MakeUnique<CXFA_Command>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Command>(heap, doc, packet);
       break;
     case XFA_Element::Copies:
-      node = pdfium::MakeUnique<CXFA_Copies>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Copies>(heap, doc, packet);
       break;
     case XFA_Element::Staple:
-      node = pdfium::MakeUnique<CXFA_Staple>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Staple>(heap, doc, packet);
       break;
     case XFA_Element::SubmitFormat:
-      node = pdfium::MakeUnique<CXFA_SubmitFormat>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SubmitFormat>(heap, doc, packet);
       break;
     case XFA_Element::Boolean:
-      node = pdfium::MakeUnique<CXFA_Boolean>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Boolean>(heap, doc, packet);
       break;
     case XFA_Element::Message:
-      node = pdfium::MakeUnique<CXFA_Message>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Message>(heap, doc, packet);
       break;
     case XFA_Element::Output:
-      node = pdfium::MakeUnique<CXFA_Output>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Output>(heap, doc, packet);
       break;
     case XFA_Element::PsMap:
-      node = pdfium::MakeUnique<CXFA_PsMap>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PsMap>(heap, doc, packet);
       break;
     case XFA_Element::ExcludeNS:
-      node = pdfium::MakeUnique<CXFA_ExcludeNS>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ExcludeNS>(heap, doc, packet);
       break;
     case XFA_Element::Assist:
-      node = pdfium::MakeUnique<CXFA_Assist>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Assist>(heap, doc, packet);
       break;
     case XFA_Element::Picture:
-      node = pdfium::MakeUnique<CXFA_Picture>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Picture>(heap, doc, packet);
       break;
     case XFA_Element::Traversal:
-      node = pdfium::MakeUnique<CXFA_Traversal>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Traversal>(heap, doc, packet);
       break;
     case XFA_Element::SilentPrint:
-      node = pdfium::MakeUnique<CXFA_SilentPrint>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SilentPrint>(heap, doc, packet);
       break;
     case XFA_Element::WebClient:
-      node = pdfium::MakeUnique<CXFA_WebClient>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_WebClient>(heap, doc, packet);
       break;
     case XFA_Element::Producer:
-      node = pdfium::MakeUnique<CXFA_Producer>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Producer>(heap, doc, packet);
       break;
     case XFA_Element::Corner:
-      node = pdfium::MakeUnique<CXFA_Corner>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Corner>(heap, doc, packet);
       break;
     case XFA_Element::MsgId:
-      node = pdfium::MakeUnique<CXFA_MsgId>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_MsgId>(heap, doc, packet);
       break;
     case XFA_Element::Color:
-      node = pdfium::MakeUnique<CXFA_Color>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Color>(heap, doc, packet);
       break;
     case XFA_Element::Keep:
-      node = pdfium::MakeUnique<CXFA_Keep>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Keep>(heap, doc, packet);
       break;
     case XFA_Element::Query:
-      node = pdfium::MakeUnique<CXFA_Query>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Query>(heap, doc, packet);
       break;
     case XFA_Element::Insert:
-      node = pdfium::MakeUnique<CXFA_Insert>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Insert>(heap, doc, packet);
       break;
     case XFA_Element::ImageEdit:
-      node = pdfium::MakeUnique<CXFA_ImageEdit>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ImageEdit>(heap, doc, packet);
       break;
     case XFA_Element::Validate:
-      node = pdfium::MakeUnique<CXFA_Validate>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Validate>(heap, doc, packet);
       break;
     case XFA_Element::DigestMethods:
-      node = pdfium::MakeUnique<CXFA_DigestMethods>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DigestMethods>(heap, doc, packet);
       break;
     case XFA_Element::NumberPatterns:
-      node = pdfium::MakeUnique<CXFA_NumberPatterns>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_NumberPatterns>(heap, doc, packet);
       break;
     case XFA_Element::PageSet:
-      node = pdfium::MakeUnique<CXFA_PageSet>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PageSet>(heap, doc, packet);
       break;
     case XFA_Element::Integer:
-      node = pdfium::MakeUnique<CXFA_Integer>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Integer>(heap, doc, packet);
       break;
     case XFA_Element::SoapAddress:
-      node = pdfium::MakeUnique<CXFA_SoapAddress>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SoapAddress>(heap, doc, packet);
       break;
     case XFA_Element::Equate:
-      node = pdfium::MakeUnique<CXFA_Equate>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Equate>(heap, doc, packet);
       break;
     case XFA_Element::FormFieldFilling:
-      node = pdfium::MakeUnique<CXFA_FormFieldFilling>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_FormFieldFilling>(heap, doc, packet);
       break;
     case XFA_Element::PageRange:
-      node = pdfium::MakeUnique<CXFA_PageRange>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PageRange>(heap, doc, packet);
       break;
     case XFA_Element::Update:
-      node = pdfium::MakeUnique<CXFA_Update>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Update>(heap, doc, packet);
       break;
     case XFA_Element::ConnectString:
-      node = pdfium::MakeUnique<CXFA_ConnectString>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ConnectString>(heap, doc, packet);
       break;
     case XFA_Element::Mode:
-      node = pdfium::MakeUnique<CXFA_Mode>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Mode>(heap, doc, packet);
       break;
     case XFA_Element::Layout:
-      node = pdfium::MakeUnique<CXFA_Layout>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Layout>(heap, doc, packet);
       break;
     case XFA_Element::Sharpxml:
-      node = pdfium::MakeUnique<CXFA_Sharpxml>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Sharpxml>(heap, doc, packet);
       break;
     case XFA_Element::XsdConnection:
-      node = pdfium::MakeUnique<CXFA_XsdConnection>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_XsdConnection>(heap, doc, packet);
       break;
     case XFA_Element::Traverse:
-      node = pdfium::MakeUnique<CXFA_Traverse>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Traverse>(heap, doc, packet);
       break;
     case XFA_Element::Encodings:
-      node = pdfium::MakeUnique<CXFA_Encodings>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Encodings>(heap, doc, packet);
       break;
     case XFA_Element::Template:
-      node = pdfium::MakeUnique<CXFA_Template>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Template>(heap, doc, packet);
       break;
     case XFA_Element::Acrobat:
-      node = pdfium::MakeUnique<CXFA_Acrobat>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Acrobat>(heap, doc, packet);
       break;
     case XFA_Element::ValidationMessaging:
-      node = pdfium::MakeUnique<CXFA_ValidationMessaging>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ValidationMessaging>(heap, doc,
+                                                                   packet);
       break;
     case XFA_Element::Signing:
-      node = pdfium::MakeUnique<CXFA_Signing>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Signing>(heap, doc, packet);
       break;
     case XFA_Element::Script:
-      node = pdfium::MakeUnique<CXFA_Script>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Script>(heap, doc, packet);
       break;
     case XFA_Element::AddViewerPreferences:
-      node = pdfium::MakeUnique<CXFA_AddViewerPreferences>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_AddViewerPreferences>(heap, doc,
+                                                                    packet);
       break;
     case XFA_Element::AlwaysEmbed:
-      node = pdfium::MakeUnique<CXFA_AlwaysEmbed>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_AlwaysEmbed>(heap, doc, packet);
       break;
     case XFA_Element::PasswordEdit:
-      node = pdfium::MakeUnique<CXFA_PasswordEdit>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PasswordEdit>(heap, doc, packet);
       break;
     case XFA_Element::NumericEdit:
-      node = pdfium::MakeUnique<CXFA_NumericEdit>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_NumericEdit>(heap, doc, packet);
       break;
     case XFA_Element::EncryptionMethod:
-      node = pdfium::MakeUnique<CXFA_EncryptionMethod>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_EncryptionMethod>(heap, doc, packet);
       break;
     case XFA_Element::Change:
-      node = pdfium::MakeUnique<CXFA_Change>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Change>(heap, doc, packet);
       break;
     case XFA_Element::PageArea:
-      node = pdfium::MakeUnique<CXFA_PageArea>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PageArea>(heap, doc, packet);
       break;
     case XFA_Element::SubmitUrl:
-      node = pdfium::MakeUnique<CXFA_SubmitUrl>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SubmitUrl>(heap, doc, packet);
       break;
     case XFA_Element::Oids:
-      node = pdfium::MakeUnique<CXFA_Oids>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Oids>(heap, doc, packet);
       break;
     case XFA_Element::Signature:
-      node = pdfium::MakeUnique<CXFA_Signature>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Signature>(heap, doc, packet);
       break;
     case XFA_Element::ADBE_JSConsole:
-      node = pdfium::MakeUnique<CXFA_ADBE_JSConsole>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_ADBE_JSConsole>(heap, doc, packet);
       break;
     case XFA_Element::Caption:
-      node = pdfium::MakeUnique<CXFA_Caption>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Caption>(heap, doc, packet);
       break;
     case XFA_Element::Relevant:
-      node = pdfium::MakeUnique<CXFA_Relevant>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Relevant>(heap, doc, packet);
       break;
     case XFA_Element::FlipLabel:
-      node = pdfium::MakeUnique<CXFA_FlipLabel>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_FlipLabel>(heap, doc, packet);
       break;
     case XFA_Element::ExData:
-      node = pdfium::MakeUnique<CXFA_ExData>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ExData>(heap, doc, packet);
       break;
     case XFA_Element::DayNames:
-      node = pdfium::MakeUnique<CXFA_DayNames>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DayNames>(heap, doc, packet);
       break;
     case XFA_Element::SoapAction:
-      node = pdfium::MakeUnique<CXFA_SoapAction>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SoapAction>(heap, doc, packet);
       break;
     case XFA_Element::DefaultTypeface:
-      node = pdfium::MakeUnique<CXFA_DefaultTypeface>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_DefaultTypeface>(heap, doc, packet);
       break;
     case XFA_Element::Manifest:
-      node = pdfium::MakeUnique<CXFA_Manifest>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Manifest>(heap, doc, packet);
       break;
     case XFA_Element::Overflow:
-      node = pdfium::MakeUnique<CXFA_Overflow>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Overflow>(heap, doc, packet);
       break;
     case XFA_Element::Linear:
-      node = pdfium::MakeUnique<CXFA_Linear>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Linear>(heap, doc, packet);
       break;
     case XFA_Element::CurrencySymbol:
-      node = pdfium::MakeUnique<CXFA_CurrencySymbol>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_CurrencySymbol>(heap, doc, packet);
       break;
     case XFA_Element::Delete:
-      node = pdfium::MakeUnique<CXFA_Delete>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Delete>(heap, doc, packet);
       break;
     case XFA_Element::DigestMethod:
-      node = pdfium::MakeUnique<CXFA_DigestMethod>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DigestMethod>(heap, doc, packet);
       break;
     case XFA_Element::InstanceManager:
-      node = pdfium::MakeUnique<CXFA_InstanceManager>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_InstanceManager>(heap, doc, packet);
       break;
     case XFA_Element::EquateRange:
-      node = pdfium::MakeUnique<CXFA_EquateRange>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_EquateRange>(heap, doc, packet);
       break;
     case XFA_Element::Medium:
-      node = pdfium::MakeUnique<CXFA_Medium>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Medium>(heap, doc, packet);
       break;
     case XFA_Element::TextEdit:
-      node = pdfium::MakeUnique<CXFA_TextEdit>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_TextEdit>(heap, doc, packet);
       break;
     case XFA_Element::TemplateCache:
-      node = pdfium::MakeUnique<CXFA_TemplateCache>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_TemplateCache>(heap, doc, packet);
       break;
     case XFA_Element::CompressObjectStream:
-      node = pdfium::MakeUnique<CXFA_CompressObjectStream>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_CompressObjectStream>(heap, doc,
+                                                                    packet);
       break;
     case XFA_Element::DataValue:
-      node = pdfium::MakeUnique<CXFA_DataValue>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DataValue>(heap, doc, packet);
       break;
     case XFA_Element::AccessibleContent:
-      node = pdfium::MakeUnique<CXFA_AccessibleContent>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_AccessibleContent>(heap, doc,
+                                                                 packet);
       break;
     case XFA_Element::IncludeXDPContent:
-      node = pdfium::MakeUnique<CXFA_IncludeXDPContent>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_IncludeXDPContent>(heap, doc,
+                                                                 packet);
       break;
     case XFA_Element::XmlConnection:
-      node = pdfium::MakeUnique<CXFA_XmlConnection>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_XmlConnection>(heap, doc, packet);
       break;
     case XFA_Element::ValidateApprovalSignatures:
-      node = pdfium::MakeUnique<CXFA_ValidateApprovalSignatures>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ValidateApprovalSignatures>(
+          heap, doc, packet);
       break;
     case XFA_Element::SignData:
-      node = pdfium::MakeUnique<CXFA_SignData>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SignData>(heap, doc, packet);
       break;
     case XFA_Element::Packets:
-      node = pdfium::MakeUnique<CXFA_Packets>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Packets>(heap, doc, packet);
       break;
     case XFA_Element::DatePattern:
-      node = pdfium::MakeUnique<CXFA_DatePattern>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DatePattern>(heap, doc, packet);
       break;
     case XFA_Element::DuplexOption:
-      node = pdfium::MakeUnique<CXFA_DuplexOption>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DuplexOption>(heap, doc, packet);
       break;
     case XFA_Element::Base:
-      node = pdfium::MakeUnique<CXFA_Base>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Base>(heap, doc, packet);
       break;
     case XFA_Element::Bind:
-      node = pdfium::MakeUnique<CXFA_Bind>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Bind>(heap, doc, packet);
       break;
     case XFA_Element::Compression:
-      node = pdfium::MakeUnique<CXFA_Compression>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Compression>(heap, doc, packet);
       break;
     case XFA_Element::User:
-      node = pdfium::MakeUnique<CXFA_User>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_User>(heap, doc, packet);
       break;
     case XFA_Element::Rectangle:
-      node = pdfium::MakeUnique<CXFA_Rectangle>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Rectangle>(heap, doc, packet);
       break;
     case XFA_Element::EffectiveOutputPolicy:
-      node = pdfium::MakeUnique<CXFA_EffectiveOutputPolicy>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_EffectiveOutputPolicy>(heap, doc,
+                                                                     packet);
       break;
     case XFA_Element::ADBE_JSDebugger:
-      node = pdfium::MakeUnique<CXFA_ADBE_JSDebugger>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_ADBE_JSDebugger>(heap, doc, packet);
       break;
     case XFA_Element::Acrobat7:
-      node = pdfium::MakeUnique<CXFA_Acrobat7>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Acrobat7>(heap, doc, packet);
       break;
     case XFA_Element::Interactive:
-      node = pdfium::MakeUnique<CXFA_Interactive>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Interactive>(heap, doc, packet);
       break;
     case XFA_Element::Locale:
-      node = pdfium::MakeUnique<CXFA_Locale>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Locale>(heap, doc, packet);
       break;
     case XFA_Element::CurrentPage:
-      node = pdfium::MakeUnique<CXFA_CurrentPage>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_CurrentPage>(heap, doc, packet);
       break;
     case XFA_Element::Data:
-      node = pdfium::MakeUnique<CXFA_Data>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Data>(heap, doc, packet);
       break;
     case XFA_Element::Date:
-      node = pdfium::MakeUnique<CXFA_Date>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Date>(heap, doc, packet);
       break;
     case XFA_Element::Desc:
-      node = pdfium::MakeUnique<CXFA_Desc>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Desc>(heap, doc, packet);
       break;
     case XFA_Element::Encrypt:
-      node = pdfium::MakeUnique<CXFA_Encrypt>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Encrypt>(heap, doc, packet);
       break;
     case XFA_Element::Draw:
-      node = pdfium::MakeUnique<CXFA_Draw>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Draw>(heap, doc, packet);
       break;
     case XFA_Element::Encryption:
-      node = pdfium::MakeUnique<CXFA_Encryption>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Encryption>(heap, doc, packet);
       break;
     case XFA_Element::MeridiemNames:
-      node = pdfium::MakeUnique<CXFA_MeridiemNames>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_MeridiemNames>(heap, doc, packet);
       break;
     case XFA_Element::Messaging:
-      node = pdfium::MakeUnique<CXFA_Messaging>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Messaging>(heap, doc, packet);
       break;
     case XFA_Element::Speak:
-      node = pdfium::MakeUnique<CXFA_Speak>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Speak>(heap, doc, packet);
       break;
     case XFA_Element::DataGroup:
-      node = pdfium::MakeUnique<CXFA_DataGroup>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DataGroup>(heap, doc, packet);
       break;
     case XFA_Element::Common:
-      node = pdfium::MakeUnique<CXFA_Common>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Common>(heap, doc, packet);
       break;
     case XFA_Element::Sharptext:
-      node = pdfium::MakeUnique<CXFA_Sharptext>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Sharptext>(heap, doc, packet);
       break;
     case XFA_Element::PaginationOverride:
-      node = pdfium::MakeUnique<CXFA_PaginationOverride>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PaginationOverride>(heap, doc,
+                                                                  packet);
       break;
     case XFA_Element::Reasons:
-      node = pdfium::MakeUnique<CXFA_Reasons>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Reasons>(heap, doc, packet);
       break;
     case XFA_Element::SignatureProperties:
-      node = pdfium::MakeUnique<CXFA_SignatureProperties>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SignatureProperties>(heap, doc,
+                                                                   packet);
       break;
     case XFA_Element::Threshold:
-      node = pdfium::MakeUnique<CXFA_Threshold>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Threshold>(heap, doc, packet);
       break;
     case XFA_Element::AppearanceFilter:
-      node = pdfium::MakeUnique<CXFA_AppearanceFilter>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_AppearanceFilter>(heap, doc, packet);
       break;
     case XFA_Element::Fill:
-      node = pdfium::MakeUnique<CXFA_Fill>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Fill>(heap, doc, packet);
       break;
     case XFA_Element::Font:
-      node = pdfium::MakeUnique<CXFA_Font>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Font>(heap, doc, packet);
       break;
     case XFA_Element::Form:
-      node = pdfium::MakeUnique<CXFA_Form>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Form>(heap, doc, packet);
       break;
     case XFA_Element::MediumInfo:
-      node = pdfium::MakeUnique<CXFA_MediumInfo>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_MediumInfo>(heap, doc, packet);
       break;
     case XFA_Element::Certificate:
-      node = pdfium::MakeUnique<CXFA_Certificate>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Certificate>(heap, doc, packet);
       break;
     case XFA_Element::Password:
-      node = pdfium::MakeUnique<CXFA_Password>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Password>(heap, doc, packet);
       break;
     case XFA_Element::RunScripts:
-      node = pdfium::MakeUnique<CXFA_RunScripts>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_RunScripts>(heap, doc, packet);
       break;
     case XFA_Element::Trace:
-      node = pdfium::MakeUnique<CXFA_Trace>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Trace>(heap, doc, packet);
       break;
     case XFA_Element::Float:
-      node = pdfium::MakeUnique<CXFA_Float>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Float>(heap, doc, packet);
       break;
     case XFA_Element::RenderPolicy:
-      node = pdfium::MakeUnique<CXFA_RenderPolicy>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_RenderPolicy>(heap, doc, packet);
       break;
     case XFA_Element::Destination:
-      node = pdfium::MakeUnique<CXFA_Destination>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Destination>(heap, doc, packet);
       break;
     case XFA_Element::Value:
-      node = pdfium::MakeUnique<CXFA_Value>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Value>(heap, doc, packet);
       break;
     case XFA_Element::Bookend:
-      node = pdfium::MakeUnique<CXFA_Bookend>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Bookend>(heap, doc, packet);
       break;
     case XFA_Element::ExObject:
-      node = pdfium::MakeUnique<CXFA_ExObject>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ExObject>(heap, doc, packet);
       break;
     case XFA_Element::OpenAction:
-      node = pdfium::MakeUnique<CXFA_OpenAction>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_OpenAction>(heap, doc, packet);
       break;
     case XFA_Element::NeverEmbed:
-      node = pdfium::MakeUnique<CXFA_NeverEmbed>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_NeverEmbed>(heap, doc, packet);
       break;
     case XFA_Element::BindItems:
-      node = pdfium::MakeUnique<CXFA_BindItems>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_BindItems>(heap, doc, packet);
       break;
     case XFA_Element::Calculate:
-      node = pdfium::MakeUnique<CXFA_Calculate>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Calculate>(heap, doc, packet);
       break;
     case XFA_Element::Print:
-      node = pdfium::MakeUnique<CXFA_Print>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Print>(heap, doc, packet);
       break;
     case XFA_Element::Extras:
-      node = pdfium::MakeUnique<CXFA_Extras>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Extras>(heap, doc, packet);
       break;
     case XFA_Element::Proto:
-      node = pdfium::MakeUnique<CXFA_Proto>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Proto>(heap, doc, packet);
       break;
     case XFA_Element::DSigData:
-      node = pdfium::MakeUnique<CXFA_DSigData>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_DSigData>(heap, doc, packet);
       break;
     case XFA_Element::Creator:
-      node = pdfium::MakeUnique<CXFA_Creator>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Creator>(heap, doc, packet);
       break;
     case XFA_Element::Connect:
-      node = pdfium::MakeUnique<CXFA_Connect>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Connect>(heap, doc, packet);
       break;
     case XFA_Element::Permissions:
-      node = pdfium::MakeUnique<CXFA_Permissions>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Permissions>(heap, doc, packet);
       break;
     case XFA_Element::ConnectionSet:
-      node = pdfium::MakeUnique<CXFA_ConnectionSet>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_ConnectionSet>(heap, doc, packet);
       break;
     case XFA_Element::Submit:
-      node = pdfium::MakeUnique<CXFA_Submit>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Submit>(heap, doc, packet);
       break;
     case XFA_Element::Range:
-      node = pdfium::MakeUnique<CXFA_Range>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Range>(heap, doc, packet);
       break;
     case XFA_Element::Linearized:
-      node = pdfium::MakeUnique<CXFA_Linearized>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Linearized>(heap, doc, packet);
       break;
     case XFA_Element::Packet:
-      node = pdfium::MakeUnique<CXFA_Packet>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Packet>(heap, doc, packet);
       break;
     case XFA_Element::RootElement:
-      node = pdfium::MakeUnique<CXFA_RootElement>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_RootElement>(heap, doc, packet);
       break;
     case XFA_Element::PlaintextMetadata:
-      node = pdfium::MakeUnique<CXFA_PlaintextMetadata>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PlaintextMetadata>(heap, doc,
+                                                                 packet);
       break;
     case XFA_Element::NumberSymbols:
-      node = pdfium::MakeUnique<CXFA_NumberSymbols>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_NumberSymbols>(heap, doc, packet);
       break;
     case XFA_Element::PrintHighQuality:
-      node = pdfium::MakeUnique<CXFA_PrintHighQuality>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_PrintHighQuality>(heap, doc, packet);
       break;
     case XFA_Element::Driver:
-      node = pdfium::MakeUnique<CXFA_Driver>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Driver>(heap, doc, packet);
       break;
     case XFA_Element::IncrementalLoad:
-      node = pdfium::MakeUnique<CXFA_IncrementalLoad>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_IncrementalLoad>(heap, doc, packet);
       break;
     case XFA_Element::SubjectDN:
-      node = pdfium::MakeUnique<CXFA_SubjectDN>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_SubjectDN>(heap, doc, packet);
       break;
     case XFA_Element::CompressLogicalStructure:
-      node = pdfium::MakeUnique<CXFA_CompressLogicalStructure>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_CompressLogicalStructure>(
+          heap, doc, packet);
       break;
     case XFA_Element::IncrementalMerge:
-      node = pdfium::MakeUnique<CXFA_IncrementalMerge>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_IncrementalMerge>(heap, doc, packet);
       break;
     case XFA_Element::Radial:
-      node = pdfium::MakeUnique<CXFA_Radial>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Radial>(heap, doc, packet);
       break;
     case XFA_Element::Variables:
-      node = pdfium::MakeUnique<CXFA_Variables>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Variables>(heap, doc, packet);
       break;
     case XFA_Element::TimePatterns:
-      node = pdfium::MakeUnique<CXFA_TimePatterns>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_TimePatterns>(heap, doc, packet);
       break;
     case XFA_Element::EffectiveInputPolicy:
-      node = pdfium::MakeUnique<CXFA_EffectiveInputPolicy>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_EffectiveInputPolicy>(heap, doc,
+                                                                    packet);
       break;
     case XFA_Element::NameAttr:
-      node = pdfium::MakeUnique<CXFA_NameAttr>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_NameAttr>(heap, doc, packet);
       break;
     case XFA_Element::Conformance:
-      node = pdfium::MakeUnique<CXFA_Conformance>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Conformance>(heap, doc, packet);
       break;
     case XFA_Element::Transform:
-      node = pdfium::MakeUnique<CXFA_Transform>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Transform>(heap, doc, packet);
       break;
     case XFA_Element::LockDocument:
-      node = pdfium::MakeUnique<CXFA_LockDocument>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_LockDocument>(heap, doc, packet);
       break;
     case XFA_Element::BreakAfter:
-      node = pdfium::MakeUnique<CXFA_BreakAfter>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_BreakAfter>(heap, doc, packet);
       break;
     case XFA_Element::Line:
-      node = pdfium::MakeUnique<CXFA_Line>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Line>(heap, doc, packet);
       break;
     case XFA_Element::Source:
-      node = pdfium::MakeUnique<CXFA_Source>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Source>(heap, doc, packet);
       break;
     case XFA_Element::Occur:
-      node = pdfium::MakeUnique<CXFA_Occur>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Occur>(heap, doc, packet);
       break;
     case XFA_Element::PickTrayByPDFSize:
-      node = pdfium::MakeUnique<CXFA_PickTrayByPDFSize>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_PickTrayByPDFSize>(heap, doc,
+                                                                 packet);
       break;
     case XFA_Element::MonthNames:
-      node = pdfium::MakeUnique<CXFA_MonthNames>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_MonthNames>(heap, doc, packet);
       break;
     case XFA_Element::Severity:
-      node = pdfium::MakeUnique<CXFA_Severity>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Severity>(heap, doc, packet);
       break;
     case XFA_Element::GroupParent:
-      node = pdfium::MakeUnique<CXFA_GroupParent>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_GroupParent>(heap, doc, packet);
       break;
     case XFA_Element::DocumentAssembly:
-      node = pdfium::MakeUnique<CXFA_DocumentAssembly>(doc, packet);
+      node =
+          cppgc::MakeGarbageCollected<CXFA_DocumentAssembly>(heap, doc, packet);
       break;
     case XFA_Element::NumberSymbol:
-      node = pdfium::MakeUnique<CXFA_NumberSymbol>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_NumberSymbol>(heap, doc, packet);
       break;
     case XFA_Element::Tagged:
-      node = pdfium::MakeUnique<CXFA_Tagged>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Tagged>(heap, doc, packet);
       break;
     case XFA_Element::Items:
-      node = pdfium::MakeUnique<CXFA_Items>(doc, packet);
+      node = cppgc::MakeGarbageCollected<CXFA_Items>(heap, doc, packet);
       break;
     default:
       NOTREACHED();

@@ -12,6 +12,7 @@
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_arraynodelist.h"
 #include "xfa/fxfa/parser/cxfa_attachnodelist.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
@@ -136,7 +137,8 @@ void CJX_Tree::nodes(CFXJSE_Value* pValue,
 
   CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
   CXFA_AttachNodeList* pNodeList =
-      new CXFA_AttachNodeList(GetDocument(), ToNode(GetXFAObject()));
+      cppgc::MakeGarbageCollected<CXFA_AttachNodeList>(GetHeap(), GetDocument(),
+                                                       ToNode(GetXFAObject()));
   pValue->SetHostObject(pNodeList, pScriptContext->GetJseNormalClass());
 }
 
@@ -207,7 +209,8 @@ void CJX_Tree::ResolveNodeList(CFXJSE_Value* pValue,
   CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
   pScriptContext->ResolveObjects(refNode, wsExpression.AsStringView(),
                                  &resolveNodeRS, dwFlag, nullptr);
-  CXFA_ArrayNodeList* pNodeList = new CXFA_ArrayNodeList(GetDocument());
+  CXFA_ArrayNodeList* pNodeList =
+      cppgc::MakeGarbageCollected<CXFA_ArrayNodeList>(GetHeap(), GetDocument());
   if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
     for (auto& pObject : resolveNodeRS.objects) {
       if (pObject->IsNode())
