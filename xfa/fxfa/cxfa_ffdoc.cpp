@@ -51,7 +51,7 @@ FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI(const RetainPtr<CFX_DIBBase>& pDib,
 FX_IMAGEDIB_AND_DPI::~FX_IMAGEDIB_AND_DPI() = default;
 
 // static
-std::unique_ptr<CXFA_FFDoc> CXFA_FFDoc::CreateAndOpen(
+CXFA_FFDoc* CXFA_FFDoc::CreateAndOpen(
     CXFA_FFApp* pApp,
     IXFA_DocEnvironment* pDocEnvironment,
     CPDF_Document* pPDFDoc,
@@ -60,9 +60,9 @@ std::unique_ptr<CXFA_FFDoc> CXFA_FFDoc::CreateAndOpen(
   ASSERT(pDocEnvironment);
   ASSERT(pPDFDoc);
 
-  // Use WrapUnique() to keep constructor private.
-  auto result =
-      pdfium::WrapUnique(new CXFA_FFDoc(pApp, pDocEnvironment, pPDFDoc));
+  // TODO(mlippautz): Make ctor private again.
+  auto* result = cppgc::MakeGarbageCollected<CXFA_FFDoc>(
+      GetHeap(), pApp, pDocEnvironment, pPDFDoc);
   if (!result->OpenDoc(stream))
     return nullptr;
 
@@ -94,6 +94,10 @@ CXFA_FFDoc::~CXFA_FFDoc() {
   m_pPDFFontMgr.reset();
   m_HashToDibDpiMap.clear();
   m_pApp->ClearEventTargets();
+}
+
+void CXFA_FFDoc::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pApp);
 }
 
 bool CXFA_FFDoc::ParseDoc(const RetainPtr<IFX_SeekableStream>& stream) {
