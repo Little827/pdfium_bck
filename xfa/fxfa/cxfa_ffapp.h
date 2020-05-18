@@ -13,13 +13,15 @@
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fxfa/cxfa_fontmgr.h"
 #include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/heap.h"
 
 class CFGAS_FontMgr;
 class CFWL_WidgetMgr;
 class CXFA_FWLAdapterWidgetMgr;
 class CXFA_FWLTheme;
 
-class CXFA_FFApp : public CFWL_App::AdapterIface {
+class CXFA_FFApp : public cppgc::GarbageCollected<CXFA_FFApp>,
+                   public CFWL_App::AdapterIface {
  public:
   static void SkipFontLoadForTesting(bool skip);
 
@@ -39,6 +41,8 @@ class CXFA_FFApp : public CFWL_App::AdapterIface {
   CXFA_FontMgr* GetXFAFontMgr() { return &m_pFontMgr; }
 
   void ClearEventTargets();
+
+  virtual void Trace(cppgc::Visitor*) const {}
 
  private:
   UnownedPtr<IXFA_AppProvider> const m_pProvider;

@@ -19,6 +19,7 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
+#include "xfa/fxfa/heap.h"
 
 class CJS_Runtime;
 class CXFA_FFDocHandler;
@@ -34,7 +35,8 @@ enum LoadStatus {
 };
 
 class CPDFXFA_Context final : public CPDF_Document::Extension,
-                              public IXFA_AppProvider {
+                              public IXFA_AppProvider,
+                              public ScopedHeap {
  public:
   explicit CPDFXFA_Context(CPDF_Document* pPDFDoc);
   ~CPDFXFA_Context() override;
@@ -118,7 +120,8 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
   std::unique_ptr<CXFA_FFDoc> m_pXFADoc;
   ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
   UnownedPtr<CXFA_FFDocView> m_pXFADocView;
-  std::unique_ptr<CXFA_FFApp> const m_pXFAApp;
+  cppgc::Persistent<CXFA_FFApp> m_pXFAApp;
+
   std::unique_ptr<CJS_Runtime> m_pRuntime;
   std::vector<RetainPtr<CPDFXFA_Page>> m_XFAPageList;
   LoadStatus m_nLoadStatus = FXFA_LOADSTATUS_PRELOAD;
