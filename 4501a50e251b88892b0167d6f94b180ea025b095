@@ -16,6 +16,24 @@
       "revId": "4501a50e251b88892b0167d6f94b180ea025b095",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a0bfbc9_6efb8774",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-05-18T17:47:18Z",
+      "side": 1,
+      "message": "And I always click on these as the first part of any review to make sure they line up.  And they always do.  Except for when I forget to click on them.",
+      "parentUuid": "a563ace3_b8f3b0bd",
+      "revId": "4501a50e251b88892b0167d6f94b180ea025b095",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
