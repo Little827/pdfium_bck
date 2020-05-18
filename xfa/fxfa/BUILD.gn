@@ -93,6 +93,8 @@ source_set("fxfa") {
     "cxfa_texttabstopscontext.h",
     "fxfa.h",
     "fxfa_basic.h",
+    "heap.cpp",
+    "heap.h",
   ]
   deps = [
     "../../core/fpdfapi/parser",
