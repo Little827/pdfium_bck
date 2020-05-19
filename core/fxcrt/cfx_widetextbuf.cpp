@@ -9,16 +9,16 @@
 #include "core/fxcrt/fx_safe_types.h"
 
 size_t CFX_WideTextBuf::GetLength() const {
-  return m_DataSize / sizeof(wchar_t);
+  return data_size_ / sizeof(wchar_t);
 }
 
 pdfium::span<wchar_t> CFX_WideTextBuf::GetWideSpan() {
-  return pdfium::make_span(reinterpret_cast<wchar_t*>(m_pBuffer.get()),
+  return pdfium::make_span(reinterpret_cast<wchar_t*>(buffer_.get()),
                            GetLength());
 }
 
 pdfium::span<const wchar_t> CFX_WideTextBuf::GetWideSpan() const {
-  return pdfium::make_span(reinterpret_cast<wchar_t*>(m_pBuffer.get()),
+  return pdfium::make_span(reinterpret_cast<wchar_t*>(buffer_.get()),
                            GetLength());
 }
 
@@ -81,7 +81,7 @@ CFX_WideTextBuf& CFX_WideTextBuf::operator<<(const wchar_t* lpsz) {
 }
 
 CFX_WideTextBuf& CFX_WideTextBuf::operator<<(const CFX_WideTextBuf& buf) {
-  AppendBlock(buf.m_pBuffer.get(), buf.m_DataSize);
+  AppendBlock(buf.buffer_.get(), buf.data_size_);
   return *this;
 }
 
@@ -91,6 +91,6 @@ pdfium::span<wchar_t> CFX_WideTextBuf::ExpandWideBuf(size_t char_count) {
   safe_bytes *= sizeof(wchar_t);
   size_t bytes = safe_bytes.ValueOrDie();
   ExpandBuf(bytes);
-  m_DataSize += bytes;
+  data_size_ += bytes;
   return GetWideSpan().subspan(original_count);
 }

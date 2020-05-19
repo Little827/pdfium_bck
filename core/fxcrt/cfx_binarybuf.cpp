@@ -16,12 +16,12 @@ CFX_BinaryBuf::CFX_BinaryBuf() = default;
 CFX_BinaryBuf::~CFX_BinaryBuf() = default;
 
 void CFX_BinaryBuf::Delete(size_t start_index, size_t count) {
-  if (!m_pBuffer || count > m_DataSize || start_index > m_DataSize - count)
+  if (!buffer_ || count > data_size_ || start_index > data_size_ - count)
     return;
 
-  memmove(m_pBuffer.get() + start_index, m_pBuffer.get() + start_index + count,
-          m_DataSize - start_index - count);
-  m_DataSize -= count;
+  memmove(buffer_.get() + start_index, buffer_.get() + start_index + count,
+          data_size_ - start_index - count);
+  data_size_ -= count;
 }
 
 pdfium::span<uint8_t> CFX_BinaryBuf::GetSpan() {
@@ -33,39 +33,38 @@ pdfium::span<const uint8_t> CFX_BinaryBuf::GetSpan() const {
 }
 
 size_t CFX_BinaryBuf::GetLength() const {
-  return m_DataSize;
+  return data_size_;
 }
 
 void CFX_BinaryBuf::Clear() {
-  m_DataSize = 0;
+  data_size_ = 0;
 }
 
 std::unique_ptr<uint8_t, FxFreeDeleter> CFX_BinaryBuf::DetachBuffer() {
-  m_DataSize = 0;
-  m_AllocSize = 0;
-  return std::move(m_pBuffer);
+  data_size_ = 0;
+  alloc_size_ = 0;
+  return std::move(buffer_);
 }
 
 void CFX_BinaryBuf::EstimateSize(size_t size) {
-  if (m_AllocSize < size)
-    ExpandBuf(size - m_DataSize);
+  if (alloc_size_ < size)
+    ExpandBuf(size - data_size_);
 }
 
 void CFX_BinaryBuf::ExpandBuf(size_t add_size) {
-  FX_SAFE_SIZE_T new_size = m_DataSize;
+  FX_SAFE_SIZE_T new_size = data_size_;
   new_size += add_size;
-  if (m_AllocSize >= new_size.ValueOrDie())
+  if (alloc_size_ >= new_size.ValueOrDie())
     return;
 
   size_t alloc_step = std::max(static_cast<size_t>(128),
-                               m_AllocStep ? m_AllocStep : m_AllocSize / 4);
+                               alloc_step_ ? alloc_step_ : alloc_size_ / 4);
   new_size += alloc_step - 1;  // Quantize, don't combine these lines.
   new_size /= alloc_step;
   new_size *= alloc_step;
-  m_AllocSize = new_size.ValueOrDie();
-  m_pBuffer.reset(m_pBuffer
-                      ? FX_Realloc(uint8_t, m_pBuffer.release(), m_AllocSize)
-                      : FX_Alloc(uint8_t, m_AllocSize));
+  alloc_size_ = new_size.ValueOrDie();
+  buffer_.reset(buffer_ ? FX_Realloc(uint8_t, buffer_.release(), alloc_size_)
+                        : FX_Alloc(uint8_t, alloc_size_));
 }
 
 void CFX_BinaryBuf::AppendSpan(pdfium::span<const uint8_t> span) {
@@ -78,9 +77,9 @@ void CFX_BinaryBuf::AppendBlock(const void* pBuf, size_t size) {
 
   ExpandBuf(size);
   if (pBuf) {
-    memcpy(m_pBuffer.get() + m_DataSize, pBuf, size);
+    memcpy(buffer_.get() + data_size_, pBuf, size);
   } else {
-    memset(m_pBuffer.get() + m_DataSize, 0, size);
+    memset(buffer_.get() + data_size_, 0, size);
   }
-  m_DataSize += size;
+  data_size_ += size;
 }

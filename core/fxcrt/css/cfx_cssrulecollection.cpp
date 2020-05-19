@@ -15,21 +15,21 @@
 #include "core/fxcrt/css/cfx_cssstylesheet.h"
 #include "core/fxcrt/css/cfx_csssyntaxparser.h"
 
-CFX_CSSRuleCollection::CFX_CSSRuleCollection() : m_iSelectors(0) {}
+CFX_CSSRuleCollection::CFX_CSSRuleCollection() : selectors_(0) {}
 
 CFX_CSSRuleCollection::~CFX_CSSRuleCollection() {
   Clear();
 }
 
 void CFX_CSSRuleCollection::Clear() {
-  m_TagRules.clear();
-  m_iSelectors = 0;
+  tag_rules_.clear();
+  selectors_ = 0;
 }
 
 const std::vector<std::unique_ptr<CFX_CSSRuleCollection::Data>>*
 CFX_CSSRuleCollection::GetTagRuleData(const WideString& tagname) const {
-  auto it = m_TagRules.find(FX_HashCode_GetW(tagname.AsStringView(), true));
-  return it != m_TagRules.end() ? &it->second : nullptr;
+  auto it = tag_rules_.find(FX_HashCode_GetW(tagname.AsStringView(), true));
+  return it != tag_rules_.end() ? &it->second : nullptr;
 }
 
 void CFX_CSSRuleCollection::AddRulesFrom(const CFX_CSSStyleSheet* sheet) {
@@ -43,9 +43,9 @@ void CFX_CSSRuleCollection::AddRulesFrom(const CFX_CSSStyleSheet* pStyleSheet,
   int32_t iSelectors = pStyleRule->CountSelectorLists();
   for (int32_t i = 0; i < iSelectors; ++i) {
     CFX_CSSSelector* pSelector = pStyleRule->GetSelectorList(i);
-    m_TagRules[pSelector->GetNameHash()].push_back(
+    tag_rules_[pSelector->GetNameHash()].push_back(
         std::make_unique<Data>(pSelector, pDeclaration));
-    m_iSelectors++;
+    selectors_++;
   }
 }
 

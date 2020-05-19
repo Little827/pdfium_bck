@@ -17,14 +17,14 @@ class CFX_CSSValueListParser {
   bool NextValue(CFX_CSSPrimitiveType* eType,
                  const wchar_t** pStart,
                  int32_t* iLength);
-  void UseCommaSeparator() { m_Separator = ','; }
+  void UseCommaSeparator() { separator_ = ','; }
 
  private:
   int32_t SkipTo(wchar_t wch, bool breakOnSpace, bool matchBrackets);
 
-  wchar_t m_Separator;
-  const wchar_t* m_pCur;
-  const wchar_t* m_pEnd;
+  wchar_t separator_;
+  const wchar_t* cur_;
+  const wchar_t* end_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSVALUELISTPARSER_H_

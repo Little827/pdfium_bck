@@ -16,16 +16,16 @@ class CFX_FixedBufGrow {
  public:
   explicit CFX_FixedBufGrow(size_t data_size) {
     if (data_size > FixedSize) {
-      m_pGrowData.reset(FX_Alloc(DataType, data_size));
+      grow_data_.reset(FX_Alloc(DataType, data_size));
       return;
     }
-    memset(m_FixedData, 0, sizeof(DataType) * FixedSize);
+    memset(fixed_data_, 0, sizeof(DataType) * FixedSize);
   }
-  operator DataType*() { return m_pGrowData ? m_pGrowData.get() : m_FixedData; }
+  operator DataType*() { return grow_data_ ? grow_data_.get() : fixed_data_; }
 
  private:
-  std::unique_ptr<DataType, FxFreeDeleter> m_pGrowData;
-  DataType m_FixedData[FixedSize];
+  std::unique_ptr<DataType, FxFreeDeleter> grow_data_;
+  DataType fixed_data_[FixedSize];
 };
 
 #endif  // CORE_FXCRT_CFX_FIXEDBUFGROW_H_

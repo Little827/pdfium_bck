@@ -11,16 +11,16 @@ template <typename T>
 class AutoRestorer {
  public:
   explicit AutoRestorer(T* location)
-      : m_Location(location), m_OldValue(*location) {}
+      : location_(location), old_value_(*location) {}
   ~AutoRestorer() {
-    if (m_Location)
-      *m_Location = m_OldValue;
+    if (location_)
+      *location_ = old_value_;
   }
-  void AbandonRestoration() { m_Location = nullptr; }
+  void AbandonRestoration() { location_ = nullptr; }
 
  private:
-  T* m_Location;
-  const T m_OldValue;
+  T* location_;
+  const T old_value_;
 };
 
 }  // namespace fxcrt

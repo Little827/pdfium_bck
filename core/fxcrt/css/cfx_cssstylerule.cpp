@@ -11,20 +11,20 @@ CFX_CSSStyleRule::CFX_CSSStyleRule() {}
 CFX_CSSStyleRule::~CFX_CSSStyleRule() {}
 
 size_t CFX_CSSStyleRule::CountSelectorLists() const {
-  return m_ppSelector.size();
+  return selector_.size();
 }
 
 CFX_CSSSelector* CFX_CSSStyleRule::GetSelectorList(int32_t index) const {
-  return m_ppSelector[index].get();
+  return selector_[index].get();
 }
 
 CFX_CSSDeclaration* CFX_CSSStyleRule::GetDeclaration() {
-  return &m_Declaration;
+  return &declaration_;
 }
 
 void CFX_CSSStyleRule::SetSelector(
     std::vector<std::unique_ptr<CFX_CSSSelector>>* list) {
-  ASSERT(m_ppSelector.empty());
+  ASSERT(selector_.empty());
 
-  m_ppSelector.swap(*list);
+  selector_.swap(*list);
 }

@@ -17,14 +17,14 @@ class TreeNode {
   TreeNode() = default;
   virtual ~TreeNode() = default;
 
-  T* GetParent() const { return m_pParent; }
-  T* GetFirstChild() const { return m_pFirstChild; }
-  T* GetLastChild() const { return m_pLastChild; }
-  T* GetNextSibling() const { return m_pNextSibling; }
-  T* GetPrevSibling() const { return m_pPrevSibling; }
+  T* GetParent() const { return parent_; }
+  T* GetFirstChild() const { return first_child_; }
+  T* GetLastChild() const { return last_child_; }
+  T* GetNextSibling() const { return next_sibling_; }
+  T* GetPrevSibling() const { return prev_sibling_; }
 
   bool HasChild(const T* child) const {
-    return child != this && child->m_pParent == this;
+    return child != this && child->parent_ == this;
   }
 
   T* GetNthChild(int32_t n) {
@@ -39,29 +39,29 @@ class TreeNode {
 
   void AppendFirstChild(T* child) {
     BecomeParent(child);
-    if (m_pFirstChild) {
-      CHECK(m_pLastChild);
-      m_pFirstChild->m_pPrevSibling = child;
-      child->m_pNextSibling = m_pFirstChild;
-      m_pFirstChild = child;
+    if (first_child_) {
+      CHECK(last_child_);
+      first_child_->prev_sibling_ = child;
+      child->next_sibling_ = first_child_;
+      first_child_ = child;
     } else {
-      CHECK(!m_pLastChild);
-      m_pFirstChild = child;
-      m_pLastChild = child;
+      CHECK(!last_child_);
+      first_child_ = child;
+      last_child_ = child;
     }
   }
 
   void AppendLastChild(T* child) {
     BecomeParent(child);
-    if (m_pLastChild) {
-      CHECK(m_pFirstChild);
-      m_pLastChild->m_pNextSibling = child;
-      child->m_pPrevSibling = m_pLastChild;
-      m_pLastChild = child;
+    if (last_child_) {
+      CHECK(first_child_);
+      last_child_->next_sibling_ = child;
+      child->prev_sibling_ = last_child_;
+      last_child_ = child;
     } else {
-      CHECK(!m_pFirstChild);
-      m_pFirstChild = child;
-      m_pLastChild = child;
+      CHECK(!first_child_);
+      first_child_ = child;
+      last_child_ = child;
     }
   }
 
@@ -72,15 +72,15 @@ class TreeNode {
     }
     BecomeParent(child);
     CHECK(HasChild(other));
-    child->m_pNextSibling = other;
-    child->m_pPrevSibling = other->m_pPrevSibling;
-    if (m_pFirstChild == other) {
-      CHECK(!other->m_pPrevSibling);
-      m_pFirstChild = child;
+    child->next_sibling_ = other;
+    child->prev_sibling_ = other->prev_sibling_;
+    if (first_child_ == other) {
+      CHECK(!other->prev_sibling_);
+      first_child_ = child;
     } else {
-      other->m_pPrevSibling->m_pNextSibling = child;
+      other->prev_sibling_->next_sibling_ = child;
     }
-    other->m_pPrevSibling = child;
+    other->prev_sibling_ = child;
   }
 
   void InsertAfter(T* child, T* other) {
@@ -90,34 +90,34 @@ class TreeNode {
     }
     BecomeParent(child);
     CHECK(HasChild(other));
-    child->m_pNextSibling = other->m_pNextSibling;
-    child->m_pPrevSibling = other;
-    if (m_pLastChild == other) {
-      CHECK(!other->m_pNextSibling);
-      m_pLastChild = child;
+    child->next_sibling_ = other->next_sibling_;
+    child->prev_sibling_ = other;
+    if (last_child_ == other) {
+      CHECK(!other->next_sibling_);
+      last_child_ = child;
     } else {
-      other->m_pNextSibling->m_pPrevSibling = child;
+      other->next_sibling_->prev_sibling_ = child;
     }
-    other->m_pNextSibling = child;
+    other->next_sibling_ = child;
   }
 
   void RemoveChild(T* child) {
     CHECK(HasChild(child));
-    if (m_pLastChild == child) {
-      CHECK(!child->m_pNextSibling);
-      m_pLastChild = child->m_pPrevSibling;
+    if (last_child_ == child) {
+      CHECK(!child->next_sibling_);
+      last_child_ = child->prev_sibling_;
     } else {
-      child->m_pNextSibling->m_pPrevSibling = child->m_pPrevSibling;
+      child->next_sibling_->prev_sibling_ = child->prev_sibling_;
     }
-    if (m_pFirstChild == child) {
-      CHECK(!child->m_pPrevSibling);
-      m_pFirstChild = child->m_pNextSibling;
+    if (first_child_ == child) {
+      CHECK(!child->prev_sibling_);
+      first_child_ = child->next_sibling_;
     } else {
-      child->m_pPrevSibling->m_pNextSibling = child->m_pNextSibling;
+      child->prev_sibling_->next_sibling_ = child->next_sibling_;
     }
-    child->m_pParent = nullptr;
-    child->m_pPrevSibling = nullptr;
-    child->m_pNextSibling = nullptr;
+    child->parent_ = nullptr;
+    child->prev_sibling_ = nullptr;
+    child->next_sibling_ = nullptr;
   }
 
   void RemoveAllChildren() {
@@ -134,18 +134,18 @@ class TreeNode {
   // Child left in state where sibling members need subsequent adjustment.
   void BecomeParent(T* child) {
     CHECK(child != this);  // Detect attempts at self-insertion.
-    if (child->m_pParent)
-      child->m_pParent->TreeNode<T>::RemoveChild(child);
-    child->m_pParent = static_cast<T*>(this);
-    CHECK(!child->m_pNextSibling);
-    CHECK(!child->m_pPrevSibling);
+    if (child->parent_)
+      child->parent_->TreeNode<T>::RemoveChild(child);
+    child->parent_ = static_cast<T*>(this);
+    CHECK(!child->next_sibling_);
+    CHECK(!child->prev_sibling_);
   }
 
-  T* m_pParent = nullptr;       // Raw, intra-tree pointer.
-  T* m_pFirstChild = nullptr;   // Raw, intra-tree pointer.
-  T* m_pLastChild = nullptr;    // Raw, intra-tree pointer.
-  T* m_pNextSibling = nullptr;  // Raw, intra-tree pointer
-  T* m_pPrevSibling = nullptr;  // Raw, intra-tree pointer
+  T* parent_ = nullptr;        // Raw, intra-tree pointer.
+  T* first_child_ = nullptr;   // Raw, intra-tree pointer.
+  T* last_child_ = nullptr;    // Raw, intra-tree pointer.
+  T* next_sibling_ = nullptr;  // Raw, intra-tree pointer
+  T* prev_sibling_ = nullptr;  // Raw, intra-tree pointer
 };
 
 }  // namespace fxcrt

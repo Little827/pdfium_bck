@@ -49,11 +49,11 @@ class CFX_CSSSyntaxParser {
   void SaveMode(SyntaxMode eMode);
   bool RestoreMode();
 
-  bool m_bError = false;
-  SyntaxMode m_eMode = SyntaxMode::kRuleSet;
-  CFX_CSSTextBuf m_Output;
-  CFX_CSSExtTextBuf m_Input;
-  std::stack<SyntaxMode> m_ModeStack;
+  bool error_ = false;
+  SyntaxMode mode_ = SyntaxMode::kRuleSet;
+  CFX_CSSTextBuf output_;
+  CFX_CSSExtTextBuf input_;
+  std::stack<SyntaxMode> mode_stack_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSSYNTAXPARSER_H_

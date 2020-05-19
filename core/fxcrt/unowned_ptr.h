@@ -51,10 +51,10 @@ class UnownedPtr {
   constexpr UnownedPtr(const UnownedPtr& that) noexcept = default;
 
   // Move-construct an UnownedPtr. After construction, |that| will be NULL.
-  constexpr UnownedPtr(UnownedPtr&& that) noexcept : m_pObj(that.Release()) {}
+  constexpr UnownedPtr(UnownedPtr&& that) noexcept : obj_(that.Release()) {}
 
   template <typename U>
-  explicit constexpr UnownedPtr(U* pObj) noexcept : m_pObj(pObj) {}
+  explicit constexpr UnownedPtr(U* pObj) noexcept : obj_(pObj) {}
 
   // Deliberately implicit to allow returning nullptrs.
   // NOLINTNEXTLINE(runtime/explicit)
@@ -64,7 +64,7 @@ class UnownedPtr {
 
   void Reset(T* obj = nullptr) {
     ProbeForLowSeverityLifetimeIssue();
-    m_pObj = obj;
+    obj_ = obj;
   }
 
   UnownedPtr& operator=(T* that) noexcept {
@@ -92,36 +92,36 @@ class UnownedPtr {
   }
 
   operator T*() const noexcept { return Get(); }
-  T* Get() const noexcept { return m_pObj; }
+  T* Get() const noexcept { return obj_; }
 
   T* Release() {
     ProbeForLowSeverityLifetimeIssue();
     T* pTemp = nullptr;
-    std::swap(pTemp, m_pObj);
+    std::swap(pTemp, obj_);
     return pTemp;
   }
 
-  explicit operator bool() const { return !!m_pObj; }
-  T& operator*() const { return *m_pObj; }
-  T* operator->() const { return m_pObj; }
+  explicit operator bool() const { return !!obj_; }
+  T& operator*() const { return *obj_; }
+  T* operator->() const { return obj_; }
 
  private:
   friend class pdfium::span<T>;
 
   inline void ProbeForLowSeverityLifetimeIssue() {
 #if defined(ADDRESS_SANITIZER)
-    if (m_pObj)
-      reinterpret_cast<const volatile uint8_t*>(m_pObj)[0];
+    if (obj_)
+      reinterpret_cast<const volatile uint8_t*>(obj_)[0];
 #endif
   }
 
   inline void ReleaseBadPointer() {
 #if defined(ADDRESS_SANITIZER)
-    m_pObj = nullptr;
+    obj_ = nullptr;
 #endif
   }
 
-  T* m_pObj = nullptr;
+  T* obj_ = nullptr;
 };
 
 }  // namespace fxcrt

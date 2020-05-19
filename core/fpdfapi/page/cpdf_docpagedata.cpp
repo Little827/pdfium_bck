@@ -486,7 +486,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
     } else {
       size_t i = CalculateEncodingDict(charset, pBaseDict);
       if (i < pdfium::size(g_FX_CharsetUnicodes)) {
-        const uint16_t* pUnicodes = g_FX_CharsetUnicodes[i].m_pUnicodes;
+        const uint16_t* pUnicodes = g_FX_CharsetUnicodes[i].unicodes_;
         for (int j = 0; j < 128; j++) {
           int glyph_index = pEncoding->GlyphFromCharCode(pUnicodes[j]);
           int char_width = pFont->GetGlyphWidth(glyph_index);
@@ -622,7 +622,7 @@ size_t CPDF_DocPageData::CalculateEncodingDict(int charset,
                                                CPDF_Dictionary* pBaseDict) {
   size_t i;
   for (i = 0; i < pdfium::size(g_FX_CharsetUnicodes); ++i) {
-    if (g_FX_CharsetUnicodes[i].m_Charset == charset)
+    if (g_FX_CharsetUnicodes[i].charset_ == charset)
       break;
   }
   if (i == pdfium::size(g_FX_CharsetUnicodes))
@@ -635,7 +635,7 @@ size_t CPDF_DocPageData::CalculateEncodingDict(int charset,
   CPDF_Array* pArray = pEncodingDict->SetNewFor<CPDF_Array>("Differences");
   pArray->AppendNew<CPDF_Number>(128);
 
-  const uint16_t* pUnicodes = g_FX_CharsetUnicodes[i].m_pUnicodes;
+  const uint16_t* pUnicodes = g_FX_CharsetUnicodes[i].unicodes_;
   for (int j = 0; j < 128; j++) {
     ByteString name = PDF_AdobeNameFromUnicode(pUnicodes[j]);
     pArray->AppendNew<CPDF_Name>(name.IsEmpty() ? ".notdef" : name);

@@ -29,21 +29,21 @@ CFX_CSSSelector::CFX_CSSSelector(CFX_CSSSelectorType eType,
                                  const wchar_t* psz,
                                  int32_t iLen,
                                  bool bIgnoreCase)
-    : m_eType(eType),
-      m_dwHash(FX_HashCode_GetW(WideStringView(psz, iLen), bIgnoreCase)) {}
+    : type_(eType),
+      hash_(FX_HashCode_GetW(WideStringView(psz, iLen), bIgnoreCase)) {}
 
 CFX_CSSSelector::~CFX_CSSSelector() {}
 
 CFX_CSSSelectorType CFX_CSSSelector::GetType() const {
-  return m_eType;
+  return type_;
 }
 
 uint32_t CFX_CSSSelector::GetNameHash() const {
-  return m_dwHash;
+  return hash_;
 }
 
 CFX_CSSSelector* CFX_CSSSelector::GetNextSelector() const {
-  return m_pNext.get();
+  return next_.get();
 }
 
 // static.

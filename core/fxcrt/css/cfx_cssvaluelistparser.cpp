@@ -11,7 +11,7 @@
 CFX_CSSValueListParser::CFX_CSSValueListParser(const wchar_t* psz,
                                                int32_t iLen,
                                                wchar_t separator)
-    : m_Separator(separator), m_pCur(psz), m_pEnd(psz + iLen) {
+    : separator_(separator), cur_(psz), end_(psz + iLen) {
   ASSERT(psz);
   ASSERT(iLen > 0);
 }
@@ -19,71 +19,71 @@ CFX_CSSValueListParser::CFX_CSSValueListParser(const wchar_t* psz,
 bool CFX_CSSValueListParser::NextValue(CFX_CSSPrimitiveType* eType,
                                        const wchar_t** pStart,
                                        int32_t* iLength) {
-  while (m_pCur < m_pEnd && (*m_pCur <= ' ' || *m_pCur == m_Separator))
-    ++m_pCur;
+  while (cur_ < end_ && (*cur_ <= ' ' || *cur_ == separator_))
+    ++cur_;
 
-  if (m_pCur >= m_pEnd)
+  if (cur_ >= end_)
     return false;
 
   *eType = CFX_CSSPrimitiveType::Unknown;
-  *pStart = m_pCur;
+  *pStart = cur_;
   *iLength = 0;
-  wchar_t wch = *m_pCur;
+  wchar_t wch = *cur_;
   if (wch == '#') {
     *iLength = SkipTo(' ', false, false);
     if (*iLength == 4 || *iLength == 7)
       *eType = CFX_CSSPrimitiveType::RGB;
   } else if (FXSYS_IsDecimalDigit(wch) || wch == '.' || wch == '-' ||
              wch == '+') {
-    while (m_pCur < m_pEnd && (*m_pCur > ' ' && *m_pCur != m_Separator))
-      ++m_pCur;
+    while (cur_ < end_ && (*cur_ > ' ' && *cur_ != separator_))
+      ++cur_;
 
-    *iLength = m_pCur - *pStart;
+    *iLength = cur_ - *pStart;
     *eType = CFX_CSSPrimitiveType::Number;
   } else if (wch == '\"' || wch == '\'') {
     ++(*pStart);
-    m_pCur++;
+    cur_++;
     *iLength = SkipTo(wch, false, false);
-    m_pCur++;
+    cur_++;
     *eType = CFX_CSSPrimitiveType::String;
-  } else if (m_pEnd - m_pCur > 5 && m_pCur[3] == '(') {
-    if (FXSYS_wcsnicmp(L"rgb", m_pCur, 3) == 0) {
+  } else if (end_ - cur_ > 5 && cur_[3] == '(') {
+    if (FXSYS_wcsnicmp(L"rgb", cur_, 3) == 0) {
       *iLength = SkipTo(')', false, false) + 1;
-      m_pCur++;
+      cur_++;
       *eType = CFX_CSSPrimitiveType::RGB;
     }
   } else {
-    *iLength = SkipTo(m_Separator, true, true);
+    *iLength = SkipTo(separator_, true, true);
     *eType = CFX_CSSPrimitiveType::String;
   }
-  return m_pCur <= m_pEnd && *iLength > 0;
+  return cur_ <= end_ && *iLength > 0;
 }
 
 int32_t CFX_CSSValueListParser::SkipTo(wchar_t wch,
                                        bool breakOnSpace,
                                        bool matchBrackets) {
-  const wchar_t* pStart = m_pCur;
+  const wchar_t* pStart = cur_;
   int32_t bracketCount = 0;
-  while (m_pCur < m_pEnd && *m_pCur != wch) {
-    if (breakOnSpace && *m_pCur <= ' ')
+  while (cur_ < end_ && *cur_ != wch) {
+    if (breakOnSpace && *cur_ <= ' ')
       break;
     if (!matchBrackets) {
-      m_pCur++;
+      cur_++;
       continue;
     }
 
-    if (*m_pCur == '(')
+    if (*cur_ == '(')
       bracketCount++;
-    else if (*m_pCur == ')')
+    else if (*cur_ == ')')
       bracketCount--;
 
-    m_pCur++;
+    cur_++;
   }
 
-  while (bracketCount > 0 && m_pCur < m_pEnd) {
-    if (*m_pCur == ')')
+  while (bracketCount > 0 && cur_ < end_) {
+    if (*cur_ == ')')
       bracketCount--;
-    m_pCur++;
+    cur_++;
   }
-  return m_pCur - pStart;
+  return cur_ - pStart;
 }

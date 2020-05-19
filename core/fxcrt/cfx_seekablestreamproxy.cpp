@@ -104,11 +104,11 @@ void SwapByteOrder(uint16_t* pStr, size_t iLength) {
 
 CFX_SeekableStreamProxy::CFX_SeekableStreamProxy(
     const RetainPtr<IFX_SeekableReadStream>& stream)
-    : m_wCodePage(FX_CODEPAGE_DefANSI),
-      m_wBOMLength(0),
-      m_iPosition(0),
-      m_pStream(stream) {
-  ASSERT(m_pStream);
+    : code_page_(FX_CODEPAGE_DefANSI),
+      bomlength_(0),
+      position_(0),
+      stream_(stream) {
+  ASSERT(stream_);
 
   Seek(From::Begin, 0);
 
@@ -117,59 +117,58 @@ CFX_SeekableStreamProxy::CFX_SeekableStreamProxy(
 
   bom &= BOM_UTF8_MASK;
   if (bom == BOM_UTF8) {
-    m_wBOMLength = 3;
-    m_wCodePage = FX_CODEPAGE_UTF8;
+    bomlength_ = 3;
+    code_page_ = FX_CODEPAGE_UTF8;
   } else {
     bom &= BOM_UTF16_MASK;
     if (bom == BOM_UTF16_BE) {
-      m_wBOMLength = 2;
-      m_wCodePage = FX_CODEPAGE_UTF16BE;
+      bomlength_ = 2;
+      code_page_ = FX_CODEPAGE_UTF16BE;
     } else if (bom == BOM_UTF16_LE) {
-      m_wBOMLength = 2;
-      m_wCodePage = FX_CODEPAGE_UTF16LE;
+      bomlength_ = 2;
+      code_page_ = FX_CODEPAGE_UTF16LE;
     } else {
-      m_wBOMLength = 0;
-      m_wCodePage = FXSYS_GetACP();
+      bomlength_ = 0;
+      code_page_ = FXSYS_GetACP();
     }
   }
 
-  Seek(From::Begin, static_cast<FX_FILESIZE>(m_wBOMLength));
+  Seek(From::Begin, static_cast<FX_FILESIZE>(bomlength_));
 }
 
 CFX_SeekableStreamProxy::~CFX_SeekableStreamProxy() = default;
 
 FX_FILESIZE CFX_SeekableStreamProxy::GetSize() {
-  return m_pStream->GetSize();
+  return stream_->GetSize();
 }
 
 FX_FILESIZE CFX_SeekableStreamProxy::GetPosition() {
-  return m_iPosition;
+  return position_;
 }
 
 bool CFX_SeekableStreamProxy::IsEOF() {
-  return m_iPosition >= GetSize();
+  return position_ >= GetSize();
 }
 
 void CFX_SeekableStreamProxy::Seek(From eSeek, FX_FILESIZE iOffset) {
   switch (eSeek) {
     case From::Begin:
-      m_iPosition = iOffset;
+      position_ = iOffset;
       break;
     case From::Current: {
-      FX_SAFE_FILESIZE new_pos = m_iPosition;
+      FX_SAFE_FILESIZE new_pos = position_;
       new_pos += iOffset;
-      m_iPosition =
+      position_ =
           new_pos.ValueOrDefault(std::numeric_limits<FX_FILESIZE>::max());
     } break;
   }
-  m_iPosition =
-      pdfium::clamp(m_iPosition, static_cast<FX_FILESIZE>(0), GetSize());
+  position_ = pdfium::clamp(position_, static_cast<FX_FILESIZE>(0), GetSize());
 }
 
 void CFX_SeekableStreamProxy::SetCodePage(uint16_t wCodePage) {
-  if (m_wBOMLength > 0)
+  if (bomlength_ > 0)
     return;
-  m_wCodePage = wCodePage;
+  code_page_ = wCodePage;
 }
 
 size_t CFX_SeekableStreamProxy::ReadData(uint8_t* pBuffer, size_t iBufferSize) {
@@ -177,16 +176,16 @@ size_t CFX_SeekableStreamProxy::ReadData(uint8_t* pBuffer, size_t iBufferSize) {
   ASSERT(iBufferSize > 0);
 
   iBufferSize =
-      std::min(iBufferSize, static_cast<size_t>(GetSize() - m_iPosition));
+      std::min(iBufferSize, static_cast<size_t>(GetSize() - position_));
   if (iBufferSize <= 0)
     return 0;
 
-  if (!m_pStream->ReadBlockAtOffset(pBuffer, m_iPosition, iBufferSize))
+  if (!stream_->ReadBlockAtOffset(pBuffer, position_, iBufferSize))
     return 0;
 
-  FX_SAFE_FILESIZE new_pos = m_iPosition;
+  FX_SAFE_FILESIZE new_pos = position_;
   new_pos += iBufferSize;
-  m_iPosition = new_pos.ValueOrDefault(m_iPosition);
+  position_ = new_pos.ValueOrDefault(position_);
   return new_pos.IsValid() ? iBufferSize : 0;
 }
 
@@ -194,12 +193,11 @@ size_t CFX_SeekableStreamProxy::ReadBlock(wchar_t* pStr, size_t size) {
   if (!pStr || size == 0)
     return 0;
 
-  if (m_wCodePage == FX_CODEPAGE_UTF16LE ||
-      m_wCodePage == FX_CODEPAGE_UTF16BE) {
+  if (code_page_ == FX_CODEPAGE_UTF16LE || code_page_ == FX_CODEPAGE_UTF16BE) {
     size_t iBytes = size * 2;
     size_t iLen = ReadData(reinterpret_cast<uint8_t*>(pStr), iBytes);
     size = iLen / 2;
-    if (m_wCodePage == FX_CODEPAGE_UTF16BE)
+    if (code_page_ == FX_CODEPAGE_UTF16BE)
       SwapByteOrder(reinterpret_cast<uint16_t*>(pStr), size);
 
 #if defined(WCHAR_T_IS_UTF32)
@@ -216,7 +214,7 @@ size_t CFX_SeekableStreamProxy::ReadBlock(wchar_t* pStr, size_t size) {
 
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> buf(iBytes);
   size_t iLen = ReadData(buf.data(), iBytes);
-  if (m_wCodePage != FX_CODEPAGE_UTF8)
+  if (code_page_ != FX_CODEPAGE_UTF8)
     return 0;
 
   size_t iSrc;

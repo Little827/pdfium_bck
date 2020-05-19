@@ -12,30 +12,30 @@
 #include "core/fxcrt/fx_system.h"
 
 CFX_BitStream::CFX_BitStream(pdfium::span<const uint8_t> pData)
-    : m_BitPos(0), m_BitSize(pData.size() * 8), m_pData(pData.data()) {
+    : bit_pos_(0), bit_size_(pData.size() * 8), data_(pData.data()) {
   ASSERT(pData.size() <= std::numeric_limits<uint32_t>::max() / 8);
 }
 
 CFX_BitStream::~CFX_BitStream() {}
 
 void CFX_BitStream::ByteAlign() {
-  m_BitPos = FxAlignToBoundary<8>(m_BitPos);
+  bit_pos_ = FxAlignToBoundary<8>(bit_pos_);
 }
 
 uint32_t CFX_BitStream::GetBits(uint32_t nBits) {
   ASSERT(nBits > 0);
   ASSERT(nBits <= 32);
-  if (nBits > m_BitSize || m_BitPos > m_BitSize - nBits)
+  if (nBits > bit_size_ || bit_pos_ > bit_size_ - nBits)
     return 0;
 
-  const uint32_t bit_pos = m_BitPos % 8;
-  uint32_t byte_pos = m_BitPos / 8;
-  const uint8_t* data = m_pData.Get();
+  const uint32_t bit_pos = bit_pos_ % 8;
+  uint32_t byte_pos = bit_pos_ / 8;
+  const uint8_t* data = data_.Get();
   uint8_t current_byte = data[byte_pos];
 
   if (nBits == 1) {
     int bit = (current_byte & (1 << (7 - bit_pos))) ? 1 : 0;
-    m_BitPos++;
+    bit_pos_++;
     return bit;
   }
 
@@ -45,7 +45,7 @@ uint32_t CFX_BitStream::GetBits(uint32_t nBits) {
     uint32_t bits_readable = 8 - bit_pos;
     if (bits_readable >= bit_left) {
       result = (current_byte & (0xff >> bit_pos)) >> (bits_readable - bit_left);
-      m_BitPos += bit_left;
+      bit_pos_ += bit_left;
       return result;
     }
     bit_left -= bits_readable;
@@ -58,6 +58,6 @@ uint32_t CFX_BitStream::GetBits(uint32_t nBits) {
   }
   if (bit_left)
     result |= data[byte_pos] >> (8 - bit_left);
-  m_BitPos += nBits;
+  bit_pos_ += nBits;
   return result;
 }

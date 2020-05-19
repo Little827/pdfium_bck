@@ -64,14 +64,14 @@ class RetainedTreeNode : public TreeNode<T> {
   RetainedTreeNode(const RetainedTreeNode& that) = delete;
   RetainedTreeNode& operator=(const RetainedTreeNode& that) = delete;
 
-  void Retain() { ++m_nRefCount; }
+  void Retain() { ++ref_count_; }
   void Release() {
-    ASSERT(m_nRefCount > 0);
-    if (--m_nRefCount == 0 && !TreeNode<T>::GetParent())
+    ASSERT(ref_count_ > 0);
+    if (--ref_count_ == 0 && !TreeNode<T>::GetParent())
       delete this;
   }
 
-  intptr_t m_nRefCount = 0;
+  intptr_t ref_count_ = 0;
 };
 
 }  // namespace fxcrt

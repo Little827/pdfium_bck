@@ -19,21 +19,21 @@ class CFX_BitStream {
 
   void ByteAlign();
 
-  bool IsEOF() const { return m_BitPos >= m_BitSize; }
-  uint32_t GetPos() const { return m_BitPos; }
+  bool IsEOF() const { return bit_pos_ >= bit_size_; }
+  uint32_t GetPos() const { return bit_pos_; }
   uint32_t GetBits(uint32_t nBits);
 
-  void SkipBits(uint32_t nBits) { m_BitPos += nBits; }
-  void Rewind() { m_BitPos = 0; }
+  void SkipBits(uint32_t nBits) { bit_pos_ += nBits; }
+  void Rewind() { bit_pos_ = 0; }
 
   uint32_t BitsRemaining() const {
-    return m_BitSize >= m_BitPos ? m_BitSize - m_BitPos : 0;
+    return bit_size_ >= bit_pos_ ? bit_size_ - bit_pos_ : 0;
   }
 
  private:
-  uint32_t m_BitPos;
-  uint32_t m_BitSize;
-  UnownedPtr<const uint8_t> m_pData;
+  uint32_t bit_pos_;
+  uint32_t bit_size_;
+  UnownedPtr<const uint8_t> data_;
 };
 
 #endif  // CORE_FXCRT_CFX_BITSTREAM_H_

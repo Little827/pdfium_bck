@@ -12,13 +12,13 @@
 
 class CFX_CSSValue : public Retainable {
  public:
-  CFX_CSSPrimitiveType GetType() const { return m_value; }
+  CFX_CSSPrimitiveType GetType() const { return value_; }
 
  protected:
   explicit CFX_CSSValue(CFX_CSSPrimitiveType type);
 
  private:
-  CFX_CSSPrimitiveType m_value;
+  CFX_CSSPrimitiveType value_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSVALUE_H_
