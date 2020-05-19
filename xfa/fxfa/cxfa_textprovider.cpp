@@ -159,3 +159,7 @@ Optional<WideString> CXFA_TextProvider::GetEmbeddedObj(
 
   return pIDNode->GetValue(XFA_VALUEPICTURE_Display);
 }
+
+void CXFA_TextProvider::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pNode);
+}

@@ -19,6 +19,7 @@
 #include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/cxfa_textlayout.h"
 #include "xfa/fxfa/cxfa_textprovider.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_border.h"
 #include "xfa/fxfa/parser/cxfa_button.h"
 #include "xfa/fxfa/parser/cxfa_caption.h"
@@ -138,20 +139,20 @@ void CXFA_FFPushButton::LoadHighlightCaption() {
 
   if (m_pNode->HasButtonRollover()) {
     if (!m_pRollProvider) {
-      m_pRollProvider = pdfium::MakeUnique<CXFA_TextProvider>(
-          m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Rollover);
+      m_pRollProvider = cppgc::MakeGarbageCollected<CXFA_TextProvider>(
+          GetHeap(), m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Rollover);
     }
-    m_pRolloverTextLayout =
-        pdfium::MakeUnique<CXFA_TextLayout>(GetDoc(), m_pRollProvider.get());
+    m_pRolloverTextLayout = cppgc::MakeGarbageCollected<CXFA_TextLayout>(
+        GetHeap(), GetDoc(), m_pRollProvider.Get());
   }
 
   if (m_pNode->HasButtonDown()) {
     if (!m_pDownProvider) {
-      m_pDownProvider = pdfium::MakeUnique<CXFA_TextProvider>(
-          m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Down);
+      m_pDownProvider = cppgc::MakeGarbageCollected<CXFA_TextProvider>(
+          GetHeap(), m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Down);
     }
-    m_pDownTextLayout =
-        pdfium::MakeUnique<CXFA_TextLayout>(GetDoc(), m_pDownProvider.get());
+    m_pDownTextLayout = cppgc::MakeGarbageCollected<CXFA_TextLayout>(
+        GetHeap(), GetDoc(), m_pDownProvider.Get());
   }
 }
 

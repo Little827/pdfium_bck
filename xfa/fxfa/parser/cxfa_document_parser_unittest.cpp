@@ -8,13 +8,16 @@
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/ptr_util.h"
+#include "v8/include/cppgc/platform.h"
+#include "v8/include/libplatform/libplatform.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
-class CXFA_DocumentParserTest : public testing::Test {
+class CXFA_DocumentParserTest : public testing::Test, public ScopedHeap {
  public:
   void SetUp() override {
-    doc_ = pdfium::MakeUnique<CXFA_Document>(nullptr, nullptr);
-    parser_ = pdfium::MakeUnique<CXFA_DocumentParser>(doc_.get());
+    doc_ =
+        cppgc::MakeGarbageCollected<CXFA_Document>(GetHeap(), nullptr, nullptr);
+    parser_ = pdfium::MakeUnique<CXFA_DocumentParser>(doc_.Get());
   }
 
   void TearDown() override {
@@ -24,11 +27,11 @@ class CXFA_DocumentParserTest : public testing::Test {
     doc_ = nullptr;
   }
 
-  CXFA_Document* GetDoc() const { return doc_.get(); }
+  CXFA_Document* GetDoc() const { return doc_.Get(); }
   CXFA_DocumentParser* GetParser() const { return parser_.get(); }
 
  private:
-  std::unique_ptr<CXFA_Document> doc_;
+  cppgc::Persistent<CXFA_Document> doc_;
   std::unique_ptr<CXFA_DocumentParser> parser_;
 };
 

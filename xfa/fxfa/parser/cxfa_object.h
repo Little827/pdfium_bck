@@ -12,6 +12,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "fxjs/xfa/fxjse.h"
 #include "xfa/fxfa/fxfa_basic.h"
+#include "xfa/fxfa/heap.h"
 
 enum class XFA_ObjectType {
   Object,
@@ -34,7 +35,8 @@ class CXFA_Node;
 class CXFA_ThisProxy;
 class CXFA_TreeList;
 
-class CXFA_Object : public CFXJSE_HostObject {
+class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object>,
+                    public CFXJSE_HostObject {
  public:
   ~CXFA_Object() override;
 
@@ -88,6 +90,8 @@ class CXFA_Object : public CFXJSE_HostObject {
   uint32_t GetClassHashCode() const { return m_elementNameHash; }
 
   WideString GetSOMExpression();
+
+  virtual void Trace(cppgc::Visitor*) const {}
 
  protected:
   CXFA_Object(CXFA_Document* pDocument,

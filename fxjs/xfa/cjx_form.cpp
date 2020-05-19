@@ -13,6 +13,7 @@
 #include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_arraynodelist.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/cxfa_form.h"
@@ -46,7 +47,8 @@ CJS_Result CJX_Form::formNodes(
   if (!pDataNode)
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  CXFA_ArrayNodeList* pFormNodes = new CXFA_ArrayNodeList(GetDocument());
+  CXFA_ArrayNodeList* pFormNodes =
+      cppgc::MakeGarbageCollected<CXFA_ArrayNodeList>(GetHeap(), GetDocument());
   CFXJSE_Value* value =
       GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
           pFormNodes);

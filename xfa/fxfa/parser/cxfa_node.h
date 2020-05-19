@@ -87,9 +87,9 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
     void* default_value;
   };
 
-  static std::unique_ptr<CXFA_Node> Create(CXFA_Document* doc,
-                                           XFA_Element element,
-                                           XFA_PacketType packet);
+  static CXFA_Node* Create(CXFA_Document* doc,
+                           XFA_Element element,
+                           XFA_PacketType packet);
 
   ~CXFA_Node() override;
 

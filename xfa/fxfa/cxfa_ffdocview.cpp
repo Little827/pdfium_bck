@@ -63,6 +63,10 @@ CXFA_FFDocView::CXFA_FFDocView(CXFA_FFDoc* pDoc) : m_pDoc(pDoc) {}
 
 CXFA_FFDocView::~CXFA_FFDocView() = default;
 
+void CXFA_FFDocView::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pDoc);
+}
+
 void CXFA_FFDocView::InitLayout(CXFA_Node* pNode) {
   RunBindItems();
   ExecEventActivityByDeepFirst(pNode, XFA_EVENT_Initialize, false, true);

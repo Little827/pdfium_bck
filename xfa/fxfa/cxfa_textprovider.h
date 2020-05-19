@@ -10,6 +10,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "third_party/base/optional.h"
 #include "xfa/fxfa/cxfa_textlayout.h"
+#include "xfa/fxfa/heap.h"
 
 class CXFA_Font;
 class CXFA_Node;
@@ -23,13 +24,14 @@ enum XFA_TEXTPROVIDERTYPE {
   XFA_TEXTPROVIDERTYPE_Down,
 };
 
-class CXFA_TextProvider {
+class CXFA_TextProvider final
+    : public cppgc::GarbageCollected<CXFA_TextProvider> {
  public:
   CXFA_TextProvider(CXFA_Node* pNode, XFA_TEXTPROVIDERTYPE eType)
       : m_pNode(pNode), m_eType(eType) {
     ASSERT(m_pNode);
   }
-  ~CXFA_TextProvider() {}
+  ~CXFA_TextProvider() = default;
 
   CXFA_Node* GetTextNode(bool* bRichText);
   CXFA_Para* GetParaIfExists();
@@ -37,8 +39,10 @@ class CXFA_TextProvider {
   bool IsCheckButtonAndAutoWidth() const;
   Optional<WideString> GetEmbeddedObj(const WideString& wsAttr) const;
 
+  void Trace(cppgc::Visitor*) const;
+
  private:
-  CXFA_Node* m_pNode;  // Raw, this class owned by tree node.
+  const cppgc::Member<CXFA_Node> m_pNode;
   XFA_TEXTPROVIDERTYPE m_eType;
 };
 

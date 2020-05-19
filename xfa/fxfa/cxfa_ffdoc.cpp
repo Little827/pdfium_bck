@@ -51,7 +51,7 @@ FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI(const RetainPtr<CFX_DIBBase>& pDib,
 FX_IMAGEDIB_AND_DPI::~FX_IMAGEDIB_AND_DPI() = default;
 
 // static
-std::unique_ptr<CXFA_FFDoc> CXFA_FFDoc::CreateAndOpen(
+CXFA_FFDoc* CXFA_FFDoc::CreateAndOpen(
     CXFA_FFApp* pApp,
     IXFA_DocEnvironment* pDocEnvironment,
     CPDF_Document* pPDFDoc,
@@ -60,9 +60,9 @@ std::unique_ptr<CXFA_FFDoc> CXFA_FFDoc::CreateAndOpen(
   ASSERT(pDocEnvironment);
   ASSERT(pPDFDoc);
 
-  // Use WrapUnique() to keep constructor private.
-  auto result =
-      pdfium::WrapUnique(new CXFA_FFDoc(pApp, pDocEnvironment, pPDFDoc));
+  // TODO(mlippautz): Make ctor private again.
+  auto* result = cppgc::MakeGarbageCollected<CXFA_FFDoc>(
+      GetHeap(), pApp, pDocEnvironment, pPDFDoc);
   if (!result->OpenDoc(stream))
     return nullptr;
 
@@ -76,19 +76,20 @@ CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp,
       m_pApp(pApp),
       m_pPDFDoc(pPDFDoc),
       m_pNotify(pdfium::MakeUnique<CXFA_FFNotify>(this)),
-      m_pDocument(pdfium::MakeUnique<CXFA_Document>(
+      m_pDocument(cppgc::MakeGarbageCollected<CXFA_Document>(
+          GetHeap(),
           m_pNotify.get(),
-          pdfium::MakeUnique<CXFA_LayoutProcessor>())) {}
+          cppgc::MakeGarbageCollected<CXFA_LayoutProcessor>(GetHeap()))) {}
 
 CXFA_FFDoc::~CXFA_FFDoc() {
   if (m_DocView) {
     m_DocView->RunDocClose();
-    m_DocView.reset();
+    m_DocView.Clear();
   }
   if (m_pDocument)
     m_pDocument->ClearLayoutData();
 
-  m_pDocument.reset();
+  m_pDocument.Clear();
   m_pXMLDoc.reset();
   m_pNotify.reset();
   m_pPDFFontMgr.reset();
@@ -96,8 +97,13 @@ CXFA_FFDoc::~CXFA_FFDoc() {
   m_pApp->ClearEventTargets();
 }
 
+void CXFA_FFDoc::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pApp);
+  visitor->Trace(m_DocView);
+}
+
 bool CXFA_FFDoc::ParseDoc(const RetainPtr<IFX_SeekableStream>& stream) {
-  CXFA_DocumentParser parser(m_pDocument.get());
+  CXFA_DocumentParser parser(m_pDocument.Get());
   bool parsed = parser.Parse(stream, XFA_PacketType::Xdp);
 
   // We have to set the XML document before we return so that we can clean
@@ -114,18 +120,18 @@ bool CXFA_FFDoc::ParseDoc(const RetainPtr<IFX_SeekableStream>& stream) {
 
 CXFA_FFDocView* CXFA_FFDoc::CreateDocView() {
   if (!m_DocView)
-    m_DocView = pdfium::MakeUnique<CXFA_FFDocView>(this);
+    m_DocView = cppgc::MakeGarbageCollected<CXFA_FFDocView>(GetHeap(), this);
 
-  return m_DocView.get();
+  return m_DocView.Get();
 }
 
 CXFA_FFDocView* CXFA_FFDoc::GetDocView(CXFA_LayoutProcessor* pLayout) {
-  return m_DocView && m_DocView->GetXFALayout() == pLayout ? m_DocView.get()
+  return m_DocView && m_DocView->GetXFALayout() == pLayout ? m_DocView.Get()
                                                            : nullptr;
 }
 
 CXFA_FFDocView* CXFA_FFDoc::GetDocView() {
-  return m_DocView.get();
+  return m_DocView.Get();
 }
 
 bool CXFA_FFDoc::OpenDoc(const RetainPtr<IFX_SeekableStream>& stream) {
