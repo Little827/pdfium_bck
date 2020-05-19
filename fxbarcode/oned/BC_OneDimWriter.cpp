@@ -32,6 +32,7 @@
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/cfx_renderdevice.h"
+#include "core/fxge/cfx_renderoptions.h"
 #include "core/fxge/cfx_unicodeencodingex.h"
 #include "core/fxge/text_char_pos.h"
 #include "fxbarcode/BC_Writer.h"
@@ -182,9 +183,11 @@ void CBC_OneDimWriter::ShowDeviceChars(CFX_RenderDevice* device,
   if (matrix) {
     affine_matrix.Concat(*matrix);
   }
+  CFX_RenderOptions options;
+  options.SetTextUseLcd(true);
   device->DrawNormalText(str.GetLength(), pCharPos, m_pFont.Get(),
                          static_cast<float>(iFontSize), affine_matrix,
-                         m_fontColor, FXTEXT_CLEARTYPE);
+                         m_fontColor, options);
 }
 
 bool CBC_OneDimWriter::ShowChars(WideStringView contents,

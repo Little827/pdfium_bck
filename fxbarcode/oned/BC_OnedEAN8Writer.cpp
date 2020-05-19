@@ -161,6 +161,8 @@ bool CBC_OnedEAN8Writer::ShowChars(WideStringView contents,
   re = matr1.TransformRect(rect1).GetOuterRect();
   device->FillRect(re, kBackgroundColor);
   strWidth = (int32_t)(strWidth * m_outputHScale);
+  CFX_RenderOptions options;
+  options.SetTextUseLcd(true);
 
   CalcTextInfo(tempStr, charpos.data(), m_pFont.Get(), (float)strWidth,
                iFontSize, blank);
@@ -171,7 +173,7 @@ bool CBC_OnedEAN8Writer::ShowChars(WideStringView contents,
     affine_matrix1.Concat(*matrix);
     device->DrawNormalText(iLen, charpos.data(), m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   tempStr = str.Substr(4, 4);
   iLen = tempStr.GetLength();
@@ -186,7 +188,7 @@ bool CBC_OnedEAN8Writer::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(iLen, &charpos[4], m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   return true;
 }
