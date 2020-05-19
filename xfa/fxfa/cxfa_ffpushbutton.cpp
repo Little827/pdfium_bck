@@ -19,6 +19,7 @@
 #include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/cxfa_textlayout.h"
 #include "xfa/fxfa/cxfa_textprovider.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_border.h"
 #include "xfa/fxfa/parser/cxfa_button.h"
 #include "xfa/fxfa/parser/cxfa_caption.h"
@@ -51,9 +52,6 @@ void CXFA_FFPushButton::RenderWidget(CXFA_Graphics* pGS,
 
 bool CXFA_FFPushButton::LoadWidget() {
   ASSERT(!IsLoaded());
-
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   auto pNew = pdfium::MakeUnique<CFWL_PushButton>(GetFWLApp());
   CFWL_PushButton* pPushButton = pNew.get();
@@ -138,20 +136,20 @@ void CXFA_FFPushButton::LoadHighlightCaption() {
 
   if (m_pNode->HasButtonRollover()) {
     if (!m_pRollProvider) {
-      m_pRollProvider = pdfium::MakeUnique<CXFA_TextProvider>(
-          m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Rollover);
+      m_pRollProvider = cppgc::MakeGarbageCollected<CXFA_TextProvider>(
+          GetHeap(), m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Rollover);
     }
-    m_pRolloverTextLayout =
-        pdfium::MakeUnique<CXFA_TextLayout>(GetDoc(), m_pRollProvider.get());
+    m_pRolloverTextLayout = cppgc::MakeGarbageCollected<CXFA_TextLayout>(
+        GetHeap(), GetDoc(), m_pRollProvider.Get());
   }
 
   if (m_pNode->HasButtonDown()) {
     if (!m_pDownProvider) {
-      m_pDownProvider = pdfium::MakeUnique<CXFA_TextProvider>(
-          m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Down);
+      m_pDownProvider = cppgc::MakeGarbageCollected<CXFA_TextProvider>(
+          GetHeap(), m_pNode.Get(), XFA_TEXTPROVIDERTYPE_Down);
     }
-    m_pDownTextLayout =
-        pdfium::MakeUnique<CXFA_TextLayout>(GetDoc(), m_pDownProvider.get());
+    m_pDownTextLayout = cppgc::MakeGarbageCollected<CXFA_TextLayout>(
+        GetHeap(), GetDoc(), m_pDownProvider.Get());
   }
 }
 
@@ -195,25 +193,16 @@ void CXFA_FFPushButton::RenderHighlightCaption(CXFA_Graphics* pGS,
 }
 
 void CXFA_FFPushButton::OnProcessMessage(CFWL_Message* pMessage) {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
-
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFPushButton::OnProcessEvent(CFWL_Event* pEvent) {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   m_pOldDelegate->OnProcessEvent(pEvent);
   CXFA_FFField::OnProcessEvent(pEvent);
 }
 
 void CXFA_FFPushButton::OnDrawWidget(CXFA_Graphics* pGraphics,
                                      const CFX_Matrix& matrix) {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
-
   auto* pWidget = GetNormalWidget();
   if (pWidget->GetStylesEx() & XFA_FWL_PSBSTYLEEXT_HiliteInverted) {
     if ((pWidget->GetStates() & FWL_STATE_PSB_Pressed) &&

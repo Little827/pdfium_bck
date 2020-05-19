@@ -14,6 +14,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/optional.h"
 #include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_localemgr.h"
 #include "xfa/fxfa/parser/cxfa_nodeowner.h"
 
@@ -49,7 +50,7 @@ class CXFA_Object;
 
 class CXFA_Document final : public CXFA_NodeOwner {
  public:
-  class LayoutProcessorIface {
+  class LayoutProcessorIface : public cppgc::GarbageCollectedMixin {
    public:
     LayoutProcessorIface();
     virtual ~LayoutProcessorIface();
@@ -59,12 +60,15 @@ class CXFA_Document final : public CXFA_NodeOwner {
     void SetDocument(CXFA_Document* pDocument) { m_pDocument = pDocument; }
     CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
 
+    void Trace(cppgc::Visitor* visitor) const override {
+      visitor->Trace(m_pDocument);
+    }
+
    private:
-    UnownedPtr<CXFA_Document> m_pDocument;
+    cppgc::Member<CXFA_Document> m_pDocument;
   };
 
-  CXFA_Document(CXFA_FFNotify* notify,
-                std::unique_ptr<LayoutProcessorIface> pLayout);
+  CXFA_Document(CXFA_FFNotify* notify, LayoutProcessorIface* pLayout);
   ~CXFA_Document() override;
 
   bool HasScriptContext() const { return !!m_pScriptContext; }
@@ -84,7 +88,7 @@ class CXFA_Document final : public CXFA_NodeOwner {
       const std::vector<UnownedPtr<CXFA_Object>>& arrayNodes) const;
 
   LayoutProcessorIface* GetLayoutProcessor() const {
-    return m_pLayoutProcessor.get();
+    return m_pLayoutProcessor.Get();
   }
 
   CXFA_Node* GetRoot() const { return m_pRootNode; }
@@ -122,19 +126,21 @@ class CXFA_Document final : public CXFA_NodeOwner {
 
   std::vector<CXFA_Node*> m_pPendingPageSet;
 
+  void Trace(cppgc::Visitor*) const override;
+
  private:
-  UnownedPtr<CXFA_FFNotify> const notify_;
-  CXFA_Node* m_pRootNode = nullptr;
-  std::map<uint32_t, CXFA_Node*> m_rgGlobalBinding;
+  const cppgc::Member<CXFA_FFNotify> notify_;
+  cppgc::Member<CXFA_Node> m_pRootNode;
+  std::map<uint32_t, cppgc::Member<CXFA_Node>> m_rgGlobalBinding;
   std::unique_ptr<CFXJSE_Engine> m_pScriptContext;
-  std::unique_ptr<LayoutProcessorIface> m_pLayoutProcessor;
+  cppgc::Member<LayoutProcessorIface> m_pLayoutProcessor;
   std::unique_ptr<CXFA_LocaleMgr> m_pLocaleMgr;
-  std::unique_ptr<CScript_DataWindow> m_pScriptDataWindow;
-  std::unique_ptr<CScript_EventPseudoModel> m_pScriptEvent;
-  std::unique_ptr<CScript_HostPseudoModel> m_pScriptHost;
-  std::unique_ptr<CScript_LogPseudoModel> m_pScriptLog;
-  std::unique_ptr<CScript_LayoutPseudoModel> m_pScriptLayout;
-  std::unique_ptr<CScript_SignaturePseudoModel> m_pScriptSignature;
+  cppgc::Member<CScript_DataWindow> m_pScriptDataWindow;
+  cppgc::Member<CScript_EventPseudoModel> m_pScriptEvent;
+  cppgc::Member<CScript_HostPseudoModel> m_pScriptHost;
+  cppgc::Member<CScript_LogPseudoModel> m_pScriptLog;
+  cppgc::Member<CScript_LayoutPseudoModel> m_pScriptLayout;
+  cppgc::Member<CScript_SignaturePseudoModel> m_pScriptSignature;
   XFA_VERSION m_eCurVersionMode = XFA_VERSION_DEFAULT;
   Optional<bool> m_Interactive;
   bool m_bStrictScoping = false;

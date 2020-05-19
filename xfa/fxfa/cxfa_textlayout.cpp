@@ -26,6 +26,7 @@
 #include "xfa/fgas/layout/cfx_linkuserdata.h"
 #include "xfa/fgas/layout/cfx_rtfbreak.h"
 #include "xfa/fgas/layout/cfx_textuserdata.h"
+#include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_loadercontext.h"
 #include "xfa/fxfa/cxfa_pieceline.h"
 #include "xfa/fxfa/cxfa_textparsecontext.h"
@@ -1254,4 +1255,8 @@ size_t CXFA_TextLayout::GetDisplayPos(const CXFA_TextPiece* pPiece,
   if (!pPiece || pPiece->iChars < 1)
     return 0;
   return m_pBreak->GetDisplayPos(pPiece, pCharPos);
+}
+
+void CXFA_TextLayout::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pDoc);
 }

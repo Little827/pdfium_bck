@@ -29,6 +29,7 @@
 #include "xfa/fxfa/cxfa_ffwidgethandler.h"
 #include "xfa/fxfa/cxfa_fontmgr.h"
 #include "xfa/fxfa/cxfa_readynodeiterator.h"
+#include "xfa/fxfa/heap.h"
 
 namespace {
 
@@ -81,7 +82,8 @@ RetainPtr<CPDF_SeekableMultiStream> CreateXFAMultiStream(
 
 CPDFXFA_Context::CPDFXFA_Context(CPDF_Document* pPDFDoc)
     : m_pPDFDoc(pPDFDoc),
-      m_pXFAApp(std::make_unique<CXFA_FFApp>(this)),
+      // m_pXFAApp(std::make_unique<CXFA_FFApp>(this)),
+      m_pXFAApp(MakeGarbageCollected<CXFA_FFApp>(this)),
       m_DocEnv(this) {
   ASSERT(m_pPDFDoc);
 }
@@ -101,6 +103,8 @@ CPDFXFA_Context::~CPDFXFA_Context() {
   }
 
   m_nLoadStatus = FXFA_LOADSTATUS_CLOSED;
+  m_pXFAApp.Clear();
+  GetHeap()->ForceGarbageCollectionSlow("CPDFXFA_Context", "TearDown");
 }
 
 void CPDFXFA_Context::CloseXFADoc() {
@@ -108,7 +112,7 @@ void CPDFXFA_Context::CloseXFADoc() {
     return;
 
   m_pXFADocView = nullptr;
-  m_pXFADoc.reset();
+  m_pXFADoc = nullptr;
 }
 
 void CPDFXFA_Context::SetFormFillEnv(
@@ -140,7 +144,7 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
   }
 
-  m_pXFADoc = CXFA_FFDoc::CreateAndOpen(m_pXFAApp.get(), &m_DocEnv,
+  m_pXFADoc = CXFA_FFDoc::CreateAndOpen(m_pXFAApp.Get(), &m_DocEnv,
                                         m_pPDFDoc.Get(), stream);
   if (!m_pXFADoc) {
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);

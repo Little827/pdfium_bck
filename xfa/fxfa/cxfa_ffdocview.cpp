@@ -63,6 +63,10 @@ CXFA_FFDocView::CXFA_FFDocView(CXFA_FFDoc* pDoc) : m_pDoc(pDoc) {}
 
 CXFA_FFDocView::~CXFA_FFDocView() = default;
 
+void CXFA_FFDocView::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pDoc);
+}
+
 void CXFA_FFDocView::InitLayout(CXFA_Node* pNode) {
   RunBindItems();
   ExecEventActivityByDeepFirst(pNode, XFA_EVENT_Initialize, false, true);
@@ -290,10 +294,6 @@ CXFA_FFDocView::CreateReadyNodeIterator() {
 bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
   if (pNewFocus == m_pFocusWidget)
     return false;
-
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |pNewFocus|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(
-      pNewFocus ? pNewFocus->GetLayoutItem() : nullptr);
 
   if (m_pFocusWidget) {
     CXFA_ContentLayoutItem* pItem = m_pFocusWidget->GetLayoutItem();

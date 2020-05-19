@@ -26,7 +26,6 @@ class CXFA_TraverseStrategy_LayoutItem {
 
 using CXFA_LayoutItemIterator =
     CXFA_NodeIteratorTemplate<CXFA_LayoutItem,
-                              CXFA_TraverseStrategy_LayoutItem,
-                              RetainPtr<CXFA_LayoutItem>>;
+                              CXFA_TraverseStrategy_LayoutItem>;
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_TRAVERSESTRATEGY_LAYOUTITEM_H_

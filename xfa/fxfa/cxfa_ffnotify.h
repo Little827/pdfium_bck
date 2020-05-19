@@ -11,6 +11,7 @@
 
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 class CXFA_ContentLayoutItem;
@@ -20,7 +21,7 @@ class CXFA_LayoutProcessor;
 class CXFA_Script;
 class CXFA_ViewLayoutItem;
 
-class CXFA_FFNotify {
+class CXFA_FFNotify final : public cppgc::GarbageCollected<CXFA_FFNotify> {
  public:
   explicit CXFA_FFNotify(CXFA_FFDoc* pDoc);
   ~CXFA_FFNotify();
@@ -44,7 +45,7 @@ class CXFA_FFNotify {
   void OnChildRemoved();
 
   std::unique_ptr<CXFA_FFPageView> OnCreateViewLayoutItem(CXFA_Node* pNode);
-  std::unique_ptr<CXFA_FFWidget> OnCreateContentLayoutItem(CXFA_Node* pNode);
+  CXFA_FFWidget* OnCreateContentLayoutItem(CXFA_Node* pNode);
 
   void OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
                          CXFA_LayoutItem* pSender,
@@ -73,8 +74,10 @@ class CXFA_FFNotify {
   CXFA_Node* GetFocusWidgetNode();
   void SetFocusWidgetNode(CXFA_Node* pNode);
 
+  void Trace(cppgc::Visitor*) const;
+
  private:
-  UnownedPtr<CXFA_FFDoc> const m_pDoc;
+  const cppgc::Member<CXFA_FFDoc> m_pDoc;
 };
 
 #endif  // XFA_FXFA_CXFA_FFNOTIFY_H_

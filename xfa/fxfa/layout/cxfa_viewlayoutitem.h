@@ -15,9 +15,11 @@ class CXFA_FFPageView;
 
 class CXFA_ViewLayoutItem : public CXFA_LayoutItem {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+  // template <typename T, typename... Args>
+  // friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
+  CXFA_ViewLayoutItem(CXFA_Node* pNode,
+                      std::unique_ptr<CXFA_FFPageView> pPageView);
   ~CXFA_ViewLayoutItem() override;
 
   CXFA_FFPageView* GetPageView() const { return m_pFFPageView.get(); }
@@ -29,9 +31,6 @@ class CXFA_ViewLayoutItem : public CXFA_LayoutItem {
   UnownedPtr<CXFA_Node> m_pOldSubform;
 
  private:
-  CXFA_ViewLayoutItem(CXFA_Node* pNode,
-                      std::unique_ptr<CXFA_FFPageView> pPageView);
-
   std::unique_ptr<CXFA_FFPageView> const m_pFFPageView;
 };
 

@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 class CXFA_ContentLayoutProcessor;
@@ -20,7 +21,9 @@ class CXFA_Node;
 class CXFA_ViewLayoutItem;
 class CXFA_ViewLayoutProcessor;
 
-class CXFA_LayoutProcessor : public CXFA_Document::LayoutProcessorIface {
+class CXFA_LayoutProcessor
+    : public cppgc::GarbageCollected<CXFA_LayoutProcessor>,
+      public CXFA_Document::LayoutProcessorIface {
  public:
   static CXFA_LayoutProcessor* FromDocument(const CXFA_Document* pXFADoc);
 
@@ -42,6 +45,10 @@ class CXFA_LayoutProcessor : public CXFA_Document::LayoutProcessorIface {
   }
   CXFA_ViewLayoutProcessor* GetLayoutPageMgr() const {
     return m_pViewLayoutProcessor.get();
+  }
+
+  void Trace(cppgc::Visitor* visitor) const override {
+    CXFA_Document::LayoutProcessorIface::Trace(visitor);
   }
 
  private:

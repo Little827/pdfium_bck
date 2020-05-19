@@ -33,9 +33,6 @@ CXFA_FFCheckButton::~CXFA_FFCheckButton() = default;
 bool CXFA_FFCheckButton::LoadWidget() {
   ASSERT(!IsLoaded());
 
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   auto pNew = pdfium::MakeUnique<CFWL_CheckBox>(GetFWLApp());
   CFWL_CheckBox* pCheckBox = pNew.get();
   SetNormalWidget(std::move(pNew));
@@ -254,9 +251,6 @@ bool CXFA_FFCheckButton::OnLButtonUp(uint32_t dwFlags,
   if (!GetNormalWidget() || !IsButtonDown())
     return false;
 
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
-
   SetButtonDown(false);
   SendMessageToFWLWidget(pdfium::MakeUnique<CFWL_MessageMouse>(
       GetNormalWidget(), FWL_MouseCommand::LeftButtonUp, dwFlags,
@@ -298,24 +292,16 @@ bool CXFA_FFCheckButton::UpdateFWLData() {
   if (!GetNormalWidget())
     return false;
 
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
   SetFWLCheckState(m_pNode->GetCheckState());
   GetNormalWidget()->Update();
   return true;
 }
 
 void CXFA_FFCheckButton::OnProcessMessage(CFWL_Message* pMessage) {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
-
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
-
   CXFA_FFField::OnProcessEvent(pEvent);
   switch (pEvent->GetType()) {
     case CFWL_Event::Type::CheckStateChanged: {
@@ -355,9 +341,6 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
 
 void CXFA_FFCheckButton::OnDrawWidget(CXFA_Graphics* pGraphics,
                                       const CFX_Matrix& matrix) {
-  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
-
   m_pOldDelegate->OnDrawWidget(pGraphics, matrix);
 }
 
