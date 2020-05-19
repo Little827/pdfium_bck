@@ -13,6 +13,7 @@
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 class CFGAS_PDFFontMgr;
@@ -39,14 +40,16 @@ struct FX_IMAGEDIB_AND_DPI {
   int32_t iImageYDpi;
 };
 
-class CXFA_FFDoc {
+class CXFA_FFDoc final : public cppgc::GarbageCollected<CXFA_FFDoc> {
  public:
-  static std::unique_ptr<CXFA_FFDoc> CreateAndOpen(
-      CXFA_FFApp* pApp,
-      IXFA_DocEnvironment* pDocEnvironment,
-      CPDF_Document* pPDFDoc,
-      const RetainPtr<IFX_SeekableStream>& stream);
+  static CXFA_FFDoc* CreateAndOpen(CXFA_FFApp* pApp,
+                                   IXFA_DocEnvironment* pDocEnvironment,
+                                   CPDF_Document* pPDFDoc,
+                                   const RetainPtr<IFX_SeekableStream>& stream);
 
+  CXFA_FFDoc(CXFA_FFApp* pApp,
+             IXFA_DocEnvironment* pDocEnvironment,
+             CPDF_Document* pPDFDoc);
   ~CXFA_FFDoc();
 
   IXFA_DocEnvironment* GetDocEnvironment() const {
@@ -57,7 +60,7 @@ class CXFA_FFDoc {
 
   CXFA_FFDocView* CreateDocView();
 
-  CXFA_Document* GetXFADoc() const { return m_pDocument.get(); }
+  CXFA_Document* GetXFADoc() const { return m_pDocument.Get(); }
   CXFA_FFApp* GetApp() const { return m_pApp.Get(); }
   CPDF_Document* GetPDFDoc() const { return m_pPDFDoc.Get(); }
   CXFA_FFDocView* GetDocView(CXFA_LayoutProcessor* pLayout);
@@ -70,20 +73,19 @@ class CXFA_FFDoc {
   bool SavePackage(CXFA_Node* pNode,
                    const RetainPtr<IFX_SeekableStream>& pFile);
 
+  void Trace(cppgc::Visitor*) const;
+
  private:
-  CXFA_FFDoc(CXFA_FFApp* pApp,
-             IXFA_DocEnvironment* pDocEnvironment,
-             CPDF_Document* pPDFDoc);
   bool OpenDoc(const RetainPtr<IFX_SeekableStream>& stream);
   bool ParseDoc(const RetainPtr<IFX_SeekableStream>& stream);
 
   UnownedPtr<IXFA_DocEnvironment> const m_pDocEnvironment;
-  UnownedPtr<CXFA_FFApp> const m_pApp;
+  const cppgc::Member<CXFA_FFApp> m_pApp;
   UnownedPtr<CPDF_Document> const m_pPDFDoc;
   std::unique_ptr<CFX_XMLDocument> m_pXMLDoc;
   std::unique_ptr<CXFA_FFNotify> m_pNotify;
-  std::unique_ptr<CXFA_Document> m_pDocument;
-  std::unique_ptr<CXFA_FFDocView> m_DocView;
+  cppgc::Member<CXFA_Document> m_pDocument;
+  cppgc::Member<CXFA_FFDocView> m_DocView;
   std::unique_ptr<CFGAS_PDFFontMgr> m_pPDFFontMgr;
   std::map<uint32_t, FX_IMAGEDIB_AND_DPI> m_HashToDibDpiMap;
   FormType m_FormType = FormType::kXFAForeground;

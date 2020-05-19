@@ -16,11 +16,16 @@ CXFA_NodeOwner::~CXFA_NodeOwner() {
   is_being_destroyed_ = true;
 }
 
-CXFA_Node* CXFA_NodeOwner::AddOwnedNode(std::unique_ptr<CXFA_Node> node) {
+CXFA_Node* CXFA_NodeOwner::AddOwnedNode(CXFA_Node* node) {
   if (!node)
     return nullptr;
 
-  CXFA_Node* ret = node.get();
-  nodes_.push_back(std::move(node));
-  return ret;
+  nodes_.push_back(node);
+  return node;
+}
+
+void CXFA_NodeOwner::Trace(cppgc::Visitor* visitor) const {
+  for (const auto& node : nodes_) {
+    visitor->Trace(node);
+  }
 }

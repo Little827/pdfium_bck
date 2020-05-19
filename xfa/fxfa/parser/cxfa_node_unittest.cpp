@@ -7,6 +7,9 @@
 #include "fxjs/xfa/cjx_node.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/ptr_util.h"
+#include "v8/include/cppgc/platform.h"
+#include "v8/include/libplatform/libplatform.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
@@ -28,11 +31,12 @@ class TestNode final : public CXFA_Node {
 
 }  // namespace
 
-class CXFANodeTest : public testing::Test {
+class CXFANodeTest : public testing::Test, public ScopedHeap {
  public:
   void SetUp() override {
-    doc_ = pdfium::MakeUnique<CXFA_Document>(nullptr, nullptr);
-    node_ = pdfium::MakeUnique<TestNode>(doc_.get());
+    doc_ =
+        cppgc::MakeGarbageCollected<CXFA_Document>(GetHeap(), nullptr, nullptr);
+    node_ = cppgc::MakeGarbageCollected<TestNode>(GetHeap(), doc_.Get());
   }
 
   void TearDown() override {
@@ -40,12 +44,12 @@ class CXFANodeTest : public testing::Test {
     doc_ = nullptr;
   }
 
-  CXFA_Document* GetDoc() const { return doc_.get(); }
-  CXFA_Node* GetNode() const { return node_.get(); }
+  CXFA_Document* GetDoc() const { return doc_.Get(); }
+  CXFA_Node* GetNode() const { return node_.Get(); }
 
  private:
-  std::unique_ptr<CXFA_Document> doc_;
-  std::unique_ptr<TestNode> node_;
+  cppgc::Persistent<CXFA_Document> doc_;
+  cppgc::Persistent<TestNode> node_;
 };
 
 TEST_F(CXFANodeTest, InsertFirstChild) {

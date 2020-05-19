@@ -501,3 +501,7 @@ void CXFA_FFNotify::OnLayoutItemRemoving(CXFA_LayoutProcessor* pLayout,
   m_pDoc->GetDocEnvironment()->WidgetPreRemove(pWidget);
   pWidget->InvalidateRect();
 }
+
+void CXFA_FFNotify::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pDoc);
+}

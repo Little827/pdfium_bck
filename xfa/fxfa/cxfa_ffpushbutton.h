@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fxfa/cxfa_fffield.h"
+#include "xfa/fxfa/heap.h"
 
 #define XFA_FWL_PSBSTYLEEXT_HiliteInverted (1L << 0)
 #define XFA_FWL_PSBSTYLEEXT_HilitePush (1L << 1)
@@ -46,10 +47,10 @@ class CXFA_FFPushButton final : public CXFA_FFField {
   FX_ARGB GetLineColor();
   FX_ARGB GetFillColor();
 
-  std::unique_ptr<CXFA_TextLayout> m_pRolloverTextLayout;
-  std::unique_ptr<CXFA_TextLayout> m_pDownTextLayout;
-  std::unique_ptr<CXFA_TextProvider> m_pRollProvider;
-  std::unique_ptr<CXFA_TextProvider> m_pDownProvider;
+  cppgc::Persistent<CXFA_TextLayout> m_pRolloverTextLayout;
+  cppgc::Persistent<CXFA_TextLayout> m_pDownTextLayout;
+  cppgc::Persistent<CXFA_TextProvider> m_pRollProvider;
+  cppgc::Persistent<CXFA_TextProvider> m_pDownProvider;
   UnownedPtr<IFWL_WidgetDelegate> m_pOldDelegate;
   UnownedPtr<CXFA_Button> const button_;
 };
