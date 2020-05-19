@@ -34,6 +34,24 @@
       "revId": "4501a50e251b88892b0167d6f94b180ea025b095",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afbc3591_c0ad491f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-19T01:26:40Z",
+      "side": 1,
+      "message": "I did this 3 times today, while my workflow has not really changed. I think something in depot_tools may have changed and became too helpful in adding \"Bug:\" entries. My local git branches did have \"bug_1435\" in the name, because these were originally chained together.",
+      "parentUuid": "9a0bfbc9_6efb8774",
+      "revId": "4501a50e251b88892b0167d6f94b180ea025b095",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
