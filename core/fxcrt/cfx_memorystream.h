@@ -31,7 +31,7 @@ class CFX_MemoryStream final : public IFX_SeekableStream {
                           size_t size) override;
   bool Flush() override;
 
-  const uint8_t* GetBuffer() const { return m_data.get(); }
+  const uint8_t* GetBuffer() const { return data_.get(); }
 
  private:
   CFX_MemoryStream();
@@ -39,10 +39,10 @@ class CFX_MemoryStream final : public IFX_SeekableStream {
                    size_t nSize);
   ~CFX_MemoryStream() override;
 
-  std::unique_ptr<uint8_t, FxFreeDeleter> m_data;
-  size_t m_nTotalSize;
-  size_t m_nCurSize;
-  size_t m_nCurPos = 0;
+  std::unique_ptr<uint8_t, FxFreeDeleter> data_;
+  size_t total_size_;
+  size_t cur_size_;
+  size_t cur_pos_ = 0;
 };
 
 #endif  // CORE_FXCRT_CFX_MEMORYSTREAM_H_

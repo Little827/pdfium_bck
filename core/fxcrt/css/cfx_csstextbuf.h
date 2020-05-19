@@ -17,13 +17,13 @@ class CFX_CSSTextBuf {
   CFX_CSSTextBuf();
   ~CFX_CSSTextBuf();
 
-  void Clear() { m_Buffer.clear(); }
-  bool IsEmpty() const { return m_Buffer.empty(); }
+  void Clear() { buffer_.clear(); }
+  bool IsEmpty() const { return buffer_.empty(); }
   void AppendCharIfNotLeadingBlank(wchar_t wch);
   WideStringView GetTrailingBlankTrimmedString() const;
 
  protected:
-  std::vector<wchar_t, FxAllocAllocator<wchar_t>> m_Buffer;
+  std::vector<wchar_t, FxAllocAllocator<wchar_t>> buffer_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSTEXTBUF_H_

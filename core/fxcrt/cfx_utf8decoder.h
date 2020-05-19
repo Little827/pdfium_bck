@@ -16,13 +16,13 @@ class CFX_UTF8Decoder {
 
   void Input(uint8_t byte);
   void AppendCodePoint(uint32_t ch);
-  void ClearStatus() { m_PendingBytes = 0; }
-  WideStringView GetResult() const { return m_Buffer.AsStringView(); }
+  void ClearStatus() { pending_bytes_ = 0; }
+  WideStringView GetResult() const { return buffer_.AsStringView(); }
 
  private:
-  int m_PendingBytes = 0;
-  uint32_t m_PendingChar = 0;
-  CFX_WideTextBuf m_Buffer;
+  int pending_bytes_ = 0;
+  uint32_t pending_char_ = 0;
+  CFX_WideTextBuf buffer_;
 };
 
 #endif  // CORE_FXCRT_CFX_UTF8DECODER_H_

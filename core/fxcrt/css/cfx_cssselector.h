@@ -28,15 +28,15 @@ class CFX_CSSSelector {
   CFX_CSSSelector* GetNextSelector() const;
 
   void SetNext(std::unique_ptr<CFX_CSSSelector> pNext) {
-    m_pNext = std::move(pNext);
+    next_ = std::move(pNext);
   }
 
  private:
-  void SetType(CFX_CSSSelectorType eType) { m_eType = eType; }
+  void SetType(CFX_CSSSelectorType eType) { type_ = eType; }
 
-  CFX_CSSSelectorType m_eType;
-  uint32_t m_dwHash;
-  std::unique_ptr<CFX_CSSSelector> m_pNext;
+  CFX_CSSSelectorType type_;
+  uint32_t hash_;
+  std::unique_ptr<CFX_CSSSelector> next_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSSELECTOR_H_

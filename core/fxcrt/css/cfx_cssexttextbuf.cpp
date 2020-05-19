@@ -6,6 +6,6 @@
 
 #include "core/fxcrt/css/cfx_cssexttextbuf.h"
 
-CFX_CSSExtTextBuf::CFX_CSSExtTextBuf(WideStringView str) : m_Buffer(str) {}
+CFX_CSSExtTextBuf::CFX_CSSExtTextBuf(WideStringView str) : buffer_(str) {}
 
 CFX_CSSExtTextBuf::~CFX_CSSExtTextBuf() = default;

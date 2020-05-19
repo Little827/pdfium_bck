@@ -24,9 +24,9 @@ struct ReleaseDeleter {
 template <class T>
 class RetainPtr {
  public:
-  explicit RetainPtr(T* pObj) : m_pObj(pObj) {
-    if (m_pObj)
-      m_pObj->Retain();
+  explicit RetainPtr(T* pObj) : obj_(pObj) {
+    if (obj_)
+      obj_->Retain();
   }
 
   RetainPtr() = default;
@@ -50,17 +50,17 @@ class RetainPtr {
   void Reset(T* obj = nullptr) {
     if (obj)
       obj->Retain();
-    m_pObj.reset(obj);
+    obj_.reset(obj);
   }
 
   explicit operator T*() const { return Get(); }
-  T* Get() const { return m_pObj.get(); }
+  T* Get() const { return obj_.get(); }
   UnownedPtr<T> BackPointer() const { return UnownedPtr<T>(Get()); }
-  void Swap(RetainPtr& that) { m_pObj.swap(that.m_pObj); }
+  void Swap(RetainPtr& that) { obj_.swap(that.obj_); }
 
   // Useful for passing notion of object ownership across a C API.
-  T* Leak() { return m_pObj.release(); }
-  void Unleak(T* ptr) { m_pObj.reset(ptr); }
+  T* Leak() { return obj_.release(); }
+  void Unleak(T* ptr) { obj_.reset(ptr); }
 
   RetainPtr& operator=(const RetainPtr& that) {
     if (*this != that)
@@ -70,7 +70,7 @@ class RetainPtr {
 
   // Move-assign a RetainPtr. After assignment, |that| will be NULL.
   RetainPtr& operator=(RetainPtr&& that) {
-    m_pObj.reset(that.Leak());
+    obj_.reset(that.Leak());
     return *this;
   }
 
@@ -97,12 +97,12 @@ class RetainPtr {
     return std::less<T*>()(Get(), that.Get());
   }
 
-  explicit operator bool() const { return !!m_pObj; }
-  T& operator*() const { return *m_pObj; }
-  T* operator->() const { return m_pObj.get(); }
+  explicit operator bool() const { return !!obj_; }
+  T& operator*() const { return *obj_; }
+  T* operator->() const { return obj_.get(); }
 
  private:
-  std::unique_ptr<T, ReleaseDeleter<T>> m_pObj;
+  std::unique_ptr<T, ReleaseDeleter<T>> obj_;
 };
 
 // Trivial implementation - internal ref count with virtual destructor.
@@ -110,7 +110,7 @@ class Retainable {
  public:
   Retainable() = default;
 
-  bool HasOneRef() const { return m_nRefCount == 1; }
+  bool HasOneRef() const { return ref_count_ == 1; }
 
  protected:
   virtual ~Retainable() = default;
@@ -125,14 +125,14 @@ class Retainable {
   Retainable(const Retainable& that) = delete;
   Retainable& operator=(const Retainable& that) = delete;
 
-  void Retain() const { ++m_nRefCount; }
+  void Retain() const { ++ref_count_; }
   void Release() const {
-    ASSERT(m_nRefCount > 0);
-    if (--m_nRefCount == 0)
+    ASSERT(ref_count_ > 0);
+    if (--ref_count_ == 0)
       delete this;
   }
 
-  mutable intptr_t m_nRefCount = 0;
+  mutable intptr_t ref_count_ = 0;
 };
 
 template <typename T, typename U>

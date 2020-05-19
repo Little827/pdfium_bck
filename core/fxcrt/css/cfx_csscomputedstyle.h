@@ -23,37 +23,37 @@ class CFX_CSSComputedStyle final : public Retainable {
     InheritedData();
     ~InheritedData();
 
-    CFX_CSSLength m_LetterSpacing;
-    CFX_CSSLength m_WordSpacing;
-    CFX_CSSLength m_TextIndent;
-    RetainPtr<CFX_CSSValueList> m_pFontFamily;
-    float m_fFontSize;
-    float m_fLineHeight;
-    FX_ARGB m_dwFontColor;
-    uint16_t m_wFontWeight;
-    CFX_CSSFontVariant m_eFontVariant;
-    CFX_CSSFontStyle m_eFontStyle;
-    CFX_CSSTextAlign m_eTextAlign;
+    CFX_CSSLength letter_spacing_;
+    CFX_CSSLength word_spacing_;
+    CFX_CSSLength text_indent_;
+    RetainPtr<CFX_CSSValueList> font_family_;
+    float font_size_;
+    float line_height_;
+    FX_ARGB font_color_;
+    uint16_t font_weight_;
+    CFX_CSSFontVariant font_variant_;
+    CFX_CSSFontStyle font_style_;
+    CFX_CSSTextAlign text_align_;
   };
 
   class NonInheritedData {
    public:
     NonInheritedData();
 
-    CFX_CSSRect m_MarginWidth;
-    CFX_CSSRect m_BorderWidth;
-    CFX_CSSRect m_PaddingWidth;
-    CFX_CSSLength m_Top;
-    CFX_CSSLength m_Bottom;
-    CFX_CSSLength m_Left;
-    CFX_CSSLength m_Right;
-    float m_fVerticalAlign;
-    CFX_CSSDisplay m_eDisplay;
-    CFX_CSSVerticalAlign m_eVerticalAlignType;
-    uint8_t m_dwTextDecoration;
-    bool m_bHasMargin;
-    bool m_bHasBorder;
-    bool m_bHasPadding;
+    CFX_CSSRect margin_width_;
+    CFX_CSSRect border_width_;
+    CFX_CSSRect padding_width_;
+    CFX_CSSLength top_;
+    CFX_CSSLength bottom_;
+    CFX_CSSLength left_;
+    CFX_CSSLength right_;
+    float vertical_align_;
+    CFX_CSSDisplay display_;
+    CFX_CSSVerticalAlign vertical_align_type_;
+    uint8_t text_decoration_;
+    bool has_margin_;
+    bool has_border_;
+    bool has_padding_;
   };
 
   template <typename T, typename... Args>
@@ -97,14 +97,14 @@ class CFX_CSSComputedStyle final : public Retainable {
 
   bool GetCustomStyle(const WideString& wsName, WideString* pValue) const;
 
-  InheritedData m_InheritedData;
-  NonInheritedData m_NonInheritedData;
+  InheritedData inherited_data_;
+  NonInheritedData non_inherited_data_;
 
  private:
   CFX_CSSComputedStyle();
   ~CFX_CSSComputedStyle() override;
 
-  std::vector<CFX_CSSCustomProperty> m_CustomProperties;
+  std::vector<CFX_CSSCustomProperty> custom_properties_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSCOMPUTEDSTYLE_H_

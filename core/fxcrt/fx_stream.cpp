@@ -19,9 +19,9 @@
 #include <direct.h>
 
 struct FX_FolderHandle {
-  HANDLE m_Handle;
-  bool m_bEnd;
-  WIN32_FIND_DATAA m_FindData;
+  HANDLE handle_;
+  bool end_;
+  WIN32_FIND_DATAA find_data_;
 };
 #else
 #include <dirent.h>
@@ -30,8 +30,8 @@ struct FX_FolderHandle {
 #include <unistd.h>
 
 struct FX_FolderHandle {
-  ByteString m_Path;
-  DIR* m_Dir;
+  ByteString path_;
+  DIR* dir_;
 };
 #endif
 
@@ -43,30 +43,30 @@ class CFX_CRTFileStream final : public IFX_SeekableStream {
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
   // IFX_SeekableStream:
-  FX_FILESIZE GetSize() override { return m_pFile->GetSize(); }
+  FX_FILESIZE GetSize() override { return file_->GetSize(); }
   bool IsEOF() override { return GetPosition() >= GetSize(); }
-  FX_FILESIZE GetPosition() override { return m_pFile->GetPosition(); }
+  FX_FILESIZE GetPosition() override { return file_->GetPosition(); }
   bool ReadBlockAtOffset(void* buffer,
                          FX_FILESIZE offset,
                          size_t size) override {
-    return m_pFile->ReadPos(buffer, size, offset) > 0;
+    return file_->ReadPos(buffer, size, offset) > 0;
   }
   size_t ReadBlock(void* buffer, size_t size) override {
-    return m_pFile->Read(buffer, size);
+    return file_->Read(buffer, size);
   }
   bool WriteBlockAtOffset(const void* buffer,
                           FX_FILESIZE offset,
                           size_t size) override {
-    return !!m_pFile->WritePos(buffer, size, offset);
+    return !!file_->WritePos(buffer, size, offset);
   }
-  bool Flush() override { return m_pFile->Flush(); }
+  bool Flush() override { return file_->Flush(); }
 
  private:
   explicit CFX_CRTFileStream(std::unique_ptr<FileAccessIface> pFA)
-      : m_pFile(std::move(pFA)) {}
+      : file_(std::move(pFA)) {}
   ~CFX_CRTFileStream() override {}
 
-  std::unique_ptr<FileAccessIface> m_pFile;
+  std::unique_ptr<FileAccessIface> file_;
 };
 
 }  // namespace
@@ -124,20 +124,20 @@ bool IFX_SeekableStream::WriteString(ByteStringView str) {
 FX_FolderHandle* FX_OpenFolder(const char* path) {
   auto handle = std::make_unique<FX_FolderHandle>();
 #if defined(OS_WIN)
-  handle->m_Handle =
+  handle->handle_ =
       FindFirstFileExA((ByteString(path) + "/*.*").c_str(), FindExInfoStandard,
-                       &handle->m_FindData, FindExSearchNameMatch, nullptr, 0);
-  if (handle->m_Handle == INVALID_HANDLE_VALUE)
+                       &handle->find_data_, FindExSearchNameMatch, nullptr, 0);
+  if (handle->handle_ == INVALID_HANDLE_VALUE)
     return nullptr;
 
-  handle->m_bEnd = false;
+  handle->end_ = false;
 #else
   DIR* dir = opendir(path);
   if (!dir)
     return nullptr;
 
-  handle->m_Path = path;
-  handle->m_Dir = dir;
+  handle->path_ = path;
+  handle->dir_ = dir;
 #endif
   return handle.release();
 }
@@ -149,20 +149,20 @@ bool FX_GetNextFile(FX_FolderHandle* handle,
     return false;
 
 #if defined(OS_WIN)
-  if (handle->m_bEnd)
+  if (handle->end_)
     return false;
 
-  *filename = handle->m_FindData.cFileName;
+  *filename = handle->find_data_.cFileName;
   *bFolder =
-      (handle->m_FindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) != 0;
-  if (!FindNextFileA(handle->m_Handle, &handle->m_FindData))
-    handle->m_bEnd = true;
+      (handle->find_data_.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) != 0;
+  if (!FindNextFileA(handle->handle_, &handle->find_data_))
+    handle->end_ = true;
   return true;
 #else
-  struct dirent* de = readdir(handle->m_Dir);
+  struct dirent* de = readdir(handle->dir_);
   if (!de)
     return false;
-  ByteString fullpath = handle->m_Path + "/" + de->d_name;
+  ByteString fullpath = handle->path_ + "/" + de->d_name;
   struct stat deStat;
   if (stat(fullpath.c_str(), &deStat) < 0)
     return false;
@@ -178,9 +178,9 @@ void FX_CloseFolder(FX_FolderHandle* handle) {
     return;
 
 #if defined(OS_WIN)
-  FindClose(handle->m_Handle);
+  FindClose(handle->handle_);
 #else
-  closedir(handle->m_Dir);
+  closedir(handle->dir_);
 #endif
   delete handle;
 }

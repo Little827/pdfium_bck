@@ -19,19 +19,19 @@ class FX_Number {
   explicit FX_Number(float value);
   explicit FX_Number(ByteStringView str);
 
-  bool IsInteger() const { return m_bInteger; }
-  bool IsSigned() const { return m_bSigned; }
+  bool IsInteger() const { return integer_; }
+  bool IsSigned() const { return signed_; }
 
   int32_t GetSigned() const;  // Underflow/Overflow possible.
   float GetFloat() const;
 
  private:
-  bool m_bInteger;  // One of the two integers vs. float type.
-  bool m_bSigned;   // Only valid if |m_bInteger|.
+  bool integer_;  // One of the two integers vs. float type.
+  bool signed_;   // Only valid if |integer_|.
   union {
-    uint32_t m_UnsignedValue;
-    int32_t m_SignedValue;
-    float m_FloatValue;
+    uint32_t unsigned_value_;
+    int32_t signed_value_;
+    float float_value_;
   };
 };
 

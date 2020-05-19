@@ -6,4 +6,4 @@
 
 #include "core/fxcrt/css/cfx_cssvalue.h"
 
-CFX_CSSValue::CFX_CSSValue(CFX_CSSPrimitiveType type) : m_value(type) {}
+CFX_CSSValue::CFX_CSSValue(CFX_CSSPrimitiveType type) : value_(type) {}

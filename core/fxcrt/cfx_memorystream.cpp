@@ -11,25 +11,25 @@
 
 #include "core/fxcrt/fx_safe_types.h"
 
-CFX_MemoryStream::CFX_MemoryStream() : m_nTotalSize(0), m_nCurSize(0) {}
+CFX_MemoryStream::CFX_MemoryStream() : total_size_(0), cur_size_(0) {}
 
 CFX_MemoryStream::CFX_MemoryStream(
     std::unique_ptr<uint8_t, FxFreeDeleter> pBuffer,
     size_t nSize)
-    : m_data(std::move(pBuffer)), m_nTotalSize(nSize), m_nCurSize(nSize) {}
+    : data_(std::move(pBuffer)), total_size_(nSize), cur_size_(nSize) {}
 
 CFX_MemoryStream::~CFX_MemoryStream() = default;
 
 FX_FILESIZE CFX_MemoryStream::GetSize() {
-  return static_cast<FX_FILESIZE>(m_nCurSize);
+  return static_cast<FX_FILESIZE>(cur_size_);
 }
 
 bool CFX_MemoryStream::IsEOF() {
-  return m_nCurPos >= static_cast<size_t>(GetSize());
+  return cur_pos_ >= static_cast<size_t>(GetSize());
 }
 
 FX_FILESIZE CFX_MemoryStream::GetPosition() {
-  return static_cast<FX_FILESIZE>(m_nCurPos);
+  return static_cast<FX_FILESIZE>(cur_pos_);
 }
 
 bool CFX_MemoryStream::Flush() {
@@ -45,21 +45,21 @@ bool CFX_MemoryStream::ReadBlockAtOffset(void* buffer,
   FX_SAFE_SIZE_T newPos = size;
   newPos += offset;
   if (!newPos.IsValid() || newPos.ValueOrDefault(0) == 0 ||
-      newPos.ValueOrDie() > m_nCurSize) {
+      newPos.ValueOrDie() > cur_size_) {
     return false;
   }
 
-  m_nCurPos = newPos.ValueOrDie();
+  cur_pos_ = newPos.ValueOrDie();
   memcpy(buffer, &GetBuffer()[offset], size);
   return true;
 }
 
 size_t CFX_MemoryStream::ReadBlock(void* buffer, size_t size) {
-  if (m_nCurPos >= m_nCurSize)
+  if (cur_pos_ >= cur_size_)
     return 0;
 
-  size_t nRead = std::min(size, m_nCurSize - m_nCurPos);
-  if (!ReadBlockAtOffset(buffer, static_cast<int32_t>(m_nCurPos), nRead))
+  size_t nRead = std::min(size, cur_size_ - cur_pos_);
+  if (!ReadBlockAtOffset(buffer, static_cast<int32_t>(cur_pos_), nRead))
     return 0;
 
   return nRead;
@@ -77,7 +77,7 @@ bool CFX_MemoryStream::WriteBlockAtOffset(const void* buffer,
     return false;
 
   size_t new_pos = safe_new_pos.ValueOrDie();
-  if (new_pos > m_nTotalSize) {
+  if (new_pos > total_size_) {
     static constexpr size_t kBlockSize = 64 * 1024;
     FX_SAFE_SIZE_T new_size = new_pos;
     new_size *= 2;
@@ -87,16 +87,16 @@ bool CFX_MemoryStream::WriteBlockAtOffset(const void* buffer,
     if (!new_size.IsValid())
       return false;
 
-    m_nTotalSize = new_size.ValueOrDie();
-    if (m_data)
-      m_data.reset(FX_Realloc(uint8_t, m_data.release(), m_nTotalSize));
+    total_size_ = new_size.ValueOrDie();
+    if (data_)
+      data_.reset(FX_Realloc(uint8_t, data_.release(), total_size_));
     else
-      m_data.reset(FX_Alloc(uint8_t, m_nTotalSize));
+      data_.reset(FX_Alloc(uint8_t, total_size_));
   }
-  m_nCurPos = new_pos;
+  cur_pos_ = new_pos;
 
-  memcpy(&m_data.get()[offset], buffer, size);
-  m_nCurSize = std::max(m_nCurSize, m_nCurPos);
+  memcpy(&data_.get()[offset], buffer, size);
+  cur_size_ = std::max(cur_size_, cur_pos_);
 
   return true;
 }

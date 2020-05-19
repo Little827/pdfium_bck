@@ -12,24 +12,23 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
 
-FX_Number::FX_Number()
-    : m_bInteger(true), m_bSigned(false), m_UnsignedValue(0) {}
+FX_Number::FX_Number() : integer_(true), signed_(false), unsigned_value_(0) {}
 
 FX_Number::FX_Number(int32_t value)
-    : m_bInteger(true), m_bSigned(true), m_SignedValue(value) {}
+    : integer_(true), signed_(true), signed_value_(value) {}
 
 FX_Number::FX_Number(float value)
-    : m_bInteger(false), m_bSigned(true), m_FloatValue(value) {}
+    : integer_(false), signed_(true), float_value_(value) {}
 
 FX_Number::FX_Number(ByteStringView strc)
-    : m_bInteger(true), m_bSigned(false), m_UnsignedValue(0) {
+    : integer_(true), signed_(false), unsigned_value_(0) {
   if (strc.IsEmpty())
     return;
 
   if (strc.Contains('.')) {
-    m_bInteger = false;
-    m_bSigned = true;
-    m_FloatValue = StringToFloat(strc);
+    integer_ = false;
+    signed_ = true;
+    float_value_ = StringToFloat(strc);
     return;
   }
 
@@ -43,10 +42,10 @@ FX_Number::FX_Number(ByteStringView strc)
   size_t cc = 0;
   if (strc[0] == '+') {
     cc++;
-    m_bSigned = true;
+    signed_ = true;
   } else if (strc[0] == '-') {
     bNegative = true;
-    m_bSigned = true;
+    signed_ = true;
     cc++;
   }
 
@@ -58,8 +57,8 @@ FX_Number::FX_Number(ByteStringView strc)
   }
 
   uint32_t uValue = unsigned_val.ValueOrDefault(0);
-  if (!m_bSigned) {
-    m_UnsignedValue = uValue;
+  if (!signed_) {
+    unsigned_value_ = uValue;
     return;
   }
 
@@ -79,20 +78,20 @@ FX_Number::FX_Number(ByteStringView strc)
     // becomes -2147483648. For this case, avoid undefined behavior, because
     // an int32_t cannot represent 2147483648.
     static constexpr int kMinInt = std::numeric_limits<int>::min();
-    m_SignedValue = LIKELY(value != kMinInt) ? -value : kMinInt;
+    signed_value_ = LIKELY(value != kMinInt) ? -value : kMinInt;
   } else {
-    m_SignedValue = value;
+    signed_value_ = value;
   }
 }
 
 int32_t FX_Number::GetSigned() const {
-  return m_bInteger ? m_SignedValue : static_cast<int32_t>(m_FloatValue);
+  return integer_ ? signed_value_ : static_cast<int32_t>(float_value_);
 }
 
 float FX_Number::GetFloat() const {
-  if (!m_bInteger)
-    return m_FloatValue;
+  if (!integer_)
+    return float_value_;
 
-  return m_bSigned ? static_cast<float>(m_SignedValue)
-                   : static_cast<float>(m_UnsignedValue);
+  return signed_ ? static_cast<float>(signed_value_)
+                 : static_cast<float>(unsigned_value_);
 }

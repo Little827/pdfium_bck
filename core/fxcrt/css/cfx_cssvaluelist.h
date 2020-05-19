@@ -20,7 +20,7 @@ class CFX_CSSValueList final : public CFX_CSSValue {
   RetainPtr<CFX_CSSValue> GetValue(int32_t index) const;
 
  private:
-  std::vector<RetainPtr<CFX_CSSValue>> m_ppList;
+  std::vector<RetainPtr<CFX_CSSValue>> list_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSVALUELIST_H_

@@ -63,17 +63,16 @@ class ByteString {
 
   ~ByteString();
 
-  void clear() { m_pData.Reset(); }
+  void clear() { data_.Reset(); }
 
   // Explicit conversion to C-style string.
   // Note: Any subsequent modification of |this| will invalidate the result.
-  const char* c_str() const { return m_pData ? m_pData->m_String : ""; }
+  const char* c_str() const { return data_ ? data_->string_ : ""; }
 
   // Explicit conversion to uint8_t*.
   // Note: Any subsequent modification of |this| will invalidate the result.
   const uint8_t* raw_str() const {
-    return m_pData ? reinterpret_cast<const uint8_t*>(m_pData->m_String)
-                   : nullptr;
+    return data_ ? reinterpret_cast<const uint8_t*>(data_->string_) : nullptr;
   }
 
   // Explicit conversion to ByteStringView.
@@ -85,17 +84,16 @@ class ByteString {
   // Explicit conversion to span.
   // Note: Any subsequent modification of |this| will invalidate the result.
   pdfium::span<const char> span() const {
-    return pdfium::make_span(m_pData ? m_pData->m_String : nullptr,
-                             GetLength());
+    return pdfium::make_span(data_ ? data_->string_ : nullptr, GetLength());
   }
   pdfium::span<const uint8_t> raw_span() const {
     return pdfium::make_span(raw_str(), GetLength());
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
-  const_iterator begin() const { return m_pData ? m_pData->m_String : nullptr; }
+  const_iterator begin() const { return data_ ? data_->string_ : nullptr; }
   const_iterator end() const {
-    return m_pData ? m_pData->m_String + m_pData->m_nDataLength : nullptr;
+    return data_ ? data_->string_ + data_->data_length_ : nullptr;
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
@@ -106,10 +104,8 @@ class ByteString {
     return const_reverse_iterator(begin());
   }
 
-  size_t GetLength() const { return m_pData ? m_pData->m_nDataLength : 0; }
-  size_t GetStringLength() const {
-    return m_pData ? strlen(m_pData->m_String) : 0;
-  }
+  size_t GetLength() const { return data_ ? data_->data_length_ : 0; }
+  size_t GetStringLength() const { return data_ ? strlen(data_->string_) : 0; }
   bool IsEmpty() const { return !GetLength(); }
   bool IsValidIndex(size_t index) const { return index < GetLength(); }
   bool IsValidLength(size_t length) const { return length <= GetLength(); }
@@ -143,7 +139,7 @@ class ByteString {
 
   CharType operator[](const size_t index) const {
     CHECK(IsValidIndex(index));
-    return m_pData->m_String[index];
+    return data_->string_[index];
   }
 
   CharType Front() const { return GetLength() ? (*this)[0] : 0; }
@@ -209,7 +205,7 @@ class ByteString {
   void Concat(const char* pSrcData, size_t nSrcLen);
   intptr_t ReferenceCountForTesting() const;
 
-  RetainPtr<StringData> m_pData;
+  RetainPtr<StringData> data_;
 
   friend class ByteString_Assign_Test;
   friend class ByteString_Concat_Test;

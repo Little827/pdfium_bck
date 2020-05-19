@@ -75,9 +75,9 @@ class CFX_CSSStyleSelector {
   uint32_t ToTextDecoration(const RetainPtr<CFX_CSSValueList>& pList);
   CFX_CSSFontVariant ToFontVariant(CFX_CSSPropertyValue eValue);
 
-  float m_fDefFontSize;
-  std::unique_ptr<CFX_CSSStyleSheet> m_UAStyles;
-  CFX_CSSRuleCollection m_UARules;
+  float def_font_size_;
+  std::unique_ptr<CFX_CSSStyleSheet> uastyles_;
+  CFX_CSSRuleCollection uarules_;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSSTYLESELECTOR_H_

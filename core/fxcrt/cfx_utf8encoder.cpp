@@ -13,7 +13,7 @@ CFX_UTF8Encoder::~CFX_UTF8Encoder() = default;
 void CFX_UTF8Encoder::Input(wchar_t unicodeAsWchar) {
   uint32_t unicode = static_cast<uint32_t>(unicodeAsWchar);
   if (unicode < 0x80) {
-    m_Buffer.push_back(unicode);
+    buffer_.push_back(unicode);
   } else {
     if (unicode >= 0x80000000)
       return;
@@ -33,11 +33,11 @@ void CFX_UTF8Encoder::Input(wchar_t unicodeAsWchar) {
     static const uint8_t prefix[] = {0xc0, 0xe0, 0xf0, 0xf8, 0xfc};
     int order = 1 << ((nbytes - 1) * 6);
     int code = unicodeAsWchar;
-    m_Buffer.push_back(prefix[nbytes - 2] | (code / order));
+    buffer_.push_back(prefix[nbytes - 2] | (code / order));
     for (int i = 0; i < nbytes - 1; i++) {
       code = code % order;
       order >>= 6;
-      m_Buffer.push_back(0x80 | (code / order));
+      buffer_.push_back(0x80 | (code / order));
     }
   }
 }

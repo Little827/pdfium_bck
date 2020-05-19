@@ -22,7 +22,7 @@ class CFX_SeekableStreamProxy final : public Retainable {
   bool IsEOF();
   size_t ReadBlock(wchar_t* pStr, size_t size);
 
-  uint16_t GetCodePage() const { return m_wCodePage; }
+  uint16_t GetCodePage() const { return code_page_; }
   void SetCodePage(uint16_t wCodePage);
 
  private:
@@ -39,10 +39,10 @@ class CFX_SeekableStreamProxy final : public Retainable {
   void Seek(From eSeek, FX_FILESIZE iOffset);
   size_t ReadData(uint8_t* pBuffer, size_t iBufferSize);
 
-  uint16_t m_wCodePage;
-  size_t m_wBOMLength;
-  FX_FILESIZE m_iPosition;
-  RetainPtr<IFX_SeekableReadStream> m_pStream;
+  uint16_t code_page_;
+  size_t bomlength_;
+  FX_FILESIZE position_;
+  RetainPtr<IFX_SeekableReadStream> stream_;
 };
 
 #endif  // CORE_FXCRT_CFX_SEEKABLESTREAMPROXY_H_

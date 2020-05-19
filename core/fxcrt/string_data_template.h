@@ -17,11 +17,11 @@ class StringDataTemplate {
   static StringDataTemplate* Create(size_t nLen);
   static StringDataTemplate* Create(const CharType* pStr, size_t nLen);
 
-  void Retain() { ++m_nRefs; }
+  void Retain() { ++refs_; }
   void Release();
 
   bool CanOperateInPlace(size_t nTotalLen) const {
-    return m_nRefs <= 1 && nTotalLen <= m_nAllocLength;
+    return refs_ <= 1 && nTotalLen <= alloc_length_;
   }
 
   void CopyContents(const StringDataTemplate& other);
@@ -33,16 +33,16 @@ class StringDataTemplate {
   // Since the count increments with each new pointer, the largest value is
   // the number of pointers that can fit into the address space. The size of
   // the address space itself is a good upper bound on it.
-  intptr_t m_nRefs;
+  intptr_t refs_;
 
   // These lengths are in terms of number of characters, not bytes, and do not
   // include the terminating NUL character, but the underlying buffer is sized
   // to be capable of holding it.
-  size_t m_nDataLength;
-  size_t m_nAllocLength;
+  size_t data_length_;
+  size_t alloc_length_;
 
   // Not really 1, variable size.
-  CharType m_String[1];
+  CharType string_[1];
 
  private:
   StringDataTemplate(size_t dataLen, size_t allocLen);

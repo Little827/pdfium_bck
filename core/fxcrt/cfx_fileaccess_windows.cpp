@@ -34,103 +34,102 @@ std::unique_ptr<FileAccessIface> FileAccessIface::Create() {
   return std::make_unique<CFX_FileAccess_Windows>();
 }
 
-CFX_FileAccess_Windows::CFX_FileAccess_Windows() : m_hFile(nullptr) {}
+CFX_FileAccess_Windows::CFX_FileAccess_Windows() : file_(nullptr) {}
 
 CFX_FileAccess_Windows::~CFX_FileAccess_Windows() {
   Close();
 }
 
 bool CFX_FileAccess_Windows::Open(ByteStringView fileName, uint32_t dwMode) {
-  if (m_hFile)
+  if (file_)
     return false;
 
   uint32_t dwAccess, dwShare, dwCreation;
   GetFileMode(dwMode, dwAccess, dwShare, dwCreation);
-  m_hFile = ::CreateFileA(fileName.unterminated_c_str(), dwAccess, dwShare,
-                          nullptr, dwCreation, FILE_ATTRIBUTE_NORMAL, nullptr);
-  if (m_hFile == INVALID_HANDLE_VALUE)
-    m_hFile = nullptr;
+  file_ = ::CreateFileA(fileName.unterminated_c_str(), dwAccess, dwShare,
+                        nullptr, dwCreation, FILE_ATTRIBUTE_NORMAL, nullptr);
+  if (file_ == INVALID_HANDLE_VALUE)
+    file_ = nullptr;
 
-  return !!m_hFile;
+  return !!file_;
 }
 
 bool CFX_FileAccess_Windows::Open(WideStringView fileName, uint32_t dwMode) {
-  if (m_hFile)
+  if (file_)
     return false;
 
   uint32_t dwAccess, dwShare, dwCreation;
   GetFileMode(dwMode, dwAccess, dwShare, dwCreation);
-  m_hFile =
+  file_ =
       ::CreateFileW((LPCWSTR)fileName.unterminated_c_str(), dwAccess, dwShare,
                     nullptr, dwCreation, FILE_ATTRIBUTE_NORMAL, nullptr);
-  if (m_hFile == INVALID_HANDLE_VALUE)
-    m_hFile = nullptr;
+  if (file_ == INVALID_HANDLE_VALUE)
+    file_ = nullptr;
 
-  return !!m_hFile;
+  return !!file_;
 }
 
 void CFX_FileAccess_Windows::Close() {
-  if (!m_hFile)
+  if (!file_)
     return;
 
-  ::CloseHandle(m_hFile);
-  m_hFile = nullptr;
+  ::CloseHandle(file_);
+  file_ = nullptr;
 }
 
 FX_FILESIZE CFX_FileAccess_Windows::GetSize() const {
-  if (!m_hFile)
+  if (!file_)
     return 0;
 
   LARGE_INTEGER size = {};
-  if (!::GetFileSizeEx(m_hFile, &size))
+  if (!::GetFileSizeEx(file_, &size))
     return 0;
 
   return (FX_FILESIZE)size.QuadPart;
 }
 
 FX_FILESIZE CFX_FileAccess_Windows::GetPosition() const {
-  if (!m_hFile)
+  if (!file_)
     return (FX_FILESIZE)-1;
 
   LARGE_INTEGER dist = {};
   LARGE_INTEGER newPos = {};
-  if (!::SetFilePointerEx(m_hFile, dist, &newPos, FILE_CURRENT))
+  if (!::SetFilePointerEx(file_, dist, &newPos, FILE_CURRENT))
     return (FX_FILESIZE)-1;
 
   return (FX_FILESIZE)newPos.QuadPart;
 }
 
 FX_FILESIZE CFX_FileAccess_Windows::SetPosition(FX_FILESIZE pos) {
-  if (!m_hFile)
+  if (!file_)
     return (FX_FILESIZE)-1;
 
   LARGE_INTEGER dist;
   dist.QuadPart = pos;
   LARGE_INTEGER newPos = {};
-  if (!::SetFilePointerEx(m_hFile, dist, &newPos, FILE_BEGIN))
+  if (!::SetFilePointerEx(file_, dist, &newPos, FILE_BEGIN))
     return (FX_FILESIZE)-1;
 
   return (FX_FILESIZE)newPos.QuadPart;
 }
 
 size_t CFX_FileAccess_Windows::Read(void* pBuffer, size_t szBuffer) {
-  if (!m_hFile)
+  if (!file_)
     return 0;
 
   size_t szRead = 0;
-  if (!::ReadFile(m_hFile, pBuffer, (DWORD)szBuffer, (LPDWORD)&szRead,
-                  nullptr)) {
+  if (!::ReadFile(file_, pBuffer, (DWORD)szBuffer, (LPDWORD)&szRead, nullptr)) {
     return 0;
   }
   return szRead;
 }
 
 size_t CFX_FileAccess_Windows::Write(const void* pBuffer, size_t szBuffer) {
-  if (!m_hFile)
+  if (!file_)
     return 0;
 
   size_t szWrite = 0;
-  if (!::WriteFile(m_hFile, pBuffer, (DWORD)szBuffer, (LPDWORD)&szWrite,
+  if (!::WriteFile(file_, pBuffer, (DWORD)szBuffer, (LPDWORD)&szWrite,
                    nullptr)) {
     return 0;
   }
@@ -140,7 +139,7 @@ size_t CFX_FileAccess_Windows::Write(const void* pBuffer, size_t szBuffer) {
 size_t CFX_FileAccess_Windows::ReadPos(void* pBuffer,
                                        size_t szBuffer,
                                        FX_FILESIZE pos) {
-  if (!m_hFile)
+  if (!file_)
     return 0;
 
   if (pos >= GetSize())
@@ -155,7 +154,7 @@ size_t CFX_FileAccess_Windows::ReadPos(void* pBuffer,
 size_t CFX_FileAccess_Windows::WritePos(const void* pBuffer,
                                         size_t szBuffer,
                                         FX_FILESIZE pos) {
-  if (!m_hFile) {
+  if (!file_) {
     return 0;
   }
   if (SetPosition(pos) == (FX_FILESIZE)-1) {
@@ -165,15 +164,15 @@ size_t CFX_FileAccess_Windows::WritePos(const void* pBuffer,
 }
 
 bool CFX_FileAccess_Windows::Flush() {
-  if (!m_hFile)
+  if (!file_)
     return false;
 
-  return !!::FlushFileBuffers(m_hFile);
+  return !!::FlushFileBuffers(file_);
 }
 
 bool CFX_FileAccess_Windows::Truncate(FX_FILESIZE szFile) {
   if (SetPosition(szFile) == (FX_FILESIZE)-1)
     return false;
 
-  return !!::SetEndOfFile(m_hFile);
+  return !!::SetEndOfFile(file_);
 }

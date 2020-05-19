@@ -38,7 +38,7 @@ class CFX_FileAccess_Posix final : public FileAccessIface {
   bool Truncate(FX_FILESIZE szFile) override;
 
  private:
-  int32_t m_nFD;
+  int32_t fd_;
 };
 
 #endif  // CORE_FXCRT_CFX_FILEACCESS_POSIX_H_

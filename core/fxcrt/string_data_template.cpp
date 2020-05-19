@@ -19,8 +19,8 @@ StringDataTemplate<CharType>* StringDataTemplate<CharType>::Create(
   ASSERT(nLen > 0);
 
   // Calculate space needed for the fixed portion of the struct plus the
-  // NUL char that is not included in |m_nAllocLength|.
-  int overhead = offsetof(StringDataTemplate, m_String) + sizeof(CharType);
+  // NUL char that is not included in |alloc_length_|.
+  int overhead = offsetof(StringDataTemplate, string_) + sizeof(CharType);
   FX_SAFE_SIZE_T nSize = nLen;
   nSize *= sizeof(CharType);
   nSize += overhead;
@@ -52,26 +52,25 @@ StringDataTemplate<CharType>* StringDataTemplate<CharType>::Create(
 
 template <typename CharType>
 void StringDataTemplate<CharType>::Release() {
-  if (--m_nRefs <= 0)
+  if (--refs_ <= 0)
     GetStringPartitionAllocator().root()->Free(this);
 }
 
 template <typename CharType>
 void StringDataTemplate<CharType>::CopyContents(
     const StringDataTemplate& other) {
-  ASSERT(other.m_nDataLength <= m_nAllocLength);
-  memcpy(m_String, other.m_String,
-         (other.m_nDataLength + 1) * sizeof(CharType));
+  ASSERT(other.data_length_ <= alloc_length_);
+  memcpy(string_, other.string_, (other.data_length_ + 1) * sizeof(CharType));
 }
 
 template <typename CharType>
 void StringDataTemplate<CharType>::CopyContents(const CharType* pStr,
                                                 size_t nLen) {
   ASSERT(nLen >= 0);
-  ASSERT(nLen <= m_nAllocLength);
+  ASSERT(nLen <= alloc_length_);
 
-  memcpy(m_String, pStr, nLen * sizeof(CharType));
-  m_String[nLen] = 0;
+  memcpy(string_, pStr, nLen * sizeof(CharType));
+  string_[nLen] = 0;
 }
 
 template <typename CharType>
@@ -80,19 +79,19 @@ void StringDataTemplate<CharType>::CopyContentsAt(size_t offset,
                                                   size_t nLen) {
   ASSERT(offset >= 0);
   ASSERT(nLen >= 0);
-  ASSERT(offset + nLen <= m_nAllocLength);
+  ASSERT(offset + nLen <= alloc_length_);
 
-  memcpy(m_String + offset, pStr, nLen * sizeof(CharType));
-  m_String[offset + nLen] = 0;
+  memcpy(string_ + offset, pStr, nLen * sizeof(CharType));
+  string_[offset + nLen] = 0;
 }
 
 template <typename CharType>
 StringDataTemplate<CharType>::StringDataTemplate(size_t dataLen,
                                                  size_t allocLen)
-    : m_nRefs(0), m_nDataLength(dataLen), m_nAllocLength(allocLen) {
+    : refs_(0), data_length_(dataLen), alloc_length_(allocLen) {
   ASSERT(dataLen >= 0);
   ASSERT(dataLen <= allocLen);
-  m_String[dataLen] = 0;
+  string_[dataLen] = 0;
 }
 
 template class StringDataTemplate<char>;

@@ -21,13 +21,13 @@ class CFX_BinaryBuf {
 
   pdfium::span<uint8_t> GetSpan();
   pdfium::span<const uint8_t> GetSpan() const;
-  uint8_t* GetBuffer() const { return m_pBuffer.get(); }
-  size_t GetSize() const { return m_DataSize; }
+  uint8_t* GetBuffer() const { return buffer_.get(); }
+  size_t GetSize() const { return data_size_; }
   virtual size_t GetLength() const;
   bool IsEmpty() const { return GetLength() == 0; }
 
   void Clear();
-  void SetAllocStep(size_t step) { m_AllocStep = step; }
+  void SetAllocStep(size_t step) { alloc_step_ = step; }
   void EstimateSize(size_t size);
   void AppendSpan(pdfium::span<const uint8_t> span);
   void AppendBlock(const void* pBuf, size_t size);
@@ -37,21 +37,21 @@ class CFX_BinaryBuf {
 
   void AppendByte(uint8_t byte) {
     ExpandBuf(1);
-    m_pBuffer.get()[m_DataSize++] = byte;
+    buffer_.get()[data_size_++] = byte;
   }
 
   void Delete(size_t start_index, size_t count);
 
-  // Releases ownership of |m_pBuffer| and returns it.
+  // Releases ownership of |buffer_| and returns it.
   std::unique_ptr<uint8_t, FxFreeDeleter> DetachBuffer();
 
  protected:
   void ExpandBuf(size_t size);
 
-  size_t m_AllocStep = 0;
-  size_t m_AllocSize = 0;
-  size_t m_DataSize = 0;
-  std::unique_ptr<uint8_t, FxFreeDeleter> m_pBuffer;
+  size_t alloc_step_ = 0;
+  size_t alloc_size_ = 0;
+  size_t data_size_ = 0;
+  std::unique_ptr<uint8_t, FxFreeDeleter> buffer_;
 };
 
 #endif  // CORE_FXCRT_CFX_BINARYBUF_H_
