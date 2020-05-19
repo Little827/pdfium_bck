@@ -152,6 +152,8 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   re = matr3.TransformRect(rect3).GetOuterRect();
   device->FillRect(re, kBackgroundColor);
   strWidth = strWidth * m_outputHScale;
+  CFX_RenderOptions options;
+  options.SetTextUseLcd(true);
 
   CalcTextInfo(tempStr, &charpos[1], m_pFont.Get(), strWidth, iFontSize, blank);
   {
@@ -162,7 +164,7 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(length, &charpos[1], m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   tempStr = str.Substr(6, 5);
   length = tempStr.GetLength();
@@ -176,7 +178,7 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(length, &charpos[6], m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   tempStr = str.First(1);
   length = tempStr.GetLength();
@@ -185,6 +187,7 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
 
   CalcTextInfo(tempStr, charpos.data(), m_pFont.Get(), strWidth, iFontSize,
                blank);
+
   {
     CFX_Matrix affine_matrix1(1.0, 0.0, 0.0, -1.0, 0,
                               (float)(m_Height - iTextHeight + iFontSize));
@@ -192,7 +195,7 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(length, charpos.data(), m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   tempStr = str.Substr(11, 1);
   length = tempStr.GetLength();
@@ -207,7 +210,7 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(length, &charpos[11], m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   return true;
 }
