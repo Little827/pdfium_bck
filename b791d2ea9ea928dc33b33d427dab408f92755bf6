@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c655d85d_62596c4e",
+        "filename": "core/fxcrt/css/cfx_cssstyleselector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-19T22:14:25Z",
+      "side": 1,
+      "message": "Follow-up: Maybe rename to \"default_font_size_\" if \"def\" means what I think it means? Also rename SetDefFontSize().",
+      "revId": "b791d2ea9ea928dc33b33d427dab408f92755bf6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d3914e_c34ec2ed",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-19T22:14:25Z",
+      "side": 1,
+      "message": "has_error_ ?",
+      "revId": "b791d2ea9ea928dc33b33d427dab408f92755bf6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "443db607_35298d97",
+        "filename": "core/fxcrt/fx_number.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-19T22:14:25Z",
+      "side": 1,
+      "message": "is_integer_ and is_signed_ ?",
+      "revId": "b791d2ea9ea928dc33b33d427dab408f92755bf6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6690ae_7c645bef",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-19T22:14:25Z",
+      "side": 1,
+      "message": "at_end_ or reached_end_ ?",
+      "revId": "b791d2ea9ea928dc33b33d427dab408f92755bf6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
