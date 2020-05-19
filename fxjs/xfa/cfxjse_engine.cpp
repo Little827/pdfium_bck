@@ -22,6 +22,7 @@
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/cxfa_localemgr.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
@@ -72,11 +73,6 @@ namespace {
 
 const char kFormCalcRuntime[] = "pfm_rt";
 
-CXFA_ThisProxy* ToThisProxy(CFXJSE_Value* pValue) {
-  CFXJSE_HostObject* pHostObject = pValue->ToHostObject();
-  return pHostObject ? ToThisProxy(pHostObject->AsCXFAObject()) : nullptr;
-}
-
 }  // namespace
 
 // static
@@ -122,9 +118,6 @@ CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
 }
 
 CFXJSE_Engine::~CFXJSE_Engine() {
-  for (const auto& pair : m_mapVariableToContext)
-    delete ToThisProxy(pair.second->GetGlobalObject().get());
-
   for (const auto& pair : m_mapObjectToValue)
     pair.second->ClearHostObject();
 }
@@ -502,9 +495,11 @@ CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
   if (!pScriptNode || !pSubform)
     return nullptr;
 
+  // TODO(mlippautz): UAF in case JS outlives cpp.
   auto pNewContext =
       CFXJSE_Context::Create(GetIsolate(), &VariablesClassDescriptor,
-                             new CXFA_ThisProxy(pSubform, pScriptNode));
+                             cppgc::MakeGarbageCollected<CXFA_ThisProxy>(
+                                 GetHeap(), pSubform, pScriptNode));
   RemoveBuiltInObjs(pNewContext.get());
   pNewContext->EnableCompatibleMode();
   CFXJSE_Context* pResult = pNewContext.get();

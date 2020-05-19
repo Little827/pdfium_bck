@@ -19,6 +19,7 @@
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffpageview.h"
 #include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 
 class CFX_DIBitmap;
@@ -66,7 +67,9 @@ class CXFA_CalcData {
   std::vector<CXFA_Node*> m_Globals;
 };
 
-class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
+class CXFA_FFWidget : public cppgc::GarbageCollected<CXFA_FFWidget>,
+                      public Observable,
+                      public CFWL_Widget::AdapterIface {
  public:
   enum FocusOption { kDoNotDrawFocus = 0, kDrawFocus };
   enum HighlightOption { kNoHighlight = 0, kHighlight };
@@ -173,6 +176,8 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   bool ProcessEventUnderHandler(CXFA_EventParam* params,
                                 CXFA_FFWidgetHandler* pHandler);
 
+  virtual void Trace(cppgc::Visitor*) const;
+
  protected:
   virtual bool PtInActiveRect(const CFX_PointF& point);
 
@@ -192,10 +197,11 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   bool IsButtonDown();
   void SetButtonDown(bool bSet);
 
-  UnownedPtr<CXFA_ContentLayoutItem> m_pLayoutItem;
-  UnownedPtr<CXFA_FFDocView> m_pDocView;
+  cppgc::Member<CXFA_ContentLayoutItem> m_pLayoutItem;
+  cppgc::Member<CXFA_FFDocView> m_pDocView;
+  // TODO
   ObservedPtr<CXFA_FFPageView> m_pPageView;
-  UnownedPtr<CXFA_Node> const m_pNode;
+  cppgc::Member<CXFA_Node> const m_pNode;
   mutable CFX_RectF m_WidgetRect;
 };
 

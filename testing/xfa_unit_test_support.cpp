@@ -12,6 +12,8 @@
 #include "core/fxge/systemfontinfo_iface.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/ptr_util.h"
+#include "v8/include/cppgc/platform.h"
+#include "v8/include/libplatform/libplatform.h"
 #include "xfa/fgas/font/cfgas_fontmgr.h"
 
 namespace {
@@ -36,6 +38,7 @@ class XFATestEnvironment final : public testing::Environment {
 };
 
 XFATestEnvironment* g_env = nullptr;
+std::unique_ptr<v8::Platform> g_platform;
 
 }  // namespace
 
@@ -48,6 +51,9 @@ void InitializeXFATestEnvironment() {
   // loader which loads up a single font we use in all tests.
   CFX_GEModule::Get()->GetFontMgr()->SetSystemFontInfo(
       SystemFontInfoIface::CreateDefault(nullptr));
+
+  g_platform = v8::platform::NewDefaultPlatform();
+  cppgc::InitializePlatform(g_platform->GetPageAllocator());
 }
 
 CFGAS_FontMgr* GetGlobalFontManager() {

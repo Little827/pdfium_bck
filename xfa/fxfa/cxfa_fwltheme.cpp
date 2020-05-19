@@ -279,3 +279,7 @@ CFWL_WidgetTP* CXFA_FWLTheme::GetTheme(CFWL_Widget* pWidget) const {
       return nullptr;
   }
 }
+
+void CXFA_FWLTheme::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pApp);
+}

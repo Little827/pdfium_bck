@@ -13,10 +13,9 @@
 #include "xfa/fxfa/parser/cxfa_margin.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
-CXFA_ContentLayoutItem::CXFA_ContentLayoutItem(
-    CXFA_Node* pNode,
-    std::unique_ptr<CXFA_FFWidget> pWidget)
-    : CXFA_LayoutItem(pNode, kContentItem), m_pFFWidget(std::move(pWidget)) {
+CXFA_ContentLayoutItem::CXFA_ContentLayoutItem(CXFA_Node* pNode,
+                                               CXFA_FFWidget* pWidget)
+    : CXFA_LayoutItem(pNode, kContentItem), m_pFFWidget(pWidget) {
   if (m_pFFWidget)
     m_pFFWidget->SetLayoutItem(this);
 }

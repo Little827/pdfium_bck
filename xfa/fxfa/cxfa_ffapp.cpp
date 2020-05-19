@@ -52,11 +52,12 @@ CFGAS_FontMgr* CXFA_FFApp::GetFDEFontMgr() {
 
 CXFA_FWLTheme* CXFA_FFApp::GetFWLTheme(CXFA_FFDoc* doc) {
   if (!m_pFWLTheme) {
-    auto fwl_theme = pdfium::MakeUnique<CXFA_FWLTheme>(this);
+    auto* fwl_theme =
+        cppgc::MakeGarbageCollected<CXFA_FWLTheme>(GetHeap(), this);
     if (fwl_theme->LoadCalendarFont(doc))
-      m_pFWLTheme = std::move(fwl_theme);
+      m_pFWLTheme = fwl_theme;
   }
-  return m_pFWLTheme.get();
+  return m_pFWLTheme;
 }
 
 CFWL_WidgetMgr::AdapterIface* CXFA_FFApp::GetWidgetMgrAdapter() {
@@ -71,4 +72,8 @@ TimerHandlerIface* CXFA_FFApp::GetTimerHandler() {
 
 void CXFA_FFApp::ClearEventTargets() {
   m_pFWLApp->GetNoteDriver()->ClearEventTargets();
+}
+
+void CXFA_FFApp::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pFWLTheme);
 }

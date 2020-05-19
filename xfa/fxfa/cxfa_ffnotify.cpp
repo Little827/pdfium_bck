@@ -89,8 +89,7 @@ std::unique_ptr<CXFA_FFPageView> CXFA_FFNotify::OnCreateViewLayoutItem(
                                              pNode);
 }
 
-std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
-    CXFA_Node* pNode) {
+CXFA_FFWidget* CXFA_FFNotify::OnCreateContentLayoutItem(CXFA_Node* pNode) {
   ASSERT(pNode->GetElementType() != XFA_Element::ContentArea);
   ASSERT(pNode->GetElementType() != XFA_Element::PageArea);
 
@@ -98,15 +97,16 @@ std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
   if (!pNode->HasCreatedUIWidget())
     return nullptr;
 
-  std::unique_ptr<CXFA_FFWidget> pWidget;
+  // std::unique_ptr<CXFA_FFWidget> pWidget;
+  CXFA_FFWidget* pWidget;
   switch (pNode->GetFFWidgetType()) {
     case XFA_FFWidgetType::kBarcode: {
       CXFA_Node* child = pNode->GetUIChildNode();
       if (child->GetElementType() != XFA_Element::Barcode)
         return nullptr;
 
-      pWidget = pdfium::MakeUnique<CXFA_FFBarcode>(
-          pNode, static_cast<CXFA_Barcode*>(child));
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFBarcode>(
+          GetHeap(), pNode, static_cast<CXFA_Barcode*>(child));
       break;
     }
     case XFA_FFWidgetType::kButton: {
@@ -114,8 +114,8 @@ std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
       if (child->GetElementType() != XFA_Element::Button)
         return nullptr;
 
-      pWidget = pdfium::MakeUnique<CXFA_FFPushButton>(
-          pNode, static_cast<CXFA_Button*>(child));
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFPushButton>(
+          GetHeap(), pNode, static_cast<CXFA_Button*>(child));
       break;
     }
     case XFA_FFWidgetType::kCheckButton: {
@@ -123,61 +123,64 @@ std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
       if (child->GetElementType() != XFA_Element::CheckButton)
         return nullptr;
 
-      pWidget = pdfium::MakeUnique<CXFA_FFCheckButton>(
-          pNode, static_cast<CXFA_CheckButton*>(child));
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFCheckButton>(
+          GetHeap(), pNode, static_cast<CXFA_CheckButton*>(child));
       break;
     }
     case XFA_FFWidgetType::kChoiceList: {
       if (pNode->IsListBox())
-        pWidget = pdfium::MakeUnique<CXFA_FFListBox>(pNode);
+        pWidget = cppgc::MakeGarbageCollected<CXFA_FFListBox>(GetHeap(), pNode);
       else
-        pWidget = pdfium::MakeUnique<CXFA_FFComboBox>(pNode);
+        pWidget =
+            cppgc::MakeGarbageCollected<CXFA_FFComboBox>(GetHeap(), pNode);
       break;
     }
     case XFA_FFWidgetType::kDateTimeEdit:
-      pWidget = pdfium::MakeUnique<CXFA_FFDateTimeEdit>(pNode);
+      pWidget =
+          cppgc::MakeGarbageCollected<CXFA_FFDateTimeEdit>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kImageEdit:
-      pWidget = pdfium::MakeUnique<CXFA_FFImageEdit>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFImageEdit>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kNumericEdit:
-      pWidget = pdfium::MakeUnique<CXFA_FFNumericEdit>(pNode);
+      pWidget =
+          cppgc::MakeGarbageCollected<CXFA_FFNumericEdit>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kPasswordEdit: {
       CXFA_Node* child = pNode->GetUIChildNode();
       if (child->GetElementType() != XFA_Element::PasswordEdit)
         return nullptr;
 
-      pWidget = pdfium::MakeUnique<CXFA_FFPasswordEdit>(
-          pNode, static_cast<CXFA_PasswordEdit*>(child));
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFPasswordEdit>(
+          GetHeap(), pNode, static_cast<CXFA_PasswordEdit*>(child));
       break;
     }
     case XFA_FFWidgetType::kSignature:
-      pWidget = pdfium::MakeUnique<CXFA_FFSignature>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFSignature>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kTextEdit:
-      pWidget = pdfium::MakeUnique<CXFA_FFTextEdit>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFTextEdit>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kArc:
-      pWidget = pdfium::MakeUnique<CXFA_FFArc>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFArc>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kLine:
-      pWidget = pdfium::MakeUnique<CXFA_FFLine>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFLine>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kRectangle:
-      pWidget = pdfium::MakeUnique<CXFA_FFRectangle>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFRectangle>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kText:
-      pWidget = pdfium::MakeUnique<CXFA_FFText>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFText>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kImage:
-      pWidget = pdfium::MakeUnique<CXFA_FFImage>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFImage>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kSubform:
-      pWidget = pdfium::MakeUnique<CXFA_FFWidget>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFWidget>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kExclGroup:
-      pWidget = pdfium::MakeUnique<CXFA_FFExclGroup>(pNode);
+      pWidget = cppgc::MakeGarbageCollected<CXFA_FFExclGroup>(GetHeap(), pNode);
       break;
     case XFA_FFWidgetType::kNone:
       return nullptr;
@@ -500,4 +503,8 @@ void CXFA_FFNotify::OnLayoutItemRemoving(CXFA_LayoutProcessor* pLayout,
   pDocView->DeleteLayoutItem(pWidget);
   m_pDoc->GetDocEnvironment()->WidgetPreRemove(pWidget);
   pWidget->InvalidateRect();
+}
+
+void CXFA_FFNotify::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pDoc);
 }

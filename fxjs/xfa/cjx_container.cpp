@@ -11,6 +11,7 @@
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
+#include "xfa/fxfa/heap.h"
 #include "xfa/fxfa/parser/cxfa_arraynodelist.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/cxfa_field.h"
@@ -40,6 +41,6 @@ CJS_Result CJX_Container::getDeltas(
     const std::vector<v8::Local<v8::Value>>& params) {
   auto* pEngine = static_cast<CFXJSE_Engine*>(runtime);
   return CJS_Result::Success(pEngine->NewXFAObject(
-      new CXFA_ArrayNodeList(GetDocument()),
+      cppgc::MakeGarbageCollected<CXFA_ArrayNodeList>(GetHeap(), GetDocument()),
       GetDocument()->GetScriptContext()->GetJseNormalClass()->GetTemplate()));
 }

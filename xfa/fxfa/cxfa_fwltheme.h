@@ -23,8 +23,10 @@
 #include "xfa/fwl/theme/cfwl_scrollbartp.h"
 #include "xfa/fwl/theme/cfwl_widgettp.h"
 #include "xfa/fxfa/cxfa_ffapp.h"
+#include "xfa/fxfa/heap.h"
 
-class CXFA_FWLTheme final : public IFWL_ThemeProvider {
+class CXFA_FWLTheme final : public cppgc::GarbageCollected<CXFA_FWLTheme>,
+                            public IFWL_ThemeProvider {
  public:
   explicit CXFA_FWLTheme(CXFA_FFApp* pApp);
   ~CXFA_FWLTheme() override;
@@ -46,6 +48,8 @@ class CXFA_FWLTheme final : public IFWL_ThemeProvider {
   FX_COLORREF GetTextColor(const CFWL_ThemePart& pThemePart) const override;
   CFX_SizeF GetSpaceAboveBelow(const CFWL_ThemePart& pThemePart) const override;
 
+  void Trace(cppgc::Visitor*) const;
+
  private:
   CFWL_WidgetTP* GetTheme(CFWL_Widget* pWidget) const;
 
@@ -63,7 +67,7 @@ class CXFA_FWLTheme final : public IFWL_ThemeProvider {
   std::unique_ptr<CFDE_TextOut> m_pTextOut;
   RetainPtr<CFGAS_GEFont> m_pCalendarFont;
   WideString m_wsResource;
-  UnownedPtr<CXFA_FFApp> const m_pApp;
+  cppgc::Member<CXFA_FFApp> const m_pApp;
   CFX_RectF m_Rect;
 };
 
