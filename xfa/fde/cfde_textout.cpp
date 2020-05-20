@@ -68,6 +68,8 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
 
   RetainPtr<CFGAS_GEFont> pCurFont;
   TextCharPos* pCurCP = nullptr;
+  CFX_RenderOptions options;
+  options.SetTextUseLcd(true);
   int32_t iCurCount = 0;
   for (auto& pos : pCharPos) {
     RetainPtr<CFGAS_GEFont> pSTFont =
@@ -88,7 +90,7 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
 #endif
 
         device->DrawNormalText(iCurCount, pCurCP, font, -fFontSize, matrix,
-                               color, FXTEXT_CLEARTYPE);
+                               color, options);
       }
       pCurFont = pSTFont;
       pCurCP = &pos;
@@ -111,7 +113,7 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
 #endif
 
     bRet = device->DrawNormalText(iCurCount, pCurCP, font, -fFontSize, matrix,
-                                  color, FXTEXT_CLEARTYPE);
+                                  color, options);
   }
 #if defined _SKIA_SUPPORT_ || defined _SKIA_SUPPORT_PATHS_
   device->Flush(false);

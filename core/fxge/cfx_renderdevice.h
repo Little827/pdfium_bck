@@ -13,6 +13,7 @@
 #include "build/build_config.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "core/fxge/cfx_renderoptions.h"
 #include "core/fxge/fx_dib.h"
 #include "core/fxge/render_defines.h"
 #include "core/fxge/renderdevicedriver_iface.h"
@@ -23,6 +24,7 @@ class CFX_Font;
 class CFX_GraphStateData;
 class CFX_ImageRenderer;
 class CFX_PathData;
+class CFX_RenderOptions;
 class PauseIndicatorIface;
 class TextCharPos;
 struct CFX_Color;
@@ -161,7 +163,7 @@ class CFX_RenderDevice {
                       float font_size,
                       const CFX_Matrix& mtText2Device,
                       uint32_t fill_color,
-                      uint32_t text_flags);
+                      const CFX_RenderOptions& options);
   bool DrawTextPath(int nChars,
                     const TextCharPos* pCharPos,
                     CFX_Font* pFont,
