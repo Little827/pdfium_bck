@@ -169,6 +169,8 @@ bool CBC_OnedEAN13Writer::ShowChars(WideStringView contents,
   float blank = 0.0;
   length = tempStr.GetLength();
   strWidth = (int32_t)(strWidth * m_outputHScale);
+  CFX_RenderOptions options;
+  options.SetTextUseLcd(true);
 
   CalcTextInfo(tempStr, &charpos[1], m_pFont.Get(), (float)strWidth, iFontSize,
                blank);
@@ -180,7 +182,7 @@ bool CBC_OnedEAN13Writer::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(length, &charpos[1], m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   tempStr = str.Substr(7, 6);
   length = tempStr.GetLength();
@@ -195,7 +197,7 @@ bool CBC_OnedEAN13Writer::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(length, &charpos[7], m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   tempStr = str.First(1);
   length = tempStr.GetLength();
@@ -211,7 +213,7 @@ bool CBC_OnedEAN13Writer::ShowChars(WideStringView contents,
       affine_matrix1.Concat(*matrix);
     device->DrawNormalText(length, charpos.data(), m_pFont.Get(),
                            static_cast<float>(iFontSize), affine_matrix1,
-                           m_fontColor, FXTEXT_CLEARTYPE);
+                           m_fontColor, options);
   }
   return true;
 }
