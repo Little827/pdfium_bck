@@ -121,23 +121,25 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
   if (pos.empty())
     return true;
 
-  int fxge_flags = 0;
+  CFX_RenderOptions render_options;
+  CFX_RenderOptions::TextOptions& text_option = render_options.GetTextOptions();
+
   if (options.GetOptions().bClearType) {
-    fxge_flags |= FXTEXT_CLEARTYPE;
+    text_option.is_lcd = true;
     if (options.GetOptions().bBGRStripe)
-      fxge_flags |= FXTEXT_BGR_STRIPE;
+      text_option.is_bgr_stripe = true;
   }
   if (options.GetOptions().bNoTextSmooth)
-    fxge_flags |= FXTEXT_NOSMOOTH;
+    text_option.anti_aliasing = false;
   if (options.GetOptions().bPrintGraphicText)
-    fxge_flags |= FXTEXT_PRINTGRAPHICTEXT;
+    text_option.print_graphic_text = true;
   if (options.GetOptions().bNoNativeText)
-    fxge_flags |= FXTEXT_NO_NATIVETEXT;
+    text_option.no_native_text = true;
   if (options.GetOptions().bPrintImageText)
-    fxge_flags |= FXTEXT_PRINTIMAGETEXT;
+    text_option.print_image_text = true;
 
   if (pFont->IsCIDFont())
-    fxge_flags |= FXFONT_CIDFONT;
+    render_options.GetFontOptions().is_cid = true;
 
   bool bDraw = true;
   int32_t fontPosition = pos[0].m_FallbackFontPosition;
@@ -150,7 +152,7 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
     CFX_Font* font = GetFont(pFont, fontPosition);
     if (!pDevice->DrawNormalText(i - startIndex, &pos[startIndex], font,
                                  font_size, mtText2Device, fill_argb,
-                                 fxge_flags)) {
+                                 render_options)) {
       bDraw = false;
     }
     fontPosition = curFontPosition;
@@ -159,7 +161,7 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
   CFX_Font* font = GetFont(pFont, fontPosition);
   if (!pDevice->DrawNormalText(pos.size() - startIndex, &pos[startIndex], font,
                                font_size, mtText2Device, fill_argb,
-                               fxge_flags)) {
+                               render_options)) {
     bDraw = false;
   }
   return bDraw;
