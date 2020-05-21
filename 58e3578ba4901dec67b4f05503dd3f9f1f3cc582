@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8189f43e_6e51d8da",
+        "filename": "core/fxge/render_defines.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 0,
+      "message": "Suggestion: Given how often this configuration seems to be used, wondering if we shouldn\u0027t just make this a global constant.",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "58e3578ba4901dec67b4f05503dd3f9f1f3cc582",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

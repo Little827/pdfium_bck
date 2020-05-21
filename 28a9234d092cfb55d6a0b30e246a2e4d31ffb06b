@@ -1,0 +1,284 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5839b87_21565acf",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "Is there any opportunity to share this code with CFX_RenderOptions?",
+      "range": {
+        "startLine": 118,
+        "startChar": 45,
+        "endLine": 118,
+        "endChar": 63
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6812f96_53b47e7c",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "This entire block of code would make sense as a helper function.",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0148f2_275431c2",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "Maybe could move this closer to the point where you need a mutable copy of the options.",
+      "range": {
+        "startLine": 864,
+        "startChar": 33,
+        "endLine": 864,
+        "endChar": 52
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd44ac37_1a09c531",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "Probably can get rid of this variable, too.",
+      "range": {
+        "startLine": 913,
+        "startChar": 13,
+        "endLine": 913,
+        "endChar": 23
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4301e4fa_b7726aa5",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "One of the advantages of the new approach is that you don\u0027t need local variables like this to hold the results of bitwise operations.",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647877b5_96d1b7ee",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "I think it\u0027d be ideal if all of the options were a struct (no private members), particularly if it would allow constexpr initialization. Is there any particular reason why this should be a class?",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad82c0e9_233c8cee",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "It might make sense not to nest the sub-option types. They could conceivably stand alone if they\u0027re not being used as part of this bigger aggregate. (They could even be provided by other headers, in the limit.)",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc049fb3_5770092b",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "It\u0027s a little unexpected for this initializer to be true, while the rest are false. Someone would have to look at the definition to know which fields are set, rather than simply assuming they\u0027re set to the equivalent of 0.\n\nMaybe it makes sense to do it this way, but consider a couple other options:\n1. Rename the field so 0 state \u003d anti-aliasing enabled.\n2. Have the default initializer be anti-aliasing disabled, but provide a factory method to provide \"reasonable\" defaults that might be different.",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e23536d8_da194472",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "Does it make sense to use an enum for some of these modes?",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74517ebf_afa3d98e",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1fb637_b49fbef8",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "Possibly unavoidable, but this kind of naming tends to lead to double negatives. Is there a more affirmative way to describe not using native text?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd011c51_846973f6",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "It feels like these two fields probably are better as enums, too. I can\u0027t imagine wanting to use them both at the same time.",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba120ee7_2648771f",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "I\u0027m not clear about the distinction between font and text options. Can you describe a rule for when an option would go in one structure or the other?",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198c928f_c8e7c5d6",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-05-21T05:24:24Z",
+      "side": 1,
+      "message": "typo\n\nAlso, I think this description is a little too literal. I don\u0027t need to know that you\u0027re setting a private field in the public API description, I just want to know the overall effect.",
+      "range": {
+        "startLine": 58,
+        "startChar": 33,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
