@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ce91c35_1a295e71",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Only the struct Options inside CPDF_RenderOptions class shares similar rendering flags with CFX_RenderOptions.\nOn top of that, CFX_RenderOptions implements extra logic between certain rendering flags (some flags get consolidated into enums), adding extra flags which are not rendering options(such as font option |is_cid|) to reduce the number of parameters in some functions.\nI personally prefer keeping CPDF_RenderOptions and CFX_RenderOptions separated, since the former is the \"original\" options plus extra methods, the latter is processed rendering options plus additional flags.",
+      "parentUuid": "b5839b87_21565acf",
+      "range": {
+        "startLine": 118,
+        "startChar": 45,
+        "endLine": 118,
+        "endChar": 63
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6812f96_53b47e7c",
         "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52774b54_6fffa684",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6812f96_53b47e7c",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "503eca13_510c7a8d",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb0148f2_275431c2",
+      "range": {
+        "startLine": 864,
+        "startChar": 33,
+        "endLine": 864,
+        "endChar": 52
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd44ac37_1a09c531",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "5534d633_594a32de",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd44ac37_1a09c531",
+      "range": {
+        "startLine": 913,
+        "startChar": 13,
+        "endLine": 913,
+        "endChar": 23
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4301e4fa_b7726aa5",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 2
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "97d58ea1_11962743",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4301e4fa_b7726aa5",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "647877b5_96d1b7ee",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
@@ -116,6 +224,24 @@
       "writtenOn": "2020-05-21T05:24:24Z",
       "side": 1,
       "message": "I think it\u0027d be ideal if all of the options were a struct (no private members), particularly if it would allow constexpr initialization. Is there any particular reason why this should be a class?",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd0d2419_f338e994",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "When I was debating whether to use a class or a struct, I came across this discussion https://groups.google.com/a/google.com/g/c-users/c/ikplk1pwO4A/m/978nJyEMAwAJ\n\nFor foreseeable future, there will be more elements and functions added into this class (such as operators, which will be used for Skia rendering to check whether text rendering options has changed).\nSince the complexity will continue increase, I feel it\u0027s safer to make it a class to support more methods and reduce the amount of changes in the future.",
+      "parentUuid": "647877b5_96d1b7ee",
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "7c466202_6d7d8744",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Rendering options/flags which were packed in an integer flag, could affect rendering in multiple ways, some options affects text rendering, some affects filling and stroking actions. To completely remove the integer flag and get rid of bitwise operations, this CFX_RenderOptions should cover most of the flags defined in core/fxge/render_defines.h, plus some other flags in fx_font.h.\n\nConsidering a function FunctionX(...int flags):\n(1) We want the new option class to completely replace |flags|, so that we can avoid the case of adding more parameters to FunctionX. In that case, all options should accessible from 1 parameter. \n(2) Some functions only affect one aspect of rendering, such as text rendering. Then having substruct will make it easy to only pass the struct that\u0027s needed in the function. For example:\nFunctionAffectText(...int flags) can be changed into FunctionAffectText(...CFX_RenderOptions::TextOptions \u0026options).\n\nOf course, not having nested structs will work to solve issue (1) too. I just thought maybe nested structs can help categorize the options better with out breaking them into different headers?",
+      "parentUuid": "ad82c0e9_233c8cee",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc049fb3_5770092b",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
@@ -150,6 +294,24 @@
       "writtenOn": "2020-05-21T05:24:24Z",
       "side": 1,
       "message": "It\u0027s a little unexpected for this initializer to be true, while the rest are false. Someone would have to look at the definition to know which fields are set, rather than simply assuming they\u0027re set to the equivalent of 0.\n\nMaybe it makes sense to do it this way, but consider a couple other options:\n1. Rename the field so 0 state \u003d anti-aliasing enabled.\n2. Have the default initializer be anti-aliasing disabled, but provide a factory method to provide \"reasonable\" defaults that might be different.",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b582b46a_b93a9e3b",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "anti-aliasing originally comes FXTEXT_NOSMOOTH, to avoid double negative like \"text_not_smooth \u003d false\".\n\nLooking deeper into the code: LCD depends on AntiAliasing is enabled, and BGR stripe depends on LCD is enabled. Therefore, creates the following enum SubpixelType to consolidate 3 boolean flags: anti_aliasing, is_lcd, and is_bgr_stripe.\n\nenum SubpixelType {\n    kAntiAliasingDisabled \u003d 0,\n    kAntiAliasingEnabled,\n\n    // LCD optimization can only be enabled when anti-aliasing is enabled.\n    kLcd,\n\n    // BGR stripe optimization can only be enabled when LCD Mode is enabled.\n    kBgrStripe,\n  };\n\n|kAntiAliasingEnabled| will be the default status.",
+      "parentUuid": "dc049fb3_5770092b",
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -170,6 +332,24 @@
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb1cf32_6044ec9c",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "New patch set consolidates 3 boolean flags: anti_aliasing, is_lcd, and is_bgr_stripe into 4 enums. See enum |SubpixelType|.",
+      "parentUuid": "e23536d8_da194472",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "8ee62c19_57932d89",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74517ebf_afa3d98e",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f1fb637_b49fbef8",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
@@ -207,6 +411,30 @@
       "writtenOn": "2020-05-21T05:24:24Z",
       "side": 1,
       "message": "Possibly unavoidable, but this kind of naming tends to lead to double negatives. Is there a more affirmative way to describe not using native text?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccceecf3_6d708857",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "I couldn\u0027t think about a better name to avoid double negative, therefore keeps the name consistent with \"FPDF_NO_NATIVETEXT\" for now to make the code looks more straight-forward.\n@thestig: Any better idea on naming this flag?",
+      "parentUuid": "0f1fb637_b49fbef8",
       "range": {
         "startLine": 25,
         "startChar": 9,
@@ -236,6 +464,24 @@
     },
     {
       "key": {
+        "uuid": "1e1c318c_2f1b83c2",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "I am keeping these two flags for now since currently there is no code coverage for when any of these two flags is being set to true.\n\nMaybe we can have a separate CL to clean up flags like these or add code coverage? (These two flags are not the rendering flags with highest priority to fix or to be supported.) I created issue crbug.com/pdfium/1535 for this task as a place holder.",
+      "parentUuid": "dd011c51_846973f6",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba120ee7_2648771f",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
@@ -247,6 +493,30 @@
       "writtenOn": "2020-05-21T05:24:24Z",
       "side": 1,
       "message": "I\u0027m not clear about the distinction between font and text options. Can you describe a rule for when an option would go in one structure or the other?",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db64b37_53ebd230",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Right now for refactoring reason, I categorize the options by the name of the original flag.\nTextOptions comes from FXTEXT* and FontOptions comes from FXFONT* (more to add in this file).\nOnce we proceed to refactor FXFILL* or FX_STROKE*, there will be more structs to be added in.",
+      "parentUuid": "ba120ee7_2648771f",
       "range": {
         "startLine": 34,
         "startChar": 12,
@@ -279,6 +549,30 @@
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7555a36a_dad9d2b3",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-27T16:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "198c928f_c8e7c5d6",
+      "range": {
+        "startLine": 58,
+        "startChar": 33,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
