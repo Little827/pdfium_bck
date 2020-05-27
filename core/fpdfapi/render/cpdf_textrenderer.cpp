@@ -24,6 +24,28 @@ CFX_Font* GetFont(CPDF_Font* pFont, int32_t position) {
   return position == -1 ? pFont->GetFont() : pFont->GetFontFallback(position);
 }
 
+void LoadRenderOptionsHelper(CPDF_Font* pFont,
+                             const CPDF_RenderOptions& options,
+                             CFX_RenderOptions* render_options) {
+  CFX_RenderOptions::TextOptions& text_options =
+      render_options->GetTextOptions();
+  if (options.GetOptions().bNoTextSmooth)
+    text_options.subpixel_type = CFX_RenderOptions::kAntiAliasingDisabled;
+  else if (options.GetOptions().bClearType)
+    text_options.subpixel_type = options.GetOptions().bBGRStripe
+                                     ? CFX_RenderOptions::kBgrStripe
+                                     : CFX_RenderOptions::kLcd;
+
+  if (options.GetOptions().bNoNativeText)
+    text_options.no_native_text = true;
+  if (options.GetOptions().bPrintGraphicText)
+    text_options.print_graphic_text = true;
+  if (options.GetOptions().bPrintImageText)
+    text_options.print_image_text = true;
+  if (pFont->IsCIDFont())
+    render_options->GetFontOptions().is_cid = true;
+}
+
 }  // namespace
 
 // static
@@ -121,23 +143,8 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
   if (pos.empty())
     return true;
 
-  int fxge_flags = 0;
-  if (options.GetOptions().bClearType) {
-    fxge_flags |= FXTEXT_CLEARTYPE;
-    if (options.GetOptions().bBGRStripe)
-      fxge_flags |= FXTEXT_BGR_STRIPE;
-  }
-  if (options.GetOptions().bNoTextSmooth)
-    fxge_flags |= FXTEXT_NOSMOOTH;
-  if (options.GetOptions().bPrintGraphicText)
-    fxge_flags |= FXTEXT_PRINTGRAPHICTEXT;
-  if (options.GetOptions().bNoNativeText)
-    fxge_flags |= FXTEXT_NO_NATIVETEXT;
-  if (options.GetOptions().bPrintImageText)
-    fxge_flags |= FXTEXT_PRINTIMAGETEXT;
-
-  if (pFont->IsCIDFont())
-    fxge_flags |= FXFONT_CIDFONT;
+  CFX_RenderOptions render_options;
+  LoadRenderOptionsHelper(pFont, options, &render_options);
 
   bool bDraw = true;
   int32_t fontPosition = pos[0].m_FallbackFontPosition;
@@ -150,7 +157,7 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
     CFX_Font* font = GetFont(pFont, fontPosition);
     if (!pDevice->DrawNormalText(i - startIndex, &pos[startIndex], font,
                                  font_size, mtText2Device, fill_argb,
-                                 fxge_flags)) {
+                                 render_options)) {
       bDraw = false;
     }
     fontPosition = curFontPosition;
@@ -159,7 +166,7 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
   CFX_Font* font = GetFont(pFont, fontPosition);
   if (!pDevice->DrawNormalText(pos.size() - startIndex, &pos[startIndex], font,
                                font_size, mtText2Device, fill_argb,
-                               fxge_flags)) {
+                               render_options)) {
     bDraw = false;
   }
   return bDraw;
