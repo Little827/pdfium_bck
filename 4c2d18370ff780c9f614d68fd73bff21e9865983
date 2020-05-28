@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "609f43b0_cfc3527f",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:30:12Z",
+      "side": 1,
+      "message": "Would it make sense to push all this new logic into CPWL_ComboBox::OnChar() ? CFFL_ComboBox::OnChar(), as written in this CL, only operates on |pWnd|. Whereas CFFL_CheckBox::OnChar(), for comparison, needs to coordinate pieces outside of CPWL_CheckBox.",
+      "revId": "4c2d18370ff780c9f614d68fd73bff21e9865983",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54cabb24_292ca9b3",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:30:12Z",
+      "side": 1,
+      "message": "Not needed, since this block does not declare any local variables.",
+      "range": {
+        "startLine": 82,
+        "startChar": 28,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "4c2d18370ff780c9f614d68fd73bff21e9865983",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "922a2445_6d92d2bb",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:30:12Z",
+      "side": 1,
+      "message": "Can |pEdit| be nullptr?",
+      "revId": "4c2d18370ff780c9f614d68fd73bff21e9865983",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f3e93ae_329aba5c",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:30:12Z",
+      "side": 1,
+      "message": "Better to write:\n\ncase Foo: {\n  ...\n  break;\n}\n\nthan:\n\ncase Foo: {\n  ...\n} break;",
+      "revId": "4c2d18370ff780c9f614d68fd73bff21e9865983",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d277766_9135bbd2",
+        "filename": "testing/resources/pixel/combobox_form.evt",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:30:12Z",
+      "side": 1,
+      "message": "nit: Add a space after the pound sign, like on line 6.",
+      "revId": "4c2d18370ff780c9f614d68fd73bff21e9865983",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d05127_5942f1c0",
+        "filename": "testing/resources/pixel/combobox_form.evt",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:30:12Z",
+      "side": 1,
+      "message": "Combine with the previous line?",
+      "revId": "4c2d18370ff780c9f614d68fd73bff21e9865983",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
