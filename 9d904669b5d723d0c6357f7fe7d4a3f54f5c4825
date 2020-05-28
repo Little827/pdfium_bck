@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edf0ffb7_177526a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T22:30:28Z",
+      "side": 1,
+      "message": "I think you should avoid behavior changes in refactoring CLs. If you literally move the block of code from DrawNormalText() into GetTextRenderOptionsHelper(), (Adding some comments is probably ok) then the review process for this refactoring CL is an easy approval. If you move code and change its logic at the same time, then reviewers have to carefully review the logic changes.",
+      "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb5d2e6_088a6d24",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T22:30:28Z",
+      "side": 1,
+      "message": "Can this be: const CPDF_Font* ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
