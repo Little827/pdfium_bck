@@ -547,6 +547,30 @@
     },
     {
       "key": {
+        "uuid": "2b65ae0c_1632470f",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T19:34:11Z",
+      "side": 1,
+      "message": "Would it make sense for most FXFONT*, FXFILL_*, and FX_STROKE_* to be in CFX_RenderOptions? If so, why? Currently, do we ever mix FXFILL_* with FXTEXT_* in the same integer?",
+      "parentUuid": "3db64b37_53ebd230",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "198c928f_c8e7c5d6",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2

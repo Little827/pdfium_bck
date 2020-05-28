@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d0050b6_fe4e8886",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T19:34:11Z",
+      "side": 1,
+      "message": "Just return the result, instead of having it as an out-parameter.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "b700524bb2bd17045209e2d6a3373604dd0348f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7fece1a_5752e6a4",
         "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
         "patchSetId": 3
