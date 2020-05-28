@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c821caa9_09cdc740",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-05-28T08:04:01Z",
+      "side": 1,
+      "message": "Thanks for pointing out.\nMade it consistent with HTML behavior.",
+      "parentUuid": "b2a99c75_b56ab45c",
+      "revId": "85ca47bd138709af84001c68799f2cca2dd726d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c82821ec_189efaa4",
         "filename": "testing/resources/pixel/combobox_form.in",
         "patchSetId": 14
@@ -39,6 +57,30 @@
       "revId": "85ca47bd138709af84001c68799f2cca2dd726d7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6a6aff_daf0465c",
+        "filename": "testing/resources/pixel/combobox_form.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-05-28T08:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82821ec_189efaa4",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "85ca47bd138709af84001c68799f2cca2dd726d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
