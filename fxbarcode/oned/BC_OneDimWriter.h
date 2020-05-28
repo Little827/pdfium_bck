@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "core/fxge/render_defines.h"
 #include "fxbarcode/BC_Library.h"
 #include "fxbarcode/BC_Writer.h"
 #include "fxbarcode/utils.h"
@@ -92,6 +93,7 @@ class CBC_OneDimWriter : public CBC_Writer {
   float m_fFontSize = 10.0f;
   int32_t m_iFontStyle = 0;
   uint32_t m_fontColor = 0xff000000;
+  uint32_t m_textRenderOptions = FXTEXT_CLEARTYPE;
   BC_TEXT_LOC m_locTextLoc = BC_TEXT_LOC_BELOWEMBED;
 
   int32_t m_iDataLenth = 0;
