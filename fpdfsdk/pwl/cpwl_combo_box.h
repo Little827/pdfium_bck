@@ -86,14 +86,13 @@ class CPWL_ComboBox final : public CPWL_Wnd {
   bool IsPopup() const;
   void SetSelectText();
   void AttachFFLData(CFFL_FormFiller* pData) { m_pFormFiller = pData; }
+  // Returns |true| iff this instance is still allocated.
+  bool SetPopup(bool bPopup);
 
  private:
   void CreateEdit(const CreateParams& cp);
   void CreateButton(const CreateParams& cp);
   void CreateListBox(const CreateParams& cp);
-
-  // Returns |true| iff this instance is still allocated.
-  bool SetPopup(bool bPopup);
 
   UnownedPtr<CPWL_Edit> m_pEdit;
   UnownedPtr<CPWL_CBButton> m_pButton;
