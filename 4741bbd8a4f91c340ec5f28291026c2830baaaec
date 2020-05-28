@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "3748365f_fa58509e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:01:51Z",
+      "side": 1,
+      "message": "The PDF spec always refer to this phrase as \"read-only\" so it would be nice to do the same through out this CL.",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "4741bbd8a4f91c340ec5f28291026c2830baaaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e03fdb1b_4f8c7720",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:01:51Z",
+      "side": 1,
+      "message": "Combine with the previous line since the summary line is suppose to be just a single line. Even if it means going over 72 columns. Alternatively, write a more concise summary.",
+      "revId": "4741bbd8a4f91c340ec5f28291026c2830baaaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd431ce6_f042254b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:01:51Z",
+      "side": 1,
+      "message": "\"onto\" ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "4741bbd8a4f91c340ec5f28291026c2830baaaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac0e88d_f3507eda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:01:51Z",
+      "side": 1,
+      "message": "There\u0027s more space at the end of this line for words.",
+      "revId": "4741bbd8a4f91c340ec5f28291026c2830baaaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d287bb8_ce3ce7f7",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:01:51Z",
+      "side": 1,
+      "message": "nit: Be consistent with other instances of this phrase?",
+      "range": {
+        "startLine": 973,
+        "startChar": 11,
+        "endLine": 973,
+        "endChar": 19
+      },
+      "revId": "4741bbd8a4f91c340ec5f28291026c2830baaaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac962f78_f16155fe",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 13
@@ -19,6 +122,23 @@
         "endLine": 976,
         "endChar": 70
       },
+      "revId": "4741bbd8a4f91c340ec5f28291026c2830baaaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b05f63b_7cacebb1",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T08:01:51Z",
+      "side": 1,
+      "message": "Suggestion for improving this test: duplicate this line before line 111. Then one can better see the OnChar() call has no effect, like in FPDFFormFillEmbedderTest.CheckReadOnlyInCheckbox.\n\nSame for the radio button below.",
       "revId": "4741bbd8a4f91c340ec5f28291026c2830baaaec",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
