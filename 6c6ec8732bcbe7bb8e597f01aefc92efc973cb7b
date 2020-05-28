@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05d60d93_58da1250",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T21:24:53Z",
+      "side": 1,
+      "message": "Please fully revert changes in cffl_combobox.cpp.",
+      "revId": "6c6ec8732bcbe7bb8e597f01aefc92efc973cb7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a4a5f0_d8cbb3fb",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T21:24:53Z",
+      "side": 1,
+      "message": "There\u0027s room on the previous line for comments.",
+      "revId": "6c6ec8732bcbe7bb8e597f01aefc92efc973cb7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c98f0e0_5d2b9b63",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T21:24:53Z",
+      "side": 1,
+      "message": "With the modern inline comment style, this should become: /*bPopUp\u003d*/true",
+      "range": {
+        "startLine": 548,
+        "startChar": 19,
+        "endLine": 548,
+        "endChar": 35
+      },
+      "revId": "6c6ec8732bcbe7bb8e597f01aefc92efc973cb7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
