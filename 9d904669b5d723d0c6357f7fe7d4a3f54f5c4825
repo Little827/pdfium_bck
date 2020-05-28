@@ -39,6 +39,23 @@
       "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a129b854_8fa3b66d",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-28T22:33:17Z",
+      "side": 1,
+      "message": "Whenever one portion of an if/else-if/else block has braces, the entire structure needs braces. Please read the style guide carefully.",
+      "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
