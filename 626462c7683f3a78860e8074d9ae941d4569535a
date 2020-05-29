@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d2fb708_bf6e03d7",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-29T03:51:22Z",
+      "side": 1,
+      "message": "We know this is going to become slightly more complicated in the near future. At which point, we shouldn\u0027t inline the method anymore. So we might as well un-inline it now.",
+      "revId": "626462c7683f3a78860e8074d9ae941d4569535a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
