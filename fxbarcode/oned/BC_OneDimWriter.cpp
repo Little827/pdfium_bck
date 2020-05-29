@@ -184,7 +184,7 @@ void CBC_OneDimWriter::ShowDeviceChars(CFX_RenderDevice* device,
   }
   device->DrawNormalText(str.GetLength(), pCharPos, m_pFont.Get(),
                          static_cast<float>(iFontSize), affine_matrix,
-                         m_fontColor, FXTEXT_CLEARTYPE);
+                         m_fontColor, GetTextRenderOptions());
 }
 
 bool CBC_OneDimWriter::ShowChars(WideStringView contents,
