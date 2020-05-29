@@ -16,6 +16,24 @@
       "revId": "626462c7683f3a78860e8074d9ae941d4569535a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52799f59_acbd7ad2",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-29T17:07:04Z",
+      "side": 1,
+      "message": "Sounds good. Un-inline it will remove the change in the header file that\u0027s included here too.",
+      "parentUuid": "6d2fb708_bf6e03d7",
+      "revId": "626462c7683f3a78860e8074d9ae941d4569535a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
