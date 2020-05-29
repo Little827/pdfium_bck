@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c6e0196c_70f85e30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-29T00:59:56Z",
+      "side": 1,
+      "message": "The new patch set removes the logic change from this CL and adds it into another follow-up CL.",
+      "parentUuid": "edf0ffb7_177526a9",
+      "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cb5d2e6_088a6d24",
         "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e2e8c30e_780fc109",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-29T00:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb5d2e6_088a6d24",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a129b854_8fa3b66d",
         "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f43e097e_6a5cd972",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-05-29T00:59:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a129b854_8fa3b66d",
+      "revId": "9d904669b5d723d0c6357f7fe7d4a3f54f5c4825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
