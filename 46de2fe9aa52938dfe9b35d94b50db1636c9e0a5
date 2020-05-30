@@ -23,6 +23,30 @@
       "revId": "46de2fe9aa52938dfe9b35d94b50db1636c9e0a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "382e6b3e_f2d31ffd",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-05-30T00:56:21Z",
+      "side": 1,
+      "message": "It\u0027s only safe when CFX_RenderDevice is fully initialized. I\u0027d like to think that\u0027s always the case.\n\n- CFX_RenderDevice shouldn\u0027t ever be instantiated. https://pdfium-review.googlesource.com/70190\n- CFX_RenderDevice has two subclasses:\n1) CFX_WindowsRenderDevice, which immediately initializes CFX_RenderDevice.\n2) CFX_DefaultRenderDevice, which does 2 phase initialization. During the brief periods where the CFX_DefaultRenderDevice is not fully initialized, many of the methods here are not safe. I added more notes here: https://pdfium-review.googlesource.com/70191",
+      "parentUuid": "7798cb85_fd7d9185",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 67
+      },
+      "revId": "46de2fe9aa52938dfe9b35d94b50db1636c9e0a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
