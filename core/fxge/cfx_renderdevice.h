@@ -16,6 +16,7 @@
 #include "core/fxge/fx_dib.h"
 #include "core/fxge/render_defines.h"
 #include "core/fxge/renderdevicedriver_iface.h"
+#include "third_party/base/optional.h"
 
 class CFX_DIBBase;
 class CFX_DIBitmap;
@@ -58,7 +59,7 @@ class CFX_RenderDevice {
 
   int GetWidth() const { return m_Width; }
   int GetHeight() const { return m_Height; }
-  DeviceType GetDeviceType() const { return m_DeviceType; }
+  DeviceType GetDeviceType() const { return m_DeviceType.value(); }
   int GetRenderCaps() const { return m_RenderCaps; }
   int GetDeviceCaps(int id) const;
   RetainPtr<CFX_DIBitmap> GetBitmap() const;
@@ -246,7 +247,7 @@ class CFX_RenderDevice {
   int m_Height = 0;
   int m_bpp = 0;
   int m_RenderCaps = 0;
-  DeviceType m_DeviceType = DeviceType::kUnknown;
+  Optional<DeviceType> m_DeviceType;
   FX_RECT m_ClipBox;
   std::unique_ptr<RenderDeviceDriverIface> m_pDeviceDriver;
 };
