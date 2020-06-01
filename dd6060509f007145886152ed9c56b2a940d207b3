@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "630a9c24_719ea181",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-01T22:41:08Z",
+      "side": 1,
+      "message": "Missing a comma.",
+      "range": {
+        "startLine": 84,
+        "startChar": 14,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "dd6060509f007145886152ed9c56b2a940d207b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd17560_a369e95a",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-01T22:41:08Z",
+      "side": 1,
+      "message": "Do we want to use \"non-trivial\" to be consistent with Chromium and V8?",
+      "range": {
+        "startLine": 104,
+        "startChar": 57,
+        "endLine": 104,
+        "endChar": 68
+      },
+      "revId": "dd6060509f007145886152ed9c56b2a940d207b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb41d3b_3dd0641a",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-01T22:41:08Z",
+      "side": 1,
+      "message": "OWNERS ?",
+      "range": {
+        "startLine": 113,
+        "startChar": 19,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "dd6060509f007145886152ed9c56b2a940d207b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b02be8_876e4190",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-01T22:41:08Z",
+      "side": 1,
+      "message": "\"top-level\", here and below. For consistency with the phrase in Chromium\u0027s top-level OWNERS file.",
+      "range": {
+        "startLine": 113,
+        "startChar": 70,
+        "endLine": 113,
+        "endChar": 79
+      },
+      "revId": "dd6060509f007145886152ed9c56b2a940d207b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4425e343_7e019b5d",
         "filename": "CONTRIBUTING.md",
         "patchSetId": 8
