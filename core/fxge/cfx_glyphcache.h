@@ -15,6 +15,7 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_face.h"
+#include "core/fxge/cfx_textrenderoptions.h"
 
 #if defined _SKIA_SUPPORT_ || _SKIA_SUPPORT_PATHS_
 #include "core/fxge/fx_font.h"
@@ -39,7 +40,7 @@ class CFX_GlyphCache : public Retainable, public Observable {
                                          const CFX_Matrix& matrix,
                                          uint32_t dest_width,
                                          int anti_alias,
-                                         int* pTextFlags);
+                                         CFX_TextRenderOptions* text_options);
   const CFX_PathData* LoadGlyphPath(const CFX_Font* pFont,
                                     uint32_t glyph_index,
                                     uint32_t dest_width);
