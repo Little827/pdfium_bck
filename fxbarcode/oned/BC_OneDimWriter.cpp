@@ -37,8 +37,10 @@
 #include "fxbarcode/BC_Writer.h"
 
 // static
-uint32_t CBC_OneDimWriter::GetTextRenderOptions() {
-  return FXTEXT_CLEARTYPE;
+CFX_TextRenderOptions CBC_OneDimWriter::GetTextRenderOptions() {
+  CFX_TextRenderOptions options;
+  options.SetTextUseLcd(true);
+  return options;
 }
 
 // static
