@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4425e343_7e019b5d",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-01T22:38:50Z",
+      "side": 1,
+      "message": "nit: sorry, the agreement isn\u0027t quite right still for this sentence.  Howzabout:\n\nOnce you are a committer, you should feel free to reach out to the\nOWNERS who have reviewed your patches to ask what else they’d like to\nsee from you to be comfortable nominating you as an OWNER.",
+      "range": {
+        "startLine": 126,
+        "startChar": 25,
+        "endLine": 128,
+        "endChar": 39
+      },
+      "revId": "dd6060509f007145886152ed9c56b2a940d207b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
