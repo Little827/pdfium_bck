@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "582139c4_ba975df7",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5960
+      },
+      "writtenOn": "2020-06-01T18:15:43Z",
+      "side": 1,
+      "message": "\u003e Found empty line(s) at the end of the file\n\nPlease fix.",
+      "parentUuid": "c4f38c05_00eb633c",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 0
+      },
+      "revId": "4957cec30bf3434c3216b693064707fda9765ea1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
