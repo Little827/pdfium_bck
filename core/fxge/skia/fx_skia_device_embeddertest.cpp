@@ -62,8 +62,10 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
   if (state.m_clip != State::Clip::kNo)
     driver->SetClip_PathFill(&clipPath, &clipMatrix, 0);
   if (state.m_graphic == State::Graphic::kPath) {
-    driver->DrawPath(&path1, &matrix, &graphState, 0xFF112233, 0,
-                     FXFILL_WINDING, BlendMode::kNormal);
+    CFX_FillRenderOptions fill_options;
+    fill_options.fill_type = FXFILL_WINDING;
+    driver->DrawPath(&path1, &matrix, &graphState, 0xFF112233, 0, fill_options,
+                     BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
     driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix,
                            fontSize, 0xFF445566);
@@ -85,8 +87,10 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
   else if (state.m_clip == State::Clip::kDifferentMatrix)
     driver->SetClip_PathFill(&clipPath, &clipMatrix2, 0);
   if (state.m_graphic == State::Graphic::kPath) {
-    driver->DrawPath(&path2, &matrix2, &graphState, 0xFF112233, 0,
-                     FXFILL_WINDING, BlendMode::kNormal);
+    CFX_FillRenderOptions fill_options;
+    fill_options.fill_type = FXFILL_WINDING;
+    driver->DrawPath(&path2, &matrix2, &graphState, 0xFF112233, 0, fill_options,
+                     BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
     driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix2,
                            fontSize, 0xFF445566);

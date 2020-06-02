@@ -54,6 +54,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
+#include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_glyphbitmap.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
@@ -424,28 +425,30 @@ bool CPDF_RenderStatus::ProcessPath(CPDF_PathObject* pPathObj,
   if (!IsAvailableMatrix(path_matrix))
     return true;
 
+  CFX_FillRenderOptions fill_options;
+  fill_options.fill_type = FillType;
   if (FillType && m_Options.GetOptions().bRectAA)
-    FillType |= FXFILL_RECT_AA;
+    fill_options.fill_rect_aa = true;  // FillType |= FXFILL_RECT_AA;
   if (m_Options.GetOptions().bFillFullcover)
-    FillType |= FXFILL_FULLCOVER;
+    fill_options.fill_full_cover = true;  // FillType |= FXFILL_FULLCOVER;
   if (m_Options.GetOptions().bNoPathSmooth)
-    FillType |= FXFILL_NOPATHSMOOTH;
+    fill_options.no_path_smooth = true;  // FillType |= FXFILL_NOPATHSMOOTH;
   if (bStroke)
-    FillType |= FX_FILL_STROKE;
+    fill_options.fill_stroke = true;  // FillType |= FX_FILL_STROKE;
 
   const CPDF_PageObject* pPageObj =
       static_cast<const CPDF_PageObject*>(pPathObj);
   if (pPageObj->m_GeneralState.GetStrokeAdjust())
-    FillType |= FX_STROKE_ADJUST;
+    fill_options.stroke_adjust = true;  // FillType |= FX_STROKE_ADJUST;
   if (m_pType3Char)
-    FillType |= FX_FILL_TEXT_MODE;
+    fill_options.fill_text_mode = true;  // FillType |= FX_FILL_TEXT_MODE;
 
   CFX_GraphState graphState = pPathObj->m_GraphState;
   if (m_Options.GetOptions().bThinLine)
     graphState.SetLineWidth(0);
   return m_pDevice->DrawPathWithBlend(
       pPathObj->path().GetObject(), &path_matrix, graphState.GetObject(),
-      fill_argb, stroke_argb, FillType, m_curBlend);
+      fill_argb, stroke_argb, fill_options, m_curBlend);
 }
 
 RetainPtr<CPDF_TransferFunc> CPDF_RenderStatus::GetTransferFunc(
