@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c0f4e1e_85090e91",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T22:22:23Z",
+      "side": 1,
+      "message": "Next CL.",
+      "parentUuid": "030bcd9a_3b238b8b",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 302,
+        "endChar": 13
+      },
+      "revId": "5509cef19018a03b1c44ba776b2135b5175f2989",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aaa08d5_4344f1d3",
         "filename": "xfa/fde/cfde_textout.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5509cef19018a03b1c44ba776b2135b5175f2989",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa69a35b_d922ff81",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T22:22:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aaa08d5_4344f1d3",
+      "range": {
+        "startLine": 304,
+        "startChar": 4,
+        "endLine": 304,
+        "endChar": 24
+      },
+      "revId": "5509cef19018a03b1c44ba776b2135b5175f2989",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
