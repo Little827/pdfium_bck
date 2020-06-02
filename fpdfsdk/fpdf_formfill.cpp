@@ -28,6 +28,7 @@
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widgethandler.h"
+#include "fxjs/ijs_runtime.h"
 #include "public/fpdfview.h"
 
 #ifdef PDF_ENABLE_XFA
@@ -772,6 +773,15 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoDocumentAAction(FPDF_FORMHANDLE hHandle,
     pFormFillEnv->GetActionHandler()->DoAction_Document(action, type,
                                                         pFormFillEnv);
   }
+}
+
+FPDF_EXPORT void FPDF_CALLCONV FORM_DoIdleAction(FPDF_FORMHANDLE hHandle) {
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!pFormFillEnv)
+    return;
+
+  pFormFillEnv->GetIJSRuntime()->DoIdleAction();
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,

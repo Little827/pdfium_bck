@@ -37,6 +37,7 @@ class CJS_Runtime final : public IJS_Runtime,
   CPDFSDK_FormFillEnvironment* GetFormFillEnv() const override;
   Optional<IJS_Runtime::JS_Error> ExecuteScript(
       const WideString& script) override;
+  void DoIdleAction() override;
 
   CJS_EventContext* GetCurrentEventContext() const;
   TimerHandlerIface* GetTimerHandler() const;

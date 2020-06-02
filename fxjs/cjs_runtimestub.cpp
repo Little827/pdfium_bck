@@ -33,3 +33,5 @@ Optional<IJS_Runtime::JS_Error> CJS_RuntimeStub::ExecuteScript(
     const WideString& script) {
   return pdfium::nullopt;
 }
+
+void CJS_RuntimeStub::DoIdleAction() {}

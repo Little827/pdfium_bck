@@ -44,7 +44,7 @@ class IJS_Runtime {
     UnownedPtr<IJS_EventContext> m_pContext;
   };
 
-  static void Initialize(unsigned int slot, void* isolate);
+  static void Initialize(unsigned int slot, void* isolate, void* platform);
   static void Destroy();
   static std::unique_ptr<IJS_Runtime> Create(
       CPDFSDK_FormFillEnvironment* pFormFillEnv);
@@ -56,6 +56,7 @@ class IJS_Runtime {
   virtual void ReleaseEventContext(IJS_EventContext* pContext) = 0;
   virtual CPDFSDK_FormFillEnvironment* GetFormFillEnv() const = 0;
   virtual Optional<JS_Error> ExecuteScript(const WideString& script) = 0;
+  virtual void DoIdleAction() = 0;
 
  protected:
   IJS_Runtime() = default;

@@ -1255,6 +1255,11 @@ FORM_DoDocumentOpenAction(FPDF_FORMHANDLE hHandle);
 FPDF_EXPORT void FPDF_CALLCONV FORM_DoDocumentAAction(FPDF_FORMHANDLE hHandle,
                                                       int aaType);
 
+/*
+ * Experimental API.
+ */
+FPDF_EXPORT void FPDF_CALLCONV FORM_DoIdleAction(FPDF_FORMHANDLE hHandle);
+
 // Additional-action types of page object:
 //   OPEN (/O) -- An action to be performed when the page is opened
 //   CLOSE (/C) -- An action to be performed when the page is closed

@@ -44,13 +44,15 @@ CJS_Runtime::CJS_Runtime(CPDFSDK_FormFillEnvironment* pFormFillEnv)
   v8::Isolate* pIsolate = nullptr;
   IPDF_JSPLATFORM* pPlatform = m_pFormFillEnv->GetFormFillInfo()->m_pJsPlatform;
   if (pPlatform->version <= 2) {
+    // Backwards compatibility - JS now initialized earlier in more modern
+    // JSPLATFORM versions.
     unsigned int embedderDataSlot = 0;
     v8::Isolate* pExternalIsolate = nullptr;
     if (pPlatform->version == 2) {
       pExternalIsolate = static_cast<v8::Isolate*>(pPlatform->m_isolate);
       embedderDataSlot = pPlatform->m_v8EmbedderSlot;
     }
-    FXJS_Initialize(embedderDataSlot, pExternalIsolate);
+    FXJS_Initialize(embedderDataSlot, pExternalIsolate, nullptr);
   }
   m_isolateManaged = FXJS_GetIsolate(&pIsolate);
   SetIsolate(pIsolate);
@@ -162,6 +164,11 @@ CPDFSDK_FormFillEnvironment* CJS_Runtime::GetFormFillEnv() const {
 Optional<IJS_Runtime::JS_Error> CJS_Runtime::ExecuteScript(
     const WideString& script) {
   return Execute(script);
+}
+
+void CJS_Runtime::DoIdleAction() {
+  while (PumpMessageLoop())
+    printf("Pumped!!!\n");
 }
 
 bool CJS_Runtime::AddEventToSet(const FieldEvent& event) {

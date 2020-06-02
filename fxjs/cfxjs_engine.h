@@ -63,7 +63,9 @@ class FXJS_PerIsolateData {
   explicit FXJS_PerIsolateData(v8::Isolate* pIsolate);
 };
 
-void FXJS_Initialize(unsigned int embedderDataSlot, v8::Isolate* pIsolate);
+void FXJS_Initialize(unsigned int embedderDataSlot,
+                     v8::Isolate* pIsolate,
+                     v8::Platform* platform);
 void FXJS_Release();
 
 // Gets the global isolate set by FXJS_Initialize(), or makes a new one each
@@ -121,6 +123,7 @@ class CFXJS_Engine : public CFX_V8 {
 
   // Called after FXJS_InitializeEngine call made.
   Optional<IJS_Runtime::JS_Error> Execute(const WideString& script);
+  bool PumpMessageLoop();
 
   v8::Local<v8::Object> GetThisObj();
   v8::Local<v8::Object> NewFXJSBoundObject(int nObjDefnID, FXJSOBJTYPE type);
