@@ -49,7 +49,7 @@ class CGdiplusExt {
                 const CFX_GraphStateData* pGraphState,
                 uint32_t fill_argb,
                 uint32_t stroke_argb,
-                int fill_mode);
+                const CFX_FillRenderOptions& fill_options);
 
   RetainPtr<CFX_DIBitmap> LoadDIBitmap(WINDIB_Open_Args_ args);
 
@@ -85,7 +85,7 @@ class CGdiDeviceDriver : public RenderDeviceDriverIface {
   void SetBaseClip(const FX_RECT& rect) override;
   bool SetClip_PathFill(const CFX_PathData* pPathData,
                         const CFX_Matrix* pObject2Device,
-                        int fill_mode) override;
+                        const CFX_FillRenderOptions& fill_options) override;
   bool SetClip_PathStroke(const CFX_PathData* pPathData,
                           const CFX_Matrix* pObject2Device,
                           const CFX_GraphStateData* pGraphState) override;

@@ -656,8 +656,10 @@ void CPDFSDK_Widget::DrawAppearance(CFX_RenderDevice* pDevice,
 
     CFX_PathData pathData;
     pathData.AppendFloatRect(GetRect());
+    CFX_FillRenderOptions fill_options;
+    fill_options.fill_type = FXFILL_ALTERNATE;
     pDevice->DrawPath(&pathData, &mtUser2Device, &gsd, 0, 0xFFAAAAAA,
-                      FXFILL_ALTERNATE);
+                      fill_options);
   } else {
     CPDFSDK_BAAnnot::DrawAppearance(pDevice, mtUser2Device, mode, pOptions);
   }

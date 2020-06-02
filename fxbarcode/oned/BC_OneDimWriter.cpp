@@ -258,14 +258,17 @@ bool CBC_OneDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
   CFX_PathData path;
   path.AppendRect(0, 0, static_cast<float>(m_Width),
                   static_cast<float>(m_Height));
+  CFX_FillRenderOptions options;
+  options.fill_type = FXFILL_ALTERNATE;
   device->DrawPath(&path, matrix, &stateData, kBackgroundColor,
-                   kBackgroundColor, FXFILL_ALTERNATE);
+                   kBackgroundColor, options);
   CFX_Matrix scaledMatrix(m_outputHScale, 0.0, 0.0,
                           static_cast<float>(m_Height), 0.0, 0.0);
   scaledMatrix.Concat(*matrix);
+  options.fill_type = FXFILL_WINDING;
   for (const auto& rect : m_output) {
     CFX_GraphStateData data;
-    device->DrawPath(&rect, &scaledMatrix, &data, kBarColor, 0, FXFILL_WINDING);
+    device->DrawPath(&rect, &scaledMatrix, &data, kBarColor, 0, options);
   }
 
   return m_locTextLoc == BC_TEXT_LOC_NONE || !contents.Contains(' ') ||

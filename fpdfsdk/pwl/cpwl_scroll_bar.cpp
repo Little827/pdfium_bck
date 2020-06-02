@@ -163,9 +163,11 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
       path.AppendPoint(pt3, FXPT_TYPE::LineTo);
       path.AppendPoint(pt1, FXPT_TYPE::LineTo);
 
+      CFX_FillRenderOptions fill_options;
+      fill_options.fill_type = FXFILL_ALTERNATE;
       pDevice->DrawPath(&path, &mtUser2Device, nullptr,
                         PWL_DEFAULT_BLACKCOLOR.ToFXColor(nTransparency), 0,
-                        FXFILL_ALTERNATE);
+                        fill_options);
     }
     return;
   }
