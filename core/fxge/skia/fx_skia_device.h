@@ -47,7 +47,8 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   bool SetClip_PathFill(
       const CFX_PathData* pPathData,     // path info
       const CFX_Matrix* pObject2Device,  // optional transformation
-      int fill_mode) override;           // fill mode, WINDING or ALTERNATE
+      const CFX_FillRenderOptions& fill_options)
+      override;  // fill mode, WINDING or ALTERNATE
 
   /** Set clipping path using stroked region */
   bool SetClip_PathStroke(
@@ -63,7 +64,7 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                 const CFX_GraphStateData* pGraphState,
                 uint32_t fill_color,
                 uint32_t stroke_color,
-                int fill_mode,
+                const CFX_FillRenderOptions& fill_options,
                 BlendMode blend_type) override;
 
   bool FillRectWithBlend(const FX_RECT& rect,
@@ -178,7 +179,7 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
 #ifdef _SKIA_SUPPORT_PATHS_
   std::unique_ptr<CFX_ClipRgn> m_pClipRgn;
   std::vector<std::unique_ptr<CFX_ClipRgn>> m_StateStack;
-  int m_FillFlags;
+  CFX_FillRenderOptions m_FillFlags;
 #endif
   bool m_bRgbByteOrder;
   bool m_bGroupKnockout;
