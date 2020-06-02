@@ -1140,10 +1140,11 @@ int main(int argc, const char* argv[]) {
 #endif  // PDF_ENABLE_V8
 
   FPDF_LIBRARY_CONFIG config;
-  config.version = 2;
+  config.version = 3;
   config.m_pUserFontPaths = nullptr;
   config.m_pIsolate = nullptr;
   config.m_v8EmbedderSlot = 0;
+  config.m_pUnpumpedPlatform = platform.get();
 
   const char* path_array[2] = {nullptr, nullptr};
   Optional<const char*> custom_font_path = GetCustomFontPath(options);
