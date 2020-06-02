@@ -240,6 +240,10 @@ typedef struct FPDF_LIBRARY_CONFIG_ {
   // [0, |v8::Internals::kNumIsolateDataLots|). Note that 0 is fine for most
   // embedders.
   unsigned int m_v8EmbedderSlot;
+
+  // Version 3 - Experimantal,
+  void* m_pUnpumpedPlatform;
+
 } FPDF_LIBRARY_CONFIG;
 
 // Function: FPDF_InitLibraryWithConfig
