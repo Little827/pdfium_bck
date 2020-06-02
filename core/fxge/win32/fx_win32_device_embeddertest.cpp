@@ -13,7 +13,8 @@
 namespace {
 
 constexpr CFX_Matrix kIdentityMatrix;
-
+constexpr CFX_FillRenderOptions kFillOptions =
+    CFX_FillRenderOptions(FXFILL_WINDING);
 }  // namespace
 
 class CFX_WindowsRenderDeviceTest : public testing::Test {
@@ -50,7 +51,7 @@ TEST_F(CFX_WindowsRenderDeviceTest, SimpleClipTriangle) {
   path_data.AppendLine(p3, p1);
   path_data.ClosePath();
   EXPECT_TRUE(
-      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, FXFILL_WINDING));
+      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, kFillOptions));
 }
 
 TEST_F(CFX_WindowsRenderDeviceTest, SimpleClipRect) {
@@ -59,7 +60,7 @@ TEST_F(CFX_WindowsRenderDeviceTest, SimpleClipRect) {
   path_data.AppendRect(0.0f, 100.0f, 200.0f, 0.0f);
   path_data.ClosePath();
   EXPECT_TRUE(
-      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, FXFILL_WINDING));
+      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, kFillOptions));
 }
 
 TEST_F(CFX_WindowsRenderDeviceTest, GargantuanClipRect) {
@@ -73,7 +74,7 @@ TEST_F(CFX_WindowsRenderDeviceTest, GargantuanClipRect) {
   // however they do not because the GDI API IntersectClipRect() errors out and
   // affect subsequent imaging.  crbug.com/1019026
   EXPECT_FALSE(
-      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, FXFILL_WINDING));
+      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, kFillOptions));
 }
 
 TEST_F(CFX_WindowsRenderDeviceTest, GargantuanClipRectWithBaseClip) {
@@ -87,5 +88,5 @@ TEST_F(CFX_WindowsRenderDeviceTest, GargantuanClipRectWithBaseClip) {
   // Use of a reasonable base clip ensures that we avoid getting an error back
   // from GDI API IntersectClipRect().
   EXPECT_TRUE(
-      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, FXFILL_WINDING));
+      m_driver->SetClip_PathFill(&path_data, &kIdentityMatrix, kFillOptions));
 }
