@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b33b37df_a2357c68",
+        "filename": "core/fxge/cfx_glyphcache.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T21:34:38Z",
+      "side": 1,
+      "message": "Forward declare.",
+      "revId": "4c99e0fccec6868d6bbfcf96d7ad81760dbf48e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee1d563_d9e8160a",
+        "filename": "core/fxge/cfx_textrenderoptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T21:34:38Z",
+      "side": 1,
+      "message": "This method feels a bit weird because it can actually result in a no-op. Also, all the callers to this pass in true for the |use_lcd| parameter. So doesn\u0027t that mean the code to handle the false case is dead code?",
+      "revId": "4c99e0fccec6868d6bbfcf96d7ad81760dbf48e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
