@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "030bcd9a_3b238b8b",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-02T21:44:45Z",
+      "side": 1,
+      "message": "nit: can be const?",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 302,
+        "endChar": 13
+      },
+      "revId": "5509cef19018a03b1c44ba776b2135b5175f2989",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aaa08d5_4344f1d3",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-02T21:44:45Z",
+      "side": 1,
+      "message": "nit: maybe invert and continue and save indentation and braces?",
+      "range": {
+        "startLine": 304,
+        "startChar": 4,
+        "endLine": 304,
+        "endChar": 24
+      },
+      "revId": "5509cef19018a03b1c44ba776b2135b5175f2989",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
