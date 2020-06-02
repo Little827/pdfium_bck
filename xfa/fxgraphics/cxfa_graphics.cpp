@@ -214,7 +214,8 @@ void CXFA_Graphics::RenderDeviceStrokePath(const CXFA_GEPath* path,
     m.Concat(*matrix);
 
   m_renderDevice->DrawPath(path->GetPathData(), &m, &m_info.graphState, 0x0,
-                           m_info.strokeColor.GetArgb(), 0);
+                           m_info.strokeColor.GetArgb(),
+                           CFX_FillRenderOptions());
 }
 
 void CXFA_Graphics::RenderDeviceFillPath(const CXFA_GEPath* path,
