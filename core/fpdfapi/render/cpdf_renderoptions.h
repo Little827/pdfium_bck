@@ -32,7 +32,6 @@ class CPDF_RenderOptions {
     bool bRectAA = false;
     bool bFillFullcover = false;
     bool bPrintImageText = false;
-    bool bOverprint = false;
     bool bThinLine = false;
     bool bBreakForMasks = false;
     bool bNoTextSmooth = false;
