@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1591078944 -0700\nnonce ALC2d1+fMXhjEndd4JixHn0MuscF9XyRxlj4ujizPQF9Fmts8+v83q1Hn1u+dDtuTALM+K+argub\n\n0000000000000000000000000000000000000000 0050a36f8e5a9b914ec150658dac8cef8a5cf1ce refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7V8CAACgkQqzYtYVpm\n/Xuv0ggAzrqEBTNPGWlGEoQG33SdlsTlRj+6ANR0C8B1iMfA1rHEusR1y29hpYq1\nr7lBEP9jVIiDRgPrA8BJ67MKwiSrwaaQ+Sn6fqJ63f2qWhbpg0fMfNsyvvu+ANbG\ntJE4t8AzOOX8Kd7HhHJ8A1+cW/WT6ACJXT81yjelYCppq0G7ybp83+rG36p/uHCs\nHP1ttCBcT2/MlGAoIxSj2WQ4q2ha+LbrX7ulZJlGY9KeD+SszYBDJF4UA311Kul7\nPUJSwmQwuWeqgZoMkiBQUsvJLNSmmPyfufFn2OncFPKrzeFHmyaPGH7LOhJkuYbT\nZckeOfaS/8fgc9UBXhjm4sWT66U9Zw\u003d\u003d\n\u003d/xzS\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "62ea13ec_4aea8bc5",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T16:52:31Z",
+      "side": 1,
+      "message": "Initialized here.",
+      "revId": "0050a36f8e5a9b914ec150658dac8cef8a5cf1ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
