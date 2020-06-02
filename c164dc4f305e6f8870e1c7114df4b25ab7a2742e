@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "6fe05b60_22a645cc",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:52:51Z",
+      "side": 1,
+      "message": "Next CL.",
+      "parentUuid": "ddb250c1_55dc2730",
+      "range": {
+        "startLine": 394,
+        "startChar": 12,
+        "endLine": 394,
+        "endChar": 15
+      },
+      "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5325ffe8_6f9a46f6",
         "filename": "xfa/fde/cfde_textout.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-06-02T19:21:06Z",
       "side": 1,
       "message": "stray tto?",
+      "range": {
+        "startLine": 420,
+        "startChar": 9,
+        "endLine": 420,
+        "endChar": 12
+      },
+      "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243c87f7_4a7a4c91",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:52:51Z",
+      "side": 1,
+      "message": "Someday.",
+      "parentUuid": "5325ffe8_6f9a46f6",
       "range": {
         "startLine": 420,
         "startChar": 9,
@@ -72,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b87c6890_cad3c524",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:52:51Z",
+      "side": 1,
+      "message": "Next CL.",
+      "parentUuid": "b994fef2_e3760475",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 23
+      },
+      "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "442410d1_bd1401f8",
         "filename": "xfa/fde/cfde_textout.h",
         "patchSetId": 1
@@ -92,6 +164,30 @@
       "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac2ebf55_791f327d",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:52:51Z",
+      "side": 1,
+      "message": "Next CL.",
+      "parentUuid": "442410d1_bd1401f8",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 53
+      },
+      "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "c5603230_b197a189",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:52:51Z",
+      "side": 1,
+      "message": "Next CL.",
+      "parentUuid": "c08f74b8_5183af68",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cad675ba_723c51ac",
         "filename": "xfa/fde/cfde_textout.h",
         "patchSetId": 1
@@ -141,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "d4c45091_be967e0d",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:52:51Z",
+      "side": 1,
+      "message": "Someday.",
+      "parentUuid": "cad675ba_723c51ac",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de146e37_6556631c",
         "filename": "xfa/fde/cfde_textout.h",
         "patchSetId": 1
@@ -152,6 +296,30 @@
       "writtenOn": "2020-06-02T19:21:06Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 113,
+        "startChar": 21,
+        "endLine": 113,
+        "endChar": 24
+      },
+      "revId": "c164dc4f305e6f8870e1c7114df4b25ab7a2742e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ef1813_a47c5cbd",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:52:51Z",
+      "side": 1,
+      "message": "Someday.",
+      "parentUuid": "de146e37_6556631c",
       "range": {
         "startLine": 113,
         "startChar": 21,
