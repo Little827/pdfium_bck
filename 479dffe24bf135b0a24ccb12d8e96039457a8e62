@@ -23,6 +23,30 @@
       "revId": "479dffe24bf135b0a24ccb12d8e96039457a8e62",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec412975_701c10bd",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-02T19:55:05Z",
+      "side": 1,
+      "message": "This will get sorted out in the next CL in the chain.",
+      "parentUuid": "7f3c5e51_230456f7",
+      "range": {
+        "startLine": 557,
+        "startChar": 30,
+        "endLine": 557,
+        "endChar": 32
+      },
+      "revId": "479dffe24bf135b0a24ccb12d8e96039457a8e62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
