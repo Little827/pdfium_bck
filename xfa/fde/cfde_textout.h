@@ -56,8 +56,8 @@ class CFDE_TextOut {
     Piece(const Piece& that);
     ~Piece();
 
-    int32_t start_char;
-    int32_t char_count;
+    size_t start_char;
+    size_t char_count;
     uint32_t char_styles;
     CFX_RectF bounds;
   };
@@ -93,7 +93,7 @@ class CFDE_TextOut {
   bool RetrievePieces(CFX_BreakType dwBreakStatus,
                       bool bReload,
                       const CFX_RectF& rect,
-                      int32_t* pStartChar,
+                      size_t* pStartChar,
                       int32_t* pPieceWidths);
   void AppendPiece(const Piece& piece, bool bNeedReload, bool bEnd);
   void DoAlignment(const CFX_RectF& rect);
