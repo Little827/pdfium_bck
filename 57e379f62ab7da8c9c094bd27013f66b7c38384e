@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56843da8_4e9970c5",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-03T19:26:46Z",
+      "side": 1,
+      "message": "BTW, this cast isn\u0027t necessary. Can we just remove it? As I\u0027ve mentioned previously, there are lots of weird bits in PDFium. Without the cast, the if-statement will have the conditional on a single line. Then curly braces are no longer required.",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "57e379f62ab7da8c9c094bd27013f66b7c38384e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
