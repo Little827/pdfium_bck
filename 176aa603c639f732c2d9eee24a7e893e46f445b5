@@ -16,6 +16,24 @@
       "revId": "176aa603c639f732c2d9eee24a7e893e46f445b5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb665e9_59d21a07",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-03T18:38:13Z",
+      "side": 1,
+      "message": "Done.\nAnd this also get rid of another variable that doesn\u0027t follow chromium naming format.",
+      "parentUuid": "48393911_f6d44f29",
+      "revId": "176aa603c639f732c2d9eee24a7e893e46f445b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
