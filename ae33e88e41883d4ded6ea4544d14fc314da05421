@@ -22,6 +22,30 @@
       "revId": "ae33e88e41883d4ded6ea4544d14fc314da05421",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1d226dc_660236f1",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2020-06-04T13:26:58Z",
+      "side": 1,
+      "message": "Done.\n\nhttps://pdfium-review.googlesource.com/c/pdfium/+/70390",
+      "parentUuid": "a0b3a072_4d7774cf",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "ae33e88e41883d4ded6ea4544d14fc314da05421",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
