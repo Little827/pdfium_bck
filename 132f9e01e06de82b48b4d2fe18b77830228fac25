@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02ef7de_347e1646",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-04T21:55:30Z",
+      "side": 1,
+      "message": "If the compiler ever figures out this is potentially unused, we can always wrap it in #ifdef V8_USE_EXTERNAL_STARTUP_DATA.",
+      "revId": "132f9e01e06de82b48b4d2fe18b77830228fac25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
