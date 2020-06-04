@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94c70f67_8e64dead",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-04T21:16:54Z",
+      "side": 1,
+      "message": "Also only used when PDF_ENABLE_V8 evals to true?",
+      "revId": "2981b8771d2e286e50a14687b39ac6eb1b85ad25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd05f68b_37cafd66",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-04T21:16:54Z",
+      "side": 1,
+      "message": "Mention FPDF_LIBRARY_CONFIG here for reference?",
+      "range": {
+        "startLine": 1308,
+        "startChar": 57,
+        "endLine": 1308,
+        "endChar": 69
+      },
+      "revId": "2981b8771d2e286e50a14687b39ac6eb1b85ad25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
