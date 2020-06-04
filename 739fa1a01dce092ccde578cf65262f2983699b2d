@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "265aced9_d044ebc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-04T08:26:58Z",
+      "side": 1,
+      "message": "Went over 72 columns. I think if the previous line just refers to ftmodule.h without the full path, then the comment will format a bit nicer, and readers can still figure out which ftmodule.h is being modified by looking at the CL.",
+      "revId": "739fa1a01dce092ccde578cf65262f2983699b2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
