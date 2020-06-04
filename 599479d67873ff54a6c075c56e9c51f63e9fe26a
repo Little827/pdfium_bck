@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1591206392 -0700\nnonce ALC2d1+7Pk43ddH38BMQBBn67PH95csV63KS3+D32yCvNHneB5UWDGxj+T1b3ISCXdFLU6b+LJ7N\n\n0000000000000000000000000000000000000000 599479d67873ff54a6c075c56e9c51f63e9fe26a refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7X4fgACgkQqzYtYVpm\n/XvJ+ggAhuAqMYNfF75CQigxd/aWrcs5UDGJBr4JYtvE6V47jRzTdqLSQ14igHMW\nhFsjsAsoaI9vP92NGyzkDYihIKwSqBBiZYhevgQdIh7KTipajhfksyPATZPmdoAw\nelCbjtPyY00HxiGtx5kUL1LaykwRT27a3Hw0NKKkKEU/ULKpgGoqdXgCghhw5jw9\n7xb9q3HjB78tbK3dh7TCLsSSIRfLN6xgtluccUh5CbZlsN5VIpJlt7tX6AbF8nCL\nZcBOT5mQAaSCEop9RxJmuU797f0oLjWx72hoMqqryJKZ5CXQ10v5//xCXuaW/+Cs\n0pc3vEncYJMFWjrgEvvvBaBlN/YZ/w\u003d\u003d\n\u003dD1Zf\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c7bad2_7e64598c",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-04T22:26:51Z",
+      "side": 1,
+      "message": "nit: maybe init these three members to 0 while we\u0027re at it, the constructor just seems to be \u003d default, which means only |bounds| is gonna be 0.",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "599479d67873ff54a6c075c56e9c51f63e9fe26a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
