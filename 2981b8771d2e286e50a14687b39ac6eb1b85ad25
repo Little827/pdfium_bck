@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c0180c28_3a5905ab",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-04T21:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94c70f67_8e64dead",
+      "revId": "2981b8771d2e286e50a14687b39ac6eb1b85ad25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd05f68b_37cafd66",
         "filename": "public/fpdfview.h",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "2981b8771d2e286e50a14687b39ac6eb1b85ad25",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad5519d_21582d93",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-04T21:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd05f68b_37cafd66",
+      "range": {
+        "startLine": 1308,
+        "startChar": 57,
+        "endLine": 1308,
+        "endChar": 69
+      },
+      "revId": "2981b8771d2e286e50a14687b39ac6eb1b85ad25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
