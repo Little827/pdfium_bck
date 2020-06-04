@@ -44,8 +44,13 @@
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
+#include "third_party/base/no_destructor.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
+
+#ifdef PDF_ENABLE_V8
+#include "fxjs/cfx_v8.h"
+#endif
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
@@ -988,6 +993,11 @@ FPDF_EXPORT const char* FPDF_CALLCONV FPDF_GetRecommendedV8Flags() {
   // Reduce exposure since no PDF should contain web assembly.
   // Use interpreted JS only to avoid RWX pages in our address space.
   return "--no-expose-wasm --jitless";
+}
+
+FPDF_EXPORT void* FPDF_CALLCONV FPDF_GetArrayBufferAllocatorSharedInstance() {
+  static pdfium::base::NoDestructor<CFX_V8ArrayBufferAllocator> allocator;
+  return allocator.get();
 }
 #endif  // PDF_ENABLE_V8
 
