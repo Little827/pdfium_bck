@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0b3a072_4d7774cf",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-06-04T04:45:47Z",
+      "side": 1,
+      "message": "they",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "ae33e88e41883d4ded6ea4544d14fc314da05421",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
