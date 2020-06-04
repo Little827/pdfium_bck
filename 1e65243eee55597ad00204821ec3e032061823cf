@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b52c6f20_327f0f56",
+        "filename": "core/fxge/render_defines.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-04T17:49:55Z",
+      "side": 1,
+      "message": "I didn\u0027t try to change the values of these two flags because we will replace FXTEXT* options with a new struct in https://pdfium-review.googlesource.com/70051 soon.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "1e65243eee55597ad00204821ec3e032061823cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
