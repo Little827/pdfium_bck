@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17316a54_ebc92666",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-05T22:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f8844e7_0888c747",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "8e4a9566ee2958003cd935311bc9f5b402482d9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78cb81de_53f763b2",
         "filename": "testing/resources/javascript/immutable_proto.in",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "8e4a9566ee2958003cd935311bc9f5b402482d9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6eff52c_4c4a8563",
+        "filename": "testing/resources/javascript/immutable_proto.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-05T22:47:34Z",
+      "side": 1,
+      "message": "Eh, avoid renumbering when we jam in some form fields or page content down the road ...",
+      "parentUuid": "78cb81de_53f763b2",
+      "revId": "8e4a9566ee2958003cd935311bc9f5b402482d9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
