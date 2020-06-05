@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "2b5041c4_c9363812",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-05T00:54:11Z",
+      "side": 1,
+      "message": "Added a helper function for this process in CL: https://pdfium-review.googlesource.com/c/pdfium/+/70130",
+      "parentUuid": "4f2b4b7c_9c38b398",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb0148f2_275431c2",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 2
@@ -354,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "9f3f9f97_0308b4b4",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-05T00:54:11Z",
+      "side": 1,
+      "message": "Neither aliasing and antialiasing is a type of subpixel rendering. However, subpixel anti-aliasing (kLcd) belongs to the category of antialiasing. |kBgrStripe| is LCD optimization with a special order. \n\nTherefore, I took the idea from SkFont, which uses \"Edging\" to distinguish the differences between aliasing, anti-aliasing and subpixel anti-aliasing as following:\n    enum class Edging {\n        kAlias,\n        kAntiAlias,\n        kSubpixelAntiAlias,\n    };\n\nFor future Skia implementation, this should also make it more clear that the \"Alias\" and \"AntiAlias\" here are only for font(text) only, and it has nothing to do with anti-aliasing flags for SkPaint.",
+      "parentUuid": "42f5022b_828c5af7",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e23536d8_da194472",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
@@ -507,6 +543,30 @@
     },
     {
       "key": {
+        "uuid": "45b1745b_3b7d2253",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-05T00:54:11Z",
+      "side": 1,
+      "message": "After the previous clean ups CLs, and renaming the flag \"native_text\", this struct comes down to only have 3 elements with all different default values (2 are boolean-type). I changed the constructor to directly initialize all elements with default value in the new patchset, similar to struct Bus::Options in chromium, so that we don\u0027t have default values in both the header file and the .cpp file.",
+      "parentUuid": "2d9893bc_7eed3bc5",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd011c51_846973f6",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
@@ -557,6 +617,24 @@
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e41146c_a1ef3989",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-05T00:54:11Z",
+      "side": 1,
+      "message": "crbug.com/pdfium/1535 is fixed, will rebase this CL in the new patchset.",
+      "parentUuid": "0ce5da4c_0e7d92bf",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -628,6 +706,30 @@
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009875fa_70e0f33b",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-05T00:54:11Z",
+      "side": 1,
+      "message": "There is one place we used FXTEXT_ and FXFILL type (https://source.chromium.org/chromium/chromium/src/+/master:third_party/pdfium/core/fxge/cfx_renderdevice.cpp;drc\u003dbeef4d62339752bf029afcb23646880d861074d6;l\u003d888?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F), but the flags don\u0027t need to be saved in the same integer.(I got misled here)\n\nThe only \"mixed\" cases are as following:\nFXFONT_CIDFONT and FXTEXT_* saved in the same integer.\n\nFX_STROKE_ADJUST, FX_STROKE_TEXT_MODE and FXFILL_* saved in the integer.\n\nIn this case, I don\u0027t think having sub-struct inside CFX_RenderOptions is needed anymore. Could just rename \"CFX_RenderOptions\" into \"CFX_TextRenderOptions\" and having a CID flag in it.\n\nIn the future if we want to refactor FXFILL_* (I currently have another CL (WIP) for making Skia supports \"FXFILL_NOPATHSMOOTH\", which will require doing the similar clean up like FXTEXT_* ), we can have a separate class, such as \"CFX_PathRenderOptions\".",
+      "parentUuid": "2b65ae0c_1632470f",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {

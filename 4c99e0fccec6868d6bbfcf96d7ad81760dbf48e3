@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "af1c94cf_df24e2db",
+        "filename": "core/fxge/cfx_glyphcache.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-05T00:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b33b37df_a2357c68",
+      "revId": "4c99e0fccec6868d6bbfcf96d7ad81760dbf48e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ee1d563_d9e8160a",
         "filename": "core/fxge/cfx_textrenderoptions.cpp",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "4c99e0fccec6868d6bbfcf96d7ad81760dbf48e3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3829e203_cdd0dcbd",
+        "filename": "core/fxge/cfx_textrenderoptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-05T00:54:11Z",
+      "side": 1,
+      "message": "Replace this method with a new constructor which can set the edging type directly.",
+      "parentUuid": "3ee1d563_d9e8160a",
+      "revId": "4c99e0fccec6868d6bbfcf96d7ad81760dbf48e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
