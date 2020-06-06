@@ -576,13 +576,7 @@ TEST_F(FPDFEditEmbedderTest, BUG_1399) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_SetText DISABLED_SetText
-#else
-#define MAYBE_SetText SetText
-#endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_SetText) {
+TEST_F(FPDFEditEmbedderTest, SetText) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -598,12 +592,23 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_SetText) {
   // Verify the "Hello, world!" text is gone and "Changed for SetText test" is
   // now displayed.
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
-#if defined(OS_MACOSX)
-  const char kChangedMD5[] = "904132275a1144ea06b0694537c80b4c";
-#elif defined(OS_WIN)
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_WIN)
+  const char kChangedMD5[] = "xxx1";
+#elif defined(OS_MACOSX)
+  const char kChangedMD5[] = "xxx2";
+#else
+  const char kChangedMD5[] = "6bc5171f4eb329474989c6ccfa3d6303";
+#endif
+#else
+#if defined(OS_WIN)
   const char kChangedMD5[] = "3137fdb27962671f5c3963a5e965eff5";
+#elif defined(OS_MACOSX)
+  const char kChangedMD5[] = "904132275a1144ea06b0694537c80b4c";
 #else
   const char kChangedMD5[] = "a0c4ea6620772991f66bf7130379b08a";
+#endif
 #endif
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
