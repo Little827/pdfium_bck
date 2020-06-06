@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "324dd825_6eec857b",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-06T00:48:28Z",
+      "side": 0,
+      "message": "Per third_party/base/stl_util.h, pdfium::CollectionSize is meant to be used for code that can\u0027t handle size_t. But WideString::GetLength() returns size_t.",
+      "revId": "ecad148c11b14534abb162fdd50c823d692a1cc6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
