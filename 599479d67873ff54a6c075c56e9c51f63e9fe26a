@@ -23,6 +23,30 @@
       "revId": "599479d67873ff54a6c075c56e9c51f63e9fe26a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d979ee80_806bf63d",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-06T00:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40c7bad2_7e64598c",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "599479d67873ff54a6c075c56e9c51f63e9fe26a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
