@@ -576,13 +576,7 @@ TEST_F(FPDFEditEmbedderTest, BUG_1399) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_SetText DISABLED_SetText
-#else
-#define MAYBE_SetText SetText
-#endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_SetText) {
+TEST_F(FPDFEditEmbedderTest, SetText) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -598,13 +592,22 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_SetText) {
   // Verify the "Hello, world!" text is gone and "Changed for SetText test" is
   // now displayed.
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
-#if defined(OS_MACOSX)
-  const char kChangedMD5[] = "904132275a1144ea06b0694537c80b4c";
-#elif defined(OS_WIN)
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_WIN)
+  const char kChangedMD5[] = "xxx1";
+#else
+  const char kChangedMD5[] = "6bc5171f4eb329474989c6ccfa3d6303";
+#endif  // defined(OS_WIN)
+#else
+#if defined(OS_WIN)
   const char kChangedMD5[] = "3137fdb27962671f5c3963a5e965eff5";
+#elif defined(OS_MACOSX)
+  const char kChangedMD5[] = "904132275a1144ea06b0694537c80b4c";
 #else
   const char kChangedMD5[] = "a0c4ea6620772991f66bf7130379b08a";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kChangedMD5);
@@ -1092,16 +1095,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveExistingPageObject) {
   CloseSavedDocument();
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_RemoveExistingPageObjectSplitStreamsNotLonely \
-  DISABLED_RemoveExistingPageObjectSplitStreamsNotLonely
-#else
-#define MAYBE_RemoveExistingPageObjectSplitStreamsNotLonely \
-  RemoveExistingPageObjectSplitStreamsNotLonely
-#endif
-TEST_F(FPDFEditEmbedderTest,
-       MAYBE_RemoveExistingPageObjectSplitStreamsNotLonely) {
+TEST_F(FPDFEditEmbedderTest, RemoveExistingPageObjectSplitStreamsNotLonely) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world_split_streams.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -1116,6 +1110,13 @@ TEST_F(FPDFEditEmbedderTest,
 
   // Verify the "Hello, world!" text is gone.
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_WIN)
+  const char kHelloRemovedMD5[] = "xxx2";
+#else
+  const char kHelloRemovedMD5[] = "deed7dc2754dc80930f3b05e2ac86c94";
+#endif  // defined(OS_WIN)
+#else
 #if defined(OS_MACOSX)
   const char kHelloRemovedMD5[] = "3b3b27602a86dfe5996a33c42c59885b";
 #elif defined(OS_WIN)
@@ -1123,6 +1124,7 @@ TEST_F(FPDFEditEmbedderTest,
 #else
   const char kHelloRemovedMD5[] = "95b92950647a2190e1230911e7a1a0e9";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kHelloRemovedMD5);
