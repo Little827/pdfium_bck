@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e91807ee_3286ee4c",
+        "filename": "fxjs/cjs_runtime.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-09T23:33:02Z",
+      "side": 1,
+      "message": "No.  Note this is the platform version which is already 3, not the library config version that is being bumped from 2 to 3 in this cl.  This is for full backwards compatibiliy, for a brief instant we used to pass the isolate in the IPDF_JSPLatform, but it moved to the library config struct shortly thereafter.  Hence v3 of the platform makes these fields unused.",
+      "parentUuid": "01da1116_e75034dd",
+      "revId": "08951711a1d4012cbe9b8659a03ac8f4b21005cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06bcf7fd_00981f7a",
         "filename": "public/fpdfview.h",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "08951711a1d4012cbe9b8659a03ac8f4b21005cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c117f905_6e5be5e4",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-09T23:33:02Z",
+      "side": 1,
+      "message": "I had hoped to do this in the future, but thinking about the order in which things have to happen, we can\u0027t do it.  Removed.",
+      "parentUuid": "06bcf7fd_00981f7a",
+      "range": {
+        "startLine": 246,
+        "startChar": 58,
+        "endLine": 246,
+        "endChar": 78
+      },
+      "revId": "08951711a1d4012cbe9b8659a03ac8f4b21005cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
