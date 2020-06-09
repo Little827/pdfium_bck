@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1591741867 -0700\nnonce ALC2d18FZF77avYqnq5AcMMAJOq5rEFLnRpae08cGk8T1ukXy+LaYeDS43hTw3OpqqxkPC75rv3F\n\n0000000000000000000000000000000000000000 9ba1081a2e64bdc9b7cab23aa669a5a0fb23df85 refs/for/refs/heads/infra/config%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7gDasACgkQqzYtYVpm\n/XvWkQgAhh8mQ5Yu9aVKLeH8yh30Z9HY79GiyY31jV9Ocq8OGuiYYgxhuyh+FzGn\np0KRUTnSpgZ0PxE06h9ms2oxHDjskwMSPPwShsmw4kyri3D1FPxFc5+npCDfielp\nsff+AceoPAMCJqBFgh2iQCr+ZDUIWKE6vY/k2W/GxADzBhf42GmIKQOM7zoyMs8v\nSL/jvCzVTTZMaj84yXABSA46YQwmi70HziK1IK5szBDBRqSD0aXCIaFUhg1pqF/t\nuFxgNpnoz3ge97ibzTKcqOF9ZTJBCAS0iVGiWOk59+Pzhnzrp826eo+a+0JMModv\nFRSNpTYXpSuvae+Jtiz47dpl2lA5PQ\u003d\u003d\n\u003drSiA\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7280556_b3a6807b",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 8006
+      },
+      "writtenOn": "2020-06-09T23:48:39Z",
+      "side": 1,
+      "message": "The correct settings for each OS:\n- Linux: enable_ats\u003dtrue\n- Win: enable_ats\u003dtrue\n- Mac: enable_ats\u003dfalse (default)\n\nI recommend that you rename these:\n- \"goma_non_win\" -\u003e \"goma_non_ats\"\n- \"goma_win\" -\u003e \"goma_ats\"\n\nAnd set the correct mixin for Mac.",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 21
+      },
+      "revId": "9ba1081a2e64bdc9b7cab23aa669a5a0fb23df85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
