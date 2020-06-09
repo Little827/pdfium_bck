@@ -194,8 +194,10 @@ void CPWL_Edit::DrawThisAppearance(CFX_RenderDevice* pDevice,
       path.AppendPoint(top, FXPT_TYPE::LineTo);
     }
     if (!path.GetPoints().empty()) {
+      CFX_FillRenderOptions fill_options =
+          CFX_FillRenderOptions(FXFILL_ALTERNATE);
       pDevice->DrawPath(&path, &mtUser2Device, &gsd, 0,
-                        GetBorderColor().ToFXColor(255), FXFILL_ALTERNATE);
+                        GetBorderColor().ToFXColor(255), fill_options);
     }
   }
 
