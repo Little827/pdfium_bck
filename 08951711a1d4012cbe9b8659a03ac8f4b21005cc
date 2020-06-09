@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01da1116_e75034dd",
+        "filename": "fxjs/cjs_runtime.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-09T22:58:47Z",
+      "side": 1,
+      "message": "Do we need to do anything here for version 3+?",
+      "revId": "08951711a1d4012cbe9b8659a03ac8f4b21005cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bcf7fd_00981f7a",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-09T22:58:47Z",
+      "side": 1,
+      "message": "Are we going to do this in a future CL, or is this copy-pasta?",
+      "range": {
+        "startLine": 246,
+        "startChar": 58,
+        "endLine": 246,
+        "endChar": 78
+      },
+      "revId": "08951711a1d4012cbe9b8659a03ac8f4b21005cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
