@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab115449_ae1c137a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Need to update the struct name here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c079d41_8aa7ce3b",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Might be a good opportunity to use mutable references, now that the style guide allows them? Would need to make it clear that this parameter is mutable, though. (Maybe using a parameter name comment?)",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8708ee00_8297b367",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "It might be better to have a helper method that returns whether the edging type is smooth or not, rather than encoding the logic at the point of use. Particularly if new values get added in the future.",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f417ac_9e96a497",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Ditto here.",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a419e5_d8a75d35",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Would this be better as an enum class? (This would make it more awkward to use arithmetically, though.)",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5120f1e7_b9f52578",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "I don\u0027t recall if there\u0027s a rule that says you need to initialize the first enumerator to 0. I personally would omit it in this case, since the exact values for this enum aren\u0027t important.",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4034ed98_4c8377cc",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Consider making this a static factory, rather than a constructor. A static factory allows you to choose a more meaningful name for this operation.\n\nAlso, this would need to be \"explicit\".",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f73927_2e1292d7",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "The destructor probably is trivial?",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04b5e47_f3afb6c9",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Can\u0027t you use default member initialization for the fields here? This would also eliminate the need to comment on what the defaults are.",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f2881d_97a9a151",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "If it\u0027s common to want this configuration (also seems useful in cfde_texout.cpp, for example), could have a factory method on CFX_TextRenderOptions instead.",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef05f52b_7bf7969c",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Might be able to get away with making this a static constant. Alternatively, could just pass a temporary at each call site (since the const reference extends the lifetime o the temporary).\n\nThe main advantage here is that the options would be defined closer to the point of use. It also would eliminate the possibility that the options are modified in between.",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ed66532c_2760ece3",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Acknowledged. I think it\u0027d be a good idea to harmonize these over time, though. It feels like we\u0027re violating the DRY principle.",
+      "parentUuid": "3ce91c35_1a295e71",
+      "range": {
+        "startLine": 118,
+        "startChar": 45,
+        "endLine": 118,
+        "endChar": 63
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6812f96_53b47e7c",
         "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
         "patchSetId": 2
@@ -284,6 +308,24 @@
     },
     {
       "key": {
+        "uuid": "8396b196_824900e6",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Obsolete",
+      "parentUuid": "cd0d2419_f338e994",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad82c0e9_233c8cee",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
@@ -316,6 +358,24 @@
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f937165f_136bd409",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Obsolete",
+      "parentUuid": "7c466202_6d7d8744",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -384,6 +444,24 @@
       "side": 1,
       "message": "Neither aliasing and antialiasing is a type of subpixel rendering. However, subpixel anti-aliasing (kLcd) belongs to the category of antialiasing. |kBgrStripe| is LCD optimization with a special order. \n\nTherefore, I took the idea from SkFont, which uses \"Edging\" to distinguish the differences between aliasing, anti-aliasing and subpixel anti-aliasing as following:\n    enum class Edging {\n        kAlias,\n        kAntiAlias,\n        kSubpixelAntiAlias,\n    };\n\nFor future Skia implementation, this should also make it more clear that the \"Alias\" and \"AntiAlias\" here are only for font(text) only, and it has nothing to do with anti-aliasing flags for SkPaint.",
       "parentUuid": "42f5022b_828c5af7",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a18046d9_2bfda665",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "I guess if this is a Skia concept, it\u0027s probably fine...",
+      "parentUuid": "9f3f9f97_0308b4b4",
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -564,6 +642,30 @@
       "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b305bb4_93e73df3",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-09T21:17:54Z",
+      "side": 1,
+      "message": "Acknowledged. Not seeing direct initialization in the successor struct, though.",
+      "parentUuid": "45b1745b_3b7d2253",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
