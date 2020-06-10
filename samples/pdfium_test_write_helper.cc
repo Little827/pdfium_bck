@@ -635,11 +635,21 @@ void WriteAttachments(FPDF_DOCUMENT doc, const std::string& name) {
     }
 
     // Retrieve the attachment.
-    length_bytes = FPDFAttachment_GetFile(attachment, nullptr, 0);
+    if (!FPDFAttachment_GetFile(attachment, nullptr, 0, &length_bytes)) {
+      fprintf(stderr, "Failed to retrieve attachment \"%s\".\n",
+              attachment_name.c_str());
+      continue;
+    }
+
     std::vector<char> data_buf(length_bytes);
     if (length_bytes) {
-      unsigned long actual_length_bytes =
-          FPDFAttachment_GetFile(attachment, data_buf.data(), length_bytes);
+      unsigned long actual_length_bytes;
+      if (!FPDFAttachment_GetFile(attachment, data_buf.data(), length_bytes,
+                                  &actual_length_bytes)) {
+        fprintf(stderr, "Failed to retrieve attachment \"%s\".\n",
+                attachment_name.c_str());
+        continue;
+      }
       if (actual_length_bytes != length_bytes)
         data_buf.clear();
     }
