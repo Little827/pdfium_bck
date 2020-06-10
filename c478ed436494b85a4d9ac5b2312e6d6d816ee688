@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1591744540 -0700\nnonce ALC2d1/wNXKSU3v6mE/1RguyfpgecGvHTby9LX9hY7x4ndqAg1Uj+bhzUXiRbVVfU4Ade+qFPz/r\n\n0000000000000000000000000000000000000000 c478ed436494b85a4d9ac5b2312e6d6d816ee688 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7gGBwACgkQqzYtYVpm\n/XvQoQgAj2Jo76SqWeRjKPrluHYzW5gtKbCm3JGg3gh0ANLGcWSJrwC07FA0B2Mt\n1YGba3kzOUkFWGa4HMck3tlSvAiAct6WBOO+DXGb+cReG8d66p4EMyNTm7qHLV7J\nzytUYkHAdC0I8xP+L3hfutnJbBudEZjMpNmd7YVocu3VrbLuTkHqRkbKmzFshixf\nDM0AoP/+OgGCMhCwCzO9nuKsQ0uNBUhTJ/gS34EfZvvxhFTt9ZxDrwQn5EAqGI8k\n6eU6Orp10R5gUVMuvRPQ3X1E3bizRl3FHfEHnmPYJodsJSILk0pHy1yxYvXNwdLp\nqCUAscMvvy/oOoe9pBeHZJOtE/1ZGA\u003d\u003d\n\u003der8J\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fea65940_e350e3c5",
+        "filename": "third_party/base/memory/aligned_memory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-10T00:42:37Z",
+      "side": 1,
+      "message": "This isn\u0027t \"CHECK(ptr)\" because the Chromium copy has another statement inside the if-block. Maybe I\u0027ll try cleaning that up in Chromium and merge that here later.",
+      "revId": "c478ed436494b85a4d9ac5b2312e6d6d816ee688",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "172f09a3_d0eee9d3",
+        "filename": "third_party/base/memory/aligned_memory.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-10T00:42:37Z",
+      "side": 1,
+      "message": "Not actually used. Delete?",
+      "revId": "c478ed436494b85a4d9ac5b2312e6d6d816ee688",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
