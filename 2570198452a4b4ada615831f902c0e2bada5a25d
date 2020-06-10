@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1591817343 -0700\nnonce ALC2d1926SemAXxkoV9/HSdQxUdoeKG63wz9wmuAF1YCnGVCurl70hpfREjKbV8ZedhUpFjw7G+a\n\n0000000000000000000000000000000000000000 2570198452a4b4ada615831f902c0e2bada5a25d refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7hNH8ACgkQqzYtYVpm\n/XvTJAgAmk2Am4eI1mGAovKHQs8VIxebDeEKwdaTVWRib4dFVY0ofjUPquiyR4bE\ntQkWt/vzNGYC86DR4dU1oEBuSAqxifr+9StDYFEeZAv8CzWPsY8MzJkKWCFQBBAz\nx2DpYX6UqlskUopQkgGfOzsYV4w4tvpmgnIwa1oSR8VQvNAVTzWxqSktBU9XbWkn\n+f3LsPFqOpmwHjAXdXXScCcls0Ire+kKme+dSuUHqzOpXELTLOYbVDodZW1Ii4aP\nSJIgIjYjQh5QvRBcY/0VpYxVsXT66csodxnFv6BZay3XMOL+zhh7IdOhBzEAYCr8\n6G1f5uGIyXSmeDoGz/sePaTkXjVF+w\u003d\u003d\n\u003d21ST\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7047cd59_40996094",
+        "filename": "third_party/base/memory/aligned_memory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-10T22:54:49Z",
+      "side": 1,
+      "message": "Can we take the DCHECK(IsAligned()) change from the upstream patch?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "2570198452a4b4ada615831f902c0e2bada5a25d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
