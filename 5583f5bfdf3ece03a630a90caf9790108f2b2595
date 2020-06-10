@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a243cd85_863b3149",
+        "filename": "public/fpdf_attachment.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-10T17:54:50Z",
+      "side": 1,
+      "message": "So ... \n\nWhen the attachment file data is readable, true is returned and |out_buflen| is updated to indicate the number of bytes available. However, |buffer| is only updated if the input |buflen| is long enough to contain the entire data. Callers must check both the return value and that the input |buflen| is greater than the returned |out_buflen| before using the data.\n\nOtherwise, when the data is not readable, false is returned and |buffer| and |out_buflen| remain unmodified.\n\nSomething like that?",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 72
+      },
+      "revId": "5583f5bfdf3ece03a630a90caf9790108f2b2595",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
