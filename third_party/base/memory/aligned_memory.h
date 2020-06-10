@@ -12,7 +12,6 @@
 
 #include "build/build_config.h"
 #include "third_party/base/base_export.h"
-#include "third_party/base/compiler_specific.h"
 
 #if defined(COMPILER_MSVC)
 #include <malloc.h>
