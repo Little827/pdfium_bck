@@ -1065,7 +1065,7 @@ bool CFX_RenderDevice::DrawTextPath(int nChars,
                              charpos.m_Origin.y));
     const CFX_PathData* pPath =
         pFont->LoadGlyphPath(charpos.m_GlyphIndex, charpos.m_FontCharWidth);
-    if (!pPath)
+    if (!pPath || charpos.m_Unicode == 32)
       continue;
 
     matrix.Concat(mtText2User);
