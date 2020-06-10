@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c8fc7d5_055a89a1",
+        "filename": "public/fpdf_attachment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-10T17:14:10Z",
+      "side": 1,
+      "message": "So I\u0027m not 100% clear here. It sounds like there are three cases:\n\n1. The data is somehow not readable (i.e. \u0027On error\u0027).\n2. The data is readable, but the buffer isn\u0027t large enough.\n3. The data is readable, and the buffer is large enough.\n\nAnd for #2, we\u0027d like to know how big to make the buffer so we can try again.  So we might need three possible return codes if I am understanding it properly.\n\nAlternatively, if the only possible \u0027error\u0027 is that the buffer isn\u0027t large enough, then I\u0027d suggest that the comments need to talk about that as opposed to the more general term \u0027on error\u0027.\n\nThanks!",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 53
+      },
+      "revId": "8d0897c7d94ac693e85e4106c5901532830c0861",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
