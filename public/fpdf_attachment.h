@@ -149,19 +149,24 @@ FPDFAttachment_SetFile(FPDF_ATTACHMENT attachment,
                        unsigned long len);
 
 // Experimental API.
-// Get the file data of |attachment|. |buffer| is only modified if |buflen| is
-// longer than the length of the file. On errors, |buffer| is unmodified and the
-// returned length is 0.
+// Get the file data of |attachment|.
+// When the attachment file data is readable (success), |buffer| is only
+// modified if |buflen| is long enough to contain the file data, and the
+// returned value is true. When the attachment file data is unreadable (error),
+// |buffer| and |out_buflen| remain unmodified, and the returned value is false.
 //
 //   attachment - handle to an attachment.
 //   buffer     - buffer for holding the file data from |attachment|.
 //   buflen     - length of the buffer in bytes.
+//   out_buflen - pointer to the variable that will receive the minimum buffer
+//                size to contain the file data of |attachment|.
 //
-// Returns the length of the file.
-FPDF_EXPORT unsigned long FPDF_CALLCONV
+// Returns true on success, false otherwise.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAttachment_GetFile(FPDF_ATTACHMENT attachment,
                        void* buffer,
-                       unsigned long buflen);
+                       unsigned long buflen,
+                       unsigned long* out_buflen);
 
 #ifdef __cplusplus
 }  // extern "C"
