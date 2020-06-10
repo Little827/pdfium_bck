@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1591750334 -0700\nnonce ALC2d1/7iPJL6Pg1U/HmM5XOz44jXa1+zmpaZMbX8M2u+t+j8yd7b91B3FoBsBJ4I5Du3qv/BIeK\n\n0000000000000000000000000000000000000000 23342523aa46d768fb343080d5840c9eeada020c refs/for/refs/heads/infra/config%notify\u003dNONE,m\u003daddress_comments\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7gLr4ACgkQqzYtYVpm\n/XvvQAgAtWAwoTspnBWUHXtGbxraJZvf4544schnJ9k36tY8kthKB0MivN6xuQ/V\nF1yROA4QS1UxEy87jwTDUZ4ALINDVCSjcgqqquyfmZgbAPwKeK2IkKZUbmLLTVZd\ntCs/Y9aUQsC9AM5Yuh05D/UcWquJUy590mY4wvnGiwJecSARBOH36cqhGXLlVtuo\nkC9eTs4y1utV0Xl5wzAmbMiKYqtGUTQkFBDkNn774WFzYLDcLJK2dl1fA5k4PH5s\n1OkVrbZQlhn0go4eNklE6xfIDTLy/RUi+KS8LkDBq1EZ45bkVzv/YhxzMl/3xst0\nRozXHC21Wn8+F+w0NfN9zAYU7qdvKg\u003d\u003d\n\u003dbqpL\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcae24bd_96e0e8d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-06-10T16:52:46Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "23342523aa46d768fb343080d5840c9eeada020c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
