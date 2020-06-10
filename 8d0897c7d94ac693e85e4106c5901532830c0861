@@ -22,6 +22,30 @@
       "revId": "8d0897c7d94ac693e85e4106c5901532830c0861",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a8a575_1591e054",
+        "filename": "public/fpdf_attachment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-10T17:47:07Z",
+      "side": 1,
+      "message": "Case #2 is suppose to return true in this scheme, where |buffer| is either null or not big enough. It\u0027s the same behavior as FPDFPageObjMark_GetName(). This function always writes the expected buffer size to |out_buflen|. Does that make sense? Do we just need better documentation here?",
+      "parentUuid": "8c8fc7d5_055a89a1",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 53
+      },
+      "revId": "8d0897c7d94ac693e85e4106c5901532830c0861",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
