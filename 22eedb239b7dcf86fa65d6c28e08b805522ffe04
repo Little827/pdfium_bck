@@ -35,6 +35,24 @@
       "revId": "22eedb239b7dcf86fa65d6c28e08b805522ffe04",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ead338e_e1475601",
+        "filename": "tools/android/md5sum/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-06-11T19:26:59Z",
+      "side": 1,
+      "message": "I guess so? If fixing this is a pre-requisite to running Android tests in the future, then yeah.\n\nI was originally hoping for a bug that tracks this Android build issue specifically.",
+      "parentUuid": "a312ae36_1658b742",
+      "revId": "22eedb239b7dcf86fa65d6c28e08b805522ffe04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
