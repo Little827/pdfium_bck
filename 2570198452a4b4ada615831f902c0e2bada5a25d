@@ -47,6 +47,30 @@
       "revId": "2570198452a4b4ada615831f902c0e2bada5a25d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4556231e_9e9e9fcd",
+        "filename": "third_party/base/memory/aligned_memory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-11T20:54:39Z",
+      "side": 1,
+      "message": "vote for #2.",
+      "parentUuid": "edf47bb2_591dcb2a",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "2570198452a4b4ada615831f902c0e2bada5a25d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
