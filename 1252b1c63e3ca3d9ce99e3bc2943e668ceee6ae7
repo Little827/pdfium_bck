@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf2bfdaa_373c2277",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-11T21:49:53Z",
+      "side": 1,
+      "message": "otherwise gn spews \"can\u0027t include\" errors.",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 30
+      },
+      "revId": "1252b1c63e3ca3d9ce99e3bc2943e668ceee6ae7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
