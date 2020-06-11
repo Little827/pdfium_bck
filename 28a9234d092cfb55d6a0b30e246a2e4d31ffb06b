@@ -468,6 +468,24 @@
     },
     {
       "key": {
+        "uuid": "9d13686a_7ae6b697",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-11T19:52:52Z",
+      "side": 1,
+      "message": "How about AliasingType then? If one does not know what this is and searches for \"text edging\", the search results are very poor. Searching for \"edging\" gets even worse results. Whereas replacing edging with aliasing gets more relevant search results.\n\nNot sure why Skia picked this. Chromium also never use it, except when interacting with Skia.",
+      "parentUuid": "a18046d9_2bfda665",
+      "revId": "28a9234d092cfb55d6a0b30e246a2e4d31ffb06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e23536d8_da194472",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 2
