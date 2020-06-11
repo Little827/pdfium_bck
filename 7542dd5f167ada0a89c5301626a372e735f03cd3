@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afca829b_6e7c93a0",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-11T23:27:01Z",
+      "side": 1,
+      "message": "nit: Put this above StartupData, since we put non-conditional includes above conditional ones.",
+      "revId": "7542dd5f167ada0a89c5301626a372e735f03cd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f490a0e_bf7803aa",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-11T23:27:01Z",
+      "side": 1,
+      "message": "nit: explicit",
+      "revId": "7542dd5f167ada0a89c5301626a372e735f03cd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72dc8c29_f26e3d37",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-11T23:27:01Z",
+      "side": 1,
+      "message": "Can this be: const char* const exe_path_, to force ctor initialization?",
+      "revId": "7542dd5f167ada0a89c5301626a372e735f03cd3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
