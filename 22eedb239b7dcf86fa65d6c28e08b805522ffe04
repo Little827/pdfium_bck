@@ -71,6 +71,24 @@
       "revId": "22eedb239b7dcf86fa65d6c28e08b805522ffe04",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "849144b9_5e04c836",
+        "filename": "tools/android/md5sum/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-06-11T21:28:44Z",
+      "side": 1,
+      "message": "That\u0027s reasonable.\n\nTo me it seems like md5sum wasn\u0027t always getting rebuilt on Android builds, and that they added a rule to ensure it does. I don\u0027t know whether that\u0027s a target that PDFium depends on.\n\nIf you want, we can CC agrieve@ or mthiesse@ and ask them for more context.",
+      "parentUuid": "550f42b5_6bbc59d3",
+      "revId": "22eedb239b7dcf86fa65d6c28e08b805522ffe04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
