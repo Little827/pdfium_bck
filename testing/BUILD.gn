@@ -87,7 +87,6 @@ source_set("embedder_test_support") {
     "range_set.cpp",
     "range_set.h",
   ]
-
   deps = [
     ":test_support",
     "../:pdfium_public_headers",
@@ -97,7 +96,10 @@ source_set("embedder_test_support") {
     "//testing/gmock",
     "//testing/gtest",
   ]
-  configs += [ "../:pdfium_core_config" ]
+  configs += [
+    "../:pdfium_core_config",
+    "//v8:external_startup_data",
+  ]
   visibility = [ "../*" ]
 
   if (pdf_enable_v8) {
