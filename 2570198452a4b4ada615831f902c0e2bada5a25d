@@ -23,6 +23,30 @@
       "revId": "2570198452a4b4ada615831f902c0e2bada5a25d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf47bb2_591dcb2a",
+        "filename": "third_party/base/memory/aligned_memory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-11T00:11:49Z",
+      "side": 1,
+      "message": "I skipped the CL that added IsAligned() and IsPageAligned(). We can:\n1) Not take IsAligned() and IsPageAligned().\n2) Take IsAligned(), but not IsPageAligned().\n3) Take IsAligned() and IsPageAligned(), but change IsPageAligned() to avoid dragging in base/process/process_metrics.h.\n\nI don\u0027t have a strong option. Maybe (2), since IsAligned() is potentially useful?",
+      "parentUuid": "7047cd59_40996094",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "2570198452a4b4ada615831f902c0e2bada5a25d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
