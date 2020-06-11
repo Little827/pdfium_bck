@@ -53,6 +53,24 @@
       "revId": "22eedb239b7dcf86fa65d6c28e08b805522ffe04",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550f42b5_6bbc59d3",
+        "filename": "tools/android/md5sum/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-11T20:38:02Z",
+      "side": 1,
+      "message": "I just used the existing bug as a catch-all for Android build issues to sort out. My reading of the bug that added this dependency is that it is just an optimization, but I don\u0027t know for sure.",
+      "parentUuid": "2ead338e_e1475601",
+      "revId": "22eedb239b7dcf86fa65d6c28e08b805522ffe04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
