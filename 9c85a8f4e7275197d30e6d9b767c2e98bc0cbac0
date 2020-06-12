@@ -22,6 +22,30 @@
       "revId": "9c85a8f4e7275197d30e6d9b767c2e98bc0cbac0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451eb7be_d8590d68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-12T21:51:08Z",
+      "side": 1,
+      "message": "The issue at present is that cppgc::Heap has a private ctor. Which meant that my attempt at extending it -- so as to keep global refcounts consistent in ctors/dtors -- wouldn\u0027t compile. The only way to get one is via a cppgc::Heap::Create call.  So I could create the scope heaped class which has the cppgc::Heap as a member, but then we\u0027d have to introduce a Get() method and call it all over the place instead of just using it directly.",
+      "parentUuid": "8d676479_f7e988f0",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "9c85a8f4e7275197d30e6d9b767c2e98bc0cbac0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
