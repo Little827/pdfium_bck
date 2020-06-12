@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6b62bd_825aee5f",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-12T19:53:21Z",
+      "side": 1,
+      "message": "renaming here is the only manual edit to these tests.",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 28
+      },
+      "revId": "1e86707082c72f39af7f241576ce837b942fbe24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
