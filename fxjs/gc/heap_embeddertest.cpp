@@ -13,19 +13,15 @@ class HeapEmbedderTest : public EmbedderTest {};
 
 TEST(HeapEmbedderTest, SeveralHeaps) {
   FXGC_Initialize(EmbedderTestEnvironment::GetInstance()->platform());
+  {
+    FXGCScopedHeap heap1 = FXGC_CreateHeap();
+    EXPECT_TRUE(heap1);
 
-  std::unique_ptr<cppgc::Heap> heap1 = FXGC_CreateHeap();
-  EXPECT_TRUE(heap1);
+    FXGCScopedHeap heap2 = FXGC_CreateHeap();
+    EXPECT_TRUE(heap2);
 
-  std::unique_ptr<cppgc::Heap> heap2 = FXGC_CreateHeap();
-  EXPECT_TRUE(heap2);
-
-  std::unique_ptr<cppgc::Heap> heap3 = FXGC_CreateHeap();
-  EXPECT_TRUE(heap2);
-
-  FXGC_ReleaseHeap(std::move(heap1));
-  FXGC_ReleaseHeap(std::move(heap2));
-  FXGC_ReleaseHeap(std::move(heap3));
-
+    FXGCScopedHeap heap3 = FXGC_CreateHeap();
+    EXPECT_TRUE(heap2);
+  }
   FXGC_Release();
 }
