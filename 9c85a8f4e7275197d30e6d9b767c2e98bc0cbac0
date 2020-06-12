@@ -70,6 +70,30 @@
       "revId": "9c85a8f4e7275197d30e6d9b767c2e98bc0cbac0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8a54f1_d46f92d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-12T22:22:00Z",
+      "side": 1,
+      "message": "Ah. gotcha. done.",
+      "parentUuid": "b6aa0042_77f94541",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "9c85a8f4e7275197d30e6d9b767c2e98bc0cbac0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
