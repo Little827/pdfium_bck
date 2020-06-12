@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d6bf047_754c7c8b",
+        "filename": "fxjs/gc/heap.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-12T21:13:43Z",
+      "side": 1,
+      "message": "Can the class by final instead?",
+      "range": {
+        "startLine": 21,
+        "startChar": 43,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "49aef0758368a9b30811bea695e6e2e6872e6068",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
