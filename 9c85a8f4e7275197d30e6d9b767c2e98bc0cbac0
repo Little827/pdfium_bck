@@ -46,6 +46,30 @@
       "revId": "9c85a8f4e7275197d30e6d9b767c2e98bc0cbac0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6aa0042_77f94541",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-12T22:13:27Z",
+      "side": 1,
+      "message": "I\u0027m fine with the CL as is. No need to create a class to hold a std::unique_ptr\u003ccppgc::Heap\u003e. I just don\u0027t need why the name needs the Ptr suffix. e.g. We have ScopedFXFTFaceRec for making scoped FXFT_FaceRecs, but we don\u0027t call it ScopedFXFTFaceRecPtr.",
+      "parentUuid": "451eb7be_d8590d68",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "9c85a8f4e7275197d30e6d9b767c2e98bc0cbac0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
