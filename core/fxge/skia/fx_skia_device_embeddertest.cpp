@@ -66,7 +66,7 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
                      FXFILL_WINDING, BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
     driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix,
-                           fontSize, 0xFF445566);
+                           fontSize, 0xFF445566, CFX_TextRenderOptions());
   }
   if (state.m_save == State::Save::kYes)
     driver->RestoreState(true);
@@ -89,7 +89,7 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
                      FXFILL_WINDING, BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
     driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix2,
-                           fontSize, 0xFF445566);
+                           fontSize, 0xFF445566, CFX_TextRenderOptions());
   }
   if (state.m_save == State::Save::kYes)
     driver->RestoreState(false);
