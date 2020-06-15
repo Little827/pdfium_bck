@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce9db258_8aef5ae0",
+        "filename": "fxjs/gc/heap_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-15T22:49:36Z",
+      "side": 1,
+      "message": "Can these be declared as static members of PseudoCollectible, rather than as globals?",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "94917009b9ad02bc918efa14bde9bbb3ef242726",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07247a81_7a3ad776",
+        "filename": "fxjs/gc/heap_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-15T22:49:36Z",
+      "side": 1,
+      "message": "Does cppgc::Persistent need explicit initialization to nullptr?",
+      "revId": "94917009b9ad02bc918efa14bde9bbb3ef242726",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17cd8d3e_538bef32",
+        "filename": "fxjs/gc/heap_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-15T22:49:36Z",
+      "side": 1,
+      "message": "Add the visitor param name?",
+      "range": {
+        "startLine": 42,
+        "startChar": 21,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "94917009b9ad02bc918efa14bde9bbb3ef242726",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
