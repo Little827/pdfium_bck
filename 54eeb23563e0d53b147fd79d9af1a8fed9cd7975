@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1272fb43_04e2b3a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab115449_ae1c137a",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c079d41_8aa7ce3b",
         "filename": "core/fxge/cfx_glyphcache.cpp",
         "patchSetId": 8
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "51adb42d_504ec76e",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Change |text_options| into |mutable_text_options| to indicate this parameter is both an input and an output parameter.",
+      "parentUuid": "0c079d41_8aa7ce3b",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8708ee00_8297b367",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 8
@@ -56,6 +98,24 @@
       "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e87fa96e_a17ac651",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8708ee00_8297b367",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "29d45bce_8d1bdb5c",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Seems like enum is more common than enum class when it\u0027s inside a class or struct.",
+      "parentUuid": "89a419e5_d8a75d35",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5120f1e7_b9f52578",
         "filename": "core/fxge/cfx_textrenderoptions.h",
         "patchSetId": 8
@@ -122,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "c0bf4fed_adddb8c2",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5120f1e7_b9f52578",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4034ed98_4c8377cc",
         "filename": "core/fxge/cfx_textrenderoptions.h",
         "patchSetId": 8
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "8ec7b970_5a090103",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4034ed98_4c8377cc",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34f73927_2e1292d7",
         "filename": "core/fxge/cfx_textrenderoptions.h",
         "patchSetId": 8
@@ -150,6 +276,24 @@
       "writtenOn": "2020-06-09T21:17:54Z",
       "side": 1,
       "message": "The destructor probably is trivial?",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe90f68_a7dc43a1",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Yes, it\u0027s trivial.",
+      "parentUuid": "34f73927_2e1292d7",
       "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -173,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "2fe3a78a_815238a4",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04b5e47_f3afb6c9",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f2881d_97a9a151",
         "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
         "patchSetId": 8
@@ -190,6 +352,24 @@
     },
     {
       "key": {
+        "uuid": "7675ea1a_c74b16ce",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f2881d_97a9a151",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef05f52b_7bf7969c",
         "filename": "xfa/fde/cfde_textout.cpp",
         "patchSetId": 8
@@ -204,6 +384,24 @@
       "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f34448a_1f2879ef",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-15T16:44:51Z",
+      "side": 1,
+      "message": "Maybe make it static const and still keep it out of the for loop. So that the constructor doesn\u0027t get invoked everytime it enters the loop.(https://google.github.io/styleguide/cppguide.html#Local_Variables)",
+      "parentUuid": "ef05f52b_7bf7969c",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
