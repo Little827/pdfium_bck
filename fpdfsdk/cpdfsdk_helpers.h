@@ -62,6 +62,7 @@ inline FPDF_ANNOTATION FPDFAnnotationFromCPDFAnnotContext(
     CPDF_AnnotContext* annot) {
   return reinterpret_cast<FPDF_ANNOTATION>(annot);
 }
+
 inline CPDF_AnnotContext* CPDFAnnotContextFromFPDFAnnotation(
     FPDF_ANNOTATION annot) {
   return reinterpret_cast<CPDF_AnnotContext*>(annot);
