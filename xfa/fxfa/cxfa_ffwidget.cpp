@@ -134,7 +134,8 @@ void XFA_DrawImage(CXFA_Graphics* pGS,
   CFX_RenderDevice::StateRestorer restorer(pRenderDevice);
   CFX_PathData path;
   path.AppendRect(rtImage.left, rtImage.bottom(), rtImage.right(), rtImage.top);
-  pRenderDevice->SetClip_PathFill(&path, &matrix, FXFILL_WINDING);
+  pRenderDevice->SetClip_PathFill(&path, &matrix,
+                                  CFX_FillRenderOptions(FXFILL_WINDING));
 
   CFX_Matrix mtImage(1, 0, 0, -1, 0, 1);
   mtImage.Concat(

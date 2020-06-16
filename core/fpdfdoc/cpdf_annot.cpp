@@ -514,9 +514,10 @@ void CPDF_Annot::DrawBorder(CFX_RenderDevice* pDevice,
   CFX_PathData path;
   path.AppendFloatRect(rect);
 
-  int fill_type = 0;
+  CFX_FillRenderOptions fill_options;
   if (pOptions && pOptions->GetOptions().bNoPathSmooth)
-    fill_type |= FXFILL_NOPATHSMOOTH;
+    fill_options.no_path_smooth = true;
 
-  pDevice->DrawPath(&path, pUser2Device, &graph_state, argb, argb, fill_type);
+  pDevice->DrawPath(&path, pUser2Device, &graph_state, argb, argb,
+                    fill_options);
 }
