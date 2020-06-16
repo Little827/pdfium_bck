@@ -16,6 +16,24 @@
       "revId": "32b708084115a87dab530242c07ad8f84fccefa6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3df4a15_1ea8911a",
+        "filename": "fxjs/gc/heap_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-16T18:46:43Z",
+      "side": 1,
+      "message": "allocation.h needed for MakeGarbageCollected on line 70\npersistent.h needed for Persistent\u003c\u003e on line 21\nv8.h not needed, removed.",
+      "parentUuid": "4be39be3_19104dc0",
+      "revId": "32b708084115a87dab530242c07ad8f84fccefa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
