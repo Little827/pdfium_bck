@@ -54,6 +54,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
+#include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_glyphbitmap.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
@@ -116,22 +117,24 @@ RetainPtr<CFX_DIBitmap> DrawPatternBitmap(
   return pBitmap;
 }
 
-int GetFillRenderOptionsHelper(const CPDF_RenderOptions::Options& options,
-                               const CPDF_PathObject* path_obj,
-                               int fill_type,
-                               bool is_stroke,
-                               bool is_type3_char) {
-  int fill_options = fill_type;
+CFX_FillRenderOptions GetFillRenderOptionsHelper(
+    const CPDF_RenderOptions::Options& options,
+    const CPDF_PathObject* path_obj,
+    int fill_type,
+    bool is_stroke,
+    bool is_type3_char) {
+  CFX_FillRenderOptions fill_options;
+  fill_options.fill_type = fill_type;
   if (fill_type && options.bRectAA)
-    fill_options |= FXFILL_RECT_AA;
+    fill_options.fill_rect_aa = true;
   if (options.bNoPathSmooth)
-    fill_options |= FXFILL_NOPATHSMOOTH;
+    fill_options.no_path_smooth = true;
   if (path_obj->m_GeneralState.GetStrokeAdjust())
-    fill_options |= FX_STROKE_ADJUST;
+    fill_options.stroke_adjust = true;
   if (is_stroke)
-    fill_options |= FX_FILL_STROKE;
+    fill_options.fill_stroke = true;
   if (is_type3_char)
-    fill_options |= FX_FILL_TEXT_MODE;
+    fill_options.fill_text_mode = true;
 
   return fill_options;
 }
@@ -443,8 +446,8 @@ bool CPDF_RenderStatus::ProcessPath(CPDF_PathObject* pPathObj,
   if (!IsAvailableMatrix(path_matrix))
     return true;
 
-  int fill_options = GetFillRenderOptionsHelper(options, pPathObj, FillType,
-                                                bStroke, m_pType3Char);
+  CFX_FillRenderOptions fill_options = GetFillRenderOptionsHelper(
+      options, pPathObj, FillType, bStroke, m_pType3Char);
   return m_pDevice->DrawPathWithBlend(
       pPathObj->path().GetObject(), &path_matrix,
       pPathObj->m_GraphState.GetObject(), fill_argb, stroke_argb, fill_options,
@@ -539,10 +542,12 @@ void CPDF_RenderStatus::ProcessClipPath(const CPDF_ClipPath& ClipPath,
     if (pPathData->GetPoints().empty()) {
       CFX_PathData EmptyPath;
       EmptyPath.AppendRect(-1, -1, 0, 0);
-      m_pDevice->SetClip_PathFill(&EmptyPath, nullptr, FXFILL_WINDING);
+      m_pDevice->SetClip_PathFill(&EmptyPath, nullptr,
+                                  CFX_FillRenderOptions(FXFILL_WINDING));
     } else {
-      m_pDevice->SetClip_PathFill(pPathData, &mtObj2Device,
-                                  ClipPath.GetClipType(i));
+      m_pDevice->SetClip_PathFill(
+          pPathData, &mtObj2Device,
+          CFX_FillRenderOptions(ClipPath.GetClipType(i)));
     }
   }
 
@@ -567,10 +572,10 @@ void CPDF_RenderStatus::ProcessClipPath(const CPDF_ClipPath& ClipPath,
     if (!pTextClippingPath)
       continue;
 
-    int fill_mode = FXFILL_WINDING;
+    CFX_FillRenderOptions fill_options(FXFILL_WINDING);
     if (m_Options.GetOptions().bNoTextSmooth)
-      fill_mode |= FXFILL_NOPATHSMOOTH;
-    m_pDevice->SetClip_PathFill(pTextClippingPath.get(), nullptr, fill_mode);
+      fill_options.no_path_smooth = true;
+    m_pDevice->SetClip_PathFill(pTextClippingPath.get(), nullptr, fill_options);
     pTextClippingPath.reset();
   }
 }
@@ -596,12 +601,12 @@ bool CPDF_RenderStatus::SelectClipPath(const CPDF_PathObject* pPathObj,
                                          &path_matrix,
                                          pPathObj->m_GraphState.GetObject());
   }
-  int fill_mode = pPathObj->filltype();
+  CFX_FillRenderOptions fill_options(pPathObj->filltype());
   if (m_Options.GetOptions().bNoPathSmooth) {
-    fill_mode |= FXFILL_NOPATHSMOOTH;
+    fill_options.no_path_smooth = true;
   }
   return m_pDevice->SetClip_PathFill(pPathObj->path().GetObject(), &path_matrix,
-                                     fill_mode);
+                                     fill_options);
 }
 
 bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
@@ -697,7 +702,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
           textobj->m_TextState.GetFont().Get(),
           textobj->m_TextState.GetFontSize(), textobj->GetTextMatrix(),
           &new_matrix, textobj->m_GraphState.GetObject(), 0xffffffff, 0,
-          nullptr, 0);
+          nullptr, CFX_FillRenderOptions());
     }
   }
   CPDF_RenderStatus bitmap_render(m_pContext.Get(), &bitmap_device);
@@ -902,20 +907,20 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
         pDeviceMatrix = &device_matrix;
       }
     }
-    int flag = 0;
+    CFX_FillRenderOptions fill_options;
     if (bStroke && bFill) {
-      flag |= FX_FILL_STROKE;
-      flag |= FX_STROKE_TEXT_MODE;
+      fill_options.fill_stroke = true;
+      fill_options.stroke_text_mode = true;
     }
     if (textobj->m_GeneralState.GetStrokeAdjust())
-      flag |= FX_STROKE_ADJUST;
+      fill_options.stroke_adjust = true;
     if (m_Options.GetOptions().bNoTextSmooth)
-      flag |= FXFILL_NOPATHSMOOTH;
+      fill_options.no_path_smooth = true;
     return CPDF_TextRenderer::DrawTextPath(
         m_pDevice, textobj->GetCharCodes(), textobj->GetCharPositions(),
         pFont.Get(), font_size, text_matrix, pDeviceMatrix,
         textobj->m_GraphState.GetObject(), fill_argb, stroke_argb,
-        pClippingPath, flag);
+        pClippingPath, fill_options);
   }
   text_matrix.Concat(mtObj2Device);
   return CPDF_TextRenderer::DrawNormalText(
