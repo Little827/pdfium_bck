@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78241220_06125d84",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-06-16T20:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89afcb61_01fdf2eb",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61948548_f59596f0",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "823b03e0_8304c504",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-06-16T20:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61948548_f59596f0",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 20
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "2016f341_36e3e5a9",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-06-16T20:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88f1b47f_f8588b20",
+      "range": {
+        "startLine": 750,
+        "startChar": 35,
+        "endLine": 750,
+        "endChar": 46
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b3104ce_0fbf6a96",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-06-16T20:18:35Z",
+      "side": 1,
+      "message": "Adding a why in these comments will be helpful. It does not help me make a decision or understand your viewpoint.\n\nBecause of overlapping comments it is not clear what exactly to delete. Please confirm.",
+      "parentUuid": "4b24a45d_11f74726",
+      "range": {
+        "startLine": 750,
+        "startChar": 48,
+        "endLine": 750,
+        "endChar": 77
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ce68981_cd4d69bf",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 3
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8f3f11e7_086018f2",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-06-16T20:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ce68981_cd4d69bf",
+      "range": {
+        "startLine": 758,
+        "startChar": 42,
+        "endLine": 758,
+        "endChar": 60
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3c719e5_08ff17ee",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abfdf82c_098048dd",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-06-16T20:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c719e5_08ff17ee",
+      "range": {
+        "startLine": 759,
+        "startChar": 71,
+        "endLine": 759,
+        "endChar": 75
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
