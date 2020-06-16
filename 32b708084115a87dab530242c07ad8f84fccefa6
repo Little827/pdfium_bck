@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4be39be3_19104dc0",
+        "filename": "fxjs/gc/heap_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-16T18:30:47Z",
+      "side": 1,
+      "message": "Probably don\u0027t need these any more, as the file no longer has \"v8::\" references?",
+      "revId": "32b708084115a87dab530242c07ad8f84fccefa6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
