@@ -862,35 +862,10 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
                                       const CFX_Matrix& mtText2Device,
                                       uint32_t fill_color,
                                       const CFX_TextRenderOptions& options) {
-  if (GetDeviceType() != DeviceType::kDisplay) {
-    if (ShouldDrawDeviceText(pFont, options) &&
-        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
-                                        font_size, fill_color)) {
-      return true;
-    }
-    if (FXARGB_A(fill_color) < 255)
-      return false;
-  } else if (options.native_text) {
-    if (ShouldDrawDeviceText(pFont, options) &&
-        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
-                                        font_size, fill_color)) {
-      return true;
-    }
-  }
-  bool is_text_smooth = options.IsSmooth();
-  CFX_Matrix char2device = mtText2Device;
-  CFX_Matrix text2Device = mtText2Device;
-  char2device.Scale(font_size, -font_size);
-  if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
-      GetDeviceType() == DeviceType::kPrinter) {
-    if (pFont->GetFaceRec()) {
-      int nPathFlags = is_text_smooth ? 0 : FXFILL_NOPATHSMOOTH;
-      return DrawTextPath(nChars, pCharPos, pFont, font_size, mtText2Device,
-                          nullptr, nullptr, fill_color, 0, nullptr, nPathFlags);
-    }
-  }
   int anti_alias = FT_RENDER_MODE_MONO;
   bool bNormal = false;
+  CFX_TextRenderOptions native_text_options(options);
+  bool is_text_smooth = native_text_options.IsSmooth();
   if (is_text_smooth) {
     if (GetDeviceType() == DeviceType::kDisplay && m_bpp > 1) {
       if (!CFX_GEModule::Get()->GetFontMgr()->FTLibrarySupportsHinting()) {
@@ -909,8 +884,44 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
         anti_alias = FT_RENDER_MODE_LCD;
         bNormal = pFont->GetFaceRec() ? !options.IsLcd() : true;
       }
+
+      // Force turn off LCD antialiasing in rendering options
+      if (anti_alias == FT_RENDER_MODE_NORMAL)
+        native_text_options.aliasing_type =
+            CFX_TextRenderOptions::kAntiAliasing;
     }
   }
+
+  if (GetDeviceType() != DeviceType::kDisplay) {
+    if (ShouldDrawDeviceText(pFont, options) &&
+        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
+                                        font_size, fill_color,
+                                        native_text_options)) {
+      return true;
+    }
+    if (FXARGB_A(fill_color) < 255)
+      return false;
+  } else if (options.native_text) {
+    if (ShouldDrawDeviceText(pFont, options) &&
+        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
+                                        font_size, fill_color,
+                                        native_text_options)) {
+      return true;
+    }
+  }
+
+  CFX_Matrix char2device = mtText2Device;
+  CFX_Matrix text2Device = mtText2Device;
+  char2device.Scale(font_size, -font_size);
+  if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
+      GetDeviceType() == DeviceType::kPrinter) {
+    if (pFont->GetFaceRec()) {
+      int nPathFlags = is_text_smooth ? 0 : FXFILL_NOPATHSMOOTH;
+      return DrawTextPath(nChars, pCharPos, pFont, font_size, mtText2Device,
+                          nullptr, nullptr, fill_color, 0, nullptr, nPathFlags);
+    }
+  }
+
   std::vector<TextGlyphPos> glyphs(nChars);
   CFX_Matrix deviceCtm = char2device;
 
@@ -925,7 +936,6 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
       glyph.m_Origin.x = static_cast<int>(floor(glyph.m_fDeviceOrigin.x));
     glyph.m_Origin.y = FXSYS_roundf(glyph.m_fDeviceOrigin.y);
 
-    CFX_TextRenderOptions native_text_options(options);
     if (charpos.m_bGlyphAdjust) {
       CFX_Matrix new_matrix(
           charpos.m_AdjustMatrix[0], charpos.m_AdjustMatrix[1],
