@@ -136,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "24b38832_2318a503",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-16T01:50:12Z",
+      "side": 1,
+      "message": "That is to say, we can encode the logic for whether this is an \"LCD\"-style aliasing type in one place.",
+      "parentUuid": "85f417ac_9e96a497",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89a419e5_d8a75d35",
         "filename": "core/fxge/cfx_textrenderoptions.h",
         "patchSetId": 8
@@ -180,6 +198,30 @@
       "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf0a8ee3_907bc406",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-16T01:50:12Z",
+      "side": 1,
+      "message": "That\u0027s not really the most important criteria for whether this should be an enum or an enum class: Enums implicitly convert to int, so you can do arithmetic on them. Enum classes do not. Enum classes also need to be qualified, but I think that\u0027s a more minor difference in many cases. (It reduces the chance of name conflicts, and arguably improves clarity, at the cost of more typing.)\n\nI think it\u0027s fine to choose an enum here, but you need to be intentional about your decision. :-)",
+      "parentUuid": "29d45bce_8d1bdb5c",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
@@ -300,6 +342,24 @@
     },
     {
       "key": {
+        "uuid": "a688e6ae_1334f849",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-16T01:50:12Z",
+      "side": 1,
+      "message": "I think you can omit it from the class definition, then. (The default constructor might be small enough to allow this, too, but that may change anyway, if more fields are added, so I don\u0027t think that\u0027s as useful.)",
+      "parentUuid": "6fe90f68_a7dc43a1",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c04b5e47_f3afb6c9",
         "filename": "core/fxge/cfx_textrenderoptions.h",
         "patchSetId": 8
@@ -402,6 +462,24 @@
       "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9b2f4fb_fe776a3e",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-16T01:50:12Z",
+      "side": 1,
+      "message": "This probably has a pretty low runtime cost, so I wouldn\u0027t worry too much about it.\n\nOn the other hand, you\u0027ve made this a (static) reference to a temporary; I\u0027m pretty sure that is a problem. It\u0027s probably best to leave it the way it was before.",
+      "parentUuid": "9f34448a_1f2879ef",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
