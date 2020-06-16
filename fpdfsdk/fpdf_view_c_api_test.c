@@ -85,6 +85,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_SetRect);
     CHK(FPDFAnnot_SetStringValue);
     CHK(FPDFAnnot_UpdateObject);
+    CHK(FPDFLink_GetAnnot);
     CHK(FPDFPage_CloseAnnot);
     CHK(FPDFPage_CreateAnnot);
     CHK(FPDFPage_GetAnnot);

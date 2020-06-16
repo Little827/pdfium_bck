@@ -3020,6 +3020,55 @@ TEST_F(FPDFAnnotEmbedderTest, GetLinkFromAnnotation) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFAnnotEmbedderTest, GetAnnotationFromLink) {
+  ASSERT_TRUE(OpenDocument("annots.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 3));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(FPDF_ANNOT_LINK, FPDFAnnot_GetSubtype(annot.get()));
+    FPDF_LINK link_annot = FPDFAnnot_GetLink(annot.get());
+    ASSERT_TRUE(link_annot);
+
+    // Convert the FPDF_LINK to FPDF_ANNOTATION and then convert it back to
+    // FPDF_LINK. If the coversion is correct, all the properties of the
+    // FPDF_LINK should be correct.
+    ScopedFPDFAnnotation converted_annot(FPDFLink_GetAnnot(page, link_annot));
+    ASSERT_TRUE(converted_annot);
+    link_annot = FPDFAnnot_GetLink(converted_annot.get());
+
+    FPDF_ACTION action = FPDFLink_GetAction(link_annot);
+    ASSERT_TRUE(action);
+    EXPECT_EQ(static_cast<unsigned long>(PDFACTION_URI),
+              FPDFAction_GetType(action));
+
+    constexpr char kExpectedResult[] =
+        "https://cs.chromium.org/chromium/src/third_party/pdfium/public/"
+        "fpdf_text.h";
+    constexpr unsigned long kExpectedLength = pdfium::size(kExpectedResult);
+    unsigned long bufsize =
+        FPDFAction_GetURIPath(document(), action, nullptr, 0);
+    ASSERT_EQ(kExpectedLength, bufsize);
+
+    char buffer[1024];
+    EXPECT_EQ(bufsize,
+              FPDFAction_GetURIPath(document(), action, buffer, bufsize));
+    EXPECT_STREQ(kExpectedResult, buffer);
+  }
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 4));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(FPDF_ANNOT_HIGHLIGHT, FPDFAnnot_GetSubtype(annot.get()));
+    EXPECT_FALSE(FPDFAnnot_GetLink(annot.get()));
+  }
+
+  EXPECT_FALSE(FPDFAnnot_GetLink(nullptr));
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbedderTest, GetFormControlCountRadioButton) {
   // Open a file with radio button widget annotations and load its first page.
   ASSERT_TRUE(OpenDocument("click_form.pdf"));

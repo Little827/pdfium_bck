@@ -747,6 +747,17 @@ FPDFAnnot_GetFocusableSubtypes(FPDF_FORMHANDLE hHandle,
                                size_t count);
 
 // Experimental API.
+// Gets FPDF_ANNOTATION object for |link|.
+//
+//   page    - handle to the page in which FPDF_LINK object is present.
+//   link    - handle link annotation.
+//
+// Returns FPDF_ANNOTATION from the FPDF_LINK and NULL on failure,
+// if the input link annot or page is NULL.
+FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV
+FPDFLink_GetAnnot(FPDF_PAGE page, FPDF_LINK link_annot);
+
+// Experimental API.
 // Gets FPDF_LINK object for |annot|. Intended to use for link annotations.
 //
 //   annot   - handle to an annotation.
