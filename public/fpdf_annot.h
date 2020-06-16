@@ -587,19 +587,6 @@ FPDFAnnot_GetFormFieldName(FPDF_FORMHANDLE hHandle,
                            unsigned long buflen);
 
 // Experimental API.
-// Gets the form field type of |annot|, which is an interactive form annotation.
-//
-//    hHandle     -   handle to the form fill module, returned by
-//                    FPDFDOC_InitFormFillEnvironment().
-//    annot       -   handle to an interactive form annotation.
-//
-// Returns the type of the form field (one of the FPDF_FORMFIELD_* values) on
-// success. Returns -1 on error.
-// See field types in fpdf_formfill.h.
-FPDF_EXPORT int FPDF_CALLCONV
-FPDFAnnot_GetFormFieldType(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot);
-
-// Experimental API.
 // Gets the value of |annot|, which is an interactive form annotation.
 // |buffer| is only modified if |buflen| is longer than the length of contents.
 // In case of error, nothing will be added to |buffer| and the return value will
@@ -617,6 +604,19 @@ FPDFAnnot_GetFormFieldValue(FPDF_FORMHANDLE hHandle,
                             FPDF_ANNOTATION annot,
                             FPDF_WCHAR* buffer,
                             unsigned long buflen);
+
+// Experimental API.
+// Gets the form field type of |annot|, which is an interactive form annotation.
+//
+//    hHandle     -   handle to the form fill module, returned by
+//                    FPDFDOC_InitFormFillEnvironment().
+//    annot       -   handle to an interactive form annotation.
+//
+// Returns the type of the form field (one of the FPDF_FORMFIELD_* values) on
+// success. Returns -1 on error.
+// See field types in fpdf_formfill.h.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFAnnot_GetFormFieldType(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot);
 
 // Experimental API.
 // Get the number of options in the |annot|'s "Opt" dictionary. Intended for
@@ -745,6 +745,18 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_GetFocusableSubtypes(FPDF_FORMHANDLE hHandle,
                                FPDF_ANNOTATION_SUBTYPE* subtypes,
                                size_t count);
+
+// Experimental API.
+// Gets FPDF_ANNOTATION object for a FPDF_LINK. Intended to use for FPDF_LINK
+// annotations.
+//
+//   page    - handle to the page in which FPDF_LINK object is present.
+//   link    - handle link annotation.
+//
+// Returns FPDF_ANNOTATION from the FPDF_LINK and NULL on failure,
+// if the input link annot or page is NULL.
+FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV FPDFAnnot_GetAnnot(FPDF_PAGE page,
+                                                             FPDF_LINK link);
 
 // Experimental API.
 // Gets FPDF_LINK object for |annot|. Intended to use for link annotations.
