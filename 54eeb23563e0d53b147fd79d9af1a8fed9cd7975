@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "53c316db_9c82aeeb",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-16T22:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24b38832_2318a503",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89a419e5_d8a75d35",
         "filename": "core/fxge/cfx_textrenderoptions.h",
         "patchSetId": 8
@@ -222,6 +240,30 @@
       "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7983b74_cc0a8009",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-16T22:26:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf0a8ee3_907bc406",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -360,6 +402,24 @@
     },
     {
       "key": {
+        "uuid": "fa960d84_ebd990c1",
+        "filename": "core/fxge/cfx_textrenderoptions.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-16T22:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a688e6ae_1334f849",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c04b5e47_f3afb6c9",
         "filename": "core/fxge/cfx_textrenderoptions.h",
         "patchSetId": 8
@@ -480,6 +540,24 @@
       "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561437be_cd333db1",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-16T22:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9b2f4fb_fe776a3e",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
