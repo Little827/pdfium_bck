@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27c53919_1c58fe62",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-16T23:11:39Z",
+      "side": 1,
+      "message": "The parameter name has a mismatch with the header.",
+      "range": {
+        "startLine": 256,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 47
+      },
+      "revId": "e0b2077618ee0f59f6c53423485f40186ce454f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e14a6096_2bc22602",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-16T23:11:39Z",
+      "side": 1,
+      "message": "Do we still need this variable?",
+      "revId": "e0b2077618ee0f59f6c53423485f40186ce454f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0be4ca9_c5be051f",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-16T23:11:39Z",
+      "side": 1,
+      "message": "Please verify, but I think this becomes:\n\nbNormal \u003d !pFont-\u003eGetFaceRec() || !options.IsLcd();",
+      "revId": "e0b2077618ee0f59f6c53423485f40186ce454f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70151f43_2dadbafd",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-16T23:11:39Z",
+      "side": 1,
+      "message": "Either:\n- this needs to not be a reference\nor\n- LcdOptions() needs to return a reference, and internally have a static object.",
+      "revId": "e0b2077618ee0f59f6c53423485f40186ce454f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
