@@ -73,6 +73,24 @@
       "revId": "e0b2077618ee0f59f6c53423485f40186ce454f5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f13be43_fc124980",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-16T23:17:51Z",
+      "side": 1,
+      "message": "With the latter choice, CBC_OneDimWriter::GetTextRenderOptions() can also return const-ref.",
+      "parentUuid": "70151f43_2dadbafd",
+      "revId": "e0b2077618ee0f59f6c53423485f40186ce454f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
