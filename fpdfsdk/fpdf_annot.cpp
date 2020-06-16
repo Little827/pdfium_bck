@@ -1191,6 +1191,21 @@ FPDFAnnot_GetFocusableSubtypes(FPDF_FORMHANDLE hHandle,
   return true;
 }
 
+FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV FPDFAnnot_GetAnnot(FPDF_PAGE page,
+                                                             FPDF_LINK link) {
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!pPage || !link)
+    return nullptr;
+
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFLink(link);
+
+  auto pAnnotContext = std::make_unique<CPDF_AnnotContext>(
+      pAnnotDict, IPDFPageFromFPDFPage(page));
+
+  // Caller takes the ownership of the object.
+  return FPDFAnnotationFromCPDFAnnotContext(pAnnotContext.release());
+}
+
 FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFAnnot_GetLink(FPDF_ANNOTATION annot) {
   if (FPDFAnnot_GetSubtype(annot) != FPDF_ANNOT_LINK)
     return nullptr;
