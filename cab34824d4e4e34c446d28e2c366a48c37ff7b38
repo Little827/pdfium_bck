@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "77332d63_603ba42a",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T20:36:34Z",
+      "side": 1,
+      "message": "The information is redundant since we can only pass in an FPDF_LINK.\n\nThe ask was to remove the highlighted part of the comment - which I see you have updated.\n\n(Thanks for the feedback - helpful to ensure I can provide more actionable comments.)",
+      "parentUuid": "7b3104ce_0fbf6a96",
+      "range": {
+        "startLine": 750,
+        "startChar": 48,
+        "endLine": 750,
+        "endChar": 77
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ce68981_cd4d69bf",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 3
@@ -234,6 +258,30 @@
       "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f375dbb2_d2a7891a",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T20:36:34Z",
+      "side": 1,
+      "message": "I still see the method in fpdf_annot.h - please move this to fpdf_doc.h. The implementation and test should follow accordingly.",
+      "parentUuid": "8f3f11e7_086018f2",
+      "range": {
+        "startLine": 758,
+        "startChar": 42,
+        "endLine": 758,
+        "endChar": 60
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
