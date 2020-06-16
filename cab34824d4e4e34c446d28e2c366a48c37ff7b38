@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89afcb61_01fdf2eb",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T19:01:03Z",
+      "side": 1,
+      "message": "Revert changes.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61948548_f59596f0",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T19:01:03Z",
+      "side": 1,
+      "message": "Please revert these changes and move to earlier location.",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 20
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f1b47f_f8588b20",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T19:01:03Z",
+      "side": 1,
+      "message": "nit: |link|",
+      "range": {
+        "startLine": 750,
+        "startChar": 35,
+        "endLine": 750,
+        "endChar": 46
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b24a45d_11f74726",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T19:01:03Z",
+      "side": 1,
+      "message": "remove.",
+      "range": {
+        "startLine": 750,
+        "startChar": 48,
+        "endLine": 750,
+        "endChar": 77
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce68981_cd4d69bf",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T19:01:03Z",
+      "side": 1,
+      "message": "A better name would be FPDFLink_GetAnnot() and should be implemented in fpdf_doc.h",
+      "range": {
+        "startLine": 758,
+        "startChar": 42,
+        "endLine": 758,
+        "endChar": 60
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c719e5_08ff17ee",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2020-06-16T19:01:03Z",
+      "side": 1,
+      "message": "nit: link_annot",
+      "range": {
+        "startLine": 759,
+        "startChar": 71,
+        "endLine": 759,
+        "endChar": 75
+      },
+      "revId": "cab34824d4e4e34c446d28e2c366a48c37ff7b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
