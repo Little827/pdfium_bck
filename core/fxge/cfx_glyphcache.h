@@ -25,6 +25,7 @@ class CFX_Font;
 class CFX_GlyphBitmap;
 class CFX_Matrix;
 class CFX_PathData;
+struct CFX_TextRenderOptions;
 
 class CFX_GlyphCache : public Retainable, public Observable {
  public:
@@ -33,13 +34,14 @@ class CFX_GlyphCache : public Retainable, public Observable {
 
   ~CFX_GlyphCache() override;
 
-  const CFX_GlyphBitmap* LoadGlyphBitmap(const CFX_Font* pFont,
-                                         uint32_t glyph_index,
-                                         bool bFontStyle,
-                                         const CFX_Matrix& matrix,
-                                         uint32_t dest_width,
-                                         int anti_alias,
-                                         int* pTextFlags);
+  const CFX_GlyphBitmap* LoadGlyphBitmap(
+      const CFX_Font* pFont,
+      uint32_t glyph_index,
+      bool bFontStyle,
+      const CFX_Matrix& matrix,
+      uint32_t dest_width,
+      int anti_alias,
+      CFX_TextRenderOptions* mutable_text_options);
   const CFX_PathData* LoadGlyphPath(const CFX_Font* pFont,
                                     uint32_t glyph_index,
                                     uint32_t dest_width);
