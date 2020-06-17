@@ -16,8 +16,7 @@ class CPDF_Document;
 
 class CPDF_PatternCS final : public CPDF_ColorSpace {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+  CONSTRUCT_VIA_MAKE_RETAIN;
 
   ~CPDF_PatternCS() override;
 

@@ -14,8 +14,7 @@
 
 class CPDF_DeviceCS final : public CPDF_ColorSpace {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+  CONSTRUCT_VIA_MAKE_RETAIN;
 
   ~CPDF_DeviceCS() override;
 
