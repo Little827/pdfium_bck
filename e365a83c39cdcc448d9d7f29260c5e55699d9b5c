@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f2a9910f_50b7f521",
+        "filename": "fxjs/gc/gced_tree_node.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-17T23:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa82684b_8bd001ee",
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de46f87a_4a17a12e",
         "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b5f56ed3_c5b93195",
+        "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-17T23:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de46f87a_4a17a12e",
+      "range": {
+        "startLine": 39,
+        "startChar": 46,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "742392f8_b5c3bbd0",
         "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2020-06-17T20:51:02Z",
       "side": 1,
       "message": "Put this in a CreateClutter() helper method?",
+      "range": {
+        "startLine": 77,
+        "startChar": 11,
+        "endLine": 77,
+        "endChar": 77
+      },
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa7fea9c_b9a2327c",
+        "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-17T23:42:01Z",
+      "side": 1,
+      "message": "\u003e Put this in a CreateClutter() helper method?\n\nYou mean CreateNode() ? Done.  (The clutter are additional child nodes under a parent to mess with the next/prev sibling pointers of the watched child).",
+      "parentUuid": "742392f8_b5c3bbd0",
       "range": {
         "startLine": 77,
         "startChar": 11,
@@ -85,6 +151,30 @@
       "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae8f1723_17517e11",
+        "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-17T23:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b95de5e8_bc730def",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
