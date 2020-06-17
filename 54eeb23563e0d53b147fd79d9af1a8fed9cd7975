@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "8acbf67b_793b446c",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T22:08:46Z",
+      "side": 1,
+      "message": "With the \"mutable_\" prefix in the parameter name, who benefits from the potential for readability improvement vs. not having the prefix?\n\na) A person reading the code that calls LoadGlyphBitmap().\nb) A person reading the LoadGlyphBitmap() header.\nc) A person reading the LoadGlyphBitmap() implementation.",
+      "parentUuid": "42aa1952_1d73261b",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8708ee00_8297b367",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 8
