@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d89b9356_312a2800",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T23:51:04Z",
+      "side": 1,
+      "message": "Can we adjust the checking here slightly for consistency? Right now, this is checking one CPDF_ variable and one FPDF_ variable:\n\nCPDF_Page* pPage \u003d CPDFPageFromFPDFPage(page);\nCPDF_Dictionary* pAnnotDict \u003d CPDFDictionaryFromFPDFLink(link_annot);\nif (!pPage || !pAnnotDict)\n  return nullptr;",
+      "revId": "94db7d7a82bf32017fd0b3a0d7be7831e974f3c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d873974_64dd2653",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T23:51:04Z",
+      "side": 1,
+      "message": "The conversions here (annot -\u003e link -\u003e annot -\u003e link -\u003e action) feel a bit contrived. Can we align the test case better with the actual intended use? Based on the CL commit message, I\u0027m guessing this would be:\n\n- Call FPDFLink_GetLinkAtPoint() to get a FPDF_LINK.\n- Convert the FPDF_LINK to a FPDF_ANNOTATION.\n- Use FPDFPage_GetAnnotIndex() to get the index of the link.",
+      "revId": "94db7d7a82bf32017fd0b3a0d7be7831e974f3c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
