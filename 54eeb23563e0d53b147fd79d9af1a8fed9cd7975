@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "42aa1952_1d73261b",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-17T21:44:44Z",
+      "side": 1,
+      "message": "Since TotW#178 was the most recently updated rule and this parameter is both input and output parameter, shall we keep it as \"mutable_text_options\"?",
+      "parentUuid": "b2a4d252_95313b04",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8708ee00_8297b367",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 8
