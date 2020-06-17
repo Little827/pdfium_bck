@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "af60fe15_18cf95ab",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T17:15:50Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to start giving all out parameters a \"mutable_\" prefix. That feels a bit like Hungarian notation.",
+      "parentUuid": "51adb42d_504ec76e",
+      "revId": "54eeb23563e0d53b147fd79d9af1a8fed9cd7975",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8708ee00_8297b367",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 8
