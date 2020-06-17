@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa82684b_8bd001ee",
+        "filename": "fxjs/gc/gced_tree_node.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T20:51:02Z",
+      "side": 1,
+      "message": "BTW, not required to be private.",
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de46f87a_4a17a12e",
+        "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T20:51:02Z",
+      "side": 1,
+      "message": "|heap_|, to be specific.",
+      "range": {
+        "startLine": 39,
+        "startChar": 46,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742392f8_b5c3bbd0",
+        "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T20:51:02Z",
+      "side": 1,
+      "message": "Put this in a CreateClutter() helper method?",
+      "range": {
+        "startLine": 77,
+        "startChar": 11,
+        "endLine": 77,
+        "endChar": 77
+      },
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95de5e8_bc730def",
+        "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-17T20:51:02Z",
+      "side": 1,
+      "message": "ASSERT_TRUE here and below, before dereferencing |s_root|.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "e365a83c39cdcc448d9d7f29260c5e55699d9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
