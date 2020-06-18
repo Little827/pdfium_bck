@@ -24,6 +24,7 @@ class CFX_PathData;
 class CPDF_ShadingPattern;
 class PauseIndicatorIface;
 class TextCharPos;
+struct CFX_TextRenderOptions;
 struct FX_RECT;
 
 enum class DeviceType : bool {
@@ -100,7 +101,8 @@ class RenderDeviceDriverIface {
                               CFX_Font* pFont,
                               const CFX_Matrix& mtObject2Device,
                               float font_size,
-                              uint32_t color);
+                              uint32_t color,
+                              const CFX_TextRenderOptions& options);
   virtual int GetDriverType() const;
   virtual void ClearDriver();
   virtual bool DrawShading(const CPDF_ShadingPattern* pPattern,
