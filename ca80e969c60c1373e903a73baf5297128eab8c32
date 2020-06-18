@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1592506329 -0700\nnonce ALC2d1+ep+aRQ9Jl49pfIeDNUO8zcDiuk7HQVqHmmqZfFE0TeUy9kjRowY79s+4h6Zkq7wSh6a+k\n\n0000000000000000000000000000000000000000 ca80e969c60c1373e903a73baf5297128eab8c32 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7rt9kACgkQqzYtYVpm\n/XucFAgAuZV0qxebYMvYXsKPZ3vjrd2e9DQAScQH3jJClBcaEQpRkpm2sfI3yXNz\nXY1jCLYw4shDb4jqXlNZD5cKSJhayZWxL2EstBJZ7t8zKJMTAhRu03eUc7FSfic3\nxQMkvINDZ3hZ0RTCAy3gHb7qiSffxuwMEzbE2D0n+m+qHtmx07ZRjUDl7ttZUDEB\nfYl4VZewtrPYitqfnQr3nmwviOoL+OQZgG2iv5nJe0OwkQ0g3zHUt8YYhnjYwEAA\n0BEH5/nqrFrQoPjcike1E5I3phXJC6MDqnw5OP2672pX48d0OY3nEshcUPsUSSA6\nGL0p1S0/V3RxjKRLIlWnAZGiBV1uzw\u003d\u003d\n\u003dig48\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be47c53_d08809e8",
+        "filename": "core/fxcrt/css/cfx_cssselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-18T23:41:20Z",
+      "side": 1,
+      "message": "nit: const?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "ca80e969c60c1373e903a73baf5297128eab8c32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31e6033_fc8368ff",
+        "filename": "core/fxcrt/css/cfx_cssselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-18T23:41:20Z",
+      "side": 1,
+      "message": "nit: I find this more confusing than the original, maybe\nconst bool good_char \u003d is_star || (is_asciii \u0026\u0026 isalpha())\nif (!good_char)\n  return nullptr;",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "ca80e969c60c1373e903a73baf5297128eab8c32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
