@@ -311,6 +311,16 @@ SkPathFillType GetAlternateOrWindingFillType(int fill_mode) {
                                         : SkPathFillType::kWinding;
 }
 
+SkFont::Edging GetFontEdgingType(const CFX_TextRenderOptions& text_options) {
+  if (text_options.aliasing_type == CFX_TextRenderOptions::kAliasing)
+    return SkFont::Edging::kAlias;
+
+  if (text_options.aliasing_type == CFX_TextRenderOptions::kAntiAliasing)
+    return SkFont::Edging::kAntiAlias;
+
+  return SkFont::Edging::kSubpixelAntiAlias;
+}
+
 bool IsEvenOddFillType(SkPathFillType fill) {
   return fill == SkPathFillType::kEvenOdd ||
          fill == SkPathFillType::kInverseEvenOdd;
@@ -870,7 +880,8 @@ class SkiaState {
                 CFX_Font* pFont,
                 const CFX_Matrix& matrix,
                 float font_size,
-                uint32_t color) {
+                uint32_t color,
+                const CFX_TextRenderOptions& options) {
     if (m_debugDisable)
       return false;
     Dump(__func__);
@@ -884,7 +895,7 @@ class SkiaState {
     int drawIndex = std::min(m_drawIndex, m_commands.count());
     if (Accumulator::kPath == m_type || drawIndex != m_commandIndex ||
         (Accumulator::kText == m_type &&
-         (FontChanged(pFont, matrix, font_size, scaleX, color) ||
+         (FontChanged(pFont, matrix, font_size, scaleX, color, options) ||
           hasRSX == m_rsxform.isEmpty()))) {
       Flush();
     }
@@ -904,6 +915,7 @@ class SkiaState {
       m_drawIndex = m_commandIndex;
       m_type = Accumulator::kText;
       m_pFont = pFont;
+      m_options = options;
     }
     if (!hasRSX && !m_rsxform.isEmpty())
       FlushText();
@@ -975,6 +987,7 @@ class SkiaState {
     font.setSkewX(tanf(m_italicAngle * FX_PI / 180.0));
     font.setSize(SkTAbs(m_fontSize));
     font.setSubpixel(true);
+    font.setEdging(GetFontEdgingType(m_options));
 
     SkCanvas* skCanvas = m_pDriver->SkiaCanvas();
     SkAutoCanvasRestore scoped_save_restore(skCanvas, /*doSave=*/true);
@@ -1026,6 +1039,7 @@ class SkiaState {
     m_pFont = nullptr;
     m_italicAngle = 0;
     m_isSubstFontBold = false;
+    m_options = CFX_TextRenderOptions();
   }
 
   bool IsEmpty() const { return !m_commands.count(); }
@@ -1183,14 +1197,16 @@ class SkiaState {
                    const CFX_Matrix& matrix,
                    float font_size,
                    float scaleX,
-                   uint32_t color) const {
+                   uint32_t color,
+                   const CFX_TextRenderOptions& options) const {
     CFX_TypeFace* typeface =
         pFont->GetFaceRec() ? pFont->GetDeviceCache() : nullptr;
     return typeface != m_pTypeFace.get() || MatrixChanged(&matrix) ||
            font_size != m_fontSize || scaleX != m_scaleX ||
            color != m_fillColor ||
            pFont->GetSubstFontItalicAngle() != m_italicAngle ||
-           pFont->IsSubstFontBold() != m_isSubstFontBold;
+           pFont->IsSubstFontBold() != m_isSubstFontBold ||
+           options != m_options;
   }
 
   bool MatrixChanged(const CFX_Matrix* pMatrix) const {
@@ -1514,6 +1530,7 @@ class SkiaState {
   CFX_GraphStateData m_clipState;
   CFX_GraphStateData m_drawState;
   CFX_Matrix m_clipMatrix;
+  CFX_TextRenderOptions m_options;
   UnownedPtr<CFX_SkiaDeviceDriver> const m_pDriver;
   sk_sp<CFX_TypeFace> m_pTypeFace;
   float m_fontSize = 0;
@@ -1677,14 +1694,16 @@ void CFX_SkiaDeviceDriver::PreMultiply() {
   m_pBitmap->PreMultiply();
 }
 
-bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
-                                          const TextCharPos* pCharPos,
-                                          CFX_Font* pFont,
-                                          const CFX_Matrix& mtObject2Device,
-                                          float font_size,
-                                          uint32_t color) {
+bool CFX_SkiaDeviceDriver::DrawDeviceText(
+    int nChars,
+    const TextCharPos* pCharPos,
+    CFX_Font* pFont,
+    const CFX_Matrix& mtObject2Device,
+    float font_size,
+    uint32_t color,
+    const CFX_TextRenderOptions& options) {
   if (m_pCache->DrawText(nChars, pCharPos, pFont, mtObject2Device, font_size,
-                         color)) {
+                         color, options)) {
     return true;
   }
   sk_sp<SkTypeface> typeface(SkSafeRef(pFont->GetDeviceCache()));
@@ -1699,6 +1718,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
   font.setSize(SkTAbs(font_size));
   font.setSubpixel(true);
   font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FX_PI / 180.0));
+  font.setEdging(GetFontEdgingType(options));
 
   SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
   SkScalar flip = font_size < 0 ? -1 : 1;
