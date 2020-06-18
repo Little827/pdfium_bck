@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1592505963 -0700\nnonce ALC2d185TZghhTj2nSh7PHOAAlLdebEcEgOxfl4YvDZWWbwRywYYZUZ8KFHyrmcD+zLnZhSGMh/K\n\n0000000000000000000000000000000000000000 2e5794880bdc91ae20e24d8742b2a69196b29474 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dclean-up-cfx-cssselector\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7rtmsACgkQqzYtYVpm\n/XvfXAgAzZDkL5Jfsmabs4nGBTIuFd6hV6cly3hs5gOITJYymaENbDXU7950qqbW\ns5h/4C0ihBJHqRIpyYrFtcymH+2xNYpE5+5pSfVT3CgWRQGOKYsZVCI1ShLrVaKH\nlTDyuK73HBDYM7ElFTcAjK0nDXLQ006xK4VQOtH/GxnLLKzPwSg7NySP8vNd6EYF\nLHfzmJtvjhwgvik0RcNZw4na2UNYc5RZc5z8ZAvnYAM8ckxWAuRKHpPofbNjm+26\nPQjHaIk2/nXRb9Qmh49ENM+rbO7dwwTDHOUtGZF9aqjowhfS8aoYRxaZO+H/P0U6\njvYWQXbn5Sir/zAb+0Nnx1k+RJ6mlw\u003d\u003d\n\u003dhYVB\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2dce2d5_e25364d0",
+        "filename": "core/fxcrt/css/cfx_cssselector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-18T22:23:41Z",
+      "side": 1,
+      "message": "follow-on maybe this should be a widestringview or span?  or do we count on len \u003d\u003d -1 to mean strlen()",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 50
+      },
+      "revId": "2e5794880bdc91ae20e24d8742b2a69196b29474",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
