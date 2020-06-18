@@ -23,6 +23,30 @@
       "revId": "2e5794880bdc91ae20e24d8742b2a69196b29474",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e70fa8_3eb111db",
+        "filename": "core/fxcrt/css/cfx_cssselector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T22:32:19Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/70733 in this chain.",
+      "parentUuid": "e2dce2d5_e25364d0",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 50
+      },
+      "revId": "2e5794880bdc91ae20e24d8742b2a69196b29474",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
