@@ -94,6 +94,30 @@
       "revId": "641417c173722a20ed19acfde3759dc88cfeec87",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937f0808_1bbfdb1e",
+        "filename": "testing/resources/pixel/xfa_specific/use_ahem/bug_997412.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T20:38:50Z",
+      "side": 1,
+      "message": "How does patch set 7 look?",
+      "parentUuid": "c6119363_ba7b0e93",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "641417c173722a20ed19acfde3759dc88cfeec87",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
