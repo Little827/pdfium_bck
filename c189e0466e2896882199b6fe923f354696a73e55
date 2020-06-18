@@ -96,6 +96,23 @@
     },
     {
       "key": {
+        "uuid": "cfff671d_8142ee80",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T17:53:29Z",
+      "side": 1,
+      "message": "nit: Remove this line to group lines 363-367 closer together.",
+      "revId": "c189e0466e2896882199b6fe923f354696a73e55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bf6ff40_2aa250be",
         "filename": "fpdfsdk/fpdf_view_c_api_test.c",
         "patchSetId": 5
