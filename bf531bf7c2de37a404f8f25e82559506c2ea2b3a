@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cd7d980_27e06e7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T23:58:54Z",
+      "side": 1,
+      "message": "- Embedder tests are generally cross platform. I think we can omit that part.\n- There are a variety of embedder tests. Can you mention FPDF_RenderPageBitmap() to be more specific?\n- tests, not texts.",
+      "revId": "bf531bf7c2de37a404f8f25e82559506c2ea2b3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d8d2a3b_85fdce8c",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T23:58:54Z",
+      "side": 1,
+      "message": "Does FPDFViewEmbedderTest.RenderHelloWorldWithFlags pass now for Skia / SkiaPaths?",
+      "revId": "bf531bf7c2de37a404f8f25e82559506c2ea2b3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
