@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "effe8d19_b08ed0cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T18:01:37Z",
+      "side": 1,
+      "message": "CXFA_LoaderContext is itself a struct that contains UnownedPtrs. I\u0027ll try to reword this.",
+      "parentUuid": "20d11595_e3746499",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "641417c173722a20ed19acfde3759dc88cfeec87",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d567d1f3_f83344ad",
         "filename": "testing/resources/pixel/xfa_specific/use_ahem/bug_997412.in",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2020-06-18T16:40:59Z",
       "side": 1,
       "message": "nit: feel free to write as \u003ctext\u003efoo\u003c/text\u003e on on line for these \"value\" fields (I think it read easier) and may avoid some whitespace in  \"   foo\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "641417c173722a20ed19acfde3759dc88cfeec87",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6119363_ba7b0e93",
+        "filename": "testing/resources/pixel/xfa_specific/use_ahem/bug_997412.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T18:01:37Z",
+      "side": 1,
+      "message": "The whilespace may actually matter for this test. Let me see how I can make that clearer.",
+      "parentUuid": "d567d1f3_f83344ad",
       "range": {
         "startLine": 21,
         "startChar": 0,
