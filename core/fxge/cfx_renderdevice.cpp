@@ -862,35 +862,10 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
                                       const CFX_Matrix& mtText2Device,
                                       uint32_t fill_color,
                                       const CFX_TextRenderOptions& options) {
-  if (GetDeviceType() != DeviceType::kDisplay) {
-    if (ShouldDrawDeviceText(pFont, options) &&
-        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
-                                        font_size, fill_color)) {
-      return true;
-    }
-    if (FXARGB_A(fill_color) < 255)
-      return false;
-  } else if (options.native_text) {
-    if (ShouldDrawDeviceText(pFont, options) &&
-        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
-                                        font_size, fill_color)) {
-      return true;
-    }
-  }
-  bool is_text_smooth = options.IsSmooth();
-  CFX_Matrix char2device = mtText2Device;
-  CFX_Matrix text2Device = mtText2Device;
-  char2device.Scale(font_size, -font_size);
-  if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
-      GetDeviceType() == DeviceType::kPrinter) {
-    if (pFont->GetFaceRec()) {
-      int nPathFlags = is_text_smooth ? 0 : FXFILL_NOPATHSMOOTH;
-      return DrawTextPath(nChars, pCharPos, pFont, font_size, mtText2Device,
-                          nullptr, nullptr, fill_color, 0, nullptr, nPathFlags);
-    }
-  }
   int anti_alias = FT_RENDER_MODE_MONO;
   bool bNormal = false;
+  const bool is_text_smooth = options.IsSmooth();
+  CFX_TextRenderOptions text_options(options);
   if (is_text_smooth) {
     if (GetDeviceType() == DeviceType::kDisplay && m_bpp > 1) {
       if (!CFX_GEModule::Get()->GetFontMgr()->FTLibrarySupportsHinting()) {
@@ -900,6 +875,12 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
         // one expires 10/7/19.  This makes LCD antialiasing very ugly, so we
         // instead fall back on NORMAL antialiasing.
         anti_alias = FT_RENDER_MODE_NORMAL;
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+        // Skia rendering follows strictly according to the options that
+        // |text_options| provides. Therefore we update |text_options| so that
+        // Skia falls back on normal antialiasing as well.
+        text_options.aliasing_type = CFX_TextRenderOptions::kAntiAliasing;
+#endif
       } else if ((m_RenderCaps & (FXRC_ALPHA_OUTPUT | FXRC_CMYK_OUTPUT))) {
         anti_alias = FT_RENDER_MODE_LCD;
         bNormal = true;
@@ -911,9 +892,36 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
       }
     }
   }
+
+  if (GetDeviceType() != DeviceType::kDisplay) {
+    if (ShouldDrawDeviceText(pFont, options) &&
+        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
+                                        font_size, fill_color, text_options)) {
+      return true;
+    }
+    if (FXARGB_A(fill_color) < 255)
+      return false;
+  } else if (options.native_text) {
+    if (ShouldDrawDeviceText(pFont, options) &&
+        m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
+                                        font_size, fill_color, text_options)) {
+      return true;
+    }
+  }
+
+  CFX_Matrix char2device = mtText2Device;
+  CFX_Matrix text2Device = mtText2Device;
+  char2device.Scale(font_size, -font_size);
+  if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
+      GetDeviceType() == DeviceType::kPrinter) {
+    if (pFont->GetFaceRec()) {
+      int nPathFlags = is_text_smooth ? 0 : FXFILL_NOPATHSMOOTH;
+      return DrawTextPath(nChars, pCharPos, pFont, font_size, mtText2Device,
+                          nullptr, nullptr, fill_color, 0, nullptr, nPathFlags);
+    }
+  }
   std::vector<TextGlyphPos> glyphs(nChars);
   CFX_Matrix deviceCtm = char2device;
-  CFX_TextRenderOptions native_text_options(options);
 
   for (size_t i = 0; i < glyphs.size(); ++i) {
     TextGlyphPos& glyph = glyphs[i];
@@ -933,11 +941,11 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
       new_matrix.Concat(deviceCtm);
       glyph.m_pGlyph = pFont->LoadGlyphBitmap(
           charpos.m_GlyphIndex, charpos.m_bFontStyle, new_matrix,
-          charpos.m_FontCharWidth, anti_alias, &native_text_options);
+          charpos.m_FontCharWidth, anti_alias, &text_options);
     } else {
       glyph.m_pGlyph = pFont->LoadGlyphBitmap(
           charpos.m_GlyphIndex, charpos.m_bFontStyle, deviceCtm,
-          charpos.m_FontCharWidth, anti_alias, &native_text_options);
+          charpos.m_FontCharWidth, anti_alias, &text_options);
     }
   }
   if (anti_alias < FT_RENDER_MODE_LCD && glyphs.size() > 1)
