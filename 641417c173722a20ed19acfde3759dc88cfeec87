@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1592442422 -0700\nnonce ALC2d19yNjLWeo8ooN2xdCEDcyYPECI0P9N69PA9dQViwTW2qycTaO2LoG6u3SJmrddSWb8Cv6u0\n\n0000000000000000000000000000000000000000 641417c173722a20ed19acfde3759dc88cfeec87 refs/for/refs/heads/master%notify\u003dNONE,m\u003dwin\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7qvjYACgkQqzYtYVpm\n/XvnKwf+KzkA3d6Geaej8ZGkoUhqX1Zmm6QDVKo2fcQy0yr03jp1FBRU29/V62kn\nqfOO65Q14xkpFeJJ9aYG5A2DGrmMvBDYkfGKpk2ECwBEdm4bSSSesSeSPz0S6VGs\ntwJzypl5loURaITi29qwtclR7MixSsNkbTPTA/eb36qHg01bA8biR/M7BRH5Tokl\nwnnHN4UFDf+ca9RuEM+29O/jPbIGfZCs1IrIaAcIbG0UIhiDYnNiX60qB58iKCSz\nqQj1nic8z+cnbqOdW9kh88UFyriBF6Hhb7zxLNWZRpyeP53NL5zCw9xZ9i/xh6jl\nggRrqU3CmUQ+JSegHNNubk4wqddrTA\u003d\u003d\n\u003dX8zQ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "20d11595_e3746499",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-18T16:16:52Z",
+      "side": 1,
+      "message": "nit: these are unique_ptr\u003c\u003e, and hence can\u0027t really be \"dangling\", right?  Is there a better way to describe them?  Or is some funny business going on where we delete the referees by other means?",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "641417c173722a20ed19acfde3759dc88cfeec87",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
