@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd6507a5_d2e30589",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T23:50:45Z",
+      "side": 1,
+      "message": "Since the Skia results for Lcd and NoSmoothText tests need to be added after this current CL lands, I uploaded another CL (https://pdfium-review.googlesource.com/70737/) to add these two embeddertests without Skia results, then this current CL can add the Skia expected results on top of that.",
+      "parentUuid": "5cdac132_bdfb6231",
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23ed5c16_dfef6795",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 12
@@ -89,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "ca2c2a47_027edb64",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T23:50:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c90f624_039f010a",
+      "range": {
+        "startLine": 872,
+        "startChar": 8,
+        "endLine": 877,
+        "endChar": 43
+      },
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5af100ac_56be0c9e",
         "filename": "core/fxge/renderdevicedriver_iface.h",
         "patchSetId": 12
@@ -106,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "b6907f7c_fa01cf45",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T23:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5af100ac_56be0c9e",
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "946714bd_9e5c38e2",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 12
@@ -120,6 +180,24 @@
       "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500a06d4_0dd5a3dd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T23:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946714bd_9e5c38e2",
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
