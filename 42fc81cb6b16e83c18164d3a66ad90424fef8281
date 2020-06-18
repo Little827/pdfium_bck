@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "4c90f624_039f010a",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T21:08:51Z",
+      "side": 1,
+      "message": "Yes, we should try to preserve this behavior. If someone is using an OS from 2018 that shipped without LCD anti-aliasing, that software did not magically change in 2019 when the patent expired.",
+      "parentUuid": "32eaac65_ea30e4f7",
+      "range": {
+        "startLine": 872,
+        "startChar": 8,
+        "endLine": 877,
+        "endChar": 43
+      },
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5af100ac_56be0c9e",
         "filename": "core/fxge/renderdevicedriver_iface.h",
         "patchSetId": 12
