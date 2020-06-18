@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "32d1482f_a2a092ed",
+        "filename": "core/fxge/cfx_renderoptions.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "916adfc6_541db512",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "535b2c6b_c9362a8d",
         "filename": "core/fxge/cfx_renderoptions.cpp",
         "patchSetId": 9
@@ -51,6 +69,24 @@
       "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09c90db_fde5f5a6",
+        "filename": "core/fxge/cfx_renderoptions.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "eae48450_16591f0d",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "f54c8048_e51ff54a",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b892f59_21e1ded9",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4985ff9e_7f61b922",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 9
@@ -109,6 +163,30 @@
       "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a92f9616_3fef8d1a",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "4985ff9e_7f61b922",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1e605d0e_6a6eb509",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "6616294d_ef5278ce",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b74bbff_6eb6ff72",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 9
@@ -158,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a767ff94_007ea71c",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "Created CFX_TextRenderOptions struct without sub-structure https://pdfium-review.googlesource.com/c/pdfium/+/70051.",
+      "parentUuid": "9b74bbff_6eb6ff72",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7371d2e2_bfef533a",
         "filename": "core/fxge/cfx_renderoptions.h",
         "patchSetId": 9
@@ -172,6 +298,24 @@
       "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "954b2ec6_3765e3b0",
+        "filename": "core/fxge/cfx_renderoptions.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "operator \"!\u003d\" is used in FontChanged() in fx_skia_device.cpp.",
+      "parentUuid": "7371d2e2_bfef533a",
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -195,6 +339,30 @@
       "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa26d71_153ab53c",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f0697fc_19c166f9",
+      "range": {
+        "startLine": 1107,
+        "startChar": 27,
+        "endLine": 1107,
+        "endChar": 35
+      },
+      "revId": "f9c4db63ff312a776c644dda2c65679726cb6165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

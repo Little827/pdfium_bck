@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23ed5c16_dfef6795",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "Make a local copy of |options| that\u0027s not const, so that we can adjust rendering options from this point on. \n|text_options| replaces the old |native_text_options| since it\u0027s no longer created just for updating the |native_text| flag.",
+      "range": {
+        "startLine": 868,
+        "startChar": 24,
+        "endLine": 868,
+        "endChar": 36
+      },
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32eaac65_ea30e4f7",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-18T20:33:20Z",
+      "side": 1,
+      "message": "@stig:\n\nThis part of the code was related to issue https://crbug.com/479400. The fix was done in https://codereview.chromium.org/1982263004 and there was no matching test added in this CL.\nAccording to the most recent code coverage report, this part of code has zero coverage.\n\nMoving forward, should we make Skia rendering also fall back on normal antialiasing for these corner cases which related to expired patents? Or should we keep Skia strictly follow the rendering options that we pass in? (Right now this CL makes Skia falls back to normal antialiasing, just like how AGG does. If we want to continue make Skia handles this corner case, will need a follow-up CL to add test cases for it and possibly move this part of the change out of this current CL.)",
+      "range": {
+        "startLine": 872,
+        "startChar": 8,
+        "endLine": 877,
+        "endChar": 43
+      },
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
