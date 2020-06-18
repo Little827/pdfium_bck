@@ -520,7 +520,7 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
                                line.ptLine.y + line.fLineAscent);
 
           pDevice->DrawPath(&pathSelBK, &mtUser2Device, nullptr, crSelBK, 0,
-                            FXFILL_WINDING);
+                            CFX_FillRenderOptions(FXFILL_WINDING));
         }
       }
 
