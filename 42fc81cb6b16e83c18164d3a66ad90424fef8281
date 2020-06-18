@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5cdac132_bdfb6231",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T20:59:47Z",
+      "side": 1,
+      "message": "Can we first shuffle the tests in another CL?",
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23ed5c16_dfef6795",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 12
@@ -42,6 +59,40 @@
         "endLine": 877,
         "endChar": 43
       },
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5af100ac_56be0c9e",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T20:59:47Z",
+      "side": 1,
+      "message": "Already forward declared?",
+      "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946714bd_9e5c38e2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-18T20:59:47Z",
+      "side": 1,
+      "message": "Can this be written this way? Then wouldn\u0027t that be much more obvious that the mapping is correct?\n\nif (text_options.aliasing_type \u003d\u003d kAliasing)\n  return SkFont::Edging::kAlias;\nif (text_options.aliasing_type \u003d\u003d kAntiAliasing)\n  return SkFont::Edging::kAntiAlias\nreturn SkFont::Edging::kSubpixelAntiAlias;",
       "revId": "42fc81cb6b16e83c18164d3a66ad90424fef8281",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
