@@ -24,16 +24,16 @@ CPDF_IconFit::~CPDF_IconFit() = default;
 
 CPDF_IconFit::ScaleMethod CPDF_IconFit::GetScaleMethod() const {
   if (!m_pDict)
-    return Always;
+    return kAlways;
 
   ByteString csSW = m_pDict->GetStringFor("SW", "A");
   if (csSW == "B")
-    return Bigger;
+    return kBigger;
   if (csSW == "S")
-    return Smaller;
+    return kSmaller;
   if (csSW == "N")
-    return Never;
-  return Always;
+    return kNever;
+  return kAlways;
 }
 
 bool CPDF_IconFit::IsProportionalScale() const {

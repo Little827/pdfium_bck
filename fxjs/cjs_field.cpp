@@ -880,22 +880,17 @@ CJS_Result CJS_Field::get_button_scale_when(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CPDF_IconFit IconFit = pFormControl->GetIconFit();
-  int ScaleM = IconFit.GetScaleMethod();
-  switch (ScaleM) {
-    case CPDF_IconFit::Always:
-      return CJS_Result::Success(
-          pRuntime->NewNumber(static_cast<int32_t>(CPDF_IconFit::Always)));
-    case CPDF_IconFit::Bigger:
-      return CJS_Result::Success(
-          pRuntime->NewNumber(static_cast<int32_t>(CPDF_IconFit::Bigger)));
-    case CPDF_IconFit::Never:
-      return CJS_Result::Success(
-          pRuntime->NewNumber(static_cast<int32_t>(CPDF_IconFit::Never)));
-    case CPDF_IconFit::Smaller:
-      return CJS_Result::Success(
-          pRuntime->NewNumber(static_cast<int32_t>(CPDF_IconFit::Smaller)));
+  CPDF_IconFit::ScaleMethod scale_method = IconFit.GetScaleMethod();
+  switch (scale_method) {
+    case CPDF_IconFit::kAlways:
+    case CPDF_IconFit::kBigger:
+    case CPDF_IconFit::kNever:
+    case CPDF_IconFit::kSmaller:
+      return CJS_Result::Success(pRuntime->NewNumber(scale_method));
+    default:
+      NOTREACHED();
+      return CJS_Result::Success();
   }
-  return CJS_Result::Success();
 }
 
 CJS_Result CJS_Field::set_button_scale_when(CJS_Runtime* pRuntime,
