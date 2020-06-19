@@ -1238,7 +1238,8 @@ void CXFA_TextLayout::RenderPath(CFX_RenderDevice* pDevice,
   graphState.m_LineWidth = 1;
   graphState.m_MiterLimit = 10;
   graphState.m_DashPhase = 0;
-  pDevice->DrawPath(&path, &mtDoc2Device, &graphState, 0, pPiece->dwColor, 0);
+  pDevice->DrawPath(&path, &mtDoc2Device, &graphState, 0, pPiece->dwColor,
+                    CFX_FillRenderOptions());
 }
 
 size_t CXFA_TextLayout::GetDisplayPos(const CXFA_TextPiece* pPiece,
