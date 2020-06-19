@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "defd7d4f_50c512bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-19T00:43:51Z",
+      "side": 1,
+      "message": "Did quite a big change in the commit message, since now RenderHelloWorldWithFlags is enabled not only on Linux, but also on other platforms.",
+      "parentUuid": "2cd7d980_27e06e7b",
+      "revId": "bf531bf7c2de37a404f8f25e82559506c2ea2b3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d8d2a3b_85fdce8c",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "bf531bf7c2de37a404f8f25e82559506c2ea2b3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab35c62_50a110db",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-19T00:43:51Z",
+      "side": 1,
+      "message": "Yes, FPDFViewEmbedderTest.RenderHelloWorldWithFlags now passes for Skia/SkiaPaths.\nIn the new patchset, I also enabled RenderHelloWorldWithFlags for all platforms.",
+      "parentUuid": "0d8d2a3b_85fdce8c",
+      "revId": "bf531bf7c2de37a404f8f25e82559506c2ea2b3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
