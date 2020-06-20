@@ -701,14 +701,15 @@ struct CPDF_PatchDrawer {
       D2.GetPoints(points.subspan(3, 4));
       C2.GetPointsReverse(points.subspan(6, 4));
       D1.GetPointsReverse(points.subspan(9, 4));
-      int fillFlags = FXFILL_WINDING | FXFILL_FULLCOVER;
+      CFX_FillRenderOptions fill_options(FXFILL_WINDING);
+      fill_options.fill_full_cover = true;
       if (bNoPathSmooth)
-        fillFlags |= FXFILL_NOPATHSMOOTH;
+        fill_options.is_path_smooth = false;
       pDevice->DrawPath(
           &path, nullptr, nullptr,
           ArgbEncode(alpha, div_colors[0].comp[0], div_colors[0].comp[1],
                      div_colors[0].comp[2]),
-          0, fillFlags);
+          0, fill_options);
     } else {
       if (d_bottom < COONCOLOR_THRESHOLD && d_top < COONCOLOR_THRESHOLD) {
         Coon_Bezier m1;

@@ -485,8 +485,9 @@ bool CPDF_ImageRenderer::StartBitmapAlpha() {
     path.Transform(m_ImageMatrix);
     uint32_t fill_color =
         ArgbEncode(0xff, m_BitmapAlpha, m_BitmapAlpha, m_BitmapAlpha);
-    m_pRenderStatus->GetRenderDevice()->DrawPath(&path, nullptr, nullptr,
-                                                 fill_color, 0, FXFILL_WINDING);
+    m_pRenderStatus->GetRenderDevice()->DrawPath(
+        &path, nullptr, nullptr, fill_color, 0,
+        CFX_FillRenderOptions::WindingOptions());
     return false;
   }
   RetainPtr<CFX_DIBBase> pAlphaMask;
