@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1592862858 -0700\nnonce ALC2d1+Jn3OEQx9s68/dd4bzmK2qMX6SOQ3O30I4VRNY8TtkTbf5NWh4uu94Q2KHMrNvNhIpFkcs\n\n0000000000000000000000000000000000000000 e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7xKIoACgkQqzYtYVpm\n/XuXEggApR4hSDZc51BbYLZy+1U7o90FECIEGb+2zfkxEqsz8uWtDG35CRh6KjA5\nR5Sj9hkwqu2HWA4PXZTk1zUHIjfJuNxQarHU8VmNc68WytWbslb4MsiMTs+M82qJ\n9OWLGJtrssGFC6pgb2jxQQ7o+HGF5z6rHDusyCtmt+VW2TVkr+wpjArWWu/7PP4e\n4SuD2VhUDPtJ2lsDgVL9nkAGVy1/2IJDgKK1Xg4PGAYs0UVdW6rk2Xh1MPqw43+8\n4xyuPqWEZW5eZWBa6tLLYOBii8o4ZQwEcevQMtxQzZerFLZj72BTommVepkPdU5m\n/bAP5BQ/QnH/tdypJPit5zjhGX0xdw\u003d\u003d\n\u003dsr4T\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "78aafb9a_d69b8f88",
+        "filename": "core/fxcrt/css/cfx_cssstyleselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-22T22:58:44Z",
+      "side": 1,
+      "message": "Note: Can\u0027t count in reverse like ints, because size_t is unsigned and never goes negative.",
+      "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
