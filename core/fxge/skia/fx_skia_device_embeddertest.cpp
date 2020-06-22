@@ -17,6 +17,8 @@
 
 namespace {
 
+static const CFX_FillRenderOptions kDefaultFillOptions;
+
 struct State {
   enum class Change { kNo, kYes };
   enum class Save { kNo, kYes };
@@ -60,10 +62,11 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
   if (state.m_save == State::Save::kYes)
     driver->SaveState();
   if (state.m_clip != State::Clip::kNo)
-    driver->SetClip_PathFill(&clipPath, &clipMatrix, 0);
+    driver->SetClip_PathFill(&clipPath, &clipMatrix, kDefaultFillOptions);
   if (state.m_graphic == State::Graphic::kPath) {
     driver->DrawPath(&path1, &matrix, &graphState, 0xFF112233, 0,
-                     FXFILL_WINDING, BlendMode::kNormal);
+                     CFX_FillRenderOptions::WindingOptions(),
+                     BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
     driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix,
                            fontSize, 0xFF445566);
@@ -79,14 +82,15 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
       fontSize = 2;
   }
   if (state.m_clip == State::Clip::kSame)
-    driver->SetClip_PathFill(&clipPath, &clipMatrix, 0);
+    driver->SetClip_PathFill(&clipPath, &clipMatrix, kDefaultFillOptions);
   else if (state.m_clip == State::Clip::kDifferentPath)
-    driver->SetClip_PathFill(&clipPath2, &clipMatrix, 0);
+    driver->SetClip_PathFill(&clipPath2, &clipMatrix, kDefaultFillOptions);
   else if (state.m_clip == State::Clip::kDifferentMatrix)
-    driver->SetClip_PathFill(&clipPath, &clipMatrix2, 0);
+    driver->SetClip_PathFill(&clipPath, &clipMatrix2, kDefaultFillOptions);
   if (state.m_graphic == State::Graphic::kPath) {
     driver->DrawPath(&path2, &matrix2, &graphState, 0xFF112233, 0,
-                     FXFILL_WINDING, BlendMode::kNormal);
+                     CFX_FillRenderOptions::WindingOptions(),
+                     BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
     driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix2,
                            fontSize, 0xFF445566);
@@ -101,18 +105,18 @@ void OutOfSequenceClipTest(CFX_SkiaDeviceDriver* driver, const State&) {
   clipPath.AppendRect(1, 0, 3, 1);
   CFX_Matrix clipMatrix;
   driver->SaveState();
-  driver->SetClip_PathFill(&clipPath, &clipMatrix, 0);
+  driver->SetClip_PathFill(&clipPath, &clipMatrix, kDefaultFillOptions);
   driver->RestoreState(true);
   driver->SaveState();
-  driver->SetClip_PathFill(&clipPath, &clipMatrix, 0);
+  driver->SetClip_PathFill(&clipPath, &clipMatrix, kDefaultFillOptions);
   driver->RestoreState(false);
   driver->RestoreState(false);
 
   driver->SaveState();
   driver->SaveState();
-  driver->SetClip_PathFill(&clipPath, &clipMatrix, 0);
+  driver->SetClip_PathFill(&clipPath, &clipMatrix, kDefaultFillOptions);
   driver->RestoreState(true);
-  driver->SetClip_PathFill(&clipPath, &clipMatrix, 0);
+  driver->SetClip_PathFill(&clipPath, &clipMatrix, kDefaultFillOptions);
   driver->RestoreState(false);
   driver->RestoreState(false);
 }
