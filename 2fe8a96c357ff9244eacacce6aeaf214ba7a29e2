@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "db8ef0c6_1a3a37f0",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-22T19:07:10Z",
+      "side": 1,
+      "message": "Yes, that would make it consistent with all the methods below. Done.",
+      "parentUuid": "c0e985fc_da0e957c",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 46
+      },
+      "revId": "2fe8a96c357ff9244eacacce6aeaf214ba7a29e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31290472_9575e3a9",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 3
@@ -46,6 +70,30 @@
       "revId": "2fe8a96c357ff9244eacacce6aeaf214ba7a29e2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431f1246_d5d521b8",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-22T19:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31290472_9575e3a9",
+      "range": {
+        "startLine": 1556,
+        "startChar": 2,
+        "endLine": 1556,
+        "endChar": 16
+      },
+      "revId": "2fe8a96c357ff9244eacacce6aeaf214ba7a29e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
