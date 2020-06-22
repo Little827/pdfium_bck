@@ -12,6 +12,7 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+//#include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/fx_dib.h"
 
 class CFX_DIBBase;
@@ -24,6 +25,7 @@ class CFX_PathData;
 class CPDF_ShadingPattern;
 class PauseIndicatorIface;
 class TextCharPos;
+struct CFX_FillRenderOptions;
 struct FX_RECT;
 
 enum class DeviceType : bool {
@@ -46,7 +48,7 @@ class RenderDeviceDriverIface {
   virtual void SetBaseClip(const FX_RECT& rect);
   virtual bool SetClip_PathFill(const CFX_PathData* pPathData,
                                 const CFX_Matrix* pObject2Device,
-                                int fill_mode) = 0;
+                                const CFX_FillRenderOptions& fill_options) = 0;
   virtual bool SetClip_PathStroke(const CFX_PathData* pPathData,
                                   const CFX_Matrix* pObject2Device,
                                   const CFX_GraphStateData* pGraphState);
@@ -55,7 +57,7 @@ class RenderDeviceDriverIface {
                         const CFX_GraphStateData* pGraphState,
                         uint32_t fill_color,
                         uint32_t stroke_color,
-                        int fill_mode,
+                        const CFX_FillRenderOptions& fill_options,
                         BlendMode blend_type) = 0;
   virtual bool SetPixel(int x, int y, uint32_t color);
   virtual bool FillRectWithBlend(const FX_RECT& rect,
