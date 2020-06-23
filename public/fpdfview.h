@@ -626,6 +626,15 @@ FPDF_GetDocPermissions(FPDF_DOCUMENT document);
 FPDF_EXPORT int FPDF_CALLCONV
 FPDF_GetSecurityHandlerRevision(FPDF_DOCUMENT document);
 
+// Experimental API.
+// Function: FPDF_GetSignatureCount
+//          Get total number of signatures in the document.
+// Parameters:
+//          document    -   Handle to document. Returned by FPDF_LoadDocument.
+// Return value:
+//          Total number of signatures in the document.
+FPDF_EXPORT int FPDF_CALLCONV FPDF_GetSignatureCount(FPDF_DOCUMENT document);
+
 // Function: FPDF_GetPageCount
 //          Get total number of pages in the document.
 // Parameters:

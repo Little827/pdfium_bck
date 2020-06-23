@@ -482,6 +482,16 @@ TEST_F(FPDFDocEmbedderTest, FindBookmarks_bug420) {
   EXPECT_EQ(nullptr, FPDFBookmark_Find(document(), title.get()));
 }
 
+TEST_F(FPDFDocEmbedderTest, GetSignatureCount) {
+  EXPECT_TRUE(OpenDocument("two_signatures.pdf"));
+  EXPECT_EQ(2, FPDF_GetSignatureCount(document()));
+}
+
+TEST_F(FPDFDocEmbedderTest, GetSignatureCountZero) {
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+  EXPECT_EQ(0, FPDF_GetSignatureCount(document()));
+}
+
 TEST_F(FPDFDocEmbedderTest, DeletePage) {
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   EXPECT_EQ(1, FPDF_GetPageCount(document()));
