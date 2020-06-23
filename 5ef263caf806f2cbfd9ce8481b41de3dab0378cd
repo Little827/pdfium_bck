@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2623c7d_1ef75de7",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-06-23T00:18:30Z",
+      "side": 1,
+      "message": "If you don\u0027t think we need the assurance of covering a new case correctly here, you can get rid of this switch statement altogether.",
+      "revId": "5ef263caf806f2cbfd9ce8481b41de3dab0378cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
