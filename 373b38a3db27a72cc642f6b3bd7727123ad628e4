@@ -16,6 +16,24 @@
       "revId": "373b38a3db27a72cc642f6b3bd7727123ad628e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ede26cb_5e1ddc6c",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-23T22:19:58Z",
+      "side": 1,
+      "message": "|anti_alias|, |bNormal| used to only affect AGG rendering before this CL.\n\nWhen Skia/SkiaPaths is enabled, we only have to consider two cases: conditions at line 871 and line 889, and line 889 is the most generic case here.\n-------------------------------------------------------------------------------------------\nCondition line 889: \nWith or without FPDF_LCD_TEXT flag, as long as text is smooth, AGG sets anti aliasing type to LCD by default. And the FPDF_LCD_TEXT only controls variable |bNormal|, which toggles the parameter |bNormal| for DrawNormalTextHelper() and affect how each pixel is calculated when anti-aliasing type is LCD.\n\nHowever, for Skia/Skiapaths, we only have 1 SkFont::Edging type for LCD (unlike AGG has two ways to calculate each pixel when anti-aliasing is LCD). By default, LCD optimization is disabled, and FPDF_LCD_TEXT is meant to strictly control whether anti-aliasing type is LCD. Therefore, we shouldn\u0027t update |text_options| according to AGG\u0027s |anti_alias|\u0027s value.\n\n-------------------------------------------------------------------------------------------\nSpecial condition line 871: This CL currently force turn off LCD optimization just like AGG, to get a better rendering result.",
+      "parentUuid": "346e39b6_ddf81896",
+      "revId": "373b38a3db27a72cc642f6b3bd7727123ad628e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
