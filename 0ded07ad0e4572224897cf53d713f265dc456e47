@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72c35eaa_89f81bf8",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-23T20:57:59Z",
+      "side": 1,
+      "message": "I think the one on line 1246 is sufficient?",
+      "revId": "0ded07ad0e4572224897cf53d713f265dc456e47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
