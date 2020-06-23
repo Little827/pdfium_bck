@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "346e39b6_ddf81896",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-23T16:49:25Z",
+      "side": 1,
+      "message": "So we talked about this block (line 871-883) previously. Looking at the surrounding code, doesn\u0027t line 885, 888, and 890 also override |anti_alias|, just like line 877? For those cases, should we also set |text_options.aliasing_type|?",
+      "revId": "373b38a3db27a72cc642f6b3bd7727123ad628e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
