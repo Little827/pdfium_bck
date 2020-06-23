@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bca88e96_7e446529",
+        "filename": "core/fxcrt/css/cfx_cssstyleselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-23T19:43:42Z",
+      "side": 1,
+      "message": "nit: can we write just \n  if (pListCountValues()) {",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 35
+      },
+      "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78aafb9a_d69b8f88",
         "filename": "core/fxcrt/css/cfx_cssstyleselector.cpp",
         "patchSetId": 1
@@ -17,6 +40,47 @@
       "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad888be1_90eee9de",
+        "filename": "core/fxcrt/css/cfx_cssstyleselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-23T19:43:42Z",
+      "side": 1,
+      "message": "Alternative pattern is to access one before the index.\n\n for (size_t i \u003d count; i !\u003d 0; --i) {\n   foo \u003d getValue(count - 1);",
+      "parentUuid": "78aafb9a_d69b8f88",
+      "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1169c117_c00b713d",
+        "filename": "xfa/fxfa/cxfa_textparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-23T19:43:42Z",
+      "side": 1,
+      "message": "nit: or just if (count) ...",
+      "range": {
+        "startLine": 353,
+        "startChar": 8,
+        "endLine": 353,
+        "endChar": 17
+      },
+      "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
