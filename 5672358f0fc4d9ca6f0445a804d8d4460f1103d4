@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bce54f5_9139c241",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-23T16:32:55Z",
+      "side": 0,
+      "message": "I would suggest keeping this comment in the new code. Since this CL and the next CL in the chain may land at different times, it would be good for the code to make sense with every step along the way.",
+      "revId": "5672358f0fc4d9ca6f0445a804d8d4460f1103d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
