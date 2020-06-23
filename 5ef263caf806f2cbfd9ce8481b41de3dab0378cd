@@ -16,6 +16,24 @@
       "revId": "5ef263caf806f2cbfd9ce8481b41de3dab0378cd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6829e92_60e594f6",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-23T00:51:43Z",
+      "side": 1,
+      "message": "I like the compile-time check to make sure all the values are handled.\n\nFun fact: Clang for x86-64 inserts a ud2 assembly instruction at the end of this method. However, GCC does not, and instead complains about the lack of a return statement. I\u0027d like for PDFium to build with GCC (there\u0027s an open bug about adding a bot) so I\u0027ve put the return at the end back, with a NOTREACHED().",
+      "parentUuid": "f2623c7d_1ef75de7",
+      "revId": "5ef263caf806f2cbfd9ce8481b41de3dab0378cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
