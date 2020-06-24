@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1592989123 -0700\nnonce ALC2d1/QESI84exoZlzKo7hxOmGXA2/jyMN2LgX3iFlCnK1mkTfhx3CmJzGyP11VsGxVg7BOP3Hr\n\n0000000000000000000000000000000000000000 6ab1f20ff813102dc207904bb2f4eb8941ba45dd refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7zFcMACgkQqzYtYVpm\n/XvOLAf9FlSK+oZnIErIW7od0l7DsBbMalpAUcQudFSsisNdbTi5c57ZD7QBdLnX\nTCS+z2v5juljfwj+J+2wdeEPFWAfqrdPeNghUyOWsFpsezOACgiyeY4/qovFwR/l\nVqZwmJ5DmpL6vc2FAv3a2NlPHlevIfmQ8SwYEh6i8VjLKt11pfqrWup8Vv9XMo7o\nUsvhnjbbrdouO3Q+WmXjM7n/GkzU3Onsna1dK+2ZjruKOW4trC0VE2oVM0kJ1okC\n8XX4UTvmtNjV2ao6JTuc0Bzm2F0S+WhBa+9LqCoqp+HbQZL9ks5SurwDx5IcZMfP\nrj93sEagifByjuKb+b5o86tQZ/QdFA\u003d\u003d\n\u003df6hz\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "90db2a8f_d809da4f",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T16:31:55Z",
+      "side": 1,
+      "message": "These are actually strings, per spec. Maybe in the future, we should make sure these are actually strings, and not names or whatever else.",
+      "revId": "6ab1f20ff813102dc207904bb2f4eb8941ba45dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
