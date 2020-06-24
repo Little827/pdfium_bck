@@ -44,6 +44,7 @@
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
+#include "public/fpdf_signature.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
 
@@ -292,6 +293,39 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageCount(FPDF_DOCUMENT document) {
 
   auto* pExtension = pDoc->GetExtension();
   return pExtension ? pExtension->GetPageCount() : pDoc->GetPageCount();
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDF_GetSignatureCount(FPDF_DOCUMENT document) {
+  auto* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return -1;
+
+  CPDF_Dictionary* pRoot = pDoc->GetRoot();
+  if (!pRoot)
+    return 0;
+
+  const CPDF_Dictionary* pAcroForm = pRoot->GetDictFor("AcroForm");
+  if (!pAcroForm)
+    return 0;
+
+  const CPDF_Array* pFields = pAcroForm->GetArrayFor("Fields");
+  if (!pFields)
+    return 0;
+
+  int nSignatureCount = 0;
+  for (size_t nField = 0; nField < pFields->size(); ++nField) {
+    const CPDF_Object* pField = pFields->GetObjectAt(nField);
+    const CPDF_Dictionary* pFieldDict = pField->GetDict();
+    if (!pFieldDict)
+      continue;
+
+    if (pFieldDict->GetStringFor("FT") != "Sig")
+      continue;
+
+    ++nSignatureCount;
+  }
+
+  return nSignatureCount;
 }
 
 FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,

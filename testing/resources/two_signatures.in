@@ -1,0 +1,156 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /MediaBox [0 0 200 300]
+  /Count 1
+  /Kids [3 0 R]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 4 0 R
+>>
+endobj
+{{object 4 0}} <<
+  {{streamlen}}
+>>
+stream
+q
+0 0 0 rg
+0 290 10 10 re B*
+10 150 50 30 re B*
+0 0 1 rg
+190 290 10 10 re B*
+70 232 50 30 re B*
+0 1 0 rg
+190 0 10 10 re B*
+130 150 50 30 re B*
+1 0 0 rg
+0 0 10 10 re B*
+70 67 50 30 re B*
+Q
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
+
+%% 0 -> 10, 30 -> 40
+{{object 5 0}} <<
+  /Contents <308006092A864886F70D010702A0803080020101>
+  /Type/Sig
+  /SubFilter/ETSI.CAdES.detached
+  /M (D:20200624093114+02'00')
+  /ByteRange [ 0 10 30 10 ]
+  /Filter/Adobe.PPKMS
+>>
+endobj
+
+{{object 6 0}} <<
+  /Type/XObject
+  /Subtype/Form
+  /BBox[0 0 0 0]
+  /Length 0
+>>
+stream
+
+endstream
+endobj
+
+{{object 7 0}} <<
+  /Type/Annot
+  /Subtype/Widget
+  /F 132
+  /Rect[0 0 0 0]
+  /FT/Sig
+  /P 3 0 R
+  /T(Signature1)
+  /V 5 0 R
+  /DV 5 0 R
+  /AP<<
+  /N 6 0 R
+>>
+>>
+endobj
+
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 4 0 R
+  /Annots[7 0 R]
+>>
+endobj
+
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm<</Fields[7 0 R]/SigFlags 3>>
+>>
+endobj
+
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
+
+%% 0 -> 40, 50 -> 60
+{{object 8 0}} <<
+  /Contents <308006092A864886F70D010702A080308002010131>
+  /Type/Sig
+  /SubFilter/ETSI.CAdES.detached
+  /M (D:20200624093118+02'00')
+  /ByteRange [ 0 40 50 10 ]
+>>
+endobj
+
+{{object 9 0}} <<
+  /Type/XObject
+  /Subtype/Form
+  /BBox[0 0 0 0]
+  /Length 0
+>>
+stream
+
+endstream
+endobj
+
+{{object 10 0}} <<
+  /Type/Annot
+  /Subtype/Widget
+  /F 132
+  /Rect[0 0 0 0]
+  /FT/Sig
+  /P 3 0 R
+  /T(Signature2)
+  /V 8 0 R
+  /DV 8 0 R
+  /AP<</N 9 0 R>>
+>>
+endobj
+
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 4 0 R
+  /Annots[7 0 R 10 0 R]
+>>
+endobj
+
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm<</Fields[7 0 R 10 0 R]/SigFlags 3>>
+>>
+endobj
+
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF

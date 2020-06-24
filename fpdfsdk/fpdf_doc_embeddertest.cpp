@@ -12,6 +12,7 @@
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdf_edit.h"
+#include "public/fpdf_signature.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/fx_string_testhelpers.h"
@@ -480,6 +481,19 @@ TEST_F(FPDFDocEmbedderTest, FindBookmarks_bug420) {
   // Try to find a title.
   ScopedFPDFWideString title = GetFPDFWideString(L"anything");
   EXPECT_EQ(nullptr, FPDFBookmark_Find(document(), title.get()));
+}
+
+TEST_F(FPDFDocEmbedderTest, GetSignatureCount) {
+  EXPECT_TRUE(OpenDocument("two_signatures.pdf"));
+  EXPECT_EQ(2, FPDF_GetSignatureCount(document()));
+}
+
+TEST_F(FPDFDocEmbedderTest, GetSignatureCountZero) {
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+  EXPECT_EQ(0, FPDF_GetSignatureCount(document()));
+
+  // Provide no document.
+  EXPECT_EQ(-1, FPDF_GetSignatureCount(nullptr));
 }
 
 TEST_F(FPDFDocEmbedderTest, DeletePage) {
