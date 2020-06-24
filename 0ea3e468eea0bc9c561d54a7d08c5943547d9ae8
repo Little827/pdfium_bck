@@ -23,6 +23,30 @@
       "revId": "0ea3e468eea0bc9c561d54a7d08c5943547d9ae8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb341f99_57708550",
+        "filename": "core/fxcrt/css/cfx_cssstylesheet_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T07:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5458162_c29bbe10",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "0ea3e468eea0bc9c561d54a7d08c5943547d9ae8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
