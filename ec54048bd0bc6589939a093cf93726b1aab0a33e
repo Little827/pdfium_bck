@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aebe30d_814369ed",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "I would similarly move these into its own test file.",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc46b5e_ffc078af",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "And separate fpdfsdk/fpdf_signature.cpp.",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e4d7b6_657f54a5",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "BTW, I\u0027m hoping to add GetNameFor() later this week. Then we can switch to that here.",
+      "range": {
+        "startLine": 322,
+        "startChar": 20,
+        "endLine": 322,
+        "endChar": 32
+      },
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6863a744_5c44e4eb",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "And start a new section for the new file.",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30899812_aa4bc38e",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "This comment is a bit mysterious. Care to elaborate?",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e2ecc49_788f7301",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "Does this section require the objects to be ordered as 5, 6, 7, 3, 1?",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7a1b83_080b9f64",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "I would put /Type, /Filter, and /SubFilter first, and then just sort the rest.",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e72d44_76e99974",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "Space these out like the top portion of the file.",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ebdec3_98218f7c",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T08:46:35Z",
+      "side": 1,
+      "message": "[0 10 30 10]",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
