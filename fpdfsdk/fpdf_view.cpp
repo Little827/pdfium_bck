@@ -44,6 +44,7 @@
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
+#include "public/fpdf_signature.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
 
