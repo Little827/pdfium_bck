@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c16be976_37d16357",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aebe30d_814369ed",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc46b5e_ffc078af",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150ce9a6_863fe5c2",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc46b5e_ffc078af",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d53df0d5_1af75dc4",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3e4d7b6_657f54a5",
+      "range": {
+        "startLine": 322,
+        "startChar": 20,
+        "endLine": 322,
+        "endChar": 32
+      },
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6863a744_5c44e4eb",
         "filename": "fpdfsdk/fpdf_view_c_api_test.c",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e320226a_7d1f01c9",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6863a744_5c44e4eb",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "f1652ea3_60e3bfd6",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "What I meant to point out is that these are start offset + length pairs, not start offset + end offset ones. It\u0027s in the spec, but it can confusing if you just read the .in file. I\u0027ve updated the comment to be more explicit.",
+      "parentUuid": "30899812_aa4bc38e",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e2ecc49_788f7301",
         "filename": "testing/resources/two_signatures.in",
         "patchSetId": 2
@@ -107,6 +203,24 @@
       "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "080dc8a6_6f9ac913",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Not really. I just added the new objects, then went up the parents chain and updated the old objects to refer to the new ones. Sorted now.",
+      "parentUuid": "8e2ecc49_788f7301",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "7706a239_6ba460f8",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Done for both signature objects.",
+      "parentUuid": "1a7a1b83_080b9f64",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59e72d44_76e99974",
         "filename": "testing/resources/two_signatures.in",
         "patchSetId": 2
@@ -141,6 +273,24 @@
       "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87909f04_3b35420f",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Done for both.",
+      "parentUuid": "59e72d44_76e99974",
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +314,30 @@
       "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3f1b24_aa24bf90",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-24T09:25:46Z",
+      "side": 1,
+      "message": "Done for both.",
+      "parentUuid": "e8ebdec3_98218f7c",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
