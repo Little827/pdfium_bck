@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "e80a4ddd_714004fb",
+        "filename": "core/fxcrt/css/cfx_cssstyleselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T07:10:40Z",
+      "side": 1,
+      "message": "Going to become empty() in the next CL.",
+      "parentUuid": "bca88e96_7e446529",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 35
+      },
+      "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78aafb9a_d69b8f88",
         "filename": "core/fxcrt/css/cfx_cssstyleselector.cpp",
         "patchSetId": 1
@@ -61,6 +85,24 @@
     },
     {
       "key": {
+        "uuid": "ba7d5974_fda0f9bc",
+        "filename": "core/fxcrt/css/cfx_cssstyleselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T07:10:40Z",
+      "side": 1,
+      "message": "I\u0027ll remember that for next time I need it. This is going to become rbegin() in the next CL.",
+      "parentUuid": "ad888be1_90eee9de",
+      "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1169c117_c00b713d",
         "filename": "xfa/fxfa/cxfa_textparser.cpp",
         "patchSetId": 1
@@ -72,6 +114,30 @@
       "writtenOn": "2020-06-23T19:43:42Z",
       "side": 1,
       "message": "nit: or just if (count) ...",
+      "range": {
+        "startLine": 353,
+        "startChar": 8,
+        "endLine": 353,
+        "endChar": 17
+      },
+      "revId": "e323f75f4c79e437da84d9b2c56cfaf3e5bae2e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aaa2846_219dce21",
+        "filename": "xfa/fxfa/cxfa_textparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-24T07:10:40Z",
+      "side": 1,
+      "message": "Leaving it for now. Looks like another std::vector wrapper that can go away in the near future.",
+      "parentUuid": "1169c117_c00b713d",
       "range": {
         "startLine": 353,
         "startChar": 8,
