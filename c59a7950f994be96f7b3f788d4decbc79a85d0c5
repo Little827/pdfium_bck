@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49070afc_4b912e64",
+        "filename": "core/fxcrt/css/cfx_csscomputedstyle.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-24T15:58:26Z",
+      "side": 1,
+      "message": "follow-on: Looks like CFX_CSSLength has a no-arg ctor that leaves everything uninitialized. Should we initialize CFX_CSSLength in its header to (normal, 0.0f) and avoid some of these?  Or some other combination?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "c59a7950f994be96f7b3f788d4decbc79a85d0c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
