@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "756fcb40_b090b94a",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "BTW, I would recommend avoiding Hungarian notation in new code. Just go with Chromium style.",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec90dae7_4c067999",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "Still needed?",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e39b03_716ebf4f",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "FPDF_LoadDocument()",
+      "range": {
+        "startLine": 19,
+        "startChar": 60,
+        "endLine": 19,
+        "endChar": 77
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084d43fa_280edf3f",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "It\u0027ll be helpful to add a comment here and on line 103 to explain why there are repeated objects.",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67afb2b7_28048c33",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "Expand this out as well?\n\n/AcroForm \u003c\u003c\n  /Fields [7 0 R]\n  /SigFlags 3\n\u003e\u003e",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7680a70a_0843a691",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "Can the objects in this section be grouped together?",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2822cb6a_89b5922c",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "space before",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e1edeb_8d36b021",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T08:46:53Z",
+      "side": 1,
+      "message": "More spacing here and below.",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
