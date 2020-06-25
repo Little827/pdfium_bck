@@ -31,6 +31,7 @@
 #include "fpdfsdk/pwl/cpwl_edit_impl.h"
 #include "fpdfsdk/pwl/cpwl_icon.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
+#include "third_party/base/numerics/math_constants.h"
 #include "third_party/base/stl_util.h"
 
 namespace {
@@ -274,16 +275,17 @@ ByteString GetAP_Square(const CFX_FloatRect& crBBox) {
 ByteString GetAP_Star(const CFX_FloatRect& crBBox) {
   std::ostringstream csAP;
 
-  float fRadius = (crBBox.top - crBBox.bottom) / (1 + cosf(FX_PI / 5.0f));
+  float fRadius =
+      (crBBox.top - crBBox.bottom) / (1 + cosf(pdfium::base::kPiFloat / 5));
   CFX_PointF ptCenter = CFX_PointF((crBBox.left + crBBox.right) / 2.0f,
                                    (crBBox.top + crBBox.bottom) / 2.0f);
 
   CFX_PointF points[5];
-  float fAngle = FX_PI / 10.0f;
+  float fAngle = pdfium::base::kPiFloat / 10;
   for (auto& point : points) {
     point =
         ptCenter + CFX_PointF(fRadius * cosf(fAngle), fRadius * sinf(fAngle));
-    fAngle += FX_PI * 2 / 5.0f;
+    fAngle += pdfium::base::kPiFloat * 2 / 5.0f;
   }
 
   csAP << points[0].x << " " << points[0].y << " " << kMoveToOperator << "\n";
@@ -466,7 +468,8 @@ ByteString GetCircleBorderAppStream(const CFX_FloatRect& rect,
         if (sColor.GetLength() > 0) {
           AutoClosedQCommand q2(&sAppStream);
           sAppStream << fHalfWidth << " " << kSetLineWidthOperator << "\n"
-                     << sColor << GetAP_HalfCircle(rect_by_75, FX_PI / 4.0f)
+                     << sColor
+                     << GetAP_HalfCircle(rect_by_75, pdfium::base::kPiFloat / 4)
                      << " " << kStrokeOperator << "\n";
         }
 
@@ -474,7 +477,9 @@ ByteString GetCircleBorderAppStream(const CFX_FloatRect& rect,
         if (sColor.GetLength() > 0) {
           AutoClosedQCommand q2(&sAppStream);
           sAppStream << fHalfWidth << " " << kSetLineWidthOperator << "\n"
-                     << sColor << GetAP_HalfCircle(rect_by_75, FX_PI * 5 / 4.0f)
+                     << sColor
+                     << GetAP_HalfCircle(rect_by_75,
+                                         pdfium::base::kPiFloat * 5 / 4.0f)
                      << " " << kStrokeOperator << "\n";
         }
       } break;
@@ -491,7 +496,8 @@ ByteString GetCircleBorderAppStream(const CFX_FloatRect& rect,
         if (sColor.GetLength() > 0) {
           AutoClosedQCommand q2(&sAppStream);
           sAppStream << fHalfWidth << " " << kSetLineWidthOperator << "\n"
-                     << sColor << GetAP_HalfCircle(rect_by_75, FX_PI / 4.0f)
+                     << sColor
+                     << GetAP_HalfCircle(rect_by_75, pdfium::base::kPiFloat / 4)
                      << " " << kStrokeOperator << "\n";
         }
 
@@ -499,7 +505,9 @@ ByteString GetCircleBorderAppStream(const CFX_FloatRect& rect,
         if (sColor.GetLength() > 0) {
           AutoClosedQCommand q2(&sAppStream);
           sAppStream << fHalfWidth << " " << kSetLineWidthOperator << "\n"
-                     << sColor << GetAP_HalfCircle(rect_by_75, FX_PI * 5 / 4.0f)
+                     << sColor
+                     << GetAP_HalfCircle(rect_by_75,
+                                         pdfium::base::kPiFloat * 5 / 4.0f)
                      << " " << kStrokeOperator << "\n";
         }
       } break;

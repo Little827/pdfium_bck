@@ -20,6 +20,7 @@
 #include "core/fpdftext/cpdf_textpage.h"
 #include "core/fpdftext/cpdf_textpagefind.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
+#include "third_party/base/numerics/math_constants.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/stl_util.h"
 
@@ -204,8 +205,7 @@ FPDF_EXPORT float FPDF_CALLCONV FPDFText_GetCharAngle(FPDF_TEXTPAGE text_page,
   // Calculate the angle of the vector
   float angle = atan2f(charinfo.m_Matrix.c, charinfo.m_Matrix.a);
   if (angle < 0)
-    angle = 2 * FX_PI + angle;
-
+    angle = 2 * pdfium::base::kPiFloat + angle;
   return angle;
 }
 

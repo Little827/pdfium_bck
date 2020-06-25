@@ -11,6 +11,7 @@
 
 #include "core/fxge/render_defines.h"
 #include "fxjs/xfa/cjx_node.h"
+#include "third_party/base/numerics/math_constants.h"
 #include "xfa/fxfa/parser/cxfa_corner.h"
 #include "xfa/fxfa/parser/cxfa_stroke.h"
 
@@ -116,7 +117,7 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
     bool bInverted = corner1->IsInverted();
     bool bRound = corner1->GetJoinType() == XFA_AttributeValue::Round;
     if (bRound) {
-      sy = FX_PI / 2;
+      sy = pdfium::base::kPiFloat / 2;
     }
     switch (i) {
       case 0:
@@ -127,7 +128,7 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
         nx = -1;
         ny = 0;
         if (bRound) {
-          sx = bInverted ? FX_PI / 2 : FX_PI;
+          sx = bInverted ? pdfium::base::kPiFloat / 2 : pdfium::base::kPiFloat;
         } else {
           sx = 1;
           sy = 0;
@@ -141,7 +142,8 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
         nx = 0;
         ny = -1;
         if (bRound) {
-          sx = bInverted ? FX_PI : FX_PI * 3 / 2;
+          sx = bInverted ? pdfium::base::kPiFloat
+                         : pdfium::base::kPiFloat * 3 / 2.0f;
         } else {
           sx = 0;
           sy = 1;
@@ -155,7 +157,7 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
         nx = 1;
         ny = 0;
         if (bRound) {
-          sx = bInverted ? FX_PI * 3 / 2 : 0;
+          sx = bInverted ? pdfium::base::kPiFloat * 3 / 2.0f : 0;
         } else {
           sx = -1;
           sy = 0;
@@ -169,7 +171,7 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
         nx = 0;
         ny = 1;
         if (bRound) {
-          sx = bInverted ? 0 : FX_PI / 2;
+          sx = bInverted ? 0 : pdfium::base::kPiFloat / 2;
         } else {
           sx = 0;
           sy = -1;
@@ -181,7 +183,7 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
 
     if (bRound) {
       if (fRadius1 < 0)
-        sx -= FX_PI;
+        sx -= pdfium::base::kPiFloat;
       if (bInverted)
         sy *= -1;
 
@@ -501,7 +503,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
   CFX_PointF cp1;
   CFX_PointF cp2;
   if (bRound)
-    sy = FX_PI / 2;
+    sy = pdfium::base::kPiFloat / 2;
 
   switch (nIndex) {
     case 0:
@@ -522,7 +524,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
       nx = -1;
       ny = 0;
       if (bRound) {
-        sx = bInverted ? FX_PI / 2 : FX_PI;
+        sx = bInverted ? pdfium::base::kPiFloat / 2 : pdfium::base::kPiFloat;
       } else {
         sx = 1;
         sy = 0;
@@ -546,7 +548,8 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
       nx = 0;
       ny = -1;
       if (bRound) {
-        sx = bInverted ? FX_PI : FX_PI * 3 / 2;
+        sx = bInverted ? pdfium::base::kPiFloat
+                       : pdfium::base::kPiFloat * 3 / 2.0f;
       } else {
         sx = 0;
         sy = 1;
@@ -570,7 +573,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
       nx = 1;
       ny = 0;
       if (bRound) {
-        sx = bInverted ? FX_PI * 3 / 2 : 0;
+        sx = bInverted ? pdfium::base::kPiFloat * 3 / 2.0f : 0;
       } else {
         sx = -1;
         sy = 0;
@@ -594,7 +597,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
       nx = 0;
       ny = 1;
       if (bRound) {
-        sx = bInverted ? 0 : FX_PI / 2;
+        sx = bInverted ? 0 : pdfium::base::kPiFloat / 2;
       } else {
         sx = 0;
         sy = -1;
@@ -611,7 +614,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
   }
   if (bRound) {
     if (fRadius1 < 0)
-      sx -= FX_PI;
+      sx -= pdfium::base::kPiFloat;
     if (bInverted)
       sy *= -1;
 

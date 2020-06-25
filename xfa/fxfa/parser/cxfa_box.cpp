@@ -11,6 +11,7 @@
 #include <utility>
 
 #include "fxjs/xfa/cjx_object.h"
+#include "third_party/base/numerics/math_constants.h"
 #include "xfa/fxfa/parser/cxfa_corner.h"
 #include "xfa/fxfa/parser/cxfa_edge.h"
 #include "xfa/fxfa/parser/cxfa_fill.h"
@@ -263,8 +264,8 @@ void CXFA_Box::GetPathArcOrRounded(CFX_RectF rtDraw,
   }
 
   fillPath->AddArc(rtDraw.TopLeft(), rtDraw.Size(),
-                   -startAngle.value_or(0) * FX_PI / 180.0f,
-                   -sweepAngle.value_or(360) * FX_PI / 180.0f);
+                   -startAngle.value_or(0) * pdfium::base::kPiFloat / 180,
+                   -sweepAngle.value_or(360) * pdfium::base::kPiFloat / 180);
 }
 
 void CXFA_Box::StrokeArcOrRounded(CXFA_Graphics* pGS,
@@ -300,10 +301,10 @@ void CXFA_Box::StrokeArcOrRounded(CXFA_Graphics* pGS,
     if (fHalf < 0.001f)
       return;
 
-    CXFA_GEPath arcPath;
-    GetPathArcOrRounded(rtWidget, forceRound, &arcPath);
+    CXFA_GEPath arc_path;
+    GetPathArcOrRounded(rtWidget, forceRound, &arc_path);
     if (edge)
-      edge->Stroke(&arcPath, pGS, matrix);
+      edge->Stroke(&arc_path, pGS, matrix);
     return;
   }
   pGS->SaveGraphState();
@@ -323,30 +324,30 @@ void CXFA_Box::StrokeArcOrRounded(CXFA_Graphics* pGS,
   rtWidget.width = a + a;
   rtWidget.height = b + b;
 
-  CXFA_GEPath arcPath;
-  arcPath.AddArc(rtWidget.TopLeft(), rtWidget.Size(), 3.0f * FX_PI / 4.0f,
-                 FX_PI);
+  CXFA_GEPath arc_path;
+  arc_path.AddArc(rtWidget.TopLeft(), rtWidget.Size(),
+                  3.0f * pdfium::base::kPiFloat / 4, pdfium::base::kPiFloat);
 
   pGS->SetStrokeColor(CXFA_GEColor(0xFF808080));
-  pGS->StrokePath(&arcPath, &matrix);
-  arcPath.Clear();
-  arcPath.AddArc(rtWidget.TopLeft(), rtWidget.Size(), -1.0f * FX_PI / 4.0f,
-                 FX_PI);
+  pGS->StrokePath(&arc_path, &matrix);
+  arc_path.Clear();
+  arc_path.AddArc(rtWidget.TopLeft(), rtWidget.Size(),
+                  -1.0f * pdfium::base::kPiFloat / 4, pdfium::base::kPiFloat);
 
   pGS->SetStrokeColor(CXFA_GEColor(0xFFFFFFFF));
-  pGS->StrokePath(&arcPath, &matrix);
+  pGS->StrokePath(&arc_path, &matrix);
   rtWidget.Deflate(fHalf, fHalf);
-  arcPath.Clear();
-  arcPath.AddArc(rtWidget.TopLeft(), rtWidget.Size(), 3.0f * FX_PI / 4.0f,
-                 FX_PI);
+  arc_path.Clear();
+  arc_path.AddArc(rtWidget.TopLeft(), rtWidget.Size(),
+                  3.0f * pdfium::base::kPiFloat / 4, pdfium::base::kPiFloat);
 
   pGS->SetStrokeColor(CXFA_GEColor(0xFF404040));
-  pGS->StrokePath(&arcPath, &matrix);
-  arcPath.Clear();
-  arcPath.AddArc(rtWidget.TopLeft(), rtWidget.Size(), -1.0f * FX_PI / 4.0f,
-                 FX_PI);
+  pGS->StrokePath(&arc_path, &matrix);
+  arc_path.Clear();
+  arc_path.AddArc(rtWidget.TopLeft(), rtWidget.Size(),
+                  -1.0f * pdfium::base::kPiFloat / 4, pdfium::base::kPiFloat);
 
   pGS->SetStrokeColor(CXFA_GEColor(0xFFC0C0C0));
-  pGS->StrokePath(&arcPath, &matrix);
+  pGS->StrokePath(&arc_path, &matrix);
   pGS->RestoreGraphState();
 }

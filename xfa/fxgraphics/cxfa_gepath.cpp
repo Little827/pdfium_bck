@@ -7,6 +7,7 @@
 #include "xfa/fxgraphics/cxfa_gepath.h"
 
 #include "core/fxge/cfx_pathdata.h"
+#include "third_party/base/numerics/math_constants.h"
 
 CXFA_GEPath::CXFA_GEPath() {}
 
@@ -85,7 +86,7 @@ void CXFA_GEPath::AddRectangle(float left,
 }
 
 void CXFA_GEPath::AddEllipse(const CFX_RectF& rect) {
-  AddArc(rect.TopLeft(), rect.Size(), 0, FX_PI * 2);
+  AddArc(rect.TopLeft(), rect.Size(), 0, pdfium::base::kPiFloat * 2);
 }
 
 void CXFA_GEPath::AddArc(const CFX_PointF& original_pos,
@@ -95,15 +96,15 @@ void CXFA_GEPath::AddArc(const CFX_PointF& original_pos,
   if (sweep_angle == 0)
     return;
 
-  const float bezier_arc_angle_epsilon = 0.01f;
-  while (start_angle > FX_PI * 2)
-    start_angle -= FX_PI * 2;
+  constexpr float kTwoPi = pdfium::base::kPiFloat * 2;
+  while (start_angle > kTwoPi)
+    start_angle -= kTwoPi;
   while (start_angle < 0)
-    start_angle += FX_PI * 2;
-  if (sweep_angle >= FX_PI * 2)
-    sweep_angle = FX_PI * 2;
-  if (sweep_angle <= -FX_PI * 2)
-    sweep_angle = -FX_PI * 2;
+    start_angle += kTwoPi;
+  if (sweep_angle >= kTwoPi)
+    sweep_angle = kTwoPi;
+  if (sweep_angle <= -kTwoPi)
+    sweep_angle = -kTwoPi;
 
   CFX_SizeF size = original_size / 2;
   CFX_PointF pos(original_pos.x + size.width, original_pos.y + size.height);
@@ -111,6 +112,8 @@ void CXFA_GEPath::AddArc(const CFX_PointF& original_pos,
                                      size.height * sin(start_angle)),
                     FXPT_TYPE::MoveTo);
 
+  constexpr float kBezierArcAngleEpsilon = 0.01f;
+  constexpr float kHalfPi = pdfium::base::kPiFloat / 2;
   float total_sweep = 0;
   float local_sweep = 0;
   float prev_sweep = 0;
@@ -118,17 +121,17 @@ void CXFA_GEPath::AddArc(const CFX_PointF& original_pos,
   do {
     if (sweep_angle < 0) {
       prev_sweep = total_sweep;
-      local_sweep = -FX_PI / 2;
-      total_sweep -= FX_PI / 2;
-      if (total_sweep <= sweep_angle + bezier_arc_angle_epsilon) {
+      local_sweep = -kHalfPi;
+      total_sweep -= kHalfPi;
+      if (total_sweep <= sweep_angle + kBezierArcAngleEpsilon) {
         local_sweep = sweep_angle - prev_sweep;
         done = true;
       }
     } else {
       prev_sweep = total_sweep;
-      local_sweep = FX_PI / 2;
-      total_sweep += FX_PI / 2;
-      if (total_sweep >= sweep_angle - bezier_arc_angle_epsilon) {
+      local_sweep = kHalfPi;
+      total_sweep += kHalfPi;
+      if (total_sweep >= sweep_angle - kBezierArcAngleEpsilon) {
         local_sweep = sweep_angle - prev_sweep;
         done = true;
       }

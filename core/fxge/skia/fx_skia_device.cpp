@@ -33,6 +33,7 @@
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/text_char_pos.h"
 #include "third_party/base/logging.h"
+#include "third_party/base/numerics/math_constants.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
 #include "third_party/base/stl_util.h"
@@ -972,7 +973,7 @@ class SkiaState {
     font.setEmbolden(m_isSubstFontBold);
     font.setHinting(SkFontHinting::kNone);
     font.setScaleX(m_scaleX);
-    font.setSkewX(tanf(m_italicAngle * FX_PI / 180.0));
+    font.setSkewX(tanf(m_italicAngle * pdfium::base::kPiFloat / 180));
     font.setSize(SkTAbs(m_fontSize));
     font.setSubpixel(true);
 
@@ -1696,7 +1697,8 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
   font.setHinting(SkFontHinting::kNone);
   font.setSize(SkTAbs(font_size));
   font.setSubpixel(true);
-  font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FX_PI / 180.0));
+  font.setSkewX(
+      tanf(pFont->GetSubstFontItalicAngle() * pdfium::base::kPiFloat / 180));
 
   SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
   SkScalar flip = font_size < 0 ? -1 : 1;

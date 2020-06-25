@@ -15,6 +15,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
 #include "third_party/base/logging.h"
+#include "third_party/base/numerics/math_constants.h"
 
 namespace {
 
@@ -285,16 +286,16 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       break;
     case PSOP_SIN:
       d1 = Pop();
-      Push(sin(d1 * FX_PI / 180.0f));
+      Push(sin(d1 * pdfium::base::kPiFloat / 180));
       break;
     case PSOP_COS:
       d1 = Pop();
-      Push(cos(d1 * FX_PI / 180.0f));
+      Push(cos(d1 * pdfium::base::kPiFloat / 180));
       break;
     case PSOP_ATAN:
       d2 = Pop();
       d1 = Pop();
-      d1 = atan2(d1, d2) * 180.0 / FX_PI;
+      d1 = atan2(d1, d2) * 180 / pdfium::base::kPiDouble;
       if (d1 < 0) {
         d1 += 360;
       }
