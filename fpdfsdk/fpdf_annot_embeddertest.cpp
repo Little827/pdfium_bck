@@ -403,16 +403,12 @@ TEST_F(FPDFAnnotEmbedderTest, RenderAnnotWithOnlyRolloverAP) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(FPDFAnnotEmbedderTest, RenderMultilineMarkupAnnotWithoutAP) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_RenderMultilineMarkupAnnotWithoutAP \
-  DISABLED_RenderMultilineMarkupAnnotWithoutAP
+  static const char kMd5[] = "ec1f4ccbd0aecfdea6d53893387a0101";
 #else
-#define MAYBE_RenderMultilineMarkupAnnotWithoutAP \
-  RenderMultilineMarkupAnnotWithoutAP
-#endif
-TEST_F(FPDFAnnotEmbedderTest, MAYBE_RenderMultilineMarkupAnnotWithoutAP) {
   static const char kMd5[] = "76512832d88017668d9acc7aacd13dae";
+#endif
   // Open a file with multiline markup annotations.
   ASSERT_TRUE(OpenDocument("annotation_markup_multiline_no_ap.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -658,14 +654,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddFirstTextAnnotation) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_AddAndSaveUnderlineAnnotation \
-  DISABLED_AddAndSaveUnderlineAnnotation
-#else
-#define MAYBE_AddAndSaveUnderlineAnnotation AddAndSaveUnderlineAnnotation
-#endif
-TEST_F(FPDFAnnotEmbedderTest, MAYBE_AddAndSaveUnderlineAnnotation) {
+TEST_F(FPDFAnnotEmbedderTest, AddAndSaveUnderlineAnnotation) {
   // Open a file with one annotation and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_highlight_long_content.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -700,7 +689,11 @@ TEST_F(FPDFAnnotEmbedderTest, MAYBE_AddAndSaveUnderlineAnnotation) {
   UnloadPage(page);
 
   // Open the saved document.
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  static const char kMd5[] = "798fa41303381c9ba6d99092f5cd4d2b";
+#else
   static const char kMd5[] = "dba153419f67b7c0c0e3d22d3e8910d5";
+#endif
 
   ASSERT_TRUE(OpenSavedDocument());
   page = LoadSavedPage(0);
