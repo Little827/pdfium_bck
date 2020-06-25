@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1593111377 -0700\nnonce ALC2d18rir6d3GyPG7Ln7G8BI+2qIJUx8SFjlIc9ik/p+zdKfkBg1CWYQlBOU3r/Q5FB0oYBEJy1\n\n0000000000000000000000000000000000000000 d7dace9031ff8411687ddae4aabf9e9b0b3fa597 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl7081EACgkQqzYtYVpm\n/XvhHQf9Frm42XN2drxgNRjGSGfpV4AY0xRbo9ecnuCyAD3kYT/IuZTaWZeHvFCT\nvCgZAI1JjCmMtw+4e/CGiE8VEw7hBzHUvSb5bLvSvlyKDs3j0HhElx9ytljvr1Ov\n5uSgB7MeEioJPnTp6rjwyUxjSupjveyAFC1sOQY5Mge3QVP/X5f4Za9b5glHqBaw\nRpc+SP/9BUqZHTVPv8xR8OnMBrPfGg+BniuZOK7lOqPpsAhW97IzVDnBMl7thXnk\nNxZEQChvP7aZ+ztfn+YhikD9u9yZnVDWQwW9eiOyKxShLZ/OMYnzmpEaSYkhHLw1\nWQQQ3a7nTttf+C/DFrJTiEyr05ghUw\u003d\u003d\n\u003dIpWZ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "af8d0372_396cf724",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-25T21:45:07Z",
+      "side": 1,
+      "message": "this could be pdfium::size:points() instead of 5.",
+      "range": {
+        "startLine": 293,
+        "startChar": 25,
+        "endLine": 293,
+        "endChar": 26
+      },
+      "revId": "d7dace9031ff8411687ddae4aabf9e9b0b3fa597",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
