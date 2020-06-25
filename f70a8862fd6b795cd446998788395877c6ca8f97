@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38eea195_2e935bc4",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "I\u0027ve removed all of them in this file.",
+      "parentUuid": "756fcb40_b090b94a",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec90dae7_4c067999",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65c8029_af5b0c02",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "Oops, just a leftover. :-) Removed now.",
+      "parentUuid": "ec90dae7_4c067999",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "ff059ef2_da0e1ab6",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e39b03_716ebf4f",
+      "range": {
+        "startLine": 19,
+        "startChar": 60,
+        "endLine": 19,
+        "endChar": 77
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "084d43fa_280edf3f",
         "filename": "testing/resources/two_signatures.in",
         "patchSetId": 3
@@ -79,6 +145,24 @@
       "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9dcb26_59ef3208",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "084d43fa_280edf3f",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "b90d209f_6c72d43e",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67afb2b7_28048c33",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7680a70a_0843a691",
         "filename": "testing/resources/two_signatures.in",
         "patchSetId": 3
@@ -113,6 +215,24 @@
       "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "523cc404_20c45525",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "I assume you mean avoid empty lines inside the two incremental updates, I did that now.",
+      "parentUuid": "7680a70a_0843a691",
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "655cc7f6_670922bd",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2822cb6a_89b5922c",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e1edeb_8d36b021",
         "filename": "testing/resources/two_signatures.in",
         "patchSetId": 3
@@ -159,6 +303,30 @@
       "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97808f02_4ef61027",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "I think I fixed all cases where / was not preceded by a space and broke up all lines with \u003c\u003c.*\u003e\u003e in them.",
+      "parentUuid": "c0e1edeb_8d36b021",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "f70a8862fd6b795cd446998788395877c6ca8f97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

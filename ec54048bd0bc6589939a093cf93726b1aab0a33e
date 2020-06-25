@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4ac05342_75c63925",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T10:29:44Z",
+      "side": 1,
+      "message": "OK, I\u0027ve rebased and now I use this.",
+      "parentUuid": "11311379_d1e3f52a",
+      "range": {
+        "startLine": 322,
+        "startChar": 20,
+        "endLine": 322,
+        "endChar": 32
+      },
+      "revId": "ec54048bd0bc6589939a093cf93726b1aab0a33e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6863a744_5c44e4eb",
         "filename": "fpdfsdk/fpdf_view_c_api_test.c",
         "patchSetId": 2
