@@ -1,0 +1,324 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6052a6ac_57092597",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Is there an issue motivating this change?",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c4243c_5f9c889e",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "This code path intentionally doesn\u0027t set fill_type?",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aed56b0_531ef730",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "This name doesn\u0027t make it clear how the purpose of this function differs from GetFillRenderOptionsForDrawTextPath().",
+      "range": {
+        "startLine": 138,
+        "startChar": 42,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03b19b3f_019e716d",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Can\u0027t this just be done at construction time?",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1667af6b_c0001207",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Do we know this will only ever return FXFILL_WINDING or FXFILL_ALTERNATE?",
+      "range": {
+        "startLine": 568,
+        "startChar": 41,
+        "endLine": 568,
+        "endChar": 55
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16589f5c_3b10ebf1",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Should we stick to calling this fill_mode instead of fill_type?",
+      "range": {
+        "startLine": 1253,
+        "startChar": 9,
+        "endLine": 1253,
+        "endChar": 37
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c9b38ce_40ea1c2d",
+        "filename": "core/fxge/cfx_fillrenderoptions.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Might be able to make this constexpr instead?",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7051973a_c1b8410d",
+        "filename": "core/fxge/cfx_fillrenderoptions.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Naming this inconsistently is confusing.",
+      "range": {
+        "startLine": 29,
+        "startChar": 49,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06a5fb28_1060d5e1",
+        "filename": "core/fxge/cfx_fillrenderoptions.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Instead of having an explicit IsDefault() method, would it make more sense to support \u003d\u003d comparison against a default instance?",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3c39cd4_2bcf80c8",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Optional: May want to rename the members of this class to avoid \"stutter\" (repetition).",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeb5726d_77751077",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "\"Alternate\" is not a great name; it doesn\u0027t say what it does, or what it is alternate to.",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21bc95ce_07c98598",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Might as well just make this default to 0, and get rid of the other constructor.",
+      "range": {
+        "startLine": 14,
+        "startChar": 37,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30bb977_5a3f2d3b",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Destructor is trivial.",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c96db3a_92f055b5",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "All of these fields should be documented.",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e657ad14_63b48e07",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Nit: It\u0027s less surprising if the default for a field is 0 or false.",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7de02d6_dbbf7622",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-25T22:27:40Z",
+      "side": 1,
+      "message": "Probably should make this an enum.",
+      "revId": "54c4e36b2aa5e11e26602e93bc00b3b97fc1db32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
