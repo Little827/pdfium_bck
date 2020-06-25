@@ -692,9 +692,8 @@ TEST(WideString, Find) {
   EXPECT_FALSE(empty_string.Find(L'a').has_value());
   EXPECT_FALSE(empty_string.Find(L'\0').has_value());
 
-  Optional<size_t> result;
   WideString single_string(L"a");
-  result = single_string.Find(L'a');
+  Optional<size_t> result = single_string.Find(L'a');
   ASSERT_TRUE(result.has_value());
   EXPECT_EQ(0u, result.value());
   EXPECT_FALSE(single_string.Find(L'b').has_value());
@@ -740,9 +739,8 @@ TEST(WideString, ReverseFind) {
   EXPECT_FALSE(empty_string.ReverseFind(L'a').has_value());
   EXPECT_FALSE(empty_string.ReverseFind(L'\0').has_value());
 
-  Optional<size_t> result;
   WideString single_string(L"a");
-  result = single_string.ReverseFind(L'a');
+  Optional<size_t> result = single_string.ReverseFind(L'a');
   ASSERT_TRUE(result.has_value());
   EXPECT_EQ(0u, result.value());
   EXPECT_FALSE(single_string.ReverseFind(L'b').has_value());
@@ -1449,9 +1447,8 @@ TEST(WideStringView, Find) {
   EXPECT_FALSE(empty_string.Find(L'a').has_value());
   EXPECT_FALSE(empty_string.Find(L'\0').has_value());
 
-  Optional<size_t> result;
   WideStringView single_string(L"a");
-  result = single_string.Find(L'a');
+  Optional<size_t> result = single_string.Find(L'a');
   ASSERT_TRUE(result.has_value());
   EXPECT_EQ(0u, result.value());
   EXPECT_FALSE(single_string.Find(L'b').has_value());
@@ -1508,7 +1505,7 @@ TEST(WideStringView, OneCharIterator) {
     sum += c;  // Avoid unused arg warnings.
   }
   EXPECT_TRUE(any_present);
-  EXPECT_EQ(static_cast<int32_t>(L'a'), sum);
+  EXPECT_EQ(L'a', sum);
 }
 
 TEST(WideStringView, MultiCharIterator) {
@@ -1706,7 +1703,7 @@ TEST(WideString, OneCharIterator) {
     sum += c;  // Avoid unused arg warnings.
   }
   EXPECT_TRUE(any_present);
-  EXPECT_EQ(static_cast<int32_t>(L'a'), sum);
+  EXPECT_EQ(L'a', sum);
 }
 
 TEST(WideString, MultiCharIterator) {
