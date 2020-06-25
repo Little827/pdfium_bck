@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2c1490a_239629a3",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "With a lowercase \u0027f\u0027 please, or acro_form.",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdf26a7_6aa9c1fa",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "Chromium style is signature_count.",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea865cd4_d81bd837",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "Maybe just go with \"i\" since there are no other indices. Or try and see if range-based for-loops works on CPDF_Array. i.e. for (const CPDF_Object* field : *fields)",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10bcc818_34553520",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "Wrap at 80 columns.",
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03892057_b5cde45a",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c5160f_ee2cf722",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffb6880_6c3aded0",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "Spacing here and indenting on the next 2 lines.",
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d82694_4d291189",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T17:24:59Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 130,
+        "startChar": 7,
+        "endLine": 130,
+        "endChar": 8
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
