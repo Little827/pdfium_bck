@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1caf42_1c480a35",
+        "filename": "testing/resources/javascript/bug_1098213.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T21:13:33Z",
+      "side": 1,
+      "message": "Is the page count intentionally set to 3?",
+      "revId": "f8acdd981563c06fca01f435368fc0d7ed0562c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
