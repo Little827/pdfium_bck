@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a474d494_092e2a89",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T21:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "586c61b1_6685efef",
+      "range": {
+        "startLine": 32,
+        "startChar": 27,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "a7bfe440257cc46fd10cc9d9069f87dfa126de2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b87a4b7d_49efd21d",
         "filename": "testing/resources/two_signatures.in",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "a7bfe440257cc46fd10cc9d9069f87dfa126de2a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65b5cd8_0d511a94",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-25T21:04:18Z",
+      "side": 1,
+      "message": "Done here and for the other Widget as well.",
+      "parentUuid": "b87a4b7d_49efd21d",
+      "revId": "a7bfe440257cc46fd10cc9d9069f87dfa126de2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
