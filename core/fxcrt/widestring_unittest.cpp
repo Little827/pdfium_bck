@@ -109,6 +109,29 @@ TEST(WideString, Assign) {
     }
     EXPECT_EQ(1, string1.ReferenceCountForTesting());
   }
+  {
+    // From wchar_t*.
+    WideString string1 = L"abc";
+    EXPECT_EQ(L"abc", string1);
+    string1 = nullptr;
+    EXPECT_TRUE(string1.IsEmpty());
+    string1 = L"def";
+    string1 = L"";
+    EXPECT_TRUE(string1.IsEmpty());
+  }
+  {
+    // From WideStringView.
+    WideString string1 = L"abc";
+    WideString string2;
+
+    EXPECT_FALSE(string1.IsEmpty());
+    string1 = string2.AsStringView();
+    EXPECT_TRUE(string1.IsEmpty());
+
+    string2 = L"def";
+    string1 = string2.AsStringView();
+    EXPECT_EQ(L"def", string1);
+  }
 }
 
 TEST(WideString, OperatorLT) {
