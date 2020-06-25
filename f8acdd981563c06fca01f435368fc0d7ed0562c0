@@ -16,6 +16,24 @@
       "revId": "f8acdd981563c06fca01f435368fc0d7ed0562c0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14771914_1491bc8c",
+        "filename": "testing/resources/javascript/bug_1098213.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-25T21:34:27Z",
+      "side": 1,
+      "message": "No, I failed to update this when I lost a page. Done.\nThis looks to be the cause of the Object not found exception in the success case, btw.",
+      "parentUuid": "4b1caf42_1c480a35",
+      "revId": "f8acdd981563c06fca01f435368fc0d7ed0562c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
