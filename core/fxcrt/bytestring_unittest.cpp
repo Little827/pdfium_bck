@@ -112,6 +112,29 @@ TEST(ByteString, Assign) {
     }
     EXPECT_EQ(1, string1.ReferenceCountForTesting());
   }
+  {
+    // From char*.
+    ByteString string1 = "abc";
+    EXPECT_EQ("abc", string1);
+    string1 = nullptr;
+    EXPECT_TRUE(string1.IsEmpty());
+    string1 = "def";
+    string1 = "";
+    EXPECT_TRUE(string1.IsEmpty());
+  }
+  {
+    // From ByteStringView.
+    ByteString string1 = "abc";
+    ByteString string2;
+
+    EXPECT_FALSE(string1.IsEmpty());
+    string1 = string2.AsStringView();
+    EXPECT_TRUE(string1.IsEmpty());
+
+    string2 = "def";
+    string1 = string2.AsStringView();
+    EXPECT_EQ("def", string1);
+  }
 }
 
 TEST(ByteString, OperatorLT) {
