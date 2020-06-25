@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1593112610 -0700\nnonce ALC2d18TI4lA5EBKprSQ8ywqilLzWsSRqe1RhEIOWM3t2zjutaYrZHq7jjlBhB77CTKyqym7Ok/F\n\n0000000000000000000000000000000000000000 2a249764c2f1940e1aec6e8d1c75ae92f3dde320 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl70+CIACgkQqzYtYVpm\n/Xs0jwf+N9WB88ltUjhzuLc/ba6OJ9aB8T272lsE9Xc52JqKp4wXVrM1ce5n/3u0\n0dhsQJLhdmPlJzsInJfwD6XGDN5Pad4JGnbROLPZYuzucbkL3J5u4kCh+a8eHSlL\nvWi7nYuzuyvm/DR42a9sjEO9XPyyuTsp2Oty9WS5xVBV9+kgz+Mr+rcb+KIg0Kcs\n9sY4qfhfCc6bNJzRT1qpRnWVrXn4/A0+BpGTnRFtBLcNrlnrtbqhr4bl91jJh9M0\nrOZ7MXUVbjovZ4KdUpQ3fSsefMmKgw9rrXbwxeowi6kSBBVoPX7P1V93UI/HA5Wj\nlP7++m21rpWWuQ/+Rt6RWqEDpdJdrw\u003d\u003d\n\u003dtnTg\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "19d05629_4b66b861",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-25T21:16:21Z",
+      "side": 1,
+      "message": "Or just call ByteStringView(\"abc\") ?",
+      "range": {
+        "startLine": 128,
+        "startChar": 25,
+        "endLine": 128,
+        "endChar": 26
+      },
+      "revId": "2a249764c2f1940e1aec6e8d1c75ae92f3dde320",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
