@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "33623e0f_9ef191f9",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T20:51:01Z",
+      "side": 1,
+      "message": "Ah, use CPDF_ArrayLocker.",
+      "parentUuid": "51cfb768_fe3303f8",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d23ea74_7047e267",
         "filename": "fpdfsdk/fpdf_signature.cpp",
         "patchSetId": 4

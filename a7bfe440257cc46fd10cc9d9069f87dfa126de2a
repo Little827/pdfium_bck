@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "586c61b1_6685efef",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T20:51:01Z",
+      "side": 1,
+      "message": "One more to change to snake_case.",
+      "range": {
+        "startLine": 32,
+        "startChar": 27,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "a7bfe440257cc46fd10cc9d9069f87dfa126de2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87a4b7d_49efd21d",
+        "filename": "testing/resources/two_signatures.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-25T20:51:01Z",
+      "side": 1,
+      "message": "I typically put this after /Subtype, since it\u0027s the field type.",
+      "revId": "a7bfe440257cc46fd10cc9d9069f87dfa126de2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
