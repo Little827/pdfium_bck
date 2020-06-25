@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "1d23ea74_7047e267",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-25T18:03:45Z",
+      "side": 1,
+      "message": "drive-by nit: As much as we like |continue| to avoid deep nesting, its probably clearer when written as\n\n  if (field_dict \u0026\u0026 field_dict-\u003eGetNameFor(\"FT\") \u003d\u003d \"Sig\")\n    ++count;",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "92a5a9c79eb28bfba372b1ccdb74fb3a3c8b5cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10bcc818_34553520",
         "filename": "testing/resources/two_signatures.in",
         "patchSetId": 4
