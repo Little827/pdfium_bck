@@ -1,0 +1,2 @@
+Alert: Caught: Document.getAnnots: Object no longer exists.
+Alert: Done
