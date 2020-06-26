@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1593211324 -0700\nnonce ALC2d1+niLngLDyk2gd5TUNmVHH4UTYwQAc73dEzUUejuS/h9BzAA/OD8LGZEjx3vKBNKGCOvwHp\n\n0000000000000000000000000000000000000000 164e4b58323ff00745dace933f89d3c075e56c78 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl72ebwACgkQqzYtYVpm\n/XvxMggAw5pK5k9Z4EX9gXeCxWuWCrt0MWipt6sPGiiqr70hvuY3VkFh10ehN3uR\n8o99m8fc5PamA/MlWU5BsLO3kCQz4cDI3UxLZ693ZpF++7Kvv4c+N97t21sWn7XI\nZNJ8lohESr4dsqDrm2QT7XSwCNsCcjiyJhzbigsRbKFgCIgYZhccX4WuOZGIyiaY\nsAAHcEK9isEArA9/4bIctvxsDccZR+b+3dnOTfoZwnQXnDckn9CDHSNb24B8N8QD\nMudSkmUst9yE6iOpQk9fqiSUQjVTdUoH3i4K9aNKDuiRVA5wly1GlUuAU8ot+V8b\nLTQdtf4fZRNGA1L7N43EIk3YF5RFmw\u003d\u003d\n\u003dN3t8\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b281481_a1efb418",
+        "filename": "core/fxcodec/gif/cfx_lzwdecompressor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-26T23:07:57Z",
+      "side": 1,
+      "message": "Init.",
+      "revId": "164e4b58323ff00745dace933f89d3c075e56c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
