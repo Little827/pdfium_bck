@@ -23,6 +23,30 @@
       "revId": "2a249764c2f1940e1aec6e8d1c75ae92f3dde320",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03adef56_3f23f91c",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-26T19:53:51Z",
+      "side": 1,
+      "message": "I actually got rid of |string2|. Take another look?",
+      "parentUuid": "19d05629_4b66b861",
+      "range": {
+        "startLine": 128,
+        "startChar": 25,
+        "endLine": 128,
+        "endChar": 26
+      },
+      "revId": "2a249764c2f1940e1aec6e8d1c75ae92f3dde320",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
