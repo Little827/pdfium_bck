@@ -3,6 +3,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "22247bb8_be41417d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-26T19:16:32Z",
+      "side": 1,
+      "message": "nit: built",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "1a3024aa2df931e72d1fdbdac8dce040bf2cdd1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "359c3e71_ebadcf79",
+        "filename": "core/fxge/fx_ge_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-26T19:16:32Z",
+      "side": 1,
+      "message": "nit: howzabout doing\n#if !defined(OS_LINUX)\n#error \"Included on the wrong platform\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "1a3024aa2df931e72d1fdbdac8dce040bf2cdd1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d81842a_6b207211",
         "filename": "xfa/fgas/font/fgas_fontutils.cpp",
         "patchSetId": 1
@@ -14,6 +60,24 @@
       "writtenOn": "2020-06-26T19:08:57Z",
       "side": 1,
       "message": "Just reordering.",
+      "revId": "1a3024aa2df931e72d1fdbdac8dce040bf2cdd1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48789bdf_8dc80c48",
+        "filename": "xfa/fgas/font/fgas_fontutils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-26T19:16:32Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "5d81842a_6b207211",
       "revId": "1a3024aa2df931e72d1fdbdac8dce040bf2cdd1e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
