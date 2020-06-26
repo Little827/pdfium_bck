@@ -16,6 +16,7 @@
 
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
@@ -815,7 +816,7 @@ bool CGdiplusExt::DrawPath(HDC hDC,
                            const CFX_GraphStateData* pGraphState,
                            uint32_t fill_argb,
                            uint32_t stroke_argb,
-                           int fill_mode) {
+                           const CFX_FillRenderOptions& fill_options) {
   pdfium::span<const FX_PATHPOINT> points = pPathData->GetPoints();
   if (points.empty())
     return true;
@@ -893,11 +894,11 @@ bool CGdiplusExt::DrawPath(HDC hDC,
       }
     }
   }
-  if (fill_mode & FXFILL_NOPATHSMOOTH) {
+  if (fill_options.is_path_aliased) {
     bSmooth = false;
     CallFunc(GdipSetSmoothingMode)(pGraphics, Gdiplus::SmoothingModeNone);
-  } else if (!(fill_mode & FXFILL_FULLCOVER)) {
-    if (!bSmooth && (fill_mode & 3))
+  } else if (!fill_options.is_full_cover) {
+    if (!bSmooth && fill_options.fill_type)
       bSmooth = true;
 
     if (bSmooth || (pGraphState && pGraphState->m_LineWidth > 2)) {
@@ -905,7 +906,7 @@ bool CGdiplusExt::DrawPath(HDC hDC,
                                      Gdiplus::SmoothingModeAntiAlias);
     }
   }
-  int new_fill_mode = fill_mode & 3;
+  int new_fill_mode = fill_options.fill_type;
   if (points.size() == 4 && !pGraphState) {
     auto indices = IsSmallTriangle(gp_points, pObject2Device);
     if (indices.has_value()) {
@@ -941,7 +942,7 @@ bool CGdiplusExt::DrawPath(HDC hDC,
   if (pGraphState && stroke_argb) {
     Gdiplus::GpPen* pPen =
         GdipCreatePenImpl(pGraphState, pObject2Device, stroke_argb,
-                          !!(fill_mode & FX_STROKE_TEXT_MODE));
+                          fill_options.stroke_text_mode);
     if (nSubPathes == 1) {
       CallFunc(GdipDrawPath)(pGraphics, pPen, pGpPath);
     } else {

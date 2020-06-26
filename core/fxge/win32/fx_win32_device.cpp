@@ -13,6 +13,7 @@
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/maybe_owned.h"
+#include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_folderfontinfo.h"
 #include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/cfx_gemodule.h"
@@ -956,7 +957,7 @@ bool CGdiDeviceDriver::DrawPath(const CFX_PathData* pPathData,
                                 const CFX_GraphStateData* pGraphState,
                                 uint32_t fill_color,
                                 uint32_t stroke_color,
-                                int fill_mode,
+                                const CFX_FillRenderOptions& fill_options,
                                 BlendMode blend_type) {
   if (blend_type != BlendMode::kNormal)
     return false;
@@ -990,7 +991,7 @@ bool CGdiDeviceDriver::DrawPath(const CFX_PathData* pPathData,
 
   if (pPlatform->m_GdiplusExt.IsAvailable()) {
     if (bDrawAlpha || ((m_DeviceType != DeviceType::kPrinter &&
-                        !(fill_mode & FXFILL_FULLCOVER)) ||
+                        !fill_options.is_full_cover) ||
                        (pGraphState && !pGraphState->m_DashArray.empty()))) {
       if (!((!pMatrix || !pMatrix->WillScale()) && pGraphState &&
             pGraphState->m_LineWidth == 1.0f &&
@@ -999,14 +1000,13 @@ bool CGdiDeviceDriver::DrawPath(const CFX_PathData* pPathData,
             pPathData->IsRect())) {
         if (pPlatform->m_GdiplusExt.DrawPath(m_hDC, pPathData, pMatrix,
                                              pGraphState, fill_color,
-                                             stroke_color, fill_mode)) {
+                                             stroke_color, fill_options)) {
           return true;
         }
       }
     }
   }
-  int old_fill_mode = fill_mode;
-  fill_mode &= 3;
+  int fill_mode = fill_options.fill_type;
   HPEN hPen = nullptr;
   HBRUSH hBrush = nullptr;
   if (pGraphState && stroke_alpha) {
@@ -1032,7 +1032,7 @@ bool CGdiDeviceDriver::DrawPath(const CFX_PathData* pPathData,
     SetPathToDC(m_hDC, pPathData, pMatrix);
     if (pGraphState && stroke_alpha) {
       if (fill_mode && fill_alpha) {
-        if (old_fill_mode & FX_FILL_TEXT_MODE) {
+        if (fill_options.is_text_mode) {
           StrokeAndFillPath(m_hDC);
         } else {
           FillPath(m_hDC);
@@ -1083,9 +1083,10 @@ void CGdiDeviceDriver::SetBaseClip(const FX_RECT& rect) {
   m_BaseClipBox = rect;
 }
 
-bool CGdiDeviceDriver::SetClip_PathFill(const CFX_PathData* pPathData,
-                                        const CFX_Matrix* pMatrix,
-                                        int fill_mode) {
+bool CGdiDeviceDriver::SetClip_PathFill(
+    const CFX_PathData* pPathData,
+    const CFX_Matrix* pMatrix,
+    const CFX_FillRenderOptions& fill_options) {
   if (pPathData->GetPoints().size() == 5) {
     Optional<CFX_FloatRect> maybe_rectf = pPathData->GetRect(pMatrix);
     if (maybe_rectf.has_value()) {
@@ -1099,7 +1100,7 @@ bool CGdiDeviceDriver::SetClip_PathFill(const CFX_PathData* pPathData,
     }
   }
   SetPathToDC(m_hDC, pPathData, pMatrix);
-  SetPolyFillMode(m_hDC, fill_mode & 3);
+  SetPolyFillMode(m_hDC, fill_options.fill_type);
   SelectClipPath(m_hDC, RGN_AND);
   return true;
 }
