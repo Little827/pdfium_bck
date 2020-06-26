@@ -15,7 +15,6 @@
 #include "core/fxge/systemfontinfo_iface.h"
 #include "third_party/base/stl_util.h"
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
 namespace {
 
 enum JpFontFamily : uint8_t {
@@ -180,4 +179,3 @@ std::unique_ptr<CFX_GEModule::PlatformIface>
 CFX_GEModule::PlatformIface::Create() {
   return std::make_unique<CLinuxPlatform>();
 }
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
