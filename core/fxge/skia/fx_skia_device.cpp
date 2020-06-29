@@ -1582,7 +1582,7 @@ void CFX_SkiaDeviceDriver::PaintStroke(SkPaint* spaint,
                std::min(deviceUnits[0].length(), deviceUnits[1].length()));
   if (!pGraphState->m_DashArray.empty()) {
     size_t count = (pGraphState->m_DashArray.size() + 1) / 2;
-    std::vector<SkScalar> intervals(count);
+    std::vector<SkScalar> intervals(count * 2);
     // Set dash pattern
     for (size_t i = 0; i < count; i++) {
       float on = pGraphState->m_DashArray[i * 2];
