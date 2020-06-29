@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "b08bba6c_c5156b78",
+        "filename": "core/fxge/cfx_fillrenderoptions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T22:32:26Z",
+      "side": 1,
+      "message": "How do we know |fill_type| is safe to cast like this? What if the caller passes in a value of 12345? It may be better for the param to be of type FillType. Then change the callers to FillType. It will make the CL bigger, but I think most of the conversions are trivial.",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c7d495_6d354d85",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T22:32:26Z",
+      "side": 1,
+      "message": "Isn\u0027t the goal to make |FXFILL_ALTERNATE| go away? Instead of doing this, how about defining |kAlternate| as 1 here, and add a static_assert() elsewhere that |kAlternate| and |FXFILL_ALTERNATE| have the same value?",
+      "range": {
+        "startLine": 13,
+        "startChar": 17,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94bedaf_637fa59a",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T22:32:26Z",
+      "side": 1,
+      "message": "What\u0027s the timeline for doing that? I\u0027m worried it will take a long time before we can get rid of these two functions. Note that in addition to the CFX_RenderDevice layer, RenderDeviceDriverIface also takes integer fill modes.",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e40e439_81c02841",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 1
@@ -22,6 +79,29 @@
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec3be8a6_f3ddf2a3",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T22:32:26Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "range": {
+        "startLine": 535,
+        "startChar": 6,
+        "endLine": 535,
+        "endChar": 7
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
