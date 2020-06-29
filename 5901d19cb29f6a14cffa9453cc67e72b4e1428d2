@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e40e439_81c02841",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-29T20:37:52Z",
+      "side": 1,
+      "message": "This will be gone once DrawPath() start using CFX_FillRenderOptions struct instead of integer |fill_mode|.",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 520,
+        "endChar": 53
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4ceb62a_ab4e8184",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-29T20:37:52Z",
+      "side": 1,
+      "message": "This will be gone once DrawCosmeticLine(), DrawFillStrokePath(), DrawPath() start using CFX_FillRenderOptions instead of integer flags.",
+      "range": {
+        "startLine": 538,
+        "startChar": 1,
+        "endLine": 538,
+        "endChar": 68
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
