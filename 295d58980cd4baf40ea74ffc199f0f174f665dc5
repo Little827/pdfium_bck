@@ -69,6 +69,30 @@
       "revId": "295d58980cd4baf40ea74ffc199f0f174f665dc5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca21c7e_edd1586f",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-29T22:51:04Z",
+      "side": 1,
+      "message": "I am thinking maybe add a clean-up CL for fixing more variables which are not following Chromium coding styles later, such as |FillType|, |pPathObj|, |bStroke|.",
+      "parentUuid": "a9262c0f_687668df",
+      "range": {
+        "startLine": 425,
+        "startChar": 66,
+        "endLine": 425,
+        "endChar": 74
+      },
+      "revId": "295d58980cd4baf40ea74ffc199f0f174f665dc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
