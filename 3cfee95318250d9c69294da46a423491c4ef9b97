@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3387fd5_d698ddf2",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-29T18:00:15Z",
+      "side": 1,
+      "message": "This will lead to O(n^2) behaviour for a full scan of N signatures, as we do N iterations at line 31 to recreate the array each time.  Do we expect to have a large enough number of signatures for this to matter?",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "3cfee95318250d9c69294da46a423491c4ef9b97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
