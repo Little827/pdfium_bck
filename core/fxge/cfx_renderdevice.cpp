@@ -14,6 +14,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/cfx_color.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
+#include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/cfx_gemodule.h"
@@ -509,15 +510,32 @@ void CFX_RenderDevice::UpdateClipBox() {
   m_ClipBox.bottom = m_Height;
 }
 
-bool CFX_RenderDevice::DrawPathWithBlend(const CFX_PathData* pPathData,
-                                         const CFX_Matrix* pObject2Device,
-                                         const CFX_GraphStateData* pGraphState,
-                                         uint32_t fill_color,
-                                         uint32_t stroke_color,
-                                         int fill_mode,
-                                         BlendMode blend_type) {
+bool CFX_RenderDevice::DrawPath(const CFX_PathData* pPathData,
+                                const CFX_Matrix* pObject2Device,
+                                const CFX_GraphStateData* pGraphState,
+                                uint32_t fill_color,
+                                uint32_t stroke_color,
+                                int fill_mode) {
+  CFX_FillRenderOptions fill_options =
+      GetFillRenderOptionsFromIntegerFlag(fill_mode);
+  return DrawPathWithBlend(pPathData, pObject2Device, pGraphState, fill_color,
+                           stroke_color, fill_options, BlendMode::kNormal);
+}
+
+bool CFX_RenderDevice::DrawPathWithBlend(
+    const CFX_PathData* pPathData,
+    const CFX_Matrix* pObject2Device,
+    const CFX_GraphStateData* pGraphState,
+    uint32_t fill_color,
+    uint32_t stroke_color,
+    const CFX_FillRenderOptions& fill_options,
+    BlendMode blend_type) {
   uint8_t stroke_alpha = pGraphState ? FXARGB_A(stroke_color) : 0;
-  uint8_t fill_alpha = (fill_mode & 3) ? FXARGB_A(fill_color) : 0;
+  uint8_t fill_alpha =
+      (fill_options.fill_type != CFX_FillRenderOptions::FillType::kNoFill)
+          ? FXARGB_A(fill_color)
+          : 0;
+  int fill_mode = GetIntegerFlagFromFillRenderOptions(fill_options);
   pdfium::span<const FX_PATHPOINT> points = pPathData->GetPoints();
   if (stroke_alpha == 0 && points.size() == 2) {
     CFX_PointF pos1 = points[0].m_Point;
@@ -531,7 +549,7 @@ bool CFX_RenderDevice::DrawPathWithBlend(const CFX_PathData* pPathData,
   }
 
   if ((points.size() == 5 || points.size() == 4) && stroke_alpha == 0 &&
-      !(fill_mode & FXFILL_RECT_AA)) {
+      !fill_options.is_rect_aa) {
     Optional<CFX_FloatRect> maybe_rect_f = pPathData->GetRect(pObject2Device);
     if (maybe_rect_f.has_value()) {
       const CFX_FloatRect& rect_f = maybe_rect_f.value();
@@ -575,8 +593,9 @@ bool CFX_RenderDevice::DrawPathWithBlend(const CFX_PathData* pPathData,
         return true;
     }
   }
-  if ((fill_mode & 3) && stroke_alpha == 0 && !(fill_mode & FX_FILL_STROKE) &&
-      !(fill_mode & FX_FILL_TEXT_MODE)) {
+  if (fill_options.fill_type != CFX_FillRenderOptions::FillType::kNoFill &&
+      stroke_alpha == 0 && !fill_options.is_stroke &&
+      !fill_options.is_text_mode) {
     CFX_PathData newPath;
     bool bThin = false;
     bool setIdentity = false;
@@ -602,8 +621,8 @@ bool CFX_RenderDevice::DrawPathWithBlend(const CFX_PathData* pPathData,
                                 smooth_path, blend_type);
     }
   }
-  if ((fill_mode & 3) && fill_alpha && stroke_alpha < 0xff &&
-      (fill_mode & FX_FILL_STROKE)) {
+  if (fill_options.fill_type != CFX_FillRenderOptions::FillType::kNoFill &&
+      fill_alpha && stroke_alpha < 0xff && fill_options.is_stroke) {
     if (m_RenderCaps & FXRC_FILLSTROKE_PATH) {
       return m_pDeviceDriver->DrawPath(pPathData, pObject2Device, pGraphState,
                                        fill_color, stroke_color, fill_mode,
@@ -1071,12 +1090,13 @@ bool CFX_RenderDevice::DrawTextPath(int nChars,
     CFX_PathData TransformedPath(*pPath);
     TransformedPath.Transform(matrix);
     if (fill_color || stroke_color) {
-      int fill_mode = nFlag;
+      CFX_FillRenderOptions fill_options =
+          GetFillRenderOptionsFromIntegerFlag(nFlag);
       if (fill_color)
-        fill_mode |= FXFILL_WINDING;
-      fill_mode |= FX_FILL_TEXT_MODE;
+        fill_options.fill_type = CFX_FillRenderOptions::FillType::kWinding;
+      fill_options.is_text_mode = true;
       if (!DrawPathWithBlend(&TransformedPath, pUser2Device, pGraphState,
-                             fill_color, stroke_color, fill_mode,
+                             fill_color, stroke_color, fill_options,
                              BlendMode::kNormal)) {
         return false;
       }
