@@ -334,6 +334,30 @@
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2284612_f4643b22",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:14:44Z",
+      "side": 1,
+      "message": "Also, on a similar note, it could be useful to add a few unit tests to make sure the conversions work correctly.",
+      "parentUuid": "4bcfbc63_0d922d95",
+      "range": {
+        "startLine": 538,
+        "startChar": 6,
+        "endLine": 538,
+        "endChar": 15
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
