@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3c14352f_1400d508",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "Nit: The other boolean fields use an \"is_\" prefix, so this one stands out. I\u0027d try to be consistent one way or the other here. (Generally not a fan of \"is\" prefixing, so I\u0027d probably lean towards removal.)\n\nYou may have good reason to keep things the way they are, though.",
+      "range": {
+        "startLine": 89,
+        "startChar": 17,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b08bba6c_c5156b78",
         "filename": "core/fxge/cfx_fillrenderoptions.cpp",
         "patchSetId": 1
@@ -13,6 +36,41 @@
       "writtenOn": "2020-06-29T22:32:26Z",
       "side": 1,
       "message": "How do we know |fill_type| is safe to cast like this? What if the caller passes in a value of 12345? It may be better for the param to be of type FillType. Then change the callers to FillType. It will make the CL bigger, but I think most of the conversions are trivial.",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c32be13_b885178a",
+        "filename": "core/fxge/cfx_fillrenderoptions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "+1. Alternately, GetFillRenderOptionsFromIntegerFlag() could have a switch statement (or range-checked conversion) that handled this.\n\nI might get rid of this constructor entirely in that case, and just always rely on GetFillRenderOptionsFromIntegerFlag().",
+      "parentUuid": "b08bba6c_c5156b78",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f6db4c_93ed66c3",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "It\u0027d be good to have an overall comment describing the purpose of the struct. (Likewise with other types, like FillType.)",
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -42,6 +100,47 @@
     },
     {
       "key": {
+        "uuid": "d9f6ebe2_00fd5270",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "I\u0027d be happy to just let this go away when the refactoring is complete, but you should probably listen to Lei. 😊",
+      "parentUuid": "78c7d495_6d354d85",
+      "range": {
+        "startLine": 13,
+        "startChar": 17,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca789f1_cad7eb1e",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "It might be nice to have documentation for what the different fill types do. The existing documentation seems lacking already, though, so I\u0027m not going to be strict about this.",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e94bedaf_637fa59a",
         "filename": "core/fxge/cfx_fillrenderoptions.h",
         "patchSetId": 1
@@ -53,6 +152,46 @@
       "writtenOn": "2020-06-29T22:32:26Z",
       "side": 1,
       "message": "What\u0027s the timeline for doing that? I\u0027m worried it will take a long time before we can get rid of these two functions. Note that in addition to the CFX_RenderDevice layer, RenderDeviceDriverIface also takes integer fill modes.",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07797df2_5f36c2d4",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "I might put the TODO second, so the function documentation comes first.\n\nI might also just put the TODO as a separate comment before these two functions, that states the following two functions will be removed later (or explicitly listing them by name).",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21aedbff_d9cd67af",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "You don\u0027t want to return a const value. It\u0027s mostly harmless here (the optimizer can work around it), but it\u0027s generally not recommended in modern versions of C++.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 5
+      },
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -82,6 +221,29 @@
     },
     {
       "key": {
+        "uuid": "7113248a_40cc8c9a",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "Optional: You could just pass GetFillRenderOptionsFromIntegerFlag(fill_mode) directly here.",
+      "range": {
+        "startLine": 522,
+        "startChar": 41,
+        "endLine": 522,
+        "endChar": 53
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec3be8a6_f3ddf2a3",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 1
@@ -93,6 +255,30 @@
       "writtenOn": "2020-06-29T22:32:26Z",
       "side": 1,
       "message": "No longer needed.",
+      "range": {
+        "startLine": 535,
+        "startChar": 6,
+        "endLine": 535,
+        "endChar": 7
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ff6897_c5d2d357",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "This wasn\u0027t clear to me until I noticed the (small) highlight, but this comment is just talking about the \"()\".",
+      "parentUuid": "ec3be8a6_f3ddf2a3",
       "range": {
         "startLine": 535,
         "startChar": 6,
@@ -125,6 +311,29 @@
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bcfbc63_0d922d95",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T23:00:56Z",
+      "side": 1,
+      "message": "This function mixes use of fill_options and fill_mode, which seems error-prone. Some suggestions:\n\n1. Make fill_mode const to make it clear it\u0027ll always be equivalent to fill_options.\n2. Initialize fill_mode at the top of the function, and defer converting the other code to fill_options later.",
+      "range": {
+        "startLine": 538,
+        "startChar": 6,
+        "endLine": 538,
+        "endChar": 15
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
