@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "e924aa8e_d7acfd00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T21:50:42Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "3cfee95318250d9c69294da46a423491c4ef9b97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17512271_ed46d2a7",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T21:50:42Z",
+      "side": 1,
+      "message": "nit: Add a blank line after, and a blank line before line 36, so the namespace does not stick too close to the function inside.",
+      "revId": "3cfee95318250d9c69294da46a423491c4ef9b97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3387fd5_d698ddf2",
         "filename": "fpdfsdk/fpdf_signature.cpp",
         "patchSetId": 1
@@ -13,6 +53,30 @@
       "writtenOn": "2020-06-29T18:00:15Z",
       "side": 1,
       "message": "This will lead to O(n^2) behaviour for a full scan of N signatures, as we do N iterations at line 31 to recreate the array each time.  Do we expect to have a large enough number of signatures for this to matter?",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "3cfee95318250d9c69294da46a423491c4ef9b97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ddb3c5b_a891da12",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T21:50:42Z",
+      "side": 1,
+      "message": "Looking in my collection, I see many PDFs have just 1 signature, though many have more but are still in the single digits. One outlier has 24.",
+      "parentUuid": "a3387fd5_d698ddf2",
       "range": {
         "startLine": 53,
         "startChar": 45,
