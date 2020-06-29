@@ -903,9 +903,11 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
   if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
       GetDeviceType() == DeviceType::kPrinter) {
     if (pFont->GetFaceRec()) {
-      int nPathFlags = is_text_smooth ? 0 : FXFILL_NOPATHSMOOTH;
+      CFX_FillRenderOptions path_options;
+      path_options.is_path_aliased = !is_text_smooth;
       return DrawTextPath(nChars, pCharPos, pFont, font_size, mtText2Device,
-                          nullptr, nullptr, fill_color, 0, nullptr, nPathFlags);
+                          nullptr, nullptr, fill_color, 0, nullptr,
+                          path_options);
     }
   }
   int anti_alias = FT_RENDER_MODE_MONO;
@@ -1069,7 +1071,7 @@ bool CFX_RenderDevice::DrawTextPath(int nChars,
                                     uint32_t fill_color,
                                     FX_ARGB stroke_color,
                                     CFX_PathData* pClippingPath,
-                                    int nFlag) {
+                                    const CFX_FillRenderOptions& options) {
   for (int iChar = 0; iChar < nChars; ++iChar) {
     const TextCharPos& charpos = pCharPos[iChar];
     CFX_Matrix matrix;
@@ -1090,8 +1092,7 @@ bool CFX_RenderDevice::DrawTextPath(int nChars,
     CFX_PathData TransformedPath(*pPath);
     TransformedPath.Transform(matrix);
     if (fill_color || stroke_color) {
-      CFX_FillRenderOptions fill_options =
-          GetFillRenderOptionsFromIntegerFlag(nFlag);
+      CFX_FillRenderOptions fill_options(options);
       if (fill_color)
         fill_options.fill_type = CFX_FillRenderOptions::FillType::kWinding;
       fill_options.is_text_mode = true;
