@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1aa1ea7_5e4ceefe",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T21:59:41Z",
+      "side": 1,
+      "message": "If this function got renamed to GetFillOptionsForDrawPathWithBlend(), would that be just as meaningful?",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "295d58980cd4baf40ea74ffc199f0f174f665dc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
