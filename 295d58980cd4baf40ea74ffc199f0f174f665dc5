@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5704c9da_f724c4fb",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-29T22:10:04Z",
+      "side": 1,
+      "message": "Yes, I think I will omit \"Render\" from \"GetFillRenderOptionsForDrawTextPath\" as well.",
+      "parentUuid": "b1aa1ea7_5e4ceefe",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "295d58980cd4baf40ea74ffc199f0f174f665dc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9262c0f_687668df",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 3
