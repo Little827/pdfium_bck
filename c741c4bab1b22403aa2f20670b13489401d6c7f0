@@ -34,6 +34,24 @@
       "revId": "c741c4bab1b22403aa2f20670b13489401d6c7f0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9d35c1a_2dd8b579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-29T22:55:11Z",
+      "side": 1,
+      "message": "Right, nevermind.",
+      "parentUuid": "bd0f37d2_eaa67fe4",
+      "revId": "c741c4bab1b22403aa2f20670b13489401d6c7f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
