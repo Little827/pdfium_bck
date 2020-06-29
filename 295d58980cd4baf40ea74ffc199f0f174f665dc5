@@ -22,6 +22,29 @@
       "revId": "295d58980cd4baf40ea74ffc199f0f174f665dc5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9262c0f_687668df",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-29T22:05:13Z",
+      "side": 1,
+      "message": "Optional: This looks a lot like a type or function due to the capitalization. It\u0027d be nice to clean up the naming, since it\u0027s a small change otherwise.",
+      "range": {
+        "startLine": 425,
+        "startChar": 66,
+        "endLine": 425,
+        "endChar": 74
+      },
+      "revId": "295d58980cd4baf40ea74ffc199f0f174f665dc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
