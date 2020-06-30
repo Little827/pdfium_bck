@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c23e3567_4da198da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-30T21:23:29Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "ef8bef07_8d19bd3a",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "914a80f2_3c3efbc2",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 4
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "I honestly don\u0027t understand why they need the prefix in ProcessText() either, for the same reason I already cited. But if you find it helpful, then sure.",
       "parentUuid": "847f9b6a_f5827357",
+      "range": {
+        "startLine": 401,
+        "startChar": 7,
+        "endLine": 401,
+        "endChar": 16
+      },
+      "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0a2d98_0cb3fc64",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-30T21:23:29Z",
+      "side": 1,
+      "message": "Sorry, to clarify re: length: I was responding to Olivia\u0027s earlier comment about not wanting to go with \"path_is_stroke\" because it felt too long. (Not that I\u0027m necessarily sold on path_is_stroke, either, but length is not a reason to avoid it.)",
+      "parentUuid": "89c0d7b4_9fd8581f",
       "range": {
         "startLine": 401,
         "startChar": 7,
