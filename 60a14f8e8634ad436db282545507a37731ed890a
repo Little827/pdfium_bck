@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1593555726 -0700\nnonce ALC2d1+Ud46n3qhtvazGVbS8N4d/c22Q1AwByP55SGyLDK95gRn2fEspHmiKpiay/Kyvf2UgXK92\n\n0000000000000000000000000000000000000000 60a14f8e8634ad436db282545507a37731ed890a refs/for/refs/heads/master%notify\u003dNONE,m\u003dtest\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl77uw4ACgkQqzYtYVpm\n/Xs9gAf8DYohPD4vAyvxB7bPM++tIiRNCnwNEXN6FXDFLpCeGwQq9AVf0RLnHq+6\nG0Vl694+cMepPag5zcN3Wvmf/H+c9os+t9MO0SB2cSmPjm3eHBywW3YglfeLXJ9x\n0wELCkhDEjHcZS9OrQVbbmDPqsF6mSdx147THWxH35/dOvVAms4JnbRBHFg2arSp\nexbo4DHA70P3sWzTQLWyyvnB4bYlrSi4mJeNT23MSEq+riZLzwpZGbE/h2sgwUZu\nA8w4k9++LGcub/UfQK4FXdFE8Riygc6vpVtJin3m9jMBT9Fy1vaCMFbL7ZBaFsxg\nvLUs6uCNfUiXX6zFVc4j9qdGBQUUXw\u003d\u003d\n\u003dWMji\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "788ef428_26f5fcc3",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-30T23:25:46Z",
+      "side": 1,
+      "message": "This is temporary until https://pdfium-review.googlesource.com/c/pdfium_tests/+/71029 lands. It\u0027s just here to show the two CLs combined makes the bots green.",
+      "revId": "60a14f8e8634ad436db282545507a37731ed890a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
