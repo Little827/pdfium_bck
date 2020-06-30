@@ -152,6 +152,30 @@
       "revId": "3cfee95318250d9c69294da46a423491c4ef9b97",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd2f924_9ec3faa1",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-30T17:19:33Z",
+      "side": 1,
+      "message": "Ok.  So long as you\u0027ve considered it.",
+      "parentUuid": "31230a4b_649d5442",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "3cfee95318250d9c69294da46a423491c4ef9b97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
