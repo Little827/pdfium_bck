@@ -60,7 +60,7 @@ int32_t CXFA_LayoutProcessor::StartLayout(bool bForceRestart) {
     return -1;
 
   m_pContentLayoutProcessor = std::make_unique<CXFA_ContentLayoutProcessor>(
-      pFormRoot, m_pViewLayoutProcessor.get());
+      pFormRoot, this, m_pViewLayoutProcessor.get());
   m_nProgressCounter = 1;
   return 0;
 }
@@ -82,7 +82,7 @@ int32_t CXFA_LayoutProcessor::DoLayout() {
     if (eStatus != CXFA_ContentLayoutProcessor::Result::kDone)
       m_nProgressCounter++;
 
-    RetainPtr<CXFA_ContentLayoutItem> pLayoutItem =
+    CXFA_ContentLayoutItem* pLayoutItem =
         m_pContentLayoutProcessor->ExtractLayoutItem();
     if (pLayoutItem)
       pLayoutItem->m_sPos = CFX_PointF(fPosX, fPosY);

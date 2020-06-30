@@ -142,7 +142,7 @@ bool CXFA_FFBarcode::LoadWidget() {
   ASSERT(!IsLoaded());
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   auto pNew = std::make_unique<CFWL_Barcode>(GetFWLApp());
   CFWL_Barcode* pFWLBarcode = pNew.get();
