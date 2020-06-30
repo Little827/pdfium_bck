@@ -41,7 +41,7 @@ bool CXFA_FFListBox::LoadWidget() {
   ASSERT(!IsLoaded());
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   auto pNew = std::make_unique<CFWL_ListBox>(
       GetFWLApp(), std::make_unique<CFWL_WidgetProperties>(), nullptr);
@@ -81,7 +81,7 @@ bool CXFA_FFListBox::LoadWidget() {
 
 bool CXFA_FFListBox::OnKillFocus(CXFA_FFWidget* pNewFocus) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   ObservedPtr<CXFA_FFWidget> pNewWatched(pNewFocus);
   if (!ProcessCommittedData())
@@ -149,7 +149,7 @@ bool CXFA_FFListBox::UpdateFWLData() {
     return false;
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   std::vector<int32_t> iSelArray = m_pNode->GetSelectedItems();
   std::vector<CFWL_ListItem*> selItemArray(iSelArray.size());
@@ -166,7 +166,7 @@ bool CXFA_FFListBox::UpdateFWLData() {
 
 void CXFA_FFListBox::OnSelectChanged(CFWL_Widget* pWidget) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   CXFA_EventParam eParam;
   eParam.m_eType = XFA_EVENT_Change;
@@ -201,14 +201,14 @@ void CXFA_FFListBox::DeleteItem(int32_t nIndex) {
 
 void CXFA_FFListBox::OnProcessMessage(CFWL_Message* pMessage) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFListBox::OnProcessEvent(CFWL_Event* pEvent) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   CXFA_FFField::OnProcessEvent(pEvent);
   switch (pEvent->GetType()) {
@@ -224,7 +224,7 @@ void CXFA_FFListBox::OnProcessEvent(CFWL_Event* pEvent) {
 void CXFA_FFListBox::OnDrawWidget(CXFA_Graphics* pGraphics,
                                   const CFX_Matrix& matrix) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   m_pOldDelegate->OnDrawWidget(pGraphics, matrix);
 }

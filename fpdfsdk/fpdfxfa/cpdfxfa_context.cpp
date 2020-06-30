@@ -102,6 +102,8 @@ CPDFXFA_Context::~CPDFXFA_Context() {
   }
 
   m_nLoadStatus = FXFA_LOADSTATUS_CLOSED;
+  m_pGCHeap->ForceGarbageCollectionSlow(
+      "", "", cppgc::Heap::StackState::kNoHeapPointers);
 }
 
 void CPDFXFA_Context::CloseXFADoc() {

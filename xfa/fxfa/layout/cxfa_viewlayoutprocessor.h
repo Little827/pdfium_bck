@@ -13,8 +13,8 @@
 #include <memory>
 #include <vector>
 
-#include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/optional.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h"
 
 class CXFA_LayoutItem;
@@ -40,9 +40,8 @@ class CXFA_ViewLayoutProcessor {
   bool PrepareFirstPage(CXFA_Node* pRootSubform);
   float GetAvailHeight();
   bool GetNextAvailContentHeight(float fChildHeight);
-  void SubmitContentItem(
-      const RetainPtr<CXFA_ContentLayoutItem>& pContentLayoutItem,
-      CXFA_ContentLayoutProcessor::Result eStatus);
+  void SubmitContentItem(CXFA_ContentLayoutItem* pContentLayoutItem,
+                         CXFA_ContentLayoutProcessor::Result eStatus);
   void FinishPaginatedPageSets();
   void SyncLayoutData();
   int32_t GetPageCount() const;
@@ -64,9 +63,9 @@ class CXFA_ViewLayoutProcessor {
     CXFA_ViewRecord();
     ~CXFA_ViewRecord();
 
-    RetainPtr<CXFA_ViewLayoutItem> pCurPageSet;
-    RetainPtr<CXFA_ViewLayoutItem> pCurPageArea;
-    RetainPtr<CXFA_ViewLayoutItem> pCurContentArea;
+    cppgc::Persistent<CXFA_ViewLayoutItem> pCurPageSet;
+    cppgc::Persistent<CXFA_ViewLayoutItem> pCurPageArea;
+    cppgc::Persistent<CXFA_ViewLayoutItem> pCurContentArea;
   };
 
   using RecordList = std::list<std::unique_ptr<CXFA_ViewRecord>>;
@@ -162,8 +161,8 @@ class CXFA_ViewLayoutProcessor {
 
   CXFA_LayoutProcessor* m_pLayoutProcessor = nullptr;
   CXFA_Node* m_pPageSetNode = nullptr;
-  RetainPtr<CXFA_ViewLayoutItem> m_pPageSetRootLayoutItem;
-  RetainPtr<CXFA_ViewLayoutItem> m_pPageSetCurLayoutItem;
+  cppgc::Persistent<CXFA_ViewLayoutItem> m_pPageSetRootLayoutItem;
+  cppgc::Persistent<CXFA_ViewLayoutItem> m_pPageSetCurLayoutItem;
   RecordList m_ProposedViewRecords;
   RecordList::iterator m_CurrentViewRecordIter;
   CXFA_Node* m_pCurPageArea = nullptr;
@@ -172,7 +171,7 @@ class CXFA_ViewLayoutProcessor {
   XFA_AttributeValue m_ePageSetMode = XFA_AttributeValue::OrderedOccurrence;
   bool m_bCreateOverFlowPage = false;
   std::map<CXFA_Node*, int32_t> m_pPageSetMap;
-  std::vector<RetainPtr<CXFA_ViewLayoutItem>> m_PageArray;
+  std::vector<cppgc::Persistent<CXFA_ViewLayoutItem>> m_PageArray;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_VIEWLAYOUTPROCESSOR_H_

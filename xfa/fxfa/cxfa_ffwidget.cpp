@@ -317,7 +317,7 @@ bool CXFA_FFWidget::IsLoaded() {
 
 bool CXFA_FFWidget::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   PerformLayout();
   return true;
@@ -423,7 +423,7 @@ bool CXFA_FFWidget::OnRButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   CXFA_FFWidget* pParent = GetFFWidget(ToContentLayoutItem(GetParent()));
   if (pParent && !pParent->IsAncestorOf(pOldWidget)) {
@@ -441,7 +441,7 @@ bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 
 bool CXFA_FFWidget::OnKillFocus(CXFA_FFWidget* pNewWidget) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   ObservedPtr<CXFA_FFWidget> pNewWatched(pNewWidget);
   GetLayoutItem()->ClearStatusBits(XFA_WidgetStatus_Focused);
