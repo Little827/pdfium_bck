@@ -52,7 +52,7 @@ bool CXFA_FFPushButton::LoadWidget() {
   ASSERT(!IsLoaded());
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   auto pNew = std::make_unique<CFWL_PushButton>(GetFWLApp());
   CFWL_PushButton* pPushButton = pNew.get();
@@ -195,14 +195,14 @@ void CXFA_FFPushButton::RenderHighlightCaption(CXFA_Graphics* pGS,
 
 void CXFA_FFPushButton::OnProcessMessage(CFWL_Message* pMessage) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFPushButton::OnProcessEvent(CFWL_Event* pEvent) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   m_pOldDelegate->OnProcessEvent(pEvent);
   CXFA_FFField::OnProcessEvent(pEvent);
@@ -211,7 +211,7 @@ void CXFA_FFPushButton::OnProcessEvent(CFWL_Event* pEvent) {
 void CXFA_FFPushButton::OnDrawWidget(CXFA_Graphics* pGraphics,
                                      const CFX_Matrix& matrix) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   auto* pWidget = GetNormalWidget();
   if (pWidget->GetStylesEx() & XFA_FWL_PSBSTYLEEXT_HiliteInverted) {

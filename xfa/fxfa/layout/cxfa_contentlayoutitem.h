@@ -9,15 +9,15 @@
 
 #include <memory>
 
-#include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fxjs/gc/heap.h"
 #include "xfa/fxfa/layout/cxfa_layoutitem.h"
 
 class CXFA_FFWidget;
 
 class CXFA_ContentLayoutItem : public CXFA_LayoutItem {
  public:
-  CONSTRUCT_VIA_MAKE_RETAIN;
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ContentLayoutItem() override;
 
   CXFA_FFWidget* GetFFWidget() { return m_pFFWidget.get(); }

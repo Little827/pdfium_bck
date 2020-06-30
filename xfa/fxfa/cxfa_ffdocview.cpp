@@ -291,7 +291,7 @@ bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
     return false;
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |pNewFocus|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(
       pNewFocus ? pNewFocus->GetLayoutItem() : nullptr);
 
   if (m_pFocusWidget) {

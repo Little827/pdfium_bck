@@ -148,7 +148,7 @@ bool CXFA_FFField::IsLoaded() {
 
 bool CXFA_FFField::LoadWidget() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   SetFWLThemeProvider();
   m_pNode->LoadCaption(GetDoc());
@@ -383,7 +383,7 @@ void CXFA_FFField::SetFWLRect() {
 
 bool CXFA_FFField::OnMouseEnter() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget())
     return false;
@@ -396,7 +396,7 @@ bool CXFA_FFField::OnMouseEnter() {
 
 bool CXFA_FFField::OnMouseExit() {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget())
     return false;
@@ -428,7 +428,7 @@ bool CXFA_FFField::AcceptsFocusOnButtonDown(uint32_t dwFlags,
 
 bool CXFA_FFField::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   SetButtonDown(true);
   SendMessageToFWLWidget(std::make_unique<CFWL_MessageMouse>(
@@ -440,7 +440,7 @@ bool CXFA_FFField::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFField::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget())
     return false;
@@ -457,7 +457,7 @@ bool CXFA_FFField::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFField::OnLButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget())
     return false;
@@ -471,7 +471,7 @@ bool CXFA_FFField::OnLButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFField::OnMouseMove(uint32_t dwFlags, const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget())
     return false;
@@ -486,7 +486,7 @@ bool CXFA_FFField::OnMouseWheel(uint32_t dwFlags,
                                 const CFX_PointF& point,
                                 const CFX_Vector& delta) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget())
     return false;
@@ -499,7 +499,7 @@ bool CXFA_FFField::OnMouseWheel(uint32_t dwFlags,
 
 bool CXFA_FFField::OnRButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   SetButtonDown(true);
   SendMessageToFWLWidget(std::make_unique<CFWL_MessageMouse>(
@@ -516,7 +516,7 @@ bool CXFA_FFField::OnRButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
     return false;
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   SetButtonDown(false);
   SendMessageToFWLWidget(std::make_unique<CFWL_MessageMouse>(
@@ -528,7 +528,7 @@ bool CXFA_FFField::OnRButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFField::OnRButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget())
     return false;
@@ -542,7 +542,7 @@ bool CXFA_FFField::OnRButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFField::OnSetFocus(CXFA_FFWidget* pOldWidget) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!CXFA_FFWidget::OnSetFocus(pOldWidget))
     return false;
@@ -560,7 +560,7 @@ bool CXFA_FFField::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 
 bool CXFA_FFField::OnKillFocus(CXFA_FFWidget* pNewWidget) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   ObservedPtr<CXFA_FFWidget> pNewWatched(pNewWidget);
   if (GetNormalWidget()) {
@@ -574,7 +574,7 @@ bool CXFA_FFField::OnKillFocus(CXFA_FFWidget* pNewWidget) {
 
 bool CXFA_FFField::OnKeyDown(uint32_t dwKeyCode, uint32_t dwFlags) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget() || !GetDoc()->GetXFADoc()->IsInteractive())
     return false;
@@ -587,7 +587,7 @@ bool CXFA_FFField::OnKeyDown(uint32_t dwKeyCode, uint32_t dwFlags) {
 
 bool CXFA_FFField::OnKeyUp(uint32_t dwKeyCode, uint32_t dwFlags) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetNormalWidget() || !GetDoc()->GetXFADoc()->IsInteractive())
     return false;
@@ -600,7 +600,7 @@ bool CXFA_FFField::OnKeyUp(uint32_t dwKeyCode, uint32_t dwFlags) {
 
 bool CXFA_FFField::OnChar(uint32_t dwChar, uint32_t dwFlags) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   if (!GetDoc()->GetXFADoc()->IsInteractive())
     return false;
@@ -779,7 +779,7 @@ void CXFA_FFField::OnProcessMessage(CFWL_Message* pMessage) {}
 
 void CXFA_FFField::OnProcessEvent(CFWL_Event* pEvent) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   switch (pEvent->GetType()) {
     case CFWL_Event::Type::Mouse: {
