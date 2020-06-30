@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef8bef07_8d19bd3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-30T00:08:18Z",
+      "side": 1,
+      "message": "Just write CPDF_RenderStatus here, because if we change the header, then this is out of date.",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914a80f2_3c3efbc2",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-30T00:08:18Z",
+      "side": 1,
+      "message": "If this is changing, then the header should change to match.",
+      "range": {
+        "startLine": 397,
+        "startChar": 53,
+        "endLine": 397,
+        "endChar": 61
+      },
+      "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f49cf125_5a8ae554",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-06-30T00:08:18Z",
+      "side": 1,
+      "message": "Does \"stroke\" make sense without the \"is_\" prefix?",
+      "range": {
+        "startLine": 401,
+        "startChar": 7,
+        "endLine": 401,
+        "endChar": 16
+      },
+      "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
