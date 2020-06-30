@@ -22,6 +22,30 @@
       "revId": "ca42746e7bd691d6df3f999cb4bfb6120ed44a51",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7cb0282_e6d10a80",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-30T20:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0791b460_9cbb7b53",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "ca42746e7bd691d6df3f999cb4bfb6120ed44a51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
