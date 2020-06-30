@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f93deec_413df511",
+        "filename": "fxjs/gc/gced_tree_node_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-30T17:26:20Z",
+      "side": 1,
+      "message": "nit: can this just be heap_-\u003eGetAllocationHandle() ?",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "45243407d9d5757f3101381e2f3a33769b3f9ccb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
