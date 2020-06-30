@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "92b22d6e_cf117b6f",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Rename and rearrange the order of the fields in this struct in the new pathcset.",
+      "parentUuid": "3c14352f_1400d508",
+      "range": {
+        "startLine": 89,
+        "startChar": 17,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b08bba6c_c5156b78",
         "filename": "core/fxge/cfx_fillrenderoptions.cpp",
         "patchSetId": 1
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "2df16c41_196bb60a",
+        "filename": "core/fxge/cfx_fillrenderoptions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Change the parameter type of this method and added range check in GetFillRenderOptionsFromIntegerFlag() in the new patchset.\n\nCFX_FillRenderOptions(FillType fill_type) constructor is worth keeping, since it will be used in other parts of the refactoring (by looking at the code changes in https://pdfium-review.googlesource.com/70810)",
+      "parentUuid": "6c32be13_b885178a",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4f6db4c_93ed66c3",
         "filename": "core/fxge/cfx_fillrenderoptions.h",
         "patchSetId": 1
@@ -74,6 +116,24 @@
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b76ef28_fc44747e",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4f6db4c_93ed66c3",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -124,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "fcce48cb_d027532d",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f6ebe2_00fd5270",
+      "range": {
+        "startLine": 13,
+        "startChar": 17,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eca789f1_cad7eb1e",
         "filename": "core/fxge/cfx_fillrenderoptions.h",
         "patchSetId": 1
@@ -141,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "39bbed90_dd516b9a",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca789f1_cad7eb1e",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e94bedaf_637fa59a",
         "filename": "core/fxge/cfx_fillrenderoptions.h",
         "patchSetId": 1
@@ -152,6 +254,24 @@
       "writtenOn": "2020-06-29T22:32:26Z",
       "side": 1,
       "message": "What\u0027s the timeline for doing that? I\u0027m worried it will take a long time before we can get rid of these two functions. Note that in addition to the CFX_RenderDevice layer, RenderDeviceDriverIface also takes integer fill modes.",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cdd2d76_de90739f",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "These converters should be gone once the following functions are all updated:\nDrawTextPath()\nSetClip_PathFill()\nDrawPath()\nDrawPathWithBlend()\nDrawTextPath()\nDrawFillStrokePath()\nDrawCosmeticLine()\n\nSpecifically SetClip_PathFill() and DrawPath() in RenderDeviceDriverIface, which also need to be changed into using the new struct, will affect a lot of files.",
+      "parentUuid": "e94bedaf_637fa59a",
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -175,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "b0b8ab56_a6f3fed7",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07797df2_5f36c2d4",
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21aedbff_d9cd67af",
         "filename": "core/fxge/cfx_fillrenderoptions.h",
         "patchSetId": 1
@@ -195,6 +333,30 @@
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7483d6d_cbacc98d",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21aedbff_d9cd67af",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -291,6 +453,30 @@
     },
     {
       "key": {
+        "uuid": "d9b6c82e_91413681",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ff6897_c5d2d357",
+      "range": {
+        "startLine": 535,
+        "startChar": 6,
+        "endLine": 535,
+        "endChar": 7
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4ceb62a_ab4e8184",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 1
@@ -349,6 +535,30 @@
       "side": 1,
       "message": "Also, on a similar note, it could be useful to add a few unit tests to make sure the conversions work correctly.",
       "parentUuid": "4bcfbc63_0d922d95",
+      "range": {
+        "startLine": 538,
+        "startChar": 6,
+        "endLine": 538,
+        "endChar": 15
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d14c2b4_f1f82937",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T23:00:23Z",
+      "side": 1,
+      "message": "My plan is:\n1. Follow suggestion 1, making |fill_mode| const.\n2. Since this CL specifically wants to make DrawPathWithBlend() to accept the new struct, I think some progress needs to be done within this function, including replacing |fill_mode| with |fill_options| as much as possible, and only leaving the functions which are still taking |fill_mode| as parameters untouched. Then later we can have follow-up CLs such as \"Make DrawCosmeticLine()/DrawFillStrokePath()/DrawPath() accept CFX_FillRenderOptions struct\", then existence of |fill_mode| will be graudally cleaned up.\n\nOn the note of adding unit tests, since we have embeddertests coverage for rendering flags and these converters are going to be removed once refactoring is done, maybe we won\u0027t benefit much from adding unit tests for the converters?",
+      "parentUuid": "f2284612_f4643b22",
       "range": {
         "startLine": 538,
         "startChar": 6,
