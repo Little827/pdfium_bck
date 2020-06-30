@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0791b460_9cbb7b53",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-06-30T17:21:25Z",
+      "side": 1,
+      "message": "nit: local not needed. e.g.\n  \n   return pdfium::CollectionSize\u003cint\u003e(CollectSignatures(doc));",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "ca42746e7bd691d6df3f999cb4bfb6120ed44a51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
