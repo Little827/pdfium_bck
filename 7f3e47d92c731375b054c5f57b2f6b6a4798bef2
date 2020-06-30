@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "847f9b6a_f5827357",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-06-30T20:08:18Z",
+      "side": 1,
+      "message": "Made most cases use |stroke| instead of |is_stroke| in the new patch. \n\nHowever, in CPDF_RenderStatus::ProcessText(), I kept three booleans |is_fill|, |is_stroke| and |is_clip|, since they stand for the text rendering mode and cover a relatively long scope of the code. I think \"is_\" prefix there will help with readability.",
+      "parentUuid": "e05a9a40_089492de",
+      "range": {
+        "startLine": 401,
+        "startChar": 7,
+        "endLine": 401,
+        "endChar": 16
+      },
+      "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad60450d_4ae03cdc",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 4
