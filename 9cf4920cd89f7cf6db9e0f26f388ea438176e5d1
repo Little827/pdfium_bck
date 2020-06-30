@@ -22,6 +22,30 @@
       "revId": "9cf4920cd89f7cf6db9e0f26f388ea438176e5d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321b7c55_2654b575",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-06-30T09:31:54Z",
+      "side": 1,
+      "message": "Ah, I was not aware of pdfium::CollectionSize, done now.",
+      "parentUuid": "7c0f1aa2_b34527f4",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "9cf4920cd89f7cf6db9e0f26f388ea438176e5d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
