@@ -68,6 +68,29 @@
       "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad60450d_4ae03cdc",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-06-30T01:02:18Z",
+      "side": 1,
+      "message": "Not sure what criteria was used to change bStroke -\u003e is_stroke, but leave bFill alone? Sure, it might be confusing to change a lot of things at once, but the choice seems arbitrary in this case.",
+      "range": {
+        "startLine": 1072,
+        "startChar": 53,
+        "endLine": 1072,
+        "endChar": 58
+      },
+      "revId": "7f3e47d92c731375b054c5f57b2f6b6a4798bef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
