@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f191f7_45bef6c4",
+        "filename": "fxjs/gc/heap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-01T20:26:20Z",
+      "side": 1,
+      "message": "Note: nullptr is OK per Michael.",
+      "range": {
+        "startLine": 79,
+        "startChar": 51,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "8e8851b45b9c7704f600a62f8dfa9d741c04e15b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
