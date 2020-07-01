@@ -614,5 +614,6 @@ FPDFTextObj_SetTextRenderMode(FPDF_PAGEOBJECT text,
 
   pTextObj->m_TextState.SetTextMode(
       static_cast<TextRenderingMode>(render_mode));
+  pTextObj->SetDirty(true);
   return true;
 }
