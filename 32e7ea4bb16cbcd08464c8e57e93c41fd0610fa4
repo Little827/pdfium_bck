@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8865ba8_32b77ac9",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-01T00:29:23Z",
+      "side": 1,
+      "message": "Change this to CFX_FillRenderOptions::FillType and call GetFillType() from the caller.\n- We\u0027ll need to do this at some point anyway.\n- It\u0027s more obvious from the caller\u0027s perspective that |fill_type| won\u0027t trigger any ASSERTs in GetFillType().",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 7
+      },
+      "revId": "32e7ea4bb16cbcd08464c8e57e93c41fd0610fa4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd62c47_5e416e52",
+        "filename": "core/fxge/cfx_fillrenderoptions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-01T00:29:23Z",
+      "side": 1,
+      "message": "Break ASSERT(cond1 \u0026\u0026 cond2) into ASSERT(cond1); ASSERT(cond2). As is, with a failure, it\u0027s not obvious which conditional failed.",
+      "revId": "32e7ea4bb16cbcd08464c8e57e93c41fd0610fa4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1d56ca_8aff4147",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-01T00:29:23Z",
+      "side": 1,
+      "message": "Flags? Since the input parameter is named |flags|. Same for the converter in the other direction.",
+      "range": {
+        "startLine": 68,
+        "startChar": 47,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "32e7ea4bb16cbcd08464c8e57e93c41fd0610fa4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b6953d_d022aed7",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-01T00:29:23Z",
+      "side": 1,
+      "message": "Why don\u0027t we call this in the 2 places where it\u0027s used?\n- Right above line 546.\n- Right above line 622.",
+      "revId": "32e7ea4bb16cbcd08464c8e57e93c41fd0610fa4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
