@@ -1,5 +1,10 @@
 use_relative_paths = True
 
+gclient_gn_args_file = 'build/config/gclient_args.gni'
+gclient_gn_args = [
+  'mac_xcode_version',
+]
+
 vars = {
   # By default, we should check out everything needed to run on the main
   # chromium waterfalls. This var can be also be set to 'small', in order
@@ -19,7 +24,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
-  'build_revision': '20016b0d4b1ec6d1c81f177b831cce4ca5775c71',
+  'build_revision': '1077afd5ca04d6759110607d912f0d2ff7a176c5',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling buildtools
   # and whatever else without interference from each other.
