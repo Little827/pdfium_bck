@@ -406,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "88ed67bf_8269bd44",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-01T16:17:28Z",
+      "side": 1,
+      "message": "Might be more consistent at this point to adopt this suggestion.",
+      "parentUuid": "7113248a_40cc8c9a",
+      "range": {
+        "startLine": 522,
+        "startChar": 41,
+        "endLine": 522,
+        "endChar": 53
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec3be8a6_f3ddf2a3",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 1
@@ -568,6 +592,30 @@
       "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d893a3f0_6afb7f8a",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-01T16:17:28Z",
+      "side": 1,
+      "message": "Ack\n\nTests are always useful. :-) If you expect to remove them in, say, a week, then maybe it\u0027s not high value work, though.",
+      "parentUuid": "6d14c2b4_f1f82937",
+      "range": {
+        "startLine": 538,
+        "startChar": 6,
+        "endLine": 538,
+        "endChar": 15
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
