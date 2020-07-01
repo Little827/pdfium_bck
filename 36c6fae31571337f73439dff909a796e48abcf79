@@ -34,6 +34,24 @@
       "revId": "36c6fae31571337f73439dff909a796e48abcf79",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57eda97f_7caa9b22",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-01T04:57:46Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "6c60fbcc_96be1a7e",
+      "revId": "36c6fae31571337f73439dff909a796e48abcf79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
