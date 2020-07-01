@@ -73,5 +73,11 @@ void FXGCHeapDeleter::operator()(cppgc::Heap* heap) {
   ASSERT(heap);
   ASSERT(g_platform_ref_count > 0);
   --g_platform_ref_count;
+
+  heap->ForceGarbageCollectionSlow("FXGCHeapDeleter", "FinalGCBeforeDelete",
+                                   cppgc::Heap::StackState::kNoHeapPointers);
+  while (v8::platform::PumpMessageLoop(g_platform, nullptr))
+    continue;
+
   delete heap;
 }
