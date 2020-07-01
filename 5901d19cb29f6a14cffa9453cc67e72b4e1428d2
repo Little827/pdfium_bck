@@ -430,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "93b51274_1c0c7e07",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-01T16:53:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88ed67bf_8269bd44",
+      "range": {
+        "startLine": 522,
+        "startChar": 41,
+        "endLine": 522,
+        "endChar": 53
+      },
+      "revId": "5901d19cb29f6a14cffa9453cc67e72b4e1428d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec3be8a6_f3ddf2a3",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 1
