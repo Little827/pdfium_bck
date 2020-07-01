@@ -16,6 +16,24 @@
       "revId": "36c6fae31571337f73439dff909a796e48abcf79",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c60fbcc_96be1a7e",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-01T04:45:01Z",
+      "side": 1,
+      "message": "It\u0027s probably fine to keep it as is and be explicit about the render mode.",
+      "parentUuid": "5eb993e8_f460e1ed",
+      "revId": "36c6fae31571337f73439dff909a796e48abcf79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
