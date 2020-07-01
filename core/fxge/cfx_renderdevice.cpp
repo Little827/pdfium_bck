@@ -534,7 +534,6 @@ bool CFX_RenderDevice::DrawPathWithBlend(
       fill_options.fill_type != CFX_FillRenderOptions::FillType::kNoFill
           ? FXARGB_A(fill_color)
           : 0;
-  const int fill_mode = GetIntegerFlagFromFillOptions(fill_options);
   pdfium::span<const FX_PATHPOINT> points = pPathData->GetPoints();
   if (stroke_alpha == 0 && points.size() == 2) {
     CFX_PointF pos1 = points[0].m_Point;
@@ -543,7 +542,7 @@ bool CFX_RenderDevice::DrawPathWithBlend(
       pos1 = pObject2Device->Transform(pos1);
       pos2 = pObject2Device->Transform(pos2);
     }
-    DrawCosmeticLine(pos1, pos2, fill_color, fill_mode, blend_type);
+    DrawCosmeticLine(pos1, pos2, fill_color, fill_options, blend_type);
     return true;
   }
 
@@ -619,6 +618,7 @@ bool CFX_RenderDevice::DrawPathWithBlend(
                                 smooth_path, blend_type);
     }
   }
+  const int fill_mode = GetIntegerFlagFromFillOptions(fill_options);
   if (fill_options.fill_type != CFX_FillRenderOptions::FillType::kNoFill &&
       fill_alpha && stroke_alpha < 0xff && fill_options.stroke) {
     if (m_RenderCaps & FXRC_FILLSTROKE_PATH) {
@@ -627,7 +627,8 @@ bool CFX_RenderDevice::DrawPathWithBlend(
                                        blend_type);
     }
     return DrawFillStrokePath(pPathData, pObject2Device, pGraphState,
-                              fill_color, stroke_color, fill_mode, blend_type);
+                              fill_color, stroke_color, fill_options,
+                              blend_type);
   }
   return m_pDeviceDriver->DrawPath(pPathData, pObject2Device, pGraphState,
                                    fill_color, stroke_color, fill_mode,
@@ -635,13 +636,14 @@ bool CFX_RenderDevice::DrawPathWithBlend(
 }
 
 // This can be removed once PDFium entirely relies on Skia
-bool CFX_RenderDevice::DrawFillStrokePath(const CFX_PathData* pPathData,
-                                          const CFX_Matrix* pObject2Device,
-                                          const CFX_GraphStateData* pGraphState,
-                                          uint32_t fill_color,
-                                          uint32_t stroke_color,
-                                          int fill_mode,
-                                          BlendMode blend_type) {
+bool CFX_RenderDevice::DrawFillStrokePath(
+    const CFX_PathData* pPathData,
+    const CFX_Matrix* pObject2Device,
+    const CFX_GraphStateData* pGraphState,
+    uint32_t fill_color,
+    uint32_t stroke_color,
+    const CFX_FillRenderOptions& fill_options,
+    BlendMode blend_type) {
   if (!(m_RenderCaps & FXRC_GET_BITS))
     return false;
   CFX_FloatRect bbox;
@@ -679,8 +681,8 @@ bool CFX_RenderDevice::DrawFillStrokePath(const CFX_PathData* pPathData,
     matrix = *pObject2Device;
   matrix.Translate(-rect.left, -rect.top);
   if (!bitmap_device.GetDeviceDriver()->DrawPath(
-          pPathData, &matrix, pGraphState, fill_color, stroke_color, fill_mode,
-          blend_type)) {
+          pPathData, &matrix, pGraphState, fill_color, stroke_color,
+          GetIntegerFlagFromFillOptions(fill_options), blend_type)) {
     return false;
   }
 #if defined _SKIA_SUPPORT_ || defined _SKIA_SUPPORT_PATHS_
@@ -717,11 +719,12 @@ bool CFX_RenderDevice::FillRectWithBlend(const FX_RECT& rect,
   return true;
 }
 
-bool CFX_RenderDevice::DrawCosmeticLine(const CFX_PointF& ptMoveTo,
-                                        const CFX_PointF& ptLineTo,
-                                        uint32_t color,
-                                        int fill_mode,
-                                        BlendMode blend_type) {
+bool CFX_RenderDevice::DrawCosmeticLine(
+    const CFX_PointF& ptMoveTo,
+    const CFX_PointF& ptLineTo,
+    uint32_t color,
+    const CFX_FillRenderOptions& fill_options,
+    BlendMode blend_type) {
   if ((color >= 0xff000000) && m_pDeviceDriver->DrawCosmeticLine(
                                    ptMoveTo, ptLineTo, color, blend_type)) {
     return true;
@@ -731,7 +734,8 @@ bool CFX_RenderDevice::DrawCosmeticLine(const CFX_PointF& ptMoveTo,
   path.AppendPoint(ptMoveTo, FXPT_TYPE::MoveTo);
   path.AppendPoint(ptLineTo, FXPT_TYPE::LineTo);
   return m_pDeviceDriver->DrawPath(&path, nullptr, &graph_state, 0, color,
-                                   fill_mode, blend_type);
+                                   GetIntegerFlagFromFillOptions(fill_options),
+                                   blend_type);
 }
 
 bool CFX_RenderDevice::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
