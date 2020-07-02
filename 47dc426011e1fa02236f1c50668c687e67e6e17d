@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69ae683f_2e8cfa26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7956
+      },
+      "writtenOn": "2020-07-02T18:52:26Z",
+      "side": 1,
+      "message": "That should not be the case: We do have internal infrastructure for cancelation in case of termination (or other reasons). In other words: You should be able to ignore pending tasks in the platform and just teardown your heap when you want to.\n\nThe tasks will stay in the platform but immediately bail out on execution through their Run() method.\n\nIf you encountered an issue there please lmk.",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "47dc426011e1fa02236f1c50668c687e67e6e17d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
