@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "935722b5_87ed565b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-06T22:32:20Z",
+      "side": 1,
+      "message": "I missed a word here. Fixed in patch set 2.",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "2aeefe4ec8846a7ceacc1c608744886a7f8c6a3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e29a6a3c_dc88e98d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
