@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1594067845 -0700\nnonce ALC2d1+cQjDGgyD8zASGjLyC3QlUSIhVasHfLiqNvU7fqpILtrZWpFMFl5OQnzsluuDHhs/wF1it\n\n0000000000000000000000000000000000000000 ab6519a3e685d9f95fa838b1c80eb5e85db423e2 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8Di4UACgkQqzYtYVpm\n/XtZYAf+Ja9+m7UHZaLGmck/MTJj46jNzIc0uLNrV5YHeFq/KWIwlKs4D7uwAInF\nGOiY68tqDPLfnd3Cg2fLjVrxVMNVEwD+IkjVHC9AcFWxwKl6p3t4MzLzbANtIeED\nCs8EtGqQrfrW9s3sRSEU1msa0/CXkvkHXolMxcUkX053vLiePZXaRhz0H7Xy2+hO\ntFw9I6aF5AhxlryuM2Op2UXp7vsJFIORof8kbn2aMqx/mYIm9B/DhjtkNbOzY0zh\nF6BJsuelxk1x+hZ7iWa0kW1jMQYErrChhlms0IBeby58bUYdrbq1heicJCbr7UEV\nQupbhyMIOm1L5CHXuUTyFybzlRIYYQ\u003d\u003d\n\u003dO50G\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3285c9d5_9df84527",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-06T22:11:19Z",
+      "side": 1,
+      "message": "nit",
+      "revId": "ab6519a3e685d9f95fa838b1c80eb5e85db423e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d74d81f6_9fdff451",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-06T22:11:19Z",
+      "side": 1,
+      "message": "nit: empty() check not needed since the loop below it degenerates into a no-op for that case otherwise?",
+      "range": {
+        "startLine": 591,
+        "startChar": 35,
+        "endLine": 591,
+        "endChar": 36
+      },
+      "revId": "ab6519a3e685d9f95fa838b1c80eb5e85db423e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
