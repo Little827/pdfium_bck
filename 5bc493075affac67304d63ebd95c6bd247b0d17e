@@ -16,6 +16,24 @@
       "revId": "5bc493075affac67304d63ebd95c6bd247b0d17e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccb8995a_aa724da3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-06T20:53:10Z",
+      "side": 1,
+      "message": "Follow-up CL: https://pdfium-review.googlesource.com/71151",
+      "parentUuid": "79a67f84_e76b77e5",
+      "revId": "5bc493075affac67304d63ebd95c6bd247b0d17e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
