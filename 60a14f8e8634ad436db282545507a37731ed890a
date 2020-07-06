@@ -17,6 +17,24 @@
       "revId": "60a14f8e8634ad436db282545507a37731ed890a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9089c6ce_f5f5d52f",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-06T21:45:40Z",
+      "side": 1,
+      "message": "Updated with real commit.",
+      "parentUuid": "788ef428_26f5fcc3",
+      "revId": "60a14f8e8634ad436db282545507a37731ed890a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
