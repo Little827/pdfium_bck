@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79a67f84_e76b77e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-06T20:47:58Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2: Code-Review+1\n\u003e \n\u003e Though if you\u0027re only rolling this one commit I suppose it\u0027s fine as-is. I\u0027m assuming if you got here that you don\u0027t have a builder using Skia on Mac, since the commit previous to this one deleted SkFontHost_mac.cpp .\n\nWe do have a Skia Mac bot: https://ci.chromium.org/p/pdfium/builders/try/mac_skia, which is what alerted me to update skia/BUILD.gn. PDFium\u0027s skia/BUILD.gn, for whatever reason, does not include SkFontHost_mac.cpp for the Mac build. It\u0027s only included for iOS builds, which I will clean up separately.",
+      "revId": "5bc493075affac67304d63ebd95c6bd247b0d17e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
