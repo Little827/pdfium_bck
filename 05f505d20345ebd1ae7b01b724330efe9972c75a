@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6539f1c0_5bbf265a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-07T16:15:20Z",
+      "side": 1,
+      "message": "When I open the PDF in Acrobat, I get an error that it\u0027s malformed. Is it supposed to do that?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "05f505d20345ebd1ae7b01b724330efe9972c75a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210e9249_fdabaf07",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3246,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-07T16:15:20Z",
+      "side": 1,
+      "message": "Not at all a big deal, but should this test just be named ExtractSMaskBitmap (for consistency with above tests) and instead of your comment above, set a TODO to describe the incorrect behavior? Like:\n\n // TODO(crbug.com/pdfium/1554): Fix FPDFImageObj_GetBitmap() to take /SMask\n // into account.\n TEST_F(FPDFEditEmbedderTest, ExtractSMaskBitmap) {\n   ...\n }",
+      "range": {
+        "startLine": 3246,
+        "startChar": 29,
+        "endLine": 3246,
+        "endChar": 46
+      },
+      "revId": "05f505d20345ebd1ae7b01b724330efe9972c75a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
