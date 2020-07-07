@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1b1f8d0_ba1aad12",
+        "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-07T19:29:23Z",
+      "side": 1,
+      "message": "This casting is not necessary. It\u0027s really casting an int to... an int.",
+      "range": {
+        "startLine": 230,
+        "startChar": 18,
+        "endLine": 230,
+        "endChar": 35
+      },
+      "revId": "7b5b880a7283e5a5e3b7aa7a24f91bb329185987",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
