@@ -151,9 +151,10 @@ void CFX_PSRenderer::OutputPath(const CFX_PathData* pPathData,
   WriteToStream(&buf);
 }
 
-void CFX_PSRenderer::SetClip_PathFill(const CFX_PathData* pPathData,
-                                      const CFX_Matrix* pObject2Device,
-                                      int fill_mode) {
+void CFX_PSRenderer::SetClip_PathFill(
+    const CFX_PathData* pPathData,
+    const CFX_Matrix* pObject2Device,
+    const CFX_FillRenderOptions& fill_options) {
   StartRendering();
   OutputPath(pPathData, pObject2Device);
   CFX_FloatRect rect = pPathData->GetBoundingBox();
@@ -166,7 +167,7 @@ void CFX_PSRenderer::SetClip_PathFill(const CFX_PathData* pPathData,
   m_ClipBox.bottom = static_cast<int>(rect.bottom);
 
   m_pStream->WriteString("W");
-  if ((fill_mode & 3) != FXFILL_WINDING)
+  if (fill_options.fill_type != CFX_FillRenderOptions::FillType::kWinding)
     m_pStream->WriteString("*");
   m_pStream->WriteString(" n\n");
 }

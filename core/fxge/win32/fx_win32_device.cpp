@@ -36,6 +36,13 @@
 
 namespace {
 
+static_assert(static_cast<int>(CFX_FillRenderOptions::FillType::kEvenOdd) ==
+                  ALTERNATE,
+              "CFX_FillRenderOptions::FillType::kEvenOdd value mismatch");
+static_assert(static_cast<int>(CFX_FillRenderOptions::FillType::kWinding) ==
+                  WINDING,
+              "CFX_FillRenderOptions::FillType::kWinding value mismatch");
+
 const struct {
   const char* m_pFaceName;
   const char* m_pVariantName;  // Note: UTF-16LE terminator required.
@@ -1083,9 +1090,10 @@ void CGdiDeviceDriver::SetBaseClip(const FX_RECT& rect) {
   m_BaseClipBox = rect;
 }
 
-bool CGdiDeviceDriver::SetClip_PathFill(const CFX_PathData* pPathData,
-                                        const CFX_Matrix* pMatrix,
-                                        int fill_mode) {
+bool CGdiDeviceDriver::SetClip_PathFill(
+    const CFX_PathData* pPathData,
+    const CFX_Matrix* pMatrix,
+    const CFX_FillRenderOptions& fill_options) {
   if (pPathData->GetPoints().size() == 5) {
     Optional<CFX_FloatRect> maybe_rectf = pPathData->GetRect(pMatrix);
     if (maybe_rectf.has_value()) {
@@ -1099,7 +1107,7 @@ bool CGdiDeviceDriver::SetClip_PathFill(const CFX_PathData* pPathData,
     }
   }
   SetPathToDC(m_hDC, pPathData, pMatrix);
-  SetPolyFillMode(m_hDC, fill_mode & 3);
+  SetPolyFillMode(m_hDC, static_cast<int>(fill_options.fill_type));
   SelectClipPath(m_hDC, RGN_AND);
   return true;
 }
