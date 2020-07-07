@@ -12,8 +12,13 @@
 
 namespace {
 
+static_assert(static_cast<int>(CFX_FillRenderOptions::FillType::kWinding) ==
+                  FXFILL_WINDING,
+              "CFX_FillRenderOptions::FillType::kWinding value mismatch");
+
 constexpr CFX_Matrix kIdentityMatrix;
-constexpr int kWindingOptions = FXFILL_WINDING;
+constexpr CFX_FillRenderOptions& kWindingOptions =
+    CFX_FillRenderOptions::WindingOptions();
 
 }  // namespace
 
