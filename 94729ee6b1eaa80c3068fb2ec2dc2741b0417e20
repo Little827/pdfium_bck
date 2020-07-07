@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fffdbe9_66e64571",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-07T23:51:23Z",
+      "side": 1,
+      "message": "Is this comment still helpful?",
+      "range": {
+        "startLine": 1962,
+        "startChar": 50,
+        "endLine": 1962,
+        "endChar": 62
+      },
+      "revId": "94729ee6b1eaa80c3068fb2ec2dc2741b0417e20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884e5028_5989e670",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-07T23:51:23Z",
+      "side": 1,
+      "message": "We already talked about not adding static initializers in an earlier CL.",
+      "revId": "94729ee6b1eaa80c3068fb2ec2dc2741b0417e20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8789394a_1aa213ab",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-07T23:51:23Z",
+      "side": 1,
+      "message": "It may be good to abstract this away in a FillTypeToGdiFillType() helper function. Then we can deal with the conversion in 1 spot instead of 3.",
+      "revId": "94729ee6b1eaa80c3068fb2ec2dc2741b0417e20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
