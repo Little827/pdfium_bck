@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42255c3f_04bf7be8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-07T20:42:50Z",
+      "side": 1,
+      "message": "Lei, this CL adds notes to my future self.",
+      "revId": "871a64a884fd5b87b891ef8f1f35a3d361826369",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
