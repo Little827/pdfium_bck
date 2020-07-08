@@ -16,7 +16,7 @@ void JSEmbedderTest::SetUp() {
   params.array_buffer_allocator = m_pArrayBufferAllocator.get();
   m_pIsolate.reset(v8::Isolate::New(params));
 
-  EmbedderTest::SetExternalIsolate(isolate());
+  EmbedderTest::SetExternalIsolate(m_pIsolate.get());
   EmbedderTest::SetUp();
 
   v8::Isolate::Scope isolate_scope(isolate());
