@@ -19,6 +19,7 @@ class JSEmbedderTest : public EmbedderTest {
   JSEmbedderTest();
   ~JSEmbedderTest() override;
 
+  // EmbedderTest:
   void SetUp() override;
   void TearDown() override;
 
