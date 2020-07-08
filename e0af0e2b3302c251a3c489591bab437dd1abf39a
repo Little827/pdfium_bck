@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1594245403 -0700\nnonce ALC2d1/LKlI8AhaX7nEzvGgntRAjxqCqFtFElqd+CVm1jaEi7z1MQARuBiy5NUUOKJk8zu1Xq0Wv\n\n0000000000000000000000000000000000000000 e0af0e2b3302c251a3c489591bab437dd1abf39a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8GQRsACgkQqzYtYVpm\n/XvKoQf/bA6hSH76nxL8nWjTxOfnSNKl6kJB7MwkC++Pf2rH7RDwXcTd+2WmLCl8\nCVUOGfdVnRSIWb+0nifpF+qk/t6dX2Oylg2L9ahIX/oBuqei53yHsTKHv/SvOTBO\nQara9hIDoyONm229L1g3vCkjRLPah1P713XFQ020FOCQAEJLracPmztmoYYcntjG\nqBYXidhqZV6gGIZOnTf9DxZ9VQalYczQSnnz2Fi0QYMLtHIhi8/4ReBtN68qtwEL\nrXTOh4np+NqisG8FsQT889/aBDU7Cs9K1rFZlHKTWEl3h9qsXwTu5JjACHbQv81E\nbsYyVmHH65VvHjTdW2IfcCL9soNmiA\u003d\u003d\n\u003dTAO9\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c5d1687_e4fba457",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-08T22:44:39Z",
+      "side": 1,
+      "message": "The __wasm__ check was added in April 2019. OS_ASMJS got updated to cover __wasm__ in August 2019.",
+      "revId": "e0af0e2b3302c251a3c489591bab437dd1abf39a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
