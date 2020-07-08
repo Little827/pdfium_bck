@@ -457,7 +457,7 @@ bool CPSPrinterDriver::DrawPath(const CFX_PathData* pPathData,
     return false;
   return m_PSRenderer.DrawPath(pPathData, pObject2Device, pGraphState,
                                fill_color, stroke_color,
-                               static_cast<int>(fill_options.fill_type));
+                               fill_options.fill_type);
 }
 
 bool CPSPrinterDriver::GetClipBox(FX_RECT* pRect) {
