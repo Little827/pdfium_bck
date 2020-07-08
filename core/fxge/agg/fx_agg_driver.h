@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/renderdevicedriver_iface.h"
 #include "third_party/agg23/agg_clip_liang_barsky.h"
 #include "third_party/agg23/agg_path_storage.h"
@@ -118,7 +119,7 @@ class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
 #if defined(OS_MACOSX)
   void* m_pPlatformGraphics = nullptr;
 #endif
-  int m_FillFlags = 0;
+  CFX_FillRenderOptions m_FillOptions;
   const bool m_bRgbByteOrder;
   const bool m_bGroupKnockout;
   RetainPtr<CFX_DIBitmap> m_pBackdropBitmap;
