@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "de9aebaf_ee3a0161",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-08T22:39:52Z",
+      "side": 1,
+      "message": "IsWindingOrEvenOddFillType() is not necessary in that case, and it there are repetitive checks for |kNoFill| in one function, we can always replace them with a local boolean variable.\n\nOn that note, I will remove IsWindingOrEvenOddFillType() from this CL and the followup CLs.\n\nAs for |kAlternateOrWindingFillModeMask|, GetAlternateOrWindingFillMode(), IsAlternateFillMode(), GetAlternateOrWindingFillType(), they will either be removed or updated in a separate CL. Same approach will be done for fx_skia_driver.cpp as well.",
+      "parentUuid": "e302ec76_acf12cec",
+      "range": {
+        "startLine": 1349,
+        "startChar": 6,
+        "endLine": 1349,
+        "endChar": 45
+      },
+      "revId": "31641198f7b1584feec53886bbe37a826d03a5ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "422a7b71_ce0683f5",
         "filename": "core/fxge/win32/fx_win32_print.cpp",
         "patchSetId": 7
