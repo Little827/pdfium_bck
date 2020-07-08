@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1d1c9947_3ec89258",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-08T22:59:01Z",
+      "side": 1,
+      "message": "Looks like parts of it were intentionally designed to be slightly malformed. So leaving it as is.",
+      "parentUuid": "eb8dcc9d_7e024755",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "05f505d20345ebd1ae7b01b724330efe9972c75a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "210e9249_fdabaf07",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "05f505d20345ebd1ae7b01b724330efe9972c75a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572963f7_7ad7122c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-08T22:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "210e9249_fdabaf07",
+      "range": {
+        "startLine": 3246,
+        "startChar": 29,
+        "endLine": 3246,
+        "endChar": 46
+      },
+      "revId": "05f505d20345ebd1ae7b01b724330efe9972c75a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
