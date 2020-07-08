@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12a155e7_584a1346",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-08T03:46:58Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure what\u0027s the sequence to follow when this helper function needs to be defined before static_assert. So far I have not found a clear guidance on this issue. Right now I leave static_assert checks right after the function is declared. Please let me know if you have other preferences.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 64
+      },
+      "revId": "5ae978d56f96551e47d247ac71c471678b463a79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
