@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb8dcc9d_7e024755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-08T22:24:24Z",
+      "side": 1,
+      "message": "Uh, that\u0027s a pre-existing issue with testing/resources/pixel/matte.in. You can guess who to blame for that. Let me see if I can fix that first.",
+      "parentUuid": "6539f1c0_5bbf265a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "05f505d20345ebd1ae7b01b724330efe9972c75a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "210e9249_fdabaf07",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 2
