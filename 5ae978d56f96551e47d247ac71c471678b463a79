@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4e9fad27_4d3e7a77",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-08T05:58:20Z",
+      "side": 1,
+      "message": "I would put all the new code here after GetSubFontName(). GetSubFontName() uses |g_JpFontNameMap|, so it would be nice for the two to stick together, without this wedged in between.",
+      "revId": "5ae978d56f96551e47d247ac71c471678b463a79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12a155e7_584a1346",
         "filename": "core/fxge/win32/fx_win32_device.cpp",
         "patchSetId": 6
@@ -22,6 +39,30 @@
       "revId": "5ae978d56f96551e47d247ac71c471678b463a79",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bdbec49_f855bcda",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-08T05:58:20Z",
+      "side": 1,
+      "message": "This makes sense to me.",
+      "parentUuid": "12a155e7_584a1346",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 64
+      },
+      "revId": "5ae978d56f96551e47d247ac71c471678b463a79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
