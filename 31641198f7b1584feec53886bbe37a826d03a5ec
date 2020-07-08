@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdf47155_7b4be9a0",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-08T20:35:41Z",
+      "side": 1,
+      "message": "IsAlternateOrWindingFillMode() and GetAlternateOrWindingFillMode() are defined in both fx_agg_driver.cpp and fx_skia_driver.cpp. To keep this CL size small, they will be replaced with IsWindingOrEvenOddFillType() and another new function defined in cfx_fillrenderoptions.h in some follow-up CLs, which will focus on completely remove |fill_mode|\u0027s existence in these two files.",
+      "range": {
+        "startLine": 1349,
+        "startChar": 6,
+        "endLine": 1349,
+        "endChar": 45
+      },
+      "revId": "31641198f7b1584feec53886bbe37a826d03a5ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
