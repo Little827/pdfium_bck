@@ -75,3 +75,7 @@ int GetIntegerFlagsFromFillOptions(const CFX_FillRenderOptions& options) {
     flags |= FX_ZEROAREA_FILL;
   return flags;
 }
+
+bool IsWindingOrEvenOddFillType(CFX_FillRenderOptions::FillType fill_type) {
+  return fill_type != CFX_FillRenderOptions::FillType::kNoFill;
+}

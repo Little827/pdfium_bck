@@ -81,7 +81,7 @@ CFX_FillRenderOptions GetFillOptionsForDrawPathWithBlend(
     bool is_stroke,
     bool is_type3_char) {
   CFX_FillRenderOptions fill_options(fill_type);
-  if (fill_type != CFX_FillRenderOptions::FillType::kNoFill && options.bRectAA)
+  if (IsWindingOrEvenOddFillType(fill_type) && options.bRectAA)
     fill_options.rect_aa = true;
   if (options.bNoPathSmooth)
     fill_options.aliased_path = true;

@@ -74,4 +74,7 @@ CFX_FillRenderOptions GetFillOptionsFromIntegerFlags(int flags);
 // struct |options|.
 int GetIntegerFlagsFromFillOptions(const CFX_FillRenderOptions& options);
 
+// Indicates whether |fill_type| is winding or even-odd.
+bool IsWindingOrEvenOddFillType(CFX_FillRenderOptions::FillType fill_type);
+
 #endif  // CORE_FXGE_CFX_FILLRENDEROPTIONS_H_
