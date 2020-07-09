@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8b73e5d_aaec0d37",
+        "filename": "xfa/fwl/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-09T00:25:02Z",
+      "side": 1,
+      "message": "NOTE: seems to want this in order to link the above test.",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 11
+      },
+      "revId": "33e09b65ae79a46303eca8d0db1ba20dc7cf1ce8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
