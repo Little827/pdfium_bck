@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "597c4efb_a4fa03d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-09T16:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b759fd2c_7a6baa2b",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "d6ed63877202ab4b4fce890dbf84ad15492b990a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2150069b_3bf5fbe8",
         "filename": "testing/external_engine_embedder_test.h",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "d6ed63877202ab4b4fce890dbf84ad15492b990a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98d150e_6f654476",
+        "filename": "testing/external_engine_embedder_test.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-09T16:08:30Z",
+      "side": 1,
+      "message": "Added comment.  I left the public methods test as-is, though as a follow-up I\u0027ll take a look at why this isn\u0027t just run as a javascript test instead.",
+      "parentUuid": "2150069b_3bf5fbe8",
+      "revId": "d6ed63877202ab4b4fce890dbf84ad15492b990a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
