@@ -1276,6 +1276,7 @@ CXFA_Document::CXFA_Document(CXFA_FFNotify* notify,
                              std::unique_ptr<LayoutProcessorIface> pLayout)
     : CXFA_NodeOwner(),
       notify_(notify),
+      heap_(notify->GetHDOC()->GetHeap()),
       m_pLayoutProcessor(std::move(pLayout)) {
   if (m_pLayoutProcessor)
     m_pLayoutProcessor->SetDocument(this);
