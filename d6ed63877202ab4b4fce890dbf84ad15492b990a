@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b759fd2c_7a6baa2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-09T01:22:52Z",
+      "side": 1,
+      "message": "https://crbug.com/1101152 will get the reader to the bug more often. e.g. when viewing in \"git log\".",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "d6ed63877202ab4b4fce890dbf84ad15492b990a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2150069b_3bf5fbe8",
+        "filename": "testing/external_engine_embedder_test.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-09T01:22:52Z",
+      "side": 1,
+      "message": "It\u0027ll be helpful to have some comments to explain when to use an ExternalEngineEmbedderTest vs. a JSEmbedderTest. It\u0027s not obvious why CJS_PublicMethodsEmbedderTest needs to be an ExternalEngineEmbedderTest, for instance.",
+      "revId": "d6ed63877202ab4b4fce890dbf84ad15492b990a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
