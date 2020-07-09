@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ce78a4_289a95bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-09T18:35:09Z",
+      "side": 1,
+      "message": "Lei, minor irritant noticed while trying to heapify cjx_object.",
+      "revId": "d5358c8e044bfce8779bf668272a5a6446383ed1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
