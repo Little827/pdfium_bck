@@ -81,6 +81,24 @@
       "revId": "d6ed63877202ab4b4fce890dbf84ad15492b990a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b400768d_861fed1f",
+        "filename": "testing/external_engine_embedder_test.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-09T16:12:39Z",
+      "side": 1,
+      "message": "Ideally, once we fix the public methods test, this can all be encapsulated in the one test that needs it, but for the moment it needs to be used in two places to not affect current behaviour.",
+      "parentUuid": "d98d150e_6f654476",
+      "revId": "d6ed63877202ab4b4fce890dbf84ad15492b990a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
