@@ -19,14 +19,6 @@
 
 #include "build/build_config.h"
 
-#if defined(_MSC_VER) && _MSC_VER < 1900
-#error Sorry, VC++ 2015 or later is required to compile PDFium.
-#endif  // defined(_MSC_VER) && _MSC_VER < 1900
-
-#if defined(__wasm__) && defined(PDF_ENABLE_V8)
-#error Cannot compile v8 with wasm.
-#endif  // PDF_ENABLE_V8
-
 #if defined(OS_WIN)
 #include <windows.h>
 #include <sal.h>
