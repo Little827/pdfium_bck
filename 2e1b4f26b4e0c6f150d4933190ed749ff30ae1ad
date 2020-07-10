@@ -46,6 +46,30 @@
       "revId": "2e1b4f26b4e0c6f150d4933190ed749ff30ae1ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd5f3c44_353e22a8",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-10T20:02:13Z",
+      "side": 0,
+      "message": "Ah, SGTM. I had mixed feelings about it anyway. 😊",
+      "parentUuid": "727b9ca6_d98d27de",
+      "range": {
+        "startLine": 1353,
+        "startChar": 6,
+        "endLine": 1353,
+        "endChar": 34
+      },
+      "revId": "2e1b4f26b4e0c6f150d4933190ed749ff30ae1ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
