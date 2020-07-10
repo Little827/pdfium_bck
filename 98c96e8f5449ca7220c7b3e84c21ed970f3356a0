@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1594407739 -0700\nnonce ALC2d1809KIjb9gR0uZr729WZXVy0TdqGWQH4p1lC7fGH/K8FMm5Z4Nmqo/YRam7k7GI1qqjwTTH\n\n0000000000000000000000000000000000000000 98c96e8f5449ca7220c7b3e84c21ed970f3356a0 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8IuzsACgkQqzYtYVpm\n/XuuWwgAhOB9QPbrTn0IREj/3LbGIpM/h64srMMFDsP0/0pxDNaa3JN4OmHD8KsW\n9bOni/xT/i+ygkY6biNa/OOf2ndg43GC81p0o3otUwl6GWOAwA51DfVEPNyGZz1H\neE/e09hG3yFmoCVG3kpypz2juF4uWTcwXiR76RUYO7YERn7NeIXzvS3zwlpqGipZ\n4uSWMWjAGAPqDpSQWSfOAbN7Uw4or+t526i6UAp2xagPfEwhAUFffZqDCkQXzjxK\nRiPru1BMFp3joinZgUvmGNONq0AGIms4tBEWhYbcRDWIak+kYTiQkP2ERUakB8DZ\nverOYcGMjZpmNFzhzSb/XRNBn7fhsw\u003d\u003d\n\u003dW7YN\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a20eb206_c7e8342d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-10T20:46:23Z",
+      "side": 1,
+      "message": "Because XFA is incompatible with ASMJS, right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "98c96e8f5449ca7220c7b3e84c21ed970f3356a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
