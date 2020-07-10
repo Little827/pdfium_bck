@@ -16,6 +16,24 @@
       "revId": "2e1b4f26b4e0c6f150d4933190ed749ff30ae1ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6b443c_88bddcb4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-10T21:22:38Z",
+      "side": 0,
+      "message": "Add back the TODO comment in GetAlternateOrWindingFillType() in the new patchset.",
+      "parentUuid": "be21f744_e05aacfe",
+      "revId": "2e1b4f26b4e0c6f150d4933190ed749ff30ae1ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
