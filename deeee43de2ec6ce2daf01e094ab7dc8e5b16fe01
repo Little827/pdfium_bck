@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "305d4eda_0083f171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-13T07:08:43Z",
+      "side": 1,
+      "message": "Lei, Tom: could you please take look? Thanks :-)\n\nMy expectation is that once this \"contents\" property and a next \"byte ranges\" one is exposed, it\u0027ll be possible to have a bare minimum PoC signature verifier client code that can differentiate between good/bad signatures. (And then there will be a few more extras like signature description, date, etc.)",
+      "revId": "deeee43de2ec6ce2daf01e094ab7dc8e5b16fe01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
