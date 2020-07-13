@@ -144,3 +144,10 @@ TEST_F(GCedTreeNodeEmbedderTest, InsertBeforeAfter) {
   EXPECT_TRUE(s_root);
   EXPECT_FALSE(watcher);
 }
+
+TEST_F(GCedTreeNodeEmbedderTest, AsMapKey) {
+  std::map<cppgc::Persistent<ObservableGCedTreeNodeForTest>, int> score;
+  ObservableGCedTreeNodeForTest* node = CreateNode();
+  score[node] = 100;
+  EXPECT_EQ(100, score[node]);
+}
