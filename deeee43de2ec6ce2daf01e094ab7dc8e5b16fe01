@@ -16,6 +16,92 @@
       "revId": "deeee43de2ec6ce2daf01e094ab7dc8e5b16fe01",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ced68091_d21c9150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-13T18:39:36Z",
+      "side": 1,
+      "message": "few small points. thanks.",
+      "revId": "deeee43de2ec6ce2daf01e094ab7dc8e5b16fe01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c98fe57e_27a40ada",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-13T18:39:36Z",
+      "side": 1,
+      "message": "can contain embedded NULs in the response?",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "deeee43de2ec6ce2daf01e094ab7dc8e5b16fe01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b6b2d3_607225bf",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-13T18:39:36Z",
+      "side": 1,
+      "message": "maybe just check [0] and [1] to be \u0027x\u0027 and \u0027\\0\u0027 separately without going through the work of making strings?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "deeee43de2ec6ce2daf01e094ab7dc8e5b16fe01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45619e76_72674a4c",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-13T18:39:36Z",
+      "side": 1,
+      "message": "cut \u0027n paste?",
+      "range": {
+        "startLine": 46,
+        "startChar": 47,
+        "endLine": 46,
+        "endChar": 51
+      },
+      "revId": "deeee43de2ec6ce2daf01e094ab7dc8e5b16fe01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
