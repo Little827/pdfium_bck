@@ -80,6 +80,30 @@ FPDF_StructElement_GetAltText(FPDF_STRUCTELEMENT struct_element,
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetID(FPDF_STRUCTELEMENT struct_element,
+                         void* buffer,
+                         unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  const CPDF_Dictionary* dict = elem ? elem->GetDict() : nullptr;
+  return dict
+             ? WideStringToBuffer(dict->GetUnicodeTextFor("ID"), buffer, buflen)
+             : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetLang(FPDF_STRUCTELEMENT struct_element,
+                           void* buffer,
+                           unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  const CPDF_Dictionary* dict = elem ? elem->GetDict() : nullptr;
+  return dict ? WideStringToBuffer(dict->GetUnicodeTextFor("Lang"), buffer,
+                                   buflen)
+              : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDF_StructElement_GetStringAttribute(FPDF_STRUCTELEMENT struct_element,
                                       FPDF_BYTESTRING attr_name,
                                       void* buffer,
