@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "d2d99e06_9b1344e6",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T22:17:29Z",
+      "side": 1,
+      "message": "Whoops, n/m.",
+      "parentUuid": "b01b0daa_133bad54",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1987070f_5b5bd576",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 1
@@ -268,6 +286,24 @@
       "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6532c1e8_f196c5b4",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T22:17:29Z",
+      "side": 1,
+      "message": "That seems like a reasonable set of validation steps.",
+      "parentUuid": "20f5a3a9_f8e74a28",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {

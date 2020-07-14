@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31d282df_17f04b58",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T22:17:29Z",
+      "side": 1,
+      "message": "Just call AsDictionary(), and see if it return nullptr or not?",
+      "revId": "75c27cea32776b6a97c70692b8ecbb6bc0b92779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bd394e_f731b62b",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T22:17:29Z",
+      "side": 1,
+      "message": "Can we renumber the objects to fill in the gaps? e.g. 11 0 -\u003e 10 0, 14 0 -\u003e 11 0, etc.",
+      "revId": "75c27cea32776b6a97c70692b8ecbb6bc0b92779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5ff2d7_58df8510",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T22:17:29Z",
+      "side": 1,
+      "message": "Can this be inlined in the one spot that refers to it?",
+      "revId": "75c27cea32776b6a97c70692b8ecbb6bc0b92779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
