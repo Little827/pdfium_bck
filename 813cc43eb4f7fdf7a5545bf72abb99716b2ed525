@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9593db1_f2dd378d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:21:34Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f490cf82_0beaac7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:21:34Z",
+      "side": 1,
+      "message": "pdfium:1564",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2b7962_bf0a483b",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:21:34Z",
+      "side": 1,
+      "message": "Need to make sure |elem| is not a nullptr. It\u0027ll be good to add a call in the test case to do this and make sure it doesn\u0027t crash.",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1987070f_5b5bd576",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:21:34Z",
+      "side": 1,
+      "message": "We commonly use |dict| and |array| for these variable names. Single letter variable names other than i/j/k can be a bit harder to search for.",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f664a603_bfd2e94e",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:21:34Z",
+      "side": 1,
+      "message": "With a CPDF_ArrayLocker, I think this can be replaced with a range-based for-loop.",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0b570d_dfee4691",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:21:34Z",
+      "side": 1,
+      "message": "Any reason to make this change?",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adeca83f_29a5504c",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:21:34Z",
+      "side": 1,
+      "message": "constexpr int kBuflen \u003d 100;",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
