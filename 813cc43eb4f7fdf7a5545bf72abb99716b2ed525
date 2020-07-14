@@ -116,6 +116,23 @@
     },
     {
       "key": {
+        "uuid": "cda14b62_1aaa785e",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T19:33:18Z",
+      "side": 1,
+      "message": "We also need a PDF in testing/resources. Let me know if you need help writing one.",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adeca83f_29a5504c",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 1
