@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9f0c59c9_0d532ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-14T19:23:48Z",
+      "side": 1,
+      "message": "Thanks, I\u0027m good with this once the few small points thestig mentioned are resolved.",
+      "revId": "3de6b3274063d05147c269a14176e9a19a642b0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68edbd8f_639047ee",
         "filename": "fpdfsdk/fpdf_signature.cpp",
         "patchSetId": 3
