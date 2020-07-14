@@ -3230,6 +3230,63 @@ TEST_F(FPDFEditEmbedderTest, ExtractImageBitmap) {
   UnloadPage(page);
 }
 
+// TODO(crbug.com/pdfium/1554): Fix FPDFImageObj_GetBitmap() to take the matrix
+// into account, or provide a new API to do that.
+TEST_F(FPDFEditEmbedderTest, ExtractImageBitmapIgnoresSetMatrix) {
+  ASSERT_TRUE(OpenDocument("embedded_images.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(39, FPDFPage_CountObjects(page));
+
+  FPDF_PAGEOBJECT obj = FPDFPage_GetObject(page, 33);
+  ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
+
+  {
+    // Render |obj| as is.
+    ScopedFPDFBitmap bitmap(FPDFImageObj_GetBitmap(obj));
+    EXPECT_EQ(FPDFBitmap_BGR, FPDFBitmap_GetFormat(bitmap.get()));
+    CompareBitmap(bitmap.get(), 109, 88, "cb3637934bb3b95a6e4ae1ea9eb9e56e");
+  }
+
+  // Check the matrix for |obj|.
+  double a;
+  double b;
+  double c;
+  double d;
+  double e;
+  double f;
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
+  EXPECT_DOUBLE_EQ(53.0, a);
+  EXPECT_DOUBLE_EQ(0.0, b);
+  EXPECT_DOUBLE_EQ(0.0, c);
+  EXPECT_DOUBLE_EQ(43.0, d);
+  EXPECT_DOUBLE_EQ(72.0, e);
+  EXPECT_DOUBLE_EQ(646.510009765625, f);
+
+  // Modify the matrix for |obj|.
+  a = 120.0;
+  EXPECT_TRUE(FPDFImageObj_SetMatrix(obj, a, b, c, d, e, f));
+
+  // Make sure the matrix modification took place.
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
+  EXPECT_DOUBLE_EQ(120.0, a);
+  EXPECT_DOUBLE_EQ(0.0, b);
+  EXPECT_DOUBLE_EQ(0.0, c);
+  EXPECT_DOUBLE_EQ(43.0, d);
+  EXPECT_DOUBLE_EQ(72.0, e);
+  EXPECT_DOUBLE_EQ(646.510009765625, f);
+
+  {
+    // Render |obj| again. Note that the FPDFImageObj_SetMatrix() call has no
+    // effect.
+    ScopedFPDFBitmap bitmap(FPDFImageObj_GetBitmap(obj));
+    EXPECT_EQ(FPDFBitmap_BGR, FPDFBitmap_GetFormat(bitmap.get()));
+    CompareBitmap(bitmap.get(), 109, 88, "cb3637934bb3b95a6e4ae1ea9eb9e56e");
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbedderTest, ExtractJBigImageBitmap) {
   ASSERT_TRUE(OpenDocument("bug_631912.pdf"));
   FPDF_PAGE page = LoadPage(0);
