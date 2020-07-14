@@ -76,6 +76,64 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFStructTreeEmbedderTest, GetStringAttribute) {
+  ASSERT_TRUE(OpenDocument("tagged_table.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+
+    FPDF_STRUCTELEMENT document = document =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+    ASSERT_TRUE(document);
+
+    const int buflen = 100;
+    unsigned short buffer[buflen];
+    memset(buffer, 0, sizeof(buffer));
+    FPDF_StructElement_GetType(document, buffer, buflen);
+    const wchar_t kDocumentType[] = L"Document";
+    EXPECT_EQ(WideString(kDocumentType),
+              WideString::FromUTF16LE(buffer, FXSYS_len(kDocumentType)));
+
+    ASSERT_EQ(1, FPDF_StructElement_CountChildren(document));
+    FPDF_STRUCTELEMENT table = FPDF_StructElement_GetChildAtIndex(document, 0);
+    ASSERT_TRUE(table);
+
+    FPDF_StructElement_GetType(table, buffer, buflen);
+    const wchar_t kTableType[] = L"Table";
+    EXPECT_EQ(WideString(kTableType),
+              WideString::FromUTF16LE(buffer, FXSYS_len(kTableType)));
+
+    ASSERT_EQ(2, FPDF_StructElement_CountChildren(table));
+    FPDF_STRUCTELEMENT row = FPDF_StructElement_GetChildAtIndex(table, 0);
+    ASSERT_TRUE(row);
+
+    ASSERT_EQ(2, FPDF_StructElement_CountChildren(row));
+    FPDF_STRUCTELEMENT header_cell = FPDF_StructElement_GetChildAtIndex(row, 0);
+    ASSERT_TRUE(header_cell);
+
+    FPDF_StructElement_GetType(header_cell, buffer, buflen);
+    const wchar_t kTHType[] = L"TH";
+    EXPECT_EQ(WideString(kTHType),
+              WideString::FromUTF16LE(buffer, FXSYS_len(kTHType)));
+
+    // The header should have an attribute "Scope" with a scope of "Row".
+    FPDF_StructElement_GetStringAttribute(header_cell, "Scope", buffer, buflen);
+    const wchar_t kRowScope[] = L"Row";
+    EXPECT_EQ(WideString(kRowScope),
+              WideString::FromUTF16LE(buffer, FXSYS_len(kRowScope)));
+
+    // An unsupported attribute should return 0.
+    EXPECT_EQ(0U, FPDF_StructElement_GetStringAttribute(header_cell, "Other",
+                                                        buffer, buflen));
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFStructTreeEmbedderTest, GetMarkedContentID) {
   ASSERT_TRUE(OpenDocument("marked_content_id.pdf"));
   FPDF_PAGE page = LoadPage(0);
