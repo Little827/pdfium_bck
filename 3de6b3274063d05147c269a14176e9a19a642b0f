@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68edbd8f_639047ee",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T18:44:49Z",
+      "side": 1,
+      "message": "The \"snake_case\" comment applies to all the new code here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 19,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "3de6b3274063d05147c269a14176e9a19a642b0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d97127_e7eb37dd",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T18:44:49Z",
+      "side": 1,
+      "message": "snake_case",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "3de6b3274063d05147c269a14176e9a19a642b0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3586eff6_67d4ffc4",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T18:44:49Z",
+      "side": 1,
+      "message": "These checks can be relaxed and become EXPECT_EQ(). i.e. Failures are not fatal, so the test can continue.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "3de6b3274063d05147c269a14176e9a19a642b0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
