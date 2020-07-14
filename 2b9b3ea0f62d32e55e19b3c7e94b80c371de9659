@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1594714020 -0700\nnonce ALC2d19xq+BrGuHADddpgQ3ivM4QQRyG3PGofvEWp/l17Y2B55B5cgjJQApPyLQsZns/kJjsL18T\n\n0000000000000000000000000000000000000000 2b9b3ea0f62d32e55e19b3c7e94b80c371de9659 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8NZ6QACgkQqzYtYVpm\n/XuZ4QgAhjM3dS2zydVGVgVPtFhWBt+Vo+FdrEBUGOGi3HUQ1/vAx5J60MZ+103e\nNwNH0R44rcCVeBTniXbeTw4WvDoX6SdE9pkIvJSV9dJjW/g2rcMDsr7p4bmHyCHs\nPejW/4wT4bREDPp6pCFFhHgqps7voGpdQhs5zDd3P94Ba708H9pq+Afvq+FW/jQe\n5W4Z3g01Gy6+o71VZRUpfBKw10sCCA0I+8s8Dj4k7DhGT3ihXFvo/zoq2KNgaeIB\nF3m+C94umV+pfVMyfpeaAdMNliSQKI0G9Q+VpOTMHBALyCbVNXjacEM40TrMmztD\nt/iQ8DrcokI9Qp+o1viS3Z5ebgXz4g\u003d\u003d\n\u003d/RzK\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "aad01fa2_b0f2a315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-14T19:15:12Z",
+      "side": 1,
+      "message": "LGTM with an optional suggestion.",
+      "revId": "2b9b3ea0f62d32e55e19b3c7e94b80c371de9659",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb4ac6e6_eb6904ad",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3284,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-14T19:15:12Z",
+      "side": 1,
+      "message": "Optional: Maybe have a const variable to hold this value, so that it\u0027s easier to see the second the hash value is exactly the same.",
+      "range": {
+        "startLine": 3284,
+        "startChar": 42,
+        "endLine": 3284,
+        "endChar": 74
+      },
+      "revId": "2b9b3ea0f62d32e55e19b3c7e94b80c371de9659",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
