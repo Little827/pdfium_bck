@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f55046e9_ff13038c",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-14T00:16:37Z",
+      "side": 1,
+      "message": "Good question.  The only way I could tell was to put an abort() call in ~CFXA_ThisProxy() to see where it firest because it was so bewildering. Now we know the answer.",
+      "parentUuid": "823f24f1_43240d92",
+      "revId": "5eedd363ceec22f68db00d7eef87298971f0214b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d863623d_8fd49c91",
         "filename": "fxjs/xfa/cfxjse_engine.cpp",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5eedd363ceec22f68db00d7eef87298971f0214b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b93b9a_e0a31e60",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-14T00:16:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d863623d_8fd49c91",
+      "revId": "5eedd363ceec22f68db00d7eef87298971f0214b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
