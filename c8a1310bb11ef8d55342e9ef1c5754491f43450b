@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebd73376_f90db65d",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3198,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-14T22:44:36Z",
+      "side": 1,
+      "message": "Maybe pull these into variables for consistency in another CL?",
+      "range": {
+        "startLine": 3198,
+        "startChar": 42,
+        "endLine": 3198,
+        "endChar": 74
+      },
+      "revId": "c8a1310bb11ef8d55342e9ef1c5754491f43450b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
