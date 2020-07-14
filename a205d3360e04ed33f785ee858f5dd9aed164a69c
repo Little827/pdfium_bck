@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d509faf_dee7355e",
+        "filename": "core/fpdfapi/page/cpdf_pathobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T18:49:58Z",
+      "side": 1,
+      "message": "This comment needs an update?",
+      "range": {
+        "startLine": 34,
+        "startChar": 41,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "a205d3360e04ed33f785ee858f5dd9aed164a69c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3184fb4_5e0cc9fb",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T18:49:58Z",
+      "side": 1,
+      "message": "Not sure why the existing code has this extra pair of parenthesis. Can we remove them?\n\n(cond1 \u0026\u0026 cond2 \u0026\u0026 (cond3)) -\u003e (cond1 \u0026\u0026 cond2 \u0026\u0026 cond3)",
+      "range": {
+        "startLine": 412,
+        "startChar": 6,
+        "endLine": 412,
+        "endChar": 7
+      },
+      "revId": "a205d3360e04ed33f785ee858f5dd9aed164a69c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
