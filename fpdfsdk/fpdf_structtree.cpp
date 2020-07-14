@@ -7,6 +7,7 @@
 #include <memory>
 
 #include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfdoc/cpdf_structelement.h"
 #include "core/fpdfdoc/cpdf_structtree.h"
@@ -78,6 +79,27 @@ FPDF_StructElement_GetAltText(FPDF_STRUCTELEMENT struct_element,
   return elem ? WideStringToBuffer(elem->GetAltText(), buffer, buflen) : 0;
 }
 
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetStringAttribute(FPDF_STRUCTELEMENT struct_element,
+                                      FPDF_BYTESTRING attr_name,
+                                      void* buffer,
+                                      unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  const CPDF_Dictionary* d = elem ? elem->GetDict() : nullptr;
+  const CPDF_Array* a = d ? d->GetArrayFor("A") : nullptr;
+  if (!a)
+    return 0;
+  for (size_t i = 0; i < a->size(); i++) {
+    const CPDF_Dictionary* o = a->GetDictAt(i);
+    if (o->KeyExist(attr_name)) {
+      return WideStringToBuffer(o->GetUnicodeTextFor(attr_name), buffer,
+                                buflen);
+    }
+  }
+  return 0;
+}
+
 FPDF_EXPORT int FPDF_CALLCONV
 FPDF_StructElement_GetMarkedContentID(FPDF_STRUCTELEMENT struct_element) {
   CPDF_StructElement* elem =
@@ -126,5 +148,7 @@ FPDF_StructElement_GetChildAtIndex(FPDF_STRUCTELEMENT struct_element,
   if (!elem || index < 0 || static_cast<size_t>(index) >= elem->CountKids())
     return nullptr;
 
-  return FPDFStructElementFromCPDFStructElement(elem->GetKidIfElement(index));
+  FPDF_STRUCTELEMENT result =
+      FPDFStructElementFromCPDFStructElement(elem->GetKidIfElement(index));
+  return result;
 }
