@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01dd57e8_9cdede32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9593db1_f2dd378d",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f490cf82_0beaac7c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cbc90788_e074e4fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f490cf82_0beaac7c",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de2b7962_bf0a483b",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2020-07-14T19:21:34Z",
       "side": 1,
       "message": "Need to make sure |elem| is not a nullptr. It\u0027ll be good to add a call in the test case to do this and make sure it doesn\u0027t crash.",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01b0daa_133bad54",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Added to the test - but I think it\u0027s already covered in the next line.\nI was just following the same pattern as GetAltText, above.",
+      "parentUuid": "de2b7962_bf0a483b",
       "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "5903af9f_7b936907",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1987070f_5b5bd576",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f664a603_bfd2e94e",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 1
@@ -93,6 +177,24 @@
       "writtenOn": "2020-07-14T19:21:34Z",
       "side": 1,
       "message": "With a CPDF_ArrayLocker, I think this can be replaced with a range-based for-loop.",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "534a6d8f_97f38acf",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Nice, thanks.",
+      "parentUuid": "f664a603_bfd2e94e",
       "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "82a25e95_8c9da74f",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Reverted, sorry - leftover from debugging.",
+      "parentUuid": "4d0b570d_dfee4691",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cda14b62_1aaa785e",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 1
@@ -127,6 +247,24 @@
       "writtenOn": "2020-07-14T19:33:18Z",
       "side": 1,
       "message": "We also need a PDF in testing/resources. Let me know if you need help writing one.",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f5a3a9_f8e74a28",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Done. Just forgot to git add it.\n\nI made the .in file manually and used fixup_pdf_template.py,\nthen used Acrobat and qpdf to help validate and debug.\nAre there any other scripts or command-line utilities that\nare part of Pdfium I could use to validate files?",
+      "parentUuid": "cda14b62_1aaa785e",
       "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -147,6 +285,24 @@
       "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d47b6604_8389d34c",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-14T19:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adeca83f_29a5504c",
+      "revId": "813cc43eb4f7fdf7a5545bf72abb99716b2ed525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
