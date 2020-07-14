@@ -34,6 +34,24 @@
       "revId": "1e858603bb46c172b183c290d2cf3c1787625a3d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f997204e_8e5557a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-14T20:57:31Z",
+      "side": 1,
+      "message": "The scoping is a bit verbose, but whatever.",
+      "parentUuid": "24d40f08_a9b46f8a",
+      "revId": "1e858603bb46c172b183c290d2cf3c1787625a3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
