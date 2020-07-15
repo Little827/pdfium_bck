@@ -16,6 +16,29 @@
       "revId": "22615cfaea63825b631b3b70401d66aec63e341b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75be3a38_1fe70b25",
+        "filename": "core/fxge/cfx_glyphcache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T19:33:42Z",
+      "side": 1,
+      "message": "Needs 2 space. Also in cfx_glyphcache.cpp.",
+      "range": {
+        "startLine": 21,
+        "startChar": 53,
+        "endLine": 21,
+        "endChar": 54
+      },
+      "revId": "22615cfaea63825b631b3b70401d66aec63e341b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
