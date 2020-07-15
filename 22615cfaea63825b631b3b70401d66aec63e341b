@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "303b2df9_b0771f18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2020-07-15T19:28:24Z",
+      "side": 1,
+      "message": "Discovered while trying to add back the Skia headers to Chromium\u0027s skia/BUILD.gn at https://chromium-review.googlesource.com/c/chromium/src/+/2300272/1 .",
+      "revId": "22615cfaea63825b631b3b70401d66aec63e341b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
