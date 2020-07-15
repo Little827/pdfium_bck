@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da041773_76be0aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T00:58:03Z",
+      "side": 1,
+      "message": "Just nit picking at this point.",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0520227_eb65ff5a",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T00:58:03Z",
+      "side": 1,
+      "message": "kBuflen",
+      "range": {
+        "startLine": 93,
+        "startChar": 18,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e20c536_2237172e",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T00:58:03Z",
+      "side": 1,
+      "message": "uint16_t buffer[buflen] \u003d {};",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae55ef1_50ed577d",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T00:58:03Z",
+      "side": 1,
+      "message": "It\u0027ll be better to check the return value to make sure these return the right number of bytes. More below.",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cebd753_63331e0f",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T00:58:03Z",
+      "side": 1,
+      "message": "This type of check can probably be simplified. e.g. here: EXPECT_EQ(\"Document\", GetPlatformString(buffer));\n\nGetPlatformString() is in testing/fx_string_testhelpers.h.",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b9580a_7198932a",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T00:58:03Z",
+      "side": 1,
+      "message": "What I mean was, can this be:\n\n/Nums [\n  0\n  [11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R]\n]\n\nThen we don\u0027t need object 10 0 and can fill in that gap.",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f979e31c_b3e75d45",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T00:58:03Z",
+      "side": 1,
+      "message": "There are a bunch of array that can be on a single line. (Whereas dictionaries are better off having 1 line per key/value pair.)",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
