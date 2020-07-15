@@ -16,7 +16,7 @@ class CXFA_Node;
 
 class CXFA_ArrayNodeList final : public CXFA_TreeList {
  public:
-  explicit CXFA_ArrayNodeList(CXFA_Document* pDocument);
+  explicit CXFA_ArrayNodeList(void* trud, CXFA_Document* pDocument);
   ~CXFA_ArrayNodeList() override;
 
   // CXFA_TreeList:

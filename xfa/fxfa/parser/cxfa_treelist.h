@@ -14,7 +14,7 @@ class CXFA_Node;
 
 class CXFA_TreeList : public CXFA_List {
  public:
-  explicit CXFA_TreeList(CXFA_Document* pDocument);
+  explicit CXFA_TreeList(void* turd, CXFA_Document* pDocument);
   ~CXFA_TreeList() override;
 
   CXFA_Node* NamedItem(WideStringView wsName);

@@ -14,7 +14,9 @@ class CXFA_Node;
 
 class CXFA_AttachNodeList final : public CXFA_TreeList {
  public:
-  CXFA_AttachNodeList(CXFA_Document* pDocument, CXFA_Node* pAttachNode);
+  CXFA_AttachNodeList(void* turd,
+                      CXFA_Document* pDocument,
+                      CXFA_Node* pAttachNode);
   ~CXFA_AttachNodeList() override;
 
   // CXFA_TreeList:
