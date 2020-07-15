@@ -10,7 +10,7 @@
 
 #include "fxjs/xfa/cjx_list.h"
 
-CXFA_Deltas::CXFA_Deltas(CXFA_Document* doc)
-    : CXFA_List(doc, std::make_unique<CJX_List>(this)) {}
+CXFA_Deltas::CXFA_Deltas(void* turd, CXFA_Document* doc)
+    : CXFA_List(turd, doc, std::make_unique<CJX_List>(this)) {}
 
 CXFA_Deltas::~CXFA_Deltas() = default;

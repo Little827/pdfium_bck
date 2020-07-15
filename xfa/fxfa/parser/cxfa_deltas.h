@@ -11,7 +11,7 @@
 
 class CXFA_Deltas : public CXFA_List {
  public:
-  explicit CXFA_Deltas(CXFA_Document* doc);
+  explicit CXFA_Deltas(void* turd, CXFA_Document* doc);
   ~CXFA_Deltas() override;
 };
 
