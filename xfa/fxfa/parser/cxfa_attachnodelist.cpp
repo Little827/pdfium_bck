@@ -9,9 +9,10 @@
 #include "third_party/base/numerics/safe_conversions.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
-CXFA_AttachNodeList::CXFA_AttachNodeList(CXFA_Document* pDocument,
+CXFA_AttachNodeList::CXFA_AttachNodeList(void* turd,
+                                         CXFA_Document* pDocument,
                                          CXFA_Node* pAttachNode)
-    : CXFA_TreeList(pDocument), m_pAttachNode(pAttachNode) {}
+    : CXFA_TreeList(turd, pDocument), m_pAttachNode(pAttachNode) {}
 
 CXFA_AttachNodeList::~CXFA_AttachNodeList() = default;
 

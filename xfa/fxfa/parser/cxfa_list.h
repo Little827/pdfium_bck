@@ -24,8 +24,9 @@ class CXFA_List : public CXFA_Object {
   virtual CXFA_Node* Item(size_t iIndex) = 0;
 
  protected:
-  CXFA_List(CXFA_Document* doc, std::unique_ptr<CJX_Object> js_obj);
-  CXFA_List(CXFA_Document* pDocument,
+  CXFA_List(void* turd, CXFA_Document* doc, std::unique_ptr<CJX_Object> js_obj);
+  CXFA_List(void* trud,
+            CXFA_Document* pDocument,
             XFA_ObjectType objectType,
             XFA_Element eType,
             std::unique_ptr<CJX_Object> obj);
