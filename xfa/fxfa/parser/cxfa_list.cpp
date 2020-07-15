@@ -14,19 +14,20 @@
 #include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
-CXFA_List::CXFA_List(CXFA_Document* pDocument, std::unique_ptr<CJX_Object> obj)
-    : CXFA_List(pDocument,
+CXFA_List::CXFA_List(void* turd,
+                     CXFA_Document* pDocument,
+                     std::unique_ptr<CJX_Object> obj)
+    : CXFA_List(turd,
+                pDocument,
                 XFA_ObjectType::List,
                 XFA_Element::List,
                 std::move(obj)) {}
 
-CXFA_List::CXFA_List(CXFA_Document* pDocument,
+CXFA_List::CXFA_List(void* turd,
+                     CXFA_Document* pDocument,
                      XFA_ObjectType objectType,
                      XFA_Element eType,
                      std::unique_ptr<CJX_Object> obj)
-    : CXFA_Object(pDocument, objectType, eType, std::move(obj)) {
-  m_pDocument->GetScriptContext()->AddToCacheList(
-      std::unique_ptr<CXFA_List>(this));
-}
+    : CXFA_Object(pDocument, objectType, eType, std::move(obj)) {}
 
 CXFA_List::~CXFA_List() = default;
