@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6c90bd4e_4ad1d628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-15T22:34:35Z",
+      "side": 1,
+      "message": "The treelist is kind of a mess, since theres a CJX_TreeList backing it that would also have to merge into a CJX_List.  What\u0027s even odder is that there are entries for both Deltas and treeList in the elements.inc file so some part of the parser might recognize those terms.  I didn\u0027t see either of these mentioned in the XFA 3.3 spec I have cached -- but there are appendicies about DOM models in that spec that I don\u0027t have.  Do we know if these appear in the wild?",
+      "parentUuid": "8d945c64_4d3f51c3",
+      "revId": "ceaf4651aa69231d6943aee8aca1a4fa9a1064ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab59afdb_233bdfab",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
