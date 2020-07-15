@@ -9,8 +9,8 @@
 #include <utility>
 #include <vector>
 
-CXFA_ArrayNodeList::CXFA_ArrayNodeList(CXFA_Document* pDocument)
-    : CXFA_TreeList(pDocument) {}
+CXFA_ArrayNodeList::CXFA_ArrayNodeList(void* turd, CXFA_Document* pDocument)
+    : CXFA_TreeList(turd, pDocument) {}
 
 CXFA_ArrayNodeList::~CXFA_ArrayNodeList() = default;
 
