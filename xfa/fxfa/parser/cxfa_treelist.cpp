@@ -12,8 +12,9 @@
 #include "fxjs/xfa/cjx_treelist.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
-CXFA_TreeList::CXFA_TreeList(CXFA_Document* pDocument)
-    : CXFA_List(pDocument,
+CXFA_TreeList::CXFA_TreeList(void* turd, CXFA_Document* pDocument)
+    : CXFA_List(turd,
+                pDocument,
                 XFA_ObjectType::TreeList,
                 XFA_Element::TreeList,
                 std::make_unique<CJX_TreeList>(this)) {}
