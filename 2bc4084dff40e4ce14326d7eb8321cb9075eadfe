@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "af80ad5f_595862fb",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T16:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0520227_eb65ff5a",
+      "range": {
+        "startLine": 93,
+        "startChar": 18,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e20c536_2237172e",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 6
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "7c77d57f_18ddbdc0",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T16:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e20c536_2237172e",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aae55ef1_50ed577d",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 6
@@ -82,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "0e8ce1ec_d8248475",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T16:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae55ef1_50ed577d",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cebd753_63331e0f",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 6
@@ -93,6 +159,24 @@
       "writtenOn": "2020-07-15T00:58:03Z",
       "side": 1,
       "message": "This type of check can probably be simplified. e.g. here: EXPECT_EQ(\"Document\", GetPlatformString(buffer));\n\nGetPlatformString() is in testing/fx_string_testhelpers.h.",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f6f977_e49d675a",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T16:50:08Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s a lot cleaner",
+      "parentUuid": "2cebd753_63331e0f",
       "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -116,6 +200,24 @@
     },
     {
       "key": {
+        "uuid": "b5dcad43_934291e7",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T16:50:08Z",
+      "side": 1,
+      "message": "Ah, got it. Sure, inlined and renumbered.",
+      "parentUuid": "a0b9580a_7198932a",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f979e31c_b3e75d45",
         "filename": "testing/resources/tagged_table.in",
         "patchSetId": 6
@@ -127,6 +229,41 @@
       "writtenOn": "2020-07-15T00:58:03Z",
       "side": 1,
       "message": "There are a bunch of array that can be on a single line. (Whereas dictionaries are better off having 1 line per key/value pair.)",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee8d19ca_95a493dc",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T16:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f979e31c_b3e75d45",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61d086cc_d23b8cc1",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T16:50:08Z",
+      "side": 1,
+      "message": "Any preference for formatting this one for future reference?\n\n    /A [\u003c\u003c\n          /O /Table\n          /Scope /Row\n        \u003e\u003e]\n\n    /A [\u003c\u003c/O /Table\n          /Scope /Row\u003e\u003e]",
       "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
