@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "98112639_8dd26578",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-15T07:43:47Z",
+      "side": 1,
+      "message": "Well, |kExpectedConents| was correct, because it\u0027s a constant. See https://google.github.io/styleguide/cppguide.html#General_Naming_Rules for reference.",
+      "parentUuid": "a5cdba5d_3d9d7c0f",
+      "range": {
+        "startLine": 69,
+        "startChar": 19,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "3de6b3274063d05147c269a14176e9a19a642b0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34d97127_e7eb37dd",
         "filename": "fpdfsdk/fpdf_signature.cpp",
         "patchSetId": 3
