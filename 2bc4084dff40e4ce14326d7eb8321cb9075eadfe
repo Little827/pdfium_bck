@@ -321,6 +321,24 @@
       "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e92b1f_bf534939",
+        "filename": "testing/resources/tagged_table.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-15T21:52:04Z",
+      "side": 1,
+      "message": "Thanks. I\u0027ll adjust in the next patch.",
+      "parentUuid": "b9a912aa_4ef06056",
+      "revId": "2bc4084dff40e4ce14326d7eb8321cb9075eadfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
