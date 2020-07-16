@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc5b3909_0fde3594",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-16T00:48:21Z",
+      "side": 1,
+      "message": "Maybe write:\n\nif (!dict)\n  return 0;\nreturn WideStringToBuffer(dict-\u003eGetUnicodeTextFor(\"ID\"), buffer, buflen);\n\nIf you find that to be more readable than the ternary operator that\u0027s a bit too long to fit on 1 line.",
+      "revId": "98de19ee850ff763850d59688aaed11e992f7c4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebccf0a1_7362f1ce",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-16T00:48:21Z",
+      "side": 1,
+      "message": "Arg. I was expecting this to return 2, since an empty string is {NUL, NUL} in this case. Then I noticed fpdfsdk/fpdf_structtree.cpp has its own WideStringToBuffer(), which behaves slightly differently from Utf16EncodeMaybeCopyAndReturnLength().\n\nIn APIs that use Utf16EncodeMaybeCopyAndReturnLength() internally, callers can distinguish a return value of 0, which means error, from 2, which means empty string.\n\nWe may want to switch to Utf16EncodeMaybeCopyAndReturnLength() for the 2 new APIs in this CL and for FPDF_StructElement_GetStringAttribute(). Then think about what to do with the other existing callers to WideStringToBuffer().",
+      "revId": "98de19ee850ff763850d59688aaed11e992f7c4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
