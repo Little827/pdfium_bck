@@ -33,6 +33,24 @@
       "revId": "98de19ee850ff763850d59688aaed11e992f7c4f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "932bec87_9da476bc",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-16T01:03:30Z",
+      "side": 1,
+      "message": "FPDF_StructElement_GetAltText(), FPDF_StructElement_GetType(), and FPDF_StructElement_GetTitle() are affected. Since all of them are stable APIs, we would have to deprecate them and create new variants, if we want them to be consistent with APIs in other files. OTOH, nobody has ever complained about this, so maybe we should leave them as is, and continue using WideStringToBuffer() in new code in fpdf_structtree.cpp, so at least the struct tree APIs are consistent with each other.",
+      "parentUuid": "ebccf0a1_7362f1ce",
+      "revId": "98de19ee850ff763850d59688aaed11e992f7c4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
