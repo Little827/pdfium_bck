@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4458588d_36458d96",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-16T07:18:34Z",
+      "side": 1,
+      "message": "Not sure how MSVC will feel about this. Let\u0027s run some try bots and find out.",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "979b871cf29b165d1a40c059fd3e2b2ddfb64f16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
