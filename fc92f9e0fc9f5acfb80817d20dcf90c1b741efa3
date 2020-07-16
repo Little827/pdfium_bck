@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62c8d2cc_3c6a8172",
+        "filename": "xfa/fxfa/cxfa_ffpageview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-16T22:04:41Z",
+      "side": 1,
+      "message": "Note: new include is for this.",
+      "range": {
+        "startLine": 36,
+        "startChar": 18,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "fc92f9e0fc9f5acfb80817d20dcf90c1b741efa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b222f86_88d9cadb",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutitem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-16T22:04:41Z",
+      "side": 1,
+      "message": "Note: new include is for this.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "fc92f9e0fc9f5acfb80817d20dcf90c1b741efa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e3b141_02adc9f4",
+        "filename": "xfa/fxfa/layout/cxfa_layoutitem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-16T22:04:41Z",
+      "side": 1,
+      "message": "note: forward declaration perfectly fine here.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "fc92f9e0fc9f5acfb80817d20dcf90c1b741efa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba138af_69956b5e",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutitem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-16T22:04:41Z",
+      "side": 1,
+      "message": "Note: new include is for this.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "fc92f9e0fc9f5acfb80817d20dcf90c1b741efa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
