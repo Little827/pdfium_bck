@@ -22,6 +22,30 @@
       "revId": "a1e97cc40d51cc06437d9bc54f3632f577b33d5e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff567594_293f1129",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3404,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-16T06:41:57Z",
+      "side": 1,
+      "message": "Despite having different /SMask values, when rendered with PDFium, 3 of the 4 images in matte.pdf look exactly the same. The results here reflect that.",
+      "parentUuid": "a0a7acdd_604553d8",
+      "range": {
+        "startLine": 3404,
+        "startChar": 5,
+        "endLine": 3404,
+        "endChar": 77
+      },
+      "revId": "a1e97cc40d51cc06437d9bc54f3632f577b33d5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
