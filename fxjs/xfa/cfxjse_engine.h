@@ -87,9 +87,6 @@ class CFXJSE_Engine final : public CFX_V8 {
   CFXJSE_Value* GetOrCreateJSBindingFromMap(CXFA_Object* pObject);
   void RemoveJSBindingFromMap(CXFA_Object* pObject);
 
-  // Takes ownership of |pList|, returns unowned pointer to it.
-  CXFA_List* AddToCacheList(std::unique_ptr<CXFA_List> pList);
-
   CXFA_Object* GetThisObject() const { return m_pThisObject.Get(); }
   CFXJSE_Class* GetJseNormalClass() const { return m_pJsClass.Get(); }
 
@@ -136,8 +133,6 @@ class CFXJSE_Engine final : public CFX_V8 {
       m_mapVariableToContext;
   UnownedPtr<CXFA_EventParam> m_eventParam;
   std::vector<CXFA_Node*> m_upObjectArray;
-  // CacheList holds the List items so we can clean them up when we're done.
-  std::vector<std::unique_ptr<CXFA_List>> m_CacheList;
   UnownedPtr<std::vector<CXFA_Node*>> m_pScriptNodeArray;
   std::unique_ptr<CFXJSE_ResolveProcessor> const m_ResolveProcessor;
   std::unique_ptr<CFXJSE_FormCalcContext> m_FM2JSContext;
