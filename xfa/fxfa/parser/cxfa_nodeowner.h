@@ -10,19 +10,26 @@
 #include <memory>
 #include <vector>
 
+class CXFA_List;
 class CXFA_Node;
 
 class CXFA_NodeOwner {
  public:
   virtual ~CXFA_NodeOwner();
 
+  // Takes ownership of |list|, returns unowned pointer to it.
+  CXFA_List* AddOwnedList(std::unique_ptr<CXFA_List> list);
+
+  // Takes ownership of |node|, returns unowned pointer to it.
   CXFA_Node* AddOwnedNode(std::unique_ptr<CXFA_Node> node);
+
   bool IsBeingDestroyed() const { return is_being_destroyed_; }
 
  protected:
   CXFA_NodeOwner();
 
   bool is_being_destroyed_ = false;
+  std::vector<std::unique_ptr<CXFA_List>> lists_;
   std::vector<std::unique_ptr<CXFA_Node>> nodes_;
 };
 
