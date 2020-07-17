@@ -606,7 +606,6 @@ void SetBitmapPaint(bool isAlphaMask,
                     int bitmap_alpha,
                     BlendMode blend_type,
                     SkPaint* paint) {
-  paint->setAntiAlias(true);
   if (isAlphaMask)
     paint->setColorFilter(SkColorFilters::Blend(argb, SkBlendMode::kSrc));
 
@@ -750,7 +749,7 @@ class SkiaState {
     }
     if (Accumulator::kPath != m_type) {
       m_skPath.reset();
-      m_fillFullCover = fill_options.full_cover;
+      m_fillOptions = fill_options;
       m_fillPath =
           fill_options.fill_type != CFX_FillRenderOptions::FillType::kNoFill &&
           fill_color;
@@ -778,8 +777,8 @@ class SkiaState {
     Dump(__func__);
     SkMatrix skMatrix = ToSkMatrix(m_drawMatrix);
     SkPaint skPaint;
-    skPaint.setAntiAlias(true);
-    if (m_fillFullCover)
+    skPaint.setAntiAlias(!m_fillOptions.aliased_path);
+    if (m_fillOptions.full_cover)
       skPaint.setBlendMode(SkBlendMode::kPlus);
     int stroke_alpha = FXARGB_A(m_strokeColor);
     if (stroke_alpha)
@@ -1508,6 +1507,7 @@ class SkiaState {
   CFX_GraphStateData m_clipState;
   CFX_GraphStateData m_drawState;
   CFX_Matrix m_clipMatrix;
+  CFX_FillRenderOptions m_fillOptions;
   UnownedPtr<CFX_SkiaDeviceDriver> const m_pDriver;
   sk_sp<CFX_TypeFace> m_pTypeFace;
   float m_fontSize = 0;
@@ -1520,7 +1520,6 @@ class SkiaState {
   int m_clipIndex = 0;        // position reflecting depth of canvas clip stacck
   int m_italicAngle = 0;
   Accumulator m_type = Accumulator::kNone;  // type of pending draw
-  bool m_fillFullCover = false;
   bool m_fillPath = false;
   bool m_groupKnockout = false;
   bool m_isSubstFontBold = false;
@@ -1593,7 +1592,7 @@ void CFX_SkiaDeviceDriver::PaintStroke(SkPaint* spaint,
         intervals.data(), intervals.size(), pGraphState->m_DashPhase));
   }
   spaint->setStyle(SkPaint::kStroke_Style);
-  spaint->setAntiAlias(true);
+  spaint->setAntiAlias(!m_FillOptions.aliased_path);
   spaint->setStrokeWidth(width);
   spaint->setStrokeMiter(pGraphState->m_MiterLimit);
   spaint->setStrokeCap(cap);
@@ -1955,9 +1954,8 @@ bool CFX_SkiaDeviceDriver::SetClip_PathFill(
   CFX_Matrix identity;
   const CFX_Matrix* deviceMatrix = pObject2Device ? pObject2Device : &identity;
   bool cached = m_pCache->SetClipFill(pPathData, deviceMatrix, fill_options);
-
-#ifdef _SKIA_SUPPORT_PATHS_
   m_FillOptions = fill_options;
+#ifdef _SKIA_SUPPORT_PATHS_
   if (!m_pClipRgn) {
     m_pClipRgn = std::make_unique<CFX_ClipRgn>(
         GetDeviceCaps(FXDC_PIXEL_WIDTH), GetDeviceCaps(FXDC_PIXEL_HEIGHT));
@@ -2047,6 +2045,7 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     uint32_t stroke_color,                  // stroke color
     const CFX_FillRenderOptions& fill_options,
     BlendMode blend_type) {
+  m_FillOptions = fill_options;
   if (m_pCache->DrawPath(pPathData, pObject2Device, pGraphState, fill_color,
                          stroke_color, fill_options, blend_type)) {
     return true;
@@ -2057,7 +2056,7 @@ bool CFX_SkiaDeviceDriver::DrawPath(
   else
     skMatrix.setIdentity();
   SkPaint skPaint;
-  skPaint.setAntiAlias(true);
+  skPaint.setAntiAlias(!fill_options.aliased_path);
   if (fill_options.full_cover)
     skPaint.setBlendMode(SkBlendMode::kPlus);
   int stroke_alpha = FXARGB_A(stroke_color);
@@ -2508,6 +2507,7 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
     SetBitmapMatrix(matrix, width, height, &skMatrix);
     m_pCanvas->concat(skMatrix);
     SkPaint paint;
+    paint.setAntiAlias(true);
     SetBitmapPaint(pSource->IsAlphaMask(), argb, bitmap_alpha, blend_type,
                    &paint);
     // TODO(caryclark) Once Skia supports 8 bit src to 8 bit dst remove this
@@ -2642,6 +2642,7 @@ bool CFX_SkiaDeviceDriver::DrawBitsWithMask(
     SetBitmapMatrix(matrix, srcWidth, srcHeight, &skMatrix);
     m_pCanvas->concat(skMatrix);
     SkPaint paint;
+    paint.setAntiAlias(!m_FillOptions.aliased_path);
     SetBitmapPaint(pSource->IsAlphaMask(), 0xFFFFFFFF, bitmap_alpha, blend_type,
                    &paint);
     sk_sp<SkImage> skSrc = SkImage::MakeFromBitmap(skBitmap);
