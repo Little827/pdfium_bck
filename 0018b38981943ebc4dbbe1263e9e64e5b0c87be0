@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "967cf300_e5cb9723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-17T16:28:22Z",
+      "side": 1,
+      "message": "To test the disabling anti-aliasing actually works for Skia and SkiaPaths, I used embedder test\nFPDFAnnotEmbedderTest.AddAndSaveUnderlineAnnotation. By turning off anti aliasing on Skia, SkiaPaths and AGG, the underline annotation was rendered exactly the same for all 3 cases.\n(See rendering comparison pictures at https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c27)",
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
