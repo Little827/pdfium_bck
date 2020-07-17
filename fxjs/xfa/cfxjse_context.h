@@ -13,6 +13,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "v8/include/v8.h"
+#include "xfa/fxfa/parser/cxfa_thisproxy.h"
 
 class CFXJSE_Class;
 class CFXJSE_HostObject;
@@ -24,9 +25,9 @@ class CFXJSE_Context {
   static std::unique_ptr<CFXJSE_Context> Create(
       v8::Isolate* pIsolate,
       const FXJSE_CLASS_DESCRIPTOR* pGlobalClass,
-      CFXJSE_HostObject* pGlobalObject);
+      CFXJSE_HostObject* pGlobalObject,
+      std::unique_ptr<CXFA_ThisProxy> pProxy);
 
-  explicit CFXJSE_Context(v8::Isolate* pIsolate);
   ~CFXJSE_Context();
 
   v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
@@ -40,12 +41,16 @@ class CFXJSE_Context {
                      CFXJSE_Value* lpNewThisObject);
 
  private:
+  explicit CFXJSE_Context(v8::Isolate* pIsolate,
+                          std::unique_ptr<CXFA_ThisProxy> pProxy);
+
   CFXJSE_Context(const CFXJSE_Context&) = delete;
   CFXJSE_Context& operator=(const CFXJSE_Context&) = delete;
 
   v8::Global<v8::Context> m_hContext;
   UnownedPtr<v8::Isolate> m_pIsolate;
   std::vector<std::unique_ptr<CFXJSE_Class>> m_rgClasses;
+  std::unique_ptr<CXFA_ThisProxy> m_pProxy;
 };
 
 void FXJSE_UpdateObjectBinding(v8::Local<v8::Object> hObject,
