@@ -26,8 +26,6 @@ CXFA_Node* CXFA_NodeOwner::AddOwnedNode(std::unique_ptr<CXFA_Node> node) {
   return ret;
 }
 
-CXFA_List* CXFA_NodeOwner::AddOwnedList(std::unique_ptr<CXFA_List> list) {
-  CXFA_List* ret = list.get();
-  lists_.push_back(std::move(list));
-  return ret;
+void CXFA_NodeOwner::PersistList(CXFA_List* list) {
+  lists_.emplace_back(list);
 }

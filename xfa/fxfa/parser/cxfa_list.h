@@ -9,11 +9,16 @@
 
 #include <memory>
 
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/parser/cxfa_object.h"
 
 class CXFA_Document;
+class CXFA_Node;
+class CJX_Object;
 
-class CXFA_List : public CXFA_Object {
+class CXFA_List : public cppgc::GarbageCollected<CXFA_List>,
+                  public CXFA_Object {
  public:
   ~CXFA_List() override;
 
@@ -22,6 +27,8 @@ class CXFA_List : public CXFA_Object {
   virtual bool Insert(CXFA_Node* pNewNode, CXFA_Node* pBeforeNode) = 0;
   virtual void Remove(CXFA_Node* pNode) = 0;
   virtual CXFA_Node* Item(size_t iIndex) = 0;
+
+  virtual void Trace(cppgc::Visitor* visitor) const;
 
  protected:
   CXFA_List(CXFA_Document* doc, std::unique_ptr<CJX_Object> js_obj);

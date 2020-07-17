@@ -27,3 +27,5 @@ CXFA_List::CXFA_List(CXFA_Document* pDocument,
     : CXFA_Object(pDocument, objectType, eType, std::move(obj)) {}
 
 CXFA_List::~CXFA_List() = default;
+
+void CXFA_List::Trace(cppgc::Visitor* visitor) const {}
