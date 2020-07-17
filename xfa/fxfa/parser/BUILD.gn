@@ -700,7 +700,6 @@ pdfium_unittest_source_set("unittests") {
     "cxfa_document_parser_unittest.cpp",
     "cxfa_localevalue_unittest.cpp",
     "cxfa_measurement_unittest.cpp",
-    "cxfa_node_unittest.cpp",
     "cxfa_nodeiteratortemplate_unittest.cpp",
     "cxfa_xmllocale_unittest.cpp",
     "xfa_basic_data_unittest.cpp",
@@ -714,6 +713,10 @@ pdfium_unittest_source_set("unittests") {
 }
 
 pdfium_embeddertest_source_set("embeddertests") {
-  sources = [ "cxfa_document_parser_embeddertest.cpp" ]
+  sources = [
+    "cxfa_document_parser_embeddertest.cpp",
+    "cxfa_node_embeddertest.cpp",
+  ]
+  deps = [ "//v8:cppgc" ]
   pdfium_root_dir = "../../../"
 }

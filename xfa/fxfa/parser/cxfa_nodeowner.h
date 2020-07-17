@@ -19,9 +19,7 @@ class CXFA_NodeOwner {
  public:
   virtual ~CXFA_NodeOwner();
 
-  // Takes ownership of |node|, returns unowned pointer to it.
-  CXFA_Node* AddOwnedNode(std::unique_ptr<CXFA_Node> node);
-
+  void PersistNode(CXFA_Node* node);
   void PersistList(CXFA_List* list);
 
   bool IsBeingDestroyed() const { return is_being_destroyed_; }
@@ -30,7 +28,7 @@ class CXFA_NodeOwner {
   CXFA_NodeOwner();
 
   bool is_being_destroyed_ = false;
-  std::vector<std::unique_ptr<CXFA_Node>> nodes_;  // Must outlive |lists_|.
+  std::vector<cppgc::Persistent<CXFA_Node>> nodes_;
   std::vector<cppgc::Persistent<CXFA_List>> lists_;
 };
 

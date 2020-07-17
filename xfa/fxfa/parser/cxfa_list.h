@@ -17,9 +17,9 @@ class CXFA_Document;
 class CXFA_Node;
 class CJX_Object;
 
-class CXFA_List : public cppgc::GarbageCollected<CXFA_List>,
-                  public CXFA_Object {
+class CXFA_List : public CXFA_Object {
  public:
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_List() override;
 
   virtual size_t GetLength() = 0;
@@ -27,8 +27,6 @@ class CXFA_List : public cppgc::GarbageCollected<CXFA_List>,
   virtual bool Insert(CXFA_Node* pNewNode, CXFA_Node* pBeforeNode) = 0;
   virtual void Remove(CXFA_Node* pNode) = 0;
   virtual CXFA_Node* Item(size_t iIndex) = 0;
-
-  virtual void Trace(cppgc::Visitor* visitor) const;
 
  protected:
   CXFA_List(CXFA_Document* doc, std::unique_ptr<CJX_Object> js_obj);

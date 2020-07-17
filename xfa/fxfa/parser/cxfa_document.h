@@ -134,12 +134,12 @@ class CXFA_Document final : public CXFA_NodeOwner {
   std::unique_ptr<CFXJSE_Engine> m_pScriptContext;
   std::unique_ptr<LayoutProcessorIface> m_pLayoutProcessor;
   std::unique_ptr<CXFA_LocaleMgr> m_pLocaleMgr;
-  std::unique_ptr<CScript_DataWindow> m_pScriptDataWindow;
-  std::unique_ptr<CScript_EventPseudoModel> m_pScriptEvent;
-  std::unique_ptr<CScript_HostPseudoModel> m_pScriptHost;
-  std::unique_ptr<CScript_LogPseudoModel> m_pScriptLog;
-  std::unique_ptr<CScript_LayoutPseudoModel> m_pScriptLayout;
-  std::unique_ptr<CScript_SignaturePseudoModel> m_pScriptSignature;
+  cppgc::Persistent<CScript_DataWindow> m_pScriptDataWindow;
+  cppgc::Persistent<CScript_EventPseudoModel> m_pScriptEvent;
+  cppgc::Persistent<CScript_HostPseudoModel> m_pScriptHost;
+  cppgc::Persistent<CScript_LogPseudoModel> m_pScriptLog;
+  cppgc::Persistent<CScript_LayoutPseudoModel> m_pScriptLayout;
+  cppgc::Persistent<CScript_SignaturePseudoModel> m_pScriptSignature;
   XFA_VERSION m_eCurVersionMode = XFA_VERSION_DEFAULT;
   Optional<bool> m_Interactive;
   bool m_bStrictScoping = false;

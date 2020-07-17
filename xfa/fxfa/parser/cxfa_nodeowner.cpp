@@ -17,15 +17,12 @@ CXFA_NodeOwner::~CXFA_NodeOwner() {
   is_being_destroyed_ = true;
 }
 
-CXFA_Node* CXFA_NodeOwner::AddOwnedNode(std::unique_ptr<CXFA_Node> node) {
-  if (!node)
-    return nullptr;
-
-  CXFA_Node* ret = node.get();
-  nodes_.push_back(std::move(node));
-  return ret;
+void CXFA_NodeOwner::PersistNode(CXFA_Node* node) {
+  if (node)
+    nodes_.emplace_back(node);
 }
 
 void CXFA_NodeOwner::PersistList(CXFA_List* list) {
-  lists_.emplace_back(list);
+  if (list)
+    lists_.emplace_back(list);
 }

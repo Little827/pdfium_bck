@@ -1372,7 +1372,9 @@ CXFA_Node* CXFA_Document::CreateNode(XFA_PacketType packet,
                                      XFA_Element eElement) {
   if (eElement == XFA_Element::Unknown)
     return nullptr;
-  return AddOwnedNode(CXFA_Node::Create(this, eElement, packet));
+  auto* result = CXFA_Node::Create(this, eElement, packet);
+  PersistNode(result);
+  return result;
 }
 
 bool CXFA_Document::IsInteractive() {
