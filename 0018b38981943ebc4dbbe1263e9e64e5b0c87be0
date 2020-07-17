@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "d813ab21_85db71b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-17T20:38:57Z",
+      "side": 1,
+      "message": "\"anti-aliasing\" (should be hyphenated)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27067c81_45f2b584",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-17T20:38:57Z",
+      "side": 1,
+      "message": "\"to both\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee626090_de7ac510",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-17T20:38:57Z",
+      "side": 1,
+      "message": "For the future: More detail is fine, but when possible, I think it\u0027d be better to try and talk about the changes at a more conceptual level. This almost reads like the code itself.",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "967cf300_e5cb9723",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -16,6 +85,23 @@
       "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f149136_b3defbf3",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-17T20:38:57Z",
+      "side": 1,
+      "message": "SetBitmapPaint() no longer calls SkPaint::setAntiAlias(true) on |paint|. Does a call need to be added here? If so, do we need additional tests to cover this?",
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
