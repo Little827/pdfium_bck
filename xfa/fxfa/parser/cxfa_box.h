@@ -40,7 +40,7 @@ class CXFA_Box : public CXFA_Node {
             bool forceRound);
 
  protected:
-  CXFA_Box(CXFA_Document* pDoc,
+  ALLOCATE_VIA_MAKE_GARBAGE_COLLECTED;
            XFA_PacketType ePacket,
            uint32_t validPackets,
            XFA_ObjectType oType,
@@ -52,6 +52,8 @@ class CXFA_Box : public CXFA_Node {
   XFA_AttributeValue GetHand();
 
  private:
+  CXFA_Box(CXFA_Document* pDoc,
+
   bool IsCircular();
   Optional<int32_t> GetStartAngle();
   Optional<int32_t> GetSweepAngle();

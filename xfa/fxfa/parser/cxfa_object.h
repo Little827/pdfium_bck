@@ -11,7 +11,12 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "fxjs/xfa/fxjse.h"
+#include "v8/include/cppgc/garbage-collected.h"
 #include "xfa/fxfa/fxfa_basic.h"
+
+namespace cppgc {
+class Visitor;
+}  // namespace cppgc
 
 enum class XFA_ObjectType {
   Object,
@@ -34,9 +39,11 @@ class CXFA_Node;
 class CXFA_ThisProxy;
 class CXFA_TreeList;
 
-class CXFA_Object {
+class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
  public:
   virtual ~CXFA_Object();
+
+  virtual void Trace(cppgc::Visitor* visitor) const;
 
   CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
   XFA_ObjectType GetObjectType() const { return m_objectType; }

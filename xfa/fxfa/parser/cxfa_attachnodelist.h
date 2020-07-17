@@ -14,7 +14,7 @@ class CXFA_Node;
 
 class CXFA_AttachNodeList final : public CXFA_TreeList {
  public:
-  CXFA_AttachNodeList(CXFA_Document* pDocument, CXFA_Node* pAttachNode);
+  ALLOCATE_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_AttachNodeList() override;
 
   // CXFA_TreeList:
@@ -25,6 +25,8 @@ class CXFA_AttachNodeList final : public CXFA_TreeList {
   CXFA_Node* Item(size_t iIndex) override;
 
  private:
+  CXFA_AttachNodeList(CXFA_Document* pDocument, CXFA_Node* pAttachNode);
+
   UnownedPtr<CXFA_Node> const m_pAttachNode;
 };
 

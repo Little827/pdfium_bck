@@ -14,10 +14,13 @@ class CXFA_Node;
 
 class CXFA_TreeList : public CXFA_List {
  public:
-  explicit CXFA_TreeList(CXFA_Document* pDocument);
+  ALLOCATE_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_TreeList() override;
 
   CXFA_Node* NamedItem(WideStringView wsName);
+
+ private:
+  explicit CXFA_TreeList(CXFA_Document* pDocument);
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_TREELIST_H_
