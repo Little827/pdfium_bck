@@ -87,6 +87,30 @@
       "revId": "a1e97cc40d51cc06437d9bc54f3632f577b33d5e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd41fa64_5d732866",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3404,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-17T20:20:05Z",
+      "side": 1,
+      "message": "They don\u0027t have different shades. I think that\u0027s just human eyes being confused. When I open matte_expected.pdf.0.png in an image editor and use a color picker tool, I see the images are the same.",
+      "parentUuid": "aaaa203e_c6a1a6bf",
+      "range": {
+        "startLine": 3404,
+        "startChar": 5,
+        "endLine": 3404,
+        "endChar": 77
+      },
+      "revId": "a1e97cc40d51cc06437d9bc54f3632f577b33d5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
