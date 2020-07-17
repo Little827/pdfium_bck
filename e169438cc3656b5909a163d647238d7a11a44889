@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7625305_c82945f9",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-17T21:48:31Z",
+      "side": 1,
+      "message": "There was an earlier conversation, where we discussed writing \"Checksum\" here.\n\nhttps://pdfium-review.googlesource.com/c/pdfium/+/69171/6/fpdfsdk/fpdf_embeddertest_constants.h@10",
+      "range": {
+        "startLine": 670,
+        "startChar": 33,
+        "endLine": 670,
+        "endChar": 36
+      },
+      "revId": "e169438cc3656b5909a163d647238d7a11a44889",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca058f68_7d743c77",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-17T21:48:31Z",
+      "side": 1,
+      "message": "Can we order this as Win/Mac/etc? It\u0027s much more common, especially in Chromium code. It also roughly aligns with the platforms\u0027 market shares.",
+      "revId": "e169438cc3656b5909a163d647238d7a11a44889",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1566ba0b_eb7d593a",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-17T21:48:31Z",
+      "side": 1,
+      "message": "Use ScopedFPDFTextPage?",
+      "revId": "e169438cc3656b5909a163d647238d7a11a44889",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d9f1f6_22d5d4e4",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-17T21:48:31Z",
+      "side": 1,
+      "message": "Can this be: ASSERT_GT(size, 0) ?\n\n- Looks more like: if (size \u003e 0), rather than if (0 \u003c\u003d size)\n- Is FPDFTextObj_GetText() going to return 0 here?",
+      "revId": "e169438cc3656b5909a163d647238d7a11a44889",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
