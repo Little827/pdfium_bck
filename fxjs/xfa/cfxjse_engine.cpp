@@ -108,7 +108,8 @@ CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
       m_pDocument(pDocument),
       m_JsContext(CFXJSE_Context::Create(fxjs_runtime->GetIsolate(),
                                          &GlobalClassDescriptor,
-                                         pDocument->GetRoot()->JSObject())),
+                                         pDocument->GetRoot()->JSObject(),
+                                         nullptr)),
       m_ResolveProcessor(std::make_unique<CFXJSE_ResolveProcessor>()) {
   RemoveBuiltInObjs(m_JsContext.get());
   m_JsContext->EnableCompatibleMode();
@@ -499,12 +500,10 @@ CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
   if (!pScriptNode || !pSubform)
     return nullptr;
 
-  // Ownership of |proxy| is maintained through v8 bindings, and is
-  // manually freed in ~CFXJE_Context() after re-obtaining the binding
-  // from v8.
-  auto* proxy = new CXFA_ThisProxy(pSubform, pScriptNode);
-  auto pNewContext = CFXJSE_Context::Create(
-      GetIsolate(), &VariablesClassDescriptor, proxy->JSObject());
+  auto proxy = std::make_unique<CXFA_ThisProxy>(pSubform, pScriptNode);
+  auto pNewContext =
+      CFXJSE_Context::Create(GetIsolate(), &VariablesClassDescriptor,
+                             proxy->JSObject(), std::move(proxy));
   RemoveBuiltInObjs(pNewContext.get());
   pNewContext->EnableCompatibleMode();
   CFXJSE_Context* pResult = pNewContext.get();
