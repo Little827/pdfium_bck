@@ -186,6 +186,24 @@
       "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7e1c205_997c703e",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-18T01:28:07Z",
+      "side": 1,
+      "message": "The only test which can be affected is an embeddertest using FPDF_RENDER_NO_SMOOTHPATH flag for rendering (RenderManyRectanglesWithFlags), and this test has been disabled for Skia \u0026 SkiaPaths due to it doesn\u0027t match AGG\u0027s result pixel perfect. (This CL is a step stone to enable that embeddertest, and also a helper to eliminate the difference caused by anti-aliasing when comparing AGG and Skia rendering results in the future.)\n\nPrevious to this CL, Skia \u0026 SkiaPaths don\u0027t handle aliased path rendering, and all the tests for Skia are tested with anti-aliasing automatically enabled for paths. That\u0027s why this change doesn\u0027t affect those tests.",
+      "parentUuid": "a2031ce3_93afe1bb",
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
