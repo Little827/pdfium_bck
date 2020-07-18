@@ -168,6 +168,24 @@
       "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2031ce3_93afe1bb",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-18T01:17:52Z",
+      "side": 1,
+      "message": "I\u0027m satisfied with this solution, although I still wonder why it didn\u0027t seem to affect any tests.",
+      "parentUuid": "e15f8609_1566c93c",
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
