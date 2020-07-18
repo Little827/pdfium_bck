@@ -70,6 +70,24 @@
       "revId": "09930b97e663accf4801d7549fe976d0ec38f592",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c30bc4c_5179973d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-18T02:34:32Z",
+      "side": 1,
+      "message": "Uploaded rendering results for FPDF_RENDER_NO_SMOOTHPATH in \nhttps://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c29\n\nI added the Skia expected results for using FPDF_GRAYSCALE flag as well. Since the rendering result for Skia without any rendering flag is already acceptable, the test for flag FPDF_GRAYSCALE should pass as well. Rendering results are uploaded to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c30.\n\nNow FPDFViewEmbedderTest.RenderManyRectanglesWithFlags can be completely enabled for Skia and SkiaPaths.",
+      "parentUuid": "65a252eb_5c8ef74e",
+      "revId": "09930b97e663accf4801d7549fe976d0ec38f592",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
