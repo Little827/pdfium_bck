@@ -16,6 +16,24 @@
       "revId": "09930b97e663accf4801d7549fe976d0ec38f592",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e550302e_8d700693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-18T01:13:39Z",
+      "side": 1,
+      "message": "When using --no-smoothpath flag rendering many_rectangles.pdf, this CL\u0027s change greatly reduce the discrepancy between Skia\u0027s and AGG\u0027s rendering results (both with aliasing path allowed).\n\nThere are still discrepancies along the rectangle borders due to Skia handling drawing hairlines differently (It\u0027s easier to tell the when the scale is larger. I tested with scale \u003d 3 and 5, and discrepancy decreases as the scale goes up. \n\nAt scale \u003d 1, with --no-smoothpath option, Skia\u0027s rendering result turns out to be better compared to AGG\u0027s. The Skia result keeps the clear gaps between all the rectangles while the AGG result doesn\u0027t.\n\n----------------------------------------------------------------------\n\nFor rendering hello_world.pdf, whether using flag --no-smoothpath or not doesn\u0027t make any difference for both AGG and Skia, since it only affects path rendering, not text rendering.",
+      "parentUuid": "e6d338b6_c3caed75",
+      "revId": "09930b97e663accf4801d7549fe976d0ec38f592",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

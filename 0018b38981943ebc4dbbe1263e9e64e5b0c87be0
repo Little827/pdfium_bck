@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "830ac1c2_4e8e7d9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-18T01:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27067c81_45f2b584",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1cfb40_6ef5a667",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-18T01:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d813ab21_85db71b7",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee626090_de7ac510",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -102,6 +150,24 @@
       "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15f8609_1566c93c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-18T01:13:39Z",
+      "side": 1,
+      "message": "Thanks! Since SetBitmapPaint() is supposed to set all attributes for SkPaint, I will pass the anti-aliasing flag as a parameter for this function in the new patchset.",
+      "parentUuid": "7f149136_b3defbf3",
+      "revId": "0018b38981943ebc4dbbe1263e9e64e5b0c87be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
