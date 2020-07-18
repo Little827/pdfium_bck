@@ -34,6 +34,24 @@
       "revId": "09930b97e663accf4801d7549fe976d0ec38f592",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "836abd99_ecb7c0e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-18T01:34:18Z",
+      "side": 1,
+      "message": "Since FPDFViewEmbedderTest.RenderManyRectanglesWithFlags renders at scale \u003d 1, do you think the results are good enough that we can (partially) enable this test case in this CL?",
+      "parentUuid": "e550302e_8d700693",
+      "revId": "09930b97e663accf4801d7549fe976d0ec38f592",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
