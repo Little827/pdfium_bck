@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "376490f6_ca2e4ad3",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-18T00:26:11Z",
+      "side": 1,
+      "message": "FYI, here\u0027s my issue in that the order of evaluation of function arguments isn\u0027t specified, so if the 4th one evaluates first, the move happens, and then we blow up evaluating the third argument.  I guess it occurs  this way on windows but not the other platforms.",
+      "range": {
+        "startLine": 506,
+        "startChar": 29,
+        "endLine": 506,
+        "endChar": 64
+      },
+      "revId": "e9e1faeacb67e23acbc3bdc955b69a662d537ee9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
