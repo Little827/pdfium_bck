@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f04abd5e_7fe7ed04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-20T22:52:28Z",
+      "side": 1,
+      "message": "Or maybe this should become a method of WideString itself?",
+      "revId": "d0b9c848af8ed3a6549c7ad202a14c8da9dbc636",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
