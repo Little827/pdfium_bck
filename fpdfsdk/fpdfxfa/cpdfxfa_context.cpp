@@ -105,11 +105,9 @@ CPDFXFA_Context::~CPDFXFA_Context() {
 }
 
 void CPDFXFA_Context::CloseXFADoc() {
-  if (!m_pXFADoc)
-    return;
-
   m_pXFADocView = nullptr;
-  m_pXFADoc.reset();
+  m_pXFADoc = nullptr;
+  m_pGCHeap.reset();
 }
 
 void CPDFXFA_Context::SetFormFillEnv(
@@ -141,11 +139,13 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
   }
 
-  m_pXFADoc = CXFA_FFDoc::CreateAndOpen(
-      m_pXFAApp.get(), &m_DocEnv, m_pPDFDoc.Get(), m_pGCHeap.get(), stream);
+  m_pXFADoc = cppgc::MakeGarbageCollected<CXFA_FFDoc>(
+      m_pGCHeap->GetAllocationHandle(), m_pXFAApp.get(), &m_DocEnv,
+      m_pPDFDoc.Get(), m_pGCHeap.get());
 
-  if (!m_pXFADoc) {
+  if (!m_pXFADoc->OpenDoc(stream)) {
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);
+    m_pXFADoc = nullptr;
     return false;
   }
 
