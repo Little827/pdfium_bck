@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fea6fe60_c5b96d34",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-20T22:29:53Z",
+      "side": 1,
+      "message": "Maybe we should add NOTREACHED() here?\nBy looking at what are the possible values for m_PathAndTypeList[i].second, it seems like case |kNoFill| should never happen.",
+      "range": {
+        "startLine": 439,
+        "startChar": 8,
+        "endLine": 440,
+        "endChar": 35
+      },
+      "revId": "3662ea6ad373b9b7d5f5a1b6e175e59b1b09a9e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
