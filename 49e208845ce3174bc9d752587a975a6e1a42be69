@@ -16,6 +16,24 @@
       "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18345aca_4763fa64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-20T07:21:19Z",
+      "side": 1,
+      "message": "\u003e  signature can be written\n\nErr, I mean signature verifier (client code).",
+      "parentUuid": "2e343a01_346b6faa",
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
