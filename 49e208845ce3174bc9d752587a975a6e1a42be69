@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e343a01_346b6faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-20T07:20:24Z",
+      "side": 1,
+      "message": "Lei, Tom: could you please take a look? Thanks.\n\nFor context, once this is in, a bare minimum signature can be written that just uses the signature contents/byte range, and assumes the default for other parameters. (Then about 3 more parameters could be exposed, things like signature comment, etc.)",
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
