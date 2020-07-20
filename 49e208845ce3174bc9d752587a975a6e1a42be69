@@ -34,6 +34,52 @@
       "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b70d569_b1f76f03",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-20T16:43:21Z",
+      "side": 1,
+      "message": "could be null if document is malformed and dict doesn\u0027t contain this member?",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "632557e4_82eb339d",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-20T16:43:21Z",
+      "side": 1,
+      "message": "why not just add to buffer directly instead of having the byte_range as an intermediate step?",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 43
+      },
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
