@@ -33,6 +33,24 @@
       "revId": "d0b9c848af8ed3a6549c7ad202a14c8da9dbc636",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df73208_129c7715",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-20T23:15:24Z",
+      "side": 1,
+      "message": "Move to strings, made forward decl.",
+      "parentUuid": "c821e2bc_3a303b29",
+      "revId": "d0b9c848af8ed3a6549c7ad202a14c8da9dbc636",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
