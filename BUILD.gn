@@ -341,6 +341,7 @@ executable("pdfium_diff") {
   deps = [
     "core/fxcrt",
     "testing/image_diff",
+    "testing:test_support",
     "//build/win:default_exe_manifest",
   ]
   configs -= [ "//build/config/compiler:chromium_code" ]

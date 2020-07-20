@@ -16,6 +16,7 @@ check_targets = [
   ":pdfium",
   ":pdfium_embeddertests",
   ":pdfium_unittests",
+  ":pdfium_diff",
   "//constants/*",
   "//core/*",
   "//fpdfsdk/*",
