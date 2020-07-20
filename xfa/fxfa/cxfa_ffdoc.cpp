@@ -22,7 +22,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/ptr_util.h"
-#include "v8/include/cppgc/heap.h"
+#include "v8/include/cppgc/allocation.h"
 #include "xfa/fgas/font/cfgas_pdffontmgr.h"
 #include "xfa/fwl/cfwl_notedriver.h"
 #include "xfa/fxfa/cxfa_ffapp.h"
@@ -49,26 +49,6 @@ FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI(const RetainPtr<CFX_DIBBase>& pDib,
     : pDibSource(pDib), iImageXDpi(xDpi), iImageYDpi(yDpi) {}
 
 FX_IMAGEDIB_AND_DPI::~FX_IMAGEDIB_AND_DPI() = default;
-
-// static
-std::unique_ptr<CXFA_FFDoc> CXFA_FFDoc::CreateAndOpen(
-    CXFA_FFApp* pApp,
-    IXFA_DocEnvironment* pDocEnvironment,
-    CPDF_Document* pPDFDoc,
-    cppgc::Heap* pGCHeap,
-    const RetainPtr<IFX_SeekableStream>& stream) {
-  ASSERT(pApp);
-  ASSERT(pDocEnvironment);
-  ASSERT(pPDFDoc);
-
-  // Use WrapUnique() to keep constructor private.
-  auto result = pdfium::WrapUnique(
-      new CXFA_FFDoc(pApp, pDocEnvironment, pPDFDoc, pGCHeap));
-  if (!result->OpenDoc(stream))
-    return nullptr;
-
-  return result;
-}
 
 CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp,
                        IXFA_DocEnvironment* pDocEnvironment,
