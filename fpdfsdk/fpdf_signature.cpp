@@ -77,3 +77,28 @@ FPDFSignatureObj_GetContents(FPDF_SIGNATURE signature,
 
   return contents_len;
 }
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFSignatureObj_GetByteRange(FPDF_SIGNATURE signature,
+                              unsigned long* buffer,
+                              unsigned long length) {
+  CPDF_Dictionary* signature_dict = CPDFDictionaryFromFPDFSignature(signature);
+  if (!signature_dict)
+    return 0;
+
+  CPDF_Dictionary* value_dict = signature_dict->GetDictFor("V");
+  if (!value_dict)
+    return 0;
+
+  const CPDF_Array* byte_range_array = value_dict->GetArrayFor("ByteRange");
+  unsigned long byte_range_len = byte_range_array->size();
+  if (buffer && length >= byte_range_len) {
+    CPDF_ArrayLocker locker(byte_range_array);
+    std::vector<unsigned long> byte_range;
+    for (auto& i : locker)
+      byte_range.push_back(i->GetNumber());
+    std::copy(byte_range.begin(), byte_range.end(), buffer);
+  }
+
+  return byte_range_len;
+}
