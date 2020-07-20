@@ -16,6 +16,8 @@ class CFX_XMLNode;
 
 class CFX_XMLDocument {
  public:
+  static WideString EncodeEntities(const WideString& value);
+
   CFX_XMLDocument();
   ~CFX_XMLDocument();
 
