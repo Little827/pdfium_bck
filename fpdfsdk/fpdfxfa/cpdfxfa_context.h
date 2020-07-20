@@ -19,6 +19,7 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "fxjs/gc/heap.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
 
 class CJS_Runtime;
@@ -38,7 +39,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
   ~CPDFXFA_Context() override;
 
   bool LoadXFADoc();
-  CXFA_FFDoc* GetXFADoc() { return m_pXFADoc.get(); }
+  CXFA_FFDoc* GetXFADoc() { return m_pXFADoc; }
   CXFA_FFDocView* GetXFADocView() const { return m_pXFADocView.Get(); }
   cppgc::Heap* GetGCHeap() { return m_pGCHeap.get(); }
   FormType GetFormType() const { return m_FormType; }
@@ -114,7 +115,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
   FormType m_FormType = FormType::kNone;
   UnownedPtr<CPDF_Document> const m_pPDFDoc;
   FXGCScopedHeap m_pGCHeap;
-  std::unique_ptr<CXFA_FFDoc> m_pXFADoc;
+  cppgc::Persistent<CXFA_FFDoc> m_pXFADoc;
   ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
   UnownedPtr<CXFA_FFDocView> m_pXFADocView;
   std::unique_ptr<CXFA_FFApp> const m_pXFAApp;

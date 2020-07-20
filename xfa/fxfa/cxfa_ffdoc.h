@@ -12,6 +12,9 @@
 
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fxjs/gc/heap.h"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
@@ -26,10 +29,6 @@ class CXFA_FFNotify;
 class CXFA_FFDocView;
 class CXFA_LayoutProcessor;
 
-namespace cppgc {
-class Heap;
-}  // namespace cppgc
-
 struct FX_IMAGEDIB_AND_DPI {
   FX_IMAGEDIB_AND_DPI();
   FX_IMAGEDIB_AND_DPI(const FX_IMAGEDIB_AND_DPI& that);
@@ -43,16 +42,12 @@ struct FX_IMAGEDIB_AND_DPI {
   int32_t iImageYDpi;
 };
 
-class CXFA_FFDoc {
+class CXFA_FFDoc : public cppgc::GarbageCollected<CXFA_FFDoc> {
  public:
-  static std::unique_ptr<CXFA_FFDoc> CreateAndOpen(
-      CXFA_FFApp* pApp,
-      IXFA_DocEnvironment* pDocEnvironment,
-      CPDF_Document* pPDFDoc,
-      cppgc::Heap* pGCHeap,
-      const RetainPtr<IFX_SeekableStream>& stream);
-
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_FFDoc();
+
+  void Trace(cppgc::Visitor* visitor) const {}
 
   IXFA_DocEnvironment* GetDocEnvironment() const {
     return m_pDocEnvironment.Get();
@@ -61,6 +56,7 @@ class CXFA_FFDoc {
   cppgc::Heap* GetHeap() const { return m_pHeap.Get(); }
   CFX_XMLDocument* GetXMLDocument() const { return m_pXMLDoc.get(); }
 
+  bool OpenDoc(const RetainPtr<IFX_SeekableStream>& stream);
   CXFA_FFDocView* CreateDocView();
 
   CXFA_Document* GetXFADoc() const { return m_pDocument.get(); }
@@ -81,7 +77,6 @@ class CXFA_FFDoc {
              IXFA_DocEnvironment* pDocEnvironment,
              CPDF_Document* pPDFDoc,
              cppgc::Heap* pHeap);
-  bool OpenDoc(const RetainPtr<IFX_SeekableStream>& stream);
   bool ParseDoc(const RetainPtr<IFX_SeekableStream>& stream);
 
   UnownedPtr<IXFA_DocEnvironment> const m_pDocEnvironment;
