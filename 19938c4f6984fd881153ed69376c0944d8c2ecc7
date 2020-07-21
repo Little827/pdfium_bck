@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "194dd991_12d715f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-21T16:04:33Z",
+      "side": 1,
+      "message": "Interestingly, everything is broken, but it\u0027s happening when calling depot_tools outside of the PDFium tree, so not sure if it\u0027s related or not yet.",
+      "revId": "19938c4f6984fd881153ed69376c0944d8c2ecc7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
