@@ -39,6 +39,40 @@
       "revId": "9480962f42adf59d56d58d91c030809745bec337",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5d0d9c_335fc170",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T23:30:55Z",
+      "side": 1,
+      "message": "Is an empty array, i.e. /ByteRange [], considered an error?",
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1129f32_afd2e1b0",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T23:30:55Z",
+      "side": 1,
+      "message": "If this is unsigned, then if the /ByteRange contains -5, that would get interpreted as 2^32 - 5. Is that the desired outcome?",
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
