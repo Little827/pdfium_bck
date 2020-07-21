@@ -35,6 +35,24 @@
       "revId": "cffbd601466d42ab34a0c8e8483eb1692497bb2d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8274f571_a8eeaf61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T17:29:01Z",
+      "side": 1,
+      "message": "BTW, comments on WIP CLs don\u0027t generate email for me. So I only saw this by chance.",
+      "parentUuid": "c4d837fe_529958e8",
+      "revId": "cffbd601466d42ab34a0c8e8483eb1692497bb2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
