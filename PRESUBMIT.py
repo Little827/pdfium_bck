@@ -312,6 +312,156 @@ def _CheckPNGFormat(input_api, output_api):
         'PNG file %s does not have the correct format' % f.LocalPath()))
   return results
 
+
+def _CheckNoDISABLETypoInTests(input_api, output_api):
+  """Checks to prevent attempts to disable tests with DISABLE_ prefix.
+
+  This test warns if somebody tries to disable a test with the DISABLE_ prefix
+  instead of DISABLED_. To filter false positives, reports are only generated
+  if a corresponding MAYBE_ line exists.
+  """
+  problems = []
+
+  # The following two patterns are looked for in tandem - is a test labeled
+  # as MAYBE_ followed by a DISABLE_ (instead of the correct DISABLED)
+  maybe_pattern = input_api.re.compile(r'MAYBE_([a-zA-Z0-9_]+)')
+  disable_pattern = input_api.re.compile(r'DISABLE_([a-zA-Z0-9_]+)')
+
+  # This is for the case that a test is disabled on all platforms.
+  full_disable_pattern = input_api.re.compile(
+      r'^\s*TEST[^(]*\([a-zA-Z0-9_]+,\s*DISABLE_[a-zA-Z0-9_]+\)',
+      input_api.re.MULTILINE)
+
+  for f in input_api.AffectedFiles(False):
+    if not 'test' in f.LocalPath() or not f.LocalPath().endswith('.cc'):
+      continue
+
+    # Search for MABYE_, DISABLE_ pairs.
+    disable_lines = {}  # Maps of test name to line number.
+    maybe_lines = {}
+    for line_num, line in f.ChangedContents():
+      disable_match = disable_pattern.search(line)
+      if disable_match:
+        disable_lines[disable_match.group(1)] = line_num
+      maybe_match = maybe_pattern.search(line)
+      if maybe_match:
+        maybe_lines[maybe_match.group(1)] = line_num
+
+    # Search for DISABLE_ occurrences within a TEST() macro.
+    disable_tests = set(disable_lines.keys())
+    maybe_tests = set(maybe_lines.keys())
+    for test in disable_tests.intersection(maybe_tests):
+      problems.append('    %s:%d' % (f.LocalPath(), disable_lines[test]))
+
+    contents = input_api.ReadFile(f)
+    full_disable_match = full_disable_pattern.search(contents)
+    if full_disable_match:
+      problems.append('    %s' % f.LocalPath())
+
+  if not problems:
+    return []
+  return [
+      output_api.PresubmitPromptWarning(
+          'Attempt to disable a test with DISABLE_ instead of DISABLED_?\n' +
+          '\n'.join(problems))
+  ]
+
+
+def _CheckDCHECK_IS_ONHasBraces(input_api, output_api):
+  """Checks to make sure DCHECK_IS_ON() does not skip the parentheses."""
+  errors = []
+  pattern = input_api.re.compile(r'DCHECK_IS_ON\b(?!\(\))',
+                                 input_api.re.MULTILINE)
+  for f in input_api.AffectedSourceFiles(input_api.FilterSourceFile):
+    if (not f.LocalPath().endswith(('.cc', '.cpp', '.mm', '.h', '.inc'))):
+      continue
+    for lnum, line in f.ChangedContents():
+      if input_api.re.search(pattern, line):
+        errors.append(
+            output_api.PresubmitError(
+                ('%s:%d: Use of DCHECK_IS_ON() must be written as "#if ' +
+                 'DCHECK_IS_ON()", not forgetting the parentheses.') %
+                (f.LocalPath(), lnum)))
+  return errors
+
+
+def _CheckNoTrinaryTrueFalse(input_api, output_api):
+  """Checks to make sure we don't introduce use of foo ? true : false."""
+  problems = []
+  pattern = input_api.re.compile(r'\?\s*(true|false)\s*:\s*(true|false)')
+  for f in input_api.AffectedFiles():
+    if not f.LocalPath().endswith(('.cc', '.cpp', '.mm', '.h', '.inc')):
+      continue
+
+    for line_num, line in f.ChangedContents():
+      if pattern.match(line):
+        problems.append('    %s:%d' % (f.LocalPath(), line_num))
+
+  if not problems:
+    return []
+  return [
+      output_api.PresubmitPromptWarning(
+          'Please consider avoiding the "? true : false" pattern if possible.\n'
+          + '\n'.join(problems))
+  ]
+
+
+def _CheckNoPragmaOnce(input_api, output_api):
+  """Make sure that banned functions are not used."""
+  files = []
+  pattern = input_api.re.compile(r'^#pragma\s+once', input_api.re.MULTILINE)
+  for f in input_api.AffectedSourceFiles(input_api.FilterSourceFile):
+    if not f.LocalPath().endswith('.h'):
+      continue
+    contents = input_api.ReadFile(f)
+    if pattern.search(contents):
+      files.append(f)
+
+  if files:
+    return [
+        output_api.PresubmitError(
+            'Do not use #pragma once in header files.\n'
+            'See http://www.chromium.org/developers/coding-style#TOC-File-headers',
+            files)
+    ]
+  return []
+
+
+def _CheckForCcOrCppIncludes(input_api, output_api):
+  """Check that nobody tries to include a cc or cpp file. It's a relatively
+  common error which results in duplicate symbols in object
+  files. This may not always break the build until someone later gets
+  very confusing linking errors."""
+  results = []
+  for f in input_api.AffectedFiles(include_deletes=False):
+    # We let third_party code do whatever it wants
+    if (f.LocalPath().startswith('third_party') and
+        not f.LocalPath().startswith('third_party/blink') and
+        not f.LocalPath().startswith('third_party\\blink')):
+      continue
+
+    if not f.LocalPath().endswith(('.cc', '.cpp', '.mm', '.m', '.h')):
+      continue
+
+    for _, line in f.ChangedContents():
+      if line.startswith('#include "'):
+        included_file = line.split('"')[1]
+        if _IsCPlusPlusFile(input_api, included_file):
+          # The most common naming for external files with C++ code,
+          # apart from standard headers, is to call them foo.inc, but
+          # Chromium sometimes uses foo-inc.cc so allow that as well.
+          if not included_file.endswith(('.h', '-inc.cc')):
+            results.append(
+                output_api.PresubmitError(
+                    'Only header files or .inc files should be included in other\n'
+                    'C++ files. Compiling the contents of a cc or cpp file more than\n'
+                    'once will cause duplicate information in the build which may\n'
+                    'later result in strange link_errors.\n' + f.LocalPath() +
+                    ':\n    ' + line))
+
+  return results
+
+
 def CheckChangeOnUpload(input_api, output_api):
   cpp_source_filter = lambda x: input_api.FilterSourceFile(
       x, white_list=(r'\.(?:c|cc|cpp|h)$',))
@@ -327,6 +477,11 @@ def CheckChangeOnUpload(input_api, output_api):
   results.extend(_CheckIncludeOrder(input_api, output_api))
   results.extend(_CheckTestDuplicates(input_api, output_api))
   results.extend(_CheckPNGFormat(input_api, output_api))
+  results.extend(_CheckNoDISABLETypoInTests(input_api, output_api))
+  results.extend(_CheckDCHECK_IS_ONHasBraces(input_api, output_api))
+  results.extend(_CheckNoTrinaryTrueFalse(input_api, output_api))
+  results.extend(_CheckNoPragmaOnce(input_api, output_api))
+  results.extend(_CheckForCcOrCppIncludes(input_api, output_api))
 
   author = input_api.change.author_email
   if author and author not in _KNOWN_ROBOTS:
