@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a07bdf5_5e9fb882",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T00:07:31Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e (1 comment)\n\u003e \n\u003e The differences here are much more obvious to the eye. For rectangles.pdf, I have to zoom in and look very carefully to see the difference. Here, the differences are noticeable even in the thumbnails on crbug.com/pdfium/1500. In particular, Skia draws a brighter white dot at every intersection, instead of a gray dot.\n\nI never got a reply here, but looking at https://pdfium-review.googlesource.com/71632, which also involves many_rectangles.pdf, I see this is an artifact from rendering at scale\u003d1. At scale\u003d2, Skia matches AGG. Without path smoothing, Skia also matches Acrobat to the human eye. So I guess this is ok.",
+      "revId": "893ef4279fb1aae5440969376f21c51b0aee6b44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
