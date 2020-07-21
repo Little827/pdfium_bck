@@ -16,6 +16,24 @@
       "revId": "19938c4f6984fd881153ed69376c0944d8c2ecc7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0555e8f5_f9ad8800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-21T16:05:50Z",
+      "side": 1,
+      "message": "Actually, it looks like the copy in third_party, so I assume this needs a DEPS roll or something.",
+      "parentUuid": "194dd991_12d715f2",
+      "revId": "19938c4f6984fd881153ed69376c0944d8c2ecc7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
