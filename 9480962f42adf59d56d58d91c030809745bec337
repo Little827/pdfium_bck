@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "87de03d5_b389ce67",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T23:33:35Z",
+      "side": 1,
+      "message": "BTW, we recently mass converted all the OpenDocument() checks to ASSERT_TRUE(). If OpenDocument() fails, there\u0027s no reason to continue the test.",
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de5d0d9c_335fc170",
         "filename": "public/fpdf_signature.h",
         "patchSetId": 3
