@@ -1,5 +1,4 @@
 use_relative_paths = True
-use_relative_hooks = True
 
 gclient_gn_args_file = 'build/config/gclient_args.gni'
 gclient_gn_args = [
@@ -60,7 +59,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling depot_tools
   # and whatever else without interference from each other.
-  'depot_tools_revision': '9949ab7a4b1cb3c342b38129b4e0bfcfb2ef5749',
+  'depot_tools_revision': '720e010ba1b2fb75f5007b8b2bb139da91bce3a9',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling freetype
   # and whatever else without interference from each other.
