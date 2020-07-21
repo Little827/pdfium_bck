@@ -354,6 +354,10 @@ if (pdf_is_standalone) {
     deps = [ "//samples" ]
   }
 
+  source_set("skia") {
+    deps = [ "//skia" ]
+  }
+
   group("fuzzers") {
     testonly = true
     deps = [ "//testing/fuzzers" ]
@@ -371,6 +375,7 @@ group("pdfium_all") {
     deps += [
       ":fuzzers",
       ":samples",
+      ":skia",
     ]
   }
 }
