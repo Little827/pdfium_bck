@@ -22,6 +22,30 @@
       "revId": "7234b4ec07b1634ea44da25378c0472dc3a106cf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614c32fb_7b7bc2b3",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-21T06:31:11Z",
+      "side": 1,
+      "message": "Sure, done. I also added test coverage for an attribute whose value\nis the empty string, and an attribute with a non-string value.",
+      "parentUuid": "e634b6c3_0aaca501",
+      "range": {
+        "startLine": 126,
+        "startChar": 20,
+        "endLine": 126,
+        "endChar": 52
+      },
+      "revId": "7234b4ec07b1634ea44da25378c0472dc3a106cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
