@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ddc45f_5884c077",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-21T07:04:03Z",
+      "side": 1,
+      "message": "Addressing comments from Lei.",
+      "revId": "a076b8b4ffefd21b49d364fb4b060f7a220dddc2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}

@@ -154,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "6026e867_2596178b",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-21T07:04:03Z",
+      "side": 1,
+      "message": "Ah, I wasn\u0027t aware of GetNumber() vs GetInteger(). I switched to GetInteger() now, indeed a byte offset or length can\u0027t be float.",
+      "parentUuid": "ffdea93c_9efbca29",
+      "range": {
+        "startLine": 99,
+        "startChar": 30,
+        "endLine": 99,
+        "endChar": 39
+      },
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f425ed0_5b8a93ee",
         "filename": "public/fpdf_signature.h",
         "patchSetId": 1
@@ -168,6 +192,24 @@
       "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b0d70b3_5f490fd4",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-21T07:04:03Z",
+      "side": 1,
+      "message": "Now that using GetInteger(), yes. :-) Fixed.",
+      "parentUuid": "8f425ed0_5b8a93ee",
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
