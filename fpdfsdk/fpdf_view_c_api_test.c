@@ -443,6 +443,9 @@ int CheckPDFiumCApi() {
     CHK(FPDF_GetRecommendedV8Flags);
 #endif
     CHK(FPDF_GetSecurityHandlerRevision);
+    CHK(FPDF_GetXFADataContent);
+    CHK(FPDF_GetXFADataCount);
+    CHK(FPDF_GetXFADataName);
     CHK(FPDF_InitLibrary);
     CHK(FPDF_InitLibraryWithConfig);
     CHK(FPDF_LoadCustomDocument);

@@ -19,7 +19,9 @@
 #include "testing/fx_string_testhelpers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/utils/file_util.h"
+#include "testing/utils/hash.h"
 #include "testing/utils/path_service.h"
+#include "third_party/base/stl_util.h"
 
 using pdfium::kManyRectanglesChecksum;
 
@@ -1061,6 +1063,75 @@ TEST_F(FPDFViewEmbedderTest, FPDF_GetPageSizeByIndex) {
   EXPECT_EQ(height, FPDF_GetPageHeight(page));
   EXPECT_EQ(1u, pDoc->GetParsedPageCountForTesting());
   UnloadPage(page);
+}
+
+TEST_F(FPDFViewEmbedderTest, GetXFAData) {
+  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
+
+  static constexpr struct {
+    const char* name;
+    size_t content_length;
+    const char* content_checksum;
+  } kExpectedResults[]{
+      {"preamble", 124u, "71be364e53292596412242bfcdb46eab"},
+      {"config", 642u, "bcd1ca1d420ee31a561273a54a06435f"},
+      {"template", 541u, "0f48cb2fa1bb9cbf9eee802d66e81bf4"},
+      {"localeSet", 3455u, "bb1f253d3e5c719ac0da87d055bc164e"},
+      {"postamble", 11u, "6b79e25da35d86634ea27c38f64cf243"},
+  };
+
+  ASSERT_EQ(static_cast<int>(pdfium::size(kExpectedResults)),
+            FPDF_GetXFADataCount(document()));
+  for (size_t i = 0; i < pdfium::size(kExpectedResults); ++i) {
+    char name_buffer[20] = {};
+    ASSERT_EQ(strlen(kExpectedResults[i].name) + 1,
+              FPDF_GetXFADataName(document(), i, nullptr, 0));
+    EXPECT_EQ(
+        strlen(kExpectedResults[i].name) + 1,
+        FPDF_GetXFADataName(document(), i, name_buffer, sizeof(name_buffer)));
+    EXPECT_STREQ(kExpectedResults[i].name, name_buffer);
+
+    unsigned long buflen;
+    ASSERT_TRUE(FPDF_GetXFADataContent(document(), i, nullptr, 0, &buflen));
+    ASSERT_EQ(kExpectedResults[i].content_length, buflen);
+    std::vector<uint8_t> data_buffer(buflen);
+    EXPECT_TRUE(FPDF_GetXFADataContent(document(), i, data_buffer.data(),
+                                       data_buffer.size(), &buflen));
+    EXPECT_EQ(kExpectedResults[i].content_length, buflen);
+    EXPECT_STREQ(
+        kExpectedResults[i].content_checksum,
+        GenerateMD5Base16(data_buffer.data(), data_buffer.size()).c_str());
+  }
+
+  // Test bad parameters.
+  EXPECT_EQ(-1, FPDF_GetXFADataCount(nullptr));
+
+  EXPECT_EQ(0u, FPDF_GetXFADataName(nullptr, 0, nullptr, 0));
+  EXPECT_EQ(0u, FPDF_GetXFADataName(document(), -1, nullptr, 0));
+  EXPECT_EQ(0u, FPDF_GetXFADataName(document(), pdfium::size(kExpectedResults),
+                                    nullptr, 0));
+
+  unsigned long buflen = 123;
+  EXPECT_FALSE(FPDF_GetXFADataContent(nullptr, 0, nullptr, 0, &buflen));
+  EXPECT_EQ(123u, buflen);
+  EXPECT_FALSE(FPDF_GetXFADataContent(document(), -1, nullptr, 0, &buflen));
+  EXPECT_EQ(123u, buflen);
+  EXPECT_FALSE(FPDF_GetXFADataContent(
+      document(), pdfium::size(kExpectedResults), nullptr, 0, &buflen));
+  EXPECT_EQ(123u, buflen);
+  EXPECT_FALSE(FPDF_GetXFADataContent(document(), 0, nullptr, 0, nullptr));
+}
+
+TEST_F(FPDFViewEmbedderTest, GetXFADataForNoForm) {
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+
+  EXPECT_EQ(0, FPDF_GetXFADataCount(document()));
+}
+
+TEST_F(FPDFViewEmbedderTest, GetXFADataForAcroForm) {
+  ASSERT_TRUE(OpenDocument("text_form.pdf"));
+
+  EXPECT_EQ(0, FPDF_GetXFADataCount(document()));
 }
 
 class RecordUnsupportedErrorDelegate final : public EmbedderTest::Delegate {

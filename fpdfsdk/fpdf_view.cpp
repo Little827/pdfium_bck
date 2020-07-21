@@ -21,6 +21,8 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
+#include "core/fpdfapi/parser/cpdf_stream.h"
+#include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
 #include "core/fpdfapi/render/cpdf_pagerendercache.h"
@@ -46,6 +48,7 @@
 #include "public/fpdf_formfill.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
+#include "third_party/base/stl_util.h"
 
 #ifdef PDF_ENABLE_V8
 #include "fxjs/cfx_v8.h"
@@ -86,6 +89,48 @@ static_assert(WindowsPrintMode::kModeEmfImageMasks ==
 namespace {
 
 bool g_bLibraryInitialized = false;
+
+const CPDF_Array* GetXFAArrayFromDocument(FPDF_DOCUMENT document) {
+  const CPDF_Document* doc = CPDFDocumentFromFPDFDocument(document);
+  if (!doc)
+    return nullptr;
+
+  const CPDF_Dictionary* root = doc->GetRoot();
+  if (!root)
+    return nullptr;
+
+  const CPDF_Dictionary* acro_form = root->GetDictFor("AcroForm");
+  return acro_form ? ToArray(acro_form->GetObjectFor("XFA")) : nullptr;
+}
+
+struct XFAPart {
+  const CPDF_String* name;
+  const CPDF_Stream* data;
+};
+
+std::vector<XFAPart> GetXFAParts(const CPDF_Array* xfa_array) {
+  std::vector<XFAPart> results;
+  if (!xfa_array)
+    return results;
+
+  results.reserve(1 + (xfa_array->size() / 2));
+  for (size_t i = 0; i < xfa_array->size(); i += 2) {
+    if (i + 1 == xfa_array->size())
+      break;
+
+    const CPDF_String* name = ToString(xfa_array->GetObjectAt(i));
+    if (!name)
+      continue;
+
+    const CPDF_Stream* data = xfa_array->GetStreamAt(i + 1);
+    if (!data)
+      continue;
+
+    results.push_back({name, data});
+  }
+
+  return results;
+}
 
 FPDF_DOCUMENT LoadDocumentImpl(
     const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
@@ -1123,4 +1168,48 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDF_GetNamedDest(FPDF_DOCUMENT document,
     *buflen = -1;
   }
   return FPDFDestFromCPDFArray(pDestObj->AsArray());
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDF_GetXFADataCount(FPDF_DOCUMENT document) {
+  if (!document)
+    return -1;
+
+  return pdfium::CollectionSize<int>(
+      GetXFAParts(GetXFAArrayFromDocument(document)));
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_GetXFADataName(FPDF_DOCUMENT document,
+                    int index,
+                    void* buffer,
+                    unsigned long buflen) {
+  if (!document || index < 0)
+    return 0;
+
+  std::vector<XFAPart> xfa_parts =
+      GetXFAParts(GetXFAArrayFromDocument(document));
+  if (static_cast<size_t>(index) >= xfa_parts.size())
+    return 0;
+
+  return NulTerminateMaybeCopyAndReturnLength(
+      xfa_parts[index].name->GetString(), buffer, buflen);
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_GetXFADataContent(FPDF_DOCUMENT document,
+                       int index,
+                       void* buffer,
+                       unsigned long buflen,
+                       unsigned long* out_buflen) {
+  if (!document || index < 0 || !out_buflen)
+    return false;
+
+  std::vector<XFAPart> xfa_parts =
+      GetXFAParts(GetXFAArrayFromDocument(document));
+  if (static_cast<size_t>(index) >= xfa_parts.size())
+    return false;
+
+  *out_buflen = DecodeStreamMaybeCopyAndReturnLength(xfa_parts[index].data,
+                                                     buffer, buflen);
+  return true;
 }
