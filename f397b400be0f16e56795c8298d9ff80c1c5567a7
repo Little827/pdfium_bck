@@ -16,6 +16,23 @@
       "revId": "f397b400be0f16e56795c8298d9ff80c1c5567a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3fe273b_443d10a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T04:20:08Z",
+      "side": 1,
+      "message": "Rubber stamp",
+      "revId": "f397b400be0f16e56795c8298d9ff80c1c5567a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
