@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7f53e21_88601234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-21T21:52:44Z",
+      "side": 1,
+      "message": "I\u0027m OK with one small comment, but wait for thestig to approve as well.",
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ddcd13a_cf8e51d6",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-21T21:52:44Z",
+      "side": 1,
+      "message": "nit: byte_range_len rather than getting size again.",
+      "range": {
+        "startLine": 99,
+        "startChar": 27,
+        "endLine": 99,
+        "endChar": 45
+      },
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
