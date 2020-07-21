@@ -289,6 +289,9 @@ group("pdfium_embeddertest_deps") {
     "fxjs/*",
     "xfa/*",
   ]
+  if (pdf_enable_v8) {
+    public_deps += [ "testing:pdfium_v8_gtest_support" ]
+  }
 }
 
 test("pdfium_embeddertests") {
