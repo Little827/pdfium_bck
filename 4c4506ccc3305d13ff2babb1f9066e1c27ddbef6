@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "827c8e68_f359eb04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T16:19:55Z",
+      "side": 1,
+      "message": "I\u0027ve already done the same thing in https://pdfium-review.googlesource.com/71771 and the bots also came back red. I\u0027ve already rolled DEPS for depot_tools. https://pdfium-review.googlesource.com/71772",
+      "revId": "4c4506ccc3305d13ff2babb1f9066e1c27ddbef6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
