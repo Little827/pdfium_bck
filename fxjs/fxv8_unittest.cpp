@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "fxjs/cfx_v8_unittest.h"
+#include "fxjs/fxv8_unittest.h"
 
 #include <cmath>
 #include <memory>
