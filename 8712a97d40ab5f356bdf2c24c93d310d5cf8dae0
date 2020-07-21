@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94818dca_be7f9223",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8056
+      },
+      "writtenOn": "2020-07-21T22:50:38Z",
+      "side": 1,
+      "message": "Anything else you wanted me to address on this change? I was thinking I could\nfollow up with a new version of GetAltText in a separate patch, unless\nyou\u0027d prefer I do it in this one.\n",
+      "revId": "8712a97d40ab5f356bdf2c24c93d310d5cf8dae0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
