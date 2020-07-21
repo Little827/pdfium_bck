@@ -104,6 +104,8 @@ source_set("embedder_test_support") {
       "external_engine_embedder_test.h",
       "js_embedder_test.cpp",
       "js_embedder_test.h",
+      "v8_test_environment.cpp",
+      "v8_test_environment.h",
     ]
     deps += [ "../fxjs" ]
     configs += [ "//v8:external_startup_data" ]
