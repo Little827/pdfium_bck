@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1595350054 -0700\nnonce ALC2d1+w0XpMH9c0mpRBDJCuG53RLGez1wOf801zXMcnUEiRCf3LExL2GXTFDIC2mXKDoFglTY1P\n\n0000000000000000000000000000000000000000 cffbd601466d42ab34a0c8e8483eb1692497bb2d refs/for/refs/heads/master%notify\u003dNONE,m\u003dexperiment\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8XHCYACgkQqzYtYVpm\n/Xsgygf5AfsaWhxAobxeAz2Lj/epROoJI81KS/cLdcj9aT7+LjOuGUNuDC1qRnFi\nDfGRxCiYjt6EZgxLNpIUzlmHPJNTt0eRAjRZ4W6C8IGJU2qu3rUv/A56XIvjPZZy\nzxH7+OKWslEStEXq69ukwYBWw/4FE1jxjs9CKR2+WfyKXXTA2U6Pdaw5baxdBcG5\nZJywW58fpX1AtSIRdCxW6te6h5G3PMlErW8pKx/WzC7ZR360WcwkmXn/f/Csb7Pm\n9AJLdPwom0Qv+IQc2shylgELzIuK+NURQCG8GuV4lM+Fwx5fvlsPqe0L96xXeLVr\n26oE/2c3xQVTJvkSNWFRDhtIIfzB3Q\u003d\u003d\n\u003dGGKn\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf7b4a27_9e8052b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-07-21T17:20:24Z",
+      "side": 1,
+      "message": "My best guess is that we need to wait for the CIPD package infra/recipe_bundles/chromium.googlesource.com/chromium/tools/build to be updated. It still has a version of depot_tools that doesn\u0027t support the new behavior yet.",
+      "revId": "cffbd601466d42ab34a0c8e8483eb1692497bb2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
