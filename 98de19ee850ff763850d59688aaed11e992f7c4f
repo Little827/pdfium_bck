@@ -87,6 +87,24 @@
       "revId": "98de19ee850ff763850d59688aaed11e992f7c4f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9328ff5_8546aae1",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-21T01:07:34Z",
+      "side": 1,
+      "message": "Many PDFium APIs distinguish between failure and empty string. So the change to use Utf16EncodeMaybeCopyAndReturnLength() looks good, since you agree that the distinction is important. I\u0027ll file a bug for deprecating FPDF_StructElement_GetAltText() and the other affected APIs.",
+      "parentUuid": "a7b7df6b_aa0a1799",
+      "revId": "98de19ee850ff763850d59688aaed11e992f7c4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
