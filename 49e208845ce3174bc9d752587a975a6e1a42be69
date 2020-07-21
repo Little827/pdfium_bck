@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6dd5c7f9_4a76bf19",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-21T06:54:28Z",
+      "side": 1,
+      "message": "You\u0027re right, it can be nullptr for invalid documents. I\u0027ve added the missing check.",
+      "parentUuid": "6b70d569_b1f76f03",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "632557e4_82eb339d",
         "filename": "fpdfsdk/fpdf_signature.cpp",
         "patchSetId": 1
@@ -103,6 +127,30 @@
       "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d1485b_35b02d7d",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-21T06:54:28Z",
+      "side": 1,
+      "message": "Done now. First I wanted to expose a char* buffer, but then changed to an array of unsigned longs, this conversion was a leftover from the original code. Removed now. :-)",
+      "parentUuid": "632557e4_82eb339d",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 43
+      },
+      "revId": "49e208845ce3174bc9d752587a975a6e1a42be69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
