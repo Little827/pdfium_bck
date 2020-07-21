@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "d5113e06_c3bb0666",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-21T01:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3ccfd64_fdafcda5",
+      "range": {
+        "startLine": 433,
+        "startChar": 2,
+        "endLine": 433,
+        "endChar": 15
+      },
+      "revId": "93d5ad94f6de3a2da882a37d2759cee564195580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35f30c9b_9406572d",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-21T01:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "209c6099_2c1c0075",
+      "range": {
+        "startLine": 433,
+        "startChar": 16,
+        "endLine": 433,
+        "endChar": 24
+      },
+      "revId": "93d5ad94f6de3a2da882a37d2759cee564195580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08c6acbe_ee9d0ec5",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "93d5ad94f6de3a2da882a37d2759cee564195580",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101a7597_4c515562",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-21T01:55:25Z",
+      "side": 1,
+      "message": "Doesn\u0027t change. I was trying to be cheeky and avoid nesting the for-loop.",
+      "parentUuid": "08c6acbe_ee9d0ec5",
+      "range": {
+        "startLine": 434,
+        "startChar": 21,
+        "endLine": 434,
+        "endChar": 38
+      },
+      "revId": "93d5ad94f6de3a2da882a37d2759cee564195580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
