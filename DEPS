@@ -1,5 +1,4 @@
 use_relative_paths = True
-use_relative_hooks = True
 
 gclient_gn_args_file = 'build/config/gclient_args.gni'
 gclient_gn_args = [
@@ -60,7 +59,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling depot_tools
   # and whatever else without interference from each other.
-  'depot_tools_revision': '68978076fdb7c01737d097fea0763f9745463b1d',
+  'depot_tools_revision': '9949ab7a4b1cb3c342b38129b4e0bfcfb2ef5749',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling freetype
   # and whatever else without interference from each other.
@@ -242,7 +241,7 @@ hooks = [
     'name': 'disable_depot_tools_selfupdate',
     'pattern': '.',
     'action': [ 'python',
-                'third_party/depot_tools/update_depot_tools_toggle.py',
+                'pdfium/third_party/depot_tools/update_depot_tools_toggle.py',
                 '--disable',
     ],
   },
