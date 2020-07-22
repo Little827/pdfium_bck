@@ -16,7 +16,6 @@ source_set("test_support") {
     "string_write_stream.h",
     "test_loader.cpp",
     "test_loader.h",
-    "test_support.cpp",
     "test_support.h",
     "utils/bitmap_saver.cpp",
     "utils/bitmap_saver.h",
@@ -51,25 +50,50 @@ source_set("test_support") {
   }
 }
 
-source_set("unit_test_support") {
+source_set("test_environments") {
   testonly = true
-  sources = []
-  deps = []
+  sources = [
+    "pdf_test_environment.cpp",
+    "pdf_test_environment.h",
+  ]
+  deps = [
+    ":test_support",
+    "../core/fxcrt",
+    "../core/fxge",
+    "//testing/gtest",
+  ]
   configs += [ "../:pdfium_core_config" ]
-  visibility = [ "../*" ]
+
+  if (pdf_enable_v8) {
+    sources += [
+      "v8_test_environment.cpp",
+      "v8_test_environment.h",
+    ]
+    deps += [
+      "//v8",
+      "//v8:v8_libplatform",
+    ]
+    configs += [ "//v8:external_startup_data" ]
+  }
 
   if (pdf_enable_xfa) {
     sources += [
-      "xfa_unit_test_support.cpp",
-      "xfa_unit_test_support.h",
+      "xfa_test_environment.cpp",
+      "xfa_test_environment.h",
     ]
     deps += [
-      "../:pdfium",
-      "../core/fxge",
       "../xfa/fgas",
-      "//testing/gtest",
+      "//v8:cppgc",
     ]
   }
+}
+
+source_set("unit_test_support") {
+  testonly = true
+  public_deps = [
+    ":test_environments",
+    ":test_support",
+  ]
 }
 
 source_set("embedder_test_support") {
@@ -87,13 +111,16 @@ source_set("embedder_test_support") {
     "range_set.h",
   ]
   deps = [
-    ":test_support",
     "../:pdfium_public_headers",
     "../core/fdrm",
     "../core/fxcrt",
     "../third_party:pdfium_base",
     "//testing/gmock",
     "//testing/gtest",
+  ]
+  public_deps = [
+    ":test_environments",
+    ":test_support",
   ]
   configs += [ "../:pdfium_core_config" ]
   visibility = [ "../*" ]
@@ -105,13 +132,15 @@ source_set("embedder_test_support") {
       "js_embedder_test.cpp",
       "js_embedder_test.h",
     ]
-    deps += [ "../fxjs" ]
+    deps += [
+      "../fxjs",
+      "//v8",
+      "//v8:v8_libplatform",
+    ]
     configs += [ "//v8:external_startup_data" ]
 
     if (pdf_enable_xfa) {
       sources += [
-        "gced_embeddertest.cpp",
-        "gced_embeddertest.h",
         "xfa_js_embedder_test.cpp",
         "xfa_js_embedder_test.h",
       ]
@@ -120,8 +149,6 @@ source_set("embedder_test_support") {
         "../fpdfsdk/fpdfxfa",
         "../xfa/fxfa",
         "../xfa/fxfa/parser",
-        "//v8:cppgc",
-        "//v8:v8_libplatform",
       ]
     }
   }

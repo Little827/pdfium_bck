@@ -209,7 +209,7 @@ group("pdfium_unittest_deps") {
   testonly = true
   public_deps = [
     "core/fxcrt",
-    "testing:test_support",
+    "testing:unit_test_support",
     "//testing/gmock",
     "//testing/gtest",
   ]
@@ -239,7 +239,6 @@ test("pdfium_unittests") {
     "core/fxcrt:unittests",
     "core/fxge:unittests",
     "fpdfsdk:unittests",
-    "testing:test_support",
     "testing:unit_test_support",
     "//testing/gmock",
     "//testing/gtest",
@@ -256,19 +255,19 @@ test("pdfium_unittests") {
       "fxjs:unittests",
       "//v8",
     ]
-  }
 
-  if (pdf_enable_xfa) {
-    deps += [
-      "core/fxcrt/css:unittests",
-      "fxbarcode:unittests",
-      "xfa/fde:unittests",
-      "xfa/fgas:unittests",
-      "xfa/fgas/layout:unittests",
-      "xfa/fxfa:unittests",
-      "xfa/fxfa/fm2js:unittests",
-      "xfa/fxfa/parser:unittests",
-    ]
+    if (pdf_enable_xfa) {
+      deps += [
+        "core/fxcrt/css:unittests",
+        "fxbarcode:unittests",
+        "xfa/fde:unittests",
+        "xfa/fgas:unittests",
+        "xfa/fgas/layout:unittests",
+        "xfa/fxfa:unittests",
+        "xfa/fxfa/fm2js:unittests",
+        "xfa/fxfa/parser:unittests",
+      ]
+    }
   }
 }
 
@@ -278,7 +277,6 @@ group("pdfium_embeddertest_deps") {
     ":pdfium_public_headers",
     "core/fxcrt",
     "testing:embedder_test_support",
-    "testing:test_support",
     "third_party:pdfium_base_test_support",
     "//testing/gmock",
     "//testing/gtest",
@@ -289,6 +287,7 @@ group("pdfium_embeddertest_deps") {
     "fxjs/*",
     "xfa/*",
   ]
+  public_deps += [ "testing:test_environments" ]
 }
 
 test("pdfium_embeddertests") {
@@ -304,7 +303,7 @@ test("pdfium_embeddertests") {
     "core/fxge:embeddertests",
     "fpdfsdk:embeddertests",
     "fpdfsdk/pwl:embeddertests",
-    "testing:test_support",
+    "testing:embedder_test_support",
     "testing/image_diff",
     "//testing/gmock",
     "//testing/gtest",
