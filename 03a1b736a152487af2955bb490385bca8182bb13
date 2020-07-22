@@ -33,6 +33,24 @@
       "revId": "03a1b736a152487af2955bb490385bca8182bb13",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7df4c76_39d137fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7751
+      },
+      "writtenOn": "2020-07-22T00:10:01Z",
+      "side": 1,
+      "message": "I don\u0027t know.\nI added //skia to //BUILD.gn to make gn check fail in the same way it does for chromium.\nWithout this change, gn gen won\u0027t generate anything for //skia, and gn check will pass here (and still fail in chromium).",
+      "parentUuid": "78f5d720_729fd281",
+      "revId": "03a1b736a152487af2955bb490385bca8182bb13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
