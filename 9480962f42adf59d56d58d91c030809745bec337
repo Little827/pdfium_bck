@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "fb5369ed_b003c1d1",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-22T07:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddcd13a_cf8e51d6",
+      "range": {
+        "startLine": 99,
+        "startChar": 27,
+        "endLine": 99,
+        "endChar": 45
+      },
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87de03d5_b389ce67",
         "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
         "patchSetId": 3
@@ -56,6 +80,24 @@
       "revId": "9480962f42adf59d56d58d91c030809745bec337",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5e48659_f2b7ca46",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-22T07:24:41Z",
+      "side": 1,
+      "message": "Makes sense, I changed in the new test as well.",
+      "parentUuid": "87de03d5_b389ce67",
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "54cb2405_e1718e08",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-22T07:24:41Z",
+      "side": 1,
+      "message": "I think so. The PDF reference says that the array \"should\" contain multiple pairs of integers. In practice anything that is not 4 ints is unusual. So returning 0 for both an empty array and in other error cases is correct, I would say.",
+      "parentUuid": "de5d0d9c_335fc170",
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1129f32_afd2e1b0",
         "filename": "public/fpdf_signature.h",
         "patchSetId": 3
@@ -90,6 +150,24 @@
       "revId": "9480962f42adf59d56d58d91c030809745bec337",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e8463c_a8e62139",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-22T07:24:41Z",
+      "side": 1,
+      "message": "Hmm, now that you point this out, it\u0027s probably cleaner to expose signed ints here, and then the client code can decide what to do with negative offsets and lengths. Probably it wants to reject the signature, but it\u0027s better to not make that decision on the pdfium side. I did the change to signed ints now.",
+      "parentUuid": "b1129f32_afd2e1b0",
+      "revId": "9480962f42adf59d56d58d91c030809745bec337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
