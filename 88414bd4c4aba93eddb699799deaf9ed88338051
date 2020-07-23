@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5afdb396_8269a53d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-23T23:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9589d585_7f090500",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "88414bd4c4aba93eddb699799deaf9ed88338051",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4733b14_ba78b453",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "88414bd4c4aba93eddb699799deaf9ed88338051",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b6fe0a_e62e42b9",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-23T23:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4733b14_ba78b453",
+      "revId": "88414bd4c4aba93eddb699799deaf9ed88338051",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
