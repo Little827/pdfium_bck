@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "394f32b8_b8e5eabe",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T22:24:27Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 115,
+        "startChar": 10,
+        "endLine": 115,
+        "endChar": 20
+      },
+      "revId": "aba3c89d5e06f6a1c145a140cbf92681c6965eb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853ba132_14e232cd",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T22:24:27Z",
+      "side": 1,
+      "message": "Why not just call m_pExtension.reset()?",
+      "revId": "aba3c89d5e06f6a1c145a140cbf92681c6965eb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
