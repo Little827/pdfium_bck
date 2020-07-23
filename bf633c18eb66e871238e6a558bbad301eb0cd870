@@ -50,6 +50,24 @@
       "revId": "bf633c18eb66e871238e6a558bbad301eb0cd870",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b329abc7_da78bbf2",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-23T23:14:20Z",
+      "side": 1,
+      "message": "Done.\nThanks for catching that! I completely missed it.",
+      "parentUuid": "9e1b85d2_6afbdd94",
+      "revId": "bf633c18eb66e871238e6a558bbad301eb0cd870",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
