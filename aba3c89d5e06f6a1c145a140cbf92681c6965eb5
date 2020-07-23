@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3f132f7_026c8060",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-23T22:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394f32b8_b8e5eabe",
+      "range": {
+        "startLine": 115,
+        "startChar": 10,
+        "endLine": 115,
+        "endChar": 20
+      },
+      "revId": "aba3c89d5e06f6a1c145a140cbf92681c6965eb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "853ba132_14e232cd",
         "filename": "core/fpdfapi/parser/cpdf_document.cpp",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "aba3c89d5e06f6a1c145a140cbf92681c6965eb5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3af7a08_6110c68b",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-23T22:30:10Z",
+      "side": 1,
+      "message": "Indeed, that is documented in the spec as creating a temporary. Done.",
+      "parentUuid": "853ba132_14e232cd",
+      "revId": "aba3c89d5e06f6a1c145a140cbf92681c6965eb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
