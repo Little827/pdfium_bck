@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "44737310_cdcc9450",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T21:24:28Z",
+      "side": 1,
+      "message": "Usually there are just a few, but I might as well reserve() roughly the right amount of memory if I can. Since this is a reserve() and not a resize(), we can afford to be off by 1. Which is why I didn\u0027t try that hard to get the exact count.",
+      "parentUuid": "2729c36a_6d49ead1",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 47
+      },
+      "revId": "c69a56330e780064705b5979d12e84ed4b8646f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "646d26e9_de71126b",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2020-07-23T18:48:08Z",
       "side": 1,
       "message": "maybe this should be unsigned int (and below)",
+      "range": {
+        "startLine": 1321,
+        "startChar": 4,
+        "endLine": 1321,
+        "endChar": 7
+      },
+      "revId": "c69a56330e780064705b5979d12e84ed4b8646f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b3741b4_80073282",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T21:24:28Z",
+      "side": 1,
+      "message": "I would like this to match the return value of FPDF_GetXFAPacketCount(). For FPDF_GetXFAPacketCount(), I would like it to be able to distinguish between no XFA data and error, which is why it returns an int.",
+      "parentUuid": "cf8a96ed_ba2fa5cd",
       "range": {
         "startLine": 1321,
         "startChar": 4,
