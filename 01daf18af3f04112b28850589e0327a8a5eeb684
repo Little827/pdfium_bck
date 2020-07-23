@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df2ba135_c45408db",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T18:08:00Z",
+      "side": 1,
+      "message": "No. The use case is to do data extraction, which operates on basic PDF objects like streams and arrays. There\u0027s no requirement for XFA support. Just as one may want to extract out embedded TIFFs, even without libtiff support in PDFium.",
+      "parentUuid": "5e484616_62bb1568",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 68
+      },
+      "revId": "01daf18af3f04112b28850589e0327a8a5eeb684",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb9cfb25_f9ffcd0a",
         "filename": "public/fpdfview.h",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d0e691f9_571d43e2",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T18:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb9cfb25_f9ffcd0a",
+      "range": {
+        "startLine": 1296,
+        "startChar": 11,
+        "endLine": 1296,
+        "endChar": 28
+      },
+      "revId": "01daf18af3f04112b28850589e0327a8a5eeb684",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23f1a9bf_70048f44",
         "filename": "public/fpdfview.h",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-23T17:51:46Z",
       "side": 1,
       "message": "nit: as returned by ...",
+      "range": {
+        "startLine": 1298,
+        "startChar": 45,
+        "endLine": 1298,
+        "endChar": 46
+      },
+      "revId": "01daf18af3f04112b28850589e0327a8a5eeb684",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83383a36_b69cc227",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T18:08:00Z",
+      "side": 1,
+      "message": "A bunch of existing functions have comments that say \"Returned by FPDF_LoadDocument\" but that\u0027s slightly misleading. There are currently 7 APIs that return FPDF_DOCUMENT.",
+      "parentUuid": "23f1a9bf_70048f44",
       "range": {
         "startLine": 1298,
         "startChar": 45,
