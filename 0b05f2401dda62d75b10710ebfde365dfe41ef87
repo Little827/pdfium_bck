@@ -16,6 +16,23 @@
       "revId": "0b05f2401dda62d75b10710ebfde365dfe41ef87",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed58c677_a0a18fdd",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T22:38:59Z",
+      "side": 1,
+      "message": "For Skia, the test should be compiled, but disabled. This CL excludes it by not compiling it at all.",
+      "revId": "0b05f2401dda62d75b10710ebfde365dfe41ef87",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
