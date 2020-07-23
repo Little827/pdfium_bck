@@ -16,6 +16,7 @@
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/ijs_runtime.h"
@@ -83,33 +84,14 @@ CPDFXFA_Context::CPDFXFA_Context(CPDF_Document* pPDFDoc)
     : m_pPDFDoc(pPDFDoc),
       m_pGCHeap(FXGC_CreateHeap()),
       m_pXFAApp(std::make_unique<CXFA_FFApp>(this)),
-      m_DocEnv(this) {
+      m_pDocEnv(std::make_unique<CPDFXFA_DocEnvironment>(this)) {
   ASSERT(m_pPDFDoc);
 }
 
 CPDFXFA_Context::~CPDFXFA_Context() {
   m_nLoadStatus = FXFA_LOADSTATUS_CLOSING;
-
-  // Must happen before we remove the form fill environment.
-  CloseXFADoc();
-
-  if (m_pFormFillEnv) {
+  if (m_pFormFillEnv)
     m_pFormFillEnv->ClearAllFocusedAnnots();
-    // Once we're deleted the FormFillEnvironment will point at a bad underlying
-    // doc so we need to reset it ...
-    m_pFormFillEnv->GetPDFDocument()->SetExtension(nullptr);
-    m_pFormFillEnv.Reset();
-  }
-
-  m_nLoadStatus = FXFA_LOADSTATUS_CLOSED;
-}
-
-void CPDFXFA_Context::CloseXFADoc() {
-  if (!m_pXFADoc)
-    return;
-
-  m_pXFADocView = nullptr;
-  m_pXFADoc.reset();
 }
 
 void CPDFXFA_Context::SetFormFillEnv(
@@ -141,8 +123,9 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
   }
 
-  m_pXFADoc = CXFA_FFDoc::CreateAndOpen(
-      m_pXFAApp.get(), &m_DocEnv, m_pPDFDoc.Get(), m_pGCHeap.get(), stream);
+  m_pXFADoc =
+      CXFA_FFDoc::CreateAndOpen(m_pXFAApp.get(), m_pDocEnv.get(),
+                                m_pPDFDoc.Get(), m_pGCHeap.get(), stream);
 
   if (!m_pXFADoc) {
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);
@@ -163,7 +146,8 @@ bool CPDFXFA_Context::LoadXFADoc() {
 
   m_pXFADocView = m_pXFADoc->CreateDocView();
   if (m_pXFADocView->StartLayout() < 0) {
-    CloseXFADoc();
+    m_pXFADocView = nullptr;
+    m_pXFADoc.reset();
     FXSYS_SetLastError(FPDF_ERR_XFALAYOUT);
     return false;
   }
