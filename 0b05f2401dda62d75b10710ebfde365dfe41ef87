@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70595282_f49b029e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-23T22:27:54Z",
+      "side": 1,
+      "message": "The rendering results for SkiaPaths and AGG are uploaded to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c35",
+      "revId": "0b05f2401dda62d75b10710ebfde365dfe41ef87",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
