@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9589d585_7f090500",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T23:21:59Z",
+      "side": 1,
+      "message": "It is indirectly taken into consideration in CPDFXFA_DocEnvironment::PageViewEvent(). I feel that should have checked against FXFA_LOADSTATUS_CLOSED, but now that\u0027s no longer a concern.",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "88414bd4c4aba93eddb699799deaf9ed88338051",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4733b14_ba78b453",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-23T23:21:59Z",
+      "side": 1,
+      "message": "Would brief documentation about member ordering be helpful?",
+      "revId": "88414bd4c4aba93eddb699799deaf9ed88338051",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
