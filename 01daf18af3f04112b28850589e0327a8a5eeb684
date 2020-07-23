@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e484616_62bb1568",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-23T17:51:46Z",
+      "side": 1,
+      "message": "should these all be under an #ifdef PDF_ENABLE_XFA block?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 68
+      },
+      "revId": "01daf18af3f04112b28850589e0327a8a5eeb684",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb9cfb25_f9ffcd0a",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-23T17:51:46Z",
+      "side": 1,
+      "message": "nit: move to first line of comment for all of these?",
+      "range": {
+        "startLine": 1296,
+        "startChar": 11,
+        "endLine": 1296,
+        "endChar": 28
+      },
+      "revId": "01daf18af3f04112b28850589e0327a8a5eeb684",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f1a9bf_70048f44",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-23T17:51:46Z",
+      "side": 1,
+      "message": "nit: as returned by ...",
+      "range": {
+        "startLine": 1298,
+        "startChar": 45,
+        "endLine": 1298,
+        "endChar": 46
+      },
+      "revId": "01daf18af3f04112b28850589e0327a8a5eeb684",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
