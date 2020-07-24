@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b79c2ccc_147faa1b",
+        "filename": "xfa/fxfa/parser/cxfa_document_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-24T21:54:38Z",
+      "side": 1,
+      "message": "NOTE to self: see if needed.",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "5290179b097d421a5e8e6c3018a3c9dbecbe6b89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acb7f746_2184fcd3",
         "filename": "xfa/fxfa/parser/cxfa_document_parser.cpp",
         "patchSetId": 1
