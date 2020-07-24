@@ -28,7 +28,6 @@ class CXFA_RenderContext {
 
  private:
   std::unique_ptr<IXFA_WidgetIterator> const m_pWidgetIterator;
-  UnownedPtr<CXFA_FFWidget> m_pWidget;
   const CFX_Matrix m_matrix;
   const CFX_RectF m_ClipRect;
 };
