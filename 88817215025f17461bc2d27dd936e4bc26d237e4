@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59ba67dd_ecd8a73b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-24T23:23:49Z",
+      "side": 1,
+      "message": "Found while grepping for unowned ptrs in classes.  This can\u0027t cause a problem in practice, but prevent us from reviewing it again the next time we grep for things.",
+      "revId": "88817215025f17461bc2d27dd936e4bc26d237e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
