@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1595553351 -0700\nnonce ALC2d1+oj2goiJq5Xb2j7ZYaoVK18RW8iUiN5WkdbI1jT9vu/VMf2P4XK7bDCKkGQ/14DKOKDN/z\n\n0000000000000000000000000000000000000000 958021c085b364614a38bdfa66d7f7928e63bdd8 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8aNkcACgkQqzYtYVpm\n/XsqFwgAgnYzhFZD0h5FenbYsMOS9qGsOOxgBQAB1WCE2QbXal4ygR2jmIDaXhA9\nQ3KBLc0WQyq0gGOPnZWwVYwwc5rpCo3ILTReiO1OeOYEizbQ/xEpgS9t9zcU3w7o\nVMbvZIwV1PIqh3Eb+j++YTUSGvy2tSGo+ZBDe/rSUSjxyv7z1CadL56rojhdwkX8\ndU7p20sR1qUNckpzXi2zc6G4lelMsqkLwrJUmJD9B2Rns8eo2WdEk4IxlN325Uo6\n7ZLulb+Vue449ZIyh9C2rANq+meE8Qz00wHVeF07uXatsCR8HE27r0LjspoyiMKE\n/VFU0YyF99gYK81OUZw20yhnZCNI7w\u003d\u003d\n\u003dyQmM\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4ae25f1_5663d482",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-24T18:20:42Z",
+      "side": 1,
+      "message": "super-nit: I\u0027d have written\n      float font_scale \u003d charinfo.m_Matrix.a * font_size / (ascent - descent);\n\njust because in reading left to right, the expression font_size / (ascend-descent) makes sense but the expression charinfo.m_Matrix.a / (ascent-descent) doesn\u0027t.  Nevermind that the division applies to the product so it doesn\u0027t matter -- just lexically clearer to me.\n\nHaving done that I\u0027d rewrite 269 in the same way with the matrix first.\nIf you think of matrix.a being a \"constant\" in some sense, then it comes first when writing equations, etc.\n\nOr just ignore.",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 0
+      },
+      "revId": "958021c085b364614a38bdfa66d7f7928e63bdd8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
