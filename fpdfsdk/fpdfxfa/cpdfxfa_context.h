@@ -38,6 +38,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
   ~CPDFXFA_Context() override;
 
   bool LoadXFADoc();
+  CFX_XMLDocument* GetXMLDoc() { return m_pXML.get(); }
   CXFA_FFDoc* GetXFADoc() { return m_pXFADoc.get(); }
   CXFA_FFDocView* GetXFADocView() const { return m_pXFADocView.Get(); }
   cppgc::Heap* GetGCHeap() { return m_pGCHeap.get(); }
@@ -113,6 +114,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
 
   FormType m_FormType = FormType::kNone;
   UnownedPtr<CPDF_Document> const m_pPDFDoc;
+  std::unique_ptr<CFX_XMLDocument> m_pXML;
   FXGCScopedHeap m_pGCHeap;
   std::unique_ptr<CXFA_FFDoc> m_pXFADoc;
   ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
