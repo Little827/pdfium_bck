@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d194b81e_596e092e",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-24T19:07:17Z",
+      "side": 1,
+      "message": "typo: s/Kil/Kill/",
+      "range": {
+        "startLine": 740,
+        "startChar": 34,
+        "endLine": 740,
+        "endChar": 50
+      },
+      "revId": "ee0b7af17fe8df66dde14a3d148930adfe1d4d1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
