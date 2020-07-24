@@ -230,9 +230,9 @@ CXFA_DocumentBuilder::CXFA_DocumentBuilder(CXFA_Document* pFactory)
 
 CXFA_DocumentBuilder::~CXFA_DocumentBuilder() = default;
 
-bool CXFA_DocumentBuilder::BuildDocument(std::unique_ptr<CFX_XMLDocument> pXML,
+bool CXFA_DocumentBuilder::BuildDocument(CFX_XMLDocument* pXML,
                                          XFA_PacketType ePacketID) {
-  CFX_XMLNode* root = Build(std::move(pXML));
+  CFX_XMLNode* root = Build(pXML);
   if (!root)
     return false;
 
@@ -240,9 +240,8 @@ bool CXFA_DocumentBuilder::BuildDocument(std::unique_ptr<CFX_XMLDocument> pXML,
   return !!m_pRootNode;
 }
 
-CFX_XMLNode* CXFA_DocumentBuilder::Build(
-    std::unique_ptr<CFX_XMLDocument> pXML) {
-  xml_doc_ = std::move(pXML);
+CFX_XMLNode* CXFA_DocumentBuilder::Build(CFX_XMLDocument* pXML) {
+  xml_doc_ = pXML;
   xml_doc_->GetRoot()->InsertChildNode(
       xml_doc_->CreateNode<CFX_XMLInstruction>(L"xml"), 0);
 
