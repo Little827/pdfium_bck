@@ -82,6 +82,7 @@ CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp,
       m_pNotify(std::make_unique<CXFA_FFNotify>(this)),
       m_pDocument(std::make_unique<CXFA_Document>(
           m_pNotify.get(),
+          pHeap,
           std::make_unique<CXFA_LayoutProcessor>(pHeap))) {}
 
 CXFA_FFDoc::~CXFA_FFDoc() {

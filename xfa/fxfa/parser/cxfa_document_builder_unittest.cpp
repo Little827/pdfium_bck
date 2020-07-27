@@ -7,13 +7,15 @@
 #include "core/fxcrt/cfx_readonlymemorystream.h"
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "core/fxcrt/xml/cfx_xmlparser.h"
+#include "testing/fxgc_unittest.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
-class CXFA_DocumentBuilderTest : public testing::Test {
+class CXFA_DocumentBuilderTest : public FXGCUnitTest {
  public:
   void SetUp() override {
-    doc_ = std::make_unique<CXFA_Document>(nullptr, nullptr);
+    FXGCUnitTest::SetUp();
+    doc_ = std::make_unique<CXFA_Document>(nullptr, heap(), nullptr);
     builder_ = std::make_unique<CXFA_DocumentBuilder>(doc_.get());
   }
 

@@ -32,6 +32,8 @@ CXFA_Object::CXFA_Object(CXFA_Document* pDocument,
 
 CXFA_Object::~CXFA_Object() = default;
 
+void CXFA_Object::Trace(cppgc::Visitor* visitor) const {}
+
 WideString CXFA_Object::GetSOMExpression() {
   CXFA_Node* pNode = AsNode();
   return pNode ? pNode->GetNameExpression() : WideString();
