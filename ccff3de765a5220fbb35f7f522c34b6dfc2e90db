@@ -56,6 +56,24 @@
       "revId": "ccff3de765a5220fbb35f7f522c34b6dfc2e90db",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51b5709_09253ed4",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-27T20:04:12Z",
+      "side": 1,
+      "message": "Good catch, I think we should return 0 on non-existing /SubFilter, so no matter if /V or /SubFilter is missing, we always return 0 on error. Fixed now, thanks.",
+      "parentUuid": "6d606ad6_ff12f497",
+      "revId": "ccff3de765a5220fbb35f7f522c34b6dfc2e90db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
