@@ -54,6 +54,7 @@ class CXFA_FFDoc {
 
   ~CXFA_FFDoc();
 
+  void WillClose();
   IXFA_DocEnvironment* GetDocEnvironment() const {
     return m_pDocEnvironment.Get();
   }

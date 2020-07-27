@@ -90,10 +90,15 @@ CPDFXFA_Context::CPDFXFA_Context(CPDF_Document* pPDFDoc)
   ASSERT(m_pPDFDoc);
 }
 
-CPDFXFA_Context::~CPDFXFA_Context() {
+CPDFXFA_Context::~CPDFXFA_Context() = default;
+
+void CPDFXFA_Context::WillClose() {
   m_nLoadStatus = FXFA_LOADSTATUS_CLOSING;
   if (m_pFormFillEnv)
     m_pFormFillEnv->ClearAllFocusedAnnots();
+
+  if (m_pXFADoc)
+    m_pXFADoc->WillClose();
 }
 
 void CPDFXFA_Context::SetFormFillEnv(

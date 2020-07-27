@@ -29,6 +29,7 @@ class CPDF_Document : public Observable,
   class Extension {
    public:
     virtual ~Extension() = default;
+    virtual void WillClose() = 0;
     virtual CPDF_Document* GetPDFDoc() const = 0;
     virtual int GetPageCount() const = 0;
     virtual void DeletePage(int page_index) = 0;
@@ -82,6 +83,7 @@ class CPDF_Document : public Observable,
                 std::unique_ptr<PageDataIface> pPageData);
   ~CPDF_Document() override;
 
+  void WillClose();
   Extension* GetExtension() const { return m_pExtension.get(); }
   void SetExtension(std::unique_ptr<Extension> pExt) {
     m_pExtension = std::move(pExt);

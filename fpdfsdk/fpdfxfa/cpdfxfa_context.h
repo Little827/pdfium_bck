@@ -52,6 +52,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
   void ClearChangeMark();
 
   // CPDF_Document::Extension:
+  void WillClose() override;
   CPDF_Document* GetPDFDoc() const override;
   int GetPageCount() const override;
   void DeletePage(int page_index) override;
