@@ -16,6 +16,29 @@
       "revId": "ccff3de765a5220fbb35f7f522c34b6dfc2e90db",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756db7b1_9b2b1770",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-27T17:54:52Z",
+      "side": 1,
+      "message": "nit: can be char* if we return nul-termianated ascii?",
+      "range": {
+        "startLine": 108,
+        "startChar": 30,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "ccff3de765a5220fbb35f7f522c34b6dfc2e90db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
