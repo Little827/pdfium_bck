@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "aadd5612_365908e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-27T23:50:58Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "499cd4430781a1b573c8981da686d6db9b56d52b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2288ee7b_10e32c10",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
