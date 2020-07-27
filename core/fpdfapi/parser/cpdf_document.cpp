@@ -111,11 +111,14 @@ CPDF_Document::CPDF_Document(std::unique_ptr<RenderDataIface> pRenderData,
 }
 
 CPDF_Document::~CPDF_Document() {
-  // Be absolutely certain that |m_pExtension| is null before destroying
-  // the extension, to avoid re-entering it while being destroyed. clang
-  // seems to already do this for us, but the C++ standards seem to
-  // indicate the opposite.
-  m_pExtension.reset();
+  if (m_pExtension) {
+    m_pExtension->WillClose();
+    // Be absolutely certain that |m_pExtension| is null before destroying
+    // the extension, to avoid re-entering it while being destroyed. clang
+    // seems to already do this for us, but the C++ standards seem to
+    // indicate the opposite.
+    m_pExtension.reset();
+  }
 }
 
 // static

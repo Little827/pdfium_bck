@@ -84,18 +84,15 @@ CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp,
           m_pNotify.get(),
           std::make_unique<CXFA_LayoutProcessor>(pHeap))) {}
 
-CXFA_FFDoc::~CXFA_FFDoc() {
-  if (m_DocView) {
+CXFA_FFDoc::~CXFA_FFDoc() = default;
+
+void CXFA_FFDoc::WillClose() {
+  if (m_DocView)
     m_DocView->RunDocClose();
-    m_DocView.reset();
-  }
+
   if (m_pDocument)
     m_pDocument->ClearLayoutData();
 
-  m_pDocument.reset();
-  m_pNotify.reset();
-  m_pPDFFontMgr.reset();
-  m_HashToDibDpiMap.clear();
   m_pApp->ClearEventTargets();
 }
 
