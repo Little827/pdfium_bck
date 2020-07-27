@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d927d1f_9f2e2cad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-27T06:56:49Z",
+      "side": 1,
+      "message": "Lei, Tom: could you please take a look?\n\nFor context: once this is in, I have /M (signature time) and /Reason (signature comment) in mind, and then I think we\u0027ll be at a decent place wrt exposing a set of individual signature properties.",
+      "revId": "ccff3de765a5220fbb35f7f522c34b6dfc2e90db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
