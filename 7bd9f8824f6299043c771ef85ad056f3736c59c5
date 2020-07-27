@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a45832e_c290163b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-27T18:21:26Z",
+      "side": 1,
+      "message": "This CL mainly consolidates the checksum values. There is no newly added Skia/SkiaPaths expected checksums.",
+      "revId": "7bd9f8824f6299043c771ef85ad056f3736c59c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
