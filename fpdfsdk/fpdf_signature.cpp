@@ -102,3 +102,26 @@ FPDFSignatureObj_GetByteRange(FPDF_SIGNATURE signature,
 
   return byte_range_len;
 }
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFSignatureObj_GetSubFilter(FPDF_SIGNATURE signature,
+                              void* buffer,
+                              unsigned long length) {
+  CPDF_Dictionary* signature_dict = CPDFDictionaryFromFPDFSignature(signature);
+  if (!signature_dict)
+    return 0;
+
+  CPDF_Dictionary* value_dict = signature_dict->GetDictFor("V");
+  if (!value_dict)
+    return 0;
+
+  ByteString sub_filter = value_dict->GetNameFor("SubFilter");
+  if (!sub_filter.GetLength())
+    return 0;
+
+  unsigned long sub_filter_len = sub_filter.GetLength() + 1;
+  if (buffer && length >= sub_filter_len)
+    memcpy(buffer, sub_filter.c_str(), sub_filter_len);
+
+  return sub_filter_len;
+}
