@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f0333cc_c8abcb91",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-27T20:41:59Z",
+      "side": 1,
+      "message": "Calling value_dict-\u003eKeyExist(\"SubFilter\") is more explicit. Can we do that? Maybe merge the check with line 115?\n\nWant to add a test case for this?",
+      "revId": "2a75492e32e0f368af29eb0317f2204d3552879b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
