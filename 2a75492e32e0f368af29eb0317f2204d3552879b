@@ -16,6 +16,24 @@
       "revId": "2a75492e32e0f368af29eb0317f2204d3552879b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "360d0a8e_27aa92e6",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-07-27T21:13:04Z",
+      "side": 1,
+      "message": "Makes sense, for all 3. Done.",
+      "parentUuid": "4f0333cc_c8abcb91",
+      "revId": "2a75492e32e0f368af29eb0317f2204d3552879b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
