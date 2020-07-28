@@ -16,6 +16,24 @@
       "revId": "261ec2942afadb179e6407b95a9d43154f95f353",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae9c18a_65fb0aa5",
+        "filename": "xfa/fxfa/cxfa_ffdoc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-28T16:11:36Z",
+      "side": 0,
+      "message": "Good question.  I was initially HFTB and see what tests say, but here\u0027s a rundown.\n\nFFDocView has unownedptr to FFDoc, so this reset was moved here to avoid a lifetime issue in line 95 when that unowned ptr was added. Having removed line 95, we\u0027ll clean this by order of appearance (BOA) in the header.\n\nPrior to this (see https://pdfium-review.googlesource.com/c/pdfium/+/5475/23/xfa/fxfa/cxfa_ffdoc.cpp) we had\nClearLayoutData() running before resetting the docview.\n\nWhat remains is whether ClearEventTargets() might try and callback through any of these members. The effect of ClearEventTargets might be to destroy a CFWL_Event via\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/pdfium/xfa/fxfa/cxfa_ffapp.cpp;l\u003d71?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/pdfium/xfa/fwl/cfwl_notedriver.cpp;drc\u003d5672358f0fc4d9ca6f0445a804d8d4460f1103d4;l\u003d289?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\nbut only if the event does not have its valid flag set.\n\nMercifully, CFWL_EventTarget is not subclassed and has only a default dtor.  Looking at CFWL_EventTarget\u0027s members, none of these are owned/retained, so the dtor isn\u0027t going to trigger other destruction.\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/pdfium/xfa/fwl/cfwl_eventtarget.h;drc\u003dc58babd220a9dc4d13757be8799bffbd59cac73b;l\u003d29?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\nSo what remains is whether any of these events might be used by some other code before the entire array is clobbered, via CFWL_NoteDriver::SendEvent(). But this, too, checks whether the event is valid, and short-circuits.\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/pdfium/xfa/fwl/cfwl_notedriver.cpp;drc\u003d5672358f0fc4d9ca6f0445a804d8d4460f1103d4;l\u003d31?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F\n\nSo I don\u0027t think the cleareventargets actually affects anything.\n\nSo anyway, the first thing to do is to remove ClearEventTargets() in its own CL since this is the only caller.  I\u0027d appreciate it if you can doublecheck that this is safe, eg. although we add event targets, and maybe later flag them as invalid, we can\u0027t actually hit anything in the map.",
+      "parentUuid": "2244fc8b_086faceb",
+      "revId": "261ec2942afadb179e6407b95a9d43154f95f353",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
