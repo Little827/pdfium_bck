@@ -22,6 +22,7 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/ijs_runtime.h"
+#include "fxjs/xfa/cfxjse_engine.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
@@ -147,7 +148,10 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
   }
 
-  m_pXFADoc->GetXFADoc()->InitScriptContext(actual_runtime);
+  m_pScriptContext =
+      std::make_unique<CFXJSE_Engine>(m_pXFADoc->GetXFADoc(), actual_runtime);
+  m_pXFADoc->GetXFADoc()->SetScriptContext(m_pScriptContext.get());
+
   if (m_pXFADoc->GetFormType() == FormType::kXFAFull)
     m_FormType = FormType::kXFAFull;
   else

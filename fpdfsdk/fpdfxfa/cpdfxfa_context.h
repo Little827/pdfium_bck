@@ -21,6 +21,7 @@
 #include "xfa/fxfa/cxfa_ffdoc.h"
 
 class CFX_XMLDocument;
+class CFXJSE_Engine;
 class CJS_Runtime;
 class CPDFXFA_DocEnvironment;
 
@@ -115,6 +116,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
   // The order in which the following members are destroyed is critical.
   UnownedPtr<CPDF_Document> const m_pPDFDoc;
   std::unique_ptr<CFX_XMLDocument> m_pXML;
+  std::unique_ptr<CFXJSE_Engine> m_pScriptContext;
   FXGCScopedHeap m_pGCHeap;
   ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
   std::unique_ptr<CXFA_FFApp> const m_pXFAApp;

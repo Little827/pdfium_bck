@@ -72,8 +72,9 @@ class CXFA_Document final : public CXFA_NodeOwner {
   ~CXFA_Document() override;
 
   bool HasScriptContext() const { return !!m_pScriptContext; }
-  CFXJSE_Engine* InitScriptContext(CJS_Runtime* fxjs_runtime);
-
+  void SetScriptContext(CFXJSE_Engine* pScriptContext) {
+    m_pScriptContext = pScriptContext;
+  }
   // Only safe to call in situations where the context is known to exist,
   // and always returns non-NULL in those situations. In other words, we have
   // to call InitScriptContext() first to avoid a situation where the context
@@ -131,7 +132,7 @@ class CXFA_Document final : public CXFA_NodeOwner {
   UnownedPtr<CXFA_FFNotify> const notify_;
   CXFA_Node* m_pRootNode = nullptr;
   std::map<uint32_t, CXFA_Node*> m_rgGlobalBinding;
-  std::unique_ptr<CFXJSE_Engine> m_pScriptContext;
+  UnownedPtr<CFXJSE_Engine> m_pScriptContext;
   std::unique_ptr<LayoutProcessorIface> m_pLayoutProcessor;
   std::unique_ptr<CXFA_LocaleMgr> m_pLocaleMgr;
   std::unique_ptr<CScript_DataWindow> m_pScriptDataWindow;

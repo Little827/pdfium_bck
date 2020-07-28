@@ -1286,7 +1286,7 @@ CXFA_Document::~CXFA_Document() = default;
 
 void CXFA_Document::ClearLayoutData() {
   m_pLayoutProcessor.reset();
-  m_pScriptContext.reset();
+  m_pScriptContext.Reset();
   m_pLocaleMgr.reset();
   m_pScriptDataWindow.reset();
   m_pScriptEvent.reset();
@@ -1417,15 +1417,9 @@ cppgc::Heap* CXFA_Document::GetHeap() const {
   return notify_->GetFFDoc()->GetHeap();
 }
 
-CFXJSE_Engine* CXFA_Document::InitScriptContext(CJS_Runtime* fxjs_runtime) {
-  ASSERT(!m_pScriptContext);
-  m_pScriptContext = std::make_unique<CFXJSE_Engine>(this, fxjs_runtime);
-  return m_pScriptContext.get();
-}
-
 CFXJSE_Engine* CXFA_Document::GetScriptContext() const {
   ASSERT(m_pScriptContext);
-  return m_pScriptContext.get();
+  return m_pScriptContext.Get();
 }
 
 XFA_VERSION CXFA_Document::RecognizeXFAVersionNumber(
