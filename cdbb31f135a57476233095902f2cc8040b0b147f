@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1595921919 -0700\nnonce ALC2d1+FsDmkhpf37aoYFw3rwRgS1t/QcsRgVl2ROMMS23YhEnlUs7+8iuzhuLOM8BswJPkeMl3b\n\n0000000000000000000000000000000000000000 cdbb31f135a57476233095902f2cc8040b0b147f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8f1f8ACgkQqzYtYVpm\n/XvEpAgAqfplrUaOr0ybIgD/t8WSt6wprNPmJtejmsJ/IoKCv1gc0VZTYYco3eMT\nQ/3z6nw+w0wSbmf56YkXCuy7TopXxv4R14wg+fgyEqCFc/VzPl656ng/nlxp8Urb\nafl3tw7/MzVC3bxJU1VbW3Ue588mg/rCBzmhK+9juXREAcPCsgicnHFRNKCP9g5l\nNknbTzj4ZAbMWdEnEMZg2lZIaMLvsK+clhooXn2FB1KDAd8GHq/RBOVYrq38atyW\nAV1LgHp/wxDkzDUHMCFqTF6aqrN1sn1xLaueKO0KxjjEtNe6n6RQgY1DOvRSnmIF\nTwFdIY0pgPI/bzutma/mjPp93NJTPg\u003d\u003d\n\u003dtPb5\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "71ab6c05_bd4090f8",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-28T18:00:09Z",
+      "side": 1,
+      "message": "I\u0027d be happier if this took a CPDF_Document*, then it would be obvious that the CPDFDocumentFromFPDFDocument() can\u0027t make it null.  What do you think?",
+      "range": {
+        "startLine": 93,
+        "startChar": 43,
+        "endLine": 93,
+        "endChar": 65
+      },
+      "revId": "cdbb31f135a57476233095902f2cc8040b0b147f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c41c7f6c_0f52ef70",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-28T18:00:09Z",
+      "side": 1,
+      "message": "ie. we can handle the conversion and null-case here and below.  FPDF_DOCUMENT should really not flow down much below the API.",
+      "range": {
+        "startLine": 1181,
+        "startChar": 7,
+        "endLine": 1181,
+        "endChar": 16
+      },
+      "revId": "cdbb31f135a57476233095902f2cc8040b0b147f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
