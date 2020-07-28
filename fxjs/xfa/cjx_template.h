@@ -14,7 +14,7 @@ class CXFA_Template;
 
 class CJX_Template final : public CJX_Model {
  public:
-  explicit CJX_Template(CXFA_Template* tmpl);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Template() override;
 
   // CJX_Object:
@@ -36,6 +36,8 @@ class CJX_Template final : public CJX_Model {
 
   static const TypeTag static_type__ = TypeTag::Template;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Template(CXFA_Template* tmpl);
 };
 
 #endif  // FXJS_XFA_CJX_TEMPLATE_H_

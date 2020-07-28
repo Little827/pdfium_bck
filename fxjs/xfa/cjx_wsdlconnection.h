@@ -14,7 +14,7 @@ class CXFA_WsdlConnection;
 
 class CJX_WsdlConnection final : public CJX_Node {
  public:
-  explicit CJX_WsdlConnection(CXFA_WsdlConnection* connection);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_WsdlConnection() override;
 
   // CJX_Object:
@@ -28,6 +28,8 @@ class CJX_WsdlConnection final : public CJX_Node {
 
   static const TypeTag static_type__ = TypeTag::WsdlConnection;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_WsdlConnection(CXFA_WsdlConnection* connection);
 };
 
 #endif  // FXJS_XFA_CJX_WSDLCONNECTION_H_

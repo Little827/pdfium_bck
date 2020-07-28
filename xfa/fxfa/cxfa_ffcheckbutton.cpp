@@ -35,7 +35,7 @@ bool CXFA_FFCheckButton::LoadWidget() {
   ASSERT(!IsLoaded());
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   auto pNew = std::make_unique<CFWL_CheckBox>(GetFWLApp());
   CFWL_CheckBox* pCheckBox = pNew.get();
@@ -256,7 +256,7 @@ bool CXFA_FFCheckButton::OnLButtonUp(uint32_t dwFlags,
     return false;
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   SetButtonDown(false);
   SendMessageToFWLWidget(std::make_unique<CFWL_MessageMouse>(
@@ -300,7 +300,7 @@ bool CXFA_FFCheckButton::UpdateFWLData() {
     return false;
 
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
   SetFWLCheckState(m_pNode->GetCheckState());
   GetNormalWidget()->Update();
   return true;
@@ -308,14 +308,14 @@ bool CXFA_FFCheckButton::UpdateFWLData() {
 
 void CXFA_FFCheckButton::OnProcessMessage(CFWL_Message* pMessage) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   m_pOldDelegate->OnProcessMessage(pMessage);
 }
 
 void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retain_layout(m_pLayoutItem.Get());
 
   CXFA_FFField::OnProcessEvent(pEvent);
   switch (pEvent->GetType()) {
@@ -357,7 +357,7 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
 void CXFA_FFCheckButton::OnDrawWidget(CXFA_Graphics* pGraphics,
                                       const CFX_Matrix& matrix) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
-  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
+  cppgc::Persistent<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
 
   m_pOldDelegate->OnDrawWidget(pGraphics, matrix);
 }

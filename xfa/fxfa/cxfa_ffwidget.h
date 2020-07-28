@@ -13,6 +13,7 @@
 #include "core/fxcodec/fx_codec_def.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxge/cfx_graphstatedata.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fwl/cfwl_messagemouse.h"
 #include "xfa/fwl/cfwl_widget.h"
@@ -192,7 +193,7 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   bool IsButtonDown();
   void SetButtonDown(bool bSet);
 
-  UnownedPtr<CXFA_ContentLayoutItem> m_pLayoutItem;
+  cppgc::Persistent<CXFA_ContentLayoutItem> m_pLayoutItem;
   UnownedPtr<CXFA_FFDocView> m_pDocView;
   ObservedPtr<CXFA_FFPageView> m_pPageView;
   UnownedPtr<CXFA_Node> const m_pNode;

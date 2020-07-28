@@ -14,7 +14,7 @@ class CXFA_Desc;
 
 class CJX_Desc final : public CJX_Node {
  public:
-  explicit CJX_Desc(CXFA_Desc* desc);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Desc() override;
 
   // CJX_Object:
@@ -28,6 +28,8 @@ class CJX_Desc final : public CJX_Node {
 
   static const TypeTag static_type__ = TypeTag::Desc;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Desc(CXFA_Desc* desc);
 };
 
 #endif  // FXJS_XFA_CJX_DESC_H_

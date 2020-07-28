@@ -14,7 +14,7 @@ class CXFA_Handler;
 
 class CJX_Handler final : public CJX_TextNode {
  public:
-  explicit CJX_Handler(CXFA_Handler* node);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Handler() override;
 
   // CJX_Object:
@@ -27,6 +27,8 @@ class CJX_Handler final : public CJX_TextNode {
   using ParentType__ = CJX_TextNode;
 
   static const TypeTag static_type__ = TypeTag::Handler;
+
+  explicit CJX_Handler(CXFA_Handler* node);
 };
 
 #endif  // FXJS_XFA_CJX_HANDLER_H_

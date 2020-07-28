@@ -14,7 +14,7 @@ class CXFA_Form;
 
 class CJX_Form final : public CJX_Model {
  public:
-  explicit CJX_Form(CXFA_Form* form);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Form() override;
 
   // CJX_Object:
@@ -35,6 +35,8 @@ class CJX_Form final : public CJX_Model {
 
   static const TypeTag static_type__ = TypeTag::Form;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Form(CXFA_Form* form);
 };
 
 #endif  // FXJS_XFA_CJX_FORM_H_

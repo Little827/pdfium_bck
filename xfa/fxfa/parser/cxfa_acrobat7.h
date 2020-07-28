@@ -11,7 +11,10 @@
 
 class CXFA_Acrobat7 final : public CXFA_Node {
  public:
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   CXFA_Acrobat7(CXFA_Document* doc, XFA_PacketType packet);
+
+ private:
   ~CXFA_Acrobat7() override;
 };
 

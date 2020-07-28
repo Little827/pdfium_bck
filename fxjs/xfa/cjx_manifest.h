@@ -14,7 +14,7 @@ class CXFA_Manifest;
 
 class CJX_Manifest final : public CJX_Node {
  public:
-  explicit CJX_Manifest(CXFA_Manifest* manifest);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Manifest() override;
 
   // CJX_Object:
@@ -28,6 +28,8 @@ class CJX_Manifest final : public CJX_Node {
 
   static const TypeTag static_type__ = TypeTag::Manifest;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Manifest(CXFA_Manifest* manifest);
 };
 
 #endif  // FXJS_XFA_CJX_MANIFEST_H_

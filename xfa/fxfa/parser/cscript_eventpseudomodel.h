@@ -13,8 +13,11 @@ class CXFA_Document;
 
 class CScript_EventPseudoModel final : public CXFA_Object {
  public:
-  explicit CScript_EventPseudoModel(CXFA_Document* pDocument);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CScript_EventPseudoModel() override;
+
+ private:
+  explicit CScript_EventPseudoModel(CXFA_Document* pDocument);
 };
 
 #endif  // XFA_FXFA_PARSER_CSCRIPT_EVENTPSEUDOMODEL_H_

@@ -14,7 +14,7 @@ class CXFA_Delta;
 
 class CJX_Subform final : public CJX_Container {
  public:
-  explicit CJX_Subform(CXFA_Node* container);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Subform() override;
 
   // CJX_Object:
@@ -34,6 +34,8 @@ class CJX_Subform final : public CJX_Container {
 
   static const TypeTag static_type__ = TypeTag::Subform;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Subform(CXFA_Node* container);
 };
 
 #endif  // FXJS_XFA_CJX_SUBFORM_H_

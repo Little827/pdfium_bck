@@ -13,8 +13,11 @@ class CXFA_Document;
 
 class CScript_DataWindow final : public CXFA_Object {
  public:
-  explicit CScript_DataWindow(CXFA_Document* pDocument);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CScript_DataWindow() override;
+
+ private:
+  explicit CScript_DataWindow(CXFA_Document* pDocument);
 };
 
 #endif  // XFA_FXFA_PARSER_CSCRIPT_DATAWINDOW_H_

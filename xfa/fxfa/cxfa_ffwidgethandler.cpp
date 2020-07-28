@@ -45,7 +45,7 @@ bool CXFA_FFWidgetHandler::OnLButtonDown(CXFA_FFWidget* hWidget,
                                          uint32_t dwFlags,
                                          const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |hWidget|.
-  RetainPtr<CXFA_LayoutItem> retainer(hWidget->GetLayoutItem());
+  cppgc::Persistent<CXFA_LayoutItem> retainer(hWidget->GetLayoutItem());
 
   m_pDocView->LockUpdate();
   bool bRet = hWidget->AcceptsFocusOnButtonDown(
@@ -97,7 +97,7 @@ bool CXFA_FFWidgetHandler::OnRButtonDown(CXFA_FFWidget* hWidget,
                                          uint32_t dwFlags,
                                          const CFX_PointF& point) {
   // Prevents destruction of the CXFA_ContentLayoutItem that owns |hWidget|.
-  RetainPtr<CXFA_LayoutItem> retainer(hWidget->GetLayoutItem());
+  cppgc::Persistent<CXFA_LayoutItem> retainer(hWidget->GetLayoutItem());
 
   if (!hWidget->AcceptsFocusOnButtonDown(dwFlags, hWidget->Rotate2Normal(point),
                                          FWL_MouseCommand::RightButtonDown)) {

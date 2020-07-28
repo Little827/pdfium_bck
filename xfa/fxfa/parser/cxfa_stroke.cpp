@@ -69,7 +69,7 @@ CXFA_Stroke::CXFA_Stroke(CXFA_Document* pDoc,
                          XFA_Element eType,
                          pdfium::span<const PropertyData> properties,
                          pdfium::span<const AttributeData> attributes,
-                         std::unique_ptr<CJX_Object> js_node)
+                         CJX_Object* js_node)
     : CXFA_Node(pDoc,
                 ePacket,
                 validPackets,
@@ -77,7 +77,7 @@ CXFA_Stroke::CXFA_Stroke(CXFA_Document* pDoc,
                 eType,
                 properties,
                 attributes,
-                std::move(js_node)) {}
+                js_node) {}
 
 CXFA_Stroke::~CXFA_Stroke() = default;
 

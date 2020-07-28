@@ -91,6 +91,7 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
                                            XFA_Element element,
                                            XFA_PacketType packet);
 
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_Node() override;
 
   bool HasProperty(XFA_Element property) const;
@@ -391,7 +392,7 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
             XFA_Element eType,
             pdfium::span<const PropertyData> properties,
             pdfium::span<const AttributeData> attributes,
-            std::unique_ptr<CJX_Object> js_object);
+            CJX_Object* js_object);
 
   virtual XFA_Element GetValueNodeType() const;
   virtual XFA_FFWidgetType GetDefaultFFWidgetType() const;

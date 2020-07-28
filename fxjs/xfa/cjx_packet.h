@@ -14,7 +14,7 @@ class CXFA_Packet;
 
 class CJX_Packet final : public CJX_Node {
  public:
-  explicit CJX_Packet(CXFA_Packet* packet);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Packet() override;
 
   // CJX_Object:
@@ -32,6 +32,8 @@ class CJX_Packet final : public CJX_Node {
 
   static const TypeTag static_type__ = TypeTag::Packet;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Packet(CXFA_Packet* packet);
 };
 
 #endif  // FXJS_XFA_CJX_PACKET_H_

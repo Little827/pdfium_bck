@@ -14,7 +14,7 @@ class CXFA_Delta;
 
 class CJX_Delta final : public CJX_Object {
  public:
-  explicit CJX_Delta(CXFA_Delta* delta);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Delta() override;
 
   // CJX_Object:
@@ -32,6 +32,8 @@ class CJX_Delta final : public CJX_Object {
 
   static const TypeTag static_type__ = TypeTag::Delta;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Delta(CXFA_Delta* delta);
 };
 
 #endif  // FXJS_XFA_CJX_DELTA_H_

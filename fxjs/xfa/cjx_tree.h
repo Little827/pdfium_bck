@@ -15,7 +15,7 @@ class CXFA_Node;
 
 class CJX_Tree : public CJX_Object {
  public:
-  explicit CJX_Tree(CXFA_Object* obj);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Tree() override;
 
   // CJX_Object:
@@ -31,6 +31,9 @@ class CJX_Tree : public CJX_Object {
   JSE_PROP(nodes);
   JSE_PROP(parent);
   JSE_PROP(somExpression);
+
+ protected:
+  explicit CJX_Tree(CXFA_Object* obj);
 
  private:
   using Type__ = CJX_Tree;

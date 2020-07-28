@@ -26,7 +26,7 @@ class CXFA_Node;
 
 class CJX_LayoutPseudoModel final : public CJX_Object {
  public:
-  explicit CJX_LayoutPseudoModel(CScript_LayoutPseudoModel* model);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_LayoutPseudoModel() override;
 
   // CJX_Object:
@@ -60,6 +60,8 @@ class CJX_LayoutPseudoModel final : public CJX_Object {
 
   static const TypeTag static_type__ = TypeTag::LayoutPseudoModel;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_LayoutPseudoModel(CScript_LayoutPseudoModel* model);
 
   CJS_Result NumberedPageCount(CFX_V8* runtime, bool bNumbered);
   CJS_Result HWXY(CFX_V8* runtime,

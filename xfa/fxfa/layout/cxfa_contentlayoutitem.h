@@ -12,14 +12,18 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fxjs/gc/heap.h"
 #include "xfa/fxfa/layout/cxfa_layoutitem.h"
 
 class CXFA_FFWidget;
 
 class CXFA_ContentLayoutItem final : public CXFA_LayoutItem {
  public:
-  CONSTRUCT_VIA_MAKE_RETAIN;
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ContentLayoutItem() override;
+
+  // CXFA_LayoutItem:
+  void Trace(cppgc::Visitor* visitor) const override;
 
   CXFA_FFWidget* GetFFWidget() { return m_pFFWidget.get(); }
 
@@ -48,8 +52,8 @@ class CXFA_ContentLayoutItem final : public CXFA_LayoutItem {
   void RemoveSelf();
 
   mutable uint32_t m_dwStatus = 0;
-  UnownedPtr<CXFA_ContentLayoutItem> m_pPrev;
-  UnownedPtr<CXFA_ContentLayoutItem> m_pNext;
+  cppgc::Member<CXFA_ContentLayoutItem> m_pPrev;
+  cppgc::Member<CXFA_ContentLayoutItem> m_pNext;
   std::unique_ptr<CXFA_FFWidget> const m_pFFWidget;
 };
 

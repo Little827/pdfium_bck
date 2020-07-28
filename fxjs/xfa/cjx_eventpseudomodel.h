@@ -35,7 +35,7 @@ enum class XFA_Event {
 
 class CJX_EventPseudoModel final : public CJX_Object {
  public:
-  explicit CJX_EventPseudoModel(CScript_EventPseudoModel* model);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_EventPseudoModel() override;
 
   // CJX_Object:
@@ -68,6 +68,8 @@ class CJX_EventPseudoModel final : public CJX_Object {
 
   static const TypeTag static_type__ = TypeTag::EventPseudoModel;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_EventPseudoModel(CScript_EventPseudoModel* model);
 
   void Property(CFXJSE_Value* pValue, XFA_Event dwFlag, bool bSetting);
 };

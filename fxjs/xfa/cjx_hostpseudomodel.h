@@ -16,7 +16,7 @@ class CScript_HostPseudoModel;
 
 class CJX_HostPseudoModel final : public CJX_Object {
  public:
-  explicit CJX_HostPseudoModel(CScript_HostPseudoModel* model);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_HostPseudoModel() override;
 
   // CJX_Object:
@@ -59,6 +59,8 @@ class CJX_HostPseudoModel final : public CJX_Object {
 
   static const TypeTag static_type__ = TypeTag::HostPseudoModel;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_HostPseudoModel(CScript_HostPseudoModel* model);
 };
 
 #endif  // FXJS_XFA_CJX_HOSTPSEUDOMODEL_H_

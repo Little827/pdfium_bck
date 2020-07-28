@@ -13,8 +13,11 @@ class CXFA_Document;
 
 class CScript_LayoutPseudoModel final : public CXFA_Object {
  public:
-  explicit CScript_LayoutPseudoModel(CXFA_Document* pDocument);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CScript_LayoutPseudoModel() override;
+
+ private:
+  explicit CScript_LayoutPseudoModel(CXFA_Document* pDocument);
 };
 
 #endif  // XFA_FXFA_PARSER_CSCRIPT_LAYOUTPSEUDOMODEL_H_
