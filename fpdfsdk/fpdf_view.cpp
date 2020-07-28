@@ -92,9 +92,6 @@ bool g_bLibraryInitialized = false;
 
 const CPDF_Object* GetXFAEntryFromDocument(FPDF_DOCUMENT document) {
   const CPDF_Document* doc = CPDFDocumentFromFPDFDocument(document);
-  if (!doc)
-    return nullptr;
-
   const CPDF_Dictionary* root = doc->GetRoot();
   if (!root)
     return nullptr;
