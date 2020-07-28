@@ -22,6 +22,12 @@
 #include "xfa/fwl/cfwl_widgetmgr.h"
 #include "xfa/fwl/fwl_widgetdef.h"
 
+namespace {
+
+uint64_t g_next_listener_key = 1;
+
+}  // namespace
+
 CFWL_NoteDriver::CFWL_NoteDriver() = default;
 
 CFWL_NoteDriver::~CFWL_NoteDriver() = default;
@@ -37,9 +43,7 @@ void CFWL_NoteDriver::RegisterEventTarget(CFWL_Widget* pListener,
                                           CFWL_Widget* pEventSource) {
   uint32_t key = pListener->GetEventKey();
   if (key == 0) {
-    do {
-      key = rand();
-    } while (key == 0 || pdfium::Contains(m_eventTargets, key));
+    key = g_next_listener_key++;
     pListener->SetEventKey(key);
   }
   if (!m_eventTargets[key])
