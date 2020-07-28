@@ -17,6 +17,70 @@
       "revId": "2b5de8f80278c9408e3d57b2f1905f8aee5bc195",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b804e7b2_060607bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-28T00:47:33Z",
+      "side": 1,
+      "message": "It\u0027s long but it\u0027s straightforward. I think you can keep it this way.",
+      "parentUuid": "d3f79188_c5b77aaf",
+      "revId": "2b5de8f80278c9408e3d57b2f1905f8aee5bc195",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd012544_03217a32",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1965,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-28T00:47:33Z",
+      "side": 1,
+      "message": "Nit: Seems like this \"#if defined\" section is short enough that the comment can be omitted.",
+      "range": {
+        "startLine": 1965,
+        "startChar": 7,
+        "endLine": 1965,
+        "endChar": 40
+      },
+      "revId": "2b5de8f80278c9408e3d57b2f1905f8aee5bc195",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf9bdde_836b925e",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-28T00:47:33Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 313,
+        "startChar": 12,
+        "endLine": 313,
+        "endChar": 31
+      },
+      "revId": "2b5de8f80278c9408e3d57b2f1905f8aee5bc195",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
