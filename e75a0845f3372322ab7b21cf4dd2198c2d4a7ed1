@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74094875_4dad338c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-28T21:38:24Z",
+      "side": 1,
+      "message": "AGG and Skia expected results are uploaded to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c44.",
+      "revId": "e75a0845f3372322ab7b21cf4dd2198c2d4a7ed1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
