@@ -61,6 +61,30 @@
     },
     {
       "key": {
+        "uuid": "c5ec6476_1b50d7da",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1965,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-28T00:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd012544_03217a32",
+      "range": {
+        "startLine": 1965,
+        "startChar": 7,
+        "endLine": 1965,
+        "endChar": 40
+      },
+      "revId": "2b5de8f80278c9408e3d57b2f1905f8aee5bc195",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adf9bdde_836b925e",
         "filename": "core/fxge/win32/fx_win32_device.cpp",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "revId": "2b5de8f80278c9408e3d57b2f1905f8aee5bc195",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0829f7_fd1ed6e8",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-28T00:54:51Z",
+      "side": 1,
+      "message": "Fortunately, just in the comment and not in the #if.",
+      "parentUuid": "adf9bdde_836b925e",
+      "range": {
+        "startLine": 313,
+        "startChar": 12,
+        "endLine": 313,
+        "endChar": 31
+      },
+      "revId": "2b5de8f80278c9408e3d57b2f1905f8aee5bc195",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
