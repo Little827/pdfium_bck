@@ -3,6 +3,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "12a20338_d9e9d1ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-28T01:32:54Z",
+      "side": 1,
+      "message": "So I actually wrote this because it\u0027s generally the case. I was think more about OS_ANDROID or OS_FUCHSIA. Then the OS_CHROMEOS change announcement happened.",
+      "revId": "97c5c9f753771284104bb05cf622d2b4a779a063",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eba8f03d_9867e686",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
