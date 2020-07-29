@@ -186,26 +186,26 @@ TEST_F(CJS_PublicMethodsEmbedderTest, AFSimple_CalculateSum) {
   auto* page = LoadPage(0);
   ASSERT_TRUE(page);
 
-  CJS_Runtime runtime(
+  auto runtime = pdfium::MakeRetain<CJS_Runtime>(
       CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle()));
-  runtime.NewEventContext();
+  runtime->NewEventContext();
 
   WideString result;
-  runtime.GetCurrentEventContext()->GetEventRecorder()->SetValueForTest(
+  runtime->GetCurrentEventContext()->GetEventRecorder()->SetValueForTest(
       &result);
 
-  auto ary = runtime.NewArray();
-  runtime.PutArrayElement(ary, 0, runtime.NewString("Calc1_A"));
-  runtime.PutArrayElement(ary, 1, runtime.NewString("Calc1_B"));
+  auto ary = runtime->NewArray();
+  runtime->PutArrayElement(ary, 0, runtime->NewString("Calc1_A"));
+  runtime->PutArrayElement(ary, 1, runtime->NewString("Calc1_B"));
 
   std::vector<v8::Local<v8::Value>> params;
-  params.push_back(runtime.NewString("SUM"));
+  params.push_back(runtime->NewString("SUM"));
   params.push_back(ary);
 
-  CJS_Result ret = CJS_PublicMethods::AFSimple_Calculate(&runtime, params);
+  CJS_Result ret = CJS_PublicMethods::AFSimple_Calculate(runtime.Get(), params);
   UnloadPage(page);
 
-  runtime.GetCurrentEventContext()->GetEventRecorder()->SetValueForTest(
+  runtime->GetCurrentEventContext()->GetEventRecorder()->SetValueForTest(
       nullptr);
 
   ASSERT_TRUE(!ret.HasError());
@@ -222,11 +222,11 @@ TEST_F(CJS_PublicMethodsEmbedderTest, AFNumber_Keystroke) {
   auto* page = LoadPage(0);
   ASSERT_TRUE(page);
 
-  CJS_Runtime runtime(
+  auto runtime = pdfium::MakeRetain<CJS_Runtime>(
       CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle()));
-  runtime.NewEventContext();
+  runtime->NewEventContext();
 
-  auto* handler = runtime.GetCurrentEventContext()->GetEventRecorder();
+  auto* handler = runtime->GetCurrentEventContext()->GetEventRecorder();
 
   bool valid = true;
   WideString result = L"-10";
@@ -241,10 +241,10 @@ TEST_F(CJS_PublicMethodsEmbedderTest, AFNumber_Keystroke) {
   handler->SetSelEnd(0);
 
   std::vector<v8::Local<v8::Value>> params;
-  params.push_back(runtime.NewString("-10"));
-  params.push_back(runtime.NewString(""));
+  params.push_back(runtime->NewString("-10"));
+  params.push_back(runtime->NewString(""));
 
-  CJS_Result ret = CJS_PublicMethods::AFNumber_Keystroke(&runtime, params);
+  CJS_Result ret = CJS_PublicMethods::AFNumber_Keystroke(runtime.Get(), params);
   EXPECT_TRUE(valid);
   EXPECT_TRUE(!ret.HasError());
   EXPECT_TRUE(!ret.HasReturn());

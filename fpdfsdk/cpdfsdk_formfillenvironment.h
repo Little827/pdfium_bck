@@ -222,7 +222,7 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
 
   FPDF_FORMFILLINFO* const m_pInfo;
   std::unique_ptr<CPDFSDK_ActionHandler> m_pActionHandler;
-  std::unique_ptr<IJS_Runtime> m_pIJSRuntime;
+  RetainPtr<IJS_Runtime> m_pIJSRuntime;
   std::map<IPDF_Page*, std::unique_ptr<CPDFSDK_PageView>> m_PageMap;
   std::unique_ptr<CPDFSDK_InteractiveForm> m_pInteractiveForm;
   ObservedPtr<CPDFSDK_Annot> m_pFocusAnnot;
