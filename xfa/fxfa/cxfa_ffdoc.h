@@ -85,17 +85,17 @@ class CXFA_FFDoc {
   bool OpenDoc(CFX_XMLDocument* pXML);
   bool BuildDoc(CFX_XMLDocument* pXML);
 
+  FormType m_FormType = FormType::kXFAForeground;
   UnownedPtr<IXFA_DocEnvironment> const m_pDocEnvironment;
   UnownedPtr<CXFA_FFApp> const m_pApp;
   UnownedPtr<CPDF_Document> const m_pPDFDoc;
   UnownedPtr<cppgc::Heap> const m_pHeap;
   UnownedPtr<CFX_XMLDocument> m_pXMLDoc;
+  std::map<uint32_t, FX_IMAGEDIB_AND_DPI> m_HashToDibDpiMap;
+  std::unique_ptr<CFGAS_PDFFontMgr> m_pPDFFontMgr;
   std::unique_ptr<CXFA_FFNotify> m_pNotify;
   std::unique_ptr<CXFA_Document> m_pDocument;
   std::unique_ptr<CXFA_FFDocView> m_DocView;
-  std::unique_ptr<CFGAS_PDFFontMgr> m_pPDFFontMgr;
-  std::map<uint32_t, FX_IMAGEDIB_AND_DPI> m_HashToDibDpiMap;
-  FormType m_FormType = FormType::kXFAForeground;
 };
 
 #endif  // XFA_FXFA_CXFA_FFDOC_H_

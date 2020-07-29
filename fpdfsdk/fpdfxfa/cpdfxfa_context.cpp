@@ -98,12 +98,11 @@ CPDFXFA_Context::~CPDFXFA_Context() {
 
 void CPDFXFA_Context::SetFormFillEnv(
     CPDFSDK_FormFillEnvironment* pFormFillEnv) {
-  // The layout data can have pointers back into the script context. That
-  // context will be different if the form fill environment closes, so, force
-  // the layout data to clear.
-  if (m_pXFADoc && m_pXFADoc->GetXFADoc())
-    m_pXFADoc->GetXFADoc()->ClearLayoutData();
-
+  if (pFormFillEnv) {
+    CJS_Runtime* pRuntime = pFormFillEnv->GetIJSRuntime()->AsCJSRuntime();
+    if (pRuntime)
+      m_RetainedRuntimes.emplace_back(pRuntime);
+  }
   m_pFormFillEnv.Reset(pFormFillEnv);
 }
 

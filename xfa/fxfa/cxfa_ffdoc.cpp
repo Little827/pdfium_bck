@@ -87,15 +87,9 @@ CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp,
 CXFA_FFDoc::~CXFA_FFDoc() {
   if (m_DocView) {
     m_DocView->RunDocClose();
-    m_DocView.reset();
   }
   if (m_pDocument)
     m_pDocument->ClearLayoutData();
-
-  m_pDocument.reset();
-  m_pNotify.reset();
-  m_pPDFFontMgr.reset();
-  m_HashToDibDpiMap.clear();
 }
 
 bool CXFA_FFDoc::BuildDoc(CFX_XMLDocument* pXML) {
