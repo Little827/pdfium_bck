@@ -18,7 +18,7 @@ class IJS_EventContext;
 
 class CJS_RuntimeStub final : public IJS_Runtime {
  public:
-  explicit CJS_RuntimeStub(CPDFSDK_FormFillEnvironment* pFormFillEnv);
+  CONSTRUCT_VIA_MAKE_RETAIN;
   ~CJS_RuntimeStub() override;
 
   // IJS_Runtime:
@@ -31,6 +31,8 @@ class CJS_RuntimeStub final : public IJS_Runtime {
       const WideString& script) override;
 
  private:
+  explicit CJS_RuntimeStub(CPDFSDK_FormFillEnvironment* pFormFillEnv);
+
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
   std::unique_ptr<IJS_EventContext> m_pContext;
 };

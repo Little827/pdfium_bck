@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "core/fxcrt/observed_ptr.h"
+#include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/timerhandler_iface.h"
 #include "fxjs/cfxjs_engine.h"
 #include "fxjs/cjs_eventrecorder.h"
@@ -27,7 +28,7 @@ class CJS_Runtime final : public IJS_Runtime,
  public:
   using FieldEvent = std::pair<WideString, JS_EVENT_T>;
 
-  explicit CJS_Runtime(CPDFSDK_FormFillEnvironment* pFormFillEnv);
+  CONSTRUCT_VIA_MAKE_RETAIN;
   ~CJS_Runtime() override;
 
   // IJS_Runtime:
@@ -59,6 +60,8 @@ class CJS_Runtime final : public IJS_Runtime,
                                     v8::Local<v8::Value> pValue);
 
  private:
+  explicit CJS_Runtime(CPDFSDK_FormFillEnvironment* pFormFillEnv);
+
   void DefineJSObjects();
   void SetFormFillEnvToDocument();
 

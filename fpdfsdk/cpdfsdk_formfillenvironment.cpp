@@ -315,7 +315,7 @@ void CPDFSDK_FormFillEnvironment::SubmitForm(pdfium::span<uint8_t> form_data,
 IJS_Runtime* CPDFSDK_FormFillEnvironment::GetIJSRuntime() {
   if (!m_pIJSRuntime)
     m_pIJSRuntime = IJS_Runtime::Create(this);
-  return m_pIJSRuntime.get();
+  return m_pIJSRuntime.Get();
 }
 
 CPDFSDK_AnnotHandlerMgr* CPDFSDK_FormFillEnvironment::GetAnnotHandlerMgr() {

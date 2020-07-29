@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/optional.h"
 
@@ -21,7 +22,7 @@ class IJS_EventContext;
 // Owns the FJXS objects needed to actually execute JS, if possible. This
 // virtual interface is backed by either an actual JS runtime, or a stub,
 // when JS is not present.
-class IJS_Runtime {
+class IJS_Runtime : public Retainable {
  public:
   struct JS_Error {
     int line;
@@ -46,10 +47,11 @@ class IJS_Runtime {
 
   static void Initialize(unsigned int slot, void* isolate, void* platform);
   static void Destroy();
-  static std::unique_ptr<IJS_Runtime> Create(
+
+  static RetainPtr<IJS_Runtime> Create(
       CPDFSDK_FormFillEnvironment* pFormFillEnv);
 
-  virtual ~IJS_Runtime();
+  ~IJS_Runtime() override;
 
   virtual CJS_Runtime* AsCJSRuntime() = 0;
   virtual IJS_EventContext* NewEventContext() = 0;
