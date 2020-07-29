@@ -2136,22 +2136,24 @@ TEST_F(FPDFEditEmbedderTest, GetTextRenderMode) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(FPDFEditEmbedderTest, SetTextRenderMode) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_SetTextRenderMode DISABLED_SetTextRenderMode
+#if defined(OS_WIN)
+  const char md5[] = "xxx1";
 #else
-#define MAYBE_SetTextRenderMode SetTextRenderMode
-#endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_SetTextRenderMode) {
-// Platform specific original bitmaps
-#if defined(OS_MACOSX)
-  const char md5[] = "2453a9a524ee3f5f525dd21345ec4d81";
-#elif defined(OS_WIN)
+  const char md5[] = "4960c720a6cdb7b2b16be809cce58aff";
+#endif  // defined(OS_WIN)
+  const char md5_stroke[] = "4c099cf9abc1565806bd7cd1cca5ac1a";
+#else
+#if defined(OS_WIN)
   const char md5[] = "de6e86bad3e9fda753a8471a45cfbb58";
+#elif defined(OS_MACOSX)
+  const char md5[] = "2453a9a524ee3f5f525dd21345ec4d81";
 #else
   const char md5[] = "5a012d2920ac075c39ffa9437ea42faa";
 #endif
   const char md5_stroke[] = "412e52e621b46bd77baf2162e1fb1a1d";
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
   {
     ASSERT_TRUE(OpenDocument("text_render_mode.pdf"));
