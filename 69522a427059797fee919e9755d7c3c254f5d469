@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e57cde06_003d8b89",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-29T21:32:19Z",
+      "side": 1,
+      "message": "I noticed line 215 changed to check if GetLayoutProcessor() returned nullptr, but we didn\u0027t make a similar change here.\n\nLooking at where the CXFA_LayoutProcessor comes from, I think we can only get nullptr in unit tests. I\u0027m not sure how hard it is to construct a LayoutProcessor for those tests, but doing that may make CXFA_FFDocView code have fewer checks.",
+      "revId": "69522a427059797fee919e9755d7c3c254f5d469",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
