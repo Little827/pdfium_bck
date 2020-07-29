@@ -16,6 +16,24 @@
       "revId": "69522a427059797fee919e9755d7c3c254f5d469",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ba5dee_eee85c42",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-29T22:32:53Z",
+      "side": 1,
+      "message": "Actually it can be null, as a consequence of ClearLayoutData() being called from CPDFXFA_Context::SetFormFillEnvironment(nullptr). However, we used to immediately set the cached variable to null right above that call, hence the owned copy and the cached copy become null at (nearly) the same time.  So if there was an existing conditional for the use of the m_pLayoutProcessor, I kept it, and if there wasn\u0027t I don\u0027t think I introduced any new ones.  Line 215 has a ? operator in the past, so I dont think it changed.",
+      "parentUuid": "e57cde06_003d8b89",
+      "revId": "69522a427059797fee919e9755d7c3c254f5d469",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
