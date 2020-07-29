@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "123f37b6_8a3e5b19",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-29T18:25:00Z",
+      "side": 0,
+      "message": "Does this decrease code coverage? or circumvent bugs that exist only when there\u0027s a text-page instantiated?",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 56
+      },
+      "revId": "1f73c4f9367e7355630754bfc2708eae8c160679",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
