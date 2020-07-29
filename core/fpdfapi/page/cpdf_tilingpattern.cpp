@@ -46,6 +46,8 @@ std::unique_ptr<CPDF_Form> CPDF_TilingPattern::Load(CPDF_PageObject* pPageObj) {
   allStates.m_GraphState.Emplace();
   allStates.m_TextState.Emplace();
   allStates.m_GeneralState = pPageObj->m_GeneralState;
+  allStates.m_GeneralState.SetFillAlpha(1.f);
+  allStates.m_GeneralState.SetStrokeAlpha(1.f);
   form->ParseContent(&allStates, &matrix, nullptr);
   m_BBox = pDict->GetRectFor("BBox");
   return form;
