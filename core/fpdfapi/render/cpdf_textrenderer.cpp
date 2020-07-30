@@ -15,6 +15,7 @@
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/cfx_renderdevice.h"
+#include "core/fxge/cfx_textrenderoptions.h"
 #include "core/fxge/fx_font.h"
 #include "core/fxge/text_char_pos.h"
 
@@ -32,13 +33,11 @@ CFX_TextRenderOptions GetTextRenderOptionsHelper(
   if (pFont->IsCIDFont())
     text_options.font_is_cid = true;
 
-  if (options.GetOptions().bNoTextSmooth) {
+  if (options.GetOptions().bNoTextSmooth)
     text_options.aliasing_type = CFX_TextRenderOptions::kAliasing;
-  } else if (options.GetOptions().bClearType) {
-    text_options.aliasing_type = options.GetOptions().bBGRStripe
-                                     ? CFX_TextRenderOptions::kBgrStripe
-                                     : CFX_TextRenderOptions::kLcd;
-  }
+  else if (options.GetOptions().bClearType)
+    text_options.aliasing_type = CFX_TextRenderOptions::kLcd;
+
   if (options.GetOptions().bNoNativeText)
     text_options.native_text = false;
 
