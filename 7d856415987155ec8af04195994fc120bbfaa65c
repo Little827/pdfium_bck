@@ -16,6 +16,24 @@
       "revId": "7d856415987155ec8af04195994fc120bbfaa65c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55d1cac_3900a9cf",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-30T17:27:45Z",
+      "side": 1,
+      "message": "This is intentionally done according to suggestion https://pdfium-review.googlesource.com/c/pdfium/+/69350/9/fpdfsdk/fpdf_view_embeddertest.cpp#1107.",
+      "parentUuid": "d235b7cd_4eafc744",
+      "revId": "7d856415987155ec8af04195994fc120bbfaa65c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
