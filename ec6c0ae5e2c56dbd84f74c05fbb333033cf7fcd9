@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c191e475_d7e4e81a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-30T19:11:04Z",
+      "side": 1,
+      "message": "Rendering results for this test have been uploaded to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c49/",
+      "revId": "ec6c0ae5e2c56dbd84f74c05fbb333033cf7fcd9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
