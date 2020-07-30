@@ -17,6 +17,23 @@
       "revId": "bf02b1a53a6a5a72ebcca3727febf445b6fce28e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e5e18a_2e1991ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-30T20:19:18Z",
+      "side": 1,
+      "message": "LGTM! Thanks for cleaning up the forward declarations I missed!",
+      "revId": "bf02b1a53a6a5a72ebcca3727febf445b6fce28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
