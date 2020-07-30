@@ -22,6 +22,30 @@
       "revId": "c1847a9a217bb9814171fa89372d960a80ed4677",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbcd1644_b8dcb7dc",
+        "filename": "fxjs/gc/heap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-30T21:23:08Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "626f05e8_d9899955",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "c1847a9a217bb9814171fa89372d960a80ed4677",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
