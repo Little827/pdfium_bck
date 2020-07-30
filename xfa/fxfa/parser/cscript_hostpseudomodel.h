@@ -13,8 +13,11 @@ class CXFA_Document;
 
 class CScript_HostPseudoModel final : public CXFA_Object {
  public:
-  explicit CScript_HostPseudoModel(CXFA_Document* pDocument);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CScript_HostPseudoModel() override;
+
+ private:
+  explicit CScript_HostPseudoModel(CXFA_Document* pDocument);
 };
 
 #endif  // XFA_FXFA_PARSER_CSCRIPT_HOSTPSEUDOMODEL_H_

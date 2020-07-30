@@ -14,7 +14,7 @@ class CXFA_Xfa;
 
 class CJX_Xfa final : public CJX_Model {
  public:
-  explicit CJX_Xfa(CXFA_Xfa* node);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Xfa() override;
 
   // CJX_Object:
@@ -27,6 +27,8 @@ class CJX_Xfa final : public CJX_Model {
   using ParentType__ = CJX_Model;
 
   static const TypeTag static_type__ = TypeTag::Xfa;
+
+  explicit CJX_Xfa(CXFA_Xfa* node);
 };
 
 #endif  // FXJS_XFA_CJX_XFA_H_

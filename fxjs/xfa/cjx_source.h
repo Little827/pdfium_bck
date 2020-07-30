@@ -14,7 +14,7 @@ class CXFA_Source;
 
 class CJX_Source final : public CJX_Node {
  public:
-  explicit CJX_Source(CXFA_Source* src);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Source() override;
 
   // CJX_Object:
@@ -46,6 +46,8 @@ class CJX_Source final : public CJX_Node {
 
   static const TypeTag static_type__ = TypeTag::Source;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_Source(CXFA_Source* src);
 };
 
 #endif  // FXJS_XFA_CJX_SOURCE_H_

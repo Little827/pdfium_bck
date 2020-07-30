@@ -14,7 +14,7 @@ class CScript_SignaturePseudoModel;
 
 class CJX_SignaturePseudoModel final : public CJX_Object {
  public:
-  explicit CJX_SignaturePseudoModel(CScript_SignaturePseudoModel* model);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_SignaturePseudoModel() override;
 
   // CJX_Object:
@@ -31,6 +31,8 @@ class CJX_SignaturePseudoModel final : public CJX_Object {
 
   static const TypeTag static_type__ = TypeTag::SignaturePesudoModel;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_SignaturePseudoModel(CScript_SignaturePseudoModel* model);
 };
 
 #endif  // FXJS_XFA_CJX_SIGNATUREPSEUDOMODEL_H_

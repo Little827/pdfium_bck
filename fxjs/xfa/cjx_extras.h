@@ -14,7 +14,7 @@ class CXFA_Extras;
 
 class CJX_Extras final : public CJX_Node {
  public:
-  explicit CJX_Extras(CXFA_Extras* node);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Extras() override;
 
   // CJX_Object:
@@ -27,6 +27,8 @@ class CJX_Extras final : public CJX_Node {
   using ParentType__ = CJX_Node;
 
   static const TypeTag static_type__ = TypeTag::Extras;
+
+  explicit CJX_Extras(CXFA_Extras* node);
 };
 
 #endif  // FXJS_XFA_CJX_EXTRAS_H_

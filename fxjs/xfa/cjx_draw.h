@@ -14,7 +14,7 @@ class CXFA_Draw;
 
 class CJX_Draw final : public CJX_Container {
  public:
-  explicit CJX_Draw(CXFA_Draw* node);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Draw() override;
 
   // CJX_Object:
@@ -28,6 +28,8 @@ class CJX_Draw final : public CJX_Container {
   using ParentType__ = CJX_Container;
 
   static const TypeTag static_type__ = TypeTag::Draw;
+
+  explicit CJX_Draw(CXFA_Draw* node);
 };
 
 #endif  // FXJS_XFA_CJX_DRAW_H_

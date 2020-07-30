@@ -28,6 +28,12 @@ CXFA_ContentLayoutItem::~CXFA_ContentLayoutItem() {
   RemoveSelf();
 }
 
+void CXFA_ContentLayoutItem::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pPrev);
+  visitor->Trace(m_pNext);
+  CXFA_LayoutItem::Trace(visitor);
+}
+
 CXFA_ContentLayoutItem* CXFA_ContentLayoutItem::GetFirst() {
   CXFA_ContentLayoutItem* pCurNode = this;
   while (auto* pPrev = pCurNode->GetPrev())

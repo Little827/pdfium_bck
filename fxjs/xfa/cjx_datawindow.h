@@ -16,7 +16,7 @@ class CScript_DataWindow;
 
 class CJX_DataWindow final : public CJX_Object {
  public:
-  explicit CJX_DataWindow(CScript_DataWindow* window);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_DataWindow() override;
 
   // CJX_Object:
@@ -38,6 +38,8 @@ class CJX_DataWindow final : public CJX_Object {
 
   static const TypeTag static_type__ = TypeTag::DataWindow;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_DataWindow(CScript_DataWindow* window);
 };
 
 #endif  // FXJS_XFA_CJX_DATAWINDOW_H_

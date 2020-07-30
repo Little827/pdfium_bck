@@ -14,13 +14,15 @@ class CXFA_Node;
 
 class CXFA_ThisProxy final : public CXFA_Object {
  public:
-  CXFA_ThisProxy(CXFA_Node* pThisNode, CXFA_Node* pScriptNode);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ThisProxy() override;
 
   CXFA_Node* GetThisNode() const { return m_pThisNode.Get(); }
   CXFA_Node* GetScriptNode() const { return m_pScriptNode.Get(); }
 
  private:
+  CXFA_ThisProxy(CXFA_Node* pThisNode, CXFA_Node* pScriptNode);
+
   UnownedPtr<CXFA_Node> m_pThisNode;
   UnownedPtr<CXFA_Node> m_pScriptNode;
 };

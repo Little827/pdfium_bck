@@ -79,7 +79,6 @@ class CXFA_Document final : public CXFA_NodeOwner {
   // to call InitScriptContext() first to avoid a situation where the context
   // won't have an isolate set into it.
   CFXJSE_Engine* GetScriptContext() const;
-
   CXFA_FFNotify* GetNotify() const { return notify_.Get(); }
   cppgc::Heap* GetHeap() const;
   CXFA_LocaleMgr* GetLocaleMgr();

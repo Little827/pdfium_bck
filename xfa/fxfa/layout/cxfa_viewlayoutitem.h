@@ -10,13 +10,14 @@
 #include <memory>
 
 #include "core/fxcrt/fx_coordinates.h"
+#include "fxjs/gc/heap.h"
 #include "xfa/fxfa/layout/cxfa_layoutitem.h"
 
 class CXFA_FFPageView;
 
 class CXFA_ViewLayoutItem final : public CXFA_LayoutItem {
  public:
-  CONSTRUCT_VIA_MAKE_RETAIN;
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ViewLayoutItem() override;
 
   CXFA_FFPageView* GetPageView() const { return m_pFFPageView.get(); }

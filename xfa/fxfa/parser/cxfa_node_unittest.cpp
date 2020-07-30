@@ -20,7 +20,9 @@ class TestNode final : public CXFA_Node {
                   XFA_Element::Node,
                   {},
                   {},
-                  std::make_unique<CJX_Node>(this)) {}
+                  cppgc::MakeGarbageCollected<CJX_Node>(
+                      doc->GetHeap()->GetAllocationHandle(),
+                      this)) {}
 
   ~TestNode() override = default;
 };

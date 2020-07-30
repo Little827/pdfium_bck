@@ -14,7 +14,7 @@ class CXFA_Boolean;
 
 class CJX_Boolean final : public CJX_Object {
  public:
-  explicit CJX_Boolean(CXFA_Boolean* node);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Boolean() override;
 
   // CJX_Object:
@@ -28,6 +28,8 @@ class CJX_Boolean final : public CJX_Object {
   using ParentType__ = CJX_Object;
 
   static const TypeTag static_type__ = TypeTag::Boolean;
+
+  explicit CJX_Boolean(CXFA_Boolean* node);
 };
 
 #endif  // FXJS_XFA_CJX_BOOLEAN_H_

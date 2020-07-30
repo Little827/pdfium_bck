@@ -135,6 +135,10 @@ bool CJX_Object::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__;
 }
 
+void CJX_Object::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(layout_item_);
+}
+
 void CJX_Object::DefineMethods(pdfium::span<const CJX_MethodSpec> methods) {
   for (const auto& item : methods)
     method_specs_[item.pName] = item.pMethodCall;
@@ -142,6 +146,14 @@ void CJX_Object::DefineMethods(pdfium::span<const CJX_MethodSpec> methods) {
 
 CXFA_Document* CJX_Object::GetDocument() const {
   return object_->GetDocument();
+}
+
+void CJX_Object::SetLayoutItem(CXFA_LayoutItem* item) {
+  layout_item_ = item;
+}
+
+CXFA_LayoutItem* CJX_Object::GetLayoutItem() const {
+  return layout_item_;
 }
 
 CXFA_Node* CJX_Object::GetXFANode() const {

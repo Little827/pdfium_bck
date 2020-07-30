@@ -14,7 +14,7 @@ class CXFA_ExclGroup;
 
 class CJX_ExclGroup final : public CJX_Node {
  public:
-  explicit CJX_ExclGroup(CXFA_ExclGroup* group);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_ExclGroup() override;
 
   // CJX_Object:
@@ -37,6 +37,8 @@ class CJX_ExclGroup final : public CJX_Node {
 
   static const TypeTag static_type__ = TypeTag::ExclGroup;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_ExclGroup(CXFA_ExclGroup* group);
 };
 
 #endif  // FXJS_XFA_CJX_EXCLGROUP_H_

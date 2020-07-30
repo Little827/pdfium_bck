@@ -13,8 +13,11 @@ class CXFA_Document;
 
 class CScript_LogPseudoModel final : public CXFA_Object {
  public:
-  explicit CScript_LogPseudoModel(CXFA_Document* pDocument);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CScript_LogPseudoModel() override;
+
+ private:
+  explicit CScript_LogPseudoModel(CXFA_Document* pDocument);
 };
 
 #endif  // XFA_FXFA_PARSER_CSCRIPT_LOGPSEUDOMODEL_H_

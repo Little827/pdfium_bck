@@ -7,10 +7,10 @@
 #ifndef XFA_FXFA_PARSER_CXFA_OBJECT_H_
 #define XFA_FXFA_PARSER_CXFA_OBJECT_H_
 
-#include <memory>
-
 #include "core/fxcrt/fx_string.h"
+#include "fxjs/gc/heap.h"
 #include "fxjs/xfa/fxjse.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
 enum class XFA_ObjectType {
@@ -34,8 +34,9 @@ class CXFA_Node;
 class CXFA_ThisProxy;
 class CXFA_TreeList;
 
-class CXFA_Object {
+class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
  public:
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   virtual ~CXFA_Object();
 
   CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
@@ -70,8 +71,8 @@ class CXFA_Object {
   CXFA_TreeList* AsTreeList();
   CXFA_ThisProxy* AsThisProxy();
 
-  CJX_Object* JSObject() { return m_pJSObject.get(); }
-  const CJX_Object* JSObject() const { return m_pJSObject.get(); }
+  CJX_Object* JSObject() { return m_pJSObject; }
+  const CJX_Object* JSObject() const { return m_pJSObject; }
 
   bool HasCreatedUIWidget() const {
     return m_elementType == XFA_Element::Field ||
@@ -90,14 +91,14 @@ class CXFA_Object {
   CXFA_Object(CXFA_Document* pDocument,
               XFA_ObjectType objectType,
               XFA_Element eType,
-              std::unique_ptr<CJX_Object> jsObject);
+              CJX_Object* jsObject);
 
   UnownedPtr<CXFA_Document> const m_pDocument;
   const XFA_ObjectType m_objectType;
   const XFA_Element m_elementType;
   const ByteStringView m_elementName;
   const uint32_t m_elementNameHash;
-  std::unique_ptr<CJX_Object> m_pJSObject;
+  cppgc::Persistent<CJX_Object> m_pJSObject;
 };
 
 // Helper functions that permit nullptr arguments.

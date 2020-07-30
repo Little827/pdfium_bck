@@ -14,7 +14,7 @@ class CXFA_InstanceManager;
 
 class CJX_InstanceManager final : public CJX_Node {
  public:
-  explicit CJX_InstanceManager(CXFA_InstanceManager* mgr);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_InstanceManager() override;
 
   // CJX_Object:
@@ -38,6 +38,8 @@ class CJX_InstanceManager final : public CJX_Node {
 
   static const TypeTag static_type__ = TypeTag::InstanceManager;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_InstanceManager(CXFA_InstanceManager* mgr);
 
   int32_t SetInstances(int32_t iDesired);
 };

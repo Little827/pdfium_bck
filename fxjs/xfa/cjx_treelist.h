@@ -14,7 +14,7 @@ class CXFA_TreeList;
 
 class CJX_TreeList final : public CJX_List {
  public:
-  explicit CJX_TreeList(CXFA_TreeList* list);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_TreeList() override;
 
   // CJX_Object:
@@ -28,6 +28,8 @@ class CJX_TreeList final : public CJX_List {
 
   static const TypeTag static_type__ = TypeTag::TreeList;
   static const CJX_MethodSpec MethodSpecs[];
+
+  explicit CJX_TreeList(CXFA_TreeList* list);
 
   CXFA_TreeList* GetXFATreeList();
 };

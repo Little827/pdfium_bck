@@ -14,7 +14,7 @@ class CXFA_Script;
 
 class CJX_Script final : public CJX_Node {
  public:
-  explicit CJX_Script(CXFA_Script* node);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CJX_Script() override;
 
   // CJX_Object:
@@ -27,6 +27,8 @@ class CJX_Script final : public CJX_Node {
   using ParentType__ = CJX_Node;
 
   static const TypeTag static_type__ = TypeTag::Script;
+
+  explicit CJX_Script(CXFA_Script* node);
 };
 
 #endif  // FXJS_XFA_CJX_SCRIPT_H_
