@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24236c39_8301fc5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-30T20:33:25Z",
+      "side": 1,
+      "message": "LGTM.\n\nOn this note, Skia actually can support BGR stripes for rendering. We can always recover the code if one day we decide to start supporting BGR stripes as a rendering options even after completely switching to Skia/SkiaPaths. ",
+      "revId": "55e8e99875ffd82a275654827929a8e3e866f5bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
