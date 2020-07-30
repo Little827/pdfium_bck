@@ -35,6 +35,24 @@
       "revId": "cb9eca3e6e762e4a39dcf080d5d71e72c1c755ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5eaf6ec3_5c74c2c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-07-30T16:58:06Z",
+      "side": 1,
+      "message": "Ok, sounds good to me. \n\nEven if we did not support iOS, OS_APPLE and OS_MAC are effectively equivalent for our purposes, but +1 to keep iOS working for people who figured it out. \n\nNow I feel motivated to work on crbug.com/pdfium/708 once I find the time 😄",
+      "parentUuid": "1e867c91_4f35e70d",
+      "revId": "cb9eca3e6e762e4a39dcf080d5d71e72c1c755ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
