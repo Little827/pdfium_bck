@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "626f05e8_d9899955",
+        "filename": "fxjs/gc/heap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-30T21:08:57Z",
+      "side": 0,
+      "message": "Note: string args are completely unused by cppgc IIRC.",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "c1847a9a217bb9814171fa89372d960a80ed4677",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
