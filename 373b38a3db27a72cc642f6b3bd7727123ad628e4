@@ -70,6 +70,24 @@
       "revId": "373b38a3db27a72cc642f6b3bd7727123ad628e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f5d98eb_a1bbc391",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-30T18:26:07Z",
+      "side": 1,
+      "message": "That\u0027s not very obvious. If the CL remains as is, it will be helpful to at least add a comment for that. But I have another idea. See new comment.",
+      "parentUuid": "41b488b3_990c39eb",
+      "revId": "373b38a3db27a72cc642f6b3bd7727123ad628e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
