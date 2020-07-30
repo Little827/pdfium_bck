@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e2e7054d_9637ea2a",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-30T22:30:12Z",
+      "side": 1,
+      "message": "So now with |CFX_TextRenderOptions::kBgrStripe| removed in https://pdfium-review.googlesource.com/c/72231, we can have:\n\n|CFX_TextRenderOptions::kAliasing| -\u003e |FT_RENDER_MODE_MONO|\n|CFX_TextRenderOptions::kAntiAliasing| -\u003e |FT_RENDER_MODE_NORMAL|\n|CFX_TextRenderOptions::kLcd| -\u003e |FT_RENDER_MODE_LCD|",
+      "parentUuid": "0ab20ea6_580a4abc",
+      "revId": "7d856415987155ec8af04195994fc120bbfaa65c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d235b7cd_4eafc744",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 21
