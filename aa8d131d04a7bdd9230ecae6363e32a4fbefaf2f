@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6627067f_fbfe6e9a",
+        "filename": "core/fpdfapi/page/cpdf_generalstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-31T18:49:46Z",
+      "side": 1,
+      "message": "pity the user-defined literal feature of c++ isn\u0027t allowed, this would be a fun place to show how clever we are and write \n\n  case \"Norm\"_foo:\n\nor whatever the syntax might be",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "aa8d131d04a7bdd9230ecae6363e32a4fbefaf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bca45c8d_5addbb06",
         "filename": "core/fxcrt/fx_string.h",
         "patchSetId": 1
