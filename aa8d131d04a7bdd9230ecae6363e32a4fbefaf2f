@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1596217068 -0700\nnonce ALC2d1+mBSbowBfB2+cCnJgwhaUZmoVAANeVQeHJPJ4xSpOe7IFkpPgRt1j6DnYxrfCgxMeaaZBu\n\n0000000000000000000000000000000000000000 aa8d131d04a7bdd9230ecae6363e32a4fbefaf2f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl8kVuwACgkQqzYtYVpm\n/XueHAf9HPUDYSopdVtziMhLdRc5DtmMxGpHKDiPtBPHImL0snHkmE/ezVbZVNSR\nYX27MFrHNiZ/xdnRt0luFt07mfAiWu8NFC0a3H1F/Z8RJ20J7135pr1CcQ/TpK2d\ngkFbFzeT7Yp9D9/IZ8EjQ7ncWEQD3mVVosDXAURR9fm/qN9IDS7ZEvPijN/KzcGl\nImzaXw8+PBsRgHqYJyVgdMujEv8LNsP5/ubU0TurcsXy5FY7NUx6CR+vRe3eRSv8\nRpUupr5N8hJbxDuWXdihABHYRMmveEg1UxW0gyj1R2jmLvx+jL6vkkF7h7rW0jCe\nDENqnCR23v8wr/rnDeS/Brpn8gvISg\u003d\u003d\n\u003dHX4t\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca45c8d_5addbb06",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-31T18:47:32Z",
+      "side": 1,
+      "message": "nit: maybe shift here for consistency with final shift.",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "aa8d131d04a7bdd9230ecae6363e32a4fbefaf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b59ac0_1a1aefa5",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-31T18:47:32Z",
+      "side": 1,
+      "message": "from a super-nit-picky point of view, we\u0027re invoking this against char[3] arguments since sizeof(\"ab\") is 3 with the terminating NUL. Is there something in C++ I don\u0027t know about about char[N+M] silently converting to char[N]? I pretty much never write arguments using [], preferring *, so I\u0027m not real sure here.",
+      "range": {
+        "startLine": 1082,
+        "startChar": 44,
+        "endLine": 1082,
+        "endChar": 51
+      },
+      "revId": "aa8d131d04a7bdd9230ecae6363e32a4fbefaf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
