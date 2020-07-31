@@ -68,7 +68,7 @@ class CXFA_ContentLayoutProcessor {
     Optional<float> m_fCurColumnWidth;
     UnownedPtr<std::vector<float>> m_prgSpecifiedColumnWidths;
     UnownedPtr<CXFA_ContentLayoutProcessor> m_pOverflowProcessor;
-    UnownedPtr<CXFA_Node> m_pOverflowNode;
+    cppgc::Persistent<CXFA_Node> m_pOverflowNode;
   };
 
   Result DoLayoutInternal(bool bUseBreakControl,
@@ -213,10 +213,10 @@ class CXFA_ContentLayoutProcessor {
   float m_fLastRowWidth = 0;
   float m_fLastRowY = 0;
   float m_fWidthLimit = 0;
-  CXFA_Node* const m_pFormNode;
-  CXFA_Node* m_pCurChildNode = nullptr;
-  CXFA_Node* m_pKeepHeadNode = nullptr;
-  CXFA_Node* m_pKeepTailNode = nullptr;
+  cppgc::Persistent<CXFA_Node> m_pFormNode;
+  cppgc::Persistent<CXFA_Node> m_pCurChildNode;
+  cppgc::Persistent<CXFA_Node> m_pKeepHeadNode;
+  cppgc::Persistent<CXFA_Node> m_pKeepTailNode;
   RetainPtr<CXFA_ContentLayoutItem> m_pLayoutItem;
   RetainPtr<CXFA_ContentLayoutItem> m_pOldLayoutItem;
   UnownedPtr<CXFA_ViewLayoutProcessor> m_pViewLayoutProcessor;

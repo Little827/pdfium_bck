@@ -500,10 +500,11 @@ CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
   if (!pScriptNode || !pSubform)
     return nullptr;
 
-  auto proxy = std::make_unique<CXFA_ThisProxy>(pSubform, pScriptNode);
-  CJX_Object* js_object = proxy->JSObject();
+  auto* proxy = cppgc::MakeGarbageCollected<CXFA_ThisProxy>(
+      pScriptNode->GetDocument()->GetHeap()->GetAllocationHandle(), pSubform,
+      pScriptNode);
   auto pNewContext = CFXJSE_Context::Create(
-      GetIsolate(), &VariablesClassDescriptor, js_object, std::move(proxy));
+      GetIsolate(), &VariablesClassDescriptor, proxy->JSObject(), proxy);
   RemoveBuiltInObjs(pNewContext.get());
   pNewContext->EnableCompatibleMode();
   CFXJSE_Context* pResult = pNewContext.get();

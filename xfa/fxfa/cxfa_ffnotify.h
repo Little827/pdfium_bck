@@ -9,6 +9,10 @@
 
 #include <memory>
 
+#include "fxjs/gc/heap.h"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
@@ -20,10 +24,12 @@ class CXFA_LayoutProcessor;
 class CXFA_Script;
 class CXFA_ViewLayoutItem;
 
-class CXFA_FFNotify {
+class CXFA_FFNotify : public cppgc::GarbageCollected<CXFA_FFNotify> {
  public:
-  explicit CXFA_FFNotify(CXFA_FFDoc* pDoc);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_FFNotify();
+
+  void Trace(cppgc::Visitor* visitor) const;
 
   void OnPageEvent(CXFA_ViewLayoutItem* pSender, uint32_t dwEvent);
 
@@ -74,7 +80,8 @@ class CXFA_FFNotify {
   void SetFocusWidgetNode(CXFA_Node* pNode);
 
  private:
-  UnownedPtr<CXFA_FFDoc> const m_pDoc;
+  explicit CXFA_FFNotify(CXFA_FFDoc* pDoc);
+  cppgc::Member<CXFA_FFDoc> m_pDoc;
 };
 
 #endif  // XFA_FXFA_CXFA_FFNOTIFY_H_

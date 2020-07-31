@@ -16,6 +16,8 @@
 #include "core/fxge/fx_dib.h"
 #include "third_party/base/optional.h"
 #include "third_party/base/span.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/cxfa_ffwidget_type.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/parser/cxfa_object.h"
@@ -87,9 +89,10 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
     void* default_value;
   };
 
-  static std::unique_ptr<CXFA_Node> Create(CXFA_Document* doc,
-                                           XFA_Element element,
-                                           XFA_PacketType packet);
+  // Node is created from cppgc heap.
+  static CXFA_Node* Create(CXFA_Document* doc,
+                           XFA_Element element,
+                           XFA_PacketType packet);
 
   ~CXFA_Node() override;
 
@@ -484,6 +487,10 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
 
   CFX_XMLDocument* GetXMLDocument() const;
 
+  XFA_FFWidgetType ff_widget_type_ = XFA_FFWidgetType::kNone;
+  bool m_bIsNull = true;
+  bool m_bPreNull = true;
+  bool is_widget_ready_ = false;
   const pdfium::span<const PropertyData> m_Properties;
   const pdfium::span<const AttributeData> m_Attributes;
   const uint32_t m_ValidPackets;
@@ -492,14 +499,10 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
   uint8_t m_ExecuteRecursionDepth = 0;
   uint16_t m_uNodeFlags = XFA_NodeFlag_None;
   uint32_t m_dwNameHash = 0;
-  CXFA_Node* m_pAuxNode = nullptr;         // Raw, node tree cleanup order.
-  std::vector<CXFA_Node*> binding_nodes_;  // Raw, node tree cleanup order.
-  bool m_bIsNull = true;
-  bool m_bPreNull = true;
-  bool is_widget_ready_ = false;
+  cppgc::Member<CXFA_Node> m_pAuxNode;
+  std::vector<cppgc::Member<CXFA_Node>> binding_nodes_;
   std::unique_ptr<CXFA_WidgetLayoutData> m_pLayoutData;
   CXFA_Ui* ui_ = nullptr;
-  XFA_FFWidgetType ff_widget_type_ = XFA_FFWidgetType::kNone;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_NODE_H_

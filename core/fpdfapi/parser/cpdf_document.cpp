@@ -118,6 +118,11 @@ CPDF_Document::~CPDF_Document() {
   m_pExtension.reset();
 }
 
+void CPDF_Document::WillClose() {
+  if (m_pExtension)
+    m_pExtension->WillClose();
+}
+
 // static
 bool CPDF_Document::IsValidPageObject(const CPDF_Object* obj) {
   const CPDF_Dictionary* dict = ToDictionary(obj);

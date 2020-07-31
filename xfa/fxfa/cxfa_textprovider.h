@@ -38,7 +38,7 @@ class CXFA_TextProvider {
   Optional<WideString> GetEmbeddedObj(const WideString& wsAttr) const;
 
  private:
-  CXFA_Node* m_pNode;  // Raw, this class owned by tree node.
+  cppgc::Persistemt<CXFA_Node> m_pNode;
   XFA_TEXTPROVIDERTYPE m_eType;
 };
 

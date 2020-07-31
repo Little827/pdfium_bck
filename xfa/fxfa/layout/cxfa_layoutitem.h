@@ -37,7 +37,7 @@ class CXFA_LayoutItem : public RetainedTreeNode<CXFA_LayoutItem> {
 
  private:
   const ItemType m_ItemType;
-  UnownedPtr<CXFA_Node> m_pFormNode;
+  cppgc::Persistent<CXFA_Node> m_pFormNode;
 };
 
 inline CXFA_ViewLayoutItem* ToViewLayoutItem(CXFA_LayoutItem* item) {
