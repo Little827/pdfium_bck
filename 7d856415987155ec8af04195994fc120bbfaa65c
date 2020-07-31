@@ -37,6 +37,47 @@
     },
     {
       "key": {
+        "uuid": "9424f06a_52fe5e42",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-31T20:04:46Z",
+      "side": 1,
+      "message": "Discussed offline with Lei:\nFor AGG, |bNormal| and |anti_alis| both affect LCD optimization for AGG. While |text_options| is supposed to be the only rendering options which Skia follows.\n1 issue we are facing if we use such a converter to convert CFX_TextRenderOptions::aliasing_type to FT_RENDER_MODE_*:\nSince CFX_TextRenderOptions::aliasing_type \u0027s default value is kAntiAliasing, |anti_alias| default value is |FT_RENDER_MODE_MONO|, we will need to add the converter right after line 912.\nHowever, for the condition at line 909, if the original |options| doesn\u0027t have lcd enabled, having \"text_options.aliasing_type \u003d CFX_TextRenderOptions::kLcd\" to replace \"anti_alias \u003d FT_RENDER_MODE_LCD\" will force turn on LCD for Skia/SkiaPaths rendering, while at the same time it doesn\u0027t affect AGG\u0027s behavior.\n\nTherefore we are not going to proceed with the idea of using a converter function. We will keep both |anti_alias| and |text_options| so that AGG and Skia both act independently.",
+      "parentUuid": "e2e7054d_9637ea2a",
+      "revId": "7d856415987155ec8af04195994fc120bbfaa65c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0ecd4d7_3756d092",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-31T20:04:46Z",
+      "side": 1,
+      "message": "I want to clarify what I mentioned earlier that \"this case doesn\u0027t affect Skia\".\nSkia qualifies this condition while SkiaPaths doesn\u0027t.\nHowever, since neither |anti_alias| or |bNormal| affects Skia/SkiaPaths rendering, this won\u0027t affect Skia/SkiaPaths rendering results.",
+      "range": {
+        "startLine": 904,
+        "startChar": 6,
+        "endLine": 906,
+        "endChar": 23
+      },
+      "revId": "7d856415987155ec8af04195994fc120bbfaa65c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d235b7cd_4eafc744",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 21
@@ -87,6 +128,24 @@
       "revId": "7d856415987155ec8af04195994fc120bbfaa65c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77de1038_26b909ca",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-07-31T20:04:46Z",
+      "side": 1,
+      "message": "Reverted changes in this comment.\nI uploaded a new CL for this issue: https://pdfium-review.googlesource.com/72235.",
+      "parentUuid": "0830e1ed_cad174b3",
+      "revId": "7d856415987155ec8af04195994fc120bbfaa65c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
