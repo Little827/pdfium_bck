@@ -55,7 +55,7 @@ class CXFA_LayoutProcessor : public CXFA_Document::LayoutProcessorIface {
   UnownedPtr<cppgc::Heap> const m_pHeap;
   std::unique_ptr<CXFA_ViewLayoutProcessor> m_pViewLayoutProcessor;
   std::unique_ptr<CXFA_ContentLayoutProcessor> m_pContentLayoutProcessor;
-  std::vector<CXFA_Node*> m_rgChangedContainers;
+  std::vector<cppgc::Persistent<CXFA_Node>> m_rgChangedContainers;
   uint32_t m_nProgressCounter = 0;
   bool m_bNeedLayout = true;
 };

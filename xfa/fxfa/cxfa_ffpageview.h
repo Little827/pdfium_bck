@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 #include "xfa/fxfa/layout/cxfa_traversestrategy_layoutitem.h"
@@ -40,8 +41,8 @@ class CXFA_FFPageView : public Observable {
       uint32_t dwWidgetFilter);
 
  private:
-  UnownedPtr<CXFA_Node> const m_pPageArea;
-  UnownedPtr<CXFA_FFDocView> const m_pDocView;
+  cppgc::Persistent<CXFA_Node> const m_pPageArea;
+  cppgc::Persistent<CXFA_FFDocView> const m_pDocView;
   UnownedPtr<CXFA_ViewLayoutItem> m_pLayoutItem;
 };
 

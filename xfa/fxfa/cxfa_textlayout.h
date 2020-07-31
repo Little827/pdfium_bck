@@ -13,6 +13,7 @@
 #include "core/fxcrt/css/cfx_css.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_string.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fgas/layout/cfx_char.h"
 #include "xfa/fxfa/cxfa_textparser.h"
 
@@ -124,9 +125,9 @@ class CXFA_TextLayout {
   int32_t m_iLines = 0;
   float m_fMaxWidth = 0;
   std::vector<BlockData> m_Blocks;
-  UnownedPtr<CXFA_FFDoc> const m_pDoc;
-  CXFA_TextProvider* const m_pTextProvider;  // Raw, owned by tree node.
-  CXFA_Node* m_pTextDataNode = nullptr;      // Raw, owned by tree node.
+  cppgc::Persistent<CXFA_FFDoc> m_pDoc;
+  CXFA_TextProvider* const m_pTextProvider;
+  cppgc::Persistent<CXFA_Node> m_pTextDataNode;
   std::unique_ptr<CFX_RTFBreak> m_pBreak;
   std::unique_ptr<CXFA_LoaderContext> m_pLoader;
   CXFA_TextParser m_textParser;

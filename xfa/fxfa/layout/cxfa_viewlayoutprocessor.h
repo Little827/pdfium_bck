@@ -161,12 +161,12 @@ class CXFA_ViewLayoutProcessor {
                                       bool bIsSimplex);
 
   CXFA_LayoutProcessor* m_pLayoutProcessor = nullptr;
-  CXFA_Node* m_pPageSetNode = nullptr;
+  cppgc::Persistent<CXFA_Node> m_pPageSetNode;
+  cppgc::Persistent<CXFA_Node> m_pCurPageArea;
   RetainPtr<CXFA_ViewLayoutItem> m_pPageSetRootLayoutItem;
   RetainPtr<CXFA_ViewLayoutItem> m_pPageSetCurLayoutItem;
   RecordList m_ProposedViewRecords;
   RecordList::iterator m_CurrentViewRecordIter;
-  CXFA_Node* m_pCurPageArea = nullptr;
   int32_t m_nAvailPages = 0;
   int32_t m_nCurPageCount = 0;
   XFA_AttributeValue m_ePageSetMode = XFA_AttributeValue::OrderedOccurrence;
