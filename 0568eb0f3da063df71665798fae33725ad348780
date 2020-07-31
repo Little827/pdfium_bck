@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ec1d7946_d0e073ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-31T22:01:38Z",
+      "side": 1,
+      "message": "anti-aliasing, also line 22.",
+      "range": {
+        "startLine": 10,
+        "startChar": 46,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0568eb0f3da063df71665798fae33725ad348780",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aba4d640_152232ba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 22
@@ -16,6 +39,46 @@
       "revId": "0568eb0f3da063df71665798fae33725ad348780",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07ee2c51_4bae12df",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-31T22:01:38Z",
+      "side": 1,
+      "message": "anti-aliasing, also lines 841 and 847.",
+      "range": {
+        "startLine": 840,
+        "startChar": 48,
+        "endLine": 840,
+        "endChar": 60
+      },
+      "revId": "0568eb0f3da063df71665798fae33725ad348780",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac1ca56_0cae96c5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-31T22:01:38Z",
+      "side": 1,
+      "message": "ASSERT(text_options.aliasing_type \u003d\u003d CFX_TextRenderOptions::kLcd), now the |kBgrStripe| is gone.",
+      "revId": "0568eb0f3da063df71665798fae33725ad348780",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
