@@ -10,6 +10,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/retained_tree_node.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "v8/include/cppgc/persistent.h"
 
 class CXFA_ContentLayoutItem;
 class CXFA_LayoutProcessor;
@@ -29,7 +30,7 @@ class CXFA_LayoutItem : public RetainedTreeNode<CXFA_LayoutItem> {
 
   const CXFA_ViewLayoutItem* GetPage() const;
   CXFA_Node* GetFormNode() const { return m_pFormNode.Get(); }
-  void SetFormNode(CXFA_Node* pNode) { m_pFormNode = pNode; }
+  void SetFormNode(CXFA_Node* pNode);
 
  protected:
   enum ItemType { kViewItem, kContentItem };
@@ -37,7 +38,7 @@ class CXFA_LayoutItem : public RetainedTreeNode<CXFA_LayoutItem> {
 
  private:
   const ItemType m_ItemType;
-  UnownedPtr<CXFA_Node> m_pFormNode;
+  cppgc::Persistent<CXFA_Node> m_pFormNode;
 };
 
 inline CXFA_ViewLayoutItem* ToViewLayoutItem(CXFA_LayoutItem* item) {

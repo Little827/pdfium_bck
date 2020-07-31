@@ -9,6 +9,7 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
 class CXFA_Node;
@@ -68,7 +69,7 @@ class CXFA_EventParam {
   int32_t m_iCommitKey = 0;
   int32_t m_iSelEnd = 0;
   int32_t m_iSelStart = 0;
-  UnownedPtr<CXFA_Node> m_pTarget;
+  cppgc::Persistent<CXFA_Node> m_pTarget;
   WideString m_wsResult;
   WideString m_wsChange;
   WideString m_wsFullText;

@@ -75,3 +75,8 @@ const CXFA_ViewLayoutItem* CXFA_LayoutItem::GetPage() const {
   }
   return nullptr;
 }
+
+void CXFA_LayoutItem::SetFormNode(CXFA_Node* pNode) {
+  // Not in header, assignment requires complete type, not just forward decl.
+  m_pFormNode = pNode;
+}

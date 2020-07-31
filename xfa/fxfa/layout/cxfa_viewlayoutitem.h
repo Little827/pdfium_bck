@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "core/fxcrt/fx_coordinates.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/layout/cxfa_layoutitem.h"
 
 class CXFA_FFPageView;
@@ -24,15 +25,15 @@ class CXFA_ViewLayoutItem final : public CXFA_LayoutItem {
   int32_t GetPageIndex() const;
   CFX_SizeF GetPageSize() const;
   CXFA_Node* GetMasterPage() const;
-  CXFA_Node* GetOldSubform() const { return m_pOldSubform.Get(); }
-  void SetOldSubform(CXFA_Node* pSubform) { m_pOldSubform = pSubform; }
+  CXFA_Node* GetOldSubform() const { return m_pOldSubform; }
+  void SetOldSubform(CXFA_Node* pSubform);
 
  private:
   CXFA_ViewLayoutItem(CXFA_Node* pNode,
                       std::unique_ptr<CXFA_FFPageView> pPageView);
 
   std::unique_ptr<CXFA_FFPageView> const m_pFFPageView;
-  UnownedPtr<CXFA_Node> m_pOldSubform;
+  cppgc::Persistent<CXFA_Node> m_pOldSubform;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_VIEWLAYOUTITEM_H_

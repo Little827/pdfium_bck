@@ -35,6 +35,14 @@
 #include "xfa/fxfa/parser/xfa_resolvenode_rs.h"
 #include "xfa/fxfa/parser/xfa_utils.h"
 
+CXFA_TextProvider::CXFA_TextProvider(CXFA_Node* pNode,
+                                     XFA_TEXTPROVIDERTYPE eType)
+    : m_pNode(pNode), m_eType(eType) {
+  ASSERT(m_pNode);
+}
+
+CXFA_TextProvider::~CXFA_TextProvider() = default;
+
 CXFA_Node* CXFA_TextProvider::GetTextNode(bool* bRichText) {
   *bRichText = false;
   if (m_eType == XFA_TEXTPROVIDERTYPE_Text) {
