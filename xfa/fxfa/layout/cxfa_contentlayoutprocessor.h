@@ -136,10 +136,13 @@ class CXFA_ContentLayoutProcessor {
   void DoLayoutField();
 
   void GotoNextContainerNodeSimple(bool bUsePageBreak);
-  Stage GotoNextContainerNode(Stage nCurStage,
-                              bool bUsePageBreak,
-                              CXFA_Node* pParentContainer,
-                              CXFA_Node** pCurActionNode);
+
+  // Return new stage and new action node.
+  std::pair<Stage, CXFA_Node*> GotoNextContainerNode(
+      Stage nCurStage,
+      bool bUsePageBreak,
+      CXFA_Node* pParentContainer,
+      CXFA_Node* pCurActionNode);
 
   Optional<Stage> ProcessKeepNodesForCheckNext(CXFA_Node** pCurActionNode,
                                                CXFA_Node** pNextContainer,
