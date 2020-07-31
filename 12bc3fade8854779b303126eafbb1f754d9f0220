@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff746d32_504ce648",
+        "filename": "fxjs/gc/gced_tree_node_mixin.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-31T22:38:11Z",
+      "side": 1,
+      "message": "Done. Also removed from gced_tree_node.h, from which this was copied.",
+      "parentUuid": "43c45634_39bf5ac4",
+      "revId": "12bc3fade8854779b303126eafbb1f754d9f0220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cffab7c1_172cf1f3",
         "filename": "fxjs/gc/gced_tree_node_mixin.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "12bc3fade8854779b303126eafbb1f754d9f0220",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8f2b93_28d7e216",
+        "filename": "fxjs/gc/gced_tree_node_mixin.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-31T22:38:11Z",
+      "side": 1,
+      "message": "Done. Also done in gced_tree_node.h, from which this was copied.",
+      "parentUuid": "cffab7c1_172cf1f3",
+      "revId": "12bc3fade8854779b303126eafbb1f754d9f0220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "db2e366a_1f29cf57",
+        "filename": "fxjs/gc/gced_tree_node_mixin_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-31T22:38:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5bcb27e_f44609fa",
+      "revId": "12bc3fade8854779b303126eafbb1f754d9f0220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6c9b9c7_5c86bf06",
         "filename": "fxjs/gc/gced_tree_node_mixin_unittest.cpp",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "12bc3fade8854779b303126eafbb1f754d9f0220",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0bca6b_700f0af0",
+        "filename": "fxjs/gc/gced_tree_node_mixin_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-07-31T22:38:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c9b9c7_5c86bf06",
+      "revId": "12bc3fade8854779b303126eafbb1f754d9f0220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
