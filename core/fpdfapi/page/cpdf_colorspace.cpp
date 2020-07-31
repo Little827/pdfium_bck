@@ -513,29 +513,29 @@ RetainPtr<CPDF_ColorSpace> CPDF_ColorSpace::Load(
 
   RetainPtr<CPDF_ColorSpace> pCS;
   switch (familyname.GetID()) {
-    case FXBSTR_ID('C', 'a', 'l', 'G'):
+    case FX_GetByteStringID("CalG"):
       pCS = pdfium::MakeRetain<CPDF_CalGray>(pDoc);
       break;
-    case FXBSTR_ID('C', 'a', 'l', 'R'):
+    case FX_GetByteStringID("CalR"):
       pCS = pdfium::MakeRetain<CPDF_CalRGB>(pDoc);
       break;
-    case FXBSTR_ID('L', 'a', 'b', 0):
+    case FX_GetByteStringID("Lab"):
       pCS = pdfium::MakeRetain<CPDF_LabCS>(pDoc);
       break;
-    case FXBSTR_ID('I', 'C', 'C', 'B'):
+    case FX_GetByteStringID("ICCB"):
       pCS = pdfium::MakeRetain<CPDF_ICCBasedCS>(pDoc);
       break;
-    case FXBSTR_ID('I', 'n', 'd', 'e'):
-    case FXBSTR_ID('I', 0, 0, 0):
+    case FX_GetByteStringID("Inde"):
+    case FX_GetByteStringID("I"):
       pCS = pdfium::MakeRetain<CPDF_IndexedCS>(pDoc);
       break;
-    case FXBSTR_ID('S', 'e', 'p', 'a'):
+    case FX_GetByteStringID("Sepa"):
       pCS = pdfium::MakeRetain<CPDF_SeparationCS>(pDoc);
       break;
-    case FXBSTR_ID('D', 'e', 'v', 'i'):
+    case FX_GetByteStringID("Devi"):
       pCS = pdfium::MakeRetain<CPDF_DeviceNCS>(pDoc);
       break;
-    case FXBSTR_ID('P', 'a', 't', 't'):
+    case FX_GetByteStringID("Patt"):
       pCS = pdfium::MakeRetain<CPDF_PatternCS>(pDoc);
       break;
     default:

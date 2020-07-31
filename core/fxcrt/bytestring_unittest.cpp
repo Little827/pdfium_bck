@@ -1256,10 +1256,10 @@ TEST(ByteStringView, GetID) {
   EXPECT_EQ(0u, empty_string.GetID());
 
   ByteStringView short_string("ab");
-  EXPECT_EQ(FXBSTR_ID('a', 'b', 0, 0), short_string.GetID());
+  EXPECT_EQ(FX_GetByteStringID("ab"), short_string.GetID());
 
   ByteStringView longer_string("abcdef");
-  EXPECT_EQ(FXBSTR_ID('a', 'b', 'c', 'd'), longer_string.GetID());
+  EXPECT_EQ(FX_GetByteStringID("abcd"), longer_string.GetID());
 }
 
 TEST(ByteStringView, Find) {

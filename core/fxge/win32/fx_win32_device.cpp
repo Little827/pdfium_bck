@@ -385,9 +385,9 @@ bool CFX_Win32FontInfo::IsOpenTypeFromDiv(const LOGFONTA* plf) {
                ((uint32_t)((uint8_t)(lVersion >> 8))) << 16 |
                ((uint32_t)((uint8_t)(lVersion >> 16))) << 8 |
                ((uint8_t)(lVersion >> 24));
-    if (lVersion == FXBSTR_ID('O', 'T', 'T', 'O') || lVersion == 0x00010000 ||
-        lVersion == FXBSTR_ID('t', 't', 'c', 'f') ||
-        lVersion == FXBSTR_ID('t', 'r', 'u', 'e') || lVersion == 0x00020000) {
+    if (lVersion == FX_GetByteStringID("OTTO") || lVersion == 0x00010000 ||
+        lVersion == FX_GetByteStringID("ttcf") ||
+        lVersion == FX_GetByteStringID("true") || lVersion == 0x00020000) {
       ret = true;
     }
   }
@@ -406,11 +406,11 @@ bool CFX_Win32FontInfo::IsSupportFontFormDiv(const LOGFONTA* plf) {
                ((uint32_t)((uint8_t)(lVersion >> 8))) << 16 |
                ((uint32_t)((uint8_t)(lVersion >> 16))) << 8 |
                ((uint8_t)(lVersion >> 24));
-    if (lVersion == FXBSTR_ID('O', 'T', 'T', 'O') || lVersion == 0x00010000 ||
-        lVersion == FXBSTR_ID('t', 't', 'c', 'f') ||
-        lVersion == FXBSTR_ID('t', 'r', 'u', 'e') || lVersion == 0x00020000 ||
-        (lVersion & 0xFFFF0000) == FXBSTR_ID(0x80, 0x01, 0x00, 0x00) ||
-        (lVersion & 0xFFFF0000) == FXBSTR_ID('%', '!', 0, 0)) {
+    if (lVersion == FX_GetByteStringID("OTTO") || lVersion == 0x00010000 ||
+        lVersion == FX_GetByteStringID("ttcf") ||
+        lVersion == FX_GetByteStringID("true") || lVersion == 0x00020000 ||
+        (lVersion & 0xFFFF0000) == FX_GetByteStringID("\x80\x01") ||
+        (lVersion & 0xFFFF0000) == FX_GetByteStringID("%!")) {
       ret = true;
     }
   }

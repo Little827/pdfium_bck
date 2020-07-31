@@ -1079,6 +1079,10 @@ std::unique_ptr<LocaleIface> GetLocaleFromBuffer(
   return CXFA_XMLLocale::Create(pdfium::make_span(output.get(), dwSize));
 }
 
+constexpr uint32_t GetLanguageID(const char lang[2]) {
+  return static_cast<uint32_t>(lang[0]) << 8 | static_cast<uint32_t>(lang[1]);
+}
+
 uint16_t GetLanguage(WideString wsLanguage) {
   if (wsLanguage.GetLength() < 2)
     return FX_LANG_en_US;
@@ -1088,35 +1092,33 @@ uint16_t GetLanguage(WideString wsLanguage) {
   uint32_t dwIDSecond =
       wsLanguage.GetLength() >= 5 ? wsLanguage[3] << 8 | wsLanguage[4] : 0;
   switch (dwIDFirst) {
-    case FXBSTR_ID(0, 0, 'z', 'h'):
-      if (dwIDSecond == FXBSTR_ID(0, 0, 'c', 'n'))
+    case GetLanguageID("zh"):
+      if (dwIDSecond == GetLanguageID("cn"))
         return FX_LANG_zh_CN;
-      if (dwIDSecond == FXBSTR_ID(0, 0, 't', 'w'))
+      if (dwIDSecond == GetLanguageID("tw"))
         return FX_LANG_zh_TW;
-      if (dwIDSecond == FXBSTR_ID(0, 0, 'h', 'k'))
+      if (dwIDSecond == GetLanguageID("hk"))
         return FX_LANG_zh_HK;
       break;
-    case FXBSTR_ID(0, 0, 'j', 'a'):
+    case GetLanguageID("ja"):
       return FX_LANG_ja_JP;
-    case FXBSTR_ID(0, 0, 'k', 'o'):
+    case GetLanguageID("ko"):
       return FX_LANG_ko_KR;
-    case FXBSTR_ID(0, 0, 'e', 'n'):
-      return dwIDSecond == FXBSTR_ID(0, 0, 'g', 'b') ? FX_LANG_en_GB
-                                                     : FX_LANG_en_US;
-    case FXBSTR_ID(0, 0, 'd', 'e'):
+    case GetLanguageID("en"):
+      return dwIDSecond == GetLanguageID("gb") ? FX_LANG_en_GB : FX_LANG_en_US;
+    case GetLanguageID("de"):
       return FX_LANG_de_DE;
-    case FXBSTR_ID(0, 0, 'f', 'r'):
+    case GetLanguageID("fr"):
       return FX_LANG_fr_FR;
-    case FXBSTR_ID(0, 0, 'e', 's'):
-      return dwIDSecond == FXBSTR_ID(0, 0, 'e', 's') ? FX_LANG_es_ES
-                                                     : FX_LANG_es_LA;
-    case FXBSTR_ID(0, 0, 'i', 't'):
+    case GetLanguageID("es"):
+      return dwIDSecond == GetLanguageID("es") ? FX_LANG_es_ES : FX_LANG_es_LA;
+    case GetLanguageID("it"):
       return FX_LANG_it_IT;
-    case FXBSTR_ID(0, 0, 'p', 't'):
+    case GetLanguageID("pt"):
       return FX_LANG_pt_BR;
-    case FXBSTR_ID(0, 0, 'n', 'l'):
+    case GetLanguageID("nl"):
       return FX_LANG_nl_NL;
-    case FXBSTR_ID(0, 0, 'r', 'u'):
+    case GetLanguageID("ru"):
       return FX_LANG_ru_RU;
   }
   return FX_LANG_en_US;

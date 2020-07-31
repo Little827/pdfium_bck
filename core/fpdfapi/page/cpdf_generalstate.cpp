@@ -13,13 +13,13 @@ namespace {
 
 int RI_StringToId(const ByteString& ri) {
   uint32_t id = ri.GetID();
-  if (id == FXBSTR_ID('A', 'b', 's', 'o'))
+  if (id == FX_GetByteStringID("Abso"))
     return 1;
 
-  if (id == FXBSTR_ID('S', 'a', 't', 'u'))
+  if (id == FX_GetByteStringID("Satu"))
     return 2;
 
-  if (id == FXBSTR_ID('P', 'e', 'r', 'c'))
+  if (id == FX_GetByteStringID("Perc"))
     return 3;
 
   return 0;
@@ -27,38 +27,38 @@ int RI_StringToId(const ByteString& ri) {
 
 BlendMode GetBlendTypeInternal(const ByteString& mode) {
   switch (mode.GetID()) {
-    case FXBSTR_ID('N', 'o', 'r', 'm'):
-    case FXBSTR_ID('C', 'o', 'm', 'p'):
+    case FX_GetByteStringID("Norm"):
+    case FX_GetByteStringID("Comp"):
       return BlendMode::kNormal;
-    case FXBSTR_ID('M', 'u', 'l', 't'):
+    case FX_GetByteStringID("Mult"):
       return BlendMode::kMultiply;
-    case FXBSTR_ID('S', 'c', 'r', 'e'):
+    case FX_GetByteStringID("Scre"):
       return BlendMode::kScreen;
-    case FXBSTR_ID('O', 'v', 'e', 'r'):
+    case FX_GetByteStringID("Over"):
       return BlendMode::kOverlay;
-    case FXBSTR_ID('D', 'a', 'r', 'k'):
+    case FX_GetByteStringID("Dark"):
       return BlendMode::kDarken;
-    case FXBSTR_ID('L', 'i', 'g', 'h'):
+    case FX_GetByteStringID("Ligh"):
       return BlendMode::kLighten;
-    case FXBSTR_ID('C', 'o', 'l', 'o'):
+    case FX_GetByteStringID("Colo"):
       if (mode.GetLength() == 10)
         return BlendMode::kColorDodge;
       if (mode.GetLength() == 9)
         return BlendMode::kColorBurn;
       return BlendMode::kColor;
-    case FXBSTR_ID('H', 'a', 'r', 'd'):
+    case FX_GetByteStringID("Hard"):
       return BlendMode::kHardLight;
-    case FXBSTR_ID('S', 'o', 'f', 't'):
+    case FX_GetByteStringID("Soft"):
       return BlendMode::kSoftLight;
-    case FXBSTR_ID('D', 'i', 'f', 'f'):
+    case FX_GetByteStringID("Diff"):
       return BlendMode::kDifference;
-    case FXBSTR_ID('E', 'x', 'c', 'l'):
+    case FX_GetByteStringID("Excl"):
       return BlendMode::kExclusion;
-    case FXBSTR_ID('H', 'u', 'e', 0):
+    case FX_GetByteStringID("Hue"):
       return BlendMode::kHue;
-    case FXBSTR_ID('S', 'a', 't', 'u'):
+    case FX_GetByteStringID("Satu"):
       return BlendMode::kSaturation;
-    case FXBSTR_ID('L', 'u', 'm', 'i'):
+    case FX_GetByteStringID("Lumi"):
       return BlendMode::kLuminosity;
   }
   return BlendMode::kNormal;

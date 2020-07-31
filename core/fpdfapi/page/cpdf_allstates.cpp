@@ -55,21 +55,21 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
 
     uint32_t key = key_str.GetID();
     switch (key) {
-      case FXBSTR_ID('L', 'W', 0, 0):
+      case FX_GetByteStringID("LW"):
         m_GraphState.SetLineWidth(pObject->GetNumber());
         break;
-      case FXBSTR_ID('L', 'C', 0, 0):
+      case FX_GetByteStringID("LC"):
         m_GraphState.SetLineCap(
             static_cast<CFX_GraphStateData::LineCap>(pObject->GetInteger()));
         break;
-      case FXBSTR_ID('L', 'J', 0, 0):
+      case FX_GetByteStringID("LJ"):
         m_GraphState.SetLineJoin(
             static_cast<CFX_GraphStateData::LineJoin>(pObject->GetInteger()));
         break;
-      case FXBSTR_ID('M', 'L', 0, 0):
+      case FX_GetByteStringID("ML"):
         m_GraphState.SetMiterLimit(pObject->GetNumber());
         break;
-      case FXBSTR_ID('D', 0, 0, 0): {
+      case FX_GetByteStringID("D"): {
         CPDF_Array* pDash = pObject->AsArray();
         if (!pDash)
           break;
@@ -81,10 +81,10 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
         SetLineDash(pArray, pDash->GetNumberAt(1), 1.0f);
         break;
       }
-      case FXBSTR_ID('R', 'I', 0, 0):
+      case FX_GetByteStringID("RI"):
         m_GeneralState.SetRenderIntent(pObject->GetString());
         break;
-      case FXBSTR_ID('F', 'o', 'n', 't'): {
+      case FX_GetByteStringID("Font"): {
         CPDF_Array* pFont = pObject->AsArray();
         if (!pFont)
           break;
@@ -93,15 +93,15 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
         m_TextState.SetFont(pParser->FindFont(pFont->GetStringAt(0)));
         break;
       }
-      case FXBSTR_ID('T', 'R', 0, 0):
+      case FX_GetByteStringID("TR"):
         if (pGS->KeyExist("TR2")) {
           continue;
         }
         FALLTHROUGH;
-      case FXBSTR_ID('T', 'R', '2', 0):
+      case FX_GetByteStringID("TR2"):
         m_GeneralState.SetTR(pObject && !pObject->IsName() ? pObject : nullptr);
         break;
-      case FXBSTR_ID('B', 'M', 0, 0): {
+      case FX_GetByteStringID("BM"): {
         CPDF_Array* pArray = pObject->AsArray();
         m_GeneralState.SetBlendMode(pArray ? pArray->GetStringAt(0)
                                            : pObject->GetString());
@@ -109,7 +109,7 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
           pParser->GetPageObjectHolder()->SetBackgroundAlphaNeeded(true);
         break;
       }
-      case FXBSTR_ID('S', 'M', 'a', 's'):
+      case FX_GetByteStringID("SMas"):
         if (ToDictionary(pObject)) {
           m_GeneralState.SetSoftMask(pObject);
           m_GeneralState.SetSMaskMatrix(pParser->GetCurStates()->m_CTM);
@@ -117,57 +117,57 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
           m_GeneralState.SetSoftMask(nullptr);
         }
         break;
-      case FXBSTR_ID('C', 'A', 0, 0):
+      case FX_GetByteStringID("CA"):
         m_GeneralState.SetStrokeAlpha(
             pdfium::clamp(pObject->GetNumber(), 0.0f, 1.0f));
         break;
-      case FXBSTR_ID('c', 'a', 0, 0):
+      case FX_GetByteStringID("ca"):
         m_GeneralState.SetFillAlpha(
             pdfium::clamp(pObject->GetNumber(), 0.0f, 1.0f));
         break;
-      case FXBSTR_ID('O', 'P', 0, 0):
+      case FX_GetByteStringID("OP"):
         m_GeneralState.SetStrokeOP(!!pObject->GetInteger());
         if (!pGS->KeyExist("op"))
           m_GeneralState.SetFillOP(!!pObject->GetInteger());
         break;
-      case FXBSTR_ID('o', 'p', 0, 0):
+      case FX_GetByteStringID("op"):
         m_GeneralState.SetFillOP(!!pObject->GetInteger());
         break;
-      case FXBSTR_ID('O', 'P', 'M', 0):
+      case FX_GetByteStringID("OPM"):
         m_GeneralState.SetOPMode(pObject->GetInteger());
         break;
-      case FXBSTR_ID('B', 'G', 0, 0):
+      case FX_GetByteStringID("BG"):
         if (pGS->KeyExist("BG2")) {
           continue;
         }
         FALLTHROUGH;
-      case FXBSTR_ID('B', 'G', '2', 0):
+      case FX_GetByteStringID("BG2"):
         m_GeneralState.SetBG(pObject);
         break;
-      case FXBSTR_ID('U', 'C', 'R', 0):
+      case FX_GetByteStringID("UCR"):
         if (pGS->KeyExist("UCR2")) {
           continue;
         }
         FALLTHROUGH;
-      case FXBSTR_ID('U', 'C', 'R', '2'):
+      case FX_GetByteStringID("UCR2"):
         m_GeneralState.SetUCR(pObject);
         break;
-      case FXBSTR_ID('H', 'T', 0, 0):
+      case FX_GetByteStringID("HT"):
         m_GeneralState.SetHT(pObject);
         break;
-      case FXBSTR_ID('F', 'L', 0, 0):
+      case FX_GetByteStringID("FL"):
         m_GeneralState.SetFlatness(pObject->GetNumber());
         break;
-      case FXBSTR_ID('S', 'M', 0, 0):
+      case FX_GetByteStringID("SM"):
         m_GeneralState.SetSmoothness(pObject->GetNumber());
         break;
-      case FXBSTR_ID('S', 'A', 0, 0):
+      case FX_GetByteStringID("SA"):
         m_GeneralState.SetStrokeAdjust(!!pObject->GetInteger());
         break;
-      case FXBSTR_ID('A', 'I', 'S', 0):
+      case FX_GetByteStringID("AIS"):
         m_GeneralState.SetAlphaSource(!!pObject->GetInteger());
         break;
-      case FXBSTR_ID('T', 'K', 0, 0):
+      case FX_GetByteStringID("TK"):
         m_GeneralState.SetTextKnockout(!!pObject->GetInteger());
         break;
     }
