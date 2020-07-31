@@ -50,6 +50,30 @@
     },
     {
       "key": {
+        "uuid": "63b7ec5f_2c12dcb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-07-31T21:21:07Z",
+      "side": 1,
+      "message": "The double colon feels like a bug in git_cl.py -\u003e crbug.com/1111955",
+      "parentUuid": "e3cab317_a337c2f0",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "4b5d4b6f443eeca4efc162a17fbca7694c229d95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d71df97d_7300b7bb",
         "filename": "core/fxge/fx_font_unittest.cpp",
         "patchSetId": 2
