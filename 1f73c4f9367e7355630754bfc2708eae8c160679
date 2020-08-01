@@ -22,6 +22,30 @@
       "revId": "1f73c4f9367e7355630754bfc2708eae8c160679",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc0a06b_6848c2bd",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-01T00:30:05Z",
+      "side": 0,
+      "message": "We do lose a bit of coverage, so I\u0027ll put this back. I\u0027ll figure out what to do about it later. It\u0027s been there since roughly initial commit.",
+      "parentUuid": "123f37b6_8a3e5b19",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 56
+      },
+      "revId": "1f73c4f9367e7355630754bfc2708eae8c160679",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
