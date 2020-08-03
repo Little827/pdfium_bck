@@ -115,7 +115,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling zlib
   # and whatever else without interference from each other.
-  'zlib_revision': '8603eee37c4f4dd3e033d06fa18ea34ed9b41f41',
+  'zlib_revision': 'a21a4e8f27567b7c36f8274bf16ebca78b9a68ab',
 }
 
 deps = {
