@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26768fc2_e7fffa97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-08-03T07:07:30Z",
+      "side": 1,
+      "message": "Lei, Tom: could you please take a look? Thanks!\n\nFor context: once this is in, I have an API in mind to get the time of signing, then I think we\u0027ll have a good initial set of APIs for individual signatures.",
+      "revId": "d756df4c0a691cee4410203bf657accc20efa20f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
