@@ -340,7 +340,21 @@ bool CPDF_FormField::SetValue(const WideString& value,
     }
     case kFile:
     case kRichText:
-    case kText:
+    case kText: {
+      WideString csValue = value;
+      if (notify == NotificationOption::kNotify &&
+          !NotifyBeforeValueChange(csValue)) {
+        return false;
+      }
+      ByteString key(bDefault ? pdfium::form_fields::kDV
+                              : pdfium::form_fields::kV);
+      m_pDict->SetNewFor<CPDF_String>(key, csValue);
+      if (m_Type == kRichText && !bDefault)
+        m_pDict->SetFor("RV", m_pDict->GetObjectFor(key)->Clone());
+      if (notify == NotificationOption::kNotify)
+        NotifyAfterValueChange();
+      break;
+    }
     case kComboBox: {
       WideString csValue = value;
       if (notify == NotificationOption::kNotify &&
@@ -352,9 +366,6 @@ bool CPDF_FormField::SetValue(const WideString& value,
       m_pDict->SetNewFor<CPDF_String>(key, csValue);
       int iIndex = FindOption(csValue);
       if (iIndex < 0) {
-        if (m_Type == kRichText && !bDefault) {
-          m_pDict->SetFor("RV", m_pDict->GetObjectFor(key)->Clone());
-        }
         m_pDict->RemoveFor("I");
       } else {
         if (!bDefault) {
