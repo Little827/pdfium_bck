@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "fxjs/xfa/cfxjse_engine.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/fxfa_basic.h"
 #include "xfa/fxfa/parser/xfa_basic_data.h"
 #include "xfa/fxfa/parser/xfa_resolvenode_rs.h"
@@ -24,7 +25,7 @@ class CFXJSE_ResolveNodeData {
   ~CFXJSE_ResolveNodeData();
 
   UnownedPtr<CFXJSE_Engine> const m_pSC;
-  UnownedPtr<CXFA_Object> m_CurObject;
+  cppgc::Persistent<CXFA_Object> m_CurObject;
   WideString m_wsName;
   WideString m_wsCondition;
   XFA_HashCode m_uHashName = XFA_HASHCODE_None;

@@ -14,13 +14,18 @@
 #include <vector>
 
 #include "core/fxcrt/retain_ptr.h"
+#include "fxjs/gc/heap.h"
 #include "third_party/base/optional.h"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h"
 
 class CXFA_LayoutItem;
 class CXFA_Node;
 
-class CXFA_ViewLayoutProcessor {
+class CXFA_ViewLayoutProcessor
+    : public cppgc::GarbageCollected<CXFA_ViewLayoutProcessor> {
  public:
   struct BreakData {
     CXFA_Node* pLeader;
@@ -33,8 +38,10 @@ class CXFA_ViewLayoutProcessor {
     CXFA_Node* pTrailer;
   };
 
-  explicit CXFA_ViewLayoutProcessor(CXFA_LayoutProcessor* pLayoutProcessor);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ViewLayoutProcessor();
+
+  void Trace(cppgc::Visitor* visitor) const;
 
   bool InitLayoutPage(CXFA_Node* pFormNode);
   bool PrepareFirstPage(CXFA_Node* pRootSubform);
@@ -68,8 +75,9 @@ class CXFA_ViewLayoutProcessor {
     RetainPtr<CXFA_ViewLayoutItem> pCurPageArea;
     RetainPtr<CXFA_ViewLayoutItem> pCurContentArea;
   };
-
   using RecordList = std::list<std::unique_ptr<CXFA_ViewRecord>>;
+
+  explicit CXFA_ViewLayoutProcessor(CXFA_LayoutProcessor* pLayoutProcessor);
 
   bool AppendNewPage(bool bFirstTemPage);
   void ReorderPendingLayoutRecordToTail(CXFA_ViewRecord* pNewRecord,
@@ -161,12 +169,12 @@ class CXFA_ViewLayoutProcessor {
                                       bool bIsSimplex);
 
   CXFA_LayoutProcessor* m_pLayoutProcessor = nullptr;
-  CXFA_Node* m_pPageSetNode = nullptr;
+  cppgc::Member<CXFA_Node> m_pPageSetNode;
+  cppgc::Member<CXFA_Node> m_pCurPageArea;
   RetainPtr<CXFA_ViewLayoutItem> m_pPageSetRootLayoutItem;
   RetainPtr<CXFA_ViewLayoutItem> m_pPageSetCurLayoutItem;
   RecordList m_ProposedViewRecords;
   RecordList::iterator m_CurrentViewRecordIter;
-  CXFA_Node* m_pCurPageArea = nullptr;
   int32_t m_nAvailPages = 0;
   int32_t m_nCurPageCount = 0;
   XFA_AttributeValue m_ePageSetMode = XFA_AttributeValue::OrderedOccurrence;

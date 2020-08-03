@@ -724,7 +724,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document) {
   // Take it back across the API and throw it away,
-  std::unique_ptr<CPDF_Document>(CPDFDocumentFromFPDFDocument(document));
+  std::unique_ptr<CPDF_Document> pDoc(CPDFDocumentFromFPDFDocument(document));
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError() {

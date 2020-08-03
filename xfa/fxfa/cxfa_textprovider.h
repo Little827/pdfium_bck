@@ -25,11 +25,8 @@ enum XFA_TEXTPROVIDERTYPE {
 
 class CXFA_TextProvider {
  public:
-  CXFA_TextProvider(CXFA_Node* pNode, XFA_TEXTPROVIDERTYPE eType)
-      : m_pNode(pNode), m_eType(eType) {
-    ASSERT(m_pNode);
-  }
-  ~CXFA_TextProvider() {}
+  CXFA_TextProvider(CXFA_Node* pNode, XFA_TEXTPROVIDERTYPE eType);
+  ~CXFA_TextProvider();
 
   CXFA_Node* GetTextNode(bool* bRichText);
   CXFA_Para* GetParaIfExists();
@@ -38,7 +35,7 @@ class CXFA_TextProvider {
   Optional<WideString> GetEmbeddedObj(const WideString& wsAttr) const;
 
  private:
-  CXFA_Node* m_pNode;  // Raw, this class owned by tree node.
+  cppgc::Persistent<CXFA_Node> m_pNode;
   XFA_TEXTPROVIDERTYPE m_eType;
 };
 

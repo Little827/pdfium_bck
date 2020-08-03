@@ -59,3 +59,7 @@ CFX_SizeF CXFA_ViewLayoutItem::GetPageSize() const {
 CXFA_Node* CXFA_ViewLayoutItem::GetMasterPage() const {
   return GetFormNode();
 }
+
+void CXFA_ViewLayoutItem::SetOldSubform(CXFA_Node* pSubform) {
+  m_pOldSubform = pSubform;
+}

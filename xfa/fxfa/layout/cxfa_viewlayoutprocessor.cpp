@@ -347,6 +347,11 @@ CXFA_ViewLayoutProcessor::~CXFA_ViewLayoutProcessor() {
   }
 }
 
+void CXFA_ViewLayoutProcessor::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pPageSetNode);
+  visitor->Trace(m_pCurPageArea);
+}
+
 bool CXFA_ViewLayoutProcessor::InitLayoutPage(CXFA_Node* pFormNode) {
   PrepareLayout();
   CXFA_Node* pTemplateNode = pFormNode->GetTemplateNodeIfExists();

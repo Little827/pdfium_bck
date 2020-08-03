@@ -18,7 +18,11 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fxjs/gc/heap.h"
 #include "third_party/base/optional.h"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
 constexpr float kXFALayoutPrecision = 0.0005f;
@@ -30,7 +34,8 @@ class CXFA_Node;
 class CXFA_ViewLayoutItem;
 class CXFA_ViewLayoutProcessor;
 
-class CXFA_ContentLayoutProcessor {
+class CXFA_ContentLayoutProcessor
+    : public cppgc::GarbageCollected<CXFA_ContentLayoutProcessor> {
  public:
   enum class Result : uint8_t {
     kDone,
@@ -50,9 +55,11 @@ class CXFA_ContentLayoutProcessor {
     kDone,
   };
 
-  CXFA_ContentLayoutProcessor(CXFA_Node* pNode,
-                              CXFA_ViewLayoutProcessor* pViewLayoutProcessor);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ContentLayoutProcessor();
+
+  void Trace(cppgc::Visitor* visitor) const;
+  cppgc::Heap* GetHeap() const { return m_pHeap.Get(); }
 
   Result DoLayout(bool bUseBreakControl, float fHeightLimit, float fRealHeight);
   void DoLayoutPageArea(CXFA_ViewLayoutItem* pPageAreaLayoutItem);
@@ -71,6 +78,10 @@ class CXFA_ContentLayoutProcessor {
     UnownedPtr<CXFA_ContentLayoutProcessor> m_pOverflowProcessor;
     UnownedPtr<CXFA_Node> m_pOverflowNode;
   };
+
+  CXFA_ContentLayoutProcessor(cppgc::Heap* pHeap,
+                              CXFA_Node* pNode,
+                              CXFA_ViewLayoutProcessor* pViewLayoutProcessor);
 
   Result DoLayoutInternal(bool bUseBreakControl,
                           float fHeightLimit,
@@ -217,18 +228,19 @@ class CXFA_ContentLayoutProcessor {
   float m_fLastRowWidth = 0;
   float m_fLastRowY = 0;
   float m_fWidthLimit = 0;
-  CXFA_Node* const m_pFormNode;
-  CXFA_Node* m_pCurChildNode = nullptr;
-  CXFA_Node* m_pKeepHeadNode = nullptr;
-  CXFA_Node* m_pKeepTailNode = nullptr;
+  UnownedPtr<cppgc::Heap> m_pHeap;
+  cppgc::Member<CXFA_Node> m_pFormNode;
+  cppgc::Member<CXFA_Node> m_pCurChildNode;
+  cppgc::Member<CXFA_Node> m_pKeepHeadNode;
+  cppgc::Member<CXFA_Node> m_pKeepTailNode;
   RetainPtr<CXFA_ContentLayoutItem> m_pLayoutItem;
   RetainPtr<CXFA_ContentLayoutItem> m_pOldLayoutItem;
-  UnownedPtr<CXFA_ViewLayoutProcessor> m_pViewLayoutProcessor;
+  cppgc::Member<CXFA_ViewLayoutProcessor> m_pViewLayoutProcessor;
   std::vector<float> m_rgSpecifiedColumnWidths;
   std::vector<RetainPtr<CXFA_ContentLayoutItem>> m_ArrayKeepItems;
   std::list<CXFA_Node*> m_PendingNodes;
   std::map<CXFA_Node*, int32_t> m_PendingNodesCount;
-  std::unique_ptr<CXFA_ContentLayoutProcessor> m_pCurChildPreprocessor;
+  cppgc::Member<CXFA_ContentLayoutProcessor> m_pCurChildPreprocessor;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_CONTENTLAYOUTPROCESSOR_H_

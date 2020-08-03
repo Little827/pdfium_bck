@@ -18,6 +18,7 @@
 #include "fxjs/xfa/jse_define.h"
 #include "third_party/base/optional.h"
 #include "third_party/base/span.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/fxfa_basic.h"
 #include "xfa/fxfa/parser/cxfa_measurement.h"
 
@@ -260,7 +261,7 @@ class CJX_Object : public CFXJSE_HostObject {
   void RemoveMapModuleKey(void* pKey);
   void MoveBufferMapData(CXFA_Object* pDstModule);
 
-  UnownedPtr<CXFA_Object> const object_;
+  UnownedPtr<CXFA_Object> object_;
   UnownedPtr<CXFA_LayoutItem> layout_item_;
   std::unique_ptr<XFA_MAPMODULEDATA> map_module_data_;
   std::unique_ptr<CXFA_CalcData> calc_data_;
