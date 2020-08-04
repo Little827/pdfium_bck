@@ -108,8 +108,8 @@ source_set("fxfa") {
     "../fxgraphics",
     "layout",
     "parser",
-    "//v8:cppgc",
   ]
+  public_deps = [ "//v8:cppgc" ]
   allow_circular_includes_from = [
     "../../fxjs",
     "layout",
@@ -128,6 +128,9 @@ pdfium_unittest_source_set("unittests") {
     "cxfa_textparser_unittest.cpp",
     "fxfa_basic_unittest.cpp",
   ]
-  deps = [ ":fxfa" ]
+  deps = [
+    ":fxfa",
+    "//v8:cppgc",
+  ]
   pdfium_root_dir = "../../"
 }
