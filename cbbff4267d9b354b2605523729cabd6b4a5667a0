@@ -23,6 +23,30 @@
       "revId": "cbbff4267d9b354b2605523729cabd6b4a5667a0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e482fb_c441507b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-04T21:52:17Z",
+      "side": 1,
+      "message": "I clarified what \"it\" refers to.",
+      "parentUuid": "f3efb9c9_c9260da0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "cbbff4267d9b354b2605523729cabd6b4a5667a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
