@@ -204,7 +204,7 @@ CPDF_Action CPDFSDK_BAAnnot::GetAction() const {
 }
 
 CPDF_AAction CPDFSDK_BAAnnot::GetAAction() const {
-  return CPDF_AAction(GetAnnotDict()->GetDictFor("AA"));
+  return CPDF_AAction(GetAnnotDict()->GetDictFor(pdfium::form_fields::kAA));
 }
 
 CPDF_Action CPDFSDK_BAAnnot::GetAAction(CPDF_AAction::AActionType eAAT) {
