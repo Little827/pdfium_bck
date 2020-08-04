@@ -15,18 +15,20 @@ CXFA_NodeOwner::CXFA_NodeOwner() = default;
 
 CXFA_NodeOwner::~CXFA_NodeOwner() = default;
 
-CXFA_Node* CXFA_NodeOwner::AddOwnedNode(std::unique_ptr<CXFA_Node> node) {
-  if (!node)
-    return nullptr;
+void CXFA_NodeOwner::Trace(cppgc::Visitor* visitor) const {
+  for (const auto& node : nodes_)
+    visitor->Trace(node);
 
-  CXFA_Node* ret = node.get();
-  nodes_.push_back(std::move(node));
-  return ret;
+  for (const auto& list : lists_)
+    visitor->Trace(list);
 }
 
-CXFA_List* CXFA_NodeOwner::AddOwnedList(std::unique_ptr<CXFA_List> list) {
-  ASSERT(list);
-  CXFA_List* ret = list.get();
-  lists_.push_back(std::move(list));
-  return ret;
+void CXFA_NodeOwner::PersistNode(CXFA_Node* node) {
+  if (node)
+    nodes_.emplace_back(node);
+}
+
+void CXFA_NodeOwner::PersistList(CXFA_List* list) {
+  if (list)
+    lists_.emplace_back(list);
 }

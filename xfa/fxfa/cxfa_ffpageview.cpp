@@ -123,7 +123,8 @@ class CXFA_TabParam {
   ~CXFA_TabParam() = default;
 
   CXFA_FFWidget* GetWidget() const { return m_pItem->GetFFWidget(); }
-  const std::vector<RetainPtr<CXFA_ContentLayoutItem>>& GetChildren() const {
+  const std::vector<cppgc::Persistent<CXFA_ContentLayoutItem>>& GetChildren()
+      const {
     return m_Children;
   }
   void ClearChildren() { m_Children.clear(); }
@@ -134,8 +135,8 @@ class CXFA_TabParam {
   }
 
  private:
-  RetainPtr<CXFA_ContentLayoutItem> m_pItem;
-  std::vector<RetainPtr<CXFA_ContentLayoutItem>> m_Children;
+  cppgc::Persistent<CXFA_ContentLayoutItem> m_pItem;
+  std::vector<cppgc::Persistent<CXFA_ContentLayoutItem>> m_Children;
 };
 
 CXFA_FFPageView::CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea)
@@ -143,8 +144,14 @@ CXFA_FFPageView::CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea)
 
 CXFA_FFPageView::~CXFA_FFPageView() = default;
 
+void CXFA_FFPageView::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pPageArea);
+  visitor->Trace(m_pDocView);
+  visitor->Trace(m_pLayoutItem);
+}
+
 CXFA_FFDocView* CXFA_FFPageView::GetDocView() const {
-  return m_pDocView.Get();
+  return m_pDocView;
 }
 
 CFX_RectF CXFA_FFPageView::GetPageViewRect() const {
@@ -356,12 +363,12 @@ CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::FindWidgetByName(
 void CXFA_FFTabOrderPageWidgetIterator::CreateTabOrderWidgetArray() {
   m_TabOrderWidgetArray.clear();
 
-  const std::vector<RetainPtr<CXFA_ContentLayoutItem>> items =
+  const std::vector<CXFA_ContentLayoutItem*> items =
       CreateSpaceOrderLayoutItems();
   if (items.empty())
     return;
 
-  RetainPtr<CXFA_ContentLayoutItem> item = items[0];
+  CXFA_ContentLayoutItem* item = items[0];
   while (m_TabOrderWidgetArray.size() < items.size()) {
     if (!pdfium::Contains(m_TabOrderWidgetArray, item)) {
       m_TabOrderWidgetArray.emplace_back(item);
@@ -444,9 +451,9 @@ void CXFA_FFTabOrderPageWidgetIterator::OrderContainer(
     pContainer->AppendTabParam(pParam.get());
 }
 
-std::vector<RetainPtr<CXFA_ContentLayoutItem>>
+std::vector<CXFA_ContentLayoutItem*>
 CXFA_FFTabOrderPageWidgetIterator::CreateSpaceOrderLayoutItems() {
-  std::vector<RetainPtr<CXFA_ContentLayoutItem>> items;
+  std::vector<CXFA_ContentLayoutItem*> items;
   CXFA_LayoutItemIterator sIterator(m_pPageViewLayout.Get());
   auto pParam = std::make_unique<CXFA_TabParam>();
   bool bCurrentItem = false;

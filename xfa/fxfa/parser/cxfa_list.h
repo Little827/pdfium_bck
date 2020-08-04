@@ -9,12 +9,17 @@
 
 #include <memory>
 
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/parser/cxfa_object.h"
 
 class CXFA_Document;
+class CXFA_Node;
+class CJX_Object;
 
 class CXFA_List : public CXFA_Object {
  public:
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_List() override;
 
   virtual size_t GetLength() = 0;
