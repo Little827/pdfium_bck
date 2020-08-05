@@ -4,7 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "xfa/fxfa/parser/cxfa_nodehelper.h"
+#include "fxjs/xfa/cfxjse_nodehelper.h"
 
 #include <utility>
 
