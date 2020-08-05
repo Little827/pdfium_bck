@@ -8,6 +8,8 @@
 #define XFA_FXFA_CXFA_FFPASSWORDEDIT_H_
 
 #include "core/fxcrt/unowned_ptr.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/cxfa_fftextedit.h"
 
 class CXFA_PasswordEdit;
@@ -17,12 +19,14 @@ class CXFA_FFPasswordEdit final : public CXFA_FFTextEdit {
   CXFA_FFPasswordEdit(CXFA_Node* pNode, CXFA_PasswordEdit* password_node);
   ~CXFA_FFPasswordEdit() override;
 
+  void Trace(cppgc::Visitor* visitor) const override;
+
   // CXFA_FFTextEdit
   bool LoadWidget() override;
   void UpdateWidgetProperty() override;
 
  private:
-  UnownedPtr<CXFA_PasswordEdit> const password_node_;
+  cppgc::Member<CXFA_PasswordEdit> const password_node_;
 };
 
 #endif  // XFA_FXFA_CXFA_FFPASSWORDEDIT_H_

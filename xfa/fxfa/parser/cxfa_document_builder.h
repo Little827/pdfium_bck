@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
 class CFX_XMLDocument;
@@ -64,9 +65,9 @@ class CXFA_DocumentBuilder {
                         CFX_XMLInstruction* pXMLInstruction,
                         XFA_PacketType ePacketID);
 
-  UnownedPtr<CXFA_Document> node_factory_;
+  cppgc::Persistent<CXFA_Document> node_factory_;
+  cppgc::Persistent<CXFA_Node> root_node_;
   UnownedPtr<CFX_XMLDocument> xml_doc_;
-  UnownedPtr<CXFA_Node> root_node_;  // All nodes owned by CXFA_NodeOwner.
   size_t execute_recursion_depth_ = 0;
 };
 

@@ -71,7 +71,7 @@ class CXFA_FFWidgetHandler {
   XFA_EventError ProcessEvent(CXFA_Node* pNode, CXFA_EventParam* pParam);
 
  private:
-  UnownedPtr<CXFA_FFDocView> m_pDocView;
+  cppgc::Persistent<CXFA_FFDocView> m_pDocView;
 };
 
 #endif  //  XFA_FXFA_CXFA_FFWIDGETHANDLER_H_
