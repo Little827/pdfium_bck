@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5073e470_78a90d31",
+        "filename": "xfa/fxfa/layout/cxfa_layoutitem.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 0,
+      "message": "probably could be a prefinalizer, but there are a lot of layout items so might be expensive.",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "4688b56498fd96959ef1168931ce4879b8091154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

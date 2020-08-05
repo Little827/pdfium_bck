@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6b42f61_31805d9e",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "persistent?",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30665c2_f9639700",
+        "filename": "xfa/fxfa/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "probably dont need this if public deps.",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 16
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b67a94_426e4e9a",
+        "filename": "xfa/fxfa/cxfa_eventparam.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "probably can go back to unowned",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de0d966_00991679",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "can probably use cppgc::WeakPersistent\u003c\u003e references.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7bbca0d_fa0c9ebf",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "these two can become members?",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 12
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e8c2292_0296d771",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "use CPPGC\u0027s macro instead.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b327bc_33eb424b",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "probably should be member.",
+      "range": {
+        "startLine": 238,
+        "startChar": 12,
+        "endLine": 238,
+        "endChar": 21
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da482001_a3eef6b7",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "I bet subclasses forget to call this.",
+      "range": {
+        "startLine": 1862,
+        "startChar": 42,
+        "endLine": 1862,
+        "endChar": 47
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca9e850_fa7783d1",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "maybe pack all members together, order unimportant.",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 7
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6d27bf_0f021b55",
+        "filename": "xfa/fxfa/parser/cxfa_document_builder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T16:30:28Z",
+      "side": 1,
+      "message": "probably should be persistent.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 12
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
