@@ -9,6 +9,7 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "v8/include/cppgc/macros.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
 class CXFA_Node;
@@ -48,6 +49,8 @@ enum XFA_EVENTTYPE : uint8_t {
 };
 
 class CXFA_EventParam {
+  CPPGC_STACK_ALLOCATED();  // Raw/Unowned pointers allowed.
+
  public:
   CXFA_EventParam();
   CXFA_EventParam(const CXFA_EventParam& other);
@@ -68,7 +71,7 @@ class CXFA_EventParam {
   int32_t m_iCommitKey = 0;
   int32_t m_iSelEnd = 0;
   int32_t m_iSelStart = 0;
-  UnownedPtr<CXFA_Node> m_pTarget;
+  CXFA_Node* m_pTarget;
   WideString m_wsResult;
   WideString m_wsChange;
   WideString m_wsFullText;

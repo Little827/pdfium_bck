@@ -16,6 +16,7 @@
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "third_party/base/stl_util.h"
+#include "v8/include/cppgc/allocation.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 #include "xfa/fxfa/layout/cxfa_layoutitem.h"
@@ -369,10 +370,11 @@ CJS_Result CJX_LayoutPseudoModel::pageContent(
   if (!pNotify)
     return CJS_Result::Success();
 
-  auto* pDocLayout = CXFA_LayoutProcessor::FromDocument(GetDocument());
-  auto* pArrayNodeList =
-      static_cast<CXFA_ArrayNodeList*>(GetDocument()->AddOwnedList(
-          std::make_unique<CXFA_ArrayNodeList>(GetDocument())));
+  CXFA_Document* pDoc = GetDocument();
+  auto* pDocLayout = CXFA_LayoutProcessor::FromDocument(pDoc);
+  auto* pArrayNodeList = cppgc::MakeGarbageCollected<CXFA_ArrayNodeList>(
+      pDoc->GetHeap()->GetAllocationHandle(), pDoc);
+  pDoc->GetNodeOwner()->PersistList(pArrayNodeList);
   pArrayNodeList->SetArrayNodeList(
       GetObjArray(pDocLayout, iIndex, wsType, bOnPageArea));
 
