@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "843ae0ba_e6c6d543",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "made stack allocated.",
+      "parentUuid": "e6b42f61_31805d9e",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a30665c2_f9639700",
         "filename": "xfa/fxfa/BUILD.gn",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "ad1755c862216313961405f97aef7daca3e68c26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62e69a7_4bd5d6cd",
+        "filename": "xfa/fxfa/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a30665c2_f9639700",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 16
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "247ac224_27ebe521",
+        "filename": "xfa/fxfa/cxfa_eventparam.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8b67a94_426e4e9a",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3de0d966_00991679",
         "filename": "xfa/fxfa/cxfa_ffwidget.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "ad1755c862216313961405f97aef7daca3e68c26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723a5a04_d2485bc7",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "Possibly.  Hard to manage.  followup.",
+      "parentUuid": "3de0d966_00991679",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d212dc50_0ac12faa",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "at least the first one can.",
+      "parentUuid": "a7bbca0d_fa0c9ebf",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 12
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e8c2292_0296d771",
         "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
         "patchSetId": 6
@@ -137,6 +257,54 @@
       "revId": "ad1755c862216313961405f97aef7daca3e68c26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7958328f_52a52133",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e8c2292_0296d771",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f646011_8404d2e9",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e8c2292_0296d771",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "a3e5cf5f_bb67c25d",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "nope. did it.",
+      "parentUuid": "da482001_a3eef6b7",
+      "range": {
+        "startLine": 1862,
+        "startChar": 42,
+        "endLine": 1862,
+        "endChar": 47
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ca9e850_fa7783d1",
         "filename": "xfa/fxfa/parser/cxfa_document.h",
         "patchSetId": 6
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "c212f806_341d1d28",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "later.",
+      "parentUuid": "4ca9e850_fa7783d1",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 7
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a6d27bf_0f021b55",
         "filename": "xfa/fxfa/parser/cxfa_document_builder.h",
         "patchSetId": 6
@@ -229,6 +445,30 @@
       "revId": "ad1755c862216313961405f97aef7daca3e68c26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8627f1c6_9668fd32",
+        "filename": "xfa/fxfa/parser/cxfa_document_builder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-05T22:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6d27bf_0f021b55",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 12
+      },
+      "revId": "ad1755c862216313961405f97aef7daca3e68c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
