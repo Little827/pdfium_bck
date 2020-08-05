@@ -14,13 +14,21 @@
 #include <vector>
 
 #include "core/fxcrt/retain_ptr.h"
+#include "fxjs/gc/heap.h"
 #include "third_party/base/optional.h"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/prefinalizer.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h"
 
 class CXFA_LayoutItem;
 class CXFA_Node;
 
-class CXFA_ViewLayoutProcessor {
+class CXFA_ViewLayoutProcessor
+    : public cppgc::GarbageCollected<CXFA_ViewLayoutProcessor> {
+  CPPGC_USING_PRE_FINALIZER(CXFA_ViewLayoutProcessor, PreFinalizer);
+
  public:
   struct BreakData {
     CXFA_Node* pLeader;
@@ -33,16 +41,19 @@ class CXFA_ViewLayoutProcessor {
     CXFA_Node* pTrailer;
   };
 
-  explicit CXFA_ViewLayoutProcessor(CXFA_LayoutProcessor* pLayoutProcessor);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ViewLayoutProcessor();
+
+  void PreFinalizer();
+  void Trace(cppgc::Visitor* visitor) const;
+  cppgc::Heap* GetHeap() const { return m_pHeap.Get(); }
 
   bool InitLayoutPage(CXFA_Node* pFormNode);
   bool PrepareFirstPage(CXFA_Node* pRootSubform);
   float GetAvailHeight();
   bool GetNextAvailContentHeight(float fChildHeight);
-  void SubmitContentItem(
-      const RetainPtr<CXFA_ContentLayoutItem>& pContentLayoutItem,
-      CXFA_ContentLayoutProcessor::Result eStatus);
+  void SubmitContentItem(CXFA_ContentLayoutItem* pContentLayoutItem,
+                         CXFA_ContentLayoutProcessor::Result eStatus);
   void FinishPaginatedPageSets();
   void SyncLayoutData();
   int32_t GetPageCount() const;
@@ -64,12 +75,16 @@ class CXFA_ViewLayoutProcessor {
     CXFA_ViewRecord();
     ~CXFA_ViewRecord();
 
-    RetainPtr<CXFA_ViewLayoutItem> pCurPageSet;
-    RetainPtr<CXFA_ViewLayoutItem> pCurPageArea;
-    RetainPtr<CXFA_ViewLayoutItem> pCurContentArea;
-  };
+    void Trace(cppgc::Visitor* visitor) const;
 
+    cppgc::Member<CXFA_ViewLayoutItem> pCurPageSet;
+    cppgc::Member<CXFA_ViewLayoutItem> pCurPageArea;
+    cppgc::Member<CXFA_ViewLayoutItem> pCurContentArea;
+  };
   using RecordList = std::list<std::unique_ptr<CXFA_ViewRecord>>;
+
+  CXFA_ViewLayoutProcessor(cppgc::Heap* pHeap,
+                           CXFA_LayoutProcessor* pLayoutProcessor);
 
   bool AppendNewPage(bool bFirstTemPage);
   void ReorderPendingLayoutRecordToTail(CXFA_ViewRecord* pNewRecord,
@@ -160,19 +175,20 @@ class CXFA_ViewLayoutProcessor {
   void ProcessSimplexOrDuplexPageSets(CXFA_ViewLayoutItem* pPageSetLayoutItem,
                                       bool bIsSimplex);
 
-  CXFA_LayoutProcessor* m_pLayoutProcessor = nullptr;
-  CXFA_Node* m_pPageSetNode = nullptr;
-  RetainPtr<CXFA_ViewLayoutItem> m_pPageSetRootLayoutItem;
-  RetainPtr<CXFA_ViewLayoutItem> m_pPageSetCurLayoutItem;
+  UnownedPtr<cppgc::Heap> m_pHeap;
+  cppgc::Member<CXFA_LayoutProcessor> m_pLayoutProcessor;
+  cppgc::Member<CXFA_Node> m_pPageSetNode;
+  cppgc::Member<CXFA_Node> m_pCurPageArea;
+  cppgc::Member<CXFA_ViewLayoutItem> m_pPageSetRootLayoutItem;
+  cppgc::Member<CXFA_ViewLayoutItem> m_pPageSetCurLayoutItem;
   RecordList m_ProposedViewRecords;
   RecordList::iterator m_CurrentViewRecordIter;
-  CXFA_Node* m_pCurPageArea = nullptr;
   int32_t m_nAvailPages = 0;
   int32_t m_nCurPageCount = 0;
   XFA_AttributeValue m_ePageSetMode = XFA_AttributeValue::OrderedOccurrence;
   bool m_bCreateOverFlowPage = false;
   std::map<CXFA_Node*, int32_t> m_pPageSetMap;
-  std::vector<RetainPtr<CXFA_ViewLayoutItem>> m_PageArray;
+  std::vector<cppgc::Member<CXFA_ViewLayoutItem>> m_PageArray;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_VIEWLAYOUTPROCESSOR_H_
