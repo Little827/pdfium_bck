@@ -16,7 +16,7 @@ class CXFA_Node;
 
 class CXFA_ArrayNodeList final : public CXFA_TreeList {
  public:
-  explicit CXFA_ArrayNodeList(CXFA_Document* pDocument);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_ArrayNodeList() override;
 
   // CXFA_TreeList:
@@ -29,6 +29,8 @@ class CXFA_ArrayNodeList final : public CXFA_TreeList {
   void SetArrayNodeList(std::vector<CXFA_Node*> srcArray);
 
  private:
+  explicit CXFA_ArrayNodeList(CXFA_Document* pDocument);
+
   std::vector<CXFA_Node*> m_array;
 };
 

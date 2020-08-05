@@ -13,6 +13,7 @@
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/cfx_v8.h"
+#include "v8/include/cppgc/persistent.h"
 #include "v8/include/v8.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
@@ -86,17 +87,19 @@ class CFXJSE_Engine final : public CFX_V8 {
   CFXJSE_Value* GetOrCreateJSBindingFromMap(CXFA_Object* pObject);
   void RemoveJSBindingFromMap(CXFA_Object* pObject);
 
-  CXFA_Object* GetThisObject() const { return m_pThisObject.Get(); }
+  CXFA_Object* GetThisObject() const { return m_pThisObject; }
   CFXJSE_Class* GetJseNormalClass() const { return m_pJsClass.Get(); }
 
-  void SetNodesOfRunScript(std::vector<CXFA_Node*>* pArray);
+  void SetNodesOfRunScript(std::vector<cppgc::Persistent<CXFA_Node>>* pArray);
   void AddNodesOfRunScript(CXFA_Node* pNode);
 
   void SetRunAtType(XFA_AttributeValue eRunAt) { m_eRunAtType = eRunAt; }
   bool IsRunAtClient() { return m_eRunAtType != XFA_AttributeValue::Server; }
 
   CXFA_Script::Type GetType();
-  std::vector<CXFA_Node*>* GetUpObjectArray() { return &m_upObjectArray; }
+  std::vector<cppgc::Persistent<CXFA_Node>>* GetUpObjectArray() {
+    return &m_upObjectArray;
+  }
   CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
 
   CXFA_Object* ToXFAObject(v8::Local<v8::Value> obj);
@@ -131,11 +134,11 @@ class CFXJSE_Engine final : public CFX_V8 {
   std::map<CXFA_Object*, std::unique_ptr<CFXJSE_Context>>
       m_mapVariableToContext;
   UnownedPtr<CXFA_EventParam> m_eventParam;
-  std::vector<CXFA_Node*> m_upObjectArray;
-  UnownedPtr<std::vector<CXFA_Node*>> m_pScriptNodeArray;
+  std::vector<cppgc::Persistent<CXFA_Node>> m_upObjectArray;
+  UnownedPtr<std::vector<cppgc::Persistent<CXFA_Node>>> m_pScriptNodeArray;
   std::unique_ptr<CFXJSE_ResolveProcessor> const m_ResolveProcessor;
   std::unique_ptr<CFXJSE_FormCalcContext> m_FM2JSContext;
-  UnownedPtr<CXFA_Object> m_pThisObject;
+  cppgc::Persistent<CXFA_Object> m_pThisObject;
   XFA_AttributeValue m_eRunAtType = XFA_AttributeValue::Client;
 };
 
