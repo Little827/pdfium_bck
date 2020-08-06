@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6326a69_51cd5030",
+        "filename": "DEPS",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-06T19:28:24Z",
+      "side": 1,
+      "message": "1) Can we roll V8 separately?\n2) If yes, it probably won\u0027t succeed on the bots. I just tried a couple days ago: https://pdfium-review.googlesource.com/c/pdfium/+/72391 and there\u0027s a MSVC failure. Offending CL is https://chromium-review.googlesource.com/c/v8/v8/+/2315994",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
