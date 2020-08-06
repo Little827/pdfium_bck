@@ -16,10 +16,12 @@ class CFWL_ThemeBackground;
 class CFWL_ThemePart;
 class CFWL_ThemeText;
 class CFWL_Widget;
+class CFWL_WidgetTP;
 
 class IFWL_ThemeProvider {
  public:
-  virtual ~IFWL_ThemeProvider() = default;
+  IFWL_ThemeProvider();
+  virtual ~IFWL_ThemeProvider();
 
   virtual void DrawBackground(const CFWL_ThemeBackground& pParams) = 0;
   virtual void DrawText(const CFWL_ThemeText& pParams) = 0;
@@ -36,6 +38,22 @@ class IFWL_ThemeProvider {
   virtual FX_COLORREF GetTextColor(const CFWL_ThemePart& pThemePart) const = 0;
   virtual CFX_SizeF GetSpaceAboveBelow(
       const CFWL_ThemePart& pThemePart) const = 0;
+
+ protected:
+  CFWL_WidgetTP* GetTheme(CFWL_Widget* pWidget) const;
+
+ private:
+  std::unique_ptr<CFWL_WidgetTP> m_pCheckBoxTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pListBoxTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pPictureBoxTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pSrollBarTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pEditTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pComboBoxTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pMonthCalendarTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pDateTimePickerTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pPushButtonTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pCaretTP;
+  std::unique_ptr<CFWL_WidgetTP> m_pBarcodeTP;
 };
 
 #endif  // XFA_FWL_IFWL_THEMEPROVIDER_H_
