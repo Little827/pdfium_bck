@@ -35,6 +35,24 @@
       "revId": "5ab403369a4a2f889f803bbefadfab1ae966a9d7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0042cc0_43addb1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-06T06:42:29Z",
+      "side": 1,
+      "message": "Actually, that CL is mostly not applicable here. But here\u0027s a Skia CL: https://skia-review.googlesource.com/308198",
+      "parentUuid": "e73d4d3d_4952b17c",
+      "revId": "5ab403369a4a2f889f803bbefadfab1ae966a9d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
