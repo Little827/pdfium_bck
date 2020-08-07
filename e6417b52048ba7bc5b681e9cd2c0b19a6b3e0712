@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f712110b_6edb1539",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T21:14:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "0471849a_f2485584",
+      "revId": "e6417b52048ba7bc5b681e9cd2c0b19a6b3e0712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5fa7c4b_2e47170b",
         "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2afdb236_40a0a251",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T21:14:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "e5fa7c4b_2e47170b",
+      "revId": "e6417b52048ba7bc5b681e9cd2c0b19a6b3e0712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b06e9e50_6350bdda",
         "filename": "testing/resources/gotoe_action.in",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2020-08-07T20:46:32Z",
       "side": 1,
       "message": "Put /Type, /Subtype, and /FT (field type) at the top, so it is easy to see what the object is.",
+      "revId": "e6417b52048ba7bc5b681e9cd2c0b19a6b3e0712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7fabdaf_d6455d7c",
+        "filename": "testing/resources/gotoe_action.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T21:14:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b06e9e50_6350bdda",
       "revId": "e6417b52048ba7bc5b681e9cd2c0b19a6b3e0712",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
