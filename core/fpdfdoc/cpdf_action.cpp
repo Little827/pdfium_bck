@@ -62,7 +62,7 @@ CPDF_Dest CPDF_Action::GetDest(CPDF_Document* pDoc) const {
 WideString CPDF_Action::GetFilePath() const {
   ActionType type = GetType();
   if (type != GoToR && type != Launch && type != SubmitForm &&
-      type != ImportData) {
+      type != ImportData && type != GoToE) {
     return WideString();
   }
 
