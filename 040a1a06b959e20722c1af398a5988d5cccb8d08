@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9b1478e7_51982a9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "I saved the biggest ~25 files for last.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6326a69_51cd5030",
         "filename": "DEPS",
         "patchSetId": 10
@@ -34,6 +51,261 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76adc641_faea744f",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "I know [1] says this is ok, but I\u0027m wondering what happens if we ever want to stash this pointer somewhere. We can\u0027t save the raw pointer, right? How do we know this is GarbageCollected without peeking into CreateFormWidgetIterator()?\n\n[1] https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/heap/BlinkGCAPIReference.md#raw-pointers",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a914df4c_09972cd4",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Do we need to document destructor ordering requirements here? It\u0027s not clear if the comment on line 116 applies to this block.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec058d87_10056e10",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Not needed.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b40bd1_e2492a7b",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Looking at blink::Member usage, Clear() seems to be preferred.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204c1172_33e54ea0",
+        "filename": "xfa/fxfa/cxfa_ffpasswordedit.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "nit: (All over) group with the other overrides?",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "939b0cf5_0ad1b7b4",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Will GarbageCollected make Observable unnecessary in the long run?",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b793e5_c5360903",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "I think you can still keep the const.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e2f7ef_6c2b124b",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutitem.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "No longer needed. Probably need to make a pass over all the modified headers.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e63c4bee_0ee37d11",
+        "filename": "xfa/fxfa/parser/cxfa_arraynodelist.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Is it ok to store a vector of raw pointers here?",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a818991f_f716e5c1",
+        "filename": "xfa/fxfa/parser/cxfa_attachnodelist.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Is it ok to use UnownedPtr here?",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291b4d4b_555decfe",
+        "filename": "xfa/fxfa/parser/cxfa_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Not needed.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7249abac_e3f6fb63",
+        "filename": "xfa/fxfa/parser/cxfa_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "sort",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d36a81f_4e8c8cf9",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Also slight preference to call blink::Persistent::Clear() in non-generated, non-test code.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c996196c_51e6b200",
+        "filename": "xfa/fxfa/parser/cxfa_nodeowner.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "Can we just ASSERT() this?",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a1fa04_972b777e",
+        "filename": "xfa/fxfa/parser/cxfa_nodeowner.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T01:11:05Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
