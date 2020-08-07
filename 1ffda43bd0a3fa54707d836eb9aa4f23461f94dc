@@ -16,6 +16,24 @@
       "revId": "1ffda43bd0a3fa54707d836eb9aa4f23461f94dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c21817f_9fc4c0e6",
+        "filename": "testing/resources/gotoe_action.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T23:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff7df2a_251c53ca",
+      "revId": "1ffda43bd0a3fa54707d836eb9aa4f23461f94dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
