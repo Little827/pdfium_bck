@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "950c768c_0163e38e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T20:34:59Z",
+      "side": 1,
+      "message": "I added a new test case (with a .in and .pdf file). The test case is a slight modification of TEST_F(FPDFDocEmbedderTest, ActionGoto).\n\nI also added support for /GoToE in FPDFAction_GetDest. Because GoToE and GoToR both have /F and /D entries.",
+      "parentUuid": "bd91ddc0_64989cee",
+      "revId": "9f6ed33d87a359afd5eb471f6a58fa0573b092a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71e71ec0_b91cc3da",
         "filename": "fpdfsdk/fpdf_doc.cpp",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f21a73e4_00cac9fe",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T20:34:59Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "71e71ec0_b91cc3da",
+      "revId": "9f6ed33d87a359afd5eb471f6a58fa0573b092a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a1941f5_7f0ed32a",
         "filename": "public/fpdf_doc.h",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-08-07T19:10:45Z",
       "side": 1,
       "message": "Per spec, /GoToR is \"Go-to remote\", and /GotoE is \"Go-to embedded\", so this should not have \"REMOTE\" in the name, and \"E\" needs to be expanded.",
+      "revId": "9f6ed33d87a359afd5eb471f6a58fa0573b092a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ffdad5_604c51b0",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T20:34:59Z",
+      "side": 1,
+      "message": "I see. I renamed the variable to PDFACTION_EMBEDDEDGOTO",
+      "parentUuid": "4a1941f5_7f0ed32a",
       "revId": "9f6ed33d87a359afd5eb471f6a58fa0573b092a0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
