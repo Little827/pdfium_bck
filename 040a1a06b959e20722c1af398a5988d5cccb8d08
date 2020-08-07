@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "70dba7b9_8b0aca14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T18:49:00Z",
+      "side": 1,
+      "message": "Not sure what happened with PS7. Note that there were no try bots for PS10.\n\nHere\u0027s a sanity check that LSAN is working. https://pdfium-review.googlesource.com/c/72550",
+      "parentUuid": "8dfe26b5_2112d150",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6326a69_51cd5030",
         "filename": "DEPS",
         "patchSetId": 10
@@ -281,6 +299,24 @@
       "side": 1,
       "message": "CJX_Object is owned by CXFA_Node, so this backpointer must be unowned, not persistent, to avoid cylces.  Let me try making it weakpersistent instead.",
       "parentUuid": "071146a1_b2c558f4",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eadd032c_650b3605",
+        "filename": "fxjs/xfa/cjx_object.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T18:49:00Z",
+      "side": 1,
+      "message": "I played around with this WeakPersistent vs. Persistent, and either got leaks or nullptr defers. Maybe I did something wrong.",
+      "parentUuid": "51accd62_56d14bf1",
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
