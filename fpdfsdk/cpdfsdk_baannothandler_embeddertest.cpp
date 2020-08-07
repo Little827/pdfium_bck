@@ -4,6 +4,7 @@
 
 #include <vector>
 
+#include "core/fxcrt/fx_bidi.h"
 #include "fpdfsdk/cpdfsdk_annotiterator.h"
 #include "fpdfsdk/cpdfsdk_baannothandler.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -21,6 +22,8 @@ class CPDFSDK_BAAnnotHandlerTest : public EmbedderTest {
   void TearDown() override {
     UnloadPage(m_page);
     EmbedderTest::TearDown();
+    auto leak = std::make_unique<CFX_BidiChar>();
+    leak.release();
   }
 
   void SetUpBAAnnotHandler() {
