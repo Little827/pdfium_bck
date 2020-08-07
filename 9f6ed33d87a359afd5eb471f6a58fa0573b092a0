@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd91ddc0_64989cee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T19:10:45Z",
+      "side": 1,
+      "message": "What\u0027s your test plan? Typically, one would add an \"embedder test\" to make sure the API in public/ does what it is suppose to do.",
+      "revId": "9f6ed33d87a359afd5eb471f6a58fa0573b092a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71e71ec0_b91cc3da",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T19:10:45Z",
+      "side": 1,
+      "message": "nit: Once the conditional is multi-line, add curly braces.",
+      "revId": "9f6ed33d87a359afd5eb471f6a58fa0573b092a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a1941f5_7f0ed32a",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T19:10:45Z",
+      "side": 1,
+      "message": "Per spec, /GoToR is \"Go-to remote\", and /GotoE is \"Go-to embedded\", so this should not have \"REMOTE\" in the name, and \"E\" needs to be expanded.",
+      "revId": "9f6ed33d87a359afd5eb471f6a58fa0573b092a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
