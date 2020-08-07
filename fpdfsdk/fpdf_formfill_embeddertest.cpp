@@ -10,6 +10,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "public/cpp/fpdf_scopers.h"
+#include "public/fpdf_doc.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
 #include "public/fpdf_progressive.h"
@@ -2871,6 +2872,28 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
     bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
   }
+}
+
+TEST_F(FPDFFormFillEmbedderTest, ExtractPageOpenAAction) {
+  ASSERT_TRUE(OpenDocument("extract_pageopen_aactions.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+
+  FPDF_ACTION action = FORM_ExtractPageOpenAAction(page, form_handle());
+  EXPECT_EQ(static_cast<unsigned long>(PDFACTION_REMOTEGOTOE),
+            FPDFAction_GetType(action));
+
+  unsigned long bufsize = FPDFAction_GetFilePath(action, nullptr, 0);
+  char buf[1024];
+  FPDFAction_GetFilePath(action, buf, bufsize);
+
+  const char kExpectedResult[] = "\\\\127.0.0.1\\test";
+  const unsigned long kExpectedLength = sizeof(kExpectedResult);
+
+  EXPECT_EQ(kExpectedLength, bufsize);
+  EXPECT_STREQ(kExpectedResult, buf);
+
+  UnloadPage(page);
 }
 
 TEST_F(FPDFFormFillListBoxFormEmbedderTest,

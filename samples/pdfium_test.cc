@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
 
 #include <iterator>
 #include <map>
@@ -709,6 +710,13 @@ FPDF_PAGE GetPageForIndex(FPDF_FORMFILLINFO* param,
   FPDF_FORMHANDLE& form_handle = form_fill_info->form_handle;
   FORM_OnAfterLoadPage(page_ptr, form_handle);
   FORM_DoPageAAction(page_ptr, form_handle, FPDFPAGE_AACTION_OPEN);
+  FPDF_ACTION action = FORM_ExtractPageOpenAAction(page_ptr, form_handle);
+  std::cout << "action type --> " << FPDFAction_GetType(action) << std::endl;
+  std::cout << PDFACTION_REMOTEGOTOE << std::endl;
+  unsigned long bufsize = FPDFAction_GetFilePath(action, nullptr, 0);
+  char buf[1024];
+  FPDFAction_GetFilePath(action, buf, bufsize);
+  std::cout << "file path --> " << buf << std::endl;
   return page_ptr;
 }
 
@@ -855,7 +863,7 @@ bool ProcessPage(const std::string& name,
     fprintf(stderr, "Page was too large to be rendered.\n");
   }
 
-  FORM_DoPageAAction(page, form, FPDFPAGE_AACTION_CLOSE);
+  // FORM_DoPageAAction(page, form, FPDFPAGE_AACTION_CLOSE);
   FORM_OnBeforeClosePage(page, form);
   return !!bitmap;
 }

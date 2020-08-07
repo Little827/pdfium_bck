@@ -163,6 +163,8 @@ FPDF_EXPORT unsigned long FPDF_CALLCONV FPDFAction_GetType(FPDF_ACTION action) {
       return PDFACTION_GOTO;
     case CPDF_Action::GoToR:
       return PDFACTION_REMOTEGOTO;
+    case CPDF_Action::GoToE:
+      return PDFACTION_REMOTEGOTOE;
     case CPDF_Action::URI:
       return PDFACTION_URI;
     case CPDF_Action::Launch:
@@ -189,7 +191,8 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDFAction_GetDest(FPDF_DOCUMENT document,
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFAction_GetFilePath(FPDF_ACTION action, void* buffer, unsigned long buflen) {
   unsigned long type = FPDFAction_GetType(action);
-  if (type != PDFACTION_REMOTEGOTO && type != PDFACTION_LAUNCH)
+  if (type != PDFACTION_REMOTEGOTO && type != PDFACTION_REMOTEGOTOE &&
+      type != PDFACTION_LAUNCH)
     return 0;
 
   CPDF_Action cAction(CPDFDictionaryFromFPDFAction(action));

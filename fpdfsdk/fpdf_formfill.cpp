@@ -780,6 +780,31 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoDocumentAAction(FPDF_FORMHANDLE hHandle,
   }
 }
 
+FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV
+FORM_ExtractPageOpenAAction(FPDF_PAGE page, FPDF_FORMHANDLE hHandle) {
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!pFormFillEnv)
+    return nullptr;
+
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
+  CPDF_Page* pPDFPage = CPDFPageFromFPDFPage(page);
+  if (!pPDFPage)
+    return nullptr;
+
+  if (!pFormFillEnv->GetPageView(pPage, false))
+    return nullptr;
+
+  CPDF_Dictionary* pPageDict = pPDFPage->GetDict();
+  CPDF_AAction aa(pPageDict->GetDictFor("AA"));
+  CPDF_AAction::AActionType type = CPDF_AAction::kOpenPage;
+  if (aa.ActionExist(type)) {
+    CPDF_Action action = aa.GetAction(type);
+    return FPDFActionFromCPDFDictionary(action.GetDict());
+  }
+  return nullptr;
+}
+
 FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
                                                   FPDF_FORMHANDLE hHandle,
                                                   int aaType) {
