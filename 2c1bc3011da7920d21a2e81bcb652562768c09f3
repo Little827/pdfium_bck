@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "212dc0f8_efca29ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T21:27:18Z",
+      "side": 1,
+      "message": "Just nits.",
+      "revId": "2c1bc3011da7920d21a2e81bcb652562768c09f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dab5389_a66870d7",
+        "filename": "core/fpdfdoc/cpdf_action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T21:27:18Z",
+      "side": 1,
+      "message": "nit: Please put this after GoToR on the previous line, so the checks are in the same order as the enum value declarations.",
+      "revId": "2c1bc3011da7920d21a2e81bcb652562768c09f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67fe87d3_9f5267ba",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T21:27:18Z",
+      "side": 1,
+      "message": "Let\u0027s also keep the ordering here with PDFACTION_GOTO first.",
+      "revId": "2c1bc3011da7920d21a2e81bcb652562768c09f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0485bb42_f623bd09",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T21:27:18Z",
+      "side": 1,
+      "message": "Move lines 406-409 to be after line 411? i.e. Put variables closer to where they are used.",
+      "revId": "2c1bc3011da7920d21a2e81bcb652562768c09f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e975daf_e3a41ae8",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T21:27:18Z",
+      "side": 1,
+      "message": "nit: num_params (wrong style)",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 25
+      },
+      "revId": "2c1bc3011da7920d21a2e81bcb652562768c09f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72910b21_9096d6be",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T21:27:18Z",
+      "side": 1,
+      "message": "nit: remove, as lines 420 and 422 are closely related.",
+      "revId": "2c1bc3011da7920d21a2e81bcb652562768c09f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
