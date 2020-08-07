@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "8dfe26b5_2112d150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Drat, Drat and Double Drat.  I thought I had it clean on my workstation.  I also thought the _asan_lsan bot would go red on leaks, and yet PS7 passed on linux_xfa_lsan_asan. I doublechecked that bot - no noise.",
+      "parentUuid": "d6ed6863_e84b242f",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6326a69_51cd5030",
         "filename": "DEPS",
         "patchSetId": 10
@@ -88,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "718b02ef_59c460f3",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "This is hard. The answer depends upon where \"somewhere\" is either on-stack or off-stack.  For now, I\u0027m going to go with naming on this one for now.",
+      "parentUuid": "76adc641_faea744f",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a914df4c_09972cd4",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
         "patchSetId": 10
@@ -102,6 +138,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66816a0e_91b3a91b",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "yes, we must outlive the persistents.  Add comments.",
+      "parentUuid": "a914df4c_09972cd4",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +176,47 @@
     },
     {
       "key": {
+        "uuid": "37e18700_6c993dee",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Avoid ownership cycle.  Document owns the engine via unique_ptr.  In that case, the back pointer can\u0027t keep the object alive via persistent.  I suppose it could be weak persistent.",
+      "parentUuid": "f8c457ef_563d1b50",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b46aa8b_da9feabe",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "In which case, this probably creates a cycle as well. gaaah.  Made cxfa_object\u0027s relationship to document be a weak member.",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec058d87_10056e10",
         "filename": "fxjs/xfa/cfxjse_resolveprocessor.h",
         "patchSetId": 10
@@ -136,6 +231,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31aaa434_f2552dbe",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec058d87_10056e10",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +269,24 @@
     },
     {
       "key": {
+        "uuid": "51accd62_56d14bf1",
+        "filename": "fxjs/xfa/cjx_object.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "CJX_Object is owned by CXFA_Node, so this backpointer must be unowned, not persistent, to avoid cylces.  Let me try making it weakpersistent instead.",
+      "parentUuid": "071146a1_b2c558f4",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9b40bd1_e2492a7b",
         "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
         "patchSetId": 10
@@ -170,6 +301,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0435c3c6_aa92bf22",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9b40bd1_e2492a7b",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +339,47 @@
     },
     {
       "key": {
+        "uuid": "afee9f55_fb60c125",
+        "filename": "xfa/fxfa/cxfa_ffnotify.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2abeed0_56016653",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb055182_ed9bc664",
+        "filename": "xfa/fxfa/cxfa_ffpasswordedit.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Added CONSTRUCT_VIA_GARBAGE_COLLECTED here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "204c1172_33e54ea0",
         "filename": "xfa/fxfa/cxfa_ffpasswordedit.h",
         "patchSetId": 10
@@ -204,6 +394,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976ed8b5_87a3bfca",
+        "filename": "xfa/fxfa/cxfa_ffpasswordedit.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "I was reluctant to do so, since its so fundamental to allocation and I wanted these to always stand out near the consttructors/destructors.",
+      "parentUuid": "204c1172_33e54ea0",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -224,6 +432,24 @@
     },
     {
       "key": {
+        "uuid": "0013128a_283e2f56",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Ideally, yes.  But I need to doublecheck whether a WeakPersistent on the stack gets hit by a conservative gc stack trace, and hence loses its weakness. Sent mail.",
+      "parentUuid": "939b0cf5_0ad1b7b4",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33b793e5_c5360903",
         "filename": "xfa/fxfa/cxfa_ffwidget.h",
         "patchSetId": 10
@@ -235,6 +461,24 @@
       "writtenOn": "2020-08-07T01:11:05Z",
       "side": 1,
       "message": "I think you can still keep the const.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1751398_f7483eeb",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Hmm, const seems OK here.  I thought I\u0027d got a failed compilation somewhere and was hence removing these, but it looks like these can go back in.  I\u0027ll do a follow-up pass for const once I get the leakage plugged (first priority).",
+      "parentUuid": "33b793e5_c5360903",
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -258,6 +502,24 @@
     },
     {
       "key": {
+        "uuid": "5b13b07f_7eeefa5d",
+        "filename": "xfa/fxfa/cxfa_ffwidgethandler.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "I made FFWidgetHandler be GC\u0027d itself, now just a member.",
+      "parentUuid": "2f0c31c2_bf9afc20",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9e2f7ef_6c2b124b",
         "filename": "xfa/fxfa/layout/cxfa_contentlayoutitem.h",
         "patchSetId": 10
@@ -269,6 +531,24 @@
       "writtenOn": "2020-08-07T01:11:05Z",
       "side": 1,
       "message": "No longer needed. Probably need to make a pass over all the modified headers.",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3a9053_04c124f1",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutitem.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "I\u0027ll do a pass over these once I get a handle on leakage.",
+      "parentUuid": "a9e2f7ef_6c2b124b",
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -292,6 +572,24 @@
     },
     {
       "key": {
+        "uuid": "85d33f58_f9a5ce6f",
+        "filename": "xfa/fxfa/layout/cxfa_traversestrategy_layoutitem.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc7f810_9816c689",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "219fb551_d4ae238d",
         "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.h",
         "patchSetId": 10
@@ -306,6 +604,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753704a7_0cd9032e",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219fb551_d4ae238d",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -326,6 +642,24 @@
     },
     {
       "key": {
+        "uuid": "603857b4_ab9ca437",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Sadly, no. The RecordList \"typedef\" at line 84 does make it hard to see the direct ownership at line 184.",
+      "parentUuid": "5ca99146_9fa9c4c9",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e63c4bee_0ee37d11",
         "filename": "xfa/fxfa/parser/cxfa_arraynodelist.h",
         "patchSetId": 10
@@ -340,6 +674,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "166109b4_e4a9a5d6",
+        "filename": "xfa/fxfa/parser/cxfa_arraynodelist.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Probably not.  Fixed.",
+      "parentUuid": "e63c4bee_0ee37d11",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -360,6 +712,24 @@
     },
     {
       "key": {
+        "uuid": "70168836_1fe4e2c3",
+        "filename": "xfa/fxfa/parser/cxfa_attachnodelist.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Probably not.  Fixed.",
+      "parentUuid": "a818991f_f716e5c1",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "291b4d4b_555decfe",
         "filename": "xfa/fxfa/parser/cxfa_list.h",
         "patchSetId": 10
@@ -374,6 +744,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a075264f_75ad76d2",
+        "filename": "xfa/fxfa/parser/cxfa_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done.  But fxjs/gc/heap.h needed for the macro at line 22.",
+      "parentUuid": "291b4d4b_555decfe",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -394,6 +782,24 @@
     },
     {
       "key": {
+        "uuid": "7bc58096_647912f2",
+        "filename": "xfa/fxfa/parser/cxfa_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7249abac_e3f6fb63",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8efb32a0_bb78df1c",
         "filename": "xfa/fxfa/parser/cxfa_node.h",
         "patchSetId": 10
@@ -408,6 +814,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f4711a_9f0c7eec",
+        "filename": "xfa/fxfa/parser/cxfa_node.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done. Somehow my brain didn\u0027t parse that as a node descendent.",
+      "parentUuid": "8efb32a0_bb78df1c",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -428,6 +852,24 @@
     },
     {
       "key": {
+        "uuid": "667d767b_4ccce74f",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d36a81f_4e8c8cf9",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c996196c_51e6b200",
         "filename": "xfa/fxfa/parser/cxfa_nodeowner.cpp",
         "patchSetId": 10
@@ -445,6 +887,24 @@
     },
     {
       "key": {
+        "uuid": "fe60a294_4ec319b0",
+        "filename": "xfa/fxfa/parser/cxfa_nodeowner.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Sure. let\u0027s try that.",
+      "parentUuid": "c996196c_51e6b200",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57a1fa04_972b777e",
         "filename": "xfa/fxfa/parser/cxfa_nodeowner.h",
         "patchSetId": 10
@@ -459,6 +919,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83daf8e9_921e0627",
+        "filename": "xfa/fxfa/parser/cxfa_nodeowner.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-07T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57a1fa04_972b777e",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
