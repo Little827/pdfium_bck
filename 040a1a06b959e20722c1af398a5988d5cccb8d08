@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "6b15dfdd_d66e56cf",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T19:03:09Z",
+      "side": 1,
+      "message": "More generally, should we consistently use cppgc pointer types for garbage collected classes?",
+      "parentUuid": "37e18700_6c993dee",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b46aa8b_da9feabe",
         "filename": "fxjs/xfa/cfxjse_engine.h",
         "patchSetId": 10
@@ -556,6 +574,24 @@
     },
     {
       "key": {
+        "uuid": "1631b9cb_8299330f",
+        "filename": "xfa/fxfa/cxfa_ffwidgethandler.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T19:03:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b13b07f_7eeefa5d",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9e2f7ef_6c2b124b",
         "filename": "xfa/fxfa/layout/cxfa_contentlayoutitem.h",
         "patchSetId": 10
@@ -693,6 +729,24 @@
       "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ed2b891_18e2edd6",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-07T19:03:09Z",
+      "side": 1,
+      "message": "Probably need a comment to explain why, since CXFA_ViewRecord itself is not GC\u0027d.",
+      "parentUuid": "603857b4_ab9ca437",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
