@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e725c4aa_bebf467f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T18:06:00Z",
+      "side": 1,
+      "message": "I agree. Should I close this CL and submit 2 new CLs? I think I should submit CL-1 first, as CL-2 depends on CL-1.",
+      "parentUuid": "c50467e2_446bc8f2",
+      "revId": "342c1e5ff7c3457845d129d0c93441ccc8bcb714",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92fc0791_7d2064fb",
         "filename": "samples/pdfium_test.cc",
         "patchSetId": 1
