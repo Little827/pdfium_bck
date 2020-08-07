@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c74e5ff5_d8a505ab",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T18:56:32Z",
+      "side": 1,
+      "message": "thanks for the reminder!",
+      "parentUuid": "92fc0791_7d2064fb",
+      "revId": "342c1e5ff7c3457845d129d0c93441ccc8bcb714",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae8d2bf7_4a2162d2",
         "filename": "samples/pdfium_test.cc",
         "patchSetId": 1
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "0834ffe8_06201a26",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T18:56:32Z",
+      "side": 1,
+      "message": "This line is not necessary. I will remove it.",
+      "parentUuid": "ae8d2bf7_4a2162d2",
+      "revId": "342c1e5ff7c3457845d129d0c93441ccc8bcb714",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e72c0aa_a0ebcae0",
         "filename": "testing/resources/extract_pageopen_aactions.pdf",
         "patchSetId": 1
@@ -100,6 +136,24 @@
       "writtenOn": "2020-08-07T17:40:49Z",
       "side": 1,
       "message": "Please write a .in file and generate the .pdf from that. https://pdfium.googlesource.com/pdfium/+/master/README.md#files",
+      "revId": "342c1e5ff7c3457845d129d0c93441ccc8bcb714",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53fdb23d_25ba479d",
+        "filename": "testing/resources/extract_pageopen_aactions.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-07T18:56:32Z",
+      "side": 1,
+      "message": "I see. I plan to commit the .in file, .pdf file and the test case in my second CL. I\u0027ve updated this CL to only support /GoToE.",
+      "parentUuid": "7e72c0aa_a0ebcae0",
       "revId": "342c1e5ff7c3457845d129d0c93441ccc8bcb714",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
