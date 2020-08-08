@@ -252,6 +252,7 @@ int CheckPDFiumCApi() {
     CHK(FORM_DoDocumentJSAction);
     CHK(FORM_DoDocumentOpenAction);
     CHK(FORM_DoPageAAction);
+    CHK(FORM_ExtractPageAAction);
     CHK(FORM_ForceToKillFocus);
     CHK(FORM_GetFocusedAnnot);
     CHK(FORM_GetFocusedText);
