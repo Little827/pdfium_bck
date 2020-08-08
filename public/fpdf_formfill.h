@@ -1282,6 +1282,26 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
                                                   int aaType);
 
 /*
+ * Experimental API
+ * Function: FORM_ExtractPageAAction
+ *       This method extracts a page object's additional-action.
+ * Parameters:
+ *       page        -   Handle to the page, as returned by FPDF_LoadPage().
+ *       hHandle     -   Handle to the form fill module. Returned by
+ *                       FPDFDOC_InitFormFillEnvironment.
+ *       aaType      -   The type of the page object's addtional-actions
+ *                       which defined above.
+ * Return Value:
+ *       FPDF_ACTION
+ * Comments:
+ *       This method will return a nullptr if there is no additional-action correponding
+ *       to the specified |aaType| exists.
+ */
+FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV FORM_ExtractPageAAction(FPDF_PAGE page,
+                                                  FPDF_FORMHANDLE hHandle,
+                                                  int aaType);
+
+/*
  * Function: FORM_OnMouseMove
  *       Call this member function when the mouse cursor moves.
  * Parameters:
