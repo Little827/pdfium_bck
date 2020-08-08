@@ -808,6 +808,33 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
   }
 }
 
+FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV
+FORM_ExtractPageAAction(FPDF_PAGE page, FPDF_FORMHANDLE hHandle, int aaType) {
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!pFormFillEnv)
+    return nullptr;
+
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
+  CPDF_Page* pPDFPage = CPDFPageFromFPDFPage(page);
+  if (!pPDFPage)
+    return nullptr;
+
+  if (!pFormFillEnv->GetPageView(pPage, false))
+    return nullptr;
+
+  CPDF_Dictionary* pPageDict = pPDFPage->GetDict();
+  CPDF_AAction aa(pPageDict->GetDictFor(pdfium::form_fields::kAA));
+  CPDF_AAction::AActionType type = aaType == FPDFPAGE_AACTION_OPEN
+                                       ? CPDF_AAction::kOpenPage
+                                       : CPDF_AAction::kClosePage;
+  if (aa.ActionExist(type)) {
+    CPDF_Action action = aa.GetAction(type);
+    return FPDFActionFromCPDFDictionary(action.GetDict());
+  }
+  return nullptr;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FORM_SetIndexSelected(FPDF_FORMHANDLE hHandle,
                       FPDF_PAGE page,
