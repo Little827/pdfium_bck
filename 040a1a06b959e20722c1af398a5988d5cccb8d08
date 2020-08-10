@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "cf68b6b5_31d7dc01",
+        "filename": "DEPS",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-10T23:22:13Z",
+      "side": 1,
+      "message": "I\u0027ve pinged V8 folks again to see if we can move forward on fixing the MSVC failure.",
+      "parentUuid": "36e08d64_fc00f5c9",
+      "revId": "040a1a06b959e20722c1af398a5988d5cccb8d08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76adc641_faea744f",
         "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
         "patchSetId": 10
