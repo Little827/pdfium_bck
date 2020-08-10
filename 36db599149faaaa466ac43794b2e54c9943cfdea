@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd945d35_7cac4cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-10T22:23:42Z",
+      "side": 1,
+      "message": "Though ASAN is unhappy with CXFA_ViewLayoutProcessor. e.g. with https://www.uscis.gov/sites/default/files/document/forms/n-400.pdf",
+      "revId": "36db599149faaaa466ac43794b2e54c9943cfdea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c1c8a2f_c85de456",
+        "filename": "xfa/fxfa/cxfa_ffpageview.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-10T22:23:42Z",
+      "side": 1,
+      "message": "nit: blank line after.",
+      "revId": "36db599149faaaa466ac43794b2e54c9943cfdea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b543aa_d3d10275",
+        "filename": "xfa/fxfa/layout/cxfa_layoutitem.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-10T22:23:42Z",
+      "side": 1,
+      "message": "nit: The other classes with pre-finalizers have PreFinalizer(). Name them consistently?",
+      "revId": "36db599149faaaa466ac43794b2e54c9943cfdea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
