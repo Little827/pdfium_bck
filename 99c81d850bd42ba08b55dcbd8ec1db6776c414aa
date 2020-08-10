@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a009dc55_0de1f464",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-10T19:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70ee807_cc67a2a5",
+      "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21810a0e_40ef32af",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-10T05:32:50Z",
       "side": 1,
       "message": "Is this FPDF_FORMHANDLE parameter necessary? If not, the function can probably go into another header.",
+      "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e7427a_5f06c332",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-10T19:30:59Z",
+      "side": 1,
+      "message": "Good point. FPDF_FORMHANDLE is not necessary. I removed this parameter. Which header do you recommend to move to? Should we also move the test case?",
+      "parentUuid": "21810a0e_40ef32af",
       "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -99,6 +135,54 @@
     },
     {
       "key": {
+        "uuid": "bfc77f32_db88e15f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-10T19:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f17a738_ca85ca2c",
+      "range": {
+        "startLine": 1297,
+        "startChar": 33,
+        "endLine": 1297,
+        "endChar": 42
+      },
+      "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c9b6927_27c56db3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-10T19:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c219f3c6_a276261f",
+      "range": {
+        "startLine": 1297,
+        "startChar": 76,
+        "endLine": 1297,
+        "endChar": 88
+      },
+      "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c5edf44_3138e05e",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 3
@@ -113,6 +197,24 @@
       "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4eec0e5_c546746f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-10T19:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c5edf44_3138e05e",
+      "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "54c4557c_a47c0350",
+        "filename": "testing/resources/extract_page_aaction.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-10T19:30:59Z",
+      "side": 1,
+      "message": "This is not needed. The important field is /AA. I removed /Resources and /Contents section.",
+      "parentUuid": "ff0f837d_fe779839",
+      "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51a38adb_d998e007",
         "filename": "testing/resources/extract_page_aaction.in",
         "patchSetId": 3
@@ -147,6 +267,24 @@
       "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebeaf633_c89a0e95",
+        "filename": "testing/resources/extract_page_aaction.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-10T19:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51a38adb_d998e007",
+      "revId": "99c81d850bd42ba08b55dcbd8ec1db6776c414aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
