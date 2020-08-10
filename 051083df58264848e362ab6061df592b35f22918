@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92714644_9d9c472e",
+        "filename": "xfa/fwl/cfwl_combolist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-10T17:50:25Z",
+      "side": 1,
+      "message": "NOTE: deduped GetOuter() here.",
+      "range": {
+        "startLine": 125,
+        "startChar": 31,
+        "endLine": 125,
+        "endChar": 37
+      },
+      "revId": "051083df58264848e362ab6061df592b35f22918",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
