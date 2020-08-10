@@ -94,7 +94,7 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
   void InflateWidgetRect(CFX_RectF& rect);
   void SetWidgetRect(const CFX_RectF& rect);
 
-  void SetParent(CFWL_Widget* pParent);
+  void SetParent(CFWL_Widget* pParent, int proof_of_all_callers_changed);
 
   bool IsVisible() const;
   bool IsOverLapper() const;

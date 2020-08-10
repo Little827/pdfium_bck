@@ -78,8 +78,7 @@ CFX_RectF CFWL_Widget::GetClientRect() {
   return GetEdgeRect();
 }
 
-void CFWL_Widget::SetParent(CFWL_Widget* pParent) {
-  m_pProperties->m_pParent = pParent;
+void CFWL_Widget::SetParent(CFWL_Widget* pParent, int proof) {
   m_pWidgetMgr->SetParent(pParent, this);
 }
 
