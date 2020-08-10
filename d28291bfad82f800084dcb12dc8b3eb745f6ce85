@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22ea3e1b_f96b67e8",
+        "filename": "xfa/fwl/cfwl_edit.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-10T18:43:08Z",
+      "side": 1,
+      "message": "SetParent, removed at cfwl_widget.cpp:81, did two things.\n1 - update parent in widgetproperties, now handled at line 963\n2 - invoked widgetmgr to make caret a child of |this|.  I put that here, but it strikes me that it could be removed altogether, but 100% sure.",
+      "revId": "d28291bfad82f800084dcb12dc8b3eb745f6ce85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
