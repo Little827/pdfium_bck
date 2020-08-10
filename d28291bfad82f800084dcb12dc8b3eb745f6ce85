@@ -16,6 +16,41 @@
       "revId": "d28291bfad82f800084dcb12dc8b3eb745f6ce85",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835f2c9c_24944a19",
+        "filename": "xfa/fwl/cfwl_edit.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-10T19:11:22Z",
+      "side": 1,
+      "message": "Seems fine to move it here since this CL is just refactoring.",
+      "parentUuid": "22ea3e1b_f96b67e8",
+      "revId": "d28291bfad82f800084dcb12dc8b3eb745f6ce85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b45cf88d_d1a7ef95",
+        "filename": "xfa/fwl/cfwl_widgetproperties.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-10T19:11:22Z",
+      "side": 1,
+      "message": "Add explicit keyword.",
+      "revId": "d28291bfad82f800084dcb12dc8b3eb745f6ce85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
