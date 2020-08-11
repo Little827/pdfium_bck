@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9160643_39c908cd",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T01:18:26Z",
+      "side": 1,
+      "message": "Also test other inputs:\n- NULL page parameter\n- FPDFPAGE_AACTION_CLOSE action parameter\n- Some invalid integer value for the action parameter",
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b287d9a5_3fa7de5b",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T01:18:26Z",
+      "side": 1,
+      "message": "Nobody has taken the time to overhaul the header documentation. As a result, the comment format is different between files. Can we make the documentation consistent with the surrounding comments?",
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf9d24b4_2525a08e",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T01:18:26Z",
+      "side": 1,
+      "message": "aa_type",
+      "range": {
+        "startLine": 341,
+        "startChar": 9,
+        "endLine": 341,
+        "endChar": 15
+      },
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7a528e_20cc94ee",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T01:18:26Z",
+      "side": 1,
+      "message": "Explain what is being returned on success as well.",
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
