@@ -24,8 +24,9 @@ constexpr int kStateHighlight = (1 << 0);
 
 CFWL_Caret::CFWL_Caret(const CFWL_App* app,
                        std::unique_ptr<CFWL_WidgetProperties> properties,
+                       CFWL_Widget* pParent,
                        CFWL_Widget* pOuter)
-    : CFWL_Widget(app, std::move(properties), pOuter) {
+    : CFWL_Widget(app, std::move(properties), pParent, pOuter) {
   SetStates(kStateHighlight);
 }
 

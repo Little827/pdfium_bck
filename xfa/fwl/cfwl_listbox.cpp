@@ -30,8 +30,9 @@ const int kItemTextMargin = 2;
 
 CFWL_ListBox::CFWL_ListBox(const CFWL_App* app,
                            std::unique_ptr<CFWL_WidgetProperties> properties,
+                           CFWL_Widget* pParent,
                            CFWL_Widget* pOuter)
-    : CFWL_Widget(app, std::move(properties), pOuter) {}
+    : CFWL_Widget(app, std::move(properties), pParent, pOuter) {}
 
 CFWL_ListBox::~CFWL_ListBox() = default;
 
@@ -615,24 +616,24 @@ void CFWL_ListBox::InitVerticalScrollBar() {
   if (m_pVertScrollBar)
     return;
 
-  auto prop = std::make_unique<CFWL_WidgetProperties>(this);
+  auto prop = std::make_unique<CFWL_WidgetProperties>();
   prop->m_dwStyleExes = FWL_STYLEEXT_SCB_Vert;
   prop->m_dwStates = FWL_WGTSTATE_Invisible;
   prop->m_pThemeProvider = m_pScrollBarTP;
-  m_pVertScrollBar =
-      std::make_unique<CFWL_ScrollBar>(GetOwnerApp(), std::move(prop), this);
+  m_pVertScrollBar = std::make_unique<CFWL_ScrollBar>(
+      GetOwnerApp(), std::move(prop), this, this);
 }
 
 void CFWL_ListBox::InitHorizontalScrollBar() {
   if (m_pHorzScrollBar)
     return;
 
-  auto prop = std::make_unique<CFWL_WidgetProperties>(this);
+  auto prop = std::make_unique<CFWL_WidgetProperties>();
   prop->m_dwStyleExes = FWL_STYLEEXT_SCB_Horz;
   prop->m_dwStates = FWL_WGTSTATE_Invisible;
   prop->m_pThemeProvider = m_pScrollBarTP;
-  m_pHorzScrollBar =
-      std::make_unique<CFWL_ScrollBar>(GetOwnerApp(), std::move(prop), this);
+  m_pHorzScrollBar = std::make_unique<CFWL_ScrollBar>(
+      GetOwnerApp(), std::move(prop), this, this);
 }
 
 bool CFWL_ListBox::IsShowScrollBar(bool bVert) {

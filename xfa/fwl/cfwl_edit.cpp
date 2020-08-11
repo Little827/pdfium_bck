@@ -46,8 +46,9 @@ constexpr int kEditingModifier = FWL_KEYFLAG_Ctrl;
 
 CFWL_Edit::CFWL_Edit(const CFWL_App* app,
                      std::unique_ptr<CFWL_WidgetProperties> properties,
+                     CFWL_Widget* pParent,
                      CFWL_Widget* pOuter)
-    : CFWL_Widget(app, std::move(properties), pOuter),
+    : CFWL_Widget(app, std::move(properties), pParent, pOuter),
       m_pEditEngine(std::make_unique<CFDE_TextEditEngine>()) {
   m_pEditEngine->SetDelegate(this);
 }
@@ -870,24 +871,24 @@ void CFWL_Edit::InitVerticalScrollBar() {
   if (m_pVertScrollBar)
     return;
 
-  auto prop = std::make_unique<CFWL_WidgetProperties>(this);
+  auto prop = std::make_unique<CFWL_WidgetProperties>();
   prop->m_dwStyleExes = FWL_STYLEEXT_SCB_Vert;
   prop->m_dwStates = FWL_WGTSTATE_Disabled | FWL_WGTSTATE_Invisible;
   prop->m_pThemeProvider = GetProperties()->m_pThemeProvider;
-  m_pVertScrollBar =
-      std::make_unique<CFWL_ScrollBar>(GetOwnerApp(), std::move(prop), this);
+  m_pVertScrollBar = std::make_unique<CFWL_ScrollBar>(
+      GetOwnerApp(), std::move(prop), this, this);
 }
 
 void CFWL_Edit::InitHorizontalScrollBar() {
   if (m_pHorzScrollBar)
     return;
 
-  auto prop = std::make_unique<CFWL_WidgetProperties>(this);
+  auto prop = std::make_unique<CFWL_WidgetProperties>();
   prop->m_dwStyleExes = FWL_STYLEEXT_SCB_Horz;
   prop->m_dwStates = FWL_WGTSTATE_Disabled | FWL_WGTSTATE_Invisible;
   prop->m_pThemeProvider = GetProperties()->m_pThemeProvider;
-  m_pHorzScrollBar =
-      std::make_unique<CFWL_ScrollBar>(GetOwnerApp(), std::move(prop), this);
+  m_pHorzScrollBar = std::make_unique<CFWL_ScrollBar>(
+      GetOwnerApp(), std::move(prop), this, this);
 }
 
 void CFWL_Edit::ShowCaret(CFX_RectF* pRect) {
@@ -960,7 +961,7 @@ void CFWL_Edit::InitCaret() {
     return;
 
   m_pCaret = std::make_unique<CFWL_Caret>(
-      GetOwnerApp(), std::make_unique<CFWL_WidgetProperties>(this), this);
+      GetOwnerApp(), std::make_unique<CFWL_WidgetProperties>(), this, this);
   GetWidgetMgr()->SetParent(this, m_pCaret.get());
   m_pCaret->SetStates(GetProperties()->m_dwStates);
   UpdateCursorRect();
