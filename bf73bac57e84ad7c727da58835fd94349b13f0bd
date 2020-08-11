@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed251cc4_561930a2",
+        "filename": "testing/v8_initializer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T23:00:09Z",
+      "side": 1,
+      "message": "Sanity check. Does this append, or does it overwrite?",
+      "revId": "bf73bac57e84ad7c727da58835fd94349b13f0bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
