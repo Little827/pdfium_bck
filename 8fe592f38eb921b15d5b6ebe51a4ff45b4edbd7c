@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f190839_df8021b3",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T23:15:52Z",
+      "side": 1,
+      "message": "I know this is based on pre-existing code, but it is unfortunately not 100% correct. If the /AA dictionary has a /C entry in addition to the /O entry, passing in any |aa_type| value other than |FPDFPAGE_AACTION_OPEN| will result in |type| being set to |CPDF_AAction::kClosePage|.",
+      "revId": "8fe592f38eb921b15d5b6ebe51a4ff45b4edbd7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
