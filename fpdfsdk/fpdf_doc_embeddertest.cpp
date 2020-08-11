@@ -672,6 +672,27 @@ TEST_F(FPDFDocEmbedderTest, GetMetaTextFromNewDocument) {
   FPDF_CloseDocument(empty_doc);
 }
 
+TEST_F(FPDFDocEmbedderTest, GetPageAAction) {
+  ASSERT_TRUE(OpenDocument("extract_page_aaction.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+
+  FPDF_ACTION action = FPDF_GetPageAAction(page, FPDFPAGE_AACTION_OPEN);
+  EXPECT_EQ(static_cast<unsigned long>(PDFACTION_EMBEDDEDGOTO),
+            FPDFAction_GetType(action));
+
+  const char kExpectedResult[] = "http://127.0.0.1";
+  const unsigned long kExpectedLength = sizeof(kExpectedResult);
+  char buf[1024];
+
+  unsigned long bufsize = FPDFAction_GetFilePath(action, nullptr, 0);
+  EXPECT_EQ(kExpectedLength, bufsize);
+  EXPECT_EQ(kExpectedLength, FPDFAction_GetFilePath(action, buf, bufsize));
+  EXPECT_STREQ(kExpectedResult, buf);
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFDocEmbedderTest, NoPageLabels) {
   ASSERT_TRUE(OpenDocument("about_blank.pdf"));
   EXPECT_EQ(1, FPDF_GetPageCount(document()));
