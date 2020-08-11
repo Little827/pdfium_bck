@@ -133,6 +133,7 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
  protected:
   CFWL_Widget(const CFWL_App* app,
               std::unique_ptr<CFWL_WidgetProperties> properties,
+              CFWL_Widget* pParent,
               CFWL_Widget* pOuter);
 
   bool IsEnabled() const;
@@ -185,6 +186,7 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
   UnownedPtr<const CFWL_App> const m_pOwnerApp;
   UnownedPtr<CFWL_WidgetMgr> const m_pWidgetMgr;
   std::unique_ptr<CFWL_WidgetProperties> m_pProperties;
+  CFWL_Widget* m_pParent;
   CFWL_Widget* const m_pOuter;
   AdapterIface* m_pAdapterIface = nullptr;
   UnownedPtr<IFWL_WidgetDelegate> m_pDelegate;

@@ -35,6 +35,7 @@ class CFWL_ListBox : public CFWL_Widget {
  public:
   explicit CFWL_ListBox(const CFWL_App* pApp,
                         std::unique_ptr<CFWL_WidgetProperties> properties,
+                        CFWL_Widget* pParent,
                         CFWL_Widget* pOuter);
   ~CFWL_ListBox() override;
 

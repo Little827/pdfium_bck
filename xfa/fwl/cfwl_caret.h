@@ -20,6 +20,7 @@ class CFWL_Caret final : public CFWL_Widget, public CFX_Timer::CallbackIface {
  public:
   CFWL_Caret(const CFWL_App* app,
              std::unique_ptr<CFWL_WidgetProperties> properties,
+             CFWL_Widget* pParent,
              CFWL_Widget* pOuter);
   ~CFWL_Caret() override;
 

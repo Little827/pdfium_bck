@@ -30,7 +30,8 @@
 
 CFWL_ComboBox::CFWL_ComboBox(const CFWL_App* app)
     : CFWL_Widget(app,
-                  std::make_unique<CFWL_WidgetProperties>(nullptr),
+                  std::make_unique<CFWL_WidgetProperties>(),
+                  nullptr,
                   nullptr) {
   InitComboList();
   InitComboEdit();
@@ -407,23 +408,23 @@ void CFWL_ComboBox::InitComboList() {
   if (m_pListBox)
     return;
 
-  auto prop = std::make_unique<CFWL_WidgetProperties>(this);
+  auto prop = std::make_unique<CFWL_WidgetProperties>();
   prop->m_dwStyles = FWL_WGTSTYLE_Border | FWL_WGTSTYLE_VScroll;
   prop->m_dwStates = FWL_WGTSTATE_Invisible;
   prop->m_pThemeProvider = GetProperties()->m_pThemeProvider;
-  m_pListBox =
-      std::make_unique<CFWL_ComboList>(GetOwnerApp(), std::move(prop), this);
+  m_pListBox = std::make_unique<CFWL_ComboList>(GetOwnerApp(), std::move(prop),
+                                                this, this);
 }
 
 void CFWL_ComboBox::InitComboEdit() {
   if (m_pEdit)
     return;
 
-  auto prop = std::make_unique<CFWL_WidgetProperties>(this);
+  auto prop = std::make_unique<CFWL_WidgetProperties>();
   prop->m_pThemeProvider = GetProperties()->m_pThemeProvider;
 
-  m_pEdit =
-      std::make_unique<CFWL_ComboEdit>(GetOwnerApp(), std::move(prop), this);
+  m_pEdit = std::make_unique<CFWL_ComboEdit>(GetOwnerApp(), std::move(prop),
+                                             this, this);
 }
 
 void CFWL_ComboBox::OnProcessMessage(CFWL_Message* pMessage) {

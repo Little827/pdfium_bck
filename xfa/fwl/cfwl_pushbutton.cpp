@@ -22,7 +22,8 @@
 
 CFWL_PushButton::CFWL_PushButton(const CFWL_App* app)
     : CFWL_Widget(app,
-                  std::make_unique<CFWL_WidgetProperties>(nullptr),
+                  std::make_unique<CFWL_WidgetProperties>(),
+                  nullptr,
                   nullptr) {}
 
 CFWL_PushButton::~CFWL_PushButton() = default;
