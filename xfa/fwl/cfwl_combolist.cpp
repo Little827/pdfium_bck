@@ -20,8 +20,9 @@
 CFWL_ComboList::CFWL_ComboList(
     const CFWL_App* app,
     std::unique_ptr<CFWL_WidgetProperties> properties,
+    CFWL_Widget* pParent,
     CFWL_Widget* pOuter)
-    : CFWL_ListBox(app, std::move(properties), pOuter) {
+    : CFWL_ListBox(app, std::move(properties), pParent, pOuter) {
   ASSERT(pOuter);
 }
 

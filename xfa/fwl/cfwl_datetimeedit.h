@@ -17,6 +17,7 @@ class CFWL_DateTimeEdit final : public CFWL_Edit {
  public:
   CFWL_DateTimeEdit(const CFWL_App* app,
                     std::unique_ptr<CFWL_WidgetProperties> properties,
+                    CFWL_Widget* pParent,
                     CFWL_Widget* pOuter);
   ~CFWL_DateTimeEdit() override;
 

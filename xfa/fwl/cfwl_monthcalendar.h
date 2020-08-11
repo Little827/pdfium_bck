@@ -24,6 +24,7 @@ class CFWL_MonthCalendar final : public CFWL_Widget {
  public:
   CFWL_MonthCalendar(const CFWL_App* app,
                      std::unique_ptr<CFWL_WidgetProperties> properties,
+                     CFWL_Widget* pOwner,
                      CFWL_Widget* pOuter);
   ~CFWL_MonthCalendar() override;
 
