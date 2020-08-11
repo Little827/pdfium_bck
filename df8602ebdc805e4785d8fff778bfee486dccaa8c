@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80c9260f_36206707",
+        "filename": "xfa/fwl/cfwl_barcode.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-11T19:13:07Z",
+      "side": 0,
+      "message": "Note: matches last argument on line 19.  This is what we need to verify for each of these changes.",
+      "range": {
+        "startLine": 20,
+        "startChar": 56,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "df8602ebdc805e4785d8fff778bfee486dccaa8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ccaa7df_7578593b",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-11T19:13:07Z",
+      "side": 0,
+      "message": "NOTE: only usage, it would seem.",
+      "range": {
+        "startLine": 44,
+        "startChar": 29,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "df8602ebdc805e4785d8fff778bfee486dccaa8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
