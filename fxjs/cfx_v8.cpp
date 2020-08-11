@@ -17,12 +17,14 @@ CFX_V8::~CFX_V8() = default;
 v8::Local<v8::Value> CFX_V8::GetObjectProperty(
     v8::Local<v8::Object> pObj,
     ByteStringView bsUTF8PropertyName) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantGetObjectPropertyHelper(m_pIsolate.Get(), pObj,
                                                 bsUTF8PropertyName);
 }
 
 std::vector<WideString> CFX_V8::GetObjectPropertyNames(
     v8::Local<v8::Object> pObj) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantGetObjectPropertyNamesHelper(m_pIsolate.Get(), pObj);
 }
 
@@ -56,6 +58,7 @@ void CFX_V8::PutArrayElement(v8::Local<v8::Array> pArray,
 
 v8::Local<v8::Value> CFX_V8::GetArrayElement(v8::Local<v8::Array> pArray,
                                              unsigned index) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantGetArrayElementHelper(GetIsolate(), pArray, index);
 }
 
@@ -104,30 +107,37 @@ v8::Local<v8::Date> CFX_V8::NewDate(double d) {
 }
 
 int CFX_V8::ToInt32(v8::Local<v8::Value> pValue) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantToInt32Helper(m_pIsolate.Get(), pValue);
 }
 
 bool CFX_V8::ToBoolean(v8::Local<v8::Value> pValue) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantToBooleanHelper(m_pIsolate.Get(), pValue);
 }
 
 double CFX_V8::ToDouble(v8::Local<v8::Value> pValue) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantToDoubleHelper(m_pIsolate.Get(), pValue);
 }
 
 WideString CFX_V8::ToWideString(v8::Local<v8::Value> pValue) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantToWideStringHelper(m_pIsolate.Get(), pValue);
 }
 
 ByteString CFX_V8::ToByteString(v8::Local<v8::Value> pValue) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantToByteStringHelper(m_pIsolate.Get(), pValue);
 }
 
 v8::Local<v8::Object> CFX_V8::ToObject(v8::Local<v8::Value> pValue) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantToObjectHelper(GetIsolate(), pValue);
 }
 
 v8::Local<v8::Array> CFX_V8::ToArray(v8::Local<v8::Value> pValue) {
+  v8::TryCatch squash_exceptions(GetIsolate());
   return fxv8::ReentrantToArrayHelper(GetIsolate(), pValue);
 }
 
