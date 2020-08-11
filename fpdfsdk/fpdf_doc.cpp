@@ -10,6 +10,7 @@
 #include <set>
 #include <utility>
 
+#include "constants/form_fields.h"
 #include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -18,12 +19,14 @@
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
+#include "core/fpdfdoc/cpdf_aaction.h"
 #include "core/fpdfdoc/cpdf_bookmark.h"
 #include "core/fpdfdoc/cpdf_bookmarktree.h"
 #include "core/fpdfdoc/cpdf_dest.h"
 #include "core/fpdfdoc/cpdf_linklist.h"
 #include "core/fpdfdoc/cpdf_pagelabel.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
+#include "public/fpdf_formfill.h"
 #include "third_party/base/stl_util.h"
 
 namespace {
@@ -410,6 +413,24 @@ FPDFLink_GetQuadPoints(FPDF_LINK link_annot,
 
   return GetQuadPointsAtIndex(pArray, static_cast<size_t>(quad_index),
                               quad_points);
+}
+
+FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV FPDF_GetPageAAction(FPDF_PAGE page,
+                                                          int aaType) {
+  CPDF_Page* pdf_page = CPDFPageFromFPDFPage(page);
+  if (!pdf_page)
+    return nullptr;
+
+  CPDF_Dictionary* page_dict = pdf_page->GetDict();
+  CPDF_AAction aa(page_dict->GetDictFor(pdfium::form_fields::kAA));
+  CPDF_AAction::AActionType type = aaType == FPDFPAGE_AACTION_OPEN
+                                       ? CPDF_AAction::kOpenPage
+                                       : CPDF_AAction::kClosePage;
+  if (!aa.ActionExist(type))
+    return nullptr;
+
+  CPDF_Action action = aa.GetAction(type);
+  return FPDFActionFromCPDFDictionary(action.GetDict());
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
