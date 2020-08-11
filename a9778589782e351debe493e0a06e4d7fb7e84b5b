@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc3eb5d8_68ae144a",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T18:47:29Z",
+      "side": 1,
+      "message": "I\u0027d recomment moving line 680 to be closer to line 685. i.e. Don\u0027t mix the good input test code with the bad input code.",
+      "revId": "a9778589782e351debe493e0a06e4d7fb7e84b5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
