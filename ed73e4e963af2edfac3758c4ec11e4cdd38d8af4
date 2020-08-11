@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b6a4202_232f3da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-11T17:30:07Z",
+      "side": 1,
+      "message": "We may need to fix the logic and put it back someday, but removing it for now sounds good.",
+      "revId": "ed73e4e963af2edfac3758c4ec11e4cdd38d8af4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
