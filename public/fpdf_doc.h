@@ -332,6 +332,21 @@ FPDFLink_GetQuadPoints(FPDF_LINK link_annot,
                        int quad_index,
                        FS_QUADPOINTSF* quad_points);
 
+/*
+ * Experimental API
+ * Function: FPDF_GetPageAAction
+ *       This method gets a page object's additional-action.
+ * Parameters:
+ *       page        -   Handle to the page, as returned by FPDF_LoadPage().
+ *       aaType      -   The type of the page object's addtional-actions
+ *                       which defined above.
+ * Return Value:
+ *       FPDF_ACTION -   This method will return NULL if there is no
+ * additional-action corresponding to the specified |aaType| exists.
+ */
+FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV FPDF_GetPageAAction(FPDF_PAGE page,
+                                                          int aaType);
+
 // Experimental API.
 // Get the file identifer defined in the trailer of |document|.
 //
