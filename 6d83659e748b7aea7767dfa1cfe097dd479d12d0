@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "95699e3e_f6ef1ae9",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-11T14:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9160643_39c908cd",
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee9a04b6_16fe0526",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-11T14:17:20Z",
+      "side": 1,
+      "message": "I changed the test string to \"127.0.0.1\". The forward slash is causing tests to fail, because different OS handles the slash differently.",
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b287d9a5_3fa7de5b",
         "filename": "public/fpdf_doc.h",
         "patchSetId": 7
@@ -33,6 +68,24 @@
       "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48f299ce_6b09ea2c",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-11T14:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b287d9a5_3fa7de5b",
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "965f229d_b155472d",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-11T14:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf9d24b4_2525a08e",
+      "range": {
+        "startLine": 341,
+        "startChar": 9,
+        "endLine": 341,
+        "endChar": 15
+      },
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7a528e_20cc94ee",
         "filename": "public/fpdf_doc.h",
         "patchSetId": 7
@@ -73,6 +150,24 @@
       "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44de6e24_107ee2a5",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 8076
+      },
+      "writtenOn": "2020-08-11T14:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7a528e_20cc94ee",
+      "revId": "6d83659e748b7aea7767dfa1cfe097dd479d12d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
