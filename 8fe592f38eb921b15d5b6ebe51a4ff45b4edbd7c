@@ -34,6 +34,24 @@
       "revId": "8fe592f38eb921b15d5b6ebe51a4ff45b4edbd7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2445d21e_e1ae3974",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-12T00:52:06Z",
+      "side": 1,
+      "message": "For full test coverage, why don\u0027t we add a second page to the test PDF, and give its /AA dictionary both entries? Then we can confirm patch set 10 behaves correctly with a test, and the test will ensure it continues to behave correctly in the future.",
+      "parentUuid": "7c4a7ff3_b5ddaddd",
+      "revId": "8fe592f38eb921b15d5b6ebe51a4ff45b4edbd7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
