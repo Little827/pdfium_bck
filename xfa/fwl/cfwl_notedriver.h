@@ -29,7 +29,6 @@ class CFWL_NoteDriver {
   void UnregisterEventTarget(CFWL_Widget* pListener);
 
   CFWL_Widget* GetFocus() const { return m_pFocus.Get(); }
-  bool SetFocus(CFWL_Widget* pFocus);
   void SetGrab(CFWL_Widget* pGrab, bool bSet) {
     m_pGrab = bSet ? pGrab : nullptr;
   }
@@ -47,7 +46,6 @@ class CFWL_NoteDriver {
   bool DoWheel(CFWL_Message* pMsg, CFWL_Widget* pMessageForm);
   bool DoMouseEx(CFWL_Message* pMsg, CFWL_Widget* pMessageForm);
   void MouseSecondary(CFWL_Message* pMsg);
-  CFWL_Widget* GetMessageForm(CFWL_Widget* pDstTarget);
 
   std::map<uint64_t, std::unique_ptr<CFWL_EventTarget>> m_eventTargets;
   UnownedPtr<CFWL_Widget> m_pHover;
