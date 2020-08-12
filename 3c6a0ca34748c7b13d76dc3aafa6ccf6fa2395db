@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "890c812f_c2e47b68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-12T19:16:07Z",
+      "side": 1,
+      "message": "Straight rename, no funny business.",
+      "revId": "3c6a0ca34748c7b13d76dc3aafa6ccf6fa2395db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
