@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9adce81c_a6a5bacd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-08-12T08:06:08Z",
+      "side": 1,
+      "message": "Done, the magic that adds the change-id footer mangled it somehow and I didn\u0027t notice.",
+      "parentUuid": "63dd03c3_929a6f07",
+      "revId": "2bf9ddddaeb6ff8749e5a29c304bcdff654c835c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba6e56d5_76f58483",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -77,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "e659126f_91b8a1f9",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-08-12T08:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c44c30_fb827c10",
+      "range": {
+        "startLine": 155,
+        "startChar": 34,
+        "endLine": 155,
+        "endChar": 42
+      },
+      "revId": "2bf9ddddaeb6ff8749e5a29c304bcdff654c835c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7934ec25_09574333",
         "filename": "fpdfsdk/fpdf_signature.cpp",
         "patchSetId": 1
@@ -88,6 +130,24 @@
       "writtenOn": "2020-08-12T07:26:31Z",
       "side": 1,
       "message": "I forgot to mention this on the past CLs, but does NulTerminateMaybeCopyAndReturnLength() do what you want here?",
+      "revId": "2bf9ddddaeb6ff8749e5a29c304bcdff654c835c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24feb8f9_aa2f7399",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-08-12T08:06:08Z",
+      "side": 1,
+      "message": "Yes, it does, I just was not aware of that function. FPDFSignatureObj_GetSubFilter() could be also changed to use it; should I do that in a separate change?",
+      "parentUuid": "7934ec25_09574333",
       "revId": "2bf9ddddaeb6ff8749e5a29c304bcdff654c835c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
