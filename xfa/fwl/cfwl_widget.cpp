@@ -167,8 +167,8 @@ CFX_Matrix CFWL_Widget::GetMatrix() const {
   return matrix;
 }
 
-void CFWL_Widget::SetThemeProvider(IFWL_ThemeProvider* pThemeProvider) {
-  m_pProperties->m_pThemeProvider = pThemeProvider;
+IFWL_ThemeProvider* CFWL_Widget::GetThemeProvider() const {
+  return m_pOwnerApp->GetAdapterNative()->GetThemeProvider();
 }
 
 bool CFWL_Widget::IsEnabled() const {
@@ -212,35 +212,16 @@ CFX_RectF CFWL_Widget::GetEdgeRect() const {
 }
 
 float CFWL_Widget::GetCXBorderSize() const {
-  IFWL_ThemeProvider* theme = GetAvailableTheme();
-  return theme ? theme->GetCXBorderSize() : 0.0f;
+  return GetThemeProvider()->GetCXBorderSize();
 }
 
 float CFWL_Widget::GetCYBorderSize() const {
-  IFWL_ThemeProvider* theme = GetAvailableTheme();
-  return theme ? theme->GetCYBorderSize() : 0.0f;
+  return GetThemeProvider()->GetCYBorderSize();
 }
 
 CFX_RectF CFWL_Widget::GetRelativeRect() const {
   return CFX_RectF(0, 0, m_pProperties->m_WidgetRect.width,
                    m_pProperties->m_WidgetRect.height);
-}
-
-IFWL_ThemeProvider* CFWL_Widget::GetAvailableTheme() const {
-  if (m_pProperties->m_pThemeProvider)
-    return m_pProperties->m_pThemeProvider.Get();
-
-  const CFWL_Widget* pUp = this;
-  do {
-    pUp = pUp->IsPopup() ? m_pWidgetMgr->GetOwnerWidget(pUp)
-                         : m_pWidgetMgr->GetParentWidget(pUp);
-    if (pUp) {
-      IFWL_ThemeProvider* pRet = pUp->GetThemeProvider();
-      if (pRet)
-        return pRet;
-    }
-  } while (pUp);
-  return nullptr;
 }
 
 CFX_SizeF CFWL_Widget::CalcTextSize(const WideString& wsText,

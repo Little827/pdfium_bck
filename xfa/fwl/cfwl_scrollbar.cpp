@@ -42,8 +42,6 @@ FWL_Type CFWL_ScrollBar::GetClassID() const {
 void CFWL_ScrollBar::Update() {
   if (IsLocked())
     return;
-  if (!GetProperties()->m_pThemeProvider)
-    GetProperties()->m_pThemeProvider = GetAvailableTheme();
 
   Layout();
 }
@@ -52,12 +50,11 @@ void CFWL_ScrollBar::DrawWidget(CXFA_Graphics* pGraphics,
                                 const CFX_Matrix& matrix) {
   if (!pGraphics)
     return;
-  if (!GetProperties()->m_pThemeProvider)
-    return;
 
-  IFWL_ThemeProvider* pTheme = GetProperties()->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = GetThemeProvider();
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, pTheme, matrix);
+
   DrawTrack(pGraphics, pTheme, true, &matrix);
   DrawTrack(pGraphics, pTheme, false, &matrix);
   DrawArrowBtn(pGraphics, pTheme, true, &matrix);
