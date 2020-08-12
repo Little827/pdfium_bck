@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba6e56d5_76f58483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-08-12T07:11:42Z",
+      "side": 1,
+      "message": "Lei, Tom: could you please take a look?\n\nFor context, that\u0027s my last suggestion for exposing individual signature properties for now.",
+      "revId": "2bf9ddddaeb6ff8749e5a29c304bcdff654c835c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
