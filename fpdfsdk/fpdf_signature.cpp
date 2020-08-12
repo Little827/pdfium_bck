@@ -142,3 +142,23 @@ FPDFSignatureObj_GetReason(FPDF_SIGNATURE signature,
   return Utf16EncodeMaybeCopyAndReturnLength(obj->GetUnicodeText(), buffer,
                                              length);
 }
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFSignatureObj_GetTime(FPDF_SIGNATURE signature,
+                         char* buffer,
+                         unsigned long length) {
+  CPDF_Dictionary* signature_dict = CPDFDictionaryFromFPDFSignature(signature);
+  if (!signature_dict)
+    return 0;
+
+  CPDF_Dictionary* value_dict = signature_dict->GetDictFor("V");
+  if (!value_dict || !value_dict->KeyExist("M"))
+    return 0;
+
+  ByteString time = value_dict->GetStringFor("M");
+  unsigned long time_len = time.GetLength() + 1;
+  if (buffer && length >= time_len)
+    memcpy(buffer, time.c_str(), time_len);
+
+  return time_len;
+}
