@@ -40,8 +40,6 @@ void CFWL_PushButton::SetStates(uint32_t dwStates) {
 void CFWL_PushButton::Update() {
   if (IsLocked())
     return;
-  if (!GetProperties()->m_pThemeProvider)
-    GetProperties()->m_pThemeProvider = GetAvailableTheme();
 
   m_ClientRect = GetClientRect();
   m_CaptionRect = m_ClientRect;
@@ -52,12 +50,10 @@ void CFWL_PushButton::DrawWidget(CXFA_Graphics* pGraphics,
   if (!pGraphics)
     return;
 
-  IFWL_ThemeProvider* pTheme = GetProperties()->m_pThemeProvider.Get();
-  if (!pTheme)
-    return;
-
+  IFWL_ThemeProvider* pTheme = GetThemeProvider();
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, pTheme, matrix);
+
   DrawBkground(pGraphics, pTheme, &matrix);
 }
 

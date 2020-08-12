@@ -129,7 +129,6 @@ class CFWL_MonthCalendar final : public CFWL_Widget {
   void CalcHeadSize();
   void CalcTodaySize();
   void CalDateItem();
-  void GetCapValue();
   void InitDate();
   void ClearDateItem();
   void ResetDateItem();

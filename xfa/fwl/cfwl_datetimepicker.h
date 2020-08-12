@@ -39,7 +39,6 @@ class CFWL_DateTimePicker final : public CFWL_Widget {
   void Update() override;
   FWL_WidgetHit HitTest(const CFX_PointF& point) override;
   void DrawWidget(CXFA_Graphics* pGraphics, const CFX_Matrix& matrix) override;
-  void SetThemeProvider(IFWL_ThemeProvider* pTP) override;
   void OnProcessMessage(CFWL_Message* pMessage) override;
   void OnDrawWidget(CXFA_Graphics* pGraphics,
                     const CFX_Matrix& matrix) override;

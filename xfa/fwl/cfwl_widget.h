@@ -83,9 +83,8 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
   virtual FWL_WidgetHit HitTest(const CFX_PointF& point);
   virtual void DrawWidget(CXFA_Graphics* pGraphics,
                           const CFX_Matrix& matrix) = 0;
-  virtual void SetThemeProvider(IFWL_ThemeProvider* pThemeProvider);
 
-  // IFWL_WidgetDelegate.
+  // IFWL_WidgetDelegate:
   void OnProcessMessage(CFWL_Message* pMessage) override;
   void OnProcessEvent(CFWL_Event* pEvent) override;
   void OnDrawWidget(CXFA_Graphics* pGraphics,
@@ -110,10 +109,7 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
 
   CFX_PointF TransformTo(CFWL_Widget* pWidget, const CFX_PointF& point);
   CFX_Matrix GetMatrix() const;
-  IFWL_ThemeProvider* GetThemeProvider() const {
-    return m_pProperties->m_pThemeProvider.Get();
-  }
-
+  IFWL_ThemeProvider* GetThemeProvider() const;
   void SetDelegate(IFWL_WidgetDelegate* delegate) { m_pDelegate = delegate; }
   IFWL_WidgetDelegate* GetDelegate() {
     return m_pDelegate ? m_pDelegate.Get() : this;
@@ -142,7 +138,6 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
   float GetCXBorderSize() const;
   float GetCYBorderSize() const;
   CFX_RectF GetRelativeRect() const;
-  IFWL_ThemeProvider* GetAvailableTheme() const;
   CFWL_WidgetProperties* GetProperties() { return m_pProperties.get(); }
   const CFWL_WidgetProperties* GetProperties() const {
     return m_pProperties.get();
