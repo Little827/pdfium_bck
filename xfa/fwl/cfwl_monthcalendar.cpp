@@ -107,15 +107,11 @@ CFX_RectF CFWL_MonthCalendar::GetAutosizedWidgetRect() {
 void CFWL_MonthCalendar::Update() {
   if (IsLocked())
     return;
-  if (!GetProperties()->m_pThemeProvider)
-    GetProperties()->m_pThemeProvider = GetAvailableTheme();
 
-  GetCapValue();
   if (!m_bInitialized) {
     InitDate();
     m_bInitialized = true;
   }
-
   ClearDateItem();
   ResetDateItem();
   Layout();
@@ -126,10 +122,7 @@ void CFWL_MonthCalendar::DrawWidget(CXFA_Graphics* pGraphics,
   if (!pGraphics)
     return;
 
-  if (!GetProperties()->m_pThemeProvider)
-    GetProperties()->m_pThemeProvider = GetAvailableTheme();
-
-  IFWL_ThemeProvider* pTheme = GetProperties()->m_pThemeProvider.Get();
+  IFWL_ThemeProvider* pTheme = GetThemeProvider();
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, pTheme, matrix);
 
@@ -219,8 +212,7 @@ void CFWL_MonthCalendar::DrawCaption(CXFA_Graphics* pGraphics,
   textParam.m_dwStates = CFWL_PartState_Normal;
   textParam.m_pGraphics = pGraphics;
   textParam.m_wsText = GetHeadText(m_iCurYear, m_iCurMonth);
-  m_HeadSize = CalcTextSize(textParam.m_wsText,
-                            GetProperties()->m_pThemeProvider.Get(), false);
+  m_HeadSize = CalcTextSize(textParam.m_wsText, GetThemeProvider(), false);
   CalcHeadSize();
   textParam.m_PartRect = m_HeadTextRect;
   textParam.m_dwTTOStyles.single_line_ = true;
@@ -310,13 +302,10 @@ void CFWL_MonthCalendar::DrawToday(CXFA_Graphics* pGraphics,
   params.m_dwStates = CFWL_PartState_Normal;
   params.m_iTTOAlign = FDE_TextAlignment::kCenterLeft;
   params.m_wsText = GetTodayText(m_iYear, m_iMonth, m_iDay);
-
-  m_TodaySize = CalcTextSize(params.m_wsText,
-                             GetProperties()->m_pThemeProvider.Get(), false);
+  m_TodaySize = CalcTextSize(params.m_wsText, GetThemeProvider(), false);
   CalcTodaySize();
   params.m_PartRect = m_TodayRect;
   params.m_dwTTOStyles.single_line_ = true;
-
   if (pMatrix)
     params.m_matrix.Concat(*pMatrix);
   pTheme->DrawText(params);
@@ -387,10 +376,7 @@ void CFWL_MonthCalendar::DrawDatesInCircle(CXFA_Graphics* pGraphics,
 }
 
 CFX_SizeF CFWL_MonthCalendar::CalcSize() {
-  IFWL_ThemeProvider* pTheme = GetProperties()->m_pThemeProvider.Get();
-  if (!pTheme)
-    return CFX_SizeF();
-
+  IFWL_ThemeProvider* pTheme = GetThemeProvider();
   float fMaxWeekW = 0.0f;
   float fMaxWeekH = 0.0f;
   for (int i = 0; i < 7; ++i) {
@@ -398,7 +384,6 @@ CFX_SizeF CFWL_MonthCalendar::CalcSize() {
     fMaxWeekW = (fMaxWeekW >= sz.width) ? fMaxWeekW : sz.width;
     fMaxWeekH = (fMaxWeekH >= sz.height) ? fMaxWeekH : sz.height;
   }
-
   float fDayMaxW = 0.0f;
   float fDayMaxH = 0.0f;
   for (int day = 10; day <= 31; day++) {
@@ -514,11 +499,6 @@ void CFWL_MonthCalendar::CalDateItem() {
     if (pDateInfo->iDayOfWeek >= 6)
       bNewWeek = true;
   }
-}
-
-void CFWL_MonthCalendar::GetCapValue() {
-  if (!GetProperties()->m_pThemeProvider)
-    GetProperties()->m_pThemeProvider = GetAvailableTheme();
 }
 
 void CFWL_MonthCalendar::InitDate() {

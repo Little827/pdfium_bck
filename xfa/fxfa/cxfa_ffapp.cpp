@@ -66,3 +66,7 @@ CFWL_WidgetMgr::AdapterIface* CXFA_FFApp::GetWidgetMgrAdapter() {
 TimerHandlerIface* CXFA_FFApp::GetTimerHandler() {
   return m_pProvider->GetTimerHandler();
 }
+
+IFWL_ThemeProvider* CXFA_FFApp::GetThemeProvider() {
+  return m_pFWLTheme.get();
+}
