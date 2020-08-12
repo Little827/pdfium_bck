@@ -260,11 +260,3 @@ void CFWL_NoteDriver::MouseSecondary(CFWL_Message* pMessage) {
   CFWL_MessageMouse msHover(pTarget, FWL_MouseCommand::Hover, 0, pMsg->m_pos);
   DispatchMessage(&msHover, nullptr);
 }
-
-CFWL_Widget* CFWL_NoteDriver::GetMessageForm(CFWL_Widget* pDstTarget) {
-  if (!pDstTarget)
-    return nullptr;
-
-  CFWL_WidgetMgr* pWidgetMgr = pDstTarget->GetOwnerApp()->GetWidgetMgr();
-  return pWidgetMgr->GetSystemFormWidget(pDstTarget);
-}

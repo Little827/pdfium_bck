@@ -47,7 +47,6 @@ class CFWL_NoteDriver {
   bool DoWheel(CFWL_Message* pMsg, CFWL_Widget* pMessageForm);
   bool DoMouseEx(CFWL_Message* pMsg, CFWL_Widget* pMessageForm);
   void MouseSecondary(CFWL_Message* pMsg);
-  CFWL_Widget* GetMessageForm(CFWL_Widget* pDstTarget);
 
   std::map<uint64_t, std::unique_ptr<CFWL_EventTarget>> m_eventTargets;
   UnownedPtr<CFWL_Widget> m_pHover;
