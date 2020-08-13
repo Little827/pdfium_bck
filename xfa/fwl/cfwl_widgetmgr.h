@@ -72,7 +72,6 @@ class CFWL_WidgetMgr {
 
     Item* pOwner = nullptr;
     CFWL_Widget* const pWidget;
-    std::unique_ptr<CXFA_Graphics> pOffscreen;
     int32_t iRedrawCounter = 0;
   };
 
