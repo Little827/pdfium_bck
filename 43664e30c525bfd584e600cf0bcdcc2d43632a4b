@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9404237c_b1e2a208",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-08-13T13:09:47Z",
+      "side": 1,
+      "message": "Lei, Tom: this is meant to address the request at \u003chttps://pdfium-review.googlesource.com/c/pdfium/+/72690/4#message-82fbb5b1c781f5db5b6d2c27b0dc550de46305f4\u003e.",
+      "revId": "43664e30c525bfd584e600cf0bcdcc2d43632a4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
