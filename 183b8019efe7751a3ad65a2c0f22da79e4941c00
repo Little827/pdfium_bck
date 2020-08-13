@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ea597db_edc53a95",
+        "filename": "xfa/fwl/cfwl_checkbox.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-13T22:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bfd832e_c5cc0bd6",
+      "revId": "183b8019efe7751a3ad65a2c0f22da79e4941c00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b31d6515_ddb3d761",
         "filename": "xfa/fwl/cfwl_listbox.cpp",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "183b8019efe7751a3ad65a2c0f22da79e4941c00",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fe45a1_72df98e6",
+        "filename": "xfa/fwl/cfwl_listbox.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-13T22:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b31d6515_ddb3d761",
+      "revId": "183b8019efe7751a3ad65a2c0f22da79e4941c00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
