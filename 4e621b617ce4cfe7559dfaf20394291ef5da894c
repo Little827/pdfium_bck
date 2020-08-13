@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "582d3f0e_cd56afc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-13T16:37:36Z",
+      "side": 1,
+      "message": "Follow-up CL will remove GetOwnerWidget(), but has to merge past other CLs.",
+      "revId": "4e621b617ce4cfe7559dfaf20394291ef5da894c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
