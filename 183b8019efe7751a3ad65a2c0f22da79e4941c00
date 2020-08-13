@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bfd832e_c5cc0bd6",
+        "filename": "xfa/fwl/cfwl_checkbox.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-13T21:48:26Z",
+      "side": 1,
+      "message": "Move down closer to where used.",
+      "revId": "183b8019efe7751a3ad65a2c0f22da79e4941c00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31d6515_ddb3d761",
+        "filename": "xfa/fwl/cfwl_listbox.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-13T21:48:26Z",
+      "side": 1,
+      "message": "Move down.",
+      "revId": "183b8019efe7751a3ad65a2c0f22da79e4941c00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
