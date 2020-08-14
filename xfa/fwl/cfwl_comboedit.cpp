@@ -13,11 +13,10 @@
 #include "xfa/fwl/cfwl_combobox.h"
 #include "xfa/fwl/cfwl_messagemouse.h"
 
-CFWL_ComboEdit::CFWL_ComboEdit(
-    const CFWL_App* app,
-    std::unique_ptr<CFWL_WidgetProperties> properties,
-    CFWL_Widget* pOuter)
-    : CFWL_Edit(app, std::move(properties), pOuter) {}
+CFWL_ComboEdit::CFWL_ComboEdit(const CFWL_App* app,
+                               const Properties& properties,
+                               CFWL_Widget* pOuter)
+    : CFWL_Edit(app, properties, pOuter) {}
 
 CFWL_ComboEdit::~CFWL_ComboEdit() = default;
 
@@ -33,11 +32,11 @@ void CFWL_ComboEdit::SetSelected() {
 
 void CFWL_ComboEdit::FlagFocus(bool bSet) {
   if (bSet) {
-    GetProperties()->m_dwStates |= FWL_WGTSTATE_Focused;
+    m_Properties.m_dwStates |= FWL_WGTSTATE_Focused;
     return;
   }
 
-  GetProperties()->m_dwStates &= ~FWL_WGTSTATE_Focused;
+  m_Properties.m_dwStates &= ~FWL_WGTSTATE_Focused;
   HideCaret(nullptr);
 }
 
@@ -45,19 +44,19 @@ void CFWL_ComboEdit::OnProcessMessage(CFWL_Message* pMessage) {
   bool backDefault = true;
   switch (pMessage->GetType()) {
     case CFWL_Message::Type::kSetFocus: {
-      GetProperties()->m_dwStates |= FWL_WGTSTATE_Focused;
+      m_Properties.m_dwStates |= FWL_WGTSTATE_Focused;
       backDefault = false;
       break;
     }
     case CFWL_Message::Type::kKillFocus: {
-      GetProperties()->m_dwStates &= ~FWL_WGTSTATE_Focused;
+      m_Properties.m_dwStates &= ~FWL_WGTSTATE_Focused;
       backDefault = false;
       break;
     }
     case CFWL_Message::Type::kMouse: {
       CFWL_MessageMouse* pMsg = static_cast<CFWL_MessageMouse*>(pMessage);
       if ((pMsg->m_dwCmd == FWL_MouseCommand::LeftButtonDown) &&
-          ((GetProperties()->m_dwStates & FWL_WGTSTATE_Focused) == 0)) {
+          ((m_Properties.m_dwStates & FWL_WGTSTATE_Focused) == 0)) {
         SetSelected();
       }
       break;
