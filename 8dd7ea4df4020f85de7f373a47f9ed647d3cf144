@@ -16,6 +16,24 @@
       "revId": "8dd7ea4df4020f85de7f373a47f9ed647d3cf144",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e743e01_6369cd65",
+        "filename": "xfa/fwl/cfwl_widgetproperties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-14T18:39:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a34faa39_59e1dfa2",
+      "revId": "8dd7ea4df4020f85de7f373a47f9ed647d3cf144",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
