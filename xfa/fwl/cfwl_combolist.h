@@ -11,12 +11,11 @@
 
 #include "xfa/fwl/cfwl_listbox.h"
 #include "xfa/fwl/cfwl_widget.h"
-#include "xfa/fwl/cfwl_widgetproperties.h"
 
 class CFWL_ComboList final : public CFWL_ListBox {
  public:
   CFWL_ComboList(const CFWL_App* app,
-                 std::unique_ptr<CFWL_WidgetProperties> properties,
+                 const Properties& properties,
                  CFWL_Widget* pOuter);
 
   // CFWL_ListBox.

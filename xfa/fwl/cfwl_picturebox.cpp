@@ -9,7 +9,7 @@
 #include <memory>
 
 CFWL_PictureBox::CFWL_PictureBox(const CFWL_App* app)
-    : CFWL_Widget(app, std::make_unique<CFWL_WidgetProperties>(), nullptr) {}
+    : CFWL_Widget(app, CFWL_Widget::Properties(), nullptr) {}
 
 CFWL_PictureBox::~CFWL_PictureBox() = default;
 
