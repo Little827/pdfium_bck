@@ -14,12 +14,12 @@
 class CFWL_WidgetProperties {
  public:
   CFWL_WidgetProperties();
+  CFWL_WidgetProperties(const CFWL_WidgetProperties& that);
   ~CFWL_WidgetProperties();
 
   uint32_t m_dwStyles = FWL_WGTSTYLE_Child;
   uint32_t m_dwStyleExes = 0;
   uint32_t m_dwStates = 0;
-  CFX_RectF m_WidgetRect;
 };
 
 #endif  // XFA_FWL_CFWL_WIDGETPROPERTIES_H_
