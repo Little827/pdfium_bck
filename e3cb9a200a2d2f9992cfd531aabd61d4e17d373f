@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "208f9baa_71a5c6fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-17T21:48:45Z",
+      "side": 1,
+      "message": "Found while looking for other places upon which to inflict AutoNuller\u003c\u003e.",
+      "revId": "e3cb9a200a2d2f9992cfd531aabd61d4e17d373f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
