@@ -84,9 +84,9 @@ RetainPtr<CPDF_SeekableMultiStream> CreateXFAMultiStream(
 
 CPDFXFA_Context::CPDFXFA_Context(CPDF_Document* pPDFDoc)
     : m_pPDFDoc(pPDFDoc),
-      m_pGCHeap(FXGC_CreateHeap()),
       m_pXFAApp(std::make_unique<CXFA_FFApp>(this)),
-      m_pDocEnv(std::make_unique<CPDFXFA_DocEnvironment>(this)) {
+      m_pDocEnv(std::make_unique<CPDFXFA_DocEnvironment>(this)),
+      m_pGCHeap(FXGC_CreateHeap()) {
   ASSERT(m_pPDFDoc);
 }
 
@@ -101,9 +101,10 @@ void CPDFXFA_Context::SetFormFillEnv(
   // The layout data can have pointers back into the script context. That
   // context will be different if the form fill environment closes, so, force
   // the layout data to clear.
-  if (m_pXFADoc && m_pXFADoc->GetXFADoc())
+  if (m_pXFADoc && m_pXFADoc->GetXFADoc()) {
     m_pXFADoc->GetXFADoc()->ClearLayoutData();
-
+    FXGC_ForceGarbageCollection(m_pGCHeap.get());
+  }
   m_pFormFillEnv.Reset(pFormFillEnv);
 }
 
@@ -130,16 +131,18 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
   }
 
-  m_pXFADoc =
-      CXFA_FFDoc::CreateAndOpen(m_pXFAApp.get(), m_pDocEnv.get(),
-                                m_pPDFDoc.Get(), m_pGCHeap.get(), m_pXML.get());
-  if (!m_pXFADoc) {
+  m_pXFADoc = cppgc::MakeGarbageCollected<CXFA_FFDoc>(
+      m_pGCHeap->GetAllocationHandle(), m_pXFAApp.get(), m_pDocEnv.get(),
+      m_pPDFDoc.Get(), m_pGCHeap.get());
+
+  if (!m_pXFADoc->OpenDoc(m_pXML.get())) {
+    m_pXFADoc.Clear();
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);
     return false;
   }
 
-  if (!m_pXFAApp->LoadFWLTheme(m_pXFADoc.get())) {
-    m_pXFADoc.reset();
+  if (!m_pXFAApp->LoadFWLTheme(m_pXFADoc.Get())) {
+    m_pXFADoc.Clear();
     FXSYS_SetLastError(FPDF_ERR_XFALAYOUT);
     return false;
   }
@@ -152,8 +155,10 @@ bool CPDFXFA_Context::LoadXFADoc() {
 
   m_pXFADocView = m_pXFADoc->CreateDocView();
   if (m_pXFADocView->StartLayout() < 0) {
+    m_pXFADoc->GetXFADoc()->ClearLayoutData();
+    FXGC_ForceGarbageCollection(m_pGCHeap.get());
     m_pXFADocView = nullptr;
-    m_pXFADoc.reset();
+    m_pXFADoc = nullptr;
     FXSYS_SetLastError(FPDF_ERR_XFALAYOUT);
     return false;
   }
