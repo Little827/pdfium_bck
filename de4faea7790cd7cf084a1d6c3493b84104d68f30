@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d9fac93_63fadfb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-17T18:24:48Z",
+      "side": 1,
+      "message": "Pls review. Note that real motivation is AutoNuller\u003ccppgc::Persistent\u003cT\u003e\u003e so as to keep old persistent values off of the stack as would happen with AutoRestorer,",
+      "revId": "de4faea7790cd7cf084a1d6c3493b84104d68f30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
