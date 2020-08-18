@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "471a2329_b713db1f",
+        "filename": "xfa/fwl/cfwl_combobox.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-18T17:13:43Z",
+      "side": 1,
+      "message": "NOTE: I\u0027m dying to write\n  Properties{\n    .m_dwStyles \u003d FWL_WGTSTYLE_Border | FWL_WGTSTYLE_VScroll,\n    .m_dwStates \u003d FWL_WGTSTATE_Invisible}\n\nbut thats C++20 and at least N years away (though clang seems to tolerate it in my local builds).",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "5b895e5e6cef170cc004d8f15f20c8bd43bf728e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
