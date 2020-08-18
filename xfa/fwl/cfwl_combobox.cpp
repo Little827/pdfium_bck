@@ -33,8 +33,8 @@ CFWL_ComboBox::CFWL_ComboBox(const CFWL_App* app)
       m_pEdit(std::make_unique<CFWL_ComboEdit>(app, Properties(), this)),
       m_pListBox(std::make_unique<CFWL_ComboList>(
           app,
-          Properties{FWL_WGTSTYLE_Border | FWL_WGTSTYLE_VScroll, 0,
-                     FWL_WGTSTATE_Invisible},
+          Properties{.m_dwStyles = FWL_WGTSTYLE_Border | FWL_WGTSTYLE_VScroll,
+                     .m_dwStates = FWL_WGTSTATE_Invisible},
           this)) {}
 
 CFWL_ComboBox::~CFWL_ComboBox() = default;
