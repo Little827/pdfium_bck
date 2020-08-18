@@ -32,12 +32,11 @@ class CFX_DIBitmap;
 
 class CFWL_ListBox : public CFWL_Widget {
  public:
-  CFWL_ListBox(const CFWL_App* pApp,
-               const Properties& properties,
-               CFWL_Widget* pOuter);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CFWL_ListBox() override;
 
-  // CFWL_Widget
+  // CFWL_Widget:
+  void Trace(cppgc::Visitor* visitor) const override;
   FWL_Type GetClassID() const override;
   void Update() override;
   FWL_WidgetHit HitTest(const CFX_PointF& point) override;
@@ -65,6 +64,10 @@ class CFWL_ListBox : public CFWL_Widget {
   float CalcItemHeight();
 
  protected:
+  CFWL_ListBox(const CFWL_App* pApp,
+               const Properties& properties,
+               CFWL_Widget* pOuter);
+
   CFWL_ListItem* GetListItem(CFWL_ListItem* hItem, uint32_t dwKeyCode);
   void SetSelection(CFWL_ListItem* hStart, CFWL_ListItem* hEnd, bool bSelected);
   CFWL_ListItem* GetItemAtPoint(const CFX_PointF& point);
@@ -72,7 +75,7 @@ class CFWL_ListBox : public CFWL_Widget {
   void InitVerticalScrollBar();
   void InitHorizontalScrollBar();
   bool IsShowScrollBar(bool bVert);
-  CFWL_ScrollBar* GetVertScrollBar() const { return m_pVertScrollBar.get(); }
+  CFWL_ScrollBar* GetVertScrollBar() const { return m_pVertScrollBar; }
   const CFX_RectF& GetRTClient() const { return m_ClientRect; }
 
  private:
@@ -115,8 +118,8 @@ class CFWL_ListBox : public CFWL_Widget {
   CFX_RectF m_ClientRect;
   CFX_RectF m_StaticRect;
   CFX_RectF m_ContentRect;
-  std::unique_ptr<CFWL_ScrollBar> m_pHorzScrollBar;
-  std::unique_ptr<CFWL_ScrollBar> m_pVertScrollBar;
+  cppgc::Member<CFWL_ScrollBar> m_pHorzScrollBar;
+  cppgc::Member<CFWL_ScrollBar> m_pVertScrollBar;
   FDE_TextStyle m_TTOStyles;
   FDE_TextAlignment m_iTTOAligns = FDE_TextAlignment::kTopLeft;
   bool m_bLButtonDown = false;

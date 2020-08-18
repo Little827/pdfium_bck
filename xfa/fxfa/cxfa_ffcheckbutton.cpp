@@ -39,9 +39,9 @@ void CXFA_FFCheckButton::Trace(cppgc::Visitor* visitor) const {
 bool CXFA_FFCheckButton::LoadWidget() {
   ASSERT(!IsLoaded());
 
-  auto pNew = std::make_unique<CFWL_CheckBox>(GetFWLApp());
-  CFWL_CheckBox* pCheckBox = pNew.get();
-  SetNormalWidget(std::move(pNew));
+  CFWL_CheckBox* pCheckBox = cppgc::MakeGarbageCollected<CFWL_CheckBox>(
+      GetFWLApp()->GetHeap()->GetAllocationHandle(), GetFWLApp());
+  SetNormalWidget(pCheckBox);
   pCheckBox->SetAdapterIface(this);
 
   CFWL_NoteDriver* pNoteDriver = pCheckBox->GetFWLApp()->GetNoteDriver();

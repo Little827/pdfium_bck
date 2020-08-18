@@ -25,10 +25,10 @@ CXFA_FFNumericEdit::~CXFA_FFNumericEdit() = default;
 bool CXFA_FFNumericEdit::LoadWidget() {
   ASSERT(!IsLoaded());
 
-  auto pNewEdit = std::make_unique<CFWL_Edit>(
-      GetFWLApp(), CFWL_Widget::Properties(), nullptr);
-  CFWL_Edit* pWidget = pNewEdit.get();
-  SetNormalWidget(std::move(pNewEdit));
+  CFWL_Edit* pWidget = cppgc::MakeGarbageCollected<CFWL_Edit>(
+      GetFWLApp()->GetHeap()->GetAllocationHandle(), GetFWLApp(),
+      CFWL_Widget::Properties(), nullptr);
+  SetNormalWidget(pWidget);
   pWidget->SetAdapterIface(this);
 
   CFWL_NoteDriver* pNoteDriver = pWidget->GetFWLApp()->GetNoteDriver();

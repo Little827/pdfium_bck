@@ -40,12 +40,12 @@ CXFA_FFListBox::~CXFA_FFListBox() {
 bool CXFA_FFListBox::LoadWidget() {
   ASSERT(!IsLoaded());
 
-  auto pNew = std::make_unique<CFWL_ListBox>(
-      GetFWLApp(), CFWL_Widget::Properties(), nullptr);
-  CFWL_ListBox* pListBox = pNew.get();
+  CFWL_ListBox* pListBox = cppgc::MakeGarbageCollected<CFWL_ListBox>(
+      GetFWLApp()->GetHeap()->GetAllocationHandle(), GetFWLApp(),
+      CFWL_Widget::Properties(), nullptr);
   pListBox->ModifyStyles(FWL_WGTSTYLE_VScroll | FWL_WGTSTYLE_NoBackground,
                          0xFFFFFFFF);
-  SetNormalWidget(std::move(pNew));
+  SetNormalWidget(pListBox);
   pListBox->SetAdapterIface(this);
 
   CFWL_NoteDriver* pNoteDriver = pListBox->GetFWLApp()->GetNoteDriver();

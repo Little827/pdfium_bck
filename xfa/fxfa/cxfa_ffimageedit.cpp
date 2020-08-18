@@ -33,9 +33,9 @@ CXFA_FFImageEdit::~CXFA_FFImageEdit() {
 bool CXFA_FFImageEdit::LoadWidget() {
   ASSERT(!IsLoaded());
 
-  auto pNew = std::make_unique<CFWL_PictureBox>(GetFWLApp());
-  CFWL_PictureBox* pPictureBox = pNew.get();
-  SetNormalWidget(std::move(pNew));
+  CFWL_PictureBox* pPictureBox = cppgc::MakeGarbageCollected<CFWL_PictureBox>(
+      GetFWLApp()->GetHeap()->GetAllocationHandle(), GetFWLApp());
+  SetNormalWidget(pPictureBox);
   pPictureBox->SetAdapterIface(this);
 
   CFWL_NoteDriver* pNoteDriver = pPictureBox->GetFWLApp()->GetNoteDriver();
