@@ -57,12 +57,8 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
     virtual void GetBorderColorAndThickness(FX_ARGB* cr, float* fWidth) = 0;
   };
 
-  class Properties {
+  struct Properties {
    public:
-    Properties();
-    Properties(const Properties& that);
-    ~Properties();
-
     uint32_t m_dwStyles = FWL_WGTSTYLE_Child;
     uint32_t m_dwStyleExes = 0;
     uint32_t m_dwStates = 0;
