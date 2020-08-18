@@ -11,6 +11,12 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fxjs/gc/heap.h"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/macros.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/prefinalizer.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fde/cfde_data.h"
 #include "xfa/fwl/cfwl_themepart.h"
 #include "xfa/fwl/cfwl_widgetmgr.h"
@@ -47,7 +53,11 @@ enum class FWL_Type {
 };
 
 // NOTE: CFWL_Widget serves as its own delegate until replaced at runtime.
-class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
+class CFWL_Widget : public cppgc::GarbageCollected<CFWL_Widget>,
+                    public Observable,
+                    public IFWL_WidgetDelegate {
+  CPPGC_USING_PRE_FINALIZER(CFWL_Widget, PreFinalize);
+
  public:
   class AdapterIface {
    public:
@@ -65,6 +75,8 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
   };
 
   class ScopedUpdateLock {
+    CPPGC_STACK_ALLOCATED();  // Allow raw/unowned pointers.
+
    public:
     explicit ScopedUpdateLock(CFWL_Widget* widget);
     ~ScopedUpdateLock();
@@ -73,7 +85,11 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
     UnownedPtr<CFWL_Widget> const widget_;
   };
 
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CFWL_Widget() override;
+
+  virtual void PreFinalize();
+  virtual void Trace(cppgc::Visitor* visitor) const;
 
   virtual FWL_Type GetClassID() const = 0;
   virtual bool IsForm() const;
@@ -178,7 +194,7 @@ class CFWL_Widget : public Observable, public IFWL_WidgetDelegate {
   uint64_t m_nEventKey = 0;
   UnownedPtr<const CFWL_App> const m_pFWLApp;
   UnownedPtr<CFWL_WidgetMgr> const m_pWidgetMgr;
-  CFWL_Widget* const m_pOuter;
+  cppgc::Member<CFWL_Widget> const m_pOuter;
   AdapterIface* m_pAdapterIface = nullptr;
   UnownedPtr<IFWL_WidgetDelegate> m_pDelegate;
 };

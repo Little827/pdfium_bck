@@ -42,10 +42,16 @@ CFWL_Widget::CFWL_Widget(const CFWL_App* app,
   m_pWidgetMgr->InsertWidget(m_pOuter, this);
 }
 
-CFWL_Widget::~CFWL_Widget() {
+CFWL_Widget::~CFWL_Widget() = default;
+
+void CFWL_Widget::PreFinalize() {
   CHECK(!IsLocked());  // Prefer hard stop to UaF.
   NotifyDriver();
   m_pWidgetMgr->RemoveWidget(this);
+}
+
+void CFWL_Widget::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(m_pOuter);
 }
 
 bool CFWL_Widget::IsForm() const {

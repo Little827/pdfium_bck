@@ -51,9 +51,9 @@ bool CXFA_FFComboBox::PtInActiveRect(const CFX_PointF& point) {
 bool CXFA_FFComboBox::LoadWidget() {
   ASSERT(!IsLoaded());
 
-  auto pNew = std::make_unique<CFWL_ComboBox>(GetFWLApp());
-  CFWL_ComboBox* pComboBox = pNew.get();
-  SetNormalWidget(std::move(pNew));
+  CFWL_ComboBox* pComboBox = cppgc::MakeGarbageCollected<CFWL_ComboBox>(
+      GetFWLApp()->GetHeap()->GetAllocationHandle(), GetFWLApp());
+  SetNormalWidget(pComboBox);
   pComboBox->SetAdapterIface(this);
 
   CFWL_NoteDriver* pNoteDriver = pComboBox->GetFWLApp()->GetNoteDriver();

@@ -44,9 +44,10 @@ bool CXFA_FFDateTimeEdit::PtInActiveRect(const CFX_PointF& point) {
 bool CXFA_FFDateTimeEdit::LoadWidget() {
   ASSERT(!IsLoaded());
 
-  auto pNewPicker = std::make_unique<CFWL_DateTimePicker>(GetFWLApp());
-  CFWL_DateTimePicker* pWidget = pNewPicker.get();
-  SetNormalWidget(std::move(pNewPicker));
+  CFWL_DateTimePicker* pWidget =
+      cppgc::MakeGarbageCollected<CFWL_DateTimePicker>(
+          GetFWLApp()->GetHeap()->GetAllocationHandle(), GetFWLApp());
+  SetNormalWidget(pWidget);
   pWidget->SetAdapterIface(this);
 
   CFWL_NoteDriver* pNoteDriver = pWidget->GetFWLApp()->GetNoteDriver();
