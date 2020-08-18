@@ -248,7 +248,7 @@ void CXFA_FFNotify::OpenDropDownList(CXFA_Node* pNode) {
   // SetFocusWidget() may destroy |hWidget| object by JS callback.
   ObservedPtr<CXFA_FFWidget> pObservedWidget(hWidget);
   CXFA_FFDoc* hDoc = GetFFDoc();
-  hDoc->GetDocEnvironment()->SetFocusWidget(hDoc, hWidget);
+  hDoc->SetFocusWidget(hWidget);
   if (!pObservedWidget)
     return;
 
@@ -434,7 +434,7 @@ void CXFA_FFNotify::OnChildAdded(CXFA_Node* pSender) {
       !(pDocView->m_bInLayoutStatus) &&
       (pDocView->GetLayoutStatus() == XFA_DOCVIEW_LAYOUTSTATUS_End);
   if (bLayoutReady)
-    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc.Get());
+    m_pDoc->SetChangeMark();
 }
 
 void CXFA_FFNotify::OnChildRemoved() {
@@ -446,7 +446,7 @@ void CXFA_FFNotify::OnChildRemoved() {
       !(pDocView->m_bInLayoutStatus) &&
       (pDocView->GetLayoutStatus() == XFA_DOCVIEW_LAYOUTSTATUS_End);
   if (bLayoutReady)
-    m_pDoc->GetDocEnvironment()->SetChangeMark(m_pDoc.Get());
+    m_pDoc->SetChangeMark();
 }
 
 void CXFA_FFNotify::OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
@@ -470,7 +470,7 @@ void CXFA_FFNotify::OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
       (dwStatus & (XFA_WidgetStatus_Visible | XFA_WidgetStatus_Viewable)) ==
           (XFA_WidgetStatus_Visible | XFA_WidgetStatus_Viewable)) {
     pWidget->SetPageView(pNewPageView);
-    m_pDoc->GetDocEnvironment()->WidgetPostAdd(pWidget);
+    m_pDoc->WidgetPostAdd(pWidget);
   }
   if (pDocView->GetLayoutStatus() != XFA_DOCVIEW_LAYOUTSTATUS_End ||
       !(dwStatus & XFA_WidgetStatus_Visible)) {
@@ -496,6 +496,6 @@ void CXFA_FFNotify::OnLayoutItemRemoving(CXFA_LayoutProcessor* pLayout,
     return;
 
   pDocView->DeleteLayoutItem(pWidget);
-  m_pDoc->GetDocEnvironment()->WidgetPreRemove(pWidget);
+  m_pDoc->WidgetPreRemove(pWidget);
   pWidget->InvalidateRect();
 }
