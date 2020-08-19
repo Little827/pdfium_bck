@@ -17,7 +17,9 @@
 
 CXFA_FFImage::CXFA_FFImage(CXFA_Node* pNode) : CXFA_FFWidget(pNode) {}
 
-CXFA_FFImage::~CXFA_FFImage() {
+CXFA_FFImage::~CXFA_FFImage() = default;
+
+void CXFA_FFImage::PreFinalize() {
   GetNode()->SetImageImage(nullptr);
 }
 
