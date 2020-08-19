@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "core/fxcrt/timerhandler_iface.h"
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fwl/cfwl_widgetmgr.h"
 
 class CFWL_NoteDriver;
@@ -54,12 +55,12 @@ class CFWL_App {
   }
   cppgc::Heap* GetHeap() const { return m_pAdapter->GetHeap(); }
   CFWL_WidgetMgr* GetWidgetMgr() const { return m_pWidgetMgr.get(); }
-  CFWL_NoteDriver* GetNoteDriver() const { return m_pNoteDriver.get(); }
+  CFWL_NoteDriver* GetNoteDriver() const { return m_pNoteDriver; }
 
  private:
   UnownedPtr<AdapterIface> const m_pAdapter;
   std::unique_ptr<CFWL_WidgetMgr> m_pWidgetMgr;
-  std::unique_ptr<CFWL_NoteDriver> m_pNoteDriver;
+  cppgc::Persistent<CFWL_NoteDriver> m_pNoteDriver;
 };
 
 #endif  // XFA_FWL_CFWL_APP_H_
