@@ -54,7 +54,7 @@ class CXFA_FFPushButton final : public CXFA_FFField {
   cppgc::Member<CXFA_TextLayout> m_pDownTextLayout;
   cppgc::Member<CXFA_TextProvider> m_pRollProvider;
   cppgc::Member<CXFA_TextProvider> m_pDownProvider;
-  UnownedPtr<IFWL_WidgetDelegate> m_pOldDelegate;
+  cppgc::Member<IFWL_WidgetDelegate> m_pOldDelegate;
   cppgc::Member<CXFA_Button> const button_;
 };
 
