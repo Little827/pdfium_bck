@@ -14,7 +14,7 @@ class CFWL_Message;
 class CXFA_Graphics;
 class CFX_Matrix;
 
-class IFWL_WidgetDelegate {
+class IFWL_WidgetDelegate : public cppgc::GarbageCollectedMixin {
  public:
   virtual ~IFWL_WidgetDelegate() = default;
 
