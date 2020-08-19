@@ -8,6 +8,8 @@
 #define XFA_FXFA_CXFA_FFIMAGEEDIT_H_
 
 #include "core/fxcrt/unowned_ptr.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/cxfa_fffield.h"
 
 class CXFA_FFImageEdit final : public CXFA_FFField {
@@ -16,6 +18,7 @@ class CXFA_FFImageEdit final : public CXFA_FFField {
   ~CXFA_FFImageEdit() override;
 
   // CXFA_FFField
+  void Trace(cppgc::Visitor* visitor) const override;
   void RenderWidget(CXFA_Graphics* pGS,
                     const CFX_Matrix& matrix,
                     HighlightOption highlight) override;
@@ -37,7 +40,7 @@ class CXFA_FFImageEdit final : public CXFA_FFField {
   bool UpdateFWLData() override;
   bool CommitData() override;
 
-  UnownedPtr<IFWL_WidgetDelegate> m_pOldDelegate;
+  cppgc::Member<IFWL_WidgetDelegate> m_pOldDelegate;
 };
 
 #endif  // XFA_FXFA_CXFA_FFIMAGEEDIT_H_

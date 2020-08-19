@@ -30,10 +30,11 @@ class CFWL_DateTimeEdit;
 
 class CFWL_DateTimePicker final : public CFWL_Widget {
  public:
-  explicit CFWL_DateTimePicker(const CFWL_App* pApp);
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CFWL_DateTimePicker() override;
 
   // CFWL_Widget
+  void PreFinalize() override;
   FWL_Type GetClassID() const override;
   void Update() override;
   FWL_WidgetHit HitTest(const CFX_PointF& point) override;
@@ -74,6 +75,8 @@ class CFWL_DateTimePicker final : public CFWL_Widget {
   void ProcessSelChanged(int32_t iYear, int32_t iMonth, int32_t iDay);
 
  private:
+  explicit CFWL_DateTimePicker(const CFWL_App* pApp);
+
   void DrawDropDownButton(CXFA_Graphics* pGraphics, const CFX_Matrix* pMatrix);
   WideString FormatDateString(int32_t iYear, int32_t iMonth, int32_t iDay);
   void ResetEditAlignment();
@@ -86,7 +89,6 @@ class CFWL_DateTimePicker final : public CFWL_Widget {
   void OnLButtonUp(CFWL_MessageMouse* pMsg);
   void OnMouseMove(CFWL_MessageMouse* pMsg);
   void OnMouseLeave(CFWL_MessageMouse* pMsg);
-
   bool NeedsToShowButton() const;
 
   bool m_bLBtnDown = false;

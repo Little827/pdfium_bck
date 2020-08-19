@@ -9,6 +9,7 @@
 #include <memory>
 #include <utility>
 
+#include "xfa/fwl/cfwl_app.h"
 #include "xfa/fwl/cfwl_event.h"
 #include "xfa/fwl/cfwl_eventselectchanged.h"
 #include "xfa/fwl/cfwl_messagemouse.h"
@@ -27,8 +28,13 @@ CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
     : CFWL_Widget(app,
                   Properties{0, FWL_STYLEEXT_DTP_ShortDateFormat, 0},
                   nullptr),
-      m_pEdit(std::make_unique<CFWL_DateTimeEdit>(app, Properties(), this)),
-      m_pMonthCal(std::make_unique<CFWL_MonthCalendar>(
+      m_pEdit(cppgc::MakeGarbageCollected<CFWL_DateTimeEdit>(
+          app->GetHeap()->GetAllocationHandle(),
+          app,
+          Properties(),
+          this)),
+      m_pMonthCal(cppgc::MakeGarbageCollected<CFWL_MonthCalendar>(
+          app->GetHeap()->GetAllocationHandle(),
           app,
           Properties{FWL_WGTSTYLE_Popup | FWL_WGTSTYLE_Border, 0,
                      FWL_WGTSTATE_Invisible},
@@ -40,8 +46,11 @@ CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
   RegisterEventTarget(m_pEdit.get());
 }
 
-CFWL_DateTimePicker::~CFWL_DateTimePicker() {
+CFWL_DateTimePicker::~CFWL_DateTimePicker() = default;
+
+void CFWL_DateTimePicker::PreFinalize() {
   UnregisterEventTarget();
+  CFWL_Widget::PreFinalize();
 }
 
 FWL_Type CFWL_DateTimePicker::GetClassID() const {
