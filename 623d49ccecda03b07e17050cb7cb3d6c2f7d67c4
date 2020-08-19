@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94bc6679_eebf2f1a",
+        "filename": "xfa/fxfa/cxfa_ffimage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-19T00:47:09Z",
+      "side": 1,
+      "message": "Should this consistently call PreFinalize() on the parent class?",
+      "revId": "623d49ccecda03b07e17050cb7cb3d6c2f7d67c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
