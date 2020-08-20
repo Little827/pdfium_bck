@@ -23,7 +23,7 @@
 
 class CFGAS_GEFont;
 class CFX_FontMapper;
-class CFX_FontSourceEnum_File;
+class CFFAS_FontSourceEnumFile;
 class IFX_SeekableReadStream;
 
 #if defined(OS_WIN)
@@ -151,7 +151,7 @@ class CFGAS_FontMgr final : public Observable {
 #if defined(OS_WIN)
   std::deque<FX_FONTDESCRIPTOR> m_FontFaces;
 #else
-  std::unique_ptr<CFX_FontSourceEnum_File> m_pFontSource;
+  std::unique_ptr<CFFAS_FontSourceEnumFile> m_pFontSource;
   std::vector<std::unique_ptr<CFX_FontDescriptor>> m_InstalledFonts;
   std::map<uint32_t, std::unique_ptr<std::vector<CFX_FontDescriptorInfo>>>
       m_Hash2CandidateList;
