@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "54daab79_1cd11653",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-20T18:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95aaecb8_8cdf3b9b",
+      "revId": "d9238e2407f04cd99970dafe98f111d30eaec73d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e17c6f02_cc959148",
         "filename": "xfa/fgas/font/cfgas_fontsource_enum_file.h",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "d9238e2407f04cd99970dafe98f111d30eaec73d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5921f3a6_d81e8bef",
+        "filename": "xfa/fgas/font/cfgas_fontsource_enum_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-20T18:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e17c6f02_cc959148",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "d9238e2407f04cd99970dafe98f111d30eaec73d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
