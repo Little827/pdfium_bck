@@ -40,6 +40,30 @@
       "revId": "1a73eb701f9840b5e9f177cba60ac626e382363c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a8305a_772a65a6",
+        "filename": "third_party/googletest/custom/gmock/internal/custom/gmock-port.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-21T22:38:01Z",
+      "side": 1,
+      "message": "I\u0027m trying to be consistent with the last gtest updated. https://pdfium-review.googlesource.com/28791\n\nNote that the two copies identical for some files, but not all. e.g. There\u0027s no Chromium base/ integration in the PDFium copy.",
+      "parentUuid": "061ef4a4_09cf69cb",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 28
+      },
+      "revId": "1a73eb701f9840b5e9f177cba60ac626e382363c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
