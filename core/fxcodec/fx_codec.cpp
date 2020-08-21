@@ -6,6 +6,8 @@
 
 #include "core/fxcodec/fx_codec.h"
 
+#include <algorithm>
+
 #include "core/fxcrt/fx_memory.h"
 
 namespace fxcodec {
@@ -29,9 +31,8 @@ void ReverseRGB(uint8_t* pDestBuf, const uint8_t* pSrcBuf, int pixels) {
     }
   } else {
     for (int i = 0; i < pixels; i++) {
-      *pDestBuf++ = pSrcBuf[2];
-      *pDestBuf++ = pSrcBuf[1];
-      *pDestBuf++ = pSrcBuf[0];
+      std::copy_backward(pSrcBuf, pSrcBuf + 3, pDestBuf);
+      pDestBuf += 3;
       pSrcBuf += 3;
     }
   }

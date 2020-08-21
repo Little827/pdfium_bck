@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <algorithm>
 #include <string>
 
 #include "third_party/base/compiler_specific.h"
@@ -65,13 +66,13 @@ void ConvertBetweenBGRAandRGBA(const uint8_t* input,
                                int pixel_width,
                                uint8_t* output,
                                bool* is_opaque) {
+  const uint8_t* pixel_in = input;
+  uint8_t* pixel_out = output;
   for (int x = 0; x < pixel_width; x++) {
-    const uint8_t* pixel_in = &input[x * 4];
-    uint8_t* pixel_out = &output[x * 4];
-    pixel_out[0] = pixel_in[2];
-    pixel_out[1] = pixel_in[1];
-    pixel_out[2] = pixel_in[0];
+    std::copy_backward(pixel_in, pixel_in + 3, pixel_out);
     pixel_out[3] = pixel_in[3];
+    pixel_in += 4;
+    pixel_out += 4;
   }
 }
 
@@ -79,12 +80,12 @@ void ConvertBGRtoRGB(const uint8_t* bgr,
                      int pixel_width,
                      uint8_t* rgb,
                      bool* is_opaque) {
+  const uint8_t* pixel_in = bgr;
+  uint8_t* pixel_out = rgb;
   for (int x = 0; x < pixel_width; x++) {
-    const uint8_t* pixel_in = &bgr[x * 3];
-    uint8_t* pixel_out = &rgb[x * 3];
-    pixel_out[0] = pixel_in[2];
-    pixel_out[1] = pixel_in[1];
-    pixel_out[2] = pixel_in[0];
+    std::copy_backward(pixel_in, pixel_in + 3, pixel_out);
+    pixel_in += 3;
+    pixel_out += 3;
   }
 }
 
@@ -162,13 +163,13 @@ void ConvertRGBtoBGRA(const uint8_t* rgb,
                       int pixel_width,
                       uint8_t* bgra,
                       bool* is_opaque) {
+  const uint8_t* pixel_in = rgb;
+  uint8_t* pixel_out = bgra;
   for (int x = 0; x < pixel_width; x++) {
-    const uint8_t* pixel_in = &rgb[x * 3];
-    uint8_t* pixel_out = &bgra[x * 4];
-    pixel_out[0] = pixel_in[2];
-    pixel_out[1] = pixel_in[1];
-    pixel_out[2] = pixel_in[0];
+    std::copy_backward(pixel_in, pixel_in + 3, pixel_out);
     pixel_out[3] = 0xff;
+    pixel_in += 3;
+    pixel_out += 4;
   }
 }
 
@@ -416,12 +417,12 @@ void ConvertBGRAtoRGB(const uint8_t* bgra,
                       int pixel_width,
                       uint8_t* rgb,
                       bool* is_opaque) {
+  const uint8_t* pixel_in = bgra;
+  uint8_t* pixel_out = rgb;
   for (int x = 0; x < pixel_width; x++) {
-    const uint8_t* pixel_in = &bgra[x * 4];
-    uint8_t* pixel_out = &rgb[x * 3];
-    pixel_out[0] = pixel_in[2];
-    pixel_out[1] = pixel_in[1];
-    pixel_out[2] = pixel_in[0];
+    std::copy_backward(pixel_in, pixel_in + 3, pixel_out);
+    pixel_in += 3;
+    pixel_out += 3;
   }
 }
 
