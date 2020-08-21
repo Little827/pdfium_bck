@@ -16,6 +16,24 @@
       "revId": "bb85de36d277a449690e167f63a4ee988877f78d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21fbad0_2cf98cdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 6800
+      },
+      "writtenOn": "2020-08-21T00:22:39Z",
+      "side": 1,
+      "message": "Ack. I wasn\u0027t actually sure what the best format would be.",
+      "parentUuid": "fd7fdd11_46a4f68e",
+      "revId": "bb85de36d277a449690e167f63a4ee988877f78d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
