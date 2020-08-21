@@ -731,9 +731,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap() {
         const uint8_t* src = result_bitmap->GetScanline(row);
         uint8_t* dest = rgb_bitmap->GetWritableScanline(row);
         for (uint32_t col = 0; col < image_info.width; ++col) {
-          dest[0] = src[0];
-          dest[1] = src[1];
-          dest[2] = src[2];
+          std::copy_backward(src, src + 3, dest);
           src += 4;
           dest += 3;
         }

@@ -1955,10 +1955,8 @@ void CompositeRow_Argb2Argb_RgbByteOrder(uint8_t* dest_scan,
     if (back_alpha == 0) {
       if (clip_scan) {
         int src_alpha = clip_scan[col] * src_scan[3] / 255;
+        std::copy_backward(src_scan, src_scan + 3, dest_scan);
         dest_scan[3] = src_alpha;
-        dest_scan[0] = src_scan[2];
-        dest_scan[1] = src_scan[1];
-        dest_scan[2] = src_scan[0];
       } else {
         FXARGB_RGBORDERCOPY(dest_scan, src_scan);
       }
@@ -1977,9 +1975,7 @@ void CompositeRow_Argb2Argb_RgbByteOrder(uint8_t* dest_scan,
     int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
-      dest_scan_o[0] = dest_scan[2];
-      dest_scan_o[1] = dest_scan[1];
-      dest_scan_o[2] = dest_scan[0];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
@@ -2026,9 +2022,7 @@ void CompositeRow_Rgb2Argb_Blend_NoClip_RgbByteOrder(uint8_t* dest_scan,
     dest_scan[3] = 0xff;
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
-      dest_scan_o[0] = dest_scan[2];
-      dest_scan_o[1] = dest_scan[1];
-      dest_scan_o[2] = dest_scan[0];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
@@ -2067,9 +2061,7 @@ void CompositeRow_Argb2Rgb_Blend_RgbByteOrder(uint8_t* dest_scan,
     }
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
-      dest_scan_o[0] = dest_scan[2];
-      dest_scan_o[1] = dest_scan[1];
-      dest_scan_o[2] = dest_scan[0];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
@@ -2114,9 +2106,7 @@ void CompositeRow_Rgb2Rgb_Blend_NoClip_RgbByteOrder(uint8_t* dest_scan,
   for (int col = 0; col < width; col++) {
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
-      dest_scan_o[0] = dest_scan[2];
-      dest_scan_o[1] = dest_scan[1];
-      dest_scan_o[2] = dest_scan[0];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
@@ -2147,11 +2137,9 @@ void CompositeRow_Argb2Rgb_NoBlend_RgbByteOrder(uint8_t* dest_scan,
       src_alpha = src_scan[3];
     }
     if (src_alpha == 255) {
-      dest_scan[2] = *src_scan++;
-      dest_scan[1] = *src_scan++;
-      dest_scan[0] = *src_scan++;
+      std::copy_backward(src_scan, src_scan + 3, dest_scan);
       dest_scan += dest_Bpp;
-      src_scan++;
+      src_scan += 4;
       continue;
     }
     if (src_alpha == 0) {
@@ -2176,9 +2164,7 @@ void CompositeRow_Rgb2Rgb_NoBlend_NoClip_RgbByteOrder(uint8_t* dest_scan,
                                                       int dest_Bpp,
                                                       int src_Bpp) {
   for (int col = 0; col < width; col++) {
-    dest_scan[2] = src_scan[0];
-    dest_scan[1] = src_scan[1];
-    dest_scan[0] = src_scan[2];
+    std::copy_backward(src_scan, src_scan + 3, dest_scan);
     dest_scan += dest_Bpp;
     src_scan += src_Bpp;
   }
@@ -2197,10 +2183,8 @@ void CompositeRow_Rgb2Argb_Blend_Clip_RgbByteOrder(uint8_t* dest_scan,
     int src_alpha = *clip_scan++;
     uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
-      dest_scan[2] = *src_scan++;
-      dest_scan[1] = *src_scan++;
-      dest_scan[0] = *src_scan++;
-      src_scan += src_gap;
+      std::copy_backward(src_scan, src_scan + 3, dest_scan);
+      src_scan += (3 + src_gap);
       dest_scan += 4;
       continue;
     }
@@ -2214,9 +2198,7 @@ void CompositeRow_Rgb2Argb_Blend_Clip_RgbByteOrder(uint8_t* dest_scan,
     int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
-      dest_scan_o[0] = dest_scan[2];
-      dest_scan_o[1] = dest_scan[1];
-      dest_scan_o[2] = dest_scan[0];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
@@ -2254,9 +2236,7 @@ void CompositeRow_Rgb2Rgb_Blend_Clip_RgbByteOrder(uint8_t* dest_scan,
     }
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
-      dest_scan_o[0] = dest_scan[2];
-      dest_scan_o[1] = dest_scan[1];
-      dest_scan_o[2] = dest_scan[0];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
@@ -2283,12 +2263,10 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip_RgbByteOrder(uint8_t* dest_scan,
   for (int col = 0; col < width; col++) {
     int src_alpha = clip_scan[col];
     if (src_alpha == 255) {
-      dest_scan[2] = *src_scan++;
-      dest_scan[1] = *src_scan++;
-      dest_scan[0] = *src_scan++;
+      std::copy_backward(src_scan, src_scan + 3, dest_scan);
       dest_scan[3] = 255;
       dest_scan += 4;
-      src_scan += src_gap;
+      src_scan += (3 + src_gap);
       continue;
     }
     if (src_alpha == 0) {
@@ -2320,9 +2298,7 @@ void CompositeRow_Rgb2Rgb_NoBlend_Clip_RgbByteOrder(uint8_t* dest_scan,
   for (int col = 0; col < width; col++) {
     int src_alpha = clip_scan[col];
     if (src_alpha == 255) {
-      dest_scan[2] = src_scan[0];
-      dest_scan[1] = src_scan[1];
-      dest_scan[0] = src_scan[2];
+      std::copy_backward(src_scan, src_scan + 3, dest_scan);
     } else if (src_alpha) {
       dest_scan[2] = FXDIB_ALPHA_MERGE(dest_scan[2], *src_scan, src_alpha);
       src_scan++;
@@ -2533,7 +2509,8 @@ void CompositeRow_ByteMask2Argb_RgbByteOrder(uint8_t* dest_scan,
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
                          static_cast<uint8_t>(src_g),
                          static_cast<uint8_t>(src_r)};
-      uint8_t dest_scan_o[3] = {dest_scan[2], dest_scan[1], dest_scan[0]};
+      uint8_t dest_scan_o[3];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, scan, dest_scan_o, blended_colors);
       dest_scan[2] =
           FXDIB_ALPHA_MERGE(dest_scan[2], blended_colors[0], alpha_ratio);
@@ -2581,7 +2558,8 @@ void CompositeRow_ByteMask2Rgb_RgbByteOrder(uint8_t* dest_scan,
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
                          static_cast<uint8_t>(src_g),
                          static_cast<uint8_t>(src_r)};
-      uint8_t dest_scan_o[3] = {dest_scan[2], dest_scan[1], dest_scan[0]};
+      uint8_t dest_scan_o[3];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, scan, dest_scan_o, blended_colors);
       dest_scan[2] =
           FXDIB_ALPHA_MERGE(dest_scan[2], blended_colors[0], src_alpha);
@@ -2646,7 +2624,8 @@ void CompositeRow_BitMask2Argb_RgbByteOrder(uint8_t* dest_scan,
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
                          static_cast<uint8_t>(src_g),
                          static_cast<uint8_t>(src_r)};
-      uint8_t dest_scan_o[3] = {dest_scan[2], dest_scan[1], dest_scan[0]};
+      uint8_t dest_scan_o[3];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, scan, dest_scan_o, blended_colors);
       dest_scan[2] =
           FXDIB_ALPHA_MERGE(dest_scan[2], blended_colors[0], alpha_ratio);
@@ -2710,7 +2689,8 @@ void CompositeRow_BitMask2Rgb_RgbByteOrder(uint8_t* dest_scan,
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
                          static_cast<uint8_t>(src_g),
                          static_cast<uint8_t>(src_r)};
-      uint8_t dest_scan_o[3] = {dest_scan[2], dest_scan[1], dest_scan[0]};
+      uint8_t dest_scan_o[3];
+      std::copy_backward(dest_scan, dest_scan + 3, dest_scan_o);
       RGB_Blend(blend_type, scan, dest_scan_o, blended_colors);
       dest_scan[2] =
           FXDIB_ALPHA_MERGE(dest_scan[2], blended_colors[0], src_alpha);
