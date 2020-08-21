@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd7fdd11_46a4f68e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-21T00:20:29Z",
+      "side": 1,
+      "message": "BTW, I don\u0027t think all tools recognize this link. So project:bug_number would have been better.",
+      "revId": "bb85de36d277a449690e167f63a4ee988877f78d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
