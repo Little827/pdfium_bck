@@ -156,3 +156,9 @@ FX_ARGB StringToFXARGB(WideStringView view) {
   }
   return (0xffU << 24) | (r << 16) | (g << 8) | b;
 }
+
+void ReverseCopy3Bytes(uint8_t* dest, const uint8_t* src) {
+  dest[2] = src[0];
+  dest[1] = src[1];
+  dest[0] = src[2];
+}
