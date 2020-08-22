@@ -68,6 +68,8 @@ class CWin32Platform : public CFX_GEModule::PlatformIface {
 
   // CFX_GEModule::PlatformIface:
   void Init() override;
+  std::unique_ptr<SystemFontInfoIface>
+  CWin32Platform::CreateDefaultSystemFontInfo() override;
 
   bool m_bHalfTone = false;
   CGdiplusExt m_GdiplusExt;
