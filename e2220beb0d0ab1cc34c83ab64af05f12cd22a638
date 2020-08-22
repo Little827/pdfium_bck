@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39e2e88f_8f216270",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-22T04:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37982f22_f53ac5aa",
+      "range": {
+        "startLine": 408,
+        "startChar": 25,
+        "endLine": 408,
+        "endChar": 33
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12380ef6_202e2214",
         "filename": "core/fxge/dib/cfx_dibbase.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ea9fea_29005744",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-22T04:34:05Z",
+      "side": 1,
+      "message": "Done. Guess what doesn\u0027t have code coverage.",
+      "parentUuid": "12380ef6_202e2214",
+      "range": {
+        "startLine": 1156,
+        "startChar": 26,
+        "endLine": 1156,
+        "endChar": 28
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b3f10e4a_b81ad44e",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-22T04:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d15db12d_0e5be7cf",
+      "range": {
+        "startLine": 532,
+        "startChar": 18,
+        "endLine": 532,
+        "endChar": 31
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce7fbecf_ae0172ac",
         "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12b918f_40487868",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-22T04:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce7fbecf_ae0172ac",
+      "range": {
+        "startLine": 583,
+        "startChar": 24,
+        "endLine": 583,
+        "endChar": 25
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cd388b21_d8bce69e",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-22T04:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6780a452_645509f9",
+      "range": {
+        "startLine": 612,
+        "startChar": 22,
+        "endLine": 612,
+        "endChar": 33
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da27a88f_97c58255",
         "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ccf3671_79663831",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-22T04:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da27a88f_97c58255",
+      "range": {
+        "startLine": 646,
+        "startChar": 19,
+        "endLine": 646,
+        "endChar": 30
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
