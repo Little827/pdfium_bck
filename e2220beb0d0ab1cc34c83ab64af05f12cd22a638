@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37982f22_f53ac5aa",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-22T02:41:23Z",
+      "side": 1,
+      "message": "nit: can we pull the ++ out of the memset?",
+      "range": {
+        "startLine": 408,
+        "startChar": 25,
+        "endLine": 408,
+        "endChar": 33
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12380ef6_202e2214",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-22T02:41:23Z",
+      "side": 1,
+      "message": "I counted two ++ in the original code.\nnit: overparenthesized consistently throughout?",
+      "range": {
+        "startLine": 1156,
+        "startChar": 26,
+        "endLine": 1156,
+        "endChar": 28
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15db12d_0e5be7cf",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-22T02:41:23Z",
+      "side": 1,
+      "message": "nit: isn\u0027t this src_Bpp as used elsewhere?",
+      "range": {
+        "startLine": 532,
+        "startChar": 18,
+        "endLine": 532,
+        "endChar": 31
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce7fbecf_ae0172ac",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-22T02:41:23Z",
+      "side": 1,
+      "message": "and src_BPP here too?",
+      "range": {
+        "startLine": 583,
+        "startChar": 24,
+        "endLine": 583,
+        "endChar": 25
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6780a452_645509f9",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-22T02:41:23Z",
+      "side": 1,
+      "message": "simlilary src_Bpp ?",
+      "range": {
+        "startLine": 612,
+        "startChar": 22,
+        "endLine": 612,
+        "endChar": 33
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da27a88f_97c58255",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-22T02:41:23Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 646,
+        "startChar": 19,
+        "endLine": 646,
+        "endChar": 30
+      },
+      "revId": "e2220beb0d0ab1cc34c83ab64af05f12cd22a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
