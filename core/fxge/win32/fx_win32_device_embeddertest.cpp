@@ -17,13 +17,14 @@ constexpr CFX_Matrix kIdentityMatrix;
 
 }  // namespace
 
-class CFX_WindowsRenderDeviceTest : public testing::Test {
+class CFX_WindowsRenderDeviceTest : public EmbedderTest {
  public:
   void SetUp() override {
+    EmbedderTest::SetUp();
+
     // Get a device context with Windows GDI.
     m_hDC = CreateCompatibleDC(nullptr);
     ASSERT_TRUE(m_hDC);
-    CFX_GEModule::Create(nullptr);
     m_driver = std::make_unique<CFX_WindowsRenderDevice>(m_hDC, nullptr);
     m_driver->SaveState();
   }
@@ -31,8 +32,8 @@ class CFX_WindowsRenderDeviceTest : public testing::Test {
   void TearDown() override {
     m_driver->RestoreState(false);
     m_driver.reset();
-    CFX_GEModule::Destroy();
     DeleteDC(m_hDC);
+    EmbedderTest::TearDown();
   }
 
  protected:
