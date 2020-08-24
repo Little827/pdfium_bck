@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dc2c5c0_cdf5e9f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T17:55:39Z",
+      "side": 1,
+      "message": "I tried out std::reverse_copy(), but it\u0027s slower than the existing code. So just adding our own reverse copy function for this specific use case.",
+      "revId": "2688ab8b72c0039356a77964e950294a9461b2d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
