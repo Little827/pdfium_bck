@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "49946651_b81f3fda",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Without it, we get a diff in FPDFAnnotEmbedderTest.BUG_1206 when running the entire suite:\n\nExpected equality of these values:\n  kExpectedSize\n    Which is: 1609\n  GetString().size()\n    Which is: 1601\n\nBut looking at this more, when run by itself it is OK. So some previous test is poisoning the well.\n\nThe diff is in a font resource in the output string, which is /Length 205 bytes in the correct case but only Length 197 in the failure case.\n\nSo after about an hour of playing around with --gtest_filter to disable other test, we find --gtest_filter\u003d-FXGETextEmbedderTest.BadItalic allows the suite to succeed.\n\nThat\u0027s scary bad, because there isn\u0027t any funny business in that test, so something in the normal course of events can affect the rendering of future documents.\n\nIn that test, if we only load the file things are OK, but the call to RenderLoadedPage() is somehow changing the world.",
+      "parentUuid": "93eed763_0a3623c6",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20994cfa_6c24f0c9",
         "filename": "fpdfsdk/fpdf_sysfontinfo_embeddertest.cpp",
         "patchSetId": 11
@@ -39,6 +57,30 @@
       "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc94674_97629228",
+        "filename": "fpdfsdk/fpdf_sysfontinfo_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20994cfa_6c24f0c9",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "320976ad_97306e64",
+        "filename": "fpdfsdk/fpdf_sysfontinfo_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1034a607_dc01d8d7",
+      "range": {
+        "startLine": 83,
+        "startChar": 44,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e5f3276_edffb6c3",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 11
@@ -79,6 +145,24 @@
       "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05152bcd_90de24e8",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e5f3276_edffb6c3",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ddb659de_621cacff",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a10e53_d50f9564",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ffa493b_ed339eda",
         "filename": "testing/embedder_test_environment.cpp",
         "patchSetId": 11
@@ -119,6 +227,24 @@
       "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a50401_a2f504e8",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ffa493b_ed339eda",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "830284e8_98ea515e",
+        "filename": "testing/embedder_test_environment.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cad98f7_bca66fea",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb494676_9db45b23",
         "filename": "testing/external_engine_embedder_test.cpp",
         "patchSetId": 11
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "1d45a159_02f3f48b",
+        "filename": "testing/external_engine_embedder_test.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Yes, JSEmbedderTest is a shallow shell of its former self and should be removed someday in favor of environments.",
+      "parentUuid": "fb494676_9db45b23",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d6604d0_8582494b",
         "filename": "testing/js_embedder_test.h",
         "patchSetId": 11
@@ -170,6 +332,24 @@
       "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaeba315_520328df",
+        "filename": "testing/js_embedder_test.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d6604d0_8582494b",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
