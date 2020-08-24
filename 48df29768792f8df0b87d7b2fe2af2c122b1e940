@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1598292058 -0700\nnonce ALC2d198TQRLPF/53qSR0XCTJo87v2PnRuySrT4MJfbqvkSCySkuoLkBb+jGtMyrahr5+yhF+91d\n\n0000000000000000000000000000000000000000 48df29768792f8df0b87d7b2fe2af2c122b1e940 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnits\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9EAFoACgkQqzYtYVpm\n/XtPwgf+N5gPlJkazZlPKQuQMYHdLK5E9roSIGDmH9zjcgI+s3vtjgelraoFfwr5\nezwvWjRo/wGU6BihvHf+g8pUzhG3+KHIM+GhEf4TBK7QcL2fsyAjvoc6uML14BoM\nF3/QTZFHEXF2BoF2jnSAdjqTpS3pRjGQToGgRuJ9VqH5d6i0RrrPYYdCAOJy+pAR\nMIweI6rCrfzxpUrrzbpTam27ABCD4h61RdOxnYKhhuX56ndfdup74VLxz35UbB0C\ny9yP5f7W+JSqJEXBRgoRW5X4u8oWIRR2+GEajIr9ymHWZF11zTDouVpIt0xxzcn/\nSQBQuZgBezATg6i3ZiO0VzMtCHsLzw\u003d\u003d\n\u003dVZCr\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d0cfc0c_b16866c7",
+        "filename": "core/fxge/dib/fx_dib_main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T19:18:06Z",
+      "side": 1,
+      "message": "something to ponder, since we don\u0027t have the restrict keyword in C++ like C99, if we wrote\n\nuint8_t  s0 \u003d src[0];\nuint8_t  s1 \u003d src[1];\nuint8_t  s2 \u003d src[2];\ndst[0] \u003d s0;\ndst[1] \u003d s1;\ndst[2] \u003d s2;\n\nWe\u0027d probably get better code in an an optimized build, eg.\n  load,load,load,store,store,store\ninstead of\n  load,store,load,store,load,store\nwith the idea being that the loads will pipeline over each other and not block awaiting the result of write.\n\nAlternatively, you might want to investigate whether we can somehow use restrict keyword.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 6
+      },
+      "revId": "48df29768792f8df0b87d7b2fe2af2c122b1e940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32dc6ea_cfd8642f",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-24T19:18:06Z",
+      "side": 1,
+      "message": "just for grins, I\u0027d make this inline void Rever....() and put the impl in the header.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 58
+      },
+      "revId": "48df29768792f8df0b87d7b2fe2af2c122b1e940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
