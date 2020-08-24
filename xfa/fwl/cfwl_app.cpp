@@ -6,6 +6,7 @@
 
 #include "xfa/fwl/cfwl_app.h"
 
+#include "v8/include/cppgc/allocation.h"
 #include "xfa/fwl/cfwl_notedriver.h"
 #include "xfa/fwl/cfwl_widget.h"
 #include "xfa/fwl/cfwl_widgetmgr.h"
@@ -14,8 +15,7 @@ CFWL_App::CFWL_App(AdapterIface* pAdapter)
     : m_pAdapter(pAdapter),
       m_pWidgetMgr(
           std::make_unique<CFWL_WidgetMgr>(pAdapter->GetWidgetMgrAdapter())),
-      m_pNoteDriver(std::make_unique<CFWL_NoteDriver>()) {
-  ASSERT(m_pAdapter);
-}
+      m_pNoteDriver(cppgc::MakeGarbageCollected<CFWL_NoteDriver>(
+          pAdapter->GetHeap()->GetAllocationHandle())) {}
 
 CFWL_App::~CFWL_App() = default;
