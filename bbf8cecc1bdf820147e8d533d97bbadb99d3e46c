@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e827d5f3_10a51afe",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T22:27:22Z",
+      "side": 0,
+      "message": "For reference: https://chromium.googlesource.com/chromium/tools/depot_tools/+/e95b5d6a/presubmit_support.py#552",
+      "range": {
+        "startLine": 255,
+        "startChar": 18,
+        "endLine": 255,
+        "endChar": 46
+      },
+      "revId": "bbf8cecc1bdf820147e8d533d97bbadb99d3e46c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01b8267b_625e9b44",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T22:27:22Z",
+      "side": 0,
+      "message": "For reference: https://chromium.googlesource.com/chromium/tools/depot_tools/+/e95b5d6a/presubmit_support.py#716",
+      "revId": "bbf8cecc1bdf820147e8d533d97bbadb99d3e46c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
