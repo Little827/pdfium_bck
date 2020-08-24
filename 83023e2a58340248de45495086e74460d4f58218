@@ -17,6 +17,24 @@
       "revId": "83023e2a58340248de45495086e74460d4f58218",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65d92d1_a38ffd25",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T23:45:59Z",
+      "side": 1,
+      "message": "Nah. We\u0027ll have more opportunities to clean up this file.",
+      "parentUuid": "03b51584_9fa63f8b",
+      "revId": "83023e2a58340248de45495086e74460d4f58218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
