@@ -16,6 +16,7 @@
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_constants.h"
+#include "testing/embedder_test_environment.h"
 #include "testing/fx_string_testhelpers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/utils/file_util.h"
@@ -322,6 +323,8 @@ TEST_F(FPDFViewEmbedderTest, MultipleInitDestroy) {
 
   FPDF_DestroyLibrary();  // Doubly-redundant even, but safe.
   FPDF_DestroyLibrary();  // Redundant given call in TearDown(), but safe.
+
+  EmbedderTestEnvironment::GetInstance()->SetUp();
 }
 
 TEST_F(FPDFViewEmbedderTest, Document) {
