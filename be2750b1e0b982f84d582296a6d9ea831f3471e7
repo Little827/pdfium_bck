@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93eed763_0a3623c6",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "Why do we need this one?",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20994cfa_6c24f0c9",
+        "filename": "fpdfsdk/fpdf_sysfontinfo_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1034a607_dc01d8d7",
+        "filename": "fpdfsdk/fpdf_sysfontinfo_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 83,
+        "startChar": 44,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5f3276_edffb6c3",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "Out of date comment, I think.",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a10e53_d50f9564",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffa493b_ed339eda",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "Should this ASSERT(!g_environment) ?",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cad98f7_bca66fea",
+        "filename": "testing/embedder_test_environment.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "// testing::Environment:",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb494676_9db45b23",
+        "filename": "testing/external_engine_embedder_test.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "Changed on purpose?",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6604d0_8582494b",
+        "filename": "testing/js_embedder_test.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T19:43:03Z",
+      "side": 1,
+      "message": "Just forward declare now?",
+      "revId": "be2750b1e0b982f84d582296a6d9ea831f3471e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
