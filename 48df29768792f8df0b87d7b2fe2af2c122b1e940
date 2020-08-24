@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "68973efe_921fecda",
+        "filename": "core/fxge/dib/fx_dib_main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T21:41:46Z",
+      "side": 1,
+      "message": "Good idea. Maybe in another CL? Just want to refactor for now.",
+      "parentUuid": "3d0cfc0c_b16866c7",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 6
+      },
+      "revId": "48df29768792f8df0b87d7b2fe2af2c122b1e940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e32dc6ea_cfd8642f",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 6
@@ -46,6 +70,30 @@
       "revId": "48df29768792f8df0b87d7b2fe2af2c122b1e940",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e16f7756_b051e5c9",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-24T21:41:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e32dc6ea_cfd8642f",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 58
+      },
+      "revId": "48df29768792f8df0b87d7b2fe2af2c122b1e940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
