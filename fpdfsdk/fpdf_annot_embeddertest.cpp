@@ -26,6 +26,7 @@
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_constants.h"
+#include "testing/embedder_test_environment.h"
 #include "testing/fx_string_testhelpers.h"
 #include "testing/gmock/include/gmock/gmock-matchers.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -90,7 +91,16 @@ void VerifyAnnotationSubtypesAndFocusability(
 
 }  // namespace
 
-class FPDFAnnotEmbedderTest : public EmbedderTest {};
+class FPDFAnnotEmbedderTest : public EmbedderTest {
+ public:
+  void TearDown() override {
+    EmbedderTest::TearDown();
+
+    // Bounce the library following each test
+    EmbedderTestEnvironment::GetInstance()->TearDown();
+    EmbedderTestEnvironment::GetInstance()->SetUp();
+  }
+};
 
 TEST_F(FPDFAnnotEmbedderTest, SetAP) {
   ScopedFPDFDocument doc(FPDF_CreateNewDocument());
