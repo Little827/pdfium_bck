@@ -23,7 +23,8 @@ struct CFX_TextRenderOptions {
   static const CFX_TextRenderOptions& LcdOptions();
 
   CFX_TextRenderOptions();
-  explicit CFX_TextRenderOptions(AliasingType type);
+  constexpr explicit CFX_TextRenderOptions(AliasingType type)
+      : aliasing_type(type) {}
   CFX_TextRenderOptions(const CFX_TextRenderOptions& other);
 
   // Indicates whether anti-aliasing is enabled.
