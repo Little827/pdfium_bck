@@ -23,6 +23,30 @@
       "revId": "57f480212e862c107d58d868a33cef6ed464e577",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8d926b_55205edb",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-25T01:49:58Z",
+      "side": 1,
+      "message": "The comment is in cfx_font.h. Also, FPDF_GetDefaultTTFMap has tests to make sure this is the case.",
+      "parentUuid": "14799521_9d954311",
+      "range": {
+        "startLine": 239,
+        "startChar": 17,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "57f480212e862c107d58d868a33cef6ed464e577",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
