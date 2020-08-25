@@ -26,7 +26,8 @@ struct CFX_FillRenderOptions {
   static const CFX_FillRenderOptions& EvenOddOptions();
   static const CFX_FillRenderOptions& WindingOptions();
 
-  CFX_FillRenderOptions();
+  constexpr CFX_FillRenderOptions()
+      : CFX_FillRenderOptions(FillType::kNoFill) {}
 
   // TODO(thestig): Switch to default member initializer for bit-fields when
   // C++20 is available.

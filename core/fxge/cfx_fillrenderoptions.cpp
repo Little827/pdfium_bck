@@ -17,6 +17,3 @@ const CFX_FillRenderOptions& CFX_FillRenderOptions::WindingOptions() {
       CFX_FillRenderOptions::FillType::kWinding);
   return kWinding;
 }
-
-CFX_FillRenderOptions::CFX_FillRenderOptions()
-    : CFX_FillRenderOptions(FillType::kNoFill) {}
