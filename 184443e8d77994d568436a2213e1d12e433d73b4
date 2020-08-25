@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20dda22d_5d29b84e",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-25T23:28:20Z",
+      "side": 0,
+      "message": "If this is always set to |CFX_Font::kDefaultAnsiFontName|, then...",
+      "revId": "184443e8d77994d568436a2213e1d12e433d73b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30192f27_e9214788",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-25T23:28:20Z",
+      "side": 0,
+      "message": "|pDocument| checked here.",
+      "revId": "184443e8d77994d568436a2213e1d12e433d73b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0e0b244_2dee57a0",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-25T23:28:20Z",
+      "side": 0,
+      "message": "|pDocument| checked here.",
+      "revId": "184443e8d77994d568436a2213e1d12e433d73b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9855bd26_eddc0fd7",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-25T23:28:20Z",
+      "side": 0,
+      "message": "Because of the check on the previous line, |csFontName| can only be |CFX_Font::kDefaultAnsiFontName| here.",
+      "revId": "184443e8d77994d568436a2213e1d12e433d73b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
