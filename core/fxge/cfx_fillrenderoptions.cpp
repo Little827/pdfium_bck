@@ -18,4 +18,5 @@ const CFX_FillRenderOptions& CFX_FillRenderOptions::WindingOptions() {
   return kWinding;
 }
 
-CFX_FillRenderOptions::CFX_FillRenderOptions() = default;
+CFX_FillRenderOptions::CFX_FillRenderOptions()
+    : CFX_FillRenderOptions(FillType::kNoFill) {}
