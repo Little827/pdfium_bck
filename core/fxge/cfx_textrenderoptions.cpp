@@ -9,8 +9,3 @@ const CFX_TextRenderOptions& CFX_TextRenderOptions::LcdOptions() {
   static constexpr CFX_TextRenderOptions kInstance(kLcd);
   return kInstance;
 }
-
-CFX_TextRenderOptions::CFX_TextRenderOptions() = default;
-
-CFX_TextRenderOptions::CFX_TextRenderOptions(
-    const CFX_TextRenderOptions& other) = default;
