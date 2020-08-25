@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1598306678 -0700\nnonce ALC2d19fdpm3b1W17xTmu1OTLZqZK4NB89t7Sz3S7b6Hy6B5LvUTe0utp76J3Jep/3qmxwdLBtTN\n\n0000000000000000000000000000000000000000 57f480212e862c107d58d868a33cef6ed464e577 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9EOXYACgkQqzYtYVpm\n/XvhIQf6AxyWVgAcKF38aFEacG+tVNI/b1b5Y7PzhUNTaSuLtjArJBOVUKV+KVoy\nBShJxi38Aah/b90HBJOWnvxxOtV+VaYTpZ6GN0cXQmfK4+9HravwEvHXyC+Rs81I\naIXt0/bx9Z+yIiWMJvHOJxx0UIi9bTnDuzE+GkNCzNyP37Z9fSd8QRuvftKvJ/Nr\nbJCooDO4GjnoEj8SW+kYl/6YUQ0NjadXAPJZr4NAqnFuZEHQSVNuMKwOzFs6gnWi\nBNokTqes97XNJdimmgKnY4eUe0oi07piOsg/S6tVbs8wExFi2xLgJCzwgLkLjsTY\nO5Hdh27S2X0RpD+2E5ns2+TObiwWhg\u003d\u003d\n\u003dQ1Xo\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "14799521_9d954311",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-25T01:45:42Z",
+      "side": 1,
+      "message": "nit: might need a comment here about not removing this, since we pass this back across a public API with a description of -1 at end.",
+      "range": {
+        "startLine": 239,
+        "startChar": 17,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "57f480212e862c107d58d868a33cef6ed464e577",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
