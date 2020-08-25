@@ -25,7 +25,8 @@ struct CFX_FillRenderOptions {
   static const CFX_FillRenderOptions& WindingOptions();
 
   CFX_FillRenderOptions();
-  explicit CFX_FillRenderOptions(FillType fill_type);
+  constexpr explicit CFX_FillRenderOptions(FillType fill_type)
+      : fill_type(fill_type) {}
 
   // Fill type.
   FillType fill_type = FillType::kNoFill;
