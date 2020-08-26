@@ -33,6 +33,24 @@
       "revId": "40b26ac2cc07f54eaffe489652c0606c6ce35c8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f051f71_5adcb66c",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-08-26T02:21:14Z",
+      "side": 1,
+      "message": "Thanks for the explanation. :D",
+      "parentUuid": "da7e97f2_ed234f93",
+      "revId": "40b26ac2cc07f54eaffe489652c0606c6ce35c8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
