@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cee68e21_2d6201e9",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-26T19:19:53Z",
+      "side": 1,
+      "message": "Moved from caller. It\u0027s clearer to see this is the case from within the function.",
+      "revId": "b7f6a667bbe691de277439d411f380d0ea87a52a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
