@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cdce0df_9018cbd2",
+        "filename": "fxjs/gc/move_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-26T23:51:34Z",
+      "side": 1,
+      "message": "NOTE: Trace() required or templates will complain, might as well be correct even if not called.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 2
+      },
+      "revId": "123806ab8fabe5a43c3aa95cb334ad28495e86d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
