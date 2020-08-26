@@ -3,6 +3,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ac6f17fe_4015b83a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-08-26T02:38:03Z",
+      "side": 1,
+      "message": "Thanks for cleaning it up ~",
+      "revId": "db4db24529efe6906f2aff4c7b5e85b09475632e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a41ee3_9840b991",
         "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
         "patchSetId": 1
