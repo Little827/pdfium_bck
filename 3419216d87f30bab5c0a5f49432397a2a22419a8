@@ -33,6 +33,24 @@
       "revId": "3419216d87f30bab5c0a5f49432397a2a22419a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9569343_eb1c2d22",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-27T01:55:03Z",
+      "side": 1,
+      "message": "Local variables are just ordinary pointers nowdays (nulling out of abundance of caution).",
+      "parentUuid": "d2c12e38_38c84c99",
+      "revId": "3419216d87f30bab5c0a5f49432397a2a22419a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
