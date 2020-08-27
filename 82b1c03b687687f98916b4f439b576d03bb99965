@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53870795_4ff1b473",
+        "filename": "third_party/lcms/include/lcms2.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-27T19:10:42Z",
+      "side": 0,
+      "message": "Accidentally disabled in the last upgrade. https://pdfium-review.googlesource.com/c/pdfium/+/47951/4/third_party/lcms/include/lcms2.h\n\nWill re-evaluate this at some point.",
+      "revId": "82b1c03b687687f98916b4f439b576d03bb99965",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
