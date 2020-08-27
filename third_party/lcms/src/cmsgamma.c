@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------
 //
 //  Little Color Management System
-//  Copyright (c) 1998-2013 Marti Maria Saguer
+//  Copyright (c) 1998-2020 Marti Maria Saguer
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the "Software"),
@@ -58,7 +58,7 @@ typedef struct _cmsParametricCurvesCollection_st {
 static cmsFloat64Number DefaultEvalParametricFn(cmsInt32Number Type, const cmsFloat64Number Params[], cmsFloat64Number R);
 
 // The built-in list
-static const _cmsParametricCurvesCollection DefaultCurves = {
+static _cmsParametricCurvesCollection DefaultCurves = {
     9,                                  // # of curve types
     { 1, 2, 3, 4, 5, 6, 7, 8, 108 },    // Parametric curve ID
     { 1, 3, 4, 5, 7, 4, 5, 5, 1 },      // Parameters by type
@@ -162,7 +162,7 @@ cmsBool _cmsRegisterParametricCurvesPlugin(cmsContext ContextID, cmsPluginBase* 
 
 // Search in type list, return position or -1 if not found
 static
-int IsInSet(int Type, const _cmsParametricCurvesCollection* c)
+int IsInSet(int Type, _cmsParametricCurvesCollection* c)
 {
     int i;
 
@@ -175,9 +175,9 @@ int IsInSet(int Type, const _cmsParametricCurvesCollection* c)
 
 // Search for the collection which contains a specific type
 static
-const _cmsParametricCurvesCollection *GetParametricCurveByType(cmsContext ContextID, int Type, int* index)
+_cmsParametricCurvesCollection *GetParametricCurveByType(cmsContext ContextID, int Type, int* index)
 {
-    const _cmsParametricCurvesCollection* c;
+    _cmsParametricCurvesCollection* c;
     int Position;
     _cmsCurvesPluginChunkType* ctx = ( _cmsCurvesPluginChunkType*) _cmsContextGetClientChunk(ContextID, CurvesPlugin);
 
@@ -270,7 +270,7 @@ cmsToneCurve* AllocateToneCurveStruct(cmsContext ContextID, cmsUInt32Number nEnt
     // is placed in advance to maximize performance.
     if (Segments != NULL && (nSegments > 0)) {
 
-        const _cmsParametricCurvesCollection *c;
+        _cmsParametricCurvesCollection *c;
 
         p ->SegInterp = (cmsInterpParams**) _cmsCalloc(ContextID, nSegments, sizeof(cmsInterpParams*));
         if (p ->SegInterp == NULL) goto Error;
@@ -300,7 +300,8 @@ cmsToneCurve* AllocateToneCurveStruct(cmsContext ContextID, cmsUInt32Number nEnt
         return p;
 
 Error:
-    if (p -> Segments) _cmsFree(ContextID, p ->Segments);
+    if (p -> SegInterp) _cmsFree(ContextID, p -> SegInterp);
+    if (p -> Segments) _cmsFree(ContextID, p -> Segments);
     if (p -> Evals) _cmsFree(ContextID, p -> Evals);
     if (p ->Table16) _cmsFree(ContextID, p ->Table16);
     _cmsFree(ContextID, p);
@@ -817,13 +818,13 @@ cmsToneCurve* CMSEXPORT cmsBuildTabulatedToneCurveFloat(cmsContext ContextID, cm
 //
 // Parameters goes as: Curve, a, b, c, d, e, f
 // Type is the ICC type +1
-// if type is negative, then the curve is analyticaly inverted
+// if type is negative, then the curve is analytically inverted
 cmsToneCurve* CMSEXPORT cmsBuildParametricToneCurve(cmsContext ContextID, cmsInt32Number Type, const cmsFloat64Number Params[])
 {
     cmsCurveSegment Seg0;
     int Pos = 0;
     cmsUInt32Number size;
-    const _cmsParametricCurvesCollection* c = GetParametricCurveByType(ContextID, Type, &Pos);
+    _cmsParametricCurvesCollection* c = GetParametricCurveByType(ContextID, Type, &Pos);
 
     _cmsAssert(Params != NULL);
 
@@ -858,19 +859,14 @@ void CMSEXPORT cmsFreeToneCurve(cmsToneCurve* Curve)
 {
     cmsContext ContextID;
 
-    // added by Xiaochuan Liu
-    // Curve->InterpParams may be null
-    if (Curve == NULL || Curve->InterpParams == NULL) return;
+    if (Curve == NULL) return;
 
     ContextID = Curve ->InterpParams->ContextID;
 
     _cmsFreeInterpParams(Curve ->InterpParams);
-    Curve ->InterpParams = NULL;
 
-    if (Curve -> Table16) {
+    if (Curve -> Table16)
         _cmsFree(ContextID, Curve ->Table16);
-        Curve ->Table16 = NULL;
-    }
 
     if (Curve ->Segments) {
 
@@ -880,30 +876,20 @@ void CMSEXPORT cmsFreeToneCurve(cmsToneCurve* Curve)
 
             if (Curve ->Segments[i].SampledPoints) {
                 _cmsFree(ContextID, Curve ->Segments[i].SampledPoints);
-                Curve ->Segments[i].SampledPoints = NULL;
             }
 
-            if (Curve ->SegInterp[i] != 0) {
+            if (Curve ->SegInterp[i] != 0)
                 _cmsFreeInterpParams(Curve->SegInterp[i]);
-                Curve->SegInterp[i] = NULL;
-            }
         }
 
         _cmsFree(ContextID, Curve ->Segments);
-        Curve ->Segments = NULL;
         _cmsFree(ContextID, Curve ->SegInterp);
-        Curve ->SegInterp = NULL;
     }
 
-    if (Curve -> Evals) {
+    if (Curve -> Evals)
         _cmsFree(ContextID, Curve -> Evals);
-        Curve -> Evals = NULL;
-    }
 
-    if (Curve) {
-        _cmsFree(ContextID, Curve);
-        Curve = NULL;
-    }
+    _cmsFree(ContextID, Curve);
 }
 
 // Utility function, free 3 gamma tables
@@ -923,10 +909,7 @@ void CMSEXPORT cmsFreeToneCurveTriple(cmsToneCurve* Curve[3])
 // Duplicate a gamma table
 cmsToneCurve* CMSEXPORT cmsDupToneCurve(const cmsToneCurve* In)
 {
-    // Xiaochuan Liu
-    // fix openpdf bug(mantis id:0055683, google id:360198)
-    // the function CurveSetElemTypeFree in cmslut.c also needs to check pointer
-    if (In == NULL || In ->InterpParams == NULL || In ->Segments == NULL || In ->Table16 == NULL) return NULL;
+    if (In == NULL || In ->Segments == NULL || In ->Table16 == NULL) return NULL;
 
     return  AllocateToneCurveStruct(In ->InterpParams ->ContextID, In ->nEntries, In ->nSegments, In ->Segments, In ->Table16);
 }
@@ -1276,7 +1259,7 @@ cmsBool  CMSEXPORT cmsSmoothToneCurve(cmsToneCurve* Tab, cmsFloat64Number lambda
 }
 
 // Is a table linear? Do not use parametric since we cannot guarantee some weird parameters resulting
-// in a linear table. This way assures it is linear in 12 bits, which should be enought in most cases.
+// in a linear table. This way assures it is linear in 12 bits, which should be enough in most cases.
 cmsBool CMSEXPORT cmsIsToneCurveLinear(const cmsToneCurve* Curve)
 {
     int i;
@@ -1448,4 +1431,15 @@ cmsFloat64Number CMSEXPORT cmsEstimateGamma(const cmsToneCurve* t, cmsFloat64Num
         return -1.0;
 
     return (sum / n);   // The mean
+}
+
+
+// Retrieve parameters on one-segment tone curves
+
+cmsFloat64Number* CMSEXPORT cmsGetToneCurveParams(const cmsToneCurve* t)
+{
+    _cmsAssert(t != NULL);
+
+    if (t->nSegments != 1) return NULL;
+    return t->Segments[0].Params;
 }
