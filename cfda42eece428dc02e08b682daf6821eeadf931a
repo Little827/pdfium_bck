@@ -17,6 +17,24 @@
       "revId": "cfda42eece428dc02e08b682daf6821eeadf931a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb4c9a9f_bb051d5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-08-27T01:23:27Z",
+      "side": 1,
+      "message": "Indeed they do!",
+      "parentUuid": "e3ac0526_e38ca534",
+      "revId": "cfda42eece428dc02e08b682daf6821eeadf931a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
