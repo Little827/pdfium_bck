@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "2d067ff9_10b58664",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-27T19:14:28Z",
+      "side": 1,
+      "message": "I was very tempted to re-use |pPageSetFormNode| on line 1947 below. Then I noticed |pPageSetFormNode| changes in the line 1941 while loop. So I wanted to signify that |pRootDocument| doesn\u0027t change.",
+      "parentUuid": "5001e4aa_4dc84663",
+      "range": {
+        "startLine": 1930,
+        "startChar": 19,
+        "endLine": 1930,
+        "endChar": 24
+      },
+      "revId": "fd46f65eb94fc84769135a3298c74bb6a65c185c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae382be0_7911d40a",
         "filename": "xfa/fxfa/parser/cxfa_document.h",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "fd46f65eb94fc84769135a3298c74bb6a65c185c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9734363_72b768ef",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-27T19:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae382be0_7911d40a",
+      "range": {
+        "startLine": 137,
+        "startChar": 48,
+        "endLine": 137,
+        "endChar": 49
+      },
+      "revId": "fd46f65eb94fc84769135a3298c74bb6a65c185c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
