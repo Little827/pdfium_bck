@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "435a3b8a_f2af4738",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-27T00:57:29Z",
+      "side": 1,
+      "message": "Can we Clear() instead? It makes it more obvious that the thing being cleared is not a raw pointer.",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "e0247f02244b6b135d7dda2f2e350d03378bcc9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
