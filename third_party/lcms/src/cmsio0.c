@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------
 //
 //  Little Color Management System
-//  Copyright (c) 1998-2017 Marti Maria Saguer
+//  Copyright (c) 1998-2020 Marti Maria Saguer
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the "Software"),
@@ -234,7 +234,7 @@ cmsBool  MemoryClose(struct _cms_io_handler* iohandler)
 
 // Create a iohandler for memory block. AccessMode=='r' assumes the iohandler is going to read, and makes
 // a copy of the memory block for letting user to free the memory after invoking open profile. In write
-// mode ("w"), Buffere points to the begin of memory block to be written.
+// mode ("w"), Buffer points to the begin of memory block to be written.
 cmsIOHANDLER* CMSEXPORT cmsOpenIOhandlerFromMem(cmsContext ContextID, void *Buffer, cmsUInt32Number size, const char* AccessMode)
 {
     cmsIOHANDLER* iohandler = NULL;
@@ -485,14 +485,6 @@ cmsIOHANDLER* CMSEXPORT cmsGetProfileIOhandler(cmsHPROFILE hProfile)
 	return Icc->IOhandler;
 }
 
-#ifdef _WIN32_WCE
-time_t wceex_time(time_t *timer);
-struct tm * wceex_gmtime(const time_t *timer);
-
-#define time wceex_time
-#define gmtime wceex_gmtime
-#endif
-
 // Creates an empty structure holding all required parameters
 cmsHPROFILE CMSEXPORT cmsCreateProfilePlaceholder(cmsContext ContextID)
 {
@@ -584,14 +576,6 @@ int _cmsSearchTag(_cmsICCPROFILE* Icc, cmsTagSignature sig, cmsBool lFollowLinks
 
         // Yes, follow link
         if (LinkedSig != (cmsTagSignature) 0) {
-            // fix bug mantis id#0055942
-            // assume that TRCTag and ColorantTag can't be linked.
-            // Xiaochuan Liu 2014-04-23
-            if ((sig == cmsSigRedTRCTag || sig == cmsSigGreenTRCTag || sig == cmsSigBlueTRCTag) && 
-                (LinkedSig == cmsSigRedColorantTag || LinkedSig == cmsSigGreenColorantTag || LinkedSig == cmsSigBlueColorantTag))
-            {
-                return n;
-            }
             sig = LinkedSig;
         }
 
@@ -649,7 +633,6 @@ cmsBool _cmsNewTag(_cmsICCPROFILE* Icc, cmsTagSignature sig, int* NewPos)
     else  {
 
         // No, make a new one
-
         if (Icc -> TagCount >= MAX_TABLE_TAG) {
             cmsSignalError(Icc ->ContextID, cmsERROR_RANGE, "Too many tags (%d)", MAX_TABLE_TAG);
             return FALSE;
@@ -669,8 +652,6 @@ cmsBool CMSEXPORT cmsIsTag(cmsHPROFILE hProfile, cmsTagSignature sig)
        _cmsICCPROFILE*  Icc = (_cmsICCPROFILE*) (void*) hProfile;
        return _cmsSearchTag(Icc, sig, FALSE) >= 0;
 }
-
-
 
 // Enforces that the profile version is per. spec.
 // Operates on the big endian bytes from the profile.
@@ -778,8 +759,7 @@ cmsBool _cmsReadHeader(_cmsICCPROFILE* Icc)
         for (j=0; j < Icc ->TagCount; j++) {
 
             if ((Icc ->TagOffsets[j] == Tag.offset) &&
-                (Icc ->TagSizes[j]   == Tag.size) &&
-                (Icc ->TagNames[j]   == Tag.sig)) {
+                (Icc ->TagSizes[j]   == Tag.size)) {
 
                 Icc ->TagLinked[Icc ->TagCount] = Icc ->TagNames[j];
             }
@@ -1386,12 +1366,6 @@ Error:
     return 0;
 }
 
-#ifdef _WIN32_WCE
-int wceex_unlink(const char *filename);
-#ifndef remove
-#   define remove wceex_unlink
-#endif
-#endif
 
 // Low-level save to disk.
 cmsBool  CMSEXPORT cmsSaveProfileToFile(cmsHPROFILE hProfile, const char* FileName)
@@ -1590,7 +1564,7 @@ void* CMSEXPORT cmsReadTag(cmsHPROFILE hProfile, cmsTagSignature sig)
 
     if (!IsTypeSupported(TagDescriptor, BaseType)) goto Error;
    
-    TagSize  -= 8;       // Alredy read by the type base logic
+    TagSize  -= 8;       // Already read by the type base logic
 
     // Get type handler
     TypeHandler = _cmsGetTagTypeHandler(Icc ->ContextID, BaseType);
@@ -1822,7 +1796,7 @@ cmsUInt32Number CMSEXPORT cmsReadRawTag(cmsHPROFILE hProfile, cmsTagSignature si
         return Icc ->TagSizes[i];
     }
 
-    // The data has been already read, or written. But wait!, maybe the user choosed to save as
+    // The data has been already read, or written. But wait!, maybe the user chose to save as
     // raw data. In this case, return the raw data directly
     if (Icc ->TagSaveAsRaw[i]) {
 
@@ -1842,7 +1816,7 @@ cmsUInt32Number CMSEXPORT cmsReadRawTag(cmsHPROFILE hProfile, cmsTagSignature si
         return Icc ->TagSizes[i];
     }
 
-    // Already readed, or previously set by cmsWriteTag(). We need to serialize that
+    // Already read, or previously set by cmsWriteTag(). We need to serialize that
     // data to raw in order to maintain consistency.
 
     _cmsUnlockMutex(Icc->ContextID, Icc ->UsrMutex);
