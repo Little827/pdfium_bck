@@ -69,6 +69,24 @@
       "revId": "3419216d87f30bab5c0a5f49432397a2a22419a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "393128ab_1caaa21d",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-27T16:55:06Z",
+      "side": 1,
+      "message": "Yeah, its an uncomfortable idiom. But it is important that locals automatically always be valid, otherwise we can\u0027t correct the dangling |this| problem.",
+      "parentUuid": "ed20fce7_2fd6585e",
+      "revId": "3419216d87f30bab5c0a5f49432397a2a22419a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
