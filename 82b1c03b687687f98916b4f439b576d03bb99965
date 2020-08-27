@@ -16,6 +16,24 @@
       "revId": "82b1c03b687687f98916b4f439b576d03bb99965",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2720cd_db89ab0a",
+        "filename": "third_party/lcms/include/lcms2.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-27T22:42:16Z",
+      "side": 0,
+      "message": "Filed https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1586 to re-evaluate.",
+      "parentUuid": "53870795_4ff1b473",
+      "revId": "82b1c03b687687f98916b4f439b576d03bb99965",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
