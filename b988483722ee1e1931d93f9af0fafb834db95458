@@ -16,6 +16,46 @@
       "revId": "b988483722ee1e1931d93f9af0fafb834db95458",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38d02646_f27c2b53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-08-27T01:45:53Z",
+      "side": 1,
+      "message": "LGTM with 1 comment.",
+      "revId": "b988483722ee1e1931d93f9af0fafb834db95458",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0a3c602_1bea78b9",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-08-27T01:45:53Z",
+      "side": 1,
+      "message": "The header file still has SetUpdateAP() before IsUpdateAPEnabled(), but I think the the order in this cpp file is better since everything related to |s_bUpdateAP| is in alphabetic order.\n\nI can\u0027t comment on the core/fpdfdoc/cpdf_interactiveform.h here, therefore leaving the comment here.",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 1
+      },
+      "revId": "b988483722ee1e1931d93f9af0fafb834db95458",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
