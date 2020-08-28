@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50305a57_703620c9",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-28T23:48:45Z",
+      "side": 1,
+      "message": "Does this only happen in unit tests, or ?",
+      "revId": "99cd5fb6fc6c1a0baeed725ec0c2e55281112de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6bf2c9_521a6745",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-28T23:48:45Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 93,
+        "startChar": 43,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "99cd5fb6fc6c1a0baeed725ec0c2e55281112de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4355a1af_85fb1ef1",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-28T23:48:45Z",
+      "side": 1,
+      "message": "Does that mean this will sometimes crash with a nullptr? If not here, then line 151.",
+      "revId": "99cd5fb6fc6c1a0baeed725ec0c2e55281112de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
