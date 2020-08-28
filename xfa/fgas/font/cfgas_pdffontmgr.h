@@ -41,7 +41,7 @@ class CFGAS_PDFFontMgr final : public Observable {
                              bool bStrictMatch);
 
   UnownedPtr<CPDF_Document> const m_pDoc;
-  UnownedPtr<CFGAS_FontMgr> const m_pFontMgr;
+  ObservedPtr<CFGAS_FontMgr> const m_pFontMgr;
   std::map<ByteString, RetainPtr<CFGAS_GEFont>> m_FontMap;
 };
 
