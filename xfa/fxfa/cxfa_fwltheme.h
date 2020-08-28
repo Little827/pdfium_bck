@@ -9,6 +9,7 @@
 
 #include <memory>
 
+#include "v8/include/cppgc/persistent.h"
 #include "xfa/fwl/ifwl_themeprovider.h"
 
 class CFDE_TextOut;
@@ -41,7 +42,7 @@ class CXFA_FWLTheme final : public IFWL_ThemeProvider {
   std::unique_ptr<CFDE_TextOut> m_pTextOut;
   RetainPtr<CFGAS_GEFont> m_pCalendarFont;
   WideString m_wsResource;
-  UnownedPtr<CXFA_FFApp> const m_pApp;
+  cppgc::Persistent<CXFA_FFApp> const m_pApp;
   CFX_RectF m_Rect;
 };
 
