@@ -8,7 +8,6 @@
 
 #include <utility>
 
-#include "v8/include/cppgc/visitor.h"
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fwl/cfwl_event.h"
 #include "xfa/fwl/cfwl_eventselectchanged.h"
@@ -24,7 +23,7 @@ namespace {
 const int kDateTimePickerHeight = 20;
 
 }  // namespace
-CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
+CFWL_DateTimePicker::CFWL_DateTimePicker(CFWL_App* app)
     : CFWL_Widget(app,
                   Properties{0, FWL_STYLEEXT_DTP_ShortDateFormat, 0},
                   nullptr),
