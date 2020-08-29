@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "494dfa77_40164613",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-29T00:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b6bf2c9_521a6745",
+      "range": {
+        "startLine": 93,
+        "startChar": 43,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "99cd5fb6fc6c1a0baeed725ec0c2e55281112de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99b9071b_a5dec92e",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-29T00:20:02Z",
+      "side": 1,
+      "message": "pdfium_test --disable-javascript.  It\u0027s not entirely clear why this context is being created in that case, but that is a task for another day.",
+      "parentUuid": "50305a57_703620c9",
+      "revId": "99cd5fb6fc6c1a0baeed725ec0c2e55281112de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4355a1af_85fb1ef1",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "99cd5fb6fc6c1a0baeed725ec0c2e55281112de8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a98981_22855182",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-29T00:20:02Z",
+      "side": 1,
+      "message": "I don\u0027t think we call this given --disable-javascript.",
+      "parentUuid": "4355a1af_85fb1ef1",
+      "revId": "99cd5fb6fc6c1a0baeed725ec0c2e55281112de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
