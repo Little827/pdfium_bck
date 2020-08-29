@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f88a9e56_d10aa649",
+        "filename": "xfa/fgas/font/cfgas_pdffontmgr.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-29T00:43:14Z",
+      "side": 1,
+      "message": "ObservedPtr\u003cCFGAS_FontMgr\u003e doesn\u0027t work with the forward declaration?",
+      "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d2adf1c_6ea71935",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-29T00:43:14Z",
+      "side": 1,
+      "message": "Trace in order?",
+      "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70b0c87_76d54ac6",
+        "filename": "xfa/fwl/cfwl_widget.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-29T00:43:14Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
