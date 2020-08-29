@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "24653a2f_ebe54db2",
+        "filename": "xfa/fwl/cfwl_app.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-29T00:45:24Z",
+      "side": 1,
+      "message": "Forward declare visitor.h in various places?",
+      "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d2adf1c_6ea71935",
         "filename": "xfa/fwl/cfwl_widget.cpp",
         "patchSetId": 7
