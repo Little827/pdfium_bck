@@ -16,6 +16,24 @@
       "revId": "8a5ea18b1744bdaac68e751032385e4c8316a5a2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a3409_8915be7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-31T18:51:33Z",
+      "side": 1,
+      "message": "I think PS9 takes care of this.",
+      "parentUuid": "c9ea26a8_9f3ae43a",
+      "revId": "8a5ea18b1744bdaac68e751032385e4c8316a5a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
