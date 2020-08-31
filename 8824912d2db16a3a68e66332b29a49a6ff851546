@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b7c87bbc_0ff0b8f0",
+        "filename": "xfa/fgas/font/cfgas_pdffontmgr.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-31T17:45:48Z",
+      "side": 1,
+      "message": "Works everywhere except MSVC.",
+      "parentUuid": "f88a9e56_d10aa649",
+      "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24653a2f_ebe54db2",
         "filename": "xfa/fwl/cfwl_app.h",
         "patchSetId": 7
@@ -88,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "4db13164_258cac20",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-31T17:45:48Z",
+      "side": 1,
+      "message": "Done. Re-ordered both .h/.cpp in an order that makes more sense to me somewhow.",
+      "parentUuid": "1d2adf1c_6ea71935",
+      "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c70b0c87_76d54ac6",
         "filename": "xfa/fwl/cfwl_widget.h",
         "patchSetId": 7
@@ -102,6 +138,24 @@
       "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65bfa62_a61fec32",
+        "filename": "xfa/fwl/cfwl_widget.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-08-31T17:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70b0c87_76d54ac6",
+      "revId": "8824912d2db16a3a68e66332b29a49a6ff851546",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
