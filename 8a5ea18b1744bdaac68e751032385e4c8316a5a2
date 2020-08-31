@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9ea26a8_9f3ae43a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-31T18:22:16Z",
+      "side": 1,
+      "message": "Were you able to reproduce the linux_xfa_asan_lsan bot issue locally?",
+      "revId": "8a5ea18b1744bdaac68e751032385e4c8316a5a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
