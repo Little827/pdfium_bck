@@ -34,6 +34,24 @@
       "revId": "3cbebfd7f79c3170e1737374a4025b123ffd2d8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0e42c19_a1015703",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-08-31T19:26:01Z",
+      "side": 1,
+      "message": "Not seeing this locally?\n\nERROR: AddressSanitizer: use-after-poison on address 0x7ecf0109da10 at pc 0x55eb0bef7491 bp 0x7ffe368a0010 sp 0x7ffe368a0008\nREAD of size 8 at 0x7ecf0109da10 thread T0\n    #0 0x55eb0bef7490 in cppgc::internal::MemberBase::GetRaw() const v8/include/cppgc/member.h:28:33\n    #1 0x55eb0bf06117 in cppgc::internal::BasicMember\u003cCXFA_Node, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::EnabledCheckingPolicy\u003e::Get() const v8/include/cppgc/member.h:138:40\n    #2 0x55eb0d24b44d in CXFA_LayoutItem::GetFormNode() const xfa/fxfa/layout/cxfa_layoutitem.h:43:55\n    #3 0x55eb10e54e71 in CXFA_ContentLayoutProcessor::CalculateRowChildPosition(std::__1::vector\u003cCXFA_ContentLayoutItem*, std::__1::allocator\u003cCXFA_ContentLayoutItem*\u003e \u003e (\u0026) [3], XFA_AttributeValue, bool, bool, float*, float*, float*, float, float, bool) xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp:1922:39\n    #4 0x55eb10e4eb9b in CXFA_ContentLayoutProcessor::DoLayoutFlowedContainer(bool, XFA_AttributeValue, float, float, CXFA_ContentLayoutProcessor::Context*, bool) xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp:1867:5",
+      "parentUuid": "8d62c48b_1d2ef3ac",
+      "revId": "3cbebfd7f79c3170e1737374a4025b123ffd2d8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
