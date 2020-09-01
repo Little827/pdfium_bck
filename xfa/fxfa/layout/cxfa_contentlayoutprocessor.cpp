@@ -641,6 +641,11 @@ void CXFA_ContentLayoutProcessor::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(m_pViewLayoutProcessor);
   for (const auto& item : m_ArrayKeepItems)
     visitor->Trace(item);
+  if (!m_PendingNodes.empty()) {
+    // Defensive programming against zero-initialized memory.
+    for (const auto& item : m_PendingNodes)
+      visitor->Trace(item);
+  }
 }
 
 CXFA_ContentLayoutItem* CXFA_ContentLayoutProcessor::CreateContentLayoutItem(
