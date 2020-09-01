@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adf022f8_f99c59f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-01T19:31:21Z",
+      "side": 1,
+      "message": "CL chaining likely not required in many cases, but ok.",
+      "revId": "e82db5e681e67c4f83407b72afab559a50d50d52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
