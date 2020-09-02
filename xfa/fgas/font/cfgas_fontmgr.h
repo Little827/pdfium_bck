@@ -16,7 +16,6 @@
 #include "build/build_config.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_string.h"
-#include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_face.h"
 #include "core/fxge/fx_freetype.h"
@@ -96,7 +95,7 @@ class CFX_FontDescriptorInfo {
 
 #endif  // defined(OS_WIN)
 
-class CFGAS_FontMgr final : public Observable {
+class CFGAS_FontMgr {
  public:
   CFGAS_FontMgr();
   ~CFGAS_FontMgr();
@@ -110,7 +109,7 @@ class CFGAS_FontMgr final : public Observable {
   RetainPtr<CFGAS_GEFont> LoadFont(const wchar_t* pszFontFamily,
                                    uint32_t dwFontStyles,
                                    uint16_t wCodePage);
-  void RemoveFont(const RetainPtr<CFGAS_GEFont>& pFont);
+  void RemoveFont_(const RetainPtr<CFGAS_GEFont>& pFont);
 
   bool EnumFonts();
 

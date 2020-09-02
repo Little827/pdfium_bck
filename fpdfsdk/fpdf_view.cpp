@@ -177,6 +177,7 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
 #ifdef PDF_ENABLE_XFA
   CPDFXFA_ModuleInit();
 #endif  // PDF_ENABLE_XFA
+
   if (config && config->version >= 2) {
     void* platform = config->version >= 3 ? config->m_pPlatform : nullptr;
     IJS_Runtime::Initialize(config->m_v8EmbedderSlot, config->m_pIsolate,
