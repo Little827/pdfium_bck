@@ -17,8 +17,7 @@
 class CFX_TxtBreakTest : public testing::Test {
  public:
   void SetUp() override {
-    font_ = CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0,
-                                   XFATestEnvironment::GetGlobalFontManager());
+    font_ = CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0);
     ASSERT_TRUE(font_);
   }
 
