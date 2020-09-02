@@ -196,9 +196,8 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByUnicodeImpl(
     return nullptr;
 
   uint16_t newCodePage = FX_GetCodePageFromCharset(pFD->uCharSet);
-  const wchar_t* pFontFace = pFD->wsFontFace;
   RetainPtr<CFGAS_GEFont> pFont =
-      CFGAS_GEFont::LoadFont(pFontFace, dwFontStyles, newCodePage, this);
+      CFGAS_GEFont::LoadFont(pFD->wsFontFace, dwFontStyles, newCodePage);
   if (!pFont)
     return nullptr;
 
@@ -693,7 +692,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFontInternal(
     return nullptr;
 
   RetainPtr<CFGAS_GEFont> pFont =
-      CFGAS_GEFont::LoadFont(std::move(pInternalFont), this);
+      CFGAS_GEFont::LoadFont(std::move(pInternalFont));
   if (!pFont)
     return nullptr;
 
@@ -800,7 +799,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByCodePage(
     return nullptr;
 
   RetainPtr<CFGAS_GEFont> pFont =
-      CFGAS_GEFont::LoadFont(pFD->wsFontFace, dwFontStyles, wCodePage, this);
+      CFGAS_GEFont::LoadFont(pFD->wsFontFace, dwFontStyles, wCodePage);
 #else   // defined(OS_WIN)
   std::vector<CFX_FontDescriptorInfo>* sortedFontInfos =
       m_Hash2CandidateList[dwHash].get();
@@ -875,7 +874,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFont(const wchar_t* pszFontFamily,
     return nullptr;
 
   RetainPtr<CFGAS_GEFont> pFont =
-      CFGAS_GEFont::LoadFont(pFD->wsFontFace, dwFontStyles, wCodePage, this);
+      CFGAS_GEFont::LoadFont(pFD->wsFontFace, dwFontStyles, wCodePage);
   if (!pFont)
     return nullptr;
 
@@ -885,27 +884,4 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFont(const wchar_t* pszFontFamily,
 #else   // defined(OS_WIN)
   return GetFontByCodePage(wCodePage, dwFontStyles, pszFontFamily);
 #endif  // defined(OS_WIN)
-}
-
-void CFGAS_FontMgr::RemoveFont(const RetainPtr<CFGAS_GEFont>& pEFont) {
-  if (!pEFont)
-    return;
-
-#if !defined(OS_WIN)
-  m_IFXFont2FileRead.erase(pEFont);
-#endif
-
-  auto iter = m_Hash2Fonts.begin();
-  while (iter != m_Hash2Fonts.end()) {
-    auto old_iter = iter++;
-    bool all_empty = true;
-    for (size_t i = 0; i < old_iter->second.size(); i++) {
-      if (old_iter->second[i] == pEFont)
-        old_iter->second[i].Reset();
-      else if (old_iter->second[i])
-        all_empty = false;
-    }
-    if (all_empty)
-      m_Hash2Fonts.erase(old_iter);
-  }
 }

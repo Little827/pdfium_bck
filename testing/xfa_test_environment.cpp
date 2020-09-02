@@ -10,8 +10,8 @@
 #include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/systemfontinfo_iface.h"
-#include "testing/gtest/include/gtest/gtest.h"
 #include "xfa/fgas/font/cfgas_fontmgr.h"
+#include "xfa/fgas/font/cfgas_gemodule.h"
 
 namespace {
 
@@ -35,16 +35,9 @@ void XFATestEnvironment::SetUp() {
   CFX_GEModule::Get()->GetFontMgr()->SetSystemFontInfo(
       CFX_GEModule::Get()->GetPlatform()->CreateDefaultSystemFontInfo());
 
-  auto font_mgr = std::make_unique<CFGAS_FontMgr>();
-  if (font_mgr->EnumFonts())
-    font_mgr_ = std::move(font_mgr);
+  CFGAS_GEModule::Create();
 }
 
 void XFATestEnvironment::TearDown() {
-  font_mgr_.reset();
-}
-
-// static
-CFGAS_FontMgr* XFATestEnvironment::GetGlobalFontManager() {
-  return g_env->font_mgr_.get();
+  CFGAS_GEModule::Destroy();
 }
