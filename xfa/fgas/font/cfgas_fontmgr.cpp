@@ -693,7 +693,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFontInternal(
     return nullptr;
 
   RetainPtr<CFGAS_GEFont> pFont =
-      CFGAS_GEFont::LoadFont(std::move(pInternalFont), this);
+      CFGAS_GEFont::LoadFont(std::move(pInternalFont));
   if (!pFont)
     return nullptr;
 
@@ -887,7 +887,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFont(const wchar_t* pszFontFamily,
 #endif  // defined(OS_WIN)
 }
 
-void CFGAS_FontMgr::RemoveFont(const RetainPtr<CFGAS_GEFont>& pEFont) {
+void CFGAS_FontMgr::RemoveFont_(const RetainPtr<CFGAS_GEFont>& pEFont) {
   if (!pEFont)
     return;
 

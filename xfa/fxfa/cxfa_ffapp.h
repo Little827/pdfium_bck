@@ -39,8 +39,6 @@ class CXFA_FFApp : public cppgc::GarbageCollected<CXFA_FFApp>,
 
   bool LoadFWLTheme(CXFA_FFDoc* doc);
   CFWL_WidgetMgr* GetFWLWidgetMgr() const { return m_pFWLApp->GetWidgetMgr(); }
-  CFGAS_FontMgr* GetFGASFontMgr();
-
   IXFA_AppProvider* GetAppProvider() const { return m_pProvider.Get(); }
   CFWL_App* GetFWLApp() const { return m_pFWLApp; }
   CXFA_FontMgr* GetXFAFontMgr() const { return m_pXFAFontMgr.get(); }
@@ -60,7 +58,6 @@ class CXFA_FFApp : public cppgc::GarbageCollected<CXFA_FFApp>,
   //
   // TODO(dsinclair): The GEFont should have the FontMgr as the pointer instead
   // of the DEFFontMgr so this goes away. Bug 561.
-  std::unique_ptr<CFGAS_FontMgr> m_pFGASFontMgr;
   std::unique_ptr<CXFA_FontMgr> m_pXFAFontMgr;
   cppgc::Member<CXFA_FWLAdapterWidgetMgr> m_pAdapterWidgetMgr;
   cppgc::Member<CXFA_FWLTheme> m_pFWLTheme;
