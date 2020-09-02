@@ -35,9 +35,8 @@ void XFATestEnvironment::SetUp() {
   CFX_GEModule::Get()->GetFontMgr()->SetSystemFontInfo(
       CFX_GEModule::Get()->GetPlatform()->CreateDefaultSystemFontInfo());
 
-  auto font_mgr = std::make_unique<CFGAS_FontMgr>();
-  if (font_mgr->EnumFonts())
-    font_mgr_ = std::move(font_mgr);
+  font_mgr_ = std::make_unique<CFGAS_FontMgr>();
+  font_mgr_->EnumFonts();
 }
 
 void XFATestEnvironment::TearDown() {
