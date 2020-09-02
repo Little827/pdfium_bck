@@ -32,6 +32,10 @@ enum LoadStatus {
   FXFA_LOADSTATUS_CLOSING,
 };
 
+// Per-process initializations.
+void CPFDXFA_ModuleInit();
+void CPFDXFA_ModuleDestroy();
+
 class CPDFXFA_Context final : public CPDF_Document::Extension,
                               public IXFA_AppProvider {
  public:
