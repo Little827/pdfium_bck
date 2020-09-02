@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fad59082_2c6f4f21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-02T17:48:33Z",
+      "side": 1,
+      "message": "Might as well make this a full review rather than TBR as I haven\u0027t done this task in a while ...",
+      "revId": "d84ba4b568629836e07b7f3158e5f60fdde2a303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
