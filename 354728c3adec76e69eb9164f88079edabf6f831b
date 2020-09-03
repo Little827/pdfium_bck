@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9568c030_bb5beed3",
+        "filename": "fxjs/gc/container_trace.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-03T00:09:01Z",
+      "side": 1,
+      "message": "Follow-up: Should we do a bit more template magic to combine the list/set/vector versions?",
+      "revId": "354728c3adec76e69eb9164f88079edabf6f831b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
