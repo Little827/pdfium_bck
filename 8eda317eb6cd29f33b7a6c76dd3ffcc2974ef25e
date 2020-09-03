@@ -16,6 +16,24 @@
       "revId": "8eda317eb6cd29f33b7a6c76dd3ffcc2974ef25e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca9549e4_4a095082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-03T00:00:54Z",
+      "side": 1,
+      "message": "Took a quick look, but its purpose seems to be to keep the stream alive for the duration.  Which wasn\u0027t being done by the underlying cfx type.  Which seems whack, since it should be responsible for its own resources.  So I didn\u0027t just pull this.",
+      "parentUuid": "1b06b1ed_144409c4",
+      "revId": "8eda317eb6cd29f33b7a6c76dd3ffcc2974ef25e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
