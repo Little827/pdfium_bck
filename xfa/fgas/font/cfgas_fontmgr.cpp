@@ -644,7 +644,7 @@ bool CFGAS_FontMgr::EnumFontsFromFiles() {
 }
 
 bool CFGAS_FontMgr::EnumFonts() {
-  return EnumFontsFromFontMapper() || EnumFontsFromFiles();
+  return EnumFontsFromFontMapper();
 }
 
 RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByUnicodeImpl(
