@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "508287fa_cc0957f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-04T09:51:13Z",
+      "side": 1,
+      "message": "Lei, Tom: could you please take a look?\n\nThis implements the idea that was already discussed on the mailing list. Thanks.",
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
