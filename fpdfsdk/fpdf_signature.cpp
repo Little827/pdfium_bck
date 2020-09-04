@@ -7,6 +7,7 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "third_party/base/stl_util.h"
 
@@ -156,4 +157,63 @@ FPDFSignatureObj_GetTime(FPDF_SIGNATURE signature,
     return 0;
 
   return NulTerminateMaybeCopyAndReturnLength(obj->GetString(), buffer, length);
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_GetTrailerEnds(FPDF_DOCUMENT document, int* buffer, unsigned long length) {
+  auto* doc = CPDFDocumentFromFPDFDocument(document);
+  if (!doc)
+    return 0;
+
+  // Start trailer end recording.
+  auto* parser = doc->GetParser();
+  CPDF_SyntaxParser* syntax = parser->GetSyntax();
+  std::vector<int> trailer_ends;
+  syntax->SetTrailerEnds(&trailer_ends);
+
+  // Traverse the document.
+  syntax->SetPos(0);
+  while (1) {
+    bool number;
+    ByteString word = syntax->GetNextWord(&number);
+    if (number) {
+      // The object number was read. Read the generation number.
+      word = syntax->GetNextWord(&number);
+      if (!number)
+        break;
+
+      word = syntax->GetNextWord(nullptr);
+      if (word != "obj")
+        break;
+
+      syntax->GetObjectBody(nullptr);
+
+      word = syntax->GetNextWord(nullptr);
+      if (word != "endobj")
+        break;
+    } else if (word == "trailer")
+      syntax->GetObjectBody(nullptr);
+    else if (word == "startxref")
+      syntax->GetNextWord(nullptr);
+    else if (word == "xref") {
+      while (1) {
+        word = syntax->GetNextWord(nullptr);
+        if (word.IsEmpty() || word == "startxref")
+          break;
+      }
+      syntax->GetNextWord(nullptr);
+    } else
+      break;
+  }
+
+  // Stop trailer end recording.
+  syntax->SetTrailerEnds(nullptr);
+
+  unsigned long trailer_ends_len = trailer_ends.size();
+  if (buffer && length >= trailer_ends_len) {
+    for (size_t i = 0; i < trailer_ends_len; ++i)
+      buffer[i] = trailer_ends[i];
+  }
+
+  return trailer_ends_len;
 }

@@ -383,11 +383,23 @@ void CPDF_SyntaxParser::ToNextWord() {
     if (ch != '%')
       break;
 
+    ByteString comment;
     while (1) {
       if (!GetNextChar(ch))
         return;
-      if (PDFCharIsLineEnding(ch))
+      if (PDFCharIsLineEnding(ch)) {
+        if (m_TrailerEnds) {
+          FX_FILESIZE pos = m_Pos;
+          if (ch == '\r')
+            // The line ends at the \n character, record that position.
+            ++pos;
+          if (comment == "%EOF")
+            m_TrailerEnds->push_back(pos);
+        }
         break;
+      }
+      if (m_TrailerEnds)
+        comment += ch;
     }
   }
   m_Pos--;
