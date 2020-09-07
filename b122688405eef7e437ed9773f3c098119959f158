@@ -16,6 +16,23 @@
       "revId": "b122688405eef7e437ed9773f3c098119959f158",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c689a82_c98c3d92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-07T13:15:03Z",
+      "side": 1,
+      "message": "Forgot to mention an independent use-case. Ignoring signatures, in case a PDF document has incremental updates, this API allows writing a reader that can show you older revisions of the document. Just load the document, call this function to get the trailer ends, then you can use FPDF_LoadMemDocument() to later load only an older revision of the document, and present each of those revisions to the user.",
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
