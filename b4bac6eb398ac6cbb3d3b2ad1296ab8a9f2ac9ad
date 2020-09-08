@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e65a384_a133106d",
+        "filename": "testing/fuzzers/pdf_bidi_fuzzer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d260a81_a1361691",
+        "filename": "testing/xfa_js_embedder_test.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66861852_8825cc63",
+        "filename": "testing/xfa_test_environment.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "With the EnumFonts() call gone, maybe mention the font loading happens within CFGAS_GEModule::Create().",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab5abe4_148916a3",
+        "filename": "xfa/fgas/font/cfgas_defaultfontmanager.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49621f32_fdaf6ac2",
+        "filename": "xfa/fgas/font/cfgas_gefont.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2aa6807_8efd9681",
+        "filename": "xfa/fgas/font/cfgas_gemodule.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Non-const, since we own it?",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956a47e9_2a5b6dfd",
+        "filename": "xfa/fgas/font/cfgas_gemodule.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Use Google style in new code?",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3970b120_67522993",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1cf6fb_c7189465",
+        "filename": "xfa/fgas/layout/cfx_txtbreak_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42bdb97b_904c9d73",
+        "filename": "xfa/fwl/theme/cfwl_widgettp.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507838e7_27efaec6",
+        "filename": "xfa/fxfa/cxfa_ffapp.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86573c1a_11b9c6cc",
+        "filename": "xfa/fxfa/cxfa_ffapp.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Can this comment go away now?",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b99d489_e43a1071",
+        "filename": "xfa/fxfa/cxfa_ffdoc.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:05:12Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
