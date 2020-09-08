@@ -235,8 +235,9 @@ void CXFA_FFWidget::PreFinalize() {}
 
 void CXFA_FFWidget::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(m_pLayoutItem);
-  visitor->Trace(m_pNode);
   visitor->Trace(m_pDocView);
+  visitor->Trace(m_pPageView);
+  visitor->Trace(m_pNode);
 }
 
 CFWL_App* CXFA_FFWidget::GetFWLApp() const {
