@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84f37075_da52b8c4",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T23:14:22Z",
+      "side": 1,
+      "message": "Just: return bRet || pXFAPageView-\u003eGetDocView()-\u003eGetFocusWidget() \u003d\u003d hWidget; ?",
+      "revId": "c71934dbe5ccf51b2674357693a8905f1d415535",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
