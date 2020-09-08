@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a0fbd4b_9ac9b89f",
+        "filename": "testing/fuzzers/pdf_bidi_fuzzer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e65a384_a133106d",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d260a81_a1361691",
         "filename": "testing/xfa_js_embedder_test.cpp",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e365edb7_57c11e70",
+        "filename": "testing/xfa_js_embedder_test.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d260a81_a1361691",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c33d6e67_ad186bbe",
+        "filename": "testing/xfa_test_environment.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66861852_8825cc63",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ab5abe4_148916a3",
         "filename": "xfa/fgas/font/cfgas_defaultfontmanager.h",
         "patchSetId": 12
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "65363306_fc34526e",
+        "filename": "xfa/fgas/font/cfgas_defaultfontmanager.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab5abe4_148916a3",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49621f32_fdaf6ac2",
         "filename": "xfa/fgas/font/cfgas_gefont.h",
         "patchSetId": 12
@@ -84,6 +156,24 @@
       "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d53824cb_14a0b968",
+        "filename": "xfa/fgas/font/cfgas_gefont.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49621f32_fdaf6ac2",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "0575cf3a_93126297",
+        "filename": "xfa/fgas/font/cfgas_gemodule.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2aa6807_8efd9681",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956a47e9_2a5b6dfd",
         "filename": "xfa/fgas/font/cfgas_gemodule.h",
         "patchSetId": 12
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "e08cef6f_ea856731",
+        "filename": "xfa/fgas/font/cfgas_gemodule.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Yes. good idea. we should insist on this. done.,",
+      "parentUuid": "956a47e9_2a5b6dfd",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3970b120_67522993",
         "filename": "xfa/fgas/layout/cfx_rtfbreak_unittest.cpp",
         "patchSetId": 12
@@ -147,6 +285,24 @@
       "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3c3072_2092e316",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3970b120_67522993",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "1483e9cc_c059faa8",
+        "filename": "xfa/fgas/layout/cfx_txtbreak_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1cf6fb_c7189465",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42bdb97b_904c9d73",
         "filename": "xfa/fwl/theme/cfwl_widgettp.h",
         "patchSetId": 12
@@ -181,6 +355,24 @@
       "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f22db0_2e89d247",
+        "filename": "xfa/fwl/theme/cfwl_widgettp.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42bdb97b_904c9d73",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "954d16f5_80641f54",
+        "filename": "xfa/fxfa/cxfa_ffapp.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507838e7_27efaec6",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86573c1a_11b9c6cc",
         "filename": "xfa/fxfa/cxfa_ffapp.h",
         "patchSetId": 12
@@ -218,6 +428,24 @@
     },
     {
       "key": {
+        "uuid": "e81cf24c_40854403",
+        "filename": "xfa/fxfa/cxfa_ffapp.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Done.  By this comment, you meant the todo? I think the larger comment still applies about the \"font manager\" meaning the CFXA_FontMgr, not the CFGAS_FontMgr. I\u0027ll see what we can do about the need for one of those as we already have too many different kinds of these things.",
+      "parentUuid": "86573c1a_11b9c6cc",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b99d489_e43a1071",
         "filename": "xfa/fxfa/cxfa_ffdoc.cpp",
         "patchSetId": 12
@@ -232,6 +460,24 @@
       "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d0f43d9_3dad3402",
+        "filename": "xfa/fxfa/cxfa_ffdoc.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Nope.  line 237.",
+      "parentUuid": "4b99d489_e43a1071",
+      "revId": "b4bac6eb398ac6cbb3d3b2ad1296ab8a9f2ac9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

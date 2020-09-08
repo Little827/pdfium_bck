@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6973c28_03e885fa",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "Several .cpp files needed this for FX_IsOdd().",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "e52b94b309a64d7d393c069c318426262599848d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85404648_24440df5",
+        "filename": "xfa/fgas/font/cfgas_defaultfontmanager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:45:28Z",
+      "side": 1,
+      "message": "several .cpp files need this otherwise access into incomplete type CFGAS_FontMgr (like line 22).",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "e52b94b309a64d7d393c069c318426262599848d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
