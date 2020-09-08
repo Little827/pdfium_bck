@@ -67,6 +67,7 @@ void CXFA_FFDocView::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(m_pDoc);
   visitor->Trace(m_pWidgetHandler);
   visitor->Trace(m_pFocusNode);
+  visitor->Trace(m_pFocusWidget);
   ContainerTrace(visitor, m_ValidateNodes);
   ContainerTrace(visitor, m_CalculateNodes);
   ContainerTrace(visitor, m_NewAddedNodes);
@@ -213,13 +214,8 @@ void CXFA_FFDocView::UpdateUIDisplay(CXFA_Node* pNode, CXFA_FFWidget* pExcept) {
          pWidget->IsFocused())) {
       continue;
     }
-    ObservedPtr<CXFA_FFWidget> pWatched(pWidget);
-    ObservedPtr<CXFA_FFWidget> pWatchedNext(pNext);
-    pWatched->UpdateFWLData();
-    if (pWatched)
-      pWatched->InvalidateRect();
-    if (!pWatchedNext)
-      break;
+    pWidget->UpdateFWLData();
+    pWidget->InvalidateRect();
   }
 }
 
@@ -307,7 +303,7 @@ bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
       if (!m_pFocusWidget->IsLoaded())
         m_pFocusWidget->LoadWidget();
       if (!m_pFocusWidget->OnSetFocus(m_pFocusWidget.Get()))
-        m_pFocusWidget.Reset();
+        m_pFocusWidget.Clear();
     }
   }
   if (m_pFocusWidget) {
@@ -326,10 +322,10 @@ bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
   if (pNewFocus) {
     CXFA_Node* node = pNewFocus->GetNode();
     m_pFocusNode = node->IsWidgetReady() ? node : nullptr;
-    m_pFocusWidget.Reset(pNewFocus);
+    m_pFocusWidget = pNewFocus;
   } else {
     m_pFocusNode.Clear();
-    m_pFocusWidget.Reset();
+    m_pFocusWidget.Clear();
   }
   return true;
 }
@@ -351,7 +347,7 @@ void CXFA_FFDocView::DeleteLayoutItem(CXFA_FFWidget* pWidget) {
     return;
 
   m_pFocusNode = nullptr;
-  m_pFocusWidget.Reset();
+  m_pFocusWidget.Clear();
 }
 
 static XFA_EventError XFA_ProcessEvent(CXFA_FFDocView* pDocView,
