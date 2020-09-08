@@ -125,7 +125,7 @@ class CXFA_FFDocView : public cppgc::GarbageCollected<CXFA_FFDocView> {
   cppgc::Member<CXFA_FFDoc> const m_pDoc;
   cppgc::Member<CXFA_FFWidgetHandler> m_pWidgetHandler;
   cppgc::Member<CXFA_Node> m_pFocusNode;
-  ObservedPtr<CXFA_FFWidget> m_pFocusWidget;
+  cppgc::Member<CXFA_FFWidget> m_pFocusWidget;
   std::list<cppgc::Member<CXFA_Node>> m_ValidateNodes;
   std::vector<cppgc::Member<CXFA_Node>> m_CalculateNodes;
   std::list<cppgc::Member<CXFA_BindItems>> m_BindItems;

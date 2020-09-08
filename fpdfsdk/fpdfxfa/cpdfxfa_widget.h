@@ -35,7 +35,7 @@ class CPDFXFA_Widget final : public CPDFSDK_Annot {
 
  private:
   UnownedPtr<CPDFSDK_InteractiveForm> const m_pInteractiveForm;
-  ObservedPtr<CXFA_FFWidget> const m_pXFAFFWidget;
+  cppgc::Persistent<CXFA_FFWidget> const m_pXFAFFWidget;
 };
 
 #endif  // FPDFSDK_FPDFXFA_CPDFXFA_WIDGET_H_
