@@ -94,7 +94,6 @@ class CFWL_FontData final {
   WideString m_wsFamily;
   uint32_t m_dwStyles;
   uint32_t m_dwCodePage;
-  std::unique_ptr<CFGAS_FontMgr> m_pFontMgr;
   RetainPtr<CFGAS_GEFont> m_pFont;
 };
 
