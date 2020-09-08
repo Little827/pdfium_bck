@@ -859,12 +859,18 @@ Optional<CFX_DIBitmap::PitchAndSize> CFX_DIBitmap::CalculatePitchAndSize(
   if (!bpp)
     return pdfium::nullopt;
 
-  if ((INT_MAX - 31) / width < bpp)
-    return pdfium::nullopt;
-
   uint32_t actual_pitch = pitch;
-  if (actual_pitch == 0)
-    actual_pitch = static_cast<uint32_t>((width * bpp + 31) / 32 * 4);
+  if (actual_pitch == 0) {
+    FX_SAFE_UINT32 safe_pitch = width;
+    safe_pitch *= bpp;
+    safe_pitch += 31;
+    safe_pitch /= 32;
+    safe_pitch *= 4;
+    if (!safe_pitch.IsValid())
+      return pdfium::nullopt;
+
+    actual_pitch = safe_pitch.ValueOrDie();
+  }
 
   if ((1 << 30) / actual_pitch < static_cast<uint32_t>(height))
     return pdfium::nullopt;
