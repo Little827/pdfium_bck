@@ -19,12 +19,9 @@ XFAJSEmbedderTest::~XFAJSEmbedderTest() = default;
 
 void XFAJSEmbedderTest::SetUp() {
   JSEmbedderTest::SetUp();
-  CXFA_FFApp::SkipFontLoadForTesting(true);
 }
 
 void XFAJSEmbedderTest::TearDown() {
-  CXFA_FFApp::SkipFontLoadForTesting(false);
-
   value_.reset();
   script_context_ = nullptr;
 

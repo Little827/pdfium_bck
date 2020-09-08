@@ -19,17 +19,6 @@
 #include "xfa/fxfa/cxfa_fwladapterwidgetmgr.h"
 #include "xfa/fxfa/cxfa_fwltheme.h"
 
-namespace {
-
-bool g_skipFontLoadForTesting = false;
-
-}  // namespace
-
-// static
-void CXFA_FFApp::SkipFontLoadForTesting(bool skip) {
-  g_skipFontLoadForTesting = skip;
-}
-
 CXFA_FFApp::CXFA_FFApp(IXFA_AppProvider* pProvider)
     : m_pProvider(pProvider), m_pXFAFontMgr(std::make_unique<CXFA_FontMgr>()) {
   // Ensure fully initialized before making objects based on |this|.
@@ -43,17 +32,6 @@ void CXFA_FFApp::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(m_pAdapterWidgetMgr);
   visitor->Trace(m_pFWLTheme);
   visitor->Trace(m_pFWLApp);
-}
-
-CFGAS_FontMgr* CXFA_FFApp::GetFGASFontMgr() {
-  if (!m_pFGASFontMgr) {
-    m_pFGASFontMgr = std::make_unique<CFGAS_FontMgr>();
-    if (!g_skipFontLoadForTesting) {
-      if (!m_pFGASFontMgr->EnumFonts())
-        m_pFGASFontMgr = nullptr;
-    }
-  }
-  return m_pFGASFontMgr.get();
 }
 
 bool CXFA_FFApp::LoadFWLTheme(CXFA_FFDoc* doc) {
