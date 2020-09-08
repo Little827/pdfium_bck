@@ -22,6 +22,30 @@
       "revId": "95dd51742897d9bc19d612a796baccaa9637a166",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab42d388_e6b76577",
+        "filename": "xfa/fgas/font/cfgas_gemodule.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T21:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b5baab_a1afff55",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "95dd51742897d9bc19d612a796baccaa9637a166",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
