@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51b5baab_a1afff55",
+        "filename": "xfa/fgas/font/cfgas_gemodule.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-08T21:52:51Z",
+      "side": 1,
+      "message": "Maybe just \"g_module\" since there aren\u0027t any other modules here?",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "95dd51742897d9bc19d612a796baccaa9637a166",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
