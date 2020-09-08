@@ -17,6 +17,24 @@
       "revId": "37a316ec9a12ed9b4f8bcab79f99a00cb8427c3b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f471f969_e96ee463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-08T19:08:13Z",
+      "side": 1,
+      "message": "NM.  It is there.  It is just that it isn\u0027t being shown as a diff.",
+      "parentUuid": "38640eac_bd379c70",
+      "revId": "37a316ec9a12ed9b4f8bcab79f99a00cb8427c3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
