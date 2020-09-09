@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f409557_d50723ea",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widget.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-09T00:27:28Z",
+      "side": 1,
+      "message": "Remove and IWYU for cppgc.",
+      "revId": "23f867938e213ff2b661cb5f9a79da4c15f381b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4df32f_9d535576",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-09T00:27:28Z",
+      "side": 1,
+      "message": "Consistently Clear() here.",
+      "revId": "23f867938e213ff2b661cb5f9a79da4c15f381b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7b73fb0_299643a5",
+        "filename": "xfa/fxfa/cxfa_ffdocview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-09T00:27:28Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "23f867938e213ff2b661cb5f9a79da4c15f381b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
