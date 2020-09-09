@@ -67,6 +67,14 @@ void ProcessText(WideString* pText) {
 
 }  // namespace
 
+CXFA_TextLayout::LoaderContext::LoaderContext() = default;
+
+CXFA_TextLayout::LoaderContext::~LoaderContext() = default;
+
+void CXFA_TextLayout::LoaderContext::Trace(cppgc::Visitor* visitor) const {
+  visitor->Trace(pNode);
+}
+
 CXFA_TextLayout::CXFA_TextLayout(CXFA_FFDoc* doc,
                                  CXFA_TextProvider* pTextProvider)
     : m_pDoc(doc), m_pTextProvider(pTextProvider) {
@@ -82,6 +90,8 @@ void CXFA_TextLayout::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(m_pDoc);
   visitor->Trace(m_pTextProvider);
   visitor->Trace(m_pTextDataNode);
+  if (m_pLoader)
+    m_pLoader->Trace(visitor);
 }
 
 void CXFA_TextLayout::Unload() {
@@ -299,7 +309,7 @@ float CXFA_TextLayout::GetLayoutHeight() {
 
 float CXFA_TextLayout::StartLayout(float fWidth) {
   if (!m_pLoader)
-    m_pLoader = std::make_unique<CXFA_LoaderContext>();
+    m_pLoader = std::make_unique<LoaderContext>();
 
   if (fWidth < 0 ||
       (m_pLoader->fWidth > -1 && fabs(fWidth - m_pLoader->fWidth) > 0)) {
