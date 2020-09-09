@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1599608901 -0700\nnonce ALC2d19ak9IjEVaCm5a0bessXBMJKipCFRs2Yv5C9zrToBLSlKJAG1nT0E85fylTULhFplF15QNZ\n\n0000000000000000000000000000000000000000 c0ebcaffe870aa261c7354fae96dbeeba9d9f436 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9YGEUACgkQqzYtYVpm\n/Xsd5ggA1nq6KqwXUFZsSJB3dan8OCEgMG0dYRDACmC6HUFGJDQp0U4av9n1MXpF\n7YZ9uPFQQ+qDTdhyHynMoIXOCbpTXVPl89w4MFmZDisTFZBgyE5zokJhpJ5Rv03o\nyjIOTgNDFoJWqPp3rtYW/2v4ZZrFz8opmKq18uvYPyYT3xH5dxePw/7of99nrD5o\na7I7cNYqLVXgwWwLU/KOzKhkIyg0qTmAYGBlZYz8BZND3JtBBpf7N2aegzV12bQr\nx9O5zAkK+TUTpEkRfyxZv0Ga2a4RVU0qh5PngBDHVshIhbPxFxZFQeEW0qzeW3TR\ni2gIuoatf10HBdGHOtW3lZ6NRDSccw\u003d\u003d\n\u003dPYIv\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1412c40_df876f8b",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-09T16:52:31Z",
+      "side": 1,
+      "message": "follow-up follow-up: this strikes me as silly -- in that we have to handle a false return anyways, so why should we crash on small alloc failures ? In  general image buffers are the kind of thing where I think try allocs are appropriate since continuiing without an image may be perferreable.",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "c0ebcaffe870aa261c7354fae96dbeeba9d9f436",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
