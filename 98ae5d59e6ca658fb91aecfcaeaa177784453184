@@ -16,6 +16,69 @@
       "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcdf763b_758f81f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-09T15:59:42Z",
+      "side": 1,
+      "message": "I think we\u0027re close.  Let\u0027s see if Lei has any additional thoughts.",
+      "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15e7bee2_16905e8c",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-09T15:59:42Z",
+      "side": 1,
+      "message": "you don\u0027t suppose it would be possible to fold the whitespace handling into the state machine as well?  Thoughts?",
+      "range": {
+        "startLine": 387,
+        "startChar": 4,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af3f673_eb78a541",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-09T15:59:42Z",
+      "side": 1,
+      "message": "minor nit: I think this would read better as\n  switch (eof_state) {\n    case kPercent:\n      eof_state \u003d ch \u003d\u003d \u0027E\u0027 ? kE : kInvalid;\n      break;\n\n  \n  };\n\netc.",
+      "range": {
+        "startLine": 399,
+        "startChar": 6,
+        "endLine": 399,
+        "endChar": 55
+      },
+      "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
