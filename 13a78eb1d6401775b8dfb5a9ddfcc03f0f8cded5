@@ -34,6 +34,24 @@
       "revId": "13a78eb1d6401775b8dfb5a9ddfcc03f0f8cded5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44d2f6e9_0ee4de72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8136
+      },
+      "writtenOn": "2020-09-09T20:44:07Z",
+      "side": 1,
+      "message": "I don\u0027t have submit permissions in this repo, could you submit it?",
+      "parentUuid": "54dbff2a_0eb46a9f",
+      "revId": "13a78eb1d6401775b8dfb5a9ddfcc03f0f8cded5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
