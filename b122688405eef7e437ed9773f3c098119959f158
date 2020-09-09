@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "ad235300_45908b5a",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-09T10:36:55Z",
+      "side": 1,
+      "message": "Aha, indeed. My intention was that in case the the comment is \"%EOF\\r\\n\", then the end position should be after \\n, not after \\r, since the PDF reference says they should be handled as a single EOL marker. I\u0027ve now reworked this so that we don\u0027t blindly combine \\r with the next character, but we only combine in case \\r is followed by \\n.",
+      "parentUuid": "e0ad066e_e917be04",
+      "range": {
+        "startLine": 393,
+        "startChar": 20,
+        "endLine": 393,
+        "endChar": 24
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6243b7e_9c082f4e",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 1
@@ -79,6 +103,30 @@
       "revId": "b122688405eef7e437ed9773f3c098119959f158",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f100e37_56b2388c",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-09T10:36:55Z",
+      "side": 1,
+      "message": "Done. It goes from % -\u003e E -\u003e O -\u003e F, then either it goes into an invalid state or detects an EOL char and tracks the position.",
+      "parentUuid": "e6243b7e_9c082f4e",
+      "range": {
+        "startLine": 402,
+        "startChar": 7,
+        "endLine": 402,
+        "endChar": 22
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "8c7a6714_4ec90e4c",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-09T10:36:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "55ff132e_cd14551e",
+      "range": {
+        "startLine": 163,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 47
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c766f54_6e839d13",
         "filename": "fpdfsdk/fpdf_signature.cpp",
         "patchSetId": 1
@@ -116,6 +188,30 @@
       "writtenOn": "2020-09-08T19:02:56Z",
       "side": 1,
       "message": "I\u0027d really like to be able to do this without reparsing.",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 13
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80733db4_72b99523",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-09T10:36:55Z",
+      "side": 1,
+      "message": "I like the idea, though I don\u0027t easily see how this could be done. Here is what I found while researching:\n\n- the relevant CPDF_SyntaxParser instance is created in CPDF_Parser::InitSyntaxParser(), called by CPDF_Parser::StartParse(), called by CPDF_Document::LoadDoc()\n- the ideal would be that by time the time LoadDoc() calls CPDF_Parser::StartParseInternal(), we do this tracking, so reparsing is not needed\n- StartParseIntrnal() works by calling CPDF_Parser::ParseStartXRef(), which looks backwards from the end of the file, looking for \"startxref\" and the number after it\n- once we have that byte offset, we seek there, parse the xref (table or object), and recursively do the same, as long as xrefs have a /Prev dictionary key\n\nThis is fine for normal parsing, but if you look at e.g. testing/resources/two_signatures.pdf, it has 3 trailers and they are not incremental, linking to a previous trailer. Instead, they just declare the offset of all objects. This explains why we don\u0027t even see the first 2 trailers (out of 3) while normal parsing.\n\nI believe one way we could avoid reparsing is to scan the entire file unconditionally, even if we have a valid xref at its end. But I fear that would be expensive, and as long as you don\u0027t call FPDF_GetTrailerEnds(), it would be a cost for no benefit.\n\nDo I miss something? Or with the above consideration, would it be OK to do the reparsing after all?",
+      "parentUuid": "8c766f54_6e839d13",
       "range": {
         "startLine": 175,
         "startChar": 2,
