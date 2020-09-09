@@ -18,37 +18,39 @@
 template <class BaseType>
 class CFX_PTemplate {
  public:
-  CFX_PTemplate() : x(0), y(0) {}
-  CFX_PTemplate(BaseType new_x, BaseType new_y) : x(new_x), y(new_y) {}
-  CFX_PTemplate(const CFX_PTemplate& other) : x(other.x), y(other.y) {}
+  constexpr CFX_PTemplate() : x(0), y(0) {}
+  constexpr CFX_PTemplate(BaseType new_x, BaseType new_y)
+      : x(new_x), y(new_y) {}
+  constexpr CFX_PTemplate(const CFX_PTemplate& other)
+      : x(other.x), y(other.y) {}
 
-  CFX_PTemplate& operator=(const CFX_PTemplate& other) {
+  constexpr CFX_PTemplate& operator=(const CFX_PTemplate& other) {
     if (this != &other) {
       x = other.x;
       y = other.y;
     }
     return *this;
   }
-  bool operator==(const CFX_PTemplate& other) const {
+  constexpr bool operator==(const CFX_PTemplate& other) const {
     return x == other.x && y == other.y;
   }
-  bool operator!=(const CFX_PTemplate& other) const {
+  constexpr bool operator!=(const CFX_PTemplate& other) const {
     return !(*this == other);
   }
-  CFX_PTemplate& operator+=(const CFX_PTemplate<BaseType>& obj) {
+  constexpr CFX_PTemplate& operator+=(const CFX_PTemplate<BaseType>& obj) {
     x += obj.x;
     y += obj.y;
     return *this;
   }
-  CFX_PTemplate& operator-=(const CFX_PTemplate<BaseType>& obj) {
+  constexpr CFX_PTemplate& operator-=(const CFX_PTemplate<BaseType>& obj) {
     x -= obj.x;
     y -= obj.y;
     return *this;
   }
-  CFX_PTemplate operator+(const CFX_PTemplate& other) const {
+  constexpr CFX_PTemplate operator+(const CFX_PTemplate& other) const {
     return CFX_PTemplate(x + other.x, y + other.y);
   }
-  CFX_PTemplate operator-(const CFX_PTemplate& other) const {
+  constexpr CFX_PTemplate operator-(const CFX_PTemplate& other) const {
     return CFX_PTemplate(x - other.x, y - other.y);
   }
 
@@ -62,12 +64,12 @@ using CFX_PointF = CFX_PTemplate<float>;
 template <class BaseType>
 class CFX_STemplate {
  public:
-  CFX_STemplate() : width(0), height(0) {}
+  constexpr CFX_STemplate() : width(0), height(0) {}
 
-  CFX_STemplate(BaseType new_width, BaseType new_height)
+  constexpr CFX_STemplate(BaseType new_width, BaseType new_height)
       : width(new_width), height(new_height) {}
 
-  CFX_STemplate(const CFX_STemplate& other)
+  constexpr CFX_STemplate(const CFX_STemplate& other)
       : width(other.width), height(other.height) {}
 
   template <typename OtherType>
@@ -80,49 +82,49 @@ class CFX_STemplate {
     width = 0;
     height = 0;
   }
-  CFX_STemplate& operator=(const CFX_STemplate& other) {
+  constexpr CFX_STemplate& operator=(const CFX_STemplate& other) {
     if (this != &other) {
       width = other.width;
       height = other.height;
     }
     return *this;
   }
-  bool operator==(const CFX_STemplate& other) const {
+  constexpr bool operator==(const CFX_STemplate& other) const {
     return width == other.width && height == other.height;
   }
-  bool operator!=(const CFX_STemplate& other) const {
+  constexpr bool operator!=(const CFX_STemplate& other) const {
     return !(*this == other);
   }
-  CFX_STemplate& operator+=(const CFX_STemplate<BaseType>& obj) {
+  constexpr CFX_STemplate& operator+=(const CFX_STemplate<BaseType>& obj) {
     width += obj.width;
     height += obj.height;
     return *this;
   }
-  CFX_STemplate& operator-=(const CFX_STemplate<BaseType>& obj) {
+  constexpr CFX_STemplate& operator-=(const CFX_STemplate<BaseType>& obj) {
     width -= obj.width;
     height -= obj.height;
     return *this;
   }
-  CFX_STemplate& operator*=(BaseType factor) {
+  constexpr CFX_STemplate& operator*=(BaseType factor) {
     width *= factor;
     height *= factor;
     return *this;
   }
-  CFX_STemplate& operator/=(BaseType divisor) {
+  constexpr CFX_STemplate& operator/=(BaseType divisor) {
     width /= divisor;
     height /= divisor;
     return *this;
   }
-  CFX_STemplate operator+(const CFX_STemplate& other) const {
+  constexpr CFX_STemplate operator+(const CFX_STemplate& other) const {
     return CFX_STemplate(width + other.width, height + other.height);
   }
-  CFX_STemplate operator-(const CFX_STemplate& other) const {
+  constexpr CFX_STemplate operator-(const CFX_STemplate& other) const {
     return CFX_STemplate(width - other.width, height - other.height);
   }
-  CFX_STemplate operator*(BaseType factor) const {
+  constexpr CFX_STemplate operator*(BaseType factor) const {
     return CFX_STemplate(width * factor, height * factor);
   }
-  CFX_STemplate operator/(BaseType divisor) const {
+  constexpr CFX_STemplate operator/(BaseType divisor) const {
     return CFX_STemplate(width / divisor, height / divisor);
   }
 
@@ -138,14 +140,15 @@ class CFX_VTemplate final : public CFX_PTemplate<BaseType> {
   using CFX_PTemplate<BaseType>::x;
   using CFX_PTemplate<BaseType>::y;
 
-  CFX_VTemplate() : CFX_PTemplate<BaseType>() {}
-  CFX_VTemplate(BaseType new_x, BaseType new_y)
+  constexpr CFX_VTemplate() : CFX_PTemplate<BaseType>() {}
+  constexpr CFX_VTemplate(BaseType new_x, BaseType new_y)
       : CFX_PTemplate<BaseType>(new_x, new_y) {}
 
-  CFX_VTemplate(const CFX_VTemplate& other) : CFX_PTemplate<BaseType>(other) {}
+  constexpr CFX_VTemplate(const CFX_VTemplate& other)
+      : CFX_PTemplate<BaseType>(other) {}
 
-  CFX_VTemplate(const CFX_PTemplate<BaseType>& point1,
-                const CFX_PTemplate<BaseType>& point2)
+  constexpr CFX_VTemplate(const CFX_PTemplate<BaseType>& point1,
+                          const CFX_PTemplate<BaseType>& point2)
       : CFX_PTemplate<BaseType>(point2.x - point1.x, point2.y - point1.y) {}
 
   float Length() const { return sqrt(x * x + y * y); }
@@ -157,11 +160,11 @@ class CFX_VTemplate final : public CFX_PTemplate<BaseType> {
     x /= fLen;
     y /= fLen;
   }
-  void Translate(BaseType dx, BaseType dy) {
+  constexpr void Translate(BaseType dx, BaseType dy) {
     x += dx;
     y += dy;
   }
-  void Scale(BaseType sx, BaseType sy) {
+  constexpr void Scale(BaseType sx, BaseType sy) {
     x *= sx;
     y *= sy;
   }
@@ -181,12 +184,13 @@ using CFX_VectorF = CFX_VTemplate<float>;
 // LTRB rectangles (y-axis runs downwards).
 // Struct layout is compatible with win32 RECT.
 struct FX_RECT {
-  FX_RECT() = default;
-  FX_RECT(int l, int t, int r, int b) : left(l), top(t), right(r), bottom(b) {}
+  constexpr FX_RECT() = default;
+  constexpr FX_RECT(int l, int t, int r, int b)
+      : left(l), top(t), right(r), bottom(b) {}
 
-  int Width() const { return right - left; }
-  int Height() const { return bottom - top; }
-  bool IsEmpty() const { return right <= left || bottom <= top; }
+  constexpr int Width() const { return right - left; }
+  constexpr int Height() const { return bottom - top; }
+  constexpr bool IsEmpty() const { return right <= left || bottom <= top; }
 
   bool Valid() const;
 
@@ -194,14 +198,14 @@ struct FX_RECT {
   void Intersect(const FX_RECT& src);
   void Intersect(int l, int t, int r, int b) { Intersect(FX_RECT(l, t, r, b)); }
 
-  void Offset(int dx, int dy) {
+  constexpr void Offset(int dx, int dy) {
     left += dx;
     right += dx;
     top += dy;
     bottom += dy;
   }
 
-  bool operator==(const FX_RECT& src) const {
+  constexpr bool operator==(const FX_RECT& src) const {
     return left == src.left && right == src.right && top == src.top &&
            bottom == src.bottom;
   }
@@ -223,16 +227,21 @@ class CFX_FloatRect {
   constexpr CFX_FloatRect(float l, float b, float r, float t)
       : left(l), bottom(b), right(r), top(t) {}
 
-  explicit CFX_FloatRect(const float* pArray)
+  constexpr explicit CFX_FloatRect(const float* pArray)
       : CFX_FloatRect(pArray[0], pArray[1], pArray[2], pArray[3]) {}
 
-  explicit CFX_FloatRect(const FX_RECT& rect);
+  // Y-axis runs the opposite way in FX_RECT.
+  constexpr explicit CFX_FloatRect(const FX_RECT& rect)
+      : left(rect.left),
+        bottom(rect.top),
+        right(rect.right),
+        top(rect.bottom) {}
 
   static CFX_FloatRect GetBBox(const CFX_PointF* pPoints, int nPoints);
 
   void Normalize();
 
-  bool IsEmpty() const { return left >= right || bottom >= top; }
+  constexpr bool IsEmpty() const { return left >= right || bottom >= top; }
   bool Contains(const CFX_PointF& point) const;
   bool Contains(const CFX_FloatRect& other_rect) const;
 
@@ -255,7 +264,7 @@ class CFX_FloatRect {
 
   CFX_FloatRect GetCenterSquare() const;
 
-  void InitRect(const CFX_PointF& point) {
+  constexpr void InitRect(const CFX_PointF& point) {
     left = point.x;
     right = point.x;
     bottom = point.y;
@@ -263,12 +272,12 @@ class CFX_FloatRect {
   }
   void UpdateRect(const CFX_PointF& point);
 
-  float Width() const { return right - left; }
-  float Height() const { return top - bottom; }
-  float Left() const { return left; }
-  float Bottom() const { return bottom; }
-  float Right() const { return right; }
-  float Top() const { return top; }
+  constexpr float Width() const { return right - left; }
+  constexpr float Height() const { return top - bottom; }
+  constexpr float Left() const { return left; }
+  constexpr float Bottom() const { return bottom; }
+  constexpr float Right() const { return right; }
+  constexpr float Top() const { return top; }
 
   void Inflate(float x, float y);
   void Inflate(float other_left,
@@ -318,39 +327,42 @@ class CFX_RectF {
   using PointType = CFX_PointF;
   using SizeType = CFX_SizeF;
 
-  CFX_RectF() = default;
-  CFX_RectF(float dst_left, float dst_top, float dst_width, float dst_height)
+  constexpr CFX_RectF() = default;
+  constexpr CFX_RectF(float dst_left,
+                      float dst_top,
+                      float dst_width,
+                      float dst_height)
       : left(dst_left), top(dst_top), width(dst_width), height(dst_height) {}
-  CFX_RectF(float dst_left, float dst_top, const SizeType& dst_size)
+  constexpr CFX_RectF(float dst_left, float dst_top, const SizeType& dst_size)
       : left(dst_left),
         top(dst_top),
         width(dst_size.width),
         height(dst_size.height) {}
-  CFX_RectF(const PointType& p, float dst_width, float dst_height)
+  constexpr CFX_RectF(const PointType& p, float dst_width, float dst_height)
       : left(p.x), top(p.y), width(dst_width), height(dst_height) {}
-  CFX_RectF(const PointType& p1, const SizeType& s2)
+  constexpr CFX_RectF(const PointType& p1, const SizeType& s2)
       : left(p1.x), top(p1.y), width(s2.width), height(s2.height) {}
-  explicit CFX_RectF(const FX_RECT& that)
+  constexpr explicit CFX_RectF(const FX_RECT& that)
       : left(static_cast<float>(that.left)),
         top(static_cast<float>(that.top)),
         width(static_cast<float>(that.Width())),
         height(static_cast<float>(that.Height())) {}
 
   // NOLINTNEXTLINE(runtime/explicit)
-  CFX_RectF(const CFX_RectF& other) = default;
+  constexpr CFX_RectF(const CFX_RectF& other) = default;
 
-  CFX_RectF& operator+=(const PointType& p) {
+  constexpr CFX_RectF& operator+=(const PointType& p) {
     left += p.x;
     top += p.y;
     return *this;
   }
-  CFX_RectF& operator-=(const PointType& p) {
+  constexpr CFX_RectF& operator-=(const PointType& p) {
     left -= p.x;
     top -= p.y;
     return *this;
   }
-  float right() const { return left + width; }
-  float bottom() const { return top + height; }
+  constexpr float right() const { return left + width; }
+  constexpr float bottom() const { return top + height; }
   void Normalize() {
     if (width < 0) {
       left += width;
@@ -361,73 +373,75 @@ class CFX_RectF {
       height = -height;
     }
   }
-  void Offset(float dx, float dy) {
+  constexpr void Offset(float dx, float dy) {
     left += dx;
     top += dy;
   }
-  void Inflate(float x, float y) {
+  constexpr void Inflate(float x, float y) {
     left -= x;
     width += x * 2;
     top -= y;
     height += y * 2;
   }
-  void Inflate(const PointType& p) { Inflate(p.x, p.y); }
-  void Inflate(float off_left,
-               float off_top,
-               float off_right,
-               float off_bottom) {
+  constexpr void Inflate(const PointType& p) { Inflate(p.x, p.y); }
+  constexpr void Inflate(float off_left,
+                         float off_top,
+                         float off_right,
+                         float off_bottom) {
     left -= off_left;
     top -= off_top;
     width += off_left + off_right;
     height += off_top + off_bottom;
   }
-  void Inflate(const CFX_RectF& rt) {
+  constexpr void Inflate(const CFX_RectF& rt) {
     Inflate(rt.left, rt.top, rt.left + rt.width, rt.top + rt.height);
   }
-  void Deflate(float x, float y) {
+  constexpr void Deflate(float x, float y) {
     left += x;
     width -= x * 2;
     top += y;
     height -= y * 2;
   }
-  void Deflate(const PointType& p) { Deflate(p.x, p.y); }
-  void Deflate(float off_left,
-               float off_top,
-               float off_right,
-               float off_bottom) {
+  constexpr void Deflate(const PointType& p) { Deflate(p.x, p.y); }
+  constexpr void Deflate(float off_left,
+                         float off_top,
+                         float off_right,
+                         float off_bottom) {
     left += off_left;
     top += off_top;
     width -= off_left + off_right;
     height -= off_top + off_bottom;
   }
-  void Deflate(const CFX_RectF& rt) {
+  constexpr void Deflate(const CFX_RectF& rt) {
     Deflate(rt.left, rt.top, rt.top + rt.width, rt.top + rt.height);
   }
-  bool IsEmpty() const { return width <= 0 || height <= 0; }
-  bool IsEmpty(float fEpsilon) const {
+  constexpr bool IsEmpty() const { return width <= 0 || height <= 0; }
+  constexpr bool IsEmpty(float fEpsilon) const {
     return width <= fEpsilon || height <= fEpsilon;
   }
-  void Empty() { width = height = 0; }
-  bool Contains(const PointType& p) const {
+  constexpr void Empty() { width = height = 0; }
+  constexpr bool Contains(const PointType& p) const {
     return p.x >= left && p.x < left + width && p.y >= top &&
            p.y < top + height;
   }
-  bool Contains(const CFX_RectF& rt) const {
+  constexpr bool Contains(const CFX_RectF& rt) const {
     return rt.left >= left && rt.right() <= right() && rt.top >= top &&
            rt.bottom() <= bottom();
   }
-  float Left() const { return left; }
-  float Top() const { return top; }
-  float Width() const { return width; }
-  float Height() const { return height; }
-  SizeType Size() const { return SizeType(width, height); }
-  PointType TopLeft() const { return PointType(left, top); }
-  PointType TopRight() const { return PointType(left + width, top); }
-  PointType BottomLeft() const { return PointType(left, top + height); }
-  PointType BottomRight() const {
+  constexpr float Left() const { return left; }
+  constexpr float Top() const { return top; }
+  constexpr float Width() const { return width; }
+  constexpr float Height() const { return height; }
+  constexpr SizeType Size() const { return SizeType(width, height); }
+  constexpr PointType TopLeft() const { return PointType(left, top); }
+  constexpr PointType TopRight() const { return PointType(left + width, top); }
+  constexpr PointType BottomLeft() const {
+    return PointType(left, top + height);
+  }
+  constexpr PointType BottomRight() const {
     return PointType(left + width, top + height);
   }
-  PointType Center() const {
+  constexpr PointType Center() const {
     return PointType(left + width / 2, top + height / 2);
   }
   void Union(float x, float y) {
@@ -477,15 +491,15 @@ class CFX_RectF {
     rect.Intersect(*this);
     return !rect.IsEmpty(fEpsilon);
   }
-  friend bool operator==(const CFX_RectF& rc1, const CFX_RectF& rc2) {
+  friend constexpr bool operator==(const CFX_RectF& rc1, const CFX_RectF& rc2) {
     return rc1.left == rc2.left && rc1.top == rc2.top &&
            rc1.width == rc2.width && rc1.height == rc2.height;
   }
-  friend bool operator!=(const CFX_RectF& rc1, const CFX_RectF& rc2) {
+  friend constexpr bool operator!=(const CFX_RectF& rc1, const CFX_RectF& rc2) {
     return !(rc1 == rc2);
   }
 
-  CFX_FloatRect ToFloatRect() const {
+  constexpr CFX_FloatRect ToFloatRect() const {
     // Note, we flip top/bottom here because the CFX_FloatRect has the
     // y-axis running in the opposite direction.
     return CFX_FloatRect(left, top, right(), bottom());
@@ -513,43 +527,52 @@ std::ostream& operator<<(std::ostream& os, const CFX_RectF& rect);
 //
 class CFX_Matrix {
  public:
-  CFX_Matrix() = default;
+  constexpr CFX_Matrix() = default;
 
-  explicit CFX_Matrix(const float n[6])
+  constexpr explicit CFX_Matrix(const float n[6])
       : a(n[0]), b(n[1]), c(n[2]), d(n[3]), e(n[4]), f(n[5]) {}
 
-  CFX_Matrix(float a1, float b1, float c1, float d1, float e1, float f1)
+  constexpr CFX_Matrix(float a1,
+                       float b1,
+                       float c1,
+                       float d1,
+                       float e1,
+                       float f1)
       : a(a1), b(b1), c(c1), d(d1), e(e1), f(f1) {}
 
-  CFX_Matrix(const CFX_Matrix& other) = default;
+  constexpr CFX_Matrix(const CFX_Matrix& other) = default;
 
-  CFX_Matrix& operator=(const CFX_Matrix& other) = default;
+  constexpr CFX_Matrix& operator=(const CFX_Matrix& other) = default;
 
-  bool operator==(const CFX_Matrix& other) const {
+  constexpr bool operator==(const CFX_Matrix& other) const {
     return a == other.a && b == other.b && c == other.c && d == other.d &&
            e == other.e && f == other.f;
   }
-  bool operator!=(const CFX_Matrix& other) const { return !(*this == other); }
+  constexpr bool operator!=(const CFX_Matrix& other) const {
+    return !(*this == other);
+  }
 
-  CFX_Matrix operator*(const CFX_Matrix& right) const {
+  constexpr CFX_Matrix operator*(const CFX_Matrix& right) const {
     return CFX_Matrix(a * right.a + b * right.c, a * right.b + b * right.d,
                       c * right.a + d * right.c, c * right.b + d * right.d,
                       e * right.a + f * right.c + right.e,
                       e * right.b + f * right.d + right.f);
   }
-  CFX_Matrix& operator*=(const CFX_Matrix& other) {
+  constexpr CFX_Matrix& operator*=(const CFX_Matrix& other) {
     *this = *this * other;
     return *this;
   }
 
-  bool IsIdentity() const { return *this == CFX_Matrix(); }
+  constexpr bool IsIdentity() const { return *this == CFX_Matrix(); }
   CFX_Matrix GetInverse() const;
 
   bool Is90Rotated() const;
   bool IsScaled() const;
-  bool WillScale() const { return a != 1.0f || b != 0 || c != 0 || d != 1.0f; }
+  constexpr bool WillScale() const {
+    return a != 1.0f || b != 0 || c != 0 || d != 1.0f;
+  }
 
-  void Concat(const CFX_Matrix& right) { *this *= right; }
+  constexpr void Concat(const CFX_Matrix& right) { *this *= right; }
   void Translate(float x, float y);
   void TranslatePrepend(float x, float y);
   void Translate(int32_t x, int32_t y) {
