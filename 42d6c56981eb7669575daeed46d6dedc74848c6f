@@ -22,6 +22,30 @@
       "revId": "42d6c56981eb7669575daeed46d6dedc74848c6f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e690c7d9_80e25d87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-09T21:39:54Z",
+      "side": 1,
+      "message": "Done.  Also added Bug: entry.",
+      "parentUuid": "7d9a3966_88708b45",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "42d6c56981eb7669575daeed46d6dedc74848c6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
