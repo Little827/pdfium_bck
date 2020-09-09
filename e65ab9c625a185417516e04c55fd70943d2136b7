@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "030031f5_70e87e0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-09T22:54:37Z",
+      "side": 1,
+      "message": "Sorry, but you\u0027ll need to doublecheck my logic transformations here.",
+      "revId": "e65ab9c625a185417516e04c55fd70943d2136b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
