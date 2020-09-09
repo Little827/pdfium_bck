@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "43545634_6b416c9b",
+        "filename": "xfa/fxfa/cxfa_textlayout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-09-09T23:23:46Z",
+      "side": 1,
+      "message": "Almost forgot: Should we initialize these to default values?",
+      "revId": "ba3d5fd9958b79c97e8efdf75f207ffa2f93d44b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00f10955_8b009ae4",
         "filename": "xfa/fxfa/cxfa_textlayout.h",
         "patchSetId": 2
