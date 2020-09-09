@@ -58,20 +58,17 @@ class CXFA_TextParser {
                                   const CFX_CSSComputedStyle* pStyle) const;
   float GetFontSize(CXFA_TextProvider* pTextProvider,
                     const CFX_CSSComputedStyle* pStyle) const;
-
   int32_t GetHorScale(CXFA_TextProvider* pTextProvider,
                       const CFX_CSSComputedStyle* pStyle,
                       const CFX_XMLNode* pXMLNode) const;
   int32_t GetVerScale(CXFA_TextProvider* pTextProvider,
                       const CFX_CSSComputedStyle* pStyle) const;
-
-  void GetUnderline(CXFA_TextProvider* pTextProvider,
-                    const CFX_CSSComputedStyle* pStyle,
-                    int32_t& iUnderline,
-                    XFA_AttributeValue& iPeriod) const;
-  void GetLinethrough(CXFA_TextProvider* pTextProvider,
-                      const CFX_CSSComputedStyle* pStyle,
-                      int32_t& iLinethrough) const;
+  int32_t GetUnderline(CXFA_TextProvider* pTextProvider,
+                       const CFX_CSSComputedStyle* pStyle) const;
+  int32_t GetLinethrough(CXFA_TextProvider* pTextProvider,
+                         const CFX_CSSComputedStyle* pStyle) const;
+  XFA_AttributeValue GetPeriod(CXFA_TextProvider* pTextProvider,
+                               const CFX_CSSComputedStyle* pStyle) const;
   FX_ARGB GetColor(CXFA_TextProvider* pTextProvider,
                    const CFX_CSSComputedStyle* pStyle) const;
   float GetBaseline(CXFA_TextProvider* pTextProvider,
