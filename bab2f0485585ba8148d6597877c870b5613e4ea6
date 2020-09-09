@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1599609070 -0700\nnonce ALC2d1+IyGO4LFOjc9hKmikg5lgOFblXV1SjD2VdROkoDyaDesOkh6hLcyd2poWTiXnrr6WymN/d\n\n0000000000000000000000000000000000000000 bab2f0485585ba8148d6597877c870b5613e4ea6 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9YGO4ACgkQqzYtYVpm\n/XvS3QgA0xIUB3CXiId8LWQ0Y+i47ZhOmEIL2z+kiLoPmDlsyt4Z5bHZRFy+NtHd\nB6bO2oXVYvzV3VyeluC0cYfnVfYQ2qOtl3chT+FeyO5cABaIbGD/jgnBsuITa19u\nX8/ojLVv1QnFMo3wbXB5OSXtwJ3WpihOsaLqn8QW5ikrL00niDVF6kVbvKOcHDOj\n4MvpeQhdmkdu3jH1+rcQZw5ftwdd80DI2IpmycZ5eY1+AygcQhxHx3iQiZ6OAuIW\npXEFLodsnBbbfUg8CBOWyMj4VIfS6n5s9c15nxoYZm5CXvf0Z6fq4xqG0CbANT7D\nSL0EP9BDqdk8iVVPO1YoUpYq7jiC8Q\u003d\u003d\n\u003dgsda\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adba41f_2d0de5c2",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-09T16:54:39Z",
+      "side": 1,
+      "message": "nit: can we add the usual comment here about \"this is not the same as /8 due to truncation\"",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 868,
+        "endChar": 20
+      },
+      "revId": "bab2f0485585ba8148d6597877c870b5613e4ea6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
