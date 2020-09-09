@@ -369,6 +369,15 @@ void CPDF_SyntaxParser::ToNextLine() {
   }
 }
 
+// A state machine which goes % -> E -> O -> F -> line ending.
+enum class EofState {
+  kPercent = 0,
+  kE,
+  kO,
+  kF,
+  kInvalid,
+};
+
 void CPDF_SyntaxParser::ToNextWord() {
   uint8_t ch;
   if (!GetNextChar(ch))
@@ -383,9 +392,29 @@ void CPDF_SyntaxParser::ToNextWord() {
     if (ch != '%')
       break;
 
+    EofState eof_state = EofState::kPercent;
     while (1) {
       if (!GetNextChar(ch))
         return;
+      if (eof_state == EofState::kPercent && ch == 'E')
+        eof_state = EofState::kE;
+      else if (eof_state == EofState::kE && ch == 'O')
+        eof_state = EofState::kO;
+      else if (eof_state == EofState::kO && ch == 'F')
+        eof_state = EofState::kF;
+      else if (eof_state == EofState::kF) {
+        if (ch == '\r') {
+          // See if \r has to be combined with a \n that follows it
+          // immediately.
+          if (GetNextChar(ch) && ch != '\n') {
+            ch = '\r';
+            m_Pos--;
+          }
+        }
+        if (ch == '\n' && m_TrailerEnds)
+          m_TrailerEnds->push_back(m_Pos);
+        eof_state = EofState::kInvalid;
+      }
       if (PDFCharIsLineEnding(ch))
         break;
     }
