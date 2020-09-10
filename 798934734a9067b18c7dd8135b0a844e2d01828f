@@ -16,6 +16,75 @@
       "revId": "798934734a9067b18c7dd8135b0a844e2d01828f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f7fbff1_9effac4c",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-10T16:59:31Z",
+      "side": 1,
+      "message": "nit: \"nor part of a %-token\" or some such?  because the state machine does more than this?",
+      "range": {
+        "startLine": 386,
+        "startChar": 55,
+        "endLine": 387,
+        "endChar": 15
+      },
+      "revId": "798934734a9067b18c7dd8135b0a844e2d01828f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe5533d_ee6f1d41",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-10T16:59:31Z",
+      "side": 1,
+      "message": "this might be infrequent enough that we can get away with always having this vector and avoid having to test the two separate cases through this code.",
+      "range": {
+        "startLine": 419,
+        "startChar": 7,
+        "endLine": 420,
+        "endChar": 38
+      },
+      "revId": "798934734a9067b18c7dd8135b0a844e2d01828f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a94ae4_2401a54a",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-10T16:59:31Z",
+      "side": 1,
+      "message": "nit: unowned ptr has a default constructor that installs a nullptr, so we don\u0027t zero out here.",
+      "range": {
+        "startLine": 124,
+        "startChar": 55,
+        "endLine": 124,
+        "endChar": 58
+      },
+      "revId": "798934734a9067b18c7dd8135b0a844e2d01828f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
