@@ -187,3 +187,26 @@ TEST_F(FPDFSignatureEmbedderTest, GetTime) {
   EXPECT_EQ('x', time_buffer[0]);
   EXPECT_EQ('\0', time_buffer[1]);
 }
+
+TEST_F(FPDFSignatureEmbedderTest, GetTrailerEnds) {
+  ASSERT_TRUE(OpenDocument("two_signatures.pdf"));
+
+  // FPDF_GetTrailerEnds() positive testing.
+  unsigned long size = FPDF_GetTrailerEnds(document(), nullptr, 0);
+  const std::vector<unsigned int> kExpectedEnds{633, 1703, 2781};
+  ASSERT_EQ(kExpectedEnds.size(), size);
+  std::vector<unsigned int> ends(size);
+  ASSERT_EQ(size, FPDF_GetTrailerEnds(document(), ends.data(), size));
+  ASSERT_EQ(kExpectedEnds, ends);
+
+  // FPDF_GetTrailerEnds() negative testing.
+  ASSERT_EQ(0U, FPDF_GetTrailerEnds(nullptr, nullptr, 0));
+
+  ends.resize(2);
+  ends[0] = 0;
+  ends[1] = 1;
+  size = FPDF_GetTrailerEnds(document(), ends.data(), ends.size());
+  ASSERT_EQ(kExpectedEnds.size(), size);
+  EXPECT_EQ(0U, ends[0]);
+  EXPECT_EQ(1U, ends[1]);
+}
