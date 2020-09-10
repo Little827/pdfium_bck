@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "8ac784eb_3f50a00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-10T10:00:56Z",
+      "side": 1,
+      "message": "Folding whitespace handling into the state machine was a bit more intrusive than I expected, but I think the end result is better than it was.",
+      "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15e7bee2_16905e8c",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 2
@@ -59,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "752af483_bca14902",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-10T10:00:56Z",
+      "side": 1,
+      "message": "Done. This required eliminating the outer while loop, but probably the end result is more readable: skipping whitespaces, then either it\u0027s a non-percent and we\u0027re done or we skip the comment, linebreaks and start again looking for a non-percent character.",
+      "parentUuid": "15e7bee2_16905e8c",
+      "range": {
+        "startLine": 387,
+        "startChar": 4,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4af3f673_eb78a541",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 2
@@ -79,6 +120,30 @@
       "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63b20b55_c4c5d2fc",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-10T10:00:56Z",
+      "side": 1,
+      "message": "Done. This has the benefit that it\u0027s now explicit that the the comment string is %%EOF, not %EOF.",
+      "parentUuid": "4af3f673_eb78a541",
+      "range": {
+        "startLine": 399,
+        "startChar": 6,
+        "endLine": 399,
+        "endChar": 55
+      },
+      "revId": "98ae5d59e6ca658fb91aecfcaeaa177784453184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
