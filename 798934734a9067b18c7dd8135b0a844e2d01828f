@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9fb9844_41226439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-10T10:07:50Z",
+      "side": 1,
+      "message": "Oops, forgot one detail: ToNextWord() got the order wrong: first EOL chars should reset the state machine back to initial, and only then we should check for the non-percent state, not the other way around. Fixed now.",
+      "revId": "798934734a9067b18c7dd8135b0a844e2d01828f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
