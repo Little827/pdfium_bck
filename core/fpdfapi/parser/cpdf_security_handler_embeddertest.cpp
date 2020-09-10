@@ -134,13 +134,14 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPassword) {
   EXPECT_EQ(0xFFFFFFFC, FPDF_GetDocPermissions(document()));
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_PasswordAfterGenerateSave DISABLED_PasswordAfterGenerateSave
+#if defined(OS_WIN)
+  const char md5[] = "06fe5a97341b3e0f0a22ccc242fd9040";
 #else
-#define MAYBE_PasswordAfterGenerateSave PasswordAfterGenerateSave
-#endif
-TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_PasswordAfterGenerateSave) {
+  const char md5[] = "169c8e3acea8fba5a40f695bbbc96273";
+#endif  // defined(OS_WIN)
+#else
 #if defined(OS_WIN)
   const char md5[] = "041c2fb541c8907cc22ce101b686c79e";
 #elif defined(OS_APPLE)
@@ -148,6 +149,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, MAYBE_PasswordAfterGenerateSave) {
 #else
   const char md5[] = "7048dca58e2ed8f93339008b91e4eb4e";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   {
     ASSERT_TRUE(OpenDocumentWithOptions("encrypted.pdf", "5678",
                                         LinearizeOption::kMustLinearize,
