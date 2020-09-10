@@ -71,6 +71,30 @@
       "revId": "c0ebcaffe870aa261c7354fae96dbeeba9d9f436",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff4f8f7_8c30e18d",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-10T23:35:08Z",
+      "side": 1,
+      "message": "Ah, you are saying only have the FX_TryAlloc() branch. https://pdfium-review.googlesource.com/73530",
+      "parentUuid": "dff3c1ef_9bc235f1",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "c0ebcaffe870aa261c7354fae96dbeeba9d9f436",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
