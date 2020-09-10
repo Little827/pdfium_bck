@@ -16,6 +16,24 @@
       "revId": "560b8ab5abba09167145b56cca55096e9ee70c53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee96567d_a4b27c5c",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmexpression.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-10T22:53:30Z",
+      "side": 1,
+      "message": "Yes, it is the same in this case because there are no \"*\" involved.  This a place where Lei and I have deviated a bit from the style guide.  Here\u0027s why:\n\nRecall that const char* m_member is a mutable member pointing to an immutable string, and that char* const m_member is an immutable member pointing to a mutable string. \nUnfortunately, const UnownedPtr\u003cchar\u003e m_member and UnownedPtr\u003cchar\u003e const m_member both mean an immutable member pointing to a mutable string despite the change in position in the absence of the *. (To get the first case, the syntax is UnownedPtr\u003cconst char\u003e m_member).\n\nNow imagine we want to substitute \u0027s/UnownedPtr\u003cchar\u003e/char*/\u0027.  If we wrote const UnownedPtr\u003cchar\u003e m_member, we\u0027d wind up with const char* m_member after the substitution -- a change in meaning.  If we write UnownedPtr\u003cchar\u003e const m_member, we get the desired meaning of  char* const m_member.\n\nSo we\u0027ve come up with a style rule that says for templates that mimic a pointer, the const comes after the template.",
+      "parentUuid": "9c66f99f_4eeb5d37",
+      "revId": "560b8ab5abba09167145b56cca55096e9ee70c53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
