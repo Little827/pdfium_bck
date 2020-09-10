@@ -5,6 +5,7 @@
 #include "core/fxcrt/cfx_widetextbuf.h"
 
 #include "testing/gtest/include/gtest/gtest.h"
+#include "third_party/base/optional.h"
 
 namespace fxcrt {
 
@@ -40,6 +41,21 @@ TEST(WideTextBuf, Deletion) {
 
   wtb.Delete(0, 0);
   EXPECT_TRUE(wtb.AsStringView().EqualsASCII(""));
+}
+
+TEST(WideTextBuf, Move) {
+  CFX_WideTextBuf wtb;
+  wtb << "clams";
+  EXPECT_TRUE(wtb.MakeString() == L"clams");
+
+  CFX_WideTextBuf wtb2(std::move(wtb));
+  EXPECT_TRUE(wtb.MakeString() == L"");
+  EXPECT_TRUE(wtb2.MakeString() == L"clams");
+
+  CFX_WideTextBuf wtb3;
+  wtb3 = std::move(wtb2);
+  EXPECT_TRUE(wtb2.MakeString() == L"");
+  EXPECT_TRUE(wtb3.MakeString() == L"clams");
 }
 
 }  // namespace fxcrt
