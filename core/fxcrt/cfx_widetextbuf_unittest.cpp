@@ -42,4 +42,19 @@ TEST(WideTextBuf, Deletion) {
   EXPECT_TRUE(wtb.AsStringView().EqualsASCII(""));
 }
 
+TEST(WideTextBuf, Move) {
+  CFX_WideTextBuf wtb;
+  wtb << "clams";
+  EXPECT_TRUE(wtb.MakeString() == L"clams");
+
+  CFX_WideTextBuf wtb2(std::move(wtb));
+  EXPECT_TRUE(wtb.MakeString() == L"");
+  EXPECT_TRUE(wtb2.MakeString() == L"clams");
+
+  CFX_WideTextBuf wtb3;
+  wtb3 = std::move(wtb2);
+  EXPECT_TRUE(wtb2.MakeString() == L"");
+  EXPECT_TRUE(wtb3.MakeString() == L"clams");
+}
+
 }  // namespace fxcrt
