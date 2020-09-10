@@ -38,13 +38,16 @@ TEST_F(FPDFFlattenEmbedderTest, FlatPrint) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(FPDFFlattenEmbedderTest, BUG_861842) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_BUG_861842 DISABLED_BUG_861842
+#if defined(OS_WIN)
+  constexpr char kCheckboxHash[] = "xxx1";
+#elif defined(OS_APPLE)
+  constexpr char kCheckboxHash[] = "c7c687f93fb34a4174bdae33535e0627";
 #else
-#define MAYBE_BUG_861842 BUG_861842
+  constexpr char kCheckboxHash[] = "b8aecddfece463096d51596537a20b61";
 #endif
-TEST_F(FPDFFlattenEmbedderTest, MAYBE_BUG_861842) {
+#else
 #if defined(OS_WIN)
   constexpr char kCheckboxHash[] = "95fba3cb7bce7e0d3c94279f60984e17";
 #elif defined(OS_APPLE)
@@ -52,6 +55,7 @@ TEST_F(FPDFFlattenEmbedderTest, MAYBE_BUG_861842) {
 #else
   constexpr char kCheckboxHash[] = "594265790b81df2d93120d33b72a6ada";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
   ASSERT_TRUE(OpenDocument("bug_861842.pdf"));
   FPDF_PAGE page = LoadPage(0);
