@@ -14,7 +14,9 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/fx_dib.h"
+#include "fxjs/gc/heap.h"
 #include "third_party/base/optional.h"
+#include "v8/include/cppgc/garbage-collected.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
 class CFGAS_GEFont;
@@ -27,10 +29,12 @@ class CXFA_TextParseContext;
 class CXFA_TextProvider;
 class CXFA_TextTabstopsContext;
 
-class CXFA_TextParser {
+class CXFA_TextParser : public cppgc::GarbageCollected<CXFA_TextParser> {
  public:
-  CXFA_TextParser();
+  CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   virtual ~CXFA_TextParser();
+
+  void Trace(cppgc::Visitor* visitor) const {}
 
   void Reset();
   void DoParse(const CFX_XMLNode* pXMLContainer,
@@ -84,6 +88,8 @@ class CXFA_TextParser {
   CXFA_TextParseContext* GetParseContextFromMap(const CFX_XMLNode* pXMLNode);
 
  protected:
+  CXFA_TextParser();
+
   bool TagValidate(const WideString& str) const;
 
  private:
