@@ -47,6 +47,30 @@
       "revId": "c0ebcaffe870aa261c7354fae96dbeeba9d9f436",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff3c1ef_9bc235f1",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-10T23:10:57Z",
+      "side": 1,
+      "message": "Nah, that CL just removes an impossible null check following a failed \"halt o fail \" alloc (not try alloc), right?",
+      "parentUuid": "3fd243d1_6e1aa06c",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "c0ebcaffe870aa261c7354fae96dbeeba9d9f436",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
