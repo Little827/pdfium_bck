@@ -23,6 +23,30 @@
       "revId": "bab2f0485585ba8148d6597877c870b5613e4ea6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0160a33d_9bd29442",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-10T23:10:11Z",
+      "side": 1,
+      "message": "Done. Unit tests will also fail if someone did that.",
+      "parentUuid": "9adba41f_2d0de5c2",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 868,
+        "endChar": 20
+      },
+      "revId": "bab2f0485585ba8148d6597877c870b5613e4ea6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
