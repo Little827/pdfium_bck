@@ -23,6 +23,30 @@
       "revId": "c0ebcaffe870aa261c7354fae96dbeeba9d9f436",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd243d1_6e1aa06c",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-10T23:00:32Z",
+      "side": 1,
+      "message": "We actually had it that way a long time ago, but someone changed it to the way it is now: https://codereview.chromium.org/1142713005/diff/20001/core/src/fxge/dib/fx_dib_main.cpp",
+      "parentUuid": "d1412c40_df876f8b",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "c0ebcaffe870aa261c7354fae96dbeeba9d9f436",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
