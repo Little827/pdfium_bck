@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1599848464 -0700\nnonce ALC2d19BVUQGalgscPHP3GpCgp2CQ6+K8ZcwEGgtCHArjqWwTMIFhTuWi3s/4LsDRoht++4LX/hV\n\n0000000000000000000000000000000000000000 16da3f6dd12ca980d8c1608ece185415a439643b refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9bwBAACgkQqzYtYVpm\n/XvDiQf+ObOOlFBtpmv88Y+A2aUBAIOy6nU3dgK90fyRB6OeawK7WwwCo2Zq3iM2\niDgmT6oUHcnKVlQchI1K8dLq7LyrfoetHG+kHaLsUp7nhTqoZGk8sso5sHANAWhP\n4pGWaHb1MdemK788vH8H5mij9SZAKlyYxqYx9H/lPKmVu35U3wYr9I9eGjBAcNMw\ndzqSvh6hrsaYobedWWchPhUmfJeLrVbCsEJqHnm6EM+8OpJdD1tkJtPbQwNbboEH\nO+YG0pcFaWcwzOS6M7lktg9V89UzXUfVfs/hYmuQSw9wSr2mI17awRVCtjnVxXTL\nOSZvec2OD9xesOuQJ7KrkinI3SnCGg\u003d\u003d\n\u003dsuVd\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e382b086_87e5f450",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-11T20:30:03Z",
+      "side": 1,
+      "message": "Since Skia\u0027s expected checksums are the same as AGG\u0027s, the \"#if defined\" condition can be removed.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 2,
+        "endLine": 1273,
+        "endChar": 78
+      },
+      "revId": "16da3f6dd12ca980d8c1608ece185415a439643b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
