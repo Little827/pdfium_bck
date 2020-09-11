@@ -178,7 +178,7 @@ class CXFA_FMAST {
       std::vector<std::unique_ptr<CXFA_FMExpression>> expressions);
   ~CXFA_FMAST();
 
-  bool ToJavaScript(CFX_WideTextBuf* js);
+  Optional<CFX_WideTextBuf> ToJavaScript();
 
  private:
   std::vector<std::unique_ptr<CXFA_FMExpression>> const expressions_;
