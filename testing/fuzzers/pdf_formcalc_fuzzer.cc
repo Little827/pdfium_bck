@@ -4,13 +4,14 @@
 
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_string.h"
+#include "testing/fuzzers/pdf_fuzzer_init_public.h"
+#include "third_party/base/logging.h"
 #include "xfa/fxfa/fm2js/cxfa_fmparser.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+  CHECK(PDFFuzzerInitPublic::GetInstance()->GetHeap());
   WideString input = WideString::FromUTF8(ByteStringView(data, size));
-
   CXFA_FMParser parser(input.AsStringView());
   parser.Parse();
-
   return 0;
 }
