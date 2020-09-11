@@ -369,26 +369,64 @@ void CPDF_SyntaxParser::ToNextLine() {
   }
 }
 
+// A state machine which goes % -> E -> O -> F -> line ending.
+enum class EofState {
+  kInitial = 0,
+  kNonPercent,
+  kPercent,
+  kE,
+  kO,
+  kF,
+  kInvalid,
+};
+
 void CPDF_SyntaxParser::ToNextWord() {
   uint8_t ch;
-  if (!GetNextChar(ch))
-    return;
-
+  EofState eof_state = EofState::kInitial;
+  // Find the first character which is neither whitespace, nor part of a
+  // comment.
   while (1) {
-    while (PDFCharIsWhitespace(ch)) {
-      if (!GetNextChar(ch))
-        return;
-    }
-
-    if (ch != '%')
-      break;
-
-    while (1) {
-      if (!GetNextChar(ch))
-        return;
-      if (PDFCharIsLineEnding(ch))
+    if (!GetNextChar(ch))
+      return;
+    switch (eof_state) {
+      case EofState::kInitial:
+        if (!PDFCharIsWhitespace(ch))
+          eof_state = ch == '%' ? EofState::kPercent : EofState::kNonPercent;
+        break;
+      case EofState::kNonPercent:
+        break;
+      case EofState::kPercent:
+        if (ch == 'E')
+          eof_state = EofState::kE;
+        else if (ch != '%')
+          eof_state = EofState::kInvalid;
+        break;
+      case EofState::kE:
+        eof_state = ch == 'O' ? EofState::kO : EofState::kInvalid;
+        break;
+      case EofState::kO:
+        eof_state = ch == 'F' ? EofState::kF : EofState::kInvalid;
+        break;
+      case EofState::kF:
+        if (ch == '\r') {
+          // See if \r has to be combined with a \n that follows it
+          // immediately.
+          if (GetNextChar(ch) && ch != '\n') {
+            ch = '\r';
+            m_Pos--;
+          }
+        }
+        if (ch == '\n')
+          m_TrailerEnds.push_back(m_Pos);
+        eof_state = EofState::kInvalid;
+        break;
+      case EofState::kInvalid:
         break;
     }
+    if (PDFCharIsLineEnding(ch))
+      eof_state = EofState::kInitial;
+    if (eof_state == EofState::kNonPercent)
+      break;
   }
   m_Pos--;
 }

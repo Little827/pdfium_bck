@@ -75,6 +75,12 @@ class CPDF_SyntaxParser {
   ByteString ReadString();
   ByteString ReadHexString();
 
+  void ClearTrailerEnds() { m_TrailerEnds.clear(); }
+
+  const std::vector<unsigned int>& GetTrailerEnds() const {
+    return m_TrailerEnds;
+  }
+
  private:
   friend class CPDF_DataAvail;
   friend class cpdf_syntax_parser_ReadHexString_Test;
@@ -114,6 +120,9 @@ class CPDF_SyntaxParser {
   uint32_t m_WordSize = 0;
   uint8_t m_WordBuffer[257];
   uint32_t m_ReadBufferSize = CPDF_Stream::kFileBufSize;
+
+  // The syntax parser records traversed trailer end byte offsets here.
+  std::vector<unsigned int> m_TrailerEnds;
 };
 
 #endif  // CORE_FPDFAPI_PARSER_CPDF_SYNTAX_PARSER_H_
