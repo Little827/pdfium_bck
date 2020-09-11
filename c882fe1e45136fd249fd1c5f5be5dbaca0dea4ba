@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1393b36_0f67429b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-11T16:21:59Z",
+      "side": 1,
+      "message": "I think you\u0027re good here, but ping Lei to get a second opinion before submitting.",
+      "revId": "c882fe1e45136fd249fd1c5f5be5dbaca0dea4ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97fac4d2_d7cd2697",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-11T16:21:59Z",
+      "side": 1,
+      "message": "nit: the style guide requires that all branches of an if-elseif-else statement have {} if any of them require braces.",
+      "range": {
+        "startLine": 195,
+        "startChar": 32,
+        "endLine": 195,
+        "endChar": 33
+      },
+      "revId": "c882fe1e45136fd249fd1c5f5be5dbaca0dea4ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
