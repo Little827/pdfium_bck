@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1558730_8653d218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-11T17:25:16Z",
+      "side": 1,
+      "message": "Skia and AGG rendering results are uploaded to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c56",
+      "revId": "5d24f7f8eb0732b6566c415c058c3e286d439930",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
