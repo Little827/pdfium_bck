@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dc56f1d_ff2df311",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-14T19:15:20Z",
+      "side": 1,
+      "message": "You see that, linker? You can\u0027t beat me. Because I\u0027m a person and people are stronger than linkers.",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
