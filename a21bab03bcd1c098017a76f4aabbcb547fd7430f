@@ -34,6 +34,24 @@
       "revId": "a21bab03bcd1c098017a76f4aabbcb547fd7430f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5f76ab4_cf8f2e09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:31:41Z",
+      "side": 1,
+      "message": "They live on in our git repo forever.",
+      "parentUuid": "3873255b_2c8d5110",
+      "revId": "a21bab03bcd1c098017a76f4aabbcb547fd7430f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
