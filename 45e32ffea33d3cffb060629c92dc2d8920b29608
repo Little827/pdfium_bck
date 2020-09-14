@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c7343531_5171e632",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:41:05Z",
+      "side": 1,
+      "message": "To be clear, are you saying the existing comment is wrong? Or is the comment outdated as a result of this CL?",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4dc56f1d_ff2df311",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -16,6 +33,120 @@
       "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd0d7bd7_2dc90ddd",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:41:05Z",
+      "side": 1,
+      "message": "Nest inside if (pdf_enable_v8) block for consistency?",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12343da4_ff14fab4",
+        "filename": "testing/fuzzers/pdf_formcalc_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:41:05Z",
+      "side": 1,
+      "message": "Just to confirm, this is to establish a beachhead, so in the future, we can pass the heap to XFA classes as needed?",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6223023f_40775fa3",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:41:05Z",
+      "side": 1,
+      "message": "BTW, the file name was wrong to start with. It\u0027s pdf_fuzzer_init_public.cc.",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8647e2af_6903d791",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:41:05Z",
+      "side": 1,
+      "message": "This looks like a class to me.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e93033f_6c34d15d",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:41:05Z",
+      "side": 1,
+      "message": "As such, members need trailing underscores.",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dbb1d7d_64ee00c2",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-14T22:41:05Z",
+      "side": 1,
+      "message": "Make this a class, or rename |context_| to |context|.",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
