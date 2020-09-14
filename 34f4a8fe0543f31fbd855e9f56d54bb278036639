@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e121f440_7a893534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-14T17:05:29Z",
+      "side": 1,
+      "message": "Don\u0027t think this can work with component builds.  Stay tuned.",
+      "revId": "34f4a8fe0543f31fbd855e9f56d54bb278036639",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
