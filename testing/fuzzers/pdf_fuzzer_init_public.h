@@ -19,36 +19,33 @@
 #endif  // PDF_ENABLE_V8
 
 // Context for all runs of the fuzzer.
-class PDFFuzzerPublic {
- public:
+struct PDFFuzzerPublic {
   PDFFuzzerPublic();
   ~PDFFuzzerPublic();
 
 #ifdef PDF_ENABLE_V8
 #ifdef PDF_ENABLE_XFA
-  cppgc::Heap* GetHeap() { return heap_.get(); }
+  cppgc::Heap* GetHeap() { return heap.get(); }
 #endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
 
  private:
-  FPDF_LIBRARY_CONFIG config_;
-  UNSUPPORT_INFO unsupport_info_;
+  FPDF_LIBRARY_CONFIG config;
+  UNSUPPORT_INFO unsupport_info;
 #ifdef PDF_ENABLE_V8
-  std::unique_ptr<v8::Platform> platform_;
-  v8::StartupData snapshot_blob_;
+  std::unique_ptr<v8::Platform> platform;
+  v8::StartupData snapshot_blob;
 #ifdef PDF_ENABLE_XFA
-  FXGCScopedHeap heap_;
+  FXGCScopedHeap heap;
 #endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
 };
 
 // Initializes the library once for all runs of the fuzzer.
-class PDFFuzzerInitPublic {
- public:
+struct PDFFuzzerInitPublic {
   PDFFuzzerInitPublic();
   ~PDFFuzzerInitPublic();
 
- private:
   std::unique_ptr<PDFFuzzerPublic> context_;
 };
 
