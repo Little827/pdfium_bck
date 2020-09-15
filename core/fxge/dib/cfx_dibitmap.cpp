@@ -6,8 +6,6 @@
 
 #include "core/fxge/dib/cfx_dibitmap.h"
 
-#include <limits.h>
-
 #include <limits>
 #include <memory>
 #include <utility>
@@ -24,12 +22,7 @@ constexpr int8_t kChannelOffset[] = {0, 2, 1, 0, 0, 1, 2, 3, 3};
 
 }  // namespace
 
-CFX_DIBitmap::CFX_DIBitmap() {
-  m_pPalette = nullptr;
-#if defined(_SKIA_SUPPORT_PATHS_)
-  m_nFormat = Format::kCleared;
-#endif
-}
+CFX_DIBitmap::CFX_DIBitmap() = default;
 
 bool CFX_DIBitmap::Create(int width, int height, FXDIB_Format format) {
   return Create(width, height, format, nullptr, 0);

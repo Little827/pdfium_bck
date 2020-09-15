@@ -300,8 +300,8 @@ class CFXJSE_FormCalcContext final : public CFXJSE_HostObject {
   static double ExtractDouble(CFXJSE_HostObject* pThis,
                               CFXJSE_Value* src,
                               bool* ret);
-  static Optional<CFX_WideTextBuf> Translate(WideStringView wsFormcalc);
 
+  Optional<CFX_WideTextBuf> Translate(WideStringView wsFormcalc);
   void GlobalPropertyGetter(CFXJSE_Value* pValue);
 
  private:

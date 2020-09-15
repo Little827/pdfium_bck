@@ -12,6 +12,8 @@
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   WideString input = WideString::FromUTF8(ByteStringView(data, size));
-  CFXJSE_FormCalcContext::Translate(input.AsStringView());
+  // FIXME:
+  CFXJSE_FormCalcContext(nullptr, nullptr, nullptr)
+      .Translate(input.AsStringView());
   return 0;
 }
