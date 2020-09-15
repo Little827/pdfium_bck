@@ -101,9 +101,9 @@ source_set("fuzzer_init_public") {
       "//v8",
       "//v8:v8_libplatform",
     ]
-    if (pdf_enable_xfa) {
-      deps += [ "../../fxjs:gc" ]
-    }
+  }
+  if (pdf_enable_xfa) {
+    deps += [ "../../fxjs:gc" ]
   }
 }
 
