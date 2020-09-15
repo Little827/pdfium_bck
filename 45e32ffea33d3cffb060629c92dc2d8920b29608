@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11bc9770_3944dbdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-15T00:26:27Z",
+      "side": 1,
+      "message": "\"pdf_fuzzer_init.cc and pdfium_fuzzer_init_public.cc are mutually exclusive\" - true\n\"and should not be built together\" - still true\n\"They deliberately have the same global variable.\" - false, there are two variables of the same name with static linkage that are not the same thing,",
+      "parentUuid": "c7343531_5171e632",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dc56f1d_ff2df311",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "c639537e_034f47bc",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-15T00:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd0d7bd7_2dc90ddd",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12343da4_ff14fab4",
         "filename": "testing/fuzzers/pdf_formcalc_fuzzer.cc",
         "patchSetId": 5
@@ -67,6 +103,24 @@
       "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "792bed0d_0cc8d861",
+        "filename": "testing/fuzzers/pdf_formcalc_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-15T00:26:27Z",
+      "side": 1,
+      "message": "Yep, this goes away in the next CL but wanted to prove it works.",
+      "parentUuid": "12343da4_ff14fab4",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "c12c4059_b6089958",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-15T00:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6223023f_40775fa3",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8647e2af_6903d791",
         "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
         "patchSetId": 5
@@ -116,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "3ec1ab87_42876c70",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-15T00:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8647e2af_6903d791",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e93033f_6c34d15d",
         "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
         "patchSetId": 5
@@ -133,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "1cfac1e0_cfa51b41",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-15T00:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e93033f_6c34d15d",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dbb1d7d_64ee00c2",
         "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
         "patchSetId": 5
@@ -147,6 +267,24 @@
       "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c3f961_46ce1262",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-15T00:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dbb1d7d_64ee00c2",
+      "revId": "45e32ffea33d3cffb060629c92dc2d8920b29608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
