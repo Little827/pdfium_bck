@@ -27,6 +27,7 @@ class PDFFuzzerPublic {
 #ifdef PDF_ENABLE_V8
 #ifdef PDF_ENABLE_XFA
   cppgc::Heap* GetHeap() { return heap_.get(); }
+  void MaybeForceGCAndPump();
 #endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
 
@@ -36,7 +37,9 @@ class PDFFuzzerPublic {
 #ifdef PDF_ENABLE_V8
   std::unique_ptr<v8::Platform> platform_;
   v8::StartupData snapshot_blob_;
+  v8::Isolate* isolate_ = nullptr;
 #ifdef PDF_ENABLE_XFA
+  uint32_t iterations_ = 0;
   FXGCScopedHeap heap_;
 #endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
