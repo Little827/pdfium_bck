@@ -11,6 +11,7 @@
 #include "public/fpdfview.h"
 
 #ifdef PDF_ENABLE_V8
+#include "fxjs/cfx_v8.h"
 #include "v8/include/v8-platform.h"
 #include "v8/include/v8.h"
 #ifdef PDF_ENABLE_XFA
@@ -27,6 +28,7 @@ class PDFFuzzerPublic {
 #ifdef PDF_ENABLE_V8
 #ifdef PDF_ENABLE_XFA
   cppgc::Heap* GetHeap() { return heap_.get(); }
+  void MaybeForceGCAndPump();
 #endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
 
@@ -34,9 +36,12 @@ class PDFFuzzerPublic {
   FPDF_LIBRARY_CONFIG config_;
   UNSUPPORT_INFO unsupport_info_;
 #ifdef PDF_ENABLE_V8
-  std::unique_ptr<v8::Platform> platform_;
   v8::StartupData snapshot_blob_;
+  std::unique_ptr<v8::Platform> platform_;
+  std::unique_ptr<v8::ArrayBuffer::Allocator> allocator_;
+  std::unique_ptr<v8::Isolate, CFX_V8IsolateDeleter> isolate_;
 #ifdef PDF_ENABLE_XFA
+  uint32_t iterations_ = 0;
   FXGCScopedHeap heap_;
 #endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
