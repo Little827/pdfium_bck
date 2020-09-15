@@ -87,6 +87,13 @@ PDFFuzzerPublic::PDFFuzzerPublic() {
   FSDK_SetUnSpObjProcessHandler(&unsupport_info_);
 }
 
+void PDFFuzzerPublic::MaybeGC() {
+  if (++iterations_ > 1000) {
+    FXGC_ForceGarbageCollection(heap_.get());
+    iterations_ = 0;
+  }
+}
+
 PDFFuzzerPublic::~PDFFuzzerPublic() = default;
 
 PDFFuzzerInitPublic::PDFFuzzerInitPublic()
