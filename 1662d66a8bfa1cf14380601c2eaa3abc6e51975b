@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b294354_24009e21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-16T17:39:09Z",
+      "side": 1,
+      "message": "CLs",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "1662d66a8bfa1cf14380601c2eaa3abc6e51975b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1a9895_c76dc92f",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-16T17:39:09Z",
+      "side": 1,
+      "message": "I was going to suggest how to avoid this, but I wanted to make sure I gave a good suggestion that works. So instead, there\u0027s a follow-up CL chained to this one.",
+      "revId": "1662d66a8bfa1cf14380601c2eaa3abc6e51975b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
