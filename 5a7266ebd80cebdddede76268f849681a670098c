@@ -1,4 +1,68 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1600277498 -0700\nnonce ALC2d1/ivrxJrSJ7Gdg8mqVjTpYMrdJ3M0/VYPilj29H0TBkYtRaRRxErWOpiYyN/oFXW2uvF+56\n\n0000000000000000000000000000000000000000 5a7266ebd80cebdddede76268f849681a670098c refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9iS/oACgkQqzYtYVpm\n/XtyNgf+Oa/+IHkwlDKnZ9YDAu9UY+QC58MOwignUXJ4nsSGWdrUxuJEp0HHWN9a\nQPmF1lvS9e70BivNG0H+EFC9TvGxdo21ORglG4ghoyxfmTHu7otmGgnEdV7OwNEz\ncm+JhsGwrfXqb6XSxFiBOp+EyiYMM2EU7aH7uoS6ZmUbuJDczi0RXIDUzOVX5y2y\nvQrPUHTV5PLWt54+PyKeh+J8e2kmk61eQ5Wk+QaCScXhpqjJaEzwiGisf6/l/4NS\nXnu71q0GLrhyG1sQDiGySqWHh35tpKm8ke3p+o0/rKYJzUagyFkkmMYshY4RIYOO\nWfHBTiIRK3zJg0m6IUB8rPyODBtuvw\u003d\u003d\n\u003dGrnv\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "51f4aa38_b87dc5e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-16T18:01:44Z",
+      "side": 1,
+      "message": "Could we make this any more difficult for ourselves? 😊",
+      "revId": "5a7266ebd80cebdddede76268f849681a670098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30447cde_329736c6",
+        "filename": "testing/fuzzers/process_state.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-16T18:01:44Z",
+      "side": 1,
+      "message": "nit: with the same split here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "5a7266ebd80cebdddede76268f849681a670098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def9e3e4_e9a82341",
+        "filename": "testing/fuzzers/process_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-16T18:01:44Z",
+      "side": 1,
+      "message": "nit: maybe the whole class should be split by these #defines, eg.\n\n#ifdef defined(PDF_ENABLE_V8) \u0026\u0026 defined(PDF_ENABLE_XFA)\nclass ProcessState {\n  ...\n};\n#else\nclass ProcessState {\n  ....\n};\n#endif",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "5a7266ebd80cebdddede76268f849681a670098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
