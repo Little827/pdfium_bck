@@ -9,30 +9,19 @@
 
 #include "public/fpdf_ext.h"
 #include "public/fpdfview.h"
+#include "testing/fuzzers/process_state.h"
 
 #ifdef PDF_ENABLE_V8
 #include "fxjs/cfx_v8.h"
 #include "v8/include/v8-platform.h"
 #include "v8/include/v8.h"
-#ifdef PDF_ENABLE_XFA
-#include "fxjs/gc/heap.h"
-#endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
 
-// Context for all runs of the fuzzer.
-class PDFFuzzerPublic {
+// Initializes the library once for all runs of the fuzzer.
+class PDFFuzzerInitPublic {
  public:
-  PDFFuzzerPublic();
-  virtual ~PDFFuzzerPublic();
-
-#ifdef PDF_ENABLE_V8
-#ifdef PDF_ENABLE_XFA
-  // Virtualize to avoid linker issues in component builds. This results
-  // in an indirect function callback to code in a higher layer.
-  virtual cppgc::Heap* GetHeap() const;
-  virtual void MaybeForceGCAndPump();
-#endif  // PDF_ENABLE_XFA
-#endif  // PDF_ENABLE_V8
+  PDFFuzzerInitPublic();
+  ~PDFFuzzerInitPublic();
 
  private:
   FPDF_LIBRARY_CONFIG config_;
@@ -42,21 +31,9 @@ class PDFFuzzerPublic {
   std::unique_ptr<v8::Platform> platform_;
   std::unique_ptr<v8::ArrayBuffer::Allocator> allocator_;
   std::unique_ptr<v8::Isolate, CFX_V8IsolateDeleter> isolate_;
-#ifdef PDF_ENABLE_XFA
-  uint32_t iterations_ = 0;
-  FXGCScopedHeap heap_;
-#endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
-};
 
-// Initializes the library once for all runs of the fuzzer.
-class PDFFuzzerInitPublic {
- public:
-  PDFFuzzerInitPublic();
-  ~PDFFuzzerInitPublic();
-
- private:
-  std::unique_ptr<PDFFuzzerPublic> context_;
+  std::unique_ptr<ProcessState> process_state_;
 };
 
 #endif  // TESTING_FUZZERS_PDF_FUZZER_INIT_PUBLIC_H_

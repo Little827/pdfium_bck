@@ -86,11 +86,28 @@ source_set("fuzzer_init") {
   deps = [ "../../:pdfium_public_headers" ]
 }
 
+source_set("fuzzer_process_state") {
+  testonly = !is_component_build
+  sources = [
+    "process_state.cc",
+    "process_state.h",
+  ]
+  configs += [ ":fuzzer_config" ]
+  deps = []
+  if (pdf_enable_v8) {
+    deps += [ "//v8" ]
+    if (pdf_enable_xfa) {
+      deps += [ "../../fxjs:gc" ]
+    }
+  }
+}
+
 source_set("fuzzer_init_public") {
   testonly = true
   sources = [ "pdf_fuzzer_init_public.cc" ]
   include_dirs = [ "../.." ]
   deps = [
+    ":fuzzer_process_state",
     ":fuzzer_utils",
     "../../:pdfium_public_headers",
   ]
@@ -101,15 +118,12 @@ source_set("fuzzer_init_public") {
       "//v8",
       "//v8:v8_libplatform",
     ]
-    if (pdf_enable_xfa) {
-      deps += [ "../../fxjs:gc" ]
-    }
   }
 }
 
 if (is_component_build) {
   group("fuzzer_impls") {
-    deps = []
+    deps = [ ":fuzzer_process_state" ]
     foreach(fuzzer, fuzzer_list) {
       deps += [ ":${fuzzer}_impl" ]
     }
@@ -143,7 +157,8 @@ source_set("fuzzer_utils") {
 }
 
 template("pdfium_fuzzer") {
-  if (defined(invoker.public_fuzzer) && invoker.public_fuzzer) {
+  is_public = defined(invoker.public_fuzzer) && invoker.public_fuzzer
+  if (is_public) {
     init_dep = ":fuzzer_init_public"
   } else {
     init_dep = ":fuzzer_init"
@@ -197,6 +212,9 @@ template("pdfium_fuzzer") {
         "../../:pdfium",
         init_dep,
       ]
+    }
+    if (is_public) {
+      deps += [ ":fuzzer_process_state" ]
     }
   }
 }
