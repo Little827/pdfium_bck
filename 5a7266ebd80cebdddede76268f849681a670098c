@@ -43,6 +43,30 @@
     },
     {
       "key": {
+        "uuid": "ba63ce98_e9625c5e",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-16T20:09:01Z",
+      "side": 1,
+      "message": "I didn\u0027t want dangling pointers from the ProcessState to the v8 Platform/Isolate. I\u0027ll see if lines 27-28 can be moved down.",
+      "parentUuid": "90171297_4d15c374",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "5a7266ebd80cebdddede76268f849681a670098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30447cde_329736c6",
         "filename": "testing/fuzzers/process_state.cc",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "writtenOn": "2020-09-16T18:01:44Z",
       "side": 1,
       "message": "nit: maybe the whole class should be split by these #defines, eg.\n\n#ifdef defined(PDF_ENABLE_V8) \u0026\u0026 defined(PDF_ENABLE_XFA)\nclass ProcessState {\n  ...\n};\n#else\nclass ProcessState {\n  ....\n};\n#endif",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "5a7266ebd80cebdddede76268f849681a670098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d32832_42354318",
+        "filename": "testing/fuzzers/process_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-16T20:09:01Z",
+      "side": 1,
+      "message": "WDYT about making this class XFA-only?",
+      "parentUuid": "def9e3e4_e9a82341",
       "range": {
         "startLine": 17,
         "startChar": 0,
