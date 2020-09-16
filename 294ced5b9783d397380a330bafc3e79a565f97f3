@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1600217364 -0700\nnonce ALC2d1+Z2O5Q8SOEGW4lQuVBkfNsIj3xmPKEJoUPF/RK0LHuGYcqp7ftZo8zaLwEM5IxMGZf0a90\n\n0000000000000000000000000000000000000000 294ced5b9783d397380a330bafc3e79a565f97f3 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dmac-arm64\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9hYRQACgkQqzYtYVpm\n/XvG1ggAquG7hDkUecSLZueQ3BCy5gKJ7yJ9prUTI1Jhzhw1cTQcEuAge57aZsn2\nQyIXkzIYVE1JgVtME/+x0qjWj84IwQECMStZwexZX2hCJH9cQoBrdgJQO/qgqbnW\n2yDg8a9GqDGE4pjjkExJhDHu1iJyjqASSr4P5wzVJdnD3oFhEBs4Y03A48dfwUCJ\ne7GgX4jlbXEurJUhPjTgobqRJ4hfIT3Yiw9MrAdgF3u6iBc9U3U8WEuxXlTTUO6Q\nj8a+kftQW4y9eXJhZd3DKaBYHF5X7Wpxju1U5SpTXZ4miLv32jmGSBDeik6qAcWt\nnwYriJh8FMdrSDIcQ8rVMId3kS8tvA\u003d\u003d\n\u003dYIBc\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f54eba7_f4a9113a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-16T00:50:17Z",
+      "side": 1,
+      "message": "See https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1128457#c9 for context.",
+      "revId": "294ced5b9783d397380a330bafc3e79a565f97f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
