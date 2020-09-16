@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_textnode.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -30,6 +31,8 @@ CXFA_ConnectString::CXFA_ConnectString(CXFA_Document* doc,
                 XFA_Element::ConnectString,
                 {},
                 kConnectStringAttributeData,
-                std::make_unique<CJX_TextNode>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_TextNode>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_ConnectString::~CXFA_ConnectString() = default;

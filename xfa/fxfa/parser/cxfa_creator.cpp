@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -27,6 +28,8 @@ CXFA_Creator::CXFA_Creator(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Creator,
                 {},
                 kCreatorAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Creator::~CXFA_Creator() = default;

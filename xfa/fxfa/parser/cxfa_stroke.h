@@ -59,7 +59,7 @@ class CXFA_Stroke : public CXFA_Node {
               XFA_Element eType,
               pdfium::span<const PropertyData> properties,
               pdfium::span<const AttributeData> attributes,
-              std::unique_ptr<CJX_Object> js_node);
+              CJX_Object* js_node);
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_STROKE_H_

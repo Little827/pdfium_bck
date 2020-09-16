@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_draw.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -58,6 +59,8 @@ CXFA_Draw::CXFA_Draw(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Draw,
                 kDrawPropertyData,
                 kDrawAttributeData,
-                std::make_unique<CJX_Draw>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Draw>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Draw::~CXFA_Draw() = default;

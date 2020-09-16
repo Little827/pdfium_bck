@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -32,6 +33,8 @@ CXFA_XmlConnection::CXFA_XmlConnection(CXFA_Document* doc,
                 XFA_Element::XmlConnection,
                 kXmlConnectionPropertyData,
                 kXmlConnectionAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_XmlConnection::~CXFA_XmlConnection() = default;

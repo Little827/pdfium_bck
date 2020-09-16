@@ -10,6 +10,7 @@
 
 #include "fxjs/xfa/cjx_node.h"
 #include "xfa/fxfa/parser/cxfa_color.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxgraphics/cxfa_gepattern.h"
 
 namespace {
@@ -37,7 +38,9 @@ CXFA_Pattern::CXFA_Pattern(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Pattern,
                 kPatternPropertyData,
                 kPatternAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Pattern::~CXFA_Pattern() = default;
 

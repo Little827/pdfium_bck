@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -44,6 +45,8 @@ CXFA_Present::CXFA_Present(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Present,
                 kPresentPropertyData,
                 kPresentAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Present::~CXFA_Present() = default;

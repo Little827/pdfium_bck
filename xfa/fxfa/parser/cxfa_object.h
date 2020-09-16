@@ -79,8 +79,8 @@ class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
   CXFA_TreeList* AsTreeList();
   CXFA_ThisProxy* AsThisProxy();
 
-  CJX_Object* JSObject() { return m_pJSObject.get(); }
-  const CJX_Object* JSObject() const { return m_pJSObject.get(); }
+  CJX_Object* JSObject() { return m_pJSObject; }
+  const CJX_Object* JSObject() const { return m_pJSObject; }
 
   bool HasCreatedUIWidget() const {
     return m_elementType == XFA_Element::Field ||
@@ -99,14 +99,14 @@ class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
   CXFA_Object(CXFA_Document* pDocument,
               XFA_ObjectType objectType,
               XFA_Element eType,
-              std::unique_ptr<CJX_Object> jsObject);
+              CJX_Object* jsObject);
 
-  cppgc::WeakMember<CXFA_Document> m_pDocument;
   const XFA_ObjectType m_objectType;
   const XFA_Element m_elementType;
   const ByteStringView m_elementName;
   const uint32_t m_elementNameHash;
-  std::unique_ptr<CJX_Object> m_pJSObject;
+  cppgc::WeakMember<CXFA_Document> m_pDocument;
+  cppgc::Member<CJX_Object> m_pJSObject;
 };
 
 // Helper functions that permit nullptr arguments.

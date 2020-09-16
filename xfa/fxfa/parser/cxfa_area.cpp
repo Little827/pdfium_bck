@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_container.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -41,6 +42,8 @@ CXFA_Area::CXFA_Area(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Area,
           kAreaPropertyData,
           kAreaAttributeData,
-          std::make_unique<CJX_Container>(this)) {}
+          cppgc::MakeGarbageCollected<CJX_Container>(
+              doc->GetHeap()->GetAllocationHandle(),
+              this)) {}
 
 CXFA_Area::~CXFA_Area() = default;
