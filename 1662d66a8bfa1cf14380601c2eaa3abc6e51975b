@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33247ae2_30116c4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-16T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b294354_24009e21",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "1662d66a8bfa1cf14380601c2eaa3abc6e51975b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de1a9895_c76dc92f",
         "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "1662d66a8bfa1cf14380601c2eaa3abc6e51975b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b43ba2_d7d928db",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-16T18:14:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de1a9895_c76dc92f",
+      "revId": "1662d66a8bfa1cf14380601c2eaa3abc6e51975b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
