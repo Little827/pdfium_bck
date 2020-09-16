@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -27,6 +28,8 @@ CXFA_Copies::CXFA_Copies(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Copies,
                 {},
                 kCopiesAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Copies::~CXFA_Copies() = default;

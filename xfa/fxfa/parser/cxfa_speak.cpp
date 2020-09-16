@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_textnode.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -32,6 +33,8 @@ CXFA_Speak::CXFA_Speak(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Speak,
                 {},
                 kSpeakAttributeData,
-                std::make_unique<CJX_TextNode>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_TextNode>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Speak::~CXFA_Speak() = default;

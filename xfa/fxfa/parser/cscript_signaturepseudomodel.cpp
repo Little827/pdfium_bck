@@ -9,12 +9,14 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_signaturepseudomodel.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
-CScript_SignaturePseudoModel::CScript_SignaturePseudoModel(
-    CXFA_Document* pDocument)
-    : CXFA_Object(pDocument,
+CScript_SignaturePseudoModel::CScript_SignaturePseudoModel(CXFA_Document* doc)
+    : CXFA_Object(doc,
                   XFA_ObjectType::Object,
                   XFA_Element::SignaturePseudoModel,
-                  std::make_unique<CJX_SignaturePseudoModel>(this)) {}
+                  cppgc::MakeGarbageCollected<CJX_SignaturePseudoModel>(
+                      doc->GetHeap()->GetAllocationHandle(),
+                      this)) {}
 
 CScript_SignaturePseudoModel::~CScript_SignaturePseudoModel() = default;

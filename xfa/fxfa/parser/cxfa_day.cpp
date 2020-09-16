@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 CXFA_Day::CXFA_Day(CXFA_Document* doc, XFA_PacketType packet)
     : CXFA_Node(doc,
@@ -18,6 +19,8 @@ CXFA_Day::CXFA_Day(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Day,
                 {},
                 {},
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Day::~CXFA_Day() = default;

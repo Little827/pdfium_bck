@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_subform.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -72,6 +73,8 @@ CXFA_Subform::CXFA_Subform(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Subform,
                 kSubformPropertyData,
                 kSubformAttributeData,
-                std::make_unique<CJX_Subform>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Subform>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Subform::~CXFA_Subform() = default;

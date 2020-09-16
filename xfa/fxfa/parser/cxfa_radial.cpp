@@ -11,6 +11,7 @@
 
 #include "fxjs/xfa/cjx_node.h"
 #include "xfa/fxfa/parser/cxfa_color.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxgraphics/cxfa_geshading.h"
 
 namespace {
@@ -38,7 +39,9 @@ CXFA_Radial::CXFA_Radial(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Radial,
                 kRadialPropertyData,
                 kRadialAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Radial::~CXFA_Radial() = default;
 

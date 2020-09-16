@@ -48,7 +48,7 @@ class CXFA_Box : public CXFA_Node {
            XFA_Element eType,
            pdfium::span<const PropertyData> properties,
            pdfium::span<const AttributeData> attributes,
-           std::unique_ptr<CJX_Object> js_node);
+           CJX_Object* js_node);
 
   XFA_AttributeValue GetHand();
 

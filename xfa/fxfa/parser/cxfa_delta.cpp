@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_delta.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 CXFA_Delta::CXFA_Delta(CXFA_Document* doc, XFA_PacketType packet)
     : CXFA_Node(doc,
@@ -18,6 +19,8 @@ CXFA_Delta::CXFA_Delta(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Delta,
                 {},
                 {},
-                std::make_unique<CJX_Delta>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Delta>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Delta::~CXFA_Delta() = default;

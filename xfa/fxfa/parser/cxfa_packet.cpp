@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_packet.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 CXFA_Packet::CXFA_Packet(CXFA_Document* doc, XFA_PacketType packet)
     : CXFA_Node(doc,
@@ -18,6 +19,8 @@ CXFA_Packet::CXFA_Packet(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Packet,
                 {},
                 {},
-                std::make_unique<CJX_Packet>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Packet>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Packet::~CXFA_Packet() = default;

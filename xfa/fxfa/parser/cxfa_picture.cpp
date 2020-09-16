@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -31,6 +32,8 @@ CXFA_Picture::CXFA_Picture(CXFA_Document* doc, XFA_PacketType packet)
           XFA_Element::Picture,
           {},
           kPictureAttributeData,
-          std::make_unique<CJX_Node>(this)) {}
+          cppgc::MakeGarbageCollected<CJX_Node>(
+              doc->GetHeap()->GetAllocationHandle(),
+              this)) {}
 
 CXFA_Picture::~CXFA_Picture() = default;

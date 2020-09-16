@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_instancemanager.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -31,6 +32,8 @@ CXFA_InstanceManager::CXFA_InstanceManager(CXFA_Document* doc,
                 XFA_Element::InstanceManager,
                 kInstanceManagerPropertyData,
                 kInstanceManagerAttributeData,
-                std::make_unique<CJX_InstanceManager>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_InstanceManager>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_InstanceManager::~CXFA_InstanceManager() = default;

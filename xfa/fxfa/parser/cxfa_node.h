@@ -397,7 +397,7 @@ class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
             XFA_Element eType,
             pdfium::span<const PropertyData> properties,
             pdfium::span<const AttributeData> attributes,
-            std::unique_ptr<CJX_Object> js_object);
+            CJX_Object* js_object);
 
   virtual XFA_Element GetValueNodeType() const;
   virtual XFA_FFWidgetType GetDefaultFFWidgetType() const;

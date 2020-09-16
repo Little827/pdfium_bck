@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -28,6 +29,8 @@ CXFA_SuppressBanner::CXFA_SuppressBanner(CXFA_Document* doc,
                 XFA_Element::SuppressBanner,
                 {},
                 kSuppressBannerAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_SuppressBanner::~CXFA_SuppressBanner() = default;

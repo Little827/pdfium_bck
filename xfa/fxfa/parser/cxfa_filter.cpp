@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -39,6 +40,8 @@ CXFA_Filter::CXFA_Filter(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_Element::Filter,
                 kFilterPropertyData,
                 kFilterAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_Filter::~CXFA_Filter() = default;

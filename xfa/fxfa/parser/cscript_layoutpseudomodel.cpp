@@ -9,11 +9,14 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_layoutpseudomodel.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
-CScript_LayoutPseudoModel::CScript_LayoutPseudoModel(CXFA_Document* pDocument)
-    : CXFA_Object(pDocument,
+CScript_LayoutPseudoModel::CScript_LayoutPseudoModel(CXFA_Document* doc)
+    : CXFA_Object(doc,
                   XFA_ObjectType::Object,
                   XFA_Element::LayoutPseudoModel,
-                  std::make_unique<CJX_LayoutPseudoModel>(this)) {}
+                  cppgc::MakeGarbageCollected<CJX_LayoutPseudoModel>(
+                      doc->GetHeap()->GetAllocationHandle(),
+                      this)) {}
 
 CScript_LayoutPseudoModel::~CScript_LayoutPseudoModel() = default;

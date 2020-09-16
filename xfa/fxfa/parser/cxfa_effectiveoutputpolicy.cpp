@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "fxjs/xfa/cjx_node.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
 
@@ -30,6 +31,8 @@ CXFA_EffectiveOutputPolicy::CXFA_EffectiveOutputPolicy(CXFA_Document* doc,
                 XFA_Element::EffectiveOutputPolicy,
                 {},
                 kEffectiveOutputPolicyAttributeData,
-                std::make_unique<CJX_Node>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_Node>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_EffectiveOutputPolicy::~CXFA_EffectiveOutputPolicy() = default;

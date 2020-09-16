@@ -10,13 +10,16 @@
 
 #include "core/fxcrt/fx_extension.h"
 #include "fxjs/xfa/cjx_treelist.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
-CXFA_TreeList::CXFA_TreeList(CXFA_Document* pDocument)
-    : CXFA_List(pDocument,
+CXFA_TreeList::CXFA_TreeList(CXFA_Document* doc)
+    : CXFA_List(doc,
                 XFA_ObjectType::TreeList,
                 XFA_Element::TreeList,
-                std::make_unique<CJX_TreeList>(this)) {}
+                cppgc::MakeGarbageCollected<CJX_TreeList>(
+                    doc->GetHeap()->GetAllocationHandle(),
+                    this)) {}
 
 CXFA_TreeList::~CXFA_TreeList() = default;
 
