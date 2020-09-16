@@ -134,6 +134,30 @@
       "revId": "5a7266ebd80cebdddede76268f849681a670098c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbef4b33_687215e2",
+        "filename": "testing/fuzzers/process_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-16T20:14:34Z",
+      "side": 1,
+      "message": "that would be ok I think.",
+      "parentUuid": "61d32832_42354318",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "5a7266ebd80cebdddede76268f849681a670098c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
