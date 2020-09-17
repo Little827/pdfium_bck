@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ffb93ab_a7407caf",
+        "filename": "fxjs/xfa/cjx_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-17T05:26:49Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "5e3cb3f4211bf8141b65ddccf71237d2008e8810",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a0e6070_770d0de2",
+        "filename": "xfa/fxfa/parser/cscript_datawindow.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-17T05:26:49Z",
+      "side": 1,
+      "message": "Can we make a semi-automated pass over the modified .cpp files and remove these? Should be fairly easy to grep for the lack of std::unique_ptr and std::make_unique.",
+      "revId": "5e3cb3f4211bf8141b65ddccf71237d2008e8810",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dcb28b0_b42952b3",
+        "filename": "xfa/fxfa/parser/cxfa_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-17T05:26:49Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "5e3cb3f4211bf8141b65ddccf71237d2008e8810",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
