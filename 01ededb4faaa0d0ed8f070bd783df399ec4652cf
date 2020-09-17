@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1600379925 -0700\nnonce ALC2d186lKDgWMMJyHjCilFYoT7EU2ToIqxI3spLMsrSSon6DPdCY5AOvCVPuk0u689CoWXb0xDK\n\n0000000000000000000000000000000000000000 01ededb4faaa0d0ed8f070bd783df399ec4652cf refs/for/refs/heads/master%notify\u003dNONE,m\u003dundo_and_chain\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9j3BUACgkQqzYtYVpm\n/XtxxAgA1c1JTEJvos2I+MjzM96EnRdP/TNSpmnnx/zwhJgvkkjXTI33MWpe70om\nDOIrr68VTJxaT1gnOiKyvlwgO1eJlXA+QfvsKQb0QIe1LMe/EVXzxrYAJR4b8TaR\nctrYzSOG6Zi4e+UgeqRwkiGNmMQy9McGHOLEsOBBRkjHXRapzRO5/UlL1cSe3neI\nSes5XTTG79vD00qsPSgmRIb6SHAx7HVXC4f/IoPMb1gOWW0fUXWOIdap2tlHXnyy\nLJznM8qt5lGKVQWFvYC368m4FV9AMQyltpgO/QVG6DPIsLr8tDHzw/MEI0V+ugNc\ndpFm4cA6CAoooMsxcjZVYXkH8hGL9Q\u003d\u003d\n\u003dbyCI\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "258ce2af_73137d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-17T22:02:42Z",
+      "side": 1,
+      "message": "After rebasing in patch set 4, the build failed. I fixed the build in patch set 5, but that smelled bad. So then I went back to patch set 4 in patch set 6, and chained this CL to the correct fix in https://pdfium-review.googlesource.com/73710",
+      "revId": "01ededb4faaa0d0ed8f070bd783df399ec4652cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
