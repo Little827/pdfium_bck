@@ -14,6 +14,7 @@
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
 #include "fxjs/cjs_result.h"
+#include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_boolean.h"
@@ -134,6 +135,7 @@ CJX_Object* CJX_Object::AsCJXObject() {
 void CJX_Object::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(object_);
   visitor->Trace(layout_item_);
+  visitor->Trace(calc_data_);
 }
 
 bool CJX_Object::DynamicTypeIs(TypeTag eType) const {
@@ -1023,7 +1025,8 @@ void CJX_Object::MoveBufferMapData(CXFA_Object* pDstModule) {
     bNeedMove = false;
 
   if (bNeedMove)
-    ToNode(pDstModule)->JSObject()->SetCalcData(ReleaseCalcData());
+    ToNode(pDstModule)->JSObject()->TakeCalcDataFrom(this);
+
   if (!pDstModule->IsNodeV())
     return;
 
@@ -1070,12 +1073,17 @@ void CJX_Object::OnChanged(XFA_Attribute eAttr,
     GetXFANode()->SendAttributeChangeMessage(eAttr, bScriptModify);
 }
 
-void CJX_Object::SetCalcData(std::unique_ptr<CXFA_CalcData> data) {
-  calc_data_ = std::move(data);
+CJX_Object::CalcData* CJX_Object::GetOrCreateCalcData(cppgc::Heap* heap) {
+  if (!calc_data_) {
+    calc_data_ =
+        cppgc::MakeGarbageCollected<CalcData>(heap->GetAllocationHandle());
+  }
+  return calc_data_;
 }
 
-std::unique_ptr<CXFA_CalcData> CJX_Object::ReleaseCalcData() {
-  return std::move(calc_data_);
+void CJX_Object::TakeCalcDataFrom(CJX_Object* that) {
+  calc_data_ = that->calc_data_;
+  that->calc_data_ = nullptr;
 }
 
 void CJX_Object::ScriptAttributeString(CFXJSE_Value* pValue,
@@ -1510,3 +1518,11 @@ void CJX_Object::ScriptSomInstanceIndex(CFXJSE_Value* pValue,
 void CJX_Object::ScriptSubmitFormatMode(CFXJSE_Value* pValue,
                                         bool bSetting,
                                         XFA_Attribute eAttribute) {}
+
+CJX_Object::CalcData::CalcData() = default;
+
+CJX_Object::CalcData::~CalcData() = default;
+
+void CJX_Object::CalcData::Trace(cppgc::Visitor* visitor) const {
+  ContainerTrace(visitor, m_Globals);
+}
