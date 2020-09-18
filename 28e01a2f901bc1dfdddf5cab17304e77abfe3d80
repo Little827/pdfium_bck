@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07081544_b8352d20",
+        "filename": "testing/fuzzers/pdf_bidi_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-18T17:02:16Z",
+      "side": 1,
+      "message": "Also remove?",
+      "revId": "28e01a2f901bc1dfdddf5cab17304e77abfe3d80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
