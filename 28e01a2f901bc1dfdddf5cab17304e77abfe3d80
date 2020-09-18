@@ -16,6 +16,24 @@
       "revId": "28e01a2f901bc1dfdddf5cab17304e77abfe3d80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d116c2_6d14530d",
+        "filename": "testing/fuzzers/pdf_bidi_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-18T17:36:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07081544_b8352d20",
+      "revId": "28e01a2f901bc1dfdddf5cab17304e77abfe3d80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
