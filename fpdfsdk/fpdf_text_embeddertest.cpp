@@ -1643,8 +1643,7 @@ TEST_F(FPDFTextEmbedderTest, SmallType3Glyph) {
     EXPECT_DOUBLE_EQ(86.0, left);
     EXPECT_DOUBLE_EQ(88.400001525878906, right);
     EXPECT_DOUBLE_EQ(50.0, bottom);
-    // TODO(crbug.com/pdfium/1591): The top value is too big.
-    EXPECT_DOUBLE_EQ(290.0, top);
+    EXPECT_DOUBLE_EQ(50.240001678466797, top);
     ASSERT_TRUE(
         FPDFText_GetCharBox(text_page.get(), 3, &left, &right, &bottom, &top));
     EXPECT_DOUBLE_EQ(86.010002136230469, left);
