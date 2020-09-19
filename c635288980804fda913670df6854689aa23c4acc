@@ -34,6 +34,23 @@
       "revId": "c635288980804fda913670df6854689aa23c4acc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97811b64_7dc4d6f0",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-19T05:13:34Z",
+      "side": 1,
+      "message": "I would suggest writing more tests against other test PDFs. So just copy and paste to create a few more test cases. A good set to test with is hello_world.pdf, annotation_stamp_with_ap.pdf, and linearized.pdf.\n\nIt looks like FPDF_GetTrailerEnds() returns 0 for linearized.pdf, which warrants more investigation.",
+      "revId": "c635288980804fda913670df6854689aa23c4acc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
