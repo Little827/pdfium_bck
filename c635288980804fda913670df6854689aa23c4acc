@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "0689b43f_c3619032",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-19T07:47:32Z",
+      "side": 1,
+      "message": "WDYT about putting this in a new method, add a toggle to call one of the two methods, and only flipping on the new method for the duration of the FPDF_GetTrailerEnds() call?\n\nThere is a small penalty / risk here with the extra code, and it would be nice if the common use case can avoid it.",
+      "revId": "c635288980804fda913670df6854689aa23c4acc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97811b64_7dc4d6f0",
         "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
         "patchSetId": 6

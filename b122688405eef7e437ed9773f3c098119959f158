@@ -245,6 +245,30 @@
       "revId": "b122688405eef7e437ed9773f3c098119959f158",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9168cf0_d4658edb",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-19T07:47:32Z",
+      "side": 1,
+      "message": "As is, FPDF_GetTrailerEnds() is going to have trouble with testing/resources/linearized.pdf. Not sure if this a CPDF_SyntaxParser bug or FPDF_GetTrailerEnds() issue. Because it reparses the entire file, it hits this snag.\n\nThe way I was thinking about it is to reduce the amount of reparsing. Instead of starting at the beginning, take advantage of the work already done in CPDF_Parser::ParseCrossRefV4() and CPDF_Parser::LoadCrossRefV5() to record where the end of the xrefs are. Then FPDF_GetTrailerEnds() can use those as starting points for searching, and stop searching and move to the next starting point as soon as it finds the EOF marker.\n\nWith this strategy, the number of CPDF_SyntaxParser::GetNextChar() / CPDF_SyntaxParser::GetNextWord() calls can be drastically reduced. e.g. for testing/resources/annotation_stamp_with_ap.pdf, GetNextChar() calls goes from 57978 to 139, and GetNextWord() calls go from 1152 to 15.\n\nThe problem with this strategy is it requires the PDF to have valid /Prev entries to link the xref sections together, so it does not work for testing/resources/two_signatures.pdf.",
+      "parentUuid": "cced8c67_c36bb3b5",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 13
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
