@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "81322bcc_ceafd25c",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-21T16:27:39Z",
+      "side": 1,
+      "message": "Well, sorry, it was my suggestion to avoid needing to test duplicate paths that lead to the single impl.",
+      "parentUuid": "f61995ef_595cae27",
+      "revId": "c635288980804fda913670df6854689aa23c4acc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97811b64_7dc4d6f0",
         "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
         "patchSetId": 6
