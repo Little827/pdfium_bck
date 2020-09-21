@@ -269,6 +269,30 @@
       "revId": "b122688405eef7e437ed9773f3c098119959f158",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d6aa87e_9299b43b",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-21T08:16:47Z",
+      "side": 1,
+      "message": "Yes, I see the potential performance benefit from not scanning the whole file. As you say, sadly the /Prev key is optional, so we can\u0027t use this trick, as far as I see.\n\nSeeing that Acrobat even has an indicator on its UI while validating signatures, I can imagine that just the problem to be solved here requires this scanning and we should not feel bad that we can\u0027t avoid it. So I would recommend not trying to be smarter here.",
+      "parentUuid": "f9168cf0_d4658edb",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 13
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
