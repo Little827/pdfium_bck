@@ -69,8 +69,6 @@ class CXFA_FFPageWidgetIterator final
  private:
   CXFA_FFPageWidgetIterator(CXFA_FFPageView* pPageView, uint32_t dwFilter);
 
-  CXFA_FFWidget* GetWidget(CXFA_LayoutItem* pLayoutItem);
-
   CXFA_LayoutItemIterator m_sIterator;
   const uint32_t m_dwFilter;
   const bool m_bIgnoreRelevant;
@@ -102,7 +100,6 @@ class CXFA_FFTabOrderPageWidgetIterator final
                                   CXFA_FFWidget* pRefWidget);
   void CreateTabOrderWidgetArray();
   std::vector<CXFA_ContentLayoutItem*> CreateSpaceOrderLayoutItems();
-  CXFA_FFWidget* GetWidget(CXFA_LayoutItem* pLayoutItem);
   void OrderContainer(CXFA_LayoutItemIterator* sIterator,
                       CXFA_LayoutItem* pViewItem,
                       CXFA_TabParam* pContainer,
