@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03d1b169_2cce5dc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-22T21:46:45Z",
+      "side": 1,
+      "message": "Note P313 \u003d\u003d PS8, you can diff PS by PS from 8 down til 3 ...",
+      "revId": "fba2cb61287c552c0dcacff4dcaabf1aa726ec7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
