@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21100ac9_78a3aaaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-22T16:46:10Z",
+      "side": 1,
+      "message": "Let me know if you want smaller pieces, this could go as 3:\n1. remove CFXA_ and use new names (since these aren\u0027t concrete classes).\n2. remove unique_ptr\u003c\u003e\n3. flip to member\u003c\u003e",
+      "revId": "e9f41d0bb6282272a1bfa8f63a552d4cc70d47b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
