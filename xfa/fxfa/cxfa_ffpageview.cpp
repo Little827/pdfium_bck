@@ -425,7 +425,7 @@ void CXFA_FFTabOrderPageWidgetIterator::OrderContainer(
       break;
     }
     if (bMasterPage || *bContentArea) {
-      CXFA_FFWidget* hWidget = GetWidget(pSearchItem);
+      CXFA_FFWidget* hWidget = LoadedWidgetFromLayoutItem(pSearchItem);
       if (!hWidget) {
         pSearchItem = sIterator->MoveToNext();
         continue;
@@ -485,7 +485,7 @@ CXFA_FFTabOrderPageWidgetIterator::CreateSpaceOrderLayoutItems() {
   return items;
 }
 
-CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::GetWidget(
+CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::LoadedWidgetFromLayoutItem(
     CXFA_LayoutItem* pLayoutItem) {
   CXFA_FFWidget* pWidget = CXFA_FFWidget::FromLayoutItem(pLayoutItem);
   if (!pWidget)

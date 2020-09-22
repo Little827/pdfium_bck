@@ -102,7 +102,7 @@ class CXFA_FFTabOrderPageWidgetIterator final
                                   CXFA_FFWidget* pRefWidget);
   void CreateTabOrderWidgetArray();
   std::vector<CXFA_ContentLayoutItem*> CreateSpaceOrderLayoutItems();
-  CXFA_FFWidget* GetWidget(CXFA_LayoutItem* pLayoutItem);
+  CXFA_FFWidget* LoadedWidgetFromLayoutItem(CXFA_LayoutItem* pLayoutItem);
   void OrderContainer(CXFA_LayoutItemIterator* sIterator,
                       CXFA_LayoutItem* pViewItem,
                       CXFA_TabParam* pContainer,
