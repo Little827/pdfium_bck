@@ -16,6 +16,23 @@
       "revId": "3f4a7f6973bb56b427b8c8d1293d2832c2c85204",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "690856e4_d2ecd833",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-22T17:06:52Z",
+      "side": 1,
+      "message": "Let\u0027s move this to fpdfview.h and put it next to FPDF_DocumentHasValidCrossReferenceTable(). Seeing how this is not a \"FPDFSignature\" API. As you mentioned earlier, an API like this can be useful in other situations as well.",
+      "revId": "3f4a7f6973bb56b427b8c8d1293d2832c2c85204",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

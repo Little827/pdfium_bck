@@ -293,6 +293,30 @@
       "revId": "b122688405eef7e437ed9773f3c098119959f158",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d480f122_89159e17",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-22T17:06:52Z",
+      "side": 1,
+      "message": "The PDF spec is slightly annoying here because it says neither \"required\" or \"optional\" for /Prev.\n\nIn the interest of time, let\u0027s go with this for now. I still think testing/resources/two_signatures.pdf is a rather uncommon way of generating PDFs with signatures. We can generate/handwrite more PDFs later to test Acrobat behavior and see if we can make some speed improvements here.",
+      "parentUuid": "4d6aa87e_9299b43b",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 13
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
