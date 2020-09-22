@@ -113,6 +113,18 @@ bool IsDocVersionBelow205(const CXFA_Document* doc) {
   return doc->GetCurVersionMode() < XFA_VERSION_205;
 }
 
+CXFA_FFWidget* LoadedWidgetFromLayoutItem(CXFA_LayoutItem* pLayoutItem) {
+  CXFA_FFWidget* pWidget = CXFA_FFWidget::FromLayoutItem(pLayoutItem);
+  if (!pWidget)
+    return nullptr;
+
+  if (!pWidget->IsLoaded() &&
+      pWidget->GetLayoutItem()->TestStatusBits(XFA_WidgetStatus_Visible)) {
+    pWidget->LoadWidget();
+  }
+  return pWidget;
+}
+
 }  // namespace
 
 class CXFA_TabParam {
@@ -425,7 +437,7 @@ void CXFA_FFTabOrderPageWidgetIterator::OrderContainer(
       break;
     }
     if (bMasterPage || *bContentArea) {
-      CXFA_FFWidget* hWidget = GetWidget(pSearchItem);
+      CXFA_FFWidget* hWidget = LoadedWidgetFromLayoutItem(pSearchItem);
       if (!hWidget) {
         pSearchItem = sIterator->MoveToNext();
         continue;
@@ -483,17 +495,4 @@ CXFA_FFTabOrderPageWidgetIterator::CreateSpaceOrderLayoutItems() {
     items.push_back(layout_item);
 
   return items;
-}
-
-CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::GetWidget(
-    CXFA_LayoutItem* pLayoutItem) {
-  CXFA_FFWidget* pWidget = CXFA_FFWidget::FromLayoutItem(pLayoutItem);
-  if (!pWidget)
-    return nullptr;
-
-  if (!pWidget->IsLoaded() &&
-      pWidget->GetLayoutItem()->TestStatusBits(XFA_WidgetStatus_Visible)) {
-    pWidget->LoadWidget();
-  }
-  return pWidget;
 }
