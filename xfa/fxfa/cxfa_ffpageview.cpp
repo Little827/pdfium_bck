@@ -120,24 +120,33 @@ class CXFA_TabParam {
   CXFA_TabParam() = default;
   explicit CXFA_TabParam(CXFA_FFWidget* pWidget)
       : m_pItem(pWidget->GetLayoutItem()) {}
-
+  CXFA_TabParam(const CXFA_TabParam&) = delete;
+  CXFA_TabParam(CXFA_TabParam&&) noexcept = default;
   ~CXFA_TabParam() = default;
 
+  CXFA_TabParam& operator=(const CXFA_TabParam&) = delete;
+  CXFA_TabParam& operator=(CXFA_TabParam&&) noexcept = default;
+
+  void Trace(cppgc::Visitor* visitor) const {
+    visitor->Trace(m_pItem);
+    ContainerTrace(visitor, m_Children);
+  }
+
   CXFA_FFWidget* GetWidget() const { return m_pItem->GetFFWidget(); }
-  const std::vector<cppgc::Persistent<CXFA_ContentLayoutItem>>& GetChildren()
+  const std::vector<cppgc::Member<CXFA_ContentLayoutItem>>& GetChildren()
       const {
     return m_Children;
   }
   void ClearChildren() { m_Children.clear(); }
-  void AppendTabParam(CXFA_TabParam* pParam) {
+  void AppendTabParam(const CXFA_TabParam* pParam) {
     m_Children.push_back(pParam->m_pItem);
     m_Children.insert(m_Children.end(), pParam->m_Children.begin(),
                       pParam->m_Children.end());
   }
 
  private:
-  cppgc::Persistent<CXFA_ContentLayoutItem> m_pItem;
-  std::vector<cppgc::Persistent<CXFA_ContentLayoutItem>> m_Children;
+  cppgc::Member<CXFA_ContentLayoutItem> m_pItem;
+  std::vector<cppgc::Member<CXFA_ContentLayoutItem>> m_Children;
 };
 
 CXFA_FFPageView::CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea)
@@ -413,7 +422,7 @@ void CXFA_FFTabOrderPageWidgetIterator::OrderContainer(
     bool* bCurrentItem,
     bool* bContentArea,
     bool bMasterPage) {
-  std::vector<std::unique_ptr<CXFA_TabParam>> tabParams;
+  std::vector<CXFA_TabParam> tabParams;
   CXFA_LayoutItem* pSearchItem = sIterator->MoveToNext();
   while (pSearchItem) {
     if (!pSearchItem->IsContentLayoutItem()) {
@@ -434,10 +443,10 @@ void CXFA_FFTabOrderPageWidgetIterator::OrderContainer(
         *bCurrentItem = true;
         break;
       }
-      tabParams.push_back(std::make_unique<CXFA_TabParam>(hWidget));
+      tabParams.emplace_back(hWidget);
       if (IsLayoutElement(pSearchItem->GetFormNode()->GetElementType(), true)) {
-        OrderContainer(sIterator, pSearchItem, tabParams.back().get(),
-                       bCurrentItem, bContentArea, bMasterPage);
+        OrderContainer(sIterator, pSearchItem, &tabParams.back(), bCurrentItem,
+                       bContentArea, bMasterPage);
       }
     }
     if (*bCurrentItem) {
@@ -448,16 +457,15 @@ void CXFA_FFTabOrderPageWidgetIterator::OrderContainer(
     }
   }
   std::sort(tabParams.begin(), tabParams.end(),
-            [](const std::unique_ptr<CXFA_TabParam>& arg1,
-               const std::unique_ptr<CXFA_TabParam>& arg2) {
-              const CFX_RectF& rt1 = arg1->GetWidget()->GetWidgetRect();
-              const CFX_RectF& rt2 = arg2->GetWidget()->GetWidgetRect();
+            [](const CXFA_TabParam& arg1, const CXFA_TabParam& arg2) {
+              const CFX_RectF& rt1 = arg1.GetWidget()->GetWidgetRect();
+              const CFX_RectF& rt2 = arg2.GetWidget()->GetWidgetRect();
               if (rt1.top - rt2.top >= kXFAWidgetPrecision)
                 return rt1.top < rt2.top;
               return rt1.left < rt2.left;
             });
   for (const auto& pParam : tabParams)
-    pContainer->AppendTabParam(pParam.get());
+    pContainer->AppendTabParam(&pParam);
 }
 
 std::vector<CXFA_ContentLayoutItem*>
