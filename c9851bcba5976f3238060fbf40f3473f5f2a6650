@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b87e27d_615eb90b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-22T20:17:55Z",
+      "side": 1,
+      "message": "This will need rebasing following other chain of conflicting cls.",
+      "revId": "c9851bcba5976f3238060fbf40f3473f5f2a6650",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
