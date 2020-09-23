@@ -245,7 +245,7 @@ void CPDF_AnnotList::DisplayPass(CPDF_Page* pPage,
 
     if (pOptions) {
       const CPDF_Dictionary* pAnnotDict = pAnnot->GetAnnotDict();
-      const CPDF_OCContext* pOCContext = pOptions->GetOCContext();
+      const auto pOCContext = pOptions->GetOCContext();
       if (pAnnotDict && pOCContext &&
           !pOCContext->CheckOCGVisible(
               pAnnotDict->GetDictFor(pdfium::annotation::kOC))) {

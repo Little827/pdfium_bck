@@ -17,14 +17,20 @@ class CPDF_Dictionary;
 class CPDF_Document;
 class CPDF_PageObject;
 
-class CPDF_OCContext final : public Retainable {
+class CPDF_OCContextInterface : public Retainable {
+ public:
+  virtual ~CPDF_OCContextInterface() = default;
+  virtual bool CheckOCGVisible(const CPDF_Dictionary* pOCGDict) const = 0;
+  virtual bool CheckObjectVisible(const CPDF_PageObject* pObj) const;
+};
+
+class CPDF_OCContext : public CPDF_OCContextInterface {
  public:
   enum UsageType { View = 0, Design, Print, Export };
 
   CONSTRUCT_VIA_MAKE_RETAIN;
 
-  bool CheckOCGVisible(const CPDF_Dictionary* pOCGDict) const;
-  bool CheckObjectVisible(const CPDF_PageObject* pObj) const;
+  bool CheckOCGVisible(const CPDF_Dictionary* pOCGDict) const override;
 
  private:
   CPDF_OCContext(CPDF_Document* pDoc, UsageType eUsageType);
