@@ -317,6 +317,30 @@
       "revId": "b122688405eef7e437ed9773f3c098119959f158",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0aaea0_4c76eef6",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 6640
+      },
+      "writtenOn": "2020-09-23T06:33:11Z",
+      "side": 1,
+      "message": "OK. As a start, I can look at a follow-up change that improves fixup_pdf_template.py to create incremental trailers. If later we have confirmation from the spec that the only allowed situation where /Prev can be omitted is the initial trailer, then that would simplify life. For now, people are creative to create tricky PDFs to break signature verification, so I would stay on the safe side. :-)\n\nI agree that omitting /Prev on non-first trailers is not typical.",
+      "parentUuid": "d480f122_89159e17",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 13
+      },
+      "revId": "b122688405eef7e437ed9773f3c098119959f158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
