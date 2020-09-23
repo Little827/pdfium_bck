@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "5aff4b9a_c55b0de0",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-23T00:22:52Z",
+      "side": 1,
+      "message": "nit: Move this closer to RecordingToNextWord().",
+      "revId": "3f4a7f6973bb56b427b8c8d1293d2832c2c85204",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d24946_b624c250",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-23T00:22:52Z",
+      "side": 1,
+      "message": "nit: This can be scoped within the while loop.",
+      "revId": "3f4a7f6973bb56b427b8c8d1293d2832c2c85204",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "690856e4_d2ecd833",
         "filename": "public/fpdf_signature.h",
         "patchSetId": 7
