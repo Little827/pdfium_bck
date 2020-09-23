@@ -51,6 +51,24 @@
       "revId": "9523b7376ba97e485d8356ffc7fd0df45c21c0db",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6b3ae59_7e4974dc",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-23T06:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d088f3b4_af535ecf",
+      "revId": "9523b7376ba97e485d8356ffc7fd0df45c21c0db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
