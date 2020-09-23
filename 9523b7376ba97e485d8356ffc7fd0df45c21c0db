@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b140cd1_8958be66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-09-23T06:35:28Z",
+      "side": 1,
+      "message": "Sorry, mixed up my work vs personal accounts.",
+      "revId": "9523b7376ba97e485d8356ffc7fd0df45c21c0db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
