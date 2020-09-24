@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1d30031_1373b6da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T23:48:47Z",
+      "side": 1,
+      "message": "LocaleMgrIface",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb0c67d9_3030bd7b",
+        "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T23:48:47Z",
+      "side": 1,
+      "message": "Replace with \u003cvector\u003e",
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d091b646_a5cc81ea",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T23:48:47Z",
+      "side": 1,
+      "message": "Does it make sense to std::move() when the variable is a raw pointer?",
+      "range": {
+        "startLine": 1224,
+        "startChar": 28,
+        "endLine": 1224,
+        "endChar": 49
+      },
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8da08f6_af2f795a",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T23:48:47Z",
+      "side": 1,
+      "message": "Not implemented?",
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30a2b5b_42414b00",
+        "filename": "xfa/fxfa/parser/cxfa_nodelocale.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T23:48:47Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
