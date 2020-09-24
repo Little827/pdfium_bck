@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d67f4838_1be5db45",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T20:13:54Z",
+      "side": 1,
+      "message": "Can these be constexpr?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "dc67200d6b4d767046ad8859e50ebf562630eba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9983def5_8f3e0665",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T20:13:54Z",
+      "side": 1,
+      "message": "I think this means DateTimeType needs to have explicit values that do not change?",
+      "revId": "dc67200d6b4d767046ad8859e50ebf562630eba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
