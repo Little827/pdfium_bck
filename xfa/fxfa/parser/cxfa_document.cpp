@@ -1292,6 +1292,7 @@ void CXFA_Document::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(notify_);
   visitor->Trace(node_owner_);
   visitor->Trace(m_pRootNode);
+  visitor->Trace(m_pLocaleMgr);
   visitor->Trace(m_pLayoutProcessor);
   visitor->Trace(m_pScriptDataWindow);
   visitor->Trace(m_pScriptEvent);
@@ -1306,7 +1307,7 @@ void CXFA_Document::Trace(cppgc::Visitor* visitor) const {
 void CXFA_Document::ClearLayoutData() {
   m_pLayoutProcessor = nullptr;
   m_pScriptContext.reset();
-  m_pLocaleMgr.reset();
+  m_pLocaleMgr.Clear();
   m_pScriptDataWindow = nullptr;
   m_pScriptEvent = nullptr;
   m_pScriptHost = nullptr;
@@ -1433,11 +1434,12 @@ bool CXFA_Document::IsInteractive() {
 
 CXFA_LocaleMgr* CXFA_Document::GetLocaleMgr() {
   if (!m_pLocaleMgr) {
-    m_pLocaleMgr = std::make_unique<CXFA_LocaleMgr>(
+    m_pLocaleMgr = cppgc::MakeGarbageCollected<CXFA_LocaleMgr>(
+        heap_->GetAllocationHandle(), heap_,
         ToNode(GetXFAObject(XFA_HASHCODE_LocaleSet)),
         GetNotify()->GetAppProvider()->GetLanguage());
   }
-  return m_pLocaleMgr.get();
+  return m_pLocaleMgr;
 }
 
 cppgc::Heap* CXFA_Document::GetHeap() const {
