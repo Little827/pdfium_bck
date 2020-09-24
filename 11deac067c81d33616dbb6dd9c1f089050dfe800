@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a929bf9c_fdddfad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T23:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1d30031_1373b6da",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb0c67d9_3030bd7b",
         "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
         "patchSetId": 9
@@ -39,6 +63,24 @@
       "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cba045f_3bfcd69a",
+        "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T23:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0c67d9_3030bd7b",
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "18fd3f5a_d48486d9",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T23:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d091b646_a5cc81ea",
+      "range": {
+        "startLine": 1224,
+        "startChar": 28,
+        "endLine": 1224,
+        "endChar": 49
+      },
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8da08f6_af2f795a",
         "filename": "xfa/fxfa/parser/cxfa_localemgr.h",
         "patchSetId": 9
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "56cf7afc_9dea2008",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T23:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8da08f6_af2f795a",
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c30a2b5b_42414b00",
         "filename": "xfa/fxfa/parser/cxfa_nodelocale.h",
         "patchSetId": 9
@@ -96,6 +180,24 @@
       "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b4f458_12a6d1f7",
+        "filename": "xfa/fxfa/parser/cxfa_nodelocale.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T23:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c30a2b5b_42414b00",
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +221,30 @@
       "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f126ce07_48cf2b72",
+        "filename": "xfa/fxfa/parser/cxfa_xmllocale.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T23:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a4f81d8_2dcd05f1",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "11deac067c81d33616dbb6dd9c1f089050dfe800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
