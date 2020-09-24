@@ -40,6 +40,30 @@
       "revId": "60c24ca06991b9fec93e801ef22ceb7b548d2682",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db376d0b_3113df33",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1978,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-24T21:02:21Z",
+      "side": 1,
+      "message": "No, there are a couple other callers, but they do not check the return value.",
+      "parentUuid": "68969c4b_cb4dbd60",
+      "range": {
+        "startLine": 1978,
+        "startChar": 4,
+        "endLine": 1978,
+        "endChar": 48
+      },
+      "revId": "60c24ca06991b9fec93e801ef22ceb7b548d2682",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
