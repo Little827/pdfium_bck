@@ -22,6 +22,30 @@
       "revId": "6f567c84f12250f9380dfc4e227e78cad047b968",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95708fe_4dea70d3",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T23:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "663d5526_cb0c2dc5",
+      "range": {
+        "startLine": 1603,
+        "startChar": 0,
+        "endLine": 1603,
+        "endChar": 8
+      },
+      "revId": "6f567c84f12250f9380dfc4e227e78cad047b968",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
