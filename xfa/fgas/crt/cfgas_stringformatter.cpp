@@ -1573,14 +1573,29 @@ CFGAS_StringFormatter::DateTimeType CFGAS_StringFormatter::GetDateTimeFormat(
         wsCategory += m_spPattern[ccf];
         ccf++;
       }
-      if (!(iFindCategory & 1) && wsCategory.EqualsASCII("date")) {
-        iFindCategory |= 1;
-        eCategory = Category::kDate;
-        if (iFindCategory & 2)
-          iFindCategory = 4;
-      } else if (!(iFindCategory & 2) && wsCategory.EqualsASCII("time")) {
-        iFindCategory |= 2;
-        eCategory = Category::kTime;
+      if (wsCategory.EqualsASCII("date")) {
+        if (!(iFindCategory & 1)) {
+          iFindCategory |= 1;
+          eCategory = Category::kDate;
+          if (iFindCategory & 2)
+            iFindCategory = 4;
+        }
+        // unknown  (0) => (1) date
+        // date     (1) => (1) date, noop
+        // time     (2) => (4) timedate
+        // datetime (3) => (3) datetime, noop
+        // timedate (4) => (5) bzzzt.
+      } else if (wsCategory.EqualsASCII("time")) {
+        if (!(iFindCategory & 2)) {
+          iFindCategory |= 2;
+          eCategory = Category::kTime;
+        }
+        // unknown  (0) => (2)
+        // date     (1) => (3)
+        // time     (2) => (2) noop
+        // datetime (3) => (3) noop
+        // timedate (4) => (6) bzzt.
+
       } else if (wsCategory.EqualsASCII("datetime")) {
         iFindCategory = 3;
         eCategory = Category::kDateTime;
