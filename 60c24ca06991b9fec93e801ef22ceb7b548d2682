@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1600975993 -0700\nnonce ALC2d1+K65BkyXvxRL0qp9nDqYOHAlqPYJB8EJh1+zA45xzWQqcNAMGqt8TgmPDr8T2+XxUEb3/1\n\n0000000000000000000000000000000000000000 60c24ca06991b9fec93e801ef22ceb7b548d2682 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9s9HkACgkQqzYtYVpm\n/XtQdQf/U32ReaIkKqOfBzc0qYWtFOy01X/ulQa3CeiyMaG7mXBZ1OWnMzWa/aUw\ng4KADAjNVkI4p/G5G7ETLMlu7jBYVaH2vOvoMRQOT7R6cgGltI3/RNHqzac1vnpZ\n2qqNUEYNR6dUx12EKBq9JBZoosLsOCERae6cbWPrVZdFZS46hdhhqyh40J/jBC8o\nFDfUEZDQ+bALZh5A1Fcr2mObdhViqIpnyNhsT1FZQky47u2CUEuv73Kd74QHW9Pw\nP2J13LrVbAZD1WcOJsoXaOHwsLv9cQy0Z8WpFU7DoOCYJD8qXcwrpBfAfJWMTm6i\nGcwhot/VPrGeKEy/6MZGrmmujgZWLw\u003d\u003d\n\u003d6lXV\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb2fc360_ba035d55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T20:44:00Z",
+      "side": 1,
+      "message": "Lg w/ comment that might send you off on quite a goose chase if you chose to follow it.  Your choice.",
+      "revId": "60c24ca06991b9fec93e801ef22ceb7b548d2682",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68969c4b_cb4dbd60",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1978,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T20:44:00Z",
+      "side": 1,
+      "message": "Only caller?  I was hoping we could make RemoveBindItem() reurn a void, too, then just call HasBindItem(), but the logic at line 1331 is baffling as it the aditional test in HasBindItem() for type.",
+      "range": {
+        "startLine": 1978,
+        "startChar": 4,
+        "endLine": 1978,
+        "endChar": 48
+      },
+      "revId": "60c24ca06991b9fec93e801ef22ceb7b548d2682",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
