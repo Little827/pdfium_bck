@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6175148_49da0daa",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T20:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d67f4838_1be5db45",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "dc67200d6b4d767046ad8859e50ebf562630eba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9983def5_8f3e0665",
         "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "dc67200d6b4d767046ad8859e50ebf562630eba1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6d409a_326bacbe",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-24T20:53:36Z",
+      "side": 1,
+      "message": "Added comment. Ideally, we\u0027d come up with some helper functions that map DateTimeType \u003d\u003e DateTimeType in place of arithmetic above.  Will try as follow-up",
+      "parentUuid": "9983def5_8f3e0665",
+      "revId": "dc67200d6b4d767046ad8859e50ebf562630eba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
