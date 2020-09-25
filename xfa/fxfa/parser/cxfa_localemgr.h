@@ -13,6 +13,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
 #include "fxjs/gc/heap.h"
+#include "third_party/base/optional.h"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "xfa/fgas/crt/locale_mgr_iface.h"
@@ -34,7 +35,7 @@ class CXFA_LocaleMgr : public cppgc::GarbageCollected<CXFA_LocaleMgr>,
   LocaleIface* GetLocaleByName(const WideString& wsLocaleName) override;
 
   void SetDefLocale(LocaleIface* pLocale);
-  WideString GetConfigLocaleName(CXFA_Node* pConfig);
+  Optional<WideString> GetConfigLocaleName(CXFA_Node* pConfig) const;
 
  private:
   CXFA_LocaleMgr(cppgc::Heap* pHeap,
@@ -51,9 +52,9 @@ class CXFA_LocaleMgr : public cppgc::GarbageCollected<CXFA_LocaleMgr>,
   // Raw, owned by m_LocaleArray or m_XMLLocaleArray, may be GC'd after them.
   LocaleIface* m_pDefLocale = nullptr;
 
-  WideString m_wsConfigLocale;
+  mutable Optional<WideString> m_wsConfigLocale;
+  mutable bool m_bConfigLocaleCached = false;
   uint16_t m_dwDeflcid;
-  bool m_hasSetLocaleName = false;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_LOCALEMGR_H_
