@@ -1391,7 +1391,7 @@ CXFA_Node* CXFA_Node::GetContainerNode() {
   return pParentOfValueNode ? pParentOfValueNode->GetContainerNode() : nullptr;
 }
 
-LocaleIface* CXFA_Node::GetLocale() {
+GCedLocaleIface* CXFA_Node::GetLocale() {
   Optional<WideString> localeName = GetLocaleName();
   if (!localeName.has_value())
     return nullptr;
@@ -2527,7 +2527,7 @@ XFA_EventError CXFA_Node::ProcessFormatTestValidate(CXFA_FFDocView* pDocView,
   if (wsRawValue.IsEmpty())
     return XFA_EventError::kError;
 
-  LocaleIface* pLocale = GetLocale();
+  GCedLocaleIface* pLocale = GetLocale();
   if (!pLocale)
     return XFA_EventError::kNotExist;
 
@@ -4676,7 +4676,7 @@ bool CXFA_Node::SetValue(XFA_VALUEPICTURE eValueType,
   XFA_Element eType = pNode->GetElementType();
   if (!wsPicture.IsEmpty()) {
     CXFA_LocaleMgr* pLocaleMgr = GetDocument()->GetLocaleMgr();
-    LocaleIface* pLocale = GetLocale();
+    GCedLocaleIface* pLocale = GetLocale();
     CXFA_LocaleValue widgetValue = XFA_GetLocaleValue(this);
     bValidate =
         widgetValue.ValidateValue(wsValue, wsPicture, pLocale, &wsPicture);
@@ -4825,7 +4825,8 @@ WideString CXFA_Node::GetValue(XFA_VALUEPICTURE eValueType) {
   if (wsPicture.IsEmpty())
     return wsValue;
 
-  if (LocaleIface* pLocale = GetLocale()) {
+  GCedLocaleIface* pLocale = GetLocale();
+  if (pLocale) {
     CXFA_LocaleValue widgetValue = XFA_GetLocaleValue(this);
     CXFA_LocaleMgr* pLocaleMgr = GetDocument()->GetLocaleMgr();
     switch (widgetValue.GetType()) {
@@ -4864,7 +4865,7 @@ WideString CXFA_Node::GetNormalizeDataValue(const WideString& wsValue) {
     return wsValue;
 
   CXFA_LocaleMgr* pLocaleMgr = GetDocument()->GetLocaleMgr();
-  LocaleIface* pLocale = GetLocale();
+  GCedLocaleIface* pLocale = GetLocale();
   CXFA_LocaleValue widgetValue = XFA_GetLocaleValue(this);
   if (widgetValue.ValidateValue(wsValue, wsPicture, pLocale, &wsPicture)) {
     widgetValue = CXFA_LocaleValue(widgetValue.GetType(), wsValue, wsPicture,
@@ -4883,7 +4884,8 @@ WideString CXFA_Node::GetFormatDataValue(const WideString& wsValue) {
     return wsValue;
 
   WideString wsFormattedValue = wsValue;
-  if (LocaleIface* pLocale = GetLocale()) {
+  GCedLocaleIface* pLocale = GetLocale();
+  if (pLocale) {
     CXFA_Value* pNodeValue = GetChild<CXFA_Value>(0, XFA_Element::Value, false);
     if (!pNodeValue)
       return wsValue;
