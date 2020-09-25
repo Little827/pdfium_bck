@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cd2df48_67f2d07d",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-25T18:10:51Z",
+      "side": 1,
+      "message": "note: here we treat an empty string as nothing ...",
+      "range": {
+        "startLine": 1263,
+        "startChar": 36,
+        "endLine": 1263,
+        "endChar": 67
+      },
+      "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdad4e5_086d1e64",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-25T18:10:51Z",
+      "side": 1,
+      "message": "Note: one of the few legitimate uses of mutable is to cache a result from an otherwise const method.",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be35ca7_ec421fb2",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-25T18:10:51Z",
+      "side": 1,
+      "message": "Note: three possiblities\n1. we might never have tried.\n2. we might have tried but gotten nothing and want to continue to return nothing without trying again.\n3. we might have tried and gotten something.\n\nso bool + optional seemed better than Optional\u003cOptional\u003cWideString\u003e\u003e\u003e, although there are a half-dozen uses of base::Optional\u003cbase::Optional\u003c\u003e\u003e in code search (and mercifully no triply-nested cases).",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f0d410_c3493d6c",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-25T18:10:51Z",
+      "side": 1,
+      "message": "note: ... to avoid an early return from an empty string here.",
+      "range": {
+        "startLine": 1426,
+        "startChar": 1,
+        "endLine": 1426,
+        "endChar": 29
+      },
+      "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
