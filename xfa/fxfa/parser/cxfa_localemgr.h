@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
+#include "third_party/base/optional.h"
 #include "xfa/fgas/crt/locale_mgr_iface.h"
 
 class CXFA_Node;
@@ -26,7 +27,7 @@ class CXFA_LocaleMgr : public LocaleMgrIface {
   LocaleIface* GetLocaleByName(const WideString& wsLocaleName) override;
 
   void SetDefLocale(LocaleIface* pLocale);
-  WideString GetConfigLocaleName(CXFA_Node* pConfig);
+  Optional<WideString> GetConfigLocaleName(CXFA_Node* pConfig) const;
 
  private:
   std::unique_ptr<LocaleIface> GetLocale(uint16_t lcid);
@@ -37,9 +38,9 @@ class CXFA_LocaleMgr : public LocaleMgrIface {
   // Owned by m_LocaleArray or m_XMLLocaleArray.
   UnownedPtr<LocaleIface> m_pDefLocale;
 
-  WideString m_wsConfigLocale;
+  mutable Optional<WideString> m_wsConfigLocale;
+  mutable bool m_bConfigLocaleCached = false;
   uint16_t m_dwDeflcid;
-  bool m_hasSetLocaleName = false;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_LOCALEMGR_H_
