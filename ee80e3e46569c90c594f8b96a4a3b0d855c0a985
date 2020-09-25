@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "718d5328_b1fe9a41",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-25T15:45:33Z",
+      "side": 1,
+      "message": "NOTE: this was the one change I wanted to introduce. All the rest is just a consequence ...",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "ee80e3e46569c90c594f8b96a4a3b0d855c0a985",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
