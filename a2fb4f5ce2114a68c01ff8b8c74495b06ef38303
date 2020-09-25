@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f82762bc_745d1802",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-25T19:24:35Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be needed? Maybe just ASSERT(!m_wsConfigLocale.has_value()) ?",
+      "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cd2df48_67f2d07d",
         "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
         "patchSetId": 4
@@ -22,6 +39,30 @@
       "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e12f624_96ddb786",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-25T19:24:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cd2df48_67f2d07d",
+      "range": {
+        "startLine": 1263,
+        "startChar": 36,
+        "endLine": 1263,
+        "endChar": 67
+      },
+      "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +180,30 @@
       "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c5572bc_a8a38e9b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-25T19:24:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08f0d410_c3493d6c",
+      "range": {
+        "startLine": 1426,
+        "startChar": 1,
+        "endLine": 1426,
+        "endChar": 29
+      },
+      "revId": "a2fb4f5ce2114a68c01ff8b8c74495b06ef38303",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
