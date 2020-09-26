@@ -31,13 +31,14 @@ bool InitializeOnce() {
 
 // Two partition pages are used as guard / metadata page so make sure the super
 // page size is bigger.
-static_assert(kPartitionPageSize * 4 <= kSuperPageSize, "ok super page size");
-static_assert(!(kSuperPageSize % kPartitionPageSize), "ok super page multiple");
+static_assert(PartitionPageSize() * 4 <= kSuperPageSize, "ok super page size");
+static_assert(!(kSuperPageSize % PartitionPageSize()),
+              "ok super page multiple");
 // Four system pages gives us room to hack out a still-guard-paged piece
 // of metadata in the middle of a guard partition page.
-static_assert(kSystemPageSize * 4 <= kPartitionPageSize,
+static_assert(SystemPageSize() * 4 <= PartitionPageSize(),
               "ok partition page size");
-static_assert(!(kPartitionPageSize % kSystemPageSize),
+static_assert(!(PartitionPageSize() % SystemPageSize()),
               "ok partition page multiple");
 static_assert(sizeof(internal::PartitionPage) <= kPageMetadataSize,
               "PartitionPage should not be too big");
@@ -46,17 +47,17 @@ static_assert(sizeof(internal::PartitionBucket) <= kPageMetadataSize,
 static_assert(sizeof(internal::PartitionSuperPageExtentEntry) <=
                   kPageMetadataSize,
               "PartitionSuperPageExtentEntry should not be too big");
-static_assert(kPageMetadataSize * kNumPartitionPagesPerSuperPage <=
-                  kSystemPageSize,
+static_assert(kPageMetadataSize * NumPartitionPagesPerSuperPage() <=
+                  SystemPageSize(),
               "page metadata fits in hole");
 // Limit to prevent callers accidentally overflowing an int size.
-static_assert(kGenericMaxDirectMapped <=
-                  (1UL << 31) + kPageAllocationGranularity,
+static_assert(GenericMaxDirectMapped() <=
+                  (1UL << 31) + PageAllocationGranularity(),
               "maximum direct mapped allocation");
 // Check that some of our zanier calculations worked out as expected.
 static_assert(kGenericSmallestBucket == 8, "generic smallest bucket");
 static_assert(kGenericMaxBucketed == 983040, "generic max bucketed");
-static_assert(kMaxSystemPagesPerSlotSpan < (1 << 8),
+static_assert(MaxSystemPagesPerSlotSpan() < (1 << 8),
               "System pages per slot span must be less than 128.");
 
 internal::PartitionRootBase::PartitionRootBase() = default;
@@ -314,7 +315,7 @@ bool PartitionReallocDirectMappedInPlace(PartitionRootGeneric* root,
 
     // Don't reallocate in-place if new size is less than 80 % of the full
     // map size, to avoid holding on to too much unused address space.
-    if ((new_size / kSystemPageSize) * 5 < (map_size / kSystemPageSize) * 4)
+    if ((new_size / SystemPageSize()) * 5 < (map_size / SystemPageSize()) * 4)
       return false;
 
     // Shrink by decommitting unneeded pages and making them inaccessible.
@@ -369,7 +370,7 @@ void* PartitionReallocGenericFlags(PartitionRootGeneric* root,
     return nullptr;
   }
 
-  if (new_size > kGenericMaxDirectMapped) {
+  if (new_size > GenericMaxDirectMapped()) {
     if (flags & PartitionAllocReturnNull)
       return nullptr;
     internal::PartitionExcessiveAllocationSize(new_size);
@@ -461,7 +462,7 @@ void* PartitionRootGeneric::TryRealloc(void* ptr,
 static size_t PartitionPurgePage(internal::PartitionPage* page, bool discard) {
   const internal::PartitionBucket* bucket = page->bucket;
   size_t slot_size = bucket->slot_size;
-  if (slot_size < kSystemPageSize || !page->num_allocated_slots)
+  if (slot_size < SystemPageSize() || !page->num_allocated_slots)
     return 0;
 
   size_t bucket_num_slots = bucket->get_slots_per_span();
@@ -481,7 +482,7 @@ static size_t PartitionPurgePage(internal::PartitionPage* page, bool discard) {
   }
 
   constexpr size_t kMaxSlotCount =
-      (kPartitionPageSize * kMaxPartitionPagesPerSlotSpan) / kSystemPageSize;
+      (PartitionPageSize() * kMaxPartitionPagesPerSlotSpan) / SystemPageSize();
   DCHECK(bucket_num_slots <= kMaxSlotCount);
   DCHECK(page->num_unprovisioned_slots < bucket_num_slots);
   size_t num_slots = bucket_num_slots - page->num_unprovisioned_slots;
@@ -632,7 +633,7 @@ void PartitionRootGeneric::PurgeMemory(int flags) {
   if (flags & PartitionPurgeDiscardUnusedSystemPages) {
     for (size_t i = 0; i < kGenericNumBuckets; ++i) {
       internal::PartitionBucket* bucket = &buckets[i];
-      if (bucket->slot_size >= kSystemPageSize)
+      if (bucket->slot_size >= SystemPageSize())
         PartitionPurgeBucket(bucket);
     }
   }
