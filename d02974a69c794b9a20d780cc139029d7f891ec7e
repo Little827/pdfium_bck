@@ -52,6 +52,24 @@
       "revId": "d02974a69c794b9a20d780cc139029d7f891ec7e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d026603_87901ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-30T01:07:47Z",
+      "side": 1,
+      "message": "Thanks Lei! I removed bug_237527_2.in from the suppressed list in the new patchset.",
+      "parentUuid": "a082eac0_b99b19ab",
+      "revId": "d02974a69c794b9a20d780cc139029d7f891ec7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
