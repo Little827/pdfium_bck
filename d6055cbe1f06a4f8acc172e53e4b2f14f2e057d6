@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2afdbb1_2e15bb12",
+        "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-30T21:59:13Z",
+      "side": 0,
+      "message": "If we keep this, but wrap it in pdfium::base::NoDestructor, does that make LSAN happy?",
+      "revId": "d6055cbe1f06a4f8acc172e53e4b2f14f2e057d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
