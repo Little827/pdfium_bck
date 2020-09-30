@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86ff6114_f6327aed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-09-30T20:50:24Z",
+      "side": 1,
+      "message": "This bug doesn\u0027t exist. Perhaps you just meant crbug.com/237527?",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "134b2af5aa603176f2e0110025dc1150c0831804",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
