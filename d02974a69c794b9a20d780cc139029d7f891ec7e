@@ -16,6 +16,24 @@
       "revId": "d02974a69c794b9a20d780cc139029d7f891ec7e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e84dc94_33e175c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-30T00:46:02Z",
+      "side": 1,
+      "message": "So far I am not able to generate a correct expectation using PDFium. I am wondering whether I can upload the test case without an expectation image.",
+      "parentUuid": "5a7cdaf0_15a345f7",
+      "revId": "d02974a69c794b9a20d780cc139029d7f891ec7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
