@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06cce25_2514f6ba",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-30T00:17:59Z",
+      "side": 0,
+      "message": "|style| should only have 1 character.",
+      "range": {
+        "startLine": 485,
+        "startChar": 17,
+        "endLine": 485,
+        "endChar": 25
+      },
+      "revId": "ecb8d87df55c519697bb9e164c22a93a397dcae0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ae830f4_a9f167a0",
+        "filename": "core/fpdfdoc/cpdf_annotlist.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-30T00:17:59Z",
+      "side": 0,
+      "message": "This nullptr gets passed on to DrawBorder() in the following order: CPDF_AnnotList::DisplayAnnots() -\u003e CPDF_AnnotList::DisplayAnnots() -\u003e DisplayPass() -\u003e DrawBorder().\n\nThe segfault hasn\u0027t happened because DrawBorder() currently gets zero code coverage due to all the condition checks inside DisplayPass(). DrawBorder() definitely needs to be called to fix\nrendering bug_237527_1.in (See https://pdfium-review.googlesource.com/74190).",
+      "range": {
+        "startLine": 300,
+        "startChar": 23,
+        "endLine": 300,
+        "endChar": 30
+      },
+      "revId": "ecb8d87df55c519697bb9e164c22a93a397dcae0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
