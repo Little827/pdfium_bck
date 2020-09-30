@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7cdaf0_15a345f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-30T00:32:24Z",
+      "side": 1,
+      "message": "Is bug_237527_2_expected.pdf.0.png, which is just a blank image, the correct expectation?",
+      "revId": "d02974a69c794b9a20d780cc139029d7f891ec7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
