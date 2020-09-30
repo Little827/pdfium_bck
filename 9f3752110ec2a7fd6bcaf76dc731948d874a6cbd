@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff19c7c_c04e3531",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-30T19:38:29Z",
+      "side": 1,
+      "message": "- It\u0027s more than just a comment\n- \"adding support\"\n- As is, maybe \"adds a TODO comment regarding adding support for ...\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "9f3752110ec2a7fd6bcaf76dc731948d874a6cbd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
