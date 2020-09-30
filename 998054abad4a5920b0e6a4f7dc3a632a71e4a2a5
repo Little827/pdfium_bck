@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d36b2380_cd11a068",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-09-30T00:00:18Z",
+      "side": 1,
+      "message": "Is the rendering of bug_237527_1.in going to be fixed at the same time as bug_237527_2.in? Or separately?",
+      "revId": "998054abad4a5920b0e6a4f7dc3a632a71e4a2a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
