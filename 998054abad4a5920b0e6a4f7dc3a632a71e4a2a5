@@ -16,6 +16,24 @@
       "revId": "998054abad4a5920b0e6a4f7dc3a632a71e4a2a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88126bac_e1871a69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-30T00:22:40Z",
+      "side": 1,
+      "message": "They are going to be fixed separately and I believe bug_237527_1.in should be fixed first (It seems to be related to the conditions which get DrawBorder() skipped).\n\nOnce bug_237527_1.in is fixed (I assume the condition under which DrawBorder() is called is fixed), then we can continue to add \"Underline\" support for bug_237527_2.in.",
+      "parentUuid": "d36b2380_cd11a068",
+      "revId": "998054abad4a5920b0e6a4f7dc3a632a71e4a2a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
