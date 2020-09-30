@@ -16,6 +16,24 @@
       "revId": "d6055cbe1f06a4f8acc172e53e4b2f14f2e057d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf1dfa9_910ec744",
+        "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-09-30T22:17:11Z",
+      "side": 0,
+      "message": "afraid not.",
+      "parentUuid": "e2afdbb1_2e15bb12",
+      "revId": "d6055cbe1f06a4f8acc172e53e4b2f14f2e057d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
