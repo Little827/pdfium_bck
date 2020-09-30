@@ -22,6 +22,30 @@
       "revId": "9f3752110ec2a7fd6bcaf76dc731948d874a6cbd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc38e35_c590c624",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-09-30T20:25:46Z",
+      "side": 1,
+      "message": "Thanks Lei!",
+      "parentUuid": "9ff19c7c_c04e3531",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "9f3752110ec2a7fd6bcaf76dc731948d874a6cbd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
