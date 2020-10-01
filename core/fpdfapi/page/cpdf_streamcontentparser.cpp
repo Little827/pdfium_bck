@@ -867,13 +867,13 @@ void CPDF_StreamContentParser::Handle_EOFillPath() {
 void CPDF_StreamContentParser::Handle_SetGray_Fill() {
   RetainPtr<CPDF_ColorSpace> pCS =
       CPDF_ColorSpace::GetStockCS(PDFCS_DEVICEGRAY);
-  m_pCurStates->m_ColorState.SetFillColor(pCS, GetNumbers(1));
+  m_pCurStates->m_ColorState.SetFillColor_(pCS, GetNumbers(1));
 }
 
 void CPDF_StreamContentParser::Handle_SetGray_Stroke() {
   RetainPtr<CPDF_ColorSpace> pCS =
       CPDF_ColorSpace::GetStockCS(PDFCS_DEVICEGRAY);
-  m_pCurStates->m_ColorState.SetStrokeColor(pCS, GetNumbers(1));
+  m_pCurStates->m_ColorState.SetStrokeColor_(pCS, GetNumbers(1));
 }
 
 void CPDF_StreamContentParser::Handle_SetExtendGraphState() {
@@ -918,7 +918,7 @@ void CPDF_StreamContentParser::Handle_SetCMYKColor_Fill() {
 
   RetainPtr<CPDF_ColorSpace> pCS =
       CPDF_ColorSpace::GetStockCS(PDFCS_DEVICECMYK);
-  m_pCurStates->m_ColorState.SetFillColor(pCS, GetNumbers(4));
+  m_pCurStates->m_ColorState.SetFillColor_(pCS, GetNumbers(4));
 }
 
 void CPDF_StreamContentParser::Handle_SetCMYKColor_Stroke() {
@@ -927,7 +927,7 @@ void CPDF_StreamContentParser::Handle_SetCMYKColor_Stroke() {
 
   RetainPtr<CPDF_ColorSpace> pCS =
       CPDF_ColorSpace::GetStockCS(PDFCS_DEVICECMYK);
-  m_pCurStates->m_ColorState.SetStrokeColor(pCS, GetNumbers(4));
+  m_pCurStates->m_ColorState.SetStrokeColor_(pCS, GetNumbers(4));
 }
 
 void CPDF_StreamContentParser::Handle_LineTo() {
@@ -988,7 +988,7 @@ void CPDF_StreamContentParser::Handle_SetRGBColor_Fill() {
     return;
 
   RetainPtr<CPDF_ColorSpace> pCS = CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB);
-  m_pCurStates->m_ColorState.SetFillColor(pCS, GetNumbers(3));
+  m_pCurStates->m_ColorState.SetFillColor_(pCS, GetNumbers(3));
 }
 
 void CPDF_StreamContentParser::Handle_SetRGBColor_Stroke() {
@@ -996,7 +996,7 @@ void CPDF_StreamContentParser::Handle_SetRGBColor_Stroke() {
     return;
 
   RetainPtr<CPDF_ColorSpace> pCS = CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB);
-  m_pCurStates->m_ColorState.SetStrokeColor(pCS, GetNumbers(3));
+  m_pCurStates->m_ColorState.SetStrokeColor_(pCS, GetNumbers(3));
 }
 
 void CPDF_StreamContentParser::Handle_SetRenderIntent() {}
@@ -1012,12 +1012,12 @@ void CPDF_StreamContentParser::Handle_StrokePath() {
 
 void CPDF_StreamContentParser::Handle_SetColor_Fill() {
   int nargs = std::min(m_ParamCount, 4U);
-  m_pCurStates->m_ColorState.SetFillColor(nullptr, GetNumbers(nargs));
+  m_pCurStates->m_ColorState.SetFillColor_(nullptr, GetNumbers(nargs));
 }
 
 void CPDF_StreamContentParser::Handle_SetColor_Stroke() {
   int nargs = std::min(m_ParamCount, 4U);
-  m_pCurStates->m_ColorState.SetStrokeColor(nullptr, GetNumbers(nargs));
+  m_pCurStates->m_ColorState.SetStrokeColor_(nullptr, GetNumbers(nargs));
 }
 
 void CPDF_StreamContentParser::Handle_SetColorPS_Fill() {
@@ -1026,7 +1026,7 @@ void CPDF_StreamContentParser::Handle_SetColorPS_Fill() {
     return;
 
   if (!pLastParam->IsName()) {
-    m_pCurStates->m_ColorState.SetFillColor(nullptr, GetColors());
+    m_pCurStates->m_ColorState.SetFillColor_(nullptr, GetColors());
     return;
   }
 
@@ -1043,7 +1043,7 @@ void CPDF_StreamContentParser::Handle_SetColorPS_Stroke() {
     return;
 
   if (!pLastParam->IsName()) {
-    m_pCurStates->m_ColorState.SetStrokeColor(nullptr, GetColors());
+    m_pCurStates->m_ColorState.SetStrokeColor_(nullptr, GetColors());
     return;
   }
 

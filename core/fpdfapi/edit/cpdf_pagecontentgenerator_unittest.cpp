@@ -87,8 +87,8 @@ TEST_F(CPDF_PageContentGeneratorTest, BUG_937) {
     pPathObj->path().AppendRect(0.000000000000000000001,
                                 0.000000000000000000001, 100, 100);
 
-    pPathObj->m_ColorState.SetFillColor(pCS, rgb);
-    pPathObj->m_ColorState.SetStrokeColor(pCS, rgb);
+    pPathObj->m_ColorState.SetFillColor_(pCS, rgb);
+    pPathObj->m_ColorState.SetStrokeColor_(pCS, rgb);
     pPathObj->m_GraphState.SetLineWidth(200000000000000000001.0);
     pPathObj->Transform(CFX_Matrix(1, 0, 0, 1, 0.000000000000000000001,
                                    200000000000000.000002));
@@ -109,8 +109,8 @@ TEST_F(CPDF_PageContentGeneratorTest, BUG_937) {
   {
     // Test code in ProcessPath that handles bezier operator
     auto pPathObj = std::make_unique<CPDF_PathObject>();
-    pPathObj->m_ColorState.SetFillColor(pCS, rgb);
-    pPathObj->m_ColorState.SetStrokeColor(pCS, rgb);
+    pPathObj->m_ColorState.SetFillColor_(pCS, rgb);
+    pPathObj->m_ColorState.SetStrokeColor_(pCS, rgb);
     pPathObj->m_GraphState.SetLineWidth(2.000000000000000000001);
     pPathObj->Transform(CFX_Matrix(1, 0, 0, 1, 432, 500000000000000.000002));
 
@@ -181,10 +181,10 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessGraphics) {
 
   static const std::vector<float> rgb = {0.5f, 0.7f, 0.35f};
   RetainPtr<CPDF_ColorSpace> pCS = CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB);
-  pPathObj->m_ColorState.SetFillColor(pCS, rgb);
+  pPathObj->m_ColorState.SetFillColor_(pCS, rgb);
 
   static const std::vector<float> rgb2 = {1, 0.9f, 0};
-  pPathObj->m_ColorState.SetStrokeColor(pCS, rgb2);
+  pPathObj->m_ColorState.SetStrokeColor_(pCS, rgb2);
   pPathObj->m_GeneralState.SetFillAlpha(0.5f);
   pPathObj->m_GeneralState.SetStrokeAlpha(0.8f);
 
@@ -247,10 +247,10 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessStandardText) {
 
   static const std::vector<float> rgb = {0.5f, 0.7f, 0.35f};
   RetainPtr<CPDF_ColorSpace> pCS = CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB);
-  pTextObj->m_ColorState.SetFillColor(pCS, rgb);
+  pTextObj->m_ColorState.SetFillColor_(pCS, rgb);
 
   static const std::vector<float> rgb2 = {1, 0.9f, 0};
-  pTextObj->m_ColorState.SetStrokeColor(pCS, rgb2);
+  pTextObj->m_ColorState.SetStrokeColor_(pCS, rgb2);
   pTextObj->m_GeneralState.SetFillAlpha(0.5f);
   pTextObj->m_GeneralState.SetStrokeAlpha(0.8f);
   pTextObj->Transform(CFX_Matrix(1, 0, 0, 1, 100, 100));

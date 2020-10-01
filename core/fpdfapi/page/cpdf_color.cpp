@@ -36,10 +36,10 @@ void CPDF_Color::SetColorSpace(const RetainPtr<CPDF_ColorSpace>& pCS) {
   }
 }
 
-void CPDF_Color::SetValueForNonPattern(const std::vector<float>& values) {
+void CPDF_Color::SetValueForNonPattern_(std::vector<float> values) {
   ASSERT(!IsPatternInternal());
   ASSERT(m_pCS->CountComponents() <= values.size());
-  m_Buffer = values;
+  m_Buffer = std::move(values);
 }
 
 void CPDF_Color::SetValueForPattern(const RetainPtr<CPDF_Pattern>& pPattern,
