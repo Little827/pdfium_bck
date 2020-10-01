@@ -95,15 +95,14 @@ CPDF_MeshVertex::~CPDF_MeshVertex() = default;
 
 CPDF_MeshStream::CPDF_MeshStream(
     ShadingType type,
-    const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+    pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
     const CPDF_Stream* pShadingStream,
     const RetainPtr<CPDF_ColorSpace>& pCS)
     : m_type(type),
       m_funcs(funcs),
       m_pShadingStream(pShadingStream),
       m_pCS(pCS),
-      m_pStream(pdfium::MakeRetain<CPDF_StreamAcc>(pShadingStream)) {
-}
+      m_pStream(pdfium::MakeRetain<CPDF_StreamAcc>(pShadingStream)) {}
 
 CPDF_MeshStream::~CPDF_MeshStream() = default;
 

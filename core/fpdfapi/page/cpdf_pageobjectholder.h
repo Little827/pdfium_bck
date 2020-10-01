@@ -19,6 +19,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/fx_dib.h"
+#include "third_party/base/span.h"
 
 class CPDF_ContentParser;
 class CPDF_Dictionary;
@@ -89,7 +90,7 @@ class CPDF_PageObjectHolder {
   }
 
   bool HasImageMask() const { return !m_MaskBoundingBoxes.empty(); }
-  const std::vector<CFX_FloatRect>& GetMaskBoundingBoxes() const {
+  pdfium::span<const CFX_FloatRect> GetMaskBoundingBoxes() const {
     return m_MaskBoundingBoxes;
   }
   void AddImageMaskBoundingBox(const CFX_FloatRect& box);

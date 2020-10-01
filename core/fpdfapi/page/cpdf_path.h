@@ -12,6 +12,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/shared_copy_on_write.h"
 #include "core/fxge/cfx_pathdata.h"
+#include "third_party/base/span.h"
 
 class CPDF_Path {
  public:
@@ -22,7 +23,7 @@ class CPDF_Path {
   void Emplace() { m_Ref.Emplace(); }
   bool HasRef() const { return !!m_Ref; }
 
-  const std::vector<FX_PATHPOINT>& GetPoints() const;
+  pdfium::span<const FX_PATHPOINT> GetPoints() const;
   void ClosePath();
 
   CFX_PointF GetPoint(int index) const;
