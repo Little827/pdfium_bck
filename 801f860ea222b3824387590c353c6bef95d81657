@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b124cd3_2c5b8242",
+        "filename": "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-01T21:29:03Z",
+      "side": 1,
+      "message": "Does \"const auto\" work here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "801f860ea222b3824387590c353c6bef95d81657",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4df8061_7d20f232",
+        "filename": "fxbarcode/pdf417/BC_PDF417BarcodeRow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-01T21:29:03Z",
+      "side": 1,
+      "message": "Should we just inline this in the header?",
+      "revId": "801f860ea222b3824387590c353c6bef95d81657",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
