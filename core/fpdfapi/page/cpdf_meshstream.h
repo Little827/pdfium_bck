@@ -15,6 +15,7 @@
 #include "core/fxcrt/cfx_bitstream.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/span.h"
 
 class CPDF_StreamAcc;
 
@@ -38,7 +39,7 @@ class CPDF_Stream;
 class CPDF_MeshStream {
  public:
   CPDF_MeshStream(ShadingType type,
-                  const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+                  pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
                   const CPDF_Stream* pShadingStream,
                   const RetainPtr<CPDF_ColorSpace>& pCS);
   ~CPDF_MeshStream();
@@ -67,7 +68,7 @@ class CPDF_MeshStream {
   static constexpr uint32_t kMaxComponents = 8;
 
   const ShadingType m_type;
-  const std::vector<std::unique_ptr<CPDF_Function>>& m_funcs;
+  pdfium::span<const std::unique_ptr<CPDF_Function>> m_funcs;
   RetainPtr<const CPDF_Stream> const m_pShadingStream;
   RetainPtr<CPDF_ColorSpace> const m_pCS;
   uint32_t m_nCoordBits = 0;
