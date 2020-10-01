@@ -16,6 +16,23 @@
       "revId": "184c9b9164b7f92728e9277b47d3484a68bfa8c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97eb01e1_89a83794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-01T00:43:36Z",
+      "side": 1,
+      "message": "BTW, I tried a quick experiment to see if it is easy for PDFium to use //base/allocator instead of //third_party/pdfium/third_party/allocator, when built as part of Chromium. It is not, as PartitionAllocator does not have a stable API and everything has changed. I think it is best to just keep a separate PDFium copy for now, even if it means occasionally paying the cost of doing some porting work.",
+      "revId": "184c9b9164b7f92728e9277b47d3484a68bfa8c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
