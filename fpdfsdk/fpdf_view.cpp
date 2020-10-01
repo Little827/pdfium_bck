@@ -561,7 +561,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
 
   // Finish rendering the page to bitmap and copy the correct segments
   // of the page to individual image mask bitmaps.
-  const std::vector<CFX_FloatRect>& mask_boxes = pPage->GetMaskBoundingBoxes();
+  pdfium::span<const CFX_FloatRect> mask_boxes = pPage->GetMaskBoundingBoxes();
   std::vector<FX_RECT> bitmap_areas(mask_boxes.size());
   std::vector<RetainPtr<CFX_DIBitmap>> bitmaps(mask_boxes.size());
   for (size_t i = 0; i < mask_boxes.size(); i++) {

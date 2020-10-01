@@ -2166,7 +2166,7 @@ bool CFX_SkiaDeviceDriver::DrawShading(const CPDF_ShadingPattern* pPattern,
   int csFamily = pPattern->GetCS()->GetFamily();
   if (PDFCS_DEVICERGB != csFamily && PDFCS_DEVICEGRAY != csFamily)
     return false;
-  const std::vector<std::unique_ptr<CPDF_Function>>& pFuncs =
+  pdfium::span<const std::unique_ptr<CPDF_Function>> pFuncs =
       pPattern->GetFuncs();
   int nFuncs = pFuncs.size();
   if (nFuncs > 1)  // TODO(caryclark) remove this restriction

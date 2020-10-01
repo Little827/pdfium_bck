@@ -37,7 +37,7 @@ namespace {
 constexpr int kShadingSteps = 256;
 
 uint32_t CountOutputsFromFunctions(
-    const std::vector<std::unique_ptr<CPDF_Function>>& funcs) {
+    pdfium::span<const std::unique_ptr<CPDF_Function>> funcs) {
   FX_SAFE_UINT32 total = 0;
   for (const auto& func : funcs) {
     if (func)
@@ -47,7 +47,7 @@ uint32_t CountOutputsFromFunctions(
 }
 
 uint32_t GetValidatedOutputsCount(
-    const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+    pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS) {
   uint32_t funcs_outputs = CountOutputsFromFunctions(funcs);
   return funcs_outputs ? std::max(funcs_outputs, pCS->CountComponents()) : 0;
@@ -56,7 +56,7 @@ uint32_t GetValidatedOutputsCount(
 std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
     float t_min,
     float t_max,
-    const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+    pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS,
     int alpha,
     size_t results_count) {
@@ -89,7 +89,7 @@ std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
 void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
                       const CFX_Matrix& mtObject2Bitmap,
                       const CPDF_Dictionary* pDict,
-                      const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+                      pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
                       const RetainPtr<CPDF_ColorSpace>& pCS,
                       int alpha) {
   ASSERT(pBitmap->GetFormat() == FXDIB_Argb);
@@ -157,7 +157,7 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
 void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
                        const CFX_Matrix& mtObject2Bitmap,
                        const CPDF_Dictionary* pDict,
-                       const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+                       pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
                        const RetainPtr<CPDF_ColorSpace>& pCS,
                        int alpha) {
   ASSERT(pBitmap->GetFormat() == FXDIB_Argb);
@@ -256,7 +256,7 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
 void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
                      const CFX_Matrix& mtObject2Bitmap,
                      const CPDF_Dictionary* pDict,
-                     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+                     pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
                      const RetainPtr<CPDF_ColorSpace>& pCS,
                      int alpha) {
   ASSERT(pBitmap->GetFormat() == FXDIB_Argb);
@@ -416,7 +416,7 @@ void DrawFreeGouraudShading(
     const RetainPtr<CFX_DIBitmap>& pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
     const CPDF_Stream* pShadingStream,
-    const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+    pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS,
     int alpha) {
   ASSERT(pBitmap->GetFormat() == FXDIB_Argb);
@@ -455,7 +455,7 @@ void DrawLatticeGouraudShading(
     const RetainPtr<CFX_DIBitmap>& pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
     const CPDF_Stream* pShadingStream,
-    const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+    pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS,
     int alpha) {
   ASSERT(pBitmap->GetFormat() == FXDIB_Argb);
@@ -767,7 +767,7 @@ void DrawCoonPatchMeshes(
     const RetainPtr<CFX_DIBitmap>& pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
     const CPDF_Stream* pShadingStream,
-    const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
+    pdfium::span<const std::unique_ptr<CPDF_Function>> funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS,
     bool bNoPathSmooth,
     int alpha) {

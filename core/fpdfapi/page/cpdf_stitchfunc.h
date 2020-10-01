@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_function.h"
+#include "third_party/base/span.h"
 
 class CPDF_StitchFunc final : public CPDF_Function {
  public:
@@ -23,7 +24,7 @@ class CPDF_StitchFunc final : public CPDF_Function {
               std::set<const CPDF_Object*>* pVisited) override;
   bool v_Call(const float* inputs, float* results) const override;
 
-  const std::vector<std::unique_ptr<CPDF_Function>>& GetSubFunctions() const {
+  pdfium::span<const std::unique_ptr<CPDF_Function>> GetSubFunctions() const {
     return m_pSubFunctions;
   }
   float GetBound(size_t i) const { return m_bounds[i]; }
