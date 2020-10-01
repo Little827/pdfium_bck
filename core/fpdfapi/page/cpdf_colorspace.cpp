@@ -434,9 +434,8 @@ PatternValue::PatternValue(const PatternValue& that) = default;
 
 PatternValue::~PatternValue() = default;
 
-void PatternValue::SetComps(pdfium::span<const float> comps) {
-  CHECK(comps.size() <= m_Comps.size());
-  std::copy(std::begin(comps), std::end(comps), std::begin(m_Comps));
+void PatternValue::SetComps_(std::vector<float>&& comps) {
+  m_Comps = std::move(comps);
 }
 
 // static

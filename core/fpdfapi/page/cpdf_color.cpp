@@ -36,14 +36,14 @@ void CPDF_Color::SetColorSpace(const RetainPtr<CPDF_ColorSpace>& pCS) {
   }
 }
 
-void CPDF_Color::SetValueForNonPattern(const std::vector<float>& values) {
+void CPDF_Color::SetValueForNonPattern_(std::vector<float>&& values) {
   ASSERT(!IsPatternInternal());
   ASSERT(m_pCS->CountComponents() <= values.size());
-  m_Buffer = values;
+  m_Buffer = std::move(values);
 }
 
-void CPDF_Color::SetValueForPattern(const RetainPtr<CPDF_Pattern>& pPattern,
-                                    const std::vector<float>& values) {
+void CPDF_Color::SetValueForPattern_(const RetainPtr<CPDF_Pattern>& pPattern,
+                                     std::vector<float>&& values) {
   if (values.size() > kMaxPatternColorComps)
     return;
 
@@ -51,7 +51,7 @@ void CPDF_Color::SetValueForPattern(const RetainPtr<CPDF_Pattern>& pPattern,
     SetColorSpace(CPDF_ColorSpace::GetStockCS(PDFCS_PATTERN));
 
   m_pValue->SetPattern(pPattern);
-  m_pValue->SetComps(values);
+  m_pValue->SetComps_(std::move(values));
 }
 
 CPDF_Color& CPDF_Color::operator=(const CPDF_Color& that) {
