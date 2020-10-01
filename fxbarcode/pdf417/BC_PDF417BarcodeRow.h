@@ -19,7 +19,7 @@ class CBC_BarcodeRow final {
   ~CBC_BarcodeRow();
 
   void addBar(bool black, int32_t width);
-  std::vector<uint8_t, FxAllocAllocator<uint8_t>>& getRow();
+  const std::vector<uint8_t, FxAllocAllocator<uint8_t>>& getRow() const;
 
  private:
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_row;
