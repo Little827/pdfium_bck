@@ -14,6 +14,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/span.h"
 
 class CPDF_TextObjectItem {
  public:
@@ -63,8 +64,8 @@ class CPDF_TextObject final : public CPDF_PageObject {
 
   void RecalcPositionData();
 
-  const std::vector<uint32_t>& GetCharCodes() const { return m_CharCodes; }
-  const std::vector<float>& GetCharPositions() const { return m_CharPos; }
+  pdfium::span<const uint32_t> GetCharCodes() const { return m_CharCodes; }
+  pdfium::span<const float> GetCharPositions() const { return m_CharPos; }
 
   void SetSegments(const ByteString* pStrs,
                    const std::vector<float>& kernings,

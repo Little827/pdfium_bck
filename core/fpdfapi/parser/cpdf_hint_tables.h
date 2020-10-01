@@ -12,6 +12,7 @@
 
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/base/span.h"
 
 class CFX_BitStream;
 class CPDF_LinearizedHeader;
@@ -52,8 +53,7 @@ class CPDF_HintTables {
     void AddIdentifier(uint32_t Identifier) {
       m_dwIdentifierArray.push_back(Identifier);
     }
-
-    const std::vector<uint32_t>& Identifiers() const {
+    pdfium::span<const uint32_t> Identifiers() const {
       return m_dwIdentifierArray;
     }
 
@@ -85,8 +85,8 @@ class CPDF_HintTables {
 
   bool LoadHintStream(CPDF_Stream* pHintStream);
 
-  const std::vector<PageInfo>& PageInfos() const { return m_PageInfos; }
-  const std::vector<SharedObjGroupInfo>& SharedGroupInfos() const {
+  pdfium::span<const PageInfo> PageInfos() const { return m_PageInfos; }
+  pdfium::span<const SharedObjGroupInfo> SharedGroupInfos() const {
     return m_SharedObjGroupInfos;
   }
 

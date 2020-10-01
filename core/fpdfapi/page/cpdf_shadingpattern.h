@@ -14,6 +14,7 @@
 #include "core/fpdfapi/page/cpdf_pattern.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/span.h"
 
 // Values used in PDFs except for |kInvalidShading| and |kMaxShading|.
 // Do not change.
@@ -55,7 +56,7 @@ class CPDF_ShadingPattern final : public CPDF_Pattern {
   bool IsShadingObject() const { return m_bShading; }
   const CPDF_Object* GetShadingObject() const;
   RetainPtr<CPDF_ColorSpace> GetCS() const { return m_pCS; }
-  const std::vector<std::unique_ptr<CPDF_Function>>& GetFuncs() const {
+  pdfium::span<const std::unique_ptr<CPDF_Function>> GetFuncs() const {
     return m_pFunctions;
   }
 

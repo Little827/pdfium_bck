@@ -12,6 +12,7 @@
 
 #include "core/fpdfapi/page/cpdf_function.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/span.h"
 
 class CPDF_StreamAcc;
 
@@ -36,7 +37,7 @@ class CPDF_SampledFunc final : public CPDF_Function {
               std::set<const CPDF_Object*>* pVisited) override;
   bool v_Call(const float* inputs, float* results) const override;
 
-  const std::vector<SampleEncodeInfo>& GetEncodeInfo() const {
+  pdfium::span<const SampleEncodeInfo> GetEncodeInfo() const {
     return m_EncodeInfo;
   }
   uint32_t GetBitsPerSample() const { return m_nBitsPerSample; }
