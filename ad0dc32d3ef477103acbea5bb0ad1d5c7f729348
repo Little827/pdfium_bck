@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c95b60e_ecb8a2f0",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-01T18:32:14Z",
+      "side": 1,
+      "message": "IWYU for span.",
+      "revId": "ad0dc32d3ef477103acbea5bb0ad1d5c7f729348",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d92c9c89_2ed1c3a0",
+        "filename": "xfa/fxfa/parser/xfa_resolvenode_rs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-01T18:32:14Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "ad0dc32d3ef477103acbea5bb0ad1d5c7f729348",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
