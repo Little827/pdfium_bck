@@ -17,6 +17,24 @@
       "revId": "a0a0337305f5f82d244b2030bcf98d5a6e27a8bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593cedd_b9c3cb12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-01T21:25:09Z",
+      "side": 1,
+      "message": "It can be abused. e.g. in CFX_XMLParser::DoSyntaxParse(), change:\n\nFDE_XmlSyntaxState current_parser_state \u003d FDE_XmlSyntaxState::Text;\n\nto\n\nFDE_XmlSyntaxState current_parser_state \u003d static_cast\u003cFDE_XmlSyntaxState\u003e(-1);\n\nClang inserts an \"immediate crash\" at the bottom of the function, where a return should go. I guess GCC does not.",
+      "parentUuid": "806d0511_2d634ffe",
+      "revId": "a0a0337305f5f82d244b2030bcf98d5a6e27a8bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
