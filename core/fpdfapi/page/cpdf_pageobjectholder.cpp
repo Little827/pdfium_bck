@@ -116,7 +116,7 @@ bool CPDF_PageObjectHolder::RemovePageObject(CPDF_PageObject* pPageObj) {
   if (it == std::end(m_PageObjectList))
     return false;
 
-  it->release();
+  it->reset();
   m_PageObjectList.erase(it);
 
   int32_t content_stream = pPageObj->GetContentStream();
