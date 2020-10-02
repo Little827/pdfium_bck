@@ -29,7 +29,7 @@ class CAgg_PathData {
   void BuildPath(const CFX_PathData* pPathData,
                  const CFX_Matrix* pObject2Device);
 
-  agg::path_storage m_PathData;
+  pdfium::agg::path_storage m_PathData;
 };
 
 class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
@@ -102,12 +102,12 @@ class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
                       const CFX_TextRenderOptions& options) override;
   int GetDriverType() const override;
 
-  bool RenderRasterizer(agg::rasterizer_scanline_aa& rasterizer,
+  bool RenderRasterizer(pdfium::agg::rasterizer_scanline_aa& rasterizer,
                         uint32_t color,
                         bool bFullCover,
                         bool bGroupKnockout);
 
-  void SetClipMask(agg::rasterizer_scanline_aa& rasterizer);
+  void SetClipMask(pdfium::agg::rasterizer_scanline_aa& rasterizer);
 
   virtual uint8_t* GetBuffer() const;
 
