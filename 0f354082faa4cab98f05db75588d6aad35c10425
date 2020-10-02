@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91c7413b_fba28b8a",
+        "filename": "core/fxcrt/fx_memory.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-02T22:25:12Z",
+      "side": 1,
+      "message": "want to do the malloc() stuff first in its own CL?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "0f354082faa4cab98f05db75588d6aad35c10425",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8fab399_6c7dd43c",
+        "filename": "core/fxge/agg/fx_agg_driver.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-02T22:25:12Z",
+      "side": 1,
+      "message": "wondering if in some agg header, a well-placed \n  using pdfium::agg;\n\nmight save some of these changes, but still make linkers happy.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "0f354082faa4cab98f05db75588d6aad35c10425",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
