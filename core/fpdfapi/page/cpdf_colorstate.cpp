@@ -71,31 +71,34 @@ bool CPDF_ColorState::HasStrokeColor() const {
 }
 
 void CPDF_ColorState::SetFillColor(const RetainPtr<CPDF_ColorSpace>& pCS,
-                                   const std::vector<float>& values) {
+                                   std::vector<float>&& values) {
   ColorData* pData = m_Ref.GetPrivateCopy();
-  SetColor(pCS, values, &pData->m_FillColor, &pData->m_FillColorRef);
+  SetColor(pCS, std::move(values), &pData->m_FillColor, &pData->m_FillColorRef);
 }
 
 void CPDF_ColorState::SetStrokeColor(const RetainPtr<CPDF_ColorSpace>& pCS,
-                                     const std::vector<float>& values) {
+                                     std::vector<float>&& values) {
   ColorData* pData = m_Ref.GetPrivateCopy();
-  SetColor(pCS, values, &pData->m_StrokeColor, &pData->m_StrokeColorRef);
+  SetColor(pCS, std::move(values), &pData->m_StrokeColor,
+           &pData->m_StrokeColorRef);
 }
 
 void CPDF_ColorState::SetFillPattern(const RetainPtr<CPDF_Pattern>& pPattern,
-                                     const std::vector<float>& values) {
+                                     std::vector<float>&& values) {
   ColorData* pData = m_Ref.GetPrivateCopy();
-  SetPattern(pPattern, values, &pData->m_FillColor, &pData->m_FillColorRef);
+  SetPattern(pPattern, std::move(values), &pData->m_FillColor,
+             &pData->m_FillColorRef);
 }
 
 void CPDF_ColorState::SetStrokePattern(const RetainPtr<CPDF_Pattern>& pPattern,
-                                       const std::vector<float>& values) {
+                                       std::vector<float>&& values) {
   ColorData* pData = m_Ref.GetPrivateCopy();
-  SetPattern(pPattern, values, &pData->m_StrokeColor, &pData->m_StrokeColorRef);
+  SetPattern(pPattern, std::move(values), &pData->m_StrokeColor,
+             &pData->m_StrokeColorRef);
 }
 
 void CPDF_ColorState::SetColor(const RetainPtr<CPDF_ColorSpace>& pCS,
-                               const std::vector<float>& values,
+                               std::vector<float>&& values,
                                CPDF_Color* color,
                                FX_COLORREF* colorref) {
   ASSERT(color);
@@ -110,7 +113,8 @@ void CPDF_ColorState::SetColor(const RetainPtr<CPDF_ColorSpace>& pCS,
     return;
 
   if (!color->IsPattern())
-    color->SetValueForNonPattern(values);
+    color->SetValueForNonPattern(std::move(values));
+
   int R;
   int G;
   int B;
@@ -118,13 +122,13 @@ void CPDF_ColorState::SetColor(const RetainPtr<CPDF_ColorSpace>& pCS,
 }
 
 void CPDF_ColorState::SetPattern(const RetainPtr<CPDF_Pattern>& pPattern,
-                                 const std::vector<float>& values,
+                                 std::vector<float>&& values,
                                  CPDF_Color* color,
                                  FX_COLORREF* colorref) {
   ASSERT(color);
   ASSERT(colorref);
 
-  color->SetValueForPattern(pPattern, values);
+  color->SetValueForPattern(pPattern, std::move(values));
   int R;
   int G;
   int B;
