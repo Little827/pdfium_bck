@@ -213,34 +213,34 @@ void RgbByteOrderTransferBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap,
   }
 }
 
-void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
-                     agg::path_storage* path_data,
+void RasterizeStroke(pdfium::agg::rasterizer_scanline_aa* rasterizer,
+                     pdfium::agg::path_storage* path_data,
                      const CFX_Matrix* pObject2Device,
                      const CFX_GraphStateData* pGraphState,
                      float scale,
                      bool bTextMode) {
-  agg::line_cap_e cap;
+  pdfium::agg::line_cap_e cap;
   switch (pGraphState->m_LineCap) {
     case CFX_GraphStateData::LineCapRound:
-      cap = agg::round_cap;
+      cap = pdfium::agg::round_cap;
       break;
     case CFX_GraphStateData::LineCapSquare:
-      cap = agg::square_cap;
+      cap = pdfium::agg::square_cap;
       break;
     default:
-      cap = agg::butt_cap;
+      cap = pdfium::agg::butt_cap;
       break;
   }
-  agg::line_join_e join;
+  pdfium::agg::line_join_e join;
   switch (pGraphState->m_LineJoin) {
     case CFX_GraphStateData::LineJoinRound:
-      join = agg::round_join;
+      join = pdfium::agg::round_join;
       break;
     case CFX_GraphStateData::LineJoinBevel:
-      join = agg::bevel_join;
+      join = pdfium::agg::bevel_join;
       break;
     default:
-      join = agg::miter_join_revert;
+      join = pdfium::agg::miter_join_revert;
       break;
   }
   float width = pGraphState->m_LineWidth * scale;
@@ -251,8 +251,8 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
   }
   width = std::max(width, unit);
   if (!pGraphState->m_DashArray.empty()) {
-    typedef agg::conv_dash<agg::path_storage> dash_converter;
-    dash_converter dash(*path_data);
+    using DashConverter = pdfium::agg::conv_dash<pdfium::agg::path_storage>;
+    DashConverter dash(*path_data);
     for (size_t i = 0; i < (pGraphState->m_DashArray.size() + 1) / 2; i++) {
       float on = pGraphState->m_DashArray[i * 2];
       if (on <= 0.000001f)
@@ -264,8 +264,8 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
       dash.add_dash(on * scale, off * scale);
     }
     dash.dash_start(pGraphState->m_DashPhase * scale);
-    typedef agg::conv_stroke<dash_converter> dash_stroke;
-    dash_stroke stroke(dash);
+    using DashStroke = pdfium::agg::conv_stroke<DashConverter>;
+    DashStroke stroke(dash);
     stroke.line_join(join);
     stroke.line_cap(cap);
     stroke.miter_limit(pGraphState->m_MiterLimit);
@@ -273,7 +273,7 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
     rasterizer->add_path_transformed(stroke, pObject2Device);
     return;
   }
-  agg::conv_stroke<agg::path_storage> stroke(*path_data);
+  pdfium::agg::conv_stroke<pdfium::agg::path_storage> stroke(*path_data);
   stroke.line_join(join);
   stroke.line_cap(cap);
   stroke.miter_limit(pGraphState->m_MiterLimit);
@@ -281,11 +281,11 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
   rasterizer->add_path_transformed(stroke, pObject2Device);
 }
 
-agg::filling_rule_e GetAlternateOrWindingFillType(
+pdfium::agg::filling_rule_e GetAlternateOrWindingFillType(
     const CFX_FillRenderOptions& fill_options) {
   return fill_options.fill_type == CFX_FillRenderOptions::FillType::kWinding
-             ? agg::fill_non_zero
-             : agg::fill_even_odd;
+             ? pdfium::agg::fill_non_zero
+             : pdfium::agg::fill_even_odd;
 }
 
 class CFX_Renderer {
@@ -997,16 +997,12 @@ void CFX_Renderer::CompositeSpan1bppHelper(uint8_t* dest_scan,
   }
 }
 
-}  // namespace
-
-namespace agg {
-
 template <class BaseRenderer>
-class renderer_scanline_aa_offset {
+class RendererScanLineAaOffset {
  public:
   typedef BaseRenderer base_ren_type;
   typedef typename base_ren_type::color_type color_type;
-  renderer_scanline_aa_offset(base_ren_type& ren, unsigned left, unsigned top)
+  RendererScanLineAaOffset(base_ren_type& ren, unsigned left, unsigned top)
       : m_ren(&ren), m_left(left), m_top(top) {}
   void color(const color_type& c) { m_color = c; }
   const color_type& color() const { return m_color; }
@@ -1035,10 +1031,11 @@ class renderer_scanline_aa_offset {
  private:
   base_ren_type* m_ren;
   color_type m_color;
-  unsigned m_left, m_top;
+  unsigned m_left;
+  unsigned m_top;
 };
 
-}  // namespace agg
+}  // namespace
 
 void CAgg_PathData::BuildPath(const CFX_PathData* pPathData,
                               const CFX_Matrix* pObject2Device) {
@@ -1073,8 +1070,8 @@ void CAgg_PathData::BuildPath(const CFX_PathData* pPathData,
         pos0 = HardClip(pos0);
         pos2 = HardClip(pos2);
         pos3 = HardClip(pos3);
-        agg::curve4 curve(pos0.x, pos0.y, pos.x, pos.y, pos2.x, pos2.y, pos3.x,
-                          pos3.y);
+        pdfium::agg::curve4 curve(pos0.x, pos0.y, pos.x, pos.y, pos2.x, pos2.y,
+                                  pos3.x, pos3.y);
         i += 2;
         m_PathData.add_path_curve(curve);
       }
@@ -1179,24 +1176,26 @@ void CFX_AggDeviceDriver::RestoreState(bool bKeepSaved) {
   }
 }
 
-void CFX_AggDeviceDriver::SetClipMask(agg::rasterizer_scanline_aa& rasterizer) {
+void CFX_AggDeviceDriver::SetClipMask(
+    pdfium::agg::rasterizer_scanline_aa& rasterizer) {
   FX_RECT path_rect(rasterizer.min_x(), rasterizer.min_y(),
                     rasterizer.max_x() + 1, rasterizer.max_y() + 1);
   path_rect.Intersect(m_pClipRgn->GetBox());
   auto pThisLayer = pdfium::MakeRetain<CFX_DIBitmap>();
   pThisLayer->Create(path_rect.Width(), path_rect.Height(), FXDIB_8bppMask);
   pThisLayer->Clear(0);
-  agg::rendering_buffer raw_buf(pThisLayer->GetBuffer(), pThisLayer->GetWidth(),
-                                pThisLayer->GetHeight(),
-                                pThisLayer->GetPitch());
-  agg::pixfmt_gray8 pixel_buf(raw_buf);
-  agg::renderer_base<agg::pixfmt_gray8> base_buf(pixel_buf);
-  agg::renderer_scanline_aa_offset<agg::renderer_base<agg::pixfmt_gray8> >
+  pdfium::agg::rendering_buffer raw_buf(
+      pThisLayer->GetBuffer(), pThisLayer->GetWidth(), pThisLayer->GetHeight(),
+      pThisLayer->GetPitch());
+  pdfium::agg::pixfmt_gray8 pixel_buf(raw_buf);
+  pdfium::agg::renderer_base<pdfium::agg::pixfmt_gray8> base_buf(pixel_buf);
+  RendererScanLineAaOffset<
+      pdfium::agg::renderer_base<pdfium::agg::pixfmt_gray8>>
       final_render(base_buf, path_rect.left, path_rect.top);
-  final_render.color(agg::gray8(255));
-  agg::scanline_u8 scanline;
-  agg::render_scanlines(rasterizer, scanline, final_render,
-                        m_FillOptions.aliased_path);
+  final_render.color(pdfium::agg::gray8(255));
+  pdfium::agg::scanline_u8 scanline;
+  pdfium::agg::render_scanlines(rasterizer, scanline, final_render,
+                                m_FillOptions.aliased_path);
   m_pClipRgn->IntersectMaskF(path_rect.left, path_rect.top, pThisLayer);
 }
 
@@ -1227,7 +1226,7 @@ bool CFX_AggDeviceDriver::SetClip_PathFill(
   CAgg_PathData path_data;
   path_data.BuildPath(pPathData, pObject2Device);
   path_data.m_PathData.end_poly();
-  agg::rasterizer_scanline_aa rasterizer;
+  pdfium::agg::rasterizer_scanline_aa rasterizer;
   rasterizer.clip_box(0.0f, 0.0f,
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_WIDTH)),
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
@@ -1247,13 +1246,13 @@ bool CFX_AggDeviceDriver::SetClip_PathStroke(
   }
   CAgg_PathData path_data;
   path_data.BuildPath(pPathData, nullptr);
-  agg::rasterizer_scanline_aa rasterizer;
+  pdfium::agg::rasterizer_scanline_aa rasterizer;
   rasterizer.clip_box(0.0f, 0.0f,
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_WIDTH)),
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
   RasterizeStroke(&rasterizer, &path_data.m_PathData, pObject2Device,
                   pGraphState, 1.0f, false);
-  rasterizer.filling_rule(agg::fill_non_zero);
+  rasterizer.filling_rule(pdfium::agg::fill_non_zero);
   SetClipMask(rasterizer);
   return true;
 }
@@ -1263,7 +1262,7 @@ int CFX_AggDeviceDriver::GetDriverType() const {
 }
 
 bool CFX_AggDeviceDriver::RenderRasterizer(
-    agg::rasterizer_scanline_aa& rasterizer,
+    pdfium::agg::rasterizer_scanline_aa& rasterizer,
     uint32_t color,
     bool bFullCover,
     bool bGroupKnockout) {
@@ -1273,9 +1272,9 @@ bool CFX_AggDeviceDriver::RenderRasterizer(
                    m_bRgbByteOrder)) {
     return false;
   }
-  agg::scanline_u8 scanline;
-  agg::render_scanlines(rasterizer, scanline, render,
-                        m_FillOptions.aliased_path);
+  pdfium::agg::scanline_u8 scanline;
+  pdfium::agg::render_scanlines(rasterizer, scanline, render,
+                                m_FillOptions.aliased_path);
   return true;
 }
 
@@ -1297,7 +1296,7 @@ bool CFX_AggDeviceDriver::DrawPath(const CFX_PathData* pPathData,
       fill_color) {
     CAgg_PathData path_data;
     path_data.BuildPath(pPathData, pObject2Device);
-    agg::rasterizer_scanline_aa rasterizer;
+    pdfium::agg::rasterizer_scanline_aa rasterizer;
     rasterizer.clip_box(0.0f, 0.0f,
                         static_cast<float>(GetDeviceCaps(FXDC_PIXEL_WIDTH)),
                         static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
@@ -1315,7 +1314,7 @@ bool CFX_AggDeviceDriver::DrawPath(const CFX_PathData* pPathData,
   if (fill_options.zero_area) {
     CAgg_PathData path_data;
     path_data.BuildPath(pPathData, pObject2Device);
-    agg::rasterizer_scanline_aa rasterizer;
+    pdfium::agg::rasterizer_scanline_aa rasterizer;
     rasterizer.clip_box(0.0f, 0.0f,
                         static_cast<float>(GetDeviceCaps(FXDC_PIXEL_WIDTH)),
                         static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
@@ -1338,7 +1337,7 @@ bool CFX_AggDeviceDriver::DrawPath(const CFX_PathData* pPathData,
 
   CAgg_PathData path_data;
   path_data.BuildPath(pPathData, &matrix1);
-  agg::rasterizer_scanline_aa rasterizer;
+  pdfium::agg::rasterizer_scanline_aa rasterizer;
   rasterizer.clip_box(0.0f, 0.0f,
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_WIDTH)),
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
