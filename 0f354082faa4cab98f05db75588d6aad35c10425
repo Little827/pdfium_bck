@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "0f3272b8_891d77bc",
+        "filename": "core/fxcrt/fx_memory.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-02T23:08:02Z",
+      "side": 1,
+      "message": "Put https://pdfium-review.googlesource.com/74375 in front of this CL in the CL chain.",
+      "parentUuid": "91c7413b_fba28b8a",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "0f354082faa4cab98f05db75588d6aad35c10425",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8fab399_6c7dd43c",
         "filename": "core/fxge/agg/fx_agg_driver.h",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "0f354082faa4cab98f05db75588d6aad35c10425",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b72ce54_76960d2c",
+        "filename": "core/fxge/agg/fx_agg_driver.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-02T23:08:02Z",
+      "side": 1,
+      "message": "I just wrapped more code in namespace pdfium.",
+      "parentUuid": "b8fab399_6c7dd43c",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "0f354082faa4cab98f05db75588d6aad35c10425",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
