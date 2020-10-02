@@ -16,6 +16,24 @@
       "revId": "e56e8c69af3e0b3f113b74981ba1d6935c9fd262",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1636b6e2_4190b693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2020-10-02T19:38:32Z",
+      "side": 1,
+      "message": "Pretty sure the code is right, FPDFPageObj_Destroy(page_object) is what you\u0027d use to actually destroy the object. You could remove an object then add it somewhere else.",
+      "parentUuid": "4784ef2d_e1cd70c7",
+      "revId": "e56e8c69af3e0b3f113b74981ba1d6935c9fd262",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
