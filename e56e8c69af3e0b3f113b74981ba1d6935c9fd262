@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4784ef2d_e1cd70c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8211
+      },
+      "writtenOn": "2020-10-02T19:20:20Z",
+      "side": 1,
+      "message": "Hi!\n\nI\u0027m trying to evaluate a new clang-tidy warning, and this popped on my radar. You seem to be familiar with this code. :) \n\nDo you happen to know if the intent here was to delete the pointer via `reset()`, or simply `release()` it, since it\u0027ll be freed elsewhere? The check I\u0027m using only complains because it sees that this is unused, so it could be that this code is totally _correct_. It\u0027s just unclear to me, as a reader without great context, whether that\u0027s the case.",
+      "revId": "e56e8c69af3e0b3f113b74981ba1d6935c9fd262",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
