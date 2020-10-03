@@ -24,16 +24,6 @@ class CFX_PathData;
 
 namespace pdfium {
 
-class CAgg_PathData {
- public:
-  CAgg_PathData() {}
-  ~CAgg_PathData() {}
-  void BuildPath(const CFX_PathData* pPathData,
-                 const CFX_Matrix* pObject2Device);
-
-  pdfium::agg::path_storage m_PathData;
-};
-
 class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
  public:
   CFX_AggDeviceDriver(const RetainPtr<CFX_DIBitmap>& pBitmap,
