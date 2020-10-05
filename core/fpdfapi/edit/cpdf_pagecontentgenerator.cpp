@@ -40,16 +40,18 @@
 
 namespace {
 
-bool GetColor(const CPDF_Color* pColor, float* rgb) {
-  int intRGB[3];
-  if (!pColor || !pColor->IsColorSpaceRGB() ||
-      !pColor->GetRGB(&intRGB[0], &intRGB[1], &intRGB[2])) {
-    return false;
-  }
-  rgb[0] = intRGB[0] / 255.0f;
-  rgb[1] = intRGB[1] / 255.0f;
-  rgb[2] = intRGB[2] / 255.0f;
-  return true;
+Optional<std::tuple<float, float, float>> GetColor(const CPDF_Color* pColor) {
+  if (!pColor || !pColor->IsColorSpaceRGB())
+    return pdfium::nullopt;
+
+  Optional<std::tuple<int32_t, int32_t, int32_t>> intRGB = pColor->GetRGB();
+  if (!intRGB.has_value())
+    return pdfium::nullopt;
+
+  return std::make_tuple<float, float, float>(
+      std::get<0>(intRGB.value()) / 255.0f,
+      std::get<1>(intRGB.value()) / 255.0f,
+      std::get<2>(intRGB.value()) / 255.0f);
 }
 
 }  // namespace
@@ -411,15 +413,19 @@ void CPDF_PageContentGenerator::ProcessPath(std::ostringstream* buf,
 void CPDF_PageContentGenerator::ProcessGraphics(std::ostringstream* buf,
                                                 CPDF_PageObject* pPageObj) {
   *buf << "q ";
-  float fillColor[3];
-  if (GetColor(pPageObj->m_ColorState.GetFillColor(), fillColor)) {
-    *buf << fillColor[0] << " " << fillColor[1] << " " << fillColor[2]
-         << " rg ";
+  Optional<std::tuple<float, float, float>> fillColor =
+      GetColor(pPageObj->m_ColorState.GetFillColor());
+  if (fillColor.has_value()) {
+    *buf << std::get<0>(fillColor.value()) << " "
+         << std::get<1>(fillColor.value()) << " "
+         << std::get<2>(fillColor.value()) << " rg ";
   }
-  float strokeColor[3];
-  if (GetColor(pPageObj->m_ColorState.GetStrokeColor(), strokeColor)) {
-    *buf << strokeColor[0] << " " << strokeColor[1] << " " << strokeColor[2]
-         << " RG ";
+  Optional<std::tuple<float, float, float>> strokeColor =
+      GetColor(pPageObj->m_ColorState.GetStrokeColor());
+  if (strokeColor.has_value()) {
+    *buf << std::get<0>(strokeColor.value()) << " "
+         << std::get<1>(strokeColor.value()) << " "
+         << std::get<2>(strokeColor.value()) << " RG ";
   }
   float lineWidth = pPageObj->m_GraphState.GetLineWidth();
   if (lineWidth != 1.0f)

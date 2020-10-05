@@ -73,7 +73,7 @@ bool CPDF_Color::IsColorSpaceRGB() const {
   return m_pCS == CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB);
 }
 
-bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
+Optional<std::tuple<int32_t, int32_t, int32_t>> CPDF_Color::GetRGB() const {
   float r = 0.0f;
   float g = 0.0f;
   float b = 0.0f;
@@ -88,12 +88,11 @@ bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
       result = m_pCS->GetRGB(m_Buffer, &r, &g, &b);
   }
   if (!result)
-    return false;
+    return pdfium::nullopt;
 
-  *R = static_cast<int32_t>(r * 255 + 0.5f);
-  *G = static_cast<int32_t>(g * 255 + 0.5f);
-  *B = static_cast<int32_t>(b * 255 + 0.5f);
-  return true;
+  return std::make_tuple(static_cast<int32_t>(r * 255 + 0.5f),
+                         static_cast<int32_t>(g * 255 + 0.5f),
+                         static_cast<int32_t>(b * 255 + 0.5f));
 }
 
 CPDF_Pattern* CPDF_Color::GetPattern() const {

@@ -8,10 +8,12 @@
 #define CORE_FPDFAPI_PAGE_CPDF_COLOR_H_
 
 #include <memory>
+#include <tuple>
 #include <vector>
 
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/optional.h"
 
 class CPDF_ColorSpace;
 class CPDF_Pattern;
@@ -34,7 +36,7 @@ class CPDF_Color {
                           const std::vector<float>& values);
   uint32_t CountComponents() const;
   bool IsColorSpaceRGB() const;
-  bool GetRGB(int* R, int* G, int* B) const;
+  Optional<std::tuple<int32_t, int32_t, int32_t>> GetRGB() const;
 
   // Should only be called if IsPattern() returns true.
   CPDF_Pattern* GetPattern() const;

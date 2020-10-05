@@ -111,10 +111,18 @@ void CPDF_ColorState::SetColor(const RetainPtr<CPDF_ColorSpace>& pCS,
 
   if (!color->IsPattern())
     color->SetValueForNonPattern(values);
+
+  auto result = color->GetRGB();
+  if (!result.has_value()) {
+    *colorref = 0xFFFFFFFF;
+    return;
+  }
+
   int R;
   int G;
   int B;
-  *colorref = color->GetRGB(&R, &G, &B) ? FXSYS_BGR(B, G, R) : 0xFFFFFFFF;
+  std::tie(R, G, B) = result.value();
+  *colorref = FXSYS_BGR(B, G, R);
 }
 
 void CPDF_ColorState::SetPattern(const RetainPtr<CPDF_Pattern>& pPattern,
@@ -125,17 +133,19 @@ void CPDF_ColorState::SetPattern(const RetainPtr<CPDF_Pattern>& pPattern,
   ASSERT(colorref);
 
   color->SetValueForPattern(pPattern, values);
+  Optional<std::tuple<int32_t, int32_t, int32_t>> ret = color->GetRGB();
+  if (!ret.has_value()) {
+    CPDF_TilingPattern* pTilingPattern = pPattern->AsTilingPattern();
+    *colorref =
+        (pTilingPattern && pTilingPattern->colored()) ? 0x00BFBFBF : 0xFFFFFFFF;
+    return;
+  }
+
   int R;
   int G;
   int B;
-  bool ret = color->GetRGB(&R, &G, &B);
-  if (CPDF_TilingPattern* pTilingPattern = pPattern->AsTilingPattern()) {
-    if (!ret && pTilingPattern->colored()) {
-      *colorref = 0x00BFBFBF;
-      return;
-    }
-  }
-  *colorref = ret ? FXSYS_BGR(B, G, R) : 0xFFFFFFFF;
+  std::tie(R, G, B) = ret.value();
+  *colorref = FXSYS_BGR(B, G, R);
 }
 
 CPDF_ColorState::ColorData::ColorData() = default;
