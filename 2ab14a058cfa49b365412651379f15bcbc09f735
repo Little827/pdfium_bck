@@ -16,6 +16,23 @@
       "revId": "2ab14a058cfa49b365412651379f15bcbc09f735",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa9b610b_899ef155",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T05:07:23Z",
+      "side": 1,
+      "message": "Putting deprecated_default_sources_assignment_filter back is just clinging on to the old way of doing things that is about to go away. Please look at the other CLs that involve set_sources_assignment_filter in Chromium or PDFium to see what the path forward looks like.",
+      "revId": "2ab14a058cfa49b365412651379f15bcbc09f735",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
