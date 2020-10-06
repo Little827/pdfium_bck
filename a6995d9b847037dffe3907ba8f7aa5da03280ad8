@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864efdbc_b82cc385",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T18:53:53Z",
+      "side": 1,
+      "message": "How does the before and after rendering output compare visually?",
+      "revId": "a6995d9b847037dffe3907ba8f7aa5da03280ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8d009e_cc4804b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T18:53:53Z",
+      "side": 1,
+      "message": "Swap this line and line 18.",
+      "revId": "a6995d9b847037dffe3907ba8f7aa5da03280ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
