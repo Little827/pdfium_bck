@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc6d5eb_1ee061d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-06T18:40:19Z",
+      "side": 1,
+      "message": "Thanks Lei! I missed the from:to comment from the DEPs rolling documentation earlier.",
+      "parentUuid": "5ced6a6b_f7af73ae",
+      "revId": "e7773470d97f69be53f33aee174c6fd3d5420026",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "843fa7d6_0d7ef3ed",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-06T17:50:35Z",
       "side": 1,
       "message": "crrev.com/810642",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "e7773470d97f69be53f33aee174c6fd3d5420026",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c170c51e_b8dff8d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-06T18:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "843fa7d6_0d7ef3ed",
       "range": {
         "startLine": 22,
         "startChar": 0,
