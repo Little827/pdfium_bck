@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd6c3bf_cde29af0",
+        "filename": "xfa/fwl/theme/cfwl_widgettp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-06T18:03:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "570a46a8_7a203164",
+      "revId": "a0f4f41a25ef37e715d6ba3cadc399a20eb1a31e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3666b74_cf40a769",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68dabda7_3b38886a",
+        "filename": "xfa/fxfa/cxfa_fffield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-06T18:03:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3666b74_cf40a769",
+      "revId": "a0f4f41a25ef37e715d6ba3cadc399a20eb1a31e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a213c2c0_fa7c116a",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-10-06T17:56:19Z",
       "side": 1,
       "message": "No longer needed.",
+      "revId": "a0f4f41a25ef37e715d6ba3cadc399a20eb1a31e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf63a6f_7fa78fb4",
+        "filename": "xfa/fxfa/parser/cxfa_stroke.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-06T18:03:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a213c2c0_fa7c116a",
       "revId": "a0f4f41a25ef37e715d6ba3cadc399a20eb1a31e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
