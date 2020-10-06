@@ -17,6 +17,24 @@
       "message": "Please take another look. For some reason, patch set 1 made MSVC builds fail. So I added a workaround for that.",
       "revId": "7a19fecceb2328d0a52d15c6eb2008fcad64383f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df75d89d_ed78a1f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-06T17:42:53Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "parentUuid": "ba4d5f6e_dcf50b95",
+      "revId": "7a19fecceb2328d0a52d15c6eb2008fcad64383f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
