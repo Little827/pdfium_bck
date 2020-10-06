@@ -52,6 +52,24 @@
       "parentUuid": "8ad486c9_075b1401",
       "revId": "90e8577e2cd71efb6765a1b13b7947b8bf491ab0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b633112_7feecc85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2020-10-06T21:22:51Z",
+      "side": 1,
+      "message": "I\u0027d imagine that this code runs when drawing bitmaps scaled, so maybe panning around when zommed in is notiecably(ish) faster?",
+      "parentUuid": "fe7feccc_0b9f531b",
+      "revId": "90e8577e2cd71efb6765a1b13b7947b8bf491ab0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
