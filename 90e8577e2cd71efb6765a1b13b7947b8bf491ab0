@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7ee39f_349a43ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T18:49:33Z",
+      "side": 1,
+      "message": "How does one find these? I assume this lets Clang generate better code. What\u0027s the impact?",
+      "revId": "90e8577e2cd71efb6765a1b13b7947b8bf491ab0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
