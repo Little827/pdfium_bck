@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e825de3c_df75c43d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-06T03:56:49Z",
+      "side": 1,
+      "message": "The fix in this CL is the same as https://crrev.com/c/2418443.",
+      "revId": "2ab14a058cfa49b365412651379f15bcbc09f735",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
