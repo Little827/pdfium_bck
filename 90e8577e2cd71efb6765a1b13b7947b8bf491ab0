@@ -16,6 +16,24 @@
       "message": "How does one find these? I assume this lets Clang generate better code. What\u0027s the impact?",
       "revId": "90e8577e2cd71efb6765a1b13b7947b8bf491ab0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad486c9_075b1401",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2020-10-06T19:05:39Z",
+      "side": 1,
+      "message": "jroelofs pinged me on irc, told me about it, said he couldn\u0027t share performance details.\n\nI hope we have metrics for this? :D",
+      "parentUuid": "ff7ee39f_349a43ed",
+      "revId": "90e8577e2cd71efb6765a1b13b7947b8bf491ab0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
