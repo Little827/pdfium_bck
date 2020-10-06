@@ -33,6 +33,24 @@
       "revId": "2ab14a058cfa49b365412651379f15bcbc09f735",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff68001_5bdeda85",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T05:13:06Z",
+      "side": 1,
+      "message": "Also, please read the comment you are adding. It is literally telling you to \"Remove this import\" on line 23.\n\nMore generally, any time there is code named \"FooDeprecated\", using it in new code is heading in the wrong direction.",
+      "parentUuid": "aa9b610b_899ef155",
+      "revId": "2ab14a058cfa49b365412651379f15bcbc09f735",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
