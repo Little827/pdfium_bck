@@ -70,6 +70,24 @@
       "parentUuid": "fe7feccc_0b9f531b",
       "revId": "90e8577e2cd71efb6765a1b13b7947b8bf491ab0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3aeca9e_31cd7e64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T21:27:44Z",
+      "side": 1,
+      "message": "PDFs oftentimes contain images of one size, but are displayed on the page at another size. These methods get called, even for just straight-forward rendering with zoom level \u003d 1.",
+      "parentUuid": "4b633112_7feecc85",
+      "revId": "90e8577e2cd71efb6765a1b13b7947b8bf491ab0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
