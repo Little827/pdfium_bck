@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570a46a8_7a203164",
+        "filename": "xfa/fwl/theme/cfwl_widgettp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T17:56:19Z",
+      "side": 1,
+      "message": "No longer needed. Everything in stl_util.h is in namespace pdfium. With this CL, there\u0027s no more \"pdfium::\" strings here.",
+      "revId": "a0f4f41a25ef37e715d6ba3cadc399a20eb1a31e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3666b74_cf40a769",
+        "filename": "xfa/fxfa/cxfa_fffield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T17:56:19Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "a0f4f41a25ef37e715d6ba3cadc399a20eb1a31e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a213c2c0_fa7c116a",
+        "filename": "xfa/fxfa/parser/cxfa_stroke.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T17:56:19Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "a0f4f41a25ef37e715d6ba3cadc399a20eb1a31e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
