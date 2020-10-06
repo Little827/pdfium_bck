@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23b419a4_7dc723b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-06T19:56:38Z",
+      "side": 1,
+      "message": "Tested with rendering option --no-smoothtext: \n\nAt scale 1, the \"after\" rendering output are missing 3 pixels on letter \"o\"s and \"d\" in \"Hello world\" compare to the \"before\" rendering output, which makes \"o\" and \"d\" look not sealed. (In this case I think the \"before\" results are slightly better when it comes to rendering tiny characters.)\n\nAt a higher scale level (tested with scale \u003d 3), the difference still happens around round edges, and the \"after\" result often has more pixels compared to the \"before\" result. But it\u0027s not obvious to tell which one is better.\n\nThe freetype update didn\u0027t affect rendering this PDF when anti-aliasing is on (default).",
+      "parentUuid": "864efdbc_b82cc385",
+      "revId": "a6995d9b847037dffe3907ba8f7aa5da03280ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8d009e_cc4804b4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-06T18:53:53Z",
       "side": 1,
       "message": "Swap this line and line 18.",
+      "revId": "a6995d9b847037dffe3907ba8f7aa5da03280ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f818d9_09b1a9a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-06T19:56:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b8d009e_cc4804b4",
       "revId": "a6995d9b847037dffe3907ba8f7aa5da03280ad8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
