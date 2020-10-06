@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ced6a6b_f7af73ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T17:50:35Z",
+      "side": 1,
+      "message": "Can you summarize what the Clang version upgrade is? The Clang rolls are now titled \"Roll clang llvmorg ...\"",
+      "revId": "e7773470d97f69be53f33aee174c6fd3d5420026",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "843fa7d6_0d7ef3ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-06T17:50:35Z",
+      "side": 1,
+      "message": "crrev.com/810642",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "e7773470d97f69be53f33aee174c6fd3d5420026",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
