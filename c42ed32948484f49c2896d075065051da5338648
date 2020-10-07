@@ -17,6 +17,24 @@
       "message": "Alternatively, we can not mention this, and change the internals to make a copy. That should be fine, unless some embedder is crazy enough to change the paths after initialization.",
       "revId": "c42ed32948484f49c2896d075065051da5338648",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36531374_6fcc6cb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-07T21:31:19Z",
+      "side": 1,
+      "message": "For context, see https://chromium-review.googlesource.com/c/chromium/src/+/2454376",
+      "parentUuid": "3957eb35_4b6b0801",
+      "revId": "c42ed32948484f49c2896d075065051da5338648",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
