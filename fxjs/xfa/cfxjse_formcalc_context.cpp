@@ -43,7 +43,7 @@ const wchar_t kStrCode[] = L"0123456789abcdef";
 
 struct XFA_FMHtmlReserveCode {
   uint32_t m_uCode;
-  const char* m_htmlReserve;
+  const char m_htmlReserve[9];
 };
 
 // Sorted by |m_htmlReserve|.
