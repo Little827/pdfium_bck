@@ -227,8 +227,9 @@ typedef struct FPDF_LIBRARY_CONFIG_ {
 
   // Array of paths to scan in place of the defaults when using built-in
   // FXGE font loading code. The array is terminated by a NULL pointer.
-  // The Array may be NULL itself to use the default paths. May be ignored
-  // entirely depending upon the platform.
+  // The array may be NULL itself to use the default paths. If non-null, the
+  // array must remain valid until FPDF_DestroyLibrary() has been called.
+  // May be ignored entirely depending upon the platform.
   const char** m_pUserFontPaths;
 
   // Version 2.
