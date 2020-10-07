@@ -32,7 +32,7 @@ class CXFA_LayoutItem;
 class CXFA_Node;
 class CXFA_Object;
 struct XFA_MAPDATABLOCKCALLBACKINFO;
-struct XFA_MAPMODULEDATA;
+class CXFA_MapModule;
 
 typedef CJS_Result (*CJX_MethodCall)(
     CJX_Object* obj,
@@ -254,8 +254,8 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   CFX_XMLElement* SetValue(XFA_Attribute eAttr, int32_t value, bool bNotify);
   int32_t Subform_and_SubformSet_InstanceIndex();
 
-  XFA_MAPMODULEDATA* CreateMapModuleData();
-  XFA_MAPMODULEDATA* GetMapModuleData() const;
+  CXFA_MapModule* CreateMapModule();
+  CXFA_MapModule* GetMapModule() const;
   void SetMapModuleValue(uint32_t key, int32_t value);
   void SetMapModuleString(uint32_t key, WideStringView wsValue);
   Optional<int32_t> GetMapModuleValue(uint32_t key) const;
@@ -273,7 +273,7 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   cppgc::Member<CXFA_Object> object_;
   cppgc::Member<CXFA_LayoutItem> layout_item_;
   cppgc::Member<CalcData> calc_data_;
-  std::unique_ptr<XFA_MAPMODULEDATA> map_module_data_;
+  std::unique_ptr<CXFA_MapModule> map_module_data_;
   std::map<ByteString, CJX_MethodCall> method_specs_;
   size_t calc_recursion_count_ = 0;
 };
