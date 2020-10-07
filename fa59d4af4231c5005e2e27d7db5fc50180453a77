@@ -39,6 +39,30 @@
       },
       "revId": "fa59d4af4231c5005e2e27d7db5fc50180453a77",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c039be9a_55267785",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-07T21:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "302128ce_2d8e1708",
+      "range": {
+        "startLine": 123,
+        "startChar": 19,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "fa59d4af4231c5005e2e27d7db5fc50180453a77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
