@@ -261,13 +261,12 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   XFA_MAPMODULEDATA* GetMapModuleData() const;
   void SetMapModuleValue(uint32_t key, int32_t value);
   void SetMapModuleString(uint32_t key, WideStringView wsValue);
+  void SetMapModuleBuffer(uint32_t key,
+                          pdfium::span<const uint8_t> pbuffer,
+                          const XFA_MAPDATABLOCKCALLBACKINFO* pCallbackInfo);
   Optional<int32_t> GetMapModuleValue(uint32_t key) const;
   Optional<WideString> GetMapModuleString(uint32_t key) const;
-  void SetMapModuleBuffer(uint32_t key,
-                          void* pValue,
-                          size_t iBytes,
-                          const XFA_MAPDATABLOCKCALLBACKINFO* pCallbackInfo);
-  bool GetMapModuleBuffer(uint32_t key, void** pValue, int32_t* pBytes) const;
+  Optional<pdfium::span<const uint8_t>> GetMapModuleBuffer(uint32_t key) const;
   bool HasMapModuleKey(uint32_t key);
   void RemoveMapModuleKey(uint32_t key);
   void ClearMapModuleBuffer();
