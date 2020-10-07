@@ -35,6 +35,24 @@
       "parentUuid": "3957eb35_4b6b0801",
       "revId": "c42ed32948484f49c2896d075065051da5338648",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b15f7e_0a83434b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-10-07T23:22:42Z",
+      "side": 1,
+      "message": "My two cents: I like the alternative. It also would be an opportunity to detect/crash on misconfiguration early (such as passing in an invalid pointer).",
+      "parentUuid": "36531374_6fcc6cb7",
+      "revId": "c42ed32948484f49c2896d075065051da5338648",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
