@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bec80ac_4991fbf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59c8c78_efac3b89",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "f6a2cb8a4efa366107935b5d510d65e2527f128b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b2236f_14e0d174",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5db774_7f73d5af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b2236f_14e0d174",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "f6a2cb8a4efa366107935b5d510d65e2527f128b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52f55f99_b00b044f",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-10-08T22:30:36Z",
       "side": 1,
       "message": "is this the same as a SetMapModuleMeasurement() call?",
+      "revId": "f6a2cb8a4efa366107935b5d510d65e2527f128b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7244b977_3bf3ec2d",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52f55f99_b00b044f",
       "revId": "f6a2cb8a4efa366107935b5d510d65e2527f128b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
