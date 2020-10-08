@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2937803e_3488821e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-08T22:40:10Z",
+      "side": 1,
+      "message": "Not sure. I get different results at ToT vs. when I first measured it. Maybe there\u0027s some padding somewhere?",
+      "parentUuid": "be26a29a_2b666614",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "4296f0d6389dcaa2e5ab126d7145edf29b378042",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0d9b5b7f_39c323b5",
