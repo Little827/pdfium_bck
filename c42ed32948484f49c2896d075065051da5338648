@@ -53,6 +53,23 @@
       "parentUuid": "36531374_6fcc6cb7",
       "revId": "c42ed32948484f49c2896d075065051da5338648",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61798277_3d3a177e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T02:02:29Z",
+      "side": 1,
+      "message": "I\u0027m ok with avoiding the copy and adding the comment.",
+      "revId": "c42ed32948484f49c2896d075065051da5338648",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
