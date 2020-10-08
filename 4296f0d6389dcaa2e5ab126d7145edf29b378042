@@ -2,6 +2,29 @@
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602180712 -0700\nnonce ALC2d1+1sMWBm13wAnbkSs893ZchFl9B+OgPzN5hakfn/eiPngHWtOei1eEnXuCYzdjDqQ2oOPjy\n\n0000000000000000000000000000000000000000 4296f0d6389dcaa2e5ab126d7145edf29b378042 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9/VmgACgkQqzYtYVpm\n/Xt/sgf/bVRbmyJnBJHSb0ZiuM0pvITXgfxIKnuNXpr6g989sIt0Ztq89xzoVW0h\nN5FSr2rZiSId1squrEb7lw9W70Nm67Kp3cRZr00E8cYlONEdzS7UXe7Orw7qfKh5\nCmZdLGf5jyMdSuZNZLeftnIc5n+LfAj3XmLFuueAD9uS9nLAu6rQWqQ+9xTSSFD9\n+iopv7DzcawAOhjtvsRML5xnSyHjVFVQSIzR1E7NwbC0lC77Gidp9qm6clcgDtY2\nSwG0/1y+qn/9ThA+YehXx2VJcWJhfjdbTB4/XXviGuaHxc+DWGs7mhAjdwcZu4Gg\nVkdPyrzjQ6KikWhy91c3xUxkIwok0w\u003d\u003d\n\u003dzq6B\n-----END PGP SIGNATURE-----\n",
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "be26a29a_2b666614",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T20:02:31Z",
+      "side": 1,
+      "message": "Where did the 10 bytes go?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "4296f0d6389dcaa2e5ab126d7145edf29b378042",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0d9b5b7f_39c323b5",
