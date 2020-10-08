@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d0cc44_7ebb3d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T20:53:01Z",
+      "side": 1,
+      "message": "PS7 implements the \"base::value\" idea with but a single table. Let me know if you like it better.",
+      "revId": "3c2e470e8e76ca5c743c833ccae51519257ff024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
