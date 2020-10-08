@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed59d77c_0dc8aaeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-08T01:26:20Z",
+      "side": 1,
+      "message": "When doing bisect on these failed embeddertests, it traced back to when they got enabled. \nIt turned out that the macbook used for generating the expected results was at version 10.15.4 until I did the update last month. (I will keep it on 10.15.6 to be the same as PDFium bots now).\n\nSince FPDFFormFillEmbedderTest.FormText still fails on Windows with Skia/SkiaPaths enabled, maybe you can help me test it out on Windows and have a separate CL to update its Skia/SkiaPaths expected result?",
+      "revId": "a9853e467f17f73174c1171576991047bba14078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
