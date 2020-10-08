@@ -258,13 +258,15 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   CXFA_MapModule* GetMapModule() const;
   void SetMapModuleValue(uint32_t key, int32_t value);
   void SetMapModuleString(uint32_t key, WideStringView wsValue);
-  Optional<int32_t> GetMapModuleValue(uint32_t key) const;
+  Optional<int32_t> GetMapModuleValueFollowingChain(uint32_t key) const;
   Optional<WideString> GetMapModuleString(uint32_t key) const;
   void SetMapModuleBuffer(uint32_t key,
                           void* pValue,
                           size_t iBytes,
                           const XFA_MAPDATABLOCKCALLBACKINFO* pCallbackInfo);
-  bool GetMapModuleBuffer(uint32_t key, void** pValue, int32_t* pBytes) const;
+  bool GetMapModuleBufferFollowingChain(uint32_t key,
+                                        void** pValue,
+                                        int32_t* pBytes) const;
   bool HasMapModuleKey(uint32_t key);
   void RemoveMapModuleKey(uint32_t key);
   void ClearMapModuleBuffer();

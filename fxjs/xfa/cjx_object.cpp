@@ -445,7 +445,7 @@ void CJX_Object::RemoveAttribute(WideStringView wsAttr) {
 
 Optional<bool> CJX_Object::TryBoolean(XFA_Attribute eAttr, bool bUseDefault) {
   uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
-  Optional<int32_t> value = GetMapModuleValue(key);
+  Optional<int32_t> value = GetMapModuleValueFollowingChain(key);
   if (value.has_value())
     return !!value.value();
   if (!bUseDefault)
@@ -480,7 +480,7 @@ int32_t CJX_Object::GetInteger(XFA_Attribute eAttr) const {
 Optional<int32_t> CJX_Object::TryInteger(XFA_Attribute eAttr,
                                          bool bUseDefault) const {
   uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
-  Optional<int32_t> value = GetMapModuleValue(key);
+  Optional<int32_t> value = GetMapModuleValueFollowingChain(key);
   if (value.has_value())
     return value.value();
   if (!bUseDefault)
@@ -491,7 +491,7 @@ Optional<int32_t> CJX_Object::TryInteger(XFA_Attribute eAttr,
 Optional<XFA_AttributeValue> CJX_Object::TryEnum(XFA_Attribute eAttr,
                                                  bool bUseDefault) const {
   uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
-  Optional<int32_t> value = GetMapModuleValue(key);
+  Optional<int32_t> value = GetMapModuleValueFollowingChain(key);
   if (value.has_value())
     return static_cast<XFA_AttributeValue>(value.value());
   if (!bUseDefault)
@@ -527,7 +527,7 @@ Optional<CXFA_Measurement> CJX_Object::TryMeasure(XFA_Attribute eAttr,
   uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   void* pValue;
   int32_t iBytes;
-  if (GetMapModuleBuffer(key, &pValue, &iBytes) &&
+  if (GetMapModuleBufferFollowingChain(key, &pValue, &iBytes) &&
       iBytes == sizeof(CXFA_Measurement)) {
     return *static_cast<CXFA_Measurement*>(pValue);
   }
@@ -634,7 +634,8 @@ Optional<WideString> CJX_Object::TryCData(XFA_Attribute eAttr,
     void* pData;
     int32_t iBytes = 0;
     WideString* pStr = nullptr;
-    if (GetMapModuleBuffer(key, &pData, &iBytes) && iBytes == sizeof(void*)) {
+    if (GetMapModuleBufferFollowingChain(key, &pData, &iBytes) &&
+        iBytes == sizeof(void*)) {
       memcpy(&pData, pData, iBytes);
       pStr = reinterpret_cast<WideString*>(pData);
     }
@@ -945,7 +946,8 @@ void CJX_Object::SetMapModuleValue(uint32_t key, int32_t value) {
   CreateMapModule()->SetValue(key, value);
 }
 
-Optional<int32_t> CJX_Object::GetMapModuleValue(uint32_t key) const {
+Optional<int32_t> CJX_Object::GetMapModuleValueFollowingChain(
+    uint32_t key) const {
   std::set<const CXFA_Node*> visited;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
        pNode = pNode->GetTemplateNodeIfExists()) {
@@ -967,7 +969,7 @@ Optional<int32_t> CJX_Object::GetMapModuleValue(uint32_t key) const {
 Optional<WideString> CJX_Object::GetMapModuleString(uint32_t key) const {
   void* pRawValue;
   int32_t iBytes;
-  if (!GetMapModuleBuffer(key, &pRawValue, &iBytes))
+  if (!GetMapModuleBufferFollowingChain(key, &pRawValue, &iBytes))
     return {};
 
   // Defensive measure: no out-of-bounds pointers even if zero length.
@@ -990,9 +992,9 @@ void CJX_Object::SetMapModuleBuffer(
   pModule->SetBlock(key, pBuffer);
 }
 
-bool CJX_Object::GetMapModuleBuffer(uint32_t key,
-                                    void** pValue,
-                                    int32_t* pBytes) const {
+bool CJX_Object::GetMapModuleBufferFollowingChain(uint32_t key,
+                                                  void** pValue,
+                                                  int32_t* pBytes) const {
   std::set<const CXFA_Node*> visited;
   XFA_MAPDATABLOCK* pBuffer = nullptr;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
