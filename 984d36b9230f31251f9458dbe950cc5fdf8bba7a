@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602105001 -0700\nnonce ALC2d18XDPjFHZWDxDIt/e55YmbI3Jlcb6SK8qoG8lymFXXvsw0iL0VafCl+7ru8u0UYB5KPzMrs\n\n0000000000000000000000000000000000000000 984d36b9230f31251f9458dbe950cc5fdf8bba7a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl9+LqkACgkQqzYtYVpm\n/XvHOwf+N5AcwY2FY/jUqBpBXVGc26dqJhRxc0whTGfqjvYtfV3zXeNHI6aqPgyn\nXsM2tB+VG7MURY4TiiYZztRL0XeBu83WmxDu96FPtaGCbYZjYK46vop2SSaPucIS\nOHvE+j7rbHAb4i20XQw0B06cc+gDnH1s5DS3U/PiLCSIi0GNpzpUQLULRsN3hm4C\new5X/YkU39YMMkaDv0c6BvqT5twb9S0w4zRWSCc4emiPo1GZq+wm3sZzL8zVQN8n\nBtTRgDmxKT7FP6F6qSoMLdDF0KUDtD6h3fIlVKFuZryaPpxAwtGfW0GzwH2U0XMK\ngR1ZVy4VxHYFzEZZRFb19pq3L0Dnkw\u003d\u003d\n\u003dAGML\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a658b93_01d98e50",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T02:01:01Z",
+      "side": 1,
+      "message": "nit: you could pad this out to 12 without any additional cost since this size is going to be 16 either way.",
+      "range": {
+        "startLine": 46,
+        "startChar": 28,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "984d36b9230f31251f9458dbe950cc5fdf8bba7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d3d2a6_11658cb0",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-08T02:01:01Z",
+      "side": 1,
+      "message": "nit: add a comment like: inline string data reduces size for small strings.",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "984d36b9230f31251f9458dbe950cc5fdf8bba7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
