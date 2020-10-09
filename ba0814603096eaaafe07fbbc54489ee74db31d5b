@@ -63,6 +63,30 @@
       },
       "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cf3598_93e8bc97",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T20:16:26Z",
+      "side": 1,
+      "message": "Sorry, this wont work because pdfium::span is based on UnownedPtr which is not constexpr.",
+      "parentUuid": "bbffde2d_9e70d321",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
