@@ -1,4 +1,68 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602269317 -0700\nnonce ALC2d1+ySFNt2vTMz7xEgOYH+r4kRB88kd1v/gBf2fger/lKTxqE7H9Kg/ZgOlhgThpG7KITDxIM\n\n0000000000000000000000000000000000000000 ba0814603096eaaafe07fbbc54489ee74db31d5b refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+AsIUACgkQqzYtYVpm\n/Xv57Af9FrJz5/GIiG+FL+7W/rlxH1voiVP8cbcq6rq5EdKmVPnkY+NfEP37Hnf7\n4na1yjnF9tD17Sq+O5PjnDOGkkSYcyM37w1ZmTORg6GolJTfbGdEifSO0RuC6MNU\neo4kwjfiWy08wJnySkBwoCYAyaDQaozztyu6XXLMZ82ciBQUNCJV+o983I8JkGAt\nG0MvfhTLP3bZELmDcvcLHcrBCfOnh5I7vQgrDP1XQZ1mb4je2AMEPs9vzmkZnOUi\njTQ65uRR4J3SndIlGy6+VB96lecmVGU6Ob85LNb8MMnfoqw0kfVCvBrrggTRDYDi\nzVHISAKN+UR5KdIybKXpIPyFIjlaOQ\u003d\u003d\n\u003dDSSU\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ea0f91_61421c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T19:49:21Z",
+      "side": 1,
+      "message": "Note: the magic constants are still in the header, which is required so sizeof() can work (as opposed to the tentative declaration g_foo[]).",
+      "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25a698b_9edc8061",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T19:49:21Z",
+      "side": 1,
+      "message": "pre-nit: the world would be happier if I were size_t.",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbffde2d_9e70d321",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T19:49:21Z",
+      "side": 1,
+      "message": "If you really want some fun, this is essentially pdfium::span\u003cconst uint8_t\u003e, which may or may not be const/constexpr compatible -- and might be usable here.  If so, then span can probably deduce this without any use of sizeof().",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
