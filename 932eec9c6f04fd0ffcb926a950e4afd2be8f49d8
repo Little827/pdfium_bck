@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df425ebc_a2af2a66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-09T00:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd192d3_a1966319",
+      "range": {
+        "startLine": 7,
+        "startChar": 72,
+        "endLine": 7,
+        "endChar": 79
+      },
+      "revId": "932eec9c6f04fd0ffcb926a950e4afd2be8f49d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bb12d15_9c8ad551",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4176775_531810f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-09T00:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bb12d15_9c8ad551",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "932eec9c6f04fd0ffcb926a950e4afd2be8f49d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85fff8dd_89b3247f",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-09T00:44:45Z",
       "side": 1,
       "message": "This is a bit confusing. For the bug to be considered fixed, shouldn\u0027t these tests all pass? i.e. be enabled.",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "932eec9c6f04fd0ffcb926a950e4afd2be8f49d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e4cc8b_f5ab71c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-09T00:52:57Z",
+      "side": 1,
+      "message": "I think removing this confusing part should be sufficient for this CL.",
+      "parentUuid": "85fff8dd_89b3247f",
       "range": {
         "startLine": 11,
         "startChar": 15,
