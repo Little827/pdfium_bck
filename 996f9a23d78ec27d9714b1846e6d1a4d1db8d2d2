@@ -52,6 +52,24 @@
       "parentUuid": "792add60_2430600a",
       "revId": "996f9a23d78ec27d9714b1846e6d1a4d1db8d2d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12964bc_1bfcdef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T19:14:42Z",
+      "side": 1,
+      "message": "That would be swell.",
+      "parentUuid": "347765fe_99353840",
+      "revId": "996f9a23d78ec27d9714b1846e6d1a4d1db8d2d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
