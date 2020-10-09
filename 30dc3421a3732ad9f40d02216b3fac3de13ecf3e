@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602269897 -0700\nnonce ALC2d1/HKj/BziUSxxAf5rAlES8ELQAyWvl8N7IruQu0ET3+PlG6BFSyDkLK4ALc8+rL/JCCPpGs\n\n0000000000000000000000000000000000000000 30dc3421a3732ad9f40d02216b3fac3de13ecf3e refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+AssoACgkQqzYtYVpm\n/XtXUgf/TiKuz3M49cnfzDM+fQ4rTkxSPecnqREdqylg9d7M8ZwyMvHtr2h6CCaD\nyA3MDN7ImK4E6d77mutCqqzImAJJvPsCzpheLnw/S1O+lIDk92cCiEX5/LHRJkmc\nW4cCBEez3oWWl7EfL7wEZvJBbSHRSAyNv98ohGzUpvCyFUg/3ncJT5b0LdRpGHLj\nwsGIwRNVRUROXgIdhsNL4n5pN3mVujdpL8widHGXm9C04xJ+X3U30RoywHKRQGBs\n+xzmn8jCn84GiWq3PyI/z/uRLui/0NyHLzK7dH0XO8vOq7j1r+suAN1dmH0AvymR\ndUcV/RUKGKxGJewU6Jl3rwnJuGNNFg\u003d\u003d\n\u003ds+jj\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbe61d4_c1eabdab",
+        "filename": "core/fpdfapi/page/cpdf_psengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T19:58:59Z",
+      "side": 1,
+      "message": "Ok good, this enum is based on uint8_t so the whole structure has alignof(uint8_t), so these should pack nicely regardless of whether sizeof(PDF_PSOpName) is a multiple of 4 (or whatever).a",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "30dc3421a3732ad9f40d02216b3fac3de13ecf3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
