@@ -8,6 +8,18 @@
 // Tests PDFium-modifications to base::span. The name of this file is
 // chosen to avoid collisions with base's span_unittest.cc
 
+namespace {
+
+// Show that pdfium::span<> is const enough for global consts.
+const pdfium::span<const char> kConstCharSpan[] = {"clams", ""};
+
+}  // namespace
+
+TEST(PdfiumSpan, ConstSpan) {
+  EXPECT_EQ(kConstCharSpan[0].size(), 6u);
+  EXPECT_EQ(kConstCharSpan[1].size(), 1u);
+}
+
 TEST(PdfiumSpan, EmptySpan) {
   int stuff[] = {1, 2, 3};
   pdfium::span<int> null_span;
