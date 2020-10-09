@@ -86,6 +86,24 @@
       "message": "Is the following equivalent? Is it clearer?\n\n#if defined(_SKIA_SUPPORT_) \u0026\u0026 defined(OS_APPLE)\n  static const char kChecksum[] \u003d \"899387ae792390cd0d83cf7e2bbebfb5\";\n#elif defined(_SKIA_SUPPORT_PATHS_) \u0026\u0026 defined(OS_APPLE)\n  static const char kChecksum[] \u003d \"e40e235ee35f47ff28dda009aaaf36df\";\n#elif defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\n  static const char kChecksum[] \u003d \"798fa41303381c9ba6d99092f5cd4d2b\";\n#else\n  static const char kChecksum[] \u003d \"dba153419f67b7c0c0e3d22d3e8910d5\";\n#endif",
       "revId": "a9853e467f17f73174c1171576991047bba14078",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b56bafe_faf91742",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-09T03:09:13Z",
+      "side": 1,
+      "message": "Yes! Way cleaner~",
+      "parentUuid": "2df338e7_7d0b74f3",
+      "revId": "a9853e467f17f73174c1171576991047bba14078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
