@@ -14,8 +14,8 @@
 namespace pdfium {
 namespace fxjse {
 
-extern const char kFuncTag[];
-extern const char kClassTag[];
+constexpr int kFuncTag = 1;
+constexpr int kClassTag = 2;
 
 }  // namespace fxjse
 }  // namespace pdfium
@@ -59,13 +59,13 @@ enum FXJSE_ClassPropTypes {
 };
 
 struct FXJSE_FUNCTION_DESCRIPTOR {
-  const char* tag;  // pdfium::kFuncTag always.
+  int tag;  // `pdfium::fxjse::kFuncTag` always.
   const char* name;
   FXJSE_FuncCallback callbackProc;
 };
 
 struct FXJSE_CLASS_DESCRIPTOR {
-  const char* tag;  // pdfium::kClassTag always.
+  int tag;  // `pdfium::fxjse::kClassTag` always.
   const char* name;
   const FXJSE_FUNCTION_DESCRIPTOR* methods;
   int32_t methNum;
