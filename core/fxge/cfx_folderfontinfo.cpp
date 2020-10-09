@@ -27,22 +27,24 @@
 
 namespace {
 
-const struct {
-  const char* m_pName;
-  const char* m_pSubstName;
-} Base14Substs[] = {
-    {"Courier", "Courier New"},
-    {"Courier-Bold", "Courier New Bold"},
-    {"Courier-BoldOblique", "Courier New Bold Italic"},
-    {"Courier-Oblique", "Courier New Italic"},
-    {"Helvetica", "Arial"},
-    {"Helvetica-Bold", "Arial Bold"},
-    {"Helvetica-BoldOblique", "Arial Bold Italic"},
-    {"Helvetica-Oblique", "Arial Italic"},
-    {"Times-Roman", "Times New Roman"},
-    {"Times-Bold", "Times New Roman Bold"},
-    {"Times-BoldItalic", "Times New Roman Bold Italic"},
-    {"Times-Italic", "Times New Roman Italic"},
+constexpr struct {
+  // FX_HashCode_GetA(name, false)
+  uint32_t hash;
+  // Inline string data does not effect struct size, and avoids relocation.
+  const char subst_name[28];
+} kBase14Substs[] = {
+    {/* "Courier" */ 2622592525, "Courier New"},
+    {/* "Courier-Bold" */ 2114255461, "Courier New Bold"},
+    {/* "Courier-BoldOblique" */ 1468992524, "Courier New Bold Italic"},
+    {/* "Courier-Oblique" */ 2664738385, "Courier New Italic"},
+    {/* "Helvetica" */ 3478674545, "Arial"},
+    {/* "Helvetica-Bold" */ 3371078273, "Arial Bold"},
+    {/* "Helvetica-BoldOblique" */ 3016449136, "Arial Bold Italic"},
+    {/* "Helvetica-Oblique" */ 1148244149, "Arial Italic"},
+    {/* "Times-Roman" */ 1058166902, "Times New Roman"},
+    {/* "Times-Bold" */ 3635888364, "Times New Roman Bold"},
+    {/* "Times-BoldItalic" */ 162006588, "Times New Roman Bold Italic"},
+    {/* "Times-Italic" */ 2485011159, "Times New Roman Italic"},
 };
 
 // Used with std::unique_ptr to automatically call fclose().
@@ -284,11 +286,11 @@ void CFX_FolderFontInfo::ReportFace(const ByteString& path,
   m_FontList[facename] = std::move(pInfo);
 }
 
-void* CFX_FolderFontInfo::GetSubstFont(const ByteString& face) {
-  for (size_t iBaseFont = 0; iBaseFont < pdfium::size(Base14Substs);
-       iBaseFont++) {
-    if (face == Base14Substs[iBaseFont].m_pName)
-      return GetFont(Base14Substs[iBaseFont].m_pSubstName);
+void* CFX_FolderFontInfo::GetSubstFont(ByteStringView face) {
+  uint32_t hash = FX_HashCode_GetA(face, /*bIgnoreCase=*/false);
+  for (size_t i = 0; i < pdfium::size(kBase14Substs); ++i) {
+    if (hash == kBase14Substs[i].hash)
+      return GetFont(kBase14Substs[i].subst_name);
   }
   return nullptr;
 }

@@ -11,6 +11,7 @@
 #include <memory>
 #include <vector>
 
+#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_fontmapper.h"
 #include "core/fxge/systemfontinfo_iface.h"
@@ -63,7 +64,7 @@ class CFX_FolderFontInfo : public SystemFontInfoIface {
                   FILE* pFile,
                   uint32_t filesize,
                   uint32_t offset);
-  void* GetSubstFont(const ByteString& face);
+  void* GetSubstFont(ByteStringView face);
   void* FindFont(int weight,
                  bool bItalic,
                  int charset,
