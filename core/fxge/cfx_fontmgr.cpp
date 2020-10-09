@@ -24,26 +24,26 @@ struct BuiltinFont {
   uint32_t m_dwSize;
 };
 
-const BuiltinFont g_FoxitFonts[14] = {
-    {g_FoxitFixedFontData, 17597},
-    {g_FoxitFixedBoldFontData, 18055},
-    {g_FoxitFixedBoldItalicFontData, 19151},
-    {g_FoxitFixedItalicFontData, 18746},
-    {g_FoxitSansFontData, 15025},
-    {g_FoxitSansBoldFontData, 16344},
-    {g_FoxitSansBoldItalicFontData, 16418},
-    {g_FoxitSansItalicFontData, 16339},
-    {g_FoxitSerifFontData, 19469},
-    {g_FoxitSerifBoldFontData, 19395},
-    {g_FoxitSerifBoldItalicFontData, 20733},
-    {g_FoxitSerifItalicFontData, 21227},
-    {g_FoxitSymbolFontData, 16729},
-    {g_FoxitDingbatsFontData, 29513},
+const BuiltinFont kFoxitFonts[14] = {
+    {g_FoxitFixedFontData, sizeof(g_FoxitFixedFontData)},
+    {g_FoxitFixedBoldFontData, sizeof(g_FoxitFixedBoldFontData)},
+    {g_FoxitFixedBoldItalicFontData, sizeof(g_FoxitFixedBoldItalicFontData)},
+    {g_FoxitFixedItalicFontData, sizeof(g_FoxitFixedItalicFontData)},
+    {g_FoxitSansFontData, sizeof(g_FoxitSansFontData)},
+    {g_FoxitSansBoldFontData, sizeof(g_FoxitSansBoldFontData)},
+    {g_FoxitSansBoldItalicFontData, sizeof(g_FoxitSansBoldItalicFontData)},
+    {g_FoxitSansItalicFontData, sizeof(g_FoxitSansItalicFontData)},
+    {g_FoxitSerifFontData, sizeof(g_FoxitSerifFontData)},
+    {g_FoxitSerifBoldFontData, sizeof(g_FoxitSerifBoldFontData)},
+    {g_FoxitSerifBoldItalicFontData, sizeof(g_FoxitSerifBoldItalicFontData)},
+    {g_FoxitSerifItalicFontData, sizeof(g_FoxitSerifItalicFontData)},
+    {g_FoxitSymbolFontData, sizeof(g_FoxitSymbolFontData)},
+    {g_FoxitDingbatsFontData, sizeof(g_FoxitDingbatsFontData)},
 };
 
-const BuiltinFont g_MMFonts[2] = {
-    {g_FoxitSerifMMFontData, 113417},
-    {g_FoxitSansMMFontData, 66919},
+const BuiltinFont kMMFonts[2] = {
+    {g_FoxitSerifMMFontData, sizeof(g_FoxitSerifMMFontData)},
+    {g_FoxitSansMMFontData, sizeof(g_FoxitSansMMFontData)},
 };
 
 ByteString KeyNameFromFace(const ByteString& face_name,
@@ -161,14 +161,14 @@ RetainPtr<CFX_Face> CFX_FontMgr::NewFixedFace(const RetainPtr<FontDesc>& pDesc,
 // static
 Optional<pdfium::span<const uint8_t>> CFX_FontMgr::GetBuiltinFont(
     size_t index) {
-  if (index < pdfium::size(g_FoxitFonts)) {
-    return pdfium::make_span(g_FoxitFonts[index].m_pFontData,
-                             g_FoxitFonts[index].m_dwSize);
+  if (index < pdfium::size(kFoxitFonts)) {
+    return pdfium::make_span(kFoxitFonts[index].m_pFontData,
+                             kFoxitFonts[index].m_dwSize);
   }
-  size_t mm_index = index - pdfium::size(g_FoxitFonts);
-  if (mm_index < pdfium::size(g_MMFonts)) {
-    return pdfium::make_span(g_MMFonts[mm_index].m_pFontData,
-                             g_MMFonts[mm_index].m_dwSize);
+  size_t mm_index = index - pdfium::size(kFoxitFonts);
+  if (mm_index < pdfium::size(kMMFonts)) {
+    return pdfium::make_span(kMMFonts[mm_index].m_pFontData,
+                             kMMFonts[mm_index].m_dwSize);
   }
   return {};
 }
