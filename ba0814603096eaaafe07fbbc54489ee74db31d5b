@@ -87,6 +87,53 @@
       },
       "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79872dcb_3796a666",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T20:34:36Z",
+      "side": 1,
+      "message": "Though const does seem to work, but might not be const enough.",
+      "parentUuid": "81cf3598_93e8bc97",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3059e311_66d3eac9",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T20:34:36Z",
+      "side": 1,
+      "message": "and this goes away if kFoxitFonts were array of span.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 60
+      },
+      "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
