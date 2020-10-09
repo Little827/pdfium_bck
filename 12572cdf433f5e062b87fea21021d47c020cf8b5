@@ -70,6 +70,30 @@
       },
       "revId": "12572cdf433f5e062b87fea21021d47c020cf8b5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e19298_042f47a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-09T01:21:11Z",
+      "side": 1,
+      "message": "Sounds good. I will also update 1500 description to SkiaPaths only.\n\nWhile we are at it, the new patch set updated all the issue number 11 in this file.\n\nI think we can sort out the rest of the TODO comments with issue number 11 as we are fixing them.",
+      "parentUuid": "3757045f_ca2ebe1b",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "12572cdf433f5e062b87fea21021d47c020cf8b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
