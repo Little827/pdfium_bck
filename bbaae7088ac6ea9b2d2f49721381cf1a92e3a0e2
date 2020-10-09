@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3699413_49994667",
+        "filename": "fxjs/xfa/cfxjse_mapmodule.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T15:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce547ccd_2c5581a4",
+      "revId": "bbaae7088ac6ea9b2d2f49721381cf1a92e3a0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3901458f_586f7ea0",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5414ff0f_592aed1f",
+        "filename": "fxjs/xfa/cfxjse_mapmodule.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T15:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3901458f_586f7ea0",
+      "revId": "bbaae7088ac6ea9b2d2f49721381cf1a92e3a0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a673d93a_59ea77c2",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-10-09T00:33:45Z",
       "side": 1,
       "message": "Sort",
+      "revId": "bbaae7088ac6ea9b2d2f49721381cf1a92e3a0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "867f079c_95ec651d",
+        "filename": "fxjs/xfa/cjx_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-09T15:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a673d93a_59ea77c2",
       "revId": "bbaae7088ac6ea9b2d2f49721381cf1a92e3a0e2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
