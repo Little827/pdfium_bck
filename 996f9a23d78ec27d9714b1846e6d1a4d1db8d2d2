@@ -17,6 +17,23 @@
       "message": "The tags are read in AsFunctionDescriptor() and AsClassDescriptor() in fxjs/xfa/cfxjse_class.cpp.",
       "revId": "996f9a23d78ec27d9714b1846e6d1a4d1db8d2d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792add60_2430600a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2020-10-09T19:00:21Z",
+      "side": 1,
+      "message": "Nah, those are all too common values.  The problem was that in the historical past all sorts of strange objects had shown up as arguments to these functions with crap in the embedder data slots, so I wanted a value that was nearly certain to be unique, hence the address of something that isn\u0027t used anywhere, plus it gets some randomness when ASLR kicks in ... at the cost of a few bytes.",
+      "revId": "996f9a23d78ec27d9714b1846e6d1a4d1db8d2d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
