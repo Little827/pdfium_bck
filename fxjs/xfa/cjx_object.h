@@ -29,7 +29,7 @@ class CFX_XMLElement;
 class CJX_Object;
 class CXFA_Document;
 class CXFA_LayoutItem;
-class CXFA_MapModule;
+class CFXJSE_MapModule;
 class CXFA_Node;
 class CXFA_Object;
 
@@ -255,8 +255,8 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   CFX_XMLElement* SetValue(XFA_Attribute eAttr, int32_t value, bool bNotify);
   int32_t Subform_and_SubformSet_InstanceIndex();
 
-  CXFA_MapModule* CreateMapModule();
-  CXFA_MapModule* GetMapModule() const;
+  CFXJSE_MapModule* CreateMapModule();
+  CFXJSE_MapModule* GetMapModule() const;
   void SetMapModuleValue(uint32_t key, int32_t value);
   void SetMapModuleString(uint32_t key, const WideString& wsValue);
   void SetMapModuleMeasurement(uint32_t key, const CXFA_Measurement& value);
@@ -274,7 +274,7 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   cppgc::Member<CXFA_Object> object_;
   cppgc::Member<CXFA_LayoutItem> layout_item_;
   cppgc::Member<CalcData> calc_data_;
-  std::unique_ptr<CXFA_MapModule> map_module_;
+  std::unique_ptr<CFXJSE_MapModule> map_module_;
   std::map<ByteString, CJX_MethodCall> method_specs_;
   size_t calc_recursion_count_ = 0;
 };
