@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ff5439_9e43c032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-12T23:23:40Z",
+      "side": 1,
+      "message": "Not sure this is worth the 80 bytes, as starting loops at 1, and so on. I think I got all places.",
+      "revId": "86fe6fd9098fdd5eff092f5f091d15f76e6dff5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
