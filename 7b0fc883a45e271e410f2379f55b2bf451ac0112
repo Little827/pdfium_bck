@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8e5d72_6f021e95",
+        "filename": "xfa/fwl/ifwl_themeprovider.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-12T23:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb5d2f6_2744d06d",
+      "revId": "7b0fc883a45e271e410f2379f55b2bf451ac0112",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "675db434_15fcc02f",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60263363_2d6e4957",
+        "filename": "xfa/fwl/ifwl_themeprovider.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-12T23:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "675db434_15fcc02f",
+      "revId": "7b0fc883a45e271e410f2379f55b2bf451ac0112",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ded0345e_e7e46fbc",
@@ -48,6 +84,30 @@
       "writtenOn": "2020-10-12T22:59:46Z",
       "side": 1,
       "message": "No longer needed.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "7b0fc883a45e271e410f2379f55b2bf451ac0112",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33449c24_4ddfefac",
+        "filename": "xfa/fxfa/cxfa_fwltheme.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-12T23:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded0345e_e7e46fbc",
       "range": {
         "startLine": 51,
         "startChar": 2,
