@@ -16,6 +16,24 @@
       "message": "Can this end up returning nullptr? If so, wouldn\u0027t callers that pass the pointer into the CFX_Timer ctor trigger a crash there?",
       "revId": "85dc536a0eaf78c9d2effa4f89d84af5c7bf7a0b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec94c8a_080d3ebc",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-13T19:59:48Z",
+      "side": 1,
+      "message": "Crash vs. triggering UAF in the past..  I\u0027ll add the null checks just because.",
+      "parentUuid": "38796cd0_735998f4",
+      "revId": "85dc536a0eaf78c9d2effa4f89d84af5c7bf7a0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
