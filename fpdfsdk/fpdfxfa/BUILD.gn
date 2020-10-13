@@ -29,7 +29,7 @@ source_set("fpdfxfa") {
     "../../fxbarcode",
     "../../fxjs",
     "../../fxjs:gc",
-    "../../xfa/fgas",
+    "../../xfa/fgas/font",
     "../../xfa/fwl",
     "../../xfa/fxfa",
     "../../xfa/fxfa/parser",
