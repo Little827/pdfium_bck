@@ -17,6 +17,24 @@
       "message": "Want to do the same with a ~ in your regexp?",
       "revId": "1f6e54e5970167661c5dace3661c5f5baa378874",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1049bf30_ea4c3e7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-13T20:00:04Z",
+      "side": 1,
+      "message": "I think I did something for that earlier already. Will check again.",
+      "parentUuid": "fa9fdb73_d6a832b0",
+      "revId": "1f6e54e5970167661c5dace3661c5f5baa378874",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
