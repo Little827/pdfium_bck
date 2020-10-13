@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39d2e4f_f12b57bd",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-13T00:57:44Z",
+      "side": 1,
+      "message": "With this change, who sets skia_paths to true?",
+      "revId": "6b90489967f4c2537a1046390f14c7f8355f5a2b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
