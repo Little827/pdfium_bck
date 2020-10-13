@@ -20,11 +20,11 @@ TimerMap& GetPWLTimerMap() {
 
 }  // namespace
 
-CFX_Timer::CFX_Timer(TimerHandlerIface* pTimerHandler,
+CFX_Timer::CFX_Timer(HandlerIface* pHandlerIface,
                      CallbackIface* pCallbackIface,
                      int32_t nInterval)
-    : m_nTimerID(pTimerHandler->SetTimer(nInterval, TimerProc)),
-      m_pTimerHandler(pTimerHandler),
+    : m_nTimerID(pHandlerIface->SetTimer(nInterval, TimerProc)),
+      m_pHandlerIface(pHandlerIface),
       m_pCallbackIface(pCallbackIface) {
   ASSERT(m_pCallbackIface);
   if (HasValidID())
@@ -33,8 +33,9 @@ CFX_Timer::CFX_Timer(TimerHandlerIface* pTimerHandler,
 
 CFX_Timer::~CFX_Timer() {
   if (HasValidID()) {
-    m_pTimerHandler->KillTimer(m_nTimerID);
     GetPWLTimerMap().erase(m_nTimerID);
+    if (m_pHandlerIface)
+      m_pHandlerIface->KillTimer(m_nTimerID);
   }
 }
 
