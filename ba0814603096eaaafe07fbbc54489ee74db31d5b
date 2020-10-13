@@ -134,6 +134,30 @@
       },
       "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fcf77a_bbf91bed",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-13T19:40:09Z",
+      "side": 1,
+      "message": "which it cant be as above.",
+      "parentUuid": "3059e311_66d3eac9",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 60
+      },
+      "revId": "ba0814603096eaaafe07fbbc54489ee74db31d5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
