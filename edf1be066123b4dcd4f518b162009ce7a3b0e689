@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9f525c_f14b8f9f",
+        "filename": "xfa/fwl/cfwl_widgetmgr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-13T22:12:44Z",
+      "side": 1,
+      "message": "sort",
+      "revId": "edf1be066123b4dcd4f518b162009ce7a3b0e689",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
