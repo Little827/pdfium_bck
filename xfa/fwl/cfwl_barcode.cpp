@@ -30,7 +30,7 @@ void CFWL_Barcode::Update() {
   GenerateBarcodeImageCache();
 }
 
-void CFWL_Barcode::DrawWidget(CXFA_Graphics* pGraphics,
+void CFWL_Barcode::DrawWidget(GFGAS_GEGraphics* pGraphics,
                               const CFX_Matrix& matrix) {
   if (!pGraphics)
     return;

@@ -11,7 +11,7 @@
 
 class CFWL_Event;
 class CFWL_Message;
-class CXFA_Graphics;
+class GFGAS_GEGraphics;
 class CFX_Matrix;
 
 class IFWL_WidgetDelegate : public cppgc::GarbageCollectedMixin {
@@ -20,7 +20,7 @@ class IFWL_WidgetDelegate : public cppgc::GarbageCollectedMixin {
 
   virtual void OnProcessMessage(CFWL_Message* pMessage) = 0;
   virtual void OnProcessEvent(CFWL_Event* pEvent) = 0;
-  virtual void OnDrawWidget(CXFA_Graphics* pGraphics,
+  virtual void OnDrawWidget(GFGAS_GEGraphics* pGraphics,
                             const CFX_Matrix& matrix) = 0;
 };
 
