@@ -16,10 +16,10 @@
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/visitor.h"
-#include "xfa/fxgraphics/cxfa_graphics.h"
+#include "xfa/fgas/graphics/cfgas_gegraphics.h"
 
 class CFWL_Message;
-class CXFA_Graphics;
+class CFXA_GEGraphics;
 class CFX_Matrix;
 class CFWL_App;
 class CFWL_Widget;
@@ -44,7 +44,7 @@ class CFWL_WidgetMgr final : public cppgc::GarbageCollected<CFWL_WidgetMgr> {
 
   void OnProcessMessageToForm(CFWL_Message* pMessage);
   void OnDrawWidget(CFWL_Widget* pWidget,
-                    CXFA_Graphics* pGraphics,
+                    CFXA_GEGraphics* pGraphics,
                     const CFX_Matrix& matrix);
 
   CFWL_Widget* GetParentWidget(const CFWL_Widget* pWidget) const;
@@ -92,7 +92,7 @@ class CFWL_WidgetMgr final : public cppgc::GarbageCollected<CFWL_WidgetMgr> {
 
   void DrawChildren(CFWL_Widget* pParent,
                     const CFX_RectF& rtClip,
-                    CXFA_Graphics* pGraphics,
+                    CFXA_GEGraphics* pGraphics,
                     const CFX_Matrix* pMatrix);
 
   cppgc::Member<AdapterIface> const m_pAdapter;

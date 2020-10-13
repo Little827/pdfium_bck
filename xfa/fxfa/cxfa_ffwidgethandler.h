@@ -16,7 +16,7 @@
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 class CXFA_FFDocView;
-class CXFA_Graphics;
+class CFXA_GEGraphics;
 enum class FWL_WidgetHit;
 
 class CXFA_FFWidgetHandler final
@@ -70,7 +70,7 @@ class CXFA_FFWidgetHandler final
   bool OnChar(CXFA_FFWidget* hWidget, uint32_t dwChar, uint32_t dwFlags);
   FWL_WidgetHit HitTest(CXFA_FFWidget* pWidget, const CFX_PointF& point);
   void RenderWidget(CXFA_FFWidget* hWidget,
-                    CXFA_Graphics* pGS,
+                    CFXA_GEGraphics* pGS,
                     const CFX_Matrix& matrix,
                     bool bHighlight);
   bool HasEvent(CXFA_Node* pNode, XFA_EVENTTYPE eEventType);

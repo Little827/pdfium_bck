@@ -13,15 +13,16 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/fx_dib.h"
+#include "v8/include/cppgc/garbage-collected.h"
 #include "xfa/fwl/theme/cfwl_utils.h"
 
 class CFDE_TextOut;
 class CFGAS_GEFont;
 class CFWL_ThemeBackground;
 class CFWL_ThemeText;
-class CXFA_Graphics;
+class CFXA_GEGraphics;
 
-class CFWL_WidgetTP {
+class CFWL_WidgetTP : public cppgc::GarbageCollected<CFWL_WidgetTP> {
  public:
   virtual ~CFWL_WidgetTP();
 
@@ -29,6 +30,9 @@ class CFWL_WidgetTP {
   virtual void DrawText(const CFWL_ThemeText& pParams);
 
   const RetainPtr<CFGAS_GEFont>& GetFont() const;
+
+  // Non-virtual, nothing to trace in subclasses at present.
+  void Trace(cppgc::Visitor* visitor) const;
 
  protected:
   struct CColorData {
@@ -43,29 +47,29 @@ class CFWL_WidgetTP {
   void InitializeArrowColorData();
   void EnsureTTOInitialized();
 
-  void DrawBorder(CXFA_Graphics* pGraphics,
+  void DrawBorder(CFXA_GEGraphics* pGraphics,
                   const CFX_RectF& rect,
                   const CFX_Matrix& matrix);
-  void FillBackground(CXFA_Graphics* pGraphics,
+  void FillBackground(CFXA_GEGraphics* pGraphics,
                       const CFX_RectF& rect,
                       const CFX_Matrix& matrix);
-  void FillSolidRect(CXFA_Graphics* pGraphics,
+  void FillSolidRect(CFXA_GEGraphics* pGraphics,
                      FX_ARGB fillColor,
                      const CFX_RectF& rect,
                      const CFX_Matrix& matrix);
-  void DrawFocus(CXFA_Graphics* pGraphics,
+  void DrawFocus(CFXA_GEGraphics* pGraphics,
                  const CFX_RectF& rect,
                  const CFX_Matrix& matrix);
-  void DrawArrow(CXFA_Graphics* pGraphics,
+  void DrawArrow(CFXA_GEGraphics* pGraphics,
                  const CFX_RectF& rect,
                  FWLTHEME_DIRECTION eDict,
                  FX_ARGB argSign,
                  const CFX_Matrix& matrix);
-  void DrawBtn(CXFA_Graphics* pGraphics,
+  void DrawBtn(CFXA_GEGraphics* pGraphics,
                const CFX_RectF& rect,
                FWLTHEME_STATE eState,
                const CFX_Matrix& matrix);
-  void DrawArrowBtn(CXFA_Graphics* pGraphics,
+  void DrawArrowBtn(CFXA_GEGraphics* pGraphics,
                     const CFX_RectF& rect,
                     FWLTHEME_DIRECTION eDict,
                     FWLTHEME_STATE eState,
