@@ -34,6 +34,24 @@
       "parentUuid": "3addd375_0a9a8880",
       "revId": "9b3ba3e5df73c8aedbcd9674b025d3ae1fdddf47",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e3ca1d6_4aeb5461",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-13T19:12:45Z",
+      "side": 1,
+      "message": "Alright, I\u0027ll go through this CL.",
+      "parentUuid": "b60bd882_313944f4",
+      "revId": "9b3ba3e5df73c8aedbcd9674b025d3ae1fdddf47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
