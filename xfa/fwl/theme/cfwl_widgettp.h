@@ -20,7 +20,7 @@ class CFDE_TextOut;
 class CFGAS_GEFont;
 class CFWL_ThemeBackground;
 class CFWL_ThemeText;
-class CXFA_Graphics;
+class GFGAS_GEGraphics;
 
 class CFWL_WidgetTP : public cppgc::GarbageCollected<CFWL_WidgetTP> {
  public:
@@ -47,29 +47,29 @@ class CFWL_WidgetTP : public cppgc::GarbageCollected<CFWL_WidgetTP> {
   void InitializeArrowColorData();
   void EnsureTTOInitialized();
 
-  void DrawBorder(CXFA_Graphics* pGraphics,
+  void DrawBorder(GFGAS_GEGraphics* pGraphics,
                   const CFX_RectF& rect,
                   const CFX_Matrix& matrix);
-  void FillBackground(CXFA_Graphics* pGraphics,
+  void FillBackground(GFGAS_GEGraphics* pGraphics,
                       const CFX_RectF& rect,
                       const CFX_Matrix& matrix);
-  void FillSolidRect(CXFA_Graphics* pGraphics,
+  void FillSolidRect(GFGAS_GEGraphics* pGraphics,
                      FX_ARGB fillColor,
                      const CFX_RectF& rect,
                      const CFX_Matrix& matrix);
-  void DrawFocus(CXFA_Graphics* pGraphics,
+  void DrawFocus(GFGAS_GEGraphics* pGraphics,
                  const CFX_RectF& rect,
                  const CFX_Matrix& matrix);
-  void DrawArrow(CXFA_Graphics* pGraphics,
+  void DrawArrow(GFGAS_GEGraphics* pGraphics,
                  const CFX_RectF& rect,
                  FWLTHEME_DIRECTION eDict,
                  FX_ARGB argSign,
                  const CFX_Matrix& matrix);
-  void DrawBtn(CXFA_Graphics* pGraphics,
+  void DrawBtn(GFGAS_GEGraphics* pGraphics,
                const CFX_RectF& rect,
                FWLTHEME_STATE eState,
                const CFX_Matrix& matrix);
-  void DrawArrowBtn(CXFA_Graphics* pGraphics,
+  void DrawArrowBtn(GFGAS_GEGraphics* pGraphics,
                     const CFX_RectF& rect,
                     FWLTHEME_DIRECTION eDict,
                     FWLTHEME_STATE eState,

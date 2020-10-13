@@ -5,5 +5,5 @@ include_rules = [
   '+v8',
   '+xfa/fwl',
   '+xfa/fxfa',
-  '+xfa/fxgraphics',
+  '+xfa/fgas/graphics',
 ]
