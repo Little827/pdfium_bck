@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0780d277_e32e924e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-13T05:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220217cd_3c60d0e8",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "778ac69f11bcb52efa5df026d5de5c1c78aeb517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3cbacc22_6aacbfd9",
         "filename": "luci-milo.cfg",
         "patchSetId": 4
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "There is already a builder with this name on line 280. It doesn\u0027t make sense to give the same name to two builders. Based on the pattern in this console with the existing builders, what do you think this builder should be named?",
       "parentUuid": "3cbacc22_6aacbfd9",
+      "range": {
+        "startLine": 154,
+        "startChar": 23,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "778ac69f11bcb52efa5df026d5de5c1c78aeb517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c3d26c_1227ab69",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-13T05:02:39Z",
+      "side": 1,
+      "message": "I think the skia builders should be added in luci.pdfium.ci bucket in cr-buildbucket.cfg. And then in this file, the new builder name can be \"buildbucket/luci.pdfium.try/####_skia\" or \"buildbucket/luci.pdfium.try/####_skia_paths\".\n\nI implemented this change in the new patchset. Please advise 😊.",
+      "parentUuid": "3fcdd3d5_5ee265a7",
       "range": {
         "startLine": 154,
         "startChar": 23,
