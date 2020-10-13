@@ -87,6 +87,30 @@
       },
       "revId": "86fe6fd9098fdd5eff092f5f091d15f76e6dff5b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e95454_c27e2caf",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-13T19:04:42Z",
+      "side": 1,
+      "message": "Sure. We never get over 20, but I hate casting away size_t hi bits. I also added \"Current\" to the name MaxObjDefinitionID() since otherwise using it as I did in assign... feels weird.",
+      "parentUuid": "c2e5685d_89c9b550",
+      "range": {
+        "startLine": 325,
+        "startChar": 9,
+        "endLine": 325,
+        "endChar": 37
+      },
+      "revId": "86fe6fd9098fdd5eff092f5f091d15f76e6dff5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
