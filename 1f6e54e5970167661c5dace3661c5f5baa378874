@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602616082 -0700\nnonce ALC2d1/ACo8nPFCDP8sCqk1W/K2Cnz8E9Iar9k9cm/ezjD+ru+rhkKkZFjlzgdr9isvw1kX4lIvw\n\n0000000000000000000000000000000000000000 1f6e54e5970167661c5dace3661c5f5baa378874 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+F+xIACgkQqzYtYVpm\n/XvRNwgAi9zoEk5a74cDg2Pa4BijOs6Cl46iSJC4YbDsC/F/W540LxNuKivNEaUd\nKXd+IoMYrEXszSqT/DUbLF6ciTktO1tX22OCGHP11T6WitdygZ28aeVu6mtNVya6\nkH8Y6SMUoqXIISNY14AZGhIq/MOV/FZHBLWYolrZmdHGzn6ywULWqyWgUmok2izd\n03bsZnI8xg2ld7LOK9f5qt/FhmHO12+tAO7V/xO9DviC3SXWKJgE7pS601ZA+7h4\nxs7KIIYPqlshXdX34yIrUafTs61n7BdXx4YPWPP7ULtx7mhnwlGxCqT8u51is5YC\naDwmQr9wMPpM7BGNZYGQwS9u4m0VXA\u003d\u003d\n\u003dmkJ/\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9fdb73_d6a832b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-13T19:45:04Z",
+      "side": 1,
+      "message": "Want to do the same with a ~ in your regexp?",
+      "revId": "1f6e54e5970167661c5dace3661c5f5baa378874",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
