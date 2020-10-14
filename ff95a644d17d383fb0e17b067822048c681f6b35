@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "485ce987_e55da974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-14T20:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "226203b8_738a9e4e",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "ff95a644d17d383fb0e17b067822048c681f6b35",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d753092_a9082d50",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-14T19:55:39Z",
       "side": 1,
       "message": "IWYU for WideString.",
+      "revId": "ff95a644d17d383fb0e17b067822048c681f6b35",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee36fe4b_d39356b8",
+        "filename": "fpdfsdk/pwl/ipwl_fillernotify.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-14T20:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d753092_a9082d50",
       "revId": "ff95a644d17d383fb0e17b067822048c681f6b35",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
