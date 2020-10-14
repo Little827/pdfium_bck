@@ -870,34 +870,33 @@ std::pair<bool, bool> CFFL_InteractiveFormFiller::OnBeforeKeyStroke(
     int nSelEnd,
     bool bKeyDown,
     uint32_t nFlag) {
-  // Copy the private data since the window owning it may not survive.
-  CFFL_PrivateData privateData =
-      *static_cast<const CFFL_PrivateData*>(pAttached);
-  ASSERT(privateData.GetWidget());
+  // Copy out of private data since the window owning it may not survive.
+  auto* pPrivateData = static_cast<const CFFL_PrivateData*>(pAttached);
+  CPDFSDK_Widget* pWidget = pPrivateData->GetWidget();
+  CPDFSDK_PageView* pPageView = pPrivateData->GetPageView();
+  ASSERT(pWidget);
 
-  CFFL_FormFiller* pFormFiller = GetFormFiller(privateData.GetWidget());
+  CFFL_FormFiller* pFormFiller = GetFormFiller(pWidget);
 
 #ifdef PDF_ENABLE_XFA
-  if (pFormFiller->IsFieldFull(privateData.GetPageView())) {
-    ObservedPtr<CPDFSDK_Annot> pObserved(privateData.GetWidget());
-    if (OnFull(&pObserved, privateData.GetPageView(), nFlag) || !pObserved)
+  if (pFormFiller->IsFieldFull(pPageView)) {
+    ObservedPtr<CPDFSDK_Annot> pObserved(pWidget);
+    if (OnFull(&pObserved, pPageView, nFlag) || !pObserved)
       return {true, true};
   }
 #endif  // PDF_ENABLE_XFA
 
-  if (m_bNotifying || !privateData.GetWidget()
-                           ->GetAAction(CPDF_AAction::kKeyStroke)
-                           .GetDict()) {
+  if (m_bNotifying ||
+      !pWidget->GetAAction(CPDF_AAction::kKeyStroke).GetDict()) {
     return {true, false};
   }
 
   AutoRestorer<bool> restorer(&m_bNotifying);
   m_bNotifying = true;
 
-  uint32_t nAge = privateData.GetWidget()->GetAppearanceAge();
-  uint32_t nValueAge = privateData.GetWidget()->GetValueAge();
-  CPDFSDK_FormFillEnvironment* pFormFillEnv =
-      privateData.GetPageView()->GetFormFillEnv();
+  uint32_t nAge = pWidget->GetAppearanceAge();
+  uint32_t nValueAge = pWidget->GetValueAge();
+  CPDFSDK_FormFillEnvironment* pFormFillEnv = pPageView->GetFormFillEnv();
 
   CPDFSDK_FieldAction fa;
   fa.bModifier = CPWL_Wnd::IsCTRLKeyDown(nFlag);
@@ -909,42 +908,41 @@ std::pair<bool, bool> CFFL_InteractiveFormFiller::OnBeforeKeyStroke(
   fa.bRC = true;
   fa.nSelStart = nSelStart;
   fa.nSelEnd = nSelEnd;
-  pFormFiller->GetActionData(privateData.GetPageView(),
-                             CPDF_AAction::kKeyStroke, fa);
-  pFormFiller->SaveState(privateData.GetPageView());
+  pFormFiller->GetActionData(pPageView, CPDF_AAction::kKeyStroke, fa);
+  pFormFiller->SaveState(pPageView);
 
-  ObservedPtr<CPDFSDK_Annot> pObserved(privateData.GetWidget());
-  bool action_status = privateData.GetWidget()->OnAAction(
-      CPDF_AAction::kKeyStroke, &fa, privateData.GetPageView());
+  ObservedPtr<CPDFSDK_Annot> pObserved(pWidget);
+  bool action_status =
+      pWidget->OnAAction(CPDF_AAction::kKeyStroke, &fa, pPageView);
 
-  if (!pObserved ||
-      !IsValidAnnot(privateData.GetPageView(), privateData.GetWidget())) {
+  if (!pObserved || !IsValidAnnot(pPageView, pWidget)) {
     return {true, true};
   }
   if (!action_status)
     return {true, false};
 
   bool bExit = false;
-  if (nAge != privateData.GetWidget()->GetAppearanceAge()) {
+  if (nAge != pWidget->GetAppearanceAge()) {
     CPWL_Wnd* pWnd = pFormFiller->ResetPWLWindow(
-        privateData.GetPageView(),
-        nValueAge == privateData.GetWidget()->GetValueAge());
+        pPageView, nValueAge == pWidget->GetValueAge());
     if (!pWnd)
       return {true, true};
-    privateData =
-        *static_cast<const CFFL_PrivateData*>(pWnd->GetAttachedData());
+
+    pPrivateData =
+        static_cast<const CFFL_PrivateData*>(pWnd->GetAttachedData());
+    pWidget = pPrivateData->GetWidget();
+    pPageView = pPrivateData->GetPageView();
     bExit = true;
   }
   if (fa.bRC) {
-    pFormFiller->SetActionData(privateData.GetPageView(),
-                               CPDF_AAction::kKeyStroke, fa);
+    pFormFiller->SetActionData(pPageView, CPDF_AAction::kKeyStroke, fa);
   } else {
-    pFormFiller->RestoreState(privateData.GetPageView());
+    pFormFiller->RestoreState(pPageView);
   }
-  if (pFormFillEnv->GetFocusAnnot() == privateData.GetWidget())
+  if (pFormFillEnv->GetFocusAnnot() == pWidget)
     return {false, bExit};
 
-  pFormFiller->CommitData(privateData.GetPageView(), nFlag);
+  pFormFiller->CommitData(pPageView, nFlag);
   return {false, true};
 }
 
