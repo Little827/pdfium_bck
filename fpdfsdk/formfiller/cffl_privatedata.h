@@ -19,8 +19,9 @@ class CFFL_PrivateData final : public IPWL_SystemHandler::PerWindowData {
                    CPDFSDK_PageView* pPageView,
                    uint32_t nAppearanceAge,
                    uint32_t nValueAge);
-  CFFL_PrivateData(const CFFL_PrivateData& that);
   ~CFFL_PrivateData() override;
+
+  CFFL_PrivateData& operator=(const CFFL_PrivateData& that) = delete;
 
   // IPWL_SystemHandler::PerWindowData:
   std::unique_ptr<IPWL_SystemHandler::PerWindowData> Clone() const override;
@@ -32,11 +33,13 @@ class CFFL_PrivateData final : public IPWL_SystemHandler::PerWindowData {
   }
   bool ValueAgeEquals(uint32_t age) const { return age == m_nValueAge; }
 
- protected:
+ private:
+  CFFL_PrivateData(const CFFL_PrivateData& that);
+
   ObservedPtr<CPDFSDK_Widget> m_pWidget;
-  CPDFSDK_PageView* m_pPageView;
-  uint32_t m_nAppearanceAge;
-  uint32_t m_nValueAge;
+  CPDFSDK_PageView* const m_pPageView;
+  const uint32_t m_nAppearanceAge;
+  const uint32_t m_nValueAge;
 };
 
 #endif  // FPDFSDK_FORMFILLER_CFFL_PRIVATEDATA_H_

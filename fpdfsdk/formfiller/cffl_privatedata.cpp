@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/formfiller/cffl_privatedata.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
+#include "third_party/base/ptr_util.h"
 
 CFFL_PrivateData::CFFL_PrivateData(CPDFSDK_Widget* pWidget,
                                    CPDFSDK_PageView* pPageView,
@@ -22,5 +23,6 @@ CFFL_PrivateData::~CFFL_PrivateData() = default;
 
 std::unique_ptr<IPWL_SystemHandler::PerWindowData> CFFL_PrivateData::Clone()
     const {
-  return std::make_unique<CFFL_PrivateData>(*this);
+  // Private constructor.
+  return pdfium::WrapUnique(new CFFL_PrivateData(*this));
 }
