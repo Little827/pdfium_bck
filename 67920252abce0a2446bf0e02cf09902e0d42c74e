@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11acb9f9_016dd6dd",
+        "filename": "fpdfsdk/formfiller/cffl_privatedata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-14T21:25:51Z",
+      "side": 1,
+      "message": "nit: newline after.",
+      "revId": "67920252abce0a2446bf0e02cf09902e0d42c74e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
