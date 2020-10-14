@@ -18,6 +18,7 @@
 #include "fpdfsdk/pwl/cpwl_list_box.h"
 #include "fpdfsdk/pwl/cpwl_list_ctrl.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
+#include "fpdfsdk/pwl/ipwl_fillernotify.h"
 #include "public/fpdf_fwlevent.h"
 
 namespace {
@@ -607,7 +608,7 @@ void CPWL_ComboBox::SetSelectText() {
   m_nSelectItem = m_pList->GetCurSel();
 }
 
-void CPWL_ComboBox::SetFillerNotify(IPWL_Filler_Notify* pNotify) {
+void CPWL_ComboBox::SetFillerNotify(IPWL_FillerNotify* pNotify) {
   m_pFillerNotify = pNotify;
 
   if (m_pEdit)
