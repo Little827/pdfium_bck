@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aded474d_08004be3",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-14T22:43:00Z",
+      "side": 1,
+      "message": "Maybe copy this out first, so lines 875 and 877 can be closer together?",
+      "revId": "69cad849322e4347c54fafd226e1f1f737105689",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed596a4_0abea6c9",
+        "filename": "fpdfsdk/formfiller/cffl_privatedata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-14T22:43:00Z",
+      "side": 1,
+      "message": "https://google.github.io/styleguide/cppguide.html#Declaration_Order says \"..., constructors and assignment operators, destructor, ...\"",
+      "revId": "69cad849322e4347c54fafd226e1f1f737105689",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
