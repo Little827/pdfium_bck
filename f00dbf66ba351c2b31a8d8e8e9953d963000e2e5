@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "710ec718_978bab76",
+        "filename": "fpdfsdk/pwl/cpwl_list_box.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-14T20:07:47Z",
+      "side": 1,
+      "message": "Not sure what you mean.  This object owns it listctrl, right?",
+      "parentUuid": "ec468001_e2c407f6",
+      "revId": "f00dbf66ba351c2b31a8d8e8e9953d963000e2e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bda1d190_312916ee",
         "filename": "fpdfsdk/pwl/cpwl_list_ctrl.h",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-14T19:50:16Z",
       "side": 1,
       "message": "Can we drop the \"I\" prefix?",
+      "range": {
+        "startLine": 29,
+        "startChar": 17,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "f00dbf66ba351c2b31a8d8e8e9953d963000e2e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5503c77f_63fd145e",
+        "filename": "fpdfsdk/pwl/cpwl_list_ctrl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-14T20:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda1d190_312916ee",
       "range": {
         "startLine": 29,
         "startChar": 17,
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-14T19:50:16Z",
       "side": 1,
       "message": "(For later) Change this to const CFX_FloatRect\u0026, since callers do not pass in nullptr. CPWL_Wnd::InvalidateRect() will need be changed to take a const CFX_FloatRect*.",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "f00dbf66ba351c2b31a8d8e8e9953d963000e2e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c03e42_797f39f9",
+        "filename": "fpdfsdk/pwl/cpwl_list_ctrl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-14T20:07:47Z",
+      "side": 1,
+      "message": "Ack. Followup",
+      "parentUuid": "fe89a5af_96162af8",
       "range": {
         "startLine": 36,
         "startChar": 35,
