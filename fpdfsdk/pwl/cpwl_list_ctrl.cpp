@@ -15,6 +15,8 @@
 #include "fpdfsdk/pwl/cpwl_list_box.h"
 #include "third_party/base/stl_util.h"
 
+CPWL_ListCtrl::NotifyIface::~NotifyIface() = default;
+
 CPWL_ListCtrl::Item::Item() : m_pEdit(std::make_unique<CPWL_EditImpl>()) {
   m_pEdit->SetAlignmentV(1, true);
   m_pEdit->Initialize();
