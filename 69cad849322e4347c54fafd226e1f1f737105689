@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8467e904_039c002b",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-14T23:04:35Z",
+      "side": 1,
+      "message": "Good idea. Done",
+      "parentUuid": "aded474d_08004be3",
+      "revId": "69cad849322e4347c54fafd226e1f1f737105689",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ed596a4_0abea6c9",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-14T22:43:00Z",
       "side": 1,
       "message": "https://google.github.io/styleguide/cppguide.html#Declaration_Order says \"..., constructors and assignment operators, destructor, ...\"",
+      "revId": "69cad849322e4347c54fafd226e1f1f737105689",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21064001_e2132f60",
+        "filename": "fpdfsdk/formfiller/cffl_privatedata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-14T23:04:35Z",
+      "side": 1,
+      "message": "Well, we violate this almost everywhere. But I\u0027ll go with it here.",
+      "parentUuid": "6ed596a4_0abea6c9",
       "revId": "69cad849322e4347c54fafd226e1f1f737105689",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
