@@ -14,8 +14,8 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
-#include "fpdfsdk/pwl/cpwl_edit.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
+#include "fpdfsdk/pwl/ipwl_fillernotify.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 
 class CFFL_FormFiller;
@@ -23,7 +23,7 @@ class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_PageView;
 class CPDFSDK_Widget;
 
-class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
+class CFFL_InteractiveFormFiller final : public IPWL_FillerNotify {
  public:
   explicit CFFL_InteractiveFormFiller(
       CPDFSDK_FormFillEnvironment* pFormFillEnv);
@@ -125,7 +125,7 @@ class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
   using WidgetToFormFillerMap =
       std::map<CPDFSDK_Annot*, std::unique_ptr<CFFL_FormFiller>>;
 
-  // IPWL_Filler_Notify:
+  // IPWL_FillerNotify:
   void QueryWherePopup(const IPWL_SystemHandler::PerWindowData* pAttached,
                        float fPopupMin,
                        float fPopupMax,
