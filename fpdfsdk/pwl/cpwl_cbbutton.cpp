@@ -35,6 +35,13 @@ void CPWL_CBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
   if (!IsVisible() || rectWnd.IsEmpty())
     return;
 
+  if (!IsFloatBigger(rectWnd.right - rectWnd.left,
+                     kComboBoxTriangleHalfLength * 2) ||
+      !IsFloatBigger(rectWnd.top - rectWnd.bottom,
+                     kComboBoxTriangleHalfLength)) {
+    return;
+  }
+
   CFX_PointF ptCenter = GetCenterPoint();
 
   CFX_PointF pt1(ptCenter.x - kComboBoxTriangleHalfLength,
@@ -43,27 +50,23 @@ void CPWL_CBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
                  ptCenter.y + kComboBoxTriangleQuarterLength);
   CFX_PointF pt3(ptCenter.x, ptCenter.y - kComboBoxTriangleQuarterLength);
 
-  if (IsFloatBigger(rectWnd.right - rectWnd.left,
-                    kComboBoxTriangleHalfLength * 2) &&
-      IsFloatBigger(rectWnd.top - rectWnd.bottom,
-                    kComboBoxTriangleHalfLength)) {
-    CFX_PathData path;
-    path.AppendPoint(pt1, FXPT_TYPE::MoveTo);
-    path.AppendPoint(pt2, FXPT_TYPE::LineTo);
-    path.AppendPoint(pt3, FXPT_TYPE::LineTo);
-    path.AppendPoint(pt1, FXPT_TYPE::LineTo);
+  CFX_PathData path;
+  path.AppendPoint(pt1, FXPT_TYPE::MoveTo);
+  path.AppendPoint(pt2, FXPT_TYPE::LineTo);
+  path.AppendPoint(pt3, FXPT_TYPE::LineTo);
+  path.AppendPoint(pt1, FXPT_TYPE::LineTo);
 
-    pDevice->DrawPath(&path, &mtUser2Device, nullptr,
-                      PWL_DEFAULT_BLACKCOLOR.ToFXColor(GetTransparency()), 0,
-                      CFX_FillRenderOptions::EvenOddOptions());
-  }
+  pDevice->DrawPath(&path, &mtUser2Device, nullptr,
+                    PWL_DEFAULT_BLACKCOLOR.ToFXColor(GetTransparency()), 0,
+                    CFX_FillRenderOptions::EvenOddOptions());
 }
 
 bool CPWL_CBButton::OnLButtonDown(uint32_t nFlag, const CFX_PointF& point) {
   CPWL_Wnd::OnLButtonDown(nFlag, point);
 
   SetCapture();
-  if (CPWL_Wnd* pParent = GetParentWindow())
+  CPWL_Wnd* pParent = GetParentWindow();
+  if (pParent)
     pParent->NotifyLButtonDown(this, point);
 
   return true;
