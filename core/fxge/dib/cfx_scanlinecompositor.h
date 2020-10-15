@@ -55,6 +55,24 @@ class CFX_ScanlineCompositor {
                             uint8_t* dst_extra_alpha);
 
  private:
+  class Palette {
+   public:
+    Palette();
+    ~Palette();
+
+    void Reset();
+
+    // These two take ownership of |ptr|.
+    void Set8BitPalette(uint8_t* ptr);
+    void Set32BitPalette(uint32_t* ptr);
+
+    const uint8_t* Get8BitPalette() const;
+    const uint32_t* Get32BitPalette() const;
+
+    std::unique_ptr<uint32_t, FxFreeDeleter> m_pData;
+    size_t m_Width = 4;  // If 1, then |m_pData| is really uint8_t*.
+  };
+
   void InitSourcePalette(FXDIB_Format src_format,
                          FXDIB_Format dest_format,
                          const uint32_t* pSrcPalette);
@@ -64,7 +82,7 @@ class CFX_ScanlineCompositor {
   int m_iTransparency;
   FXDIB_Format m_SrcFormat;
   FXDIB_Format m_DestFormat;
-  std::unique_ptr<uint32_t, FxFreeDeleter> m_pSrcPalette;
+  Palette m_SrcPalette;
   int m_MaskAlpha;
   int m_MaskRed;
   int m_MaskGreen;
