@@ -17,6 +17,7 @@ constexpr char kSymbol[] = "Symbol";
 constexpr char kBookshelfSymbol7[] = "Bookshelf Symbol 7";
 constexpr char kCalibri[] = "Calibri";
 constexpr char kBookshelf[] = "Bookshelf";
+constexpr char kBook[] = "Book";
 
 }  // namespace
 
@@ -78,12 +79,16 @@ TEST_F(CFX_FolderFontInfoTest, TestFindFont) {
                         /*pitch_family=*/2, kCalibri,
                         /*bMatchName=*/true));
 
-  // Find the closest matching font to "Bookself" font that is present in the
+  // Find the closest matching font to "Bookshelf" font that is present in the
   // installed fonts
   font = FindFont(/*weight=*/0, /*bItalic=*/false, /*charset=*/2,
                   /*pitch_family=*/2, kBookshelf, /*bMatchName=*/true);
   ASSERT_TRUE(font);
   EXPECT_EQ(GetFaceName(font), kBookshelfSymbol7);
+
+  // Find "Book" font which no installed font is in the same font family with.
+  EXPECT_FALSE(FindFont(/*weight=*/0, /*bItalic=*/false, /*charset=*/2,
+                        /*pitch_family=*/2, kBook, /*bMatchName=*/true));
 
   // Find "Symbol" font when name matching is false
   font = FindFont(/*weight=*/0, /*bItalic=*/false, /*charset=*/2,
