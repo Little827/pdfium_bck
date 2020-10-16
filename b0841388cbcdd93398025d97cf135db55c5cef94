@@ -52,6 +52,29 @@
       "message": "LG otherwise",
       "revId": "b0841388cbcdd93398025d97cf135db55c5cef94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b408d241_6c962de0",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T21:13:13Z",
+      "side": 1,
+      "message": "nit: uint32_t ?",
+      "range": {
+        "startLine": 494,
+        "startChar": 12,
+        "endLine": 494,
+        "endChar": 26
+      },
+      "revId": "b0841388cbcdd93398025d97cf135db55c5cef94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
