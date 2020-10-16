@@ -236,7 +236,6 @@ CStretchEngine::CStretchEngine(ScanlineComposerIface* pDestBitmap,
       m_SrcBpp(GetBppFromFormat(pSrcBitmap->GetFormat())),
       m_bHasAlpha(GetIsAlphaFromFormat(pSrcBitmap->GetFormat())),
       m_pSource(pSrcBitmap),
-      m_pSrcPalette(pSrcBitmap->GetPaletteData()),
       m_SrcWidth(pSrcBitmap->GetWidth()),
       m_SrcHeight(pSrcBitmap->GetHeight()),
       m_pDestBitmap(pDestBitmap),
@@ -333,7 +332,7 @@ bool CStretchEngine::StartStretchHorz() {
   }
 
   m_InterBuf.resize(m_SrcClip.Height() * m_InterPitch);
-  if (m_pSource && m_bHasAlpha && m_pSource->m_pAlphaMask) {
+  if (m_bHasAlpha && m_pSource->m_pAlphaMask) {
     m_ExtraAlphaBuf.resize(m_SrcClip.Height(), m_ExtraMaskPitch);
     m_DestMaskScanline.resize(m_ExtraMaskPitch);
   }
@@ -443,6 +442,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
         break;
       }
       case TransformMethod::k8BppToManyBpp: {
+        pdfium::span<const uint32_t> src_palette = m_pSource->GetPaletteSpan();
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
           int dest_r_y = 0;
@@ -454,7 +454,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
               return false;
 
             int pixel_weight = *pWeight;
-            unsigned long argb_cmyk = m_pSrcPalette[src_scan[j]];
+            unsigned long argb_cmyk = src_palette[src_scan[j]];
             if (m_DestFormat == FXDIB_Rgb) {
               dest_r_y += pixel_weight * static_cast<uint8_t>(argb_cmyk >> 16);
               dest_g_m += pixel_weight * static_cast<uint8_t>(argb_cmyk >> 8);
@@ -477,6 +477,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
         break;
       }
       case TransformMethod::k8BppToManyBppWithAlpha: {
+        pdfium::span<const uint32_t> src_palette = m_pSource->GetPaletteSpan();
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
           int dest_a = 0;
@@ -490,7 +491,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
 
             int pixel_weight = *pWeight;
             pixel_weight = pixel_weight * src_scan_mask[j] / 255;
-            unsigned long argb_cmyk = m_pSrcPalette[src_scan[j]];
+            unsigned long argb_cmyk = src_palette[src_scan[j]];
             if (m_DestFormat == FXDIB_Rgba) {
               dest_r_y += pixel_weight * static_cast<uint8_t>(argb_cmyk >> 16);
               dest_g_m += pixel_weight * static_cast<uint8_t>(argb_cmyk >> 8);

@@ -83,7 +83,6 @@ class CStretchEngine {
   const int m_SrcBpp;
   const int m_bHasAlpha;
   RetainPtr<CFX_DIBBase> const m_pSource;
-  const uint32_t* m_pSrcPalette;
   const int m_SrcWidth;
   const int m_SrcHeight;
   UnownedPtr<ScanlineComposerIface> const m_pDestBitmap;
