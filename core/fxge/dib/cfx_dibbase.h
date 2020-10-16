@@ -51,9 +51,7 @@ class CFX_DIBBase : public Retainable {
   int GetWidth() const { return m_Width; }
   int GetHeight() const { return m_Height; }
 
-  FXDIB_Format GetFormat() const {
-    return static_cast<FXDIB_Format>(m_AlphaFlag * 0x100 + m_bpp);
-  }
+  FXDIB_Format GetFormat() const { return MakeXRGBFormat(m_AlphaFlag, m_bpp); }
   uint32_t GetPitch() const { return m_Pitch; }
   const uint32_t* GetPalette() const { return m_pPalette.get(); }
   int GetBPP() const { return m_bpp; }
