@@ -33,6 +33,24 @@
       "message": "WDYT of going with std::vector\u003cuint32_t, FxAllocAllocator\u003cuint32_t\u003e\u003e here? Then you can get rid of `m_nElements` and calculate it based on vector::size().",
       "revId": "6d912a74f7fa916ba800306b53c507bc5cd1b93e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d89200_2a0aa49c",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T23:35:36Z",
+      "side": 1,
+      "message": "Nope.  There\u0027s a problem with rounding up to a multiple of 4 in the uint8_t case, where we know there is a table of size 2 in the example that trips up the fuzzer.",
+      "parentUuid": "c0a43708_7cf2e908",
+      "revId": "6d912a74f7fa916ba800306b53c507bc5cd1b93e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
