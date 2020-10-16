@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e2be82_2794ba2e",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3229,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T20:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a942c90_0e730cf5",
+      "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5299e28_68ae46ab",
@@ -88,6 +106,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf6a661_20ac5e96",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T20:13:28Z",
+      "side": 1,
+      "message": "Now it allocates it.",
+      "parentUuid": "31f3b39a_327797c8",
+      "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99fc320f_87fa5aa4",
@@ -101,6 +137,24 @@
       "writtenOn": "2020-10-16T00:59:06Z",
       "side": 1,
       "message": "Maybe use spans in the future?",
+      "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a77a74b_67a78eda",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T20:13:28Z",
+      "side": 1,
+      "message": "Maybe. I worry about the optimizer not being able to prove things are in bounds, and pixel processing is the most expensive thing we do and the one place where even I can admit a need for speed.  I\u0027ll return a span now, but not plumb it down further awaiting your CLS.",
+      "parentUuid": "99fc320f_87fa5aa4",
       "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
