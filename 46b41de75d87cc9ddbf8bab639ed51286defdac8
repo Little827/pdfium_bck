@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65ee1ad_6ea91876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T00:42:16Z",
+      "side": 1,
+      "message": "This trips an assert in debug mode for the test case hit by the fuzzer today.",
+      "revId": "46b41de75d87cc9ddbf8bab639ed51286defdac8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
