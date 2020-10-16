@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7d8c7e_e8b40379",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T22:52:22Z",
+      "side": 1,
+      "message": "Do commas actually occur on your computer(s)? On the Linux machine I\u0027m testing with, no font names have commas in them.",
+      "revId": "b8a4a6db499175e0ad8d897394614a5916accec3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
