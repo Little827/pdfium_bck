@@ -16,6 +16,40 @@
       "message": "Again, not sure if we want to go full-on CHECK() vs. DCHECk(), as the combination of input and output formats hit before will trip it.",
       "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5299e28_68ae46ab",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T00:59:06Z",
+      "side": 1,
+      "message": "Maybe name them TakeFoo(), so this is more obvious?",
+      "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99fc320f_87fa5aa4",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T00:59:06Z",
+      "side": 1,
+      "message": "Maybe use spans in the future?",
+      "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
