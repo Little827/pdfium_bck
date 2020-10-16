@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602833735 -0700\nnonce ALC2d1/f/uXOZMw9sZmObCZxoA9eRRsxD2yMNl6sxcwO4Fk+EkMWb47dHICHCWLbQbsAD6HqeXV7\n\n0000000000000000000000000000000000000000 b0841388cbcdd93398025d97cf135db55c5cef94 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+JTUcACgkQqzYtYVpm\n/Xua5QgAgRo+PgNPbnQ+7W7R2tfwIU3Ct/EGSx7kdld5vTliWROdgdu83ATqE5Us\nqg1JAvf3FfJcH6wlg1yvMPlhHHnqnX4hoZCAroOkheve1tltTQiPp57jpz+fFzmm\nt2bAYupOf8H14OotaZiQtTTWcSHyp1/PnkJcllgdEoGU+uf2Cqlaj1X9jcYoasMA\ngPGD/qd2h/avTPXhML5/LYuZ4xnwf002I9gT+PEL0KP7h9LOszZlulAnaqkX0azJ\nwFIoXWJXeVH/mQo3nBLXH8vQ3jnWtkMFOOHVrEXFzVPGO0Q+1fwmKOVDl5dzvJPD\n6Vk/+BFGFcDp0S4zRmp4Up1xKYXUgQ\u003d\u003d\n\u003dCBu+\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05490ab4_433d4128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T16:57:48Z",
+      "side": 1,
+      "message": "Just doublecheck that we haven\u0027t regressed performance.  Normally the optimizer can pull the bounds checks for most loops, but with this random indexing it ends up costing.",
+      "revId": "b0841388cbcdd93398025d97cf135db55c5cef94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
