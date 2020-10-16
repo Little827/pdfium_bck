@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceed00dd_24a42576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-16T06:17:00Z",
+      "side": 1,
+      "message": "I did some testing on these fonts you mentioned. PDFium can\u0027t always parse and find the correct family names when family names contains space in it, such as \"Noto Sans\". Before CFX_FolderFontInfo::FindFont() gets called, the program already treats the target family name as \"Noto\".\n\nBut the target family name can be successfully extracted for \"NotoSerifTamilSlanted Condensed Black\" and \"Oxygen-Sans Sans-Bold\".\n\nAs for improving name matching inside FindFont(), since the family name we are trying to match doesn\u0027t have spaces or \",\" in it, I will add more test cases of family name with \"-\", and add more installed fonts which contains \",\",\"-\", or spaces in it.\n\nPS: I thought about adding validations for font name with numbers, but the algorithm is unclear and we should avoid introducing too many algorithm changes. (Considering P05 and P052 fonts. They are not in the same family but we can still consider P052 as a potential candidate and let GetSimilarValue() to calculate the similarity level and pick the best one.)",
+      "parentUuid": "bb60aaf1_211d0a41",
+      "revId": "4b6e69e8f17abe6148ec94f83310cb1b2beca6f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ecaa104_a8dcb169",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-16T01:15:20Z",
       "side": 1,
       "message": "This sentence is a bit hard to parse. How about:\n\nFind \"Book\" font is expected to fail, because none of the installed fonts is in the same font family.",
+      "revId": "4b6e69e8f17abe6148ec94f83310cb1b2beca6f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27075a2_c00cb63c",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-16T06:17:00Z",
+      "side": 1,
+      "message": "SG!",
+      "parentUuid": "3ecaa104_a8dcb169",
       "revId": "4b6e69e8f17abe6148ec94f83310cb1b2beca6f0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
