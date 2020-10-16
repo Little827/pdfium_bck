@@ -697,7 +697,7 @@ bool ConvertBuffer_Argb(int bpp,
 }  // namespace
 
 CFX_DIBBase::CFX_DIBBase()
-    : m_Width(0), m_Height(0), m_bpp(0), m_AlphaFlag(0), m_Pitch(0) {}
+    : m_Width(0), m_Height(0), m_bpp(0), m_FormatFlags(0), m_Pitch(0) {}
 
 CFX_DIBBase::~CFX_DIBBase() = default;
 

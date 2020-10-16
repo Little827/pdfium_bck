@@ -36,7 +36,7 @@ bool CFX_DIBitmap::Create(int width,
                           uint32_t pitch) {
   m_pBuffer = nullptr;
   m_bpp = GetBppFromFormat(format);
-  m_AlphaFlag = GetAlphaFlagFromFormat(format);
+  m_FormatFlags = GetFlagsFromFormat(format);
   m_Width = 0;
   m_Height = 0;
   m_Pitch = 0;
@@ -109,7 +109,7 @@ void CFX_DIBitmap::TakeOver(RetainPtr<CFX_DIBitmap>&& pSrcBitmap) {
   pSrcBitmap->m_pBuffer = nullptr;
   pSrcBitmap->m_pAlphaMask = nullptr;
   m_bpp = pSrcBitmap->m_bpp;
-  m_AlphaFlag = pSrcBitmap->m_AlphaFlag;
+  m_FormatFlags = pSrcBitmap->m_FormatFlags;
   m_Width = pSrcBitmap->m_Width;
   m_Height = pSrcBitmap->m_Height;
   m_Pitch = pSrcBitmap->m_Pitch;
@@ -520,7 +520,7 @@ bool CFX_DIBitmap::MultiplyAlpha(int alpha) {
       if (HasAlpha()) {
         m_pAlphaMask->MultiplyAlpha(alpha);
       } else if (IsCmykImage()) {
-        if (!ConvertFormat((FXDIB_Format)(GetFormat() | 0x0200))) {
+        if (!ConvertFormat(AddAlphaToFormat(GetFormat()))) {
           return false;
         }
         m_pAlphaMask->MultiplyAlpha(alpha);
@@ -1216,11 +1216,11 @@ bool CFX_DIBitmap::ConvertFormat(FXDIB_Format dest_format) {
 
   if (dest_format == FXDIB_8bppMask && src_format == FXDIB_8bppRgb &&
       !m_pPalette) {
-    m_AlphaFlag = 1;
+    m_FormatFlags = 1;
     return true;
   }
   if (dest_format == FXDIB_Argb && src_format == FXDIB_Rgb32) {
-    m_AlphaFlag = 2;
+    m_FormatFlags = 2;
     for (int row = 0; row < m_Height; row++) {
       uint8_t* scanline = m_pBuffer.Get() + row * m_Pitch + 3;
       for (int col = 0; col < m_Width; col++) {
@@ -1277,7 +1277,7 @@ bool CFX_DIBitmap::ConvertFormat(FXDIB_Format dest_format) {
   m_pPalette = std::move(pal_8bpp);
   m_pBuffer = std::move(dest_buf);
   m_bpp = GetBppFromFormat(dest_format);
-  m_AlphaFlag = GetAlphaFlagFromFormat(dest_format);
+  m_FormatFlags = GetFlagsFromFormat(dest_format);
   m_Pitch = dest_pitch;
   return true;
 }

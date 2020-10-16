@@ -51,16 +51,14 @@ class CFX_DIBBase : public Retainable {
   int GetWidth() const { return m_Width; }
   int GetHeight() const { return m_Height; }
 
-  FXDIB_Format GetFormat() const {
-    return static_cast<FXDIB_Format>(m_AlphaFlag * 0x100 + m_bpp);
-  }
+  FXDIB_Format GetFormat() const { return MakeFormat(m_FormatFlags, m_bpp); }
   uint32_t GetPitch() const { return m_Pitch; }
   const uint32_t* GetPalette() const { return m_pPalette.get(); }
   int GetBPP() const { return m_bpp; }
 
-  bool IsAlphaMask() const { return !!(m_AlphaFlag & 1); }
-  bool HasAlpha() const { return !!(m_AlphaFlag & 2); }
-  bool IsCmykImage() const { return !!(m_AlphaFlag & 4); }
+  bool IsAlphaMask() const { return !!(m_FormatFlags & 1); }
+  bool HasAlpha() const { return !!(m_FormatFlags & 2); }
+  bool IsCmykImage() const { return !!(m_FormatFlags & 4); }
   bool IsOpaqueImage() const { return !IsAlphaMask() && !HasAlpha(); }
 
   size_t GetPaletteSize() const;
@@ -126,7 +124,7 @@ class CFX_DIBBase : public Retainable {
   int m_Width;
   int m_Height;
   int m_bpp;
-  uint32_t m_AlphaFlag;
+  uint32_t m_FormatFlags;
   uint32_t m_Pitch;
   // TODO(weili): Use std::vector for this.
   std::unique_ptr<uint32_t, FxFreeDeleter> m_pPalette;

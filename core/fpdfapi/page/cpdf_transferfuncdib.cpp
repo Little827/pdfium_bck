@@ -25,7 +25,7 @@ CPDF_TransferFuncDIB::CPDF_TransferFuncDIB(
   m_Height = pSrc->GetHeight();
   FXDIB_Format format = GetDestFormat();
   m_bpp = GetBppFromFormat(format);
-  m_AlphaFlag = GetAlphaFlagFromFormat(format);
+  m_FormatFlags = GetFlagsFromFormat(format);
   m_Pitch = (m_Width * m_bpp + 31) / 32 * 4;
   m_pPalette.reset();
   m_Scanline.resize(m_Pitch);
