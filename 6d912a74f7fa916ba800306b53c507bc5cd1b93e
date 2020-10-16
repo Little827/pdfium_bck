@@ -51,6 +51,24 @@
       "parentUuid": "c0a43708_7cf2e908",
       "revId": "6d912a74f7fa916ba800306b53c507bc5cd1b93e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f9b656_3d870a11",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T23:43:48Z",
+      "side": 1,
+      "message": "Maybe use std::vector\u003cuint8_t, FxAllocAllocator\u003cuint8_t\u003e\u003e internally then?",
+      "parentUuid": "99d89200_2a0aa49c",
+      "revId": "6d912a74f7fa916ba800306b53c507bc5cd1b93e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
