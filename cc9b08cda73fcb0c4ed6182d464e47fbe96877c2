@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31f3b39a_327797c8",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T01:02:33Z",
+      "side": 1,
+      "message": "Or maybe this class should be the one allocating memory?",
+      "parentUuid": "e5299e28_68ae46ab",
+      "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99fc320f_87fa5aa4",
         "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
         "patchSetId": 6
