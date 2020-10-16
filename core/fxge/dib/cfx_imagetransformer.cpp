@@ -106,9 +106,9 @@ FXDIB_Format GetTransformedFormat(const RetainPtr<CFX_DIBBase>& pDrc) {
     return FXDIB_8bppMask;
 
   FXDIB_Format format = pDrc->GetFormat();
-  if (format >= 1025)
+  if (GetIsCmykFromFormat(format))
     return FXDIB_Cmyka;
-  if (format <= 32 || format == FXDIB_Argb)
+  if (GetFlagsFromFormat(format) == 0 || format == FXDIB_Argb)
     return FXDIB_Argb;
   return FXDIB_Rgba;
 }
