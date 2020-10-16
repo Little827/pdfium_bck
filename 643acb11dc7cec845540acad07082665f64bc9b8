@@ -64,6 +64,30 @@
       },
       "revId": "643acb11dc7cec845540acad07082665f64bc9b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ff708d_ce81cb8f",
+        "filename": "core/fxge/dib/cfx_dibbase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T20:52:34Z",
+      "side": 1,
+      "message": "Sure, its ok this way.",
+      "parentUuid": "04a3cfe9_504c3578",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "643acb11dc7cec845540acad07082665f64bc9b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
