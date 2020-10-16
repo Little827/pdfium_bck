@@ -23,6 +23,30 @@
       },
       "revId": "a4edc9a9752f5bda568cc2c3abc507cd02aae023",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b054da_6efab4e1",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T19:40:02Z",
+      "side": 1,
+      "message": "Looking at coverage data, this particular block (lines 1121-1138) has no test coverage. So in that sense, there\u0027s no performance regression.",
+      "parentUuid": "018f4e0b_ce2f6a31",
+      "range": {
+        "startLine": 1127,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 4
+      },
+      "revId": "a4edc9a9752f5bda568cc2c3abc507cd02aae023",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
