@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb60aaf1_211d0a41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T01:36:18Z",
+      "side": 1,
+      "message": "Can we add more tests? There\u0027s a lot of variations to font names. e.g. On one of my computers, I have:\n1) \"Noto Sans Bold\" - family is \"Noto Sans\"\n2) \"NotoSerifTamilSlanted Condensed Black\" - family is \"NotoSerifTamilSlanted\"\n3) \"Oxygen-Sans Sans-Bold\" - family is \"Oxygen-Sans\"\n\nI would like to avoid tweaking the algorithm, which sometimes helps one case, but regresses another. If we have more comprehensive tests, that would make it harder to have regressions.",
+      "revId": "4b6e69e8f17abe6148ec94f83310cb1b2beca6f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ecaa104_a8dcb169",
