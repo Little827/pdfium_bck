@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccaf23a2_754e1273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T22:45:50Z",
+      "side": 1,
+      "message": "Looking good.",
+      "revId": "6d912a74f7fa916ba800306b53c507bc5cd1b93e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a43708_7cf2e908",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T22:45:50Z",
+      "side": 1,
+      "message": "WDYT of going with std::vector\u003cuint32_t, FxAllocAllocator\u003cuint32_t\u003e\u003e here? Then you can get rid of `m_nElements` and calculate it based on vector::size().",
+      "revId": "6d912a74f7fa916ba800306b53c507bc5cd1b93e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
