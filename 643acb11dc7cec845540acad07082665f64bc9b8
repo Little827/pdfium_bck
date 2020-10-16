@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602829753 -0700\nnonce ALC2d1/FTWopcy7mG6NDxKkLak3vznn8Tfu07x2YZDRd6OSYO5hwi/JDTYSZzvNSQzBctELlnw74\n\n0000000000000000000000000000000000000000 643acb11dc7cec845540acad07082665f64bc9b8 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+JPbkACgkQqzYtYVpm\n/XtlTQgAtqnmQNJRGIcB3yVP/DU069duB5SZDpyaqmg4k+N3VJCYHl6pXJA/ABit\nyeLmNP1L+nCHJVKeJDUTD/Yk79wyUJ5d0Zlm3ctUzN0TevCwCIrSsmOYoojJtacJ\nas5cQzPw124S411WQBTJTcj0hMO/JWvSxfMv7q6Sxfv7k96RkKZmsGD0b12AdGYA\npYrQJGnP+K7NeTSUSiKOs3WrtmhYqCVOEYV7KDOfLtEHX4NR2gEYRQq+jBx+TnK1\nh0uORGSLwk5Ujax73mQxFLnN2+w7Fllhr3BMb+SmCJXgVsE4BJl832QIvnU6iVmo\nJfmlfA5roOp8XTS+Yh0jQmULAuFRKA\u003d\u003d\n\u003d69Qx\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "888806f0_fd927927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T16:41:01Z",
+      "side": 1,
+      "message": "LG w/alternate suggestion",
+      "revId": "643acb11dc7cec845540acad07082665f64bc9b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709323d8_ec4ee5af",
+        "filename": "core/fxge/dib/cfx_dibbase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T16:41:01Z",
+      "side": 1,
+      "message": "Maybe this takes a size_t index and returns the item rather than exposing the pallete itself?  Also maybe GetPaletteDataOrDefault(size_t idx, uint32_t default) seems like it would fit into many of the callers.",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "643acb11dc7cec845540acad07082665f64bc9b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
