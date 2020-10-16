@@ -40,6 +40,30 @@
       },
       "revId": "643acb11dc7cec845540acad07082665f64bc9b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a3cfe9_504c3578",
+        "filename": "core/fxge/dib/cfx_dibbase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T19:16:01Z",
+      "side": 1,
+      "message": "I intend for GetPaletteData() to eventually go away in favor of GetPaletteSpan() later down this CL chain. Does that work, or do you still think we should add some form of GetPaletteAtIndex()?",
+      "parentUuid": "709323d8_ec4ee5af",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "643acb11dc7cec845540acad07082665f64bc9b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
