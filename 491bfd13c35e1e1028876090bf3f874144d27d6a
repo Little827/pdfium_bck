@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602833943 -0700\nnonce ALC2d18+h3TTH60aLpFdYREFPuzcQ4OB/Tivr0/kp8W0P+6xzXA6oASdt6dqAApJLlEzuIM2CQ5O\n\n0000000000000000000000000000000000000000 491bfd13c35e1e1028876090bf3f874144d27d6a refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEyBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+JThcACgkQqzYtYVpm\n/Xuepwf4y3ODQuVCq79eOGPo3WYANCHHTV/do0PJ5kWvc2ko29M+2CiYDCba3wZx\nNtDmCWo70crAa4lVyD2F0lSciPtQU/eY/UIDi/QsswUEimNU5+zJnh9Oa5FXV0bz\ng5V5nZjkY2uCaQsQYJtPdhZAFL6s8r2rFlpC44YM2Y0tKojK73LZ4Wcc8wXuUM0i\nqqkSczX1s7bm9WYvYYUBVE3ViKxp1cbn64C+ECqDbp/mPhUhy1k1bZI+/c43Nq3e\nioR23VNdWS6DWpmj10gVCpj/ZBt+1favGic6YkLojDmkz/sclf91YgnhJIPxKpJi\nAz1UxxO4DqgQY0OjSlBT9K89NeuS\n\u003dVeq1\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb29818b_51035c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T08:03:46Z",
+      "side": 1,
+      "message": "Hoping this CL chain will meet your CLs in the middle somewhere.",
+      "revId": "491bfd13c35e1e1028876090bf3f874144d27d6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
