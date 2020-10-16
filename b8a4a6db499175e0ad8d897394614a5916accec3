@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c099c2e_b0711026",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-16T23:37:37Z",
+      "side": 1,
+      "message": "It\u0027s really hard to find fonts with commas in the name. But I did see some examples like \"Arial Black,\"(yes, comma at the end, how weird!), \"Latin Modern Roman, Bold Italic\", \"Latin Modern Mono Light, Bold Oblique\" on my computer. They are a super small portion of all the fonts I have on my workstation.",
+      "parentUuid": "bd7d8c7e_e8b40379",
+      "revId": "b8a4a6db499175e0ad8d897394614a5916accec3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b520df2_80993434",
@@ -124,6 +142,48 @@
       "writtenOn": "2020-10-16T23:22:56Z",
       "side": 1,
       "message": "As another real life example, on my Windows machine, I have:\n\nHelvetica\nHelvetica Bold\nHelvetica-Black\nHelvetica-Black Oblique\n\nIn this case, a test to search for Helvetica-Black is fine, but it would also be very interesting to add a test to search for Helvetica. Will it match Helvetica, or will it maybe match Helvetica-Black?",
+      "parentUuid": "58406483_8df03da1",
+      "revId": "b8a4a6db499175e0ad8d897394614a5916accec3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe41022_ccf35d6a",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-16T23:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11d37d4_e5c8bea1",
+      "range": {
+        "startLine": 128,
+        "startChar": 22,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "b8a4a6db499175e0ad8d897394614a5916accec3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1396ab_c5156835",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-16T23:37:37Z",
+      "side": 1,
+      "message": "Added \"Oxygen\" test case in the new patchset.\n-----------------------------------------------------------------\nAs for the question of matching Helvetica to Helvetica or Helvetica-Black, this is related to function GetSimilarValue(), which calculates a \"similarity score\" for all the installed fonts which pass the check of FindFamilyNameMatch(). This test case is not going to be directly related to this specific fix.\n\nAnd to test how GetSimilarValue(), we will need some real font data so that factors such as weight can be included in the calculation. The current font data \"####_info\" in CFX_FolderFontInfoTest() are not going to work for such testing right now.",
       "parentUuid": "58406483_8df03da1",
       "revId": "b8a4a6db499175e0ad8d897394614a5916accec3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
