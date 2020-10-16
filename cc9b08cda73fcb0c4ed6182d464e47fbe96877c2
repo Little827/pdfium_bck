@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "948e51c3_eddebb6a",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-16T01:08:31Z",
+      "side": 1,
+      "message": "How about a hard check?\n\nif (!m_pData)\n  return nullptr;\n\nCHECK_EQ(m_Width, sizeof(uint8_t));\n...",
+      "revId": "cc9b08cda73fcb0c4ed6182d464e47fbe96877c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5299e28_68ae46ab",
         "filename": "core/fxge/dib/cfx_scanlinecompositor.h",
         "patchSetId": 6
