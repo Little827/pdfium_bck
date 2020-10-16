@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602829696 -0700\nnonce ALC2d194sVYzZzRx+f2IT6bKQ1SxKamSUx12Du0PWN8PPYpVepdiqGmHH0HiG+eAyKvJDEmDmKJ/\n\n0000000000000000000000000000000000000000 637ef7083853eede7ea2c9fdc26eafc6b3d71c63 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+JPYAACgkQqzYtYVpm\n/XtW7AgAqP9z2Owoikt7dLVLVSmjYM0gyFxba1PO3dKcASjZywsmp1QPuo6BvaPG\nT5ww3Rw+wiOzNrdeYH5WcmIkxwDE6N5j3QnaGwzU/Wy8JXQOzKlLAlQ1zN7TrpMG\nSCpSmQamnklN5bj6+NHAJvdKZcAfsmWlbXjuAS7/viff7JUDEAzEeidA2kkVahox\nyt6Vqsb8FNm6XhJ9uY/A++N641jOmswxandv7xJd8zt04JWNWUXJU//Hyw08dyjt\nxOWrTlMKyPve2zLNxIv7R0wYObtv7XvoNp3T+YQnIc0H8DcmnMlInJieBzYhbc4h\nRjLWRlimnXg+sztdubyh+37Td99qbw\u003d\u003d\n\u003dQV9t\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aee67098_231097bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-16T16:33:40Z",
+      "side": 1,
+      "message": "LG w/caveat\n\nInventing additional synonyms for uint32_t like FX_RGB, FX_BGR, FX_BGRA might add additional information to the code about what the bits in a uint32_t mean, and maybe detect misassgiments between formats.  Having said that, we need to ask what does (what would) a FX_DIB pixel format mean? I think the difference between it (should it exist, its existence being implied by the macros) and FX_ARGB is that FX_ARGB is in host byte order, but FX_DIB would always be little endian.  So if that were the case, and if we ever wanted big-endian support (hah!) well, that macro would do something.\n\nOf course, we could say that pixels in FX_DIB are always in host order, but was that the idea? If you dig around and find that this still makes no sense in a big-endian world, then let\u0027s land (PS. The code reads much better without the macro, so there\u0027s that).",
+      "revId": "637ef7083853eede7ea2c9fdc26eafc6b3d71c63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
