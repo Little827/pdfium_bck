@@ -520,7 +520,7 @@ bool CFX_DIBitmap::MultiplyAlpha(int alpha) {
       if (HasAlpha()) {
         m_pAlphaMask->MultiplyAlpha(alpha);
       } else if (IsCmykImage()) {
-        if (!ConvertFormat((FXDIB_Format)(GetFormat() | 0x0200))) {
+        if (!ConvertFormat(AddAlphaToFormat(GetFormat()))) {
           return false;
         }
         m_pAlphaMask->MultiplyAlpha(alpha);
