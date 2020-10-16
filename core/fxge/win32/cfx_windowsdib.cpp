@@ -86,9 +86,7 @@ RetainPtr<CFX_DIBitmap> CFX_WindowsDIB::LoadFromBuf(BITMAPINFO* pbmi,
   }
   int pitch = (width * pbmi->bmiHeader.biBitCount + 31) / 32 * 4;
   auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  FXDIB_Format format = bAlpha
-                            ? (FXDIB_Format)(pbmi->bmiHeader.biBitCount + 0x200)
-                            : (FXDIB_Format)pbmi->bmiHeader.biBitCount;
+  FXDIB_Format format = MakeMaybeAlphaRGBFormat(bAlpha, pbmi->bmiHeader.biBitCount);
   if (!pBitmap->Create(width, height, format))
     return nullptr;
 

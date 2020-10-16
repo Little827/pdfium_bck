@@ -205,7 +205,7 @@ bool CPDF_DIB::Load(CPDF_Document* pDoc, const CPDF_Stream* pStream) {
   LoadPalette();
   if (m_bColorKey) {
     m_bpp = 32;
-    m_AlphaFlag = 2;
+    m_FormatFlags = 2;
     pitch = fxcodec::CalculatePitch32(m_bpp, m_Width);
     if (!pitch.IsValid())
       return false;
@@ -237,7 +237,7 @@ bool CPDF_DIB::ContinueToLoadMask() {
   LoadPalette();
   if (m_bColorKey) {
     m_bpp = 32;
-    m_AlphaFlag = 2;
+    m_FormatFlags = 2;
     pitch = fxcodec::CalculatePitch32(m_bpp, m_Width);
     if (!pitch.IsValid())
       return false;
@@ -1459,7 +1459,7 @@ void CPDF_DIB::SetMaskProperties() {
   m_bpp = 1;
   m_bpc = 1;
   m_nComponents = 1;
-  m_AlphaFlag = 1;
+  m_FormatFlags = 1;
 }
 
 uint32_t CPDF_DIB::Get1BitSetValue() const {
