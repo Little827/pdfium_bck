@@ -33,6 +33,24 @@
       "message": "In cases where FindFont() returns a result, let\u0027s check the result. Like on lines 99-100 and lines 111-112.",
       "revId": "1788abb0c397fa2d6abfadec9b91464224ea86ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e6b281_c26d0287",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-17T00:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed661982_73ae25bd",
+      "revId": "1788abb0c397fa2d6abfadec9b91464224ea86ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
