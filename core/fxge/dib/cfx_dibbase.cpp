@@ -699,8 +699,7 @@ bool ConvertBuffer_Argb(int bpp,
 
 }  // namespace
 
-CFX_DIBBase::CFX_DIBBase()
-    : m_Width(0), m_Height(0), m_bpp(0), m_AlphaFlag(0), m_Pitch(0) {}
+CFX_DIBBase::CFX_DIBBase() = default;
 
 CFX_DIBBase::~CFX_DIBBase() = default;
 
@@ -745,7 +744,8 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::Clone(const FX_RECT* pClip) const {
       copy_len = m_Pitch;
 
     for (int row = rect.top; row < rect.bottom; ++row) {
-      const uint8_t* src_scan = GetScanline(row) + rect.left * m_bpp / 8;
+      const uint8_t* src_scan =
+          GetScanline(row) + rect.left * GetBppFromFormat(m_Format) / 8;
       uint8_t* dest_scan = pNewBitmap->GetWritableScanline(row - rect.top);
       memcpy(dest_scan, src_scan, copy_len);
     }
@@ -792,7 +792,7 @@ size_t CFX_DIBBase::GetPaletteSize() const {
   if (IsAlphaMask())
     return 0;
 
-  switch (m_bpp) {
+  switch (GetBppFromFormat(m_Format)) {
     case 1:
       return 2;
     case 8:
@@ -987,7 +987,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::FlipImage(bool bXFlip, bool bYFlip) const {
 
   pFlipped->SetPalette(GetPaletteSpan());
   uint8_t* pDestBuffer = pFlipped->GetBuffer();
-  int Bpp = m_bpp / 8;
+  int Bpp = GetBppFromFormat(m_Format) / 8;
   for (int row = 0; row < m_Height; ++row) {
     const uint8_t* src_scan = GetScanline(row);
     uint8_t* dest_scan =
@@ -996,7 +996,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::FlipImage(bool bXFlip, bool bYFlip) const {
       memcpy(dest_scan, src_scan, m_Pitch);
       continue;
     }
-    if (m_bpp == 1) {
+    if (GetBppFromFormat(m_Format) == 1) {
       memset(dest_scan, 0, m_Pitch);
       for (int col = 0; col < m_Width; ++col) {
         if (src_scan[col / 8] & (1 << (7 - col % 8))) {
