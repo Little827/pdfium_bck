@@ -446,7 +446,7 @@ std::unique_ptr<RenderDeviceDriverIface> CreateDriver(
   if (g_pdfium_print_mode == WindowsPrintMode::kModeTextOnly)
     return std::make_unique<CTextOnlyPrinterDriver>(hDC);
 
-  return std::make_unique<CPSPrinterDriver>(hDC, g_pdfium_print_mode, false,
+  return std::make_unique<CPSPrinterDriver>(hDC, g_pdfium_print_mode,
                                             pEncoderIface);
 }
 
