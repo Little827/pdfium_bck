@@ -15,7 +15,6 @@
 #include "core/fxge/win32/cgdi_printer_driver.h"
 #include "core/fxge/win32/cps_printer_driver.h"
 #include "core/fxge/win32/ctext_only_printer_driver.h"
-#include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
 namespace {
@@ -427,20 +426,7 @@ bool CFX_Win32FontInfo::GetFontCharset(void* hFont, int* charset) {
   return true;
 }
 
-}  // namespace
-
-WindowsPrintMode g_pdfium_print_mode = WindowsPrintMode::kModeEmf;
-
-CFX_WindowsRenderDevice::CFX_WindowsRenderDevice(
-    HDC hDC,
-    const EncoderIface* pEncoderIface) {
-  SetDeviceDriver(pdfium::WrapUnique(CreateDriver(hDC, pEncoderIface)));
-}
-
-CFX_WindowsRenderDevice::~CFX_WindowsRenderDevice() = default;
-
-// static
-RenderDeviceDriverIface* CFX_WindowsRenderDevice::CreateDriver(
+std::unique_ptr<RenderDeviceDriverIface> CreateDriver(
     HDC hDC,
     const EncoderIface* pEncoderIface) {
   int device_type = ::GetDeviceCaps(hDC, TECHNOLOGY);
@@ -450,15 +436,28 @@ RenderDeviceDriverIface* CFX_WindowsRenderDevice::CreateDriver(
                      device_type == DT_CHARSTREAM || obj_type == OBJ_ENHMETADC;
 
   if (!use_printer)
-    return new CGdiDisplayDriver(hDC);
+    return std::make_unique<CGdiDisplayDriver>(hDC);
 
   if (g_pdfium_print_mode == WindowsPrintMode::kModeEmf ||
       g_pdfium_print_mode == WindowsPrintMode::kModeEmfImageMasks) {
-    return new CGdiPrinterDriver(hDC);
+    return std::make_unique<CGdiPrinterDriver>(hDC);
   }
 
   if (g_pdfium_print_mode == WindowsPrintMode::kModeTextOnly)
-    return new CTextOnlyPrinterDriver(hDC);
+    return std::make_unique<CTextOnlyPrinterDriver>(hDC);
 
-  return new CPSPrinterDriver(hDC, g_pdfium_print_mode, false, pEncoderIface);
+  return std::make_unique<CPSPrinterDriver>(hDC, g_pdfium_print_mode, false,
+                                            pEncoderIface);
 }
+
+}  // namespace
+
+WindowsPrintMode g_pdfium_print_mode = WindowsPrintMode::kModeEmf;
+
+CFX_WindowsRenderDevice::CFX_WindowsRenderDevice(
+    HDC hDC,
+    const EncoderIface* pEncoderIface) {
+  SetDeviceDriver(CreateDriver(hDC, pEncoderIface));
+}
+
+CFX_WindowsRenderDevice::~CFX_WindowsRenderDevice() = default;
