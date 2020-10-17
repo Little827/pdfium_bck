@@ -13,23 +13,39 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/widestring.h"
 
-enum FXDIB_Format {
-  FXDIB_Invalid = 0,
-  FXDIB_1bppRgb = 0x001,
-  FXDIB_8bppRgb = 0x008,
-  FXDIB_Rgb = 0x018,
-  FXDIB_Rgb32 = 0x020,
-  FXDIB_1bppMask = 0x101,
-  FXDIB_8bppMask = 0x108,
-  FXDIB_8bppRgba = 0x208,
-  FXDIB_Rgba = 0x218,
-  FXDIB_Argb = 0x220,
-  FXDIB_1bppCmyk = 0x401,
-  FXDIB_8bppCmyk = 0x408,
-  FXDIB_Cmyk = 0x420,
-  FXDIB_8bppCmyka = 0x608,
-  FXDIB_Cmyka = 0x620,
+enum class FXDIB_Format : uint16_t {
+  kInvalid = 0,
+  k1bppRgb = 0x001,
+  k8bppRgb = 0x008,
+  kRgb = 0x018,
+  kRgb32 = 0x020,
+  k1bppMask = 0x101,
+  k8bppMask = 0x108,
+  k8bppRgba = 0x208,
+  kRgba = 0x218,
+  kArgb = 0x220,
+  k1bppCmyk = 0x401,
+  k8bppCmyk = 0x408,
+  kCmyk = 0x420,
+  k8bppCmyka = 0x608,
+  kCmyka = 0x620,
 };
+
+#define FXDIB_Invalid FXDIB_Format::kInvalid
+#define FXDIB_1bppRgb FXDIB_Format::k1bppRgb
+#define FXDIB_8bppRgb FXDIB_Format::k8bppRgb
+#define FXDIB_Rgb FXDIB_Format::kRgb
+#define FXDIB_Rgb32 FXDIB_Format::kRgb32
+#define FXDIB_1bppMask FXDIB_Format::k1bppMask
+#define FXDIB_8bppMask FXDIB_Format::k8bppMask
+#define FXDIB_8bppRgba FXDIB_Format::k8bppRgba
+#define FXDIB_Rgba FXDIB_Format::kRgba
+#define FXDIB_Argb FXDIB_Format::kArgb
+#define FXDIB_1bppCmyk FXDIB_Format::k1bppCmyk
+#define FXDIB_8bppCmyk FXDIB_Format::k8bppCmyk
+#define FXDIB_Cmyk FXDIB_Format::kCmyk
+#define FXDIB_8bppCmyka FXDIB_Format::k8bppCmyka
+#define FXDIB_Cmyka FXDIB_Format::kCmyka
 
 struct PixelWeight {
   int m_SrcStart;
@@ -107,24 +123,87 @@ constexpr unsigned int FXSYS_GetUnsignedAlpha(float alpha) {
 
 // Bits per pixel, not bytes.
 inline int GetBppFromFormat(FXDIB_Format format) {
-  return format & 0xff;
+  return static_cast<uint16_t>(format) & 0xff;
 }
 
 // AKA bytes per pixel, assuming 8-bits per component.
 inline int GetCompsFromFormat(FXDIB_Format format) {
-  return (format & 0xff) / 8;
+  return (static_cast<uint16_t>(format) & 0xff) / 8;
 }
 
-inline uint32_t GetAlphaFlagFromFormat(FXDIB_Format format) {
-  return (format >> 8) & 0xff;
+inline bool GetIsMaskFromFormat(FXDIB_Format format) {
+  return !!(static_cast<uint16_t>(format) & 0x100);
 }
 
 inline bool GetIsAlphaFromFormat(FXDIB_Format format) {
-  return format & 0x200;
+  return !!(static_cast<uint16_t>(format) & 0x200);
 }
 
 inline bool GetIsCmykFromFormat(FXDIB_Format format) {
-  return format & 0x400;
+  return !!(static_cast<uint16_t>(format) & 0x400);
+}
+
+inline bool HasNoFlags(FXDIB_Format format) {
+  return (static_cast<uint16_t>(format) & 0x700) == 0;
+}
+
+inline FXDIB_Format AddAlphaToFormat(FXDIB_Format format) {
+  switch (format) {
+    case FXDIB_Format::k8bppRgb:
+      return FXDIB_Format::k8bppRgba;
+    case FXDIB_Format::kRgb:
+      return FXDIB_Format::kRgba;
+    case FXDIB_Format::kRgb32:
+      return FXDIB_Format::kArgb;
+    case FXDIB_Format::k8bppRgba:
+      return FXDIB_Format::k8bppRgba;
+    case FXDIB_Format::kRgba:
+      return FXDIB_Format::kRgba;
+    case FXDIB_Format::kArgb:
+      return FXDIB_Format::kArgb;
+    case FXDIB_Format::k8bppCmyk:
+      return FXDIB_Format::k8bppCmyka;
+    case FXDIB_Format::kCmyk:
+      return FXDIB_Format::kCmyka;
+    case FXDIB_Format::k8bppCmyka:
+      return FXDIB_Format::k8bppCmyka;
+    case FXDIB_Format::kCmyka:
+      return FXDIB_Format::kCmyka;
+    default:
+      return FXDIB_Format::kInvalid;
+  }
+}
+
+inline FXDIB_Format MakeRGBFormat(int bpp) {
+  switch (bpp) {
+    case 1:
+      return FXDIB_Format::k1bppRgb;
+    case 8:
+      return FXDIB_Format::k8bppRgb;
+    case 24:
+      return FXDIB_Format::kRgb;
+    case 32:
+      return FXDIB_Format::kRgb32;
+    default:
+      return FXDIB_Format::kInvalid;
+  }
+}
+
+inline FXDIB_Format MakeARGBFormat(int bpp) {
+  switch (bpp) {
+    case 8:
+      return FXDIB_Format::k8bppRgba;
+    case 24:
+      return FXDIB_Format::kRgba;
+    case 32:
+      return FXDIB_Format::kArgb;
+    default:
+      return FXDIB_Format::kInvalid;
+  }
+}
+
+inline FXDIB_Format MakeMaybeAlphaRGBFormat(bool alpha, int bpp) {
+  return alpha ? MakeARGBFormat(bpp) : MakeRGBFormat(bpp);
 }
 
 inline FX_CMYK CmykEncode(int c, int m, int y, int k) {

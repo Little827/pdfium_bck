@@ -195,18 +195,18 @@ bool CPDF_DIB::Load(CPDF_Document* pDoc, const CPDF_Stream* pStream) {
   if (m_bImageMask)
     SetMaskProperties();
   else
-    m_bpp = CalculateBitsPerPixel(m_bpc, m_nComponents);
+    m_Format = MakeRGBFormat(CalculateBitsPerPixel(m_bpc, m_nComponents));
 
-  FX_SAFE_UINT32 pitch = fxcodec::CalculatePitch32(m_bpp, m_Width);
+  FX_SAFE_UINT32 pitch =
+      fxcodec::CalculatePitch32(GetBppFromFormat(m_Format), m_Width);
   if (!pitch.IsValid())
     return false;
 
   m_pLineBuf.reset(FX_Alloc(uint8_t, pitch.ValueOrDie()));
   LoadPalette();
   if (m_bColorKey) {
-    m_bpp = 32;
-    m_AlphaFlag = 2;
-    pitch = fxcodec::CalculatePitch32(m_bpp, m_Width);
+    m_Format = FXDIB_Argb;
+    pitch = fxcodec::CalculatePitch32(GetBppFromFormat(m_Format), m_Width);
     if (!pitch.IsValid())
       return false;
 
@@ -223,10 +223,11 @@ bool CPDF_DIB::ContinueToLoadMask() {
     if (!m_bpc || !m_nComponents)
       return false;
 
-    m_bpp = CalculateBitsPerPixel(m_bpc, m_nComponents);
+    m_Format = MakeRGBFormat(CalculateBitsPerPixel(m_bpc, m_nComponents));
   }
 
-  FX_SAFE_UINT32 pitch = fxcodec::CalculatePitch32(m_bpp, m_Width);
+  FX_SAFE_UINT32 pitch =
+      fxcodec::CalculatePitch32(GetBppFromFormat(m_Format), m_Width);
   if (!pitch.IsValid())
     return false;
 
@@ -236,9 +237,8 @@ bool CPDF_DIB::ContinueToLoadMask() {
   }
   LoadPalette();
   if (m_bColorKey) {
-    m_bpp = 32;
-    m_AlphaFlag = 2;
-    pitch = fxcodec::CalculatePitch32(m_bpp, m_Width);
+    m_Format = FXDIB_Argb;
+    pitch = fxcodec::CalculatePitch32(GetBppFromFormat(m_Format), m_Width);
     if (!pitch.IsValid())
       return false;
     m_pMaskedLine.reset(FX_Alloc(uint8_t, pitch.ValueOrDie()));
@@ -1456,10 +1456,9 @@ bool CPDF_DIB::TransMask() const {
 }
 
 void CPDF_DIB::SetMaskProperties() {
-  m_bpp = 1;
   m_bpc = 1;
   m_nComponents = 1;
-  m_AlphaFlag = 1;
+  m_Format = FXDIB_1bppMask;
 }
 
 uint32_t CPDF_DIB::Get1BitSetValue() const {
