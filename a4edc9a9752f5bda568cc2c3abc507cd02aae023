@@ -71,6 +71,30 @@
       },
       "revId": "a4edc9a9752f5bda568cc2c3abc507cd02aae023",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24587b5_9ab006ac",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-17T01:19:27Z",
+      "side": 1,
+      "message": "Given line 1082 and line 1103, `m_bpc * m_nComponents` is most likely 8 here. Thus CalculateBitsPerPixel(), which uses the same calculation, will return 8. CalculateBitsPerPixel() is often used to set `m_bpp`. If `m_bpp` is set to 8, then CFX_DIBBase::GetPaletteSize() will return 256. If the size of `palette` is 256, then this is safe, because `index` is uint8_t.\n\nI\u0027m not sure the optimizer is smart enough to figure that out. What if I added CHECK_EQ(256, palette.size())? Would that help?",
+      "parentUuid": "e3d53b54_9e1a1455",
+      "range": {
+        "startLine": 1127,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 4
+      },
+      "revId": "a4edc9a9752f5bda568cc2c3abc507cd02aae023",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
