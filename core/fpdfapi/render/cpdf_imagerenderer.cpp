@@ -275,7 +275,8 @@ bool CPDF_ImageRenderer::DrawPatternImage() {
 
   CFX_Matrix new_matrix = GetDrawMatrix(rect);
   CFX_DefaultRenderDevice bitmap_device1;
-  if (!bitmap_device1.Create(rect.Width(), rect.Height(), FXDIB_Rgb32, nullptr))
+  if (!bitmap_device1.Create(rect.Width(), rect.Height(), FXDIB_Format::kRgb32,
+                             nullptr))
     return true;
 
   bitmap_device1.GetBitmap()->Clear(0xffffff);
@@ -300,14 +301,14 @@ bool CPDF_ImageRenderer::DrawPatternImage() {
   }
 
   CFX_DefaultRenderDevice bitmap_device2;
-  if (!bitmap_device2.Create(rect.Width(), rect.Height(), FXDIB_8bppRgb,
-                             nullptr)) {
+  if (!bitmap_device2.Create(rect.Width(), rect.Height(),
+                             FXDIB_Format::k8bppRgb, nullptr)) {
     return true;
   }
   bitmap_device2.GetBitmap()->Clear(0);
   CalculateDrawImage(&bitmap_device1, &bitmap_device2, m_pDIBBase, new_matrix,
                      rect);
-  bitmap_device2.GetBitmap()->ConvertFormat(FXDIB_8bppMask);
+  bitmap_device2.GetBitmap()->ConvertFormat(FXDIB_Format::k8bppMask);
   bitmap_device1.GetBitmap()->MultiplyAlpha(bitmap_device2.GetBitmap());
   bitmap_device1.GetBitmap()->MultiplyAlpha(255);
   m_pRenderStatus->GetRenderDevice()->SetDIBitsWithBlend(
@@ -327,7 +328,8 @@ bool CPDF_ImageRenderer::DrawMaskedImage() {
 
   CFX_Matrix new_matrix = GetDrawMatrix(rect);
   CFX_DefaultRenderDevice bitmap_device1;
-  if (!bitmap_device1.Create(rect.Width(), rect.Height(), FXDIB_Rgb32, nullptr))
+  if (!bitmap_device1.Create(rect.Width(), rect.Height(), FXDIB_Format::kRgb32,
+                             nullptr))
     return true;
 
 #if defined(_SKIA_SUPPORT_)
@@ -346,8 +348,8 @@ bool CPDF_ImageRenderer::DrawMaskedImage() {
     image_render.Continue(nullptr);
   }
   CFX_DefaultRenderDevice bitmap_device2;
-  if (!bitmap_device2.Create(rect.Width(), rect.Height(), FXDIB_8bppRgb,
-                             nullptr))
+  if (!bitmap_device2.Create(rect.Width(), rect.Height(),
+                             FXDIB_Format::k8bppRgb, nullptr))
     return true;
 
 #if defined(_SKIA_SUPPORT_)
@@ -362,7 +364,7 @@ bool CPDF_ImageRenderer::DrawMaskedImage() {
       bitmap_device1.GetBitmap(), bitmap_device2.GetBitmap(), rect.left,
       rect.top, m_BitmapAlpha, m_BlendType);
 #else
-  bitmap_device2.GetBitmap()->ConvertFormat(FXDIB_8bppMask);
+  bitmap_device2.GetBitmap()->ConvertFormat(FXDIB_Format::k8bppMask);
   bitmap_device1.GetBitmap()->MultiplyAlpha(bitmap_device2.GetBitmap());
   if (m_BitmapAlpha < 255)
     bitmap_device1.GetBitmap()->MultiplyAlpha(m_BitmapAlpha);
