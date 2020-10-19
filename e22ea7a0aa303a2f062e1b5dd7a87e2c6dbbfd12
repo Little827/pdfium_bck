@@ -118,6 +118,24 @@
       "parentUuid": "70d65c7e_c77a7d3f",
       "revId": "e22ea7a0aa303a2f062e1b5dd7a87e2c6dbbfd12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d332d27_90f2fcc6",
+        "filename": "core/fxge/cfx_windowsrenderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-19T19:43:38Z",
+      "side": 1,
+      "message": "Ack, I agree with you; I\u0027m just used to seeing globals at the very top of the file, but I don\u0027t recall whether their ordering takes precedent over the anonymous namespace.",
+      "parentUuid": "5e001cf5_663b5d26",
+      "revId": "e22ea7a0aa303a2f062e1b5dd7a87e2c6dbbfd12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
