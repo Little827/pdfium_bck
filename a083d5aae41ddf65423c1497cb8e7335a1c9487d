@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6e38a3_dbb6fd81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T15:41:40Z",
+      "side": 1,
+      "message": "So anyway, I\u0027d be interested in holes you can poke in this.",
+      "revId": "a083d5aae41ddf65423c1497cb8e7335a1c9487d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
