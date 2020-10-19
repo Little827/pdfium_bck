@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1602895984 -0700\nnonce ALC2d19vAEb/mr21ee1GgSYC1S6FAdQqZqzvDQKAU1ZeAjkWBsUvey20VsXG3QQCED9cj1FbSDkc\n\n0000000000000000000000000000000000000000 cc64124117998493804ad47e6bc514677b6b4525 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+KQHAACgkQqzYtYVpm\n/XsVcQgAyUJKujDGm/Rlk9ZfKoi0RPk8/J2RgFF/Xi+UlWlY44sECvZHmMr0ajq7\n45efkmaP0oE7zkVqGt0eM56iEOjNOLbLlZ3mFFP8eo1SZWb+7cgv1sZZ+PSlrBHP\nXEzHBvcyMF4WOHKMT1CEeJ0ZGzJp6trqWv9+lH2WS0bm3Ma9UB0Vu69Fqx4b4mY1\nl9jNm2WIYutkRD6TkXRmi/WGWtTrdh8cXZU+BNYh+AEP2ZxngiGKyNIHuChTqUYb\nt+KZ0bL8cUQ0pjSOT10rTWXLMxFX9r7DcTBAlc9DNTDq9MEA/Y+dKOedj3V7N6og\nxyG4ssrxCAZdLzwhKQ+5Mu00CgtDmw\u003d\u003d\n\u003du8G1\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9b50c8_b8316722",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T17:11:32Z",
+      "side": 1,
+      "message": "merge with declarations above.",
+      "range": {
+        "startLine": 1286,
+        "startChar": 2,
+        "endLine": 1291,
+        "endChar": 32
+      },
+      "revId": "cc64124117998493804ad47e6bc514677b6b4525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bfb865_5ba9d08f",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1421,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T17:11:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1416,
+        "startChar": 2,
+        "endLine": 1421,
+        "endChar": 32
+      },
+      "revId": "cc64124117998493804ad47e6bc514677b6b4525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e9945f_c868f32c",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T17:11:32Z",
+      "side": 1,
+      "message": "ditto ditto",
+      "range": {
+        "startLine": 1474,
+        "startChar": 1,
+        "endLine": 1479,
+        "endChar": 32
+      },
+      "revId": "cc64124117998493804ad47e6bc514677b6b4525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
