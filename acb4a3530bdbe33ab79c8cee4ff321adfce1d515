@@ -17,6 +17,23 @@
       "message": "Optimizer should be able to figure these out?",
       "revId": "acb4a3530bdbe33ab79c8cee4ff321adfce1d515",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56ac0bd_7863cd58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T17:13:41Z",
+      "side": 1,
+      "message": "In particular, any bounds check introduced should be ok perf-wise, as it is once per line, not once per pixel.",
+      "revId": "acb4a3530bdbe33ab79c8cee4ff321adfce1d515",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
