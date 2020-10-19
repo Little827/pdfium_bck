@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d7e4d2_5e53dc1f",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T18:24:59Z",
+      "side": 1,
+      "message": "Code search says this is called from test and on newly created empty dib only.",
+      "parentUuid": "a7193b6f_800f5b9c",
+      "range": {
+        "startLine": 198,
+        "startChar": 15,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "27201c57d74860e873df9d1b6469b84561da5b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "167f6f36_d00f7f29",
