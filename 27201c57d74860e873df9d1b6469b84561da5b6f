@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa138af4_464814b6",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T21:42:36Z",
+      "side": 1,
+      "message": "Add DCHECK_EQ(m_Format, FXDIB_Format::kInvalid) above?",
+      "parentUuid": "11d7e4d2_5e53dc1f",
+      "range": {
+        "startLine": 198,
+        "startChar": 15,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "27201c57d74860e873df9d1b6469b84561da5b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "167f6f36_d00f7f29",
@@ -61,6 +85,30 @@
       "writtenOn": "2020-10-19T15:41:40Z",
       "side": 1,
       "message": "cant be 100% sure here, too.",
+      "range": {
+        "startLine": 226,
+        "startChar": 15,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "27201c57d74860e873df9d1b6469b84561da5b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239d8aa6_2a58a83a",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T21:42:36Z",
+      "side": 1,
+      "message": "Also only for newly created objects.",
+      "parentUuid": "167f6f36_d00f7f29",
       "range": {
         "startLine": 226,
         "startChar": 15,
