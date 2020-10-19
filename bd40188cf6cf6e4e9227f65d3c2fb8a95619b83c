@@ -23,6 +23,30 @@
       },
       "revId": "bd40188cf6cf6e4e9227f65d3c2fb8a95619b83c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e6796a_f3a97bf1",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T20:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "034c19eb_9f107e8e",
+      "range": {
+        "startLine": 908,
+        "startChar": 2,
+        "endLine": 908,
+        "endChar": 5
+      },
+      "revId": "bd40188cf6cf6e4e9227f65d3c2fb8a95619b83c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
