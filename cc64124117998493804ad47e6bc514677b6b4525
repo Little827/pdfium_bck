@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adba7e9c_1ef4fe78",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T18:43:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac9b50c8_b8316722",
+      "range": {
+        "startLine": 1286,
+        "startChar": 2,
+        "endLine": 1291,
+        "endChar": 32
+      },
+      "revId": "cc64124117998493804ad47e6bc514677b6b4525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4bfb865_5ba9d08f",
@@ -48,6 +72,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d83b8da_18d74e75",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1421,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T18:43:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4bfb865_5ba9d08f",
+      "range": {
+        "startLine": 1416,
+        "startChar": 2,
+        "endLine": 1421,
+        "endChar": 32
+      },
+      "revId": "cc64124117998493804ad47e6bc514677b6b4525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03e9945f_c868f32c",
@@ -61,6 +109,30 @@
       "writtenOn": "2020-10-19T17:11:32Z",
       "side": 1,
       "message": "ditto ditto",
+      "range": {
+        "startLine": 1474,
+        "startChar": 1,
+        "endLine": 1479,
+        "endChar": 32
+      },
+      "revId": "cc64124117998493804ad47e6bc514677b6b4525",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88d1498_4a7c37a1",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T18:43:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e9945f_c868f32c",
       "range": {
         "startLine": 1474,
         "startChar": 1,
