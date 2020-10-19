@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2ade4f_a21ce57b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T22:08:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4d7c145_11dd6761",
+      "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9c43053_ce3c673b",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-19T21:42:36Z",
       "side": 1,
       "message": "nit: Excess blank lines.",
+      "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1740438d_d230898d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T22:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c43053_ce3c673b",
       "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -69,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a939ef_f47ded37",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T22:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdf4264d_3a3d7da3",
+      "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f70db9a_36fbdc3a",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-10-19T21:42:36Z",
       "side": 1,
       "message": "Add a TODO to remove these #defines?",
+      "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4d454d_30e8a27a",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-19T22:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f70db9a_36fbdc3a",
       "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
