@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51209afa_ba30b195",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-19T18:13:48Z",
+      "side": 1,
+      "message": "Fixed this in a follow-up CL https://pdfium-review.googlesource.com/75391/.",
+      "parentUuid": "ed82885e_d6c4c39e",
+      "revId": "9ac8448db6d2d993133dbd608fed0be30ed9c29b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6414c9e3_4a747d50",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d0027b_f9096b8d",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-19T18:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6414c9e3_4a747d50",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 73,
+        "endChar": 77
+      },
+      "revId": "9ac8448db6d2d993133dbd608fed0be30ed9c29b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a4afc00_23e38463",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-17T19:29:03Z",
       "side": 1,
       "message": "Existing issue, potentially to fix in another CL: A value of 2 doesn\u0027t match any of the existing FXFONT_FF_* values.",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "9ac8448db6d2d993133dbd608fed0be30ed9c29b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a2d1da_60815e8d",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-19T18:13:48Z",
+      "side": 1,
+      "message": "Added a CL (https://pdfium-review.googlesource.com/75390/) to address this issue  prior to the current CL.",
+      "parentUuid": "0a4afc00_23e38463",
       "range": {
         "startLine": 74,
         "startChar": 15,
