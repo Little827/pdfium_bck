@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30849a14_2a3e35d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-19T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "060c1274_44913aff",
+      "revId": "863cbb8cbbd0bf77aef2888f8bb16d082a283f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59075fad_39ea4ee5",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-19T21:10:51Z",
       "side": 1,
       "message": "Pass by value. https://pdfium.googlesource.com/pdfium.git/+/2f56cfe7/core/fxcrt/string_view_template.h#25",
+      "range": {
+        "startLine": 50,
+        "startChar": 25,
+        "endLine": 50,
+        "endChar": 58
+      },
+      "revId": "863cbb8cbbd0bf77aef2888f8bb16d082a283f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7015f5_e115490b",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-19T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59075fad_39ea4ee5",
       "range": {
         "startLine": 50,
         "startChar": 25,
