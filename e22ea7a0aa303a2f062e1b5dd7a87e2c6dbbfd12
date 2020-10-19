@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcdba8c_69b77a0b",
+        "filename": "core/fxge/cfx_windowsrenderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T18:55:49Z",
+      "side": 1,
+      "message": "Done, but it\u0027s rather pointless. CreateDriver(), by definition, creates classes that inherit from RenderDeviceDriverIface. It would be nearly impossible for some refactoring to cause the declaration for RenderDeviceDriverIface to go missing here.",
+      "parentUuid": "ea233f54_f7ff491f",
+      "range": {
+        "startLine": 429,
+        "startChar": 16,
+        "endLine": 429,
+        "endChar": 39
+      },
+      "revId": "e22ea7a0aa303a2f062e1b5dd7a87e2c6dbbfd12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4e709c1_b11c8694",
@@ -38,6 +62,24 @@
       "writtenOn": "2020-10-19T16:41:42Z",
       "side": 1,
       "message": "There\u0027s no guidance about this in the style guide, but would globals be better above the anonymous namespace?",
+      "revId": "e22ea7a0aa303a2f062e1b5dd7a87e2c6dbbfd12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bd9fa8_d2894a51",
+        "filename": "core/fxge/cfx_windowsrenderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T18:55:49Z",
+      "side": 1,
+      "message": "`g_pdfium_print_mode` is an extern in core/fxge/cfx_windowsrenderdevice.h, so it would be incorrect to put it in an anonymous namespace.",
+      "parentUuid": "f4e709c1_b11c8694",
       "revId": "e22ea7a0aa303a2f062e1b5dd7a87e2c6dbbfd12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
