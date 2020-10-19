@@ -17,6 +17,24 @@
       "message": "Do we want to eventually get rid of these DCHECKs if we\u0027re sure we never need to handle CMYK images?",
       "revId": "5c95f58e6e9a72cb7ea525433fc77d5f0fbda733",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994c82a2_ae0f4615",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-19T19:07:06Z",
+      "side": 1,
+      "message": "I think they should remain, so if anyone does try to pass in a CMYK `pDevice`, they get a warning that it will fail.",
+      "parentUuid": "4576d05a_ce17ec3f",
+      "revId": "5c95f58e6e9a72cb7ea525433fc77d5f0fbda733",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
