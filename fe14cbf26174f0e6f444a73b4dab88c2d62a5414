@@ -201,6 +201,30 @@
       },
       "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "024cd325_b8ccadf8",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-20T19:40:20Z",
+      "side": 1,
+      "message": "Please file some bugs, so we don\u0027t forget.",
+      "parentUuid": "25e30331_db80e269",
+      "range": {
+        "startLine": 882,
+        "startChar": 2,
+        "endLine": 882,
+        "endChar": 15
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
