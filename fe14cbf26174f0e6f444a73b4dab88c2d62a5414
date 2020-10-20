@@ -84,6 +84,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d54de1b7_30bb06a6",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-20T19:13:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "206f5c52_7b2d4eeb",
+      "range": {
+        "startLine": 873,
+        "startChar": 6,
+        "endLine": 873,
+        "endChar": 13
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5565d825_c20dc6bf",
@@ -121,6 +145,30 @@
       "side": 1,
       "message": "I wondered about this too, but maybe for another day. Also, we have 3 different types of rects...",
       "parentUuid": "5565d825_c20dc6bf",
+      "range": {
+        "startLine": 882,
+        "startChar": 2,
+        "endLine": 882,
+        "endChar": 15
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d1c226_76c2a2a7",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-20T19:13:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "500d9ac7_e3f48d71",
       "range": {
         "startLine": 882,
         "startChar": 2,
