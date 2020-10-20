@@ -33,6 +33,24 @@
       "message": "So what do you think?",
       "revId": "4a98c94311b6c08684dd87515853ffa04af47019",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9444d02_dfb16687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-20T22:24:17Z",
+      "side": 1,
+      "message": "It\u0027s hard to tell. Looking at the call stack, most callers end up passing in `BlendMode::kNormal` anyway. I have a couple more tests to run...",
+      "parentUuid": "d9f9f86b_6cc084da",
+      "revId": "4a98c94311b6c08684dd87515853ffa04af47019",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
