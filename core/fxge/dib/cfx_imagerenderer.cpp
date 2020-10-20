@@ -47,8 +47,7 @@ CFX_ImageRenderer::CFX_ImageRenderer(const RetainPtr<CFX_DIBitmap>& pDevice,
       bitmap_clip = FXDIB_SwapClipBox(bitmap_clip, dest_width, dest_height,
                                       m_Matrix.c > 0, m_Matrix.b < 0);
       m_Composer.Compose(pDevice, pClipRgn, bitmap_alpha, mask_color, m_ClipBox,
-                         true, m_Matrix.c > 0, m_Matrix.b < 0, m_bRgbByteOrder,
-                         BlendMode::kNormal);
+                         true, m_Matrix.c > 0, m_Matrix.b < 0, m_bRgbByteOrder);
       m_Stretcher = std::make_unique<CFX_ImageStretcher>(
           &m_Composer, pSource, dest_height, dest_width, bitmap_clip, options);
       if (m_Stretcher->Start())
@@ -75,7 +74,7 @@ CFX_ImageRenderer::CFX_ImageRenderer(const RetainPtr<CFX_DIBitmap>& pDevice,
   FX_RECT bitmap_clip = m_ClipBox;
   bitmap_clip.Offset(-image_rect.left, -image_rect.top);
   m_Composer.Compose(pDevice, pClipRgn, bitmap_alpha, mask_color, m_ClipBox,
-                     false, false, false, m_bRgbByteOrder, BlendMode::kNormal);
+                     false, false, false, m_bRgbByteOrder);
   m_Status = 1;
   m_Stretcher = std::make_unique<CFX_ImageStretcher>(
       &m_Composer, pSource, dest_width, dest_height, bitmap_clip, options);

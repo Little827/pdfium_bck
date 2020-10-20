@@ -21,8 +21,7 @@ void CFX_BitmapComposer::Compose(const RetainPtr<CFX_DIBitmap>& pDest,
                                  bool bVertical,
                                  bool bFlipX,
                                  bool bFlipY,
-                                 bool bRgbByteOrder,
-                                 BlendMode blend_type) {
+                                 bool bRgbByteOrder) {
   m_pBitmap = pDest;
   m_pClipRgn = pClipRgn;
   m_DestLeft = dest_rect.left;
@@ -38,7 +37,6 @@ void CFX_BitmapComposer::Compose(const RetainPtr<CFX_DIBitmap>& pDest,
   m_bFlipX = bFlipX;
   m_bFlipY = bFlipY;
   m_bRgbByteOrder = bRgbByteOrder;
-  m_BlendType = blend_type;
 }
 
 bool CFX_BitmapComposer::SetInfo(int width,
