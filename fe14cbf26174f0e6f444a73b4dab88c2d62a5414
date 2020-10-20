@@ -40,6 +40,29 @@
       },
       "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5565d825_c20dc6bf",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-20T19:01:03Z",
+      "side": 1,
+      "message": "Tom wonders out loud if maybe there should be a FX_SAFE_RECT type containing fout FX_SAFE_INT32_T members, with its own ValueOrDie() method yielding FX_RECT, and with this arithmetic below all implemented as translations, etc on it.",
+      "range": {
+        "startLine": 882,
+        "startChar": 2,
+        "endLine": 882,
+        "endChar": 15
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
