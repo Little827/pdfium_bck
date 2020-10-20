@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7055bd_bd2ab740",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-20T20:41:59Z",
+      "side": 1,
+      "message": "CFX",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "db5bd9ad4f80d20b0588bb09757c1063801f7c29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7df38c43_28c435f8",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-20T20:41:59Z",
+      "side": 1,
+      "message": "Strange that is not just passed in here. This path has test coverage. We can always write more tests later and see if this is doing the right thing or not.",
+      "range": {
+        "startLine": 48,
+        "startChar": 38,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "db5bd9ad4f80d20b0588bb09757c1063801f7c29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
