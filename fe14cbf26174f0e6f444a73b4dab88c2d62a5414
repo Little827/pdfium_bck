@@ -19,6 +19,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ddf2b1_219d5bdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-20T19:12:36Z",
+      "side": 1,
+      "message": "I\u0027ve minimized the amount of changes in patch set 2, to just focus on the undefined behavior.",
+      "parentUuid": "4a208f55_23677bc9",
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "180ca7a4_d596bf1e",
@@ -44,6 +62,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "206f5c52_7b2d4eeb",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-20T19:12:36Z",
+      "side": 1,
+      "message": "Given:\n\nFX_RECT dest_bound(0, 0, m_Width, m_Height);\ndest_rect.Intersect(dest_bound);\n\nIntersecting am empty rectangle will produce an empty rectangle, which would have returned false.",
+      "parentUuid": "180ca7a4_d596bf1e",
+      "range": {
+        "startLine": 873,
+        "startChar": 6,
+        "endLine": 873,
+        "endChar": 13
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5565d825_c20dc6bf",
         "filename": "core/fxge/dib/cfx_dibbase.cpp",
         "patchSetId": 1
@@ -55,6 +97,30 @@
       "writtenOn": "2020-10-20T19:01:03Z",
       "side": 1,
       "message": "Tom wonders out loud if maybe there should be a FX_SAFE_RECT type containing fout FX_SAFE_INT32_T members, with its own ValueOrDie() method yielding FX_RECT, and with this arithmetic below all implemented as translations, etc on it.",
+      "range": {
+        "startLine": 882,
+        "startChar": 2,
+        "endLine": 882,
+        "endChar": 15
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500d9ac7_e3f48d71",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-20T19:12:36Z",
+      "side": 1,
+      "message": "I wondered about this too, but maybe for another day. Also, we have 3 different types of rects...",
+      "parentUuid": "5565d825_c20dc6bf",
       "range": {
         "startLine": 882,
         "startChar": 2,
