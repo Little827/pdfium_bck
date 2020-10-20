@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1603168204 -0700\nnonce ALC2d19sgW+qTgCyhia+aG11EyMkG1SnRm5VpD34WdH4xTzDjvncQKKV38EPeSZTl2e/rvXZ8QVD\n\n0000000000000000000000000000000000000000 fe14cbf26174f0e6f444a73b4dab88c2d62a5414 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+OZ8wACgkQqzYtYVpm\n/Xt5mQf+KiVJePby2yNyiRKqkRWOOJCiD9G0z7Owa/lPvacwHPP43sVMNrDD/x42\nv9maKoDJxL2+9wTIZI0CeBZpDwvMcKTrjHdpcHREICKtNjRRRytjst4WjtEN97Ut\nuU0N0LLzDEIXC0Hc6213Z/kDdeoD6XoWgCbQU8yQySekKhIqLfHaa71hiybHPpvY\nRRFsTfH/oDXRJ+H6XgeXbNOVAZVYJk7lD2WO8qbFybk6a5aoHUT5vMdMV8TYofq8\n6kTNkmYzA5v2GMoNBlTQ34VKIpRF/2fbOtMPsT8uqKIUNtTI9wXOYv+g8cR0E8Gu\nWOo2U0Z+iqvibJph03GsglmSoK7zcw\u003d\u003d\n\u003dzoNj\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180ca7a4_d596bf1e",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-20T18:34:26Z",
+      "side": 1,
+      "message": "would this have produced success with an empty rectangle in the past, but failure now? Is there a differecne?",
+      "range": {
+        "startLine": 873,
+        "startChar": 6,
+        "endLine": 873,
+        "endChar": 13
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
