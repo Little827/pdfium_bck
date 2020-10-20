@@ -177,6 +177,30 @@
       },
       "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e30331_db80e269",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-20T19:15:19Z",
+      "side": 1,
+      "message": "As long as we\u0027re talking rectangles, I\u0027ve always wanted them to be an immutable type such that the calculus of rectangles is always like a \u003d b.intersect(c);",
+      "parentUuid": "d0d1c226_76c2a2a7",
+      "range": {
+        "startLine": 882,
+        "startChar": 2,
+        "endLine": 882,
+        "endChar": 15
+      },
+      "revId": "fe14cbf26174f0e6f444a73b4dab88c2d62a5414",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
