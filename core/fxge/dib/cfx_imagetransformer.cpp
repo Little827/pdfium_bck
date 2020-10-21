@@ -13,6 +13,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "third_party/base/check.h"
 #include "third_party/base/compiler_specific.h"
 #include "third_party/base/notreached.h"
 #include "third_party/base/numerics/safe_conversions.h"
@@ -101,24 +102,17 @@ void bicubic_get_pos_weight(int pos_pixel[],
   v_w[3] = SDP_Table[512 - res_y];
 }
 
-FXDIB_Format GetTransformedFormat(const RetainPtr<CFX_DIBBase>& pDrc) {
-  if (pDrc->IsMask())
+FXDIB_Format GetTransformedFormat(const RetainPtr<CFX_DIBBase>& pSrc) {
+  if (pSrc->IsMask())
     return FXDIB_Format::k8bppMask;
 
-  FXDIB_Format format = pDrc->GetFormat();
-  if (HasNoFlags(format) || format == FXDIB_Format::kArgb)
-    return FXDIB_Format::kArgb;
-  return FXDIB_Format::kRgba;
+  FXDIB_Format format = pSrc->GetFormat();
+  DCHECK(HasNoFlags(format) || format == FXDIB_Format::kArgb);
+  return FXDIB_Format::kArgb;
 }
 
 void WriteMonoResult(uint32_t r_bgra_cmyk, FXDIB_Format format, uint8_t* dest) {
-  if (format == FXDIB_Format::kRgba) {
-    dest[0] = static_cast<uint8_t>(r_bgra_cmyk >> 24);
-    dest[1] = static_cast<uint8_t>(r_bgra_cmyk >> 16);
-    dest[2] = static_cast<uint8_t>(r_bgra_cmyk >> 8);
-  } else {
-    *reinterpret_cast<uint32_t*>(dest) = r_bgra_cmyk;
-  }
+  *reinterpret_cast<uint32_t*>(dest) = r_bgra_cmyk;
 }
 
 // Let the compiler deduce the type for |func|, which cheaper than specifying it
@@ -136,10 +130,6 @@ void WriteColorResult(const F& func,
   if (bHasAlpha) {
     if (format == FXDIB_Format::kArgb) {
       *dest32 = ArgbEncode(func(3), red_y, green_m, blue_c);
-    } else if (format == FXDIB_Format::kRgba) {
-      dest[0] = blue_c;
-      dest[1] = green_m;
-      dest[2] = red_y;
     } else {
       *dest32 = FXCMYK_TODIB(CmykEncode(blue_c, green_m, red_y, func(3)));
     }
