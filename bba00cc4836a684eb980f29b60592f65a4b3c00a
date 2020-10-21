@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d2f753_281bdb45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-21T09:41:31Z",
+      "side": 1,
+      "message": "Methods like CPDF_DIB::TranslateScanline24bpp() convert CMYK images to RGB.",
+      "parentUuid": "6f28bfd1_038db1c2",
+      "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9c43053_ce3c673b",
