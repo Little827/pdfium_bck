@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1603310930 -0700\nnonce ALC2d1+cFez382DvpJR0heetK8/zLjWNA1QfwDZqaRB91xfgt3Lb3As1oQv+SAusZj9YKCl5Egv0\n\n0000000000000000000000000000000000000000 865078e7041c9a9a3e004c66df0e8d8b1046f8b4 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+QlVIACgkQqzYtYVpm\n/XsBEwf+JRGgV7Z/pOVLF189WELYWsVA1XnQEM4c/asCnzW0B8L67H5/ASk1+wiS\nsBFMOC5CxdC+V+P0dLHpWx0VHAkYhSSkbtUsEZEEWT0/cty9I6SrYejQjCEO2El6\nnxv3Hsupixnu4/P/LT9PzxJ4Yk0PwGQM1ZikUTgzgD1GtOox3uRYu8+bg7Q/YP2E\nCziN7Je2IiaobE9f0kYk2iV9XNMbbIT0dGqD+qCVJq6eNB5HFplKE7Dd7v/cO3+4\nDmu1hiUmmvb1b2XIsS+ezRwCsxPel0R28CQSE7qDPl+T6SS+kd/0kP3/ZeSbN6ul\nLlg4UBV/okd/9IZdqU/y1T97fYZatA\u003d\u003d\n\u003dpfm5\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5ae16d_5934a51e",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-21T21:39:55Z",
+      "side": 1,
+      "message": "good thinking.",
+      "range": {
+        "startLine": 29,
+        "startChar": 30,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "865078e7041c9a9a3e004c66df0e8d8b1046f8b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
