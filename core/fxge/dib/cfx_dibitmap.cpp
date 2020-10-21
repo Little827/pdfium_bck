@@ -271,7 +271,7 @@ void CFX_DIBitmap::TransferEqualFormatsOneBPP(
   }
 }
 
-bool CFX_DIBitmap::LoadChannelFromAlpha(
+bool CFX_DIBitmap::SetChannelFromBitmap(
     Channel destChannel,
     const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
   if (!m_pBuffer)
@@ -364,6 +364,15 @@ bool CFX_DIBitmap::LoadChannelFromAlpha(
   return true;
 }
 
+bool CFX_DIBitmap::SetAlphaFromBitmap(
+    const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
+  return SetChannelFromBitmap(Channel::kAlpha, pSrcBitmap);
+}
+
+bool CFX_DIBitmap::SetRedFromBitmap(const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
+  return SetChannelFromBitmap(Channel::kRed, pSrcBitmap);
+}
+
 bool CFX_DIBitmap::SetUniformAlpha(int alpha) {
   if (!m_pBuffer)
     return false;
@@ -409,7 +418,7 @@ bool CFX_DIBitmap::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
   }
 
   if (IsOpaqueImage())
-    return LoadChannelFromAlpha(CFX_DIBitmap::Channel::kAlpha, pSrcBitmap);
+    return SetAlphaFromBitmap(pSrcBitmap);
 
   RetainPtr<CFX_DIBitmap> pSrcClone = pSrcBitmap.As<CFX_DIBitmap>();
   if (pSrcBitmap->GetWidth() != m_Width ||
