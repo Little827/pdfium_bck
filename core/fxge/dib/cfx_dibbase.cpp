@@ -1168,10 +1168,8 @@ bool CFX_DIBBase::ConvertBuffer(
       return false;
     }
     case FXDIB_Format::kRgb:
-    case FXDIB_Format::kRgba: {
       return ConvertBuffer_Rgb(bpp, dest_format, dest_buf, dest_pitch, width,
                                height, pSrcBitmap, src_left, src_top);
-    }
     case FXDIB_Format::kArgb:
     case FXDIB_Format::kRgb32: {
       return ConvertBuffer_Argb(bpp, dest_format, dest_buf, dest_pitch, width,
