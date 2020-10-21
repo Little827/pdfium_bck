@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a9016dd_4c5cf597",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-21T22:17:35Z",
+      "side": 0,
+      "message": "x \u0026\u0026 false is always false.",
+      "range": {
+        "startLine": 1118,
+        "startChar": 24,
+        "endLine": 1118,
+        "endChar": 42
+      },
+      "revId": "b715b00ebbfd53104629c06d98ccf01056ac7b7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
