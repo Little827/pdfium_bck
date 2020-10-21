@@ -16,6 +16,23 @@
       "message": "bleh\n\nobjdump -x out/Asan/pdfium_unittests | grep kConstChar\n0000000005682a20 l     O .data\t0000000000000040              .hidden kConstCharSpan",
       "revId": "f66b790995a62d26e62bc0fc3ac0a89013807a26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33352544_46a1e644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-21T17:30:35Z",
+      "side": 1,
+      "message": "WDYT of changing pdfium::span back to a raw pointer, so it and string view classes can be constexpr?",
+      "revId": "f66b790995a62d26e62bc0fc3ac0a89013807a26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
