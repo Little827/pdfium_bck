@@ -23,6 +23,30 @@
       },
       "revId": "d69c8d0827f6f0ea42b97fdf6644766cddf1d755",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa74104_2a4db343",
+        "filename": "core/fxge/win32/cfx_windowsdib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-21T17:50:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "391271ec_08e27714",
+      "range": {
+        "startLine": 32,
+        "startChar": 63,
+        "endLine": 32,
+        "endChar": 75
+      },
+      "revId": "d69c8d0827f6f0ea42b97fdf6644766cddf1d755",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
