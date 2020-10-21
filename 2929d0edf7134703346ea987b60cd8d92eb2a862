@@ -17,6 +17,29 @@
       "message": "Not sure if we need to modify this method yet. It\u0027s as good of a time as any to add some unit tests, so we can establish a baseline for how the method should behave.",
       "revId": "2929d0edf7134703346ea987b60cd8d92eb2a862",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d4747a_aed4318e",
+        "filename": "core/fxge/dib/cfx_dibbase_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-21T00:16:53Z",
+      "side": 1,
+      "message": "nit: I might split these up into 5 separate TEST()s, rather than indenting, might make finding the line that fails easier.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "2929d0edf7134703346ea987b60cd8d92eb2a862",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
