@@ -33,6 +33,24 @@
       "message": "WDYT of changing pdfium::span back to a raw pointer, so it and string view classes can be constexpr?",
       "revId": "f66b790995a62d26e62bc0fc3ac0a89013807a26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04520f0_8e6c4ea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-21T18:12:19Z",
+      "side": 1,
+      "message": "My plan was to add a template parameter that would default to UnownedPtr\u003cT\u003e to pdfium::span\u0027s template, then you could have using UnsafeSpan\u003cT\u003e \u003d span\u003cT, T*\u003e,\nwith appropriate conversions.\n\nBut that\u0027s more work than I was in the mood for.  I\u0027ll be back.",
+      "parentUuid": "33352544_46a1e644",
+      "revId": "f66b790995a62d26e62bc0fc3ac0a89013807a26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
