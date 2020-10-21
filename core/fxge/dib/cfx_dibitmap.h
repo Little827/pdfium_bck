@@ -68,7 +68,7 @@ class CFX_DIBitmap : public CFX_DIBBase {
 
   bool LoadChannelFromAlpha(Channel destChannel,
                             const RetainPtr<CFX_DIBBase>& pSrcBitmap);
-  bool LoadChannel(Channel destChannel, int value);
+  bool SetUniformAlpha(int value);
 
   bool MultiplyAlpha(int alpha);
   bool MultiplyAlpha(const RetainPtr<CFX_DIBBase>& pSrcBitmap);
