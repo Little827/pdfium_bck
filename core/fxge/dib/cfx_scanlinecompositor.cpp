@@ -2753,8 +2753,12 @@ bool CFX_ScanlineCompositor::Init(FXDIB_Format dest_format,
   if (GetBppFromFormat(dest_format) == 1)
     return false;
 
-  if (m_bRgbByteOrder && m_DestFormat == FXDIB_Format::k8bppMask)
-    return false;
+  if (m_bRgbByteOrder) {
+    if (m_DestFormat == FXDIB_Format::k8bppMask)
+      return false;
+    if (GetBppFromFormat(m_DestFormat) == 8)
+      return false;
+  }
 
   if (m_SrcFormat == FXDIB_Format::k1bppMask ||
       m_SrcFormat == FXDIB_Format::k8bppMask) {
