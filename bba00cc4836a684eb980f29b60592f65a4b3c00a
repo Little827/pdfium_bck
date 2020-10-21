@@ -72,6 +72,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb58f430_ae622b57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-21T16:28:16Z",
+      "side": 1,
+      "message": "So are you saying that these can be removed because we deal with them at a higher layer? \n\nAlso, I had imagined the next (eventual) steps would be to remove the functions that return properties of these types like GetIsCmykFromFormat() and list the cases explicitly by enum name that we\u0027d like to handle.  Most of these bugs seem to be that the logic is overly broad in determining which types can be handled by which routines.  In some sense, a double-switch might be the most strict\n\nswitch (dest_format) {\n  case ...:\n    switch (src_format) {\n      case ...:\n\n\nThoughts?",
+      "parentUuid": "b8d2f753_281bdb45",
+      "revId": "bba00cc4836a684eb980f29b60592f65a4b3c00a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9c43053_ce3c673b",
