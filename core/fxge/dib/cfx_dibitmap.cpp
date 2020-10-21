@@ -17,12 +17,6 @@
 #include "core/fxge/dib/cfx_scanlinecompositor.h"
 #include "third_party/base/notreached.h"
 
-namespace {
-
-constexpr int8_t kChannelOffset[] = {0, 2, 1, 0, 0, 1, 2, 3, 3};
-
-}  // namespace
-
 CFX_DIBitmap::CFX_DIBitmap() = default;
 
 bool CFX_DIBitmap::Create(int width, int height, FXDIB_Format format) {
@@ -271,7 +265,7 @@ void CFX_DIBitmap::TransferEqualFormatsOneBPP(
   }
 }
 
-bool CFX_DIBitmap::LoadChannelFromAlpha(
+bool CFX_DIBitmap::SetChannelFromBitmap(
     Channel destChannel,
     const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
   if (!m_pBuffer)
@@ -288,19 +282,21 @@ bool CFX_DIBitmap::LoadChannelFromAlpha(
   }
   int srcOffset = pSrcBitmap->GetFormat() == FXDIB_Format::kArgb ? 3 : 0;
   int destOffset = 0;
-  if (destChannel == CFX_DIBitmap::Channel::kAlpha) {
+  if (destChannel == Channel::kAlpha) {
     if (IsMask()) {
       if (!ConvertFormat(FXDIB_Format::k8bppMask))
         return false;
-    } else {
-      if (!ConvertFormat(IsCmykImage() ? FXDIB_Format::kCmyka
-                                       : FXDIB_Format::kArgb)) {
+    } else if (IsCmykImage()) {
+      if (!ConvertFormat(FXDIB_Format::kCmyka))
         return false;
-      }
-      if (GetFormat() == FXDIB_Format::kArgb)
-        destOffset = 3;
+    } else {
+      if (!ConvertFormat(FXDIB_Format::kArgb))
+        return false;
     }
+    if (GetFormat() == FXDIB_Format::kArgb)
+      destOffset = 3;
   } else {
+    ASSERT(destChannel == Channel::kRed);
     if (IsMask())
       return false;
 
@@ -321,7 +317,7 @@ bool CFX_DIBitmap::LoadChannelFromAlpha(
         }
       }
     }
-    destOffset = kChannelOffset[static_cast<size_t>(destChannel)];
+    destOffset = 2;
   }
   if (pSrcClone->m_pAlphaMask) {
     RetainPtr<CFX_DIBBase> pAlphaMask = pSrcClone->m_pAlphaMask;
@@ -346,7 +342,7 @@ bool CFX_DIBitmap::LoadChannelFromAlpha(
     pSrcClone = pSrcMatched;
   }
   RetainPtr<CFX_DIBitmap> pDst(this);
-  if (destChannel == CFX_DIBitmap::Channel::kAlpha && m_pAlphaMask) {
+  if (destChannel == Channel::kAlpha && m_pAlphaMask) {
     pDst = m_pAlphaMask;
     destOffset = 0;
   }
@@ -362,6 +358,15 @@ bool CFX_DIBitmap::LoadChannelFromAlpha(
     }
   }
   return true;
+}
+
+bool CFX_DIBitmap::SetAlphaFromBitmap(
+    const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
+  return SetChannelFromBitmap(Channel::kAlpha, pSrcBitmap);
+}
+
+bool CFX_DIBitmap::SetRedFromBitmap(const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
+  return SetChannelFromBitmap(Channel::kRed, pSrcBitmap);
 }
 
 bool CFX_DIBitmap::SetUniformAlpha(int alpha) {
@@ -409,7 +414,7 @@ bool CFX_DIBitmap::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
   }
 
   if (IsOpaqueImage())
-    return LoadChannelFromAlpha(CFX_DIBitmap::Channel::kAlpha, pSrcBitmap);
+    return SetAlphaFromBitmap(pSrcBitmap);
 
   RetainPtr<CFX_DIBitmap> pSrcClone = pSrcBitmap.As<CFX_DIBitmap>();
   if (pSrcBitmap->GetWidth() != m_Width ||
