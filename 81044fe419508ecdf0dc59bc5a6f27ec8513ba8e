@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3fbd76_477d38c6",
+        "filename": "core/fxge/dib/cfx_imagetransformer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T23:06:31Z",
+      "side": 0,
+      "message": "Now always true since it was implemented as return !IsBicubic().",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "81044fe419508ecdf0dc59bc5a6f27ec8513ba8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
