@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03a8faa_2ad93216",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T00:40:22Z",
+      "side": 1,
+      "message": "https://google.github.io/styleguide/cppguide.html#Loops_and_Switch_Statements doesn\u0027t say that, but I can put it back for consistency.",
+      "parentUuid": "b329a7ad_c2cd772d",
+      "range": {
+        "startLine": 1170,
+        "startChar": 23,
+        "endLine": 1170,
+        "endChar": 27
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d56da595_fd079b6c",
@@ -71,6 +95,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c690918_112895fd",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T00:40:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6dff5c1_8b586160",
+      "range": {
+        "startLine": 109,
+        "startChar": 56,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb7bd34_2461ce3c",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T00:40:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d56da595_fd079b6c",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a47cb8_fb31ee3f",
@@ -84,6 +156,30 @@
       "writtenOn": "2020-10-22T00:29:36Z",
       "side": 1,
       "message": "nit: pre-existing: multiple evaluation of CmykEncode() and func(3) possible when macro is expanded?",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 28
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb6df12_a70c794a",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T00:40:22Z",
+      "side": 1,
+      "message": "I think this is dead code. Will remove in another CL.",
+      "parentUuid": "a3a47cb8_fb31ee3f",
       "range": {
         "startLine": 129,
         "startChar": 16,
