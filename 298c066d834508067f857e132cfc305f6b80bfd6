@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9954ec_0c11513f",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T00:00:31Z",
+      "side": 0,
+      "message": "Evals to true for k1bppMask and k8bppMask.",
+      "revId": "298c066d834508067f857e132cfc305f6b80bfd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3f0457_571ed9b6",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T00:00:31Z",
+      "side": 0,
+      "message": "Evals to true for everything but kRgba.",
+      "revId": "298c066d834508067f857e132cfc305f6b80bfd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2271b14f_c1d8dfba",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T00:00:31Z",
+      "side": 0,
+      "message": "Only way to get this is to have kRgba in the first place.",
+      "revId": "298c066d834508067f857e132cfc305f6b80bfd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
