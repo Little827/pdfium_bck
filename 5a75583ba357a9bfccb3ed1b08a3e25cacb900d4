@@ -17,6 +17,24 @@
       "message": "Uh, I hope the last 2 cleanup CLs were at least useful as demonstration for how to write better code. It suddenly dawned on me that this code doesn\u0027t need more cleanup, it just needs to be deleted.",
       "revId": "5a75583ba357a9bfccb3ed1b08a3e25cacb900d4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b71dae_42604cff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T23:12:08Z",
+      "side": 1,
+      "message": "The bad smell is that none of the CFX_WindowsDIB::LoadFrom* functions returns CFX_WindowsDIB. They all return CFX_DIBitmap.",
+      "parentUuid": "930d5b34_106adfed",
+      "revId": "5a75583ba357a9bfccb3ed1b08a3e25cacb900d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
