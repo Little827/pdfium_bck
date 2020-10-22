@@ -73,8 +73,7 @@ FXDIB_Format MakeRGBFormat(int bpp) {
 FXDIB_ResampleOptions::FXDIB_ResampleOptions() = default;
 
 bool FXDIB_ResampleOptions::HasAnyOptions() const {
-  return bInterpolateBilinear || bInterpolateBicubic || bHalftone ||
-         bNoSmoothing || bLossy;
+  return bInterpolateBilinear || bHalftone || bNoSmoothing || bLossy;
 }
 
 FX_RECT FXDIB_SwapClipBox(const FX_RECT& clip,
