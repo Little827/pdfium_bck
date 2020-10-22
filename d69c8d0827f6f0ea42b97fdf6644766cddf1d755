@@ -47,6 +47,30 @@
       },
       "revId": "d69c8d0827f6f0ea42b97fdf6644766cddf1d755",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "906434fa_0b71b4e7",
+        "filename": "core/fxge/win32/cfx_windowsdib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T23:09:25Z",
+      "side": 1,
+      "message": "I started refactoring this code, but then I realized it\u0027s all dead code. https://pdfium-review.googlesource.com/c/pdfium/+/75631",
+      "parentUuid": "6aa74104_2a4db343",
+      "range": {
+        "startLine": 32,
+        "startChar": 63,
+        "endLine": 32,
+        "endChar": 75
+      },
+      "revId": "d69c8d0827f6f0ea42b97fdf6644766cddf1d755",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
