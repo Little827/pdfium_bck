@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49960156_f35d18db",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T20:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0db317_1c8164cf",
+      "range": {
+        "startLine": 534,
+        "startChar": 46,
+        "endLine": 534,
+        "endChar": 54
+      },
+      "revId": "dfe5ec5aa9db0164ca476fa88bafec934f06d0bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47026d0b_ff59d679",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "087a7b29_a05bf707",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T20:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47026d0b_ff59d679",
+      "range": {
+        "startLine": 571,
+        "startChar": 47,
+        "endLine": 571,
+        "endChar": 53
+      },
+      "revId": "dfe5ec5aa9db0164ca476fa88bafec934f06d0bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9a950dd_5b0015fc",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-22T20:54:58Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 685,
+        "startChar": 47,
+        "endLine": 685,
+        "endChar": 53
+      },
+      "revId": "dfe5ec5aa9db0164ca476fa88bafec934f06d0bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452fe506_d5ad4104",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T20:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a950dd_5b0015fc",
       "range": {
         "startLine": 685,
         "startChar": 47,
