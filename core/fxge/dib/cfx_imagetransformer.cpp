@@ -564,5 +564,5 @@ bool CFX_ImageTransformer::IsBilinear() const {
 }
 
 bool CFX_ImageTransformer::IsBiCubic() const {
-  return m_ResampleOptions.bInterpolateBicubic;
+  return false;
 }

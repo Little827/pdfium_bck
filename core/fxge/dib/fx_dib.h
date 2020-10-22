@@ -44,7 +44,6 @@ struct FXDIB_ResampleOptions {
   bool HasAnyOptions() const;
 
   bool bInterpolateBilinear = false;
-  bool bInterpolateBicubic = false;
   bool bHalftone = false;
   bool bNoSmoothing = false;
   bool bLossy = false;

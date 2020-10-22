@@ -43,7 +43,7 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
                                         const FXDIB_ResampleOptions& options) {
   // Help the compiler realize that these can't change during a loop iteration:
   const bool bilinear = options.bInterpolateBilinear;
-  const bool bicubic = options.bInterpolateBicubic;
+  const bool bicubic = false;
 
   m_WeightTables.clear();
   m_dwWeightTablesSize = 0;
@@ -260,8 +260,7 @@ CStretchEngine::CStretchEngine(ScanlineComposerIface* pDestBitmap,
   if (options.bNoSmoothing) {
     m_ResampleOptions.bNoSmoothing = true;
   } else {
-    bool bInterpol =
-        options.bInterpolateBilinear || options.bInterpolateBicubic;
+    bool bInterpol = options.bInterpolateBilinear || false;
     if (!bInterpol && abs(dest_width) != 0 &&
         abs(dest_height) / 8 < static_cast<long long>(m_SrcWidth) *
                                    m_SrcHeight / abs(dest_width)) {
@@ -355,7 +354,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
     return true;
 
   // Help the compiler realize that this can't change during a loop iteration:
-  const bool bicubic = m_ResampleOptions.bInterpolateBicubic;
+  const bool bicubic = false;
 
   int Bpp = m_DestBpp / 8;
   static const int kStrechPauseRows = 10;
@@ -597,7 +596,7 @@ void CStretchEngine::StretchVert() {
     return;
 
   // Help the compiler realize that this can't change during a loop iteration:
-  const bool bicubic = m_ResampleOptions.bInterpolateBicubic;
+  const bool bicubic = false;
 
   const int DestBpp = m_DestBpp / 8;
   for (int row = m_DestClip.top; row < m_DestClip.bottom; ++row) {
