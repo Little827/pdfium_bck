@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985fd5f6_d08a79e2",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T19:16:20Z",
+      "side": 1,
+      "message": "If ConvertFormat(foo) succeeds, then GetFormat() will return foo. So maybe just the assignment to `destOffset` can remain inside the block with ConvertFormat(FXDIB_Format::kArgb)? Or maybe that plus DCHECK_EQ(GetFormat(), FXDIB_Format::kArgb)?",
+      "revId": "a1bdd680feabbb5e7da5acf35a2fbcc236a40c55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047d151f_2d4960ba",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T19:16:20Z",
+      "side": 1,
+      "message": "WDYT about trying to use DCHECK() and friends in new code? This can become DCHECK_EQ().",
+      "revId": "a1bdd680feabbb5e7da5acf35a2fbcc236a40c55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
