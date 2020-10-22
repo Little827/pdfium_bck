@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1603324730 -0700\nnonce ALC2d18LgEiInbfjxFF9QzessLn8CCF/aEz2qc8G+9MN7Y9QrL9U0w1s0uVyRx5Ms7AC14ftuuAN\n\n0000000000000000000000000000000000000000 caff13f9105495f401408297521f9093eaa9696f refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl+QyzoACgkQqzYtYVpm\n/Xv0JQgAwbkPUsjmMu8Ic9rLQ1DGfHI6pkNhxurlmzggJxELcyS+Acf6FwcWI9bN\nSnTgqcRbSzHLAAZvsLbTa4szVuG+Pd9gobWr6kBpUUuid9hdbTSp9pri8orRki2j\ndYhiimG+y8F1mr6of60R24SrlQPpzmHt07Nj8b74VKESX9lqkmeEnCbEJvyYIGm8\nbKz6aLRw4vOXCKVyZk3+DwUlVJjJM4UFVJXykObDdxG/011CxAgDG4kcUgKR8DnX\nQeiBfoW61NYB9IDWR0ObtYyQym56Syi/JBoGO2GWkvAWkl2XUJ6F/EZMnd1fQE/Z\ncG7rfvsAkSwhJRG0sJZjiyLUg1cD6A\u003d\u003d\n\u003dhlGU\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b329a7ad_c2cd772d",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T00:29:36Z",
+      "side": 1,
+      "message": "nit: is there some style rule that says if any of the case statements have braces, then they all get braces?",
+      "range": {
+        "startLine": 1170,
+        "startChar": 23,
+        "endLine": 1170,
+        "endChar": 27
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56da595_fd079b6c",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T00:29:36Z",
+      "side": 1,
+      "message": "nit: inline at call sites?",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6dff5c1_8b586160",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T00:29:36Z",
+      "side": 1,
+      "message": "nit: Unused argument",
+      "range": {
+        "startLine": 109,
+        "startChar": 56,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a47cb8_fb31ee3f",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T00:29:36Z",
+      "side": 1,
+      "message": "nit: pre-existing: multiple evaluation of CmykEncode() and func(3) possible when macro is expanded?",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 28
+      },
+      "revId": "caff13f9105495f401408297521f9093eaa9696f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
