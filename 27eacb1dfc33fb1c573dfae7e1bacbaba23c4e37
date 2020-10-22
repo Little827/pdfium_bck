@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac2244c_b8dc78f5",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T00:38:37Z",
+      "side": 0,
+      "message": "nit: does this now become unused, too?",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "27eacb1dfc33fb1c573dfae7e1bacbaba23c4e37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
