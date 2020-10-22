@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5273fa_1473ba00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T23:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac9a3ed_f9090dde",
+      "revId": "05cb37e00badb4167057c56486e80b46faddee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "543608ca_2ce6f5e9",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18b9228_8157cd8a",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T23:27:08Z",
+      "side": 1,
+      "message": "Gone.  |1| is a perfectly fine literal for the one place it is used.",
+      "parentUuid": "543608ca_2ce6f5e9",
+      "revId": "05cb37e00badb4167057c56486e80b46faddee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "892ff351_3379cb89",
@@ -48,6 +84,30 @@
       "writtenOn": "2020-10-22T23:20:18Z",
       "side": 1,
       "message": "Just get rid of this?",
+      "range": {
+        "startLine": 181,
+        "startChar": 9,
+        "endLine": 181,
+        "endChar": 18
+      },
+      "revId": "05cb37e00badb4167057c56486e80b46faddee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8cc150d_2dfa8526",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-22T23:27:08Z",
+      "side": 1,
+      "message": "Done. As in removed local variable.  Ideally, I\u0027d like to get rid of all downsampling because it it ugly looking, but would change appearance and tests, I think",
+      "parentUuid": "892ff351_3379cb89",
       "range": {
         "startLine": 181,
         "startChar": 9,
