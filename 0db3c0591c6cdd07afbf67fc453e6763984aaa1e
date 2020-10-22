@@ -63,6 +63,30 @@
       },
       "revId": "0db3c0591c6cdd07afbf67fc453e6763984aaa1e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3701cd08_8631c894",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-22T19:26:36Z",
+      "side": 1,
+      "message": "Ack. Still LGTM.",
+      "parentUuid": "0a578371_b9f3a93c",
+      "range": {
+        "startLine": 987,
+        "startChar": 32,
+        "endLine": 987,
+        "endChar": 53
+      },
+      "revId": "0db3c0591c6cdd07afbf67fc453e6763984aaa1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
