@@ -82,9 +82,6 @@ class CFX_ImageTransformer {
   void CalcMono(const CalcData& cdata);
   void CalcColor(const CalcData& cdata, FXDIB_Format format, int Bpp);
 
-  bool IsBilinear() const;
-  bool IsBiCubic() const;
-
   RetainPtr<CFX_DIBBase> const m_pSrc;
   const CFX_Matrix m_matrix;
   FX_RECT m_StretchClip;
