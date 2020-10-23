@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bf3c33_9ad051aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-23T18:38:22Z",
+      "side": 1,
+      "message": "Yes, it seems correct, and it seems better, so +1 if you\u0027d like, but I think it can be better still.",
+      "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f87fb79_46d985cc",
@@ -37,6 +54,30 @@
       "writtenOn": "2020-10-23T16:23:24Z",
       "side": 1,
       "message": "nit: can these still be CMYK components? If not, drop the _c _m _y _k etc.",
+      "range": {
+        "startLine": 353,
+        "startChar": 16,
+        "endLine": 353,
+        "endChar": 18
+      },
+      "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719d467a_daecc871",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-23T18:38:22Z",
+      "side": 1,
+      "message": "NM, looks like they can be the more I study this.",
+      "parentUuid": "a30e88a3_2c2b4a49",
       "range": {
         "startLine": 353,
         "startChar": 16,
@@ -112,6 +153,30 @@
         "startChar": 2,
         "endLine": 373,
         "endChar": 13
+      },
+      "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fdd3de_9ac69fd3",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-23T18:38:22Z",
+      "side": 1,
+      "message": "Alternatively, if we remove the local |func| and cram this into the DoBilienarLoop() call, then the return is more obvious and the result\nlooks more JS-like in some sense,",
+      "parentUuid": "65f19f44_a681595d",
+      "range": {
+        "startLine": 373,
+        "startChar": 6,
+        "endLine": 373,
+        "endChar": 12
       },
       "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
