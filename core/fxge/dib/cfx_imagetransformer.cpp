@@ -48,39 +48,15 @@ uint8_t bilinear_interpol(const uint8_t* buf,
   return (r_pos_0 * (255 - res_y) + r_pos_1 * res_y) >> 8;
 }
 
-class CPDF_FixedMatrix {
+class CFX_BilinearMatrix {
  public:
-  explicit CPDF_FixedMatrix(const CFX_Matrix& src)
+  explicit CFX_BilinearMatrix(const CFX_Matrix& src)
       : a(FXSYS_roundf(src.a * kBase)),
         b(FXSYS_roundf(src.b * kBase)),
         c(FXSYS_roundf(src.c * kBase)),
         d(FXSYS_roundf(src.d * kBase)),
         e(FXSYS_roundf(src.e * kBase)),
         f(FXSYS_roundf(src.f * kBase)) {}
-
-  void Transform(int x, int y, int* x1, int* y1) const {
-    std::pair<float, float> val = TransformInternal(x, y);
-    *x1 = pdfium::base::saturated_cast<int>(val.first / kBase);
-    *y1 = pdfium::base::saturated_cast<int>(val.second / kBase);
-  }
-
- protected:
-  std::pair<float, float> TransformInternal(float x, float y) const {
-    return std::make_pair(a * x + c * y + e + kBase / 2,
-                          b * x + d * y + f + kBase / 2);
-  }
-
-  const int a;
-  const int b;
-  const int c;
-  const int d;
-  const int e;
-  const int f;
-};
-
-class CFX_BilinearMatrix final : public CPDF_FixedMatrix {
- public:
-  explicit CFX_BilinearMatrix(const CFX_Matrix& src) : CPDF_FixedMatrix(src) {}
 
   void Transform(int x, int y, int* x1, int* y1, int* res_x, int* res_y) const {
     std::pair<float, float> val = TransformInternal(x, y);
@@ -94,6 +70,19 @@ class CFX_BilinearMatrix final : public CPDF_FixedMatrix {
     if (*res_y < 0 && *res_y > -kBase)
       *res_y = kBase + *res_y;
   }
+
+ private:
+  std::pair<float, float> TransformInternal(float x, float y) const {
+    return std::make_pair(a * x + c * y + e + kBase / 2,
+                          b * x + d * y + f + kBase / 2);
+  }
+
+  const int a;
+  const int b;
+  const int c;
+  const int d;
+  const int e;
+  const int f;
 };
 
 bool InStretchBounds(const FX_RECT& clip_rect, int col, int row) {
