@@ -36,11 +36,8 @@ FXDIB_Format CPDF_TransferFuncDIB::GetDestFormat() const {
   if (m_pSrc->IsMask())
     return FXDIB_Format::k8bppMask;
 
-#if defined(OS_APPLE)
-  return m_pSrc->HasAlpha() ? FXDIB_Format::kArgb : FXDIB_Format::kRgb32;
-#else
-  return m_pSrc->HasAlpha() ? FXDIB_Format::kArgb : FXDIB_Format::kRgb;
-#endif
+  return m_pSrc->HasAlpha() ? FXDIB_Format::kArgb
+                            : CFX_DIBBase::kPlatformRGBFormat;
 }
 
 void CPDF_TransferFuncDIB::TranslateScanline(
