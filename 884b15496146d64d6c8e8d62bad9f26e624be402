@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d2e439_9d097f40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-23T15:54:56Z",
+      "side": 1,
+      "message": "I wasn\u0027t necessarily going to land this, but I\u0027ve puzzled over this line for a while, and couldn\u0027t find a reason why we\u0027d want to burn that 4th unused byte. Maybe pre-intel macs would have aligmennt problems? Or is it that we\u0027d need to expand to rgba anyways in some mac-specific layer?  This same line occurs in a few places above us, so still digging...",
+      "revId": "884b15496146d64d6c8e8d62bad9f26e624be402",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
