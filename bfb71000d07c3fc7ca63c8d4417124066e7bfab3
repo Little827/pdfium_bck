@@ -45,6 +45,30 @@
       },
       "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f19f44_a681595d",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-23T18:22:34Z",
+      "side": 1,
+      "message": "NM, its part of the lambda, but maybe writing this as an else-clause off of the bHasAlpha might avoid that confusion.",
+      "parentUuid": "cfc32f7e_abf275e0",
+      "range": {
+        "startLine": 373,
+        "startChar": 6,
+        "endLine": 373,
+        "endChar": 12
+      },
+      "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
