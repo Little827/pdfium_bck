@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f87fb79_46d985cc",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-23T18:27:23Z",
+      "side": 1,
+      "message": "nit: not fond of this variable name as CDATA is too-well known a concept, maybe |calcdata|",
+      "range": {
+        "startLine": 345,
+        "startChar": 53,
+        "endLine": 345,
+        "endChar": 58
+      },
+      "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a30e88a3_2c2b4a49",
         "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
         "patchSetId": 2
@@ -66,6 +89,29 @@
         "startChar": 6,
         "endLine": 373,
         "endChar": 12
+      },
+      "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade23261_57208b65",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-23T18:27:23Z",
+      "side": 1,
+      "message": "at the risk of duplicating a lot of statements, maybe there are three separate functions here that are coded for the hasalpha+argb, haslpaha+other and !hasalpha cases which might avoid some branching as we iterate in DoBilinearLoop below.",
+      "range": {
+        "startLine": 363,
+        "startChar": 2,
+        "endLine": 373,
+        "endChar": 13
       },
       "revId": "bfb71000d07c3fc7ca63c8d4417124066e7bfab3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
