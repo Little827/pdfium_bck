@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db54b398_cdf01f58",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-24T00:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "964e5a07_4d469c96",
+      "range": {
+        "startLine": 341,
+        "startChar": 18,
+        "endLine": 341,
+        "endChar": 20
+      },
+      "revId": "f2b7f262fe781b46e261525d46b1751baab143f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ad00d16_bfba090a",
@@ -38,6 +62,24 @@
       "writtenOn": "2020-10-24T00:35:13Z",
       "side": 1,
       "message": "nit: blank line seems wasteful (3x)  No matter.",
+      "revId": "f2b7f262fe781b46e261525d46b1751baab143f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c490a3_5d6709e3",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-24T00:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ad00d16_bfba090a",
       "revId": "f2b7f262fe781b46e261525d46b1751baab143f5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -65,6 +107,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5b5635_da503bf1",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-24T00:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5490d325_0f7cfd09",
+      "range": {
+        "startLine": 345,
+        "startChar": 6,
+        "endLine": 345,
+        "endChar": 22
+      },
+      "revId": "f2b7f262fe781b46e261525d46b1751baab143f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "142b7624_69669e44",
@@ -78,6 +144,30 @@
       "writtenOn": "2020-10-24T00:35:13Z",
       "side": 1,
       "message": "nit: these are cyan, magenta, yellow, black with no possibility of rgb for this branch.",
+      "range": {
+        "startLine": 367,
+        "startChar": 12,
+        "endLine": 367,
+        "endChar": 18
+      },
+      "revId": "f2b7f262fe781b46e261525d46b1751baab143f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "896cc905_bf8b8bad",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-10-24T00:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142b7624_69669e44",
       "range": {
         "startLine": 367,
         "startChar": 12,
