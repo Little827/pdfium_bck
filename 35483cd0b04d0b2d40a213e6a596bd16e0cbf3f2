@@ -16,6 +16,23 @@
       "message": "Lei, Tom: could you please take a look? Thanks.",
       "revId": "35483cd0b04d0b2d40a213e6a596bd16e0cbf3f2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938acae9_f6d63b37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-26T16:27:05Z",
+      "side": 1,
+      "message": "Ok, but now we need to track down all the places where the introduction of CPDF_Annot::Subtype::REDACT might interact with existing logic:\n\nhttps://source.chromium.org/search?q\u003dcpdf_annot::subtype\u0026sq\u003d\u0026ss\u003dchromium\n\nIn particular, we\u0027d like to explicitly consider this type in the places where we switch() on it, rather than just assuming default: will cover it.",
+      "revId": "35483cd0b04d0b2d40a213e6a596bd16e0cbf3f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
