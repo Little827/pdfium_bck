@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c58f04_724e055e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-27T21:28:25Z",
+      "side": 1,
+      "message": "Daniel, are you covering for Lei in the interim or could you suggest a reviewer?",
+      "revId": "95cf7700e5b537f63d51d2deb747b098d726d132",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
