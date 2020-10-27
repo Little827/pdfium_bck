@@ -177,7 +177,7 @@ ByteString GetBitmapInfo(const RetainPtr<CFX_DIBitmap>& pBitmap) {
         }
       } else {
         for (int i = 0; i < 256; i++) {
-          pPalette[i] = i * 0x010101;
+          pPalette[i] = MakeDefaultPaletteRGB(i);
         }
       }
     }

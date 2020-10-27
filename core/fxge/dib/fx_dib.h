@@ -126,6 +126,10 @@ constexpr FX_ARGB ArgbEncode(int a, int r, int g, int b) {
   return (a << 24) | (r << 16) | (g << 8) | b;
 }
 
+constexpr uint32_t MakeDefaultPaletteRGB(uint8_t i) {
+  return i * 0x010101;
+}
+
 FX_ARGB AlphaAndColorRefToArgb(int a, FX_COLORREF colorref);
 FX_ARGB StringToFXARGB(WideStringView view);
 
