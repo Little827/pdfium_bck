@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c52ffb6a_b481ef4e",
+        "filename": "core/fxge/dib/fx_dib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-27T19:05:06Z",
+      "side": 1,
+      "message": "Pre-existing:  These need to be uint32_t else 0xff \u003c\u003c 24 is illegal shift.\nAlso note that uint8_t isn\u0027t good enough, since it is shorter than int, it promotes to int, and then int \u003c\u003c 24 overflows into sign bit for 0xff.",
+      "range": {
+        "startLine": 125,
+        "startChar": 29,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "6650dbbb88cb61c9328f0bd19e64868db0d8c875",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aacca736_19f3d527",
         "filename": "core/fxge/dib/fx_dib.h",
         "patchSetId": 1
