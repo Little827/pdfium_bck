@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c8a90a_16ef41ee",
+        "filename": "core/fxge/dib/fx_dib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T23:15:10Z",
+      "side": 1,
+      "message": "Yep (doesn\u0027t include fx_system.h, so it should explicitly include this).",
+      "parentUuid": "8b8af61d_ae1e7980",
+      "revId": "29438ab8d88168c3873e6868609d188a5d45b393",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4c20102_b69cdccd",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-28T23:09:55Z",
       "side": 1,
       "message": "Slightly unrelated, but should we make these `uint32_t` in a future CL to match the signature of ArgbEncode()?",
+      "range": {
+        "startLine": 117,
+        "startChar": 11,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "29438ab8d88168c3873e6868609d188a5d45b393",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0644773e_373a67bd",
+        "filename": "core/fxge/dib/fx_dib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T23:15:10Z",
+      "side": 1,
+      "message": "Follow-up: there are a lot of places where we\n\nint R, G, B, A;\nstd::tie(A, R, G, B) \u003d ArgbDecode(argb);\n\nand we\u0027d have to update all those types and ensure subsequent calculations don\u0027t underflow.",
+      "parentUuid": "c4c20102_b69cdccd",
       "range": {
         "startLine": 117,
         "startChar": 11,
