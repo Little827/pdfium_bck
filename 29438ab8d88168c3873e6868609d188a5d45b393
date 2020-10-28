@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8af61d_ae1e7980",
+        "filename": "core/fxge/dib/fx_dib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T23:08:24Z",
+      "side": 1,
+      "message": "#include \u003cstdint.h\u003e",
+      "revId": "29438ab8d88168c3873e6868609d188a5d45b393",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
