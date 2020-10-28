@@ -16,6 +16,29 @@
       "message": "#include \u003cstdint.h\u003e",
       "revId": "29438ab8d88168c3873e6868609d188a5d45b393",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c20102_b69cdccd",
+        "filename": "core/fxge/dib/fx_dib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T23:09:55Z",
+      "side": 1,
+      "message": "Slightly unrelated, but should we make these `uint32_t` in a future CL to match the signature of ArgbEncode()?",
+      "range": {
+        "startLine": 117,
+        "startChar": 11,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "29438ab8d88168c3873e6868609d188a5d45b393",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
