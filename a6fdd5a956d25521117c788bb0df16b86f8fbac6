@@ -110,6 +110,30 @@
       },
       "revId": "a6fdd5a956d25521117c788bb0df16b86f8fbac6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f02774_65975314",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T21:47:16Z",
+      "side": 1,
+      "message": "I mainly meant it in terms of editability, but it\u0027s not a big deal 😊",
+      "parentUuid": "7ab001b3_0da75147",
+      "range": {
+        "startLine": 1107,
+        "startChar": 32,
+        "endLine": 1107,
+        "endChar": 56
+      },
+      "revId": "a6fdd5a956d25521117c788bb0df16b86f8fbac6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
