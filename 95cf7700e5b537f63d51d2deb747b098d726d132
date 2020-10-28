@@ -53,6 +53,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f50b759_cb29927a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T16:16:59Z",
+      "side": 1,
+      "message": "\u003e Seems like your new test is failing.\n\nYup.  The resulting output isn\u0027t determenistic between debug / non-debug builds, may affect the point at which it runs out of stack space during optimization, etc.  I\u0027ll ping when I\u0027ve got it solid.",
+      "parentUuid": "7abe94ea_35e2f420",
+      "revId": "95cf7700e5b537f63d51d2deb747b098d726d132",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "604fd689_69e79910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T16:16:59Z",
+      "side": 1,
+      "message": "Ack.  Thanks.",
+      "parentUuid": "5587a9cc_decc62b7",
+      "revId": "95cf7700e5b537f63d51d2deb747b098d726d132",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6e33d0b_4a493cbb",
@@ -66,6 +102,54 @@
       "writtenOn": "2020-10-27T23:21:05Z",
       "side": 1,
       "message": "Optional nit: I think we can just keep these on one line.",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "95cf7700e5b537f63d51d2deb747b098d726d132",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae88db74_a60a0a22",
+        "filename": "testing/resources/javascript/bug_1142688.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T16:16:59Z",
+      "side": 1,
+      "message": "Yeah, my preference is that when there is a subordinate object involved, one per line, but when there are just scalars in the array, all on the same line.",
+      "parentUuid": "b6e33d0b_4a493cbb",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "95cf7700e5b537f63d51d2deb747b098d726d132",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b7dc0e_5a825f18",
+        "filename": "testing/resources/javascript/bug_1142688.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T16:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e33d0b_4a493cbb",
       "range": {
         "startLine": 6,
         "startChar": 4,
