@@ -109,7 +109,7 @@ inline bool GetIsAlphaFromFormat(FXDIB_Format format) {
 
 FXDIB_Format MakeRGBFormat(int bpp);
 
-inline FX_CMYK CmykEncode(int c, int m, int y, int k) {
+constexpr FX_CMYK CmykEncode(uint32_t c, uint32_t m, uint32_t y, uint32_t k) {
   return (c << 24) | (m << 16) | (y << 8) | k;
 }
 
