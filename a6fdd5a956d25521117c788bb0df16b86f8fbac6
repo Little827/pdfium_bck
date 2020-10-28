@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf3d3fc_fc74634e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T20:16:43Z",
+      "side": 1,
+      "message": "Yay for better logging!",
+      "revId": "a6fdd5a956d25521117c788bb0df16b86f8fbac6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc46a759_98027b56",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T20:16:43Z",
+      "side": 1,
+      "message": "Optional nit: `wsCaller` makes a bit more sense.",
+      "range": {
+        "startLine": 98,
+        "startChar": 39,
+        "endLine": 98,
+        "endChar": 44
+      },
+      "revId": "a6fdd5a956d25521117c788bb0df16b86f8fbac6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23050370_61c426de",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T20:16:43Z",
+      "side": 1,
+      "message": "Very optional nit: Maybe we can consolidate the values passed for `wsWho` in constants near the top of the respective methods.",
+      "range": {
+        "startLine": 1107,
+        "startChar": 32,
+        "endLine": 1107,
+        "endChar": 56
+      },
+      "revId": "a6fdd5a956d25521117c788bb0df16b86f8fbac6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
