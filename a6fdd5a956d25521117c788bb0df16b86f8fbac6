@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf22f0f_f3b41e11",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc46a759_98027b56",
+      "range": {
+        "startLine": 98,
+        "startChar": 39,
+        "endLine": 98,
+        "endChar": 44
+      },
+      "revId": "a6fdd5a956d25521117c788bb0df16b86f8fbac6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23050370_61c426de",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-28T20:16:43Z",
       "side": 1,
       "message": "Very optional nit: Maybe we can consolidate the values passed for `wsWho` in constants near the top of the respective methods.",
+      "range": {
+        "startLine": 1107,
+        "startChar": 32,
+        "endLine": 1107,
+        "endChar": 56
+      },
+      "revId": "a6fdd5a956d25521117c788bb0df16b86f8fbac6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab001b3_0da75147",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-10-28T20:30:40Z",
+      "side": 1,
+      "message": "Compiler should be able to combine these literals. for us.",
+      "parentUuid": "23050370_61c426de",
       "range": {
         "startLine": 1107,
         "startChar": 32,
