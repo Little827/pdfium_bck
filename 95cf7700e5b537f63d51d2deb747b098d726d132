@@ -91,6 +91,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ae506cd_3788846c",
+        "filename": "fxjs/js_define.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T17:03:58Z",
+      "side": 1,
+      "message": "Might as well make this static constexpr.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "95cf7700e5b537f63d51d2deb747b098d726d132",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6e33d0b_4a493cbb",
         "filename": "testing/resources/javascript/bug_1142688.in",
         "patchSetId": 2
@@ -150,6 +173,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b6e33d0b_4a493cbb",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "95cf7700e5b537f63d51d2deb747b098d726d132",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ef074a_c9fde000",
+        "filename": "testing/resources/javascript/bug_1142688.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-28T17:03:58Z",
+      "side": 1,
+      "message": "Ack, we usually use rectangles.in as our \"style guide\", but we don\u0027t seem to have any object arrays in that file!",
+      "parentUuid": "ae88db74_a60a0a22",
       "range": {
         "startLine": 6,
         "startChar": 4,
