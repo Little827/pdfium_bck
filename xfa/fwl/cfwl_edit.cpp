@@ -909,26 +909,6 @@ void CFWL_Edit::HideCaret(CFX_RectF* pRect) {
   pXFAWidget->DisplayCaret(false, pRect);
 }
 
-bool CFWL_Edit::ValidateNumberChar(wchar_t cNum) {
-  if (!m_bSetRange)
-    return true;
-
-  WideString wsText = m_pEditEngine->GetText();
-  if (wsText.IsEmpty())
-    return cNum != L'0';
-
-  if (HasSelection())
-    return wsText.GetInteger() <= m_iMax;
-  if (cNum == L'0' && m_CursorPosition == 0)
-    return false;
-
-  int32_t nLen = wsText.GetLength();
-  WideString first = wsText.First(m_CursorPosition);
-  WideString last = wsText.Last(nLen - m_CursorPosition);
-  WideString wsNew = first + cNum + last;
-  return wsNew.GetInteger() <= m_iMax;
-}
-
 void CFWL_Edit::InitCaret() {
   if (m_pCaret)
     return;

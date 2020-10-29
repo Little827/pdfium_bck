@@ -126,7 +126,6 @@ class CFWL_Edit : public CFWL_Widget, public CFDE_TextEditEngine::Delegate {
   void InitHorizontalScrollBar();
   void InitEngine();
   void InitCaret();
-  bool ValidateNumberChar(wchar_t cNum);
   bool IsShowScrollBar(bool bVert);
   bool IsContentHeightOverflow();
   void SetCursorPosition(size_t position);
