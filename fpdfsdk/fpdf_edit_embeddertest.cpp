@@ -30,6 +30,7 @@
 #include "testing/gmock/include/gmock/gmock-matchers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/utils/hash.h"
+#include "testing/utils/path_service.h"
 
 using pdfium::kHelloWorldChecksum;
 
@@ -77,6 +78,25 @@ const char kRedRectangleChecksum[] = "66d02eaa6181e2c069ce2ea99beda497";
 
 // In embedded_images.pdf.
 const char kEmbeddedImage33Checksum[] = "cb3637934bb3b95a6e4ae1ea9eb9e56e";
+
+bool ReadFileToString(const std::string& name, std::string* output) {
+  char buffer[1024];
+  FILE* file = fopen(name.c_str(), "rb");
+  if (file == NULL)
+    return false;
+
+  while (true) {
+    size_t n = fread(buffer, 1, sizeof(buffer), file);
+    if (n <= 0)
+      break;
+    output->append(buffer, n);
+  }
+
+  int error = ferror(file);
+  if (fclose(file) != 0)
+    return false;
+  return error == 0;
+}
 
 }  // namespace
 
@@ -233,6 +253,53 @@ const char kExpectedPDF[] =
     "%%EOF\r\n";
 
 }  // namespace
+
+TEST_F(FPDFEditEmbedderTest, EmbedNotoSansSCFont) {
+  EXPECT_TRUE(CreateEmptyDocument());
+  ScopedFPDFPage page(FPDFPage_New(document(), 0, 400, 400));
+  std::string font_data;
+  std::string font_path;
+  ASSERT_TRUE(PathService::GetTestFilePath(
+      "fonts/third_party/NotoSansSC/NotoSansSC-Regular.subset.otf",
+      &font_path));
+  ReadFileToString(font_path, &font_data);
+  ASSERT_TRUE(font_data.size());
+
+  ScopedFPDFFont font(FPDFText_LoadFont(
+      document(), reinterpret_cast<const uint8_t*>(font_data.data()),
+      font_data.size(), FPDF_FONT_TRUETYPE, /*cid=*/true));
+  FPDF_PAGEOBJECT text_object =
+      FPDFPageObj_CreateTextObj(document(), font.get(), 20.0f);
+  EXPECT_TRUE(text_object);
+
+  ScopedFPDFWideString text = GetFPDFWideString(L"这是第一句。 这是第二行。");
+  EXPECT_TRUE(FPDFText_SetText(text_object, text.get()));
+
+  FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 50, 200);
+  FPDFPage_InsertObject(page.get(), text_object);
+  EXPECT_TRUE(FPDFPage_GenerateContent(page.get()));
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_APPLE)
+  const char kChecksum[] = "9a31fb87d1c6d2346bba22d1196041cd";
+#else
+  const char kChecksum[] = "5bb65e15fc0a685934cd5006dec08a76";
+#endif  // defined(OS_APPLE)
+#else
+#if defined(OS_WIN)
+  const char kChecksum[] = "89e8eef5d6ad18c542a92a0519954d0f";
+#else
+  const char kChecksum[] = "9a31fb87d1c6d2346bba22d1196041cd";
+#endif  // defined(OS_WIN)
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPage(page.get());
+    CompareBitmap(page_bitmap.get(), 400, 400, kChecksum);
+
+    EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+    VerifySavedDocument(400, 400, kChecksum);
+  }
+}
 
 TEST_F(FPDFEditEmbedderTest, EmptyCreation) {
   EXPECT_TRUE(CreateEmptyDocument());
