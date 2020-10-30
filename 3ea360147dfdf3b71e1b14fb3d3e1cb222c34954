@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fafff44_88b57c8e",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T23:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dfca124_5897fa1c",
+      "range": {
+        "startLine": 259,
+        "startChar": 48,
+        "endLine": 259,
+        "endChar": 64
+      },
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d478c16d_8cfee4ad",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-30T22:48:41Z",
       "side": 1,
       "message": "Maybe make this\n #else  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\n\nbecause of the nested ifdefs",
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0dcadc_9fccef32",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T23:03:17Z",
+      "side": 1,
+      "message": "Nested ifdef comments are usually at the #endif line (line 278).",
+      "parentUuid": "d478c16d_8cfee4ad",
       "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4bf9031_a31714ff",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T23:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ec1bf7_6df2b0cb",
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8f502a9_6e35a040",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-10-30T22:48:41Z",
       "side": 1,
       "message": "\"the test\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a31304ec_4154db58",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/README.pdfium",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T23:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8f502a9_6e35a040",
       "range": {
         "startLine": 11,
         "startChar": 27,
@@ -104,6 +188,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9978d9fd_3327cdb2",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/README.pdfium",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T23:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f3ec947_a2b7bb90",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20a39500_c57af50c",
@@ -117,6 +225,24 @@
       "writtenOn": "2020-10-30T22:48:41Z",
       "side": 1,
       "message": "Would it make more sense to write\n\n Command to generate the font subset:",
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5677ca_96252d1d",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/README.pdfium",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T23:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20a39500_c57af50c",
       "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
