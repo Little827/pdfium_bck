@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ecca43_6255c9a5",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T21:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf72bfc5_da3c85bf",
+      "range": {
+        "startLine": 40,
+        "startChar": 36,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35ad3400_50504ebc",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "606f63fa_5c9bac78",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T21:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ad3400_50504ebc",
+      "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bceb1b15_2184fd63",
@@ -54,6 +96,24 @@
       "writtenOn": "2020-10-30T19:57:26Z",
       "side": 1,
       "message": "Let\u0027s perhaps have a wider team chat about where to put third party fonts. Maybe we can consult dsinclair.",
+      "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d35331_1efd858b",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/NotoSansSC-Regular.subset.otf",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-10-30T21:02:22Z",
+      "side": 1,
+      "message": "Sounds good. An example I was looking at was https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/web_tests/third_party/ in chromium.\n\nAdd dsinclair@ as reviewer regarding this issue.",
+      "parentUuid": "bceb1b15_2184fd63",
       "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
