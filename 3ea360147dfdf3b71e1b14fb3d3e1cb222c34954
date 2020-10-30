@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfca124_5897fa1c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T22:48:41Z",
+      "side": 1,
+      "message": "Maybe add a comment about the significance of this string.\nI.e. why this string in this test.",
+      "range": {
+        "startLine": 259,
+        "startChar": 48,
+        "endLine": 259,
+        "endChar": 64
+      },
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d478c16d_8cfee4ad",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T22:48:41Z",
+      "side": 1,
+      "message": "Maybe make this\n #else  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\n\nbecause of the nested ifdefs",
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ec1bf7_6df2b0cb",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T22:48:41Z",
+      "side": 1,
+      "message": "Optional: this scoping isn\u0027t necessary because the test ends right after the block.",
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f502a9_6e35a040",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/README.pdfium",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T22:48:41Z",
+      "side": 1,
+      "message": "\"the test\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f3ec947_a2b7bb90",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/README.pdfium",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T22:48:41Z",
+      "side": 1,
+      "message": "\"The font file is included\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a39500_c57af50c",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/README.pdfium",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T22:48:41Z",
+      "side": 1,
+      "message": "Would it make more sense to write\n\n Command to generate the font subset:",
+      "revId": "3ea360147dfdf3b71e1b14fb3d3e1cb222c34954",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
