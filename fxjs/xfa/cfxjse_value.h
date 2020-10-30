@@ -20,7 +20,7 @@ class CFXJSE_HostObject;
 
 class CFXJSE_Value {
  public:
-  explicit CFXJSE_Value(v8::Isolate* pIsolate);
+  explicit CFXJSE_Value();
   CFXJSE_Value(v8::Isolate* pIsolate, v8::Local<v8::Value> value);
   ~CFXJSE_Value();
 
@@ -95,10 +95,8 @@ class CFXJSE_Value {
   }
 
  private:
-  CFXJSE_Value() = delete;
   CFXJSE_Value(const CFXJSE_Value&) = delete;
   CFXJSE_Value& operator=(const CFXJSE_Value&) = delete;
-
 
   v8::Global<v8::Value> m_hValue;
 };
