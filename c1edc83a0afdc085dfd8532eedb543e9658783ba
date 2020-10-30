@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf72bfc5_da3c85bf",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T19:57:26Z",
+      "side": 1,
+      "message": "Let\u0027s also rename this member to m_Multimap",
+      "range": {
+        "startLine": 40,
+        "startChar": 36,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ad3400_50504ebc",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T19:57:26Z",
+      "side": 1,
+      "message": "We already have a safer util for this :) \n\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/pdfium/testing/utils/file_util.cpp;l\u003d12;drc\u003df8a50cecbdeec78553325d9996dc14ab31e21b20",
+      "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bceb1b15_2184fd63",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/NotoSansSC-Regular.subset.otf",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-10-30T19:57:26Z",
+      "side": 1,
+      "message": "Let\u0027s perhaps have a wider team chat about where to put third party fonts. Maybe we can consult dsinclair.",
+      "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
