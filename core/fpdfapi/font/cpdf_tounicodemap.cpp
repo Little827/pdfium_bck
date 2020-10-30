@@ -190,12 +190,12 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
 
       uint32_t value = value_or_error.value();
       for (uint32_t code = lowcode; code <= highcode; code++)
-        m_Map[code] = value++;
+        m_Map.emplace(code, value++);
     } else {
       for (uint32_t code = lowcode; code <= highcode; code++) {
         WideString retcode =
             code == lowcode ? destcode : StringDataAdd(destcode);
-        m_Map[code] = GetUnicode();
+        m_Map.emplace(code, GetUnicode());
         m_MultiCharBuf.AppendChar(retcode.GetLength());
         m_MultiCharBuf << retcode;
         destcode = std::move(retcode);
@@ -216,9 +216,9 @@ void CPDF_ToUnicodeMap::SetCode(uint32_t srccode, WideString destcode) {
     return;
 
   if (len == 1) {
-    m_Map[srccode] = destcode[0];
+    m_Map.emplace(srccode, destcode[0]);
   } else {
-    m_Map[srccode] = GetUnicode();
+    m_Map.emplace(srccode, GetUnicode());
     m_MultiCharBuf.AppendChar(len);
     m_MultiCharBuf << destcode;
   }
