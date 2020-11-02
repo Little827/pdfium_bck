@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ebce413_a76aad91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-11-02T21:30:44Z",
+      "side": 1,
+      "message": "Can we just put all such fonts into a \"noto\" or \"Noto\" directory? I assume they\u0027re all coming from the same collection, with the same license. Unless we have a lot of these, I don\u0027t see much value in splitting them up.",
+      "revId": "9abcd07adbb4463e1754e2cf4e04b63a43002ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e943ad47_0d21bcdd",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-11-02T21:30:44Z",
+      "side": 1,
+      "message": "This seems like something we should add to PathService, so it can be reused.",
+      "revId": "9abcd07adbb4463e1754e2cf4e04b63a43002ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721a96a0_c0e16227",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-11-02T21:30:44Z",
+      "side": 1,
+      "message": "Can we use \\ to end these lines early and prevent a long line in this file?",
+      "revId": "9abcd07adbb4463e1754e2cf4e04b63a43002ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
