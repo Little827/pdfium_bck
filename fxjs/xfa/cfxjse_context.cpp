@@ -227,7 +227,7 @@ std::unique_ptr<CFXJSE_Value> CFXJSE_Context::GetGlobalObject() {
       v8::Local<v8::Context>::New(GetIsolate(), m_hContext);
   v8::Local<v8::Object> hGlobalObject =
       hContext->Global()->GetPrototype().As<v8::Object>();
-  pValue->ForceSetValue(hGlobalObject);
+  pValue->ForceSetValue(GetIsolate(), hGlobalObject);
   return pValue;
 }
 
@@ -269,12 +269,13 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
       if (hScript->Run(hContext).ToLocal(&hValue)) {
         ASSERT(!trycatch.HasCaught());
         if (lpRetValue)
-          lpRetValue->ForceSetValue(hValue);
+          lpRetValue->ForceSetValue(GetIsolate(), hValue);
         return true;
       }
     }
     if (lpRetValue)
-      lpRetValue->ForceSetValue(CreateReturnValue(GetIsolate(), &trycatch));
+      lpRetValue->ForceSetValue(GetIsolate(),
+                                CreateReturnValue(GetIsolate(), &trycatch));
     return false;
   }
 
@@ -295,7 +296,7 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
             .ToLocal(&hValue)) {
       ASSERT(!trycatch.HasCaught());
       if (lpRetValue)
-        lpRetValue->ForceSetValue(hValue);
+        lpRetValue->ForceSetValue(GetIsolate(), hValue);
       return true;
     }
   }
@@ -314,7 +315,9 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
   }
 #endif  // NDEBUG
 
-  if (lpRetValue)
-    lpRetValue->ForceSetValue(CreateReturnValue(GetIsolate(), &trycatch));
+  if (lpRetValue) {
+    lpRetValue->ForceSetValue(GetIsolate(),
+                              CreateReturnValue(GetIsolate(), &trycatch));
+  }
   return false;
 }
