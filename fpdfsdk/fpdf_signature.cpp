@@ -157,3 +157,44 @@ FPDFSignatureObj_GetTime(FPDF_SIGNATURE signature,
 
   return NulTerminateMaybeCopyAndReturnLength(obj->GetString(), buffer, length);
 }
+
+FPDF_EXPORT unsigned int FPDF_CALLCONV
+FPDFSignatureObj_GetDocMDPPermission(FPDF_SIGNATURE signature) {
+  int permission = 0;
+  CPDF_Dictionary* signature_dict = CPDFDictionaryFromFPDFSignature(signature);
+  if (!signature_dict)
+    return permission;
+
+  CPDF_Dictionary* value_dict = signature_dict->GetDictFor("V");
+  if (!value_dict)
+    return permission;
+
+  CPDF_Array* references = value_dict->GetArrayFor("Reference");
+  if (!references)
+    return permission;
+
+  CPDF_ArrayLocker locker(references);
+  for (auto& reference : locker) {
+    CPDF_Dictionary* reference_dict = reference->GetDict();
+    if (!reference_dict)
+      continue;
+
+    ByteString transform_method = reference_dict->GetNameFor("TransformMethod");
+    if (transform_method != "DocMDP")
+      continue;
+
+    CPDF_Dictionary* transform_params =
+        reference_dict->GetDictFor("TransformParams");
+    if (!transform_params)
+      continue;
+
+    // Documented default value when the key is missing.
+    permission = 2;
+    if (!transform_params->KeyExist("P"))
+      return permission;
+
+    return transform_params->GetIntegerFor("P");
+  }
+
+  return permission;
+}
