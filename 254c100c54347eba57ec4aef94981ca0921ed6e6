@@ -16,6 +16,161 @@
       "message": "Tom: could you please take a look? Thanks.",
       "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc1749b_26a5cff7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T17:11:10Z",
+      "side": 1,
+      "message": "This all looks quite good, few items to address first.",
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef89ba49_245ccfe5",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T17:11:10Z",
+      "side": 1,
+      "message": "nit: or just\n  return transform_params-\u003eGetIntegerFor(\"P\", 2);\n\nAlthough we\u0027ll probably end up re-writing this to do more validation per the other comments.a\n\n[remind me to rename this method GetIntegerOrDefaultFor() after this CL lands, sheesh :) ].",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035ae676_005fd313",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T17:11:10Z",
+      "side": 1,
+      "message": "This should probably be ASSERT_NE() as that will stop the test from continuining if the load fails.",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 8
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28d73ad_b1c954b9",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T17:11:10Z",
+      "side": 1,
+      "message": "This should probably be EXPECT_EQ() to allow the test to continue even if this fails.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac69e8e_efe6a117",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T17:11:10Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 12
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899f5eed_5f49c182",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T17:11:10Z",
+      "side": 1,
+      "message": "Actually, this will return whatever the \"P\" value is in the document.  So either we need to range check in PDFSignatureObj_GetDocMDPPermission() or document this as returning the value, which is expected to be 1,2,3 in the PDF spec, but might be anything.",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 49
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63648443_e7cce065",
+        "filename": "testing/resources/docmdp.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T17:11:10Z",
+      "side": 1,
+      "message": "nit: I usually put a space before the / to make it more human readable (several places).",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 12
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
