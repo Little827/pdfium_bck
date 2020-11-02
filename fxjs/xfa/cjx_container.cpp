@@ -46,5 +46,5 @@ CJS_Result CJX_Container::getDeltas(
 
   auto* pEngine = static_cast<CFXJSE_Engine*>(runtime);
   return CJS_Result::Success(pEngine->NewXFAObject(
-      pList, pEngine->GetJseNormalClass()->GetTemplate()));
+      pList, pEngine->GetJseNormalClass()->GetTemplate(pEngine->GetIsolate())));
 }
