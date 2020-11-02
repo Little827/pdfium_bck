@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec38ee9_6cc6b584",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-02T08:19:52Z",
+      "side": 1,
+      "message": "Tom: could you please take a look? Thanks.",
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
