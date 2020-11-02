@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9896b08_e1b6eb13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-02T22:58:38Z",
+      "side": 1,
+      "message": "Sorry, but there\u0027s no getting around that this CL is large.",
+      "revId": "1cf93c84b698ae107024c1cd3add197876784a69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
