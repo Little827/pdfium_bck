@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d429bae1_0d3f2955",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-11-02T23:01:56Z",
+      "side": 1,
+      "message": "I could see nesting them into a third_party/noto/NotoSansCJK directory, but your rationale sounds reasonable.",
+      "parentUuid": "4812460e_17cace70",
+      "revId": "9abcd07adbb4463e1754e2cf4e04b63a43002ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e943ad47_0d21bcdd",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Some refactoring was done to move functions with only one caller into anonymous namespaces in PDFium earlier. So I think we can add this function to PathService class when some other callers in different files shows up.",
       "parentUuid": "e943ad47_0d21bcdd",
+      "revId": "9abcd07adbb4463e1754e2cf4e04b63a43002ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efa094c_4195e57f",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-11-02T23:01:56Z",
+      "side": 1,
+      "message": "Given this function calls a number of functions in PathService, I also anticipate an implementation in PathService could allow more reuse. So I think it\u0027s a good idea to centralize this.",
+      "parentUuid": "e15af939_80ad74d9",
       "revId": "9abcd07adbb4463e1754e2cf4e04b63a43002ddb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
