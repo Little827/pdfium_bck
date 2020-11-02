@@ -379,7 +379,8 @@ CJS_Result CJX_LayoutPseudoModel::pageContent(
 
   CFXJSE_Engine* pEngine = static_cast<CFXJSE_Engine*>(runtime);
   return CJS_Result::Success(pEngine->NewXFAObject(
-      pArrayNodeList, pEngine->GetJseNormalClass()->GetTemplate()));
+      pArrayNodeList,
+      pEngine->GetJseNormalClass()->GetTemplate(pEngine->GetIsolate())));
 }
 
 CJS_Result CJX_LayoutPseudoModel::absPageCount(
