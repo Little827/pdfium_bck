@@ -65,7 +65,7 @@ void FXJSE_ThrowMessage(ByteStringView utf8Message) {
   pIsolate->ThrowException(hError);
 }
 
-CFXJSE_Value::CFXJSE_Value(v8::Isolate* pIsolate) {}
+CFXJSE_Value::CFXJSE_Value() = default;
 
 CFXJSE_Value::CFXJSE_Value(v8::Isolate* pIsolate, v8::Local<v8::Value> value) {
   ForceSetValue(pIsolate, value);
@@ -82,7 +82,7 @@ CFXJSE_HostObject* CFXJSE_Value::ToHostObject(v8::Isolate* pIsolate) const {
 void CFXJSE_Value::SetHostObject(v8::Isolate* pIsolate,
                                  CFXJSE_HostObject* pObject,
                                  CFXJSE_Class* pClass) {
-  CFXJSE_ScopeUtil_IsolateHandleRootContext scope(GetIsolate());
+  CFXJSE_ScopeUtil_IsolateHandleRootContext scope(pIsolate);
   m_hValue.Reset(pIsolate, pObject->NewBoundV8Object(
                                pIsolate, pClass->GetTemplate(pIsolate)));
 }
