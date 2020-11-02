@@ -107,6 +107,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae79803c_7ecf8861",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-02T23:43:53Z",
+      "side": 1,
+      "message": "SG. I will move the function over to PathService in the next patchset.",
+      "parentUuid": "3efa094c_4195e57f",
+      "revId": "9abcd07adbb4463e1754e2cf4e04b63a43002ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "721a96a0_c0e16227",
