@@ -80,6 +80,36 @@ const char kRedRectangleChecksum[] = "66d02eaa6181e2c069ce2ea99beda497";
 // In embedded_images.pdf.
 const char kEmbeddedImage33Checksum[] = "cb3637934bb3b95a6e4ae1ea9eb9e56e";
 
+bool GetThirdPartyFilePath(const std::string& file_name, std::string* path) {
+  if (!PathService::GetSourceDir(path))
+    return false;
+
+  if (!PathService::EndsWithSeparator(*path))
+    path->push_back(PATH_SEPARATOR);
+
+  std::string potential_path = *path;
+  potential_path.append("third_party");
+  if (PathService::DirectoryExists(potential_path)) {
+    *path = potential_path;
+    path->append(PATH_SEPARATOR + file_name);
+    return true;
+  }
+
+  potential_path = *path;
+  potential_path.append("third_party");
+  potential_path.push_back(PATH_SEPARATOR);
+  potential_path.append("pdfium");
+  potential_path.push_back(PATH_SEPARATOR);
+  potential_path.append("third_party");
+  if (PathService::DirectoryExists(potential_path)) {
+    *path = potential_path;
+    path->append(PATH_SEPARATOR + file_name);
+    return true;
+  }
+
+  return false;
+}
+
 }  // namespace
 
 class FPDFEditEmbedderTest : public EmbedderTest {
@@ -240,9 +270,8 @@ TEST_F(FPDFEditEmbedderTest, EmbedNotoSansSCFont) {
   EXPECT_TRUE(CreateEmptyDocument());
   ScopedFPDFPage page(FPDFPage_New(document(), 0, 400, 400));
   std::string font_path;
-  ASSERT_TRUE(PathService::GetTestFilePath(
-      "fonts/third_party/NotoSansSC/NotoSansSC-Regular.subset.otf",
-      &font_path));
+  ASSERT_TRUE(GetThirdPartyFilePath("NotoSansCJK/NotoSansSC-Regular.subset.otf",
+                                    &font_path));
 
   size_t file_length = 0;
   std::unique_ptr<char, pdfium::FreeDeleter> font_data =
