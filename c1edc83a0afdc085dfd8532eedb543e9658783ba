@@ -116,6 +116,24 @@
       "parentUuid": "bceb1b15_2184fd63",
       "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e740f5a7_2bf0cf67",
+        "filename": "testing/resources/fonts/third_party/NotoSansSC/NotoSansSC-Regular.subset.otf",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2020-11-02T18:13:38Z",
+      "side": 1,
+      "message": "I believe the typical rule is that all third party code must live in the third_party folder. Even though this is for testing, I think //third_party is probably where it should live.\n\n(https://chromium.googlesource.com/chromium/src.git/+/master/docs/adding_to_third_party.md)",
+      "parentUuid": "92d35331_1efd858b",
+      "revId": "c1edc83a0afdc085dfd8532eedb543e9658783ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
