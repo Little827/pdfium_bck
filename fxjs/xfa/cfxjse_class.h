@@ -25,7 +25,7 @@ class CFXJSE_Class {
   ~CFXJSE_Class();
 
   CFXJSE_Context* GetContext() const { return m_pContext.Get(); }
-  v8::Global<v8::FunctionTemplate>& GetTemplate() { return m_hTemplate; }
+  v8::Local<v8::FunctionTemplate> GetTemplate(v8::Isolate* pIsolate);
 
  protected:
   friend class CFXJSE_Context;

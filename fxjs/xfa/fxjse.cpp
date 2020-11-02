@@ -6,6 +6,7 @@
 
 #include "fxjs/xfa/fxjse.h"
 
+#include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_context.h"
 
 namespace pdfium {
@@ -35,4 +36,15 @@ CFXJSE_FormCalcContext* CFXJSE_HostObject::AsFormCalcContext() {
 
 CJX_Object* CFXJSE_HostObject::AsCJXObject() {
   return nullptr;
+}
+
+v8::Local<v8::Object> CFXJSE_HostObject::NewBoundV8Object(
+    v8::Isolate* pIsolate,
+    v8::Local<v8::FunctionTemplate> tmpl) {
+  v8::Local<v8::Object> hObject =
+      tmpl->InstanceTemplate()
+          ->NewInstance(pIsolate->GetCurrentContext())
+          .ToLocalChecked();
+  FXJSE_UpdateObjectBinding(hObject, this);
+  return hObject;
 }
