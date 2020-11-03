@@ -188,11 +188,8 @@ std::unique_ptr<CFXJSE_Context> CFXJSE_Context::Create(
   if (pGlobalClass) {
     CFXJSE_Class* pGlobalClassObj =
         CFXJSE_Class::Create(pContext.get(), pGlobalClass, true);
-    ASSERT(pGlobalClassObj);
-    v8::Local<v8::FunctionTemplate> hFunctionTemplate =
-        v8::Local<v8::FunctionTemplate>::New(pIsolate,
-                                             pGlobalClassObj->m_hTemplate);
-    hObjectTemplate = hFunctionTemplate->InstanceTemplate();
+    hObjectTemplate =
+        pGlobalClassObj->GetTemplate(pIsolate)->InstanceTemplate();
   } else {
     hObjectTemplate = v8::ObjectTemplate::New(pIsolate);
     hObjectTemplate->SetInternalFieldCount(2);
@@ -221,13 +218,13 @@ CFXJSE_Context::CFXJSE_Context(v8::Isolate* pIsolate, CXFA_ThisProxy* pProxy)
 CFXJSE_Context::~CFXJSE_Context() = default;
 
 std::unique_ptr<CFXJSE_Value> CFXJSE_Context::GetGlobalObject() {
-  auto pValue = std::make_unique<CFXJSE_Value>(GetIsolate());
+  auto pValue = std::make_unique<CFXJSE_Value>();
   CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
   v8::Local<v8::Context> hContext =
       v8::Local<v8::Context>::New(GetIsolate(), m_hContext);
   v8::Local<v8::Object> hGlobalObject =
       hContext->Global()->GetPrototype().As<v8::Object>();
-  pValue->ForceSetValue(hGlobalObject);
+  pValue->ForceSetValue(GetIsolate(), hGlobalObject);
   return pValue;
 }
 
@@ -243,25 +240,25 @@ CFXJSE_Class* CFXJSE_Context::GetClassByName(ByteStringView szName) const {
   auto pClass =
       std::find_if(m_rgClasses.begin(), m_rgClasses.end(),
                    [szName](const std::unique_ptr<CFXJSE_Class>& item) {
-                     return szName == item->m_szClassName;
+                     return item->IsName(szName);
                    });
   return pClass != m_rgClasses.end() ? pClass->get() : nullptr;
 }
 
 void CFXJSE_Context::EnableCompatibleMode() {
-  ExecuteScript(szCompatibleModeScript, nullptr, nullptr);
-  ExecuteScript(szConsoleScript, nullptr, nullptr);
+  ExecuteScript(szCompatibleModeScript, nullptr, v8::Local<v8::Object>());
+  ExecuteScript(szConsoleScript, nullptr, v8::Local<v8::Object>());
 }
 
 bool CFXJSE_Context::ExecuteScript(const char* szScript,
                                    CFXJSE_Value* lpRetValue,
-                                   CFXJSE_Value* lpNewThisObject) {
+                                   v8::Local<v8::Object> hNewThis) {
   CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
   v8::Local<v8::Context> hContext = GetIsolate()->GetCurrentContext();
   v8::TryCatch trycatch(GetIsolate());
   v8::Local<v8::String> hScriptString =
       fxv8::NewStringHelper(GetIsolate(), szScript);
-  if (!lpNewThisObject) {
+  if (hNewThis.IsEmpty()) {
     v8::Local<v8::Script> hScript;
     if (v8::Script::Compile(hContext, hScriptString).ToLocal(&hScript)) {
       ASSERT(!trycatch.HasCaught());
@@ -269,18 +266,16 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
       if (hScript->Run(hContext).ToLocal(&hValue)) {
         ASSERT(!trycatch.HasCaught());
         if (lpRetValue)
-          lpRetValue->ForceSetValue(hValue);
+          lpRetValue->ForceSetValue(GetIsolate(), hValue);
         return true;
       }
     }
     if (lpRetValue)
-      lpRetValue->ForceSetValue(CreateReturnValue(GetIsolate(), &trycatch));
+      lpRetValue->ForceSetValue(GetIsolate(),
+                                CreateReturnValue(GetIsolate(), &trycatch));
     return false;
   }
 
-  v8::Local<v8::Value> hNewThis = v8::Local<v8::Value>::New(
-      GetIsolate(), lpNewThisObject->DirectGetValue());
-  ASSERT(!hNewThis.IsEmpty());
   v8::Local<v8::String> hEval = fxv8::NewStringHelper(
       GetIsolate(), "(function () { return eval(arguments[0]); })");
   v8::Local<v8::Script> hWrapper =
@@ -295,7 +290,7 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
             .ToLocal(&hValue)) {
       ASSERT(!trycatch.HasCaught());
       if (lpRetValue)
-        lpRetValue->ForceSetValue(hValue);
+        lpRetValue->ForceSetValue(GetIsolate(), hValue);
       return true;
     }
   }
@@ -314,7 +309,9 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
   }
 #endif  // NDEBUG
 
-  if (lpRetValue)
-    lpRetValue->ForceSetValue(CreateReturnValue(GetIsolate(), &trycatch));
+  if (lpRetValue) {
+    lpRetValue->ForceSetValue(GetIsolate(),
+                              CreateReturnValue(GetIsolate(), &trycatch));
+  }
   return false;
 }
