@@ -16,6 +16,24 @@
       "message": "I tried looking at everything, and it generally seemed fine/mechanical.\n\nBut this was also a rather large CL, so please let me know if you want me to focus on a specific part of the CL before you submit.",
       "revId": "1c4f2a0336024a6eb44a490adef93ad574e25b32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6dba3b_3dec8f32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-03T21:49:03Z",
+      "side": 1,
+      "message": "Thats ok, it can be reviewed as an exercise in source to source transformation, looking for typos, etc.",
+      "parentUuid": "070b65cc_b801d45f",
+      "revId": "1c4f2a0336024a6eb44a490adef93ad574e25b32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
