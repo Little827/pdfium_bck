@@ -16,6 +16,23 @@
       "message": "I believe I addressed all feedback.",
       "revId": "317f289431fefc70c31436db80427a9357d9db0c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90cf83ab_9460c930",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-03T08:27:36Z",
+      "side": 1,
+      "message": "Could also do a \u0027break\u0027 here that would avoid the duplicated \u0027return\u0027 here and 3 lines later; I\u0027m not sure that would improve readability, though.",
+      "revId": "317f289431fefc70c31436db80427a9357d9db0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
