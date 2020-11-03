@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8e7cf5_c7b62fec",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-03T08:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef89ba49_245ccfe5",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "035ae676_005fd313",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-02T17:11:10Z",
       "side": 1,
       "message": "This should probably be ASSERT_NE() as that will stop the test from continuining if the load fails.",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 8
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f12b400_a274e192",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-03T08:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035ae676_005fd313",
       "range": {
         "startLine": 194,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c15622_8b21964c",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-03T08:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a28d73ad_b1c954b9",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ac69e8e_efe6a117",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-11-02T17:11:10Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 12
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f4d9add_d528db4f",
+        "filename": "fpdfsdk/fpdf_signature_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-03T08:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ac69e8e_efe6a117",
       "range": {
         "startLine": 201,
         "startChar": 2,
@@ -150,6 +246,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e0fd1c_86878657",
+        "filename": "public/fpdf_signature.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-03T08:26:37Z",
+      "side": 1,
+      "message": "I\u0027ve added a range check so that the code is in line with the API doc.",
+      "parentUuid": "899f5eed_5f49c182",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 49
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63648443_e7cce065",
@@ -163,6 +283,30 @@
       "writtenOn": "2020-11-02T17:11:10Z",
       "side": 1,
       "message": "nit: I usually put a space before the / to make it more human readable (several places).",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 12
+      },
+      "revId": "254c100c54347eba57ec4aef94981ca0921ed6e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42f482b_5f00f5d0",
+        "filename": "testing/resources/docmdp.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-03T08:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63648443_e7cce065",
       "range": {
         "startLine": 50,
         "startChar": 11,
