@@ -16,6 +16,7 @@
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_context.h"
 #include "fxjs/xfa/cfxjse_formcalc_context.h"
+#include "fxjs/xfa/cfxjse_isolatetracker.h"
 #include "fxjs/xfa/cfxjse_nodehelper.h"
 #include "fxjs/xfa/cfxjse_resolveprocessor.h"
 #include "fxjs/xfa/cfxjse_value.h"
@@ -126,8 +127,11 @@ CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
 CFXJSE_Engine::~CFXJSE_Engine() {
   // This is what ensures that the v8 object bound to a CJX_Object
   // no longer retains that binding since it will outlive that object.
-  for (const auto& pair : m_mapObjectToValue)
-    pair.second->ClearHostObject(GetIsolate());
+  CFXJSE_ScopeUtil_IsolateHandleRootContext scope(GetIsolate());
+  for (const auto& pair : m_mapObjectToObject) {
+    FXJSE_ClearObjectBinding(
+        v8::Local<v8::Object>::New(GetIsolate(), pair.second));
+  }
 }
 
 bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
@@ -155,10 +159,12 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
   AutoRestorer<cppgc::Persistent<CXFA_Object>> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
 
-  CFXJSE_Value* pValue =
-      pThisObject ? GetOrCreateJSBindingFromMap(pThisObject) : nullptr;
+  v8::Local<v8::Object> pThisBinding;
+  if (pThisObject)
+    pThisBinding = GetOrCreateJSBindingFromMap(pThisObject);
+
   IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime.Get());
-  return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
+  return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pThisBinding);
 }
 
 bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
@@ -173,8 +179,8 @@ bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
   if (!ResolveObjects(refNode, propname, &resolveRs, dwFlag, nullptr))
     return false;
   if (resolveRs.dwFlags == XFA_ResolveNodeRS::Type::kNodes) {
-    pValue->Assign(GetIsolate(), GetOrCreateJSBindingFromMap(
-                                     resolveRs.objects.front().Get()));
+    pValue->ForceSetValue(GetIsolate(), GetOrCreateJSBindingFromMap(
+                                            resolveRs.objects.front().Get()));
     return true;
   }
   if (resolveRs.dwFlags == XFA_ResolveNodeRS::Type::kAttribute &&
@@ -250,8 +256,8 @@ void CFXJSE_Engine::GlobalPropertyGetter(v8::Isolate* pIsolate,
       CXFA_Object* pObj =
           lpScriptContext->GetDocument()->GetXFAObject(uHashCode);
       if (pObj) {
-        pValue->Assign(pIsolate,
-                       lpScriptContext->GetOrCreateJSBindingFromMap(pObj));
+        pValue->ForceSetValue(
+            pIsolate, lpScriptContext->GetOrCreateJSBindingFromMap(pObj));
         return;
       }
     }
@@ -335,9 +341,9 @@ void CFXJSE_Engine::NormalPropertyGetter(v8::Isolate* pIsolate,
       pOriginalObject->GetDocument()->GetScriptContext();
   CXFA_Object* pObject = lpScriptContext->GetVariablesThis(pOriginalObject);
   if (wsPropName.EqualsASCII("xfa")) {
-    CFXJSE_Value* pValue = lpScriptContext->GetOrCreateJSBindingFromMap(
-        lpScriptContext->GetDocument()->GetRoot());
-    pReturnValue->Assign(pIsolate, pValue);
+    pReturnValue->ForceSetValue(pIsolate,
+                                lpScriptContext->GetOrCreateJSBindingFromMap(
+                                    lpScriptContext->GetDocument()->GetRoot()));
     return;
   }
 
@@ -561,7 +567,7 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
   AutoRestorer<cppgc::Persistent<CXFA_Object>> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
   return pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
-                                          nullptr);
+                                          v8::Local<v8::Object>());
 }
 
 bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
@@ -779,21 +785,21 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
   return nNodes > 0;
 }
 
-CFXJSE_Value* CFXJSE_Engine::GetOrCreateJSBindingFromMap(CXFA_Object* pObject) {
+v8::Local<v8::Object> CFXJSE_Engine::GetOrCreateJSBindingFromMap(
+    CXFA_Object* pObject) {
   if (pObject->IsNode())
     RunVariablesScript(pObject->AsNode());
 
   CJX_Object* pCJXObject = pObject->JSObject();
-  auto iter = m_mapObjectToValue.find(pCJXObject);
-  if (iter != m_mapObjectToValue.end())
-    return iter->second.get();
+  auto iter = m_mapObjectToObject.find(pCJXObject);
+  if (iter != m_mapObjectToObject.end())
+    return v8::Local<v8::Object>::New(GetIsolate(), iter->second);
 
-  auto jsValue = std::make_unique<CFXJSE_Value>();
-  jsValue->SetHostObject(GetIsolate(), pCJXObject, m_pJsClass.Get());
+  v8::Local<v8::Object> binding = pCJXObject->NewBoundV8Object(
+      GetIsolate(), m_pJsClass->GetTemplate(GetIsolate()));
 
-  CFXJSE_Value* pValue = jsValue.get();
-  m_mapObjectToValue[pCJXObject] = std::move(jsValue);
-  return pValue;
+  m_mapObjectToObject[pCJXObject].Reset(GetIsolate(), binding);
+  return binding;
 }
 
 void CFXJSE_Engine::SetNodesOfRunScript(

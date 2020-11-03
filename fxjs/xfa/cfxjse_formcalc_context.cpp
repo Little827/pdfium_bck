@@ -3248,13 +3248,13 @@ void CFXJSE_FormCalcContext::Eval(
     return;
   }
 
-  std::unique_ptr<CFXJSE_Context> pNewContext(
-      CFXJSE_Context::Create(pIsolate, nullptr, nullptr, nullptr));
+  std::unique_ptr<CFXJSE_Context> pNewContext =
+      CFXJSE_Context::Create(pIsolate, nullptr, nullptr, nullptr);
 
   auto returnValue = std::make_unique<CFXJSE_Value>();
   pNewContext->ExecuteScript(
       FX_UTF8Encode(wsJavaScriptBuf.value().AsStringView()).c_str(),
-      returnValue.get(), nullptr);
+      returnValue.get(), v8::Local<v8::Object>());
 
   info.GetReturnValue().Set(returnValue->DirectGetValue());
 }
@@ -5194,13 +5194,6 @@ void CFXJSE_FormCalcContext::get_fm_jsobj(
     return;
   }
 
-#ifndef NDEBUG
-  CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  auto lengthValue = std::make_unique<CFXJSE_Value>();
-  argOne->GetObjectProperty(info.GetIsolate(), "length", lengthValue.get());
-  ASSERT(lengthValue->ToInteger(info.GetIsolate()) >= 3);
-#endif
-
   auto pReturn = std::make_unique<CFXJSE_Value>();
   argOne->GetObjectPropertyByIdx(info.GetIsolate(), 2, pReturn.get());
   info.GetReturnValue().Set(pReturn->DirectGetValue());
@@ -5498,8 +5491,9 @@ bool CFXJSE_FormCalcContext::GetObjectForName(CFXJSE_HostObject* pThis,
       dwFlags, nullptr);
   if (bRet && resolveNodeRS.dwFlags == XFA_ResolveNodeRS::Type::kNodes) {
     v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetIsolate();
-    accessorValue->Assign(pIsolate, pScriptContext->GetOrCreateJSBindingFromMap(
-                                        resolveNodeRS.objects.front().Get()));
+    accessorValue->ForceSetValue(pIsolate,
+                                 pScriptContext->GetOrCreateJSBindingFromMap(
+                                     resolveNodeRS.objects.front().Get()));
     return true;
   }
   return false;
@@ -5577,7 +5571,7 @@ void CFXJSE_FormCalcContext::ParseResolveResult(
     CFXJSE_Engine* pScriptContext = pContext->GetDocument()->GetScriptContext();
     for (auto& pObject : resolveNodeRS.objects) {
       resultValues->push_back(std::make_unique<CFXJSE_Value>());
-      resultValues->back()->Assign(
+      resultValues->back()->ForceSetValue(
           pIsolate, pScriptContext->GetOrCreateJSBindingFromMap(pObject.Get()));
     }
     return;
