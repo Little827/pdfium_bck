@@ -47,9 +47,12 @@ typedef CJS_Result (*FXJSE_MethodCallback)(
 typedef void (*FXJSE_FuncCallback)(
     CFXJSE_HostObject* pThis,
     const v8::FunctionCallbackInfo<v8::Value>& info);
-typedef void (*FXJSE_PropAccessor)(CFXJSE_Value* pObject,
-                                   ByteStringView szPropName,
-                                   CFXJSE_Value* pValue);
+typedef void (*FXJSE_PropSetter)(CFXJSE_Value* pObject,
+                                 ByteStringView szPropName,
+                                 CFXJSE_Value* pValue);
+typedef void (*FXJSE_PropGetter)(CFXJSE_Value* pObject,
+                                 ByteStringView szPropName,
+                                 CFXJSE_Value* pValue);
 typedef int32_t (*FXJSE_PropTypeGetter)(CFXJSE_Value* pObject,
                                         ByteStringView szPropName,
                                         bool bQueryIn);
@@ -72,8 +75,8 @@ struct FXJSE_CLASS_DESCRIPTOR {
   const FXJSE_FUNCTION_DESCRIPTOR* methods;
   int32_t methNum;
   FXJSE_PropTypeGetter dynPropTypeGetter;
-  FXJSE_PropAccessor dynPropGetter;
-  FXJSE_PropAccessor dynPropSetter;
+  FXJSE_PropGetter dynPropGetter;
+  FXJSE_PropSetter dynPropSetter;
   FXJSE_MethodCallback dynMethodCall;
 };
 
