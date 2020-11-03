@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -16,7 +17,7 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
 
  protected:
   bool ExecuteExpectNull(ByteStringView input) {
-    return Execute(input) && GetValue()->IsNull(isolate());
+    return Execute(input) && fxv8::IsNull(GetValue());
   }
 };
 
@@ -37,9 +38,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, TranslateNumber) {
   const char input[] = "123";
   EXPECT_TRUE(Execute(input));
 
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsInteger(isolate()));
-  EXPECT_EQ(123, value->ToInteger(isolate())) << "Program: " << input;
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsInteger(value));
+  EXPECT_EQ(123, fxv8::ReentrantToInt32Helper(isolate(), value));
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Numeric) {
@@ -76,9 +77,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Numeric) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -97,11 +98,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Strings) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -138,9 +140,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Booleans) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate())) << "Program: " << tests[i].program;
-    EXPECT_EQ(tests[i].result, value->ToBoolean(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value)) << "Program: " << tests[i].program;
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToBooleanHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -156,9 +158,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Abs) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -174,9 +177,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Avg) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -192,9 +196,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Ceil) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -210,9 +214,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Count) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -230,9 +234,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Floor) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -250,9 +254,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Max) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -272,9 +276,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Min) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -290,9 +294,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Mod) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -311,9 +315,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Round) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate())) << "Program: " << tests[i].program;
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value)) << "Program: " << tests[i].program;
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -331,9 +336,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Sum) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -347,7 +352,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Sum) {
 
 //   EXPECT_TRUE(Execute("Date()"));
 
-//   CFXJSE_Value* value = GetValue();
+//   v8::Local<v8::Value> value = GetValue();
 //   EXPECT_TRUE(value->IsNumber());
 //   EXPECT_EQ(days, value->ToInteger());
 // }
@@ -370,9 +375,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Date2Num) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -393,11 +398,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DateFmt) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -416,9 +422,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, IsoDate2Num) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -434,9 +440,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_IsoTime2Num) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -455,11 +461,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, LocalDateFmt) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -477,11 +484,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_LocalTimeFmt) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -502,11 +510,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Num2Date) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate())) << "Program: " << tests[i].program;
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value)) << "Program: " << tests[i].program;
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -526,11 +535,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_Num2GMTime) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -546,11 +556,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_Num2Time) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -562,7 +573,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_Num2Time) {
 
 //   EXPECT_TRUE(Execute("Time()"));
 
-//   CFXJSE_Value* value = GetValue();
+//   v8::Local<v8::Value> value = GetValue();
 //   EXPECT_TRUE(value->IsInteger());
 //   EXPECT_EQ(tp.tv_sec * 1000L + tp.tv_usec / 1000, value->ToInteger())
 //       << "Program: Time()";
@@ -581,9 +592,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Time2Num) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -604,11 +615,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, TimeFmt) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -624,9 +636,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Apr) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_NEAR(tests[i].result, value->ToFloat(isolate()), 0.000001)
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_NEAR(tests[i].result, fxv8::ReentrantToFloatHelper(isolate(), value),
+                0.000001)
         << "Program: " << tests[i].program;
   }
 }
@@ -646,9 +659,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, CTerm) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -665,9 +679,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, FV) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -685,9 +700,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, IPmt) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -705,9 +721,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, NPV) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate())) << "Program: " << tests[i].program;
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value)) << "Program: " << tests[i].program;
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -724,9 +741,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Pmt) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -746,9 +764,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, PPmt) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -767,9 +786,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, PV) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -786,9 +806,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Rate) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_NEAR(tests[i].result, value->ToFloat(isolate()), 0.000001)
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_NEAR(tests[i].result, fxv8::ReentrantToFloatHelper(isolate(), value),
+                0.000001)
         << "Program: " << tests[i].program;
   }
 }
@@ -805,9 +826,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Term) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -827,11 +849,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Choose) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -839,9 +862,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Exists) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
 
   EXPECT_TRUE(Execute("Exists(\"hello world\")"));
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsInteger(isolate()));
-  EXPECT_FALSE(value->ToBoolean(isolate()));
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsInteger(value));
+  EXPECT_FALSE(fxv8::ReentrantToBooleanHelper(isolate(), value));
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, HasValue) {
@@ -855,9 +878,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, HasValue) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate())) << "Program: " << tests[i].program;
-    EXPECT_EQ(tests[i].result, value->ToBoolean(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value)) << "Program: " << tests[i].program;
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToBooleanHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -880,9 +903,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Oneof) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate())) << "Program: " << tests[i].program;
-    EXPECT_EQ(tests[i].result, value->ToBoolean(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value)) << "Program: " << tests[i].program;
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToBooleanHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -900,9 +923,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Within) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate())) << "Program: " << tests[i].program;
-    EXPECT_EQ(tests[i].result, value->ToBoolean(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value)) << "Program: " << tests[i].program;
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToBooleanHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -918,9 +941,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Eval) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -937,18 +960,19 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_Null) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 
   EXPECT_TRUE(Execute("Null() + 5"));
 
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsInteger(isolate()));
-  EXPECT_EQ(5, value->ToInteger(isolate()));
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsInteger(value));
+  EXPECT_EQ(5, fxv8::ReentrantToInt32Helper(isolate(), value));
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Ref) {
@@ -962,11 +986,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Ref) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -986,11 +1011,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, UnitType) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1010,9 +1036,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, UnitValue) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsNumber(isolate()));
-    EXPECT_FLOAT_EQ(tests[i].result, value->ToFloat(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_FLOAT_EQ(tests[i].result,
+                    fxv8::ReentrantToFloatHelper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -1030,9 +1057,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, At) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -1052,11 +1079,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Concat) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1095,11 +1123,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Decode) {
 
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1132,11 +1161,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Encode) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1152,11 +1182,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_Format) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1172,11 +1203,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Left) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1192,9 +1224,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Len) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger(isolate()));
-    EXPECT_EQ(tests[i].result, value->ToInteger(isolate()))
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsInteger(value));
+    EXPECT_EQ(tests[i].result, fxv8::ReentrantToInt32Helper(isolate(), value))
         << "Program: " << tests[i].program;
   }
 }
@@ -1212,11 +1244,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Lower) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1242,11 +1275,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Ltrim) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1261,17 +1295,18 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_Parse) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 
   EXPECT_TRUE(Execute("Parse(\"$9,999,999.99\", \"$1,234,567.89\")"));
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsNumber(isolate()));
-  EXPECT_FLOAT_EQ(1234567.89f, value->ToFloat(isolate()));
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsNumber(value));
+  EXPECT_FLOAT_EQ(1234567.89f, fxv8::ReentrantToFloatHelper(isolate(), value));
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Replace) {
@@ -1287,11 +1322,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Replace) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1307,11 +1343,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Right) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1327,11 +1364,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Rtrim) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1347,11 +1385,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Space) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1369,11 +1408,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Str) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1391,11 +1431,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Stuff) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1438,11 +1479,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Substr) {
   for (const auto& test : kTests) {
     EXPECT_TRUE(Execute(test.program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(test.result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(test.result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << test.program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1451,8 +1493,8 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Uuid) {
 
   EXPECT_TRUE(Execute("Uuid()"));
 
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsString(isolate()));
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsString(value));
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Upper) {
@@ -1468,11 +1510,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Upper) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1494,11 +1537,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, WordNum) {
   for (size_t i = 0; i < pdfium::size(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
 
-    CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsString(isolate()));
-    EXPECT_STREQ(tests[i].result, value->ToString(isolate()).c_str())
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsString(value));
+    EXPECT_STREQ(tests[i].result,
+                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
         << "Program: " << tests[i].program << " Result: '"
-        << value->ToString(isolate()) << "'";
+        << fxv8::ReentrantToByteStringHelper(isolate(), value) << "'";
   }
 }
 
@@ -1535,9 +1579,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, MethodCall) {
   const char test[] = {"$form.form1.TextField11.getAttribute(\"h\")"};
   EXPECT_TRUE(Execute(test));
 
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsString(isolate()));
-  EXPECT_STREQ("12.7mm", value->ToString(isolate()).c_str());
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsString(value));
+  EXPECT_STREQ("12.7mm",
+               fxv8::ReentrantToByteStringHelper(isolate(), value).c_str());
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, GetXFAEventChange) {
@@ -1552,9 +1597,10 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, GetXFAEventChange) {
   const char test[] = {"xfa.event.change"};
   EXPECT_TRUE(Execute(test));
 
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsString(isolate()));
-  EXPECT_STREQ("changed", value->ToString(isolate()).c_str());
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsString(value));
+  EXPECT_STREQ("changed",
+               fxv8::ReentrantToByteStringHelper(isolate(), value).c_str());
   context->SetEventParam(nullptr);
 }
 
@@ -1653,9 +1699,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, XFAEventCancelAction) {
 
   EXPECT_TRUE(Execute("xfa.event.cancelAction"));
 
-  CFXJSE_Value* value = GetValue();
-  EXPECT_TRUE(value->IsBoolean(isolate()));
-  EXPECT_FALSE(value->ToBoolean(isolate()));
+  v8::Local<v8::Value> value = GetValue();
+  EXPECT_TRUE(fxv8::IsBoolean(value));
+  EXPECT_FALSE(fxv8::ReentrantToBooleanHelper(isolate(), value));
 
   EXPECT_TRUE(Execute("xfa.event.cancelAction = \"true\""));
   EXPECT_TRUE(params.m_bCancelAction);
