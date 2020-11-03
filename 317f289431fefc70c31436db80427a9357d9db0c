@@ -33,6 +33,24 @@
       "message": "Could also do a \u0027break\u0027 here that would avoid the duplicated \u0027return\u0027 here and 3 lines later; I\u0027m not sure that would improve readability, though.",
       "revId": "317f289431fefc70c31436db80427a9357d9db0c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd20d7d5_279f792e",
+        "filename": "fpdfsdk/fpdf_signature.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-03T16:29:40Z",
+      "side": 1,
+      "message": "Fine as is.",
+      "parentUuid": "90cf83ab_9460c930",
+      "revId": "317f289431fefc70c31436db80427a9357d9db0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
