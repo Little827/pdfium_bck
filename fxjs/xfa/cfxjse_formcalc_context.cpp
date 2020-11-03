@@ -5486,14 +5486,13 @@ void CFXJSE_FormCalcContext::ParseResolveResult(
   }
 
   *bAttribute = true;
-  if (resolveNodeRS.script_attribute.callback &&
+  if (resolveNodeRS.script_attribute.getter &&
       resolveNodeRS.script_attribute.eValueType == XFA_ScriptType::Object) {
     for (auto& pObject : resolveNodeRS.objects) {
       auto pValue = std::make_unique<CFXJSE_Value>(pIsolate);
       CJX_Object* jsObject = pObject->JSObject();
-      (*resolveNodeRS.script_attribute.callback)(
-          jsObject, pValue.get(), false,
-          resolveNodeRS.script_attribute.attribute);
+      (*resolveNodeRS.script_attribute.getter)(
+          jsObject, pValue.get(), resolveNodeRS.script_attribute.attribute);
       resultValues->push_back(std::move(pValue));
       *bAttribute = false;
     }

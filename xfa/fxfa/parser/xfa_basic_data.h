@@ -14,10 +14,13 @@
 #include "third_party/base/optional.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
-typedef void (*XFA_ATTRIBUTE_CALLBACK)(CJX_Object* pNode,
-                                       CFXJSE_Value* pValue,
-                                       bool bSetting,
-                                       XFA_Attribute eAttribute);
+typedef void (*XFA_ATTRIBUTE_SETTER)(CJX_Object* pNode,
+                                     CFXJSE_Value* pValue,
+                                     XFA_Attribute eAttribute);
+
+typedef void (*XFA_ATTRIBUTE_GETTER)(CJX_Object* pNode,
+                                     CFXJSE_Value* pValue,
+                                     XFA_Attribute eAttribute);
 
 struct XFA_PACKETINFO {
   const wchar_t* name;
@@ -34,7 +37,8 @@ struct XFA_ATTRIBUTEINFO {
 struct XFA_SCRIPTATTRIBUTEINFO {
   XFA_Attribute attribute;
   XFA_ScriptType eValueType;
-  XFA_ATTRIBUTE_CALLBACK callback = nullptr;
+  XFA_ATTRIBUTE_SETTER setter = nullptr;
+  XFA_ATTRIBUTE_GETTER getter = nullptr;
 };
 
 XFA_PACKETINFO XFA_GetPacketByIndex(XFA_PacketType ePacket);

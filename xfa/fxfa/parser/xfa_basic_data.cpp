@@ -152,9 +152,14 @@ constexpr ElementAttributeRecord kElementAttributeRecords[] = {
 #undef ELEM_ATTR____
 };
 
-constexpr XFA_ATTRIBUTE_CALLBACK kElementAttributeCallbacks[] = {
+struct SetterGetterRecord {
+  XFA_ATTRIBUTE_SETTER setter;
+  XFA_ATTRIBUTE_GETTER getter;
+};
+
+constexpr SetterGetterRecord kElementAttributeCallbacks[] = {
 #undef ELEM_ATTR____
-#define ELEM_ATTR____(a, b, c) c##_static,
+#define ELEM_ATTR____(a, b, c) {c##_set_static, c##_get_static},
 #include "xfa/fxfa/parser/element_attributes.inc"
 #undef ELEM_ATTR____
 };
@@ -261,7 +266,8 @@ Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
       result.attribute = attr.value().attribute;
       result.eValueType = attr.value().eValueType;
       size_t index = std::distance(std::begin(kElementAttributeRecords), it);
-      result.callback = kElementAttributeCallbacks[index];
+      result.setter = kElementAttributeCallbacks[index].setter;
+      result.getter = kElementAttributeCallbacks[index].getter;
       return result;
     }
     element = kElementRecords[static_cast<size_t>(element)].parent;

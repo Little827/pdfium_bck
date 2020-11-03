@@ -175,11 +175,19 @@ bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
         GetOrCreateJSBindingFromMap(resolveRs.objects.front().Get()));
     return true;
   }
-  if (resolveRs.dwFlags == XFA_ResolveNodeRS::Type::kAttribute &&
-      resolveRs.script_attribute.callback) {
+  if (resolveRs.dwFlags == XFA_ResolveNodeRS::Type::kAttribute) {
     CJX_Object* jsObject = resolveRs.objects.front()->JSObject();
-    (*resolveRs.script_attribute.callback)(
-        jsObject, pValue, bSetting, resolveRs.script_attribute.attribute);
+    if (bSetting) {
+      if (resolveRs.script_attribute.setter) {
+        (*resolveRs.script_attribute.setter)(
+            jsObject, pValue, resolveRs.script_attribute.attribute);
+      }
+    } else {
+      if (resolveRs.script_attribute.getter) {
+        (*resolveRs.script_attribute.getter)(
+            jsObject, pValue, resolveRs.script_attribute.attribute);
+      }
+    }
   }
   return true;
 }
@@ -364,8 +372,7 @@ void CFXJSE_Engine::NormalPropertyGetter(CFXJSE_Value* pOriginalValue,
       pObject->GetElementType(), wsPropName.AsStringView());
   if (info.has_value()) {
     CJX_Object* jsObject = pObject->JSObject();
-    (*info.value().callback)(jsObject, pReturnValue, false,
-                             info.value().attribute);
+    (*info.value().getter)(jsObject, pReturnValue, info.value().attribute);
     return;
   }
 
@@ -407,8 +414,7 @@ void CFXJSE_Engine::NormalPropertySetter(CFXJSE_Value* pOriginalValue,
       XFA_GetScriptAttributeByName(pObject->GetElementType(), wsPropNameView);
   if (info.has_value()) {
     CJX_Object* jsObject = pObject->JSObject();
-    (*info.value().callback)(jsObject, pReturnValue, true,
-                             info.value().attribute);
+    (*info.value().setter)(jsObject, pReturnValue, info.value().attribute);
     return;
   }
 
@@ -689,13 +695,13 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
         continue;
 
       if (rndFind.m_dwFlag == XFA_ResolveNodeRS::Type::kAttribute &&
-          rndFind.m_ScriptAttribute.callback &&
+          rndFind.m_ScriptAttribute.getter &&
           nStart <
               pdfium::base::checked_cast<int32_t>(wsExpression.GetLength())) {
         auto pValue = std::make_unique<CFXJSE_Value>(GetIsolate());
         CJX_Object* jsObject = rndFind.m_Objects.front()->JSObject();
-        (*rndFind.m_ScriptAttribute.callback)(
-            jsObject, pValue.get(), false, rndFind.m_ScriptAttribute.attribute);
+        (*rndFind.m_ScriptAttribute.getter)(
+            jsObject, pValue.get(), rndFind.m_ScriptAttribute.attribute);
         if (!pValue->IsEmpty())
           rndFind.m_Objects.front() = ToObject(pValue.get());
       }
