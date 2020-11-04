@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24141ed8_001e658e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-04T17:56:57Z",
+      "side": 1,
+      "message": "PS16 \u003d\u003d PS12.  Moving forward.",
+      "revId": "dd9f4ae435c5f31680b8f46adc4e57c9ffb90dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
