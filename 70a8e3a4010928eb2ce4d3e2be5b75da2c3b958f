@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9119c8a2_23766c47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-04T05:49:04Z",
+      "side": 1,
+      "message": "Nit: Can you include a link to the CL in this description?\n\nOnce this change lands it might be difficult for a code archeologist to find the referenced CL :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "70a8e3a4010928eb2ce4d3e2be5b75da2c3b958f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd44be37_4c0a625a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-04T05:49:04Z",
+      "side": 1,
+      "message": "Couple o\u0027 nits",
+      "revId": "70a8e3a4010928eb2ce4d3e2be5b75da2c3b958f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7df431a_0fcc57a5",
+        "filename": "fxjs/xfa/cfxjse_value.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-04T05:49:04Z",
+      "side": 1,
+      "message": "Is this needed anymore?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "70a8e3a4010928eb2ce4d3e2be5b75da2c3b958f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
