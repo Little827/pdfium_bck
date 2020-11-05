@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4bbad8_a700fdd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-05T02:32:30Z",
+      "side": 1,
+      "message": "LGTM overall, just a couple of nits.\n\nAlso, is this part of a larger change to remove? ForceSetValue() seems like it\u0027s being used a lot more than assign (but I\u0027m not sure because CS x-refs don\u0027t work for XFA). Do you plan to remove Assign() entirely?",
+      "revId": "9b3668c2bfbc7f9c063637f100aa4fad445984ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2957bc_01bbe646",
+        "filename": "fxjs/xfa/cfxjse_context.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-05T02:32:30Z",
+      "side": 1,
+      "message": "kmoon@ recently noticed a subtle change to the style guide that encourages variables in comments be written as such.\n\n `lpNewThisObject`",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "9b3668c2bfbc7f9c063637f100aa4fad445984ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f44475b_24657bb2",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-05T02:32:30Z",
+      "side": 1,
+      "message": "Nit can you first put this in a reference to make it more readable?\n\ngo/totw/185",
+      "range": {
+        "startLine": 133,
+        "startChar": 49,
+        "endLine": 133,
+        "endChar": 60
+      },
+      "revId": "9b3668c2bfbc7f9c063637f100aa4fad445984ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
