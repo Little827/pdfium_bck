@@ -22,6 +22,30 @@
       },
       "revId": "022dc07c03623fea99359acb25965dce6424aa70",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa4cde7_530efb95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-05T21:00:50Z",
+      "side": 1,
+      "message": "Ok, I can pull this out, and also the majority of the changes to the test file can happen consolidating testing but using old impls.",
+      "parentUuid": "d1409c6f_f43daed6",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "022dc07c03623fea99359acb25965dce6424aa70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
