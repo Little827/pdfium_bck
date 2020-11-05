@@ -127,7 +127,11 @@ CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
 CFXJSE_Engine::~CFXJSE_Engine() {
   // This is what ensures that the v8 object bound to a CJX_Object
   // no longer retains that binding since it will outlive that object.
+<<<<<<< HEAD
+  CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
+=======
   CFXJSE_ScopeUtil_IsolateHandleContext scope(m_JsContext.get());
+>>>>>>> 0b6978453ebc756874105349a3926c87eae26e9f
   for (const auto& pair : m_mapObjectToObject) {
     const v8::Global<v8::Object>& binding = pair.second;
     FXJSE_ClearObjectBinding(v8::Local<v8::Object>::New(GetIsolate(), binding));
@@ -138,7 +142,7 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
                               WideStringView wsScript,
                               CFXJSE_Value* hRetValue,
                               CXFA_Object* pThisObject) {
-  CFXJSE_ScopeUtil_IsolateHandleContext scope(m_JsContext.get());
+  CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
   AutoRestorer<CXFA_Script::Type> typeRestorer(&m_eScriptType);
   m_eScriptType = eScriptType;
 
