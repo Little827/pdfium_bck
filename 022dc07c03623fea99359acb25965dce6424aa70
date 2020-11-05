@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1409c6f_f43daed6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-05T20:51:22Z",
+      "side": 1,
+      "message": "I think this could\u0027ve been a separate CL, but that\u0027s also because I think I err too much on the side of small CLs 😊",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "022dc07c03623fea99359acb25965dce6424aa70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
