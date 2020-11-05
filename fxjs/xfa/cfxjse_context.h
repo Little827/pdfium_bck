@@ -38,7 +38,7 @@ class CFXJSE_Context {
   CFXJSE_Class* GetClassByName(ByteStringView szName) const;
   void EnableCompatibleMode();
 
-  // Note: |lpNewThisObject| may be empty.
+  // Note: `lpNewThisObject` may be empty.
   bool ExecuteScript(const char* szScript,
                      CFXJSE_Value* lpRetValue,
                      v8::Local<v8::Object> lpNewThisObject);
