@@ -430,7 +430,7 @@ XFA_EventError CXFA_FFDocView::ExecEventActivityByDeepFirst(
 
 CXFA_FFWidget* CXFA_FFDocView::GetWidgetByName(const WideString& wsName,
                                                CXFA_FFWidget* pRefWidget) {
-  CFXJSE_Engine* pScriptContext = m_pDoc->GetXFADoc()->GetScriptContext();
+  CFXJSE_Engine* pScriptContext = m_pDoc->GetXFADoc()->GetScriptEngine();
   CXFA_Node* pRefNode = nullptr;
   if (pRefWidget) {
     CXFA_Node* node = pRefWidget->GetNode();
@@ -633,7 +633,7 @@ void CXFA_FFDocView::RunBindItems() {
       continue;
 
     CFXJSE_Engine* pScriptContext =
-        pWidgetNode->GetDocument()->GetScriptContext();
+        pWidgetNode->GetDocument()->GetScriptEngine();
     WideString wsRef = item->GetRef();
     constexpr uint32_t kStyle =
         XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |

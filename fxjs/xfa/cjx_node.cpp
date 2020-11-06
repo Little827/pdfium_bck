@@ -180,7 +180,7 @@ CJS_Result CJX_Node::clone(CFX_V8* runtime,
 
   CXFA_Node* pCloneNode = GetXFANode()->Clone(runtime->ToBoolean(params[0]));
   return CJS_Result::Success(
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(
           pCloneNode));
 }
 
@@ -212,7 +212,7 @@ CJS_Result CJX_Node::getElement(
     return CJS_Result::Success(runtime->NewNull());
 
   return CJS_Result::Success(
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pNode));
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(pNode));
 }
 
 CJS_Result CJX_Node::isPropertySpecified(
@@ -463,7 +463,7 @@ void CJX_Node::model(v8::Isolate* pIsolate,
     return;
   }
   pValue->ForceSetValue(
-      pIsolate, GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      pIsolate, GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(
                     GetXFANode()->GetModelNode()));
 }
 
@@ -506,9 +506,8 @@ void CJX_Node::oneOfChild(v8::Isolate* pIsolate,
       GetXFANode()->GetNodeListWithFilter(XFA_NODEFILTER_OneOfProperty);
   if (!properties.empty()) {
     pValue->ForceSetValue(
-        pIsolate,
-        GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
-            properties.front()));
+        pIsolate, GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(
+                      properties.front()));
   }
 }
 

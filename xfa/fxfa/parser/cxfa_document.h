@@ -88,7 +88,7 @@ class CXFA_Document final : public cppgc::GarbageCollected<CXFA_Document> {
   // and always returns non-NULL in those situations. In other words, we have
   // to call InitScriptContext() first to avoid a situation where the context
   // won't have an isolate set into it.
-  CFXJSE_Engine* GetScriptContext() const;
+  CFXJSE_Engine* GetScriptEngine() const;
 
   CXFA_FFNotify* GetNotify() const { return notify_.Get(); }
   CXFA_NodeOwner* GetNodeOwner() { return node_owner_; }

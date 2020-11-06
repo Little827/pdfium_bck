@@ -26,7 +26,7 @@ void CJX_Xfa::thisValue(v8::Isolate* pIsolate,
   if (bSetting)
     return;
 
-  auto* pScriptContext = GetDocument()->GetScriptContext();
+  auto* pScriptContext = GetDocument()->GetScriptEngine();
   CXFA_Object* pThis = pScriptContext->GetThisObject();
   if (!pThis) {
     pValue->SetNull(pIsolate);

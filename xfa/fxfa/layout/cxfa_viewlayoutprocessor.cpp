@@ -209,7 +209,7 @@ CXFA_Node* ResolveBreakTarget(CXFA_Node* pPageSetRoot,
         wsProcessedTarget = wsExpr.Substr(4, wsExpr.GetLength() - 5);
 
       XFA_ResolveNodeRS rs;
-      bool bRet = pDocument->GetScriptContext()->ResolveObjects(
+      bool bRet = pDocument->GetScriptEngine()->ResolveObjects(
           pPageSetRoot, wsProcessedTarget.AsStringView(), &rs,
           XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
               XFA_RESOLVENODE_Attributes | XFA_RESOLVENODE_Siblings |

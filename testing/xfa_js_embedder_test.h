@@ -29,7 +29,7 @@ class XFAJSEmbedderTest : public JSEmbedderTest {
                                JavaScriptOption javascript_option) override;
 
   CXFA_Document* GetXFADocument() const;
-  CFXJSE_Engine* GetScriptContext() const { return script_context_; }
+  CFXJSE_Engine* GetScriptEngine() const { return script_context_; }
   v8::Local<v8::Value> GetValue() const;
 
   bool Execute(ByteStringView input);

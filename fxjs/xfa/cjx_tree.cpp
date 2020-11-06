@@ -42,7 +42,7 @@ CJS_Result CJX_Tree::resolveNode(
     return CJS_Result::Failure(JSMessage::kParamError);
 
   WideString expression = runtime->ToWideString(params[0]);
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
+  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
   CXFA_Object* refNode = GetXFAObject();
   if (refNode->GetElementType() == XFA_Element::Xfa)
     refNode = pScriptContext->GetThisObject();
@@ -60,8 +60,7 @@ CJS_Result CJX_Tree::resolveNode(
   if (resolveNodeRS.dwFlags == XFA_ResolveNodeRS::Type::kNodes) {
     CXFA_Object* pObject = resolveNodeRS.objects.front().Get();
     return CJS_Result::Success(
-        GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
-            pObject));
+        GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(pObject));
   }
 
   if (!resolveNodeRS.script_attribute.callback ||
@@ -86,9 +85,9 @@ CJS_Result CJX_Tree::resolveNodes(
 
   CXFA_Object* refNode = GetXFAObject();
   if (refNode->GetElementType() == XFA_Element::Xfa)
-    refNode = GetDocument()->GetScriptContext()->GetThisObject();
+    refNode = GetDocument()->GetScriptEngine()->GetThisObject();
 
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
+  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
   auto pValue = std::make_unique<CFXJSE_Value>();
   ResolveNodeList(pScriptContext->GetIsolate(), pValue.get(),
                   runtime->ToWideString(params[0]),
@@ -144,7 +143,7 @@ void CJX_Tree::nodes(v8::Isolate* pIsolate,
       pDoc->GetHeap()->GetAllocationHandle(), pDoc, GetXFANode());
   pDoc->GetNodeOwner()->PersistList(pNodeList);
 
-  CFXJSE_Engine* pEngine = pDoc->GetScriptContext();
+  CFXJSE_Engine* pEngine = pDoc->GetScriptEngine();
   pValue->SetHostObject(pIsolate, pNodeList->JSObject(),
                         pEngine->GetJseNormalClass());
 }
@@ -166,7 +165,7 @@ void CJX_Tree::parent(v8::Isolate* pIsolate,
 
   pValue->ForceSetValue(
       pIsolate,
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pParent));
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(pParent));
 }
 
 void CJX_Tree::index(v8::Isolate* pIsolate,
@@ -220,7 +219,7 @@ void CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,
 
   XFA_ResolveNodeRS resolveNodeRS;
   CXFA_Document* pDoc = GetDocument();
-  CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
+  CFXJSE_Engine* pScriptContext = pDoc->GetScriptEngine();
   pScriptContext->ResolveObjects(refNode, wsExpression.AsStringView(),
                                  &resolveNodeRS, dwFlag, nullptr);
 
