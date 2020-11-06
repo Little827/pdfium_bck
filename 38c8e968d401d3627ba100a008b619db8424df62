@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a1224f2_ccde0bb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-06T03:53:54Z",
+      "side": 1,
+      "message": "The matching rendering results have been uploaded to https://crbug.com/pdfium/1500#c73.",
+      "revId": "38c8e968d401d3627ba100a008b619db8424df62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
