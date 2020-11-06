@@ -202,7 +202,7 @@ void CFXJSE_Engine::GlobalPropertySetter(v8::Isolate* pIsolate,
                                          CFXJSE_Value* pValue) {
   CXFA_Object* lpOrginalNode = ToObject(pIsolate, pObject);
   CXFA_Document* pDoc = lpOrginalNode->GetDocument();
-  CFXJSE_Engine* lpScriptContext = pDoc->GetScriptContext();
+  CFXJSE_Engine* lpScriptContext = pDoc->GetScriptEngine();
   CXFA_Node* pRefNode = ToNode(lpScriptContext->GetThisObject());
   if (lpOrginalNode->IsThisProxy())
     pRefNode = ToNode(lpScriptContext->GetVariablesThis(lpOrginalNode));
@@ -243,7 +243,7 @@ void CFXJSE_Engine::GlobalPropertyGetter(v8::Isolate* pIsolate,
                                          CFXJSE_Value* pValue) {
   CXFA_Object* pOriginalObject = ToObject(pIsolate, pObject);
   CXFA_Document* pDoc = pOriginalObject->GetDocument();
-  CFXJSE_Engine* lpScriptContext = pDoc->GetScriptContext();
+  CFXJSE_Engine* lpScriptContext = pDoc->GetScriptEngine();
   WideString wsPropName = WideString::FromUTF8(szPropName);
 
   pValue->SetUndefined(pIsolate);  // Assume failure.
@@ -319,7 +319,7 @@ int32_t CFXJSE_Engine::GlobalPropTypeGetter(v8::Isolate* pIsolate,
   if (!pObject)
     return FXJSE_ClassPropType_None;
 
-  CFXJSE_Engine* lpScriptContext = pObject->GetDocument()->GetScriptContext();
+  CFXJSE_Engine* lpScriptContext = pObject->GetDocument()->GetScriptEngine();
   pObject = lpScriptContext->GetVariablesThis(pObject);
   WideString wsPropName = WideString::FromUTF8(szPropName);
   if (pObject->JSObject()->HasMethod(wsPropName))
@@ -340,7 +340,7 @@ void CFXJSE_Engine::NormalPropertyGetter(v8::Isolate* pIsolate,
 
   WideString wsPropName = WideString::FromUTF8(szPropName);
   CFXJSE_Engine* lpScriptContext =
-      pOriginalObject->GetDocument()->GetScriptContext();
+      pOriginalObject->GetDocument()->GetScriptEngine();
   CXFA_Object* pObject = lpScriptContext->GetVariablesThis(pOriginalObject);
   if (wsPropName.EqualsASCII("xfa")) {
     pReturnValue->ForceSetValue(pIsolate,
@@ -417,7 +417,7 @@ void CFXJSE_Engine::NormalPropertySetter(v8::Isolate* pIsolate,
     return;
 
   CFXJSE_Engine* lpScriptContext =
-      pOriginalObject->GetDocument()->GetScriptContext();
+      pOriginalObject->GetDocument()->GetScriptEngine();
   CXFA_Object* pObject = lpScriptContext->GetVariablesThis(pOriginalObject);
   WideString wsPropName = WideString::FromUTF8(szPropName);
   WideStringView wsPropNameView = wsPropName.AsStringView();
@@ -471,7 +471,7 @@ int32_t CFXJSE_Engine::NormalPropTypeGetter(v8::Isolate* pIsolate,
   if (!pObject)
     return FXJSE_ClassPropType_None;
 
-  CFXJSE_Engine* lpScriptContext = pObject->GetDocument()->GetScriptContext();
+  CFXJSE_Engine* lpScriptContext = pObject->GetDocument()->GetScriptEngine();
   pObject = lpScriptContext->GetVariablesThis(pObject);
   XFA_Element eType = pObject->GetElementType();
   WideString wsPropName = WideString::FromUTF8(szPropName);
@@ -492,7 +492,7 @@ CJS_Result CFXJSE_Engine::NormalMethodCall(
   if (!pObject)
     return CJS_Result::Failure(L"no Holder() present.");
 
-  CFXJSE_Engine* lpScriptContext = pObject->GetDocument()->GetScriptContext();
+  CFXJSE_Engine* lpScriptContext = pObject->GetDocument()->GetScriptEngine();
   pObject = lpScriptContext->GetVariablesThis(pObject);
 
   std::vector<v8::Local<v8::Value>> parameters;

@@ -160,7 +160,7 @@ CJS_Result CJX_Object::RunMethod(
   if (it == method_specs_.end())
     return CJS_Result::Failure(JSMessage::kUnknownMethod);
 
-  return it->second(this, GetXFAObject()->GetDocument()->GetScriptContext(),
+  return it->second(this, GetXFAObject()->GetDocument()->GetScriptEngine(),
                     params);
 }
 
@@ -710,7 +710,7 @@ Optional<WideString> CJX_Object::TryContent(bool bScriptModify, bool bProto) {
   }
   if (pNode) {
     if (bScriptModify) {
-      CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
+      CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
       pScriptContext->AddNodesOfRunScript(GetXFANode());
     }
     return TryCData(XFA_Attribute::Value, false);
@@ -980,7 +980,7 @@ void CJX_Object::ScriptAttributeString(v8::Isolate* pIsolate,
   CXFA_Node* pProtoNode = nullptr;
   if (!wsSOM.IsEmpty()) {
     XFA_ResolveNodeRS resolveNodeRS;
-    bool bRet = GetDocument()->GetScriptContext()->ResolveObjects(
+    bool bRet = GetDocument()->GetScriptEngine()->ResolveObjects(
         pProtoRoot, wsSOM.AsStringView(), &resolveNodeRS,
         XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
             XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
@@ -1331,8 +1331,8 @@ void CJX_Object::ScriptSomDataNode(v8::Isolate* pIsolate,
   }
 
   pValue->ForceSetValue(
-      pIsolate, GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
-                    pDataNode));
+      pIsolate,
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(pDataNode));
 }
 
 void CJX_Object::ScriptSomMandatory(v8::Isolate* pIsolate,

@@ -520,7 +520,7 @@ class PDFiumFormCalcContextFuzzer : public PDFiumFuzzerHelper {
     auto* context = static_cast<CPDFXFA_Context*>(
         CPDFDocumentFromFPDFDocument(doc)->GetExtension());
     CXFA_Document* xfa_document = context->GetXFADoc()->GetXFADoc();
-    CFXJSE_Engine* script_context = xfa_document->GetScriptContext();
+    CFXJSE_Engine* script_context = xfa_document->GetScriptEngine();
 
     CXFA_EventParam params;
     params.m_bCancelAction = false;

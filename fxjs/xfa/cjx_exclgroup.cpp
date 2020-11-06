@@ -108,7 +108,7 @@ CJS_Result CJX_ExclGroup::selectedMember(
     return CJS_Result::Success(runtime->NewNull());
 
   return CJS_Result::Success(
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(
           pReturnNode));
 }
 

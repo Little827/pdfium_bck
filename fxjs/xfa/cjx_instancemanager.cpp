@@ -250,7 +250,7 @@ CJS_Result CJX_InstanceManager::addInstance(
   }
 
   return CJS_Result::Success(
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(
           pNewInstance));
 }
 
@@ -292,7 +292,7 @@ CJS_Result CJX_InstanceManager::insertInstance(
   }
 
   return CJS_Result::Success(
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(
           pNewInstance));
 }
 

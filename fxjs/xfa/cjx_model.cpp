@@ -66,7 +66,7 @@ CJS_Result CJX_Model::createNode(
   }
 
   v8::Local<v8::Value> value =
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pNewNode);
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(pNewNode);
 
   return CJS_Result::Success(value);
 }

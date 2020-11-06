@@ -56,7 +56,7 @@ bool XFAJSEmbedderTest::OpenDocumentWithOptions(
           filename, password, linearize_option, javascript_option)) {
     return false;
   }
-  script_context_ = GetXFADocument()->GetScriptContext();
+  script_context_ = GetXFADocument()->GetScriptEngine();
   return true;
 }
 

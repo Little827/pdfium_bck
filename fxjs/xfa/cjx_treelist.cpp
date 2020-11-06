@@ -44,5 +44,5 @@ CJS_Result CJX_TreeList::namedItem(
     return CJS_Result::Success();
 
   return CJS_Result::Success(
-      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pNode));
+      GetDocument()->GetScriptEngine()->GetOrCreateJSBindingFromMap(pNode));
 }

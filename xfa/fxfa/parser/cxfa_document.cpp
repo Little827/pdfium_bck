@@ -352,8 +352,8 @@ CXFA_Node* FindDataRefDataNode(CXFA_Document* pDocument,
     dFlags |= (XFA_RESOLVENODE_Parent | XFA_RESOLVENODE_Siblings);
 
   XFA_ResolveNodeRS rs;
-  pDocument->GetScriptContext()->ResolveObjects(
-      pDataScope, wsRef.AsStringView(), &rs, dFlags, pTemplateNode);
+  pDocument->GetScriptEngine()->ResolveObjects(pDataScope, wsRef.AsStringView(),
+                                               &rs, dFlags, pTemplateNode);
   if (rs.dwFlags == XFA_ResolveNodeRS::Type::kCreateNodeAll ||
       rs.dwFlags == XFA_ResolveNodeRS::Type::kCreateNodeMidAll ||
       rs.objects.size() > 1) {
@@ -1194,7 +1194,7 @@ void UpdateBindingRelations(CXFA_Document* pDocument,
           uint32_t dFlags =
               XFA_RESOLVENODE_Children | XFA_RESOLVENODE_CreateNode;
           XFA_ResolveNodeRS rs;
-          pDocument->GetScriptContext()->ResolveObjects(
+          pDocument->GetScriptEngine()->ResolveObjects(
               pDataScope, wsRef.AsStringView(), &rs, dFlags, pTemplateNode);
           CXFA_Object* pObject =
               !rs.objects.empty() ? rs.objects.front().Get() : nullptr;
@@ -1448,7 +1448,7 @@ CFXJSE_Engine* CXFA_Document::InitScriptContext(CJS_Runtime* fxjs_runtime) {
   return m_pScriptContext.get();
 }
 
-CFXJSE_Engine* CXFA_Document::GetScriptContext() const {
+CFXJSE_Engine* CXFA_Document::GetScriptEngine() const {
   DCHECK(m_pScriptContext);
   return m_pScriptContext.get();
 }

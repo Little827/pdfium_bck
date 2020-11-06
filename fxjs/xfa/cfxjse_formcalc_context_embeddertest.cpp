@@ -24,14 +24,14 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
   void ExecuteExpectNull(ByteStringView input) {
     EXPECT_TRUE(Execute(input)) << "Program: " << input;
 
-    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptEngine());
     EXPECT_TRUE(fxv8::IsNull(GetValue())) << "Program: " << input;
   }
 
   void ExecuteExpectBool(ByteStringView input, bool expected) {
     EXPECT_TRUE(Execute(input)) << "Program: " << input;
 
-    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptEngine());
     v8::Local<v8::Value> value = GetValue();
 
     // Yes, bools might be integers, somehow.
@@ -44,7 +44,7 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
   void ExecuteExpectInt32(ByteStringView input, int32_t expected) {
     EXPECT_TRUE(Execute(input)) << "Program: " << input;
 
-    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptEngine());
     v8::Local<v8::Value> value = GetValue();
     EXPECT_TRUE(fxv8::IsInteger(value)) << "Program: " << input;
     EXPECT_EQ(expected, fxv8::ReentrantToInt32Helper(isolate(), value))
@@ -54,7 +54,7 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
   void ExecuteExpectFloat(ByteStringView input, float expected) {
     EXPECT_TRUE(Execute(input)) << "Program: " << input;
 
-    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptEngine());
     v8::Local<v8::Value> value = GetValue();
     EXPECT_TRUE(fxv8::IsNumber(value));
     EXPECT_FLOAT_EQ(expected, fxv8::ReentrantToFloatHelper(isolate(), value))
@@ -66,7 +66,7 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
                               float precision) {
     EXPECT_TRUE(Execute(input)) << "Program: " << input;
 
-    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptEngine());
     v8::Local<v8::Value> value = GetValue();
     EXPECT_TRUE(fxv8::IsNumber(value));
     EXPECT_NEAR(expected, fxv8::ReentrantToFloatHelper(isolate(), value),
@@ -77,7 +77,7 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
   void ExecuteExpectString(ByteStringView input, const char* expected) {
     EXPECT_TRUE(Execute(input)) << "Program: " << input;
 
-    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptEngine());
     v8::Local<v8::Value> value = GetValue();
     EXPECT_TRUE(fxv8::IsString(value));
     EXPECT_STREQ(expected,
@@ -1114,7 +1114,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Uuid) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
   EXPECT_TRUE(Execute("Uuid()"));
 
-  CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+  CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptEngine());
   v8::Local<v8::Value> value = GetValue();
   EXPECT_TRUE(fxv8::IsString(value));
 }
@@ -1192,7 +1192,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, GetXFAEventChange) {
   CXFA_EventParam params;
   params.m_wsChange = L"changed";
 
-  CFXJSE_Engine* context = GetScriptContext();
+  CFXJSE_Engine* context = GetScriptEngine();
   context->SetEventParam(&params);
 
   const char test[] = {"xfa.event.change"};
@@ -1204,7 +1204,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, SetXFAEventChange) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
 
   CXFA_EventParam params;
-  CFXJSE_Engine* context = GetScriptContext();
+  CFXJSE_Engine* context = GetScriptEngine();
   context->SetEventParam(&params);
 
   const char test[] = {"xfa.event.change = \"changed\""};
@@ -1219,7 +1219,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, SetXFAEventFullTextFails) {
   CXFA_EventParam params;
   params.m_wsFullText = L"Original Full Text";
 
-  CFXJSE_Engine* context = GetScriptContext();
+  CFXJSE_Engine* context = GetScriptEngine();
   context->SetEventParam(&params);
 
   const char test[] = {"xfa.event.fullText = \"Changed Full Text\""};
@@ -1236,7 +1236,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, EventChangeSelection) {
   params.m_iSelStart = 1;
   params.m_iSelEnd = 3;
 
-  CFXJSE_Engine* context = GetScriptContext();
+  CFXJSE_Engine* context = GetScriptEngine();
   context->SetEventParam(&params);
 
   // Moving end to start works fine.
@@ -1290,7 +1290,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, XFAEventCancelAction) {
   CXFA_EventParam params;
   params.m_bCancelAction = false;
 
-  CFXJSE_Engine* context = GetScriptContext();
+  CFXJSE_Engine* context = GetScriptEngine();
   context->SetEventParam(&params);
   ExecuteExpectBool("xfa.event.cancelAction", false);
   EXPECT_TRUE(Execute("xfa.event.cancelAction = \"true\""));
@@ -1307,7 +1307,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, ComplexTextChangeEvent) {
   params.m_iSelStart = 1;
   params.m_iSelEnd = 3;
 
-  CFXJSE_Engine* context = GetScriptContext();
+  CFXJSE_Engine* context = GetScriptEngine();
   context->SetEventParam(&params);
 
   EXPECT_EQ(L"abcd", params.m_wsPrevText);

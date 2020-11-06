@@ -418,7 +418,7 @@ GCedLocaleIface* LocaleFromString(CXFA_Document* pDoc,
   if (!bsLocale.IsEmpty())
     return pMgr->GetLocaleByName(WideString::FromUTF8(bsLocale));
 
-  CXFA_Node* pThisNode = ToNode(pDoc->GetScriptContext()->GetThisObject());
+  CXFA_Node* pThisNode = ToNode(pDoc->GetScriptEngine()->GetThisObject());
   return pThisNode->GetLocale();
 }
 
@@ -2395,7 +2395,7 @@ void CFXJSE_FormCalcContext::Time2Num(
   CXFA_LocaleMgr* pMgr = pDoc->GetLocaleMgr();
   GCedLocaleIface* pLocale = nullptr;
   if (bsLocale.IsEmpty()) {
-    CXFA_Node* pThisNode = ToNode(pDoc->GetScriptContext()->GetThisObject());
+    CXFA_Node* pThisNode = ToNode(pDoc->GetScriptEngine()->GetThisObject());
     pLocale = pThisNode->GetLocale();
   } else {
     pLocale =
@@ -3739,7 +3739,7 @@ void CFXJSE_FormCalcContext::Format(
 
   CXFA_Document* pDoc = pContext->GetDocument();
   CXFA_LocaleMgr* pMgr = pDoc->GetLocaleMgr();
-  CXFA_Node* pThisNode = ToNode(pDoc->GetScriptContext()->GetThisObject());
+  CXFA_Node* pThisNode = ToNode(pDoc->GetScriptEngine()->GetThisObject());
   GCedLocaleIface* pLocale = pThisNode->GetLocale();
   WideString wsPattern = WideString::FromUTF8(bsPattern.AsStringView());
   WideString wsValue = WideString::FromUTF8(bsValue.AsStringView());
@@ -3916,7 +3916,7 @@ void CFXJSE_FormCalcContext::Parse(
   ByteString bsValue = ValueToUTF8String(pThis, argTwo.get());
   CXFA_Document* pDoc = pContext->GetDocument();
   CXFA_LocaleMgr* pMgr = pDoc->GetLocaleMgr();
-  CXFA_Node* pThisNode = ToNode(pDoc->GetScriptContext()->GetThisObject());
+  CXFA_Node* pThisNode = ToNode(pDoc->GetScriptEngine()->GetThisObject());
   GCedLocaleIface* pLocale = pThisNode->GetLocale();
   WideString wsPattern = WideString::FromUTF8(bsPattern.AsStringView());
   WideString wsValue = WideString::FromUTF8(bsValue.AsStringView());
@@ -5469,7 +5469,7 @@ bool CFXJSE_FormCalcContext::GetObjectForName(CFXJSE_HostObject* pThis,
   if (!pDoc)
     return false;
 
-  CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
+  CFXJSE_Engine* pScriptContext = pDoc->GetScriptEngine();
   XFA_ResolveNodeRS resolveNodeRS;
   uint32_t dwFlags = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
                      XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
@@ -5500,7 +5500,7 @@ bool CFXJSE_FormCalcContext::ResolveObjects(CFXJSE_HostObject* pThis,
 
   v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetIsolate();
   WideString wsSomExpression = WideString::FromUTF8(bsSomExp);
-  CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
+  CFXJSE_Engine* pScriptContext = pDoc->GetScriptEngine();
   CXFA_Object* pNode = nullptr;
   uint32_t dFlags = 0UL;
   if (bDotAccessor) {
@@ -5556,7 +5556,7 @@ void CFXJSE_FormCalcContext::ParseResolveResult(
 
   if (resolveNodeRS.dwFlags == XFA_ResolveNodeRS::Type::kNodes) {
     *bAttribute = false;
-    CFXJSE_Engine* pScriptContext = pContext->GetDocument()->GetScriptContext();
+    CFXJSE_Engine* pScriptContext = pContext->GetDocument()->GetScriptEngine();
     for (auto& pObject : resolveNodeRS.objects) {
       resultValues->push_back(std::make_unique<CFXJSE_Value>());
       resultValues->back()->ForceSetValue(
