@@ -33,6 +33,24 @@
       "message": "LGTM\n\nThanks for the very descriptive CL descriptions!",
       "revId": "38c8e968d401d3627ba100a008b619db8424df62",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9529d6c_b6cf7c81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-06T17:31:10Z",
+      "side": 1,
+      "message": "These embedder test fixes usually come with lengthy descriptions, but often have the same reasons to justify the Skia/SkiaPaths rendering results. I\u0027m sure soon you will memorize all of them, :D.",
+      "parentUuid": "560c8193_6dc2a124",
+      "revId": "38c8e968d401d3627ba100a008b619db8424df62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
