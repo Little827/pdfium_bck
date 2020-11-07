@@ -26,12 +26,11 @@ void CJX_Xfa::thisValue(v8::Isolate* pIsolate,
   if (bSetting)
     return;
 
-  auto* pScriptContext = GetDocument()->GetScriptEngine();
-  CXFA_Object* pThis = pScriptContext->GetThisObject();
+  auto* pEngine = GetDocument()->GetScriptEngine();
+  CXFA_Object* pThis = pEngine->GetThisObject();
   if (!pThis) {
     pValue->SetNull(pIsolate);
     return;
   }
-  pValue->ForceSetValue(pIsolate,
-                        pScriptContext->GetOrCreateJSBindingFromMap(pThis));
+  pValue->ForceSetValue(pIsolate, pEngine->GetOrCreateJSBindingFromMap(pThis));
 }

@@ -2747,14 +2747,14 @@ std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
     return {XFA_EventError::kSuccess, false};
 
   CXFA_FFDoc* pDoc = pDocView->GetDoc();
-  CFXJSE_Engine* pContext = pDoc->GetXFADoc()->GetScriptEngine();
-  pContext->SetEventParam(pEventParam);
-  pContext->SetRunAtType(script->GetRunAt());
+  CFXJSE_Engine* pEngine = pDoc->GetXFADoc()->GetScriptEngine();
+  pEngine->SetEventParam(pEventParam);
+  pEngine->SetRunAtType(script->GetRunAt());
 
   std::vector<cppgc::Persistent<CXFA_Node>> refNodes;
   if (pEventParam->m_eType == XFA_EVENT_InitCalculate ||
       pEventParam->m_eType == XFA_EVENT_Calculate) {
-    pContext->SetNodesOfRunScript(&refNodes);
+    pEngine->SetNodesOfRunScript(&refNodes);
   }
 
   auto pTmpRetValue = std::make_unique<CFXJSE_Value>();
@@ -2762,8 +2762,8 @@ std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
   {
     AutoRestorer<uint8_t> restorer(&m_ExecuteRecursionDepth);
     ++m_ExecuteRecursionDepth;
-    bRet = pContext->RunScript(eScriptType, wsExpression.AsStringView(),
-                               pTmpRetValue.get(), this);
+    bRet = pEngine->RunScript(eScriptType, wsExpression.AsStringView(),
+                              pTmpRetValue.get(), this);
   }
 
   XFA_EventError iRet = XFA_EventError::kError;
@@ -2771,10 +2771,10 @@ std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
     iRet = XFA_EventError::kSuccess;
     if (pEventParam->m_eType == XFA_EVENT_Calculate ||
         pEventParam->m_eType == XFA_EVENT_InitCalculate) {
-      if (!pTmpRetValue->IsUndefined(pContext->GetIsolate())) {
-        if (!pTmpRetValue->IsNull(pContext->GetIsolate()))
+      if (!pTmpRetValue->IsUndefined(pEngine->GetIsolate())) {
+        if (!pTmpRetValue->IsNull(pEngine->GetIsolate()))
           pEventParam->m_wsResult =
-              pTmpRetValue->ToWideString(pContext->GetIsolate());
+              pTmpRetValue->ToWideString(pEngine->GetIsolate());
 
         iRet = XFA_EventError::kSuccess;
       } else {
@@ -2798,11 +2798,11 @@ std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
       }
     }
   }
-  pContext->SetNodesOfRunScript(nullptr);
-  pContext->SetEventParam(nullptr);
+  pEngine->SetNodesOfRunScript(nullptr);
+  pEngine->SetEventParam(nullptr);
 
-  return {iRet, pTmpRetValue->IsBoolean(pContext->GetIsolate()) &&
-                    pTmpRetValue->ToBoolean(pContext->GetIsolate())};
+  return {iRet, pTmpRetValue->IsBoolean(pEngine->GetIsolate()) &&
+                    pTmpRetValue->ToBoolean(pEngine->GetIsolate())};
 }
 
 std::pair<XFA_FFWidgetType, CXFA_Ui*>

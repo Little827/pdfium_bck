@@ -289,15 +289,15 @@ CJS_Result CJX_HostPseudoModel::openList(
     pNode =
         ToNode(static_cast<CFXJSE_Engine*>(runtime)->ToXFAObject(params[0]));
   } else if (params[0]->IsString()) {
-    CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
-    CXFA_Object* pObject = pScriptContext->GetThisObject();
+    CFXJSE_Engine* pEngine = GetDocument()->GetScriptEngine();
+    CXFA_Object* pObject = pEngine->GetThisObject();
     if (!pObject)
       return CJS_Result::Success();
 
     uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
                       XFA_RESOLVENODE_Siblings;
     XFA_ResolveNodeRS resolveNodeRS;
-    bool bRet = pScriptContext->ResolveObjects(
+    bool bRet = pEngine->ResolveObjects(
         pObject, runtime->ToWideString(params[0]).AsStringView(),
         &resolveNodeRS, dwFlag, nullptr);
     if (!bRet || !resolveNodeRS.objects.front()->IsNode())
@@ -375,16 +375,16 @@ CJS_Result CJX_HostPseudoModel::resetData(
   int32_t iExpLength = expression.GetLength();
   while (iStart < iExpLength) {
     iStart = FilterName(expression.AsStringView(), iStart, wsName);
-    CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
-    CXFA_Object* pObject = pScriptContext->GetThisObject();
+    CFXJSE_Engine* pEngine = GetDocument()->GetScriptEngine();
+    CXFA_Object* pObject = pEngine->GetThisObject();
     if (!pObject)
       return CJS_Result::Success();
 
     uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
                       XFA_RESOLVENODE_Siblings;
     XFA_ResolveNodeRS resolveNodeRS;
-    bool bRet = pScriptContext->ResolveObjects(pObject, wsName.AsStringView(),
-                                               &resolveNodeRS, dwFlag, nullptr);
+    bool bRet = pEngine->ResolveObjects(pObject, wsName.AsStringView(),
+                                        &resolveNodeRS, dwFlag, nullptr);
     if (!bRet || !resolveNodeRS.objects.front()->IsNode())
       continue;
 
@@ -437,15 +437,15 @@ CJS_Result CJX_HostPseudoModel::setFocus(
       pNode =
           ToNode(static_cast<CFXJSE_Engine*>(runtime)->ToXFAObject(params[0]));
     } else if (params[0]->IsString()) {
-      CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
-      CXFA_Object* pObject = pScriptContext->GetThisObject();
+      CFXJSE_Engine* pEngine = GetDocument()->GetScriptEngine();
+      CXFA_Object* pObject = pEngine->GetThisObject();
       if (!pObject)
         return CJS_Result::Success();
 
       uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
                         XFA_RESOLVENODE_Siblings;
       XFA_ResolveNodeRS resolveNodeRS;
-      bool bRet = pScriptContext->ResolveObjects(
+      bool bRet = pEngine->ResolveObjects(
           pObject, runtime->ToWideString(params[0]).AsStringView(),
           &resolveNodeRS, dwFlag, nullptr);
       if (!bRet || !resolveNodeRS.objects.front()->IsNode())

@@ -5469,18 +5469,18 @@ bool CFXJSE_FormCalcContext::GetObjectForName(CFXJSE_HostObject* pThis,
   if (!pDoc)
     return false;
 
-  CFXJSE_Engine* pScriptContext = pDoc->GetScriptEngine();
+  CFXJSE_Engine* pEngine = pDoc->GetScriptEngine();
   XFA_ResolveNodeRS resolveNodeRS;
   uint32_t dwFlags = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
                      XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
-  bool bRet = pScriptContext->ResolveObjects(
-      pScriptContext->GetThisObject(),
+  bool bRet = pEngine->ResolveObjects(
+      pEngine->GetThisObject(),
       WideString::FromUTF8(bsAccessorName).AsStringView(), &resolveNodeRS,
       dwFlags, nullptr);
   if (bRet && resolveNodeRS.dwFlags == XFA_ResolveNodeRS::Type::kNodes) {
     v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetIsolate();
     accessorValue->ForceSetValue(pIsolate,
-                                 pScriptContext->GetOrCreateJSBindingFromMap(
+                                 pEngine->GetOrCreateJSBindingFromMap(
                                      resolveNodeRS.objects.front().Get()));
     return true;
   }
@@ -5500,12 +5500,12 @@ bool CFXJSE_FormCalcContext::ResolveObjects(CFXJSE_HostObject* pThis,
 
   v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetIsolate();
   WideString wsSomExpression = WideString::FromUTF8(bsSomExp);
-  CFXJSE_Engine* pScriptContext = pDoc->GetScriptEngine();
+  CFXJSE_Engine* pEngine = pDoc->GetScriptEngine();
   CXFA_Object* pNode = nullptr;
   uint32_t dFlags = 0UL;
   if (bDotAccessor) {
     if (pRefValue && pRefValue->IsNull(pIsolate)) {
-      pNode = pScriptContext->GetThisObject();
+      pNode = pEngine->GetThisObject();
       dFlags = XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
     } else {
       pNode = CFXJSE_Engine::ToObject(pIsolate, pRefValue);
@@ -5536,8 +5536,8 @@ bool CFXJSE_FormCalcContext::ResolveObjects(CFXJSE_HostObject* pThis,
     pNode = CFXJSE_Engine::ToObject(pIsolate, pRefValue);
     dFlags = XFA_RESOLVENODE_AnyChild;
   }
-  return pScriptContext->ResolveObjects(pNode, wsSomExpression.AsStringView(),
-                                        resolveNodeRS, dFlags, nullptr);
+  return pEngine->ResolveObjects(pNode, wsSomExpression.AsStringView(),
+                                 resolveNodeRS, dFlags, nullptr);
 }
 
 // static
@@ -5556,11 +5556,11 @@ void CFXJSE_FormCalcContext::ParseResolveResult(
 
   if (resolveNodeRS.dwFlags == XFA_ResolveNodeRS::Type::kNodes) {
     *bAttribute = false;
-    CFXJSE_Engine* pScriptContext = pContext->GetDocument()->GetScriptEngine();
+    CFXJSE_Engine* pEngine = pContext->GetDocument()->GetScriptEngine();
     for (auto& pObject : resolveNodeRS.objects) {
       resultValues->push_back(std::make_unique<CFXJSE_Value>());
       resultValues->back()->ForceSetValue(
-          pIsolate, pScriptContext->GetOrCreateJSBindingFromMap(pObject.Get()));
+          pIsolate, pEngine->GetOrCreateJSBindingFromMap(pObject.Get()));
     }
     return;
   }

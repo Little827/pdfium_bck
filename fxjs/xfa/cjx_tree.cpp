@@ -42,18 +42,17 @@ CJS_Result CJX_Tree::resolveNode(
     return CJS_Result::Failure(JSMessage::kParamError);
 
   WideString expression = runtime->ToWideString(params[0]);
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
+  CFXJSE_Engine* pEngine = GetDocument()->GetScriptEngine();
   CXFA_Object* refNode = GetXFAObject();
   if (refNode->GetElementType() == XFA_Element::Xfa)
-    refNode = pScriptContext->GetThisObject();
+    refNode = pEngine->GetThisObject();
 
   uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
                     XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
                     XFA_RESOLVENODE_Siblings;
   XFA_ResolveNodeRS resolveNodeRS;
-  if (!pScriptContext->ResolveObjects(ToNode(refNode),
-                                      expression.AsStringView(), &resolveNodeRS,
-                                      dwFlag, nullptr)) {
+  if (!pEngine->ResolveObjects(ToNode(refNode), expression.AsStringView(),
+                               &resolveNodeRS, dwFlag, nullptr)) {
     return CJS_Result::Success(runtime->NewNull());
   }
 
@@ -87,9 +86,9 @@ CJS_Result CJX_Tree::resolveNodes(
   if (refNode->GetElementType() == XFA_Element::Xfa)
     refNode = GetDocument()->GetScriptEngine()->GetThisObject();
 
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptEngine();
+  CFXJSE_Engine* pEngine = GetDocument()->GetScriptEngine();
   auto pValue = std::make_unique<CFXJSE_Value>();
-  ResolveNodeList(pScriptContext->GetIsolate(), pValue.get(),
+  ResolveNodeList(pEngine->GetIsolate(), pValue.get(),
                   runtime->ToWideString(params[0]),
                   XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
                       XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
@@ -219,9 +218,9 @@ void CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,
 
   XFA_ResolveNodeRS resolveNodeRS;
   CXFA_Document* pDoc = GetDocument();
-  CFXJSE_Engine* pScriptContext = pDoc->GetScriptEngine();
-  pScriptContext->ResolveObjects(refNode, wsExpression.AsStringView(),
-                                 &resolveNodeRS, dwFlag, nullptr);
+  CFXJSE_Engine* pEngine = pDoc->GetScriptEngine();
+  pEngine->ResolveObjects(refNode, wsExpression.AsStringView(), &resolveNodeRS,
+                          dwFlag, nullptr);
 
   auto* pNodeList = cppgc::MakeGarbageCollected<CXFA_ArrayNodeList>(
       pDoc->GetHeap()->GetAllocationHandle(), pDoc);
@@ -241,13 +240,13 @@ void CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,
         (*resolveNodeRS.script_attribute.callback)(
             pIsolate, jsObject, innerValue.get(), false,
             resolveNodeRS.script_attribute.attribute);
-        CXFA_Object* obj = CFXJSE_Engine::ToObject(pScriptContext->GetIsolate(),
-                                                   innerValue.get());
+        CXFA_Object* obj =
+            CFXJSE_Engine::ToObject(pEngine->GetIsolate(), innerValue.get());
         if (obj->IsNode())
           pNodeList->Append(obj->AsNode());
       }
     }
   }
   pValue->SetHostObject(pIsolate, pNodeList->JSObject(),
-                        pScriptContext->GetJseNormalClass());
+                        pEngine->GetJseNormalClass());
 }

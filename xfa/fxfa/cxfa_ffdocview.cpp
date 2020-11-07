@@ -430,7 +430,7 @@ XFA_EventError CXFA_FFDocView::ExecEventActivityByDeepFirst(
 
 CXFA_FFWidget* CXFA_FFDocView::GetWidgetByName(const WideString& wsName,
                                                CXFA_FFWidget* pRefWidget) {
-  CFXJSE_Engine* pScriptContext = m_pDoc->GetXFADoc()->GetScriptEngine();
+  CFXJSE_Engine* pEngine = m_pDoc->GetXFADoc()->GetScriptEngine();
   CXFA_Node* pRefNode = nullptr;
   if (pRefWidget) {
     CXFA_Node* node = pRefWidget->GetNode();
@@ -442,8 +442,8 @@ CXFA_FFWidget* CXFA_FFDocView::GetWidgetByName(const WideString& wsName,
   constexpr uint32_t kStyle = XFA_RESOLVENODE_Children |
                               XFA_RESOLVENODE_Properties |
                               XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
-  if (!pScriptContext->ResolveObjects(pRefNode, wsExpression.AsStringView(),
-                                      &resolveNodeRS, kStyle, nullptr)) {
+  if (!pEngine->ResolveObjects(pRefNode, wsExpression.AsStringView(),
+                               &resolveNodeRS, kStyle, nullptr)) {
     return nullptr;
   }
 
@@ -632,15 +632,14 @@ void CXFA_FFDocView::RunBindItems() {
     if (!pWidgetNode || !pWidgetNode->IsWidgetReady())
       continue;
 
-    CFXJSE_Engine* pScriptContext =
-        pWidgetNode->GetDocument()->GetScriptEngine();
+    CFXJSE_Engine* pEngine = pWidgetNode->GetDocument()->GetScriptEngine();
     WideString wsRef = item->GetRef();
     constexpr uint32_t kStyle =
         XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
         XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent | XFA_RESOLVENODE_ALL;
     XFA_ResolveNodeRS rs;
-    pScriptContext->ResolveObjects(pWidgetNode, wsRef.AsStringView(), &rs,
-                                   kStyle, nullptr);
+    pEngine->ResolveObjects(pWidgetNode, wsRef.AsStringView(), &rs, kStyle,
+                            nullptr);
     pWidgetNode->DeleteItem(-1, false, false);
     if (rs.dwFlags != XFA_ResolveNodeRS::Type::kNodes || rs.objects.empty())
       continue;
