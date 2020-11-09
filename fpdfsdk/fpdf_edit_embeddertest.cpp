@@ -712,26 +712,27 @@ TEST_F(FPDFEditEmbedderTest, SetText) {
   CloseSavedDocument();
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_SetTextKeepClippingPath DISABLED_SetTextKeepClippingPath
-#else
-#define MAYBE_SetTextKeepClippingPath SetTextKeepClippingPath
-#endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_SetTextKeepClippingPath) {
+TEST_F(FPDFEditEmbedderTest, SetTextKeepClippingPath) {
   // Load document with some text, with parts clipped.
   ASSERT_TRUE(OpenDocument("bug_1558.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   static constexpr char kOriginalChecksum[] =
+      "1e08d555f4863ff34a90f849c9464ed2";
+#else
 #if defined(OS_WIN)
+  static constexpr char kOriginalChecksum[] =
       "220bf2086398fc46ac094952b244c8d9";
 #elif defined(OS_APPLE)
+  static constexpr char kOriginalChecksum[] =
       "53cbaad93551ef2ccc27ddd63f2ca2b3";
 #else
+  static constexpr char kOriginalChecksum[] =
       "ba1936fa8ca1e8cca108da76ff3500a6";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   {
     // When opened before any editing and saving, the clipping path is rendered.
     ScopedFPDFBitmap original_bitmap = RenderPage(page);
