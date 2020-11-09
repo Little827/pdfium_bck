@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5781e7dd_7ea34884",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-09T20:37:03Z",
+      "side": 1,
+      "message": "Nit: Can you move this line under the ifdefs?",
+      "revId": "f59032d608a4628461ddc231f84556c520109ca0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44694096_2f1d013a",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-09T20:37:03Z",
+      "side": 1,
+      "message": "This should be a constexpr, but I see that usage isn\u0027t prevalent in this file, so we can keep these as is.",
+      "range": {
+        "startLine": 1991,
+        "startChar": 9,
+        "endLine": 1991,
+        "endChar": 14
+      },
+      "revId": "f59032d608a4628461ddc231f84556c520109ca0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
