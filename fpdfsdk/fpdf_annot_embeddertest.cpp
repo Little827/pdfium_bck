@@ -3223,3 +3223,44 @@ TEST_F(FPDFAnnotEmbedderTest, Redactannotation) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFAnnotEmbedderTest, PolygonAnnotation) {
+  ASSERT_TRUE(OpenDocument("polygon_annot.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  EXPECT_EQ(1, FPDFPage_GetAnnotCount(page));
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+
+    // FPDFSignatureObj_GetTime() positive testing.
+    unsigned long size = FPDFAnnot_GetVertices(annot.get(), nullptr, 0);
+    const size_t kExpectedSize = 3;
+    ASSERT_EQ(kExpectedSize, size);
+    std::vector<FS_POINTF> vertices_buffer(size);
+    EXPECT_EQ(size,
+              FPDFAnnot_GetVertices(annot.get(), vertices_buffer.data(), size));
+    EXPECT_EQ(159, vertices_buffer[0].x);
+    EXPECT_EQ(296, vertices_buffer[0].y);
+    EXPECT_EQ(350, vertices_buffer[1].x);
+    EXPECT_EQ(411, vertices_buffer[1].y);
+    EXPECT_EQ(472, vertices_buffer[2].x);
+    EXPECT_EQ(243, vertices_buffer[2].y);
+
+    // FPDFAnnot_GetVertices() negative testing.
+    EXPECT_EQ(0U, FPDFAnnot_GetVertices(nullptr, nullptr, 0));
+
+    vertices_buffer.resize(1);
+    vertices_buffer[0].x = 42;
+    vertices_buffer[0].y = 43;
+    size = FPDFAnnot_GetVertices(annot.get(), vertices_buffer.data(),
+                                 vertices_buffer.size());
+
+    EXPECT_EQ(kExpectedSize, size);
+    EXPECT_EQ(42, vertices_buffer[0].x);
+    EXPECT_EQ(43, vertices_buffer[0].y);
+  }
+
+  UnloadPage(page);
+}
