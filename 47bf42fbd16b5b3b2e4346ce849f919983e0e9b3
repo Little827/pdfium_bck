@@ -16,6 +16,253 @@
       "message": "Tom: could you please take a look? Thanks.",
       "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020de48a_984e544c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "Thanks for adding these, BTW.  Embedders always want this kind of information and to the extent that we can stop them from calling into our private C++ code, the world becomes a better place.",
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ceb46b_f3471d90",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "I think this might overflow if an odd length array occurs in the pdf file and we pass in an even length buffer of size N-1. Also, since we don\u0027t use size_t in the API (rightly so), we should worry in theory about an array \u003e 4GB.\n\nI\u0027d suggest\n\nunsigned long points_len \u003d vertices-\u003esize() / 2;  // Truncate to even number \u003c 4GB.\nif (buffer \u0026\u0026 length \u003e\u003d points_len) {\n  for (unsigned long i \u003d 0 i \u003c points_len; ++i) {\n    buffer[i].x \u003d vertices-\u003eGetNumberAt(2 * i);\n    buffer[i].y \u003d vertices-\u003eGetNumberAt(2 * i + 1);\n   }\n}\nreturn points_len;",
+      "range": {
+        "startLine": 830,
+        "startChar": 27,
+        "endLine": 830,
+        "endChar": 43
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be99509e_46f4d9fe",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3244,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "These are floats, so EXPECT_FLOAT_EQ(159.0f, vertices_buffer[0].x); would be strictly more correct and account for the unusual case where we have a value that is affected by float representation idiosyncracies.",
+      "range": {
+        "startLine": 3244,
+        "startChar": 4,
+        "endLine": 3244,
+        "endChar": 40
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9d9522_e4b4e39d",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3257,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "can we also try calling this on the wrong type of annotation?",
+      "range": {
+        "startLine": 3257,
+        "startChar": 11,
+        "endLine": 3257,
+        "endChar": 45
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4056325_f14fe41b",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "nit: might want a comment about \"not overwritten if buffer is too small\" or some such.",
+      "range": {
+        "startLine": 3261,
+        "startChar": 0,
+        "endLine": 3261,
+        "endChar": 4
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2122b5d_c725529b",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3263,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "We might also want to test the odd length array with N-1 size buffer case I mentioned before.",
+      "range": {
+        "startLine": 3263,
+        "startChar": 2,
+        "endLine": 3263,
+        "endChar": 3
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1c52a6_894c0965",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "nit: maybe \"as returned by FPDF_...()\" but just omit if it turns out there are a lot of ways to get one of these",
+      "range": {
+        "startLine": 403,
+        "startChar": 37,
+        "endLine": 403,
+        "endChar": 38
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4436d69d_74792569",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "what if annot isn\u0027t the right kind of annotation?",
+      "range": {
+        "startLine": 407,
+        "startChar": 25,
+        "endLine": 407,
+        "endChar": 31
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bdc7650_9b85a502",
+        "filename": "testing/resources/polygon_annot.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "do we need this?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912e3e3d_4d0bc19c",
+        "filename": "testing/resources/polygon_annot.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "nit: (super-minor-nit): trailing space not required.",
+      "range": {
+        "startLine": 35,
+        "startChar": 36,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698ac568_cc665fe7",
+        "filename": "testing/resources/polygon_annot.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T17:45:00Z",
+      "side": 1,
+      "message": "These are floats, potentially, so maybe we should introduce some fractional values to show we don\u0027t truncate these across the api.",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
