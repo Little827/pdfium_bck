@@ -80,6 +80,24 @@
       "message": "Optional nit: I think keeping the newline above and below this if-block would make it more readable.",
       "revId": "46c18b8e84c7a50a27d9f24d3fa137c0b57f6fb7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0d0d26_ccfce4d8",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-09T20:34:04Z",
+      "side": 1,
+      "message": "Fair enough.  I also will put in the {} at line 586 per style guide now that I notice it.",
+      "parentUuid": "adc085af_fb34766d",
+      "revId": "46c18b8e84c7a50a27d9f24d3fa137c0b57f6fb7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
