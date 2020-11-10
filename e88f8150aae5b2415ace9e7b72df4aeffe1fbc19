@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "787c4918_cf80d84a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-10T01:54:39Z",
+      "side": 1,
+      "message": "This CL enables 4 tests for Skia/SkiaPaths. Visual rendering results are uploaded as following:\n\n1)SetTextKeepClippingPath: https://crbugs.com/pdfium/1500#c77\n\n2)AddStandardFontText: https://crbugs.com/pdfium/1500#c78\n\n3)AddStandardFontText2: This test uses the same hash values as AddStandardFontText, therefore PNG files of its rendering results are not uploaded.\n\n4)AddCIDFontText: https://crbugs.com/pdfium/1500#c79\n\n\n",
+      "revId": "e88f8150aae5b2415ace9e7b72df4aeffe1fbc19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
