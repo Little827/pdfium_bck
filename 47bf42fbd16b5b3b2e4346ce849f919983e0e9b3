@@ -35,6 +35,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f1230c_2c9be164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "I believe I addressed all comments.",
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33ceb46b_f3471d90",
@@ -48,6 +65,30 @@
       "writtenOn": "2020-11-09T17:45:00Z",
       "side": 1,
       "message": "I think this might overflow if an odd length array occurs in the pdf file and we pass in an even length buffer of size N-1. Also, since we don\u0027t use size_t in the API (rightly so), we should worry in theory about an array \u003e 4GB.\n\nI\u0027d suggest\n\nunsigned long points_len \u003d vertices-\u003esize() / 2;  // Truncate to even number \u003c 4GB.\nif (buffer \u0026\u0026 length \u003e\u003d points_len) {\n  for (unsigned long i \u003d 0 i \u003c points_len; ++i) {\n    buffer[i].x \u003d vertices-\u003eGetNumberAt(2 * i);\n    buffer[i].y \u003d vertices-\u003eGetNumberAt(2 * i + 1);\n   }\n}\nreturn points_len;",
+      "range": {
+        "startLine": 830,
+        "startChar": 27,
+        "endLine": 830,
+        "endChar": 43
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06368bc8_43b768cd",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Good catch. I considered the odd number of elements in the array, but my code didn\u0027t handle this correctly. The added test reproduced the problem and now this above way shows it\u0027s now handled correctly.",
+      "parentUuid": "33ceb46b_f3471d90",
       "range": {
         "startLine": 830,
         "startChar": 27,
@@ -81,6 +122,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "202e7268_a6175a7b",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3244,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be99509e_46f4d9fe",
+      "range": {
+        "startLine": 3244,
+        "startChar": 4,
+        "endLine": 3244,
+        "endChar": 40
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da9d9522_e4b4e39d",
@@ -94,6 +159,30 @@
       "writtenOn": "2020-11-09T17:45:00Z",
       "side": 1,
       "message": "can we also try calling this on the wrong type of annotation?",
+      "range": {
+        "startLine": 3257,
+        "startChar": 11,
+        "endLine": 3257,
+        "endChar": 45
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74972062_ba4d139b",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3257,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da9d9522_e4b4e39d",
       "range": {
         "startLine": 3257,
         "startChar": 11,
@@ -127,6 +216,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0591bd48_39b3756e",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4056325_f14fe41b",
+      "range": {
+        "startLine": 3261,
+        "startChar": 0,
+        "endLine": 3261,
+        "endChar": 4
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2122b5d_c725529b",
@@ -140,6 +253,30 @@
       "writtenOn": "2020-11-09T17:45:00Z",
       "side": 1,
       "message": "We might also want to test the odd length array with N-1 size buffer case I mentioned before.",
+      "range": {
+        "startLine": 3263,
+        "startChar": 2,
+        "endLine": 3263,
+        "endChar": 3
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf602951_652cc6ff",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3263,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2122b5d_c725529b",
       "range": {
         "startLine": 3263,
         "startChar": 2,
@@ -173,6 +310,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a9fa57a_8b3022eb",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Done, went with \"e.g. FPDFPage_GetAnnot()\", since a less likely, but possible case is FPDFPage_CreateAnnot()",
+      "parentUuid": "5e1c52a6_894c0965",
+      "range": {
+        "startLine": 403,
+        "startChar": 37,
+        "endLine": 403,
+        "endChar": 38
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4436d69d_74792569",
@@ -196,6 +357,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c042c5_d0c9da42",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "We return 0, now documented.",
+      "parentUuid": "4436d69d_74792569",
+      "range": {
+        "startLine": 407,
+        "startChar": 25,
+        "endLine": 407,
+        "endChar": 31
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bdc7650_9b85a502",
@@ -209,6 +394,30 @@
       "writtenOn": "2020-11-09T17:45:00Z",
       "side": 1,
       "message": "do we need this?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249145b1_d9fd0c6b",
+        "filename": "testing/resources/polygon_annot.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "I assumed that omitting /Contents is not OK, but it seems it\u0027s not needed, removed now.",
+      "parentUuid": "6bdc7650_9b85a502",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -255,6 +464,54 @@
       "writtenOn": "2020-11-09T17:45:00Z",
       "side": 1,
       "message": "These are floats, potentially, so maybe we should introduce some fractional values to show we don\u0027t truncate these across the api.",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "057afbe7_e34b7817",
+        "filename": "testing/resources/polygon_annot.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "912e3e3d_4d0bc19c",
+      "range": {
+        "startLine": 35,
+        "startChar": 36,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "47bf42fbd16b5b3b2e4346ce849f919983e0e9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fabfded_ffd43fd3",
+        "filename": "testing/resources/polygon_annot.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-10T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698ac568_cc665fe7",
       "range": {
         "startLine": 35,
         "startChar": 13,
