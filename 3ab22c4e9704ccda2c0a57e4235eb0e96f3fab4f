@@ -39,6 +39,30 @@
       },
       "revId": "3ab22c4e9704ccda2c0a57e4235eb0e96f3fab4f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c257351_38a886c2",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-10T18:47:15Z",
+      "side": 1,
+      "message": "Ack. SGTM. Done.\n\n(pThis corresponded to whatever was bound to |this| in JavaScript at the time we re-entered C++ from JS, not what was bound to |this| in the C++ method call, but your point is good and well-taken).\n\nIn doing so, I noticed I could remove the parameter entirely from GetSimpleValue().  Those changes cascade through the new PS.",
+      "parentUuid": "7c43a33e_69d03bab",
+      "range": {
+        "startLine": 1347,
+        "startChar": 23,
+        "endLine": 1347,
+        "endChar": 28
+      },
+      "revId": "3ab22c4e9704ccda2c0a57e4235eb0e96f3fab4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
