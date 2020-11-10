@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3c23ff_b148c53c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-10T18:21:41Z",
+      "side": 1,
+      "message": "Hang on, one more iteration is coming now that I see it ...",
+      "revId": "e82626d6462ba2259f4458ed9b54a76d782581fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
