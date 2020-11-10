@@ -291,32 +291,17 @@ class CFXJSE_FormCalcContext final : public CFXJSE_HostObject {
       CFXJSE_Value* pParentValue,
       std::vector<std::unique_ptr<CFXJSE_Value>>* resultValues,
       bool* bAttribute);
-  static std::unique_ptr<CFXJSE_Value> GetSimpleValue(
-      CFXJSE_HostObject* pThis,
-      const v8::FunctionCallbackInfo<v8::Value>& info,
-      uint32_t index);
-  static bool ValueIsNull(v8::Isolate* pIsolate,
-                          CFXJSE_HostObject* pThis,
-                          CFXJSE_Value* pValue);
-  static int32_t ValueToInteger(CFXJSE_HostObject* pThis, CFXJSE_Value* pValue);
-  static float ValueToFloat(CFXJSE_HostObject* pThis, CFXJSE_Value* pValue);
-  static double ValueToDouble(CFXJSE_HostObject* pThis, CFXJSE_Value* pValue);
-  static ByteString ValueToUTF8String(CFXJSE_HostObject* pThis,
-                                      CFXJSE_Value* pValue);
-  static double ExtractDouble(CFXJSE_HostObject* pThis,
-                              CFXJSE_Value* src,
-                              bool* ret);
   static Optional<CFX_WideTextBuf> Translate(cppgc::Heap* pHeap,
                                              WideStringView wsFormcalc);
 
   void GlobalPropertyGetter(CFXJSE_Value* pValue);
+  v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
 
  private:
   static void DotAccessorCommon(CFXJSE_HostObject* pThis,
                                 const v8::FunctionCallbackInfo<v8::Value>& info,
                                 bool bDotAccessor);
 
-  v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
   CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
 
   void ThrowNoDefaultPropertyException(ByteStringView name) const;
