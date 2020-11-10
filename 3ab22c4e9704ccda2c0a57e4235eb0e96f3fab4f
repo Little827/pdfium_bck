@@ -16,6 +16,29 @@
       "message": "Ok, PTAL.",
       "revId": "3ab22c4e9704ccda2c0a57e4235eb0e96f3fab4f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c43a33e_69d03bab",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-10T18:33:08Z",
+      "side": 1,
+      "message": "I don\u0027t think `pThis` an appropriate parameter name anymore given that these methods aren\u0027t in a class anymore.\n\nThis should be an easy bulk change to something like `pHostObject`",
+      "range": {
+        "startLine": 1347,
+        "startChar": 23,
+        "endLine": 1347,
+        "endChar": 28
+      },
+      "revId": "3ab22c4e9704ccda2c0a57e4235eb0e96f3fab4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
