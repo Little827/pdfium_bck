@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d90302_234e2dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-10T17:26:29Z",
+      "side": 1,
+      "message": "Just one nit remaining.",
+      "revId": "91388acdf7e5d2768e2a418e3854b7fdbbe4cac9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b865e7_8486b283",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3244,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-10T17:26:29Z",
+      "side": 1,
+      "message": "nit: it probably doesn\u0027t matter, but EXPECT_FLOAT_EQ() is preferred for testing floats.",
+      "range": {
+        "startLine": 3244,
+        "startChar": 4,
+        "endLine": 3244,
+        "endChar": 13
+      },
+      "revId": "91388acdf7e5d2768e2a418e3854b7fdbbe4cac9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
