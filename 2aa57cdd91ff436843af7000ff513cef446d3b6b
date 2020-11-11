@@ -68,6 +68,30 @@
       },
       "revId": "2aa57cdd91ff436843af7000ff513cef446d3b6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313f2262_a7924163",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2283,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-11T22:25:19Z",
+      "side": 1,
+      "message": "Do we have a preference per the style guide?  Mine would be to prefer \u003cstdlib.h\u003e over \u003ccstdlib\u003e, since folks often do #define strtof() my_strtof() and then you get a bunch of errors about std::my_strtof() not found when the substitution occurs.",
+      "parentUuid": "f7dcef9b_82c9af34",
+      "range": {
+        "startLine": 2283,
+        "startChar": 13,
+        "endLine": 2283,
+        "endChar": 22
+      },
+      "revId": "2aa57cdd91ff436843af7000ff513cef446d3b6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
