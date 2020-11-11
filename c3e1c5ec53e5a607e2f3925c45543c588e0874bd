@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd7a86c_cf1304b7",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-11T18:37:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe77334_0f088593",
+      "range": {
+        "startLine": 1385,
+        "startChar": 17,
+        "endLine": 1385,
+        "endChar": 27
+      },
+      "revId": "c3e1c5ec53e5a607e2f3925c45543c588e0874bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1ff243b_ce93ae33",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-11T18:20:56Z",
       "side": 1,
       "message": "Is `argAtIndex` a better name?",
+      "range": {
+        "startLine": 1386,
+        "startChar": 7,
+        "endLine": 1386,
+        "endChar": 15
+      },
+      "revId": "c3e1c5ec53e5a607e2f3925c45543c588e0874bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d01104_ff32e8ca",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-11T18:37:26Z",
+      "side": 1,
+      "message": "Or just `value` (and it now fits on one line). Done.",
+      "parentUuid": "e1ff243b_ce93ae33",
       "range": {
         "startLine": 1386,
         "startChar": 7,
