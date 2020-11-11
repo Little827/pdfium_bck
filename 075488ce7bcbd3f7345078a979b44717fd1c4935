@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d20466_1bf7db80",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-11T18:19:14Z",
+      "side": 1,
+      "message": "e.g. we already can fail here with the same error, so it seems reasonable to treat an allocation failure equivalently.",
+      "range": {
+        "startLine": 165,
+        "startChar": 20,
+        "endLine": 165,
+        "endChar": 29
+      },
+      "revId": "075488ce7bcbd3f7345078a979b44717fd1c4935",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
