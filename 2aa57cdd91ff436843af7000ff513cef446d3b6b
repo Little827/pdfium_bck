@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "916bf900_68aabccb",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-11T21:30:21Z",
+      "side": 1,
+      "message": "Technically you need std:: here because we\u0027re including \u003ccstdlib\u003e, not \u003cstdlib.h\u003e",
+      "range": {
+        "startLine": 1429,
+        "startChar": 11,
+        "endLine": 1429,
+        "endChar": 17
+      },
+      "revId": "2aa57cdd91ff436843af7000ff513cef446d3b6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e6dd30_6e6ec3ff",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-11T21:30:21Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 1449,
+        "startChar": 11,
+        "endLine": 1449,
+        "endChar": 17
+      },
+      "revId": "2aa57cdd91ff436843af7000ff513cef446d3b6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7dcef9b_82c9af34",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2283,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-11T21:30:21Z",
+      "side": 1,
+      "message": "Maybe we can purge these c-style includes in a follow-up. \n\nI\u0027ll actually start going through the PDFium codebase to see if I could find any more culprits, but I won\u0027t touch this file as to not step on your toes.",
+      "range": {
+        "startLine": 2283,
+        "startChar": 13,
+        "endLine": 2283,
+        "endChar": 22
+      },
+      "revId": "2aa57cdd91ff436843af7000ff513cef446d3b6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
