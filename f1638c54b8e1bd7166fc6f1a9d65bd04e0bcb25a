@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf37097_37367385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-12T18:58:02Z",
+      "side": 1,
+      "message": "LGTM! (Bummer that I don\u0027t have access to see the bug ticket. 😢)",
+      "revId": "f1638c54b8e1bd7166fc6f1a9d65bd04e0bcb25a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
