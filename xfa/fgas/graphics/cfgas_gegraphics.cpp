@@ -6,6 +6,8 @@
 
 #include "xfa/fgas/graphics/cfgas_gegraphics.h"
 
+#include <stdint.h>
+
 #include <cmath>
 #include <memory>
 
@@ -376,7 +378,7 @@ void CFGAS_GEGraphics::FillPathWithShading(
               continue;
             s = 1.0f;
           }
-          int index = (int32_t)(s * (FX_SHADING_Steps - 1));
+          int index = static_cast<int32_t>(s * (FX_SHADING_Steps - 1));
           dib_buf[column] = m_info.fillColor.GetShading()->m_argbArray[index];
         }
       }
