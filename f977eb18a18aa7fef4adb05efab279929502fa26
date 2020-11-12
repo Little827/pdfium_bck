@@ -22,6 +22,30 @@
       },
       "revId": "f977eb18a18aa7fef4adb05efab279929502fa26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7354302_3248def7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-12T01:45:36Z",
+      "side": 1,
+      "message": "Ack, I see. I\u0027ll remove those then. It seems like \u003cstdint.h\u003e isn\u0027t really used much in PDFium, so I\u0027m going to use fx_system.h system in the files where the former is needed.\n\nBy the way, there was a subtle change to the style-guide recently about includes: the part about not having to include a file already in its identically named header was taken out. I\u0027m not going to mess with the style PDFium is using though.",
+      "parentUuid": "fbecfa7d_0cdf9bf7",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "f977eb18a18aa7fef4adb05efab279929502fa26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
