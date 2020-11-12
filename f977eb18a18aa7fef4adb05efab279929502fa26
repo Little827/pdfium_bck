@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbecfa7d_0cdf9bf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-12T00:49:30Z",
+      "side": 1,
+      "message": "fx_system.h is responsible for making sure all the relevant \u003cstd*.h\u003e are included, so we explicitly include stdint.h only\nif fx_system.h isn\u0027t in either the .cpp file or its identically-named .h header file.",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "f977eb18a18aa7fef4adb05efab279929502fa26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
