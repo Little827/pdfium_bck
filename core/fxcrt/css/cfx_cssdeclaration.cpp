@@ -6,6 +6,8 @@
 
 #include "core/fxcrt/css/cfx_cssdeclaration.h"
 
+#include <stdint.h>
+
 #include <cmath>
 #include <utility>
 
@@ -576,7 +578,7 @@ void CFX_CSSDeclaration::ParseFontProperty(const wchar_t* pszValue,
         if (!ParseCSSNumber(pszValue, iValueLen, &fValue, &eNumType))
           break;
         if (eType == CFX_CSSPrimitiveType::Number) {
-          switch ((int32_t)fValue) {
+          switch (static_cast<int32_t>(fValue)) {
             case 100:
             case 200:
             case 300:
