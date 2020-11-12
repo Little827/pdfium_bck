@@ -380,7 +380,7 @@ FPDFImageObj_GetImageMetadata(FPDF_PAGEOBJECT image_object,
   }
 
   metadata->bits_per_pixel = 0;
-  metadata->colorspace = FPDF_COLORSPACE_UNKNOWN;
+  metadata->colorspace = nullptr;
 
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (!pPage || !pPage->GetDocument() || !pImg->GetStream())
@@ -395,7 +395,7 @@ FPDFImageObj_GetImageMetadata(FPDF_PAGEOBJECT image_object,
 
   metadata->bits_per_pixel = pSource->GetBPP();
   if (pSource->GetColorSpace())
-    metadata->colorspace = pSource->GetColorSpace()->GetFamily();
+    metadata->colorspace = pSource->GetColorSpace().Get();
 
   return true;
 }
