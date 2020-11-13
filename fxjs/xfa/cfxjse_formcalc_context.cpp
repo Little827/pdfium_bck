@@ -1735,62 +1735,53 @@ void CFXJSE_FormCalcContext::Avg(
     return;
   }
 
-  v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetIsolate();
+  v8::Isolate* pIsolate = info.GetIsolate();
   uint32_t uCount = 0;
   double dSum = 0.0;
   for (int32_t i = 0; i < argc; i++) {
-    auto argValue = std::make_unique<CFXJSE_Value>(info.GetIsolate(), info[i]);
-    if (argValue->IsNull(pIsolate))
+    v8::Local<v8::Value> argValue = info[i];
+    if (fxv8::IsNull(argValue))
       continue;
 
-    if (!argValue->IsArray(pIsolate)) {
-      dSum += ValueToDouble(pIsolate, argValue->GetValue(pIsolate));
+    if (!fxv8::IsArray(argValue)) {
+      dSum += ValueToDouble(pIsolate, argValue);
       uCount++;
       continue;
     }
 
-    auto lengthValue = std::make_unique<CFXJSE_Value>();
-    argValue->GetObjectProperty(pIsolate, "length", lengthValue.get());
-    int32_t iLength = lengthValue->ToInteger(pIsolate);
+    v8::Local<v8::Array> arr = argValue.As<v8::Array>();
+    uint32_t iLength = fxv8::GetArrayLengthHelper(arr);
+    if (iLength < 3)
+      continue;
 
-    if (iLength > 2) {
-      auto propertyValue = std::make_unique<CFXJSE_Value>();
-      argValue->GetObjectPropertyByIdx(pIsolate, 1, propertyValue.get());
+    v8::Local<v8::Value> propertyValue =
+        fxv8::ReentrantGetArrayElementHelper(pIsolate, arr, 1);
 
-      auto jsObjectValue = std::make_unique<CFXJSE_Value>();
-      if (propertyValue->IsNull(pIsolate)) {
-        for (int32_t j = 2; j < iLength; j++) {
-          argValue->GetObjectPropertyByIdx(pIsolate, j, jsObjectValue.get());
-          if (!jsObjectValue->IsObject(pIsolate))
-            continue;
+    ByteString bsName;
+    const bool nullprop = fxv8::IsNull(propertyValue);
+    if (!nullprop)
+      bsName = fxv8::ReentrantToByteStringHelper(pIsolate, propertyValue);
 
-          auto defaultPropValue = std::make_unique<CFXJSE_Value>(
-              pIsolate,
-              GetObjectDefaultValue(
-                  pIsolate,
-                  jsObjectValue->GetValue(pIsolate).As<v8::Object>()));
-          if (defaultPropValue->IsNull(pIsolate))
-            continue;
+    for (uint32_t j = 2; j < iLength; j++) {
+      v8::Local<v8::Value> jsValue =
+          fxv8::ReentrantGetArrayElementHelper(pIsolate, arr, j);
+      if (!fxv8::IsObject(jsValue))
+        continue;
 
-          dSum += ValueToDouble(pIsolate, defaultPropValue->GetValue(pIsolate));
-          uCount++;
-        }
-      } else {
-        for (int32_t j = 2; j < iLength; j++) {
-          argValue->GetObjectPropertyByIdx(pIsolate, j, jsObjectValue.get());
-          auto newPropertyValue = std::make_unique<CFXJSE_Value>();
-          jsObjectValue->GetObjectProperty(
-              pIsolate, propertyValue->ToString(pIsolate).AsStringView(),
-              newPropertyValue.get());
-          if (newPropertyValue->IsNull(pIsolate))
-            continue;
+      v8::Local<v8::Object> jsObjectValue = jsValue.As<v8::Object>();
+      v8::Local<v8::Value> newPropertyValue =
+          nullprop ? GetObjectDefaultValue(pIsolate, jsObjectValue)
+                   : fxv8::ReentrantGetObjectPropertyHelper(
+                         pIsolate, jsObjectValue, bsName.AsStringView());
 
-          dSum += ValueToDouble(pIsolate, newPropertyValue->GetValue(pIsolate));
-          uCount++;
-        }
-      }
+      if (fxv8::IsNull(newPropertyValue))
+        continue;
+
+      dSum += ValueToDouble(pIsolate, newPropertyValue);
+      uCount++;
     }
   }
+
   if (uCount == 0) {
     info.GetReturnValue().SetNull();
     return;
