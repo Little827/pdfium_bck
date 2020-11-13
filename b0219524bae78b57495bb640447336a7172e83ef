@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dac9941f_3486cba2",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-13T01:43:52Z",
+      "side": 1,
+      "message": "My understanding is that other than the added namespace, there\u0027s no functional difference between C includes (\u003cxxx.h\u003e) and C++ includes (\u003ccxxx\u003e). I believe we should be using the C++ includes wherever we don\u0027t have a good reason not to.\n\nAlso, \u003cstdlib.h\u003e is used for strtod and strtof in this file. But you\u0027re right about isdigit(), so I\u0027ll add \u003ccctype\u003e here.",
+      "parentUuid": "224eb112_fc7bf746",
+      "range": {
+        "startLine": 533,
+        "startChar": 12,
+        "endLine": 533,
+        "endChar": 19
+      },
+      "revId": "b0219524bae78b57495bb640447336a7172e83ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71475855_2db9a9fc",
         "filename": "xfa/fxfa/parser/cxfa_document.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-12T18:46:48Z",
       "side": 1,
       "message": "nit: overparentehsized ?",
+      "range": {
+        "startLine": 1479,
+        "startChar": 30,
+        "endLine": 1479,
+        "endChar": 31
+      },
+      "revId": "b0219524bae78b57495bb640447336a7172e83ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c17df7_b450dad2",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-13T01:43:52Z",
+      "side": 1,
+      "message": "(((oops)))",
+      "parentUuid": "71475855_2db9a9fc",
       "range": {
         "startLine": 1479,
         "startChar": 30,
