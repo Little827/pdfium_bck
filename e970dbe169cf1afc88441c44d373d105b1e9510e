@@ -47,6 +47,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ded9b2f_b4b0ec1c",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-13T23:57:34Z",
+      "side": 1,
+      "message": "Chrome security team has a well-known longstanding violent objection to this part of the guide, because overflow for signed types is undefined, and these overflow all the time.  So it\u0027s not a matter of needing modulo, its a matter of being able to prove these can\u0027t overflow  --- for these cases where there can\u0027t be negative values. We do not adhere to this anywhere in chrome.",
+      "parentUuid": "3fbfa428_ca69fa3d",
+      "range": {
+        "startLine": 1770,
+        "startChar": 2,
+        "endLine": 1770,
+        "endChar": 10
+      },
+      "revId": "e970dbe169cf1afc88441c44d373d105b1e9510e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83667457_cdf1e2c3",
