@@ -1812,58 +1812,47 @@ void CFXJSE_FormCalcContext::Ceil(
 void CFXJSE_FormCalcContext::Count(
     CFXJSE_HostObject* pThis,
     const v8::FunctionCallbackInfo<v8::Value>& info) {
-  CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  v8::Isolate* pIsolate = pContext->GetIsolate();
+  v8::Isolate* pIsolate = info.GetIsolate();
   int32_t iCount = 0;
   for (int32_t i = 0; i < info.Length(); i++) {
-    auto argValue = std::make_unique<CFXJSE_Value>(info.GetIsolate(), info[i]);
-    if (argValue->IsNull(pIsolate))
+    v8::Local<v8::Value> argValue = info[i];
+    if (fxv8::IsNull(argValue))
       continue;
 
-    if (argValue->IsArray(pIsolate)) {
-      auto lengthValue = std::make_unique<CFXJSE_Value>();
-      argValue->GetObjectProperty(pIsolate, "length", lengthValue.get());
-
-      int32_t iLength = lengthValue->ToInteger(pIsolate);
-      if (iLength <= 2) {
-        pContext->ThrowArgumentMismatchException();
+    if (fxv8::IsArray(argValue)) {
+      v8::Local<v8::Array> arr = argValue.As<v8::Array>();
+      uint32_t iLength = fxv8::GetArrayLengthHelper(arr);
+      if (iLength < 3) {
+        ToFormCalcContext(pThis)->ThrowArgumentMismatchException();
         return;
       }
 
-      auto propertyValue = std::make_unique<CFXJSE_Value>();
-      auto jsObjectValue = std::make_unique<CFXJSE_Value>();
-      auto newPropertyValue = std::make_unique<CFXJSE_Value>();
-      argValue->GetObjectPropertyByIdx(pIsolate, 1, propertyValue.get());
-      argValue->GetObjectPropertyByIdx(pIsolate, 2, jsObjectValue.get());
-      if (propertyValue->IsNull(pIsolate)) {
-        for (int32_t j = 2; j < iLength; j++) {
-          argValue->GetObjectPropertyByIdx(pIsolate, j, jsObjectValue.get());
-          if (!jsObjectValue->IsObject(pIsolate))
-            continue;
+      v8::Local<v8::Value> propertyValue =
+          fxv8::ReentrantGetArrayElementHelper(pIsolate, arr, 1);
 
-          newPropertyValue->ForceSetValue(
-              pIsolate,
-              GetObjectDefaultValue(
-                  pIsolate,
-                  jsObjectValue->GetValue(pIsolate).As<v8::Object>()));
-          if (!newPropertyValue->IsNull(pIsolate))
-            iCount++;
-        }
-      } else {
-        for (int32_t j = 2; j < iLength; j++) {
-          argValue->GetObjectPropertyByIdx(pIsolate, j, jsObjectValue.get());
-          jsObjectValue->GetObjectProperty(
-              pIsolate, propertyValue->ToString(pIsolate).AsStringView(),
-              newPropertyValue.get());
-          iCount += newPropertyValue->IsNull(pIsolate) ? 0 : 1;
-        }
+      ByteString bsName;
+      const bool nullprop = fxv8::IsNull(propertyValue);
+      if (!nullprop)
+        bsName = fxv8::ReentrantToByteStringHelper(pIsolate, propertyValue);
+
+      for (uint32_t j = 2; j < iLength; j++) {
+        v8::Local<v8::Value> jsValue =
+            fxv8::ReentrantGetArrayElementHelper(pIsolate, arr, j);
+        if (!fxv8::IsObject(jsValue))
+          continue;
+
+        v8::Local<v8::Object> jsObjectValue = jsValue.As<v8::Object>();
+        v8::Local<v8::Value> newPropertyValue =
+            nullprop ? GetObjectDefaultValue(pIsolate, jsObjectValue)
+                     : fxv8::ReentrantGetObjectPropertyHelper(
+                           pIsolate, jsObjectValue, bsName.AsStringView());
+        if (!fxv8::IsNull(newPropertyValue))
+          iCount++;
       }
-    } else if (argValue->IsObject(pIsolate)) {
-      auto newPropertyValue = std::make_unique<CFXJSE_Value>(
-          pIsolate,
-          GetObjectDefaultValue(pIsolate,
-                                argValue->GetValue(pIsolate).As<v8::Object>()));
-      if (!newPropertyValue->IsNull(pIsolate))
+    } else if (fxv8::IsObject(argValue)) {
+      v8::Local<v8::Value> newPropertyValue =
+          GetObjectDefaultValue(pIsolate, argValue.As<v8::Object>());
+      if (!fxv8::IsNull(newPropertyValue))
         iCount++;
     } else {
       iCount++;
