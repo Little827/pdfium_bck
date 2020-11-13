@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e107c01_d46e4a0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-13T22:51:55Z",
+      "side": 1,
+      "message": "Actually, I\u0027m going to defer this one as we can consolidate a bunch of this before going to the new model.",
+      "revId": "5eefc3cbc5c585d972e3305137f9e163702fbef5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
