@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dbd65a6_1f55dc2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-13T18:53:31Z",
+      "side": 1,
+      "message": "Thanks for creating these examples for the bug!",
+      "revId": "65648a8f702178d7fc2ebaa9a1e3ebe4ebd279ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
