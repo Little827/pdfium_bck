@@ -280,13 +280,25 @@ class CFXJSE_FormCalcContext final : public CFXJSE_HostObject {
                                 const v8::FunctionCallbackInfo<v8::Value>& info,
                                 bool bDotAccessor);
 
+  bool ApplyToExpansion(std::function<void(v8::Isolate*, CFXJSE_Value*)> fn,
+                        const v8::FunctionCallbackInfo<v8::Value>& info,
+                        bool bStrict);
+
+  bool ApplyToArray(v8::Isolate* pIsolate,
+                    std::function<void(v8::Isolate*, CFXJSE_Value*)> fn,
+                    CFXJSE_Value* pArray);
+
+  void ApplyToObject(v8::Isolate* pIsolate,
+                     std::function<void(v8::Isolate*, CFXJSE_Value*)> fn,
+                     CFXJSE_Value* pObject);
+
+  void ThrowArgumentMismatchException() const;
   void ThrowNoDefaultPropertyException(ByteStringView name) const;
   void ThrowCompilerErrorException() const;
   void ThrowDivideByZeroException() const;
   void ThrowServerDeniedException() const;
   void ThrowPropertyNotInObjectException(const WideString& name,
                                          const WideString& exp) const;
-  void ThrowArgumentMismatchException() const;
   void ThrowParamCountMismatchException(const WideString& method) const;
   void ThrowException(const WideString& str) const;
 
