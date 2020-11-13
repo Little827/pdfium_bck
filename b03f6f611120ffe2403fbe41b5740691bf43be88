@@ -162,6 +162,24 @@
       "parentUuid": "17cac56c_3d6056f2",
       "revId": "b03f6f611120ffe2403fbe41b5740691bf43be88",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "158bd89e_e0fba8a2",
+        "filename": "samples/simple_with_v8.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-13T18:38:50Z",
+      "side": 1,
+      "message": "Ack, thanks for clearing that up :)",
+      "parentUuid": "3997e1c7_dedf56eb",
+      "revId": "b03f6f611120ffe2403fbe41b5740691bf43be88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
