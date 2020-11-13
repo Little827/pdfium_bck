@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0f0299_5c4ed708",
+        "filename": "samples/simple_no_v8.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-13T18:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fee4b1_74be6508",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "b03f6f611120ffe2403fbe41b5740691bf43be88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d39d17_64417243",
@@ -81,6 +105,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edab7b0c_ab7b9060",
+        "filename": "samples/simple_with_v8.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-13T18:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d39d17_64417243",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "b03f6f611120ffe2403fbe41b5740691bf43be88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17cac56c_3d6056f2",
@@ -94,6 +142,24 @@
       "writtenOn": "2020-11-13T18:22:11Z",
       "side": 1,
       "message": "A bit unrelated, but are there any scoped wrappers of v8::Platform?",
+      "revId": "b03f6f611120ffe2403fbe41b5740691bf43be88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3997e1c7_dedf56eb",
+        "filename": "samples/simple_with_v8.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-13T18:34:16Z",
+      "side": 1,
+      "message": "V8 gives us unique_ptr across its API, so it\u0027s scoped by default and it just goes away as does any other unique ptr.  But I wanted to show the exact order explicitly, so I release()\u0027d it above.",
+      "parentUuid": "17cac56c_3d6056f2",
       "revId": "b03f6f611120ffe2403fbe41b5740691bf43be88",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
