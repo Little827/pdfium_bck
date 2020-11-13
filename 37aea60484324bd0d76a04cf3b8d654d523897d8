@@ -86,6 +86,30 @@
       },
       "revId": "37aea60484324bd0d76a04cf3b8d654d523897d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11de64b3_1e01174b",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2020-11-13T01:51:31Z",
+      "side": 1,
+      "message": "Ah.  \"Script Object Model\" so we have ScriptScriptObjectModelDefaultValue() if it was fully expanded.  I think the leading script might be redundant.",
+      "parentUuid": "fd42cf3d_90112561",
+      "range": {
+        "startLine": 1329,
+        "startChar": 21,
+        "endLine": 1329,
+        "endChar": 42
+      },
+      "revId": "37aea60484324bd0d76a04cf3b8d654d523897d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
