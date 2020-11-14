@@ -6,10 +6,8 @@
 
 #include "fxjs/xfa/cfxjse_formcalc_context.h"
 
-#include <stdlib.h>
-
 #include <algorithm>
-#include <cctype>
+#include <cstdlib>
 #include <utility>
 
 #include "core/fxcrt/cfx_widetextbuf.h"
@@ -21,6 +19,7 @@
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
+#include "third_party/base/optional.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fgas/crt/cfgas_decimal.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
@@ -821,7 +820,7 @@ int32_t DateString2Num(ByteStringView bsDate) {
     ++dDays;
     ++i;
   }
-  return static_cast<int32_t>(dDays);
+  return (int32_t)dDays;
 }
 
 void GetLocalTimeZone(int32_t* pHour, int32_t* pMin, int32_t* pSec) {
@@ -1446,25 +1445,18 @@ double ValueToDouble(v8::Isolate* pIsolate, v8::Local<v8::Value> arg) {
   return fxv8::ReentrantToDoubleHelper(pIsolate, extracted);
 }
 
-// TODO(tsepez): return Optional<double>.
-double ExtractDouble(v8::Isolate* pIsolate,
-                     v8::Local<v8::Value> src,
-                     bool* ret) {
-  ASSERT(ret);
-  *ret = true;
-
+Optional<double> ExtractDouble(v8::Isolate* pIsolate,
+                               v8::Local<v8::Value> src) {
   if (src.IsEmpty())
-    return 0;
+    return 0.0;
 
   if (!fxv8::IsArray(src))
     return ValueToDouble(pIsolate, src);
 
   v8::Local<v8::Array> arr = src.As<v8::Array>();
   uint32_t iLength = fxv8::GetArrayLengthHelper(arr);
-  if (iLength < 3) {
-    *ret = false;
-    return 0.0;
-  }
+  if (iLength < 3)
+    return pdfium::nullopt;
 
   v8::Local<v8::Value> propertyValue =
       fxv8::ReentrantGetArrayElementHelper(pIsolate, arr, 1);
@@ -1852,31 +1844,26 @@ void CFXJSE_FormCalcContext::Mod(
     return;
   }
 
-  auto argOne = std::make_unique<CFXJSE_Value>(info.GetIsolate(), info[0]);
-  auto argTwo = std::make_unique<CFXJSE_Value>(info.GetIsolate(), info[1]);
-  if (argOne->IsNull(info.GetIsolate()) || argTwo->IsNull(info.GetIsolate())) {
+  if (fxv8::IsNull(info[0]) || fxv8::IsNull(info[0])) {
     info.GetReturnValue().SetNull();
     return;
   }
 
-  bool argOneResult;
-  double dDividend = ExtractDouble(
-      info.GetIsolate(), argOne->GetValue(info.GetIsolate()), &argOneResult);
-  bool argTwoResult;
-  double dDivisor = ExtractDouble(
-      info.GetIsolate(), argTwo->GetValue(info.GetIsolate()), &argTwoResult);
-  if (!argOneResult || !argTwoResult) {
+  Optional<double> maybe_dividend = ExtractDouble(info.GetIsolate(), info[0]);
+  Optional<double> maybe_divisor = ExtractDouble(info.GetIsolate(), info[1]);
+  if (!maybe_dividend.has_value() || !maybe_divisor.has_value()) {
     pContext->ThrowArgumentMismatchException();
     return;
   }
 
-  if (dDivisor == 0.0) {
+  double dividend = maybe_dividend.value();
+  double divisor = maybe_divisor.value();
+  if (divisor == 0.0) {
     pContext->ThrowDivideByZeroException();
     return;
   }
 
-  info.GetReturnValue().Set(
-      dDividend - dDivisor * static_cast<int32_t>(dDividend / dDivisor));
+  info.GetReturnValue().Set(dividend - divisor * (int32_t)(dividend / divisor));
 }
 
 // static
@@ -1890,36 +1877,31 @@ void CFXJSE_FormCalcContext::Round(
     return;
   }
 
-  auto argOne = std::make_unique<CFXJSE_Value>(info.GetIsolate(), info[0]);
-  if (argOne->IsNull(info.GetIsolate())) {
+  if (fxv8::IsNull(info[0])) {
     info.GetReturnValue().SetNull();
     return;
   }
 
-  bool dValueRet;
-  double dValue = ExtractDouble(
-      info.GetIsolate(), argOne->GetValue(info.GetIsolate()), &dValueRet);
-  if (!dValueRet) {
+  Optional<double> maybe_value = ExtractDouble(info.GetIsolate(), info[0]);
+  if (!maybe_value.has_value()) {
     pContext->ThrowArgumentMismatchException();
     return;
   }
 
+  double dValue = maybe_value.value();
   uint8_t uPrecision = 0;
   if (argc > 1) {
-    auto argTwo = std::make_unique<CFXJSE_Value>(info.GetIsolate(), info[1]);
-    if (argTwo->IsNull(info.GetIsolate())) {
+    if (fxv8::IsNull(info[1])) {
       info.GetReturnValue().SetNull();
       return;
     }
-
-    bool dPrecisionRet;
-    double dPrecision = ExtractDouble(
-        info.GetIsolate(), argTwo->GetValue(info.GetIsolate()), &dPrecisionRet);
-    if (!dPrecisionRet) {
+    Optional<double> maybe_precision =
+        ExtractDouble(info.GetIsolate(), info[1]);
+    if (!maybe_precision.has_value()) {
       pContext->ThrowArgumentMismatchException();
       return;
     }
-
+    double dPrecision = maybe_precision.value();
     uPrecision = static_cast<uint8_t>(pdfium::clamp(dPrecision, 0.0, 12.0));
   }
 
@@ -2028,7 +2010,7 @@ void CFXJSE_FormCalcContext::DateFmt(
       return;
     }
 
-    iStyle = static_cast<int32_t>(ValueToFloat(info.GetIsolate(), infotyle));
+    iStyle = (int32_t)ValueToFloat(info.GetIsolate(), infotyle);
     if (iStyle < 0 || iStyle > 4)
       iStyle = 0;
   }
@@ -2137,7 +2119,7 @@ void CFXJSE_FormCalcContext::LocalDateFmt(
       info.GetReturnValue().SetNull();
       return;
     }
-    iStyle = static_cast<int32_t>(ValueToFloat(info.GetIsolate(), infotyle));
+    iStyle = (int32_t)ValueToFloat(info.GetIsolate(), infotyle);
     if (iStyle > 4 || iStyle < 0)
       iStyle = 0;
   }
@@ -2175,7 +2157,7 @@ void CFXJSE_FormCalcContext::LocalTimeFmt(
       info.GetReturnValue().SetNull();
       return;
     }
-    iStyle = static_cast<int32_t>(ValueToFloat(info.GetIsolate(), infotyle));
+    iStyle = (int32_t)ValueToFloat(info.GetIsolate(), infotyle);
     if (iStyle > 4 || iStyle < 0)
       iStyle = 0;
   }
@@ -2211,8 +2193,7 @@ void CFXJSE_FormCalcContext::Num2Date(
     info.GetReturnValue().SetNull();
     return;
   }
-  int32_t dDate =
-      static_cast<int32_t>(ValueToFloat(info.GetIsolate(), dateValue));
+  int32_t dDate = (int32_t)ValueToFloat(info.GetIsolate(), dateValue);
   if (dDate < 1) {
     info.GetReturnValue().SetNull();
     return;
@@ -2353,8 +2334,7 @@ void CFXJSE_FormCalcContext::Num2GMTime(
     info.GetReturnValue().SetNull();
     return;
   }
-  int32_t iTime =
-      static_cast<int32_t>(ValueToFloat(info.GetIsolate(), timeValue));
+  int32_t iTime = (int32_t)ValueToFloat(info.GetIsolate(), timeValue);
   if (abs(iTime) < 1.0) {
     info.GetReturnValue().SetNull();
     return;
@@ -2552,7 +2532,7 @@ void CFXJSE_FormCalcContext::TimeFmt(
       info.GetReturnValue().SetNull();
       return;
     }
-    iStyle = static_cast<int32_t>(ValueToFloat(info.GetIsolate(), infotyle));
+    iStyle = (int32_t)ValueToFloat(info.GetIsolate(), infotyle);
     if (iStyle > 4 || iStyle < 0)
       iStyle = 0;
   }
@@ -2875,12 +2855,11 @@ void CFXJSE_FormCalcContext::IPmt(
   }
 
   float nRateOfMonth = nRate / 12;
-  int32_t iNums = static_cast<int32_t>(
-      (log10((float)(nPayment / nPrincipalAmount)) -
-       log10((float)(nPayment / nPrincipalAmount - nRateOfMonth))) /
-      log10((float)(1 + nRateOfMonth)));
-  int32_t iEnd =
-      std::min(static_cast<int32_t>(nFirstMonth + nNumberOfMonths - 1), iNums);
+  int32_t iNums =
+      (int32_t)((log10((float)(nPayment / nPrincipalAmount)) -
+                 log10((float)(nPayment / nPrincipalAmount - nRateOfMonth))) /
+                log10((float)(1 + nRateOfMonth)));
+  int32_t iEnd = std::min((int32_t)(nFirstMonth + nNumberOfMonths - 1), iNums);
 
   if (nPayment < nPrincipalAmount * nRateOfMonth) {
     info.GetReturnValue().Set(0);
@@ -3014,12 +2993,11 @@ void CFXJSE_FormCalcContext::PPmt(
   }
 
   float nRateOfMonth = nRate / 12;
-  int32_t iNums = static_cast<int32_t>(
-      (log10((float)(nPayment / nPrincipalAmount)) -
-       log10((float)(nPayment / nPrincipalAmount - nRateOfMonth))) /
-      log10((float)(1 + nRateOfMonth)));
-  int32_t iEnd =
-      std::min(static_cast<int32_t>(nFirstMonth + nNumberOfMonths - 1), iNums);
+  int32_t iNums =
+      (int32_t)((log10((float)(nPayment / nPrincipalAmount)) -
+                 log10((float)(nPayment / nPrincipalAmount - nRateOfMonth))) /
+                log10((float)(1 + nRateOfMonth)));
+  int32_t iEnd = std::min((int32_t)(nFirstMonth + nNumberOfMonths - 1), iNums);
   if (nPayment < nPrincipalAmount * nRateOfMonth) {
     pContext->ThrowArgumentMismatchException();
     return;
@@ -3155,8 +3133,7 @@ void CFXJSE_FormCalcContext::Choose(
     return;
   }
 
-  int32_t iIndex =
-      static_cast<int32_t>(ValueToFloat(info.GetIsolate(), info[0]));
+  int32_t iIndex = (int32_t)ValueToFloat(info.GetIsolate(), info[0]);
   if (iIndex < 1) {
     info.GetReturnValue().SetEmptyString();
     return;
