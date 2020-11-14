@@ -71,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c94768_531756ca",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-14T00:03:19Z",
+      "side": 1,
+      "message": "That\u0027s very good to know. Should there be an update to this doc then?\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++.md#types",
+      "parentUuid": "3ded9b2f_b4b0ec1c",
+      "range": {
+        "startLine": 1770,
+        "startChar": 2,
+        "endLine": 1770,
+        "endChar": 10
+      },
+      "revId": "e970dbe169cf1afc88441c44d373d105b1e9510e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83667457_cdf1e2c3",
