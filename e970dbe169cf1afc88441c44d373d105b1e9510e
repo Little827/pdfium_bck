@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad9c6f5_59653081",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-14T00:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d481b827_7f8265e1",
+      "range": {
+        "startLine": 1738,
+        "startChar": 60,
+        "endLine": 1738,
+        "endChar": 65
+      },
+      "revId": "e970dbe169cf1afc88441c44d373d105b1e9510e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fbfa428_ca69fa3d",
@@ -118,6 +142,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38fae176_afb3e1e1",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-14T00:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83667457_cdf1e2c3",
+      "range": {
+        "startLine": 1807,
+        "startChar": 16,
+        "endLine": 1807,
+        "endChar": 29
+      },
+      "revId": "e970dbe169cf1afc88441c44d373d105b1e9510e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "343eb369_8b23a95c",
@@ -141,6 +189,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f8ce36_0e688f76",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-14T00:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "343eb369_8b23a95c",
+      "range": {
+        "startLine": 1828,
+        "startChar": 16,
+        "endLine": 1828,
+        "endChar": 29
+      },
+      "revId": "e970dbe169cf1afc88441c44d373d105b1e9510e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9f2896_b0d15058",
@@ -154,6 +226,30 @@
       "writtenOn": "2020-11-13T23:43:26Z",
       "side": 1,
       "message": "IWYU \u003cfunctional\u003e",
+      "range": {
+        "startLine": 278,
+        "startChar": 29,
+        "endLine": 278,
+        "endChar": 37
+      },
+      "revId": "e970dbe169cf1afc88441c44d373d105b1e9510e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a7d538_959b0008",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-14T00:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a9f2896_b0d15058",
       "range": {
         "startLine": 278,
         "startChar": 29,
