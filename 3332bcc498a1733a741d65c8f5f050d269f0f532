@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93bdde4d_4896c7e1",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-16T20:44:56Z",
+      "side": 1,
+      "message": "Did the following cleanups to keep it consistent for all PDFium embedder tests.\n1. Rearranged the expected results to be in the order of: Windows, Apple, and others.\n2. Renamed \"MD5\" to \"Checksum\".",
+      "range": {
+        "startLine": 950,
+        "startChar": 0,
+        "endLine": 955,
+        "endChar": 43
+      },
+      "revId": "3332bcc498a1733a741d65c8f5f050d269f0f532",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
