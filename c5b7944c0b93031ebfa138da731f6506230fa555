@@ -36,6 +36,41 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1b9295_d6bc7470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-16T21:32:26Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4fbff7f_51d929c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-16T21:32:26Z",
+      "side": 1,
+      "message": "No problem, thanks!",
+      "parentUuid": "f5d4a335_dbf48864",
+      "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9140d7c_1271f838",
@@ -78,6 +113,76 @@
         "startChar": 0,
         "endLine": 1450,
         "endChar": 8
+      },
+      "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa18c1c_43de3b51",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-16T21:32:26Z",
+      "side": 1,
+      "message": "Ah ok that makes sense :)",
+      "parentUuid": "37f04f9b_d8b99c57",
+      "range": {
+        "startLine": 1450,
+        "startChar": 0,
+        "endLine": 1450,
+        "endChar": 8
+      },
+      "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acfbd96_5a29b6b9",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-16T21:32:26Z",
+      "side": 1,
+      "message": "Are these guaranteed to return true on isfinite()? i.e. can they be NaN or inf?",
+      "range": {
+        "startLine": 1861,
+        "startChar": 2,
+        "endLine": 1862,
+        "endChar": 41
+      },
+      "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808cdeba_f61b5c36",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-16T21:32:26Z",
+      "side": 1,
+      "message": "If so, we need to check more than whether this is not zero.",
+      "range": {
+        "startLine": 1863,
+        "startChar": 5,
+        "endLine": 1863,
+        "endChar": 21
       },
       "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
