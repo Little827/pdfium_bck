@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d4a335_dbf48864",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-16T20:32:30Z",
+      "side": 1,
+      "message": "No, was waiting for the trybots to go green before kicking it over your way.  Thanks for being on top of things.",
+      "parentUuid": "a34928ec_45b569e4",
+      "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9140d7c_1271f838",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-16T19:45:55Z",
       "side": 1,
       "message": "I\u0027m pretty sure these also need to be in the pdfium scope. i.e. pdfium::Optional\u003c\u003e",
+      "range": {
+        "startLine": 1450,
+        "startChar": 0,
+        "endLine": 1450,
+        "endChar": 8
+      },
+      "revId": "c5b7944c0b93031ebfa138da731f6506230fa555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f04f9b_d8b99c57",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-16T20:32:30Z",
+      "side": 1,
+      "message": "Yes, it is in namespace pdfium, but there is a `using pdfium::Optional` in pdfium\u0027s optional.h.  This keeps the linker happy by avoiding a collision with base::Optional, but prevents us from writing pdfium:: everywhere.",
+      "parentUuid": "a9140d7c_1271f838",
       "range": {
         "startLine": 1450,
         "startChar": 0,
