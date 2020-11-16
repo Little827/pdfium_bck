@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <cmath>
+
 #include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_isolatetracker.h"
@@ -72,6 +74,15 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
     EXPECT_NEAR(expected, fxv8::ReentrantToFloatHelper(isolate(), value),
                 precision)
         << "Program: " << input;
+  }
+
+  void ExecuteExpectNaN(ByteStringView input) {
+    EXPECT_TRUE(Execute(input)) << "Program: " << input;
+
+    CFXJSE_ScopeUtil_IsolateHandleContext scope(GetScriptContext());
+    v8::Local<v8::Value> value = GetValue();
+    EXPECT_TRUE(fxv8::IsNumber(value));
+    EXPECT_TRUE(std::isnan(fxv8::ReentrantToDoubleHelper(isolate(), value)));
   }
 
   void ExecuteExpectString(ByteStringView input, const char* expected) {
@@ -283,11 +294,14 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Mod) {
 
   struct {
     const char* program;
-    int result;
+    float result;
   } tests[] = {{"Mod(64, -3)", 1}, {"Mod(-13, 3)", -1}, {"Mod(\"abc\", 2)", 0}};
 
   for (size_t i = 0; i < pdfium::size(tests); ++i)
-    ExecuteExpectInt32(tests[i].program, tests[i].result);
+    ExecuteExpectFloat(tests[i].program, tests[i].result);
+
+  ExecuteExpectNaN("Mod(10, NaN)");
+  ExecuteExpectNaN("Mod(10, Infinity)");
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Round) {
