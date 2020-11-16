@@ -941,7 +941,7 @@ TEST_F(FPDFEditEmbedderTest, ReadMarkedObjectsIndirectDict) {
 #else
 #define MAYBE_RemoveMarkedObjectsPrime RemoveMarkedObjectsPrime
 #endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_RemoveMarkedObjectsPrime) {
+TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
   // Load document with some text.
   ASSERT_TRUE(OpenDocument("text_in_page_marked.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -949,13 +949,23 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_RemoveMarkedObjectsPrime) {
 
   // Show what the original file looks like.
   {
-#if defined(OS_APPLE)
-    const char kOriginalMD5[] = "adf815e53c788a5272b4df07c610a1da";
-#elif defined(OS_WIN)
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_WIN)
+    const char kOriginalMD5[] = "xxx_win";
+#elif defined(OS_APPLE)
+    const char kOriginalMD5[] = "xxx_apple";
+#else
+    const char kOriginalMD5[] = "748ed321a485d246ca6260b9e30dd200";
+#endif
+#else
+#if defined(OS_WIN)
     const char kOriginalMD5[] = "00542ee435b37749c4453be63bf7bdb6";
+#elif defined(OS_APPLE)
+    const char kOriginalMD5[] = "adf815e53c788a5272b4df07c610a1da";
 #else
     const char kOriginalMD5[] = "41647268d5911d049801803b15c2dfb0";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kOriginalMD5);
   }
@@ -993,17 +1003,29 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_RemoveMarkedObjectsPrime) {
   }
 
   EXPECT_EQ(11, FPDFPage_CountObjects(page));
-
-#if defined(OS_APPLE)
-  const char kNonPrimesMD5[] = "d29e2ddff56e0d12f340794d26796400";
-  const char kNonPrimesAfterSaveMD5[] = "10eff2cd0037b661496981779601fa6f";
-#elif defined(OS_WIN)
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(OS_WIN)
+  const char kNonPrimesMD5[] = "before_win";
+  const char kNonPrimesAfterSaveMD5[] = "after_win";
+#elif defined(OS_APPLE)
+  const char kNonPrimesMD5[] = "before_apple";
+  const char kNonPrimesAfterSaveMD5[] = "after_apple";
+#else
+  const char kNonPrimesMD5[] = "e2927fe2b7bbb595aca2a0e19ef3f1e8";
+  const char kNonPrimesAfterSaveMD5[] = "e2927fe2b7bbb595aca2a0e19ef3f1e8";
+#endif
+#else
+#if defined(OS_WIN)
   const char kNonPrimesMD5[] = "86e371fdae30c2471f476631f3f93413";
   const char kNonPrimesAfterSaveMD5[] = "86e371fdae30c2471f476631f3f93413";
+#elif defined(OS_APPLE)
+  const char kNonPrimesMD5[] = "d29e2ddff56e0d12f340794d26796400";
+  const char kNonPrimesAfterSaveMD5[] = "10eff2cd0037b661496981779601fa6f";
 #else
   const char kNonPrimesMD5[] = "67ab13115d0cc34e99a1003c28047b40";
   const char kNonPrimesAfterSaveMD5[] = "67ab13115d0cc34e99a1003c28047b40";
 #endif
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kNonPrimesMD5);
