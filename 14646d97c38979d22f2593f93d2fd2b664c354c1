@@ -16,6 +16,46 @@
       "message": "Tom: could you please take a look? Thanks.",
       "revId": "14646d97c38979d22f2593f93d2fd2b664c354c1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63f774b_6d73658c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-16T17:25:32Z",
+      "side": 1,
+      "message": "LG otherwise.",
+      "revId": "14646d97c38979d22f2593f93d2fd2b664c354c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c090b18a_8fb94218",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-16T17:25:32Z",
+      "side": 1,
+      "message": "We might just use the -\u003esize() call to avoid re-getting the dict/array in the ...Count() function since we\u0027ll have them once we reach line 873.",
+      "range": {
+        "startLine": 862,
+        "startChar": 28,
+        "endLine": 863,
+        "endChar": 31
+      },
+      "revId": "14646d97c38979d22f2593f93d2fd2b664c354c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
