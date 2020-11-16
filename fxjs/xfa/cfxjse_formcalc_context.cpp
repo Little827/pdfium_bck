@@ -21,6 +21,7 @@
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
+#include "third_party/base/no_destructor.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fgas/crt/cfgas_decimal.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
@@ -44,77 +45,11 @@ const double kFinancialPrecision = 0.00000001;
 const wchar_t kStrCode[] = L"0123456789abcdef";
 
 struct XFA_FMHtmlReserveCode {
-  uint32_t m_uCode;
+  uint16_t m_uCode;
   // Inline string data reduces size for small strings.
-  const char m_htmlReserve[12];
+  char m_htmlReserve[12];
 };
 
-// Sorted by |m_htmlReserve|.
-const XFA_FMHtmlReserveCode kReservesForDecode[] = {
-    {198, "AElig"},   {193, "Aacute"},   {194, "Acirc"},    {192, "Agrave"},
-    {913, "Alpha"},   {197, "Aring"},    {195, "Atilde"},   {196, "Auml"},
-    {914, "Beta"},    {199, "Ccedil"},   {935, "Chi"},      {8225, "Dagger"},
-    {916, "Delta"},   {208, "ETH"},      {201, "Eacute"},   {202, "Ecirc"},
-    {200, "Egrave"},  {917, "Epsilon"},  {919, "Eta"},      {203, "Euml"},
-    {915, "Gamma"},   {922, "Kappa"},    {923, "Lambda"},   {924, "Mu"},
-    {209, "Ntilde"},  {925, "Nu"},       {338, "OElig"},    {211, "Oacute"},
-    {212, "Ocirc"},   {210, "Ograve"},   {937, "Omega"},    {927, "Omicron"},
-    {216, "Oslash"},  {213, "Otilde"},   {214, "Ouml"},     {934, "Phi"},
-    {928, "Pi"},      {936, "Psi"},      {929, "Rho"},      {352, "Scaron"},
-    {931, "Sigma"},   {222, "THORN"},    {932, "Tau"},      {920, "Theta"},
-    {218, "Uacute"},  {219, "Ucirc"},    {217, "Ugrave"},   {933, "Upsilon"},
-    {220, "Uuml"},    {926, "Xi"},       {221, "Yacute"},   {376, "Yuml"},
-    {918, "Zeta"},    {225, "aacute"},   {226, "acirc"},    {180, "acute"},
-    {230, "aelig"},   {224, "agrave"},   {8501, "alefsym"}, {945, "alpha"},
-    {38, "amp"},      {8743, "and"},     {8736, "ang"},     {39, "apos"},
-    {229, "aring"},   {8776, "asymp"},   {227, "atilde"},   {228, "auml"},
-    {8222, "bdquo"},  {946, "beta"},     {166, "brvbar"},   {8226, "bull"},
-    {8745, "cap"},    {231, "ccedil"},   {184, "cedil"},    {162, "cent"},
-    {967, "chi"},     {710, "circ"},     {9827, "clubs"},   {8773, "cong"},
-    {169, "copy"},    {8629, "crarr"},   {8746, "cup"},     {164, "current"},
-    {8659, "dArr"},   {8224, "dagger"},  {8595, "darr"},    {176, "deg"},
-    {948, "delta"},   {9830, "diams"},   {247, "divide"},   {233, "eacute"},
-    {234, "ecirc"},   {232, "egrave"},   {8709, "empty"},   {8195, "emsp"},
-    {8194, "ensp"},   {949, "epsilon"},  {8801, "equiv"},   {951, "eta"},
-    {240, "eth"},     {235, "euml"},     {8364, "euro"},    {8707, "exist"},
-    {402, "fnof"},    {8704, "forall"},  {189, "frac12"},   {188, "frac14"},
-    {190, "frac34"},  {8260, "frasl"},   {947, "gamma"},    {8805, "ge"},
-    {62, "gt"},       {8660, "hArr"},    {8596, "harr"},    {9829, "hearts"},
-    {8230, "hellip"}, {237, "iacute"},   {238, "icirc"},    {161, "iexcl"},
-    {236, "igrave"},  {8465, "image"},   {8734, "infin"},   {8747, "int"},
-    {953, "iota"},    {191, "iquest"},   {8712, "isin"},    {239, "iuml"},
-    {954, "kappa"},   {8656, "lArr"},    {205, "lacute"},   {955, "lambda"},
-    {9001, "lang"},   {171, "laquo"},    {8592, "larr"},    {8968, "lceil"},
-    {206, "lcirc"},   {8220, "ldquo"},   {8804, "le"},      {8970, "lfloor"},
-    {204, "lgrave"},  {921, "lota"},     {8727, "lowast"},  {9674, "loz"},
-    {8206, "lrm"},    {8249, "lsaquo"},  {8216, "lsquo"},   {60, "lt"},
-    {207, "luml"},    {175, "macr"},     {8212, "mdash"},   {181, "micro"},
-    {183, "middot"},  {8722, "minus"},   {956, "mu"},       {8711, "nabla"},
-    {160, "nbsp"},    {8211, "ndash"},   {8800, "ne"},      {8715, "ni"},
-    {172, "not"},     {8713, "notin"},   {8836, "nsub"},    {241, "ntilde"},
-    {957, "nu"},      {243, "oacute"},   {244, "ocirc"},    {339, "oelig"},
-    {242, "ograve"},  {8254, "oline"},   {969, "omega"},    {959, "omicron"},
-    {8853, "oplus"},  {8744, "or"},      {170, "ordf"},     {186, "ordm"},
-    {248, "oslash"},  {245, "otilde"},   {8855, "otimes"},  {246, "ouml"},
-    {182, "para"},    {8706, "part"},    {8240, "permil"},  {8869, "perp"},
-    {966, "phi"},     {960, "pi"},       {982, "piv"},      {177, "plusmn"},
-    {8242, "prime"},  {8719, "prod"},    {8733, "prop"},    {968, "psi"},
-    {163, "pund"},    {34, "quot"},      {8658, "rArr"},    {8730, "radic"},
-    {9002, "rang"},   {187, "raquo"},    {8594, "rarr"},    {8969, "rceil"},
-    {8476, "real"},   {174, "reg"},      {8971, "rfloor"},  {961, "rho"},
-    {8207, "rlm"},    {8250, "rsaquo"},  {8217, "rsquo"},   {353, "saron"},
-    {8218, "sbquo"},  {8901, "sdot"},    {167, "sect"},     {173, "shy"},
-    {963, "sigma"},   {962, "sigmaf"},   {8764, "sim"},     {9824, "spades"},
-    {8834, "sub"},    {8838, "sube"},    {8721, "sum"},     {8835, "sup"},
-    {185, "sup1"},    {178, "sup2"},     {179, "sup3"},     {8839, "supe"},
-    {223, "szlig"},   {964, "tau"},      {8221, "tdquo"},   {8756, "there4"},
-    {952, "theta"},   {977, "thetasym"}, {8201, "thinsp"},  {254, "thorn"},
-    {732, "tilde"},   {215, "times"},    {8482, "trade"},   {8657, "uArr"},
-    {250, "uacute"},  {8593, "uarr"},    {251, "ucirc"},    {249, "ugrave"},
-    {168, "uml"},     {978, "upsih"},    {965, "upsilon"},  {252, "uuml"},
-    {8472, "weierp"}, {958, "xi"},       {253, "yacute"},   {165, "yen"},
-    {255, "yuml"},    {950, "zeta"},     {8205, "zwj"},     {8204, "zwnj"},
-};
 
 // Sorted by |m_uCode|.
 const XFA_FMHtmlReserveCode kReservesForEncode[] = {
@@ -836,16 +771,27 @@ void GetLocalTimeZone(int32_t* pHour, int32_t* pMin, int32_t* pSec) {
 }
 
 bool HTMLSTR2Code(const WideString& pData, uint32_t* iCode) {
-  auto cmpFunc = [](const XFA_FMHtmlReserveCode& iter, ByteStringView val) {
-    return strcmp(val.unterminated_c_str(), iter.m_htmlReserve) > 0;
-  };
+  pdfium::base::NoDestructor<std::vector<XFA_FMHtmlReserveCode>> s_Inverse;
   if (!pData.IsASCII())
     return false;
+
+  if (s_Inverse->empty()) {
+    s_Inverse->insert(std::end(*s_Inverse), std::begin(kReservesForEncode),
+                      std::end(kReservesForEncode));
+    std::sort(std::begin(*s_Inverse), std::end(*s_Inverse),
+              [](const XFA_FMHtmlReserveCode& arg1,
+                 const XFA_FMHtmlReserveCode& arg2) {
+                return strcmp(arg1.m_htmlReserve, arg2.m_htmlReserve) < 0;
+              });
+  }
+
   ByteString temp = pData.ToASCII();
-  const XFA_FMHtmlReserveCode* result = std::lower_bound(
-      std::begin(kReservesForDecode), std::end(kReservesForDecode),
-      temp.AsStringView(), cmpFunc);
-  if (result != std::end(kReservesForDecode) &&
+  auto result = std::lower_bound(
+      std::begin(*s_Inverse), std::end(*s_Inverse), temp.AsStringView(),
+      [](const XFA_FMHtmlReserveCode& iter, ByteStringView val) {
+        return strcmp(iter.m_htmlReserve, val.unterminated_c_str()) < 0;
+      });
+  if (result != std::end(*s_Inverse) &&
       !strcmp(temp.c_str(), result->m_htmlReserve)) {
     *iCode = result->m_uCode;
     return true;
