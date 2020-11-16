@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4ca6f6_307db496",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-16T22:27:55Z",
+      "side": 1,
+      "message": "This test still fails due to a known issue that a Skia-only color check would fail. Therefore this test is only enabled for SkiaPaths for now.",
+      "range": {
+        "startLine": 1627,
+        "startChar": 4,
+        "endLine": 1627,
+        "endChar": 27
+      },
+      "revId": "88cc5cc3e931b8d52296b00a9c133d797ac246dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
