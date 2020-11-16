@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad38a0a_051d1cdf",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-16T18:14:44Z",
+      "side": 0,
+      "message": "Not hit by fuzzer, but size might be 0 here.",
+      "range": {
+        "startLine": 458,
+        "startChar": 2,
+        "endLine": 458,
+        "endChar": 50
+      },
+      "revId": "b8a27ae001c2300051b94ba31408c676b61786c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cd2021_720cdd8a",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-16T18:14:44Z",
+      "side": 0,
+      "message": "trips an assert, then not used as test fails upon looping.",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 49
+      },
+      "revId": "b8a27ae001c2300051b94ba31408c676b61786c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
