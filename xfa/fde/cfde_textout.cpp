@@ -453,25 +453,22 @@ void CFDE_TextOut::Reload(const CFX_RectF& rect) {
 
 void CFDE_TextOut::ReloadLinePiece(Line* pLine, const CFX_RectF& rect) {
   pdfium::span<const wchar_t> text_span = m_wsText.span();
-  size_t iPieceIndex = 0;
+  size_t start_char = 0;
   size_t iPieceCount = pLine->GetSize();
-  const Piece* pPiece = pLine->GetPieceAtIndex(0);
-  size_t start_char = pPiece->start_char;
   int32_t iPieceWidths = 0;
   CFX_BreakType dwBreakStatus = CFX_BreakType::kNone;
-  m_fLinePos = pPiece->bounds.top;
-  while (iPieceIndex < iPieceCount) {
-    size_t start = start_char;
-    size_t end = pPiece->char_count + start;
-    while (start < end) {
+  for (size_t iPieceIndex = 0; iPieceIndex < iPieceCount; ++iPieceIndex) {
+    const Piece* pPiece = pLine->GetPieceAtIndex(iPieceIndex);
+    if (iPieceIndex == 0) {
+      start_char = pPiece->start_char;
+      m_fLinePos = pPiece->bounds.top;
+    }
+    size_t end = start_char + pPiece->char_count;
+    for (size_t start = start_char; start < end; ++start) {
       dwBreakStatus = m_pTxtBreak->AppendChar(text_span[start]);
       if (!CFX_BreakTypeNoneOrPiece(dwBreakStatus))
         RetrievePieces(dwBreakStatus, true, rect, &start_char, &iPieceWidths);
-
-      ++start;
     }
-    ++iPieceIndex;
-    pPiece = pLine->GetPieceAtIndex(iPieceIndex);
   }
 
   dwBreakStatus = m_pTxtBreak->EndBreak(CFX_BreakType::kParagraph);
