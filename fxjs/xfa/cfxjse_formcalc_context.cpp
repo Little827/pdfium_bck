@@ -1551,29 +1551,28 @@ std::vector<v8::Local<v8::Value>> UnfoldArgs(
   return results;
 }
 
-bool GetObjectForName(CFXJSE_HostObject* pHostObject,
-                      CFXJSE_Value* accessorValue,
-                      ByteStringView bsAccessorName) {
+// Returns empty value on failure.
+v8::Local<v8::Value> GetObjectForName(CFXJSE_HostObject* pHostObject,
+                                      ByteStringView bsAccessorName) {
   CXFA_Document* pDoc = ToFormCalcContext(pHostObject)->GetDocument();
   if (!pDoc)
-    return false;
+    return v8::Local<v8::Value>();
 
   CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
   XFA_ResolveNodeRS resolveNodeRS;
   uint32_t dwFlags = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
                      XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
-  bool bRet = pScriptContext->ResolveObjects(
-      pScriptContext->GetThisObject(),
-      WideString::FromUTF8(bsAccessorName).AsStringView(), &resolveNodeRS,
-      dwFlags, nullptr);
-  if (bRet && resolveNodeRS.dwFlags == XFA_ResolveNodeRS::Type::kNodes) {
-    v8::Isolate* pIsolate = ToFormCalcContext(pHostObject)->GetIsolate();
-    accessorValue->ForceSetValue(pIsolate,
-                                 pScriptContext->GetOrCreateJSBindingFromMap(
-                                     resolveNodeRS.objects.front().Get()));
-    return true;
+  if (!pScriptContext->ResolveObjects(
+          pScriptContext->GetThisObject(),
+          WideString::FromUTF8(bsAccessorName).AsStringView(), &resolveNodeRS,
+          dwFlags, nullptr)) {
+    return v8::Local<v8::Value>();
   }
-  return false;
+  if (resolveNodeRS.dwFlags != XFA_ResolveNodeRS::Type::kNodes)
+    return v8::Local<v8::Value>();
+
+  return pScriptContext->GetOrCreateJSBindingFromMap(
+      resolveNodeRS.objects.front().Get());
 }
 
 bool ResolveObjects(CFXJSE_HostObject* pHostObject,
@@ -5490,11 +5489,14 @@ void CFXJSE_FormCalcContext::DotAccessorCommon(
       (argAccessor->IsNull(pIsolate) && bsAccessorName.IsEmpty())) {
     bRet = ResolveObjects(pThis, argAccessor.get(), bsSomExp.AsStringView(),
                           &resolveNodeRS, bDotAccessor, bHasNoResolveName);
-  } else if (!argAccessor->IsObject(pIsolate) && !bsAccessorName.IsEmpty() &&
-             GetObjectForName(pThis, argAccessor.get(),
-                              bsAccessorName.AsStringView())) {
-    bRet = ResolveObjects(pThis, argAccessor.get(), bsSomExp.AsStringView(),
-                          &resolveNodeRS, bDotAccessor, bHasNoResolveName);
+  } else if (!argAccessor->IsObject(pIsolate) && !bsAccessorName.IsEmpty()) {
+    v8::Local<v8::Value> obj =
+        GetObjectForName(pThis, bsAccessorName.AsStringView());
+    if (!obj.IsEmpty()) {
+      argAccessor->ForceSetValue(pIsolate, obj);
+      bRet = ResolveObjects(pThis, argAccessor.get(), bsSomExp.AsStringView(),
+                            &resolveNodeRS, bDotAccessor, bHasNoResolveName);
+    }
   }
   if (!bRet) {
     pContext->ThrowPropertyNotInObjectException(
