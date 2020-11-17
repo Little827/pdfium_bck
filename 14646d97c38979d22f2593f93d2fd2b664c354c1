@@ -80,6 +80,30 @@
       },
       "revId": "14646d97c38979d22f2593f93d2fd2b664c354c1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "877eaed7_863f9e39",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-11-17T08:16:46Z",
+      "side": 1,
+      "message": "Yes, indeed there were some duplication there. I\u0027ve extracted the copy\u0026pasted code to a new function, as you suggested.",
+      "parentUuid": "73d1279f_80dda0fa",
+      "range": {
+        "startLine": 862,
+        "startChar": 28,
+        "endLine": 863,
+        "endChar": 31
+      },
+      "revId": "14646d97c38979d22f2593f93d2fd2b664c354c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
