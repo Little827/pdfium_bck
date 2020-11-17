@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f418c8b_59ec347d",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T18:38:25Z",
+      "side": 1,
+      "message": "Indeed. Done.",
+      "parentUuid": "b5b385c2_c9fac64f",
+      "range": {
+        "startLine": 1497,
+        "startChar": 21,
+        "endLine": 1497,
+        "endChar": 28
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9c6918f_aa75ac0a",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-17T01:15:18Z",
       "side": 1,
       "message": "Extremely optional nit: newlines between these if-statements",
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "516a8bba_6adddc9e",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T18:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c6918f_aa75ac0a",
       "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -88,6 +130,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f40ee0c0_3fb493ba",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T18:38:25Z",
+      "side": 1,
+      "message": "And I\u0027m wrong.  I\u0027ve confused oilpan semantics with v8 handle semantics.  I\u0027ve doublechecked that Locals are OK so long as the vector doesn\u0027t outlive its containing handle-scope, e.g. https://source.chromium.org/search?q\u003dfile:v8%2F%20std::vector%3Cv8::Local\u0026ss\u003dchromium",
+      "parentUuid": "a65ce34b_bad371ad",
+      "range": {
+        "startLine": 1514,
+        "startChar": 13,
+        "endLine": 1514,
+        "endChar": 33
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "798891be_803c30cf",
@@ -101,6 +167,30 @@
       "writtenOn": "2020-11-17T01:15:18Z",
       "side": 1,
       "message": "Does this have to be int32_t? The V8 API takes/returns vanilla ints.",
+      "range": {
+        "startLine": 1518,
+        "startChar": 7,
+        "endLine": 1518,
+        "endChar": 14
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d2bfad_3ffe064b",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T18:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "798891be_803c30cf",
       "range": {
         "startLine": 1518,
         "startChar": 7,
@@ -148,6 +238,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "d55ba61a_3b7fd653",
+      "range": {
+        "startLine": 1534,
+        "startChar": 18,
+        "endLine": 1534,
+        "endChar": 30
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d22946_131e5025",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T18:38:25Z",
+      "side": 1,
+      "message": "and this goes away.",
+      "parentUuid": "c362b394_a5f5f775",
       "range": {
         "startLine": 1534,
         "startChar": 18,
