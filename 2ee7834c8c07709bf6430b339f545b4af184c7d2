@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a66394_54cc7acf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-17T01:51:54Z",
+      "side": 1,
+      "message": "With Ben\u0027s relanding the CL https://skia-review.googlesource.com/319343, some of the Skia/SkiaPaths embeddertest results are reverted as well.",
+      "revId": "2ee7834c8c07709bf6430b339f545b4af184c7d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
