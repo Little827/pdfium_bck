@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad81bfb4_5f5427fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T01:15:18Z",
+      "side": 1,
+      "message": "LGTM % nits \u0026 questions",
+      "revId": "f847cc607808e9dfb2acdcc6fc765b666a1babc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

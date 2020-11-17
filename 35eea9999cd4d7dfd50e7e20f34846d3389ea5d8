@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5b385c2_c9fac64f",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T01:15:18Z",
+      "side": 1,
+      "message": "Get rid of hungarian notation here? The rest of the method doesn\u0027t abide by it.",
+      "range": {
+        "startLine": 1497,
+        "startChar": 21,
+        "endLine": 1497,
+        "endChar": 28
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c6918f_aa75ac0a",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T01:15:18Z",
+      "side": 1,
+      "message": "Extremely optional nit: newlines between these if-statements",
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6b13da5_4d92ad26",
         "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
         "patchSetId": 1
@@ -19,6 +59,53 @@
         "startChar": 13,
         "endLine": 1514,
         "endChar": 33
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65ce34b_bad371ad",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T01:15:18Z",
+      "side": 1,
+      "message": "Ack, maybe leave a comment about that?",
+      "parentUuid": "f6b13da5_4d92ad26",
+      "range": {
+        "startLine": 1514,
+        "startChar": 13,
+        "endLine": 1514,
+        "endChar": 33
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "798891be_803c30cf",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T01:15:18Z",
+      "side": 1,
+      "message": "Does this have to be int32_t? The V8 API takes/returns vanilla ints.",
+      "range": {
+        "startLine": 1518,
+        "startChar": 7,
+        "endLine": 1518,
+        "endChar": 14
       },
       "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
@@ -47,6 +134,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c362b394_a5f5f775",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T01:15:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d55ba61a_3b7fd653",
+      "range": {
+        "startLine": 1534,
+        "startChar": 18,
+        "endLine": 1534,
+        "endChar": 30
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4f9a2bb_31c9266f",
@@ -60,6 +171,30 @@
       "writtenOn": "2020-11-17T00:04:47Z",
       "side": 1,
       "message": "Here\u0027s something you haven\u0027t seen yet - making a local from a global. Despite the name New(), this doesn\u0027t allocate anything. It just takes the value from the global and puts it into the local stack var.",
+      "range": {
+        "startLine": 3246,
+        "startChar": 39,
+        "endLine": 3246,
+        "endChar": 42
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b22d69_ca9ebd47",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3246,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T01:15:18Z",
+      "side": 1,
+      "message": "Thanks for the context :)",
+      "parentUuid": "f4f9a2bb_31c9266f",
       "range": {
         "startLine": 3246,
         "startChar": 39,
