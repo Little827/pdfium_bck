@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c75ed48b_298c985d",
+        "filename": "fxjs/fxv8.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T23:35:08Z",
+      "side": 1,
+      "message": "Optional: I feel like having this line be `NewArrayHelper(pIsolate)` makes more sense since this is an overloaded method.",
+      "range": {
+        "startLine": 93,
+        "startChar": 32,
+        "endLine": 93,
+        "endChar": 56
+      },
+      "revId": "a6548a074429e025005e8b845998a488b26d7ee0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f93013_96cbc40c",
+        "filename": "fxjs/fxv8.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T23:35:08Z",
+      "side": 1,
+      "message": "I feel like this might be better as an iterative loop rather than a for-each; that way you won\u0027t need lines 94 and 99.",
+      "revId": "a6548a074429e025005e8b845998a488b26d7ee0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ff4d15_d1f87f00",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-17T23:35:08Z",
+      "side": 1,
+      "message": "Might as well add /*bindNode\u003d*/",
+      "range": {
+        "startLine": 1568,
+        "startChar": 19,
+        "endLine": 1568,
+        "endChar": 26
+      },
+      "revId": "a6548a074429e025005e8b845998a488b26d7ee0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
