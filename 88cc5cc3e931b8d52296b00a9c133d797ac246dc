@@ -46,6 +46,30 @@
       },
       "revId": "88cc5cc3e931b8d52296b00a9c133d797ac246dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4204c9_44d46fd8",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-17T05:11:22Z",
+      "side": 1,
+      "message": "This is included in crbug.com/pdfium/1500 since it\u0027s affecting multiple tests. I am pretty sure there is an existing bug that crashes at the same location but not sure whether they have the same cause. Therefore this issue will be sorted out before issue 1500 gets resolved.",
+      "parentUuid": "f3e894f2_90bbd3fa",
+      "range": {
+        "startLine": 1627,
+        "startChar": 4,
+        "endLine": 1627,
+        "endChar": 27
+      },
+      "revId": "88cc5cc3e931b8d52296b00a9c133d797ac246dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
