@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b13da5_4d92ad26",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T00:04:47Z",
+      "side": 1,
+      "message": "Because vector stores its elements out-of-line on the heap, they have to be globals (eg. the .data() allocated for the vector won\u0027t be found if we scan the stack).",
+      "range": {
+        "startLine": 1514,
+        "startChar": 13,
+        "endLine": 1514,
+        "endChar": 33
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55ba61a_3b7fd653",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T00:04:47Z",
+      "side": 1,
+      "message": "there\u0027s a constructor to make a global from a local, but the promotion isn\u0027t implicit, so we can\u0027t just push_back.",
+      "range": {
+        "startLine": 1534,
+        "startChar": 18,
+        "endLine": 1534,
+        "endChar": 30
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f9a2bb_31c9266f",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3246,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-17T00:04:47Z",
+      "side": 1,
+      "message": "Here\u0027s something you haven\u0027t seen yet - making a local from a global. Despite the name New(), this doesn\u0027t allocate anything. It just takes the value from the global and puts it into the local stack var.",
+      "range": {
+        "startLine": 3246,
+        "startChar": 39,
+        "endLine": 3246,
+        "endChar": 42
+      },
+      "revId": "35eea9999cd4d7dfd50e7e20f34846d3389ea5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
