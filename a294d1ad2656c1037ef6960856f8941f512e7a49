@@ -33,6 +33,24 @@
       "message": "Not blocking this CL, but longterm we should consider refactoring/changing how we do these pixel tests in PDFium. These hashes are getting unruly 😢",
       "revId": "a294d1ad2656c1037ef6960856f8941f512e7a49",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89560cf4_e0c59792",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-17T01:39:53Z",
+      "side": 1,
+      "message": "Eventually we will make AGG results go away. \n\nAs for pixel tests, I think it will get more unruly compared to these embedder tests\u0027 hash values when it comes to uploading actual images for skia/skiapaths on different platforms.",
+      "parentUuid": "fc06fa60_366c503c",
+      "revId": "a294d1ad2656c1037ef6960856f8941f512e7a49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
