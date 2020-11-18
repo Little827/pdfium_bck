@@ -90,11 +90,13 @@ v8::Local<v8::Array> NewArrayHelper(v8::Isolate* pIsolate) {
 
 v8::Local<v8::Array> NewArrayHelper(v8::Isolate* pIsolate,
                                     pdfium::span<v8::Local<v8::Value>> values) {
-  v8::Local<v8::Array> result = NewArrayHelper(pIsolate);
-  for (size_t i = 0; i < values.size(); ++i) {
+  v8::Local<v8::Array> result = v8::Array::New(pIsolate);
+  uint32_t count = 0;
+  for (const auto& v : values) {
     fxv8::ReentrantPutArrayElementHelper(
-        pIsolate, result, i,
-        values[i].IsEmpty() ? fxv8::NewUndefinedHelper(pIsolate) : values[i]);
+        pIsolate, result, count,
+        v.IsEmpty() ? fxv8::NewUndefinedHelper(pIsolate) : v);
+    ++count;
   }
   return result;
 }
