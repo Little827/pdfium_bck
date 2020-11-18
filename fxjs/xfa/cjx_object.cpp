@@ -979,16 +979,17 @@ void CJX_Object::ScriptAttributeString(v8::Isolate* pIsolate,
 
   CXFA_Node* pProtoNode = nullptr;
   if (!wsSOM.IsEmpty()) {
-    XFA_ResolveNodeRS resolveNodeRS;
-    bool bRet = GetDocument()->GetScriptContext()->ResolveObjects(
-        pProtoRoot, wsSOM.AsStringView(), &resolveNodeRS,
-        XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
-            XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
-            XFA_RESOLVENODE_Siblings,
-        nullptr);
-    if (bRet && resolveNodeRS.objects.front()->IsNode())
-      pProtoNode = resolveNodeRS.objects.front()->AsNode();
-
+    Optional<CFXJSE_Engine::ResolveResult> maybeResult =
+        GetDocument()->GetScriptContext()->ResolveObjects(
+            pProtoRoot, wsSOM.AsStringView(),
+            XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
+                XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
+                XFA_RESOLVENODE_Siblings,
+            nullptr);
+    if (maybeResult.has_value() &&
+        maybeResult.value().objects.front()->IsNode()) {
+      pProtoNode = maybeResult.value().objects.front()->AsNode();
+    }
   } else if (!wsID.IsEmpty()) {
     pProtoNode = GetDocument()->GetNodeByID(pProtoRoot, wsID.AsStringView());
   }
