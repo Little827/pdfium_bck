@@ -45,7 +45,7 @@ const double kFinancialPrecision = 0.00000001;
 const wchar_t kStrCode[] = L"0123456789abcdef";
 
 struct XFA_FMHtmlReserveCode {
-  uint32_t m_uCode;
+  uint16_t m_uCode;
   // Inline string data reduces size for small strings.
   const char m_htmlReserve[12];
 };
