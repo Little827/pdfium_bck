@@ -19,7 +19,6 @@
 #include "fxjs/xfa/cfxjse_isolatetracker.h"
 #include "fxjs/xfa/cfxjse_nodehelper.h"
 #include "fxjs/xfa/cfxjse_resolveprocessor.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
@@ -72,6 +71,35 @@ namespace {
 
 const char kFormCalcRuntime[] = "pfm_rt";
 
+// Returns empty local on error.
+v8::Local<v8::Function> NewBoundFunction(v8::Isolate* pIsolate,
+                                         v8::Local<v8::Function> hOldFunction,
+                                         v8::Local<v8::Object> hNewThis) {
+  ASSERT(!hOldFunction.IsEmpty());
+  ASSERT(!hNewThis.IsEmpty());
+
+  CFXJSE_ScopeUtil_IsolateHandleRootContext scope(pIsolate);
+  v8::Local<v8::Value> rgArgs[2];
+  rgArgs[0] = hOldFunction;
+  rgArgs[1] = hNewThis;
+  v8::Local<v8::String> hBinderFuncSource = fxv8::NewStringHelper(
+      pIsolate, "(function (fn, obj) { return fn.bind(obj); })");
+  v8::Local<v8::Context> hContext = pIsolate->GetCurrentContext();
+  v8::Local<v8::Function> hBinderFunc =
+      v8::Script::Compile(hContext, hBinderFuncSource)
+          .ToLocalChecked()
+          ->Run(hContext)
+          .ToLocalChecked()
+          .As<v8::Function>();
+  v8::Local<v8::Value> hBoundFunction =
+      hBinderFunc->Call(hContext, hContext->Global(), 2, rgArgs)
+          .ToLocalChecked();
+  if (!fxv8::IsFunction(hBoundFunction))
+    return v8::Local<v8::Function>();
+
+  return hBoundFunction.As<v8::Function>();
+}
+
 }  // namespace
 
 CFXJSE_Engine::ResolveResult::ResolveResult() = default;
@@ -94,12 +122,6 @@ CXFA_Object* CFXJSE_Engine::ToObject(v8::Isolate* pIsolate,
     return nullptr;
 
   return ToObject(FXJSE_RetrieveObjectBinding(value.As<v8::Object>()));
-}
-
-// static.
-CXFA_Object* CFXJSE_Engine::ToObject(v8::Isolate* pIsolate,
-                                     CFXJSE_Value* pValue) {
-  return ToObject(pValue->ToHostObject(pIsolate));
 }
 
 // static
@@ -140,10 +162,10 @@ CFXJSE_Engine::~CFXJSE_Engine() {
   }
 }
 
-bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
-                              WideStringView wsScript,
-                              CFXJSE_Value* hRetValue,
-                              CXFA_Object* pThisObject) {
+Optional<v8::Local<v8::Value>> CFXJSE_Engine::RunScript(
+    CXFA_Script::Type eScriptType,
+    WideStringView wsScript,
+    CXFA_Object* pThisObject) {
   CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
   AutoRestorer<CXFA_Script::Type> typeRestorer(&m_eScriptType);
   m_eScriptType = eScriptType;
@@ -156,10 +178,9 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
     }
     Optional<CFX_WideTextBuf> wsJavaScript =
         CFXJSE_FormCalcContext::Translate(m_pDocument->GetHeap(), wsScript);
-    if (!wsJavaScript.has_value()) {
-      hRetValue->SetUndefined(GetIsolate());
-      return false;
-    }
+    if (!wsJavaScript.has_value())
+      return pdfium::nullopt;
+
     btScript = FX_UTF8Encode(wsJavaScript.value().AsStringView());
   } else {
     btScript = FX_UTF8Encode(wsScript);
@@ -172,7 +193,7 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
     pThisBinding = GetOrCreateJSBindingFromMap(pThisObject);
 
   IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime.Get());
-  return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pThisBinding);
+  return m_JsContext->ExecuteScript(btScript.c_str(), pThisBinding);
 }
 
 bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
@@ -559,14 +580,14 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
     return false;
 
   ByteString btScript = wsScript->ToUTF8();
-  auto hRetValue = std::make_unique<CFXJSE_Value>();
   CXFA_Node* pThisObject = pParent->GetParent();
   CFXJSE_Context* pVariablesContext =
       CreateVariablesContext(pScriptNode, pThisObject);
   AutoRestorer<cppgc::Persistent<CXFA_Object>> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
-  return pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
-                                          v8::Local<v8::Object>());
+  return pVariablesContext
+      ->ExecuteScript(btScript.c_str(), v8::Local<v8::Object>())
+      .has_value();
 }
 
 bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
@@ -602,7 +623,7 @@ bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
   v8::Local<v8::Value> hVariableValue =
       fxv8::ReentrantGetObjectPropertyHelper(GetIsolate(), pObject, szPropName);
   if (fxv8::IsFunction(hVariableValue)) {
-    v8::Local<v8::Function> maybeFunc = CFXJSE_Value::NewBoundFunction(
+    v8::Local<v8::Function> maybeFunc = NewBoundFunction(
         GetIsolate(), hVariableValue.As<v8::Function>(), pObject);
     if (!maybeFunc.IsEmpty())
       *pValue = maybeFunc;

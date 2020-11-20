@@ -9,7 +9,6 @@
 #include <vector>
 
 #include "fxjs/js_resources.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cxfa_source.h"
 
 const CJX_MethodSpec CJX_Source::MethodSpecs[] = {
