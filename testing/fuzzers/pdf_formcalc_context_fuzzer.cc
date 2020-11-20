@@ -10,7 +10,6 @@
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "public/fpdf_formfill.h"
 #include "testing/fuzzers/pdfium_fuzzer_helper.h"
 #include "v8/include/v8.h"
@@ -526,11 +525,9 @@ class PDFiumFormCalcContextFuzzer : public PDFiumFuzzerHelper {
     params.m_bCancelAction = false;
     script_context->SetEventParam(&params);
     ByteStringView data_view(data_, size_);
-
-    auto value = std::make_unique<CFXJSE_Value>();
     script_context->RunScript(CXFA_Script::Type::Formcalc,
                               WideString::FromUTF8(data_view).AsStringView(),
-                              value.get(), xfa_document->GetRoot());
+                              xfa_document->GetRoot());
 
     script_context->SetEventParam(nullptr);
   }

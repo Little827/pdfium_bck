@@ -70,7 +70,6 @@ class CFXJSE_Engine final : public CFX_V8 {
   static CXFA_Object* ToObject(const v8::FunctionCallbackInfo<v8::Value>& info);
   static CXFA_Object* ToObject(v8::Isolate* pIsolate,
                                v8::Local<v8::Value> value);
-  static CXFA_Object* ToObject(v8::Isolate* pIsolate, CFXJSE_Value* pValue);
   static CXFA_Object* ToObject(CFXJSE_HostObject* pHostObj);
   static v8::Local<v8::Value> GlobalPropertyGetter(
       v8::Isolate* pIsolate,
@@ -105,10 +104,10 @@ class CFXJSE_Engine final : public CFX_V8 {
 
   void SetEventParam(CXFA_EventParam* param) { m_eventParam = param; }
   CXFA_EventParam* GetEventParam() const { return m_eventParam.Get(); }
-  bool RunScript(CXFA_Script::Type eScriptType,
-                 WideStringView wsScript,
-                 CFXJSE_Value* pRetValue,
-                 CXFA_Object* pThisObject);
+
+  Optional<v8::Local<v8::Value>> RunScript(CXFA_Script::Type eScriptType,
+                                           WideStringView wsScript,
+                                           CXFA_Object* pThisObject);
 
   Optional<ResolveResult> ResolveObjects(CXFA_Object* refObject,
                                          WideStringView wsExpression,
