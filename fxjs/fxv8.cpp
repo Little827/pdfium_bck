@@ -258,8 +258,7 @@ bool ReentrantPutObjectPropertyHelper(v8::Isolate* pIsolate,
                                       v8::Local<v8::Object> pObj,
                                       ByteStringView bsUTF8PropertyName,
                                       v8::Local<v8::Value> pPut) {
-  ASSERT(!pPut.IsEmpty());
-  if (pObj.IsEmpty())
+  if (pObj.IsEmpty() || pPut.IsEmpty())
     return false;
 
   v8::TryCatch squash_exceptions(pIsolate);
