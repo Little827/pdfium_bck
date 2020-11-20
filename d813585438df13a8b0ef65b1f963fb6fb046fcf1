@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d506023_38c41520",
+        "filename": "fxjs/fxv8.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-20T20:34:37Z",
+      "side": 1,
+      "message": "Made more forgiving, for consistency with ReentrantPutObjectPropertyHelper",
+      "parentUuid": "ade0ab3d_75e9e26c",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 8
+      },
+      "revId": "d813585438df13a8b0ef65b1f963fb6fb046fcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6a12ba4_890be331",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-20T18:14:47Z",
       "side": 1,
       "message": "Nit: can this go back to if-statements? The ternary operator is getting unruly here.",
+      "range": {
+        "startLine": 3147,
+        "startChar": 10,
+        "endLine": 3154,
+        "endChar": 45
+      },
+      "revId": "d813585438df13a8b0ef65b1f963fb6fb046fcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1410ee06_136fc06f",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 3154,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-20T20:34:37Z",
+      "side": 1,
+      "message": "sure. Also introduced a local to unnest it more.",
+      "parentUuid": "b6a12ba4_890be331",
       "range": {
         "startLine": 3147,
         "startChar": 10,
