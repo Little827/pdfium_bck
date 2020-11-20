@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "fxjs/cfx_v8.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "xfa/fxfa/parser/cscript_signaturepseudomodel.h"
 
@@ -36,7 +37,7 @@ CJS_Result CJX_SignaturePseudoModel::verifySignature(
   if (params.empty() || params.size() > 4)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewNumber(0));
+  return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 }
 
 CJS_Result CJX_SignaturePseudoModel::sign(
@@ -45,7 +46,8 @@ CJS_Result CJX_SignaturePseudoModel::sign(
   if (params.size() < 3 || params.size() > 7)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewBoolean(false));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), false));
 }
 
 CJS_Result CJX_SignaturePseudoModel::enumerate(
@@ -63,5 +65,6 @@ CJS_Result CJX_SignaturePseudoModel::clear(
   if (params.empty() || params.size() > 2)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewBoolean(false));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), false));
 }

@@ -45,8 +45,8 @@ CJS_Result CJX_Packet::getAttribute(
   if (element)
     attributeValue = element->GetAttribute(runtime->ToWideString(params[0]));
 
-  return CJS_Result::Success(
-      runtime->NewString(attributeValue.ToUTF8().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      runtime->GetIsolate(), attributeValue.ToUTF8().AsStringView()));
 }
 
 CJS_Result CJX_Packet::setAttribute(
@@ -60,7 +60,7 @@ CJS_Result CJX_Packet::setAttribute(
     element->SetAttribute(runtime->ToWideString(params[1]),
                           runtime->ToWideString(params[0]));
   }
-  return CJS_Result::Success(runtime->NewNull());
+  return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 }
 
 CJS_Result CJX_Packet::removeAttribute(
@@ -75,7 +75,7 @@ CJS_Result CJX_Packet::removeAttribute(
     if (pElement->HasAttribute(name))
       pElement->RemoveAttribute(name);
   }
-  return CJS_Result::Success(runtime->NewNull());
+  return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 }
 
 void CJX_Packet::content(v8::Isolate* pIsolate,

@@ -7,6 +7,7 @@
 #include "fxjs/cjs_object.h"
 
 #include "fxjs/cfxjs_engine.h"
+#include "fxjs/fxv8.h"
 
 // static
 void CJS_Object::DefineConsts(CFXJS_Engine* pEngine,
@@ -16,8 +17,10 @@ void CJS_Object::DefineConsts(CFXJS_Engine* pEngine,
     pEngine->DefineObjConst(
         nObjDefnID, item.pName,
         item.eType == JSConstSpec::Number
-            ? pEngine->NewNumber(item.number).As<v8::Value>()
-            : pEngine->NewString(item.pStr).As<v8::Value>());
+            ? fxv8::NewNumberHelper(pEngine->GetIsolate(), item.number)
+                  .As<v8::Value>()
+            : fxv8::NewStringHelper(pEngine->GetIsolate(), item.pStr)
+                  .As<v8::Value>());
   }
 }
 

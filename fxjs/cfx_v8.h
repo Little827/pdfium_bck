@@ -20,18 +20,6 @@ class CFX_V8 {
 
   v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
 
-  v8::Local<v8::Value> NewNull();
-  v8::Local<v8::Value> NewUndefined();
-  v8::Local<v8::Array> NewArray();
-  v8::Local<v8::Object> NewObject();
-  v8::Local<v8::Number> NewNumber(int number);
-  v8::Local<v8::Number> NewNumber(double number);
-  v8::Local<v8::Number> NewNumber(float number);
-  v8::Local<v8::Boolean> NewBoolean(bool b);
-  v8::Local<v8::String> NewString(ByteStringView str);
-  v8::Local<v8::String> NewString(WideStringView str);
-  v8::Local<v8::Date> NewDate(double d);
-
   int ToInt32(v8::Local<v8::Value> pValue);
   bool ToBoolean(v8::Local<v8::Value> pValue);
   double ToDouble(v8::Local<v8::Value> pValue);

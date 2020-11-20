@@ -79,12 +79,13 @@ CJS_Result CJX_ExclGroup::execValidate(
 
   CXFA_FFNotify* notify = GetDocument()->GetNotify();
   if (!notify)
-    return CJS_Result::Success(runtime->NewBoolean(false));
+    return CJS_Result::Success(
+        fxv8::NewBooleanHelper(runtime->GetIsolate(), false));
 
   XFA_EventError iRet = notify->ExecEventByDeepFirst(
       GetXFANode(), XFA_EVENT_Validate, false, true);
-  return CJS_Result::Success(
-      runtime->NewBoolean(iRet != XFA_EventError::kError));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), iRet != XFA_EventError::kError));
 }
 
 CJS_Result CJX_ExclGroup::selectedMember(
@@ -95,7 +96,7 @@ CJS_Result CJX_ExclGroup::selectedMember(
 
   CXFA_Node* node = GetXFANode();
   if (!node->IsWidgetReady())
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   CXFA_Node* pReturnNode = nullptr;
   if (params.empty()) {
@@ -105,7 +106,7 @@ CJS_Result CJX_ExclGroup::selectedMember(
         runtime->ToWideString(params[0]).AsStringView(), true);
   }
   if (!pReturnNode)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   return CJS_Result::Success(
       GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(

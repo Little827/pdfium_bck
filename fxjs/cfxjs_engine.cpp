@@ -391,7 +391,8 @@ void CFXJS_Engine::DefineObjMethod(uint32_t nObjDefnID,
   v8::HandleScope handle_scope(GetIsolate());
   FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
   CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(nObjDefnID);
-  pObjDef->DefineMethod(NewString(sMethodName), pMethodCall);
+  pObjDef->DefineMethod(fxv8::NewStringHelper(GetIsolate(), sMethodName),
+                        pMethodCall);
 }
 
 void CFXJS_Engine::DefineObjProperty(uint32_t nObjDefnID,
@@ -402,7 +403,8 @@ void CFXJS_Engine::DefineObjProperty(uint32_t nObjDefnID,
   v8::HandleScope handle_scope(GetIsolate());
   FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
   CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(nObjDefnID);
-  pObjDef->DefineProperty(NewString(sPropName), pPropGet, pPropPut);
+  pObjDef->DefineProperty(fxv8::NewStringHelper(GetIsolate(), sPropName),
+                          pPropGet, pPropPut);
 }
 
 void CFXJS_Engine::DefineObjAllProperties(
@@ -436,7 +438,8 @@ void CFXJS_Engine::DefineGlobalMethod(const char* sMethodName,
       v8::FunctionTemplate::New(GetIsolate(), pMethodCall);
   fun->RemovePrototype();
   GetGlobalObjectTemplate(GetIsolate())
-      ->Set(NewString(sMethodName), fun, v8::ReadOnly);
+      ->Set(fxv8::NewStringHelper(GetIsolate(), sMethodName), fun,
+            v8::ReadOnly);
 }
 
 void CFXJS_Engine::DefineGlobalConst(const wchar_t* sConstName,
@@ -447,7 +450,8 @@ void CFXJS_Engine::DefineGlobalConst(const wchar_t* sConstName,
       v8::FunctionTemplate::New(GetIsolate(), pConstGetter);
   fun->RemovePrototype();
   GetGlobalObjectTemplate(GetIsolate())
-      ->SetAccessorProperty(NewString(sConstName), fun);
+      ->SetAccessorProperty(fxv8::NewStringHelper(GetIsolate(), sConstName),
+                            fun);
 }
 
 void CFXJS_Engine::InitializeEngine() {
@@ -495,7 +499,8 @@ void CFXJS_Engine::InitializeEngine() {
                                           .ToLocalChecked());
       }
     } else if (pObjDef->m_ObjType == FXJSOBJTYPE_STATIC) {
-      v8::Local<v8::String> pObjName = NewString(pObjDef->m_ObjName);
+      v8::Local<v8::String> pObjName =
+          fxv8::NewStringHelper(GetIsolate(), pObjDef->m_ObjName);
       v8::Local<v8::Object> obj = NewFXJSBoundObject(i, FXJSOBJTYPE_STATIC);
       if (!obj.IsEmpty()) {
         v8Context->Global()->Set(v8Context, pObjName, obj).FromJust();
@@ -549,7 +554,8 @@ Optional<IJS_Runtime::JS_Error> CFXJS_Engine::Execute(
   v8::TryCatch try_catch(GetIsolate());
   v8::Local<v8::Context> context = GetIsolate()->GetCurrentContext();
   v8::Local<v8::Script> compiled_script;
-  if (!v8::Script::Compile(context, NewString(script.AsStringView()))
+  if (!v8::Script::Compile(
+           context, fxv8::NewStringHelper(GetIsolate(), script.AsStringView()))
            .ToLocal(&compiled_script)) {
     v8::String::Utf8Value error(GetIsolate(), try_catch.Exception());
     v8::Local<v8::Message> msg = try_catch.Message();

@@ -10,6 +10,7 @@
 #include "fxjs/cjs_eventrecorder.h"
 #include "fxjs/cjs_field.h"
 #include "fxjs/cjs_object.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_define.h"
 
 const JSPropertySpec CJS_Event::PropertySpecs[] = {
@@ -57,8 +58,8 @@ CJS_Event::~CJS_Event() = default;
 CJS_Result CJS_Event::get_change(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(
-      pRuntime->NewString(pEvent->Change().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pEvent->Change().AsStringView()));
 }
 
 CJS_Result CJS_Event::set_change(CJS_Runtime* pRuntime,
@@ -76,8 +77,8 @@ CJS_Result CJS_Event::set_change(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_change_ex(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(
-      pRuntime->NewString(pEvent->ChangeEx().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pEvent->ChangeEx().AsStringView()));
 }
 
 CJS_Result CJS_Event::set_change_ex(CJS_Runtime* pRuntime,
@@ -88,7 +89,8 @@ CJS_Result CJS_Event::set_change_ex(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_commit_key(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(pRuntime->NewNumber(pEvent->CommitKey()));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), pEvent->CommitKey()));
 }
 
 CJS_Result CJS_Event::set_commit_key(CJS_Runtime* pRuntime,
@@ -102,7 +104,8 @@ CJS_Result CJS_Event::get_field_full(CJS_Runtime* pRuntime) {
   if (pEvent->Name() != "Keystroke")
     return CJS_Result::Failure(L"unrecognized event");
 
-  return CJS_Result::Success(pRuntime->NewBoolean(pEvent->FieldFull()));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pEvent->FieldFull()));
 }
 
 CJS_Result CJS_Event::set_field_full(CJS_Runtime* pRuntime,
@@ -113,7 +116,8 @@ CJS_Result CJS_Event::set_field_full(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_key_down(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(pRuntime->NewBoolean(pEvent->KeyDown()));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pEvent->KeyDown()));
 }
 
 CJS_Result CJS_Event::set_key_down(CJS_Runtime* pRuntime,
@@ -124,7 +128,8 @@ CJS_Result CJS_Event::set_key_down(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_modifier(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(pRuntime->NewBoolean(pEvent->Modifier()));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pEvent->Modifier()));
 }
 
 CJS_Result CJS_Event::set_modifier(CJS_Runtime* pRuntime,
@@ -135,7 +140,8 @@ CJS_Result CJS_Event::set_modifier(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_name(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(pRuntime->NewString(pEvent->Name()));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), pEvent->Name()));
 }
 
 CJS_Result CJS_Event::set_name(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp) {
@@ -145,7 +151,8 @@ CJS_Result CJS_Event::set_name(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp) {
 CJS_Result CJS_Event::get_rc(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(pRuntime->NewBoolean(pEvent->Rc()));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pEvent->Rc()));
 }
 
 CJS_Result CJS_Event::set_rc(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp) {
@@ -188,7 +195,8 @@ CJS_Result CJS_Event::get_sel_end(CJS_Runtime* pRuntime) {
   if (pEvent->Name() != "Keystroke")
     return CJS_Result::Success();
 
-  return CJS_Result::Success(pRuntime->NewNumber(pEvent->SelEnd()));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), pEvent->SelEnd()));
 }
 
 CJS_Result CJS_Event::set_sel_end(CJS_Runtime* pRuntime,
@@ -207,7 +215,8 @@ CJS_Result CJS_Event::get_sel_start(CJS_Runtime* pRuntime) {
   if (pEvent->Name() != "Keystroke")
     return CJS_Result::Success();
 
-  return CJS_Result::Success(pRuntime->NewNumber(pEvent->SelStart()));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), pEvent->SelStart()));
 }
 
 CJS_Result CJS_Event::set_sel_start(CJS_Runtime* pRuntime,
@@ -223,7 +232,8 @@ CJS_Result CJS_Event::set_sel_start(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_shift(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(pRuntime->NewBoolean(pEvent->Shift()));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pEvent->Shift()));
 }
 
 CJS_Result CJS_Event::set_shift(CJS_Runtime* pRuntime,
@@ -258,8 +268,8 @@ CJS_Result CJS_Event::set_target(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_target_name(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(
-      pRuntime->NewString(pEvent->TargetName().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pEvent->TargetName().AsStringView()));
 }
 
 CJS_Result CJS_Event::set_target_name(CJS_Runtime* pRuntime,
@@ -270,7 +280,8 @@ CJS_Result CJS_Event::set_target_name(CJS_Runtime* pRuntime,
 CJS_Result CJS_Event::get_type(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
-  return CJS_Result::Success(pRuntime->NewString(pEvent->Type()));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), pEvent->Type()));
 }
 
 CJS_Result CJS_Event::set_type(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp) {
@@ -286,8 +297,8 @@ CJS_Result CJS_Event::get_value(CJS_Runtime* pRuntime) {
   if (!pEvent->HasValue())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(
-      pRuntime->NewString(pEvent->Value().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pEvent->Value().AsStringView()));
 }
 
 CJS_Result CJS_Event::set_value(CJS_Runtime* pRuntime,
@@ -314,7 +325,8 @@ CJS_Result CJS_Event::get_will_commit(CJS_Runtime* pRuntime) {
   CJS_EventRecorder* pEvent =
       pRuntime->GetCurrentEventContext()->GetEventRecorder();
 
-  return CJS_Result::Success(pRuntime->NewBoolean(pEvent->WillCommit()));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pEvent->WillCommit()));
 }
 
 CJS_Result CJS_Event::set_will_commit(CJS_Runtime* pRuntime,

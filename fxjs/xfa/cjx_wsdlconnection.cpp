@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "fxjs/cfx_v8.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "xfa/fxfa/parser/cxfa_wsdlconnection.h"
 
@@ -32,5 +33,6 @@ CJS_Result CJX_WsdlConnection::execute(
   if (!params.empty() && params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewBoolean(false));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), false));
 }

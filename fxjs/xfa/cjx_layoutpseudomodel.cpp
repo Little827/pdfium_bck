@@ -109,7 +109,8 @@ CJS_Result CJX_LayoutPseudoModel::HWXY(
   }
 
   if (!pLayoutItem)
-    return CJS_Result::Success(runtime->NewNumber(0.0));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(runtime->GetIsolate(), 0.0));
 
   CXFA_Measurement measure;
   CFX_RectF rtRect = pLayoutItem->GetRect(true);
@@ -133,8 +134,8 @@ CJS_Result CJX_LayoutPseudoModel::HWXY(
     return CJS_Result::Failure(JSMessage::kValueError);
 
   float fValue = measure.ToUnit(eUnit);
-  return CJS_Result::Success(
-      runtime->NewNumber(FXSYS_roundf(fValue * 1000) / 1000.0f));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      runtime->GetIsolate(), FXSYS_roundf(fValue * 1000) / 1000.0f));
 }
 
 CJS_Result CJX_LayoutPseudoModel::h(
@@ -179,7 +180,8 @@ CJS_Result CJX_LayoutPseudoModel::NumberedPageCount(CFX_V8* runtime,
   } else {
     iPageCount = iPageNum;
   }
-  return CJS_Result::Success(runtime->NewNumber(iPageCount));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(runtime->GetIsolate(), iPageCount));
 }
 
 CJS_Result CJX_LayoutPseudoModel::pageCount(
@@ -203,12 +205,14 @@ CJS_Result CJX_LayoutPseudoModel::pageSpan(
   CXFA_ContentLayoutItem* pLayoutItem =
       ToContentLayoutItem(pDocLayout->GetLayoutItem(pNode));
   if (!pLayoutItem)
-    return CJS_Result::Success(runtime->NewNumber(-1));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(runtime->GetIsolate(), -1));
 
   int32_t iLast = pLayoutItem->GetLast()->GetPage()->GetPageIndex();
   int32_t iFirst = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
   int32_t iPageSpan = iLast - iFirst + 1;
-  return CJS_Result::Success(runtime->NewNumber(iPageSpan));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(runtime->GetIsolate(), iPageSpan));
 }
 
 CJS_Result CJX_LayoutPseudoModel::page(
@@ -391,13 +395,13 @@ CJS_Result CJX_LayoutPseudoModel::absPageCount(
 CJS_Result CJX_LayoutPseudoModel::absPageCountInBatch(
     CFX_V8* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  return CJS_Result::Success(runtime->NewNumber(0));
+  return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 }
 
 CJS_Result CJX_LayoutPseudoModel::sheetCountInBatch(
     CFX_V8* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  return CJS_Result::Success(runtime->NewNumber(0));
+  return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 }
 
 CJS_Result CJX_LayoutPseudoModel::relayout(
@@ -428,7 +432,7 @@ CJS_Result CJX_LayoutPseudoModel::absPageInBatch(
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewNumber(0));
+  return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 }
 
 CJS_Result CJX_LayoutPseudoModel::sheetInBatch(
@@ -437,7 +441,7 @@ CJS_Result CJX_LayoutPseudoModel::sheetInBatch(
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewNumber(0));
+  return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 }
 
 CJS_Result CJX_LayoutPseudoModel::sheet(
@@ -474,14 +478,16 @@ CJS_Result CJX_LayoutPseudoModel::PageInternals(
   CXFA_Node* pNode =
       ToNode(static_cast<CFXJSE_Engine*>(runtime)->ToXFAObject(params[0]));
   if (!pNode)
-    return CJS_Result::Success(runtime->NewNumber(0));
+    return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 
   auto* pDocLayout = CXFA_LayoutProcessor::FromDocument(GetDocument());
   CXFA_ContentLayoutItem* pLayoutItem =
       ToContentLayoutItem(pDocLayout->GetLayoutItem(pNode));
   if (!pLayoutItem)
-    return CJS_Result::Success(runtime->NewNumber(-1));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(runtime->GetIsolate(), -1));
 
   int32_t iPage = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
-  return CJS_Result::Success(runtime->NewNumber(bAbsPage ? iPage : iPage + 1));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      runtime->GetIsolate(), bAbsPage ? iPage : iPage + 1));
 }

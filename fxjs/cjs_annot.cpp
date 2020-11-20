@@ -10,6 +10,7 @@
 #include "fpdfsdk/cpdfsdk_baannot.h"
 #include "fxjs/cjs_event_context.h"
 #include "fxjs/cjs_object.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
 
@@ -48,7 +49,8 @@ CJS_Result CJS_Annot::get_hidden(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CPDF_Annot* pPDFAnnot = m_pAnnot->AsBAAnnot()->GetPDFAnnot();
-  return CJS_Result::Success(pRuntime->NewBoolean(pPDFAnnot->IsHidden()));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pPDFAnnot->IsHidden()));
 }
 
 CJS_Result CJS_Annot::set_hidden(CJS_Runtime* pRuntime,
@@ -81,8 +83,8 @@ CJS_Result CJS_Annot::get_name(CJS_Runtime* pRuntime) {
   if (!pBAAnnot)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(
-      pRuntime->NewString(pBAAnnot->GetAnnotName().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pBAAnnot->GetAnnotName().AsStringView()));
 }
 
 CJS_Result CJS_Annot::set_name(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp) {
@@ -102,7 +104,8 @@ CJS_Result CJS_Annot::get_type(CJS_Runtime* pRuntime) {
   if (!pBAAnnot)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(pRuntime->NewString(
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(),
       WideString::FromDefANSI(
           CPDF_Annot::AnnotSubtypeToString(pBAAnnot->GetAnnotSubtype())
               .AsStringView())

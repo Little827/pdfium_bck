@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "fxjs/cfx_v8.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/cxfa_template.h"
@@ -37,7 +38,8 @@ CJS_Result CJX_Template::formNodes(
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewBoolean(true));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), true));
 }
 
 CJS_Result CJX_Template::remerge(
@@ -56,8 +58,8 @@ CJS_Result CJX_Template::execInitialize(
   if (!params.empty())
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(
-      runtime->NewBoolean(GetXFANode()->IsWidgetReady()));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), GetXFANode()->IsWidgetReady()));
 }
 
 CJS_Result CJX_Template::recalculate(
@@ -66,7 +68,8 @@ CJS_Result CJX_Template::recalculate(
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewBoolean(true));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), true));
 }
 
 CJS_Result CJX_Template::execCalculate(
@@ -75,8 +78,8 @@ CJS_Result CJX_Template::execCalculate(
   if (!params.empty())
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(
-      runtime->NewBoolean(GetXFANode()->IsWidgetReady()));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), GetXFANode()->IsWidgetReady()));
 }
 
 CJS_Result CJX_Template::execValidate(
@@ -85,6 +88,6 @@ CJS_Result CJX_Template::execValidate(
   if (!params.empty())
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(
-      runtime->NewBoolean(GetXFANode()->IsWidgetReady()));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), GetXFANode()->IsWidgetReady()));
 }

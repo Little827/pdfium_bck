@@ -238,7 +238,7 @@ CJS_Result CJX_InstanceManager::addInstance(
 
   CXFA_Node* pNewInstance = GetXFANode()->CreateInstanceIfPossible(fFlags);
   if (!pNewInstance)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   GetXFANode()->InsertItem(pNewInstance, iCount, iCount, false);
 
@@ -280,7 +280,7 @@ CJS_Result CJX_InstanceManager::insertInstance(
 
   CXFA_Node* pNewInstance = GetXFANode()->CreateInstanceIfPossible(bBind);
   if (!pNewInstance)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   GetXFANode()->InsertItem(pNewInstance, iIndex, iCount, true);
 

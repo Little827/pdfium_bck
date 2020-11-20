@@ -54,7 +54,7 @@ CJS_Result CJX_Tree::resolveNode(
       pScriptContext->ResolveObjects(ToNode(refNode), expression.AsStringView(),
                                      dwFlag, nullptr);
   if (!maybeResult.has_value())
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   if (maybeResult.value().type == CFXJSE_Engine::ResolveResult::Type::kNodes) {
     return CJS_Result::Success(
@@ -65,7 +65,7 @@ CJS_Result CJX_Tree::resolveNode(
   if (!maybeResult.value().script_attribute.callback ||
       maybeResult.value().script_attribute.eValueType !=
           XFA_ScriptType::Object) {
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
   }
 
   v8::Local<v8::Value> pValue;

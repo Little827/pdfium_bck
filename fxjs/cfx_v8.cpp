@@ -38,68 +38,6 @@ void CFX_V8::DisposeIsolate() {
     m_pIsolate.Release()->Dispose();
 }
 
-v8::Local<v8::Array> CFX_V8::NewArray() {
-  return fxv8::NewArrayHelper(GetIsolate());
-}
-
-v8::Local<v8::Object> CFX_V8::NewObject() {
-  return fxv8::NewObjectHelper(GetIsolate());
-}
-
-void CFX_V8::PutArrayElement(v8::Local<v8::Array> pArray,
-                             unsigned index,
-                             v8::Local<v8::Value> pValue) {
-  fxv8::ReentrantPutArrayElementHelper(GetIsolate(), pArray, index, pValue);
-}
-
-v8::Local<v8::Value> CFX_V8::GetArrayElement(v8::Local<v8::Array> pArray,
-                                             unsigned index) {
-  return fxv8::ReentrantGetArrayElementHelper(GetIsolate(), pArray, index);
-}
-
-unsigned CFX_V8::GetArrayLength(v8::Local<v8::Array> pArray) {
-  return fxv8::GetArrayLengthHelper(pArray);
-}
-
-v8::Local<v8::Number> CFX_V8::NewNumber(int number) {
-  return fxv8::NewNumberHelper(GetIsolate(), number);
-}
-
-v8::Local<v8::Number> CFX_V8::NewNumber(double number) {
-  return fxv8::NewNumberHelper(GetIsolate(), number);
-}
-
-v8::Local<v8::Number> CFX_V8::NewNumber(float number) {
-  return fxv8::NewNumberHelper(GetIsolate(), number);
-}
-
-v8::Local<v8::Boolean> CFX_V8::NewBoolean(bool b) {
-  return fxv8::NewBooleanHelper(GetIsolate(), b);
-}
-
-v8::Local<v8::String> CFX_V8::NewString(ByteStringView str) {
-  v8::Isolate* pIsolate = m_pIsolate ? GetIsolate() : v8::Isolate::GetCurrent();
-  return fxv8::NewStringHelper(pIsolate, str);
-}
-
-v8::Local<v8::String> CFX_V8::NewString(WideStringView str) {
-  // Conversion from pdfium's wchar_t wide-strings to v8's uint16_t
-  // wide-strings isn't handled by v8, so use UTF8 as a common
-  // intermediate format.
-  return NewString(FX_UTF8Encode(str).AsStringView());
-}
-
-v8::Local<v8::Value> CFX_V8::NewNull() {
-  return fxv8::NewNullHelper(GetIsolate());
-}
-
-v8::Local<v8::Value> CFX_V8::NewUndefined() {
-  return fxv8::NewUndefinedHelper(GetIsolate());
-}
-
-v8::Local<v8::Date> CFX_V8::NewDate(double d) {
-  return fxv8::NewDateHelper(GetIsolate(), d);
-}
 
 int CFX_V8::ToInt32(v8::Local<v8::Value> pValue) {
   return fxv8::ReentrantToInt32Helper(GetIsolate(), pValue);

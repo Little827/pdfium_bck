@@ -64,8 +64,8 @@ CJS_Result CJX_Field::execEvent(
   if (!eventString.EqualsASCII("validate"))
     return CJS_Result::Success();
 
-  return CJS_Result::Success(
-      runtime->NewBoolean(iRet != XFA_EventError::kError));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), iRet != XFA_EventError::kError));
 }
 
 CJS_Result CJX_Field::execInitialize(
@@ -93,7 +93,8 @@ CJS_Result CJX_Field::deleteItem(
     return CJS_Result::Success();
 
   bool bValue = node->DeleteItem(runtime->ToInt32(params[0]), true, true);
-  return CJS_Result::Success(runtime->NewBoolean(bValue));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), bValue));
 }
 
 CJS_Result CJX_Field::getSaveItem(
@@ -104,18 +105,18 @@ CJS_Result CJX_Field::getSaveItem(
 
   int32_t iIndex = runtime->ToInt32(params[0]);
   if (iIndex < 0)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   CXFA_Node* node = GetXFANode();
   if (!node->IsWidgetReady())
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   Optional<WideString> value = node->GetChoiceListItem(iIndex, true);
   if (!value)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
-  return CJS_Result::Success(
-      runtime->NewString(value->ToUTF8().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      runtime->GetIsolate(), value->ToUTF8().AsStringView()));
 }
 
 CJS_Result CJX_Field::boundItem(
@@ -130,8 +131,8 @@ CJS_Result CJX_Field::boundItem(
 
   WideString value = runtime->ToWideString(params[0]);
   WideString boundValue = node->GetItemValue(value.AsStringView());
-  return CJS_Result::Success(
-      runtime->NewString(boundValue.ToUTF8().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      runtime->GetIsolate(), boundValue.ToUTF8().AsStringView()));
 }
 
 CJS_Result CJX_Field::getItemState(
@@ -145,7 +146,8 @@ CJS_Result CJX_Field::getItemState(
     return CJS_Result::Success();
 
   int32_t state = node->GetItemState(runtime->ToInt32(params[0]));
-  return CJS_Result::Success(runtime->NewBoolean(state != 0));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), state != 0));
 }
 
 CJS_Result CJX_Field::execCalculate(
@@ -170,18 +172,18 @@ CJS_Result CJX_Field::getDisplayItem(
 
   int32_t iIndex = runtime->ToInt32(params[0]);
   if (iIndex < 0)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   CXFA_Node* node = GetXFANode();
   if (!node->IsWidgetReady())
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   Optional<WideString> value = node->GetChoiceListItem(iIndex, false);
   if (!value)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
-  return CJS_Result::Success(
-      runtime->NewString(value->ToUTF8().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      runtime->GetIsolate(), value->ToUTF8().AsStringView()));
 }
 
 CJS_Result CJX_Field::setItemState(
@@ -234,12 +236,13 @@ CJS_Result CJX_Field::execValidate(
 
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
-    return CJS_Result::Success(runtime->NewBoolean(false));
+    return CJS_Result::Success(
+        fxv8::NewBooleanHelper(runtime->GetIsolate(), false));
 
   XFA_EventError iRet = pNotify->ExecEventByDeepFirst(
       GetXFANode(), XFA_EVENT_Validate, false, false);
-  return CJS_Result::Success(
-      runtime->NewBoolean(iRet != XFA_EventError::kError));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), iRet != XFA_EventError::kError));
 }
 
 void CJX_Field::defaultValue(v8::Isolate* pIsolate,

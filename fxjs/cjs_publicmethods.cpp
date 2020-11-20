@@ -32,6 +32,7 @@
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/cjs_util.h"
 #include "fxjs/fx_date_helpers.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
 #include "third_party/base/optional.h"
@@ -327,19 +328,22 @@ v8::Local<v8::Array> CJS_PublicMethods::AF_MakeArrayFromList(
   const char* p = t.c_str();
 
   int nIndex = 0;
-  v8::Local<v8::Array> StrArray = pRuntime->NewArray();
+  v8::Local<v8::Array> StrArray = fxv8::NewArrayHelper(pRuntime->GetIsolate());
   while (*p) {
     const char* pTemp = strchr(p, ',');
     if (!pTemp) {
       pRuntime->PutArrayElement(
           StrArray, nIndex,
-          pRuntime->NewString(StrTrim(ByteString(p)).AsStringView()));
+          fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                                StrTrim(ByteString(p)).AsStringView()));
       break;
     }
 
     pRuntime->PutArrayElement(
         StrArray, nIndex,
-        pRuntime->NewString(StrTrim(ByteString(p, pTemp - p)).AsStringView()));
+        fxv8::NewStringHelper(
+            pRuntime->GetIsolate(),
+            StrTrim(ByteString(p, pTemp - p)).AsStringView()));
 
     nIndex++;
     p = ++pTemp;
@@ -658,22 +662,32 @@ CJS_Result CJS_PublicMethods::AFNumber_Format(
     }
     if (iNegStyle == 1 || iNegStyle == 3) {
       if (CJS_Field* fTarget = pEventContext->TargetField()) {
-        v8::Local<v8::Array> arColor = pRuntime->NewArray();
-        pRuntime->PutArrayElement(arColor, 0, pRuntime->NewString("RGB"));
-        pRuntime->PutArrayElement(arColor, 1, pRuntime->NewNumber(1));
-        pRuntime->PutArrayElement(arColor, 2, pRuntime->NewNumber(0));
-        pRuntime->PutArrayElement(arColor, 3, pRuntime->NewNumber(0));
+        v8::Local<v8::Array> arColor =
+            fxv8::NewArrayHelper(pRuntime->GetIsolate());
+        pRuntime->PutArrayElement(
+            arColor, 0, fxv8::NewStringHelper(pRuntime->GetIsolate(), "RGB"));
+        pRuntime->PutArrayElement(
+            arColor, 1, fxv8::NewNumberHelper(pRuntime->GetIsolate(), 1));
+        pRuntime->PutArrayElement(
+            arColor, 2, fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
+        pRuntime->PutArrayElement(
+            arColor, 3, fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
         fTarget->set_text_color(pRuntime, arColor);
       }
     }
   } else {
     if (iNegStyle == 1 || iNegStyle == 3) {
       if (CJS_Field* fTarget = pEventContext->TargetField()) {
-        v8::Local<v8::Array> arColor = pRuntime->NewArray();
-        pRuntime->PutArrayElement(arColor, 0, pRuntime->NewString("RGB"));
-        pRuntime->PutArrayElement(arColor, 1, pRuntime->NewNumber(0));
-        pRuntime->PutArrayElement(arColor, 2, pRuntime->NewNumber(0));
-        pRuntime->PutArrayElement(arColor, 3, pRuntime->NewNumber(0));
+        v8::Local<v8::Array> arColor =
+            fxv8::NewArrayHelper(pRuntime->GetIsolate());
+        pRuntime->PutArrayElement(
+            arColor, 0, fxv8::NewStringHelper(pRuntime->GetIsolate(), "RGB"));
+        pRuntime->PutArrayElement(
+            arColor, 1, fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
+        pRuntime->PutArrayElement(
+            arColor, 2, fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
+        pRuntime->PutArrayElement(
+            arColor, 3, fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
 
         CJS_Result result = fTarget->get_text_color(pRuntime);
         CFX_Color crProp = CJS_Color::ConvertArrayToPWLColor(
@@ -989,7 +1003,8 @@ CJS_Result CJS_PublicMethods::AFDate_Format(
   int iIndex = WithinBoundsOrZero(pRuntime->ToInt32(params[0]),
                                   pdfium::size(kDateFormats));
   std::vector<v8::Local<v8::Value>> newParams;
-  newParams.push_back(pRuntime->NewString(kDateFormats[iIndex]));
+  newParams.push_back(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), kDateFormats[iIndex]));
   return AFDate_FormatEx(pRuntime, newParams);
 }
 
@@ -1003,7 +1018,8 @@ CJS_Result CJS_PublicMethods::AFDate_Keystroke(
   int iIndex = WithinBoundsOrZero(pRuntime->ToInt32(params[0]),
                                   pdfium::size(kDateFormats));
   std::vector<v8::Local<v8::Value>> newParams;
-  newParams.push_back(pRuntime->NewString(kDateFormats[iIndex]));
+  newParams.push_back(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), kDateFormats[iIndex]));
   return AFDate_KeystrokeEx(pRuntime, newParams);
 }
 
@@ -1017,7 +1033,8 @@ CJS_Result CJS_PublicMethods::AFTime_Format(
   int iIndex = WithinBoundsOrZero(pRuntime->ToInt32(params[0]),
                                   pdfium::size(kTimeFormats));
   std::vector<v8::Local<v8::Value>> newParams;
-  newParams.push_back(pRuntime->NewString(kTimeFormats[iIndex]));
+  newParams.push_back(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), kTimeFormats[iIndex]));
   return AFDate_FormatEx(pRuntime, newParams);
 }
 
@@ -1030,7 +1047,8 @@ CJS_Result CJS_PublicMethods::AFTime_Keystroke(
   int iIndex = WithinBoundsOrZero(pRuntime->ToInt32(params[0]),
                                   pdfium::size(kTimeFormats));
   std::vector<v8::Local<v8::Value>> newParams;
-  newParams.push_back(pRuntime->NewString(kTimeFormats[iIndex]));
+  newParams.push_back(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), kTimeFormats[iIndex]));
   return AFDate_KeystrokeEx(pRuntime, newParams);
 }
 
@@ -1198,7 +1216,7 @@ CJS_Result CJS_PublicMethods::AFSpecial_Keystroke(
   }
 
   std::vector<v8::Local<v8::Value>> params2;
-  params2.push_back(pRuntime->NewString(cFormat));
+  params2.push_back(fxv8::NewStringHelper(pRuntime->GetIsolate(), cFormat));
   return AFSpecial_KeystrokeEx(pRuntime, params2);
 }
 
@@ -1216,9 +1234,11 @@ CJS_Result CJS_PublicMethods::AFMergeChange(
     swValue = pEventRecorder->Value();
 
   if (pEventRecorder->WillCommit())
-    return CJS_Result::Success(pRuntime->NewString(swValue.AsStringView()));
+    return CJS_Result::Success(
+        fxv8::NewStringHelper(pRuntime->GetIsolate(), swValue.AsStringView()));
 
-  return CJS_Result::Success(pRuntime->NewString(
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(),
       CalcMergedString(pEventRecorder, swValue, pEventRecorder->Change())
           .AsStringView()));
 }
@@ -1239,7 +1259,8 @@ CJS_Result CJS_PublicMethods::AFParseDateEx(
                     swMsg);
     return CJS_Result::Failure(JSMessage::kParseDateError);
   }
-  return CJS_Result::Success(pRuntime->NewNumber(dDate));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), dDate));
 }
 
 CJS_Result CJS_PublicMethods::AFSimple(
@@ -1262,7 +1283,8 @@ CJS_Result CJS_PublicMethods::AFSimple(
   if (wcscmp(sFunction.c_str(), L"AVG") == 0)
     dValue /= 2.0;
 
-  return CJS_Result::Success(pRuntime->NewNumber(dValue));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), dValue));
 }
 
 CJS_Result CJS_PublicMethods::AFMakeNumber(
@@ -1274,10 +1296,11 @@ CJS_Result CJS_PublicMethods::AFMakeNumber(
   WideString ws = pRuntime->ToWideString(params[0]);
   NormalizeDecimalMarkW(&ws);
 
-  v8::Local<v8::Value> val =
-      pRuntime->MaybeCoerceToNumber(pRuntime->NewString(ws.AsStringView()));
+  v8::Local<v8::Value> val = pRuntime->MaybeCoerceToNumber(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), ws.AsStringView()));
   if (!val->IsNumber())
-    return CJS_Result::Success(pRuntime->NewNumber(0));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
 
   return CJS_Result::Success(val);
 }
@@ -1370,8 +1393,8 @@ CJS_Result CJS_PublicMethods::AFSimple_Calculate(
 
   CJS_EventContext* pContext = pRuntime->GetCurrentEventContext();
   if (pContext->GetEventRecorder()->HasValue()) {
-    pContext->GetEventRecorder()->Value() =
-        pRuntime->ToWideString(pRuntime->NewNumber(dValue));
+    pContext->GetEventRecorder()->Value() = pRuntime->ToWideString(
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(), dValue));
   }
 
   return CJS_Result::Success();
@@ -1436,24 +1459,26 @@ CJS_Result CJS_PublicMethods::AFExtractNums(
     str.InsertAtFront(L'0');
 
   WideString sPart;
-  v8::Local<v8::Array> nums = pRuntime->NewArray();
+  v8::Local<v8::Array> nums = fxv8::NewArrayHelper(pRuntime->GetIsolate());
   int nIndex = 0;
   for (const auto& wc : str) {
     if (FXSYS_IsDecimalDigit(wc)) {
       sPart += wc;
     } else if (sPart.GetLength() > 0) {
-      pRuntime->PutArrayElement(nums, nIndex,
-                                pRuntime->NewString(sPart.AsStringView()));
+      pRuntime->PutArrayElement(
+          nums, nIndex,
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), sPart.AsStringView()));
       sPart.clear();
       nIndex++;
     }
   }
   if (sPart.GetLength() > 0) {
-    pRuntime->PutArrayElement(nums, nIndex,
-                              pRuntime->NewString(sPart.AsStringView()));
+    pRuntime->PutArrayElement(
+        nums, nIndex,
+        fxv8::NewStringHelper(pRuntime->GetIsolate(), sPart.AsStringView()));
   }
   if (pRuntime->GetArrayLength(nums) > 0)
     return CJS_Result::Success(nums);
 
-  return CJS_Result::Success(pRuntime->NewUndefined());
+  return CJS_Result::Success(fxv8::NewUndefinedHelper(pRuntime->GetIsolate()));
 }

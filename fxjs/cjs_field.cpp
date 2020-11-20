@@ -674,13 +674,16 @@ CJS_Result CJS_Field::get_alignment(CJS_Runtime* pRuntime) {
 
   switch (pFormControl->GetControlAlignment()) {
     case 0:
-      return CJS_Result::Success(pRuntime->NewString("left"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "left"));
     case 1:
-      return CJS_Result::Success(pRuntime->NewString("center"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "center"));
     case 2:
-      return CJS_Result::Success(pRuntime->NewString("right"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "right"));
   }
-  return CJS_Result::Success(pRuntime->NewString(""));
+  return CJS_Result::Success(fxv8::NewStringHelper(pRuntime->GetIsolate(), ""));
 }
 
 CJS_Result CJS_Field::set_alignment(CJS_Runtime* pRuntime,
@@ -706,17 +709,22 @@ CJS_Result CJS_Field::get_border_style(CJS_Runtime* pRuntime) {
 
   switch (pWidget->GetBorderStyle()) {
     case BorderStyle::kSolid:
-      return CJS_Result::Success(pRuntime->NewString("solid"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "solid"));
     case BorderStyle::kDash:
-      return CJS_Result::Success(pRuntime->NewString("dashed"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "dashed"));
     case BorderStyle::kBeveled:
-      return CJS_Result::Success(pRuntime->NewString("beveled"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "beveled"));
     case BorderStyle::kInset:
-      return CJS_Result::Success(pRuntime->NewString("inset"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "inset"));
     case BorderStyle::kUnderline:
-      return CJS_Result::Success(pRuntime->NewString("underline"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "underline"));
   }
-  return CJS_Result::Success(pRuntime->NewString(""));
+  return CJS_Result::Success(fxv8::NewStringHelper(pRuntime->GetIsolate(), ""));
 }
 
 CJS_Result CJS_Field::set_border_style(CJS_Runtime* pRuntime,
@@ -751,7 +759,8 @@ CJS_Result CJS_Field::get_button_align_x(CJS_Runtime* pRuntime) {
 
   CPDF_IconFit IconFit = pFormControl->GetIconFit();
   CFX_PointF pos = IconFit.GetIconBottomLeftPosition();
-  return CJS_Result::Success(pRuntime->NewNumber(static_cast<int32_t>(pos.x)));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(), static_cast<int32_t>(pos.x)));
 }
 
 CJS_Result CJS_Field::set_button_align_x(CJS_Runtime* pRuntime,
@@ -778,7 +787,8 @@ CJS_Result CJS_Field::get_button_align_y(CJS_Runtime* pRuntime) {
 
   CPDF_IconFit IconFit = pFormControl->GetIconFit();
   CFX_PointF pos = IconFit.GetIconBottomLeftPosition();
-  return CJS_Result::Success(pRuntime->NewNumber(static_cast<int32_t>(pos.y)));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(), static_cast<int32_t>(pos.y)));
 }
 
 CJS_Result CJS_Field::set_button_align_y(CJS_Runtime* pRuntime,
@@ -803,8 +813,8 @@ CJS_Result CJS_Field::get_button_fit_bounds(CJS_Runtime* pRuntime) {
   if (!pFormControl)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(
-      pRuntime->NewBoolean(pFormControl->GetIconFit().GetFittingBounds()));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(), pFormControl->GetIconFit().GetFittingBounds()));
 }
 
 CJS_Result CJS_Field::set_button_fit_bounds(CJS_Runtime* pRuntime,
@@ -829,8 +839,8 @@ CJS_Result CJS_Field::get_button_position(CJS_Runtime* pRuntime) {
   if (!pFormControl)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(
-      pRuntime->NewNumber(pFormControl->GetTextPosition()));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(), pFormControl->GetTextPosition()));
 }
 
 CJS_Result CJS_Field::set_button_position(CJS_Runtime* pRuntime,
@@ -855,7 +865,8 @@ CJS_Result CJS_Field::get_button_scale_how(CJS_Runtime* pRuntime) {
   if (!pFormControl)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       pFormControl->GetIconFit().IsProportionalScale() ? 0 : 1));
 }
 
@@ -888,8 +899,8 @@ CJS_Result CJS_Field::get_button_scale_when(CJS_Runtime* pRuntime) {
     case CPDF_IconFit::ScaleMethod::kBigger:
     case CPDF_IconFit::ScaleMethod::kNever:
     case CPDF_IconFit::ScaleMethod::kSmaller:
-      return CJS_Result::Success(
-          pRuntime->NewNumber(static_cast<int>(scale_method)));
+      return CJS_Result::Success(fxv8::NewNumberHelper(
+          pRuntime->GetIsolate(), static_cast<int>(scale_method)));
   }
 
   // Note this is deliberately not the default case for the switch statement
@@ -918,7 +929,8 @@ CJS_Result CJS_Field::get_calc_order_index(CJS_Runtime* pRuntime) {
 
   CPDFSDK_InteractiveForm* pRDForm = m_pFormFillEnv->GetInteractiveForm();
   CPDF_InteractiveForm* pForm = pRDForm->GetInteractiveForm();
-  return CJS_Result::Success(pRuntime->NewNumber(
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(),
       static_cast<int32_t>(pForm->FindFieldInCalculationOrder(pFormField))));
 }
 
@@ -939,8 +951,8 @@ CJS_Result CJS_Field::get_char_limit(CJS_Runtime* pRuntime) {
 
   if (pFormField->GetFieldType() != FormFieldType::kTextField)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
-  return CJS_Result::Success(
-      pRuntime->NewNumber(static_cast<int32_t>(pFormField->GetMaxLen())));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(), static_cast<int32_t>(pFormField->GetMaxLen())));
 }
 
 CJS_Result CJS_Field::set_char_limit(CJS_Runtime* pRuntime,
@@ -961,7 +973,8 @@ CJS_Result CJS_Field::get_comb(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kTextField)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kTextComb)));
 }
 
@@ -983,7 +996,8 @@ CJS_Result CJS_Field::get_commit_on_sel_change(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
   uint32_t dwFieldFlags = pFormField->GetFieldFlags();
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(dwFieldFlags & pdfium::form_flags::kChoiceCommitOnSelChange)));
 }
 
@@ -1005,18 +1019,21 @@ CJS_Result CJS_Field::get_current_value_indices(CJS_Runtime* pRuntime) {
 
   int count = pFormField->CountSelectedItems();
   if (count <= 0)
-    return CJS_Result::Success(pRuntime->NewNumber(-1));
-  if (count == 1)
     return CJS_Result::Success(
-        pRuntime->NewNumber(pFormField->GetSelectedIndex(0)));
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(), -1));
+  if (count == 1)
+    return CJS_Result::Success(fxv8::NewNumberHelper(
+        pRuntime->GetIsolate(), pFormField->GetSelectedIndex(0)));
 
-  v8::Local<v8::Array> SelArray = pRuntime->NewArray();
+  v8::Local<v8::Array> SelArray = fxv8::NewArrayHelper(pRuntime->GetIsolate());
   for (int i = 0; i < count; i++) {
     pRuntime->PutArrayElement(
-        SelArray, i, pRuntime->NewNumber(pFormField->GetSelectedIndex(i)));
+        SelArray, i,
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(),
+                              pFormField->GetSelectedIndex(i)));
   }
   if (SelArray.IsEmpty())
-    return CJS_Result::Success(pRuntime->NewArray());
+    return CJS_Result::Success(fxv8::NewArrayHelper(pRuntime->GetIsolate()));
   return CJS_Result::Success(SelArray);
 }
 
@@ -1066,8 +1083,8 @@ CJS_Result CJS_Field::get_default_value(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
   }
 
-  return CJS_Result::Success(
-      pRuntime->NewString(pFormField->GetDefaultValue().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pFormField->GetDefaultValue().AsStringView()));
 }
 
 CJS_Result CJS_Field::set_default_value(CJS_Runtime* pRuntime,
@@ -1088,7 +1105,8 @@ CJS_Result CJS_Field::get_do_not_scroll(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kTextField)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kTextDoNotScroll)));
 }
 
@@ -1111,7 +1129,8 @@ CJS_Result CJS_Field::get_do_not_spell_check(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
   uint32_t dwFieldFlags = pFormField->GetFieldFlags();
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(dwFieldFlags & pdfium::form_flags::kTextDoNotSpellCheck)));
 }
 
@@ -1133,7 +1152,8 @@ void CJS_Field::SetDelay(bool bDelay) {
 }
 
 CJS_Result CJS_Field::get_delay(CJS_Runtime* pRuntime) {
-  return CJS_Result::Success(pRuntime->NewBoolean(m_bDelay));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), m_bDelay));
 }
 
 CJS_Result CJS_Field::set_delay(CJS_Runtime* pRuntime,
@@ -1158,15 +1178,18 @@ CJS_Result CJS_Field::get_display(CJS_Runtime* pRuntime) {
   uint32_t dwFlag = pWidget->GetFlags();
   if (pdfium::annotation_flags::kInvisible & dwFlag ||
       pdfium::annotation_flags::kHidden & dwFlag) {
-    return CJS_Result::Success(pRuntime->NewNumber(1));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(), 1));
   }
 
   if (pdfium::annotation_flags::kPrint & dwFlag) {
     if (pdfium::annotation_flags::kNoView & dwFlag)
-      return CJS_Result::Success(pRuntime->NewNumber(3));
-    return CJS_Result::Success(pRuntime->NewNumber(0));
+      return CJS_Result::Success(
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), 3));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
   }
-  return CJS_Result::Success(pRuntime->NewNumber(2));
+  return CJS_Result::Success(fxv8::NewNumberHelper(pRuntime->GetIsolate(), 2));
 }
 
 CJS_Result CJS_Field::set_display(CJS_Runtime* pRuntime,
@@ -1199,7 +1222,8 @@ CJS_Result CJS_Field::get_editable(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kComboBox)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kChoiceEdit)));
 }
 
@@ -1218,13 +1242,15 @@ CJS_Result CJS_Field::get_export_values(CJS_Runtime* pRuntime) {
   if (!IsCheckBoxOrRadioButton(pFormField))
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  v8::Local<v8::Array> ExportValuesArray = pRuntime->NewArray();
+  v8::Local<v8::Array> ExportValuesArray =
+      fxv8::NewArrayHelper(pRuntime->GetIsolate());
   if (m_nFormControlIndex < 0) {
     for (int i = 0, sz = pFormField->CountControls(); i < sz; i++) {
       CPDF_FormControl* pFormControl = pFormField->GetControl(i);
       pRuntime->PutArrayElement(
           ExportValuesArray, i,
-          pRuntime->NewString(pFormControl->GetExportValue().AsStringView()));
+          fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                                pFormControl->GetExportValue().AsStringView()));
     }
   } else {
     if (m_nFormControlIndex >= pFormField->CountControls())
@@ -1237,7 +1263,8 @@ CJS_Result CJS_Field::get_export_values(CJS_Runtime* pRuntime) {
 
     pRuntime->PutArrayElement(
         ExportValuesArray, 0,
-        pRuntime->NewString(pFormControl->GetExportValue().AsStringView()));
+        fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                              pFormControl->GetExportValue().AsStringView()));
   }
   return CJS_Result::Success(ExportValuesArray);
 }
@@ -1268,7 +1295,8 @@ CJS_Result CJS_Field::get_file_select(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kTextField)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kTextFileSelect)));
 }
 
@@ -1323,7 +1351,7 @@ CJS_Result CJS_Field::get_fill_color(CJS_Runtime* pRuntime) {
   v8::Local<v8::Value> array =
       CJS_Color::ConvertPWLColorToArray(pRuntime, color);
   if (array.IsEmpty())
-    return CJS_Result::Success(pRuntime->NewArray());
+    return CJS_Result::Success(fxv8::NewArrayHelper(pRuntime->GetIsolate()));
   return CJS_Result::Success(array);
 }
 
@@ -1350,9 +1378,9 @@ CJS_Result CJS_Field::get_hidden(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   uint32_t dwFlags = pWidget->GetFlags();
-  return CJS_Result::Success(
-      pRuntime->NewBoolean(pdfium::annotation_flags::kInvisible & dwFlags ||
-                           pdfium::annotation_flags::kHidden & dwFlags));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(), pdfium::annotation_flags::kInvisible & dwFlags ||
+                                  pdfium::annotation_flags::kHidden & dwFlags));
 }
 
 CJS_Result CJS_Field::set_hidden(CJS_Runtime* pRuntime,
@@ -1386,15 +1414,20 @@ CJS_Result CJS_Field::get_highlight(CJS_Runtime* pRuntime) {
   int eHM = pFormControl->GetHighlightingMode();
   switch (eHM) {
     case CPDF_FormControl::None:
-      return CJS_Result::Success(pRuntime->NewString("none"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "none"));
     case CPDF_FormControl::Push:
-      return CJS_Result::Success(pRuntime->NewString("push"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "push"));
     case CPDF_FormControl::Invert:
-      return CJS_Result::Success(pRuntime->NewString("invert"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "invert"));
     case CPDF_FormControl::Outline:
-      return CJS_Result::Success(pRuntime->NewString("outline"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "outline"));
     case CPDF_FormControl::Toggle:
-      return CJS_Result::Success(pRuntime->NewString("toggle"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "toggle"));
   }
   return CJS_Result::Success();
 }
@@ -1424,7 +1457,8 @@ CJS_Result CJS_Field::get_line_width(CJS_Runtime* pRuntime) {
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(pRuntime->NewNumber(pWidget->GetBorderWidth()));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), pWidget->GetBorderWidth()));
 }
 
 CJS_Result CJS_Field::set_line_width(CJS_Runtime* pRuntime,
@@ -1451,7 +1485,8 @@ CJS_Result CJS_Field::get_multiline(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kTextField)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kTextMultiline)));
 }
 
@@ -1473,7 +1508,8 @@ CJS_Result CJS_Field::get_multiple_selection(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
   uint32_t dwFieldFlags = pFormField->GetFieldFlags();
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(dwFieldFlags & pdfium::form_flags::kChoiceMultiSelect)));
 }
 
@@ -1490,7 +1526,8 @@ CJS_Result CJS_Field::get_name(CJS_Runtime* pRuntime) {
   if (FieldArray.empty())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(pRuntime->NewString(m_FieldName.AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                                                   m_FieldName.AsStringView()));
 }
 
 CJS_Result CJS_Field::set_name(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp) {
@@ -1505,7 +1542,8 @@ CJS_Result CJS_Field::get_num_items(CJS_Runtime* pRuntime) {
   if (!IsComboBoxOrListBox(pFormField))
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewNumber(pFormField->CountOptions()));
+  return CJS_Result::Success(fxv8::NewNumberHelper(pRuntime->GetIsolate(),
+                                                   pFormField->CountOptions()));
 }
 
 CJS_Result CJS_Field::set_num_items(CJS_Runtime* pRuntime,
@@ -1521,9 +1559,10 @@ CJS_Result CJS_Field::get_page(CJS_Runtime* pRuntime) {
   std::vector<ObservedPtr<CPDFSDK_Annot>> widgets;
   m_pFormFillEnv->GetInteractiveForm()->GetWidgets(pFormField, &widgets);
   if (widgets.empty())
-    return CJS_Result::Success(pRuntime->NewNumber(-1));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(), -1));
 
-  v8::Local<v8::Array> PageArray = pRuntime->NewArray();
+  v8::Local<v8::Array> PageArray = fxv8::NewArrayHelper(pRuntime->GetIsolate());
   int i = 0;
   for (const auto& pObserved : widgets) {
     if (!pObserved)
@@ -1532,7 +1571,8 @@ CJS_Result CJS_Field::get_page(CJS_Runtime* pRuntime) {
     auto* pWidget = ToCPDFSDKWidget(pObserved.Get());
     pRuntime->PutArrayElement(
         PageArray, i,
-        pRuntime->NewNumber(pWidget->GetPageView()->GetPageIndex()));
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(),
+                              pWidget->GetPageView()->GetPageIndex()));
     ++i;
   }
   return CJS_Result::Success(PageArray);
@@ -1552,7 +1592,8 @@ CJS_Result CJS_Field::get_password(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kTextField)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kTextPassword)));
 }
 
@@ -1574,7 +1615,8 @@ CJS_Result CJS_Field::get_print(CJS_Runtime* pRuntime) {
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pWidget->GetFlags() & pdfium::annotation_flags::kPrint)));
 }
 
@@ -1646,7 +1688,8 @@ CJS_Result CJS_Field::get_radios_in_unison(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
   uint32_t dwFieldFlags = pFormField->GetFieldFlags();
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(dwFieldFlags & pdfium::form_flags::kButtonRadiosInUnison)));
 }
 
@@ -1665,7 +1708,8 @@ CJS_Result CJS_Field::get_readonly(CJS_Runtime* pRuntime) {
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kReadOnly)));
 }
 
@@ -1690,15 +1734,23 @@ CJS_Result CJS_Field::get_rect(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CFX_FloatRect crRect = pWidget->GetRect();
-  v8::Local<v8::Array> rcArray = pRuntime->NewArray();
+  v8::Local<v8::Array> rcArray = fxv8::NewArrayHelper(pRuntime->GetIsolate());
   pRuntime->PutArrayElement(
-      rcArray, 0, pRuntime->NewNumber(static_cast<int32_t>(crRect.left)));
+      rcArray, 0,
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(),
+                            static_cast<int32_t>(crRect.left)));
   pRuntime->PutArrayElement(
-      rcArray, 1, pRuntime->NewNumber(static_cast<int32_t>(crRect.top)));
+      rcArray, 1,
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(),
+                            static_cast<int32_t>(crRect.top)));
   pRuntime->PutArrayElement(
-      rcArray, 2, pRuntime->NewNumber(static_cast<int32_t>(crRect.right)));
+      rcArray, 2,
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(),
+                            static_cast<int32_t>(crRect.right)));
   pRuntime->PutArrayElement(
-      rcArray, 3, pRuntime->NewNumber(static_cast<int32_t>(crRect.bottom)));
+      rcArray, 3,
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(),
+                            static_cast<int32_t>(crRect.bottom)));
 
   return CJS_Result::Success(rcArray);
 }
@@ -1740,7 +1792,8 @@ CJS_Result CJS_Field::get_required(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() == FormFieldType::kPushButton)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kRequired)));
 }
 
@@ -1764,7 +1817,8 @@ CJS_Result CJS_Field::get_rich_text(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kTextField)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       !!(pFormField->GetFieldFlags() & pdfium::form_flags::kTextRichText)));
 }
 
@@ -1796,7 +1850,8 @@ CJS_Result CJS_Field::get_rotation(CJS_Runtime* pRuntime) {
   if (!pFormControl)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(pRuntime->NewNumber(pFormControl->GetRotation()));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(), pFormControl->GetRotation()));
 }
 
 CJS_Result CJS_Field::set_rotation(CJS_Runtime* pRuntime,
@@ -1850,7 +1905,7 @@ CJS_Result CJS_Field::get_stroke_color(CJS_Runtime* pRuntime) {
   v8::Local<v8::Value> array =
       CJS_Color::ConvertPWLColorToArray(pRuntime, color);
   if (array.IsEmpty())
-    return CJS_Result::Success(pRuntime->NewArray());
+    return CJS_Result::Success(fxv8::NewArrayHelper(pRuntime->GetIsolate()));
   return CJS_Result::Success(array);
 }
 
@@ -1901,7 +1956,8 @@ CJS_Result CJS_Field::get_style(CJS_Runtime* pRuntime) {
       csBCaption = "check";
       break;
   }
-  return CJS_Result::Success(pRuntime->NewString(
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(),
       WideString::FromDefANSI(csBCaption.AsStringView()).AsStringView()));
 }
 
@@ -1951,7 +2007,7 @@ CJS_Result CJS_Field::get_text_color(CJS_Runtime* pRuntime) {
   v8::Local<v8::Value> array =
       CJS_Color::ConvertPWLColorToArray(pRuntime, crRet);
   if (array.IsEmpty())
-    return CJS_Result::Success(pRuntime->NewArray());
+    return CJS_Result::Success(fxv8::NewArrayHelper(pRuntime->GetIsolate()));
   return CJS_Result::Success(array);
 }
 
@@ -1987,8 +2043,8 @@ CJS_Result CJS_Field::get_text_font(CJS_Runtime* pRuntime) {
   if (!wsFontName.has_value())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(
-      pRuntime->NewString(wsFontName.value().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), wsFontName.value().AsStringView()));
 }
 
 CJS_Result CJS_Field::set_text_font(CJS_Runtime* pRuntime,
@@ -2016,7 +2072,8 @@ CJS_Result CJS_Field::get_text_size(CJS_Runtime* pRuntime) {
   float fFontSize;
   CPDF_DefaultAppearance FieldAppearance = pFormControl->GetDefaultAppearance();
   FieldAppearance.GetFont(&fFontSize);
-  return CJS_Result::Success(pRuntime->NewNumber(static_cast<int>(fFontSize)));
+  return CJS_Result::Success(fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(), static_cast<int>(fFontSize)));
 }
 
 CJS_Result CJS_Field::set_text_size(CJS_Runtime* pRuntime,
@@ -2034,23 +2091,32 @@ CJS_Result CJS_Field::get_type(CJS_Runtime* pRuntime) {
 
   switch (pFormField->GetFieldType()) {
     case FormFieldType::kUnknown:
-      return CJS_Result::Success(pRuntime->NewString("unknown"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "unknown"));
     case FormFieldType::kPushButton:
-      return CJS_Result::Success(pRuntime->NewString("button"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "button"));
     case FormFieldType::kCheckBox:
-      return CJS_Result::Success(pRuntime->NewString("checkbox"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "checkbox"));
     case FormFieldType::kRadioButton:
-      return CJS_Result::Success(pRuntime->NewString("radiobutton"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "radiobutton"));
     case FormFieldType::kComboBox:
-      return CJS_Result::Success(pRuntime->NewString("combobox"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "combobox"));
     case FormFieldType::kListBox:
-      return CJS_Result::Success(pRuntime->NewString("listbox"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "listbox"));
     case FormFieldType::kTextField:
-      return CJS_Result::Success(pRuntime->NewString("text"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "text"));
     case FormFieldType::kSignature:
-      return CJS_Result::Success(pRuntime->NewString("signature"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "signature"));
     default:
-      return CJS_Result::Success(pRuntime->NewString("unknown"));
+      return CJS_Result::Success(
+          fxv8::NewStringHelper(pRuntime->GetIsolate(), "unknown"));
   }
 }
 
@@ -2065,8 +2131,8 @@ CJS_Result CJS_Field::get_user_name(CJS_Runtime* pRuntime) {
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  return CJS_Result::Success(
-      pRuntime->NewString(pFormField->GetAlternateName().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pFormField->GetAlternateName().AsStringView()));
 }
 
 CJS_Result CJS_Field::set_user_name(CJS_Runtime* pRuntime,
@@ -2088,26 +2154,31 @@ CJS_Result CJS_Field::get_value(CJS_Runtime* pRuntime) {
       return CJS_Result::Failure(JSMessage::kObjectTypeError);
     case FormFieldType::kComboBox:
     case FormFieldType::kTextField:
-      ret = pRuntime->NewString(pFormField->GetValue().AsStringView());
+      ret = fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                                  pFormField->GetValue().AsStringView());
       break;
     case FormFieldType::kListBox: {
       if (pFormField->CountSelectedItems() > 1) {
-        v8::Local<v8::Array> ValueArray = pRuntime->NewArray();
+        v8::Local<v8::Array> ValueArray =
+            fxv8::NewArrayHelper(pRuntime->GetIsolate());
         v8::Local<v8::Value> ElementValue;
         int iIndex;
         for (int i = 0, sz = pFormField->CountSelectedItems(); i < sz; i++) {
           iIndex = pFormField->GetSelectedIndex(i);
-          ElementValue = pRuntime->NewString(
+          ElementValue = fxv8::NewStringHelper(
+              pRuntime->GetIsolate(),
               pFormField->GetOptionValue(iIndex).AsStringView());
           if (wcslen(pRuntime->ToWideString(ElementValue).c_str()) == 0) {
-            ElementValue = pRuntime->NewString(
+            ElementValue = fxv8::NewStringHelper(
+                pRuntime->GetIsolate(),
                 pFormField->GetOptionLabel(iIndex).AsStringView());
           }
           pRuntime->PutArrayElement(ValueArray, i, ElementValue);
         }
         ret = ValueArray;
       } else {
-        ret = pRuntime->NewString(pFormField->GetValue().AsStringView());
+        ret = fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                                    pFormField->GetValue().AsStringView());
       }
       break;
     }
@@ -2116,19 +2187,21 @@ CJS_Result CJS_Field::get_value(CJS_Runtime* pRuntime) {
       bool bFind = false;
       for (int i = 0, sz = pFormField->CountControls(); i < sz; i++) {
         if (pFormField->GetControl(i)->IsChecked()) {
-          ret = pRuntime->NewString(
+          ret = fxv8::NewStringHelper(
+              pRuntime->GetIsolate(),
               pFormField->GetControl(i)->GetExportValue().AsStringView());
           bFind = true;
           break;
         }
       }
       if (!bFind)
-        ret = pRuntime->NewString("Off");
+        ret = fxv8::NewStringHelper(pRuntime->GetIsolate(), "Off");
 
       break;
     }
     default:
-      ret = pRuntime->NewString(pFormField->GetValue().AsStringView());
+      ret = fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                                  pFormField->GetValue().AsStringView());
       break;
   }
   return CJS_Result::Success(pRuntime->MaybeCoerceToNumber(ret));
@@ -2170,7 +2243,8 @@ CJS_Result CJS_Field::get_value_as_string(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() == FormFieldType::kCheckBox) {
     if (!pFormField->CountControls())
       return CJS_Result::Failure(JSMessage::kBadObjectError);
-    return CJS_Result::Success(pRuntime->NewString(
+    return CJS_Result::Success(fxv8::NewStringHelper(
+        pRuntime->GetIsolate(),
         pFormField->GetControl(0)->IsChecked() ? L"Yes" : L"Off"));
   }
 
@@ -2179,19 +2253,22 @@ CJS_Result CJS_Field::get_value_as_string(CJS_Runtime* pRuntime) {
         pdfium::form_flags::kButtonRadiosInUnison)) {
     for (int i = 0, sz = pFormField->CountControls(); i < sz; i++) {
       if (pFormField->GetControl(i)->IsChecked()) {
-        return CJS_Result::Success(pRuntime->NewString(
+        return CJS_Result::Success(fxv8::NewStringHelper(
+            pRuntime->GetIsolate(),
             pFormField->GetControl(i)->GetExportValue().AsStringView()));
       }
     }
-    return CJS_Result::Success(pRuntime->NewString("Off"));
+    return CJS_Result::Success(
+        fxv8::NewStringHelper(pRuntime->GetIsolate(), "Off"));
   }
 
   if (pFormField->GetFieldType() == FormFieldType::kListBox &&
       (pFormField->CountSelectedItems() > 1)) {
-    return CJS_Result::Success(pRuntime->NewString(""));
+    return CJS_Result::Success(
+        fxv8::NewStringHelper(pRuntime->GetIsolate(), ""));
   }
-  return CJS_Result::Success(
-      pRuntime->NewString(pFormField->GetValue().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), pFormField->GetValue().AsStringView()));
 }
 
 CJS_Result CJS_Field::set_value_as_string(CJS_Runtime* pRuntime,
@@ -2239,15 +2316,17 @@ CJS_Result CJS_Field::buttonGetCaption(
 
   if (nface == 0) {
     return CJS_Result::Success(
-        pRuntime->NewString(pFormControl->GetNormalCaption().AsStringView()));
+        fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                              pFormControl->GetNormalCaption().AsStringView()));
   }
   if (nface == 1) {
-    return CJS_Result::Success(
-        pRuntime->NewString(pFormControl->GetDownCaption().AsStringView()));
+    return CJS_Result::Success(fxv8::NewStringHelper(
+        pRuntime->GetIsolate(), pFormControl->GetDownCaption().AsStringView()));
   }
   if (nface == 2) {
-    return CJS_Result::Success(
-        pRuntime->NewString(pFormControl->GetRolloverCaption().AsStringView()));
+    return CJS_Result::Success(fxv8::NewStringHelper(
+        pRuntime->GetIsolate(),
+        pFormControl->GetRolloverCaption().AsStringView()));
   }
   return CJS_Result::Failure(JSMessage::kValueError);
 }
@@ -2356,8 +2435,8 @@ CJS_Result CJS_Field::defaultIsChecked(
   if (nWidget < 0 || nWidget >= pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  return CJS_Result::Success(
-      pRuntime->NewBoolean(IsCheckBoxOrRadioButton(pFormField)));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(), IsCheckBoxOrRadioButton(pFormField)));
 }
 
 CJS_Result CJS_Field::deleteItemAt(
@@ -2382,7 +2461,8 @@ CJS_Result CJS_Field::getArray(
             [](const std::unique_ptr<WideString>& p1,
                const std::unique_ptr<WideString>& p2) { return *p1 < *p2; });
 
-  v8::Local<v8::Array> FormFieldArray = pRuntime->NewArray();
+  v8::Local<v8::Array> FormFieldArray =
+      fxv8::NewArrayHelper(pRuntime->GetIsolate());
   int j = 0;
   for (const auto& pStr : swSort) {
     v8::Local<v8::Object> pObj = pRuntime->NewFXJSBoundObject(
@@ -2424,15 +2504,18 @@ CJS_Result CJS_Field::getItemAt(
     nIdx = pFormField->CountOptions() - 1;
   if (!bExport) {
     return CJS_Result::Success(
-        pRuntime->NewString(pFormField->GetOptionLabel(nIdx).AsStringView()));
+        fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                              pFormField->GetOptionLabel(nIdx).AsStringView()));
   }
 
   WideString strval = pFormField->GetOptionValue(nIdx);
   if (strval.IsEmpty()) {
     return CJS_Result::Success(
-        pRuntime->NewString(pFormField->GetOptionLabel(nIdx).AsStringView()));
+        fxv8::NewStringHelper(pRuntime->GetIsolate(),
+                              pFormField->GetOptionLabel(nIdx).AsStringView()));
   }
-  return CJS_Result::Success(pRuntime->NewString(strval.AsStringView()));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), strval.AsStringView()));
 }
 
 CJS_Result CJS_Field::getLock(CJS_Runtime* pRuntime,
@@ -2460,9 +2543,10 @@ CJS_Result CJS_Field::isBoxChecked(
   if (nIndex < 0 || nIndex >= pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  return CJS_Result::Success(
-      pRuntime->NewBoolean((IsCheckBoxOrRadioButton(pFormField) &&
-                            pFormField->GetControl(nIndex)->IsChecked() != 0)));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
+      (IsCheckBoxOrRadioButton(pFormField) &&
+       pFormField->GetControl(nIndex)->IsChecked() != 0)));
 }
 
 CJS_Result CJS_Field::isDefaultChecked(
@@ -2479,7 +2563,8 @@ CJS_Result CJS_Field::isDefaultChecked(
   if (nIndex < 0 || nIndex >= pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       (IsCheckBoxOrRadioButton(pFormField) &&
        pFormField->GetControl(nIndex)->IsDefaultChecked() != 0)));
 }

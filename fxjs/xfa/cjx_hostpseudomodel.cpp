@@ -337,14 +337,14 @@ CJS_Result CJX_HostPseudoModel::response(
 
   WideString answer =
       pNotify->GetAppProvider()->Response(question, title, defaultAnswer, mark);
-  return CJS_Result::Success(
-      runtime->NewString(answer.ToUTF8().AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      runtime->GetIsolate(), answer.ToUTF8().AsStringView()));
 }
 
 CJS_Result CJX_HostPseudoModel::documentInBatch(
     CFX_V8* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  return CJS_Result::Success(runtime->NewNumber(0));
+  return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 }
 
 CJS_Result CJX_HostPseudoModel::resetData(
@@ -511,13 +511,14 @@ CJS_Result CJX_HostPseudoModel::messageBox(
 
   int32_t iValue = pNotify->GetAppProvider()->MsgBox(message, title,
                                                      messageType, buttonType);
-  return CJS_Result::Success(runtime->NewNumber(iValue));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(runtime->GetIsolate(), iValue));
 }
 
 CJS_Result CJX_HostPseudoModel::documentCountInBatch(
     CFX_V8* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  return CJS_Result::Success(runtime->NewNumber(0));
+  return CJS_Result::Success(fxv8::NewNumberHelper(runtime->GetIsolate(), 0));
 }
 
 CJS_Result CJX_HostPseudoModel::print(

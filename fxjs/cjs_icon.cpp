@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_icon.h"
 
+#include "fxjs/fxv8.h"
+
 const JSPropertySpec CJS_Icon::PropertySpecs[] = {
     {"name", get_name_static, set_name_static}};
 
@@ -30,7 +32,8 @@ CJS_Icon::CJS_Icon(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime)
 CJS_Icon::~CJS_Icon() = default;
 
 CJS_Result CJS_Icon::get_name(CJS_Runtime* pRuntime) {
-  return CJS_Result::Success(pRuntime->NewString(m_swIconName.AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), m_swIconName.AsStringView()));
 }
 
 CJS_Result CJS_Icon::set_name(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp) {

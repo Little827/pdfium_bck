@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "fxjs/cfx_v8.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "xfa/fxfa/parser/cxfa_manifest.h"
 
@@ -31,6 +32,6 @@ CJS_Result CJX_Manifest::evaluate(
   if (!params.empty())
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(
-      runtime->NewBoolean(GetXFANode()->IsWidgetReady()));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), GetXFANode()->IsWidgetReady()));
 }

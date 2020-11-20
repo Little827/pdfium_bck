@@ -8,6 +8,7 @@
 
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "xfa/fxfa/parser/cxfa_delta.h"
@@ -53,7 +54,7 @@ CJS_Result CJX_Model::createNode(
   XFA_Element eType = XFA_GetElementByName(tagName.AsStringView());
   CXFA_Node* pNewNode = GetXFANode()->CreateSamePacketNode(eType);
   if (!pNewNode)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   if (!name.IsEmpty()) {
     if (!pNewNode->HasAttribute(XFA_Attribute::Name))
@@ -80,8 +81,9 @@ CJS_Result CJX_Model::isCompatibleNS(
   if (params.size() >= 1)
     nameSpace = runtime->ToWideString(params[0]);
 
-  return CJS_Result::Success(
-      runtime->NewBoolean(TryNamespace().value_or(WideString()) == nameSpace));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(),
+      TryNamespace().value_or(WideString()) == nameSpace));
 }
 
 void CJX_Model::context(v8::Isolate* pIsolate,

@@ -56,28 +56,48 @@ v8::Local<v8::Array> CJS_Color::ConvertPWLColorToArray(CJS_Runtime* pRuntime,
   v8::Local<v8::Array> array;
   switch (color.nColorType) {
     case CFX_Color::kTransparent:
-      array = pRuntime->NewArray();
-      pRuntime->PutArrayElement(array, 0, pRuntime->NewString("T"));
+      array = fxv8::NewArrayHelper(pRuntime->GetIsolate());
+      pRuntime->PutArrayElement(
+          array, 0, fxv8::NewStringHelper(pRuntime->GetIsolate(), "T"));
       break;
     case CFX_Color::kGray:
-      array = pRuntime->NewArray();
-      pRuntime->PutArrayElement(array, 0, pRuntime->NewString("G"));
-      pRuntime->PutArrayElement(array, 1, pRuntime->NewNumber(color.fColor1));
+      array = fxv8::NewArrayHelper(pRuntime->GetIsolate());
+      pRuntime->PutArrayElement(
+          array, 0, fxv8::NewStringHelper(pRuntime->GetIsolate(), "G"));
+      pRuntime->PutArrayElement(
+          array, 1,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor1));
       break;
     case CFX_Color::kRGB:
-      array = pRuntime->NewArray();
-      pRuntime->PutArrayElement(array, 0, pRuntime->NewString("RGB"));
-      pRuntime->PutArrayElement(array, 1, pRuntime->NewNumber(color.fColor1));
-      pRuntime->PutArrayElement(array, 2, pRuntime->NewNumber(color.fColor2));
-      pRuntime->PutArrayElement(array, 3, pRuntime->NewNumber(color.fColor3));
+      array = fxv8::NewArrayHelper(pRuntime->GetIsolate());
+      pRuntime->PutArrayElement(
+          array, 0, fxv8::NewStringHelper(pRuntime->GetIsolate(), "RGB"));
+      pRuntime->PutArrayElement(
+          array, 1,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor1));
+      pRuntime->PutArrayElement(
+          array, 2,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor2));
+      pRuntime->PutArrayElement(
+          array, 3,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor3));
       break;
     case CFX_Color::kCMYK:
-      array = pRuntime->NewArray();
-      pRuntime->PutArrayElement(array, 0, pRuntime->NewString("CMYK"));
-      pRuntime->PutArrayElement(array, 1, pRuntime->NewNumber(color.fColor1));
-      pRuntime->PutArrayElement(array, 2, pRuntime->NewNumber(color.fColor2));
-      pRuntime->PutArrayElement(array, 3, pRuntime->NewNumber(color.fColor3));
-      pRuntime->PutArrayElement(array, 4, pRuntime->NewNumber(color.fColor4));
+      array = fxv8::NewArrayHelper(pRuntime->GetIsolate());
+      pRuntime->PutArrayElement(
+          array, 0, fxv8::NewStringHelper(pRuntime->GetIsolate(), "CMYK"));
+      pRuntime->PutArrayElement(
+          array, 1,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor1));
+      pRuntime->PutArrayElement(
+          array, 2,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor2));
+      pRuntime->PutArrayElement(
+          array, 3,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor3));
+      pRuntime->PutArrayElement(
+          array, 4,
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), color.fColor4));
       break;
   }
   return array;
@@ -251,7 +271,7 @@ CJS_Result CJS_Color::set_light_gray(CJS_Runtime* pRuntime,
 CJS_Result CJS_Color::GetPropertyHelper(CJS_Runtime* pRuntime, CFX_Color* var) {
   v8::Local<v8::Value> array = ConvertPWLColorToArray(pRuntime, *var);
   if (array.IsEmpty())
-    return CJS_Result::Success(pRuntime->NewArray());
+    return CJS_Result::Success(fxv8::NewArrayHelper(pRuntime->GetIsolate()));
 
   return CJS_Result::Success(array);
 }
@@ -293,7 +313,7 @@ CJS_Result CJS_Color::convert(CJS_Runtime* pRuntime,
   v8::Local<v8::Value> array =
       ConvertPWLColorToArray(pRuntime, color.ConvertColorType(nColorType));
   if (array.IsEmpty())
-    return CJS_Result::Success(pRuntime->NewArray());
+    return CJS_Result::Success(fxv8::NewArrayHelper(pRuntime->GetIsolate()));
 
   return CJS_Result::Success(array);
 }
@@ -313,6 +333,7 @@ CJS_Result CJS_Color::equal(CJS_Runtime* pRuntime,
 
   // Relies on higher values having more components.
   int32_t best = std::max(color1.nColorType, color2.nColorType);
-  return CJS_Result::Success(pRuntime->NewBoolean(
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      pRuntime->GetIsolate(),
       color1.ConvertColorType(best) == color2.ConvertColorType(best)));
 }

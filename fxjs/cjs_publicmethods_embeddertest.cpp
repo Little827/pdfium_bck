@@ -9,6 +9,7 @@
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fxjs/cjs_event_context.h"
 #include "fxjs/cjs_publicmethods.h"
+#include "fxjs/fxv8.h"
 #include "testing/external_engine_embedder_test.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -194,12 +195,14 @@ TEST_F(CJS_PublicMethodsEmbedderTest, AFSimple_CalculateSum) {
   runtime.GetCurrentEventContext()->GetEventRecorder()->SetValueForTest(
       &result);
 
-  auto ary = runtime.NewArray();
-  runtime.PutArrayElement(ary, 0, runtime.NewString("Calc1_A"));
-  runtime.PutArrayElement(ary, 1, runtime.NewString("Calc1_B"));
+  auto ary = fxv8::NewArrayHelper(runtime.GetIsolate());
+  runtime.PutArrayElement(
+      ary, 0, fxv8::NewStringHelper(runtime.GetIsolate(), "Calc1_A"));
+  runtime.PutArrayElement(
+      ary, 1, fxv8::NewStringHelper(runtime.GetIsolate(), "Calc1_B"));
 
   std::vector<v8::Local<v8::Value>> params;
-  params.push_back(runtime.NewString("SUM"));
+  params.push_back(fxv8::NewStringHelper(runtime.GetIsolate(), "SUM"));
   params.push_back(ary);
 
   CJS_Result ret = CJS_PublicMethods::AFSimple_Calculate(&runtime, params);
@@ -241,8 +244,8 @@ TEST_F(CJS_PublicMethodsEmbedderTest, AFNumber_Keystroke) {
   handler->SetSelEnd(0);
 
   std::vector<v8::Local<v8::Value>> params;
-  params.push_back(runtime.NewString("-10"));
-  params.push_back(runtime.NewString(""));
+  params.push_back(fxv8::NewStringHelper(runtime.GetIsolate(), "-10"));
+  params.push_back(fxv8::NewStringHelper(runtime.GetIsolate(), ""));
 
   CJS_Result ret = CJS_PublicMethods::AFNumber_Keystroke(&runtime, params);
   EXPECT_TRUE(valid);

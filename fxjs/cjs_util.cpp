@@ -156,8 +156,8 @@ CJS_Result CJS_Util::printf(CJS_Runtime* pRuntime,
   // Remove the 'S' sentinel introduced earlier.
   DCHECK_EQ(L'S', result[0]);
   auto result_view = result.AsStringView();
-  return CJS_Result::Success(
-      pRuntime->NewString(result_view.Last(result_view.GetLength() - 1)));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), result_view.Last(result_view.GetLength() - 1)));
 }
 
 CJS_Result CJS_Util::printd(CJS_Runtime* pRuntime,
@@ -200,7 +200,8 @@ CJS_Result CJS_Util::printd(CJS_Runtime* pRuntime,
         return CJS_Result::Failure(JSMessage::kValueError);
     }
 
-    return CJS_Result::Success(pRuntime->NewString(swResult.AsStringView()));
+    return CJS_Result::Success(
+        fxv8::NewStringHelper(pRuntime->GetIsolate(), swResult.AsStringView()));
   }
 
   if (!params[0]->IsString())
@@ -263,7 +264,8 @@ CJS_Result CJS_Util::printd(CJS_Runtime* pRuntime,
   wchar_t buf[64] = {};
   FXSYS_wcsftime(buf, 64, cFormat.c_str(), &time);
   cFormat = buf;
-  return CJS_Result::Success(pRuntime->NewString(cFormat.c_str()));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), cFormat.c_str()));
 }
 
 CJS_Result CJS_Util::printx(CJS_Runtime* pRuntime,
@@ -271,10 +273,10 @@ CJS_Result CJS_Util::printx(CJS_Runtime* pRuntime,
   if (params.size() < 2)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(
-      pRuntime->NewString(StringPrintx(pRuntime->ToWideString(params[0]),
-                                       pRuntime->ToWideString(params[1]))
-                              .AsStringView()));
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(), StringPrintx(pRuntime->ToWideString(params[0]),
+                                           pRuntime->ToWideString(params[1]))
+                                  .AsStringView()));
 }
 
 // static
@@ -378,9 +380,11 @@ CJS_Result CJS_Util::scand(CJS_Runtime* pRuntime,
   if (sDate.GetLength() > 0)
     dDate = CJS_PublicMethods::ParseDateUsingFormat(sDate, sFormat, nullptr);
   if (std::isnan(dDate))
-    return CJS_Result::Success(pRuntime->NewUndefined());
+    return CJS_Result::Success(
+        fxv8::NewUndefinedHelper(pRuntime->GetIsolate()));
 
-  return CJS_Result::Success(pRuntime->NewDate(dDate));
+  return CJS_Result::Success(
+      fxv8::NewDateHelper(pRuntime->GetIsolate(), dDate));
 }
 
 CJS_Result CJS_Util::byteToChar(
@@ -394,7 +398,8 @@ CJS_Result CJS_Util::byteToChar(
     return CJS_Result::Failure(JSMessage::kValueError);
 
   WideString wStr(static_cast<wchar_t>(arg));
-  return CJS_Result::Success(pRuntime->NewString(wStr.AsStringView()));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), wStr.AsStringView()));
 }
 
 // static

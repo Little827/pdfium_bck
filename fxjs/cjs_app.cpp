@@ -11,6 +11,7 @@
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fxjs/cjs_document.h"
 #include "fxjs/cjs_timerobj.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/global_timer.h"
 #include "fxjs/ijs_event_context.h"
 #include "fxjs/js_resources.h"
@@ -90,12 +91,12 @@ CJS_Result CJS_App::get_active_docs(CJS_Runtime* pRuntime) {
   auto pJSDocument = JSGetObject<CJS_Document>(pObj);
   if (!pJSDocument)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
-  v8::Local<v8::Array> aDocs = pRuntime->NewArray();
+  v8::Local<v8::Array> aDocs = fxv8::NewArrayHelper(pRuntime->GetIsolate());
   pRuntime->PutArrayElement(aDocs, 0, pJSDocument->ToV8Object());
   if (pRuntime->GetArrayLength(aDocs) > 0)
     return CJS_Result::Success(aDocs);
 
-  return CJS_Result::Success(pRuntime->NewUndefined());
+  return CJS_Result::Success(fxv8::NewUndefinedHelper(pRuntime->GetIsolate()));
 }
 
 CJS_Result CJS_App::set_active_docs(CJS_Runtime* pRuntime,
@@ -104,7 +105,8 @@ CJS_Result CJS_App::set_active_docs(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_calculate(CJS_Runtime* pRuntime) {
-  return CJS_Result::Success(pRuntime->NewBoolean(m_bCalculate));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), m_bCalculate));
 }
 
 CJS_Result CJS_App::set_calculate(CJS_Runtime* pRuntime,
@@ -116,7 +118,8 @@ CJS_Result CJS_App::set_calculate(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_forms_version(CJS_Runtime* pRuntime) {
-  return CJS_Result::Success(pRuntime->NewNumber(JS_NUM_FORMSVERSION));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), JS_NUM_FORMSVERSION));
 }
 
 CJS_Result CJS_App::set_forms_version(CJS_Runtime* pRuntime,
@@ -125,7 +128,8 @@ CJS_Result CJS_App::set_forms_version(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_viewer_type(CJS_Runtime* pRuntime) {
-  return CJS_Result::Success(pRuntime->NewString(JS_STR_VIEWERTYPE));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), JS_STR_VIEWERTYPE));
 }
 
 CJS_Result CJS_App::set_viewer_type(CJS_Runtime* pRuntime,
@@ -134,7 +138,8 @@ CJS_Result CJS_App::set_viewer_type(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_viewer_variation(CJS_Runtime* pRuntime) {
-  return CJS_Result::Success(pRuntime->NewString(JS_STR_VIEWERVARIATION));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), JS_STR_VIEWERVARIATION));
 }
 
 CJS_Result CJS_App::set_viewer_variation(CJS_Runtime* pRuntime,
@@ -148,7 +153,8 @@ CJS_Result CJS_App::get_viewer_version(CJS_Runtime* pRuntime) {
   int version = pContext && pContext->ContainsExtensionForm()
                     ? JS_NUM_VIEWERVERSION_XFA
                     : JS_NUM_VIEWERVERSION;
-  return CJS_Result::Success(pRuntime->NewNumber(version));
+  return CJS_Result::Success(
+      fxv8::NewNumberHelper(pRuntime->GetIsolate(), version));
 }
 
 CJS_Result CJS_App::set_viewer_version(CJS_Runtime* pRuntime,
@@ -161,9 +167,11 @@ CJS_Result CJS_App::get_platform(CJS_Runtime* pRuntime) {
   if (pFormFillEnv) {
     WideString platform = pFormFillEnv->GetPlatform();
     if (!platform.IsEmpty())
-      return CJS_Result::Success(pRuntime->NewString(platform.AsStringView()));
+      return CJS_Result::Success(fxv8::NewStringHelper(
+          pRuntime->GetIsolate(), platform.AsStringView()));
   }
-  return CJS_Result::Success(pRuntime->NewString(JS_STR_PLATFORM));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), JS_STR_PLATFORM));
 }
 
 CJS_Result CJS_App::set_platform(CJS_Runtime* pRuntime,
@@ -176,9 +184,11 @@ CJS_Result CJS_App::get_language(CJS_Runtime* pRuntime) {
   if (pFormFillEnv) {
     WideString language = pFormFillEnv->GetLanguage();
     if (!language.IsEmpty())
-      return CJS_Result::Success(pRuntime->NewString(language.AsStringView()));
+      return CJS_Result::Success(fxv8::NewStringHelper(
+          pRuntime->GetIsolate(), language.AsStringView()));
   }
-  return CJS_Result::Success(pRuntime->NewString(JS_STR_LANGUAGE));
+  return CJS_Result::Success(
+      fxv8::NewStringHelper(pRuntime->GetIsolate(), JS_STR_LANGUAGE));
 }
 
 CJS_Result CJS_App::set_language(CJS_Runtime* pRuntime,
@@ -217,7 +227,8 @@ CJS_Result CJS_App::alert(CJS_Runtime* pRuntime,
 
   CPDFSDK_FormFillEnvironment* pFormFillEnv = pRuntime->GetFormFillEnv();
   if (!pFormFillEnv)
-    return CJS_Result::Success(pRuntime->NewNumber(0));
+    return CJS_Result::Success(
+        fxv8::NewNumberHelper(pRuntime->GetIsolate(), 0));
 
   WideString swMsg;
   if (newParams[0]->IsArray()) {
@@ -250,7 +261,8 @@ CJS_Result CJS_App::alert(CJS_Runtime* pRuntime,
 
   pRuntime->BeginBlock();
   pFormFillEnv->KillFocusAnnot(0);
-  v8::Local<v8::Value> ret = pRuntime->NewNumber(
+  v8::Local<v8::Value> ret = fxv8::NewNumberHelper(
+      pRuntime->GetIsolate(),
       pFormFillEnv->JS_appAlert(swMsg, swTitle, iType, iIcon));
   pRuntime->EndBlock();
 
@@ -465,7 +477,8 @@ CJS_Result CJS_App::launchURL(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_runtime_highlight(CJS_Runtime* pRuntime) {
-  return CJS_Result::Success(pRuntime->NewBoolean(m_bRuntimeHighLight));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(pRuntime->GetIsolate(), m_bRuntimeHighLight));
 }
 
 CJS_Result CJS_App::set_runtime_highlight(CJS_Runtime* pRuntime,
@@ -549,7 +562,8 @@ CJS_Result CJS_App::response(CJS_Runtime* pRuntime,
   if (nLengthBytes < 0 || nLengthBytes > MAX_INPUT_BYTES)
     return CJS_Result::Failure(JSMessage::kParamTooLongError);
 
-  return CJS_Result::Success(pRuntime->NewString(
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      pRuntime->GetIsolate(),
       WideString::FromUTF16LE(reinterpret_cast<uint16_t*>(pBuff.data()),
                               nLengthBytes / sizeof(uint16_t))
           .AsStringView()));

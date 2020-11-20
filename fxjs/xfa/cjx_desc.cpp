@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "fxjs/cfx_v8.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "xfa/fxfa/parser/cxfa_desc.h"
 
@@ -29,5 +30,5 @@ CJS_Result CJX_Desc::metadata(CFX_V8* runtime,
   if (params.size() != 0 && params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  return CJS_Result::Success(runtime->NewString(""));
+  return CJS_Result::Success(fxv8::NewStringHelper(runtime->GetIsolate(), ""));
 }

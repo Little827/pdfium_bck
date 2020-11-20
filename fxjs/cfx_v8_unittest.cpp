@@ -7,6 +7,7 @@
 #include <cmath>
 #include <memory>
 
+#include "fxjs/fxv8.h"
 #include "testing/fxv8_unittest.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -47,7 +48,8 @@ TEST_F(CFXV8UnitTest, EmptyLocal) {
   EXPECT_TRUE(cfx_v8()->ToArray(empty).IsEmpty());
 
   // Can't set properties on empty objects, but does not fault.
-  v8::Local<v8::Value> marker = cfx_v8()->NewNumber(2);
+  v8::Local<v8::Value> marker =
+      fxv8::NewNumberHelper(cfx_v8()->GetIsolate(), 2);
   v8::Local<v8::Object> empty_object;
   cfx_v8()->PutObjectProperty(empty_object, "clams", marker);
   EXPECT_TRUE(cfx_v8()->GetObjectProperty(empty_object, "clams").IsEmpty());
@@ -65,7 +67,7 @@ TEST_F(CFXV8UnitTest, NewNull) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto nullz = cfx_v8()->NewNull();
+  auto nullz = fxv8::NewNullHelper(cfx_v8()->GetIsolate());
   EXPECT_FALSE(cfx_v8()->ToBoolean(nullz));
   EXPECT_EQ(0, cfx_v8()->ToInt32(nullz));
   EXPECT_EQ(0.0, cfx_v8()->ToDouble(nullz));
@@ -80,7 +82,7 @@ TEST_F(CFXV8UnitTest, NewUndefined) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto undef = cfx_v8()->NewUndefined();
+  auto undef = fxv8::NewUndefinedHelper(cfx_v8()->GetIsolate());
   EXPECT_FALSE(cfx_v8()->ToBoolean(undef));
   EXPECT_EQ(0, cfx_v8()->ToInt32(undef));
   EXPECT_TRUE(std::isnan(cfx_v8()->ToDouble(undef)));
@@ -95,7 +97,7 @@ TEST_F(CFXV8UnitTest, NewBoolean) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto boolz = cfx_v8()->NewBoolean(true);
+  auto boolz = fxv8::NewBooleanHelper(cfx_v8()->GetIsolate(), true);
   EXPECT_TRUE(cfx_v8()->ToBoolean(boolz));
   EXPECT_EQ(1, cfx_v8()->ToInt32(boolz));
   EXPECT_EQ(1.0, cfx_v8()->ToDouble(boolz));
@@ -104,7 +106,7 @@ TEST_F(CFXV8UnitTest, NewBoolean) {
   EXPECT_TRUE(cfx_v8()->ToObject(boolz).IsEmpty());
   EXPECT_TRUE(cfx_v8()->ToArray(boolz).IsEmpty());
 
-  boolz = cfx_v8()->NewBoolean(false);
+  boolz = fxv8::NewBooleanHelper(cfx_v8()->GetIsolate(), false);
   EXPECT_FALSE(cfx_v8()->ToBoolean(boolz));
   EXPECT_EQ(0, cfx_v8()->ToInt32(boolz));
   EXPECT_EQ(0.0, cfx_v8()->ToDouble(boolz));
@@ -119,7 +121,7 @@ TEST_F(CFXV8UnitTest, NewNumber) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto num = cfx_v8()->NewNumber(42.1);
+  auto num = fxv8::NewNumberHelper(cfx_v8()->GetIsolate(), 42.1);
   EXPECT_TRUE(cfx_v8()->ToBoolean(num));
   EXPECT_EQ(42, cfx_v8()->ToInt32(num));
   EXPECT_EQ(42.1, cfx_v8()->ToDouble(num));
@@ -134,7 +136,7 @@ TEST_F(CFXV8UnitTest, NewString) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto str = cfx_v8()->NewString("123");
+  auto str = fxv8::NewStringHelper(cfx_v8()->GetIsolate(), "123");
   EXPECT_TRUE(cfx_v8()->ToBoolean(str));
   EXPECT_EQ(123, cfx_v8()->ToInt32(str));
   EXPECT_EQ(123, cfx_v8()->ToDouble(str));
@@ -143,7 +145,7 @@ TEST_F(CFXV8UnitTest, NewString) {
   EXPECT_TRUE(cfx_v8()->ToObject(str).IsEmpty());
   EXPECT_TRUE(cfx_v8()->ToArray(str).IsEmpty());
 
-  auto str2 = cfx_v8()->NewString(L"123");
+  auto str2 = fxv8::NewStringHelper(cfx_v8()->GetIsolate(), L"123");
   EXPECT_TRUE(cfx_v8()->ToBoolean(str2));
   EXPECT_EQ(123, cfx_v8()->ToInt32(str2));
   EXPECT_EQ(123, cfx_v8()->ToDouble(str2));
@@ -158,7 +160,7 @@ TEST_F(CFXV8UnitTest, NewDate) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto date = cfx_v8()->NewDate(1111111111);
+  auto date = fxv8::NewDateHelper(cfx_v8()->GetIsolate(), 1111111111);
   EXPECT_TRUE(cfx_v8()->ToBoolean(date));
   EXPECT_EQ(1111111111, cfx_v8()->ToInt32(date));
   EXPECT_EQ(1111111111.0, cfx_v8()->ToDouble(date));
@@ -173,13 +175,14 @@ TEST_F(CFXV8UnitTest, NewArray) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto array = cfx_v8()->NewArray();
+  auto array = fxv8::NewArrayHelper(cfx_v8()->GetIsolate());
   EXPECT_EQ(0u, cfx_v8()->GetArrayLength(array));
   EXPECT_FALSE(cfx_v8()->GetArrayElement(array, 2).IsEmpty());
   EXPECT_TRUE(cfx_v8()->GetArrayElement(array, 2)->IsUndefined());
   EXPECT_EQ(0u, cfx_v8()->GetArrayLength(array));
 
-  cfx_v8()->PutArrayElement(array, 3, cfx_v8()->NewNumber(12));
+  cfx_v8()->PutArrayElement(array, 3,
+                            fxv8::NewNumberHelper(cfx_v8()->GetIsolate(), 12));
   EXPECT_FALSE(cfx_v8()->GetArrayElement(array, 2).IsEmpty());
   EXPECT_TRUE(cfx_v8()->GetArrayElement(array, 2)->IsUndefined());
   EXPECT_FALSE(cfx_v8()->GetArrayElement(array, 3).IsEmpty());
@@ -200,14 +203,15 @@ TEST_F(CFXV8UnitTest, NewObject) {
   v8::HandleScope handle_scope(isolate());
   v8::Context::Scope context_scope(v8::Context::New(isolate()));
 
-  auto object = cfx_v8()->NewObject();
+  auto object = fxv8::NewObjectHelper(cfx_v8()->GetIsolate());
   ASSERT_FALSE(object.IsEmpty());
   EXPECT_EQ(0u, cfx_v8()->GetObjectPropertyNames(object).size());
   EXPECT_FALSE(cfx_v8()->GetObjectProperty(object, "clams").IsEmpty());
   EXPECT_TRUE(cfx_v8()->GetObjectProperty(object, "clams")->IsUndefined());
   EXPECT_EQ(0u, cfx_v8()->GetObjectPropertyNames(object).size());
 
-  cfx_v8()->PutObjectProperty(object, "clams", cfx_v8()->NewNumber(12));
+  cfx_v8()->PutObjectProperty(
+      object, "clams", fxv8::NewNumberHelper(cfx_v8()->GetIsolate(), 12));
   EXPECT_FALSE(cfx_v8()->GetObjectProperty(object, "clams").IsEmpty());
   EXPECT_TRUE(cfx_v8()->GetObjectProperty(object, "clams")->IsNumber());
   EXPECT_EQ(1u, cfx_v8()->GetObjectPropertyNames(object).size());
@@ -228,8 +232,9 @@ TEST_F(CFXV8UnitTest, ThrowFromGetter) {
   v8::Local<v8::Context> context = v8::Context::New(isolate());
   v8::Context::Scope context_scope(context);
 
-  v8::Local<v8::Object> object = cfx_v8()->NewObject();
-  v8::Local<v8::String> name = cfx_v8()->NewString("clams");
+  v8::Local<v8::Object> object = fxv8::NewObjectHelper(cfx_v8()->GetIsolate());
+  v8::Local<v8::String> name =
+      fxv8::NewStringHelper(cfx_v8()->GetIsolate(), "clams");
   EXPECT_TRUE(
       object
           ->SetAccessor(context, name,
@@ -250,8 +255,9 @@ TEST_F(CFXV8UnitTest, ThrowFromSetter) {
   v8::Local<v8::Context> context = v8::Context::New(isolate());
   v8::Context::Scope context_scope(context);
 
-  v8::Local<v8::Object> object = cfx_v8()->NewObject();
-  v8::Local<v8::String> name = cfx_v8()->NewString("clams");
+  v8::Local<v8::Object> object = fxv8::NewObjectHelper(cfx_v8()->GetIsolate());
+  v8::Local<v8::String> name =
+      fxv8::NewStringHelper(cfx_v8()->GetIsolate(), "clams");
   EXPECT_TRUE(object
                   ->SetAccessor(context, name, nullptr,
                                 [](v8::Local<v8::Name> property,

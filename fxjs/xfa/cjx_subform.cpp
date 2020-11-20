@@ -79,12 +79,13 @@ CJS_Result CJX_Subform::execValidate(
 
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
-    return CJS_Result::Success(runtime->NewBoolean(false));
+    return CJS_Result::Success(
+        fxv8::NewBooleanHelper(runtime->GetIsolate(), false));
 
   XFA_EventError iRet = pNotify->ExecEventByDeepFirst(
       GetXFANode(), XFA_EVENT_Validate, false, true);
-  return CJS_Result::Success(
-      runtime->NewBoolean(iRet != XFA_EventError::kError));
+  return CJS_Result::Success(fxv8::NewBooleanHelper(
+      runtime->GetIsolate(), iRet != XFA_EventError::kError));
 }
 
 void CJX_Subform::locale(v8::Isolate* pIsolate,

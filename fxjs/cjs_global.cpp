@@ -16,6 +16,7 @@
 #include "fxjs/cjs_event_context.h"
 #include "fxjs/cjs_eventrecorder.h"
 #include "fxjs/cjs_object.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
 
@@ -237,17 +238,20 @@ CJS_Result CJS_Global::GetProperty(CJS_Runtime* pRuntime,
 
   switch (pData->nType) {
     case CFX_Value::DataType::kNumber:
-      return CJS_Result::Success(pRuntime->NewNumber(pData->dData));
+      return CJS_Result::Success(
+          fxv8::NewNumberHelper(pRuntime->GetIsolate(), pData->dData));
     case CFX_Value::DataType::kBoolean:
-      return CJS_Result::Success(pRuntime->NewBoolean(pData->bData));
+      return CJS_Result::Success(
+          fxv8::NewBooleanHelper(pRuntime->GetIsolate(), pData->bData));
     case CFX_Value::DataType::kString:
-      return CJS_Result::Success(pRuntime->NewString(
+      return CJS_Result::Success(fxv8::NewStringHelper(
+          pRuntime->GetIsolate(),
           WideString::FromDefANSI(pData->sData.AsStringView()).AsStringView()));
     case CFX_Value::DataType::kObject:
       return CJS_Result::Success(
           v8::Local<v8::Object>::New(pRuntime->GetIsolate(), pData->pData));
     case CFX_Value::DataType::kNull:
-      return CJS_Result::Success(pRuntime->NewNull());
+      return CJS_Result::Success(fxv8::NewNullHelper(pRuntime->GetIsolate()));
     default:
       break;
   }
@@ -314,9 +318,9 @@ void CJS_Global::UpdateGlobalPersistentVariables() {
         SetGlobalVariables(pData->data.sKey, CFX_Value::DataType::kNumber,
                            pData->data.dData, false, ByteString(),
                            v8::Local<v8::Object>(), pData->bPersistent == 1);
-        pRuntime->PutObjectProperty(ToV8Object(),
-                                    pData->data.sKey.AsStringView(),
-                                    pRuntime->NewNumber(pData->data.dData));
+        pRuntime->PutObjectProperty(
+            ToV8Object(), pData->data.sKey.AsStringView(),
+            fxv8::NewNumberHelper(pRuntime->GetIsolate(), pData->data.dData));
         break;
       case CFX_Value::DataType::kBoolean:
         SetGlobalVariables(pData->data.sKey, CFX_Value::DataType::kBoolean, 0,
@@ -324,7 +328,8 @@ void CJS_Global::UpdateGlobalPersistentVariables() {
                            v8::Local<v8::Object>(), pData->bPersistent == 1);
         pRuntime->PutObjectProperty(
             ToV8Object(), pData->data.sKey.AsStringView(),
-            pRuntime->NewBoolean(pData->data.bData == 1));
+            fxv8::NewBooleanHelper(pRuntime->GetIsolate(),
+                                   pData->data.bData == 1));
         break;
       case CFX_Value::DataType::kString:
         SetGlobalVariables(pData->data.sKey, CFX_Value::DataType::kString, 0,
@@ -332,12 +337,14 @@ void CJS_Global::UpdateGlobalPersistentVariables() {
                            pData->bPersistent == 1);
         pRuntime->PutObjectProperty(
             ToV8Object(), pData->data.sKey.AsStringView(),
-            pRuntime->NewString(
+            fxv8::NewStringHelper(
+                pRuntime->GetIsolate(),
                 WideString::FromUTF8(pData->data.sData.AsStringView())
                     .AsStringView()));
         break;
       case CFX_Value::DataType::kObject: {
-        v8::Local<v8::Object> pObj = pRuntime->NewObject();
+        v8::Local<v8::Object> pObj =
+            fxv8::NewObjectHelper(pRuntime->GetIsolate());
         if (!pObj.IsEmpty()) {
           PutObjectProperty(pObj, &pData->data);
           SetGlobalVariables(pData->data.sKey, CFX_Value::DataType::kObject, 0,
@@ -352,7 +359,8 @@ void CJS_Global::UpdateGlobalPersistentVariables() {
                            false, ByteString(), v8::Local<v8::Object>(),
                            pData->bPersistent == 1);
         pRuntime->PutObjectProperty(
-            ToV8Object(), pData->data.sKey.AsStringView(), pRuntime->NewNull());
+            ToV8Object(), pData->data.sKey.AsStringView(),
+            fxv8::NewNullHelper(pRuntime->GetIsolate()));
         break;
     }
   }
@@ -456,22 +464,27 @@ void CJS_Global::PutObjectProperty(v8::Local<v8::Object> pObj,
     CFX_KeyValue* pObjData = pData->objData.at(i).get();
     switch (pObjData->nType) {
       case CFX_Value::DataType::kNumber:
-        pRuntime->PutObjectProperty(pObj, pObjData->sKey.AsStringView(),
-                                    pRuntime->NewNumber(pObjData->dData));
+        pRuntime->PutObjectProperty(
+            pObj, pObjData->sKey.AsStringView(),
+            fxv8::NewNumberHelper(pRuntime->GetIsolate(), pObjData->dData));
         break;
       case CFX_Value::DataType::kBoolean:
-        pRuntime->PutObjectProperty(pObj, pObjData->sKey.AsStringView(),
-                                    pRuntime->NewBoolean(pObjData->bData == 1));
+        pRuntime->PutObjectProperty(
+            pObj, pObjData->sKey.AsStringView(),
+            fxv8::NewBooleanHelper(pRuntime->GetIsolate(),
+                                   pObjData->bData == 1));
         break;
       case CFX_Value::DataType::kString:
         pRuntime->PutObjectProperty(
             pObj, pObjData->sKey.AsStringView(),
-            pRuntime->NewString(
+            fxv8::NewStringHelper(
+                pRuntime->GetIsolate(),
                 WideString::FromUTF8(pObjData->sData.AsStringView())
                     .AsStringView()));
         break;
       case CFX_Value::DataType::kObject: {
-        v8::Local<v8::Object> pNewObj = pRuntime->NewObject();
+        v8::Local<v8::Object> pNewObj =
+            fxv8::NewObjectHelper(pRuntime->GetIsolate());
         if (!pNewObj.IsEmpty()) {
           PutObjectProperty(pNewObj, pObjData);
           pRuntime->PutObjectProperty(pObj, pObjData->sKey.AsStringView(),
@@ -479,8 +492,9 @@ void CJS_Global::PutObjectProperty(v8::Local<v8::Object> pObj,
         }
       } break;
       case CFX_Value::DataType::kNull:
-        pRuntime->PutObjectProperty(pObj, pObjData->sKey.AsStringView(),
-                                    pRuntime->NewNull());
+        pRuntime->PutObjectProperty(
+            pObj, pObjData->sKey.AsStringView(),
+            fxv8::NewNullHelper(pRuntime->GetIsolate()));
         break;
     }
   }

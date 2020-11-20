@@ -191,7 +191,8 @@ CJS_Result CJX_Node::getAttribute(
     return CJS_Result::Failure(JSMessage::kParamError);
 
   WideString expression = runtime->ToWideString(params[0]);
-  return CJS_Result::Success(runtime->NewString(
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      runtime->GetIsolate(),
       GetAttributeByString(expression.AsStringView()).ToUTF8().AsStringView()));
 }
 
@@ -205,11 +206,11 @@ CJS_Result CJX_Node::getElement(
   int32_t iValue = params.size() >= 2 ? runtime->ToInt32(params[1]) : 0;
   XFA_Element eElement = XFA_GetElementByName(expression.AsStringView());
   if (eElement == XFA_Element::Unknown)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   CXFA_Node* pNode = GetOrCreateProperty<CXFA_Node>(iValue, eElement);
   if (!pNode)
-    return CJS_Result::Success(runtime->NewNull());
+    return CJS_Result::Success(fxv8::NewNullHelper(runtime->GetIsolate()));
 
   return CJS_Result::Success(
       GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pNode));
@@ -225,11 +226,13 @@ CJS_Result CJX_Node::isPropertySpecified(
   Optional<XFA_ATTRIBUTEINFO> attr =
       XFA_GetAttributeByName(expression.AsStringView());
   if (attr.has_value() && HasAttribute(attr.value().attribute))
-    return CJS_Result::Success(runtime->NewBoolean(true));
+    return CJS_Result::Success(
+        fxv8::NewBooleanHelper(runtime->GetIsolate(), true));
 
   XFA_Element eType = XFA_GetElementByName(expression.AsStringView());
   if (eType == XFA_Element::Unknown)
-    return CJS_Result::Success(runtime->NewBoolean(false));
+    return CJS_Result::Success(
+        fxv8::NewBooleanHelper(runtime->GetIsolate(), false));
 
   bool bParent = params.size() < 2 || runtime->ToBoolean(params[1]);
   int32_t iIndex = params.size() == 3 ? runtime->ToInt32(params[2]) : 0;
@@ -240,7 +243,8 @@ CJS_Result CJX_Node::isPropertySpecified(
     bHas = jsnode->HasAttribute(attr.value().attribute) ||
            !!jsnode->GetOrCreateProperty<CXFA_Node>(iIndex, eType);
   }
-  return CJS_Result::Success(runtime->NewBoolean(bHas));
+  return CJS_Result::Success(
+      fxv8::NewBooleanHelper(runtime->GetIsolate(), bHas));
 }
 
 CJS_Result CJX_Node::loadXML(CFX_V8* runtime,
@@ -389,15 +393,16 @@ CJS_Result CJX_Node::saveXML(CFX_V8* runtime,
   ByteString bsXMLHeader = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
   if (GetXFANode()->GetPacketType() != XFA_PacketType::Form &&
       GetXFANode()->GetPacketType() != XFA_PacketType::Datasets) {
-    return CJS_Result::Success(runtime->NewString(""));
+    return CJS_Result::Success(
+        fxv8::NewStringHelper(runtime->GetIsolate(), ""));
   }
 
   CFX_XMLNode* pElement = nullptr;
   if (GetXFANode()->GetPacketType() == XFA_PacketType::Datasets) {
     pElement = GetXFANode()->GetXMLMappingNode();
     if (!pElement || pElement->GetType() != CFX_XMLNode::Type::kElement) {
-      return CJS_Result::Success(
-          runtime->NewString(bsXMLHeader.AsStringView()));
+      return CJS_Result::Success(fxv8::NewStringHelper(
+          runtime->GetIsolate(), bsXMLHeader.AsStringView()));
     }
 
     XFA_DataExporter_DealWithDataGroupNode(GetXFANode());
@@ -412,7 +417,8 @@ CJS_Result CJX_Node::saveXML(CFX_V8* runtime,
     pElement->Save(pMemoryStream);
   }
 
-  return CJS_Result::Success(runtime->NewString(
+  return CJS_Result::Success(fxv8::NewStringHelper(
+      runtime->GetIsolate(),
       ByteStringView(pMemoryStream->GetBuffer(), pMemoryStream->GetSize())));
 }
 
