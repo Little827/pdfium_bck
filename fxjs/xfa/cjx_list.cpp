@@ -97,14 +97,14 @@ CJS_Result CJX_List::item(CFX_V8* runtime,
       pEngine->NewNormalXFAObject(GetXFAList()->Item(cast_index)));
 }
 
-void CJX_List::length(v8::Isolate* pIsolate,
-                      v8::Local<v8::Value>* pValue,
-                      bool bSetting,
-                      XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  *pValue = fxv8::NewNumberHelper(
+v8::Local<v8::Value> CJX_List::lengthGetter(v8::Isolate* pIsolate,
+                                            XFA_Attribute eAttribute) {
+  return fxv8::NewNumberHelper(
       pIsolate, pdfium::base::checked_cast<int32_t>(GetXFAList()->GetLength()));
+}
+
+void CJX_List::lengthSetter(v8::Isolate* pIsolate,
+                            XFA_Attribute eAttribute,
+                            v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }

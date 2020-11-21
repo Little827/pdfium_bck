@@ -28,11 +28,18 @@ class CFX_V8;
   static void prop_name##_static(v8::Isolate* pIsolate, CJX_Object* node,   \
                                  v8::Local<v8::Value>* value, bool setting, \
                                  XFA_Attribute attribute) {                 \
-    if (node->DynamicTypeIs(static_type__))                                 \
-      static_cast<Type__*>(node)->prop_name(pIsolate, value, setting,       \
-                                            attribute);                     \
+    if (node->DynamicTypeIs(static_type__)) {                               \
+      auto* obj = static_cast<Type__*>(node);                               \
+      if (setting) {                                                        \
+        obj->prop_name##Setter(pIsolate, attribute, *value);                \
+      } else {                                                              \
+        *value = obj->prop_name##Getter(pIsolate, attribute);               \
+      }                                                                     \
+    }                                                                       \
   }                                                                         \
-  void prop_name(v8::Isolate* pIsolate, v8::Local<v8::Value>* pValue,       \
-                 bool bSetting, XFA_Attribute eAttribute)
+  v8::Local<v8::Value> prop_name##Getter(v8::Isolate* pIsolate,             \
+                                         XFA_Attribute eAttribute);         \
+  void prop_name##Setter(v8::Isolate* pIsolate, XFA_Attribute eAttribute,   \
+                         v8::Local<v8::Value> pValue)
 
 #endif  // FXJS_XFA_JSE_DEFINE_H_

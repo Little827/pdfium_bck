@@ -19,16 +19,16 @@ bool CJX_Xfa::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_Xfa::thisValue(v8::Isolate* pIsolate,
-                        v8::Local<v8::Value>* pValue,
-                        bool bSetting,
-                        XFA_Attribute eAttribute) {
-  if (bSetting)
-    return;
-
+v8::Local<v8::Value> CJX_Xfa::thisValueGetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute) {
   auto* pScriptContext = GetDocument()->GetScriptContext();
   CXFA_Object* pThis = pScriptContext->GetThisObject();
-  *pValue =
-      pThis ? pScriptContext->GetOrCreateJSBindingFromMap(pThis).As<v8::Value>()
-            : fxv8::NewNullHelper(pIsolate);
+  if (!pThis)
+    return fxv8::NewNullHelper(pIsolate);
+
+  return pScriptContext->GetOrCreateJSBindingFromMap(pThis);
 }
+
+void CJX_Xfa::thisValueSetter(v8::Isolate* pIsolate,
+                              XFA_Attribute eAttribute,
+                              v8::Local<v8::Value> pValue) {}

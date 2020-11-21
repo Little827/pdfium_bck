@@ -129,19 +129,17 @@ CJS_Result CJX_Form::execValidate(
       runtime->NewBoolean(iRet != XFA_EventError::kError));
 }
 
-void CJX_Form::checksumS(v8::Isolate* pIsolate,
-                         v8::Local<v8::Value>* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {
-  if (bSetting) {
-    SetAttributeByEnum(XFA_Attribute::Checksum,
-                       fxv8::ReentrantToWideStringHelper(pIsolate, *pValue),
-                       false);
-    return;
-  }
-
+v8::Local<v8::Value> CJX_Form::checksumSGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute) {
   Optional<WideString> checksum = TryAttribute(XFA_Attribute::Checksum, false);
-  *pValue = fxv8::NewStringHelper(
+  return fxv8::NewStringHelper(
       pIsolate,
       checksum.has_value() ? checksum.value().ToUTF8().AsStringView() : "");
+}
+
+void CJX_Form::checksumSSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute eAttribute,
+                               v8::Local<v8::Value> pValue) {
+  WideString wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  SetAttributeByEnum(XFA_Attribute::Checksum, std::move(wsValue), false);
 }

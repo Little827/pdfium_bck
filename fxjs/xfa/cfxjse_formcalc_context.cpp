@@ -1327,10 +1327,8 @@ v8::Local<v8::Value> GetObjectDefaultValue(v8::Isolate* pIsolate,
   if (!pNode)
     return fxv8::NewNullHelper(pIsolate);
 
-  v8::Local<v8::Value> value;
-  pNode->JSObject()->ScriptSomDefaultValue(pIsolate, &value, false,
-                                           XFA_Attribute::Unknown);
-  return value;
+  return pNode->JSObject()->ScriptSomDefaultValueGetter(pIsolate,
+                                                        XFA_Attribute::Unknown);
 }
 
 bool SetObjectDefaultValue(v8::Isolate* pIsolate,
@@ -1340,8 +1338,8 @@ bool SetObjectDefaultValue(v8::Isolate* pIsolate,
   if (!pNode)
     return false;
 
-  pNode->JSObject()->ScriptSomDefaultValue(pIsolate, &hNewValue, true,
-                                           XFA_Attribute::Unknown);
+  pNode->JSObject()->ScriptSomDefaultValueSetter(
+      pIsolate, XFA_Attribute::Unknown, hNewValue);
   return true;
 }
 

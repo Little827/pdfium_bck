@@ -97,113 +97,110 @@ CJS_Result CJX_Tree::resolveNodes(
   return CJS_Result::Success(pValue);
 }
 
-void CJX_Tree::all(v8::Isolate* pIsolate,
-                   v8::Local<v8::Value>* pValue,
-                   bool bSetting,
-                   XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-
+v8::Local<v8::Value> CJX_Tree::allGetter(v8::Isolate* pIsolate,
+                                         XFA_Attribute eAttribute) {
+  v8::Local<v8::Value> result;
   uint32_t dwFlag = XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_ALL;
   WideString wsExpression = GetAttributeByEnum(XFA_Attribute::Name) + L"[*]";
-  ResolveNodeList(pIsolate, pValue, wsExpression, dwFlag, nullptr);
+  ResolveNodeList(pIsolate, &result, wsExpression, dwFlag, nullptr);
+  return result;
 }
 
-void CJX_Tree::classAll(v8::Isolate* pIsolate,
-                        v8::Local<v8::Value>* pValue,
-                        bool bSetting,
-                        XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+void CJX_Tree::allSetter(v8::Isolate* pIsolate,
+                         XFA_Attribute eAttribute,
+                         v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
 
+v8::Local<v8::Value> CJX_Tree::classAllGetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute) {
+  v8::Local<v8::Value> result;
   WideString wsExpression =
       L"#" + WideString::FromASCII(GetXFAObject()->GetClassName()) + L"[*]";
-  ResolveNodeList(pIsolate, pValue, wsExpression,
+  ResolveNodeList(pIsolate, &result, std::move(wsExpression),
                   XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_ALL, nullptr);
+  return result;
 }
 
-void CJX_Tree::nodes(v8::Isolate* pIsolate,
-                     v8::Local<v8::Value>* pValue,
-                     bool bSetting,
-                     XFA_Attribute eAttribute) {
-  if (bSetting) {
-    WideString wsMessage = L"Unable to set ";
-    FXJSE_ThrowMessage(wsMessage.ToUTF8().AsStringView());
-    return;
-  }
+void CJX_Tree::classAllSetter(v8::Isolate* pIsolate,
+                              XFA_Attribute eAttribute,
+                              v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
 
+v8::Local<v8::Value> CJX_Tree::nodesGetter(v8::Isolate* pIsolate,
+                                           XFA_Attribute eAttribute) {
   CXFA_Document* pDoc = GetDocument();
   auto* pNodeList = cppgc::MakeGarbageCollected<CXFA_AttachNodeList>(
       pDoc->GetHeap()->GetAllocationHandle(), pDoc, GetXFANode());
   pDoc->GetNodeOwner()->PersistList(pNodeList);
 
   CFXJSE_Engine* pEngine = pDoc->GetScriptContext();
-  *pValue = pNodeList->JSObject()->NewBoundV8Object(
+  return pNodeList->JSObject()->NewBoundV8Object(
       pIsolate, pEngine->GetJseNormalClass()->GetTemplate(pIsolate));
 }
 
-void CJX_Tree::parent(v8::Isolate* pIsolate,
-                      v8::Local<v8::Value>* pValue,
-                      bool bSetting,
-                      XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-
-  CXFA_Node* pParent = GetXFANode()->GetParent();
-  *pValue = pParent ? GetDocument()
-                          ->GetScriptContext()
-                          ->GetOrCreateJSBindingFromMap(pParent)
-                          .As<v8::Value>()
-                    : fxv8::NewNullHelper(pIsolate).As<v8::Value>();
+void CJX_Tree::nodesSetter(v8::Isolate* pIsolate,
+                           XFA_Attribute eAttribute,
+                           v8::Local<v8::Value> pValue) {
+  WideString wsMessage = L"Unable to set ";
+  FXJSE_ThrowMessage(wsMessage.ToUTF8().AsStringView());
 }
 
-void CJX_Tree::index(v8::Isolate* pIsolate,
-                     v8::Local<v8::Value>* pValue,
-                     bool bSetting,
-                     XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+v8::Local<v8::Value> CJX_Tree::parentGetter(v8::Isolate* pIsolate,
+                                            XFA_Attribute eAttribute) {
+  CXFA_Node* pParent = GetXFANode()->GetParent();
+  if (!pParent)
+    return fxv8::NewNullHelper(pIsolate);
 
+  return GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      pParent);
+}
+
+void CJX_Tree::parentSetter(v8::Isolate* pIsolate,
+                            XFA_Attribute eAttribute,
+                            v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
+
+v8::Local<v8::Value> CJX_Tree::indexGetter(v8::Isolate* pIsolate,
+                                           XFA_Attribute eAttribute) {
   CXFA_Node* pNode = GetXFANode();
   size_t iIndex = pNode ? pNode->GetIndexByName() : 0;
-  *pValue = fxv8::NewNumberHelper(pIsolate,
-                                  pdfium::base::checked_cast<int32_t>(iIndex));
+  return fxv8::NewNumberHelper(pIsolate,
+                               pdfium::base::checked_cast<int32_t>(iIndex));
 }
 
-void CJX_Tree::classIndex(v8::Isolate* pIsolate,
-                          v8::Local<v8::Value>* pValue,
-                          bool bSetting,
-                          XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+void CJX_Tree::indexSetter(v8::Isolate* pIsolate,
+                           XFA_Attribute eAttribute,
+                           v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
 
+v8::Local<v8::Value> CJX_Tree::classIndexGetter(v8::Isolate* pIsolate,
+                                                XFA_Attribute eAttribute) {
   CXFA_Node* pNode = GetXFANode();
   size_t iIndex = pNode ? pNode->GetIndexByClassName() : 0;
-  *pValue = fxv8::NewNumberHelper(pIsolate,
-                                  pdfium::base::checked_cast<int32_t>(iIndex));
+  return fxv8::NewNumberHelper(pIsolate,
+                               pdfium::base::checked_cast<int32_t>(iIndex));
 }
 
-void CJX_Tree::somExpression(v8::Isolate* pIsolate,
-                             v8::Local<v8::Value>* pValue,
-                             bool bSetting,
-                             XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+void CJX_Tree::classIndexSetter(v8::Isolate* pIsolate,
+                                XFA_Attribute eAttribute,
+                                v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
 
+v8::Local<v8::Value> CJX_Tree::somExpressionGetter(v8::Isolate* pIsolate,
+                                                   XFA_Attribute eAttribute) {
   ByteString bsSOMExpression = GetXFAObject()->GetSOMExpression().ToUTF8();
-  *pValue = fxv8::NewStringHelper(pIsolate, bsSOMExpression.AsStringView());
+  return fxv8::NewStringHelper(pIsolate, bsSOMExpression.AsStringView());
+}
+
+void CJX_Tree::somExpressionSetter(v8::Isolate* pIsolate,
+                                   XFA_Attribute eAttribute,
+                                   v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }
 
 void CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,

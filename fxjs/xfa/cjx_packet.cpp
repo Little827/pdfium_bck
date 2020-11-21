@@ -78,28 +78,28 @@ CJS_Result CJX_Packet::removeAttribute(
   return CJS_Result::Success(runtime->NewNull());
 }
 
-void CJX_Packet::content(v8::Isolate* pIsolate,
-                         v8::Local<v8::Value>* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_Packet::contentGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute) {
   CFX_XMLElement* element = ToXMLElement(GetXFANode()->GetXMLMappingNode());
-  if (bSetting) {
-    if (element) {
-      element->AppendLastChild(
-          GetXFANode()
-              ->GetDocument()
-              ->GetNotify()
-              ->GetFFDoc()
-              ->GetXMLDocument()
-              ->CreateNode<CFX_XMLText>(
-                  fxv8::ReentrantToWideStringHelper(pIsolate, *pValue)));
-    }
-    return;
-  }
-
   WideString wsTextData;
   if (element)
     wsTextData = element->GetTextData();
 
-  *pValue = fxv8::NewStringHelper(pIsolate, wsTextData.ToUTF8().AsStringView());
+  return fxv8::NewStringHelper(pIsolate, wsTextData.ToUTF8().AsStringView());
+}
+
+void CJX_Packet::contentSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute eAttribute,
+                               v8::Local<v8::Value> pValue) {
+  CFX_XMLElement* element = ToXMLElement(GetXFANode()->GetXMLMappingNode());
+  if (!element)
+    return;
+
+  WideString wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  element->AppendLastChild(GetXFANode()
+                               ->GetDocument()
+                               ->GetNotify()
+                               ->GetFFDoc()
+                               ->GetXMLDocument()
+                               ->CreateNode<CFX_XMLText>(std::move(wsValue)));
 }

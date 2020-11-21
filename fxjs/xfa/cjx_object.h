@@ -179,10 +179,11 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   JSE_PROP(ScriptSomInstanceIndex);
   JSE_PROP(ScriptSubmitFormatMode);
 
-  void ScriptSomMessage(v8::Isolate* pIsolate,
-                        v8::Local<v8::Value>* pValue,
-                        bool bSetting,
-                        XFA_SOM_MESSAGETYPE iMessageType);
+  v8::Local<v8::Value> ScriptSomMessageGetter(v8::Isolate* pIsolate,
+                                              XFA_SOM_MESSAGETYPE iMessageType);
+  void ScriptSomMessageSetter(v8::Isolate* pIsolate,
+                              XFA_SOM_MESSAGETYPE iMessageType,
+                              v8::Local<v8::Value> pValue);
 
   Optional<WideString> TryNamespace();
 
