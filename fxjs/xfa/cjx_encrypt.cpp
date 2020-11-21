@@ -6,6 +6,7 @@
 
 #include "fxjs/xfa/cjx_encrypt.h"
 
+#include "fxjs/fxv8.h"
 #include "xfa/fxfa/parser/cxfa_encrypt.h"
 
 CJX_Encrypt::CJX_Encrypt(CXFA_Encrypt* node) : CJX_Node(node) {}
@@ -16,7 +17,11 @@ bool CJX_Encrypt::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_Encrypt::format(v8::Isolate* pIsolate,
-                         v8::Local<v8::Value>* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Encrypt::formatGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Encrypt::formatSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute eAttribute,
+                               v8::Local<v8::Value> pValue) {}

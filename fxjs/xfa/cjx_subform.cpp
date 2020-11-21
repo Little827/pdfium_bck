@@ -87,31 +87,22 @@ CJS_Result CJX_Subform::execValidate(
       runtime->NewBoolean(iRet != XFA_EventError::kError));
 }
 
-void CJX_Subform::locale(v8::Isolate* pIsolate,
-                         v8::Local<v8::Value>* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {
-  if (bSetting) {
-    SetCDataImpl(XFA_Attribute::Locale,
-                 fxv8::ReentrantToWideStringHelper(pIsolate, *pValue), true,
-                 true);
-    return;
-  }
-
+v8::Local<v8::Value> CJX_Subform::localeGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute) {
   WideString wsLocaleName = GetXFANode()->GetLocaleName().value_or(L"");
-  *pValue =
-      fxv8::NewStringHelper(pIsolate, wsLocaleName.ToUTF8().AsStringView());
+  return fxv8::NewStringHelper(pIsolate, wsLocaleName.ToUTF8().AsStringView());
 }
 
-void CJX_Subform::instanceManager(v8::Isolate* pIsolate,
-                                  v8::Local<v8::Value>* pValue,
-                                  bool bSetting,
-                                  XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+void CJX_Subform::localeSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute eAttribute,
+                               v8::Local<v8::Value> pValue) {
+  WideString wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  SetCDataImpl(XFA_Attribute::Locale, std::move(wsValue), true, true);
+}
 
+v8::Local<v8::Value> CJX_Subform::instanceManagerGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   WideString wsName = GetCData(XFA_Attribute::Name);
   CXFA_Node* pInstanceMgr = nullptr;
   for (CXFA_Node* pNode = GetXFANode()->GetPrevSibling(); pNode;
@@ -126,9 +117,15 @@ void CJX_Subform::instanceManager(v8::Isolate* pIsolate,
       break;
     }
   }
-  *pValue = pInstanceMgr ? GetDocument()
-                               ->GetScriptContext()
-                               ->GetOrCreateJSBindingFromMap(pInstanceMgr)
-                               .As<v8::Value>()
-                         : fxv8::NewNullHelper(pIsolate).As<v8::Value>();
+  if (!pInstanceMgr)
+    return fxv8::NewNullHelper(pIsolate);
+
+  return GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      pInstanceMgr);
+}
+
+void CJX_Subform::instanceManagerSetter(v8::Isolate* pIsolate,
+                                        XFA_Attribute eAttribute,
+                                        v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }

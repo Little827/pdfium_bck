@@ -70,9 +70,14 @@ class CJX_EventPseudoModel final : public CJX_Object {
   static const TypeTag static_type__ = TypeTag::EventPseudoModel;
   static const CJX_MethodSpec MethodSpecs[];
 
+  v8::Local<v8::Value> PropertyGetter(v8::Isolate* pIsolate, XFA_Event dwFlag);
+  void PropertySetter(v8::Isolate* pIsolate,
+                      XFA_Event dwFlag,
+                      v8::Local<v8::Value> pValue);
+
   void Property(v8::Isolate* pIsolate,
-                v8::Local<v8::Value>* pValue,
                 XFA_Event dwFlag,
+                v8::Local<v8::Value>* pValue,
                 bool bSetting);
 };
 

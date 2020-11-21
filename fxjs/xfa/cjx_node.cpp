@@ -442,71 +442,70 @@ CJS_Result CJX_Node::setElement(
   return CJS_Result::Success();
 }
 
-void CJX_Node::ns(v8::Isolate* pIsolate,
-                  v8::Local<v8::Value>* pValue,
-                  bool bSetting,
-                  XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  *pValue = fxv8::NewStringHelper(
+v8::Local<v8::Value> CJX_Node::nsGetter(v8::Isolate* pIsolate,
+                                        XFA_Attribute eAttribute) {
+  return fxv8::NewStringHelper(
       pIsolate, TryNamespace().value_or(WideString()).ToUTF8().AsStringView());
 }
 
-void CJX_Node::model(v8::Isolate* pIsolate,
-                     v8::Local<v8::Value>* pValue,
-                     bool bSetting,
-                     XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  *pValue = GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+void CJX_Node::nsSetter(v8::Isolate* pIsolate,
+                        XFA_Attribute eAttribute,
+                        v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
+
+v8::Local<v8::Value> CJX_Node::modelGetter(v8::Isolate* pIsolate,
+                                           XFA_Attribute eAttribute) {
+  return GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
       GetXFANode()->GetModelNode());
 }
 
-void CJX_Node::isContainer(v8::Isolate* pIsolate,
-                           v8::Local<v8::Value>* pValue,
-                           bool bSetting,
-                           XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  *pValue = fxv8::NewBooleanHelper(pIsolate, GetXFANode()->IsContainerNode());
+void CJX_Node::modelSetter(v8::Isolate* pIsolate,
+                           XFA_Attribute eAttribute,
+                           v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }
 
-void CJX_Node::isNull(v8::Isolate* pIsolate,
-                      v8::Local<v8::Value>* pValue,
-                      bool bSetting,
-                      XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  if (GetXFANode()->GetElementType() == XFA_Element::Subform) {
-    *pValue = fxv8::NewBooleanHelper(pIsolate, false);
-    return;
-  }
-  *pValue = fxv8::NewBooleanHelper(pIsolate, GetContent(false).IsEmpty());
+v8::Local<v8::Value> CJX_Node::isContainerGetter(v8::Isolate* pIsolate,
+                                                 XFA_Attribute eAttribute) {
+  return fxv8::NewBooleanHelper(pIsolate, GetXFANode()->IsContainerNode());
 }
 
-void CJX_Node::oneOfChild(v8::Isolate* pIsolate,
-                          v8::Local<v8::Value>* pValue,
-                          bool bSetting,
-                          XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+void CJX_Node::isContainerSetter(v8::Isolate* pIsolate,
+                                 XFA_Attribute eAttribute,
+                                 v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
 
+v8::Local<v8::Value> CJX_Node::isNullGetter(v8::Isolate* pIsolate,
+                                            XFA_Attribute eAttribute) {
+  if (GetXFANode()->GetElementType() == XFA_Element::Subform)
+    return fxv8::NewBooleanHelper(pIsolate, false);
+
+  return fxv8::NewBooleanHelper(pIsolate, GetContent(false).IsEmpty());
+}
+
+void CJX_Node::isNullSetter(v8::Isolate* pIsolate,
+                            XFA_Attribute eAttribute,
+                            v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
+
+v8::Local<v8::Value> CJX_Node::oneOfChildGetter(v8::Isolate* pIsolate,
+                                                XFA_Attribute eAttribute) {
   std::vector<CXFA_Node*> properties =
       GetXFANode()->GetNodeListWithFilter(XFA_NODEFILTER_OneOfProperty);
-  if (!properties.empty()) {
-    *pValue = GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
-        properties.front());
-  }
+  if (properties.empty())
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  return GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      properties.front());
+}
+
+void CJX_Node::oneOfChildSetter(v8::Isolate* pIsolate,
+                                XFA_Attribute eAttribute,
+                                v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }
 
 XFA_EventError CJX_Node::execSingleEventByName(WideStringView wsEventName,

@@ -16,16 +16,24 @@ bool CJX_TextNode::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_TextNode::defaultValue(v8::Isolate* pIsolate,
-                                v8::Local<v8::Value>* pValue,
-                                bool bSetting,
-                                XFA_Attribute attr) {
-  ScriptSomDefaultValue(pIsolate, pValue, bSetting, attr);
+v8::Local<v8::Value> CJX_TextNode::defaultValueGetter(v8::Isolate* pIsolate,
+                                                      XFA_Attribute attr) {
+  return ScriptSomDefaultValueGetter(pIsolate, attr);
 }
 
-void CJX_TextNode::value(v8::Isolate* pIsolate,
-                         v8::Local<v8::Value>* pValue,
-                         bool bSetting,
-                         XFA_Attribute attr) {
-  ScriptSomDefaultValue(pIsolate, pValue, bSetting, attr);
+void CJX_TextNode::defaultValueSetter(v8::Isolate* pIsolate,
+                                      XFA_Attribute attr,
+                                      v8::Local<v8::Value> pValue) {
+  ScriptSomDefaultValueSetter(pIsolate, attr, pValue);
+}
+
+v8::Local<v8::Value> CJX_TextNode::valueGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute attr) {
+  return ScriptSomDefaultValueGetter(pIsolate, attr);
+}
+
+void CJX_TextNode::valueSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute attr,
+                               v8::Local<v8::Value> pValue) {
+  ScriptSomDefaultValueSetter(pIsolate, attr, pValue);
 }

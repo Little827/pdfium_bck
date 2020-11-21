@@ -466,8 +466,8 @@ void CFXJSE_Engine::NormalPropertySetter(v8::Isolate* pIsolate,
       info = XFA_GetScriptAttributeByName(pPropOrChild->GetElementType(),
                                           L"{default}");
       if (info.has_value()) {
-        pPropOrChild->JSObject()->ScriptSomDefaultValue(pIsolate, &pValue, true,
-                                                        XFA_Attribute::Unknown);
+        pPropOrChild->JSObject()->ScriptSomDefaultValueSetter(
+            pIsolate, XFA_Attribute::Unknown, pValue);
         return;
       }
     }

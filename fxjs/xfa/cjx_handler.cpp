@@ -6,6 +6,7 @@
 
 #include "fxjs/xfa/cjx_handler.h"
 
+#include "fxjs/fxv8.h"
 #include "xfa/fxfa/parser/cxfa_handler.h"
 
 CJX_Handler::CJX_Handler(CXFA_Handler* node) : CJX_TextNode(node) {}
@@ -16,7 +17,11 @@ bool CJX_Handler::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_Handler::version(v8::Isolate* pIsolate,
-                          v8::Local<v8::Value>* pValue,
-                          bool bSetting,
-                          XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Handler::versionGetter(v8::Isolate* pIsolate,
+                                                XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Handler::versionSetter(v8::Isolate* pIsolate,
+                                XFA_Attribute eAttribute,
+                                v8::Local<v8::Value> pValue) {}
