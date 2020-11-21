@@ -8,9 +8,9 @@
 
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/fxfa.h"
@@ -112,45 +112,59 @@ CJS_Result CJX_ExclGroup::selectedMember(
           pReturnNode));
 }
 
-void CJX_ExclGroup::defaultValue(v8::Isolate* pIsolate,
-                                 CFXJSE_Value* pValue,
-                                 bool bSetting,
-                                 XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_ExclGroup::defaultValueGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_Node* node = GetXFANode();
+  if (!node->IsWidgetReady())
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  WideString wsValue = GetContent(true);
+  XFA_VERSION curVersion = GetDocument()->GetCurVersionMode();
+  if (wsValue.IsEmpty() && curVersion >= XFA_VERSION_300)
+    return fxv8::NewNullHelper(pIsolate);
+
+  return fxv8::NewStringHelper(pIsolate, wsValue.ToUTF8().AsStringView());
+}
+
+void CJX_ExclGroup::defaultValueSetter(v8::Isolate* pIsolate,
+                                       XFA_Attribute eAttribute,
+                                       v8::Local<v8::Value> pValue) {
   CXFA_Node* node = GetXFANode();
   if (!node->IsWidgetReady())
     return;
 
-  if (bSetting) {
-    node->SetSelectedMemberByValue(
-        pValue->ToWideString(pIsolate).AsStringView(), true, true, true);
-    return;
-  }
-
-  WideString wsValue = GetContent(true);
-  XFA_VERSION curVersion = GetDocument()->GetCurVersionMode();
-  if (wsValue.IsEmpty() && curVersion >= XFA_VERSION_300) {
-    pValue->SetNull(pIsolate);
-    return;
-  }
-  pValue->SetString(pIsolate, wsValue.ToUTF8().AsStringView());
+  WideString wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  node->SetSelectedMemberByValue(wsValue.AsStringView(), true, true, true);
 }
 
-void CJX_ExclGroup::rawValue(v8::Isolate* pIsolate,
-                             CFXJSE_Value* pValue,
-                             bool bSetting,
-                             XFA_Attribute eAttribute) {
-  defaultValue(pIsolate, pValue, bSetting, eAttribute);
+v8::Local<v8::Value> CJX_ExclGroup::rawValueGetter(v8::Isolate* pIsolate,
+                                                   XFA_Attribute eAttribute) {
+  return defaultValueGetter(pIsolate, eAttribute);
 }
 
-void CJX_ExclGroup::transient(v8::Isolate* pIsolate,
-                              CFXJSE_Value* pValue,
-                              bool bSetting,
-                              XFA_Attribute eAttribute) {}
+void CJX_ExclGroup::rawValueSetter(v8::Isolate* pIsolate,
+                                   XFA_Attribute eAttribute,
+                                   v8::Local<v8::Value> pValue) {
+  defaultValueSetter(pIsolate, eAttribute, pValue);
+}
 
-void CJX_ExclGroup::errorText(v8::Isolate* pIsolate,
-                              CFXJSE_Value* pValue,
-                              bool bSetting,
-                              XFA_Attribute eAttribute) {
-  if (bSetting)
-    ThrowInvalidPropertyException();
+v8::Local<v8::Value> CJX_ExclGroup::transientGetter(v8::Isolate* pIsolate,
+                                                    XFA_Attribute eAttribute) {
+  return fxv8::NewNullHelper(pIsolate);
+}
+
+void CJX_ExclGroup::transientSetter(v8::Isolate* pIsolate,
+                                    XFA_Attribute eAttribute,
+                                    v8::Local<v8::Value> pValue) {}
+
+v8::Local<v8::Value> CJX_ExclGroup::errorTextGetter(v8::Isolate* pIsolate,
+                                                    XFA_Attribute eAttribute) {
+  return fxv8::NewNullHelper(pIsolate);
+}
+
+void CJX_ExclGroup::errorTextSetter(v8::Isolate* pIsolate,
+                                    XFA_Attribute eAttribute,
+                                    v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }

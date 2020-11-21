@@ -9,9 +9,9 @@
 #include <vector>
 
 #include "fxjs/cfx_v8.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/fxfa.h"
@@ -87,29 +87,22 @@ CJS_Result CJX_Subform::execValidate(
       runtime->NewBoolean(iRet != XFA_EventError::kError));
 }
 
-void CJX_Subform::locale(v8::Isolate* pIsolate,
-                         CFXJSE_Value* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {
-  if (bSetting) {
-    SetCDataImpl(XFA_Attribute::Locale, pValue->ToWideString(pIsolate), true,
-                 true);
-    return;
-  }
-
+v8::Local<v8::Value> CJX_Subform::localeGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute) {
   WideString wsLocaleName = GetXFANode()->GetLocaleName().value_or(L"");
-  pValue->SetString(pIsolate, wsLocaleName.ToUTF8().AsStringView());
+  return fxv8::NewStringHelper(pIsolate, wsLocaleName.ToUTF8().AsStringView());
 }
 
-void CJX_Subform::instanceManager(v8::Isolate* pIsolate,
-                                  CFXJSE_Value* pValue,
-                                  bool bSetting,
-                                  XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+void CJX_Subform::localeSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute eAttribute,
+                               v8::Local<v8::Value> pValue) {
+  WideString wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  SetCDataImpl(XFA_Attribute::Locale, std::move(wsValue), true, true);
+}
 
+v8::Local<v8::Value> CJX_Subform::instanceManagerGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   WideString wsName = GetCData(XFA_Attribute::Name);
   CXFA_Node* pInstanceMgr = nullptr;
   for (CXFA_Node* pNode = GetXFANode()->GetPrevSibling(); pNode;
@@ -124,12 +117,15 @@ void CJX_Subform::instanceManager(v8::Isolate* pIsolate,
       break;
     }
   }
-  if (!pInstanceMgr) {
-    pValue->SetNull(pIsolate);
-    return;
-  }
+  if (!pInstanceMgr)
+    return fxv8::NewNullHelper(pIsolate);
 
-  pValue->ForceSetValue(
-      pIsolate, GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
-                    pInstanceMgr));
+  return GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      pInstanceMgr);
+}
+
+void CJX_Subform::instanceManagerSetter(v8::Isolate* pIsolate,
+                                        XFA_Attribute eAttribute,
+                                        v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }

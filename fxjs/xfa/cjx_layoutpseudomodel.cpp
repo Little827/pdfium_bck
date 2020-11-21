@@ -10,10 +10,10 @@
 #include <utility>
 
 #include "core/fxcrt/fx_coordinates.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "third_party/base/stl_util.h"
 #include "v8/include/cppgc/allocation.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
@@ -62,20 +62,25 @@ bool CJX_LayoutPseudoModel::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_LayoutPseudoModel::ready(v8::Isolate* pIsolate,
-                                  CFXJSE_Value* pValue,
-                                  bool bSetting,
-                                  XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_LayoutPseudoModel::readyGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  int32_t iStatus = pNotify->GetLayoutStatus();
+  return fxv8::NewBooleanHelper(pIsolate, iStatus >= 2);
+}
+
+void CJX_LayoutPseudoModel::readySetter(v8::Isolate* pIsolate,
+                                        XFA_Attribute eAttribute,
+                                        v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
-  if (bSetting) {
-    ThrowException(WideString::FromASCII("Unable to set ready value."));
-    return;
-  }
 
-  int32_t iStatus = pNotify->GetLayoutStatus();
-  pValue->SetBoolean(pIsolate, iStatus >= 2);
+  ThrowException(WideString::FromASCII("Unable to set ready value."));
 }
 
 CJS_Result CJX_LayoutPseudoModel::HWXY(

@@ -9,14 +9,13 @@
 #include <memory>
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/parser/cscript_hostpseudomodel.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
-#include "xfa/fxfa/parser/xfa_resolvenode_rs.h"
 
 namespace {
 
@@ -76,107 +75,153 @@ bool CJX_HostPseudoModel::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_HostPseudoModel::appType(v8::Isolate* pIsolate,
-                                  CFXJSE_Value* pValue,
-                                  bool bSetting,
-                                  XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::appTypeGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  return fxv8::NewStringHelper(pIsolate, "Exchange");
+}
+
+void CJX_HostPseudoModel::appTypeSetter(v8::Isolate* pIsolate,
+                                        XFA_Attribute eAttribute,
+                                        v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
 
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  pValue->SetString(pIsolate, "Exchange");
+  ThrowInvalidPropertyException();
 }
 
-void CJX_HostPseudoModel::calculationsEnabled(v8::Isolate* pIsolate,
-                                              CFXJSE_Value* pValue,
-                                              bool bSetting,
-                                              XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::calculationsEnabledGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
+  return fxv8::NewBooleanHelper(pIsolate, hDoc->IsCalculationsEnabled());
+}
+
+void CJX_HostPseudoModel::calculationsEnabledSetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute,
+    v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
-  if (bSetting) {
-    hDoc->SetCalculationsEnabled(pValue->ToBoolean(pIsolate));
-    return;
-  }
-  pValue->SetBoolean(pIsolate, hDoc->IsCalculationsEnabled());
+  hDoc->SetCalculationsEnabled(
+      fxv8::ReentrantToBooleanHelper(pIsolate, pValue));
 }
 
-void CJX_HostPseudoModel::currentPage(v8::Isolate* pIsolate,
-                                      CFXJSE_Value* pValue,
-                                      bool bSetting,
-                                      XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::currentPageGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
+  return fxv8::NewNumberHelper(pIsolate, hDoc->GetCurrentPage());
+}
+
+void CJX_HostPseudoModel::currentPageSetter(v8::Isolate* pIsolate,
+                                            XFA_Attribute eAttribute,
+                                            v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
-  if (bSetting) {
-    hDoc->SetCurrentPage(pValue->ToInteger(pIsolate));
-    return;
-  }
-  pValue->SetInteger(pIsolate, hDoc->GetCurrentPage());
+  hDoc->SetCurrentPage(fxv8::ReentrantToInt32Helper(pIsolate, pValue));
 }
 
-void CJX_HostPseudoModel::language(v8::Isolate* pIsolate,
-                                   CFXJSE_Value* pValue,
-                                   bool bSetting,
-                                   XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::languageGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  ByteString lang = pNotify->GetAppProvider()->GetLanguage().ToUTF8();
+  return fxv8::NewStringHelper(pIsolate, lang.AsStringView());
+}
+
+void CJX_HostPseudoModel::languageSetter(v8::Isolate* pIsolate,
+                                         XFA_Attribute eAttribute,
+                                         v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
 
-  if (bSetting) {
-    ThrowException(WideString::FromASCII("Unable to set language value."));
-    return;
-  }
-  pValue->SetString(
-      pIsolate,
-      pNotify->GetAppProvider()->GetLanguage().ToUTF8().AsStringView());
+  ThrowException(WideString::FromASCII("Unable to set language value."));
 }
 
-void CJX_HostPseudoModel::numPages(v8::Isolate* pIsolate,
-                                   CFXJSE_Value* pValue,
-                                   bool bSetting,
-                                   XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::numPagesGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
-    return;
+    return fxv8::NewUndefinedHelper(pIsolate);
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
-  if (bSetting) {
-    ThrowException(WideString::FromASCII("Unable to set numPages value."));
-    return;
-  }
-  pValue->SetInteger(pIsolate, hDoc->CountPages());
+  return fxv8::NewNumberHelper(pIsolate, hDoc->CountPages());
 }
 
-void CJX_HostPseudoModel::platform(v8::Isolate* pIsolate,
-                                   CFXJSE_Value* pValue,
-                                   bool bSetting,
-                                   XFA_Attribute eAttribute) {
+void CJX_HostPseudoModel::numPagesSetter(v8::Isolate* pIsolate,
+                                         XFA_Attribute eAttribute,
+                                         v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
 
-  if (bSetting) {
-    ThrowException(WideString::FromASCII("Unable to set platform value."));
-    return;
-  }
-  pValue->SetString(
-      pIsolate,
-      pNotify->GetAppProvider()->GetPlatform().ToUTF8().AsStringView());
+  ThrowException(WideString::FromASCII("Unable to set numPages value."));
 }
 
-void CJX_HostPseudoModel::title(v8::Isolate* pIsolate,
-                                CFXJSE_Value* pValue,
-                                bool bSetting,
-                                XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::platformGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  ByteString plat = pNotify->GetAppProvider()->GetPlatform().ToUTF8();
+  return fxv8::NewStringHelper(pIsolate, plat.AsStringView());
+}
+
+void CJX_HostPseudoModel::platformSetter(v8::Isolate* pIsolate,
+                                         XFA_Attribute eAttribute,
+                                         v8::Local<v8::Value> pValue) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return;
+
+  ThrowException(WideString::FromASCII("Unable to set platform value."));
+}
+
+v8::Local<v8::Value> CJX_HostPseudoModel::titleGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  if (!GetDocument()->GetScriptContext()->IsRunAtClient())
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
+  ByteString bsTitle = hDoc->GetTitle().ToUTF8();
+  return fxv8::NewStringHelper(pIsolate, bsTitle.AsStringView());
+}
+
+void CJX_HostPseudoModel::titleSetter(v8::Isolate* pIsolate,
+                                      XFA_Attribute eAttribute,
+                                      v8::Local<v8::Value> pValue) {
   if (!GetDocument()->GetScriptContext()->IsRunAtClient())
     return;
 
@@ -185,73 +230,80 @@ void CJX_HostPseudoModel::title(v8::Isolate* pIsolate,
     return;
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
-  if (bSetting) {
-    hDoc->SetTitle(pValue->ToWideString(pIsolate));
-    return;
-  }
-
-  WideString wsTitle = hDoc->GetTitle();
-  pValue->SetString(pIsolate, wsTitle.ToUTF8().AsStringView());
+  hDoc->SetTitle(fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
 }
 
-void CJX_HostPseudoModel::validationsEnabled(v8::Isolate* pIsolate,
-                                             CFXJSE_Value* pValue,
-                                             bool bSetting,
-                                             XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::validationsEnabledGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
+  return fxv8::NewBooleanHelper(pIsolate, hDoc->IsValidationsEnabled());
+}
+
+void CJX_HostPseudoModel::validationsEnabledSetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute,
+    v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
-  if (bSetting) {
-    hDoc->SetValidationsEnabled(pValue->ToBoolean(pIsolate));
-    return;
-  }
-
-  bool bEnabled = hDoc->IsValidationsEnabled();
-  pValue->SetBoolean(pIsolate, bEnabled);
+  hDoc->SetValidationsEnabled(fxv8::ReentrantToBooleanHelper(pIsolate, pValue));
 }
 
-void CJX_HostPseudoModel::variation(v8::Isolate* pIsolate,
-                                    CFXJSE_Value* pValue,
-                                    bool bSetting,
-                                    XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_HostPseudoModel::variationGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  if (!GetDocument()->GetScriptContext()->IsRunAtClient())
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  return fxv8::NewStringHelper(pIsolate, "Full");
+}
+
+void CJX_HostPseudoModel::variationSetter(v8::Isolate* pIsolate,
+                                          XFA_Attribute eAttribute,
+                                          v8::Local<v8::Value> pValue) {
   if (!GetDocument()->GetScriptContext()->IsRunAtClient())
     return;
 
-  if (bSetting) {
-    ThrowException(WideString::FromASCII("Unable to set variation value."));
-    return;
-  }
-  pValue->SetString(pIsolate, "Full");
+  ThrowException(WideString::FromASCII("Unable to set variation value."));
 }
 
-void CJX_HostPseudoModel::version(v8::Isolate* pIsolate,
-                                  CFXJSE_Value* pValue,
-                                  bool bSetting,
-                                  XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowException(WideString::FromASCII("Unable to set version value."));
-    return;
-  }
-  pValue->SetString(pIsolate, "11");
+v8::Local<v8::Value> CJX_HostPseudoModel::versionGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewStringHelper(pIsolate, "11");
 }
 
-void CJX_HostPseudoModel::name(v8::Isolate* pIsolate,
-                               CFXJSE_Value* pValue,
-                               bool bSetting,
-                               XFA_Attribute eAttribute) {
+void CJX_HostPseudoModel::versionSetter(v8::Isolate* pIsolate,
+                                        XFA_Attribute eAttribute,
+                                        v8::Local<v8::Value> pValue) {
+  ThrowException(WideString::FromASCII("Unable to set version value."));
+}
+
+v8::Local<v8::Value> CJX_HostPseudoModel::nameGetter(v8::Isolate* pIsolate,
+                                                     XFA_Attribute eAttribute) {
+  CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+  if (!pNotify)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  ByteString bsName = pNotify->GetAppProvider()->GetAppName().ToUTF8();
+  return fxv8::NewStringHelper(pIsolate, bsName.AsStringView());
+}
+
+void CJX_HostPseudoModel::nameSetter(v8::Isolate* pIsolate,
+                                     XFA_Attribute eAttribute,
+                                     v8::Local<v8::Value> pValue) {
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (!pNotify)
     return;
 
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  pValue->SetString(
-      pIsolate,
-      pNotify->GetAppProvider()->GetAppName().ToUTF8().AsStringView());
+  ThrowInvalidPropertyException();
 }
 
 CJS_Result CJX_HostPseudoModel::gotoURL(
@@ -296,16 +348,16 @@ CJS_Result CJX_HostPseudoModel::openList(
 
     uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
                       XFA_RESOLVENODE_Siblings;
-    XFA_ResolveNodeRS resolveNodeRS;
-    bool bRet = pScriptContext->ResolveObjects(
-        pObject, runtime->ToWideString(params[0]).AsStringView(),
-        &resolveNodeRS, dwFlag, nullptr);
-    if (!bRet || !resolveNodeRS.objects.front()->IsNode())
+    Optional<CFXJSE_Engine::ResolveResult> maybeResult =
+        pScriptContext->ResolveObjects(
+            pObject, runtime->ToWideString(params[0]).AsStringView(), dwFlag,
+            nullptr);
+    if (!maybeResult.has_value() ||
+        !maybeResult.value().objects.front()->IsNode()) {
       return CJS_Result::Success();
-
-    pNode = resolveNodeRS.objects.front()->AsNode();
+    }
+    pNode = maybeResult.value().objects.front()->AsNode();
   }
-
   if (pNode)
     pNotify->OpenDropDownList(pNode);
 
@@ -382,13 +434,14 @@ CJS_Result CJX_HostPseudoModel::resetData(
 
     uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
                       XFA_RESOLVENODE_Siblings;
-    XFA_ResolveNodeRS resolveNodeRS;
-    bool bRet = pScriptContext->ResolveObjects(pObject, wsName.AsStringView(),
-                                               &resolveNodeRS, dwFlag, nullptr);
-    if (!bRet || !resolveNodeRS.objects.front()->IsNode())
+    Optional<CFXJSE_Engine::ResolveResult> maybeResult =
+        pScriptContext->ResolveObjects(pObject, wsName.AsStringView(), dwFlag,
+                                       nullptr);
+    if (!maybeResult.has_value() ||
+        !maybeResult.value().objects.front()->IsNode())
       continue;
 
-    pNode = resolveNodeRS.objects.front()->AsNode();
+    pNode = maybeResult.value().objects.front()->AsNode();
     pNotify->ResetData(pNode->IsWidgetReady() ? pNode : nullptr);
   }
   if (!pNode)
@@ -444,14 +497,15 @@ CJS_Result CJX_HostPseudoModel::setFocus(
 
       uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
                         XFA_RESOLVENODE_Siblings;
-      XFA_ResolveNodeRS resolveNodeRS;
-      bool bRet = pScriptContext->ResolveObjects(
-          pObject, runtime->ToWideString(params[0]).AsStringView(),
-          &resolveNodeRS, dwFlag, nullptr);
-      if (!bRet || !resolveNodeRS.objects.front()->IsNode())
+      Optional<CFXJSE_Engine::ResolveResult> maybeResult =
+          pScriptContext->ResolveObjects(
+              pObject, runtime->ToWideString(params[0]).AsStringView(), dwFlag,
+              nullptr);
+      if (!maybeResult.has_value() ||
+          !maybeResult.value().objects.front()->IsNode()) {
         return CJS_Result::Success();
-
-      pNode = resolveNodeRS.objects.front()->AsNode();
+      }
+      pNode = maybeResult.value().objects.front()->AsNode();
     }
   }
   pNotify->SetFocusWidgetNode(pNode);

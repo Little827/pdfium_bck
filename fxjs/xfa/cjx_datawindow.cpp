@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "fxjs/xfa/cfxjse_value.h"
+#include "fxjs/fxv8.h"
 #include "xfa/fxfa/parser/cscript_datawindow.h"
 
 const CJX_MethodSpec CJX_DataWindow::MethodSpecs[] = {
@@ -52,22 +52,41 @@ CJS_Result CJX_DataWindow::isRecordGroup(
   return CJS_Result::Success();
 }
 
-void CJX_DataWindow::recordsBefore(v8::Isolate* pIsolate,
-                                   CFXJSE_Value* pValue,
-                                   bool bSetting,
-                                   XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_DataWindow::recordsBeforeGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
 
-void CJX_DataWindow::currentRecordNumber(v8::Isolate* pIsolate,
-                                         CFXJSE_Value* pValue,
-                                         bool bSetting,
-                                         XFA_Attribute eAttribute) {}
+void CJX_DataWindow::recordsBeforeSetter(v8::Isolate* pIsolate,
+                                         XFA_Attribute eAttribute,
+                                         v8::Local<v8::Value> pValue) {}
 
-void CJX_DataWindow::recordsAfter(v8::Isolate* pIsolate,
-                                  CFXJSE_Value* pValue,
-                                  bool bSetting,
-                                  XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_DataWindow::currentRecordNumberGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
 
-void CJX_DataWindow::isDefined(v8::Isolate* pIsolate,
-                               CFXJSE_Value* pValue,
-                               bool bSetting,
-                               XFA_Attribute eAttribute) {}
+void CJX_DataWindow::currentRecordNumberSetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute,
+                                               v8::Local<v8::Value> pValue) {}
+
+v8::Local<v8::Value> CJX_DataWindow::recordsAfterGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_DataWindow::recordsAfterSetter(v8::Isolate* pIsolate,
+                                        XFA_Attribute eAttribute,
+                                        v8::Local<v8::Value> pValue) {}
+
+v8::Local<v8::Value> CJX_DataWindow::isDefinedGetter(v8::Isolate* pIsolate,
+                                                     XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_DataWindow::isDefinedSetter(v8::Isolate* pIsolate,
+                                     XFA_Attribute eAttribute,
+                                     v8::Local<v8::Value> pValue) {}

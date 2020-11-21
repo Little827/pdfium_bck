@@ -6,7 +6,6 @@
 
 #include "fxjs/xfa/cjx_textnode.h"
 
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
 CJX_TextNode::CJX_TextNode(CXFA_Node* node) : CJX_Node(node) {}
@@ -17,16 +16,24 @@ bool CJX_TextNode::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_TextNode::defaultValue(v8::Isolate* pIsolate,
-                                CFXJSE_Value* pValue,
-                                bool bSetting,
-                                XFA_Attribute attr) {
-  ScriptSomDefaultValue(pIsolate, pValue, bSetting, attr);
+v8::Local<v8::Value> CJX_TextNode::defaultValueGetter(v8::Isolate* pIsolate,
+                                                      XFA_Attribute attr) {
+  return ScriptSomDefaultValueGetter(pIsolate, attr);
 }
 
-void CJX_TextNode::value(v8::Isolate* pIsolate,
-                         CFXJSE_Value* pValue,
-                         bool bSetting,
-                         XFA_Attribute attr) {
-  ScriptSomDefaultValue(pIsolate, pValue, bSetting, attr);
+void CJX_TextNode::defaultValueSetter(v8::Isolate* pIsolate,
+                                      XFA_Attribute attr,
+                                      v8::Local<v8::Value> pValue) {
+  ScriptSomDefaultValueSetter(pIsolate, attr, pValue);
+}
+
+v8::Local<v8::Value> CJX_TextNode::valueGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute attr) {
+  return ScriptSomDefaultValueGetter(pIsolate, attr);
+}
+
+void CJX_TextNode::valueSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute attr,
+                               v8::Local<v8::Value> pValue) {
+  ScriptSomDefaultValueSetter(pIsolate, attr, pValue);
 }

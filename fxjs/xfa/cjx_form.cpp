@@ -8,9 +8,9 @@
 
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "v8/include/cppgc/allocation.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
@@ -129,17 +129,17 @@ CJS_Result CJX_Form::execValidate(
       runtime->NewBoolean(iRet != XFA_EventError::kError));
 }
 
-void CJX_Form::checksumS(v8::Isolate* pIsolate,
-                         CFXJSE_Value* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {
-  if (bSetting) {
-    SetAttributeByEnum(XFA_Attribute::Checksum, pValue->ToWideString(pIsolate),
-                       false);
-    return;
-  }
-
+v8::Local<v8::Value> CJX_Form::checksumSGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute) {
   Optional<WideString> checksum = TryAttribute(XFA_Attribute::Checksum, false);
-  pValue->SetString(pIsolate,
-                    checksum ? checksum->ToUTF8().AsStringView() : "");
+  return fxv8::NewStringHelper(
+      pIsolate,
+      checksum.has_value() ? checksum.value().ToUTF8().AsStringView() : "");
+}
+
+void CJX_Form::checksumSSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute eAttribute,
+                               v8::Local<v8::Value> pValue) {
+  WideString wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  SetAttributeByEnum(XFA_Attribute::Checksum, std::move(wsValue), false);
 }

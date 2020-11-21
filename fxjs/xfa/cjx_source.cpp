@@ -8,8 +8,8 @@
 
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cxfa_source.h"
 
 const CJX_MethodSpec CJX_Source::MethodSpecs[] = {
@@ -183,7 +183,11 @@ CJS_Result CJX_Source::hasDataChanged(
   return CJS_Result::Success();
 }
 
-void CJX_Source::db(v8::Isolate* pIsolate,
-                    CFXJSE_Value* pValue,
-                    bool bSetting,
-                    XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Source::dbGetter(v8::Isolate* pIsolate,
+                                          XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Source::dbSetter(v8::Isolate* pIsolate,
+                          XFA_Attribute eAttribute,
+                          v8::Local<v8::Value> pValue) {}

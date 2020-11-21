@@ -6,8 +6,8 @@
 
 #include "fxjs/xfa/cjx_xfa.h"
 
+#include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/cxfa_xfa.h"
 
@@ -19,19 +19,16 @@ bool CJX_Xfa::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_Xfa::thisValue(v8::Isolate* pIsolate,
-                        CFXJSE_Value* pValue,
-                        bool bSetting,
-                        XFA_Attribute eAttribute) {
-  if (bSetting)
-    return;
-
+v8::Local<v8::Value> CJX_Xfa::thisValueGetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute) {
   auto* pScriptContext = GetDocument()->GetScriptContext();
   CXFA_Object* pThis = pScriptContext->GetThisObject();
-  if (!pThis) {
-    pValue->SetNull(pIsolate);
-    return;
-  }
-  pValue->ForceSetValue(pIsolate,
-                        pScriptContext->GetOrCreateJSBindingFromMap(pThis));
+  if (!pThis)
+    return fxv8::NewNullHelper(pIsolate);
+
+  return pScriptContext->GetOrCreateJSBindingFromMap(pThis);
 }
+
+void CJX_Xfa::thisValueSetter(v8::Isolate* pIsolate,
+                              XFA_Attribute eAttribute,
+                              v8::Local<v8::Value> pValue) {}

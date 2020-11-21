@@ -8,8 +8,8 @@
 
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cxfa_delta.h"
 
 const CJX_MethodSpec CJX_Delta::MethodSpecs[] = {{"restore", restore_static}};
@@ -32,17 +32,29 @@ CJS_Result CJX_Delta::restore(CFX_V8* runtime,
   return CJS_Result::Success();
 }
 
-void CJX_Delta::currentValue(v8::Isolate* pIsolate,
-                             CFXJSE_Value* pValue,
-                             bool bSetting,
-                             XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Delta::currentValueGetter(v8::Isolate* pIsolate,
+                                                   XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
 
-void CJX_Delta::savedValue(v8::Isolate* pIsolate,
-                           CFXJSE_Value* pValue,
-                           bool bSetting,
-                           XFA_Attribute eAttribute) {}
+void CJX_Delta::currentValueSetter(v8::Isolate* pIsolate,
+                                   XFA_Attribute eAttribute,
+                                   v8::Local<v8::Value> pValue) {}
 
-void CJX_Delta::target(v8::Isolate* pIsolate,
-                       CFXJSE_Value* pValue,
-                       bool bSetting,
-                       XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Delta::savedValueGetter(v8::Isolate* pIsolate,
+                                                 XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Delta::savedValueSetter(v8::Isolate* pIsolate,
+                                 XFA_Attribute eAttribute,
+                                 v8::Local<v8::Value> pValue) {}
+
+v8::Local<v8::Value> CJX_Delta::targetGetter(v8::Isolate* pIsolate,
+                                             XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Delta::targetSetter(v8::Isolate* pIsolate,
+                             XFA_Attribute eAttribute,
+                             v8::Local<v8::Value> pValue) {}

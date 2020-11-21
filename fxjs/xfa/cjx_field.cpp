@@ -9,8 +9,8 @@
 #include <vector>
 
 #include "fxjs/cfx_v8.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fgas/crt/cfgas_decimal.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
@@ -242,40 +242,15 @@ CJS_Result CJX_Field::execValidate(
       runtime->NewBoolean(iRet != XFA_EventError::kError));
 }
 
-void CJX_Field::defaultValue(v8::Isolate* pIsolate,
-                             CFXJSE_Value* pValue,
-                             bool bSetting,
-                             XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_Field::defaultValueGetter(v8::Isolate* pIsolate,
+                                                   XFA_Attribute eAttribute) {
   CXFA_Node* xfaNode = GetXFANode();
   if (!xfaNode->IsWidgetReady())
-    return;
-
-  if (bSetting) {
-    if (pValue) {
-      xfaNode->SetPreNull(xfaNode->IsNull());
-      xfaNode->SetIsNull(pValue->IsNull(pIsolate));
-    }
-
-    WideString wsNewText;
-    if (pValue && !(pValue->IsNull(pIsolate) || pValue->IsUndefined(pIsolate)))
-      wsNewText = pValue->ToWideString(pIsolate);
-    if (xfaNode->GetUIChildNode()->GetElementType() == XFA_Element::NumericEdit)
-      wsNewText = xfaNode->NumericLimit(wsNewText);
-
-    CXFA_Node* pContainerNode = xfaNode->GetContainerNode();
-    WideString wsFormatText(wsNewText);
-    if (pContainerNode)
-      wsFormatText = pContainerNode->GetFormatDataValue(wsNewText);
-
-    SetContent(wsNewText, wsFormatText, true, true, true);
-    return;
-  }
+    return fxv8::NewUndefinedHelper(pIsolate);
 
   WideString content = GetContent(true);
-  if (content.IsEmpty()) {
-    pValue->SetNull(pIsolate);
-    return;
-  }
+  if (content.IsEmpty())
+    return fxv8::NewNullHelper(pIsolate);
 
   CXFA_Node* formValue = xfaNode->GetFormValueIfExists();
   CXFA_Node* pNode = formValue ? formValue->GetFirstChild() : nullptr;
@@ -283,105 +258,143 @@ void CJX_Field::defaultValue(v8::Isolate* pIsolate,
     if (xfaNode->GetUIChildNode()->GetElementType() ==
             XFA_Element::NumericEdit &&
         (pNode->JSObject()->GetInteger(XFA_Attribute::FracDigits) == -1)) {
-      pValue->SetString(pIsolate, content.ToUTF8().AsStringView());
-    } else {
-      CFGAS_Decimal decimal(content.AsStringView());
-      pValue->SetFloat(pIsolate, decimal.ToFloat());
+      return fxv8::NewStringHelper(pIsolate, content.ToUTF8().AsStringView());
     }
-  } else if (pNode && pNode->GetElementType() == XFA_Element::Integer) {
-    pValue->SetInteger(pIsolate, FXSYS_wtoi(content.c_str()));
-  } else if (pNode && pNode->GetElementType() == XFA_Element::Boolean) {
-    pValue->SetBoolean(pIsolate, FXSYS_wtoi(content.c_str()) != 0);
-  } else if (pNode && pNode->GetElementType() == XFA_Element::Float) {
     CFGAS_Decimal decimal(content.AsStringView());
-    pValue->SetFloat(pIsolate, decimal.ToFloat());
-  } else {
-    pValue->SetString(pIsolate, content.ToUTF8().AsStringView());
+    return fxv8::NewNumberHelper(pIsolate, decimal.ToFloat());
   }
+  if (pNode && pNode->GetElementType() == XFA_Element::Integer)
+    return fxv8::NewNumberHelper(pIsolate, FXSYS_wtoi(content.c_str()));
+
+  if (pNode && pNode->GetElementType() == XFA_Element::Boolean)
+    return fxv8::NewBooleanHelper(pIsolate, FXSYS_wtoi(content.c_str()) != 0);
+
+  if (pNode && pNode->GetElementType() == XFA_Element::Float) {
+    CFGAS_Decimal decimal(content.AsStringView());
+    return fxv8::NewNumberHelper(pIsolate, decimal.ToFloat());
+  }
+  return fxv8::NewStringHelper(pIsolate, content.ToUTF8().AsStringView());
 }
 
-void CJX_Field::editValue(v8::Isolate* pIsolate,
-                          CFXJSE_Value* pValue,
-                          bool bSetting,
-                          XFA_Attribute eAttribute) {
-  CXFA_Node* node = GetXFANode();
-  if (!node->IsWidgetReady())
+void CJX_Field::defaultValueSetter(v8::Isolate* pIsolate,
+                                   XFA_Attribute eAttribute,
+                                   v8::Local<v8::Value> pValue) {
+  CXFA_Node* xfaNode = GetXFANode();
+  if (!xfaNode->IsWidgetReady())
     return;
 
-  if (bSetting) {
-    node->SetValue(XFA_VALUEPICTURE_Edit, pValue->ToWideString(pIsolate));
-    return;
-  }
-  pValue->SetString(
+  xfaNode->SetPreNull(xfaNode->IsNull());
+  xfaNode->SetIsNull(fxv8::IsNull(pValue));
+
+  WideString wsNewText;
+  if (!(fxv8::IsNull(pValue) || fxv8::IsUndefined(pValue)))
+    wsNewText = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  if (xfaNode->GetUIChildNode()->GetElementType() == XFA_Element::NumericEdit)
+    wsNewText = xfaNode->NumericLimit(wsNewText);
+
+  CXFA_Node* pContainerNode = xfaNode->GetContainerNode();
+  WideString wsFormatText = wsNewText;
+  if (pContainerNode)
+    wsFormatText = pContainerNode->GetFormatDataValue(wsNewText);
+
+  SetContent(wsNewText, wsFormatText, true, true, true);
+}
+
+v8::Local<v8::Value> CJX_Field::editValueGetter(v8::Isolate* pIsolate,
+                                                XFA_Attribute eAttribute) {
+  CXFA_Node* node = GetXFANode();
+  if (!node->IsWidgetReady())
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  return fxv8::NewStringHelper(
       pIsolate, node->GetValue(XFA_VALUEPICTURE_Edit).ToUTF8().AsStringView());
 }
 
-void CJX_Field::formatMessage(v8::Isolate* pIsolate,
-                              CFXJSE_Value* pValue,
-                              bool bSetting,
-                              XFA_Attribute eAttribute) {
-  ScriptSomMessage(pIsolate, pValue, bSetting, XFA_SOM_FormatMessage);
-}
-
-void CJX_Field::formattedValue(v8::Isolate* pIsolate,
-                               CFXJSE_Value* pValue,
-                               bool bSetting,
-                               XFA_Attribute eAttribute) {
+void CJX_Field::editValueSetter(v8::Isolate* pIsolate,
+                                XFA_Attribute eAttribute,
+                                v8::Local<v8::Value> pValue) {
   CXFA_Node* node = GetXFANode();
   if (!node->IsWidgetReady())
     return;
 
-  if (bSetting) {
-    node->SetValue(XFA_VALUEPICTURE_Display, pValue->ToWideString(pIsolate));
-    return;
-  }
-  pValue->SetString(
+  node->SetValue(XFA_VALUEPICTURE_Edit,
+                 fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+}
+
+v8::Local<v8::Value> CJX_Field::formatMessageGetter(v8::Isolate* pIsolate,
+                                                    XFA_Attribute eAttribute) {
+  return ScriptSomMessageGetter(pIsolate, XFA_SOM_FormatMessage);
+}
+
+void CJX_Field::formatMessageSetter(v8::Isolate* pIsolate,
+                                    XFA_Attribute eAttribute,
+                                    v8::Local<v8::Value> pValue) {
+  ScriptSomMessageSetter(pIsolate, XFA_SOM_FormatMessage, pValue);
+}
+
+v8::Local<v8::Value> CJX_Field::formattedValueGetter(v8::Isolate* pIsolate,
+                                                     XFA_Attribute eAttribute) {
+  CXFA_Node* node = GetXFANode();
+  if (!node->IsWidgetReady())
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  return fxv8::NewStringHelper(
       pIsolate,
       node->GetValue(XFA_VALUEPICTURE_Display).ToUTF8().AsStringView());
 }
 
-void CJX_Field::length(v8::Isolate* pIsolate,
-                       CFXJSE_Value* pValue,
-                       bool bSetting,
-                       XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-
-  CXFA_Node* node = GetXFANode();
-  if (!node->IsWidgetReady()) {
-    pValue->SetInteger(pIsolate, 0);
-    return;
-  }
-  pValue->SetInteger(pIsolate, node->CountChoiceListItems(true));
-}
-
-void CJX_Field::parentSubform(v8::Isolate* pIsolate,
-                              CFXJSE_Value* pValue,
-                              bool bSetting,
-                              XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  pValue->SetNull(pIsolate);
-}
-
-void CJX_Field::selectedIndex(v8::Isolate* pIsolate,
-                              CFXJSE_Value* pValue,
-                              bool bSetting,
-                              XFA_Attribute eAttribute) {
+void CJX_Field::formattedValueSetter(v8::Isolate* pIsolate,
+                                     XFA_Attribute eAttribute,
+                                     v8::Local<v8::Value> pValue) {
   CXFA_Node* node = GetXFANode();
   if (!node->IsWidgetReady())
     return;
 
-  if (!bSetting) {
-    pValue->SetInteger(pIsolate, node->GetSelectedItem(0));
-    return;
-  }
+  node->SetValue(XFA_VALUEPICTURE_Display,
+                 fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+}
 
-  int32_t iIndex = pValue->ToInteger(pIsolate);
+v8::Local<v8::Value> CJX_Field::lengthGetter(v8::Isolate* pIsolate,
+                                             XFA_Attribute eAttribute) {
+  CXFA_Node* node = GetXFANode();
+  return fxv8::NewNumberHelper(
+      pIsolate, node->IsWidgetReady() ? node->CountChoiceListItems(true) : 0);
+}
+
+void CJX_Field::lengthSetter(v8::Isolate* pIsolate,
+                             XFA_Attribute eAttribute,
+                             v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
+
+v8::Local<v8::Value> CJX_Field::parentSubformGetter(v8::Isolate* pIsolate,
+                                                    XFA_Attribute eAttribute) {
+  return fxv8::NewNullHelper(pIsolate);
+}
+
+void CJX_Field::parentSubformSetter(v8::Isolate* pIsolate,
+                                    XFA_Attribute eAttribute,
+                                    v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
+
+v8::Local<v8::Value> CJX_Field::selectedIndexGetter(v8::Isolate* pIsolate,
+                                                    XFA_Attribute eAttribute) {
+  CXFA_Node* node = GetXFANode();
+  if (!node->IsWidgetReady())
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  return fxv8::NewNumberHelper(pIsolate, node->GetSelectedItem(0));
+}
+
+void CJX_Field::selectedIndexSetter(v8::Isolate* pIsolate,
+                                    XFA_Attribute eAttribute,
+                                    v8::Local<v8::Value> pValue) {
+  CXFA_Node* node = GetXFANode();
+  if (!node->IsWidgetReady())
+    return;
+
+  int32_t iIndex = fxv8::ReentrantToInt32Helper(pIsolate, pValue);
   if (iIndex == -1) {
     node->ClearAllSelections();
     return;
@@ -390,9 +403,13 @@ void CJX_Field::selectedIndex(v8::Isolate* pIsolate,
   node->SetItemState(iIndex, true, true, true, true);
 }
 
-void CJX_Field::rawValue(v8::Isolate* pIsolate,
-                         CFXJSE_Value* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {
-  defaultValue(pIsolate, pValue, bSetting, eAttribute);
+v8::Local<v8::Value> CJX_Field::rawValueGetter(v8::Isolate* pIsolate,
+                                               XFA_Attribute eAttribute) {
+  return defaultValueGetter(pIsolate, eAttribute);
+}
+
+void CJX_Field::rawValueSetter(v8::Isolate* pIsolate,
+                               XFA_Attribute eAttribute,
+                               v8::Local<v8::Value> pValue) {
+  defaultValueSetter(pIsolate, eAttribute, pValue);
 }

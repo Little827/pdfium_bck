@@ -9,9 +9,9 @@
 #include <algorithm>
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "third_party/base/notreached.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
@@ -296,39 +296,40 @@ CJS_Result CJX_InstanceManager::insertInstance(
           pNewInstance));
 }
 
-void CJX_InstanceManager::max(v8::Isolate* pIsolate,
-                              CFXJSE_Value* pValue,
-                              bool bSetting,
-                              XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+v8::Local<v8::Value> CJX_InstanceManager::maxGetter(v8::Isolate* pIsolate,
+                                                    XFA_Attribute eAttribute) {
   CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
-  pValue->SetInteger(pIsolate,
-                     occur ? occur->GetMax() : CXFA_Occur::kDefaultMax);
+  return fxv8::NewNumberHelper(
+      pIsolate, occur ? occur->GetMax() : CXFA_Occur::kDefaultMax);
 }
 
-void CJX_InstanceManager::min(v8::Isolate* pIsolate,
-                              CFXJSE_Value* pValue,
-                              bool bSetting,
-                              XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
-  pValue->SetInteger(pIsolate,
-                     occur ? occur->GetMin() : CXFA_Occur::kDefaultMin);
+void CJX_InstanceManager::maxSetter(v8::Isolate* pIsolate,
+                                    XFA_Attribute eAttribute,
+                                    v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }
 
-void CJX_InstanceManager::count(v8::Isolate* pIsolate,
-                                CFXJSE_Value* pValue,
-                                bool bSetting,
-                                XFA_Attribute eAttribute) {
-  if (bSetting) {
-    SetInstances(pValue->ToInteger(pIsolate));
-    return;
-  }
-  pValue->SetInteger(pIsolate, GetXFANode()->GetCount());
+v8::Local<v8::Value> CJX_InstanceManager::minGetter(v8::Isolate* pIsolate,
+                                                    XFA_Attribute eAttribute) {
+  CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
+  return fxv8::NewNumberHelper(
+      pIsolate, occur ? occur->GetMin() : CXFA_Occur::kDefaultMin);
+}
+
+void CJX_InstanceManager::minSetter(v8::Isolate* pIsolate,
+                                    XFA_Attribute eAttribute,
+                                    v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
+
+v8::Local<v8::Value> CJX_InstanceManager::countGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewNumberHelper(pIsolate, GetXFANode()->GetCount());
+}
+
+void CJX_InstanceManager::countSetter(v8::Isolate* pIsolate,
+                                      XFA_Attribute eAttribute,
+                                      v8::Local<v8::Value> pValue) {
+  SetInstances(fxv8::ReentrantToInt32Helper(pIsolate, pValue));
 }

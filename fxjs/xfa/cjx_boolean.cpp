@@ -6,7 +6,7 @@
 
 #include "fxjs/xfa/cjx_boolean.h"
 
-#include "fxjs/xfa/cfxjse_value.h"
+#include "fxjs/fxv8.h"
 #include "xfa/fxfa/parser/cxfa_boolean.h"
 
 CJX_Boolean::CJX_Boolean(CXFA_Boolean* node) : CJX_Object(node) {}
@@ -17,18 +17,17 @@ bool CJX_Boolean::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_Boolean::defaultValue(v8::Isolate* pIsolate,
-                               CFXJSE_Value* pValue,
-                               bool bSetting,
-                               XFA_Attribute eAttribute) {
-  if (!bSetting) {
-    pValue->SetBoolean(pIsolate, GetContent(true).EqualsASCII("1"));
-    return;
-  }
+v8::Local<v8::Value> CJX_Boolean::defaultValueGetter(v8::Isolate* pIsolate,
+                                                     XFA_Attribute eAttribute) {
+  return fxv8::NewBooleanHelper(pIsolate, GetContent(true).EqualsASCII("1"));
+}
 
+void CJX_Boolean::defaultValueSetter(v8::Isolate* pIsolate,
+                                     XFA_Attribute eAttribute,
+                                     v8::Local<v8::Value> pValue) {
   ByteString newValue;
-  if (pValue && !(pValue->IsNull(pIsolate) || pValue->IsUndefined(pIsolate)))
-    newValue = pValue->ToString(pIsolate);
+  if (!(fxv8::IsNull(pValue) || fxv8::IsUndefined(pValue)))
+    newValue = fxv8::ReentrantToByteStringHelper(pIsolate, pValue);
 
   int32_t iValue = FXSYS_atoi(newValue.c_str());
   WideString wsNewValue(iValue == 0 ? L"0" : L"1");
@@ -40,9 +39,13 @@ void CJX_Boolean::defaultValue(v8::Isolate* pIsolate,
   SetContent(wsNewValue, wsFormatValue, true, true, true);
 }
 
-void CJX_Boolean::value(v8::Isolate* pIsolate,
-                        CFXJSE_Value* pValue,
-                        bool bSetting,
-                        XFA_Attribute eAttribute) {
-  defaultValue(pIsolate, pValue, bSetting, eAttribute);
+v8::Local<v8::Value> CJX_Boolean::valueGetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute) {
+  return defaultValueGetter(pIsolate, eAttribute);
+}
+
+void CJX_Boolean::valueSetter(v8::Isolate* pIsolate,
+                              XFA_Attribute eAttribute,
+                              v8::Local<v8::Value> pValue) {
+  defaultValueSetter(pIsolate, eAttribute, pValue);
 }

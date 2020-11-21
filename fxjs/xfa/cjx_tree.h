@@ -10,7 +10,6 @@
 #include "fxjs/xfa/cjx_object.h"
 #include "fxjs/xfa/jse_define.h"
 
-class CFXJSE_Value;
 class CXFA_Object;
 class CXFA_Node;
 
@@ -44,7 +43,7 @@ class CJX_Tree : public CJX_Object {
   static const CJX_MethodSpec MethodSpecs[];
 
   void ResolveNodeList(v8::Isolate* pIsolate,
-                       CFXJSE_Value* pValue,
+                       v8::Local<v8::Value>* pValue,
                        WideString wsExpression,
                        uint32_t dwFlag,
                        CXFA_Node* refNode);

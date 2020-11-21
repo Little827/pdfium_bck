@@ -14,10 +14,10 @@
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
 #include "fxjs/cjs_result.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_mapmodule.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_boolean.h"
 #include "fxjs/xfa/cjx_draw.h"
 #include "fxjs/xfa/cjx_field.h"
@@ -125,15 +125,15 @@ CXFA_Node* CJX_Object::GetXFANode() const {
   return ToNode(GetXFAObject());
 }
 
-void CJX_Object::className(v8::Isolate* pIsolate,
-                           CFXJSE_Value* pValue,
-                           bool bSetting,
-                           XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
-  pValue->SetString(pIsolate, GetXFAObject()->GetClassName());
+v8::Local<v8::Value> CJX_Object::classNameGetter(v8::Isolate* pIsolate,
+                                                 XFA_Attribute eAttribute) {
+  return fxv8::NewStringHelper(pIsolate, GetXFAObject()->GetClassName());
+}
+
+void CJX_Object::classNameSetter(v8::Isolate* pIsolate,
+                                 XFA_Attribute eAttribute,
+                                 v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
 }
 
 int32_t CJX_Object::Subform_and_SubformSet_InstanceIndex() {
@@ -943,17 +943,17 @@ void CJX_Object::TakeCalcDataFrom(CJX_Object* that) {
   that->calc_data_ = nullptr;
 }
 
-void CJX_Object::ScriptAttributeString(v8::Isolate* pIsolate,
-                                       CFXJSE_Value* pValue,
-                                       bool bSetting,
-                                       XFA_Attribute eAttribute) {
-  if (!bSetting) {
-    pValue->SetString(pIsolate,
-                      GetAttributeByEnum(eAttribute).ToUTF8().AsStringView());
-    return;
-  }
+v8::Local<v8::Value> CJX_Object::ScriptAttributeStringGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewStringHelper(
+      pIsolate, GetAttributeByEnum(eAttribute).ToUTF8().AsStringView());
+}
 
-  WideString wsValue = pValue->ToWideString(pIsolate);
+void CJX_Object::ScriptAttributeStringSetter(v8::Isolate* pIsolate,
+                                             XFA_Attribute eAttribute,
+                                             v8::Local<v8::Value> pValue) {
+  WideString wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
   SetAttributeByEnum(eAttribute, wsValue, true);
   if (eAttribute != XFA_Attribute::Use ||
       GetXFAObject()->GetElementType() != XFA_Element::Desc) {
@@ -979,16 +979,17 @@ void CJX_Object::ScriptAttributeString(v8::Isolate* pIsolate,
 
   CXFA_Node* pProtoNode = nullptr;
   if (!wsSOM.IsEmpty()) {
-    XFA_ResolveNodeRS resolveNodeRS;
-    bool bRet = GetDocument()->GetScriptContext()->ResolveObjects(
-        pProtoRoot, wsSOM.AsStringView(), &resolveNodeRS,
-        XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
-            XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
-            XFA_RESOLVENODE_Siblings,
-        nullptr);
-    if (bRet && resolveNodeRS.objects.front()->IsNode())
-      pProtoNode = resolveNodeRS.objects.front()->AsNode();
-
+    Optional<CFXJSE_Engine::ResolveResult> maybeResult =
+        GetDocument()->GetScriptContext()->ResolveObjects(
+            pProtoRoot, wsSOM.AsStringView(),
+            XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
+                XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
+                XFA_RESOLVENODE_Siblings,
+            nullptr);
+    if (maybeResult.has_value() &&
+        maybeResult.value().objects.front()->IsNode()) {
+      pProtoNode = maybeResult.value().objects.front()->AsNode();
+    }
   } else if (!wsID.IsEmpty()) {
     pProtoNode = GetDocument()->GetNodeByID(pProtoRoot, wsID.AsStringView());
   }
@@ -1012,73 +1013,70 @@ void CJX_Object::ScriptAttributeString(v8::Isolate* pIsolate,
   }
 }
 
-void CJX_Object::ScriptAttributeBool(v8::Isolate* pIsolate,
-                                     CFXJSE_Value* pValue,
-                                     bool bSetting,
-                                     XFA_Attribute eAttribute) {
-  if (bSetting) {
-    SetBoolean(eAttribute, pValue->ToBoolean(pIsolate), true);
-    return;
-  }
-  pValue->SetString(pIsolate, GetBoolean(eAttribute) ? "1" : "0");
+v8::Local<v8::Value> CJX_Object::ScriptAttributeBoolGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewStringHelper(pIsolate, GetBoolean(eAttribute) ? "1" : "0");
 }
 
-void CJX_Object::ScriptAttributeInteger(v8::Isolate* pIsolate,
-                                        CFXJSE_Value* pValue,
-                                        bool bSetting,
-                                        XFA_Attribute eAttribute) {
-  if (bSetting) {
-    SetInteger(eAttribute, pValue->ToInteger(pIsolate), true);
-    return;
-  }
-  pValue->SetInteger(pIsolate, GetInteger(eAttribute));
+void CJX_Object::ScriptAttributeBoolSetter(v8::Isolate* pIsolate,
+                                           XFA_Attribute eAttribute,
+                                           v8::Local<v8::Value> pValue) {
+  SetBoolean(eAttribute, fxv8::ReentrantToBooleanHelper(pIsolate, pValue),
+             true);
 }
 
-void CJX_Object::ScriptSomFontColor(v8::Isolate* pIsolate,
-                                    CFXJSE_Value* pValue,
-                                    bool bSetting,
-                                    XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_Object::ScriptAttributeIntegerGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewNumberHelper(pIsolate, GetInteger(eAttribute));
+}
+
+void CJX_Object::ScriptAttributeIntegerSetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute,
+                                              v8::Local<v8::Value> pValue) {
+  SetInteger(eAttribute, fxv8::ReentrantToInt32Helper(pIsolate, pValue), true);
+}
+
+v8::Local<v8::Value> CJX_Object::ScriptSomFontColorGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   CXFA_Font* font = ToNode(object_.Get())->GetOrCreateFontIfPossible();
   if (!font)
-    return;
-
-  if (bSetting) {
-    int32_t r;
-    int32_t g;
-    int32_t b;
-    std::tie(r, g, b) = StrToRGB(pValue->ToWideString(pIsolate));
-    FX_ARGB color = ArgbEncode(0xff, r, g, b);
-    font->SetColor(color);
-    return;
-  }
+    return fxv8::NewUndefinedHelper(pIsolate);
 
   int32_t a;
   int32_t r;
   int32_t g;
   int32_t b;
   std::tie(a, r, g, b) = ArgbDecode(font->GetColor());
-  pValue->SetString(pIsolate,
-                    ByteString::Format("%d,%d,%d", r, g, b).AsStringView());
+  return fxv8::NewStringHelper(
+      pIsolate, ByteString::Format("%d,%d,%d", r, g, b).AsStringView());
 }
 
-void CJX_Object::ScriptSomFillColor(v8::Isolate* pIsolate,
-                                    CFXJSE_Value* pValue,
-                                    bool bSetting,
-                                    XFA_Attribute eAttribute) {
+void CJX_Object::ScriptSomFontColorSetter(v8::Isolate* pIsolate,
+                                          XFA_Attribute eAttribute,
+                                          v8::Local<v8::Value> pValue) {
+  CXFA_Font* font = ToNode(object_.Get())->GetOrCreateFontIfPossible();
+  if (!font)
+    return;
+
+  int32_t r;
+  int32_t g;
+  int32_t b;
+  std::tie(r, g, b) =
+      StrToRGB(fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+  FX_ARGB color = ArgbEncode(0xff, r, g, b);
+  font->SetColor(color);
+}
+
+v8::Local<v8::Value> CJX_Object::ScriptSomFillColorGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
   CXFA_Fill* borderfill = border->GetOrCreateFillIfPossible();
   if (!borderfill)
-    return;
-
-  if (bSetting) {
-    int32_t r;
-    int32_t g;
-    int32_t b;
-    std::tie(r, g, b) = StrToRGB(pValue->ToWideString(pIsolate));
-    FX_ARGB color = ArgbEncode(0xff, r, g, b);
-    borderfill->SetColor(color);
-    return;
-  }
+    return fxv8::NewUndefinedHelper(pIsolate);
 
   FX_ARGB color = borderfill->GetColor(false);
   int32_t a;
@@ -1086,32 +1084,31 @@ void CJX_Object::ScriptSomFillColor(v8::Isolate* pIsolate,
   int32_t g;
   int32_t b;
   std::tie(a, r, g, b) = ArgbDecode(color);
-  pValue->SetString(
-      pIsolate,
-      WideString::Format(L"%d,%d,%d", r, g, b).ToUTF8().AsStringView());
+  return fxv8::NewStringHelper(
+      pIsolate, ByteString::Format("%d,%d,%d", r, g, b).AsStringView());
 }
 
-void CJX_Object::ScriptSomBorderColor(v8::Isolate* pIsolate,
-                                      CFXJSE_Value* pValue,
-                                      bool bSetting,
-                                      XFA_Attribute eAttribute) {
+void CJX_Object::ScriptSomFillColorSetter(v8::Isolate* pIsolate,
+                                          XFA_Attribute eAttribute,
+                                          v8::Local<v8::Value> pValue) {
   CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
-  int32_t iSize = border->CountEdges();
-  if (bSetting) {
-    int32_t r = 0;
-    int32_t g = 0;
-    int32_t b = 0;
-    std::tie(r, g, b) = StrToRGB(pValue->ToWideString(pIsolate));
-    FX_ARGB rgb = ArgbEncode(100, r, g, b);
-    for (int32_t i = 0; i < iSize; ++i) {
-      CXFA_Edge* edge = border->GetEdgeIfExists(i);
-      if (edge)
-        edge->SetColor(rgb);
-    }
-
+  CXFA_Fill* borderfill = border->GetOrCreateFillIfPossible();
+  if (!borderfill)
     return;
-  }
 
+  int32_t r;
+  int32_t g;
+  int32_t b;
+  std::tie(r, g, b) =
+      StrToRGB(fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+  FX_ARGB color = ArgbEncode(0xff, r, g, b);
+  borderfill->SetColor(color);
+}
+
+v8::Local<v8::Value> CJX_Object::ScriptSomBorderColorGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
   CXFA_Edge* edge = border->GetEdgeIfExists(0);
   FX_ARGB color = edge ? edge->GetColor() : CXFA_Edge::kDefaultColor;
   int32_t a;
@@ -1119,28 +1116,44 @@ void CJX_Object::ScriptSomBorderColor(v8::Isolate* pIsolate,
   int32_t g;
   int32_t b;
   std::tie(a, r, g, b) = ArgbDecode(color);
-  pValue->SetString(
-      pIsolate,
-      WideString::Format(L"%d,%d,%d", r, g, b).ToUTF8().AsStringView());
+  return fxv8::NewStringHelper(
+      pIsolate, ByteString::Format("%d,%d,%d", r, g, b).AsStringView());
 }
 
-void CJX_Object::ScriptSomBorderWidth(v8::Isolate* pIsolate,
-                                      CFXJSE_Value* pValue,
-                                      bool bSetting,
-                                      XFA_Attribute eAttribute) {
+void CJX_Object::ScriptSomBorderColorSetter(v8::Isolate* pIsolate,
+                                            XFA_Attribute eAttribute,
+                                            v8::Local<v8::Value> pValue) {
   CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
-  if (bSetting) {
-    CXFA_Edge* edge = border->GetEdgeIfExists(0);
-    CXFA_Measurement thickness =
-        edge ? edge->GetMSThickness() : CXFA_Measurement(0.5, XFA_Unit::Pt);
-    pValue->SetString(pIsolate, thickness.ToString().ToUTF8().AsStringView());
-    return;
+  int32_t iSize = border->CountEdges();
+  int32_t r = 0;
+  int32_t g = 0;
+  int32_t b = 0;
+  std::tie(r, g, b) =
+      StrToRGB(fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+  FX_ARGB rgb = ArgbEncode(100, r, g, b);
+  for (int32_t i = 0; i < iSize; ++i) {
+    CXFA_Edge* edge = border->GetEdgeIfExists(i);
+    if (edge)
+      edge->SetColor(rgb);
   }
+}
 
-  if (pValue->IsEmpty())
-    return;
+v8::Local<v8::Value> CJX_Object::ScriptSomBorderWidthGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
+  CXFA_Edge* edge = border->GetEdgeIfExists(0);
+  CXFA_Measurement thickness =
+      edge ? edge->GetMSThickness() : CXFA_Measurement(0.5, XFA_Unit::Pt);
+  return fxv8::NewStringHelper(pIsolate,
+                               thickness.ToString().ToUTF8().AsStringView());
+}
 
-  WideString wsThickness = pValue->ToWideString(pIsolate);
+void CJX_Object::ScriptSomBorderWidthSetter(v8::Isolate* pIsolate,
+                                            XFA_Attribute eAttribute,
+                                            v8::Local<v8::Value> pValue) {
+  CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
+  WideString wsThickness = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
   for (int32_t i = 0; i < border->CountEdges(); ++i) {
     CXFA_Edge* edge = border->GetEdgeIfExists(i);
     if (edge)
@@ -1148,49 +1161,15 @@ void CJX_Object::ScriptSomBorderWidth(v8::Isolate* pIsolate,
   }
 }
 
-void CJX_Object::ScriptSomMessage(v8::Isolate* pIsolate,
-                                  CFXJSE_Value* pValue,
-                                  bool bSetting,
-                                  XFA_SOM_MESSAGETYPE iMessageType) {
-  bool bNew = false;
+v8::Local<v8::Value> CJX_Object::ScriptSomMessageGetter(
+    v8::Isolate* pIsolate,
+    XFA_SOM_MESSAGETYPE iMessageType) {
   CXFA_Validate* validate = ToNode(object_.Get())->GetValidateIfExists();
-  if (!validate) {
+  if (!validate)
     validate = ToNode(object_.Get())->GetOrCreateValidateIfPossible();
-    bNew = true;
-  }
 
-  if (bSetting) {
-    if (validate) {
-      switch (iMessageType) {
-        case XFA_SOM_ValidationMessage:
-          validate->SetScriptMessageText(pValue->ToWideString(pIsolate));
-          break;
-        case XFA_SOM_FormatMessage:
-          validate->SetFormatMessageText(pValue->ToWideString(pIsolate));
-          break;
-        case XFA_SOM_MandatoryMessage:
-          validate->SetNullMessageText(pValue->ToWideString(pIsolate));
-          break;
-        default:
-          break;
-      }
-    }
-
-    if (!bNew) {
-      CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
-      if (!pNotify)
-        return;
-
-      pNotify->AddCalcValidate(GetXFANode());
-    }
-    return;
-  }
-
-  if (!validate) {
-    // TODO(dsinclair): Better error message?
-    ThrowInvalidPropertyException();
-    return;
-  }
+  if (!validate)
+    return fxv8::NewUndefinedHelper(pIsolate);
 
   WideString wsMessage;
   switch (iMessageType) {
@@ -1206,163 +1185,228 @@ void CJX_Object::ScriptSomMessage(v8::Isolate* pIsolate,
     default:
       break;
   }
-  pValue->SetString(pIsolate, wsMessage.ToUTF8().AsStringView());
+  return fxv8::NewStringHelper(pIsolate, wsMessage.ToUTF8().AsStringView());
 }
 
-void CJX_Object::ScriptSomValidationMessage(v8::Isolate* pIsolate,
-                                            CFXJSE_Value* pValue,
-                                            bool bSetting,
-                                            XFA_Attribute eAttribute) {
-  ScriptSomMessage(pIsolate, pValue, bSetting, XFA_SOM_ValidationMessage);
+void CJX_Object::ScriptSomMessageSetter(v8::Isolate* pIsolate,
+                                        XFA_SOM_MESSAGETYPE iMessageType,
+                                        v8::Local<v8::Value> pValue) {
+  bool bNew = false;
+  CXFA_Validate* validate = ToNode(object_.Get())->GetValidateIfExists();
+  if (!validate) {
+    validate = ToNode(object_.Get())->GetOrCreateValidateIfPossible();
+    bNew = true;
+  }
+
+  if (validate) {
+    switch (iMessageType) {
+      case XFA_SOM_ValidationMessage:
+        validate->SetScriptMessageText(
+            fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+        break;
+      case XFA_SOM_FormatMessage:
+        validate->SetFormatMessageText(
+            fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+        break;
+      case XFA_SOM_MandatoryMessage:
+        validate->SetNullMessageText(
+            fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
+        break;
+      default:
+        break;
+    }
+  }
+
+  if (!bNew) {
+    CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
+    if (pNotify)
+      pNotify->AddCalcValidate(GetXFANode());
+  }
 }
 
-void CJX_Object::ScriptSomMandatoryMessage(v8::Isolate* pIsolate,
-                                           CFXJSE_Value* pValue,
-                                           bool bSetting,
-                                           XFA_Attribute eAttribute) {
-  ScriptSomMessage(pIsolate, pValue, bSetting, XFA_SOM_MandatoryMessage);
+v8::Local<v8::Value> CJX_Object::ScriptSomValidationMessageGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return ScriptSomMessageGetter(pIsolate, XFA_SOM_ValidationMessage);
 }
 
-void CJX_Object::ScriptSomDefaultValue(v8::Isolate* pIsolate,
-                                       CFXJSE_Value* pValue,
-                                       bool bSetting,
-                                       XFA_Attribute /* unused */) {
+void CJX_Object::ScriptSomValidationMessageSetter(v8::Isolate* pIsolate,
+                                                  XFA_Attribute eAttribute,
+                                                  v8::Local<v8::Value> pValue) {
+  ScriptSomMessageSetter(pIsolate, XFA_SOM_ValidationMessage, pValue);
+}
+
+v8::Local<v8::Value> CJX_Object::ScriptSomMandatoryMessageGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return ScriptSomMessageGetter(pIsolate, XFA_SOM_MandatoryMessage);
+}
+
+void CJX_Object::ScriptSomMandatoryMessageSetter(v8::Isolate* pIsolate,
+                                                 XFA_Attribute eAttribute,
+                                                 v8::Local<v8::Value> pValue) {
+  ScriptSomMessageSetter(pIsolate, XFA_SOM_MandatoryMessage, pValue);
+}
+
+v8::Local<v8::Value> CJX_Object::ScriptSomDefaultValueGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   XFA_Element eType = GetXFANode()->GetElementType();
 
   // TODO(dsinclair): This should look through the properties on the node to see
   // if defaultValue is defined and, if so, call that one. Just have to make
   // sure that those defaultValue calls don't call back to this one ....
   if (eType == XFA_Element::Field) {
-    static_cast<CJX_Field*>(this)->defaultValue(pIsolate, pValue, bSetting,
-                                                XFA_Attribute::Unknown);
-    return;
+    return static_cast<CJX_Field*>(this)->defaultValueGetter(
+        pIsolate, XFA_Attribute::Unknown);
   }
   if (eType == XFA_Element::Draw) {
-    static_cast<CJX_Draw*>(this)->defaultValue(pIsolate, pValue, bSetting,
-                                               XFA_Attribute::Unknown);
-    return;
+    return static_cast<CJX_Draw*>(this)->defaultValueGetter(
+        pIsolate, XFA_Attribute::Unknown);
   }
   if (eType == XFA_Element::Boolean) {
-    static_cast<CJX_Boolean*>(this)->defaultValue(pIsolate, pValue, bSetting,
-                                                  XFA_Attribute::Unknown);
-    return;
-  }
-
-  if (bSetting) {
-    WideString wsNewValue;
-    if (pValue && !(pValue->IsEmpty() || pValue->IsNull(pIsolate) ||
-                    pValue->IsUndefined(pIsolate))) {
-      wsNewValue = pValue->ToWideString(pIsolate);
-    }
-
-    WideString wsFormatValue(wsNewValue);
-    CXFA_Node* pContainerNode = nullptr;
-    if (GetXFANode()->GetPacketType() == XFA_PacketType::Datasets) {
-      WideString wsPicture;
-      for (auto* pFormNode : GetXFANode()->GetBindItemsCopy()) {
-        if (!pFormNode || pFormNode->HasRemovedChildren())
-          continue;
-
-        pContainerNode = pFormNode->GetContainerNode();
-        if (pContainerNode) {
-          wsPicture =
-              pContainerNode->GetPictureContent(XFA_VALUEPICTURE_DataBind);
-        }
-        if (!wsPicture.IsEmpty())
-          break;
-
-        pContainerNode = nullptr;
-      }
-    } else if (GetXFANode()->GetPacketType() == XFA_PacketType::Form) {
-      pContainerNode = GetXFANode()->GetContainerNode();
-    }
-
-    if (pContainerNode)
-      wsFormatValue = pContainerNode->GetFormatDataValue(wsNewValue);
-
-    SetContent(wsNewValue, wsFormatValue, true, true, true);
-    return;
+    return static_cast<CJX_Boolean*>(this)->defaultValueGetter(
+        pIsolate, XFA_Attribute::Unknown);
   }
 
   WideString content = GetContent(true);
   if (content.IsEmpty() && eType != XFA_Element::Text &&
       eType != XFA_Element::SubmitUrl) {
-    pValue->SetNull(pIsolate);
-  } else if (eType == XFA_Element::Integer) {
-    pValue->SetInteger(pIsolate, FXSYS_wtoi(content.c_str()));
-  } else if (eType == XFA_Element::Float || eType == XFA_Element::Decimal) {
+    return fxv8::NewNullHelper(pIsolate);
+  }
+  if (eType == XFA_Element::Integer)
+    return fxv8::NewNumberHelper(pIsolate, FXSYS_wtoi(content.c_str()));
+
+  if (eType == XFA_Element::Float || eType == XFA_Element::Decimal) {
     CFGAS_Decimal decimal(content.AsStringView());
-    pValue->SetFloat(pIsolate, decimal.ToFloat());
-  } else {
-    pValue->SetString(pIsolate, content.ToUTF8().AsStringView());
+    return fxv8::NewNumberHelper(pIsolate, decimal.ToFloat());
   }
+  return fxv8::NewStringHelper(pIsolate, content.ToUTF8().AsStringView());
 }
 
-void CJX_Object::ScriptSomDefaultValue_Read(v8::Isolate* pIsolate,
-                                            CFXJSE_Value* pValue,
-                                            bool bSetting,
-                                            XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
+void CJX_Object::ScriptSomDefaultValueSetter(v8::Isolate* pIsolate,
+                                             XFA_Attribute eAttribute,
+                                             v8::Local<v8::Value> pValue) {
+  XFA_Element eType = GetXFANode()->GetElementType();
+
+  // TODO(dsinclair): See TODO() in ScriptSomDefaultValueGetter().
+  if (eType == XFA_Element::Field) {
+    static_cast<CJX_Field*>(this)->defaultValueSetter(
+        pIsolate, XFA_Attribute::Unknown, pValue);
+    return;
+  }
+  if (eType == XFA_Element::Draw) {
+    static_cast<CJX_Draw*>(this)->defaultValueSetter(
+        pIsolate, XFA_Attribute::Unknown, pValue);
+    return;
+  }
+  if (eType == XFA_Element::Boolean) {
+    static_cast<CJX_Boolean*>(this)->defaultValueSetter(
+        pIsolate, XFA_Attribute::Unknown, pValue);
     return;
   }
 
+  WideString wsNewValue;
+  if (!(pValue.IsEmpty() || fxv8::IsNull(pValue) ||
+        fxv8::IsUndefined(pValue))) {
+    wsNewValue = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
+  }
+
+  WideString wsFormatValue = wsNewValue;
+  CXFA_Node* pContainerNode = nullptr;
+  if (GetXFANode()->GetPacketType() == XFA_PacketType::Datasets) {
+    WideString wsPicture;
+    for (auto* pFormNode : GetXFANode()->GetBindItemsCopy()) {
+      if (!pFormNode || pFormNode->HasRemovedChildren())
+        continue;
+
+      pContainerNode = pFormNode->GetContainerNode();
+      if (pContainerNode) {
+        wsPicture =
+            pContainerNode->GetPictureContent(XFA_VALUEPICTURE_DataBind);
+      }
+      if (!wsPicture.IsEmpty())
+        break;
+
+      pContainerNode = nullptr;
+    }
+  } else if (GetXFANode()->GetPacketType() == XFA_PacketType::Form) {
+    pContainerNode = GetXFANode()->GetContainerNode();
+  }
+
+  if (pContainerNode)
+    wsFormatValue = pContainerNode->GetFormatDataValue(wsNewValue);
+
+  SetContent(wsNewValue, wsFormatValue, true, true, true);
+}
+
+v8::Local<v8::Value> CJX_Object::ScriptSomDefaultValue_ReadGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   WideString content = GetContent(true);
-  if (content.IsEmpty()) {
-    pValue->SetNull(pIsolate);
-    return;
-  }
-  pValue->SetString(pIsolate, content.ToUTF8().AsStringView());
+  if (content.IsEmpty())
+    return fxv8::NewNullHelper(pIsolate);
+
+  return fxv8::NewStringHelper(pIsolate, content.ToUTF8().AsStringView());
 }
 
-void CJX_Object::ScriptSomDataNode(v8::Isolate* pIsolate,
-                                   CFXJSE_Value* pValue,
-                                   bool bSetting,
-                                   XFA_Attribute eAttribute) {
-  if (bSetting) {
-    ThrowInvalidPropertyException();
-    return;
-  }
+void CJX_Object::ScriptSomDefaultValue_ReadSetter(v8::Isolate* pIsolate,
+                                                  XFA_Attribute eAttribute,
+                                                  v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
 
+v8::Local<v8::Value> CJX_Object::ScriptSomDataNodeGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
   CXFA_Node* pDataNode = GetXFANode()->GetBindData();
-  if (!pDataNode) {
-    pValue->SetNull(pIsolate);
-    return;
-  }
+  if (!pDataNode)
+    return fxv8::NewNullHelper(pIsolate);
 
-  pValue->ForceSetValue(
-      pIsolate, GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
-                    pDataNode));
+  return GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+      pDataNode);
 }
 
-void CJX_Object::ScriptSomMandatory(v8::Isolate* pIsolate,
-                                    CFXJSE_Value* pValue,
-                                    bool bSetting,
-                                    XFA_Attribute eAttribute) {
+void CJX_Object::ScriptSomDataNodeSetter(v8::Isolate* pIsolate,
+                                         XFA_Attribute eAttribute,
+                                         v8::Local<v8::Value> pValue) {
+  ThrowInvalidPropertyException();
+}
+
+v8::Local<v8::Value> CJX_Object::ScriptSomMandatoryGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  CXFA_Validate* validate =
+      ToNode(object_.Get())->GetOrCreateValidateIfPossible();
+  if (!validate)
+    return fxv8::NewUndefinedHelper(pIsolate);
+
+  return fxv8::NewStringHelper(
+      pIsolate, XFA_AttributeValueToName(validate->GetNullTest()));
+}
+
+void CJX_Object::ScriptSomMandatorySetter(v8::Isolate* pIsolate,
+                                          XFA_Attribute eAttribute,
+                                          v8::Local<v8::Value> pValue) {
   CXFA_Validate* validate =
       ToNode(object_.Get())->GetOrCreateValidateIfPossible();
   if (!validate)
     return;
 
-  if (bSetting) {
-    validate->SetNullTest(pValue->ToWideString(pIsolate));
-    return;
-  }
-
-  pValue->SetString(pIsolate,
-                    XFA_AttributeValueToName(validate->GetNullTest()));
+  validate->SetNullTest(fxv8::ReentrantToWideStringHelper(pIsolate, pValue));
 }
 
-void CJX_Object::ScriptSomInstanceIndex(v8::Isolate* pIsolate,
-                                        CFXJSE_Value* pValue,
-                                        bool bSetting,
-                                        XFA_Attribute eAttribute) {
-  if (!bSetting) {
-    pValue->SetInteger(pIsolate, Subform_and_SubformSet_InstanceIndex());
-    return;
-  }
+v8::Local<v8::Value> CJX_Object::ScriptSomInstanceIndexGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewNumberHelper(pIsolate,
+                               Subform_and_SubformSet_InstanceIndex());
+}
 
-  int32_t iTo = pValue->ToInteger(pIsolate);
+void CJX_Object::ScriptSomInstanceIndexSetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute,
+                                              v8::Local<v8::Value> pValue) {
+  int32_t iTo = fxv8::ReentrantToInt32Helper(pIsolate, pValue);
   int32_t iFrom = Subform_and_SubformSet_InstanceIndex();
   CXFA_Node* pManagerNode = nullptr;
   for (CXFA_Node* pNode = GetXFANode()->GetPrevSibling(); pNode;
@@ -1393,10 +1437,15 @@ void CJX_Object::ScriptSomInstanceIndex(v8::Isolate* pIsolate,
   }
 }
 
-void CJX_Object::ScriptSubmitFormatMode(v8::Isolate* pIsolate,
-                                        CFXJSE_Value* pValue,
-                                        bool bSetting,
-                                        XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Object::ScriptSubmitFormatModeGetter(
+    v8::Isolate* pIsolate,
+    XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Object::ScriptSubmitFormatModeSetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute,
+                                              v8::Local<v8::Value> pValue) {}
 
 CJX_Object::CalcData::CalcData() = default;
 

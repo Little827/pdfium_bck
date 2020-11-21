@@ -6,7 +6,7 @@
 
 #include "fxjs/xfa/cjx_occur.h"
 
-#include "fxjs/xfa/cfxjse_value.h"
+#include "fxjs/fxv8.h"
 #include "xfa/fxfa/parser/cxfa_occur.h"
 
 CJX_Occur::CJX_Occur(CXFA_Occur* node) : CJX_Node(node) {}
@@ -17,26 +17,28 @@ bool CJX_Occur::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_Occur::max(v8::Isolate* pIsolate,
-                    CFXJSE_Value* pValue,
-                    bool bSetting,
-                    XFA_Attribute eAttribute) {
+v8::Local<v8::Value> CJX_Occur::maxGetter(v8::Isolate* pIsolate,
+                                          XFA_Attribute eAttribute) {
   CXFA_Occur* occur = static_cast<CXFA_Occur*>(GetXFANode());
-  if (!bSetting) {
-    pValue->SetInteger(pIsolate, occur->GetMax());
-    return;
-  }
-  occur->SetMax(pValue->ToInteger(pIsolate));
+  return fxv8::NewNumberHelper(pIsolate, occur->GetMax());
 }
 
-void CJX_Occur::min(v8::Isolate* pIsolate,
-                    CFXJSE_Value* pValue,
-                    bool bSetting,
-                    XFA_Attribute eAttribute) {
+void CJX_Occur::maxSetter(v8::Isolate* pIsolate,
+                          XFA_Attribute eAttribute,
+                          v8::Local<v8::Value> pValue) {
   CXFA_Occur* occur = static_cast<CXFA_Occur*>(GetXFANode());
-  if (!bSetting) {
-    pValue->SetInteger(pIsolate, occur->GetMin());
-    return;
-  }
-  occur->SetMin(pValue->ToInteger(pIsolate));
+  occur->SetMax(fxv8::ReentrantToInt32Helper(pIsolate, pValue));
+}
+
+v8::Local<v8::Value> CJX_Occur::minGetter(v8::Isolate* pIsolate,
+                                          XFA_Attribute eAttribute) {
+  CXFA_Occur* occur = static_cast<CXFA_Occur*>(GetXFANode());
+  return fxv8::NewNumberHelper(pIsolate, occur->GetMin());
+}
+
+void CJX_Occur::minSetter(v8::Isolate* pIsolate,
+                          XFA_Attribute eAttribute,
+                          v8::Local<v8::Value> pValue) {
+  CXFA_Occur* occur = static_cast<CXFA_Occur*>(GetXFANode());
+  occur->SetMin(fxv8::ReentrantToInt32Helper(pIsolate, pValue));
 }

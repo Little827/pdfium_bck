@@ -17,7 +17,6 @@
 
 class CFXJSE_Class;
 class CFXJSE_HostObject;
-class CFXJSE_Value;
 class CXFA_ThisProxy;
 struct FXJSE_CLASS_DESCRIPTOR;
 
@@ -40,9 +39,9 @@ class CFXJSE_Context {
   void EnableCompatibleMode();
 
   // Note: `lpNewThisObject` may be empty.
-  bool ExecuteScript(const char* szScript,
-                     CFXJSE_Value* lpRetValue,
-                     v8::Local<v8::Object> lpNewThisObject);
+  Optional<v8::Local<v8::Value>> ExecuteScript(
+      const char* szScript,
+      v8::Local<v8::Object> lpNewThisObject);
 
  private:
   CFXJSE_Context(v8::Isolate* pIsolate, CXFA_ThisProxy* pProxy);
@@ -59,6 +58,6 @@ void FXJSE_UpdateObjectBinding(v8::Local<v8::Object> hObject,
                                CFXJSE_HostObject* lpNewBinding);
 
 void FXJSE_ClearObjectBinding(v8::Local<v8::Object> hJSObject);
-CFXJSE_HostObject* FXJSE_RetrieveObjectBinding(v8::Local<v8::Object> hJSObject);
+CFXJSE_HostObject* FXJSE_RetrieveObjectBinding(v8::Local<v8::Value> hValue);
 
 #endif  // FXJS_XFA_CFXJSE_CONTEXT_H_

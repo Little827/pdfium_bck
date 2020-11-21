@@ -8,9 +8,9 @@
 
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cxfa_delta.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 #include "xfa/fxfa/parser/xfa_basic_data.h"
@@ -85,12 +85,20 @@ CJS_Result CJX_Model::isCompatibleNS(
       runtime->NewBoolean(TryNamespace().value_or(WideString()) == nameSpace));
 }
 
-void CJX_Model::context(v8::Isolate* pIsolate,
-                        CFXJSE_Value* pValue,
-                        bool bSetting,
-                        XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Model::contextGetter(v8::Isolate* pIsolate,
+                                              XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
 
-void CJX_Model::aliasNode(v8::Isolate* pIsolate,
-                          CFXJSE_Value* pValue,
-                          bool bSetting,
-                          XFA_Attribute eAttribute) {}
+void CJX_Model::contextSetter(v8::Isolate* pIsolate,
+                              XFA_Attribute eAttribute,
+                              v8::Local<v8::Value> pValue) {}
+
+v8::Local<v8::Value> CJX_Model::aliasNodeGetter(v8::Isolate* pIsolate,
+                                                XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Model::aliasNodeSetter(v8::Isolate* pIsolate,
+                                XFA_Attribute eAttribute,
+                                v8::Local<v8::Value> pValue) {}

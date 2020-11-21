@@ -8,6 +8,7 @@
 
 #include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_context.h"
+#include "fxjs/xfa/cfxjse_isolatetracker.h"
 
 namespace pdfium {
 namespace fxjse {
@@ -47,4 +48,14 @@ v8::Local<v8::Object> CFXJSE_HostObject::NewBoundV8Object(
           .ToLocalChecked();
   FXJSE_UpdateObjectBinding(hObject, this);
   return hObject;
+}
+
+void FXJSE_ThrowMessage(ByteStringView utf8Message) {
+  v8::Isolate* pIsolate = v8::Isolate::GetCurrent();
+  ASSERT(pIsolate);
+
+  CFXJSE_ScopeUtil_IsolateHandleRootContext scope(pIsolate);
+  v8::Local<v8::String> hMessage = fxv8::NewStringHelper(pIsolate, utf8Message);
+  v8::Local<v8::Value> hError = v8::Exception::Error(hMessage);
+  pIsolate->ThrowException(hError);
 }

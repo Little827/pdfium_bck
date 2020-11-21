@@ -6,6 +6,7 @@
 
 #include "fxjs/xfa/cjx_extras.h"
 
+#include "fxjs/fxv8.h"
 #include "xfa/fxfa/parser/cxfa_extras.h"
 
 CJX_Extras::CJX_Extras(CXFA_Extras* node) : CJX_Node(node) {}
@@ -16,7 +17,11 @@ bool CJX_Extras::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-void CJX_Extras::type(v8::Isolate* pIsolate,
-                      CFXJSE_Value* pValue,
-                      bool bSetting,
-                      XFA_Attribute eAttribute) {}
+v8::Local<v8::Value> CJX_Extras::typeGetter(v8::Isolate* pIsolate,
+                                            XFA_Attribute eAttribute) {
+  return fxv8::NewUndefinedHelper(pIsolate);
+}
+
+void CJX_Extras::typeSetter(v8::Isolate* pIsolate,
+                            XFA_Attribute eAttribute,
+                            v8::Local<v8::Value> pValue) {}
