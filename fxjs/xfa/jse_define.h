@@ -24,22 +24,25 @@ class CFX_V8;
   CJS_Result method_name(CFX_V8* runtime,                            \
                          const std::vector<v8::Local<v8::Value>>& params)
 
-#define JSE_PROP(prop_name)                                                 \
-  static void prop_name##_static(v8::Isolate* pIsolate, CJX_Object* node,   \
-                                 v8::Local<v8::Value>* value, bool setting, \
-                                 XFA_Attribute attribute) {                 \
-    if (node->DynamicTypeIs(static_type__)) {                               \
-      auto* obj = static_cast<Type__*>(node);                               \
-      if (setting) {                                                        \
-        obj->prop_name##Setter(pIsolate, attribute, *value);                \
-      } else {                                                              \
-        *value = obj->prop_name##Getter(pIsolate, attribute);               \
-      }                                                                     \
-    }                                                                       \
-  }                                                                         \
-  v8::Local<v8::Value> prop_name##Getter(v8::Isolate* pIsolate,             \
-                                         XFA_Attribute eAttribute);         \
-  void prop_name##Setter(v8::Isolate* pIsolate, XFA_Attribute eAttribute,   \
+#define JSE_PROP(prop_name)                                               \
+  static v8::Local<v8::Value> prop_name##_static_getter(                  \
+      v8::Isolate* pIsolate, CJX_Object* node, XFA_Attribute attribute) { \
+    if (!node->DynamicTypeIs(static_type__))                              \
+      return v8::Local<v8::Value>();                                      \
+    auto* obj = static_cast<Type__*>(node);                               \
+    return obj->prop_name##Getter(pIsolate, attribute);                   \
+  }                                                                       \
+  static void prop_name##_static_setter(                                  \
+      v8::Isolate* pIsolate, CJX_Object* node, XFA_Attribute attribute,   \
+      v8::Local<v8::Value> value) {                                       \
+    if (!node->DynamicTypeIs(static_type__))                              \
+      return;                                                             \
+    auto* obj = static_cast<Type__*>(node);                               \
+    obj->prop_name##Setter(pIsolate, attribute, value);                   \
+  }                                                                       \
+  v8::Local<v8::Value> prop_name##Getter(v8::Isolate* pIsolate,           \
+                                         XFA_Attribute eAttribute);       \
+  void prop_name##Setter(v8::Isolate* pIsolate, XFA_Attribute eAttribute, \
                          v8::Local<v8::Value> pValue)
 
 #endif  // FXJS_XFA_JSE_DEFINE_H_

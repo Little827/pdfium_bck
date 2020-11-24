@@ -211,15 +211,13 @@ v8::Local<v8::Value> CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
     return GetOrCreateJSBindingFromMap(
         maybeResult.value().objects.front().Get());
   }
-  v8::Local<v8::Value> pValue;
   if (maybeResult.value().type == ResolveResult::Type::kAttribute &&
-      maybeResult.value().script_attribute.callback) {
+      maybeResult.value().script_attribute.getter) {
     CJX_Object* jsObject = maybeResult.value().objects.front()->JSObject();
-    (*maybeResult.value().script_attribute.callback)(
-        GetIsolate(), jsObject, &pValue, false,
-        maybeResult.value().script_attribute.attribute);
+    return (*maybeResult.value().script_attribute.getter)(
+        GetIsolate(), jsObject, maybeResult.value().script_attribute.attribute);
   }
-  return pValue;
+  return v8::Local<v8::Value>();
 }
 
 bool CFXJSE_Engine::UpdateNodeByFlag(CXFA_Node* refNode,
@@ -239,11 +237,11 @@ bool CFXJSE_Engine::UpdateNodeByFlag(CXFA_Node* refNode,
     return true;
   }
   if (maybeResult.value().type == ResolveResult::Type::kAttribute &&
-      maybeResult.value().script_attribute.callback) {
+      maybeResult.value().script_attribute.setter) {
     CJX_Object* jsObject = maybeResult.value().objects.front()->JSObject();
-    (*maybeResult.value().script_attribute.callback)(
-        GetIsolate(), jsObject, &pValue, true,
-        maybeResult.value().script_attribute.attribute);
+    (*maybeResult.value().script_attribute.setter)(
+        GetIsolate(), jsObject, maybeResult.value().script_attribute.attribute,
+        pValue);
   }
   return true;
 }
@@ -424,8 +422,8 @@ v8::Local<v8::Value> CFXJSE_Engine::NormalPropertyGetter(
       pObject->GetElementType(), wsPropName.AsStringView());
   if (info.has_value()) {
     CJX_Object* jsObject = pObject->JSObject();
-    (*info.value().callback)(pIsolate, jsObject, &pReturnValue, false,
-                             info.value().attribute);
+    pReturnValue =
+        (*info.value().getter)(pIsolate, jsObject, info.value().attribute);
     return pReturnValue;
   }
 
@@ -468,8 +466,7 @@ void CFXJSE_Engine::NormalPropertySetter(v8::Isolate* pIsolate,
       XFA_GetScriptAttributeByName(pObject->GetElementType(), wsPropNameView);
   if (info.has_value()) {
     CJX_Object* jsObject = pObject->JSObject();
-    (*info.value().callback)(pIsolate, jsObject, &pValue, true,
-                             info.value().attribute);
+    (*info.value().setter)(pIsolate, jsObject, info.value().attribute, pValue);
     return;
   }
 
@@ -765,14 +762,14 @@ Optional<CFXJSE_Engine::ResolveResult> CFXJSE_Engine::ResolveObjects(
         continue;
 
       if (rndFind.m_Result.type == ResolveResult::Type::kAttribute &&
-          rndFind.m_Result.script_attribute.callback &&
+          rndFind.m_Result.script_attribute.getter &&
           nStart <
               pdfium::base::checked_cast<int32_t>(wsExpression.GetLength())) {
-        v8::Local<v8::Value> pValue;
         CJX_Object* jsObject = rndFind.m_Result.objects.front()->JSObject();
-        (*rndFind.m_Result.script_attribute.callback)(
-            GetIsolate(), jsObject, &pValue, false,
-            rndFind.m_Result.script_attribute.attribute);
+        v8::Local<v8::Value> pValue =
+            (*rndFind.m_Result.script_attribute.getter)(
+                GetIsolate(), jsObject,
+                rndFind.m_Result.script_attribute.attribute);
         if (!pValue.IsEmpty()) {
           rndFind.m_Result.objects.front() = ToObject(GetIsolate(), pValue);
         }

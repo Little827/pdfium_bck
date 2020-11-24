@@ -152,15 +152,26 @@ constexpr ElementAttributeRecord kElementAttributeRecords[] = {
 #undef ELEM_ATTR____
 };
 
-constexpr XFA_ATTRIBUTE_CALLBACK kElementAttributeCallbacks[] = {
+constexpr XFA_ATTRIBUTE_GETTER_CALLBACK kElementAttributeGetterCallbacks[] = {
 #undef ELEM_ATTR____
-#define ELEM_ATTR____(a, b, c) c##_static,
+#define ELEM_ATTR____(a, b, c) c##_static_getter,
 #include "xfa/fxfa/parser/element_attributes.inc"
 #undef ELEM_ATTR____
 };
 
 static_assert(pdfium::size(kElementAttributeRecords) ==
-                  pdfium::size(kElementAttributeCallbacks),
+                  pdfium::size(kElementAttributeGetterCallbacks),
+              "Size mismatch");
+
+constexpr XFA_ATTRIBUTE_SETTER_CALLBACK kElementAttributeSetterCallbacks[] = {
+#undef ELEM_ATTR____
+#define ELEM_ATTR____(a, b, c) c##_static_setter,
+#include "xfa/fxfa/parser/element_attributes.inc"
+#undef ELEM_ATTR____
+};
+
+static_assert(pdfium::size(kElementAttributeRecords) ==
+                  pdfium::size(kElementAttributeSetterCallbacks),
               "Size mismatch");
 
 }  // namespace
@@ -257,11 +268,13 @@ Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
         });
     if (it != std::end(kElementAttributeRecords) &&
         compound_key == std::make_pair(it->element, it->attribute)) {
-      XFA_SCRIPTATTRIBUTEINFO result;
-      result.attribute = attr.value().attribute;
-      result.eValueType = attr.value().eValueType;
       size_t index = std::distance(std::begin(kElementAttributeRecords), it);
-      result.callback = kElementAttributeCallbacks[index];
+      XFA_SCRIPTATTRIBUTEINFO result = {
+          .attribute = attr.value().attribute,
+          .eValueType = attr.value().eValueType,
+          .getter = kElementAttributeGetterCallbacks[index],
+          .setter = kElementAttributeSetterCallbacks[index],
+      };
       return result;
     }
     element = kElementRecords[static_cast<size_t>(element)].parent;

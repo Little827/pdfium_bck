@@ -62,16 +62,15 @@ CJS_Result CJX_Tree::resolveNode(
             maybeResult.value().objects.front().Get()));
   }
 
-  if (!maybeResult.value().script_attribute.callback ||
+  if (!maybeResult.value().script_attribute.getter ||
       maybeResult.value().script_attribute.eValueType !=
           XFA_ScriptType::Object) {
     return CJS_Result::Success(runtime->NewNull());
   }
 
-  v8::Local<v8::Value> pValue;
   CJX_Object* jsObject = maybeResult.value().objects.front()->JSObject();
-  (*maybeResult.value().script_attribute.callback)(
-      runtime->GetIsolate(), jsObject, &pValue, false,
+  v8::Local<v8::Value> pValue = (*maybeResult.value().script_attribute.getter)(
+      runtime->GetIsolate(), jsObject,
       maybeResult.value().script_attribute.attribute);
   return CJS_Result::Success(pValue);
 }
@@ -229,15 +228,15 @@ void CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,
           pNodeList->Append(pObject->AsNode());
       }
     } else {
-      if (maybeResult.value().script_attribute.callback &&
+      if (maybeResult.value().script_attribute.getter &&
           maybeResult.value().script_attribute.eValueType ==
               XFA_ScriptType::Object) {
         for (auto& pObject : maybeResult.value().objects) {
-          v8::Local<v8::Value> innerValue;
           CJX_Object* jsObject = pObject->JSObject();
-          (*maybeResult.value().script_attribute.callback)(
-              pIsolate, jsObject, &innerValue, false,
-              maybeResult.value().script_attribute.attribute);
+          v8::Local<v8::Value> innerValue =
+              (*maybeResult.value().script_attribute.getter)(
+                  pIsolate, jsObject,
+                  maybeResult.value().script_attribute.attribute);
           CXFA_Object* obj =
               CFXJSE_Engine::ToObject(pScriptContext->GetIsolate(), innerValue);
           if (obj->IsNode())

@@ -14,11 +14,15 @@
 #include "third_party/base/optional.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
-typedef void (*XFA_ATTRIBUTE_CALLBACK)(v8::Isolate* pIsolate,
-                                       CJX_Object* pNode,
-                                       v8::Local<v8::Value>* pValue,
-                                       bool bSetting,
-                                       XFA_Attribute eAttribute);
+typedef v8::Local<v8::Value> (*XFA_ATTRIBUTE_GETTER_CALLBACK)(
+    v8::Isolate* pIsolate,
+    CJX_Object* pNode,
+    XFA_Attribute eAttribute);
+
+typedef void (*XFA_ATTRIBUTE_SETTER_CALLBACK)(v8::Isolate* pIsolate,
+                                              CJX_Object* pNode,
+                                              XFA_Attribute eAttribute,
+                                              v8::Local<v8::Value> pValue);
 
 struct XFA_PACKETINFO {
   const wchar_t* name;
@@ -35,7 +39,8 @@ struct XFA_ATTRIBUTEINFO {
 struct XFA_SCRIPTATTRIBUTEINFO {
   XFA_Attribute attribute;
   XFA_ScriptType eValueType;
-  XFA_ATTRIBUTE_CALLBACK callback = nullptr;
+  XFA_ATTRIBUTE_GETTER_CALLBACK getter = nullptr;
+  XFA_ATTRIBUTE_SETTER_CALLBACK setter = nullptr;
 };
 
 XFA_PACKETINFO XFA_GetPacketByIndex(XFA_PacketType ePacket);

@@ -1643,14 +1643,12 @@ std::vector<v8::Local<v8::Value>> ParseResolveResult(
   }
 
   *bAttribute = true;
-  if (resolveNodeRS.script_attribute.callback &&
+  if (resolveNodeRS.script_attribute.getter &&
       resolveNodeRS.script_attribute.eValueType == XFA_ScriptType::Object) {
     for (auto& pObject : resolveNodeRS.objects) {
-      v8::Local<v8::Value> pValue;
       CJX_Object* jsObject = pObject->JSObject();
-      (*resolveNodeRS.script_attribute.callback)(
-          pIsolate, jsObject, &pValue, false,
-          resolveNodeRS.script_attribute.attribute);
+      v8::Local<v8::Value> pValue = (*resolveNodeRS.script_attribute.getter)(
+          pIsolate, jsObject, resolveNodeRS.script_attribute.attribute);
       resultValues.push_back(pValue);
       *bAttribute = false;
     }
