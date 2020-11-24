@@ -12,26 +12,6 @@
 
 class CScript_EventPseudoModel;
 
-enum class XFA_Event {
-  Change = 0,
-  CommitKey,
-  FullText,
-  Keydown,
-  Modifier,
-  NewContentType,
-  NewText,
-  PreviousContentType,
-  PreviousText,
-  Reenter,
-  SelectionEnd,
-  SelectionStart,
-  Shift,
-  SoapFaultCode,
-  SoapFaultString,
-  Target,
-  CancelAction
-};
-
 class CJX_EventPseudoModel final : public CJX_Object {
  public:
   CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
@@ -69,16 +49,6 @@ class CJX_EventPseudoModel final : public CJX_Object {
 
   static const TypeTag static_type__ = TypeTag::EventPseudoModel;
   static const CJX_MethodSpec MethodSpecs[];
-
-  v8::Local<v8::Value> PropertyGetter(v8::Isolate* pIsolate, XFA_Event dwFlag);
-  void PropertySetter(v8::Isolate* pIsolate,
-                      XFA_Event dwFlag,
-                      v8::Local<v8::Value> pValue);
-
-  void Property(v8::Isolate* pIsolate,
-                XFA_Event dwFlag,
-                v8::Local<v8::Value>* pValue,
-                bool bSetting);
 };
 
 #endif  // FXJS_XFA_CJX_EVENTPSEUDOMODEL_H_

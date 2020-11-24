@@ -19,37 +19,20 @@
 
 namespace {
 
-void StringProperty(v8::Isolate* pIsolate,
-                    v8::Local<v8::Value>* pReturn,
-                    WideString* wsValue,
-                    bool bSetting) {
-  if (bSetting) {
-    *wsValue = fxv8::ReentrantToWideStringHelper(pIsolate, *pReturn);
-    return;
-  }
-  *pReturn = fxv8::NewStringHelper(pIsolate, wsValue->ToUTF8().AsStringView());
+void AdjustSelectionEnd(CXFA_EventParam* pEventParam) {
+  pEventParam->m_iSelEnd = std::max(0, pEventParam->m_iSelEnd);
+  pEventParam->m_iSelEnd = std::min<size_t>(
+      pEventParam->m_iSelEnd, pEventParam->m_wsPrevText.GetLength());
+  pEventParam->m_iSelStart =
+      std::min(pEventParam->m_iSelStart, pEventParam->m_iSelEnd);
 }
 
-void IntegerProperty(v8::Isolate* pIsolate,
-                     v8::Local<v8::Value>* pReturn,
-                     int32_t* iValue,
-                     bool bSetting) {
-  if (bSetting) {
-    *iValue = fxv8::ReentrantToInt32Helper(pIsolate, *pReturn);
-    return;
-  }
-  *pReturn = fxv8::NewNumberHelper(pIsolate, *iValue);
-}
-
-void BooleanProperty(v8::Isolate* pIsolate,
-                     v8::Local<v8::Value>* pReturn,
-                     bool* bValue,
-                     bool bSetting) {
-  if (bSetting) {
-    *bValue = fxv8::ReentrantToBooleanHelper(pIsolate, *pReturn);
-    return;
-  }
-  *pReturn = fxv8::NewBooleanHelper(pIsolate, *bValue);
+void AdjustSelectionStart(CXFA_EventParam* pEventParam) {
+  pEventParam->m_iSelStart = std::max(0, pEventParam->m_iSelStart);
+  pEventParam->m_iSelStart = std::min<size_t>(
+      pEventParam->m_iSelStart, pEventParam->m_wsPrevText.GetLength());
+  pEventParam->m_iSelEnd =
+      std::max(pEventParam->m_iSelStart, pEventParam->m_iSelEnd);
 }
 
 }  // namespace
@@ -72,97 +55,146 @@ bool CJX_EventPseudoModel::DynamicTypeIs(TypeTag eType) const {
 v8::Local<v8::Value> CJX_EventPseudoModel::cancelActionGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::CancelAction);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewBooleanHelper(pIsolate, pEventParam->m_bCancelAction);
 }
 
 void CJX_EventPseudoModel::cancelActionSetter(v8::Isolate* pIsolate,
                                               XFA_Attribute eAttribute,
                                               v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::CancelAction, pValue);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return;
+
+  pEventParam->m_bCancelAction =
+      fxv8::ReentrantToBooleanHelper(pIsolate, pValue);
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::changeGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::Change);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->m_wsChange.AsStringView());
 }
 
 void CJX_EventPseudoModel::changeSetter(v8::Isolate* pIsolate,
                                         XFA_Attribute eAttribute,
                                         v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::Change, pValue);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return;
+
+  pEventParam->m_wsChange = fxv8::ReentrantToWideStringHelper(pIsolate, pValue);
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::commitKeyGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::CommitKey);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewNumberHelper(pIsolate, pEventParam->m_iCommitKey);
 }
 
 void CJX_EventPseudoModel::commitKeySetter(v8::Isolate* pIsolate,
                                            XFA_Attribute eAttribute,
                                            v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::CommitKey, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::fullTextGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::FullText);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->m_wsFullText.AsStringView());
 }
 
 void CJX_EventPseudoModel::fullTextSetter(v8::Isolate* pIsolate,
                                           XFA_Attribute eAttribute,
                                           v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::FullText, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::keyDownGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::Keydown);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewBooleanHelper(pIsolate, pEventParam->m_bKeyDown);
 }
 
 void CJX_EventPseudoModel::keyDownSetter(v8::Isolate* pIsolate,
                                          XFA_Attribute eAttribute,
                                          v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::Keydown, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::modifierGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::Modifier);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewBooleanHelper(pIsolate, pEventParam->m_bModifier);
 }
 
 void CJX_EventPseudoModel::modifierSetter(v8::Isolate* pIsolate,
                                           XFA_Attribute eAttribute,
                                           v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::Modifier, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::newContentTypeGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::NewContentType);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->m_wsNewContentType.AsStringView());
 }
 
 void CJX_EventPseudoModel::newContentTypeSetter(v8::Isolate* pIsolate,
                                                 XFA_Attribute eAttribute,
                                                 v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::NewContentType, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::newTextGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
-  CXFA_EventParam* pEventParam = pScriptContext->GetEventParam();
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
   if (!pEventParam)
     return fxv8::NewUndefinedHelper(pIsolate);
 
-  return fxv8::NewStringHelper(
-      pIsolate, pEventParam->GetNewText().ToUTF8().AsStringView());
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->GetNewText().AsStringView());
 }
 
 void CJX_EventPseudoModel::newTextSetter(v8::Isolate* pIsolate,
@@ -172,109 +204,172 @@ void CJX_EventPseudoModel::newTextSetter(v8::Isolate* pIsolate,
 v8::Local<v8::Value> CJX_EventPseudoModel::prevContentTypeGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::PreviousContentType);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->m_wsPrevContentType.AsStringView());
 }
 
 void CJX_EventPseudoModel::prevContentTypeSetter(v8::Isolate* pIsolate,
                                                  XFA_Attribute eAttribute,
                                                  v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::PreviousContentType, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::prevTextGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::PreviousText);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->m_wsPrevText.AsStringView());
 }
 
 void CJX_EventPseudoModel::prevTextSetter(v8::Isolate* pIsolate,
                                           XFA_Attribute eAttribute,
                                           v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::PreviousText, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::reenterGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::Reenter);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewBooleanHelper(pIsolate, pEventParam->m_bReenter);
 }
 
 void CJX_EventPseudoModel::reenterSetter(v8::Isolate* pIsolate,
                                          XFA_Attribute eAttribute,
                                          v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::Reenter, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::selEndGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::SelectionEnd);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  v8::Local<v8::Value> result =
+      fxv8::NewNumberHelper(pIsolate, pEventParam->m_iSelEnd);
+  AdjustSelectionEnd(pEventParam);
+  return result;
 }
 
 void CJX_EventPseudoModel::selEndSetter(v8::Isolate* pIsolate,
                                         XFA_Attribute eAttribute,
                                         v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::SelectionEnd, pValue);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return;
+
+  pEventParam->m_iSelEnd = fxv8::ReentrantToInt32Helper(pIsolate, pValue);
+  AdjustSelectionEnd(pEventParam);
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::selStartGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::SelectionStart);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  v8::Local<v8::Value> result =
+      fxv8::NewNumberHelper(pIsolate, pEventParam->m_iSelStart);
+  AdjustSelectionStart(pEventParam);
+  return result;
 }
 
 void CJX_EventPseudoModel::selStartSetter(v8::Isolate* pIsolate,
                                           XFA_Attribute eAttribute,
                                           v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::SelectionStart, pValue);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return;
+
+  pEventParam->m_iSelStart = fxv8::ReentrantToInt32Helper(pIsolate, pValue);
+  AdjustSelectionStart(pEventParam);
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::shiftGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::Shift);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewBooleanHelper(pIsolate, pEventParam->m_bShift);
 }
 
 void CJX_EventPseudoModel::shiftSetter(v8::Isolate* pIsolate,
                                        XFA_Attribute eAttribute,
                                        v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::Shift, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::soapFaultCodeGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::SoapFaultCode);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->m_wsSoapFaultCode.AsStringView());
 }
 
 void CJX_EventPseudoModel::soapFaultCodeSetter(v8::Isolate* pIsolate,
                                                XFA_Attribute eAttribute,
                                                v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::SoapFaultCode, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::soapFaultStringGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::SoapFaultString);
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
+  if (!pEventParam)
+    return v8::Local<v8::Value>();
+
+  return fxv8::NewStringHelper(pIsolate,
+                               pEventParam->m_wsSoapFaultString.AsStringView());
 }
 
 void CJX_EventPseudoModel::soapFaultStringSetter(v8::Isolate* pIsolate,
                                                  XFA_Attribute eAttribute,
                                                  v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::SoapFaultString, pValue);
+  // Not writeable.
 }
 
 v8::Local<v8::Value> CJX_EventPseudoModel::targetGetter(
     v8::Isolate* pIsolate,
     XFA_Attribute eAttribute) {
-  return PropertyGetter(pIsolate, XFA_Event::Target);
+  // Not readable.
+  return v8::Local<v8::Value>();
 }
 
 void CJX_EventPseudoModel::targetSetter(v8::Isolate* pIsolate,
                                         XFA_Attribute eAttribute,
                                         v8::Local<v8::Value> pValue) {
-  PropertySetter(pIsolate, XFA_Event::Target, pValue);
+  // Not writeable.
 }
 
 CJS_Result CJX_EventPseudoModel::emit(
@@ -306,106 +401,4 @@ CJS_Result CJX_EventPseudoModel::reset(
     *pEventParam = CXFA_EventParam();
 
   return CJS_Result::Success();
-}
-
-v8::Local<v8::Value> CJX_EventPseudoModel::PropertyGetter(v8::Isolate* pIsolate,
-                                                          XFA_Event dwFlag) {
-  v8::Local<v8::Value> result;
-  Property(pIsolate, dwFlag, &result, false);
-  return result;
-}
-
-void CJX_EventPseudoModel::PropertySetter(v8::Isolate* pIsolate,
-                                          XFA_Event dwFlag,
-                                          v8::Local<v8::Value> pValue) {
-  Property(pIsolate, dwFlag, &pValue, true);
-}
-
-void CJX_EventPseudoModel::Property(v8::Isolate* pIsolate,
-                                    XFA_Event dwFlag,
-                                    v8::Local<v8::Value>* pValue,
-                                    bool bSetting) {
-  // Only the cancelAction, selStart, selEnd and change properties are writable.
-  if (bSetting && dwFlag != XFA_Event::CancelAction &&
-      dwFlag != XFA_Event::SelectionStart &&
-      dwFlag != XFA_Event::SelectionEnd && dwFlag != XFA_Event::Change) {
-    return;
-  }
-
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
-  CXFA_EventParam* pEventParam = pScriptContext->GetEventParam();
-  if (!pEventParam)
-    return;
-
-  switch (dwFlag) {
-    case XFA_Event::CancelAction:
-      BooleanProperty(pIsolate, pValue, &pEventParam->m_bCancelAction,
-                      bSetting);
-      break;
-    case XFA_Event::Change:
-      StringProperty(pIsolate, pValue, &pEventParam->m_wsChange, bSetting);
-      break;
-    case XFA_Event::CommitKey:
-      IntegerProperty(pIsolate, pValue, &pEventParam->m_iCommitKey, bSetting);
-      break;
-    case XFA_Event::FullText:
-      StringProperty(pIsolate, pValue, &pEventParam->m_wsFullText, bSetting);
-      break;
-    case XFA_Event::Keydown:
-      BooleanProperty(pIsolate, pValue, &pEventParam->m_bKeyDown, bSetting);
-      break;
-    case XFA_Event::Modifier:
-      BooleanProperty(pIsolate, pValue, &pEventParam->m_bModifier, bSetting);
-      break;
-    case XFA_Event::NewContentType:
-      StringProperty(pIsolate, pValue, &pEventParam->m_wsNewContentType,
-                     bSetting);
-      break;
-    case XFA_Event::NewText:
-      NOTREACHED();
-      break;
-    case XFA_Event::PreviousContentType:
-      StringProperty(pIsolate, pValue, &pEventParam->m_wsPrevContentType,
-                     bSetting);
-      break;
-    case XFA_Event::PreviousText:
-      StringProperty(pIsolate, pValue, &pEventParam->m_wsPrevText, bSetting);
-      break;
-    case XFA_Event::Reenter:
-      BooleanProperty(pIsolate, pValue, &pEventParam->m_bReenter, bSetting);
-      break;
-    case XFA_Event::SelectionEnd:
-      IntegerProperty(pIsolate, pValue, &pEventParam->m_iSelEnd, bSetting);
-
-      pEventParam->m_iSelEnd = std::max(0, pEventParam->m_iSelEnd);
-      pEventParam->m_iSelEnd =
-          std::min(static_cast<size_t>(pEventParam->m_iSelEnd),
-                   pEventParam->m_wsPrevText.GetLength());
-      pEventParam->m_iSelStart =
-          std::min(pEventParam->m_iSelStart, pEventParam->m_iSelEnd);
-      break;
-    case XFA_Event::SelectionStart:
-      IntegerProperty(pIsolate, pValue, &pEventParam->m_iSelStart, bSetting);
-      pEventParam->m_iSelStart = std::max(0, pEventParam->m_iSelStart);
-      pEventParam->m_iSelStart =
-          std::min(static_cast<size_t>(pEventParam->m_iSelStart),
-                   pEventParam->m_wsPrevText.GetLength());
-      pEventParam->m_iSelEnd =
-          std::max(pEventParam->m_iSelStart, pEventParam->m_iSelEnd);
-      break;
-    case XFA_Event::Shift:
-      BooleanProperty(pIsolate, pValue, &pEventParam->m_bShift, bSetting);
-      break;
-    case XFA_Event::SoapFaultCode:
-      StringProperty(pIsolate, pValue, &pEventParam->m_wsSoapFaultCode,
-                     bSetting);
-      break;
-    case XFA_Event::SoapFaultString:
-      StringProperty(pIsolate, pValue, &pEventParam->m_wsSoapFaultString,
-                     bSetting);
-      break;
-    case XFA_Event::Target:
-    default:
-      break;
-  }
 }
