@@ -86,23 +86,20 @@ CJS_Result CJX_Tree::resolveNodes(
     refNode = GetDocument()->GetScriptContext()->GetThisObject();
 
   CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
-  v8::Local<v8::Value> pValue;
-  ResolveNodeList(pScriptContext->GetIsolate(), &pValue,
-                  runtime->ToWideString(params[0]),
-                  XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
-                      XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
-                      XFA_RESOLVENODE_Siblings,
-                  ToNode(refNode));
+  v8::Local<v8::Value> pValue = ResolveNodeList(
+      pScriptContext->GetIsolate(), runtime->ToWideString(params[0]),
+      XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
+          XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
+          XFA_RESOLVENODE_Siblings,
+      ToNode(refNode));
   return CJS_Result::Success(pValue);
 }
 
 v8::Local<v8::Value> CJX_Tree::allGetter(v8::Isolate* pIsolate,
                                          XFA_Attribute eAttribute) {
-  v8::Local<v8::Value> result;
   uint32_t dwFlag = XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_ALL;
   WideString wsExpression = GetAttributeByEnum(XFA_Attribute::Name) + L"[*]";
-  ResolveNodeList(pIsolate, &result, wsExpression, dwFlag, nullptr);
-  return result;
+  return ResolveNodeList(pIsolate, wsExpression, dwFlag, nullptr);
 }
 
 void CJX_Tree::allSetter(v8::Isolate* pIsolate,
@@ -113,12 +110,11 @@ void CJX_Tree::allSetter(v8::Isolate* pIsolate,
 
 v8::Local<v8::Value> CJX_Tree::classAllGetter(v8::Isolate* pIsolate,
                                               XFA_Attribute eAttribute) {
-  v8::Local<v8::Value> result;
   WideString wsExpression =
       L"#" + WideString::FromASCII(GetXFAObject()->GetClassName()) + L"[*]";
-  ResolveNodeList(pIsolate, &result, std::move(wsExpression),
-                  XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_ALL, nullptr);
-  return result;
+  return ResolveNodeList(pIsolate, std::move(wsExpression),
+                         XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_ALL,
+                         nullptr);
 }
 
 void CJX_Tree::classAllSetter(v8::Isolate* pIsolate,
@@ -202,11 +198,10 @@ void CJX_Tree::somExpressionSetter(v8::Isolate* pIsolate,
   ThrowInvalidPropertyException();
 }
 
-void CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,
-                               v8::Local<v8::Value>* pValue,
-                               WideString wsExpression,
-                               uint32_t dwFlag,
-                               CXFA_Node* refNode) {
+v8::Local<v8::Value> CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,
+                                               WideString wsExpression,
+                                               uint32_t dwFlag,
+                                               CXFA_Node* refNode) {
   if (!refNode)
     refNode = GetXFANode();
 
@@ -245,6 +240,6 @@ void CJX_Tree::ResolveNodeList(v8::Isolate* pIsolate,
       }
     }
   }
-  *pValue = pNodeList->JSObject()->NewBoundV8Object(
+  return pNodeList->JSObject()->NewBoundV8Object(
       pIsolate, pScriptContext->GetJseNormalClass()->GetTemplate(pIsolate));
 }

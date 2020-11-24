@@ -111,52 +111,56 @@ void DynPropGetterAdapter_MethodCallback(
     info.GetReturnValue().Set(result.Return());
 }
 
-void DynPropGetterAdapter(v8::Isolate* pIsolate,
-                          const FXJSE_CLASS_DESCRIPTOR* lpClass,
-                          v8::Local<v8::Object> pObject,
-                          ByteStringView szPropName,
-                          v8::Local<v8::Value>* pValue) {
+v8::Local<v8::Value> DynPropGetterAdapter(v8::Isolate* pIsolate,
+                                          const FXJSE_CLASS_DESCRIPTOR* lpClass,
+                                          v8::Local<v8::Object> pObject,
+                                          ByteStringView szPropName) {
   int32_t nPropType =
-      lpClass->dynPropTypeGetter == nullptr
-          ? FXJSE_ClassPropType_Property
-          : lpClass->dynPropTypeGetter(pIsolate, pObject, szPropName, false);
-  if (nPropType == FXJSE_ClassPropType_Property) {
-    if (lpClass->dynPropGetter) {
-      *pValue = lpClass->dynPropGetter(pIsolate, pObject, szPropName);
-    }
-  } else if (nPropType == FXJSE_ClassPropType_Method) {
-    if (lpClass->dynMethodCall && pValue) {
-      v8::HandleScope hscope(pIsolate);
-      v8::Local<v8::ObjectTemplate> hCallBackInfoTemplate =
-          v8::ObjectTemplate::New(pIsolate);
-      hCallBackInfoTemplate->SetInternalFieldCount(2);
-      v8::Local<v8::Object> hCallBackInfo =
-          hCallBackInfoTemplate->NewInstance(pIsolate->GetCurrentContext())
-              .ToLocalChecked();
-      hCallBackInfo->SetAlignedPointerInInternalField(
-          0, const_cast<FXJSE_CLASS_DESCRIPTOR*>(lpClass));
-      hCallBackInfo->SetInternalField(
-          1, fxv8::NewStringHelper(pIsolate, szPropName));
-      *pValue =
-          v8::Function::New(pIsolate->GetCurrentContext(),
-                            DynPropGetterAdapter_MethodCallback, hCallBackInfo,
-                            0, v8::ConstructorBehavior::kThrow)
-              .ToLocalChecked();
-    }
+      lpClass->dynPropTypeGetter
+          ? lpClass->dynPropTypeGetter(pIsolate, pObject, szPropName, false)
+          : FXJSE_ClassPropType_Property;
+  switch (nPropType) {
+    case FXJSE_ClassPropType_Property:
+      if (lpClass->dynPropGetter)
+        return lpClass->dynPropGetter(pIsolate, pObject, szPropName);
+      break;
+    case FXJSE_ClassPropType_Method:
+      if (lpClass->dynMethodCall) {
+        v8::EscapableHandleScope hscope(pIsolate);
+        v8::Local<v8::ObjectTemplate> hCallBackInfoTemplate =
+            v8::ObjectTemplate::New(pIsolate);
+        hCallBackInfoTemplate->SetInternalFieldCount(2);
+        v8::Local<v8::Object> hCallBackInfo =
+            hCallBackInfoTemplate->NewInstance(pIsolate->GetCurrentContext())
+                .ToLocalChecked();
+        hCallBackInfo->SetAlignedPointerInInternalField(
+            0, const_cast<FXJSE_CLASS_DESCRIPTOR*>(lpClass));
+        hCallBackInfo->SetInternalField(
+            1, fxv8::NewStringHelper(pIsolate, szPropName));
+        return hscope.Escape(
+            v8::Function::New(pIsolate->GetCurrentContext(),
+                              DynPropGetterAdapter_MethodCallback,
+                              hCallBackInfo, 0, v8::ConstructorBehavior::kThrow)
+                .ToLocalChecked());
+      }
+      break;
+    default:
+      break;
   }
+  return v8::Local<v8::Value>();
 }
 
 void DynPropSetterAdapter(v8::Isolate* pIsolate,
                           const FXJSE_CLASS_DESCRIPTOR* lpClass,
                           v8::Local<v8::Object> pObject,
                           ByteStringView szPropName,
-                          v8::Local<v8::Value>* pValue) {
+                          v8::Local<v8::Value> pValue) {
   int32_t nPropType =
       lpClass->dynPropTypeGetter
           ? lpClass->dynPropTypeGetter(pIsolate, pObject, szPropName, false)
           : FXJSE_ClassPropType_Property;
   if (nPropType != FXJSE_ClassPropType_Method && lpClass->dynPropSetter)
-    lpClass->dynPropSetter(pIsolate, pObject, szPropName, *pValue);
+    lpClass->dynPropSetter(pIsolate, pObject, szPropName, pValue);
 }
 
 bool DynPropQueryAdapter(v8::Isolate* pIsolate,
@@ -201,10 +205,8 @@ void NamedPropertyGetterCallback(
 
   v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
-  v8::Local<v8::Value> pNewValue;
-  DynPropGetterAdapter(info.GetIsolate(), pClass, info.Holder(), szFxPropName,
-                       &pNewValue);
-  info.GetReturnValue().Set(pNewValue);
+  info.GetReturnValue().Set(DynPropGetterAdapter(info.GetIsolate(), pClass,
+                                                 info.Holder(), szFxPropName));
 }
 
 void NamedPropertySetterCallback(
@@ -219,7 +221,7 @@ void NamedPropertySetterCallback(
   v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
   DynPropSetterAdapter(info.GetIsolate(), pClass, info.Holder(), szFxPropName,
-                       &value);
+                       value);
   info.GetReturnValue().Set(value);
 }
 
@@ -229,7 +231,7 @@ void NamedPropertyEnumeratorCallback(
 }
 
 void SetUpNamedPropHandler(v8::Isolate* pIsolate,
-                           v8::Local<v8::ObjectTemplate>* pObjectTemplate,
+                           v8::Local<v8::ObjectTemplate> pObjectTemplate,
                            const FXJSE_CLASS_DESCRIPTOR* lpClassDefinition) {
   v8::NamedPropertyHandlerConfiguration configuration(
       lpClassDefinition->dynPropGetter ? NamedPropertyGetterCallback : nullptr,
@@ -240,7 +242,7 @@ void SetUpNamedPropHandler(v8::Isolate* pIsolate,
       v8::External::New(pIsolate,
                         const_cast<FXJSE_CLASS_DESCRIPTOR*>(lpClassDefinition)),
       v8::PropertyHandlerFlags::kNonMasking);
-  (*pObjectTemplate)->SetHandler(configuration);
+  pObjectTemplate->SetHandler(configuration);
 }
 
 }  // namespace
@@ -276,7 +278,7 @@ CFXJSE_Class* CFXJSE_Class::Create(
   hFunctionTemplate->InstanceTemplate()->SetInternalFieldCount(2);
   v8::Local<v8::ObjectTemplate> hObjectTemplate =
       hFunctionTemplate->InstanceTemplate();
-  SetUpNamedPropHandler(pIsolate, &hObjectTemplate, lpClassDefinition);
+  SetUpNamedPropHandler(pIsolate, hObjectTemplate, lpClassDefinition);
 
   if (lpClassDefinition->methNum) {
     for (int32_t i = 0; i < lpClassDefinition->methNum; i++) {
