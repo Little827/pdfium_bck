@@ -65,6 +65,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa3a09c_e277aa1f",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-24T21:31:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4350f0ef_a02b762c",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 6
+      },
+      "revId": "a5f73c3f8d63a4a30aa5afa3b46b1230d129d1ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bf7cbb1_3a5534ed",
@@ -78,6 +102,24 @@
       "writtenOn": "2020-11-24T20:38:31Z",
       "side": 1,
       "message": "Shouldn\u0027t this only be Skia paths for now?",
+      "revId": "a5f73c3f8d63a4a30aa5afa3b46b1230d129d1ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77007cb0_094e0f94",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-24T21:31:26Z",
+      "side": 1,
+      "message": "No, it should be both Skia and SkiaPaths, since we don\u0027t want to avoid compiling this part of the code when Skia is enabled, which means |kContentWithInkChecksum| needs to be defined for Skia as well.\n\nSee example test FPDFAnnotEmbedderTest.MAYBE_ModifyRectQuadpointsWithAP.",
+      "parentUuid": "7bf7cbb1_3a5534ed",
       "revId": "a5f73c3f8d63a4a30aa5afa3b46b1230d129d1ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
