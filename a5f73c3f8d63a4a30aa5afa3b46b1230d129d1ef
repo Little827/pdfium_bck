@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a26e9e3_0dcc38da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-24T08:18:17Z",
+      "side": 1,
+      "message": "AGG and Skia rendering results have been uploaded to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c84. \nThis CL mainly did 2 things:\n- Add Skia/SkiaPaths results to enable tests.\n- Use more \"constexpr\" and replace \"MD5\" with \"Checksum\" to improve consistency.\n",
+      "revId": "a5f73c3f8d63a4a30aa5afa3b46b1230d129d1ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88853f2_8ba96eb5",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-11-24T08:18:17Z",
+      "side": 1,
+      "message": "This test still causes crashes due to assertion failure when Skia is enabled. Therefore it\u0027s only enabled for SkiaPaths in this CL.\n\nAlso updating the bug number to 1500 due to a previous discussion with Lei about changing Skia/SkiaPaths related embeddertests\u0027 tied to pdfium:1500 since it\u0027s a subset of issues from pdfium:11.",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 6
+      },
+      "revId": "a5f73c3f8d63a4a30aa5afa3b46b1230d129d1ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
