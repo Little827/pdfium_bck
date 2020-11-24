@@ -136,22 +136,32 @@ class CFXJSE_Engine final : public CFX_V8 {
   v8::Local<v8::Object> NewNormalXFAObject(CXFA_Object* obj);
 
  private:
+  CFXJSE_Context* GetVariablesContext(CXFA_Node* pScriptNode) const;
   CFXJSE_Context* CreateVariablesContext(CXFA_Node* pScriptNode,
                                          CXFA_Node* pSubform);
+
   void RemoveBuiltInObjs(CFXJSE_Context* pContext);
-  bool QueryNodeByFlag(CXFA_Node* refNode,
-                       WideStringView propname,
-                       v8::Local<v8::Value>* pValue,
-                       uint32_t dwFlag,
-                       bool bSetting);
+
+  // Returns empty local on failure.
+  v8::Local<v8::Value> QueryNodeByFlag(CXFA_Node* refNode,
+                                       WideStringView propname,
+                                       uint32_t dwFlag);
+  bool UpdateNodeByFlag(CXFA_Node* refNode,
+                        WideStringView propname,
+                        v8::Local<v8::Value> pValue,
+                        uint32_t dwFlag);
+
   bool IsStrictScopeInJavaScript();
   CXFA_Object* GetVariablesThis(CXFA_Object* pObject);
   CXFA_Object* GetVariablesScript(CXFA_Object* pObject);
-  bool QueryVariableValue(CXFA_Node* pScriptNode,
-                          ByteStringView szPropName,
-                          v8::Local<v8::Value>* pValue,
-                          bool bGetter);
   bool RunVariablesScript(CXFA_Node* pScriptNode);
+
+  // Returns empty local on failure.
+  v8::Local<v8::Value> QueryVariableValue(CXFA_Node* pScriptNode,
+                                          ByteStringView szPropName) const;
+  void UpdateVariableValue(CXFA_Node* pScriptNode,
+                           ByteStringView szPropName,
+                           v8::Local<v8::Value> pValue);
 
   UnownedPtr<CJS_Runtime> const m_pSubordinateRuntime;
   cppgc::WeakPersistent<CXFA_Document> const m_pDocument;
