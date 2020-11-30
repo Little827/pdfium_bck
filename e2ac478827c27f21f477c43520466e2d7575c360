@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbacd2a7_0debd878",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "/*foo\u003d*/",
+      "range": {
+        "startLine": 187,
+        "startChar": 47,
+        "endLine": 187,
+        "endChar": 48
+      },
+      "revId": "e2ac478827c27f21f477c43520466e2d7575c360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

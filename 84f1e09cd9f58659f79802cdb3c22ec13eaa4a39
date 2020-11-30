@@ -1,0 +1,331 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0670fa_ad4a766c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51aacb9d_ba4ca5c4",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Nit: /*bindNode\u003d*/",
+      "range": {
+        "startLine": 187,
+        "startChar": 48,
+        "endLine": 187,
+        "endChar": 55
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae72b648_32062e75",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Can we explicitly make this \u003d 0?",
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb037d1_15584212",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Please explicitly add the copy assignment operator.",
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fcb8206_ce8b2a85",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 63,
+        "startChar": 44,
+        "endLine": 63,
+        "endChar": 49
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c343b1_af090725",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 386,
+        "startChar": 39,
+        "endLine": 386,
+        "endChar": 46
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddfd152_89d40539",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 450,
+        "startChar": 14,
+        "endLine": 450,
+        "endChar": 21
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c412392d_47b5f064",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Nit: Can we not inline these? Perhaps constexpr them above.\nThis seems to be done in other files",
+      "range": {
+        "startLine": 985,
+        "startChar": 12,
+        "endLine": 987,
+        "endChar": 40
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c804db_855d1868",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 988,
+        "startChar": 12,
+        "endLine": 988,
+        "endChar": 19
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c68401_0673c8dc",
+        "filename": "fxjs/xfa/cjx_tree.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 54,
+        "startChar": 45,
+        "endLine": 54,
+        "endChar": 52
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26b16f7_128da22a",
+        "filename": "fxjs/xfa/cjx_tree.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 223,
+        "startChar": 45,
+        "endLine": 223,
+        "endChar": 52
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a9e7dd_8bb86f2c",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 445,
+        "startChar": 45,
+        "endLine": 445,
+        "endChar": 52
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231c3e46_9b68e66f",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 642,
+        "startChar": 47,
+        "endLine": 642,
+        "endChar": 54
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ddad030_9379fb38",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 216,
+        "startChar": 14,
+        "endLine": 216,
+        "endChar": 21
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f93f530_1ad6e521",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-11-30T23:17:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 1584,
+        "startChar": 43,
+        "endLine": 1584,
+        "endChar": 50
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
