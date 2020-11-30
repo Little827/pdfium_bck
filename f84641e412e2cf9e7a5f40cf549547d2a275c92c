@@ -16,6 +16,29 @@
       "message": "Tom: could you please take a look? Thanks.",
       "revId": "f84641e412e2cf9e7a5f40cf549547d2a275c92c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84672c6c_05fa90c6",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-11-30T19:25:38Z",
+      "side": 1,
+      "message": "nit: we can avoid even making the getsubtype call if !start, etc.",
+      "range": {
+        "startLine": 894,
+        "startChar": 36,
+        "endLine": 894,
+        "endChar": 51
+      },
+      "revId": "f84641e412e2cf9e7a5f40cf549547d2a275c92c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
