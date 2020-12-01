@@ -65,6 +65,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bddaa3_0f545177",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-01T00:20:43Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "9845e330_26bc859d",
+      "range": {
+        "startLine": 187,
+        "startChar": 48,
+        "endLine": 187,
+        "endChar": 55
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae72b648_32062e75",
@@ -172,6 +196,30 @@
       "side": 1,
       "message": "Yes, I want the default ctor to zero this.",
       "parentUuid": "6fcb8206_ce8b2a85",
+      "range": {
+        "startLine": 63,
+        "startChar": 44,
+        "endLine": 63,
+        "endChar": 49
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22db5e28_90b595d1",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-01T00:20:43Z",
+      "side": 1,
+      "message": "Oh right, I thought every member of that struct had a default member, but seems like I was wrong.",
+      "parentUuid": "3ab52361_2fbaeb01",
       "range": {
         "startLine": 63,
         "startChar": 44,

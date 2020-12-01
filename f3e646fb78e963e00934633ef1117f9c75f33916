@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f03c193_8ae836ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-01T00:20:43Z",
+      "side": 1,
+      "message": "Thanks for the constexprs!\n\nLGTM++",
+      "revId": "f3e646fb78e963e00934633ef1117f9c75f33916",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
