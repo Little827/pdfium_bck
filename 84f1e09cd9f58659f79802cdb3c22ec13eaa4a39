@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9845e330_26bc859d",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Created separate ResolveObjectsWithBindNode() to handle the non-null case and removed all the nullptr calls.",
+      "parentUuid": "51aacb9d_ba4ca5c4",
+      "range": {
+        "startLine": 187,
+        "startChar": 48,
+        "endLine": 187,
+        "endChar": 55
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae72b648_32062e75",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-30T23:17:53Z",
       "side": 1,
       "message": "Can we explicitly make this \u003d 0?",
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba55260_d0d56396",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae72b648_32062e75",
       "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -75,6 +117,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f947d6_5d43e874",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Done. I\u0027m getting used to this now.  thanks.",
+      "parentUuid": "ecb037d1_15584212",
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fcb8206_ce8b2a85",
@@ -88,6 +148,30 @@
       "writtenOn": "2020-11-30T23:17:53Z",
       "side": 1,
       "message": "Is this necessary?",
+      "range": {
+        "startLine": 63,
+        "startChar": 44,
+        "endLine": 63,
+        "endChar": 49
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ab52361_2fbaeb01",
+        "filename": "fxjs/xfa/cfxjse_engine.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Yes, I want the default ctor to zero this.",
+      "parentUuid": "6fcb8206_ce8b2a85",
       "range": {
         "startLine": 63,
         "startChar": 44,
@@ -121,6 +205,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8e72bc_4a242f17",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "19c343b1_af090725",
+      "range": {
+        "startLine": 386,
+        "startChar": 39,
+        "endLine": 386,
+        "endChar": 46
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ddfd152_89d40539",
@@ -134,6 +242,30 @@
       "writtenOn": "2020-11-30T23:17:53Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 450,
+        "startChar": 14,
+        "endLine": 450,
+        "endChar": 21
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83ae3cf_94de0c30",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "7ddfd152_89d40539",
       "range": {
         "startLine": 450,
         "startChar": 14,
@@ -167,6 +299,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0fc3a4d_db65fce8",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c412392d_47b5f064",
+      "range": {
+        "startLine": 985,
+        "startChar": 12,
+        "endLine": 987,
+        "endChar": 40
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18c804db_855d1868",
@@ -180,6 +336,30 @@
       "writtenOn": "2020-11-30T23:17:53Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 988,
+        "startChar": 12,
+        "endLine": 988,
+        "endChar": 19
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "299ced51_6bbc3631",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "18c804db_855d1868",
       "range": {
         "startLine": 988,
         "startChar": 12,
@@ -213,6 +393,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a691c020_79302146",
+        "filename": "fxjs/xfa/cjx_tree.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "35c68401_0673c8dc",
+      "range": {
+        "startLine": 54,
+        "startChar": 45,
+        "endLine": 54,
+        "endChar": 52
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f26b16f7_128da22a",
@@ -226,6 +430,30 @@
       "writtenOn": "2020-11-30T23:17:53Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 223,
+        "startChar": 45,
+        "endLine": 223,
+        "endChar": 52
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6a1982_6bd1a641",
+        "filename": "fxjs/xfa/cjx_tree.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "f26b16f7_128da22a",
       "range": {
         "startLine": 223,
         "startChar": 45,
@@ -259,6 +487,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83d91ef_9687dc46",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "f4a9e7dd_8bb86f2c",
+      "range": {
+        "startLine": 445,
+        "startChar": 45,
+        "endLine": 445,
+        "endChar": 52
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "231c3e46_9b68e66f",
@@ -272,6 +524,30 @@
       "writtenOn": "2020-11-30T23:17:53Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 642,
+        "startChar": 47,
+        "endLine": 642,
+        "endChar": 54
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0a9ee1_ed8d86f0",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "231c3e46_9b68e66f",
       "range": {
         "startLine": 642,
         "startChar": 47,
@@ -305,6 +581,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6fef04_2bd787cc",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Ditto.  Also extracted flags to constexpr",
+      "parentUuid": "8ddad030_9379fb38",
+      "range": {
+        "startLine": 216,
+        "startChar": 14,
+        "endLine": 216,
+        "endChar": 21
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f93f530_1ad6e521",
@@ -318,6 +618,30 @@
       "writtenOn": "2020-11-30T23:17:53Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 1584,
+        "startChar": 43,
+        "endLine": 1584,
+        "endChar": 50
+      },
+      "revId": "84f1e09cd9f58659f79802cdb3c22ec13eaa4a39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c16569f_7d26ca39",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-01T00:11:44Z",
+      "side": 1,
+      "message": "Ditto.  and constexpr at line 1579",
+      "parentUuid": "6f93f530_1ad6e521",
       "range": {
         "startLine": 1584,
         "startChar": 43,
