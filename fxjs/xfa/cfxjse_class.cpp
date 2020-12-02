@@ -15,7 +15,6 @@
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_context.h"
 #include "fxjs/xfa/cfxjse_isolatetracker.h"
-#include "fxjs/xfa/cfxjse_value.h"
 
 using pdfium::fxjse::kClassTag;
 using pdfium::fxjse::kFuncTag;
@@ -116,21 +115,17 @@ void DynPropGetterAdapter(v8::Isolate* pIsolate,
                           const FXJSE_CLASS_DESCRIPTOR* lpClass,
                           v8::Local<v8::Object> pObject,
                           ByteStringView szPropName,
-                          CFXJSE_Value* pValue) {
-  ASSERT(lpClass);
-
+                          v8::Local<v8::Value>* pValue) {
   int32_t nPropType =
       lpClass->dynPropTypeGetter == nullptr
           ? FXJSE_ClassPropType_Property
           : lpClass->dynPropTypeGetter(pIsolate, pObject, szPropName, false);
   if (nPropType == FXJSE_ClassPropType_Property) {
     if (lpClass->dynPropGetter) {
-      pValue->ForceSetValue(
-          pIsolate, lpClass->dynPropGetter(pIsolate, pObject, szPropName));
+      *pValue = lpClass->dynPropGetter(pIsolate, pObject, szPropName);
     }
   } else if (nPropType == FXJSE_ClassPropType_Method) {
     if (lpClass->dynMethodCall && pValue) {
-      v8::HandleScope hscope(pIsolate);
       v8::Local<v8::ObjectTemplate> hCallBackInfoTemplate =
           v8::ObjectTemplate::New(pIsolate);
       hCallBackInfoTemplate->SetInternalFieldCount(2);
@@ -141,12 +136,11 @@ void DynPropGetterAdapter(v8::Isolate* pIsolate,
           0, const_cast<FXJSE_CLASS_DESCRIPTOR*>(lpClass));
       hCallBackInfo->SetInternalField(
           1, fxv8::NewStringHelper(pIsolate, szPropName));
-      pValue->ForceSetValue(
-          pIsolate,
+      *pValue =
           v8::Function::New(pIsolate->GetCurrentContext(),
                             DynPropGetterAdapter_MethodCallback, hCallBackInfo,
                             0, v8::ConstructorBehavior::kThrow)
-              .ToLocalChecked());
+              .ToLocalChecked();
     }
   }
 }
@@ -155,18 +149,13 @@ void DynPropSetterAdapter(v8::Isolate* pIsolate,
                           const FXJSE_CLASS_DESCRIPTOR* lpClass,
                           v8::Local<v8::Object> pObject,
                           ByteStringView szPropName,
-                          CFXJSE_Value* pValue) {
-  ASSERT(lpClass);
+                          v8::Local<v8::Value>* pValue) {
   int32_t nPropType =
-      lpClass->dynPropTypeGetter == nullptr
-          ? FXJSE_ClassPropType_Property
-          : lpClass->dynPropTypeGetter(pIsolate, pObject, szPropName, false);
-  if (nPropType != FXJSE_ClassPropType_Method) {
-    if (lpClass->dynPropSetter) {
-      lpClass->dynPropSetter(pIsolate, pObject, szPropName,
-                             pValue->GetValue(pIsolate));
-    }
-  }
+      lpClass->dynPropTypeGetter
+          ? lpClass->dynPropTypeGetter(pIsolate, pObject, szPropName, false)
+          : FXJSE_ClassPropType_Property;
+  if (nPropType != FXJSE_ClassPropType_Method && lpClass->dynPropSetter)
+    lpClass->dynPropSetter(pIsolate, pObject, szPropName, *pValue);
 }
 
 bool DynPropQueryAdapter(v8::Isolate* pIsolate,
@@ -189,7 +178,6 @@ void NamedPropertyQueryCallback(
   if (!pClass)
     return;
 
-  v8::HandleScope scope(info.GetIsolate());
   v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
   if (DynPropQueryAdapter(info.GetIsolate(), pClass, info.Holder(),
@@ -211,10 +199,10 @@ void NamedPropertyGetterCallback(
 
   v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
-  auto pNewValue = std::make_unique<CFXJSE_Value>();
+  v8::Local<v8::Value> pNewValue;
   DynPropGetterAdapter(info.GetIsolate(), pClass, info.Holder(), szFxPropName,
-                       pNewValue.get());
-  info.GetReturnValue().Set(pNewValue->DirectGetValue());
+                       &pNewValue);
+  info.GetReturnValue().Set(pNewValue);
 }
 
 void NamedPropertySetterCallback(
@@ -228,9 +216,8 @@ void NamedPropertySetterCallback(
 
   v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
-  auto pNewValue = std::make_unique<CFXJSE_Value>(info.GetIsolate(), value);
   DynPropSetterAdapter(info.GetIsolate(), pClass, info.Holder(), szFxPropName,
-                       pNewValue.get());
+                       &value);
   info.GetReturnValue().Set(value);
 }
 
@@ -240,7 +227,7 @@ void NamedPropertyEnumeratorCallback(
 }
 
 void SetUpNamedPropHandler(v8::Isolate* pIsolate,
-                           v8::Local<v8::ObjectTemplate>* pObjectTemplate,
+                           v8::Local<v8::ObjectTemplate> pObjectTemplate,
                            const FXJSE_CLASS_DESCRIPTOR* lpClassDefinition) {
   v8::NamedPropertyHandlerConfiguration configuration(
       lpClassDefinition->dynPropGetter ? NamedPropertyGetterCallback : nullptr,
@@ -251,7 +238,7 @@ void SetUpNamedPropHandler(v8::Isolate* pIsolate,
       v8::External::New(pIsolate,
                         const_cast<FXJSE_CLASS_DESCRIPTOR*>(lpClassDefinition)),
       v8::PropertyHandlerFlags::kNonMasking);
-  (*pObjectTemplate)->SetHandler(configuration);
+  pObjectTemplate->SetHandler(configuration);
 }
 
 }  // namespace
@@ -273,6 +260,7 @@ CFXJSE_Class* CFXJSE_Class::Create(
   auto pClass = std::make_unique<CFXJSE_Class>(lpContext);
   pClass->m_szClassName = lpClassDefinition->name;
   pClass->m_lpClassDefinition = lpClassDefinition;
+
   CFXJSE_ScopeUtil_IsolateHandleRootContext scope(pIsolate);
   v8::Local<v8::FunctionTemplate> hFunctionTemplate = v8::FunctionTemplate::New(
       pIsolate, bIsJSGlobal ? 0 : V8ConstructorCallback_Wrapper,
@@ -287,7 +275,7 @@ CFXJSE_Class* CFXJSE_Class::Create(
   hFunctionTemplate->InstanceTemplate()->SetInternalFieldCount(2);
   v8::Local<v8::ObjectTemplate> hObjectTemplate =
       hFunctionTemplate->InstanceTemplate();
-  SetUpNamedPropHandler(pIsolate, &hObjectTemplate, lpClassDefinition);
+  SetUpNamedPropHandler(pIsolate, hObjectTemplate, lpClassDefinition);
 
   if (lpClassDefinition->methNum) {
     for (int32_t i = 0; i < lpClassDefinition->methNum; i++) {

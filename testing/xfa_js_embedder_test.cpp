@@ -11,7 +11,6 @@
 #include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_isolatetracker.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 XFAJSEmbedderTest::XFAJSEmbedderTest() = default;
@@ -89,10 +88,12 @@ bool XFAJSEmbedderTest::ExecuteSilenceFailure(ByteStringView input) {
 }
 
 bool XFAJSEmbedderTest::ExecuteHelper(ByteStringView input) {
-  auto value = std::make_unique<CFXJSE_Value>();
-  bool ret = script_context_->RunScript(
+  Optional<v8::Local<v8::Value>> result = script_context_->RunScript(
       CXFA_Script::Type::Formcalc, WideString::FromUTF8(input).AsStringView(),
-      value.get(), GetXFADocument()->GetRoot());
-  value_.Reset(isolate(), value->GetValue(isolate()));
-  return ret;
+      GetXFADocument()->GetRoot());
+  if (!result.has_value())
+    return false;
+
+  value_.Reset(isolate(), result.value());
+  return true;
 }
