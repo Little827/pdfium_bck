@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b92437_8bbb1cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-02T23:38:54Z",
+      "side": 1,
+      "message": "So it looks like I\u0027ve changed this in the past and never noticed the obvious ...",
+      "revId": "a3c6bfc7dc6533847e947c4e5f0b5fb4450cc6b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
