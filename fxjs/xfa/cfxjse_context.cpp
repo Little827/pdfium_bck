@@ -201,8 +201,7 @@ CFXJSE_Context::~CFXJSE_Context() = default;
 v8::Local<v8::Object> CFXJSE_Context::GetGlobalObject() {
   v8::Isolate::Scope isolate_scope(GetIsolate());
   v8::EscapableHandleScope handle_scope(GetIsolate());
-  v8::Local<v8::Context> hContext =
-      v8::Local<v8::Context>::New(GetIsolate(), m_hContext);
+  v8::Local<v8::Context> hContext = GetContext();
   v8::Local<v8::Object> result =
       hContext->Global()->GetPrototype().As<v8::Object>();
   return handle_scope.Escape(result);
