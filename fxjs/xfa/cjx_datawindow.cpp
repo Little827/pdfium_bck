@@ -8,7 +8,6 @@
 
 #include <vector>
 
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cscript_datawindow.h"
 
 const CJX_MethodSpec CJX_DataWindow::MethodSpecs[] = {
