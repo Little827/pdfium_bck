@@ -10,7 +10,6 @@
 
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "v8/include/cppgc/allocation.h"
 #include "xfa/fxfa/parser/cxfa_arraynodelist.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
