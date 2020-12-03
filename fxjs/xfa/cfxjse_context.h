@@ -17,7 +17,6 @@
 
 class CFXJSE_Class;
 class CFXJSE_HostObject;
-class CFXJSE_Value;
 class CXFA_ThisProxy;
 struct FXJSE_CLASS_DESCRIPTOR;
 
@@ -39,10 +38,10 @@ class CFXJSE_Context {
   CFXJSE_Class* GetClassByName(ByteStringView szName) const;
   void EnableCompatibleMode();
 
-  // Note: `lpNewThisObject` may be empty.
-  bool ExecuteScript(const char* szScript,
-                     CFXJSE_Value* lpRetValue,
-                     v8::Local<v8::Object> lpNewThisObject);
+  // Retuns empty local on failure.
+  // Note: `lpNewThisObject` is allowed to be empty.
+  v8::Local<v8::Value> ExecuteScript(ByteStringView bsScript,
+                                     v8::Local<v8::Object> pThisObject);
 
  private:
   CFXJSE_Context(v8::Isolate* pIsolate, CXFA_ThisProxy* pProxy);

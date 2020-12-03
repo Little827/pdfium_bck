@@ -13,7 +13,6 @@
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_isolatetracker.h"
 #include "fxjs/xfa/cfxjse_runtimedata.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/ptr_util.h"
 #include "xfa/fxfa/parser/cxfa_thisproxy.h"
@@ -226,18 +225,18 @@ CFXJSE_Class* CFXJSE_Context::GetClassByName(ByteStringView szName) const {
 }
 
 void CFXJSE_Context::EnableCompatibleMode() {
-  ExecuteScript(szCompatibleModeScript, nullptr, v8::Local<v8::Object>());
-  ExecuteScript(szConsoleScript, nullptr, v8::Local<v8::Object>());
+  ExecuteScript(szCompatibleModeScript, v8::Local<v8::Object>());
+  ExecuteScript(szConsoleScript, v8::Local<v8::Object>());
 }
 
-bool CFXJSE_Context::ExecuteScript(const char* szScript,
-                                   CFXJSE_Value* lpRetValue,
-                                   v8::Local<v8::Object> hNewThis) {
-  CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
+v8::Local<v8::Value> CFXJSE_Context::ExecuteScript(
+    ByteStringView bsScript,
+    v8::Local<v8::Object> hNewThis) {
+  CFXJSE_ScopeUtil_Context scope(this);
   v8::Local<v8::Context> hContext = GetIsolate()->GetCurrentContext();
   v8::TryCatch trycatch(GetIsolate());
   v8::Local<v8::String> hScriptString =
-      fxv8::NewStringHelper(GetIsolate(), szScript);
+      fxv8::NewStringHelper(GetIsolate(), bsScript);
   if (hNewThis.IsEmpty()) {
     v8::Local<v8::Script> hScript;
     if (v8::Script::Compile(hContext, hScriptString).ToLocal(&hScript)) {
@@ -245,15 +244,10 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
       v8::Local<v8::Value> hValue;
       if (hScript->Run(hContext).ToLocal(&hValue)) {
         ASSERT(!trycatch.HasCaught());
-        if (lpRetValue)
-          lpRetValue->ForceSetValue(GetIsolate(), hValue);
-        return true;
+        return hValue;
       }
     }
-    if (lpRetValue)
-      lpRetValue->ForceSetValue(GetIsolate(),
-                                CreateReturnValue(GetIsolate(), &trycatch));
-    return false;
+    return CreateReturnValue(GetIsolate(), &trycatch);  // nullopt?
   }
 
   v8::Local<v8::String> hEval = fxv8::NewStringHelper(
@@ -269,9 +263,7 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
     if (hWrapperFn->Call(hContext, hNewThis.As<v8::Object>(), 1, rgArgs)
             .ToLocal(&hValue)) {
       ASSERT(!trycatch.HasCaught());
-      if (lpRetValue)
-        lpRetValue->ForceSetValue(GetIsolate(), hValue);
-      return true;
+      return hValue;
     }
   }
 
@@ -289,9 +281,5 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
   }
 #endif  // NDEBUG
 
-  if (lpRetValue) {
-    lpRetValue->ForceSetValue(GetIsolate(),
-                              CreateReturnValue(GetIsolate(), &trycatch));
-  }
-  return false;
+  return CreateReturnValue(GetIsolate(), &trycatch);  // Nullopt?
 }

@@ -10,7 +10,6 @@
 
 #include "fxjs/cfx_v8.h"
 #include "fxjs/js_resources.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/parser/cxfa_manifest.h"
 
 const CJX_MethodSpec CJX_Manifest::MethodSpecs[] = {
