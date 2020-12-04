@@ -34,6 +34,24 @@
       "parentUuid": "03395590_721f6e95",
       "revId": "6c94edc191bb6c1e4ec30269659924302db78ce1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc0705b_2ac7d090",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-04T20:52:07Z",
+      "side": 1,
+      "message": "I might be confused about what is the intended workflow. :-) So far I always proactively did Commit-Queue+1 to see if the change would break some build bot, and then e.g. you or Lei did Commit-Queue+2 once the latest patch set was good enough. If I already got a Commit-Review+1, does that mean I\u0027m fine to Commit-Queue+2 myself?",
+      "parentUuid": "4532df1e_3fe98fc4",
+      "revId": "6c94edc191bb6c1e4ec30269659924302db78ce1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
