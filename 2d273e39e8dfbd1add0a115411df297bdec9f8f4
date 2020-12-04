@@ -72,6 +72,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c9ed6a_640dff8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-12-04T23:44:15Z",
+      "side": 1,
+      "message": "So it\u0027s my month to do rolls... I have a V8 roll to 8.9.100 pending in https://pdfium-review.googlesource.com/c/pdfium/+/76799. That appears to still be the latest Chromium roll. Feel free to ping me this month if you need something newer.",
+      "parentUuid": "4dc5be6c_5eafefba",
+      "revId": "2d273e39e8dfbd1add0a115411df297bdec9f8f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ca90cc9_f9d4a3ee",
