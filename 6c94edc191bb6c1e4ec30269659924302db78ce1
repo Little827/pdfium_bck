@@ -70,6 +70,24 @@
       "parentUuid": "5fc0705b_2ac7d090",
       "revId": "6c94edc191bb6c1e4ec30269659924302db78ce1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80efd63_d9a476e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-04T23:06:41Z",
+      "side": 1,
+      "message": "And it looks like you have yet to be granted committer rights. So you\u0027ll need to ping me if I forget to +2 any of these.",
+      "parentUuid": "951a9d1b_adc6fa61",
+      "revId": "6c94edc191bb6c1e4ec30269659924302db78ce1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
