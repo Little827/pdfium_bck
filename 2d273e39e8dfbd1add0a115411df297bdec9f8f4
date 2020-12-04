@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4307502_34f0adba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-04T23:28:12Z",
+      "side": 1,
+      "message": "Hmmm.  I just invoked roll-dep v8 without any args since I wanted to get this closer to what chromium is using to work on a cppgc issue.  Should I have specified a specific version instead?  Chrome looks to be on 8.9.100 from the top entry in git log in chrome\u0027s v8 directory.  We appear to be on 8.7.38 currenlty, and the CL brings it to something that isn\u0027t aligned with a 8.n.n version.",
+      "parentUuid": "25cb645c_8db851b6",
+      "revId": "2d273e39e8dfbd1add0a115411df297bdec9f8f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ca90cc9_f9d4a3ee",
