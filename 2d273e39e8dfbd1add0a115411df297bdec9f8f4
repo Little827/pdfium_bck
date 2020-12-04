@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "25cb645c_8db851b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-04T23:13:43Z",
+      "side": 1,
+      "message": "See https://pdfium-review.googlesource.com/c/pdfium/+/73259",
+      "parentUuid": "a61563e6_7ad7e475",
+      "revId": "2d273e39e8dfbd1add0a115411df297bdec9f8f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ca90cc9_f9d4a3ee",
