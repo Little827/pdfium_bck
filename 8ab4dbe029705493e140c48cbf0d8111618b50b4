@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f18791_5b942009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-04T17:34:06Z",
+      "side": 1,
+      "message": "Rubber stamp-ish LGTM\n\nI took a glance at most of the CL, and it seems to be more of the same, so I didn\u0027t scrutinize it too much.",
+      "revId": "8ab4dbe029705493e140c48cbf0d8111618b50b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
