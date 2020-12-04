@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc5be6c_5eafefba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-04T23:40:38Z",
+      "side": 1,
+      "message": "We try not to go ahead of Chromium, so we try to match the revision that Chromium is on while DEPS rolling. Of course, we quickly fall back behind since Chromium updates its V8 version every few hours.\n\nhttps://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/DEPS#211",
+      "parentUuid": "e4307502_34f0adba",
+      "revId": "2d273e39e8dfbd1add0a115411df297bdec9f8f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ca90cc9_f9d4a3ee",
