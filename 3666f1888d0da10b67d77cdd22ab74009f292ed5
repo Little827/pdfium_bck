@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7680c6_2ba5a24e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-12-05T00:01:33Z",
+      "side": 1,
+      "message": "Optimistically sending out for review. 😊",
+      "revId": "3666f1888d0da10b67d77cdd22ab74009f292ed5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
