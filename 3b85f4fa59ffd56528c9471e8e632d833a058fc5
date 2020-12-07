@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9bfaee_af90d904",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-07T18:07:01Z",
+      "side": 1,
+      "message": "In fact, pdf-1.7 calls out no bytes other than whitespace when specifying what can occur between endstream and endobj, so whitespace needs to be handled (and you can make a stronger assertion in this change description if you like).",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be64aac2_104fcc57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-07T18:07:01Z",
+      "side": 1,
+      "message": "I think we\u0027d prefer this alternative.  Otherwise, might we now allow something along the lines of \n\nendstream\nendobj\nendobj \n\nwhere we silently consume another endobj?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1883e31c_ca34e259",
@@ -14,6 +60,29 @@
       "writtenOn": "2020-12-07T08:16:38Z",
       "side": 1,
       "message": "Tom: could you please take a look? Thanks.",
+      "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066b82b4_b4b6c488",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1729,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-07T18:07:01Z",
+      "side": 1,
+      "message": "nit: this can be EXPECT_EQ as no subsequent steps rely on its correctness.",
+      "range": {
+        "startLine": 1729,
+        "startChar": 2,
+        "endLine": 1729,
+        "endChar": 11
+      },
       "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
