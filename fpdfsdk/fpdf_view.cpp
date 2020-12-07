@@ -1257,9 +1257,13 @@ FPDF_GetTrailerEnds(FPDF_DOCUMENT document,
 
       syntax->GetObjectBody(nullptr);
 
+      // GetObjectBody() may or may not consume the 'endobj' keyword, do that
+      // now if the current position is still before the keyword.
+      FX_FILESIZE pos = syntax->GetPos();
       word = syntax->GetNextWord(nullptr);
-      if (word != "endobj")
-        break;
+      if (word != "endobj") {
+        syntax->SetPos(pos);
+      }
     } else if (word == "trailer") {
       syntax->GetObjectBody(nullptr);
     } else if (word == "startxref") {
