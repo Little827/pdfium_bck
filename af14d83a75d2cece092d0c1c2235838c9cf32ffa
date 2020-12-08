@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f161cc1_c1ce379b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-08T16:46:06Z",
+      "side": 1,
+      "message": "nit: stray \"then\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 64,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e32c1bf_25a6e637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-08T16:46:06Z",
+      "side": 1,
+      "message": "This is quite good, just a small bit of tidy and we should be ready to go.\nThanks for taking the time to bisect.",
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1241b146_aa1ed03f",
@@ -14,6 +54,47 @@
       "writtenOn": "2020-12-08T14:01:42Z",
       "side": 1,
       "message": "I forgot the error handling here. Now `pdfium_embeddertests` passes for me locally.",
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e7787f_a5fe5b14",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-08T16:46:06Z",
+      "side": 1,
+      "message": "Ack.  \n\nnit:  if you move ch out of the loop, we can write\n  while (GetCharAt(...)) {\n\nwhich seems like it conveys the intent of the loop more clearly somehow.",
+      "parentUuid": "1241b146_aa1ed03f",
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59c4b4d_314b71f3",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-08T16:46:06Z",
+      "side": 1,
+      "message": "nit: can we use GetNextChar() in the loop above which advances position instead of GetCharAt() and backup one in the end?",
+      "range": {
+        "startLine": 805,
+        "startChar": 4,
+        "endLine": 805,
+        "endChar": 25
+      },
       "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
