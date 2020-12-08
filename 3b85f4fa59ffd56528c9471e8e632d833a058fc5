@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b3f6e3_5955b1f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-08T08:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9bfaee_af90d904",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be64aac2_104fcc57",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-07T18:07:01Z",
       "side": 1,
       "message": "I think we\u0027d prefer this alternative.  Otherwise, might we now allow something along the lines of \n\nendstream\nendobj\nendobj \n\nwhere we silently consume another endobj?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1179b13_12027695",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-08T08:31:35Z",
+      "side": 1,
+      "message": "git blame says the problematic code was introduced in b14283e6b7f2521070106b070eb74219dfd97e1b. The idea was that e.g. (endobj) should not count as a match, only \\nendobj\\n. We now consume non-newline whitespace before checking for newlines. I believe that should be safe and the fix is now more close to the root cause.",
+      "parentUuid": "be64aac2_104fcc57",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8442648d_4e410def",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1729,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-08T08:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066b82b4_b4b6c488",
+      "range": {
+        "startLine": 1729,
+        "startChar": 2,
+        "endLine": 1729,
+        "endChar": 11
+      },
+      "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b647c7a4_654fba89",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-07T18:08:19Z",
       "side": 1,
       "message": "do we want to test tabs and/or multiple spaces?",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "3b85f4fa59ffd56528c9471e8e632d833a058fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5630bf5_8c296f5b",
+        "filename": "testing/resources/trailer_end_trailing_space.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-08T08:31:35Z",
+      "side": 1,
+      "message": "Added 2 more tests for these now.",
+      "parentUuid": "b647c7a4_654fba89",
       "range": {
         "startLine": 44,
         "startChar": 9,
