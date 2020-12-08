@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <functional>
 #include <iterator>
 #include <map>
 #include <memory>
@@ -869,7 +870,8 @@ void ProcessPdf(const std::string& name,
                 const char* buf,
                 size_t len,
                 const Options& options,
-                const std::string& events) {
+                const std::string& events,
+                const std::function<void()>& idler) {
   TestLoader loader({buf, len});
 
   FPDF_FILEACCESS file_access = {};
@@ -1018,9 +1020,12 @@ void ProcessPdf(const std::string& name,
     } else {
       ++bad_pages;
     }
+    idler();
   }
 
   FORM_DoDocumentAAction(form.get(), FPDFDOC_AACTION_WC);
+  idler();
+
   fprintf(stderr, "Processed %d pages.\n", processed_pages);
   if (bad_pages)
     fprintf(stderr, "Skipped %d bad pages.\n", bad_pages);
@@ -1245,18 +1250,23 @@ int main(int argc, const char* argv[]) {
         }
       }
     }
-    ProcessPdf(filename, file_contents.get(), file_length, options, events);
 
+    std::function<void()> idler = []() {};
 #ifdef PDF_ENABLE_V8
     if (!options.disable_javascript) {
-      int task_count = 0;
-      while (v8::platform::PumpMessageLoop(platform.get(), isolate.get()))
-        ++task_count;
+      idler = [&platform, &isolate]() {
+        int task_count = 0;
+        while (v8::platform::PumpMessageLoop(platform.get(), isolate.get()))
+          ++task_count;
 
-      if (task_count)
-        fprintf(stderr, "Pumped %d tasks\n", task_count);
+        if (task_count)
+          fprintf(stderr, "Pumped %d tasks\n", task_count);
+      };
     }
 #endif  // PDF_ENABLE_V8
+
+    ProcessPdf(filename, file_contents.get(), file_length, options, events,
+               idler);
 
 #ifdef ENABLE_CALLGRIND
     if (options.callgrind_delimiters)
