@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1241b146_aa1ed03f",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-08T14:01:42Z",
+      "side": 1,
+      "message": "I forgot the error handling here. Now `pdfium_embeddertests` passes for me locally.",
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
