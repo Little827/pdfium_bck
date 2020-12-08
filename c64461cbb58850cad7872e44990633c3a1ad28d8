@@ -16,6 +16,23 @@
       "message": "I believe I addressed all comments so far.",
       "revId": "c64461cbb58850cad7872e44990633c3a1ad28d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2962214c_81c66bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-08T13:58:50Z",
+      "side": 1,
+      "message": "I only ran `pdfium_embeddertests` locally, seems the failure comes from `pdfium_unittests --gtest_filter\u003dCPDF_HintTablesTest.FirstPageOffset` hanging, let me investigate.",
+      "revId": "c64461cbb58850cad7872e44990633c3a1ad28d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
