@@ -1660,3 +1660,35 @@ TEST_F(FPDFTextEmbedderTest, SmallType3Glyph) {
 
   UnloadPage(page);
 }
+
+// TODO(crbug.com/pdfium/1552): |char_count| should only be one less than
+// |num_chars|, which accounts for the trailing terminator returned by
+// FPDFText_GetText().
+TEST_F(FPDFTextEmbedderTest, ControlChars) {
+  ASSERT_TRUE(OpenDocument("bug_1552.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFTextPage text_page(FPDFText_LoadPage(page));
+    ASSERT_TRUE(text_page);
+    const int char_count = FPDFText_CountChars(text_page.get());
+    EXPECT_EQ(4, char_count);
+
+    unsigned short buffer[8];
+    memset(buffer, 0xbd, sizeof(buffer));
+    const int num_chars = FPDFText_GetText(text_page.get(), /*start_index=*/0,
+                                           char_count, buffer);
+
+    // |num_chars| should actually be |char_count + 1|.
+    EXPECT_EQ(3, num_chars);
+
+    // The PDF actually contains contains SOH (0x01), STX (0x02), ETX (0x03),
+    // and SOT (0x04). However, STX and ETX are not included in |buffer|, which
+    // causes the discrepancy between |num_chars| and |char_count + 1|.
+    EXPECT_EQ(0x01, buffer[0]);
+    EXPECT_EQ(0x04, buffer[1]);
+  }
+
+  UnloadPage(page);
+}
