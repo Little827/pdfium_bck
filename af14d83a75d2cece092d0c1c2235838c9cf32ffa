@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "56b6d6b7_f1fd805a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-09T08:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f161cc1_c1ce379b",
+      "range": {
+        "startLine": 11,
+        "startChar": 64,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0e32c1bf_25a6e637",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -76,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3598d6_64cd8fb7",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-09T08:48:12Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "55e7787f_a5fe5b14",
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a59c4b4d_314b71f3",
@@ -89,6 +131,30 @@
       "writtenOn": "2020-12-08T16:46:06Z",
       "side": 1,
       "message": "nit: can we use GetNextChar() in the loop above which advances position instead of GetCharAt() and backup one in the end?",
+      "range": {
+        "startLine": 805,
+        "startChar": 4,
+        "endLine": 805,
+        "endChar": 25
+      },
+      "revId": "af14d83a75d2cece092d0c1c2235838c9cf32ffa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bbec15c_d473f802",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-09T08:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a59c4b4d_314b71f3",
       "range": {
         "startLine": 805,
         "startChar": 4,
