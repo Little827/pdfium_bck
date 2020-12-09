@@ -17,7 +17,7 @@
 
 class CPDF_Stream final : public CPDF_Object {
  public:
-  static constexpr int kFileBufSize = 512;
+  static constexpr size_t kFileBufSize = 4096;
 
   CONSTRUCT_VIA_MAKE_RETAIN;
 

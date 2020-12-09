@@ -39,15 +39,10 @@ class CPDF_SyntaxParser {
                     FX_FILESIZE HeaderOffset);
   ~CPDF_SyntaxParser();
 
-  void SetReadBufferSize(uint32_t read_buffer_size) {
-    m_ReadBufferSize = read_buffer_size;
-  }
-
   FX_FILESIZE GetPos() const { return m_Pos; }
   void SetPos(FX_FILESIZE pos);
 
   RetainPtr<CPDF_Object> GetObjectBody(CPDF_IndirectObjectHolder* pObjList);
-
   RetainPtr<CPDF_Object> GetIndirectObject(CPDF_IndirectObjectHolder* pObjList,
                                            ParseType parse_type);
 
@@ -121,7 +116,6 @@ class CPDF_SyntaxParser {
   FX_FILESIZE m_BufOffset = 0;
   uint32_t m_WordSize = 0;
   uint8_t m_WordBuffer[257];
-  uint32_t m_ReadBufferSize = CPDF_Stream::kFileBufSize;
 
   // The syntax parser records traversed trailer end byte offsets here.
   UnownedPtr<std::vector<unsigned int>> m_TrailerEnds;

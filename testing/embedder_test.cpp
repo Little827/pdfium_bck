@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "core/fdrm/fx_crypt.h"
+#include "core/fpdfapi/parser/cpdf_stream.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_dataavail.h"
 #include "public/fpdf_edit.h"
@@ -149,7 +150,7 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
                                       FPDF_DOCUMENT* document,
                                       FPDF_AVAIL* avail,
                                       FPDF_FORMHANDLE* form_handle) {
-  network_simulator->AddSegment(0, 1024);
+  network_simulator->AddSegment(0, 2 * CPDF_Stream::kFileBufSize);
   network_simulator->SetRequestedDataAvailable();
   *avail = FPDFAvail_Create(network_simulator->GetFileAvail(),
                             network_simulator->GetFileAccess());
