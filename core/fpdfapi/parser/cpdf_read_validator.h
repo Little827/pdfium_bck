@@ -11,15 +11,15 @@
 
 class CPDF_ReadValidator : public IFX_SeekableReadStream {
  public:
-  class Session {
+  class ScopedSession {
    public:
-    explicit Session(const RetainPtr<CPDF_ReadValidator>& validator);
-    ~Session();
+    explicit ScopedSession(const RetainPtr<CPDF_ReadValidator>& validator);
+    ~ScopedSession();
 
    private:
-    UnownedPtr<CPDF_ReadValidator> validator_;
-    bool saved_read_error_;
-    bool saved_has_unavailable_data_;
+    UnownedPtr<CPDF_ReadValidator> const validator_;
+    const bool saved_read_error_;
+    const bool saved_has_unavailable_data_;
   };
 
   CONSTRUCT_VIA_MAKE_RETAIN;
