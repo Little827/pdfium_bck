@@ -97,14 +97,13 @@ TEST(CPDF_ReadValidatorTest, UnavailableDataWithHints) {
   validator->SetDownloadHints(&hints);
 
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> read_buffer(100);
-
   EXPECT_FALSE(validator->ReadBlockAtOffset(read_buffer.data(), 5000,
                                             read_buffer.size()));
   EXPECT_FALSE(validator->read_error());
   EXPECT_TRUE(validator->has_unavailable_data());
 
   // Requested range should be enlarged and aligned.
-  EXPECT_EQ(MakeRange(4608, 5120), hints.GetLastRequstedRange());
+  EXPECT_EQ(MakeRange(4096, 8192), hints.GetLastRequstedRange());
 
   file_avail.SetAvailableRange(hints.GetLastRequstedRange());
   hints.Reset();
@@ -254,7 +253,7 @@ TEST(CPDF_ReadValidatorTest, CheckDataRangeAndRequestIfUnavailable) {
   EXPECT_TRUE(validator->has_unavailable_data());
 
   // Requested range should be enlarged and aligned.
-  EXPECT_EQ(MakeRange(4608, 5632), hints.GetLastRequstedRange());
+  EXPECT_EQ(MakeRange(4096, 12288), hints.GetLastRequstedRange());
 
   file_avail.SetAvailableRange(hints.GetLastRequstedRange());
   hints.Reset();
