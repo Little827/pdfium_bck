@@ -5,6 +5,7 @@
 #include "core/fpdfapi/parser/cpdf_read_validator.h"
 
 #include <algorithm>
+#include <utility>
 
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fxcrt/fx_safe_types.h"
@@ -26,16 +27,15 @@ FX_FILESIZE AlignUp(FX_FILESIZE offset) {
 
 }  // namespace
 
-CPDF_ReadValidator::Session::Session(
-    const RetainPtr<CPDF_ReadValidator>& validator)
-    : validator_(validator.BackPointer()) {
-  ASSERT(validator_);
-  saved_read_error_ = validator_->read_error_;
-  saved_has_unavailable_data_ = validator_->has_unavailable_data_;
+CPDF_ReadValidator::ScopedSession::ScopedSession(
+    RetainPtr<CPDF_ReadValidator> validator)
+    : validator_(std::move(validator)),
+      saved_read_error_(validator_->read_error_),
+      saved_has_unavailable_data_(validator_->has_unavailable_data_) {
   validator_->ResetErrors();
 }
 
-CPDF_ReadValidator::Session::~Session() {
+CPDF_ReadValidator::ScopedSession::~ScopedSession() {
   validator_->read_error_ |= saved_read_error_;
   validator_->has_unavailable_data_ |= saved_has_unavailable_data_;
 }
