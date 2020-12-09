@@ -584,9 +584,6 @@ bool CPDF_Parser::LoadAllCrossRefV5(FX_FILESIZE xref_offset) {
 
 bool CPDF_Parser::RebuildCrossRef() {
   auto cross_ref_table = std::make_unique<CPDF_CrossRefTable>();
-
-  const uint32_t kBufferSize = 4096;
-  m_pSyntax->SetReadBufferSize(kBufferSize);
   m_pSyntax->SetPos(0);
 
   bool bIsNumber;
@@ -647,8 +644,6 @@ bool CPDF_Parser::RebuildCrossRef() {
 
   m_CrossRefTable = CPDF_CrossRefTable::MergeUp(std::move(m_CrossRefTable),
                                                 std::move(cross_ref_table));
-  // Resore default buffer size.
-  m_pSyntax->SetReadBufferSize(CPDF_Stream::kFileBufSize);
 
   return GetTrailer() && !m_CrossRefTable->objects_info().empty();
 }
