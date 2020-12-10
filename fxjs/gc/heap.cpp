@@ -73,8 +73,13 @@ FXGCScopedHeap FXGC_CreateHeap() {
   ++g_platform_ref_count;
   auto heap = cppgc::Heap::Create(
       std::make_shared<CFXGC_Platform>(),
-      {{}, cppgc::Heap::StackSupport::kNoConservativeStackScan, {}});
-
+      cppgc::Heap::HeapOptions{
+          .stack_support = cppgc::Heap::StackSupport::kNoConservativeStackScan,
+          .marking_support = cppgc::Heap::MarkingType::kAtomic,
+          // TODO(tsepez): switch to incremental sweeping when the issue
+          // in https://crbug.com/1156170 is resolved.
+          .sweeping_support = cppgc::Heap::SweepingType::kAtomic,
+      });
   return FXGCScopedHeap(heap.release());
 }
 
