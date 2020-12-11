@@ -16,6 +16,41 @@
       "message": "Gentle ping~\nRendering results are uploaded to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1500#c88.",
       "revId": "6e84a66391b669e60112ad03119797ff266517f0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4afcbdfb_076295e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-11T20:55:23Z",
+      "side": 1,
+      "message": "Oops. Sorry I\u0027ve been OOO.",
+      "parentUuid": "489f952a_20c326e0",
+      "revId": "6e84a66391b669e60112ad03119797ff266517f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ffc81a_3d54459d",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-12-11T20:55:23Z",
+      "side": 1,
+      "message": "Sorry if I\u0027ve brought this up before, and I know you\u0027re following the trend in the doc here, but these should actually be static constexpr since it\u0027s an aggregate type.",
+      "revId": "6e84a66391b669e60112ad03119797ff266517f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
