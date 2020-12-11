@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233e19d2_c0a62a35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-11T18:38:38Z",
+      "side": 1,
+      "message": "For the commit message, you will need a one-line summary and then add detailed description of what the CL does.\n\nIf the CL is for fixing a specific PDFium bug, you will also need the bug number to be included above the \"Change-Id\" line.\n\nSee https://pdfium-review.googlesource.com/76390 for example.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "41f0b1494bfaa5f2200676d04060052f71971a6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52c2cd5_c5c6b128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-11T18:38:38Z",
+      "side": 1,
+      "message": "After upload a patchset of code changes, you can use \"CQ DRY RUN\" to test on whether the current code change passes existing PDFium tests. Right now the code change has failed most of the trybots. You can click into each of them and see the details of the failure message.",
+      "revId": "41f0b1494bfaa5f2200676d04060052f71971a6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
