@@ -51,6 +51,24 @@
       "message": "Sorry if I\u0027ve brought this up before, and I know you\u0027re following the trend in the doc here, but these should actually be static constexpr since it\u0027s an aggregate type.",
       "revId": "6e84a66391b669e60112ad03119797ff266517f0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31c41d0_c6713885",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-12T00:14:00Z",
+      "side": 1,
+      "message": "Sounds good. I will update for this specific test first, then have a follow-up CL to clean up the rest in the file.",
+      "parentUuid": "61ffc81a_3d54459d",
+      "revId": "6e84a66391b669e60112ad03119797ff266517f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
