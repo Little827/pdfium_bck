@@ -358,7 +358,8 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
 #ifdef PDF_ENABLE_XFA
   auto* pContext = static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
   if (pContext)
-    return FPDFPageFromIPDFPage(pContext->GetXFAPage(page_index).Leak());
+    return FPDFPageFromIPDFPage(
+        pContext->GetOrCreateXFAPage(page_index).Leak());
 #endif  // PDF_ENABLE_XFA
 
   CPDF_Dictionary* pDict = pDoc->GetPageDictionary(page_index);
@@ -901,7 +902,7 @@ FPDF_GetPageSizeByIndexF(FPDF_DOCUMENT document,
 
   auto* pContext = static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
   if (pContext) {
-    RetainPtr<CPDFXFA_Page> pPage = pContext->GetXFAPage(page_index);
+    RetainPtr<CPDFXFA_Page> pPage = pContext->GetOrCreateXFAPage(page_index);
     if (!pPage)
       return false;
 
