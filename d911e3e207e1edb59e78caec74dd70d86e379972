@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1c3e97_b7734c20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-14T17:44:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6e56e37_dd53a808",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 69
+      },
+      "revId": "d911e3e207e1edb59e78caec74dd70d86e379972",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7399f67_d1dc0529",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-14T07:21:33Z",
       "side": 1,
       "message": "A more descriptive CL description would be nice. I.e.:\n\n\"The `static` identifier is needed on aggregate constexpr types to \nguarantee that the variable is set at compilation, even with -O1 optimization.\"",
+      "revId": "d911e3e207e1edb59e78caec74dd70d86e379972",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503473e2_0a6b927c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-14T17:44:32Z",
+      "side": 1,
+      "message": "Since programmers know what `static` idetifier does, this might not\ncomply with \"DRY\". I will slightly modify it and you can take a look.",
+      "parentUuid": "a7399f67_d1dc0529",
       "revId": "d911e3e207e1edb59e78caec74dd70d86e379972",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
