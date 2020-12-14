@@ -96,12 +96,12 @@ class CPDF_Font : public Retainable, public Observable {
   virtual bool HasFontWidths() const;
 
   ByteString GetBaseFontName() const { return m_BaseFontName; }
-  CFX_SubstFont* GetSubstFont() const { return m_Font.GetSubstFont(); }
+  CFX_SubstFont* GetSubstFont() const { return m_pFont->GetSubstFont(); }
   bool IsEmbedded() const { return IsType3Font() || m_pFontFile != nullptr; }
   CPDF_Dictionary* GetFontDict() const { return m_pFontDict.Get(); }
   void ClearFontDict() { m_pFontDict = nullptr; }
   bool IsStandardFont() const;
-  bool HasFace() const { return !!m_Font.GetFaceRec(); }
+  bool HasFace() const { return !!m_pFont->GetFaceRec(); }
   void AppendChar(ByteString* str, uint32_t charcode) const;
 
   const FX_RECT& GetFontBBox() const { return m_FontBBox; }
@@ -120,9 +120,7 @@ class CPDF_Font : public Retainable, public Observable {
   // font types.
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
 
-  CFX_Font* GetFont() { return &m_Font; }
-  const CFX_Font* GetFont() const { return &m_Font; }
-
+  CFX_Font* GetFont() const { return m_pFont.get(); }
   CFX_Font* GetFontFallback(int position);
 
  protected:
@@ -143,7 +141,7 @@ class CPDF_Font : public Retainable, public Observable {
   void CheckFontMetrics();
 
   UnownedPtr<CPDF_Document> const m_pDocument;
-  CFX_Font m_Font;
+  std::unique_ptr<CFX_Font> const m_pFont;
   std::vector<std::unique_ptr<CFX_Font>> m_FontFallbacks;
   RetainPtr<CPDF_StreamAcc> m_pFontFile;
   RetainPtr<CPDF_Dictionary> m_pFontDict;
