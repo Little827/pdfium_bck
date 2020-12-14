@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3600f8_94499a9f",
+        "filename": "tricium-prod.cfg",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-14T18:55:47Z",
+      "side": 1,
+      "message": "Hui, do you want to own this until Lei gets back?",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "f64c54c301f8326a2475d764a875ab2998c4529c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
