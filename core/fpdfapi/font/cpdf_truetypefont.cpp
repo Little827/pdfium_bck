@@ -39,7 +39,7 @@ bool CPDF_TrueTypeFont::Load() {
 }
 
 void CPDF_TrueTypeFont::LoadGlyphMap() {
-  FXFT_FaceRec* face = m_Font.GetFaceRec();
+  FXFT_FaceRec* face = m_pFont->GetFaceRec();
   if (!face)
     return;
 
