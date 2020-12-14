@@ -16,6 +16,24 @@
       "message": "One thought about the builder name that I had after setting up the chromium builder: Later on we\u0027ll be merging the Tricium service into a new service called CV. The name \"tricium\" itself was kind of opaque, so if you wanted to name it \"pdfium_analysis\" or something, that would be OK too.",
       "revId": "3807a68859751be961cdac558be35cae77240c13",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce04425_1e6317df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-14T18:52:47Z",
+      "side": 1,
+      "message": "Thanks for the context, Quinten! \"pdfium_analysis\" sounds good if name \"tricium\" is going away. I will update it in the next patchset.",
+      "parentUuid": "df3f31f8_2397b86d",
+      "revId": "3807a68859751be961cdac558be35cae77240c13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
