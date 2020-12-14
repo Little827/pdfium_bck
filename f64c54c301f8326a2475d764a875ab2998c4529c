@@ -22,6 +22,30 @@
       },
       "revId": "f64c54c301f8326a2475d764a875ab2998c4529c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721ab6e6_ee31d320",
+        "filename": "tricium-prod.cfg",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-14T19:40:08Z",
+      "side": 1,
+      "message": "Ha, that sounds good! Ownership there we go~ 😄",
+      "parentUuid": "dd3600f8_94499a9f",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "f64c54c301f8326a2475d764a875ab2998c4529c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
