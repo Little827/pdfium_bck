@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f354f147_f6d0a231",
+        "filename": "tricium-prod.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-14T18:40:50Z",
+      "side": 1,
+      "message": "Thanks! I updated the builder name to \"pdfium_analysis\" in the new patchset according to your suggestion on https://pdfium-review.googlesource.com/76650",
+      "parentUuid": "28ac7410_eade1369",
+      "range": {
+        "startLine": 22,
+        "startChar": 23,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "c5241638da6cdea5d0e5bd9b05742b80138f3d04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8837e04_a1aeb62f",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-12T23:14:41Z",
       "side": 1,
       "message": "If LINUX is used above, then it must be used here too.\n\n(There\u0027s no actual good reason why platform needs to be specified like this, it\u0027s just here for historical reasons, and that\u0027s how it is now...)",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "c5241638da6cdea5d0e5bd9b05742b80138f3d04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31002111_e6ac0328",
+        "filename": "tricium-prod.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-14T18:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8837e04_a1aeb62f",
       "range": {
         "startLine": 30,
         "startChar": 12,
