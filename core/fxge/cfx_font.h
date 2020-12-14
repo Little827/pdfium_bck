@@ -31,7 +31,7 @@ struct CFX_TextRenderOptions;
 
 class CFX_Font {
  public:
-  CFX_Font();
+  friend std::unique_ptr<CFX_Font> std::make_unique<CFX_Font>();
   ~CFX_Font();
 
   // Used when the font name is empty.
@@ -128,12 +128,14 @@ class CFX_Font {
   static const CharsetFontMap kDefaultTTFMap[];
 
  private:
+  CFX_Font();
+
   RetainPtr<CFX_GlyphCache> GetOrCreateGlyphCache() const;
   void ClearGlyphCache();
+  ByteString GetFamilyNameOrUntitled() const;
 #if defined(OS_APPLE)
   void ReleasePlatformResource();
 #endif
-  ByteString GetFamilyNameOrUntitled() const;
 
 #if defined(PDF_ENABLE_XFA)
   // |m_pOwnedFile| must outlive |m_pOwnedStreamRec|.
