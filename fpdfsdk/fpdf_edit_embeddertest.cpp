@@ -2806,12 +2806,12 @@ TEST_F(FPDFEditEmbedderTest, TransformAnnot) {
 TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
   // Start with a blank page
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
-  CFX_Font CIDfont;
+  auto CIDfont = std::make_unique<CFX_Font>();
   {
     // First, get the data from the font
-    CIDfont.LoadSubst("IPAGothic", 1, 0, 400, 0, 932, 0);
-    EXPECT_EQ("IPAGothic", CIDfont.GetFaceName());
-    pdfium::span<const uint8_t> span = CIDfont.GetFontSpan();
+    CIDfont->LoadSubst("IPAGothic", 1, 0, 400, 0, 932, 0);
+    EXPECT_EQ("IPAGothic", CIDfont->GetFaceName());
+    pdfium::span<const uint8_t> span = CIDfont->GetFontSpan();
 
     // Load the data into a FPDF_Font.
     ScopedFPDFFont font(FPDFText_LoadFont(document(), span.data(), span.size(),
