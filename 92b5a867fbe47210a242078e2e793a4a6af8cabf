@@ -16,6 +16,24 @@
       "message": "Tom: please submit this for me, if it looks good otherwise. Thanks!",
       "revId": "92b5a867fbe47210a242078e2e793a4a6af8cabf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685a0efa_5561524d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-12-15T17:27:14Z",
+      "side": 1,
+      "message": "It sure looks good, thanks!",
+      "parentUuid": "946b525e_58c08dda",
+      "revId": "92b5a867fbe47210a242078e2e793a4a6af8cabf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
