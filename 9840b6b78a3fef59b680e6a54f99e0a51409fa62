@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6f04c1_c791d7f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-15T02:34:57Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "9840b6b78a3fef59b680e6a54f99e0a51409fa62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0bc800_ab213cfe",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-15T02:34:57Z",
+      "side": 1,
+      "message": "Optional: Since this variable is renamed in this CL, we might as well make it comply with c++ style guide by renaming it \"i\".",
+      "range": {
+        "startLine": 291,
+        "startChar": 11,
+        "endLine": 291,
+        "endChar": 15
+      },
+      "revId": "9840b6b78a3fef59b680e6a54f99e0a51409fa62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
