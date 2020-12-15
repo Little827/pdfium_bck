@@ -56,6 +56,53 @@
       },
       "revId": "c913ef0d405791d308cb33c3b2b67f3d1bb318d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da0a67e_1b2486ad",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-15T08:05:57Z",
+      "side": 1,
+      "message": "Default userspace units, i.e. typically points. I\u0027ve now added explicit wording to be clear.",
+      "parentUuid": "efdfb4e8_5abbe304",
+      "range": {
+        "startLine": 459,
+        "startChar": 43,
+        "endLine": 459,
+        "endChar": 49
+      },
+      "revId": "c913ef0d405791d308cb33c3b2b67f3d1bb318d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b2b6c3_f84d2447",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2020-12-15T08:05:57Z",
+      "side": 1,
+      "message": "Oops, will update this.",
+      "range": {
+        "startLine": 463,
+        "startChar": 40,
+        "endLine": 463,
+        "endChar": 57
+      },
+      "revId": "c913ef0d405791d308cb33c3b2b67f3d1bb318d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
