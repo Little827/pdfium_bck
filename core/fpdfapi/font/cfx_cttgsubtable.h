@@ -61,19 +61,21 @@ class CFX_CTTGSUBTable {
   };
 
   struct TCoverageFormatBase {
+    TCoverageFormatBase(uint16_t format) : CoverageFormat(format) {}
     virtual ~TCoverageFormatBase() = default;
-    uint16_t CoverageFormat;
+
+    const uint16_t CoverageFormat;
   };
 
   struct TCoverageFormat1 final : public TCoverageFormatBase {
-    TCoverageFormat1();
+    TCoverageFormat1(size_t initial_size);
     ~TCoverageFormat1() override;
 
     std::vector<uint16_t, FxAllocAllocator<uint16_t>> GlyphArray;
   };
 
   struct TCoverageFormat2 final : public TCoverageFormatBase {
-    TCoverageFormat2();
+    TCoverageFormat2(size_t initial_size);
     ~TCoverageFormat2() override;
 
     std::vector<TRangeRecord> RangeRecords;
@@ -128,9 +130,9 @@ class CFX_CTTGSUBTable {
   void ParseLookupList(FT_Bytes raw);
   void ParseLookup(FT_Bytes raw, TLookup* rec);
   std::unique_ptr<TCoverageFormatBase> ParseCoverage(FT_Bytes raw);
-  void ParseCoverageFormat1(FT_Bytes raw, TCoverageFormat1* rec);
-  void ParseCoverageFormat2(FT_Bytes raw, TCoverageFormat2* rec);
-  void ParseSingleSubst(FT_Bytes raw, std::unique_ptr<TSubTableBase>* rec);
+  std::unique_ptr<TCoverageFormat1> ParseCoverageFormat1(FT_Bytes raw);
+  std::unique_ptr<TCoverageFormat2> ParseCoverageFormat2(FT_Bytes raw);
+  std::unique_ptr<TSubTableBase> ParseSingleSubst(FT_Bytes raw);
   void ParseSingleSubstFormat1(FT_Bytes raw, TSubTable1* rec);
   void ParseSingleSubstFormat2(FT_Bytes raw, TSubTable2* rec);
 

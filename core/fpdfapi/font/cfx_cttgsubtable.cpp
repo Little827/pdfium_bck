@@ -239,62 +239,59 @@ void CFX_CTTGSUBTable::ParseLookup(FT_Bytes raw, TLookup* rec) {
     return;
 
   for (auto& subTable : rec->SubTables)
-    ParseSingleSubst(&raw[GetUInt16(sp)], &subTable);
+    subTable = ParseSingleSubst(&raw[GetUInt16(sp)]);
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormatBase>
 CFX_CTTGSUBTable::ParseCoverage(FT_Bytes raw) {
   FT_Bytes sp = raw;
   uint16_t format = GetUInt16(sp);
-  if (format == 1) {
-    auto rec = std::make_unique<TCoverageFormat1>();
-    ParseCoverageFormat1(raw, rec.get());
-    return std::move(rec);
-  }
-  if (format == 2) {
-    auto rec = std::make_unique<TCoverageFormat2>();
-    ParseCoverageFormat2(raw, rec.get());
-    return std::move(rec);
-  }
+  if (format == 1)
+    return ParseCoverageFormat1(raw);
+  if (format == 2)
+    return ParseCoverageFormat2(raw);
   return nullptr;
 }
 
-void CFX_CTTGSUBTable::ParseCoverageFormat1(FT_Bytes raw,
-                                            TCoverageFormat1* rec) {
+std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormat1>
+CFX_CTTGSUBTable::ParseCoverageFormat1(FT_Bytes raw) {
   FT_Bytes sp = raw;
   (void)GetUInt16(sp);
-  rec->GlyphArray =
-      std::vector<uint16_t, FxAllocAllocator<uint16_t>>(GetUInt16(sp));
+  auto rec = std::make_unique<TCoverageFormat1>(GetUInt16(sp));
   for (auto& glyph : rec->GlyphArray)
     glyph = GetUInt16(sp);
+  return rec;
 }
 
-void CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw,
-                                            TCoverageFormat2* rec) {
+std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormat2>
+CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
   FT_Bytes sp = raw;
   (void)GetUInt16(sp);
-  rec->RangeRecords = std::vector<TRangeRecord>(GetUInt16(sp));
+  auto rec = std::make_unique<TCoverageFormat2>(GetUInt16(sp));
   for (auto& rangeRec : rec->RangeRecords) {
     rangeRec.Start = GetUInt16(sp);
     rangeRec.End = GetUInt16(sp);
     rangeRec.StartCoverageIndex = GetUInt16(sp);
   }
+  return rec;
 }
 
-void CFX_CTTGSUBTable::ParseSingleSubst(FT_Bytes raw,
-                                        std::unique_ptr<TSubTableBase>* rec) {
+std::unique_ptr<CFX_CTTGSUBTable::TSubTableBase>
+CFX_CTTGSUBTable::ParseSingleSubst(FT_Bytes raw) {
+  std::unique_ptr<TSubTableBase> rec;
   FT_Bytes sp = raw;
   uint16_t Format = GetUInt16(sp);
   switch (Format) {
     case 1:
-      *rec = std::make_unique<TSubTable1>();
-      ParseSingleSubstFormat1(raw, static_cast<TSubTable1*>(rec->get()));
+      rec = std::make_unique<TSubTable1>();
+      ParseSingleSubstFormat1(raw, static_cast<TSubTable1*>(rec.get()));
       break;
     case 2:
-      *rec = std::make_unique<TSubTable2>();
-      ParseSingleSubstFormat2(raw, static_cast<TSubTable2*>(rec->get()));
+      rec = std::make_unique<TSubTable2>();
+      ParseSingleSubstFormat2(raw, static_cast<TSubTable2*>(rec.get()));
       break;
   }
+  return rec;
 }
 
 void CFX_CTTGSUBTable::ParseSingleSubstFormat1(FT_Bytes raw, TSubTable1* rec) {
@@ -334,15 +331,13 @@ CFX_CTTGSUBTable::TFeatureRecord::~TFeatureRecord() = default;
 CFX_CTTGSUBTable::TRangeRecord::TRangeRecord()
     : Start(0), End(0), StartCoverageIndex(0) {}
 
-CFX_CTTGSUBTable::TCoverageFormat1::TCoverageFormat1() {
-  CoverageFormat = 1;
-}
+CFX_CTTGSUBTable::TCoverageFormat1::TCoverageFormat1(size_t initial_size)
+    : TCoverageFormatBase(1), GlyphArray(initial_size) {}
 
 CFX_CTTGSUBTable::TCoverageFormat1::~TCoverageFormat1() = default;
 
-CFX_CTTGSUBTable::TCoverageFormat2::TCoverageFormat2() {
-  CoverageFormat = 2;
-}
+CFX_CTTGSUBTable::TCoverageFormat2::TCoverageFormat2(size_t initial_size)
+    : TCoverageFormatBase(2), RangeRecords(initial_size) {}
 
 CFX_CTTGSUBTable::TCoverageFormat2::~TCoverageFormat2() = default;
 
