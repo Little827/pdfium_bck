@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c07629_d759021b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-16T19:58:14Z",
+      "side": 1,
+      "message": "LGTM. TIL the definition of \"overzealous\" 😄",
+      "revId": "532773f2b01b8d4b0e4d1327aad8e4718a3d03f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
