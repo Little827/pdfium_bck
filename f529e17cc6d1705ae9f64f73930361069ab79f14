@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64263a69_cfeaf391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-16T00:11:39Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "f529e17cc6d1705ae9f64f73930361069ab79f14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10685858_60854e3f",
+        "filename": "core/fxcodec/jbig2/jbig2_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-12-16T00:11:39Z",
+      "side": 1,
+      "message": "Optional: Rename this parameter to |document_context| to follow the style guide. (Then |pJbig2Context| will be only one parameter left that\u0027s in a different style.)",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "f529e17cc6d1705ae9f64f73930361069ab79f14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
