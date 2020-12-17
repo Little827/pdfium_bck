@@ -22,7 +22,7 @@ class CFX_CSSStyleRule {
   CFX_CSSSelector* GetSelectorList(int32_t index) const;
   CFX_CSSDeclaration* GetDeclaration();
 
-  void SetSelector(std::vector<std::unique_ptr<CFX_CSSSelector>>* list);
+  void SetSelector(std::vector<std::unique_ptr<CFX_CSSSelector>>&& list);
 
  private:
   CFX_CSSDeclaration m_Declaration;

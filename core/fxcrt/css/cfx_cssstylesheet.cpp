@@ -81,7 +81,8 @@ CFX_CSSSyntaxStatus CFX_CSSStyleSheet::LoadStyleRule(
         if (!pStyleRule && !selectors.empty()) {
           auto rule = std::make_unique<CFX_CSSStyleRule>();
           pStyleRule = rule.get();
-          pStyleRule->SetSelector(&selectors);
+          pStyleRule->SetSelector(std::move(selectors));
+          selectors.clear();
           m_RuleArray.push_back(std::move(rule));
         } else {
           SkipRuleSet(pSyntax);

@@ -4,6 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
+#include <utility>
+
 #include "core/fxcrt/css/cfx_cssstylerule.h"
 
 CFX_CSSStyleRule::CFX_CSSStyleRule() = default;
@@ -23,8 +25,7 @@ CFX_CSSDeclaration* CFX_CSSStyleRule::GetDeclaration() {
 }
 
 void CFX_CSSStyleRule::SetSelector(
-    std::vector<std::unique_ptr<CFX_CSSSelector>>* list) {
+    std::vector<std::unique_ptr<CFX_CSSSelector>>&& list) {
   ASSERT(m_ppSelector.empty());
-
-  m_ppSelector.swap(*list);
+  m_ppSelector = std::move(list);
 }
