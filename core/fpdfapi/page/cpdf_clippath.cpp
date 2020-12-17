@@ -93,15 +93,14 @@ void CPDF_ClipPath::AppendPath(CPDF_Path path,
 }
 
 void CPDF_ClipPath::AppendTexts(
-    std::vector<std::unique_ptr<CPDF_TextObject>>* pTexts) {
+    std::vector<std::unique_ptr<CPDF_TextObject>>&& pTexts) {
   constexpr size_t kMaxTextObjects = 1024;
   PathData* pData = m_Ref.GetPrivateCopy();
-  if (pData->m_TextList.size() + pTexts->size() <= kMaxTextObjects) {
-    for (size_t i = 0; i < pTexts->size(); i++)
-      pData->m_TextList.push_back(std::move((*pTexts)[i]));
+  if (pData->m_TextList.size() + pTexts.size() <= kMaxTextObjects) {
+    for (size_t i = 0; i < pTexts.size(); i++)
+      pData->m_TextList.push_back(std::move(pTexts[i]));
     pData->m_TextList.push_back(nullptr);
   }
-  pTexts->clear();
 }
 
 void CPDF_ClipPath::CopyClipPath(const CPDF_ClipPath& that) {

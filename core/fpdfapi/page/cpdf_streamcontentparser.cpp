@@ -847,7 +847,7 @@ void CPDF_StreamContentParser::Handle_EndText() {
     return;
 
   if (TextRenderingModeIsClipMode(m_pCurStates->m_TextState.GetTextMode()))
-    m_pCurStates->m_ClipPath.AppendTexts(&m_ClipTextList);
+    m_pCurStates->m_ClipPath.AppendTexts(std::move(m_ClipTextList));
 
   m_ClipTextList.clear();
 }
