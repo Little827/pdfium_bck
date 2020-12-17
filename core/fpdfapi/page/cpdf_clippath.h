@@ -43,7 +43,7 @@ class CPDF_ClipPath {
   void AppendPath(CPDF_Path path,
                   CFX_FillRenderOptions::FillType type,
                   bool bAutoMerge);
-  void AppendTexts(std::vector<std::unique_ptr<CPDF_TextObject>>* pTexts);
+  void AppendTexts(std::vector<std::unique_ptr<CPDF_TextObject>>&& pTexts);
   void CopyClipPath(const CPDF_ClipPath& that);
   void Transform(const CFX_Matrix& matrix);
 
