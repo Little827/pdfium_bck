@@ -348,21 +348,22 @@ TEST_F(FPDFEditEmbedderTest, RasterizePDF) {
   VerifySavedDocument(612, 792, kAllBlackMd5sum);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_AddPaths DISABLED_AddPaths
-#else
-#define MAYBE_AddPaths AddPaths
-#endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_AddPaths) {
+// Test whether the trybot works.
+TEST_F(FPDFEditEmbedderTest,  AddPaths) { 
   // Start with a blank page
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
-  ASSERT_TRUE(page);
+  ASSERT_TRUE(page);  
+
+  /*random comments.....*
+   */
+  
+
+
 
   // We will first add a red rectangle
   FPDF_PAGEOBJECT red_rect = FPDFPageObj_CreateNewRect(10, 10, 20, 20);
   ASSERT_TRUE(red_rect);
-  // Expect false when trying to set colors out of range
+   // Expect false when trying to set colors out of range
   EXPECT_FALSE(FPDFPageObj_SetStrokeColor(red_rect, 100, 100, 100, 300));
   EXPECT_FALSE(FPDFPageObj_SetFillColor(red_rect, 200, 256, 200, 0));
 
@@ -514,7 +515,11 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddPaths) {
   EXPECT_TRUE(FPDFPath_BezierTo(blue_path, 375, 330, 390, 360, 400, 400));
   EXPECT_TRUE(FPDFPath_Close(blue_path));
   FPDFPage_InsertObject(page, blue_path);
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  const char kLastMD5[] = "ed14c60702b1489c597c7d46ece7f86d";
+#else
   const char kLastMD5[] = "9823e1a21bd9b72b6a442ba4f12af946";
+#endif
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 612, 792, kLastMD5);
