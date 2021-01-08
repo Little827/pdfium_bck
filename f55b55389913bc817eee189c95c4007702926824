@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d7aecd_b7765a62",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-08T21:25:22Z",
+      "side": 1,
+      "message": "note: stays in range due to std::min above.",
+      "range": {
+        "startLine": 255,
+        "startChar": 4,
+        "endLine": 255,
+        "endChar": 18
+      },
+      "revId": "f55b55389913bc817eee189c95c4007702926824",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
