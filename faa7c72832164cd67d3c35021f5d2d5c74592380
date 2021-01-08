@@ -16,6 +16,24 @@
       "message": "Don\u0027t we already assume no output if the expected file is missing? I don\u0027t think we need this empty file unless we want to be explicit.\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/pdfium/testing/tools/test_runner.py;l\u003d172;drc\u003db8b3f5ffc0ea33f06402e03145f26ed6d581b552",
       "revId": "faa7c72832164cd67d3c35021f5d2d5c74592380",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3392999d_629a7ac8",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1164158_expected.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-08T22:26:20Z",
+      "side": 1,
+      "message": "right.  we did this some time ago.  thanks for the reminder.",
+      "parentUuid": "b6649a0d_43fee1a2",
+      "revId": "faa7c72832164cd67d3c35021f5d2d5c74592380",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
