@@ -16,6 +16,24 @@
       "message": "Ah, good.  I was hoping a pre-existing test might catch this. Will need to roll corpus.",
       "revId": "7c205175af2071d100419134fbad66830b35447c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef717a6_6534c113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-01-12T21:26:24Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium_tests/+/77291 is approved.",
+      "parentUuid": "7c7d4f64_df14e7fb",
+      "revId": "7c205175af2071d100419134fbad66830b35447c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
