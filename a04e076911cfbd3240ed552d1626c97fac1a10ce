@@ -33,6 +33,23 @@
       "message": "Jochen, could you plus +2 this for me since I don\u0027t have trybot access?\n\nThanks!",
       "revId": "a04e076911cfbd3240ed552d1626c97fac1a10ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c081c591_ff1a9585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7439
+      },
+      "writtenOn": "2021-01-14T15:58:52Z",
+      "side": 1,
+      "message": "I\u0027ve landed https://chromium-review.googlesource.com/c/v8/v8/+/2629280 in v8 itself which means the include dirs are added by the v8_headers target itself, so the current change is not necessary.\n\nWhen that change rolls into pdfium, I\u0027ll update it to remove the include_dirs line without the change to deps.",
+      "revId": "a04e076911cfbd3240ed552d1626c97fac1a10ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
