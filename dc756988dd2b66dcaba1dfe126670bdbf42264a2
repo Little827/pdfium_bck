@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aecb117_09f4f2b1",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-14T23:51:36Z",
+      "side": 1,
+      "message": "Here, we want a \"magic value\" that isn\u0027t going to be used anywhere else, so that no matter what other code might have its own V8 binding scheme, we can tell our objects from the rest. We could define a constant by rolling dice and using that number, but it is easier to get an unique random value not likely to occur otherwise by just asking for the address of some data that is not otherwise used. What value should the data be?  Well, we can kill another bird with this stone.  If I\u0027m just dumping memory with the debugger  how do I know if the tag bits I\u0027m looking at are correct if it is randomly assigned based on layout of the executable as loaded?  The idea is \"print **ptr\" should show us this string.",
+      "parentUuid": "5f007f7b_89227ade",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "dc756988dd2b66dcaba1dfe126670bdbf42264a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d12f659_e460ea9a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-14T23:13:41Z",
       "side": 1,
       "message": "Can\u0027t we just rely on the implicit conversion to a unique_ptr? Or are we trying to be explicit?\n\nOr am I brain-farting and unique_ptr doesn\u0027t support implicit conversions?",
+      "range": {
+        "startLine": 330,
+        "startChar": 24,
+        "endLine": 330,
+        "endChar": 55
+      },
+      "revId": "dc756988dd2b66dcaba1dfe126670bdbf42264a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c01ae3_21f6abc9",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-14T23:51:36Z",
+      "side": 1,
+      "message": "Nah, I just see \"new\" as a pattern to eliminate. All \"new x\" are bugs in some sense if we insist on ownership.",
+      "parentUuid": "7d12f659_e460ea9a",
       "range": {
         "startLine": 330,
         "startChar": 24,
