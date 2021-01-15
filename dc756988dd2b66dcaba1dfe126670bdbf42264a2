@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fb2a5b_84219470",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-15T01:06:14Z",
+      "side": 1,
+      "message": "Thanks for the context :)",
+      "parentUuid": "2aecb117_09f4f2b1",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "dc756988dd2b66dcaba1dfe126670bdbf42264a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d12f659_e460ea9a",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Nah, I just see \"new\" as a pattern to eliminate. All \"new x\" are bugs in some sense if we insist on ownership.",
       "parentUuid": "7d12f659_e460ea9a",
+      "range": {
+        "startLine": 330,
+        "startChar": 24,
+        "endLine": 330,
+        "endChar": 55
+      },
+      "revId": "dc756988dd2b66dcaba1dfe126670bdbf42264a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0fc1f52_da1d74fa",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-15T01:06:14Z",
+      "side": 1,
+      "message": "We wouldn\u0027t have to call new though, right(?). \n\nI meant passing the raw pointer straight to the unique_ptr constructor.\n\nEither way, it\u0027s a moot point since unique_ptr has an explicit one param constructor.\n\nhttps://en.cppreference.com/w/cpp/memory/unique_ptr/unique_ptr",
+      "parentUuid": "a3c01ae3_21f6abc9",
       "range": {
         "startLine": 330,
         "startChar": 24,
