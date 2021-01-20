@@ -16,6 +16,24 @@
       "message": "Let me know if you think this is reasonable. Other than I dislike handing out pointers to middle of objects. ",
       "revId": "27843f6d6090ad18b031256fe8805295fe962dd2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8856af5c_39aa17d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-20T23:19:59Z",
+      "side": 1,
+      "message": "I won\u0027t push back too much, but I know that moving objects from the stack to the heap isn\u0027t completely free; there\u0027s a small performance hit.\n\nIf you\u0027re worried about the different shapes CFX_FONT take inside CPDF_Font, I would recommend changing more of them to stack allocated objects (if possible). For example, I\u0027m not sure why we bother with a vector of unique_ptrs with `m_FontFallbacks`.\n\nAnother cause for hesitation is that we\u0027re establishing an unenforceable pattern. If we really want to keep CFX_Font objects on the heap (like we\u0027re about to do in  xfa/fde/cfde_textout.cpp for example), we should restrict the access rights of the constructor and instead expose a static factory method.",
+      "parentUuid": "fc56d117_ec196fae",
+      "revId": "27843f6d6090ad18b031256fe8805295fe962dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
