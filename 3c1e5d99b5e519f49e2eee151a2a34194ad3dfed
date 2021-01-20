@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a410a5_8c5125f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-01-20T17:29:50Z",
+      "side": 1,
+      "message": "We will need to add the roll clang version from:to information here. See an example at https://pdfium-review.googlesource.com/c/pdfium/+/76419",
+      "revId": "3c1e5d99b5e519f49e2eee151a2a34194ad3dfed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
