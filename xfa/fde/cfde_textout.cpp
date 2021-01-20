@@ -60,13 +60,13 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
 
 #if !defined(OS_WIN)
   uint32_t dwFontStyle = pFont->GetFontStyles();
-  CFX_Font FxFont;
+  auto FxFont = std::make_unique<CFX_Font>();
   auto SubstFxFont = std::make_unique<CFX_SubstFont>();
   SubstFxFont->m_Weight = FontStyleIsForceBold(dwFontStyle) ? 700 : 400;
   SubstFxFont->m_ItalicAngle = FontStyleIsItalic(dwFontStyle) ? -12 : 0;
   SubstFxFont->m_WeightCJK = SubstFxFont->m_Weight;
   SubstFxFont->m_bItalicCJK = FontStyleIsItalic(dwFontStyle);
-  FxFont.SetSubstFont(std::move(SubstFxFont));
+  FxFont->SetSubstFont(std::move(SubstFxFont));
 #endif
 
   RetainPtr<CFGAS_GEFont> pCurFont;
@@ -84,9 +84,9 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
 
         CFX_Font* font;
 #if !defined(OS_WIN)
-        FxFont.SetFace(pFxFont->GetFace());
-        FxFont.SetFontSpan(pFxFont->GetFontSpan());
-        font = &FxFont;
+        FxFont->SetFace(pFxFont->GetFace());
+        FxFont->SetFontSpan(pFxFont->GetFontSpan());
+        font = FxFont.get();
 #else
         font = pFxFont;
 #endif
@@ -107,9 +107,9 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
     pFxFont = pCurFont->GetDevFont();
     CFX_Font* font;
 #if !defined(OS_WIN)
-    FxFont.SetFace(pFxFont->GetFace());
-    FxFont.SetFontSpan(pFxFont->GetFontSpan());
-    font = &FxFont;
+    FxFont->SetFace(pFxFont->GetFace());
+    FxFont->SetFontSpan(pFxFont->GetFontSpan());
+    font = FxFont.get();
 #else
     font = pFxFont;
 #endif
