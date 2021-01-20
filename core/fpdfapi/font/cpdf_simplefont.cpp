@@ -55,7 +55,7 @@ int CPDF_SimpleFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
 }
 
 void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
-  if (!m_Font.GetFaceRec())
+  if (!GetFont()->GetFaceRec())
     return;
 
   if (charcode < 0 || charcode > 0xff) {
@@ -72,7 +72,7 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
     }
     return;
   }
-  FXFT_FaceRec* face = m_Font.GetFaceRec();
+  FXFT_FaceRec* face = GetFont()->GetFaceRec();
   int err =
       FT_Load_Glyph(face, glyph_index,
                     FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
@@ -220,10 +220,10 @@ bool CPDF_SimpleFont::LoadCommon() {
   }
   if (!FontStyleIsSymbolic(m_Flags))
     m_BaseEncoding = PDFFONT_ENCODING_STANDARD;
-  LoadPDFEncoding(!!m_pFontFile, m_Font.IsTTFont());
+  LoadPDFEncoding(!!m_pFontFile, GetFont()->IsTTFont());
   LoadGlyphMap();
   m_CharNames.clear();
-  if (!m_Font.GetFaceRec())
+  if (!GetFont()->GetFaceRec())
     return true;
 
   if (FontStyleIsAllCaps(m_Flags)) {
@@ -263,8 +263,8 @@ void CPDF_SimpleFont::LoadSubstFont() {
     if (i == 256 && width)
       m_Flags |= FXFONT_FIXED_PITCH;
   }
-  m_Font.LoadSubst(m_BaseFontName, IsTrueTypeFont(), m_Flags, GetFontWeight(),
-                   m_ItalicAngle, 0, false);
+  GetFont()->LoadSubst(m_BaseFontName, IsTrueTypeFont(), m_Flags,
+                       GetFontWeight(), m_ItalicAngle, 0, false);
 }
 
 bool CPDF_SimpleFont::IsUnicodeCompatible() const {
