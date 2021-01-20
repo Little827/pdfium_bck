@@ -45,6 +45,7 @@ const uint8_t kChineseFontNames[][kChineseFontNameSize] = {
 
 CPDF_Font::CPDF_Font(CPDF_Document* pDocument, CPDF_Dictionary* pFontDict)
     : m_pDocument(pDocument),
+      m_pFont(std::make_unique<CFX_Font>()),
       m_pFontDict(pFontDict),
       m_BaseFontName(pFontDict->GetStringFor("BaseFont")) {}
 
@@ -124,7 +125,7 @@ void CPDF_Font::WillBeDestroyed() {}
 
 bool CPDF_Font::IsVertWriting() const {
   const CPDF_CIDFont* pCIDFont = AsCIDFont();
-  return pCIDFont ? pCIDFont->IsVertWriting() : m_Font.IsVertical();
+  return pCIDFont ? pCIDFont->IsVertWriting() : m_pFont->IsVertical();
 }
 
 int CPDF_Font::AppendChar(char* buf, uint32_t charcode) const {
@@ -213,7 +214,7 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
   if (!m_pFontFile)
     return;
 
-  if (!m_Font.LoadEmbedded(m_pFontFile->GetSpan(), IsVertWriting())) {
+  if (!m_pFont->LoadEmbedded(m_pFontFile->GetSpan(), IsVertWriting())) {
     pData->MaybePurgeFontFileStreamAcc(m_pFontFile->GetStream()->AsStream());
     m_pFontFile = nullptr;
   }
@@ -222,7 +223,7 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
 void CPDF_Font::CheckFontMetrics() {
   if (m_FontBBox.top == 0 && m_FontBBox.bottom == 0 && m_FontBBox.left == 0 &&
       m_FontBBox.right == 0) {
-    FXFT_FaceRec* face = m_Font.GetFaceRec();
+    FXFT_FaceRec* face = m_pFont->GetFaceRec();
     if (face) {
       m_FontBBox.left = TT2PDF(FXFT_Get_Face_xMin(face), face);
       m_FontBBox.bottom = TT2PDF(FXFT_Get_Face_yMin(face), face);

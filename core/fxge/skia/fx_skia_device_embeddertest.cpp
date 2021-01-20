@@ -44,7 +44,7 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
   charPos[0].m_GlyphIndex = 1;
   charPos[0].m_FontCharWidth = 4;
 
-  CFX_Font font;
+  auto font = std::make_unique<CFX_Font>();
   float fontSize = 1;
   CFX_PathData clipPath, clipPath2;
   clipPath.AppendRect(0, 0, 3, 1);
@@ -69,7 +69,7 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
                      CFX_FillRenderOptions::WindingOptions(),
                      BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
-    driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix,
+    driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, font.get(), matrix,
                            fontSize, 0xFF445566, kTextOptions);
   }
   if (state.m_save == State::Save::kYes)
@@ -93,8 +93,8 @@ void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
                      CFX_FillRenderOptions::WindingOptions(),
                      BlendMode::kNormal);
   } else if (state.m_graphic == State::Graphic::kText) {
-    driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, &font, matrix2,
-                           fontSize, 0xFF445566, kTextOptions);
+    driver->DrawDeviceText(SK_ARRAY_COUNT(charPos), charPos, font.get(),
+                           matrix2, fontSize, 0xFF445566, kTextOptions);
   }
   if (state.m_save == State::Save::kYes)
     driver->RestoreState(false);
