@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e541d8d_9fbda319",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-20T22:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cff472e_0c05cd39",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "07859f344f979c9e24dbb454aced5b68866e08ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d93e43e_58fcc53c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-20T22:16:15Z",
       "side": 1,
       "message": "Sorry, I\u0027m trying to better understand the motivation for this change.\n\nDo we plan to change the ownership model? If not, why can\u0027t we defer this change until we do change it?\n\nBecause, with this change, we\u0027re only moving CFX_Font objects from the stack to the heap. But nothing is changing with the object lifetimes and we\u0027re still handing out unowned references.",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "07859f344f979c9e24dbb454aced5b68866e08ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d0fb91_c54deaef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-20T22:56:09Z",
+      "side": 1,
+      "message": "I\u0027ve updated the change descripion to be more correct.  What bothered me is that we have unique_ptr\u003cCFX_FONT\u003e, MaybeOwned\u003cCFX_Font\u003e, plus CFX_FONT directly embedded inside CPDF_Font. It would be simpler if all just came from the heap rather than being embedded directly.",
+      "parentUuid": "2d93e43e_58fcc53c",
       "range": {
         "startLine": 11,
         "startChar": 47,
