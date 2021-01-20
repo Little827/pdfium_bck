@@ -51,6 +51,24 @@
       "parentUuid": "6f3a765a_e237d391",
       "revId": "30f53b61cbdb6f816eccd3dffeaaebb9f4de73a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92623d2c_021b296c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-01-20T20:40:41Z",
+      "side": 1,
+      "message": "tchar.h is a relic of a time when Windows applications could be compiled in 8-bit or 16-bit character modes. It\u0027s probably not useful to PDFium, and modern Windows platforms all support Unicode anyway.",
+      "parentUuid": "229a876f_53852b7d",
+      "revId": "30f53b61cbdb6f816eccd3dffeaaebb9f4de73a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
