@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cff472e_0c05cd39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-20T22:16:15Z",
+      "side": 1,
+      "message": "Not sure if this is your commit message style or if this is a typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "07859f344f979c9e24dbb454aced5b68866e08ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d93e43e_58fcc53c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-20T22:16:15Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m trying to better understand the motivation for this change.\n\nDo we plan to change the ownership model? If not, why can\u0027t we defer this change until we do change it?\n\nBecause, with this change, we\u0027re only moving CFX_Font objects from the stack to the heap. But nothing is changing with the object lifetimes and we\u0027re still handing out unowned references.",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "07859f344f979c9e24dbb454aced5b68866e08ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5308a2_0ca5111f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-20T22:16:15Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "07859f344f979c9e24dbb454aced5b68866e08ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
