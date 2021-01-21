@@ -13,6 +13,7 @@
 #include "v8/include/v8.h"
 
 class CFXJSE_Engine;
+class CFXJSE_Value;
 class CXFA_Document;
 
 class XFAJSEmbedderTest : public JSEmbedderTest {
@@ -38,8 +39,8 @@ class XFAJSEmbedderTest : public JSEmbedderTest {
  private:
   bool ExecuteHelper(ByteStringView input);
 
-  v8::Global<v8::Value> value_;
   CFXJSE_Engine* script_context_ = nullptr;
+  std::unique_ptr<CFXJSE_Value> value_;
 };
 
 #endif  // TESTING_XFA_JS_EMBEDDER_TEST_H_

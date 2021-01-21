@@ -19,7 +19,6 @@
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_context.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/optional.h"
 #include "third_party/base/stl_util.h"
@@ -3297,20 +3296,24 @@ void CFXJSE_FormCalcContext::Eval(
   WideString wsCalcScript = WideString::FromUTF8(bsUtf8Script.AsStringView());
   Optional<CFX_WideTextBuf> wsJavaScriptBuf = CFXJSE_FormCalcContext::Translate(
       pContext->GetDocument()->GetHeap(), wsCalcScript.AsStringView());
+
   if (!wsJavaScriptBuf.has_value()) {
     pContext->ThrowCompilerErrorException();
     return;
   }
 
+  ByteString bsNewScript =
+      FX_UTF8Encode(wsJavaScriptBuf.value().AsStringView());
+
   std::unique_ptr<CFXJSE_Context> pNewContext =
       CFXJSE_Context::Create(pIsolate, nullptr, nullptr, nullptr);
 
-  auto returnValue = std::make_unique<CFXJSE_Value>();
-  pNewContext->ExecuteScript(
-      FX_UTF8Encode(wsJavaScriptBuf.value().AsStringView()).c_str(),
-      returnValue.get(), v8::Local<v8::Object>());
+  std::unique_ptr<CFXJSE_Value> returnValue =
+      pNewContext->ExecuteScriptInContext(bsNewScript.AsStringView(),
+                                          v8::Local<v8::Object>());
 
-  info.GetReturnValue().Set(returnValue->DirectGetValue());
+  if (returnValue && returnValue->IsSuccess() && !returnValue->IsEmpty())
+    info.GetReturnValue().Set(returnValue->GetValue(pIsolate));
 }
 
 // static

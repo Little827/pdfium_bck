@@ -72,6 +72,35 @@ namespace {
 
 const char kFormCalcRuntime[] = "pfm_rt";
 
+// Returns empty local on error.
+v8::Local<v8::Function> NewBoundFunction(v8::Isolate* pIsolate,
+                                         v8::Local<v8::Function> hOldFunction,
+                                         v8::Local<v8::Object> hNewThis) {
+  ASSERT(!hOldFunction.IsEmpty());
+  ASSERT(!hNewThis.IsEmpty());
+
+  CFXJSE_ScopeUtil_RootContext scope(pIsolate);
+  v8::Local<v8::Value> rgArgs[2];
+  rgArgs[0] = hOldFunction;
+  rgArgs[1] = hNewThis;
+  v8::Local<v8::String> hBinderFuncSource = fxv8::NewStringHelper(
+      pIsolate, "(function (fn, obj) { return fn.bind(obj); })");
+  v8::Local<v8::Context> hContext = pIsolate->GetCurrentContext();
+  v8::Local<v8::Function> hBinderFunc =
+      v8::Script::Compile(hContext, hBinderFuncSource)
+          .ToLocalChecked()
+          ->Run(hContext)
+          .ToLocalChecked()
+          .As<v8::Function>();
+  v8::Local<v8::Value> hBoundFunction =
+      hBinderFunc->Call(hContext, hContext->Global(), 2, rgArgs)
+          .ToLocalChecked();
+  if (!fxv8::IsFunction(hBoundFunction))
+    return v8::Local<v8::Function>();
+
+  return hBoundFunction.As<v8::Function>();
+}
+
 }  // namespace
 
 CFXJSE_Engine::ResolveResult::ResolveResult() = default;
@@ -99,12 +128,6 @@ CXFA_Object* CFXJSE_Engine::ToObject(v8::Isolate* pIsolate,
   return ToObject(FXJSE_RetrieveObjectBinding(value.As<v8::Object>()));
 }
 
-// static.
-CXFA_Object* CFXJSE_Engine::ToObject(v8::Isolate* pIsolate,
-                                     CFXJSE_Value* pValue) {
-  return ToObject(pValue->ToHostObject(pIsolate));
-}
-
 // static
 CXFA_Object* CFXJSE_Engine::ToObject(CFXJSE_HostObject* pHostObj) {
   if (!pHostObj)
@@ -124,7 +147,8 @@ CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
                                          pDocument->GetRoot()->JSObject(),
                                          nullptr)),
       m_ResolveProcessor(std::make_unique<CFXJSE_ResolveProcessor>()) {
-  RemoveBuiltInObjs(m_JsContext.get());
+  CFXJSE_ScopeUtil_IsolateHandle scope(GetIsolate());
+  m_JsContext->RemoveBuiltInObjs();
   m_JsContext->EnableCompatibleMode();
 
   // Don't know if this can happen before we remove the builtin objs and set
@@ -143,11 +167,11 @@ CFXJSE_Engine::~CFXJSE_Engine() {
   }
 }
 
-bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
-                              WideStringView wsScript,
-                              CFXJSE_Value* hRetValue,
-                              CXFA_Object* pThisObject) {
-  CFXJSE_ScopeUtil_IsolateHandleContext scope(GetJseContext());
+std::unique_ptr<CFXJSE_Value> CFXJSE_Engine::RunScript(
+    CXFA_Script::Type eScriptType,
+    WideStringView wsScript,
+    CXFA_Object* pThisObject) {
+  CFXJSE_ScopeUtil_IsolateHandle scope(GetIsolate());
   AutoRestorer<CXFA_Script::Type> typeRestorer(&m_eScriptType);
   m_eScriptType = eScriptType;
 
@@ -159,10 +183,9 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
     }
     Optional<CFX_WideTextBuf> wsJavaScript =
         CFXJSE_FormCalcContext::Translate(m_pDocument->GetHeap(), wsScript);
-    if (!wsJavaScript.has_value()) {
-      hRetValue->SetUndefined(GetIsolate());
-      return false;
-    }
+    if (!wsJavaScript.has_value())
+      return nullptr;
+
     btScript = FX_UTF8Encode(wsJavaScript.value().AsStringView());
   } else {
     btScript = FX_UTF8Encode(wsScript);
@@ -175,7 +198,8 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
     pThisBinding = GetOrCreateJSBindingFromMap(pThisObject);
 
   IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime.Get());
-  return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pThisBinding);
+  return m_JsContext->ExecuteScriptInContext(btScript.AsStringView(),
+                                             pThisBinding);
 }
 
 bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
@@ -519,7 +543,7 @@ CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
       pScriptNode);
   auto pNewContext = CFXJSE_Context::Create(
       GetIsolate(), &VariablesClassDescriptor, proxy->JSObject(), proxy);
-  RemoveBuiltInObjs(pNewContext.get());
+  pNewContext->RemoveBuiltInObjs();
   pNewContext->EnableCompatibleMode();
   CFXJSE_Context* pResult = pNewContext.get();
   m_mapVariableToContext[pScriptNode->JSObject()] = std::move(pNewContext);
@@ -561,14 +585,18 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
     return false;
 
   ByteString btScript = wsScript->ToUTF8();
-  auto hRetValue = std::make_unique<CFXJSE_Value>();
   CXFA_Node* pThisObject = pParent->GetParent();
   CFXJSE_Context* pVariablesContext =
       CreateVariablesContext(pScriptNode, pThisObject);
+
   AutoRestorer<cppgc::Persistent<CXFA_Object>> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
-  return pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
-                                          v8::Local<v8::Object>());
+
+  CFXJSE_ScopeUtil_IsolateHandle scope(GetIsolate());
+  std::unique_ptr<CFXJSE_Value> result =
+      pVariablesContext->ExecuteScriptInContext(btScript.AsStringView(),
+                                                v8::Local<v8::Object>());
+  return result && result->IsSuccess() && result->ToBoolean(GetIsolate());
 }
 
 bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
@@ -604,7 +632,7 @@ bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
   v8::Local<v8::Value> hVariableValue =
       fxv8::ReentrantGetObjectPropertyHelper(GetIsolate(), pObject, szPropName);
   if (fxv8::IsFunction(hVariableValue)) {
-    v8::Local<v8::Function> maybeFunc = CFXJSE_Value::NewBoundFunction(
+    v8::Local<v8::Function> maybeFunc = NewBoundFunction(
         GetIsolate(), hVariableValue.As<v8::Function>(), pObject);
     if (!maybeFunc.IsEmpty())
       *pValue = maybeFunc;
@@ -612,13 +640,6 @@ bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
     *pValue = hVariableValue;
   }
   return true;
-}
-
-void CFXJSE_Engine::RemoveBuiltInObjs(CFXJSE_Context* pContext) {
-  CFXJSE_ScopeUtil_IsolateHandleContext scope(GetJseContext());
-  v8::Local<v8::Object> pObject = pContext->GetGlobalObject();
-  fxv8::ReentrantDeleteObjectPropertyHelper(GetIsolate(), pObject, "Number");
-  fxv8::ReentrantDeleteObjectPropertyHelper(GetIsolate(), pObject, "Date");
 }
 
 Optional<CFXJSE_Engine::ResolveResult> CFXJSE_Engine::ResolveObjects(
@@ -809,6 +830,7 @@ v8::Local<v8::Object> CFXJSE_Engine::GetOrCreateJSBindingFromMap(
   if (pObject->IsNode())
     RunVariablesScript(pObject->AsNode());
 
+  CFXJSE_ScopeUtil_Context scope(GetJseContext());
   CJX_Object* pCJXObject = pObject->JSObject();
   auto iter = m_mapObjectToObject.find(pCJXObject);
   if (iter != m_mapObjectToObject.end())

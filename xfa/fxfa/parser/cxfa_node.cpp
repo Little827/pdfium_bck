@@ -23,9 +23,9 @@
 #include "core/fxcrt/xml/cfx_xmltext.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/fx_font.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_node.h"
 #include "third_party/base/check.h"
 #include "third_party/base/compiler_specific.h"
@@ -2757,25 +2757,24 @@ std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
     pContext->SetNodesOfRunScript(&refNodes);
   }
 
-  auto pTmpRetValue = std::make_unique<CFXJSE_Value>();
-  bool bRet = false;
+  std::unique_ptr<CFXJSE_Value> pTmpRetValue;
   {
     AutoRestorer<uint8_t> restorer(&m_ExecuteRecursionDepth);
     ++m_ExecuteRecursionDepth;
-    bRet = pContext->RunScript(eScriptType, wsExpression.AsStringView(),
-                               pTmpRetValue.get(), this);
+    pTmpRetValue =
+        pContext->RunScript(eScriptType, wsExpression.AsStringView(), this);
   }
 
   XFA_EventError iRet = XFA_EventError::kError;
-  if (bRet) {
+  if (pTmpRetValue) {
     iRet = XFA_EventError::kSuccess;
     if (pEventParam->m_eType == XFA_EVENT_Calculate ||
         pEventParam->m_eType == XFA_EVENT_InitCalculate) {
       if (!pTmpRetValue->IsUndefined(pContext->GetIsolate())) {
-        if (!pTmpRetValue->IsNull(pContext->GetIsolate()))
+        if (!pTmpRetValue->IsNull(pContext->GetIsolate())) {
           pEventParam->m_wsResult =
               pTmpRetValue->ToWideString(pContext->GetIsolate());
-
+        }
         iRet = XFA_EventError::kSuccess;
       } else {
         iRet = XFA_EventError::kError;

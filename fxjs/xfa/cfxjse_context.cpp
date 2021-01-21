@@ -58,15 +58,13 @@ const char szConsoleScript[] =
 const char kFXJSEHostObjectTag[] = "FXJSE Host Object";
 const char kFXJSEProxyObjectTag[] = "FXJSE Proxy Object";
 
-v8::Local<v8::Object> CreateReturnValue(v8::Isolate* pIsolate,
-                                        v8::TryCatch* trycatch) {
+std::unique_ptr<CFXJSE_Value> CreateErrorReturnValue(v8::Isolate* pIsolate,
+                                                     v8::TryCatch* trycatch) {
+  ASSERT(trycatch->HasCaught());
   v8::Local<v8::Object> hReturnValue = v8::Object::New(pIsolate);
-  if (!trycatch->HasCaught())
-    return hReturnValue;
-
   v8::Local<v8::Message> hMessage = trycatch->Message();
   if (hMessage.IsEmpty())
-    return hReturnValue;
+    return std::make_unique<CFXJSE_Value>(pIsolate, false, hReturnValue);
 
   v8::Local<v8::Context> context = pIsolate->GetCurrentContext();
   v8::Local<v8::Value> hException = trycatch->Exception();
@@ -104,7 +102,7 @@ v8::Local<v8::Object> CreateReturnValue(v8::Isolate* pIsolate,
   hReturnValue->Set(context, 5, v8::Integer::New(pIsolate, column)).FromJust();
   column = hMessage->GetEndColumn(context).FromMaybe(0);
   hReturnValue->Set(context, 6, v8::Integer::New(pIsolate, column)).FromJust();
-  return hReturnValue;
+  return std::make_unique<CFXJSE_Value>(pIsolate, false, hReturnValue);
 }
 
 void FXJSE_UpdateProxyBinding(v8::Local<v8::Object> hObject) {
@@ -225,19 +223,26 @@ CFXJSE_Class* CFXJSE_Context::GetClassByName(ByteStringView szName) const {
   return pClass != m_rgClasses.end() ? pClass->get() : nullptr;
 }
 
-void CFXJSE_Context::EnableCompatibleMode() {
-  ExecuteScript(szCompatibleModeScript, nullptr, v8::Local<v8::Object>());
-  ExecuteScript(szConsoleScript, nullptr, v8::Local<v8::Object>());
+void CFXJSE_Context::RemoveBuiltInObjs() {
+  CFXJSE_ScopeUtil_Context scope(this);
+  v8::Local<v8::Object> pObject = GetGlobalObject();
+  fxv8::ReentrantDeleteObjectPropertyHelper(GetIsolate(), pObject, "Number");
+  fxv8::ReentrantDeleteObjectPropertyHelper(GetIsolate(), pObject, "Date");
 }
 
-bool CFXJSE_Context::ExecuteScript(const char* szScript,
-                                   CFXJSE_Value* lpRetValue,
-                                   v8::Local<v8::Object> hNewThis) {
-  CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
+void CFXJSE_Context::EnableCompatibleMode() {
+  ExecuteScriptInContext(szCompatibleModeScript, v8::Local<v8::Object>());
+  ExecuteScriptInContext(szConsoleScript, v8::Local<v8::Object>());
+}
+
+std::unique_ptr<CFXJSE_Value> CFXJSE_Context::ExecuteScriptInContext(
+    ByteStringView bsScript,
+    v8::Local<v8::Object> hNewThis) {
+  CFXJSE_ScopeUtil_Context scope(this);
   v8::Local<v8::Context> hContext = GetIsolate()->GetCurrentContext();
   v8::TryCatch trycatch(GetIsolate());
   v8::Local<v8::String> hScriptString =
-      fxv8::NewStringHelper(GetIsolate(), szScript);
+      fxv8::NewStringHelper(GetIsolate(), bsScript);
   if (hNewThis.IsEmpty()) {
     v8::Local<v8::Script> hScript;
     if (v8::Script::Compile(hContext, hScriptString).ToLocal(&hScript)) {
@@ -245,15 +250,10 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
       v8::Local<v8::Value> hValue;
       if (hScript->Run(hContext).ToLocal(&hValue)) {
         ASSERT(!trycatch.HasCaught());
-        if (lpRetValue)
-          lpRetValue->ForceSetValue(GetIsolate(), hValue);
-        return true;
+        return std::make_unique<CFXJSE_Value>(GetIsolate(), true, hValue);
       }
     }
-    if (lpRetValue)
-      lpRetValue->ForceSetValue(GetIsolate(),
-                                CreateReturnValue(GetIsolate(), &trycatch));
-    return false;
+    return CreateErrorReturnValue(GetIsolate(), &trycatch);
   }
 
   v8::Local<v8::String> hEval = fxv8::NewStringHelper(
@@ -269,9 +269,7 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
     if (hWrapperFn->Call(hContext, hNewThis.As<v8::Object>(), 1, rgArgs)
             .ToLocal(&hValue)) {
       ASSERT(!trycatch.HasCaught());
-      if (lpRetValue)
-        lpRetValue->ForceSetValue(GetIsolate(), hValue);
-      return true;
+      return std::make_unique<CFXJSE_Value>(GetIsolate(), true, hValue);
     }
   }
 
@@ -281,7 +279,7 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
 
   v8::Local<v8::Message> message = trycatch.Message();
   if (!message.IsEmpty()) {
-    v8::Local<v8::Context> context(GetIsolate()->GetCurrentContext());
+    v8::Local<v8::Context> context = GetContext();
     int linenum = message->GetLineNumber(context).FromJust();
     v8::String::Utf8Value sourceline(
         GetIsolate(), message->GetSourceLine(context).ToLocalChecked());
@@ -289,9 +287,5 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
   }
 #endif  // NDEBUG
 
-  if (lpRetValue) {
-    lpRetValue->ForceSetValue(GetIsolate(),
-                              CreateReturnValue(GetIsolate(), &trycatch));
-  }
-  return false;
+  return CreateErrorReturnValue(GetIsolate(), &trycatch);
 }

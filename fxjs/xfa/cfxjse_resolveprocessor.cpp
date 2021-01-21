@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "core/fxcrt/fx_extension.h"
+#include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_nodehelper.h"
 #include "fxjs/xfa/cfxjse_value.h"
@@ -41,11 +42,10 @@ void DoPredicateFilter(v8::Isolate* pIsolate,
 
   wsExpression = wsCondition.Substr(2, wsCondition.GetLength() - 3);
   for (size_t i = iFoundCount; i > 0; --i) {
-    auto pRetValue = std::make_unique<CFXJSE_Value>();
-    bool bRet = pRnd->m_pSC->RunScript(eLangType, wsExpression.AsStringView(),
-                                       pRetValue.get(),
-                                       pRnd->m_Result.objects[i - 1].Get());
-    if (!bRet || !pRetValue->ToBoolean(pIsolate))
+    std::unique_ptr<CFXJSE_Value> pRetValue =
+        pRnd->m_pSC->RunScript(eLangType, wsExpression.AsStringView(),
+                               pRnd->m_Result.objects[i - 1].Get());
+    if (!pRetValue || !pRetValue->ToBoolean(pIsolate))
       pRnd->m_Result.objects.erase(pRnd->m_Result.objects.begin() + i - 1);
   }
 }

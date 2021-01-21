@@ -8,7 +8,9 @@
 #include <utility>
 #include <vector>
 
+#include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
+#include "fxjs/xfa/cfxjse_isolatetracker.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/xfa_js_embedder_test.h"
 
@@ -17,27 +19,86 @@ class CFXJSE_ValueEmbedderTest : public XFAJSEmbedderTest {};
 TEST_F(CFXJSE_ValueEmbedderTest, Empty) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
 
-  auto pValue = std::make_unique<CFXJSE_Value>();
+  std::unique_ptr<CFXJSE_Value> pValue;
+  {
+    CFXJSE_ScopeUtil_IsolateHandle scope(isolate());
+    pValue = std::make_unique<CFXJSE_Value>(isolate(), false,
+                                            v8::Local<v8::Value>());
+  }
+  EXPECT_FALSE(pValue->IsSuccess());
   EXPECT_TRUE(pValue->IsEmpty());
   EXPECT_FALSE(pValue->IsUndefined(isolate()));
   EXPECT_FALSE(pValue->IsNull(isolate()));
   EXPECT_FALSE(pValue->IsBoolean(isolate()));
   EXPECT_FALSE(pValue->IsString(isolate()));
-  EXPECT_FALSE(pValue->IsNumber(isolate()));
-  EXPECT_FALSE(pValue->IsObject(isolate()));
-  EXPECT_FALSE(pValue->IsArray(isolate()));
-  EXPECT_FALSE(pValue->IsFunction(isolate()));
 }
 
-TEST_F(CFXJSE_ValueEmbedderTest, EmptyArrayInsert) {
+TEST_F(CFXJSE_ValueEmbedderTest, Undefined) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
 
-  // Test inserting empty values into arrays.
-  auto pValue = std::make_unique<CFXJSE_Value>();
-  std::vector<std::unique_ptr<CFXJSE_Value>> vec;
-  vec.push_back(std::move(pValue));
+  std::unique_ptr<CFXJSE_Value> pValue;
+  {
+    CFXJSE_ScopeUtil_IsolateHandle scope(isolate());
+    pValue = std::make_unique<CFXJSE_Value>(
+        isolate(), true, fxv8::NewUndefinedHelper(isolate()));
+  }
+  EXPECT_TRUE(pValue->IsSuccess());
+  EXPECT_FALSE(pValue->IsEmpty());
+  EXPECT_TRUE(pValue->IsUndefined(isolate()));
+  EXPECT_FALSE(pValue->IsNull(isolate()));
+  EXPECT_FALSE(pValue->IsBoolean(isolate()));
+  EXPECT_FALSE(pValue->IsString(isolate()));
+}
 
-  CFXJSE_Value array;
-  array.SetArray(isolate(), vec);
-  EXPECT_TRUE(array.IsArray(isolate()));
+TEST_F(CFXJSE_ValueEmbedderTest, Null) {
+  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
+
+  std::unique_ptr<CFXJSE_Value> pValue;
+  {
+    CFXJSE_ScopeUtil_IsolateHandle scope(isolate());
+    pValue = std::make_unique<CFXJSE_Value>(isolate(), true,
+                                            fxv8::NewNullHelper(isolate()));
+  }
+  EXPECT_TRUE(pValue->IsSuccess());
+  EXPECT_FALSE(pValue->IsEmpty());
+  EXPECT_FALSE(pValue->IsUndefined(isolate()));
+  EXPECT_TRUE(pValue->IsNull(isolate()));
+  EXPECT_FALSE(pValue->IsBoolean(isolate()));
+  EXPECT_FALSE(pValue->IsString(isolate()));
+}
+
+TEST_F(CFXJSE_ValueEmbedderTest, Boolean) {
+  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
+
+  std::unique_ptr<CFXJSE_Value> pValue;
+  {
+    CFXJSE_ScopeUtil_IsolateHandle scope(isolate());
+    pValue = std::make_unique<CFXJSE_Value>(
+        isolate(), true, fxv8::NewBooleanHelper(isolate(), true));
+  }
+  EXPECT_TRUE(pValue->IsSuccess());
+  EXPECT_FALSE(pValue->IsEmpty());
+  EXPECT_FALSE(pValue->IsUndefined(isolate()));
+  EXPECT_FALSE(pValue->IsNull(isolate()));
+  EXPECT_TRUE(pValue->IsBoolean(isolate()));
+  EXPECT_FALSE(pValue->IsString(isolate()));
+  EXPECT_TRUE(pValue->ToBoolean(isolate()));
+}
+
+TEST_F(CFXJSE_ValueEmbedderTest, String) {
+  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
+
+  std::unique_ptr<CFXJSE_Value> pValue;
+  {
+    CFXJSE_ScopeUtil_IsolateHandle scope(isolate());
+    pValue = std::make_unique<CFXJSE_Value>(
+        isolate(), true, fxv8::NewStringHelper(isolate(), "clams"));
+  }
+  EXPECT_TRUE(pValue->IsSuccess());
+  EXPECT_FALSE(pValue->IsEmpty());
+  EXPECT_FALSE(pValue->IsUndefined(isolate()));
+  EXPECT_FALSE(pValue->IsNull(isolate()));
+  EXPECT_FALSE(pValue->IsBoolean(isolate()));
+  EXPECT_TRUE(pValue->IsString(isolate()));
+  EXPECT_STREQ("clams", pValue->ToByteString(isolate()).c_str());
 }
