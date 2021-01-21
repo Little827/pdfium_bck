@@ -70,6 +70,23 @@
       "parentUuid": "ce798e05_a1deeeae",
       "revId": "80a7836aadd7782a0bbb15431f9f52f9ae5a3c58",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb23993_c94bfbca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-01-21T00:09:43Z",
+      "side": 1,
+      "message": "V8 roll has been merged.",
+      "revId": "80a7836aadd7782a0bbb15431f9f52f9ae5a3c58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
