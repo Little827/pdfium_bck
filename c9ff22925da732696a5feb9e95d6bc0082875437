@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2574225a_db0c9f67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-22T18:27:55Z",
+      "side": 1,
+      "message": "Some mindlessness for a Friday.  Came across this while looking at our usage of std:: containers beyond vector and map, and it was irksome to me.  Now it is less so.",
+      "revId": "c9ff22925da732696a5feb9e95d6bc0082875437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
