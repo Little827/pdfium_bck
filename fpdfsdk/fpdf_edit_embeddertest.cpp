@@ -9,6 +9,7 @@
 
 #include "build/build_config.h"
 #include "core/fpdfapi/font/cpdf_font.h"
+#include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_formobject.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
@@ -3692,7 +3693,7 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadata) {
   EXPECT_FLOAT_EQ(96.0f, metadata.horizontal_dpi);
   EXPECT_FLOAT_EQ(96.0f, metadata.vertical_dpi);
   EXPECT_EQ(0u, metadata.bits_per_pixel);
-  EXPECT_EQ(FPDF_COLORSPACE_UNKNOWN, metadata.colorspace);
+  EXPECT_EQ(FPDF_COLORSPACE_UNKNOWN, metadata.colorspace->GetFamily());
 
   // Verify the metadata of a bitmap image with indexed colorspace.
   ASSERT_TRUE(FPDFImageObj_GetImageMetadata(obj, page, &metadata));
@@ -3702,7 +3703,7 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadata) {
   EXPECT_FLOAT_EQ(96.0f, metadata.horizontal_dpi);
   EXPECT_FLOAT_EQ(96.0f, metadata.vertical_dpi);
   EXPECT_EQ(1u, metadata.bits_per_pixel);
-  EXPECT_EQ(FPDF_COLORSPACE_INDEXED, metadata.colorspace);
+  EXPECT_EQ(FPDF_COLORSPACE_INDEXED, metadata.colorspace->GetFamily());
 
   // Verify the metadata of an image with RGB colorspace.
   obj = FPDFPage_GetObject(page, 37);
@@ -3714,7 +3715,7 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadata) {
   EXPECT_FLOAT_EQ(162.173752f, metadata.horizontal_dpi);
   EXPECT_FLOAT_EQ(162.555878f, metadata.vertical_dpi);
   EXPECT_EQ(24u, metadata.bits_per_pixel);
-  EXPECT_EQ(FPDF_COLORSPACE_DEVICERGB, metadata.colorspace);
+  EXPECT_EQ(FPDF_COLORSPACE_DEVICERGB, metadata.colorspace->GetFamily());
 
   UnloadPage(page);
 }
