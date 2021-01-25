@@ -28,7 +28,7 @@ constexpr char kEncryptKey[] = "Encrypt";
 CPDF_CrossRefAvail::CPDF_CrossRefAvail(CPDF_SyntaxParser* parser,
                                        FX_FILESIZE last_crossref_offset)
     : parser_(parser), last_crossref_offset_(last_crossref_offset) {
-  ASSERT(parser_);
+  DCHECK(parser_);
   AddCrossRefForCheck(last_crossref_offset);
 }
 
@@ -62,7 +62,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_CrossRefAvail::CheckAvail() {
     if (!check_result)
       break;
 
-    ASSERT(!GetValidator()->has_read_problems());
+    DCHECK(!GetValidator()->has_read_problems());
   }
   return status_;
 }

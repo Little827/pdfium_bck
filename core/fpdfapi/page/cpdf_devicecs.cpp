@@ -27,7 +27,7 @@ float NormalizeChannel(float fVal) {
 }  // namespace
 
 CPDF_DeviceCS::CPDF_DeviceCS(int family) : CPDF_ColorSpace(nullptr, family) {
-  ASSERT(family == PDFCS_DEVICEGRAY || family == PDFCS_DEVICERGB ||
+  DCHECK(family == PDFCS_DEVICEGRAY || family == PDFCS_DEVICERGB ||
          family == PDFCS_DEVICECMYK);
   SetComponentsForStockCS(ComponentsForFamily(GetFamily()));
 }

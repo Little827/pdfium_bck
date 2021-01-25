@@ -36,7 +36,7 @@ CPDF_ContentMarkItem* CPDF_ContentMarks::GetItem(size_t index) {
 }
 
 const CPDF_ContentMarkItem* CPDF_ContentMarks::GetItem(size_t index) const {
-  ASSERT(index < CountItems());
+  DCHECK(index < CountItems());
   return m_pMarkData->GetItem(index);
 }
 

@@ -72,6 +72,6 @@ ScopedFPDFWideString GetFPDFWideString(const std::wstring& wstr) {
 }
 
 std::vector<FPDF_WCHAR> GetFPDFWideStringBuffer(size_t length_bytes) {
-  ASSERT(length_bytes % sizeof(FPDF_WCHAR) == 0);
+  DCHECK(length_bytes % sizeof(FPDF_WCHAR) == 0);
   return std::vector<FPDF_WCHAR>(length_bytes / sizeof(FPDF_WCHAR));
 }

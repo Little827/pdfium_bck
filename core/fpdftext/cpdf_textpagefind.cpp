@@ -91,7 +91,7 @@ WideString GetStringCase(const WideString& wsOriginal, bool bMatchCase) {
 
 Optional<WideString> ExtractSubString(const wchar_t* lpszFullString,
                                       int iSubString) {
-  ASSERT(lpszFullString);
+  DCHECK(lpszFullString);
 
   while (iSubString--) {
     lpszFullString = std::wcschr(lpszFullString, L' ');

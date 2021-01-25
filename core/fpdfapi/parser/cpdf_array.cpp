@@ -206,7 +206,7 @@ void CPDF_Array::ConvertToIndirectObjectAt(size_t index,
 
 CPDF_Object* CPDF_Array::SetAt(size_t index, RetainPtr<CPDF_Object> pObj) {
   CHECK(!IsLocked());
-  ASSERT(!pObj || pObj->IsInline());
+  DCHECK(!pObj || pObj->IsInline());
   if (index >= m_Objects.size()) {
     NOTREACHED();
     return nullptr;

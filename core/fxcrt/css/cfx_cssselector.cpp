@@ -33,7 +33,7 @@ CFX_CSSSelector::~CFX_CSSSelector() = default;
 // static.
 std::unique_ptr<CFX_CSSSelector> CFX_CSSSelector::FromString(
     WideStringView str) {
-  ASSERT(!str.IsEmpty());
+  DCHECK(!str.IsEmpty());
 
   for (wchar_t wch : str) {
     switch (wch) {

@@ -48,7 +48,7 @@ CFX_ImageStretcher::CFX_ImageStretcher(ScanlineComposerIface* pDest,
       m_DestHeight(dest_height),
       m_ClipRect(bitmap_rect),
       m_DestFormat(GetStretchedFormat(*pSource)) {
-  ASSERT(m_ClipRect.Valid());
+  DCHECK(m_ClipRect.Valid());
 }
 
 CFX_ImageStretcher::~CFX_ImageStretcher() = default;

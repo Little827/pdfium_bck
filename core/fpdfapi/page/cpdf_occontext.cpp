@@ -46,7 +46,7 @@ bool HasIntent(const CPDF_Dictionary* pDict,
 
 CPDF_Dictionary* GetConfig(CPDF_Document* pDoc,
                            const CPDF_Dictionary* pOCGDict) {
-  ASSERT(pOCGDict);
+  DCHECK(pOCGDict);
   CPDF_Dictionary* pOCProperties = pDoc->GetRoot()->GetDictFor("OCProperties");
   if (!pOCProperties)
     return nullptr;
@@ -94,7 +94,7 @@ ByteString GetUsageTypeString(CPDF_OCContext::UsageType eType) {
 
 CPDF_OCContext::CPDF_OCContext(CPDF_Document* pDoc, UsageType eUsageType)
     : m_pDocument(pDoc), m_eUsageType(eUsageType) {
-  ASSERT(pDoc);
+  DCHECK(pDoc);
 }
 
 CPDF_OCContext::~CPDF_OCContext() = default;

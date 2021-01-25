@@ -22,7 +22,7 @@ namespace {
 int32_t FilterName(WideStringView wsExpression,
                    int32_t nStart,
                    WideString& wsFilter) {
-  ASSERT(nStart > -1);
+  DCHECK(nStart > -1);
   int32_t iLength = wsExpression.GetLength();
   if (nStart >= iLength)
     return iLength;

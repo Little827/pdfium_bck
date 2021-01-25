@@ -84,7 +84,7 @@ uint32_t FlateOutput(z_stream* context,
   int ret = inflate(static_cast<z_stream*>(context), Z_SYNC_FLUSH);
 
   uint32_t post_pos = FlateGetPossiblyTruncatedTotalOut(context);
-  ASSERT(post_pos >= pre_pos);
+  DCHECK(post_pos >= pre_pos);
 
   uint32_t written = post_pos - pre_pos;
   if (written < dest_size)
@@ -242,7 +242,7 @@ bool CLZWDecoder::Decode() {
     if (old_code == 0xFFFFFFFF)
       return false;
 
-    ASSERT(old_code < 256 || old_code >= 258);
+    DCHECK(old_code < 256 || old_code >= 258);
     stack_len_ = 0;
     if (code - 258 >= current_code_) {
       if (stack_len_ < sizeof(decode_stack_))
@@ -689,7 +689,7 @@ FlatePredictorScanlineDecoder::FlatePredictorScanlineDecoder(
     int Columns)
     : FlateScanlineDecoder(src_span, width, height, comps, bpc),
       m_Predictor(predictor) {
-  ASSERT(m_Predictor != PredictorType::kNone);
+  DCHECK(m_Predictor != PredictorType::kNone);
   if (BitsPerComponent * Colors * Columns == 0) {
     BitsPerComponent = m_bpc;
     Colors = m_nComps;

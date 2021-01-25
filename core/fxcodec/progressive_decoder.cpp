@@ -383,7 +383,7 @@ bool ProgressiveDecoder::PngAskScanlineBuf(int line, uint8_t** pSrcBuf) {
 
 void ProgressiveDecoder::PngFillScanlineBufCompleted(int pass, int line) {
   RetainPtr<CFX_DIBitmap> pDIBitmap = m_pDeviceBitmap;
-  ASSERT(pDIBitmap);
+  DCHECK(pDIBitmap);
   int src_top = m_clipBox.top;
   int src_bottom = m_clipBox.bottom;
   int dest_top = m_startY;
@@ -506,7 +506,7 @@ bool ProgressiveDecoder::GifInputRecordPositionBuf(uint32_t rcd_pos,
 
 void ProgressiveDecoder::GifReadScanline(int32_t row_num, uint8_t* row_buf) {
   RetainPtr<CFX_DIBitmap> pDIBitmap = m_pDeviceBitmap;
-  ASSERT(pDIBitmap);
+  DCHECK(pDIBitmap);
   int32_t img_width = m_GifFrameRect.Width();
   if (!pDIBitmap->HasAlpha()) {
     uint8_t* byte_ptr = row_buf;
@@ -576,7 +576,7 @@ bool ProgressiveDecoder::BmpInputImagePositionBuf(uint32_t rcd_pos) {
 void ProgressiveDecoder::BmpReadScanline(uint32_t row_num,
                                          pdfium::span<const uint8_t> row_buf) {
   RetainPtr<CFX_DIBitmap> pDIBitmap = m_pDeviceBitmap;
-  ASSERT(pDIBitmap);
+  DCHECK(pDIBitmap);
 
   pdfium::span<const uint8_t> src_span = row_buf.first(m_ScanlineSize);
   std::copy(std::begin(src_span), std::end(src_span), m_pDecodeBuf.get());
@@ -1553,7 +1553,7 @@ FXCODEC_STATUS ProgressiveDecoder::LoadImageInfo(
     FXCODEC_IMAGE_TYPE imageType,
     CFX_DIBAttribute* pAttribute,
     bool bSkipImageTypeCheck) {
-  ASSERT(pAttribute);
+  DCHECK(pAttribute);
 
   switch (m_status) {
     case FXCODEC_STATUS_FRAME_READY:

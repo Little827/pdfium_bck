@@ -16,7 +16,7 @@ static inline const char* StringDescription(id<NSObject> obj) {
   return [[NSString stringWithFormat:@"%@", obj] UTF8String];
 }
 // This overloaded version allows comparison between ObjC objects that conform
-// to the NSObject protocol. Used to implement {ASSERT|EXPECT}_EQ().
+// to the NSObject protocol. Used to implement {DCHECK|EXPECT}_EQ().
 GTEST_API_ AssertionResult CmpHelperNSEQ(const char* expected_expression,
                                          const char* actual_expression,
                                          id<NSObject> expected,
@@ -29,7 +29,7 @@ GTEST_API_ AssertionResult CmpHelperNSEQ(const char* expected_expression,
                    std::string(StringDescription(actual)), false);
 }
 // This overloaded version allows comparison between ObjC objects that conform
-// to the NSObject protocol. Used to implement {ASSERT|EXPECT}_NE().
+// to the NSObject protocol. Used to implement {DCHECK|EXPECT}_NE().
 GTEST_API_ AssertionResult CmpHelperNSNE(const char* expected_expression,
                                          const char* actual_expression,
                                          id<NSObject> expected,

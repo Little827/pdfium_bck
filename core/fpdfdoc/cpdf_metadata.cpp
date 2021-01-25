@@ -61,7 +61,7 @@ void CheckForSharedFormInternal(CFX_XMLElement* element,
 }  // namespace
 
 CPDF_Metadata::CPDF_Metadata(const CPDF_Stream* pStream) : stream_(pStream) {
-  ASSERT(pStream);
+  DCHECK(pStream);
 }
 
 CPDF_Metadata::~CPDF_Metadata() = default;

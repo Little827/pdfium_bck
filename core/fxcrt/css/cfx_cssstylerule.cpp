@@ -24,7 +24,7 @@ CFX_CSSDeclaration* CFX_CSSStyleRule::GetDeclaration() {
 
 void CFX_CSSStyleRule::SetSelector(
     std::vector<std::unique_ptr<CFX_CSSSelector>>* list) {
-  ASSERT(m_ppSelector.empty());
+  DCHECK(m_ppSelector.empty());
 
   m_ppSelector.swap(*list);
 }

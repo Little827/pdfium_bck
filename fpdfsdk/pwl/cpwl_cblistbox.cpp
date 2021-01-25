@@ -51,7 +51,7 @@ bool CPWL_CBListBox::IsMovementKey(uint16_t nChar) const {
 }
 
 bool CPWL_CBListBox::OnMovementKeyDown(uint16_t nChar, uint32_t nFlag) {
-  ASSERT(IsMovementKey(nChar));
+  DCHECK(IsMovementKey(nChar));
 
   switch (nChar) {
     case FWL_VKEY_Up:

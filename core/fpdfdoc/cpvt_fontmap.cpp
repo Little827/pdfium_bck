@@ -31,7 +31,7 @@ RetainPtr<CPDF_Font> CPVT_FontMap::GetAnnotSysPDFFont(
     CPDF_Document* pDoc,
     CPDF_Dictionary* pResDict,
     ByteString* pSysFontAlias) {
-  ASSERT(pSysFontAlias);
+  DCHECK(pSysFontAlias);
   if (!pDoc || !pResDict)
     return nullptr;
 

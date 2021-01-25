@@ -484,7 +484,7 @@ CJS_Result CJS_Document::removeField(
       continue;
 
     IPDF_Page* pPage = pWidget->GetPage();
-    ASSERT(pPage);
+    DCHECK(pPage);
 
     // If there is currently no pageview associated with the page being used
     // do not create one. We may be in the process of tearing down the document

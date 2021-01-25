@@ -65,7 +65,7 @@ class RetainedTreeNode : public TreeNode<T> {
 
   void Retain() { ++m_nRefCount; }
   void Release() {
-    ASSERT(m_nRefCount > 0);
+    DCHECK(m_nRefCount > 0);
     if (--m_nRefCount == 0 && !TreeNode<T>::GetParent())
       delete this;
   }

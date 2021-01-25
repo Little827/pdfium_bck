@@ -516,7 +516,7 @@ void aes_decrypt_nb_4(CRYPT_aes_context* ctx, unsigned int* block) {
 #undef LASTWORD
 
 void aes_setup(CRYPT_aes_context* ctx, const unsigned char* key, int keylen) {
-  ASSERT(keylen == 16 || keylen == 24 || keylen == 32);
+  DCHECK(keylen == 16 || keylen == 24 || keylen == 32);
   int Nk = keylen / 4;
   ctx->Nb = 4;
   ctx->Nr = 6 + (ctx->Nb > Nk ? ctx->Nb : Nk);
@@ -581,7 +581,7 @@ void aes_decrypt_cbc(unsigned char* dest,
                      CRYPT_aes_context* ctx) {
   unsigned int iv[4], x[4], ct[4];
   int i;
-  ASSERT((len & 15) == 0);
+  DCHECK((len & 15) == 0);
   memcpy(iv, ctx->iv, sizeof(iv));
   while (len > 0) {
     for (i = 0; i < 4; i++) {
@@ -609,7 +609,7 @@ void aes_encrypt_cbc(unsigned char* dest,
                      CRYPT_aes_context* ctx) {
   unsigned int iv[4];
   int i;
-  ASSERT((len & 15) == 0);
+  DCHECK((len & 15) == 0);
   memcpy(iv, ctx->iv, sizeof(iv));
   while (len > 0) {
     for (i = 0; i < 4; i++) {

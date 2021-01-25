@@ -40,7 +40,7 @@ bool IsValidNumericDictionaryValue(const CPDF_Dictionary* pDict,
 
 bool IsLinearizedHeaderValid(const CPDF_LinearizedHeader* header,
                              FX_FILESIZE document_size) {
-  ASSERT(header);
+  DCHECK(header);
   return header->GetFileSize() == document_size &&
          header->GetFirstPageNo() < kMaxInt &&
          header->GetFirstPageNo() < header->GetPageCount() &&

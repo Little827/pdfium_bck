@@ -45,7 +45,7 @@ CPDF_HintTables::PageInfo::~PageInfo() = default;
 std::unique_ptr<CPDF_HintTables> CPDF_HintTables::Parse(
     CPDF_SyntaxParser* parser,
     CPDF_LinearizedHeader* pLinearized) {
-  ASSERT(parser);
+  DCHECK(parser);
   if (!pLinearized || pLinearized->GetPageCount() <= 1 ||
       !pLinearized->HasHintTable()) {
     return nullptr;
@@ -80,7 +80,7 @@ CPDF_HintTables::CPDF_HintTables(CPDF_ReadValidator* pValidator,
       m_pLinearized(pLinearized),
       m_nFirstPageSharedObjs(0),
       m_szFirstPageObjOffset(0) {
-  ASSERT(m_pLinearized);
+  DCHECK(m_pLinearized);
 }
 
 CPDF_HintTables::~CPDF_HintTables() = default;
@@ -193,7 +193,7 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
     m_PageInfos[i].set_page_length(safePageLen.ValueOrDie());
   }
 
-  ASSERT(m_szFirstPageObjOffset);
+  DCHECK(m_szFirstPageObjOffset);
   m_PageInfos[nFirstPageNum].set_page_offset(m_szFirstPageObjOffset);
   FX_FILESIZE prev_page_end = m_pLinearized->GetFirstPageEndOffset();
   for (uint32_t i = 0; i < nPages; ++i) {

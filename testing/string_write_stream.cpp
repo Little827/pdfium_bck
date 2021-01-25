@@ -21,7 +21,7 @@ bool StringWriteStream::Flush() {
 bool StringWriteStream::WriteBlockAtOffset(const void* pData,
                                            FX_FILESIZE offset,
                                            size_t size) {
-  ASSERT(offset == 0);
+  DCHECK(offset == 0);
   stream_.write(static_cast<const char*>(pData), size);
   return true;
 }

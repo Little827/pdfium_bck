@@ -50,8 +50,8 @@ CPDF_Dictionary* CPDFSDK_BAAnnot::GetAPDict() const {
 }
 
 void CPDFSDK_BAAnnot::SetRect(const CFX_FloatRect& rect) {
-  ASSERT(rect.right - rect.left >= 1.0f);
-  ASSERT(rect.top - rect.bottom >= 1.0f);
+  DCHECK(rect.right - rect.left >= 1.0f);
+  DCHECK(rect.top - rect.bottom >= 1.0f);
   GetAnnotDict()->SetRectFor(pdfium::annotation::kRect, rect);
 }
 

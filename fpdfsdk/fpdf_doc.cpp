@@ -248,7 +248,7 @@ FPDFDest_GetView(FPDF_DEST dest, unsigned long* pNumParams, FS_FLOAT* pParams) {
 
   CPDF_Dest destination(CPDFArrayFromFPDFDest(dest));
   unsigned long nParams = destination.GetNumParams();
-  ASSERT(nParams <= 4);
+  DCHECK(nParams <= 4);
   *pNumParams = nParams;
   for (unsigned long i = 0; i < nParams; ++i)
     pParams[i] = destination.GetParam(i);

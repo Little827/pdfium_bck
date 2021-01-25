@@ -42,7 +42,7 @@ CPDFSDK_FormFillEnvironment::CPDFSDK_FormFillEnvironment(
     : m_pInfo(pFFinfo),
       m_pCPDFDoc(pDoc),
       m_pAnnotHandlerMgr(std::move(pHandlerMgr)) {
-  ASSERT(m_pCPDFDoc);
+  DCHECK(m_pCPDFDoc);
   m_pAnnotHandlerMgr->SetFormFillEnv(this);
 }
 
@@ -96,7 +96,7 @@ void CPDFSDK_FormFillEnvironment::OutputSelectedRect(
     return;
 
   auto* pPage = FPDFPageFromIPDFPage(pFormFiller->GetSDKAnnot()->GetPage());
-  ASSERT(pPage);
+  DCHECK(pPage);
 
   CFX_PointF ptA = pFormFiller->PWLtoFFL(CFX_PointF(rect.left, rect.bottom));
   CFX_PointF ptB = pFormFiller->PWLtoFFL(CFX_PointF(rect.right, rect.top));

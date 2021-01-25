@@ -22,20 +22,20 @@ CPDF_FontGlobals* g_FontGlobals = nullptr;
 
 // static
 void CPDF_FontGlobals::Create() {
-  ASSERT(!g_FontGlobals);
+  DCHECK(!g_FontGlobals);
   g_FontGlobals = new CPDF_FontGlobals();
 }
 
 // static
 void CPDF_FontGlobals::Destroy() {
-  ASSERT(g_FontGlobals);
+  DCHECK(g_FontGlobals);
   delete g_FontGlobals;
   g_FontGlobals = nullptr;
 }
 
 // static
 CPDF_FontGlobals* CPDF_FontGlobals::GetInstance() {
-  ASSERT(g_FontGlobals);
+  DCHECK(g_FontGlobals);
   return g_FontGlobals;
 }
 

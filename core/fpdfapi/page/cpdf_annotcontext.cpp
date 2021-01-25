@@ -14,9 +14,9 @@
 CPDF_AnnotContext::CPDF_AnnotContext(CPDF_Dictionary* pAnnotDict,
                                      IPDF_Page* pPage)
     : m_pAnnotDict(pAnnotDict), m_pPage(pPage) {
-  ASSERT(m_pAnnotDict);
-  ASSERT(m_pPage);
-  ASSERT(m_pPage->AsPDFPage());
+  DCHECK(m_pAnnotDict);
+  DCHECK(m_pPage);
+  DCHECK(m_pPage->AsPDFPage());
 }
 
 CPDF_AnnotContext::~CPDF_AnnotContext() = default;

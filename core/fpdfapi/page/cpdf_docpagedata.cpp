@@ -358,7 +358,7 @@ RetainPtr<CPDF_Pattern> CPDF_DocPageData::GetPattern(CPDF_Object* pPatternObj,
 }
 
 RetainPtr<CPDF_Image> CPDF_DocPageData::GetImage(uint32_t dwStreamObjNum) {
-  ASSERT(dwStreamObjNum);
+  DCHECK(dwStreamObjNum);
   auto it = m_ImageMap.find(dwStreamObjNum);
   if (it != m_ImageMap.end())
     return it->second;
@@ -369,7 +369,7 @@ RetainPtr<CPDF_Image> CPDF_DocPageData::GetImage(uint32_t dwStreamObjNum) {
 }
 
 void CPDF_DocPageData::MaybePurgeImage(uint32_t dwStreamObjNum) {
-  ASSERT(dwStreamObjNum);
+  DCHECK(dwStreamObjNum);
   auto it = m_ImageMap.find(dwStreamObjNum);
   if (it != m_ImageMap.end() && it->second->HasOneRef())
     m_ImageMap.erase(it);
@@ -403,7 +403,7 @@ RetainPtr<CPDF_IccProfile> CPDF_DocPageData::GetIccProfile(
 
 RetainPtr<CPDF_StreamAcc> CPDF_DocPageData::GetFontFileStreamAcc(
     const CPDF_Stream* pFontStream) {
-  ASSERT(pFontStream);
+  DCHECK(pFontStream);
   auto it = m_FontFileMap.find(pFontStream);
   if (it != m_FontFileMap.end())
     return it->second;

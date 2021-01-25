@@ -23,7 +23,7 @@ CPSPrinterDriver::CPSPrinterDriver(HDC hDC,
                                    const EncoderIface* pEncoderIface)
     : m_hDC(hDC), m_PSRenderer(pEncoderIface) {
   // |mode| should be PostScript.
-  ASSERT(mode == WindowsPrintMode::kModePostScript2 ||
+  DCHECK(mode == WindowsPrintMode::kModePostScript2 ||
          mode == WindowsPrintMode::kModePostScript3 ||
          mode == WindowsPrintMode::kModePostScript2PassThrough ||
          mode == WindowsPrintMode::kModePostScript3PassThrough);

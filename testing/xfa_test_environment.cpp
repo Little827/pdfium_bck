@@ -16,12 +16,12 @@ XFATestEnvironment* g_env = nullptr;
 }  // namespace
 
 XFATestEnvironment::XFATestEnvironment() {
-  ASSERT(!g_env);
+  DCHECK(!g_env);
   g_env = this;
 }
 
 XFATestEnvironment::~XFATestEnvironment() {
-  ASSERT(g_env);
+  DCHECK(g_env);
   g_env = nullptr;
 }
 

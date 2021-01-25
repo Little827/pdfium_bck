@@ -14,7 +14,7 @@
 #include "third_party/base/stl_util.h"
 
 CSection::CSection(CPDF_VariableText* pVT) : m_pVT(pVT) {
-  ASSERT(m_pVT);
+  DCHECK(m_pVT);
 }
 
 CSection::~CSection() = default;

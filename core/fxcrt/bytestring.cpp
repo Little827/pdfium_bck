@@ -381,7 +381,7 @@ void ByteString::ReleaseBuffer(size_t nNewLength) {
     return;
   }
 
-  ASSERT(m_pData->m_nRefs == 1);
+  DCHECK(m_pData->m_nRefs == 1);
   m_pData->m_nDataLength = nNewLength;
   m_pData->m_String[nNewLength] = 0;
   if (m_pData->m_nAllocLength - nNewLength >= 32) {
@@ -514,7 +514,7 @@ void ByteString::AllocCopy(ByteString& dest,
 }
 
 void ByteString::SetAt(size_t index, char c) {
-  ASSERT(IsValidIndex(index));
+  DCHECK(IsValidIndex(index));
   ReallocBeforeWrite(m_pData->m_nDataLength);
   m_pData->m_String[index] = c;
 }

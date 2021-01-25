@@ -98,8 +98,8 @@ void CPDF_ColorState::SetColor(const RetainPtr<CPDF_ColorSpace>& pCS,
                                const std::vector<float>& values,
                                CPDF_Color* color,
                                FX_COLORREF* colorref) {
-  ASSERT(color);
-  ASSERT(colorref);
+  DCHECK(color);
+  DCHECK(colorref);
 
   if (pCS)
     color->SetColorSpace(pCS);
@@ -121,8 +121,8 @@ void CPDF_ColorState::SetPattern(const RetainPtr<CPDF_Pattern>& pPattern,
                                  const std::vector<float>& values,
                                  CPDF_Color* color,
                                  FX_COLORREF* colorref) {
-  ASSERT(color);
-  ASSERT(colorref);
+  DCHECK(color);
+  DCHECK(colorref);
 
   color->SetValueForPattern(pPattern, values);
   int R;

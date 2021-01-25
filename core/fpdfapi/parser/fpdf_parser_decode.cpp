@@ -387,7 +387,7 @@ Optional<DecoderArray> GetDecoderArray(const CPDF_Dictionary* pDict) {
            pParamsArray ? pParamsArray->GetDictAt(i) : nullptr});
     }
   } else {
-    ASSERT(pFilter->IsName());
+    DCHECK(pFilter->IsName());
     decoder_array.push_back(
         {pFilter->GetString(), pParams ? pParams->GetDict() : nullptr});
   }

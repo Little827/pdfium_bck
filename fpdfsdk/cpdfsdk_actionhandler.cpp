@@ -47,7 +47,7 @@ bool CPDFSDK_ActionHandler::DoAction_FieldJavaScript(
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
     CPDF_FormField* pFormField,
     CPDFSDK_FieldAction* data) {
-  ASSERT(pFormFillEnv);
+  DCHECK(pFormFillEnv);
   if (pFormFillEnv->IsJSPlatformPresent() &&
       JsAction.GetType() == CPDF_Action::JavaScript) {
     WideString swJS = JsAction.GetJavaScript();
@@ -64,7 +64,7 @@ bool CPDFSDK_ActionHandler::DoAction_Link(
     CPDF_AAction::AActionType type,
     CPDFSDK_FormFillEnvironment* form_fill_env,
     int modifiers) {
-  ASSERT(form_fill_env);
+  DCHECK(form_fill_env);
 
   if (!CPDF_AAction::IsUserInput(type))
     return false;
@@ -84,9 +84,9 @@ bool CPDFSDK_ActionHandler::DoAction_Link(
 bool CPDFSDK_ActionHandler::DoAction_Destination(
     const CPDF_Dest& dest,
     CPDFSDK_FormFillEnvironment* form_fill_env) {
-  ASSERT(form_fill_env);
+  DCHECK(form_fill_env);
   CPDF_Document* document = form_fill_env->GetPDFDocument();
-  ASSERT(document);
+  DCHECK(document);
 
   const CPDF_Array* dest_array = dest.GetArray();
   std::vector<float> dest_positions;
@@ -140,7 +140,7 @@ bool CPDFSDK_ActionHandler::ExecuteDocumentOpenAction(
 
   visited->insert(pDict);
 
-  ASSERT(pFormFillEnv);
+  DCHECK(pFormFillEnv);
   if (action.GetType() == CPDF_Action::JavaScript) {
     if (pFormFillEnv->IsJSPlatformPresent()) {
       WideString swJS = action.GetJavaScript();
@@ -172,7 +172,7 @@ bool CPDFSDK_ActionHandler::ExecuteDocumentPageAction(
 
   visited->insert(pDict);
 
-  ASSERT(pFormFillEnv);
+  DCHECK(pFormFillEnv);
   if (action.GetType() == CPDF_Action::JavaScript) {
     if (pFormFillEnv->IsJSPlatformPresent()) {
       WideString swJS = action.GetJavaScript();
@@ -183,7 +183,7 @@ bool CPDFSDK_ActionHandler::ExecuteDocumentPageAction(
     DoAction_NoJs(action, type, pFormFillEnv, /*modifiers=*/0);
   }
 
-  ASSERT(pFormFillEnv);
+  DCHECK(pFormFillEnv);
 
   for (int32_t i = 0, sz = action.GetSubActionsCount(); i < sz; i++) {
     CPDF_Action subaction = action.GetSubAction(i);
@@ -197,7 +197,7 @@ bool CPDFSDK_ActionHandler::ExecuteDocumentPageAction(
 bool CPDFSDK_ActionHandler::IsValidField(
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
     CPDF_Dictionary* pFieldDict) {
-  ASSERT(pFieldDict);
+  DCHECK(pFieldDict);
 
   CPDFSDK_InteractiveForm* pForm = pFormFillEnv->GetInteractiveForm();
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
@@ -217,7 +217,7 @@ bool CPDFSDK_ActionHandler::ExecuteFieldAction(
 
   visited->insert(pDict);
 
-  ASSERT(pFormFillEnv);
+  DCHECK(pFormFillEnv);
   if (action.GetType() == CPDF_Action::JavaScript) {
     if (pFormFillEnv->IsJSPlatformPresent()) {
       WideString swJS = action.GetJavaScript();
@@ -246,7 +246,7 @@ void CPDFSDK_ActionHandler::DoAction_NoJs(
     CPDF_AAction::AActionType type,
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
     int modifiers) {
-  ASSERT(pFormFillEnv);
+  DCHECK(pFormFillEnv);
 
   switch (action.GetType()) {
     case CPDF_Action::GoTo:
@@ -293,10 +293,10 @@ void CPDFSDK_ActionHandler::DoAction_NoJs(
 void CPDFSDK_ActionHandler::DoAction_GoTo(
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
     const CPDF_Action& action) {
-  ASSERT(action.GetDict());
+  DCHECK(action.GetDict());
 
   CPDF_Document* pPDFDocument = pFormFillEnv->GetPDFDocument();
-  ASSERT(pPDFDocument);
+  DCHECK(pPDFDocument);
 
   CPDF_Dest MyDest = action.GetDest(pPDFDocument);
   DoAction_Destination(MyDest, pFormFillEnv);
@@ -306,7 +306,7 @@ void CPDFSDK_ActionHandler::DoAction_URI(
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
     const CPDF_Action& action,
     int modifiers) {
-  ASSERT(action.GetDict());
+  DCHECK(action.GetDict());
 
   ByteString sURI = action.GetURI(pFormFillEnv->GetPDFDocument());
   pFormFillEnv->DoURIAction(sURI.c_str(), modifiers);
@@ -315,7 +315,7 @@ void CPDFSDK_ActionHandler::DoAction_URI(
 void CPDFSDK_ActionHandler::DoAction_Named(
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
     const CPDF_Action& action) {
-  ASSERT(action.GetDict());
+  DCHECK(action.GetDict());
 
   ByteString csName = action.GetNamedAction();
   pFormFillEnv->ExecuteNamedAction(csName.c_str());
@@ -327,8 +327,8 @@ void CPDFSDK_ActionHandler::RunFieldJavaScript(
     CPDF_AAction::AActionType type,
     CPDFSDK_FieldAction* data,
     const WideString& script) {
-  ASSERT(type != CPDF_AAction::kCalculate);
-  ASSERT(type != CPDF_AAction::kFormat);
+  DCHECK(type != CPDF_AAction::kCalculate);
+  DCHECK(type != CPDF_AAction::kFormat);
 
   RunScript(pFormFillEnv, script,
             [type, data, pFormField](IJS_EventContext* context) {

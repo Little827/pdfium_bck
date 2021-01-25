@@ -258,7 +258,7 @@ TEST_F(FPDFEditEmbedderTest, EmbedNotoSansSCFont) {
   size_t file_length = 0;
   std::unique_ptr<char, pdfium::FreeDeleter> font_data =
       GetFileContents(font_path.c_str(), &file_length);
-  ASSERT(font_data);
+  DCHECK(font_data);
 
   ScopedFPDFFont font(FPDFText_LoadFont(
       document(), reinterpret_cast<const uint8_t*>(font_data.get()),

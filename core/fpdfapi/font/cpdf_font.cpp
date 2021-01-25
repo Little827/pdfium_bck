@@ -371,7 +371,7 @@ const char* CPDF_Font::GetAdobeCharName(
   if (!name)
     return nullptr;
 
-  ASSERT(name[0]);
+  DCHECK(name[0]);
   return name;
 }
 

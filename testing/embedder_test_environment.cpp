@@ -18,12 +18,12 @@ EmbedderTestEnvironment* g_environment = nullptr;
 }  // namespace
 
 EmbedderTestEnvironment::EmbedderTestEnvironment() {
-  ASSERT(!g_environment);
+  DCHECK(!g_environment);
   g_environment = this;
 }
 
 EmbedderTestEnvironment::~EmbedderTestEnvironment() {
-  ASSERT(g_environment);
+  DCHECK(g_environment);
   g_environment = nullptr;
 }
 

@@ -143,7 +143,7 @@ constexpr uint8_t ALOG[256] = {
     0};
 
 WideString CreateECCBlock(const WideString& codewords, size_t numECWords) {
-  ASSERT(numECWords > 0);
+  DCHECK(numECWords > 0);
 
   const size_t len = codewords.GetLength();
   static constexpr size_t kFactorTableNum = pdfium::size(FACTOR_SETS);
@@ -177,7 +177,7 @@ WideString CreateECCBlock(const WideString& codewords, size_t numECWords) {
   for (size_t i = 0; i < numECWords; ++i)
     strecc.InsertAtBack(static_cast<wchar_t>(ecc[numECWords - i - 1]));
 
-  ASSERT(!strecc.IsEmpty());
+  DCHECK(!strecc.IsEmpty());
   return strecc;
 }
 
@@ -228,6 +228,6 @@ WideString CBC_ErrorCorrection::EncodeECC200(const WideString& codewords,
       }
     }
   }
-  ASSERT(!sb.IsEmpty());
+  DCHECK(!sb.IsEmpty());
   return sb;
 }

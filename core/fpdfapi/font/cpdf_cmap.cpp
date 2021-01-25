@@ -466,7 +466,7 @@ int CPDF_CMap::AppendChar(char* str, uint32_t charcode) const {
 }
 
 void CPDF_CMap::SetAdditionalMappings(std::vector<CIDRange> mappings) {
-  ASSERT(m_AdditionalCharcodeToCIDMappings.empty());
+  DCHECK(m_AdditionalCharcodeToCIDMappings.empty());
   if (m_CodingScheme != MixedFourBytes || mappings.empty())
     return;
 
