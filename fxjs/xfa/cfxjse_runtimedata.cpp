@@ -31,8 +31,8 @@ std::unique_ptr<CFXJSE_RuntimeData> CFXJSE_RuntimeData::Create(
   v8::Local<v8::Context> hContext =
       v8::Context::New(pIsolate, 0, hGlobalTemplate);
 
-  ASSERT(hContext->Global()->InternalFieldCount() == 0);
-  ASSERT(hContext->Global()
+  DCHECK(hContext->Global()->InternalFieldCount() == 0);
+  DCHECK(hContext->Global()
              ->GetPrototype()
              .As<v8::Object>()
              ->InternalFieldCount() == 0);

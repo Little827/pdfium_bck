@@ -29,7 +29,7 @@ namespace {
 // Invalid sequences are silently not output.
 std::pair<size_t, size_t> UTF8Decode(pdfium::span<const uint8_t> pSrc,
                                      pdfium::span<wchar_t> pDst) {
-  ASSERT(!pDst.empty());
+  DCHECK(!pDst.empty());
 
   uint32_t dwCode = 0;
   int32_t iPending = 0;
@@ -75,8 +75,8 @@ std::pair<size_t, size_t> UTF8Decode(pdfium::span<const uint8_t> pSrc,
 static_assert(sizeof(wchar_t) > 2, "wchar_t is too small");
 
 void UTF16ToWChar(void* pBuffer, size_t iLength) {
-  ASSERT(pBuffer);
-  ASSERT(iLength > 0);
+  DCHECK(pBuffer);
+  DCHECK(iLength > 0);
 
   uint16_t* pSrc = static_cast<uint16_t*>(pBuffer);
   wchar_t* pDst = static_cast<wchar_t*>(pBuffer);
@@ -108,7 +108,7 @@ CFX_SeekableStreamProxy::CFX_SeekableStreamProxy(
       m_wBOMLength(0),
       m_iPosition(0),
       m_pStream(stream) {
-  ASSERT(m_pStream);
+  DCHECK(m_pStream);
 
   Seek(From::Begin, 0);
 
@@ -173,8 +173,8 @@ void CFX_SeekableStreamProxy::SetCodePage(uint16_t wCodePage) {
 }
 
 size_t CFX_SeekableStreamProxy::ReadData(uint8_t* pBuffer, size_t iBufferSize) {
-  ASSERT(pBuffer);
-  ASSERT(iBufferSize > 0);
+  DCHECK(pBuffer);
+  DCHECK(iBufferSize > 0);
 
   iBufferSize =
       std::min(iBufferSize, static_cast<size_t>(GetSize() - m_iPosition));

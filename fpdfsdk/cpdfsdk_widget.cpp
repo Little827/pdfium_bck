@@ -624,13 +624,13 @@ void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
 
 Optional<WideString> CPDFSDK_Widget::OnFormat() {
   CPDF_FormField* pFormField = GetFormField();
-  ASSERT(pFormField);
+  DCHECK(pFormField);
   return m_pInteractiveForm->OnFormat(pFormField);
 }
 
 void CPDFSDK_Widget::ResetFieldAppearance() {
   CPDF_FormField* pFormField = GetFormField();
-  ASSERT(pFormField);
+  DCHECK(pFormField);
   m_pInteractiveForm->ResetFieldAppearance(pFormField, pdfium::nullopt);
 }
 
@@ -658,7 +658,7 @@ void CPDFSDK_Widget::DrawAppearance(CFX_RenderDevice* pDevice,
 
 void CPDFSDK_Widget::UpdateField() {
   CPDF_FormField* pFormField = GetFormField();
-  ASSERT(pFormField);
+  DCHECK(pFormField);
   m_pInteractiveForm->UpdateField(pFormField);
 }
 

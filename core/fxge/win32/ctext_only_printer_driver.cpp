@@ -156,11 +156,11 @@ bool CTextOnlyPrinterDriver::DrawDeviceText(
     // Only works with PDFs from Skia's PDF generator. Cannot handle arbitrary
     // values from PDFs.
     const TextCharPos& charpos = pCharPos[i];
-    ASSERT(charpos.m_AdjustMatrix[0] == 0);
-    ASSERT(charpos.m_AdjustMatrix[1] == 0);
-    ASSERT(charpos.m_AdjustMatrix[2] == 0);
-    ASSERT(charpos.m_AdjustMatrix[3] == 0);
-    ASSERT(charpos.m_Origin.y == 0);
+    DCHECK(charpos.m_AdjustMatrix[0] == 0);
+    DCHECK(charpos.m_AdjustMatrix[1] == 0);
+    DCHECK(charpos.m_AdjustMatrix[2] == 0);
+    DCHECK(charpos.m_AdjustMatrix[3] == 0);
+    DCHECK(charpos.m_Origin.y == 0);
 
     wsText += charpos.m_Unicode;
   }

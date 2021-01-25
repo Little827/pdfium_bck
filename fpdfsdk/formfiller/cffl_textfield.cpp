@@ -112,7 +112,7 @@ bool CFFL_TextField::OnChar(CPDFSDK_Annot* pAnnot,
         break;
 
       CPDFSDK_PageView* pPageView = GetCurPageView();
-      ASSERT(pPageView);
+      DCHECK(pPageView);
       m_bValid = !m_bValid;
       m_pFormFillEnv->Invalidate(pAnnot->GetPage(),
                                  pAnnot->GetRect().GetOuterRect());
@@ -131,7 +131,7 @@ bool CFFL_TextField::OnChar(CPDFSDK_Annot* pAnnot,
     }
     case FWL_VKEY_Escape: {
       CPDFSDK_PageView* pPageView = GetCurPageView();
-      ASSERT(pPageView);
+      DCHECK(pPageView);
       EscapeFiller(pPageView, true);
       return true;
     }

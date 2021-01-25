@@ -23,9 +23,9 @@ CPDF_TransferFunc::CPDF_TransferFunc(
       m_SamplesR(std::move(samples_r)),
       m_SamplesG(std::move(samples_g)),
       m_SamplesB(std::move(samples_b)) {
-  ASSERT(m_SamplesR.size() == kChannelSampleSize);
-  ASSERT(m_SamplesG.size() == kChannelSampleSize);
-  ASSERT(m_SamplesB.size() == kChannelSampleSize);
+  DCHECK(m_SamplesR.size() == kChannelSampleSize);
+  DCHECK(m_SamplesG.size() == kChannelSampleSize);
+  DCHECK(m_SamplesB.size() == kChannelSampleSize);
 }
 
 CPDF_TransferFunc::~CPDF_TransferFunc() = default;

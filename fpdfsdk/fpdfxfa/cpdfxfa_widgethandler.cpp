@@ -233,7 +233,7 @@ void CPDFXFA_WidgetHandler::OnDraw(CPDFSDK_PageView* pPageView,
                                    const CFX_Matrix& mtUser2Device,
                                    bool bDrawAnnots) {
   CPDFXFA_Widget* pXFAWidget = ToXFAWidget(pAnnot);
-  ASSERT(pXFAWidget);
+  DCHECK(pXFAWidget);
 
   bool bIsHighlight = false;
   if (pPageView->GetFormFillEnv()->GetFocusAnnot() != pAnnot)
@@ -256,7 +256,7 @@ CFX_FloatRect CPDFXFA_WidgetHandler::GetViewBBox(CPDFSDK_PageView* pPageView,
                                                  CPDFSDK_Annot* pAnnot) {
   CPDFXFA_Widget* pXFAWidget = ToXFAWidget(pAnnot);
   CXFA_Node* node = pXFAWidget->GetXFAFFWidget()->GetNode();
-  ASSERT(node->IsWidgetReady());
+  DCHECK(node->IsWidgetReady());
 
   CFX_RectF rcBBox = pXFAWidget->GetXFAFFWidget()->GetBBox(
       node->GetFFWidgetType() == XFA_FFWidgetType::kSignature

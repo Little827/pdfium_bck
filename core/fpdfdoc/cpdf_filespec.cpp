@@ -55,12 +55,12 @@ WideString ChangeSlashToPDF(const wchar_t* str) {
 }  // namespace
 
 CPDF_FileSpec::CPDF_FileSpec(const CPDF_Object* pObj) : m_pObj(pObj) {
-  ASSERT(m_pObj);
+  DCHECK(m_pObj);
 }
 
 CPDF_FileSpec::CPDF_FileSpec(CPDF_Object* pObj)
     : m_pObj(pObj), m_pWritableObj(pObj) {
-  ASSERT(m_pObj);
+  DCHECK(m_pObj);
 }
 
 CPDF_FileSpec::~CPDF_FileSpec() = default;

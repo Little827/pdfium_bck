@@ -18,6 +18,7 @@
 #include <wchar.h>
 
 #include "build/build_config.h"
+#include "third_party/base/check.h"
 
 #if defined(_MSC_VER) && _MSC_VER < 1900
 #error Sorry, VC++ 2015 or later is required to compile PDFium.
@@ -48,14 +49,6 @@ extern "C" {
 #else
 #define FX_FILESIZE off_t
 #endif  // defined(OS_WIN)
-
-#ifndef ASSERT
-#ifndef NDEBUG
-#define ASSERT assert
-#else
-#define ASSERT(a)
-#endif  // NDEBUG
-#endif  // ASSERT
 
 // M_PI not universally present on all platforms.
 #define FX_PI 3.1415926535897932384626433832795f

@@ -13,7 +13,7 @@
 #include "core/fxcrt/xml/cfx_xmltext.h"
 
 CFX_XMLElement::CFX_XMLElement(const WideString& wsTag) : name_(wsTag) {
-  ASSERT(!name_.IsEmpty());
+  DCHECK(!name_.IsEmpty());
 }
 
 CFX_XMLElement::~CFX_XMLElement() = default;

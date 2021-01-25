@@ -127,7 +127,7 @@ class Retainable {
 
   void Retain() const { ++m_nRefCount; }
   void Release() const {
-    ASSERT(m_nRefCount > 0);
+    DCHECK(m_nRefCount > 0);
     if (--m_nRefCount == 0)
       delete this;
   }

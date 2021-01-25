@@ -116,7 +116,7 @@ int JpegProgressiveDecoder::ReadHeader(Context* pContext,
                                        int* height,
                                        int* nComps,
                                        CFX_DIBAttribute* pAttribute) {
-  ASSERT(pAttribute);
+  DCHECK(pAttribute);
 
   auto* ctx = static_cast<CJpegContext*>(pContext);
   int ret = jpeg_read_header(&ctx->m_Info, TRUE);

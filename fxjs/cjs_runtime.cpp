@@ -127,7 +127,7 @@ IJS_EventContext* CJS_Runtime::NewEventContext() {
 }
 
 void CJS_Runtime::ReleaseEventContext(IJS_EventContext* pContext) {
-  ASSERT(pContext == m_EventContextArray.back().get());
+  DCHECK(pContext == m_EventContextArray.back().get());
   m_EventContextArray.pop_back();
 }
 

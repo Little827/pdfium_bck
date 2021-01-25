@@ -266,7 +266,7 @@ bool CJBig2_Image::ComposeToInternal(CJBig2_Image* pDst,
                                      int32_t y,
                                      JBig2ComposeOp op,
                                      const FX_RECT& rtSrc) {
-  ASSERT(m_pData);
+  DCHECK(m_pData);
 
   // TODO(weili): Check whether the range check is correct. Should x>=1048576?
   if (x < -1048576 || x > 1048576 || y < -1048576 || y > 1048576)

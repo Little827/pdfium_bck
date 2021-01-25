@@ -33,7 +33,7 @@ CPDF_CMapParser::~CPDF_CMapParser() {
 }
 
 void CPDF_CMapParser::ParseWord(ByteStringView word) {
-  ASSERT(!word.IsEmpty());
+  DCHECK(!word.IsEmpty());
 
   if (word == "begincidchar") {
     m_Status = kProcessingCidChar;
@@ -76,7 +76,7 @@ void CPDF_CMapParser::ParseWord(ByteStringView word) {
 }
 
 void CPDF_CMapParser::HandleCid(ByteStringView word) {
-  ASSERT(m_Status == kProcessingCidChar || m_Status == kProcessingCidRange);
+  DCHECK(m_Status == kProcessingCidChar || m_Status == kProcessingCidRange);
   bool bChar = m_Status == kProcessingCidChar;
 
   m_CodePoints[m_CodeSeq] = GetCode(word);

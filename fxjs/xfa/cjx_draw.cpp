@@ -41,7 +41,7 @@ void CJX_Draw::defaultValue(v8::Isolate* pIsolate,
   if (!pValue || !fxv8::IsString(*pValue))
     return;
 
-  ASSERT(GetXFANode()->IsWidgetReady());
+  DCHECK(GetXFANode()->IsWidgetReady());
   if (GetXFANode()->GetFFWidgetType() != XFA_FFWidgetType::kText)
     return;
 

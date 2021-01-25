@@ -59,7 +59,7 @@ void CFX_ClipRgn::IntersectMaskRect(FX_RECT rect,
 void CFX_ClipRgn::IntersectMaskF(int left,
                                  int top,
                                  const RetainPtr<CFX_DIBitmap>& pMask) {
-  ASSERT(pMask->GetFormat() == FXDIB_Format::k8bppMask);
+  DCHECK(pMask->GetFormat() == FXDIB_Format::k8bppMask);
   FX_RECT mask_box(left, top, left + pMask->GetWidth(),
                    top + pMask->GetHeight());
   if (m_Type == RectI) {

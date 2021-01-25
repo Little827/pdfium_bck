@@ -33,7 +33,7 @@ CPDF_ShadingPattern::CPDF_ShadingPattern(CPDF_Document* pDoc,
                                          bool bShading,
                                          const CFX_Matrix& parentMatrix)
     : CPDF_Pattern(pDoc, pPatternObj, parentMatrix), m_bShading(bShading) {
-  ASSERT(document());
+  DCHECK(document());
   if (!bShading)
     SetPatternToFormMatrix();
 }

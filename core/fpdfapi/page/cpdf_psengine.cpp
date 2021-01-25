@@ -85,8 +85,8 @@ CPDF_PSOP::CPDF_PSOP()
     : m_op(PSOP_PROC), m_value(0), m_proc(std::make_unique<CPDF_PSProc>()) {}
 
 CPDF_PSOP::CPDF_PSOP(PDF_PSOP op) : m_op(op), m_value(0) {
-  ASSERT(m_op != PSOP_CONST);
-  ASSERT(m_op != PSOP_PROC);
+  DCHECK(m_op != PSOP_CONST);
+  DCHECK(m_op != PSOP_PROC);
 }
 
 CPDF_PSOP::CPDF_PSOP(float value) : m_op(PSOP_CONST), m_value(value) {}

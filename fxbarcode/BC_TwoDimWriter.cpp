@@ -85,7 +85,7 @@ bool CBC_TwoDimWriter::RenderResult(pdfium::span<const uint8_t> code,
 
 void CBC_TwoDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
                                           const CFX_Matrix* matrix) {
-  ASSERT(m_output);
+  DCHECK(m_output);
 
   CFX_GraphStateData stateData;
   CFX_PathData path;

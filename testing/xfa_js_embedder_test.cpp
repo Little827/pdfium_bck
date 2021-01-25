@@ -51,7 +51,7 @@ bool XFAJSEmbedderTest::OpenDocumentWithOptions(
     LinearizeOption linearize_option,
     JavaScriptOption javascript_option) {
   // JS required for XFA.
-  ASSERT(javascript_option == JavaScriptOption::kEnableJavaScript);
+  DCHECK(javascript_option == JavaScriptOption::kEnableJavaScript);
   if (!EmbedderTest::OpenDocumentWithOptions(
           filename, password, linearize_option, javascript_option)) {
     return false;

@@ -69,13 +69,13 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
                             const CPDF_Dictionary* pParam,
                             uint32_t orig_size) {
   // |decoder| should not be an abbreviation.
-  ASSERT(decoder != "A85");
-  ASSERT(decoder != "AHx");
-  ASSERT(decoder != "CCF");
-  ASSERT(decoder != "DCT");
-  ASSERT(decoder != "Fl");
-  ASSERT(decoder != "LZW");
-  ASSERT(decoder != "RL");
+  DCHECK(decoder != "A85");
+  DCHECK(decoder != "AHx");
+  DCHECK(decoder != "CCF");
+  DCHECK(decoder != "DCT");
+  DCHECK(decoder != "Fl");
+  DCHECK(decoder != "LZW");
+  DCHECK(decoder != "RL");
 
   std::unique_ptr<uint8_t, FxFreeDeleter> ignored_result;
   uint32_t ignored_size;

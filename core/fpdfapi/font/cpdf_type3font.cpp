@@ -28,7 +28,7 @@ CPDF_Type3Font::CPDF_Type3Font(CPDF_Document* pDocument,
                                CPDF_Dictionary* pFontDict,
                                FormFactoryIface* pFormFactory)
     : CPDF_SimpleFont(pDocument, pFontDict), m_pFormFactory(pFormFactory) {
-  ASSERT(GetDocument());
+  DCHECK(GetDocument());
 }
 
 CPDF_Type3Font::~CPDF_Type3Font() = default;

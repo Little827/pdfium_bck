@@ -18,9 +18,9 @@ CPDF_ObjectAvail::CPDF_ObjectAvail(
     CPDF_IndirectObjectHolder* holder,
     CPDF_Object* root)
     : validator_(validator), holder_(holder), root_(root) {
-  ASSERT(validator_);
-  ASSERT(holder);
-  ASSERT(root_);
+  DCHECK(validator_);
+  DCHECK(holder);
+  DCHECK(root_);
   if (!root_->IsInline())
     parsed_objnums_.insert(root_->GetObjNum());
 }
@@ -32,8 +32,8 @@ CPDF_ObjectAvail::CPDF_ObjectAvail(
     : validator_(validator),
       holder_(holder),
       root_(pdfium::MakeRetain<CPDF_Reference>(holder, obj_num)) {
-  ASSERT(validator_);
-  ASSERT(holder);
+  DCHECK(validator_);
+  DCHECK(holder);
 }
 
 CPDF_ObjectAvail::~CPDF_ObjectAvail() = default;
@@ -107,7 +107,7 @@ bool CPDF_ObjectAvail::CheckObjects() {
 
 bool CPDF_ObjectAvail::AppendObjectSubRefs(const CPDF_Object* object,
                                            std::stack<uint32_t>* refs) const {
-  ASSERT(refs);
+  DCHECK(refs);
   if (!object)
     return true;
 

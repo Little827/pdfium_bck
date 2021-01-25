@@ -614,8 +614,8 @@ void CPWL_ScrollBar::SetScrollStep(float fBigStep, float fSmallStep) {
 }
 
 bool CPWL_ScrollBar::MovePosButton(bool bRefresh) {
-  ASSERT(m_pMinButton);
-  ASSERT(m_pMaxButton);
+  DCHECK(m_pMinButton);
+  DCHECK(m_pMaxButton);
 
   if (m_pPosButton->IsVisible()) {
     CFX_FloatRect rcClient;

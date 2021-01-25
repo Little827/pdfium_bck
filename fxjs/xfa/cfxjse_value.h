@@ -88,7 +88,7 @@ class CFXJSE_Value {
     m_hValue.Reset(pIsolate, hValue);
   }
   void Assign(v8::Isolate* pIsolate, const CFXJSE_Value* lpValue) {
-    ASSERT(lpValue);
+    DCHECK(lpValue);
     if (lpValue) {
       m_hValue.Reset(pIsolate, lpValue->m_hValue);
     } else {

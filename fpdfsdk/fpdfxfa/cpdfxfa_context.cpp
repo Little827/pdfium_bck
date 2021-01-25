@@ -101,7 +101,7 @@ CPDFXFA_Context::CPDFXFA_Context(CPDF_Document* pPDFDoc)
     : m_pPDFDoc(pPDFDoc),
       m_pDocEnv(std::make_unique<CPDFXFA_DocEnvironment>(this)),
       m_pGCHeap(FXGC_CreateHeap()) {
-  ASSERT(m_pPDFDoc);
+  DCHECK(m_pPDFDoc);
 
   // There might not be a heap when JS not initialized.
   if (m_pGCHeap) {

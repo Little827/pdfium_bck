@@ -70,7 +70,7 @@ void EmbedderTest::SetUp() {
 
 void EmbedderTest::TearDown() {
   // Use an EXPECT_EQ() here and continue to let TearDown() finish as cleanly as
-  // possible. This can fail when an ASSERT test fails in a test case.
+  // possible. This can fail when an DCHECK test fails in a test case.
   EXPECT_EQ(0U, page_map_.size());
   EXPECT_EQ(0U, saved_page_map_.size());
   if (document_)
@@ -245,7 +245,7 @@ FPDF_FORMHANDLE EmbedderTest::SetupFormFillEnvironment(
 }
 
 void EmbedderTest::DoOpenActions() {
-  ASSERT(form_handle_);
+  DCHECK(form_handle_);
   FORM_DoDocumentJSAction(form_handle_);
   FORM_DoDocumentOpenAction(form_handle_);
 }
@@ -274,9 +274,9 @@ FPDF_PAGE EmbedderTest::LoadPageNoEvents(int page_number) {
 }
 
 FPDF_PAGE EmbedderTest::LoadPageCommon(int page_number, bool do_events) {
-  ASSERT(form_handle_);
-  ASSERT(page_number >= 0);
-  ASSERT(!pdfium::Contains(page_map_, page_number));
+  DCHECK(form_handle_);
+  DCHECK(page_number >= 0);
+  DCHECK(!pdfium::Contains(page_map_, page_number));
 
   FPDF_PAGE page = FPDF_LoadPage(document_, page_number);
   if (!page)
@@ -299,7 +299,7 @@ void EmbedderTest::UnloadPageNoEvents(FPDF_PAGE page) {
 }
 
 void EmbedderTest::UnloadPageCommon(FPDF_PAGE page, bool do_events) {
-  ASSERT(form_handle_);
+  DCHECK(form_handle_);
   int page_number = GetPageNumberForLoadedPage(page);
   if (page_number < 0) {
     NOTREACHED();
@@ -466,7 +466,7 @@ FPDF_DOCUMENT EmbedderTest::OpenSavedDocumentWithPassword(
 }
 
 void EmbedderTest::CloseSavedDocument() {
-  ASSERT(saved_document_);
+  DCHECK(saved_document_);
 
   FPDFDOC_ExitFormFillEnvironment(saved_form_handle_);
   FPDF_CloseDocument(saved_document_);
@@ -478,9 +478,9 @@ void EmbedderTest::CloseSavedDocument() {
 }
 
 FPDF_PAGE EmbedderTest::LoadSavedPage(int page_number) {
-  ASSERT(saved_form_handle_);
-  ASSERT(page_number >= 0);
-  ASSERT(!pdfium::Contains(saved_page_map_, page_number));
+  DCHECK(saved_form_handle_);
+  DCHECK(page_number >= 0);
+  DCHECK(!pdfium::Contains(saved_page_map_, page_number));
 
   FPDF_PAGE page = FPDF_LoadPage(saved_document_, page_number);
   if (!page)
@@ -493,7 +493,7 @@ FPDF_PAGE EmbedderTest::LoadSavedPage(int page_number) {
 }
 
 void EmbedderTest::CloseSavedPage(FPDF_PAGE page) {
-  ASSERT(saved_form_handle_);
+  DCHECK(saved_form_handle_);
 
   int page_number = GetPageNumberForSavedPage(page);
   if (page_number < 0) {
@@ -512,8 +512,8 @@ void EmbedderTest::VerifySavedRendering(FPDF_PAGE page,
                                         int width,
                                         int height,
                                         const char* md5) {
-  ASSERT(saved_document_);
-  ASSERT(page);
+  DCHECK(saved_document_);
+  DCHECK(page);
 
   ScopedFPDFBitmap bitmap = RenderSavedPageWithFlags(page, FPDF_ANNOT);
   CompareBitmap(bitmap.get(), width, height, md5);
@@ -528,7 +528,7 @@ void EmbedderTest::VerifySavedDocument(int width, int height, const char* md5) {
 }
 
 void EmbedderTest::SetWholeFileAvailable() {
-  ASSERT(fake_file_access_);
+  DCHECK(fake_file_access_);
   fake_file_access_->SetWholeFileAvailable();
 }
 
@@ -699,7 +699,7 @@ int EmbedderTest::GetPageNumberForPage(const PageNumberToHandleMap& page_map,
   for (const auto& it : page_map) {
     if (it.second == page) {
       int page_number = it.first;
-      ASSERT(page_number >= 0);
+      DCHECK(page_number >= 0);
       return page_number;
     }
   }

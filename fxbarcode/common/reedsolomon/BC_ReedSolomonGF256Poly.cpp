@@ -33,8 +33,8 @@ CBC_ReedSolomonGF256Poly::CBC_ReedSolomonGF256Poly(
     CBC_ReedSolomonGF256* field,
     const std::vector<int32_t>& coefficients)
     : m_field(field) {
-  ASSERT(m_field);
-  ASSERT(!coefficients.empty());
+  DCHECK(m_field);
+  DCHECK(!coefficients.empty());
   if (coefficients.size() == 1 || coefficients.front() != 0) {
     m_coefficients = coefficients;
     return;

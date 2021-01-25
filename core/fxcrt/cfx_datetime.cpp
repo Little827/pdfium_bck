@@ -29,9 +29,9 @@ const int32_t g_FXDaysPerYear = 365;
 const int32_t g_FXDaysPerLeapYear = 366;
 
 int32_t DaysBeforeMonthInYear(int32_t iYear, uint8_t iMonth) {
-  ASSERT(iYear != 0);
-  ASSERT(iMonth >= 1);
-  ASSERT(iMonth <= 12);
+  DCHECK(iYear != 0);
+  DCHECK(iMonth >= 1);
+  DCHECK(iMonth <= 12);
 
   const int32_t* p =
       FX_IsLeapYear(iYear) ? g_FXDaysBeforeLeapMonth : g_FXDaysBeforeMonth;
@@ -39,7 +39,7 @@ int32_t DaysBeforeMonthInYear(int32_t iYear, uint8_t iMonth) {
 }
 
 int32_t DaysInYear(int32_t iYear) {
-  ASSERT(iYear != 0);
+  DCHECK(iYear != 0);
   return FX_IsLeapYear(iYear) ? g_FXDaysPerLeapYear : g_FXDaysPerYear;
 }
 
@@ -47,11 +47,11 @@ int64_t DateToDays(int32_t iYear,
                    uint8_t iMonth,
                    uint8_t iDay,
                    bool bIncludeThisDay) {
-  ASSERT(iYear != 0);
-  ASSERT(iMonth >= 1);
-  ASSERT(iMonth <= 12);
-  ASSERT(iDay >= 1);
-  ASSERT(iDay <= FX_DaysInMonth(iYear, iMonth));
+  DCHECK(iYear != 0);
+  DCHECK(iMonth >= 1);
+  DCHECK(iMonth <= 12);
+  DCHECK(iDay >= 1);
+  DCHECK(iDay <= FX_DaysInMonth(iYear, iMonth));
 
   int64_t iDays = DaysBeforeMonthInYear(iYear, iMonth);
   iDays += iDay;
@@ -82,9 +82,9 @@ struct FXUT_SYSTEMTIME {
 }  // namespace
 
 uint8_t FX_DaysInMonth(int32_t iYear, uint8_t iMonth) {
-  ASSERT(iYear != 0);
-  ASSERT(iMonth >= 1);
-  ASSERT(iMonth <= 12);
+  DCHECK(iYear != 0);
+  DCHECK(iMonth >= 1);
+  DCHECK(iMonth <= 12);
 
   const uint8_t* p =
       FX_IsLeapYear(iYear) ? g_FXDaysPerLeapMonth : g_FXDaysPerMonth;
@@ -92,7 +92,7 @@ uint8_t FX_DaysInMonth(int32_t iYear, uint8_t iMonth) {
 }
 
 bool FX_IsLeapYear(int32_t iYear) {
-  ASSERT(iYear != 0);
+  DCHECK(iYear != 0);
   return ((iYear % 4) == 0 && (iYear % 100) != 0) || (iYear % 400) == 0;
 }
 

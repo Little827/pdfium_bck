@@ -54,11 +54,11 @@ class CPDFSDK_BAAnnotHandlerTest : public EmbedderTest {
     CPDFSDK_AnnotIterator ai(GetPageView(),
                              m_pFormFillEnv->GetFocusableAnnotSubtypes());
     CPDFSDK_Annot* pAnnot = ai.GetFirstAnnot();
-    ASSERT(pAnnot);
+    DCHECK(pAnnot);
 
     for (size_t i = 1; i < n; i++) {
       pAnnot = ai.GetNextAnnot(pAnnot);
-      ASSERT(pAnnot);
+      DCHECK(pAnnot);
     }
 
     return pAnnot;

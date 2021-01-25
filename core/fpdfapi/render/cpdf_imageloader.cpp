@@ -50,8 +50,8 @@ bool CPDF_ImageLoader::Continue(PauseIndicatorIface* pPause,
 
 RetainPtr<CFX_DIBBase> CPDF_ImageLoader::TranslateImage(
     const RetainPtr<CPDF_TransferFunc>& pTransferFunc) {
-  ASSERT(pTransferFunc);
-  ASSERT(!pTransferFunc->GetIdentity());
+  DCHECK(pTransferFunc);
+  DCHECK(!pTransferFunc->GetIdentity());
 
   m_pBitmap = pTransferFunc->TranslateImage(m_pBitmap);
   if (m_bCached && m_pMask)

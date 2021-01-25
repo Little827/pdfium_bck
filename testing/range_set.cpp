@@ -60,7 +60,7 @@ void RangeSet::Union(const Range& range) {
 }
 
 void RangeSet::Union(const RangeSet& range_set) {
-  ASSERT(&range_set != this);
+  DCHECK(&range_set != this);
   for (const auto& it : range_set.ranges())
     Union(it);
 }

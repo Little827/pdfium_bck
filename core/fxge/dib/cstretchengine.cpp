@@ -126,7 +126,7 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
 
 const PixelWeight* CStretchEngine::CWeightTable::GetPixelWeight(
     int pixel) const {
-  ASSERT(pixel >= m_DestMin);
+  DCHECK(pixel >= m_DestMin);
   return reinterpret_cast<const PixelWeight*>(
       &m_WeightTables[(pixel - m_DestMin) * m_ItemSize]);
 }

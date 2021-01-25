@@ -96,6 +96,6 @@ int32_t CBC_QRCoderMode::GetCharacterCountBits(int32_t number) const {
     offset = 2;
 
   int32_t result = m_characterCountBitsForVersions[offset];
-  ASSERT(result != 0);
+  DCHECK(result != 0);
   return result;
 }

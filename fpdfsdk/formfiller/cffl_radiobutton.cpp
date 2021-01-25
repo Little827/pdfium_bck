@@ -47,7 +47,7 @@ bool CFFL_RadioButton::OnChar(CPDFSDK_Annot* pAnnot,
     case FWL_VKEY_Return:
     case FWL_VKEY_Space: {
       CPDFSDK_PageView* pPageView = pAnnot->GetPageView();
-      ASSERT(pPageView);
+      DCHECK(pPageView);
 
       ObservedPtr<CPDFSDK_Annot> pObserved(m_pWidget.Get());
       if (m_pFormFillEnv->GetInteractiveFormFiller()->OnButtonUp(

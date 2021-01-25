@@ -592,7 +592,7 @@ void CFX_Font::ClearGlyphCache() {
 void CFX_Font::AdjustMMParams(int glyph_index,
                               int dest_width,
                               int weight) const {
-  ASSERT(dest_width >= 0);
+  DCHECK(dest_width >= 0);
   FXFT_MM_VarPtr pMasters = nullptr;
   FT_Get_MM_Var(m_Face->GetRec(), &pMasters);
   if (!pMasters)

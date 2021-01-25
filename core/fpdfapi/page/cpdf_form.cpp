@@ -79,7 +79,7 @@ void CPDF_Form::ParseContentInternal(const CPDF_AllStates* pGraphicStates,
         this, pGraphicStates, pParentMatrix, pType3Char, pParsedSet));
   }
 
-  ASSERT(GetParseState() == ParseState::kParsing);
+  DCHECK(GetParseState() == ParseState::kParsing);
   ContinueParse(nullptr);
 }
 

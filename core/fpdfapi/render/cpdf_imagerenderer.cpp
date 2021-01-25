@@ -163,7 +163,7 @@ bool CPDF_ImageRenderer::Start(CPDF_RenderStatus* pStatus,
                                const CFX_Matrix& mtObj2Device,
                                bool bStdCS,
                                BlendMode blendType) {
-  ASSERT(pImageObject);
+  DCHECK(pImageObject);
   m_pRenderStatus = pStatus;
   m_bStdCS = bStdCS;
   m_pImageObject = pImageObject;
@@ -615,7 +615,7 @@ bool CPDF_ImageRenderer::GetDimensionsFromUnitRect(const FX_RECT& rect,
                                                    int* top,
                                                    int* width,
                                                    int* height) const {
-  ASSERT(rect.Valid());
+  DCHECK(rect.Valid());
 
   int dest_width = rect.Width();
   int dest_height = rect.Height();

@@ -474,7 +474,7 @@ bool CPDF_FormField::ClearSelection(NotificationOption notify) {
 }
 
 bool CPDF_FormField::IsItemSelected(int index) const {
-  ASSERT(GetType() == kComboBox || GetType() == kListBox);
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions())
     return false;
 
@@ -486,7 +486,7 @@ bool CPDF_FormField::IsItemSelected(int index) const {
 bool CPDF_FormField::SetItemSelection(int index,
                                       bool bSelected,
                                       NotificationOption notify) {
-  ASSERT(GetType() == kComboBox || GetType() == kListBox);
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions())
     return false;
 
@@ -567,7 +567,7 @@ void CPDF_FormField::SetItemSelectionUnselected(int index,
 }
 
 bool CPDF_FormField::IsItemDefaultSelected(int index) const {
-  ASSERT(GetType() == kComboBox || GetType() == kListBox);
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions())
     return false;
   int iDVIndex = GetDefaultSelectedItem();
@@ -575,7 +575,7 @@ bool CPDF_FormField::IsItemDefaultSelected(int index) const {
 }
 
 int CPDF_FormField::GetDefaultSelectedItem() const {
-  ASSERT(GetType() == kComboBox || GetType() == kListBox);
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   const CPDF_Object* pValue = GetDefaultValueObject();
   if (!pValue)
     return -1;
@@ -628,7 +628,7 @@ int CPDF_FormField::FindOption(const WideString& csOptValue) const {
 bool CPDF_FormField::CheckControl(int iControlIndex,
                                   bool bChecked,
                                   NotificationOption notify) {
-  ASSERT(GetType() == kCheckBox || GetType() == kRadioButton);
+  DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
   CPDF_FormControl* pControl = GetControl(iControlIndex);
   if (!pControl)
     return false;
@@ -680,7 +680,7 @@ bool CPDF_FormField::CheckControl(int iControlIndex,
 }
 
 WideString CPDF_FormField::GetCheckValue(bool bDefault) const {
-  ASSERT(GetType() == kCheckBox || GetType() == kRadioButton);
+  DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
   WideString csExport = L"Off";
   int iCount = CountControls();
   for (int i = 0; i < iCount; i++) {
@@ -698,7 +698,7 @@ WideString CPDF_FormField::GetCheckValue(bool bDefault) const {
 bool CPDF_FormField::SetCheckValue(const WideString& value,
                                    bool bDefault,
                                    NotificationOption notify) {
-  ASSERT(GetType() == kCheckBox || GetType() == kRadioButton);
+  DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
   int iCount = CountControls();
   for (int i = 0; i < iCount; i++) {
     CPDF_FormControl* pControl = GetControl(i);
@@ -828,7 +828,7 @@ bool CPDF_FormField::SelectOption(int iOptIndex,
 }
 
 bool CPDF_FormField::UseSelectedIndicesObject() const {
-  ASSERT(GetType() == kComboBox || GetType() == kListBox);
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
 
   const CPDF_Object* pSelectedIndicesObject = GetSelectedIndicesObject();
   if (!pSelectedIndicesObject)
@@ -896,7 +896,7 @@ bool CPDF_FormField::UseSelectedIndicesObject() const {
     return values.empty();
   }
 
-  ASSERT(pSelectedIndicesObject->IsNumber());
+  DCHECK(pSelectedIndicesObject->IsNumber());
   int index = pSelectedIndicesObject->GetInteger();
   if (index < 0 || index >= num_options)
     return false;
@@ -995,12 +995,12 @@ const CPDF_Object* CPDF_FormField::GetValueObject() const {
 }
 
 const CPDF_Object* CPDF_FormField::GetSelectedIndicesObject() const {
-  ASSERT(GetType() == kComboBox || GetType() == kListBox);
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   return GetFieldAttr(m_pDict.Get(), "I");
 }
 
 const CPDF_Object* CPDF_FormField::GetValueOrSelectedIndicesObject() const {
-  ASSERT(GetType() == kComboBox || GetType() == kListBox);
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   const CPDF_Object* pValue = GetValueObject();
   return pValue ? pValue : GetSelectedIndicesObject();
 }
