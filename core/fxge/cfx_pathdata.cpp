@@ -11,25 +11,6 @@
 
 namespace {
 
-bool IsFoldingVerticalLine(const CFX_PointF& a,
-                           const CFX_PointF& b,
-                           const CFX_PointF& c) {
-  return a.x == b.x && b.x == c.x && (b.y - a.y) * (b.y - c.y) > 0;
-}
-
-bool IsFoldingHorizontalLine(const CFX_PointF& a,
-                             const CFX_PointF& b,
-                             const CFX_PointF& c) {
-  return a.y == b.y && b.y == c.y && (b.x - a.x) * (b.x - c.x) > 0;
-}
-
-bool IsFoldingDiagonalLine(const CFX_PointF& a,
-                           const CFX_PointF& b,
-                           const CFX_PointF& c) {
-  return a.x != b.x && c.x != b.x && a.y != b.y && c.y != b.y &&
-         (a.y - b.y) * (c.x - b.x) == (c.y - b.y) * (a.x - b.x);
-}
-
 void UpdateLineEndPoints(CFX_FloatRect* rect,
                          const CFX_PointF& start_pos,
                          const CFX_PointF& end_pos,
@@ -174,7 +155,101 @@ void UpdateLineJoinPoints(CFX_FloatRect* rect,
   rect->UpdateRect(CFX_PointF(join_x, join_y));
 }
 
+// Returns whether `point_1`, `point_2` and `point_3` are on the same straight
+// line. Output parameter `start` and `end` as the end points of this straight
+// line. Note: If all 3 input points are identical, this function returns
+// true, `start` and `end` will be identical with the input points as well.
+bool OnStraightLine(const CFX_PointF& a,
+                    const CFX_PointF& b,
+                    const CFX_PointF& c,
+                    CFX_PointF* start,
+                    CFX_PointF* end) {
+  // If any two input points are identical.
+  if (a == b) {
+    *start = a;
+    *end = c;
+    return true;
+  }
+
+  if (a == c) {
+    *start = a;
+    *end = b;
+    return true;
+  }
+
+  if (b == c) {
+    *start = b;
+    *end = a;
+    return true;
+  }
+
+  // If all 3 input points are different from each other:
+  // Vertical line.
+  if (a.x == b.x && b.x == c.x) {
+    start->x = a.x;
+    start->y = std::min(std::min(a.y, b.y), c.y);
+    end->x = a.x;
+    end->y = std::max(std::max(a.y, b.y), c.y);
+    return true;
+  }
+
+  // Horizontal or diagonal line.(making start point on the left side of the end
+  // point.)
+  if ((b.x - a.x) * (c.y - b.y) == (c.x - b.x) * (b.y - a.y)) {
+    if (a.x < b.x) {
+      *start = a;
+      *end = b;
+    } else {
+      *start = b;
+      *end = a;
+    }
+
+    if (start->x > c.x) {
+      *start = c;
+    }
+    if (end->x < c.x) {
+      *end = c;
+    }
+    return true;
+  }
+
+  return false;
+}
+
+bool BezierCurveIsStraight(const CFX_PointF& cur,
+                           const CFX_PointF& ctrl_point_1,
+                           const CFX_PointF& ctrl_point_2,
+                           const CFX_PointF& ctrl_point_3,
+                           CFX_PointF* start,
+                           CFX_PointF* end) {
+  CFX_PointF start_0;
+  CFX_PointF end_0;
+  if (!OnStraightLine(cur, ctrl_point_1, ctrl_point_2, &start_0, &end_0)) {
+    return false;
+  }
+  if (!OnStraightLine(start_0, end_0, ctrl_point_3, start, end)) {
+    return false;
+  }
+  return true;
+}
+
 }  // namespace
+
+/*
+bool OnStraightLine(const CFX_PointF& a,
+                    const CFX_PointF& b,
+                    const CFX_PointF& c) {
+  if (a.x == b.x && b.x == c.x)
+    return true;
+
+  if (a.y == b.y && b.y == c.y)
+    return true;
+
+  if ((b.x - a.x) * (c.y - b.y) == (c.x - b.x) * (b.y - a.y))
+    return true;
+
+  return false;
+}*/
 
 FX_PATHPOINT::FX_PATHPOINT() = default;
 
@@ -379,47 +454,109 @@ bool CFX_PathData::GetZeroAreaPath(const CFX_Matrix* pMatrix,
   }
 
   int startPoint = 0;
+  bool have_a_current_straight_line = false;
+  CFX_PointF straight_line_start;
+  CFX_PointF straight_line_end;
+
   for (size_t i = 0; i < m_Points.size(); i++) {
     FXPT_TYPE point_type = m_Points[i].m_Type;
     if (point_type == FXPT_TYPE::MoveTo) {
+      // Clear curerent line if the new start point is not on the current
+      // straight line
+      if (have_a_current_straight_line) {
+        if (straight_line_start != straight_line_end) {
+          NewPath->AppendPoint(straight_line_start, FXPT_TYPE::MoveTo);
+          NewPath->AppendPoint(straight_line_end, FXPT_TYPE::LineTo);
+        }
+        have_a_current_straight_line = false;
+      }
+
       startPoint = i;
       continue;
     }
 
     if (point_type == FXPT_TYPE::BezierTo) {
+      if (i + 2 >= m_Points.size())
+        break;
+
+      CFX_PointF current_point =
+          i >= 1 ? m_Points[i - 1].m_Point
+                 : CFX_PointF(0, 0);  // Bezier curve's start point
+
+      CFX_PointF bezier_start;
+      CFX_PointF bezier_end;
+      if (BezierCurveIsStraight(
+              current_point, m_Points[i].m_Point, m_Points[i + 1].m_Point,
+              m_Points[i + 2].m_Point, &bezier_start, &bezier_end)) {
+        // Check whether there are exsiting straight line points in the queue.
+        if (have_a_current_straight_line) {
+          // case1: the current bezier is a straight line, but not on the same
+          // straight line as what's in the queue. Draw the current queue first.
+          CFX_PointF start_0;
+          CFX_PointF end_0;
+          CFX_PointF start_1;
+          CFX_PointF end_1;
+          if (OnStraightLine(straight_line_start, straight_line_end,
+                             bezier_start, &start_0, &end_0) &&
+              OnStraightLine(start_0, end_0, bezier_end, &start_1, &end_1)) {
+            // Update the new end points for the straight line
+            straight_line_start = start_1;
+            straight_line_end = end_1;
+          } else {
+            // Draw the current straight line first, then replace it with the
+            // bezier straight line
+            if (straight_line_start != straight_line_end) {
+              NewPath->AppendPoint(straight_line_start, FXPT_TYPE::MoveTo);
+              NewPath->AppendPoint(straight_line_end, FXPT_TYPE::LineTo);
+            }
+            // Update a new current straight line
+            straight_line_start = bezier_start;
+            straight_line_end = bezier_end;
+          }
+        } else {
+          straight_line_start = bezier_start;
+          straight_line_end = bezier_end;
+          have_a_current_straight_line = true;
+        }
+      }
       i += 2;
       continue;
     }
 
     ASSERT(point_type == FXPT_TYPE::LineTo);
-    int next_index =
-        (i + 1 - startPoint) % (m_Points.size() - startPoint) + startPoint;
-    const FX_PATHPOINT& next = m_Points[next_index];
-    if (next.m_Type == FXPT_TYPE::BezierTo || next.m_Type == FXPT_TYPE::MoveTo)
-      continue;
-
     const FX_PATHPOINT& prev = m_Points[i - 1];
     const FX_PATHPOINT& cur = m_Points[i];
-    if (IsFoldingVerticalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
-      bool use_prev = fabs(cur.m_Point.y - prev.m_Point.y) <
-                      fabs(cur.m_Point.y - next.m_Point.y);
-      const FX_PATHPOINT& start = use_prev ? prev : cur;
-      const FX_PATHPOINT& end = use_prev ? m_Points[next_index - 1] : next;
-      NewPath->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
-      NewPath->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
-      continue;
-    }
 
-    if (IsFoldingHorizontalLine(prev.m_Point, cur.m_Point, next.m_Point) ||
-        IsFoldingDiagonalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
-      bool use_prev = fabs(cur.m_Point.x - prev.m_Point.x) <
-                      fabs(cur.m_Point.x - next.m_Point.x);
-      const FX_PATHPOINT& start = use_prev ? prev : cur;
-      const FX_PATHPOINT& end = use_prev ? m_Points[next_index - 1] : next;
-      NewPath->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
-      NewPath->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
-      continue;
+    if (have_a_current_straight_line) {
+      CFX_PointF start_0;
+      CFX_PointF end_0;
+      CFX_PointF start_1;
+      CFX_PointF end_1;
+      if (OnStraightLine(straight_line_start, straight_line_end, prev.m_Point,
+                         &start_0, &end_0) &&
+          OnStraightLine(start_0, end_0, cur.m_Point, &start_1, &end_1)) {
+        straight_line_start = start_1;
+        straight_line_end = end_1;
+      } else {
+        if (straight_line_start != straight_line_end) {
+          NewPath->AppendPoint(straight_line_start, FXPT_TYPE::MoveTo);
+          NewPath->AppendPoint(straight_line_end, FXPT_TYPE::LineTo);
+        }
+        have_a_current_straight_line = false;
+      }
+    } else {
+      straight_line_start = prev.m_Point;
+      straight_line_end = cur.m_Point;
+      have_a_current_straight_line = true;
     }
+  }
+
+  if (have_a_current_straight_line) {
+    if (straight_line_start != straight_line_end) {
+      NewPath->AppendPoint(straight_line_start, FXPT_TYPE::MoveTo);
+      NewPath->AppendPoint(straight_line_end, FXPT_TYPE::LineTo);
+    }
+    have_a_current_straight_line = false;
   }
 
   size_t new_path_size = NewPath->GetPoints().size();

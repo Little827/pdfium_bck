@@ -337,9 +337,6 @@ bug_1449.in linux * *
 # TODO(pdfium:1457): Remove after associated bug is fixed
 bug_1457.in * * *
 
-# TODO(pdfium:1519): Remove after associated bug is fixed
-bug_1519.in * * *
-
 # TODO(pdfium:1571): Remove after associated bug is fixed
 bug_1571.in * * *
 
