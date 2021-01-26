@@ -35,6 +35,41 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb17056_b9c7f8ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-26T21:50:52Z",
+      "side": 1,
+      "message": "Let me know if you want these non-mechanical conversions along with this CL.",
+      "revId": "0d02d85c99f99b3b73f0f8937b5d8669c571a7a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5225e418_f6ac8dbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-01-26T21:50:52Z",
+      "side": 1,
+      "message": "I thought about doing that, but figured a mechanical change first would avoid my human errors in conversion, and would give a smaller diff to look at when going to the _EQ etc. forms.",
+      "parentUuid": "d5bcae05_df3a88e2",
+      "revId": "0d02d85c99f99b3b73f0f8937b5d8669c571a7a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2925308a_98056bcb",
