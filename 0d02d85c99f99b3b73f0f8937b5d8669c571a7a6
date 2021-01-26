@@ -16,6 +16,57 @@
       "message": "Trying to close out this old bug ...",
       "revId": "0d02d85c99f99b3b73f0f8937b5d8669c571a7a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bcae05_df3a88e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-26T20:57:10Z",
+      "side": 1,
+      "message": "Can you use DCHECK_EQ and DCHECK_NE where possible? We have those in PDFium.\n\nAlso, what are your thoughts on importing the other DCHECK operators?",
+      "revId": "0d02d85c99f99b3b73f0f8937b5d8669c571a7a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2925308a_98056bcb",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-26T20:57:10Z",
+      "side": 1,
+      "message": "We do have DCHECK_EQ at least",
+      "revId": "0d02d85c99f99b3b73f0f8937b5d8669c571a7a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae0cb97_2aedfc68",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-26T20:57:10Z",
+      "side": 1,
+      "message": "And DCHECK_NE",
+      "revId": "0d02d85c99f99b3b73f0f8937b5d8669c571a7a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
