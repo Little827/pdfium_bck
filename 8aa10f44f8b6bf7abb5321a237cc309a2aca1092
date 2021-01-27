@@ -16,6 +16,23 @@
       "message": "Daniel: could you please take a look? Thanks.",
       "revId": "8aa10f44f8b6bf7abb5321a237cc309a2aca1092",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f7b041_75478eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-01-27T17:17:07Z",
+      "side": 1,
+      "message": "Thanks. Could you please submit this for me? I\u0027m not a committer.",
+      "revId": "8aa10f44f8b6bf7abb5321a237cc309a2aca1092",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
