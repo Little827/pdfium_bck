@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cea3d2b_2c0c460c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-01-27T18:12:57Z",
+      "side": 1,
+      "message": "I know this comment is gonna be gone in the next CL, but maybe indicate the expected result should be `kOriginalChecksum` once bug 1578 is fixed?",
+      "range": {
+        "startLine": 852,
+        "startChar": 2,
+        "endLine": 853,
+        "endChar": 34
+      },
+      "revId": "c113d253c738edce8f10da416469d28e17eb4117",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "230335ce_7e50931a",
         "filename": "testing/resources/bug_1574.in",
         "patchSetId": 2
