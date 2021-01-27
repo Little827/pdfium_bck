@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d538c08_01e13ac7",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-01-27T18:21:39Z",
+      "side": 1,
+      "message": "Since this is a new test, you can change to use ScopedFPDFPage page(FPDF_LoadPage(document(), 0)), so that we don\u0027t have to worry about not calling UnloadPage() at the end of the scope.\n\nI think `saved_page` can be scoped as well.",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 31
+      },
+      "revId": "c113d253c738edce8f10da416469d28e17eb4117",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cea3d2b_2c0c460c",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 2
