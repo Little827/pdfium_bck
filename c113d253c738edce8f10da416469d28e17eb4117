@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5b5938_59bfa725",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-27T18:45:49Z",
+      "side": 1,
+      "message": "I\u0027m going to stick to the trend here. We could likely do that in a larger change.",
+      "parentUuid": "2d538c08_01e13ac7",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 31
+      },
+      "revId": "c113d253c738edce8f10da416469d28e17eb4117",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cea3d2b_2c0c460c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-27T18:12:57Z",
       "side": 1,
       "message": "I know this comment is gonna be gone in the next CL, but maybe indicate the expected result should be `kOriginalChecksum` once bug 1578 is fixed?",
+      "range": {
+        "startLine": 852,
+        "startChar": 2,
+        "endLine": 853,
+        "endChar": 34
+      },
+      "revId": "c113d253c738edce8f10da416469d28e17eb4117",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7230fe8e_6bb49609",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-27T18:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cea3d2b_2c0c460c",
       "range": {
         "startLine": 852,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd42c7f_c1ed3bff",
+        "filename": "testing/resources/bug_1574.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-27T18:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "230335ce_7e50931a",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "c113d253c738edce8f10da416469d28e17eb4117",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1649ddcc_49cdb550",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-27T18:09:31Z",
       "side": 1,
       "message": "We can split this line into multiple lines to make the operators more clear.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "c113d253c738edce8f10da416469d28e17eb4117",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b9c88d_50e44f36",
+        "filename": "testing/resources/bug_1574.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-01-27T18:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1649ddcc_49cdb550",
       "range": {
         "startLine": 40,
         "startChar": 0,
