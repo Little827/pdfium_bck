@@ -446,9 +446,9 @@ void CPDF_PageContentGenerator::ProcessGraphics(std::ostringstream* buf,
           break;
       }
 
-      // Use a no-op path-painting operator to terminate the path without
-      // causing any marks to be placed on the page.
-      *buf << "n 0 g ";
+      // Use a no-op operator to terminate the path without causing any marks
+      // to be placed on the page.
+      *buf << "n ";
     }
   }
 
