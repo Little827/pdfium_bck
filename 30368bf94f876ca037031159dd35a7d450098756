@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2facd5f6_d37abd71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-01-28T02:04:42Z",
+      "side": 1,
+      "message": "A README file as promised. 😊\nI am wondering whether there is a specific style guide of chromium README files.",
+      "revId": "30368bf94f876ca037031159dd35a7d450098756",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
