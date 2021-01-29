@@ -50,6 +50,24 @@
       "message": "Thanks for the merge.  Did you want me to land this? Or will you do so?",
       "revId": "d6db24e62e3862bae8113643458ccac84f0e88f5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249021a7_d604025c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8376
+      },
+      "writtenOn": "2021-01-29T18:33:19Z",
+      "side": 1,
+      "message": "Thanks. I see submit button, so I try it first.",
+      "parentUuid": "1854504b_9fe0efbb",
+      "revId": "d6db24e62e3862bae8113643458ccac84f0e88f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
