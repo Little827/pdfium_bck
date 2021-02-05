@@ -403,14 +403,14 @@ TEST_F(FPDFProgressiveRenderEmbedderTest,
 // Normal blend mode.
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   static constexpr char kContentWithHighlightFillChecksum[] =
-      "fa25846c61d0253e86e8512d3be06ebb";
+      "c1843cec7230f27ed597bdec41c65e8e";
 #else
 #if defined(OS_APPLE)
   static constexpr char kContentWithHighlightFillChecksum[] =
-      "a820afec9b99d3d3f2e9e9382bbad7c1";
+      "6345f11327c2bd24126404d804ef6569";
 #else
   static constexpr char kContentWithHighlightFillChecksum[] =
-      "a08a0639f89446f66f3689ee8e08b9fe";
+      "8f89cd337660dd386477b248f84497ab";
 #endif  // defined(OS_APPLE)
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 

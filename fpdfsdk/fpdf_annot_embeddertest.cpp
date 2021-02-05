@@ -803,26 +803,26 @@ TEST_F(FPDFAnnotEmbedderTest, GetAndSetQuadPoints) {
 #endif
 TEST_F(FPDFAnnotEmbedderTest, MAYBE_ModifyRectQuadpointsWithAP) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kMd5Original[] = "00e70eb543c2a6e8f8aafb4ee951d9bf";
+  static const char kMd5Original[] = "ef77a49db5675ee26fc115a613fba0e3";
   static const char kMd5ModifiedHighlight[] =
-      "7638c4a8fe4aabbf8704e198f49b3198";
-  static const char kMd5ModifiedSquare[] = "54f507af6af63de877b9cafdab1bbdaa";
+      "49f65dd9d0586e5f41f5eba2a29094ee";
+  static const char kMd5ModifiedSquare[] = "ba125a17acac812ef31ec2f5b425b70e";
 #else
 #if defined(OS_WIN)
-  static const char kMd5Original[] = "0e27376094f11490f74c65f3dc3a42c5";
+  static const char kMd5Original[] = "60ed59d61efbd3b3be93d89c811b9a2b";
   static const char kMd5ModifiedHighlight[] =
-      "66f3caef3a7d488a4fa1ad37fc06310e";
-  static const char kMd5ModifiedSquare[] = "a456dad0bc6801ee2d6408a4394af563";
+      "5acfabfa06ed95b1d6eec18616025db2";
+  static const char kMd5ModifiedSquare[] = "10876865beb27cff42a8dcc5260ab5e6";
 #elif defined(OS_APPLE)
-  static const char kMd5Original[] = "fc59468d154f397fd298c69f47ef565a";
+  static const char kMd5Original[] = "02908cdf90471ad05947c627606df4df";
   static const char kMd5ModifiedHighlight[] =
-      "e64bf648f6e9354d1f3eedb47a2c9498";
-  static const char kMd5ModifiedSquare[] = "a66591662c8e7ad3c6059952e234bebf";
+      "32e106a51c10c1fa5687a4ae0f8bcb23";
+  static const char kMd5ModifiedSquare[] = "4f9ced87845bd9404bc8b5c728a5d37d";
 #else
-  static const char kMd5Original[] = "0e27376094f11490f74c65f3dc3a42c5";
+  static const char kMd5Original[] = "60ed59d61efbd3b3be93d89c811b9a2b";
   static const char kMd5ModifiedHighlight[] =
-      "66f3caef3a7d488a4fa1ad37fc06310e";
-  static const char kMd5ModifiedSquare[] = "a456dad0bc6801ee2d6408a4394af563";
+      "5acfabfa06ed95b1d6eec18616025db2";
+  static const char kMd5ModifiedSquare[] = "10876865beb27cff42a8dcc5260ab5e6";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
@@ -2911,14 +2911,14 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotRendering) {
 
   {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static const char kMd5sum[] = "4ca14c670396711194b40ecc2514969b";
+    static const char kMd5sum[] = "dcb4f28a0d5d9d6079ab6c5b2f1c1f88";
 #else
 #if defined(OS_WIN)
-    static const char kMd5sum[] = "3877bec7cb3e3144eaa6d10f38bf7a30";
+    static const char kMd5sum[] = "de14e73c484c0ee53b0ba9bfe971f751";
 #elif defined(OS_APPLE)
-    static const char kMd5sum[] = "04b16db5026b5490a50fb6ff0954c867";
+    static const char kMd5sum[] = "947bd499e148a4664c3cc93bcdce80c6";
 #else
-    static const char kMd5sum[] = "40a7354d1f653127bcdac10e15f81654";
+    static const char kMd5sum[] = "12f67c47f1f912e036121f6e3d4743c4";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     // Check the initial rendering.
@@ -2941,14 +2941,14 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotRendering) {
 
   {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static const char kMd5sum[] = "48cb60b3f9bc364c73582aff3418451e";
+    static const char kMd5sum[] = "e2765d4545b5eb3e0ae7e019cbe3951e";
 #else
 #if defined(OS_WIN)
-    static const char kMd5sum[] = "a30f1bd1cac022d08ceb100df4940b5f";
+    static const char kMd5sum[] = "34abf75f26da48387363d0b5f99b4093";
 #elif defined(OS_APPLE)
-    static const char kMd5sum[] = "3f984a164f2f6d6e3d69f27fd430e346";
+    static const char kMd5sum[] = "5f6633ca5f197dc030e9770b1b24fc0d";
 #else
-    static const char kMd5sum[] = "e4c4de73addabf10672c308870e8a4ee";
+    static const char kMd5sum[] = "5448780bbff76b054fea15d2f4d0df48";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     // Focus the first link and check the rendering.
@@ -2962,14 +2962,14 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotRendering) {
 
   {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static const char kMd5sum[] = "d09869ff0a209daf179da2d7a58142b1";
+    static const char kMd5sum[] = "8b00bf9baddd70eddfa245deb0464c25";
 #else
 #if defined(OS_WIN)
-    static const char kMd5sum[] = "467f5a4db98fcadd5121807ff4e2eb10";
+    static const char kMd5sum[] = "aeefbe4e863c7ef5bc42e5e26dc261fd";
 #elif defined(OS_APPLE)
-    static const char kMd5sum[] = "c6d6f9dc7090e8eaf3867ba714023b1e";
+    static const char kMd5sum[] = "937184253429fcfa36950ac1fa43547d";
 #else
-    static const char kMd5sum[] = "65e831885e16b7ecc977cce2e4a27110";
+    static const char kMd5sum[] = "5b894d2999d499824b610f1bbd54f19f";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     // Focus the first highlight and check the rendering.
