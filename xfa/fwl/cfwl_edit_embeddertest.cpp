@@ -13,7 +13,7 @@
 namespace {
 
 const char kEmailRecommendedFilledChecksum[] =
-    "211e4e46eb347aa2bc7c425556d600b0";
+    "c866d147a3dd9db73b4b591bf38ac563";
 
 }  // namespace
 
@@ -90,7 +90,7 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_DragMouseSelection) {
   EXPECT_STREQ(L"defgh", WideString::FromUTF16LE(buf, len).c_str());
 
   // TODO(hnakashima): This is incorrect. Visually 'abcdefgh' are selected.
-  const char kDraggedMD5[] = "f131526c8edd04e44de17b2647ec54c8";
+  const char kDraggedMD5[] = "849f41d9d94219f40984c66a6c197660";
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
@@ -106,7 +106,7 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_DragMouseSelection) {
 #endif
 TEST_F(CFWLEditEmbedderTest, MAYBE_SimpleFill) {
   CreateAndInitializeFormPDF("xfa/email_recommended.pdf");
-  const char kBlankMD5[] = "8dda78a3afaf9f7b5210eb81cacc4600";
+  const char kBlankMD5[] = "f2cf13f765a3c73e8aa7e408e8b8c1b7";
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
@@ -208,7 +208,7 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_DateTimePickerTest) {
   CreateAndInitializeFormPDF("xfa/xfa_date_time_edit.pdf");
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
 
-  const char kFilledMD5[] = "1036b8837a9dba75c6bd8f9347ae2eb2";
+  const char kFilledMD5[] = "5d918d0b054f753ff15c758b374e7ff6";
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
@@ -238,7 +238,7 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_ComboBoxTest) {
   CreateAndInitializeFormPDF("xfa/xfa_combobox.pdf");
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
 
-  const char kFilledMD5[] = "dad642ae8a5afce2591ffbcabbfc58dd";
+  const char kFilledMD5[] = "522b5e366455f0d5aa1f7c43c108ad6d";
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);

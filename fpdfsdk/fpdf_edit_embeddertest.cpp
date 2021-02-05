@@ -501,7 +501,7 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddPaths) {
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 612, 792,
-                  "eadc8020a14dfcf091da2688733d8806");
+                  "7e34f7d0269e14afed185306b99832ce");
   }
 
   // Now add a more complex blue path.
@@ -515,8 +515,11 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddPaths) {
   EXPECT_TRUE(FPDFPath_BezierTo(blue_path, 375, 330, 390, 360, 400, 400));
   EXPECT_TRUE(FPDFPath_Close(blue_path));
   FPDFPage_InsertObject(page, blue_path);
-  const char kLastMD5[] = "9823e1a21bd9b72b6a442ba4f12af946";
+  const char kLastMD5[] = "c4caee8c2c7e2d477f41e7b1c2a8ef93";
   {
+    // ScopedFPDFBitmap page_bitmap = RenderLoadedPageWithFlags(page,
+    // FPDF_ANNOT); ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page,
+    // nullptr, FPDF_ANNOT);
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 612, 792, kLastMD5);
   }
@@ -2034,7 +2037,7 @@ TEST_F(FPDFEditEmbedderTest, PathOnTopOfText) {
 #elif defined(OS_APPLE)
   const char kChecksum[] = "e55bcd1facb7243dc6e16dd5f912265b";
 #else
-  const char kChecksum[] = "aa71b09b93b55f467f1290e5111babee";
+  const char kChecksum[] = "c79c3fb7b4aa462cf4bbade029083941";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   CompareBitmap(bitmap.get(), 200, 200, kChecksum);
@@ -2934,7 +2937,7 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
 #define MAYBE_SaveAndRender SaveAndRender
 #endif
 TEST_F(FPDFEditEmbedderTest, MAYBE_SaveAndRender) {
-  const char md5[] = "3c20472b0552c0c22b88ab1ed8c6202b";
+  const char md5[] = "67459a2f12105ce0cb05ad8eea989d71";
   {
     ASSERT_TRUE(OpenDocument("bug_779.pdf"));
     FPDF_PAGE page = LoadPage(0);
