@@ -12,6 +12,69 @@
 
 namespace {
 
+// Handle special 2/3 points situation which draws line from A->B->A
+bool HelperForSimpleLineSituation(const std::vector<FX_PATHPOINT>& points,
+                                  const CFX_Matrix* matrix,
+                                  bool adjust,
+                                  CFX_PathData* new_path,
+                                  bool* thin,
+                                  bool* set_identity) {
+  DCHECK(points.size() == 2 || points.size() == 3);
+
+  if (points[0].m_Type != FXPT_TYPE::MoveTo ||
+      points[1].m_Type != FXPT_TYPE::LineTo ||
+      (points.size() == 3 && (points[2].m_Type != FXPT_TYPE::LineTo ||
+                              points[0].m_Point != points[2].m_Point))) {
+    return false;
+  }
+
+  for (size_t i = 0; i < 2; i++) {
+    CFX_PointF point = points[i].m_Point;
+    if (adjust) {
+      if (matrix)
+        point = matrix->Transform(point);
+
+      point = CFX_PointF(static_cast<int>(point.x) + 0.5f,
+                         static_cast<int>(point.y) + 0.5f);
+    }
+    new_path->AppendPoint(point,
+                          i == 0 ? FXPT_TYPE::MoveTo : FXPT_TYPE::LineTo);
+  }
+  if (adjust && matrix)
+    *set_identity = true;
+
+  // Note, they both have to be not equal.
+  if (points[0].m_Point.x != points[1].m_Point.x &&
+      points[0].m_Point.y != points[1].m_Point.y) {
+    *thin = true;
+  }
+  return true;
+}
+
+// Helper: handle symetrical path points in an array.
+bool HelperSymetricalPath(const std::vector<FX_PATHPOINT>& points, CFX_PathData* new_path, bool* thin) {
+  int mid = points.size() / 2;
+  bool zero_area = true;
+  CFX_PathData temp_path;
+  for (int i = 0; i < mid; i++) {
+    if (!(points[mid - i - 1].m_Point == points[mid + i + 1].m_Point &&
+          points[mid - i - 1].m_Type != FXPT_TYPE::BezierTo &&
+          points[mid + i + 1].m_Type != FXPT_TYPE::BezierTo)) {
+      zero_area = false;
+      break;
+    }
+
+    temp_path.AppendPoint(points[mid - i].m_Point, FXPT_TYPE::MoveTo);
+    temp_path.AppendPoint(points[mid - i - 1].m_Point, FXPT_TYPE::LineTo);
+  }
+  if (!zero_area)
+    return false;
+
+  new_path->Append(&temp_path, nullptr);
+  *thin = true;
+  return true;
+}
+
 bool IsFoldingVerticalLine(const CFX_PointF& a,
                            const CFX_PointF& b,
                            const CFX_PointF& c) {
@@ -30,6 +93,92 @@ bool IsFoldingDiagonalLine(const CFX_PointF& a,
   return a.x != b.x && c.x != b.x && a.y != b.y && c.y != b.y &&
          (a.y - b.y) * (c.x - b.x) == (c.y - b.y) * (a.x - b.x);
 }
+
+// Returns whether `point_1`, `point_2` and `point_3` are on the same straight
+// line. Output parameter `start` and `end` as the end points of this straight
+// line. Note: If all 3 input points are identical, this function returns
+// true, `start` and `end` will be identical with the input points as well.
+/*
+bool OnStraightLine(const CFX_PointF& a,
+                    const CFX_PointF& b,
+                    const CFX_PointF& c,
+                    CFX_PointF* start,
+                    CFX_PointF* end) {
+  // If any two input points are identical.
+  if (a == b) {
+    *start = a;
+    *end = c;
+    return true;
+  }
+
+  if (a == c) {
+    *start = a;
+    *end = b;
+    return true;
+  }
+
+  if (b == c) {
+    *start = b;
+    *end = a;
+    return true;
+  }
+
+  // If all 3 input points are different from each other:
+  // Vertical line.
+  if (a.x == b.x && b.x == c.x) {
+    start->x = a.x;
+    start->y = std::min(std::min(a.y, b.y), c.y);
+    end->x = a.x;
+    end->y = std::max(std::max(a.y, b.y), c.y);
+    return true;
+  }
+
+  // Horizontal or diagonal line.(making start point on the left side of the end
+  // point.)
+  if ((b.x - a.x) * (c.y - b.y) == (c.x - b.x) * (b.y - a.y)) {
+    if (a.x < b.x) {
+      *start = a;
+      *end = b;
+    } else {
+      *start = b;
+      *end = a;
+    }
+
+    if (start->x > c.x) {
+      *start = c;
+    }
+    if (end->x < c.x) {
+      *end = c;
+    }
+    return true;
+  }
+
+  return false;
+}
+
+// Checks if the start point and all the control points of a Bezier Curve are on
+the same straight
+// line.
+bool BezierCurveIsStraight(const CFX_PointF& cur,
+                           const CFX_PointF& ctrl_point_1,
+                           const CFX_PointF& ctrl_point_2,
+                           const CFX_PointF& ctrl_point_3) {
+  CFX_PointF start_0;
+  CFX_PointF start_1;
+  CFX_PointF end_0;
+  CFX_PointF end_1;
+  if (!OnStraightLine(cur, ctrl_point_1, ctrl_point_2, &start_0, &end_0)) {
+    return false;
+  }
+  if (!OnStraightLine(start_0, end_0, ctrl_point_3, &start_1, &end_1)) {
+    return false;
+  }
+
+  // Note: no need to check Bezier's control points form a folding line, since
+  // it will be rendered as a line that starts at `cur` and ends at
+  // `ctrl_point_3`.
+  return true;
+}*/
 
 void UpdateLineEndPoints(CFX_FloatRect* rect,
                          const CFX_PointF& start_pos,
@@ -327,37 +476,21 @@ bool CFX_PathData::GetZeroAreaPath(const CFX_Matrix* pMatrix,
                                    bool* bThin,
                                    bool* setIdentity) const {
   *setIdentity = false;
-  if (m_Points.size() < 3)
-    return false;
 
-  if (m_Points.size() == 3 && m_Points[0].m_Type == FXPT_TYPE::MoveTo &&
-      m_Points[1].m_Type == FXPT_TYPE::LineTo &&
-      m_Points[2].m_Type == FXPT_TYPE::LineTo &&
-      m_Points[0].m_Point == m_Points[2].m_Point) {
-    for (size_t i = 0; i < 2; i++) {
-      CFX_PointF point = m_Points[i].m_Point;
-      if (bAdjust) {
-        if (pMatrix)
-          point = pMatrix->Transform(point);
 
-        point = CFX_PointF(static_cast<int>(point.x) + 0.5f,
-                           static_cast<int>(point.y) + 0.5f);
-      }
-      NewPath->AppendPoint(point,
-                           i == 0 ? FXPT_TYPE::MoveTo : FXPT_TYPE::LineTo);
-    }
-    if (bAdjust && pMatrix)
-      *setIdentity = true;
 
-    // Note, they both have to be not equal.
-    if (m_Points[0].m_Point.x != m_Points[1].m_Point.x &&
-        m_Points[0].m_Point.y != m_Points[1].m_Point.y) {
-      *bThin = true;
-    }
-    return true;
+
+  if (m_Points.size() == 2 || m_Points.size() == 3) {
+    return HelperForSimpleLineSituation(m_Points, pMatrix, bAdjust, NewPath,
+                                        bThin, setIdentity);
   }
 
+  // TODO(): symetrical points in the array that forms overlapping lines, which
+  // should only have MoveTo action.
   if (((m_Points.size() > 3) && (m_Points.size() % 2))) {
+    // HelperForSymetrical points in an array
+    HelperSymetricalPath(m_Points, NewPath, bThin);
+    /*
     int mid = m_Points.size() / 2;
     bool bZeroArea = false;
     CFX_PathData t_path;
@@ -376,23 +509,45 @@ bool CFX_PathData::GetZeroAreaPath(const CFX_Matrix* pMatrix,
       NewPath->Append(&t_path, nullptr);
       *bThin = true;
       return true;
-    }
+    }*/
   }
 
   int startPoint = 0;
+  std::vector<FX_PATHPOINT> sub_path;
   for (size_t i = 0; i < m_Points.size(); i++) {
     FXPT_TYPE point_type = m_Points[i].m_Type;
     if (point_type == FXPT_TYPE::MoveTo) {
+      // At the beginning of a new sub path, process the exisitng sub path and
+      // start forming another one.
+      // ProcessSubPath(sub_path);
+      sub_path.clear();
+      sub_path.push_back(m_Points[i]);
       startPoint = i;
       continue;
     }
 
     if (point_type == FXPT_TYPE::BezierTo) {
+      // If the main path starts with a BezierTo action, it is also the
+      // beginning of a new sub path.
+
+      if (i == 0) {
+        startPoint = i;
+        DCHECK(sub_path.empty());
+        // sub_path.push_back(origin (0, 0));
+      }
+
+      /*
+      sub_path.push_back(m_Points[i]);
+      sub_path.push_back(m_Points[i+1]);
+      sub_path.push_back(m_Points[i+2]);*/
+
       i += 2;
       continue;
     }
 
     DCHECK(point_type == FXPT_TYPE::LineTo);
+    sub_path.push_back(m_Points[i]);
+
     int next_index =
         (i + 1 - startPoint) % (m_Points.size() - startPoint) + startPoint;
     const FX_PATHPOINT& next = m_Points[next_index];
