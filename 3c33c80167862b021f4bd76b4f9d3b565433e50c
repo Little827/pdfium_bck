@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464f74af_294284c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-07T03:32:53Z",
+      "side": 1,
+      "message": "Needs to clean up this part of the code before breaking GetZeroAreaPath() into using more helper functions to handle special cases. ",
+      "revId": "3c33c80167862b021f4bd76b4f9d3b565433e50c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
