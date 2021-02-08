@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00071e1d_6dbfd8f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-08T17:56:24Z",
+      "side": 1,
+      "message": "Nit: no s",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3cbaa86_9e1a9bf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-08T17:56:24Z",
+      "side": 1,
+      "message": "s/it/which",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8fbf3f9_2465a29e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-08T17:56:24Z",
+      "side": 1,
+      "message": "Bug number?",
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7cd411_f7d624cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-08T17:56:24Z",
+      "side": 1,
+      "message": "Can you add a pixel test for this?",
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
