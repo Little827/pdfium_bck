@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4790e363_e9b4f2a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-08T18:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00071e1d_6dbfd8f6",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3cbaa86_9e1a9bf5",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7216d40b_945c8ae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-08T18:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3cbaa86_9e1a9bf5",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8fbf3f9_2465a29e",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-02-08T17:56:24Z",
       "side": 1,
       "message": "Bug number?",
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51011308_128907c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-08T18:11:30Z",
+      "side": 1,
+      "message": "This is just a clean up before fixing some other bugs. Not directly related to a bug or changing the rendering behavior.",
+      "parentUuid": "d8fbf3f9_2465a29e",
       "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -95,6 +161,24 @@
       "side": 1,
       "message": "Nevermind - am I reading the CL description correctly? Rendering doesn\u0027t change?",
       "parentUuid": "2c7cd411_f7d624cc",
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f660f1b_a1010810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-08T18:11:30Z",
+      "side": 1,
+      "message": "Yes, the rendering behavior doesn\u0027t change, the flag happens to be the opposite of what it is supposed to mean.",
+      "parentUuid": "c44a7f57_fa6f9424",
       "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
