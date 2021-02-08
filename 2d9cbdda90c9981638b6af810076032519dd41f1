@@ -79,6 +79,24 @@
       "message": "Can you add a pixel test for this?",
       "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44a7f57_fa6f9424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-08T17:57:29Z",
+      "side": 1,
+      "message": "Nevermind - am I reading the CL description correctly? Rendering doesn\u0027t change?",
+      "parentUuid": "2c7cd411_f7d624cc",
+      "revId": "2d9cbdda90c9981638b6af810076032519dd41f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
