@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8c7fdf_266777ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-08T16:48:24Z",
+      "side": 1,
+      "message": "Nit: not needed",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "3c33c80167862b021f4bd76b4f9d3b565433e50c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d61f05d_fc8ef3c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-08T16:48:24Z",
+      "side": 1,
+      "message": "You can make some mention that this is the last case of hungarian notation in the file.",
+      "revId": "3c33c80167862b021f4bd76b4f9d3b565433e50c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "464f74af_294284c4",
