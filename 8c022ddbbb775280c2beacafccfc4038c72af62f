@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4f7c56_5e643bb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2021-02-08T23:00:10Z",
+      "side": 1,
+      "message": "See other comment.",
+      "parentUuid": "89d18094_7eb8a388",
+      "revId": "8c022ddbbb775280c2beacafccfc4038c72af62f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa80cc11_23d16a48",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee14bcf_8d2b5b10",
+        "filename": "core/fxcodec/jbig2/jbig2_decoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2021-02-08T23:00:10Z",
+      "side": 1,
+      "message": "Sorry, was making the changes in the internal repo, so wasn\u0027t able to run git cl format, and the internal tools formatted it using the internal style.",
+      "parentUuid": "fa80cc11_23d16a48",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "8c022ddbbb775280c2beacafccfc4038c72af62f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0395c79_17e9a8a2",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-08T22:42:45Z",
       "side": 1,
       "message": "nice find :).",
+      "range": {
+        "startLine": 624,
+        "startChar": 39,
+        "endLine": 624,
+        "endChar": 43
+      },
+      "revId": "8c022ddbbb775280c2beacafccfc4038c72af62f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40fa36af_4b573e55",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2021-02-08T23:00:10Z",
+      "side": 1,
+      "message": "Thanks, but it was an automated tool that found it :)",
+      "parentUuid": "e0395c79_17e9a8a2",
       "range": {
         "startLine": 624,
         "startChar": 39,
