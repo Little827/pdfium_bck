@@ -79,6 +79,23 @@ def RunCommandExtractHashedFiles(cmd):
   except subprocess.CalledProcessError as e:
     return e, None
 
+def AddDirToPathIfNeeded(*path_parts):
+  path = os.path.abspath(os.path.join(*path_parts))
+  if os.path.isdir(path) and path not in sys.path:
+    print("notinpath")
+    sys.path.append(path)
+
+def GetPDFiumDir():
+  # Expect |my_dir| to be .../pdfium/testing/tools.
+  my_dir = os.path.dirname(os.path.realpath(__file__))
+  testing_dir = os.path.dirname(my_dir)
+  if (os.path.basename(my_dir) != 'tools' or
+      os.path.basename(testing_dir) != 'testing'):
+    raise Exception('Confused, can not find pdfium root directory, aborting.')
+  pdfium_dir = os.path.dirname(testing_dir)
+  print(pdfium_dir)
+  return pdfium_dir
+
 
 class DirectoryFinder:
   '''A class for finding directories and paths under either a standalone
