@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f3745d_81891106",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-12T23:44:23Z",
+      "side": 1,
+      "message": "This is the step 1 before splitting a whole path into sub paths, moving all the helpers to where the final caller is gonna be.\n\nThis CL is a refactoring that doesn\u0027t change the rendering process.",
+      "revId": "401202e4e9edc2b50119faccacd72f47147b893f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
