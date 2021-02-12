@@ -5,7 +5,7 @@
 
 import functools
 import multiprocessing
-import optparse
+import argparse
 import os
 import re
 import shutil
@@ -17,6 +17,8 @@ import common
 import gold
 import pngdiffer
 import suppressor
+from skia_gold import pdfium_skia_gold_properties
+
 
 # Arbitrary timestamp, expressed in seconds since the epoch, used to make sure
 # that tests that depend on the current time are stable. Happens to be the
@@ -67,6 +69,14 @@ class TestRunner:
     self.delete_output_on_success = False
     self.enforce_expected_images = False
     self.oneshot_renderer = False
+    self.skia_tester = None
+
+  def GetSkiaGoldTester(self):
+    if not self.skia_tester:
+      self.skia_tester = gold.SkiaGoldTester(
+          source_type=self.test_type,
+          skia_gold_args=self.options)
+    return self.skia_tester
 
   # GenerateAndTest returns a tuple <success, outputfiles> where
   # success is a boolean indicating whether the tests passed comparison
@@ -223,24 +233,14 @@ class TestRunner:
   def HandleResult(self, input_filename, input_path, result):
     success, image_paths = result
 
-    if image_paths:
-      for img_path, md5_hash in image_paths:
+    if image_paths and self.test_type not in TEXT_TESTS:
+      print(image_paths)
+      for img_path, _ in image_paths:
         # The output filename without image extension becomes the test name.
         # For example, "/path/to/.../testing/corpus/example_005.pdf.0.png"
         # becomes "example_005.pdf.0".
         test_name = os.path.splitext(os.path.split(img_path)[1])[0]
-
-        matched = "suppressed"
-        if not self.test_suppressor.IsResultSuppressed(input_filename):
-          matched = self.gold_baseline.MatchLocalResult(test_name, md5_hash)
-          if matched == gold.GoldBaseline.MISMATCH:
-            print 'Skia Gold hash mismatch for test case: %s' % test_name
-          elif matched == gold.GoldBaseline.NO_BASELINE:
-            print 'No Skia Gold baseline found for test case: %s' % test_name
-
-        if self.gold_results:
-          self.gold_results.AddTestResult(test_name, md5_hash, img_path,
-                                          matched)
+        self.GetSkiaGoldTester().UploadTestResultToSkiaGold(test_name, img_path)
 
     if self.test_suppressor.IsResultSuppressed(input_filename):
       self.result_suppressed_cases.append(input_filename)
@@ -254,60 +254,48 @@ class TestRunner:
     # Running a test defines a number of attributes on the fly.
     # pylint: disable=attribute-defined-outside-init
 
-    parser = optparse.OptionParser()
+    parser = argparse.ArgumentParser()
 
-    parser.add_option(
+    parser.add_argument(
         '--build-dir',
         default=os.path.join('out', 'Debug'),
         help='relative path from the base source directory')
 
-    parser.add_option(
+    parser.add_argument(
         '-j',
         default=multiprocessing.cpu_count(),
         dest='num_workers',
-        type='int',
+        type=int,
         help='run NUM_WORKERS jobs in parallel')
 
-    parser.add_option(
+    parser.add_argument(
         '--disable-javascript',
         action="store_true",
         dest="disable_javascript",
         help='Prevents JavaScript from executing in PDF files.')
 
-    parser.add_option(
+    parser.add_argument(
         '--disable-xfa',
         action="store_true",
         dest="disable_xfa",
         help='Prevents processing XFA forms.')
 
-    parser.add_option(
+    # TODO: Remove when pdfium recipe stops passing this argument
+    parser.add_argument(
         '--gold_properties',
         default='',
         dest="gold_properties",
         help='Key value pairs that are written to the top level '
         'of the JSON file that is ingested by Gold.')
 
-    parser.add_option(
-        '--gold_key',
-        default='',
-        dest="gold_key",
-        help='Key value pairs that are added to the "key" field '
-        'of the JSON file that is ingested by Gold.')
-
-    parser.add_option(
-        '--gold_output_dir',
-        default='',
-        dest="gold_output_dir",
-        help='Path of where to write the JSON output to be '
-        'uploaded to Gold.')
-
-    parser.add_option(
+    # TODO: Remove when pdfium recipe stops passing this argument
+    parser.add_argument(
         '--gold_ignore_hashes',
         default='',
         dest="gold_ignore_hashes",
         help='Path to a file with MD5 hashes we wish to ignore.')
 
-    parser.add_option(
+    parser.add_argument(
         '--regenerate_expected',
         default='',
         dest="regenerate_expected",
@@ -316,25 +304,30 @@ class TestRunner:
         '"platform" to regenerate only platform-specific '
         'expected pngs.')
 
-    parser.add_option(
+    parser.add_argument(
         '--reverse-byte-order',
         action='store_true',
         dest="reverse_byte_order",
         help='Run image-based tests using --reverse-byte-order.')
 
-    parser.add_option(
+    parser.add_argument(
         '--ignore_errors',
         action="store_true",
         dest="ignore_errors",
         help='Prevents the return value from being non-zero '
         'when image comparison fails.')
 
-    self.options, self.args = parser.parse_args()
+    gold.add_skia_gold_args(parser)
+
+    self.options, self.inputted_file_paths = parser.parse_known_args()
 
     if (self.options.regenerate_expected and
         self.options.regenerate_expected not in ['all', 'platform']):
       print 'FAILURE: --regenerate_expected must be "all" or "platform"'
       return 1
+
+    # test skia_gold 
+    #pdfium_skia_gold_properties.print_check()
 
     finder = common.DirectoryFinder(self.options.build_dir)
     self.fixup_path = finder.ScriptPath('fixup_pdf_template.py')
@@ -370,15 +363,16 @@ class TestRunner:
       print "FAILURE: %s" % error_message
       return 1
 
-    self.gold_baseline = gold.GoldBaseline(self.options.gold_properties)
 
     walk_from_dir = finder.TestingDir(test_dir)
 
     self.test_cases = []
     self.execution_suppressed_cases = []
     input_file_re = re.compile('^.+[.](in|pdf)$')
-    if self.args:
-      for file_name in self.args:
+    print(self.inputted_file_paths)
+    print(self.options)
+    if self.inputted_file_paths:
+      for file_name in self.inputted_file_paths:
         file_name.replace('.pdf', '.in')
         input_path = os.path.join(walk_from_dir, file_name)
         if not os.path.isfile(input_path):
@@ -401,15 +395,10 @@ class TestRunner:
     self.test_cases.sort()
     self.failures = []
     self.surprises = []
+    self.skia_gold_negative = []
+    self.skia_gold_untriaged = []
     self.result_suppressed_cases = []
-
-    # Collect Gold results if an output directory was named.
-    self.gold_results = None
-    if self.options.gold_output_dir:
-      self.gold_results = gold.GoldResults(
-          self.test_type, self.options.gold_output_dir,
-          self.options.gold_properties, self.options.gold_key,
-          self.options.gold_ignore_hashes)
+    
 
     if self.options.num_workers > 1 and len(self.test_cases) > 1:
       try:
@@ -434,9 +423,6 @@ class TestRunner:
         result = self.GenerateAndTest(input_filename, input_file_dir)
         self.HandleResult(input_filename,
                           os.path.join(input_file_dir, input_filename), result)
-
-    if self.gold_results:
-      self.gold_results.WriteResults()
 
     if self.surprises:
       self.surprises.sort()
