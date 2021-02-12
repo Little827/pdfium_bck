@@ -8,6 +8,7 @@
 
 #include "core/fxcrt/fx_system.h"
 #include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/numerics/safe_math.h"
 
 namespace {
@@ -28,6 +29,11 @@ bool CheckSimpleLinePath(const std::vector<FX_PATHPOINT>& points,
       points[2].m_Type != FXPT_TYPE::LineTo ||
       points[0].m_Point != points[2].m_Point) {
     return false;
+  }
+
+  if (points[0].m_Point == points[1].m_Point) {
+    // A special case that all 3 points overlap.
+    return true;
   }
 
   for (size_t i = 0; i < 2; i++) {
@@ -100,6 +106,72 @@ bool IsFoldingDiagonalLine(const CFX_PointF& a,
                            const CFX_PointF& c) {
   return a.x != b.x && c.x != b.x && a.y != b.y && c.y != b.y &&
          (a.y - b.y) * (c.x - b.x) == (c.y - b.y) * (a.x - b.x);
+}
+
+void ProcessSubPath(const std::vector<FX_PATHPOINT>& sub_path,
+                    const CFX_Matrix* matrix,
+                    bool adjust,
+                    CFX_PathData* new_path,
+                    bool* thin,
+                    bool* set_identity) {
+  // TODO(crbug.com/pdfium/1639): Need to handle the case when there are
+  // only 2 points in the path that forms a zero area.
+  if (sub_path.size() < 3)
+    return;
+
+  if (CheckSimpleLinePath(sub_path, matrix, adjust, new_path, thin,
+                          set_identity)) {
+    return;
+  }
+
+  if (CheckPalindromicPath(sub_path, new_path, thin))
+    return;
+
+  for (size_t i = 0; i < sub_path.size(); i++) {
+    FXPT_TYPE point_type = sub_path[i].m_Type;
+
+    if (point_type == FXPT_TYPE::MoveTo) {
+      DCHECK_EQ(0, i);
+      continue;
+    }
+
+    if (point_type == FXPT_TYPE::BezierTo) {
+      i += 2;
+      DCHECK(i < sub_path.size());
+      continue;
+    }
+
+    DCHECK(point_type == FXPT_TYPE::LineTo);
+    int next_index = (i + 1) % (sub_path.size());
+    const FX_PATHPOINT& next = sub_path[next_index];
+    if (next.m_Type == FXPT_TYPE::BezierTo || next.m_Type == FXPT_TYPE::MoveTo)
+      continue;
+
+    const FX_PATHPOINT& prev = sub_path[i - 1];
+    const FX_PATHPOINT& cur = sub_path[i];
+
+    // Append folding paths.
+    if (IsFoldingVerticalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
+      bool use_prev = fabs(cur.m_Point.y - prev.m_Point.y) <
+                      fabs(cur.m_Point.y - next.m_Point.y);
+      const FX_PATHPOINT& start = use_prev ? prev : cur;
+      const FX_PATHPOINT& end = use_prev ? sub_path[next_index - 1] : next;
+      new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
+      new_path->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
+      continue;
+    }
+
+    if (IsFoldingHorizontalLine(prev.m_Point, cur.m_Point, next.m_Point) ||
+        IsFoldingDiagonalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
+      bool use_prev = fabs(cur.m_Point.x - prev.m_Point.x) <
+                      fabs(cur.m_Point.x - next.m_Point.x);
+      const FX_PATHPOINT& start = use_prev ? prev : cur;
+      const FX_PATHPOINT& end = use_prev ? sub_path[next_index - 1] : next;
+      new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
+      new_path->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
+      continue;
+    }
+  }
 }
 
 void UpdateLineEndPoints(CFX_FloatRect* rect,
@@ -397,64 +469,47 @@ bool CFX_PathData::GetZeroAreaPath(const CFX_Matrix* matrix,
                                    CFX_PathData* new_path,
                                    bool* thin,
                                    bool* set_identity) const {
+  //printf("GetZeroAreaPath() - point number = %zu\n", m_Points.size());
   *set_identity = false;
 
-  // TODO(crbug.com/pdfium/1639): Need to handle the case when there are
-  // only 2 points in the path that forms a zero area.
-  if (m_Points.size() < 3)
-    return false;
-
-  if (CheckSimpleLinePath(m_Points, matrix, adjust, new_path, thin,
-                          set_identity)) {
-    return true;
-  }
-
-  if (CheckPalindromicPath(m_Points, new_path, thin))
-    return true;
-
-  int start_point = 0;
+  std::vector<FX_PATHPOINT> sub_path;
   for (size_t i = 0; i < m_Points.size(); i++) {
     FXPT_TYPE point_type = m_Points[i].m_Type;
     if (point_type == FXPT_TYPE::MoveTo) {
-      start_point = i;
+      // Process the exisitng sub path.
+      ProcessSubPath(sub_path, matrix, adjust, new_path, thin, set_identity);
+      sub_path.clear();
+
+      // Start forming the next sub path.
+      //printf("\nStart new subpath:\n");
+      sub_path.push_back(m_Points[i]);
+      //printf("(%f, %f) ",  m_Points[i].m_Point.x, m_Points[i].m_Point.y);
       continue;
     }
 
     if (point_type == FXPT_TYPE::BezierTo) {
+      sub_path.push_back(m_Points[i]);
+      //printf("(%f, %f) ",  m_Points[i].m_Point.x, m_Points[i].m_Point.y);
+
+      sub_path.push_back(m_Points[i + 1]);
+      //printf("(%f, %f) ",  m_Points[i+1].m_Point.x, m_Points[i+1].m_Point.y);
+
+      sub_path.push_back(m_Points[i + 2]);
+      //printf("(%f, %f) ",  m_Points[i+2].m_Point.x, m_Points[i+2].m_Point.y);
+
       i += 2;
       continue;
     }
 
     DCHECK(point_type == FXPT_TYPE::LineTo);
-    int next_index =
-        (i + 1 - start_point) % (m_Points.size() - start_point) + start_point;
-    const FX_PATHPOINT& next = m_Points[next_index];
-    if (next.m_Type == FXPT_TYPE::BezierTo || next.m_Type == FXPT_TYPE::MoveTo)
-      continue;
+    sub_path.push_back(m_Points[i]);
+    //printf("(%f, %f) ",  m_Points[i].m_Point.x, m_Points[i].m_Point.y);
 
-    const FX_PATHPOINT& prev = m_Points[i - 1];
-    const FX_PATHPOINT& cur = m_Points[i];
-    if (IsFoldingVerticalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
-      bool use_prev = fabs(cur.m_Point.y - prev.m_Point.y) <
-                      fabs(cur.m_Point.y - next.m_Point.y);
-      const FX_PATHPOINT& start = use_prev ? prev : cur;
-      const FX_PATHPOINT& end = use_prev ? m_Points[next_index - 1] : next;
-      new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
-      new_path->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
-      continue;
-    }
-
-    if (IsFoldingHorizontalLine(prev.m_Point, cur.m_Point, next.m_Point) ||
-        IsFoldingDiagonalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
-      bool use_prev = fabs(cur.m_Point.x - prev.m_Point.x) <
-                      fabs(cur.m_Point.x - next.m_Point.x);
-      const FX_PATHPOINT& start = use_prev ? prev : cur;
-      const FX_PATHPOINT& end = use_prev ? m_Points[next_index - 1] : next;
-      new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
-      new_path->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
-      continue;
-    }
+    continue;
   }
+
+  // Process the final sub path.
+  ProcessSubPath(sub_path, matrix, adjust, new_path, thin, set_identity);
 
   size_t new_path_size = new_path->GetPoints().size();
   if (m_Points.size() > 3 && new_path_size > 0)
