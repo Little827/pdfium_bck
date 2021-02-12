@@ -29,7 +29,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
-  'build_revision': '781f0025b9b62fcdfcf066e3fc320841405e3e3a',
+  'build_revision': '5088ad39f5b8c1d9d6669b871a0dfcf6668b0bd6',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling buildtools
   # and whatever else without interference from each other.
@@ -202,6 +202,39 @@ deps = {
   'tools/memory':
     Var('chromium_git') + '/chromium/src/tools/memory@' +
         Var('tools_memory_revision'),
+
+  'tools/skia_goldctl/linux': {
+    'packages': [
+      {
+        'package': 'skia/tools/goldctl/linux-amd64',
+        'version': 'git_revision:9476457a4a8acb6b45c61c11fa49dd2e9fccc10b',
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'checkout_linux',
+  },
+
+  'tools/skia_goldctl/mac': {
+    'packages': [
+      {
+        'package': 'skia/tools/goldctl/mac-amd64',
+        'version': 'git_revision:9476457a4a8acb6b45c61c11fa49dd2e9fccc10b',
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'checkout_mac',
+  },
+
+  'tools/skia_goldctl/win': {
+    'packages': [
+      {
+        'package': 'skia/tools/goldctl/windows-amd64',
+        'version': 'git_revision:9476457a4a8acb6b45c61c11fa49dd2e9fccc10b',
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'checkout_win',
+  },
 
   'v8':
     Var('chromium_git') + '/v8/v8.git@' + Var('v8_revision'),
