@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b404db71_453b7d72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-12T23:50:04Z",
+      "side": 1,
+      "message": "This the step two before splitting a whole path into sub paths.\n\nEvery sub path can call the helper once it\u0027s formed. See how it will be used in a follow-up CL https://pdfium-review.googlesource.com/c/pdfium/+/78030.",
+      "revId": "151e12ab4416177b2d43df9358cb8c54cb877ce6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
