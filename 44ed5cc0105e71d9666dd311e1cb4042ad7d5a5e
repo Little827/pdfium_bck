@@ -90,6 +90,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a92193_473c2212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-16T20:45:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "69c33f3f_6bd35b8c",
+      "revId": "44ed5cc0105e71d9666dd311e1cb4042ad7d5a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "999721a8_9195bdcb",
@@ -103,6 +121,30 @@
       "writtenOn": "2021-02-16T20:02:08Z",
       "side": 1,
       "message": "can we make a new patch to remove it instead?",
+      "range": {
+        "startLine": 374,
+        "startChar": 7,
+        "endLine": 374,
+        "endChar": 45
+      },
+      "revId": "44ed5cc0105e71d9666dd311e1cb4042ad7d5a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79a6b6b6_ef3ac043",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-16T20:45:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "999721a8_9195bdcb",
       "range": {
         "startLine": 374,
         "startChar": 7,
