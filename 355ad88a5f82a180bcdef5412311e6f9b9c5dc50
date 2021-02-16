@@ -16,6 +16,161 @@
       "message": "See patchset 5 for vanilla patch.",
       "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e87a16_46719381",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "Not sure what I\u0027m looking at in ps5. Is ps5 the unmodified upstream source code from 2.4.0?",
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1719f628_68ac7f22",
+        "filename": "third_party/libopenjpeg20/dwt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "we added a_count parameter here in 0003-dwt-decode.patch?",
+      "range": {
+        "startLine": 130,
+        "startChar": 43,
+        "endLine": 130,
+        "endChar": 52
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b38a450d_ecc6d734",
+        "filename": "third_party/libopenjpeg20/dwt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "we added a const here in 0003-dwt-decode.patch?",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 26
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177b5c40_f0b2d99f",
+        "filename": "third_party/libopenjpeg20/dwt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "we added size_t to these old function pointer passed here for a later check in 0003-dwt-decode.patch?",
+      "range": {
+        "startLine": 167,
+        "startChar": 8,
+        "endLine": 167,
+        "endChar": 48
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10278cd1_e8a3eee0",
+        "filename": "third_party/libopenjpeg20/dwt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "added a_count argument in patch 0003 ?",
+      "range": {
+        "startLine": 1043,
+        "startChar": 45,
+        "endLine": 1043,
+        "endChar": 54
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba857ac1_64e38c4c",
+        "filename": "third_party/libopenjpeg20/dwt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "addition of l_data_count for size calculations in 0003?",
+      "range": {
+        "startLine": 1734,
+        "startChar": 0,
+        "endLine": 1734,
+        "endChar": 0
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec948a37_9990a00d",
+        "filename": "third_party/libopenjpeg20/jp2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "Patch 0007 changed this to use the _BE version already fixed upstream, so we can retire patch 0007 and the whitespace only change here?",
+      "range": {
+        "startLine": 1326,
+        "startChar": 59,
+        "endLine": 1326,
+        "endChar": 68
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

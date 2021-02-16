@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf04a90_83b4764c",
+        "filename": "third_party/libopenjpeg20/jp2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T21:49:05Z",
+      "side": 1,
+      "message": "did we lose this line - patch 0005 changed it to dst \u003d new_comps[i].data;\nNope - we consolidated it at 1120.",
+      "range": {
+        "startLine": 1122,
+        "startChar": 0,
+        "endLine": 1122,
+        "endChar": 12
+      },
+      "revId": "de5ac372af5ff41b619720d755b6d3e1ba37e236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
