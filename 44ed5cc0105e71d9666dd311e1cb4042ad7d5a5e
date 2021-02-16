@@ -34,6 +34,24 @@
       "parentUuid": "e0ea0e06_2e65aa8f",
       "revId": "44ed5cc0105e71d9666dd311e1cb4042ad7d5a5e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6e70ef_5fd790ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-16T20:00:37Z",
+      "side": 1,
+      "message": "I could do that if you want, although the git history indicates we\u0027ve never done that. I\u0027m guessing it\u0027s because it temporarily introduces vulnerabilities.",
+      "parentUuid": "2c5e8257_6a1aed6c",
+      "revId": "44ed5cc0105e71d9666dd311e1cb4042ad7d5a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
