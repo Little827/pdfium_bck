@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaf817f_519e281f",
+        "filename": "third_party/libopenjpeg20/0003-dwt-decode.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T23:15:37Z",
+      "side": 0,
+      "message": "Ok, looks like the removed static prototypes that weren\u0027t needed given better ordering, so this block is OK.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "749f2f7e7e181616c364c16350d09d16aa06248a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b017829_26bce050",
+        "filename": "third_party/libopenjpeg20/0003-dwt-decode.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T23:15:37Z",
+      "side": 0,
+      "message": "these became typedefs, more complicated args here, but we lost a size_t parameter. hmm.",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 73
+      },
+      "revId": "749f2f7e7e181616c364c16350d09d16aa06248a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a56cc6_40e0726f",
+        "filename": "third_party/libopenjpeg20/0003-dwt-decode.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T23:15:37Z",
+      "side": 0,
+      "message": "moved to line 1729 - we\u0027ll still  want these chages.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "749f2f7e7e181616c364c16350d09d16aa06248a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5513b2d3_3a743db1",
+        "filename": "third_party/libopenjpeg20/0003-dwt-decode.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T23:15:37Z",
+      "side": 0,
+      "message": "missing from new code at 1734.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 28
+      },
+      "revId": "749f2f7e7e181616c364c16350d09d16aa06248a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a8dcff_5fede649",
+        "filename": "third_party/libopenjpeg20/0003-dwt-decode.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T23:15:37Z",
+      "side": 0,
+      "message": "ditto: this distinction in compuation between _count and _size can still be made a line 1746 or so.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 86
+      },
+      "revId": "749f2f7e7e181616c364c16350d09d16aa06248a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
