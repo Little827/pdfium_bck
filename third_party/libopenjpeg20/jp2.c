@@ -586,6 +586,12 @@ static OPJ_BOOL opj_jp2_read_ihdr(opj_jp2_t *jp2,
     opj_read_bytes(p_image_header_data, &(jp2->numcomps), 2);   /* NC */
     p_image_header_data += 2;
 
+    if (jp2->h < 1 || jp2->w < 1 || jp2->numcomps < 1) {
+        opj_event_msg(p_manager, EVT_ERROR,
+                      "Wrong values for: w(%d) h(%d) numcomps(%d) (ihdr)\n",
+                      jp2->w, jp2->h, jp2->numcomps);
+        return OPJ_FALSE;
+    }
     if ((jp2->numcomps - 1U) >=
             16384U) { /* unsigned underflow is well defined: 1U <= jp2->numcomps <= 16384U */
         opj_event_msg(p_manager, EVT_ERROR, "Invalid number of components (ihdr)\n");
@@ -593,7 +599,6 @@ static OPJ_BOOL opj_jp2_read_ihdr(opj_jp2_t *jp2,
     }
 
     /* allocate memory for components */
-    opj_free(jp2->comps);
     jp2->comps = (opj_jp2_comps_t*) opj_calloc(jp2->numcomps,
                  sizeof(opj_jp2_comps_t));
     if (jp2->comps == 0) {
@@ -1058,14 +1063,6 @@ static OPJ_BOOL opj_jp2_apply_pclr(opj_image_t *image,
     }
 
     old_comps = image->comps;
-    /* Overflow check: prevent integer overflow */
-    for (i = 0; i < nr_channels; ++i) {
-      cmp = cmap[i].cmp;
-      if (old_comps[cmp].h == 0 || old_comps[cmp].w > ((OPJ_UINT32)-1) / sizeof(OPJ_INT32) / old_comps[cmp].h) {
-        return OPJ_FALSE;
-      }
-    }
-
     new_comps = (opj_image_comp_t*)
                 opj_malloc(nr_channels * sizeof(opj_image_comp_t));
     if (!new_comps) {
@@ -1082,8 +1079,8 @@ static OPJ_BOOL opj_jp2_apply_pclr(opj_image_t *image,
             assert(pcol == 0);
             new_comps[i] = old_comps[cmp];
         } else {
-            assert( i == pcol ); // probably wrong?
-            new_comps[i] = old_comps[cmp];
+            assert(i == pcol);
+            new_comps[pcol] = old_comps[cmp];
         }
 
         /* Palette mapping: */
@@ -1110,26 +1107,20 @@ static OPJ_BOOL opj_jp2_apply_pclr(opj_image_t *image,
         cmp = cmap[i].cmp;
         pcol = cmap[i].pcol;
         src = old_comps[cmp].data;
-        dst = new_comps[i].data;
-        max = new_comps[i].w * new_comps[i].h;
-
-        /* Prevent null pointer access */
-        if (!src || !dst) {
-          for (j = 0; j < nr_channels; ++j) {
-            opj_image_data_free(new_comps[j].data);
-          }
-          opj_free(new_comps);
-          new_comps = NULL;
-          return OPJ_FALSE;
-        }
+        assert(src); /* verified above */
+        max = new_comps[pcol].w * new_comps[pcol].h;
 
         /* Direct use: */
         if (cmap[i].mtyp == 0) {
+            dst = new_comps[i].data;
+            assert(dst);
             for (j = 0; j < max; ++j) {
                 dst[j] = src[j];
             }
         } else {
-            assert( i == pcol ); // probably wrong?
+            assert(i == pcol);
+            dst = new_comps[pcol].data;
+            assert(dst);
             for (j = 0; j < max; ++j) {
                 /* The index */
                 if ((k = src[j]) < 0) {
@@ -1317,7 +1308,7 @@ static OPJ_BOOL opj_jp2_read_cmap(opj_jp2_t * jp2,
 
 
     for (i = 0; i < nr_channels; ++i) {
-        opj_read_bytes_BE(p_cmap_header_data, &l_value, 2);     /* CMP^i */
+        opj_read_bytes(p_cmap_header_data, &l_value, 2);            /* CMP^i */
         p_cmap_header_data += 2;
         cmap[i].cmp = (OPJ_UINT16) l_value;
 
@@ -1599,9 +1590,7 @@ static OPJ_BOOL opj_jp2_read_colr(opj_jp2_t *jp2,
                       "COLR BOX meth value is not a regular value (%d), "
                       "so we will ignore the entire Colour Specification box. \n", jp2->meth);
     }
-    if (jp2->color.jp2_has_colr) {
-        jp2->j2k->enumcs = jp2->enumcs;
-    }
+
     return OPJ_TRUE;
 }
 
@@ -1908,7 +1897,6 @@ void opj_jp2_setup_decoder(opj_jp2_t *jp2, opj_dparameters_t *parameters)
 
     /* further JP2 initializations go here */
     jp2->color.jp2_has_colr = 0;
-    jp2->comps = NULL;
     jp2->ignore_pclr_cmap_cdef = parameters->flags &
                                  OPJ_DPARAMETERS_IGNORE_PCLR_CMAP_CDEF_FLAG;
 }
@@ -3251,6 +3239,18 @@ OPJ_BOOL opj_jp2_set_decoded_resolution_factor(opj_jp2_t *p_jp2,
 {
     return opj_j2k_set_decoded_resolution_factor(p_jp2->j2k, res_factor, p_manager);
 }
+
+/* ----------------------------------------------------------------------- */
+
+OPJ_BOOL opj_jp2_encoder_set_extra_options(
+    opj_jp2_t *p_jp2,
+    const char* const* p_options,
+    opj_event_mgr_t * p_manager)
+{
+    return opj_j2k_encoder_set_extra_options(p_jp2->j2k, p_options, p_manager);
+}
+
+/* ----------------------------------------------------------------------- */
 
 /* JPIP specific */
 
