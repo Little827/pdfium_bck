@@ -16,6 +16,24 @@
       "message": "Premature ping, but I\u0027m worried this is lost in the emails.",
       "revId": "44ed5cc0105e71d9666dd311e1cb4042ad7d5a5e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5e8257_6a1aed6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T19:56:44Z",
+      "side": 1,
+      "message": "No worries. Do you have a patch set that is the vanilla 2.4.0 prior to patch application?  That would make diffing easier.  But I\u0027ll look now.",
+      "parentUuid": "e0ea0e06_2e65aa8f",
+      "revId": "44ed5cc0105e71d9666dd311e1cb4042ad7d5a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
