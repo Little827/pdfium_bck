@@ -84,7 +84,7 @@ typedef struct FPDF_IMAGEOBJ_METADATA {
   // The number of bits used to represent each pixel.
   unsigned int bits_per_pixel;
   // The image's colorspace. See above for the list of FPDF_COLORSPACE_*.
-  int colorspace;
+  void* colorspace;
   // The image's marked content ID. Useful for pairing with associated alt-text.
   // A value of -1 indicates no ID.
   int marked_content_id;
