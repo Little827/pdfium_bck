@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb911663_666547f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T22:54:53Z",
+      "side": 1,
+      "message": "we had an old patch 35.  Should be 39.",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "262f0112_31f5ab5d",
@@ -150,6 +173,75 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43089874_47be2e99",
+        "filename": "third_party/libopenjpeg20/j2k.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2706,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T22:54:53Z",
+      "side": 1,
+      "message": "Patch 0038 already present upstream here.",
+      "range": {
+        "startLine": 2706,
+        "startChar": 0,
+        "endLine": 2706,
+        "endChar": 4
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c10612a_43439bac",
+        "filename": "third_party/libopenjpeg20/j2k.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10604,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T22:54:53Z",
+      "side": 1,
+      "message": "patch 0038 already present upstream",
+      "range": {
+        "startLine": 10604,
+        "startChar": 0,
+        "endLine": 10604,
+        "endChar": 4
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c6456d7_4848f8d9",
+        "filename": "third_party/libopenjpeg20/jp2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T22:54:53Z",
+      "side": 1,
+      "message": "opj_image_data_free per 0035?",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 40
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec948a37_9990a00d",
@@ -168,6 +260,53 @@
         "startChar": 59,
         "endLine": 1326,
         "endChar": 68
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e49d8b_617a03bd",
+        "filename": "third_party/libopenjpeg20/jp2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T22:54:53Z",
+      "side": 1,
+      "message": "NM. Looking at wrong PS.  Good. here...",
+      "parentUuid": "ec948a37_9990a00d",
+      "range": {
+        "startLine": 1326,
+        "startChar": 59,
+        "endLine": 1326,
+        "endChar": 68
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5cbb642_65b2b52c",
+        "filename": "third_party/libopenjpeg20/tcd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-16T22:54:53Z",
+      "side": 1,
+      "message": "patch 0037 already upstreamed looks like.",
+      "range": {
+        "startLine": 910,
+        "startChar": 16,
+        "endLine": 910,
+        "endChar": 26
       },
       "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
