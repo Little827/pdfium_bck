@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d016e5_28026cea",
+        "filename": "third_party/libopenjpeg20/0003-dwt-decode.patch",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-17T18:14:47Z",
+      "side": 1,
+      "message": "so the changes no longer present in this section are the only remaining unresolved issue, I think.  Did we have a reason that we didn\u0027t need the old patch contents here?",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "c0a5047920cb7109a07fe7a946e3e8e32ab47c06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
