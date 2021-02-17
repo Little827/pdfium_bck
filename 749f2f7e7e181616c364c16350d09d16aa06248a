@@ -114,6 +114,30 @@
       },
       "revId": "749f2f7e7e181616c364c16350d09d16aa06248a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048a330a_287a6d34",
+        "filename": "third_party/libopenjpeg20/0003-dwt-decode.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-17T00:06:36Z",
+      "side": 0,
+      "message": "I believe the distinction was only needed to pass to p_function on line 169 on this file.\n\nAlso note that the check is slightly different on line 1748 of the new dwt.c:\n\n l_data_size \u003e (SIZE_MAX / (NB_ELTS_V8 * sizeof(OPJ_INT32)))",
+      "parentUuid": "82a8dcff_5fede649",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 86
+      },
+      "revId": "749f2f7e7e181616c364c16350d09d16aa06248a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

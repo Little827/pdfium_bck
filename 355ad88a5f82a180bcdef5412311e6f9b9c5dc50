@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d278d165_8d5a12f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-17T00:06:36Z",
+      "side": 1,
+      "message": "Ack, didn\u0027t know what to do here :) \n\nI\u0027ll change to 0039",
+      "parentUuid": "fb911663_666547f3",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "262f0112_31f5ab5d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-16T23:15:37Z",
       "side": 1,
       "message": "becomes 0039 if we don\u0027t reuse numbers.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a60a11_dc90caf8",
+        "filename": "third_party/libopenjpeg20/README.pdfium",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-17T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7cff56_87abc066",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -255,6 +303,30 @@
       "writtenOn": "2021-02-16T22:54:53Z",
       "side": 1,
       "message": "opj_image_data_free per 0035?",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 40
+      },
+      "revId": "355ad88a5f82a180bcdef5412311e6f9b9c5dc50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6ac566_c1398ab8",
+        "filename": "third_party/libopenjpeg20/jp2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-17T00:06:36Z",
+      "side": 1,
+      "message": "Indeed this is still needed... Dunno where I dropped that.",
+      "parentUuid": "8c6456d7_4848f8d9",
       "range": {
         "startLine": 1125,
         "startChar": 0,
