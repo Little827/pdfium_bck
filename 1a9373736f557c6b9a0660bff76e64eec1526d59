@@ -52,6 +52,24 @@
       "parentUuid": "c0445c87_f977b46a",
       "revId": "1a9373736f557c6b9a0660bff76e64eec1526d59",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b276ca_85143371",
+        "filename": "DEPS",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-18T23:23:47Z",
+      "side": 1,
+      "message": "\u003e Locally when I rolled only build and clang, it didn\u0027t build but it did when buildtools was rolled too\n\nThis is exactly what happened to me.",
+      "parentUuid": "64f35e26_4d77264e",
+      "revId": "1a9373736f557c6b9a0660bff76e64eec1526d59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
