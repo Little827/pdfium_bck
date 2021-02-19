@@ -141,6 +141,24 @@
       "parentUuid": "fd250109_d99388a5",
       "revId": "1a9373736f557c6b9a0660bff76e64eec1526d59",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f094b2f1_58e2831c",
+        "filename": "DEPS",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-02-19T17:12:43Z",
+      "side": 1,
+      "message": "Well, Windows builds with clang, too (clang-cl). It might not use libc++, though.",
+      "parentUuid": "5de5a79c_d350343b",
+      "revId": "1a9373736f557c6b9a0660bff76e64eec1526d59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
