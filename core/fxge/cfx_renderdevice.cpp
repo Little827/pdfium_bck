@@ -323,13 +323,13 @@ bool CheckSimpleLinePath(const std::vector<FX_PATHPOINT>& points,
                          CFX_PathData* new_path,
                          bool* thin,
                          bool* set_identity) {
-  if (points.size() != 3)
+  if (points.size() != 2 && points.size() != 3)
     return false;
 
   if (points[0].m_Type != FXPT_TYPE::MoveTo ||
       points[1].m_Type != FXPT_TYPE::LineTo ||
-      points[2].m_Type != FXPT_TYPE::LineTo ||
-      points[0].m_Point != points[2].m_Point) {
+      (points.size() == 3 && (points[2].m_Type != FXPT_TYPE::LineTo ||
+                              points[0].m_Point != points[2].m_Point))) {
     return false;
   }
 
@@ -354,11 +354,7 @@ bool CheckSimpleLinePath(const std::vector<FX_PATHPOINT>& points,
   if (adjust && matrix)
     *set_identity = true;
 
-  // Note, both x and y coordinates of the end points need to be different.
-  if (points[0].m_Point.x != points[1].m_Point.x &&
-      points[0].m_Point.y != points[1].m_Point.y) {
-    *thin = true;
-  }
+  *thin = true;
   return true;
 }
 
@@ -419,9 +415,7 @@ bool GetZeroAreaPath(const std::vector<FX_PATHPOINT>& points,
                      bool* set_identity) {
   *set_identity = false;
 
-  // TODO(crbug.com/pdfium/1639): Need to handle the case when there are
-  // only 2 points in the path that forms a zero area.
-  if (points.size() < 3)
+  if (points.size() < 2)
     return false;
 
   if (CheckSimpleLinePath(points, matrix, adjust, new_path, thin,
