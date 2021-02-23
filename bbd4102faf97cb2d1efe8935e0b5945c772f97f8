@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07af941_d2282865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-23T23:39:41Z",
+      "side": 1,
+      "message": "The rendering result for this pixel test doesn\u0027t change due to the change since all sub paths are folding lines which will be rendered thin.\n\nBut the pixel test can prove visually that if the first sub path makes `set_identity` true and let this flag affect the rest of the path, some folding lines will be flipped to wrong coordinates inside the page and cause a incorrect rendering result (in offline discussion).",
+      "parentUuid": "f81129be_ab6a11a0",
+      "revId": "bbd4102faf97cb2d1efe8935e0b5945c772f97f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c51c5976_2a441403",
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a68e64_84bc257e",
+        "filename": "DEPS",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-23T23:39:41Z",
+      "side": 1,
+      "message": "A corpus test is changed related to this change. This line needs to be changed into revision number after the corpus test CL [1] lands.\n\nCurrently it has been updated with the latest corpus test result.\n\n[1]https://pdfium-review.googlesource.com/c/pdfium_tests/+/78010",
+      "parentUuid": "c51c5976_2a441403",
+      "revId": "bbd4102faf97cb2d1efe8935e0b5945c772f97f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38063c76_1f21b021",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-02-23T20:32:55Z",
       "side": 1,
       "message": "No brackets?",
+      "range": {
+        "startLine": 338,
+        "startChar": 46,
+        "endLine": 338,
+        "endChar": 47
+      },
+      "revId": "bbd4102faf97cb2d1efe8935e0b5945c772f97f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb5db3d_52562b0c",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-23T23:39:41Z",
+      "side": 1,
+      "message": "Done.\nBTW, having the brackets for one-line statement is optional.",
+      "parentUuid": "38063c76_1f21b021",
       "range": {
         "startLine": 338,
         "startChar": 46,
