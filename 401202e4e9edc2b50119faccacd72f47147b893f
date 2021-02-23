@@ -33,6 +33,29 @@
       "message": "LGTM, but I\u0027d feel more comfortable deferring to Tom here.",
       "revId": "401202e4e9edc2b50119faccacd72f47147b893f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81276ba_9e2c5f6b",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-02-23T21:39:41Z",
+      "side": 1,
+      "message": "While we\u0027re at it, this could become a span passed by value\n  pdfium::span\u003cconst FX_PATHPOINT\u003e points\n\ngetting some automatic bounds checks in release builds with all the other code for indexing, size, etc remaining unchanged (i think).",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 65
+      },
+      "revId": "401202e4e9edc2b50119faccacd72f47147b893f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
