@@ -56,6 +56,30 @@
       },
       "revId": "401202e4e9edc2b50119faccacd72f47147b893f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d815b469_d1268641",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-02-23T22:38:02Z",
+      "side": 1,
+      "message": "Done.\nWhile at it, all helper functions have been modified to use pdfium::span.",
+      "parentUuid": "d81276ba_9e2c5f6b",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 65
+      },
+      "revId": "401202e4e9edc2b50119faccacd72f47147b893f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
