@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f991528_2c7581f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-02-25T21:21:24Z",
+      "side": 1,
+      "message": "Just a couple quick responses before doing a closer review.",
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8f9b9ad_e12283f4",
@@ -26,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9ef18a8_7065cefb",
+        "filename": "DEPS",
+        "patchSetId": 21
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-02-25T21:21:24Z",
+      "side": 1,
+      "message": "👍 That sounds like a good TODO for my team. (We have other DEPS autorolled, so hopefully we just need to bug someone to set up another one.)\n\nNot sure if she mentioned this already, but Stephanie is on temporary loan as part of a Chrome Exchange, so most of the TODOs probably will be for my team.",
+      "parentUuid": "f8f9b9ad_e12283f4",
+      "range": {
+        "startLine": 210,
+        "startChar": 33,
+        "endLine": 210,
+        "endChar": 73
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf38514a_4b395aa0",
         "filename": "testing/tools/skia_gold/path_util.py",
         "patchSetId": 21
@@ -37,6 +78,30 @@
       "writtenOn": "2021-02-25T20:46:48Z",
       "side": 1,
       "message": "Does PDFium not use vpython?",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9cf9065_5959bb65",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-02-25T21:21:24Z",
+      "side": 1,
+      "message": "Don\u0027t think so. I just did a grep, and vpython only appears in files we pull from Chromium.",
+      "parentUuid": "cf38514a_4b395aa0",
       "range": {
         "startLine": 1,
         "startChar": 15,
