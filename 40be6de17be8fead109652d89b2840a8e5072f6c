@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f9b9ad_e12283f4",
+        "filename": "DEPS",
+        "patchSetId": 21
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "As a note, you might want to set up autorollers at some point like we have for Chromium so you automatically get the latest goldctl version, e.g. https://chromium-review.googlesource.com/c/chromium/src/+/2715841",
+      "range": {
+        "startLine": 210,
+        "startChar": 33,
+        "endLine": 210,
+        "endChar": 73
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf38514a_4b395aa0",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Does PDFium not use vpython?",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7da6336a_d4508066",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Nit: 2021?",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53af6e1b_bf46984e",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Nit: RuntimeError instead of a bare Exception.",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00eaa29b_c1dfbdf2",
+        "filename": "testing/tools/skia_gold/pdfium_skia_gold_properties.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Instead of doing this in each file, you should be able to move this to the directory\u0027s __init__.py.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f17c7d_4be6b12c",
+        "filename": "testing/tools/skia_gold/pdfium_skia_gold_session.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "As a note, if PDFium uses vpython, I recently had \"pathos\" added, which contains a fork of multiprocessing that handles pickling much better. The current solution is fine, but if you run into more issues in the future, it\u0027s worth considering https://source.chromium.org/chromium/chromium/src/+/master:.vpython;l\u003d396?q\u003d.vpython",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804c6cd6_5db6f421",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "205b2c9a_b821f15e",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Instead of writing your own parsing code, I believe you can specify `action\u003d\u0027append\u0027` and `nargs\u003d2` to have argparse handle that for you, see https://source.chromium.org/chromium/chromium/src/+/master:tools/mb/mb.py;l\u003d353?q\u003dtools%2Fmb%2Fmb.py",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b56e20_d6a1cfa3",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Should this fail if given a non-string instead of silently doing nothing?",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caca2248_486e5ee8",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T20:46:48Z",
+      "side": 1,
+      "message": "Nit: Move to top since it begins with \"a\" now.",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
