@@ -346,6 +346,24 @@
       "message": "Can\u0027t help but think how we\u0027ll need to migrate all these print statements when Python 3 migration comes to PDFium. 😄 I guess there are tools for that, at least.",
       "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c00e4a7_181aa4a5",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-25T21:47:55Z",
+      "side": 1,
+      "message": "Could start wrapping any newly added prints in (), should be compatible with both Python 2 and 3.",
+      "parentUuid": "8d65a195_cbbb8c89",
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
