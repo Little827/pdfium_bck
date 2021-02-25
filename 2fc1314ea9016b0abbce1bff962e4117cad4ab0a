@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfa08d0_4c13d859",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-02-25T20:00:36Z",
+      "side": 0,
+      "message": "See my comment from upstream CL.",
+      "revId": "2fc1314ea9016b0abbce1bff962e4117cad4ab0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
