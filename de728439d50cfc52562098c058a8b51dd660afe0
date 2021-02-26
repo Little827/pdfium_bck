@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe65c683_743f22eb",
+        "filename": "DEPS",
+        "patchSetId": 22
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T20:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0645ebfd_c8a3a019",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "de728439d50cfc52562098c058a8b51dd660afe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1914c70c_c6a30c2a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-26T01:37:40Z",
       "side": 1,
       "message": "Nit: Could cache the value by using a method-level (static) variable, e.g.\n\ndef GetPDFiumDir():\n  if not GetPDFiumDir.pdfium_dir:\n    ...\n  return GetPDFiumDir.pdfium_dir\n\nGetPDFiumDir.pdfium_dir \u003d None",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "de728439d50cfc52562098c058a8b51dd660afe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f68aa64_2b2ea7d5",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T20:13:27Z",
+      "side": 1,
+      "message": "oh wow I didn\u0027t know you could this! Updated.",
+      "parentUuid": "1914c70c_c6a30c2a",
       "range": {
         "startLine": 16,
         "startChar": 4,

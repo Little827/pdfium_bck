@@ -519,6 +519,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cafa8c03_b9b15bf6",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T20:13:27Z",
+      "side": 1,
+      "message": "++\n\nIt seems like that would work if the recipe passed in the keys like `--gold_key debug true is_standalone true javascript_runtime enabled` instead of `--gold_key \u0027debug true is_standalone true javascript_runtime enabled\u0027`, so this would require some coordination with recipe changes. Might also get a little messy with other optional positional arguments that are currently expected to be names of test cases. I\u0027ll think about this more and address this in another CL",
+      "parentUuid": "999135d9_2149d5bb",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2b56e20_d6a1cfa3",
