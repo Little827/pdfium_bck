@@ -154,6 +154,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e7705c_51fc9f19",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-26T01:37:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9cf9065_5959bb65",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7da6336a_d4508066",
@@ -461,6 +485,30 @@
       "side": 1,
       "message": "Hmm looks like that would only be helpful if the pdfium recipe passed in the keys like\n`--gold_key is_debug true --gold_key os linux` instead of `--gold_key \u0027is_debug true os linux\u0027`\n\nIt would also set gold_key as [[\u0027is_debug\u0027, \u0027true\u0027], [\u0027os\u0027, \u0027linux\u0027]] so we would still have to do some list comprehension to convert that into a dict. Ideally, it would be nice if there was a way to convert `--gold_key \u0027is_debug true os linux\u0027` and into {\u0027is_debug\u0027: \u0027true\u0027, \u0027os\u0027: \u0027linux\u0027}, but I couldn\u0027t find any built-in argparse feature that does that for you.",
       "parentUuid": "205b2c9a_b821f15e",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999135d9_2149d5bb",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-02-26T01:37:40Z",
+      "side": 1,
+      "message": "Ack, I think you can still do `nargs\u003d\u0027*\u0027` and `action\u003d\u0027append\u0027` to get a list of values instead of having to manually split a string using shlex.split().",
+      "parentUuid": "0226e325_d993ec01",
       "range": {
         "startLine": 20,
         "startChar": 4,
