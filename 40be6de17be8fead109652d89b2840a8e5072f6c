@@ -83,6 +83,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa613f6_43da7594",
+        "filename": "DEPS",
+        "patchSetId": 21
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9ef18a8_7065cefb",
+      "range": {
+        "startLine": 210,
+        "startChar": 33,
+        "endLine": 210,
+        "endChar": 73
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf38514a_4b395aa0",
@@ -153,6 +177,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "936cbf9c_1029ec58",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da6336a_d4508066",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53af6e1b_bf46984e",
@@ -166,6 +214,30 @@
       "writtenOn": "2021-02-25T20:46:48Z",
       "side": 1,
       "message": "Nit: RuntimeError instead of a bare Exception.",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be51647_760b80f9",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53af6e1b_bf46984e",
       "range": {
         "startLine": 23,
         "startChar": 10,
@@ -199,6 +271,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f4db85_f2943833",
+        "filename": "testing/tools/skia_gold/pdfium_skia_gold_properties.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00eaa29b_c1dfbdf2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1f17c7d_4be6b12c",
@@ -212,6 +308,30 @@
       "writtenOn": "2021-02-25T20:46:48Z",
       "side": 1,
       "message": "As a note, if PDFium uses vpython, I recently had \"pathos\" added, which contains a fork of multiprocessing that handles pickling much better. The current solution is fine, but if you run into more issues in the future, it\u0027s worth considering https://source.chromium.org/chromium/chromium/src/+/master:.vpython;l\u003d396?q\u003d.vpython",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6a4f58_384f4f1b",
+        "filename": "testing/tools/skia_gold/pdfium_skia_gold_session.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1f17c7d_4be6b12c",
       "range": {
         "startLine": 14,
         "startChar": 2,
@@ -241,6 +361,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6eb95132_f552c3b8",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "I think I initially copied the testing/tools/gold.py thinking that there would be a lot of overlap, but ended up deleting everything except for _ParseKeyValuePairs()\n\nThere is a good amount of copy and pasted code from bsheedy\u0027s gpu work though https://source.chromium.org/chromium/chromium/src/+/master:content/test/gpu/gpu_tests/skia_gold_integration_test_base.py",
+      "parentUuid": "ca5b1c22_e2709e40",
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "804c6cd6_5db6f421",
         "filename": "testing/tools/skia_gold/skia_gold.py",
         "patchSetId": 21
@@ -252,6 +390,30 @@
       "writtenOn": "2021-02-25T20:46:48Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1505c416_bab78758",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "804c6cd6_5db6f421",
       "range": {
         "startLine": 1,
         "startChar": 12,
@@ -287,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0226e325_d993ec01",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Hmm looks like that would only be helpful if the pdfium recipe passed in the keys like\n`--gold_key is_debug true --gold_key os linux` instead of `--gold_key \u0027is_debug true os linux\u0027`\n\nIt would also set gold_key as [[\u0027is_debug\u0027, \u0027true\u0027], [\u0027os\u0027, \u0027linux\u0027]] so we would still have to do some list comprehension to convert that into a dict. Ideally, it would be nice if there was a way to convert `--gold_key \u0027is_debug true os linux\u0027` and into {\u0027is_debug\u0027: \u0027true\u0027, \u0027os\u0027: \u0027linux\u0027}, but I couldn\u0027t find any built-in argparse feature that does that for you.",
+      "parentUuid": "205b2c9a_b821f15e",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2b56e20_d6a1cfa3",
         "filename": "testing/tools/skia_gold/skia_gold.py",
         "patchSetId": 21
@@ -298,6 +484,30 @@
       "writtenOn": "2021-02-25T20:46:48Z",
       "side": 1,
       "message": "Should this fail if given a non-string instead of silently doing nothing?",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c907d73d_8c74bc2a",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "added an assertion",
+      "parentUuid": "c2b56e20_d6a1cfa3",
       "range": {
         "startLine": 117,
         "startChar": 16,
@@ -321,6 +531,30 @@
       "writtenOn": "2021-02-25T20:46:48Z",
       "side": 1,
       "message": "Nit: Move to top since it begins with \"a\" now.",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05297691_25e59dad",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caca2248_486e5ee8",
       "range": {
         "startLine": 8,
         "startChar": 7,
@@ -362,6 +596,24 @@
       "side": 1,
       "message": "Could start wrapping any newly added prints in (), should be compatible with both Python 2 and 3.",
       "parentUuid": "8d65a195_cbbb8c89",
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4108a17_5d152ef8",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-02-26T01:19:16Z",
+      "side": 1,
+      "message": "Updated the print statements in this file",
+      "parentUuid": "2c00e4a7_181aa4a5",
       "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
