@@ -16,6 +16,23 @@
       "message": "Daniel: could you please take a look? Thanks.",
       "revId": "40bdeaf003000991a069dc526ebc43a13ac90c20",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe80c38_029691f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-02-26T09:09:14Z",
+      "side": 1,
+      "message": "FWIW, these are APIs we use on the LibreOffice side, so it would make us a bit more comfortable if they would no longer be experimental. That\u0027s part of the motivation behind the change.",
+      "revId": "40bdeaf003000991a069dc526ebc43a13ac90c20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
