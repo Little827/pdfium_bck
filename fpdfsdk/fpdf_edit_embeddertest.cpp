@@ -2108,12 +2108,12 @@ TEST_F(FPDFEditEmbedderTest, EditOverExistingContent) {
 }
 
 // TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#if defined(_SKIA_SUPPORT_)
 #define MAYBE_AddStrokedPaths DISABLED_AddStrokedPaths
 #else
 #define MAYBE_AddStrokedPaths AddStrokedPaths
 #endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
+TEST_F(FPDFEditEmbedderTest, AddStrokedPaths) {
   // Start with a blank page
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
 
@@ -2131,8 +2131,12 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
   FPDFPage_InsertObject(page, rect);
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 612, 792,
-                  "64bd31f862a89e0a9e505a5af6efd506");
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    static constexpr char kChecksum_1[] = "1469acf60e7647ebeb8e1fb08c5d6c7a";
+#else
+    static constexpr char kChecksum_1[] = "64bd31f862a89e0a9e505a5af6efd506";
+#endif
+    CompareBitmap(page_bitmap.get(), 612, 792, kChecksum_1);
   }
 
   // Add crossed-checkmark
@@ -2147,8 +2151,12 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
   FPDFPage_InsertObject(page, check);
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 612, 792,
-                  "4b6f3b9d25c4e194821217d5016c3724");
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    static constexpr char kChecksum_2[] = "68b3194f74abd9d471695ce1415be43f";
+#else
+    static constexpr char kChecksum_2[] = "4b6f3b9d25c4e194821217d5016c3724";
+#endif
+    CompareBitmap(page_bitmap.get(), 612, 792, kChecksum_2);
   }
 
   // Add stroked and filled oval-ish path.
@@ -2164,8 +2172,12 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
   FPDFPage_InsertObject(page, path);
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 612, 792,
-                  "ff3e6a22326754944cc6e56609acd73b");
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    static constexpr char kChecksum_3[] = "b261b3212f443b8a3cdac4d30a352b52";
+#else
+    static constexpr char kChecksum_3[] = "ff3e6a22326754944cc6e56609acd73b";
+#endif
+    CompareBitmap(page_bitmap.get(), 612, 792, kChecksum_3);
   }
   FPDF_ClosePage(page);
 }
