@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "627fc055_d689d14b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-01T19:03:27Z",
+      "side": 1,
+      "message": "Saw my name mentioned on my email, so I did a pre-emptive review.\n\nRubber stampy LGTM % questions",
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ef061f_7b89a1a5",
@@ -19,6 +36,133 @@
         "startChar": 4,
         "endLine": 206,
         "endChar": 20
+      },
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14992339_71d77979",
+        "filename": "DEPS",
+        "patchSetId": 23
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-01T19:03:27Z",
+      "side": 1,
+      "message": "Period at the end please.",
+      "range": {
+        "startLine": 206,
+        "startChar": 44,
+        "endLine": 206,
+        "endChar": 51
+      },
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1debefd_e88f7e45",
+        "filename": "DEPS",
+        "patchSetId": 23
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-01T19:03:27Z",
+      "side": 1,
+      "message": "Yup, and with a colon, as such:\n\n # TODO(crbug.com/pdfium/1650): Set up...",
+      "parentUuid": "a3ef061f_7b89a1a5",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 20
+      },
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d4f588_c505c1c8",
+        "filename": "testing/tools/skia_gold/__init__.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-01T19:03:27Z",
+      "side": 1,
+      "message": "Newline above?",
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ec5898_92044b80",
+        "filename": "testing/tools/skia_gold/path_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-01T19:03:27Z",
+      "side": 1,
+      "message": "Nit: cannot",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c685e008_b68be965",
+        "filename": "testing/tools/skia_gold/pdfium_skia_gold_properties.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-01T19:03:27Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with the accepted python style, and the style guide wasn\u0027t very clear. \n\nWhy this newline?",
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c901b38_6ba2ad0d",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-01T19:03:27Z",
+      "side": 1,
+      "message": "Again, I might be unfamiliar with Python3, but is there a space needed here?",
+      "range": {
+        "startLine": 368,
+        "startChar": 20,
+        "endLine": 368,
+        "endChar": 21
       },
       "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
