@@ -145,6 +145,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63c0ee2_d0bc8468",
+        "filename": "testing/tools/skia_gold/pdfium_skia_gold_properties.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-03-01T19:20:30Z",
+      "side": 1,
+      "message": "I believe it\u0027s because subprocess and sys are standard library imports whereas the imports below are local imports",
+      "parentUuid": "c685e008_b68be965",
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c901b38_6ba2ad0d",
@@ -158,6 +176,30 @@
       "writtenOn": "2021-03-01T19:03:27Z",
       "side": 1,
       "message": "Again, I might be unfamiliar with Python3, but is there a space needed here?",
+      "range": {
+        "startLine": 368,
+        "startChar": 20,
+        "endLine": 368,
+        "endChar": 21
+      },
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5d4729_01276b28",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 8426
+      },
+      "writtenOn": "2021-03-01T19:20:30Z",
+      "side": 1,
+      "message": "A space isn\u0027t needed because the printed message will automatically add a space after \u0027FAILURE:\u0027",
+      "parentUuid": "6c901b38_6ba2ad0d",
       "range": {
         "startLine": 368,
         "startChar": 20,
