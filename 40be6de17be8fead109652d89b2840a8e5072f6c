@@ -401,6 +401,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de5b384_864494db",
+        "filename": "testing/tools/skia_gold/skia_gold.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-01T18:54:41Z",
+      "side": 1,
+      "message": "Thanks for the pointer!",
+      "parentUuid": "6eb95132_f552c3b8",
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "804c6cd6_5db6f421",
@@ -686,6 +704,24 @@
       "side": 1,
       "message": "Updated the print statements in this file",
       "parentUuid": "2c00e4a7_181aa4a5",
+      "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a35f76_03699180",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-01T18:54:41Z",
+      "side": 1,
+      "message": "Thanks for fixing these up! Possibly should do these things in a separate change, but I\u0027m not going to complain too much. 😊",
+      "parentUuid": "a4108a17_5d152ef8",
       "revId": "40be6de17be8fead109652d89b2840a8e5072f6c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
