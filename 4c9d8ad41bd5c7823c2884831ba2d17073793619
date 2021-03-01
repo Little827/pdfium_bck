@@ -163,6 +163,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ace230e_c5e1fbe6",
+        "filename": "testing/tools/skia_gold/pdfium_skia_gold_properties.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-01T22:43:41Z",
+      "side": 1,
+      "message": "Specifically:\nhttps://google.github.io/styleguide/pyguide.html#313-imports-formatting",
+      "parentUuid": "b63c0ee2_d0bc8468",
+      "revId": "4c9d8ad41bd5c7823c2884831ba2d17073793619",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c901b38_6ba2ad0d",
