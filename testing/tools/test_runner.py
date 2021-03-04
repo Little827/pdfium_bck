@@ -430,19 +430,23 @@ class TestRunner:
 
           self.HandleResult(input_filename, input_path, result)
 
-          if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          if self.test_type not in TEXT_TESTS:
             _, image_paths = result
             if image_paths:
-              path_filename_tuples = [
-                  (path, input_filename) for path, _ in image_paths
-              ]
-              skia_gold_inputs.extend(path_filename_tuples)
+              #path_filename_tuples = [
+              #    (path, input_filename) for path, _ in image_paths
+              #]
+              #skia_gold_inputs.extend(path_filename_tuples)
+              for img_path, _ in image_paths:
+                test_name, skia_success = self.RunSkia(img_path)
+                gold_results.append((test_name, skia_success, input_filename))
 
-        if skia_gold_inputs and self.test_type not in TEXT_TESTS:
-          gold_worker_func = functools.partial(RunSkiaWrapper, self)
-          # Clear out top level gold output directory before starting
-          skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
-          gold_results = pool.imap(gold_worker_func, skia_gold_inputs)
+        #if skia_gold_inputs and self.test_type not in TEXT_TESTS:
+        #  gold_worker_func = functools.partial(RunSkiaWrapper, self)
+        #  # Clear out top level gold output directory before starting
+        #  skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
+        #  gold_results = pool.imap(gold_worker_func, skia_gold_inputs)
 
       except KeyboardInterrupt:
         pool.terminate()
@@ -450,6 +454,9 @@ class TestRunner:
         pool.close()
         pool.join()
     else:
+      if self.test_type not in TEXT_TESTS:
+        # Clear out top level gold output directory before starting
+        skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
       for test_case in self.test_cases:
         input_filename, input_file_dir = test_case
         result = self.GenerateAndTest(input_filename, input_file_dir)
@@ -458,8 +465,6 @@ class TestRunner:
 
         _, image_paths = result
         if image_paths and self.test_type not in TEXT_TESTS:
-          # Clear out top level gold output directory before starting
-          skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
           for img_path, _ in image_paths:
             test_name, skia_success = self.RunSkia(img_path)
             gold_results.append((test_name, skia_success, input_filename))
