@@ -208,7 +208,7 @@ deps = {
     'packages': [
       {
         'package': 'skia/tools/goldctl/linux-amd64',
-        'version': 'git_revision:9476457a4a8acb6b45c61c11fa49dd2e9fccc10b',
+        'version': 'git_revision:a46e5eab5c0f5ba393c00c1741514e34c07ace46',
       }
     ],
     'dep_type': 'cipd',
@@ -219,7 +219,7 @@ deps = {
     'packages': [
       {
         'package': 'skia/tools/goldctl/mac-amd64',
-        'version': 'git_revision:9476457a4a8acb6b45c61c11fa49dd2e9fccc10b',
+        'version': 'git_revision:a46e5eab5c0f5ba393c00c1741514e34c07ace46',
       }
     ],
     'dep_type': 'cipd',
@@ -230,7 +230,7 @@ deps = {
     'packages': [
       {
         'package': 'skia/tools/goldctl/windows-amd64',
-        'version': 'git_revision:9476457a4a8acb6b45c61c11fa49dd2e9fccc10b',
+        'version': 'git_revision:a46e5eab5c0f5ba393c00c1741514e34c07ace46',
       }
     ],
     'dep_type': 'cipd',

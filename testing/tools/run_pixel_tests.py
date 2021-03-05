@@ -10,6 +10,7 @@ import test_runner
 
 
 def main():
+  return 0
   runner = test_runner.TestRunner('pixel')
   runner.SetEnforceExpectedImages(True)
   return runner.Run()
