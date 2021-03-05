@@ -7,6 +7,7 @@ from __future__ import print_function
 
 import argparse
 import functools
+import logging.config
 import multiprocessing
 import os
 import re
@@ -29,6 +30,47 @@ TEST_SEED_TIME = "1399672130"
 # List of test types that should run text tests instead of pixel tests.
 TEXT_TESTS = ['javascript']
 
+def configure_logging():
+  logging_config = {
+      'formatters': {
+          'f': {
+              'format': '%(processName)-10s %(name)s'
+                        ' %(levelname)-8s %(message)s',
+          },
+      },
+      'handlers': {
+          'h': {
+              'level':'INFO',
+              'class':'logging.StreamHandler',
+              'formatter':'f',
+          },
+      },
+      'loggers': {
+          '': {
+              'handlers': ['h'],
+              'level':'INFO',
+              'propagate': True,
+          },
+      },
+      'version': 1,
+  }
+
+  pname = multiprocessing.current_process().name
+  if pname != 'MainProcess':
+    logging_config['handlers'] = {
+        'h': {
+            'level':'INFO',
+            'formatter':'f',
+            'class':'logging.FileHandler',
+            'filename': pname + '.log',
+        },
+    }
+
+  logging.config.dictConfig(logging_config)
+  print('configured logging for', pname)
+
+def pool_initializer():
+  configure_logging()
 
 class KeyboardInterruptError(Exception):
   pass
@@ -417,6 +459,9 @@ class TestRunner:
     self.result_suppressed_cases = []
 
     gold_results = []
+    if self.test_type not in TEXT_TESTS:
+      # Clear out and create top level gold output directory before starting
+      skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
     if self.options.num_workers > 1 and len(self.test_cases) > 1:
       try:
         pool = multiprocessing.Pool(self.options.num_workers)
@@ -430,25 +475,38 @@ class TestRunner:
 
           self.HandleResult(input_filename, input_path, result)
 
-          if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          if self.test_type not in TEXT_TESTS:
             _, image_paths = result
             if image_paths:
               path_filename_tuples = [
                   (path, input_filename) for path, _ in image_paths
               ]
               skia_gold_inputs.extend(path_filename_tuples)
-
-        if skia_gold_inputs and self.test_type not in TEXT_TESTS:
-          gold_worker_func = functools.partial(RunSkiaWrapper, self)
-          # Clear out top level gold output directory before starting
-          skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
-          gold_results = pool.imap(gold_worker_func, skia_gold_inputs)
-
+              #for img_path, _ in image_paths:
+              #  test_name, skia_success = self.RunSkia(img_path)
+              #  gold_results.append((test_name, skia_success, input_filename))
       except KeyboardInterrupt:
         pool.terminate()
       finally:
         pool.close()
         pool.join()
+
+      if skia_gold_inputs and self.test_type not in TEXT_TESTS:
+        try:
+          print('in try')
+          configure_logging()
+          pool = multiprocessing.Pool(
+              self.options.num_workers, initializer=pool_initializer)
+          gold_worker_func = functools.partial(RunSkiaWrapper, self)
+          gold_results = pool.imap(gold_worker_func, skia_gold_inputs)
+
+        except:
+          print('terminating')
+          pool.terminate()
+        finally:
+          pool.close()
+          pool.join()
     else:
       for test_case in self.test_cases:
         input_filename, input_file_dir = test_case
@@ -458,8 +516,6 @@ class TestRunner:
 
         _, image_paths = result
         if image_paths and self.test_type not in TEXT_TESTS:
-          # Clear out top level gold output directory before starting
-          skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
           for img_path, _ in image_paths:
             test_name, skia_success = self.RunSkia(img_path)
             gold_results.append((test_name, skia_success, input_filename))
@@ -487,7 +543,7 @@ class TestRunner:
         print(failure)
 
     if self.skia_gold_unexpected_successes:
-      self.skia_gold_failures.sort()
+      self.skia_gold_unexpected_successes.sort()
       print('\nUnexpected Skia Gold Successes:')
       for surprise in self.skia_gold_unexpected_successes:
         print(surprise)
@@ -498,7 +554,9 @@ class TestRunner:
       for failure in self.skia_gold_failures:
         print(failure)
 
+    print('pre _PrintSummary')
     self._PrintSummary()
+    print('post _PrintSummary')
 
     if self.failures:
       if not self.options.ignore_errors:
@@ -507,6 +565,7 @@ class TestRunner:
     return 0
 
   def _PrintSummary(self):
+    print('in _PrintSummary')
     number_test_cases = len(self.test_cases)
     number_failures = len(self.failures)
     number_suppressed = len(self.result_suppressed_cases)
