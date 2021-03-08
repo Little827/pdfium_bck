@@ -1027,7 +1027,8 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
   // |anti_alias| and |normalize| don't affect Skia/SkiaPaths rendering.
   int anti_alias = FT_RENDER_MODE_MONO;
   bool normalize = false;
-  const bool is_text_smooth = options.IsSmooth();
+  //const bool is_text_smooth = options.IsSmooth();
+  const bool is_text_smooth = false;
   // |text_options| has the potential to affect all derived classes of
   // RenderDeviceDriverIface. But now it only affects Skia rendering.
   CFX_TextRenderOptions text_options(options);
