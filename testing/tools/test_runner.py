@@ -441,7 +441,8 @@ class TestRunner:
 
           self.HandleResult(input_filename, input_path, result)
 
-          if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          if self.test_type not in TEXT_TESTS:
             _, image_paths = result
             if image_paths:
               if self.options.run_skia_gold_parallel:
