@@ -441,7 +441,8 @@ class TestRunner:
 
           self.HandleResult(input_filename, input_path, result)
 
-          if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          if self.test_type not in TEXT_TESTS:
             _, image_paths = result
             if image_paths:
               if self.options.run_skia_gold_parallel:
@@ -530,7 +531,8 @@ class TestRunner:
     print('  Suppressed:', number_suppressed)
     print('  Surprises:', number_surprises)
     print('  Failures:', number_failures)
-    if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+    #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+    if self.test_type not in TEXT_TESTS:
       number_gold_failures = len(self.skia_gold_failures)
       number_gold_successes = len(self.skia_gold_successes)
       number_gold_surprises = len(self.skia_gold_unexpected_successes)
