@@ -7,6 +7,7 @@ from __future__ import print_function
 
 import argparse
 import functools
+import logging.config
 import multiprocessing
 import os
 import re
@@ -29,10 +30,22 @@ TEST_SEED_TIME = "1399672130"
 # List of test types that should run text tests instead of pixel tests.
 TEXT_TESTS = ['javascript']
 
-
 class KeyboardInterruptError(Exception):
   pass
 
+
+class PrintSuppressor:
+
+  def __init__(self):
+    self.real_stdout = None
+
+  def __enter__(self):
+    self.real_stdout = sys.stdout
+    sys.stdout = open(os.devnull, 'w')
+
+  def __exit__(self, *args):
+    sys.stdout.close()
+    sys.stdout = self.real_stdout
 
 # Nomenclature:
 #   x_root - "x"
@@ -98,7 +111,11 @@ class TestRunner:
     # becomes "example_005.pdf.0".
     test_name = os.path.splitext(os.path.split(img_path)[1])[0]
     skia_success = skia_tester.UploadTestResultToSkiaGold(test_name, img_path)
-    sys.stdout.flush()
+    if sys.platform == 'win32':
+      with PrintSuppressor():
+        sys.stdout.flush()
+    else:
+      sys.stdout.flush()
     return test_name, skia_success
 
   # GenerateAndTest returns a tuple <success, outputfiles> where
@@ -441,10 +458,12 @@ class TestRunner:
 
           self.HandleResult(input_filename, input_path, result)
 
-          if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          if self.test_type not in TEXT_TESTS:
             _, image_paths = result
             if image_paths:
-              if self.options.run_skia_gold_parallel:
+              #if self.options.run_skia_gold_parallel:
+              if True:
                 path_filename_tuples = [
                     (path, input_filename) for path, _ in image_paths
                 ]
@@ -454,15 +473,26 @@ class TestRunner:
                   test_name, skia_success = self.RunSkia(img_path)
                   gold_results.append((test_name, skia_success, input_filename))
 
-        if skia_gold_parallel_inputs:
-          gold_worker_func = functools.partial(RunSkiaWrapper, self)
-          gold_results = pool.imap(gold_worker_func, skia_gold_parallel_inputs)
+        #if skia_gold_parallel_inputs:
+        #  gold_worker_func = functools.partial(RunSkiaWrapper, self)
+        #  gold_results = pool.imap(gold_worker_func, skia_gold_parallel_inputs)
 
       except KeyboardInterrupt:
         pool.terminate()
       finally:
         pool.close()
         pool.join()
+
+      if skia_gold_parallel_inputs and self.test_type not in TEXT_TESTS:
+        try:
+          pool = multiprocessing.Pool(self.options.num_workers)
+          gold_worker_func = functools.partial(RunSkiaWrapper, self)
+          gold_results = pool.imap(gold_worker_func, skia_gold_parallel_inputs)
+        except KeyboardInterrupt:
+          pool.terminate()
+        finally:
+          pool.close()
+          pool.join()
     else:
       for test_case in self.test_cases:
         input_filename, input_file_dir = test_case
@@ -500,7 +530,7 @@ class TestRunner:
         print(failure)
 
     if self.skia_gold_unexpected_successes:
-      self.skia_gold_failures.sort()
+      self.skia_gold_unexpected_successes.sort()
       print('\nUnexpected Skia Gold Successes:')
       for surprise in self.skia_gold_unexpected_successes:
         print(surprise)
@@ -520,6 +550,7 @@ class TestRunner:
     return 0
 
   def _PrintSummary(self):
+    print('in _PrintSummary')
     number_test_cases = len(self.test_cases)
     number_failures = len(self.failures)
     number_suppressed = len(self.result_suppressed_cases)
@@ -530,7 +561,8 @@ class TestRunner:
     print('  Suppressed:', number_suppressed)
     print('  Surprises:', number_surprises)
     print('  Failures:', number_failures)
-    if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+    #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+    if self.test_type not in TEXT_TESTS:
       number_gold_failures = len(self.skia_gold_failures)
       number_gold_successes = len(self.skia_gold_successes)
       number_gold_surprises = len(self.skia_gold_unexpected_successes)
