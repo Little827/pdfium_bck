@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0e0c1f_837105a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-10T20:00:12Z",
+      "side": 1,
+      "message": "LGTM with minor issues.",
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab5f287_db5b6ba6",
+        "filename": "DEPS",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-10T20:00:12Z",
+      "side": 1,
+      "message": "+nigi for DEPS roll; moving dhoss@ to CC as redundant.\n\nNit: If possible, I think we\u0027d typically want to roll the DEPS first, before the code change depending on it.",
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b24e888_20b4d872",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 33
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-10T20:00:12Z",
+      "side": 1,
+      "message": "TODO should include the responsible party/bug.",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 8
+      },
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f8e8db_ec14aeee",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 33
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-10T20:00:12Z",
+      "side": 1,
+      "message": "Can you just use the pool as a context manager instead (with \"with\")?",
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18cadb48_e356f014",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 33
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-10T20:00:12Z",
+      "side": 1,
+      "message": "Should we just be consistent across all platforms, and print it first unconditionally?",
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
