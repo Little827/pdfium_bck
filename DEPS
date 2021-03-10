@@ -53,7 +53,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling depot_tools
   # and whatever else without interference from each other.
-  'depot_tools_revision': '4ec3fd3659ccd4fc7e1f977ee9361caf38635e91',
+  'depot_tools_revision': '0e8b3107e056f22f04ed82d6906560e7dd83baae',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling freetype
   # and whatever else without interference from each other.
@@ -105,7 +105,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling v8
   # and whatever else without interference from each other.
-  'v8_revision': '1d681a1a9f5b66ce7c18d756f80e1c3afab911d5',
+  'v8_revision': 'af560a8bf8228e4c3ec67af7a567370c75ff17bc',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling zlib
   # and whatever else without interference from each other.
