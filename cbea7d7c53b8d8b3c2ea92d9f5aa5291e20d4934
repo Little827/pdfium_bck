@@ -167,6 +167,24 @@
       "parentUuid": "7f74099b_d272f39c",
       "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c775271b_52556ee7",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 33
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-10T21:51:17Z",
+      "side": 1,
+      "message": "SG. Maybe we can keep it consistent across all platforms for now by printing the summary first. And add a TODO comment associated with a bug number that we want to resolve the printing issue on Windows and move the summary back down to the end of all the messages.",
+      "parentUuid": "55ce23cc_576720f6",
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
