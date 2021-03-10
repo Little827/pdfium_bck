@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5526455_ea749089",
+        "filename": "DEPS",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-10T23:21:35Z",
+      "side": 1,
+      "message": "kimstephanie@: Any thoughts on this?\n\nI think whether or not we add it to the DEPS doc is up to our team, though. (I would say yes, since we added everything else in DEPS. There\u0027s a bug open to add an auto-roller (crbug.com/pdfium/1650), at which point it\u0027ll be a one-line item in our doc.)",
+      "parentUuid": "603a5153_eadd6765",
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ec4248e_fe3cfd7f",
         "filename": "testing/tools/skia_gold/skia_gold.py",
         "patchSetId": 33
@@ -178,6 +196,24 @@
       "side": 1,
       "message": "According to a few stackoverflows I found, it seems like you need to explicitly catch KeyboardInterrupt errors otherwise Ctrl-C won\u0027t work",
       "parentUuid": "67f8e8db_ec14aeee",
+      "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a0fcb5_61356b11",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 33
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-03-10T23:21:35Z",
+      "side": 1,
+      "message": "Maybe this was before Pool was a context manager (3.3)? The context manager ensures terminate() is called when leaving scope. Anyway, it doesn\u0027t look like the Python 2.7 version supports context managers, so it\u0027s moot.",
+      "parentUuid": "a850242d_a7cadd1f",
       "revId": "cbea7d7c53b8d8b3c2ea92d9f5aa5291e20d4934",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
