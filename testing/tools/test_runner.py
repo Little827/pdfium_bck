@@ -229,6 +229,7 @@ class TestRunner:
     except Exception as e:
       return e
 
+  # TODO: Remove when ready to fully switch over to Skia Gold
   def TestPixel(self, pdf_path, use_ahem):
     cmd_to_run = [
         self.pdfium_test_path, '--send-events', '--png', '--md5',
@@ -441,10 +442,12 @@ class TestRunner:
 
           self.HandleResult(input_filename, input_path, result)
 
-          if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+          if self.test_type not in TEXT_TESTS:
             _, image_paths = result
             if image_paths:
-              if self.options.run_skia_gold_parallel:
+              #if self.options.run_skia_gold_parallel:
+              if True:
                 path_filename_tuples = [
                     (path, input_filename) for path, _ in image_paths
                 ]
@@ -454,15 +457,26 @@ class TestRunner:
                   test_name, skia_success = self.RunSkia(img_path)
                   gold_results.append((test_name, skia_success, input_filename))
 
-        if skia_gold_parallel_inputs:
-          gold_worker_func = functools.partial(RunSkiaWrapper, self)
-          gold_results = pool.imap(gold_worker_func, skia_gold_parallel_inputs)
+        #if skia_gold_parallel_inputs:
+        #  gold_worker_func = functools.partial(RunSkiaWrapper, self)
+        #  gold_results = pool.imap(gold_worker_func, skia_gold_parallel_inputs)
 
       except KeyboardInterrupt:
         pool.terminate()
       finally:
         pool.close()
         pool.join()
+
+      if skia_gold_parallel_inputs and self.test_type not in TEXT_TESTS:
+        try:
+          pool = multiprocessing.Pool(self.options.num_workers)
+          gold_worker_func = functools.partial(RunSkiaWrapper, self)
+          gold_results = pool.imap(gold_worker_func, skia_gold_parallel_inputs)
+        except KeyboardInterrupt:
+          pool.terminate()
+        finally:
+          pool.close()
+          pool.join()
     else:
       for test_case in self.test_cases:
         input_filename, input_file_dir = test_case
@@ -487,6 +501,11 @@ class TestRunner:
       else:
         self.skia_gold_failures.append(test_name)
 
+    # For some reason, summary will be cut off from stdout on windows if
+    # _PrintSummary() is called at the end
+    if sys.platform == 'win32':
+      self._PrintSummary()
+
     if self.surprises:
       self.surprises.sort()
       print('\nUnexpected Successes:')
@@ -500,7 +519,7 @@ class TestRunner:
         print(failure)
 
     if self.skia_gold_unexpected_successes:
-      self.skia_gold_failures.sort()
+      self.skia_gold_unexpected_successes.sort()
       print('\nUnexpected Skia Gold Successes:')
       for surprise in self.skia_gold_unexpected_successes:
         print(surprise)
@@ -511,7 +530,8 @@ class TestRunner:
       for failure in self.skia_gold_failures:
         print(failure)
 
-    self._PrintSummary()
+    if sys.platform != 'win32':
+      self._PrintSummary()
 
     if self.failures:
       if not self.options.ignore_errors:
@@ -530,7 +550,8 @@ class TestRunner:
     print('  Suppressed:', number_suppressed)
     print('  Surprises:', number_surprises)
     print('  Failures:', number_failures)
-    if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+    #if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
+    if self.test_type not in TEXT_TESTS:
       number_gold_failures = len(self.skia_gold_failures)
       number_gold_successes = len(self.skia_gold_successes)
       number_gold_surprises = len(self.skia_gold_unexpected_successes)
