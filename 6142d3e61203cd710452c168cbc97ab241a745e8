@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb59f8b_01648e98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7401
+      },
+      "writtenOn": "2021-03-11T22:36:12Z",
+      "side": 1,
+      "message": "LGTM :-)",
+      "revId": "6142d3e61203cd710452c168cbc97ab241a745e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7486166_e523de28",
+        "filename": "tricium-prod.cfg",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7401
+      },
+      "writtenOn": "2021-03-11T22:36:12Z",
+      "side": 1,
+      "message": "Note: this should be optional now (it\u0027s not actually used :-/)",
+      "revId": "6142d3e61203cd710452c168cbc97ab241a745e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
