@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b099fc5_c598a36f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-13T00:59:01Z",
+      "side": 1,
+      "message": "due to",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c893b6_9a8bdf81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-13T00:59:01Z",
+      "side": 1,
+      "message": "remains",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6012d0_9a2da2df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-13T00:59:01Z",
+      "side": 1,
+      "message": "commands",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06c195b_f557aa95",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-13T00:59:01Z",
+      "side": 1,
+      "message": "What about the following?\n\n while (m_clipIndex \u003e limit) {\n   do {\n     --m_clipIndex;\n   } while (m_clipIndex \u003e\u003d 0 \u0026\u0026 m_commands[m_clipIndex] !\u003d Clip::kSave);\n   if (m_clipIndex \u003e\u003d 0)\n     m_pDriver-\u003eSkiaCanvas()-\u003erestore();\n   else\n     m_clipIndex \u003d 0;\n }",
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8dea7f_27f5e294",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-03-13T00:59:01Z",
+      "side": 1,
+      "message": "Nit: Not needed",
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
