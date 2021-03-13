@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1585fcf1_52eee7b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-13T01:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b099fc5_c598a36f",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4c893b6_9a8bdf81",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-13T00:59:01Z",
       "side": 1,
       "message": "remains",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5b5eb8_8ae17664",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-13T01:19:27Z",
+      "side": 1,
+      "message": "Rearranged the comment since the code changed.",
+      "parentUuid": "d4c893b6_9a8bdf81",
       "range": {
         "startLine": 15,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a56378_305f8f23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-13T01:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f6012d0_9a2da2df",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e06c195b_f557aa95",
@@ -87,6 +159,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d99059_a92eadbd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-13T01:19:27Z",
+      "side": 1,
+      "message": "That works too. Will update the commit message according to it.",
+      "parentUuid": "e06c195b_f557aa95",
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a8dea7f_27f5e294",
@@ -100,6 +190,24 @@
       "writtenOn": "2021-03-13T00:59:01Z",
       "side": 1,
       "message": "Nit: Not needed",
+      "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a404a51d_7d00c584",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-13T01:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a8dea7f_27f5e294",
       "revId": "a2e659d486a4a2ebb46e5d91aa7361b7c1d96b09",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
