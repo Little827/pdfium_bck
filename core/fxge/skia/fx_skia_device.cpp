@@ -1240,11 +1240,17 @@ class SkiaState {
 
   void AdjustClip(int limit) {
     while (m_clipIndex > limit) {
-      do {
-        --m_clipIndex;
-        DCHECK(m_clipIndex >= 0);
-      } while (m_commands[m_clipIndex] != Clip::kSave);
-      m_pDriver->SkiaCanvas()->restore();
+      for (int i = m_clipIndex - 1; i >= 0; --i) {
+        if (m_commands[i] == Clip::kSave) {
+          m_clipIndex = i;
+          m_pDriver->SkiaCanvas()->restore();
+          break;
+        }
+        if (i == 0) {
+          m_clipIndex = i;
+          break;
+        }
+      }
     }
     while (m_clipIndex < limit) {
       if (Clip::kSave == m_commands[m_clipIndex]) {
