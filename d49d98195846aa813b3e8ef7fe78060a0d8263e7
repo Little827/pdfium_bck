@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "544d9264_2f692c82",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-17T02:11:12Z",
+      "side": 1,
+      "message": "With the step size equals to `len(whole_list)`, this for loop will only execute once when i is 0. Maybe you meant to use `self.options.num_workers` as the step size here?",
+      "range": {
+        "startLine": 467,
+        "startChar": 12,
+        "endLine": 467,
+        "endChar": 26
+      },
+      "revId": "d49d98195846aa813b3e8ef7fe78060a0d8263e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
