@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b040cf43_4ca2032b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-19T21:45:33Z",
+      "side": 1,
+      "message": "Some mindless CLs for your Friday afternoon.",
+      "revId": "965cd483aef9c987ad4509b74307a05dbedfcbfc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
