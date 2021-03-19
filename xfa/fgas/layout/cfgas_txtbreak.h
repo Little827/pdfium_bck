@@ -4,15 +4,15 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef XFA_FGAS_LAYOUT_CFX_TXTBREAK_H_
-#define XFA_FGAS_LAYOUT_CFX_TXTBREAK_H_
+#ifndef XFA_FGAS_LAYOUT_CFGAS_TXTBREAK_H_
+#define XFA_FGAS_LAYOUT_CFGAS_TXTBREAK_H_
 
 #include <deque>
 #include <vector>
 
 #include "core/fxcrt/fx_coordinates.h"
-#include "xfa/fgas/layout/cfx_break.h"
-#include "xfa/fgas/layout/cfx_char.h"
+#include "xfa/fgas/layout/cfgas_break.h"
+#include "xfa/fgas/layout/cfgas_char.h"
 
 class CFGAS_GEFont;
 class TextCharPos;
@@ -27,11 +27,12 @@ enum CFX_TxtLineAlignment {
   CFX_TxtLineAlignment_Justified = 1 << 2
 };
 
-inline bool CFX_BreakTypeNoneOrPiece(CFX_BreakType type) {
-  return type == CFX_BreakType::kNone || type == CFX_BreakType::kPiece;
+inline bool CFX_BreakTypeNoneOrPiece(CFGAS_Char::BreakType type) {
+  return type == CFGAS_Char::BreakType::kNone ||
+         type == CFGAS_Char::BreakType::kPiece;
 }
 
-class CFX_TxtBreak final : public CFX_Break {
+class CFGAS_TxtBreak final : public CFGAS_Break {
  public:
   class Engine {
    public:
@@ -46,7 +47,7 @@ class CFX_TxtBreak final : public CFX_Break {
     Run(const Run& other);
     ~Run();
 
-    CFX_TxtBreak::Engine* pEdtEngine = nullptr;
+    CFGAS_TxtBreak::Engine* pEdtEngine = nullptr;
     WideString wsStr;
     int32_t* pWidths = nullptr;
     // TODO(thestig): These 2 members probably should be size_t.
@@ -62,32 +63,33 @@ class CFX_TxtBreak final : public CFX_Break {
     bool bSkipSpace = true;
   };
 
-  CFX_TxtBreak();
-  ~CFX_TxtBreak() override;
+  CFGAS_TxtBreak();
+  ~CFGAS_TxtBreak() override;
 
   void SetLineWidth(float fLineWidth);
   void SetAlignment(int32_t iAlignment);
   void SetCombWidth(float fCombWidth);
-  CFX_BreakType EndBreak(CFX_BreakType dwStatus);
+  CFGAS_Char::BreakType EndBreak(CFGAS_Char::BreakType dwStatus);
 
   size_t GetDisplayPos(const Run* pTxtRun, TextCharPos* pCharPos) const;
   std::vector<CFX_RectF> GetCharRects(const Run* pTxtRun, bool bCharBBox) const;
-  CFX_BreakType AppendChar(wchar_t wch);
+  CFGAS_Char::BreakType AppendChar(wchar_t wch);
 
  private:
-  void AppendChar_Combination(CFX_Char* pCurChar);
-  void AppendChar_Tab(CFX_Char* pCurChar);
-  CFX_BreakType AppendChar_Control(CFX_Char* pCurChar);
-  CFX_BreakType AppendChar_Arabic(CFX_Char* pCurChar);
-  CFX_BreakType AppendChar_Others(CFX_Char* pCurChar);
+  void AppendChar_Combination(CFGAS_Char* pCurChar);
+  void AppendChar_Tab(CFGAS_Char* pCurChar);
+  CFGAS_Char::BreakType AppendChar_Control(CFGAS_Char* pCurChar);
+  CFGAS_Char::BreakType AppendChar_Arabic(CFGAS_Char* pCurChar);
+  CFGAS_Char::BreakType AppendChar_Others(CFGAS_Char* pCurChar);
 
   void ResetContextCharStyles();
   void EndBreak_SplitLine(CFX_BreakLine* pNextLine, bool bAllChars);
-  void EndBreak_BidiLine(std::deque<FX_TPO>* tpos, CFX_BreakType dwStatus);
+  void EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
+                         CFGAS_Char::BreakType dwStatus);
   void EndBreak_Alignment(const std::deque<FX_TPO>& tpos,
                           bool bAllChars,
-                          CFX_BreakType dwStatus);
-  int32_t GetBreakPos(std::vector<CFX_Char>* pChars,
+                          CFGAS_Char::BreakType dwStatus);
+  int32_t GetBreakPos(std::vector<CFGAS_Char>* pChars,
                       bool bAllChars,
                       bool bOnlyBrk,
                       int32_t* pEndPos);
@@ -99,4 +101,4 @@ class CFX_TxtBreak final : public CFX_Break {
   int32_t m_iCombWidth;
 };
 
-#endif  // XFA_FGAS_LAYOUT_CFX_TXTBREAK_H_
+#endif  // XFA_FGAS_LAYOUT_CFGAS_TXTBREAK_H_

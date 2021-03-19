@@ -9,14 +9,16 @@ assert(pdf_enable_xfa)
 
 source_set("layout") {
   sources = [
-    "cfx_break.cpp",
-    "cfx_break.h",
+    "cfgas_break.cpp",
+    "cfgas_break.h",
+    "cfgas_char.cpp",
+    "cfgas_char.h",
+    "cfgas_txtbreak.cpp",
+    "cfgas_txtbreak.h",
     "cfx_breakline.cpp",
     "cfx_breakline.h",
     "cfx_breakpiece.cpp",
     "cfx_breakpiece.h",
-    "cfx_char.cpp",
-    "cfx_char.h",
     "cfx_linkuserdata.cpp",
     "cfx_linkuserdata.h",
     "cfx_rtfbreak.cpp",
@@ -25,8 +27,6 @@ source_set("layout") {
     "cfx_textpiece.h",
     "cfx_textuserdata.cpp",
     "cfx_textuserdata.h",
-    "cfx_txtbreak.cpp",
-    "cfx_txtbreak.h",
     "fx_arabic.cpp",
     "fx_arabic.h",
     "fx_linebreak.cpp",
@@ -47,8 +47,8 @@ source_set("layout") {
 
 pdfium_unittest_source_set("unittests") {
   sources = [
+    "cfgas_txtbreak_unittest.cpp",
     "cfx_rtfbreak_unittest.cpp",
-    "cfx_txtbreak_unittest.cpp",
   ]
   deps = [
     ":layout",
