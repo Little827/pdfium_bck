@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "xfa/fgas/layout/cfx_txtbreak.h"
+#include "xfa/fgas/layout/cfgas_txtbreak.h"
 
 #include <memory>
 #include <utility>
@@ -11,7 +11,7 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "xfa/fgas/font/cfgas_fontmgr.h"
 #include "xfa/fgas/font/cfgas_gefont.h"
-#include "xfa/fgas/layout/cfx_char.h"
+#include "xfa/fgas/layout/cfgas_char.h"
 
 class CFX_TxtBreakTest : public testing::Test {
  public:
@@ -20,8 +20,8 @@ class CFX_TxtBreakTest : public testing::Test {
     ASSERT_TRUE(font_);
   }
 
-  std::unique_ptr<CFX_TxtBreak> CreateBreak() {
-    auto txt_break = std::make_unique<CFX_TxtBreak>();
+  std::unique_ptr<CFGAS_TxtBreak> CreateBreak() {
+    auto txt_break = std::make_unique<CFGAS_TxtBreak>();
     txt_break->SetFont(font_);
     return txt_break;
   }
@@ -39,8 +39,8 @@ TEST_F(CFX_TxtBreakTest, BidiLine) {
   for (wchar_t ch : input)
     txt_break->AppendChar(ch);
 
-  std::vector<CFX_Char> chars =
+  std::vector<CFGAS_Char> chars =
       txt_break->GetCurrentLineForTesting()->m_LineChars;
-  CFX_Char::BidiLine(&chars, chars.size());
+  CFGAS_Char::BidiLine(&chars, chars.size());
   EXPECT_EQ(3u, chars.size());
 }

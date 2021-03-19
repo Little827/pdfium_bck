@@ -13,7 +13,7 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_unicode.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "xfa/fgas/layout/cfx_break.h"
+#include "xfa/fgas/layout/cfgas_break.h"
 
 class CFX_TextUserData;
 class CFX_TextPiece;
@@ -27,7 +27,7 @@ enum class CFX_RTFLineAlignment {
   Distributed
 };
 
-class CFX_RTFBreak final : public CFX_Break {
+class CFX_RTFBreak final : public CFGAS_Break {
  public:
   explicit CFX_RTFBreak(uint32_t dwLayoutStyles);
   ~CFX_RTFBreak() override;
@@ -39,22 +39,22 @@ class CFX_RTFBreak final : public CFX_Break {
 
   void AddPositionedTab(float fTabPos);
 
-  CFX_Char::BreakType EndBreak(CFX_Char::BreakType dwStatus);
+  CFGAS_Char::BreakType EndBreak(CFGAS_Char::BreakType dwStatus);
 
   size_t GetDisplayPos(const CFX_TextPiece* pPiece,
                        std::vector<TextCharPos>* pCharPos) const;
 
-  CFX_Char::BreakType AppendChar(wchar_t wch);
+  CFGAS_Char::BreakType AppendChar(wchar_t wch);
 
  private:
-  void AppendChar_Combination(CFX_Char* pCurChar);
-  void AppendChar_Tab(CFX_Char* pCurChar);
-  CFX_Char::BreakType AppendChar_Control(CFX_Char* pCurChar);
-  CFX_Char::BreakType AppendChar_Arabic(CFX_Char* pCurChar);
-  CFX_Char::BreakType AppendChar_Others(CFX_Char* pCurChar);
+  void AppendChar_Combination(CFGAS_Char* pCurChar);
+  void AppendChar_Tab(CFGAS_Char* pCurChar);
+  CFGAS_Char::BreakType AppendChar_Control(CFGAS_Char* pCurChar);
+  CFGAS_Char::BreakType AppendChar_Arabic(CFGAS_Char* pCurChar);
+  CFGAS_Char::BreakType AppendChar_Others(CFGAS_Char* pCurChar);
   bool GetPositionedTab(int32_t* iTabPos) const;
 
-  int32_t GetBreakPos(std::vector<CFX_Char>& tca,
+  int32_t GetBreakPos(std::vector<CFGAS_Char>& tca,
                       bool bAllChars,
                       bool bOnlyBrk,
                       int32_t* pEndPos);
@@ -63,12 +63,12 @@ class CFX_RTFBreak final : public CFX_Break {
                      bool bAllChars);
   bool EndBreak_SplitLine(CFX_BreakLine* pNextLine,
                           bool bAllChars,
-                          CFX_Char::BreakType dwStatus);
+                          CFGAS_Char::BreakType dwStatus);
   void EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
-                         CFX_Char::BreakType dwStatus);
+                         CFGAS_Char::BreakType dwStatus);
   void EndBreak_Alignment(const std::deque<FX_TPO>& tpos,
                           bool bAllChars,
-                          CFX_Char::BreakType dwStatus);
+                          CFGAS_Char::BreakType dwStatus);
 
   bool m_bPagination;
   std::vector<int32_t> m_PositionedTabs;
