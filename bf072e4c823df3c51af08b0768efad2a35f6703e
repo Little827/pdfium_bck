@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0374ee_3445c877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-22T19:28:51Z",
+      "side": 1,
+      "message": "Red bots...",
+      "revId": "bf072e4c823df3c51af08b0768efad2a35f6703e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d40317_979a1e06",
+        "filename": "xfa/fde/cfde_textout.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-22T19:28:51Z",
+      "side": 1,
+      "message": "sort",
+      "revId": "bf072e4c823df3c51af08b0768efad2a35f6703e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
