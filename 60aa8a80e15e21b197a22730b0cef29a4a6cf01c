@@ -19,6 +19,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a88c9c_05e50132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-24T20:44:09Z",
+      "side": 1,
+      "message": "I don\u0027t think there is an existing one.",
+      "parentUuid": "4da4399a_a8a7d1b1",
+      "revId": "60aa8a80e15e21b197a22730b0cef29a4a6cf01c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ff8ab9d4_e86709fb",
@@ -59,6 +77,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9a9ab7_ec53712a",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2486,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-24T20:44:09Z",
+      "side": 1,
+      "message": "Isn\u0027t 1440 just a nice monitor resolution? ;)",
+      "parentUuid": "cf4521b3_aa7518b4",
+      "range": {
+        "startLine": 2486,
+        "startChar": 32,
+        "endLine": 2486,
+        "endChar": 39
+      },
+      "revId": "60aa8a80e15e21b197a22730b0cef29a4a6cf01c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1606578d_5d3c5e08",
@@ -82,6 +124,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5cae834_ae145bc0",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2489,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-24T20:44:09Z",
+      "side": 1,
+      "message": "Nope. I had it right in patchset 1, so restoring the check for that in patchset 3. -5 % 3 returns different results in C++ and Python.",
+      "parentUuid": "1606578d_5d3c5e08",
+      "range": {
+        "startLine": 2489,
+        "startChar": 19,
+        "endLine": 2489,
+        "endChar": 34
+      },
+      "revId": "60aa8a80e15e21b197a22730b0cef29a4a6cf01c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff444494_a2e251a1",
@@ -95,6 +161,30 @@
       "writtenOn": "2021-03-24T17:00:00Z",
       "side": 1,
       "message": "follow-on: can we test other than GMT? can we test 25:61:62 etc?",
+      "range": {
+        "startLine": 523,
+        "startChar": 28,
+        "endLine": 523,
+        "endChar": 31
+      },
+      "revId": "60aa8a80e15e21b197a22730b0cef29a4a6cf01c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1cd8fc_d1793662",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-24T20:44:09Z",
+      "side": 1,
+      "message": "Once I figure out how to test it in Acrobat.",
+      "parentUuid": "ff444494_a2e251a1",
       "range": {
         "startLine": 523,
         "startChar": 28,
