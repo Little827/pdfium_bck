@@ -2,6 +2,23 @@
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1616560413 -0700\nnonce ALC2d1+biRbys1Kvc/Trx2GALBAjEhKF56+7u7tr+fyPWmgCvQjiiQQ9XkuW4bhS/h8oIsQQxShe\n\n0000000000000000000000000000000000000000 60aa8a80e15e21b197a22730b0cef29a4a6cf01c refs/for/refs/heads/master%notify\u003dNONE,m\u003dno_negative_numbers_with_mod,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmBawR0ACgkQqzYtYVpm\n/Xv9WAgAwoxZ4sxnD1yISb/1lxfS+HNV1r3GZANz9h491QMyb9zgwiyQYQ8K1TFk\nrx4RFXy2mhKzt9dcW100S0OsEngZYHcvFqlFY86MAc37Gk6SsIAavAybo26hgMO5\nUAzwIl4thqcS8awqsdKZGFkLFcAbHfTBvVwh9L1+BW+jxbeTC0KXQsxfBTobGULj\neez/kt7J002WSpr/50q44RYhQdg6sasqIlgDtKSWmctkVVj8Bq7I5G2cccn8VhQ/\no40fFNDZ9ttYNLVxEaRroqml6IUMrK0lrA//lSgj8yg8bH5UPgHwpIPiHkMk1y5d\nB8w399Y0csVys1otenb5ws0DLDPJ3g\u003d\u003d\n\u003d/5xn\n-----END PGP SIGNATURE-----\n",
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da4399a_a8a7d1b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-24T17:06:39Z",
+      "side": 1,
+      "message": "Bug: ? (I thought there was one lurking for this issue)",
+      "revId": "60aa8a80e15e21b197a22730b0cef29a4a6cf01c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ff8ab9d4_e86709fb",
