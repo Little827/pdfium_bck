@@ -59,7 +59,7 @@ class CPDF_Form final : public CPDF_PageObjectHolder,
                             CPDF_Type3Char* pType3Char,
                             std::set<const uint8_t*>* pParsedSet);
 
-  std::unique_ptr<std::set<const uint8_t*>> m_ParsedSet;
+  std::set<const uint8_t*> m_ParsedSet;
   RetainPtr<CPDF_Stream> const m_pFormStream;
 };
 
