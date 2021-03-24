@@ -23,6 +23,30 @@
       },
       "revId": "9f08c2e4ce48e238591261b3e84ae724d2fc656b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16add589_b825255a",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-24T17:20:53Z",
+      "side": 1,
+      "message": "The first test case is an example that comes from the Time2Num() documentation. The others added here test well defined behavior, so I can easily figure out the expected result.\n\nWe can definitely add more test cases later, but what should the expected result be? I imagine we would want this to function similar to Acrobat. But then I need to figure out how to test formcalc in Acrobat, which is what got me hung up on https://pdfium-review.googlesource.com/51772 .",
+      "parentUuid": "37029fac_5eba1852",
+      "range": {
+        "startLine": 525,
+        "startChar": 28,
+        "endLine": 525,
+        "endChar": 31
+      },
+      "revId": "9f08c2e4ce48e238591261b3e84ae724d2fc656b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
