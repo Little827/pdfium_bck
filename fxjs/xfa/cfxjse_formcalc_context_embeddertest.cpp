@@ -4,6 +4,7 @@
 
 #include <cmath>
 
+#include "build/build_config.h"
 #include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_isolatetracker.h"
@@ -12,6 +13,10 @@
 #include "testing/xfa_js_embedder_test.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
+
+#if defined(OS_POSIX)
+#include "testing/scoped_set_tz.h"
+#endif
 
 class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
  public:
@@ -526,6 +531,31 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Time2Num) {
   for (size_t i = 0; i < pdfium::size(tests); ++i)
     ExecuteExpectInt32(tests[i].program, tests[i].result);
 }
+
+#if defined(OS_POSIX)
+TEST_F(CFXJSE_FormCalcContextEmbedderTest, Time2NumWithTZ) {
+  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
+
+  {
+    ScopedSetTZ scoped_set_tz("Pacific/Pago_Pago");  // -11:00
+    ExecuteExpectInt32("Time2Num(\"00:00:00 GMT\", \"HH:MM:SS Z\")", 1);
+    ExecuteExpectInt32("Time2Num(\"23:59:59 GMT\", \"HH:MM:SS Z\")", 86399001);
+  }
+  {
+    ScopedSetTZ scoped_set_tz("Australia/Adelaide");  // +9:30
+    ExecuteExpectInt32("Time2Num(\"11:59:59 GMT\", \"HH:MM:SS Z\")", 43199001);
+    ExecuteExpectInt32("Time2Num(\"12:00:00 GMT\", \"HH:MM:SS Z\")", 43200001);
+  }
+  {
+    ScopedSetTZ scoped_set_tz("Europe/Moscow");  // +3:00, no DST.
+    ExecuteExpectInt32("Time2Num(\"1:13:13 PM\")", 36793001);
+    ExecuteExpectInt32(
+        "Time2Num(\"13:13:13 GMT\", \"HH:MM:SS Z\") - "
+        "Time2Num(\"13:13:13\", \"HH:MM:SS\")",
+        10800000);
+  }
+}
+#endif
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, TimeFmt) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
