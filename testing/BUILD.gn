@@ -35,6 +35,12 @@ source_set("test_support") {
   ]
   configs += [ "../:pdfium_core_config" ]
   visibility = [ "../*" ]
+  if (is_posix) {
+    sources += [
+      "scoped_set_tz.cpp",
+      "scoped_set_tz.h",
+    ]
+  }
   if (pdf_enable_v8) {
     sources += [
       "v8_initializer.cpp",
