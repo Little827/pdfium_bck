@@ -4,6 +4,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4832166_6ed89db5",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-25T17:22:02Z",
+      "side": 1,
+      "message": "Does our code understand other strings here like PDT or GMT-7 ?",
+      "range": {
+        "startLine": 541,
+        "startChar": 44,
+        "endLine": 541,
+        "endChar": 47
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d87a626_4c071c50",
         "filename": "testing/scoped_set_tz.h",
         "patchSetId": 2
@@ -20,6 +43,29 @@
         "startChar": 0,
         "endLine": 13,
         "endChar": 19
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fcac594_2948630d",
+        "filename": "testing/scoped_set_tz.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-25T17:22:02Z",
+      "side": 1,
+      "message": "nit: Nowdays, rule of 5? i.e. move-construct and move-assign get deleted, too?",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 54
       },
       "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
