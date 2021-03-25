@@ -92,6 +92,29 @@
       },
       "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60eb7376_762e3d36",
+        "filename": "testing/scoped_set_tz.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-25T19:28:21Z",
+      "side": 1,
+      "message": "nit: if you really want to go to town, Optional\u003cstd::string\u003e old_tz_;",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
