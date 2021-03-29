@@ -66,6 +66,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9ababf_0c2bcb94",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-29T23:58:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "120a599f_feecf30f",
+      "range": {
+        "startLine": 541,
+        "startChar": 44,
+        "endLine": 541,
+        "endChar": 47
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c357ad_914c92bd",
@@ -173,6 +197,30 @@
       "side": 1,
       "message": "See the example on hhttps://google.github.io/styleguide/cppguide.html#Copyable_Movable_Types, where NotCopyableOrMovable has this comment:\n\n// The move operations are implicitly disabled, but you can\n// spell that out explicitly if you want:\n\nChromium does not bother, so we probably don\u0027t need to either.",
       "parentUuid": "1fcac594_2948630d",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab4ae8b_b8487dd6",
+        "filename": "testing/scoped_set_tz.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-29T23:58:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4fa92308_cc00b131",
       "range": {
         "startLine": 19,
         "startChar": 2,
