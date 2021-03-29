@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "120a599f_feecf30f",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-29T23:33:52Z",
+      "side": 1,
+      "message": "Not sure. I\u0027ll follow up on this later.",
+      "parentUuid": "b4832166_6ed89db5",
+      "range": {
+        "startLine": 541,
+        "startChar": 44,
+        "endLine": 541,
+        "endChar": 47
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14c357ad_914c92bd",
         "filename": "testing/scoped_set_tz.cpp",
         "patchSetId": 2
@@ -55,6 +79,30 @@
       "writtenOn": "2021-03-25T19:27:24Z",
       "side": 1,
       "message": "nit: maybe !!old_tz",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a3cf31_eb625412",
+        "filename": "testing/scoped_set_tz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-29T23:33:52Z",
+      "side": 1,
+      "message": "`old_tz_set_` is gone with Optional.",
+      "parentUuid": "14c357ad_914c92bd",
       "range": {
         "startLine": 20,
         "startChar": 16,
@@ -113,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fa92308_cc00b131",
+        "filename": "testing/scoped_set_tz.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-29T23:33:52Z",
+      "side": 1,
+      "message": "See the example on hhttps://google.github.io/styleguide/cppguide.html#Copyable_Movable_Types, where NotCopyableOrMovable has this comment:\n\n// The move operations are implicitly disabled, but you can\n// spell that out explicitly if you want:\n\nChromium does not bother, so we probably don\u0027t need to either.",
+      "parentUuid": "1fcac594_2948630d",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60eb7376_762e3d36",
         "filename": "testing/scoped_set_tz.h",
         "patchSetId": 2
@@ -124,6 +196,30 @@
       "writtenOn": "2021-03-25T19:28:21Z",
       "side": 1,
       "message": "nit: if you really want to go to town, Optional\u003cstd::string\u003e old_tz_;",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "2d2647d0a8b17d1fc44d18d5e4dbab57ecb1f94f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13aa299f_eccb800d",
+        "filename": "testing/scoped_set_tz.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-29T23:33:52Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/78875",
+      "parentUuid": "60eb7376_762e3d36",
       "range": {
         "startLine": 24,
         "startChar": 2,
