@@ -9,6 +9,7 @@
 #include "fxjs/xfa/cfxjse_isolatetracker.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "testing/gtest/include/gtest/gtest.h"
+#include "testing/scoped_set_tz.h"
 #include "testing/xfa_js_embedder_test.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
@@ -525,6 +526,44 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Time2Num) {
 
   for (size_t i = 0; i < pdfium::size(tests); ++i)
     ExecuteExpectInt32(tests[i].program, tests[i].result);
+}
+
+TEST_F(CFXJSE_FormCalcContextEmbedderTest, Time2NumWithTZ) {
+  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
+
+  {
+    ScopedSetTZ scoped_set_tz("UTC+14");
+    ExecuteExpectInt32("Time2Num(\"00:00:00 GMT\", \"HH:MM:SS Z\")", 1);
+    ExecuteExpectInt32("Time2Num(\"23:59:59 GMT\", \"HH:MM:SS Z\")", 86399001);
+  }
+  {
+    ScopedSetTZ scoped_set_tz("UTC-14");
+    ExecuteExpectInt32("Time2Num(\"00:00:00 GMT\", \"HH:MM:SS Z\")", 1);
+    ExecuteExpectInt32("Time2Num(\"23:59:59 GMT\", \"HH:MM:SS Z\")", 86399001);
+  }
+  {
+    ScopedSetTZ scoped_set_tz("UTC+9:30");
+    ExecuteExpectInt32("Time2Num(\"11:59:59 GMT\", \"HH:MM:SS Z\")", 43199001);
+    ExecuteExpectInt32("Time2Num(\"12:00:00 GMT\", \"HH:MM:SS Z\")", 43200001);
+  }
+  {
+    ScopedSetTZ scoped_set_tz("UTC-0:30");
+    ExecuteExpectInt32("Time2Num(\"11:59:59 GMT\", \"HH:MM:SS Z\")", 43199001);
+    ExecuteExpectInt32("Time2Num(\"12:00:00 GMT\", \"HH:MM:SS Z\")", 43200001);
+  }
+  {
+    ScopedSetTZ scoped_set_tz("UTC+0:30");
+    ExecuteExpectInt32("Time2Num(\"11:59:59 GMT\", \"HH:MM:SS Z\")", 43199001);
+    ExecuteExpectInt32("Time2Num(\"12:00:00 GMT\", \"HH:MM:SS Z\")", 43200001);
+  }
+  {
+    ScopedSetTZ scoped_set_tz("UTC-3:00");
+    ExecuteExpectInt32("Time2Num(\"1:13:13 PM\")", 36793001);
+    ExecuteExpectInt32(
+        "Time2Num(\"13:13:13 GMT\", \"HH:MM:SS Z\") - "
+        "Time2Num(\"13:13:13\", \"HH:MM:SS\")",
+        10800000);
+  }
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, TimeFmt) {
