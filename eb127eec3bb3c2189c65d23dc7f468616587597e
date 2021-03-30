@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc1ba5b_fd07f3bf",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-30T21:46:27Z",
+      "side": 1,
+      "message": "I thought so too, but here we are: https://en.wikipedia.org/wiki/UTC%2B14:00",
+      "parentUuid": "1ff63a91_bed8334a",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2977c43_191c0d2f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-30T16:21:24Z",
       "side": 1,
       "message": "why does +14 give same result as -14 ?",
+      "range": {
+        "startLine": 540,
+        "startChar": 31,
+        "endLine": 540,
+        "endChar": 37
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506efa2f_c6c1e82b",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-30T21:46:27Z",
+      "side": 1,
+      "message": "Because the input is for GMT. So regardless of the local timezone, the result should be the same.",
+      "parentUuid": "f2977c43_191c0d2f",
       "range": {
         "startLine": 540,
         "startChar": 31,
@@ -87,6 +135,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f96c645_a3d8ce38",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-30T21:46:27Z",
+      "side": 1,
+      "message": "Ditto ditto.",
+      "parentUuid": "1fd9dd1d_1c359293",
+      "range": {
+        "startLine": 550,
+        "startChar": 4,
+        "endLine": 550,
+        "endChar": 42
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "788111ed_de632d9e",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-30T16:21:24Z",
       "side": 1,
       "message": "additional cases to ponder:\n23:59:59 with UTC+0:01 (or is it -0:01)\n00:00:00 with UTC-0:01 (or it it +0:01)\n\n(If I were emperor, I\u0027d have the country\u0027s timezone be +0:05 so that folks would always be 5 minutes late and miss trains ... do we know if there is a place in the world where it\u0027s not a multiple of 30 mins?)",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 3
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11024100_d13cff38",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-30T21:46:27Z",
+      "side": 1,
+      "message": "Done.\n\nThere\u0027s a few that are multiples of 15. e.g. https://en.wikipedia.org/wiki/UTC%2B05:45\n\nThere\u0027s oddballs like this one: https://en.wikipedia.org/wiki/UTC%E2%88%9200:25:21 but I don\u0027t think any current timezone has offsets in the seconds. Which is why I went with minute-level resolution.",
+      "parentUuid": "788111ed_de632d9e",
       "range": {
         "startLine": 566,
         "startChar": 0,
