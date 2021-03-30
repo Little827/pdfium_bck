@@ -23,6 +23,30 @@
       },
       "revId": "ded889d17de7015b2f3dcd05ba533bc13cb9be29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4d14b4_d29351fd",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-30T19:33:40Z",
+      "side": 1,
+      "message": "\"*tz \u003d -*tz\" feels slightly harder to read. Clang with -O2 currently generates the same output either way.",
+      "parentUuid": "7ad54b7a_1a7d2dc9",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "ded889d17de7015b2f3dcd05ba533bc13cb9be29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
