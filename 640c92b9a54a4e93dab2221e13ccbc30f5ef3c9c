@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e223fe_5446df30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2021-03-30T18:12:01Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1: Auto-Submit+1 Commit-Queue+1\n\u003e \n\u003e This change is ready for review.\n\n",
+      "revId": "640c92b9a54a4e93dab2221e13ccbc30f5ef3c9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
