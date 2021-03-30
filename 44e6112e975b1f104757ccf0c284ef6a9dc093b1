@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4c7ce5_ace03ea1",
+        "filename": "core/fxcodec/progressive_decoder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-30T22:18:46Z",
+      "side": 1,
+      "message": "Not needed?",
+      "revId": "44e6112e975b1f104757ccf0c284ef6a9dc093b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e667afd8_867fc076",
+        "filename": "xfa/fwl/cfwl_themetext.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-30T22:18:46Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "44e6112e975b1f104757ccf0c284ef6a9dc093b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
