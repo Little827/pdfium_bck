@@ -16,6 +16,98 @@
       "message": "still LG",
       "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff63a91_bed8334a",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-30T16:21:24Z",
+      "side": 1,
+      "message": "Is there such a thing as +14 ? I thought range would be -12..12 but Ok.",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2977c43_191c0d2f",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-30T16:21:24Z",
+      "side": 1,
+      "message": "why does +14 give same result as -14 ?",
+      "range": {
+        "startLine": 540,
+        "startChar": 31,
+        "endLine": 540,
+        "endChar": 37
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd9dd1d_1c359293",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-30T16:21:24Z",
+      "side": 1,
+      "message": "ditto with +/- 0:30 giving same result?",
+      "range": {
+        "startLine": 550,
+        "startChar": 4,
+        "endLine": 550,
+        "endChar": 42
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "788111ed_de632d9e",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-30T16:21:24Z",
+      "side": 1,
+      "message": "additional cases to ponder:\n23:59:59 with UTC+0:01 (or is it -0:01)\n00:00:00 with UTC-0:01 (or it it +0:01)\n\n(If I were emperor, I\u0027d have the country\u0027s timezone be +0:05 so that folks would always be 5 minutes late and miss trains ... do we know if there is a place in the world where it\u0027s not a multiple of 30 mins?)",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 3
+      },
+      "revId": "eb127eec3bb3c2189c65d23dc7f468616587597e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
