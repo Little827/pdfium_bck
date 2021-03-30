@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f33d873_0fef536a",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2021-03-30T17:28:45Z",
+      "side": 1,
+      "message": "Doesn\u0027t m_pParser *not* outlive m_pParsedSet since it is destroyed first?",
+      "revId": "bc33a1082119035ea239a615b1d5e5824fe59493",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
