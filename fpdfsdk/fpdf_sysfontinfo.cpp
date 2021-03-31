@@ -117,7 +117,7 @@ class CFX_ExternalFontInfo final : public SystemFontInfoIface {
   }
 
  private:
-  FPDF_SYSFONTINFO* const m_pInfo;
+  UnownedPtr<FPDF_SYSFONTINFO> const m_pInfo;
 };
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_AddInstalledFont(void* mapper,
