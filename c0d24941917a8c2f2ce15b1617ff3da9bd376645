@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5cc2d81_0bc1bf4c",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-03-31T18:00:56Z",
+      "side": 1,
+      "message": "re-order cleanup for early return case here.",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 4
+      },
+      "revId": "c0d24941917a8c2f2ce15b1617ff3da9bd376645",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
