@@ -19,6 +19,12 @@ vars = {
 
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration != "small"',
 
+  # By default, do not check out the re-client binaries.
+  'checkout_reclient': False,
+
+  # reclient CIPD package version
+  'reclient_version': 're_client_version:0.25.0.5f9900f',
+
   'chromium_git': 'https://chromium.googlesource.com',
   'pdfium_git': 'https://pdfium.googlesource.com',
 
@@ -33,7 +39,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling buildtools
   # and whatever else without interference from each other.
-  'buildtools_revision': '4a34f37bff3a60256a9d25b5e22e401c4e77be4b',
+  'buildtools_revision': '5dbd89c9d9c0b0ff47cefdc2bc421b8c9a1c5a21',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling catapult
   # and whatever else without interference from each other.
@@ -110,6 +116,25 @@ vars = {
   # the commit queue can handle CLs rolling zlib
   # and whatever else without interference from each other.
   'zlib_revision': '348acca950b1d6de784a954f4fda0952046c652c',
+  # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling clang format
+  # and whatever else without interference from each other.
+  'clang_format_revision': '99803d74e35962f63a775f29477882afd4d57d94',
+  # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling libc++abi
+  # and whatever else without interference from each other.
+  'libcxxabi_revision': '77b3c6ba9b261df3d5f3af5f3df9f4885bae9f21',
+  # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling libunwind
+  # and whatever else without interference from each other.
+  'libunwind_revision': 'c9174a6e03db1cc74d42a28f877b77b7d966ca50',
+
+  # If you change this, also update the libc++ revision in
+  # //buildtools/deps_revisions.gni.
+  'libcxx_revision':       '8fa87946779682841e21e2da977eccfb6cb3bded',
+
+  # GN CIPD package version.
+  'gn_version': 'git_revision:5667cc61018864b17542e0baff8b790f245583b0',
 }
 
 deps = {
@@ -123,6 +148,59 @@ deps = {
   'buildtools':
     Var('chromium_git') + '/chromium/src/buildtools.git@' +
         Var('buildtools_revision'),
+
+  'buildtools/clang_format/script':
+    Var('chromium_git') + '/external/github.com/llvm/llvm-project/clang/tools/clang-format.git@' +
+    Var('clang_format_revision'),
+  'buildtools/linux64': {
+    'packages': [
+      {
+        'package': 'gn/gn/linux-amd64',
+        'version': Var('gn_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'host_os == "linux"',
+  },
+  'buildtools/mac': {
+    'packages': [
+      {
+        'package': 'gn/gn/mac-${{arch}}',
+        'version': Var('gn_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'host_os == "mac"',
+  },
+  'buildtools/third_party/libc++/trunk':
+    Var('chromium_git') + '/external/github.com/llvm/llvm-project/libcxx.git' + '@' +
+    Var('libcxx_revision'),
+  'buildtools/third_party/libc++abi/trunk':
+    Var('chromium_git') + '/external/github.com/llvm/llvm-project/libcxxabi.git' + '@' +
+    Var('libcxxabi_revision'),
+  'buildtools/third_party/libunwind/trunk':
+    Var('chromium_git') + '/external/github.com/llvm/llvm-project/libunwind.git' + '@' +
+    Var('libunwind_revision'),
+  'buildtools/win': {
+    'packages': [
+      {
+        'package': 'gn/gn/windows-amd64',
+        'version': Var('gn_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'host_os == "win"',
+  },
+  'buildtools/reclient': {
+    'packages': [
+      {
+        'package': 'infra/rbe/client/${{platform}}',
+        'version': Var('reclient_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': '(host_os == "linux" or host_os == "win") and checkout_reclient',
+  },
 
   'testing/corpus':
     Var('pdfium_git') + '/pdfium_tests@' + Var('pdfium_tests_revision'),
@@ -241,10 +319,7 @@ deps = {
     Var('chromium_git') + '/v8/v8.git@' + Var('v8_revision'),
 }
 
-recursedeps = [
-  # buildtools provides clang_format, libc++, and libc++abi
-  'buildtools',
-]
+recursedeps = []
 
 include_rules = [
   # Basic stuff that everyone can use.
