@@ -69,6 +69,24 @@
       "parentUuid": "d6e79c41_0d438b9f",
       "revId": "669360d78ab99eb2064147277687b82b77590009",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deac2c05_096bb9c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-03-31T17:31:58Z",
+      "side": 1,
+      "message": "Two issues so far:\n\n1. buildtools/third_party/libc++/trunk, buildtools/third_party/libc++abi/trunk, and buildtools/third_party/libunwind/trunk are no longer part of the buildtools. I think having their own reversion numbers in pdf/DEPS needs to be done. \n\n2. After rolling to the latest version of buildtools, building pdfium triggers error: \"/bin/sh: line 1: ../../buildtools/linux64/gn: No such file or directory\". In pdfium, the path becomes buildtools/linux64/linux64/gn, therefore the error happens. However, a lot of code in chromium and build repos are still using path buildtools/linux64/gn. I think this might be related to https://crrev.com/c/2743918, which suggest to move gn version into project\u0027s top level DEPS.\n\nNow I am working on a solution that doesn\u0027t remove buildtools as a submodule. Hopefully changing top level DEPS can resolve the issues.",
+      "parentUuid": "bc7c1e7f_453b801a",
+      "revId": "669360d78ab99eb2064147277687b82b77590009",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
