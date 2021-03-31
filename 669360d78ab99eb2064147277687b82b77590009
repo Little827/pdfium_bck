@@ -87,6 +87,24 @@
       "parentUuid": "bc7c1e7f_453b801a",
       "revId": "669360d78ab99eb2064147277687b82b77590009",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c551d5_abe9f2ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-31T17:39:25Z",
+      "side": 1,
+      "message": "Yes, please follow the suggestion in https://crrev.com/c/2743918, that should be all that\u0027s necessary to resolve the second issue.\n\nI think this CL only needs to change DEPS to resolve the list of issues. There\u0027s no need to check in more files.",
+      "parentUuid": "deac2c05_096bb9c4",
+      "revId": "669360d78ab99eb2064147277687b82b77590009",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
