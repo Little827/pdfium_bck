@@ -30,7 +30,7 @@ struct FX_FolderHandle {
 
 struct FX_FolderHandle {
   ByteString m_Path;
-  DIR* m_Dir;
+  UnownedPtr<DIR> m_Dir;
 };
 #endif
 
@@ -178,7 +178,7 @@ void FX_CloseFolder(FX_FolderHandle* handle) {
 #if defined(OS_WIN)
   FindClose(handle->m_Handle);
 #else
-  closedir(handle->m_Dir);
+  closedir(handle->m_Dir.Release());
 #endif
   delete handle;
 }
