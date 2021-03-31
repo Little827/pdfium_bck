@@ -51,6 +51,24 @@
       "parentUuid": "8c7db258_9ce551be",
       "revId": "669360d78ab99eb2064147277687b82b77590009",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7c1e7f_453b801a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-03-31T01:43:49Z",
+      "side": 1,
+      "message": "Do you mean third_party/base? Have you seen the CLs for that directory? Maintaining that is a lot of work. If you add the same burden for buildtools/, who is going to do that extra work?\n\nEven if someone is willing to do that extra work, what benefits does that provide, vs. just pulling buildtools/ in via DEPS?\n\nTaking a step back, why are we even talking about checking in a copy of buildtools? What is the real problem here?",
+      "parentUuid": "d6e79c41_0d438b9f",
+      "revId": "669360d78ab99eb2064147277687b82b77590009",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
