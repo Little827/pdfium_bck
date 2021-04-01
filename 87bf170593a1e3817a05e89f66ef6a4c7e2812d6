@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29342e70_979e737b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-01T18:09:18Z",
+      "side": 1,
+      "message": "Had to roll tools/clang and build/ at the same time to prevent bots\u0027 failure.",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
