@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46fd3871_067f8389",
+        "filename": "DEPS",
+        "patchSetId": 18
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-02T21:21:21Z",
+      "side": 1,
+      "message": "Originally I wanted to sort them in alphabetical order. Since Chromium kept these new revisions together because they were related, then I dropped that idea.\n\nSince you have no objection on keeping them in the alphabetical order, I will sort them alphabetically in the new patchset.",
+      "parentUuid": "bc615ed4_7e18678c",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbbfc081_22b1cc54",
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d54ed318_455f88b7",
+        "filename": "DEPS",
+        "patchSetId": 18
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-02T21:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbbfc081_22b1cc54",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "062567f5_4503d36d",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-04-02T20:40:57Z",
       "side": 1,
       "message": "Given this condition, and checkout_reclient set to false on line 23, can we just omit all the reclient bits for now?",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fabb759_91a53453",
+        "filename": "DEPS",
+        "patchSetId": 18
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-02T21:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062567f5_4503d36d",
       "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
