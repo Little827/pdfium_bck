@@ -33,6 +33,24 @@
       "message": "Does this need to be chained to https://pdfium-review.googlesource.com/c/pdfium/+/78870 ? If not, unchain and submit?",
       "revId": "c42c57ee1c57e2b329c441255be2049669e2e737",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f50c61c8_4e6c92bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-02T21:17:30Z",
+      "side": 1,
+      "message": "I don\u0027t think it needs to be chained. Will rebase the CL and submit.",
+      "parentUuid": "14d021fb_039df0cb",
+      "revId": "c42c57ee1c57e2b329c441255be2049669e2e737",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
