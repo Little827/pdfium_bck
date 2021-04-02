@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4922da_482dec72",
+        "filename": "DEPS",
+        "patchSetId": 18
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-02T21:27:02Z",
+      "side": 1,
+      "message": "Chromium\u0027s list isn\u0027t sorted.",
+      "parentUuid": "46fd3871_067f8389",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbbfc081_22b1cc54",
