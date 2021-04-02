@@ -25,9 +25,18 @@ const std::vector<RetainPtr<CPDF_Dictionary>>* CPDF_LinkList::GetPageLinks(
     return &it->second;
 
   // std::map::operator[] forces the creation of a map entry.
-  auto& page_link_list = m_PageMap[objnum];
-  LoadPageLinks(pPage, &page_link_list);
-  return &page_link_list;
+  auto* page_link_list = &m_PageMap[objnum];
+  CPDF_Array* pAnnotList = pPage->GetDict()->GetArrayFor("Annots");
+  if (!pAnnotList)
+    return page_link_list;
+
+  for (size_t i = 0; i < pAnnotList->size(); ++i) {
+    CPDF_Dictionary* pAnnot = pAnnotList->GetDictAt(i);
+    bool add_link = (pAnnot && pAnnot->GetStringFor("Subtype") == "Link");
+    // Add non-links as nullptrs to preserve z-order.
+    page_link_list->emplace_back(add_link ? pAnnot : nullptr);
+  }
+  return page_link_list;
 }
 
 CPDF_Link CPDF_LinkList::GetLinkAtPoint(CPDF_Page* pPage,
@@ -55,17 +64,3 @@ CPDF_Link CPDF_LinkList::GetLinkAtPoint(CPDF_Page* pPage,
   return CPDF_Link();
 }
 
-void CPDF_LinkList::LoadPageLinks(
-    CPDF_Page* pPage,
-    std::vector<RetainPtr<CPDF_Dictionary>>* pList) {
-  CPDF_Array* pAnnotList = pPage->GetDict()->GetArrayFor("Annots");
-  if (!pAnnotList)
-    return;
-
-  for (size_t i = 0; i < pAnnotList->size(); ++i) {
-    CPDF_Dictionary* pAnnot = pAnnotList->GetDictAt(i);
-    bool add_link = (pAnnot && pAnnot->GetStringFor("Subtype") == "Link");
-    // Add non-links as nullptrs to preserve z-order.
-    pList->emplace_back(add_link ? pAnnot : nullptr);
-  }
-}
