@@ -16,6 +16,57 @@
       "message": "Had to roll tools/clang and build/ at the same time to prevent bots\u0027 failure.",
       "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc615ed4_7e18678c",
+        "filename": "DEPS",
+        "patchSetId": 18
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-02T20:40:57Z",
+      "side": 1,
+      "message": "Note that everything above these 3 new entries in this section is in alphabetical order. Please follow the convention and keep the section sorted.",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbbfc081_22b1cc54",
+        "filename": "DEPS",
+        "patchSetId": 18
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-02T20:40:57Z",
+      "side": 1,
+      "message": "Can you make sure every new entry here has a blank line above, for consistency with the existing entries?",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062567f5_4503d36d",
+        "filename": "DEPS",
+        "patchSetId": 18
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-02T20:40:57Z",
+      "side": 1,
+      "message": "Given this condition, and checkout_reclient set to false on line 23, can we just omit all the reclient bits for now?",
+      "revId": "87bf170593a1e3817a05e89f66ef6a4c7e2812d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
