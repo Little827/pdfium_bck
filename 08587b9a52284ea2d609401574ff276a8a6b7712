@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad52facc_5b845dd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8561
+      },
+      "writtenOn": "2021-04-04T13:00:56Z",
+      "side": 1,
+      "message": "Please make sure that the variable should indeed be interpreted as unsigned and the check can be removed.",
+      "revId": "08587b9a52284ea2d609401574ff276a8a6b7712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
