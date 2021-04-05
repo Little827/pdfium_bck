@@ -21,6 +21,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "third_party/base/check.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 
@@ -449,4 +450,59 @@ void SetColorFromScheme(const FPDF_COLORSCHEME* pColorScheme,
   color_scheme.text_fill_color = pColorScheme->text_fill_color;
   color_scheme.text_stroke_color = pColorScheme->text_stroke_color;
   pRenderOptions->SetColorScheme(color_scheme);
+}
+
+bool ParsePageRangeString(const ByteString& bsPageRange,
+                          uint32_t nCount,
+                          std::vector<uint32_t>* pageArray) {
+  ByteString bsStrippedPageRange = bsPageRange;
+  bsStrippedPageRange.Remove(' ');
+  size_t nLength = bsStrippedPageRange.GetLength();
+  if (nLength == 0)
+    return true;
+
+  static const ByteString cbCompareString("0123456789-,");
+  for (size_t i = 0; i < nLength; ++i) {
+    if (!cbCompareString.Contains(bsStrippedPageRange[i]))
+      return false;
+  }
+
+  ByteString cbMidRange;
+  size_t nStringFrom = 0;
+  size_t nStringTo = 0;
+  while (nStringTo < nLength) {
+    nStringTo = bsStrippedPageRange.Find(',', nStringFrom).value_or(nLength);
+    cbMidRange =
+        bsStrippedPageRange.Substr(nStringFrom, nStringTo - nStringFrom);
+    Optional<size_t> nDashPosition = cbMidRange.Find('-');
+    if (nDashPosition) {
+      size_t nMid = nDashPosition.value();
+      uint32_t nStartPageNum = pdfium::base::checked_cast<uint32_t>(
+          atoi(cbMidRange.First(nMid).c_str()));
+      if (nStartPageNum == 0)
+        return false;
+
+      ++nMid;
+      size_t nEnd = cbMidRange.GetLength() - nMid;
+      if (nEnd == 0)
+        return false;
+
+      uint32_t nEndPageNum = pdfium::base::checked_cast<uint32_t>(
+          atoi(cbMidRange.Substr(nMid, nEnd).c_str()));
+      if (nStartPageNum > nEndPageNum || nEndPageNum > nCount) {
+        return false;
+      }
+      for (uint32_t i = nStartPageNum; i <= nEndPageNum; ++i) {
+        pageArray->push_back(i);
+      }
+    } else {
+      uint32_t nPageNum =
+          pdfium::base::checked_cast<uint32_t>(atoi(cbMidRange.c_str()));
+      if (nPageNum <= 0 || nPageNum > nCount)
+        return false;
+      pageArray->push_back(nPageNum);
+    }
+    nStringFrom = nStringTo + 1;
+  }
+  return true;
 }
