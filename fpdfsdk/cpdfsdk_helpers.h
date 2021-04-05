@@ -278,4 +278,8 @@ void ProcessParseError(CPDF_Parser::Error err);
 void SetColorFromScheme(const FPDF_COLORSCHEME* pColorScheme,
                         CPDF_RenderOptions* pRenderOptions);
 
+bool ParsePageRangeString(const ByteString& bsPageRange,
+                          uint32_t nCount,
+                          std::vector<uint32_t>* pageArray);
+
 #endif  // FPDFSDK_CPDFSDK_HELPERS_H_
