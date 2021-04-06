@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1617736567 -0700\nnonce ALC2d18LKyVIf1oFraR71+koFjB6S5hu5NyTdE0jvQOzyiinUP09Aymc293TTuaKXwGu5uLF895s\n\n0000000000000000000000000000000000000000 d4cfac5530bed8d0e78f0efd9ca4b6839061e83e refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmBss3cACgkQqzYtYVpm\n/XtYmAgAmPtRFGDxBkv6nFYlXbGCWL9B/myH9QTGAMMjMETzBEzQm1AbVoi+QOG/\n8OmTi/71AFWO3QgqmNQdtZBSskmfRqj1G08AnzfjD0YvJJEacZW7b2GBGiDO4z2R\nwDAbCN0sQqKOyqCcy/R43bSKC52TSrKkA5qga6Lm0bIS0Kmg6CfgVptQ/fUfxJPM\nL77QNza32kboQBY5R+/+UitK9sAz/g4buEipCioDuAv/6RoIr4Qqgl7ec38DNDU+\nd0HxV2I9IRCHJjMpCUWgF9H0GnXnHsDXYiq6/I6hsxCe/1doGA3MprXpm7380jgf\njmFphfwSO45vzywqzFYvPsG7uPY69A\u003d\u003d\n\u003dFxrO\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3872a154_e7754b5f",
+        "filename": "core/fpdfdoc/cpdf_variabletext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-06T21:10:54Z",
+      "side": 1,
+      "message": "Ok, cost to construct this each time thru loop is miniscule.",
+      "range": {
+        "startLine": 823,
+        "startChar": 4,
+        "endLine": 823,
+        "endChar": 18
+      },
+      "revId": "d4cfac5530bed8d0e78f0efd9ca4b6839061e83e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
