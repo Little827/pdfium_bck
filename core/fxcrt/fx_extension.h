@@ -74,12 +74,40 @@ inline bool FXSYS_IsOctalDigit(char c) {
   return c >= '0' && c <= '7';
 }
 
+inline bool FXSYS_IsWideOctalDigit(wchar_t c) {
+  return c >= L'0' && c <= L'7';
+}
+
+inline bool FXSYS_IsDecimalDigit(char c) {
+  return !((c & 0x80) || !std::isdigit(c));
+}
+
+inline bool FXSYS_IsWideDecimalDigit(wchar_t c) {
+  return !((c & 0xFFFFFF80) || !std::iswdigit(c));
+}
+
 inline bool FXSYS_IsHexDigit(char c) {
   return !((c & 0x80) || !std::isxdigit(c));
 }
 
 inline bool FXSYS_IsWideHexDigit(wchar_t c) {
   return !((c & 0xFFFFFF80) || !std::isxdigit(c));
+}
+
+inline int FXSYS_OctalCharToInt(char c) {
+  return FXSYS_IsOctalDigit(c) ? c - '0' : 0;
+}
+
+inline int FXSYS_WideOctalCharToInt(wchar_t c) {
+  return FXSYS_IsWideOctalDigit(c) ? c - L'0' : 0;
+}
+
+inline int FXSYS_DecimalCharToInt(char c) {
+  return FXSYS_IsDecimalDigit(c) ? c - '0' : 0;
+}
+
+inline int FXSYS_WideDecimalCharToInt(wchar_t c) {
+  return FXSYS_IsWideDecimalDigit(c) ? c - L'0' : 0;
 }
 
 inline int FXSYS_HexCharToInt(char c) {
@@ -94,22 +122,6 @@ inline int FXSYS_WideHexCharToInt(wchar_t c) {
     return 0;
   char upchar = std::toupper(static_cast<char>(c));
   return upchar > '9' ? upchar - 'A' + 10 : upchar - '0';
-}
-
-inline bool FXSYS_IsDecimalDigit(char c) {
-  return !((c & 0x80) || !std::isdigit(c));
-}
-
-inline bool FXSYS_IsDecimalDigit(wchar_t c) {
-  return !((c & 0xFFFFFF80) || !std::iswdigit(c));
-}
-
-inline int FXSYS_DecimalCharToInt(char c) {
-  return FXSYS_IsDecimalDigit(c) ? c - '0' : 0;
-}
-
-inline int FXSYS_DecimalCharToInt(wchar_t c) {
-  return FXSYS_IsDecimalDigit(c) ? c - L'0' : 0;
 }
 
 void FXSYS_IntToTwoHexChars(uint8_t n, char* buf);
