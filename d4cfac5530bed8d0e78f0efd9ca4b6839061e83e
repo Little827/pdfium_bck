@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e68dd3_7841c095",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-06T20:00:03Z",
+      "side": 0,
+      "message": "See CPDF_VariableText::Provider::GetTypeAscent() for reference.",
+      "revId": "d4cfac5530bed8d0e78f0efd9ca4b6839061e83e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
