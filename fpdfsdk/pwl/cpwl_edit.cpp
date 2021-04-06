@@ -586,6 +586,10 @@ CPVT_WordRange CPWL_Edit::GetLatinWordsRange(
   return GetSameWordsRange(place, true, false);
 }
 
+#define PWL_ISLATINWORD(u)                      \
+  (u == 0x2D || (u <= 0x005A && u >= 0x0041) || \
+   (u <= 0x007A && u >= 0x0061) || (u <= 0x02AF && u >= 0x00C0))
+
 #define PWL_ISARABICWORD(word) \
   ((word >= 0x0600 && word <= 0x06FF) || (word >= 0xFB50 && word <= 0xFEFC))
 
@@ -599,8 +603,7 @@ CPVT_WordRange CPWL_Edit::GetSameWordsRange(const CPVT_WordPlace& place,
 
   if (bLatin) {
     while (pIterator->NextWord()) {
-      if (!pIterator->GetWord(wordinfo) ||
-          !FX_EDIT_ISLATINWORD(wordinfo.Word)) {
+      if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word)) {
         break;
       }
 
@@ -619,8 +622,7 @@ CPVT_WordRange CPWL_Edit::GetSameWordsRange(const CPVT_WordPlace& place,
 
   if (bLatin) {
     do {
-      if (!pIterator->GetWord(wordinfo) ||
-          !FX_EDIT_ISLATINWORD(wordinfo.Word)) {
+      if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word)) {
         break;
       }
 
