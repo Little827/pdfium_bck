@@ -16,6 +16,29 @@
       "message": "See CPDF_VariableText::Provider::GetTypeAscent() for reference.",
       "revId": "d4cfac5530bed8d0e78f0efd9ca4b6839061e83e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab4ba79_3fc68297",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-06T21:20:29Z",
+      "side": 0,
+      "message": "Yep, this could have been UnownedPtr\u003cIPVT_FontMap\u003e const m_pFontMap; (still compiles with that change), so the two \"shadowing\" members never get out of sync with each other.",
+      "range": {
+        "startLine": 461,
+        "startChar": 26,
+        "endLine": 461,
+        "endChar": 27
+      },
+      "revId": "d4cfac5530bed8d0e78f0efd9ca4b6839061e83e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
