@@ -22,6 +22,30 @@
       },
       "revId": "a16e803170c52009b3380114afa4ba716725cbc1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d5879b3_4145aadf",
+        "filename": "core/fpdfdoc/cpvt_typeset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-06T22:00:01Z",
+      "side": 0,
+      "message": "NM.  I went through the exercise locally, and wound up with the same thing, LG.",
+      "parentUuid": "074a0be4_cc0c7488",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "a16e803170c52009b3380114afa4ba716725cbc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
