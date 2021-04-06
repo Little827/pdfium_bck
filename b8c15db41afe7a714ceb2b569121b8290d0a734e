@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1617726984 -0700\nnonce ALC2d19AC+txHyws9a+Ye+9h484RUVspGEsnD8Q1yV1aUDddT8lHPbrqIKkbRssXd/xALKVTjj3s\n\n0000000000000000000000000000000000000000 b8c15db41afe7a714ceb2b569121b8290d0a734e refs/for/refs/heads/master%notify\u003dNONE,m\u003dsort\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmBsjggACgkQqzYtYVpm\n/XuEyAf/eV0TA2SuDArlYxnAJrH8+9PHzD6rt5GldFJRKUnqIn3AM3U5sUqAQb5h\noXYJd3rKKIkfbaGvnXWn/tTMKGad4kOxQZQpVN/XjpVwgHJXe3qnJFduQbvRgacg\n/E3Lr7vrTLWzTa4wThW5JWMFPalog5ok3M6p33x/LH5rsAzY7tLsd0YN/c8pAc/b\nTTjh3SOe9ftYho7zCbLXugzVBTGTSFZU32ccAn4EJ/uM7ER0/x9WXIRBVBb0lzL/\nMVC+X4KCRs6z6iFYgET2nn/P4K/+YZJwruAYuT8CHjniFtc408gQMdv8vrJ+fdi0\nXTSEUld51AoJMl4rOwBUGhggeS+z5Q\u003d\u003d\n\u003djASn\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3487e4e4_91099f2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-06T16:47:18Z",
+      "side": 1,
+      "message": "I think we\u0027ll find this pattern -- where we only had POD member but wanted them to be initialized in all cases by a ctor -- in a number of places.",
+      "revId": "b8c15db41afe7a714ceb2b569121b8290d0a734e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
