@@ -19,6 +19,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d2897f_b93f39a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-06T21:25:37Z",
+      "side": 1,
+      "message": "Ackpthhhhh. Found an issue with 0x27.",
+      "revId": "9587024f389158902a54db6a5fd8030beae87551",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f85b2e22_3dbbccc0",
