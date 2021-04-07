@@ -46,6 +46,30 @@
       },
       "revId": "7a4ff4d7df4fc0d8d51b1f25c8bb2f36209b677c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a28fb5_1431cc4e",
+        "filename": "core/fpdfdoc/cpdf_variabletext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-07T17:39:20Z",
+      "side": 0,
+      "message": "ack (not ackpthhhh).",
+      "parentUuid": "b050d72c_8f861113",
+      "range": {
+        "startLine": 79,
+        "startChar": 24,
+        "endLine": 79,
+        "endChar": 37
+      },
+      "revId": "7a4ff4d7df4fc0d8d51b1f25c8bb2f36209b677c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
