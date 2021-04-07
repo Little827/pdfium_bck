@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9782ee_f6a64e8f",
+        "filename": "fpdfsdk/pwl/cpwl_scroll_bar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-07T23:51:36Z",
+      "side": 0,
+      "message": "It seems to my old eyes that these two cases might have been identical.",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 751,
+        "endChar": 8
+      },
+      "revId": "5ef91174ce1e5562744a162e71d06fba8f8c827f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
