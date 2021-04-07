@@ -776,26 +776,23 @@ void CPDF_VariableText::Rearrange(const CPVT_WordRange& PlaceRange) {
   m_rcContent = rcRet;
 }
 
-float CPDF_VariableText::GetAutoFontSize() {
-  int32_t nTotal = sizeof(kFontSizeSteps) / sizeof(uint8_t);
-  if (IsMultiLine())
-    nTotal /= 4;
-  if (nTotal <= 0)
-    return 0;
+float CPDF_VariableText::GetAutoFontSize() const {
   if (GetPlateWidth() <= 0)
     return 0;
 
-  int32_t nLeft = 0;
-  int32_t nRight = nTotal - 1;
-  int32_t nMid = nTotal / 2;
-  while (nLeft <= nRight) {
-    if (IsBigger(kFontSizeSteps[nMid]))
-      nRight = nMid - 1;
-    else
-      nLeft = nMid + 1;
-    nMid = (nLeft + nRight) / 2;
-  }
-  return (float)kFontSizeSteps[nMid];
+  size_t count = pdfium::size(kFontSizeSteps);
+  if (IsMultiLine())
+    count /= 4;
+
+  const uint8_t* const begin = std::begin(kFontSizeSteps);
+  const uint8_t* const end = begin + count;
+  const uint8_t* it = std::lower_bound(
+      begin, end, this, [](uint8_t font_size, const CPDF_VariableText* vt) {
+        return !vt->IsBigger(font_size);
+      });
+  if (it != begin)
+    --it;
+  return *it;
 }
 
 bool CPDF_VariableText::IsBigger(float fFontSize) const {
