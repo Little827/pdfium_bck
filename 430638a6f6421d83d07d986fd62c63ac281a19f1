@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "572f2600_4af86950",
+        "filename": "fpdfsdk/pwl/cpwl_scroll_bar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-07T23:05:01Z",
+      "side": 1,
+      "message": "Not used. Done.",
+      "parentUuid": "ce962df1_bab8e10b",
+      "revId": "430638a6f6421d83d07d986fd62c63ac281a19f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28695fd0_6b1fc2cd",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-07T22:50:37Z",
       "side": 1,
       "message": "Remove some indentations here?",
+      "revId": "430638a6f6421d83d07d986fd62c63ac281a19f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e8a6a5_3c8fc5da",
+        "filename": "fpdfsdk/pwl/cpwl_scroll_bar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-07T23:05:01Z",
+      "side": 1,
+      "message": "clang format oddly didn\u0027t.  Done.",
+      "parentUuid": "28695fd0_6b1fc2cd",
       "revId": "430638a6f6421d83d07d986fd62c63ac281a19f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
