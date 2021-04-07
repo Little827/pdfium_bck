@@ -23,6 +23,30 @@
       },
       "revId": "d4cfac5530bed8d0e78f0efd9ca4b6839061e83e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202a56f7_8c4953e8",
+        "filename": "core/fpdfdoc/cpdf_variabletext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-07T01:20:50Z",
+      "side": 1,
+      "message": "Most of the time we just loop through 1 or 2 times. I found one PDF that loops through there 126 times. I think we can still afford it.",
+      "parentUuid": "3872a154_e7754b5f",
+      "range": {
+        "startLine": 823,
+        "startChar": 4,
+        "endLine": 823,
+        "endChar": 18
+      },
+      "revId": "d4cfac5530bed8d0e78f0efd9ca4b6839061e83e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
