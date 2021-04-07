@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1617815499 -0700\nnonce ALC2d18M6wCNElPJaw4CCyaBRVMjiVYtcIpEvzLdrVB4T/0aERE1t4wunPt+TMg4h9wT65e3NO0u\n\n0000000000000000000000000000000000000000 a789d32f236573be1f02f53da0244c24dd4b30e3 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmBt58sACgkQqzYtYVpm\n/XvYXgf+M9FbzBbD7QTyblVnpCsvjyUZh7IeSR2ZcQhU5gAYHsgPqn9EaHyS72XA\nwsw69w+IGbtaQwt4Gp8WOEAiM1lmEnWbCXgAB3mQ7aaz3XSI4npKBL3LIGK6S000\nyBi+8SwAn3fb4jFR1TbyBTchjkz6rbYUp/sJz8G2GC75g2OGA7wa7l8oAFD7ITAA\n/9D97JXkFXkuQC3U3Rm69wsaKgj2ZCC8gstrgGeHhWuiAMU1biL0FemWgvLs2LVY\nB5+KeaZk+YoG+gs1gs7GXlWdgX/1ATXwsUJ3QbjhcFboTmUmI3HlztMo0Sua7RMS\n3lXgMcbvYW//Gst/tACQY/lU4GMGWw\u003d\u003d\n\u003d8QuL\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30dd6b90_be8710fc",
+        "filename": "core/fpdfdoc/cpdf_variabletext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-07T17:48:03Z",
+      "side": 1,
+      "message": "Isn\u0027t this the only caller?  Want to re-implement it as IsSmaller() for a legit LT comparison?",
+      "range": {
+        "startLine": 791,
+        "startChar": 20,
+        "endLine": 791,
+        "endChar": 28
+      },
+      "revId": "a789d32f236573be1f02f53da0244c24dd4b30e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "640ef8c5_c18d8eb6",
+        "filename": "core/fpdfdoc/cpdf_variabletext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-07T17:48:03Z",
+      "side": 1,
+      "message": "can you explain this?  Is it to compensate for a LE vs. LT check via !IsBigger?  Alternatively see above.",
+      "range": {
+        "startLine": 793,
+        "startChar": 2,
+        "endLine": 794,
+        "endChar": 9
+      },
+      "revId": "a789d32f236573be1f02f53da0244c24dd4b30e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
