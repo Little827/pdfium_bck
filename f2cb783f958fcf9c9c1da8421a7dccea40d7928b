@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d99829_132c2c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-07T23:06:10Z",
+      "side": 1,
+      "message": "Just to prove the follow-on CL is safe.",
+      "revId": "f2cb783f958fcf9c9c1da8421a7dccea40d7928b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
