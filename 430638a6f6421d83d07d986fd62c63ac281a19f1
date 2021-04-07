@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce962df1_bab8e10b",
+        "filename": "fpdfsdk/pwl/cpwl_scroll_bar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-07T22:50:37Z",
+      "side": 1,
+      "message": "Still used?",
+      "revId": "430638a6f6421d83d07d986fd62c63ac281a19f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28695fd0_6b1fc2cd",
+        "filename": "fpdfsdk/pwl/cpwl_scroll_bar.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-07T22:50:37Z",
+      "side": 1,
+      "message": "Remove some indentations here?",
+      "revId": "430638a6f6421d83d07d986fd62c63ac281a19f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
