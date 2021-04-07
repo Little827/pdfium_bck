@@ -751,13 +751,3 @@ const CPWL_Wnd* CPWL_Wnd::GetFocused() const {
   CPWL_MsgControl* pMsgCtrl = GetMsgControl();
   return pMsgCtrl ? pMsgCtrl->GetFocusedWindow() : nullptr;
 }
-
-void CPWL_Wnd::EnableWindow(bool bEnable) {
-  if (m_bEnabled == bEnable)
-    return;
-
-  for (const auto& pChild : m_Children)
-    pChild->EnableWindow(bEnable);
-
-  m_bEnabled = bEnable;
-}

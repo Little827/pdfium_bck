@@ -233,7 +233,6 @@ class CPWL_Wnd : public Observable {
   bool ClientHitTest(const CFX_PointF& point) const;
   bool IsCaptureMouse() const;
 
-  void EnableWindow(bool bEnable);
   bool IsEnabled() const { return m_bEnabled; }
   const CPWL_Wnd* GetFocused() const;
   bool IsFocused() const;
