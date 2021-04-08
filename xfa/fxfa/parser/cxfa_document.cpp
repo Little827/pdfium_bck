@@ -52,9 +52,15 @@ namespace {
 
 const wchar_t kTemplateNS[] = L"http://www.xfa.org/schema/xfa-template/";
 
-struct RecurseRecord {
-  CXFA_Node* pTemplateChild;
-  CXFA_Node* pDataChild;
+// Vector of class containing Member would be correct for stack-based vectors,
+// if STL worked with cppgc.
+class RecurseRecord {
+ public:
+  RecurseRecord() = default;
+  ~RecurseRecord() = default;
+
+  cppgc::Member<CXFA_Node> pTemplateChild;
+  cppgc::Member<CXFA_Node> pDataChild;
 };
 
 class CXFA_TraverseStrategy_DDGroup {
