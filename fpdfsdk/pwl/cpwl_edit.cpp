@@ -578,12 +578,12 @@ CPVT_WordRange CPWL_Edit::CombineWordRange(const CPVT_WordRange& wr1,
 }
 
 CPVT_WordRange CPWL_Edit::GetLatinWordsRange(const CFX_PointF& point) const {
-  return GetSameWordsRange(m_pEdit->SearchWordPlace(point), true, false);
+  return GetSameWordsRange(m_pEdit->SearchWordPlace(point));
 }
 
 CPVT_WordRange CPWL_Edit::GetLatinWordsRange(
     const CPVT_WordPlace& place) const {
-  return GetSameWordsRange(place, true, false);
+  return GetSameWordsRange(place);
 }
 
 #define PWL_ISLATINWORD(u)                      \
@@ -593,49 +593,28 @@ CPVT_WordRange CPWL_Edit::GetLatinWordsRange(
 #define PWL_ISARABICWORD(u) \
   ((u >= 0x0600 && u <= 0x06FF) || (u >= 0xFB50 && u <= 0xFEFC))
 
-CPVT_WordRange CPWL_Edit::GetSameWordsRange(const CPVT_WordPlace& place,
-                                            bool bLatin,
-                                            bool bArabic) const {
+CPVT_WordRange CPWL_Edit::GetSameWordsRange(const CPVT_WordPlace& place) const {
   CPWL_EditImpl_Iterator* pIterator = m_pEdit->GetIterator();
   CPVT_Word wordinfo;
-  CPVT_WordPlace wpStart(place), wpEnd(place);
+  CPVT_WordPlace wpStart(place);
+  CPVT_WordPlace wpEnd(place);
   pIterator->SetAt(place);
 
-  if (bLatin) {
-    while (pIterator->NextWord()) {
-      if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word)) {
-        break;
-      }
+  while (pIterator->NextWord()) {
+    if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word))
+      break;
 
-      wpEnd = pIterator->GetAt();
-    }
-  } else if (bArabic) {
-    while (pIterator->NextWord()) {
-      if (!pIterator->GetWord(wordinfo) || !PWL_ISARABICWORD(wordinfo.Word))
-        break;
-
-      wpEnd = pIterator->GetAt();
-    }
+    wpEnd = pIterator->GetAt();
   }
 
   pIterator->SetAt(place);
 
-  if (bLatin) {
-    do {
-      if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word)) {
-        break;
-      }
+  do {
+    if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word))
+      break;
 
-      wpStart = pIterator->GetAt();
-    } while (pIterator->PrevWord());
-  } else if (bArabic) {
-    do {
-      if (!pIterator->GetWord(wordinfo) || !PWL_ISARABICWORD(wordinfo.Word))
-        break;
-
-      wpStart = pIterator->GetAt();
-    } while (pIterator->PrevWord());
-  }
+    wpStart = pIterator->GetAt();
+  } while (pIterator->PrevWord());
 
   return CPVT_WordRange(wpStart, wpEnd);
 }
