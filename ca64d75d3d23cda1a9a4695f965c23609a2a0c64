@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "255f83a4_b958fde1",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-08T19:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0457dcf1_946c05ae",
+      "revId": "ca64d75d3d23cda1a9a4695f965c23609a2a0c64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d4422c5_d7efd8c8",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-08T19:09:17Z",
       "side": 1,
       "message": "Would cppgc::Persistent be preferable, since RecurseRecord isn\u0027t GCed?",
+      "revId": "ca64d75d3d23cda1a9a4695f965c23609a2a0c64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cbafa32_788e21a4",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-08T19:17:30Z",
+      "side": 1,
+      "message": "I\u0027ve wondered about this. Persistent is safest, Done.",
+      "parentUuid": "3d4422c5_d7efd8c8",
       "revId": "ca64d75d3d23cda1a9a4695f965c23609a2a0c64",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
