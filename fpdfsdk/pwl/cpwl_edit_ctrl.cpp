@@ -257,7 +257,7 @@ bool CPWL_EditCtrl::OnChar(uint16_t nChar, uint32_t nFlag) {
 bool CPWL_EditCtrl::OnLButtonDown(uint32_t nFlag, const CFX_PointF& point) {
   CPWL_Wnd::OnLButtonDown(nFlag, point);
 
-  if (ClientHitTest(point)) {
+  if (HasFlag(PES_TEXTOVERFLOW) || ClientHitTest(point)) {
     if (m_bMouseDown && !InvalidateRect(nullptr))
       return true;
 
@@ -283,6 +283,30 @@ bool CPWL_EditCtrl::OnLButtonUp(uint32_t nFlag, const CFX_PointF& point) {
   }
 
   return true;
+}
+
+bool CPWL_EditCtrl::OnLButtonDblClk(uint32_t nFlag, const CFX_PointF& point) {
+  CPWL_Wnd::OnLButtonDblClk(nFlag, point);
+
+  if (HasFlag(PES_TEXTOVERFLOW) || ClientHitTest(point)) {
+    m_pEdit->SelectAll();
+  }
+
+  return true;
+}
+
+bool CPWL_EditCtrl::OnRButtonUp(uint32_t nFlag, const CFX_PointF& point) {
+  if (m_bMouseDown)
+    return false;
+
+  CPWL_Wnd::OnRButtonUp(nFlag, point);
+
+  if (!HasFlag(PES_TEXTOVERFLOW) && !ClientHitTest(point))
+    return true;
+
+  SetFocus();
+
+  return false;
 }
 
 bool CPWL_EditCtrl::OnMouseMove(uint32_t nFlag, const CFX_PointF& point) {
