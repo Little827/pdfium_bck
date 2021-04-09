@@ -526,34 +526,3 @@ CPVT_WordRange CPWL_Edit::CombineWordRange(const CPVT_WordRange& wr1,
   return CPVT_WordRange(std::min(wr1.BeginPos, wr2.BeginPos),
                         std::max(wr1.EndPos, wr2.EndPos));
 }
-
-#define PWL_ISLATINWORD(u)                      \
-  (u == 0x2D || (u >= 0x0041 && u <= 0x005A) || \
-   (u >= 0x0061 && u <= 0x007A) || (u >= 0x00C0 && u <= 0x02AF))
-
-CPVT_WordRange CPWL_Edit::GetLatinWordsRange(
-    const CPVT_WordPlace& place) const {
-  CPWL_EditImpl_Iterator* pIterator = m_pEdit->GetIterator();
-  CPVT_Word wordinfo;
-  CPVT_WordPlace wpStart(place);
-  CPVT_WordPlace wpEnd(place);
-  pIterator->SetAt(place);
-
-  while (pIterator->NextWord()) {
-    if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word))
-      break;
-
-    wpEnd = pIterator->GetAt();
-  }
-
-  pIterator->SetAt(place);
-
-  do {
-    if (!pIterator->GetWord(wordinfo) || !PWL_ISLATINWORD(wordinfo.Word))
-      break;
-
-    wpStart = pIterator->GetAt();
-  } while (pIterator->PrevWord());
-
-  return CPVT_WordRange(wpStart, wpEnd);
-}
