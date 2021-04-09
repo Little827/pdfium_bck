@@ -76,12 +76,7 @@ class CPWL_Edit final : public CPWL_EditCtrl {
   CPVT_WordRange GetSelectWordRange() const;
   bool IsVScrollBarVisible() const;
   void SetParamByFlag();
-
   CFX_PointF GetWordRightBottomPoint(const CPVT_WordPlace& wpWord);
-
-  CPVT_WordRange CombineWordRange(const CPVT_WordRange& wr1,
-                                  const CPVT_WordRange& wr2);
-  CPVT_WordRange GetLatinWordsRange(const CPVT_WordPlace& place) const;
 
   bool m_bFocus = false;
   CFX_FloatRect m_rcOldWindow;
