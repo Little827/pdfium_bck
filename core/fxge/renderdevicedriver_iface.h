@@ -82,7 +82,7 @@ class RenderDeviceDriverIface {
                              int dest_top,
                              int dest_width,
                              int dest_height,
-                             const FX_RECT* pClipRect,
+                             const FX_RECT& pClipRect,
                              const FXDIB_ResampleOptions& options,
                              BlendMode blend_type) = 0;
   virtual bool StartDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,

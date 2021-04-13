@@ -75,7 +75,7 @@ class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
                      int dest_top,
                      int dest_width,
                      int dest_height,
-                     const FX_RECT* pClipRect,
+                     const FX_RECT& pClipRect,
                      const FXDIB_ResampleOptions& options,
                      BlendMode blend_type) override;
   bool StartDIBits(const RetainPtr<CFX_DIBBase>& pSource,

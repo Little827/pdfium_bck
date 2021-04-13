@@ -1374,7 +1374,7 @@ bool CFX_AggDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                         int dest_top,
                                         int dest_width,
                                         int dest_height,
-                                        const FX_RECT* pClipRect,
+                                        const FX_RECT& clip_rect,
                                         const FXDIB_ResampleOptions& options,
                                         BlendMode blend_type) {
   if (!m_pBitmap->GetBuffer())
@@ -1389,7 +1389,7 @@ bool CFX_AggDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                     dest_top + dest_height);
   dest_rect.Normalize();
   FX_RECT dest_clip = dest_rect;
-  dest_clip.Intersect(*pClipRect);
+  dest_clip.Intersect(clip_rect);
   CFX_BitmapComposer composer;
   composer.Compose(m_pBitmap, m_pClipRgn.get(), 255, argb, dest_clip, false,
                    false, false, m_bRgbByteOrder, blend_type);

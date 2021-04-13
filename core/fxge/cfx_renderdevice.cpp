@@ -946,7 +946,7 @@ bool CFX_RenderDevice::StretchDIBitsWithFlagsAndBlend(
   clip_box.Intersect(dest_rect);
   return clip_box.IsEmpty() || m_pDeviceDriver->StretchDIBits(
                                    pBitmap, 0, left, top, dest_width,
-                                   dest_height, &clip_box, options, blend_mode);
+                                   dest_height, clip_box, options, blend_mode);
 }
 
 bool CFX_RenderDevice::SetBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
@@ -980,7 +980,7 @@ bool CFX_RenderDevice::StretchBitMaskWithFlags(
   FX_RECT clip_box = m_ClipBox;
   clip_box.Intersect(dest_rect);
   return m_pDeviceDriver->StretchDIBits(pBitmap, argb, left, top, dest_width,
-                                        dest_height, &clip_box, options,
+                                        dest_height, clip_box, options,
                                         BlendMode::kNormal);
 }
 
