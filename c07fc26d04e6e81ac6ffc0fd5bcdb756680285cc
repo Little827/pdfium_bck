@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc2a2f6_c9f01a25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-13T23:06:33Z",
+      "side": 1,
+      "message": "Nay. Was considering adding some APIs related to FPDF_ACTION, so I started wondering about object lifetimes.",
+      "parentUuid": "67a68641_bc041cf9",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "c07fc26d04e6e81ac6ffc0fd5bcdb756680285cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4de5a90_e4d06941",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-04-13T17:30:00Z",
       "side": 1,
       "message": "nit: , or NULL ...\n(as long as we\u0027re at it).",
+      "range": {
+        "startLine": 115,
+        "startChar": 46,
+        "endLine": 115,
+        "endChar": 47
+      },
+      "revId": "c07fc26d04e6e81ac6ffc0fd5bcdb756680285cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf6d9fc_9ae238ac",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-13T23:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4de5a90_e4d06941",
       "range": {
         "startLine": 115,
         "startChar": 46,
