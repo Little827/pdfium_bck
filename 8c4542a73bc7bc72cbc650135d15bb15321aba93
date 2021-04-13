@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2690eb3b_3a7faa5e",
+        "filename": "xfa/fwl/cfwl_caret.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-13T23:29:52Z",
+      "side": 1,
+      "message": "Did you mean to change this one? Revert?",
+      "revId": "8c4542a73bc7bc72cbc650135d15bb15321aba93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
