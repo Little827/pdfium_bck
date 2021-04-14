@@ -171,7 +171,7 @@ bool CPDF_FormField::ResetField(NotificationOption notify) {
           !NotifyListOrComboBoxBeforeChange(csValue)) {
         return false;
       }
-      SetItemSelection(iIndex, true, NotificationOption::kDoNotNotify);
+      SetItemSelection(iIndex, NotificationOption::kDoNotNotify);
       if (notify == NotificationOption::kNotify)
         NotifyListOrComboBoxAfterChange();
       break;
@@ -360,7 +360,7 @@ bool CPDF_FormField::SetValue(const WideString& value,
       } else {
         if (!bDefault) {
           ClearSelection(NotificationOption::kDoNotNotify);
-          SetItemSelection(iIndex, true, NotificationOption::kDoNotNotify);
+          SetItemSelection(iIndex, NotificationOption::kDoNotNotify);
         }
       }
       if (notify == NotificationOption::kNotify)
@@ -381,7 +381,7 @@ bool CPDF_FormField::SetValue(const WideString& value,
       }
       if (!bDefault) {
         ClearSelection(NotificationOption::kDoNotNotify);
-        SetItemSelection(iIndex, true, NotificationOption::kDoNotNotify);
+        SetItemSelection(iIndex, NotificationOption::kDoNotNotify);
       }
       if (notify == NotificationOption::kNotify)
         NotifyAfterSelectionChange();
@@ -485,7 +485,6 @@ bool CPDF_FormField::IsItemSelected(int index) const {
 }
 
 bool CPDF_FormField::SetItemSelection(int index,
-                                      bool bSelected,
                                       NotificationOption notify) {
   DCHECK(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions())
@@ -497,10 +496,7 @@ bool CPDF_FormField::SetItemSelection(int index,
     return false;
   }
 
-  if (bSelected)
-    SetItemSelectionSelected(index, opt_value);
-  else
-    SetItemSelectionUnselected(index, opt_value);
+  SetItemSelectionSelected(index, opt_value);
 
   // UseSelectedIndicesObject() has a non-trivial linearithmic run-time, so run
   // only if necessary.

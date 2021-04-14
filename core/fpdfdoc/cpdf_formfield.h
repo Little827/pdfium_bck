@@ -113,7 +113,7 @@ class CPDF_FormField {
 
   bool ClearSelection(NotificationOption notify);
   bool IsItemSelected(int index) const;
-  bool SetItemSelection(int index, bool bSelected, NotificationOption notify);
+  bool SetItemSelection(int index, NotificationOption notify);
 
   bool IsItemDefaultSelected(int index) const;
 
