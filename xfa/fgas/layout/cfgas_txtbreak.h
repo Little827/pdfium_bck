@@ -73,7 +73,7 @@ class CFGAS_TxtBreak final : public CFGAS_Break {
   CFGAS_Char::BreakType EndBreak(CFGAS_Char::BreakType dwStatus);
 
   size_t GetDisplayPos(const Run* pTxtRun, TextCharPos* pCharPos) const;
-  std::vector<CFX_RectF> GetCharRects(const Run* pTxtRun, bool bCharBBox) const;
+  std::vector<CFX_RectF> GetCharRects(const Run* pTxtRun) const;
   CFGAS_Char::BreakType AppendChar(wchar_t wch);
 
  private:

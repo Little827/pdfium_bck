@@ -910,8 +910,7 @@ size_t CFGAS_TxtBreak::GetDisplayPos(const Run* pTxtRun,
   return szCount;
 }
 
-std::vector<CFX_RectF> CFGAS_TxtBreak::GetCharRects(const Run* pTxtRun,
-                                                    bool bCharBBox) const {
+std::vector<CFX_RectF> CFGAS_TxtBreak::GetCharRects(const Run* pTxtRun) const {
   if (!pTxtRun || pTxtRun->iLength < 1)
     return std::vector<CFX_RectF>();
 
@@ -921,20 +920,8 @@ std::vector<CFX_RectF> CFGAS_TxtBreak::GetCharRects(const Run* pTxtRun,
   int32_t iLength = pTxtRun->iLength;
   CFX_RectF rect(*pTxtRun->pRect);
   float fFontSize = pTxtRun->fFontSize;
-  float fScale = fFontSize / 1000.0f;
-  RetainPtr<CFGAS_GEFont> pFont = pTxtRun->pFont;
-  if (!pFont)
-    bCharBBox = false;
-
-  FX_RECT bbox;
-  if (bCharBBox)
-    bCharBBox = pFont->GetBBox(&bbox);
-
-  float fLeft = std::max(0.0f, bbox.left * fScale);
-  float fHeight = fabs(bbox.Height() * fScale);
   bool bRTLPiece = !!(pTxtRun->dwCharStyles & FX_TXTCHARSTYLE_OddBidiLevel);
   bool bSingleLine = !!(pTxtRun->dwStyles & FX_LAYOUTSTYLE_SingleLine);
-  bool bCombText = !!(pTxtRun->dwStyles & FX_LAYOUTSTYLE_CombText);
   wchar_t wch;
   int32_t iCharSize;
   float fCharSize;
@@ -966,26 +953,6 @@ std::vector<CFX_RectF> CFGAS_TxtBreak::GetCharRects(const Run* pTxtRun,
       fStart += fCharSize;
     }
     rect.width = fCharSize;
-
-    if (bCharBBox && !bRet) {
-      int32_t iCharWidth = 1000;
-      pFont->GetCharWidth(wch, &iCharWidth);
-      float fRTLeft = 0, fCharWidth = 0;
-      if (iCharWidth > 0) {
-        fCharWidth = iCharWidth * fScale;
-        fRTLeft = fLeft;
-        if (bCombText)
-          fRTLeft = (rect.width - fCharWidth) / 2.0f;
-      }
-      CFX_RectF rtBBoxF;
-      rtBBoxF.left = rect.left + fRTLeft;
-      rtBBoxF.top = rect.top + (rect.height - fHeight) / 2.0f;
-      rtBBoxF.width = fCharWidth;
-      rtBBoxF.height = fHeight;
-      rtBBoxF.top = std::max(rtBBoxF.top, 0.0f);
-      rtArray[i] = rtBBoxF;
-      continue;
-    }
     rtArray[i] = rect;
   }
   return rtArray;
