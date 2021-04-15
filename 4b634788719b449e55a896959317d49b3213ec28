@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac00ec54_b357091b",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-15T19:07:55Z",
+      "side": 1,
+      "message": "As with many things, I\u0027m generally just following Chromium, and I don\u0027t see any guidance to go Python 3 only yet.",
+      "parentUuid": "00eda2c0_1aea6538",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e62471f_78069540",
         "filename": "testing/tools/pngdiffer.py",
         "patchSetId": 5
