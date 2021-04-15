@@ -22,6 +22,30 @@
       },
       "revId": "384d5ac4275a54e86d5c10e12abe68a33dd1cd70",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc03e65_53ebfc6f",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-15T23:04:08Z",
+      "side": 1,
+      "message": "Ack, left as is.",
+      "parentUuid": "6cfadc49_bd75c583",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 7
+      },
+      "revId": "384d5ac4275a54e86d5c10e12abe68a33dd1cd70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
