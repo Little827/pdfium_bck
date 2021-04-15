@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1e26a117_f41c114c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T18:43:41Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "0182bc90_5fad60e4",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2b2900de_5201a104",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -49,6 +67,24 @@
       "writtenOn": "2021-04-15T16:28:10Z",
       "side": 1,
       "message": "Non-committer LGTM",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ab8fc4_7577e9b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T18:43:41Z",
+      "side": 1,
+      "message": "Still LGTM",
+      "parentUuid": "2b2900de_5201a104",
       "revId": "4b634788719b449e55a896959317d49b3213ec28",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -84,6 +120,24 @@
       "side": 1,
       "message": "- Bug filed.\n- I have a CL to switch to io.BytesIO chained to this one. I wrote the TODO before I made the decision on io.BytesIO vs io.StringIO.\n- There are already 10+ copies of six in a full Chromium checkout. I think we can get by without adding another one.\n- I\u0027m pretty sure bots still default to Python 2 right now. We can\u0027t convert straight to Python 3.",
       "parentUuid": "b6ee44bd_a1d2d492",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00eda2c0_1aea6538",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T18:43:41Z",
+      "side": 1,
+      "message": "\u003e - Bug filed.\n\u003e - I have a CL to switch to io.BytesIO chained to this one. I wrote the TODO before I made the decision on io.BytesIO vs io.StringIO.\n\nSGTM\n\n\u003e - There are already 10+ copies of six in a full Chromium checkout. I think we can get by without adding another one.\n\nOn the other hand, what\u0027s one more? 😊 Anyway, maybe we could at least keep this kind of code in a separate \"mini-six\" module of our own, so it\u0027s easy to take out later. (We could replace it with the actual six module if our needs grow.)\n\n\u003e - I\u0027m pretty sure bots still default to Python 2 right now. We can\u0027t convert straight to Python 3.\n\nMy thinking here is that Python 3 is available everywhere now, so as long as we can make sure the scripts run with the correct interpreter (I don\u0027t know if this would be as easy as changing the #! line to reference python3, or in a runner script somewhere, or if it would require more effort), it should be possible in a lot of these cases.\n\nWhere it would be hard would be something like a recipe module that gets pulled into infrastructure code we don\u0027t control the execution of.\n\nAnyway, we probably can pick this discussion up on the bug; I don\u0027t think it blocks any of the current changes.",
+      "parentUuid": "7244fc00_d7f314e9",
       "revId": "4b634788719b449e55a896959317d49b3213ec28",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
