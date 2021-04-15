@@ -17,6 +17,24 @@
       "message": "Non-committer LGTM",
       "revId": "8ebf56adac587525040f710204aea4ecc2de1d02",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1951023e_d8f480a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T19:29:36Z",
+      "side": 1,
+      "message": "BTW, just realized this and 79492 should reference bug pdfium:1674, too.",
+      "parentUuid": "e54bcd7e_fef8ea8b",
+      "revId": "8ebf56adac587525040f710204aea4ecc2de1d02",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
