@@ -690,6 +690,34 @@ bool GenerateInkAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   return true;
 }
 
+bool GenerateLineAP(CPDF_Document* doc, CPDF_Dictionary* annot) {
+  const char kGraphicsStateName[] = "GS";
+  std::ostringstream ap_stream;
+  ap_stream << "/" << kGraphicsStateName << " gs ";
+
+  ap_stream << GetColorStringWithDefault(
+      annot->GetArrayFor(pdfium::annotation::kC),
+      CFX_Color(CFX_Color::kRGB, 1, 1, 1), PaintOperation::kFill);
+
+  CPDF_Array* line = annot->GetArrayFor(pdfium::annotation::kL);
+  if (line && line->size() >= 4) {
+    float start_x = line->GetNumberAt(0);
+    float start_y = line->GetNumberAt(1);
+    float end_x = line->GetNumberAt(2);
+    float end_y = line->GetNumberAt(3);
+    ap_stream << start_x << " " << start_y << " m " << end_x << " " << end_y
+              << " l h B\n";
+  }
+
+  auto graphics_state =
+      GenerateExtGStateDict(*annot, kGraphicsStateName, "Normal");
+  auto resources =
+      GenerateResourceDict(doc, std::move(graphics_state), nullptr);
+  GenerateAndSetAPDict(doc, annot, &ap_stream, std::move(resources),
+                       /*bIsTextMarkupAnnotation=*/false);
+  return true;
+}
+
 bool GenerateTextAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   std::ostringstream sAppStream;
   ByteString sExtGSDictName = "GS";
@@ -1369,6 +1397,8 @@ bool CPVT_GenerateAP::GenerateAnnotAP(CPDF_Document* pDoc,
       return GenerateHighlightAP(pDoc, pAnnotDict);
     case CPDF_Annot::Subtype::INK:
       return GenerateInkAP(pDoc, pAnnotDict);
+    case CPDF_Annot::Subtype::LINE:
+      return GenerateLineAP(pDoc, pAnnotDict);
     case CPDF_Annot::Subtype::POPUP:
       return GeneratePopupAP(pDoc, pAnnotDict);
     case CPDF_Annot::Subtype::SQUARE:
