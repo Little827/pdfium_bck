@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33892ba9_21967426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T16:28:10Z",
+      "side": 1,
+      "message": "Maybe include a summary of the kind of migrations done in this change? Seems to me like a lot of print_function, for example, with some encoding stuff and a few library migrations as well.\n\nAlso, were these all manual migrations, or did you use something like modernize first?",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2900de_5201a104",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T16:28:10Z",
+      "side": 1,
+      "message": "Non-committer LGTM",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ee44bd_a1d2d492",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T16:28:10Z",
+      "side": 1,
+      "message": "Perhaps we should file and link a Python 3 migration bug for PDFium?\n\nIncidentally, it looks like we just use cStringIO for binary I/O in this file, so this probably should become io.BytesIO in Python 3.\n\nThe \"six\" library can help out with things like this if we want to support both Python 2 and 3. (Chromium already has a copy in third_party/six, we could do the same thing.) At this point, though, maybe we should skip six and convert straight to Python 3; 2*3 support is more useful for modules imported into other programs.",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e62471f_78069540",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2021-04-15T16:28:10Z",
+      "side": 1,
+      "message": "six provides this kind of alias already: https://six.readthedocs.io/#module-six.moves\n\nSo it may be worthwhile to import six before doing these migrations, if there\u0027s going to be a lot of things like this.",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
