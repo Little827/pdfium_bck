@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0182bc90_5fad60e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-15T17:57:57Z",
+      "side": 1,
+      "message": "DOne.\n\nIt wasn\u0027t too hard to update the print statements, but 2to3 could have done it too. Everything else is manual.",
+      "parentUuid": "33892ba9_21967426",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2b2900de_5201a104",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-15T16:28:10Z",
       "side": 1,
       "message": "Perhaps we should file and link a Python 3 migration bug for PDFium?\n\nIncidentally, it looks like we just use cStringIO for binary I/O in this file, so this probably should become io.BytesIO in Python 3.\n\nThe \"six\" library can help out with things like this if we want to support both Python 2 and 3. (Chromium already has a copy in third_party/six, we could do the same thing.) At this point, though, maybe we should skip six and convert straight to Python 3; 2*3 support is more useful for modules imported into other programs.",
+      "revId": "4b634788719b449e55a896959317d49b3213ec28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7244fc00_d7f314e9",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-15T17:57:57Z",
+      "side": 1,
+      "message": "- Bug filed.\n- I have a CL to switch to io.BytesIO chained to this one. I wrote the TODO before I made the decision on io.BytesIO vs io.StringIO.\n- There are already 10+ copies of six in a full Chromium checkout. I think we can get by without adding another one.\n- I\u0027m pretty sure bots still default to Python 2 right now. We can\u0027t convert straight to Python 3.",
+      "parentUuid": "b6ee44bd_a1d2d492",
       "revId": "4b634788719b449e55a896959317d49b3213ec28",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
