@@ -3,6 +3,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+from __future__ import print_function
+
 import distutils.spawn
 import itertools
 import os
@@ -94,13 +96,13 @@ class PNGDiffer():
       expected_paths = path_templates.GetExpectedPaths(page)
       if not any(itertools.imap(os.path.exists, expected_paths)):
         if page == 0:
-          print "WARNING: no expected results files for " + input_filename
+          print("WARNING: no expected results files for " + input_filename)
         if os.path.exists(actual_path):
           print('FAILURE: Missing expected result for 0-based page %d of %s' %
                 (page, input_filename))
           return True
         break
-      print "Checking " + actual_path
+      print("Checking " + actual_path)
       sys.stdout.flush()
 
       error = None
@@ -115,7 +117,7 @@ class PNGDiffer():
           break
 
       if error:
-        print "FAILURE: " + input_filename + "; " + str(error)
+        print("FAILURE: " + input_filename + "; " + str(error))
         return True
 
     return False
