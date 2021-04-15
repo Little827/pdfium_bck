@@ -17,11 +17,17 @@ script replaces {{name}}-style variables in the input with calculated results
   {{streamlen}} - expands to |/Length n|.
 """
 
-import cStringIO
+from __future__ import print_function
+
 import optparse
 import os
 import re
 import sys
+
+try:
+  from cStringIO import StringIO
+except ModuleNotFoundError:
+  from io import StringIO
 
 # Line Endings.
 WINDOWS_LINE_ENDING = b'\r\n'
@@ -138,7 +144,7 @@ def expand_file(infile, output_path):
   processor = TemplateProcessor()
   try:
     with open(output_path, 'wb') as outfile:
-      preprocessed = cStringIO.StringIO()
+      preprocessed = StringIO()
       for line in infile:
         preprocessed.write(line)
         processor.preprocess_line(line)
@@ -146,13 +152,13 @@ def expand_file(infile, output_path):
       for line in preprocessed:
         outfile.write(processor.process_line(line))
   except IOError:
-    print >> sys.stderr, 'failed to process %s' % input_path
+    print('failed to process %s' % input_path, file=sys.stderr)
 
 
 def insert_includes(input_path, output_file, visited_set):
   input_path = os.path.normpath(input_path)
   if input_path in visited_set:
-    print >> sys.stderr, 'Circular inclusion %s, ignoring' % input_path
+    print('Circular inclusion %s, ignoring' % input_path, file=sys.stderr)
     return
   visited_set.add(input_path)
   try:
@@ -170,7 +176,7 @@ def insert_includes(input_path, output_file, visited_set):
             line = line.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
           output_file.write(line)
   except IOError:
-    print >> sys.stderr, 'failed to include %s' % input_path
+    print('failed to include %s' % input_path, file=sys.stderr)
     raise
   visited_set.discard(input_path)
 
@@ -185,7 +191,7 @@ def main():
     output_dir = os.path.dirname(testcase_path)
     if options.output_dir:
       output_dir = options.output_dir
-    intermediate_stream = cStringIO.StringIO()
+    intermediate_stream = StringIO()
     insert_includes(testcase_path, intermediate_stream, set())
     intermediate_stream.seek(0)
     output_path = os.path.join(output_dir, testcase_root + '.pdf')
