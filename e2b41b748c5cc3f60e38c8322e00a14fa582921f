@@ -16,6 +16,24 @@
       "message": "I uploaded a few intermediate PS for diffing.",
       "revId": "e2b41b748c5cc3f60e38c8322e00a14fa582921f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0cf2697_b6a385cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-16T21:46:36Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "6ece854e_8e03bdf5",
+      "revId": "e2b41b748c5cc3f60e38c8322e00a14fa582921f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
