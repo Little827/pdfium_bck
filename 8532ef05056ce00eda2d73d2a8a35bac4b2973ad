@@ -74,6 +74,24 @@
       "parentUuid": "5e056004_0c2d43fb",
       "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3d1af9_eacf7137",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-16T20:13:38Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with fonttools, and I have no idea if using different versions make a difference. It\u0027s just about being a bit more specific when it comes to documentation. In the same way that a bug report is clearer when the reporter says \"Chrome 90.0.4430.72 on Windows 10\" instead of just \"Chrome\".",
+      "parentUuid": "f2305135_17d334a0",
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
