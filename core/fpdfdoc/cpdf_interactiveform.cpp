@@ -374,7 +374,7 @@ class CFieldTree {
  public:
   class Node {
    public:
-    Node() : m_level(0) {}
+    Node() = default;
     Node(const WideString& short_name, int level)
         : m_ShortName(short_name), m_level(level) {}
     ~Node() = default;
@@ -432,7 +432,7 @@ class CFieldTree {
     std::vector<std::unique_ptr<Node>> m_Children;
     WideString m_ShortName;
     std::unique_ptr<CPDF_FormField> m_pField;
-    const int m_level;
+    const int m_level = 0;
   };
 
   CFieldTree();
