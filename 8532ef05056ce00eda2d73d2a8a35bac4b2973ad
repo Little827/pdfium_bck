@@ -56,6 +56,24 @@
       "message": "Can you mention what version of fonttools was used?",
       "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2305135_17d334a0",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-16T17:22:15Z",
+      "side": 1,
+      "message": "I was using 4.16.1. \n\nI thought we should always use the latest fonttools for generating new subsets, and that\u0027s why no other README.chromium file has mentioned the exact fonttools version which was used for a particular subset.\n\nSo moving forward, should we always include the specific fonttools version that was used for generating new subsets?",
+      "parentUuid": "5e056004_0c2d43fb",
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
