@@ -1255,33 +1255,42 @@ void CPDFSDK_AppStream::SetAsPushButton() {
   SetDefaultIconName(pRolloverIcon, "ImgB");
   SetDefaultIconName(pDownIcon, "ImgC");
 
-  CBA_FontMap font_map(widget_->GetPDFPage()->GetDocument(),
-                       widget_->GetPDFAnnot()->GetAnnotDict());
-  font_map.SetAPType("N");
-
   CPDF_IconFit iconFit = pControl->GetIconFit();
-  ByteString csAP =
-      GetRectFillAppStream(rcWindow, crBackground) +
-      GetBorderAppStreamInternal(rcWindow, fBorderWidth, crBorder, crLeftTop,
-                                 crRightBottom, nBorderStyle, dsBorder) +
-      GetPushButtonAppStream(iconFit.GetFittingBounds() ? rcWindow : rcClient,
-                             &font_map, pNormalIcon, iconFit, csNormalCaption,
-                             crText, fFontSize, nLayout);
+  {
+    CBA_FontMap font_map(widget_->GetPDFPage()->GetDocument(),
+                         widget_->GetPDFAnnot()->GetAnnotDict());
+    font_map.SetAPType("N");
+    ByteString csAP =
+        GetRectFillAppStream(rcWindow, crBackground) +
+        GetBorderAppStreamInternal(rcWindow, fBorderWidth, crBorder, crLeftTop,
+                                   crRightBottom, nBorderStyle, dsBorder) +
+        GetPushButtonAppStream(iconFit.GetFittingBounds() ? rcWindow : rcClient,
+                               &font_map, pNormalIcon, iconFit, csNormalCaption,
+                               crText, fFontSize, nLayout);
 
-  Write("N", csAP, ByteString());
-  if (pNormalIcon)
-    AddImage("N", pNormalIcon);
+    Write("N", csAP, ByteString());
+    if (pNormalIcon)
+      AddImage("N", pNormalIcon);
 
-  CPDF_FormControl::HighlightingMode eHLM = pControl->GetHighlightingMode();
-  if (eHLM == CPDF_FormControl::Push || eHLM == CPDF_FormControl::Toggle) {
+    CPDF_FormControl::HighlightingMode eHLM = pControl->GetHighlightingMode();
+    if (eHLM != CPDF_FormControl::Push && eHLM != CPDF_FormControl::Toggle) {
+      Remove("D");
+      Remove("R");
+      return;
+    }
+
     if (csRolloverCaption.IsEmpty() && !pRolloverIcon) {
       csRolloverCaption = csNormalCaption;
       pRolloverIcon = pNormalIcon;
     }
+  }
+  {
+    CBA_FontMap font_map(widget_->GetPDFPage()->GetDocument(),
+                         widget_->GetPDFAnnot()->GetAnnotDict());
 
     font_map.SetAPType("R");
 
-    csAP =
+    ByteString csAP =
         GetRectFillAppStream(rcWindow, crBackground) +
         GetBorderAppStreamInternal(rcWindow, fBorderWidth, crBorder, crLeftTop,
                                    crRightBottom, nBorderStyle, dsBorder) +
@@ -1313,10 +1322,14 @@ void CPDFSDK_AppStream::SetAsPushButton() {
       default:
         break;
     }
+  }
+  {
+    CBA_FontMap font_map(widget_->GetPDFPage()->GetDocument(),
+                         widget_->GetPDFAnnot()->GetAnnotDict());
 
     font_map.SetAPType("D");
 
-    csAP =
+    ByteString csAP =
         GetRectFillAppStream(rcWindow, crBackground - 0.25f) +
         GetBorderAppStreamInternal(rcWindow, fBorderWidth, crBorder, crLeftTop,
                                    crRightBottom, nBorderStyle, dsBorder) +
@@ -1327,9 +1340,6 @@ void CPDFSDK_AppStream::SetAsPushButton() {
     Write("D", csAP, ByteString());
     if (pDownIcon)
       AddImage("D", pDownIcon);
-  } else {
-    Remove("D");
-    Remove("R");
   }
 }
 
