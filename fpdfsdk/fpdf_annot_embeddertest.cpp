@@ -3565,3 +3565,48 @@ TEST_F(FPDFAnnotEmbedderTest, AnnotationBorder) {
 
   UnloadPage(page);
 }
+
+// Due to https://crbug.com/pdfium/570, the AnnotationBorder test above cannot
+// actually render the line annotations inside line_annot.pdf. For now, use a
+// square annotation in annots.pdf for testing.
+TEST_F(FPDFAnnotEmbedderTest, AnnotationBorderRendering) {
+  ASSERT_TRUE(OpenDocument("annots.pdf"));
+  FPDF_PAGE page = LoadPage(1);
+  ASSERT_TRUE(page);
+  EXPECT_EQ(3, FPDFPage_GetAnnotCount(page));
+
+  constexpr char kOriginalChecksum[] = "ccf6667b34ec2452bea0b5f1a0194191";
+  constexpr char kModifiedChecksum[] = "1bbdb473d0757843e82053b0bd3298bc";
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 2));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(FPDF_ANNOT_SQUARE, FPDFAnnot_GetSubtype(annot.get()));
+
+    {
+      ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+      CompareBitmap(bitmap.get(), 612, 792, kOriginalChecksum);
+    }
+
+    EXPECT_TRUE(FPDFAnnot_SetBorder(annot.get(), /*horizontal_radius=*/2.0f,
+                                    /*vertical_radius=*/3.5f,
+                                    /*border_width=*/4.0f));
+
+    {
+      ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+      CompareBitmap(bitmap.get(), 612, 792, kModifiedChecksum);
+    }
+  }
+
+  // Save the document and close the page.
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  UnloadPage(page);
+
+  ASSERT_TRUE(OpenSavedDocument());
+  page = LoadSavedPage(1);
+  ASSERT_TRUE(page);
+  VerifySavedRendering(page, 612, 792, kModifiedChecksum);
+
+  CloseSavedPage(page);
+  CloseSavedDocument();
+}
