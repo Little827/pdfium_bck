@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9920d2_1c71273d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-16T20:38:01Z",
+      "side": 1,
+      "message": "Upload https://pdfium-review.googlesource.com/c/pdfium/+/79537 to address the issues.",
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dfa65dd_768b1fb6",
@@ -18,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a726b6fb_8e2891f4",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-16T20:38:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5dfa65dd_768b1fb6",
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40fd3781_8cfe6462",
@@ -31,6 +66,30 @@
       "writtenOn": "2021-04-16T07:06:19Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 8,
+        "startChar": 30,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a326849_c51abcee",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-16T20:38:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "40fd3781_8cfe6462",
       "range": {
         "startLine": 8,
         "startChar": 30,
@@ -90,6 +149,24 @@
       "side": 1,
       "message": "I\u0027m not familiar with fonttools, and I have no idea if using different versions make a difference. It\u0027s just about being a bit more specific when it comes to documentation. In the same way that a bug report is clearer when the reporter says \"Chrome 90.0.4430.72 on Windows 10\" instead of just \"Chrome\".",
       "parentUuid": "f2305135_17d334a0",
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4015fa_a70b9ee9",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-04-16T20:38:01Z",
+      "side": 1,
+      "message": "SG. Follow-up CL on its way~",
+      "parentUuid": "3c3d1af9_eacf7137",
       "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
