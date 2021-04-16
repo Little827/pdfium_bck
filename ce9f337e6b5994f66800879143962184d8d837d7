@@ -17,6 +17,87 @@
       "message": "Although this feels a bit unintuitive, as the 2 param ctor will still initialize to something other value. Should I revert this file?",
       "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1518ff01_324efe7d",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-16T16:55:05Z",
+      "side": 1,
+      "message": "I\u0027d vote for revert. I think our rules should be something like:\n\nall members have initializers,\nexcept for classes with default ctors,\nexcept for const members.",
+      "parentUuid": "39570af7_026074c2",
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdaf6c05_73c56502",
+        "filename": "core/fxcodec/jbig2/JBig2_Segment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-16T16:55:05Z",
+      "side": 1,
+      "message": "initializing unions is scary. Keep if you want.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fce0c48_97c56af9",
+        "filename": "core/fxcodec/jbig2/JBig2_Segment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-16T16:55:05Z",
+      "side": 1,
+      "message": "nit: stray blank line.",
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0ac577_9bc4e1c7",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-16T16:55:05Z",
+      "side": 1,
+      "message": "someday this will be an enum based on uint8_t and we\u0027ll pack better.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 27
+      },
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
