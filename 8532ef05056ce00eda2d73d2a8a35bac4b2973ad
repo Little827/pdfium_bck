@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfa65dd_768b1fb6",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-16T07:06:19Z",
+      "side": 1,
+      "message": "There should be a \"Security Critical: yes/no\" entry, with approval from security folks. Should be an easy stamp. See third_party/blink/renderer/platform/testing/data/third_party/Noto/README.chromium for comparison.",
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fd3781_8cfe6462",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-16T07:06:19Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 8,
+        "startChar": 30,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e056004_0c2d43fb",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-16T07:06:19Z",
+      "side": 1,
+      "message": "Can you mention what version of fonttools was used?",
+      "revId": "8532ef05056ce00eda2d73d2a8a35bac4b2973ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
