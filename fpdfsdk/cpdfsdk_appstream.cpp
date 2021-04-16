@@ -1273,7 +1273,12 @@ void CPDFSDK_AppStream::SetAsPushButton() {
     AddImage("N", pNormalIcon);
 
   CPDF_FormControl::HighlightingMode eHLM = pControl->GetHighlightingMode();
-  if (eHLM == CPDF_FormControl::Push || eHLM == CPDF_FormControl::Toggle) {
+  if (eHLM != CPDF_FormControl::Push && eHLM != CPDF_FormControl::Toggle) {
+    Remove("D");
+    Remove("R");
+    return;
+  }
+
     if (csRolloverCaption.IsEmpty() && !pRolloverIcon) {
       csRolloverCaption = csNormalCaption;
       pRolloverIcon = pNormalIcon;
@@ -1327,10 +1332,6 @@ void CPDFSDK_AppStream::SetAsPushButton() {
     Write("D", csAP, ByteString());
     if (pDownIcon)
       AddImage("D", pDownIcon);
-  } else {
-    Remove("D");
-    Remove("R");
-  }
 }
 
 void CPDFSDK_AppStream::SetAsCheckBox() {
