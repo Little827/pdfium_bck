@@ -70,6 +70,24 @@
       "parentUuid": "f8c51e66_f2efeda6",
       "revId": "47c7e1da00ac05e9ceb96df2789c3d71466cfc81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562d4917_9b826fab",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3463,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-16T04:12:23Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/79533 will add the rendering test, and indeed testing finds a bug.",
+      "parentUuid": "d70ec82e_97414d63",
+      "revId": "47c7e1da00ac05e9ceb96df2789c3d71466cfc81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
