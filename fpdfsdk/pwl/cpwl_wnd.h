@@ -248,7 +248,6 @@ class CPWL_Wnd : public Observable {
 
   CFX_Matrix GetChildToRoot() const;
   CFX_Matrix GetChildMatrix() const;
-  void SetChildMatrix(const CFX_Matrix& mt);
   CFX_Matrix GetWindowMatrix() const;
 
   virtual void OnSetFocus();

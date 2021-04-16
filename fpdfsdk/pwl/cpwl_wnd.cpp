@@ -743,10 +743,6 @@ CFX_Matrix CPWL_Wnd::GetChildMatrix() const {
   return HasFlag(PWS_CHILD) ? m_CreationParams.mtChild : CFX_Matrix();
 }
 
-void CPWL_Wnd::SetChildMatrix(const CFX_Matrix& mt) {
-  m_CreationParams.mtChild = mt;
-}
-
 const CPWL_Wnd* CPWL_Wnd::GetFocused() const {
   CPWL_MsgControl* pMsgCtrl = GetMsgControl();
   return pMsgCtrl ? pMsgCtrl->GetFocusedWindow() : nullptr;
