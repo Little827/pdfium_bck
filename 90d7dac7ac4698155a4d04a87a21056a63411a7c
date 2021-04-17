@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d22566_768ab103",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-17T00:02:07Z",
+      "side": 0,
+      "message": "always taken.",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 17
+      },
+      "revId": "90d7dac7ac4698155a4d04a87a21056a63411a7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95360bcd_c44963c9",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-17T00:02:07Z",
+      "side": 0,
+      "message": "always taken.",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 4
+      },
+      "revId": "90d7dac7ac4698155a4d04a87a21056a63411a7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd847f27_ac4e591e",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-17T00:02:07Z",
+      "side": 0,
+      "message": "multiplying by identity all the way up the chain yields identity.",
+      "range": {
+        "startLine": 730,
+        "startChar": 0,
+        "endLine": 730,
+        "endChar": 6
+      },
+      "revId": "90d7dac7ac4698155a4d04a87a21056a63411a7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
