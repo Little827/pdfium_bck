@@ -160,13 +160,11 @@ void CBA_FontMap::Initialize() {
       if (const CFX_SubstFont* pSubstFont = m_pDefaultFont->GetSubstFont()) {
         nCharset = pSubstFont->m_Charset;
       } else {
-        if (m_sDefaultFontName == "Wingdings" ||
-            m_sDefaultFontName == "Wingdings2" ||
-            m_sDefaultFontName == "Wingdings3" ||
-            m_sDefaultFontName == "Webdings")
-          nCharset = FX_CHARSET_Symbol;
-        else
-          nCharset = FX_CHARSET_ANSI;
+        bool is_dingbat = m_sDefaultFontName == "Wingdings" ||
+                          m_sDefaultFontName == "Wingdings2" ||
+                          m_sDefaultFontName == "Wingdings3" ||
+                          m_sDefaultFontName == "Webdings";
+        nCharset = is_dingbat ? FX_CHARSET_Symbol : FX_CHARSET_ANSI;
       }
       AddFontData(m_pDefaultFont, m_sDefaultFontName, nCharset);
       AddFontToAnnotDict(m_pDefaultFont, m_sDefaultFontName);
