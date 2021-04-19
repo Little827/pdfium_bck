@@ -16,6 +16,29 @@
       "message": "I rearranged this some more. Please take another look?",
       "revId": "85afded08af70cb3daace452c412479340cc156c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2709bafb_4ba4a668",
+        "filename": "core/fpdfdoc/cba_fontmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-19T21:04:43Z",
+      "side": 1,
+      "message": "If you want a follow-on, you might try splitting GADF() into two anonymous helper functions\n  ByteString GetAnnotDefaultFontName() { ...}\n  Font* GetAnnotFont(const Bytestring\u0026 name); { ...}\n\nso they could go in the initializer list like\n  m_sDefaultName(GetAnnotDefaultFontName()),\n  m_pDefaultFont(GetAnnotFont(m_sDefaultFontName)),",
+      "range": {
+        "startLine": 76,
+        "startChar": 19,
+        "endLine": 76,
+        "endChar": 59
+      },
+      "revId": "85afded08af70cb3daace452c412479340cc156c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
