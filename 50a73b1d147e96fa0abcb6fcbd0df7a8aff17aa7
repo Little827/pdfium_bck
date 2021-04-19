@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a566fae5_16f004fb",
+        "filename": "core/fpdfdoc/cba_fontmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-19T17:07:06Z",
+      "side": 0,
+      "message": "actually, I\u0027d have pulled this up a level to be an \n  } else if {",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "50a73b1d147e96fa0abcb6fcbd0df7a8aff17aa7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
