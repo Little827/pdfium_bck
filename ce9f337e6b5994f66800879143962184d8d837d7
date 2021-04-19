@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a702ae2_05e0f05c",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-19T21:34:44Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "1518ff01_324efe7d",
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdaf6c05_73c56502",
@@ -67,6 +85,30 @@
       "writtenOn": "2021-04-16T16:55:05Z",
       "side": 1,
       "message": "initializing unions is scary. Keep if you want.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b46c6d5_33530d55",
+        "filename": "core/fxcodec/jbig2/JBig2_Segment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-19T21:34:44Z",
+      "side": 1,
+      "message": "It\u0027s what the existing ctor does anyway.",
+      "parentUuid": "fdaf6c05_73c56502",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -94,6 +136,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b91b912_58f47d02",
+        "filename": "core/fxcodec/jbig2/JBig2_Segment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-19T21:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fce0c48_97c56af9",
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0ac577_9bc4e1c7",
@@ -107,6 +167,30 @@
       "writtenOn": "2021-04-16T16:55:05Z",
       "side": 1,
       "message": "someday this will be an enum based on uint8_t and we\u0027ll pack better.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 27
+      },
+      "revId": "ce9f337e6b5994f66800879143962184d8d837d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b64f47fa_135469ba",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-19T21:34:44Z",
+      "side": 1,
+      "message": "Switching this to an enum class is on my TODO list.",
+      "parentUuid": "bc0ac577_9bc4e1c7",
       "range": {
         "startLine": 398,
         "startChar": 0,
