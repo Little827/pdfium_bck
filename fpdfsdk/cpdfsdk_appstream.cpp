@@ -689,17 +689,18 @@ ByteString GenerateIconAppStream(CPDF_IconFit& fit,
   CPWL_Wnd::CreateParams cp;
   cp.dwFlags = PWS_VISIBLE;
 
-  CPWL_Icon icon(cp, std::make_unique<CPDF_Icon>(pIconStream), &fit);
+  auto pPDFIcon = std::make_unique<CPDF_Icon>(pIconStream);
+  CPWL_Icon icon(cp, pPDFIcon.get(), &fit);
   icon.Realize();
   if (!icon.Move(rcIcon, false, false))
     return ByteString();
 
-  ByteString sAlias = icon.GetImageAlias();
+  ByteString sAlias = pPDFIcon->GetImageAlias();
   if (sAlias.GetLength() <= 0)
     return ByteString();
 
   CFX_FloatRect rcPlate = icon.GetClientRect();
-  CFX_Matrix mt = icon.GetImageMatrix().GetInverse();
+  CFX_Matrix mt = pPDFIcon->GetImageMatrix().GetInverse();
 
   float fHScale;
   float fVScale;
