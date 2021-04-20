@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ef4dbf_a6035d1f",
+        "filename": "fpdfsdk/pwl/cpwl_icon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-20T23:31:14Z",
+      "side": 1,
+      "message": "const pointers to match the UnownedPtr types?",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "74c20c06762bc0b932ec837e27ead9711ef9fd7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
