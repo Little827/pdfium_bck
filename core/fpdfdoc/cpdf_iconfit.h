@@ -26,6 +26,10 @@ class CPDF_IconFit {
   bool GetFittingBounds() const;
   CFX_PointF GetIconBottomLeftPosition() const;
   CFX_PointF GetIconPosition() const;
+  std::pair<float, float> GetImageOffset(const CFX_SizeF& image_size,
+                                         const CFX_FloatRect& rcPlate);
+  std::pair<float, float> GetScale(const CFX_SizeF& image_size,
+                                   const CFX_FloatRect& rcPlate);
 
  private:
   RetainPtr<const CPDF_Dictionary> const m_pDict;
