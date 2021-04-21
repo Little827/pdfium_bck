@@ -27,10 +27,10 @@ class CPDF_IconFit {
   bool IsProportionalScale() const;
   bool GetFittingBounds() const;
   CFX_PointF GetIconBottomLeftPosition() const;
-  std::pair<float, float> GetImageOffset(const CFX_SizeF& image_size,
-                                         const CFX_FloatRect& rcPlate) const;
-  std::pair<float, float> GetScale(const CFX_SizeF& image_size,
-                                   const CFX_FloatRect& rcPlate) const;
+  CFX_VectorF GetImageOffset(const CFX_SizeF& image_size,
+                             const CFX_FloatRect& rcPlate) const;
+  CFX_VectorF GetScale(const CFX_SizeF& image_size,
+                       const CFX_FloatRect& rcPlate) const;
 
  private:
   CFX_PointF GetIconPosition() const;
