@@ -36,8 +36,8 @@ class CPVT_VariableText {
 
     bool NextWord();
     bool NextLine();
-    bool GetWord(CPVT_Word& word) const;
-    bool GetLine(CPVT_Line& line) const;
+    bool GetWord(CPVT_Word* word) const;
+    bool GetLine(CPVT_Line* line) const;
     void SetAt(int32_t nWordIndex);
     void SetAt(const CPVT_WordPlace& place);
     const CPVT_WordPlace& GetWordPlace() const { return m_CurPos; }
