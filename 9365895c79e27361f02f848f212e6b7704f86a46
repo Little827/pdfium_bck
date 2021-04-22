@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a6521f_e397f4b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-22T06:48:41Z",
+      "side": 1,
+      "message": "Have you ever tried cut/copy/paste/select-all keyboard shortcuts in your favorite Acroform PDF on a Mac?",
+      "revId": "9365895c79e27361f02f848f212e6b7704f86a46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
