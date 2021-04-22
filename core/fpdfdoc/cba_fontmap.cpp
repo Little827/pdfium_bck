@@ -62,6 +62,55 @@ RetainPtr<CPDF_Font> AddNativeTrueTypeFontToPDF(CPDF_Document* pDoc,
   return pDocPageData->AddFont(std::move(pFXFont), nCharset);
 }
 
+ByteString GetDefaultAppearance(const CPDF_Dictionary* acroform,
+                                const CPDF_Dictionary* annot) {
+  ByteString result;
+  const CPDF_Object* annot_def_ap = CPDF_FormField::GetFieldAttr(annot, "DA");
+  if (annot_def_ap)
+    result = annot_def_ap->GetString();
+
+  if (result.IsEmpty() && acroform) {
+    const CPDF_Object* def_ap = CPDF_FormField::GetFieldAttr(acroform, "DA");
+    if (def_ap)
+      result = def_ap->GetString();
+  }
+  return result;
+}
+
+CPDF_Dictionary* GetAcroFormForWidget(CPDF_Document* doc,
+                                      CPDF_Dictionary* annot) {
+  bool is_widget = annot->GetNameFor(pdfium::annotation::kSubtype) != "Widget";
+  return is_widget ? doc->GetAcroForm() : nullptr;
+}
+
+CPDF_Dictionary* GetNormalAppearanceFont(CPDF_Dictionary* annot,
+                                         const ByteString& alias) {
+  CPDF_Dictionary* ap = annot->GetDictFor(pdfium::annotation::kAP);
+  if (!ap)
+    return nullptr;
+
+  CPDF_Dictionary* normal = ap->GetDictFor("N");
+  if (!normal)
+    return nullptr;
+
+  CPDF_Dictionary* resources = normal->GetDictFor("Resources");
+  if (!resources)
+    return nullptr;
+
+  CPDF_Dictionary* font = resources->GetDictFor("Font");
+  return font ? font->GetDictFor(alias) : nullptr;
+}
+
+CPDF_Dictionary* GetDefaultResourcesFont(CPDF_Dictionary* acroform,
+                                         const ByteString& alias) {
+  CPDF_Dictionary* default_resources = acroform->GetDictFor("DR");
+  if (!default_resources)
+    return nullptr;
+
+  CPDF_Dictionary* font = default_resources->GetDictFor("Font");
+  return font ? font->GetDictFor(alias) : nullptr;
+}
+
 }  // namespace
 
 CBA_FontMap::Data::Data() = default;
@@ -172,14 +221,8 @@ int32_t CBA_FontMap::GetNativeCharset() {
 
 RetainPtr<CPDF_Font> CBA_FontMap::FindFontSameCharset(ByteString* sFontAlias,
                                                       int32_t nCharset) {
-  if (m_pAnnotDict->GetNameFor(pdfium::annotation::kSubtype) != "Widget")
-    return nullptr;
-
-  const CPDF_Dictionary* pRootDict = m_pDocument->GetRoot();
-  if (!pRootDict)
-    return nullptr;
-
-  const CPDF_Dictionary* pAcroFormDict = pRootDict->GetDictFor("AcroForm");
+  const CPDF_Dictionary* pAcroFormDict =
+      GetAcroFormForWidget(m_pDocument, m_pAnnotDict.Get());
   if (!pAcroFormDict)
     return nullptr;
 
@@ -230,52 +273,21 @@ RetainPtr<CPDF_Font> CBA_FontMap::FindResFontSameCharset(
 }
 
 RetainPtr<CPDF_Font> CBA_FontMap::GetAnnotDefaultFont(ByteString* sAlias) {
-  CPDF_Dictionary* pAcroFormDict = nullptr;
-  const bool bWidget =
-      (m_pAnnotDict->GetNameFor(pdfium::annotation::kSubtype) == "Widget");
-  if (bWidget) {
-    CPDF_Dictionary* pRootDict = m_pDocument->GetRoot();
-    if (pRootDict)
-      pAcroFormDict = pRootDict->GetDictFor("AcroForm");
-  }
-
-  ByteString sDA;
-  const CPDF_Object* pObj =
-      CPDF_FormField::GetFieldAttr(m_pAnnotDict.Get(), "DA");
-  if (pObj)
-    sDA = pObj->GetString();
-
-  if (bWidget) {
-    if (sDA.IsEmpty()) {
-      pObj = CPDF_FormField::GetFieldAttr(pAcroFormDict, "DA");
-      sDA = pObj ? pObj->GetString() : ByteString();
-    }
-  }
+  CPDF_Dictionary* pAcroFormDict =
+      GetAcroFormForWidget(m_pDocument, m_pAnnotDict.Get());
+  ByteString sDA = GetDefaultAppearance(pAcroFormDict, m_pAnnotDict.Get());
   if (sDA.IsEmpty())
     return nullptr;
 
   CPDF_DefaultAppearance appearance(sDA);
-  float font_size;
-  Optional<ByteString> font = appearance.GetFont(&font_size);
+  float unused_font_size;
+  Optional<ByteString> font = appearance.GetFont(&unused_font_size);
   *sAlias = font.value_or(ByteString());
 
-  CPDF_Dictionary* pFontDict = nullptr;
-  if (CPDF_Dictionary* pAPDict =
-          m_pAnnotDict->GetDictFor(pdfium::annotation::kAP)) {
-    if (CPDF_Dictionary* pNormalDict = pAPDict->GetDictFor("N")) {
-      if (CPDF_Dictionary* pNormalResDict =
-              pNormalDict->GetDictFor("Resources")) {
-        if (CPDF_Dictionary* pResFontDict = pNormalResDict->GetDictFor("Font"))
-          pFontDict = pResFontDict->GetDictFor(*sAlias);
-      }
-    }
-  }
-  if (bWidget && !pFontDict && pAcroFormDict) {
-    if (CPDF_Dictionary* pDRDict = pAcroFormDict->GetDictFor("DR")) {
-      if (CPDF_Dictionary* pDRFontDict = pDRDict->GetDictFor("Font"))
-        pFontDict = pDRFontDict->GetDictFor(*sAlias);
-    }
-  }
+  CPDF_Dictionary* pFontDict =
+      GetNormalAppearanceFont(m_pAnnotDict.Get(), *sAlias);
+  if (!pFontDict && pAcroFormDict)
+    pFontDict = GetDefaultResourcesFont(pAcroFormDict, *sAlias);
   if (!pFontDict)
     return nullptr;
 
