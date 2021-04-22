@@ -16,6 +16,24 @@
       "message": "Style guide now allows non-const refs. Want to leave it as is?",
       "revId": "c8550456ac6f6411869692008f8275d19fc15622",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d33d834_e1b27296",
+        "filename": "core/fpdfdoc/cpvt_variabletext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-22T23:47:36Z",
+      "side": 1,
+      "message": "yea, OK, makes the diff easier to read anyways,",
+      "parentUuid": "8e10040b_d2945ed5",
+      "revId": "c8550456ac6f6411869692008f8275d19fc15622",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
