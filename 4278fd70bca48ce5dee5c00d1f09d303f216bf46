@@ -17,6 +17,24 @@
       "message": "Thanks for the adherence to test driven development.\n\nUnfortunately, my review was not test driven (I reviewed this CL after the second CL in this chain). LGTM either way!",
       "revId": "4278fd70bca48ce5dee5c00d1f09d303f216bf46",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1295f63_c1d55051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-22T08:28:38Z",
+      "side": 1,
+      "message": "Writing automated tests is oftentimes the harder part. Note the fix CL has a lower CL number. I did test first, just manually on a Mac.",
+      "parentUuid": "b724667c_274ebfda",
+      "revId": "4278fd70bca48ce5dee5c00d1f09d303f216bf46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
