@@ -16,6 +16,24 @@
       "message": "What did you have against this line? 😞\n\nMy personal opinion is that it looks better with it here.\n\nBut feel free to ignore this comment.",
       "revId": "041faf17c90b6262790e605591477c29bf12ffa4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0927cd8b_08621f17",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-22T04:25:30Z",
+      "side": 0,
+      "message": "In a common pattern like the one below, the \"return success_statement\" line is separated from the failure checks above. The blank line above the final return statement provides this separation.\n\n----\nif (fail_cond1)\n  return 0;\n\nif (fail_cond2)\n  return 0;\n\nreturn success_statement;\n----\n\nIn FPDFAnnot_GetInkListPath(), instead of a single \"return success_statement\", we have a block that initializes `points_len`, does some work, and returns `points_len`. The return statement is closely related to the code above it, so I\u0027m removing the blank line to bring them closer together.",
+      "parentUuid": "f7668107_36a6db30",
+      "revId": "041faf17c90b6262790e605591477c29bf12ffa4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
