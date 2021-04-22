@@ -760,12 +760,12 @@ void CPWL_Edit::GetCaretInfo(CFX_PointF* ptHead, CFX_PointF* ptFoot) const {
   pIterator->SetAt(m_pEditImpl->GetCaret());
   CPVT_Word word;
   CPVT_Line line;
-  if (pIterator->GetWord(word)) {
+  if (pIterator->GetWord(&word)) {
     ptHead->x = word.ptWord.x + word.fWidth;
     ptHead->y = word.ptWord.y + word.fAscent;
     ptFoot->x = word.ptWord.x + word.fWidth;
     ptFoot->y = word.ptWord.y + word.fDescent;
-  } else if (pIterator->GetLine(line)) {
+  } else if (pIterator->GetLine(&line)) {
     ptHead->x = line.ptLine.x;
     ptHead->y = line.ptLine.y + line.fLineAscent;
     ptFoot->x = line.ptLine.x;

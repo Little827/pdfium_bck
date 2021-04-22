@@ -64,21 +64,19 @@ bool CPWL_EditImpl_Iterator::NextWord() {
   return m_pVTIterator->NextWord();
 }
 
-bool CPWL_EditImpl_Iterator::GetWord(CPVT_Word& word) const {
+bool CPWL_EditImpl_Iterator::GetWord(CPVT_Word* word) const {
   DCHECK(m_pEdit);
-
   if (m_pVTIterator->GetWord(word)) {
-    word.ptWord = m_pEdit->VTToEdit(word.ptWord);
+    word->ptWord = m_pEdit->VTToEdit(word->ptWord);
     return true;
   }
   return false;
 }
 
-bool CPWL_EditImpl_Iterator::GetLine(CPVT_Line& line) const {
+bool CPWL_EditImpl_Iterator::GetLine(CPVT_Line* line) const {
   DCHECK(m_pEdit);
-
   if (m_pVTIterator->GetLine(line)) {
-    line.ptLine = m_pEdit->VTToEdit(line.ptLine);
+    line->ptLine = m_pEdit->VTToEdit(line->ptLine);
     return true;
   }
   return false;
@@ -473,10 +471,10 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
       crOldFill = crCurFill;
     }
     CPVT_Word word;
-    if (pIterator->GetWord(word)) {
+    if (pIterator->GetWord(&word)) {
       if (bSelect) {
         CPVT_Line line;
-        pIterator->GetLine(line);
+        pIterator->GetLine(&line);
 
         if (pSystemHandler->IsSelectionImplemented()) {
           CFX_FloatRect rc(word.ptWord.x, line.ptLine.y + line.fLineDescent,
@@ -710,7 +708,7 @@ WideString CPWL_EditImpl::GetText() const {
   CPVT_WordPlace oldplace = pIterator->GetWordPlace();
   while (pIterator->NextWord()) {
     CPVT_WordPlace place = pIterator->GetWordPlace();
-    if (pIterator->GetWord(wordinfo))
+    if (pIterator->GetWord(&wordinfo))
       swRet += wordinfo.Word;
     if (oldplace.nSecIndex != place.nSecIndex)
       swRet += L"\r\n";
@@ -736,7 +734,7 @@ WideString CPWL_EditImpl::GetRangeText(const CPVT_WordRange& range) const {
     CPVT_WordPlace place = pIterator->GetWordPlace();
     if (place > wrTemp.EndPos)
       break;
-    if (pIterator->GetWord(wordinfo))
+    if (pIterator->GetWord(&wordinfo))
       swRet += wordinfo.Word;
     if (oldplace.nSecIndex != place.nSecIndex)
       swRet += L"\r\n";
@@ -1067,12 +1065,12 @@ void CPWL_EditImpl::ScrollToCaret() {
   CFX_PointF ptFoot;
   CPVT_Word word;
   CPVT_Line line;
-  if (pIterator->GetWord(word)) {
+  if (pIterator->GetWord(&word)) {
     ptHead.x = word.ptWord.x + word.fWidth;
     ptHead.y = word.ptWord.y + word.fAscent;
     ptFoot.x = word.ptWord.x + word.fWidth;
     ptFoot.y = word.ptWord.y + word.fDescent;
-  } else if (pIterator->GetLine(line)) {
+  } else if (pIterator->GetLine(&line)) {
     ptHead.x = line.ptLine.x;
     ptHead.y = line.ptLine.y + line.fLineAscent;
     ptFoot.x = line.ptLine.x;
@@ -1141,7 +1139,7 @@ void CPWL_EditImpl::RefreshPushLineRects(const CPVT_WordRange& wr) {
 
   CPVT_Line lineinfo;
   do {
-    if (!pIterator->GetLine(lineinfo))
+    if (!pIterator->GetLine(&lineinfo))
       break;
     if (lineinfo.lineplace.LineCmp(wpEnd) > 0)
       break;
@@ -1173,8 +1171,8 @@ void CPWL_EditImpl::RefreshWordRange(const CPVT_WordRange& wr) {
     if (place > wrTemp.EndPos)
       break;
 
-    pIterator->GetWord(wordinfo);
-    pIterator->GetLine(lineinfo);
+    pIterator->GetWord(&wordinfo);
+    pIterator->GetLine(&lineinfo);
     if (place.LineCmp(wrTemp.BeginPos) == 0 ||
         place.LineCmp(wrTemp.EndPos) == 0) {
       CFX_FloatRect rcWord(wordinfo.ptWord.x,
@@ -1225,12 +1223,12 @@ void CPWL_EditImpl::SetCaretInfo() {
       CFX_PointF ptFoot;
       CPVT_Word word;
       CPVT_Line line;
-      if (pIterator->GetWord(word)) {
+      if (pIterator->GetWord(&word)) {
         ptHead.x = word.ptWord.x + word.fWidth;
         ptHead.y = word.ptWord.y + word.fAscent;
         ptFoot.x = word.ptWord.x + word.fWidth;
         ptFoot.y = word.ptWord.y + word.fDescent;
-      } else if (pIterator->GetLine(line)) {
+      } else if (pIterator->GetLine(&line)) {
         ptHead.x = line.ptLine.x;
         ptHead.y = line.ptLine.y + line.fLineAscent;
         ptFoot.x = line.ptLine.x;
@@ -1531,7 +1529,7 @@ bool CPWL_EditImpl::Backspace(bool bAddUndo) {
   if (bAddUndo) {
     CPVT_VariableText::Iterator* pIterator = m_pVT->GetIterator();
     pIterator->SetAt(m_wpCaret);
-    pIterator->GetWord(word);
+    pIterator->GetWord(&word);
   }
   m_pVT->UpdateWordPlace(m_wpCaret);
   SetCaret(m_pVT->BackSpaceWord(m_wpCaret));
@@ -1559,7 +1557,7 @@ bool CPWL_EditImpl::Delete(bool bAddUndo) {
   if (bAddUndo) {
     CPVT_VariableText::Iterator* pIterator = m_pVT->GetIterator();
     pIterator->SetAt(m_pVT->GetNextWordPlace(m_wpCaret));
-    pIterator->GetWord(word);
+    pIterator->GetWord(&word);
   }
   m_pVT->UpdateWordPlace(m_wpCaret);
   bool bSecEnd = (m_wpCaret == m_pVT->GetSectionEndPlace(m_wpCaret));
@@ -1681,10 +1679,10 @@ void CPWL_EditImpl::SetCaretOrigin() {
   pIterator->SetAt(m_wpCaret);
   CPVT_Word word;
   CPVT_Line line;
-  if (pIterator->GetWord(word)) {
+  if (pIterator->GetWord(&word)) {
     m_ptCaret.x = word.ptWord.x + word.fWidth;
     m_ptCaret.y = word.ptWord.y;
-  } else if (pIterator->GetLine(line)) {
+  } else if (pIterator->GetLine(&line)) {
     m_ptCaret.x = line.ptLine.x;
     m_ptCaret.y = line.ptLine.y;
   }

@@ -604,12 +604,12 @@ ByteString GetEditAppStream(CPWL_EditImpl* pEdit,
         }
 
         CPVT_Word word;
-        if (pIterator->GetWord(word)) {
+        if (pIterator->GetWord(&word)) {
           ptNew = CFX_PointF(word.ptWord.x + ptOffset.x,
                              word.ptWord.y + ptOffset.y);
         } else {
           CPVT_Line line;
-          pIterator->GetLine(line);
+          pIterator->GetLine(&line);
           ptNew = CFX_PointF(line.ptLine.x + ptOffset.x,
                              line.ptLine.y + ptOffset.y);
         }
@@ -623,7 +623,7 @@ ByteString GetEditAppStream(CPWL_EditImpl* pEdit,
       }
 
       CPVT_Word word;
-      if (pIterator->GetWord(word)) {
+      if (pIterator->GetWord(&word)) {
         if (word.nFontIndex != nCurFontIndex) {
           if (sWords.tellp() > 0) {
             sEditStream << GetWordRenderString(ByteString(sWords));
@@ -640,7 +640,7 @@ ByteString GetEditAppStream(CPWL_EditImpl* pEdit,
       oldplace = place;
     } else {
       CPVT_Word word;
-      if (pIterator->GetWord(word)) {
+      if (pIterator->GetWord(&word)) {
         ptNew =
             CFX_PointF(word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y);
 

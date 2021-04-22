@@ -44,7 +44,7 @@ uint16_t CPWL_ListCtrl::Item::GetFirstChar() const {
   CPVT_Word word;
   CPWL_EditImpl_Iterator* pIterator = m_pEdit->GetIterator();
   pIterator->SetAt(1);
-  pIterator->GetWord(word);
+  pIterator->GetWord(&word);
   return word.Word;
 }
 
