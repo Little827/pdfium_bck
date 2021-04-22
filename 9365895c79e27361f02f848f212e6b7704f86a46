@@ -16,6 +16,41 @@
       "message": "Have you ever tried cut/copy/paste/select-all keyboard shortcuts in your favorite Acroform PDF on a Mac?",
       "revId": "9365895c79e27361f02f848f212e6b7704f86a46",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d29e39_3b36c114",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-04-22T08:21:39Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9365895c79e27361f02f848f212e6b7704f86a46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be183b8_2194784e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-04-22T08:21:39Z",
+      "side": 1,
+      "message": "I actually noticed this just last week when playing implementing unseasoned input handling! It was on my mental to-do [1], so thanks for fixing this!\n\n[1] Although, I probably should have been less lazy and filed a bug.",
+      "parentUuid": "12a6521f_e397f4b7",
+      "revId": "9365895c79e27361f02f848f212e6b7704f86a46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
