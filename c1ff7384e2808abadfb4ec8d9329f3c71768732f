@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4765e1c1_a75f1f71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8376
+      },
+      "writtenOn": "2021-04-22T11:39:23Z",
+      "side": 1,
+      "message": "Only commentary LTGM.\nShould also fix crbug.com/1177875.",
+      "revId": "c1ff7384e2808abadfb4ec8d9329f3c71768732f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
