@@ -91,11 +91,7 @@ namespace {
 bool g_bLibraryInitialized = false;
 
 const CPDF_Object* GetXFAEntryFromDocument(const CPDF_Document* doc) {
-  const CPDF_Dictionary* root = doc->GetRoot();
-  if (!root)
-    return nullptr;
-
-  const CPDF_Dictionary* acro_form = root->GetDictFor("AcroForm");
+  const CPDF_Dictionary* acro_form = doc->GetAcroForm();
   return acro_form ? acro_form->GetObjectFor("XFA") : nullptr;
 }
 
@@ -245,7 +241,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
   if (!pRoot)
     return FORMTYPE_NONE;
 
-  const CPDF_Dictionary* pAcroForm = pRoot->GetDictFor("AcroForm");
+  const CPDF_Dictionary* pAcroForm = pDoc->GetAcroForm();
   if (!pAcroForm)
     return FORMTYPE_NONE;
 

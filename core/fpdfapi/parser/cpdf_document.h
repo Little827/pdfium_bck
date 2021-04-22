@@ -91,6 +91,8 @@ class CPDF_Document : public Observable,
   CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
   CPDF_Dictionary* GetInfo();
   const CPDF_Array* GetFileIdentifier() const;
+  const CPDF_Dictionary* GetAcroForm() const;
+  CPDF_Dictionary* GetAcroForm();
 
   void DeletePage(int iPage);
   int GetPageCount() const;
