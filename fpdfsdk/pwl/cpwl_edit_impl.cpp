@@ -66,7 +66,6 @@ bool CPWL_EditImpl_Iterator::NextWord() {
 
 bool CPWL_EditImpl_Iterator::GetWord(CPVT_Word& word) const {
   DCHECK(m_pEdit);
-
   if (m_pVTIterator->GetWord(word)) {
     word.ptWord = m_pEdit->VTToEdit(word.ptWord);
     return true;
@@ -76,7 +75,6 @@ bool CPWL_EditImpl_Iterator::GetWord(CPVT_Word& word) const {
 
 bool CPWL_EditImpl_Iterator::GetLine(CPVT_Line& line) const {
   DCHECK(m_pEdit);
-
   if (m_pVTIterator->GetLine(line)) {
     line.ptLine = m_pEdit->VTToEdit(line.ptLine);
     return true;
