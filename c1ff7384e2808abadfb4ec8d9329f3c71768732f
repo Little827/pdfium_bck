@@ -69,6 +69,24 @@
       "parentUuid": "5e3a79f5_07cea190",
       "revId": "c1ff7384e2808abadfb4ec8d9329f3c71768732f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8d1836_72af028b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-23T20:43:50Z",
+      "side": 1,
+      "message": "Gerrit doesn\u0027t show any unresolved comments. Is it the one about adding chromium:1177875 to the Bug: line?",
+      "parentUuid": "c68ea0d0_700edb7f",
+      "revId": "c1ff7384e2808abadfb4ec8d9329f3c71768732f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
