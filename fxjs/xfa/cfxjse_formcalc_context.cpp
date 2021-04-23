@@ -1174,20 +1174,17 @@ WideString EncodeXML(const ByteString& bsXML) {
 }
 
 ByteString TrillionUS(ByteStringView bsData) {
-  static const ByteStringView pUnits[] = {"zero",  "one",  "two", "three",
-                                          "four",  "five", "six", "seven",
-                                          "eight", "nine"};
-  static const ByteStringView pCapUnits[] = {"Zero",  "One",  "Two", "Three",
-                                             "Four",  "Five", "Six", "Seven",
-                                             "Eight", "Nine"};
-  static const ByteStringView pTens[] = {
+  static const char pUnits[][6] = {"zero", "one", "two",   "three", "four",
+                                   "five", "six", "seven", "eight", "nine"};
+  static const char pCapUnits[][6] = {"Zero", "One", "Two",   "Three", "Four",
+                                      "Five", "Six", "Seven", "Eight", "Nine"};
+  static const char pTens[][10] = {
       "Ten",     "Eleven",  "Twelve",    "Thirteen", "Fourteen",
       "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
-  static const ByteStringView pLastTens[] = {"Twenty", "Thirty", "Forty",
-                                             "Fifty",  "Sixty",  "Seventy",
-                                             "Eighty", "Ninety"};
-  static const ByteStringView pComm[] = {" Hundred ", " Thousand ", " Million ",
-                                         " Billion ", "Trillion"};
+  static const char pLastTens[][8] = {"Twenty", "Thirty",  "Forty",  "Fifty",
+                                      "Sixty",  "Seventy", "Eighty", "Ninety"};
+  static const char pComm[][11] = {" Hundred ", " Thousand ", " Million ",
+                                   " Billion ", "Trillion"};
   const char* pData = bsData.unterminated_c_str();
   int32_t iLength = bsData.GetLength();
   int32_t iComm = 0;
