@@ -35,13 +35,10 @@ class CPDF_FormControl {
  public:
   enum HighlightingMode { None = 0, Invert, Outline, Push, Toggle };
 
-  CPDF_FormControl(CPDF_FormField* pField, CPDF_Dictionary* pWidgetDict);
+  CPDF_FormControl(CPDF_FormField* pField, CPDF_Dictionary* pWidgetDict, int _);
   ~CPDF_FormControl();
 
   CPDF_FormField::Type GetType() const { return m_pField->GetType(); }
-  const CPDF_InteractiveForm* GetInteractiveForm() const {
-    return m_pForm.Get();
-  }
   CPDF_FormField* GetField() const { return m_pField.Get(); }
   CPDF_Dictionary* GetWidget() const { return m_pWidgetDict.Get(); }
   CFX_FloatRect GetRect() const;

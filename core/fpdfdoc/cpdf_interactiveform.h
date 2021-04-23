@@ -104,7 +104,8 @@ class CPDF_InteractiveForm {
   void LoadField(CPDF_Dictionary* pFieldDict, int nLevel);
   void AddTerminalField(CPDF_Dictionary* pFieldDict);
   CPDF_FormControl* AddControl(CPDF_FormField* pField,
-                               CPDF_Dictionary* pWidgetDict);
+                               CPDF_Dictionary* pWidgetDict,
+                               int _);
 
   static bool s_bUpdateAP;
 

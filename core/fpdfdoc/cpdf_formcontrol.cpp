@@ -37,10 +37,13 @@ static_assert(kHighlightModes[CPDF_FormControl::Toggle] == 'T',
 }  // namespace
 
 CPDF_FormControl::CPDF_FormControl(CPDF_FormField* pField,
-                                   CPDF_Dictionary* pWidgetDict)
+                                   CPDF_Dictionary* pWidgetDict,
+                                   int _)
     : m_pField(pField),
       m_pWidgetDict(pWidgetDict),
-      m_pForm(m_pField->GetForm()) {}
+      m_pForm(m_pField->GetForm()) {
+  DCHECK(m_pWidgetDict);
+}
 
 CPDF_FormControl::~CPDF_FormControl() = default;
 

@@ -875,27 +875,24 @@ void CPDF_InteractiveForm::AddTerminalField(CPDF_Dictionary* pFieldDict) {
   if (pKids) {
     for (size_t i = 0; i < pKids->size(); i++) {
       CPDF_Dictionary* pKid = pKids->GetDictAt(i);
-      if (!pKid)
-        continue;
-      if (pKid->GetNameFor("Subtype") != "Widget")
-        continue;
-
-      AddControl(pField, pKid);
+      if (pKid && pKid->GetNameFor("Subtype") == "Widget")
+        AddControl(pField, pKid, 0);
     }
   } else {
     if (pFieldDict->GetNameFor("Subtype") == "Widget")
-      AddControl(pField, pFieldDict);
+      AddControl(pField, pFieldDict, 0);
   }
 }
 
-CPDF_FormControl* CPDF_InteractiveForm::AddControl(
-    CPDF_FormField* pField,
-    CPDF_Dictionary* pWidgetDict) {
+CPDF_FormControl* CPDF_InteractiveForm::AddControl(CPDF_FormField* pField,
+                                                   CPDF_Dictionary* pWidgetDict,
+                                                   int _) {
+  DCHECK(pWidgetDict);
   const auto it = m_ControlMap.find(pWidgetDict);
   if (it != m_ControlMap.end())
     return it->second.get();
 
-  auto pNew = std::make_unique<CPDF_FormControl>(pField, pWidgetDict);
+  auto pNew = std::make_unique<CPDF_FormControl>(pField, pWidgetDict, _);
   CPDF_FormControl* pControl = pNew.get();
   m_ControlMap[pWidgetDict] = std::move(pNew);
   m_ControlLists[pField].emplace_back(pControl);
