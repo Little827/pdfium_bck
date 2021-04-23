@@ -16,6 +16,23 @@
       "message": "Thanks for the note in the bug tracker!",
       "revId": "812288e9be64f3228958714c8643b91fc52b6a9b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6dc19fd_1d12fdd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7401
+      },
+      "writtenOn": "2021-04-23T19:37:38Z",
+      "side": 1,
+      "message": "LGTM; I believe this is correct, thanks (I don\u0027t have reviewer permissions though, so you need another reviewer)",
+      "revId": "812288e9be64f3228958714c8643b91fc52b6a9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
