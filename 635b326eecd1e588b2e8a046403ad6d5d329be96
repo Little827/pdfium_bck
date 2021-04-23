@@ -23,6 +23,30 @@
       },
       "revId": "635b326eecd1e588b2e8a046403ad6d5d329be96",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a86208_5347e294",
+        "filename": "third_party/libtiff/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-23T19:12:12Z",
+      "side": 1,
+      "message": "Done. It\u0027s from https://pdfium-review.googlesource.com/78390",
+      "parentUuid": "1d4abc57_c41b306e",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "635b326eecd1e588b2e8a046403ad6d5d329be96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
