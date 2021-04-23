@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d98c3f_bba22d82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-23T21:48:53Z",
+      "side": 1,
+      "message": "PS#1 makes a breaking change to show all callers in compliance with my claim,\nPS#2 then removes the subsequent checks.",
+      "revId": "ef33bb1a5c42e35e4d4bcf5202aac50678660472",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
