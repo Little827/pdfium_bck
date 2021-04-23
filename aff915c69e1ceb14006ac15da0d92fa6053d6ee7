@@ -17,6 +17,24 @@
       "message": "nice.  I thought we had a presubmit to flag these.  no matter.",
       "revId": "aff915c69e1ceb14006ac15da0d92fa6053d6ee7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c23cee9_def52bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-23T22:19:07Z",
+      "side": 1,
+      "message": "git cl lint definitely finds it. However, git cl presubmit [-u] does not. Will look into that.",
+      "parentUuid": "87a74f3f_fc35d6b3",
+      "revId": "aff915c69e1ceb14006ac15da0d92fa6053d6ee7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
