@@ -23,6 +23,30 @@
       },
       "revId": "4ddecf0546e9874e3fdac560a5f1a4bb3884ee57",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae15979_ca72b403",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-23T19:13:10Z",
+      "side": 1,
+      "message": "It\u0027s the standard Chromium #define from build/build_config.h, which is already included in tiffconf.h.",
+      "parentUuid": "898329f0_9d8382c2",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "4ddecf0546e9874e3fdac560a5f1a4bb3884ee57",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
