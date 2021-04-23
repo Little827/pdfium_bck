@@ -1,6 +1,30 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea781b5b_ada49c83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-23T23:23:22Z",
+      "side": 1,
+      "message": "\u003e \"comparision\" is a possible misspelling of \"comparison\".\n\nPlease fix.",
+      "parentUuid": "38990009_820dbe61",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "4334da62904b19b2bb0c9825f95f8499cbcafcea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a18ffe6e_4a1b429b",
@@ -14,6 +38,24 @@
       "writtenOn": "2021-04-23T23:15:36Z",
       "side": 1,
       "message": "Please double-check that I am not insane, since otherwise this has been broken since we first got the code.",
+      "revId": "4334da62904b19b2bb0c9825f95f8499cbcafcea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad35b89f_72694898",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-23T23:23:22Z",
+      "side": 1,
+      "message": "Well, if the bots all come back green, then we are not effectively testing this. Let me take a closer look...",
+      "parentUuid": "a18ffe6e_4a1b429b",
       "revId": "4334da62904b19b2bb0c9825f95f8499cbcafcea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
