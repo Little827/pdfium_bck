@@ -724,15 +724,11 @@ void CFDE_TextEditEngine::SelectAll() {
   if (text_length_ == 0)
     return;
 
-  has_selection_ = true;
-  selection_.start_idx = 0;
-  selection_.count = text_length_;
+  selection_ = Selection{0, text_length_};
 }
 
 void CFDE_TextEditEngine::ClearSelection() {
-  has_selection_ = false;
-  selection_.start_idx = 0;
-  selection_.count = 0;
+  selection_.reset();
 }
 
 void CFDE_TextEditEngine::SetSelection(size_t start_idx, size_t count) {
@@ -746,50 +742,50 @@ void CFDE_TextEditEngine::SetSelection(size_t start_idx, size_t count) {
   if (start_idx + count > text_length_)
     count = text_length_ - start_idx;
 
-  has_selection_ = true;
-  selection_.start_idx = start_idx;
-  selection_.count = count;
+  selection_ = Selection{start_idx, count};
 }
 
 WideString CFDE_TextEditEngine::GetSelectedText() const {
-  if (!has_selection_)
+  if (!selection_.has_value())
     return WideString();
 
+  const Selection& selection = selection_.value();
   WideString text;
-  if (selection_.start_idx < gap_position_) {
+  if (selection.start_idx < gap_position_) {
     // Fully on left of gap.
-    if (selection_.start_idx + selection_.count < gap_position_) {
-      text += WideStringView(content_.data() + selection_.start_idx,
-                             selection_.count);
+    if (selection.start_idx + selection.count < gap_position_) {
+      text += WideStringView(content_.data() + selection.start_idx,
+                             selection.count);
       return text;
     }
 
     // Pre-gap text
-    text += WideStringView(content_.data() + selection_.start_idx,
-                           gap_position_ - selection_.start_idx);
+    text += WideStringView(content_.data() + selection.start_idx,
+                           gap_position_ - selection.start_idx);
 
-    if (selection_.count - (gap_position_ - selection_.start_idx) > 0) {
+    if (selection.count - (gap_position_ - selection.start_idx) > 0) {
       // Post-gap text
       text += WideStringView(
           content_.data() + gap_position_ + gap_size_,
-          selection_.count - (gap_position_ - selection_.start_idx));
+          selection.count - (gap_position_ - selection.start_idx));
     }
 
     return text;
   }
 
   // Fully right of gap
-  text += WideStringView(content_.data() + gap_size_ + selection_.start_idx,
-                         selection_.count);
+  text += WideStringView(content_.data() + gap_size_ + selection.start_idx,
+                         selection.count);
   return text;
 }
 
 WideString CFDE_TextEditEngine::DeleteSelectedText(
     RecordOperation add_operation) {
-  if (!has_selection_)
+  if (!selection_.has_value())
     return WideString();
 
-  return Delete(selection_.start_idx, selection_.count, add_operation);
+  return Delete(selection_.value().start_idx, selection_.value().count,
+                add_operation);
 }
 
 WideString CFDE_TextEditEngine::Delete(size_t start_idx,
@@ -850,12 +846,15 @@ WideString CFDE_TextEditEngine::Delete(size_t start_idx,
 }
 
 void CFDE_TextEditEngine::ReplaceSelectedText(const WideString& requested_rep) {
+  DCHECK(selection_.has_value());
+
   WideString rep = requested_rep;
 
   if (delegate_) {
     TextChange change;
-    change.selection_start = selection_.start_idx;
-    change.selection_end = selection_.start_idx + selection_.count;
+    change.selection_start = selection_.value().start_idx;
+    change.selection_end =
+        selection_.value().start_idx + selection_.value().count;
     change.text = rep;
     change.previous_text = GetText();
     change.cancelled = false;
@@ -865,11 +864,11 @@ void CFDE_TextEditEngine::ReplaceSelectedText(const WideString& requested_rep) {
       return;
 
     rep = change.text;
-    selection_.start_idx = change.selection_start;
-    selection_.count = change.selection_end - change.selection_start;
+    selection_ = Selection{change.selection_start,
+                           change.selection_end - change.selection_start};
   }
 
-  size_t start_idx = selection_.start_idx;
+  size_t start_idx = selection_.value().start_idx;
   WideString txt = DeleteSelectedText(RecordOperation::kSkipRecord);
   Insert(gap_position_, rep, RecordOperation::kSkipRecord);
 

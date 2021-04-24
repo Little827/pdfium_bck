@@ -16,6 +16,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "third_party/base/optional.h"
 #include "xfa/fgas/layout/cfgas_txtbreak.h"
 
 class CFGAS_GEFont;
@@ -151,10 +152,9 @@ class CFDE_TextEditEngine : public CFGAS_TxtBreak::Engine {
   void SelectAll();
   void SetSelection(size_t start_idx, size_t count);
   void ClearSelection();
-  bool HasSelection() const { return has_selection_; }
-  // Returns <start_idx, count> of the selection.
+  bool HasSelection() const { return selection_.has_value(); }
   std::pair<size_t, size_t> GetSelection() const {
-    return {selection_.start_idx, selection_.count};
+    return {selection_.value().start_idx, selection_.value().count};
   }
   WideString GetSelectedText() const;
   WideString DeleteSelectedText(
@@ -245,8 +245,7 @@ class CFDE_TextEditEngine : public CFGAS_TxtBreak::Engine {
   bool limit_vertical_area_ = false;
   bool password_mode_ = false;
   wchar_t password_alias_ = L'*';
-  bool has_selection_ = false;
-  Selection selection_{0, 0};
+  Optional<Selection> selection_;
 };
 
 #endif  // XFA_FDE_CFDE_TEXTEDITENGINE_H_
