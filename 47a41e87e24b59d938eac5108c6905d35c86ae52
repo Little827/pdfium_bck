@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed164be4_43ca8b63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-24T01:38:56Z",
+      "side": 1,
+      "message": "And... to be resolved merge conflict coming right up.",
+      "revId": "47a41e87e24b59d938eac5108c6905d35c86ae52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
