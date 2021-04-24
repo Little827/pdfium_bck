@@ -69,15 +69,18 @@ class CFX_FontMapper {
   bool IsBuiltinFace(const RetainPtr<CFX_Face>& face) const;
   int GetFaceSize() const;
   ByteString GetFaceName(int index) const { return m_FaceArray[index].name; }
+  bool HasInstalledFont(ByteStringView name) const;
+  bool HasLocalizedFont(ByteStringView name) const;
+  Optional<ByteString> InstalledFontNameStartingWith(
+      const ByteString& name) const;
+  Optional<ByteString> LocalizedFontNameStartingWith(
+      const ByteString& name) const;
 
 #ifdef PDF_ENABLE_XFA
   std::unique_ptr<uint8_t, FxFreeDeleter> RawBytesForIndex(
       uint32_t index,
       size_t* returned_length);
 #endif  // PDF_ENABLE_XFA
-
-  std::vector<ByteString> m_InstalledTTFonts;
-  std::vector<std::pair<ByteString, ByteString>> m_LocalizedTTFonts;
 
  private:
   static constexpr size_t MM_FACE_COUNT = 2;
@@ -110,6 +113,8 @@ class CFX_FontMapper {
   std::vector<FaceData> m_FaceArray;
   std::unique_ptr<SystemFontInfoIface> m_pFontInfo;
   UnownedPtr<CFX_FontMgr> const m_pFontMgr;
+  std::vector<ByteString> m_InstalledTTFonts;
+  std::vector<std::pair<ByteString, ByteString>> m_LocalizedTTFonts;
   RetainPtr<CFX_Face> m_MMFaces[MM_FACE_COUNT];
   RetainPtr<CFX_Face> m_FoxitFaces[FOXIT_FACE_COUNT];
 };
