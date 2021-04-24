@@ -82,6 +82,24 @@
       "parentUuid": "a18ffe6e_4a1b429b",
       "revId": "4334da62904b19b2bb0c9825f95f8499cbcafcea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0437f2_43a130f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-24T00:16:55Z",
+      "side": 1,
+      "message": "In Chromium Linux, the comparisons never run because the sandbox prevents direct font loading by PDFium. So the incorrectness doesn\u0027t matter there.\n\nWith pdfium_test, we probably don\u0027t do enough form interactions in tests. Or maybe pdfium_test ends up with the same fonts either way. Anyway, let\u0027s land this and see what happens.",
+      "parentUuid": "ad35b89f_72694898",
+      "revId": "4334da62904b19b2bb0c9825f95f8499cbcafcea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
