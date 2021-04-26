@@ -22,6 +22,7 @@ class CPDF_ExpIntFunc final : public CPDF_Function {
               std::set<const CPDF_Object*>* pVisited) override;
   bool v_Call(const float* inputs, float* results) const override;
 
+ private:
   uint32_t m_nOrigOutputs = 0;
   float m_Exponent = 0.0f;
   std::vector<float> m_BeginValues;
