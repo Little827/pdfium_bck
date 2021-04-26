@@ -16,6 +16,24 @@
       "message": "Are these going to get encapsulated, or should this just become a struct?",
       "revId": "c577ab583f1ba20eb61a8970f22de157cb95380f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8c79b4_317b36f2",
+        "filename": "core/fpdfapi/page/cpdf_textobject.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-26T23:41:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d47571_818e933b",
+      "revId": "c577ab583f1ba20eb61a8970f22de157cb95380f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
