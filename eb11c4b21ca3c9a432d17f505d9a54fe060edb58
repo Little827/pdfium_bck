@@ -1,4 +1,91 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1619247825 -0700\nnonce ALC2d18lN/mdcNRcIQ9ycDkNdFJIx0MabZ5u/ewwID+rg/j+O2VrAyeeunHGiGPgg92ULjpbhwsd\n\n0000000000000000000000000000000000000000 eb11c4b21ca3c9a432d17f505d9a54fe060edb58 refs/for/refs/heads/master%notify\u003dNONE,m\u003dtypo,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmCDwtEACgkQqzYtYVpm\n/Xvx/QgA0ttQKQmhsoySsRaATCJ66y59JRLfrZioHEEQdsmlkvX4ra4qft2AJQA4\nrHrcORL3x7KxjHnoMaudt0vsXvII3G/KfMilIGRZJ4+FQmHR8yuax6AydzSRlYnB\n86WyRVhrsJMDXs2dMFdH/+86R9Fgj0w3MVF6trxjSbMP4+1xsk2UaRTqkaD2IC6W\nPkBuaW0frpTbutDyfFBl3ABTI7nZfS1y8XM6NIsq4BQRQJ8nAFi3Fa8OFcWm2pka\n9L51oIuMLBLwktJRSMEffprUoetajWF88VIB9gV9vzMQD1fEebQ5Q6ShR4md/Z0c\nvrv3SEOT6d3WjvtrffUbPfcc2qTj/w\u003d\u003d\n\u003do982\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "061269f1_969b0ac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-26T21:58:05Z",
+      "side": 1,
+      "message": "nit/followup.",
+      "revId": "eb11c4b21ca3c9a432d17f505d9a54fe060edb58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84298988_532f9e48",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-26T21:58:05Z",
+      "side": 1,
+      "message": "nit: maybe const Selection\u0026 selection \u003d selection_.value() here, too.",
+      "range": {
+        "startLine": 787,
+        "startChar": 2,
+        "endLine": 787,
+        "endChar": 8
+      },
+      "revId": "eb11c4b21ca3c9a432d17f505d9a54fe060edb58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4f776d_836b31c4",
+        "filename": "xfa/fde/cfde_texteditengine.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-26T21:58:05Z",
+      "side": 1,
+      "message": "benefit in combining these into a single Optional\u003cpair\u003c\u003e\u003e GetSelction()?",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "eb11c4b21ca3c9a432d17f505d9a54fe060edb58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad7aef7_1a1bb52c",
+        "filename": "xfa/fde/cfde_texteditengine.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-26T21:58:05Z",
+      "side": 1,
+      "message": "follow-on: this should be public instead of std::pair usage above.",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 4
+      },
+      "revId": "eb11c4b21ca3c9a432d17f505d9a54fe060edb58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
