@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ca5faf_14ed2aa3",
+        "filename": "core/fpdfdoc/cpdf_structelement.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-27T00:48:49Z",
+      "side": 1,
+      "message": "Omit here and in a few more places below?",
+      "range": {
+        "startLine": 67,
+        "startChar": 33,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "af44909ed3cf242f71bbbeb0e5da4105364b16ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
