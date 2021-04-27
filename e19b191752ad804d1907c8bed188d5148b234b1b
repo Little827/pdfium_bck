@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f810174_fe818002",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-27T18:45:45Z",
+      "side": 1,
+      "message": "don\u0027t trust optimizer to remove bounds checks in debug builds, say.",
+      "revId": "e19b191752ad804d1907c8bed188d5148b234b1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784a1a6a_ad2538b7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-27T18:45:45Z",
+      "side": 1,
+      "message": "enough going on here that even if a ud2 were emitted, cost might be amortized.",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 691,
+        "endChar": 0
+      },
+      "revId": "e19b191752ad804d1907c8bed188d5148b234b1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
