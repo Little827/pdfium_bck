@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2deba55_c7973ef2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-27T18:53:18Z",
+      "side": 1,
+      "message": "\u003e \"pallete\" is a possible misspelling of \"palette\".\n\nPlease fix.",
+      "parentUuid": "5fb1b108_b2fb65f4",
+      "range": {
+        "startLine": 16,
+        "startChar": 22,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "f1cdc78e4c41b56243020753899b027683d7d444",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
