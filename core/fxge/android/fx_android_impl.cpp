@@ -21,7 +21,9 @@ class CAndroidPlatform : public CFX_GEModule::PlatformIface {
   }
 
   void Init() override { m_pDeviceModule = CFPF_GetSkiaDeviceModule(); }
-
+  void* CreateFont(pdfium::span<const uint8_t> font_span) override {
+    return nullptr;
+  }
   std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo() override {
     CFPF_SkiaFontMgr* pFontMgr = m_pDeviceModule->GetFontMgr();
     if (!pFontMgr)
