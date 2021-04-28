@@ -19,6 +19,7 @@ class CWin32Platform : public CFX_GEModule::PlatformIface {
 
   // CFX_GEModule::PlatformIface:
   void Init() override;
+  void* CreateFont(pdfium::span<const uint8_t> font_span) override;
   std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo() override;
 
   bool m_bHalfTone = false;

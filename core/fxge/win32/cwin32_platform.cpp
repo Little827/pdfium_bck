@@ -439,6 +439,10 @@ void CWin32Platform::Init() {
     m_GdiplusExt.Load();
 }
 
+void* CWin32Platform::CreateFont(pdfium::span<const uint8_t> font_span) {
+  return nullptr;
+}
+
 std::unique_ptr<SystemFontInfoIface>
 CWin32Platform::CreateDefaultSystemFontInfo() {
   if (pdfium::base::win::IsUser32AndGdi32Available())
