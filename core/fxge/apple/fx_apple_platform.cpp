@@ -136,6 +136,10 @@ CApplePlatform::~CApplePlatform() = default;
 
 void CApplePlatform::Init() {}
 
+void* CApplePlatform::CreateFont(pdfium::span<const uint8_t> font_span) {
+  return m_quartz2d.CreateFont(pFont.data(), pFontData.size());
+}
+
 std::unique_ptr<SystemFontInfoIface>
 CApplePlatform::CreateDefaultSystemFontInfo() {
   auto pInfo = std::make_unique<CFX_MacFontInfo>();
