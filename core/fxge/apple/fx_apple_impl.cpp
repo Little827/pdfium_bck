@@ -32,6 +32,10 @@ namespace {
 
 void DoNothing(void* info, const void* data, size_t size) {}
 
+CApplePlatform* GetApplePlatform() {
+  return static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform());
+}
+
 bool CGDrawGlyphRun(CGContextRef pContext,
                     int nChars,
                     const TextCharPos* pCharPos,
@@ -47,9 +51,7 @@ bool CGDrawGlyphRun(CGContextRef pContext,
     font_size = -font_size;
 
   CFX_Matrix new_matrix = mtObject2Device;
-  CQuartz2D& quartz2d =
-      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-          ->m_quartz2d;
+  CQuartz2D& quartz2d = GetApplePlatform()->m_quartz2d;
   if (!pFont->GetPlatformFont()) {
     if (pFont->GetPsName() == "DFHeiStd-W5")
       return false;
@@ -88,20 +90,11 @@ bool CGDrawGlyphRun(CGContextRef pContext,
 namespace pdfium {
 
 void CFX_AggDeviceDriver::InitPlatform() {
-  CQuartz2D& quartz2d =
-      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-          ->m_quartz2d;
-  m_pPlatformGraphics = quartz2d.CreateGraphics(m_pBitmap);
+  GetApplePlatform()->CreateGraphics(m_pBitmap);
 }
 
 void CFX_AggDeviceDriver::DestroyPlatform() {
-  CQuartz2D& quartz2d =
-      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-          ->m_quartz2d;
-  if (m_pPlatformGraphics) {
-    quartz2d.DestroyGraphics(m_pPlatformGraphics);
-    m_pPlatformGraphics = nullptr;
-  }
+  GetApplePlatform()->DestroyGraphics();
 }
 
 bool CFX_AggDeviceDriver::DrawDeviceText(
@@ -125,7 +118,7 @@ bool CFX_AggDeviceDriver::DrawDeviceText(
     if (pCharPos[i].m_bGlyphAdjust)
       return false;
   }
-  CGContextRef ctx = CGContextRef(m_pPlatformGraphics);
+  CGContextRef ctx = CGContextRef(GetApplePlatform()->GetGraphics());
   if (!ctx)
     return false;
 
@@ -184,10 +177,7 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph_Nativetext(
 
 void CFX_Font::ReleasePlatformResource() {
   if (m_pPlatformFont) {
-    CQuartz2D& quartz2d =
-        static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-            ->m_quartz2d;
-    quartz2d.DestroyFont(m_pPlatformFont);
+    GetApplePlatform()->m_quartz2d.DestroyFont(m_pPlatformFont);
     m_pPlatformFont = nullptr;
   }
 }
