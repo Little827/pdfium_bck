@@ -19,6 +19,7 @@ class CApplePlatform : public CFX_GEModule::PlatformIface {
 
   // CFX_GEModule::PlatformIface:
   void Init() override;
+  void* CreateFont(pdfium::span<const uint8_t> pFontData) override;
   std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo() override;
 
   void* GetGraphics() const { return m_pPlatformGraphics; }

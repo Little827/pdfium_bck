@@ -7,7 +7,11 @@
 #ifndef CORE_FXGE_CFX_GEMODULE_H_
 #define CORE_FXGE_CFX_GEMODULE_H_
 
+#include <stdint.h>
+
 #include <memory>
+
+#include "third_party/base/span.h"
 
 class CFX_FontCache;
 class CFX_FontMgr;
@@ -21,6 +25,7 @@ class CFX_GEModule {
     virtual ~PlatformIface() = default;
 
     virtual void Init() = 0;
+    virtual void* CreateFont(pdfium::span<const uint8_t> pFontData) = 0;
     virtual std::unique_ptr<SystemFontInfoIface>
     CreateDefaultSystemFontInfo() = 0;
   };

@@ -136,6 +136,10 @@ CApplePlatform::~CApplePlatform() = default;
 
 void CApplePlatform::Init() {}
 
+void* CApplePlatform::CreateFont(pdfium::span<const uint8_t> pFontData) {
+  return m_quartz2d.CreateFont(pFont.data(), pFontData.size());
+}
+
 void CApplePlatform::CreateGraphics(const RetainPtr<CFX_DIBitmap>& pBitmap) {
   m_pPlatformGraphics = m_quartz2d.CreateGraphics(pBitmap);
 }
