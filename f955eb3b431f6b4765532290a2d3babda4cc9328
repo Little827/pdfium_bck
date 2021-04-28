@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76e86a9_b63e47ab",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-28T19:42:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0bc70d0_7f5635ab",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 32
+      },
+      "revId": "f955eb3b431f6b4765532290a2d3babda4cc9328",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "428e3a72_d2932900",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-28T19:24:45Z",
       "side": 1,
       "message": "this is fx_apple_imp.cpp because we implement apple-specific version of other classes.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 24
+      },
+      "revId": "f955eb3b431f6b4765532290a2d3babda4cc9328",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db1c56e_8244a710",
+        "filename": "core/fxge/apple/fx_apple_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-28T19:42:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "428e3a72_d2932900",
       "range": {
         "startLine": 90,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e92b8f_073cc9eb",
+        "filename": "core/fxge/apple/fx_apple_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-28T19:42:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "382d469a_e40f7520",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "f955eb3b431f6b4765532290a2d3babda4cc9328",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cbac883_4316902b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-28T19:24:45Z",
       "side": 1,
       "message": "this is fx_apple_platform.h because we declare CapplePlatform,",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "f955eb3b431f6b4765532290a2d3babda4cc9328",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a66f44_872062ab",
+        "filename": "core/fxge/apple/fx_apple_platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-28T19:42:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cbac883_4316902b",
       "range": {
         "startLine": 13,
         "startChar": 6,
