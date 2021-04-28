@@ -9,6 +9,7 @@
 
 #include "core/fxge/apple/fx_quartz_device.h"
 #include "core/fxge/cfx_gemodule.h"
+#include "third_party/base/span.h"
 
 class CApplePlatform : public CFX_GEModule::PlatformIface {
  public:
@@ -19,7 +20,16 @@ class CApplePlatform : public CFX_GEModule::PlatformIface {
   void Init() override;
   std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo() override;
 
-  CQuartz2D m_quartz2d;
+  void CreateGraphics(const RetainPtr<CFX_DIBitmap>& pBitmap);
+  void DestroyGraphics();
+  void* GetGraphics() const { return m_pPlatformGraphics; }
+
+  void* CreateFont(pdfium::span<const uint8_t> font_span);
+  void DestroyFont(void* font);
+
+ private:
+  CQuartz2D m_Quartz2d;
+  void* m_pPlatformGraphics = nullptr;
 };
 
 #endif  // CORE_FXGE_APPLE_FX_MAC_IMPL_H_
