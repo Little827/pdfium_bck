@@ -147,6 +147,25 @@ CApplePlatform::CreateDefaultSystemFontInfo() {
   return std::move(pInfo);
 }
 
+void CApplePlatform::CreateGraphics(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+  m_pPlatformGraphics = m_Quartz2d.CreateGraphics(pBitmap);
+}
+
+void CApplePlatform::DestroyGraphics() {
+  if (m_pPlatformGraphics) {
+    m_Quartz2d.DestroyGraphics(m_pPlatformGraphics);
+    m_pPlatformGraphics = nullptr;
+  }
+}
+
+void* CApplePlatform::CreateFont(pdfium::span<const uint8_t> font_span) {
+  return m_Quartz2d.CreateFont(font_span.data(), font_span.size());
+}
+
+void CApplePlatform::DestroyFont(void* font) {
+  m_Quartz2d.DestroyFont(font);
+}
+
 // static
 std::unique_ptr<CFX_GEModule::PlatformIface>
 CFX_GEModule::PlatformIface::Create() {

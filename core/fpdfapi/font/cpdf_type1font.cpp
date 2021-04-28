@@ -125,15 +125,12 @@ void CPDF_Type1Font::LoadGlyphMap() {
 
 #if defined(OS_APPLE)
   bool bCoreText = true;
-  CQuartz2D& quartz2d =
-      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-          ->m_quartz2d;
+  auto* pPlatform =
+      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform());
   if (!m_Font.GetPlatformFont()) {
     if (m_Font.GetPsName() == "DFHeiStd-W5")
       bCoreText = false;
-
-    pdfium::span<const uint8_t> span = m_Font.GetFontSpan();
-    m_Font.SetPlatformFont(quartz2d.CreateFont(span.data(), span.size()));
+    m_Font.SetPlatformFont(pPlatform->CreateFont(m_Font.GetFontSpan()));
     if (!m_Font.GetPlatformFont())
       bCoreText = false;
   }
