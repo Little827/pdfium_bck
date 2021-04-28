@@ -47,15 +47,13 @@ bool CGDrawGlyphRun(CGContextRef pContext,
     font_size = -font_size;
 
   CFX_Matrix new_matrix = mtObject2Device;
-  CQuartz2D& quartz2d =
-      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-          ->m_quartz2d;
+  auto* pPlatform =
+      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform());
   if (!pFont->GetPlatformFont()) {
     if (pFont->GetPsName() == "DFHeiStd-W5")
       return false;
 
-    pdfium::span<const uint8_t> span = pFont->GetFontSpan();
-    pFont->SetPlatformFont(quartz2d.CreateFont(span.data(), span.size()));
+    pFont->SetPlatformFont(pPlatForm->CreateFont(pFont->GetFontSpan()));
     if (!pFont->GetPlatformFont())
       return false;
   }
@@ -88,20 +86,13 @@ bool CGDrawGlyphRun(CGContextRef pContext,
 namespace pdfium {
 
 void CFX_AggDeviceDriver::InitPlatform() {
-  CQuartz2D& quartz2d =
-      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-          ->m_quartz2d;
-  m_pPlatformGraphics = quartz2d.CreateGraphics(m_pBitmap);
+  CFX_GEModule::PlatformIface* pPlatform = CFX_GEModule::Get()->GetPlatform();
+  static_cast<CApplePlatform*>(pPlatform)->CreateGraphics(m_pBitmap);
 }
 
 void CFX_AggDeviceDriver::DestroyPlatform() {
-  CQuartz2D& quartz2d =
-      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-          ->m_quartz2d;
-  if (m_pPlatformGraphics) {
-    quartz2d.DestroyGraphics(m_pPlatformGraphics);
-    m_pPlatformGraphics = nullptr;
-  }
+  CFX_GEModule::PlatformIface* pPlatform = CFX_GEModule::Get()->GetPlatform();
+  static_cast<CApplePlatform*>(pPlatform)->DestroyGraphics();
 }
 
 bool CFX_AggDeviceDriver::DrawDeviceText(
@@ -125,7 +116,9 @@ bool CFX_AggDeviceDriver::DrawDeviceText(
     if (pCharPos[i].m_bGlyphAdjust)
       return false;
   }
-  CGContextRef ctx = CGContextRef(m_pPlatformGraphics);
+  auto* pPlatform =
+      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform());
+  CGContextRef ctx = CGContextRef(pPlatform->GetGraphics());
   if (!ctx)
     return false;
 
@@ -183,11 +176,11 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph_Nativetext(
 }
 
 void CFX_Font::ReleasePlatformResource() {
-  if (m_pPlatformFont) {
-    CQuartz2D& quartz2d =
-        static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform())
-            ->m_quartz2d;
-    quartz2d.DestroyFont(m_pPlatformFont);
-    m_pPlatformFont = nullptr;
-  }
+  if (!m_pPlatformFont)
+    return;
+
+  auto* pPlatform =
+      static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatform());
+  pPlatform->DestroyFont(m_pPlatformFont);
+  m_pPlatformFont = nullptr;
 }
