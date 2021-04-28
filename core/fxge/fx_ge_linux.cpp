@@ -162,7 +162,7 @@ class CLinuxPlatform : public CFX_GEModule::PlatformIface {
   ~CLinuxPlatform() override = default;
 
   void Init() override {}
-
+  void* CreateFont(pdfium::span<const uint8_t> font_span) { return nullptr; }
   std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo() override {
     auto pInfo = std::make_unique<CFX_LinuxFontInfo>();
     if (!pInfo->ParseFontCfg(CFX_GEModule::Get()->GetUserFontPaths())) {
