@@ -136,6 +136,18 @@ CApplePlatform::~CApplePlatform() = default;
 
 void CApplePlatform::Init() {}
 
+void CApplePlatform::CreateGraphics(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+  m_pPlatformGraphics = m_quartz2d.CreateGraphics(pBitmap);
+}
+
+void CApplePlatform::DestroyGraphics() {
+  if (!m_pPlatformGraphics)
+    return;
+
+  m_quartz2d.DestroyGraphics(m_pPlatformGraphics);
+  m_pPlatformGraphics = nullptr;
+}
+
 std::unique_ptr<SystemFontInfoIface>
 CApplePlatform::CreateDefaultSystemFontInfo() {
   auto pInfo = std::make_unique<CFX_MacFontInfo>();
