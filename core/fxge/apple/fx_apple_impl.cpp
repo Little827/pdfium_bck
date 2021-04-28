@@ -51,13 +51,12 @@ bool CGDrawGlyphRun(CGContextRef pContext,
     font_size = -font_size;
 
   CFX_Matrix new_matrix = mtObject2Device;
-  CQuartz2D& quartz2d = GetApplePlatform()->m_quartz2d;
   if (!pFont->GetPlatformFont()) {
     if (pFont->GetPsName() == "DFHeiStd-W5")
       return false;
 
     pdfium::span<const uint8_t> span = pFont->GetFontSpan();
-    pFont->SetPlatformFont(quartz2d.CreateFont(span.data(), span.size()));
+    pFont->SetPlatformFont(GetApplePlatform->CreateFont(span));
     if (!pFont->GetPlatformFont())
       return false;
   }
@@ -79,6 +78,7 @@ bool CGDrawGlyphRun(CGContextRef pContext,
     new_matrix.b = -new_matrix.b;
     new_matrix.d = -new_matrix.d;
   }
+  CQuartz2D& quartz2d = GetApplePlatform()->m_quartz2d;
   quartz2d.SetGraphicsTextMatrix(pContext, new_matrix);
   return quartz2d.DrawGraphicsString(pContext, pFont->GetPlatformFont(),
                                      font_size, glyph_indices.data(),
