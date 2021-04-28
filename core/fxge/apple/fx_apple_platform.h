@@ -7,8 +7,10 @@
 #ifndef CORE_FXGE_APPLE_FX_APPLE_PLATFORM_H_
 #define CORE_FXGE_APPLE_FX_APPLE_PLATFORM_H_
 
+#include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/apple/fx_quartz_device.h"
 #include "core/fxge/cfx_gemodule.h"
+#include "core/fxge/dib/cfx_dibitmap.h"
 
 class CApplePlatform : public CFX_GEModule::PlatformIface {
  public:
@@ -19,7 +21,14 @@ class CApplePlatform : public CFX_GEModule::PlatformIface {
   void Init() override;
   std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo() override;
 
+  void* GetGraphics() const { return m_pPlatformGraphics; }
+  void CreateGraphics(const RetainPtr<CFX_DIBitmap>& pBitmap);
+  void DestroyGraphics();
+
   CQuartz2D m_quartz2d;
+
+ private:
+  void* m_pPlatformGraphics = nullptr;
 };
 
 #endif  // CORE_FXGE_APPLE_FX_APPLE_PLATFORM_H_
