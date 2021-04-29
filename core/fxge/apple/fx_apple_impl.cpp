@@ -55,7 +55,8 @@ bool CGDrawGlyphRun(CGContextRef pContext,
       return false;
 
     pdfium::span<const uint8_t> span = pFont->GetFontSpan();
-    pFont->SetPlatformFont(quartz2d.CreateFont(span.data(), span.size()));
+    pFont->SetPlatformFont(
+        quartz2d.CreatePlatformFont(span.data(), span.size()));
     if (!pFont->GetPlatformFont())
       return false;
   }
