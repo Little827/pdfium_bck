@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793799f1_6b93c8b9",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-29T23:25:01Z",
+      "side": 1,
+      "message": "Curious if this can be private.",
+      "revId": "ce7ab4563d8a81dbca14167e7a412be42a7dd84c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d32b2d1_c13a8037",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-29T23:25:01Z",
+      "side": 1,
+      "message": "BTW, removing this check and just letting it fall through works too.",
+      "revId": "ce7ab4563d8a81dbca14167e7a412be42a7dd84c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
