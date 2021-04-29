@@ -17,6 +17,7 @@ class CApplePlatform : public CFX_GEModule::PlatformIface {
 
   // CFX_GEModule::PlatformIface:
   void Init() override;
+  void* CreatePlatformFont(pdfium::span<const uint8_t> font_span) override;
   std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo() override;
 
   CQuartz2D m_quartz2d;
