@@ -25,9 +25,9 @@ class CFPF_SkiaFontMgr {
   ~CFPF_SkiaFontMgr();
 
   void LoadSystemFonts();
-  CFPF_SkiaFont* CreateFont(ByteStringView bsFamilyname,
-                            uint8_t uCharset,
-                            uint32_t dwStyle);
+  CFPF_SkiaFont* CreatePlatformFont(ByteStringView bsFamilyname,
+                                    uint8_t uCharset,
+                                    uint32_t dwStyle);
 
   bool InitFTLibrary();
   RetainPtr<CFX_Face> GetFontFace(ByteStringView bsFile, int32_t iFaceIndex);

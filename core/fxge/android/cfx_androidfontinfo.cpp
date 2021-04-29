@@ -48,7 +48,7 @@ void* CFX_AndroidFontInfo::MapFont(int weight,
     dwStyle |= FXFONT_SCRIPT;
   if (FontFamilyIsRoman(pitch_family))
     dwStyle |= FXFONT_SERIF;
-  return m_pFontMgr->CreateFont(face, charset, dwStyle);
+  return m_pFontMgr->CreatePlatformFont(face, charset, dwStyle);
 }
 
 void* CFX_AndroidFontInfo::GetFont(const char* face) {

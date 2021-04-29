@@ -254,9 +254,9 @@ void CFPF_SkiaFontMgr::LoadSystemFonts() {
   m_bLoaded = true;
 }
 
-CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(ByteStringView bsFamilyname,
-                                            uint8_t uCharset,
-                                            uint32_t dwStyle) {
+CFPF_SkiaFont* CFPF_SkiaFontMgr::CreatePlatformFont(ByteStringView bsFamilyname,
+                                                    uint8_t uCharset,
+                                                    uint32_t dwStyle) {
   uint32_t dwHash = FPF_SKIAGetFamilyHash(bsFamilyname, dwStyle, uCharset);
   auto family_iter = m_FamilyFonts.find(dwHash);
   if (family_iter != m_FamilyFonts.end())

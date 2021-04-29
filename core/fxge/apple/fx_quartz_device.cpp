@@ -46,7 +46,8 @@ void CQuartz2D::DestroyGraphics(void* graphics) {
     CGContextRelease((CGContextRef)graphics);
 }
 
-void* CQuartz2D::CreateFont(const uint8_t* pFontData, uint32_t dwFontSize) {
+void* CQuartz2D::CreatePlatformFont(const uint8_t* pFontData,
+                                    uint32_t dwFontSize) {
   CGDataProviderRef pDataProvider = CGDataProviderCreateWithData(
       nullptr, pFontData, static_cast<size_t>(dwFontSize), nullptr);
   if (!pDataProvider)
