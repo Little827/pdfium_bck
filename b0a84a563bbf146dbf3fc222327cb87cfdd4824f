@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72825918_4095a44c",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-29T18:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d11b53f_01934d13",
+      "revId": "b0a84a563bbf146dbf3fc222327cb87cfdd4824f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5be6fe_90e7bb81",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-29T18:26:54Z",
       "side": 1,
       "message": "Wrap in #if defined(OS_APPLE)?",
+      "revId": "b0a84a563bbf146dbf3fc222327cb87cfdd4824f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a041c893_725f60c4",
+        "filename": "core/fxge/cfx_gemodule.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-29T18:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d5be6fe_90e7bb81",
       "revId": "b0a84a563bbf146dbf3fc222327cb87cfdd4824f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
