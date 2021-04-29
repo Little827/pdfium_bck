@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e97e8b92_53a21020",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-29T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "793799f1_6b93c8b9",
+      "revId": "ce7ab4563d8a81dbca14167e7a412be42a7dd84c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6d32b2d1_c13a8037",
         "filename": "core/fpdftext/cpdf_textpage.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-29T23:25:01Z",
       "side": 1,
       "message": "BTW, removing this check and just letting it fall through works too.",
+      "revId": "ce7ab4563d8a81dbca14167e7a412be42a7dd84c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edff4bd_410c17a1",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-29T23:30:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6d32b2d1_c13a8037",
       "revId": "ce7ab4563d8a81dbca14167e7a412be42a7dd84c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
