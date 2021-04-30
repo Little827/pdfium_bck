@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63195338_d603147a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-04-30T19:24:37Z",
+      "side": 1,
+      "message": "Let me know if you think the cost of multiplying by [1 0 0 1] in one place is too high ...",
+      "revId": "4896a5c7d306350b10b6b4fd5e9597babab67bd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
