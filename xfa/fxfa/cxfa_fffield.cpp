@@ -111,7 +111,7 @@ void CXFA_FFField::DrawHighlight(CFGAS_GEGraphics* pGS,
   pGS->FillPath(path, CFX_FillRenderOptions::FillType::kWinding, pMatrix);
 }
 
-void CXFA_FFField::DrawFocus(CFGAS_GEGraphics* pGS, CFX_Matrix* pMatrix) {
+void CXFA_FFField::DrawFocus(CFGAS_GEGraphics* pGS, const CFX_Matrix& pMatrix) {
   if (!GetLayoutItem()->TestStatusBits(XFA_WidgetStatus_Focused))
     return;
 
