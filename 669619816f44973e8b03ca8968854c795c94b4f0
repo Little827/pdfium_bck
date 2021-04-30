@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7d8e57_e88d1400",
+        "filename": "xfa/fwl/theme/cfwl_checkboxtp.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-30T17:54:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "361a55d1_0bd9ab87",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "669619816f44973e8b03ca8968854c795c94b4f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b01ff7f_10e401d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-30T16:54:21Z",
       "side": 1,
       "message": "only caller already checked this.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "669619816f44973e8b03ca8968854c795c94b4f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d995bac_9d8ae966",
+        "filename": "xfa/fwl/theme/cfwl_checkboxtp.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-04-30T17:54:42Z",
+      "side": 1,
+      "message": "Ha, I was going to suggest removing the caller\u0027s check. Doesn\u0027t matter, either way.",
+      "parentUuid": "1b01ff7f_10e401d7",
       "range": {
         "startLine": 155,
         "startChar": 0,
