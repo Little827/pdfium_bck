@@ -442,10 +442,12 @@ class CFieldTree {
                 std::unique_ptr<CPDF_FormField> pField);
   CPDF_FormField* GetField(const WideString& full_name);
 
+  Node* GetRoot() { return &m_Root; }
   Node* FindNode(const WideString& full_name);
   Node* AddChild(Node* pParent, const WideString& short_name);
   Node* Lookup(Node* pParent, WideStringView short_name);
 
+ private:
   Node m_Root;
 };
 
@@ -607,7 +609,7 @@ RetainPtr<CPDF_Font> CPDF_InteractiveForm::AddNativeInteractiveFormFont(
 
 size_t CPDF_InteractiveForm::CountFields(const WideString& csFieldName) const {
   if (csFieldName.IsEmpty())
-    return m_pFieldTree->m_Root.CountFields();
+    return m_pFieldTree->GetRoot()->CountFields();
 
   CFieldTree::Node* pNode = m_pFieldTree->FindNode(csFieldName);
   return pNode ? pNode->CountFields() : 0;
@@ -617,7 +619,7 @@ CPDF_FormField* CPDF_InteractiveForm::GetField(
     uint32_t index,
     const WideString& csFieldName) const {
   if (csFieldName.IsEmpty())
-    return m_pFieldTree->m_Root.GetFieldAtIndex(index);
+    return m_pFieldTree->GetRoot()->GetFieldAtIndex(index);
 
   CFieldTree::Node* pNode = m_pFieldTree->FindNode(csFieldName);
   return pNode ? pNode->GetFieldAtIndex(index) : nullptr;
@@ -741,9 +743,10 @@ int CPDF_InteractiveForm::GetFormAlignment() const {
 
 void CPDF_InteractiveForm::ResetForm(const std::vector<CPDF_FormField*>& fields,
                                      bool bIncludeOrExclude) {
-  size_t nCount = m_pFieldTree->m_Root.CountFields();
+  CFieldTree::Node* pRoot = m_pFieldTree->GetRoot();
+  size_t nCount = pRoot->CountFields();
   for (size_t i = 0; i < nCount; ++i) {
-    CPDF_FormField* pField = m_pFieldTree->m_Root.GetFieldAtIndex(i);
+    CPDF_FormField* pField = pRoot->GetFieldAtIndex(i);
     if (!pField)
       continue;
 
@@ -755,9 +758,9 @@ void CPDF_InteractiveForm::ResetForm(const std::vector<CPDF_FormField*>& fields,
 }
 
 void CPDF_InteractiveForm::ResetForm() {
-  size_t nCount = m_pFieldTree->m_Root.CountFields();
+  size_t nCount = m_pFieldTree->GetRoot()->CountFields();
   for (size_t i = 0; i < nCount; ++i) {
-    CPDF_FormField* pField = m_pFieldTree->m_Root.GetFieldAtIndex(i);
+    CPDF_FormField* pField = m_pFieldTree->GetRoot()->GetFieldAtIndex(i);
     if (!pField)
       continue;
 
@@ -902,9 +905,9 @@ CPDF_FormControl* CPDF_InteractiveForm::AddControl(
 bool CPDF_InteractiveForm::CheckRequiredFields(
     const std::vector<CPDF_FormField*>* fields,
     bool bIncludeOrExclude) const {
-  size_t nCount = m_pFieldTree->m_Root.CountFields();
+  size_t nCount = m_pFieldTree->GetRoot()->CountFields();
   for (size_t i = 0; i < nCount; ++i) {
-    CPDF_FormField* pField = m_pFieldTree->m_Root.GetFieldAtIndex(i);
+    CPDF_FormField* pField = m_pFieldTree->GetRoot()->GetFieldAtIndex(i);
     if (!pField)
       continue;
 
@@ -935,9 +938,9 @@ std::unique_ptr<CFDF_Document> CPDF_InteractiveForm::ExportToFDF(
     const WideString& pdf_path,
     bool bSimpleFileSpec) const {
   std::vector<CPDF_FormField*> fields;
-  size_t nCount = m_pFieldTree->m_Root.CountFields();
+  size_t nCount = m_pFieldTree->GetRoot()->CountFields();
   for (size_t i = 0; i < nCount; ++i)
-    fields.push_back(m_pFieldTree->m_Root.GetFieldAtIndex(i));
+    fields.push_back(m_pFieldTree->GetRoot()->GetFieldAtIndex(i));
   return ExportToFDF(pdf_path, fields, true, bSimpleFileSpec);
 }
 
@@ -967,9 +970,9 @@ std::unique_ptr<CFDF_Document> CPDF_InteractiveForm::ExportToFDF(
   }
 
   CPDF_Array* pFields = pMainDict->SetNewFor<CPDF_Array>("Fields");
-  size_t nCount = m_pFieldTree->m_Root.CountFields();
+  size_t nCount = m_pFieldTree->GetRoot()->CountFields();
   for (size_t i = 0; i < nCount; ++i) {
-    CPDF_FormField* pField = m_pFieldTree->m_Root.GetFieldAtIndex(i);
+    CPDF_FormField* pField = m_pFieldTree->GetRoot()->GetFieldAtIndex(i);
     if (!pField || pField->GetType() == CPDF_FormField::kPushButton)
       continue;
 
