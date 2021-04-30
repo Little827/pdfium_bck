@@ -53,8 +53,9 @@ void CFWL_CheckBoxTP::DrawSignCheck(CFGAS_GEGraphics* pGraphics,
   mt.Concat(matrix);
   pGraphics->SaveGraphState();
   pGraphics->SetFillColor(CFGAS_GEColor(argbFill));
-  pGraphics->FillPath(m_pCheckPath.get(),
-                      CFX_FillRenderOptions::FillType::kWinding, mt);
+  if (m_pCheckPath)
+    pGraphics->FillPath(*m_pCheckPath,
+                        CFX_FillRenderOptions::FillType::kWinding, mt);
   pGraphics->RestoreGraphState();
 }
 
@@ -66,7 +67,7 @@ void CFWL_CheckBoxTP::DrawSignCircle(CFGAS_GEGraphics* pGraphics,
   path.AddEllipse(rtSign);
   pGraphics->SaveGraphState();
   pGraphics->SetFillColor(CFGAS_GEColor(argbFill));
-  pGraphics->FillPath(&path, CFX_FillRenderOptions::FillType::kWinding, matrix);
+  pGraphics->FillPath(path, CFX_FillRenderOptions::FillType::kWinding, matrix);
   pGraphics->RestoreGraphState();
 }
 
@@ -84,7 +85,7 @@ void CFWL_CheckBoxTP::DrawSignCross(CFGAS_GEGraphics* pGraphics,
   pGraphics->SaveGraphState();
   pGraphics->SetStrokeColor(CFGAS_GEColor(argbFill));
   pGraphics->SetLineWidth(1.0f);
-  pGraphics->StrokePath(&path, &matrix);
+  pGraphics->StrokePath(path, &matrix);
   pGraphics->RestoreGraphState();
 }
 
@@ -104,7 +105,7 @@ void CFWL_CheckBoxTP::DrawSignDiamond(CFGAS_GEGraphics* pGraphics,
 
   pGraphics->SaveGraphState();
   pGraphics->SetFillColor(CFGAS_GEColor(argbFill));
-  pGraphics->FillPath(&path, CFX_FillRenderOptions::FillType::kWinding, matrix);
+  pGraphics->FillPath(path, CFX_FillRenderOptions::FillType::kWinding, matrix);
   pGraphics->RestoreGraphState();
 }
 
@@ -116,7 +117,7 @@ void CFWL_CheckBoxTP::DrawSignSquare(CFGAS_GEGraphics* pGraphics,
   path.AddRectangle(rtSign.left, rtSign.top, rtSign.width, rtSign.height);
   pGraphics->SaveGraphState();
   pGraphics->SetFillColor(CFGAS_GEColor(argbFill));
-  pGraphics->FillPath(&path, CFX_FillRenderOptions::FillType::kWinding, matrix);
+  pGraphics->FillPath(path, CFX_FillRenderOptions::FillType::kWinding, matrix);
   pGraphics->RestoreGraphState();
 }
 
@@ -146,7 +147,7 @@ void CFWL_CheckBoxTP::DrawSignStar(CFGAS_GEGraphics* pGraphics,
   }
   pGraphics->SaveGraphState();
   pGraphics->SetFillColor(CFGAS_GEColor(argbFill));
-  pGraphics->FillPath(&path, CFX_FillRenderOptions::FillType::kWinding, matrix);
+  pGraphics->FillPath(path, CFX_FillRenderOptions::FillType::kWinding, matrix);
   pGraphics->RestoreGraphState();
 }
 

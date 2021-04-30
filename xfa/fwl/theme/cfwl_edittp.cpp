@@ -25,7 +25,7 @@ void CFWL_EditTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
     pWidget->GetBorderColorAndThickness(&cr, &fWidth);
     pParams.m_pGraphics->SetStrokeColor(CFGAS_GEColor(cr));
     pParams.m_pGraphics->SetLineWidth(fWidth);
-    pParams.m_pGraphics->StrokePath(pParams.m_pPath.Get(), &pParams.m_matrix);
+    pParams.m_pGraphics->StrokePath(*pParams.m_pPath.Get(), &pParams.m_matrix);
     return;
   }
 
@@ -40,7 +40,7 @@ void CFWL_EditTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
         CFGAS_GEGraphics* pGraphics = pParams.m_pGraphics.Get();
         pGraphics->SaveGraphState();
         pGraphics->SetFillColor(CFGAS_GEColor(FWLTHEME_COLOR_BKSelected));
-        pGraphics->FillPath(pParams.m_pPath.Get(),
+        pGraphics->FillPath(*pParams.m_pPath.Get(),
                             CFX_FillRenderOptions::FillType::kWinding,
                             pParams.m_matrix);
         pGraphics->RestoreGraphState();
@@ -60,7 +60,7 @@ void CFWL_EditTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
         pParams.m_pGraphics->SaveGraphState();
         pParams.m_pGraphics->SetFillColor(cr);
         pParams.m_pGraphics->FillPath(
-            &path, CFX_FillRenderOptions::FillType::kWinding, pParams.m_matrix);
+            path, CFX_FillRenderOptions::FillType::kWinding, pParams.m_matrix);
         pParams.m_pGraphics->RestoreGraphState();
       }
       break;
@@ -68,7 +68,8 @@ void CFWL_EditTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
     case CFWL_Part::CombTextLine: {
       pParams.m_pGraphics->SetStrokeColor(CFGAS_GEColor(0xFF000000));
       pParams.m_pGraphics->SetLineWidth(1.0f);
-      pParams.m_pGraphics->StrokePath(pParams.m_pPath.Get(), &pParams.m_matrix);
+      if (pParams.m_pPath)
+        pParams.m_pGraphics->StrokePath(*pParams.m_pPath, &pParams.m_matrix);
       break;
     }
     default:
