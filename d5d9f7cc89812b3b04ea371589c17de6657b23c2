@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7999b6_a9fbe517",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-10T17:28:38Z",
+      "side": 1,
+      "message": "0x04, how intuitive.",
+      "range": {
+        "startLine": 980,
+        "startChar": 17,
+        "endLine": 980,
+        "endChar": 22
+      },
+      "revId": "d5d9f7cc89812b3b04ea371589c17de6657b23c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
