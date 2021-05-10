@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1620669391 -0700\nnonce ALC2d19Btk+UgpCiiEZZN7NiXIytC23yt0Cbk+aPl8HNrDNKYX3pl7TNfJLSQLlm00TYvk/cWHL3\n\n0000000000000000000000000000000000000000 120b108f006a7d377ac79116467a9dbfb6c6d5ed refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmCZc88ACgkQqzYtYVpm\n/XvtJggApj9gr9Y4F3GwJqiYoqm0KXBImL1APqwvetSOsAqYZQ9PBpemRrEsIGFE\nK3fMPBWZBOfuWc+/Rs5hxLtYmVYSLjyhvRdXuoS8ot03iYdmIlF6ubWNDHF8sJu+\niBoMV9qF7/Ktw0YUYrQ8olRFZykrcQ6pjadAEsbgqZVY0j0kHpcSSj091Jo3BrS9\nDaecSWNCHBo6G54CY1x4um+RReJEIsTgOgv3ItmgkEOohEWMdLvgUZQSvSiGFrBO\n/qTiaL988AGCaUoWR+9uiOlVDxr9BX/AW2bHy9TSAtLOGPvrrvGINQIrYdmJrIT+\n2HupyRu+9NXYDoI4gmNLma99b01JrQ\u003d\u003d\n\u003dcNce\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c737a7_1e2a5761",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-10T18:42:30Z",
+      "side": 1,
+      "message": "might have to CHECK() on .second to avoid accidental double deletion later on.",
+      "range": {
+        "startLine": 143,
+        "startChar": 27,
+        "endLine": 143,
+        "endChar": 51
+      },
+      "revId": "120b108f006a7d377ac79116467a9dbfb6c6d5ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d2870d_48318a9b",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-10T18:42:30Z",
+      "side": 1,
+      "message": "Alternatively, might need to be Optional\u003c\u003e if we are to tolerate double-inserts by not erasing unless inserted.",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "120b108f006a7d377ac79116467a9dbfb6c6d5ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
