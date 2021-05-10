@@ -73,6 +73,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cfa505f_80f566fd",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-10T19:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25447baf_95457844",
+      "range": {
+        "startLine": 143,
+        "startChar": 27,
+        "endLine": 143,
+        "endChar": 51
+      },
+      "revId": "120b108f006a7d377ac79116467a9dbfb6c6d5ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27d2870d_48318a9b",
@@ -86,6 +110,30 @@
       "writtenOn": "2021-05-10T18:42:30Z",
       "side": 1,
       "message": "Alternatively, might need to be Optional\u003c\u003e if we are to tolerate double-inserts by not erasing unless inserted.",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "120b108f006a7d377ac79116467a9dbfb6c6d5ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bce9361_5df1421b",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-10T19:33:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27d2870d_48318a9b",
       "range": {
         "startLine": 148,
         "startChar": 2,
