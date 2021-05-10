@@ -40,6 +40,30 @@
       },
       "revId": "56ade11e7a074e807dddb9ac22fff56a9e336143",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81883fd_3ed74db5",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-10T19:55:06Z",
+      "side": 1,
+      "message": "(and avoid the check).",
+      "parentUuid": "ec9baf12_dbeaaecc",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 10
+      },
+      "revId": "56ade11e7a074e807dddb9ac22fff56a9e336143",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
