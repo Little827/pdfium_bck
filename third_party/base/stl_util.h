@@ -139,15 +139,13 @@ bool IndexInBounds(const Collection& collection, IndexType index) {
 template <typename T>
 class ScopedSetInsertion {
  public:
-  ScopedSetInsertion(std::set<T>* org_set, T elem)
-      : m_Set(org_set), m_Entry(elem) {
-    m_Set->insert(m_Entry);
-  }
-  ~ScopedSetInsertion() { m_Set->erase(m_Entry); }
+  ScopedSetInsertion(std::set<T>* org_set, const T& elem)
+      : set_(org_set), it_(set_->insert(elem).first) {}
+  ~ScopedSetInsertion() { set_->erase(it_); }
 
  private:
-  std::set<T>* const m_Set;
-  const T m_Entry;
+  std::set<T>* const set_;
+  typename std::set<T>::iterator const it_;
 };
 
 // std::clamp(), some day.
