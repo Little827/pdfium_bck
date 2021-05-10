@@ -9,9 +9,11 @@
 #include <iterator>
 #include <memory>
 #include <set>
+#include <tuple>
 #include <type_traits>
 #include <vector>
 
+#include "third_party/base/check.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/numerics/safe_math.h"
 #include "third_party/base/template_util.h"
@@ -139,15 +141,16 @@ bool IndexInBounds(const Collection& collection, IndexType index) {
 template <typename T>
 class ScopedSetInsertion {
  public:
-  ScopedSetInsertion(std::set<T>* org_set, T elem)
-      : m_Set(org_set), m_Entry(elem) {
-    m_Set->insert(m_Entry);
+  ScopedSetInsertion(std::set<T>* org_set, const T& elem) : set_(org_set) {
+    bool inserted;
+    std::tie(it_, inserted) = set_->insert(elem);
+    CHECK(inserted);
   }
-  ~ScopedSetInsertion() { m_Set->erase(m_Entry); }
+  ~ScopedSetInsertion() { set_->erase(it_); }
 
  private:
-  std::set<T>* const m_Set;
-  const T m_Entry;
+  std::set<T>* const set_;
+  typename std::set<T>::iterator it_;
 };
 
 // std::clamp(), some day.
