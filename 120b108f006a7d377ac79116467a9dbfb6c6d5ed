@@ -51,6 +51,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25447baf_95457844",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-10T18:59:57Z",
+      "side": 1,
+      "message": "I\u0027d just hate to introduce a double-delete down the road which is currently impossible given they key-based erasure.",
+      "parentUuid": "66974ba4_758bbaa5",
+      "range": {
+        "startLine": 143,
+        "startChar": 27,
+        "endLine": 143,
+        "endChar": 51
+      },
+      "revId": "120b108f006a7d377ac79116467a9dbfb6c6d5ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27d2870d_48318a9b",
         "filename": "third_party/base/stl_util.h",
         "patchSetId": 1
