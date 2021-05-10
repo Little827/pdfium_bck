@@ -64,6 +64,30 @@
       },
       "revId": "56ade11e7a074e807dddb9ac22fff56a9e336143",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba38052_167f0431",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-10T21:51:26Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to change the behavior of ScopedSetInsertion, but I like having the newly added class member being const again.",
+      "parentUuid": "f81883fd_3ed74db5",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 10
+      },
+      "revId": "56ade11e7a074e807dddb9ac22fff56a9e336143",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
