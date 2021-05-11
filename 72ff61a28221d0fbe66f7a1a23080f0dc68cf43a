@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b506d267_e96c5df5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-11T21:09:00Z",
+      "side": 1,
+      "message": "\u003e \"unreleated\" is a possible misspelling of \"unrelated\".\n\nPlease fix.",
+      "parentUuid": "2871c937_575a86e8",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "72ff61a28221d0fbe66f7a1a23080f0dc68cf43a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
