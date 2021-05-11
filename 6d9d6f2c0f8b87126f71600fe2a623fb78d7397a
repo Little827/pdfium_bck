@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eeaaf55_5ea5e31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-11T22:57:54Z",
+      "side": 1,
+      "message": "PS2 shows that the tests run at the new v8 version (modulo msvc).\nPS3 reverts the DEPS so this change can land by itself.\n\nThere will still be a problem at the new v8 version due to MSVC failing to compile it, but that is a separate issue.",
+      "revId": "6d9d6f2c0f8b87126f71600fe2a623fb78d7397a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
