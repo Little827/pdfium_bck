@@ -62,6 +62,7 @@ source_set("fxcrt") {
     "pauseindicator_iface.h",
     "retain_ptr.h",
     "retained_tree_node.h",
+    "scoped_set_insertion.h",
     "shared_copy_on_write.h",
     "string_data_template.cpp",
     "string_data_template.h",
