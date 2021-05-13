@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4c517e_ca43bfd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-13T17:03:32Z",
+      "side": 1,
+      "message": "LG w/suggestions.",
+      "revId": "44f088c608e27726f96f5d379ecd6c2289692d60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d9d1ac_3d333568",
+        "filename": "core/fxcrt/scoped_set_insertion_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-13T17:03:32Z",
+      "side": 1,
+      "message": "nit: maybe comment about \n   // test what happens when not strictly nested.\n\nAlternatively, maybe add \n  void* operator new(size_t) \u003d delete;                \n  void* operator new(size_t, void*) \u003d delete; \n\nto SSI itself to make stack allocated (we don\u0027t have a macro per-se outside of CPPGC if I recall correctly).",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "44f088c608e27726f96f5d379ecd6c2289692d60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd80051d_6da95acf",
+        "filename": "core/fxcrt/scoped_set_insertion_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-13T17:03:32Z",
+      "side": 1,
+      "message": "nit: could just nest another level before line 18 and let it go out of scope.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "44f088c608e27726f96f5d379ecd6c2289692d60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
