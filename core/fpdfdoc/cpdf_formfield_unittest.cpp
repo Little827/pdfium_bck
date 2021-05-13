@@ -20,6 +20,7 @@
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
+#include "core/fxcrt/fx_memory.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/stl_util.h"
 
@@ -28,6 +29,8 @@ namespace {
 // Create and destroys the page module that is necessary when instantiating a
 // CPDF_Document.
 class ScopedCPDF_PageModule {
+  FX_STACK_ALLOCATED();
+
  public:
   ScopedCPDF_PageModule() { CPDF_PageModule::Create(); }
   ~ScopedCPDF_PageModule() { CPDF_PageModule::Destroy(); }

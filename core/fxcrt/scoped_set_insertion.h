@@ -8,6 +8,7 @@
 #include <set>
 #include <utility>
 
+#include "core/fxcrt/fx_memory.h"
 #include "third_party/base/check.h"
 
 namespace fxcrt {
@@ -16,6 +17,8 @@ namespace fxcrt {
 // the ScopedSetInsertion goes out of scope.
 template <typename T>
 class ScopedSetInsertion {
+  FX_STACK_ALLOCATED();
+
  public:
   ScopedSetInsertion(std::set<T>* org_set, const T& elem)
       : set_(org_set), insert_results_(set_->insert(elem)) {
@@ -24,10 +27,6 @@ class ScopedSetInsertion {
   ScopedSetInsertion(const ScopedSetInsertion&) = delete;
   ScopedSetInsertion& operator=(const ScopedSetInsertion&) = delete;
   ~ScopedSetInsertion() { set_->erase(insert_results_.first); }
-
-  // Stack allocated only.
-  void* operator new(size_t) = delete;
-  void* operator new(size_t, void*) = delete;
 
  private:
   std::set<T>* const set_;

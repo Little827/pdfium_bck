@@ -7,9 +7,12 @@
 
 #include <string>
 
+#include "core/fxcrt/fx_memory.h"
 #include "third_party/base/optional.h"
 
 class ScopedSetTZ {
+  FX_STACK_ALLOCATED();
+
  public:
   explicit ScopedSetTZ(const std::string& tz);
   ScopedSetTZ(const ScopedSetTZ&) = delete;
