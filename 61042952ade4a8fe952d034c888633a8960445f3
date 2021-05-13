@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6a76ca2_4342a8ca",
+        "filename": "core/fpdfapi/parser/cpdf_read_validator.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-13T19:23:17Z",
+      "side": 1,
+      "message": "Nah, the macro as implemented by blink/cppgc forces a private: on the class.  I\u0027ve kept it that way for consistency, though it isn\u0027t needed with \u003d delete;",
+      "parentUuid": "a333f419_6cbd0956",
+      "revId": "61042952ade4a8fe952d034c888633a8960445f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "784361fd_b1499fa2",
         "filename": "core/fxcrt/fx_memory.h",
         "patchSetId": 4
