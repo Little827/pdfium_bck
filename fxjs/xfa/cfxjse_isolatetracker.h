@@ -7,11 +7,14 @@
 #ifndef FXJS_XFA_CFXJSE_ISOLATETRACKER_H_
 #define FXJS_XFA_CFXJSE_ISOLATETRACKER_H_
 
+#include "core/fxcrt/fx_memory.h"
 #include "v8/include/v8.h"
 
 class CFXJSE_Context;
 
 class CFXJSE_ScopeUtil_IsolateHandle {
+  FX_STACK_ALLOCATED();
+
  public:
   explicit CFXJSE_ScopeUtil_IsolateHandle(v8::Isolate* pIsolate);
   CFXJSE_ScopeUtil_IsolateHandle(const CFXJSE_ScopeUtil_IsolateHandle&) =
@@ -21,14 +24,13 @@ class CFXJSE_ScopeUtil_IsolateHandle {
   ~CFXJSE_ScopeUtil_IsolateHandle();
 
  private:
-  void* operator new(size_t size) = delete;
-  void operator delete(void*, size_t) = delete;
-
   v8::Isolate::Scope isolate_scope_;
   v8::HandleScope handle_scope_;
 };
 
 class CFXJSE_ScopeUtil_Context {
+  FX_STACK_ALLOCATED();
+
  public:
   explicit CFXJSE_ScopeUtil_Context(CFXJSE_Context* pContext);
   CFXJSE_ScopeUtil_Context(const CFXJSE_ScopeUtil_Context&) = delete;
@@ -36,13 +38,12 @@ class CFXJSE_ScopeUtil_Context {
   ~CFXJSE_ScopeUtil_Context();
 
  private:
-  void* operator new(size_t size) = delete;
-  void operator delete(void*, size_t) = delete;
-
   v8::Context::Scope context_scope_;
 };
 
 class CFXJSE_ScopeUtil_IsolateHandleContext {
+  FX_STACK_ALLOCATED();
+
  public:
   explicit CFXJSE_ScopeUtil_IsolateHandleContext(CFXJSE_Context* pContext);
   CFXJSE_ScopeUtil_IsolateHandleContext(
@@ -52,14 +53,13 @@ class CFXJSE_ScopeUtil_IsolateHandleContext {
   ~CFXJSE_ScopeUtil_IsolateHandleContext();
 
  private:
-  void* operator new(size_t size) = delete;
-  void operator delete(void*, size_t) = delete;
-
   CFXJSE_ScopeUtil_IsolateHandle isolate_handle_;
   CFXJSE_ScopeUtil_Context context_;
 };
 
 class CFXJSE_ScopeUtil_RootContext {
+  FX_STACK_ALLOCATED();
+
  public:
   explicit CFXJSE_ScopeUtil_RootContext(v8::Isolate* pIsolate);
   CFXJSE_ScopeUtil_RootContext(const CFXJSE_ScopeUtil_RootContext&) = delete;
@@ -68,13 +68,12 @@ class CFXJSE_ScopeUtil_RootContext {
   ~CFXJSE_ScopeUtil_RootContext();
 
  private:
-  void* operator new(size_t size) = delete;
-  void operator delete(void*, size_t) = delete;
-
   v8::Context::Scope context_scope_;
 };
 
 class CFXJSE_ScopeUtil_IsolateHandleRootContext {
+  FX_STACK_ALLOCATED();
+
  public:
   explicit CFXJSE_ScopeUtil_IsolateHandleRootContext(v8::Isolate* pIsolate);
   CFXJSE_ScopeUtil_IsolateHandleRootContext(
@@ -84,9 +83,6 @@ class CFXJSE_ScopeUtil_IsolateHandleRootContext {
   ~CFXJSE_ScopeUtil_IsolateHandleRootContext();
 
  private:
-  void* operator new(size_t size) = delete;
-  void operator delete(void*, size_t) = delete;
-
   CFXJSE_ScopeUtil_IsolateHandle isolate_handle_;
   CFXJSE_ScopeUtil_RootContext root_context_;
 };
