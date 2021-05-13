@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed3b1733_8847c33b",
+        "filename": "core/fpdfapi/parser/cpdf_read_validator.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-13T19:26:03Z",
+      "side": 1,
+      "message": "WDYT about putting it in the public section, and changing blink/cppgc to not put it in the private section?",
+      "parentUuid": "e6a76ca2_4342a8ca",
+      "revId": "61042952ade4a8fe952d034c888633a8960445f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "784361fd_b1499fa2",
         "filename": "core/fxcrt/fx_memory.h",
         "patchSetId": 4
