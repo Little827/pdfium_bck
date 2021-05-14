@@ -105,7 +105,7 @@ void CPDF_FormField::InitFieldFlags() {
   const CPDF_Object* ft_attr =
       GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kFT);
   ByteString type_name = ft_attr ? ft_attr->GetString() : ByteString();
-  uint32_t flags = GetFieldFlags();
+  const uint32_t flags = GetFieldFlags();
   m_bRequired = flags & pdfium::form_flags::kRequired;
   m_bNoExport = flags & pdfium::form_flags::kNoExport;
 
@@ -149,7 +149,7 @@ bool CPDF_FormField::ResetField() {
   switch (m_Type) {
     case kCheckBox:
     case kRadioButton: {
-      int iCount = CountControls();
+      const int iCount = CountControls();
       // TODO(weili): Check whether anything special needs to be done for
       // |m_bIsUnison|.
       for (int i = 0; i < iCount; i++) {
@@ -164,7 +164,7 @@ bool CPDF_FormField::ResetField() {
     case kListBox: {
       ClearSelection(NotificationOption::kDoNotNotify);
       WideString csValue;
-      int iIndex = GetDefaultSelectedItem();
+      const int iIndex = GetDefaultSelectedItem();
       if (iIndex >= 0)
         csValue = GetOptionLabel(iIndex);
       if (!NotifyListOrComboBoxBeforeChange(csValue)) {
@@ -347,7 +347,7 @@ bool CPDF_FormField::SetValue(const WideString& value,
       ByteString key(bDefault ? pdfium::form_fields::kDV
                               : pdfium::form_fields::kV);
       m_pDict->SetNewFor<CPDF_String>(key, csValue);
-      int iIndex = FindOption(csValue);
+      const int iIndex = FindOption(csValue);
       if (iIndex < 0) {
         if (m_Type == kRichText && !bDefault) {
           m_pDict->SetFor("RV", m_pDict->GetObjectFor(key)->Clone());
@@ -364,7 +364,7 @@ bool CPDF_FormField::SetValue(const WideString& value,
       break;
     }
     case kListBox: {
-      int iIndex = FindOption(value);
+      const int iIndex = FindOption(value);
       if (iIndex < 0)
         return false;
 
@@ -442,7 +442,7 @@ int CPDF_FormField::GetSelectedIndex(int index) const {
     sel_value = elementValue ? elementValue->GetUnicodeText() : WideString();
   }
   if (index < CountSelectedOptions()) {
-    int iOptIndex = GetSelectedOptionIndex(index);
+    const int iOptIndex = GetSelectedOptionIndex(index);
     WideString csOpt = GetOptionValue(iOptIndex);
     if (csOpt == sel_value)
       return iOptIndex;
@@ -457,7 +457,7 @@ int CPDF_FormField::GetSelectedIndex(int index) const {
 bool CPDF_FormField::ClearSelection(NotificationOption notify) {
   if (notify == NotificationOption::kNotify && m_pForm->GetFormNotify()) {
     WideString csValue;
-    int iIndex = GetSelectedIndex(0);
+    const int iIndex = GetSelectedIndex(0);
     if (iIndex >= 0)
       csValue = GetOptionLabel(iIndex);
     if (!NotifyListOrComboBoxBeforeChange(csValue))
@@ -529,7 +529,7 @@ bool CPDF_FormField::IsItemDefaultSelected(int index) const {
   DCHECK(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions())
     return false;
-  int iDVIndex = GetDefaultSelectedItem();
+  const int iDVIndex = GetDefaultSelectedItem();
   return iDVIndex >= 0 && iDVIndex == index;
 }
 
@@ -595,7 +595,7 @@ bool CPDF_FormField::CheckControl(int iControlIndex,
     return false;
 
   const WideString csWExport = pControl->GetExportValue();
-  int iCount = CountControls();
+  const int iCount = CountControls();
   for (int i = 0; i < iCount; i++) {
     CPDF_FormControl* pCtrl = GetControl(i);
     if (m_bIsUnison) {
@@ -641,7 +641,7 @@ bool CPDF_FormField::CheckControl(int iControlIndex,
 WideString CPDF_FormField::GetCheckValue(bool bDefault) const {
   DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
   WideString csExport = L"Off";
-  int iCount = CountControls();
+  const int iCount = CountControls();
   for (int i = 0; i < iCount; i++) {
     CPDF_FormControl* pControl = GetControl(i);
     bool bChecked =
@@ -658,7 +658,7 @@ bool CPDF_FormField::SetCheckValue(const WideString& value,
                                    bool bDefault,
                                    NotificationOption notify) {
   DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
-  int iCount = CountControls();
+  const int iCount = CountControls();
   for (int i = 0; i < iCount; i++) {
     CPDF_FormControl* pControl = GetControl(i);
     WideString csExport = pControl->GetExportValue();
@@ -690,7 +690,7 @@ int CPDF_FormField::GetSelectedOptionIndex(int index) const {
   if (!pArray)
     return -1;
 
-  int iCount = pArray->size();
+  const int iCount = pArray->size();
   if (iCount < 0 || index >= iCount)
     return -1;
   return pArray->GetIntegerAt(index);
@@ -745,7 +745,7 @@ bool CPDF_FormField::SelectOption(int iOptIndex,
 
   bool bReturn = false;
   for (size_t i = 0; i < pArray->size(); i++) {
-    int iFind = pArray->GetIntegerAt(i);
+    const int iFind = pArray->GetIntegerAt(i);
     if (iFind == iOptIndex) {
       if (bSelected)
         return true;
@@ -838,7 +838,7 @@ bool CPDF_FormField::UseSelectedIndicesObject() const {
       if (!pObj->IsNumber())
         return false;
 
-      int index = pObj->GetInteger();
+      const int index = pObj->GetInteger();
       if (index < 0 || index >= num_options)
         return false;
 
@@ -856,7 +856,7 @@ bool CPDF_FormField::UseSelectedIndicesObject() const {
   }
 
   DCHECK(pSelectedIndicesObject->IsNumber());
-  int index = pSelectedIndicesObject->GetInteger();
+  const int index = pSelectedIndicesObject->GetInteger();
   if (index < 0 || index >= num_options)
     return false;
 

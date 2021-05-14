@@ -105,8 +105,8 @@ Optional<WideString> ExtractSubString(const wchar_t* lpszFullString,
   }
 
   const wchar_t* lpchEnd = std::wcschr(lpszFullString, L' ');
-  int nLen = lpchEnd ? static_cast<int>(lpchEnd - lpszFullString)
-                     : static_cast<int>(wcslen(lpszFullString));
+  const int nLen = lpchEnd ? static_cast<int>(lpchEnd - lpszFullString)
+                           : static_cast<int>(wcslen(lpszFullString));
   if (nLen < 0)
     return {};
 
@@ -217,7 +217,7 @@ bool CPDF_TextPageFind::FindNext() {
   if (m_findNextStart.value() > strLen - 1)
     return false;
 
-  int nCount = pdfium::CollectionSize<int>(m_csFindWhatArray);
+  const int nCount = pdfium::CollectionSize<int>(m_csFindWhatArray);
   Optional<size_t> nResultPos = 0;
   size_t nStartPos = m_findNextStart.value();
   bool bSpaceStart = false;
@@ -247,9 +247,9 @@ bool CPDF_TextPageFind::FindNext() {
     bool bMatch = true;
     if (iWord != 0 && !bSpaceStart) {
       size_t PreResEndPos = nStartPos;
-      int curChar = csWord[0];
-      WideString lastWord = m_csFindWhatArray[iWord - 1];
-      int lastChar = lastWord.Back();
+      const int curChar = csWord[0];
+      const WideString lastWord = m_csFindWhatArray[iWord - 1];
+      const int lastChar = lastWord.Back();
       if (nStartPos == nResultPos.value() &&
           !(IsIgnoreSpaceCharacter(lastChar) ||
             IsIgnoreSpaceCharacter(curChar))) {
@@ -308,9 +308,9 @@ bool CPDF_TextPageFind::FindPrev() {
   int order = -1;
   int matches = 0;
   while (find_engine.FindNext()) {
-    int cur_order = find_engine.GetCurOrder();
-    int cur_match = find_engine.GetMatchedCount();
-    int temp = cur_order + cur_match;
+    const int cur_order = find_engine.GetCurOrder();
+    const int cur_match = find_engine.GetMatchedCount();
+    const int temp = cur_order + cur_match;
     if (temp < 0 || static_cast<size_t>(temp) > m_findPreStart.value() + 1)
       break;
 
@@ -337,7 +337,7 @@ int CPDF_TextPageFind::GetCurOrder() const {
 }
 
 int CPDF_TextPageFind::GetMatchedCount() const {
-  int resStart = GetCharIndex(m_resStart);
-  int resEnd = GetCharIndex(m_resEnd);
+  const int resStart = GetCharIndex(m_resStart);
+  const int resEnd = GetCharIndex(m_resEnd);
   return resEnd - resStart + 1;
 }

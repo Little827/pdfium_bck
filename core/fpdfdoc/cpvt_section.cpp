@@ -222,7 +222,7 @@ void CPVT_Section::ResetLinePlace() {
 
 CPVT_WordPlace CPVT_Section::AddWord(const CPVT_WordPlace& place,
                                      const CPVT_WordInfo& wordinfo) {
-  int32_t nWordIndex = pdfium::clamp(
+  const int32_t nWordIndex = pdfium::clamp(
       place.nWordIndex, 0, pdfium::CollectionSize<int32_t>(m_WordArray));
   m_WordArray.insert(m_WordArray.begin() + nWordIndex,
                      std::make_unique<CPVT_WordInfo>(wordinfo));
@@ -556,9 +556,9 @@ CPVT_FloatRect CPVT_Section::SplitLines(bool bTypeset, float fFontSize) {
   int32_t nLineFullWordIndex = 0;
   int32_t nCharIndex = 0;
   float fWordWidth = 0;
-  float fTypesetWidth =
+  const float fTypesetWidth =
       std::max(m_pVT->GetPlateWidth() - m_pVT->GetLineIndent(), 0.0f);
-  int32_t nTotalWords = pdfium::CollectionSize<int32_t>(m_WordArray);
+  const int32_t nTotalWords = pdfium::CollectionSize<int32_t>(m_WordArray);
   bool bOpened = false;
   int32_t i = 0;
   while (i < nTotalWords) {
@@ -681,7 +681,7 @@ CPVT_FloatRect CPVT_Section::OutputLines(const CPVT_FloatRect& rect) const {
   float fMaxX = fMinX + rect.Width();
   float fMinY = 0.0f;
   float fMaxY = rect.Height();
-  int32_t nTotalLines = pdfium::CollectionSize<int32_t>(m_LineArray);
+  const int32_t nTotalLines = pdfium::CollectionSize<int32_t>(m_LineArray);
   if (nTotalLines > 0) {
     float fPosX = 0.0f;
     float fPosY = 0.0f;
@@ -729,7 +729,7 @@ void CPVT_Section::ClearLeftWords(int32_t nWordIndex) {
 }
 
 void CPVT_Section::ClearRightWords(int32_t nWordIndex) {
-  int32_t sz = pdfium::CollectionSize<int32_t>(m_WordArray);
+  const int32_t sz = pdfium::CollectionSize<int32_t>(m_WordArray);
   for (int32_t i = sz - 1; i > nWordIndex; i--) {
     if (pdfium::IndexInBounds(m_WordArray, i))
       m_WordArray.erase(m_WordArray.begin() + i);

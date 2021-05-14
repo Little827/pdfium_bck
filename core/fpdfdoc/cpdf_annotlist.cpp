@@ -142,7 +142,7 @@ void GenerateAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
   CPDF_Object* pFieldFlagsObj =
       CPDF_FormField::GetFieldAttr(pAnnotDict, pdfium::form_fields::kFf);
-  uint32_t flags = pFieldFlagsObj ? pFieldFlagsObj->GetInteger() : 0;
+  const uint32_t flags = pFieldFlagsObj ? pFieldFlagsObj->GetInteger() : 0;
   if (field_type == pdfium::form_fields::kCh) {
     auto type = (flags & pdfium::form_flags::kChoiceCombo)
                     ? CPDF_GenerateAP::kComboBox
@@ -230,11 +230,11 @@ void CPDF_AnnotList::DisplayPass(CPDF_Page* pPage,
                                  CPDF_RenderOptions* pOptions,
                                  FX_RECT* clip_rect) {
   for (const auto& pAnnot : m_AnnotList) {
-    bool bWidget = pAnnot->GetSubtype() == CPDF_Annot::Subtype::WIDGET;
+    const bool bWidget = pAnnot->GetSubtype() == CPDF_Annot::Subtype::WIDGET;
     if ((bWidgetPass && !bWidget) || (!bWidgetPass && bWidget))
       continue;
 
-    uint32_t annot_flags = pAnnot->GetFlags();
+    const uint32_t annot_flags = pAnnot->GetFlags();
     if (annot_flags & pdfium::annotation_flags::kHidden)
       continue;
 
@@ -296,9 +296,10 @@ void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
                                    const CFX_Matrix& mtMatrix,
                                    bool bShowWidget,
                                    CPDF_RenderOptions* pOptions) {
-  uint32_t dwAnnotFlags = bShowWidget ? pdfium::annotation_flags::kInvisible |
-                                            pdfium::annotation_flags::kHidden
-                                      : pdfium::annotation_flags::kInvisible;
+  const uint32_t dwAnnotFlags = bShowWidget
+                                    ? pdfium::annotation_flags::kInvisible |
+                                          pdfium::annotation_flags::kHidden
+                                    : pdfium::annotation_flags::kInvisible;
   DisplayAnnots(pPage, device, pContext, bPrinting, mtMatrix, dwAnnotFlags,
                 pOptions, nullptr);
 }

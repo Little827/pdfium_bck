@@ -43,7 +43,7 @@ int CPVT_VariableText::Provider::GetCharWidth(int32_t nFontIndex,
   if (!pPDFFont)
     return 0;
 
-  uint32_t charcode = pPDFFont->CharCodeFromUnicode(word);
+  const uint32_t charcode = pPDFFont->CharCodeFromUnicode(word);
   if (charcode == CPDF_Font::kInvalidCharCode)
     return 0;
 
@@ -191,7 +191,7 @@ void CPVT_VariableText::Initialize() {
 CPVT_WordPlace CPVT_VariableText::InsertWord(const CPVT_WordPlace& place,
                                              uint16_t word,
                                              int32_t charset) {
-  int32_t nTotalWords = GetTotalWords();
+  const int32_t nTotalWords = GetTotalWords();
   if (m_nLimitChar > 0 && nTotalWords >= m_nLimitChar)
     return place;
   if (m_nCharArray > 0 && nTotalWords >= m_nCharArray)
@@ -199,14 +199,14 @@ CPVT_WordPlace CPVT_VariableText::InsertWord(const CPVT_WordPlace& place,
 
   CPVT_WordPlace newplace = place;
   newplace.nWordIndex++;
-  int32_t nFontIndex =
+  const int32_t nFontIndex =
       GetSubWord() > 0 ? GetDefaultFontIndex()
                        : GetWordFontIndex(word, charset, GetDefaultFontIndex());
   return AddWord(newplace, CPVT_WordInfo(word, charset, nFontIndex));
 }
 
 CPVT_WordPlace CPVT_VariableText::InsertSection(const CPVT_WordPlace& place) {
-  int32_t nTotalWords = GetTotalWords();
+  const int32_t nTotalWords = GetTotalWords();
   if (m_nLimitChar > 0 && nTotalWords >= m_nLimitChar)
     return place;
   if (m_nCharArray > 0 && nTotalWords >= m_nCharArray)
@@ -527,7 +527,7 @@ CPVT_WordPlace CPVT_VariableText::AddSection(const CPVT_WordPlace& place) {
   if (IsValid() && !m_bMultiLine)
     return place;
 
-  int32_t nSecIndex = pdfium::clamp(
+  const int32_t nSecIndex = pdfium::clamp(
       place.nSecIndex, 0, pdfium::CollectionSize<int32_t>(m_SectionArray));
 
   auto pSection = std::make_unique<CPVT_Section>(this);
@@ -841,7 +841,7 @@ int CPVT_VariableText::GetCharWidth(int32_t nFontIndex,
                                     uint16_t SubWord) const {
   if (!m_pVTProvider)
     return 0;
-  uint16_t word = SubWord ? SubWord : Word;
+  const uint16_t word = SubWord ? SubWord : Word;
   return m_pVTProvider->GetCharWidth(nFontIndex, word);
 }
 

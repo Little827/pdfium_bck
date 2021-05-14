@@ -41,7 +41,7 @@ CPDF_Link CPDF_LinkList::GetLinkAtPoint(CPDF_Page* pPage,
 
 const std::vector<RetainPtr<CPDF_Dictionary>>* CPDF_LinkList::GetPageLinks(
     CPDF_Page* pPage) {
-  uint32_t objnum = pPage->GetDict()->GetObjNum();
+  const uint32_t objnum = pPage->GetDict()->GetObjNum();
   if (objnum == 0)
     return nullptr;
 

@@ -282,7 +282,7 @@ void InitDict(CPDF_Dictionary*& pFormDict, CPDF_Document* pDocument) {
   ByteString csDA;
   if (!pFormDict->KeyExist("DR")) {
     ByteString csBaseName;
-    uint8_t charSet = GetNativeCharSet();
+    const uint8_t charSet = GetNativeCharSet();
     RetainPtr<CPDF_Font> pFont = AddStandardFont(pDocument);
     if (pFont)
       AddFont(pFormDict, pDocument, pFont, &csBaseName);
@@ -461,7 +461,7 @@ CFieldTree::Node* CFieldTree::AddChild(Node* pParent,
   if (!pParent)
     return nullptr;
 
-  int level = pParent->GetLevel() + 1;
+  const int level = pParent->GetLevel() + 1;
   if (level > nMaxRecursion)
     return nullptr;
 
@@ -588,7 +588,7 @@ RetainPtr<CPDF_Font> CPDF_InteractiveForm::AddNativeInteractiveFormFont(
     InitDict(pFormDict, pDocument);
   DCHECK(pFormDict);
 
-  uint8_t charSet = GetNativeCharSet();
+  const uint8_t charSet = GetNativeCharSet();
   ByteString csTemp;
   RetainPtr<CPDF_Font> pFont =
       GetNativeFont(pFormDict, pDocument, charSet, &csTemp);
@@ -783,7 +783,7 @@ void CPDF_InteractiveForm::LoadField(CPDF_Dictionary* pFieldDict, int nLevel) {
   if (!pFieldDict)
     return;
 
-  uint32_t dwParentObjNum = pFieldDict->GetObjNum();
+  const uint32_t dwParentObjNum = pFieldDict->GetObjNum();
   CPDF_Array* pKids = pFieldDict->GetArrayFor(pdfium::form_fields::kKids);
   if (!pKids) {
     AddTerminalField(pFieldDict);
@@ -914,7 +914,7 @@ bool CPDF_InteractiveForm::CheckRequiredFields(
     if (!pField)
       continue;
 
-    int32_t iType = pField->GetType();
+    const int32_t iType = pField->GetType();
     if (iType == CPDF_FormField::kPushButton ||
         iType == CPDF_FormField::kCheckBox ||
         iType == CPDF_FormField::kListBox) {
@@ -981,7 +981,7 @@ std::unique_ptr<CFDF_Document> CPDF_InteractiveForm::ExportToFDF(
     if (!pField || pField->GetType() == CPDF_FormField::kPushButton)
       continue;
 
-    uint32_t dwFlags = pField->GetFieldFlags();
+    const uint32_t dwFlags = pField->GetFieldFlags();
     if (dwFlags & pdfium::form_flags::kNoExport)
       continue;
 

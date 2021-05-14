@@ -68,7 +68,7 @@ ByteString GetPDFWordString(IPVT_FontMap* pFontMap,
   }
 
   ByteString sWord;
-  uint32_t dwCharCode = pPDFFont->CharCodeFromUnicode(Word);
+  const uint32_t dwCharCode = pPDFFont->CharCodeFromUnicode(Word);
   if (dwCharCode != CPDF_Font::kInvalidCharCode)
     pPDFFont->AppendChar(&sWord, dwCharCode);
 
@@ -616,7 +616,7 @@ bool GenerateHighlightAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
   CPDF_Array* pArray = pAnnotDict->GetArrayFor("QuadPoints");
   if (pArray) {
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -725,7 +725,7 @@ bool GenerateUnderlineAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   if (pArray) {
     static constexpr float kLineWidth = 1.0f;
     sAppStream << kLineWidth << " w ";
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -844,7 +844,7 @@ bool GenerateSquigglyAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
     static constexpr float kLineWidth = 1.0f;
     static constexpr float kDelta = 2.0f;
     sAppStream << kLineWidth << " w ";
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -892,7 +892,7 @@ bool GenerateStrikeOutAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   CPDF_Array* pArray = pAnnotDict->GetArrayFor("QuadPoints");
   if (pArray) {
     static constexpr float kLineWidth = 1.0f;
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -968,7 +968,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
 
   CFX_FloatRect rcAnnot = pAnnotDict->GetRectFor(pdfium::annotation::kRect);
   CPDF_Dictionary* pMKDict = pAnnotDict->GetDictFor("MK");
-  int32_t nRotate = pMKDict ? pMKDict->GetIntegerFor("R") : 0;
+  const int32_t nRotate = pMKDict ? pMKDict->GetIntegerFor("R") : 0;
 
   CFX_FloatRect rcBBox;
   CFX_Matrix matrix;
@@ -1097,13 +1097,13 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
           CPDF_FormField::GetFieldAttr(pAnnotDict, pdfium::form_fields::kV);
       WideString swValue = pV ? pV->GetUnicodeText() : WideString();
       const CPDF_Object* pQ = CPDF_FormField::GetFieldAttr(pAnnotDict, "Q");
-      int32_t nAlign = pQ ? pQ->GetInteger() : 0;
+      const int32_t nAlign = pQ ? pQ->GetInteger() : 0;
       const CPDF_Object* pFf =
           CPDF_FormField::GetFieldAttr(pAnnotDict, pdfium::form_fields::kFf);
-      uint32_t dwFlags = pFf ? pFf->GetInteger() : 0;
+      const uint32_t dwFlags = pFf ? pFf->GetInteger() : 0;
       const CPDF_Object* pMaxLen =
           CPDF_FormField::GetFieldAttr(pAnnotDict, "MaxLen");
-      uint32_t dwMaxLen = pMaxLen ? pMaxLen->GetInteger() : 0;
+      const uint32_t dwMaxLen = pMaxLen ? pMaxLen->GetInteger() : 0;
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
           pDefFont, font_name);
@@ -1241,7 +1241,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       CPDF_Array* pSels =
           ToArray(CPDF_FormField::GetFieldAttr(pAnnotDict, "I"));
       CPDF_Object* pTi = CPDF_FormField::GetFieldAttr(pAnnotDict, "TI");
-      int32_t nTop = pTi ? pTi->GetInteger() : 0;
+      const int32_t nTop = pTi ? pTi->GetInteger() : 0;
       std::ostringstream sBody;
       if (pOpts) {
         float fy = rcBody.top;
@@ -1261,7 +1261,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
             bool bSelected = false;
             if (pSels) {
               for (size_t s = 0, ssz = pSels->size(); s < ssz; s++) {
-                int value = pSels->GetIntegerAt(s);
+                const int value = pSels->GetIntegerAt(s);
                 if (value >= 0 && i == static_cast<size_t>(value)) {
                   bSelected = true;
                   break;

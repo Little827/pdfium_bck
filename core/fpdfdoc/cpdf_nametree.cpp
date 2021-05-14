@@ -192,7 +192,7 @@ CPDF_Object* SearchNameNodeByName(CPDF_Dictionary* pNode,
     size_t dwCount = pNames->size() / 2;
     for (size_t i = 0; i < dwCount; i++) {
       WideString csValue = pNames->GetUnicodeTextAt(i * 2);
-      int32_t iCompare = csValue.Compare(csName);
+      const int32_t iCompare = csValue.Compare(csName);
       if (iCompare > 0)
         break;
       if (ppFind)

@@ -157,7 +157,7 @@ CPDF_Annot::Subtype CPDF_Annot::GetSubtype() const {
 }
 
 CFX_FloatRect CPDF_Annot::RectForDrawing() const {
-  bool bShouldUseQuadPointsCoords =
+  const bool bShouldUseQuadPointsCoords =
       m_bIsTextMarkupAnnotation && m_bHasGeneratedAP;
   if (bShouldUseQuadPointsCoords)
     return BoundingRectFromQuadPoints(m_pAnnotDict.Get());
@@ -235,7 +235,7 @@ CFX_FloatRect CPDF_Annot::BoundingRectFromQuadPoints(
     const CPDF_Dictionary* pAnnotDict) {
   CFX_FloatRect ret;
   const CPDF_Array* pArray = pAnnotDict->GetArrayFor("QuadPoints");
-  size_t nQuadPointCount = pArray ? QuadPointCount(pArray) : 0;
+  const size_t nQuadPointCount = pArray ? QuadPointCount(pArray) : 0;
   if (nQuadPointCount == 0)
     return ret;
 
@@ -251,7 +251,7 @@ CFX_FloatRect CPDF_Annot::BoundingRectFromQuadPoints(
 CFX_FloatRect CPDF_Annot::RectFromQuadPoints(const CPDF_Dictionary* pAnnotDict,
                                              size_t nIndex) {
   const CPDF_Array* pArray = pAnnotDict->GetArrayFor("QuadPoints");
-  size_t nQuadPointCount = pArray ? QuadPointCount(pArray) : 0;
+  const size_t nQuadPointCount = pArray ? QuadPointCount(pArray) : 0;
   if (nIndex >= nQuadPointCount)
     return CFX_FloatRect();
   return RectFromQuadPointsArray(pArray, nIndex);
@@ -442,11 +442,11 @@ void CPDF_Annot::DrawBorder(CFX_RenderDevice* pDevice,
   if (GetSubtype() == CPDF_Annot::Subtype::POPUP)
     return;
 
-  uint32_t annot_flags = GetFlags();
+  const uint32_t annot_flags = GetFlags();
   if (annot_flags & pdfium::annotation_flags::kHidden)
     return;
 
-  bool bPrinting = pDevice->GetDeviceType() == DeviceType::kPrinter;
+  const bool bPrinting = pDevice->GetDeviceType() == DeviceType::kPrinter;
   if (bPrinting && (annot_flags & pdfium::annotation_flags::kPrint) == 0) {
     return;
   }
