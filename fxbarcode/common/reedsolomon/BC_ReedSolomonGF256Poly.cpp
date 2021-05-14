@@ -92,7 +92,8 @@ CBC_ReedSolomonGF256Poly::AddOrSubtract(const CBC_ReedSolomonGF256Poly* other) {
     std::swap(smallerCoefficients, largerCoefficients);
 
   std::vector<int32_t> sumDiff(largerCoefficients.size());
-  size_t lengthDiff = largerCoefficients.size() - smallerCoefficients.size();
+  const size_t lengthDiff =
+      largerCoefficients.size() - smallerCoefficients.size();
   for (size_t i = 0; i < lengthDiff; ++i)
     sumDiff[i] = largerCoefficients[i];
 
@@ -110,11 +111,11 @@ std::unique_ptr<CBC_ReedSolomonGF256Poly> CBC_ReedSolomonGF256Poly::Multiply(
 
   const std::vector<int32_t>& aCoefficients = m_coefficients;
   const std::vector<int32_t>& bCoefficients = other->GetCoefficients();
-  size_t aLength = aCoefficients.size();
-  size_t bLength = bCoefficients.size();
+  const size_t aLength = aCoefficients.size();
+  const size_t bLength = bCoefficients.size();
   std::vector<int32_t> product(aLength + bLength - 1);
   for (size_t i = 0; i < aLength; i++) {
-    int32_t aCoeff = aCoefficients[i];
+    const int32_t aCoeff = aCoefficients[i];
     for (size_t j = 0; j < bLength; j++) {
       product[i + j] = CBC_ReedSolomonGF256::AddOrSubtract(
           product[i + j], m_field->Multiply(aCoeff, bCoefficients[j]));
@@ -131,7 +132,7 @@ CBC_ReedSolomonGF256Poly::MultiplyByMonomial(int32_t degree,
   if (coefficient == 0)
     return m_field->GetZero()->Clone();
 
-  size_t size = m_coefficients.size();
+  const size_t size = m_coefficients.size();
   std::vector<int32_t> product(size + degree);
   for (size_t i = 0; i < size; i++)
     product[i] = m_field->Multiply(m_coefficients[i], coefficient);
@@ -151,14 +152,16 @@ std::unique_ptr<CBC_ReedSolomonGF256Poly> CBC_ReedSolomonGF256Poly::Divide(
   if (!remainder)
     return nullptr;
 
-  int32_t denominatorLeadingTerm = other->GetCoefficients(other->GetDegree());
+  const int32_t denominatorLeadingTerm =
+      other->GetCoefficients(other->GetDegree());
   Optional<int32_t> inverseDenominatorLeadingTeam =
       m_field->Inverse(denominatorLeadingTerm);
   if (!inverseDenominatorLeadingTeam.has_value())
     return nullptr;
 
   while (remainder->GetDegree() >= other->GetDegree() && !remainder->IsZero()) {
-    int32_t degreeDifference = remainder->GetDegree() - other->GetDegree();
+    const int32_t degreeDifference =
+        remainder->GetDegree() - other->GetDegree();
     int32_t scale =
         m_field->Multiply(remainder->GetCoefficients((remainder->GetDegree())),
                           inverseDenominatorLeadingTeam.value());

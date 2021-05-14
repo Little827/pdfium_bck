@@ -74,13 +74,13 @@ float CXFA_Font::GetBaselineShift() const {
 
 float CXFA_Font::GetHorizontalScale() {
   WideString wsValue = JSObject()->GetCData(XFA_Attribute::FontHorizontalScale);
-  int32_t iScale = FXSYS_wtoi(wsValue.c_str());
+  const int32_t iScale = FXSYS_wtoi(wsValue.c_str());
   return iScale > 0 ? (float)iScale : 100.0f;
 }
 
 float CXFA_Font::GetVerticalScale() {
   WideString wsValue = JSObject()->GetCData(XFA_Attribute::FontVerticalScale);
-  int32_t iScale = FXSYS_wtoi(wsValue.c_str());
+  const int32_t iScale = FXSYS_wtoi(wsValue.c_str());
   return iScale > 0 ? (float)iScale : 100.0f;
 }
 

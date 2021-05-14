@@ -109,9 +109,9 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   if (!device)
     return false;
 
-  int32_t leftPadding = 7 * multiple;
-  int32_t leftPosition = 10 * multiple + leftPadding;
-  ByteString str = FX_UTF8Encode(contents);
+  const int32_t leftPadding = 7 * multiple;
+  const int32_t leftPosition = 10 * multiple + leftPadding;
+  const ByteString str = FX_UTF8Encode(contents);
   size_t length = str.GetLength();
   std::vector<TextCharPos> charpos(length);
   ByteString tempStr = str.Substr(1, 5);
@@ -119,8 +119,8 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   float blank = 0.0;
 
   length = tempStr.GetLength();
-  int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
-  int32_t iTextHeight = iFontSize + 1;
+  const int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
+  const int32_t iTextHeight = iFontSize + 1;
 
   CFX_Matrix matr(m_outputHScale, 0.0, 0.0, 1.0, 0.0, 0.0);
   CFX_FloatRect rect((float)leftPosition, (float)(m_Height - iTextHeight),
@@ -136,7 +136,7 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   matr1.Concat(matrix);
   re = matr1.TransformRect(rect1).GetOuterRect();
   device->FillRect(re, kBackgroundColor);
-  float strWidth1 = (float)multiple * 7;
+  const float strWidth1 = (float)multiple * 7;
   CFX_Matrix matr2(m_outputHScale, 0.0, 0.0, 1.0, 0.0, 0.0);
   CFX_FloatRect rect2(0.0, (float)(m_Height - iTextHeight),
                       (float)strWidth1 - 1, (float)m_Height);

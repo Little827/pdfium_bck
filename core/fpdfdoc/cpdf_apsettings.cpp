@@ -38,28 +38,28 @@ FX_ARGB CPDF_ApSettings::GetColor(int& iColorType,
     return 0;
 
   FX_ARGB color = 0;
-  size_t dwCount = pEntry->size();
+  const size_t dwCount = pEntry->size();
   if (dwCount == 1) {
     iColorType = CFX_Color::kGray;
-    float g = pEntry->GetNumberAt(0) * 255;
+    const float g = pEntry->GetNumberAt(0) * 255;
     return ArgbEncode(255, (int)g, (int)g, (int)g);
   }
   if (dwCount == 3) {
     iColorType = CFX_Color::kRGB;
-    float r = pEntry->GetNumberAt(0) * 255;
-    float g = pEntry->GetNumberAt(1) * 255;
-    float b = pEntry->GetNumberAt(2) * 255;
+    const float r = pEntry->GetNumberAt(0) * 255;
+    const float g = pEntry->GetNumberAt(1) * 255;
+    const float b = pEntry->GetNumberAt(2) * 255;
     return ArgbEncode(255, (int)r, (int)g, (int)b);
   }
   if (dwCount == 4) {
     iColorType = CFX_Color::kCMYK;
-    float c = pEntry->GetNumberAt(0);
-    float m = pEntry->GetNumberAt(1);
-    float y = pEntry->GetNumberAt(2);
-    float k = pEntry->GetNumberAt(3);
-    float r = 1.0f - std::min(1.0f, c + k);
-    float g = 1.0f - std::min(1.0f, m + k);
-    float b = 1.0f - std::min(1.0f, y + k);
+    const float c = pEntry->GetNumberAt(0);
+    const float m = pEntry->GetNumberAt(1);
+    const float y = pEntry->GetNumberAt(2);
+    const float k = pEntry->GetNumberAt(3);
+    const float r = 1.0f - std::min(1.0f, c + k);
+    const float g = 1.0f - std::min(1.0f, m + k);
+    const float b = 1.0f - std::min(1.0f, y + k);
     return ArgbEncode(255, (int)(r * 255), (int)(g * 255), (int)(b * 255));
   }
   return color;
@@ -88,7 +88,7 @@ void CPDF_ApSettings::GetOriginalColor(int& iColorType,
   if (!pEntry)
     return;
 
-  size_t dwCount = pEntry->size();
+  const size_t dwCount = pEntry->size();
   if (dwCount == 1) {
     iColorType = CFX_Color::kGray;
     fc[0] = pEntry->GetNumberAt(0);

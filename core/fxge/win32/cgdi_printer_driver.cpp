@@ -50,7 +50,7 @@ class ScopedState {
 
 }  // namespace
 
-bool g_pdfium_print_text_with_gdi = false;
+const bool g_pdfium_print_text_with_gdi = false;
 
 PDFiumEnsureTypefaceCharactersAccessible g_pdfium_typeface_accessible_func =
     nullptr;
@@ -109,7 +109,7 @@ bool CGdiPrinterDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                       const FXDIB_ResampleOptions& options,
                                       BlendMode blend_type) {
   if (pSource->IsMaskFormat()) {
-    int alpha = FXARGB_A(color);
+    const int alpha = FXARGB_A(color);
     if (pSource->GetBPP() != 1 || alpha != 255)
       return false;
 
@@ -177,8 +177,8 @@ bool CGdiPrinterDriver::StartDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   FX_RECT full_rect = unit_rect.GetOuterRect();
   if (fabs(matrix.b) < 0.5f && matrix.a != 0 && fabs(matrix.c) < 0.5f &&
       matrix.d != 0) {
-    bool bFlipX = matrix.a < 0;
-    bool bFlipY = matrix.d > 0;
+    const bool bFlipX = matrix.a < 0;
+    const bool bFlipY = matrix.d > 0;
     return StretchDIBits(pSource, color,
                          bFlipX ? full_rect.right : full_rect.left,
                          bFlipY ? full_rect.bottom : full_rect.top,
@@ -248,7 +248,7 @@ bool CGdiPrinterDriver::DrawDeviceText(
     return false;
 
   ScopedState state(m_hDC, hFont);
-  size_t nTextMetricSize = GetOutlineTextMetrics(m_hDC, 0, nullptr);
+  const size_t nTextMetricSize = GetOutlineTextMetrics(m_hDC, 0, nullptr);
   if (nTextMetricSize == 0) {
     // Give up and fail if there is no way to get the font to try again.
     if (!g_pdfium_typeface_accessible_func)
@@ -306,8 +306,8 @@ bool CGdiPrinterDriver::DrawDeviceText(
 
     // Round the spacing to the nearest integer, but keep track of the rounding
     // error for calculating the next spacing value.
-    float fOriginX = charpos.m_Origin.x * kScaleFactor;
-    float fPixelSpacing = fOriginX - fPreviousOriginX;
+    const float fOriginX = charpos.m_Origin.x * kScaleFactor;
+    const float fPixelSpacing = fOriginX - fPreviousOriginX;
     spacing[i] = FXSYS_roundf(fPixelSpacing);
     fPreviousOriginX = fOriginX - (fPixelSpacing - spacing[i]);
 

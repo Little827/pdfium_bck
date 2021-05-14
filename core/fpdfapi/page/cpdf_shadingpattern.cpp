@@ -118,7 +118,7 @@ bool CPDF_ShadingPattern::Validate() const {
     }
   }
 
-  uint32_t nNumColorSpaceComponents = m_pCS->CountComponents();
+  const uint32_t nNumColorSpaceComponents = m_pCS->CountComponents();
   switch (m_ShadingType) {
     case kFunctionBasedShading: {
       // Either one 2-to-N function or N 2-to-1 functions.

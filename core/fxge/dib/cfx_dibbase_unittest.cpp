@@ -34,7 +34,7 @@ void RunOverlapRectTest(const CFX_DIBitmap* bitmap,
   int overlap_width = input.overlap_size.width;
   int overlap_height = input.overlap_size.height;
 
-  bool success = bitmap->GetOverlapRect(
+  const bool success = bitmap->GetOverlapRect(
       dest_left, dest_top, overlap_width, overlap_height, input.src_size.width,
       input.src_size.height, src_left, src_top,
       /*pClipRgn=*/nullptr);

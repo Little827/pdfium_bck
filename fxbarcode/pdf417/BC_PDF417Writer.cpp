@@ -49,8 +49,8 @@ std::vector<uint8_t, FxAllocAllocator<uint8_t>> CBC_PDF417Writer::Encode(
     int32_t* pOutHeight) {
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> results;
   CBC_PDF417 encoder;
-  int32_t col = (m_Width / m_ModuleWidth - 69) / 17;
-  int32_t row = m_Height / (m_ModuleWidth * 20);
+  const int32_t col = (m_Width / m_ModuleWidth - 69) / 17;
+  const int32_t row = m_Height / (m_ModuleWidth * 20);
   if (row >= 3 && row <= 90 && col >= 1 && col <= 30)
     encoder.setDimensions(col, 1, row, 3);
   else if (col >= 1 && col <= 30)
@@ -84,7 +84,7 @@ void CBC_PDF417Writer::RotateArray(
     int32_t width) {
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> temp = *bitarray;
   for (int32_t ii = 0; ii < height; ii++) {
-    int32_t inverseii = height - ii - 1;
+    const int32_t inverseii = height - ii - 1;
     for (int32_t jj = 0; jj < width; jj++) {
       (*bitarray)[jj * height + inverseii] = temp[ii * width + jj];
     }

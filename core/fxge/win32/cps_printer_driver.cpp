@@ -28,10 +28,10 @@ CPSPrinterDriver::CPSPrinterDriver(HDC hDC,
          mode == WindowsPrintMode::kModePostScript3 ||
          mode == WindowsPrintMode::kModePostScript2PassThrough ||
          mode == WindowsPrintMode::kModePostScript3PassThrough);
-  int pslevel = (mode == WindowsPrintMode::kModePostScript2 ||
-                 mode == WindowsPrintMode::kModePostScript2PassThrough)
-                    ? 2
-                    : 3;
+  const int pslevel = (mode == WindowsPrintMode::kModePostScript2 ||
+                       mode == WindowsPrintMode::kModePostScript2PassThrough)
+                          ? 2
+                          : 3;
   CPSOutput::OutputMode output_mode =
       (mode == WindowsPrintMode::kModePostScript2 ||
        mode == WindowsPrintMode::kModePostScript3)

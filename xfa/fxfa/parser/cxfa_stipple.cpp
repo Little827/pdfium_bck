@@ -59,7 +59,7 @@ void CXFA_Stipple::Draw(CFGAS_GEGraphics* pGS,
     iRate = 100;
 
   CXFA_Color* pColor = GetColorIfExists();
-  FX_ARGB crColor = pColor ? pColor->GetValue() : CXFA_Color::kBlackColor;
+  const FX_ARGB crColor = pColor ? pColor->GetValue() : CXFA_Color::kBlackColor;
 
   int32_t alpha;
   FX_COLORREF colorref;

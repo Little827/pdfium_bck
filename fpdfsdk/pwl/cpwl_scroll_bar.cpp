@@ -350,7 +350,7 @@ void CPWL_ScrollBar::SetScrollRange(float fMin,
 }
 
 void CPWL_ScrollBar::SetScrollPos(float fPos) {
-  float fOldPos = m_sData.fScrollPos;
+  const float fOldPos = m_sData.fScrollPos;
   m_sData.SetPos(fPos);
   if (!IsFloatEqual(m_sData.fScrollPos, fOldPos)) {
     MovePosButton(true);
@@ -439,7 +439,7 @@ void CPWL_ScrollBar::OnPosButtonMouseMove(const CFX_PointF& point) {
   if (fabs(point.y - m_nOldPos) < 1)
     return;
 
-  float fOldScrollPos = m_sData.fScrollPos;
+  const float fOldScrollPos = m_sData.fScrollPos;
   float fNewPos = FaceToTrue(m_fOldPosButton + point.y - m_nOldPos);
   if (m_bMouseDown) {
     if (IsFloatSmaller(fNewPos, m_sData.ScrollRange.fMin)) {
@@ -477,8 +477,8 @@ CFX_FloatRect CPWL_ScrollBar::GetScrollArea() const {
 
   CFX_FloatRect rcMin = m_pMinButton->GetWindowRect();
   CFX_FloatRect rcMax = m_pMaxButton->GetWindowRect();
-  float fMinHeight = rcMin.Height();
-  float fMaxHeight = rcMax.Height();
+  const float fMinHeight = rcMin.Height();
+  const float fMaxHeight = rcMax.Height();
 
   CFX_FloatRect rcArea;
   if (rcClient.top - rcClient.bottom > fMinHeight + fMaxHeight + 2) {

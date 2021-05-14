@@ -58,7 +58,7 @@ size_t CFX_MemoryStream::ReadBlock(void* buffer, size_t size) {
   if (m_nCurPos >= m_nCurSize)
     return 0;
 
-  size_t nRead = std::min(size, m_nCurSize - m_nCurPos);
+  const size_t nRead = std::min(size, m_nCurSize - m_nCurPos);
   if (!ReadBlockAtOffset(buffer, static_cast<int32_t>(m_nCurPos), nRead))
     return 0;
 
@@ -76,7 +76,7 @@ bool CFX_MemoryStream::WriteBlockAtOffset(const void* buffer,
   if (!safe_new_pos.IsValid())
     return false;
 
-  size_t new_pos = safe_new_pos.ValueOrDie();
+  const size_t new_pos = safe_new_pos.ValueOrDie();
   if (new_pos > m_nTotalSize) {
     static constexpr size_t kBlockSize = 64 * 1024;
     FX_SAFE_SIZE_T new_size = new_pos;

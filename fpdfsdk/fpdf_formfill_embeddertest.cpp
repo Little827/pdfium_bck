@@ -145,7 +145,7 @@ class FPDFFormFillInteractiveEmbedderTest : public FPDFFormFillEmbedderTest {
     ASSERT_EQ(actual_len, FORM_GetSelectedText(form_handle(), page_, buf.data(),
                                                actual_len));
 
-    int num_chars = (actual_len / sizeof(unsigned short)) - 1;
+    const int num_chars = (actual_len / sizeof(unsigned short)) - 1;
     EXPECT_EQ(expected_string, WideString::FromUTF16LE(buf.data(), num_chars));
   }
 
@@ -163,7 +163,7 @@ class FPDFFormFillInteractiveEmbedderTest : public FPDFFormFillEmbedderTest {
     ASSERT_EQ(actual_len, FORM_GetFocusedText(form_handle(), page_, buf.data(),
                                               actual_len));
 
-    int num_chars = (actual_len / sizeof(unsigned short)) - 1;
+    const int num_chars = (actual_len / sizeof(unsigned short)) - 1;
     EXPECT_EQ(expected_string, WideString::FromUTF16LE(buf.data(), num_chars));
   }
 
@@ -1874,7 +1874,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   // Non-editable field is set to 'Banana' (index 1) upon opening.
   ClickOnFormFieldAtPoint(NonEditableFormBegin());
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 1;
+    const bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
   }
 
@@ -2868,7 +2868,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   // Multiselect field set to 'Banana' (index 1) upon opening.
   FocusOnMultiSelectForm();
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 1;
+    const bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
   }
 
@@ -2878,7 +2878,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   // (index 1) at the top.
   ClickOnMultiSelectFormOption(1);
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 1;
+    const bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -2954,7 +2954,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   // Multiselect field set to 'Banana' (index 1) upon opening.
   FocusOnMultiSelectForm();
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 1;
+    const bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
   }
   CheckFocusedFieldText(L"Banana");
@@ -2964,7 +2964,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   SetIndexSelectedShouldSucceed(6, true);
   SetIndexSelectedShouldSucceed(20, true);
   for (int i = 0; i < 26; i++) {
-    bool expected = (i == 1 || i == 5 || i == 6 || i == 20);
+    const bool expected = (i == 1 || i == 5 || i == 6 || i == 20);
     CheckIsIndexSelected(i, expected);
   }
   CheckFocusedFieldText(L"Ugli Fruit");
@@ -2974,7 +2974,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   SetIndexSelectedShouldSucceed(6, true);
   SetIndexSelectedShouldSucceed(20, true);
   for (int i = 0; i < 26; i++) {
-    bool expected = (i == 1 || i == 5 || i == 6 || i == 20);
+    const bool expected = (i == 1 || i == 5 || i == 6 || i == 20);
     CheckIsIndexSelected(i, expected);
   }
   CheckFocusedFieldText(L"Ugli Fruit");
@@ -2983,7 +2983,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   SetIndexSelectedShouldSucceed(20, false);
   SetIndexSelectedShouldSucceed(1, false);
   for (int i = 0; i < 26; i++) {
-    bool expected = (i == 5 || i == 6);
+    const bool expected = (i == 5 || i == 6);
     CheckIsIndexSelected(i, expected);
   }
   CheckFocusedFieldText(L"Banana");
@@ -2994,7 +2994,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   SetIndexSelectedShouldSucceed(1, false);
   SetIndexSelectedShouldSucceed(3, false);
   for (int i = 0; i < 26; i++) {
-    bool expected = (i == 5 || i == 6);
+    const bool expected = (i == 5 || i == 6);
     CheckIsIndexSelected(i, expected);
   }
   CheckFocusedFieldText(L"Date");
@@ -3007,7 +3007,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   // Confirm that previous values were not changed.
   CheckFocusedFieldText(L"Date");
   for (int i = 0; i < 26; i++) {
-    bool expected = (i == 5 || i == 6);
+    const bool expected = (i == 5 || i == 6);
     CheckIsIndexSelected(i, expected);
   }
 
@@ -3016,7 +3016,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   // TODO(bug_1377): Change to click on form option 0 instead of form option 1
   ClickOnMultiSelectFormOption(1);
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 1;
+    const bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
   }
   CheckFocusedFieldText(L"Banana");
@@ -3027,7 +3027,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckIfMultipleSelectedIndices) {
   // opening.
   FocusOnMultiSelectMultipleIndicesForm();
   for (int i = 0; i < 5; i++) {
-    bool expected = (i == 1 || i == 3);
+    const bool expected = (i == 1 || i == 3);
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -3037,7 +3037,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckIfMultipleSelectedValues) {
   // opening.
   FocusOnMultiSelectMultipleValuesForm();
   for (int i = 0; i < 5; i++) {
-    bool expected = (i == 2 || i == 4);
+    const bool expected = (i == 2 || i == 4);
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -3047,7 +3047,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckIfMultipleSelectedMismatch) {
   // opening.
   FocusOnMultiSelectMultipleMismatchForm();
   for (int i = 0; i < 5; i++) {
-    bool expected = (i == 0 || i == 2);
+    const bool expected = (i == 0 || i == 2);
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -3062,7 +3062,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   // not change. The second selection, 'Epsilon,' should be deselected.
   ClickOnMultiSelectMultipleValuesFormOption(0);
   for (int i = 0; i < 5; i++) {
-    bool expected = i == 0;
+    const bool expected = i == 0;
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -3071,7 +3071,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckForNoOverscroll) {
   // Only the last option in the list, 'Saskatchewan', is selected.
   FocusOnSingleSelectLastSelectedForm();
   for (int i = 0; i < 10; i++) {
-    bool expected = i == 9;
+    const bool expected = i == 9;
     CheckIsIndexSelected(i, expected);
   }
 
@@ -3081,7 +3081,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckForNoOverscroll) {
   // the list should select 'Quebec' instead of 'Saskatchewan.'
   ClickOnSingleSelectLastSelectedFormOption(0);
   for (int i = 0; i < 10; i++) {
-    bool expected = i == 8;
+    const bool expected = i == 8;
     CheckIsIndexSelected(i, expected);
   }
 }

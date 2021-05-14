@@ -51,7 +51,7 @@ T StringTo(ByteStringView strc,
 
   int cc = 0;
   bool bNegative = false;
-  int len = strc.GetLength();
+  const int len = strc.GetLength();
   if (strc[0] == '+') {
     cc++;
   } else if (strc[0] == '-') {
@@ -114,9 +114,9 @@ size_t ToString(T value, int (*round_func)(T), char* buf) {
   if (bNegative) {
     buf[buf_size++] = '-';
   }
-  int i = scaled / scale;
+  const int i = scaled / scale;
   FXSYS_itoa(i, buf2, 10);
-  size_t len = strlen(buf2);
+  const size_t len = strlen(buf2);
   memcpy(buf + buf_size, buf2, len);
   buf_size += len;
   int fraction = scaled % scale;

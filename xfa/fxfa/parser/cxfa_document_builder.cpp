@@ -46,7 +46,7 @@ CFX_XMLNode* GetDocumentNode(CFX_XMLNode* pRootNode) {
 bool MatchNodeName(CFX_XMLNode* pNode,
                    WideStringView wsLocalTagName,
                    WideStringView wsNamespaceURIPrefix,
-                   uint32_t eMatchFlags = XFA_XDPPACKET_FLAGS_NOMATCH) {
+                   const uint32_t eMatchFlags = XFA_XDPPACKET_FLAGS_NOMATCH) {
   CFX_XMLElement* pElement = ToXMLElement(pNode);
   if (!pElement)
     return false;
@@ -187,7 +187,7 @@ WideString GetPlainTextFromRichText(CFX_XMLNode* pXMLNode) {
     case CFX_XMLNode::Type::kElement: {
       CFX_XMLElement* pXMLElement = static_cast<CFX_XMLElement*>(pXMLNode);
       WideString wsTag = pXMLElement->GetLocalTagName();
-      uint32_t uTag = FX_HashCode_GetW(wsTag.AsStringView(), true);
+      const uint32_t uTag = FX_HashCode_GetW(wsTag.AsStringView(), true);
       if (uTag == 0x0001f714) {
         wsPlainText += L"\n";
       } else if (uTag == 0x00000070) {
@@ -358,7 +358,7 @@ CXFA_Node* CXFA_DocumentBuilder::ParseAsXDPPacket_XDP(
       continue;
     }
     // TODO(tsepez): make GetFirstChildByName() take a name.
-    uint32_t hash = FX_HashCode_GetW(config_packet.name, false);
+    const uint32_t hash = FX_HashCode_GetW(config_packet.name, false);
     if (pXFARootNode->GetFirstChildByName(hash))
       return nullptr;
 

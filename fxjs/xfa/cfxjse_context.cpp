@@ -100,7 +100,7 @@ v8::Local<v8::Object> CreateReturnValue(v8::Isolate* pIsolate,
     hReturnValue->Set(context, 1, hMessage->Get()).FromJust();
   }
   hReturnValue->Set(context, 2, hException).FromJust();
-  int line = hMessage->GetLineNumber(context).FromMaybe(0);
+  const int line = hMessage->GetLineNumber(context).FromMaybe(0);
   hReturnValue->Set(context, 3, v8::Integer::New(pIsolate, line)).FromJust();
   v8::Local<v8::String> source =
       hMessage->GetSourceLine(context).FromMaybe(v8::Local<v8::String>());
@@ -287,7 +287,7 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
   v8::Local<v8::Message> message = trycatch.Message();
   if (!message.IsEmpty()) {
     v8::Local<v8::Context> context(GetIsolate()->GetCurrentContext());
-    int linenum = message->GetLineNumber(context).FromJust();
+    const int linenum = message->GetLineNumber(context).FromJust();
     v8::String::Utf8Value sourceline(
         GetIsolate(), message->GetSourceLine(context).ToLocalChecked());
     fprintf(stderr, "Line %d: %s\n", linenum, *sourceline);

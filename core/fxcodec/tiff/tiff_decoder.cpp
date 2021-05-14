@@ -210,7 +210,7 @@ void Tiff_Exif_GetStringInfo(TIFF* tif_ctx,
   TIFFGetField(tif_ctx, tag, &buf);
   if (!buf)
     return;
-  size_t size = strlen(buf);
+  const size_t size = strlen(buf);
   uint8_t* ptr = FX_AllocUninit(uint8_t, size + 1);
   memcpy(ptr, buf, size);
   ptr[size] = 0;
@@ -219,7 +219,7 @@ void Tiff_Exif_GetStringInfo(TIFF* tif_ctx,
 
 void TiffBGRA2RGBA(uint8_t* pBuf, int32_t pixel, int32_t spp) {
   for (int32_t n = 0; n < pixel; n++) {
-    uint8_t tmp = pBuf[0];
+    const uint8_t tmp = pBuf[0];
     pBuf[0] = pBuf[2];
     pBuf[2] = tmp;
     pBuf += spp;
@@ -264,13 +264,13 @@ bool CTiffContext::LoadFrameInfo(int32_t frame,
   if (Tiff_Exif_GetInfo<float>(m_tif_ctx.get(), TIFFTAG_XRESOLUTION,
                                pAttribute)) {
     void* val = pAttribute->m_Exif[TIFFTAG_XRESOLUTION];
-    float fDpi = val ? *reinterpret_cast<float*>(val) : 0;
+    const float fDpi = val ? *reinterpret_cast<float*>(val) : 0;
     pAttribute->m_nXDPI = static_cast<int32_t>(fDpi + 0.5f);
   }
   if (Tiff_Exif_GetInfo<float>(m_tif_ctx.get(), TIFFTAG_YRESOLUTION,
                                pAttribute)) {
     void* val = pAttribute->m_Exif[TIFFTAG_YRESOLUTION];
-    float fDpi = val ? *reinterpret_cast<float*>(val) : 0;
+    const float fDpi = val ? *reinterpret_cast<float*>(val) : 0;
     pAttribute->m_nYDPI = static_cast<int32_t>(fDpi + 0.5f);
   }
   Tiff_Exif_GetStringInfo(m_tif_ctx.get(), TIFFTAG_IMAGEDESCRIPTION,
@@ -339,13 +339,13 @@ void CTiffContext::SetPalette(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
     blue_orig[i] = CVT(blue_orig[i]);
 #undef CVT
   }
-  int32_t len = 1 << bps;
+  const int32_t len = 1 << bps;
   for (int32_t index = 0; index < len; index++) {
-    uint32_t r = red_orig[index] & 0xFF;
-    uint32_t g = green_orig[index] & 0xFF;
-    uint32_t b = blue_orig[index] & 0xFF;
-    uint32_t color = (uint32_t)b | ((uint32_t)g << 8) | ((uint32_t)r << 16) |
-                     (((uint32)0xffL) << 24);
+    const uint32_t r = red_orig[index] & 0xFF;
+    const uint32_t g = green_orig[index] & 0xFF;
+    const uint32_t b = blue_orig[index] & 0xFF;
+    const uint32_t color = (uint32_t)b | ((uint32_t)g << 8) |
+                           ((uint32_t)r << 16) | (((uint32)0xffL) << 24);
     pDIBitmap->SetPaletteArgb(index, color);
   }
 }
@@ -360,14 +360,14 @@ bool CTiffContext::Decode1bppRGB(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
     return false;
   }
   SetPalette(pDIBitmap, bps);
-  int32_t size = static_cast<int32_t>(TIFFScanlineSize(m_tif_ctx.get()));
+  const int32_t size = static_cast<int32_t>(TIFFScanlineSize(m_tif_ctx.get()));
   uint8_t* buf = (uint8_t*)_TIFFmalloc(size);
   if (!buf) {
     TIFFError(TIFFFileName(m_tif_ctx.get()), "No space for scanline buffer");
     return false;
   }
   uint8_t* bitMapbuffer = (uint8_t*)pDIBitmap->GetBuffer();
-  uint32_t pitch = pDIBitmap->GetPitch();
+  const uint32_t pitch = pDIBitmap->GetPitch();
   for (int32_t row = 0; row < height; row++) {
     TIFFReadScanline(m_tif_ctx.get(), buf, row, 0);
     for (int32_t j = 0; j < size; j++) {
@@ -388,14 +388,14 @@ bool CTiffContext::Decode8bppRGB(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
     return false;
   }
   SetPalette(pDIBitmap, bps);
-  int32_t size = static_cast<int32_t>(TIFFScanlineSize(m_tif_ctx.get()));
+  const int32_t size = static_cast<int32_t>(TIFFScanlineSize(m_tif_ctx.get()));
   uint8_t* buf = (uint8_t*)_TIFFmalloc(size);
   if (!buf) {
     TIFFError(TIFFFileName(m_tif_ctx.get()), "No space for scanline buffer");
     return false;
   }
   uint8_t* bitMapbuffer = (uint8_t*)pDIBitmap->GetBuffer();
-  uint32_t pitch = pDIBitmap->GetPitch();
+  const uint32_t pitch = pDIBitmap->GetPitch();
   for (int32_t row = 0; row < height; row++) {
     TIFFReadScanline(m_tif_ctx.get(), buf, row, 0);
     for (int32_t j = 0; j < size; j++) {
@@ -422,14 +422,14 @@ bool CTiffContext::Decode24bppRGB(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
   if (pDIBitmap->GetBPP() != 24 || !IsSupport(pDIBitmap))
     return false;
 
-  int32_t size = static_cast<int32_t>(TIFFScanlineSize(m_tif_ctx.get()));
+  const int32_t size = static_cast<int32_t>(TIFFScanlineSize(m_tif_ctx.get()));
   uint8_t* buf = (uint8_t*)_TIFFmalloc(size);
   if (!buf) {
     TIFFError(TIFFFileName(m_tif_ctx.get()), "No space for scanline buffer");
     return false;
   }
   uint8_t* bitMapbuffer = (uint8_t*)pDIBitmap->GetBuffer();
-  uint32_t pitch = pDIBitmap->GetPitch();
+  const uint32_t pitch = pDIBitmap->GetPitch();
   for (int32_t row = 0; row < height; row++) {
     TIFFReadScanline(m_tif_ctx.get(), buf, row, 0);
     for (int32_t j = 0; j < size - 2; j += 3) {
@@ -443,8 +443,8 @@ bool CTiffContext::Decode24bppRGB(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
 }
 
 bool CTiffContext::Decode(const RetainPtr<CFX_DIBitmap>& pDIBitmap) {
-  uint32_t img_width = pDIBitmap->GetWidth();
-  uint32_t img_height = pDIBitmap->GetHeight();
+  const uint32_t img_width = pDIBitmap->GetWidth();
+  const uint32_t img_height = pDIBitmap->GetHeight();
   uint32_t width = 0;
   uint32_t height = 0;
   TIFFGetField(m_tif_ctx.get(), TIFFTAG_IMAGEWIDTH, &width);
@@ -453,7 +453,7 @@ bool CTiffContext::Decode(const RetainPtr<CFX_DIBitmap>& pDIBitmap) {
     return false;
 
   if (pDIBitmap->GetBPP() == 32) {
-    uint16_t rotation = ORIENTATION_TOPLEFT;
+    const uint16_t rotation = ORIENTATION_TOPLEFT;
     TIFFGetField(m_tif_ctx.get(), TIFFTAG_ORIENTATION, &rotation);
     if (TIFFReadRGBAImageOriented(m_tif_ctx.get(), img_width, img_height,
                                   (uint32*)pDIBitmap->GetBuffer(), rotation,
@@ -473,7 +473,7 @@ bool CTiffContext::Decode(const RetainPtr<CFX_DIBitmap>& pDIBitmap) {
   safe_bpp *= spp;
   if (!safe_bpp.IsValid())
     return false;
-  uint32_t bpp = safe_bpp.ValueOrDie();
+  const uint32_t bpp = safe_bpp.ValueOrDie();
   if (bpp == 1)
     return Decode1bppRGB(pDIBitmap, height, width, bps, spp);
   if (bpp <= 8)

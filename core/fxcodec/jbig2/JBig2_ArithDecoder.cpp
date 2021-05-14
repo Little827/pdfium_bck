@@ -38,7 +38,7 @@ const unsigned int kDefaultAValue = 0x8000;
 JBig2ArithCtx::JBig2ArithCtx() = default;
 
 int JBig2ArithCtx::DecodeNLPS(const JBig2ArithQe& qe) {
-  bool D = !m_MPS;
+  const bool D = !m_MPS;
   if (qe.bSwitch)
     m_MPS = !m_MPS;
   m_I = qe.NLPS;

@@ -40,11 +40,11 @@ bool TrimPropName(ByteString* sPropName) {
 void MakeNameTypeString(const ByteString& name,
                         CFX_Value::DataType eType,
                         CFX_BinaryBuf* result) {
-  uint32_t dwNameLen = (uint32_t)name.GetLength();
+  const uint32_t dwNameLen = (uint32_t)name.GetLength();
   result->AppendBlock(&dwNameLen, sizeof(uint32_t));
   result->AppendString(name);
 
-  uint16_t wType = static_cast<uint16_t>(eType);
+  const uint16_t wType = static_cast<uint16_t>(eType);
   result->AppendBlock(&wType, sizeof(uint16_t));
 }
 
@@ -54,19 +54,19 @@ bool MakeByteString(const ByteString& name,
   switch (pData.nType) {
     case CFX_Value::DataType::kNumber: {
       MakeNameTypeString(name, pData.nType, result);
-      double dData = pData.dData;
+      const double dData = pData.dData;
       result->AppendBlock(&dData, sizeof(double));
       return true;
     }
     case CFX_Value::DataType::kBoolean: {
       MakeNameTypeString(name, pData.nType, result);
-      uint16_t wData = static_cast<uint16_t>(pData.bData);
+      const uint16_t wData = static_cast<uint16_t>(pData.bData);
       result->AppendBlock(&wData, sizeof(uint16_t));
       return true;
     }
     case CFX_Value::DataType::kString: {
       MakeNameTypeString(name, pData.nType, result);
-      uint32_t dwDataLen = (uint32_t)pData.sData.GetLength();
+      const uint32_t dwDataLen = (uint32_t)pData.sData.GetLength();
       result->AppendBlock(&dwDataLen, sizeof(uint32_t));
       result->AppendString(pData.sData);
       return true;
@@ -275,20 +275,20 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
   CRYPT_ArcFourCryptBlock(buffer, kRC4KEY);
 
   uint8_t* p = buffer.data();
-  uint16_t wType = *((uint16_t*)p);
+  const uint16_t wType = *((uint16_t*)p);
   p += sizeof(uint16_t);
   if (wType != kMagic)
     return false;
 
-  uint16_t wVersion = *((uint16_t*)p);
+  const uint16_t wVersion = *((uint16_t*)p);
   p += sizeof(uint16_t);
   if (wVersion > kMaxVersion)
     return false;
 
-  uint32_t dwCount = *((uint32_t*)p);
+  const uint32_t dwCount = *((uint32_t*)p);
   p += sizeof(uint32_t);
 
-  uint32_t dwSize = *((uint32_t*)p);
+  const uint32_t dwSize = *((uint32_t*)p);
   p += sizeof(uint32_t);
 
   if (dwSize != buffer.size() - sizeof(uint16_t) * 2 - sizeof(uint32_t) * 2)
@@ -298,7 +298,7 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
     if (p > buffer.end())
       break;
 
-    uint32_t dwNameLen = *((uint32_t*)p);
+    const uint32_t dwNameLen = *((uint32_t*)p);
     p += sizeof(uint32_t);
     if (p + dwNameLen > buffer.end())
       break;
@@ -315,7 +315,7 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
         double dData = 0;
         switch (wVersion) {
           case 1: {
-            uint32_t dwData = *((uint32_t*)p);
+            const uint32_t dwData = *((uint32_t*)p);
             p += sizeof(uint32_t);
             dData = dwData;
           } break;
@@ -328,13 +328,13 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
         SetGlobalVariablePersistent(sEntry, true);
       } break;
       case CFX_Value::DataType::kBoolean: {
-        uint16_t wData = *((uint16_t*)p);
+        const uint16_t wData = *((uint16_t*)p);
         p += sizeof(uint16_t);
         SetGlobalVariableBoolean(sEntry, (bool)(wData == 1));
         SetGlobalVariablePersistent(sEntry, true);
       } break;
       case CFX_Value::DataType::kString: {
-        uint32_t dwLength = *((uint32_t*)p);
+        const uint32_t dwLength = *((uint32_t*)p);
         p += sizeof(uint32_t);
         if (p + dwLength > buffer.end())
           break;
@@ -378,13 +378,13 @@ bool CFX_GlobalData::SaveGlobalPersisitentVariables() {
   }
 
   CFX_BinaryBuf sFile;
-  uint16_t wType = kMagic;
-  uint16_t wVersion = 2;
+  const uint16_t wType = kMagic;
+  const uint16_t wVersion = 2;
   sFile.AppendBlock(&wType, sizeof(uint16_t));
   sFile.AppendBlock(&wVersion, sizeof(uint16_t));
   sFile.AppendBlock(&nCount, sizeof(uint32_t));
 
-  uint32_t dwSize = sData.GetSize();
+  const uint32_t dwSize = sData.GetSize();
   sFile.AppendBlock(&dwSize, sizeof(uint32_t));
   sFile.AppendSpan(sData.GetSpan());
 

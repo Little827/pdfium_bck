@@ -290,7 +290,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetText(FPDF_TEXTPAGE page,
   if (!textpage || start_index < 0 || char_count < 0 || !result)
     return 0;
 
-  int char_available = textpage->CountChars() - start_index;
+  const int char_available = textpage->CountChars() - start_index;
   if (char_available <= 0)
     return 0;
 
@@ -309,8 +309,8 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetText(FPDF_TEXTPAGE page,
   // UFT16LE_Encode doesn't handle surrogate pairs properly, so it is expected
   // the number of items to stay the same.
   ByteString byte_str = str.ToUTF16LE();
-  size_t byte_str_len = byte_str.GetLength();
-  int ret_count = byte_str_len / kBytesPerCharacter;
+  const size_t byte_str_len = byte_str.GetLength();
+  const int ret_count = byte_str_len / kBytesPerCharacter;
 
   DCHECK(ret_count <= char_count + 1);  // +1 to account for the NUL terminator.
   memcpy(result, byte_str.c_str(), byte_str_len);
@@ -335,7 +335,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRect(FPDF_TEXTPAGE text_page,
     return false;
 
   CFX_FloatRect rect;
-  bool result = textpage->GetRect(rect_index, &rect);
+  const bool result = textpage->GetRect(rect_index, &rect);
 
   *left = rect.left;
   *top = rect.top;
@@ -362,8 +362,8 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetBoundedText(FPDF_TEXTPAGE text_page,
     return str.GetLength();
 
   ByteString cbUTF16Str = str.ToUTF16LE();
-  int len = cbUTF16Str.GetLength() / sizeof(unsigned short);
-  int size = buflen > len ? len : buflen;
+  const int len = cbUTF16Str.GetLength() / sizeof(unsigned short);
+  const int size = buflen > len ? len : buflen;
   memcpy(buffer, cbUTF16Str.c_str(), size * sizeof(unsigned short));
   cbUTF16Str.ReleaseBuffer(size * sizeof(unsigned short));
 
@@ -465,13 +465,13 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetURL(FPDF_PAGELINK link_page,
     wsUrl = pageLink->GetURL(link_index);
   }
   ByteString cbUTF16URL = wsUrl.ToUTF16LE();
-  int required = cbUTF16URL.GetLength() / sizeof(unsigned short);
+  const int required = cbUTF16URL.GetLength() / sizeof(unsigned short);
   if (!buffer || buflen <= 0)
     return required;
 
-  int size = std::min(required, buflen);
+  const int size = std::min(required, buflen);
   if (size > 0) {
-    int buf_size = size * sizeof(unsigned short);
+    const int buf_size = size * sizeof(unsigned short);
     memcpy(buffer, cbUTF16URL.c_str(), buf_size);
   }
   return size;

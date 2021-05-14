@@ -31,7 +31,7 @@ void CPDF_UniqueKeyGen::Generate(int count, ...) {
   va_list argList;
   va_start(argList, count);
   for (int i = 0; i < count; i++) {
-    int p = va_arg(argList, int);
+    const int p = va_arg(argList, int);
     (reinterpret_cast<uint32_t*>(m_Key))[i] = p;
   }
   va_end(argList);
@@ -39,7 +39,7 @@ void CPDF_UniqueKeyGen::Generate(int count, ...) {
 }
 
 bool IsScanLine1bpp(uint8_t* pBuf, int width) {
-  int size = width / 8;
+  const int size = width / 8;
   for (int i = 0; i < size; i++) {
     if (pBuf[i])
       return true;
@@ -56,16 +56,16 @@ bool IsScanLine8bpp(uint8_t* pBuf, int width) {
 }
 
 int DetectFirstLastScan(const RetainPtr<CFX_DIBitmap>& pBitmap, bool bFirst) {
-  int height = pBitmap->GetHeight();
-  int pitch = pBitmap->GetPitch();
+  const int height = pBitmap->GetHeight();
+  const int pitch = pBitmap->GetPitch();
   int width = pBitmap->GetWidth();
-  int bpp = pBitmap->GetBPP();
+  const int bpp = pBitmap->GetBPP();
   if (bpp > 8)
     width *= bpp / 8;
   uint8_t* pBuf = pBitmap->GetBuffer();
   int line = bFirst ? 0 : height - 1;
-  int line_step = bFirst ? 1 : -1;
-  int line_end = bFirst ? height : -1;
+  const int line_step = bFirst ? 1 : -1;
+  const int line_end = bFirst ? height : -1;
   while (line != line_end) {
     if (bpp == 1) {
       if (IsScanLine1bpp(pBuf + line * pitch, width))
@@ -134,7 +134,7 @@ std::unique_ptr<CFX_GlyphBitmap> CPDF_Type3Cache::RenderGlyph(
     if (top_line == 0 && bottom_line == pBitmap->GetHeight() - 1) {
       float top_y = image_matrix.d + image_matrix.f;
       float bottom_y = image_matrix.f;
-      bool bFlipped = top_y > bottom_y;
+      const bool bFlipped = top_y > bottom_y;
       if (bFlipped)
         std::swap(top_y, bottom_y);
       std::tie(top_line, bottom_line) = pSize->AdjustBlue(top_y, bottom_y);

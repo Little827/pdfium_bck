@@ -92,7 +92,7 @@ void _png_get_header_func(png_structp png_ptr, png_infop info_ptr) {
   int color_type = 0;
   png_get_IHDR(png_ptr, info_ptr, &width, &height, &bpc, &color_type, nullptr,
                nullptr, nullptr);
-  int color_type1 = color_type;
+  const int color_type1 = color_type;
   if (bpc > 8)
     png_set_strip_16(png_ptr);
   else if (bpc < 8)
@@ -102,7 +102,7 @@ void _png_get_header_func(png_structp png_ptr, png_infop info_ptr) {
   if (color_type == PNG_COLOR_TYPE_PALETTE)
     png_set_palette_to_rgb(png_ptr);
 
-  int pass = png_set_interlace_handling(png_ptr);
+  const int pass = png_set_interlace_handling(png_ptr);
   double gamma = 1.0;
   if (!pContext->m_pDelegate->PngReadHeader(width, height, bpc, pass,
                                             &color_type, &gamma)) {

@@ -89,12 +89,12 @@ void sycc_to_rgb(int offset,
 }
 
 void sycc444_to_rgb(opj_image_t* img) {
-  int prec = img->comps[0].prec;
+  const int prec = img->comps[0].prec;
   // If we shift 31 we're going to go negative, then things go bad.
   if (prec > 30)
     return;
-  int offset = 1 << (prec - 1);
-  int upb = (1 << prec) - 1;
+  const int offset = 1 << (prec - 1);
+  const int upb = (1 << prec) - 1;
   OPJ_UINT32 maxw =
       std::min({img->comps[0].w, img->comps[1].w, img->comps[2].w});
   OPJ_UINT32 maxh =
@@ -162,8 +162,8 @@ void sycc420_to_rgb(opj_image_t* img) {
   OPJ_UINT32 cbw = img->comps[1].w;
   OPJ_UINT32 cbh = img->comps[1].h;
   OPJ_UINT32 crw = img->comps[2].w;
-  bool extw = sycc420_must_extend_cbcr(yw, cbw);
-  bool exth = sycc420_must_extend_cbcr(yh, cbh);
+  const bool extw = sycc420_must_extend_cbcr(yw, cbw);
+  const bool exth = sycc420_must_extend_cbcr(yh, cbh);
   FX_SAFE_UINT32 safe_size = yw;
   safe_size *= yh;
   safe_size *= sizeof(int);
@@ -293,12 +293,12 @@ void sycc422_to_rgb(opj_image_t* img) {
   if (!sycc422_size_is_valid(img))
     return;
 
-  int prec = img->comps[0].prec;
+  const int prec = img->comps[0].prec;
   if (prec <= 0 || prec >= 32)
     return;
 
-  int offset = 1 << (prec - 1);
-  int upb = (1 << prec) - 1;
+  const int offset = 1 << (prec - 1);
+  const int upb = (1 << prec) - 1;
   OPJ_UINT32 maxw = img->comps[0].w;
   OPJ_UINT32 maxh = img->comps[0].h;
   FX_SAFE_SIZE_T max_size = maxw;
@@ -506,7 +506,7 @@ bool CJPX_Decoder::Decode(uint8_t* dest_buf, uint32_t pitch, bool swap_rgb) {
   if (m_Image->comps[0].w != m_Image->x1 || m_Image->comps[0].h != m_Image->y1)
     return false;
 
-  if (pitch<(m_Image->comps[0].w * 8 * m_Image->numcomps + 31)>> 5 << 2)
+  if (pitch<(m_Image->comps[0].w * 8 * m_Image->numcomps + 31)> > 5 << 2)
     return false;
 
   if (swap_rgb && m_Image->numcomps < 3)
@@ -529,8 +529,8 @@ bool CJPX_Decoder::Decode(uint8_t* dest_buf, uint32_t pitch, bool swap_rgb) {
   if (swap_rgb)
     std::swap(channel_bufs[0], channel_bufs[2]);
 
-  uint32_t width = m_Image->comps[0].w;
-  uint32_t height = m_Image->comps[0].h;
+  const uint32_t width = m_Image->comps[0].w;
+  const uint32_t height = m_Image->comps[0].h;
   for (uint32_t channel = 0; channel < m_Image->numcomps; ++channel) {
     uint8_t* pChannel = channel_bufs[channel];
     if (adjust_comps[channel] < 0) {

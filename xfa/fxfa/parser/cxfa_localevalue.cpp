@@ -640,8 +640,9 @@ void CXFA_LocaleValue::GetNumericFormat(WideString& wsFormat,
   DCHECK(nIntLen >= -1);
   DCHECK(nDecLen >= -1);
 
-  int32_t nTotalLen = (nIntLen >= 0 ? nIntLen : 2) + 1 +
-                      (nDecLen >= 0 ? nDecLen : 2) + (nDecLen == 0 ? 0 : 1);
+  const int32_t nTotalLen = (nIntLen >= 0 ? nIntLen : 2) + 1 +
+                            (nDecLen >= 0 ? nDecLen : 2) +
+                            (nDecLen == 0 ? 0 : 1);
   {
     // Span's lifetime must end before ReleaseBuffer() below.
     pdfium::span<wchar_t> lpBuf = wsFormat.GetBuffer(nTotalLen);
@@ -692,8 +693,8 @@ bool CXFA_LocaleValue::ValidateNumericTemp(const WideString& wsNumeric,
   }
 
   bool bLimit = true;
-  int32_t nCount = wsNumeric.GetLength();
-  int32_t nCountFmt = wsFormat.GetLength();
+  const int32_t nCount = wsNumeric.GetLength();
+  const int32_t nCountFmt = wsFormat.GetLength();
   while (n < nCount && (!bLimit || nf < nCountFmt) &&
          FXSYS_IsDecimalDigit(c = spNum[n])) {
     if (bLimit) {

@@ -295,7 +295,7 @@ bool CPWL_ComboBox::SetPopup(bool bPopup) {
     return true;
   if (bPopup == m_bPopup)
     return true;
-  float fListHeight = m_pList->GetContentRect().Height();
+  const float fListHeight = m_pList->GetContentRect().Height();
   if (!IsFloatBigger(fListHeight, 0.0f))
     return true;
 
@@ -313,11 +313,11 @@ bool CPWL_ComboBox::SetPopup(bool bPopup) {
   if (!thisObserved)
     return false;
 
-  float fBorderWidth = m_pList->GetBorderWidth() * 2;
+  const float fBorderWidth = m_pList->GetBorderWidth() * 2;
   float fPopupMin = 0.0f;
   if (m_pList->GetCount() > 3)
     fPopupMin = m_pList->GetFirstHeight() * 3 + fBorderWidth;
-  float fPopupMax = fListHeight + fBorderWidth;
+  const float fPopupMax = fListHeight + fBorderWidth;
 
   bool bBottom;
   float fPopupRet;
