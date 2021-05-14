@@ -56,7 +56,7 @@ TEST_F(CPDF_CreatorEmbedderTest, BUG_873) {
       "trailer\r\n<</Info 9 0 R /Root 11 0 R /Size "
       "36/ID[<D889EB6B9ADF88E5EDA7DC08FE85978B><";
   ASSERT_THAT(saved_data, testing::HasSubstr(kTrailerBeforeSecondID));
-  size_t trailer_start = saved_data.find(kTrailerBeforeSecondID);
+  const size_t trailer_start = saved_data.find(kTrailerBeforeSecondID);
   constexpr size_t kIdLen = 32;
   size_t trailer_continuation =
       trailer_start + strlen(kTrailerBeforeSecondID) + kIdLen;

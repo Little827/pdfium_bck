@@ -86,7 +86,7 @@ v8::Local<v8::Array> CJS_Color::ConvertPWLColorToArray(CJS_Runtime* pRuntime,
 // static
 CFX_Color CJS_Color::ConvertArrayToPWLColor(CJS_Runtime* pRuntime,
                                             v8::Local<v8::Array> array) {
-  int nArrayLen = pRuntime->GetArrayLength(array);
+  const int nArrayLen = pRuntime->GetArrayLength(array);
   if (nArrayLen < 1)
     return CFX_Color();
 
@@ -312,7 +312,7 @@ CJS_Result CJS_Color::equal(CJS_Runtime* pRuntime,
       ConvertArrayToPWLColor(pRuntime, pRuntime->ToArray(params[1]));
 
   // Relies on higher values having more components.
-  int32_t best = std::max(color1.nColorType, color2.nColorType);
+  const int32_t best = std::max(color1.nColorType, color2.nColorType);
   return CJS_Result::Success(pRuntime->NewBoolean(
       color1.ConvertColorType(best) == color2.ConvertColorType(best)));
 }

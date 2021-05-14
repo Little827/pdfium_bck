@@ -51,8 +51,8 @@ int32_t CXFA_Occur::GetMin() {
 }
 
 std::tuple<int32_t, int32_t, int32_t> CXFA_Occur::GetOccurInfo() {
-  int32_t iMin = GetMin();
-  int32_t iMax = GetMax();
+  const int32_t iMin = GetMin();
+  const int32_t iMax = GetMax();
 
   Optional<int32_t> init =
       JSObject()->TryInteger(XFA_Attribute::Initial, false);

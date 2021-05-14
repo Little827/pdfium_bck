@@ -12,7 +12,7 @@
 namespace {
 
 int RI_StringToId(const ByteString& ri) {
-  uint32_t id = ri.GetID();
+  const uint32_t id = ri.GetID();
   if (id == FXBSTR_ID('A', 'b', 's', 'o'))
     return 1;
 

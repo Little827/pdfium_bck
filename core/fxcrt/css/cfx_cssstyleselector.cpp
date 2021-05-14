@@ -484,7 +484,7 @@ bool CFX_CSSStyleSelector::SetLengthWithPercent(
       return width.NonZero();
     }
 
-    float fValue = v->Apply(fFontSize);
+    const float fValue = v->Apply(fFontSize);
     width.Set(CFX_CSSLengthUnit::Point, fValue);
     return width.NonZero();
   } else if (eType == CFX_CSSPrimitiveType::Enum) {

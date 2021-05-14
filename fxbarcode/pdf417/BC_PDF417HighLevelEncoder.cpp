@@ -96,7 +96,7 @@ Optional<WideString> CBC_PDF417HighLevelEncoder::EncodeHighLevel(
   SubMode textSubMode = SubMode::kAlpha;
   EncodingMode encodingMode = EncodingMode::kUnknown;
   while (p < len) {
-    size_t n = DetermineConsecutiveDigitCount(result, p);
+    const size_t n = DetermineConsecutiveDigitCount(result, p);
     if (n >= 13) {
       sb += kLatchToNumeric;
       encodingMode = EncodingMode::kNumeric;
@@ -104,7 +104,7 @@ Optional<WideString> CBC_PDF417HighLevelEncoder::EncodeHighLevel(
       EncodeNumeric(result, p, n, &sb);
       p += n;
     } else {
-      size_t t = DetermineConsecutiveTextCount(result, p);
+      const size_t t = DetermineConsecutiveTextCount(result, p);
       if (t >= 5 || n == len) {
         if (encodingMode != EncodingMode::kText) {
           sb += kLatchToText;
@@ -235,9 +235,9 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
     ++idx;
   }
   wchar_t h = 0;
-  size_t len = tmp.GetLength();
+  const size_t len = tmp.GetLength();
   for (size_t i = 0; i < len; i++) {
-    bool odd = (i % 2) != 0;
+    const bool odd = (i % 2) != 0;
     if (odd) {
       h = (h * 30) + tmp[i];
       *sb += h;
@@ -280,7 +280,7 @@ void CBC_PDF417HighLevelEncoder::EncodeBinary(pdfium::span<const uint8_t> bytes,
   if (idx < startpos + count)
     *sb += kLatchToBytePadded;
   for (size_t i = idx; i < startpos + count; i++) {
-    int32_t ch = bytes[i] & 0xff;
+    const int32_t ch = bytes[i] & 0xff;
     *sb += ch;
   }
 }
@@ -293,11 +293,11 @@ void CBC_PDF417HighLevelEncoder::EncodeNumeric(const WideString& msg,
   BigInteger num900 = 900;
   while (idx < count) {
     WideString tmp;
-    size_t len = 44 < count - idx ? 44 : count - idx;
+    const size_t len = 44 < count - idx ? 44 : count - idx;
     ByteString part = (L'1' + msg.Substr(startpos + idx, len)).ToUTF8();
     BigInteger bigint = stringToBigInteger(part.c_str());
     do {
-      int32_t c = (bigint % num900).toInt();
+      const int32_t c = (bigint % num900).toInt();
       tmp += c;
       bigint = bigint / num900;
     } while (!bigint.isZero());
@@ -311,7 +311,7 @@ size_t CBC_PDF417HighLevelEncoder::DetermineConsecutiveDigitCount(
     WideString msg,
     size_t startpos) {
   size_t count = 0;
-  size_t len = msg.GetLength();
+  const size_t len = msg.GetLength();
   size_t idx = startpos;
   if (idx < len) {
     wchar_t ch = msg[idx];
@@ -328,7 +328,7 @@ size_t CBC_PDF417HighLevelEncoder::DetermineConsecutiveDigitCount(
 size_t CBC_PDF417HighLevelEncoder::DetermineConsecutiveTextCount(
     WideString msg,
     size_t startpos) {
-  size_t len = msg.GetLength();
+  const size_t len = msg.GetLength();
   size_t idx = startpos;
   while (idx < len) {
     wchar_t ch = msg[idx];
@@ -355,14 +355,14 @@ Optional<size_t> CBC_PDF417HighLevelEncoder::DetermineConsecutiveBinaryCount(
     WideString msg,
     pdfium::span<const uint8_t> bytes,
     size_t startpos) {
-  size_t len = msg.GetLength();
+  const size_t len = msg.GetLength();
   size_t idx = startpos;
   while (idx < len) {
     wchar_t ch = msg[idx];
     size_t numericCount = 0;
     while (numericCount < 13 && FXSYS_IsDecimalDigit(ch)) {
       numericCount++;
-      size_t i = idx + numericCount;
+      const size_t i = idx + numericCount;
       if (i >= len)
         break;
       ch = msg[i];
@@ -373,7 +373,7 @@ Optional<size_t> CBC_PDF417HighLevelEncoder::DetermineConsecutiveBinaryCount(
     size_t textCount = 0;
     while (textCount < 5 && IsText(ch)) {
       textCount++;
-      size_t i = idx + textCount;
+      const size_t i = idx + textCount;
       if (i >= len)
         break;
       ch = msg[i];

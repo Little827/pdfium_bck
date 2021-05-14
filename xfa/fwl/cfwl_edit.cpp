@@ -77,7 +77,7 @@ FWL_Type CFWL_Edit::GetClassID() const {
 CFX_RectF CFWL_Edit::GetWidgetRect() {
   CFX_RectF rect = m_WidgetRect;
   if (m_Properties.m_dwStyleExes & FWL_STYLEEXT_EDT_OuterScrollbar) {
-    float scrollbarWidth = GetThemeProvider()->GetScrollBarWidth();
+    const float scrollbarWidth = GetThemeProvider()->GetScrollBarWidth();
     if (IsShowScrollBar(true)) {
       rect.width += scrollbarWidth;
       rect.width += kEditMargin;
@@ -264,7 +264,7 @@ void CFWL_Edit::OnCaretChanged() {
   if ((m_Properties.m_dwStates & FWL_WGTSTATE_Focused) == 0)
     return;
 
-  bool bRepaintContent = UpdateOffset();
+  const bool bRepaintContent = UpdateOffset();
   UpdateCaret();
   CFX_RectF rtInvalid;
   bool bRepaintScroll = false;
@@ -323,14 +323,14 @@ void CFWL_Edit::DrawContent(CFGAS_GEGraphics* pGraphics,
     pGraphics->SaveGraphState();
 
   CFX_RectF rtClip = m_EngineRect;
-  float fOffSetX = m_EngineRect.left - m_fScrollOffsetX;
-  float fOffSetY = m_EngineRect.top - m_fScrollOffsetY + m_fVAlignOffset;
+  const float fOffSetX = m_EngineRect.left - m_fScrollOffsetX;
+  const float fOffSetY = m_EngineRect.top - m_fScrollOffsetY + m_fVAlignOffset;
 
   CFX_Matrix mt(1, 0, 0, 1, fOffSetX, fOffSetY);
   rtClip = mtMatrix.TransformRect(rtClip);
   mt.Concat(mtMatrix);
 
-  bool bShowSel = !!(m_Properties.m_dwStates & FWL_WGTSTATE_Focused);
+  const bool bShowSel = !!(m_Properties.m_dwStates & FWL_WGTSTATE_Focused);
   if (bShowSel && m_pEditEngine->HasSelection()) {
     size_t sel_start;
     size_t count;
@@ -360,8 +360,8 @@ void CFWL_Edit::DrawContent(CFGAS_GEGraphics* pGraphics,
     pGraphics->RestoreGraphState();
 
     CFGAS_GEPath path;
-    int32_t iLimit = m_nLimit > 0 ? m_nLimit : 1;
-    float fStep = m_EngineRect.width / iLimit;
+    const int32_t iLimit = m_nLimit > 0 ? m_nLimit : 1;
+    const float fStep = m_EngineRect.width / iLimit;
     float fLeft = m_EngineRect.left + 1;
     for (int32_t i = 1; i < iLimit; i++) {
       fLeft += fStep;
@@ -493,8 +493,8 @@ void CFWL_Edit::UpdateEditLayout() {
 bool CFWL_Edit::UpdateOffset() {
   CFX_RectF rtCaret = m_CaretRect;
 
-  float fOffSetX = m_EngineRect.left - m_fScrollOffsetX;
-  float fOffSetY = m_EngineRect.top - m_fScrollOffsetY + m_fVAlignOffset;
+  const float fOffSetX = m_EngineRect.left - m_fScrollOffsetX;
+  const float fOffSetY = m_EngineRect.top - m_fScrollOffsetY + m_fVAlignOffset;
   rtCaret.Offset(fOffSetX, fOffSetY);
 
   const CFX_RectF& edit_bounds = m_EngineRect;
@@ -572,7 +572,7 @@ void CFWL_Edit::UpdateCaret() {
   CFX_RectF rtClient = GetClientRect();
   rtCaret.Intersect(rtClient);
   if (rtCaret.left > rtClient.right()) {
-    float right = rtCaret.right();
+    const float right = rtCaret.right();
     rtCaret.left = rtClient.right() - 1;
     rtCaret.width = right - rtCaret.left;
   }
@@ -584,8 +584,8 @@ void CFWL_Edit::UpdateCaret() {
 }
 
 CFWL_ScrollBar* CFWL_Edit::UpdateScroll() {
-  bool bShowHorz = m_pHorzScrollBar && m_pHorzScrollBar->IsVisible();
-  bool bShowVert = m_pVertScrollBar && m_pVertScrollBar->IsVisible();
+  const bool bShowHorz = m_pHorzScrollBar && m_pHorzScrollBar->IsVisible();
+  const bool bShowVert = m_pVertScrollBar && m_pVertScrollBar->IsVisible();
   if (!bShowHorz && !bShowVert)
     return nullptr;
 
@@ -596,10 +596,10 @@ CFWL_ScrollBar* CFWL_Edit::UpdateScroll() {
     if (rtScroll.width < contents_bounds.width) {
       {
         ScopedUpdateLock update_lock(m_pHorzScrollBar);
-        float fRange = contents_bounds.width - rtScroll.width;
+        const float fRange = contents_bounds.width - rtScroll.width;
         m_pHorzScrollBar->SetRange(0.0f, fRange);
 
-        float fPos = pdfium::clamp(m_fScrollOffsetX, 0.0f, fRange);
+        const float fPos = pdfium::clamp(m_fScrollOffsetX, 0.0f, fRange);
         m_pHorzScrollBar->SetPos(fPos);
         m_pHorzScrollBar->SetTrackPos(fPos);
         m_pHorzScrollBar->SetPageSize(rtScroll.width);
@@ -624,12 +624,12 @@ CFWL_ScrollBar* CFWL_Edit::UpdateScroll() {
     if (rtScroll.height < contents_bounds.height) {
       {
         ScopedUpdateLock update_lock(m_pHorzScrollBar);
-        float fStep = m_pEditEngine->GetLineSpace();
+        const float fStep = m_pEditEngine->GetLineSpace();
         float fRange =
             std::max(contents_bounds.height - m_EngineRect.height, fStep);
 
         m_pVertScrollBar->SetRange(0.0f, fRange);
-        float fPos = pdfium::clamp(m_fScrollOffsetY, 0.0f, fRange);
+        const float fPos = pdfium::clamp(m_fScrollOffsetY, 0.0f, fRange);
         m_pVertScrollBar->SetPos(fPos);
         m_pVertScrollBar->SetTrackPos(fPos);
         m_pVertScrollBar->SetPageSize(rtScroll.height);
@@ -674,7 +674,7 @@ void CFWL_Edit::Layout() {
   m_EngineRect = m_ClientRect;
 
   IFWL_ThemeProvider* theme = GetThemeProvider();
-  float fWidth = theme->GetScrollBarWidth();
+  const float fWidth = theme->GetScrollBarWidth();
   if (!GetOuter()) {
     CFWL_ThemePart part(this);
     CFX_RectF pUIMargin = theme->GetUIMargin(part);
@@ -687,8 +687,8 @@ void CFWL_Edit::Layout() {
                          pUIMargin.height);
   }
 
-  bool bShowVertScrollbar = IsShowScrollBar(true);
-  bool bShowHorzScrollbar = IsShowScrollBar(false);
+  const bool bShowVertScrollbar = IsShowScrollBar(true);
+  const bool bShowHorzScrollbar = IsShowScrollBar(false);
   if (bShowVertScrollbar) {
     InitVerticalScrollBar();
 
@@ -739,10 +739,10 @@ void CFWL_Edit::LayoutScrollBar() {
     return;
   }
 
-  bool bShowVertScrollbar = IsShowScrollBar(true);
-  bool bShowHorzScrollbar = IsShowScrollBar(false);
+  const bool bShowVertScrollbar = IsShowScrollBar(true);
+  const bool bShowHorzScrollbar = IsShowScrollBar(false);
   IFWL_ThemeProvider* theme = GetThemeProvider();
-  float fWidth = theme->GetScrollBarWidth();
+  const float fWidth = theme->GetScrollBarWidth();
   if (bShowVertScrollbar) {
     if (!m_pVertScrollBar) {
       InitVerticalScrollBar();
@@ -1013,8 +1013,8 @@ void CFWL_Edit::OnLButtonDown(CFWL_MessageMouse* pMsg) {
 
   if (index_at_click != m_CursorPosition &&
       !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift)) {
-    size_t start = std::min(m_CursorPosition, index_at_click);
-    size_t end = std::max(m_CursorPosition, index_at_click);
+    const size_t start = std::min(m_CursorPosition, index_at_click);
+    const size_t end = std::max(m_CursorPosition, index_at_click);
 
     m_pEditEngine->SetSelection(start, end - start);
     bRepaint = true;
@@ -1044,17 +1044,17 @@ void CFWL_Edit::OnButtonDoubleClick(CFWL_MessageMouse* pMsg) {
 }
 
 void CFWL_Edit::OnMouseMove(CFWL_MessageMouse* pMsg) {
-  bool shift = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift);
+  const bool shift = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift);
   if (!m_bLButtonDown || !shift)
     return;
 
-  size_t old_cursor_pos = m_CursorPosition;
+  const size_t old_cursor_pos = m_CursorPosition;
   SetCursorPosition(
       m_pEditEngine->GetIndexForPoint(DeviceToEngine(pMsg->m_pos)));
   if (old_cursor_pos == m_CursorPosition)
     return;
 
-  size_t length = m_pEditEngine->GetLength();
+  const size_t length = m_pEditEngine->GetLength();
   if (m_CursorPosition > length)
     SetCursorPosition(length);
 
@@ -1065,14 +1065,14 @@ void CFWL_Edit::OnMouseMove(CFWL_MessageMouse* pMsg) {
   else
     sel_start = old_cursor_pos;
 
-  size_t start_pos = std::min(sel_start, m_CursorPosition);
-  size_t end_pos = std::max(sel_start, m_CursorPosition);
+  const size_t start_pos = std::min(sel_start, m_CursorPosition);
+  const size_t end_pos = std::max(sel_start, m_CursorPosition);
   m_pEditEngine->SetSelection(start_pos, end_pos - start_pos);
 }
 
 void CFWL_Edit::OnKeyDown(CFWL_MessageKey* pMsg) {
-  bool bShift = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift);
-  bool bCtrl = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Ctrl);
+  const bool bShift = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift);
+  const bool bCtrl = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Ctrl);
 
   size_t sel_start = m_CursorPosition;
   if (m_pEditEngine->HasSelection()) {
@@ -1174,8 +1174,8 @@ bool CFWL_Edit::OnScroll(CFWL_ScrollBar* pScrollBar,
                          float fPos) {
   CFX_SizeF fs;
   pScrollBar->GetRange(&fs.width, &fs.height);
-  float iCurPos = pScrollBar->GetPos();
-  float fStep = pScrollBar->GetStepSize();
+  const float iCurPos = pScrollBar->GetPos();
+  const float fStep = pScrollBar->GetStepSize();
   switch (dwCode) {
     case CFWL_EventScroll::Code::Min: {
       fPos = fs.width;

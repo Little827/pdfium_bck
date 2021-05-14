@@ -50,10 +50,10 @@ int FindBit(const uint8_t* data_buf, int max_pos, int start_pos, bool bit) {
     return max_pos;
 
   const uint8_t bit_xor = bit ? 0x00 : 0xff;
-  int bit_offset = start_pos % 8;
+  const int bit_offset = start_pos % 8;
   if (bit_offset) {
     const int byte_pos = start_pos / 8;
-    uint8_t data = (data_buf[byte_pos] ^ bit_xor) & (0xff >> bit_offset);
+    const uint8_t data = (data_buf[byte_pos] ^ bit_xor) & (0xff >> bit_offset);
     if (data)
       return byte_pos * 8 + OneLeadPos[data];
 
@@ -78,7 +78,7 @@ int FindBit(const uint8_t* data_buf, int max_pos, int start_pos, bool bit) {
   }
 
   while (byte_pos < max_byte) {
-    uint8_t data = data_buf[byte_pos] ^ bit_xor;
+    const uint8_t data = data_buf[byte_pos] ^ bit_xor;
     if (data)
       return std::min(byte_pos * 8 + OneLeadPos[data], max_pos);
 
@@ -116,8 +116,8 @@ void FaxFillBits(uint8_t* dest_buf, int columns, int startpos, int endpos) {
   if (startpos >= endpos)
     return;
 
-  int first_byte = startpos / 8;
-  int last_byte = (endpos - 1) / 8;
+  const int first_byte = startpos / 8;
+  const int last_byte = (endpos - 1) / 8;
   if (first_byte == last_byte) {
     for (int i = startpos % 8; i <= (endpos - 1) % 8; ++i)
       dest_buf[first_byte] -= 1 << (7 - i);
@@ -134,7 +134,7 @@ void FaxFillBits(uint8_t* dest_buf, int columns, int startpos, int endpos) {
 }
 
 inline bool NextBit(const uint8_t* src_buf, int* bitpos) {
-  int pos = (*bitpos)++;
+  const int pos = (*bitpos)++;
   return !!(src_buf[pos / 8] & (1 << (7 - pos % 8)));
 }
 
@@ -260,7 +260,7 @@ int FaxGetRun(const uint8_t* ins_array,
   uint32_t code = 0;
   int ins_off = 0;
   while (1) {
-    uint8_t ins = ins_array[ins_off++];
+    const uint8_t ins = ins_array[ins_off++];
     if (ins == 0xff)
       return -1;
 
@@ -272,7 +272,7 @@ int FaxGetRun(const uint8_t* ins_array,
       ++code;
 
     ++(*bitpos);
-    int next_off = ins_off + ins * 3;
+    const int next_off = ins_off + ins * 3;
     for (; ins_off < next_off; ins_off += 3) {
       if (ins_array[ins_off] == code)
         return ins_array[ins_off + 1] + ins_array[ins_off + 2] * 256;
@@ -303,18 +303,18 @@ void FaxG4GetRow(const uint8_t* src_buf,
       if (*bitpos >= bitsize)
         return;
 
-      bool bit1 = NextBit(src_buf, bitpos);
+      const bool bit1 = NextBit(src_buf, bitpos);
       if (*bitpos >= bitsize)
         return;
 
-      bool bit2 = NextBit(src_buf, bitpos);
+      const bool bit2 = NextBit(src_buf, bitpos);
       if (bit1) {
         v_delta = bit2 ? 1 : -1;
       } else if (bit2) {
         int run_len1 = 0;
         while (1) {
-          int run = FaxGetRun(a0color ? FaxWhiteRunIns : FaxBlackRunIns,
-                              src_buf, bitpos, bitsize);
+          const int run = FaxGetRun(a0color ? FaxWhiteRunIns : FaxBlackRunIns,
+                                    src_buf, bitpos, bitsize);
           run_len1 += run;
           if (run < 64)
             break;
@@ -330,8 +330,8 @@ void FaxG4GetRow(const uint8_t* src_buf,
 
         int run_len2 = 0;
         while (1) {
-          int run = FaxGetRun(a0color ? FaxBlackRunIns : FaxWhiteRunIns,
-                              src_buf, bitpos, bitsize);
+          const int run = FaxGetRun(a0color ? FaxBlackRunIns : FaxWhiteRunIns,
+                                    src_buf, bitpos, bitsize);
           run_len2 += run;
           if (run < 64)
             break;
@@ -365,11 +365,11 @@ void FaxG4GetRow(const uint8_t* src_buf,
         if (*bitpos >= bitsize)
           return;
 
-        bool next_bit1 = NextBit(src_buf, bitpos);
+        const bool next_bit1 = NextBit(src_buf, bitpos);
         if (*bitpos >= bitsize)
           return;
 
-        bool next_bit2 = NextBit(src_buf, bitpos);
+        const bool next_bit2 = NextBit(src_buf, bitpos);
         if (next_bit1) {
           v_delta = next_bit2 ? 2 : -2;
         } else if (next_bit2) {
@@ -407,7 +407,7 @@ void FaxG4GetRow(const uint8_t* src_buf,
 }
 
 void FaxSkipEOL(const uint8_t* src_buf, int bitsize, int* bitpos) {
-  int startbit = *bitpos;
+  const int startbit = *bitpos;
   while (*bitpos < bitsize) {
     if (!NextBit(src_buf, bitpos))
       continue;
@@ -430,8 +430,8 @@ void FaxGet1DLine(const uint8_t* src_buf,
 
     int run_len = 0;
     while (1) {
-      int run = FaxGetRun(color ? FaxWhiteRunIns : FaxBlackRunIns, src_buf,
-                          bitpos, bitsize);
+      const int run = FaxGetRun(color ? FaxWhiteRunIns : FaxBlackRunIns,
+                                src_buf, bitpos, bitsize);
       if (run < 0) {
         while (*bitpos < bitsize) {
           if (NextBit(src_buf, bitpos))
@@ -514,7 +514,7 @@ bool FaxDecoder::v_Rewind() {
 }
 
 uint8_t* FaxDecoder::v_GetNextLine() {
-  int bitsize = m_SrcSpan.size() * 8;
+  const int bitsize = m_SrcSpan.size() * 8;
   FaxSkipEOL(m_SrcSpan.data(), bitsize, &m_bitpos);
   if (m_bitpos >= bitsize)
     return nullptr;
@@ -542,9 +542,9 @@ uint8_t* FaxDecoder::v_GetNextLine() {
 
   if (m_bByteAlign && m_bitpos < bitsize) {
     int bitpos0 = m_bitpos;
-    int bitpos1 = FxAlignToBoundary<8>(m_bitpos);
+    const int bitpos1 = FxAlignToBoundary<8>(m_bitpos);
     while (m_bByteAlign && bitpos0 < bitpos1) {
-      int bit = m_SrcSpan[bitpos0 / 8] & (1 << (7 - bitpos0 % 8));
+      const int bit = m_SrcSpan[bitpos0 / 8] & (1 << (7 - bitpos0 % 8));
       if (bit != 0)
         m_bByteAlign = false;
       else
@@ -583,8 +583,8 @@ std::unique_ptr<ScanlineDecoder> FaxModule::CreateDecoder(
     bool BlackIs1,
     int Columns,
     int Rows) {
-  int actual_width = Columns ? Columns : width;
-  int actual_height = Rows ? Rows : height;
+  const int actual_width = Columns ? Columns : width;
+  const int actual_height = Rows ? Rows : height;
 
   // Reject invalid values.
   if (actual_width <= 0 || actual_height <= 0)
@@ -713,7 +713,7 @@ void FaxEncoder::FaxEncodeRun(int run, bool bWhite) {
     run -= 2560;
   }
   if (run >= 64) {
-    int markup = run - run % 64;
+    const int markup = run - run % 64;
     const uint8_t* p = bWhite ? WhiteRunMarkup : BlackRunMarkup;
     p += (markup / 64 - 1) * 2;
     AddBitStream(*p, p[1]);
@@ -725,10 +725,10 @@ void FaxEncoder::FaxEncodeRun(int run, bool bWhite) {
 }
 
 void FaxEncoder::FaxEncode2DLine(const uint8_t* src_buf) {
-  int a0 = -1;
-  bool a0color = true;
+  const int a0 = -1;
+  const bool a0color = true;
   while (1) {
-    int a1 = FindBit(src_buf, m_Cols, a0 + 1, !a0color);
+    const int a1 = FindBit(src_buf, m_Cols, a0 + 1, !a0color);
     int b1;
     int b2;
     FaxG4FindB1B2(m_RefLine, m_Cols, a0, a0color, &b1, &b2);
@@ -738,7 +738,7 @@ void FaxEncoder::FaxEncode2DLine(const uint8_t* src_buf) {
       ++m_DestBitpos;
       a0 = b2;
     } else if (a1 - b1 <= 3 && b1 - a1 <= 3) {
-      int delta = a1 - b1;
+      const int delta = a1 - b1;
       switch (delta) {
         case 0:
           m_LineBuf[m_DestBitpos / 8] |= 1 << (7 - m_DestBitpos % 8);
@@ -763,7 +763,7 @@ void FaxEncoder::FaxEncode2DLine(const uint8_t* src_buf) {
       a0 = a1;
       a0color = !a0color;
     } else {
-      int a2 = FindBit(src_buf, m_Cols, a1 + 1, a0color);
+      const int a2 = FindBit(src_buf, m_Cols, a1 + 1, a0color);
       ++m_DestBitpos;
       ++m_DestBitpos;
       m_LineBuf[m_DestBitpos / 8] |= 1 << (7 - m_DestBitpos % 8);

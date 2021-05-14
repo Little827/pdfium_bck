@@ -216,7 +216,7 @@ void CFWL_MonthCalendar::DrawDatesInBK(CFGAS_GEGraphics* pGraphics,
   params.m_matrix = mtMatrix;
 
   IFWL_ThemeProvider* pTheme = GetThemeProvider();
-  int32_t iCount = pdfium::CollectionSize<int32_t>(m_DateArray);
+  const int32_t iCount = pdfium::CollectionSize<int32_t>(m_DateArray);
   for (int32_t j = 0; j < iCount; j++) {
     DATEINFO* pDataInfo = m_DateArray[j].get();
     if (pDataInfo->dwStates & FWL_ITEMSTATE_MCD_Selected) {
@@ -279,7 +279,7 @@ void CFWL_MonthCalendar::DrawDatesIn(CFGAS_GEGraphics* pGraphics,
   params.m_matrix = mtMatrix;
 
   IFWL_ThemeProvider* pTheme = GetThemeProvider();
-  int32_t iCount = pdfium::CollectionSize<int32_t>(m_DateArray);
+  const int32_t iCount = pdfium::CollectionSize<int32_t>(m_DateArray);
   for (int32_t j = 0; j < iCount; j++) {
     DATEINFO* pDataInfo = m_DateArray[j].get();
     params.m_wsText = pDataInfo->wsDay;
@@ -372,8 +372,8 @@ CFX_SizeF CFWL_MonthCalendar::CalcSize() {
 }
 
 void CFWL_MonthCalendar::CalcHeadSize() {
-  float fHeadHMargin = (m_ClientRect.width - m_HeadSize.width) / 2;
-  float fHeadVMargin = (m_CellSize.width - m_HeadSize.height) / 2;
+  const float fHeadHMargin = (m_ClientRect.width - m_HeadSize.width) / 2;
+  const float fHeadVMargin = (m_CellSize.width - m_HeadSize.height) / 2;
   m_HeadTextRect = CFX_RectF(m_ClientRect.left + fHeadHMargin,
                              m_ClientRect.top + MONTHCAL_HEADER_BTN_VMARGIN +
                                  MONTHCAL_VMARGIN + fHeadVMargin,
@@ -427,8 +427,8 @@ void CFWL_MonthCalendar::Layout() {
 void CFWL_MonthCalendar::CalDateItem() {
   bool bNewWeek = false;
   int32_t iWeekOfMonth = 0;
-  float fLeft = m_DatesRect.left;
-  float fTop = m_DatesRect.top;
+  const float fLeft = m_DatesRect.left;
+  const float fTop = m_DatesRect.top;
   for (const auto& pDateInfo : m_DateArray) {
     if (bNewWeek) {
       iWeekOfMonth++;
@@ -465,7 +465,7 @@ void CFWL_MonthCalendar::ClearDateItem() {
 }
 
 void CFWL_MonthCalendar::ResetDateItem() {
-  int32_t iDays = FX_DaysInMonth(m_iCurYear, m_iCurMonth);
+  const int32_t iDays = FX_DaysInMonth(m_iCurYear, m_iCurMonth);
   int32_t iDayOfWeek =
       CFX_DateTime(m_iCurYear, m_iCurMonth, 1, 0, 0, 0, 0).GetDayOfWeek();
   for (int32_t i = 0; i < iDays; i++) {
@@ -532,7 +532,7 @@ void CFWL_MonthCalendar::ChangeToMonth(int32_t iYear, int32_t iMonth) {
 }
 
 void CFWL_MonthCalendar::RemoveSelDay() {
-  int32_t iDatesCount = pdfium::CollectionSize<int32_t>(m_DateArray);
+  const int32_t iDatesCount = pdfium::CollectionSize<int32_t>(m_DateArray);
   for (int32_t iSelDay : m_SelDayArray) {
     if (iSelDay <= iDatesCount)
       m_DateArray[iSelDay - 1]->dwStates &= ~FWL_ITEMSTATE_MCD_Selected;
@@ -674,7 +674,7 @@ void CFWL_MonthCalendar::OnLButtonUp(CFWL_MessageMouse* pMsg) {
   if (!m_SelDayArray.empty())
     iOldSel = m_SelDayArray[0];
 
-  int32_t iCurSel = GetDayAtPoint(pMsg->m_pos);
+  const int32_t iCurSel = GetDayAtPoint(pMsg->m_pos);
   if (iCurSel > 0) {
     DATEINFO* lpDatesInfo = m_DateArray[iCurSel - 1].get();
     CFX_RectF rtInvalidate(lpDatesInfo->rect);
@@ -695,7 +695,7 @@ void CFWL_MonthCalendar::OnMouseMove(CFWL_MessageMouse* pMsg) {
   bool bRepaint = false;
   CFX_RectF rtInvalidate;
   if (m_DatesRect.Contains(pMsg->m_pos)) {
-    int32_t iHover = GetDayAtPoint(pMsg->m_pos);
+    const int32_t iHover = GetDayAtPoint(pMsg->m_pos);
     bRepaint = m_iHovered != iHover;
     if (bRepaint) {
       if (m_iHovered > 0)

@@ -520,7 +520,7 @@ void aes_decrypt_nb_4(CRYPT_aes_context* ctx, unsigned int* block) {
 
 void aes_setup(CRYPT_aes_context* ctx, const unsigned char* key, int keylen) {
   DCHECK(keylen == 16 || keylen == 24 || keylen == 32);
-  int Nk = keylen / 4;
+  const int Nk = keylen / 4;
   ctx->Nb = 4;
   ctx->Nr = 6 + (ctx->Nb > Nk ? ctx->Nb : Nk);
   int rconst = 1;

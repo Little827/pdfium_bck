@@ -98,7 +98,7 @@ NupState::NupState(const CFX_SizeF& pagesize,
 }
 
 std::pair<size_t, size_t> NupState::ConvertPageOrder() const {
-  size_t iSubX = m_subPageIndex % m_nPagesOnXAxis;
+  const size_t iSubX = m_subPageIndex % m_nPagesOnXAxis;
   size_t iSubY = m_subPageIndex / m_nPagesOnXAxis;
 
   // Y Axis, pages start from the top of the output page.
@@ -118,8 +118,8 @@ NupPageSettings NupState::CalculatePageEdit(size_t iSubX,
   const float yScale = m_subPageSize.height / pagesize.height;
   settings.scale = std::min(xScale, yScale);
 
-  float subWidth = pagesize.width * settings.scale;
-  float subHeight = pagesize.height * settings.scale;
+  const float subWidth = pagesize.width * settings.scale;
+  const float subHeight = pagesize.height * settings.scale;
   if (xScale > yScale)
     settings.subPageStartPoint.x += (m_subPageSize.width - subWidth) / 2;
   else
@@ -203,7 +203,7 @@ bool CopyInheritable(CPDF_Dictionary* pDestPageDict,
 
 std::vector<uint32_t> GetPageNumbers(const CPDF_Document& doc,
                                      const ByteString& bsPageRange) {
-  uint32_t nCount = doc.GetPageCount();
+  const uint32_t nCount = doc.GetPageCount();
   if (!bsPageRange.IsEmpty())
     return ParsePageRangeString(bsPageRange, nCount);
 
@@ -295,7 +295,7 @@ bool CPDF_PageOrganizer::UpdateReference(CPDF_Object* pObj) {
   switch (pObj->GetType()) {
     case CPDF_Object::kReference: {
       CPDF_Reference* pReference = pObj->AsReference();
-      uint32_t newobjnum = GetNewObjId(pReference);
+      const uint32_t newobjnum = GetNewObjId(pReference);
       if (newobjnum == 0)
         return false;
       pReference->SetRef(dest(), newobjnum);
@@ -344,7 +344,7 @@ uint32_t CPDF_PageOrganizer::GetNewObjId(CPDF_Reference* pRef) {
   if (!pRef)
     return 0;
 
-  uint32_t dwObjnum = pRef->GetRefObjNum();
+  const uint32_t dwObjnum = pRef->GetRefObjNum();
   uint32_t dwNewObjNum = 0;
   const auto it = m_ObjectNumberMap.find(dwObjnum);
   if (it != m_ObjectNumberMap.end())
@@ -455,8 +455,8 @@ bool CPDF_PageExporter::ExportPage(const std::vector<uint32_t>& pageNums,
     CopyInheritable(pDestPageDict, pSrcPageDict, pdfium::page_object::kRotate);
 
     // Update the reference
-    uint32_t dwOldPageObj = pSrcPageDict->GetObjNum();
-    uint32_t dwNewPageObj = pDestPageDict->GetObjNum();
+    const uint32_t dwOldPageObj = pSrcPageDict->GetObjNum();
+    const uint32_t dwNewPageObj = pDestPageDict->GetObjNum();
     AddObjectMapping(dwOldPageObj, dwNewPageObj);
     UpdateReference(pDestPageDict);
     ++curpage;
@@ -539,7 +539,7 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
 
   ClearObjectNumberMap();
   m_SrcPageXObjectMap.clear();
-  size_t nPagesPerSheet = nSafePagesPerSheet.ValueOrDie();
+  const size_t nPagesPerSheet = nSafePagesPerSheet.ValueOrDie();
   NupState nupState(destPageSize, nPagesOnXAxis, nPagesOnYAxis);
 
   size_t curpage = 0;
@@ -581,7 +581,7 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
 ByteString CPDF_NPageToOneExporter::AddSubPage(
     const CPDF_Dictionary* pSrcPageDict,
     const NupPageSettings& settings) {
-  uint32_t dwSrcPageObjnum = pSrcPageDict->GetObjNum();
+  const uint32_t dwSrcPageObjnum = pSrcPageDict->GetObjNum();
   const auto it = m_SrcPageXObjectMap.find(dwSrcPageObjnum);
   ByteString bsXObjectName = it != m_SrcPageXObjectMap.end()
                                  ? it->second
@@ -614,8 +614,8 @@ ByteString CPDF_NPageToOneExporter::MakeXObjectFromPage(
     // Use a default empty resources if it does not exist.
     pNewXObjectDict->SetNewFor<CPDF_Dictionary>(kResourceString);
   }
-  uint32_t dwSrcPageObj = pSrcPageDict->GetObjNum();
-  uint32_t dwNewXobjectObj = pNewXObjectDict->GetObjNum();
+  const uint32_t dwSrcPageObj = pSrcPageDict->GetObjNum();
+  const uint32_t dwNewXobjectObj = pNewXObjectDict->GetObjNum();
   AddObjectMapping(dwSrcPageObj, dwNewXobjectObj);
   UpdateReference(pNewXObjectDict);
 

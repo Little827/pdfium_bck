@@ -125,7 +125,7 @@ void CFWL_ScrollBar::Layout() {
 
 void CFWL_ScrollBar::CalcButtonLen() {
   m_fButtonLen = IsVertical() ? m_ClientRect.width : m_ClientRect.height;
-  float fLength = IsVertical() ? m_ClientRect.height : m_ClientRect.width;
+  const float fLength = IsVertical() ? m_ClientRect.height : m_ClientRect.width;
   if (fLength < m_fButtonLen * 2) {
     m_fButtonLen = fLength / 2;
     m_bMinSize = true;
@@ -160,7 +160,7 @@ CFX_RectF CFWL_ScrollBar::CalcThumbButtonRect(const CFX_RectF& rtThumb) {
     return rect;
   }
 
-  float fRange = m_fRangeMax - m_fRangeMin;
+  const float fRange = m_fRangeMax - m_fRangeMin;
   if (fRange < 0) {
     if (IsVertical()) {
       return CFX_RectF(m_ClientRect.left, m_MaxBtnRect.bottom(),
@@ -172,7 +172,7 @@ CFX_RectF CFWL_ScrollBar::CalcThumbButtonRect(const CFX_RectF& rtThumb) {
 
   CFX_RectF rtClient = m_ClientRect;
   float fLength = IsVertical() ? rtClient.height : rtClient.width;
-  float fSize = m_fButtonLen;
+  const float fSize = m_fButtonLen;
   fLength -= fSize * 2.0f;
   if (fLength < fSize)
     fLength = 0.0f;
@@ -180,12 +180,12 @@ CFX_RectF CFWL_ScrollBar::CalcThumbButtonRect(const CFX_RectF& rtThumb) {
   float fThumbSize = fLength * fLength / (fRange + fLength);
   fThumbSize = std::max(fThumbSize, kMinThumbSize);
 
-  float fDiff = std::max(fLength - fThumbSize, 0.0f);
-  float fTrackPos = pdfium::clamp(m_fTrackPos, m_fRangeMin, m_fRangeMax);
+  const float fDiff = std::max(fLength - fThumbSize, 0.0f);
+  const float fTrackPos = pdfium::clamp(m_fTrackPos, m_fRangeMin, m_fRangeMax);
   if (!fRange)
     return rect;
 
-  float iPos = fSize + fDiff * (fTrackPos - m_fRangeMin) / fRange;
+  const float iPos = fSize + fDiff * (fTrackPos - m_fRangeMin) / fRange;
   rect.left = rtClient.left;
   rect.top = rtClient.top;
   if (IsVertical()) {
@@ -225,19 +225,19 @@ CFX_RectF CFWL_ScrollBar::CalcMaxTrackRect(const CFX_RectF& rtMaxRect) {
     return CFX_RectF(rtMaxRect.TopLeft(), 0, 0);
 
   if (IsVertical()) {
-    float iy = (m_ThumbRect.top + m_ThumbRect.bottom()) / 2;
+    const float iy = (m_ThumbRect.top + m_ThumbRect.bottom()) / 2;
     return CFX_RectF(m_ClientRect.left, iy, m_ClientRect.width,
                      m_ClientRect.bottom() - iy);
   }
 
-  float ix = (m_ThumbRect.left + m_ThumbRect.right()) / 2;
+  const float ix = (m_ThumbRect.left + m_ThumbRect.right()) / 2;
   return CFX_RectF(ix, m_ClientRect.top, m_ClientRect.height - ix,
                    m_ClientRect.height);
 }
 
 float CFWL_ScrollBar::GetTrackPointPos(const CFX_PointF& point) {
   CFX_PointF diff = point - m_cpTrackPoint;
-  float fRange = m_fRangeMax - m_fRangeMin;
+  const float fRange = m_fRangeMax - m_fRangeMin;
   float fPos;
 
   if (IsVertical()) {

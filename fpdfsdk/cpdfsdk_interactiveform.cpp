@@ -99,7 +99,7 @@ bool FDFToURLEncodedData(
       fdfEncodedData << "&";
   }
 
-  size_t nBufSize = fdfEncodedData.tellp();
+  const size_t nBufSize = fdfEncodedData.tellp();
   if (nBufSize <= 0)
     return false;
 
@@ -138,13 +138,13 @@ CPDFSDK_Widget* CPDFSDK_InteractiveForm::GetWidget(
   CPDFSDK_PageView* pPage = nullptr;
 
   if (CPDF_Dictionary* pPageDict = pControlDict->GetDictFor("P")) {
-    int nPageIndex = pDocument->GetPageIndex(pPageDict->GetObjNum());
+    const int nPageIndex = pDocument->GetPageIndex(pPageDict->GetObjNum());
     if (nPageIndex >= 0)
       pPage = m_pFormFillEnv->GetPageViewAtIndex(nPageIndex);
   }
 
   if (!pPage) {
-    int nPageIndex = GetPageIndexByAnnotDict(pDocument, pControlDict);
+    const int nPageIndex = GetPageIndexByAnnotDict(pDocument, pControlDict);
     if (nPageIndex >= 0)
       pPage = m_pFormFillEnv->GetPageViewAtIndex(nPageIndex);
   }
@@ -251,7 +251,7 @@ void CPDFSDK_InteractiveForm::OnCalculate(CPDF_FormField* pFormField) {
     return;
 
   IJS_Runtime* pRuntime = m_pFormFillEnv->GetIJSRuntime();
-  int nSize = m_pInteractiveForm->CountFieldsInCalculationOrder();
+  const int nSize = m_pInteractiveForm->CountFieldsInCalculationOrder();
   for (int i = 0; i < nSize; i++) {
     CPDF_FormField* pField = m_pInteractiveForm->GetFieldInCalculationOrder(i);
     if (!pField)
@@ -294,7 +294,7 @@ Optional<WideString> CPDFSDK_InteractiveForm::OnFormat(
   IJS_Runtime* pRuntime = m_pFormFillEnv->GetIJSRuntime();
   if (pFormField->GetFieldType() == FormFieldType::kComboBox &&
       pFormField->CountSelectedItems() > 0) {
-    int index = pFormField->GetSelectedIndex(0);
+    const int index = pFormField->GetSelectedIndex(0);
     if (index >= 0)
       sValue = pFormField->GetOptionLabel(index);
   }
@@ -386,7 +386,7 @@ bool CPDFSDK_InteractiveForm::DoAction_Hide(const CPDF_Action& action) {
   DCHECK(action.GetDict());
   std::vector<CPDF_FormField*> fields =
       GetFieldFromObjects(action.GetAllFields());
-  bool bHide = action.GetHideStatus();
+  const bool bHide = action.GetHideStatus();
   bool bChanged = false;
 
   for (CPDF_FormField* pField : fields) {
@@ -419,11 +419,11 @@ bool CPDFSDK_InteractiveForm::DoAction_SubmitForm(const CPDF_Action& action) {
 
   const CPDF_Dictionary* pActionDict = action.GetDict();
   if (pActionDict->KeyExist("Fields")) {
-    uint32_t dwFlags = action.GetFlags();
+    const uint32_t dwFlags = action.GetFlags();
     std::vector<CPDF_FormField*> fields =
         GetFieldFromObjects(action.GetAllFields());
     if (!fields.empty()) {
-      bool bIncludeOrExclude = !(dwFlags & 0x01);
+      const bool bIncludeOrExclude = !(dwFlags & 0x01);
       if (!m_pInteractiveForm->CheckRequiredFields(&fields, bIncludeOrExclude))
         return false;
 
@@ -496,7 +496,7 @@ void CPDFSDK_InteractiveForm::DoAction_ResetForm(const CPDF_Action& action) {
     m_pInteractiveForm->ResetForm();
     return;
   }
-  uint32_t dwFlags = action.GetFlags();
+  const uint32_t dwFlags = action.GetFlags();
   std::vector<CPDF_FormField*> fields =
       GetFieldFromObjects(action.GetAllFields());
   m_pInteractiveForm->ResetForm(fields, !(dwFlags & 0x01));

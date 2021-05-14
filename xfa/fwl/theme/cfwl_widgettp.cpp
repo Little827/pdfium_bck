@@ -31,7 +31,7 @@ void CFWL_WidgetTP::DrawBackground(const CFWL_ThemeBackground& pParams) {}
 
 void CFWL_WidgetTP::DrawText(const CFWL_ThemeText& pParams) {
   EnsureTTOInitialized();
-  int32_t iLen = pParams.m_wsText.GetLength();
+  const int32_t iLen = pParams.m_wsText.GetLength();
   if (iLen <= 0)
     return;
 
@@ -145,8 +145,8 @@ void CFWL_WidgetTP::DrawArrow(CFGAS_GEGraphics* pGraphics,
                               const CFX_Matrix& matrix) {
   bool bVert =
       (eDict == FWLTHEME_DIRECTION_Up || eDict == FWLTHEME_DIRECTION_Down);
-  float fLeft = ((rect.width - (bVert ? 9 : 6)) / 2 + rect.left) + 0.5f;
-  float fTop = ((rect.height - (bVert ? 6 : 9)) / 2 + rect.top) + 0.5f;
+  const float fLeft = ((rect.width - (bVert ? 9 : 6)) / 2 + rect.left) + 0.5f;
+  const float fTop = ((rect.height - (bVert ? 6 : 9)) / 2 + rect.top) + 0.5f;
   CFGAS_GEPath path;
   switch (eDict) {
     case FWLTHEME_DIRECTION_Down: {

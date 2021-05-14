@@ -107,7 +107,7 @@ using PageSetIterator =
 
 uint32_t GetRelevant(CXFA_Node* pFormItem, uint32_t dwParentRelvant) {
   uint32_t dwRelevant = XFA_WidgetStatus_Viewable | XFA_WidgetStatus_Printable;
-  WideString wsRelevant =
+  const WideString wsRelevant =
       pFormItem->JSObject()->GetCData(XFA_Attribute::Relevant);
   if (!wsRelevant.IsEmpty()) {
     if (wsRelevant.EqualsASCII("+print") || wsRelevant.EqualsASCII("print"))
@@ -582,8 +582,9 @@ float CXFA_ViewLayoutProcessor::GetAvailHeight() {
   if (!pLayoutItem || !pLayoutItem->GetFormNode())
     return 0.0f;
 
-  float fAvailHeight = pLayoutItem->GetFormNode()->JSObject()->GetMeasureInUnit(
-      XFA_Attribute::H, XFA_Unit::Pt);
+  const float fAvailHeight =
+      pLayoutItem->GetFormNode()->JSObject()->GetMeasureInUnit(XFA_Attribute::H,
+                                                               XFA_Unit::Pt);
   if (fAvailHeight >= kXFALayoutPrecision)
     return fAvailHeight;
   if (m_CurrentViewRecordIter == m_ProposedViewRecords.begin())
@@ -1046,8 +1047,9 @@ CXFA_ViewLayoutProcessor::ProcessOverflow(CXFA_Node* pFormNode,
 
   CXFA_Node* pLeaderTemplate = nullptr;
   CXFA_Node* pTrailerTemplate = nullptr;
-  bool bIsOverflowNode = pFormNode->GetElementType() == XFA_Element::Overflow ||
-                         pFormNode->GetElementType() == XFA_Element::Break;
+  const bool bIsOverflowNode =
+      pFormNode->GetElementType() == XFA_Element::Overflow ||
+      pFormNode->GetElementType() == XFA_Element::Break;
   OverflowData overflow_data{nullptr, nullptr};
   for (CXFA_Node* pCurNode = bIsOverflowNode ? pFormNode
                                              : pFormNode->GetFirstChild();
@@ -1324,7 +1326,7 @@ bool CXFA_ViewLayoutProcessor::MatchPageAreaOddOrEven(CXFA_Node* pPageArea) {
   if (!ret || *ret == XFA_AttributeValue::Any)
     return true;
 
-  int32_t iPageLast = GetPageCount() % 2;
+  const int32_t iPageLast = GetPageCount() % 2;
   return *ret == XFA_AttributeValue::Odd ? iPageLast == 0 : iPageLast == 1;
 }
 
@@ -1552,8 +1554,9 @@ bool CXFA_ViewLayoutProcessor::GetNextAvailContentHeight(float fChildHeight) {
   pCurContentNode = pCurContentNode->GetNextSameClassSibling<CXFA_ContentArea>(
       XFA_Element::ContentArea);
   if (pCurContentNode) {
-    float fNextContentHeight = pCurContentNode->JSObject()->GetMeasureInUnit(
-        XFA_Attribute::H, XFA_Unit::Pt);
+    const float fNextContentHeight =
+        pCurContentNode->JSObject()->GetMeasureInUnit(XFA_Attribute::H,
+                                                      XFA_Unit::Pt);
     return fNextContentHeight > fChildHeight;
   }
 
@@ -1570,7 +1573,7 @@ bool CXFA_ViewLayoutProcessor::GetNextAvailContentHeight(float fChildHeight) {
   if (ret) {
     if (m_nCurPageCount == iMax) {
       CXFA_Node* pSrcPage = m_pCurPageArea;
-      int32_t nSrcPageCount = m_nCurPageCount;
+      const int32_t nSrcPageCount = m_nCurPageCount;
       auto psSrcIter = GetTailPosition();
       CXFA_Node* pNextPage =
           GetNextAvailPageArea(nullptr, nullptr, false, true);
@@ -1588,8 +1591,9 @@ bool CXFA_ViewLayoutProcessor::GetNextAvailContentHeight(float fChildHeight) {
             pNextPage->GetFirstChildByClass<CXFA_ContentArea>(
                 XFA_Element::ContentArea);
         if (pContentArea) {
-          float fNextContentHeight = pContentArea->JSObject()->GetMeasureInUnit(
-              XFA_Attribute::H, XFA_Unit::Pt);
+          const float fNextContentHeight =
+              pContentArea->JSObject()->GetMeasureInUnit(XFA_Attribute::H,
+                                                         XFA_Unit::Pt);
           if (fNextContentHeight > fChildHeight)
             return true;
         }
@@ -1603,7 +1607,7 @@ bool CXFA_ViewLayoutProcessor::GetNextAvailContentHeight(float fChildHeight) {
   if (!pContentArea)
     return false;
 
-  float fNextContentHeight = pContentArea->JSObject()->GetMeasureInUnit(
+  const float fNextContentHeight = pContentArea->JSObject()->GetMeasureInUnit(
       XFA_Attribute::H, XFA_Unit::Pt);
   return fNextContentHeight < kXFALayoutPrecision ||
          fNextContentHeight > fChildHeight;
@@ -1898,7 +1902,7 @@ void CXFA_ViewLayoutProcessor::SyncLayoutData() {
                 ->JSObject()
                 ->TryEnum(XFA_Attribute::Presence, true)
                 .value_or(XFA_AttributeValue::Visible);
-        bool bVisible = presence == XFA_AttributeValue::Visible;
+        const bool bVisible = presence == XFA_AttributeValue::Visible;
         uint32_t dwRelevantChild =
             GetRelevant(pContentItem->GetFormNode(), dwRelevant);
         SyncContainer(pNotify, m_pLayoutProcessor, pContentItem,
@@ -1908,7 +1912,7 @@ void CXFA_ViewLayoutProcessor::SyncLayoutData() {
     }
   }
 
-  int32_t nPage = pdfium::CollectionSize<int32_t>(m_PageArray);
+  const int32_t nPage = pdfium::CollectionSize<int32_t>(m_PageArray);
   for (int32_t i = nPage - 1; i >= m_nAvailPages; i--) {
     CXFA_ViewLayoutItem* pPage = m_PageArray[i];
     m_PageArray.erase(m_PageArray.begin() + i);

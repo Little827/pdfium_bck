@@ -254,7 +254,7 @@ void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
   v8::Local<v8::Object> obj = value.Get(isolate);
   if (obj.IsEmpty())
     return;
-  uint32_t id = CFXJS_Engine::GetObjDefnID(obj);
+  const uint32_t id = CFXJS_Engine::GetObjDefnID(obj);
   if (id == 0)
     return;
   FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(isolate);
@@ -490,7 +490,7 @@ void CFXJS_Engine::InitializeEngine() {
 
   v8::Context::Scope context_scope(v8Context);
   FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
-  uint32_t maxID = pIsolateData->CurrentMaxObjDefinitionID();
+  const uint32_t maxID = pIsolateData->CurrentMaxObjDefinitionID();
   m_StaticObjects.resize(maxID + 1);
   for (uint32_t i = 1; i <= maxID; ++i) {
     CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(i);

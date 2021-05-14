@@ -1086,7 +1086,7 @@ uint16_t GetLanguage(WideString wsLanguage) {
     return FX_LANG_en_US;
 
   wsLanguage.MakeLower();
-  uint32_t dwIDFirst = wsLanguage[0] << 8 | wsLanguage[1];
+  const uint32_t dwIDFirst = wsLanguage[0] << 8 | wsLanguage[1];
   uint32_t dwIDSecond =
       wsLanguage.GetLength() >= 5 ? wsLanguage[3] << 8 | wsLanguage[4] : 0;
   switch (dwIDFirst) {

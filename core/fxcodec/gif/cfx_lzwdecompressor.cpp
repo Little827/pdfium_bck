@@ -52,7 +52,7 @@ CFX_GifDecodeStatus CFX_LZWDecompressor::Decode(const uint8_t* src_buf,
 
   uint32_t i = 0;
   if (decompressed_next_ != 0) {
-    uint32_t extracted_size = ExtractData(dest_buf, *dest_size);
+    const uint32_t extracted_size = ExtractData(dest_buf, *dest_size);
     if (decompressed_next_ != 0)
       return CFX_GifDecodeStatus::InsufficientDestSize;
 
@@ -105,7 +105,7 @@ CFX_GifDecodeStatus CFX_LZWDecompressor::Decode(const uint8_t* src_buf,
             if (!DecodeString(code))
               return CFX_GifDecodeStatus::Error;
 
-            uint8_t append_char = decompressed_[decompressed_next_ - 1];
+            const uint8_t append_char = decompressed_[decompressed_next_ - 1];
             AddCode(code_old_, append_char);
           }
         }
@@ -115,7 +115,7 @@ CFX_GifDecodeStatus CFX_LZWDecompressor::Decode(const uint8_t* src_buf,
       }
 
       code_old_ = code;
-      uint32_t extracted_size = ExtractData(dest_buf, *dest_size - i);
+      const uint32_t extracted_size = ExtractData(dest_buf, *dest_size - i);
       if (decompressed_next_ != 0)
         return CFX_GifDecodeStatus::InsufficientDestSize;
 
@@ -180,9 +180,9 @@ uint32_t CFX_LZWDecompressor::ExtractData(uint8_t* dest_buf,
   if (dest_size == 0)
     return 0;
 
-  uint32_t copy_size = dest_size <= decompressed_next_
-                           ? dest_size
-                           : static_cast<uint32_t>(decompressed_next_);
+  const uint32_t copy_size = dest_size <= decompressed_next_
+                                 ? dest_size
+                                 : static_cast<uint32_t>(decompressed_next_);
   std::reverse_copy(decompressed_.data() + decompressed_next_ - copy_size,
                     decompressed_.data() + decompressed_next_, dest_buf);
   decompressed_next_ -= copy_size;

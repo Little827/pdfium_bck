@@ -149,7 +149,7 @@ bool CPDF_ImageRenderer::StartRenderDIBBase() {
   RetainPtr<CPDF_ColorSpace> pColorSpace =
       pData->GetColorSpace(pCSObj, pPageResources);
   if (pColorSpace) {
-    int format = pColorSpace->GetFamily();
+    const int format = pColorSpace->GetFamily();
     if (format == PDFCS_DEVICECMYK || format == PDFCS_SEPARATION ||
         format == PDFCS_DEVICEN) {
       m_BlendType = BlendMode::kDarken;
@@ -234,14 +234,14 @@ void CPDF_ImageRenderer::CalculateDrawImage(
   }
   if (m_Loader.MatteColor() == 0xffffffff)
     return;
-  int matte_r = FXARGB_R(m_Loader.MatteColor());
-  int matte_g = FXARGB_G(m_Loader.MatteColor());
-  int matte_b = FXARGB_B(m_Loader.MatteColor());
+  const int matte_r = FXARGB_R(m_Loader.MatteColor());
+  const int matte_g = FXARGB_G(m_Loader.MatteColor());
+  const int matte_b = FXARGB_B(m_Loader.MatteColor());
   for (int row = 0; row < rect.Height(); row++) {
     uint8_t* dest_scan = pBitmapDevice1->GetBitmap()->GetWritableScanline(row);
     const uint8_t* mask_scan = pBitmapDevice2->GetBitmap()->GetScanline(row);
     for (int col = 0; col < rect.Width(); col++) {
-      int alpha = *mask_scan++;
+      const int alpha = *mask_scan++;
       if (!alpha) {
         dest_scan += 4;
         continue;
@@ -628,8 +628,8 @@ bool CPDF_ImageRenderer::GetDimensionsFromUnitRect(const FX_RECT& rect,
   if (m_ImageMatrix.d > 0)
     dest_height = -dest_height;
 
-  int dest_left = dest_width > 0 ? rect.left : rect.right;
-  int dest_top = dest_height > 0 ? rect.top : rect.bottom;
+  const int dest_left = dest_width > 0 ? rect.left : rect.right;
+  const int dest_top = dest_height > 0 ? rect.top : rect.bottom;
   if (IsImageValueTooBig(dest_left) || IsImageValueTooBig(dest_top))
     return false;
 

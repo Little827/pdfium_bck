@@ -336,7 +336,7 @@ ByteString CPDF_SyntaxParser::ReadHexString() {
       break;
 
     if (std::isxdigit(ch)) {
-      int val = FXSYS_HexCharToInt(ch);
+      const int val = FXSYS_HexCharToInt(ch);
       if (bFirst) {
         code = val * 16;
       } else {
@@ -519,7 +519,7 @@ RetainPtr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
       return pdfium::MakeRetain<CPDF_Number>(word.AsStringView());
 
     pos_restorer.AbandonRestoration();
-    uint32_t refnum = FXSYS_atoui(word.c_str());
+    const uint32_t refnum = FXSYS_atoui(word.c_str());
     if (refnum == CPDF_Object::kInvalidObjNum)
       return nullptr;
 
@@ -803,7 +803,7 @@ RetainPtr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
   }
   SetPos(GetPos() - 1);
 
-  int numMarkers = ReadEOLMarkers(GetPos());
+  const int numMarkers = ReadEOLMarkers(GetPos());
   if (m_WordSize == static_cast<unsigned int>(kEndObjStr.GetLength()) &&
       numMarkers != 0 &&
       memcmp(m_WordBuffer, kEndObjStr.raw_str(), kEndObjStr.GetLength()) == 0) {
@@ -828,9 +828,10 @@ bool CPDF_SyntaxParser::IsWholeWord(FX_FILESIZE startpos,
                                     bool checkKeyword) {
   const uint32_t taglen = tag.GetLength();
 
-  bool bCheckLeft = !PDFCharIsDelimiter(tag[0]) && !PDFCharIsWhitespace(tag[0]);
-  bool bCheckRight = !PDFCharIsDelimiter(tag[taglen - 1]) &&
-                     !PDFCharIsWhitespace(tag[taglen - 1]);
+  const bool bCheckLeft =
+      !PDFCharIsDelimiter(tag[0]) && !PDFCharIsWhitespace(tag[0]);
+  const bool bCheckRight = !PDFCharIsDelimiter(tag[taglen - 1]) &&
+                           !PDFCharIsWhitespace(tag[taglen - 1]);
 
   uint8_t ch;
   if (bCheckRight && startpos + static_cast<int32_t>(taglen) <= limit &&
@@ -852,7 +853,7 @@ bool CPDF_SyntaxParser::IsWholeWord(FX_FILESIZE startpos,
 
 bool CPDF_SyntaxParser::BackwardsSearchToWord(ByteStringView word,
                                               FX_FILESIZE limit) {
-  int32_t taglen = word.GetLength();
+  const int32_t taglen = word.GetLength();
   if (taglen == 0)
     return false;
 

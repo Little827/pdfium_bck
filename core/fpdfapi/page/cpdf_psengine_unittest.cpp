@@ -13,7 +13,7 @@ namespace {
 float DoOperator0(CPDF_PSEngine* engine, PDF_PSOP op) {
   EXPECT_EQ(0u, engine->GetStackSize());
   engine->DoOperator(op);
-  float ret = engine->Pop();
+  const float ret = engine->Pop();
   EXPECT_EQ(0u, engine->GetStackSize());
   return ret;
 }
@@ -22,7 +22,7 @@ float DoOperator1(CPDF_PSEngine* engine, float v1, PDF_PSOP op) {
   EXPECT_EQ(0u, engine->GetStackSize());
   engine->Push(v1);
   engine->DoOperator(op);
-  float ret = engine->Pop();
+  const float ret = engine->Pop();
   EXPECT_EQ(0u, engine->GetStackSize());
   return ret;
 }
@@ -32,7 +32,7 @@ float DoOperator2(CPDF_PSEngine* engine, float v1, float v2, PDF_PSOP op) {
   engine->Push(v1);
   engine->Push(v2);
   engine->DoOperator(op);
-  float ret = engine->Pop();
+  const float ret = engine->Pop();
   EXPECT_EQ(0u, engine->GetStackSize());
   return ret;
 }
@@ -80,7 +80,7 @@ TEST(CPDF_PSProc, AddOperator) {
     PDF_PSOP new_op = new_psop->GetOp();
     EXPECT_EQ(kTestData[i].op, new_op);
     if (new_op == PSOP_CONST) {
-      float fv = new_psop->GetFloatValue();
+      const float fv = new_psop->GetFloatValue();
       if (word == "invalid")
         EXPECT_FLOAT_EQ(0, fv);
       else
@@ -114,9 +114,9 @@ TEST(CPDF_PSEngine, Ceiling) {
   CPDF_PSEngine engine;
 
   // Smallest positive float value.
-  float min_float = std::numeric_limits<float>::min();
+  const float min_float = std::numeric_limits<float>::min();
   // Largest positive float value.
-  float max_float = std::numeric_limits<float>::max();
+  const float max_float = std::numeric_limits<float>::max();
   EXPECT_FLOAT_EQ(1.0f, DoOperator1(&engine, min_float, PSOP_CEILING));
   EXPECT_FLOAT_EQ(max_float, DoOperator1(&engine, max_float, PSOP_CEILING));
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, -min_float, PSOP_CEILING));
@@ -136,9 +136,9 @@ TEST(CPDF_PSEngine, Floor) {
   CPDF_PSEngine engine;
 
   // Smallest positive float value.
-  float min_float = std::numeric_limits<float>::min();
+  const float min_float = std::numeric_limits<float>::min();
   // Largest positive float value.
-  float max_float = std::numeric_limits<float>::max();
+  const float max_float = std::numeric_limits<float>::max();
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, min_float, PSOP_FLOOR));
   EXPECT_FLOAT_EQ(max_float, DoOperator1(&engine, max_float, PSOP_FLOOR));
   EXPECT_FLOAT_EQ(-1.0f, DoOperator1(&engine, -min_float, PSOP_FLOOR));
@@ -167,9 +167,9 @@ TEST(CPDF_PSEngine, Round) {
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0000000001f, PSOP_ROUND));
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0f, PSOP_ROUND));
   // Smallest positive float value.
-  float min_float = std::numeric_limits<float>::min();
+  const float min_float = std::numeric_limits<float>::min();
   // Largest positive float value.
-  float max_float = std::numeric_limits<float>::max();
+  const float max_float = std::numeric_limits<float>::max();
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, min_float, PSOP_ROUND));
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, -min_float, PSOP_ROUND));
   EXPECT_FLOAT_EQ(max_float, DoOperator1(&engine, max_float, PSOP_ROUND));
@@ -189,7 +189,7 @@ TEST(CPDF_PSEngine, Truncate) {
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0000000001f, PSOP_TRUNCATE));
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0f, PSOP_TRUNCATE));
   // Smallest positive float value.
-  float min_float = std::numeric_limits<float>::min();
+  const float min_float = std::numeric_limits<float>::min();
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, min_float, PSOP_TRUNCATE));
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, -min_float, PSOP_TRUNCATE));
   EXPECT_FLOAT_EQ(2.0f, DoOperator1(&engine, 2.3f, PSOP_TRUNCATE));
@@ -202,7 +202,7 @@ TEST(CPDF_PSEngine, Truncate) {
   // Truncate does not behave according to the PostScript Language Reference for
   // values beyond the range of integers. This seems to match Acrobat's
   // behavior. See https://crbug.com/pdfium/1314.
-  float max_int = std::numeric_limits<int>::max();
+  const float max_int = std::numeric_limits<int>::max();
   EXPECT_FLOAT_EQ(-max_int,
                   DoOperator1(&engine, max_int * -1.5f, PSOP_TRUNCATE));
 }

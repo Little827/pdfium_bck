@@ -115,10 +115,10 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
     CFX_PointF cp2;
     CXFA_Stroke* corner1 = strokes[i];
     CXFA_Stroke* corner2 = strokes[(i + 2) % 8];
-    float fRadius1 = corner1->GetRadius();
-    float fRadius2 = corner2->GetRadius();
-    bool bInverted = corner1->IsInverted();
-    bool bRound = corner1->GetJoinType() == XFA_AttributeValue::Round;
+    const float fRadius1 = corner1->GetRadius();
+    const float fRadius2 = corner2->GetRadius();
+    const bool bInverted = corner1->IsInverted();
+    const bool bRound = corner1->GetJoinType() == XFA_AttributeValue::Round;
     if (bRound) {
       sy = FX_PI / 2;
     }
@@ -226,8 +226,8 @@ void CXFA_Rectangle::Draw(const std::vector<CXFA_Stroke*>& strokes,
     return;
 
   for (int32_t i = 1; i < 8; i += 2) {
-    float fThickness = std::fmax(0.0, strokes[i]->GetThickness());
-    float fHalf = fThickness / 2;
+    const float fThickness = std::fmax(0.0, strokes[i]->GetThickness());
+    const float fHalf = fThickness / 2;
     XFA_AttributeValue iHand = GetHand();
     switch (i) {
       case 1:
@@ -336,7 +336,7 @@ void CXFA_Rectangle::Stroke(const std::vector<CXFA_Stroke*>& strokes,
   for (int32_t i = 0; i < 8; i++) {
     CXFA_Stroke* stroke = strokes[i];
     if ((i % 1) == 0 && stroke->GetRadius() < 0) {
-      bool bEmpty = path.IsEmpty();
+      const bool bEmpty = path.IsEmpty();
       if (!bEmpty) {
         if (stroke)
           stroke->Stroke(pGS, path, matrix);
@@ -354,7 +354,7 @@ void CXFA_Rectangle::Stroke(const std::vector<CXFA_Stroke*>& strokes,
       path.Clear();
     }
   }
-  bool bEmpty = path.IsEmpty();
+  const bool bEmpty = path.IsEmpty();
   if (!bEmpty) {
     if (bClose) {
       path.Close();
@@ -370,8 +370,8 @@ void CXFA_Rectangle::StrokeRect(CFGAS_GEGraphics* pGraphic,
                                 const CFX_Matrix& matrix,
                                 FX_ARGB argbTopLeft,
                                 FX_ARGB argbBottomRight) {
-  float fBottom = rt.bottom();
-  float fRight = rt.right();
+  const float fBottom = rt.bottom();
+  const float fRight = rt.right();
   CFGAS_GEPath pathLT;
   pathLT.MoveTo(CFX_PointF(rt.left, fBottom));
   pathLT.LineTo(CFX_PointF(rt.left, rt.top));
@@ -399,7 +399,7 @@ void CXFA_Rectangle::StrokeLowered(CFGAS_GEGraphics* pGS,
                                    CFX_RectF rt,
                                    float fThickness,
                                    const CFX_Matrix& matrix) {
-  float fHalfWidth = fThickness / 2.0f;
+  const float fHalfWidth = fThickness / 2.0f;
   CFX_RectF rtInner(rt);
   rtInner.Deflate(fHalfWidth, fHalfWidth);
 
@@ -415,7 +415,7 @@ void CXFA_Rectangle::StrokeRaised(CFGAS_GEGraphics* pGS,
                                   CFX_RectF rt,
                                   float fThickness,
                                   const CFX_Matrix& matrix) {
-  float fHalfWidth = fThickness / 2.0f;
+  const float fHalfWidth = fThickness / 2.0f;
   CFX_RectF rtInner(rt);
   rtInner.Deflate(fHalfWidth, fHalfWidth);
 
@@ -431,7 +431,7 @@ void CXFA_Rectangle::StrokeEtched(CFGAS_GEGraphics* pGS,
                                   CFX_RectF rt,
                                   float fThickness,
                                   const CFX_Matrix& matrix) {
-  float fHalfWidth = fThickness / 2.0f;
+  const float fHalfWidth = fThickness / 2.0f;
   StrokeRect(pGS, rt, fThickness, matrix, 0xFF808080, 0xFFFFFFFF);
 
   CFX_RectF rtInner(rt);
@@ -443,7 +443,7 @@ void CXFA_Rectangle::StrokeEmbossed(CFGAS_GEGraphics* pGS,
                                     CFX_RectF rt,
                                     float fThickness,
                                     const CFX_Matrix& matrix) {
-  float fHalfWidth = fThickness / 2.0f;
+  const float fHalfWidth = fThickness / 2.0f;
   StrokeRect(pGS, rt, fThickness, matrix, 0xFF808080, 0xFF000000);
 
   CFX_RectF rtInner(rt);
@@ -460,15 +460,15 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
   DCHECK(nIndex >= 0);
   DCHECK(nIndex < 8);
 
-  int32_t n = (nIndex & 1) ? nIndex - 1 : nIndex;
+  const int32_t n = (nIndex & 1) ? nIndex - 1 : nIndex;
   CXFA_Stroke* corner1 = strokes[n];
   CXFA_Stroke* corner2 = strokes[(n + 2) % 8];
-  float fRadius1 = bCorner ? corner1->GetRadius() : 0.0f;
-  float fRadius2 = bCorner ? corner2->GetRadius() : 0.0f;
-  bool bInverted = corner1->IsInverted();
+  const float fRadius1 = bCorner ? corner1->GetRadius() : 0.0f;
+  const float fRadius2 = bCorner ? corner2->GetRadius() : 0.0f;
+  const bool bInverted = corner1->IsInverted();
   float offsetY = 0.0f;
   float offsetX = 0.0f;
-  bool bRound = corner1->GetJoinType() == XFA_AttributeValue::Round;
+  const bool bRound = corner1->GetJoinType() == XFA_AttributeValue::Round;
   float halfAfter = 0.0f;
   float halfBefore = 0.0f;
 

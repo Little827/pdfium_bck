@@ -76,7 +76,7 @@ const ExecEventParaInfo* GetExecEventParaInfoByName(
   if (wsEventName.IsEmpty())
     return nullptr;
 
-  uint32_t uHash = FX_HashCode_GetW(wsEventName, false);
+  const uint32_t uHash = FX_HashCode_GetW(wsEventName, false);
   auto* result = std::lower_bound(
       std::begin(kExecEventParaInfoTable), std::end(kExecEventParaInfoTable),
       uHash, [](const ExecEventParaInfo& iter, const uint16_t& hash) {
@@ -160,7 +160,7 @@ CJS_Result CJX_Node::getElement(
     return CJS_Result::Failure(JSMessage::kParamError);
 
   WideString expression = runtime->ToWideString(params[0]);
-  int32_t iValue = params.size() >= 2 ? runtime->ToInt32(params[1]) : 0;
+  const int32_t iValue = params.size() >= 2 ? runtime->ToInt32(params[1]) : 0;
   XFA_Element eElement = XFA_GetElementByName(expression.AsStringView());
   if (eElement == XFA_Element::Unknown)
     return CJS_Result::Success(runtime->NewNull());
@@ -189,8 +189,8 @@ CJS_Result CJX_Node::isPropertySpecified(
   if (eType == XFA_Element::Unknown)
     return CJS_Result::Success(runtime->NewBoolean(false));
 
-  bool bParent = params.size() < 2 || runtime->ToBoolean(params[1]);
-  int32_t iIndex = params.size() == 3 ? runtime->ToInt32(params[2]) : 0;
+  const bool bParent = params.size() < 2 || runtime->ToBoolean(params[1]);
+  const int32_t iIndex = params.size() == 3 ? runtime->ToInt32(params[2]) : 0;
   bool bHas = !!GetOrCreateProperty<CXFA_Node>(iIndex, eType);
   if (!bHas && bParent && GetXFANode()->GetParent()) {
     // Also check on the parent.
@@ -214,7 +214,7 @@ CJS_Result CJX_Node::loadXML(CFX_V8* runtime,
   if (params.size() >= 2)
     bIgnoreRoot = runtime->ToBoolean(params[1]);
 
-  bool bOverwrite = 0;
+  bool bOverwrite = false;
   if (params.size() >= 3)
     bOverwrite = runtime->ToBoolean(params[2]);
 

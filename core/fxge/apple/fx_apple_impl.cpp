@@ -42,7 +42,7 @@ bool CGDrawGlyphRun(CGContextRef pContext,
   if (nChars == 0)
     return true;
 
-  bool bNegSize = font_size < 0;
+  const bool bNegSize = font_size < 0;
   if (bNegSize)
     font_size = -font_size;
 
@@ -115,7 +115,7 @@ bool CFX_AggDeviceDriver::DrawDeviceText(
   if (!pFont)
     return false;
 
-  bool bBold = pFont->IsBold();
+  const bool bBold = pFont->IsBold();
   if (!bBold && pFont->GetSubstFont() &&
       pFont->GetSubstFont()->m_Weight >= 500 &&
       pFont->GetSubstFont()->m_Weight <= 600) {
@@ -157,8 +157,8 @@ bool CFX_AggDeviceDriver::DrawDeviceText(
   else
     CGContextClipToRect(ctx, rect_cg);
 
-  bool ret = CGDrawGlyphRun(ctx, nChars, pCharPos, pFont, mtObject2Device,
-                            font_size, argb);
+  const bool ret = CGDrawGlyphRun(ctx, nChars, pCharPos, pFont, mtObject2Device,
+                                  font_size, argb);
   if (pImageCG)
     CGImageRelease(pImageCG);
   CGContextRestoreGState(ctx);

@@ -54,7 +54,7 @@ enum XFA_KEYTYPE {
 };
 
 uint32_t GetMapKey_Custom(WideStringView wsKey) {
-  uint32_t dwKey = FX_HashCode_GetW(wsKey, false);
+  const uint32_t dwKey = FX_HashCode_GetW(wsKey, false);
   return ((dwKey << 1) | XFA_KEYTYPE_Custom);
 }
 
@@ -76,7 +76,7 @@ std::tuple<int32_t, int32_t, int32_t> StrToRGB(const WideString& strRGB) {
     if (iIndex > 2)
       break;
 
-    int32_t iValue = ch - L'0';
+    const int32_t iValue = ch - L'0';
     if (iValue >= 0 && iValue <= 9) {
       switch (iIndex) {
         case 0:
@@ -198,7 +198,8 @@ void CJX_Object::ThrowException(const WideString& str) const {
 }
 
 bool CJX_Object::HasAttribute(XFA_Attribute eAttr) {
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   return HasMapModuleKey(key);
 }
 
@@ -240,7 +241,7 @@ void CJX_Object::SetAttributeByString(WideStringView wsAttr,
     SetAttributeByEnum(attr.value().attribute, wsValue, true);
     return;
   }
-  uint32_t key = GetMapKey_Custom(wsAttr);
+  const uint32_t key = GetMapKey_Custom(wsAttr);
   SetMapModuleString(key, wsValue);
 }
 
@@ -300,7 +301,8 @@ void CJX_Object::RemoveAttribute(WideStringView wsAttr) {
 }
 
 Optional<bool> CJX_Object::TryBoolean(XFA_Attribute eAttr, bool bUseDefault) {
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   Optional<int32_t> value = GetMapModuleValueFollowingChain(key);
   if (value.has_value())
     return !!value.value();
@@ -335,7 +337,8 @@ int32_t CJX_Object::GetInteger(XFA_Attribute eAttr) const {
 
 Optional<int32_t> CJX_Object::TryInteger(XFA_Attribute eAttr,
                                          bool bUseDefault) const {
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   Optional<int32_t> value = GetMapModuleValueFollowingChain(key);
   if (value.has_value())
     return value.value();
@@ -346,7 +349,8 @@ Optional<int32_t> CJX_Object::TryInteger(XFA_Attribute eAttr,
 
 Optional<XFA_AttributeValue> CJX_Object::TryEnum(XFA_Attribute eAttr,
                                                  bool bUseDefault) const {
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   Optional<int32_t> value = GetMapModuleValueFollowingChain(key);
   if (value.has_value())
     return static_cast<XFA_AttributeValue>(value.value());
@@ -374,7 +378,8 @@ void CJX_Object::SetMeasure(XFA_Attribute eAttr,
                             bool bNotify) {
   // Can't short-circuit update here when the value is the same since it
   // might have come from further up the chain from where we are setting it.
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   if (bNotify)
     OnChanging(eAttr);
   SetMapModuleMeasurement(key, mValue);
@@ -384,7 +389,8 @@ void CJX_Object::SetMeasure(XFA_Attribute eAttr,
 
 Optional<CXFA_Measurement> CJX_Object::TryMeasure(XFA_Attribute eAttr,
                                                   bool bUseDefault) const {
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   Optional<CXFA_Measurement> result =
       GetMapModuleMeasurementFollowingChain(key);
   if (result.has_value())
@@ -422,7 +428,7 @@ void CJX_Object::SetCDataImpl(XFA_Attribute eAttr,
                               bool bNotify,
                               bool bScriptModify) {
   CXFA_Node* xfaObj = GetXFANode();
-  uint32_t key = GetMapKey_Element(xfaObj->GetElementType(), eAttr);
+  const uint32_t key = GetMapKey_Element(xfaObj->GetElementType(), eAttr);
   Optional<WideString> old_value = GetMapModuleString(key);
   if (!old_value.has_value() || old_value.value() != wsValue) {
     if (bNotify)
@@ -485,7 +491,8 @@ void CJX_Object::SetAttributeValueImpl(const WideString& wsValue,
 
 Optional<WideString> CJX_Object::TryCData(XFA_Attribute eAttr,
                                           bool bUseDefault) const {
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   Optional<WideString> value = GetMapModuleStringFollowingChain(key);
   if (value.has_value())
     return value;
@@ -499,7 +506,8 @@ Optional<WideString> CJX_Object::TryCData(XFA_Attribute eAttr,
 CFX_XMLElement* CJX_Object::SetValue(XFA_Attribute eAttr,
                                      int32_t value,
                                      bool bNotify) {
-  uint32_t key = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
+  const uint32_t key =
+      GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   Optional<int32_t> old_value = GetMapModuleValue(key);
   if (!old_value.has_value() || old_value.value() != value) {
     if (bNotify)
@@ -558,7 +566,8 @@ void CJX_Object::SetContent(const WideString& wsContent,
                 pBind->InsertChildAndNotify(pValueNodes, nullptr);
               }
             } else {
-              size_t iDelNodes = valueNodes.size() - wsSaveTextArray.size();
+              const size_t iDelNodes =
+                  valueNodes.size() - wsSaveTextArray.size();
               for (size_t i = 0; i < iDelNodes; ++i)
                 pBind->RemoveChildAndNotify(valueNodes[i], true);
             }
@@ -1122,7 +1131,7 @@ void CJX_Object::ScriptSomBorderColor(v8::Isolate* pIsolate,
                                       bool bSetting,
                                       XFA_Attribute eAttribute) {
   CXFA_Border* border = ToNode(object_.Get())->GetOrCreateBorderIfPossible();
-  int32_t iSize = border->CountEdges();
+  const int32_t iSize = border->CountEdges();
   if (bSetting) {
     int32_t r = 0;
     int32_t g = 0;
@@ -1392,8 +1401,8 @@ void CJX_Object::ScriptSomInstanceIndex(v8::Isolate* pIsolate,
     return;
   }
 
-  int32_t iTo = fxv8::ReentrantToInt32Helper(pIsolate, *pValue);
-  int32_t iFrom = Subform_and_SubformSet_InstanceIndex();
+  const int32_t iTo = fxv8::ReentrantToInt32Helper(pIsolate, *pValue);
+  const int32_t iFrom = Subform_and_SubformSet_InstanceIndex();
   CXFA_Node* pManagerNode = nullptr;
   for (CXFA_Node* pNode = GetXFANode()->GetPrevSibling(); pNode;
        pNode = pNode->GetPrevSibling()) {

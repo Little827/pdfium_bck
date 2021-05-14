@@ -147,7 +147,7 @@ void CRYPT_ArcFourSetup(CRYPT_rc4_context* context,
 
   int j = 0;
   for (int i = 0; i < kRC4ContextPermutationLength; ++i) {
-    size_t size = key.size();
+    const size_t size = key.size();
     j = (j + context->m[i] + (size ? key[i % size] : 0)) & 0xFF;
     std::swap(context->m[i], context->m[j]);
   }
@@ -188,7 +188,7 @@ void CRYPT_MD5Update(CRYPT_md5_context* context,
     return;
 
   uint32_t left = (context->total[0] >> 3) & 0x3F;
-  uint32_t fill = 64 - left;
+  const uint32_t fill = 64 - left;
   context->total[0] += data.size() << 3;
   context->total[1] += data.size() >> 29;
   context->total[0] &= 0xFFFFFFFF;
@@ -205,7 +205,7 @@ void CRYPT_MD5Update(CRYPT_md5_context* context,
     md5_process(context, data.data());
     data = next_data;
   }
-  size_t remaining = data.size();
+  const size_t remaining = data.size();
   if (remaining)
     memcpy(context->buffer + left, data.data(), remaining);
 }
@@ -214,8 +214,8 @@ void CRYPT_MD5Finish(CRYPT_md5_context* context, uint8_t digest[16]) {
   uint8_t msglen[8];
   PUT_UINT32(context->total[0], msglen, 0);
   PUT_UINT32(context->total[1], msglen, 4);
-  uint32_t last = (context->total[0] >> 3) & 0x3F;
-  uint32_t padn = (last < 56) ? (56 - last) : (120 - last);
+  const uint32_t last = (context->total[0] >> 3) & 0x3F;
+  const uint32_t padn = (last < 56) ? (56 - last) : (120 - last);
   CRYPT_MD5Update(context, {md5_padding, padn});
   CRYPT_MD5Update(context, msglen);
   PUT_UINT32(context->state[0], digest, 0);

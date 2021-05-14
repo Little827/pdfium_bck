@@ -31,8 +31,8 @@ bool CBC_TwoDimWriter::RenderResult(pdfium::span<const uint8_t> code,
 
   m_inputWidth = codeWidth;
   m_inputHeight = codeHeight;
-  int32_t tempWidth = m_inputWidth + 2;
-  int32_t tempHeight = m_inputHeight + 2;
+  const int32_t tempWidth = m_inputWidth + 2;
+  const int32_t tempHeight = m_inputHeight + 2;
   float moduleHSize = std::min(m_ModuleWidth, m_ModuleHeight);
   moduleHSize = std::min(moduleHSize, 8.0f);
   moduleHSize = std::max(moduleHSize, 1.0f);
@@ -93,8 +93,8 @@ void CBC_TwoDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
   path.AppendRect(0, 0, m_Width, m_Height);
   device->DrawPath(&path, &matrix, &stateData, kBackgroundColor,
                    kBackgroundColor, CFX_FillRenderOptions::EvenOddOptions());
-  int32_t leftPos = m_leftPadding;
-  int32_t topPos = m_topPadding;
+  const int32_t leftPos = m_leftPadding;
+  const int32_t topPos = m_topPadding;
 
   CFX_Matrix matri = matrix;
   if (m_Width < m_outputWidth && m_Height < m_outputHeight) {
@@ -111,10 +111,10 @@ void CBC_TwoDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
       if (m_output->Get(x, y)) {
         // In the output, each module is shifted by 1 due to the one module
         // padding added to create quiet areas.
-        int start_x_output = x + 1;
-        int end_x_output = x + 2;
-        int start_y_output = y + 1;
-        int end_y_output = y + 2;
+        const int start_x_output = x + 1;
+        const int end_x_output = x + 2;
+        const int start_y_output = y + 1;
+        const int end_y_output = y + 2;
 
         CFX_PathData rect;
         rect.AppendRect(leftPos + start_x_output * m_multiX,

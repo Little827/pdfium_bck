@@ -46,7 +46,7 @@ class CFX_CSSStyleSheetTest : public testing::Test {
     EXPECT_EQ(selectors.size(), style->CountSelectorLists());
 
     for (size_t i = 0; i < selectors.size(); i++) {
-      uint32_t hash = FX_HashCode_GetW(selectors[i].AsStringView(), true);
+      const uint32_t hash = FX_HashCode_GetW(selectors[i].AsStringView(), true);
       EXPECT_EQ(hash, style->GetSelectorList(i)->name_hash());
     }
 
@@ -93,7 +93,7 @@ class CFX_CSSStyleSheetTest : public testing::Test {
   }
 
   static bool HasSelector(CFX_CSSStyleRule* style, WideStringView selector) {
-    uint32_t hash = FX_HashCode_GetW(selector, true);
+    const uint32_t hash = FX_HashCode_GetW(selector, true);
     for (size_t i = 0; i < style->CountSelectorLists(); ++i) {
       if (style->GetSelectorList(i)->name_hash() == hash)
         return true;

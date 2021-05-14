@@ -95,8 +95,8 @@ int YearFromTime(double t) {
 }
 
 int DayWithinYear(double t) {
-  int year = YearFromTime(t);
-  int day = Day(t);
+  const int year = YearFromTime(t);
+  const int day = Day(t);
   return day - DayFromYear(year);
 }
 
@@ -123,10 +123,10 @@ int MonthFromTime(double t) {
 }
 
 int DateFromTime(double t) {
-  int day = DayWithinYear(t);
-  int year = YearFromTime(t);
-  int leap = IsLeapYear(year);
-  int month = MonthFromTime(t);
+  const int day = DayWithinYear(t);
+  const int year = YearFromTime(t);
+  const int leap = IsLeapYear(year);
+  const int month = MonthFromTime(t);
   switch (month) {
     case 0:
       return day + 1;
@@ -185,7 +185,7 @@ double FX_GetDateTime() {
 
   time_t t = FXSYS_time(nullptr);
   struct tm* pTm = FXSYS_localtime(&t);
-  double t1 = TimeFromYear(pTm->tm_year + 1900);
+  const double t1 = TimeFromYear(pTm->tm_year + 1900);
   return t1 + pTm->tm_yday * 86400000.0 + pTm->tm_hour * 3600000.0 +
          pTm->tm_min * 60000.0 + pTm->tm_sec * 1000.0;
 }
@@ -241,12 +241,13 @@ double FX_LocalTime(double d) {
 }
 
 double FX_MakeDay(int nYear, int nMonth, int nDate) {
-  double y = static_cast<double>(nYear);
-  double m = static_cast<double>(nMonth);
-  double dt = static_cast<double>(nDate);
-  double ym = y + floor(m / 12);
-  double mn = Mod(m, 12);
-  double t = TimeFromYearMonth(static_cast<int>(ym), static_cast<int>(mn));
+  const double y = static_cast<double>(nYear);
+  const double m = static_cast<double>(nMonth);
+  const double dt = static_cast<double>(nDate);
+  const double ym = y + floor(m / 12);
+  const double mn = Mod(m, 12);
+  const double t =
+      TimeFromYearMonth(static_cast<int>(ym), static_cast<int>(mn));
   if (YearFromTime(t) != ym || MonthFromTime(t) != mn || DateFromTime(t) != 1)
     return std::nan("");
 
@@ -254,10 +255,10 @@ double FX_MakeDay(int nYear, int nMonth, int nDate) {
 }
 
 double FX_MakeTime(int nHour, int nMin, int nSec, int nMs) {
-  double h = static_cast<double>(nHour);
-  double m = static_cast<double>(nMin);
-  double s = static_cast<double>(nSec);
-  double milli = static_cast<double>(nMs);
+  const double h = static_cast<double>(nHour);
+  const double m = static_cast<double>(nMin);
+  const double s = static_cast<double>(nSec);
+  const double milli = static_cast<double>(nMs);
   return h * 3600000 + m * 60000 + s * 1000 + milli;
 }
 
@@ -307,7 +308,7 @@ ConversionStatus FX_ParseDateUsingFormat(const WideString& value,
   int nHour = FX_GetHourFromTime(dt);
   int nMin = FX_GetMinFromTime(dt);
   int nSec = FX_GetSecFromTime(dt);
-  int nYearSub = 99;  // nYear - 2000;
+  const int nYearSub = 99;  // nYear - 2000;
   bool bPm = false;
   bool bExit = false;
   bool bBadFormat = false;
@@ -337,9 +338,9 @@ ConversionStatus FX_ParseDateUsingFormat(const WideString& value,
       case 'M':
       case 's':
       case 't': {
-        size_t oldj = j;
+        const size_t oldj = j;
         size_t nSkip = 0;
-        size_t remaining = format.GetLength() - i - 1;
+        const size_t remaining = format.GetLength() - i - 1;
 
         if (remaining == 0 || format[i + 1] != c) {
           switch (c) {

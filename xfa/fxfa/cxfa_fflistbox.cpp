@@ -94,7 +94,7 @@ bool CXFA_FFListBox::OnKillFocus(CXFA_FFWidget* pNewFocus) {
 bool CXFA_FFListBox::CommitData() {
   auto* pListBox = ToListBox(GetNormalWidget());
   std::vector<int32_t> iSelArray;
-  int32_t iSels = pListBox->CountSelItems();
+  const int32_t iSels = pListBox->CountSelItems();
   for (int32_t i = 0; i < iSels; ++i)
     iSelArray.push_back(pListBox->GetSelIndex(i));
 
@@ -104,9 +104,9 @@ bool CXFA_FFListBox::CommitData() {
 
 bool CXFA_FFListBox::IsDataChanged() {
   std::vector<int32_t> iSelArray = m_pNode->GetSelectedItems();
-  int32_t iOldSels = pdfium::CollectionSize<int32_t>(iSelArray);
+  const int32_t iOldSels = pdfium::CollectionSize<int32_t>(iSelArray);
   auto* pListBox = ToListBox(GetNormalWidget());
-  int32_t iSels = pListBox->CountSelItems();
+  const int32_t iSels = pListBox->CountSelItems();
   if (iOldSels != iSels)
     return true;
 

@@ -33,8 +33,8 @@ CFX_Matrix CPDF_DeviceBuffer::CalculateMatrix(CFX_RenderDevice* pDevice,
   CFX_Matrix matrix;
   matrix.Translate(-rect.left, -rect.top);
   if (scale) {
-    int horz_size = pDevice->GetDeviceCaps(FXDC_HORZ_SIZE);
-    int vert_size = pDevice->GetDeviceCaps(FXDC_VERT_SIZE);
+    const int horz_size = pDevice->GetDeviceCaps(FXDC_HORZ_SIZE);
+    const int vert_size = pDevice->GetDeviceCaps(FXDC_VERT_SIZE);
     if (horz_size && vert_size && max_dpi) {
       int dpih =
           pDevice->GetDeviceCaps(FXDC_PIXEL_WIDTH) * 254 / (horz_size * 10);
