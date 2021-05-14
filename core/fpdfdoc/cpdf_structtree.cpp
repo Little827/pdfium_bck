@@ -66,7 +66,7 @@ void CPDF_StructTree::LoadPageTree(const CPDF_Dictionary* pPageDict) {
     return;
 
   CPDF_NumberTree parent_tree(pParentTree);
-  int parents_id = pPageDict->GetIntegerFor("StructParents", -1);
+  const int parents_id = pPageDict->GetIntegerFor("StructParents", -1);
   if (parents_id < 0)
     return;
 

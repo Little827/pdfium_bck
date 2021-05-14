@@ -327,7 +327,8 @@ bool CPDF_BAFontMap::KnowWord(int32_t nFontIndex, uint16_t word) {
 int32_t CPDF_BAFontMap::GetFontIndex(const ByteString& sFontName,
                                      int32_t nCharset,
                                      bool bFind) {
-  int32_t nFontIndex = FindFont(EncodeFontAlias(sFontName, nCharset), nCharset);
+  const int32_t nFontIndex =
+      FindFont(EncodeFontAlias(sFontName, nCharset), nCharset);
   if (nFontIndex >= 0)
     return nFontIndex;
 

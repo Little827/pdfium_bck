@@ -192,7 +192,7 @@ CPDF_Object* SearchNameNodeByName(CPDF_Dictionary* pNode,
     size_t dwCount = pNames->size() / 2;
     for (size_t i = 0; i < dwCount; i++) {
       WideString csValue = pNames->GetUnicodeTextAt(i * 2);
-      int32_t iCompare = csValue.Compare(csName);
+      const int32_t iCompare = csValue.Compare(csName);
       if (iCompare > 0)
         break;
       if (ppFind)
@@ -243,7 +243,7 @@ CPDF_Object* SearchNameNodeByIndex(CPDF_Dictionary* pNode,
 
   CPDF_Array* pNames = pNode->GetArrayFor("Names");
   if (pNames) {
-    size_t nCount = pNames->size() / 2;
+    const size_t nCount = pNames->size() / 2;
     if (nIndex >= *nCurIndex + nCount) {
       *nCurIndex += nCount;
       return nullptr;
@@ -427,8 +427,8 @@ bool CPDF_NameTree::AddValueAndName(RetainPtr<CPDF_Object> pObj,
 
   // Insert the name and the object into the leaf array found. Note that the
   // insertion position is right after the key-value pair returned by |index|.
-  size_t nNameIndex = (nFindIndex + 1) * 2;
-  size_t nValueIndex = nNameIndex + 1;
+  const size_t nNameIndex = (nFindIndex + 1) * 2;
+  const size_t nValueIndex = nNameIndex + 1;
   pFind->InsertNewAt<CPDF_String>(nNameIndex, name);
   pFind->InsertAt(nValueIndex, std::move(pObj));
 

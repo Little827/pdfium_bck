@@ -119,7 +119,7 @@ bool CPDF_Dest::GetXYZ(bool* pHasX,
 
   // A zoom value of 0 is equivalent to a null value, so treat it as a null.
   if (numZoom) {
-    float num = numZoom->GetNumber();
+    const float num = numZoom->GetNumber();
     if (num == 0.0)
       *pHasZoom = false;
     else

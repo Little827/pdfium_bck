@@ -50,7 +50,7 @@ CFX_PointF CPDF_IconFit::GetIconBottomLeftPosition() const {
   if (!pA)
     return {fLeft, fBottom};
 
-  size_t dwCount = pA->size();
+  const size_t dwCount = pA->size();
   if (dwCount > 0)
     fLeft = pA->GetNumberAt(0);
   if (dwCount > 1)
@@ -70,7 +70,7 @@ CFX_PointF CPDF_IconFit::GetIconPosition() const {
   if (!pA)
     return CFX_PointF();
 
-  size_t dwCount = pA->size();
+  const size_t dwCount = pA->size();
   return {dwCount > 0 ? pA->GetNumberAt(0) : 0.0f,
           dwCount > 1 ? pA->GetNumberAt(1) : 0.0f};
 }
@@ -105,7 +105,7 @@ CFX_VectorF CPDF_IconFit::GetScale(const CFX_SizeF& image_size,
   }
 
   if (IsProportionalScale()) {
-    float min_scale = std::min(fHScale, fVScale);
+    const float min_scale = std::min(fHScale, fVScale);
     fHScale = min_scale;
     fVScale = min_scale;
   }

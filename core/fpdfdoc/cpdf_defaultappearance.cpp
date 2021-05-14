@@ -106,19 +106,19 @@ CPDF_DefaultAppearance::GetColor() {
     return {type, 0};
 
   if (*type == CFX_Color::kGray) {
-    int g = static_cast<int>(values[0] * 255 + 0.5f);
+    const int g = static_cast<int>(values[0] * 255 + 0.5f);
     return {type, ArgbEncode(255, g, g, g)};
   }
   if (*type == CFX_Color::kRGB) {
-    int r = static_cast<int>(values[0] * 255 + 0.5f);
-    int g = static_cast<int>(values[1] * 255 + 0.5f);
-    int b = static_cast<int>(values[2] * 255 + 0.5f);
+    const int r = static_cast<int>(values[0] * 255 + 0.5f);
+    const int g = static_cast<int>(values[1] * 255 + 0.5f);
+    const int b = static_cast<int>(values[2] * 255 + 0.5f);
     return {type, ArgbEncode(255, r, g, b)};
   }
   if (*type == CFX_Color::kCMYK) {
-    float r = 1.0f - std::min(1.0f, values[0] + values[3]);
-    float g = 1.0f - std::min(1.0f, values[1] + values[3]);
-    float b = 1.0f - std::min(1.0f, values[2] + values[3]);
+    const float r = 1.0f - std::min(1.0f, values[0] + values[3]);
+    const float g = 1.0f - std::min(1.0f, values[1] + values[3]);
+    const float b = 1.0f - std::min(1.0f, values[2] + values[3]);
     return {type, ArgbEncode(255, static_cast<int>(r * 255 + 0.5f),
                              static_cast<int>(g * 255 + 0.5f),
                              static_cast<int>(b * 255 + 0.5f))};

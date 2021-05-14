@@ -282,7 +282,7 @@ void InitDict(CPDF_Dictionary*& pFormDict, CPDF_Document* pDocument) {
   ByteString csDA;
   if (!pFormDict->KeyExist("DR")) {
     ByteString csBaseName;
-    uint8_t charSet = GetNativeCharSet();
+    const uint8_t charSet = GetNativeCharSet();
     RetainPtr<CPDF_Font> pFont = AddStandardFont(pDocument);
     if (pFont)
       AddFont(pFormDict, pDocument, pFont, &csBaseName);
@@ -353,11 +353,11 @@ class CFieldNameExtractor {
       : m_FullName(full_name) {}
 
   WideStringView GetNext() {
-    size_t start_pos = m_iCur;
+    const size_t start_pos = m_iCur;
     while (m_iCur < m_FullName.GetLength() && m_FullName[m_iCur] != L'.')
       ++m_iCur;
 
-    size_t length = m_iCur - start_pos;
+    const size_t length = m_iCur - start_pos;
     if (m_iCur < m_FullName.GetLength() && m_FullName[m_iCur] == L'.')
       ++m_iCur;
 
@@ -461,7 +461,7 @@ CFieldTree::Node* CFieldTree::AddChild(Node* pParent,
   if (!pParent)
     return nullptr;
 
-  int level = pParent->GetLevel() + 1;
+  const int level = pParent->GetLevel() + 1;
   if (level > nMaxRecursion)
     return nullptr;
 
@@ -588,7 +588,7 @@ RetainPtr<CPDF_Font> CPDF_InteractiveForm::AddNativeInteractiveFormFont(
     InitDict(pFormDict, pDocument);
   DCHECK(pFormDict);
 
-  uint8_t charSet = GetNativeCharSet();
+  const uint8_t charSet = GetNativeCharSet();
   ByteString csTemp;
   RetainPtr<CPDF_Font> pFont =
       GetNativeFont(pFormDict, pDocument, charSet, &csTemp);
@@ -644,7 +644,7 @@ const CPDF_FormControl* CPDF_InteractiveForm::GetControlAtPoint(
     return nullptr;
 
   for (size_t i = pAnnotList->size(); i > 0; --i) {
-    size_t annot_index = i - 1;
+    const size_t annot_index = i - 1;
     const CPDF_Dictionary* pAnnot = pAnnotList->GetDictAt(annot_index);
     if (!pAnnot)
       continue;
@@ -783,7 +783,7 @@ void CPDF_InteractiveForm::LoadField(CPDF_Dictionary* pFieldDict, int nLevel) {
   if (!pFieldDict)
     return;
 
-  uint32_t dwParentObjNum = pFieldDict->GetObjNum();
+  const uint32_t dwParentObjNum = pFieldDict->GetObjNum();
   CPDF_Array* pKids = pFieldDict->GetArrayFor(pdfium::form_fields::kKids);
   if (!pKids) {
     AddTerminalField(pFieldDict);
@@ -914,7 +914,7 @@ bool CPDF_InteractiveForm::CheckRequiredFields(
     if (!pField)
       continue;
 
-    int32_t iType = pField->GetType();
+    const int32_t iType = pField->GetType();
     if (iType == CPDF_FormField::kPushButton ||
         iType == CPDF_FormField::kCheckBox ||
         iType == CPDF_FormField::kListBox) {
@@ -981,7 +981,7 @@ std::unique_ptr<CFDF_Document> CPDF_InteractiveForm::ExportToFDF(
     if (!pField || pField->GetType() == CPDF_FormField::kPushButton)
       continue;
 
-    uint32_t dwFlags = pField->GetFieldFlags();
+    const uint32_t dwFlags = pField->GetFieldFlags();
     if (dwFlags & pdfium::form_flags::kNoExport)
       continue;
 

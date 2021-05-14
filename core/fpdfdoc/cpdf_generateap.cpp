@@ -68,7 +68,7 @@ ByteString GetPDFWordString(IPVT_FontMap* pFontMap,
   }
 
   ByteString sWord;
-  uint32_t dwCharCode = pPDFFont->CharCodeFromUnicode(Word);
+  const uint32_t dwCharCode = pPDFFont->CharCodeFromUnicode(Word);
   if (dwCharCode != CPDF_Font::kInvalidCharCode)
     pPDFFont->AppendChar(&sWord, dwCharCode);
 
@@ -210,12 +210,12 @@ ByteString GenerateBorderAP(const CFX_FloatRect& rect,
                             const CPVT_Dash& dash) {
   std::ostringstream sAppStream;
   ByteString sColor;
-  float fLeft = rect.left;
-  float fRight = rect.right;
-  float fTop = rect.top;
-  float fBottom = rect.bottom;
+  const float fLeft = rect.left;
+  const float fRight = rect.right;
+  const float fTop = rect.top;
+  const float fBottom = rect.bottom;
   if (fWidth > 0.0f) {
-    float fHalfWidth = fWidth / 2.0f;
+    const float fHalfWidth = fWidth / 2.0f;
     switch (nStyle) {
       default:
       case BorderStyle::kSolid:
@@ -354,9 +354,9 @@ ByteString GetDashPatternString(const CPDF_Dictionary& pAnnotDict) {
     return ByteString();
 
   // Support maximum of ten elements in the dash array.
-  size_t pDashArrayCount = std::min<size_t>(pDashArray->size(), 10);
-  std::ostringstream sDashStream;
+  const size_t pDashArrayCount = std::min<size_t>(pDashArray->size(), 10);
 
+  std::ostringstream sDashStream;
   sDashStream << "[";
   for (size_t i = 0; i < pDashArrayCount; ++i)
     sDashStream << pDashArray->GetNumberAt(i) << " ";
@@ -443,7 +443,7 @@ ByteString GenerateTextSymbolAP(const CFX_FloatRect& rect) {
   outerRect2.left += fTipDelta;
   outerRect2.right = outerRect2.left + fTipDelta;
   outerRect2.top = outerRect2.bottom - fTipDelta;
-  float outerRect2Middle = (outerRect2.left + outerRect2.right) / 2;
+  const float outerRect2Middle = (outerRect2.left + outerRect2.right) / 2;
 
   // Draw outer boxes.
   sAppStream << outerRect1.left << " " << outerRect1.bottom << " m\n"
@@ -480,7 +480,7 @@ RetainPtr<CPDF_Dictionary> GenerateExtGStateDict(
       pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
   pGSDict->SetNewFor<CPDF_Name>("Type", "ExtGState");
 
-  float fOpacity =
+  const float fOpacity =
       pAnnotDict.KeyExist("CA") ? pAnnotDict.GetNumberFor("CA") : 1;
   pGSDict->SetNewFor<CPDF_Number>("CA", fOpacity);
   pGSDict->SetNewFor<CPDF_Number>("ca", fOpacity);
@@ -546,8 +546,8 @@ bool GenerateCircleAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
       pAnnotDict->GetArrayFor(pdfium::annotation::kC),
       CFX_Color(CFX_Color::kRGB, 0, 0, 0), PaintOperation::kStroke);
 
-  float fBorderWidth = GetBorderWidth(*pAnnotDict);
-  bool bIsStrokeRect = fBorderWidth > 0;
+  const float fBorderWidth = GetBorderWidth(*pAnnotDict);
+  const bool bIsStrokeRect = fBorderWidth > 0;
 
   if (bIsStrokeRect) {
     sAppStream << fBorderWidth << " w ";
@@ -593,7 +593,7 @@ bool GenerateCircleAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
              << fMiddleX - fDeltaX << " " << rect.top << " " << fMiddleX << " "
              << rect.top << " c\n";
 
-  bool bIsFillRect = pInteriorColor && !pInteriorColor->IsEmpty();
+  const bool bIsFillRect = pInteriorColor && !pInteriorColor->IsEmpty();
   sAppStream << GetPaintOperatorString(bIsStrokeRect, bIsFillRect) << "\n";
 
   auto pExtGStateDict =
@@ -616,7 +616,7 @@ bool GenerateHighlightAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
   CPDF_Array* pArray = pAnnotDict->GetArrayFor("QuadPoints");
   if (pArray) {
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -638,9 +638,8 @@ bool GenerateHighlightAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 }
 
 bool GenerateInkAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
-  float fBorderWidth = GetBorderWidth(*pAnnotDict);
-  bool bIsStroke = fBorderWidth > 0;
-
+  const float fBorderWidth = GetBorderWidth(*pAnnotDict);
+  const bool bIsStroke = fBorderWidth > 0;
   if (!bIsStroke)
     return false;
 
@@ -725,7 +724,7 @@ bool GenerateUnderlineAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   if (pArray) {
     static constexpr float kLineWidth = 1.0f;
     sAppStream << kLineWidth << " w ";
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -797,9 +796,8 @@ bool GenerateSquareAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
       pAnnotDict->GetArrayFor(pdfium::annotation::kC),
       CFX_Color(CFX_Color::kRGB, 0, 0, 0), PaintOperation::kStroke);
 
-  float fBorderWidth = GetBorderWidth(*pAnnotDict);
-  bool bIsStrokeRect = fBorderWidth > 0;
-
+  const float fBorderWidth = GetBorderWidth(*pAnnotDict);
+  const bool bIsStrokeRect = fBorderWidth > 0;
   if (bIsStrokeRect) {
     sAppStream << fBorderWidth << " w ";
     sAppStream << GetDashPatternString(*pAnnotDict);
@@ -815,8 +813,7 @@ bool GenerateSquareAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
     rect.Deflate(fBorderWidth / 2, fBorderWidth / 2);
   }
 
-  bool bIsFillRect = pInteriorColor && (pInteriorColor->size() > 0);
-
+  const bool bIsFillRect = pInteriorColor && (pInteriorColor->size() > 0);
   sAppStream << rect.left << " " << rect.bottom << " " << rect.Width() << " "
              << rect.Height() << " re "
              << GetPaintOperatorString(bIsStrokeRect, bIsFillRect) << "\n";
@@ -844,7 +841,7 @@ bool GenerateSquigglyAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
     static constexpr float kLineWidth = 1.0f;
     static constexpr float kDelta = 2.0f;
     sAppStream << kLineWidth << " w ";
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -861,7 +858,7 @@ bool GenerateSquigglyAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
         isUpwards = !isUpwards;
       }
 
-      float fRemainder = rect.right - (fX - kDelta);
+      const float fRemainder = rect.right - (fX - kDelta);
       if (isUpwards)
         sAppStream << rect.right << " " << fBottom + fRemainder << " l ";
       else
@@ -892,7 +889,7 @@ bool GenerateStrikeOutAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   CPDF_Array* pArray = pAnnotDict->GetArrayFor("QuadPoints");
   if (pArray) {
     static constexpr float kLineWidth = 1.0f;
-    size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
+    const size_t nQuadPointCount = CPDF_Annot::QuadPointCount(pArray);
     for (size_t i = 0; i < nQuadPointCount; ++i) {
       CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(pAnnotDict, i);
       rect.Normalize();
@@ -968,7 +965,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
 
   CFX_FloatRect rcAnnot = pAnnotDict->GetRectFor(pdfium::annotation::kRect);
   CPDF_Dictionary* pMKDict = pAnnotDict->GetDictFor("MK");
-  int32_t nRotate = pMKDict ? pMKDict->GetIntegerFor("R") : 0;
+  const int32_t nRotate = pMKDict ? pMKDict->GetIntegerFor("R") : 0;
 
   CFX_FloatRect rcBBox;
   CFX_Matrix matrix;
@@ -1097,13 +1094,13 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
           CPDF_FormField::GetFieldAttr(pAnnotDict, pdfium::form_fields::kV);
       WideString swValue = pV ? pV->GetUnicodeText() : WideString();
       const CPDF_Object* pQ = CPDF_FormField::GetFieldAttr(pAnnotDict, "Q");
-      int32_t nAlign = pQ ? pQ->GetInteger() : 0;
+      const int32_t nAlign = pQ ? pQ->GetInteger() : 0;
       const CPDF_Object* pFf =
           CPDF_FormField::GetFieldAttr(pAnnotDict, pdfium::form_fields::kFf);
-      uint32_t dwFlags = pFf ? pFf->GetInteger() : 0;
+      const uint32_t dwFlags = pFf ? pFf->GetInteger() : 0;
       const CPDF_Object* pMaxLen =
           CPDF_FormField::GetFieldAttr(pAnnotDict, "MaxLen");
-      uint32_t dwMaxLen = pMaxLen ? pMaxLen->GetInteger() : 0;
+      const uint32_t dwMaxLen = pMaxLen ? pMaxLen->GetInteger() : 0;
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
           pDefFont, font_name);
@@ -1117,7 +1114,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       else
         vt.SetFontSize(fFontSize);
 
-      bool bMultiLine = (dwFlags >> 12) & 1;
+      const bool bMultiLine = (dwFlags >> 12) & 1;
       if (bMultiLine) {
         vt.SetMultiLine(true);
         vt.SetAutoReturn(true);
@@ -1127,7 +1124,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
         subWord = '*';
         vt.SetPasswordChar(subWord);
       }
-      bool bCharArray = (dwFlags >> 24) & 1;
+      const bool bCharArray = (dwFlags >> 24) & 1;
       if (bCharArray)
         vt.SetCharArray(dwMaxLen);
       else
@@ -1241,7 +1238,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       CPDF_Array* pSels =
           ToArray(CPDF_FormField::GetFieldAttr(pAnnotDict, "I"));
       CPDF_Object* pTi = CPDF_FormField::GetFieldAttr(pAnnotDict, "TI");
-      int32_t nTop = pTi ? pTi->GetInteger() : 0;
+      const int32_t nTop = pTi ? pTi->GetInteger() : 0;
       std::ostringstream sBody;
       if (pOpts) {
         float fy = rcBody.top;
@@ -1261,7 +1258,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
             bool bSelected = false;
             if (pSels) {
               for (size_t s = 0, ssz = pSels->size(); s < ssz; s++) {
-                int value = pSels->GetIntegerAt(s);
+                const int value = pSels->GetIntegerAt(s);
                 if (value >= 0 && i == static_cast<size_t>(value)) {
                   bSelected = true;
                   break;
@@ -1277,7 +1274,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
             vt.Initialize();
             vt.SetText(swItem);
             vt.RearrangeAll();
-            float fItemHeight = vt.GetContentRect().Height();
+            const float fItemHeight = vt.GetContentRect().Height();
             if (bSelected) {
               CFX_FloatRect rcItem = CFX_FloatRect(
                   rcBody.left, fy - fItemHeight, rcBody.right, fy);
