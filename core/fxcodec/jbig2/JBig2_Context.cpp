@@ -229,7 +229,7 @@ JBig2_Result CJBig2_Context::ParseSegmentHeader(CJBig2_Segment* pSegment) {
   }
   uint8_t cSSize =
       pSegment->m_dwNumber > 65536 ? 4 : pSegment->m_dwNumber > 256 ? 2 : 1;
-  uint8_t cPSize = pSegment->m_cFlags.s.page_association_size ? 4 : 1;
+  const uint8_t cPSize = pSegment->m_cFlags.s.page_association_size ? 4 : 1;
   if (pSegment->m_nReferred_to_segment_count) {
     pSegment->m_Referred_to_segment_numbers.resize(
         pSegment->m_nReferred_to_segment_count);
@@ -331,7 +331,7 @@ JBig2_Result CJBig2_Context::ProcessingParseSegmentData(
       }
       pPageInfo->m_bIsStriped = !!(wTemp & 0x8000);
       pPageInfo->m_wMaxStripeSize = wTemp & 0x7fff;
-      bool bMaxHeight = (pPageInfo->m_dwHeight == 0xffffffff);
+      const bool bMaxHeight = (pPageInfo->m_dwHeight == 0xffffffff);
       if (bMaxHeight && !pPageInfo->m_bIsStriped)
         pPageInfo->m_bIsStriped = true;
 
@@ -436,8 +436,8 @@ JBig2_Result CJBig2_Context::ParseSymbolDict(CJBig2_Segment* pSegment) {
   }
   pSymbolDictDecoder->SDINSYMS = SDINSYMS.get();
 
-  uint8_t cSDHUFFDH = (wFlags >> 2) & 0x0003;
-  uint8_t cSDHUFFDW = (wFlags >> 4) & 0x0003;
+  const uint8_t cSDHUFFDH = (wFlags >> 2) & 0x0003;
+  const uint8_t cSDHUFFDW = (wFlags >> 4) & 0x0003;
   if (pSymbolDictDecoder->SDHUFF == 1) {
     if (cSDHUFFDH == 2 || cSDHUFFDW == 2)
       return JBig2_Result::kFailure;
@@ -465,7 +465,7 @@ JBig2_Result CJBig2_Context::ParseSymbolDict(CJBig2_Segment* pSegment) {
         return JBig2_Result::kFailure;
       pSymbolDictDecoder->SDHUFFDW = pSeg->m_HuffmanTable.get();
     }
-    uint8_t cSDHUFFBMSIZE = (wFlags >> 6) & 0x0001;
+    const uint8_t cSDHUFFBMSIZE = (wFlags >> 6) & 0x0001;
     if (cSDHUFFBMSIZE == 0) {
       pSymbolDictDecoder->SDHUFFBMSIZE = GetHuffmanTable(1);
     } else {
@@ -476,7 +476,7 @@ JBig2_Result CJBig2_Context::ParseSymbolDict(CJBig2_Segment* pSegment) {
       pSymbolDictDecoder->SDHUFFBMSIZE = pSeg->m_HuffmanTable.get();
     }
     if (pSymbolDictDecoder->SDREFAGG == 1) {
-      uint8_t cSDHUFFAGGINST = (wFlags >> 7) & 0x0001;
+      const uint8_t cSDHUFFAGGINST = (wFlags >> 7) & 0x0001;
       if (cSDHUFFAGGINST == 0) {
         pSymbolDictDecoder->SDHUFFAGGINST = GetHuffmanTable(1);
       } else {
@@ -669,14 +669,14 @@ JBig2_Result CJBig2_Context::ParseTextRegion(CJBig2_Segment* pSegment) {
   }
 
   if (pTRD->SBHUFF == 1) {
-    uint8_t cSBHUFFFS = wFlags & 0x0003;
-    uint8_t cSBHUFFDS = (wFlags >> 2) & 0x0003;
-    uint8_t cSBHUFFDT = (wFlags >> 4) & 0x0003;
-    uint8_t cSBHUFFRDW = (wFlags >> 6) & 0x0003;
-    uint8_t cSBHUFFRDH = (wFlags >> 8) & 0x0003;
-    uint8_t cSBHUFFRDX = (wFlags >> 10) & 0x0003;
-    uint8_t cSBHUFFRDY = (wFlags >> 12) & 0x0003;
-    uint8_t cSBHUFFRSIZE = (wFlags >> 14) & 0x0001;
+    const uint8_t cSBHUFFFS = wFlags & 0x0003;
+    const uint8_t cSBHUFFDS = (wFlags >> 2) & 0x0003;
+    const uint8_t cSBHUFFDT = (wFlags >> 4) & 0x0003;
+    const uint8_t cSBHUFFRDW = (wFlags >> 6) & 0x0003;
+    const uint8_t cSBHUFFRDH = (wFlags >> 8) & 0x0003;
+    const uint8_t cSBHUFFRDX = (wFlags >> 10) & 0x0003;
+    const uint8_t cSBHUFFRDY = (wFlags >> 12) & 0x0003;
+    const uint8_t cSBHUFFRSIZE = (wFlags >> 14) & 0x0001;
     if (cSBHUFFFS == 2 || cSBHUFFRDW == 2 || cSBHUFFRDH == 2 ||
         cSBHUFFRDX == 2 || cSBHUFFRDY == 2) {
       return JBig2_Result::kFailure;
@@ -962,7 +962,7 @@ JBig2_Result CJBig2_Context::ParseGenericRegion(CJBig2_Segment* pSegment,
     if (m_gbContext.empty())
       m_gbContext.resize(GetHuffContextSize(m_pGRD->GBTEMPLATE));
 
-    bool bStart = !m_pArithDecoder;
+    const bool bStart = !m_pArithDecoder;
     if (bStart) {
       m_pArithDecoder = std::make_unique<CJBig2_ArithDecoder>(m_pStream.get());
     }
@@ -1159,7 +1159,7 @@ std::vector<JBig2HuffmanCode> CJBig2_Context::DecodeSymbolIDHuffmanTable(
       if (j < kRunCodesSize)
         break;
     }
-    int32_t runcode = static_cast<int32_t>(j);
+    const int32_t runcode = static_cast<int32_t>(j);
     if (runcode < 32) {
       SBSYMCODES[i].codelen = runcode;
       run = 0;

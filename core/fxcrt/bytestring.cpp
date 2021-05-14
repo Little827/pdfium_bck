@@ -86,7 +86,7 @@ ByteString ByteString::FormatFloat(float f) {
 ByteString ByteString::FormatV(const char* pFormat, va_list argList) {
   va_list argListCopy;
   va_copy(argListCopy, argList);
-  int nMaxLen = vsnprintf(nullptr, 0, pFormat, argListCopy);
+  const int nMaxLen = vsnprintf(nullptr, 0, pFormat, argListCopy);
   va_end(argListCopy);
 
   if (nMaxLen <= 0)
@@ -156,7 +156,7 @@ ByteString::ByteString(ByteStringView str1, ByteStringView str2) {
   FX_SAFE_SIZE_T nSafeLen = str1.GetLength();
   nSafeLen += str2.GetLength();
 
-  size_t nNewLen = nSafeLen.ValueOrDie();
+  const size_t nNewLen = nSafeLen.ValueOrDie();
   if (nNewLen == 0)
     return;
 
@@ -171,7 +171,7 @@ ByteString::ByteString(const std::initializer_list<ByteStringView>& list) {
   for (const auto& item : list)
     nSafeLen += item.GetLength();
 
-  size_t nNewLen = nSafeLen.ValueOrDie();
+  const size_t nNewLen = nSafeLen.ValueOrDie();
   if (nNewLen == 0)
     return;
 
@@ -292,9 +292,9 @@ bool ByteString::operator<(const char* ptr) const {
   if (c_str() == ptr)
     return false;
 
-  size_t len = GetLength();
-  size_t other_len = ptr ? strlen(ptr) : 0;
-  int result = memcmp(c_str(), ptr, std::min(len, other_len));
+  const size_t len = GetLength();
+  const size_t other_len = ptr ? strlen(ptr) : 0;
+  const int result = memcmp(c_str(), ptr, std::min(len, other_len));
   return result < 0 || (result == 0 && len < other_len);
 }
 
@@ -306,9 +306,9 @@ bool ByteString::operator<(const ByteString& other) const {
   if (m_pData == other.m_pData)
     return false;
 
-  size_t len = GetLength();
-  size_t other_len = other.GetLength();
-  int result = memcmp(c_str(), other.c_str(), std::min(len, other_len));
+  const size_t len = GetLength();
+  const size_t other_len = other.GetLength();
+  const int result = memcmp(c_str(), other.c_str(), std::min(len, other_len));
   return result < 0 || (result == 0 && len < other_len);
 }
 
@@ -316,7 +316,7 @@ bool ByteString::EqualNoCase(ByteStringView str) const {
   if (!m_pData)
     return str.IsEmpty();
 
-  size_t len = str.GetLength();
+  const size_t len = str.GetLength();
   if (m_pData->m_nDataLength != len)
     return false;
 
@@ -324,8 +324,8 @@ bool ByteString::EqualNoCase(ByteStringView str) const {
   const uint8_t* pThat = str.raw_str();
   for (size_t i = 0; i < len; i++) {
     if ((*pThis) != (*pThat)) {
-      uint8_t bThis = tolower(*pThis);
-      uint8_t bThat = tolower(*pThat);
+      const uint8_t bThis = tolower(*pThis);
+      const uint8_t bThat = tolower(*pThat);
       if (bThis != bThat)
         return false;
     }
@@ -352,7 +352,7 @@ void ByteString::ReallocBeforeWrite(size_t nNewLength) {
 
   RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
   if (m_pData) {
-    size_t nCopyLength = std::min(m_pData->m_nDataLength, nNewLength);
+    const size_t nCopyLength = std::min(m_pData->m_nDataLength, nNewLength);
     pNewData->CopyContents(m_pData->m_String, nCopyLength);
     pNewData->m_nDataLength = nCopyLength;
   } else {
@@ -428,16 +428,16 @@ size_t ByteString::Delete(size_t index, size_t count) {
   if (!m_pData)
     return 0;
 
-  size_t old_length = m_pData->m_nDataLength;
+  const size_t old_length = m_pData->m_nDataLength;
   if (count == 0 || index != pdfium::clamp<size_t>(index, 0, old_length))
     return old_length;
 
-  size_t removal_length = index + count;
+  const size_t removal_length = index + count;
   if (removal_length > old_length)
     return old_length;
 
   ReallocBeforeWrite(old_length);
-  size_t chars_to_copy = old_length - removal_length + 1;
+  const size_t chars_to_copy = old_length - removal_length + 1;
   memmove(m_pData->m_String + index, m_pData->m_String + removal_length,
           chars_to_copy);
   m_pData->m_nDataLength = old_length - count;
@@ -459,7 +459,7 @@ void ByteString::Concat(const char* pSrcData, size_t nSrcLen) {
     return;
   }
 
-  size_t nConcatLen = std::max(m_pData->m_nDataLength / 2, nSrcLen);
+  const size_t nConcatLen = std::max(m_pData->m_nDataLength / 2, nSrcLen);
   RetainPtr<StringData> pNewData(
       StringData::Create(m_pData->m_nDataLength + nConcatLen));
   pNewData->CopyContents(*m_pData);
@@ -620,7 +620,7 @@ size_t ByteString::Remove(char chRemove) {
   }
 
   *pstrDest = 0;
-  size_t nCount = static_cast<size_t>(pstrSource - pstrDest);
+  const size_t nCount = static_cast<size_t>(pstrSource - pstrDest);
   m_pData->m_nDataLength -= nCount;
   return nCount;
 }
@@ -629,8 +629,8 @@ size_t ByteString::Replace(ByteStringView pOld, ByteStringView pNew) {
   if (!m_pData || pOld.IsEmpty())
     return 0;
 
-  size_t nSourceLen = pOld.GetLength();
-  size_t nReplacementLen = pNew.GetLength();
+  const size_t nSourceLen = pOld.GetLength();
+  const size_t nReplacementLen = pNew.GetLength();
   size_t nCount = 0;
   const char* pStart = m_pData->m_String;
   char* pEnd = m_pData->m_String + m_pData->m_nDataLength;
@@ -675,10 +675,11 @@ int ByteString::Compare(ByteStringView str) const {
   if (!m_pData)
     return str.IsEmpty() ? 0 : -1;
 
-  size_t this_len = m_pData->m_nDataLength;
-  size_t that_len = str.GetLength();
-  size_t min_len = std::min(this_len, that_len);
-  int result = memcmp(m_pData->m_String, str.unterminated_c_str(), min_len);
+  const size_t this_len = m_pData->m_nDataLength;
+  const size_t that_len = str.GetLength();
+  const size_t min_len = std::min(this_len, that_len);
+  const int result =
+      memcmp(m_pData->m_String, str.unterminated_c_str(), min_len);
   if (result != 0)
     return result;
   if (this_len == that_len)
@@ -714,7 +715,7 @@ void ByteString::TrimLeft(ByteStringView targets) {
   if (!m_pData || targets.IsEmpty())
     return;
 
-  size_t len = GetLength();
+  const size_t len = GetLength();
   if (len == 0)
     return;
 
@@ -729,7 +730,7 @@ void ByteString::TrimLeft(ByteStringView targets) {
   }
   if (pos) {
     ReallocBeforeWrite(len);
-    size_t nDataLength = len - pos;
+    const size_t nDataLength = len - pos;
     memmove(m_pData->m_String, m_pData->m_String + pos,
             (nDataLength + 1) * sizeof(char));
     m_pData->m_nDataLength = nDataLength;

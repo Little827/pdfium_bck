@@ -468,7 +468,7 @@ bool CXFA_FMCallExpression::ToJavaScript(CFX_WideTextBuf* js,
 
   if (m_bIsSomMethod) {
     *js << funcName << "(";
-    uint32_t methodPara = IsMethodWithObjParam(funcName.MakeString());
+    const uint32_t methodPara = IsMethodWithObjParam(funcName.MakeString());
     if (methodPara > 0) {
       for (size_t i = 0; i < m_Arguments.size(); ++i) {
         // Currently none of our expressions use objects for a parameter over
@@ -859,7 +859,7 @@ bool CXFA_FMExpExpression::ToJavaScript(CFX_WideTextBuf* js,
     return false;
 
   if (type == ReturnType::kInfered) {
-    bool ret = m_pExpression->ToJavaScript(js, ReturnType::kInfered);
+    const bool ret = m_pExpression->ToJavaScript(js, ReturnType::kInfered);
     if (m_pExpression->GetOperatorToken() != TOKassign)
       *js << ";\n";
 

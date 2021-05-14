@@ -28,7 +28,7 @@ int32_t CFWL_ComboList::MatchItem(WideStringView wsMatch) {
   if (wsMatch.IsEmpty())
     return -1;
 
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   for (int32_t i = 0; i < iCount; i++) {
     CFWL_ListBox::Item* hItem = GetItem(this, i);
     WideString wsText = hItem ? hItem->GetText() : WideString();
@@ -42,7 +42,7 @@ int32_t CFWL_ComboList::MatchItem(WideStringView wsMatch) {
 void CFWL_ComboList::ChangeSelected(int32_t iSel) {
   CFWL_ListBox::Item* hItem = GetItem(this, iSel);
   CFWL_ListBox::Item* hOld = GetSelItem(0);
-  int32_t iOld = GetItemIndex(this, hOld);
+  const int32_t iOld = GetItemIndex(this, hOld);
   if (iOld == iSel)
     return;
 
@@ -67,7 +67,7 @@ CFX_PointF CFWL_ComboList::ClientToOuter(const CFX_PointF& point) {
 }
 
 void CFWL_ComboList::OnProcessMessage(CFWL_Message* pMessage) {
-  CFWL_Message::Type type = pMessage->GetType();
+  const CFWL_Message::Type type = pMessage->GetType();
   bool backDefault = true;
   if (type == CFWL_Message::Type::kSetFocus ||
       type == CFWL_Message::Type::kKillFocus) {
@@ -179,7 +179,7 @@ bool CFWL_ComboList::OnDropListKey(CFWL_MessageKey* pKey) {
   CFWL_ComboBox* pOuter = static_cast<CFWL_ComboBox*>(GetOuter());
   bool bPropagate = false;
   if (pKey->m_dwCmd == CFWL_MessageKey::Type::kKeyDown) {
-    uint32_t dwKeyCode = pKey->m_dwKeyCode;
+    const uint32_t dwKeyCode = pKey->m_dwKeyCode;
     switch (dwKeyCode) {
       case XFA_FWL_VKEY_Return:
       case XFA_FWL_VKEY_Escape: {
@@ -209,7 +209,7 @@ bool CFWL_ComboList::OnDropListKey(CFWL_MessageKey* pKey) {
 }
 
 void CFWL_ComboList::OnDropListKeyDown(CFWL_MessageKey* pKey) {
-  uint32_t dwKeyCode = pKey->m_dwKeyCode;
+  const uint32_t dwKeyCode = pKey->m_dwKeyCode;
   switch (dwKeyCode) {
     case XFA_FWL_VKEY_Up:
     case XFA_FWL_VKEY_Down:

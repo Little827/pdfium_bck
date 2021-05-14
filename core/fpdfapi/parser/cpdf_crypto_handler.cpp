@@ -62,7 +62,7 @@ void CPDF_CryptoHandler::CryptBlock(bool bEncrypt,
 
     if (m_Cipher == FXCIPHER_AES)
       memcpy(key1 + m_KeyLen + 5, "sAlT", 4);
-    size_t len = m_Cipher == FXCIPHER_AES ? m_KeyLen + 9 : m_KeyLen + 5;
+    const size_t len = m_Cipher == FXCIPHER_AES ? m_KeyLen + 9 : m_KeyLen + 5;
     CRYPT_MD5Generate({key1, len}, realkey);
     realkeylen = std::min(m_KeyLen + 5, sizeof(realkey));
   }
@@ -77,7 +77,7 @@ void CPDF_CryptoHandler::CryptBlock(bool bEncrypt,
       }
       CRYPT_AESSetIV(m_pAESContext.get(), iv);
       memcpy(dest_buf, iv, 16);
-      int nblocks = source.size() / 16;
+      const int nblocks = source.size() / 16;
       CRYPT_AESEncrypt(m_pAESContext.get(), dest_buf + 16, source.data(),
                        nblocks * 16);
       uint8_t padding[16];
@@ -135,9 +135,9 @@ void* CPDF_CryptoHandler::CryptStart(uint32_t objnum,
     memcpy(key1 + m_KeyLen + 5, "sAlT", 4);
 
   uint8_t realkey[16];
-  size_t len = m_Cipher == FXCIPHER_AES ? m_KeyLen + 9 : m_KeyLen + 5;
+  const size_t len = m_Cipher == FXCIPHER_AES ? m_KeyLen + 9 : m_KeyLen + 5;
   CRYPT_MD5Generate({key1, len}, realkey);
-  size_t realkeylen = std::min(m_KeyLen + 5, sizeof(realkey));
+  const size_t realkeylen = std::min(m_KeyLen + 5, sizeof(realkey));
 
   if (m_Cipher == FXCIPHER_AES) {
     AESCryptContext* pContext = FX_Alloc(AESCryptContext, 1);
@@ -169,7 +169,7 @@ bool CPDF_CryptoHandler::CryptStream(void* context,
     return true;
   }
   if (m_Cipher == FXCIPHER_RC4) {
-    int old_size = dest_buf.GetSize();
+    const int old_size = dest_buf.GetSize();
     dest_buf.AppendBlock(source.data(), source.size());
     CRYPT_ArcFourCrypt(static_cast<CRYPT_rc4_context*>(context),
                        dest_buf.GetSpan().subspan(old_size, source.size()));

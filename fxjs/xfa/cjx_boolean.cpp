@@ -32,7 +32,7 @@ void CJX_Boolean::defaultValue(v8::Isolate* pIsolate,
   if (pValue && !(fxv8::IsNull(*pValue) || fxv8::IsUndefined(*pValue)))
     newValue = fxv8::ReentrantToByteStringHelper(pIsolate, *pValue);
 
-  int32_t iValue = FXSYS_atoi(newValue.c_str());
+  const int32_t iValue = FXSYS_atoi(newValue.c_str());
   WideString wsNewValue(iValue == 0 ? L"0" : L"1");
   WideString wsFormatValue(wsNewValue);
   CXFA_Node* pContainerNode = GetXFANode()->GetContainerNode();

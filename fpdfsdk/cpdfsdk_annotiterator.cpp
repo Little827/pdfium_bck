@@ -141,7 +141,7 @@ void CPDFSDK_AnnotIterator::GenerateResults() {
         std::vector<size_t> aSelect;
         for (size_t i = 0; i < sa.size(); ++i) {
           CFX_FloatRect rcAnnot = GetAnnotRect(sa[i]);
-          float fCenterY = (rcAnnot.top + rcAnnot.bottom) / 2.0f;
+          const float fCenterY = (rcAnnot.top + rcAnnot.bottom) / 2.0f;
           if (fCenterY > rcLeftTop.bottom && fCenterY < rcLeftTop.top)
             aSelect.push_back(i);
         }
@@ -176,7 +176,7 @@ void CPDFSDK_AnnotIterator::GenerateResults() {
         std::vector<size_t> aSelect;
         for (size_t i = 0; i < sa.size(); ++i) {
           CFX_FloatRect rcAnnot = GetAnnotRect(sa[i]);
-          float fCenterX = (rcAnnot.left + rcAnnot.right) / 2.0f;
+          const float fCenterX = (rcAnnot.left + rcAnnot.right) / 2.0f;
           if (fCenterX > rcLeftTop.left && fCenterX < rcLeftTop.right)
             aSelect.push_back(i);
         }

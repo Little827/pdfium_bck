@@ -47,9 +47,10 @@ CJS_Result CJX_Tree::resolveNode(
   if (refNode->GetElementType() == XFA_Element::Xfa)
     refNode = pScriptContext->GetThisObject();
 
-  uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
-                    XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
-                    XFA_RESOLVENODE_Siblings;
+  const uint32_t dwFlag = XFA_RESOLVENODE_Children |
+                          XFA_RESOLVENODE_Attributes |
+                          XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
+                          XFA_RESOLVENODE_Siblings;
   Optional<CFXJSE_Engine::ResolveResult> maybeResult =
       pScriptContext->ResolveObjects(ToNode(refNode), expression.AsStringView(),
                                      dwFlag);
@@ -106,7 +107,7 @@ void CJX_Tree::all(v8::Isolate* pIsolate,
     return;
   }
 
-  uint32_t dwFlag = XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_ALL;
+  const uint32_t dwFlag = XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_ALL;
   WideString wsExpression = GetAttributeByEnum(XFA_Attribute::Name) + L"[*]";
   ResolveNodeList(pIsolate, pValue, wsExpression, dwFlag, nullptr);
 }
@@ -173,7 +174,7 @@ void CJX_Tree::index(v8::Isolate* pIsolate,
   }
 
   CXFA_Node* pNode = GetXFANode();
-  size_t iIndex = pNode ? pNode->GetIndexByName() : 0;
+  const size_t iIndex = pNode ? pNode->GetIndexByName() : 0;
   *pValue = fxv8::NewNumberHelper(pIsolate,
                                   pdfium::base::checked_cast<int32_t>(iIndex));
 }
@@ -188,7 +189,7 @@ void CJX_Tree::classIndex(v8::Isolate* pIsolate,
   }
 
   CXFA_Node* pNode = GetXFANode();
-  size_t iIndex = pNode ? pNode->GetIndexByClassName() : 0;
+  const size_t iIndex = pNode ? pNode->GetIndexByClassName() : 0;
   *pValue = fxv8::NewNumberHelper(pIsolate,
                                   pdfium::base::checked_cast<int32_t>(iIndex));
 }

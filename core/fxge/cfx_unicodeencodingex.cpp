@@ -62,14 +62,14 @@ uint32_t CFX_UnicodeEncodingEx::GlyphFromCharCode(uint32_t charcode) {
   FT_UInt nIndex = FT_Get_Char_Index(face, charcode);
   if (nIndex > 0)
     return nIndex;
-  int nmaps = FXFT_Get_Face_CharmapCount(face);
+  const int nmaps = FXFT_Get_Face_CharmapCount(face);
   int m = 0;
   while (m < nmaps) {
     uint32_t nEncodingID =
         FXFT_Get_Charmap_Encoding(FXFT_Get_Face_Charmaps(face)[m++]);
     if (m_nEncodingID == nEncodingID)
       continue;
-    int error = FXFT_Select_Charmap(face, nEncodingID);
+    const int error = FXFT_Select_Charmap(face, nEncodingID);
     if (error)
       continue;
     nIndex = FT_Get_Char_Index(face, charcode);
@@ -88,7 +88,7 @@ uint32_t CFX_UnicodeEncodingEx::CharCodeFromUnicode(wchar_t Unicode) const {
     return Unicode;
   }
   FXFT_FaceRec* face = m_pFont->GetFaceRec();
-  int nmaps = FXFT_Get_Face_CharmapCount(face);
+  const int nmaps = FXFT_Get_Face_CharmapCount(face);
   for (int i = 0; i < nmaps; i++) {
     int nEncodingID =
         FXFT_Get_Charmap_Encoding(FXFT_Get_Face_Charmaps(face)[i]);

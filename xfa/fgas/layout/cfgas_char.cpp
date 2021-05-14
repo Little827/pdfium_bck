@@ -281,7 +281,7 @@ void SetDeferredRunClass(std::vector<CFGAS_Char>* chars,
   DCHECK(iStart <= chars->size());
   DCHECK(iStart >= iCount);
 
-  size_t iLast = iStart - iCount;
+  const size_t iLast = iStart - iCount;
   for (size_t i = iStart; i > iLast; --i)
     (*chars)[i - 1].m_iBidiClass = eValue;
 }
@@ -293,7 +293,7 @@ void SetDeferredRunLevel(std::vector<CFGAS_Char>* chars,
   DCHECK(iStart <= chars->size());
   DCHECK(iStart >= iCount);
 
-  size_t iLast = iStart - iCount;
+  const size_t iLast = iStart - iCount;
   for (size_t i = iStart; i > iLast; --i)
     (*chars)[i - 1].m_iBidiLevel = static_cast<int16_t>(iValue);
 }
@@ -502,7 +502,7 @@ size_t ReorderLevel(std::vector<CFGAS_Char>* chars,
   bReverse = bReverse || FX_IsOdd(iBaseLevel);
   size_t i = iStart;
   for (; i < iCount; ++i) {
-    int32_t iLevel = (*chars)[i].m_iBidiLevel;
+    const int32_t iLevel = (*chars)[i].m_iBidiLevel;
     if (iLevel == iBaseLevel)
       continue;
     if (iLevel < iBaseLevel)
@@ -511,7 +511,7 @@ size_t ReorderLevel(std::vector<CFGAS_Char>* chars,
     i += ReorderLevel(chars, iCount, iBaseLevel + 1, i, bReverse) - 1;
   }
 
-  size_t iNum = i - iStart;
+  const size_t iNum = i - iStart;
   if (bReverse && iNum > 1)
     ReverseString(chars, iStart, iNum);
 

@@ -41,7 +41,7 @@ bool CPDFSDK_WidgetHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
   if (!pWidget->IsVisible())
     return false;
 
-  int nFieldFlags = pWidget->GetFieldFlags();
+  const int nFieldFlags = pWidget->GetFieldFlags();
   if (nFieldFlags & pdfium::form_flags::kReadOnly)
     return false;
 
@@ -49,7 +49,7 @@ bool CPDFSDK_WidgetHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
     return true;
 
   CPDF_Page* pPage = pWidget->GetPDFPage();
-  uint32_t dwPermissions = pPage->GetDocument()->GetUserPermissions();
+  const uint32_t dwPermissions = pPage->GetDocument()->GetUserPermissions();
   return (dwPermissions & pdfium::access_permissions::kFillForm) ||
          (dwPermissions & pdfium::access_permissions::kModifyAnnotation);
 }

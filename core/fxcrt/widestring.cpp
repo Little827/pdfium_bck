@@ -268,9 +268,9 @@ Optional<WideString> TryVSWPrintf(size_t size,
     // not to trust the vendor's implementation to write anything anyways.
     // See https://crbug.com/705912.
     memset(buffer.data(), 0, (size + 1) * sizeof(wchar_t));
-    int ret = vswprintf(buffer.data(), size + 1, pFormat, argList);
+    const int ret = vswprintf(buffer.data(), size + 1, pFormat, argList);
 
-    bool bSufficientBuffer = ret >= 0 || buffer[size - 1] == 0;
+    const bool bSufficientBuffer = ret >= 0 || buffer[size - 1] == 0;
     if (!bSufficientBuffer)
       return {};
   }
@@ -356,7 +356,7 @@ WideString::WideString(WideStringView str1, WideStringView str2) {
   FX_SAFE_SIZE_T nSafeLen = str1.GetLength();
   nSafeLen += str2.GetLength();
 
-  size_t nNewLen = nSafeLen.ValueOrDie();
+  const size_t nNewLen = nSafeLen.ValueOrDie();
   if (nNewLen == 0)
     return;
 
@@ -371,7 +371,7 @@ WideString::WideString(const std::initializer_list<WideStringView>& list) {
   for (const auto& item : list)
     nSafeLen += item.GetLength();
 
-  size_t nNewLen = nSafeLen.ValueOrDie();
+  const size_t nNewLen = nSafeLen.ValueOrDie();
   if (nNewLen == 0)
     return;
 
@@ -490,8 +490,8 @@ bool WideString::operator<(WideStringView str) const {
   if (c_str() == str.unterminated_c_str())
     return false;
 
-  size_t len = GetLength();
-  size_t other_len = str.GetLength();
+  const size_t len = GetLength();
+  const size_t other_len = str.GetLength();
   int result =
       wmemcmp(c_str(), str.unterminated_c_str(), std::min(len, other_len));
   return result < 0 || (result == 0 && len < other_len);
@@ -518,7 +518,7 @@ void WideString::ReallocBeforeWrite(size_t nNewLength) {
 
   RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
   if (m_pData) {
-    size_t nCopyLength = std::min(m_pData->m_nDataLength, nNewLength);
+    const size_t nCopyLength = std::min(m_pData->m_nDataLength, nNewLength);
     pNewData->CopyContents(m_pData->m_String, nCopyLength);
     pNewData->m_nDataLength = nCopyLength;
   } else {
@@ -594,16 +594,16 @@ size_t WideString::Delete(size_t index, size_t count) {
   if (!m_pData)
     return 0;
 
-  size_t old_length = m_pData->m_nDataLength;
+  const size_t old_length = m_pData->m_nDataLength;
   if (count == 0 || index != pdfium::clamp<size_t>(index, 0, old_length))
     return old_length;
 
-  size_t removal_length = index + count;
+  const size_t removal_length = index + count;
   if (removal_length > old_length)
     return old_length;
 
   ReallocBeforeWrite(old_length);
-  size_t chars_to_copy = old_length - removal_length + 1;
+  const size_t chars_to_copy = old_length - removal_length + 1;
   wmemmove(m_pData->m_String + index, m_pData->m_String + removal_length,
            chars_to_copy);
   m_pData->m_nDataLength = old_length - count;
@@ -625,7 +625,7 @@ void WideString::Concat(const wchar_t* pSrcData, size_t nSrcLen) {
     return;
   }
 
-  size_t nConcatLen = std::max(m_pData->m_nDataLength / 2, nSrcLen);
+  const size_t nConcatLen = std::max(m_pData->m_nDataLength / 2, nSrcLen);
   RetainPtr<StringData> pNewData(
       StringData::Create(m_pData->m_nDataLength + nConcatLen));
   pNewData->CopyContents(*m_pData);
@@ -655,8 +655,8 @@ ByteString WideString::ToLatin1() const {
 }
 
 ByteString WideString::ToDefANSI() const {
-  int src_len = GetLength();
-  int dest_len = FXSYS_WideCharToMultiByte(
+  const int src_len = GetLength();
+  const int dest_len = FXSYS_WideCharToMultiByte(
       FX_CODEPAGE_DefANSI, 0, c_str(), src_len, nullptr, 0, nullptr, nullptr);
   if (!dest_len)
     return ByteString();
@@ -681,7 +681,7 @@ ByteString WideString::ToUTF16LE() const {
     return ByteString("\0\0", 2);
 
   ByteString result;
-  int len = m_pData->m_nDataLength;
+  const int len = m_pData->m_nDataLength;
   {
     // Span's lifetime must end before ReleaseBuffer() below.
     pdfium::span<char> buffer = result.GetBuffer(len * 2 + 2);
@@ -848,7 +848,7 @@ size_t WideString::Remove(wchar_t chRemove) {
   }
 
   *pstrDest = 0;
-  size_t count = static_cast<size_t>(pstrSource - pstrDest);
+  const size_t count = static_cast<size_t>(pstrSource - pstrDest);
   m_pData->m_nDataLength -= count;
   return count;
 }
@@ -857,8 +857,8 @@ size_t WideString::Replace(WideStringView pOld, WideStringView pNew) {
   if (!m_pData || pOld.IsEmpty())
     return 0;
 
-  size_t nSourceLen = pOld.GetLength();
-  size_t nReplacementLen = pNew.GetLength();
+  const size_t nSourceLen = pOld.GetLength();
+  const size_t nReplacementLen = pNew.GetLength();
   size_t count = 0;
   const wchar_t* pStart = m_pData->m_String;
   wchar_t* pEnd = m_pData->m_String + m_pData->m_nDataLength;
@@ -921,8 +921,8 @@ WideString WideString::FromLatin1(ByteStringView bstr) {
 
 // static
 WideString WideString::FromDefANSI(ByteStringView bstr) {
-  int src_len = bstr.GetLength();
-  int dest_len = FXSYS_MultiByteToWideChar(
+  const int src_len = bstr.GetLength();
+  const int dest_len = FXSYS_MultiByteToWideChar(
       FX_CODEPAGE_DefANSI, 0, bstr.unterminated_c_str(), src_len, nullptr, 0);
   if (!dest_len)
     return WideString();
@@ -995,10 +995,10 @@ int WideString::Compare(const WideString& str) const {
   if (!str.m_pData)
     return 1;
 
-  size_t this_len = m_pData->m_nDataLength;
-  size_t that_len = str.m_pData->m_nDataLength;
-  size_t min_len = std::min(this_len, that_len);
-  int result = wmemcmp(m_pData->m_String, str.m_pData->m_String, min_len);
+  const size_t this_len = m_pData->m_nDataLength;
+  const size_t that_len = str.m_pData->m_nDataLength;
+  const size_t min_len = std::min(this_len, that_len);
+  const int result = wmemcmp(m_pData->m_String, str.m_pData->m_String, min_len);
   if (result != 0)
     return result;
   if (this_len == that_len)
@@ -1049,7 +1049,7 @@ void WideString::TrimLeft(WideStringView targets) {
   if (!m_pData || targets.IsEmpty())
     return;
 
-  size_t len = GetLength();
+  const size_t len = GetLength();
   if (len == 0)
     return;
 
@@ -1068,7 +1068,7 @@ void WideString::TrimLeft(WideStringView targets) {
     return;
 
   ReallocBeforeWrite(len);
-  size_t nDataLength = len - pos;
+  const size_t nDataLength = len - pos;
   memmove(m_pData->m_String, m_pData->m_String + pos,
           (nDataLength + 1) * sizeof(wchar_t));
   m_pData->m_nDataLength = nDataLength;

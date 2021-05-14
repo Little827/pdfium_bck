@@ -63,7 +63,7 @@ std::unique_ptr<CLcmsCmm> IccModule::CreateTransformSRGB(
 
   cmsColorSpaceSignature srcCS = cmsGetColorSpace(srcProfile.get());
 
-  uint32_t nSrcComponents = cmsChannelsOf(srcCS);
+  const uint32_t nSrcComponents = cmsChannelsOf(srcCS);
   // According to PDF spec, number of components must be 1, 3, or 4.
   if (nSrcComponents != 1 && nSrcComponents != 3 && nSrcComponents != 4)
     return nullptr;

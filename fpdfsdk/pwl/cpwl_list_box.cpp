@@ -210,7 +210,7 @@ bool CPWL_ListBox::OnNotifySelectionChanged(bool bKeyDown, uint32_t nFlag) {
   WideString swChange = GetText();
   WideString strChangeEx;
   int nSelStart = 0;
-  int nSelEnd = swChange.GetLength();
+  const int nSelEnd = swChange.GetLength();
   bool bRC;
   bool bExit;
   std::tie(bRC, bExit) = m_pFillerNotify->OnBeforeKeyStroke(
@@ -355,7 +355,8 @@ float CPWL_ListBox::GetFirstHeight() const {
 }
 
 CFX_FloatRect CPWL_ListBox::GetListRect() const {
-  float width = static_cast<float>(GetBorderWidth() + GetInnerBorderWidth());
+  const float width =
+      static_cast<float>(GetBorderWidth() + GetInnerBorderWidth());
   return GetWindowRect().GetDeflated(width, width);
 }
 

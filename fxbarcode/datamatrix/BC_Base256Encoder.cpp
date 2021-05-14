@@ -30,8 +30,8 @@
 namespace {
 
 wchar_t Randomize255State(wchar_t ch, int32_t position) {
-  int32_t pseudoRandom = ((149 * position) % 255) + 1;
-  int32_t tempVariable = ch + pseudoRandom;
+  const int32_t pseudoRandom = ((149 * position) % 255) + 1;
+  const int32_t tempVariable = ch + pseudoRandom;
   if (tempVariable <= 255)
     return static_cast<wchar_t>(tempVariable);
   return static_cast<wchar_t>(tempVariable - 256);
@@ -63,17 +63,18 @@ bool CBC_Base256Encoder::Encode(CBC_EncoderContext* context) {
       break;
     }
   }
-  size_t dataCount = buffer.GetLength() - 1;
+  const size_t dataCount = buffer.GetLength() - 1;
   char buf[128];
   FXSYS_itoa(dataCount, buf, 10);
   buffer.SetAt(0, static_cast<wchar_t>(*buf) - '0');
-  int32_t lengthFieldSize = 1;
+  const int32_t lengthFieldSize = 1;
   int32_t currentSize =
       context->getCodewordCount() + dataCount + lengthFieldSize;
   if (!context->UpdateSymbolInfo(currentSize))
     return false;
 
-  bool mustPad = (context->m_symbolInfo->data_capacity() - currentSize) > 0;
+  const bool mustPad =
+      (context->m_symbolInfo->data_capacity() - currentSize) > 0;
   if (context->hasMoreCharacters() || mustPad) {
     if (dataCount <= 249) {
       buffer.SetAt(0, static_cast<wchar_t>(dataCount));

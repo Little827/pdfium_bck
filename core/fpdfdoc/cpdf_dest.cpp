@@ -74,7 +74,7 @@ int CPDF_Dest::GetZoomMode() const {
   if (!pArray)
     return 0;
 
-  ByteString mode = pArray->GetString();
+  const ByteString mode = pArray->GetString();
   for (int i = 1; g_sZoomModes[i]; ++i) {
     if (mode == g_sZoomModes[i])
       return i;
@@ -119,7 +119,7 @@ bool CPDF_Dest::GetXYZ(bool* pHasX,
 
   // A zoom value of 0 is equivalent to a null value, so treat it as a null.
   if (numZoom) {
-    float num = numZoom->GetNumber();
+    const float num = numZoom->GetNumber();
     if (num == 0.0)
       *pHasZoom = false;
     else

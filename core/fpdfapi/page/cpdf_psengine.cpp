@@ -162,7 +162,7 @@ bool CPDF_PSProc::Execute(CPDF_PSEngine* pEngine) {
           m_Operators[i - 2]->GetOp() != PSOP_PROC) {
         return false;
       }
-      size_t offset = pEngine->PopInt() ? 2 : 1;
+      const size_t offset = pEngine->PopInt() ? 2 : 1;
       m_Operators[i - offset]->GetProc()->Execute(pEngine);
     } else {
       pEngine->DoOperator(op);
@@ -372,7 +372,7 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       Push(!i1);
       break;
     case PSOP_BITSHIFT: {
-      int shift = PopInt();
+      const int shift = PopInt();
       result = PopInt();
       if (shift > 0) {
         result <<= shift;
@@ -405,7 +405,7 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       Push(d1);
       break;
     case PSOP_COPY: {
-      int n = PopInt();
+      const int n = PopInt();
       if (n < 0 || m_StackCount + n > kPSEngineStackSize ||
           n > static_cast<int>(m_StackCount))
         break;
@@ -415,7 +415,7 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       break;
     }
     case PSOP_INDEX: {
-      int n = PopInt();
+      const int n = PopInt();
       if (n < 0 || n >= static_cast<int>(m_StackCount))
         break;
       Push(m_Stack[m_StackCount - n - 1]);
@@ -423,7 +423,7 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
     }
     case PSOP_ROLL: {
       int j = PopInt();
-      int n = PopInt();
+      const int n = PopInt();
       if (j == 0 || n == 0 || m_StackCount == 0)
         break;
       if (n < 0 || n > static_cast<int>(m_StackCount))

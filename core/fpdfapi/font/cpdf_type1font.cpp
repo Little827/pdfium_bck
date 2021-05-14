@@ -114,7 +114,7 @@ int CPDF_Type1Font::GlyphFromCharCodeExt(uint32_t charcode) {
   if (charcode > 0xff)
     return -1;
 
-  int index = m_ExtGID[static_cast<uint8_t>(charcode)];
+  const int index = m_ExtGID[static_cast<uint8_t>(charcode)];
   return index != 0xffff ? index : -1;
 }
 #endif
@@ -124,7 +124,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
     return;
 
 #if defined(OS_APPLE)
-  bool bCoreText = true;
+  const bool bCoreText = true;
   if (!m_Font.GetPlatformFont()) {
     if (m_Font.GetPsName() == "DFHeiStd-W5")
       bCoreText = false;
@@ -142,7 +142,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
       for (uint32_t charcode = 0; charcode < 256; charcode++) {
         const uint8_t prefix[4] = {0x00, 0xf0, 0xf1, 0xf2};
         for (int j = 0; j < 4; j++) {
-          uint16_t unicode = prefix[j] * 256 + charcode;
+          const uint16_t unicode = prefix[j] * 256 + charcode;
           m_GlyphIndex[charcode] =
               FT_Get_Char_Index(m_Font.GetFaceRec(), unicode);
 #if defined(OS_APPLE)

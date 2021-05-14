@@ -74,7 +74,7 @@ void CJX_LayoutPseudoModel::ready(v8::Isolate* pIsolate,
     return;
   }
 
-  int32_t iStatus = pNotify->GetLayoutStatus();
+  const int32_t iStatus = pNotify->GetLayoutStatus();
   *pValue = fxv8::NewBooleanHelper(pIsolate, iStatus >= 2);
 }
 
@@ -132,7 +132,7 @@ CJS_Result CJX_LayoutPseudoModel::HWXY(
   if (eUnit == XFA_Unit::Unknown)
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  float fValue = measure.ToUnit(eUnit);
+  const float fValue = measure.ToUnit(eUnit);
   return CJS_Result::Success(
       runtime->NewNumber(FXSYS_roundf(fValue * 1000) / 1000.0f));
 }
@@ -165,7 +165,7 @@ CJS_Result CJX_LayoutPseudoModel::NumberedPageCount(CFX_V8* runtime,
                                                     bool bNumbered) {
   auto* pDocLayout = CXFA_LayoutProcessor::FromDocument(GetDocument());
   int32_t iPageCount = 0;
-  int32_t iPageNum = pDocLayout->CountPages();
+  const int32_t iPageNum = pDocLayout->CountPages();
   if (bNumbered) {
     for (int32_t i = 0; i < iPageNum; i++) {
       CXFA_ViewLayoutItem* pLayoutPage = pDocLayout->GetPage(i);
@@ -205,9 +205,9 @@ CJS_Result CJX_LayoutPseudoModel::pageSpan(
   if (!pLayoutItem)
     return CJS_Result::Success(runtime->NewNumber(-1));
 
-  int32_t iLast = pLayoutItem->GetLast()->GetPage()->GetPageIndex();
-  int32_t iFirst = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
-  int32_t iPageSpan = iLast - iFirst + 1;
+  const int32_t iLast = pLayoutItem->GetLast()->GetPage()->GetPageIndex();
+  const int32_t iFirst = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
+  const int32_t iPageSpan = iLast - iFirst + 1;
   return CJS_Result::Success(runtime->NewNumber(iPageSpan));
 }
 
@@ -482,6 +482,6 @@ CJS_Result CJX_LayoutPseudoModel::PageInternals(
   if (!pLayoutItem)
     return CJS_Result::Success(runtime->NewNumber(-1));
 
-  int32_t iPage = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
+  const int32_t iPage = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
   return CJS_Result::Success(runtime->NewNumber(bAbsPage ? iPage : iPage + 1));
 }

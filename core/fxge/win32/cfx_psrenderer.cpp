@@ -111,11 +111,11 @@ void CFX_PSRenderer::RestoreState(bool bKeepSaved) {
 void CFX_PSRenderer::OutputPath(const CFX_PathData* pPathData,
                                 const CFX_Matrix* pObject2Device) {
   std::ostringstream buf;
-  size_t size = pPathData->GetPoints().size();
+  const size_t size = pPathData->GetPoints().size();
 
   for (size_t i = 0; i < size; i++) {
     FXPT_TYPE type = pPathData->GetType(i);
-    bool closing = pPathData->IsClosingFigure(i);
+    const bool closing = pPathData->IsClosingFigure(i);
     CFX_PointF pos = pPathData->GetPoint(i);
     if (pObject2Device)
       pos = pObject2Device->Transform(pos);
@@ -198,8 +198,8 @@ bool CFX_PSRenderer::DrawPath(const CFX_PathData* pPathData,
                               uint32_t stroke_color,
                               const CFX_FillRenderOptions& fill_options) {
   StartRendering();
-  int fill_alpha = FXARGB_A(fill_color);
-  int stroke_alpha = FXARGB_A(stroke_color);
+  const int fill_alpha = FXARGB_A(fill_color);
+  const int stroke_alpha = FXARGB_A(stroke_color);
   if (fill_alpha && fill_alpha < 255)
     return false;
   if (stroke_alpha && stroke_alpha < 255)
@@ -311,7 +311,7 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   if (pSource->IsAlphaFormat())
     return false;
 
-  int alpha = FXARGB_A(color);
+  const int alpha = FXARGB_A(color);
   if (pSource->IsMaskFormat() && (alpha < 255 || pSource->GetBPP() != 1))
     return false;
 
@@ -321,13 +321,13 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   buf << "[" << matrix.a << " " << matrix.b << " " << matrix.c << " "
       << matrix.d << " " << matrix.e << " " << matrix.f << "]cm ";
 
-  int width = pSource->GetWidth();
-  int height = pSource->GetHeight();
+  const int width = pSource->GetWidth();
+  const int height = pSource->GetHeight();
   buf << width << " " << height;
 
   if (pSource->GetBPP() == 1 && !pSource->HasPalette()) {
-    int pitch = (width + 7) / 8;
-    uint32_t src_size = height * pitch;
+    const int pitch = (width + 7) / 8;
+    const uint32_t src_size = height * pitch;
     std::unique_ptr<uint8_t, FxFreeDeleter> src_buf(
         FX_Alloc(uint8_t, src_size));
     for (int row = 0; row < height; row++) {
@@ -337,8 +337,8 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
 
     std::unique_ptr<uint8_t, FxFreeDeleter> output_buf;
     uint32_t output_size;
-    bool compressed = FaxCompressData(std::move(src_buf), width, height,
-                                      &output_buf, &output_size);
+    const bool compressed = FaxCompressData(std::move(src_buf), width, height,
+                                            &output_buf, &output_size);
     if (pSource->IsMaskFormat()) {
       SetColor(color);
       m_bColorSet = false;
@@ -382,7 +382,7 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
       return false;
     }
 
-    int bpp = pConverted->GetBPP() / 8;
+    const int bpp = pConverted->GetBPP() / 8;
     uint8_t* output_buf = nullptr;
     size_t output_size = 0;
     const char* filter = nullptr;
@@ -392,7 +392,7 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
       filter = "/DCTDecode filter ";
     }
     if (!filter) {
-      int src_pitch = width * bpp;
+      const int src_pitch = width * bpp;
       output_size = height * src_pitch;
       output_buf = FX_Alloc(uint8_t, output_size);
       for (int row = 0; row < height; row++) {
@@ -497,7 +497,7 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
 
   *ps_fontnum = m_PSFontList.size() - 1;
   CPSFont* pPSFont = m_PSFontList[*ps_fontnum].get();
-  int glyphindex = pPSFont->m_nGlyphs;
+  const int glyphindex = pPSFont->m_nGlyphs;
   *ps_glyphindex = glyphindex;
   pPSFont->m_Glyphs[glyphindex].m_GlyphIndex = charpos.m_GlyphIndex;
   pPSFont->m_Glyphs[glyphindex].m_pFont = pFont;
@@ -575,7 +575,7 @@ bool CFX_PSRenderer::DrawText(int nChars,
     return true;
 
   StartRendering();
-  int alpha = FXARGB_A(color);
+  const int alpha = FXARGB_A(color);
   if (alpha < 255)
     return false;
 
@@ -587,7 +587,7 @@ bool CFX_PSRenderer::DrawText(int nChars,
 
   CFX_FontCache* pCache = CFX_GEModule::Get()->GetFontCache();
   RetainPtr<CFX_GlyphCache> pGlyphCache = pCache->GetGlyphCache(pFont);
-  int last_fontnum = -1;
+  const int last_fontnum = -1;
   for (int i = 0; i < nChars; i++) {
     int ps_fontnum, ps_glyphindex;
     FindPSFontGlyph(pGlyphCache.Get(), pFont, pCharPos[i], &ps_fontnum,
@@ -634,7 +634,7 @@ void CFX_PSRenderer::PSCompressData(uint8_t* src_buf,
     return;
 
   uint8_t* dest_buf = nullptr;
-  uint32_t dest_size = src_size;
+  const uint32_t dest_size = src_size;
   if (m_PSLevel >= 3) {
     std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf_unique;
     if (m_pEncoderIface->pFlateEncodeFunc(src_buf, src_size, &dest_buf_unique,

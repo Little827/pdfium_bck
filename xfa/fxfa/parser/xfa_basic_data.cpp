@@ -171,7 +171,7 @@ XFA_PACKETINFO XFA_GetPacketByIndex(XFA_PacketType ePacket) {
 }
 
 Optional<XFA_PACKETINFO> XFA_GetPacketByName(WideStringView wsName) {
-  uint32_t hash = FX_HashCode_GetW(wsName, false);
+  const uint32_t hash = FX_HashCode_GetW(wsName, false);
   auto* elem = std::lower_bound(
       std::begin(g_PacketTable), std::end(g_PacketTable), hash,
       [](const PacketRecord& a, uint32_t hash) { return a.hash < hash; });
@@ -185,14 +185,14 @@ ByteStringView XFA_ElementToName(XFA_Element elem) {
 }
 
 XFA_Element XFA_GetElementByName(WideStringView name) {
-  uint32_t hash = FX_HashCode_GetW(name, false);
+  const uint32_t hash = FX_HashCode_GetW(name, false);
   auto* elem = std::lower_bound(
       std::begin(kElementRecords), std::end(kElementRecords), hash,
       [](const ElementRecord& a, uint32_t hash) { return a.hash < hash; });
   if (elem == std::end(kElementRecords))
     return XFA_Element::Unknown;
 
-  size_t index = std::distance(std::begin(kElementRecords), elem);
+  const size_t index = std::distance(std::begin(kElementRecords), elem);
   return name.EqualsASCII(kElementNames[index]) ? elem->element
                                                 : XFA_Element::Unknown;
 }
@@ -202,14 +202,14 @@ ByteStringView XFA_AttributeToName(XFA_Attribute attr) {
 }
 
 Optional<XFA_ATTRIBUTEINFO> XFA_GetAttributeByName(WideStringView name) {
-  uint32_t hash = FX_HashCode_GetW(name, false);
+  const uint32_t hash = FX_HashCode_GetW(name, false);
   auto* elem = std::lower_bound(
       std::begin(kAttributeRecords), std::end(kAttributeRecords), hash,
       [](const AttributeRecord& a, uint32_t hash) { return a.hash < hash; });
   if (elem == std::end(kAttributeRecords))
     return pdfium::nullopt;
 
-  size_t index = std::distance(std::begin(kAttributeRecords), elem);
+  const size_t index = std::distance(std::begin(kAttributeRecords), elem);
   if (!name.EqualsASCII(kAttributeNames[index]))
     return pdfium::nullopt;
 
@@ -232,7 +232,7 @@ Optional<XFA_AttributeValue> XFA_GetAttributeValueByName(WideStringView name) {
   if (it == std::end(kAttributeValueRecords))
     return pdfium::nullopt;
 
-  size_t index = std::distance(std::begin(kAttributeValueRecords), it);
+  const size_t index = std::distance(std::begin(kAttributeValueRecords), it);
   if (!name.EqualsASCII(kAttributeValueNames[index]))
     return pdfium::nullopt;
 
@@ -260,7 +260,8 @@ Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
       XFA_SCRIPTATTRIBUTEINFO result;
       result.attribute = attr.value().attribute;
       result.eValueType = attr.value().eValueType;
-      size_t index = std::distance(std::begin(kElementAttributeRecords), it);
+      const size_t index =
+          std::distance(std::begin(kElementAttributeRecords), it);
       result.callback = kElementAttributeCallbacks[index];
       return result;
     }

@@ -76,7 +76,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Unopt(
         if (pArithDecoder->IsComplete())
           return nullptr;
 
-        int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
+        const int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
         DecodeTemplate0UnoptSetPixel(GRREG.get(), lines, w, h, bVal);
       }
     } else {
@@ -146,8 +146,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
   if (!GRREFERENCE->data())
     return nullptr;
 
-  int32_t iGRW = static_cast<int32_t>(GRW);
-  int32_t iGRH = static_cast<int32_t>(GRH);
+  const int32_t iGRW = static_cast<int32_t>(GRW);
+  const int32_t iGRH = static_cast<int32_t>(GRH);
   auto GRREG = std::make_unique<CJBig2_Image>(iGRW, iGRH);
   if (!GRREG->data())
     return nullptr;
@@ -157,8 +157,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
   uint8_t* pLineR = GRREFERENCE->data();
   intptr_t nStride = GRREG->stride();
   intptr_t nStrideR = GRREFERENCE->stride();
-  int32_t GRWR = GRREFERENCE->width();
-  int32_t GRHR = GRREFERENCE->height();
+  const int32_t GRWR = GRREFERENCE->width();
+  const int32_t GRHR = GRREFERENCE->height();
   if (GRREFERENCEDY < -GRHR + 1 || GRREFERENCEDY > GRHR - 1)
     GRREFERENCEDY = 0;
   intptr_t nOffset = -GRREFERENCEDY * nStrideR;
@@ -170,10 +170,10 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
       LTP = LTP ^ pArithDecoder->Decode(&grContext[0x0010]);
     }
     uint32_t line1 = (h > 0) ? pLine[-nStride] << 4 : 0;
-    int32_t reference_h = h - GRREFERENCEDY;
-    bool line1_r_ok = (reference_h > 0 && reference_h < GRHR + 1);
-    bool line2_r_ok = (reference_h > -1 && reference_h < GRHR);
-    bool line3_r_ok = (reference_h > -2 && reference_h < GRHR - 1);
+    const int32_t reference_h = h - GRREFERENCEDY;
+    const bool line1_r_ok = (reference_h > 0 && reference_h < GRHR + 1);
+    const bool line2_r_ok = (reference_h > -1 && reference_h < GRHR);
+    const bool line3_r_ok = (reference_h > -2 && reference_h < GRHR - 1);
     uint32_t line1_r = line1_r_ok ? pLineR[nOffset - nStrideR] : 0;
     uint32_t line2_r = line2_r_ok ? pLineR[nOffset] : 0;
     uint32_t line3_r = line3_r_ok ? pLineR[nOffset + nStrideR] : 0;
@@ -181,7 +181,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
       uint32_t CONTEXT = (line1 & 0x1c00) | (line1_r & 0x01c0) |
                          ((line2_r >> 3) & 0x0038) | ((line3_r >> 6) & 0x0007);
       for (int32_t w = 0; w < iGRW; w += 8) {
-        int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
+        const int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
         if (h > 0) {
           line1 = (line1 << 8) |
                   (w + 8 < iGRW ? pLine[-nStride + (w >> 3) + 1] << 4 : 0);
@@ -210,7 +210,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
         }
         uint8_t cVal = 0;
         for (int32_t k = 0; k < nBits; k++) {
-          int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
           cVal |= bVal << (7 - k);
           CONTEXT = ((CONTEXT & 0x0cdb) << 1) | (bVal << 9) |
                     ((line1 >> (7 - k)) & 0x0400) |
@@ -224,7 +224,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
       uint32_t CONTEXT = (line1 & 0x1c00) | (line1_r & 0x01c0) |
                          ((line2_r >> 3) & 0x0038) | ((line3_r >> 6) & 0x0007);
       for (int32_t w = 0; w < iGRW; w += 8) {
-        int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
+        const int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
         if (h > 0) {
           line1 = (line1 << 8) |
                   (w + 8 < iGRW ? pLine[-nStride + (w >> 3) + 1] << 4 : 0);
@@ -319,7 +319,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Unopt(
         if (pArithDecoder->IsComplete())
           return nullptr;
 
-        int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
+        const int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
         GRREG->SetPixel(w, h, bVal);
         line1 = ((line1 << 1) | GRREG->GetPixel(w + 2, h - 1)) & 0x07;
         line2 = ((line2 << 1) | bVal) & 0x01;
@@ -393,8 +393,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Opt(
   if (!GRREFERENCE->data())
     return nullptr;
 
-  int32_t iGRW = static_cast<int32_t>(GRW);
-  int32_t iGRH = static_cast<int32_t>(GRH);
+  const int32_t iGRW = static_cast<int32_t>(GRW);
+  const int32_t iGRH = static_cast<int32_t>(GRH);
   auto GRREG = std::make_unique<CJBig2_Image>(iGRW, iGRH);
   if (!GRREG->data())
     return nullptr;
@@ -404,8 +404,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Opt(
   uint8_t* pLineR = GRREFERENCE->data();
   intptr_t nStride = GRREG->stride();
   intptr_t nStrideR = GRREFERENCE->stride();
-  int32_t GRWR = GRREFERENCE->width();
-  int32_t GRHR = GRREFERENCE->height();
+  const int32_t GRWR = GRREFERENCE->width();
+  const int32_t GRHR = GRREFERENCE->height();
   if (GRREFERENCEDY < -GRHR + 1 || GRREFERENCEDY > GRHR - 1) {
     GRREFERENCEDY = 0;
   }
@@ -418,10 +418,10 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Opt(
       LTP = LTP ^ pArithDecoder->Decode(&grContext[0x0008]);
     }
     uint32_t line1 = (h > 0) ? pLine[-nStride] << 1 : 0;
-    int32_t reference_h = h - GRREFERENCEDY;
-    bool line1_r_ok = (reference_h > 0 && reference_h < GRHR + 1);
-    bool line2_r_ok = (reference_h > -1 && reference_h < GRHR);
-    bool line3_r_ok = (reference_h > -2 && reference_h < GRHR - 1);
+    const int32_t reference_h = h - GRREFERENCEDY;
+    const bool line1_r_ok = (reference_h > 0 && reference_h < GRHR + 1);
+    const bool line2_r_ok = (reference_h > -1 && reference_h < GRHR);
+    const bool line3_r_ok = (reference_h > -2 && reference_h < GRHR - 1);
     uint32_t line1_r = line1_r_ok ? pLineR[nOffset - nStrideR] : 0;
     uint32_t line2_r = line2_r_ok ? pLineR[nOffset] : 0;
     uint32_t line3_r = line3_r_ok ? pLineR[nOffset + nStrideR] : 0;
@@ -429,7 +429,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Opt(
       uint32_t CONTEXT = (line1 & 0x0380) | ((line1_r >> 2) & 0x0020) |
                          ((line2_r >> 4) & 0x001c) | ((line3_r >> 6) & 0x0003);
       for (int32_t w = 0; w < iGRW; w += 8) {
-        int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
+        const int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
         if (h > 0)
           line1 = (line1 << 8) |
                   (w + 8 < iGRW ? pLine[-nStride + (w >> 3) + 1] << 1 : 0);
@@ -449,7 +449,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Opt(
         }
         uint8_t cVal = 0;
         for (int32_t k = 0; k < nBits; k++) {
-          int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&grContext[CONTEXT]);
           cVal |= bVal << (7 - k);
           CONTEXT = ((CONTEXT & 0x018d) << 1) | (bVal << 6) |
                     ((line1 >> (7 - k)) & 0x0080) |
@@ -463,7 +463,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Opt(
       uint32_t CONTEXT = (line1 & 0x0380) | ((line1_r >> 2) & 0x0020) |
                          ((line2_r >> 4) & 0x001c) | ((line3_r >> 6) & 0x0003);
       for (int32_t w = 0; w < iGRW; w += 8) {
-        int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
+        const int32_t nBits = iGRW - w > 8 ? 8 : iGRW - w;
         if (h > 0)
           line1 = (line1 << 8) |
                   (w + 8 < iGRW ? pLine[-nStride + (w >> 3) + 1] << 1 : 0);
