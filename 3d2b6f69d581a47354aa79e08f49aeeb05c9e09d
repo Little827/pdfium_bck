@@ -16,6 +16,40 @@
       "message": "Make everything const with sed, revert the ones that don\u0027t compile, and tidy,",
       "revId": "3d2b6f69d581a47354aa79e08f49aeeb05c9e09d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3833e17_47d983fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-17T22:35:49Z",
+      "side": 1,
+      "message": "How do we enforce this going forward if we want the code base to be consistent? Do you see this as a big win for readability / reliability?\n\nThe style guide is neutral on this. I\u0027m a bit meh about it.",
+      "revId": "3d2b6f69d581a47354aa79e08f49aeeb05c9e09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6664d866_0b919e44",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-17T22:35:49Z",
+      "side": 1,
+      "message": "This isn\u0027t being compiled, so it\u0027s broken.",
+      "revId": "3d2b6f69d581a47354aa79e08f49aeeb05c9e09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
