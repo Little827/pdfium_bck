@@ -31,7 +31,11 @@ const uint8_t md5_padding[64] = {
     0,    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 void md5_process(CRYPT_md5_context* ctx, const uint8_t data[64]) {
-  uint32_t A, B, C, D, X[16];
+  uint32_t A;
+  uint32_t B;
+  uint32_t C;
+  uint32_t D;
+  uint32_t X[16];
   GET_UINT32(X[0], data, 0);
   GET_UINT32(X[1], data, 4);
   GET_UINT32(X[2], data, 8);
