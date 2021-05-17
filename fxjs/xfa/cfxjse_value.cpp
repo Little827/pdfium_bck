@@ -20,27 +20,28 @@ namespace {
 double ftod(float fNumber) {
   static_assert(sizeof(float) == 4, "float of incorrect size");
 
-  uint32_t nFloatBits = (uint32_t&)fNumber;
-  uint8_t nExponent = (uint8_t)(nFloatBits >> 23);
+  const uint32_t nFloatBits = (uint32_t&)fNumber;
+  const uint8_t nExponent = (uint8_t)(nFloatBits >> 23);
   if (nExponent == 0 || nExponent == 255)
     return fNumber;
 
-  int8_t nErrExp = nExponent - 150;
+  const int8_t nErrExp = nExponent - 150;
   if (nErrExp >= 0)
     return fNumber;
 
-  double dwError = pow(2.0, nErrExp), dwErrorHalf = dwError / 2;
-  double dNumber = fNumber, dNumberAbs = fabs(fNumber);
-  double dNumberAbsMin = dNumberAbs - dwErrorHalf,
-         dNumberAbsMax = dNumberAbs + dwErrorHalf;
+  const double dwError = pow(2.0, nErrExp), dwErrorHalf = dwError / 2;
+  const double dNumber = fNumber, dNumberAbs = fabs(fNumber);
+  double dNumberAbsMin = dNumberAbs - dwErrorHalf;
+  double dNumberAbsMax = dNumberAbs + dwErrorHalf;
   int32_t iErrPos = 0;
   if (floor(dNumberAbsMin) == floor(dNumberAbsMax)) {
     dNumberAbsMin = fmod(dNumberAbsMin, 1.0);
     dNumberAbsMax = fmod(dNumberAbsMax, 1.0);
-    int32_t iErrPosMin = 1, iErrPosMax = 38;
+    int32_t iErrPosMin = 1;
+    int32_t iErrPosMax = 38;
     do {
-      int32_t iMid = (iErrPosMin + iErrPosMax) / 2;
-      double dPow = pow(10.0, iMid);
+      const int32_t iMid = (iErrPosMin + iErrPosMax) / 2;
+      const double dPow = pow(10.0, iMid);
       if (floor(dNumberAbsMin * dPow) == floor(dNumberAbsMax * dPow)) {
         iErrPosMin = iMid + 1;
       } else {
@@ -49,7 +50,7 @@ double ftod(float fNumber) {
     } while (iErrPosMin < iErrPosMax);
     iErrPos = iErrPosMax;
   }
-  double dPow = pow(10.0, iErrPos);
+  const double dPow = pow(10.0, iErrPos);
   return fNumber < 0 ? ceil(dNumber * dPow - 0.5) / dPow
                      : floor(dNumber * dPow + 0.5) / dPow;
 }

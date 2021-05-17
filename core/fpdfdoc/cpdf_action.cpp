@@ -42,7 +42,7 @@ CPDF_Action::Type CPDF_Action::GetType() const {
       return Type::kUnknown;
   }
 
-  ByteString csType = m_pDict->GetNameFor("S");
+  const ByteString csType = m_pDict->GetNameFor("S");
   if (csType.IsEmpty())
     return Type::kUnknown;
 
@@ -121,7 +121,7 @@ std::vector<const CPDF_Object*> CPDF_Action::GetAllFields() const {
   if (!m_pDict)
     return result;
 
-  ByteString csType = m_pDict->GetStringFor("S");
+  const ByteString csType = m_pDict->GetStringFor("S");
   const CPDF_Object* pFields = csType == "Hide"
                                    ? m_pDict->GetDirectObjectFor("T")
                                    : m_pDict->GetArrayFor("Fields");

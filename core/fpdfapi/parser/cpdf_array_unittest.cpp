@@ -138,7 +138,7 @@ TEST(cpdf_array, Clone) {
       for (size_t j = 0; j < kNumOfRowElems; ++j) {
         auto obj = pdfium::MakeRetain<CPDF_Number>(elems[i][j]);
         // Starts object number from 1.
-        int obj_num = i * kNumOfRowElems + j + 1;
+        const int obj_num = i * kNumOfRowElems + j + 1;
         obj_holder->ReplaceIndirectObjectIfHigherGeneration(obj_num,
                                                             std::move(obj));
         arr_elem->InsertNewAt<CPDF_Reference>(j, obj_holder.get(), obj_num);

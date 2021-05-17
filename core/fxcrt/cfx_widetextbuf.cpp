@@ -59,7 +59,7 @@ CFX_WideTextBuf& CFX_WideTextBuf::operator<<(const WideString& str) {
 CFX_WideTextBuf& CFX_WideTextBuf::operator<<(int i) {
   char buf[32];
   FXSYS_itoa(i, buf, 10);
-  size_t len = strlen(buf);
+  const size_t len = strlen(buf);
   pdfium::span<wchar_t> new_span = ExpandWideBuf(len);
   for (size_t j = 0; j < len; j++)
     new_span[j] = buf[j];
@@ -68,7 +68,7 @@ CFX_WideTextBuf& CFX_WideTextBuf::operator<<(int i) {
 
 CFX_WideTextBuf& CFX_WideTextBuf::operator<<(double f) {
   char buf[32];
-  size_t len = FloatToString((float)f, buf);
+  const size_t len = FloatToString((float)f, buf);
   pdfium::span<wchar_t> new_span = ExpandWideBuf(len);
   for (size_t i = 0; i < len; i++)
     new_span[i] = buf[i];
@@ -86,10 +86,10 @@ CFX_WideTextBuf& CFX_WideTextBuf::operator<<(const CFX_WideTextBuf& buf) {
 }
 
 pdfium::span<wchar_t> CFX_WideTextBuf::ExpandWideBuf(size_t char_count) {
-  size_t original_count = GetLength();
+  const size_t original_count = GetLength();
   FX_SAFE_SIZE_T safe_bytes = char_count;
   safe_bytes *= sizeof(wchar_t);
-  size_t bytes = safe_bytes.ValueOrDie();
+  const size_t bytes = safe_bytes.ValueOrDie();
   ExpandBuf(bytes);
   m_DataSize += bytes;
   return GetWideSpan().subspan(original_count);

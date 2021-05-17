@@ -177,7 +177,7 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
     if (nRet == PDF_FORM_ERROR)
       return false;
 
-    int page_count = FPDF_GetPageCount(*document);
+    const int page_count = FPDF_GetPageCount(*document);
     for (int i = 0; i < page_count; ++i) {
       nRet = PDF_DATA_NOTAVAIL;
       while (nRet == PDF_DATA_NOTAVAIL) {
@@ -199,7 +199,7 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
   }
   *form_handle = SetupFormFillEnvironment(*document, javascript_option);
 
-  int doc_type = FPDF_GetFormType(*document);
+  const int doc_type = FPDF_GetFormType(*document);
   if (doc_type == FORMTYPE_XFA_FULL || doc_type == FORMTYPE_XFA_FOREGROUND)
     FPDF_LoadXFA(*document);
 
@@ -252,14 +252,14 @@ void EmbedderTest::DoOpenActions() {
 }
 
 int EmbedderTest::GetFirstPageNum() {
-  int first_page = FPDFAvail_GetFirstPageNum(document_);
+  const int first_page = FPDFAvail_GetFirstPageNum(document_);
   (void)FPDFAvail_IsPageAvail(avail_, first_page,
                               fake_file_access_->GetDownloadHints());
   return first_page;
 }
 
 int EmbedderTest::GetPageCount() {
-  int page_count = FPDF_GetPageCount(document_);
+  const int page_count = FPDF_GetPageCount(document_);
   for (int i = 0; i < page_count; ++i)
     (void)FPDFAvail_IsPageAvail(avail_, i,
                                 fake_file_access_->GetDownloadHints());
@@ -301,7 +301,7 @@ void EmbedderTest::UnloadPageNoEvents(FPDF_PAGE page) {
 
 void EmbedderTest::UnloadPageCommon(FPDF_PAGE page, bool do_events) {
   DCHECK(form_handle_);
-  int page_number = GetPageNumberForLoadedPage(page);
+  const int page_number = GetPageNumberForLoadedPage(page);
   if (page_number < 0) {
     NOTREACHED();
     return;
@@ -349,9 +349,9 @@ ScopedFPDFBitmap EmbedderTest::RenderSavedPageWithFlags(FPDF_PAGE page,
 ScopedFPDFBitmap EmbedderTest::RenderPageWithFlags(FPDF_PAGE page,
                                                    FPDF_FORMHANDLE handle,
                                                    int flags) {
-  int width = static_cast<int>(FPDF_GetPageWidthF(page));
-  int height = static_cast<int>(FPDF_GetPageHeightF(page));
-  int alpha = FPDFPage_HasTransparency(page) ? 1 : 0;
+  const int width = static_cast<int>(FPDF_GetPageWidthF(page));
+  const int height = static_cast<int>(FPDF_GetPageHeightF(page));
+  const int alpha = FPDFPage_HasTransparency(page) ? 1 : 0;
   ScopedFPDFBitmap bitmap(FPDFBitmap_Create(width, height, alpha));
   FPDF_DWORD fill_color = alpha ? 0x00000000 : 0xFFFFFFFF;
   FPDFBitmap_FillRect(bitmap.get(), 0, 0, width, height, fill_color);
@@ -371,8 +371,8 @@ std::vector<uint8_t> EmbedderTest::RenderPageWithFlagsToEmf(FPDF_PAGE page,
                                                             int flags) {
   HDC dc = CreateEnhMetaFileA(nullptr, nullptr, nullptr, nullptr);
 
-  int width = static_cast<int>(FPDF_GetPageWidthF(page));
-  int height = static_cast<int>(FPDF_GetPageHeightF(page));
+  const int width = static_cast<int>(FPDF_GetPageWidthF(page));
+  const int height = static_cast<int>(FPDF_GetPageHeightF(page));
   HRGN rgn = CreateRectRgn(0, 0, width, height);
   SelectClipRgn(dc, rgn);
   DeleteObject(rgn);
@@ -385,7 +385,7 @@ std::vector<uint8_t> EmbedderTest::RenderPageWithFlagsToEmf(FPDF_PAGE page,
   FPDF_RenderPage(dc, page, 0, 0, width, height, 0, flags);
 
   HENHMETAFILE emf = CloseEnhMetaFile(dc);
-  size_t size_in_bytes = GetEnhMetaFileBits(emf, 0, nullptr);
+  const size_t size_in_bytes = GetEnhMetaFileBits(emf, 0, nullptr);
   std::vector<uint8_t> buffer(size_in_bytes);
   GetEnhMetaFileBits(emf, size_in_bytes, buffer.data());
   DeleteEnhMetaFile(emf);
@@ -418,7 +418,7 @@ std::string EmbedderTest::GetPostScriptFromEmf(
     // is the actual string data.
     const auto* comment = reinterpret_cast<const EMRGDICOMMENT*>(record);
     const char* data = reinterpret_cast<const char*>(comment->Data);
-    uint16_t size = *reinterpret_cast<const uint16_t*>(data);
+    const uint16_t size = *reinterpret_cast<const uint16_t*>(data);
     data += 2;
     ps_data.append(data, size);
   }
@@ -496,7 +496,7 @@ FPDF_PAGE EmbedderTest::LoadSavedPage(int page_number) {
 void EmbedderTest::CloseSavedPage(FPDF_PAGE page) {
   DCHECK(saved_form_handle_);
 
-  int page_number = GetPageNumberForSavedPage(page);
+  const int page_number = GetPageNumberForSavedPage(page);
   if (page_number < 0) {
     NOTREACHED();
     return;
@@ -617,10 +617,10 @@ void EmbedderTest::DoURIActionWithKeyboardModifierTrampoline(
 
 // static
 std::string EmbedderTest::HashBitmap(FPDF_BITMAP bitmap) {
-  int stride = FPDFBitmap_GetStride(bitmap);
+  const int stride = FPDFBitmap_GetStride(bitmap);
   int usable_bytes_per_row =
       GetBitmapBytesPerPixel(bitmap) * FPDFBitmap_GetWidth(bitmap);
-  int height = FPDFBitmap_GetHeight(bitmap);
+  const int height = FPDFBitmap_GetHeight(bitmap);
   auto span = pdfium::make_span(
       static_cast<uint8_t*>(FPDFBitmap_GetBuffer(bitmap)), stride * height);
 
@@ -699,7 +699,7 @@ int EmbedderTest::GetPageNumberForPage(const PageNumberToHandleMap& page_map,
                                        FPDF_PAGE page) {
   for (const auto& it : page_map) {
     if (it.second == page) {
-      int page_number = it.first;
+      const int page_number = it.first;
       DCHECK(page_number >= 0);
       return page_number;
     }

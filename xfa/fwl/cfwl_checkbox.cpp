@@ -58,7 +58,7 @@ void CFWL_CheckBox::DrawWidget(CFGAS_GEGraphics* pGraphics,
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, matrix);
 
-  int32_t dwStates = GetPartStates();
+  const int32_t dwStates = GetPartStates();
   CFWL_ThemeBackground param(this, pGraphics);
   param.m_iPart = CFWL_Part::Background;
   param.m_dwStates = dwStates;
@@ -106,7 +106,7 @@ void CFWL_CheckBox::Layout() {
   m_WidgetRect.height = FXSYS_roundf(m_WidgetRect.height);
   m_ClientRect = GetClientRect();
 
-  float fTextLeft = m_ClientRect.left + m_fBoxHeight;
+  const float fTextLeft = m_ClientRect.left + m_fBoxHeight;
   m_BoxRect = CFX_RectF(m_ClientRect.TopLeft(), m_fBoxHeight, m_fBoxHeight);
   m_CaptionRect =
       CFX_RectF(fTextLeft, m_ClientRect.top, m_ClientRect.right() - fTextLeft,
@@ -150,7 +150,7 @@ void CFWL_CheckBox::UpdateTextOutStyles() {
 }
 
 void CFWL_CheckBox::NextStates() {
-  uint32_t dwFirststate = m_Properties.m_dwStates;
+  const uint32_t dwFirststate = m_Properties.m_dwStates;
   if (m_Properties.m_dwStyleExes & FWL_STYLEEXT_CKB_RadioButton) {
     if ((m_Properties.m_dwStates & FWL_STATE_CKB_CheckMask) ==
         FWL_STATE_CKB_Unchecked) {

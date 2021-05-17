@@ -61,7 +61,7 @@ void CFGAS_Break::SetFont(const RetainPtr<CFGAS_GEFont>& pFont) {
 }
 
 void CFGAS_Break::SetFontSize(float fFontSize) {
-  int32_t iFontSize = FXSYS_roundf(fFontSize * 20.0f);
+  const int32_t iFontSize = FXSYS_roundf(fFontSize * 20.0f);
   if (m_iFontSize == iFontSize)
     return;
 

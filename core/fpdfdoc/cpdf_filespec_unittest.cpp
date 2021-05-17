@@ -209,7 +209,7 @@ TEST(cpdf_filespec, GetFileStream) {
 
       // Set the file stream.
       auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
-      size_t buf_len = strlen(streams[i]) + 1;
+      const size_t buf_len = strlen(streams[i]) + 1;
       std::unique_ptr<uint8_t, FxFreeDeleter> buf(
           FX_AllocUninit(uint8_t, buf_len));
       memcpy(buf.get(), streams[i], buf_len);

@@ -52,7 +52,7 @@ FXDIB_Format XFA_GetDIBFormat(FXCODEC_IMAGE_TYPE type,
 #endif  // PDF_ENABLE_XFA_TIFF
     {
       dibFormat = FXDIB_Format::kRgb32;
-      int32_t bpp = iComponents * iBitsPerComponent;
+      const int32_t bpp = iComponents * iBitsPerComponent;
       if (bpp <= 24) {
         dibFormat = FXDIB_Format::kRgb;
       }
@@ -67,12 +67,11 @@ FXDIB_Format XFA_GetDIBFormat(FXCODEC_IMAGE_TYPE type,
 }
 
 bool IsFXCodecErrorStatus(FXCODEC_STATUS status) {
-  return (status == FXCODEC_STATUS_ERROR ||
-          status == FXCODEC_STATUS_ERR_MEMORY ||
-          status == FXCODEC_STATUS_ERR_READ ||
-          status == FXCODEC_STATUS_ERR_FLUSH ||
-          status == FXCODEC_STATUS_ERR_FORMAT ||
-          status == FXCODEC_STATUS_ERR_PARAMS);
+  return (
+      status == FXCODEC_STATUS_ERROR || status == FXCODEC_STATUS_ERR_MEMORY ||
+      status == FXCODEC_STATUS_ERR_READ || status == FXCODEC_STATUS_ERR_FLUSH ||
+      status == FXCODEC_STATUS_ERR_FORMAT ||
+      status == FXCODEC_STATUS_ERR_PARAMS);
 }
 
 }  // namespace
@@ -95,15 +94,15 @@ void XFA_DrawImage(CFGAS_GEGraphics* pGS,
                   XFA_UnitPx2Pt(pDIBitmap->GetHeight(), dpi.height));
   switch (iAspect) {
     case XFA_AttributeValue::Fit: {
-      float f1 = rtImage.height / rtFit.height;
-      float f2 = rtImage.width / rtFit.width;
-      f1 = std::min(f1, f2);
-      rtFit.height = rtFit.height * f1;
-      rtFit.width = rtFit.width * f1;
+      const float f1 = rtImage.height / rtFit.height;
+      const float f2 = rtImage.width / rtFit.width;
+      const float f3 = std::min(f1, f2);
+      rtFit.height = rtFit.height * f3;
+      rtFit.width = rtFit.width * f3;
       break;
     }
     case XFA_AttributeValue::Height: {
-      float f1 = rtImage.height / rtFit.height;
+      const float f1 = rtImage.height / rtFit.height;
       rtFit.height = rtImage.height;
       rtFit.width = f1 * rtFit.width;
       break;
@@ -113,7 +112,7 @@ void XFA_DrawImage(CFGAS_GEGraphics* pGS,
       rtFit.width = rtImage.width;
       break;
     case XFA_AttributeValue::Width: {
-      float f1 = rtImage.width / rtFit.width;
+      const float f1 = rtImage.width / rtFit.width;
       rtFit.width = rtImage.width;
       rtFit.height = rtFit.height * f1;
       break;
@@ -184,8 +183,8 @@ RetainPtr<CFX_DIBitmap> XFA_LoadImageFromBuffer(
   }
 
   type = pProgressiveDecoder->GetType();
-  int32_t iComponents = pProgressiveDecoder->GetNumComponents();
-  int32_t iBpc = pProgressiveDecoder->GetBPC();
+  const int32_t iComponents = pProgressiveDecoder->GetNumComponents();
+  const int32_t iBpc = pProgressiveDecoder->GetBPC();
   FXDIB_Format dibFormat = XFA_GetDIBFormat(type, iComponents, iBpc);
   RetainPtr<CFX_DIBitmap> pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
   pBitmap->Create(pProgressiveDecoder->GetWidth(),
@@ -544,7 +543,7 @@ CFX_PointF CXFA_FFWidget::Rotate2Normal(const CFX_PointF& point) {
 }
 
 CFX_Matrix CXFA_FFWidget::GetRotateMatrix() {
-  int32_t iRotate = m_pNode->GetRotate();
+  const int32_t iRotate = m_pNode->GetRotate();
   if (!iRotate)
     return CFX_Matrix();
 

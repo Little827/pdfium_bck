@@ -80,7 +80,7 @@ void CPDF_ImageObject::MaybePurgeCache() {
   if (!pStream)
     return;
 
-  uint32_t objnum = pStream->GetObjNum();
+  const uint32_t objnum = pStream->GetObjNum();
   if (!objnum)
     return;
 

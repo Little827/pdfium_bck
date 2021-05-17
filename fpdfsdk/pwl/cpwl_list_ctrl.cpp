@@ -154,7 +154,7 @@ CFX_FloatRect CPWL_ListCtrl::OuterToInner(const CFX_FloatRect& rect) const {
 void CPWL_ListCtrl::OnMouseDown(const CFX_PointF& point,
                                 bool bShift,
                                 bool bCtrl) {
-  int32_t nHitIndex = GetItemIndex(point);
+  const int32_t nHitIndex = GetItemIndex(point);
 
   if (IsMultipleSel()) {
     if (bCtrl) {
@@ -193,7 +193,7 @@ void CPWL_ListCtrl::OnMouseDown(const CFX_PointF& point,
 void CPWL_ListCtrl::OnMouseMove(const CFX_PointF& point,
                                 bool bShift,
                                 bool bCtrl) {
-  int32_t nHitIndex = GetItemIndex(point);
+  const int32_t nHitIndex = GetItemIndex(point);
 
   if (IsMultipleSel()) {
     if (bCtrl) {
@@ -268,8 +268,8 @@ void CPWL_ListCtrl::OnVK_END(bool bShift, bool bCtrl) {
 }
 
 bool CPWL_ListCtrl::OnChar(uint16_t nChar, bool bShift, bool bCtrl) {
-  int32_t nIndex = GetLastSelected();
-  int32_t nFindIndex = FindNext(nIndex, nChar);
+  const int32_t nIndex = GetLastSelected();
+  const int32_t nFindIndex = FindNext(nIndex, nChar);
 
   if (nFindIndex != nIndex) {
     OnVK(nFindIndex, bShift, bCtrl);
@@ -341,7 +341,7 @@ void CPWL_ListCtrl::SetCaret(int32_t nItemIndex) {
     return;
 
   if (IsMultipleSel()) {
-    int32_t nOldIndex = m_nCaretIndex;
+    const int32_t nOldIndex = m_nCaretIndex;
 
     if (nOldIndex != nItemIndex) {
       m_nCaretIndex = nItemIndex;
@@ -493,7 +493,7 @@ void CPWL_ListCtrl::ReArrange(int32_t nItemIndex) {
     fPosY = m_ListItems[nItemIndex - 1]->GetRect().bottom;
 
   for (const auto& pListItem : m_ListItems) {
-    float fListItemHeight = pListItem->GetItemHeight();
+    const float fListItemHeight = pListItem->GetItemHeight();
     pListItem->SetRect(
         CFX_FloatRect(0.0f, fPosY + fListItemHeight, 0.0f, fPosY));
     fPosY += fListItemHeight;
@@ -596,7 +596,7 @@ int32_t CPWL_ListCtrl::GetLastSelected() const {
 
 int32_t CPWL_ListCtrl::FindNext(int32_t nIndex, wchar_t nChar) const {
   int32_t nCircleIndex = nIndex;
-  int32_t sz = GetCount();
+  const int32_t sz = GetCount();
   for (int32_t i = 0; i < sz; i++) {
     nCircleIndex++;
     if (nCircleIndex >= sz)

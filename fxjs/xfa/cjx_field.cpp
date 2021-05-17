@@ -92,7 +92,7 @@ CJS_Result CJX_Field::deleteItem(
   if (!node->IsWidgetReady())
     return CJS_Result::Success();
 
-  bool bValue = node->DeleteItem(runtime->ToInt32(params[0]), true, true);
+  const bool bValue = node->DeleteItem(runtime->ToInt32(params[0]), true, true);
   return CJS_Result::Success(runtime->NewBoolean(bValue));
 }
 
@@ -102,7 +102,7 @@ CJS_Result CJX_Field::getSaveItem(
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  int32_t iIndex = runtime->ToInt32(params[0]);
+  const int32_t iIndex = runtime->ToInt32(params[0]);
   if (iIndex < 0)
     return CJS_Result::Success(runtime->NewNull());
 
@@ -144,7 +144,7 @@ CJS_Result CJX_Field::getItemState(
   if (!node->IsWidgetReady())
     return CJS_Result::Success();
 
-  int32_t state = node->GetItemState(runtime->ToInt32(params[0]));
+  const int32_t state = node->GetItemState(runtime->ToInt32(params[0]));
   return CJS_Result::Success(runtime->NewBoolean(state != 0));
 }
 
@@ -168,7 +168,7 @@ CJS_Result CJX_Field::getDisplayItem(
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  int32_t iIndex = runtime->ToInt32(params[0]);
+  const int32_t iIndex = runtime->ToInt32(params[0]);
   if (iIndex < 0)
     return CJS_Result::Success(runtime->NewNull());
 
@@ -194,7 +194,7 @@ CJS_Result CJX_Field::setItemState(
   if (!node->IsWidgetReady())
     return CJS_Result::Success();
 
-  int32_t iIndex = runtime->ToInt32(params[0]);
+  const int32_t iIndex = runtime->ToInt32(params[0]);
   if (runtime->ToInt32(params[1]) != 0) {
     node->SetItemState(iIndex, true, true, true, true);
     return CJS_Result::Success();
@@ -382,7 +382,7 @@ void CJX_Field::selectedIndex(v8::Isolate* pIsolate,
     return;
   }
 
-  int32_t iIndex = fxv8::ReentrantToInt32Helper(pIsolate, *pValue);
+  const int32_t iIndex = fxv8::ReentrantToInt32Helper(pIsolate, *pValue);
   if (iIndex == -1) {
     node->ClearAllSelections();
     return;

@@ -46,7 +46,7 @@ bool CBC_X12Encoder::Encode(CBC_EncoderContext* context) {
     if (EncodeChar(c, &buffer) <= 0)
       return false;
 
-    size_t count = buffer.GetLength();
+    const size_t count = buffer.GetLength();
     if ((count % 3) == 0) {
       WriteNextTriplet(context, &buffer);
       CBC_HighLevelEncoder::Encoding newMode =
@@ -68,7 +68,7 @@ bool CBC_X12Encoder::HandleEOD(CBC_EncoderContext* context,
 
   int32_t available =
       context->m_symbolInfo->data_capacity() - context->getCodewordCount();
-  size_t count = buffer->GetLength();
+  const size_t count = buffer->GetLength();
   if (count == 2) {
     context->writeCodeword(CBC_HighLevelEncoder::X12_UNLATCH);
     context->m_pos -= 2;

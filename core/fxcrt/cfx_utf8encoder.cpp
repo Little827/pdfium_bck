@@ -11,7 +11,7 @@ CFX_UTF8Encoder::CFX_UTF8Encoder() = default;
 CFX_UTF8Encoder::~CFX_UTF8Encoder() = default;
 
 void CFX_UTF8Encoder::Input(wchar_t unicodeAsWchar) {
-  uint32_t unicode = static_cast<uint32_t>(unicodeAsWchar);
+  const uint32_t unicode = static_cast<uint32_t>(unicodeAsWchar);
   if (unicode < 0x80) {
     m_Buffer.push_back(unicode);
   } else {

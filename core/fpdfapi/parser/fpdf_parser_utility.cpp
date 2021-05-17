@@ -94,7 +94,7 @@ int32_t GetDirectInteger(const CPDF_Dictionary* pDict, const ByteString& key) {
 }
 
 ByteString PDF_NameDecode(ByteStringView orig) {
-  size_t src_size = orig.GetLength();
+  const size_t src_size = orig.GetLength();
   size_t out_index = 0;
   ByteString result;
   {
@@ -116,11 +116,11 @@ ByteString PDF_NameDecode(ByteStringView orig) {
 
 ByteString PDF_NameEncode(const ByteString& orig) {
   const uint8_t* src_buf = reinterpret_cast<const uint8_t*>(orig.c_str());
-  int src_len = orig.GetLength();
+  const int src_len = orig.GetLength();
   int dest_len = 0;
   int i;
   for (i = 0; i < src_len; i++) {
-    uint8_t ch = src_buf[i];
+    const uint8_t ch = src_buf[i];
     if (ch >= 0x80 || PDFCharIsWhitespace(ch) || ch == '#' ||
         PDFCharIsDelimiter(ch)) {
       dest_len += 3;
@@ -137,7 +137,7 @@ ByteString PDF_NameEncode(const ByteString& orig) {
     pdfium::span<char> dest_buf = res.GetBuffer(dest_len);
     dest_len = 0;
     for (i = 0; i < src_len; i++) {
-      uint8_t ch = src_buf[i];
+      const uint8_t ch = src_buf[i];
       if (ch >= 0x80 || PDFCharIsWhitespace(ch) || ch == '#' ||
           PDFCharIsDelimiter(ch)) {
         dest_buf[dest_len++] = '#';

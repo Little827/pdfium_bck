@@ -1873,7 +1873,7 @@ const FGAS_FONTUSB* FGAS_GetUnicodeBitField(wchar_t unicode) {
 }
 
 WideString FGAS_FontNameToEnglishName(WideStringView wsLocalName) {
-  uint32_t dwLocalNameHash = FX_HashCode_GetW(wsLocalName, true);
+  const uint32_t dwLocalNameHash = FX_HashCode_GetW(wsLocalName, true);
   const FGAS_FontInfo* pEnd = g_XFAFontsMap + pdfium::size(g_XFAFontsMap);
   const FGAS_FontInfo* pFontInfo =
       std::lower_bound(g_XFAFontsMap, pEnd, dwLocalNameHash,

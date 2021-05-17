@@ -33,8 +33,8 @@ const uint8_t kDefaultPasscode[32] = {
 
 void GetPassCode(const ByteString& password, pdfium::span<uint8_t> output) {
   DCHECK_EQ(sizeof(kDefaultPasscode), output.size());
-  size_t len = std::min(password.GetLength(), output.size());
-  size_t remaining = output.size() - len;
+  const size_t len = std::min(password.GetLength(), output.size());
+  const size_t remaining = output.size() - len;
   memcpy(output.data(), password.raw_str(), len);
   if (remaining)
     memcpy(&output[len], kDefaultPasscode, remaining);
@@ -52,7 +52,7 @@ void CalcEncryptKey(const CPDF_Dictionary* pEncrypt,
   CRYPT_MD5Update(&md5, passcode);
   ByteString okey = pEncrypt->GetStringFor("O");
   CRYPT_MD5Update(&md5, okey.raw_span());
-  uint32_t perm = pEncrypt->GetIntegerFor("P");
+  const uint32_t perm = pEncrypt->GetIntegerFor("P");
   CRYPT_MD5Update(&md5, pdfium::as_bytes(pdfium::make_span(&perm, 1)));
   if (!file_id.IsEmpty())
     CRYPT_MD5Update(&md5, file_id.raw_span());
@@ -64,7 +64,7 @@ void CalcEncryptKey(const CPDF_Dictionary* pEncrypt,
   }
   uint8_t digest[16];
   CRYPT_MD5Finish(&md5, digest);
-  size_t copy_len = std::min(keylen, sizeof(digest));
+  const size_t copy_len = std::min(keylen, sizeof(digest));
   if (is_revision_3_or_greater) {
     for (int i = 0; i < 50; i++)
       CRYPT_MD5Generate({digest, copy_len}, digest);
@@ -230,7 +230,7 @@ static bool LoadCryptInfo(const CPDF_Dictionary* pEncryptDict,
                           const ByteString& name,
                           int* cipher,
                           size_t* keylen_out) {
-  int Version = pEncryptDict->GetIntegerFor("V");
+  const int Version = pEncryptDict->GetIntegerFor("V");
   *cipher = FXCIPHER_RC4;
   *keylen_out = 0;
   int keylen = 0;
@@ -454,7 +454,7 @@ bool CPDF_SecurityHandler::CheckUserPassword(const ByteString& password,
 
   uint8_t test[32] = {};
   uint8_t tmpkey[32] = {};
-  uint32_t copy_len = std::min(sizeof(test), ukey.GetLength());
+  const uint32_t copy_len = std::min(sizeof(test), ukey.GetLength());
 
   memcpy(test, ukey.c_str(), copy_len);
   for (int32_t i = 19; i >= 0; i--) {
@@ -474,7 +474,8 @@ ByteString CPDF_SecurityHandler::GetUserPassword(
     const ByteString& owner_password) const {
   constexpr size_t kRequiredOkeyLength = 32;
   ByteString okey = m_pEncryptDict->GetStringFor("O");
-  size_t okeylen = std::min<size_t>(okey.GetLength(), kRequiredOkeyLength);
+  const size_t okeylen =
+      std::min<size_t>(okey.GetLength(), kRequiredOkeyLength);
   if (okeylen < kRequiredOkeyLength)
     return ByteString();
 
@@ -488,7 +489,7 @@ ByteString CPDF_SecurityHandler::GetUserPassword(
       CRYPT_MD5Generate(digest, digest);
   }
   uint8_t enckey[32] = {};
-  size_t copy_len = std::min(m_KeyLen, sizeof(digest));
+  const size_t copy_len = std::min(m_KeyLen, sizeof(digest));
 
   memcpy(enckey, digest, copy_len);
   uint8_t okeybuf[32] = {};

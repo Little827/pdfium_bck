@@ -43,8 +43,8 @@ bool CPDF_ScaledRenderBuffer::Initialize(CPDF_RenderContext* pContext,
   while (1) {
     FX_RECT bitmap_rect =
         m_Matrix.TransformRect(CFX_FloatRect(rect)).GetOuterRect();
-    int32_t width = bitmap_rect.Width();
-    int32_t height = bitmap_rect.Height();
+    const int32_t width = bitmap_rect.Width();
+    const int32_t height = bitmap_rect.Height();
     // Set to 0 to make CalculatePitchAndSize() calculate it.
     constexpr uint32_t kNoPitch = 0;
     Optional<CFX_DIBitmap::PitchAndSize> pitch_size =

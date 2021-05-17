@@ -125,10 +125,10 @@ void CFX_BitmapComposer::ComposeScanline(int line,
 void CFX_BitmapComposer::ComposeScanlineV(int line,
                                           const uint8_t* scanline,
                                           const uint8_t* scan_extra_alpha) {
-  int Bpp = m_pBitmap->GetBPP() / 8;
-  int dest_pitch = m_pBitmap->GetPitch();
-  int dest_alpha_pitch = m_pBitmap->GetAlphaMaskPitch();
-  int dest_x = m_DestLeft + (m_bFlipX ? (m_DestWidth - line - 1) : line);
+  const int Bpp = m_pBitmap->GetBPP() / 8;
+  const int dest_pitch = m_pBitmap->GetPitch();
+  const int dest_alpha_pitch = m_pBitmap->GetAlphaMaskPitch();
+  const int dest_x = m_DestLeft + (m_bFlipX ? (m_DestWidth - line - 1) : line);
   uint8_t* dest_buf = m_pBitmap->GetBuffer();
   if (dest_buf) {
     dest_buf += dest_x * Bpp + m_DestTop * dest_pitch;

@@ -49,14 +49,14 @@ void CFGAS_GEPath::ArcToInternal(const CFX_PointF& pos,
                                  const CFX_SizeF& size,
                                  float start_angle,
                                  float sweep_angle) {
-  float x0 = cos(sweep_angle / 2);
-  float y0 = sin(sweep_angle / 2);
-  float tx = ((1.0f - x0) * 4) / (3 * 1.0f);
-  float ty = y0 - ((tx * x0) / y0);
+  const float x0 = cos(sweep_angle / 2);
+  const float y0 = sin(sweep_angle / 2);
+  const float tx = ((1.0f - x0) * 4) / (3 * 1.0f);
+  const float ty = y0 - ((tx * x0) / y0);
 
   CFX_PointF points[] = {CFX_PointF(x0 + tx, -ty), CFX_PointF(x0 + tx, ty)};
-  float sn = sin(start_angle + sweep_angle / 2);
-  float cs = cos(start_angle + sweep_angle / 2);
+  const float sn = sin(start_angle + sweep_angle / 2);
+  const float cs = cos(start_angle + sweep_angle / 2);
 
   CFX_PointF bezier;
   bezier.x = pos.x + (size.width * ((points[0].x * cs) - (points[0].y * sn)));

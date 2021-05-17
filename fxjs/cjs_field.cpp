@@ -283,7 +283,7 @@ void SetCurrentValueIndices(CPDFSDK_FormFillEnvironment* pFormFillEnv,
     if (!IsComboBoxOrListBox(pFormField))
       continue;
 
-    uint32_t dwFieldFlags = pFormField->GetFieldFlags();
+    const uint32_t dwFieldFlags = pFormField->GetFieldFlags();
     pFormField->ClearSelection(NotificationOption::kNotify);
     for (size_t i = 0; i < array.size(); ++i) {
       if (i != 0 && !(dwFieldFlags & pdfium::form_flags::kChoiceMultiSelect))
@@ -338,7 +338,7 @@ void SetHidden(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                const WideString& swFieldName,
                int nControlIndex,
                bool b) {
-  int display = b ? 1 /*Hidden*/ : 0 /*Visible*/;
+  const int display = b ? 1 /*Hidden*/ : 0 /*Visible*/;
   SetDisplay(pFormFillEnv, swFieldName, nControlIndex, display);
 }
 
@@ -480,7 +480,7 @@ void SetFieldValue(CPDFSDK_FormFillEnvironment* pFormFillEnv,
         if (bModified) {
           pFormField->ClearSelection(NotificationOption::kNotify);
           for (const auto& str : strArray) {
-            int index = pFormField->FindOption(str);
+            const int index = pFormField->FindOption(str);
             if (!pFormField->IsItemSelected(index))
               pFormField->SetItemSelection(index, NotificationOption::kNotify);
           }
@@ -982,7 +982,7 @@ CJS_Result CJS_Field::get_commit_on_sel_change(CJS_Runtime* pRuntime) {
   if (!IsComboBoxOrListBox(pFormField))
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  uint32_t dwFieldFlags = pFormField->GetFieldFlags();
+  const uint32_t dwFieldFlags = pFormField->GetFieldFlags();
   return CJS_Result::Success(pRuntime->NewBoolean(
       !!(dwFieldFlags & pdfium::form_flags::kChoiceCommitOnSelChange)));
 }
@@ -1003,7 +1003,7 @@ CJS_Result CJS_Field::get_current_value_indices(CJS_Runtime* pRuntime) {
   if (!IsComboBoxOrListBox(pFormField))
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  int count = pFormField->CountSelectedItems();
+  const int count = pFormField->CountSelectedItems();
   if (count <= 0)
     return CJS_Result::Success(pRuntime->NewNumber(-1));
   if (count == 1)
@@ -1110,7 +1110,7 @@ CJS_Result CJS_Field::get_do_not_spell_check(CJS_Runtime* pRuntime) {
   if (!IsComboBoxOrTextField(pFormField))
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  uint32_t dwFieldFlags = pFormField->GetFieldFlags();
+  const uint32_t dwFieldFlags = pFormField->GetFieldFlags();
   return CJS_Result::Success(pRuntime->NewBoolean(
       !!(dwFieldFlags & pdfium::form_flags::kTextDoNotSpellCheck)));
 }
@@ -1155,7 +1155,7 @@ CJS_Result CJS_Field::get_display(CJS_Runtime* pRuntime) {
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  uint32_t dwFlag = pWidget->GetFlags();
+  const uint32_t dwFlag = pWidget->GetFlags();
   if (pdfium::annotation_flags::kInvisible & dwFlag ||
       pdfium::annotation_flags::kHidden & dwFlag) {
     return CJS_Result::Success(pRuntime->NewNumber(1));
@@ -1349,7 +1349,7 @@ CJS_Result CJS_Field::get_hidden(CJS_Runtime* pRuntime) {
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  uint32_t dwFlags = pWidget->GetFlags();
+  const uint32_t dwFlags = pWidget->GetFlags();
   return CJS_Result::Success(
       pRuntime->NewBoolean(pdfium::annotation_flags::kInvisible & dwFlags ||
                            pdfium::annotation_flags::kHidden & dwFlags));
@@ -1383,7 +1383,7 @@ CJS_Result CJS_Field::get_highlight(CJS_Runtime* pRuntime) {
   if (!pFormControl)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  int eHM = pFormControl->GetHighlightingMode();
+  const int eHM = pFormControl->GetHighlightingMode();
   switch (eHM) {
     case CPDF_FormControl::None:
       return CJS_Result::Success(pRuntime->NewString("none"));
@@ -1472,7 +1472,7 @@ CJS_Result CJS_Field::get_multiple_selection(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kListBox)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  uint32_t dwFieldFlags = pFormField->GetFieldFlags();
+  const uint32_t dwFieldFlags = pFormField->GetFieldFlags();
   return CJS_Result::Success(pRuntime->NewBoolean(
       !!(dwFieldFlags & pdfium::form_flags::kChoiceMultiSelect)));
 }
@@ -1645,7 +1645,7 @@ CJS_Result CJS_Field::get_radios_in_unison(CJS_Runtime* pRuntime) {
   if (pFormField->GetFieldType() != FormFieldType::kRadioButton)
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  uint32_t dwFieldFlags = pFormField->GetFieldFlags();
+  const uint32_t dwFieldFlags = pFormField->GetFieldFlags();
   return CJS_Result::Success(pRuntime->NewBoolean(
       !!(dwFieldFlags & pdfium::form_flags::kButtonRadiosInUnison)));
 }
@@ -2222,7 +2222,7 @@ CJS_Result CJS_Field::buttonGetCaption(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
   int nface = 0;
-  int iSize = params.size();
+  const int iSize = params.size();
   if (iSize >= 1)
     nface = pRuntime->ToInt32(params[0]);
 
@@ -2256,7 +2256,7 @@ CJS_Result CJS_Field::buttonGetIcon(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() >= 1) {
-    int nFace = pRuntime->ToInt32(params[0]);
+    const int nFace = pRuntime->ToInt32(params[0]);
     if (nFace < 0 || nFace > 2)
       return CJS_Result::Failure(JSMessage::kValueError);
   }
@@ -2303,14 +2303,14 @@ CJS_Result CJS_Field::buttonSetIcon(
 CJS_Result CJS_Field::checkThisBox(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  int iSize = params.size();
+  const int iSize = params.size();
   if (iSize < 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
   if (!m_bCanSet)
     return CJS_Result::Failure(JSMessage::kReadOnlyError);
 
-  int nWidget = pRuntime->ToInt32(params[0]);
+  const int nWidget = pRuntime->ToInt32(params[0]);
   bool bCheckit = true;
   if (iSize >= 2)
     bCheckit = pRuntime->ToBoolean(params[1]);
@@ -2344,7 +2344,7 @@ CJS_Result CJS_Field::defaultIsChecked(
   if (!m_bCanSet)
     return CJS_Result::Failure(JSMessage::kReadOnlyError);
 
-  int iSize = params.size();
+  const int iSize = params.size();
   if (iSize < 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
@@ -2352,7 +2352,7 @@ CJS_Result CJS_Field::defaultIsChecked(
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  int nWidget = pRuntime->ToInt32(params[0]);
+  const int nWidget = pRuntime->ToInt32(params[0]);
   if (nWidget < 0 || nWidget >= pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kValueError);
 
@@ -2404,7 +2404,7 @@ CJS_Result CJS_Field::getArray(
 CJS_Result CJS_Field::getItemAt(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  int iSize = params.size();
+  const int iSize = params.size();
   int nIdx = -1;
   if (iSize >= 1)
     nIdx = pRuntime->ToInt32(params[0]);
@@ -2497,7 +2497,7 @@ CJS_Result CJS_Field::setFocus(
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  int32_t nCount = pFormField->CountControls();
+  const int32_t nCount = pFormField->CountControls();
   if (nCount < 1)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 

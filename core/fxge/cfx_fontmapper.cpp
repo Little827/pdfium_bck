@@ -303,12 +303,13 @@ uint32_t CFX_FontMapper::GetChecksumFromTT(void* hFont) {
 }
 
 ByteString CFX_FontMapper::GetPSNameFromTT(void* hFont) {
-  uint32_t size = m_pFontInfo->GetFontData(hFont, kTableNAME, {});
+  const uint32_t size = m_pFontInfo->GetFontData(hFont, kTableNAME, {});
   if (!size)
     return ByteString();
 
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> buffer(size);
-  uint32_t bytes_read = m_pFontInfo->GetFontData(hFont, kTableNAME, buffer);
+  const uint32_t bytes_read =
+      m_pFontInfo->GetFontData(hFont, kTableNAME, buffer);
   return bytes_read == size ? GetNameFromTT(buffer, 6) : ByteString();
 }
 
@@ -320,9 +321,9 @@ void CFX_FontMapper::AddInstalledFont(const ByteString& name, int charset) {
   if (name == m_LastFamily)
     return;
 
-  bool bLocalized = std::any_of(name.begin(), name.end(), [](const char& c) {
-    return static_cast<uint8_t>(c) > 0x80;
-  });
+  const bool bLocalized =
+      std::any_of(name.begin(), name.end(),
+                  [](const char& c) { return static_cast<uint8_t>(c) > 0x80; });
 
   if (bLocalized) {
     void* hFont = m_pFontInfo->GetFont(name.c_str());
@@ -474,7 +475,7 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
       }
     }
     if (!bHasHyphen) {
-      int nLen = family.GetLength();
+      const int nLen = family.GetLength();
       bool hasStyleType;
       uint32_t styleType;
       size_t len;
@@ -492,7 +493,7 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
     weight = FXFONT_FW_BOLD;
 
   if (!style.IsEmpty()) {
-    int nLen = style.GetLength();
+    const int nLen = style.GetLength();
     const char* pStyle = style.c_str();
     int i = 0;
     bool bFirstItem = true;
@@ -648,8 +649,8 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
   m_pFontInfo->GetFaceName(hFont, &SubstName);
   if (Charset == FX_CHARSET_Default)
     m_pFontInfo->GetFontCharset(hFont, &Charset);
-  uint32_t ttc_size = m_pFontInfo->GetFontData(hFont, kTableTTCF, {});
-  uint32_t font_size = m_pFontInfo->GetFontData(hFont, 0, {});
+  const uint32_t ttc_size = m_pFontInfo->GetFontData(hFont, kTableTTCF, {});
+  const uint32_t font_size = m_pFontInfo->GetFontData(hFont, 0, {});
   if (font_size == 0 && ttc_size == 0) {
     m_pFontInfo->DeleteFont(hFont);
     return nullptr;
@@ -735,7 +736,7 @@ std::unique_ptr<uint8_t, FxFreeDeleter> CFX_FontMapper::RawBytesForIndex(
   if (!hFont)
     return nullptr;
 
-  uint32_t required_size = m_pFontInfo->GetFontData(hFont, 0, {});
+  const uint32_t required_size = m_pFontInfo->GetFontData(hFont, 0, {});
   if (required_size == 0)
     return nullptr;
 
@@ -762,7 +763,7 @@ bool CFX_FontMapper::IsBuiltinFace(const RetainPtr<CFX_Face>& face) const {
 RetainPtr<CFX_Face> CFX_FontMapper::GetCachedTTCFace(void* hFont,
                                                      uint32_t ttc_size,
                                                      uint32_t font_size) {
-  uint32_t checksum = GetChecksumFromTT(hFont);
+  const uint32_t checksum = GetChecksumFromTT(hFont);
   RetainPtr<CFX_FontMgr::FontDesc> pFontDesc =
       m_pFontMgr->GetCachedTTCFontDesc(ttc_size, checksum);
   if (!pFontDesc) {
@@ -773,7 +774,7 @@ RetainPtr<CFX_Face> CFX_FontMapper::GetCachedTTCFace(void* hFont,
         ttc_size, checksum, std::move(pFontData), ttc_size);
   }
   DCHECK(ttc_size >= font_size);
-  uint32_t font_offset = ttc_size - font_size;
+  const uint32_t font_offset = ttc_size - font_size;
   int face_index =
       GetTTCIndex(pFontDesc->FontData().first(ttc_size), font_offset);
   RetainPtr<CFX_Face> pFace(pFontDesc->GetFace(face_index));

@@ -51,7 +51,7 @@ double JS_DateParse(const WideString& str) {
   if (!maybe_value.ToLocal(&value) || !value->IsNumber())
     return 0;
 
-  double date = value.As<v8::Number>()->Value();
+  const double date = value.As<v8::Number>()->Value();
   return std::isfinite(date) ? FX_LocalTime(date) : date;
 }
 
@@ -63,7 +63,7 @@ std::vector<v8::Local<v8::Value>> ExpandKeywordParams(
   DCHECK(nKeywords);
 
   std::vector<v8::Local<v8::Value>> result(nKeywords, v8::Local<v8::Value>());
-  size_t size = std::min(originals.size(), nKeywords);
+  const size_t size = std::min(originals.size(), nKeywords);
   for (size_t i = 0; i < size; ++i)
     result[i] = originals[i];
 

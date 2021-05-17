@@ -38,7 +38,7 @@ FX_ARGB CPDF_RenderOptions::TranslateColor(FX_ARGB argb) const {
   int g;
   int b;
   std::tie(a, r, g, b) = ArgbDecode(argb);
-  int gray = FXRGB2GRAY(r, g, b);
+  const int gray = FXRGB2GRAY(r, g, b);
   return ArgbEncode(a, gray, gray, gray);
 }
 

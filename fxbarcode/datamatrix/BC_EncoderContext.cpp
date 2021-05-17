@@ -31,7 +31,7 @@
 
 CBC_EncoderContext::CBC_EncoderContext(const WideString& msg) {
   ByteString dststr = msg.ToUTF8();
-  size_t c = dststr.GetLength();
+  const size_t c = dststr.GetLength();
   WideString sb;
   sb.Reserve(c);
   for (size_t i = 0; i < c; i++) {

@@ -50,7 +50,7 @@ uint16_t CIDFromCharCode(const FXCMAP_CMap* pMap, uint32_t charcode) {
         const auto* found = std::lower_bound(
             begin, end, charcode,
             [](const FXCMAP_DWordCIDMap& element, uint32_t charcode) {
-              uint16_t hiword = static_cast<uint16_t>(charcode >> 16);
+              const uint16_t hiword = static_cast<uint16_t>(charcode >> 16);
               if (element.m_HiWord != hiword)
                 return element.m_HiWord < hiword;
               return element.m_LoWordHigh < static_cast<uint16_t>(charcode);

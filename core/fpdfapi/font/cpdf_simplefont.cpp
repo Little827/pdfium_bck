@@ -47,7 +47,7 @@ int CPDF_SimpleFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
   if (charcode > 0xff)
     return -1;
 
-  int index = m_GlyphIndex[charcode];
+  const int index = m_GlyphIndex[charcode];
   if (index == 0xffff)
     return -1;
 
@@ -61,7 +61,7 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
   if (charcode < 0 || charcode > 0xff) {
     return;
   }
-  int glyph_index = m_GlyphIndex[charcode];
+  const int glyph_index = m_GlyphIndex[charcode];
   if (glyph_index == 0xffff) {
     if (!m_pFontFile && charcode != 32) {
       LoadCharMetrics(32);
@@ -79,15 +79,15 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
   if (err)
     return;
 
-  int iHoriBearingX = FXFT_Get_Glyph_HoriBearingX(face);
-  int iHoriBearingY = FXFT_Get_Glyph_HoriBearingY(face);
+  const int iHoriBearingX = FXFT_Get_Glyph_HoriBearingX(face);
+  const int iHoriBearingY = FXFT_Get_Glyph_HoriBearingY(face);
   m_CharBBox[charcode] =
       FX_RECT(TT2PDF(iHoriBearingX, face), TT2PDF(iHoriBearingY, face),
               TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face), face),
               TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face), face));
 
   if (m_bUseFontWidth) {
-    int TT_Width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face), face);
+    const int TT_Width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face), face);
     if (m_CharWidth[charcode] == 0xffff) {
       m_CharWidth[charcode] = TT_Width;
     } else if (TT_Width && !IsEmbedded()) {
@@ -196,12 +196,12 @@ bool CPDF_SimpleFont::LoadCommon() {
   m_bUseFontWidth = !pWidthArray;
   if (pWidthArray) {
     if (pFontDesc && pFontDesc->KeyExist("MissingWidth")) {
-      int MissingWidth = pFontDesc->GetIntegerFor("MissingWidth");
+      const int MissingWidth = pFontDesc->GetIntegerFor("MissingWidth");
       for (int i = 0; i < 256; i++) {
         m_CharWidth[i] = MissingWidth;
       }
     }
-    size_t width_start = m_pFontDict->GetIntegerFor("FirstChar", 0);
+    const size_t width_start = m_pFontDict->GetIntegerFor("FirstChar", 0);
     size_t width_end = m_pFontDict->GetIntegerFor("LastChar", 0);
     if (width_start <= 255) {
       if (width_end == 0 || width_end >= width_start + pWidthArray->size())
@@ -235,7 +235,7 @@ bool CPDF_SimpleFont::LoadCommon() {
         if (m_GlyphIndex[i] != 0xffff && m_pFontFile)
           continue;
 
-        int j = i - 32;
+        const int j = i - 32;
         m_GlyphIndex[i] = m_GlyphIndex[j];
         if (m_CharWidth[j]) {
           m_CharWidth[i] = m_CharWidth[j];
@@ -284,7 +284,7 @@ WideString CPDF_SimpleFont::UnicodeFromCharCode(uint32_t charcode) const {
 }
 
 uint32_t CPDF_SimpleFont::CharCodeFromUnicode(wchar_t unicode) const {
-  uint32_t ret = CPDF_Font::CharCodeFromUnicode(unicode);
+  const uint32_t ret = CPDF_Font::CharCodeFromUnicode(unicode);
   if (ret)
     return ret;
   return m_Encoding.CharCodeFromUnicode(unicode);

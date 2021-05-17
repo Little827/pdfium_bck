@@ -157,7 +157,7 @@ WideString CreateECCBlock(const WideString& codewords, size_t numECWords) {
 
   std::vector<uint16_t, FxAllocAllocator<uint16_t>> ecc(numECWords);
   for (size_t i = 0; i < len; ++i) {
-    uint16_t m = ecc[numECWords - 1] ^ codewords[i];
+    const uint16_t m = ecc[numECWords - 1] ^ codewords[i];
     for (int32_t j = numECWords - 1; j > 0; --j) {
       if (m != 0 && FACTORS[table][j] != 0) {
         ecc[j] = static_cast<uint16_t>(
@@ -190,7 +190,7 @@ WideString CBC_ErrorCorrection::EncodeECC200(const WideString& codewords,
     return WideString();
 
   WideString sb = codewords;
-  size_t blockCount = symbolInfo->GetInterleavedBlockCount();
+  const size_t blockCount = symbolInfo->GetInterleavedBlockCount();
   if (blockCount == 1) {
     WideString ecc = CreateECCBlock(codewords, symbolInfo->error_codewords());
     if (ecc.IsEmpty())
