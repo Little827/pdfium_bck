@@ -11,6 +11,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxge/cfx_color.h"
 #include "core/fxge/dib/fx_dib.h"
 
 class CPDF_Dictionary;
@@ -39,24 +40,22 @@ class CPDF_ApSettings {
     return GetColor(iColorType, "BC");
   }
 
-  float GetOriginalBorderColor(int index) const {
-    return GetOriginalColor(index, "BC");
+  float GetOriginalBorderColorComponent(int index) const {
+    return GetOriginalColorComponent(index, "BC");
   }
 
-  void GetOriginalBorderColor(int& iColorType, float fc[4]) const {
-    GetOriginalColor(iColorType, fc, "BC");
-  }
+  CFX_Color GetOriginalBorderColor() const { return GetOriginalColor("BC"); }
 
   FX_ARGB GetBackgroundColor(int& iColorType) const {
     return GetColor(iColorType, "BG");
   }
 
-  float GetOriginalBackgroundColor(int index) const {
-    return GetOriginalColor(index, "BG");
+  float GetOriginalBackgroundColorCompoent(int index) const {
+    return GetOriginalColorComponent(index, "BG");
   }
 
-  void GetOriginalBackgroundColor(int& iColorType, float fc[4]) const {
-    GetOriginalColor(iColorType, fc, "BG");
+  CFX_Color GetOriginalBackgroundColor() const {
+    return GetOriginalColor("BG");
   }
 
   WideString GetNormalCaption() const { return GetCaption("CA"); }
@@ -71,10 +70,8 @@ class CPDF_ApSettings {
   int GetTextPosition() const;
 
   FX_ARGB GetColor(int& iColorType, const ByteString& csEntry) const;
-  float GetOriginalColor(int index, const ByteString& csEntry) const;
-  void GetOriginalColor(int& iColorType,
-                        float fc[4],
-                        const ByteString& csEntry) const;
+  float GetOriginalColorComponent(int index, const ByteString& csEntry) const;
+  CFX_Color GetOriginalColor(const ByteString& csEntry) const;
 
   WideString GetCaption(const ByteString& csEntry) const;
   CPDF_Stream* GetIcon(const ByteString& csEntry) const;
