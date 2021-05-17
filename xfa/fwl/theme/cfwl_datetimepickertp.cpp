@@ -30,8 +30,7 @@ void CFWL_DateTimePickerTP::DrawBackground(
 void CFWL_DateTimePickerTP::DrawDropDownButton(
     const CFWL_ThemeBackground& pParams,
     const CFX_Matrix& matrix) {
-  uint32_t dwStates = pParams.m_dwStates;
-  dwStates &= 0x03;
+  const uint32_t dwStates = pParams.m_dwStates & 0x03;
   FWLTHEME_STATE eState = FWLTHEME_STATE_Normal;
   switch (eState & dwStates) {
     case CFWL_PartState_Normal: {

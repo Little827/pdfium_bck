@@ -85,7 +85,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeHuffman(
         bFirst = false;
       } else {
         int32_t IDS;
-        int32_t nVal = pHuffmanDecoder->DecodeAValue(SBHUFFDS.Get(), &IDS);
+        const int32_t nVal =
+            pHuffmanDecoder->DecodeAValue(SBHUFFDS.Get(), &IDS);
         if (nVal == JBIG2_OOB)
           break;
 
@@ -110,7 +111,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeHuffman(
       if (!SAFE_TI.IsValid())
         return nullptr;
 
-      int32_t TI = SAFE_TI.ValueOrDie();
+      const int32_t TI = SAFE_TI.ValueOrDie();
       FX_SAFE_INT32 nSafeVal = 0;
       int32_t nBits = 0;
       uint32_t IDI;
@@ -155,7 +156,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeHuffman(
           return nullptr;
         }
         pStream->alignByte();
-        uint32_t nTmp = pStream->getOffset();
+        const uint32_t nTmp = pStream->getOffset();
         CJBig2_Image* IBOI = SBSYMS[IDI];
         if (!IBOI)
           return nullptr;
@@ -198,8 +199,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeHuffman(
       if (!IBI)
         continue;
 
-      uint32_t WI = IBI->width();
-      uint32_t HI = IBI->height();
+      const uint32_t WI = IBI->width();
+      const uint32_t HI = IBI->height();
       if (TRANSPOSED == 0 && ((REFCORNER == JBIG2_CORNER_TOPRIGHT) ||
                               (REFCORNER == JBIG2_CORNER_BOTTOMRIGHT))) {
         CURS += WI - 1;
@@ -210,7 +211,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeHuffman(
       if (!CURS.IsValid())
         return nullptr;
 
-      int32_t SI = CURS.ValueOrDie();
+      const int32_t SI = CURS.ValueOrDie();
       ComposeData compose = GetComposeData(SI, TI, WI, HI);
       IBI.Get()->ComposeTo(SBREG.get(), compose.x, compose.y, SBCOMBOP);
       if (compose.increment)
@@ -312,7 +313,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeArith(
       if (!SAFE_TI.IsValid())
         return nullptr;
 
-      int32_t TI = SAFE_TI.ValueOrDie();
+      const int32_t TI = SAFE_TI.ValueOrDie();
       uint32_t IDI;
       pIAID->Decode(pArithDecoder, &IDI);
       if (IDI >= SBNUMSYMS)
@@ -369,8 +370,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeArith(
       if (!pIBI)
         return nullptr;
 
-      uint32_t WI = pIBI->width();
-      uint32_t HI = pIBI->height();
+      const uint32_t WI = pIBI->width();
+      const uint32_t HI = pIBI->height();
       if (TRANSPOSED == 0 && ((REFCORNER == JBIG2_CORNER_TOPRIGHT) ||
                               (REFCORNER == JBIG2_CORNER_BOTTOMRIGHT))) {
         CURS += WI - 1;
@@ -381,7 +382,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeArith(
       if (!CURS.IsValid())
         return nullptr;
 
-      int32_t SI = CURS.ValueOrDie();
+      const int32_t SI = CURS.ValueOrDie();
       ComposeData compose = GetComposeData(SI, TI, WI, HI);
       pIBI.Get()->ComposeTo(SBREG.get(), compose.x, compose.y, SBCOMBOP);
       if (compose.increment)

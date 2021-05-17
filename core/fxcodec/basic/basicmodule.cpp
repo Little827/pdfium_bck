@@ -248,7 +248,7 @@ bool BasicModule::RunLengthEncode(
   uint8_t x = src_span[run_start];
   uint8_t y = src_span[run_end];
   while (run_end < src_span.size()) {
-    size_t max_len = std::min<size_t>(128, src_span.size() - run_start);
+    const size_t max_len = std::min<size_t>(128, src_span.size() - run_start);
     while (x == y && (run_end - run_start < max_len - 1))
       y = src_span[++run_end];
 

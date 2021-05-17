@@ -112,7 +112,7 @@ bool EmbedDataBits(CBC_QRCoderBitVector* dataBits,
         continue;
       }
       for (int32_t i = 0; i < 2; i++) {
-        int32_t xx = x - i;
+        const int32_t xx = x - i;
         if (!IsEmpty(matrix->Get(xx, y))) {
           continue;
         }
@@ -138,7 +138,7 @@ bool EmbedDataBits(CBC_QRCoderBitVector* dataBits,
 }
 
 int32_t CalculateBCHCode(int32_t value, int32_t poly) {
-  int32_t msbSetInPoly = FindMSBSet(poly);
+  const int32_t msbSetInPoly = FindMSBSet(poly);
   value <<= msbSetInPoly - 1;
   while (FindMSBSet(value) >= msbSetInPoly) {
     value ^= poly << (FindMSBSet(value) - msbSetInPoly);
@@ -152,9 +152,9 @@ bool MakeTypeInfoBits(const CBC_QRCoderErrorCorrectionLevel* ecLevel,
   if (!CBC_QRCoder::IsValidMaskPattern(maskPattern))
     return false;
 
-  int32_t typeInfo = (ecLevel->GetBits() << 3) | maskPattern;
+  const int32_t typeInfo = (ecLevel->GetBits() << 3) | maskPattern;
   bits->AppendBits(typeInfo, 5);
-  int32_t bchCode = CalculateBCHCode(typeInfo, TYPE_INFO_POLY);
+  const int32_t bchCode = CalculateBCHCode(typeInfo, TYPE_INFO_POLY);
   bits->AppendBits(bchCode, 10);
   CBC_QRCoderBitVector maskBits;
   maskBits.AppendBits(TYPE_INFO_MASK_PATTERN, 15);
@@ -167,7 +167,7 @@ bool MakeTypeInfoBits(const CBC_QRCoderErrorCorrectionLevel* ecLevel,
 
 void MakeVersionInfoBits(int32_t version, CBC_QRCoderBitVector* bits) {
   bits->AppendBits(version, 6);
-  int32_t bchCode = CalculateBCHCode(version, VERSION_INFO_POLY);
+  const int32_t bchCode = CalculateBCHCode(version, VERSION_INFO_POLY);
   bits->AppendBits(bchCode, 12);
   DCHECK_EQ(bits->Size(), 18);
 }
@@ -180,17 +180,17 @@ bool EmbedTypeInfo(const CBC_QRCoderErrorCorrectionLevel* ecLevel,
     return false;
 
   for (size_t i = 0; i < typeInfoBits.Size(); i++) {
-    int32_t bit = typeInfoBits.At(typeInfoBits.Size() - 1 - i);
-    int32_t x1 = TYPE_INFO_COORDINATES[i][0];
-    int32_t y1 = TYPE_INFO_COORDINATES[i][1];
+    const int32_t bit = typeInfoBits.At(typeInfoBits.Size() - 1 - i);
+    const int32_t x1 = TYPE_INFO_COORDINATES[i][0];
+    const int32_t y1 = TYPE_INFO_COORDINATES[i][1];
     matrix->Set(x1, y1, bit);
     if (i < 8) {
-      int32_t x2 = matrix->GetWidth() - i - 1;
-      int32_t y2 = 8;
+      const int32_t x2 = matrix->GetWidth() - i - 1;
+      const int32_t y2 = 8;
       matrix->Set(x2, y2, bit);
     } else {
-      int32_t x2 = 8;
-      int32_t y2 = matrix->GetHeight() - 7 + (i - 8);
+      const int32_t x2 = 8;
+      const int32_t y2 = matrix->GetHeight() - 7 + (i - 8);
       matrix->Set(x2, y2, bit);
     }
   }
@@ -206,7 +206,7 @@ void MaybeEmbedVersionInfo(int32_t version, CBC_CommonByteMatrix* matrix) {
   int32_t bitIndex = 6 * 3 - 1;
   for (int32_t i = 0; i < 6; i++) {
     for (int32_t j = 0; j < 3; j++) {
-      int32_t bit = versionInfoBits.At(bitIndex);
+      const int32_t bit = versionInfoBits.At(bitIndex);
       bitIndex--;
       matrix->Set(i, matrix->GetHeight() - 11 + j, bit);
       matrix->Set(matrix->GetHeight() - 11 + j, i, bit);
@@ -216,7 +216,7 @@ void MaybeEmbedVersionInfo(int32_t version, CBC_CommonByteMatrix* matrix) {
 
 bool EmbedTimingPatterns(CBC_CommonByteMatrix* matrix) {
   for (int32_t i = 8; i < matrix->GetWidth() - 8; i++) {
-    int32_t bit = (i + 1) % 2;
+    const int32_t bit = (i + 1) % 2;
     if (!IsValidValue(matrix->Get(i, 6)))
       return false;
 

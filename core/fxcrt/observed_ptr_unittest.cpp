@@ -194,8 +194,8 @@ TEST(ObservePtr, Bool) {
   PseudoObservable obj1;
   ObservedPtr<PseudoObservable> null_ptr;
   ObservedPtr<PseudoObservable> obj1_ptr(&obj1);
-  bool null_bool = !!null_ptr;
-  bool obj1_bool = !!obj1_ptr;
+  const bool null_bool = !!null_ptr;
+  const bool obj1_bool = !!obj1_ptr;
   EXPECT_FALSE(null_bool);
   EXPECT_TRUE(obj1_bool);
 }

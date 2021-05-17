@@ -8,13 +8,13 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 char* TerminatedFloatToString(float value, char* buf) {
-  size_t buflen = FloatToString(value, buf);
+  const size_t buflen = FloatToString(value, buf);
   buf[buflen] = '\0';
   return buf;
 }
 
 char* TerminatedDoubleToString(double value, char* buf) {
-  size_t buflen = DoubleToString(value, buf);
+  const size_t buflen = DoubleToString(value, buf);
   buf[buflen] = '\0';
   return buf;
 }

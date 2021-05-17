@@ -20,7 +20,7 @@ CFXJSE_NodeHelper::CFXJSE_NodeHelper() = default;
 CFXJSE_NodeHelper::~CFXJSE_NodeHelper() = default;
 
 bool CFXJSE_NodeHelper::CreateNodeForCondition(const WideString& wsCondition) {
-  size_t szLen = wsCondition.GetLength();
+  const size_t szLen = wsCondition.GetLength();
   WideString wsIndex(L"0");
   bool bAll = false;
   if (szLen == 0) {
@@ -47,7 +47,7 @@ bool CFXJSE_NodeHelper::CreateNodeForCondition(const WideString& wsCondition) {
     m_iCreateFlag = CFXJSE_Engine::ResolveResult::Type::kCreateNodeOne;
     wsIndex = wsCondition.Substr(i, szLen - 1 - i);
   }
-  int32_t iCount = wsIndex.GetInteger();
+  const int32_t iCount = wsIndex.GetInteger();
   if (iCount < 0)
     return false;
 

@@ -20,12 +20,12 @@
 namespace {
 
 void MatchFloatRange(float f1, float f2, int* i1, int* i2) {
-  float length = ceilf(f2 - f1);
-  float f1_floor = floorf(f1);
-  float f1_ceil = ceilf(f1);
-  float error1 = f1 - f1_floor + fabsf(f2 - f1_floor - length);
-  float error2 = f1_ceil - f1 + fabsf(f2 - f1_ceil - length);
-  float start = error1 > error2 ? f1_ceil : f1_floor;
+  const float length = ceilf(f2 - f1);
+  const float f1_floor = floorf(f1);
+  const float f1_ceil = ceilf(f1);
+  const float error1 = f1 - f1_floor + fabsf(f2 - f1_floor - length);
+  const float error2 = f1_ceil - f1 + fabsf(f2 - f1_ceil - length);
+  const float start = error1 > error2 ? f1_ceil : f1_floor;
   FX_SAFE_INT32 safe1 = start;
   FX_SAFE_INT32 safe2 = start + length;
   if (safe1.IsValid() && safe2.IsValid()) {
@@ -167,12 +167,12 @@ FX_RECT CFX_FloatRect::GetClosestRect() const {
 }
 
 CFX_FloatRect CFX_FloatRect::GetCenterSquare() const {
-  float fWidth = Width();
-  float fHeight = Height();
-  float fHalfWidth = (fWidth > fHeight) ? fHeight / 2 : fWidth / 2;
+  const float fWidth = Width();
+  const float fHeight = Height();
+  const float fHalfWidth = (fWidth > fHeight) ? fHeight / 2 : fWidth / 2;
 
-  float fCenterX = (left + right) / 2.0f;
-  float fCenterY = (top + bottom) / 2.0f;
+  const float fCenterX = (left + right) / 2.0f;
+  const float fCenterY = (top + bottom) / 2.0f;
   return CFX_FloatRect(fCenterX - fHalfWidth, fCenterY - fHalfWidth,
                        fCenterX + fHalfWidth, fCenterY + fHalfWidth);
 }
@@ -259,11 +259,11 @@ void CFX_FloatRect::Scale(float fScale) {
 }
 
 void CFX_FloatRect::ScaleFromCenterPoint(float fScale) {
-  float fHalfWidth = (right - left) / 2.0f;
-  float fHalfHeight = (top - bottom) / 2.0f;
+  const float fHalfWidth = (right - left) / 2.0f;
+  const float fHalfHeight = (top - bottom) / 2.0f;
 
-  float center_x = (left + right) / 2;
-  float center_y = (top + bottom) / 2;
+  const float center_x = (left + right) / 2;
+  const float center_y = (top + bottom) / 2;
 
   left = center_x - fHalfWidth * fScale;
   bottom = center_y - fHalfHeight * fScale;
@@ -304,11 +304,11 @@ std::ostream& operator<<(std::ostream& os, const CFX_RectF& rect) {
 
 CFX_Matrix CFX_Matrix::GetInverse() const {
   CFX_Matrix inverse;
-  float i = a * d - b * c;
+  const float i = a * d - b * c;
   if (fabs(i) == 0)
     return inverse;
 
-  float j = -i;
+  const float j = -i;
   inverse.a = d / i;
   inverse.b = b / j;
   inverse.c = c / j;
@@ -346,8 +346,8 @@ void CFX_Matrix::Scale(float sx, float sy) {
 }
 
 void CFX_Matrix::Rotate(float fRadian) {
-  float cosValue = cos(fRadian);
-  float sinValue = sin(fRadian);
+  const float cosValue = cos(fRadian);
+  const float sinValue = sin(fRadian);
   Concat(CFX_Matrix(cosValue, sinValue, -sinValue, cosValue, 0, 0));
 }
 
@@ -385,8 +385,8 @@ CFX_FloatRect CFX_Matrix::GetUnitRect() const {
 }
 
 float CFX_Matrix::TransformXDistance(float dx) const {
-  float fx = a * dx;
-  float fy = b * dx;
+  const float fx = a * dx;
+  const float fy = b * dx;
   return sqrt(fx * fx + fy * fy);
 }
 

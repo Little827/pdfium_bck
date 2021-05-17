@@ -59,17 +59,17 @@ void CFGAS_GEShading::InitArgbArray() {
   int32_t b2;
   std::tie(a2, r2, g2, b2) = ArgbDecode(m_endArgb);
 
-  float f = static_cast<float>(FX_SHADING_Steps - 1);
-  float aScale = 1.0 * (a2 - a1) / f;
-  float rScale = 1.0 * (r2 - r1) / f;
-  float gScale = 1.0 * (g2 - g1) / f;
-  float bScale = 1.0 * (b2 - b1) / f;
+  const float f = static_cast<float>(FX_SHADING_Steps - 1);
+  const float aScale = 1.0 * (a2 - a1) / f;
+  const float rScale = 1.0 * (r2 - r1) / f;
+  const float gScale = 1.0 * (g2 - g1) / f;
+  const float bScale = 1.0 * (b2 - b1) / f;
 
   for (int32_t i = 0; i < FX_SHADING_Steps; i++) {
-    int32_t a3 = static_cast<int32_t>(i * aScale);
-    int32_t r3 = static_cast<int32_t>(i * rScale);
-    int32_t g3 = static_cast<int32_t>(i * gScale);
-    int32_t b3 = static_cast<int32_t>(i * bScale);
+    const int32_t a3 = static_cast<int32_t>(i * aScale);
+    const int32_t r3 = static_cast<int32_t>(i * rScale);
+    const int32_t g3 = static_cast<int32_t>(i * gScale);
+    const int32_t b3 = static_cast<int32_t>(i * bScale);
 
     // TODO(dsinclair): Add overloads for FX_ARGB. pdfium:437
     m_argbArray[i] = ArgbEncode(a1 + a3, r1 + r3, g1 + g3, b1 + b3);

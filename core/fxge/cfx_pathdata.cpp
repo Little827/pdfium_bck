@@ -47,11 +47,11 @@ void UpdateLineEndPoints(CFX_FloatRect* rect,
   }
 
   CFX_PointF diff = end_pos - start_pos;
-  float ll = FXSYS_sqrt2(diff.x, diff.y);
-  float mx = end_pos.x + hw * diff.x / ll;
-  float my = end_pos.y + hw * diff.y / ll;
-  float dx1 = hw * diff.y / ll;
-  float dy1 = hw * diff.x / ll;
+  const float ll = FXSYS_sqrt2(diff.x, diff.y);
+  const float mx = end_pos.x + hw * diff.x / ll;
+  const float my = end_pos.y + hw * diff.y / ll;
+  const float dx1 = hw * diff.y / ll;
+  const float dy1 = hw * diff.x / ll;
   rect->UpdateRect(CFX_PointF(mx - dx1, my + dy1));
   rect->UpdateRect(CFX_PointF(mx + dx1, my - dy1));
 }
@@ -70,13 +70,13 @@ void UpdateLineJoinPoints(CFX_FloatRect* rect,
   float start_dc = 0;
   float end_len = 0;
   float end_dc = 0;
-  float one_twentieth = 1.0f / 20;
+  const float one_twentieth = 1.0f / 20;
 
-  bool bStartVert = fabs(start_pos.x - mid_pos.x) < one_twentieth;
-  bool bEndVert = fabs(mid_pos.x - end_pos.x) < one_twentieth;
+  const bool bStartVert = fabs(start_pos.x - mid_pos.x) < one_twentieth;
+  const bool bEndVert = fabs(mid_pos.x - end_pos.x) < one_twentieth;
   if (bStartVert && bEndVert) {
-    int start_dir = mid_pos.y > start_pos.y ? 1 : -1;
-    float point_y = mid_pos.y + half_width * start_dir;
+    const int start_dir = mid_pos.y > start_pos.y ? 1 : -1;
+    const float point_y = mid_pos.y + half_width * start_dir;
     rect->UpdateRect(CFX_PointF(mid_pos.x + half_width, point_y));
     rect->UpdateRect(CFX_PointF(mid_pos.x - half_width, point_y));
     return;
@@ -130,8 +130,8 @@ void UpdateLineJoinPoints(CFX_FloatRect* rect,
   }
 
   if (fabs(start_k - end_k) < one_twentieth) {
-    int start_dir = mid_pos.x > start_pos.x ? 1 : -1;
-    int end_dir = end_pos.x > mid_pos.x ? 1 : -1;
+    const int start_dir = mid_pos.x > start_pos.x ? 1 : -1;
+    const int end_dir = end_pos.x > mid_pos.x ? 1 : -1;
     if (start_dir == end_dir)
       UpdateLineEndPoints(rect, mid_pos, end_pos, half_width);
     else
@@ -151,8 +151,8 @@ void UpdateLineJoinPoints(CFX_FloatRect* rect,
   else
     end_outside_c -= end_dc;
 
-  float join_x = (end_outside_c - start_outside_c) / (start_k - end_k);
-  float join_y = start_k * join_x + start_outside_c;
+  const float join_x = (end_outside_c - start_outside_c) / (start_k - end_k);
+  const float join_y = start_k * join_x + start_outside_c;
   rect->UpdateRect(CFX_PointF(join_x, join_y));
 }
 
@@ -189,7 +189,7 @@ void CFX_PathData::Append(const CFX_PathData& src, const CFX_Matrix* matrix) {
   if (src.m_Points.empty())
     return;
 
-  size_t cur_size = m_Points.size();
+  const size_t cur_size = m_Points.size();
   m_Points.insert(m_Points.end(), src.m_Points.begin(), src.m_Points.end());
 
   if (!matrix)
@@ -251,7 +251,7 @@ CFX_FloatRect CFX_PathData::GetBoundingBox(float line_width,
                                            float miter_limit) const {
   CFX_FloatRect rect(100000.0f, 100000.0f, -100000.0f, -100000.0f);
   size_t iPoint = 0;
-  float half_width = line_width;
+  const float half_width = line_width;
   int iStartPoint = 0;
   int iEndPoint = 0;
   int iMiddlePoint = 0;

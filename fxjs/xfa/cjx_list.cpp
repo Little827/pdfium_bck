@@ -87,8 +87,8 @@ CJS_Result CJX_List::item(CFX_V8* runtime,
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  int32_t index = runtime->ToInt32(params[0]);
-  size_t cast_index = static_cast<size_t>(index);
+  const int32_t index = runtime->ToInt32(params[0]);
+  const size_t cast_index = static_cast<size_t>(index);
   if (index < 0 || cast_index >= GetXFAList()->GetLength())
     return CJS_Result::Failure(JSMessage::kInvalidInputError);
 

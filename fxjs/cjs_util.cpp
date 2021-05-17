@@ -173,13 +173,13 @@ CJS_Result CJS_Util::printd(CJS_Runtime* pRuntime,
   if (v8_date.IsEmpty() || std::isnan(pRuntime->ToDouble(v8_date)))
     return CJS_Result::Failure(JSMessage::kSecondParamInvalidDateError);
 
-  double date = FX_LocalTime(pRuntime->ToDouble(v8_date));
-  int year = FX_GetYearFromTime(date);
-  int month = FX_GetMonthFromTime(date) + 1;  // One-based.
-  int day = FX_GetDayFromTime(date);
-  int hour = FX_GetHourFromTime(date);
-  int min = FX_GetMinFromTime(date);
-  int sec = FX_GetSecFromTime(date);
+  const double date = FX_LocalTime(pRuntime->ToDouble(v8_date));
+  const int year = FX_GetYearFromTime(date);
+  const int month = FX_GetMonthFromTime(date) + 1;  // One-based.
+  const int day = FX_GetDayFromTime(date);
+  const int hour = FX_GetHourFromTime(date);
+  const int min = FX_GetMinFromTime(date);
+  const int sec = FX_GetSecFromTime(date);
 
   if (params[0]->IsNumber()) {
     WideString swResult;
@@ -389,7 +389,7 @@ CJS_Result CJS_Util::byteToChar(
   if (params.size() < 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  int arg = pRuntime->ToInt32(params[0]);
+  const int arg = pRuntime->ToInt32(params[0]);
   if (arg < 0 || arg > 255)
     return CJS_Result::Failure(JSMessage::kValueError);
 

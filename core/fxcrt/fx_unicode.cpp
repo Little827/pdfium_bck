@@ -36,7 +36,7 @@ constexpr size_t kTextLayoutCodePropertiesSize =
 static_assert(kTextLayoutCodePropertiesSize == 65536, "missing characters");
 
 uint16_t GetUnicodeProperties(wchar_t wch) {
-  size_t idx = static_cast<size_t>(wch);
+  const size_t idx = static_cast<size_t>(wch);
   if (idx < kTextLayoutCodePropertiesSize)
     return kTextLayoutCodeProperties[idx];
   return 0;
@@ -70,7 +70,7 @@ static_assert(kExtendedTextLayoutCodePropertiesSize == 65536,
               "missing characters");
 
 uint16_t GetExtendedUnicodeProperties(wchar_t wch) {
-  size_t idx = static_cast<size_t>(wch);
+  const size_t idx = static_cast<size_t>(wch);
   if (idx < kExtendedTextLayoutCodePropertiesSize)
     return kExtendedTextLayoutCodeProperties[idx];
   return 0;
@@ -136,8 +136,8 @@ constexpr size_t kFXTextLayoutBidiMirrorSize =
 }  // namespace
 
 wchar_t FX_GetMirrorChar(wchar_t wch) {
-  uint16_t prop = GetUnicodeProperties(wch);
-  size_t idx = prop >> kMirrorBitPos;
+  const uint16_t prop = GetUnicodeProperties(wch);
+  const size_t idx = prop >> kMirrorBitPos;
   if (idx == kMirrorMax)
     return wch;
   DCHECK(idx < kFXTextLayoutBidiMirrorSize);
@@ -145,23 +145,23 @@ wchar_t FX_GetMirrorChar(wchar_t wch) {
 }
 
 FX_BIDICLASS FX_GetBidiClass(wchar_t wch) {
-  uint16_t prop = GetUnicodeProperties(wch);
-  uint16_t result = (prop & kBidiClassBitMask) >> kBidiClassBitPos;
+  const uint16_t prop = GetUnicodeProperties(wch);
+  const uint16_t result = (prop & kBidiClassBitMask) >> kBidiClassBitPos;
   DCHECK(result <= static_cast<uint16_t>(FX_BIDICLASS::kPDF));
   return static_cast<FX_BIDICLASS>(result);
 }
 
 #ifdef PDF_ENABLE_XFA
 FX_CHARTYPE FX_GetCharType(wchar_t wch) {
-  uint16_t prop = GetExtendedUnicodeProperties(wch);
-  uint16_t result = (prop & kCharTypeBitMask) >> kCharTypeBitPos;
+  const uint16_t prop = GetExtendedUnicodeProperties(wch);
+  const uint16_t result = (prop & kCharTypeBitMask) >> kCharTypeBitPos;
   DCHECK(result <= static_cast<uint16_t>(FX_CHARTYPE::kArabic));
   return static_cast<FX_CHARTYPE>(result);
 }
 
 FX_BREAKPROPERTY FX_GetBreakProperty(wchar_t wch) {
-  uint16_t prop = GetExtendedUnicodeProperties(wch);
-  uint16_t result = (prop & kBreakTypeBitMask) >> kBreakTypeBitPos;
+  const uint16_t prop = GetExtendedUnicodeProperties(wch);
+  const uint16_t result = (prop & kBreakTypeBitMask) >> kBreakTypeBitPos;
   DCHECK(result <= static_cast<uint16_t>(FX_BREAKPROPERTY::kTB));
   return static_cast<FX_BREAKPROPERTY>(result);
 }

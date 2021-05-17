@@ -124,7 +124,7 @@ bool CPDF_MeshStream::Load() {
   if (ShouldCheckBitsPerFlag(m_type) && !IsValidBitsPerFlag(m_nFlagBits))
     return false;
 
-  uint32_t nComponents = m_pCS->CountComponents();
+  const uint32_t nComponents = m_pCS->CountComponents();
   if (nComponents > kMaxComponents)
     return false;
 

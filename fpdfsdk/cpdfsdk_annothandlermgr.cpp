@@ -310,8 +310,8 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnChangeFocus(
     ObservedPtr<CPDFSDK_Annot>* pKillAnnot) {
   CPDFXFA_Widget* pSetXFAWidget = ToXFAWidget(pSetAnnot->Get());
   CPDFXFA_Widget* pKillXFAWidget = ToXFAWidget(pKillAnnot->Get());
-  bool bXFA = (pSetXFAWidget && pSetXFAWidget->GetXFAFFWidget()) ||
-              (pKillXFAWidget && pKillXFAWidget->GetXFAFFWidget());
+  const bool bXFA = (pSetXFAWidget && pSetXFAWidget->GetXFAFFWidget()) ||
+                    (pKillXFAWidget && pKillXFAWidget->GetXFAFFWidget());
 
   return !bXFA || static_cast<CPDFXFA_WidgetHandler*>(m_pXFAWidgetHandler.get())
                       ->OnXFAChangedFocus(pKillAnnot, pSetAnnot);

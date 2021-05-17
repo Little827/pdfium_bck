@@ -53,7 +53,7 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
     if (!pObject)
       continue;
 
-    uint32_t key = key_str.GetID();
+    const uint32_t key = key_str.GetID();
     switch (key) {
       case FXBSTR_ID('L', 'W', 0, 0):
         m_GraphState.SetLineWidth(pObject->GetNumber());

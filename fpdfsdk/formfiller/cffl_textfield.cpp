@@ -43,7 +43,7 @@ CFFL_TextField::~CFFL_TextField() {
 
 CPWL_Wnd::CreateParams CFFL_TextField::GetCreateParam() {
   CPWL_Wnd::CreateParams cp = CFFL_TextObject::GetCreateParam();
-  int nFlags = m_pWidget->GetFieldFlags();
+  const int nFlags = m_pWidget->GetFieldFlags();
   if (nFlags & pdfium::form_flags::kTextPassword)
     cp.dwFlags |= PES_PASSWORD;
 
@@ -90,7 +90,7 @@ std::unique_ptr<CPWL_Wnd> CFFL_TextField::NewPWLWindow(
   pWnd->Realize();
   pWnd->SetFillerNotify(m_pFormFillEnv->GetInteractiveFormFiller());
 
-  int32_t nMaxLen = m_pWidget->GetMaxLen();
+  const int32_t nMaxLen = m_pWidget->GetMaxLen();
   WideString swValue = m_pWidget->GetValue();
   if (nMaxLen > 0) {
     if (pWnd->HasFlag(PES_CHARARRAY)) {
@@ -246,7 +246,7 @@ void CFFL_TextField::OnSetFocus(CPWL_Edit* pEdit) {
   pEdit->SetReadyToInput();
 
   WideString wsText = pEdit->GetText();
-  int nCharacters = wsText.GetLength();
+  const int nCharacters = wsText.GetLength();
   ByteString bsUTFText = wsText.ToUTF16LE();
   auto* pBuffer = reinterpret_cast<const unsigned short*>(bsUTFText.c_str());
   m_pFormFillEnv->OnSetFieldInputFocus(pBuffer, nCharacters, true);

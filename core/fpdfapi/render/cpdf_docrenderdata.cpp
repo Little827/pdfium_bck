@@ -93,7 +93,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
   std::array<pdfium::span<uint8_t>, 3> samples = {samples_r, samples_g,
                                                   samples_b};
   for (size_t v = 0; v < CPDF_TransferFunc::kChannelSampleSize; ++v) {
-    float input = static_cast<float>(v) / 255.0f;
+    const float input = static_cast<float>(v) / 255.0f;
     if (pArray) {
       for (int i = 0; i < 3; ++i) {
         if (pFuncs[i]->CountOutputs() > kMaxOutputs) {
@@ -101,7 +101,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
           continue;
         }
         pFuncs[i]->Call(&input, 1, output, &noutput);
-        size_t o = FXSYS_roundf(output[0] * 255);
+        const size_t o = FXSYS_roundf(output[0] * 255);
         if (o != v)
           bIdentity = false;
         samples[i][v] = o;
@@ -110,7 +110,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
     }
     if (pFuncs[0]->CountOutputs() <= kMaxOutputs)
       pFuncs[0]->Call(&input, 1, output, &noutput);
-    size_t o = FXSYS_roundf(output[0] * 255);
+    const size_t o = FXSYS_roundf(output[0] * 255);
     if (o != v)
       bIdentity = false;
     for (auto& channel : samples)

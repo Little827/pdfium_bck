@@ -73,7 +73,7 @@ int FindPageIndex(const CPDF_Dictionary* pNode,
   if (level >= kMaxPageLevel)
     return -1;
 
-  size_t count = pNode->GetIntegerFor("Count");
+  const size_t count = pNode->GetIntegerFor("Count");
   if (count <= *skip_count) {
     (*skip_count) -= count;
     (*index) += count;
@@ -93,7 +93,8 @@ int FindPageIndex(const CPDF_Dictionary* pNode,
     if (!pKid || pKid == pNode)
       continue;
 
-    int found_index = FindPageIndex(pKid, skip_count, objnum, index, level + 1);
+    const int found_index =
+        FindPageIndex(pKid, skip_count, objnum, index, level + 1);
     if (found_index >= 0)
       return found_index;
   }
@@ -166,14 +167,14 @@ void CPDF_Document::LoadPages() {
     return;
   }
 
-  uint32_t objnum = linearized_header->GetFirstPageObjNum();
+  const uint32_t objnum = linearized_header->GetFirstPageObjNum();
   if (!IsValidPageObject(GetOrParseIndirectObject(objnum))) {
     m_PageList.resize(RetrievePageCount());
     return;
   }
 
-  uint32_t first_page_num = linearized_header->GetFirstPageNo();
-  uint32_t page_count = linearized_header->GetPageCount();
+  const uint32_t first_page_num = linearized_header->GetFirstPageNo();
+  const uint32_t page_count = linearized_header->GetPageCount();
   DCHECK(first_page_num < page_count);
   m_PageList.resize(page_count);
   m_PageList[first_page_num] = objnum;
@@ -327,7 +328,8 @@ int CPDF_Document::GetPageIndex(uint32_t objnum) {
     return -1;
 
   int start_index = 0;
-  int found_index = FindPageIndex(pPages, &skip_count, objnum, &start_index, 0);
+  const int found_index =
+      FindPageIndex(pPages, &skip_count, objnum, &start_index, 0);
 
   // Corrupt page tree may yield out-of-range results.
   if (!pdfium::IndexInBounds(m_PageList, found_index))
@@ -380,7 +382,7 @@ void CPDF_Document::CreateNewDoc() {
 CPDF_Dictionary* CPDF_Document::CreateNewPage(int iPage) {
   CPDF_Dictionary* pDict = NewIndirect<CPDF_Dictionary>();
   pDict->SetNewFor<CPDF_Name>("Type", "Page");
-  uint32_t dwObjNum = pDict->GetObjNum();
+  const uint32_t dwObjNum = pDict->GetObjNum();
   if (!InsertNewPage(iPage, pDict)) {
     DeleteIndirectObject(dwObjNum);
     return nullptr;
@@ -416,7 +418,7 @@ bool CPDF_Document::InsertDeletePDFPage(CPDF_Dictionary* pPages,
       ResetTraversal();
       break;
     }
-    int nPages = pKid->GetIntegerFor("Count");
+    const int nPages = pKid->GetIntegerFor("Count");
     if (nPagesToGo >= nPages) {
       nPagesToGo -= nPages;
       continue;
@@ -441,7 +443,7 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   if (!pPages)
     return false;
 
-  int nPages = GetPageCount();
+  const int nPages = GetPageCount();
   if (iPage < 0 || iPage > nPages)
     return false;
 
@@ -484,7 +486,7 @@ void CPDF_Document::DeletePage(int iPage) {
   if (!pPages)
     return;
 
-  int nPages = pPages->GetIntegerFor("Count");
+  const int nPages = pPages->GetIntegerFor("Count");
   if (iPage < 0 || iPage >= nPages)
     return;
 

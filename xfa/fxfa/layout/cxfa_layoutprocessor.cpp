@@ -89,7 +89,7 @@ int32_t CXFA_LayoutProcessor::DoLayout() {
   float fPosY =
       pFormNode->JSObject()->GetMeasureInUnit(XFA_Attribute::Y, XFA_Unit::Pt);
   do {
-    float fAvailHeight = m_pViewLayoutProcessor->GetAvailHeight();
+    const float fAvailHeight = m_pViewLayoutProcessor->GetAvailHeight();
     eStatus =
         m_pContentLayoutProcessor->DoLayout(true, fAvailHeight, fAvailHeight);
     if (eStatus != CXFA_ContentLayoutProcessor::Result::kDone)

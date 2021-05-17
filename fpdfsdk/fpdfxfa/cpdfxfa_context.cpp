@@ -329,9 +329,9 @@ int32_t CPDFXFA_Context::MsgBox(const WideString& wsMessage,
 
   int iconType =
       IsValidAlertIcon(dwIconType) ? dwIconType : JSPLATFORM_ALERT_ICON_DEFAULT;
-  int iButtonType = IsValidAlertButton(dwButtonType)
-                        ? dwButtonType
-                        : JSPLATFORM_ALERT_BUTTON_DEFAULT;
+  const int iButtonType = IsValidAlertButton(dwButtonType)
+                              ? dwButtonType
+                              : JSPLATFORM_ALERT_BUTTON_DEFAULT;
   return m_pFormFillEnv->JS_appAlert(wsMessage, wsTitle, iButtonType, iconType);
 }
 

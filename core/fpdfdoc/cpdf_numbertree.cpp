@@ -20,7 +20,7 @@ const CPDF_Object* SearchNumberNode(const CPDF_Dictionary* pNode, int num) {
   const CPDF_Array* pNumbers = pNode->GetArrayFor("Nums");
   if (pNumbers) {
     for (size_t i = 0; i < pNumbers->size() / 2; i++) {
-      int index = pNumbers->GetIntegerAt(i * 2);
+      const int index = pNumbers->GetIntegerAt(i * 2);
       if (num == index)
         return pNumbers->GetDirectObjectAt(i * 2 + 1);
       if (index > num)

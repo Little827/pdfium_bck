@@ -49,11 +49,11 @@ CPDF_TextObject::Item CPDF_TextObject::GetItemInfo(size_t index) const {
   if (!pFont->IsCIDFont() || !pFont->AsCIDFont()->IsVertWriting())
     return info;
 
-  uint16_t cid = pFont->AsCIDFont()->CIDFromCharCode(info.m_CharCode);
+  const uint16_t cid = pFont->AsCIDFont()->CIDFromCharCode(info.m_CharCode);
   info.m_Origin = CFX_PointF(0, info.m_Origin.x);
 
   CFX_Point16 vertical_origin = pFont->AsCIDFont()->GetVertOrigin(cid);
-  float fontsize = GetFontSize();
+  const float fontsize = GetFontSize();
   info.m_Origin.x -= fontsize * vertical_origin.x / 1000;
   info.m_Origin.y -= fontsize * vertical_origin.y / 1000;
   return info;
@@ -83,7 +83,7 @@ uint32_t CPDF_TextObject::GetCharCode(size_t index) const {
 CPDF_TextObject::Item CPDF_TextObject::GetCharInfo(size_t index) const {
   size_t count = 0;
   for (size_t i = 0; i < m_CharCodes.size(); ++i) {
-    uint32_t charcode = m_CharCodes[i];
+    const uint32_t charcode = m_CharCodes[i];
     if (charcode == CPDF_Font::kInvalidCharCode)
       continue;
     if (count++ == index)
@@ -97,14 +97,14 @@ int CPDF_TextObject::CountWords() const {
   bool bInLatinWord = false;
   int nWords = 0;
   for (size_t i = 0, sz = CountChars(); i < sz; ++i) {
-    uint32_t charcode = GetCharCode(i);
+    const uint32_t charcode = GetCharCode(i);
 
     WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
     uint16_t unicode = 0;
     if (swUnicode.GetLength() > 0)
       unicode = swUnicode[0];
 
-    bool bIsLatin = ISLATINWORD(unicode);
+    const bool bIsLatin = ISLATINWORD(unicode);
     if (bIsLatin && bInLatinWord)
       continue;
 
@@ -122,14 +122,14 @@ WideString CPDF_TextObject::GetWordString(int nWordIndex) const {
   int nWords = 0;
   bool bInLatinWord = false;
   for (size_t i = 0, sz = CountChars(); i < sz; ++i) {
-    uint32_t charcode = GetCharCode(i);
+    const uint32_t charcode = GetCharCode(i);
 
     WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
     uint16_t unicode = 0;
     if (swUnicode.GetLength() > 0)
       unicode = swUnicode[0];
 
-    bool bIsLatin = ISLATINWORD(unicode);
+    const bool bIsLatin = ISLATINWORD(unicode);
     if (!bIsLatin || !bInLatinWord) {
       bInLatinWord = bIsLatin;
       if (unicode != 0x20)
@@ -219,7 +219,7 @@ void CPDF_TextObject::SetText(const ByteString& str) {
 }
 
 float CPDF_TextObject::GetCharWidth(uint32_t charcode) const {
-  float fontsize = GetFontSize() / 1000;
+  const float fontsize = GetFontSize() / 1000;
   RetainPtr<CPDF_Font> pFont = GetFont();
   bool bVertWriting = false;
   CPDF_CIDFont* pCIDFont = pFont->AsCIDFont();
@@ -228,7 +228,7 @@ float CPDF_TextObject::GetCharWidth(uint32_t charcode) const {
   if (!bVertWriting)
     return pFont->GetCharWidthF(charcode) * fontsize;
 
-  uint16_t cid = pCIDFont->CIDFromCharCode(charcode);
+  const uint16_t cid = pCIDFont->CIDFromCharCode(charcode);
   return pCIDFont->GetVertWidth(cid) * fontsize;
 }
 
@@ -261,9 +261,9 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   if (pCIDFont)
     bVertWriting = pCIDFont->IsVertWriting();
 
-  float fontsize = GetFontSize();
+  const float fontsize = GetFontSize();
   for (size_t i = 0; i < m_CharCodes.size(); ++i) {
-    uint32_t charcode = m_CharCodes[i];
+    const uint32_t charcode = m_CharCodes[i];
     if (i > 0) {
       if (charcode == CPDF_Font::kInvalidCharCode) {
         curpos -= (m_CharPos[i - 1] * fontsize) / 1000;
@@ -279,13 +279,13 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
           min_y, static_cast<float>(std::min(char_rect.top, char_rect.bottom)));
       max_y = std::max(
           max_y, static_cast<float>(std::max(char_rect.top, char_rect.bottom)));
-      float char_left = curpos + char_rect.left * fontsize / 1000;
-      float char_right = curpos + char_rect.right * fontsize / 1000;
+      const float char_left = curpos + char_rect.left * fontsize / 1000;
+      const float char_right = curpos + char_rect.right * fontsize / 1000;
       min_x = std::min(min_x, std::min(char_left, char_right));
       max_x = std::max(max_x, std::max(char_left, char_right));
       charwidth = pFont->GetCharWidthF(charcode) * fontsize / 1000;
     } else {
-      uint16_t cid = pCIDFont->CIDFromCharCode(charcode);
+      const uint16_t cid = pCIDFont->CIDFromCharCode(charcode);
       CFX_Point16 vertical_origin = pCIDFont->GetVertOrigin(cid);
       char_rect.left -= vertical_origin.x;
       char_rect.right -= vertical_origin.x;
@@ -295,8 +295,8 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
           min_x, static_cast<float>(std::min(char_rect.left, char_rect.right)));
       max_x = std::max(
           max_x, static_cast<float>(std::max(char_rect.left, char_rect.right)));
-      float char_top = curpos + char_rect.top * fontsize / 1000;
-      float char_bottom = curpos + char_rect.bottom * fontsize / 1000;
+      const float char_top = curpos + char_rect.top * fontsize / 1000;
+      const float char_bottom = curpos + char_rect.bottom * fontsize / 1000;
       min_y = std::min(min_y, std::min(char_top, char_bottom));
       max_y = std::max(max_y, std::max(char_top, char_bottom));
       charwidth = pCIDFont->GetVertWidth(cid) * fontsize / 1000;
@@ -324,7 +324,7 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   if (!TextRenderingModeIsStrokeMode(m_TextState.GetTextMode()))
     return ret;
 
-  float half_width = m_GraphState.GetLineWidth() / 2;
+  const float half_width = m_GraphState.GetLineWidth() / 2;
   m_Rect.left -= half_width;
   m_Rect.right += half_width;
   m_Rect.top += half_width;

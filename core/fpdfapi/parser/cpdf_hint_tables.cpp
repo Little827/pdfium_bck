@@ -264,7 +264,7 @@ bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
 
   // Item 1: The object number of the first object in the shared objects
   // section.
-  uint32_t dwFirstSharedObjNum = hStream->GetBits(32);
+  const uint32_t dwFirstSharedObjNum = hStream->GetBits(32);
   if (!dwFirstSharedObjNum)
     return false;
 
@@ -279,20 +279,20 @@ bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
 
   // Item 4: The number of shared object entries for the shared objects
   // section, including the number of shared object entries for the first page.
-  uint32_t dwSharedObjTotal = hStream->GetBits(32);
+  const uint32_t dwSharedObjTotal = hStream->GetBits(32);
 
   // Item 5: The number of bits needed to represent the greatest number of
   // objects in a shared object group.
-  uint32_t dwSharedObjNumBits = hStream->GetBits(16);
+  const uint32_t dwSharedObjNumBits = hStream->GetBits(16);
   if (dwSharedObjNumBits > 32)
     return false;
 
   // Item 6: The least length of a shared object group in bytes.
-  uint32_t dwGroupLeastLen = hStream->GetBits(32);
+  const uint32_t dwGroupLeastLen = hStream->GetBits(32);
 
   // Item 7: The number of bits needed to represent the difference between the
   // greatest and least length of a shared object group, in bytes.
-  uint32_t dwDeltaGroupLen = hStream->GetBits(16);
+  const uint32_t dwDeltaGroupLen = hStream->GetBits(16);
 
   // Trying to decode more than 32 bits isn't going to work when we write into
   // a uint32_t. Decoding 0 bits also makes no sense.
@@ -311,7 +311,7 @@ bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
     return false;
 
   if (dwSharedObjTotal > 0) {
-    uint32_t dwLastSharedObj = dwSharedObjTotal - 1;
+    const uint32_t dwLastSharedObj = dwSharedObjTotal - 1;
     if (dwLastSharedObj > m_nFirstPageSharedObjs) {
       FX_SAFE_UINT32 safeObjNum = dwFirstSharedObjNum;
       safeObjNum += dwLastSharedObj - m_nFirstPageSharedObjs;
@@ -376,7 +376,7 @@ bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
     if (!obj_count.IsValid())
       return false;
 
-    uint32_t obj_num = cur_obj_num.ValueOrDie();
+    const uint32_t obj_num = cur_obj_num.ValueOrDie();
     cur_obj_num += obj_count.ValueOrDie();
     if (!cur_obj_num.IsValid())
       return false;
@@ -445,14 +445,14 @@ bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
   if (!pOffset || !pOffset->IsNumber())
     return false;
 
-  int shared_hint_table_offset = pOffset->GetInteger();
+  const int shared_hint_table_offset = pOffset->GetInteger();
   if (shared_hint_table_offset <= 0)
     return false;
 
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pHintStream);
   pAcc->LoadAllDataFiltered();
 
-  uint32_t size = pAcc->GetSize();
+  const uint32_t size = pAcc->GetSize();
   // The header section of page offset hint table is 36 bytes.
   // The header section of shared object hint table is 24 bytes.
   // Hint table has at least 60 bytes.

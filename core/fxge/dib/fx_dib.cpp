@@ -88,7 +88,7 @@ FX_ARGB StringToFXARGB(WideStringView view) {
 
   int cc = 0;
   const wchar_t* str = view.unterminated_c_str();
-  int len = view.GetLength();
+  const int len = view.GetLength();
   while (cc < len && FXSYS_iswspace(str[cc]))
     cc++;
 

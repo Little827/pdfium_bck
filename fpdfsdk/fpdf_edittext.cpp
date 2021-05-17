@@ -152,7 +152,7 @@ void AddUnicode(std::ostringstream* pBuffer, uint32_t unicode) {
 
   char ans[8];
   *pBuffer << "<";
-  size_t numChars = FXSYS_ToUTF16BE(unicode, ans);
+  const size_t numChars = FXSYS_ToUTF16BE(unicode, ans);
   for (size_t i = 0; i < numChars; ++i)
     *pBuffer << ans[i];
   *pBuffer << ">";
@@ -176,8 +176,8 @@ CPDF_Stream* LoadUnicode(CPDF_Document* pDoc,
 
   // Calculate the maps
   for (auto iter = to_unicode.begin(); iter != to_unicode.end(); ++iter) {
-    uint32_t firstCharcode = iter->first;
-    uint32_t firstUnicode = iter->second;
+    const uint32_t firstCharcode = iter->first;
+    const uint32_t firstUnicode = iter->second;
     if (std::next(iter) == to_unicode.end() ||
         firstCharcode + 1 != std::next(iter)->first) {
       char_to_uni[firstCharcode] = firstUnicode;
@@ -244,7 +244,7 @@ CPDF_Stream* LoadUnicode(CPDF_Document* pDoc,
     buffer << " [";
     const std::vector<uint32_t>& unicodes = iter.second;
     for (size_t i = 0; i < unicodes.size(); ++i) {
-      uint32_t uni = unicodes[i];
+      const uint32_t uni = unicodes[i];
       AddUnicode(&buffer, uni);
       if (i != unicodes.size() - 1)
         buffer << " ";
@@ -375,7 +375,7 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
   CPDF_Array* widthsArray = pDoc->NewIndirect<CPDF_Array>();
   for (auto it = widths.begin(); it != widths.end(); ++it) {
     int ch = it->first;
-    int w = it->second;
+    const int w = it->second;
     if (std::next(it) == widths.end()) {
       // Only one char left, use format c [w]
       auto oneW = pdfium::MakeRetain<CPDF_Array>();
@@ -385,8 +385,8 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
       break;
     }
     ++it;
-    int next_ch = it->first;
-    int next_w = it->second;
+    const int next_ch = it->first;
+    const int next_w = it->second;
     if (next_ch == ch + 1 && next_w == w) {
       // The array can have a group c_first c_last w: all CIDs in the range from
       // c_first to c_last will have width w

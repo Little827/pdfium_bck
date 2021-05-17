@@ -143,7 +143,7 @@ bool CTextOnlyPrinterDriver::DrawDeviceText(
   // label printers that use this driver.
   WideString wsText;
   size_t len = nChars;
-  float fOffsetY = mtObject2Device.f * kScaleFactor;
+  const float fOffsetY = mtObject2Device.f * kScaleFactor;
   if (m_SetOrigin && FXSYS_roundf(m_OriginY) != FXSYS_roundf(fOffsetY)) {
     wsText += L"\r\n";
     len += 2;
@@ -169,7 +169,7 @@ bool CTextOnlyPrinterDriver::DrawDeviceText(
   auto text_span = text.span();
   while (!text_span.empty()) {
     uint8_t buffer[1026];
-    size_t send_len = std::min<size_t>(text_span.size(), 1024);
+    const size_t send_len = std::min<size_t>(text_span.size(), 1024);
     *(reinterpret_cast<uint16_t*>(buffer)) = static_cast<uint16_t>(send_len);
     memcpy(buffer + 2, text_span.data(), send_len);
     ::GdiComment(m_hDC, send_len + 2, buffer);

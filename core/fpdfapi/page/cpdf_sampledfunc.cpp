@@ -60,7 +60,7 @@ bool CPDF_SampledFunc::v_Init(const CPDF_Object* pObj,
   const CPDF_Array* pEncode = pDict->GetArrayFor("Encode");
   m_EncodeInfo.resize(m_nInputs);
   for (uint32_t i = 0; i < m_nInputs; i++) {
-    int size = pSize->GetIntegerAt(i);
+    const int size = pSize->GetIntegerAt(i);
     if (size <= 0)
       return false;
 
@@ -144,7 +144,7 @@ bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
   CFX_BitStream bitstream(pSampleData);
   bitstream.SkipBits(bits_to_skip);
   for (uint32_t i = 0; i < m_nOutputs; ++i) {
-    uint32_t sample = bitstream.GetBits(m_nBitsPerSample);
+    const uint32_t sample = bitstream.GetBits(m_nBitsPerSample);
     float encoded = sample;
     for (uint32_t j = 0; j < m_nInputs; ++j) {
       if (index[j] == m_EncodeInfo[j].sizes - 1) {
@@ -156,7 +156,7 @@ bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
         bitpos2 *= m_nOutputs;
         bitpos2 += i;
         bitpos2 *= m_nBitsPerSample;
-        int bits_to_skip2 = bitpos2.ValueOrDefault(-1);
+        const int bits_to_skip2 = bitpos2.ValueOrDefault(-1);
         if (bits_to_skip2 < 0)
           return false;
 

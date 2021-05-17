@@ -34,7 +34,7 @@ std::pair<size_t, size_t> UTF8Decode(pdfium::span<const uint8_t> pSrc,
   for (size_t iIndex = 0; iIndex < pSrc.size() && iDstNum < pDst.size();
        ++iIndex) {
     ++iSrcNum;
-    uint8_t byte = pSrc[iIndex];
+    const uint8_t byte = pSrc[iIndex];
     if (byte < 0x80) {
       iPending = 0;
       pDst[iDstNum++] = byte;
@@ -85,7 +85,7 @@ void UTF16ToWChar(void* pBuffer, size_t iLength) {
 
 void SwapByteOrder(uint16_t* pStr, size_t iLength) {
   while (iLength-- > 0) {
-    uint16_t wch = *pStr;
+    const uint16_t wch = *pStr;
     *pStr++ = (wch >> 8) | (wch << 8);
   }
 }
@@ -189,8 +189,8 @@ size_t CFX_SeekableStreamProxy::ReadBlock(wchar_t* pStr, size_t size) {
 
   if (m_wCodePage == FX_CODEPAGE_UTF16LE ||
       m_wCodePage == FX_CODEPAGE_UTF16BE) {
-    size_t iBytes = size * 2;
-    size_t iLen = ReadData(reinterpret_cast<uint8_t*>(pStr), iBytes);
+    const size_t iBytes = size * 2;
+    const size_t iLen = ReadData(reinterpret_cast<uint8_t*>(pStr), iBytes);
     size = iLen / 2;
     if (m_wCodePage == FX_CODEPAGE_UTF16BE)
       SwapByteOrder(reinterpret_cast<uint16_t*>(pStr), size);
@@ -203,12 +203,12 @@ size_t CFX_SeekableStreamProxy::ReadBlock(wchar_t* pStr, size_t size) {
   }
 
   FX_FILESIZE pos = GetPosition();
-  size_t iBytes = std::min(size, static_cast<size_t>(GetSize() - pos));
+  const size_t iBytes = std::min(size, static_cast<size_t>(GetSize() - pos));
   if (iBytes == 0)
     return 0;
 
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> buf(iBytes);
-  size_t iLen = ReadData(buf.data(), iBytes);
+  const size_t iLen = ReadData(buf.data(), iBytes);
   if (m_wCodePage != FX_CODEPAGE_UTF8)
     return 0;
 

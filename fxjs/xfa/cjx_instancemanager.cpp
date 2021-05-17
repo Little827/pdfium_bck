@@ -39,13 +39,13 @@ bool CJX_InstanceManager::DynamicTypeIs(TypeTag eType) const {
 
 int32_t CJX_InstanceManager::SetInstances(int32_t iDesired) {
   CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
-  int32_t iMin = occur ? occur->GetMin() : CXFA_Occur::kDefaultMin;
+  const int32_t iMin = occur ? occur->GetMin() : CXFA_Occur::kDefaultMin;
   if (iDesired < iMin) {
     ThrowTooManyOccurancesException(L"min");
     return 1;
   }
 
-  int32_t iMax = occur ? occur->GetMax() : CXFA_Occur::kDefaultMax;
+  const int32_t iMax = occur ? occur->GetMax() : CXFA_Occur::kDefaultMax;
   if (iMax >= 0 && iDesired > iMax) {
     ThrowTooManyOccurancesException(L"max");
     return 2;
@@ -109,7 +109,7 @@ int32_t CJX_InstanceManager::SetInstances(int32_t iDesired) {
 }
 
 int32_t CJX_InstanceManager::MoveInstance(int32_t iTo, int32_t iFrom) {
-  int32_t iCount = GetXFANode()->GetCount();
+  const int32_t iCount = GetXFANode()->GetCount();
   if (iFrom > iCount || iTo > iCount - 1) {
     ThrowIndexOutOfBoundsException();
     return 1;
@@ -140,8 +140,8 @@ CJS_Result CJX_InstanceManager::moveInstance(
   if (params.size() != 2)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  int32_t iFrom = runtime->ToInt32(params[0]);
-  int32_t iTo = runtime->ToInt32(params[1]);
+  const int32_t iFrom = runtime->ToInt32(params[0]);
+  const int32_t iTo = runtime->ToInt32(params[1]);
   MoveInstance(iTo, iFrom);
 
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
@@ -171,13 +171,13 @@ CJS_Result CJX_InstanceManager::removeInstance(
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  int32_t iIndex = runtime->ToInt32(params[0]);
-  int32_t iCount = GetXFANode()->GetCount();
+  const int32_t iIndex = runtime->ToInt32(params[0]);
+  const int32_t iCount = GetXFANode()->GetCount();
   if (iIndex < 0 || iIndex >= iCount)
     return CJS_Result::Failure(JSMessage::kInvalidInputError);
 
   CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
-  int32_t iMin = occur ? occur->GetMin() : CXFA_Occur::kDefaultMin;
+  const int32_t iMin = occur ? occur->GetMin() : CXFA_Occur::kDefaultMin;
   if (iCount - 1 < iMin)
     return CJS_Result::Failure(JSMessage::kTooManyOccurances);
 
@@ -230,9 +230,9 @@ CJS_Result CJX_InstanceManager::addInstance(
   if (params.size() == 1)
     fFlags = runtime->ToBoolean(params[0]);
 
-  int32_t iCount = GetXFANode()->GetCount();
+  const int32_t iCount = GetXFANode()->GetCount();
   CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
-  int32_t iMax = occur ? occur->GetMax() : CXFA_Occur::kDefaultMax;
+  const int32_t iMax = occur ? occur->GetMax() : CXFA_Occur::kDefaultMax;
   if (iMax >= 0 && iCount >= iMax)
     return CJS_Result::Failure(JSMessage::kTooManyOccurances);
 
@@ -264,17 +264,17 @@ CJS_Result CJX_InstanceManager::insertInstance(
   if (params.size() != 1 && params.size() != 2)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  int32_t iIndex = runtime->ToInt32(params[0]);
+  const int32_t iIndex = runtime->ToInt32(params[0]);
   bool bBind = false;
   if (params.size() == 2)
     bBind = runtime->ToBoolean(params[1]);
 
-  int32_t iCount = GetXFANode()->GetCount();
+  const int32_t iCount = GetXFANode()->GetCount();
   if (iIndex < 0 || iIndex > iCount)
     return CJS_Result::Failure(JSMessage::kInvalidInputError);
 
   CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
-  int32_t iMax = occur ? occur->GetMax() : CXFA_Occur::kDefaultMax;
+  const int32_t iMax = occur ? occur->GetMax() : CXFA_Occur::kDefaultMax;
   if (iMax >= 0 && iCount >= iMax)
     return CJS_Result::Failure(JSMessage::kInvalidInputError);
 

@@ -77,7 +77,7 @@ const int32_t CODE_START_C = 105;
 const int32_t CODE_STOP = 106;
 
 bool IsInOnedCode128Alphabet(wchar_t ch) {
-  int32_t index = static_cast<int32_t>(ch);
+  const int32_t index = static_cast<int32_t>(ch);
   return index >= 32 && index <= 126 && index != 34;
 }
 
@@ -170,7 +170,7 @@ int32_t CBC_OnedCode128Writer::Encode128B(const ByteString& contents,
   patterns->push_back(CODE_START_B);
   int32_t checkSum = CODE_START_B * checkWeight;
   for (size_t position = 0; position < contents.GetLength(); position++) {
-    int32_t patternIndex = contents[position] - ' ';
+    const int32_t patternIndex = contents[position] - ' ';
     patterns->push_back(patternIndex);
     checkSum += patternIndex * checkWeight++;
   }

@@ -188,7 +188,7 @@ TEST_F(CFXV8UnitTest, NewArray) {
 
   EXPECT_TRUE(cfx_v8()->ToBoolean(array));
   EXPECT_EQ(0, cfx_v8()->ToInt32(array));
-  double d = cfx_v8()->ToDouble(array);
+  const double d = cfx_v8()->ToDouble(array);
   EXPECT_NE(d, d);  // i.e. NaN.
   EXPECT_EQ(L",,,12", cfx_v8()->ToWideString(array));
   EXPECT_TRUE(cfx_v8()->ToObject(array)->IsObject());
@@ -215,7 +215,7 @@ TEST_F(CFXV8UnitTest, NewObject) {
 
   EXPECT_TRUE(cfx_v8()->ToBoolean(object));
   EXPECT_EQ(0, cfx_v8()->ToInt32(object));
-  double d = cfx_v8()->ToDouble(object);
+  const double d = cfx_v8()->ToDouble(object);
   EXPECT_NE(d, d);  // i.e. NaN.
   EXPECT_EQ(L"[object Object]", cfx_v8()->ToWideString(object));
   EXPECT_TRUE(cfx_v8()->ToObject(object)->IsObject());

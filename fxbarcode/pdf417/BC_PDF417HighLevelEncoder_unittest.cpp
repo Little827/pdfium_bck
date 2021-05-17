@@ -87,7 +87,7 @@ TEST(PDF417HighLevelEncoderTest, EncodeBinary) {
   for (size_t i = 0; i < pdfium::size(kEncodeBinaryCases); ++i) {
     const EncodeBinaryCase& testcase = kEncodeBinaryCases[i];
     std::vector<uint8_t> input_array;
-    size_t input_length = strlen(testcase.input);
+    const size_t input_length = strlen(testcase.input);
     input_array.resize(input_length);
     for (size_t j = 0; j < input_length; ++j) {
       input_array[j] = testcase.input[j];
