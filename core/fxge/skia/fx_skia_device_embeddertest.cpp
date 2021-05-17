@@ -136,7 +136,7 @@ void Harness(void (*Test)(CFX_SkiaDeviceDriver*, const State&),
   auto* driver = static_cast<CFX_SkiaDeviceDriver*>(device.GetDeviceDriver());
   (*Test)(driver, state);
   driver->Flush();
-  uint32_t pixel = pBitmap->GetPixel(0, 0);
+  const uint32_t pixel = pBitmap->GetPixel(0, 0);
   EXPECT_EQ(state.m_pixel, pixel);
 #ifdef SK_DEBUG
   if (!driver)  // force dump to be linked in so it can be called from debugger

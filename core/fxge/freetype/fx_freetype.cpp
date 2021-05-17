@@ -42,8 +42,8 @@ static int xyq_search_node(char* glyph_name,
     return 0;
 
   for (int i = 0; i < count; i++) {
-    int child_offset = ft_adobe_glyph_list[table_offset + i * 2] * 256 +
-                       ft_adobe_glyph_list[table_offset + i * 2 + 1];
+    const int child_offset = ft_adobe_glyph_list[table_offset + i * 2] * 256 +
+                             ft_adobe_glyph_list[table_offset + i * 2 + 1];
     if (xyq_search_node(glyph_name, name_offset, child_offset, unicode))
       // found in child
       return 1;

@@ -25,11 +25,11 @@
 #include "third_party/base/numerics/safe_math.h"
 
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#include "third_party/skia/include/core/SkStream.h"  // nogncheck
+#include "third_party/skia/include/core/SkStream.h"    // nogncheck
 #include "third_party/skia/include/core/SkTypeface.h"  // nogncheck
 
 #if defined(OS_WIN)
-#include "third_party/skia/include/core/SkFontMgr.h"  // nogncheck
+#include "third_party/skia/include/core/SkFontMgr.h"         // nogncheck
 #include "third_party/skia/include/ports/SkFontMgr_empty.h"  // nogncheck
 #endif
 #endif
@@ -55,7 +55,7 @@ void UniqueKeyGen::Generate(int count, ...) {
   va_list argList;
   va_start(argList, count);
   for (int i = 0; i < count; i++) {
-    int p = va_arg(argList, int);
+    const int p = va_arg(argList, int);
     reinterpret_cast<uint32_t*>(key_)[i] = p;
   }
   va_end(argList);
@@ -68,10 +68,10 @@ void GenKey(UniqueKeyGen* pKeyGen,
             int dest_width,
             int anti_alias,
             bool bNative) {
-  int nMatrixA = static_cast<int>(matrix.a * 10000);
-  int nMatrixB = static_cast<int>(matrix.b * 10000);
-  int nMatrixC = static_cast<int>(matrix.c * 10000);
-  int nMatrixD = static_cast<int>(matrix.d * 10000);
+  const int nMatrixA = static_cast<int>(matrix.a * 10000);
+  const int nMatrixB = static_cast<int>(matrix.b * 10000);
+  const int nMatrixC = static_cast<int>(matrix.c * 10000);
+  const int nMatrixD = static_cast<int>(matrix.d * 10000);
 
   if (bNative) {
     if (pFont->GetSubstFont()) {
@@ -127,7 +127,7 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph(
     else
       angle = pSubstFont->m_ItalicAngle;
     if (angle) {
-      int skew = CFX_Font::GetSkewFromAngle(angle);
+      const int skew = CFX_Font::GetSkewFromAngle(angle);
       if (pFont->IsVertical())
         ft_matrix.yx += ft_matrix.yy * skew / 100;
       else
@@ -162,7 +162,7 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph(
   else
     weight = pSubstFont ? pSubstFont->m_Weight : 0;
   if (pSubstFont && !pSubstFont->m_bFlagMM && weight > 400) {
-    uint32_t index = (weight - 400) / 10;
+    const uint32_t index = (weight - 400) / 10;
     pdfium::base::CheckedNumeric<signed long> level =
         CFX_Font::GetWeightLevel(pSubstFont->m_Charset, index);
     if (level.ValueOrDefault(-1) < 0)
@@ -181,11 +181,13 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph(
   if (error)
     return nullptr;
 
-  int bmwidth = FXFT_Get_Bitmap_Width(FXFT_Get_Glyph_Bitmap(GetFaceRec()));
-  int bmheight = FXFT_Get_Bitmap_Rows(FXFT_Get_Glyph_Bitmap(GetFaceRec()));
+  const int bmwidth =
+      FXFT_Get_Bitmap_Width(FXFT_Get_Glyph_Bitmap(GetFaceRec()));
+  const int bmheight =
+      FXFT_Get_Bitmap_Rows(FXFT_Get_Glyph_Bitmap(GetFaceRec()));
   if (bmwidth > kMaxGlyphDimension || bmheight > kMaxGlyphDimension)
     return nullptr;
-  int dib_width = bmwidth;
+  const int dib_width = bmwidth;
   auto pGlyphBitmap =
       std::make_unique<CFX_GlyphBitmap>(FXFT_Get_Glyph_BitmapLeft(GetFaceRec()),
                                         FXFT_Get_Glyph_BitmapTop(GetFaceRec()));
@@ -193,15 +195,16 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph(
                                     anti_alias == FT_RENDER_MODE_MONO
                                         ? FXDIB_Format::k1bppMask
                                         : FXDIB_Format::k8bppMask);
-  int dest_pitch = pGlyphBitmap->GetBitmap()->GetPitch();
-  int src_pitch = FXFT_Get_Bitmap_Pitch(FXFT_Get_Glyph_Bitmap(GetFaceRec()));
+  const int dest_pitch = pGlyphBitmap->GetBitmap()->GetPitch();
+  const int src_pitch =
+      FXFT_Get_Bitmap_Pitch(FXFT_Get_Glyph_Bitmap(GetFaceRec()));
   uint8_t* pDestBuf = pGlyphBitmap->GetBitmap()->GetBuffer();
   uint8_t* pSrcBuf = static_cast<uint8_t*>(
       FXFT_Get_Bitmap_Buffer(FXFT_Get_Glyph_Bitmap(GetFaceRec())));
   if (anti_alias != FT_RENDER_MODE_MONO &&
       FXFT_Get_Bitmap_PixelMode(FXFT_Get_Glyph_Bitmap(GetFaceRec())) ==
           FT_PIXEL_MODE_MONO) {
-    int bytes = anti_alias == FT_RENDER_MODE_LCD ? 3 : 1;
+    const int bytes = anti_alias == FT_RENDER_MODE_LCD ? 3 : 1;
     for (int i = 0; i < bmheight; i++) {
       for (int n = 0; n < bmwidth; n++) {
         uint8_t data =
@@ -212,7 +215,7 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph(
     }
   } else {
     memset(pDestBuf, 0, dest_pitch * bmheight);
-    int rowbytes = std::min(abs(src_pitch), dest_pitch);
+    const int rowbytes = std::min(abs(src_pitch), dest_pitch);
     for (int row = 0; row < bmheight; row++)
       memcpy(pDestBuf + row * dest_pitch, pSrcBuf + row * src_pitch, rowbytes);
   }
@@ -226,9 +229,9 @@ const CFX_PathData* CFX_GlyphCache::LoadGlyphPath(const CFX_Font* pFont,
     return nullptr;
 
   const auto* pSubstFont = pFont->GetSubstFont();
-  int weight = pSubstFont ? pSubstFont->m_Weight : 0;
-  int angle = pSubstFont ? pSubstFont->m_ItalicAngle : 0;
-  bool vertical = pSubstFont && pFont->IsVertical();
+  const int weight = pSubstFont ? pSubstFont->m_Weight : 0;
+  const int angle = pSubstFont ? pSubstFont->m_ItalicAngle : 0;
+  const bool vertical = pSubstFont && pFont->IsVertical();
   const PathMapKey key =
       std::make_tuple(glyph_index, dest_width, weight, angle, vertical);
   auto it = m_PathMap.find(key);

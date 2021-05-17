@@ -105,7 +105,7 @@ void* CFX_LinuxFontInfo::MapFont(int weight,
   bool bCJK = true;
   switch (charset) {
     case FX_CHARSET_ShiftJIS: {
-      uint8_t index = GetJapanesePreference(family, weight, pitch_family);
+      const uint8_t index = GetJapanesePreference(family, weight, pitch_family);
       DCHECK(index < pdfium::size(g_LinuxJpFontList));
       for (const char* name : g_LinuxJpFontList[index]) {
         auto it = m_FontList.find(name);

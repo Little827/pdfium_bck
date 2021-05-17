@@ -123,7 +123,6 @@ CFX_GifDecodeStatus CFX_GifContext::GetFrame() {
       case GIF_D_STATUS_IMG_DATA: {
         uint8_t img_data_size;
         size_t read_marker = input_buffer_->GetPosition();
-
         if (!ReadAllOrNone(&img_data_size, sizeof(img_data_size)))
           return CFX_GifDecodeStatus::Unfinished;
 
@@ -164,7 +163,7 @@ CFX_GifDecodeStatus CFX_GifContext::LoadFrame(int32_t frame_num) {
   if (gif_image->image_info.height == 0)
     return CFX_GifDecodeStatus::Error;
 
-  uint32_t gif_img_row_bytes = gif_image->image_info.width;
+  const uint32_t gif_img_row_bytes = gif_image->image_info.width;
   if (gif_img_row_bytes == 0)
     return CFX_GifDecodeStatus::Error;
 
@@ -179,7 +178,7 @@ CFX_GifDecodeStatus CFX_GifContext::LoadFrame(int32_t frame_num) {
                                         ? nullptr
                                         : gif_image->local_palettes.data();
     if (!gif_img_gce) {
-      bool bRes = GetRecordPosition(
+      const bool bRes = GetRecordPosition(
           gif_image->data_pos, gif_image->image_info.left,
           gif_image->image_info.top, gif_image->image_info.width,
           gif_image->image_info.height, loc_pal_num, pLocalPalette, 0, 0, -1, 0,
@@ -189,7 +188,7 @@ CFX_GifDecodeStatus CFX_GifContext::LoadFrame(int32_t frame_num) {
         return CFX_GifDecodeStatus::Error;
       }
     } else {
-      bool bRes = GetRecordPosition(
+      const bool bRes = GetRecordPosition(
           gif_image->data_pos, gif_image->image_info.left,
           gif_image->image_info.top, gif_image->image_info.width,
           gif_image->image_info.height, loc_pal_num, pLocalPalette,
@@ -341,8 +340,8 @@ bool CFX_GifContext::ReadAllOrNone(uint8_t* dest, uint32_t size) {
   if (!input_buffer_ || !dest)
     return false;
 
-  size_t read_marker = input_buffer_->GetPosition();
-  size_t read = input_buffer_->ReadBlock(dest, size);
+  const size_t read_marker = input_buffer_->GetPosition();
+  const size_t read = input_buffer_->ReadBlock(dest, size);
   if (read < size) {
     input_buffer_->Seek(read_marker);
     return false;
@@ -366,18 +365,18 @@ CFX_GifDecodeStatus CFX_GifContext::ReadGifSignature() {
 
 CFX_GifDecodeStatus CFX_GifContext::ReadLogicalScreenDescriptor() {
   CFX_GifLocalScreenDescriptor lsd;
-  size_t read_marker = input_buffer_->GetPosition();
+  const size_t read_marker = input_buffer_->GetPosition();
 
   if (!ReadAllOrNone(reinterpret_cast<uint8_t*>(&lsd), sizeof(lsd)))
     return CFX_GifDecodeStatus::Unfinished;
 
   if (lsd.global_flags.global_pal) {
-    uint32_t palette_count = unsigned(2 << lsd.global_flags.pal_bits);
+    const uint32_t palette_count = unsigned(2 << lsd.global_flags.pal_bits);
     if (lsd.bc_index >= palette_count)
       return CFX_GifDecodeStatus::Error;
     bc_index_ = lsd.bc_index;
 
-    uint32_t palette_size = palette_count * sizeof(CFX_GifPalette);
+    const uint32_t palette_size = palette_count * sizeof(CFX_GifPalette);
     std::vector<CFX_GifPalette> palette(palette_count);
     if (!ReadAllOrNone(reinterpret_cast<uint8_t*>(palette.data()),
                        palette_size)) {
@@ -405,7 +404,7 @@ void CFX_GifContext::SaveDecodingStatus(int32_t status) {
 }
 
 CFX_GifDecodeStatus CFX_GifContext::DecodeExtension() {
-  size_t read_marker = input_buffer_->GetPosition();
+  const size_t read_marker = input_buffer_->GetPosition();
 
   switch (decode_status_) {
     case GIF_D_STATUS_EXT_CE: {
@@ -460,7 +459,7 @@ CFX_GifDecodeStatus CFX_GifContext::DecodeImageInfo() {
   if (width_ <= 0 || height_ <= 0)
     return CFX_GifDecodeStatus::Error;
 
-  size_t read_marker = input_buffer_->GetPosition();
+  const size_t read_marker = input_buffer_->GetPosition();
   CFX_GifImageInfo img_info;
   if (!ReadAllOrNone(reinterpret_cast<uint8_t*>(&img_info), sizeof(img_info)))
     return CFX_GifDecodeStatus::Unfinished;
@@ -482,7 +481,7 @@ CFX_GifDecodeStatus CFX_GifContext::DecodeImageInfo() {
   CFX_GifLocalFlags* gif_img_info_lf = &img_info.local_flags;
   if (gif_img_info_lf->local_pal) {
     gif_image->local_palette_exp = gif_img_info_lf->pal_bits;
-    uint32_t loc_pal_count = unsigned(2 << gif_img_info_lf->pal_bits);
+    const uint32_t loc_pal_count = unsigned(2 << gif_img_info_lf->pal_bits);
     std::vector<CFX_GifPalette> loc_pal(loc_pal_count);
     if (!ReadAllOrNone(reinterpret_cast<uint8_t*>(loc_pal.data()),
                        loc_pal_count * sizeof(CFX_GifPalette))) {

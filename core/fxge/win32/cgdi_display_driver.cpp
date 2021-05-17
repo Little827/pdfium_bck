@@ -36,8 +36,8 @@ bool CGdiDisplayDriver::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
                                   int left,
                                   int top) {
   bool ret = false;
-  int width = pBitmap->GetWidth();
-  int height = pBitmap->GetHeight();
+  const int width = pBitmap->GetWidth();
+  const int height = pBitmap->GetHeight();
   HBITMAP hbmp = CreateCompatibleBitmap(m_hDC, width, height);
   HDC hDCMemory = CreateCompatibleDC(m_hDC);
   HBITMAP holdbmp = (HBITMAP)SelectObject(hDCMemory, hbmp);
@@ -80,8 +80,8 @@ bool CGdiDisplayDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                   BlendMode blend_type) {
   DCHECK_EQ(blend_type, BlendMode::kNormal);
   if (pSource->IsMaskFormat()) {
-    int width = pSource->GetWidth(), height = pSource->GetHeight();
-    int alpha = FXARGB_A(color);
+    const int width = pSource->GetWidth(), height = pSource->GetHeight();
+    const int alpha = FXARGB_A(color);
     if (pSource->GetBPP() != 1 || alpha != 255) {
       auto background = pdfium::MakeRetain<CFX_DIBitmap>();
       if (!background->Create(width, height, FXDIB_Format::kRgb32) ||
@@ -100,8 +100,8 @@ bool CGdiDisplayDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                          top - src_rect.top, width, height, &clip_rect,
                          FXDIB_ResampleOptions(), BlendMode::kNormal);
   }
-  int width = src_rect.Width();
-  int height = src_rect.Height();
+  const int width = src_rect.Width();
+  const int height = src_rect.Height();
   if (pSource->IsAlphaFormat()) {
     auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
     if (!bitmap->Create(width, height, FXDIB_Format::kRgb) ||
@@ -174,7 +174,7 @@ bool CGdiDisplayDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
     FX_RECT clip_rect = image_rect;
     clip_rect.Intersect(*pClipRect);
     clip_rect.Offset(-image_rect.left, -image_rect.top);
-    int clip_width = clip_rect.Width(), clip_height = clip_rect.Height();
+    const int clip_width = clip_rect.Width(), clip_height = clip_rect.Height();
     RetainPtr<CFX_DIBitmap> pStretched(pSource->StretchTo(
         dest_width, dest_height, FXDIB_ResampleOptions(), &clip_rect));
     if (!pStretched)

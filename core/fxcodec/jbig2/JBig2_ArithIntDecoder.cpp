@@ -33,7 +33,7 @@ size_t RecursiveDecode(CJBig2_ArithDecoder* decoder,
     return kDepthEnd;
 
   JBig2ArithCtx* pCX = &(*context)[*prev];
-  int D = decoder->Decode(pCX);
+  const int D = decoder->Decode(pCX);
   *prev = ShiftOr(*prev, D);
   if (!D)
     return depth;
@@ -62,7 +62,7 @@ bool CJBig2_ArithIntDecoder::Decode(CJBig2_ArithDecoder* pArithDecoder,
 
   int nTemp = 0;
   for (int i = 0; i < g_ArithIntDecodeData[nDecodeDataIndex].nNeedBits; ++i) {
-    int D = pArithDecoder->Decode(&m_IAx[PREV]);
+    const int D = pArithDecoder->Decode(&m_IAx[PREV]);
     PREV = ShiftOr(PREV, D);
     if (PREV >= 256)
       PREV = (PREV & 511) | 256;
@@ -97,7 +97,7 @@ void CJBig2_ArithIaidDecoder::Decode(CJBig2_ArithDecoder* pArithDecoder,
   int PREV = 1;
   for (unsigned char i = 0; i < SBSYMCODELEN; ++i) {
     JBig2ArithCtx* pCX = &m_IAID[PREV];
-    int D = pArithDecoder->Decode(pCX);
+    const int D = pArithDecoder->Decode(pCX);
     PREV = ShiftOr(PREV, D);
   }
   *nResult = PREV - (1 << SBSYMCODELEN);

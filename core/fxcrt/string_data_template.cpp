@@ -21,7 +21,8 @@ StringDataTemplate<CharType>* StringDataTemplate<CharType>::Create(
 
   // Calculate space needed for the fixed portion of the struct plus the
   // NUL char that is not included in |m_nAllocLength|.
-  int overhead = offsetof(StringDataTemplate, m_String) + sizeof(CharType);
+  const int overhead =
+      offsetof(StringDataTemplate, m_String) + sizeof(CharType);
   FX_SAFE_SIZE_T nSize = nLen;
   nSize *= sizeof(CharType);
   nSize += overhead;
@@ -32,8 +33,8 @@ StringDataTemplate<CharType>* StringDataTemplate<CharType>::Create(
   // using this otherwise wasted space.
   nSize += 15;
   nSize &= ~15;
-  size_t totalSize = nSize.ValueOrDie();
-  size_t usableLen = (totalSize - overhead) / sizeof(CharType);
+  const size_t totalSize = nSize.ValueOrDie();
+  const size_t usableLen = (totalSize - overhead) / sizeof(CharType);
   DCHECK(usableLen >= nLen);
 
   void* pData = GetStringPartitionAllocator().root()->Alloc(
