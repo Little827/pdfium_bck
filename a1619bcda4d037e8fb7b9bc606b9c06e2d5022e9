@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128c1caa_a60ea035",
+        "filename": "core/fpdfdoc/cpdf_apsettings.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-17T23:32:47Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 53,
+        "startChar": 34,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "a1619bcda4d037e8fb7b9bc606b9c06e2d5022e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
