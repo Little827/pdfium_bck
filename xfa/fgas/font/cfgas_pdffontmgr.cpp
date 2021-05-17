@@ -76,15 +76,15 @@ RetainPtr<CFGAS_GEFont> CFGAS_PDFFontMgr::FindFont(const ByteString& strPsName,
 RetainPtr<CFGAS_GEFont> CFGAS_PDFFontMgr::GetFont(WideStringView wsFontFamily,
                                                   uint32_t dwFontStyles,
                                                   bool bStrictMatch) {
-  uint32_t dwHashCode = FX_HashCode_GetW(wsFontFamily, false);
+  const uint32_t dwHashCode = FX_HashCode_GetW(wsFontFamily, false);
   ByteString strKey = ByteString::Format("%u%u", dwHashCode, dwFontStyles);
   auto it = m_FontMap.find(strKey);
   if (it != m_FontMap.end())
     return it->second;
 
   ByteString bsPsName = WideString(wsFontFamily).ToDefANSI();
-  bool bBold = FontStyleIsForceBold(dwFontStyles);
-  bool bItalic = FontStyleIsItalic(dwFontStyles);
+  const bool bBold = FontStyleIsForceBold(dwFontStyles);
+  const bool bItalic = FontStyleIsItalic(dwFontStyles);
   ByteString strFontName = PsNameToFontName(bsPsName, bBold, bItalic);
   RetainPtr<CFGAS_GEFont> pFont =
       FindFont(strFontName, bBold, bItalic, bStrictMatch);
@@ -117,7 +117,7 @@ bool CFGAS_PDFFontMgr::PsNameMatchDRFontName(ByteStringView bsPsName,
                                              bool bStrictMatch) {
   ByteString bsDRName = bsDRFontName;
   bsDRName.Remove('-');
-  size_t iPsLen = bsPsName.GetLength();
+  const size_t iPsLen = bsPsName.GetLength();
   auto nIndex = bsDRName.Find(bsPsName);
   if (nIndex.has_value() && !bStrictMatch)
     return true;

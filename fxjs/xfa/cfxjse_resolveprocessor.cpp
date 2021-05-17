@@ -44,9 +44,9 @@ void DoPredicateFilter(v8::Isolate* pIsolate,
   wsExpression = wsCondition.Substr(2, wsCondition.GetLength() - 3);
   for (size_t i = iFoundCount; i > 0; --i) {
     auto pRetValue = std::make_unique<CFXJSE_Value>();
-    bool bRet = pRnd->m_pSC->RunScript(eLangType, wsExpression.AsStringView(),
-                                       pRetValue.get(),
-                                       pRnd->m_Result.objects[i - 1].Get());
+    const bool bRet = pRnd->m_pSC->RunScript(
+        eLangType, wsExpression.AsStringView(), pRetValue.get(),
+        pRnd->m_Result.objects[i - 1].Get());
     if (!bRet || !pRetValue->ToBoolean(pIsolate))
       pRnd->m_Result.objects.erase(pRnd->m_Result.objects.begin() + i - 1);
   }
@@ -156,7 +156,7 @@ bool CFXJSE_ResolveProcessor::ResolveDollar(v8::Isolate* pIsolate,
                                             CFXJSE_ResolveNodeData& rnd) {
   WideString wsName = rnd.m_wsName;
   WideString wsCondition = rnd.m_wsCondition;
-  int32_t iNameLen = wsName.GetLength();
+  const int32_t iNameLen = wsName.GetLength();
   if (iNameLen == 1) {
     rnd.m_Result.objects.emplace_back(rnd.m_CurObject.Get());
     return true;
@@ -258,8 +258,8 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
     return false;
 
   CXFA_Node* curNode = rnd.m_CurObject->AsNode();
-  size_t nNum = rnd.m_Result.objects.size();
-  uint32_t dwStyles = rnd.m_dwStyles;
+  const size_t nNum = rnd.m_Result.objects.size();
+  const uint32_t dwStyles = rnd.m_dwStyles;
   WideString& wsName = rnd.m_wsName;
   XFA_HashCode uNameHash = rnd.m_uHashName;
   WideString& wsCondition = rnd.m_wsCondition;
@@ -405,7 +405,7 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
   }
 
   CXFA_Node* const parentNode = curNode->GetParent();
-  uint32_t uCurClassHash = curNode->GetClassHashCode();
+  const uint32_t uCurClassHash = curNode->GetClassHashCode();
   if (!parentNode) {
     if (uCurClassHash == uNameHash) {
       rnd.m_Result.objects.emplace_back(curNode);
@@ -464,7 +464,7 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
       if (bInnerSearch) {
         rndFind.m_CurObject = child;
         WideString wsOriginCondition = std::move(rndFind.m_wsCondition);
-        uint32_t dwOriginStyle = rndFind.m_dwStyles;
+        const uint32_t dwOriginStyle = rndFind.m_dwStyles;
         rndFind.m_dwStyles = dwOriginStyle | XFA_RESOLVENODE_ALL;
         ResolveNormal(pIsolate, rndFind);
         rndFind.m_dwStyles = dwOriginStyle;
@@ -532,7 +532,7 @@ int32_t CFXJSE_ResolveProcessor::GetFilter(WideStringView wsExpression,
                                            CFXJSE_ResolveNodeData& rnd) {
   DCHECK(nStart > -1);
 
-  int32_t iLength = wsExpression.GetLength();
+  const int32_t iLength = wsExpression.GetLength();
   if (nStart >= iLength)
     return 0;
 
@@ -611,7 +611,7 @@ void CFXJSE_ResolveProcessor::ConditionArray(size_t iCurIndex,
                                              WideString wsCondition,
                                              size_t iFoundCount,
                                              CFXJSE_ResolveNodeData* pRnd) {
-  size_t iLen = wsCondition.GetLength();
+  const size_t iLen = wsCondition.GetLength();
   bool bRelative = false;
   bool bAll = false;
   size_t i = 1;
@@ -670,17 +670,17 @@ void CFXJSE_ResolveProcessor::FilterCondition(v8::Isolate* pIsolate,
   const auto* pArray = pRnd->m_pSC->GetUpObjectArray();
   if (!pArray->empty()) {
     CXFA_Node* pNode = pArray->back();
-    bool bIsProperty = pNode->IsProperty();
+    const bool bIsProperty = pNode->IsProperty();
     bool bIsClassIndex =
         pNode->IsUnnamed() ||
         (bIsProperty && pNode->GetElementType() != XFA_Element::PageSet);
     iCurIndex = pNode->GetIndex(bIsProperty, bIsClassIndex);
   }
 
-  size_t iFoundCount = pRnd->m_Result.objects.size();
+  const size_t iFoundCount = pRnd->m_Result.objects.size();
   wsCondition.Trim();
 
-  int32_t iLen = wsCondition.GetLength();
+  const int32_t iLen = wsCondition.GetLength();
   if (!iLen) {
     if (pRnd->m_dwStyles & XFA_RESOLVENODE_ALL)
       return;

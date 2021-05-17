@@ -27,7 +27,7 @@ template <class T>
 bool IsValidNumericDictionaryValue(const CPDF_Dictionary* pDict,
                                    const char* key,
                                    T min_value,
-                                   bool must_exist = true) {
+                                   const bool must_exist = true) {
   if (!pDict->KeyExist(key))
     return !must_exist;
   const CPDF_Number* pNum = ToNumber(pDict->GetObjectFor(key));

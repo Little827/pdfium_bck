@@ -51,7 +51,7 @@ HPEN CreateExtPen(const CFX_GraphStateData* pGraphState,
     scale = fabs(pMatrix->a) > fabs(pMatrix->b) ? fabs(pMatrix->a)
                                                 : fabs(pMatrix->b);
   }
-  float width = std::max(scale * pGraphState->m_LineWidth, 1.0f);
+  const float width = std::max(scale * pGraphState->m_LineWidth, 1.0f);
 
   uint32_t PenStyle = PS_GEOMETRIC;
   if (!pGraphState->m_DashArray.empty())
@@ -229,7 +229,7 @@ unsigned clip_liang_barsky(float x1,
     xin = clip_box.x2;
     xout = clip_box.x1;
   }
-  float tinx = (xin - x1) / deltax;
+  const float tinx = (xin - x1) / deltax;
   if (deltay == 0)
     deltay = (y1 > clip_box.y1) ? -nearzero : nearzero;
   float yin, yout;
@@ -240,7 +240,7 @@ unsigned clip_liang_barsky(float x1,
     yin = clip_box.y2;
     yout = clip_box.y1;
   }
-  float tiny = (yin - y1) / deltay;
+  const float tiny = (yin - y1) / deltay;
   float tin1, tin2;
   if (tinx < tiny) {
     tin1 = tinx;
@@ -256,9 +256,9 @@ unsigned clip_liang_barsky(float x1,
       ++np;
     }
     if (tin2 <= 1.0f) {
-      float toutx = (xout - x1) / deltax;
-      float touty = (yout - y1) / deltay;
-      float tout1 = (toutx < touty) ? toutx : touty;
+      const float toutx = (xout - x1) / deltax;
+      const float touty = (yout - y1) / deltay;
+      const float tout1 = (toutx < touty) ? toutx : touty;
       if (tin2 > 0 || tout1 > 0) {
         if (tin2 <= tout1) {
           if (tin2 > 0) {
@@ -378,8 +378,8 @@ bool CGdiDeviceDriver::GDI_SetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap1,
     ((BITMAPINFOHEADER*)info.c_str())->biHeight *= -1;
     FX_RECT dst_rect(0, 0, src_rect.Width(), src_rect.Height());
     dst_rect.Intersect(0, 0, pBitmap->GetWidth(), pBitmap->GetHeight());
-    int dst_width = dst_rect.Width();
-    int dst_height = dst_rect.Height();
+    const int dst_width = dst_rect.Width();
+    const int dst_height = dst_rect.Height();
     ::StretchDIBits(m_hDC, left, top, dst_width, dst_height, 0, 0, dst_width,
                     dst_height, pBuffer, (BITMAPINFO*)info.c_str(),
                     DIB_RGB_COLORS, SRCCOPY);
@@ -442,7 +442,7 @@ bool CGdiDeviceDriver::GDI_StretchBitMask(
   if (!pBitmap || dest_width == 0 || dest_height == 0)
     return false;
 
-  int width = pBitmap->GetWidth(), height = pBitmap->GetHeight();
+  const int width = pBitmap->GetWidth(), height = pBitmap->GetHeight();
   struct {
     BITMAPINFOHEADER bmiHeader;
     uint32_t bmiColors[2];
@@ -497,10 +497,10 @@ bool CGdiDeviceDriver::GetClipBox(FX_RECT* pRect) {
 
 void CGdiDeviceDriver::DrawLine(float x1, float y1, float x2, float y2) {
   if (!m_bMetafileDCType) {  // EMF drawing is not bound to the DC.
-    int startOutOfBoundsFlag = (x1 < 0) | ((x1 > m_Width) << 1) |
-                               ((y1 < 0) << 2) | ((y1 > m_Height) << 3);
-    int endOutOfBoundsFlag = (x2 < 0) | ((x2 > m_Width) << 1) |
-                             ((y2 < 0) << 2) | ((y2 > m_Height) << 3);
+    const int startOutOfBoundsFlag = (x1 < 0) | ((x1 > m_Width) << 1) |
+                                     ((y1 < 0) << 2) | ((y1 > m_Height) << 3);
+    const int endOutOfBoundsFlag = (x2 < 0) | ((x2 > m_Width) << 1) |
+                                   ((y2 < 0) << 2) | ((y2 > m_Height) << 3);
     if (startOutOfBoundsFlag & endOutOfBoundsFlag)
       return;
 
@@ -568,10 +568,11 @@ bool CGdiDeviceDriver::DrawPath(const CFX_PathData* pPathData,
                               BlendMode::kNormal);
     }
   }
-  int fill_alpha = FXARGB_A(fill_color);
-  int stroke_alpha = FXARGB_A(stroke_color);
-  bool bDrawAlpha = (fill_alpha > 0 && fill_alpha < 255) ||
-                    (stroke_alpha > 0 && stroke_alpha < 255 && pGraphState);
+  const int fill_alpha = FXARGB_A(fill_color);
+  const int stroke_alpha = FXARGB_A(stroke_color);
+  const bool bDrawAlpha =
+      (fill_alpha > 0 && fill_alpha < 255) ||
+      (stroke_alpha > 0 && stroke_alpha < 255 && pGraphState);
   if (!pPlatform->m_GdiplusExt.IsAvailable() && bDrawAlpha)
     return false;
 
@@ -701,7 +702,7 @@ bool CGdiDeviceDriver::SetClip_PathStroke(
   SetPathToDC(m_hDC, pPathData, pMatrix);
   WidenPath(m_hDC);
   SetPolyFillMode(m_hDC, WINDING);
-  bool ret = !!SelectClipPath(m_hDC, RGN_AND);
+  const bool ret = !!SelectClipPath(m_hDC, RGN_AND);
   hPen = (HPEN)SelectObject(m_hDC, hPen);
   DeleteObject(hPen);
   return ret;

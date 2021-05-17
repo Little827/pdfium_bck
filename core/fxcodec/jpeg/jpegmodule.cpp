@@ -94,7 +94,7 @@ static bool JpegLoadInfo(pdfium::span<const uint8_t> src_span,
     jpeg_destroy_decompress(&cinfo);
     return false;
   }
-  int ret = jpeg_read_header(&cinfo, TRUE);
+  const int ret = jpeg_read_header(&cinfo, TRUE);
   if (ret != JPEG_HEADER_OK) {
     jpeg_destroy_decompress(&cinfo);
     return false;
@@ -213,7 +213,7 @@ bool JpegDecoder::InitDecode(bool bAcceptKnownBadHeader) {
   }
   m_Cinfo.image_width = m_OrigWidth;
   m_Cinfo.image_height = m_OrigHeight;
-  int ret = jpeg_read_header(&m_Cinfo, TRUE);
+  const int ret = jpeg_read_header(&m_Cinfo, TRUE);
   if (ret != JPEG_HEADER_OK)
     return false;
 
@@ -302,7 +302,7 @@ uint8_t* JpegDecoder::v_GetNextLine() {
     return nullptr;
 
   uint8_t* row_array[] = {m_pScanlineBuf.get()};
-  int nlines = jpeg_read_scanlines(&m_Cinfo, row_array, 1);
+  const int nlines = jpeg_read_scanlines(&m_Cinfo, row_array, 1);
   return nlines > 0 ? m_pScanlineBuf.get() : nullptr;
 }
 
@@ -327,12 +327,12 @@ bool JpegDecoder::HasKnownBadHeaderWithInvalidHeight(
     size_t dimension_offset) const {
   // Perform lots of possibly redundant checks to make sure this has no false
   // positives.
-  bool bDimensionChecks = m_Cinfo.err->msg_code == JERR_IMAGE_TOO_BIG &&
-                          m_Cinfo.image_width < JPEG_MAX_DIMENSION &&
-                          m_Cinfo.image_height == 0xffff && m_OrigWidth > 0 &&
-                          m_OrigWidth <= JPEG_MAX_DIMENSION &&
-                          m_OrigHeight > 0 &&
-                          m_OrigHeight <= JPEG_MAX_DIMENSION;
+  const bool bDimensionChecks =
+      m_Cinfo.err->msg_code == JERR_IMAGE_TOO_BIG &&
+      m_Cinfo.image_width < JPEG_MAX_DIMENSION &&
+      m_Cinfo.image_height == 0xffff && m_OrigWidth > 0 &&
+      m_OrigWidth <= JPEG_MAX_DIMENSION && m_OrigHeight > 0 &&
+      m_OrigHeight <= JPEG_MAX_DIMENSION;
   if (!bDimensionChecks)
     return false;
 
@@ -343,8 +343,8 @@ bool JpegDecoder::HasKnownBadHeaderWithInvalidHeight(
     return false;
 
   const uint8_t* pHeaderDimensions = &m_SrcSpan[dimension_offset];
-  uint8_t nExpectedWidthByte1 = (m_OrigWidth >> 8) & 0xff;
-  uint8_t nExpectedWidthByte2 = m_OrigWidth & 0xff;
+  const uint8_t nExpectedWidthByte1 = (m_OrigWidth >> 8) & 0xff;
+  const uint8_t nExpectedWidthByte2 = m_OrigWidth & 0xff;
   // Height high byte, height low byte, width high byte, width low byte.
   return pHeaderDimensions[0] == 0xff && pHeaderDimensions[1] == 0xff &&
          pHeaderDimensions[2] == nExpectedWidthByte1 &&
@@ -419,11 +419,13 @@ bool JpegModule::JpegEncode(const RetainPtr<CFX_DIBBase>& pSource,
   memset(&cinfo, 0, sizeof(cinfo));
   cinfo.err = &jerr;
   jpeg_create_compress(&cinfo);
-  int Bpp = pSource->GetBPP() / 8;
-  uint32_t nComponents = Bpp >= 3 ? 3 : 1;
-  uint32_t pitch = pSource->GetPitch();
-  uint32_t width = pdfium::base::checked_cast<uint32_t>(pSource->GetWidth());
-  uint32_t height = pdfium::base::checked_cast<uint32_t>(pSource->GetHeight());
+  const int Bpp = pSource->GetBPP() / 8;
+  const uint32_t nComponents = Bpp >= 3 ? 3 : 1;
+  const uint32_t pitch = pSource->GetPitch();
+  const uint32_t width =
+      pdfium::base::checked_cast<uint32_t>(pSource->GetWidth());
+  const uint32_t height =
+      pdfium::base::checked_cast<uint32_t>(pSource->GetHeight());
   FX_SAFE_UINT32 safe_buf_len = width;
   safe_buf_len *= height;
   safe_buf_len *= nComponents;

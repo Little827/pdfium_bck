@@ -72,10 +72,10 @@ bool CFX_ImageStretcher::Start() {
     int b1;
     std::tie(a1, r1, g1, b1) = ArgbDecode(m_pSource->GetPaletteArgb(1));
     for (int i = 0; i < 256; ++i) {
-      int a = a0 + (a1 - a0) * i / 255;
-      int r = r0 + (r1 - r0) * i / 255;
-      int g = g0 + (g1 - g0) * i / 255;
-      int b = b0 + (b1 - b0) * i / 255;
+      const int a = a0 + (a1 - a0) * i / 255;
+      const int r = r0 + (r1 - r0) * i / 255;
+      const int g = g0 + (g1 - g0) * i / 255;
+      const int b = b0 + (b1 - b0) * i / 255;
       pal[i] = ArgbEncode(a, r, g, b);
     }
     if (!m_pDest->SetInfo(m_ClipRect.Width(), m_ClipRect.Height(), m_DestFormat,

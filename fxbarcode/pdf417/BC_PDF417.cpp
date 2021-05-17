@@ -369,19 +369,19 @@ bool CBC_PDF417::GenerateBarcodeLogic(WideStringView msg,
   if (!high_level.has_value())
     return false;
 
-  size_t sourceCodeWords = high_level.value().GetLength();
+  const size_t sourceCodeWords = high_level.value().GetLength();
   std::vector<int32_t> dimensions =
       determineDimensions(sourceCodeWords, errorCorrectionCodeWords);
   if (dimensions.size() != 2)
     return false;
-  int32_t cols = dimensions[0];
-  int32_t rows = dimensions[1];
-  int32_t pad = getNumberOfPadCodewords(sourceCodeWords,
-                                        errorCorrectionCodeWords, cols, rows);
+  const int32_t cols = dimensions[0];
+  const int32_t rows = dimensions[1];
+  const int32_t pad = getNumberOfPadCodewords(
+      sourceCodeWords, errorCorrectionCodeWords, cols, rows);
   if (sourceCodeWords + errorCorrectionCodeWords + 1 > 929)
     return false;
 
-  int32_t n = sourceCodeWords + pad + 1;
+  const int32_t n = sourceCodeWords + pad + 1;
   WideString sb;
   sb += (wchar_t)n;
   sb += high_level.value();
@@ -423,7 +423,7 @@ int32_t CBC_PDF417::getNumberOfPadCodewords(int32_t m,
                                             int32_t k,
                                             int32_t c,
                                             int32_t r) {
-  int32_t n = c * r - k;
+  const int32_t n = c * r - k;
   return n > m + 1 ? n - m - 1 : 0;
 }
 
@@ -434,7 +434,7 @@ void CBC_PDF417::encodeChar(int32_t pattern,
   bool last = ((pattern & map) != 0);
   size_t width = 0;
   for (int32_t i = 0; i < len; i++) {
-    bool black = ((pattern & map) != 0);
+    const bool black = ((pattern & map) != 0);
     if (last == black) {
       width++;
     } else {
@@ -455,7 +455,7 @@ void CBC_PDF417::encodeLowLevel(WideString fullCodewords,
   int32_t idx = 0;
   for (int32_t y = 0; y < r; y++) {
     CBC_BarcodeRow* logicRow = logic->getRow(y);
-    int32_t cluster = y % 3;
+    const int32_t cluster = y % 3;
     encodeChar(START_PATTERN, 17, logicRow);
     int32_t left;
     int32_t right;
@@ -506,8 +506,8 @@ std::vector<int32_t> CBC_PDF417::determineDimensions(
     dimensions[1] = rows;
   }
   if (dimensions.empty()) {
-    int32_t rows = calculateNumberOfRows(sourceCodeWords,
-                                         errorCorrectionCodeWords, m_maxCols);
+    const int32_t rows = calculateNumberOfRows(
+        sourceCodeWords, errorCorrectionCodeWords, m_maxCols);
     if (rows < m_minRows) {
       dimensions.resize(2);
       dimensions[0] = m_maxCols;

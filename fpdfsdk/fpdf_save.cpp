@@ -68,7 +68,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   if (!pArray)
     return false;
 
-  int size = pArray->size();
+  const int size = pArray->size();
   int iFormIndex = -1;
   int iDataSetsIndex = -1;
   for (int i = 0; i < size - 1; i++) {
@@ -123,7 +123,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
       } else {
         CPDF_Stream* pData = pPDFDocument->NewIndirect<CPDF_Stream>();
         pData->InitStreamFromFile(pFileWrite, std::move(pDataDict));
-        int iLast = pArray->size() - 2;
+        const int iLast = pArray->size() - 2;
         pArray->InsertNewAt<CPDF_String>(iLast, "datasets", false);
         pArray->InsertNewAt<CPDF_Reference>(iLast + 1, pPDFDocument,
                                             pData->GetObjNum());
@@ -143,7 +143,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
       } else {
         CPDF_Stream* pData = pPDFDocument->NewIndirect<CPDF_Stream>();
         pData->InitStreamFromFile(pFileWrite, std::move(pDataDict));
-        int iLast = pArray->size() - 2;
+        const int iLast = pArray->size() - 2;
         pArray->InsertNewAt<CPDF_String>(iLast, "form", false);
         pArray->InsertNewAt<CPDF_Reference>(iLast + 1, pPDFDocument,
                                             pData->GetObjNum());
@@ -184,7 +184,7 @@ bool DoDocSave(FPDF_DOCUMENT document,
     fileMaker.RemoveSecurity();
   }
 
-  bool bRet = fileMaker.Create(flags);
+  const bool bRet = fileMaker.Create(flags);
 
 #ifdef PDF_ENABLE_XFA
   if (pContext)

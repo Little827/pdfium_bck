@@ -30,7 +30,7 @@ void CPWL_Caret::DrawThisAppearance(CFX_RenderDevice* pDevice,
   CFX_FloatRect rcClip = GetClipRect();
   CFX_PathData path;
 
-  float fCaretX = rcRect.left + m_fWidth * 0.5f;
+  const float fCaretX = rcRect.left + m_fWidth * 0.5f;
   float fCaretTop = rcRect.top;
   float fCaretBottom = rcRect.bottom;
   if (!rcClip.IsEmpty()) {

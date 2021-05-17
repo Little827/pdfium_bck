@@ -86,7 +86,7 @@ int32_t CXFA_FFDocView::StartLayout() {
   m_pDoc->GetXFADoc()->DoProtoMerge();
   m_pDoc->GetXFADoc()->DoDataMerge();
 
-  int32_t iStatus = GetLayoutProcessor()->StartLayout(false);
+  const int32_t iStatus = GetLayoutProcessor()->StartLayout(false);
   if (iStatus < 0)
     return iStatus;
 
@@ -105,7 +105,7 @@ int32_t CXFA_FFDocView::StartLayout() {
 }
 
 int32_t CXFA_FFDocView::DoLayout() {
-  int32_t iStatus = GetLayoutProcessor()->DoLayout();
+  const int32_t iStatus = GetLayoutProcessor()->DoLayout();
   if (iStatus != 100)
     return iStatus;
 
@@ -158,7 +158,7 @@ void CXFA_FFDocView::ShowNullTestMsg() {
   CXFA_FFApp* pApp = m_pDoc->GetApp();
   IXFA_AppProvider* pAppProvider = pApp->GetAppProvider();
   if (pAppProvider && iCount) {
-    int32_t iRemain = iCount > 7 ? iCount - 7 : 0;
+    const int32_t iRemain = iCount > 7 ? iCount - 7 : 0;
     iCount -= iRemain;
     WideString wsMsg;
     for (int32_t i = 0; i < iCount; i++)
@@ -489,7 +489,7 @@ void CXFA_FFDocView::RunSubformIndexChange() {
   while (!m_IndexChangedSubforms.empty()) {
     CXFA_Node* pSubformNode = m_IndexChangedSubforms.front();
     m_IndexChangedSubforms.pop_front();
-    bool bInserted = seen.insert(pSubformNode).second;
+    const bool bInserted = seen.insert(pSubformNode).second;
     if (!bInserted || !pSubformNode->IsWidgetReady())
       continue;
 
@@ -543,7 +543,7 @@ size_t CXFA_FFDocView::RunCalculateRecursive(size_t index) {
     CXFA_Node* node = m_CalculateNodes[index];
 
     AddCalculateNodeNotify(node);
-    size_t recurse = node->JSObject()->GetCalcRecursionCount() + 1;
+    const size_t recurse = node->JSObject()->GetCalcRecursionCount() + 1;
     node->JSObject()->SetCalcRecursionCount(recurse);
     if (recurse > 11)
       break;
@@ -655,7 +655,8 @@ void CXFA_FFDocView::RunBindItems() {
         wsValueRef.IsEmpty() || wsValueRef.EqualsASCII("$");
     WideString wsValue;
     WideString wsLabel;
-    uint32_t uValueHash = FX_HashCode_GetW(wsValueRef.AsStringView(), false);
+    const uint32_t uValueHash =
+        FX_HashCode_GetW(wsValueRef.AsStringView(), false);
     for (auto& refObject : maybeRS.value().objects) {
       CXFA_Node* refNode = refObject->AsNode();
       if (!refNode)

@@ -72,7 +72,7 @@ FX_Number::FX_Number(ByteStringView strc)
     uValue = 0;
 
   // Switch back to the int space so we can flip to a negative if we need.
-  int32_t value = static_cast<int32_t>(uValue);
+  const int32_t value = static_cast<int32_t>(uValue);
   if (bNegative) {
     // |value| is usually positive, except in the corner case of "-2147483648",
     // where |uValue| is 2147483648. When it gets casted to an int, |value|

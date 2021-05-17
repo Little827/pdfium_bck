@@ -236,8 +236,8 @@ FPDFImageObj_GetRenderedBitmap(FPDF_DOCUMENT document,
 
   // Create |result_bitmap|.
   const CFX_Matrix& image_matrix = image->matrix();
-  int output_width = image_matrix.a;
-  int output_height = image_matrix.d;
+  const int output_width = image_matrix.a;
+  const int output_height = image_matrix.d;
   auto result_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
   if (!result_bitmap->Create(output_width, output_height, FXDIB_Format::kArgb))
     return nullptr;

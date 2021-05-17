@@ -128,7 +128,7 @@ CFX_Win32FontInfo::~CFX_Win32FontInfo() {
 bool CFX_Win32FontInfo::IsOpenTypeFromDiv(const LOGFONTA* plf) {
   HFONT hFont = CreateFontIndirectA(plf);
   bool ret = false;
-  uint32_t font_size = GetFontData(hFont, 0, {});
+  const uint32_t font_size = GetFontData(hFont, 0, {});
   if (font_size != GDI_ERROR && font_size >= sizeof(uint32_t)) {
     uint32_t lVersion = 0;
     GetFontData(hFont, 0, {(uint8_t*)(&lVersion), sizeof(uint32_t)});
@@ -149,7 +149,7 @@ bool CFX_Win32FontInfo::IsOpenTypeFromDiv(const LOGFONTA* plf) {
 bool CFX_Win32FontInfo::IsSupportFontFormDiv(const LOGFONTA* plf) {
   HFONT hFont = CreateFontIndirectA(plf);
   bool ret = false;
-  uint32_t font_size = GetFontData(hFont, 0, {});
+  const uint32_t font_size = GetFontData(hFont, 0, {});
   if (font_size != GDI_ERROR && font_size >= sizeof(uint32_t)) {
     uint32_t lVersion = 0;
     GetFontData(hFont, 0, {(uint8_t*)(&lVersion), sizeof(lVersion)});
@@ -353,7 +353,7 @@ void* CFX_Win32FontInfo::MapFont(int weight,
 
     const unsigned short* pName = reinterpret_cast<const unsigned short*>(
         g_VariantNames[i].m_pVariantName);
-    size_t len = WideString::WStringLength(pName);
+    const size_t len = WideString::WStringLength(pName);
     WideString wsName = WideString::FromUTF16LE(pName, len);
     if (wsFace == wsName)
       return hFont;
@@ -395,7 +395,8 @@ uint32_t CFX_Win32FontInfo::GetFontData(void* hFont,
                                         pdfium::span<uint8_t> buffer) {
   HFONT hOldFont = (HFONT)::SelectObject(m_hDC, (HFONT)hFont);
   table = FXDWORD_GET_MSBFIRST(reinterpret_cast<uint8_t*>(&table));
-  uint32_t size = ::GetFontData(m_hDC, table, 0, buffer.data(), buffer.size());
+  const uint32_t size =
+      ::GetFontData(m_hDC, table, 0, buffer.data(), buffer.size());
   ::SelectObject(m_hDC, hOldFont);
   if (size == GDI_ERROR) {
     return 0;
@@ -406,7 +407,7 @@ uint32_t CFX_Win32FontInfo::GetFontData(void* hFont,
 bool CFX_Win32FontInfo::GetFaceName(void* hFont, ByteString* name) {
   char facebuf[100];
   HFONT hOldFont = (HFONT)::SelectObject(m_hDC, (HFONT)hFont);
-  int ret = ::GetTextFaceA(m_hDC, 100, facebuf);
+  const int ret = ::GetTextFaceA(m_hDC, 100, facebuf);
   ::SelectObject(m_hDC, hOldFont);
   if (ret == 0) {
     return false;

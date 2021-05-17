@@ -100,7 +100,7 @@ void CXFA_FFCheckButton::UpdateWidgetProperty() {
 bool CXFA_FFCheckButton::PerformLayout() {
   CXFA_FFWidget::PerformLayout();
 
-  float fCheckSize = m_pNode->GetCheckButtonSize();
+  const float fCheckSize = m_pNode->GetCheckButtonSize();
   CXFA_Margin* margin = m_pNode->GetMarginIfExists();
   CFX_RectF rtWidget = GetRectWithoutRotate();
   XFA_RectWithoutMargin(&rtWidget, margin);
@@ -212,8 +212,8 @@ void CXFA_FFCheckButton::AddUIMargin(XFA_AttributeValue iCapPlacement) {
   CFX_RectF rtUIMargin = m_pNode->GetUIMargin();
   m_UIRect.top -= rtUIMargin.top / 2 - rtUIMargin.height / 2;
 
-  float fLeftAddRight = rtUIMargin.left + rtUIMargin.width;
-  float fTopAddBottom = rtUIMargin.top + rtUIMargin.height;
+  const float fLeftAddRight = rtUIMargin.left + rtUIMargin.width;
+  const float fTopAddBottom = rtUIMargin.top + rtUIMargin.height;
   if (m_UIRect.width < fLeftAddRight) {
     if (iCapPlacement == XFA_AttributeValue::Right ||
         iCapPlacement == XFA_AttributeValue::Left) {
@@ -265,7 +265,7 @@ bool CXFA_FFCheckButton::OnLButtonUp(uint32_t dwFlags,
 }
 
 XFA_CHECKSTATE CXFA_FFCheckButton::FWLState2XFAState() {
-  uint32_t dwState = GetNormalWidget()->GetStates();
+  const uint32_t dwState = GetNormalWidget()->GetStates();
   if (dwState & FWL_STATE_CKB_Checked)
     return XFA_CHECKSTATE_On;
   if (dwState & FWL_STATE_CKB_Neutral)

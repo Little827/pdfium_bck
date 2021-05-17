@@ -386,8 +386,8 @@ void CXFA_FFNotify::OnValueChanged(CXFA_Node* pSender,
     return;
   }
 
-  XFA_Element eType = pParentNode->GetElementType();
-  bool bIsContainerNode = pParentNode->IsContainerNode();
+  const XFA_Element eType = pParentNode->GetElementType();
+  const bool bIsContainerNode = pParentNode->IsContainerNode();
   bool bUpdateProperty = false;
   pDocView->SetChangeMark();
   switch (eType) {
@@ -480,8 +480,9 @@ void CXFA_FFNotify::OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
     return;
 
   CXFA_FFPageView* pNewPageView = pDocView->GetPageView(iPageIdx);
-  uint32_t dwFilter = XFA_WidgetStatus_Visible | XFA_WidgetStatus_Viewable |
-                      XFA_WidgetStatus_Printable;
+  const uint32_t dwFilter = XFA_WidgetStatus_Visible |
+                            XFA_WidgetStatus_Viewable |
+                            XFA_WidgetStatus_Printable;
   pWidget->ModifyStatus(dwStatus, dwFilter);
   CXFA_FFPageView* pPrePageView = pWidget->GetPageView();
   if (pPrePageView != pNewPageView ||

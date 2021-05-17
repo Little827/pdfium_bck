@@ -166,8 +166,8 @@ uint8_t* CBC_OnedCode39Writer::EncodeImpl(const ByteString& contents,
     return nullptr;
 
   int8_t widths[9] = {0};
-  int32_t wideStrideNum = 3;
-  int32_t narrStrideNum = 9 - wideStrideNum;
+  const int32_t wideStrideNum = 3;
+  const int32_t narrStrideNum = 9 - wideStrideNum;
   ByteString encodedContents = contents;
   if (m_bCalcChecksum)
     encodedContents += checksum;

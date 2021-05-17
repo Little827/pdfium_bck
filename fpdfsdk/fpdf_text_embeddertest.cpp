@@ -65,7 +65,7 @@ TEST_F(FPDFTextEmbedderTest, Text) {
   EXPECT_EQ(0, buffer[1]);
 
   // Check includes the terminating NUL that is provided.
-  int num_chars = FPDFText_GetText(textpage, 0, 128, buffer);
+  const int num_chars = FPDFText_GetText(textpage, 0, 128, buffer);
   ASSERT_EQ(kHelloGoodbyeTextSize, num_chars);
   EXPECT_TRUE(
       check_unsigned_shorts(kHelloGoodbyeText, buffer, kHelloGoodbyeTextSize));
@@ -777,7 +777,7 @@ TEST_F(FPDFTextEmbedderTest, AnnotLinks) {
   ASSERT_TRUE(page);
 
   // Get link count via checking annotation subtype
-  int annot_count = FPDFPage_GetAnnotCount(page);
+  const int annot_count = FPDFPage_GetAnnotCount(page);
   ASSERT_EQ(9, annot_count);
   int annot_subtype_link_count = 0;
   for (int i = 0; i < annot_count; ++i) {
@@ -809,7 +809,7 @@ TEST_F(FPDFTextEmbedderTest, AnnotLinks) {
       EXPECT_NEAR(196.0, link_rect.right, 0.001);
       EXPECT_NEAR(529.0, link_rect.bottom, 0.001);
     } else if (start_pos == 4) {  // this link has quad points
-      int quad_point_count = FPDFLink_CountQuadPoints(link_annot);
+      const int quad_point_count = FPDFLink_CountQuadPoints(link_annot);
       EXPECT_EQ(1, quad_point_count);
       FS_QUADPOINTSF quad_points;
       EXPECT_TRUE(FPDFLink_GetQuadPoints(link_annot, 0, &quad_points));
@@ -848,7 +848,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontSize) {
                                         12, 12, 12, 1,  1,  16, 16, 16, 16, 16,
                                         16, 16, 16, 16, 16, 16, 16, 16, 16, 16};
 
-  int count = FPDFText_CountChars(textpage);
+  const int count = FPDFText_CountChars(textpage);
   ASSERT_EQ(pdfium::size(kExpectedFontsSizes), static_cast<size_t>(count));
   for (int i = 0; i < count; ++i)
     EXPECT_EQ(kExpectedFontsSizes[i], FPDFText_GetFontSize(textpage, i)) << i;
@@ -865,7 +865,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   FPDF_TEXTPAGE textpage = FPDFText_LoadPage(page);
   ASSERT_TRUE(textpage);
   std::vector<char> font_name;
-  size_t num_chars1 = strlen("Hello, world!");
+  const size_t num_chars1 = strlen("Hello, world!");
   const char kExpectedFontName1[] = "Times-Roman";
 
   for (size_t i = 0; i < num_chars1; i++) {
@@ -901,7 +901,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, num_chars1 + 1, font_name.data(),
                                      font_name.size(), nullptr));
 
-  size_t num_chars2 = strlen("Goodbye, world!");
+  const size_t num_chars2 = strlen("Goodbye, world!");
   const char kExpectedFontName2[] = "Helvetica";
   for (size_t i = num_chars1 + 2; i < num_chars1 + num_chars2 + 2; i++) {
     int flags = -1;
@@ -1130,7 +1130,7 @@ TEST_F(FPDFTextEmbedderTest, CountRects) {
   // |num_chars| check includes the terminating NUL that is provided.
   {
     unsigned short buffer[128];
-    int num_chars = FPDFText_GetText(textpage, 0, 128, buffer);
+    const int num_chars = FPDFText_GetText(textpage, 0, 128, buffer);
     ASSERT_EQ(kHelloGoodbyeTextSize, num_chars);
     EXPECT_TRUE(check_unsigned_shorts(kHelloGoodbyeText, buffer,
                                       kHelloGoodbyeTextSize));
@@ -1152,7 +1152,7 @@ TEST_F(FPDFTextEmbedderTest, CountRects) {
 
     // When |start| is 0, Having |kGoodbyeWorldStart| char count does not reach
     // "goodbye world".
-    int expected_value = start ? 2 : 1;
+    const int expected_value = start ? 2 : 1;
     EXPECT_EQ(expected_value,
               FPDFText_CountRects(textpage, start, kGoodbyeWorldStart));
 
@@ -1269,12 +1269,12 @@ TEST_F(FPDFTextEmbedderTest, CroppedText) {
 
       unsigned short buffer[128];
       memset(buffer, 0xbd, sizeof(buffer));
-      int num_chars = FPDFText_GetText(textpage.get(), 0, 128, buffer);
+      const int num_chars = FPDFText_GetText(textpage.get(), 0, 128, buffer);
       ASSERT_EQ(kHelloGoodbyeTextSize, num_chars);
       EXPECT_TRUE(check_unsigned_shorts(kHelloGoodbyeText, buffer,
                                         kHelloGoodbyeTextSize));
 
-      int expected_char_count = strlen(kExpectedText[i]);
+      const int expected_char_count = strlen(kExpectedText[i]);
       ASSERT_EQ(expected_char_count,
                 FPDFText_GetBoundedText(textpage.get(), box.left, box.top,
                                         box.right, box.bottom, nullptr, 0));
@@ -1306,7 +1306,7 @@ TEST_F(FPDFTextEmbedderTest, Bug_1139) {
   // There is an extra control character at the beginning of the string, but it
   // should not appear in the output nor prevent extracting the text.
   unsigned short buffer[128];
-  int num_chars = FPDFText_GetText(text_page, 0, 128, buffer);
+  const int num_chars = FPDFText_GetText(text_page, 0, 128, buffer);
   ASSERT_EQ(kHelloGoodbyeTextSize, num_chars);
   EXPECT_TRUE(
       check_unsigned_shorts(kHelloGoodbyeText, buffer, kHelloGoodbyeTextSize));

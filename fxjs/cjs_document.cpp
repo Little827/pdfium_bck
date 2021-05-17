@@ -192,8 +192,8 @@ CJS_Result CJS_Document::set_page_num(CJS_Runtime* pRuntime,
   if (!m_pFormFillEnv)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  int iPageCount = m_pFormFillEnv->GetPageCount();
-  int iPageNum = pRuntime->ToInt32(vp);
+  const int iPageCount = m_pFormFillEnv->GetPageCount();
+  const int iPageNum = pRuntime->ToInt32(vp);
   if (iPageNum >= 0 && iPageNum < iPageCount)
     m_pFormFillEnv->JS_docgotoPage(iPageNum);
   else if (iPageNum >= iPageCount)
@@ -276,7 +276,7 @@ CJS_Result CJS_Document::getNthFieldName(
   if (!m_pFormFillEnv)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  int nIndex = pRuntime->ToInt32(params[0]);
+  const int nIndex = pRuntime->ToInt32(params[0]);
   if (nIndex < 0)
     return CJS_Result::Failure(JSMessage::kValueError);
 
@@ -568,7 +568,7 @@ CJS_Result CJS_Document::syncAnnotScan(
 CJS_Result CJS_Document::submitForm(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  size_t nSize = params.size();
+  const size_t nSize = params.size();
   if (nSize < 1)
     return CJS_Result::Failure(JSMessage::kParamError);
   if (!m_pFormFillEnv)
@@ -1015,7 +1015,7 @@ CJS_Result CJS_Document::getAnnot(
   if (!m_pFormFillEnv)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  int nPageNo = pRuntime->ToInt32(params[0]);
+  const int nPageNo = pRuntime->ToInt32(params[0]);
   WideString swAnnotName = pRuntime->ToWideString(params[1]);
   CPDFSDK_PageView* pPageView = m_pFormFillEnv->GetPageViewAtIndex(nPageNo);
   if (!pPageView)
@@ -1056,7 +1056,7 @@ CJS_Result CJS_Document::getAnnots(
   // TODO(tonikitoo): Add support supported parameters as per
   // the PDF spec.
 
-  int nPageNo = m_pFormFillEnv->GetPageCount();
+  const int nPageNo = m_pFormFillEnv->GetPageCount();
   v8::Local<v8::Array> annots = pRuntime->NewArray();
   for (int i = 0; i < nPageNo; ++i) {
     CPDFSDK_PageView* pPageView = m_pFormFillEnv->GetPageViewAtIndex(i);
@@ -1242,9 +1242,9 @@ CJS_Result CJS_Document::getPageNthWord(
 
   // TODO(tsepez): check maximum allowable params.
 
-  int nPageNo = params.size() > 0 ? pRuntime->ToInt32(params[0]) : 0;
-  int nWordNo = params.size() > 1 ? pRuntime->ToInt32(params[1]) : 0;
-  bool bStrip = params.size() > 2 ? pRuntime->ToBoolean(params[2]) : true;
+  const int nPageNo = params.size() > 0 ? pRuntime->ToInt32(params[0]) : 0;
+  const int nWordNo = params.size() > 1 ? pRuntime->ToInt32(params[1]) : 0;
+  const bool bStrip = params.size() > 2 ? pRuntime->ToBoolean(params[2]) : true;
 
   CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
   if (nPageNo < 0 || nPageNo >= pDocument->GetPageCount())
@@ -1263,7 +1263,7 @@ CJS_Result CJS_Document::getPageNthWord(
   for (auto& pPageObj : *page) {
     if (pPageObj->IsText()) {
       CPDF_TextObject* pTextObj = pPageObj->AsText();
-      int nObjWords = pTextObj->CountWords();
+      const int nObjWords = pTextObj->CountWords();
       if (nWords + nObjWords >= nWordNo) {
         swRet = pTextObj->GetWordString(nWordNo - nWords);
         break;
@@ -1300,7 +1300,7 @@ CJS_Result CJS_Document::getPageNumWords(
   if (!m_pFormFillEnv->HasPermissions(kExtractForAccessibility))
     return CJS_Result::Failure(JSMessage::kPermissionError);
 
-  int nPageNo = params.size() > 0 ? pRuntime->ToInt32(params[0]) : 0;
+  const int nPageNo = params.size() > 0 ? pRuntime->ToInt32(params[0]) : 0;
   CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
   if (nPageNo < 0 || nPageNo >= pDocument->GetPageCount())
     return CJS_Result::Failure(JSMessage::kValueError);

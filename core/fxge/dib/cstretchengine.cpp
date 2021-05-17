@@ -60,7 +60,7 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
   if (options.bNoSmoothing || fabs(static_cast<float>(scale)) < 1.0f) {
     for (int dest_pixel = dest_min; dest_pixel < dest_max; ++dest_pixel) {
       PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
-      double src_pos = dest_pixel * scale + scale / 2 + base;
+      const double src_pos = dest_pixel * scale + scale / 2 + base;
       if (bilinear) {
         pixel_weights.m_SrcStart =
             static_cast<int>(floor(static_cast<float>(src_pos) - 1.0f / 2));
@@ -78,7 +78,8 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
           pixel_weights.m_Weights[0] = 65536 - pixel_weights.m_Weights[1];
         }
       } else {
-        int pixel_pos = static_cast<int>(floor(static_cast<float>(src_pos)));
+        const int pixel_pos =
+            static_cast<int>(floor(static_cast<float>(src_pos)));
         pixel_weights.m_SrcStart = std::max(pixel_pos, src_min);
         pixel_weights.m_SrcEnd = std::min(pixel_pos, src_max - 1);
         pixel_weights.m_Weights[0] = 65536;
@@ -89,8 +90,8 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
 
   for (int dest_pixel = dest_min; dest_pixel < dest_max; ++dest_pixel) {
     PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
-    double src_start = dest_pixel * scale + base;
-    double src_end = src_start + scale;
+    const double src_start = dest_pixel * scale + base;
+    const double src_end = src_start + scale;
     int start_i = floor(std::min(src_start, src_end));
     int end_i = floor(std::max(src_start, src_end));
     start_i = std::max(start_i, src_min);
@@ -108,14 +109,16 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
       double dest_end = (j + 1 - base) / scale;
       if (dest_start > dest_end)
         std::swap(dest_start, dest_end);
-      double area_start = std::max(dest_start, static_cast<double>(dest_pixel));
-      double area_end = std::min(dest_end, static_cast<double>(dest_pixel + 1));
-      double weight = std::max(0.0, area_end - area_start);
+      const double area_start =
+          std::max(dest_start, static_cast<double>(dest_pixel));
+      const double area_end =
+          std::min(dest_end, static_cast<double>(dest_pixel + 1));
+      const double weight = std::max(0.0, area_end - area_start);
       if (weight == 0 && j == end_i) {
         --pixel_weights.m_SrcEnd;
         break;
       }
-      size_t idx = j - start_i;
+      const size_t idx = j - start_i;
       if (idx >= GetPixelWeightSize())
         return false;
 
@@ -137,7 +140,7 @@ int* CStretchEngine::CWeightTable::GetValueFromPixelWeight(PixelWeight* pWeight,
   if (index < pWeight->m_SrcStart)
     return nullptr;
 
-  size_t idx = index - pWeight->m_SrcStart;
+  const size_t idx = index - pWeight->m_SrcStart;
   return idx < GetPixelWeightSize() ? &pWeight->m_Weights[idx] : nullptr;
 }
 
@@ -185,10 +188,10 @@ CStretchEngine::CStretchEngine(ScanlineComposerIface* pDestBitmap,
       m_ResampleOptions = options;
     }
   }
-  double scale_x = static_cast<float>(m_SrcWidth) / m_DestWidth;
-  double scale_y = static_cast<float>(m_SrcHeight) / m_DestHeight;
-  double base_x = m_DestWidth > 0 ? 0.0f : m_DestWidth;
-  double base_y = m_DestHeight > 0 ? 0.0f : m_DestHeight;
+  const double scale_x = static_cast<float>(m_SrcWidth) / m_DestWidth;
+  const double scale_y = static_cast<float>(m_SrcHeight) / m_DestHeight;
+  const double base_x = m_DestWidth > 0 ? 0.0f : m_DestWidth;
+  const double base_y = m_DestHeight > 0 ? 0.0f : m_DestHeight;
   double src_left = scale_x * (clip_rect.left + base_x);
   double src_right = scale_x * (clip_rect.right + base_x);
   double src_top = scale_y * (clip_rect.top + base_y);
@@ -252,9 +255,9 @@ bool CStretchEngine::StartStretchHorz() {
     m_ExtraAlphaBuf.resize(m_SrcClip.Height(), m_ExtraMaskPitch);
     m_DestMaskScanline.resize(m_ExtraMaskPitch);
   }
-  bool ret = m_WeightTable.Calc(m_DestWidth, m_DestClip.left, m_DestClip.right,
-                                m_SrcWidth, m_SrcClip.left, m_SrcClip.right,
-                                m_ResampleOptions);
+  const bool ret = m_WeightTable.Calc(
+      m_DestWidth, m_DestClip.left, m_DestClip.right, m_SrcWidth,
+      m_SrcClip.left, m_SrcClip.right, m_ResampleOptions);
   if (!ret)
     return false;
 
@@ -269,7 +272,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
   if (m_pSource->SkipToScanline(m_CurRow, pPause))
     return true;
 
-  int Bpp = m_DestBpp / 8;
+  const int Bpp = m_DestBpp / 8;
   static const int kStrechPauseRows = 10;
   int rows_to_go = kStrechPauseRows;
   for (; m_CurRow < m_SrcClip.bottom; ++m_CurRow) {
@@ -302,7 +305,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             if (src_scan[j / 8] & (1 << (7 - j % 8)))
               dest_a += pixel_weight * 255;
           }
@@ -319,7 +322,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             dest_a += pixel_weight * src_scan[j];
           }
           *dest_scan++ = static_cast<uint8_t>(dest_a >> 16);
@@ -357,7 +360,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             unsigned long argb = m_pSrcPalette[src_scan[j]];
             if (m_DestFormat == FXDIB_Format::kRgb) {
               dest_r += pixel_weight * static_cast<uint8_t>(argb >> 16);
@@ -389,7 +392,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
 
             int pixel_weight = *pWeight;
             pixel_weight = pixel_weight * src_scan_mask[j] / 255;
-            unsigned long argb = m_pSrcPalette[src_scan[j]];
+            const unsigned long argb = m_pSrcPalette[src_scan[j]];
             dest_b += pixel_weight * static_cast<uint8_t>(argb >> 24);
             dest_g += pixel_weight * static_cast<uint8_t>(argb >> 16);
             dest_r += pixel_weight * static_cast<uint8_t>(argb >> 8);
@@ -413,7 +416,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             const uint8_t* src_pixel = src_scan + j * Bpp;
             dest_b += pixel_weight * (*src_pixel++);
             dest_g += pixel_weight * (*src_pixel++);
@@ -496,7 +499,7 @@ void CStretchEngine::StretchVert() {
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             dest_a +=
                 pixel_weight * src_scan[(j - m_SrcClip.top) * m_InterPitch];
           }
@@ -518,7 +521,7 @@ void CStretchEngine::StretchVert() {
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             dest_k +=
                 pixel_weight * src_scan[(j - m_SrcClip.top) * m_InterPitch];
             dest_a += pixel_weight *
@@ -543,7 +546,7 @@ void CStretchEngine::StretchVert() {
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             const uint8_t* src_pixel =
                 src_scan + (j - m_SrcClip.top) * m_InterPitch;
             dest_b += pixel_weight * (*src_pixel++);
@@ -574,7 +577,7 @@ void CStretchEngine::StretchVert() {
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
+            const int pixel_weight = *pWeight;
             const uint8_t* src_pixel =
                 src_scan + (j - m_SrcClip.top) * m_InterPitch;
             int mask_v = 255;
@@ -589,9 +592,9 @@ void CStretchEngine::StretchVert() {
               dest_a += pixel_weight * mask_v;
           }
           if (dest_a) {
-            int r = static_cast<uint32_t>(dest_r) * 255 / dest_a;
-            int g = static_cast<uint32_t>(dest_g) * 255 / dest_a;
-            int b = static_cast<uint32_t>(dest_b) * 255 / dest_a;
+            const int r = static_cast<uint32_t>(dest_r) * 255 / dest_a;
+            const int g = static_cast<uint32_t>(dest_g) * 255 / dest_a;
+            const int b = static_cast<uint32_t>(dest_b) * 255 / dest_a;
             dest_scan[0] = pdfium::clamp(b, 0, 255);
             dest_scan[1] = pdfium::clamp(g, 0, 255);
             dest_scan[2] = pdfium::clamp(r, 0, 255);

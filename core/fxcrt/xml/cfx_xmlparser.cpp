@@ -65,7 +65,7 @@ CFX_XMLParser::CFX_XMLParser(const RetainPtr<IFX_SeekableReadStream>& pStream) {
   DCHECK(pStream);
 
   auto proxy = pdfium::MakeRetain<CFX_SeekableStreamProxy>(pStream);
-  uint16_t wCodePage = proxy->GetCodePage();
+  const uint16_t wCodePage = proxy->GetCodePage();
   if (wCodePage != FX_CODEPAGE_UTF16LE && wCodePage != FX_CODEPAGE_UTF16BE &&
       wCodePage != FX_CODEPAGE_UTF8) {
     proxy->SetCodePage(FX_CODEPAGE_UTF8);
@@ -115,7 +115,8 @@ bool CFX_XMLParser::DoSyntaxParse(CFX_XMLDocument* doc) {
       if (stream_->IsEOF())
         return true;
 
-      size_t buffer_chars = stream_->ReadBlock(buffer.data(), xml_plane_size_);
+      const size_t buffer_chars =
+          stream_->ReadBlock(buffer.data(), xml_plane_size_);
       if (buffer_chars == 0)
         return true;
 
@@ -480,7 +481,7 @@ void CFX_XMLParser::ProcessTextChar(wchar_t character) {
     current_text_.erase(current_text_.begin() + entity_start_,
                         current_text_.end());
 
-    int32_t iLen = csEntity.GetLength();
+    const int32_t iLen = csEntity.GetLength();
     if (iLen > 0) {
       if (csEntity[0] == L'#') {
         uint32_t ch = 0;

@@ -119,7 +119,7 @@ class FPDFEditEmbedderTest : public EmbedderTest {
     // 1.7 Table 5.19
     ASSERT_TRUE(font_desc->KeyExist("Flags"));
 
-    int font_flags = font_desc->GetIntegerFor("Flags");
+    const int font_flags = font_desc->GetIntegerFor("Flags");
     EXPECT_EQ(bold, FontStyleIsForceBold(font_flags));
     EXPECT_EQ(italic, FontStyleIsItalic(font_flags));
     EXPECT_TRUE(FontStyleIsNonSymbolic(font_flags));
@@ -170,17 +170,17 @@ class FPDFEditEmbedderTest : public EmbedderTest {
     int num_cids_checked = 0;
     int cur_cid = 0;
     for (size_t idx = 0; idx < widths_array->size(); idx++) {
-      int cid = widths_array->GetNumberAt(idx);
+      const int cid = widths_array->GetNumberAt(idx);
       EXPECT_GE(cid, cur_cid);
       ASSERT_FALSE(++idx == widths_array->size());
       const CPDF_Object* next = widths_array->GetObjectAt(idx);
       if (next->IsArray()) {
         // We are in the c [w1 w2 ...] case
         const CPDF_Array* arr = next->AsArray();
-        int cnt = static_cast<int>(arr->size());
+        const int cnt = static_cast<int>(arr->size());
         size_t inner_idx = 0;
         for (cur_cid = cid; cur_cid < cid + cnt; cur_cid++) {
-          int width = arr->GetNumberAt(inner_idx++);
+          const int width = arr->GetNumberAt(inner_idx++);
           EXPECT_EQ(width, typed_font->GetCharWidthF(cur_cid))
               << " at cid " << cur_cid;
         }
@@ -189,9 +189,9 @@ class FPDFEditEmbedderTest : public EmbedderTest {
       }
       // Otherwise, are in the c_first c_last w case.
       ASSERT_TRUE(next->IsNumber());
-      int last_cid = next->AsNumber()->GetInteger();
+      const int last_cid = next->AsNumber()->GetInteger();
       ASSERT_FALSE(++idx == widths_array->size());
-      int width = widths_array->GetNumberAt(idx);
+      const int width = widths_array->GetNumberAt(idx);
       for (cur_cid = cid; cur_cid <= last_cid; cur_cid++) {
         EXPECT_EQ(width, typed_font->GetCharWidthF(cur_cid))
             << " at cid " << cur_cid;
@@ -894,7 +894,7 @@ void CheckMarkCounts(FPDF_PAGE page,
                      size_t expected_square_count,
                      size_t expected_greater_than_ten_count,
                      size_t expected_bounds_count) {
-  int object_count = FPDFPage_CountObjects(page);
+  const int object_count = FPDFPage_CountObjects(page);
   ASSERT_EQ(expected_object_count, object_count);
 
   size_t prime_count = 0;
@@ -904,7 +904,7 @@ void CheckMarkCounts(FPDF_PAGE page,
   for (int i = 0; i < object_count; ++i) {
     FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
 
-    int mark_count = FPDFPageObj_CountMarks(page_object);
+    const int mark_count = FPDFPageObj_CountMarks(page_object);
     for (int j = 0; j < mark_count; ++j) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
@@ -920,7 +920,7 @@ void CheckMarkCounts(FPDF_PAGE page,
         prime_count++;
       } else if (name == L"Square") {
         square_count++;
-        int expected_square = start_from + i;
+        const int expected_square = start_from + i;
         EXPECT_EQ(1, FPDFPageObjMark_CountParams(mark));
 
         unsigned long get_param_key_return = 999u;
@@ -1035,7 +1035,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
   for (int i = 0; i < expected_object_count; ++i) {
     FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
 
-    int mark_count = FPDFPageObj_CountMarks(page_object);
+    const int mark_count = FPDFPageObj_CountMarks(page_object);
     for (int j = 0; j < mark_count; ++j) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
@@ -1121,7 +1121,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarks) {
   for (int i = 0; i < kExpectedObjectCount; ++i) {
     FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
 
-    int mark_count = FPDFPageObj_CountMarks(page_object);
+    const int mark_count = FPDFPageObj_CountMarks(page_object);
     for (int j = mark_count - 1; j >= 0; --j) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
@@ -1175,7 +1175,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkParam) {
   for (int i = 0; i < kExpectedObjectCount; ++i) {
     FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
 
-    int mark_count = FPDFPageObj_CountMarks(page_object);
+    const int mark_count = FPDFPageObj_CountMarks(page_object);
     for (int j = 0; j < mark_count; ++j) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
@@ -1217,7 +1217,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkParam) {
   for (int i = 0; i < kExpectedObjectCount; ++i) {
     FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(saved_page, i);
 
-    int mark_count = FPDFPageObj_CountMarks(page_object);
+    const int mark_count = FPDFPageObj_CountMarks(page_object);
     for (int j = 0; j < mark_count; ++j) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 

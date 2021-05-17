@@ -29,17 +29,17 @@ uint8_t BilinearInterpolate(const uint8_t* buf,
                             const CFX_ImageTransformer::BilinearData& data,
                             int bpp,
                             int c_offset) {
-  int i_resx = 255 - data.res_x;
-  int col_bpp_l = data.src_col_l * bpp;
-  int col_bpp_r = data.src_col_r * bpp;
+  const int i_resx = 255 - data.res_x;
+  const int col_bpp_l = data.src_col_l * bpp;
+  const int col_bpp_r = data.src_col_r * bpp;
   const uint8_t* buf_u = buf + data.row_offset_l + c_offset;
   const uint8_t* buf_d = buf + data.row_offset_r + c_offset;
   const uint8_t* src_pos0 = buf_u + col_bpp_l;
   const uint8_t* src_pos1 = buf_u + col_bpp_r;
   const uint8_t* src_pos2 = buf_d + col_bpp_l;
   const uint8_t* src_pos3 = buf_d + col_bpp_r;
-  uint8_t r_pos_0 = (*src_pos0 * i_resx + *src_pos1 * data.res_x) >> 8;
-  uint8_t r_pos_1 = (*src_pos2 * i_resx + *src_pos3 * data.res_x) >> 8;
+  const uint8_t r_pos_0 = (*src_pos0 * i_resx + *src_pos1 * data.res_x) >> 8;
+  const uint8_t r_pos_1 = (*src_pos2 * i_resx + *src_pos3 * data.res_x) >> 8;
   return (r_pos_0 * (255 - data.res_y) + r_pos_1 * data.res_y) >> 8;
 }
 
@@ -145,8 +145,8 @@ CFX_ImageTransformer::CFX_ImageTransformer(const RetainPtr<CFX_DIBBase>& pSrc,
   if (fabs(m_matrix.a) < fabs(m_matrix.b) / 20 &&
       fabs(m_matrix.d) < fabs(m_matrix.c) / 20 && fabs(m_matrix.a) < 0.5f &&
       fabs(m_matrix.d) < 0.5f) {
-    int dest_width = result_rect.Width();
-    int dest_height = result_rect.Height();
+    const int dest_width = result_rect.Width();
+    const int dest_height = result_rect.Height();
     result_clip.Offset(-result_rect.left, -result_rect.top);
     result_clip = FXDIB_SwapClipBox(result_clip, dest_width, dest_height,
                                     m_matrix.c > 0, m_matrix.b < 0);
@@ -160,8 +160,8 @@ CFX_ImageTransformer::CFX_ImageTransformer(const RetainPtr<CFX_DIBBase>& pSrc,
   if (fabs(m_matrix.b) < kFix16 && fabs(m_matrix.c) < kFix16) {
     int dest_width =
         static_cast<int>(m_matrix.a > 0 ? ceil(m_matrix.a) : floor(m_matrix.a));
-    int dest_height = static_cast<int>(m_matrix.d > 0 ? -ceil(m_matrix.d)
-                                                      : -floor(m_matrix.d));
+    const int dest_height = static_cast<int>(
+        m_matrix.d > 0 ? -ceil(m_matrix.d) : -floor(m_matrix.d));
     result_clip.Offset(-result_rect.left, -result_rect.top);
     m_Stretcher = std::make_unique<CFX_ImageStretcher>(
         &m_Storer, m_pSrc, dest_width, dest_height, result_clip,
@@ -271,7 +271,7 @@ void CFX_ImageTransformer::ContinueOther(PauseIndicatorIface* pPause) {
   if (m_Storer.GetBitmap()->IsMaskFormat()) {
     CalcAlpha(calc_data);
   } else {
-    int Bpp = m_Storer.GetBitmap()->GetBPP() / 8;
+    const int Bpp = m_Storer.GetBitmap()->GetBPP() / 8;
     if (Bpp == 1)
       CalcMono(calc_data);
     else
@@ -309,9 +309,9 @@ void CFX_ImageTransformer::CalcMono(const CalcData& calc_data) {
     for (size_t i = 0; i < pdfium::size(argb); i++)
       argb[i] = ArgbEncode(0xff, i, i, i);
   }
-  int destBpp = calc_data.bitmap->GetBPP() / 8;
+  const int destBpp = calc_data.bitmap->GetBPP() / 8;
   auto func = [&calc_data, &argb](const BilinearData& data, uint8_t* dest) {
-    uint8_t idx = BilinearInterpolate(calc_data.buf, data, 1, 0);
+    const uint8_t idx = BilinearInterpolate(calc_data.buf, data, 1, 0);
     *reinterpret_cast<uint32_t*>(dest) = argb[idx];
   };
   DoBilinearLoop(calc_data, m_result, m_StretchClip, destBpp, func);
@@ -324,9 +324,9 @@ void CFX_ImageTransformer::CalcColor(const CalcData& calc_data,
   const int destBpp = calc_data.bitmap->GetBPP() / 8;
   if (!m_Storer.GetBitmap()->IsAlphaFormat()) {
     auto func = [&calc_data, Bpp](const BilinearData& data, uint8_t* dest) {
-      uint8_t b = BilinearInterpolate(calc_data.buf, data, Bpp, 0);
-      uint8_t g = BilinearInterpolate(calc_data.buf, data, Bpp, 1);
-      uint8_t r = BilinearInterpolate(calc_data.buf, data, Bpp, 2);
+      const uint8_t b = BilinearInterpolate(calc_data.buf, data, Bpp, 0);
+      const uint8_t g = BilinearInterpolate(calc_data.buf, data, Bpp, 1);
+      const uint8_t r = BilinearInterpolate(calc_data.buf, data, Bpp, 2);
       *reinterpret_cast<uint32_t*>(dest) = ArgbEncode(kOpaqueAlpha, r, g, b);
     };
     DoBilinearLoop(calc_data, m_result, m_StretchClip, destBpp, func);
@@ -335,10 +335,10 @@ void CFX_ImageTransformer::CalcColor(const CalcData& calc_data,
 
   if (format == FXDIB_Format::kArgb) {
     auto func = [&calc_data, Bpp](const BilinearData& data, uint8_t* dest) {
-      uint8_t b = BilinearInterpolate(calc_data.buf, data, Bpp, 0);
-      uint8_t g = BilinearInterpolate(calc_data.buf, data, Bpp, 1);
-      uint8_t r = BilinearInterpolate(calc_data.buf, data, Bpp, 2);
-      uint8_t alpha = BilinearInterpolate(calc_data.buf, data, Bpp, 3);
+      const uint8_t b = BilinearInterpolate(calc_data.buf, data, Bpp, 0);
+      const uint8_t g = BilinearInterpolate(calc_data.buf, data, Bpp, 1);
+      const uint8_t r = BilinearInterpolate(calc_data.buf, data, Bpp, 2);
+      const uint8_t alpha = BilinearInterpolate(calc_data.buf, data, Bpp, 3);
       *reinterpret_cast<uint32_t*>(dest) = ArgbEncode(alpha, r, g, b);
     };
     DoBilinearLoop(calc_data, m_result, m_StretchClip, destBpp, func);
@@ -346,10 +346,10 @@ void CFX_ImageTransformer::CalcColor(const CalcData& calc_data,
   }
 
   auto func = [&calc_data, Bpp](const BilinearData& data, uint8_t* dest) {
-    uint8_t c = BilinearInterpolate(calc_data.buf, data, Bpp, 0);
-    uint8_t m = BilinearInterpolate(calc_data.buf, data, Bpp, 1);
-    uint8_t y = BilinearInterpolate(calc_data.buf, data, Bpp, 2);
-    uint8_t k = BilinearInterpolate(calc_data.buf, data, Bpp, 3);
+    const uint8_t c = BilinearInterpolate(calc_data.buf, data, Bpp, 0);
+    const uint8_t m = BilinearInterpolate(calc_data.buf, data, Bpp, 1);
+    const uint8_t y = BilinearInterpolate(calc_data.buf, data, Bpp, 2);
+    const uint8_t k = BilinearInterpolate(calc_data.buf, data, Bpp, 3);
     *reinterpret_cast<uint32_t*>(dest) = FXCMYK_TODIB(CmykEncode(c, m, y, k));
   };
   DoBilinearLoop(calc_data, m_result, m_StretchClip, destBpp, func);
