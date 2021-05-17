@@ -108,7 +108,7 @@ void CFWL_ListBox::DrawWidget(CFGAS_GEGraphics* pGraphics,
 
 int32_t CFWL_ListBox::CountSelItems() {
   int32_t iRet = 0;
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   for (int32_t i = 0; i < iCount; i++) {
     Item* pItem = GetItem(this, i);
     if (!pItem)
@@ -120,7 +120,7 @@ int32_t CFWL_ListBox::CountSelItems() {
 }
 
 CFWL_ListBox::Item* CFWL_ListBox::GetSelItem(int32_t nIndexSel) {
-  int32_t idx = GetSelIndex(nIndexSel);
+  const int32_t idx = GetSelIndex(nIndexSel);
   if (idx < 0)
     return nullptr;
   return GetItem(this, idx);
@@ -128,7 +128,7 @@ CFWL_ListBox::Item* CFWL_ListBox::GetSelItem(int32_t nIndexSel) {
 
 int32_t CFWL_ListBox::GetSelIndex(int32_t nIndex) {
   int32_t index = 0;
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   for (int32_t i = 0; i < iCount; i++) {
     Item* pItem = GetItem(this, i);
     if (!pItem)
@@ -170,12 +170,12 @@ CFWL_ListBox::Item* CFWL_ListBox::GetListItem(Item* pItem, uint32_t dwKeyCode) {
       const bool bHome = dwKeyCode == XFA_FWL_VKEY_Home;
       int32_t iDstItem = -1;
       if (bUp || bDown) {
-        int32_t index = GetItemIndex(this, pItem);
+        const int32_t index = GetItemIndex(this, pItem);
         iDstItem = dwKeyCode == XFA_FWL_VKEY_Up ? index - 1 : index + 1;
       } else if (bHome) {
         iDstItem = 0;
       } else {
-        int32_t iCount = CountItems(this);
+        const int32_t iCount = CountItems(this);
         iDstItem = iCount - 1;
       }
       hRet = GetItem(this, iDstItem);
@@ -191,12 +191,12 @@ void CFWL_ListBox::SetSelection(Item* hStart, Item* hEnd, bool bSelected) {
   int32_t iStart = GetItemIndex(this, hStart);
   int32_t iEnd = GetItemIndex(this, hEnd);
   if (iStart > iEnd) {
-    int32_t iTemp = iStart;
+    const int32_t iTemp = iStart;
     iStart = iEnd;
     iEnd = iTemp;
   }
   if (bSelected) {
-    int32_t iCount = CountItems(this);
+    const int32_t iCount = CountItems(this);
     for (int32_t i = 0; i < iCount; i++)
       SetSelectionDirect(GetItem(this, i), false);
   }
@@ -223,8 +223,8 @@ bool CFWL_ListBox::IsItemSelected(Item* pItem) {
 }
 
 void CFWL_ListBox::ClearSelection() {
-  bool bMulti = IsMultiSelection();
-  int32_t iCount = CountItems(this);
+  const bool bMulti = IsMultiSelection();
+  const int32_t iCount = CountItems(this);
   for (int32_t i = 0; i < iCount; i++) {
     Item* pItem = GetItem(this, i);
     if (!pItem)
@@ -241,7 +241,7 @@ void CFWL_ListBox::SelectAll() {
   if (!IsMultiSelection())
     return;
 
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   if (iCount <= 0)
     return;
 
@@ -251,7 +251,7 @@ void CFWL_ListBox::SelectAll() {
 }
 
 CFWL_ListBox::Item* CFWL_ListBox::GetFocusedItem() {
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   for (int32_t i = 0; i < iCount; i++) {
     Item* pItem = GetItem(this, i);
     if (!pItem)
@@ -289,7 +289,7 @@ CFWL_ListBox::Item* CFWL_ListBox::GetItemAtPoint(const CFX_PointF& point) {
   if (m_pVertScrollBar)
     fPosY = m_pVertScrollBar->GetPos();
 
-  int32_t nCount = CountItems(this);
+  const int32_t nCount = CountItems(this);
   for (int32_t i = 0; i < nCount; i++) {
     Item* pItem = GetItem(this, i);
     if (!pItem)
@@ -359,7 +359,7 @@ void CFWL_ListBox::DrawItems(CFGAS_GEGraphics* pGraphics,
   if (m_pVertScrollBar)
     rtView.width -= m_fScorllBarWidth;
 
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   for (int32_t i = 0; i < iCount; i++) {
     CFWL_ListBox::Item* pItem = GetItem(this, i);
     if (!pItem)
@@ -380,7 +380,7 @@ void CFWL_ListBox::DrawItem(CFGAS_GEGraphics* pGraphics,
                             int32_t Index,
                             const CFX_RectF& rtItem,
                             const CFX_Matrix& mtMatrix) {
-  uint32_t dwItemStyles = pItem ? pItem->GetStates() : 0;
+  const uint32_t dwItemStyles = pItem ? pItem->GetStates() : 0;
   uint32_t dwPartStates = CFWL_PartState_Normal;
   if (m_Properties.m_dwStates & FWL_WGTSTATE_Disabled)
     dwPartStates = CFWL_PartState_Disabled;
@@ -451,7 +451,7 @@ CFX_SizeF CFWL_ListBox::CalcSize(bool bAutoSize) {
   }
   m_fItemHeight = CalcItemHeight();
 
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   CFX_SizeF fs;
   for (int32_t i = 0; i < iCount; i++) {
     Item* htem = GetItem(this, i);
@@ -460,7 +460,7 @@ CFX_SizeF CFWL_ListBox::CalcSize(bool bAutoSize) {
   if (bAutoSize)
     return fs;
 
-  float iHeight = m_ClientRect.height;
+  const float iHeight = m_ClientRect.height;
   bool bShowVertScr = false;
   bool bShowHorzScr = false;
   if (!bShowVertScr && (m_Properties.m_dwStyles & FWL_WGTSTYLE_VScroll))
@@ -555,7 +555,7 @@ void CFWL_ListBox::UpdateItemSize(Item* pItem,
 
 float CFWL_ListBox::GetMaxTextWidth() {
   float fRet = 0.0f;
-  int32_t iCount = CountItems(this);
+  const int32_t iCount = CountItems(this);
   for (int32_t i = 0; i < iCount; i++) {
     Item* pItem = GetItem(this, i);
     if (!pItem)
@@ -697,7 +697,7 @@ void CFWL_ListBox::OnLButtonDown(CFWL_MessageMouse* pMsg) {
 
   if (IsMultiSelection()) {
     if (pMsg->m_dwFlags & FWL_KEYFLAG_Ctrl) {
-      bool bSelected = IsItemSelected(pItem);
+      const bool bSelected = IsItemSelected(pItem);
       SetSelectionDirect(pItem, !bSelected);
       m_hAnchor = pItem;
     } else if (pMsg->m_dwFlags & FWL_KEYFLAG_Shift) {
@@ -733,7 +733,7 @@ void CFWL_ListBox::OnMouseWheel(CFWL_MessageMouseWheel* pMsg) {
 }
 
 void CFWL_ListBox::OnKeyDown(CFWL_MessageKey* pMsg) {
-  uint32_t dwKeyCode = pMsg->m_dwKeyCode;
+  const uint32_t dwKeyCode = pMsg->m_dwKeyCode;
   switch (dwKeyCode) {
     case XFA_FWL_VKEY_Tab:
     case XFA_FWL_VKEY_Up:
@@ -741,8 +741,8 @@ void CFWL_ListBox::OnKeyDown(CFWL_MessageKey* pMsg) {
     case XFA_FWL_VKEY_Home:
     case XFA_FWL_VKEY_End: {
       Item* pItem = GetListItem(GetFocusedItem(), dwKeyCode);
-      bool bShift = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift);
-      bool bCtrl = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Ctrl);
+      const bool bShift = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift);
+      const bool bCtrl = !!(pMsg->m_dwFlags & FWL_KEYFLAG_Ctrl);
       OnVK(pItem, bShift, bCtrl);
       break;
     }
@@ -781,8 +781,8 @@ bool CFWL_ListBox::OnScroll(CFWL_ScrollBar* pScrollBar,
                             float fPos) {
   CFX_SizeF fs;
   pScrollBar->GetRange(&fs.width, &fs.height);
-  float iCurPos = pScrollBar->GetPos();
-  float fStep = pScrollBar->GetStepSize();
+  const float iCurPos = pScrollBar->GetPos();
+  const float fStep = pScrollBar->GetStepSize();
   switch (dwCode) {
     case CFWL_EventScroll::Code::Min: {
       fPos = fs.width;
@@ -862,7 +862,7 @@ void CFWL_ListBox::RemoveAt(int32_t iIndex) {
 }
 
 void CFWL_ListBox::DeleteString(Item* pItem) {
-  int32_t nIndex = GetItemIndex(this, pItem);
+  const int32_t nIndex = GetItemIndex(this, pItem);
   if (nIndex < 0 || static_cast<size_t>(nIndex) >= m_ItemArray.size())
     return;
 

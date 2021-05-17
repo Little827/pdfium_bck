@@ -363,7 +363,8 @@ class Matrix_3by3 {
       : a(a1), b(b1), c(c1), d(d1), e(e1), f(f1), g(g1), h(h1), i(i1) {}
 
   Matrix_3by3 Inverse() {
-    float det = a * (e * i - f * h) - b * (i * d - f * g) + c * (d * h - e * g);
+    const float det =
+        a * (e * i - f * h) - b * (i * d - f * g) + c * (d * h - e * g);
     if (fabs(det) < std::numeric_limits<float>::epsilon())
       return Matrix_3by3();
 
@@ -399,15 +400,15 @@ class Matrix_3by3 {
 
 float RGB_Conversion(float colorComponent) {
   colorComponent = pdfium::clamp(colorComponent, 0.0f, 1.0f);
-  int scale = std::max(static_cast<int>(colorComponent * 1023), 0);
+  const int scale = std::max(static_cast<int>(colorComponent * 1023), 0);
   if (scale < 192)
     return g_sRGBSamples1[scale] / 255.0f;
   return g_sRGBSamples2[scale / 4 - 48] / 255.0f;
 }
 
 void XYZ_to_sRGB(float X, float Y, float Z, float* R, float* G, float* B) {
-  float R1 = 3.2410f * X - 1.5374f * Y - 0.4986f * Z;
-  float G1 = -0.9692f * X + 1.8760f * Y + 0.0416f * Z;
+  const float R1 = 3.2410f * X - 1.5374f * Y - 0.4986f * Z;
+  const float G1 = -0.9692f * X + 1.8760f * Y + 0.0416f * Z;
   float B1 = 0.0556f * X - 0.2040f * Y + 1.0570f * Z;
 
   *R = RGB_Conversion(R1);
@@ -865,12 +866,12 @@ bool CPDF_LabCS::GetRGB(pdfium::span<const float> pBuf,
                         float* R,
                         float* G,
                         float* B) const {
-  float Lstar = pBuf[0];
-  float astar = pBuf[1];
-  float bstar = pBuf[2];
-  float M = (Lstar + 16.0f) / 116.0f;
-  float L = M + astar / 500.0f;
-  float N = M - bstar / 200.0f;
+  const float Lstar = pBuf[0];
+  const float astar = pBuf[1];
+  const float bstar = pBuf[2];
+  const float M = (Lstar + 16.0f) / 116.0f;
+  const float L = M + astar / 500.0f;
+  const float N = M - bstar / 200.0f;
   float X;
   float Y;
   float Z;
@@ -933,11 +934,11 @@ uint32_t CPDF_ICCBasedCS::v_Load(CPDF_Document* pDoc,
   // PDF viewers tolerate invalid values, Acrobat does not, so be consistent
   // with Acrobat and reject bad values.
   const CPDF_Dictionary* pDict = pStream->GetDict();
-  int32_t nDictComponents = pDict ? pDict->GetIntegerFor("N") : 0;
+  const int32_t nDictComponents = pDict ? pDict->GetIntegerFor("N") : 0;
   if (!IsValidIccComponents(nDictComponents))
     return 0;
 
-  uint32_t nComponents = static_cast<uint32_t>(nDictComponents);
+  const uint32_t nComponents = static_cast<uint32_t>(nDictComponents);
   m_pProfile = CPDF_DocPageData::FromDocument(pDoc)->GetIccProfile(pStream);
   if (!m_pProfile)
     return 0;
@@ -1156,7 +1157,7 @@ uint32_t CPDF_IndexedCS::v_Load(CPDF_Document* pDoc,
 
   // The base color space cannot be a Pattern or Indexed space, according to the
   // PDF 1.7 spec, page 263.
-  int family = m_pBaseCS->GetFamily();
+  const int family = m_pBaseCS->GetFamily();
   if (family == PDFCS_INDEXED || family == PDFCS_PATTERN)
     return 0;
 
@@ -1188,7 +1189,7 @@ bool CPDF_IndexedCS::GetRGB(pdfium::span<const float> pBuf,
                             float* R,
                             float* G,
                             float* B) const {
-  int32_t index = static_cast<int32_t>(pBuf[0]);
+  const int32_t index = static_cast<int32_t>(pBuf[0]);
   if (index < 0 || index > m_MaxIndex)
     return false;
 
@@ -1275,7 +1276,7 @@ bool CPDF_SeparationCS::GetRGB(pdfium::span<const float> pBuf,
     if (!m_pAltCS)
       return false;
 
-    int nComps = m_pAltCS->CountComponents();
+    const int nComps = m_pAltCS->CountComponents();
     std::vector<float> results(nComps);
     for (int i = 0; i < nComps; i++)
       results[i] = pBuf[0];

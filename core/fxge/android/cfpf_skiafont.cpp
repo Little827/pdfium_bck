@@ -92,8 +92,8 @@ bool CFPF_SkiaFont::GetGlyphBBox(int32_t iGlyphIndex, FX_RECT& rtBBox) {
     }
     FT_BBox cbox;
     FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_PIXELS, &cbox);
-    int32_t x_ppem = GetFaceRec()->size->metrics.x_ppem;
-    int32_t y_ppem = GetFaceRec()->size->metrics.y_ppem;
+    const int32_t x_ppem = GetFaceRec()->size->metrics.x_ppem;
+    const int32_t y_ppem = GetFaceRec()->size->metrics.y_ppem;
     rtBBox.left = FPF_EM_ADJUST(x_ppem, cbox.xMin);
     rtBBox.right = FPF_EM_ADJUST(x_ppem, cbox.xMax);
     rtBBox.top = FPF_EM_ADJUST(y_ppem, cbox.yMax);

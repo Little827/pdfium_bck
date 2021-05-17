@@ -80,8 +80,8 @@ ByteString GetNameFromTT(pdfium::span<const uint8_t> name_table,
   if (name_table.size() < 6)
     return ByteString();
 
-  uint32_t name_count = GET_TT_SHORT(&name_table[2]);
-  uint32_t string_offset = GET_TT_SHORT(&name_table[4]);
+  const uint32_t name_count = GET_TT_SHORT(&name_table[2]);
+  const uint32_t string_offset = GET_TT_SHORT(&name_table[4]);
   // We will ignore the possibility of overlap of structures and
   // string table as if it's all corrupt there's not a lot we can do.
   if (name_table.size() < string_offset)
@@ -126,7 +126,7 @@ ByteString GetNameFromTT(pdfium::span<const uint8_t> name_table,
 
 int GetTTCIndex(pdfium::span<const uint8_t> pFontData, uint32_t font_offset) {
   const uint8_t* p = pFontData.data() + 8;
-  uint32_t nfont = GET_TT_LONG(p);
+  const uint32_t nfont = GET_TT_LONG(p);
   uint32_t index;
   for (index = 0; index < nfont; index++) {
     p = pFontData.data() + 12 + index * 4;

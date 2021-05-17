@@ -22,7 +22,8 @@ FXCODEC_STATUS Decode(Jbig2Context* pJbig2Context, bool decode_success) {
   if (!decode_success)
     return FXCODEC_STATUS_ERROR;
 
-  int dword_size = pJbig2Context->m_height * pJbig2Context->m_dest_pitch / 4;
+  const int dword_size =
+      pJbig2Context->m_height * pJbig2Context->m_dest_pitch / 4;
   uint32_t* dword_buf = reinterpret_cast<uint32_t*>(pJbig2Context->m_dest_buf);
   for (int i = 0; i < dword_size; i++)
     dword_buf[i] = ~dword_buf[i];
@@ -60,7 +61,7 @@ FXCODEC_STATUS Jbig2Decoder::StartDecode(
   pJbig2Context->m_pContext =
       CJBig2_Context::Create(global_span, global_objnum, src_span, src_objnum,
                              pJBig2DocumentContext->GetSymbolDictCache());
-  bool succeeded = pJbig2Context->m_pContext->GetFirstPage(
+  const bool succeeded = pJbig2Context->m_pContext->GetFirstPage(
       dest_buf, width, height, dest_pitch, pPause);
   return Decode(pJbig2Context, succeeded);
 }
@@ -68,7 +69,7 @@ FXCODEC_STATUS Jbig2Decoder::StartDecode(
 // static
 FXCODEC_STATUS Jbig2Decoder::ContinueDecode(Jbig2Context* pJbig2Context,
                                             PauseIndicatorIface* pPause) {
-  bool succeeded = pJbig2Context->m_pContext->Continue(pPause);
+  const bool succeeded = pJbig2Context->m_pContext->Continue(pPause);
   return Decode(pJbig2Context, succeeded);
 }
 

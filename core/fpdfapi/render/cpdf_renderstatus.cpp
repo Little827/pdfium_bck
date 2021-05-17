@@ -347,7 +347,7 @@ void CPDF_RenderStatus::DrawObjWithBackground(CPDF_PageObject* pObj,
   if (rect.IsEmpty())
     return;
 
-  int res = (pObj->IsImage() && m_bPrint) ? 0 : 300;
+  const int res = (pObj->IsImage() && m_bPrint) ? 0 : 300;
   CPDF_ScaledRenderBuffer buffer;
   if (!buffer.Initialize(m_pContext.Get(), m_pDevice, rect, pObj, &m_Options,
                          res)) {
@@ -419,10 +419,11 @@ bool CPDF_RenderStatus::ProcessPath(CPDF_PathObject* path_obj,
     fill_type = CFX_FillRenderOptions::FillType::kNoFill;
   }
 
-  uint32_t fill_argb = fill_type != CFX_FillRenderOptions::FillType::kNoFill
-                           ? GetFillArgb(path_obj)
-                           : 0;
-  uint32_t stroke_argb = stroke ? GetStrokeArgb(path_obj) : 0;
+  const uint32_t fill_argb =
+      fill_type != CFX_FillRenderOptions::FillType::kNoFill
+          ? GetFillArgb(path_obj)
+          : 0;
+  const uint32_t stroke_argb = stroke ? GetStrokeArgb(path_obj) : 0;
   CFX_Matrix path_matrix = path_obj->matrix() * mtObj2Device;
   if (!IsAvailableMatrix(path_matrix))
     return true;
@@ -484,8 +485,8 @@ FX_ARGB CPDF_RenderStatus::GetStrokeArgb(CPDF_PageObject* pObj) const {
   if (colorref == 0xFFFFFFFF)
     return 0;
 
-  int32_t alpha = static_cast<int32_t>(pObj->m_GeneralState.GetStrokeAlpha() *
-                                       255);  // not rounded.
+  const int32_t alpha = static_cast<int32_t>(
+      pObj->m_GeneralState.GetStrokeAlpha() * 255);  // not rounded.
   if (pObj->m_GeneralState.GetTR()) {
     if (!pObj->m_GeneralState.GetTransferFunc()) {
       pObj->m_GeneralState.SetTransferFunc(
@@ -625,7 +626,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   }
   if (m_bPrint) {
     bool bRet = false;
-    int rendCaps = m_pDevice->GetRenderCaps();
+    const int rendCaps = m_pDevice->GetRenderCaps();
     if (!(transparency.IsIsolated() || pSMaskDict || bTextClip) &&
         (rendCaps & FXRC_BLEND_MODE)) {
       BlendMode oldBlend = m_curBlend;
@@ -643,8 +644,8 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   if (rect.IsEmpty())
     return true;
 
-  int width = rect.Width();
-  int height = rect.Height();
+  const int width = rect.Width();
+  const int height = rect.Height();
   CFX_DefaultRenderDevice bitmap_device;
   RetainPtr<CFX_DIBitmap> backdrop;
   if (!transparency.IsIsolated() &&
@@ -741,8 +742,8 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::GetBackdrop(
   bbox.Intersect(m_pDevice->GetClipBox());
   *left = bbox.left;
   *top = bbox.top;
-  int width = bbox.Width();
-  int height = bbox.Height();
+  const int width = bbox.Width();
+  const int height = bbox.Height();
   auto pBackdrop = pdfium::MakeRetain<CFX_DIBitmap>();
   if (bBackAlphaRequired && !m_bDropObjects)
     pBackdrop->Create(width, height, FXDIB_Format::kArgb);
@@ -870,7 +871,7 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
   if (!IsAvailableMatrix(text_matrix))
     return true;
 
-  float font_size = textobj->m_TextState.GetFontSize();
+  const float font_size = textobj->m_TextState.GetFontSize();
   if (bPattern) {
     DrawTextPathWithPattern(textobj, mtObj2Device, pFont.Get(), font_size,
                             text_matrix, is_fill, is_stroke);
@@ -910,13 +911,13 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     return true;
 
   FX_ARGB fill_argb = GetFillArgbForType3(textobj);
-  int fill_alpha = FXARGB_A(fill_argb);
+  const int fill_alpha = FXARGB_A(fill_argb);
   if (m_bPrint && fill_alpha < 255)
     return false;
 
   CFX_Matrix text_matrix = textobj->GetTextMatrix();
   CFX_Matrix char_matrix = pType3Font->GetFontMatrix();
-  float font_size = textobj->m_TextState.GetFontSize();
+  const float font_size = textobj->m_TextState.GetFontSize();
   char_matrix.Scale(font_size, font_size);
 
   // Must come before |glyphs|, because |glyphs| points into |refTypeCache|.
@@ -926,7 +927,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     glyphs.resize(textobj->GetCharCodes().size());
 
   for (size_t iChar = 0; iChar < textobj->GetCharCodes().size(); ++iChar) {
-    uint32_t charcode = textobj->GetCharCodes()[iChar];
+    const uint32_t charcode = textobj->GetCharCodes()[iChar];
     if (charcode == static_cast<uint32_t>(-1))
       continue;
 
@@ -1288,10 +1289,10 @@ void CPDF_RenderStatus::CompositeDIBitmap(
       }
     }
   }
-  bool bIsolated = transparency.IsIsolated();
-  bool bBackAlphaRequired =
+  const bool bIsolated = transparency.IsIsolated();
+  const bool bBackAlphaRequired =
       blend_mode != BlendMode::kNormal && bIsolated && !m_bDropObjects;
-  bool bGetBackGround =
+  const bool bGetBackGround =
       ((m_pDevice->GetRenderCaps() & FXRC_ALPHA_OUTPUT)) ||
       (!(m_pDevice->GetRenderCaps() & FXRC_ALPHA_OUTPUT) &&
        (m_pDevice->GetRenderCaps() & FXRC_GET_BITS) && !bBackAlphaRequired);
@@ -1399,8 +1400,8 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
   bool bLuminosity =
       pSMaskDict->GetStringFor(pdfium::transparency::kSoftMaskSubType) !=
       pdfium::transparency::kAlpha;
-  int width = pClipRect->right - pClipRect->left;
-  int height = pClipRect->bottom - pClipRect->top;
+  const int width = pClipRect->right - pClipRect->left;
+  const int height = pClipRect->bottom - pClipRect->top;
   FXDIB_Format format;
 #if defined(OS_APPLE) || defined(_SKIA_SUPPORT_) || \
     defined(_SKIA_SUPPORT_PATHS_)
@@ -1441,14 +1442,14 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
     return nullptr;
 
   uint8_t* dest_buf = pMask->GetBuffer();
-  int dest_pitch = pMask->GetPitch();
+  const int dest_pitch = pMask->GetPitch();
   uint8_t* src_buf = bitmap->GetBuffer();
-  int src_pitch = bitmap->GetPitch();
+  const int src_pitch = bitmap->GetPitch();
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> transfers(256);
   if (pFunc) {
     std::vector<float> results(pFunc->CountOutputs());
     for (size_t i = 0; i < transfers.size(); ++i) {
-      float input = i / 255.0f;
+      const float input = i / 255.0f;
       int nresult;
       pFunc->Call(&input, 1, results.data(), &nresult);
       transfers[i] = FXSYS_roundf(results[0] * 255);
@@ -1458,7 +1459,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
     std::iota(transfers.begin(), transfers.end(), 0);
   }
   if (bLuminosity) {
-    int Bpp = bitmap->GetBPP() / 8;
+    const int Bpp = bitmap->GetBPP() / 8;
     for (int row = 0; row < height; row++) {
       uint8_t* dest_pos = dest_buf + row * dest_pitch;
       uint8_t* src_pos = src_buf + row * src_pitch;
@@ -1468,7 +1469,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
       }
     }
   } else if (pFunc) {
-    int size = dest_pitch * height;
+    const int size = dest_pitch * height;
     for (int i = 0; i < size; i++) {
       dest_buf[i] = transfers[src_buf[i]];
     }
@@ -1497,7 +1498,7 @@ FX_ARGB CPDF_RenderStatus::GetBackColor(const CPDF_Dictionary* pSMaskDict,
   if (!pCS)
     return kDefaultColor;
 
-  int family = pCS->GetFamily();
+  const int family = pCS->GetFamily();
   if (family == PDFCS_LAB || pCS->IsSpecial() ||
       (family == PDFCS_ICCBASED && !pCS->IsNormal())) {
     return kDefaultColor;
@@ -1506,8 +1507,8 @@ FX_ARGB CPDF_RenderStatus::GetBackColor(const CPDF_Dictionary* pSMaskDict,
   // Store Color Space Family to use in CPDF_RenderStatus::Initialize().
   *pCSFamily = family;
 
-  uint32_t comps = std::max(8u, pCS->CountComponents());
-  size_t count = std::min<size_t>(8, pBC->size());
+  const uint32_t comps = std::max(8u, pCS->CountComponents());
+  const size_t count = std::min<size_t>(8, pBC->size());
   std::vector<float> floats = ReadArrayElementsToVector(pBC, count);
   floats.resize(comps);
 

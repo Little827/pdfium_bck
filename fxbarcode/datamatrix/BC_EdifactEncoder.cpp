@@ -33,7 +33,7 @@
 namespace {
 
 WideString EncodeToEdifactCodewords(const WideString& sb, int32_t startPos) {
-  int32_t len = sb.GetLength() - startPos;
+  const int32_t len = sb.GetLength() - startPos;
   if (len == 0)
     return WideString();
 
@@ -41,7 +41,7 @@ WideString EncodeToEdifactCodewords(const WideString& sb, int32_t startPos) {
   wchar_t c2 = len >= 2 ? sb[startPos + 1] : 0;
   wchar_t c3 = len >= 3 ? sb[startPos + 2] : 0;
   wchar_t c4 = len >= 4 ? sb[startPos + 3] : 0;
-  int32_t v = (c1 << 18) + (c2 << 12) + (c3 << 6) + c4;
+  const int32_t v = (c1 << 18) + (c2 << 12) + (c3 << 6) + c4;
   constexpr int32_t kBuflen = 3;
   wchar_t cw[kBuflen];
   cw[0] = static_cast<wchar_t>((v >> 16) & 255);
@@ -51,7 +51,7 @@ WideString EncodeToEdifactCodewords(const WideString& sb, int32_t startPos) {
 }
 
 bool HandleEOD(CBC_EncoderContext* context, const WideString& buffer) {
-  size_t count = buffer.GetLength();
+  const size_t count = buffer.GetLength();
   if (count == 0)
     return true;
   if (count > 4)
@@ -63,17 +63,17 @@ bool HandleEOD(CBC_EncoderContext* context, const WideString& buffer) {
 
     int32_t available =
         context->m_symbolInfo->data_capacity() - context->getCodewordCount();
-    int32_t remaining = context->getRemainingCharacters();
+    const int32_t remaining = context->getRemainingCharacters();
     if (remaining == 0 && available <= 2)
       return true;
   }
 
-  int32_t restChars = count - 1;
+  const int32_t restChars = count - 1;
   WideString encoded = EncodeToEdifactCodewords(buffer, 0);
   if (encoded.IsEmpty())
     return false;
 
-  bool endOfSymbolReached = !context->hasMoreCharacters();
+  const bool endOfSymbolReached = !context->hasMoreCharacters();
   bool restInAscii = endOfSymbolReached && restChars <= 2;
   if (restChars <= 2) {
     if (!context->UpdateSymbolInfo(context->getCodewordCount() + restChars))
@@ -132,7 +132,7 @@ bool CBC_EdifactEncoder::Encode(CBC_EncoderContext* context) {
       return false;
 
     context->m_pos++;
-    size_t count = buffer.GetLength();
+    const size_t count = buffer.GetLength();
     if (count >= 4) {
       WideString encoded = EncodeToEdifactCodewords(buffer, 0);
       if (encoded.IsEmpty())

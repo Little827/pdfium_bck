@@ -128,7 +128,7 @@ WideString CPDFSDK_FormFillEnvironment::GetLanguage() {
   if (!m_pInfo || m_pInfo->version < 2 || !m_pInfo->FFI_GetLanguage)
     return WideString();
 
-  int nRequiredLen = m_pInfo->FFI_GetLanguage(m_pInfo, nullptr, 0);
+  const int nRequiredLen = m_pInfo->FFI_GetLanguage(m_pInfo, nullptr, 0);
   if (nRequiredLen <= 0)
     return WideString();
 
@@ -150,7 +150,7 @@ WideString CPDFSDK_FormFillEnvironment::GetPlatform() {
   if (!m_pInfo || m_pInfo->version < 2 || !m_pInfo->FFI_GetPlatform)
     return WideString();
 
-  int nRequiredLen = m_pInfo->FFI_GetPlatform(m_pInfo, nullptr, 0);
+  const int nRequiredLen = m_pInfo->FFI_GetPlatform(m_pInfo, nullptr, 0);
   if (nRequiredLen <= 0)
     return WideString();
 
@@ -601,7 +601,7 @@ void CPDFSDK_FormFillEnvironment::ProcJavascriptAction() {
   if (!name_tree)
     return;
 
-  size_t count = name_tree->GetCount();
+  const size_t count = name_tree->GetCount();
   for (size_t i = 0; i < count; ++i) {
     WideString name;
     CPDF_Action action(ToDictionary(name_tree->LookupValueAndName(i, &name)));

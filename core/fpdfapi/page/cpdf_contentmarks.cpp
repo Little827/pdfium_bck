@@ -87,7 +87,7 @@ size_t CPDF_ContentMarks::FindFirstDifference(
   if (m_pMarkData == other->m_pMarkData)
     return CountItems();
 
-  size_t min_len = std::min(CountItems(), other->CountItems());
+  const size_t min_len = std::min(CountItems(), other->CountItems());
 
   for (size_t i = 0; i < min_len; ++i) {
     if (GetItem(i) != other->GetItem(i))

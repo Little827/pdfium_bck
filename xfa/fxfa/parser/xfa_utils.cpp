@@ -35,7 +35,7 @@ const char kFormNS[] = "http://www.xfa.org/schema/xfa-form/";
 
 WideString ExportEncodeAttribute(const WideString& str) {
   CFX_WideTextBuf textBuf;
-  int32_t iLen = str.GetLength();
+  const int32_t iLen = str.GetLength();
   for (int32_t i = 0; i < iLen; i++) {
     switch (str[i]) {
       case '&':
@@ -67,7 +67,7 @@ bool IsXMLValidChar(wchar_t ch) {
 
 WideString ExportEncodeContent(const WideString& str) {
   CFX_WideTextBuf textBuf;
-  int32_t iLen = str.GetLength();
+  const int32_t iLen = str.GetLength();
   for (int32_t i = 0; i < iLen; i++) {
     wchar_t ch = str[i];
     if (!IsXMLValidChar(ch))
@@ -312,7 +312,7 @@ void RegenerateFormFile_Container(CXFA_Node* pNode,
       !pNode->IsContainerNode()) {
     CFX_WideTextBuf buf;
     RegenerateFormFile_Changed(pNode, buf, bSaveXML);
-    size_t nLen = buf.GetLength();
+    const size_t nLen = buf.GetLength();
     if (nLen > 0)
       pStream->WriteString(buf.MakeString().ToUTF8().AsStringView());
     return;

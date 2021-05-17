@@ -17,7 +17,7 @@ std::unique_ptr<char, pdfium::FreeDeleter> GetFileContents(const char* filename,
     return nullptr;
   }
   (void)fseek(file, 0, SEEK_END);
-  size_t file_length = ftell(file);
+  const size_t file_length = ftell(file);
   if (!file_length) {
     return nullptr;
   }
@@ -27,7 +27,7 @@ std::unique_ptr<char, pdfium::FreeDeleter> GetFileContents(const char* filename,
   if (!buffer) {
     return nullptr;
   }
-  size_t bytes_read = fread(buffer.get(), 1, file_length, file);
+  const size_t bytes_read = fread(buffer.get(), 1, file_length, file);
   (void)fclose(file);
   if (bytes_read != file_length) {
     fprintf(stderr, "Failed to read: %s\n", filename);

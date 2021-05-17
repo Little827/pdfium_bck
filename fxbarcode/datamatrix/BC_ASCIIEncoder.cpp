@@ -65,7 +65,8 @@ CBC_HighLevelEncoder::Encoding CBC_ASCIIEncoder::GetEncodingMode() {
 }
 
 bool CBC_ASCIIEncoder::Encode(CBC_EncoderContext* context) {
-  size_t n = DetermineConsecutiveDigitCount(context->m_msg, context->m_pos);
+  const size_t n =
+      DetermineConsecutiveDigitCount(context->m_msg, context->m_pos);
   if (n >= 2) {
     Optional<wchar_t> code = EncodeASCIIDigits(
         context->m_msg[context->m_pos], context->m_msg[context->m_pos + 1]);

@@ -31,7 +31,7 @@ void CXFA_FFWidgetHandler::Trace(cppgc::Visitor* visitor) const {
 
 bool CXFA_FFWidgetHandler::OnMouseEnter(CXFA_FFWidget* hWidget) {
   m_pDocView->LockUpdate();
-  bool bRet = hWidget->OnMouseEnter();
+  const bool bRet = hWidget->OnMouseEnter();
   m_pDocView->UnlockUpdate();
   m_pDocView->UpdateDocView();
   return bRet;
@@ -39,7 +39,7 @@ bool CXFA_FFWidgetHandler::OnMouseEnter(CXFA_FFWidget* hWidget) {
 
 bool CXFA_FFWidgetHandler::OnMouseExit(CXFA_FFWidget* hWidget) {
   m_pDocView->LockUpdate();
-  bool bRet = hWidget->OnMouseExit();
+  const bool bRet = hWidget->OnMouseExit();
   m_pDocView->UnlockUpdate();
   m_pDocView->UpdateDocView();
   return bRet;
@@ -68,7 +68,8 @@ bool CXFA_FFWidgetHandler::OnLButtonUp(CXFA_FFWidget* hWidget,
                                        const CFX_PointF& point) {
   m_pDocView->LockUpdate();
   m_pDocView->m_bLayoutEvent = true;
-  bool bRet = hWidget->OnLButtonUp(dwFlags, hWidget->Rotate2Normal(point));
+  const bool bRet =
+      hWidget->OnLButtonUp(dwFlags, hWidget->Rotate2Normal(point));
   m_pDocView->UnlockUpdate();
   m_pDocView->UpdateDocView();
   return bRet;
@@ -122,7 +123,7 @@ bool CXFA_FFWidgetHandler::OnRButtonDblClk(CXFA_FFWidget* hWidget,
 bool CXFA_FFWidgetHandler::OnKeyDown(CXFA_FFWidget* hWidget,
                                      uint32_t dwKeyCode,
                                      uint32_t dwFlags) {
-  bool bRet = hWidget->OnKeyDown(dwKeyCode, dwFlags);
+  const bool bRet = hWidget->OnKeyDown(dwKeyCode, dwFlags);
   m_pDocView->UpdateDocView();
   return bRet;
 }

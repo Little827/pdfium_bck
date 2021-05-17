@@ -19,7 +19,7 @@ bool CPSOutput::WriteBlock(const void* str, size_t len) {
   pdfium::span<const uint8_t> input(static_cast<const uint8_t*>(str), len);
   while (!input.empty()) {
     uint8_t buffer[1026];
-    size_t send_len = std::min<size_t>(input.size(), 1024);
+    const size_t send_len = std::min<size_t>(input.size(), 1024);
     *(reinterpret_cast<uint16_t*>(buffer)) = static_cast<uint16_t>(send_len);
     memcpy(buffer + 2, input.data(), send_len);
 

@@ -64,24 +64,24 @@ const int8_t g_alphaNumericTable[] = {
 int32_t GetAlphaNumericCode(int32_t code) {
   if (code < 32)
     return -1;
-  size_t code_index = static_cast<size_t>(code - 32);
+  const size_t code_index = static_cast<size_t>(code - 32);
   if (code_index >= pdfium::size(g_alphaNumericTable))
     return -1;
   return g_alphaNumericTable[code_index];
 }
 
 bool AppendNumericBytes(const ByteString& content, CBC_QRCoderBitVector* bits) {
-  size_t length = content.GetLength();
+  const size_t length = content.GetLength();
   size_t i = 0;
   while (i < length) {
-    int32_t num1 = content[i] - '0';
+    const int32_t num1 = content[i] - '0';
     if (i + 2 < length) {
-      int32_t num2 = content[i + 1] - '0';
-      int32_t num3 = content[i + 2] - '0';
+      const int32_t num2 = content[i + 1] - '0';
+      const int32_t num3 = content[i + 2] - '0';
       bits->AppendBits(num1 * 100 + num2 * 10 + num3, 10);
       i += 3;
     } else if (i + 1 < length) {
-      int32_t num2 = content[i + 1] - '0';
+      const int32_t num2 = content[i + 1] - '0';
       bits->AppendBits(num1 * 10 + num2, 7);
       i += 2;
     } else {
@@ -94,15 +94,15 @@ bool AppendNumericBytes(const ByteString& content, CBC_QRCoderBitVector* bits) {
 
 bool AppendAlphaNumericBytes(const ByteString& content,
                              CBC_QRCoderBitVector* bits) {
-  size_t length = content.GetLength();
+  const size_t length = content.GetLength();
   size_t i = 0;
   while (i < length) {
-    int32_t code1 = GetAlphaNumericCode(content[i]);
+    const int32_t code1 = GetAlphaNumericCode(content[i]);
     if (code1 == -1)
       return false;
 
     if (i + 1 < length) {
-      int32_t code2 = GetAlphaNumericCode(content[i + 1]);
+      const int32_t code2 = GetAlphaNumericCode(content[i + 1]);
       if (code2 == -1)
         return false;
 
@@ -117,7 +117,7 @@ bool AppendAlphaNumericBytes(const ByteString& content,
 }
 
 bool AppendGBKBytes(const ByteString& content, CBC_QRCoderBitVector* bits) {
-  size_t length = content.GetLength();
+  const size_t length = content.GetLength();
   uint32_t value = 0;
   for (size_t i = 0; i < length; i += 2) {
     value = (uint32_t)(content[i] << 8 | content[i + 1]);
@@ -174,7 +174,7 @@ bool AppendLengthInfo(int32_t numLetters,
   const auto* qcv = CBC_QRCoderVersion::GetVersionForNumber(version);
   if (!qcv)
     return false;
-  int32_t numBits = mode->GetCharacterCountBits(qcv->GetVersionNumber());
+  const int32_t numBits = mode->GetCharacterCountBits(qcv->GetVersionNumber());
   if (numBits == 0)
     return false;
   if (numBits > ((1 << numBits) - 1))
@@ -209,11 +209,11 @@ bool InitQRCode(int32_t numInputBytes,
   qrCode->SetECLevel(ecLevel);
   for (int32_t i = 1; i <= CBC_QRCoderVersion::kMaxVersion; ++i) {
     const auto* version = CBC_QRCoderVersion::GetVersionForNumber(i);
-    int32_t numBytes = version->GetTotalCodeWords();
+    const int32_t numBytes = version->GetTotalCodeWords();
     const auto* ecBlocks = version->GetECBlocksForLevel(*ecLevel);
-    int32_t numEcBytes = ecBlocks->GetTotalECCodeWords();
-    int32_t numRSBlocks = ecBlocks->GetNumBlocks();
-    int32_t numDataBytes = numBytes - numEcBytes;
+    const int32_t numEcBytes = ecBlocks->GetTotalECCodeWords();
+    const int32_t numRSBlocks = ecBlocks->GetNumBlocks();
+    const int32_t numDataBytes = numBytes - numEcBytes;
     if (numDataBytes >= numInputBytes + 3) {
       qrCode->SetVersion(i);
       qrCode->SetNumTotalBytes(numBytes);
@@ -265,7 +265,7 @@ Optional<int32_t> ChooseMaskPattern(
                                             matrix)) {
       return {};
     }
-    int32_t penalty = CalculateMaskPenalty(matrix);
+    const int32_t penalty = CalculateMaskPenalty(matrix);
     if (penalty < minPenalty) {
       minPenalty = penalty;
       bestMaskPattern = maskPattern;
@@ -283,14 +283,16 @@ void GetNumDataBytesAndNumECBytesForBlockID(int32_t numTotalBytes,
   if (blockID >= numRSBlocks)
     return;
 
-  int32_t numRsBlocksInGroup2 = numTotalBytes % numRSBlocks;
-  int32_t numRsBlocksInGroup1 = numRSBlocks - numRsBlocksInGroup2;
-  int32_t numTotalBytesInGroup1 = numTotalBytes / numRSBlocks;
-  int32_t numTotalBytesInGroup2 = numTotalBytesInGroup1 + 1;
-  int32_t numDataBytesInGroup1 = numDataBytes / numRSBlocks;
-  int32_t numDataBytesInGroup2 = numDataBytesInGroup1 + 1;
-  int32_t numEcBytesInGroup1 = numTotalBytesInGroup1 - numDataBytesInGroup1;
-  int32_t numEcBytesInGroup2 = numTotalBytesInGroup2 - numDataBytesInGroup2;
+  const int32_t numRsBlocksInGroup2 = numTotalBytes % numRSBlocks;
+  const int32_t numRsBlocksInGroup1 = numRSBlocks - numRsBlocksInGroup2;
+  const int32_t numTotalBytesInGroup1 = numTotalBytes / numRSBlocks;
+  const int32_t numTotalBytesInGroup2 = numTotalBytesInGroup1 + 1;
+  const int32_t numDataBytesInGroup1 = numDataBytes / numRSBlocks;
+  const int32_t numDataBytesInGroup2 = numDataBytesInGroup1 + 1;
+  const int32_t numEcBytesInGroup1 =
+      numTotalBytesInGroup1 - numDataBytesInGroup1;
+  const int32_t numEcBytesInGroup2 =
+      numTotalBytesInGroup2 - numDataBytesInGroup2;
   if (blockID < numRsBlocksInGroup1) {
     *numDataBytesInBlock = numDataBytesInGroup1;
     *numECBytesInBlock = numEcBytesInGroup1;
@@ -301,16 +303,16 @@ void GetNumDataBytesAndNumECBytesForBlockID(int32_t numTotalBytes,
 }
 
 bool TerminateBits(int32_t numDataBytes, CBC_QRCoderBitVector* bits) {
-  size_t capacity = numDataBytes << 3;
+  const size_t capacity = numDataBytes << 3;
   if (bits->Size() > capacity)
     return false;
 
   for (int32_t i = 0; i < 4 && bits->Size() < capacity; ++i)
     bits->AppendBit(0);
 
-  int32_t numBitsInLastByte = bits->Size() % 8;
+  const int32_t numBitsInLastByte = bits->Size() % 8;
   if (numBitsInLastByte > 0) {
-    int32_t numPaddingBits = 8 - numBitsInLastByte;
+    const int32_t numPaddingBits = 8 - numBitsInLastByte;
     for (int32_t j = 0; j < numPaddingBits; ++j)
       bits->AppendBit(0);
   }
@@ -318,7 +320,7 @@ bool TerminateBits(int32_t numDataBytes, CBC_QRCoderBitVector* bits) {
   if (bits->Size() % 8 != 0)
     return false;
 
-  int32_t numPaddingBytes = numDataBytes - bits->sizeInBytes();
+  const int32_t numPaddingBytes = numDataBytes - bits->sizeInBytes();
   for (int32_t k = 0; k < numPaddingBytes; ++k)
     bits->AppendBits(k % 2 ? 0x11 : 0xec, 8);
   return bits->Size() == capacity;
@@ -430,13 +432,14 @@ bool CBC_QRCoderEncoder::Encode(WideStringView content,
   CBC_QRCoderBitVector dataBits;
   if (!AppendBytes(utf8Data, mode, &dataBits, encoding))
     return false;
-  int32_t numInputBytes = dataBits.sizeInBytes();
+  const int32_t numInputBytes = dataBits.sizeInBytes();
   if (!InitQRCode(numInputBytes, ecLevel, qrCode))
     return false;
   CBC_QRCoderBitVector headerAndDataBits;
   AppendModeInfo(mode, &headerAndDataBits);
-  int32_t numLetters = mode == CBC_QRCoderMode::sBYTE ? dataBits.sizeInBytes()
-                                                      : content.GetLength();
+  const int32_t numLetters = mode == CBC_QRCoderMode::sBYTE
+                                 ? dataBits.sizeInBytes()
+                                 : content.GetLength();
   if (!AppendLengthInfo(numLetters, qrCode->GetVersion(), mode,
                         &headerAndDataBits)) {
     return false;

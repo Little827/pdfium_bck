@@ -128,7 +128,7 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
     return false;
 
   FS_RECTF page_view_rect = pFormFillEnv->GetPageViewRect(pPage.Get());
-  int nRotate = hWidget->GetNode()->GetRotate();
+  const int nRotate = hWidget->GetNode()->GetRotate();
 
   int space_available_below_anchor;
   int space_available_above_anchor;
@@ -199,8 +199,9 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
   else
     draw_below_anchor = false;
 
-  int space_available = (draw_below_anchor ? space_available_below_anchor
-                                           : space_available_above_anchor);
+  const int space_available =
+      (draw_below_anchor ? space_available_below_anchor
+                         : space_available_above_anchor);
 
   // Set the popup height and y position according to what was decided above.
   float popup_height;
@@ -281,7 +282,7 @@ void CPDFXFA_DocEnvironment::PageViewEvent(CXFA_FFPageView* pPageView,
       XFA_PAGEVIEWEVENT_StopLayout != dwFlags)
     return;
 
-  int nNewCount = m_pContext->GetPageCount();
+  const int nNewCount = m_pContext->GetPageCount();
   if (nNewCount == m_pContext->GetOriginalPageCount())
     return;
 
@@ -298,10 +299,10 @@ void CPDFXFA_DocEnvironment::PageViewEvent(CXFA_FFPageView* pPageView,
     pPage->SetXFAPageViewIndex(i);
   }
 
-  int flag = (nNewCount < m_pContext->GetOriginalPageCount())
-                 ? FXFA_PAGEVIEWEVENT_POSTREMOVED
-                 : FXFA_PAGEVIEWEVENT_POSTADDED;
-  int count = abs(nNewCount - m_pContext->GetOriginalPageCount());
+  const int flag = (nNewCount < m_pContext->GetOriginalPageCount())
+                       ? FXFA_PAGEVIEWEVENT_POSTREMOVED
+                       : FXFA_PAGEVIEWEVENT_POSTADDED;
+  const int count = abs(nNewCount - m_pContext->GetOriginalPageCount());
   m_pContext->SetOriginalPageCount(nNewCount);
   pFormFillEnv->PageEvent(count, flag);
 }
@@ -425,7 +426,7 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
   if (!pFormFillEnv)
     return;
 
-  int fileType = bXDP ? FXFA_SAVEAS_XDP : FXFA_SAVEAS_XML;
+  const int fileType = bXDP ? FXFA_SAVEAS_XDP : FXFA_SAVEAS_XML;
   ByteString bs = wsFilePath.ToUTF16LE();
   if (wsFilePath.IsEmpty()) {
     if (!pFormFillEnv->GetFormFillInfo() ||
@@ -550,7 +551,7 @@ void CPDFXFA_DocEnvironment::SetFocusWidget(CXFA_FFDoc* hDoc,
     return;
   }
 
-  int pageViewCount = m_pContext->GetFormFillEnv()->GetPageViewCount();
+  const int pageViewCount = m_pContext->GetFormFillEnv()->GetPageViewCount();
   for (int i = 0; i < pageViewCount; i++) {
     CPDFSDK_PageView* pPageView =
         m_pContext->GetFormFillEnv()->GetPageViewAtIndex(i);
@@ -633,7 +634,7 @@ bool CPDFXFA_DocEnvironment::Submit(CXFA_FFDoc* hDoc, CXFA_Submit* submit) {
     return false;
 
   m_pContext->GetXFADocView()->UpdateDocView();
-  bool ret = SubmitInternal(hDoc, submit);
+  const bool ret = SubmitInternal(hDoc, submit);
   OnAfterNotifySubmit();
   return ret;
 }
@@ -902,7 +903,7 @@ bool CPDFXFA_DocEnvironment::SubmitInternal(CXFA_FFDoc* hDoc,
   }
 
   FPDF_FILEHANDLER* pFileHandler = nullptr;
-  int fileFlag = -1;
+  const int fileFlag = -1;
   switch (submit->GetSubmitFormat()) {
     case XFA_AttributeValue::Xdp: {
       WideString csContent = submit->GetSubmitXDPContent();

@@ -32,7 +32,7 @@ bool CFX_BidiChar::AppendChar(wchar_t wch) {
       break;
   }
 
-  bool bChangeDirection = (direction != m_CurrentSegment.direction);
+  const bool bChangeDirection = (direction != m_CurrentSegment.direction);
   if (bChangeDirection)
     StartNewSegment(direction);
 
@@ -61,15 +61,15 @@ CFX_BidiString::CFX_BidiString(const WideString& str) : m_Str(str) {
   if (bidi.EndChar())
     m_Order.push_back(bidi.GetSegmentInfo());
 
-  size_t nR2L = std::count_if(m_Order.begin(), m_Order.end(),
-                              [](const CFX_BidiChar::Segment& seg) {
-                                return seg.direction == CFX_BidiChar::RIGHT;
-                              });
+  const size_t nR2L = std::count_if(
+      m_Order.begin(), m_Order.end(), [](const CFX_BidiChar::Segment& seg) {
+        return seg.direction == CFX_BidiChar::RIGHT;
+      });
 
-  size_t nL2R = std::count_if(m_Order.begin(), m_Order.end(),
-                              [](const CFX_BidiChar::Segment& seg) {
-                                return seg.direction == CFX_BidiChar::LEFT;
-                              });
+  const size_t nL2R = std::count_if(
+      m_Order.begin(), m_Order.end(), [](const CFX_BidiChar::Segment& seg) {
+        return seg.direction == CFX_BidiChar::LEFT;
+      });
 
   if (nR2L > 0 && nR2L >= nL2R)
     SetOverallDirectionRight();

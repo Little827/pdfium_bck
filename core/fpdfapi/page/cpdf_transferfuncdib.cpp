@@ -48,12 +48,12 @@ void CPDF_TransferFuncDIB::TranslateScanline(
   bool bSkip = false;
   switch (m_pSrc->GetFormat()) {
     case FXDIB_Format::k1bppRgb: {
-      int r0 = m_RampR[0];
-      int g0 = m_RampG[0];
-      int b0 = m_RampB[0];
-      int r1 = m_RampR[255];
-      int g1 = m_RampG[255];
-      int b1 = m_RampB[255];
+      const int r0 = m_RampR[0];
+      const int g0 = m_RampG[0];
+      const int b0 = m_RampB[0];
+      const int r1 = m_RampR[255];
+      const int g1 = m_RampG[255];
+      const int b1 = m_RampB[255];
       int index = 0;
       for (int i = 0; i < m_Width; i++) {
         if (src_buf[i / 8] & (1 << (7 - i % 8))) {
@@ -72,8 +72,8 @@ void CPDF_TransferFuncDIB::TranslateScanline(
       break;
     }
     case FXDIB_Format::k1bppMask: {
-      int m0 = m_RampR[0];
-      int m1 = m_RampR[255];
+      const int m0 = m_RampR[0];
+      const int m1 = m_RampR[255];
       int index = 0;
       for (int i = 0; i < m_Width; i++) {
         if (src_buf[i / 8] & (1 << (7 - i % 8)))
@@ -93,7 +93,7 @@ void CPDF_TransferFuncDIB::TranslateScanline(
           (*dest_buf)[index++] = m_RampG[FXARGB_G(src_argb)];
           (*dest_buf)[index++] = m_RampR[FXARGB_B(src_argb)];
         } else {
-          uint32_t src_byte = *src_buf;
+          const uint32_t src_byte = *src_buf;
           (*dest_buf)[index++] = m_RampB[src_byte];
           (*dest_buf)[index++] = m_RampG[src_byte];
           (*dest_buf)[index++] = m_RampR[src_byte];

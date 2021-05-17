@@ -112,7 +112,7 @@ TEST(FXCRYPT, ContextWithLongData) {
   uint32_t total = 0;
   while (total < length) {
     constexpr uint32_t kChunkLen = 4097;  // intentionally not 2^k.
-    uint32_t len = std::min(kChunkLen, length - total);
+    const uint32_t len = std::min(kChunkLen, length - total);
     CRYPT_MD5Update(&ctx, data_span.subspan(total, len));
     total += len;
   }

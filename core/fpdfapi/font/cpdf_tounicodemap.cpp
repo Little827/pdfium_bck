@@ -51,13 +51,13 @@ WideString CPDF_ToUnicodeMap::Lookup(uint32_t charcode) const {
     return m_pBaseMap->UnicodeFromCID(static_cast<uint16_t>(charcode));
   }
 
-  uint32_t value = it->second;
+  const uint32_t value = it->second;
   wchar_t unicode = static_cast<wchar_t>(value & 0xffff);
   if (unicode != 0xffff)
     return unicode;
 
   WideStringView buf = m_MultiCharBuf.AsStringView();
-  size_t index = value >> 16;
+  const size_t index = value >> 16;
   if (!buf.IsValidIndex(index))
     return WideString();
   return WideString(buf.Substr(index + 1, buf[index]));
@@ -73,7 +73,7 @@ uint32_t CPDF_ToUnicodeMap::ReverseLookup(wchar_t unicode) const {
 
 // static
 pdfium::Optional<uint32_t> CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
-  size_t len = str.GetLength();
+  const size_t len = str.GetLength();
   if (len <= 2 || str[0] != '<' || str[len - 1] != '>')
     return pdfium::nullopt;
 
@@ -91,7 +91,7 @@ pdfium::Optional<uint32_t> CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
 
 // static
 WideString CPDF_ToUnicodeMap::StringToWideString(ByteStringView str) {
-  size_t len = str.GetLength();
+  const size_t len = str.GetLength();
   if (len <= 2 || str[0] != '<' || str[len - 1] != '>')
     return WideString();
 
@@ -171,8 +171,9 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
     if (!highcode_opt.has_value())
       return;
 
-    uint32_t lowcode = lowcode_opt.value();
-    uint32_t highcode = (lowcode & 0xffffff00) | (highcode_opt.value() & 0xff);
+    const uint32_t lowcode = lowcode_opt.value();
+    const uint32_t highcode =
+        (lowcode & 0xffffff00) | (highcode_opt.value() & 0xff);
 
     ByteStringView start = pParser->GetWord();
     if (start == "[") {
@@ -211,7 +212,7 @@ uint32_t CPDF_ToUnicodeMap::GetUnicode() const {
 }
 
 void CPDF_ToUnicodeMap::SetCode(uint32_t srccode, WideString destcode) {
-  size_t len = destcode.GetLength();
+  const size_t len = destcode.GetLength();
   if (len == 0)
     return;
 

@@ -65,8 +65,8 @@ void CFWL_ComboBox::RemoveAll() {
 
 void CFWL_ComboBox::ModifyStylesEx(uint32_t dwStylesExAdded,
                                    uint32_t dwStylesExRemoved) {
-  bool bAddDropDown = !!(dwStylesExAdded & FWL_STYLEEXT_CMB_DropDown);
-  bool bDelDropDown = !!(dwStylesExRemoved & FWL_STYLEEXT_CMB_DropDown);
+  const bool bAddDropDown = !!(dwStylesExAdded & FWL_STYLEEXT_CMB_DropDown);
+  const bool bDelDropDown = !!(dwStylesExRemoved & FWL_STYLEEXT_CMB_DropDown);
   dwStylesExRemoved &= ~FWL_STYLEEXT_CMB_DropDown;
   m_Properties.m_dwStyleExes |= FWL_STYLEEXT_CMB_DropDown;
   if (bAddDropDown)
@@ -134,8 +134,8 @@ WideString CFWL_ComboBox::GetTextByIndex(int32_t iIndex) const {
 }
 
 void CFWL_ComboBox::SetCurSel(int32_t iSel) {
-  int32_t iCount = m_pListBox->CountItems(nullptr);
-  bool bClearSel = iSel < 0 || iSel >= iCount;
+  const int32_t iCount = m_pListBox->CountItems(nullptr);
+  const bool bClearSel = iSel < 0 || iSel >= iCount;
   if (IsDropDownStyle() && m_pEdit) {
     if (bClearSel) {
       m_pEdit->SetText(WideString());
@@ -214,20 +214,20 @@ void CFWL_ComboBox::ShowDropList(bool bActivate) {
       return;
 
     CFWL_ComboList* pComboList = m_pListBox;
-    int32_t iItems = pComboList->CountItems(nullptr);
+    const int32_t iItems = pComboList->CountItems(nullptr);
     if (iItems < 1)
       return;
 
     ResetListItemAlignment();
     pComboList->ChangeSelected(m_iCurSel);
 
-    float fItemHeight = pComboList->CalcItemHeight();
-    float fBorder = GetCXBorderSize();
+    const float fItemHeight = pComboList->CalcItemHeight();
+    const float fBorder = GetCXBorderSize();
     float fPopupMin = 0.0f;
     if (iItems > 3)
       fPopupMin = fItemHeight * 3 + fBorder * 2;
 
-    float fPopupMax = fItemHeight * iItems + fBorder * 2;
+    const float fPopupMax = fItemHeight * iItems + fBorder * 2;
     CFX_RectF rtList(m_ClientRect.left, 0, m_WidgetRect.width, 0);
     GetPopupPos(fPopupMin, fPopupMax, m_WidgetRect, &rtList);
     m_pListBox->SetWidgetRect(rtList);
@@ -249,7 +249,7 @@ void CFWL_ComboBox::ShowDropList(bool bActivate) {
 
 void CFWL_ComboBox::MatchEditText() {
   WideString wsText = m_pEdit->GetText();
-  int32_t iMatch = m_pListBox->MatchItem(wsText.AsStringView());
+  const int32_t iMatch = m_pListBox->MatchItem(wsText.AsStringView());
   if (iMatch != m_iCurSel) {
     m_pListBox->ChangeSelected(iMatch);
     if (iMatch >= 0)
@@ -272,8 +272,8 @@ void CFWL_ComboBox::Layout() {
   m_ContentRect = m_ClientRect;
 
   IFWL_ThemeProvider* theme = GetThemeProvider();
-  float borderWidth = 1;
-  float fBtn = theme->GetScrollBarWidth();
+  const float borderWidth = 1;
+  const float fBtn = theme->GetScrollBarWidth();
   if (!(GetStylesEx() & FWL_STYLEEXT_CMB_ReadOnly)) {
     m_BtnRect =
         CFX_RectF(m_ClientRect.right() - fBtn, m_ClientRect.top + borderWidth,
@@ -409,10 +409,10 @@ void CFWL_ComboBox::OnProcessMessage(CFWL_Message* pMessage) {
         break;
       if (IsDropListVisible() &&
           pKey->m_dwCmd == CFWL_MessageKey::Type::kKeyDown) {
-        bool bListKey = pKey->m_dwKeyCode == XFA_FWL_VKEY_Up ||
-                        pKey->m_dwKeyCode == XFA_FWL_VKEY_Down ||
-                        pKey->m_dwKeyCode == XFA_FWL_VKEY_Return ||
-                        pKey->m_dwKeyCode == XFA_FWL_VKEY_Escape;
+        const bool bListKey = pKey->m_dwKeyCode == XFA_FWL_VKEY_Up ||
+                              pKey->m_dwKeyCode == XFA_FWL_VKEY_Down ||
+                              pKey->m_dwKeyCode == XFA_FWL_VKEY_Return ||
+                              pKey->m_dwKeyCode == XFA_FWL_VKEY_Escape;
         if (bListKey) {
           m_pListBox->GetDelegate()->OnProcessMessage(pMessage);
           break;
@@ -457,7 +457,7 @@ void CFWL_ComboBox::OnLButtonUp(CFWL_MessageMouse* pMsg) {
 }
 
 void CFWL_ComboBox::OnLButtonDown(CFWL_MessageMouse* pMsg) {
-  bool bDropDown = IsDropListVisible();
+  const bool bDropDown = IsDropListVisible();
   CFX_RectF& rtBtn = bDropDown ? m_BtnRect : m_ClientRect;
   if (!rtBtn.Contains(pMsg->m_pos))
     return;
@@ -487,12 +487,12 @@ void CFWL_ComboBox::OnFocusChanged(CFWL_Message* pMsg, bool bSet) {
 }
 
 void CFWL_ComboBox::OnKey(CFWL_MessageKey* pMsg) {
-  uint32_t dwKeyCode = pMsg->m_dwKeyCode;
+  const uint32_t dwKeyCode = pMsg->m_dwKeyCode;
   const bool bUp = dwKeyCode == XFA_FWL_VKEY_Up;
   const bool bDown = dwKeyCode == XFA_FWL_VKEY_Down;
   if (bUp || bDown) {
     CFWL_ComboList* pComboList = m_pListBox;
-    int32_t iCount = pComboList->CountItems(nullptr);
+    const int32_t iCount = pComboList->CountItems(nullptr);
     if (iCount < 1)
       return;
 
