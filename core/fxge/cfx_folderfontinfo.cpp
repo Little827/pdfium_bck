@@ -53,7 +53,7 @@ bool FindFamilyNameMatch(ByteStringView family_name,
   if (!result.has_value())
     return false;
 
-  size_t next_index = result.value() + family_name.GetLength();
+  const size_t next_index = result.value() + family_name.GetLength();
   // Rule out the case that |family_name| is a substring of
   // |installed_font_name| but their family names are actually different words.
   // For example: "Univers" and "Universal" are not a match because they have
@@ -86,8 +86,8 @@ ByteString LoadTableFromTT(FILE* pFile,
   for (uint32_t i = 0; i < nTables; i++) {
     const uint8_t* p = pTables + i * 16;
     if (GET_TT_LONG(p) == tag) {
-      uint32_t offset = GET_TT_LONG(p + 8);
-      uint32_t size = GET_TT_LONG(p + 12);
+      const uint32_t offset = GET_TT_LONG(p + 8);
+      const uint32_t size = GET_TT_LONG(p + 12);
       if (offset > std::numeric_limits<uint32_t>::max() - size ||
           offset + size > fileSize || fseek(pFile, offset, SEEK_SET) < 0) {
         return ByteString();
@@ -196,7 +196,7 @@ void CFX_FolderFontInfo::ScanFile(const ByteString& path) {
 
   fseek(pFile.get(), 0, SEEK_END);
 
-  uint32_t filesize = ftell(pFile.get());
+  const uint32_t filesize = ftell(pFile.get());
   uint8_t buffer[16];
   fseek(pFile.get(), 0, SEEK_SET);
 
@@ -209,7 +209,7 @@ void CFX_FolderFontInfo::ScanFile(const ByteString& path) {
     return;
   }
 
-  uint32_t nFaces = GET_TT_LONG(buffer + 8);
+  const uint32_t nFaces = GET_TT_LONG(buffer + 8);
   FX_SAFE_SIZE_T safe_face_bytes = nFaces;
   safe_face_bytes *= 4;
   if (!safe_face_bytes.IsValid())
@@ -235,7 +235,7 @@ void CFX_FolderFontInfo::ReportFace(const ByteString& path,
   if (fseek(pFile, offset, SEEK_SET) < 0 || !fread(buffer, 12, 1, pFile))
     return;
 
-  uint32_t nTables = GET_TT_SHORT(buffer + 4);
+  const uint32_t nTables = GET_TT_SHORT(buffer + 4);
   ByteString tables = ReadStringFromFile(pFile, nTables * 16);
   if (tables.IsEmpty())
     return;
@@ -262,7 +262,7 @@ void CFX_FolderFontInfo::ReportFace(const ByteString& path,
       LoadTableFromTT(pFile, tables.raw_str(), nTables, 0x4f532f32, filesize);
   if (os2.GetLength() >= 86) {
     const uint8_t* p = os2.raw_str() + 78;
-    uint32_t codepages = GET_TT_LONG(p);
+    const uint32_t codepages = GET_TT_LONG(p);
     if (codepages & (1U << 17)) {
       m_pMapper->AddInstalledFont(facename, FX_CHARSET_ShiftJIS);
       pInfo->m_Charsets |= CHARSET_FLAG_SHIFTJIS;
@@ -317,7 +317,7 @@ void* CFX_FolderFontInfo::FindFont(int weight,
     return GetFont("Courier New");
 
   ByteStringView bsFamily(family);
-  uint32_t charset_flag = GetCharset(charset);
+  const uint32_t charset_flag = GetCharset(charset);
   int32_t iBestSimilar = 0;
   for (const auto& it : m_FontList) {
     const ByteString& bsName = it.first;
@@ -366,7 +366,7 @@ uint32_t CFX_FolderFontInfo::GetFontData(void* hFont,
   } else if (table == kTableTTCF) {
     datasize = pFont->m_FontOffset ? pFont->m_FileSize : 0;
   } else {
-    uint32_t nTables = pFont->m_FontTables.GetLength() / 16;
+    const uint32_t nTables = pFont->m_FontTables.GetLength() / 16;
     for (uint32_t i = 0; i < nTables; i++) {
       const uint8_t* p = pFont->m_FontTables.raw_str() + i * 16;
       if (GET_TT_LONG(p) == table) {

@@ -72,7 +72,8 @@ bool CPWL_Edit::RePosChildWnd() {
 }
 
 CFX_FloatRect CPWL_Edit::GetClientRect() const {
-  float width = static_cast<float>(GetBorderWidth() + GetInnerBorderWidth());
+  const float width =
+      static_cast<float>(GetBorderWidth() + GetInnerBorderWidth());
   CFX_FloatRect rcClient = GetWindowRect().GetDeflated(width, width);
   if (CPWL_ScrollBar* pVSB = GetVScrollBar()) {
     if (pVSB->IsVisible()) {
@@ -217,7 +218,6 @@ void CPWL_Edit::DrawThisAppearance(CFX_RenderDevice* pDevice,
                           m_pFormFiller.Get());
 }
 
-
 void CPWL_Edit::OnSetFocus() {
   ObservedPtr<CPWL_Edit> observed_ptr(this);
   SetEditCaret(true);
@@ -287,8 +287,8 @@ float CPWL_Edit::GetCharArrayAutoFontSize(const CPDF_Font* pFont,
   const FX_RECT& rcBBox = pFont->GetFontBBox();
 
   CFX_FloatRect rcCell = rcPlate;
-  float xdiv = rcCell.Width() / nCharArray * 1000.0f / rcBBox.Width();
-  float ydiv = -rcCell.Height() * 1000.0f / rcBBox.Height();
+  const float xdiv = rcCell.Width() / nCharArray * 1000.0f / rcBBox.Width();
+  const float ydiv = -rcCell.Height() * 1000.0f / rcBBox.Height();
 
   return xdiv < ydiv ? xdiv : ydiv;
 }
@@ -307,8 +307,8 @@ void CPWL_Edit::SetCharArray(int32_t nCharArray) {
   if (!pFontMap)
     return;
 
-  float fFontSize = GetCharArrayAutoFontSize(pFontMap->GetPDFFont(0).Get(),
-                                             GetClientRect(), nCharArray);
+  const float fFontSize = GetCharArrayAutoFontSize(
+      pFontMap->GetPDFFont(0).Get(), GetClientRect(), nCharArray);
   if (fFontSize <= 0.0f)
     return;
 
@@ -363,7 +363,7 @@ bool CPWL_Edit::OnKeyDown(uint16_t nChar, uint32_t nFlag) {
     }
   }
 
-  bool bRet = OnKeyDownInternal(nChar, nFlag);
+  const bool bRet = OnKeyDownInternal(nChar, nFlag);
 
   // In case of implementation swallow the OnKeyDown event.
   if (IsProceedtoOnChar(nChar, nFlag))
@@ -374,8 +374,8 @@ bool CPWL_Edit::OnKeyDown(uint16_t nChar, uint32_t nFlag) {
 
 // static
 bool CPWL_Edit::IsProceedtoOnChar(uint16_t nKeyCode, uint32_t nFlag) {
-  bool bCtrl = IsPlatformShortcutKey(nFlag);
-  bool bAlt = IsALTpressed(nFlag);
+  const bool bCtrl = IsPlatformShortcutKey(nFlag);
+  const bool bAlt = IsALTpressed(nFlag);
   if (bCtrl && !bAlt) {
     // hot keys for edit control.
     switch (nKeyCode) {
@@ -446,7 +446,7 @@ bool CPWL_Edit::OnChar(uint16_t nChar, uint32_t nFlag) {
     return false;
 
   if (IPVT_FontMap* pFontMap = GetFontMap()) {
-    int32_t nOldCharSet = GetCharSet();
+    const int32_t nOldCharSet = GetCharSet();
     int32_t nNewCharSet =
         pFontMap->CharSetFromUnicode(nChar, FX_CHARSET_Default);
     if (nOldCharSet != nNewCharSet) {
@@ -547,7 +547,7 @@ bool CPWL_Edit::OnKeyDownInternal(uint16_t nChar, uint32_t nFlag) {
   if (m_bMouseDown)
     return true;
 
-  bool bRet = CPWL_Wnd::OnKeyDown(nChar, nFlag);
+  const bool bRet = CPWL_Wnd::OnKeyDown(nChar, nFlag);
 
   // FILTER
   switch (nChar) {
@@ -631,9 +631,9 @@ bool CPWL_Edit::OnCharInternal(uint16_t nChar, uint32_t nFlag) {
       break;
   }
 
-  bool bCtrl = IsPlatformShortcutKey(nFlag);
-  bool bAlt = IsALTpressed(nFlag);
-  bool bShift = IsSHIFTpressed(nFlag);
+  const bool bCtrl = IsPlatformShortcutKey(nFlag);
+  const bool bAlt = IsALTpressed(nFlag);
+  const bool bShift = IsSHIFTpressed(nFlag);
 
   uint16_t word = nChar;
 

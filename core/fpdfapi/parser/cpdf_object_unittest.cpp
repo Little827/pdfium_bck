@@ -72,7 +72,7 @@ class PDFObjectsTest : public testing::Test {
     m_DictObj->SetNewFor<CPDF_Number>("num", 0.23f);
     // Stream object.
     const char content[] = "abcdefghijklmnopqrstuvwxyz";
-    size_t buf_len = pdfium::size(content);
+    const size_t buf_len = pdfium::size(content);
     std::unique_ptr<uint8_t, FxFreeDeleter> buf(
         FX_AllocUninit(uint8_t, buf_len));
     memcpy(buf.get(), content, buf_len);
@@ -575,7 +575,7 @@ TEST(PDFArrayTest, GetTypeAt) {
     for (size_t i = 0; i < 3; ++i) {
       vals[i] = arr->AppendNew<CPDF_Array>();
       for (size_t j = 0; j < 3; ++j) {
-        int value = j + 100;
+        const int value = j + 100;
         vals[i]->InsertNewAt<CPDF_Number>(i, value);
       }
     }
@@ -600,7 +600,7 @@ TEST(PDFArrayTest, GetTypeAt) {
         std::string key("key");
         char buf[33];
         key.append(FXSYS_itoa(j, buf, 10));
-        int value = j + 200;
+        const int value = j + 200;
         vals[i]->SetNewFor<CPDF_Number>(key.c_str(), value);
       }
     }
@@ -626,11 +626,11 @@ TEST(PDFArrayTest, GetTypeAt) {
         std::string key("key");
         char buf[33];
         key.append(FXSYS_itoa(j, buf, 10));
-        int value = j + 200;
+        const int value = j + 200;
         vals[i]->SetNewFor<CPDF_Number>(key.c_str(), value);
       }
       uint8_t content[] = "content: this is a stream";
-      size_t data_size = pdfium::size(content);
+      const size_t data_size = pdfium::size(content);
       std::unique_ptr<uint8_t, FxFreeDeleter> data(
           FX_AllocUninit(uint8_t, data_size));
       memcpy(data.get(), content, data_size);
@@ -677,7 +677,7 @@ TEST(PDFArrayTest, GetTypeAt) {
     uint8_t data[] = "A stream for test";
     // The data buffer will be owned by stream object, so it needs to be
     // dynamically allocated.
-    size_t buf_size = sizeof(data);
+    const size_t buf_size = sizeof(data);
     std::unique_ptr<uint8_t, FxFreeDeleter> buf(
         FX_AllocUninit(uint8_t, buf_size));
     memcpy(buf.get(), data, buf_size);

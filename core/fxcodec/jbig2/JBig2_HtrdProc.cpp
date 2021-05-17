@@ -22,8 +22,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_HTRDProc::DecodeArith(
     HSKIP = std::make_unique<CJBig2_Image>(HGW, HGH);
     for (uint32_t mg = 0; mg < HGH; ++mg) {
       for (uint32_t ng = 0; ng < HGW; ++ng) {
-        int32_t x = (HGX + mg * HRY + ng * HRX) >> 8;
-        int32_t y = (HGY + mg * HRX - ng * HRY) >> 8;
+        const int32_t x = (HGX + mg * HRY + ng * HRX) >> 8;
+        const int32_t y = (HGY + mg * HRX - ng * HRY) >> 8;
         if ((x + HPW <= 0) | (x >= static_cast<int32_t>(HBW)) | (y + HPH <= 0) |
             (y >= static_cast<int32_t>(HPH))) {
           HSKIP->SetPixel(ng, mg, 1);
@@ -59,7 +59,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_HTRDProc::DecodeArith(
     GRD.GBAT[7] = -2;
   }
 
-  uint8_t GSBPP = static_cast<uint8_t>(HBPP);
+  const uint8_t GSBPP = static_cast<uint8_t>(HBPP);
   std::vector<std::unique_ptr<CJBig2_Image>> GSPLANES(GSBPP);
   for (int32_t i = GSBPP - 1; i >= 0; --i) {
     std::unique_ptr<CJBig2_Image> pImage;
@@ -93,7 +93,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_HTRDProc::DecodeMMR(
   GRD.GBW = HGW;
   GRD.GBH = HGH;
 
-  uint8_t GSBPP = static_cast<uint8_t>(HBPP);
+  const uint8_t GSBPP = static_cast<uint8_t>(HBPP);
   std::vector<std::unique_ptr<CJBig2_Image>> GSPLANES(GSBPP);
   GRD.StartDecodeMMR(&GSPLANES[GSBPP - 1], pStream);
   if (!GSPLANES[GSBPP - 1])
@@ -125,9 +125,9 @@ std::unique_ptr<CJBig2_Image> CJBig2_HTRDProc::DecodeImage(
       uint32_t gsval = 0;
       for (uint8_t i = 0; i < GSPLANES.size(); ++i)
         gsval |= GSPLANES[i]->GetPixel(x, y) << i;
-      uint32_t pat_index = std::min(gsval, HNUMPATS - 1);
-      int32_t out_x = (HGX + y * HRY + x * HRX) >> 8;
-      int32_t out_y = (HGY + y * HRX - x * HRY) >> 8;
+      const uint32_t pat_index = std::min(gsval, HNUMPATS - 1);
+      const int32_t out_x = (HGX + y * HRY + x * HRX) >> 8;
+      const int32_t out_y = (HGY + y * HRX - x * HRY) >> 8;
       (*HPATS)[pat_index]->ComposeTo(HTREG.get(), out_x, out_y, HCOMBOP);
     }
   }

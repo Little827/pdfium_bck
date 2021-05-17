@@ -450,7 +450,7 @@ void CRYPT_SHA256Update(CRYPT_sha2_context* context,
     return;
 
   uint32_t left = context->total_bytes & 0x3F;
-  uint32_t fill = 64 - left;
+  const uint32_t fill = 64 - left;
   context->total_bytes += size;
   if (left && size >= fill) {
     memcpy(context->buffer + left, data, fill);
@@ -472,8 +472,8 @@ void CRYPT_SHA256Finish(CRYPT_sha2_context* context, uint8_t digest[32]) {
   uint8_t msglen[8];
   uint64_t total_bits = 8 * context->total_bytes;  // Prior to padding.
   SHA_PUT_UINT64(total_bits, msglen, 0);
-  uint32_t last = context->total_bytes & 0x3F;
-  uint32_t padn = (last < 56) ? (56 - last) : (120 - last);
+  const uint32_t last = context->total_bytes & 0x3F;
+  const uint32_t padn = (last < 56) ? (56 - last) : (120 - last);
   CRYPT_SHA256Update(context, sha256_padding, padn);
   CRYPT_SHA256Update(context, msglen, 8);
   SHA_PUT_UINT32(context->state[0], digest, 0);
@@ -515,7 +515,7 @@ void CRYPT_SHA384Update(CRYPT_sha2_context* context,
     return;
 
   uint32_t left = context->total_bytes & 0x7F;
-  uint32_t fill = 128 - left;
+  const uint32_t fill = 128 - left;
   context->total_bytes += size;
   if (left && size >= fill) {
     memcpy(context->buffer + left, data, fill);
@@ -538,8 +538,8 @@ void CRYPT_SHA384Finish(CRYPT_sha2_context* context, uint8_t digest[48]) {
   uint64_t total_bits = 8 * context->total_bytes;  // Prior to padding.
   SHA_PUT_UINT64(0ULL, msglen, 0);
   SHA_PUT_UINT64(total_bits, msglen, 8);
-  uint32_t last = context->total_bytes & 0x7F;
-  uint32_t padn = (last < 112) ? (112 - last) : (240 - last);
+  const uint32_t last = context->total_bytes & 0x7F;
+  const uint32_t padn = (last < 112) ? (112 - last) : (240 - last);
   CRYPT_SHA384Update(context, sha384_padding, padn);
   CRYPT_SHA384Update(context, msglen, 16);
   SHA_PUT_UINT64(context->state[0], digest, 0);
@@ -583,8 +583,8 @@ void CRYPT_SHA512Finish(CRYPT_sha2_context* context, uint8_t digest[64]) {
   uint64_t total_bits = 8 * context->total_bytes;
   SHA_PUT_UINT64(0ULL, msglen, 0);
   SHA_PUT_UINT64(total_bits, msglen, 8);
-  uint32_t last = context->total_bytes & 0x7F;
-  uint32_t padn = (last < 112) ? (112 - last) : (240 - last);
+  const uint32_t last = context->total_bytes & 0x7F;
+  const uint32_t padn = (last < 112) ? (112 - last) : (240 - last);
   CRYPT_SHA512Update(context, sha384_padding, padn);
   CRYPT_SHA512Update(context, msglen, 16);
   SHA_PUT_UINT64(context->state[0], digest, 0);

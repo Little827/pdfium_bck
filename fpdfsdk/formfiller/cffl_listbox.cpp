@@ -24,7 +24,7 @@ CFFL_ListBox::~CFFL_ListBox() = default;
 
 CPWL_Wnd::CreateParams CFFL_ListBox::GetCreateParam() {
   CPWL_Wnd::CreateParams cp = CFFL_TextObject::GetCreateParam();
-  uint32_t dwFieldFlag = m_pWidget->GetFieldFlags();
+  const uint32_t dwFieldFlag = m_pWidget->GetFieldFlags();
   if (dwFieldFlag & pdfium::form_flags::kChoiceMultiSelect)
     cp.dwFlags |= PLBS_MULTIPLESEL;
 
@@ -109,7 +109,7 @@ void CFFL_ListBox::SaveData(CPDFSDK_PageView* pPageView) {
   if (!pListBox)
     return;
 
-  int32_t nNewTopIndex = pListBox->GetTopVisibleIndex();
+  const int32_t nNewTopIndex = pListBox->GetTopVisibleIndex();
   m_pWidget->ClearSelection();
   if (m_pWidget->GetFieldFlags() & pdfium::form_flags::kChoiceMultiSelect) {
     for (int32_t i = 0, sz = pListBox->GetCount(); i < sz; i++) {
@@ -146,7 +146,7 @@ void CFFL_ListBox::GetActionData(CPDFSDK_PageView* pPageView,
       } else {
         CPWL_ListBox* pListBox = GetListBox(pPageView);
         if (pListBox) {
-          int32_t nCurSel = pListBox->GetCurSel();
+          const int32_t nCurSel = pListBox->GetCurSel();
           if (nCurSel >= 0)
             fa.sValue = m_pWidget->GetOptionLabel(nCurSel);
         }
@@ -157,7 +157,7 @@ void CFFL_ListBox::GetActionData(CPDFSDK_PageView* pPageView,
       if (m_pWidget->GetFieldFlags() & pdfium::form_flags::kChoiceMultiSelect) {
         fa.sValue.clear();
       } else {
-        int32_t nCurSel = m_pWidget->GetSelectedIndex(0);
+        const int32_t nCurSel = m_pWidget->GetSelectedIndex(0);
         if (nCurSel >= 0)
           fa.sValue = m_pWidget->GetOptionLabel(nCurSel);
       }

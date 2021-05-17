@@ -204,8 +204,8 @@ void CFWL_DateTimePicker::ShowMonthCalendar(bool bActivate) {
 
   if (bActivate) {
     CFX_RectF rtMonthCal = m_pMonthCal->GetAutosizedWidgetRect();
-    float fPopupMin = rtMonthCal.height;
-    float fPopupMax = rtMonthCal.height;
+    const float fPopupMin = rtMonthCal.height;
+    const float fPopupMax = rtMonthCal.height;
     CFX_RectF rtAnchor = m_WidgetRect;
     rtAnchor.width = rtMonthCal.width;
     rtMonthCal.left = m_ClientRect.left;

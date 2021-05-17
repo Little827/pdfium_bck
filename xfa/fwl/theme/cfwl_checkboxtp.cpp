@@ -75,8 +75,8 @@ void CFWL_CheckBoxTP::DrawSignCross(CFGAS_GEGraphics* pGraphics,
                                     FX_ARGB argbFill,
                                     const CFX_Matrix& matrix) {
   CFGAS_GEPath path;
-  float fRight = rtSign.right();
-  float fBottom = rtSign.bottom();
+  const float fRight = rtSign.right();
+  const float fBottom = rtSign.bottom();
   path.AddLine(rtSign.TopLeft(), CFX_PointF(fRight, fBottom));
   path.AddLine(CFX_PointF(rtSign.left, fBottom),
                CFX_PointF(fRight, rtSign.top));
@@ -93,9 +93,9 @@ void CFWL_CheckBoxTP::DrawSignDiamond(CFGAS_GEGraphics* pGraphics,
                                       FX_ARGB argbFill,
                                       const CFX_Matrix& matrix) {
   CFGAS_GEPath path;
-  float fWidth = rtSign.width;
-  float fHeight = rtSign.height;
-  float fBottom = rtSign.bottom();
+  const float fWidth = rtSign.width;
+  const float fHeight = rtSign.height;
+  const float fBottom = rtSign.bottom();
   path.MoveTo(CFX_PointF(rtSign.left + fWidth / 2, rtSign.top));
   path.LineTo(CFX_PointF(rtSign.left, rtSign.top + fHeight / 2));
   path.LineTo(CFX_PointF(rtSign.left + fWidth / 2, fBottom));
@@ -125,8 +125,8 @@ void CFWL_CheckBoxTP::DrawSignStar(CFGAS_GEGraphics* pGraphics,
                                    FX_ARGB argbFill,
                                    const CFX_Matrix& matrix) {
   CFGAS_GEPath path;
-  float fBottom = rtSign.bottom();
-  float fRadius = (rtSign.top - fBottom) / (1 + cosf(FX_PI / 5.0f));
+  const float fBottom = rtSign.bottom();
+  const float fRadius = (rtSign.top - fBottom) / (1 + cosf(FX_PI / 5.0f));
   CFX_PointF ptCenter((rtSign.left + rtSign.right()) / 2.0f,
                       (rtSign.top + fBottom) / 2.0f);
 
@@ -156,9 +156,9 @@ void CFWL_CheckBoxTP::EnsureCheckPathInitialized(float fCheckLen) {
 
   m_pCheckPath = std::make_unique<CFGAS_GEPath>();
 
-  float fWidth = kSignPath;
-  float fHeight = -kSignPath;
-  float fBottom = kSignPath;
+  const float fWidth = kSignPath;
+  const float fHeight = -kSignPath;
+  const float fBottom = kSignPath;
   CFX_PointF pt1(fWidth / 15.0f, fBottom + fHeight * 2 / 5.0f);
   CFX_PointF pt2(fWidth / 4.5f, fBottom + fHeight / 16.0f);
   CFX_PointF pt3(fWidth / 3.0f, fBottom);
@@ -198,7 +198,7 @@ void CFWL_CheckBoxTP::EnsureCheckPathInitialized(float fCheckLen) {
   p2 = ScaleBezierPoint(pt15 - pt1);
   m_pCheckPath->BezierTo(pt5 + p1, pt1 + p2, pt1);
 
-  float fScale = fCheckLen / kSignPath;
+  const float fScale = fCheckLen / kSignPath;
   CFX_Matrix mt;
   mt.Scale(fScale, fScale);
   m_pCheckPath->TransformBy(mt);
@@ -221,9 +221,10 @@ void CFWL_CheckBoxTP::DrawCheckSign(CFWL_Widget* pWidget,
                                     int32_t iState,
                                     const CFX_Matrix& matrix) {
   CFX_RectF rtSign(pRtBox);
-  uint32_t dwColor = iState & CFWL_PartState_Neutral ? 0xFFA9A9A9 : 0xFF000000;
+  const uint32_t dwColor =
+      iState & CFWL_PartState_Neutral ? 0xFFA9A9A9 : 0xFF000000;
 
-  uint32_t dwStyle = pWidget->GetStylesEx();
+  const uint32_t dwStyle = pWidget->GetStylesEx();
   rtSign.Deflate(rtSign.width / 4, rtSign.height / 4);
   switch (dwStyle & FWL_STYLEEXT_CKB_SignShapeMask) {
     case FWL_STYLEEXT_CKB_SignShapeCheck:

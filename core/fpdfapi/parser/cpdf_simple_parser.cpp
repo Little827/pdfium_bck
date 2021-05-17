@@ -42,7 +42,7 @@ ByteStringView CPDF_SimpleParser::GetWord() {
   }
 
   uint8_t dwSize = 0;
-  uint32_t start_pos = cur_pos_ - 1;
+  const uint32_t start_pos = cur_pos_ - 1;
   if (PDFCharIsDelimiter(ch)) {
     // Find names
     if (ch == '/') {

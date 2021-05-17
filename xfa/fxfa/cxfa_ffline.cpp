@@ -37,7 +37,7 @@ CXFA_FFLine::~CXFA_FFLine() = default;
 void CXFA_FFLine::GetRectFromHand(CFX_RectF& rect,
                                   XFA_AttributeValue iHand,
                                   float fLineWidth) {
-  float fHalfWidth = fLineWidth / 2.0f;
+  const float fHalfWidth = fLineWidth / 2.0f;
   if (rect.height < 1.0f) {
     switch (iHand) {
       case XFA_AttributeValue::Left:

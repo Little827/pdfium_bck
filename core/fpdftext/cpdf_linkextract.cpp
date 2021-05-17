@@ -35,7 +35,7 @@ size_t FindWebLinkEnding(const WideString& str, size_t start, size_t end) {
     if (result.has_value()) {
       end = result.value();
       if (end > start + 1) {  // Has content inside brackets.
-        size_t len = str.GetLength();
+        const size_t len = str.GetLength();
         size_t off = end + 1;
         if (off < len && str[off] == L':') {
           off++;
@@ -189,7 +189,7 @@ bool CPDF_LinkExtract::CheckWebLink(WideString* strBeCheck,
   WideString str = *strBeCheck;
   str.MakeLower();
 
-  size_t len = str.GetLength();
+  const size_t len = str.GetLength();
   // First, try to find the scheme.
   auto start = str.Find(kHttpScheme);
   if (start.has_value()) {
@@ -248,7 +248,7 @@ bool CPDF_LinkExtract::CheckMailLink(WideString* str) {
       }
       // End extracting for other invalid chars, '.' at the beginning, or
       // consecutive '.'.
-      size_t removed_len = i == pPos ? i + 1 : i;
+      const size_t removed_len = i == pPos ? i + 1 : i;
       *str = str->Last(str->GetLength() - removed_len);
       break;
     }
@@ -270,7 +270,7 @@ bool CPDF_LinkExtract::CheckMailLink(WideString* str) {
     return false;
 
   // Validate all other chars in domain name.
-  size_t nLen = str->GetLength();
+  const size_t nLen = str->GetLength();
   pPos = 0;  // Used to track the position of '.'.
   for (size_t i = aPos.value() + 1; i < nLen; i++) {
     wchar_t wch = (*str)[i];
@@ -279,7 +279,7 @@ bool CPDF_LinkExtract::CheckMailLink(WideString* str) {
 
     if (wch != L'.' || i == pPos + 1) {
       // Domain name should end before invalid char.
-      size_t host_end = i == pPos + 1 ? i - 2 : i - 1;
+      const size_t host_end = i == pPos + 1 ? i - 2 : i - 1;
       if (pPos > 0 && host_end - aPos.value() >= 3) {
         // Trim the ending invalid chars if there is at least one '.' and name.
         *str = str->First(host_end + 1);

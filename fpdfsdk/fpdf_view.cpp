@@ -253,7 +253,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
   if (!pXFA)
     return FORMTYPE_ACRO_FORM;
 
-  bool bNeedsRendering = pRoot->GetBooleanFor("NeedsRendering", false);
+  const bool bNeedsRendering = pRoot->GetBooleanFor("NeedsRendering", false);
   return bNeedsRendering ? FORMTYPE_XFA_FULL : FORMTYPE_XFA_FOREGROUND;
 }
 
@@ -465,8 +465,8 @@ RetainPtr<CFX_DIBitmap> GetMaskBitmap(CPDF_Page* pPage,
 void RenderBitmap(CFX_RenderDevice* device,
                   const RetainPtr<CFX_DIBitmap>& pSrc,
                   const FX_RECT& mask_area) {
-  int size_x_bm = mask_area.Width();
-  int size_y_bm = mask_area.Height();
+  const int size_x_bm = mask_area.Width();
+  const int size_y_bm = mask_area.Height();
   if (size_x_bm == 0 || size_y_bm == 0)
     return;
 
@@ -546,7 +546,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
 
   if (!bHasMask) {
     CPDF_WindowsRenderDevice WinDC(dc);
-    bool bitsStretched = false;
+    const bool bitsStretched = false;
     if (WinDC.GetDeviceType() == DeviceType::kPrinter) {
       auto pDst = pdfium::MakeRetain<CFX_DIBitmap>();
       if (pDst->Create(size_x, size_y, FXDIB_Format::kRgb32)) {
@@ -1126,7 +1126,7 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDF_GetNamedDest(FPDF_DOCUMENT document,
     return nullptr;
 
   auto name_tree = CPDF_NameTree::Create(pDoc, "Dests");
-  size_t name_tree_count = name_tree ? name_tree->GetCount() : 0;
+  const size_t name_tree_count = name_tree ? name_tree->GetCount() : 0;
   CPDF_Object* pDestObj = nullptr;
   WideString wsName;
   if (static_cast<size_t>(index) >= name_tree_count) {
@@ -1169,7 +1169,7 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDF_GetNamedDest(FPDF_DOCUMENT document,
     return nullptr;
 
   ByteString utf16Name = wsName.ToUTF16LE();
-  int len = utf16Name.GetLength();
+  const int len = utf16Name.GetLength();
   if (!buffer) {
     *buflen = len;
   } else if (len <= *buflen) {

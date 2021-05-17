@@ -1666,10 +1666,10 @@ std::tuple<uint8_t, uint8_t, uint8_t> AdobeCMYK_to_sRGB1(uint8_t c,
                                                          uint8_t m,
                                                          uint8_t y,
                                                          uint8_t k) {
-  int fix_c = c << 8;
-  int fix_m = m << 8;
-  int fix_y = y << 8;
-  int fix_k = k << 8;
+  const int fix_c = c << 8;
+  const int fix_m = m << 8;
+  const int fix_y = y << 8;
+  const int fix_k = k << 8;
   int c_index = (fix_c + 4096) >> 13;
   int m_index = (fix_m + 4096) >> 13;
   int y_index = (fix_y + 4096) >> 13;
@@ -1736,10 +1736,10 @@ std::tuple<float, float, float> AdobeCMYK_to_sRGB(float c,
   // getting the same answer as before is desirable.
   // All floats from 0.0 to 1.0 were tested and now give the same results.
   const float rounding_offset = 0.49999997f;
-  uint8_t c1 = static_cast<int>(c * 255.f + rounding_offset);
-  uint8_t m1 = static_cast<int>(m * 255.f + rounding_offset);
-  uint8_t y1 = static_cast<int>(y * 255.f + rounding_offset);
-  uint8_t k1 = static_cast<int>(k * 255.f + rounding_offset);
+  const uint8_t c1 = static_cast<int>(c * 255.f + rounding_offset);
+  const uint8_t m1 = static_cast<int>(m * 255.f + rounding_offset);
+  const uint8_t y1 = static_cast<int>(y * 255.f + rounding_offset);
+  const uint8_t k1 = static_cast<int>(k * 255.f + rounding_offset);
 
   DCHECK_EQ(c1, FXSYS_roundf(c * 255));
   DCHECK_EQ(m1, FXSYS_roundf(m * 255));

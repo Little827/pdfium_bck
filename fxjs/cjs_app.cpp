@@ -145,9 +145,9 @@ CJS_Result CJS_App::set_viewer_variation(CJS_Runtime* pRuntime,
 CJS_Result CJS_App::get_viewer_version(CJS_Runtime* pRuntime) {
   CPDF_Document::Extension* pContext =
       pRuntime->GetFormFillEnv()->GetDocExtension();
-  int version = pContext && pContext->ContainsExtensionForm()
-                    ? JS_NUM_VIEWERVERSION_XFA
-                    : JS_NUM_VIEWERVERSION;
+  const int version = pContext && pContext->ContainsExtensionForm()
+                          ? JS_NUM_VIEWERVERSION_XFA
+                          : JS_NUM_VIEWERVERSION;
   return CJS_Result::Success(pRuntime->NewNumber(version));
 }
 
@@ -300,7 +300,8 @@ CJS_Result CJS_App::setInterval(
   if (script.IsEmpty())
     return CJS_Result::Failure(JSMessage::kInvalidInputError);
 
-  uint32_t dwInterval = params.size() > 1 ? pRuntime->ToInt32(params[1]) : 1000;
+  const uint32_t dwInterval =
+      params.size() > 1 ? pRuntime->ToInt32(params[1]) : 1000;
   auto timerRef = std::make_unique<GlobalTimer>(
       this, pRuntime, GlobalTimer::Type::kRepeating, script, dwInterval, 0);
   GlobalTimer* pTimerRef = timerRef.get();
@@ -328,7 +329,8 @@ CJS_Result CJS_App::setTimeOut(
   if (script.IsEmpty())
     return CJS_Result::Failure(JSMessage::kInvalidInputError);
 
-  uint32_t dwTimeOut = params.size() > 1 ? pRuntime->ToInt32(params[1]) : 1000;
+  const uint32_t dwTimeOut =
+      params.size() > 1 ? pRuntime->ToInt32(params[1]) : 1000;
   auto timerRef =
       std::make_unique<GlobalTimer>(this, pRuntime, GlobalTimer::Type::kOneShot,
                                     script, dwTimeOut, dwTimeOut);
@@ -425,7 +427,7 @@ CJS_Result CJS_App::mailMsg(CJS_Runtime* pRuntime,
   if (!IsExpandedParamKnown(newParams[0]))
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  bool bUI = pRuntime->ToBoolean(newParams[0]);
+  const bool bUI = pRuntime->ToBoolean(newParams[0]);
   WideString cTo;
   if (IsExpandedParamKnown(newParams[1])) {
     cTo = pRuntime->ToWideString(newParams[1]);
@@ -540,9 +542,9 @@ CJS_Result CJS_App::response(CJS_Runtime* pRuntime,
   if (IsExpandedParamKnown(newParams[4]))
     swLabel = pRuntime->ToWideString(newParams[4]);
 
-  const int MAX_INPUT_BYTES = 2048;
+  int MAX_INPUT_BYTES = 2048;
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> pBuff(MAX_INPUT_BYTES + 2);
-  int nLengthBytes = pRuntime->GetFormFillEnv()->JS_appResponse(
+  const int nLengthBytes = pRuntime->GetFormFillEnv()->JS_appResponse(
       swQuestion, swTitle, swDefault, swLabel, bPassword, pBuff.data(),
       MAX_INPUT_BYTES);
 

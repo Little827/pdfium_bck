@@ -166,7 +166,7 @@ Optional<pdfium::span<const uint8_t>> CFX_FontMgr::GetBuiltinFont(
     return pdfium::make_span(g_FoxitFonts[index].m_pFontData,
                              g_FoxitFonts[index].m_dwSize);
   }
-  size_t mm_index = index - pdfium::size(g_FoxitFonts);
+  const size_t mm_index = index - pdfium::size(g_FoxitFonts);
   if (mm_index < pdfium::size(g_MMFonts)) {
     return pdfium::make_span(g_MMFonts[mm_index].m_pFontData,
                              g_MMFonts[mm_index].m_dwSize);

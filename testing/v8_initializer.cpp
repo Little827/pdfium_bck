@@ -31,7 +31,7 @@ std::string GetFullPathForSnapshotFile(const std::string& exe_path,
       result += PATH_SEPARATOR;
     }
   } else if (!exe_path.empty()) {
-    size_t last_separator = exe_path.rfind(PATH_SEPARATOR);
+    const size_t last_separator = exe_path.rfind(PATH_SEPARATOR);
     if (last_separator != std::string::npos) {
       result = exe_path.substr(0, last_separator + 1);
     }

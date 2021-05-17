@@ -474,7 +474,7 @@ void CXFA_FFTabOrderPageWidgetIterator::CreateTabOrderWidgetArray() {
       }
     }
     auto it = std::find(items.begin(), items.end(), item);
-    size_t index = it != items.end() ? it - items.begin() + 1 : 0;
+    const size_t index = it != items.end() ? it - items.begin() + 1 : 0;
     item = items[index % items.size()];
   }
 }

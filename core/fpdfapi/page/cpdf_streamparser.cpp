@@ -44,10 +44,10 @@ uint32_t DecodeAllScanlines(std::unique_ptr<ScanlineDecoder> pDecoder) {
   if (!pDecoder)
     return FX_INVALID_OFFSET;
 
-  int ncomps = pDecoder->CountComps();
-  int bpc = pDecoder->GetBPC();
-  int width = pDecoder->GetWidth();
-  int height = pDecoder->GetHeight();
+  const int ncomps = pDecoder->CountComps();
+  const int bpc = pDecoder->GetBPC();
+  const int width = pDecoder->GetWidth();
+  const int height = pDecoder->GetHeight();
   if (width <= 0 || height <= 0)
     return FX_INVALID_OFFSET;
 
@@ -147,8 +147,8 @@ RetainPtr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
       pParam = pDict->GetDictFor(pdfium::stream::kDecodeParms);
     }
   }
-  uint32_t width = pDict->GetIntegerFor("Width");
-  uint32_t height = pDict->GetIntegerFor("Height");
+  const uint32_t width = pDict->GetIntegerFor("Width");
+  const uint32_t height = pDict->GetIntegerFor("Height");
   uint32_t bpc = 1;
   uint32_t nComponents = 1;
   if (pCSObj) {
@@ -178,10 +178,10 @@ RetainPtr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
     if (!pdfium::base::IsValueInRangeForNumericType<int>(dwStreamSize))
       return nullptr;
 
-    uint32_t dwSavePos = m_Pos;
+    const uint32_t dwSavePos = m_Pos;
     m_Pos += dwStreamSize;
     while (1) {
-      uint32_t dwPrevPos = m_Pos;
+      const uint32_t dwPrevPos = m_Pos;
       CPDF_StreamParser::SyntaxType type = ParseNextElement();
       if (type == CPDF_StreamParser::EndOfData)
         break;
@@ -301,7 +301,7 @@ RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
         ByteStringView(m_WordBuffer, m_WordSize));
   }
 
-  int first_char = m_WordBuffer[0];
+  const int first_char = m_WordBuffer[0];
   if (first_char == '/') {
     ByteString name =
         PDF_NameDecode(ByteStringView(m_WordBuffer + 1, m_WordSize - 1));
@@ -557,14 +557,14 @@ ByteString CPDF_StreamParser::ReadHexString() {
   bool bFirst = true;
   int code = 0;
   while (PositionIsInBounds()) {
-    uint8_t ch = m_pBuf[m_Pos++];
+    const uint8_t ch = m_pBuf[m_Pos++];
     if (ch == '>')
       break;
 
     if (!std::isxdigit(ch))
       continue;
 
-    int val = FXSYS_HexCharToInt(ch);
+    const int val = FXSYS_HexCharToInt(ch);
     if (bFirst) {
       code = val * 16;
     } else {

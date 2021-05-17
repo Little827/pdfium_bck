@@ -140,9 +140,10 @@ const CPDF_Stream* CPDF_FileSpec::GetFileStream() const {
   // List of keys to check for the file specification string.
   // Follows the same precedence order as GetFileName().
   static constexpr const char* kKeys[] = {"UF", "F", "DOS", "Mac", "Unix"};
-  size_t end = pDict->GetStringFor("FS") == "URL" ? 2 : pdfium::size(kKeys);
+  const size_t end =
+      pDict->GetStringFor("FS") == "URL" ? 2 : pdfium::size(kKeys);
   for (size_t i = 0; i < end; ++i) {
-    ByteString key = kKeys[i];
+    const ByteString key = kKeys[i];
     if (!pDict->GetUnicodeTextFor(key).IsEmpty()) {
       const CPDF_Stream* pStream = pFiles->GetStreamFor(key);
       if (pStream)
@@ -206,7 +207,7 @@ void CPDF_FileSpec::SetFileName(const WideString& wsFileName) {
     return;
   }
 
-  WideString wsStr = EncodeFileName(wsFileName);
+  const WideString wsStr = EncodeFileName(wsFileName);
   if (m_pObj->IsString()) {
     m_pWritableObj->SetString(wsStr.ToDefANSI());
   } else if (CPDF_Dictionary* pDict = m_pWritableObj->AsDictionary()) {

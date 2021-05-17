@@ -41,7 +41,7 @@ int CJBig2_HuffmanDecoder::DecodeAValue(const CJBig2_HuffmanTable* pTable,
       if (m_pStream->readNBits(pTable->GetRANGELEN()[i], &nTmp) == -1)
         return -1;
 
-      uint32_t offset = pTable->IsHTOOB() ? 3 : 2;
+      const uint32_t offset = pTable->IsHTOOB() ? 3 : 2;
       if (i == pTable->Size() - offset)
         *nResult = pTable->GetRANGELOW()[i] - nTmp;
       else

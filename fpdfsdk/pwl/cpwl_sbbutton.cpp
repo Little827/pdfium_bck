@@ -32,7 +32,7 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
     return;
 
   CFX_PointF ptCenter = GetCenterPoint();
-  int32_t nTransparency = GetTransparency();
+  const int32_t nTransparency = GetTransparency();
 
   // draw border
   pDevice->DrawStrokeRect(mtUser2Device, rectWnd,
@@ -47,8 +47,8 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
                         220);
     // draw arrow
     if (rectWnd.top - rectWnd.bottom > 6.0f) {
-      float fX = rectWnd.left + 1.5f;
-      float fY = rectWnd.bottom;
+      const float fX = rectWnd.left + 1.5f;
+      const float fY = rectWnd.bottom;
       std::vector<CFX_PointF> pts;
       static constexpr float kOffsetsX[] = {2.5f, 2.5f, 4.5f, 6.5f,
                                             6.5f, 4.5f, 2.5f};
@@ -99,8 +99,8 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
     return;
 
   FX_COLORREF crStroke = ArgbEncode(nTransparency, 120, 120, 120);
-  float nFrictionWidth = 5.0f;
-  float nFrictionHeight = 5.5f;
+  const float nFrictionWidth = 5.0f;
+  const float nFrictionHeight = 5.5f;
   CFX_PointF ptLeft = CFX_PointF(ptCenter.x - nFrictionWidth / 2.0f,
                                  ptCenter.y - nFrictionHeight / 2.0f + 0.5f);
   CFX_PointF ptRight = CFX_PointF(ptCenter.x + nFrictionWidth / 2.0f,

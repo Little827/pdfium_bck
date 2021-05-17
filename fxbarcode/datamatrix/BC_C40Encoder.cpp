@@ -37,7 +37,7 @@ WideString EncodeToC40Codewords(const WideString& sb) {
   wchar_t c1 = sb[0];
   wchar_t c2 = sb[1];
   wchar_t c3 = sb[2];
-  int32_t v = (1600 * c1) + (40 * c2) + c3 + 1;
+  const int32_t v = (1600 * c1) + (40 * c2) + c3 + 1;
   wchar_t cw[2];
   cw[0] = static_cast<wchar_t>(v / 256);
   cw[1] = static_cast<wchar_t>(v % 256);
@@ -63,12 +63,12 @@ bool CBC_C40Encoder::Encode(CBC_EncoderContext* context) {
     if (lastCharSize <= 0)
       return false;
 
-    size_t unwritten = (buffer.GetLength() / 3) * 2;
-    int32_t curCodewordCount = context->getCodewordCount() + unwritten;
+    const size_t unwritten = (buffer.GetLength() / 3) * 2;
+    const int32_t curCodewordCount = context->getCodewordCount() + unwritten;
     if (!context->UpdateSymbolInfo(curCodewordCount))
       return false;
 
-    int32_t available =
+    const int32_t available =
         context->m_symbolInfo->data_capacity() - curCodewordCount;
     if (!context->hasMoreCharacters()) {
       if ((buffer.GetLength() % 3) == 2) {
@@ -86,7 +86,7 @@ bool CBC_C40Encoder::Encode(CBC_EncoderContext* context) {
       }
       break;
     }
-    size_t count = buffer.GetLength();
+    const size_t count = buffer.GetLength();
     if ((count % 3) == 0) {
       CBC_HighLevelEncoder::Encoding newMode =
           CBC_HighLevelEncoder::LookAheadTest(context->m_msg, context->m_pos,
@@ -108,13 +108,14 @@ void CBC_C40Encoder::WriteNextTriplet(CBC_EncoderContext* context,
 
 bool CBC_C40Encoder::HandleEOD(CBC_EncoderContext* context,
                                WideString* buffer) {
-  size_t unwritten = (buffer->GetLength() / 3) * 2;
-  size_t rest = buffer->GetLength() % 3;
-  int32_t curCodewordCount = context->getCodewordCount() + unwritten;
+  const size_t unwritten = (buffer->GetLength() / 3) * 2;
+  const size_t rest = buffer->GetLength() % 3;
+  const int32_t curCodewordCount = context->getCodewordCount() + unwritten;
   if (!context->UpdateSymbolInfo(curCodewordCount))
     return false;
 
-  int32_t available = context->m_symbolInfo->data_capacity() - curCodewordCount;
+  const int32_t available =
+      context->m_symbolInfo->data_capacity() - curCodewordCount;
   if (rest == 2) {
     *buffer += (wchar_t)'\0';
     while (buffer->GetLength() >= 3)
@@ -183,7 +184,7 @@ int32_t CBC_C40Encoder::EncodeChar(wchar_t c, WideString* sb) {
   if (c >= 80) {
     *sb += (wchar_t)'\1';
     *sb += (wchar_t)0x001e;
-    int32_t encode_result = EncodeChar(c - 128, sb);
+    const int32_t encode_result = EncodeChar(c - 128, sb);
     return encode_result > 0 ? encode_result + 2 : 0;
   }
   return 0;
@@ -197,7 +198,7 @@ int32_t CBC_C40Encoder::BacktrackOneCharacter(CBC_EncoderContext* context,
   if (context->m_pos < 1)
     return -1;
 
-  size_t count = buffer->GetLength();
+  const size_t count = buffer->GetLength();
   if (count < static_cast<size_t>(lastCharSize))
     return -1;
 
@@ -205,7 +206,7 @@ int32_t CBC_C40Encoder::BacktrackOneCharacter(CBC_EncoderContext* context,
   context->m_pos--;
   wchar_t c = context->getCurrentChar();
   WideString removed;
-  int32_t len = EncodeChar(c, &removed);
+  const int32_t len = EncodeChar(c, &removed);
   if (len <= 0)
     return -1;
 

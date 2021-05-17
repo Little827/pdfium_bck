@@ -28,7 +28,7 @@ uint32_t GetEstimatedImageSize(const RetainPtr<CFX_DIBBase>& pDIB) {
   if (!pDIB || !pDIB->GetBuffer())
     return 0;
 
-  int height = pDIB->GetHeight();
+  const int height = pDIB->GetHeight();
   DCHECK(pdfium::base::IsValueInRangeForNumericType<uint32_t>(height));
   return static_cast<uint32_t>(height) * pDIB->GetPitch() +
          pDIB->GetRequiredPaletteSize() * 4;

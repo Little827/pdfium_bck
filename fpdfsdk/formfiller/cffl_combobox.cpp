@@ -51,7 +51,7 @@ std::unique_ptr<CPWL_Wnd> CFFL_ComboBox::NewPWLWindow(
       m_pFormFillEnv->GetInteractiveFormFiller();
   pWnd->SetFillerNotify(pFormFiller);
 
-  int32_t nCurSel = m_pWidget->GetSelectedIndex(0);
+  const int32_t nCurSel = m_pWidget->GetSelectedIndex(0);
   WideString swText;
   if (nCurSel < 0)
     swText = m_pWidget->GetValue();
@@ -77,7 +77,7 @@ bool CFFL_ComboBox::IsDataChanged(CPDFSDK_PageView* pPageView) {
   if (!pWnd)
     return false;
 
-  int32_t nCurSel = pWnd->GetSelect();
+  const int32_t nCurSel = pWnd->GetSelect();
   if (!(m_pWidget->GetFieldFlags() & pdfium::form_flags::kChoiceEdit))
     return nCurSel != m_pWidget->GetSelectedIndex(0);
 
@@ -93,7 +93,7 @@ void CFFL_ComboBox::SaveData(CPDFSDK_PageView* pPageView) {
     return;
 
   WideString swText = pWnd->GetText();
-  int32_t nCurSel = pWnd->GetSelect();
+  const int32_t nCurSel = pWnd->GetSelect();
   bool bSetValue = false;
   if (m_pWidget->GetFieldFlags() & pdfium::form_flags::kChoiceEdit)
     bSetValue = (nCurSel < 0) || (swText != m_pWidget->GetOptionLabel(nCurSel));
@@ -244,7 +244,7 @@ void CFFL_ComboBox::OnSetFocus(CPWL_Edit* pEdit) {
   pEdit->SetReadyToInput();
 
   WideString wsText = pEdit->GetText();
-  int nCharacters = wsText.GetLength();
+  const int nCharacters = wsText.GetLength();
   ByteString bsUTFText = wsText.ToUTF16LE();
   auto* pBuffer = reinterpret_cast<const unsigned short*>(bsUTFText.c_str());
   m_pFormFillEnv->OnSetFieldInputFocus(pBuffer, nCharacters, true);
@@ -254,7 +254,7 @@ WideString CFFL_ComboBox::GetSelectExportText() {
   WideString swRet;
 
   CPWL_ComboBox* pComboBox = GetComboBox(GetCurPageView(), false);
-  int nExport = pComboBox ? pComboBox->GetSelect() : -1;
+  const int nExport = pComboBox ? pComboBox->GetSelect() : -1;
 
   if (nExport >= 0) {
     if (CPDF_FormField* pFormField = m_pWidget->GetFormField()) {

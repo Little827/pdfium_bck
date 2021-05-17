@@ -174,7 +174,7 @@ CFX_Matrix CPDF_Page::GetDisplayMatrix(const FX_RECT& rect, int iRotate) const {
 
 int CPDF_Page::GetPageRotation() const {
   CPDF_Object* pRotate = GetPageAttr(pdfium::page_object::kRotate);
-  int rotate = pRotate ? (pRotate->GetInteger() / 90) % 4 : 0;
+  const int rotate = pRotate ? (pRotate->GetInteger() / 90) % 4 : 0;
   return (rotate < 0) ? (rotate + 4) : rotate;
 }
 

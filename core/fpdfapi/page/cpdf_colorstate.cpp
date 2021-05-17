@@ -129,7 +129,7 @@ void CPDF_ColorState::SetPattern(const RetainPtr<CPDF_Pattern>& pPattern,
   int R;
   int G;
   int B;
-  bool ret = color->GetRGB(&R, &G, &B);
+  const bool ret = color->GetRGB(&R, &G, &B);
   if (CPDF_TilingPattern* pTilingPattern = pPattern->AsTilingPattern()) {
     if (!ret && pTilingPattern->colored()) {
       *colorref = 0x00BFBFBF;
