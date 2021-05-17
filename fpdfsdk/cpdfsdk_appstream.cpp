@@ -1171,13 +1171,12 @@ void CPDFSDK_AppStream::SetAsPushButton() {
 
   CFX_Color crBackground;
   CFX_Color crBorder;
-  int iColorType;
   float fc[4];
-  pControl->GetOriginalBackgroundColor(iColorType, fc);
+  CFX_Color::Type iColorType = pControl->GetOriginalBackgroundColorArray(fc);
   if (iColorType > 0)
     crBackground = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 
-  pControl->GetOriginalBorderColor(iColorType, fc);
+  iColorType = pControl->GetOriginalBorderColorArray(fc);
   if (iColorType > 0)
     crBorder = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 
@@ -1335,14 +1334,13 @@ void CPDFSDK_AppStream::SetAsPushButton() {
 void CPDFSDK_AppStream::SetAsCheckBox() {
   CPDF_FormControl* pControl = widget_->GetFormControl();
   CFX_Color crBackground, crBorder, crText;
-  int iColorType;
   float fc[4];
 
-  pControl->GetOriginalBackgroundColor(iColorType, fc);
+  int iColorType = pControl->GetOriginalBackgroundColorArray(fc);
   if (iColorType > 0)
     crBackground = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 
-  pControl->GetOriginalBorderColor(iColorType, fc);
+  iColorType = pControl->GetOriginalBorderColorArray(fc);
   if (iColorType > 0)
     crBorder = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 
@@ -1429,14 +1427,13 @@ void CPDFSDK_AppStream::SetAsRadioButton() {
   CFX_Color crBackground;
   CFX_Color crBorder;
   CFX_Color crText;
-  int iColorType;
   float fc[4];
 
-  pControl->GetOriginalBackgroundColor(iColorType, fc);
+  int iColorType = pControl->GetOriginalBackgroundColorArray(fc);
   if (iColorType > 0)
     crBackground = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 
-  pControl->GetOriginalBorderColor(iColorType, fc);
+  iColorType = pControl->GetOriginalBorderColorArray(fc);
   if (iColorType > 0)
     crBorder = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 

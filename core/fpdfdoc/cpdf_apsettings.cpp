@@ -11,7 +11,6 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
-#include "core/fxge/cfx_color.h"
 
 CPDF_ApSettings::CPDF_ApSettings(CPDF_Dictionary* pDict) : m_pDict(pDict) {}
 
@@ -74,36 +73,41 @@ float CPDF_ApSettings::GetOriginalColor(int index,
   return pEntry ? pEntry->GetNumberAt(index) : 0;
 }
 
-void CPDF_ApSettings::GetOriginalColor(int& iColorType,
-                                       float fc[4],
-                                       const ByteString& csEntry) const {
-  iColorType = CFX_Color::kTransparent;
+CFX_Color::Type CPDF_ApSettings::GetOriginalColorArray(
+    float fc[4],
+    const ByteString& csEntry) const {
   for (int i = 0; i < 4; i++)
     fc[i] = 0;
 
   if (!m_pDict)
-    return;
+    return CFX_Color::kTransparent;
+  ;
 
   CPDF_Array* pEntry = m_pDict->GetArrayFor(csEntry);
   if (!pEntry)
-    return;
+    return CFX_Color::kTransparent;
+  ;
 
   size_t dwCount = pEntry->size();
   if (dwCount == 1) {
-    iColorType = CFX_Color::kGray;
     fc[0] = pEntry->GetNumberAt(0);
-  } else if (dwCount == 3) {
-    iColorType = CFX_Color::kRGB;
+    return CFX_Color::kGray;
+  }
+  if (dwCount == 3) {
     fc[0] = pEntry->GetNumberAt(0);
     fc[1] = pEntry->GetNumberAt(1);
     fc[2] = pEntry->GetNumberAt(2);
-  } else if (dwCount == 4) {
-    iColorType = CFX_Color::kCMYK;
+    return CFX_Color::kRGB;
+  }
+  if (dwCount == 4) {
     fc[0] = pEntry->GetNumberAt(0);
     fc[1] = pEntry->GetNumberAt(1);
     fc[2] = pEntry->GetNumberAt(2);
     fc[3] = pEntry->GetNumberAt(3);
+    return CFX_Color::kCMYK;
   }
+  return CFX_Color::kTransparent;
+  ;
 }
 
 WideString CPDF_ApSettings::GetCaption(const ByteString& csEntry) const {

@@ -155,10 +155,10 @@ float CPDF_FormControl::GetOriginalColor(int index, const ByteString& csEntry) {
   return GetMK().GetOriginalColor(index, csEntry);
 }
 
-void CPDF_FormControl::GetOriginalColor(int& iColorType,
-                                        float fc[4],
-                                        const ByteString& csEntry) {
-  GetMK().GetOriginalColor(iColorType, fc, csEntry);
+CFX_Color::Type CPDF_FormControl::GetOriginalColorArray(
+    float fc[4],
+    const ByteString& csEntry) {
+  return GetMK().GetOriginalColorArray(fc, csEntry);
 }
 
 WideString CPDF_FormControl::GetCaption(const ByteString& csEntry) const {

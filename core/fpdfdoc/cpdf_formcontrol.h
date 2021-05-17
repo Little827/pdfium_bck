@@ -59,8 +59,8 @@ class CPDF_FormControl {
     return GetOriginalColor(index, "BC");
   }
 
-  void GetOriginalBorderColor(int& iColorType, float fc[4]) {
-    GetOriginalColor(iColorType, fc, "BC");
+  CFX_Color::Type GetOriginalBorderColorArray(float fc[4]) {
+    return GetOriginalColorArray(fc, "BC");
   }
 
   FX_ARGB GetBackgroundColor(int& iColorType) {
@@ -71,8 +71,8 @@ class CPDF_FormControl {
     return GetOriginalColor(index, "BG");
   }
 
-  void GetOriginalBackgroundColor(int& iColorType, float fc[4]) {
-    GetOriginalColor(iColorType, fc, "BG");
+  CFX_Color::Type GetOriginalBackgroundColorArray(float fc[4]) {
+    return GetOriginalColorArray(fc, "BG");
   }
 
   WideString GetNormalCaption() const { return GetCaption("CA"); }
@@ -97,9 +97,7 @@ class CPDF_FormControl {
   RetainPtr<CPDF_Font> GetDefaultControlFont() const;
   FX_ARGB GetColor(int& iColorType, const ByteString& csEntry);
   float GetOriginalColor(int index, const ByteString& csEntry);
-  void GetOriginalColor(int& iColorType,
-                        float fc[4],
-                        const ByteString& csEntry);
+  CFX_Color::Type GetOriginalColorArray(float fc[4], const ByteString& csEntry);
 
   WideString GetCaption(const ByteString& csEntry) const;
   CPDF_Stream* GetIcon(const ByteString& csEntry);

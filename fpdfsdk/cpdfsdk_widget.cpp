@@ -795,9 +795,8 @@ CFX_Color CPDFSDK_Widget::GetBorderPWLColor() const {
   CFX_Color crBorder;
 
   CPDF_FormControl* pFormCtrl = GetFormControl();
-  int32_t iColorType;
   float fc[4];
-  pFormCtrl->GetOriginalBorderColor(iColorType, fc);
+  int32_t iColorType = pFormCtrl->GetOriginalBorderColorArray(fc);
   if (iColorType > 0)
     crBorder = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 
@@ -808,9 +807,8 @@ CFX_Color CPDFSDK_Widget::GetFillPWLColor() const {
   CFX_Color crFill;
 
   CPDF_FormControl* pFormCtrl = GetFormControl();
-  int32_t iColorType;
   float fc[4];
-  pFormCtrl->GetOriginalBackgroundColor(iColorType, fc);
+  int32_t iColorType = pFormCtrl->GetOriginalBackgroundColorArray(fc);
   if (iColorType > 0)
     crFill = CFX_Color(iColorType, fc[0], fc[1], fc[2], fc[3]);
 
