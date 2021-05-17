@@ -80,8 +80,8 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
 
   CFX_FloatRect cell_bbox = mtPattern2Device.TransformRect(pPattern->bbox());
 
-  float ceil_height = std::ceil(cell_bbox.Height());
-  float ceil_width = std::ceil(cell_bbox.Width());
+  const float ceil_height = std::ceil(cell_bbox.Height());
+  const float ceil_width = std::ceil(cell_bbox.Width());
 
   // Validate the float will fit into the int when the conversion is done.
   if (!pdfium::base::IsValueInRangeForNumericType<int>(ceil_height) ||
@@ -148,8 +148,8 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
       pPattern->bbox().top == pPattern->y_step() &&
       (mtPattern2Device.IsScaled() || mtPattern2Device.Is90Rotated());
   if (bAligned) {
-    int orig_x = FXSYS_roundf(mtPattern2Device.e);
-    int orig_y = FXSYS_roundf(mtPattern2Device.f);
+    const int orig_x = FXSYS_roundf(mtPattern2Device.e);
+    const int orig_y = FXSYS_roundf(mtPattern2Device.f);
     min_col = (clip_box.left - orig_x) / width;
     if (clip_box.left < orig_x)
       min_col--;
@@ -166,8 +166,8 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
     if (clip_box.bottom <= orig_y)
       max_row--;
   }
-  float left_offset = cell_bbox.left - mtPattern2Device.e;
-  float top_offset = cell_bbox.bottom - mtPattern2Device.f;
+  const float left_offset = cell_bbox.left - mtPattern2Device.e;
+  const float top_offset = cell_bbox.bottom - mtPattern2Device.f;
   RetainPtr<CFX_DIBitmap> pPatternBitmap;
   if (width * height < 16) {
     RetainPtr<CFX_DIBitmap> pEnlargedBitmap = DrawPatternBitmap(
@@ -187,8 +187,8 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
     pPatternBitmap->ConvertColorScale(0, 0xffffff);
 
   FX_ARGB fill_argb = pRenderStatus->GetFillArgb(pPageObj);
-  int clip_width = clip_box.right - clip_box.left;
-  int clip_height = clip_box.bottom - clip_box.top;
+  const int clip_width = clip_box.right - clip_box.left;
+  const int clip_height = clip_box.bottom - clip_box.top;
   auto pScreen = pdfium::MakeRetain<CFX_DIBitmap>();
   if (!pScreen->Create(clip_width, clip_height, FXDIB_Format::kArgb))
     return nullptr;

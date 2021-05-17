@@ -87,16 +87,20 @@ bool CFX_CSSDeclaration::ParseCSSColor(const wchar_t* pszValue,
   if (*pszValue == '#') {
     switch (iValueLen) {
       case 4: {
-        uint8_t red = Hex2Dec((uint8_t)pszValue[1], (uint8_t)pszValue[1]);
-        uint8_t green = Hex2Dec((uint8_t)pszValue[2], (uint8_t)pszValue[2]);
-        uint8_t blue = Hex2Dec((uint8_t)pszValue[3], (uint8_t)pszValue[3]);
+        const uint8_t red = Hex2Dec((uint8_t)pszValue[1], (uint8_t)pszValue[1]);
+        const uint8_t green =
+            Hex2Dec((uint8_t)pszValue[2], (uint8_t)pszValue[2]);
+        const uint8_t blue =
+            Hex2Dec((uint8_t)pszValue[3], (uint8_t)pszValue[3]);
         *dwColor = ArgbEncode(255, red, green, blue);
         return true;
       }
       case 7: {
-        uint8_t red = Hex2Dec((uint8_t)pszValue[1], (uint8_t)pszValue[2]);
-        uint8_t green = Hex2Dec((uint8_t)pszValue[3], (uint8_t)pszValue[4]);
-        uint8_t blue = Hex2Dec((uint8_t)pszValue[5], (uint8_t)pszValue[6]);
+        const uint8_t red = Hex2Dec((uint8_t)pszValue[1], (uint8_t)pszValue[2]);
+        const uint8_t green =
+            Hex2Dec((uint8_t)pszValue[3], (uint8_t)pszValue[4]);
+        const uint8_t blue =
+            Hex2Dec((uint8_t)pszValue[5], (uint8_t)pszValue[6]);
         *dwColor = ArgbEncode(255, red, green, blue);
         return true;
       }

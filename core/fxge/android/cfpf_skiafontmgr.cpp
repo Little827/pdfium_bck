@@ -137,7 +137,7 @@ uint32_t FPF_SkiaGetCharset(uint8_t uCharset) {
 
 uint32_t FPF_SKIANormalizeFontName(ByteStringView bsfamily) {
   uint32_t dwHash = 0;
-  int32_t iLength = bsfamily.GetLength();
+  const int32_t iLength = bsfamily.GetLength();
   const char* pBuffer = bsfamily.unterminated_c_str();
   for (int32_t i = 0; i < iLength; i++) {
     char ch = pBuffer[i];
@@ -257,25 +257,27 @@ void CFPF_SkiaFontMgr::LoadSystemFonts() {
 CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(ByteStringView bsFamilyname,
                                             uint8_t uCharset,
                                             uint32_t dwStyle) {
-  uint32_t dwHash = FPF_SKIAGetFamilyHash(bsFamilyname, dwStyle, uCharset);
+  const uint32_t dwHash =
+      FPF_SKIAGetFamilyHash(bsFamilyname, dwStyle, uCharset);
   auto family_iter = m_FamilyFonts.find(dwHash);
   if (family_iter != m_FamilyFonts.end())
     return family_iter->second.get();
 
-  uint32_t dwFaceName = FPF_SKIANormalizeFontName(bsFamilyname);
-  uint32_t dwSubst = FPF_SkiaGetSubstFont(dwFaceName, g_SkiaFontmap,
-                                          pdfium::size(g_SkiaFontmap));
-  uint32_t dwSubstSans = FPF_SkiaGetSubstFont(dwFaceName, g_SkiaSansFontMap,
-                                              pdfium::size(g_SkiaSansFontMap));
-  bool bMaybeSymbol = FPF_SkiaMaybeSymbol(bsFamilyname);
+  const uint32_t dwFaceName = FPF_SKIANormalizeFontName(bsFamilyname);
+  const uint32_t dwSubst = FPF_SkiaGetSubstFont(dwFaceName, g_SkiaFontmap,
+                                                pdfium::size(g_SkiaFontmap));
+  const uint32_t dwSubstSans = FPF_SkiaGetSubstFont(
+      dwFaceName, g_SkiaSansFontMap, pdfium::size(g_SkiaSansFontMap));
+  const bool bMaybeSymbol = FPF_SkiaMaybeSymbol(bsFamilyname);
   if (uCharset != FX_CHARSET_MSWin_Arabic &&
       FPF_SkiaMaybeArabic(bsFamilyname)) {
     uCharset = FX_CHARSET_MSWin_Arabic;
   } else if (uCharset == FX_CHARSET_ANSI) {
     uCharset = FX_CHARSET_Default;
   }
-  int32_t nExpectVal = FPF_SKIAMATCHWEIGHT_NAME1 + FPF_SKIAMATCHWEIGHT_1 * 3 +
-                       FPF_SKIAMATCHWEIGHT_2 * 2;
+  const int32_t nExpectVal = FPF_SKIAMATCHWEIGHT_NAME1 +
+                             FPF_SKIAMATCHWEIGHT_1 * 3 +
+                             FPF_SKIAMATCHWEIGHT_2 * 2;
   const CFPF_SkiaPathFont* pBestFont = nullptr;
   int32_t nMax = -1;
   int32_t nGlyphNum = 0;
@@ -284,7 +286,7 @@ CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(ByteStringView bsFamilyname,
     if (!(font->charsets() & FPF_SkiaGetCharset(uCharset)))
       continue;
     int32_t nFind = 0;
-    uint32_t dwSysFontName = FPF_SKIANormalizeFontName(font->family());
+    const uint32_t dwSysFontName = FPF_SKIANormalizeFontName(font->family());
     if (dwFaceName == dwSysFontName)
       nFind += FPF_SKIAMATCHWEIGHT_NAME1;
     bool bMatchedName = (nFind == FPF_SKIAMATCHWEIGHT_NAME1);
@@ -408,7 +410,7 @@ std::unique_ptr<CFPF_SkiaPathFont> CFPF_SkiaFontMgr::ReportFace(
     if (pOS2->ulCodePageRange1 & (1 << 31))
       dwStyle |= FXFONT_SYMBOLIC;
     if (pOS2->panose[0] == 2) {
-      uint8_t uSerif = pOS2->panose[1];
+      const uint8_t uSerif = pOS2->panose[1];
       if ((uSerif > 1 && uSerif < 10) || uSerif > 13)
         dwStyle |= FXFONT_SERIF;
     }

@@ -89,7 +89,7 @@ const uint16_t PDFDocEncoding[256] = {
     0x00fc, 0x00fd, 0x00fe, 0x00ff};
 
 bool ValidateDecoderPipeline(const CPDF_Array* pDecoders) {
-  size_t count = pDecoders->size();
+  const size_t count = pDecoders->size();
   if (count == 0)
     return true;
 
@@ -125,7 +125,7 @@ uint32_t A85Decode(pdfium::span<const uint8_t> src_span,
   uint32_t zcount = 0;
   uint32_t pos = 0;
   while (pos < src_span.size()) {
-    uint8_t ch = src_span[pos];
+    const uint8_t ch = src_span[pos];
     if (ch == 'z') {
       zcount++;
     } else if ((ch < '!' || ch > 'u') && !PDFCharIsLineEnding(ch) &&
@@ -140,7 +140,7 @@ uint32_t A85Decode(pdfium::span<const uint8_t> src_span,
 
   // Count the space needed to contain non-zero characters. The encoding ratio
   // of Ascii85 is 4:5.
-  uint32_t space_for_non_zeroes = (pos - zcount) / 5 * 4 + 4;
+  const uint32_t space_for_non_zeroes = (pos - zcount) / 5 * 4 + 4;
   FX_SAFE_UINT32 size = zcount;
   size *= 4;
   size += space_for_non_zeroes;
@@ -153,7 +153,7 @@ uint32_t A85Decode(pdfium::span<const uint8_t> src_span,
   uint32_t res = 0;
   pos = 0;
   while (pos < src_span.size()) {
-    uint8_t ch = src_span[pos++];
+    const uint8_t ch = src_span[pos++];
     if (PDFCharIsLineEnding(ch) || ch == ' ' || ch == '\t')
       continue;
 
@@ -211,7 +211,7 @@ uint32_t HexDecode(pdfium::span<const uint8_t> src_span,
   uint8_t* dest_buf_ptr = dest_buf->get();
   bool bFirst = true;
   for (i = 0; i < src_span.size(); ++i) {
-    uint8_t ch = src_span[i];
+    const uint8_t ch = src_span[i];
     if (PDFCharIsLineEnding(ch) || ch == ' ' || ch == '\t')
       continue;
 
@@ -222,7 +222,7 @@ uint32_t HexDecode(pdfium::span<const uint8_t> src_span,
     if (!std::isxdigit(ch))
       continue;
 
-    int digit = FXSYS_HexCharToInt(ch);
+    const int digit = FXSYS_HexCharToInt(ch);
     if (bFirst)
       dest_buf_ptr[*dest_size] = digit * 16;
     else
@@ -243,7 +243,7 @@ uint32_t RunLengthDecode(pdfium::span<const uint8_t> src_span,
     if (src_span[i] == 128)
       break;
 
-    uint32_t old = *dest_size;
+    const uint32_t old = *dest_size;
     if (src_span[i] < 128) {
       *dest_size += src_span[i] + 1;
       if (*dest_size < old)
@@ -269,9 +269,9 @@ uint32_t RunLengthDecode(pdfium::span<const uint8_t> src_span,
 
     if (src_span[i] < 128) {
       uint32_t copy_len = src_span[i] + 1;
-      uint32_t buf_left = src_span.size() - i - 1;
+      const uint32_t buf_left = src_span.size() - i - 1;
       if (buf_left < copy_len) {
-        uint32_t delta = copy_len - buf_left;
+        const uint32_t delta = copy_len - buf_left;
         copy_len = buf_left;
         memset(&dest_span[dest_count + copy_len], '\0', delta);
       }
@@ -409,9 +409,9 @@ bool PDF_DataDecode(
   // May be changed to point to |result| in the for-loop below. So put it below
   // |result| and let it get destroyed first.
   pdfium::span<const uint8_t> last_span = src_span;
-  size_t nSize = decoder_array.size();
+  const size_t nSize = decoder_array.size();
   for (size_t i = 0; i < nSize; ++i) {
-    int estimated_size = i == nSize - 1 ? last_estimated_size : 0;
+    const int estimated_size = i == nSize - 1 ? last_estimated_size : 0;
     ByteString decoder = decoder_array[i].first;
     const CPDF_Dictionary* pParam = ToDictionary(decoder_array[i].second);
     std::unique_ptr<uint8_t, FxFreeDeleter> new_buf;
@@ -475,7 +475,7 @@ WideString PDF_DecodeText(pdfium::span<const uint8_t> span) {
   WideString result;
   if (span.size() >= 2 && ((span[0] == 0xfe && span[1] == 0xff) ||
                            (span[0] == 0xff && span[1] == 0xfe))) {
-    size_t max_chars = (span.size() - 2) / 2;
+    const size_t max_chars = (span.size() - 2) / 2;
     if (!max_chars)
       return result;
 
@@ -518,7 +518,7 @@ WideString PDF_DecodeText(pdfium::span<const uint8_t> span) {
 
 ByteString PDF_EncodeText(const WideString& str) {
   size_t i = 0;
-  size_t len = str.GetLength();
+  const size_t len = str.GetLength();
   ByteString result;
   {
     pdfium::span<char> dest_buf = result.GetBuffer(len);
@@ -544,7 +544,7 @@ ByteString PDF_EncodeText(const WideString& str) {
   }
 
   size_t dest_index = 0;
-  size_t encLen = len * 2 + 2;
+  const size_t encLen = len * 2 + 2;
   {
     pdfium::span<uint8_t> dest_buf =
         pdfium::as_writable_bytes(result.GetBuffer(encLen));
@@ -561,7 +561,7 @@ ByteString PDF_EncodeText(const WideString& str) {
 
 ByteString PDF_EncodeString(const ByteString& src, bool bHex) {
   std::ostringstream result;
-  int srclen = src.GetLength();
+  const int srclen = src.GetLength();
   if (bHex) {
     result << '<';
     for (int i = 0; i < srclen; ++i) {
@@ -575,7 +575,7 @@ ByteString PDF_EncodeString(const ByteString& src, bool bHex) {
   }
   result << '(';
   for (int i = 0; i < srclen; ++i) {
-    uint8_t ch = src[i];
+    const uint8_t ch = src[i];
     if (ch == 0x0a) {
       result << "\\n";
       continue;

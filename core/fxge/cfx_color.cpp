@@ -61,9 +61,9 @@ CFX_Color ConvertRGB2CMYK(float dR, float dG, float dB) {
   if (!InRange(dR) || !InRange(dG) || !InRange(dB))
     return CFX_Color(CFX_Color::kCMYK);
 
-  float c = 1.0f - dR;
-  float m = 1.0f - dG;
-  float y = 1.0f - dB;
+  const float c = 1.0f - dR;
+  const float m = 1.0f - dG;
+  const float y = 1.0f - dB;
   return CFX_Color(CFX_Color::kCMYK, c, m, y, std::min(c, std::min(m, y)));
 }
 

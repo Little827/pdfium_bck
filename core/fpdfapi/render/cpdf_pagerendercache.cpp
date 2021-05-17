@@ -36,7 +36,7 @@ void CPDF_PageRenderCache::CacheOptimization(int32_t dwLimitCacheSize) {
   if (m_nCacheSize <= (uint32_t)dwLimitCacheSize)
     return;
 
-  size_t nCount = m_ImageCache.size();
+  const size_t nCount = m_ImageCache.size();
   std::vector<CacheInfo> cache_info;
   cache_info.reserve(nCount);
   for (const auto& it : m_ImageCache) {
@@ -47,7 +47,7 @@ void CPDF_PageRenderCache::CacheOptimization(int32_t dwLimitCacheSize) {
 
   // Check if time value is about to roll over and reset all entries.
   // The comparision is legal because uint32_t is an unsigned type.
-  uint32_t nTimeCount = m_nTimeCount;
+  const uint32_t nTimeCount = m_nTimeCount;
   if (nTimeCount + 1 < nTimeCount) {
     for (size_t i = 0; i < nCount; i++)
       m_ImageCache[cache_info[i].pStream]->SetTimeCount(i);
@@ -101,7 +101,7 @@ bool CPDF_PageRenderCache::StartGetCachedBitmap(
 
 bool CPDF_PageRenderCache::Continue(PauseIndicatorIface* pPause,
                                     CPDF_RenderStatus* pRenderStatus) {
-  bool ret = m_pCurImageCacheEntry->Continue(pPause, pRenderStatus);
+  const bool ret = m_pCurImageCacheEntry->Continue(pPause, pRenderStatus);
   if (ret)
     return true;
 

@@ -66,7 +66,7 @@ bool CBC_ReedSolomonEncoder::Encode(std::vector<int32_t>* toEncode,
   if (!generator)
     return false;
 
-  size_t dataBytes = toEncode->size() - ecBytes;
+  const size_t dataBytes = toEncode->size() - ecBytes;
   std::vector<int32_t> infoCoefficients(dataBytes);
   for (size_t x = 0; x < dataBytes; x++)
     infoCoefficients[x] = (*toEncode)[x];

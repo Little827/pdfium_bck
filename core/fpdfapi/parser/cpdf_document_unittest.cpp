@@ -259,7 +259,7 @@ TEST_F(cpdf_document_test, UseCachedPageObjNumIfHaveNotPagesDict) {
   {
     CPDF_Object* first_page = document.AddIndirectObject(CreateNumberedPage(0));
     DCHECK(first_page);
-    int first_page_obj_num = first_page->GetObjNum();
+    const int first_page_obj_num = first_page->GetObjNum();
     ASSERT_NE(kTestPageNum, first_page_obj_num);
 
     linearization_dict->SetNewFor<CPDF_Boolean>("Linearized", true);

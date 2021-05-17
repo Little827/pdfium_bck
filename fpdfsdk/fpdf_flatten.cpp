@@ -107,7 +107,7 @@ int ParserAnnots(CPDF_Document* pSourceDoc,
     if (sSubtype == "Popup")
       continue;
 
-    int nAnnotFlag = pAnnotDict->GetIntegerFor("F");
+    const int nAnnotFlag = pAnnotDict->GetIntegerFor("F");
     if (nAnnotFlag & pdfium::annotation_flags::kHidden)
       continue;
 
@@ -128,7 +128,7 @@ float GetMinMaxValue(const std::vector<CFX_FloatRect>& array,
   if (array.empty())
     return 0.0f;
 
-  size_t nRects = array.size();
+  const size_t nRects = array.size();
   std::vector<float> pArray(nRects);
   switch (value) {
     case LEFT:
@@ -240,11 +240,11 @@ CFX_Matrix GetMatrix(const CFX_FloatRect& rcAnnot,
   CFX_FloatRect rcTransformed = matrix.TransformRect(rcStream);
   rcTransformed.Normalize();
 
-  float a = rcAnnot.Width() / rcTransformed.Width();
-  float d = rcAnnot.Height() / rcTransformed.Height();
+  const float a = rcAnnot.Width() / rcTransformed.Width();
+  const float d = rcAnnot.Height() / rcTransformed.Height();
 
-  float e = rcAnnot.left - rcTransformed.left * a;
-  float f = rcAnnot.bottom - rcTransformed.bottom * d;
+  const float e = rcAnnot.left - rcTransformed.left * a;
+  const float f = rcAnnot.bottom - rcTransformed.bottom * d;
   return CFX_Matrix(a, 0.0f, 0.0f, d, e, f);
 }
 

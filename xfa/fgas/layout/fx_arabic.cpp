@@ -197,7 +197,7 @@ wchar_t GetFormChar(const CFGAS_Char* cur,
   FX_CHARTYPE eNext;
   wchar_t wNext;
   ParseChar(next, &wNext, &eNext);
-  bool bAlef = (eNext == FX_CHARTYPE::kArabicAlef && wCur == 0x644);
+  const bool bAlef = (eNext == FX_CHARTYPE::kArabicAlef && wCur == 0x644);
   if (ePrev < FX_CHARTYPE::kArabicAlef) {
     if (bAlef)
       return GetArabicFromAlefTable(wNext);

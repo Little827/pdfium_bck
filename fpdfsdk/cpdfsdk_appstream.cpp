@@ -165,12 +165,12 @@ ByteString GetAP_Check(const CFX_FloatRect& crBBox) {
   csAP << pts[0][0].x << " " << pts[0][0].y << " " << kMoveToOperator << "\n";
 
   for (size_t i = 0; i < pdfium::size(pts); ++i) {
-    size_t nNext = i < pdfium::size(pts) - 1 ? i + 1 : 0;
+    const size_t nNext = i < pdfium::size(pts) - 1 ? i + 1 : 0;
 
-    float px1 = pts[i][1].x - pts[i][0].x;
-    float py1 = pts[i][1].y - pts[i][0].y;
-    float px2 = pts[i][2].x - pts[nNext][0].x;
-    float py2 = pts[i][2].y - pts[nNext][0].y;
+    const float px1 = pts[i][1].x - pts[i][0].x;
+    const float py1 = pts[i][1].y - pts[i][0].y;
+    const float px2 = pts[i][2].x - pts[nNext][0].x;
+    const float py2 = pts[i][2].y - pts[nNext][0].y;
 
     csAP << pts[i][0].x + px1 * FX_BEZIER << " "
          << pts[i][0].y + py1 * FX_BEZIER << " "
@@ -185,8 +185,8 @@ ByteString GetAP_Check(const CFX_FloatRect& crBBox) {
 ByteString GetAP_Circle(const CFX_FloatRect& crBBox) {
   std::ostringstream csAP;
 
-  float fWidth = crBBox.Width();
-  float fHeight = crBBox.Height();
+  const float fWidth = crBBox.Width();
+  const float fHeight = crBBox.Height();
 
   CFX_PointF pt1(crBBox.left, crBBox.bottom + fHeight / 2);
   CFX_PointF pt2(crBBox.left + fWidth / 2, crBBox.top);
@@ -241,8 +241,8 @@ ByteString GetAP_Cross(const CFX_FloatRect& crBBox) {
 ByteString GetAP_Diamond(const CFX_FloatRect& crBBox) {
   std::ostringstream csAP;
 
-  float fWidth = crBBox.Width();
-  float fHeight = crBBox.Height();
+  const float fWidth = crBBox.Width();
+  const float fHeight = crBBox.Height();
 
   CFX_PointF pt1(crBBox.left, crBBox.bottom + fHeight / 2);
   CFX_PointF pt2(crBBox.left + fWidth / 2, crBBox.top);
@@ -274,7 +274,7 @@ ByteString GetAP_Square(const CFX_FloatRect& crBBox) {
 ByteString GetAP_Star(const CFX_FloatRect& crBBox) {
   std::ostringstream csAP;
 
-  float fRadius = (crBBox.top - crBBox.bottom) / (1 + cosf(FX_PI / 5.0f));
+  const float fRadius = (crBBox.top - crBBox.bottom) / (1 + cosf(FX_PI / 5.0f));
   CFX_PointF ptCenter = CFX_PointF((crBBox.left + crBBox.right) / 2.0f,
                                    (crBBox.top + crBBox.bottom) / 2.0f);
 
@@ -301,8 +301,8 @@ ByteString GetAP_Star(const CFX_FloatRect& crBBox) {
 ByteString GetAP_HalfCircle(const CFX_FloatRect& crBBox, float fRotate) {
   std::ostringstream csAP;
 
-  float fWidth = crBBox.Width();
-  float fHeight = crBBox.Height();
+  const float fWidth = crBBox.Width();
+  const float fHeight = crBBox.Height();
 
   CFX_PointF pt1(-fWidth / 2, 0);
   CFX_PointF pt2(0, fHeight / 2);
@@ -425,10 +425,10 @@ ByteString GetCircleBorderAppStream(const CFX_FloatRect& rect,
   if (fWidth > 0.0f) {
     AutoClosedQCommand q(&sAppStream);
 
-    float fHalfWidth = fWidth / 2.0f;
+    const float fHalfWidth = fWidth / 2.0f;
     CFX_FloatRect rect_by_2 = rect.GetDeflated(fHalfWidth, fHalfWidth);
 
-    float div = fHalfWidth * 0.75f;
+    const float div = fHalfWidth * 0.75f;
     CFX_FloatRect rect_by_75 = rect.GetDeflated(div, div);
     switch (nStyle) {
       default:
@@ -670,7 +670,7 @@ ByteString GetEditAppStream(CPWL_EditImpl* pEdit,
 
   std::ostringstream sAppStream;
   if (sEditStream.tellp() > 0) {
-    float fCharSpace = pEdit->GetCharSpace();
+    const float fCharSpace = pEdit->GetCharSpace();
     if (!IsFloatZero(fCharSpace))
       sAppStream << fCharSpace << " " << kSetCharacterSpacingOperator << "\n";
 
@@ -928,13 +928,13 @@ ByteString GetBorderAppStreamInternal(const CFX_FloatRect& rect,
   std::ostringstream sAppStream;
   ByteString sColor;
 
-  float fLeft = rect.left;
-  float fRight = rect.right;
-  float fTop = rect.top;
-  float fBottom = rect.bottom;
+  const float fLeft = rect.left;
+  const float fRight = rect.right;
+  const float fTop = rect.top;
+  const float fBottom = rect.bottom;
 
   if (fWidth > 0.0f) {
-    float fHalfWidth = fWidth / 2.0f;
+    const float fHalfWidth = fWidth / 2.0f;
     AutoClosedQCommand q(&sAppStream);
 
     switch (nStyle) {
@@ -1186,7 +1186,7 @@ void CPDFSDK_AppStream::SetAsPushButton() {
   CFX_Color crLeftTop;
   CFX_Color crRightBottom;
 
-  BorderStyle nBorderStyle = widget_->GetBorderStyle();
+  const BorderStyle nBorderStyle = widget_->GetBorderStyle();
   switch (nBorderStyle) {
     case BorderStyle::kDash:
       dsBorder = CPWL_Dash(3, 3, 0);
@@ -1348,9 +1348,10 @@ void CPDFSDK_AppStream::SetAsCheckBox() {
 
   float fBorderWidth = static_cast<float>(widget_->GetBorderWidth());
   CPWL_Dash dsBorder(3, 0, 0);
-  CFX_Color crLeftTop, crRightBottom;
+  CFX_Color crLeftTop;
+  CFX_Color crRightBottom;
 
-  BorderStyle nBorderStyle = widget_->GetBorderStyle();
+  const BorderStyle nBorderStyle = widget_->GetBorderStyle();
   switch (nBorderStyle) {
     case BorderStyle::kDash:
       dsBorder = CPWL_Dash(3, 3, 0);
@@ -1444,7 +1445,7 @@ void CPDFSDK_AppStream::SetAsRadioButton() {
   CPWL_Dash dsBorder(3, 0, 0);
   CFX_Color crLeftTop;
   CFX_Color crRightBottom;
-  BorderStyle nBorderStyle = widget_->GetBorderStyle();
+  const BorderStyle nBorderStyle = widget_->GetBorderStyle();
   switch (nBorderStyle) {
     case BorderStyle::kDash:
       dsBorder = CPWL_Dash(3, 3, 0);
@@ -1581,7 +1582,7 @@ void CPDFSDK_AppStream::SetAsComboBox(Optional<WideString> sValue) {
   pEdit->SetPlateRect(rcEdit);
   pEdit->SetAlignmentV(1, true);
 
-  float fFontSize = widget_->GetFontSize();
+  const float fFontSize = widget_->GetFontSize();
   if (IsFloatZero(fFontSize))
     pEdit->SetAutoFontSize(true, true);
   else
@@ -1592,7 +1593,7 @@ void CPDFSDK_AppStream::SetAsComboBox(Optional<WideString> sValue) {
   if (sValue.has_value()) {
     pEdit->SetText(sValue.value());
   } else {
-    int32_t nCurSel = pField->GetSelectedIndex(0);
+    const int32_t nCurSel = pField->GetSelectedIndex(0);
     if (nCurSel < 0)
       pEdit->SetText(pField->GetValue());
     else
@@ -1641,16 +1642,16 @@ void CPDFSDK_AppStream::SetAsListBox() {
   pEdit->SetFontMap(&font_map);
   pEdit->SetPlateRect(CFX_FloatRect(rcClient.left, 0.0f, rcClient.right, 0.0f));
 
-  float fFontSize = widget_->GetFontSize();
+  const float fFontSize = widget_->GetFontSize();
   pEdit->SetFontSize(IsFloatZero(fFontSize) ? 12.0f : fFontSize);
   pEdit->Initialize();
 
   std::ostringstream sList;
   float fy = rcClient.top;
 
-  int32_t nTop = pField->GetTopVisibleIndex();
-  int32_t nCount = pField->CountOptions();
-  int32_t nSelCount = pField->CountSelectedItems();
+  const int32_t nTop = pField->GetTopVisibleIndex();
+  const int32_t nCount = pField->CountOptions();
+  const int32_t nSelCount = pField->CountSelectedItems();
 
   for (int32_t i = nTop; i < nCount; ++i) {
     bool bSelected = false;
@@ -1664,7 +1665,7 @@ void CPDFSDK_AppStream::SetAsListBox() {
     pEdit->SetText(pField->GetOptionLabel(i));
 
     CFX_FloatRect rcContent = pEdit->GetContentRect();
-    float fItemHeight = rcContent.Height();
+    const float fItemHeight = rcContent.Height();
 
     if (bSelected) {
       CFX_FloatRect rcItem =
@@ -1728,8 +1729,8 @@ void CPDFSDK_AppStream::SetAsTextField(Optional<WideString> sValue) {
   pEdit->SetPlateRect(rcClient);
   pEdit->SetAlignmentH(pControl->GetControlAlignment(), true);
 
-  uint32_t dwFieldFlags = pField->GetFieldFlags();
-  bool bMultiLine = dwFieldFlags & pdfium::form_flags::kTextMultiline;
+  const uint32_t dwFieldFlags = pField->GetFieldFlags();
+  const bool bMultiLine = dwFieldFlags & pdfium::form_flags::kTextMultiline;
   if (bMultiLine) {
     pEdit->SetMultiLine(true, true);
     pEdit->SetAutoReturn(true, true);
@@ -1744,7 +1745,7 @@ void CPDFSDK_AppStream::SetAsTextField(Optional<WideString> sValue) {
   }
 
   int nMaxLen = pField->GetMaxLen();
-  bool bCharArray = dwFieldFlags & pdfium::form_flags::kTextComb;
+  const bool bCharArray = dwFieldFlags & pdfium::form_flags::kTextComb;
   float fFontSize = widget_->GetFontSize();
 
 #ifdef PDF_ENABLE_XFA
@@ -1941,7 +1942,7 @@ ByteString CPDFSDK_AppStream::GetBorderAppStream() const {
   float fBorderWidth = static_cast<float>(widget_->GetBorderWidth());
   CPWL_Dash dsBorder(3, 0, 0);
 
-  BorderStyle nBorderStyle = widget_->GetBorderStyle();
+  const BorderStyle nBorderStyle = widget_->GetBorderStyle();
   switch (nBorderStyle) {
     case BorderStyle::kDash:
       dsBorder = CPWL_Dash(3, 3, 0);

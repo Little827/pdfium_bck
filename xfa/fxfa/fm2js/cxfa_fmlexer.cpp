@@ -311,7 +311,7 @@ CXFA_FMLexer::Token CXFA_FMLexer::AdvanceForNumber() {
     FXSYS_wcstof(&m_spInput[m_nCursor], m_spInput.size() - m_nCursor,
                  &used_length);
   }
-  size_t end = m_nCursor + used_length;
+  const size_t end = m_nCursor + used_length;
   if (used_length == 0 ||
       (end < m_spInput.size() && FXSYS_iswalpha(m_spInput[end]))) {
     RaiseError();
@@ -326,7 +326,7 @@ CXFA_FMLexer::Token CXFA_FMLexer::AdvanceForNumber() {
 
 CXFA_FMLexer::Token CXFA_FMLexer::AdvanceForString() {
   Token token(TOKstring);
-  size_t start = m_nCursor;
+  const size_t start = m_nCursor;
   ++m_nCursor;
   while (!IsComplete() && m_spInput[m_nCursor]) {
     if (!IsFormCalcCharacter(m_spInput[m_nCursor]))
@@ -361,7 +361,7 @@ CXFA_FMLexer::Token CXFA_FMLexer::AdvanceForString() {
 }
 
 CXFA_FMLexer::Token CXFA_FMLexer::AdvanceForIdentifier() {
-  size_t start = m_nCursor;
+  const size_t start = m_nCursor;
   ++m_nCursor;
   while (!IsComplete() && m_spInput[m_nCursor]) {
     if (!IsFormCalcCharacter(m_spInput[m_nCursor])) {

@@ -48,7 +48,7 @@ constexpr uint32_t kBmpBitfields = 3L;
 constexpr uint32_t kBmpMaxImageDimension = 65535;
 
 uint8_t HalfRoundUp(uint8_t value) {
-  uint16_t value16 = value;
+  const uint16_t value16 = value;
   return static_cast<uint8_t>((value16 + 1) / 2);
 }
 
@@ -60,7 +60,7 @@ CFX_BmpDecompressor::CFX_BmpDecompressor(const CFX_BmpContext* context)
 CFX_BmpDecompressor::~CFX_BmpDecompressor() = default;
 
 void CFX_BmpDecompressor::ReadNextScanline() {
-  uint32_t row = img_tb_flag_ ? row_num_ : (height_ - 1 - row_num_);
+  const uint32_t row = img_tb_flag_ ? row_num_ : (height_ - 1 - row_num_);
   context_->m_pDelegate->BmpReadScanline(row, out_row_buffer_);
   ++row_num_;
 }
@@ -101,7 +101,7 @@ BmpDecoder::Status CFX_BmpDecompressor::ReadBmpHeader() {
   if (bmp_header.bfType != kBmpSignature)
     return BmpDecoder::Status::kFail;
 
-  size_t pos = input_buffer_->GetPosition();
+  const size_t pos = input_buffer_->GetPosition();
   if (!ReadData(reinterpret_cast<uint8_t*>(&img_ifh_size_),
                 sizeof(img_ifh_size_))) {
     return BmpDecoder::Status::kContinue;
@@ -148,7 +148,7 @@ BmpDecoder::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
 
     width_ = FXDWORD_GET_LSBFIRST(
         reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
-    int32_t signed_height = FXDWORD_GET_LSBFIRST(
+    const int32_t signed_height = FXDWORD_GET_LSBFIRST(
         reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
     bit_counts_ = FXWORD_GET_LSBFIRST(
         reinterpret_cast<uint8_t*>(&bmp_info_header.biBitCount));
@@ -185,7 +185,7 @@ BmpDecoder::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
   uint16_t bi_planes;
   width_ = FXDWORD_GET_LSBFIRST(
       reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
-  int32_t signed_height = FXDWORD_GET_LSBFIRST(
+  const int32_t signed_height = FXDWORD_GET_LSBFIRST(
       reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
   bit_counts_ = FXWORD_GET_LSBFIRST(
       reinterpret_cast<uint8_t*>(&bmp_info_header.biBitCount));
@@ -296,7 +296,7 @@ BmpDecoder::Status CFX_BmpDecompressor::ReadBmpPalette() {
     pal_num_ = 1 << bit_counts_;
     if (color_used_ != 0)
       pal_num_ = color_used_;
-    uint32_t src_pal_size = pal_num_ * (pal_type_ ? 3 : 4);
+    const uint32_t src_pal_size = pal_num_ * (pal_type_ ? 3 : 4);
     std::vector<uint8_t, FxAllocAllocator<uint8_t>> src_pal(src_pal_size);
     uint8_t* src_pal_data = src_pal.data();
     if (!ReadData(src_pal_data, src_pal_size))
@@ -477,7 +477,7 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRLE8() {
               return BmpDecoder::Status::kContinue;
 
             col_num_ += delta[0];
-            size_t bmp_row_num__next = row_num_ + delta[1];
+            const size_t bmp_row_num__next = row_num_ + delta[1];
             if (col_num_ >= out_row_bytes_ || bmp_row_num__next >= height_)
               return BmpDecoder::Status::kFail;
 
@@ -488,7 +488,7 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRLE8() {
             break;
           }
           default: {
-            int32_t avail_size = out_row_bytes_ - col_num_;
+            const int32_t avail_size = out_row_bytes_ - col_num_;
             if (!avail_size || static_cast<int32_t>(first_part) > avail_size)
               return BmpDecoder::Status::kFail;
 
@@ -512,7 +512,7 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRLE8() {
         break;
       }
       default: {
-        int32_t avail_size = out_row_bytes_ - col_num_;
+        const int32_t avail_size = out_row_bytes_ - col_num_;
         if (!avail_size || static_cast<int32_t>(first_part) > avail_size)
           return BmpDecoder::Status::kFail;
 
@@ -568,7 +568,7 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRLE4() {
               return BmpDecoder::Status::kContinue;
 
             col_num_ += delta[0];
-            size_t bmp_row_num__next = row_num_ + delta[1];
+            const size_t bmp_row_num__next = row_num_ + delta[1];
             if (col_num_ >= out_row_bytes_ || bmp_row_num__next >= height_)
               return BmpDecoder::Status::kFail;
 
@@ -579,17 +579,17 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRLE4() {
             break;
           }
           default: {
-            int32_t avail_size = out_row_bytes_ - col_num_;
+            const int32_t avail_size = out_row_bytes_ - col_num_;
             if (!avail_size)
               return BmpDecoder::Status::kFail;
-            uint8_t size = HalfRoundUp(first_part);
+            const uint8_t size = HalfRoundUp(first_part);
             if (static_cast<int32_t>(first_part) > avail_size) {
               if (size + (col_num_ >> 1) > src_row_bytes_)
                 return BmpDecoder::Status::kFail;
 
               first_part = avail_size - 1;
             }
-            size_t second_part_size = size & 1 ? size + 1 : size;
+            const size_t second_part_size = size & 1 ? size + 1 : size;
             std::vector<uint8_t, FxAllocAllocator<uint8_t>> second_part(
                 second_part_size);
             uint8_t* second_part_data = second_part.data();
@@ -597,8 +597,9 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRLE4() {
               return BmpDecoder::Status::kContinue;
 
             for (uint8_t i = 0; i < first_part; i++) {
-              uint8_t color = (i & 0x01) ? (*second_part_data++ & 0x0F)
-                                         : (*second_part_data & 0xF0) >> 4;
+              const uint8_t color = (i & 0x01)
+                                        ? (*second_part_data++ & 0x0F)
+                                        : (*second_part_data & 0xF0) >> 4;
               if (!ValidateColorIndex(color))
                 return BmpDecoder::Status::kFail;
 
@@ -609,12 +610,12 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRLE4() {
         break;
       }
       default: {
-        int32_t avail_size = out_row_bytes_ - col_num_;
+        const int32_t avail_size = out_row_bytes_ - col_num_;
         if (!avail_size)
           return BmpDecoder::Status::kFail;
 
         if (static_cast<int32_t>(first_part) > avail_size) {
-          uint8_t size = HalfRoundUp(first_part);
+          const uint8_t size = HalfRoundUp(first_part);
           if (size + (col_num_ >> 1) > src_row_bytes_)
             return BmpDecoder::Status::kFail;
 

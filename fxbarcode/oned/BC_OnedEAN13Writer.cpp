@@ -101,8 +101,8 @@ uint8_t* CBC_OnedEAN13Writer::EncodeImpl(const ByteString& contents,
     return nullptr;
 
   m_iDataLenth = 13;
-  int32_t firstDigit = FXSYS_DecimalCharToInt(contents.Front());
-  int32_t parities = kFirstDigitEncodings[firstDigit];
+  const int32_t firstDigit = FXSYS_DecimalCharToInt(contents.Front());
+  const int32_t parities = kFirstDigitEncodings[firstDigit];
   outLength = m_codeWidth;
   std::unique_ptr<uint8_t, FxFreeDeleter> result(
       FX_Alloc(uint8_t, m_codeWidth));
@@ -120,7 +120,7 @@ uint8_t* CBC_OnedEAN13Writer::EncodeImpl(const ByteString& contents,
   pos += AppendPattern(result.get(), pos, kOnedEAN13MiddlePattern, 5, false);
 
   for (i = 7; i <= 12; i++) {
-    int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
+    const int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
     pos += AppendPattern(result.get(), pos, kOnedEAN13LPattern[digit], 4, true);
   }
   pos += AppendPattern(result.get(), pos, kOnedEAN13StartPattern, 3, true);
@@ -135,13 +135,13 @@ bool CBC_OnedEAN13Writer::ShowChars(WideStringView contents,
   if (!device)
     return false;
 
-  int32_t leftPadding = 7 * multiple;
-  int32_t leftPosition = 3 * multiple + leftPadding;
+  const int32_t leftPadding = 7 * multiple;
+  const int32_t leftPosition = 3 * multiple + leftPadding;
   ByteString str = FX_UTF8Encode(contents);
   size_t length = str.GetLength();
   std::vector<TextCharPos> charpos(length);
-  int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
-  int32_t iTextHeight = iFontSize + 1;
+  const int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
+  const int32_t iTextHeight = iFontSize + 1;
   ByteString tempStr = str.Substr(1, 6);
   int32_t strWidth = multiple * 42;
 
@@ -158,7 +158,7 @@ bool CBC_OnedEAN13Writer::ShowChars(WideStringView contents,
   matr1.Concat(matrix);
   re = matr1.TransformRect(rect1).GetOuterRect();
   device->FillRect(re, kBackgroundColor);
-  int32_t strWidth1 = multiple * 7;
+  const int32_t strWidth1 = multiple * 7;
   CFX_Matrix matr2(m_outputHScale, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
   CFX_FloatRect rect2(0.0f, (float)(m_Height - iTextHeight),
                       (float)strWidth1 - 0.5f, (float)m_Height);

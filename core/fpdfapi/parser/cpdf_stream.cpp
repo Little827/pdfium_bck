@@ -97,7 +97,7 @@ RetainPtr<CPDF_Object> CPDF_Stream::CloneNonCyclic(
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
   pAcc->LoadAllDataRaw();
 
-  uint32_t streamSize = pAcc->GetSize();
+  const uint32_t streamSize = pAcc->GetSize();
   const CPDF_Dictionary* pDict = GetDict();
   RetainPtr<CPDF_Dictionary> pNewDict;
   if (pDict && !pdfium::Contains(*pVisited, pDict)) {
@@ -191,7 +191,7 @@ bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive,
     data = encrypted_data;
   }
 
-  size_t size = data.size();
+  const size_t size = data.size();
   if (static_cast<size_t>(encoder.GetDict()->GetIntegerFor("Length")) != size) {
     encoder.CloneDict();
     encoder.GetClonedDict()->SetNewFor<CPDF_Number>("Length",

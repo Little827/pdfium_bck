@@ -24,7 +24,7 @@ int32_t FilterName(WideStringView wsExpression,
                    int32_t nStart,
                    WideString& wsFilter) {
   DCHECK(nStart > -1);
-  int32_t iLength = wsExpression.GetLength();
+  const int32_t iLength = wsExpression.GetLength();
   if (nStart >= iLength)
     return iLength;
 
@@ -292,8 +292,8 @@ CJS_Result CJX_HostPseudoModel::openList(
     if (!pObject)
       return CJS_Result::Success();
 
-    uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
-                      XFA_RESOLVENODE_Siblings;
+    const uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
+                            XFA_RESOLVENODE_Siblings;
     Optional<CFXJSE_Engine::ResolveResult> maybeResult =
         pScriptContext->ResolveObjects(
             pObject, runtime->ToWideString(params[0]).AsStringView(), dwFlag);
@@ -369,7 +369,7 @@ CJS_Result CJX_HostPseudoModel::resetData(
   int32_t iStart = 0;
   WideString wsName;
   CXFA_Node* pNode = nullptr;
-  int32_t iExpLength = expression.GetLength();
+  const int32_t iExpLength = expression.GetLength();
   while (iStart < iExpLength) {
     iStart = FilterName(expression.AsStringView(), iStart, wsName);
     CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
@@ -377,8 +377,8 @@ CJS_Result CJX_HostPseudoModel::resetData(
     if (!pObject)
       return CJS_Result::Success();
 
-    uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
-                      XFA_RESOLVENODE_Siblings;
+    const uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
+                            XFA_RESOLVENODE_Siblings;
     Optional<CFXJSE_Engine::ResolveResult> maybeResult =
         pScriptContext->ResolveObjects(pObject, wsName.AsStringView(), dwFlag);
     if (!maybeResult.has_value() ||
@@ -439,8 +439,8 @@ CJS_Result CJX_HostPseudoModel::setFocus(
       if (!pObject)
         return CJS_Result::Success();
 
-      uint32_t dwFlag = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Parent |
-                        XFA_RESOLVENODE_Siblings;
+      const uint32_t dwFlag = XFA_RESOLVENODE_Children |
+                              XFA_RESOLVENODE_Parent | XFA_RESOLVENODE_Siblings;
       Optional<CFXJSE_Engine::ResolveResult> maybeResult =
           pScriptContext->ResolveObjects(
               pObject, runtime->ToWideString(params[0]).AsStringView(), dwFlag);
@@ -507,8 +507,8 @@ CJS_Result CJX_HostPseudoModel::messageBox(
       buttonType = static_cast<uint32_t>(AlertButton::kDefault);
   }
 
-  int32_t iValue = pNotify->GetAppProvider()->MsgBox(message, title,
-                                                     messageType, buttonType);
+  const int32_t iValue = pNotify->GetAppProvider()->MsgBox(
+      message, title, messageType, buttonType);
   return CJS_Result::Success(runtime->NewNumber(iValue));
 }
 
@@ -545,8 +545,8 @@ CJS_Result CJX_HostPseudoModel::print(
   if (runtime->ToBoolean(params[7]))
     dwOptions |= XFA_PRINTOPT_PrintAnnot;
 
-  int32_t nStartPage = runtime->ToInt32(params[1]);
-  int32_t nEndPage = runtime->ToInt32(params[2]);
+  const int32_t nStartPage = runtime->ToInt32(params[1]);
+  const int32_t nEndPage = runtime->ToInt32(params[2]);
   pNotify->GetFFDoc()->Print(nStartPage, nEndPage, dwOptions);
   return CJS_Result::Success();
 }
@@ -590,7 +590,7 @@ CJS_Result CJX_HostPseudoModel::pageUp(
     return CJS_Result::Success();
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
-  int32_t nCurPage = hDoc->GetCurrentPage();
+  const int32_t nCurPage = hDoc->GetCurrentPage();
   if (nCurPage <= 1)
     return CJS_Result::Success();
 
@@ -606,8 +606,8 @@ CJS_Result CJX_HostPseudoModel::pageDown(
     return CJS_Result::Success();
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
-  int32_t nCurPage = hDoc->GetCurrentPage();
-  int32_t nPageCount = hDoc->CountPages();
+  const int32_t nCurPage = hDoc->GetCurrentPage();
+  const int32_t nPageCount = hDoc->CountPages();
   if (!nPageCount || nCurPage == nPageCount)
     return CJS_Result::Success();
 

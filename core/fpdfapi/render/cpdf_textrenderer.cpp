@@ -69,7 +69,7 @@ bool CPDF_TextRenderer::DrawTextPath(
   int32_t fontPosition = pos[0].m_FallbackFontPosition;
   size_t startIndex = 0;
   for (size_t i = 0; i < pos.size(); ++i) {
-    int32_t curFontPosition = pos[i].m_FallbackFontPosition;
+    const int32_t curFontPosition = pos[i].m_FallbackFontPosition;
     if (fontPosition == curFontPosition)
       continue;
 
@@ -106,7 +106,7 @@ void CPDF_TextRenderer::DrawTextString(CFX_RenderDevice* pDevice,
   if (pFont->IsType3Font())
     return;
 
-  int nChars = pFont->CountChar(str.AsStringView());
+  const int nChars = pFont->CountChar(str.AsStringView());
   if (nChars <= 0)
     return;
 
@@ -149,7 +149,7 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
   int32_t fontPosition = pos[0].m_FallbackFontPosition;
   size_t startIndex = 0;
   for (size_t i = 0; i < pos.size(); ++i) {
-    int32_t curFontPosition = pos[i].m_FallbackFontPosition;
+    const int32_t curFontPosition = pos[i].m_FallbackFontPosition;
     if (fontPosition == curFontPosition)
       continue;
 

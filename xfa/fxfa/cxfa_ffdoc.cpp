@@ -267,7 +267,7 @@ bool CXFA_FFDoc::OpenDoc(CFX_XMLDocument* pXML) {
 RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
                                                      int32_t& iImageXDpi,
                                                      int32_t& iImageYDpi) {
-  uint32_t dwHash = FX_HashCode_GetW(wsName, false);
+  const uint32_t dwHash = FX_HashCode_GetW(wsName, false);
   auto it = m_HashToDibDpiMap.find(dwHash);
   if (it != m_HashToDibDpiMap.end()) {
     iImageXDpi = it->second.iImageXDpi;
@@ -276,7 +276,7 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
   }
 
   auto name_tree = CPDF_NameTree::Create(m_pPDFDoc.Get(), "XFAImages");
-  size_t count = name_tree ? name_tree->GetCount() : 0;
+  const size_t count = name_tree ? name_tree->GetCount() : 0;
   if (count == 0)
     return nullptr;
 

@@ -80,7 +80,7 @@ bool CPDF_StitchFunc::v_Init(const CPDF_Object* pObj,
       if (pFunc->CountInputs() != kRequiredNumInputs)
         return false;
 
-      uint32_t nFuncOutputs = pFunc->CountOutputs();
+      const uint32_t nFuncOutputs = pFunc->CountOutputs();
       if (nFuncOutputs == 0)
         return false;
 

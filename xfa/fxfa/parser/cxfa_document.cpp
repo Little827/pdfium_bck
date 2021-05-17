@@ -194,7 +194,7 @@ CXFA_Node* CloneOrMergeInstanceManager(CXFA_Document* pDocument,
   CXFA_Node* pExistingNode = XFA_DataMerge_FindFormDOMInstance(
       pDocument, XFA_Element::InstanceManager, dwInstNameHash, pFormParent);
   if (pExistingNode) {
-    uint32_t dwNameHash = pTemplateNode->GetNameHash();
+    const uint32_t dwNameHash = pTemplateNode->GetNameHash();
     for (CXFA_Node* pNode = pExistingNode->GetNextSibling(); pNode;) {
       XFA_Element eCurType = pNode->GetElementType();
       if (eCurType == XFA_Element::InstanceManager)
@@ -302,7 +302,7 @@ CXFA_Node* FindGlobalDataNode(CXFA_Document* pDocument,
   if (wsName.IsEmpty())
     return nullptr;
 
-  uint32_t dwNameHash = FX_HashCode_GetW(wsName.AsStringView(), false);
+  const uint32_t dwNameHash = FX_HashCode_GetW(wsName.AsStringView(), false);
   CXFA_Node* pBounded = pDocument->GetGlobalBinding(dwNameHash);
   if (!pBounded) {
     pBounded =
@@ -319,7 +319,7 @@ CXFA_Node* FindOnceDataNode(const WideString& wsName,
   if (wsName.IsEmpty())
     return nullptr;
 
-  uint32_t dwNameHash = FX_HashCode_GetW(wsName.AsStringView(), false);
+  const uint32_t dwNameHash = FX_HashCode_GetW(wsName.AsStringView(), false);
   CXFA_Node* pLastDataScope = nullptr;
   for (CXFA_Node* pCurDataScope = pDataScope;
        pCurDataScope &&
@@ -677,7 +677,7 @@ void CreateDataBinding(CXFA_Node* pFormNode,
         std::vector<CXFA_Node*> items = pDataNode->GetNodeListWithFilter(
             XFA_NODEFILTER_Children | XFA_NODEFILTER_Properties);
         if (!items.empty()) {
-          bool single = items.size() == 1;
+          const bool single = items.size() == 1;
           wsNormalizeValue.clear();
 
           for (CXFA_Node* pNode : items) {
@@ -1080,7 +1080,7 @@ CXFA_Node* CopyContainer_SubformSet(CXFA_Document* pDocument,
     }
   }
 
-  int32_t iMinimalLimit = iCurRepeatIndex == 0 ? iInit : iMin;
+  const int32_t iMinimalLimit = iCurRepeatIndex == 0 ? iInit : iMin;
   for (; iCurRepeatIndex < iMinimalLimit; iCurRepeatIndex++) {
     CXFA_Node* pSubformSetNode = XFA_NodeMerge_CloneOrMergeContainer(
         pDocument, pFormParentNode, pTemplateNode, false, pSearchArray);
@@ -1163,7 +1163,7 @@ void UpdateBindingRelations(CXFA_Document* pDocument,
         break;
       case XFA_AttributeValue::Global:
         if (!bDataRef || bParentDataRef) {
-          uint32_t dwNameHash = pFormNode->GetNameHash();
+          const uint32_t dwNameHash = pFormNode->GetNameHash();
           if (dwNameHash != 0 && !pDataNode) {
             pDataNode = pDocument->GetGlobalBinding(dwNameHash);
             if (!pDataNode) {
@@ -1246,7 +1246,7 @@ void UpdateDataRelation(CXFA_Node* pDataNode, CXFA_Node* pDataDescriptionNode) {
   DCHECK(pDataDescriptionNode);
   for (CXFA_Node* pDataChild = pDataNode->GetFirstChild(); pDataChild;
        pDataChild = pDataChild->GetNextSibling()) {
-    uint32_t dwNameHash = pDataChild->GetNameHash();
+    const uint32_t dwNameHash = pDataChild->GetNameHash();
     if (!dwNameHash)
       continue;
 
@@ -1433,7 +1433,7 @@ bool CXFA_Document::IsInteractive() {
     return false;
 
   WideString wsInteractive = pFormFiller->JSObject()->GetContent(false);
-  bool bInteractive = wsInteractive.EqualsASCII("1");
+  const bool bInteractive = wsInteractive.EqualsASCII("1");
   m_Interactive = bInteractive;
   return bInteractive;
 }
@@ -1469,7 +1469,7 @@ XFA_VERSION CXFA_Document::RecognizeXFAVersionNumber(
   if (wsTemplateNS.GetLength() <= wsTemplateURIPrefix.GetLength())
     return XFA_VERSION_UNKNOWN;
 
-  size_t prefixLength = wsTemplateURIPrefix.GetLength();
+  const size_t prefixLength = wsTemplateURIPrefix.GetLength();
   if (WideStringView(wsTemplateNS.c_str(), prefixLength) != wsTemplateURIPrefix)
     return XFA_VERSION_UNKNOWN;
 
@@ -1477,7 +1477,7 @@ XFA_VERSION CXFA_Document::RecognizeXFAVersionNumber(
   if (!nDotPos.has_value())
     return XFA_VERSION_UNKNOWN;
 
-  int8_t iMajor = FXSYS_wtoi(
+  const int8_t iMajor = FXSYS_wtoi(
       wsTemplateNS.Substr(prefixLength, nDotPos.value() - prefixLength)
           .c_str());
   int8_t iMinor =
@@ -1551,7 +1551,7 @@ void CXFA_Document::DoProtoMerge() {
         wsURI = wsUseVal.AsStringView();
       } else {
         wsURI = WideStringView(wsUseVal.c_str(), uSharpPos.value());
-        size_t uLen = wsUseVal.GetLength();
+        const size_t uLen = wsUseVal.GetLength();
         if (uLen >= uSharpPos.value() + 5 &&
             WideStringView(wsUseVal.c_str() + uSharpPos.value(), 5) ==
                 L"#som(" &&
@@ -1712,7 +1712,7 @@ void CXFA_Document::DoDataMerge() {
 
   CXFA_DataGroup* pDataTopLevel =
       pDataRoot->GetFirstChildByClass<CXFA_DataGroup>(XFA_Element::DataGroup);
-  uint32_t dwNameHash = pDataTopLevel ? pDataTopLevel->GetNameHash() : 0;
+  const uint32_t dwNameHash = pDataTopLevel ? pDataTopLevel->GetNameHash() : 0;
   CXFA_Template* pTemplateRoot =
       m_pRootNode->GetFirstChildByClass<CXFA_Template>(XFA_Element::Template);
   if (!pTemplateRoot)

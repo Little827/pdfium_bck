@@ -20,7 +20,7 @@ int AdjustBlueHelper(float pos, std::vector<int>* blues) {
   float min_distance = 1000000.0f;
   int closest_pos = -1;
   for (int i = 0; i < static_cast<int>(blues->size()); ++i) {
-    float distance = fabs(pos - static_cast<float>(blues->at(i)));
+    const float distance = fabs(pos - static_cast<float>(blues->at(i)));
     if (distance < std::min(0.8f, min_distance)) {
       min_distance = distance;
       closest_pos = i;
@@ -28,7 +28,7 @@ int AdjustBlueHelper(float pos, std::vector<int>* blues) {
   }
   if (closest_pos >= 0)
     return blues->at(closest_pos);
-  int new_pos = FXSYS_roundf(pos);
+  const int new_pos = FXSYS_roundf(pos);
   if (blues->size() < kType3MaxBlues)
     blues->push_back(new_pos);
   return new_pos;

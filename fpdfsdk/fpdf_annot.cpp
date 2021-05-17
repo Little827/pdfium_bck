@@ -237,7 +237,7 @@ RetainPtr<CPDF_Dictionary> SetExtGStateInResourceDict(
 
   // CA respresents current stroking alpha specifying constant opacity
   // value that should be used in transparent imaging model.
-  float fOpacity = pAnnotDict->GetNumberFor("CA");
+  const float fOpacity = pAnnotDict->GetNumberFor("CA");
 
   pGSDict->SetNewFor<CPDF_Number>("CA", fOpacity);
 

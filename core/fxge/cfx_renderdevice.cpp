@@ -43,13 +43,13 @@ namespace {
 void AdjustGlyphSpace(std::vector<TextGlyphPos>* pGlyphAndPos) {
   DCHECK(pGlyphAndPos->size() > 1);
   std::vector<TextGlyphPos>& glyphs = *pGlyphAndPos;
-  bool bVertical = glyphs.back().m_Origin.x == glyphs.front().m_Origin.x;
+  const bool bVertical = glyphs.back().m_Origin.x == glyphs.front().m_Origin.x;
   if (!bVertical && (glyphs.back().m_Origin.y != glyphs.front().m_Origin.y))
     return;
 
   for (size_t i = glyphs.size() - 1; i > 1; --i) {
     const TextGlyphPos& next = glyphs[i];
-    int next_origin = bVertical ? next.m_Origin.y : next.m_Origin.x;
+    const int next_origin = bVertical ? next.m_Origin.y : next.m_Origin.x;
     float next_origin_f =
         bVertical ? next.m_fDeviceOrigin.y : next.m_fDeviceOrigin.x;
 
@@ -63,9 +63,9 @@ void AdjustGlyphSpace(std::vector<TextGlyphPos>* pGlyphAndPos) {
     if (!safe_space.IsValid())
       continue;
 
-    int space = safe_space.ValueOrDie();
-    float space_f = next_origin_f - current_origin_f;
-    float error = fabs(space_f) - fabs(static_cast<float>(space));
+    const int space = safe_space.ValueOrDie();
+    const float space_f = next_origin_f - current_origin_f;
+    const float error = fabs(space_f) - fabs(static_cast<float>(space));
     if (error <= 0.5f)
       continue;
 
@@ -145,7 +145,7 @@ void ApplyDestAlpha(uint8_t back_alpha,
                     int g,
                     int b,
                     uint8_t* dest) {
-  uint8_t dest_alpha = CalculateDestAlpha(back_alpha, src_alpha);
+  const uint8_t dest_alpha = CalculateDestAlpha(back_alpha, src_alpha);
   ApplyAlpha(dest, b, g, r, src_alpha * 255 / dest_alpha);
   dest[3] = dest_alpha;
 }
@@ -157,7 +157,7 @@ void NormalizeArgb(int src_value,
                    int a,
                    uint8_t* dest,
                    int src_alpha) {
-  uint8_t back_alpha = dest[3];
+  const uint8_t back_alpha = dest[3];
   if (back_alpha == 0)
     FXARGB_SETDIB(dest, ArgbEncode(src_alpha, r, g, b));
   else if (src_alpha != 0)
@@ -176,7 +176,7 @@ void NormalizeDest(bool has_alpha,
                   CalcAlpha(TextGammaAdjust(src_value), a));
     return;
   }
-  int src_alpha = CalcAlpha(TextGammaAdjust(src_value), a);
+  const int src_alpha = CalcAlpha(TextGammaAdjust(src_value), a);
   if (src_alpha == 0)
     return;
 
@@ -194,7 +194,7 @@ void NormalizeSrc(bool has_alpha,
     ApplyAlpha(dest, b, g, r, CalcAlpha(TextGammaAdjust(src_value), a));
     return;
   }
-  int src_alpha = CalcAlpha(TextGammaAdjust(src_value), a);
+  const int src_alpha = CalcAlpha(TextGammaAdjust(src_value), a);
   if (src_alpha != 0)
     NormalizeArgb(src_value, r, g, b, a, dest, src_alpha);
 }
@@ -224,12 +224,12 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
                           int b) {
   const bool has_alpha = bitmap->GetFormat() == FXDIB_Format::kArgb;
   uint8_t* src_buf = pGlyph->GetBuffer();
-  int src_pitch = pGlyph->GetPitch();
+  const int src_pitch = pGlyph->GetPitch();
   uint8_t* dest_buf = bitmap->GetBuffer();
-  int dest_pitch = bitmap->GetPitch();
+  const int dest_pitch = bitmap->GetPitch();
   const int Bpp = has_alpha ? 4 : bitmap->GetBPP() / 8;
   for (int row = 0; row < nrows; ++row) {
-    int dest_row = row + top;
+    const int dest_row = row + top;
     if (dest_row < 0 || dest_row >= bitmap->GetHeight())
       continue;
 
@@ -238,7 +238,7 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
     if (x_subpixel == 0) {
       for (int col = start_col; col < end_col; ++col) {
         if (normalize) {
-          int src_value = AverageRgb(&src_scan[0]);
+          const int src_value = AverageRgb(&src_scan[0]);
           NormalizeDest(has_alpha, src_value, r, g, b, a, dest_scan);
         } else {
           MergeGammaAdjustRgb(&src_scan[0], r, g, b, a, &dest_scan[0]);
@@ -250,8 +250,9 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
     }
     if (x_subpixel == 1) {
       if (normalize) {
-        int src_value = start_col > left ? AverageRgb(&src_scan[-1])
-                                         : (src_scan[0] + src_scan[1]) / 3;
+        const int src_value = start_col > left
+                                  ? AverageRgb(&src_scan[-1])
+                                  : (src_scan[0] + src_scan[1]) / 3;
         NormalizeSrc(has_alpha, src_value, r, g, b, a, dest_scan);
       } else {
         if (start_col > left)
@@ -263,7 +264,7 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
       NextPixel(&src_scan, &dest_scan, Bpp);
       for (int col = start_col + 1; col < end_col; ++col) {
         if (normalize) {
-          int src_value = AverageRgb(&src_scan[-1]);
+          const int src_value = AverageRgb(&src_scan[-1]);
           NormalizeDest(has_alpha, src_value, r, g, b, a, dest_scan);
         } else {
           MergeGammaAdjustRgb(&src_scan[-1], r, g, b, a, &dest_scan[0]);
@@ -288,7 +289,7 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
     NextPixel(&src_scan, &dest_scan, Bpp);
     for (int col = start_col + 1; col < end_col; ++col) {
       if (normalize) {
-        int src_value = AverageRgb(&src_scan[-2]);
+        const int src_value = AverageRgb(&src_scan[-2]);
         NormalizeDest(has_alpha, src_value, r, g, b, a, dest_scan);
       } else {
         MergeGammaAdjustRgb(&src_scan[-2], r, g, b, a, &dest_scan[0]);
@@ -439,7 +440,7 @@ bool GetZeroAreaPath(pdfium::span<const FX_PATHPOINT> points,
     }
 
     DCHECK_EQ(point_type, FXPT_TYPE::LineTo);
-    int next_index = (i + 1) % (points.size());
+    const int next_index = (i + 1) % (points.size());
     const FX_PATHPOINT& next = points[next_index];
     if (next.m_Type == FXPT_TYPE::BezierTo || next.m_Type == FXPT_TYPE::MoveTo)
       continue;
@@ -447,8 +448,8 @@ bool GetZeroAreaPath(pdfium::span<const FX_PATHPOINT> points,
     const FX_PATHPOINT& prev = points[i - 1];
     const FX_PATHPOINT& cur = points[i];
     if (IsFoldingVerticalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
-      bool use_prev = fabs(cur.m_Point.y - prev.m_Point.y) <
-                      fabs(cur.m_Point.y - next.m_Point.y);
+      const bool use_prev = fabs(cur.m_Point.y - prev.m_Point.y) <
+                            fabs(cur.m_Point.y - next.m_Point.y);
       const FX_PATHPOINT& start = use_prev ? prev : cur;
       const FX_PATHPOINT& end = use_prev ? points[next_index - 1] : next;
       new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
@@ -458,8 +459,8 @@ bool GetZeroAreaPath(pdfium::span<const FX_PATHPOINT> points,
 
     if (IsFoldingHorizontalLine(prev.m_Point, cur.m_Point, next.m_Point) ||
         IsFoldingDiagonalLine(prev.m_Point, cur.m_Point, next.m_Point)) {
-      bool use_prev = fabs(cur.m_Point.x - prev.m_Point.x) <
-                      fabs(cur.m_Point.x - next.m_Point.x);
+      const bool use_prev = fabs(cur.m_Point.x - prev.m_Point.x) <
+                            fabs(cur.m_Point.x - next.m_Point.x);
       const FX_PATHPOINT& start = use_prev ? prev : cur;
       const FX_PATHPOINT& end = use_prev ? points[next_index - 1] : next;
       new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
@@ -468,7 +469,7 @@ bool GetZeroAreaPath(pdfium::span<const FX_PATHPOINT> points,
     }
   }
 
-  size_t new_path_size = new_path->GetPoints().size();
+  const size_t new_path_size = new_path->GetPoints().size();
   if (points.size() > 3 && new_path_size > 0)
     *thin = true;
   return new_path_size != 0;
@@ -631,8 +632,8 @@ bool CFX_RenderDevice::DrawPathWithBlend(
     BlendMode blend_type) {
   const bool fill =
       fill_options.fill_type != CFX_FillRenderOptions::FillType::kNoFill;
-  uint8_t fill_alpha = fill ? FXARGB_A(fill_color) : 0;
-  uint8_t stroke_alpha = pGraphState ? FXARGB_A(stroke_color) : 0;
+  const uint8_t fill_alpha = fill ? FXARGB_A(fill_color) : 0;
+  const uint8_t stroke_alpha = pGraphState ? FXARGB_A(stroke_color) : 0;
   pdfium::span<const FX_PATHPOINT> points = pPathData->GetPoints();
   if (stroke_alpha == 0 && points.size() == 2) {
     CFX_PointF pos1 = points[0].m_Point;
@@ -693,7 +694,7 @@ bool CFX_RenderDevice::DrawPathWithBlend(
 
   if (fill && stroke_alpha == 0 && !fill_options.stroke &&
       !fill_options.text_mode) {
-    bool adjust = !!m_pDeviceDriver->GetDriverType();
+    const bool adjust = !!m_pDeviceDriver->GetDriverType();
     std::vector<FX_PATHPOINT> sub_path;
     for (size_t i = 0; i < points.size(); i++) {
       FXPT_TYPE point_type = points[i].m_Type;
@@ -913,8 +914,8 @@ bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
   if (!(m_RenderCaps & FXRC_GET_BITS))
     return false;
 
-  int bg_pixel_width = dest_rect.Width();
-  int bg_pixel_height = dest_rect.Height();
+  const int bg_pixel_width = dest_rect.Width();
+  const int bg_pixel_height = dest_rect.Height();
   auto background = pdfium::MakeRetain<CFX_DIBitmap>();
   if (!background->Create(bg_pixel_width, bg_pixel_height,
                           FXDIB_Format::kRgb32)) {
@@ -1132,10 +1133,10 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
   if (bmp_rect.IsEmpty())
     return true;
 
-  int pixel_width = bmp_rect.Width();
-  int pixel_height = bmp_rect.Height();
-  int pixel_left = bmp_rect.left;
-  int pixel_top = bmp_rect.top;
+  const int pixel_width = bmp_rect.Width();
+  const int pixel_height = bmp_rect.Height();
+  const int pixel_left = bmp_rect.left;
+  const int pixel_top = bmp_rect.top;
   if (anti_alias == FT_RENDER_MODE_MONO) {
     auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
     if (!bitmap->Create(pixel_width, pixel_height, FXDIB_Format::k1bppMask))
@@ -1173,7 +1174,7 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
     if (bitmap->HasAlphaMask())
       bitmap->GetAlphaMask()->Clear(0);
   }
-  int dest_width = pixel_width;
+  const int dest_width = pixel_width;
   int a = 0;
   int r = 0;
   int g = 0;
@@ -1191,7 +1192,7 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
 
     const RetainPtr<CFX_DIBitmap>& pGlyph = glyph.m_pGlyph->GetBitmap();
     int ncols = pGlyph->GetWidth();
-    int nrows = pGlyph->GetHeight();
+    const int nrows = pGlyph->GetHeight();
     if (anti_alias == FT_RENDER_MODE_NORMAL) {
       if (!bitmap->CompositeMask(point.value().x, point.value().y, ncols, nrows,
                                  pGlyph, fill_color, 0, 0, BlendMode::kNormal,
@@ -1201,14 +1202,14 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
       continue;
     }
     ncols /= 3;
-    int x_subpixel = static_cast<int>(glyph.m_fDeviceOrigin.x * 3) % 3;
-    int start_col = std::max(point->x, 0);
+    const int x_subpixel = static_cast<int>(glyph.m_fDeviceOrigin.x * 3) % 3;
+    const int start_col = std::max(point->x, 0);
     FX_SAFE_INT32 end_col_safe = point->x;
     end_col_safe += ncols;
     if (!end_col_safe.IsValid())
       continue;
 
-    int end_col = std::min<int>(end_col_safe.ValueOrDie(), dest_width);
+    const int end_col = std::min<int>(end_col_safe.ValueOrDie(), dest_width);
     if (start_col >= end_col)
       continue;
 
@@ -1339,7 +1340,7 @@ void CFX_RenderDevice::DrawShadow(const CFX_Matrix& mtUser2Device,
   constexpr float kLineWidth = 1.5f;
 
   if (bVertical) {
-    float fStepGray = (nEndGray - nStartGray) / rect.Height();
+    const float fStepGray = (nEndGray - nStartGray) / rect.Height();
     CFX_PointF start(rect.left, 0);
     CFX_PointF end(rect.right, 0);
 
@@ -1347,14 +1348,15 @@ void CFX_RenderDevice::DrawShadow(const CFX_Matrix& mtUser2Device,
          fy += kSegmentWidth) {
       start.y = fy;
       end.y = fy;
-      int nGray = nStartGray + static_cast<int>(fStepGray * (fy - rect.bottom));
+      const int nGray =
+          nStartGray + static_cast<int>(fStepGray * (fy - rect.bottom));
       FX_ARGB color = ArgbEncode(nTransparency, nGray, nGray, nGray);
       DrawStrokeLine(&mtUser2Device, start, end, color, kLineWidth);
     }
   }
 
   if (bHorizontal) {
-    float fStepGray = (nEndGray - nStartGray) / rect.Width();
+    const float fStepGray = (nEndGray - nStartGray) / rect.Width();
     CFX_PointF start(0, rect.bottom);
     CFX_PointF end(0, rect.top);
 
@@ -1362,7 +1364,8 @@ void CFX_RenderDevice::DrawShadow(const CFX_Matrix& mtUser2Device,
          fx += kSegmentWidth) {
       start.x = fx;
       end.x = fx;
-      int nGray = nStartGray + static_cast<int>(fStepGray * (fx - rect.left));
+      const int nGray =
+          nStartGray + static_cast<int>(fStepGray * (fx - rect.left));
       FX_ARGB color = ArgbEncode(nTransparency, nGray, nGray, nGray);
       DrawStrokeLine(&mtUser2Device, start, end, color, kLineWidth);
     }

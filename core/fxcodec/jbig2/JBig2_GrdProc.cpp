@@ -94,12 +94,12 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
 
   int LTP = 0;
   uint8_t* pLine = GBREG->data();
-  int32_t nStride = GBREG->stride();
-  int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  const int32_t nStride = GBREG->stride();
+  const int32_t nStride2 = nStride << 1;
+  const int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
+  const int32_t nBitsLeft = GBW - (nLineBytes << 3);
   // TODO(npm): Why is the height only trimmed when OPT is 0?
-  uint32_t height = OPT == 0 ? GBH & 0x7fffffff : GBH;
+  const uint32_t height = OPT == 0 ? GBH & 0x7fffffff : GBH;
   for (uint32_t h = 0; h < height; ++h) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -125,7 +125,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
             if (pArithDecoder->IsComplete())
               return nullptr;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT =
                 (((CONTEXT & kOptConstant6[OPT]) << 1) | bVal |
@@ -141,7 +141,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
           if (pArithDecoder->IsComplete())
             return nullptr;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT =
               (((CONTEXT & kOptConstant6[OPT]) << 1) | bVal |
@@ -162,7 +162,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
             if (pArithDecoder->IsComplete())
               return nullptr;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT =
                 (((CONTEXT & kOptConstant6[OPT]) << 1) | bVal |
@@ -176,7 +176,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
           if (pArithDecoder->IsComplete())
             return nullptr;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT = (((CONTEXT & kOptConstant6[OPT]) << 1) | bVal |
                      (((line2 >> (7 + kOptConstant4[OPT] - k))) &
@@ -200,9 +200,9 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplateUnopt(
 
   GBREG->Fill(0);
   int LTP = 0;
-  uint8_t MOD2 = UNOPT % 2;
-  uint8_t DIV2 = UNOPT / 2;
-  uint8_t SHIFT = 4 - UNOPT;
+  const uint8_t MOD2 = UNOPT % 2;
+  const uint8_t DIV2 = UNOPT / 2;
+  const uint8_t SHIFT = 4 - UNOPT;
   for (uint32_t h = 0; h < GBH; h++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -261,9 +261,9 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
 
   int LTP = 0;
   uint8_t* pLine = GBREG->data();
-  int32_t nStride = GBREG->stride();
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  const int32_t nStride = GBREG->stride();
+  const int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
+  const int32_t nBitsLeft = GBW - (nLineBytes << 3);
 
   for (uint32_t h = 0; h < GBH; h++) {
     if (TPGDON) {
@@ -287,7 +287,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
             if (pArithDecoder->IsComplete())
               return nullptr;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x01f7) << 1) | bVal |
                       ((line1 >> (k + 1)) & 0x0010);
@@ -300,7 +300,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
           if (pArithDecoder->IsComplete())
             return nullptr;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT =
               ((CONTEXT & 0x01f7) << 1) | bVal | ((line1 >> (8 - k)) & 0x0010);
@@ -314,7 +314,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
             if (pArithDecoder->IsComplete())
               return nullptr;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x01f7) << 1) | bVal;
           }
@@ -325,7 +325,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
           if (pArithDecoder->IsComplete())
             return nullptr;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT = ((CONTEXT & 0x01f7) << 1) | bVal;
         }
@@ -408,7 +408,7 @@ FXCODEC_STATUS CJBig2_GRDProc::StartDecodeArith(
 
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArith(
     ProgressiveArithDecodeState* pState) {
-  int iline = m_loopIndex;
+  const int iline = m_loopIndex;
 
   using DecodeFunction = std::function<FXCODEC_STATUS(
       CJBig2_GRDProc&, ProgressiveArithDecodeState*)>;
@@ -487,11 +487,11 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
   if (!m_pLine)
     m_pLine = pImage->data();
-  int32_t nStride = pImage->stride();
-  int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
-  uint32_t height = GBH & 0x7fffffff;
+  const int32_t nStride = pImage->stride();
+  const int32_t nStride2 = nStride << 1;
+  const int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
+  const int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  const uint32_t height = GBH & 0x7fffffff;
 
   for (; m_loopIndex < height; m_loopIndex++) {
     if (TPGDON) {
@@ -517,7 +517,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = (((CONTEXT & 0x7bf7) << 1) | bVal |
                        ((line1 >> k) & 0x0800) | ((line2 >> k) & 0x0010));
@@ -531,7 +531,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT =
               (((CONTEXT & 0x7bf7) << 1) | bVal |
@@ -551,7 +551,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT =
                 (((CONTEXT & 0x7bf7) << 1) | bVal | ((line2 >> k) & 0x0010));
@@ -564,7 +564,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT = (((CONTEXT & 0x7bf7) << 1) | bVal |
                      ((line2 >> (7 - k)) & 0x0010));
@@ -648,10 +648,10 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
   if (!m_pLine)
     m_pLine = pImage->data();
-  int32_t nStride = pImage->stride();
-  int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  const int32_t nStride = pImage->stride();
+  const int32_t nStride2 = nStride << 1;
+  const int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
+  const int32_t nBitsLeft = GBW - (nLineBytes << 3);
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -676,7 +676,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x0efb) << 1) | bVal |
                       ((line1 >> k) & 0x0200) | ((line2 >> (k + 1)) & 0x0008);
@@ -690,7 +690,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT = ((CONTEXT & 0x0efb) << 1) | bVal |
                     ((line1 >> (7 - k)) & 0x0200) |
@@ -710,7 +710,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x0efb) << 1) | bVal |
                       ((line2 >> (k + 1)) & 0x0008);
@@ -723,7 +723,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT =
               ((CONTEXT & 0x0efb) << 1) | bVal | ((line2 >> (8 - k)) & 0x0008);
@@ -803,10 +803,10 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
   if (!m_pLine)
     m_pLine = pImage->data();
-  int32_t nStride = pImage->stride();
-  int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  const int32_t nStride = pImage->stride();
+  const int32_t nStride2 = nStride << 1;
+  const int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
+  const int32_t nBitsLeft = GBW - (nLineBytes << 3);
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -831,7 +831,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x01bd) << 1) | bVal |
                       ((line1 >> k) & 0x0080) | ((line2 >> (k + 3)) & 0x0004);
@@ -845,7 +845,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT = ((CONTEXT & 0x01bd) << 1) | bVal |
                     ((line1 >> (7 - k)) & 0x0080) |
@@ -865,7 +865,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x01bd) << 1) | bVal |
                       ((line2 >> (k + 3)) & 0x0004);
@@ -878,7 +878,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT = ((CONTEXT & 0x01bd) << 1) | bVal |
                     (((line2 >> (10 - k))) & 0x0004);
@@ -959,9 +959,9 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder.Get();
   if (!m_pLine)
     m_pLine = pImage->data();
-  int32_t nStride = pImage->stride();
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  const int32_t nStride = pImage->stride();
+  const int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
+  const int32_t nBitsLeft = GBW - (nLineBytes << 3);
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -983,7 +983,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x01f7) << 1) | bVal |
                       ((line1 >> (k + 1)) & 0x0010);
@@ -996,7 +996,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT =
               ((CONTEXT & 0x01f7) << 1) | bVal | ((line1 >> (8 - k)) & 0x0010);
@@ -1010,7 +1010,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
             if (pArithDecoder->IsComplete())
               return FXCODEC_STATUS_ERROR;
 
-            int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+            const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
             cVal |= bVal << k;
             CONTEXT = ((CONTEXT & 0x01f7) << 1) | bVal;
           }
@@ -1021,7 +1021,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 
-          int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
+          const int bVal = pArithDecoder->Decode(&gbContext[CONTEXT]);
           cVal1 |= bVal << (7 - k);
           CONTEXT = ((CONTEXT & 0x01f7) << 1) | bVal;
         }

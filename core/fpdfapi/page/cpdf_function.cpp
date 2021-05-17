@@ -95,7 +95,7 @@ bool CPDF_Function::Init(const CPDF_Object* pObj,
   if (m_nInputs == 0)
     return false;
 
-  size_t nInputs = m_nInputs * 2;
+  const size_t nInputs = m_nInputs * 2;
   m_Domains = ReadArrayElementsToVector(pDomains, nInputs);
 
   const CPDF_Array* pRanges = pDict->GetArrayFor("Range");
@@ -109,11 +109,11 @@ bool CPDF_Function::Init(const CPDF_Object* pObj,
     return false;
 
   if (m_nOutputs > 0) {
-    size_t nOutputs = m_nOutputs * 2;
+    const size_t nOutputs = m_nOutputs * 2;
     m_Ranges = ReadArrayElementsToVector(pRanges, nOutputs);
   }
 
-  uint32_t old_outputs = m_nOutputs;
+  const uint32_t old_outputs = m_nOutputs;
   if (!v_Init(pObj, pVisited))
     return false;
 
@@ -157,7 +157,7 @@ float CPDF_Function::Interpolate(float x,
                                  float xmax,
                                  float ymin,
                                  float ymax) const {
-  float divisor = xmax - xmin;
+  const float divisor = xmax - xmin;
   return ymin + (divisor ? (x - xmin) * (ymax - ymin) / divisor : 0);
 }
 

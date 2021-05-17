@@ -40,8 +40,8 @@ CFX_ImageRenderer::CFX_ImageRenderer(const RetainPtr<CFX_DIBitmap>& pDevice,
     if (fabs(m_Matrix.a) < fabs(m_Matrix.b) / 20 &&
         fabs(m_Matrix.d) < fabs(m_Matrix.c) / 20 && fabs(m_Matrix.a) < 0.5f &&
         fabs(m_Matrix.d) < 0.5f) {
-      int dest_width = image_rect.Width();
-      int dest_height = image_rect.Height();
+      const int dest_width = image_rect.Width();
+      const int dest_height = image_rect.Height();
       FX_RECT bitmap_clip = m_ClipBox;
       bitmap_clip.Offset(-image_rect.left, -image_rect.top);
       bitmap_clip = FXDIB_SwapClipBox(bitmap_clip, dest_width, dest_height,

@@ -118,8 +118,8 @@ class FPDFViewEmbedderTest : public EmbedderTest {
   void TestRenderPageBitmapWithFlags(FPDF_PAGE page,
                                      int flags,
                                      const char* expected_md5) {
-    int bitmap_width = static_cast<int>(FPDF_GetPageWidth(page));
-    int bitmap_height = static_cast<int>(FPDF_GetPageHeight(page));
+    const int bitmap_width = static_cast<int>(FPDF_GetPageWidth(page));
+    const int bitmap_height = static_cast<int>(FPDF_GetPageHeight(page));
     ScopedFPDFBitmap bitmap(FPDFBitmap_Create(bitmap_width, bitmap_height, 0));
     FPDFBitmap_FillRect(bitmap.get(), 0, 0, bitmap_width, bitmap_height,
                         0xFFFFFFFF);
@@ -131,12 +131,12 @@ class FPDFViewEmbedderTest : public EmbedderTest {
   void TestRenderPageBitmapWithExternalMemory(FPDF_PAGE page,
                                               int format,
                                               const char* expected_md5) {
-    int bitmap_width = static_cast<int>(FPDF_GetPageWidth(page));
-    int bitmap_height = static_cast<int>(FPDF_GetPageHeight(page));
-    int bytes_per_pixel = BytesPerPixelForFormat(format);
+    const int bitmap_width = static_cast<int>(FPDF_GetPageWidth(page));
+    const int bitmap_height = static_cast<int>(FPDF_GetPageHeight(page));
+    const int bytes_per_pixel = BytesPerPixelForFormat(format);
     ASSERT_NE(0, bytes_per_pixel);
 
-    int bitmap_stride = bytes_per_pixel * bitmap_width;
+    const int bitmap_stride = bytes_per_pixel * bitmap_width;
     std::vector<uint8_t> external_memory(bitmap_stride * bitmap_height);
     ScopedFPDFBitmap bitmap(FPDFBitmap_CreateEx(bitmap_width, bitmap_height,
                                                 format, external_memory.data(),
@@ -161,15 +161,15 @@ TEST_F(FPDFViewEmbedderTest, DeviceCoordinatesToPageCoordinates) {
   // Display bounds in device coordinates
   int start_x = 0;
   int start_y = 0;
-  int size_x = 640;
-  int size_y = 480;
+  const int size_x = 640;
+  const int size_y = 480;
 
   // Page Orientation normal
   int rotate = 0;
 
   // Device coordinate to be converted
-  int device_x = 10;
-  int device_y = 10;
+  const int device_x = 10;
+  const int device_y = 10;
 
   double page_x = 0.0;
   double page_y = 0.0;
@@ -241,15 +241,15 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
   // Display bounds in device coordinates
   int start_x = 0;
   int start_y = 0;
-  int size_x = 640;
-  int size_y = 480;
+  const int size_x = 640;
+  const int size_y = 480;
 
   // Page Orientation normal
   int rotate = 0;
 
   // Page coordinate to be converted
-  double page_x = 9.0;
-  double page_y = 775.0;
+  const double page_x = 9.0;
+  const double page_y = 775.0;
 
   int device_x = 0;
   int device_y = 0;
@@ -984,7 +984,7 @@ TEST_F(FPDFViewEmbedderTest, FPDF_RenderPageBitmapWithMatrix) {
   const int tile_size = 50;
   const int tile_x = 2;
   const int tile_y = 1;
-  float tile_bitmap_size = scale * tile_size;
+  const float tile_bitmap_size = scale * tile_size;
   FS_RECTF tile_bitmap_rect{0, 0, tile_bitmap_size, tile_bitmap_size};
   FS_MATRIX tile_2_1_matrix{scale,
                             0,

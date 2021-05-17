@@ -106,9 +106,10 @@ int CPWL_EditImpl_Provider::GetCharWidth(int32_t nFontIndex, uint16_t word) {
   if (!pPDFFont)
     return 0;
 
-  uint32_t charcode = pPDFFont->IsUnicodeCompatible()
-                          ? pPDFFont->CharCodeFromUnicode(word)
-                          : GetFontMap()->CharCodeFromUnicode(nFontIndex, word);
+  const uint32_t charcode =
+      pPDFFont->IsUnicodeCompatible()
+          ? pPDFFont->CharCodeFromUnicode(word)
+          : GetFontMap()->CharCodeFromUnicode(nFontIndex, word);
   if (charcode == CPDF_Font::kInvalidCharCode)
     return 0;
 
@@ -432,8 +433,8 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
                              CFFL_FormFiller* pFFLData) {
   const bool bContinuous =
       pEdit->GetCharArray() == 0 && pEdit->GetCharSpace() <= 0.0f;
-  uint16_t SubWord = pEdit->GetPasswordChar();
-  float fFontSize = pEdit->GetFontSize();
+  const uint16_t SubWord = pEdit->GetPasswordChar();
+  const float fFontSize = pEdit->GetFontSize();
   CPVT_WordRange wrSelect = pEdit->GetSelectWordRange();
   FX_COLORREF crCurFill = crTextFill;
   FX_COLORREF crOldFill = crCurFill;
@@ -750,10 +751,10 @@ WideString CPWL_EditImpl::GetSelectedText() const {
 }
 
 int32_t CPWL_EditImpl::GetTotalLines() const {
-  int32_t nLines = 1;
-
   CPVT_VariableText::Iterator* pIterator = m_pVT->GetIterator();
   pIterator->SetAt(0);
+
+  int32_t nLines = 1;
   while (pIterator->NextLine())
     ++nLines;
 
@@ -1562,7 +1563,7 @@ bool CPWL_EditImpl::Delete(bool bAddUndo) {
     pIterator->GetWord(word);
   }
   m_pVT->UpdateWordPlace(m_wpCaret);
-  bool bSecEnd = (m_wpCaret == m_pVT->GetSectionEndPlace(m_wpCaret));
+  const bool bSecEnd = (m_wpCaret == m_pVT->GetSectionEndPlace(m_wpCaret));
   SetCaret(m_pVT->DeleteWord(m_wpCaret));
   m_SelState.Set(m_wpCaret, m_wpCaret);
   if (bAddUndo && m_bEnableUndo) {
@@ -1698,9 +1699,9 @@ CPVT_WordPlace CPWL_EditImpl::WordIndexToWordPlace(int32_t index) const {
 }
 
 bool CPWL_EditImpl::IsTextFull() const {
-  int32_t nTotalWords = m_pVT->GetTotalWords();
-  int32_t nLimitChar = m_pVT->GetLimitChar();
-  int32_t nCharArray = m_pVT->GetCharArray();
+  const int32_t nTotalWords = m_pVT->GetTotalWords();
+  const int32_t nLimitChar = m_pVT->GetLimitChar();
+  const int32_t nCharArray = m_pVT->GetCharArray();
 
   return IsTextOverflow() || (nLimitChar > 0 && nTotalWords >= nLimitChar) ||
          (nCharArray > 0 && nTotalWords >= nCharArray);
@@ -1802,9 +1803,10 @@ ByteString CPWL_EditImpl::GetPDFWordString(int32_t nFontIndex,
   if (SubWord > 0) {
     Word = SubWord;
   } else {
-    uint32_t dwCharCode = pPDFFont->IsUnicodeCompatible()
-                              ? pPDFFont->CharCodeFromUnicode(Word)
-                              : pFontMap->CharCodeFromUnicode(nFontIndex, Word);
+    const uint32_t dwCharCode =
+        pPDFFont->IsUnicodeCompatible()
+            ? pPDFFont->CharCodeFromUnicode(Word)
+            : pFontMap->CharCodeFromUnicode(nFontIndex, Word);
     if (dwCharCode > 0) {
       pPDFFont->AppendChar(&sWord, dwCharCode);
       return sWord;

@@ -29,8 +29,8 @@ void CFWL_PushButtonTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
     }
     case CFWL_Part::Background: {
       const CFX_RectF& rect = pParams.m_PartRect;
-      float fRight = rect.right();
-      float fBottom = rect.bottom();
+      const float fRight = rect.right();
+      const float fBottom = rect.bottom();
 
       CFGAS_GEPath strokePath;
       strokePath.MoveTo(
@@ -60,7 +60,7 @@ void CFWL_PushButtonTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
       fillPath.AddRectangle(rtInner.left, rtInner.top, rtInner.width,
                             rtInner.height);
 
-      int32_t iColor = GetColorID(pParams.m_dwStates);
+      const int32_t iColor = GetColorID(pParams.m_dwStates);
       FillSolidRect(pGraphics, m_pThemeData->clrEnd[iColor], rect,
                     pParams.m_matrix);
 

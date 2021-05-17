@@ -31,7 +31,7 @@ CBC_QRCoderBitVector::~CBC_QRCoderBitVector() = default;
 
 int32_t CBC_QRCoderBitVector::At(size_t index) const {
   CHECK(index < m_sizeInBits);
-  int32_t value = m_array[index >> 3] & 0xff;
+  const int32_t value = m_array[index >> 3] & 0xff;
   return (value >> (7 - (index & 0x7))) & 1;
 }
 
@@ -45,7 +45,7 @@ size_t CBC_QRCoderBitVector::Size() const {
 
 void CBC_QRCoderBitVector::AppendBit(int32_t bit) {
   DCHECK(bit == 0 || bit == 1);
-  int32_t numBitsInLastByte = m_sizeInBits & 0x7;
+  const int32_t numBitsInLastByte = m_sizeInBits & 0x7;
   if (numBitsInLastByte == 0) {
     AppendByte(0);
     m_sizeInBits -= 8;

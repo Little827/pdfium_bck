@@ -114,13 +114,13 @@ uint8_t* CBC_OnedEAN8Writer::EncodeImpl(const ByteString& contents,
 
   int32_t i = 0;
   for (i = 0; i <= 3; i++) {
-    int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
+    const int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
     pos += AppendPattern(result.get(), pos, kOnedEAN8LPattern[digit], 4, false);
   }
   pos += AppendPattern(result.get(), pos, kOnedEAN8MiddlePattern, 5, false);
 
   for (i = 4; i <= 7; i++) {
-    int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
+    const int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
     pos += AppendPattern(result.get(), pos, kOnedEAN8LPattern[digit], 4, true);
   }
   pos += AppendPattern(result.get(), pos, kOnedEAN8StartPattern, 3, true);
@@ -135,17 +135,17 @@ bool CBC_OnedEAN8Writer::ShowChars(WideStringView contents,
   if (!device)
     return false;
 
-  int32_t leftPosition = 3 * multiple;
-  ByteString str = FX_UTF8Encode(contents);
-  size_t iLength = str.GetLength();
+  const int32_t leftPosition = 3 * multiple;
+  const ByteString str = FX_UTF8Encode(contents);
+  const size_t iLength = str.GetLength();
   std::vector<TextCharPos> charpos(iLength);
   ByteString tempStr = str.First(4);
   size_t iLen = tempStr.GetLength();
   int32_t strWidth = 7 * multiple * 4;
   float blank = 0.0;
 
-  int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
-  int32_t iTextHeight = iFontSize + 1;
+  const int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
+  const int32_t iTextHeight = iFontSize + 1;
 
   CFX_Matrix matr(m_outputHScale, 0.0, 0.0, 1.0, 0.0, 0.0);
   CFX_FloatRect rect((float)leftPosition, (float)(m_Height - iTextHeight),
