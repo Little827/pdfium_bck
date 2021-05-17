@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68a66cc_9d2b2434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-17T16:36:03Z",
+      "side": 1,
+      "message": "core/fxcrt code coverage rate went down...",
+      "revId": "7a8b9f92e9c53e2ada7e03051db2057a530c38a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
