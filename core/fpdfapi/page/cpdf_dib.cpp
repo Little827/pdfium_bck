@@ -86,7 +86,7 @@ bool AreColorIndicesOutOfBounds(const uint8_t* indices,
 
 int CalculateBitsPerPixel(uint32_t bpc, uint32_t comps) {
   // TODO(thestig): Can |bpp| be 0 here? Add an DCHECK() or handle it?
-  uint32_t bpp = bpc * comps;
+  const uint32_t bpp = bpc * comps;
   if (bpp == 1)
     return 1;
   if (bpp <= 8)
@@ -449,12 +449,12 @@ bool CPDF_DIB::GetDecodeAndMaskArray(bool* bDefaultDecode, bool* bColorKey) {
     return false;
 
   m_CompData.resize(m_nComponents);
-  int max_data = (1 << m_bpc) - 1;
+  const int max_data = (1 << m_bpc) - 1;
   const CPDF_Array* pDecode = m_pDict->GetArrayFor("Decode");
   if (pDecode) {
     for (uint32_t i = 0; i < m_nComponents; i++) {
       m_CompData[i].m_DecodeMin = pDecode->GetNumberAt(i * 2);
-      float max = pDecode->GetNumberAt(i * 2 + 1);
+      const float max = pDecode->GetNumberAt(i * 2 + 1);
       m_CompData[i].m_DecodeStep = (max - m_CompData[i].m_DecodeMin) / max_data;
       float def_value;
       float def_min;
@@ -486,8 +486,8 @@ bool CPDF_DIB::GetDecodeAndMaskArray(bool* bDefaultDecode, bool* bColorKey) {
   if (const CPDF_Array* pArray = pMask->AsArray()) {
     if (pArray->size() >= m_nComponents * 2) {
       for (uint32_t i = 0; i < m_nComponents; i++) {
-        int min_num = pArray->GetIntegerAt(i * 2);
-        int max_num = pArray->GetIntegerAt(i * 2 + 1);
+        const int min_num = pArray->GetIntegerAt(i * 2);
+        const int max_num = pArray->GetIntegerAt(i * 2 + 1);
         m_CompData[i].m_ColorKeyMin = std::max(min_num, 0);
         m_CompData[i].m_ColorKeyMax = std::min(max_num, max_data);
       }
@@ -583,12 +583,13 @@ bool CPDF_DIB::CreateDCTDecoder(pdfium::span<const uint8_t> src_span,
   m_nComponents = static_cast<uint32_t>(info.num_components);
   m_CompData.clear();
   if (m_pColorSpace) {
-    uint32_t colorspace_comps = m_pColorSpace->CountComponents();
+    const uint32_t colorspace_comps = m_pColorSpace->CountComponents();
     switch (m_Family) {
       case PDFCS_DEVICEGRAY:
       case PDFCS_DEVICERGB:
       case PDFCS_DEVICECMYK: {
-        uint32_t dwMinComps = CPDF_ColorSpace::ComponentsForFamily(m_Family);
+        const uint32_t dwMinComps =
+            CPDF_ColorSpace::ComponentsForFamily(m_Family);
         if (colorspace_comps < dwMinComps || m_nComponents < dwMinComps)
           return false;
         break;
@@ -716,12 +717,12 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap() {
         const uint8_t* src = result_bitmap->GetScanline(row);
         uint8_t* dest = rgb_bitmap->GetWritableScanline(row);
         for (uint32_t col = 0; col < image_info.width; ++col) {
-          uint8_t a = src[3];
+          const uint8_t a = src[3];
           m_JpxInlineData.data.push_back(a);
-          uint8_t na = 255 - a;
-          uint8_t b = (src[0] * a + 255 * na) / 255;
-          uint8_t g = (src[1] * a + 255 * na) / 255;
-          uint8_t r = (src[2] * a + 255 * na) / 255;
+          const uint8_t na = 255 - a;
+          const uint8_t b = (src[0] * a + 255 * na) / 255;
+          const uint8_t g = (src[1] * a + 255 * na) / 255;
+          const uint8_t r = (src[2] * a + 255 * na) / 255;
           dest[0] = b;
           dest[1] = g;
           dest[2] = r;
@@ -744,7 +745,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap() {
     result_bitmap = std::move(rgb_bitmap);
   } else if (m_pColorSpace && m_pColorSpace->GetFamily() == PDFCS_INDEXED &&
              m_bpc < 8) {
-    int scale = 8 - m_bpc;
+    const int scale = 8 - m_bpc;
     for (uint32_t row = 0; row < image_info.height; ++row) {
       uint8_t* scanline = result_bitmap->GetWritableScanline(row);
       for (uint32_t col = 0; col < image_info.width; ++col) {
@@ -849,7 +850,7 @@ void CPDF_DIB::LoadPalette() {
   // |m_nComponents| somehow gets a bad value.
   FX_SAFE_UINT32 safe_bits = m_bpc;
   safe_bits *= m_nComponents;
-  uint32_t bits = safe_bits.ValueOrDefault(255);
+  const uint32_t bits = safe_bits.ValueOrDefault(255);
   if (bits > 8)
     return;
 
@@ -889,13 +890,13 @@ void CPDF_DIB::LoadPalette() {
     return;
   }
 
-  int palette_count = 1 << bits;
+  const int palette_count = 1 << bits;
   // Using at least 16 elements due to the call m_pColorSpace->GetRGB().
   std::vector<float> color_values(std::max(m_nComponents, 16u));
   for (int i = 0; i < palette_count; i++) {
     int color_data = i;
     for (uint32_t j = 0; j < m_nComponents; j++) {
-      int encoded_component = color_data % (1 << m_bpc);
+      const int encoded_component = color_data % (1 << m_bpc);
       color_data /= 1 << m_bpc;
       color_values[j] = m_CompData[j].m_DecodeMin +
                         m_CompData[j].m_DecodeStep * encoded_component;
@@ -905,7 +906,7 @@ void CPDF_DIB::LoadPalette() {
     float B = 0;
     if (m_nComponents == 1 && m_Family == PDFCS_ICCBASED &&
         m_pColorSpace->CountComponents() > 1) {
-      int nComponents = m_pColorSpace->CountComponents();
+      const int nComponents = m_pColorSpace->CountComponents();
       std::vector<float> temp_buf(nComponents);
       for (int k = 0; k < nComponents; ++k)
         temp_buf[k] = color_values[0];
@@ -960,7 +961,7 @@ void CPDF_DIB::TranslateScanline24bpp(uint8_t* dest_scan,
   for (int column = 0; column < m_Width; column++) {
     for (uint32_t color = 0; color < m_nComponents; color++) {
       if (bpp8) {
-        uint8_t data = src_scan[src_byte_pos++];
+        const uint8_t data = src_scan[src_byte_pos++];
         color_values[color] = m_CompData[color].m_DecodeMin +
                               m_CompData[color].m_DecodeStep * data;
       } else {
@@ -972,7 +973,7 @@ void CPDF_DIB::TranslateScanline24bpp(uint8_t* dest_scan,
     }
 
     if (TransMask()) {
-      float k = 1.0f - color_values[3];
+      const float k = 1.0f - color_values[3];
       R = (1.0f - color_values[0]) * k;
       G = (1.0f - color_values[1]) * k;
       B = (1.0f - color_values[2]) * k;
@@ -1063,7 +1064,7 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
       fxcodec::CalculatePitch8(m_bpc, m_nComponents, m_Width);
   if (!src_pitch.IsValid())
     return nullptr;
-  uint32_t src_pitch_value = src_pitch.ValueOrDie();
+  const uint32_t src_pitch_value = src_pitch.ValueOrDie();
 
   const uint8_t* pSrcLine = nullptr;
   if (m_pCachedBitmap && src_pitch_value <= m_pCachedBitmap->GetPitch()) {
@@ -1094,8 +1095,8 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
       return m_pLineBuf.get();
     }
 
-    uint32_t reset_argb = Get1BitResetValue();
-    uint32_t set_argb = Get1BitSetValue();
+    const uint32_t reset_argb = Get1BitResetValue();
+    const uint32_t set_argb = Get1BitSetValue();
     uint32_t* dest_scan = reinterpret_cast<uint32_t*>(m_pMaskedLine.get());
     for (int col = 0; col < m_Width; col++) {
       *dest_scan = GetBitValue(pSrcLine, col) ? set_argb : reset_argb;
@@ -1125,7 +1126,7 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
     const uint8_t* pSrcPixel = m_pLineBuf.get();
     pdfium::span<const uint32_t> palette = GetPaletteSpan();
     for (int col = 0; col < m_Width; col++) {
-      uint8_t index = *pSrcPixel++;
+      const uint8_t index = *pSrcPixel++;
       if (HasPalette()) {
         *pDestPixel++ = FXARGB_B(palette[index]);
         *pDestPixel++ = FXARGB_G(palette[index]);
@@ -1186,7 +1187,7 @@ void CPDF_DIB::DownSampleScanline(int line,
     return;
   }
 
-  uint32_t src_width = m_Width;
+  const uint32_t src_width = m_Width;
   FX_SAFE_UINT32 pitch =
       fxcodec::CalculatePitch8(m_bpc, m_nComponents, m_Width);
   if (!pitch.IsValid())
@@ -1198,7 +1199,7 @@ void CPDF_DIB::DownSampleScanline(int line,
   } else if (m_pDecoder) {
     pSrcLine = m_pDecoder->GetScanline(line);
   } else {
-    uint32_t src_pitch = pitch.ValueOrDie();
+    const uint32_t src_pitch = pitch.ValueOrDie();
     pitch *= (line + 1);
     if (!pitch.IsValid()) {
       return;
@@ -1208,8 +1209,8 @@ void CPDF_DIB::DownSampleScanline(int line,
       pSrcLine = m_pStreamAcc->GetData() + line * src_pitch;
     }
   }
-  int orig_Bpp = m_bpc * m_nComponents / 8;
-  int dest_Bpp = dest_bpp / 8;
+  const int orig_Bpp = m_bpc * m_nComponents / 8;
+  const int dest_Bpp = dest_bpp / 8;
   if (!pSrcLine) {
     memset(dest_scan, 0xFF, dest_Bpp * clip_width);
     return;
@@ -1244,8 +1245,8 @@ void CPDF_DIB::DownSampleScanline1Bit(int orig_Bpp,
                                       int clip_left,
                                       int clip_width) const {
   if (m_bColorKey && !m_bImageMask) {
-    uint32_t reset_argb = Get1BitResetValue();
-    uint32_t set_argb = Get1BitSetValue();
+    const uint32_t reset_argb = Get1BitResetValue();
+    const uint32_t set_argb = Get1BitSetValue();
     uint32_t* dest_scan_dword = reinterpret_cast<uint32_t*>(dest_scan);
     for (int i = 0; i < clip_width; i++) {
       uint32_t src_x = (clip_left + i) * src_width / dest_width;
@@ -1273,8 +1274,9 @@ void CPDF_DIB::DownSampleScanline1Bit(int orig_Bpp,
     if (bFlipX)
       src_x = src_width - src_x - 1;
     src_x %= src_width;
-    int dest_pos = i * dest_Bpp;
-    uint32_t value_argb = GetBitValue(pSrcLine, src_x) ? set_argb : reset_argb;
+    const int dest_pos = i * dest_Bpp;
+    const uint32_t value_argb =
+        GetBitValue(pSrcLine, src_x) ? set_argb : reset_argb;
     if (dest_Bpp == 1) {
       dest_scan[dest_pos] = static_cast<uint8_t>(value_argb);
     } else if (dest_Bpp == 3) {
@@ -1318,7 +1320,7 @@ void CPDF_DIB::DownSampleScanline8Bit(int orig_Bpp,
       }
       src_x %= src_width;
       uint8_t* pDestPixel = dest_scan + i * 4;
-      uint8_t index = pSrcLine[src_x];
+      const uint8_t index = pSrcLine[src_x];
       if (HasPalette()) {
         *pDestPixel++ = FXARGB_B(palette[index]);
         *pDestPixel++ = FXARGB_G(palette[index]);
@@ -1342,11 +1344,11 @@ void CPDF_DIB::DownSampleScanline8Bit(int orig_Bpp,
     if (bFlipX)
       src_x = src_width - src_x - 1;
     src_x %= src_width;
-    uint8_t index = pSrcLine[src_x];
+    const uint8_t index = pSrcLine[src_x];
     if (dest_Bpp == 1) {
       dest_scan[i] = index;
     } else {
-      int dest_pos = i * dest_Bpp;
+      const int dest_pos = i * dest_Bpp;
       FX_ARGB argb = palette[index];
       dest_scan[dest_pos] = FXARGB_B(argb);
       dest_scan[dest_pos + 1] = FXARGB_G(argb);
@@ -1368,9 +1370,9 @@ void CPDF_DIB::DownSampleScanline32Bit(int orig_Bpp,
   // in [0, src_width). Set the initial value to be an invalid src_x value.
   uint32_t last_src_x = src_width;
   FX_ARGB last_argb = ArgbEncode(0xFF, 0xFF, 0xFF, 0xFF);
-  float unit_To8Bpc = 255.0f / ((1 << m_bpc) - 1);
+  const float unit_To8Bpc = 255.0f / ((1 << m_bpc) - 1);
   for (int i = 0; i < clip_width; i++) {
-    int dest_x = clip_left + i;
+    const int dest_x = clip_left + i;
     uint32_t src_x = (bFlipX ? (dest_width - dest_x - 1) : dest_x) *
                      (int64_t)src_width / dest_width;
     src_x %= src_width;
@@ -1386,7 +1388,7 @@ void CPDF_DIB::DownSampleScanline32Bit(int orig_Bpp,
         // No need to check for 32-bit overflow, as |src_x| is bounded by
         // |src_width| and DownSampleScanline() already checked for overflow
         // with the pitch calculation.
-        size_t num_bits = src_x * m_bpc * m_nComponents;
+        const size_t num_bits = src_x * m_bpc * m_nComponents;
         uint64_t src_bit_pos = num_bits % 8;
         pSrcPixel = pSrcLine + num_bits / 8;
         for (uint32_t j = 0; j < m_nComponents; ++j) {
@@ -1409,8 +1411,8 @@ void CPDF_DIB::DownSampleScanline32Bit(int orig_Bpp,
         const bool bTransMask = TransMask();
         if (!m_bDefaultDecode) {
           for (uint32_t j = 0; j < m_nComponents; ++j) {
-            float component_value = static_cast<float>(pSrcPixel[j]);
-            int color_value = static_cast<int>(
+            const float component_value = static_cast<float>(pSrcPixel[j]);
+            const int color_value = static_cast<int>(
                 (m_CompData[j].m_DecodeMin +
                  m_CompData[j].m_DecodeStep * component_value) *
                     255.0f +

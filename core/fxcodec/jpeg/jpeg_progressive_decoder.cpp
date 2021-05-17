@@ -120,7 +120,7 @@ int JpegProgressiveDecoder::ReadHeader(Context* pContext,
   DCHECK(pAttribute);
 
   auto* ctx = static_cast<CJpegContext*>(pContext);
-  int ret = jpeg_read_header(&ctx->m_Info, TRUE);
+  const int ret = jpeg_read_header(&ctx->m_Info, TRUE);
   if (ret == JPEG_SUSPENDED)
     return 2;
   if (ret != JPEG_HEADER_OK)

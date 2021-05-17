@@ -91,7 +91,7 @@ bool XFAJSEmbedderTest::ExecuteSilenceFailure(ByteStringView input) {
 
 bool XFAJSEmbedderTest::ExecuteHelper(ByteStringView input) {
   auto value = std::make_unique<CFXJSE_Value>();
-  bool ret = script_context_->RunScript(
+  const bool ret = script_context_->RunScript(
       CXFA_Script::Type::Formcalc, WideString::FromUTF8(input).AsStringView(),
       value.get(), GetXFADocument()->GetRoot());
   value_.Reset(isolate(), value->GetValue(isolate()));

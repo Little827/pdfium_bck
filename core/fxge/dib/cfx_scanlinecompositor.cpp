@@ -102,9 +102,9 @@ int Lum(RGB color) {
 }
 
 RGB ClipColor(RGB color) {
-  int l = Lum(color);
-  int n = std::min(color.red, std::min(color.green, color.blue));
-  int x = std::max(color.red, std::max(color.green, color.blue));
+  const int l = Lum(color);
+  const int n = std::min(color.red, std::min(color.green, color.blue));
+  const int x = std::max(color.red, std::max(color.green, color.blue));
   if (n < 0) {
     color.red = l + ((color.red - l) * l / (l - n));
     color.green = l + ((color.green - l) * l / (l - n));
@@ -119,7 +119,7 @@ RGB ClipColor(RGB color) {
 }
 
 RGB SetLum(RGB color, int l) {
-  int d = l - Lum(color);
+  const int d = l - Lum(color);
   color.red += d;
   color.green += d;
   color.blue += d;
@@ -132,8 +132,8 @@ int Sat(RGB color) {
 }
 
 RGB SetSat(RGB color, int s) {
-  int min = std::min(color.red, std::min(color.green, color.blue));
-  int max = std::max(color.red, std::max(color.green, color.blue));
+  const int min = std::min(color.red, std::min(color.green, color.blue));
+  const int max = std::max(color.red, std::max(color.green, color.blue));
   if (min == max)
     return {0, 0, 0};
 
@@ -200,8 +200,8 @@ void CompositeRow_AlphaToMask(uint8_t* dest_scan,
                               uint8_t stride) {
   src_scan += stride - 1;
   for (int col = 0; col < pixel_count; ++col) {
-    int src_alpha = GetAlpha(*src_scan, clip_scan, col);
-    uint8_t back_alpha = *dest_scan;
+    const int src_alpha = GetAlpha(*src_scan, clip_scan, col);
+    const uint8_t back_alpha = *dest_scan;
     if (!back_alpha)
       *dest_scan = src_alpha;
     else if (src_alpha)
@@ -260,13 +260,13 @@ void CompositeRow_Argb2Graya(uint8_t* dest_scan,
                              const uint8_t* clip_scan,
                              const uint8_t* src_alpha_scan,
                              uint8_t* dst_alpha_scan) {
-  uint8_t offset = src_alpha_scan ? 3 : 4;
+  const uint8_t offset = src_alpha_scan ? 3 : 4;
   for (int col = 0; col < pixel_count; ++col) {
     const uint8_t* alpha_scan =
         src_alpha_scan ? src_alpha_scan++ : &src_scan[3];
-    uint8_t back_alpha = *dst_alpha_scan;
+    const uint8_t back_alpha = *dst_alpha_scan;
     if (back_alpha == 0) {
-      int src_alpha = GetAlpha(*alpha_scan, clip_scan, col);
+      const int src_alpha = GetAlpha(*alpha_scan, clip_scan, col);
       if (src_alpha) {
         *dest_scan = GetGray(src_scan);
         *dst_alpha_scan = src_alpha;
@@ -276,7 +276,7 @@ void CompositeRow_Argb2Graya(uint8_t* dest_scan,
       src_scan += offset;
       continue;
     }
-    uint8_t src_alpha = GetAlpha(*alpha_scan, clip_scan, col);
+    const uint8_t src_alpha = GetAlpha(*alpha_scan, clip_scan, col);
     if (src_alpha == 0) {
       ++dest_scan;
       ++dst_alpha_scan;
@@ -284,7 +284,7 @@ void CompositeRow_Argb2Graya(uint8_t* dest_scan,
       continue;
     }
     *dst_alpha_scan = FXDIB_ALPHA_UNION(back_alpha, src_alpha);
-    int alpha_ratio = src_alpha * 255 / (*dst_alpha_scan);
+    const int alpha_ratio = src_alpha * 255 / (*dst_alpha_scan);
     uint8_t gray = GetGray(src_scan);
     // TODO(npm): Does this if really need src_alpha_scan or was that a bug?
     if (blend_type != BlendMode::kNormal && src_alpha_scan) {
@@ -307,11 +307,11 @@ void CompositeRow_Argb2Gray(uint8_t* dest_scan,
                             const uint8_t* clip_scan,
                             const uint8_t* src_alpha_scan) {
   uint8_t gray;
-  uint8_t offset = src_alpha_scan ? 3 : 4;
+  const uint8_t offset = src_alpha_scan ? 3 : 4;
   for (int col = 0; col < pixel_count; ++col) {
     const uint8_t* alpha_scan =
         src_alpha_scan ? src_alpha_scan++ : &src_scan[3];
-    int src_alpha = GetAlpha(*alpha_scan, clip_scan, col);
+    const int src_alpha = GetAlpha(*alpha_scan, clip_scan, col);
     if (src_alpha) {
       gray = GetGrayWithBlend(src_scan, dest_scan, blend_type);
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, gray, src_alpha);
@@ -354,7 +354,7 @@ void CompositeRow_Rgb2Graya(uint8_t* dest_scan,
       src_scan += src_Bpp;
       continue;
     }
-    int src_alpha = clip_scan ? clip_scan[col] : 255;
+    const int src_alpha = clip_scan ? clip_scan[col] : 255;
     if (src_alpha == 255) {
       *dest_scan = GetGrayWithBlend(src_scan, dest_scan, blend_type);
       ++dest_scan;
@@ -369,12 +369,13 @@ void CompositeRow_Rgb2Graya(uint8_t* dest_scan,
       src_scan += src_Bpp;
       continue;
     }
-    int back_alpha = *dest_alpha_scan;
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const int back_alpha = *dest_alpha_scan;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     *dest_alpha_scan = dest_alpha;
     ++dest_alpha_scan;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
-    uint8_t gray = GetGrayWithBlend(src_scan, dest_scan, blend_type);
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const uint8_t gray = GetGrayWithBlend(src_scan, dest_scan, blend_type);
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, gray, alpha_ratio);
     ++dest_scan;
     src_scan += src_Bpp;
@@ -389,15 +390,15 @@ void CompositeRow_Argb2Argb(uint8_t* dest_scan,
                             uint8_t* dest_alpha_scan,
                             const uint8_t* src_alpha_scan) {
   int blended_colors[3];
-  uint8_t dest_offset = dest_alpha_scan ? 3 : 4;
-  uint8_t src_offset = src_alpha_scan ? 3 : 4;
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  bool has_src = !!src_alpha_scan;
-  bool has_dest = !!dest_alpha_scan;
+  const uint8_t dest_offset = dest_alpha_scan ? 3 : 4;
+  const uint8_t src_offset = src_alpha_scan ? 3 : 4;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const bool has_src = !!src_alpha_scan;
+  const bool has_dest = !!dest_alpha_scan;
   for (int col = 0; col < pixel_count; ++col) {
-    uint8_t back_alpha = has_dest ? *dest_alpha_scan : dest_scan[3];
+    const uint8_t back_alpha = has_dest ? *dest_alpha_scan : dest_scan[3];
     const uint8_t* alpha_source = has_src ? src_alpha_scan++ : &src_scan[3];
-    uint8_t src_alpha = GetAlpha(*alpha_source, clip_scan, col);
+    const uint8_t src_alpha = GetAlpha(*alpha_source, clip_scan, col);
     if (back_alpha == 0) {
       if (!has_dest && !has_src) {
         if (clip_scan) {
@@ -431,14 +432,15 @@ void CompositeRow_Argb2Argb(uint8_t* dest_scan,
         ++dest_alpha_scan;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     if (has_dest) {
       *dest_alpha_scan = dest_alpha;
       ++dest_alpha_scan;
     } else {
       dest_scan[3] = dest_alpha;
     }
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (bNonseparableBlend)
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     for (int color = 0; color < 3; ++color) {
@@ -468,11 +470,11 @@ void CompositeRow_Rgb2Argb_Blend_NoClip(uint8_t* dest_scan,
                                         int src_Bpp,
                                         uint8_t* dest_alpha_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int src_gap = src_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; ++col) {
     uint8_t* dest_alpha = dest_alpha_scan ? dest_alpha_scan : &dest_scan[3];
-    uint8_t back_alpha = *dest_alpha;
+    const uint8_t back_alpha = *dest_alpha;
     if (back_alpha == 0) {
       if (dest_alpha_scan) {
         memcpy(dest_scan, src_scan, 3);
@@ -496,10 +498,10 @@ void CompositeRow_Rgb2Argb_Blend_NoClip(uint8_t* dest_scan,
     if (bNonseparableBlend)
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     for (int color = 0; color < 3; ++color) {
-      int src_color = *src_scan;
-      int blended = bNonseparableBlend
-                        ? blended_colors[color]
-                        : Blend(blend_type, *dest_scan, src_color);
+      const int src_color = *src_scan;
+      const int blended = bNonseparableBlend
+                              ? blended_colors[color]
+                              : Blend(blend_type, *dest_scan, src_color);
       *dest_scan = FXDIB_ALPHA_MERGE(src_color, blended, back_alpha);
       ++dest_scan;
       ++src_scan;
@@ -520,12 +522,12 @@ void CompositeRow_Rgb2Argb_Blend_Clip(uint8_t* dest_scan,
                                       const uint8_t* clip_scan,
                                       uint8_t* dest_alpha_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int src_gap = src_Bpp - 3;
-  bool has_dest = !!dest_alpha_scan;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int src_gap = src_Bpp - 3;
+  const bool has_dest = !!dest_alpha_scan;
   for (int col = 0; col < width; ++col) {
-    int src_alpha = *clip_scan++;
-    uint8_t back_alpha = has_dest ? *dest_alpha_scan : dest_scan[3];
+    const int src_alpha = *clip_scan++;
+    const uint8_t back_alpha = has_dest ? *dest_alpha_scan : dest_scan[3];
     if (back_alpha == 0) {
       memcpy(dest_scan, src_scan, 3);
       dest_scan += 3;
@@ -543,16 +545,17 @@ void CompositeRow_Rgb2Argb_Blend_Clip(uint8_t* dest_scan,
       src_scan += src_Bpp;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     if (has_dest)
       *dest_alpha_scan++ = dest_alpha;
     else
       dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (bNonseparableBlend)
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     for (int color = 0; color < 3; color++) {
-      int src_color = *src_scan;
+      const int src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, *dest_scan, src_color);
@@ -573,10 +576,10 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip(uint8_t* dest_scan,
                                         int src_Bpp,
                                         const uint8_t* clip_scan,
                                         uint8_t* dest_alpha_scan) {
-  int src_gap = src_Bpp - 3;
+  const int src_gap = src_Bpp - 3;
   if (dest_alpha_scan) {
     for (int col = 0; col < width; col++) {
-      int src_alpha = clip_scan[col];
+      const int src_alpha = clip_scan[col];
       if (src_alpha == 255) {
         memcpy(dest_scan, src_scan, 3);
         dest_scan += 3;
@@ -590,11 +593,11 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip(uint8_t* dest_scan,
         src_scan += src_Bpp;
         continue;
       }
-      int back_alpha = *dest_alpha_scan;
+      const int back_alpha = *dest_alpha_scan;
       uint8_t dest_alpha =
           back_alpha + src_alpha - back_alpha * src_alpha / 255;
       *dest_alpha_scan++ = dest_alpha;
-      int alpha_ratio = src_alpha * 255 / dest_alpha;
+      const int alpha_ratio = src_alpha * 255 / dest_alpha;
       for (int color = 0; color < 3; color++) {
         *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, *src_scan, alpha_ratio);
         dest_scan++;
@@ -604,7 +607,7 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip(uint8_t* dest_scan,
     }
   } else {
     for (int col = 0; col < width; col++) {
-      int src_alpha = clip_scan[col];
+      const int src_alpha = clip_scan[col];
       if (src_alpha == 255) {
         memcpy(dest_scan, src_scan, 3);
         dest_scan += 3;
@@ -617,11 +620,11 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip(uint8_t* dest_scan,
         src_scan += src_Bpp;
         continue;
       }
-      int back_alpha = dest_scan[3];
+      const int back_alpha = dest_scan[3];
       uint8_t dest_alpha =
           back_alpha + src_alpha - back_alpha * src_alpha / 255;
       dest_scan[3] = dest_alpha;
-      int alpha_ratio = src_alpha * 255 / dest_alpha;
+      const int alpha_ratio = src_alpha * 255 / dest_alpha;
       for (int color = 0; color < 3; color++) {
         *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, *src_scan, alpha_ratio);
         dest_scan++;
@@ -667,8 +670,8 @@ void CompositeRow_Argb2Rgb_Blend(uint8_t* dest_scan,
                                  const uint8_t* clip_scan,
                                  const uint8_t* src_alpha_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int dest_gap = dest_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int dest_gap = dest_Bpp - 3;
   if (src_alpha_scan) {
     for (int col = 0; col < width; col++) {
       uint8_t src_alpha;
@@ -686,10 +689,10 @@ void CompositeRow_Argb2Rgb_Blend(uint8_t* dest_scan,
         RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
       }
       for (int color = 0; color < 3; color++) {
-        int back_color = *dest_scan;
-        int blended = bNonseparableBlend
-                          ? blended_colors[color]
-                          : Blend(blend_type, back_color, *src_scan);
+        const int back_color = *dest_scan;
+        const int blended = bNonseparableBlend
+                                ? blended_colors[color]
+                                : Blend(blend_type, back_color, *src_scan);
         *dest_scan = FXDIB_ALPHA_MERGE(back_color, blended, src_alpha);
         dest_scan++;
         src_scan++;
@@ -713,10 +716,10 @@ void CompositeRow_Argb2Rgb_Blend(uint8_t* dest_scan,
         RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
       }
       for (int color = 0; color < 3; color++) {
-        int back_color = *dest_scan;
-        int blended = bNonseparableBlend
-                          ? blended_colors[color]
-                          : Blend(blend_type, back_color, *src_scan);
+        const int back_color = *dest_scan;
+        const int blended = bNonseparableBlend
+                                ? blended_colors[color]
+                                : Blend(blend_type, back_color, *src_scan);
         *dest_scan = FXDIB_ALPHA_MERGE(back_color, blended, src_alpha);
         dest_scan++;
         src_scan++;
@@ -733,7 +736,7 @@ void CompositeRow_Argb2Rgb_NoBlend(uint8_t* dest_scan,
                                    int dest_Bpp,
                                    const uint8_t* clip_scan,
                                    const uint8_t* src_alpha_scan) {
-  int dest_gap = dest_Bpp - 3;
+  const int dest_gap = dest_Bpp - 3;
   if (src_alpha_scan) {
     for (int col = 0; col < width; col++) {
       uint8_t src_alpha;
@@ -797,19 +800,19 @@ void CompositeRow_Rgb2Rgb_Blend_NoClip(uint8_t* dest_scan,
                                        int dest_Bpp,
                                        int src_Bpp) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int dest_gap = dest_Bpp - 3;
-  int src_gap = src_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int dest_gap = dest_Bpp - 3;
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; col++) {
     if (bNonseparableBlend) {
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int back_color = *dest_scan;
-      int src_color = *src_scan;
-      int blended = bNonseparableBlend
-                        ? blended_colors[color]
-                        : Blend(blend_type, back_color, src_color);
+      const int back_color = *dest_scan;
+      const int src_color = *src_scan;
+      const int blended = bNonseparableBlend
+                              ? blended_colors[color]
+                              : Blend(blend_type, back_color, src_color);
       *dest_scan = blended;
       dest_scan++;
       src_scan++;
@@ -827,11 +830,11 @@ void CompositeRow_Rgb2Rgb_Blend_Clip(uint8_t* dest_scan,
                                      int src_Bpp,
                                      const uint8_t* clip_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int dest_gap = dest_Bpp - 3;
-  int src_gap = src_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int dest_gap = dest_Bpp - 3;
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; col++) {
-    uint8_t src_alpha = *clip_scan++;
+    const uint8_t src_alpha = *clip_scan++;
     if (src_alpha == 0) {
       dest_scan += dest_Bpp;
       src_scan += src_Bpp;
@@ -841,11 +844,11 @@ void CompositeRow_Rgb2Rgb_Blend_Clip(uint8_t* dest_scan,
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int src_color = *src_scan;
-      int back_color = *dest_scan;
-      int blended = bNonseparableBlend
-                        ? blended_colors[color]
-                        : Blend(blend_type, back_color, src_color);
+      const int src_color = *src_scan;
+      const int back_color = *dest_scan;
+      const int blended = bNonseparableBlend
+                              ? blended_colors[color]
+                              : Blend(blend_type, back_color, src_color);
       *dest_scan = FXDIB_ALPHA_MERGE(back_color, blended, src_alpha);
       dest_scan++;
       src_scan++;
@@ -878,7 +881,7 @@ void CompositeRow_Rgb2Rgb_NoBlend_Clip(uint8_t* dest_scan,
                                        int src_Bpp,
                                        const uint8_t* clip_scan) {
   for (int col = 0; col < width; col++) {
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 255) {
       memcpy(dest_scan, src_scan, 3);
     } else if (src_alpha) {
@@ -907,10 +910,10 @@ void CompositeRow_8bppPal2Gray(uint8_t* dest_scan,
                                const uint8_t* src_alpha_scan) {
   if (src_alpha_scan) {
     if (blend_type != BlendMode::kNormal) {
-      bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+      const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
       for (int col = 0; col < pixel_count; col++) {
         uint8_t gray = pPalette[*src_scan];
-        int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
+        const int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
         if (bNonseparableBlend)
           gray = blend_type == BlendMode::kLuminosity ? gray : *dest_scan;
         else
@@ -925,8 +928,8 @@ void CompositeRow_8bppPal2Gray(uint8_t* dest_scan,
       return;
     }
     for (int col = 0; col < pixel_count; col++) {
-      uint8_t gray = pPalette[*src_scan];
-      int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
+      const uint8_t gray = pPalette[*src_scan];
+      const int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
       if (src_alpha)
         *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, gray, src_alpha);
       else
@@ -936,7 +939,7 @@ void CompositeRow_8bppPal2Gray(uint8_t* dest_scan,
     }
   } else {
     if (blend_type != BlendMode::kNormal) {
-      bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+      const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
       for (int col = 0; col < pixel_count; col++) {
         uint8_t gray = pPalette[*src_scan];
         if (bNonseparableBlend)
@@ -953,7 +956,7 @@ void CompositeRow_8bppPal2Gray(uint8_t* dest_scan,
       return;
     }
     for (int col = 0; col < pixel_count; col++) {
-      uint8_t gray = pPalette[*src_scan];
+      const uint8_t gray = pPalette[*src_scan];
       if (clip_scan && clip_scan[col] < 255)
         *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, gray, clip_scan[col]);
       else
@@ -974,13 +977,13 @@ void CompositeRow_8bppPal2Graya(uint8_t* dest_scan,
                                 const uint8_t* src_alpha_scan) {
   if (src_alpha_scan) {
     if (blend_type != BlendMode::kNormal) {
-      bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+      const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
       for (int col = 0; col < pixel_count; col++) {
         uint8_t gray = pPalette[*src_scan];
         src_scan++;
-        uint8_t back_alpha = *dest_alpha_scan;
+        const uint8_t back_alpha = *dest_alpha_scan;
         if (back_alpha == 0) {
-          int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
+          const int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
           if (src_alpha) {
             *dest_scan = gray;
             *dest_alpha_scan = src_alpha;
@@ -989,7 +992,7 @@ void CompositeRow_8bppPal2Graya(uint8_t* dest_scan,
           dest_alpha_scan++;
           continue;
         }
-        uint8_t src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
+        const uint8_t src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
         if (src_alpha == 0) {
           dest_scan++;
           dest_alpha_scan++;
@@ -997,7 +1000,7 @@ void CompositeRow_8bppPal2Graya(uint8_t* dest_scan,
         }
         *dest_alpha_scan =
             back_alpha + src_alpha - back_alpha * src_alpha / 255;
-        int alpha_ratio = src_alpha * 255 / (*dest_alpha_scan);
+        const int alpha_ratio = src_alpha * 255 / (*dest_alpha_scan);
         if (bNonseparableBlend)
           gray = blend_type == BlendMode::kLuminosity ? gray : *dest_scan;
         else
@@ -1009,11 +1012,11 @@ void CompositeRow_8bppPal2Graya(uint8_t* dest_scan,
       return;
     }
     for (int col = 0; col < pixel_count; col++) {
-      uint8_t gray = pPalette[*src_scan];
+      const uint8_t gray = pPalette[*src_scan];
       src_scan++;
-      uint8_t back_alpha = *dest_alpha_scan;
+      const uint8_t back_alpha = *dest_alpha_scan;
       if (back_alpha == 0) {
-        int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
+        const int src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
         if (src_alpha) {
           *dest_scan = gray;
           *dest_alpha_scan = src_alpha;
@@ -1022,21 +1025,21 @@ void CompositeRow_8bppPal2Graya(uint8_t* dest_scan,
         dest_alpha_scan++;
         continue;
       }
-      uint8_t src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
+      const uint8_t src_alpha = GetAlpha(*src_alpha_scan++, clip_scan, col);
       if (src_alpha == 0) {
         dest_scan++;
         dest_alpha_scan++;
         continue;
       }
       *dest_alpha_scan = back_alpha + src_alpha - back_alpha * src_alpha / 255;
-      int alpha_ratio = src_alpha * 255 / (*dest_alpha_scan);
+      const int alpha_ratio = src_alpha * 255 / (*dest_alpha_scan);
       dest_alpha_scan++;
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, gray, alpha_ratio);
       dest_scan++;
     }
   } else {
     if (blend_type != BlendMode::kNormal) {
-      bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+      const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
       for (int col = 0; col < pixel_count; col++) {
         uint8_t gray = pPalette[*src_scan];
         src_scan++;
@@ -1045,17 +1048,17 @@ void CompositeRow_8bppPal2Graya(uint8_t* dest_scan,
           *dest_alpha_scan++ = 255;
           continue;
         }
-        int src_alpha = clip_scan[col];
+        const int src_alpha = clip_scan[col];
         if (src_alpha == 0) {
           dest_scan++;
           dest_alpha_scan++;
           continue;
         }
-        int back_alpha = *dest_alpha_scan;
+        const int back_alpha = *dest_alpha_scan;
         uint8_t dest_alpha =
             back_alpha + src_alpha - back_alpha * src_alpha / 255;
         *dest_alpha_scan++ = dest_alpha;
-        int alpha_ratio = src_alpha * 255 / dest_alpha;
+        const int alpha_ratio = src_alpha * 255 / dest_alpha;
         if (bNonseparableBlend)
           gray = blend_type == BlendMode::kLuminosity ? gray : *dest_scan;
         else
@@ -1066,24 +1069,24 @@ void CompositeRow_8bppPal2Graya(uint8_t* dest_scan,
       return;
     }
     for (int col = 0; col < pixel_count; col++) {
-      uint8_t gray = pPalette[*src_scan];
+      const uint8_t gray = pPalette[*src_scan];
       src_scan++;
       if (!clip_scan || clip_scan[col] == 255) {
         *dest_scan++ = gray;
         *dest_alpha_scan++ = 255;
         continue;
       }
-      int src_alpha = clip_scan[col];
+      const int src_alpha = clip_scan[col];
       if (src_alpha == 0) {
         dest_scan++;
         dest_alpha_scan++;
         continue;
       }
-      int back_alpha = *dest_alpha_scan;
+      const int back_alpha = *dest_alpha_scan;
       uint8_t dest_alpha =
           back_alpha + src_alpha - back_alpha * src_alpha / 255;
       *dest_alpha_scan++ = dest_alpha;
-      int alpha_ratio = src_alpha * 255 / dest_alpha;
+      const int alpha_ratio = src_alpha * 255 / dest_alpha;
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, gray, alpha_ratio);
       dest_scan++;
     }
@@ -1097,10 +1100,10 @@ void CompositeRow_1bppPal2Gray(uint8_t* dest_scan,
                                int pixel_count,
                                BlendMode blend_type,
                                const uint8_t* clip_scan) {
-  int reset_gray = src_palette[0];
-  int set_gray = src_palette[1];
+  const int reset_gray = src_palette[0];
+  const int set_gray = src_palette[1];
   if (blend_type != BlendMode::kNormal) {
-    bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+    const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
     for (int col = 0; col < pixel_count; col++) {
       uint8_t gray =
           (src_scan[(col + src_left) / 8] & (1 << (7 - (col + src_left) % 8)))
@@ -1141,10 +1144,10 @@ void CompositeRow_1bppPal2Graya(uint8_t* dest_scan,
                                 BlendMode blend_type,
                                 const uint8_t* clip_scan,
                                 uint8_t* dest_alpha_scan) {
-  int reset_gray = src_palette[0];
-  int set_gray = src_palette[1];
+  const int reset_gray = src_palette[0];
+  const int set_gray = src_palette[1];
   if (blend_type != BlendMode::kNormal) {
-    bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+    const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
     for (int col = 0; col < pixel_count; col++) {
       uint8_t gray =
           (src_scan[(col + src_left) / 8] & (1 << (7 - (col + src_left) % 8)))
@@ -1155,17 +1158,17 @@ void CompositeRow_1bppPal2Graya(uint8_t* dest_scan,
         *dest_alpha_scan++ = 255;
         continue;
       }
-      int src_alpha = clip_scan[col];
+      const int src_alpha = clip_scan[col];
       if (src_alpha == 0) {
         dest_scan++;
         dest_alpha_scan++;
         continue;
       }
-      int back_alpha = *dest_alpha_scan;
+      const int back_alpha = *dest_alpha_scan;
       uint8_t dest_alpha =
           back_alpha + src_alpha - back_alpha * src_alpha / 255;
       *dest_alpha_scan++ = dest_alpha;
-      int alpha_ratio = src_alpha * 255 / dest_alpha;
+      const int alpha_ratio = src_alpha * 255 / dest_alpha;
       if (bNonseparableBlend)
         gray = blend_type == BlendMode::kLuminosity ? gray : *dest_scan;
       else
@@ -1185,16 +1188,17 @@ void CompositeRow_1bppPal2Graya(uint8_t* dest_scan,
       *dest_alpha_scan++ = 255;
       continue;
     }
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 0) {
       dest_scan++;
       dest_alpha_scan++;
       continue;
     }
-    int back_alpha = *dest_alpha_scan;
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const int back_alpha = *dest_alpha_scan;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     *dest_alpha_scan++ = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, gray, alpha_ratio);
     dest_scan++;
   }
@@ -1208,13 +1212,13 @@ void CompositeRow_8bppRgb2Rgb_NoBlend(uint8_t* dest_scan,
                                       const uint8_t* clip_scan,
                                       const uint8_t* src_alpha_scan) {
   if (src_alpha_scan) {
-    int dest_gap = DestBpp - 3;
+    const int dest_gap = DestBpp - 3;
     FX_ARGB argb = 0;
     for (int col = 0; col < pixel_count; col++) {
       argb = pPalette[*src_scan];
-      int src_r = FXARGB_R(argb);
-      int src_g = FXARGB_G(argb);
-      int src_b = FXARGB_B(argb);
+      const int src_r = FXARGB_R(argb);
+      const int src_g = FXARGB_G(argb);
+      const int src_b = FXARGB_B(argb);
       src_scan++;
       uint8_t src_alpha = 0;
       if (clip_scan) {
@@ -1245,9 +1249,9 @@ void CompositeRow_8bppRgb2Rgb_NoBlend(uint8_t* dest_scan,
     FX_ARGB argb = 0;
     for (int col = 0; col < pixel_count; col++) {
       argb = pPalette[*src_scan];
-      int src_r = FXARGB_R(argb);
-      int src_g = FXARGB_G(argb);
-      int src_b = FXARGB_B(argb);
+      const int src_r = FXARGB_R(argb);
+      const int src_g = FXARGB_G(argb);
+      const int src_b = FXARGB_B(argb);
       if (clip_scan && clip_scan[col] < 255) {
         *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_b, clip_scan[col]);
         dest_scan++;
@@ -1275,12 +1279,12 @@ void CompositeRow_1bppRgb2Rgb_NoBlend(uint8_t* dest_scan,
                                       int pixel_count,
                                       int DestBpp,
                                       const uint8_t* clip_scan) {
-  int reset_r = FXARGB_R(src_palette[0]);
-  int reset_g = FXARGB_G(src_palette[0]);
-  int reset_b = FXARGB_B(src_palette[0]);
-  int set_r = FXARGB_R(src_palette[1]);
-  int set_g = FXARGB_G(src_palette[1]);
-  int set_b = FXARGB_B(src_palette[1]);
+  const int reset_r = FXARGB_R(src_palette[0]);
+  const int reset_g = FXARGB_G(src_palette[0]);
+  const int reset_b = FXARGB_B(src_palette[0]);
+  const int set_r = FXARGB_R(src_palette[1]);
+  const int set_g = FXARGB_G(src_palette[1]);
+  const int set_b = FXARGB_B(src_palette[1]);
   for (int col = 0; col < pixel_count; col++) {
     int src_r;
     int src_g;
@@ -1322,13 +1326,13 @@ void CompositeRow_8bppRgb2Argb_NoBlend(uint8_t* dest_scan,
     for (int col = 0; col < width; col++) {
       FX_ARGB argb = pPalette[*src_scan];
       src_scan++;
-      int src_r = FXARGB_R(argb);
-      int src_g = FXARGB_G(argb);
-      int src_b = FXARGB_B(argb);
-      uint8_t back_alpha = dest_scan[3];
+      const int src_r = FXARGB_R(argb);
+      const int src_g = FXARGB_G(argb);
+      const int src_b = FXARGB_B(argb);
+      const uint8_t back_alpha = dest_scan[3];
       if (back_alpha == 0) {
         if (clip_scan) {
-          int src_alpha = clip_scan[col] * (*src_alpha_scan) / 255;
+          const int src_alpha = clip_scan[col] * (*src_alpha_scan) / 255;
           FXARGB_SETDIB(dest_scan, ArgbEncode(src_alpha, src_r, src_g, src_b));
         } else {
           FXARGB_SETDIB(dest_scan,
@@ -1338,7 +1342,7 @@ void CompositeRow_8bppRgb2Argb_NoBlend(uint8_t* dest_scan,
         src_alpha_scan++;
         continue;
       }
-      uint8_t src_alpha = GetAlpha(*src_alpha_scan, clip_scan, col);
+      const uint8_t src_alpha = GetAlpha(*src_alpha_scan, clip_scan, col);
       ++src_alpha_scan;
       if (src_alpha == 0) {
         dest_scan += 4;
@@ -1347,7 +1351,7 @@ void CompositeRow_8bppRgb2Argb_NoBlend(uint8_t* dest_scan,
       uint8_t dest_alpha =
           back_alpha + src_alpha - back_alpha * src_alpha / 255;
       dest_scan[3] = dest_alpha;
-      int alpha_ratio = src_alpha * 255 / dest_alpha;
+      const int alpha_ratio = src_alpha * 255 / dest_alpha;
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_b, alpha_ratio);
       dest_scan++;
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_g, alpha_ratio);
@@ -1359,9 +1363,9 @@ void CompositeRow_8bppRgb2Argb_NoBlend(uint8_t* dest_scan,
   } else {
     for (int col = 0; col < width; col++) {
       FX_ARGB argb = pPalette[*src_scan];
-      int src_r = FXARGB_R(argb);
-      int src_g = FXARGB_G(argb);
-      int src_b = FXARGB_B(argb);
+      const int src_r = FXARGB_R(argb);
+      const int src_g = FXARGB_G(argb);
+      const int src_b = FXARGB_B(argb);
       if (!clip_scan || clip_scan[col] == 255) {
         *dest_scan++ = src_b;
         *dest_scan++ = src_g;
@@ -1370,17 +1374,17 @@ void CompositeRow_8bppRgb2Argb_NoBlend(uint8_t* dest_scan,
         src_scan++;
         continue;
       }
-      int src_alpha = clip_scan[col];
+      const int src_alpha = clip_scan[col];
       if (src_alpha == 0) {
         dest_scan += 4;
         src_scan++;
         continue;
       }
-      int back_alpha = dest_scan[3];
+      const int back_alpha = dest_scan[3];
       uint8_t dest_alpha =
           back_alpha + src_alpha - back_alpha * src_alpha / 255;
       dest_scan[3] = dest_alpha;
-      int alpha_ratio = src_alpha * 255 / dest_alpha;
+      const int alpha_ratio = src_alpha * 255 / dest_alpha;
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_b, alpha_ratio);
       dest_scan++;
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_g, alpha_ratio);
@@ -1399,12 +1403,12 @@ void CompositeRow_1bppRgb2Argb_NoBlend(uint8_t* dest_scan,
                                        int width,
                                        pdfium::span<const uint32_t> src_palette,
                                        const uint8_t* clip_scan) {
-  int reset_r = FXARGB_R(src_palette[0]);
-  int reset_g = FXARGB_G(src_palette[0]);
-  int reset_b = FXARGB_B(src_palette[0]);
-  int set_r = FXARGB_R(src_palette[1]);
-  int set_g = FXARGB_G(src_palette[1]);
-  int set_b = FXARGB_B(src_palette[1]);
+  const int reset_r = FXARGB_R(src_palette[0]);
+  const int reset_g = FXARGB_G(src_palette[0]);
+  const int reset_b = FXARGB_B(src_palette[0]);
+  const int set_r = FXARGB_R(src_palette[1]);
+  const int set_g = FXARGB_G(src_palette[1]);
+  const int set_b = FXARGB_B(src_palette[1]);
   for (int col = 0; col < width; col++) {
     int src_r;
     int src_g;
@@ -1425,15 +1429,16 @@ void CompositeRow_1bppRgb2Argb_NoBlend(uint8_t* dest_scan,
       *dest_scan++ = 255;
       continue;
     }
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 0) {
       dest_scan += 4;
       continue;
     }
-    int back_alpha = dest_scan[3];
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const int back_alpha = dest_scan[3];
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_b, alpha_ratio);
     dest_scan++;
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_g, alpha_ratio);
@@ -1451,12 +1456,12 @@ void CompositeRow_1bppRgb2Rgba_NoBlend(uint8_t* dest_scan,
                                        pdfium::span<const uint32_t> src_palette,
                                        const uint8_t* clip_scan,
                                        uint8_t* dest_alpha_scan) {
-  int reset_r = FXARGB_R(src_palette[0]);
-  int reset_g = FXARGB_G(src_palette[0]);
-  int reset_b = FXARGB_B(src_palette[0]);
-  int set_r = FXARGB_R(src_palette[1]);
-  int set_g = FXARGB_G(src_palette[1]);
-  int set_b = FXARGB_B(src_palette[1]);
+  const int reset_r = FXARGB_R(src_palette[0]);
+  const int reset_g = FXARGB_G(src_palette[0]);
+  const int reset_b = FXARGB_B(src_palette[0]);
+  const int set_r = FXARGB_R(src_palette[1]);
+  const int set_g = FXARGB_G(src_palette[1]);
+  const int set_b = FXARGB_B(src_palette[1]);
   for (int col = 0; col < width; col++) {
     int src_r;
     int src_g;
@@ -1477,16 +1482,17 @@ void CompositeRow_1bppRgb2Rgba_NoBlend(uint8_t* dest_scan,
       *dest_alpha_scan++ = 255;
       continue;
     }
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 0) {
       dest_scan += 3;
       dest_alpha_scan++;
       continue;
     }
-    int back_alpha = *dest_alpha_scan;
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const int back_alpha = *dest_alpha_scan;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     *dest_alpha_scan++ = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_b, alpha_ratio);
     dest_scan++;
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_g, alpha_ratio);
@@ -1506,8 +1512,8 @@ void CompositeRow_ByteMask2Argb(uint8_t* dest_scan,
                                 BlendMode blend_type,
                                 const uint8_t* clip_scan) {
   for (int col = 0; col < pixel_count; col++) {
-    int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
-    uint8_t back_alpha = dest_scan[3];
+    const int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
+    const uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
       FXARGB_SETDIB(dest_scan, ArgbEncode(src_alpha, src_r, src_g, src_b));
       dest_scan += 4;
@@ -1517,9 +1523,10 @@ void CompositeRow_ByteMask2Argb(uint8_t* dest_scan,
       dest_scan += 4;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (IsNonSeparableBlendMode(blend_type)) {
       int blended_colors[3];
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
@@ -1568,7 +1575,7 @@ void CompositeRow_ByteMask2Rgb(uint8_t* dest_scan,
                                int Bpp,
                                const uint8_t* clip_scan) {
   for (int col = 0; col < pixel_count; col++) {
-    int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
+    const int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
     if (src_alpha == 0) {
       dest_scan += Bpp;
       continue;
@@ -1610,8 +1617,8 @@ void CompositeRow_ByteMask2Mask(uint8_t* dest_scan,
                                 int pixel_count,
                                 const uint8_t* clip_scan) {
   for (int col = 0; col < pixel_count; col++) {
-    int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
-    uint8_t back_alpha = *dest_scan;
+    const int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
+    const uint8_t back_alpha = *dest_scan;
     if (!back_alpha) {
       *dest_scan = src_alpha;
     } else if (src_alpha) {
@@ -1628,7 +1635,7 @@ void CompositeRow_ByteMask2Gray(uint8_t* dest_scan,
                                 int pixel_count,
                                 const uint8_t* clip_scan) {
   for (int col = 0; col < pixel_count; col++) {
-    int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
+    const int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
     if (src_alpha) {
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_gray, src_alpha);
     }
@@ -1644,8 +1651,8 @@ void CompositeRow_ByteMask2Graya(uint8_t* dest_scan,
                                  const uint8_t* clip_scan,
                                  uint8_t* dest_alpha_scan) {
   for (int col = 0; col < pixel_count; col++) {
-    int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
-    uint8_t back_alpha = *dest_alpha_scan;
+    const int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
+    const uint8_t back_alpha = *dest_alpha_scan;
     if (back_alpha == 0) {
       *dest_scan++ = src_gray;
       *dest_alpha_scan++ = src_alpha;
@@ -1656,9 +1663,10 @@ void CompositeRow_ByteMask2Graya(uint8_t* dest_scan,
       dest_alpha_scan++;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     *dest_alpha_scan++ = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_gray, alpha_ratio);
     dest_scan++;
   }
@@ -1689,16 +1697,17 @@ void CompositeRow_BitMask2Argb(uint8_t* dest_scan,
       dest_scan += 4;
       continue;
     }
-    int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
-    uint8_t back_alpha = dest_scan[3];
+    const int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
+    const uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
       FXARGB_SETDIB(dest_scan, ArgbEncode(src_alpha, src_r, src_g, src_b));
       dest_scan += 4;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (IsNonSeparableBlendMode(blend_type)) {
       int blended_colors[3];
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
@@ -1763,7 +1772,7 @@ void CompositeRow_BitMask2Rgb(uint8_t* dest_scan,
       dest_scan += Bpp;
       continue;
     }
-    int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
+    const int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
     if (src_alpha == 0) {
       dest_scan += Bpp;
       continue;
@@ -1810,8 +1819,8 @@ void CompositeRow_BitMask2Mask(uint8_t* dest_scan,
       dest_scan++;
       continue;
     }
-    int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
-    uint8_t back_alpha = *dest_scan;
+    const int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
+    const uint8_t back_alpha = *dest_scan;
     if (!back_alpha) {
       *dest_scan = src_alpha;
     } else if (src_alpha) {
@@ -1833,7 +1842,7 @@ void CompositeRow_BitMask2Gray(uint8_t* dest_scan,
       dest_scan++;
       continue;
     }
-    int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
+    const int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
     if (src_alpha) {
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_gray, src_alpha);
     }
@@ -1855,8 +1864,8 @@ void CompositeRow_BitMask2Graya(uint8_t* dest_scan,
       dest_alpha_scan++;
       continue;
     }
-    int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
-    uint8_t back_alpha = *dest_alpha_scan;
+    const int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
+    const uint8_t back_alpha = *dest_alpha_scan;
     if (back_alpha == 0) {
       *dest_scan++ = src_gray;
       *dest_alpha_scan++ = src_alpha;
@@ -1867,9 +1876,10 @@ void CompositeRow_BitMask2Graya(uint8_t* dest_scan,
       dest_alpha_scan++;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     *dest_alpha_scan++ = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, src_gray, alpha_ratio);
     dest_scan++;
   }
@@ -1881,12 +1891,12 @@ void CompositeRow_Argb2Argb_RgbByteOrder(uint8_t* dest_scan,
                                          BlendMode blend_type,
                                          const uint8_t* clip_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
   for (int col = 0; col < pixel_count; col++) {
-    uint8_t back_alpha = dest_scan[3];
+    const uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
       if (clip_scan) {
-        int src_alpha = clip_scan[col] * src_scan[3] / 255;
+        const int src_alpha = clip_scan[col] * src_scan[3] / 255;
         ReverseCopy3Bytes(dest_scan, src_scan);
         dest_scan[3] = src_alpha;
       } else {
@@ -1896,22 +1906,23 @@ void CompositeRow_Argb2Argb_RgbByteOrder(uint8_t* dest_scan,
       src_scan += 4;
       continue;
     }
-    uint8_t src_alpha = GetAlpha(src_scan[3], clip_scan, col);
+    const uint8_t src_alpha = GetAlpha(src_scan[3], clip_scan, col);
     if (src_alpha == 0) {
       dest_scan += 4;
       src_scan += 4;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
       ReverseCopy3Bytes(dest_scan_o, dest_scan);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
+      const int index = 2 - color;
       if (blend_type != BlendMode::kNormal) {
         int blended = bNonseparableBlend
                           ? blended_colors[color]
@@ -1936,10 +1947,10 @@ void CompositeRow_Rgb2Argb_Blend_NoClip_RgbByteOrder(uint8_t* dest_scan,
                                                      BlendMode blend_type,
                                                      int src_Bpp) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int src_gap = src_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; col++) {
-    uint8_t back_alpha = dest_scan[3];
+    const uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
       if (src_Bpp == 4) {
         FXARGB_SETRGBORDERDIB(dest_scan, 0xff000000 | FXARGB_GETDIB(src_scan));
@@ -1958,11 +1969,11 @@ void CompositeRow_Rgb2Argb_Blend_NoClip_RgbByteOrder(uint8_t* dest_scan,
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
-      int src_color = *src_scan;
-      int blended = bNonseparableBlend
-                        ? blended_colors[color]
-                        : Blend(blend_type, dest_scan[index], src_color);
+      const int index = 2 - color;
+      const int src_color = *src_scan;
+      const int blended = bNonseparableBlend
+                              ? blended_colors[color]
+                              : Blend(blend_type, dest_scan[index], src_color);
       dest_scan[index] = FXDIB_ALPHA_MERGE(src_color, blended, back_alpha);
       src_scan++;
     }
@@ -1978,7 +1989,7 @@ void CompositeRow_Argb2Rgb_Blend_RgbByteOrder(uint8_t* dest_scan,
                                               int dest_Bpp,
                                               const uint8_t* clip_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
   for (int col = 0; col < width; col++) {
     uint8_t src_alpha;
     if (clip_scan) {
@@ -1997,11 +2008,11 @@ void CompositeRow_Argb2Rgb_Blend_RgbByteOrder(uint8_t* dest_scan,
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
-      int back_color = dest_scan[index];
-      int blended = bNonseparableBlend
-                        ? blended_colors[color]
-                        : Blend(blend_type, back_color, *src_scan);
+      const int index = 2 - color;
+      const int back_color = dest_scan[index];
+      const int blended = bNonseparableBlend
+                              ? blended_colors[color]
+                              : Blend(blend_type, back_color, *src_scan);
       dest_scan[index] = FXDIB_ALPHA_MERGE(back_color, blended, src_alpha);
       src_scan++;
     }
@@ -2033,8 +2044,8 @@ void CompositeRow_Rgb2Rgb_Blend_NoClip_RgbByteOrder(uint8_t* dest_scan,
                                                     int dest_Bpp,
                                                     int src_Bpp) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int src_gap = src_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; col++) {
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
@@ -2042,12 +2053,12 @@ void CompositeRow_Rgb2Rgb_Blend_NoClip_RgbByteOrder(uint8_t* dest_scan,
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
-      int back_color = dest_scan[index];
-      int src_color = *src_scan;
-      int blended = bNonseparableBlend
-                        ? blended_colors[color]
-                        : Blend(blend_type, back_color, src_color);
+      const int index = 2 - color;
+      const int back_color = dest_scan[index];
+      const int src_color = *src_scan;
+      const int blended = bNonseparableBlend
+                              ? blended_colors[color]
+                              : Blend(blend_type, back_color, src_color);
       dest_scan[index] = blended;
       src_scan++;
     }
@@ -2080,7 +2091,7 @@ void CompositeRow_Argb2Rgb_NoBlend_RgbByteOrder(uint8_t* dest_scan,
       continue;
     }
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
+      const int index = 2 - color;
       dest_scan[index] =
           FXDIB_ALPHA_MERGE(dest_scan[index], *src_scan, src_alpha);
       src_scan++;
@@ -2109,11 +2120,11 @@ void CompositeRow_Rgb2Argb_Blend_Clip_RgbByteOrder(uint8_t* dest_scan,
                                                    int src_Bpp,
                                                    const uint8_t* clip_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int src_gap = src_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; col++) {
-    int src_alpha = *clip_scan++;
-    uint8_t back_alpha = dest_scan[3];
+    const int src_alpha = *clip_scan++;
+    const uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
       ReverseCopy3Bytes(dest_scan, src_scan);
       src_scan += src_Bpp;
@@ -2125,17 +2136,18 @@ void CompositeRow_Rgb2Argb_Blend_Clip_RgbByteOrder(uint8_t* dest_scan,
       src_scan += src_Bpp;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (bNonseparableBlend) {
       uint8_t dest_scan_o[3];
       ReverseCopy3Bytes(dest_scan_o, dest_scan);
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
-      int src_color = *src_scan;
+      const int index = 2 - color;
+      const int src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, dest_scan[index], src_color);
@@ -2157,10 +2169,10 @@ void CompositeRow_Rgb2Rgb_Blend_Clip_RgbByteOrder(uint8_t* dest_scan,
                                                   int src_Bpp,
                                                   const uint8_t* clip_scan) {
   int blended_colors[3];
-  bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
-  int src_gap = src_Bpp - 3;
+  const bool bNonseparableBlend = IsNonSeparableBlendMode(blend_type);
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; col++) {
-    uint8_t src_alpha = *clip_scan++;
+    const uint8_t src_alpha = *clip_scan++;
     if (src_alpha == 0) {
       dest_scan += dest_Bpp;
       src_scan += src_Bpp;
@@ -2172,12 +2184,12 @@ void CompositeRow_Rgb2Rgb_Blend_Clip_RgbByteOrder(uint8_t* dest_scan,
       RGB_Blend(blend_type, src_scan, dest_scan_o, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
-      int src_color = *src_scan;
-      int back_color = dest_scan[index];
-      int blended = bNonseparableBlend
-                        ? blended_colors[color]
-                        : Blend(blend_type, back_color, src_color);
+      const int index = 2 - color;
+      const int src_color = *src_scan;
+      const int back_color = dest_scan[index];
+      const int blended = bNonseparableBlend
+                              ? blended_colors[color]
+                              : Blend(blend_type, back_color, src_color);
       dest_scan[index] = FXDIB_ALPHA_MERGE(back_color, blended, src_alpha);
       src_scan++;
     }
@@ -2191,9 +2203,9 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip_RgbByteOrder(uint8_t* dest_scan,
                                                      int width,
                                                      int src_Bpp,
                                                      const uint8_t* clip_scan) {
-  int src_gap = src_Bpp - 3;
+  const int src_gap = src_Bpp - 3;
   for (int col = 0; col < width; col++) {
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 255) {
       ReverseCopy3Bytes(dest_scan, src_scan);
       dest_scan[3] = 255;
@@ -2206,12 +2218,13 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip_RgbByteOrder(uint8_t* dest_scan,
       src_scan += src_Bpp;
       continue;
     }
-    int back_alpha = dest_scan[3];
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const int back_alpha = dest_scan[3];
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     for (int color = 0; color < 3; color++) {
-      int index = 2 - color;
+      const int index = 2 - color;
       dest_scan[index] =
           FXDIB_ALPHA_MERGE(dest_scan[index], *src_scan, alpha_ratio);
       src_scan++;
@@ -2228,7 +2241,7 @@ void CompositeRow_Rgb2Rgb_NoBlend_Clip_RgbByteOrder(uint8_t* dest_scan,
                                                     int src_Bpp,
                                                     const uint8_t* clip_scan) {
   for (int col = 0; col < width; col++) {
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 255) {
       ReverseCopy3Bytes(dest_scan, src_scan);
     } else if (src_alpha) {
@@ -2255,9 +2268,9 @@ void CompositeRow_8bppRgb2Rgb_NoBlend_RgbByteOrder(uint8_t* dest_scan,
   for (int col = 0; col < pixel_count; col++) {
     FX_ARGB argb = pPalette ? pPalette[*src_scan]
                             : ArgbEncode(0, *src_scan, *src_scan, *src_scan);
-    int src_r = FXARGB_R(argb);
-    int src_g = FXARGB_G(argb);
-    int src_b = FXARGB_B(argb);
+    const int src_r = FXARGB_R(argb);
+    const int src_g = FXARGB_G(argb);
+    const int src_b = FXARGB_B(argb);
     if (clip_scan && clip_scan[col] < 255) {
       dest_scan[2] = FXDIB_ALPHA_MERGE(dest_scan[2], src_b, clip_scan[col]);
       dest_scan[1] = FXDIB_ALPHA_MERGE(dest_scan[1], src_g, clip_scan[col]);
@@ -2349,16 +2362,17 @@ void CompositeRow_8bppRgb2Argb_NoBlend_RgbByteOrder(uint8_t* dest_scan,
       dest_scan += 4;
       continue;
     }
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 0) {
       dest_scan += 4;
       src_scan++;
       continue;
     }
-    int back_alpha = dest_scan[3];
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const int back_alpha = dest_scan[3];
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     dest_scan[2] = FXDIB_ALPHA_MERGE(dest_scan[2], src_b, alpha_ratio);
     dest_scan[1] = FXDIB_ALPHA_MERGE(dest_scan[1], src_g, alpha_ratio);
     dest_scan[0] = FXDIB_ALPHA_MERGE(dest_scan[0], src_r, alpha_ratio);
@@ -2412,15 +2426,16 @@ void CompositeRow_1bppRgb2Argb_NoBlend_RgbByteOrder(
       dest_scan += 4;
       continue;
     }
-    int src_alpha = clip_scan[col];
+    const int src_alpha = clip_scan[col];
     if (src_alpha == 0) {
       dest_scan += 4;
       continue;
     }
-    int back_alpha = dest_scan[3];
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const int back_alpha = dest_scan[3];
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     dest_scan[2] = FXDIB_ALPHA_MERGE(dest_scan[2], src_b, alpha_ratio);
     dest_scan[1] = FXDIB_ALPHA_MERGE(dest_scan[1], src_g, alpha_ratio);
     dest_scan[0] = FXDIB_ALPHA_MERGE(dest_scan[0], src_r, alpha_ratio);
@@ -2438,8 +2453,8 @@ void CompositeRow_ByteMask2Argb_RgbByteOrder(uint8_t* dest_scan,
                                              BlendMode blend_type,
                                              const uint8_t* clip_scan) {
   for (int col = 0; col < pixel_count; col++) {
-    int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
-    uint8_t back_alpha = dest_scan[3];
+    const int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
+    const uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
       FXARGB_SETRGBORDERDIB(dest_scan,
                             ArgbEncode(src_alpha, src_r, src_g, src_b));
@@ -2450,9 +2465,10 @@ void CompositeRow_ByteMask2Argb_RgbByteOrder(uint8_t* dest_scan,
       dest_scan += 4;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (IsNonSeparableBlendMode(blend_type)) {
       int blended_colors[3];
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
@@ -2497,7 +2513,7 @@ void CompositeRow_ByteMask2Rgb_RgbByteOrder(uint8_t* dest_scan,
                                             int Bpp,
                                             const uint8_t* clip_scan) {
   for (int col = 0; col < pixel_count; col++) {
-    int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
+    const int src_alpha = GetAlphaWithSrc(mask_alpha, clip_scan, src_scan, col);
     if (src_alpha == 0) {
       dest_scan += Bpp;
       continue;
@@ -2557,17 +2573,18 @@ void CompositeRow_BitMask2Argb_RgbByteOrder(uint8_t* dest_scan,
       dest_scan += 4;
       continue;
     }
-    int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
-    uint8_t back_alpha = dest_scan[3];
+    const int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
+    const uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
       FXARGB_SETRGBORDERDIB(dest_scan,
                             ArgbEncode(src_alpha, src_r, src_g, src_b));
       dest_scan += 4;
       continue;
     }
-    uint8_t dest_alpha = back_alpha + src_alpha - back_alpha * src_alpha / 255;
+    const uint8_t dest_alpha =
+        back_alpha + src_alpha - back_alpha * src_alpha / 255;
     dest_scan[3] = dest_alpha;
-    int alpha_ratio = src_alpha * 255 / dest_alpha;
+    const int alpha_ratio = src_alpha * 255 / dest_alpha;
     if (IsNonSeparableBlendMode(blend_type)) {
       int blended_colors[3];
       uint8_t scan[3] = {static_cast<uint8_t>(src_b),
@@ -2628,7 +2645,7 @@ void CompositeRow_BitMask2Rgb_RgbByteOrder(uint8_t* dest_scan,
       dest_scan += Bpp;
       continue;
     }
-    int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
+    const int src_alpha = GetAlpha(mask_alpha, clip_scan, col);
     if (src_alpha == 0) {
       dest_scan += Bpp;
       continue;
@@ -2776,8 +2793,8 @@ void CFX_ScanlineCompositor::CompositeRgbBitmapLine(
     const uint8_t* clip_scan,
     const uint8_t* src_extra_alpha,
     uint8_t* dst_extra_alpha) {
-  int src_Bpp = GetCompsFromFormat(m_SrcFormat);
-  int dest_Bpp = GetCompsFromFormat(m_DestFormat);
+  const int src_Bpp = GetCompsFromFormat(m_SrcFormat);
+  const int dest_Bpp = GetCompsFromFormat(m_DestFormat);
   if (m_bRgbByteOrder) {
     switch (m_iTransparency) {
       case 0:

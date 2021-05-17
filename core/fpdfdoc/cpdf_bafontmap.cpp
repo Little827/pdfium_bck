@@ -327,7 +327,8 @@ bool CPDF_BAFontMap::KnowWord(int32_t nFontIndex, uint16_t word) {
 int32_t CPDF_BAFontMap::GetFontIndex(const ByteString& sFontName,
                                      int32_t nCharset,
                                      bool bFind) {
-  int32_t nFontIndex = FindFont(EncodeFontAlias(sFontName, nCharset), nCharset);
+  const int32_t nFontIndex =
+      FindFont(EncodeFontAlias(sFontName, nCharset), nCharset);
   if (nFontIndex >= 0)
     return nFontIndex;
 
@@ -335,7 +336,7 @@ int32_t CPDF_BAFontMap::GetFontIndex(const ByteString& sFontName,
   RetainPtr<CPDF_Font> pFont =
       bFind ? FindFontSameCharset(&sAlias, nCharset) : nullptr;
   if (!pFont) {
-    ByteString sTemp = sFontName;
+    const ByteString sTemp = sFontName;
     pFont = AddFontToDocument(sTemp, nCharset);
     sAlias = EncodeFontAlias(sTemp, nCharset);
   }
@@ -379,7 +380,7 @@ ByteString CPDF_BAFontMap::GetNativeFontName(int32_t nCharset) {
   if (nCharset == FX_CHARSET_Default)
     nCharset = GetNativeCharset();
 
-  ByteString sFontName = CFX_Font::GetDefaultFontNameByCharset(nCharset);
+  const ByteString sFontName = CFX_Font::GetDefaultFontNameByCharset(nCharset);
   if (!FindNativeTrueTypeFont(sFontName.AsStringView()))
     return ByteString();
 
@@ -392,7 +393,7 @@ ByteString CPDF_BAFontMap::GetCachedNativeFontName(int32_t nCharset) {
       return pData->sFontName;
   }
 
-  ByteString sNew = GetNativeFontName(nCharset);
+  const ByteString sNew = GetNativeFontName(nCharset);
   if (sNew.IsEmpty())
     return ByteString();
 

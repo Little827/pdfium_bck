@@ -51,7 +51,7 @@ uint32_t CountOutputsFromFunctions(
 uint32_t GetValidatedOutputsCount(
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS) {
-  uint32_t funcs_outputs = CountOutputsFromFunctions(funcs);
+  const uint32_t funcs_outputs = CountOutputsFromFunctions(funcs);
   return funcs_outputs ? std::max(funcs_outputs, pCS->CountComponents()) : 0;
 }
 
@@ -66,9 +66,9 @@ std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
   DCHECK(results_count >= pCS->CountComponents());
   std::array<FX_ARGB, kShadingSteps> shading_steps;
   std::vector<float> result_array(results_count);
-  float diff = t_max - t_min;
+  const float diff = t_max - t_min;
   for (int i = 0; i < kShadingSteps; ++i) {
-    float input = diff * i / kShadingSteps + t_min;
+    const float input = diff * i / kShadingSteps + t_min;
     int offset = 0;
     for (const auto& func : funcs) {
       if (func) {
@@ -103,10 +103,10 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   if (!pCoords)
     return;
 
-  float start_x = pCoords->GetNumberAt(0);
-  float start_y = pCoords->GetNumberAt(1);
-  float end_x = pCoords->GetNumberAt(2);
-  float end_y = pCoords->GetNumberAt(3);
+  const float start_x = pCoords->GetNumberAt(0);
+  const float start_y = pCoords->GetNumberAt(1);
+  const float end_x = pCoords->GetNumberAt(2);
+  const float end_y = pCoords->GetNumberAt(3);
   float t_min = 0;
   float t_max = 1.0f;
   const CPDF_Array* pArray = pDict->GetArrayFor("Domain");
@@ -118,16 +118,16 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   const bool bStartExtend = pArray && pArray->GetBooleanAt(0, false);
   const bool bEndExtend = pArray && pArray->GetBooleanAt(1, false);
 
-  int width = pBitmap->GetWidth();
-  int height = pBitmap->GetHeight();
-  float x_span = end_x - start_x;
-  float y_span = end_y - start_y;
-  float axis_len_square = (x_span * x_span) + (y_span * y_span);
+  const int width = pBitmap->GetWidth();
+  const int height = pBitmap->GetHeight();
+  const float x_span = end_x - start_x;
+  const float y_span = end_y - start_y;
+  const float axis_len_square = (x_span * x_span) + (y_span * y_span);
 
   std::array<FX_ARGB, kShadingSteps> shading_steps =
       GetShadingSteps(t_min, t_max, funcs, pCS, alpha, total_results);
 
-  int pitch = pBitmap->GetPitch();
+  const int pitch = pBitmap->GetPitch();
   CFX_Matrix matrix = mtObject2Bitmap.GetInverse();
   for (int row = 0; row < height; row++) {
     uint32_t* dib_buf =
@@ -171,12 +171,12 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   if (!pCoords)
     return;
 
-  float start_x = pCoords->GetNumberAt(0);
-  float start_y = pCoords->GetNumberAt(1);
-  float start_r = pCoords->GetNumberAt(2);
-  float end_x = pCoords->GetNumberAt(3);
-  float end_y = pCoords->GetNumberAt(4);
-  float end_r = pCoords->GetNumberAt(5);
+  const float start_x = pCoords->GetNumberAt(0);
+  const float start_y = pCoords->GetNumberAt(1);
+  const float start_r = pCoords->GetNumberAt(2);
+  const float end_x = pCoords->GetNumberAt(3);
+  const float end_y = pCoords->GetNumberAt(4);
+  const float end_r = pCoords->GetNumberAt(5);
   float t_min = 0;
   float t_max = 1.0f;
   const CPDF_Array* pArray = pDict->GetArrayFor("Domain");
@@ -197,9 +197,9 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   const float a = dx * dx + dy * dy - dr * dr;
   const bool a_is_float_zero = IsFloatZero(a);
 
-  int width = pBitmap->GetWidth();
-  int height = pBitmap->GetHeight();
-  int pitch = pBitmap->GetPitch();
+  const int width = pBitmap->GetWidth();
+  const int height = pBitmap->GetHeight();
+  const int pitch = pBitmap->GetPitch();
 
   bool bDecreasing =
       (dr < 0 && static_cast<int>(sqrt(dx * dx + dy * dy)) < -dr);
@@ -211,21 +211,21 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
     for (int column = 0; column < width; column++) {
       CFX_PointF pos = matrix.Transform(
           CFX_PointF(static_cast<float>(column), static_cast<float>(row)));
-      float pos_dx = pos.x - start_x;
-      float pos_dy = pos.y - start_y;
-      float b = -2 * (pos_dx * dx + pos_dy * dy + start_r * dr);
-      float c = pos_dx * pos_dx + pos_dy * pos_dy - start_r * start_r;
+      const float pos_dx = pos.x - start_x;
+      const float pos_dy = pos.y - start_y;
+      const float b = -2 * (pos_dx * dx + pos_dy * dy + start_r * dr);
+      const float c = pos_dx * pos_dx + pos_dy * pos_dy - start_r * start_r;
       float s;
       if (IsFloatZero(b)) {
         s = sqrt(-c / a);
       } else if (a_is_float_zero) {
         s = -c / b;
       } else {
-        float b2_4ac = (b * b) - 4 * (a * c);
+        const float b2_4ac = (b * b) - 4 * (a * c);
         if (b2_4ac < 0)
           continue;
 
-        float root = sqrt(b2_4ac);
+        const float root = sqrt(b2_4ac);
         float s1 = (-b - root) / (2 * a);
         float s2 = (-b + root) / (2 * a);
         if (a <= 0)
@@ -280,9 +280,9 @@ void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   CFX_Matrix mtDomain2Target = pDict->GetMatrixFor("Matrix");
   CFX_Matrix matrix =
       mtObject2Bitmap.GetInverse() * mtDomain2Target.GetInverse();
-  int width = pBitmap->GetWidth();
-  int height = pBitmap->GetHeight();
-  int pitch = pBitmap->GetPitch();
+  const int width = pBitmap->GetWidth();
+  const int height = pBitmap->GetHeight();
+  const int pitch = pBitmap->GetPitch();
 
   DCHECK(total_results >= CountOutputsFromFunctions(funcs));
   DCHECK(total_results >= pCS->CountComponents());
@@ -345,7 +345,7 @@ void DrawGouraud(const RetainPtr<CFX_DIBitmap>& pBitmap,
   if (min_y == max_y)
     return;
 
-  int min_yi = std::max(static_cast<int>(floorf(min_y)), 0);
+  const int min_yi = std::max(static_cast<int>(floorf(min_y)), 0);
   int max_yi = static_cast<int>(ceilf(max_y));
   if (max_yi >= pBitmap->GetHeight())
     max_yi = pBitmap->GetHeight() - 1;
@@ -366,7 +366,7 @@ void DrawGouraud(const RetainPtr<CFX_DIBitmap>& pBitmap,
       if (!bIntersect)
         continue;
 
-      float y_dist = (y - position1.y) / (position2.y - position1.y);
+      const float y_dist = (y - position1.y) / (position2.y - position1.y);
       r[nIntersects] = vertex1.r + ((vertex2.r - vertex1.r) * y_dist);
       g[nIntersects] = vertex1.g + ((vertex2.g - vertex1.g) * y_dist);
       b[nIntersects] = vertex1.b + ((vertex2.b - vertex1.b) * y_dist);
@@ -391,14 +391,14 @@ void DrawGouraud(const RetainPtr<CFX_DIBitmap>& pBitmap,
       end_index = 0;
     }
 
-    int start_x = std::max(min_x, 0);
-    int end_x = std::min(max_x, pBitmap->GetWidth());
+    const int start_x = std::max(min_x, 0);
+    const int end_x = std::min(max_x, pBitmap->GetWidth());
 
     uint8_t* dib_buf =
         pBitmap->GetBuffer() + y * pBitmap->GetPitch() + start_x * 4;
-    float r_unit = (r[end_index] - r[start_index]) / (max_x - min_x);
-    float g_unit = (g[end_index] - g[start_index]) / (max_x - min_x);
-    float b_unit = (b[end_index] - b[start_index]) / (max_x - min_x);
+    const float r_unit = (r[end_index] - r[start_index]) / (max_x - min_x);
+    const float g_unit = (g[end_index] - g[start_index]) / (max_x - min_x);
+    const float b_unit = (b[end_index] - b[start_index]) / (max_x - min_x);
     float r_result = r[start_index] + (start_x - min_x) * r_unit;
     float g_result = g[start_index] + (start_x - min_x) * g_unit;
     float b_result = b[start_index] + (start_x - min_x) * b_unit;
@@ -462,7 +462,8 @@ void DrawLatticeGouraudShading(
     int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);
 
-  int row_verts = pShadingStream->GetDict()->GetIntegerFor("VerticesPerRow");
+  const int row_verts =
+      pShadingStream->GetDict()->GetIntegerFor("VerticesPerRow");
   if (row_verts < 2)
     return;
 
@@ -535,7 +536,7 @@ struct Coon_BezierCoeff {
     d = C1.a / 8 + C1.b / 4 + C1.c / 2 + C1.d;
   }
   float Distance() {
-    float dis = a + b + c;
+    const float dis = a + b + c;
     return dis < 0 ? -dis : dis;
   }
 
@@ -598,7 +599,7 @@ struct Coon_Bezier {
     x.GetPoints(points_x);
     y.GetPoints(points_y);
     for (size_t i = 0; i < kPointsCount; ++i) {
-      size_t reverse_index = kPointsCount - i - 1;
+      const size_t reverse_index = kPointsCount - i - 1;
       path_points[i].m_Point = {points_x[reverse_index],
                                 points_y[reverse_index]};
     }
@@ -627,8 +628,8 @@ int BiInterpolImpl(int c0,
                    int x_scale,
                    int y_scale,
                    bool* overflow) {
-  int x1 = Interpolate(c0, c3, x, x_scale, overflow);
-  int x2 = Interpolate(c1, c2, x, x_scale, overflow);
+  const int x1 = Interpolate(c0, c3, x, x_scale, overflow);
+  const int x2 = Interpolate(c1, c2, x, x_scale, overflow);
   return Interpolate(x1, x2, y, y_scale, overflow);
 }
 
@@ -668,8 +669,8 @@ struct CPDF_PatchDrawer {
             Coon_Bezier C2,
             Coon_Bezier D1,
             Coon_Bezier D2) {
-    bool bSmall = C1.Distance() < 2 && C2.Distance() < 2 && D1.Distance() < 2 &&
-                  D2.Distance() < 2;
+    const bool bSmall = C1.Distance() < 2 && C2.Distance() < 2 &&
+                        D1.Distance() < 2 && D2.Distance() < 2;
     Coon_Color div_colors[4];
     int d_bottom = 0;
     int d_left = 0;
@@ -798,11 +799,11 @@ void DrawCoonPatchMeshes(
   }
 
   CFX_PointF coords[16];
-  int point_count = type == kTensorProductPatchMeshShading ? 16 : 12;
+  const int point_count = type == kTensorProductPatchMeshShading ? 16 : 12;
   while (!stream.BitStream()->IsEOF()) {
     if (!stream.CanReadFlag())
       break;
-    uint32_t flag = stream.ReadFlag();
+    const uint32_t flag = stream.ReadFlag();
     int iStartPoint = 0;
     int iStartColor = 0;
     int i = 0;
@@ -894,7 +895,7 @@ void CPDF_RenderShading::Draw(CFX_RenderDevice* pDevice,
     clip_rect_bbox.Intersect(
         mtMatrix.TransformRect(pDict->GetRectFor("BBox")).GetOuterRect());
   }
-  bool bAlphaMode = options.ColorModeIs(CPDF_RenderOptions::kAlpha);
+  const bool bAlphaMode = options.ColorModeIs(CPDF_RenderOptions::kAlpha);
   if (pDevice->GetDeviceCaps(FXDC_RENDER_CAPS) & FXRC_SHADING &&
       pDevice->GetDeviceDriver()->DrawShading(
           pPattern, &mtMatrix, clip_rect_bbox, alpha, bAlphaMode)) {

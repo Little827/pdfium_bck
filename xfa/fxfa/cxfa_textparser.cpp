@@ -180,7 +180,7 @@ RetainPtr<CFX_CSSComputedStyle> CXFA_TextParser::CreateStyle(
   if (!pParentStyle)
     return pNewStyle;
 
-  uint32_t dwDecoration = pParentStyle->GetTextDecoration();
+  const uint32_t dwDecoration = pParentStyle->GetTextDecoration();
   float fBaseLine = 0;
   if (pParentStyle->GetVerticalAlign() == CFX_CSSVerticalAlign::Number)
     fBaseLine = pParentStyle->GetNumberVerticalAlign();
@@ -487,7 +487,7 @@ float CXFA_TextParser::GetLineHeight(CXFA_TextProvider* pTextProvider,
   }
 
   if (bFirst) {
-    float fFontSize = GetFontSize(pTextProvider, pStyle);
+    const float fFontSize = GetFontSize(pTextProvider, pStyle);
     if (fLineHeight < 0.1f)
       fLineHeight = fFontSize;
     else
@@ -599,10 +599,11 @@ bool CXFA_TextParser::GetTabstops(const CFX_CSSComputedStyle* pStyle,
         break;
       case TabStopStatus::Location:
         if (ch == ' ') {
-          uint32_t dwHashCode = FX_HashCode_GetW(wsAlign.AsStringView(), true);
+          const uint32_t dwHashCode =
+              FX_HashCode_GetW(wsAlign.AsStringView(), true);
           CXFA_Measurement ms(
               WideStringView(spTabStops.subspan(iLast, iCur - iLast)));
-          float fPos = ms.ToUnit(XFA_Unit::Pt);
+          const float fPos = ms.ToUnit(XFA_Unit::Pt);
           pTabstopContext->Append(dwHashCode, fPos);
           wsAlign.clear();
           eStatus = TabStopStatus::None;
@@ -615,10 +616,10 @@ bool CXFA_TextParser::GetTabstops(const CFX_CSSComputedStyle* pStyle,
   }
 
   if (!wsAlign.IsEmpty()) {
-    uint32_t dwHashCode = FX_HashCode_GetW(wsAlign.AsStringView(), true);
+    const uint32_t dwHashCode = FX_HashCode_GetW(wsAlign.AsStringView(), true);
     CXFA_Measurement ms(
         WideStringView(spTabStops.subspan(iLast, iCur - iLast)));
-    float fPos = ms.ToUnit(XFA_Unit::Pt);
+    const float fPos = ms.ToUnit(XFA_Unit::Pt);
     pTabstopContext->Append(dwHashCode, fPos);
   }
   return true;

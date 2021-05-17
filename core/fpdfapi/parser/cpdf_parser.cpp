@@ -295,7 +295,7 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xref_offset) {
     return false;
 
   m_CrossRefTable->SetTrailer(std::move(trailer));
-  int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
+  const int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
   if (xrefsize > 0 && xrefsize <= kMaxXRefSize)
     ShrinkObjectMap(xrefsize);
 
@@ -462,7 +462,7 @@ bool CPDF_Parser::ParseAndAppendCrossRefSubsectionData(
     }
 
     for (uint32_t i = 0; i < block_size; i++) {
-      uint32_t iObjectIndex = count - nBytesToRead + i;
+      const uint32_t iObjectIndex = count - nBytesToRead + i;
       CrossRefObjData& obj_data =
           (*out_objects)[start_obj_index + iObjectIndex];
       const uint32_t objnum = start_objnum + iObjectIndex;
@@ -518,11 +518,11 @@ bool CPDF_Parser::ParseCrossRefV4(std::vector<CrossRefObjData>* out_objects) {
       break;
     }
 
-    uint32_t start_objnum = FXSYS_atoui(word.c_str());
+    const uint32_t start_objnum = FXSYS_atoui(word.c_str());
     if (start_objnum >= kMaxObjectNumber)
       return false;
 
-    uint32_t count = m_pSyntax->GetDirectNum();
+    const uint32_t count = m_pSyntax->GetDirectNum();
     m_pSyntax->ToNextWord();
 
     if (!ParseAndAppendCrossRefSubsectionData(
@@ -667,7 +667,7 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
 
   CPDF_Dictionary* pDict = pStream->GetDict();
   *pos = pDict->GetIntegerFor("Prev");
-  int32_t size = pDict->GetIntegerFor("Size");
+  const int32_t size = pDict->GetIntegerFor("Size");
   if (size < 0)
     return false;
 
@@ -690,8 +690,8 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
       CPDF_Object* pCountObj = pArray->GetObjectAt(i * 2 + 1);
 
       if (ToNumber(pStartNumObj) && ToNumber(pCountObj)) {
-        int nStartNum = pStartNumObj->GetInteger();
-        int nCount = pCountObj->GetInteger();
+        const int nStartNum = pStartNumObj->GetInteger();
+        const int nCount = pCountObj->GetInteger();
         if (nStartNum >= 0 && nCount > 0)
           arrIndex.push_back(std::make_pair(nStartNum, nCount));
       }
@@ -715,19 +715,19 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   if (!dwAccWidth.IsValid() || WidthArray.size() < 3)
     return false;
 
-  uint32_t totalWidth = dwAccWidth.ValueOrDie();
+  const uint32_t totalWidth = dwAccWidth.ValueOrDie();
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   pAcc->LoadAllDataFiltered();
 
   const uint8_t* pData = pAcc->GetData();
-  uint32_t dwTotalSize = pAcc->GetSize();
+  const uint32_t dwTotalSize = pAcc->GetSize();
   uint32_t segindex = 0;
   for (const auto& index : arrIndex) {
     const int32_t startnum = index.first;
     if (startnum < 0)
       continue;
 
-    uint32_t count = pdfium::base::checked_cast<uint32_t>(index.second);
+    const uint32_t count = pdfium::base::checked_cast<uint32_t>(index.second);
     FX_SAFE_UINT32 dwCaculatedSize = segindex;
     dwCaculatedSize += count;
     dwCaculatedSize *= totalWidth;
@@ -761,7 +761,8 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
 
       const ObjectType existing_type = GetObjectType(objnum);
       if (existing_type == ObjectType::kNull) {
-        uint32_t offset = GetVarInt(entrystart + WidthArray[0], WidthArray[1]);
+        const uint32_t offset =
+            GetVarInt(entrystart + WidthArray[0], WidthArray[1]);
         if (pdfium::base::IsValueInRangeForNumericType<FX_FILESIZE>(offset))
           m_CrossRefTable->AddNormal(objnum, 0, offset);
         continue;
@@ -982,7 +983,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
 
   m_LastXRefOffset = m_pLinearized->GetLastXRefOffset();
   FX_FILESIZE dwFirstXRefOffset = m_LastXRefOffset;
-  bool bLoadV4 = LoadCrossRefV4(dwFirstXRefOffset, false);
+  const bool bLoadV4 = LoadCrossRefV4(dwFirstXRefOffset, false);
   if (!bLoadV4 && !LoadCrossRefV5(&dwFirstXRefOffset, true)) {
     if (!RebuildCrossRef())
       return FORMAT_ERROR;
@@ -996,7 +997,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
       return SUCCESS;
 
     m_CrossRefTable->SetTrailer(std::move(trailer));
-    int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
+    const int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
     if (xrefsize > 0)
       ShrinkObjectMap(xrefsize);
   }

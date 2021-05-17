@@ -202,12 +202,12 @@ TEST_F(FPDFAnnotEmbedderTest, SetAPWithOpacity) {
   ASSERT_TRUE(gs_dict);
   ByteString type = gs_dict->GetStringFor(pdfium::annotation::kType);
   EXPECT_EQ("ExtGState", type);
-  float opacity = gs_dict->GetNumberFor("CA");
+  const float opacity = gs_dict->GetNumberFor("CA");
   // Opacity value of 102 is represented as 0.4f (=104/255) in /CA entry.
   EXPECT_FLOAT_EQ(0.4f, opacity);
   ByteString blend_mode = gs_dict->GetStringFor("BM");
   EXPECT_EQ("Normal", blend_mode);
-  bool alpha_source_flag = gs_dict->GetBooleanFor("AIS", true);
+  const bool alpha_source_flag = gs_dict->GetBooleanFor("AIS", true);
   EXPECT_FALSE(alpha_source_flag);
 }
 
@@ -1906,7 +1906,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldFlagsTextField) {
     ASSERT_TRUE(annot);
 
     // Check that the flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_FALSE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -1920,7 +1920,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldFlagsTextField) {
     ASSERT_TRUE(annot);
 
     // Check that the flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_TRUE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -1934,7 +1934,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldFlagsTextField) {
     ASSERT_TRUE(annot);
 
     // Check that the flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_FALSE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -1957,7 +1957,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldFlagsComboBox) {
     ASSERT_TRUE(annot);
 
     // Check that the flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_FALSE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -1972,7 +1972,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldFlagsComboBox) {
     ASSERT_TRUE(annot);
 
     // Check that the flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_FALSE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -1987,7 +1987,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldFlagsComboBox) {
     ASSERT_TRUE(annot);
 
     // Check that the flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_TRUE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -2041,7 +2041,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotAndCheckFlagsTextField) {
     ASSERT_TRUE(annot);
 
     // Check that interactive form annotation flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_READONLY);
@@ -2055,7 +2055,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotAndCheckFlagsTextField) {
     ASSERT_TRUE(annot);
 
     // Check that interactive form annotation flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_TRUE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -2078,7 +2078,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotAndCheckFlagsComboBox) {
     ASSERT_TRUE(annot);
 
     // Check that interactive form annotation flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_FALSE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -2095,7 +2095,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotAndCheckFlagsComboBox) {
     ASSERT_TRUE(annot);
 
     // Check that interactive form annotation flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_FALSE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -2112,7 +2112,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotAndCheckFlagsComboBox) {
     ASSERT_TRUE(annot);
 
     // Check that interactive form annotation flag values are as expected.
-    int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
+    const int flags = FPDFAnnot_GetFormFieldFlags(form_handle(), annot.get());
     EXPECT_TRUE(flags & FPDF_FORMFLAG_READONLY);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_REQUIRED);
     EXPECT_FALSE(flags & FPDF_FORMFLAG_NOEXPORT);
@@ -2532,7 +2532,7 @@ TEST_F(FPDFAnnotEmbedderTest, IsOptionSelectedListbox) {
     count = FPDFAnnot_GetOptionCount(form_handle(), annot.get());
     ASSERT_EQ(5, count);
     for (int i = 0; i < count; i++) {
-      bool expected = (i == 1 || i == 3);
+      const bool expected = (i == 1 || i == 3);
       EXPECT_EQ(expected,
                 FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), i));
     }
@@ -2545,7 +2545,7 @@ TEST_F(FPDFAnnotEmbedderTest, IsOptionSelectedListbox) {
     count = FPDFAnnot_GetOptionCount(form_handle(), annot.get());
     ASSERT_EQ(5, count);
     for (int i = 0; i < count; i++) {
-      bool expected = (i == 2 || i == 4);
+      const bool expected = (i == 2 || i == 4);
       EXPECT_EQ(expected,
                 FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), i));
     }
@@ -2558,7 +2558,7 @@ TEST_F(FPDFAnnotEmbedderTest, IsOptionSelectedListbox) {
     count = FPDFAnnot_GetOptionCount(form_handle(), annot.get());
     ASSERT_EQ(5, count);
     for (int i = 0; i < count; i++) {
-      bool expected = (i == 0 || i == 2);
+      const bool expected = (i == 0 || i == 2);
       EXPECT_EQ(expected,
                 FPDFAnnot_IsOptionSelected(form_handle(), annot.get(), i));
     }

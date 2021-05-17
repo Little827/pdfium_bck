@@ -81,7 +81,7 @@ std::unique_ptr<CPDF_Annot> CreatePopupAnnot(CPDF_Document* pDocument,
 
   // TODO(jaepark): We shouldn't strip BOM for some strings and not for others.
   // See pdfium:593.
-  WideString sContents =
+  const WideString sContents =
       pParentDict->GetUnicodeTextFor(pdfium::annotation::kContents);
   if (sContents.IsEmpty())
     return nullptr;
@@ -133,7 +133,7 @@ void GenerateAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   if (!pFieldTypeObj)
     return;
 
-  ByteString field_type = pFieldTypeObj->GetString();
+  const ByteString field_type = pFieldTypeObj->GetString();
   if (field_type == pdfium::form_fields::kTx) {
     CPDF_GenerateAP::GenerateFormAP(pDoc, pAnnotDict,
                                     CPDF_GenerateAP::kTextField);
@@ -142,7 +142,7 @@ void GenerateAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
   CPDF_Object* pFieldFlagsObj =
       CPDF_FormField::GetFieldAttr(pAnnotDict, pdfium::form_fields::kFf);
-  uint32_t flags = pFieldFlagsObj ? pFieldFlagsObj->GetInteger() : 0;
+  const uint32_t flags = pFieldFlagsObj ? pFieldFlagsObj->GetInteger() : 0;
   if (field_type == pdfium::form_fields::kCh) {
     auto type = (flags & pdfium::form_flags::kChoiceCombo)
                     ? CPDF_GenerateAP::kComboBox
@@ -178,7 +178,7 @@ CPDF_AnnotList::CPDF_AnnotList(CPDF_Page* pPage)
 
   const CPDF_Dictionary* pRoot = m_pDocument->GetRoot();
   const CPDF_Dictionary* pAcroForm = pRoot->GetDictFor("AcroForm");
-  bool bRegenerateAP =
+  const bool bRegenerateAP =
       pAcroForm && pAcroForm->GetBooleanFor("NeedAppearances", false);
   for (size_t i = 0; i < pAnnots->size(); ++i) {
     CPDF_Dictionary* pDict = ToDictionary(pAnnots->GetDirectObjectAt(i));
@@ -214,7 +214,7 @@ CPDF_AnnotList::~CPDF_AnnotList() {
   // Move the pop-up annotations out of |m_AnnotList| into |popups|. Then
   // destroy |m_AnnotList| first. This prevents dangling pointers to the pop-up
   // annotations.
-  size_t nPopupCount = m_AnnotList.size() - m_nAnnotCount;
+  const size_t nPopupCount = m_AnnotList.size() - m_nAnnotCount;
   std::vector<std::unique_ptr<CPDF_Annot>> popups(nPopupCount);
   for (size_t i = 0; i < nPopupCount; ++i)
     popups[i] = std::move(m_AnnotList[m_nAnnotCount + i]);
@@ -230,11 +230,11 @@ void CPDF_AnnotList::DisplayPass(CPDF_Page* pPage,
                                  CPDF_RenderOptions* pOptions,
                                  FX_RECT* clip_rect) {
   for (const auto& pAnnot : m_AnnotList) {
-    bool bWidget = pAnnot->GetSubtype() == CPDF_Annot::Subtype::WIDGET;
+    const bool bWidget = pAnnot->GetSubtype() == CPDF_Annot::Subtype::WIDGET;
     if ((bWidgetPass && !bWidget) || (!bWidgetPass && bWidget))
       continue;
 
-    uint32_t annot_flags = pAnnot->GetFlags();
+    const uint32_t annot_flags = pAnnot->GetFlags();
     if (annot_flags & pdfium::annotation_flags::kHidden)
       continue;
 
@@ -296,9 +296,10 @@ void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
                                    const CFX_Matrix& mtMatrix,
                                    bool bShowWidget,
                                    CPDF_RenderOptions* pOptions) {
-  uint32_t dwAnnotFlags = bShowWidget ? pdfium::annotation_flags::kInvisible |
-                                            pdfium::annotation_flags::kHidden
-                                      : pdfium::annotation_flags::kInvisible;
+  const uint32_t dwAnnotFlags = bShowWidget
+                                    ? pdfium::annotation_flags::kInvisible |
+                                          pdfium::annotation_flags::kHidden
+                                    : pdfium::annotation_flags::kInvisible;
   DisplayAnnots(pPage, device, pContext, bPrinting, mtMatrix, dwAnnotFlags,
                 pOptions, nullptr);
 }

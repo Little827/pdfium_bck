@@ -23,7 +23,7 @@ CPDF_Link CPDF_LinkList::GetLinkAtPoint(CPDF_Page* pPage,
     return CPDF_Link();
 
   for (size_t i = pPageLinkList->size(); i > 0; --i) {
-    size_t annot_index = i - 1;
+    const size_t annot_index = i - 1;
     CPDF_Dictionary* pAnnot = (*pPageLinkList)[annot_index].Get();
     if (!pAnnot)
       continue;
@@ -41,7 +41,7 @@ CPDF_Link CPDF_LinkList::GetLinkAtPoint(CPDF_Page* pPage,
 
 const std::vector<RetainPtr<CPDF_Dictionary>>* CPDF_LinkList::GetPageLinks(
     CPDF_Page* pPage) {
-  uint32_t objnum = pPage->GetDict()->GetObjNum();
+  const uint32_t objnum = pPage->GetDict()->GetObjNum();
   if (objnum == 0)
     return nullptr;
 
@@ -57,7 +57,7 @@ const std::vector<RetainPtr<CPDF_Dictionary>>* CPDF_LinkList::GetPageLinks(
 
   for (size_t i = 0; i < pAnnotList->size(); ++i) {
     CPDF_Dictionary* pAnnot = pAnnotList->GetDictAt(i);
-    bool add_link = (pAnnot && pAnnot->GetStringFor("Subtype") == "Link");
+    const bool add_link = (pAnnot && pAnnot->GetStringFor("Subtype") == "Link");
     // Add non-links as nullptrs to preserve z-order.
     page_link_list->emplace_back(add_link ? pAnnot : nullptr);
   }

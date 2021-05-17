@@ -59,8 +59,8 @@ constexpr size_t kEncoderCount =
 static_assert(kEncoderCount == 6, "Bad encoder count");
 
 wchar_t Randomize253State(wchar_t ch, int32_t codewordPosition) {
-  int32_t pseudoRandom = ((149 * codewordPosition) % 253) + 1;
-  int32_t tempVariable = ch + pseudoRandom;
+  const int32_t pseudoRandom = ((149 * codewordPosition) % 253) + 1;
+  const int32_t tempVariable = ch + pseudoRandom;
   return tempVariable <= 254 ? static_cast<wchar_t>(tempVariable)
                              : static_cast<wchar_t>(tempVariable - 254);
 }
@@ -70,7 +70,7 @@ int32_t FindMinimums(const std::array<float, kEncoderCount>& charCounts,
                      std::array<uint8_t, kEncoderCount>* mins) {
   int32_t min = std::numeric_limits<int32_t>::max();
   for (size_t i = 0; i < kEncoderCount; ++i) {
-    int32_t current = static_cast<int32_t>(ceil(charCounts[i]));
+    const int32_t current = static_cast<int32_t>(ceil(charCounts[i]));
     (*intCharCounts)[i] = current;
     if (min > current) {
       min = current;
@@ -161,11 +161,11 @@ WideString CBC_HighLevelEncoder::EncodeHighLevel(const WideString& msg) {
       context.ResetEncoderSignal();
     }
   }
-  size_t len = context.m_codewords.GetLength();
+  const size_t len = context.m_codewords.GetLength();
   if (!context.UpdateSymbolInfo())
     return WideString();
 
-  size_t capacity = context.m_symbolInfo->data_capacity();
+  const size_t capacity = context.m_symbolInfo->data_capacity();
   if (len < capacity) {
     if (encodingMode != Encoding::ASCII && encodingMode != Encoding::BASE256)
       context.writeCodeword(0x00fe);
@@ -202,7 +202,7 @@ CBC_HighLevelEncoder::Encoding CBC_HighLevelEncoder::LookAheadTest(
     if ((startpos + charsProcessed) == msg.GetLength()) {
       std::array<int32_t, kEncoderCount> intCharCounts;
       std::array<uint8_t, kEncoderCount> mins;
-      int32_t min = FindMinimums(charCounts, &intCharCounts, &mins);
+      const int32_t min = FindMinimums(charCounts, &intCharCounts, &mins);
       if (intCharCounts[EncoderIndex(Encoding::ASCII)] == min)
         return Encoding::ASCII;
       const int32_t minCount = GetMinimumCount(mins);
@@ -278,14 +278,17 @@ CBC_HighLevelEncoder::Encoding CBC_HighLevelEncoder::LookAheadTest(
     std::array<int32_t, kEncoderCount> intCharCounts;
     std::array<uint8_t, kEncoderCount> mins;
     FindMinimums(charCounts, &intCharCounts, &mins);
-    int32_t minCount = GetMinimumCount(mins);
-    int32_t ascii_count = intCharCounts[EncoderIndex(Encoding::ASCII)];
-    int32_t c40_count = intCharCounts[EncoderIndex(Encoding::C40)];
-    int32_t text_count = intCharCounts[EncoderIndex(Encoding::TEXT)];
-    int32_t x12_count = intCharCounts[EncoderIndex(Encoding::X12)];
-    int32_t editfact_count = intCharCounts[EncoderIndex(Encoding::EDIFACT)];
-    int32_t base256_count = intCharCounts[EncoderIndex(Encoding::BASE256)];
-    int32_t bet_min = std::min({base256_count, editfact_count, text_count});
+    const int32_t minCount = GetMinimumCount(mins);
+    const int32_t ascii_count = intCharCounts[EncoderIndex(Encoding::ASCII)];
+    const int32_t c40_count = intCharCounts[EncoderIndex(Encoding::C40)];
+    const int32_t text_count = intCharCounts[EncoderIndex(Encoding::TEXT)];
+    const int32_t x12_count = intCharCounts[EncoderIndex(Encoding::X12)];
+    const int32_t editfact_count =
+        intCharCounts[EncoderIndex(Encoding::EDIFACT)];
+    const int32_t base256_count =
+        intCharCounts[EncoderIndex(Encoding::BASE256)];
+    const int32_t bet_min =
+        std::min({base256_count, editfact_count, text_count});
     if (ascii_count < bet_min && ascii_count < c40_count &&
         ascii_count < x12_count) {
       return Encoding::ASCII;

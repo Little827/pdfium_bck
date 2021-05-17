@@ -162,7 +162,7 @@ FPDFAttachment_SetStringValue(FPDF_ATTACHMENT attachment,
 
   ByteString bsKey = key;
   ByteString bsValue = ByteStringFromFPDFWideString(value);
-  bool bEncodedAsHex = bsKey == kChecksumKey;
+  const bool bEncodedAsHex = bsKey == kChecksumKey;
   if (bEncodedAsHex)
     bsValue = CFXByteStringHexDecode(bsValue);
 

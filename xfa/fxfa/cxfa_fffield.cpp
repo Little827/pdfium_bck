@@ -171,10 +171,10 @@ void CXFA_FFField::CapPlacement() {
   CXFA_Margin* margin = m_pNode->GetMarginIfExists();
   if (margin) {
     CXFA_ContentLayoutItem* pItem = GetLayoutItem();
-    float fLeftInset = margin->GetLeftInset();
-    float fRightInset = margin->GetRightInset();
-    float fTopInset = margin->GetTopInset();
-    float fBottomInset = margin->GetBottomInset();
+    const float fLeftInset = margin->GetLeftInset();
+    const float fRightInset = margin->GetRightInset();
+    const float fTopInset = margin->GetTopInset();
+    const float fBottomInset = margin->GetBottomInset();
     if (!pItem->GetPrev() && !pItem->GetNext()) {
       rtWidget.Deflate(fLeftInset, fTopInset, fRightInset, fBottomInset);
     } else {
@@ -290,8 +290,9 @@ void CXFA_FFField::CapTopBottomPlacement(const CXFA_Margin* margin,
       m_CaptionRect.top += m_CaptionRect.height;
   }
 
-  float fWidth = rtUIMargin.left + rtUIMargin.width;
-  float fHeight = m_CaptionRect.height + rtUIMargin.top + rtUIMargin.height;
+  const float fWidth = rtUIMargin.left + rtUIMargin.width;
+  const float fHeight =
+      m_CaptionRect.height + rtUIMargin.top + rtUIMargin.height;
   if (fWidth > rtWidget.width)
     m_UIRect.width += fWidth - rtWidget.width;
 
@@ -317,8 +318,8 @@ void CXFA_FFField::CapLeftRightPlacement(const CXFA_Margin* margin,
       m_CaptionRect.top += m_CaptionRect.height;
   }
 
-  float fWidth = m_CaptionRect.width + rtUIMargin.left + rtUIMargin.width;
-  float fHeight = rtUIMargin.top + rtUIMargin.height;
+  const float fWidth = m_CaptionRect.width + rtUIMargin.left + rtUIMargin.width;
+  const float fHeight = rtUIMargin.top + rtUIMargin.height;
   if (fWidth > rtWidget.width) {
     m_UIRect.width += fWidth - rtWidget.width;
     if (iCapPlacement == XFA_AttributeValue::Right)
@@ -352,7 +353,7 @@ void CXFA_FFField::SetFWLRect() {
   CFX_RectF rtUi = m_UIRect;
   rtUi.width = std::max(rtUi.width, 1.0f);
   if (!GetDoc()->GetXFADoc()->IsInteractive()) {
-    float fFontSize = m_pNode->GetFontSize();
+    const float fFontSize = m_pNode->GetFontSize();
     rtUi.height = std::max(rtUi.height, fFontSize);
   }
   GetNormalWidget()->SetWidgetRect(rtUi);
@@ -562,7 +563,7 @@ void CXFA_FFField::LayoutCaption() {
   if (!pCapTextLayout)
     return;
 
-  float fHeight = pCapTextLayout->Layout(m_CaptionRect.Size());
+  const float fHeight = pCapTextLayout->Layout(m_CaptionRect.Size());
   m_CaptionRect.height = std::max(m_CaptionRect.height, fHeight);
 }
 

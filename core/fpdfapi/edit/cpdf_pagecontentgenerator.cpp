@@ -109,7 +109,7 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
 
   // Process the page objects, write into each dirty stream.
   for (auto& pPageObj : m_pageObjects) {
-    int stream_index = pPageObj->GetContentStream();
+    const int stream_index = pPageObj->GetContentStream();
     auto it = streams.find(stream_index);
     if (it == streams.end())
       continue;
@@ -147,11 +147,11 @@ void CPDF_PageContentGenerator::UpdateContentStreams(
   CPDF_PageContentManager page_content_manager(m_pObjHolder.Get());
 
   for (auto& pair : new_stream_data) {
-    int32_t stream_index = pair.first;
+    const int32_t stream_index = pair.first;
     std::ostringstream* buf = &pair.second;
 
     if (stream_index == CPDF_PageObject::kNoContentStream) {
-      int new_stream_index = page_content_manager.AddStream(buf);
+      const int new_stream_index = page_content_manager.AddStream(buf);
       UpdateStreamlessPageObjects(new_stream_index);
       continue;
     }
@@ -312,7 +312,7 @@ void CPDF_PageContentGenerator::ProcessImage(std::ostringstream* buf,
   if (!pStream)
     return;
 
-  bool bWasInline = pStream->IsInline();
+  const bool bWasInline = pStream->IsInline();
   if (bWasInline)
     pImage->ConvertStreamToIndirectObject();
 
@@ -414,7 +414,7 @@ void CPDF_PageContentGenerator::ProcessGraphics(std::ostringstream* buf,
     *buf << strokeColor[0] << " " << strokeColor[1] << " " << strokeColor[2]
          << " RG ";
   }
-  float lineWidth = pPageObj->m_GraphState.GetLineWidth();
+  const float lineWidth = pPageObj->m_GraphState.GetLineWidth();
   if (lineWidth != 1.0f)
     WriteFloat(*buf, lineWidth) << " w ";
   CFX_GraphStateData::LineCap lineCap = pPageObj->m_GraphState.GetLineCap();

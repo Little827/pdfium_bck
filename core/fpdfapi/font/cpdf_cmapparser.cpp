@@ -78,15 +78,15 @@ void CPDF_CMapParser::ParseWord(ByteStringView word) {
 
 void CPDF_CMapParser::HandleCid(ByteStringView word) {
   DCHECK(m_Status == kProcessingCidChar || m_Status == kProcessingCidRange);
-  bool bChar = m_Status == kProcessingCidChar;
+  const bool bChar = m_Status == kProcessingCidChar;
 
   m_CodePoints[m_CodeSeq] = GetCode(word);
   m_CodeSeq++;
-  int nRequiredCodePoints = bChar ? 2 : 3;
+  const int nRequiredCodePoints = bChar ? 2 : 3;
   if (m_CodeSeq < nRequiredCodePoints)
     return;
 
-  uint32_t StartCode = m_CodePoints[0];
+  const uint32_t StartCode = m_CodePoints[0];
   uint32_t EndCode;
   uint16_t StartCID;
   if (bChar) {
@@ -122,7 +122,7 @@ void CPDF_CMapParser::HandleCodeSpaceRange(ByteStringView word) {
     return;
   }
 
-  size_t nSegs = m_Ranges.size() + m_PendingRanges.size();
+  const size_t nSegs = m_Ranges.size() + m_PendingRanges.size();
   if (nSegs == 1) {
     const auto& first_range =
         !m_Ranges.empty() ? m_Ranges[0] : m_PendingRanges[0];
@@ -173,25 +173,25 @@ Optional<CPDF_CMap::CodeRange> CPDF_CMapParser::GetCodeRange(
     if (first[i] == '>')
       break;
   }
-  size_t char_size = (i - 1) / 2;
+  const size_t char_size = (i - 1) / 2;
   if (char_size > 4)
     return pdfium::nullopt;
 
   CPDF_CMap::CodeRange range;
   range.m_CharSize = char_size;
   for (i = 0; i < range.m_CharSize; ++i) {
-    uint8_t digit1 = first[i * 2 + 1];
-    uint8_t digit2 = first[i * 2 + 2];
+    const uint8_t digit1 = first[i * 2 + 1];
+    const uint8_t digit2 = first[i * 2 + 2];
     range.m_Lower[i] =
         FXSYS_HexCharToInt(digit1) * 16 + FXSYS_HexCharToInt(digit2);
   }
 
-  size_t size = second.GetLength();
+  const size_t size = second.GetLength();
   for (i = 0; i < range.m_CharSize; ++i) {
-    size_t i1 = i * 2 + 1;
-    size_t i2 = i1 + 1;
-    uint8_t digit1 = i1 < size ? second[i1] : '0';
-    uint8_t digit2 = i2 < size ? second[i2] : '0';
+    const size_t i1 = i * 2 + 1;
+    const size_t i2 = i1 + 1;
+    const uint8_t digit1 = i1 < size ? second[i1] : '0';
+    const uint8_t digit2 = i2 < size ? second[i2] : '0';
     range.m_Upper[i] =
         FXSYS_HexCharToInt(digit1) * 16 + FXSYS_HexCharToInt(digit2);
   }

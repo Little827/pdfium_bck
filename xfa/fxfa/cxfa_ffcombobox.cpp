@@ -151,7 +151,7 @@ void CXFA_FFComboBox::FWLEventSelChange(CXFA_EventParam* pParam) {
 WideString CXFA_FFComboBox::GetCurrentText() const {
   auto* pFWLcombobox = ToComboBox(GetNormalWidget());
   WideString wsText = pFWLcombobox->GetEditText();
-  int32_t iCursel = pFWLcombobox->GetCurSel();
+  const int32_t iCursel = pFWLcombobox->GetCurSel();
   if (iCursel >= 0) {
     WideString wsSel = pFWLcombobox->GetTextByIndex(iCursel);
     if (wsSel == wsText)

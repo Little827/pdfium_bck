@@ -276,8 +276,8 @@ TEST(RetainPtr, Bool) {
   PseudoRetainable obj1;
   RetainPtr<PseudoRetainable> null_ptr;
   RetainPtr<PseudoRetainable> obj1_ptr(&obj1);
-  bool null_bool = !!null_ptr;
-  bool obj1_bool = !!obj1_ptr;
+  const bool null_bool = !!null_ptr;
+  const bool obj1_bool = !!obj1_ptr;
   EXPECT_FALSE(null_bool);
   EXPECT_TRUE(obj1_bool);
 }

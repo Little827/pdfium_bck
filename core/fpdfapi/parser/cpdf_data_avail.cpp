@@ -329,7 +329,7 @@ bool CPDF_DataAvail::CheckPage() {
     m_PageObjList = std::move(UnavailObjList);
     return false;
   }
-  size_t iPages = m_PagesArray.size();
+  const size_t iPages = m_PagesArray.size();
   for (size_t i = 0; i < iPages; ++i) {
     RetainPtr<CPDF_Object> pPages = std::move(m_PagesArray[i]);
     if (pPages && !GetPageKids(pPages.Get())) {
@@ -371,7 +371,7 @@ bool CPDF_DataAvail::GetPageKids(CPDF_Object* pPages) {
   }
 
   for (uint32_t num : object_numbers) {
-    bool inserted = m_SeenPageObjList.insert(num).second;
+    const bool inserted = m_SeenPageObjList.insert(num).second;
     if (inserted)
       m_PageObjList.push_back(num);
   }
@@ -641,7 +641,7 @@ bool CPDF_DataAvail::CheckPageNode(const CPDF_DataAvail::PageNode& pageNode,
   if (level >= kMaxPageRecursionDepth)
     return false;
 
-  int32_t iSize = pdfium::CollectionSize<int32_t>(pageNode.m_ChildNodes);
+  const int32_t iSize = pdfium::CollectionSize<int32_t>(pageNode.m_ChildNodes);
   if (iSize <= 0 || iPage >= iSize) {
     m_docStatus = PDF_DATAAVAIL_ERROR;
     return false;
@@ -685,7 +685,7 @@ bool CPDF_DataAvail::CheckPageNode(const CPDF_DataAvail::PageNode& pageNode,
 }
 
 bool CPDF_DataAvail::LoadDocPage(uint32_t dwPage) {
-  int iPage = pdfium::base::checked_cast<int>(dwPage);
+  const int iPage = pdfium::base::checked_cast<int>(dwPage);
   if (m_pDocument->GetPageCount() <= iPage ||
       m_pDocument->IsPageLoaded(iPage)) {
     m_docStatus = PDF_DATAAVAIL_DONE;
@@ -998,7 +998,7 @@ CPDF_DataAvail::DocFormStatus CPDF_DataAvail::CheckAcroForm() {
 }
 
 bool CPDF_DataAvail::ValidatePage(uint32_t dwPage) const {
-  int iPage = pdfium::base::checked_cast<int>(dwPage);
+  const int iPage = pdfium::base::checked_cast<int>(dwPage);
   auto* pPageDict = m_pDocument->GetPageDictionary(iPage);
   if (!pPageDict)
     return false;

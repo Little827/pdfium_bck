@@ -63,9 +63,9 @@ void CXFA_Radial::Draw(CFGAS_GEGraphics* pGS,
   if (!IsToEdge())
     std::swap(crStart, crEnd);
 
-  float endRadius = sqrt(rtFill.Width() * rtFill.Width() +
-                         rtFill.Height() * rtFill.Height()) /
-                    2;
+  const float endRadius = sqrt(rtFill.Width() * rtFill.Width() +
+                               rtFill.Height() * rtFill.Height()) /
+                          2;
   CFGAS_GEShading shading(rtFill.Center(), rtFill.Center(), 0, endRadius, true,
                           true, crStart, crEnd);
 

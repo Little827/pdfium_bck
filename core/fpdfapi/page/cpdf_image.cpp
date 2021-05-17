@@ -124,11 +124,11 @@ RetainPtr<CPDF_Dictionary> CPDF_Image::InitJPEG(
 }
 
 void CPDF_Image::SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile) {
-  uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
+  const uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
   if (!size)
     return;
 
-  uint32_t dwEstimateSize = std::min(size, 8192U);
+  const uint32_t dwEstimateSize = std::min(size, 8192U);
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> data(dwEstimateSize);
   if (!pFile->ReadBlockAtOffset(data.data(), 0, dwEstimateSize))
     return;
@@ -147,7 +147,7 @@ void CPDF_Image::SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile) {
 
 void CPDF_Image::SetJpegImageInline(
     const RetainPtr<IFX_SeekableReadStream>& pFile) {
-  uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
+  const uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
   if (!size)
     return;
 
@@ -163,8 +163,8 @@ void CPDF_Image::SetJpegImageInline(
 }
 
 void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
-  int32_t BitmapWidth = pBitmap->GetWidth();
-  int32_t BitmapHeight = pBitmap->GetHeight();
+  const int32_t BitmapWidth = pBitmap->GetWidth();
+  const int32_t BitmapHeight = pBitmap->GetHeight();
   if (BitmapWidth < 1 || BitmapHeight < 1)
     return;
 
@@ -217,7 +217,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
     pDict->SetNewFor<CPDF_Number>("BitsPerComponent", 1);
     dest_pitch = (BitmapWidth + 7) / 8;
   } else if (bpp == 8) {
-    size_t palette_size = pBitmap->GetRequiredPaletteSize();
+    const size_t palette_size = pBitmap->GetRequiredPaletteSize();
     if (palette_size > 0) {
       DCHECK(palette_size <= 256);
       CPDF_Array* pCS = m_pDocument->NewIndirect<CPDF_Array>();
@@ -228,7 +228,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
           FX_Alloc2D(uint8_t, palette_size, 3));
       uint8_t* ptr = pColorTable.get();
       for (size_t i = 0; i < palette_size; i++) {
-        uint32_t argb = pBitmap->GetPaletteArgb(i);
+        const uint32_t argb = pBitmap->GetPaletteArgb(i);
         ptr[0] = FXARGB_R(argb);
         ptr[1] = FXARGB_G(argb);
         ptr[2] = FXARGB_B(argb);
@@ -257,8 +257,8 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
     pMaskBitmap = pBitmap->CloneAlphaMask();
 
   if (pMaskBitmap) {
-    int32_t maskWidth = pMaskBitmap->GetWidth();
-    int32_t maskHeight = pMaskBitmap->GetHeight();
+    const int32_t maskWidth = pMaskBitmap->GetWidth();
+    const int32_t maskHeight = pMaskBitmap->GetHeight();
     std::unique_ptr<uint8_t, FxFreeDeleter> mask_buf;
     int32_t mask_size = 0;
     RetainPtr<CPDF_Dictionary> pMaskDict =
@@ -281,11 +281,11 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
   }
 
   uint8_t* src_buf = pBitmap->GetBuffer();
-  int32_t src_pitch = pBitmap->GetPitch();
+  const int32_t src_pitch = pBitmap->GetPitch();
   std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf(
       FX_Alloc2D(uint8_t, dest_pitch, BitmapHeight));
   // Safe as checked alloc returned.
-  size_t dest_size = dest_pitch * BitmapHeight;
+  const size_t dest_size = dest_pitch * BitmapHeight;
   auto dest_span = pdfium::make_span(dest_buf.get(), dest_size);
   size_t dest_span_offset = 0;
   if (bCopyWithoutAlpha) {
@@ -300,7 +300,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
       size_t dest_span_row_offset = dest_span_offset;
       src_offset = row * src_pitch;
       for (int32_t column = 0; column < BitmapWidth; column++) {
-        float alpha = 1;
+        const float alpha = 1;
         dest_span[dest_span_row_offset] =
             static_cast<uint8_t>(src_buf[src_offset + 2] * alpha);
         dest_span[dest_span_row_offset + 1] =

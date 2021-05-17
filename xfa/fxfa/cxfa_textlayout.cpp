@@ -41,7 +41,7 @@ namespace {
 constexpr float kHeightTolerance = 0.001f;
 
 void ProcessText(WideString* pText) {
-  int32_t iLen = pText->GetLength();
+  const int32_t iLen = pText->GetLength();
   if (iLen == 0)
     return;
 
@@ -197,7 +197,7 @@ void CXFA_TextLayout::InitBreak(float fLineWidth) {
       fLineWidth = fStart;
 
     fStartPos = fStart;
-    float fIndent = para->GetTextIndent();
+    const float fIndent = para->GetTextIndent();
     if (fIndent > 0)
       fStartPos += fIndent;
   }
@@ -213,7 +213,7 @@ void CXFA_TextLayout::InitBreak(float fLineWidth) {
     m_pBreak->SetCharSpace(font->GetLetterSpacing());
   }
 
-  float fFontSize = m_pTextParser->GetFontSize(m_pTextProvider, nullptr);
+  const float fFontSize = m_pTextParser->GetFontSize(m_pTextProvider, nullptr);
   m_pBreak->SetFontSize(fFontSize);
   m_pBreak->SetFont(
       m_pTextParser->GetFont(m_pDoc.Get(), m_pTextProvider, nullptr));
@@ -281,7 +281,7 @@ void CXFA_TextLayout::InitBreak(CFX_CSSComputedStyle* pStyle,
       }
     }
     m_pBreak->SetLineBoundary(fStart, fLineWidth);
-    float fIndent = pStyle->GetTextIndent().GetValue();
+    const float fIndent = pStyle->GetTextIndent().GetValue();
     if (fIndent > 0)
       fStart += fIndent;
 
@@ -293,7 +293,7 @@ void CXFA_TextLayout::InitBreak(CFX_CSSComputedStyle* pStyle,
     for (const auto& stop : m_pTabstopContext->m_tabstops)
       m_pBreak->AddPositionedTab(stop.fTabstops);
   }
-  float fFontSize = m_pTextParser->GetFontSize(m_pTextProvider, pStyle);
+  const float fFontSize = m_pTextParser->GetFontSize(m_pTextProvider, pStyle);
   m_pBreak->SetFontSize(fFontSize);
   m_pBreak->SetLineBreakTolerance(fFontSize * 0.2f);
   m_pBreak->SetFont(
@@ -404,7 +404,7 @@ float CXFA_TextLayout::DoSplitLayout(size_t szBlockIndex,
     return 0;
 
   for (size_t i = szLineIndex; i < m_pLoader->lineHeights.size(); ++i) {
-    float fLineHeight = m_pLoader->lineHeights[i];
+    const float fLineHeight = m_pLoader->lineHeights[i];
     if (fLinePos + fLineHeight - fCalcHeight <= kHeightTolerance) {
       fLinePos += fLineHeight;
       continue;
@@ -433,7 +433,7 @@ float CXFA_TextLayout::DoSplitLayout(size_t szBlockIndex,
 }
 
 size_t CXFA_TextLayout::CountBlocks() const {
-  size_t szCount = m_Blocks.size();
+  const size_t szCount = m_Blocks.size();
   return szCount > 0 ? szCount : 1;
 }
 
@@ -585,7 +585,7 @@ void CXFA_TextLayout::ItemBlocks(const CFX_RectF& rtText, size_t szBlockIndex) {
 
   size_t i;
   for (i = szLineIndex; i < m_pLoader->lineHeights.size(); ++i) {
-    float fLineHeight = m_pLoader->lineHeights[i];
+    const float fLineHeight = m_pLoader->lineHeights[i];
     if (fLinePos + fLineHeight - rtText.height > kHeightTolerance) {
       m_Blocks.push_back({szLineIndex, i - szLineIndex});
       return;
@@ -607,7 +607,7 @@ bool CXFA_TextLayout::DrawString(CFX_RenderDevice* pFxDevice,
   pFxDevice->SetClip_Rect(rtClip.GetOuterRect());
 
   if (m_pieceLines.empty()) {
-    size_t szBlockCount = CountBlocks();
+    const size_t szBlockCount = CountBlocks();
     for (size_t i = 0; i < szBlockCount; ++i)
       LayoutInternal(i);
     m_pTabstopContext.reset();
@@ -633,7 +633,7 @@ bool CXFA_TextLayout::DrawString(CFX_RenderDevice* pFxDevice,
     PieceLine* pPieceLine = m_pieceLines[i + szLineStart].get();
     for (size_t j = 0; j < pPieceLine->m_textPieces.size(); ++j) {
       const TextPiece* pPiece = pPieceLine->m_textPieces[j].get();
-      int32_t iChars = pPiece->iChars;
+      const int32_t iChars = pPiece->iChars;
       if (pdfium::CollectionSize<int32_t>(char_pos) < iChars)
         char_pos.resize(iChars);
       RenderString(pFxDevice, pPieceLine, j, &char_pos, mtDoc2Device);
@@ -718,7 +718,7 @@ void CXFA_TextLayout::LoadText(CXFA_Node* pNode,
 
   WideString wsText = pNode->JSObject()->GetContent(false);
   wsText.TrimRight(L" ");
-  bool bRet = AppendChar(wsText, pLinePos, fSpaceAbove, bSavePieces);
+  const bool bRet = AppendChar(wsText, pLinePos, fSpaceAbove, bSavePieces);
   if (bRet && m_pLoader)
     m_pLoader->pNode = pNode;
   else
@@ -792,7 +792,7 @@ bool CXFA_TextLayout::LoadRichText(
 
       int32_t iTabCount = m_pTextParser->CountTabs(
           bContentNode ? pParentStyle.Get() : pStyle.Get());
-      bool bSpaceRun = m_pTextParser->IsSpaceRun(
+      const bool bSpaceRun = m_pTextParser->IsSpaceRun(
           bContentNode ? pParentStyle.Get() : pStyle.Get());
       WideString wsText;
       if (bContentNode && iTabCount == 0) {
@@ -817,7 +817,7 @@ bool CXFA_TextLayout::LoadRichText(
         }
       }
 
-      int32_t iLength = wsText.GetLength();
+      const int32_t iLength = wsText.GetLength();
       if (iLength > 0 && bContentNode && !bSpaceRun)
         ProcessText(&wsText);
 
@@ -911,7 +911,7 @@ bool CXFA_TextLayout::AppendChar(const WideString& wsText,
   if (m_pLoader)
     iChar = m_pLoader->iChar;
 
-  int32_t iLength = wsText.GetLength();
+  const int32_t iLength = wsText.GetLength();
   for (int32_t i = iChar; i < iLength; i++) {
     wchar_t wch = wsText[i];
     if (wch == 0xA0)
@@ -961,13 +961,14 @@ void CXFA_TextLayout::DoTabstops(CFX_CSSComputedStyle* pStyle,
   if (!m_pTabstopContext || m_pTabstopContext->m_tabstops.empty())
     return;
 
-  int32_t iPieces = pdfium::CollectionSize<int32_t>(pPieceLine->m_textPieces);
+  const int32_t iPieces =
+      pdfium::CollectionSize<int32_t>(pPieceLine->m_textPieces);
   if (iPieces == 0)
     return;
 
   TextPiece* pPiece = pPieceLine->m_textPieces[iPieces - 1].get();
   int32_t& iTabstopsIndex = m_pTabstopContext->m_iTabIndex;
-  int32_t iCount = m_pTextParser->CountTabs(pStyle);
+  const int32_t iCount = m_pTextParser->CountTabs(pStyle);
   if (!pdfium::IndexInBounds(m_pTabstopContext->m_tabstops, iTabstopsIndex))
     return;
 
@@ -984,14 +985,15 @@ void CXFA_TextLayout::DoTabstops(CFX_CSSComputedStyle* pStyle,
   } else if (iTabstopsIndex > -1) {
     float fLeft = 0;
     if (m_pTabstopContext->m_bHasTabstops) {
-      uint32_t dwAlign = m_pTabstopContext->m_tabstops[iTabstopsIndex].dwAlign;
+      const uint32_t dwAlign =
+          m_pTabstopContext->m_tabstops[iTabstopsIndex].dwAlign;
       if (dwAlign == FX_HashCode_GetW(L"center", false)) {
         fLeft = pPiece->rtPiece.width / 2.0f;
       } else if (dwAlign == FX_HashCode_GetW(L"right", false) ||
                  dwAlign == FX_HashCode_GetW(L"before", false)) {
         fLeft = pPiece->rtPiece.width;
       } else if (dwAlign == FX_HashCode_GetW(L"decimal", false)) {
-        int32_t iChars = pPiece->iChars;
+        const int32_t iChars = pPiece->iChars;
         for (int32_t i = 0; i < iChars; i++) {
           if (pPiece->szText[i] == L'.')
             break;
@@ -1012,7 +1014,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
                                      float* pLinePos,
                                      bool bSavePieces,
                                      bool bEndBreak) {
-  int32_t iPieces = m_pBreak->CountBreakPieces();
+  const int32_t iPieces = m_pBreak->CountBreakPieces();
   if (iPieces < 1)
     return;
 
@@ -1032,7 +1034,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
       CFGAS_TextUserData* pUserData = pPiece->m_pUserData.Get();
       if (pUserData)
         pStyle = pUserData->m_pStyle;
-      float fVerScale = pPiece->m_iVerticalScale / 100.0f;
+      const float fVerScale = pPiece->m_iVerticalScale / 100.0f;
 
       auto pTP = std::make_unique<TextPiece>();
       pTP->iChars = pPiece->m_iCharCount;
@@ -1056,7 +1058,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
       pTP->rtPiece.width = pPiece->m_iWidth / 20000.0f;
       pTP->rtPiece.height =
           static_cast<float>(pPiece->m_iFontSize) * fVerScale / 20.0f;
-      float fBaseLineTemp =
+      const float fBaseLineTemp =
           m_pTextParser->GetBaseline(m_pTextProvider, pStyle.Get());
       pTP->rtPiece.top = fBaseLineTemp;
 
@@ -1074,7 +1076,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
     }
     for (const auto& pTP : pPieceLine->m_textPieces) {
       float& fTop = pTP->rtPiece.top;
-      float fBaseLineTemp = fTop;
+      const float fBaseLineTemp = fTop;
       fTop = *pLinePos + fLineStep - pTP->rtPiece.height - fBaseLineTemp;
       fTop = std::max(0.0f, fTop);
     }
@@ -1087,7 +1089,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
       CFGAS_TextUserData* pUserData = pPiece->m_pUserData.Get();
       if (pUserData)
         pStyle = pUserData->m_pStyle;
-      float fVerScale = pPiece->m_iVerticalScale / 100.0f;
+      const float fVerScale = pPiece->m_iVerticalScale / 100.0f;
       float fBaseLine =
           m_pTextParser->GetBaseline(m_pTextProvider, pStyle.Get());
       float fLineHeight = m_pTextParser->GetLineHeight(
@@ -1106,7 +1108,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
     *pLinePos += fLineStep;
     m_fMaxWidth = std::max(m_fMaxWidth, fLineWidth);
     if (m_pLoader && m_pLoader->bSaveLineHeight) {
-      float fHeight = *pLinePos - m_pLoader->fLastPos;
+      const float fHeight = *pLinePos - m_pLoader->fLastPos;
       m_pLoader->fLastPos = *pLinePos;
       m_pLoader->lineHeights.push_back(fHeight);
     }
@@ -1119,7 +1121,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
       CXFA_Para* para = m_pTextProvider->GetParaIfExists();
       if (para) {
         float fStartPos = para->GetMarginLeft();
-        float fIndent = para->GetTextIndent();
+        const float fIndent = para->GetTextIndent();
         if (fIndent > 0)
           fStartPos += fIndent;
 
@@ -1139,7 +1141,7 @@ void CXFA_TextLayout::AppendTextLine(CFGAS_Char::BreakType dwStatus,
     if (pRect)
       fStart = pRect->left.GetValue();
 
-    float fTextIndent = pStyle->GetTextIndent().GetValue();
+    const float fTextIndent = pStyle->GetTextIndent().GetValue();
     if (fTextIndent < 0)
       fStart -= fTextIndent;
 
@@ -1154,7 +1156,7 @@ void CXFA_TextLayout::RenderString(CFX_RenderDevice* pDevice,
                                    std::vector<TextCharPos>* pCharPos,
                                    const CFX_Matrix& mtDoc2Device) {
   const TextPiece* pPiece = pPieceLine->m_textPieces[szPiece].get();
-  size_t szCount = GetDisplayPos(pPiece, pCharPos);
+  const size_t szCount = GetDisplayPos(pPiece, pCharPos);
   if (szCount > 0) {
     auto span = pdfium::make_span(pCharPos->data(), szCount);
     CFDE_TextOut::DrawString(pDevice, pPiece->dwColor, pPiece->pFont, span,
@@ -1169,8 +1171,9 @@ void CXFA_TextLayout::RenderPath(CFX_RenderDevice* pDevice,
                                  std::vector<TextCharPos>* pCharPos,
                                  const CFX_Matrix& mtDoc2Device) {
   const TextPiece* pPiece = pPieceLine->m_textPieces[szPiece].get();
-  bool bNoUnderline = pPiece->iUnderline < 1 || pPiece->iUnderline > 2;
-  bool bNoLineThrough = pPiece->iLineThrough < 1 || pPiece->iLineThrough > 2;
+  const bool bNoUnderline = pPiece->iUnderline < 1 || pPiece->iUnderline > 2;
+  const bool bNoLineThrough =
+      pPiece->iLineThrough < 1 || pPiece->iLineThrough > 2;
   if (bNoUnderline && bNoLineThrough)
     return;
 

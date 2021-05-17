@@ -271,7 +271,7 @@ void RelocateTableRowCells(CXFA_ContentLayoutItem* pLayoutRow,
 
       UpdateWidgetSize(pLayoutChild, &pLayoutChild->m_sSize.width,
                        &fContentCalculatedHeight);
-      float fOldChildHeight = pLayoutChild->m_sSize.height;
+      const float fOldChildHeight = pLayoutChild->m_sSize.height;
       pLayoutChild->m_sSize.height = fContentCalculatedHeight;
       CXFA_Para* pParaNode =
           pLayoutChild->GetFormNode()->GetFirstChildByClass<CXFA_Para>(
@@ -598,7 +598,7 @@ CFX_PointF CalculatePositionedContainerPos(CXFA_Node* pNode,
   int32_t nRotate =
       XFA_MapRotation(pNode->JSObject()->GetInteger(XFA_Attribute::Rotate)) /
       90;
-  int32_t nAbsoluteAnchorType = nNextPos[nRotate][nAnchorType];
+  const int32_t nAbsoluteAnchorType = nNextPos[nRotate][nAnchorType];
   switch (nAbsoluteAnchorType / 3) {
     case 1:
       pos.y -= size.height / 2;
@@ -682,7 +682,7 @@ float CXFA_ContentLayoutProcessor::FindSplitPos(float fProposedSplitPos) {
   DCHECK(m_pLayoutItem);
   auto value = GetFormNode()->JSObject()->TryEnum(XFA_Attribute::Layout, true);
   XFA_AttributeValue eLayout = value.value_or(XFA_AttributeValue::Position);
-  bool bCalculateMargin = eLayout != XFA_AttributeValue::Position;
+  const bool bCalculateMargin = eLayout != XFA_AttributeValue::Position;
   while (fProposedSplitPos > kXFALayoutPrecision) {
     bool bAppChange = false;
     if (!FindLayoutItemSplitPos(m_pLayoutItem.Get(), 0, &fProposedSplitPos,
@@ -700,7 +700,8 @@ void CXFA_ContentLayoutProcessor::SplitLayoutItem(
   float fCurTopMargin = 0;
   float fCurBottomMargin = 0;
   auto value = GetFormNode()->JSObject()->TryEnum(XFA_Attribute::Layout, true);
-  XFA_AttributeValue eLayout = value.value_or(XFA_AttributeValue::Position);
+  const XFA_AttributeValue eLayout =
+      value.value_or(XFA_AttributeValue::Position);
   bool bCalculateMargin = true;
   if (eLayout == XFA_AttributeValue::Position)
     bCalculateMargin = false;
@@ -808,7 +809,7 @@ void CXFA_ContentLayoutProcessor::SplitLayoutItem(
       continue;
     }
 
-    float fOldHeight = pSecondLayoutItem->m_sSize.height;
+    const float fOldHeight = pSecondLayoutItem->m_sSize.height;
     SplitLayoutItem(
         pChildItem, pSecondLayoutItem,
         fSplitPos - fCurTopMargin - fCurBottomMargin - pChildItem->m_sPos.y);
@@ -1054,8 +1055,8 @@ void CXFA_ContentLayoutProcessor::DoLayoutPositionedContainer(
 
   m_pLayoutItem = CreateContentLayoutItem(GetFormNode());
   auto value = GetFormNode()->JSObject()->TryEnum(XFA_Attribute::Layout, true);
-  bool bIgnoreXY = value.value_or(XFA_AttributeValue::Position) !=
-                   XFA_AttributeValue::Position;
+  const bool bIgnoreXY = value.value_or(XFA_AttributeValue::Position) !=
+                         XFA_AttributeValue::Position;
   bool bContainerWidthAutoSize = true;
   bool bContainerHeightAutoSize = true;
   CFX_SizeF containerSize = CalculateContainerSpecifiedSize(
@@ -1116,7 +1117,7 @@ void CXFA_ContentLayoutProcessor::DoLayoutPositionedContainer(
 
     pProcessor->SetCurrentComponentPos(absolutePos);
     if (bContainerWidthAutoSize) {
-      float fChildSuppliedWidth = absolutePos.x + size.width;
+      const float fChildSuppliedWidth = absolutePos.x + size.width;
       if (bChangeParentSize) {
         fContentCalculatedWidth =
             std::max(fContentCalculatedWidth, fChildSuppliedWidth);
@@ -1129,7 +1130,7 @@ void CXFA_ContentLayoutProcessor::DoLayoutPositionedContainer(
     }
 
     if (bContainerHeightAutoSize) {
-      float fChildSuppliedHeight = absolutePos.y + size.height;
+      const float fChildSuppliedHeight = absolutePos.y + size.height;
       if (bChangeParentSize) {
         fContentCalculatedHeight =
             std::max(fContentCalculatedHeight, fChildSuppliedHeight);
@@ -1387,7 +1388,7 @@ bool CXFA_ContentLayoutProcessor::IsAddNewRowForTrailer(
   if (!pTrailerItem)
     return false;
 
-  float fWidth = pTrailerItem->m_sSize.width;
+  const float fWidth = pTrailerItem->m_sSize.width;
   XFA_AttributeValue eLayout =
       GetFormNode()->JSObject()->GetEnum(XFA_Attribute::Layout);
   return eLayout == XFA_AttributeValue::Tb || m_fWidthLimit <= fWidth;
@@ -1548,7 +1549,7 @@ CXFA_ContentLayoutProcessor::DoLayoutFlowedContainer(
   float fContentWidthLimit =
       bContainerWidthAutoSize ? FLT_MAX
                               : container_size.width - inset.left - inset.right;
-  float fAvailHeight = fHeightLimit - inset.top - inset.bottom;
+  const float fAvailHeight = fHeightLimit - inset.top - inset.bottom;
   if (fAvailHeight < 0)
     m_bHasAvailHeight = false;
 
@@ -1698,7 +1699,7 @@ CXFA_ContentLayoutProcessor::DoLayoutFlowedContainer(
 
           CXFA_Node* pLeaderNode = break_data.value().pLeader;
           CXFA_Node* pTrailerNode = break_data.value().pTrailer;
-          bool bCreatePage = break_data.value().bCreatePage;
+          const bool bCreatePage = break_data.value().bCreatePage;
           if (JudgeLeaderOrTrailerForOccur(pTrailerNode)) {
             auto* pTempProcessor =
                 cppgc::MakeGarbageCollected<CXFA_ContentLayoutProcessor>(
@@ -2074,7 +2075,7 @@ void CXFA_ContentLayoutProcessor::DoLayoutField() {
   CFX_SizeF size(-1, -1);
   pNotify->StartFieldDrawLayout(GetFormNode(), &size.width, &size.height);
 
-  int32_t nRotate = XFA_MapRotation(
+  const int32_t nRotate = XFA_MapRotation(
       GetFormNode()->JSObject()->GetInteger(XFA_Attribute::Rotate));
   if (nRotate == 90 || nRotate == 270)
     std::swap(size.width, size.height);
@@ -2101,7 +2102,7 @@ CXFA_ContentLayoutProcessor::DoLayoutInternal(bool bUseBreakControl,
     case XFA_Element::SubformSet: {
       bool bRootForceTb = false;
       CXFA_Node* pLayoutNode = GetSubformSetParent(GetFormNode());
-      XFA_AttributeValue eLayoutStrategy =
+      const XFA_AttributeValue eLayoutStrategy =
           GetLayout(pLayoutNode, &bRootForceTb);
       switch (eLayoutStrategy) {
         case XFA_AttributeValue::Tb:
@@ -2162,11 +2163,11 @@ bool CXFA_ContentLayoutProcessor::JudgeLeaderOrTrailerForOccur(
   if (!pOccur)
     return false;
 
-  int32_t iMax = pOccur->GetMax();
+  const int32_t iMax = pOccur->GetMax();
   if (iMax < 0)
     return true;
 
-  int32_t iCount = m_PendingNodesCount[pTemplate];
+  const int32_t iCount = m_PendingNodesCount[pTemplate];
   if (iCount >= iMax)
     return false;
 
@@ -2195,7 +2196,7 @@ void CXFA_ContentLayoutProcessor::AddTrailerBeforeSplit(
   if (!pTrailerLayoutItem)
     return;
 
-  float fHeight = pTrailerLayoutItem->m_sSize.height;
+  const float fHeight = pTrailerLayoutItem->m_sSize.height;
   if (bUseInherited) {
     float fNewSplitPos = 0;
     if (fSplitPos - fHeight > kXFALayoutPrecision)
@@ -2265,7 +2266,7 @@ void CXFA_ContentLayoutProcessor::AddLeaderAfterSplit(
         XFA_Attribute::RightInset, XFA_Unit::Pt);
   }
 
-  float fHeight = pLeaderLayoutItem->m_sSize.height;
+  const float fHeight = pLeaderLayoutItem->m_sSize.height;
   for (CXFA_LayoutItem* pIter = m_pLayoutItem->GetFirstChild(); pIter;
        pIter = pIter->GetNextSibling()) {
     CXFA_ContentLayoutItem* pContentItem = pIter->AsContentLayoutItem();
@@ -2354,7 +2355,7 @@ CXFA_ContentLayoutProcessor::InsertFlowedItem(
     bool* bForceEndPage,
     Context* pLayoutContext,
     bool bNewRow) {
-  bool bTakeSpace = pProcessor->GetFormNode()->PresenceRequiresSpace();
+  const bool bTakeSpace = pProcessor->GetFormNode()->PresenceRequiresSpace();
   uint8_t uHAlign = HAlignEnumToInt(
       m_pCurChildNode->JSObject()->GetEnum(XFA_Attribute::HAlign));
   if (bContainerWidthAutoSize)
@@ -2370,13 +2371,14 @@ CXFA_ContentLayoutProcessor::InsertFlowedItem(
   *uCurHAlignState = uHAlign;
   bool bIsOwnSplit =
       pProcessor->GetFormNode()->GetIntact() == XFA_AttributeValue::None;
-  bool bUseRealHeight = bTakeSpace && bContainerHeightAutoSize && bIsOwnSplit &&
-                        pProcessor->GetFormNode()->GetParent()->GetIntact() ==
-                            XFA_AttributeValue::None;
+  const bool bUseRealHeight =
+      bTakeSpace && bContainerHeightAutoSize && bIsOwnSplit &&
+      pProcessor->GetFormNode()->GetParent()->GetIntact() ==
+          XFA_AttributeValue::None;
   bool bIsTransHeight = bTakeSpace;
   if (bIsTransHeight && !bIsOwnSplit) {
     bool bRootForceTb = false;
-    XFA_AttributeValue eLayoutStrategy =
+    const XFA_AttributeValue eLayoutStrategy =
         GetLayout(pProcessor->GetFormNode(), &bRootForceTb);
     if (eLayoutStrategy == XFA_AttributeValue::Lr_tb ||
         eLayoutStrategy == XFA_AttributeValue::Rl_tb) {
@@ -2541,7 +2543,8 @@ CXFA_ContentLayoutProcessor::InsertFlowedItem(
   }
 
   *bForceEndPage = true;
-  float fSplitPos = pProcessor->FindSplitPos(fAvailHeight - *fContentCurRowY);
+  const float fSplitPos =
+      pProcessor->FindSplitPos(fAvailHeight - *fContentCurRowY);
   if (fSplitPos > kXFALayoutPrecision) {
     XFA_AttributeValue eLayout =
         pProcessor->GetFormNode()->JSObject()->GetEnum(XFA_Attribute::Layout);
@@ -2845,8 +2848,8 @@ CFX_SizeF CXFA_ContentLayoutProcessor::CalculateLayoutItemSize(
     if (!pLayout || !pLayout->GetFormNode()->PresenceRequiresSpace())
       continue;
 
-    float fWidth = pLayout->m_sPos.x + pLayout->m_sSize.width;
-    float fHeight = pLayout->m_sPos.y + pLayout->m_sSize.height;
+    const float fWidth = pLayout->m_sPos.x + pLayout->m_sSize.width;
+    const float fHeight = pLayout->m_sPos.y + pLayout->m_sSize.height;
     size.width = std::max(size.width, fWidth);
     size.height = std::max(size.height, fHeight);
   }

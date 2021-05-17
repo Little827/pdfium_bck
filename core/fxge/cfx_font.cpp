@@ -370,7 +370,7 @@ int CFX_Font::GetGlyphWidth(uint32_t glyph_index) {
   if (err)
     return 0;
 
-  int horiAdvance = FXFT_Get_Glyph_HoriAdvance(m_Face->GetRec());
+  const int horiAdvance = FXFT_Get_Glyph_HoriAdvance(m_Face->GetRec());
   if (horiAdvance < kThousandthMinInt || horiAdvance > kThousandthMaxInt)
     return 0;
 
@@ -398,7 +398,7 @@ int CFX_Font::GetAscent() const {
   if (!m_Face)
     return 0;
 
-  int ascender = FXFT_Get_Face_Ascender(m_Face->GetRec());
+  const int ascender = FXFT_Get_Face_Ascender(m_Face->GetRec());
   if (ascender < kThousandthMinInt || ascender > kThousandthMaxInt)
     return 0;
 
@@ -409,7 +409,7 @@ int CFX_Font::GetDescent() const {
   if (!m_Face)
     return 0;
 
-  int descender = FXFT_Get_Face_Descender(m_Face->GetRec());
+  const int descender = FXFT_Get_Face_Descender(m_Face->GetRec());
   if (descender < kThousandthMinInt || descender > kThousandthMaxInt)
     return 0;
 
@@ -437,8 +437,8 @@ bool CFX_Font::GetGlyphBBox(uint32_t glyph_index, FX_RECT* pBBox) {
       return false;
 
     FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_PIXELS, &cbox);
-    int pixel_size_x = m_Face->GetRec()->size->metrics.x_ppem;
-    int pixel_size_y = m_Face->GetRec()->size->metrics.y_ppem;
+    const int pixel_size_x = m_Face->GetRec()->size->metrics.x_ppem;
+    const int pixel_size_y = m_Face->GetRec()->size->metrics.y_ppem;
     if (pixel_size_x == 0 || pixel_size_y == 0) {
       pBBox->left = cbox.xMin;
       pBBox->right = cbox.xMax;
@@ -463,7 +463,7 @@ bool CFX_Font::GetGlyphBBox(uint32_t glyph_index, FX_RECT* pBBox) {
                     FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
     return false;
   }
-  int em = FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
+  const int em = FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
   if (em == 0) {
     pBBox->left = FXFT_Get_Glyph_HoriBearingX(m_Face->GetRec());
     pBBox->bottom = FXFT_Get_Glyph_HoriBearingY(m_Face->GetRec());
@@ -566,7 +566,7 @@ bool CFX_Font::GetBBox(FX_RECT* pBBox) {
   if (!m_Face)
     return false;
 
-  int em = FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
+  const int em = FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
   if (em == 0) {
     pBBox->left = FXFT_Get_Face_xMin(m_Face->GetRec());
     pBBox->bottom = FXFT_Get_Face_yMax(m_Face->GetRec());
@@ -609,26 +609,29 @@ void CFX_Font::AdjustMMParams(int glyph_index,
   if (dest_width == 0) {
     coords[1] = FXFT_Get_MM_Axis_Def(FXFT_Get_MM_Axis(pMasters, 1)) / 65536;
   } else {
-    int min_param = FXFT_Get_MM_Axis_Min(FXFT_Get_MM_Axis(pMasters, 1)) / 65536;
-    int max_param = FXFT_Get_MM_Axis_Max(FXFT_Get_MM_Axis(pMasters, 1)) / 65536;
+    const int min_param =
+        FXFT_Get_MM_Axis_Min(FXFT_Get_MM_Axis(pMasters, 1)) / 65536;
+    const int max_param =
+        FXFT_Get_MM_Axis_Max(FXFT_Get_MM_Axis(pMasters, 1)) / 65536;
     coords[1] = min_param;
     FT_Set_MM_Design_Coordinates(m_Face->GetRec(), 2, coords);
     FT_Load_Glyph(m_Face->GetRec(), glyph_index,
                   FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
-    int min_width = FXFT_Get_Glyph_HoriAdvance(m_Face->GetRec()) * 1000 /
-                    FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
+    const int min_width = FXFT_Get_Glyph_HoriAdvance(m_Face->GetRec()) * 1000 /
+                          FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
     coords[1] = max_param;
     FT_Set_MM_Design_Coordinates(m_Face->GetRec(), 2, coords);
     FT_Load_Glyph(m_Face->GetRec(), glyph_index,
                   FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
-    int max_width = FXFT_Get_Glyph_HoriAdvance(m_Face->GetRec()) * 1000 /
-                    FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
+    const int max_width = FXFT_Get_Glyph_HoriAdvance(m_Face->GetRec()) * 1000 /
+                          FXFT_Get_Face_UnitsPerEM(m_Face->GetRec());
     if (max_width == min_width) {
       FXFT_Free(m_Face->GetRec(), pMasters);
       return;
     }
-    int param = min_param + (max_param - min_param) * (dest_width - min_width) /
-                                (max_width - min_width);
+    const int param = min_param + (max_param - min_param) *
+                                      (dest_width - min_width) /
+                                      (max_width - min_width);
     coords[1] = param;
   }
   FXFT_Free(m_Face->GetRec(), pMasters);
@@ -645,7 +648,7 @@ std::unique_ptr<CFX_PathData> CFX_Font::LoadGlyphPathImpl(
   FT_Matrix ft_matrix = {65536, 0, 0, 65536};
   if (m_pSubstFont) {
     if (m_pSubstFont->m_ItalicAngle) {
-      int skew = GetSkewFromAngle(m_pSubstFont->m_ItalicAngle);
+      const int skew = GetSkewFromAngle(m_pSubstFont->m_ItalicAngle);
       if (m_bVertical)
         ft_matrix.yx += ft_matrix.yy * skew / 100;
       else
@@ -663,8 +666,8 @@ std::unique_ptr<CFX_PathData> CFX_Font::LoadGlyphPathImpl(
     return nullptr;
   if (m_pSubstFont && !m_pSubstFont->m_bFlagMM &&
       m_pSubstFont->m_Weight > 400) {
-    uint32_t index = std::min<uint32_t>((m_pSubstFont->m_Weight - 400) / 10,
-                                        kWeightPowArraySize - 1);
+    const uint32_t index = std::min<uint32_t>(
+        (m_pSubstFont->m_Weight - 400) / 10, kWeightPowArraySize - 1);
     int level;
     if (m_pSubstFont->m_Charset == FX_CHARSET_ShiftJIS)
       level = kWeightPowShiftJis[index] * 65536 / 36655;

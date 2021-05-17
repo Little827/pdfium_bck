@@ -91,6 +91,6 @@ int32_t CBC_TextEncoder::EncodeChar(wchar_t c, WideString* sb) {
 
   *sb += (wchar_t)'\1';
   *sb += (wchar_t)0x001e;
-  int32_t encode_result = EncodeChar(c - 128, sb);
+  const int32_t encode_result = EncodeChar(c - 128, sb);
   return encode_result > 0 ? encode_result + 2 : 0;
 }

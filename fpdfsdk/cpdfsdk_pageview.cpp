@@ -346,7 +346,8 @@ bool CPDFSDK_PageView::OnRButtonDown(uint32_t nFlag, const CFX_PointF& point) {
 
   CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
       m_pFormFillEnv->GetAnnotHandlerMgr();
-  bool ok = pAnnotHandlerMgr->Annot_OnRButtonDown(this, &pAnnot, nFlag, point);
+  const bool ok =
+      pAnnotHandlerMgr->Annot_OnRButtonDown(this, &pAnnot, nFlag, point);
   if (!pAnnot)
     return false;
 
@@ -363,7 +364,8 @@ bool CPDFSDK_PageView::OnRButtonUp(uint32_t nFlag, const CFX_PointF& point) {
 
   CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
       m_pFormFillEnv->GetAnnotHandlerMgr();
-  bool ok = pAnnotHandlerMgr->Annot_OnRButtonUp(this, &pAnnot, nFlag, point);
+  const bool ok =
+      pAnnotHandlerMgr->Annot_OnRButtonUp(this, &pAnnot, nFlag, point);
   if (!pAnnot)
     return false;
 
@@ -518,7 +520,7 @@ void CPDFSDK_PageView::LoadFXAnnots() {
 
   CPDF_Page* pPage = GetPDFPage();
   DCHECK(pPage);
-  bool bUpdateAP = CPDF_InteractiveForm::IsUpdateAPEnabled();
+  const bool bUpdateAP = CPDF_InteractiveForm::IsUpdateAPEnabled();
   // Disable the default AP construction.
   CPDF_InteractiveForm::SetUpdateAP(false);
   m_pAnnotList = std::make_unique<CPDF_AnnotList>(pPage);

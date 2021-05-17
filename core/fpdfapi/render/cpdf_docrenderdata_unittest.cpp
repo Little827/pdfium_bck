@@ -88,7 +88,7 @@ RetainPtr<CPDF_Stream> CreateType0FunctionStream() {
   func_dict->SetNewFor<CPDF_Number>("BitsPerSample", 8);
 
   static const char content[] = "1234";
-  size_t len = pdfium::size(content);
+  const size_t len = pdfium::size(content);
   std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, len));
   memcpy(buf.get(), content, len);
   return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), len,
@@ -130,7 +130,7 @@ RetainPtr<CPDF_Stream> CreateType4FunctionStream() {
   range_array->AppendNew<CPDF_Number>(1);
 
   static const char content[] = "{ 360 mul sin 2 div }";
-  size_t len = pdfium::size(content);
+  const size_t len = pdfium::size(content);
   std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, len));
   memcpy(buf.get(), content, len);
   return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), len,
@@ -150,7 +150,7 @@ RetainPtr<CPDF_Stream> CreateBadType4FunctionStream() {
   range_array->AppendNew<CPDF_Number>(1);
 
   static const char content[] = "garbage";
-  size_t len = pdfium::size(content);
+  const size_t len = pdfium::size(content);
   std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, len));
   memcpy(buf.get(), content, len);
   return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), len,

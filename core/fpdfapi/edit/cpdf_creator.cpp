@@ -64,7 +64,7 @@ CFX_FileBufferArchive::~CFX_FileBufferArchive() {
 }
 
 bool CFX_FileBufferArchive::Flush() {
-  size_t nRemaining = current_length_;
+  const size_t nRemaining = current_length_;
   current_length_ = 0;
   if (!backing_file_)
     return false;
@@ -80,7 +80,8 @@ bool CFX_FileBufferArchive::WriteBlock(const void* pBuf, size_t size) {
   const uint8_t* buffer = reinterpret_cast<const uint8_t*>(pBuf);
   size_t temp_size = size;
   while (temp_size) {
-    size_t buf_size = std::min(kArchiveBufferSize - current_length_, temp_size);
+    const size_t buf_size =
+        std::min(kArchiveBufferSize - current_length_, temp_size);
     memcpy(buffer_.data() + current_length_, buffer, buf_size);
 
     current_length_ += buf_size;
@@ -168,7 +169,7 @@ bool CPDF_Creator::WriteOldIndirectObject(uint32_t objnum) {
 
   m_ObjectOffsets[objnum] = m_Archive->CurrentOffset();
 
-  bool bExistInMap = !!m_pDocument->GetIndirectObject(objnum);
+  const bool bExistInMap = !!m_pDocument->GetIndirectObject(objnum);
   CPDF_Object* pObj = m_pDocument->GetOrParseIndirectObject(objnum);
   if (!pObj) {
     m_ObjectOffsets.erase(objnum);
@@ -182,7 +183,7 @@ bool CPDF_Creator::WriteOldIndirectObject(uint32_t objnum) {
 }
 
 bool CPDF_Creator::WriteOldObjs() {
-  uint32_t nLastObjNum = m_pParser->GetLastObjNum();
+  const uint32_t nLastObjNum = m_pParser->GetLastObjNum();
   if (!m_pParser->IsValidObjectNumber(nLastObjNum))
     return true;
 
@@ -195,7 +196,7 @@ bool CPDF_Creator::WriteOldObjs() {
 
 bool CPDF_Creator::WriteNewObjs() {
   for (size_t i = m_CurObjNum; i < m_NewObjNumArray.size(); ++i) {
-    uint32_t objnum = m_NewObjNumArray[i];
+    const uint32_t objnum = m_NewObjNumArray[i];
     CPDF_Object* pObj = m_pDocument->GetIndirectObject(objnum);
     if (!pObj)
       continue;
@@ -333,7 +334,7 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage3() {
   DCHECK(m_iStage >= Stage::kInitWriteXRefs80 ||
          m_iStage < Stage::kWriteTrailerAndFinish90);
 
-  uint32_t dwLastObjNum = m_dwLastObjNum;
+  const uint32_t dwLastObjNum = m_dwLastObjNum;
   if (m_iStage == Stage::kInitWriteXRefs80) {
     m_XrefStart = m_Archive->CurrentOffset();
     if (!m_IsIncremental || !m_pParser->IsXRefStream()) {
@@ -393,7 +394,7 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage3() {
   }
   if (m_iStage == Stage::kWriteXrefsIncremental82) {
     ByteString str;
-    uint32_t iCount = pdfium::CollectionSize<uint32_t>(m_NewObjNumArray);
+    const uint32_t iCount = pdfium::CollectionSize<uint32_t>(m_NewObjNumArray);
     uint32_t i = m_CurObjNum;
     while (i < iCount) {
       size_t j = i;
@@ -401,7 +402,7 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage3() {
       while (j < iCount) {
         if (++j == iCount)
           break;
-        uint32_t dwCurrent = m_NewObjNumArray[j];
+        const uint32_t dwCurrent = m_NewObjNumArray[j];
         if (dwCurrent - objnum > 1)
           break;
         objnum = dwCurrent;
@@ -430,7 +431,7 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage3() {
 CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage4() {
   DCHECK(m_iStage >= Stage::kWriteTrailerAndFinish90);
 
-  bool bXRefStream = m_IsIncremental && m_pParser->IsXRefStream();
+  const bool bXRefStream = m_IsIncremental && m_pParser->IsXRefStream();
   if (!bXRefStream) {
     if (!m_Archive->WriteString("trailer\r\n<<"))
       return Stage::kInvalid;
@@ -537,7 +538,7 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage4() {
           return Stage::kInvalid;
       }
     } else {
-      size_t count = m_NewObjNumArray.size();
+      const size_t count = m_NewObjNumArray.size();
       size_t i = 0;
       for (i = 0; i < count; i++) {
         if (!m_Archive->WriteDWord(m_NewObjNumArray[i]) ||
@@ -616,7 +617,7 @@ void CPDF_Creator::InitID() {
   m_pIDArray->Append(m_pIDArray->GetObjectAt(0)->Clone());
   if (m_pEncryptDict) {
     DCHECK(m_pParser);
-    int revision = m_pEncryptDict->GetIntegerFor("R");
+    const int revision = m_pEncryptDict->GetIntegerFor("R");
     if ((revision == 2 || revision == 3) &&
         m_pEncryptDict->GetStringFor("Filter") == "Standard") {
       m_pNewEncryptDict = ToDictionary(m_pEncryptDict->Clone());

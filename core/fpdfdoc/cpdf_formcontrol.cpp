@@ -96,8 +96,8 @@ WideString CPDF_FormControl::GetExportValue() const {
 bool CPDF_FormControl::IsChecked() const {
   DCHECK(GetType() == CPDF_FormField::kCheckBox ||
          GetType() == CPDF_FormField::kRadioButton);
-  ByteString csOn = GetOnStateName();
-  ByteString csAS = m_pWidgetDict->GetStringFor("AS");
+  const ByteString csOn = GetOnStateName();
+  const ByteString csAS = m_pWidgetDict->GetStringFor("AS");
   return csAS == csOn;
 }
 
@@ -108,15 +108,15 @@ bool CPDF_FormControl::IsDefaultChecked() const {
   if (!pDV)
     return false;
 
-  ByteString csDV = pDV->GetString();
-  ByteString csOn = GetOnStateName();
+  const ByteString csDV = pDV->GetString();
+  const ByteString csOn = GetOnStateName();
   return (csDV == csOn);
 }
 
 void CPDF_FormControl::CheckControl(bool bChecked) {
   DCHECK(GetType() == CPDF_FormField::kCheckBox ||
          GetType() == CPDF_FormField::kRadioButton);
-  ByteString csOldAS = m_pWidgetDict->GetStringFor("AS", "Off");
+  const ByteString csOldAS = m_pWidgetDict->GetStringFor("AS", "Off");
   ByteString csAS = "Off";
   if (bChecked)
     csAS = GetOnStateName();
@@ -127,7 +127,7 @@ void CPDF_FormControl::CheckControl(bool bChecked) {
 
 CPDF_FormControl::HighlightingMode CPDF_FormControl::GetHighlightingMode()
     const {
-  ByteString csH = m_pWidgetDict->GetStringFor("H", "I");
+  const ByteString csH = m_pWidgetDict->GetStringFor("H", "I");
   for (size_t i = 0; i < pdfium::size(kHighlightModes); ++i) {
     if (csH == kHighlightModes[i])
       return static_cast<HighlightingMode>(i);

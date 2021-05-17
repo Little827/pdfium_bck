@@ -30,8 +30,8 @@ WideString CPDF_Bookmark::GetTitle() const {
   if (!pString)
     return WideString();
 
-  WideString title = pString->GetUnicodeText();
-  int len = title.GetLength();
+  const WideString title = pString->GetUnicodeText();
+  const int len = title.GetLength();
   if (!len)
     return WideString();
 

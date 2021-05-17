@@ -229,7 +229,7 @@ std::pair<int32_t, RetainPtr<CFGAS_GEFont>> CFGAS_GEFont::GetGlyphIndexAndFont(
   if (!pFontUSB)
     return {0xFFFF, nullptr};
 
-  uint16_t wBitField = pFontUSB->wBitField;
+  const uint16_t wBitField = pFontUSB->wBitField;
   if (wBitField >= 128)
     return {0xFFFF, nullptr};
 
