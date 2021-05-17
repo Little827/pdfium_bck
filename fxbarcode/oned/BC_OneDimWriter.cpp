@@ -43,7 +43,7 @@ bool CBC_OneDimWriter::HasValidContentSize(WideStringView contents) {
   // be sufficient for most use cases.
   static constexpr size_t kMaxInputLengthBytes = 8192;
 
-  size_t size = contents.GetLength();
+  const size_t size = contents.GetLength();
   return size > 0 && size <= kMaxInputLengthBytes;
 }
 
@@ -129,9 +129,9 @@ void CBC_OneDimWriter::CalcTextInfo(const ByteString& text,
   float charWidth = 0;
   for (size_t i = 0; i < length; ++i) {
     charcodes[i] = encoding->CharCodeFromUnicode(text[i]);
-    int32_t glyph_code = encoding->GlyphFromCharCode(charcodes[i]);
-    int glyph_value = cFont->GetGlyphWidth(glyph_code);
-    float temp = glyph_value * fontSize / 1000.0;
+    const int32_t glyph_code = encoding->GlyphFromCharCode(charcodes[i]);
+    const int glyph_value = cFont->GetGlyphWidth(glyph_code);
+    const float temp = glyph_value * fontSize / 1000.0;
     charWidth += temp;
   }
   charsLen = charWidth;
@@ -140,8 +140,9 @@ void CBC_OneDimWriter::CalcTextInfo(const ByteString& text,
     leftPositon = 0;
   }
   float penX = 0.0;
-  float penY = (float)abs(cFont->GetDescent()) * (float)fontSize / 1000.0f;
-  float left = leftPositon;
+  const float penY =
+      (float)abs(cFont->GetDescent()) * (float)fontSize / 1000.0f;
+  const float left = leftPositon;
   float top = 0.0;
   charPos[0].m_Origin = CFX_PointF(penX + left, penY + top);
   charPos[0].m_GlyphIndex = encoding->GlyphFromCharCode(charcodes[0]);
@@ -169,8 +170,8 @@ void CBC_OneDimWriter::ShowDeviceChars(CFX_RenderDevice* device,
                                        float locX,
                                        float locY,
                                        int32_t barWidth) {
-  int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
-  int32_t iTextHeight = iFontSize + 1;
+  const int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
+  const int32_t iTextHeight = iFontSize + 1;
   CFX_FloatRect rect((float)locX, (float)locY, (float)(locX + geWidth),
                      (float)(locY + iTextHeight));
   if (geWidth != m_Width) {
@@ -205,8 +206,8 @@ bool CBC_OneDimWriter::ShowChars(WideStringView contents,
              m_locTextLoc == BC_TEXT_LOC_BELOW) {
     geWidth = (float)barWidth;
   }
-  int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
-  int32_t iTextHeight = iFontSize + 1;
+  const int32_t iFontSize = static_cast<int32_t>(fabs(m_fFontSize));
+  const int32_t iTextHeight = iFontSize + 1;
   CalcTextInfo(str, charpos.data(), m_pFont.Get(), geWidth, iFontSize,
                charsLen);
   if (charsLen < 1)
@@ -308,7 +309,7 @@ bool CBC_OneDimWriter::RenderResult(WideStringView contents,
 
 void CBC_OneDimWriter::RenderVerticalBars(int32_t outputX, int32_t width) {
   for (int i = 0; i < width; ++i) {
-    float x = outputX + i;
+    const float x = outputX + i;
     m_output.emplace_back();
     m_output.back().AppendRect(x, 0.0f, x + 1, 1.0f);
   }

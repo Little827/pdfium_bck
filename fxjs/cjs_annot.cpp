@@ -54,7 +54,7 @@ CJS_Result CJS_Annot::get_hidden(CJS_Runtime* pRuntime) {
 CJS_Result CJS_Annot::set_hidden(CJS_Runtime* pRuntime,
                                  v8::Local<v8::Value> vp) {
   // May invalidate m_pAnnot.
-  bool bHidden = pRuntime->ToBoolean(vp);
+  const bool bHidden = pRuntime->ToBoolean(vp);
 
   CPDFSDK_BAAnnot* pBAAnnot = ToBAAnnot(m_pAnnot.Get());
   if (!pBAAnnot)

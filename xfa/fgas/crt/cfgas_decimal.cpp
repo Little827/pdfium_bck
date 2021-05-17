@@ -266,9 +266,9 @@ CFGAS_Decimal::CFGAS_Decimal(int32_t val) {
 
 CFGAS_Decimal::CFGAS_Decimal(float val, uint8_t scale) {
   float newval = fabs(val);
-  float divisor = powf(2.0, 64.0f);
-  uint64_t bottom64 = static_cast<uint64_t>(fmodf(newval, divisor));
-  uint64_t top64 = static_cast<uint64_t>(newval / divisor);
+  const float divisor = powf(2.0, 64.0f);
+  const uint64_t bottom64 = static_cast<uint64_t>(fmodf(newval, divisor));
+  const uint64_t top64 = static_cast<uint64_t>(newval / divisor);
   uint64_t plo = bottom64 & 0xFFFFFFFF;
   uint64_t pmid = bottom64 >> 32;
   uint64_t phi = top64 & 0xFFFFFFFF;
@@ -336,7 +336,7 @@ WideString CFGAS_Decimal::ToWideString() const {
     tmpbuf += decimal_helper_div10(phi, pmid, plo) + '0';
 
   uint8_t outputlen = (uint8_t)tmpbuf.GetLength();
-  uint8_t scale = m_uScale;
+  const uint8_t scale = m_uScale;
   while (scale >= outputlen) {
     tmpbuf += '0';
     outputlen++;
@@ -357,14 +357,15 @@ float CFGAS_Decimal::ToFloat() const {
 }
 
 double CFGAS_Decimal::ToDouble() const {
-  double pow = (double)(1 << 16) * (1 << 16);
-  double base = static_cast<double>(m_uHi) * pow * pow +
-                static_cast<double>(m_uMid) * pow + static_cast<double>(m_uLo);
+  const double pow = (double)(1 << 16) * (1 << 16);
+  const double base = static_cast<double>(m_uHi) * pow * pow +
+                      static_cast<double>(m_uMid) * pow +
+                      static_cast<double>(m_uLo);
   return (m_bNeg ? -1 : 1) * base * powf(10.0f, -m_uScale);
 }
 
 void CFGAS_Decimal::SetScale(uint8_t newscale) {
-  uint8_t oldscale = m_uScale;
+  const uint8_t oldscale = m_uScale;
   if (oldscale == newscale)
     return;
 
@@ -411,7 +412,7 @@ CFGAS_Decimal CFGAS_Decimal::operator*(const CFGAS_Decimal& val) const {
            b[3] = {val.m_uLo, val.m_uMid, val.m_uHi};
   uint64_t c[6];
   decimal_helper_raw_mul(a, 3, b, 3, c, 6);
-  bool neg = m_bNeg ^ val.m_bNeg;
+  const bool neg = m_bNeg ^ val.m_bNeg;
   uint8_t scale = m_uScale + val.m_uScale;
   decimal_helper_shrinkintorange(c, 6, 3, scale);
   return CFGAS_Decimal(static_cast<uint32_t>(c[0]), static_cast<uint32_t>(c[1]),
@@ -422,7 +423,7 @@ CFGAS_Decimal CFGAS_Decimal::operator/(const CFGAS_Decimal& val) const {
   if (!val.IsNotZero())
     return CFGAS_Decimal();
 
-  bool neg = m_bNeg ^ val.m_bNeg;
+  const bool neg = m_bNeg ^ val.m_bNeg;
   uint64_t a[7] = {m_uLo, m_uMid, m_uHi},
            b[3] = {val.m_uLo, val.m_uMid, val.m_uHi}, c[7] = {0};
   uint8_t scale = 0;
@@ -433,7 +434,7 @@ CFGAS_Decimal CFGAS_Decimal::operator/(const CFGAS_Decimal& val) const {
     scale = m_uScale - val.m_uScale;
   }
 
-  uint8_t minscale = scale;
+  const uint8_t minscale = scale;
   if (!IsNotZero())
     return CFGAS_Decimal(0, 0, 0, 0, minscale);
 

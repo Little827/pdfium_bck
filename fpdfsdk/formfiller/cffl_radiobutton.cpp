@@ -94,7 +94,7 @@ void CFFL_RadioButton::SaveData(CPDFSDK_PageView* pPageView) {
   if (!pWnd)
     return;
 
-  bool bNewChecked = pWnd->IsChecked();
+  const bool bNewChecked = pWnd->IsChecked();
   if (bNewChecked) {
     CPDF_FormField* pField = m_pWidget->GetFormField();
     for (int32_t i = 0, sz = pField->CountControls(); i < sz; i++) {

@@ -76,8 +76,8 @@ CFX_FloatRect GetShadingBBox(CPDF_ShadingPattern* pShading,
 
   CFX_FloatRect rect;
   bool bStarted = false;
-  bool bGouraud = type == kFreeFormGouraudTriangleMeshShading ||
-                  type == kLatticeFormGouraudTriangleMeshShading;
+  const bool bGouraud = type == kFreeFormGouraudTriangleMeshShading ||
+                        type == kLatticeFormGouraudTriangleMeshShading;
 
   int point_count = kSingleCoordinatePair;
   if (type == kTensorProductPatchMeshShading)
@@ -974,8 +974,10 @@ void CPDF_StreamContentParser::Handle_RestoreGraphState() {
 }
 
 void CPDF_StreamContentParser::Handle_Rectangle() {
-  float x = GetNumber(3), y = GetNumber(2);
-  float w = GetNumber(1), h = GetNumber(0);
+  const float x = GetNumber(3);
+  const float y = GetNumber(2);
+  const float w = GetNumber(1);
+  const float h = GetNumber(0);
   AddPathRect(x, y, w, h);
 }
 
@@ -1015,12 +1017,12 @@ void CPDF_StreamContentParser::Handle_StrokePath() {
 }
 
 void CPDF_StreamContentParser::Handle_SetColor_Fill() {
-  int nargs = std::min(m_ParamCount, 4U);
+  const int nargs = std::min(m_ParamCount, 4U);
   m_pCurStates->m_ColorState.SetFillColor(nullptr, GetNumbers(nargs));
 }
 
 void CPDF_StreamContentParser::Handle_SetColor_Stroke() {
-  int nargs = std::min(m_ParamCount, 4U);
+  const int nargs = std::min(m_ParamCount, 4U);
   m_pCurStates->m_ColorState.SetStrokeColor(nullptr, GetNumbers(nargs));
 }
 
@@ -1268,7 +1270,7 @@ void CPDF_StreamContentParser::Handle_ShowText_Positioning() {
   if (!pArray)
     return;
 
-  size_t n = pArray->size();
+  const size_t n = pArray->size();
   size_t nsegs = 0;
   for (size_t i = 0; i < n; i++) {
     const CPDF_Object* pDirectObject = pArray->GetDirectObjectAt(i);
@@ -1277,7 +1279,7 @@ void CPDF_StreamContentParser::Handle_ShowText_Positioning() {
   }
   if (nsegs == 0) {
     for (size_t i = 0; i < n; i++) {
-      float fKerning = pArray->GetNumberAt(i);
+      const float fKerning = pArray->GetNumberAt(i);
       if (fKerning != 0)
         m_pCurStates->m_TextPos.x -= GetHorizontalTextSize(fKerning);
     }
@@ -1299,7 +1301,7 @@ void CPDF_StreamContentParser::Handle_ShowText_Positioning() {
       strs[iSegment] = std::move(str);
       kernings[iSegment++] = 0;
     } else {
-      float num = pObj->GetNumber();
+      const float num = pObj->GetNumber();
       if (iSegment == 0)
         fInitKerning += num;
       else
@@ -1488,7 +1490,7 @@ uint32_t CPDF_StreamContentParser::Parse(
 
   // Parsing will be done from |pDataStart|, for at most |size_left| bytes.
   const uint8_t* pDataStart = pData + start_offset;
-  uint32_t size_left = dwSize - start_offset;
+  const uint32_t size_left = dwSize - start_offset;
 
   m_StartParseOffset = start_offset;
 
@@ -1502,14 +1504,15 @@ uint32_t CPDF_StreamContentParser::Parse(
   ScopedSetInsertion<const uint8_t*> scopedInsert(m_ParsedSet.Get(),
                                                   pDataStart);
 
-  uint32_t init_obj_count = m_pObjectHolder->GetPageObjectCount();
+  const uint32_t init_obj_count = m_pObjectHolder->GetPageObjectCount();
   AutoNuller<std::unique_ptr<CPDF_StreamParser>> auto_clearer(&m_pSyntax);
   m_pSyntax = std::make_unique<CPDF_StreamParser>(
       pdfium::make_span(pDataStart, size_left),
       m_pDocument->GetByteStringPool());
 
   while (1) {
-    uint32_t cost = m_pObjectHolder->GetPageObjectCount() - init_obj_count;
+    const uint32_t cost =
+        m_pObjectHolder->GetPageObjectCount() - init_obj_count;
     if (max_cost && cost >= max_cost) {
       break;
     }
@@ -1547,7 +1550,7 @@ void CPDF_StreamContentParser::ParsePathObject() {
         return;
       case CPDF_StreamParser::Keyword: {
         ByteStringView strc = m_pSyntax->GetWord();
-        int len = strc.GetLength();
+        const int len = strc.GetLength();
         if (len == 1) {
           switch (strc[0]) {
             case kPathOperatorSubpath:

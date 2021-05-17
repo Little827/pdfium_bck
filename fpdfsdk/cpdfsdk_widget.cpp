@@ -243,7 +243,7 @@ bool CPDFSDK_Widget::OnXFAAAction(PDFSDK_XFAAActionType eXFAAAT,
     }
   }
 
-  bool ret = pWidget->ProcessEventUnderHandler(&param, pXFAWidgetHandler);
+  const bool ret = pWidget->ProcessEventUnderHandler(&param, pXFAWidgetHandler);
   CXFA_FFDocView* pDocView = pContext->GetXFADocView();
   if (pDocView)
     pDocView->UpdateDocView();
@@ -278,7 +278,7 @@ void CPDFSDK_Widget::Synchronize(bool bSynchronizeElse) {
       node->ClearAllSelections();
 
       for (int i = 0; i < pFormField->CountSelectedItems(); ++i) {
-        int nIndex = pFormField->GetSelectedIndex(i);
+        const int nIndex = pFormField->GetSelectedIndex(i);
         if (nIndex > -1 && nIndex < node->CountChoiceListItems(false))
           node->SetItemState(nIndex, true, false, false, true);
       }
@@ -329,7 +329,7 @@ bool CPDFSDK_Widget::HandleXFAAAction(
   param.m_bKeyDown = data->bKeyDown;
   param.m_bModifier = data->bModifier;
   param.m_wsPrevText = data->sValue;
-  bool ret = hWidget->ProcessEventUnderHandler(&param, pXFAWidgetHandler);
+  const bool ret = hWidget->ProcessEventUnderHandler(&param, pXFAWidgetHandler);
   CXFA_FFDocView* pDocView = pContext->GetXFADocView();
   if (pDocView)
     pDocView->UpdateDocView();
@@ -732,8 +732,8 @@ CFX_FloatRect CPDFSDK_Widget::GetClientRect() const {
 
 CFX_FloatRect CPDFSDK_Widget::GetRotatedRect() const {
   CFX_FloatRect rectAnnot = GetRect();
-  float fWidth = rectAnnot.Width();
-  float fHeight = rectAnnot.Height();
+  const float fWidth = rectAnnot.Width();
+  const float fHeight = rectAnnot.Height();
 
   CPDF_FormControl* pControl = GetFormControl();
   CFX_FloatRect rcPWLWindow;
@@ -756,8 +756,8 @@ CFX_Matrix CPDFSDK_Widget::GetMatrix() const {
   CFX_Matrix mt;
   CPDF_FormControl* pControl = GetFormControl();
   CFX_FloatRect rcAnnot = GetRect();
-  float fWidth = rcAnnot.Width();
-  float fHeight = rcAnnot.Height();
+  const float fWidth = rcAnnot.Width();
+  const float fHeight = rcAnnot.Height();
 
   switch (abs(pControl->GetRotation() % 360)) {
     default:

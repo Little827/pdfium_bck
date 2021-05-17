@@ -24,7 +24,7 @@ IntType FXSYS_StrToInt(const CharType* str) {
     return 0;
 
   // Process the sign.
-  bool neg = *str == '-';
+  const bool neg = *str == '-';
   if (neg || *str == '+')
     str++;
 

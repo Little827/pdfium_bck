@@ -81,13 +81,13 @@ uint32_t FlateOutput(z_stream* context,
                      uint32_t dest_size) {
   context->next_out = dest_buf;
   context->avail_out = dest_size;
-  uint32_t pre_pos = FlateGetPossiblyTruncatedTotalOut(context);
-  int ret = inflate(static_cast<z_stream*>(context), Z_SYNC_FLUSH);
+  const uint32_t pre_pos = FlateGetPossiblyTruncatedTotalOut(context);
+  const int ret = inflate(static_cast<z_stream*>(context), Z_SYNC_FLUSH);
 
-  uint32_t post_pos = FlateGetPossiblyTruncatedTotalOut(context);
+  const uint32_t post_pos = FlateGetPossiblyTruncatedTotalOut(context);
   DCHECK(post_pos >= pre_pos);
 
-  uint32_t written = post_pos - pre_pos;
+  const uint32_t written = post_pos - pre_pos;
   if (written < dest_size)
     memset(dest_buf + written, '\0', dest_size - written);
 
@@ -156,11 +156,11 @@ void CLZWDecoder::AddCode(uint32_t prefix_code, uint8_t append_char) {
 
 void CLZWDecoder::DecodeString(uint32_t code) {
   while (1) {
-    int index = code - 258;
+    const int index = code - 258;
     if (index < 0 || static_cast<uint32_t>(index) >= current_code_)
       break;
 
-    uint32_t data = codes_[index];
+    const uint32_t data = codes_[index];
     if (stack_len_ >= sizeof(decode_stack_))
       return;
 
@@ -198,7 +198,7 @@ bool CLZWDecoder::Decode() {
       break;
 
     int byte_pos = src_bit_pos_ / 8;
-    int bit_pos = src_bit_pos_ % 8;
+    const int bit_pos = src_bit_pos_ % 8;
     uint8_t bit_left = code_len_;
     uint32_t code = 0;
     if (bit_pos) {
@@ -258,7 +258,7 @@ bool CLZWDecoder::Decode() {
     if (!safe_required_size.IsValid())
       return false;
 
-    uint32_t required_size = safe_required_size.ValueOrDie();
+    const uint32_t required_size = safe_required_size.ValueOrDie();
     if (required_size > dest_buf_size_) {
       ExpandDestBuf(required_size - dest_buf_size_);
       if (!dest_buf_)
@@ -279,10 +279,10 @@ bool CLZWDecoder::Decode() {
 }
 
 uint8_t PathPredictor(int a, int b, int c) {
-  int p = a + b - c;
-  int pa = abs(p - a);
-  int pb = abs(p - b);
-  int pc = abs(p - c);
+  const int p = a + b - c;
+  const int pa = abs(p - a);
+  const int pb = abs(p - b);
+  const int pc = abs(p - c);
   if (pa <= pb && pa <= pc)
     return (uint8_t)a;
   if (pb <= pc)
@@ -298,13 +298,13 @@ void PNG_PredictLine(uint8_t* pDestData,
                      int nPixels) {
   const uint32_t row_size = CalculatePitch8(bpc, nColors, nPixels).ValueOrDie();
   const uint32_t BytesPerPixel = (bpc * nColors + 7) / 8;
-  uint8_t tag = pSrcData[0];
+  const uint8_t tag = pSrcData[0];
   if (tag == 0) {
     memmove(pDestData, pSrcData + 1, row_size);
     return;
   }
   for (uint32_t byte = 0; byte < row_size; ++byte) {
-    uint8_t raw_byte = pSrcData[byte + 1];
+    const uint8_t raw_byte = pSrcData[byte + 1];
     switch (tag) {
       case 1: {
         uint8_t left = 0;
@@ -377,7 +377,7 @@ bool PNG_Predictor(int Colors,
   uint8_t* pSrcData = data_buf->get();
   uint8_t* pDestData = dest_buf.get();
   for (int row = 0; row < row_count; row++) {
-    uint8_t tag = pSrcData[0];
+    const uint8_t tag = pSrcData[0];
     byte_cnt++;
     if (tag == 0) {
       int move_size = row_size;
@@ -392,7 +392,7 @@ bool PNG_Predictor(int Colors,
     }
     for (int byte = 0; byte < row_size && byte_cnt < *data_size;
          ++byte, ++byte_cnt) {
-      uint8_t raw_byte = pSrcData[byte + 1];
+      const uint8_t raw_byte = pSrcData[byte + 1];
       switch (tag) {
         case 1: {
           uint8_t left = 0;
@@ -458,13 +458,14 @@ void TIFF_PredictLine(uint8_t* dest_buf,
                       int Colors,
                       int Columns) {
   if (BitsPerComponent == 1) {
-    int row_bits = std::min(BitsPerComponent * Colors * Columns,
-                            pdfium::base::checked_cast<int>(row_size * 8));
+    const int row_bits =
+        std::min(BitsPerComponent * Colors * Columns,
+                 pdfium::base::checked_cast<int>(row_size * 8));
     int index_pre = 0;
     int col_pre = 0;
     for (int i = 1; i < row_bits; i++) {
-      int col = i % 8;
-      int index = i / 8;
+      const int col = i % 8;
+      const int index = i / 8;
       if (((dest_buf[index] >> (7 - col)) & 1) ^
           ((dest_buf[index_pre] >> (7 - col_pre)) & 1)) {
         dest_buf[index] |= 1 << (7 - col);
@@ -476,7 +477,7 @@ void TIFF_PredictLine(uint8_t* dest_buf,
     }
     return;
   }
-  int BytesPerPixel = BitsPerComponent * Colors / 8;
+  const int BytesPerPixel = BitsPerComponent * Colors / 8;
   if (BitsPerComponent == 16) {
     for (uint32_t i = BytesPerPixel; i + 1 < row_size; i += 2) {
       uint16_t pixel =
@@ -540,8 +541,8 @@ void FlateUncompress(pdfium::span<const uint8_t> src_buf,
   {
     std::unique_ptr<uint8_t, FxFreeDeleter> cur_buf = std::move(guess_buf);
     while (1) {
-      uint32_t ret = FlateOutput(context.get(), cur_buf.get(), buf_size);
-      uint32_t avail_buf_size = FlateGetAvailOut(context.get());
+      const uint32_t ret = FlateOutput(context.get(), cur_buf.get(), buf_size);
+      const uint32_t avail_buf_size = FlateGetAvailOut(context.get());
       if (ret != Z_OK || avail_buf_size != 0) {
         last_buf_size = buf_size - avail_buf_size;
         result_tmp_bufs.push_back(std::move(cur_buf));
@@ -574,7 +575,7 @@ void FlateUncompress(pdfium::span<const uint8_t> src_buf,
     if (i == result_tmp_bufs.size() - 1)
       tmp_buf_size = last_buf_size;
 
-    uint32_t cp_size = std::min(tmp_buf_size, remaining);
+    const uint32_t cp_size = std::min(tmp_buf_size, remaining);
     memcpy(result_buf.get() + result_pos, tmp_buf.get(), cp_size);
     result_pos += cp_size;
     remaining -= cp_size;
@@ -745,7 +746,8 @@ void FlatePredictorScanlineDecoder::GetNextLineWithPredictedPitch() {
 
 void FlatePredictorScanlineDecoder::GetNextLineWithoutPredictedPitch() {
   size_t bytes_to_go = m_Pitch;
-  size_t read_leftover = m_LeftOver > bytes_to_go ? bytes_to_go : m_LeftOver;
+  const size_t read_leftover =
+      m_LeftOver > bytes_to_go ? bytes_to_go : m_LeftOver;
   if (read_leftover) {
     memcpy(m_pScanline.get(), &m_PredictBuffer[m_PredictPitch - m_LeftOver],
            read_leftover);

@@ -49,13 +49,13 @@ namespace {
 std::unique_ptr<CBC_CommonByteMatrix> encodeLowLevel(
     CBC_DefaultPlacement* placement,
     const CBC_SymbolInfo* symbolInfo) {
-  int32_t symbolWidth = symbolInfo->GetSymbolDataWidth();
+  const int32_t symbolWidth = symbolInfo->GetSymbolDataWidth();
   DCHECK(symbolWidth);
-  int32_t symbolHeight = symbolInfo->GetSymbolDataHeight();
+  const int32_t symbolHeight = symbolInfo->GetSymbolDataHeight();
   DCHECK(symbolHeight);
-  int32_t width = symbolInfo->GetSymbolWidth();
+  const int32_t width = symbolInfo->GetSymbolWidth();
   DCHECK(width);
-  int32_t height = symbolInfo->GetSymbolHeight();
+  const int32_t height = symbolInfo->GetSymbolHeight();
   DCHECK(height);
 
   auto matrix = std::make_unique<CBC_CommonByteMatrix>(width, height);
@@ -126,9 +126,9 @@ std::vector<uint8_t, FxAllocAllocator<uint8_t>> CBC_DataMatrixWriter::Encode(
   if (codewords.IsEmpty())
     return results;
 
-  int32_t width = pSymbolInfo->GetSymbolDataWidth();
+  const int32_t width = pSymbolInfo->GetSymbolDataWidth();
   DCHECK(width);
-  int32_t height = pSymbolInfo->GetSymbolDataHeight();
+  const int32_t height = pSymbolInfo->GetSymbolDataHeight();
   DCHECK(height);
 
   auto placement =

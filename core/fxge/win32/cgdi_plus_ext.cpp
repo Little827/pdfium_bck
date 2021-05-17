@@ -280,7 +280,7 @@ void OutputImage(Gdiplus::GpGraphics* pGraphics,
                  int dest_top,
                  int dest_width,
                  int dest_height) {
-  int src_width = pSrcRect->Width(), src_height = pSrcRect->Height();
+  const int src_width = pSrcRect->Width(), src_height = pSrcRect->Height();
   const CGdiplusExt& GdiplusExt = GetGdiplusExt();
   if (pBitmap->GetBPP() == 1 && (pSrcRect->left % 8)) {
     FX_RECT new_rect(0, 0, src_width, src_height);
@@ -291,7 +291,7 @@ void OutputImage(Gdiplus::GpGraphics* pGraphics,
                 dest_height);
     return;
   }
-  int src_pitch = pBitmap->GetPitch();
+  const int src_pitch = pBitmap->GetPitch();
   uint8_t* scan0 = pBitmap->GetBuffer() + pSrcRect->top * src_pitch +
                    pBitmap->GetBPP() * pSrcRect->left / 8;
   Gdiplus::GpBitmap* bitmap = nullptr;
@@ -346,11 +346,11 @@ Gdiplus::GpPen* GdipCreatePenImpl(const CFX_GraphStateData* pGraphState,
                                   DWORD argb,
                                   bool bTextMode) {
   const CGdiplusExt& GdiplusExt = GetGdiplusExt();
-  float width = pGraphState->m_LineWidth;
+  const float width = pGraphState->m_LineWidth;
   if (!bTextMode) {
-    float unit = pMatrix
-                     ? 1.0f / ((pMatrix->GetXUnit() + pMatrix->GetYUnit()) / 2)
-                     : 1.0f;
+    const float unit =
+        pMatrix ? 1.0f / ((pMatrix->GetXUnit() + pMatrix->GetYUnit()) / 2)
+                : 1.0f;
     width = std::max(width, unit);
   }
   Gdiplus::GpPen* pPen = nullptr;
@@ -358,7 +358,7 @@ Gdiplus::GpPen* GdipCreatePenImpl(const CFX_GraphStateData* pGraphState,
                            &pPen);
   Gdiplus::LineCap lineCap = Gdiplus::LineCapFlat;
   Gdiplus::DashCap dashCap = Gdiplus::DashCapFlat;
-  bool bDashExtend = false;
+  const bool bDashExtend = false;
   switch (pGraphState->m_LineCap) {
     case CFX_GraphStateData::LineCapButt:
       lineCap = Gdiplus::LineCapFlat;
@@ -393,7 +393,7 @@ Gdiplus::GpPen* GdipCreatePenImpl(const CFX_GraphStateData* pGraphState,
     int nCount = 0;
     float on_leftover = 0, off_leftover = 0;
     for (size_t i = 0; i < pGraphState->m_DashArray.size(); i += 2) {
-      float on_phase = pGraphState->m_DashArray[i];
+      const float on_phase = pGraphState->m_DashArray[i];
       float off_phase;
       if (i == pGraphState->m_DashArray.size() - 1)
         off_phase = on_phase;
@@ -428,7 +428,7 @@ Gdiplus::GpPen* GdipCreatePenImpl(const CFX_GraphStateData* pGraphState,
       }
     }
     CallFunc(GdipSetPenDashArray)(pPen, pDashArray, nCount);
-    float phase = pGraphState->m_DashPhase;
+    const float phase = pGraphState->m_DashPhase;
     if (bDashExtend) {
       if (phase < 0.5f)
         phase = 0;
@@ -448,8 +448,8 @@ Optional<std::pair<size_t, size_t>> IsSmallTriangle(
     const CFX_Matrix* pMatrix) {
   static constexpr size_t kPairs[3][2] = {{1, 2}, {0, 2}, {0, 1}};
   for (size_t i = 0; i < pdfium::size(kPairs); ++i) {
-    size_t pair1 = kPairs[i][0];
-    size_t pair2 = kPairs[i][1];
+    const size_t pair1 = kPairs[i][0];
+    const size_t pair2 = kPairs[i][1];
 
     CFX_PointF p1(points[pair1].X, points[pair1].Y);
     CFX_PointF p2(points[pair2].X, points[pair2].Y);
@@ -459,7 +459,7 @@ Optional<std::pair<size_t, size_t>> IsSmallTriangle(
     }
 
     CFX_PointF diff = p1 - p2;
-    float distance_square = (diff.x * diff.x) + (diff.y * diff.y);
+    const float distance_square = (diff.x * diff.x) + (diff.y * diff.y);
     if (distance_square < 2.25f)
       return std::make_pair(i, pair1);
   }
@@ -503,7 +503,7 @@ class GpStream final : public IStream {
     if (m_ReadPos >= m_InterStream.tellp())
       return HRESULT_FROM_WIN32(ERROR_END_OF_MEDIA);
 
-    size_t bytes_left = m_InterStream.tellp() - m_ReadPos;
+    const size_t bytes_left = m_InterStream.tellp() - m_ReadPos;
     size_t bytes_out =
         std::min(pdfium::base::checked_cast<size_t>(cb), bytes_left);
     memcpy(output, m_InterStream.str().c_str() + m_ReadPos, bytes_out);
@@ -693,9 +693,9 @@ bool CGdiplusExt::DrawPath(HDC hDC,
   std::vector<Gdiplus::PointF> gp_points(points.size());
   std::vector<BYTE> gp_types(points.size());
   int nSubPathes = 0;
-  bool bSubClose = false;
+  const bool bSubClose = false;
   int pos_subclose = 0;
-  bool bSmooth = false;
+  const bool bSmooth = false;
   int startpoint = 0;
   for (size_t i = 0; i < points.size(); ++i) {
     gp_points[i].X = points[i].m_Point.x;

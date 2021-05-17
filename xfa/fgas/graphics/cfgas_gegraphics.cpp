@@ -139,7 +139,7 @@ void CFGAS_GEGraphics::SetLineCap(CFX_GraphStateData::LineCap lineCap) {
 void CFGAS_GEGraphics::SetLineDash(float dashPhase,
                                    pdfium::span<const float> dashArray) {
   DCHECK(!dashArray.empty());
-  float scale = m_info.isActOnDash ? m_info.graphState.m_LineWidth : 1.0;
+  const float scale = m_info.isActOnDash ? m_info.graphState.m_LineWidth : 1.0;
   m_info.graphState.m_DashPhase = dashPhase;
   m_info.graphState.m_DashArray.resize(dashArray.size());
   for (size_t i = 0; i < dashArray.size(); ++i)
@@ -241,8 +241,8 @@ void CFGAS_GEGraphics::FillPathWithPattern(
     const CFX_FillRenderOptions& fill_options,
     const CFX_Matrix& matrix) {
   RetainPtr<CFX_DIBitmap> bitmap = m_renderDevice->GetBitmap();
-  int32_t width = bitmap->GetWidth();
-  int32_t height = bitmap->GetHeight();
+  const int32_t width = bitmap->GetWidth();
+  const int32_t height = bitmap->GetHeight();
   auto bmp = pdfium::MakeRetain<CFX_DIBitmap>();
   bmp->Create(width, height, FXDIB_Format::kArgb);
   m_renderDevice->GetDIBits(bmp, 0, 0);
@@ -275,30 +275,30 @@ void CFGAS_GEGraphics::FillPathWithShading(
     const CFX_FillRenderOptions& fill_options,
     const CFX_Matrix& matrix) {
   RetainPtr<CFX_DIBitmap> bitmap = m_renderDevice->GetBitmap();
-  int32_t width = bitmap->GetWidth();
-  int32_t height = bitmap->GetHeight();
-  float start_x = m_info.fillColor.GetShading()->m_beginPoint.x;
-  float start_y = m_info.fillColor.GetShading()->m_beginPoint.y;
-  float end_x = m_info.fillColor.GetShading()->m_endPoint.x;
-  float end_y = m_info.fillColor.GetShading()->m_endPoint.y;
+  const int32_t width = bitmap->GetWidth();
+  const int32_t height = bitmap->GetHeight();
+  const float start_x = m_info.fillColor.GetShading()->m_beginPoint.x;
+  const float start_y = m_info.fillColor.GetShading()->m_beginPoint.y;
+  const float end_x = m_info.fillColor.GetShading()->m_endPoint.x;
+  const float end_y = m_info.fillColor.GetShading()->m_endPoint.y;
   auto bmp = pdfium::MakeRetain<CFX_DIBitmap>();
   bmp->Create(width, height, FXDIB_Format::kArgb);
   m_renderDevice->GetDIBits(bmp, 0, 0);
-  int32_t pitch = bmp->GetPitch();
+  const int32_t pitch = bmp->GetPitch();
   bool result = false;
   switch (m_info.fillColor.GetShading()->m_type) {
     case FX_SHADING_Axial: {
-      float x_span = end_x - start_x;
-      float y_span = end_y - start_y;
-      float axis_len_square = (x_span * x_span) + (y_span * y_span);
+      const float x_span = end_x - start_x;
+      const float y_span = end_y - start_y;
+      const float axis_len_square = (x_span * x_span) + (y_span * y_span);
       for (int32_t row = 0; row < height; row++) {
         uint32_t* dib_buf =
             reinterpret_cast<uint32_t*>(bmp->GetBuffer() + row * pitch);
         for (int32_t column = 0; column < width; column++) {
           float scale = 0.0f;
           if (axis_len_square) {
-            float y = static_cast<float>(row);
-            float x = static_cast<float>(column);
+            const float y = static_cast<float>(row);
+            const float x = static_cast<float>(column);
             scale = (((x - start_x) * x_span) + ((y - start_y) * y_span)) /
                     axis_len_square;
             if (std::isnan(scale) || scale < 0.0f) {
@@ -311,7 +311,8 @@ void CFGAS_GEGraphics::FillPathWithShading(
               scale = 1.0f;
             }
           }
-          int32_t index = static_cast<int32_t>(scale * (FX_SHADING_Steps - 1));
+          const int32_t index =
+              static_cast<int32_t>(scale * (FX_SHADING_Steps - 1));
           dib_buf[column] = m_info.fillColor.GetShading()->m_argbArray[index];
         }
       }
@@ -319,30 +320,30 @@ void CFGAS_GEGraphics::FillPathWithShading(
       break;
     }
     case FX_SHADING_Radial: {
-      float start_r = m_info.fillColor.GetShading()->m_beginRadius;
-      float end_r = m_info.fillColor.GetShading()->m_endRadius;
-      float a = ((start_x - end_x) * (start_x - end_x)) +
-                ((start_y - end_y) * (start_y - end_y)) -
-                ((start_r - end_r) * (start_r - end_r));
+      const float start_r = m_info.fillColor.GetShading()->m_beginRadius;
+      const float end_r = m_info.fillColor.GetShading()->m_endRadius;
+      const float a = ((start_x - end_x) * (start_x - end_x)) +
+                      ((start_y - end_y) * (start_y - end_y)) -
+                      ((start_r - end_r) * (start_r - end_r));
       for (int32_t row = 0; row < height; row++) {
         uint32_t* dib_buf = (uint32_t*)(bmp->GetBuffer() + row * pitch);
         for (int32_t column = 0; column < width; column++) {
-          float x = (float)(column);
-          float y = (float)(row);
-          float b = -2 * (((x - start_x) * (end_x - start_x)) +
-                          ((y - start_y) * (end_y - start_y)) +
-                          (start_r * (end_r - start_r)));
-          float c = ((x - start_x) * (x - start_x)) +
-                    ((y - start_y) * (y - start_y)) - (start_r * start_r);
+          const float x = (float)(column);
+          const float y = (float)(row);
+          const float b = -2 * (((x - start_x) * (end_x - start_x)) +
+                                ((y - start_y) * (end_y - start_y)) +
+                                (start_r * (end_r - start_r)));
+          const float c = ((x - start_x) * (x - start_x)) +
+                          ((y - start_y) * (y - start_y)) - (start_r * start_r);
           float s;
           if (a == 0) {
             s = -c / b;
           } else {
-            float b2_4ac = (b * b) - 4 * (a * c);
+            const float b2_4ac = (b * b) - 4 * (a * c);
             if (b2_4ac < 0) {
               continue;
             }
-            float root = (sqrt(b2_4ac));
+            const float root = (sqrt(b2_4ac));
             float s1, s2;
             if (a > 0) {
               s1 = (-b - root) / (2 * a);
@@ -370,7 +371,7 @@ void CFGAS_GEGraphics::FillPathWithShading(
               continue;
             s = 1.0f;
           }
-          int index = static_cast<int32_t>(s * (FX_SHADING_Steps - 1));
+          const int index = static_cast<int32_t>(s * (FX_SHADING_Steps - 1));
           dib_buf[column] = m_info.fillColor.GetShading()->m_argbArray[index];
         }
       }

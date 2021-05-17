@@ -206,7 +206,7 @@ int CheckFourByteCodeRange(uint8_t* codes,
                            size_t size,
                            const std::vector<CPDF_CMap::CodeRange>& ranges) {
   for (size_t i = ranges.size(); i > 0; i--) {
-    size_t seg = i - 1;
+    const size_t seg = i - 1;
     if (ranges[seg].m_CharSize < size)
       continue;
     size_t iChar = 0;
@@ -236,9 +236,9 @@ size_t GetFourByteCharSizeImpl(
   codes[2] = static_cast<uint8_t>(charcode >> 8 & 0xFF);
   codes[3] = static_cast<uint8_t>(charcode);
   for (size_t offset = 0; offset < 4; offset++) {
-    size_t size = 4 - offset;
+    const size_t size = 4 - offset;
     for (size_t j = 0; j < ranges.size(); j++) {
-      size_t iSeg = (ranges.size() - 1) - j;
+      const size_t iSeg = (ranges.size() - 1) - j;
       if (ranges[iSeg].m_CharSize < size)
         continue;
       size_t iChar = 0;
@@ -332,15 +332,15 @@ uint32_t CPDF_CMap::GetNextChar(ByteStringView pString, size_t* pOffset) const {
       return offset < pBytes.size() ? pBytes[offset++] : 0;
     }
     case TwoBytes: {
-      uint8_t byte1 = offset < pBytes.size() ? pBytes[offset++] : 0;
-      uint8_t byte2 = offset < pBytes.size() ? pBytes[offset++] : 0;
+      const uint8_t byte1 = offset < pBytes.size() ? pBytes[offset++] : 0;
+      const uint8_t byte2 = offset < pBytes.size() ? pBytes[offset++] : 0;
       return 256 * byte1 + byte2;
     }
     case MixedTwoBytes: {
-      uint8_t byte1 = offset < pBytes.size() ? pBytes[offset++] : 0;
+      const uint8_t byte1 = offset < pBytes.size() ? pBytes[offset++] : 0;
       if (!m_MixedTwoByteLeadingBytes[byte1])
         return byte1;
-      uint8_t byte2 = offset < pBytes.size() ? pBytes[offset++] : 0;
+      const uint8_t byte2 = offset < pBytes.size() ? pBytes[offset++] : 0;
       return 256 * byte1 + byte2;
     }
     case MixedFourBytes: {
@@ -348,8 +348,8 @@ uint32_t CPDF_CMap::GetNextChar(ByteStringView pString, size_t* pOffset) const {
       int char_size = 1;
       codes[0] = offset < pBytes.size() ? pBytes[offset++] : 0;
       while (1) {
-        int ret = CheckFourByteCodeRange(codes, char_size,
-                                         m_MixedFourByteLeadingRanges);
+        const int ret = CheckFourByteCodeRange(codes, char_size,
+                                               m_MixedFourByteLeadingRanges);
         if (ret == 0)
           return 0;
         if (ret == 2) {

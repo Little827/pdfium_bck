@@ -73,7 +73,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       FontStyleIsNonSymbolic(m_Flags)) {
     if (!FXFT_Has_Glyph_Names(face) &&
         (!face->num_charmaps || !face->charmaps)) {
-      int nStartChar = m_pFontDict->GetIntegerFor("FirstChar");
+      const int nStartChar = m_pFontDict->GetIntegerFor("FirstChar");
       if (nStartChar < 0 || nStartChar > 255)
         return;
 
@@ -85,7 +85,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
         m_GlyphIndex[charcode] = nGlyph;
       return;
     }
-    bool bMSUnicode = FT_UseTTCharmap(face, 3, 1);
+    const bool bMSUnicode = FT_UseTTCharmap(face, 3, 1);
     bool bMacRoman = false;
     bool bMSSymbol = false;
     if (!bMSUnicode) {
@@ -97,7 +97,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
         bMacRoman = !bMSSymbol && FT_UseTTCharmap(face, 1, 0);
       }
     }
-    bool bToUnicode = m_pFontDict->KeyExist("ToUnicode");
+    const bool bToUnicode = m_pFontDict->KeyExist("ToUnicode");
     for (uint32_t charcode = 0; charcode < 256; charcode++) {
       const char* name = GetAdobeCharName(baseEncoding, m_CharNames, charcode);
       if (!name) {
@@ -108,7 +108,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       m_Encoding.SetUnicode(charcode, PDF_UnicodeFromAdobeName(name));
       if (bMSSymbol) {
         for (size_t j = 0; j < pdfium::size(kPrefix); j++) {
-          uint16_t unicode = kPrefix[j] * 256 + charcode;
+          const uint16_t unicode = kPrefix[j] * 256 + charcode;
           m_GlyphIndex[charcode] = FT_Get_Char_Index(face, unicode);
           if (m_GlyphIndex[charcode])
             break;
@@ -152,7 +152,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
     bool bFound = false;
     for (int charcode = 0; charcode < 256; charcode++) {
       for (size_t j = 0; j < pdfium::size(kPrefix); j++) {
-        uint16_t unicode = kPrefix[j] * 256 + charcode;
+        const uint16_t unicode = kPrefix[j] * 256 + charcode;
         m_GlyphIndex[charcode] = FT_Get_Char_Index(face, unicode);
         if (m_GlyphIndex[charcode]) {
           bFound = true;

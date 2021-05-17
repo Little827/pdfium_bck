@@ -136,14 +136,14 @@ int32_t CBC_PDF417ErrorCorrection::GetErrorCorrectionCodewordCount(
 Optional<WideString> CBC_PDF417ErrorCorrection::GenerateErrorCorrection(
     const WideString& dataCodewords,
     int32_t errorCorrectionLevel) {
-  int32_t k = GetErrorCorrectionCodewordCount(errorCorrectionLevel);
+  const int32_t k = GetErrorCorrectionCodewordCount(errorCorrectionLevel);
   if (k < 0)
     return {};
 
   std::vector<wchar_t, FxAllocAllocator<wchar_t>> ech(k);
-  size_t sld = dataCodewords.GetLength();
+  const size_t sld = dataCodewords.GetLength();
   for (size_t i = 0; i < sld; i++) {
-    int32_t t1 = (dataCodewords[i] + ech[k - 1]) % 929;
+    const int32_t t1 = (dataCodewords[i] + ech[k - 1]) % 929;
     int32_t t2;
     int32_t t3;
     for (int32_t j = k - 1; j >= 1; j--) {

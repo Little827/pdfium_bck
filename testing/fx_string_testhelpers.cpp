@@ -26,7 +26,7 @@ std::vector<std::string> StringSplit(const std::string& str, char delimiter) {
   std::vector<std::string> result;
   size_t pos = 0;
   while (1) {
-    size_t found = str.find(delimiter, pos);
+    const size_t found = str.find(delimiter, pos);
     if (found == std::string::npos)
       break;
 
@@ -60,7 +60,7 @@ std::wstring GetPlatformWString(FPDF_WIDESTRING wstr) {
 }
 
 ScopedFPDFWideString GetFPDFWideString(const std::wstring& wstr) {
-  size_t length = sizeof(uint16_t) * (wstr.length() + 1);
+  const size_t length = sizeof(uint16_t) * (wstr.length() + 1);
   ScopedFPDFWideString result(static_cast<FPDF_WCHAR*>(malloc(length)));
   pdfium::span<uint8_t> result_span(reinterpret_cast<uint8_t*>(result.get()),
                                     length);

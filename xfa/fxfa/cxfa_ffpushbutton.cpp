@@ -187,7 +187,7 @@ void CXFA_FFPushButton::RenderHighlightCaption(CFGAS_GEGraphics* pGS,
     mt.Concat(*pMatrix);
   }
 
-  uint32_t dwState = GetNormalWidget()->GetStates();
+  const uint32_t dwState = GetNormalWidget()->GetStates();
   if (m_pDownTextLayout && (dwState & FWL_STATE_PSB_Pressed) &&
       (dwState & FWL_STATE_PSB_Hovered)) {
     if (m_pDownTextLayout->DrawString(pRenderDevice, mt, rtClip, 0))
@@ -217,7 +217,7 @@ void CXFA_FFPushButton::OnDrawWidget(CFGAS_GEGraphics* pGraphics,
     if ((pWidget->GetStates() & FWL_STATE_PSB_Pressed) &&
         (pWidget->GetStates() & FWL_STATE_PSB_Hovered)) {
       CFX_RectF rtFill(0, 0, pWidget->GetWidgetRect().Size());
-      float fLineWith = GetLineWidth();
+      const float fLineWith = GetLineWidth();
       rtFill.Deflate(fLineWith, fLineWith);
       CFGAS_GEPath path;
       path.AddRectangle(rtFill.left, rtFill.top, rtFill.width, rtFill.height);
@@ -231,7 +231,7 @@ void CXFA_FFPushButton::OnDrawWidget(CFGAS_GEGraphics* pGraphics,
   if (pWidget->GetStylesEx() & XFA_FWL_PSBSTYLEEXT_HiliteOutLine) {
     if ((pWidget->GetStates() & FWL_STATE_PSB_Pressed) &&
         (pWidget->GetStates() & FWL_STATE_PSB_Hovered)) {
-      float fLineWidth = GetLineWidth();
+      const float fLineWidth = GetLineWidth();
       pGraphics->SetStrokeColor(CFGAS_GEColor(ArgbEncode(255, 128, 255, 255)));
       pGraphics->SetLineWidth(fLineWidth);
 

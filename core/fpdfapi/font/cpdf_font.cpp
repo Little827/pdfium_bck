@@ -135,7 +135,7 @@ int CPDF_Font::AppendChar(char* buf, uint32_t charcode) const {
 
 void CPDF_Font::AppendChar(ByteString* str, uint32_t charcode) const {
   char buf[4];
-  int len = AppendChar(buf, charcode);
+  const int len = AppendChar(buf, charcode);
   *str += ByteStringView(buf, len);
 }
 
@@ -393,7 +393,7 @@ int CPDF_Font::FallbackGlyphFromCharcode(int fallbackFont, uint32_t charcode) {
     return -1;
 
   WideString str = UnicodeFromCharCode(charcode);
-  uint32_t unicode = !str.IsEmpty() ? str[0] : charcode;
+  const uint32_t unicode = !str.IsEmpty() ? str[0] : charcode;
   int glyph =
       FT_Get_Char_Index(m_FontFallbacks[fallbackFont]->GetFaceRec(), unicode);
   if (glyph == 0)
@@ -410,7 +410,7 @@ CFX_Font* CPDF_Font::GetFontFallback(int position) {
 
 // static
 int CPDF_Font::TT2PDF(int m, FXFT_FaceRec* face) {
-  int upm = FXFT_Get_Face_UnitsPerEM(face);
+  const int upm = FXFT_Get_Face_UnitsPerEM(face);
   if (upm == 0)
     return m;
 

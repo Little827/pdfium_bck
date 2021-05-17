@@ -32,7 +32,7 @@ FX_FILESIZE CPDF_SeekableMultiStream::GetSize() {
 bool CPDF_SeekableMultiStream::ReadBlockAtOffset(void* buffer,
                                                  FX_FILESIZE offset,
                                                  size_t size) {
-  int32_t iCount = pdfium::CollectionSize<int32_t>(m_Data);
+  const int32_t iCount = pdfium::CollectionSize<int32_t>(m_Data);
   int32_t index = 0;
   while (index < iCount) {
     const auto& acc = m_Data[index];
@@ -45,8 +45,8 @@ bool CPDF_SeekableMultiStream::ReadBlockAtOffset(void* buffer,
   }
   while (index < iCount) {
     const auto& acc = m_Data[index];
-    uint32_t dwSize = acc->GetSize();
-    size_t dwRead = std::min(size, static_cast<size_t>(dwSize - offset));
+    const uint32_t dwSize = acc->GetSize();
+    const size_t dwRead = std::min(size, static_cast<size_t>(dwSize - offset));
     memcpy(buffer, acc->GetSpan().subspan(offset, dwRead).data(), dwRead);
     size -= dwRead;
     if (size == 0)

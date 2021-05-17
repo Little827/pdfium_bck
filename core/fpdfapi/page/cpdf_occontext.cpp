@@ -177,7 +177,7 @@ bool CPDF_OCContext::GetOCGVisible(const CPDF_Dictionary* pOCGDict) const {
   if (it != m_OGCStateCache.end())
     return it->second;
 
-  bool bState = LoadOCGState(pOCGDict);
+  const bool bState = LoadOCGState(pOCGDict);
   m_OGCStateCache[pOCGDict] = bState;
   return bState;
 }
@@ -256,7 +256,7 @@ bool CPDF_OCContext::LoadOCMDState(const CPDF_Dictionary* pOCMDDict) const {
   if (!pArray)
     return true;
 
-  bool bState = (csP == "AllOn" || csP == "AllOff");
+  const bool bState = (csP == "AllOn" || csP == "AllOff");
   // At least one entry of OCGs needs to be a valid dictionary for it to be
   // considered present. See "OCGs" in table 4.49 in the PDF 1.7 spec.
   bool bValidEntrySeen = false;

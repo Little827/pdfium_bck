@@ -20,11 +20,11 @@ namespace {
 std::unique_ptr<RenderDeviceDriverIface> CreateDriver(
     HDC hDC,
     const EncoderIface* pEncoderIface) {
-  int device_type = ::GetDeviceCaps(hDC, TECHNOLOGY);
-  int obj_type = ::GetObjectType(hDC);
-  bool use_printer = device_type == DT_RASPRINTER ||
-                     device_type == DT_PLOTTER ||
-                     device_type == DT_CHARSTREAM || obj_type == OBJ_ENHMETADC;
+  const int device_type = ::GetDeviceCaps(hDC, TECHNOLOGY);
+  const int obj_type = ::GetObjectType(hDC);
+  const bool use_printer =
+      device_type == DT_RASPRINTER || device_type == DT_PLOTTER ||
+      device_type == DT_CHARSTREAM || obj_type == OBJ_ENHMETADC;
 
   if (!use_printer)
     return std::make_unique<CGdiDisplayDriver>(hDC);

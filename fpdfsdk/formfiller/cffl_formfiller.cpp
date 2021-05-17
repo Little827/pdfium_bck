@@ -301,7 +301,7 @@ CPWL_Wnd::CreateParams CFFL_FormFiller::GetCreateParam() {
   cp.rcRectWnd = GetPDFAnnotRect();
 
   uint32_t dwCreateFlags = PWS_BORDER | PWS_BACKGROUND | PWS_VISIBLE;
-  uint32_t dwFieldFlag = m_pWidget->GetFieldFlags();
+  const uint32_t dwFieldFlag = m_pWidget->GetFieldFlags();
   if (dwFieldFlag & pdfium::form_flags::kReadOnly)
     dwCreateFlags |= PWS_READONLY;
 
