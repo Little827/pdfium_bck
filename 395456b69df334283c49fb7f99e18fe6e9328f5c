@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f26ef6_81bb1a92",
+        "filename": "core/fpdfdoc/cpdf_apsettings.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-18T18:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eddc277_8fc71d67",
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78ddfb87_a5af9c20",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-18T17:38:47Z",
       "side": 1,
       "message": "I\u0027d write out the type, as readers likely can\u0027t figure out what the type is.",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 6
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94f189c_74f837d9",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-18T18:08:10Z",
+      "side": 1,
+      "message": "Done, though the type name is icky and it now takes two lines :).",
+      "parentUuid": "78ddfb87_a5af9c20",
       "range": {
         "startLine": 430,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f6cbf0_bc4464d2",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-18T18:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f953768_a8c75864",
+      "range": {
+        "startLine": 1299,
+        "startChar": 2,
+        "endLine": 1299,
+        "endChar": 5
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6adfd0c6_3fe37cad",
@@ -87,6 +153,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4acd0cb0_efa59382",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-18T18:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6adfd0c6_3fe37cad",
+      "range": {
+        "startLine": 1826,
+        "startChar": 2,
+        "endLine": 1826,
+        "endChar": 5
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b435852_2d8a74e2",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-05-18T17:38:47Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1933,
+        "startChar": 2,
+        "endLine": 1933,
+        "endChar": 6
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33d46a3_709883d8",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1933,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-18T18:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b435852_2d8a74e2",
       "range": {
         "startLine": 1933,
         "startChar": 2,
