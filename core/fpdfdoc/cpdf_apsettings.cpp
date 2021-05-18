@@ -26,42 +26,37 @@ int CPDF_ApSettings::GetRotation() const {
   return m_pDict ? m_pDict->GetIntegerFor("R") : 0;
 }
 
-FX_ARGB CPDF_ApSettings::GetColorARGB(int& iColorType,
-                                      const ByteString& csEntry) const {
-  iColorType = CFX_Color::kTransparent;
+std::pair<CFX_Color::Type, FX_ARGB> CPDF_ApSettings::GetColorARGB(
+    const ByteString& csEntry) const {
   if (!m_pDict)
-    return 0;
+    return {CFX_Color::Type::kTransparent, 0};
 
   CPDF_Array* pEntry = m_pDict->GetArrayFor(csEntry);
   if (!pEntry)
-    return 0;
+    return {CFX_Color::Type::kTransparent, 0};
 
-  FX_ARGB color = 0;
-  size_t dwCount = pEntry->size();
+  const size_t dwCount = pEntry->size();
   if (dwCount == 1) {
-    iColorType = CFX_Color::kGray;
-    float g = pEntry->GetNumberAt(0) * 255;
-    return ArgbEncode(255, (int)g, (int)g, (int)g);
+    const float g = pEntry->GetNumberAt(0) * 255;
+    return {CFX_Color::Type::kGray, ArgbEncode(255, (int)g, (int)g, (int)g)};
   }
   if (dwCount == 3) {
-    iColorType = CFX_Color::kRGB;
     float r = pEntry->GetNumberAt(0) * 255;
     float g = pEntry->GetNumberAt(1) * 255;
     float b = pEntry->GetNumberAt(2) * 255;
-    return ArgbEncode(255, (int)r, (int)g, (int)b);
+    return {CFX_Color::Type::kRGB, ArgbEncode(255, (int)r, (int)g, (int)b)};
   }
   if (dwCount == 4) {
-    iColorType = CFX_Color::kCMYK;
     float c = pEntry->GetNumberAt(0);
     float m = pEntry->GetNumberAt(1);
     float y = pEntry->GetNumberAt(2);
     float k = pEntry->GetNumberAt(3);
-    float r = 1.0f - std::min(1.0f, c + k);
-    float g = 1.0f - std::min(1.0f, m + k);
-    float b = 1.0f - std::min(1.0f, y + k);
-    return ArgbEncode(255, (int)(r * 255), (int)(g * 255), (int)(b * 255));
+    float r = (1.0f - std::min(1.0f, c + k)) * 255;
+    float g = (1.0f - std::min(1.0f, m + k)) * 255;
+    float b = (1.0f - std::min(1.0f, y + k)) * 255;
+    return {CFX_Color::Type::kCMYK, ArgbEncode(255, (int)r, (int)g, (int)b)};
   }
-  return color;
+  return {CFX_Color::Type::kTransparent, 0};
 }
 
 float CPDF_ApSettings::GetOriginalColorComponent(
@@ -84,14 +79,14 @@ CFX_Color CPDF_ApSettings::GetOriginalColor(const ByteString& csEntry) const {
 
   size_t dwCount = pEntry->size();
   if (dwCount == 1) {
-    return CFX_Color(CFX_Color::kGray, pEntry->GetNumberAt(0));
+    return CFX_Color(CFX_Color::Type::kGray, pEntry->GetNumberAt(0));
   }
   if (dwCount == 3) {
-    return CFX_Color(CFX_Color::kRGB, pEntry->GetNumberAt(0),
+    return CFX_Color(CFX_Color::Type::kRGB, pEntry->GetNumberAt(0),
                      pEntry->GetNumberAt(1), pEntry->GetNumberAt(2));
   }
   if (dwCount == 4) {
-    return CFX_Color(CFX_Color::kCMYK, pEntry->GetNumberAt(0),
+    return CFX_Color(CFX_Color::Type::kCMYK, pEntry->GetNumberAt(0),
                      pEntry->GetNumberAt(1), pEntry->GetNumberAt(2),
                      pEntry->GetNumberAt(3));
   }
