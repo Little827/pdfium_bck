@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eddc277_8fc71d67",
+        "filename": "core/fpdfdoc/cpdf_apsettings.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-18T17:38:47Z",
+      "side": 1,
+      "message": "IWYU: \u003cutility\u003e",
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ddfb87_a5af9c20",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-18T17:38:47Z",
+      "side": 1,
+      "message": "I\u0027d write out the type, as readers likely can\u0027t figure out what the type is.",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 6
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f953768_a8c75864",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-18T17:38:47Z",
+      "side": 1,
+      "message": "CFX_Color::Type",
+      "range": {
+        "startLine": 1299,
+        "startChar": 2,
+        "endLine": 1299,
+        "endChar": 5
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6adfd0c6_3fe37cad",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-18T17:38:47Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1826,
+        "startChar": 2,
+        "endLine": 1826,
+        "endChar": 5
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b435852_2d8a74e2",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1933,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-18T17:38:47Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1933,
+        "startChar": 2,
+        "endLine": 1933,
+        "endChar": 6
+      },
+      "revId": "395456b69df334283c49fb7f99e18fe6e9328f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
