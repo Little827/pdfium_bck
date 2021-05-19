@@ -18,10 +18,8 @@ CFGAS_GEShading::CFGAS_GEShading(const CFX_PointF& beginPoint,
       m_beginRadius(0),
       m_endRadius(0),
       m_isExtendedBegin(isExtendedBegin),
-      m_isExtendedEnd(isExtendedEnd),
-      m_beginArgb(beginArgb),
-      m_endArgb(endArgb) {
-  InitArgbArray();
+      m_isExtendedEnd(isExtendedEnd) {
+  InitArgbArray(beginArgb, endArgb);
 }
 
 CFGAS_GEShading::CFGAS_GEShading(const CFX_PointF& beginPoint,
@@ -38,26 +36,24 @@ CFGAS_GEShading::CFGAS_GEShading(const CFX_PointF& beginPoint,
       m_beginRadius(beginRadius),
       m_endRadius(endRadius),
       m_isExtendedBegin(isExtendedBegin),
-      m_isExtendedEnd(isExtendedEnd),
-      m_beginArgb(beginArgb),
-      m_endArgb(endArgb) {
-  InitArgbArray();
+      m_isExtendedEnd(isExtendedEnd) {
+  InitArgbArray(beginArgb, endArgb);
 }
 
 CFGAS_GEShading::~CFGAS_GEShading() = default;
 
-void CFGAS_GEShading::InitArgbArray() {
+void CFGAS_GEShading::InitArgbArray(FX_ARGB beginArgb, FX_ARGB endArgb) {
   int32_t a1;
   int32_t r1;
   int32_t g1;
   int32_t b1;
-  std::tie(a1, r1, g1, b1) = ArgbDecode(m_beginArgb);
+  std::tie(a1, r1, g1, b1) = ArgbDecode(beginArgb);
 
   int32_t a2;
   int32_t r2;
   int32_t g2;
   int32_t b2;
-  std::tie(a2, r2, g2, b2) = ArgbDecode(m_endArgb);
+  std::tie(a2, r2, g2, b2) = ArgbDecode(endArgb);
 
   float f = static_cast<float>(kSteps - 1);
   float aScale = 1.0 * (a2 - a1) / f;
