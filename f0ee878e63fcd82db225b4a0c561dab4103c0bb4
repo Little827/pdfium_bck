@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86f0dd4_72cb0921",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-19T03:36:27Z",
+      "side": 0,
+      "message": "This name is no longer legal for starlark configs.",
+      "range": {
+        "startLine": 211,
+        "startChar": 8,
+        "endLine": 211,
+        "endChar": 24
+      },
+      "revId": "f0ee878e63fcd82db225b4a0c561dab4103c0bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c200d3ce_ed37534d",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-19T03:36:27Z",
+      "side": 0,
+      "message": "Remove inactive user.",
+      "range": {
+        "startLine": 668,
+        "startChar": 3,
+        "endLine": 668,
+        "endChar": 38
+      },
+      "revId": "f0ee878e63fcd82db225b4a0c561dab4103c0bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

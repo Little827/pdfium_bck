@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e06aac_972c62af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-19T03:36:27Z",
+      "side": 1,
+      "message": "This CL is to demonstrate the added main.star can generate equivalents of the existing.cfg files.\n",
+      "revId": "440ca1af2a57f7a74e52ed456b84b6c8cadc1e75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47f1607_634a7720",
+        "filename": "main.star",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-19T03:36:27Z",
+      "side": 1,
+      "message": "In a follow-up CL, all existing .cfg files in root directory will be deleted, and new auto-generated .cfg files in //generated/ will replace them.",
+      "range": {
+        "startLine": 219,
+        "startChar": 4,
+        "endLine": 220,
+        "endChar": 39
+      },
+      "revId": "440ca1af2a57f7a74e52ed456b84b6c8cadc1e75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
