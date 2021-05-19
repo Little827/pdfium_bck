@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c067d779_6ea78f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-19T19:17:48Z",
+      "side": 1,
+      "message": "If we want to do this, we can certainly just make a pass over the code base periodically and mark variables const that were missed earlier.",
+      "parentUuid": "c967d2c3_c7389fe5",
+      "revId": "3d2b6f69d581a47354aa79e08f49aeeb05c9e09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6664d866_0b919e44",
@@ -66,6 +84,23 @@
       "writtenOn": "2021-05-17T22:35:49Z",
       "side": 1,
       "message": "This isn\u0027t being compiled, so it\u0027s broken.",
+      "revId": "3d2b6f69d581a47354aa79e08f49aeeb05c9e09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dcc9faa_17c6d1ed",
+        "filename": "core/fxge/win32/cgdi_printer_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-19T19:17:48Z",
+      "side": 1,
+      "message": "Not const. Sorry, don\u0027t have a bot to catch this. Never added a bot because I\u0027m thinking maybe I should just delete this code instead.",
       "revId": "3d2b6f69d581a47354aa79e08f49aeeb05c9e09d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
