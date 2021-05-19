@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "43736d30_43d8e67e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7468
+      },
+      "writtenOn": "2021-05-19T03:39:57Z",
+      "side": 1,
+      "message": "lgtm (I don\u0027t have any label setting powers here aside from CQ+1)",
+      "revId": "440ca1af2a57f7a74e52ed456b84b6c8cadc1e75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d47f1607_634a7720",
         "filename": "main.star",
         "patchSetId": 3
@@ -37,6 +54,23 @@
         "endLine": 220,
         "endChar": 39
       },
+      "revId": "440ca1af2a57f7a74e52ed456b84b6c8cadc1e75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05c7ade_cbb1ba8a",
+        "filename": "main.star",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 7468
+      },
+      "writtenOn": "2021-05-19T03:39:57Z",
+      "side": 1,
+      "message": "note that these \u0027master\u0027 buckets are legacy buildbot; Unless you run a custom scheduler or something, nothing uses these.",
       "revId": "440ca1af2a57f7a74e52ed456b84b6c8cadc1e75",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
