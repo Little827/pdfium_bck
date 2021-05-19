@@ -17,6 +17,24 @@
       "message": "Ok, though I expect some of the private classes could live in the .cpp file instead?",
       "revId": "1733301a1bbb09db5417cd9edfb07194f396e3c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aac6b0a_ddc8544f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-19T17:10:10Z",
+      "side": 1,
+      "message": "I forward declared the inner classes. They need to remain inner classes and not be in an anonymous namespace, as they need access to CPWL_EditImpl methods that will be marked as private.",
+      "parentUuid": "ed07817c_5a3dd0f9",
+      "revId": "1733301a1bbb09db5417cd9edfb07194f396e3c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
