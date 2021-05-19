@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "714bbaf9_e2804939",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-19T20:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23eae57_2b7b3305",
+      "revId": "410eb28873061955e30f1cbcdd23537098b52fbb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18f43d4d_f4d55be9",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-19T19:47:54Z",
       "side": 1,
       "message": "braces",
+      "revId": "410eb28873061955e30f1cbcdd23537098b52fbb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "072f0310_e0e0320a",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-19T20:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f43d4d_f4d55be9",
       "revId": "410eb28873061955e30f1cbcdd23537098b52fbb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
