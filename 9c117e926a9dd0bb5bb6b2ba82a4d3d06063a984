@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c4d01a_f98ed3c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-20T20:34:51Z",
+      "side": 1,
+      "message": "I tested with Acrobat XI (not DC) and it returned 7.",
+      "revId": "9c117e926a9dd0bb5bb6b2ba82a4d3d06063a984",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
