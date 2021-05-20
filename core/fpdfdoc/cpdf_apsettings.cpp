@@ -105,7 +105,9 @@ CPDF_IconFit CPDF_ApSettings::GetIconFit() const {
   return CPDF_IconFit(m_pDict ? m_pDict->GetDictFor("IF") : nullptr);
 }
 
-int CPDF_ApSettings::GetTextPosition() const {
-  return m_pDict ? m_pDict->GetIntegerFor("TP", TEXTPOS_CAPTION)
-                 : TEXTPOS_CAPTION;
+CPDF_ApSettings::TextPosition CPDF_ApSettings::GetTextPosition() const {
+  int32_t tp = m_pDict ? m_pDict->GetIntegerFor("TP", -1) : -1;
+  if (tp < 0 || tp > static_cast<int>(TextPosition::kOverlaid))
+    return TextPosition::kCaption;
+  return static_cast<TextPosition>(tp);
 }

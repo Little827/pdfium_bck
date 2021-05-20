@@ -830,7 +830,7 @@ CJS_Result CJS_Field::get_button_position(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   return CJS_Result::Success(
-      pRuntime->NewNumber(pFormControl->GetTextPosition()));
+      pRuntime->NewNumber(static_cast<int>(pFormControl->GetTextPosition())));
 }
 
 CJS_Result CJS_Field::set_button_position(CJS_Runtime* pRuntime,
