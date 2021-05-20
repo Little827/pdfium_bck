@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "262e0f25_5c123da4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-20T17:03:29Z",
+      "side": 1,
+      "message": "Yep, value changes.  Does it matter?",
+      "revId": "6db994363ffb94d61c16e63c19b183c9b86cfc51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
