@@ -46,6 +46,7 @@ endobj
     10 0 R
     11 0 R
     12 0 R
+    13 0 R
   ]
 >>
 endobj
@@ -68,6 +69,9 @@ endobj
   /Parent 5 0 R
   /T (MyPushButton)
   /Rect [220 221 240 241]
+  /MK <<
+    /TP 4
+  >>
 >>
 endobj
 {{object 8 0}} <<
@@ -78,6 +82,9 @@ endobj
   /Parent 5 0 R
   /T (MyRadio)
   /Rect [240 241 260 261]
+  /MK <<
+    /TP 4
+  >>
 >>
 endobj
 {{object 9 0}} <<
@@ -132,6 +139,20 @@ endobj
   /V ("/path/to/file.pdf")
 >>
 endobj
+{{object 13 0}} <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Btn
+  /Ff 65536
+  /Parent 5 0 R
+  /T (MyBadPushButton)
+  /Rect [400 421 440 441]
+  /MK <<
+    /TP 7
+  >>
+>>
+endobj
+
 % OpenAction action
 {{object 15 0}} <<
   /Type /Action
