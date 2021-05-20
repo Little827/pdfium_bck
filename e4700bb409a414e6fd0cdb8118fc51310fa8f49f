@@ -51,6 +51,24 @@
       "parentUuid": "431a8f81_acaf4ae7",
       "revId": "e4700bb409a414e6fd0cdb8118fc51310fa8f49f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33fc04ae_67461ae8",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-20T20:51:40Z",
+      "side": 1,
+      "message": "Since Acrobat returns 7, we should too. That conflicts with this CL though.",
+      "parentUuid": "4ebc46aa_53a9fe46",
+      "revId": "e4700bb409a414e6fd0cdb8118fc51310fa8f49f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
