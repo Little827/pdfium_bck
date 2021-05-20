@@ -85,7 +85,7 @@ class CPDF_FormControl {
   CPDF_Stream* GetDownIcon() { return GetIcon("IX"); }
   CPDF_IconFit GetIconFit() const;
 
-  int GetTextPosition() const;
+  CPDF_ApSettings::TextPosition GetTextPosition() const;
   CPDF_DefaultAppearance GetDefaultAppearance() const;
 
   Optional<WideString> GetDefaultControlFontName() const;
