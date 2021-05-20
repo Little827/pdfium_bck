@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "141992b6_8f5ad43e",
+        "filename": "main.star",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-20T19:27:36Z",
+      "side": 1,
+      "message": "Done -\u003e remove TODO?",
+      "revId": "53993436388cd4e22c7b5e1cfa0197e388933e72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
