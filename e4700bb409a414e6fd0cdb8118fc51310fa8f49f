@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bdf09da_03dd4bab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-20T15:53:00Z",
+      "side": 1,
+      "message": "I\u0027m sure I coded this once before, but I can\u0027t find that CL, so here\u0027s a new one. There\u0027s some obnoxious casting involved, though.",
+      "revId": "e4700bb409a414e6fd0cdb8118fc51310fa8f49f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
