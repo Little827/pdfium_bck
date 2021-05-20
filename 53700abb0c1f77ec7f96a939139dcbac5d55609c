@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "165a8d16_7e9aab3a",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-20T22:06:19Z",
+      "side": 1,
+      "message": "Done. Move the condition \"lucicfg in your PATH\" into the previous line.",
+      "parentUuid": "9e50a2d9_1b9ccbbd",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "53700abb0c1f77ec7f96a939139dcbac5d55609c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d31a91d9_92e659bf",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-05-20T20:29:25Z",
       "side": 1,
       "message": "this one looks like it lost the tree status host; intentional?",
+      "revId": "53700abb0c1f77ec7f96a939139dcbac5d55609c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0644bdf_15bb7521",
+        "filename": "generated/luci-milo.cfg",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-20T22:06:19Z",
+      "side": 1,
+      "message": "Yes. The try builders are in the list_view\u0027s entries, which doesn\u0027t have a \"header\" field like the console_view.\n\nI doubled checked the luci-milo.cfg that was generated with the original luci-milo.cfg by running `lucicfg semantic-diff main.star luci-milo.cfg`, the try builders don\u0027t have the header field either.",
+      "parentUuid": "d31a91d9_92e659bf",
       "revId": "53700abb0c1f77ec7f96a939139dcbac5d55609c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
