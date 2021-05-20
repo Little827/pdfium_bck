@@ -33,6 +33,24 @@
       "message": "Want to add a JS test for a value \u003e 6 first?",
       "revId": "e4700bb409a414e6fd0cdb8118fc51310fa8f49f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebc46aa_53a9fe46",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-20T16:43:05Z",
+      "side": 1,
+      "message": "See https://pdfium-review.googlesource.com/c/pdfium/+/80711, which raises questions of its own.  Any idea what other readers do?",
+      "parentUuid": "431a8f81_acaf4ae7",
+      "revId": "e4700bb409a414e6fd0cdb8118fc51310fa8f49f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
