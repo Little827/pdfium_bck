@@ -219,7 +219,7 @@ def add_entries_for_builder(name, category = None, short_name = None, skip_ci_bu
 lucicfg.config(
     # TODO(crbug.com/1203876): Change `config_dir` to "generated" and remove
     # the .cfg files in root directory.
-    config_dir = ".",
+    config_dir = "generated",
     tracked_files = [
         "commit-queue.cfg",
         "cr-buildbucket.cfg",
