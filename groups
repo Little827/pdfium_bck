@@ -5,3 +5,4 @@ ce16eb0973495f56b45d9980156a8db8a0fe0a42	commit-queue-bot
 global:Change-Owner                     	Change Owner
 global:Registered-Users                 	Registered Users
 mdb:copybara-git-writers                	mdb/copybara-git-writers
+b41662507056846df3d91946f2f4bc1bdea74a69	pdfium-scoped@luci-project-accounts.iam.gserviceaccount.com
