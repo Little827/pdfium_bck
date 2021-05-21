@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3506c84_dee659d7",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-21T20:53:42Z",
+      "side": 1,
+      "message": "You could also get rid of this and just return in each of the if/else-if/else blocks.",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a666ba6f_494f3b00",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-21T20:53:42Z",
+      "side": 1,
+      "message": "Shorten inside CXFA_LocaleValue?",
+      "range": {
+        "startLine": 103,
+        "startChar": 26,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e32c77_2b104995",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4729,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-21T20:53:42Z",
+      "side": 1,
+      "message": "Merge into the switch-statement?",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c2cf235_78489130",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-21T20:53:42Z",
+      "side": 1,
+      "message": "Merge into the switch-statement?",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523e710c_79613f81",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4902,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-21T20:53:42Z",
+      "side": 1,
+      "message": "No need to assign. Handled in the default case.",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad52ce3c_8a66485f",
+        "filename": "xfa/fxfa/parser/xfa_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-21T20:53:42Z",
+      "side": 1,
+      "message": "Assign in the default case instead?",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
