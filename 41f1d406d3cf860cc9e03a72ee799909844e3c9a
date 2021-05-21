@@ -34,6 +34,23 @@
       "parentUuid": "78928f93_abbd7a4c",
       "revId": "41f1d406d3cf860cc9e03a72ee799909844e3c9a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4d6eae_a3f37777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6130
+      },
+      "writtenOn": "2021-05-21T19:27:01Z",
+      "side": 1,
+      "message": "can you please submit this CL  for me? I don\u0027t think you\u0027ve configured CQ for this branch.",
+      "revId": "41f1d406d3cf860cc9e03a72ee799909844e3c9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
