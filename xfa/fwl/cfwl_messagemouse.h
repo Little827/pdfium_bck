@@ -28,12 +28,12 @@ class CFWL_MessageMouse final : public CFWL_Message {
   CFWL_MessageMouse(CFWL_Widget* pDstTarget, FWL_MouseCommand cmd);
   CFWL_MessageMouse(CFWL_Widget* pDstTarget,
                     FWL_MouseCommand cmd,
-                    uint32_t flags,
+                    FWL_KeyFlagMask flags,
                     CFX_PointF pos);
   ~CFWL_MessageMouse() override;
 
   const FWL_MouseCommand m_dwCmd;
-  uint32_t m_dwFlags = 0;
+  FWL_KeyFlagMask m_dwFlags = 0;
   CFX_PointF m_pos;
 };
 

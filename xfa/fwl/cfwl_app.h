@@ -7,6 +7,8 @@
 #ifndef XFA_FWL_CFWL_APP_H_
 #define XFA_FWL_CFWL_APP_H_
 
+#include <type_traits>
+
 #include "core/fxcrt/cfx_timer.h"
 #include "fxjs/gc/heap.h"
 #include "v8/include/cppgc/garbage-collected.h"
@@ -16,16 +18,6 @@
 
 class CFWL_NoteDriver;
 class IFWL_ThemeProvider;
-
-enum FWL_KeyFlag {
-  FWL_KEYFLAG_Ctrl = 1 << 0,
-  FWL_KEYFLAG_Alt = 1 << 1,
-  FWL_KEYFLAG_Shift = 1 << 2,
-  FWL_KEYFLAG_Command = 1 << 3,
-  FWL_KEYFLAG_LButton = 1 << 4,
-  FWL_KEYFLAG_RButton = 1 << 5,
-  FWL_KEYFLAG_MButton = 1 << 6
-};
 
 class CFWL_App final : public cppgc::GarbageCollected<CFWL_App> {
  public:
