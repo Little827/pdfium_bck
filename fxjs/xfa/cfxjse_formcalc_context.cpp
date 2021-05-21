@@ -346,19 +346,15 @@ std::pair<bool, CXFA_LocaleValue::ValueType> PatternStringType(
   if (L"text" == wsPattern.First(4))
     return {true, CXFA_LocaleValue::ValueType::kText};
   if (L"num" == wsPattern.First(3)) {
-    CXFA_LocaleValue::ValueType type;
-    if (L"integer" == wsPattern.Substr(4, 7)) {
-      type = CXFA_LocaleValue::ValueType::kInteger;
-    } else if (L"decimal" == wsPattern.Substr(4, 7)) {
-      type = CXFA_LocaleValue::ValueType::kDecimal;
-    } else if (L"currency" == wsPattern.Substr(4, 8)) {
-      type = CXFA_LocaleValue::ValueType::kFloat;
-    } else if (L"percent" == wsPattern.Substr(4, 7)) {
-      type = CXFA_LocaleValue::ValueType::kFloat;
-    } else {
-      type = CXFA_LocaleValue::ValueType::kFloat;
-    }
-    return {true, type};
+    if (L"integer" == wsPattern.Substr(4, 7))
+      return {true, CXFA_LocaleValue::ValueType::kInteger};
+    if (L"decimal" == wsPattern.Substr(4, 7))
+      return {true, CXFA_LocaleValue::ValueType::kDecimal};
+    if (L"currency" == wsPattern.Substr(4, 8))
+      return {true, CXFA_LocaleValue::ValueType::kFloat};
+    if (L"percent" == wsPattern.Substr(4, 7))
+      return {true, CXFA_LocaleValue::ValueType::kFloat};
+    return {true, CXFA_LocaleValue::ValueType::kFloat};
   }
 
   CXFA_LocaleValue::ValueType type = CXFA_LocaleValue::ValueType::kNull;
