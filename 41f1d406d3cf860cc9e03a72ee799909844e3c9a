@@ -51,6 +51,42 @@
       "message": "can you please submit this CL  for me? I don\u0027t think you\u0027ve configured CQ for this branch.",
       "revId": "41f1d406d3cf860cc9e03a72ee799909844e3c9a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b5adc8_8080ef43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-21T20:41:42Z",
+      "side": 1,
+      "message": "This branch will need to be directly submitted instead of going through CQ.",
+      "parentUuid": "ce4d6eae_a3f37777",
+      "revId": "41f1d406d3cf860cc9e03a72ee799909844e3c9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88c1fb0_73c160d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-21T20:41:42Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "e8d250f2_48c6e074",
+      "revId": "41f1d406d3cf860cc9e03a72ee799909844e3c9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
