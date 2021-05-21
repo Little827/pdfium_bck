@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78928f93_abbd7a4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-21T18:45:04Z",
+      "side": 1,
+      "message": "I am curious why swarming_tags and scheduler luci-scheduler@appspot.gserviceaccount.com is considered redundant. They were used in the original .cfg files before getting migrated to main.star.",
+      "revId": "41f1d406d3cf860cc9e03a72ee799909844e3c9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
