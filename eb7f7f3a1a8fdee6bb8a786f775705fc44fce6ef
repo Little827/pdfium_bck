@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d57a6cb_46a3c0b5",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-21T21:12:00Z",
+      "side": 1,
+      "message": "Follow-on already being coded.",
+      "parentUuid": "a3506c84_dee659d7",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a666ba6f_494f3b00",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-21T20:53:42Z",
       "side": 1,
       "message": "Shorten inside CXFA_LocaleValue?",
+      "range": {
+        "startLine": 103,
+        "startChar": 26,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c5b734_84d07fda",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-21T21:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a666ba6f_494f3b00",
       "range": {
         "startLine": 103,
         "startChar": 26,
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54845b5_681aaa9c",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4729,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-21T21:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e32c77_2b104995",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c2cf235_78489130",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-05-21T20:53:42Z",
       "side": 1,
       "message": "Merge into the switch-statement?",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c288160_23f0963b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-21T21:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c2cf235_78489130",
       "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -92,6 +170,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f340543_226b3cbc",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4902,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-21T21:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "523e710c_79613f81",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad52ce3c_8a66485f",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-05-21T20:53:42Z",
       "side": 1,
       "message": "Assign in the default case instead?",
+      "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6529d36_f265052c",
+        "filename": "xfa/fxfa/parser/xfa_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-21T21:12:00Z",
+      "side": 1,
+      "message": "Ever had the feeling you\u0027ve seen this before? Helper forthcoming.",
+      "parentUuid": "ad52ce3c_8a66485f",
       "revId": "eb7f7f3a1a8fdee6bb8a786f775705fc44fce6ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
