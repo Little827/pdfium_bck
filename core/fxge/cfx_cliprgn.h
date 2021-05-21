@@ -14,7 +14,7 @@ class CFX_DIBitmap;
 
 class CFX_ClipRgn {
  public:
-  enum ClipType { RectI, MaskF };
+  enum ClipType : bool { kRectI, kMaskF };
 
   CFX_ClipRgn(int device_width, int device_height);
   CFX_ClipRgn(const CFX_ClipRgn& src);
@@ -28,11 +28,11 @@ class CFX_ClipRgn {
   void IntersectMaskF(int left, int top, const RetainPtr<CFX_DIBitmap>& Mask);
 
  private:
-  void IntersectMaskRect(FX_RECT rect,
-                         FX_RECT mask_rect,
+  void IntersectMaskRect(const FX_RECT& rect,
+                         const FX_RECT& mask_rect,
                          const RetainPtr<CFX_DIBitmap>& Mask);
 
-  ClipType m_Type;
+  ClipType m_Type = kRectI;
   FX_RECT m_Box;
   RetainPtr<CFX_DIBitmap> m_Mask;
 };
