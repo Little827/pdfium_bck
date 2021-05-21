@@ -61,12 +61,15 @@ enum class FormType {
   kXFAForeground = 3,
 };
 
-#define XFA_PRINTOPT_ShowDialog 0x00000001
-#define XFA_PRINTOPT_CanCancel 0x00000002
-#define XFA_PRINTOPT_ShrinkPage 0x00000004
-#define XFA_PRINTOPT_AsImage 0x00000008
-#define XFA_PRINTOPT_ReverseOrder 0x00000010
-#define XFA_PRINTOPT_PrintAnnot 0x00000020
+enum XFA_PrintOpt {
+  XFA_PRINTOPT_ShowDialog = 1 << 0,
+  XFA_PRINTOPT_CanCancel = 1 << 1,
+  XFA_PRINTOPT_ShrinkPage = 1 << 2,
+  XFA_PRINTOPT_AsImage = 1 << 3,
+  XFA_PRINTOPT_ReverseOrder = 1 << 4,
+  XFA_PRINTOPT_PrintAnnot = 1 << 5,
+};
+using XFA_PrintOptMask = std::underlying_type<XFA_PrintOpt>::type;
 
 enum class XFA_EventError {
   kError = -1,
@@ -242,7 +245,7 @@ class IXFA_DocEnvironment {
   virtual void Print(CXFA_FFDoc* hDoc,
                      int32_t nStartPage,
                      int32_t nEndPage,
-                     uint32_t dwOptions) = 0;
+                     XFA_PrintOptMask dwOptions) = 0;
   virtual FX_ARGB GetHighlightColor(const CXFA_FFDoc* hDoc) const = 0;
   virtual IJS_Runtime* GetIJSRuntime(const CXFA_FFDoc* hDoc) const = 0;
   virtual CFX_XMLDocument* GetXMLDoc() const = 0;
