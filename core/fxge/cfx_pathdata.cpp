@@ -41,14 +41,28 @@ bool IsRectImpl(const std::vector<FX_PATHPOINT>& points) {
 
 std::vector<FX_PATHPOINT> GetNormalizedPoints(
     const std::vector<FX_PATHPOINT>& points) {
-  if (points.size() != 5)
+  if (points.size() < 5)
     return points;
 
-  if (points[0].m_Point != points[4].m_Point)
+  if (points[0].m_Point != points.back().m_Point)
     return {};
 
-  std::vector<FX_PATHPOINT> normalized_points = points;
-  normalized_points.pop_back();
+  std::vector<FX_PATHPOINT> normalized_points;
+  normalized_points.reserve(6);
+  normalized_points.push_back(points[0]);
+  for (size_t i = 1; i < points.size() - 1; ++i) {
+    const auto& point = points[i];
+    if (point.m_Type == FXPT_TYPE::LineTo && !point.m_CloseFigure &&
+        !normalized_points.back().m_CloseFigure &&
+        point.m_Point == normalized_points.back().m_Point) {
+      continue;
+    }
+    normalized_points.push_back(point);
+    if (normalized_points.size() > 5)
+      return normalized_points;
+  }
+  if (normalized_points.size() == 5)
+    normalized_points.pop_back();
   normalized_points.back().m_CloseFigure = true;
   return normalized_points;
 }
