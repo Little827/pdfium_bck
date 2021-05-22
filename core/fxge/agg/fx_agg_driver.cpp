@@ -1133,8 +1133,7 @@ bool CFX_AggDeviceDriver::SetClip_PathFill(
     m_pClipRgn = std::make_unique<CFX_ClipRgn>(
         GetDeviceCaps(FXDC_PIXEL_WIDTH), GetDeviceCaps(FXDC_PIXEL_HEIGHT));
   }
-  size_t size = pPathData->GetPoints().size();
-  if (size == 5 || size == 4) {
+  if (pPathData->GetPoints().size() >= 4) {
     Optional<CFX_FloatRect> maybe_rectf = pPathData->GetRect(pObject2Device);
     if (maybe_rectf.has_value()) {
       CFX_FloatRect& rectf = maybe_rectf.value();
