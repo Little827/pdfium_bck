@@ -23,6 +23,30 @@
       },
       "revId": "8087a42e344994a16dbcd8c23c4428fc3af02d89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09133cbb_7586326e",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-05-24T19:18:14Z",
+      "side": 1,
+      "message": "My bad. This case is handled correctly. Pls ignore my previous comment.",
+      "parentUuid": "6c642df2_4dfe95b3",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "8087a42e344994a16dbcd8c23c4428fc3af02d89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
