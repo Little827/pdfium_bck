@@ -22,6 +22,23 @@
       },
       "revId": "22221e928472335ebb4a712621967d9177322a7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e69346_922f4183",
+        "filename": "core/fpdfapi/page/cpdf_transferfuncdib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-24T18:33:09Z",
+      "side": 1,
+      "message": "Does TranslateDownSamples() have any callers left?",
+      "revId": "22221e928472335ebb4a712621967d9177322a7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
