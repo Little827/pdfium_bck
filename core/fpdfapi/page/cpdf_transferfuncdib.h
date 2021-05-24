@@ -35,13 +35,6 @@ class CPDF_TransferFuncDIB final : public CFX_DIBBase {
 
   // CFX_DIBBase:
   const uint8_t* GetScanline(int line) const override;
-  void DownSampleScanline(int line,
-                          uint8_t* dest_scan,
-                          int dest_bpp,
-                          int dest_width,
-                          bool bFlipX,
-                          int clip_left,
-                          int clip_width) const override;
 
   FXDIB_Format GetDestFormat() const;
 
