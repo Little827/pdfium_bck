@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7c4efd_9499870e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-24T17:12:27Z",
+      "side": 1,
+      "message": "Enum based on bool is a nice pattern. Probably places where we could clean up APIs along these lines.",
+      "revId": "fb6fc85d3306124be2858e6d874215d44ad0f1c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
