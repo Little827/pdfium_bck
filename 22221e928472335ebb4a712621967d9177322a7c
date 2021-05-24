@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64463cbd_08e129f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-24T18:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a0812cc_7847fac4",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "22221e928472335ebb4a712621967d9177322a7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6e69346_922f4183",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-24T18:33:09Z",
       "side": 1,
       "message": "Does TranslateDownSamples() have any callers left?",
+      "revId": "22221e928472335ebb4a712621967d9177322a7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb70b63b_7083a7c3",
+        "filename": "core/fpdfapi/page/cpdf_transferfuncdib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-24T18:53:24Z",
+      "side": 1,
+      "message": "Nary a one, removed.",
+      "parentUuid": "b6e69346_922f4183",
       "revId": "22221e928472335ebb4a712621967d9177322a7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
