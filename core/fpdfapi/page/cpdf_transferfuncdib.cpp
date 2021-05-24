@@ -189,15 +189,3 @@ const uint8_t* CPDF_TransferFuncDIB::GetScanline(int line) const {
   TranslateScanline(m_pSrc->GetScanline(line), &m_Scanline);
   return m_Scanline.data();
 }
-
-void CPDF_TransferFuncDIB::DownSampleScanline(int line,
-                                              uint8_t* dest_scan,
-                                              int dest_bpp,
-                                              int dest_width,
-                                              bool bFlipX,
-                                              int clip_left,
-                                              int clip_width) const {
-  m_pSrc->DownSampleScanline(line, dest_scan, dest_bpp, dest_width, bFlipX,
-                             clip_left, clip_width);
-  TranslateDownSamples(dest_scan, dest_scan, clip_width, dest_bpp);
-}
