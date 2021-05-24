@@ -12,6 +12,48 @@
 
 namespace {
 
+bool IsRectImpl(const std::vector<FX_PATHPOINT>& points) {
+  if (points.size() != 4)
+    return false;
+
+  if (points[0].m_Point == points[2].m_Point ||
+      points[1].m_Point == points[3].m_Point) {
+    return false;
+  }
+
+  // Note, both x,y have to not equal.
+  if (points[0].m_Point.x != points[3].m_Point.x &&
+      points[0].m_Point.y != points[3].m_Point.y) {
+    return false;
+  }
+
+  for (int i = 1; i < 4; i++) {
+    if (points[i].m_Type != FXPT_TYPE::LineTo)
+      return false;
+    // Note, both x,y have to not equal.
+    if (points[i].m_Point.x != points[i - 1].m_Point.x &&
+        points[i].m_Point.y != points[i - 1].m_Point.y) {
+      return false;
+    }
+  }
+  return true;
+}
+
+std::vector<FX_PATHPOINT> GetNormalizedPoints(
+    const std::vector<FX_PATHPOINT>& points) {
+  DCHECK(points.size() >= 5);
+  if (points.size() > 5)
+    return {};
+
+  if (points[0].m_Point != points[4].m_Point)
+    return {};
+
+  std::vector<FX_PATHPOINT> normalized_points = points;
+  normalized_points.pop_back();
+  normalized_points.back().m_CloseFigure = true;
+  return normalized_points;
+}
+
 void UpdateLineEndPoints(CFX_FloatRect* rect,
                          const CFX_PointF& start_pos,
                          const CFX_PointF& end_pos,
@@ -303,69 +345,34 @@ void CFX_PathData::Transform(const CFX_Matrix& matrix) {
 }
 
 bool CFX_PathData::IsRect() const {
-  if (m_Points.size() != 5 && m_Points.size() != 4)
+  if (m_Points.size() < 4)
     return false;
 
-  if ((m_Points.size() == 5 && m_Points[0].m_Point != m_Points[4].m_Point) ||
-      m_Points[0].m_Point == m_Points[2].m_Point ||
-      m_Points[1].m_Point == m_Points[3].m_Point) {
-    return false;
-  }
-  // Note, both x,y have to not equal.
-  if (m_Points[0].m_Point.x != m_Points[3].m_Point.x &&
-      m_Points[0].m_Point.y != m_Points[3].m_Point.y) {
-    return false;
-  }
-
-  for (int i = 1; i < 4; i++) {
-    if (m_Points[i].m_Type != FXPT_TYPE::LineTo)
-      return false;
-    // Note, both x,y have to not equal.
-    if (m_Points[i].m_Point.x != m_Points[i - 1].m_Point.x &&
-        m_Points[i].m_Point.y != m_Points[i - 1].m_Point.y) {
-      return false;
-    }
-  }
-  return m_Points.size() == 5 || m_Points[3].m_CloseFigure;
+  if (m_Points.size() == 4)
+    return IsRectImpl(m_Points);
+  return IsRectImpl(GetNormalizedPoints(m_Points));
 }
 
 Optional<CFX_FloatRect> CFX_PathData::GetRect(const CFX_Matrix* matrix) const {
-  if (!matrix) {
-    if (!IsRect())
-      return pdfium::nullopt;
-
-    CFX_FloatRect rect(m_Points[0].m_Point.x, m_Points[0].m_Point.y,
-                       m_Points[2].m_Point.x, m_Points[2].m_Point.y);
-    rect.Normalize();
-    return rect;
-  }
-
-  if (m_Points.size() != 5 && m_Points.size() != 4)
+  if (m_Points.size() < 4)
     return pdfium::nullopt;
 
-  if ((m_Points.size() == 5 && m_Points[0].m_Point != m_Points[4].m_Point) ||
-      m_Points[1].m_Point == m_Points[3].m_Point) {
+  std::vector<FX_PATHPOINT> points;
+  if (m_Points.size() == 4)
+    points = m_Points;
+  else
+    points = GetNormalizedPoints(m_Points);
+
+  if (matrix) {
+    for (FX_PATHPOINT& point : points)
+      point.m_Point = matrix->Transform(point.m_Point);
+  }
+
+  if (!IsRectImpl(points))
     return pdfium::nullopt;
-  }
-  // Note, both x,y not equal.
-  if (m_Points.size() == 4 && m_Points[0].m_Point.x != m_Points[3].m_Point.x &&
-      m_Points[0].m_Point.y != m_Points[3].m_Point.y) {
-    return pdfium::nullopt;
-  }
 
-  CFX_PointF points[5];
-  for (size_t i = 0; i < m_Points.size(); i++) {
-    points[i] = matrix->Transform(m_Points[i].m_Point);
-
-    if (i == 0)
-      continue;
-    if (m_Points[i].m_Type != FXPT_TYPE::LineTo)
-      return pdfium::nullopt;
-    if (points[i].x != points[i - 1].x && points[i].y != points[i - 1].y)
-      return pdfium::nullopt;
-  }
-
-  CFX_FloatRect rect(points[0].x, points[0].y, points[2].x, points[2].y);
+  CFX_FloatRect rect(points[0].m_Point.x, points[0].m_Point.y,
+                     points[2].m_Point.x, points[2].m_Point.y);
   rect.Normalize();
   return rect;
 }
