@@ -29,9 +29,10 @@ TEST(CFX_PathData, BasicTest) {
   path.AppendPoint({1, 1}, FXPT_TYPE::LineTo);
   path.AppendPoint({1, 0}, FXPT_TYPE::LineTo);
   EXPECT_EQ(4u, path.GetPoints().size());
-  EXPECT_FALSE(path.IsRect());
+  EXPECT_TRUE(path.IsRect());
   rect = path.GetRect(nullptr);
-  EXPECT_FALSE(rect.has_value());
+  ASSERT_TRUE(rect.has_value());
+  EXPECT_EQ(rect.value(), CFX_FloatRect(0, 0, 1, 1));
 
   path.ClosePath();
   EXPECT_EQ(4u, path.GetPoints().size());
@@ -128,12 +129,10 @@ TEST(CFX_PathData, ClosePath) {
   ASSERT_EQ(4u, path.GetPoints().size());
   EXPECT_EQ(FXPT_TYPE::LineTo, path.GetType(3));
   EXPECT_FALSE(path.IsClosingFigure(3));
-
-  // TODO(crbug.com/pdfium/1683): Resolve disagreement between these 2 calls,
-  // and the call with `kIdentityMatrix` below.
-  EXPECT_FALSE(path.IsRect());
+  EXPECT_TRUE(path.IsRect());
   Optional<CFX_FloatRect> rect = path.GetRect(nullptr);
-  EXPECT_FALSE(rect.has_value());
+  ASSERT_TRUE(rect.has_value());
+  EXPECT_EQ(rect.value(), CFX_FloatRect(0, 0, 1, 1));
 
   const CFX_Matrix kIdentityMatrix;
   ASSERT_TRUE(kIdentityMatrix.IsIdentity());
