@@ -6,8 +6,11 @@
 
 #include "core/fxge/cfx_pathdata.h"
 
+#include <algorithm>
+#include <iterator>
+
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/numerics/safe_math.h"
 
 namespace {
@@ -42,13 +45,35 @@ bool IsRectImpl(const std::vector<FX_PATHPOINT>& points) {
 std::vector<FX_PATHPOINT> GetNormalizedPoints(
     const std::vector<FX_PATHPOINT>& points) {
   DCHECK(points.size() >= 5);
-  if (points.size() > 5)
+  if (points[0].m_Point != points.back().m_Point)
     return {};
 
-  if (points[0].m_Point != points[4].m_Point)
-    return {};
+  std::vector<FX_PATHPOINT> normalized_points;
+  normalized_points.reserve(6);
+  normalized_points.push_back(points[0]);
+  for (auto it = points.begin() + 1; it != points.end(); ++it) {
+    // Exactly 5 points left. Stop normalizing and take what is left.
+    if (normalized_points.size() + std::distance(it, points.end()) == 5) {
+      std::copy(it, points.end(), std::back_inserter(normalized_points));
+      break;
+    }
 
-  std::vector<FX_PATHPOINT> normalized_points = points;
+    // If the line does not move, skip this point.
+    const auto& point = *it;
+    if (point.m_Type == FXPT_TYPE::LineTo && !point.m_CloseFigure &&
+        !normalized_points.back().m_CloseFigure &&
+        point.m_Point == normalized_points.back().m_Point) {
+      continue;
+    }
+
+    normalized_points.push_back(point);
+
+    // Too many points. Not considered as a rectangle.
+    if (normalized_points.size() > 5)
+      return {};
+  }
+
+  DCHECK_EQ(5u, normalized_points.size());
   normalized_points.pop_back();
   return normalized_points;
 }
