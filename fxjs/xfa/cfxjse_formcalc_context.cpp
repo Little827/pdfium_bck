@@ -1552,8 +1552,9 @@ v8::Local<v8::Value> GetObjectForName(CFXJSE_HostObject* pHostObject,
     return v8::Local<v8::Value>();
 
   CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
-  uint32_t dwFlags = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
-                     XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
+  XFA_ResolveNodeMask dwFlags =
+      XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
+      XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
   Optional<CFXJSE_Engine::ResolveResult> maybeResult =
       pScriptContext->ResolveObjects(
           pScriptContext->GetThisObject(),
@@ -1581,7 +1582,7 @@ Optional<CFXJSE_Engine::ResolveResult> ResolveObjects(
   WideString wsSomExpression = WideString::FromUTF8(bsSomExp);
   CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
   CXFA_Object* pNode = nullptr;
-  uint32_t dFlags = 0UL;
+  XFA_ResolveNodeMask dFlags = 0;
   if (bDotAccessor) {
     if (fxv8::IsNull(pRefValue)) {
       pNode = pScriptContext->GetThisObject();

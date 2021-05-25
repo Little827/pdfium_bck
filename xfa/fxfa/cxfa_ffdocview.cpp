@@ -437,9 +437,9 @@ CXFA_FFWidget* CXFA_FFDocView::GetWidgetByName(const WideString& wsName,
   }
   WideString wsExpression = (!pRefNode ? L"$form." : L"") + wsName;
 
-  constexpr uint32_t kStyle = XFA_RESOLVENODE_Children |
-                              XFA_RESOLVENODE_Properties |
-                              XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
+  constexpr XFA_ResolveNodeMask kStyle =
+      XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
+      XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
   Optional<CFXJSE_Engine::ResolveResult> maybeResult =
       pScriptContext->ResolveObjects(pRefNode, wsExpression.AsStringView(),
                                      kStyle);
@@ -637,7 +637,7 @@ void CXFA_FFDocView::RunBindItems() {
     CFXJSE_Engine* pScriptContext =
         pWidgetNode->GetDocument()->GetScriptContext();
     WideString wsRef = item->GetRef();
-    constexpr uint32_t kStyle =
+    constexpr XFA_ResolveNodeMask kStyle =
         XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
         XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent | XFA_RESOLVENODE_ALL;
     Optional<CFXJSE_Engine::ResolveResult> maybeRS =

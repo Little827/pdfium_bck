@@ -209,7 +209,7 @@ CXFA_Node* ResolveBreakTarget(CXFA_Node* pPageSetRoot,
       if (wsExpr.First(4).EqualsASCII("som(") && wsExpr.Back() == L')')
         wsProcessedTarget = wsExpr.Substr(4, wsExpr.GetLength() - 5);
 
-      constexpr uint32_t dwFlag =
+      constexpr XFA_ResolveNodeMask dwFlag =
           XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
           XFA_RESOLVENODE_Attributes | XFA_RESOLVENODE_Siblings |
           XFA_RESOLVENODE_Parent;
@@ -217,8 +217,9 @@ CXFA_Node* ResolveBreakTarget(CXFA_Node* pPageSetRoot,
           pDocument->GetScriptContext()->ResolveObjects(
               pPageSetRoot, wsProcessedTarget.AsStringView(), dwFlag);
       if (maybeResult.has_value() &&
-          maybeResult.value().objects.front()->IsNode())
+          maybeResult.value().objects.front()->IsNode()) {
         return maybeResult.value().objects.front()->AsNode();
+      }
     }
     iSplitIndex = iSplitNextIndex.value();
   }

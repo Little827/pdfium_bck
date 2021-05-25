@@ -1003,7 +1003,7 @@ void CJX_Object::ScriptAttributeString(v8::Isolate* pIsolate,
 
   CXFA_Node* pProtoNode = nullptr;
   if (!wsSOM.IsEmpty()) {
-    constexpr uint32_t dwFlag =
+    constexpr XFA_ResolveNodeMask dwFlag =
         XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
         XFA_RESOLVENODE_Properties | XFA_RESOLVENODE_Parent |
         XFA_RESOLVENODE_Siblings;
