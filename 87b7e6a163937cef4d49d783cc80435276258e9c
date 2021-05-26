@@ -34,6 +34,24 @@
       "parentUuid": "9a36b397_0ff365fb",
       "revId": "87b7e6a163937cef4d49d783cc80435276258e9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef0a951_62a49cd2",
+        "filename": "core/fpdfapi/render/cpdf_type3cache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-26T23:45:02Z",
+      "side": 1,
+      "message": "We can make another pass over this later. We\u0027ll need more test cases, as all the existing ones always eval to true when they reach here.",
+      "parentUuid": "b06c67a2_811557d2",
+      "revId": "87b7e6a163937cef4d49d783cc80435276258e9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
