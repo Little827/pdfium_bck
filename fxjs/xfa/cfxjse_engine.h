@@ -159,12 +159,15 @@ class CFXJSE_Engine final : public CFX_V8 {
                         XFA_ResolveNodeMask dwFlag);
   bool IsStrictScopeInJavaScript();
   CXFA_Object* GetVariablesThis(CXFA_Object* pObject);
-  CXFA_Object* GetVariablesScript(CXFA_Object* pObject);
+  CXFA_Node* GetVariablesScript(CXFA_Object* pObject);
+  CFXJSE_Context* VariablesContextForScriptNode(CXFA_Node* pScriptNode);
   bool QueryVariableValue(CXFA_Node* pScriptNode,
                           ByteStringView szPropName,
-                          v8::Local<v8::Value>* pValue,
-                          bool bGetter);
-  bool RunVariablesScript(CXFA_Node* pScriptNode);
+                          v8::Local<v8::Value>* pValue);
+  bool UpdateVariableValue(CXFA_Node* pScriptNode,
+                           ByteStringView szPropName,
+                           v8::Local<v8::Value> pValue);
+  void RunVariablesScript(CXFA_Node* pScriptNode);
 
   UnownedPtr<CJS_Runtime> const m_pSubordinateRuntime;
   cppgc::WeakPersistent<CXFA_Document> const m_pDocument;
