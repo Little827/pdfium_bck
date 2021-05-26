@@ -20,7 +20,38 @@
 #include "fxjs/xfa/cfxjse_nodehelper.h"
 #include "fxjs/xfa/cfxjse_resolveprocessor.h"
 #include "fxjs/xfa/cfxjse_value.h"
+#include "fxjs/xfa/cjx_boolean.h"
+#include "fxjs/xfa/cjx_container.h"
+#include "fxjs/xfa/cjx_datawindow.h"
+#include "fxjs/xfa/cjx_delta.h"
+#include "fxjs/xfa/cjx_desc.h"
+#include "fxjs/xfa/cjx_draw.h"
+#include "fxjs/xfa/cjx_encrypt.h"
+#include "fxjs/xfa/cjx_eventpseudomodel.h"
+#include "fxjs/xfa/cjx_exclgroup.h"
+#include "fxjs/xfa/cjx_extras.h"
+#include "fxjs/xfa/cjx_field.h"
+#include "fxjs/xfa/cjx_form.h"
+#include "fxjs/xfa/cjx_handler.h"
+#include "fxjs/xfa/cjx_hostpseudomodel.h"
+#include "fxjs/xfa/cjx_instancemanager.h"
+#include "fxjs/xfa/cjx_layoutpseudomodel.h"
+#include "fxjs/xfa/cjx_logpseudomodel.h"
+#include "fxjs/xfa/cjx_manifest.h"
+#include "fxjs/xfa/cjx_model.h"
+#include "fxjs/xfa/cjx_node.h"
 #include "fxjs/xfa/cjx_object.h"
+#include "fxjs/xfa/cjx_occur.h"
+#include "fxjs/xfa/cjx_packet.h"
+#include "fxjs/xfa/cjx_script.h"
+#include "fxjs/xfa/cjx_signaturepseudomodel.h"
+#include "fxjs/xfa/cjx_source.h"
+#include "fxjs/xfa/cjx_subform.h"
+#include "fxjs/xfa/cjx_textnode.h"
+#include "fxjs/xfa/cjx_tree.h"
+#include "fxjs/xfa/cjx_treelist.h"
+#include "fxjs/xfa/cjx_wsdlconnection.h"
+#include "fxjs/xfa/cjx_xfa.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
@@ -71,6 +102,13 @@ const FXJSE_CLASS_DESCRIPTOR VariablesClassDescriptor = {
 namespace {
 
 const char kFormCalcRuntime[] = "pfm_rt";
+
+constexpr XFA_ATTRIBUTE_CALLBACK kElementAttributeCallbacks[] = {
+#undef ELEM_ATTR____
+#define ELEM_ATTR____(a, b, c) c##_static,
+#include "xfa/fxfa/parser/element_attributes.inc"
+#undef ELEM_ATTR____
+};
 
 }  // namespace
 
@@ -849,4 +887,23 @@ v8::Local<v8::Object> CFXJSE_Engine::NewNormalXFAObject(CXFA_Object* obj) {
   v8::Local<v8::Object> object = obj->JSObject()->NewBoundV8Object(
       GetIsolate(), GetJseNormalClass()->GetTemplate(GetIsolate()));
   return scope.Escape(object);
+}
+
+Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
+    XFA_Element element,
+    WideStringView attribute_name) {
+  Optional<XFA_ATTRIBUTEINFO> attr = XFA_GetAttributeByName(attribute_name);
+  if (!attr.has_value())
+    return pdfium::nullopt;
+
+  Optional<size_t> index =
+      XFA_CallbackIndexForElementAttribute(element, attr.value().attribute);
+  if (!index.has_value())
+    return pdfium::nullopt;
+
+  XFA_SCRIPTATTRIBUTEINFO result;
+  result.attribute = attr.value().attribute;
+  result.eValueType = attr.value().eValueType;
+  result.callback = kElementAttributeCallbacks[index.value()];
+  return result;
 }

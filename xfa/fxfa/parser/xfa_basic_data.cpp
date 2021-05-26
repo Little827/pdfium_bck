@@ -9,37 +9,6 @@
 #include <iterator>
 #include <utility>
 
-#include "fxjs/xfa/cjx_boolean.h"
-#include "fxjs/xfa/cjx_container.h"
-#include "fxjs/xfa/cjx_datawindow.h"
-#include "fxjs/xfa/cjx_delta.h"
-#include "fxjs/xfa/cjx_desc.h"
-#include "fxjs/xfa/cjx_draw.h"
-#include "fxjs/xfa/cjx_encrypt.h"
-#include "fxjs/xfa/cjx_eventpseudomodel.h"
-#include "fxjs/xfa/cjx_exclgroup.h"
-#include "fxjs/xfa/cjx_extras.h"
-#include "fxjs/xfa/cjx_field.h"
-#include "fxjs/xfa/cjx_form.h"
-#include "fxjs/xfa/cjx_handler.h"
-#include "fxjs/xfa/cjx_hostpseudomodel.h"
-#include "fxjs/xfa/cjx_instancemanager.h"
-#include "fxjs/xfa/cjx_layoutpseudomodel.h"
-#include "fxjs/xfa/cjx_logpseudomodel.h"
-#include "fxjs/xfa/cjx_manifest.h"
-#include "fxjs/xfa/cjx_model.h"
-#include "fxjs/xfa/cjx_node.h"
-#include "fxjs/xfa/cjx_occur.h"
-#include "fxjs/xfa/cjx_packet.h"
-#include "fxjs/xfa/cjx_script.h"
-#include "fxjs/xfa/cjx_signaturepseudomodel.h"
-#include "fxjs/xfa/cjx_source.h"
-#include "fxjs/xfa/cjx_subform.h"
-#include "fxjs/xfa/cjx_textnode.h"
-#include "fxjs/xfa/cjx_tree.h"
-#include "fxjs/xfa/cjx_treelist.h"
-#include "fxjs/xfa/cjx_wsdlconnection.h"
-#include "fxjs/xfa/cjx_xfa.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
@@ -144,24 +113,14 @@ struct ElementAttributeRecord {
 };
 
 // Contains read-only data that do not require relocation.
-// Parts that require relocation are in `kElementAttributeCallbacks` below.
+// Parts that require relocation are in `kElementAttributeCallbacks`
+// in fxjs.
 constexpr ElementAttributeRecord kElementAttributeRecords[] = {
 #undef ELEM_ATTR____
 #define ELEM_ATTR____(a, b, c) {XFA_Element::a, XFA_Attribute::b},
 #include "xfa/fxfa/parser/element_attributes.inc"
 #undef ELEM_ATTR____
 };
-
-constexpr XFA_ATTRIBUTE_CALLBACK kElementAttributeCallbacks[] = {
-#undef ELEM_ATTR____
-#define ELEM_ATTR____(a, b, c) c##_static,
-#include "xfa/fxfa/parser/element_attributes.inc"
-#undef ELEM_ATTR____
-};
-
-static_assert(pdfium::size(kElementAttributeRecords) ==
-                  pdfium::size(kElementAttributeCallbacks),
-              "Size mismatch");
 
 }  // namespace
 
@@ -239,15 +198,10 @@ Optional<XFA_AttributeValue> XFA_GetAttributeValueByName(WideStringView name) {
   return it->eName;
 }
 
-Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
-    XFA_Element element,
-    WideStringView attribute_name) {
-  Optional<XFA_ATTRIBUTEINFO> attr = XFA_GetAttributeByName(attribute_name);
-  if (!attr.has_value())
-    return {};
-
+Optional<size_t> XFA_CallbackIndexForElementAttribute(XFA_Element element,
+                                                      XFA_Attribute attribute) {
   while (element != XFA_Element::Unknown) {
-    auto compound_key = std::make_pair(element, attr.value().attribute);
+    auto compound_key = std::make_pair(element, attribute);
     auto* it = std::lower_bound(
         std::begin(kElementAttributeRecords),
         std::end(kElementAttributeRecords), compound_key,
@@ -257,14 +211,9 @@ Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
         });
     if (it != std::end(kElementAttributeRecords) &&
         compound_key == std::make_pair(it->element, it->attribute)) {
-      XFA_SCRIPTATTRIBUTEINFO result;
-      result.attribute = attr.value().attribute;
-      result.eValueType = attr.value().eValueType;
-      size_t index = std::distance(std::begin(kElementAttributeRecords), it);
-      result.callback = kElementAttributeCallbacks[index];
-      return result;
+      return std::distance(std::begin(kElementAttributeRecords), it);
     }
     element = kElementRecords[static_cast<size_t>(element)].parent;
   }
-  return {};
+  return pdfium::nullopt;
 }

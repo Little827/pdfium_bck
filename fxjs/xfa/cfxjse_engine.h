@@ -43,6 +43,18 @@ enum XFA_ResolveNode : uint16_t {
 };
 using XFA_ResolveNodeMask = std::underlying_type<XFA_ResolveNode>::type;
 
+using XFA_ATTRIBUTE_CALLBACK = void (*)(v8::Isolate* pIsolate,
+                                        CJX_Object* pNode,
+                                        v8::Local<v8::Value>* pValue,
+                                        bool bSetting,
+                                        XFA_Attribute eAttribute);
+
+struct XFA_SCRIPTATTRIBUTEINFO {
+  XFA_Attribute attribute;
+  XFA_ScriptType eValueType;
+  XFA_ATTRIBUTE_CALLBACK callback = nullptr;
+};
+
 class CFXJSE_Engine final : public CFX_V8 {
  public:
   class ResolveResult {
@@ -180,5 +192,9 @@ class CFXJSE_Engine final : public CFX_V8 {
   cppgc::Persistent<CXFA_Object> m_pThisObject;
   XFA_AttributeValue m_eRunAtType = XFA_AttributeValue::Client;
 };
+
+Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
+    XFA_Element eElement,
+    WideStringView wsAttributeName);
 
 #endif  //  FXJS_XFA_CFXJSE_ENGINE_H_

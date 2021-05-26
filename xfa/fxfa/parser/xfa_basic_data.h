@@ -14,12 +14,6 @@
 #include "third_party/base/optional.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
-typedef void (*XFA_ATTRIBUTE_CALLBACK)(v8::Isolate* pIsolate,
-                                       CJX_Object* pNode,
-                                       v8::Local<v8::Value>* pValue,
-                                       bool bSetting,
-                                       XFA_Attribute eAttribute);
-
 struct XFA_PACKETINFO {
   const wchar_t* name;
   XFA_PacketType packet_type;
@@ -30,12 +24,6 @@ struct XFA_PACKETINFO {
 struct XFA_ATTRIBUTEINFO {
   XFA_Attribute attribute;
   XFA_ScriptType eValueType;
-};
-
-struct XFA_SCRIPTATTRIBUTEINFO {
-  XFA_Attribute attribute;
-  XFA_ScriptType eValueType;
-  XFA_ATTRIBUTE_CALLBACK callback = nullptr;
 };
 
 XFA_PACKETINFO XFA_GetPacketByIndex(XFA_PacketType ePacket);
@@ -50,8 +38,7 @@ Optional<XFA_ATTRIBUTEINFO> XFA_GetAttributeByName(WideStringView name);
 ByteStringView XFA_AttributeValueToName(XFA_AttributeValue item);
 Optional<XFA_AttributeValue> XFA_GetAttributeValueByName(WideStringView name);
 
-Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
-    XFA_Element eElement,
-    WideStringView wsAttributeName);
+Optional<size_t> XFA_CallbackIndexForElementAttribute(XFA_Element element,
+                                                      XFA_Attribute attribute);
 
 #endif  // XFA_FXFA_PARSER_XFA_BASIC_DATA_H_
