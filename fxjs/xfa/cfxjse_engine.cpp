@@ -305,11 +305,9 @@ v8::Local<v8::Value> CFXJSE_Engine::GlobalPropertyGetter(
     }
   }
 
-  CXFA_Object* pScriptObject =
-      lpScriptContext->GetVariablesScript(pOriginalObject);
-  if (pScriptObject &&
-      lpScriptContext->QueryVariableValue(pScriptObject->AsNode(), szPropName,
-                                          &pValue, true)) {
+  CXFA_Node* pScriptNode = lpScriptContext->GetVariablesScript(pOriginalObject);
+  if (pScriptNode &&
+      lpScriptContext->QueryVariableValue(pScriptNode, szPropName, &pValue)) {
     return pValue;
   }
 
@@ -385,13 +383,12 @@ v8::Local<v8::Value> CFXJSE_Engine::NormalPropertyGetter(
       }
     }
   }
-  CXFA_Object* pScriptObject =
-      lpScriptContext->GetVariablesScript(pOriginalObject);
-  if (!pScriptObject)
+  CXFA_Node* pScriptNode = lpScriptContext->GetVariablesScript(pOriginalObject);
+  if (!pScriptNode)
     return pReturnValue;
 
-  if (lpScriptContext->QueryVariableValue(ToNode(pScriptObject), szPropName,
-                                          &pReturnValue, true)) {
+  if (lpScriptContext->QueryVariableValue(pScriptNode, szPropName,
+                                          &pReturnValue)) {
     return pReturnValue;
   }
   Optional<XFA_SCRIPTATTRIBUTEINFO> info = XFA_GetScriptAttributeByName(
@@ -466,12 +463,10 @@ void CFXJSE_Engine::NormalPropertySetter(v8::Isolate* pIsolate,
     }
   }
 
-  CXFA_Object* pScriptObject =
-      lpScriptContext->GetVariablesScript(pOriginalObject);
-  if (pScriptObject) {
-    lpScriptContext->QueryVariableValue(ToNode(pScriptObject), szPropName,
-                                        &pValue, false);
-  }
+  CXFA_Node* pScriptNode =
+      ToNode(lpScriptContext->GetVariablesScript(pOriginalObject));
+  if (pScriptNode)
+    lpScriptContext->UpdateVariableValue(pScriptNode, szPropName, pValue);
 }
 
 int32_t CFXJSE_Engine::NormalPropTypeGetter(v8::Isolate* pIsolate,
@@ -543,34 +538,31 @@ CXFA_Object* CFXJSE_Engine::GetVariablesThis(CXFA_Object* pObject) {
   return pProxy ? pProxy->GetThisNode() : pObject;
 }
 
-CXFA_Object* CFXJSE_Engine::GetVariablesScript(CXFA_Object* pObject) {
+CXFA_Node* CFXJSE_Engine::GetVariablesScript(CXFA_Object* pObject) {
   CXFA_ThisProxy* pProxy = ToThisProxy(pObject);
-  return pProxy ? pProxy->GetScriptNode() : pObject;
+  return ToNode(pProxy ? pProxy->GetScriptNode() : pObject);
 }
 
-bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
-  if (!pScriptNode)
-    return false;
-
-  if (pScriptNode->GetElementType() != XFA_Element::Script)
-    return true;
+void CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
+  if (!pScriptNode || pScriptNode->GetElementType() != XFA_Element::Script)
+    return;
 
   CXFA_Node* pParent = pScriptNode->GetParent();
   if (!pParent || pParent->GetElementType() != XFA_Element::Variables)
-    return false;
+    return;
 
   auto it = m_mapVariableToContext.find(pScriptNode->JSObject());
   if (it != m_mapVariableToContext.end() && it->second)
-    return true;
+    return;
 
   CXFA_Node* pTextNode = pScriptNode->GetFirstChild();
   if (!pTextNode)
-    return false;
+    return;
 
   Optional<WideString> wsScript =
       pTextNode->JSObject()->TryCData(XFA_Attribute::Value, true);
   if (!wsScript)
-    return false;
+    return;
 
   ByteString btScript = wsScript->ToUTF8();
   auto hRetValue = std::make_unique<CFXJSE_Value>();
@@ -579,35 +571,33 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
       CreateVariablesContext(pScriptNode, pThisObject);
   AutoRestorer<cppgc::Persistent<CXFA_Object>> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
-  return pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
-                                          v8::Local<v8::Object>());
+  pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
+                                   v8::Local<v8::Object>());
 }
 
-bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
-                                       ByteStringView szPropName,
-                                       v8::Local<v8::Value>* pValue,
-                                       bool bGetter) {
+CFXJSE_Context* CFXJSE_Engine::VariablesContextForScriptNode(
+    CXFA_Node* pScriptNode) {
   if (!pScriptNode || pScriptNode->GetElementType() != XFA_Element::Script)
-    return false;
+    return nullptr;
 
   CXFA_Node* variablesNode = pScriptNode->GetParent();
   if (!variablesNode ||
       variablesNode->GetElementType() != XFA_Element::Variables) {
-    return false;
+    return nullptr;
   }
 
   auto it = m_mapVariableToContext.find(pScriptNode->JSObject());
-  if (it == m_mapVariableToContext.end() || !it->second)
+  return it != m_mapVariableToContext.end() ? it->second.get() : nullptr;
+}
+
+bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
+                                       ByteStringView szPropName,
+                                       v8::Local<v8::Value>* pValue) {
+  CFXJSE_Context* pVariableContext = VariablesContextForScriptNode(pScriptNode);
+  if (!pVariableContext)
     return false;
 
-  CFXJSE_Context* pVariableContext = it->second.get();
   v8::Local<v8::Object> pObject = pVariableContext->GetGlobalObject();
-  if (!bGetter) {
-    fxv8::ReentrantSetObjectOwnPropertyHelper(GetIsolate(), pObject, szPropName,
-                                              *pValue);
-    return true;
-  }
-
   if (!fxv8::ReentrantHasObjectOwnPropertyHelper(GetIsolate(), pObject,
                                                  szPropName, false)) {
     return false;
@@ -623,6 +613,18 @@ bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
   } else {
     *pValue = hVariableValue;
   }
+  return true;
+}
+
+bool CFXJSE_Engine::UpdateVariableValue(CXFA_Node* pScriptNode,
+                                        ByteStringView szPropName,
+                                        v8::Local<v8::Value> pValue) {
+  CFXJSE_Context* pVariableContext = VariablesContextForScriptNode(pScriptNode);
+  if (!pVariableContext)
+    return false;
+
+  fxv8::ReentrantSetObjectOwnPropertyHelper(
+      GetIsolate(), pVariableContext->GetGlobalObject(), szPropName, pValue);
   return true;
 }
 
@@ -818,8 +820,7 @@ CFXJSE_Engine::ResolveObjectsWithBindNode(CXFA_Object* refObject,
 
 v8::Local<v8::Object> CFXJSE_Engine::GetOrCreateJSBindingFromMap(
     CXFA_Object* pObject) {
-  if (pObject->IsNode())
-    RunVariablesScript(pObject->AsNode());
+  RunVariablesScript(pObject->AsNode());
 
   CJX_Object* pCJXObject = pObject->JSObject();
   auto iter = m_mapObjectToObject.find(pCJXObject);
