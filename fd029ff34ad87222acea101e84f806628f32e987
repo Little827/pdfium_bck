@@ -16,6 +16,29 @@
       "message": "Reading through code today, this annoyed me once again ... so there.",
       "revId": "fd029ff34ad87222acea101e84f806628f32e987",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aafb445_656c205b",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-05-27T21:32:51Z",
+      "side": 1,
+      "message": "Should the variables be renamed as well? Maybe look at the grep output for \u0027CFFL_FormField.*[Ff]iller\u0027 for another patch set or a follow-up CL?",
+      "range": {
+        "startLine": 64,
+        "startChar": 42,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "fd029ff34ad87222acea101e84f806628f32e987",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
