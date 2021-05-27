@@ -1660,11 +1660,20 @@ CJS_Result CJS_Field::get_readonly(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Field::set_readonly(CJS_Runtime* pRuntime,
                                    v8::Local<v8::Value> vp) {
-  std::vector<CPDF_FormField*> FieldArray = GetFormFields();
-  if (FieldArray.empty())
+  CPDF_FormField* pFormField = GetFirstFormField();
+  if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
+
   if (!m_bCanSet)
     return CJS_Result::Failure(JSMessage::kReadOnlyError);
+
+  bool bReadOnly = pRuntime->ToBoolean(vp);
+  uint32_t dwFlags = pFormField->GetFieldFlags();
+  uint32_t dwNewFlags = bReadOnly ? (dwFlags | pdfium::form_flags::kReadOnly)
+                                  : (dwFlags & ~pdfium::form_flags::kReadOnly);
+  if (dwNewFlags != dwFlags)
+    pFormField->SetFieldFlags(dwNewFlags);
+
   return CJS_Result::Success();
 }
 
