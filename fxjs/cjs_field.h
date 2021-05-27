@@ -14,6 +14,7 @@
 #include "fxjs/js_define.h"
 
 class CPDF_FormControl;
+class CPDF_FormField;
 struct CJS_DelayData;
 
 enum FIELD_PROP {
@@ -348,11 +349,11 @@ class CJS_Field final : public CJS_Object {
   CJS_Result signatureValidate(CJS_Runtime* pRuntime,
                                const std::vector<v8::Local<v8::Value>>& params);
 
-  void SetDelay(bool bDelay);
   std::vector<CPDF_FormField*> GetFormFields() const;
   CPDF_FormField* GetFirstFormField() const;
   CPDF_FormControl* GetSmartFieldControl(CPDF_FormField* pFormField);
 
+  void SetDelay(bool bDelay);
   void AddDelay_Int(FIELD_PROP prop, int32_t n);
   void AddDelay_Bool(FIELD_PROP prop, bool b);
   void AddDelay_String(FIELD_PROP prop, const ByteString& str);
@@ -360,8 +361,17 @@ class CJS_Field final : public CJS_Object {
   void AddDelay_WordArray(FIELD_PROP prop, const std::vector<uint32_t>& array);
   void AddDelay_WideStringArray(FIELD_PROP prop,
                                 const std::vector<WideString>& array);
-
   void DoDelay();
+
+  bool UpdateAnnotationFlagForField(CPDF_FormField* pFormField,
+                                    uint32_t flag,
+                                    bool enable);
+  void UpdateAnnotationFlagForAllControls(CPDF_FormField* pFormField,
+                                          uint32_t flag,
+                                          bool enable);
+  void UpdateAnnotationFlagForIndexedControl(CPDF_FormField* pFormField,
+                                             uint32_t flag,
+                                             bool enable);
 
   ObservedPtr<CJS_Document> m_pJSDoc;
   ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
