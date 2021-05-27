@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5333645_eeb4ebe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-27T20:02:19Z",
+      "side": 1,
+      "message": "Precursor to kReadOnly, though I\u0027m not 100% sure that will do the entire job.",
+      "revId": "be709cf97019f29e1fd5f2503bf0469cc9e479b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
