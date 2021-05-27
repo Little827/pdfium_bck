@@ -47,9 +47,9 @@ std::unique_ptr<CPWL_Wnd> CFFL_ComboBox::NewPWLWindow(
   pWnd->AttachFFLData(this);
   pWnd->Realize();
 
-  CFFL_InteractiveFormFiller* pFormFiller =
+  CFFL_InteractiveFormFiller* pInteractiveFormFiller =
       m_pFormFillEnv->GetInteractiveFormFiller();
-  pWnd->SetFillerNotify(pFormFiller);
+  pWnd->SetFillerNotify(pInteractiveFormFiller);
 
   int32_t nCurSel = m_pWidget->GetSelectedIndex(0);
   WideString swText;
