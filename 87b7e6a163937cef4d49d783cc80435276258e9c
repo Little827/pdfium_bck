@@ -52,6 +52,24 @@
       "parentUuid": "b06c67a2_811557d2",
       "revId": "87b7e6a163937cef4d49d783cc80435276258e9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1700e560_e1f1c8fb",
+        "filename": "core/fpdfapi/render/cpdf_type3cache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-05-27T00:22:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ef0a951_62a49cd2",
+      "revId": "87b7e6a163937cef4d49d783cc80435276258e9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
