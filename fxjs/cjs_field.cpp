@@ -494,6 +494,20 @@ void SetFieldValue(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   }
 }
 
+// Returns true if flag was changed from current setting.
+bool UpdateWidgetFlag(CPDFSDK_Widget* pWidget, uint32_t flag, bool enable) {
+  if (!pWidget)
+    return false;
+
+  uint32_t dwFlags = pWidget->GetFlags();
+  uint32_t dwNewFlags = enable ? (dwFlags | flag) : (dwFlags & ~flag);
+  if (dwNewFlags == dwFlags)
+    return false;
+
+  pWidget->SetFlags(dwNewFlags);
+  return true;
+}
+
 }  // namespace
 
 const JSPropertySpec CJS_Field::PropertySpecs[] = {
@@ -1569,7 +1583,6 @@ CJS_Result CJS_Field::get_print(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
                                 v8::Local<v8::Value> vp) {
-  CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
   std::vector<CPDF_FormField*> FieldArray = GetFormFields();
   if (FieldArray.empty())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
@@ -1577,50 +1590,11 @@ CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
   if (!m_bCanSet)
     return CJS_Result::Failure(JSMessage::kReadOnlyError);
 
+  bool bEnable = pRuntime->ToBoolean(vp);
   for (CPDF_FormField* pFormField : FieldArray) {
-    if (m_nFormControlIndex < 0) {
-      bool bSet = false;
-      for (int i = 0, sz = pFormField->CountControls(); i < sz; ++i) {
-        if (CPDFSDK_Widget* pWidget =
-                pForm->GetWidget(pFormField->GetControl(i))) {
-          uint32_t dwFlags = pWidget->GetFlags();
-          if (pRuntime->ToBoolean(vp))
-            dwFlags |= pdfium::annotation_flags::kPrint;
-          else
-            dwFlags &= ~pdfium::annotation_flags::kPrint;
-
-          if (dwFlags != pWidget->GetFlags()) {
-            pWidget->SetFlags(dwFlags);
-            bSet = true;
-          }
-        }
-      }
-
-      if (bSet)
-        UpdateFormField(m_pFormFillEnv.Get(), pFormField, true, false, true);
-
-      continue;
-    }
-
-    if (m_nFormControlIndex >= pFormField->CountControls())
+    if (!UpdateAnnotationFlagForField(
+            pFormField, pdfium::annotation_flags::kPrint, bEnable)) {
       return CJS_Result::Failure(JSMessage::kValueError);
-
-    if (CPDF_FormControl* pFormControl =
-            pFormField->GetControl(m_nFormControlIndex)) {
-      if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
-        uint32_t dwFlags = pWidget->GetFlags();
-        if (pRuntime->ToBoolean(vp))
-          dwFlags |= pdfium::annotation_flags::kPrint;
-        else
-          dwFlags &= ~pdfium::annotation_flags::kPrint;
-
-        if (dwFlags != pWidget->GetFlags()) {
-          pWidget->SetFlags(dwFlags);
-          UpdateFormControl(m_pFormFillEnv.Get(),
-                            pFormField->GetControl(m_nFormControlIndex), true,
-                            false, true);
-        }
-      }
     }
   }
   return CJS_Result::Success();
@@ -2654,4 +2628,48 @@ void CJS_Field::DoDelay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
     default:
       NOTREACHED();
   }
+}
+
+bool CJS_Field::UpdateAnnotationFlagForField(CPDF_FormField* pFormField,
+                                             uint32_t flag,
+                                             bool enable) {
+  if (m_nFormControlIndex < 0) {
+    UpdateAnnotationFlagForAllControls(pFormField, flag, enable);
+    return true;
+  }
+  if (m_nFormControlIndex < pFormField->CountControls()) {
+    UpdateAnnotationFlagForIndexedControl(pFormField, flag, enable);
+    return true;
+  }
+  return false;
+}
+
+void CJS_Field::UpdateAnnotationFlagForAllControls(CPDF_FormField* pFormField,
+                                                   uint32_t flag,
+                                                   bool enable) {
+  CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
+  bool bAnyChanged = false;
+  for (int i = 0, sz = pFormField->CountControls(); i < sz; ++i) {
+    CPDF_FormControl* pFormControl = pFormField->GetControl(i);
+    if (!pFormControl)
+      continue;
+
+    if (UpdateWidgetFlag(pForm->GetWidget(pFormControl), flag, enable))
+      bAnyChanged = true;
+  }
+  if (bAnyChanged)
+    UpdateFormField(m_pFormFillEnv.Get(), pFormField, true, false, true);
+}
+
+void CJS_Field::UpdateAnnotationFlagForIndexedControl(
+    CPDF_FormField* pFormField,
+    uint32_t flag,
+    bool enable) {
+  CPDF_FormControl* pFormControl = pFormField->GetControl(m_nFormControlIndex);
+  if (!pFormControl)
+    return;
+
+  CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
+  if (UpdateWidgetFlag(pForm->GetWidget(pFormControl), flag, enable))
+    UpdateFormControl(m_pFormFillEnv.Get(), pFormControl, true, false, true);
 }

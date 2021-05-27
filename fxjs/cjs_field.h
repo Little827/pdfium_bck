@@ -14,6 +14,7 @@
 #include "fxjs/js_define.h"
 
 class CPDF_FormControl;
+class CPDF_FormField;
 struct CJS_DelayData;
 
 enum FIELD_PROP {
@@ -361,6 +362,16 @@ class CJS_Field final : public CJS_Object {
   void AddDelay_WideStringArray(FIELD_PROP prop,
                                 const std::vector<WideString>& array);
   void DoDelay();
+
+  bool UpdateAnnotationFlagForField(CPDF_FormField* pFormField,
+                                    uint32_t flag,
+                                    bool enable);
+  void UpdateAnnotationFlagForAllControls(CPDF_FormField* pFormField,
+                                          uint32_t flag,
+                                          bool enable);
+  void UpdateAnnotationFlagForIndexedControl(CPDF_FormField* pFormField,
+                                             uint32_t flag,
+                                             bool enable);
 
   ObservedPtr<CJS_Document> m_pJSDoc;
   ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
