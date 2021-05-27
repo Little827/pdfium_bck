@@ -9,16 +9,18 @@
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfdoc/cpdf_bafontmap.h"
 
-CPWL_Wnd* CFFL_TextObject::ResetPWLWindow(CPDFSDK_PageView* pPageView,
-                                          bool bRestoreValue) {
-  if (bRestoreValue)
-    SaveState(pPageView);
-
+CPWL_Wnd* CFFL_TextObject::ResetPWLWindow(CPDFSDK_PageView* pPageView) {
   DestroyPWLWindow(pPageView);
-  if (bRestoreValue)
-    RestoreState(pPageView);
+  ObservedPtr<CPWL_Wnd> pRet(GetOrCreatePWLWindow(pPageView));
+  m_pWidget->UpdateField();  // May invoke JS, invalidating |pRet|.
+  return pRet.Get();
+}
 
-  ObservedPtr<CPWL_Wnd> pRet(GetPWLWindow(pPageView, !bRestoreValue));
+CPWL_Wnd* CFFL_TextObject::RestorePWLWindow(CPDFSDK_PageView* pPageView) {
+  SaveState(pPageView);
+  DestroyPWLWindow(pPageView);
+  RestoreState(pPageView);
+  ObservedPtr<CPWL_Wnd> pRet(GetPWLWindow(pPageView));
   m_pWidget->UpdateField();  // May invoke JS, invalidating |pRet|.
   return pRet.Get();
 }

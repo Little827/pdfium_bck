@@ -221,5 +221,5 @@ bool CFFL_ListBox::IsIndexSelected(int index) {
 }
 
 CPWL_ListBox* CFFL_ListBox::GetListBox(CPDFSDK_PageView* pPageView) {
-  return static_cast<CPWL_ListBox*>(GetPWLWindow(pPageView, /*bNew=*/false));
+  return static_cast<CPWL_ListBox*>(GetPWLWindow(pPageView));
 }
