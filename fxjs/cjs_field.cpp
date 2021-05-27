@@ -1624,12 +1624,17 @@ CJS_Result CJS_Field::set_radios_in_unison(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_Field::get_readonly(CJS_Runtime* pRuntime) {
+  CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
   CPDF_FormField* pFormField = GetFirstFormField();
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
+  CPDFSDK_Widget* pWidget = pForm->GetWidget(GetSmartFieldControl(pFormField));
+  if (!pWidget)
+    return CJS_Result::Failure(JSMessage::kBadObjectError);
+
   return CJS_Result::Success(pRuntime->NewBoolean(
-      !!(pFormField->GetFieldFlags() & pdfium::form_flags::kReadOnly)));
+      !!(pWidget->GetFlags() & pdfium::annotation_flags::kReadOnly)));
 }
 
 CJS_Result CJS_Field::set_readonly(CJS_Runtime* pRuntime,
@@ -1637,8 +1642,17 @@ CJS_Result CJS_Field::set_readonly(CJS_Runtime* pRuntime,
   std::vector<CPDF_FormField*> FieldArray = GetFormFields();
   if (FieldArray.empty())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
+
   if (!m_bCanSet)
     return CJS_Result::Failure(JSMessage::kReadOnlyError);
+
+  bool bEnable = pRuntime->ToBoolean(vp);
+  for (CPDF_FormField* pFormField : FieldArray) {
+    if (!UpdateAnnotationFlagForField(
+            pFormField, pdfium::annotation_flags::kReadOnly, bEnable)) {
+      return CJS_Result::Failure(JSMessage::kValueError);
+    }
+  }
   return CJS_Result::Success();
 }
 
