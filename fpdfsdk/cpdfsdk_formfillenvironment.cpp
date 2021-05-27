@@ -21,7 +21,7 @@
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
-#include "fpdfsdk/formfiller/cffl_formfiller.h"
+#include "fpdfsdk/formfiller/cffl_formfield.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/formfiller/cffl_privatedata.h"
 #include "fxjs/ijs_runtime.h"
@@ -78,10 +78,10 @@ CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
   // itself up. Make sure it is deleted before |m_pFormFiller|.
   m_pAnnotHandlerMgr.reset();
 
-  // Must destroy the |m_pFormFiller| before the environment (|this|)
+  // Must destroy the |m_pInteractiveFormFiller| before the environment (|this|)
   // because any created form widgets hold a pointer to the environment.
   // Those widgets may call things like KillTimer() as they are shutdown.
-  m_pFormFiller.reset();
+  m_pInteractiveFormFiller.reset();
 
   if (m_pInfo && m_pInfo->Release)
     m_pInfo->Release(m_pInfo);
@@ -110,16 +110,16 @@ void CPDFSDK_FormFillEnvironment::InvalidateRect(PerWindowData* pWidgetData,
 }
 
 void CPDFSDK_FormFillEnvironment::OutputSelectedRect(
-    CFFL_FormFiller* pFormFiller,
+    CFFL_FormField* pFormField,
     const CFX_FloatRect& rect) {
-  if (!pFormFiller || !m_pInfo || !m_pInfo->FFI_OutputSelectedRect)
+  if (!pFormField || !m_pInfo || !m_pInfo->FFI_OutputSelectedRect)
     return;
 
-  auto* pPage = FPDFPageFromIPDFPage(pFormFiller->GetSDKAnnot()->GetPage());
+  auto* pPage = FPDFPageFromIPDFPage(pFormField->GetSDKAnnot()->GetPage());
   DCHECK(pPage);
 
-  CFX_PointF ptA = pFormFiller->PWLtoFFL(CFX_PointF(rect.left, rect.bottom));
-  CFX_PointF ptB = pFormFiller->PWLtoFFL(CFX_PointF(rect.right, rect.top));
+  CFX_PointF ptA = pFormField->PWLtoFFL(CFX_PointF(rect.left, rect.bottom));
+  CFX_PointF ptB = pFormField->PWLtoFFL(CFX_PointF(rect.right, rect.top));
   m_pInfo->FFI_OutputSelectedRect(m_pInfo, pPage, ptA.x, ptB.y, ptB.x, ptA.y);
 }
 
@@ -351,9 +351,11 @@ CPDFSDK_ActionHandler* CPDFSDK_FormFillEnvironment::GetActionHandler() {
 
 CFFL_InteractiveFormFiller*
 CPDFSDK_FormFillEnvironment::GetInteractiveFormFiller() {
-  if (!m_pFormFiller)
-    m_pFormFiller = std::make_unique<CFFL_InteractiveFormFiller>(this);
-  return m_pFormFiller.get();
+  if (!m_pInteractiveFormFiller) {
+    m_pInteractiveFormFiller =
+        std::make_unique<CFFL_InteractiveFormFiller>(this);
+  }
+  return m_pInteractiveFormFiller.get();
 }
 
 void CPDFSDK_FormFillEnvironment::Invalidate(IPDF_Page* page,
