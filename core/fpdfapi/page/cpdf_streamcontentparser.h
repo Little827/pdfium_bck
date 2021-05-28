@@ -120,7 +120,8 @@ class CPDF_StreamContentParser {
                         bool bText,
                         bool bGraph);
   RetainPtr<CPDF_ColorSpace> FindColorSpace(const ByteString& name);
-  RetainPtr<CPDF_Pattern> FindPattern(const ByteString& name, bool bShading);
+  RetainPtr<CPDF_Pattern> FindTilingPattern(const ByteString& name);
+  RetainPtr<CPDF_Pattern> FindShadingPattern(const ByteString& name);
   CPDF_Dictionary* FindResourceHolder(const ByteString& type);
   CPDF_Object* FindResourceObj(const ByteString& type, const ByteString& name);
 
