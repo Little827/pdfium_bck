@@ -103,8 +103,8 @@ class CFFL_FormField : public CPWL_Wnd::ProviderIface,
   virtual std::unique_ptr<CPWL_Wnd> NewPWLWindow(
       const CPWL_Wnd::CreateParams& cp,
       std::unique_ptr<IPWL_SystemHandler::PerWindowData> pAttachedData) = 0;
-  virtual CPWL_Wnd* ResetPWLWindow(CPDFSDK_PageView* pPageView,
-                                   bool bRestoreValue);
+  virtual CPWL_Wnd* ResetPWLWindow(CPDFSDK_PageView* pPageView);
+  virtual CPWL_Wnd* RestorePWLWindow(CPDFSDK_PageView* pPageView);
   virtual void SaveState(CPDFSDK_PageView* pPageView);
   virtual void RestoreState(CPDFSDK_PageView* pPageView);
 
@@ -123,7 +123,8 @@ class CFFL_FormField : public CPWL_Wnd::ProviderIface,
   virtual bool IsFieldFull(CPDFSDK_PageView* pPageView);
 #endif  // PDF_ENABLE_XFA
 
-  CPWL_Wnd* GetPWLWindow(CPDFSDK_PageView* pPageView, bool bNew);
+  CPWL_Wnd* GetPWLWindow(CPDFSDK_PageView* pPageView) const;
+  CPWL_Wnd* CreateOrUpdatePWLWindow(CPDFSDK_PageView* pPageView);
   void DestroyPWLWindow(CPDFSDK_PageView* pPageView);
   void EscapeFiller(CPDFSDK_PageView* pPageView, bool bDestroyPWLWindow);
 
