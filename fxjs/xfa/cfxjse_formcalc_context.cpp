@@ -1597,8 +1597,8 @@ Optional<CFXJSE_Engine::ResolveResult> ResolveObjects(
         if (CXFA_Node* pXFANode = pNode->AsNode()) {
           Optional<WideString> ret =
               pXFANode->JSObject()->TryAttribute(XFA_Attribute::Name, false);
-          if (ret)
-            wsName = *ret;
+          if (ret.has_value())
+            wsName = ret.value();
         }
         if (wsName.IsEmpty())
           wsName = L"#" + WideString::FromASCII(pNode->GetClassName());

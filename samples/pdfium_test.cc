@@ -533,7 +533,7 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       }
       std::string path = value;
       auto expanded_path = ExpandDirectoryPath(path);
-      if (!expanded_path) {
+      if (!expanded_path.has_value()) {
         fprintf(stderr, "Failed to expand --font-dir, %s\n", path.c_str());
         return false;
       }
@@ -582,7 +582,7 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       }
       std::string path = value;
       auto expanded_path = ExpandDirectoryPath(path);
-      if (!expanded_path) {
+      if (!expanded_path.has_value()) {
         fprintf(stderr, "Failed to expand --bin-dir, %s\n", path.c_str());
         return false;
       }

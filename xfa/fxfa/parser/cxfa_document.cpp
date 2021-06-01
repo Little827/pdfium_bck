@@ -1341,14 +1341,14 @@ CXFA_Object* CXFA_Document::GetXFAObject(XFA_HashCode dwNodeNameHash) {
 
         Optional<WideString> namespaceURI =
             pDatasetsChild->JSObject()->TryNamespace();
-        if (!namespaceURI)
+        if (!namespaceURI.has_value())
           continue;
 
         Optional<WideString> datasetsURI =
             pDatasetsNode->JSObject()->TryNamespace();
-        if (!datasetsURI)
+        if (!datasetsURI.has_value())
           continue;
-        if (*namespaceURI == *datasetsURI)
+        if (namespaceURI.value() == datasetsURI.value())
           return pDatasetsChild;
       }
       return nullptr;
@@ -1690,9 +1690,9 @@ void CXFA_Document::DoDataMerge() {
     } else if (!pDataRoot && pChildNode->GetNameHash() == XFA_HASHCODE_Data) {
       Optional<WideString> namespaceURI =
           pChildNode->JSObject()->TryNamespace();
-      if (!namespaceURI)
+      if (!namespaceURI.has_value())
         continue;
-      if (*namespaceURI == wsDatasetsURI)
+      if (namespaceURI.value() == wsDatasetsURI)
         pDataRoot = pChildNode;
     }
     if (pDataRoot && pDDRoot)
