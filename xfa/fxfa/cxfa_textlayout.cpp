@@ -812,8 +812,8 @@ bool CXFA_TextLayout::LoadRichText(
         } else {
           Optional<WideString> obj =
               m_pTextParser->GetEmbeddedObj(m_pTextProvider, pXMLNode);
-          if (obj)
-            wsText = *obj;
+          if (obj.has_value())
+            wsText = obj.value();
         }
       }
 

@@ -103,14 +103,14 @@ void CXFA_FFTextEdit::UpdateWidgetProperty() {
     iMaxChars = 0;
 
   Optional<int32_t> numCells = m_pNode->GetNumberOfCells();
-  if (!numCells) {
+  if (!numCells.has_value()) {
     pWidget->SetLimit(iMaxChars);
-  } else if (*numCells == 0) {
+  } else if (numCells.value() == 0) {
     dwExtendedStyle |= FWL_STYLEEXT_EDT_CombText;
     pWidget->SetLimit(iMaxChars > 0 ? iMaxChars : 1);
   } else {
     dwExtendedStyle |= FWL_STYLEEXT_EDT_CombText;
-    pWidget->SetLimit(*numCells);
+    pWidget->SetLimit(numCells.value());
   }
 
   dwExtendedStyle |= GetAlignment();
@@ -273,7 +273,7 @@ bool CXFA_FFTextEdit::UpdateFWLData() {
 
   bool bUpdate = false;
   if (m_pNode->GetFFWidgetType() == XFA_FFWidgetType::kTextEdit &&
-      !m_pNode->GetNumberOfCells()) {
+      !m_pNode->GetNumberOfCells().has_value()) {
     XFA_Element elementType;
     int32_t iMaxChars;
     std::tie(elementType, iMaxChars) = m_pNode->GetMaxChars();

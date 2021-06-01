@@ -231,9 +231,10 @@ bool CPDF_LinkExtract::CheckWebLink(WideString* strBeCheck,
 bool CPDF_LinkExtract::CheckMailLink(WideString* str) {
   auto aPos = str->Find(L'@');
   // Invalid when no '@' or when starts/ends with '@'.
-  if (!aPos.has_value() || aPos.value() == 0 || aPos == str->GetLength() - 1)
+  if (!aPos.has_value() || aPos.value() == 0 ||
+      aPos.value() == str->GetLength() - 1) {
     return false;
-
+  }
   // Check the local part.
   size_t pPos = aPos.value();  // Used to track the position of '@' or '.'.
   for (size_t i = aPos.value(); i > 0; i--) {

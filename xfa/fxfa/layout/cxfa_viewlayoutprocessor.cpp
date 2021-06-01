@@ -1156,8 +1156,8 @@ bool CXFA_ViewLayoutProcessor::FindPageAreaFromPageSet_Ordered(
     if (pOccurNode) {
       Optional<int32_t> ret =
           pOccurNode->JSObject()->TryInteger(XFA_Attribute::Max, false);
-      if (ret)
-        iMax = *ret;
+      if (ret.has_value())
+        iMax = ret.value();
     }
     if (iMax >= 0 && iMax <= iPageSetCount)
       return false;
@@ -1325,11 +1325,12 @@ bool CXFA_ViewLayoutProcessor::MatchPageAreaOddOrEven(CXFA_Node* pPageArea) {
 
   Optional<XFA_AttributeValue> ret =
       pPageArea->JSObject()->TryEnum(XFA_Attribute::OddOrEven, true);
-  if (!ret || *ret == XFA_AttributeValue::Any)
+  if (!ret.has_value() || ret.value() == XFA_AttributeValue::Any)
     return true;
 
   int32_t iPageLast = GetPageCount() % 2;
-  return *ret == XFA_AttributeValue::Odd ? iPageLast == 0 : iPageLast == 1;
+  return ret.value() == XFA_AttributeValue::Odd ? iPageLast == 0
+                                                : iPageLast == 1;
 }
 
 CXFA_Node* CXFA_ViewLayoutProcessor::GetNextAvailPageArea(
@@ -1354,8 +1355,8 @@ CXFA_Node* CXFA_ViewLayoutProcessor::GetNextAvailPageArea(
       if (pOccurNode) {
         Optional<int32_t> ret =
             pOccurNode->JSObject()->TryInteger(XFA_Attribute::Max, false);
-        if (ret)
-          iMax = *ret;
+        if (ret.has_value())
+          iMax = ret.value();
       }
       if ((iMax < 0 || m_nCurPageCount < iMax)) {
         if (!bQuery) {
@@ -1461,11 +1462,11 @@ int32_t CXFA_ViewLayoutProcessor::CreateMinPageRecord(CXFA_Node* pPageArea,
       pPageArea->GetFirstChildByClass<CXFA_Occur>(XFA_Element::Occur);
   if (pOccurNode) {
     ret = pOccurNode->JSObject()->TryInteger(XFA_Attribute::Min, false);
-    if (ret)
-      iMin = *ret;
+    if (ret.has_value())
+      iMin = ret.value();
   }
 
-  if (!ret && !bTargetPageArea)
+  if (!ret.has_value() && !bTargetPageArea)
     return iMin;
 
   CXFA_Node* pContentArea = pPageArea->GetFirstChildByClass<CXFA_ContentArea>(
@@ -1502,10 +1503,10 @@ void CXFA_ViewLayoutProcessor::CreateMinPageSetRecord(CXFA_Node* pPageSet,
 
   Optional<int32_t> iMin =
       pOccurNode->JSObject()->TryInteger(XFA_Attribute::Min, false);
-  if (!iMin || iCurSetCount >= *iMin)
+  if (!iMin.has_value() || iCurSetCount >= iMin.value())
     return;
 
-  for (int32_t i = 0; i < *iMin - iCurSetCount; i++) {
+  for (int32_t i = 0; i < iMin.value() - iCurSetCount; i++) {
     for (CXFA_Node* node = pPageSet->GetFirstChild(); node;
          node = node->GetNextSibling()) {
       if (node->GetElementType() == XFA_Element::PageArea)
@@ -1514,7 +1515,7 @@ void CXFA_ViewLayoutProcessor::CreateMinPageSetRecord(CXFA_Node* pPageSet,
         CreateMinPageSetRecord(node, true);
     }
   }
-  m_pPageSetMap[pPageSet] = *iMin;
+  m_pPageSetMap[pPageSet] = iMin.value();
 }
 
 void CXFA_ViewLayoutProcessor::CreateNextMinRecord(CXFA_Node* pRecordNode) {
@@ -1568,10 +1569,10 @@ bool CXFA_ViewLayoutProcessor::GetNextAvailContentHeight(float fChildHeight) {
   Optional<int32_t> ret;
   if (pOccurNode) {
     ret = pOccurNode->JSObject()->TryInteger(XFA_Attribute::Max, false);
-    if (ret)
-      iMax = *ret;
+    if (ret.has_value())
+      iMax = ret.value();
   }
-  if (ret) {
+  if (ret.has_value()) {
     if (m_nCurPageCount == iMax) {
       CXFA_Node* pSrcPage = m_pCurPageArea;
       int32_t nSrcPageCount = m_nCurPageCount;

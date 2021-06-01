@@ -490,7 +490,8 @@ int32_t CFXJSE_Engine::NormalPropTypeGetter(v8::Isolate* pIsolate,
     return FXJSE_ClassPropType_Method;
 
   if (bQueryIn &&
-      !XFA_GetScriptAttributeByName(eType, wsPropName.AsStringView())) {
+      !XFA_GetScriptAttributeByName(eType, wsPropName.AsStringView())
+           .has_value()) {
     return FXJSE_ClassPropType_None;
   }
   return FXJSE_ClassPropType_Property;
@@ -569,7 +570,7 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
 
   Optional<WideString> wsScript =
       pTextNode->JSObject()->TryCData(XFA_Attribute::Value, true);
-  if (!wsScript)
+  if (!wsScript.has_value())
     return false;
 
   ByteString btScript = wsScript->ToUTF8();
