@@ -209,7 +209,9 @@ void CJX_Object::SetAttributeByEnum(XFA_Attribute eAttr,
     case XFA_AttributeType::Enum: {
       Optional<XFA_AttributeValue> item =
           XFA_GetAttributeValueByName(wsValue.AsStringView());
-      SetEnum(eAttr, item ? *item : *(GetXFANode()->GetDefaultEnum(eAttr)),
+      SetEnum(eAttr,
+              item.has_value() ? item.value()
+                               : GetXFANode()->GetDefaultEnum(eAttr).value(),
               bNotify);
       break;
     }
@@ -263,28 +265,28 @@ Optional<WideString> CJX_Object::TryAttribute(XFA_Attribute eAttr,
   switch (GetXFANode()->GetAttributeType(eAttr)) {
     case XFA_AttributeType::Enum: {
       Optional<XFA_AttributeValue> value = TryEnum(eAttr, bUseDefault);
-      if (!value)
+      if (!value.has_value())
         return {};
-      return WideString::FromASCII(XFA_AttributeValueToName(*value));
+      return WideString::FromASCII(XFA_AttributeValueToName(value.value()));
     }
     case XFA_AttributeType::CData:
       return TryCData(eAttr, bUseDefault);
 
     case XFA_AttributeType::Boolean: {
       Optional<bool> value = TryBoolean(eAttr, bUseDefault);
-      if (!value)
+      if (!value.has_value())
         return {};
-      return WideString(*value ? L"1" : L"0");
+      return WideString(value.value() ? L"1" : L"0");
     }
     case XFA_AttributeType::Integer: {
       Optional<int32_t> iValue = TryInteger(eAttr, bUseDefault);
-      if (!iValue)
+      if (!iValue.has_value())
         return {};
-      return WideString::Format(L"%d", *iValue);
+      return WideString::Format(L"%d", iValue.has_value());
     }
     case XFA_AttributeType::Measure: {
       Optional<CXFA_Measurement> value = TryMeasure(eAttr, bUseDefault);
-      if (!value)
+      if (!value.has_value())
         return {};
 
       return value->ToString();
@@ -397,7 +399,7 @@ Optional<CXFA_Measurement> CJX_Object::TryMeasure(XFA_Attribute eAttr,
 
 Optional<float> CJX_Object::TryMeasureAsFloat(XFA_Attribute attr) const {
   Optional<CXFA_Measurement> measure = TryMeasure(attr, false);
-  if (!measure)
+  if (!measure.has_value())
     return pdfium::nullopt;
   return measure->ToUnit(XFA_Unit::Pt);
 }
@@ -613,8 +615,8 @@ void CJX_Object::SetContent(const WideString& wsContent,
       if (GetXFANode()->GetElementType() == XFA_Element::ExData) {
         Optional<WideString> ret =
             TryAttribute(XFA_Attribute::ContentType, false);
-        if (ret)
-          wsContentType = *ret;
+        if (ret.has_value())
+          wsContentType = ret.value();
         if (wsContentType.EqualsASCII("text/html")) {
           wsContentType.clear();
           SetAttributeByEnum(XFA_Attribute::ContentType, wsContentType, false);

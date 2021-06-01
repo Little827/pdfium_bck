@@ -119,12 +119,13 @@ void CPDF_Parser::ShrinkObjectMap(uint32_t size) {
 bool CPDF_Parser::InitSyntaxParser(
     const RetainPtr<CPDF_ReadValidator>& validator) {
   const Optional<FX_FILESIZE> header_offset = GetHeaderOffset(validator);
-  if (!header_offset)
+  if (!header_offset.has_value())
     return false;
-  if (validator->GetSize() < *header_offset + kPDFHeaderSize)
+  if (validator->GetSize() < header_offset.value() + kPDFHeaderSize)
     return false;
 
-  m_pSyntax = std::make_unique<CPDF_SyntaxParser>(validator, *header_offset);
+  m_pSyntax =
+      std::make_unique<CPDF_SyntaxParser>(validator, header_offset.value());
   return ParseFileVersion();
 }
 

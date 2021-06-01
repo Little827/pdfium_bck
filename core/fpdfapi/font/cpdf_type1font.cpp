@@ -100,9 +100,9 @@ bool CPDF_Type1Font::Load() {
     for (int i = 0; i < 256; i++)
       m_CharWidth[i] = 600;
   }
-  if (m_Base14Font == CFX_FontMapper::kSymbol)
+  if (m_Base14Font.value() == CFX_FontMapper::kSymbol)
     m_BaseEncoding = PDFFONT_ENCODING_ADOBE_SYMBOL;
-  else if (m_Base14Font == CFX_FontMapper::kDingbats)
+  else if (m_Base14Font.value() == CFX_FontMapper::kDingbats)
     m_BaseEncoding = PDFFONT_ENCODING_ZAPFDINGBATS;
   else if (FontStyleIsNonSymbolic(m_Flags))
     m_BaseEncoding = PDFFONT_ENCODING_STANDARD;

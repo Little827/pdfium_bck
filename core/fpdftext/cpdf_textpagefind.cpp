@@ -129,7 +129,7 @@ std::vector<WideString> ExtractFindWhat(const WideString& findwhat) {
   int index = 0;
   while (1) {
     Optional<WideString> word = ExtractSubString(findwhat.c_str(), index);
-    if (!word)
+    if (!word.has_value())
       break;
 
     if (word->IsEmpty()) {
@@ -141,7 +141,7 @@ std::vector<WideString> ExtractFindWhat(const WideString& findwhat) {
     size_t pos = 0;
     while (pos < word->GetLength()) {
       WideString curStr = word->Substr(pos, 1);
-      wchar_t curChar = (*word)[pos];
+      wchar_t curChar = word.value()[pos];
       if (IsIgnoreSpaceCharacter(curChar)) {
         if (pos > 0 && curChar == 0x2019) {
           pos++;
