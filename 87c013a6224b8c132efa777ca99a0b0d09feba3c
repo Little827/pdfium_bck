@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8ec21c_52c64c84",
+        "filename": "fpdfsdk/formfiller/cffl_formfield.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-01T15:03:57Z",
+      "side": 1,
+      "message": "We typically only put this for static methods.",
+      "revId": "87c013a6224b8c132efa777ca99a0b0d09feba3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0e8d22_3377206e",
+        "filename": "fpdfsdk/formfiller/cffl_textobject.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-01T15:03:57Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "87c013a6224b8c132efa777ca99a0b0d09feba3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
