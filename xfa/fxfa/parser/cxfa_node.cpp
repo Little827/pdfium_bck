@@ -1157,7 +1157,7 @@ Optional<XFA_Element> CXFA_Node::GetFirstPropertyWithFlag(
     if (prop.flags & flag)
       return prop.property;
   }
-  return {};
+  return pdfium::nullopt;
 }
 
 const CXFA_Node::AttributeData* CXFA_Node::GetAttributeData(
@@ -2021,51 +2021,51 @@ CXFA_Node* CXFA_Node::CreateInstanceIfPossible(bool bDataMerge) {
 Optional<bool> CXFA_Node::GetDefaultBoolean(XFA_Attribute attr) const {
   Optional<void*> value = GetDefaultValue(attr, XFA_AttributeType::Boolean);
   if (!value.has_value())
-    return {};
-  return {!!*value};
+    return pdfium::nullopt;
+  return !!*value;
 }
 
 Optional<int32_t> CXFA_Node::GetDefaultInteger(XFA_Attribute attr) const {
   Optional<void*> value = GetDefaultValue(attr, XFA_AttributeType::Integer);
   if (!value.has_value())
-    return {};
-  return {static_cast<int32_t>(reinterpret_cast<uintptr_t>(*value))};
+    return pdfium::nullopt;
+  return static_cast<int32_t>(reinterpret_cast<uintptr_t>(*value));
 }
 
 Optional<CXFA_Measurement> CXFA_Node::GetDefaultMeasurement(
     XFA_Attribute attr) const {
   Optional<void*> value = GetDefaultValue(attr, XFA_AttributeType::Measure);
   if (!value.has_value())
-    return {};
+    return pdfium::nullopt;
 
   WideString str = WideString(static_cast<const wchar_t*>(*value));
-  return {CXFA_Measurement(str.AsStringView())};
+  return CXFA_Measurement(str.AsStringView());
 }
 
 Optional<WideString> CXFA_Node::GetDefaultCData(XFA_Attribute attr) const {
   Optional<void*> value = GetDefaultValue(attr, XFA_AttributeType::CData);
   if (!value.has_value())
-    return {};
+    return pdfium::nullopt;
 
-  return {WideString(static_cast<const wchar_t*>(*value))};
+  return WideString(static_cast<const wchar_t*>(*value));
 }
 
 Optional<XFA_AttributeValue> CXFA_Node::GetDefaultEnum(
     XFA_Attribute attr) const {
   Optional<void*> value = GetDefaultValue(attr, XFA_AttributeType::Enum);
   if (!value.has_value())
-    return {};
-  return {static_cast<XFA_AttributeValue>(reinterpret_cast<uintptr_t>(*value))};
+    return pdfium::nullopt;
+  return static_cast<XFA_AttributeValue>(reinterpret_cast<uintptr_t>(*value));
 }
 
 Optional<void*> CXFA_Node::GetDefaultValue(XFA_Attribute attr,
                                            XFA_AttributeType eType) const {
   const AttributeData* data = GetAttributeData(attr);
   if (!data)
-    return {};
+    return pdfium::nullopt;
   if (data->type == eType)
-    return {data->default_value};
-  return {};
+    return data->default_value;
+  return pdfium::nullopt;
 }
 
 void CXFA_Node::SendAttributeChangeMessage(XFA_Attribute eAttribute,
@@ -2327,7 +2327,7 @@ Optional<XFA_AttributeValue> CXFA_Node::GetIntactFromKeep(
   Optional<XFA_AttributeValue> intact =
       pKeep->JSObject()->TryEnum(XFA_Attribute::Intact, false);
   if (!intact.has_value())
-    return {};
+    return pdfium::nullopt;
 
   if (intact.value() != XFA_AttributeValue::None ||
       eLayoutType != XFA_AttributeValue::Row ||
@@ -4222,7 +4222,7 @@ Optional<WideString> CXFA_Node::GetChoiceListItem(int32_t nIndex,
       break;
   }
   if (iCount == 0)
-    return {};
+    return pdfium::nullopt;
 
   CXFA_Node* pItems = pItemsArray[0];
   if (iCount > 1) {
@@ -4234,13 +4234,13 @@ Optional<WideString> CXFA_Node::GetChoiceListItem(int32_t nIndex,
       pItems = pItemsArray[1];
   }
   if (!pItems)
-    return {};
+    return pdfium::nullopt;
 
   CXFA_Node* pItem =
       pItems->GetChild<CXFA_Node>(nIndex, XFA_Element::Unknown, false);
   if (pItem)
-    return {pItem->JSObject()->GetContent(false)};
-  return {};
+    return pItem->JSObject()->GetContent(false);
+  return pdfium::nullopt;
 }
 
 std::vector<WideString> CXFA_Node::GetChoiceListItems(bool bSaveValue) {
@@ -4599,11 +4599,11 @@ bool CXFA_Node::IsVerticalScrollPolicyOff() {
 Optional<int32_t> CXFA_Node::GetNumberOfCells() {
   CXFA_Node* pUIChild = GetUIChildNode();
   if (!pUIChild)
-    return {};
+    return pdfium::nullopt;
   if (CXFA_Comb* pNode =
           pUIChild->GetChild<CXFA_Comb>(0, XFA_Element::Comb, false))
-    return {pNode->JSObject()->GetInteger(XFA_Attribute::NumberOfCells)};
-  return {};
+    return pNode->JSObject()->GetInteger(XFA_Attribute::NumberOfCells);
+  return pdfium::nullopt;
 }
 
 bool CXFA_Node::IsMultiLine() {
