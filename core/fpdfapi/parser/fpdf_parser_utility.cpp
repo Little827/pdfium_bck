@@ -199,7 +199,10 @@ std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj) {
       buf << " " << pObj->GetString();
       break;
     case CPDF_Object::kString:
-      buf << PDF_EncodeString(pObj->GetString(), pObj->AsString()->IsHex());
+      if (pObj->AsString()->IsHex())
+        buf << PDF_EncodeString(pObj->GetString());
+      else
+        buf << PDF_HexEncodeString(pObj->GetString());
       break;
     case CPDF_Object::kName: {
       ByteString str = pObj->GetString();
