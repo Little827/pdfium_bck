@@ -123,8 +123,7 @@ void CFWL_ComboList::OnDropListFocusChanged(CFWL_Message* pMsg, bool bSet) {
 
 void CFWL_ComboList::OnDropListMouseMove(CFWL_MessageMouse* pMsg) {
   if (GetRTClient().Contains(pMsg->m_pos)) {
-    if (m_bNotifyOwner)
-      m_bNotifyOwner = false;
+    m_bNotifyOwner = false;
 
     CFWL_ScrollBar* vertSB = GetVertScrollBar();
     if (IsShowScrollBar(true) && vertSB) {
