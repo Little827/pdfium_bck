@@ -1209,7 +1209,7 @@ void CPDFSDK_AppStream::SetAsPushButton() {
   ByteString csNameTag;
   Optional<ByteString> font = da.GetFont(&fFontSize);
   if (font.has_value())
-    csNameTag = *font;
+    csNameTag = font.value();
   else
     fFontSize = 12.0f;
 
