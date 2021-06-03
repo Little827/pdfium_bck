@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4292301_45750716",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-03T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6b4657_8a112e40",
+      "range": {
+        "startLine": 235,
+        "startChar": 15,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "29b6a07b90a688a56bca7595012264101c1df7bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "807a98a7_ea7fe69c",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-03T20:30:31Z",
       "side": 1,
       "message": "BTW, this appears to be dead code.",
+      "revId": "29b6a07b90a688a56bca7595012264101c1df7bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d99cc2_22897ccb",
+        "filename": "fxjs/xfa/cfxjse_value.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-03T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "807a98a7_ea7fe69c",
       "revId": "29b6a07b90a688a56bca7595012264101c1df7bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
