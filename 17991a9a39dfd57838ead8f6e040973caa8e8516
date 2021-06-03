@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48fcdd1_e5e9d6b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-03T22:58:17Z",
+      "side": 1,
+      "message": "Here\u0027s the \"proof\" of the claim.  CJS_Runtime::m_pFormFillEnv is set by the ctor and never modified, apart from self-nulling as an observed ptr (and would be const if it weren\u0027t for this quirk). CJS_EventContext::m_pJSRuntime is in fact const, as could be the CJS_event_recorder that lives next to it. That is the only place event recorders are made.",
+      "revId": "17991a9a39dfd57838ead8f6e040973caa8e8516",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
