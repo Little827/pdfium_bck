@@ -49,8 +49,7 @@ class CPDF_StreamContentParser {
                            std::set<const uint8_t*>* pParsedSet);
   ~CPDF_StreamContentParser();
 
-  uint32_t Parse(const uint8_t* pData,
-                 uint32_t dwSize,
+  uint32_t Parse(pdfium::span<const uint8_t> pData,
                  uint32_t start_offset,
                  uint32_t max_cost,
                  const std::vector<uint32_t>& stream_start_offsets);
