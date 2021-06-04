@@ -123,11 +123,11 @@ CFGAS_Char::BreakType CFGAS_RTFBreak::AppendChar(wchar_t wch) {
 }
 
 void CFGAS_RTFBreak::AppendChar_Combination(CFGAS_Char* pCurChar) {
-  FX_SAFE_INT32 iCharWidth = 0;
-  int32_t iCharWidthOut;
-  if (m_pFont && m_pFont->GetCharWidth(pCurChar->char_code(), &iCharWidthOut))
-    iCharWidth = iCharWidthOut;
-
+  Optional<int32_t> iCharWidthOut;
+  if (m_pFont) {
+    iCharWidthOut = m_pFont->GetCharWidth(pCurChar->char_code());
+  }
+  FX_SAFE_INT32 iCharWidth = iCharWidthOut.value_or(0);
   iCharWidth *= m_iFontSize;
   iCharWidth *= m_iHorizontalScale;
   iCharWidth /= 100;
@@ -211,16 +211,16 @@ CFGAS_Char::BreakType CFGAS_RTFBreak::AppendChar_Arabic(CFGAS_Char* pCurChar) {
       wForm = pdfium::arabic::GetFormChar(pLastChar, pPrevChar, pCurChar);
       bAlef = (wForm == 0xFEFF &&
                pLastChar->GetCharType() == FX_CHARTYPE::kArabicAlef);
-      FX_SAFE_INT32 iCharWidth;
-      int32_t iCharWidthOut;
-      if (m_pFont &&
-          (m_pFont->GetCharWidth(wForm, &iCharWidthOut) ||
-           m_pFont->GetCharWidth(pLastChar->char_code(), &iCharWidthOut))) {
-        iCharWidth = iCharWidthOut;
-      } else {
-        iCharWidth = 0;
+      FX_SAFE_INT32 iCharWidth = 0;
+      if (m_pFont) {
+        Optional<int32_t> iCharWidthOut = m_pFont->GetCharWidth(wForm);
+        if (iCharWidthOut.has_value()) {
+          iCharWidth = iCharWidthOut.value();
+        } else {
+          iCharWidthOut = m_pFont->GetCharWidth(pLastChar->char_code());
+          iCharWidth = iCharWidthOut.value_or(0);
+        }
       }
-
       iCharWidth *= m_iFontSize;
       iCharWidth *= m_iHorizontalScale;
       iCharWidth /= 100;
@@ -240,19 +240,16 @@ CFGAS_Char::BreakType CFGAS_RTFBreak::AppendChar_Arabic(CFGAS_Char* pCurChar) {
 
   wForm = pdfium::arabic::GetFormChar(pCurChar, bAlef ? nullptr : pLastChar,
                                       nullptr);
-  FX_SAFE_INT32 iCharWidth;
-  int32_t iCharWidthOut;
-  if (m_pFont &&
-      (m_pFont->GetCharWidth(wForm, &iCharWidthOut) ||
-       m_pFont->GetCharWidth(pCurChar->char_code(), &iCharWidthOut))) {
-    iCharWidth = iCharWidthOut;
-  } else {
-    iCharWidth = 0;
+  FX_SAFE_INT32 iCharWidth = 0;
+  if (m_pFont) {
+    Optional<int32_t> iCharWidthOut = m_pFont->GetCharWidth(wForm);
+    if (!iCharWidthOut.has_value())
+      iCharWidthOut = m_pFont->GetCharWidth(pCurChar->char_code());
+    iCharWidth = iCharWidthOut.value_or(0);
+    iCharWidth *= m_iFontSize;
+    iCharWidth *= m_iHorizontalScale;
+    iCharWidth /= 100;
   }
-
-  iCharWidth *= m_iFontSize;
-  iCharWidth *= m_iHorizontalScale;
-  iCharWidth /= 100;
 
   int iCharWidthValid = iCharWidth.ValueOrDefault(0);
   pCurChar->m_iCharWidth = iCharWidthValid;
@@ -272,23 +269,20 @@ CFGAS_Char::BreakType CFGAS_RTFBreak::AppendChar_Arabic(CFGAS_Char* pCurChar) {
 CFGAS_Char::BreakType CFGAS_RTFBreak::AppendChar_Others(CFGAS_Char* pCurChar) {
   FX_CHARTYPE chartype = pCurChar->GetCharType();
   wchar_t wForm = pCurChar->char_code();
-  FX_SAFE_INT32 iCharWidth;
-  int32_t iCharWidthOut;
-  if (m_pFont && m_pFont->GetCharWidth(wForm, &iCharWidthOut))
-    iCharWidth = iCharWidthOut;
-  else
-    iCharWidth = 0;
-
+  FX_SAFE_INT32 iCharWidth = 0;
+  if (m_pFont) {
+    iCharWidth = m_pFont->GetCharWidth(wForm).value_or(0);
+  }
   iCharWidth *= m_iFontSize;
   iCharWidth *= m_iHorizontalScale;
   iCharWidth /= 100;
   iCharWidth += m_iCharSpace;
 
-  int iCharWidthValid = iCharWidth.ValueOrDefault(0);
-  pCurChar->m_iCharWidth = iCharWidthValid;
+  int iValidCharWidth = iCharWidth.ValueOrDefault(0);
+  pCurChar->m_iCharWidth = iValidCharWidth;
 
   FX_SAFE_INT32 checked_width = m_pCurLine->m_iWidth;
-  checked_width += iCharWidthValid;
+  checked_width += iValidCharWidth;
   if (!checked_width.IsValid())
     return CFGAS_Char::BreakType::kNone;
 
