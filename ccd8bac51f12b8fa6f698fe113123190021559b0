@@ -16,6 +16,24 @@
       "message": "Since CPDFSDK_FormFillEnvironment owns the CPDFSDK_PageViews stored in `m_PageMap`, can we have a const version that returns a const pointer + a non-const version that returns a non-const pointer? Same for GetPageViewAtIndex().",
       "revId": "ccd8bac51f12b8fa6f698fe113123190021559b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38b1002_23bfedf2",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-04T17:00:37Z",
+      "side": 1,
+      "message": "I\u0027ll drop the const. There can\u0027t be any callers from const methods, since it compiled without the const.",
+      "parentUuid": "214ac94d_1d45edaa",
+      "revId": "ccd8bac51f12b8fa6f698fe113123190021559b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
