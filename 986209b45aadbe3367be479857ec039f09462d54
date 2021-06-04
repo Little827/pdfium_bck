@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61efb03_5895d72b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-04T23:13:47Z",
+      "side": 1,
+      "message": "Flip the conditional so it\u0027s an early return?",
+      "revId": "986209b45aadbe3367be479857ec039f09462d54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1388b3cf_06bc0512",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4241,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-04T23:13:47Z",
+      "side": 1,
+      "message": "Flip",
+      "revId": "986209b45aadbe3367be479857ec039f09462d54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7335b56b_5d50a514",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4603,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-04T23:13:47Z",
+      "side": 1,
+      "message": "Needs to be moved out of the if-block, maybe flipped and maybe curly braces.",
+      "revId": "986209b45aadbe3367be479857ec039f09462d54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
