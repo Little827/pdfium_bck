@@ -50,6 +50,14 @@ struct CFX_Color {
   float fColor4;
 };
 
+struct CFX_ColorTypeAndARGB {
+  CFX_ColorTypeAndARGB(CFX_Color::Type type_in, FX_ARGB argb_in)
+      : color_type(type_in), argb(argb_in) {}
+
+  CFX_Color::Type color_type;
+  FX_ARGB argb;
+};
+
 inline bool operator==(const CFX_Color& c1, const CFX_Color& c2) {
   return c1.nColorType == c2.nColorType && c1.fColor1 - c2.fColor1 < 0.0001 &&
          c1.fColor1 - c2.fColor1 > -0.0001 &&
