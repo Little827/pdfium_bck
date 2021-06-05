@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1282ee57_2570579b",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-05T00:21:22Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "9e516c3f_c0632684",
+      "range": {
+        "startLine": 571,
+        "startChar": 2,
+        "endLine": 575,
+        "endChar": 4
+      },
+      "revId": "5d6254d4332fdf913cc10cf85caf084119a409a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d087cb5_d2a59139",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-05T00:01:55Z",
       "side": 0,
       "message": "note: these were already in ltrb order.",
+      "range": {
+        "startLine": 576,
+        "startChar": 4,
+        "endLine": 579,
+        "endChar": 59
+      },
+      "revId": "5d6254d4332fdf913cc10cf85caf084119a409a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe13a49b_bd23b554",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-05T00:21:22Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "1d087cb5_d2a59139",
       "range": {
         "startLine": 576,
         "startChar": 4,

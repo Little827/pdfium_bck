@@ -22,6 +22,30 @@
       },
       "revId": "f57c2a47ff8c8361449dde4f697dc73e7fea2d71",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a34a0ba_7735c18e",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-05T00:21:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1983d5dd_5af2e104",
+      "range": {
+        "startLine": 571,
+        "startChar": 17,
+        "endLine": 574,
+        "endChar": 55
+      },
+      "revId": "f57c2a47ff8c8361449dde4f697dc73e7fea2d71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
