@@ -178,6 +178,32 @@ std::vector<CPDF_FormField*> GetFormFieldsForName(
   return fields;
 }
 
+typedef CFX_ColorTypeAndARGB (CPDF_FormControl::*GetColorFunc)(void);
+typedef float (CPDF_FormControl::*GetColorComponentFunc)(int);
+
+CFX_Color GetFormControlColor(CPDF_FormControl* pFormControl,
+                              GetColorFunc get_color_func,
+                              GetColorComponentFunc get_color_component_func) {
+  switch ((pFormControl->*get_color_func)().color_type) {
+    case CFX_Color::Type::kTransparent:
+      return CFX_Color(CFX_Color::Type::kTransparent);
+    case CFX_Color::Type::kGray:
+      return CFX_Color(CFX_Color::Type::kGray,
+                       (pFormControl->*get_color_component_func)(0));
+    case CFX_Color::Type::kRGB:
+      return CFX_Color(CFX_Color::Type::kRGB,
+                       (pFormControl->*get_color_component_func)(0),
+                       (pFormControl->*get_color_component_func)(1),
+                       (pFormControl->*get_color_component_func)(2));
+    case CFX_Color::Type::kCMYK:
+      return CFX_Color(CFX_Color::Type::kCMYK,
+                       (pFormControl->*get_color_component_func)(0),
+                       (pFormControl->*get_color_component_func)(1),
+                       (pFormControl->*get_color_component_func)(2),
+                       (pFormControl->*get_color_component_func)(3));
+  }
+}
+
 bool SetWidgetDisplayStatus(CPDFSDK_Widget* pWidget, int value) {
   if (!pWidget)
     return false;
@@ -1287,30 +1313,9 @@ CJS_Result CJS_Field::get_fill_color(CJS_Runtime* pRuntime) {
   if (!pFormControl)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  CFX_Color color;
-  switch (pFormControl->GetBackgroundColor().color_type) {
-    case CFX_Color::Type::kTransparent:
-      color = CFX_Color(CFX_Color::Type::kTransparent);
-      break;
-    case CFX_Color::Type::kGray:
-      color = CFX_Color(CFX_Color::Type::kGray,
-                        pFormControl->GetOriginalBackgroundColorComponent(0));
-      break;
-    case CFX_Color::Type::kRGB:
-      color = CFX_Color(CFX_Color::Type::kRGB,
-                        pFormControl->GetOriginalBackgroundColorComponent(0),
-                        pFormControl->GetOriginalBackgroundColorComponent(1),
-                        pFormControl->GetOriginalBackgroundColorComponent(2));
-      break;
-    case CFX_Color::Type::kCMYK:
-      color = CFX_Color(CFX_Color::Type::kCMYK,
-                        pFormControl->GetOriginalBackgroundColorComponent(0),
-                        pFormControl->GetOriginalBackgroundColorComponent(1),
-                        pFormControl->GetOriginalBackgroundColorComponent(2),
-                        pFormControl->GetOriginalBackgroundColorComponent(3));
-      break;
-  }
-
+  CFX_Color color = GetFormControlColor(
+      pFormControl, &CPDF_FormControl::GetBackgroundColor,
+      &CPDF_FormControl::GetOriginalBackgroundColorComponent);
   v8::Local<v8::Value> array =
       CJS_Color::ConvertPWLColorToArray(pRuntime, color);
   if (array.IsEmpty())
@@ -1826,30 +1831,9 @@ CJS_Result CJS_Field::get_stroke_color(CJS_Runtime* pRuntime) {
   if (!pFormControl)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  CFX_Color color;
-  switch (pFormControl->GetBorderColorARGB().color_type) {
-    case CFX_Color::Type::kTransparent:
-      color = CFX_Color(CFX_Color::Type::kTransparent);
-      break;
-    case CFX_Color::Type::kGray:
-      color = CFX_Color(CFX_Color::Type::kGray,
-                        pFormControl->GetOriginalBorderColorComponent(0));
-      break;
-    case CFX_Color::Type::kRGB:
-      color = CFX_Color(CFX_Color::Type::kRGB,
-                        pFormControl->GetOriginalBorderColorComponent(0),
-                        pFormControl->GetOriginalBorderColorComponent(1),
-                        pFormControl->GetOriginalBorderColorComponent(2));
-      break;
-    case CFX_Color::Type::kCMYK:
-      color = CFX_Color(CFX_Color::Type::kCMYK,
-                        pFormControl->GetOriginalBorderColorComponent(0),
-                        pFormControl->GetOriginalBorderColorComponent(1),
-                        pFormControl->GetOriginalBorderColorComponent(2),
-                        pFormControl->GetOriginalBorderColorComponent(3));
-      break;
-  }
-
+  CFX_Color color =
+      GetFormControlColor(pFormControl, &CPDF_FormControl::GetBorderColorARGB,
+                          &CPDF_FormControl::GetOriginalBorderColorComponent);
   v8::Local<v8::Value> array =
       CJS_Color::ConvertPWLColorToArray(pRuntime, color);
   if (array.IsEmpty())
