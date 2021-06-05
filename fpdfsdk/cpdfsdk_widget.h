@@ -86,7 +86,7 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
   bool HasXFAAAction(PDFSDK_XFAAActionType eXFAAAT) const;
   bool OnXFAAAction(PDFSDK_XFAAActionType eXFAAAT,
                     CPDFSDK_FieldAction* data,
-                    CPDFSDK_PageView* pPageView);
+                    const CPDFSDK_PageView* pPageView);
   void Synchronize(bool bSynchronizeElse);
   // TODO(thestig): Figure out if the parameter should be used or removed.
   void ResetXFAAppearance(bool bValueChanged);
@@ -99,7 +99,7 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
 
   bool OnAAction(CPDF_AAction::AActionType type,
                  CPDFSDK_FieldAction* data,
-                 CPDFSDK_PageView* pPageView);
+                 const CPDFSDK_PageView* pPageView);
 
   CPDFSDK_InteractiveForm* GetInteractiveForm() const {
     return m_pInteractiveForm.Get();
