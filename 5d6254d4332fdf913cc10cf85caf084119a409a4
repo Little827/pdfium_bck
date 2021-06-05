@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e516c3f_c0632684",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-05T00:01:55Z",
+      "side": 0,
+      "message": "Note; these were in a different order.  You\u0027ll want to confirm equivalence after shuffling.",
+      "range": {
+        "startLine": 571,
+        "startChar": 2,
+        "endLine": 575,
+        "endChar": 4
+      },
+      "revId": "5d6254d4332fdf913cc10cf85caf084119a409a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d087cb5_d2a59139",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-05T00:01:55Z",
+      "side": 0,
+      "message": "note: these were already in ltrb order.",
+      "range": {
+        "startLine": 576,
+        "startChar": 4,
+        "endLine": 579,
+        "endChar": 59
+      },
+      "revId": "5d6254d4332fdf913cc10cf85caf084119a409a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
