@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5d4e78_623bf037",
+        "filename": "xfa/fgas/font/cfgas_gefont.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-05T01:07:29Z",
+      "side": 1,
+      "message": "Still needed?",
+      "range": {
+        "startLine": 177,
+        "startChar": 29,
+        "endLine": 177,
+        "endChar": 50
+      },
+      "revId": "6cd82ee808726cecc411df5bebf8239553428bdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
