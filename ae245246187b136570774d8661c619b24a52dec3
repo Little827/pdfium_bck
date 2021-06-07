@@ -17,6 +17,24 @@
       "message": "maybe link to bug about removing SHOUTY_CASE",
       "revId": "ae245246187b136570774d8661c619b24a52dec3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "287b75d2_ea75c007",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T18:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebeef1f1_6762f4ec",
+      "revId": "ae245246187b136570774d8661c619b24a52dec3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
