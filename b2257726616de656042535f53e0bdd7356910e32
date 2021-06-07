@@ -64,6 +64,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356c24d5_2b383584",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-07T22:45:03Z",
+      "side": 1,
+      "message": "My plan was to make GetArabicFromShaddaTable() do its own bounds checking and avoid having these constants in this file.",
+      "parentUuid": "2333e1d0_86bb4cfe",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33254fb7_4d87568c",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-07T22:45:03Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "ccb9d572_98af690b",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "370c3b98_51152356",
@@ -87,6 +135,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d91332_47d7ee07",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-07T22:45:03Z",
+      "side": 1,
+      "message": "This might be the one remaining one to be solved later.",
+      "parentUuid": "370c3b98_51152356",
+      "range": {
+        "startLine": 745,
+        "startChar": 34,
+        "endLine": 745,
+        "endChar": 40
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac132682_33e7119d",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-07T22:37:12Z",
       "side": 1,
       "message": "\u003c kArabicShadda",
+      "range": {
+        "startLine": 762,
+        "startChar": 41,
+        "endLine": 762,
+        "endChar": 50
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28709f3c_5521c4d1",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-07T22:45:03Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "ac132682_33e7119d",
       "range": {
         "startLine": 762,
         "startChar": 41,
