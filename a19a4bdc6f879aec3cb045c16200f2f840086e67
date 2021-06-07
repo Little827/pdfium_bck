@@ -17,6 +17,24 @@
       "message": "Not sure the complexity is worth the code savings.",
       "revId": "a19a4bdc6f879aec3cb045c16200f2f840086e67",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7200f24_a3c26404",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T18:54:54Z",
+      "side": 1,
+      "message": "Or we could get rid of GetOriginalBorderColorComponent() and GetOriginalBackgroundColorComponent(), and just let the caller call GetOriginalColorComponent() directly with a key of their choice. Or add an enum parameter to GetOriginalColorComponent(), to limit the possible keys.",
+      "parentUuid": "5756e710_3ac3f89c",
+      "revId": "a19a4bdc6f879aec3cb045c16200f2f840086e67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
