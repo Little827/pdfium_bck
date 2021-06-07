@@ -23,6 +23,30 @@
       },
       "revId": "3d9860c414d2a6e7361acc70f23b0b911795e5bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c17e46_b6ceafc7",
+        "filename": "fxjs/xfa/cfxjse_mapmodule_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T18:34:33Z",
+      "side": 1,
+      "message": "Happy with this as is. I don\u0027t want to add more Hungarian notation.",
+      "parentUuid": "b680e72f_bdc0a35b",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "3d9860c414d2a6e7361acc70f23b0b911795e5bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
