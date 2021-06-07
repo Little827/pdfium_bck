@@ -34,6 +34,24 @@
       "message": "Sure.  Curious about how you notice this?",
       "revId": "4004f5544d86bb31ca743bbf6dcb85a95a868533",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc507443_ea886075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T19:04:32Z",
+      "side": 1,
+      "message": "A couple of weeks ago, I noticed in a Chromium build, building the chrome target builds some test-only net/ files. So I\u0027ve been auditing the build and finding issues like https://crbug.com/1217263. I also paid more attention to the PDFium build artifacts and found this.",
+      "parentUuid": "90706341_9a59da43",
+      "revId": "4004f5544d86bb31ca743bbf6dcb85a95a868533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
