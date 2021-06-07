@@ -35,6 +35,24 @@
       "parentUuid": "5756e710_3ac3f89c",
       "revId": "a19a4bdc6f879aec3cb045c16200f2f840086e67",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e1b809_6c182922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-07T19:28:24Z",
+      "side": 1,
+      "message": "Callback functions and enum parameters seem undesirable.  So that leaves just letting the caller do it with a key.",
+      "parentUuid": "d7200f24_a3c26404",
+      "revId": "a19a4bdc6f879aec3cb045c16200f2f840086e67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
