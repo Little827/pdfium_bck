@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6a59d5_ddf4f294",
+        "filename": "core/fpdfapi/render/cpdf_pagerendercache.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-07T21:58:32Z",
+      "side": 1,
+      "message": "\u003e \"comparision\" is a possible misspelling of \"comparison\".\n\nPlease fix.",
+      "parentUuid": "18492876_d19d78b9",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "15c6125b40388c360ec8526c2cc587c293840cdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
