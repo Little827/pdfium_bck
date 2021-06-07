@@ -705,7 +705,7 @@ void CPDF_TextPage::AddCharInfoByRLDirection(wchar_t wChar,
   }
 
   info2.m_Index = m_TextBuf.GetLength();
-  wChar = FX_GetMirrorChar(wChar);
+  wChar = pdfium::unicode::GetMirrorChar(wChar);
   size_t nCount = Unicode_GetNormalization(wChar, nullptr);
   if (nCount == 0) {
     info2.m_Unicode = wChar;
