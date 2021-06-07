@@ -16,6 +16,98 @@
       "message": "You\u0027ll need to carefully check that I haven\u0027t bungled any values again. I checked once, but still.",
       "revId": "b2257726616de656042535f53e0bdd7356910e32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb9d572_98af690b",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T22:37:12Z",
+      "side": 1,
+      "message": "wLast \u003c pdfium::arabic::kArabicShadda ?",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2333e1d0_86bb4cfe",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T22:37:12Z",
+      "side": 1,
+      "message": "Add a constant and make this wLast \u003e\u003d kArabicDammatan, or wLast \u003e kArabicFathatan?",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370c3b98_51152356",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T22:37:12Z",
+      "side": 1,
+      "message": "kArabicShadda",
+      "range": {
+        "startLine": 745,
+        "startChar": 34,
+        "endLine": 745,
+        "endChar": 40
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac132682_33e7119d",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T22:37:12Z",
+      "side": 1,
+      "message": "\u003c kArabicShadda",
+      "range": {
+        "startLine": 762,
+        "startChar": 41,
+        "endLine": 762,
+        "endChar": 50
+      },
+      "revId": "b2257726616de656042535f53e0bdd7356910e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
