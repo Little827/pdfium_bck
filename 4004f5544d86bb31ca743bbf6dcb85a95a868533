@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1622883441 -0700\nnonce ALC2d1/PrRmtOWKaFVd1DGNQzYobBtvQd+IfBOICJlhFPcQh/kH4QMpr6FxX+rJ398iJmdUgj1k4\n\n0000000000000000000000000000000000000000 4004f5544d86bb31ca743bbf6dcb85a95a868533 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmC7PHEACgkQqzYtYVpm\n/XvASAgAzqWvWPV33/wi7Dz6tiHAq3XhYrhBDW+SAzlscq5Azj4mvd4fG/GCEPI6\nV8xHSe1OzMWoATyWyvRaoGbDmLZ60h0Pz/fOKlH8hVbkF+VNTw4PFqSKidd1gANU\n47LTdmWYBKEnfX1/MmFzUwOS7IzjBzESKF0x/Oq3M4/wDll2B7z1vS/TLwwNdXLZ\nbmNJ9jXdkCOGKrr7eXyACM4grqulJoVtVD75MXd4ldb1AhSh4L4VjItscgJKXBgf\ntDIj5VxoeuXtHcWTVZp4VJEZX97E1Uiv+Q9Ffqx5aACgTyKZv1QN9GTlDjJVe5Ft\nv3kz05p5wOZ11HfLfCIctQH9dyupgw\u003d\u003d\n\u003dNwRZ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1a0a67_0662f543",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-07T18:45:05Z",
+      "side": 1,
+      "message": "I\u0027ll roll DEPS into Chromium separately for this, in case this breaks something there.",
+      "revId": "4004f5544d86bb31ca743bbf6dcb85a95a868533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
