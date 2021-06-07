@@ -17,6 +17,23 @@
       "message": "I\u0027ll roll DEPS into Chromium separately for this, in case this breaks something there.",
       "revId": "4004f5544d86bb31ca743bbf6dcb85a95a868533",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90706341_9a59da43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-07T19:00:14Z",
+      "side": 1,
+      "message": "Sure.  Curious about how you notice this?",
+      "revId": "4004f5544d86bb31ca743bbf6dcb85a95a868533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
