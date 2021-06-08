@@ -234,6 +234,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33dbed4_405356d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-08T19:23:07Z",
+      "side": 1,
+      "message": "Ok, I\u0027m not 100% of the range of these values, but it looks like we are multiplying by 65536 at a few places. So I\u0027m guessing that these are in the 0..65535 and you might be able to get away with more fractional bits - what happens at, say 12 bits (4096x) while leaves a few extra for overflow, etc?",
+      "parentUuid": "440aab91_4e1587ad",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c29452_bfedb216",
