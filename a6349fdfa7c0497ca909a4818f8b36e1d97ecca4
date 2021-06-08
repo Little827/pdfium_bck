@@ -164,6 +164,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50892388_1520236e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-08T17:48:41Z",
+      "side": 1,
+      "message": "In my private set of PDFs used for benchmarking, rendering takes 39% longer overall.\n\n50th percentile: 3% longer\n75th percentile: 45%\n90th percentile: 127%",
+      "parentUuid": "d8f4fe4f_4cecd1ff",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c29452_bfedb216",
