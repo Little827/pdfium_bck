@@ -12,7 +12,8 @@
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
-#include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/cxfa_ffapp.h"
+#include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 class CXFA_FFWidgetHandler;
@@ -29,7 +30,7 @@ class CXFA_FFNotify : public cppgc::GarbageCollected<CXFA_FFNotify> {
   void Trace(cppgc::Visitor* visitor) const;
 
   void OnPageViewEvent(CXFA_ViewLayoutItem* pSender,
-                       IXFA_DocEnvironment::PageViewEvent eEvent);
+                       CXFA_FFDoc::PageViewEvent eEvent);
 
   void OnWidgetListItemAdded(CXFA_Node* pSender,
                              const WideString& wsLabel,
@@ -67,7 +68,7 @@ class CXFA_FFNotify : public cppgc::GarbageCollected<CXFA_FFNotify> {
                                       bool bRecursive);
   void AddCalcValidate(CXFA_Node* pNode);
   CXFA_FFDoc* GetFFDoc() const { return m_pDoc.Get(); }
-  IXFA_AppProvider* GetAppProvider();
+  CXFA_FFApp::CallbackIface* GetAppProvider();
   CXFA_FFWidgetHandler* GetWidgetHandler();
   void OpenDropDownList(CXFA_Node* pNode);
   void ResetData(CXFA_Node* pNode);
