@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1623110460 -0700\nnonce ALC2d19p2awT0qNH0Lm2D2DgusmnSOZoUmnyWinoWhz3rW8PPgmlB4H8Uq99d88zuo99JlT3aHnB\n\n0000000000000000000000000000000000000000 8dddd5c4c6f4d12f3e6d3091a3cef3845dc0380b refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmC+szwACgkQqzYtYVpm\n/XsvbQf/b+EtaSHG0YoqbhvCC2ROjeBwt6w66UIfXegx7jpXs5iWh7IhlchfhFRI\nOIEf9bFPdRDf2q76DTzm+SviTkUBlCr32Q1teFu86fJILoBQ2jobo9IvsgvPJYV7\nPAuIK0GRsq8TnT7LDz73vqV2JpoMxL3FqIK7rX/yGYZijk4ssfoxlZdPsWyTrp6b\nzILIJWQIHSDKnbBEwi+aF4CAHDNerAqkM+KpfG2AG5mT/a8DoAa6thdXEwBDZwgz\nf/Ce7IeOEVh/6Ou7jAzKpmxtzsYZrhySchU/FS+CYRnwvI00MVyccixNJ32tovsO\noOvfon148EtollGjvGMb0/BUpyOY6w\u003d\u003d\n\u003dq6x0\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f84444cc_cde1526f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-08T01:02:21Z",
+      "side": 1,
+      "message": "Curious, did the executables get smaller?",
+      "revId": "8dddd5c4c6f4d12f3e6d3091a3cef3845dc0380b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe3df9c_4eeebb66",
+        "filename": "constants/stream_dict_common.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-08T01:02:21Z",
+      "side": 1,
+      "message": "nit: can we remove these while at it?  It\u0027ll be easy enough to add them back if it turns out we need them.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "8dddd5c4c6f4d12f3e6d3091a3cef3845dc0380b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
