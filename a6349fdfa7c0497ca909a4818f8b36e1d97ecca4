@@ -269,6 +269,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bbd71a7_662c35a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-08T20:26:58Z",
+      "side": 1,
+      "message": "It also looks like this same PixelWeight struct is used in progressive_decoder.cpp, possibly with hidden dependencies on its layout. If I can unify these first, it will make landing your patch easier.",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c29452_bfedb216",
