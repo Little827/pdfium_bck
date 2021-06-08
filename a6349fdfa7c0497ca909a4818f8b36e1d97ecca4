@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8293d2b_68a0aede",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-08T15:00:46Z",
+      "side": 1,
+      "message": "Hi, thanks immensely for the patch!\n\nI\u0027ve often wondered if there are places where we\u0027d be better off using doubles - due to the age of the code, there are mainly float calculations on the belief that it is important to be more efficient.\n\nI\u0027m going to kick off the \"try jobs\" to see if this changes any of our tests. If not, we might ask if you have a small self-contained .pdf that we could add to show the effect of this change.\n\nThere are a number of style points that we\u0027re going to ask you to change before accepting the patch. These are minor; after fixing them please re-upload another version of the patch.\n",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
