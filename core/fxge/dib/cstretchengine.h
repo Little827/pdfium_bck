@@ -37,10 +37,10 @@ class CStretchEngine {
   bool ContinueStretchHorz(PauseIndicatorIface* pPause);
   void StretchVert();
 
-  class CWeightTable {
+  class CWeightTable : public FXDIB_WeightTable {
    public:
     CWeightTable();
-    ~CWeightTable();
+    ~CWeightTable() override;
 
     bool Calc(int dest_len,
               int dest_min,
@@ -49,21 +49,6 @@ class CStretchEngine {
               int src_min,
               int src_max,
               const FXDIB_ResampleOptions& options);
-
-    const PixelWeight* GetPixelWeight(int pixel) const;
-    PixelWeight* GetPixelWeight(int pixel) {
-      return const_cast<PixelWeight*>(
-          static_cast<const CWeightTable*>(this)->GetPixelWeight(pixel));
-    }
-
-    int* GetValueFromPixelWeight(PixelWeight* pWeight, int index) const;
-    size_t GetPixelWeightCount() const;
-
-   private:
-    int m_DestMin = 0;
-    size_t m_ItemSize = 0;
-    size_t m_WeightTablesSize = 0;
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_WeightTables;
   };
 
   enum class State : uint8_t { kInitial, kHorizontal, kVertical };
