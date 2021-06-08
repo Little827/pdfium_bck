@@ -51,8 +51,9 @@ void CXFA_FFNotify::Trace(cppgc::Visitor* visitor) const {
   visitor->Trace(m_pDoc);
 }
 
-void CXFA_FFNotify::OnPageViewEvent(CXFA_ViewLayoutItem* pSender,
-                                    IXFA_DocEnvironment::PageViewEvent eEvent) {
+void CXFA_FFNotify::OnPageViewEvent(
+    CXFA_ViewLayoutItem* pSender,
+    CXFA_FFDoc::CallbackIface::PageViewEvent eEvent) {
   CXFA_FFDocView* pDocView = m_pDoc->GetDocView(pSender->GetLayout());
   if (pDocView)
     pDocView->OnPageViewEvent(pSender, eEvent);
@@ -249,7 +250,7 @@ void CXFA_FFNotify::AddCalcValidate(CXFA_Node* pNode) {
   pDocView->AddValidateNode(pNode);
 }
 
-IXFA_AppProvider* CXFA_FFNotify::GetAppProvider() {
+CXFA_FFApp::CallbackIface* CXFA_FFNotify::GetAppProvider() {
   return m_pDoc->GetApp()->GetAppProvider();
 }
 

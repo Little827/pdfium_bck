@@ -39,7 +39,7 @@ void CPDFXFA_ModuleInit();
 void CPDFXFA_ModuleDestroy();
 
 class CPDFXFA_Context final : public CPDF_Document::Extension,
-                              public IXFA_AppProvider {
+                              public CXFA_FFApp::CallbackIface {
  public:
   explicit CPDFXFA_Context(CPDF_Document* pPDFDoc);
   ~CPDFXFA_Context() override;

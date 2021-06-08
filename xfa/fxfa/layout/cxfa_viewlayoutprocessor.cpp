@@ -697,8 +697,8 @@ void CXFA_ViewLayoutProcessor::AddPageAreaLayoutItem(
         pNotify->OnCreateViewLayoutItem(pNewPageArea));
     m_PageArray.push_back(pViewItem);
     m_nAvailPages++;
-    pNotify->OnPageViewEvent(pViewItem,
-                             IXFA_DocEnvironment::PageViewEvent::kPostRemoved);
+    pNotify->OnPageViewEvent(
+        pViewItem, CXFA_FFDoc::CallbackIface::PageViewEvent::kPostRemoved);
     pNewPageAreaLayoutItem = pViewItem;
   }
   pNewRecord->pCurPageSet->AppendLastChild(pNewPageAreaLayoutItem);
@@ -1916,8 +1916,8 @@ void CXFA_ViewLayoutProcessor::SyncLayoutData() {
   for (int32_t i = nPage - 1; i >= m_nAvailPages; i--) {
     CXFA_ViewLayoutItem* pPage = m_PageArray[i];
     m_PageArray.erase(m_PageArray.begin() + i);
-    pNotify->OnPageViewEvent(pPage,
-                             IXFA_DocEnvironment::PageViewEvent::kPostRemoved);
+    pNotify->OnPageViewEvent(
+        pPage, CXFA_FFDoc::CallbackIface::PageViewEvent::kPostRemoved);
   }
   ClearData();
 }

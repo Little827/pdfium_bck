@@ -16,7 +16,7 @@ class CFX_XMLDocument;
 class CPDFXFA_Context;
 class IJS_Runtime;
 
-class CPDFXFA_DocEnvironment final : public IXFA_DocEnvironment {
+class CPDFXFA_DocEnvironment final : public CXFA_FFDoc::CallbackIface {
  public:
   explicit CPDFXFA_DocEnvironment(CPDFXFA_Context*);
   ~CPDFXFA_DocEnvironment() override;

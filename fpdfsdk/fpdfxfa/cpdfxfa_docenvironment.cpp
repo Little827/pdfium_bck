@@ -48,12 +48,12 @@
 // keep the internal and exernal types in sync.
 static_assert(
     FXFA_PAGEVIEWEVENT_POSTADDED ==
-        static_cast<int>(IXFA_DocEnvironment::PageViewEvent::kPostAdded),
+        static_cast<int>(CXFA_FFDoc::CallbackIface::PageViewEvent::kPostAdded),
     "kPostAdded mismatch");
-static_assert(
-    FXFA_PAGEVIEWEVENT_POSTREMOVED ==
-        static_cast<int>(IXFA_DocEnvironment::PageViewEvent::kPostRemoved),
-    "kPostRemoved mismatch");
+static_assert(FXFA_PAGEVIEWEVENT_POSTREMOVED ==
+                  static_cast<int>(
+                      CXFA_FFDoc::CallbackIface::PageViewEvent::kPostRemoved),
+              "kPostRemoved mismatch");
 
 CPDFXFA_DocEnvironment::CPDFXFA_DocEnvironment(CPDFXFA_Context* pContext)
     : m_pContext(pContext) {
@@ -289,7 +289,7 @@ void CPDFXFA_DocEnvironment::OnPageViewEvent(CXFA_FFPageView* pPageView,
 
   if (m_pContext->GetLoadStatus() == FXFA_LOADSTATUS_LOADING ||
       m_pContext->GetLoadStatus() == FXFA_LOADSTATUS_CLOSING ||
-      eEvent != IXFA_DocEnvironment::PageViewEvent::kStopLayout) {
+      eEvent != PageViewEvent::kStopLayout) {
     return;
   }
   int nNewCount = m_pContext->GetPageCount();
