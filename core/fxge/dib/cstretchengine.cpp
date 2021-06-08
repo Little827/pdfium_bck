@@ -29,8 +29,8 @@ CStretchEngine::CWeightTable::CWeightTable() = default;
 
 CStretchEngine::CWeightTable::~CWeightTable() = default;
 
-size_t CStretchEngine::CWeightTable::GetPixelWeightSize() const {
-  return m_ItemSize / sizeof(int) - 2;
+size_t CStretchEngine::CWeightTable::GetPixelWeightCount() const {
+  return PixelWeight::WeightCountFromTotalBytes(m_ItemSize);
 }
 
 bool CStretchEngine::CWeightTable::Calc(int dest_len,
@@ -45,19 +45,18 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
 
   m_WeightTables.clear();
   m_dwWeightTablesSize = 0;
-  const double scale = static_cast<float>(src_len) / dest_len;
-  const double base = dest_len < 0 ? src_len : 0;
-  m_ItemSize = sizeof(int) * 2 +
-               static_cast<int>(sizeof(int) *
-                                (ceil(fabs(static_cast<float>(scale))) + 1));
 
+  const double scale = static_cast<double>(src_len) / dest_len;
+  const double base = dest_len < 0 ? src_len : 0;
+  const size_t weight_count = static_cast<size_t>(ceil(fabs(scale))) + 1;
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(weight_count);
   m_DestMin = dest_min;
   if (dest_max - dest_min > static_cast<int>((1U << 30) - 4) / m_ItemSize)
     return false;
 
   m_dwWeightTablesSize = (dest_max - dest_min) * m_ItemSize + 4;
   m_WeightTables.resize(m_dwWeightTablesSize);
-  if (options.bNoSmoothing || fabs(static_cast<float>(scale)) < 1.0f) {
+  if (options.bNoSmoothing || fabs(scale) < 1.0f) {
     for (int dest_pixel = dest_min; dest_pixel < dest_max; ++dest_pixel) {
       PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
       double src_pos = dest_pixel * scale + scale / 2 + base;
@@ -116,7 +115,7 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
         break;
       }
       size_t idx = j - start_i;
-      if (idx >= GetPixelWeightSize())
+      if (idx >= GetPixelWeightCount())
         return false;
 
       pixel_weights.m_Weights[idx] = FXSYS_roundf(weight * 65536);
@@ -138,7 +137,7 @@ int* CStretchEngine::CWeightTable::GetValueFromPixelWeight(PixelWeight* pWeight,
     return nullptr;
 
   size_t idx = index - pWeight->m_SrcStart;
-  return idx < GetPixelWeightSize() ? &pWeight->m_Weights[idx] : nullptr;
+  return idx < GetPixelWeightCount() ? &pWeight->m_Weights[idx] : nullptr;
 }
 
 CStretchEngine::CStretchEngine(ScanlineComposerIface* pDestBitmap,

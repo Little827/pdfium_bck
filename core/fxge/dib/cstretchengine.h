@@ -57,7 +57,7 @@ class CStretchEngine {
     }
 
     int* GetValueFromPixelWeight(PixelWeight* pWeight, int index) const;
-    size_t GetPixelWeightSize() const;
+    size_t GetPixelWeightCount() const;
 
    private:
     int m_DestMin = 0;
