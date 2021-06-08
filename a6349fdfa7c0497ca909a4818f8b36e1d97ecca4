@@ -47,6 +47,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fcfc88e_e63873bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-08T16:09:44Z",
+      "side": 1,
+      "message": "It\u0027ll be great if you can file a bug on crbug.com/pdfium to describe what the issue is, maybe with an example.",
+      "parentUuid": "63f1bbc0_bd5c16e3",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b8293d2b_68a0aede",
@@ -77,6 +101,24 @@
       "writtenOn": "2021-06-08T16:00:42Z",
       "side": 1,
       "message": "Ah, I see we\u0027re changing an int to a double -- somehow I misunderstood and thought we were changing a float to a double. Which means that that cost may matter. @thestig - any feel for the cost of this patch?",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f4fe4f_4cecd1ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-08T16:09:44Z",
+      "side": 1,
+      "message": "I can certainly help with benchmarking this.",
+      "parentUuid": "9c363a41_01448ff4",
       "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
