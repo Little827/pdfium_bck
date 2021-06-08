@@ -42,11 +42,53 @@ size_t PixelWeight::TotalBytesForWeightCount(size_t weight_count) {
   return total_bytes.ValueOrDie();
 }
 
-// static
-size_t PixelWeight::WeightCountFromTotalBytes(size_t total_bytes) {
-  const size_t extra_bytes =
-      total_bytes > sizeof(PixelWeight) ? total_bytes - sizeof(PixelWeight) : 0;
-  return 1 + extra_bytes / sizeof(m_Weights[0]);
+void PixelWeight::SetStartEnd(int src_start, int src_end) {
+  CHECK(static_cast<size_t>(src_end - src_start) <= m_AllocatedWeightCount);
+  m_SrcStart = src_start;
+  m_SrcEnd = src_end;
+}
+
+const int* PixelWeight::GetValuePtr(int index) const {
+  if (index < m_SrcStart || index > m_SrcEnd)
+    return nullptr;
+
+  return &m_Weights[index - m_SrcStart];
+}
+
+FXDIB_WeightTable::FXDIB_WeightTable() = default;
+
+FXDIB_WeightTable::~FXDIB_WeightTable() = default;
+
+void FXDIB_WeightTable::Clear() {
+  m_DestMin = 0;
+  m_ItemSize = 0;
+  m_WeightTablesSize = 0;
+  m_WeightTables.clear();
+}
+
+bool FXDIB_WeightTable::AllocateSpace(int dest_min,
+                                      size_t dest_range,
+                                      size_t weight_count) {
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(weight_count);
+  const size_t kMaxTableItemsAllowed = kMaxTableBytesAllowed / m_ItemSize;
+  if (dest_range > kMaxTableItemsAllowed)
+    return false;
+
+  m_DestMin = dest_min;
+  m_WeightTablesSize = dest_range * m_ItemSize;
+  m_WeightTables.resize(m_WeightTablesSize);
+  for (size_t i = 0; i < dest_range; ++i) {
+    auto* ptr = reinterpret_cast<PixelWeight*>(&m_WeightTables[i * m_ItemSize]);
+    ptr->SetStartEnd(0, 0);
+    ptr->m_AllocatedWeightCount = weight_count;
+  }
+  return true;
+}
+
+const PixelWeight* FXDIB_WeightTable::GetPixelWeight(int pixel) const {
+  DCHECK(pixel >= m_DestMin);
+  return reinterpret_cast<const PixelWeight*>(
+      &m_WeightTables[(pixel - m_DestMin) * m_ItemSize]);
 }
 
 FXDIB_ResampleOptions::FXDIB_ResampleOptions() = default;

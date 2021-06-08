@@ -11,8 +11,10 @@
 
 #include <tuple>
 #include <utility>
+#include <vector>
 
 #include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/fx_memory_wrappers.h"
 
 #if defined(PDF_ENABLE_XFA)
 #include "core/fxcrt/widestring.h"
@@ -30,12 +32,41 @@ enum class FXDIB_Format : uint16_t {
 };
 
 struct PixelWeight {
+  using WeightType = int;
+  static constexpr size_t kBytesPerWeight = sizeof(WeightType);
+
   static size_t TotalBytesForWeightCount(size_t weight_count);
-  static size_t WeightCountFromTotalBytes(size_t total_bytes);
+
+  void SetStartEnd(int src_start, int src_end);
+  const WeightType* GetValuePtr(int index) const;
 
   int m_SrcStart;
   int m_SrcEnd;
-  int m_Weights[1];  // Not really 1, variable size.
+  size_t m_AllocatedWeightCount;
+  WeightType m_Weights[1];  // Not really 1, variable size.
+};
+
+class FXDIB_WeightTable {
+ public:
+  static constexpr size_t kMaxTableBytesAllowed =
+      (1 << 30) - PixelWeight::kBytesPerWeight;
+
+  FXDIB_WeightTable();
+  virtual ~FXDIB_WeightTable();
+
+  void Clear();
+  bool AllocateSpace(int dest_min, size_t dest_range, size_t weight_count);
+  const PixelWeight* GetPixelWeight(int pixel) const;
+  PixelWeight* GetPixelWeight(int pixel) {
+    return const_cast<PixelWeight*>(
+        static_cast<const FXDIB_WeightTable*>(this)->GetPixelWeight(pixel));
+  }
+
+ protected:
+  int m_DestMin = 0;
+  size_t m_ItemSize = 0;
+  size_t m_WeightTablesSize = 0;
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_WeightTables;
 };
 
 using FX_ARGB = uint32_t;

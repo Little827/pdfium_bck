@@ -120,49 +120,28 @@ class ProgressiveDecoder :
 #endif  // PDF_ENABLE_XFA_BMP
 
  private:
-  class WeightTable {
+  class WeightTable : public FXDIB_WeightTable {
    public:
     WeightTable();
-    ~WeightTable();
+    ~WeightTable() override;
 
     void Calc(int dest_len, int src_len);
-    PixelWeight* GetPixelWeight(int pixel) {
-      return reinterpret_cast<PixelWeight*>(m_pWeightTables.data() +
-                                            (pixel - m_DestMin) * m_ItemSize);
-    }
-
-    int m_DestMin;
-    int m_ItemSize;
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_pWeightTables;
   };
 
-  class HorzTable {
+  class HorzTable : public FXDIB_WeightTable {
    public:
     HorzTable();
-    ~HorzTable();
+    ~HorzTable() override;
 
     void Calc(int dest_len, int src_len);
-    PixelWeight* GetPixelWeight(int pixel) {
-      return reinterpret_cast<PixelWeight*>(m_pWeightTables.data() +
-                                            pixel * m_ItemSize);
-    }
-
-    int m_ItemSize;
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_pWeightTables;
   };
 
-  class VertTable {
+  class VertTable : public FXDIB_WeightTable {
    public:
     VertTable();
-    ~VertTable();
+    ~VertTable() override;
 
     void Calc(int dest_len, int src_len);
-    PixelWeight* GetPixelWeight(int pixel) {
-      return reinterpret_cast<PixelWeight*>(m_pWeightTables.data() +
-                                            pixel * m_ItemSize);
-    }
-    int m_ItemSize;
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_pWeightTables;
   };
 
 #ifdef PDF_ENABLE_XFA_BMP

@@ -70,17 +70,16 @@ ProgressiveDecoder::WeightTable::~WeightTable() = default;
 void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
   double scale = static_cast<double>(src_len) / dest_len;
   double base = dest_len < 0 ? src_len : 0.0;
-  m_ItemSize = (int)(sizeof(int) * 2 + sizeof(int) * (ceil(fabs(scale)) + 1));
-  m_DestMin = 0;
-  m_pWeightTables.resize(dest_len * m_ItemSize + 4);
+  const size_t weight_count = static_cast<size_t>(ceil(fabs(scale))) + 1;
+  AllocateSpace(0, dest_len, weight_count);
   if (fabs(scale) < 1.0) {
     for (int dest_pixel = 0; dest_pixel < dest_len; dest_pixel++) {
       PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
       double src_pos = dest_pixel * scale + scale / 2 + base;
-      pixel_weights.m_SrcStart = (int)floor((float)src_pos - 1.0f / 2);
-      pixel_weights.m_SrcEnd = (int)floor((float)src_pos + 1.0f / 2);
-      pixel_weights.m_SrcStart = std::max(pixel_weights.m_SrcStart, 0);
-      pixel_weights.m_SrcEnd = std::min(pixel_weights.m_SrcEnd, src_len - 1);
+      int src_start = (int)floor((float)src_pos - 1.0f / 2);
+      int src_end = (int)floor((float)src_pos + 1.0f / 2);
+      pixel_weights.SetStartEnd(std::max(src_start, 0),
+                                std::min(src_end, src_len - 1));
       if (pixel_weights.m_SrcStart == pixel_weights.m_SrcEnd) {
         pixel_weights.m_Weights[0] = 65536;
       } else {
@@ -107,12 +106,10 @@ void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
     start_i = std::max(start_i, 0);
     end_i = std::min(end_i, src_len - 1);
     if (start_i > end_i) {
-      pixel_weights.m_SrcStart = start_i;
-      pixel_weights.m_SrcEnd = start_i;
+      pixel_weights.SetStartEnd(start_i, start_i);
       continue;
     }
-    pixel_weights.m_SrcStart = start_i;
-    pixel_weights.m_SrcEnd = end_i;
+    pixel_weights.SetStartEnd(start_i, end_i);
     for (int j = start_i; j <= end_i; j++) {
       double dest_start = ((float)j - base) / scale;
       double dest_end = ((float)(j + 1) - base) / scale;
@@ -143,23 +140,21 @@ ProgressiveDecoder::HorzTable::~HorzTable() = default;
 
 void ProgressiveDecoder::HorzTable::Calc(int dest_len, int src_len) {
   double scale = (double)dest_len / (double)src_len;
-  m_ItemSize = sizeof(int) * 4;
-  int size = dest_len * m_ItemSize + 4;
-  m_pWeightTables.resize(size, 0);
+  AllocateSpace(0, dest_len, 4);
   if (scale > 1) {
     int pre_dest_col = 0;
     for (int src_col = 0; src_col < src_len; src_col++) {
       double dest_col_f = src_col * scale;
       int dest_col = FXSYS_roundf((float)dest_col_f);
       PixelWeight* pWeight = GetPixelWeight(dest_col);
-      pWeight->m_SrcStart = pWeight->m_SrcEnd = src_col;
+      pWeight->SetStartEnd(src_col, src_col);
       pWeight->m_Weights[0] = 65536;
       pWeight->m_Weights[1] = 0;
       if (src_col == src_len - 1 && dest_col < dest_len - 1) {
         for (int dest_col_index = pre_dest_col + 1; dest_col_index < dest_len;
              dest_col_index++) {
           pWeight = GetPixelWeight(dest_col_index);
-          pWeight->m_SrcStart = pWeight->m_SrcEnd = src_col;
+          pWeight->SetStartEnd(src_col, src_col);
           pWeight->m_Weights[0] = 65536;
           pWeight->m_Weights[1] = 0;
         }
@@ -169,8 +164,7 @@ void ProgressiveDecoder::HorzTable::Calc(int dest_len, int src_len) {
       for (int dest_col_index = pre_dest_col + 1; dest_col_index < dest_col;
            dest_col_index++) {
         pWeight = GetPixelWeight(dest_col_index);
-        pWeight->m_SrcStart = src_col - 1;
-        pWeight->m_SrcEnd = src_col;
+        pWeight->SetStartEnd(src_col - 1, src_col);
         pWeight->m_Weights[0] =
             FXSYS_roundf((float)(((float)dest_col - (float)dest_col_index) /
                                  (float)dest_col_len * 65536));
@@ -184,7 +178,7 @@ void ProgressiveDecoder::HorzTable::Calc(int dest_len, int src_len) {
     double src_col_f = dest_col / scale;
     int src_col = FXSYS_roundf((float)src_col_f);
     PixelWeight* pWeight = GetPixelWeight(dest_col);
-    pWeight->m_SrcStart = pWeight->m_SrcEnd = src_col;
+    pWeight->SetStartEnd(src_col, src_col);
     pWeight->m_Weights[0] = 65536;
     pWeight->m_Weights[1] = 0;
   }
@@ -196,14 +190,11 @@ ProgressiveDecoder::VertTable::~VertTable() = default;
 
 void ProgressiveDecoder::VertTable::Calc(int dest_len, int src_len) {
   double scale = (double)dest_len / (double)src_len;
-  m_ItemSize = sizeof(int) * 4;
-  int size = dest_len * m_ItemSize + 4;
-  m_pWeightTables.resize(size, 0);
+  AllocateSpace(0, dest_len, 4);
   if (scale <= 1) {
     for (int dest_row = 0; dest_row < dest_len; dest_row++) {
       PixelWeight* pWeight = GetPixelWeight(dest_row);
-      pWeight->m_SrcStart = dest_row;
-      pWeight->m_SrcEnd = dest_row;
+      pWeight->SetStartEnd(dest_row, dest_row);
       pWeight->m_Weights[0] = 65536;
       pWeight->m_Weights[1] = 0;
     }
@@ -220,8 +211,7 @@ void ProgressiveDecoder::VertTable::Calc(int dest_len, int src_len) {
       end_step = dest_len;
       for (int dest_row = start_step; dest_row < end_step; dest_row++) {
         PixelWeight* pWeight = GetPixelWeight(dest_row);
-        pWeight->m_SrcStart = start_step;
-        pWeight->m_SrcEnd = start_step;
+        pWeight->SetStartEnd(start_step, start_step);
         pWeight->m_Weights[0] = 65536;
         pWeight->m_Weights[1] = 0;
       }
@@ -230,15 +220,13 @@ void ProgressiveDecoder::VertTable::Calc(int dest_len, int src_len) {
     int length = end_step - start_step;
     {
       PixelWeight* pWeight = GetPixelWeight(start_step);
-      pWeight->m_SrcStart = start_step;
-      pWeight->m_SrcEnd = start_step;
+      pWeight->SetStartEnd(start_step, start_step);
       pWeight->m_Weights[0] = 65536;
       pWeight->m_Weights[1] = 0;
     }
     for (int dest_row = start_step + 1; dest_row < end_step; dest_row++) {
       PixelWeight* pWeight = GetPixelWeight(dest_row);
-      pWeight->m_SrcStart = start_step;
-      pWeight->m_SrcEnd = end_step;
+      pWeight->SetStartEnd(start_step, end_step);
       pWeight->m_Weights[0] =
           FXSYS_roundf((float)(end_step - dest_row) / (float)length * 65536);
       pWeight->m_Weights[1] = 65536 - pWeight->m_Weights[0];
