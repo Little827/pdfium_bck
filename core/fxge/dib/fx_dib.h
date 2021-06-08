@@ -32,7 +32,7 @@ enum class FXDIB_Format : uint16_t {
 struct PixelWeight {
   int m_SrcStart;
   int m_SrcEnd;
-  int m_Weights[1];
+  double m_Weights[1];
 };
 
 using FX_ARGB = uint32_t;
