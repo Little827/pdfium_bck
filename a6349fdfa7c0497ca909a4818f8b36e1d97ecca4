@@ -184,6 +184,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "471ade62_8e5cda62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-08T18:34:48Z",
+      "side": 1,
+      "message": "Wow.  That might argue for \"fixed-point\" arithmetic, eg. store (16 * double value) as an int, then \u003e\u003e 4 after an int multiply -- if the range will allwow.",
+      "parentUuid": "50892388_1520236e",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4c29452_bfedb216",
         "filename": "core/fxge/dib/cstretchengine.cpp",
         "patchSetId": 1
