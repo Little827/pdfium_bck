@@ -20,6 +20,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/notreached.h"
 
 #ifdef PDF_ENABLE_XFA_BMP
@@ -68,15 +69,15 @@ ProgressiveDecoder::WeightTable::WeightTable() = default;
 ProgressiveDecoder::WeightTable::~WeightTable() = default;
 
 void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
+  CHECK_GE(dest_len, 0);
   double scale = static_cast<double>(src_len) / dest_len;
-  double base = dest_len < 0 ? src_len : 0.0;
   m_ItemSize = (int)(sizeof(int) * 2 + sizeof(int) * (ceil(fabs(scale)) + 1));
   m_DestMin = 0;
   m_pWeightTables.resize(dest_len * m_ItemSize + 4);
   if (fabs(scale) < 1.0) {
     for (int dest_pixel = 0; dest_pixel < dest_len; dest_pixel++) {
       PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
-      double src_pos = dest_pixel * scale + scale / 2 + base;
+      double src_pos = dest_pixel * scale + scale / 2;
       pixel_weights.m_SrcStart = (int)floor((float)src_pos - 1.0f / 2);
       pixel_weights.m_SrcEnd = (int)floor((float)src_pos + 1.0f / 2);
       pixel_weights.m_SrcStart = std::max(pixel_weights.m_SrcStart, 0);
@@ -93,7 +94,7 @@ void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
   }
   for (int dest_pixel = 0; dest_pixel < dest_len; dest_pixel++) {
     PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
-    double src_start = dest_pixel * scale + base;
+    double src_start = dest_pixel * scale;
     double src_end = src_start + scale;
     int start_i;
     int end_i;
@@ -114,8 +115,8 @@ void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
     pixel_weights.m_SrcStart = start_i;
     pixel_weights.m_SrcEnd = end_i;
     for (int j = start_i; j <= end_i; j++) {
-      double dest_start = ((float)j - base) / scale;
-      double dest_end = ((float)(j + 1) - base) / scale;
+      double dest_start = ((float)j) / scale;
+      double dest_end = ((float)(j + 1)) / scale;
       if (dest_start > dest_end) {
         double temp = dest_start;
         dest_start = dest_end;
