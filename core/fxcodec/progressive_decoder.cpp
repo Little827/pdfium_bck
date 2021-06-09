@@ -20,6 +20,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/notreached.h"
 
 #ifdef PDF_ENABLE_XFA_BMP
@@ -68,15 +69,18 @@ ProgressiveDecoder::WeightTable::WeightTable() = default;
 ProgressiveDecoder::WeightTable::~WeightTable() = default;
 
 void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
+  CHECK_GE(dest_len, 0);
   double scale = static_cast<double>(src_len) / dest_len;
-  double base = dest_len < 0 ? src_len : 0.0;
-  m_ItemSize = (int)(sizeof(int) * 2 + sizeof(int) * (ceil(fabs(scale)) + 1));
+  const size_t weight_count = static_cast<size_t>(ceil(fabs(scale))) + 1;
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(weight_count);
+  FX_SAFE_SIZE_T safe_size = m_ItemSize;
+  safe_size *= dest_len;
+  m_pWeightTables.resize(safe_size.ValueOrDie());
   m_DestMin = 0;
-  m_pWeightTables.resize(dest_len * m_ItemSize + 4);
   if (fabs(scale) < 1.0) {
     for (int dest_pixel = 0; dest_pixel < dest_len; dest_pixel++) {
       PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
-      double src_pos = dest_pixel * scale + scale / 2 + base;
+      double src_pos = dest_pixel * scale + scale / 2;
       pixel_weights.m_SrcStart = (int)floor((float)src_pos - 1.0f / 2);
       pixel_weights.m_SrcEnd = (int)floor((float)src_pos + 1.0f / 2);
       pixel_weights.m_SrcStart = std::max(pixel_weights.m_SrcStart, 0);
@@ -93,7 +97,7 @@ void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
   }
   for (int dest_pixel = 0; dest_pixel < dest_len; dest_pixel++) {
     PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
-    double src_start = dest_pixel * scale + base;
+    double src_start = dest_pixel * scale;
     double src_end = src_start + scale;
     int start_i;
     int end_i;
@@ -114,8 +118,8 @@ void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
     pixel_weights.m_SrcStart = start_i;
     pixel_weights.m_SrcEnd = end_i;
     for (int j = start_i; j <= end_i; j++) {
-      double dest_start = ((float)j - base) / scale;
-      double dest_end = ((float)(j + 1) - base) / scale;
+      double dest_start = ((float)j) / scale;
+      double dest_end = ((float)(j + 1)) / scale;
       if (dest_start > dest_end) {
         double temp = dest_start;
         dest_start = dest_end;
@@ -142,10 +146,12 @@ ProgressiveDecoder::HorzTable::HorzTable() = default;
 ProgressiveDecoder::HorzTable::~HorzTable() = default;
 
 void ProgressiveDecoder::HorzTable::Calc(int dest_len, int src_len) {
+  CHECK_GE(dest_len, 0);
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(2);
+  FX_SAFE_SIZE_T safe_size = m_ItemSize;
+  safe_size *= dest_len;
+  m_pWeightTables.resize(safe_size.ValueOrDie(), 0);
   double scale = (double)dest_len / (double)src_len;
-  m_ItemSize = sizeof(int) * 4;
-  int size = dest_len * m_ItemSize + 4;
-  m_pWeightTables.resize(size, 0);
   if (scale > 1) {
     int pre_dest_col = 0;
     for (int src_col = 0; src_col < src_len; src_col++) {
@@ -195,10 +201,12 @@ ProgressiveDecoder::VertTable::VertTable() = default;
 ProgressiveDecoder::VertTable::~VertTable() = default;
 
 void ProgressiveDecoder::VertTable::Calc(int dest_len, int src_len) {
+  CHECK_GE(dest_len, 0);
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(2);
+  FX_SAFE_SIZE_T safe_size = m_ItemSize;
+  safe_size *= dest_len;
+  m_pWeightTables.resize(safe_size.ValueOrDie(), 0);
   double scale = (double)dest_len / (double)src_len;
-  m_ItemSize = sizeof(int) * 4;
-  int size = dest_len * m_ItemSize + 4;
-  m_pWeightTables.resize(size, 0);
   if (scale <= 1) {
     for (int dest_row = 0; dest_row < dest_len; dest_row++) {
       PixelWeight* pWeight = GetPixelWeight(dest_row);
