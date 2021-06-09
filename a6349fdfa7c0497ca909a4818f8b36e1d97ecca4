@@ -286,6 +286,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef5e04f_ecc9e06a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-09T19:34:29Z",
+      "side": 1,
+      "message": "Anyway, the change at https://pdfium-review.googlesource.com/c/pdfium/+/81671 fixes the issues so you should now be able to modify the PixelWeight struct without breaking unrelated portions of the code. Many of my earlier comments also no longer apply.",
+      "parentUuid": "6bbd71a7_662c35a6",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c29452_bfedb216",
@@ -309,6 +327,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9191c27d_f5cd53a2",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-09T19:34:29Z",
+      "side": 1,
+      "message": "Fixed in https://pdfium-review.googlesource.com/c/pdfium/+/81671",
+      "parentUuid": "a4c29452_bfedb216",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 57
+      },
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40523d60_69936e30",
@@ -322,6 +364,30 @@
       "writtenOn": "2021-06-08T16:00:42Z",
       "side": 1,
       "message": "Nit: I don\u0027t think the static cast to float was ever require as fabs() expects a double argument.\n\nWhile we\u0027re here, we can make this correct no matter how the PixelWeight struct changes in the futures and easier on future readers by writing this like:\n\n const size_t weights_per_item \u003d  static_cast\u003csize_t\u003e(ceil(fabs(scale))) + 1;\n m_ItemSize \u003d sizeof(PixelWeight) + (weights_per_item - 1) * sizeof(PixelWeight.m_Weights[0]);\n \nIn fact I\u0027m going to put together a standalone patch to get this change in first so that this CL will only have to change to double and round.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d8b6aa_a6634162",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-09T19:34:29Z",
+      "side": 1,
+      "message": "fixed in https://pdfium-review.googlesource.com/c/pdfium/+/81671",
+      "parentUuid": "40523d60_69936e30",
       "range": {
         "startLine": 50,
         "startChar": 2,
@@ -368,6 +434,24 @@
       "writtenOn": "2021-06-08T16:00:42Z",
       "side": 1,
       "message": "nit: as long as we\u0027re changing this, could you please add a comment\n\ndouble m_Weights[1];  // Not really 1, variable size.\n\n(again, I\u0027ll probably do this in a standalone patch first).",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "991241d7_1ab0c985",
+        "filename": "core/fxge/dib/fx_dib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-09T19:34:29Z",
+      "side": 1,
+      "message": "fixed in https://pdfium-review.googlesource.com/c/pdfium/+/81671",
+      "parentUuid": "5813be65_dfe05a03",
       "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
