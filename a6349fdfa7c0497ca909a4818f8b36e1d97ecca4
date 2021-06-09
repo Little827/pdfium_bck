@@ -304,6 +304,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1758ae9_f5b7d239",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-09T21:04:04Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/81751 will refactor this to make changing the number of fixed point bits easier, however it does overflow when changing 16 to 23 or 24, so 22 is about all we can get away with.  That corresponds to your test with 64x, which you said didn\u0027t work, but you might want to try pulling that patch, upping the number to 22, and seeing if it is acceptable (we don\u0027t notice the differences immediately on our monitors) -- just in case there was some unexpected truncation taking place in your experimental code.",
+      "revId": "a6349fdfa7c0497ca909a4818f8b36e1d97ecca4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c29452_bfedb216",
