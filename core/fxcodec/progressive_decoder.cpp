@@ -70,9 +70,10 @@ ProgressiveDecoder::WeightTable::~WeightTable() = default;
 void ProgressiveDecoder::WeightTable::Calc(int dest_len, int src_len) {
   double scale = static_cast<double>(src_len) / dest_len;
   double base = dest_len < 0 ? src_len : 0.0;
-  m_ItemSize = (int)(sizeof(int) * 2 + sizeof(int) * (ceil(fabs(scale)) + 1));
+  const size_t weight_count = static_cast<size_t>(ceil(fabs(scale))) + 1;
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(weight_count);
+  m_pWeightTables.resize(dest_len * m_ItemSize);
   m_DestMin = 0;
-  m_pWeightTables.resize(dest_len * m_ItemSize + 4);
   if (fabs(scale) < 1.0) {
     for (int dest_pixel = 0; dest_pixel < dest_len; dest_pixel++) {
       PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
@@ -142,10 +143,9 @@ ProgressiveDecoder::HorzTable::HorzTable() = default;
 ProgressiveDecoder::HorzTable::~HorzTable() = default;
 
 void ProgressiveDecoder::HorzTable::Calc(int dest_len, int src_len) {
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(2);
+  m_pWeightTables.resize(dest_len * m_ItemSize, 0);
   double scale = (double)dest_len / (double)src_len;
-  m_ItemSize = sizeof(int) * 4;
-  int size = dest_len * m_ItemSize + 4;
-  m_pWeightTables.resize(size, 0);
   if (scale > 1) {
     int pre_dest_col = 0;
     for (int src_col = 0; src_col < src_len; src_col++) {
@@ -195,10 +195,9 @@ ProgressiveDecoder::VertTable::VertTable() = default;
 ProgressiveDecoder::VertTable::~VertTable() = default;
 
 void ProgressiveDecoder::VertTable::Calc(int dest_len, int src_len) {
+  m_ItemSize = PixelWeight::TotalBytesForWeightCount(2);
+  m_pWeightTables.resize(dest_len * m_ItemSize, 0);
   double scale = (double)dest_len / (double)src_len;
-  m_ItemSize = sizeof(int) * 4;
-  int size = dest_len * m_ItemSize + 4;
-  m_pWeightTables.resize(size, 0);
   if (scale <= 1) {
     for (int dest_row = 0; dest_row < dest_len; dest_row++) {
       PixelWeight* pWeight = GetPixelWeight(dest_row);
