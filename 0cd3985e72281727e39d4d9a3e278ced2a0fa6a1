@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf1bd077_aa53e23f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-06-10T12:23:43Z",
+      "side": 1,
+      "message": "Sorry, I accidentally created a new review",
+      "revId": "0cd3985e72281727e39d4d9a3e278ced2a0fa6a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
