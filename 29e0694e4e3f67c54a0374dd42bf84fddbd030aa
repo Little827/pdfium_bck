@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bb26c4_4a35af43",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-10T17:50:04Z",
+      "side": 1,
+      "message": "By the way, I checked that almost all PDFium APIs take an int, not uint32_t, as the type for page indices. I can change it if you want, but I\u0027m doing this for consistency.",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
