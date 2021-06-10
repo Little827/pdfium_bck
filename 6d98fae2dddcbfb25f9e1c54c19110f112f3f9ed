@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d978df_75998691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-10T17:04:22Z",
+      "side": 1,
+      "message": "(Note that the \"red bots\" are going to be due to slight differences in the output bitmaps, we can evaluate them later).",
+      "revId": "6d98fae2dddcbfb25f9e1c54c19110f112f3f9ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
