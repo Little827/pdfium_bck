@@ -32,7 +32,6 @@ class CStretchEngine {
   ~CStretchEngine();
 
   bool Continue(PauseIndicatorIface* pPause);
-
   bool StartStretchHorz();
   bool ContinueStretchHorz(PauseIndicatorIface* pPause);
   void StretchVert();
@@ -56,13 +55,13 @@ class CStretchEngine {
           static_cast<const CWeightTable*>(this)->GetPixelWeight(pixel));
     }
 
-    double* GetValueFromPixelWeight(PixelWeight* pWeight, int index) const;
-    size_t GetPixelWeightSize() const;
+    int* GetValueFromPixelWeight(PixelWeight* pWeight, int index) const;
+    size_t GetPixelWeightCount() const;
 
    private:
     int m_DestMin = 0;
-    int m_ItemSize = 0;
-    size_t m_dwWeightTablesSize = 0;
+    size_t m_ItemSizeBytes = 0;
+    size_t m_WeightTablesSizeBytes = 0;
     std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_WeightTables;
   };
 
