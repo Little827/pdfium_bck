@@ -33,6 +33,24 @@
       "message": "Also there\u0027s some overflow here in the ubsan runs, e.g.\n\n../../core/fxge/dib/cstretchengine.cpp:82:15: runtime error: left shift of 255 by 28 places cannot be represented in type \u0027int\u0027\n    #0 0x5629a40193f3 in CStretchEngine::ContinueStretchHorz(PauseIndicatorIface*) core/fxge/dib/cstretchengine.cpp\n    #1 0x5629a401844a in CStretchEngine::Continue(PauseIndicatorIface*) core/fxge/dib/cstretchengine.cpp:317:9\n    #2 0x5629a4007421 in CFX_ImageStretcher::StartStretch() core/fxge/dib/cfx_imagestretcher.cpp:106:23\n",
       "revId": "6d98fae2dddcbfb25f9e1c54c19110f112f3f9ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae43786_7a734bdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-10T18:38:15Z",
+      "side": 1,
+      "message": "but these should be easily avoided by promoting to int64 fist.",
+      "parentUuid": "0374adb5_3cb56840",
+      "revId": "6d98fae2dddcbfb25f9e1c54c19110f112f3f9ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
