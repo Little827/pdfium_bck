@@ -19,11 +19,86 @@
 
 namespace {
 
-constexpr uint32_t kFixedPointBits = 16;
-constexpr uint32_t kFixedPointOne = 1 << kFixedPointBits;
+constexpr uint32_t kFractionalPartBits = 28;
+constexpr uint32_t kShortFractPartBits = kFractionalPartBits - 10;
 
 int GetPitchRoundUpTo4Bytes(int bits_per_pixel) {
   return (bits_per_pixel + 31) / 32 * 4;
+}
+
+template <int NewSize, int OldSize>
+typename std::enable_if<(NewSize > OldSize), int64_t>::type ChangeFractPart(
+    int64_t value) {
+  return value << (NewSize - OldSize);
+}
+
+template <int NewSize, int OldSize>
+typename std::enable_if<(NewSize < OldSize), bool>::type ChangeFractPart(
+    int64_t value) {
+  return value >> (OldSize - NewSize);
+}
+
+template <int NewSize, int OldSize>
+typename std::enable_if<(NewSize == OldSize), bool>::type ChangeFractPart(
+    int64_t value) {
+  return value;
+}
+
+// fractional size in bits
+template <int FractSize>
+class FPInt {
+  template <int Size>
+  friend FPInt<Size> FloatToFPInt(double value);
+  template <int Size>
+  friend int FPIntToInt(FPInt<Size> fpInt);
+  template <int Size>
+  friend FPInt<Size> FPIntDiv(FPInt<Size> first, FPInt<Size> second);
+  template <int NewSize, int OldSize>
+  friend FPInt<NewSize> FPIntMultDiv(FPInt<OldSize> fpInt, int mult, int div);
+
+ public:
+  // NOLINTNEXTLINE(runtime/explicit)
+  FPInt(int i) : value(i) {}
+
+  FPInt& operator+=(const FPInt& rhs) {
+    value += rhs.value;
+    return *this;
+  }
+
+  int ToInt() const { return value; }
+
+ private:
+  int value;
+
+  operator int() const { return value; }
+};
+
+template <int FractSize>
+FPInt<FractSize> FloatToFPInt(double value) {
+  return static_cast<int>(value * (1 << FractSize));
+}
+
+template <int FractSize>
+int FPIntToInt(FPInt<FractSize> fpInt) {
+  return fpInt >> FractSize;
+}
+
+template <int FractSize>
+FPInt<FractSize> FPIntDiv(FPInt<FractSize> first, FPInt<FractSize> second) {
+  int64_t tmp = first;
+  tmp <<= FractSize;
+  return static_cast<int>(tmp / second);
+}
+
+template <int NewFractSize, int OldFractSize>
+FPInt<NewFractSize> FPIntMultDiv(FPInt<OldFractSize> fpInt,
+                                 int mult,
+                                 int div = 1) {
+  int64_t tmp = fpInt;
+  tmp *= mult;
+  tmp = ChangeFractPart<NewFractSize, OldFractSize>(tmp);
+  tmp /= div;
+  return static_cast<int>(tmp);
 }
 
 }  // namespace
@@ -84,20 +159,23 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
         pixel_weights.m_SrcStart = std::max(pixel_weights.m_SrcStart, src_min);
         pixel_weights.m_SrcEnd = std::min(pixel_weights.m_SrcEnd, src_max - 1);
         if (pixel_weights.m_SrcStart == pixel_weights.m_SrcEnd) {
-          pixel_weights.m_Weights[0] = kFixedPointOne;
+          pixel_weights.m_Weights[0] =
+              FloatToFPInt<kFractionalPartBits>(1.0).ToInt();
         } else {
           pixel_weights.m_Weights[1] =
-              FXSYS_roundf(static_cast<float>(
-                               src_pos - pixel_weights.m_SrcStart - 1.0f / 2) *
-                           kFixedPointOne);
+              FloatToFPInt<kFractionalPartBits>(
+                  src_pos - pixel_weights.m_SrcStart - 1.0 / 2)
+                  .ToInt();
           pixel_weights.m_Weights[0] =
-              kFixedPointOne - pixel_weights.m_Weights[1];
+              FloatToFPInt<kFractionalPartBits>(1.0).ToInt() -
+              pixel_weights.m_Weights[1];
         }
       } else {
         int pixel_pos = static_cast<int>(floor(static_cast<float>(src_pos)));
         pixel_weights.m_SrcStart = std::max(pixel_pos, src_min);
         pixel_weights.m_SrcEnd = std::min(pixel_pos, src_max - 1);
-        pixel_weights.m_Weights[0] = kFixedPointOne;
+        pixel_weights.m_Weights[0] =
+            FloatToFPInt<kFractionalPartBits>(1.0).ToInt();
       }
     }
     return true;
@@ -135,7 +213,8 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
       if (idx >= GetPixelWeightCount())
         return false;
 
-      pixel_weights.m_Weights[idx] = FXSYS_roundf(weight * kFixedPointOne);
+      pixel_weights.m_Weights[idx] =
+          FloatToFPInt<kFractionalPartBits>(weight).ToInt();
     }
   }
   return true;
@@ -312,134 +391,150 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
       case TransformMethod::k1BppToManyBpp: {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
-          int dest_a = 0;
+          FPInt<kShortFractPartBits> dest_a = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = m_WeightTable.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
             if (src_scan[j / 8] & (1 << (7 - j % 8)))
-              dest_a += pixel_weight * 255;
+              dest_a += FPIntMultDiv<kShortFractPartBits>(pixel_weight, 255);
           }
-          *dest_scan++ = static_cast<uint8_t>(dest_a >> kFixedPointBits);
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_a));
         }
         break;
       }
       case TransformMethod::k8BppTo8Bpp: {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
-          int dest_a = 0;
+          FPInt<kShortFractPartBits> dest_a = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = m_WeightTable.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
-            dest_a += pixel_weight * src_scan[j];
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
+            dest_a +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, src_scan[j]);
           }
-          *dest_scan++ = static_cast<uint8_t>(dest_a >> kFixedPointBits);
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_a));
         }
         break;
       }
       case TransformMethod::k8BppTo8BppWithAlpha: {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
-          int dest_a = 0;
-          int dest_r = 0;
+          FPInt<kFractionalPartBits> dest_a = 0;
+          FPInt<kShortFractPartBits> dest_r = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = m_WeightTable.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
-            pixel_weight = pixel_weight * src_scan_mask[j] / 255;
-            dest_r += pixel_weight * src_scan[j];
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
+            pixel_weight = FPIntMultDiv<kFractionalPartBits>(
+                pixel_weight, src_scan_mask[j], 255);
+            dest_r +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, src_scan[j]);
             dest_a += pixel_weight;
           }
-          *dest_scan++ = static_cast<uint8_t>(dest_r >> kFixedPointBits);
-          *dest_scan_mask++ =
-              static_cast<uint8_t>((dest_a * 255) >> kFixedPointBits);
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_r));
+          *dest_scan_mask++ = static_cast<uint8_t>(
+              FPIntToInt(FPIntMultDiv<kShortFractPartBits>(dest_a, 255)));
         }
         break;
       }
       case TransformMethod::k8BppToManyBpp: {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
-          int dest_r = 0;
-          int dest_g = 0;
-          int dest_b = 0;
+          FPInt<kShortFractPartBits> dest_r = 0;
+          FPInt<kShortFractPartBits> dest_g = 0;
+          FPInt<kShortFractPartBits> dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = m_WeightTable.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
             unsigned long argb = m_pSrcPalette[src_scan[j]];
             if (m_DestFormat == FXDIB_Format::kRgb) {
-              dest_r += pixel_weight * static_cast<uint8_t>(argb >> 16);
-              dest_g += pixel_weight * static_cast<uint8_t>(argb >> 8);
-              dest_b += pixel_weight * static_cast<uint8_t>(argb);
+              dest_r += FPIntMultDiv<kShortFractPartBits>(
+                  pixel_weight, static_cast<uint8_t>(argb >> 16));
+              dest_g += FPIntMultDiv<kShortFractPartBits>(
+                  pixel_weight, static_cast<uint8_t>(argb >> 8));
+              dest_b += FPIntMultDiv<kShortFractPartBits>(
+                  pixel_weight, static_cast<uint8_t>(argb));
             } else {
-              dest_b += pixel_weight * static_cast<uint8_t>(argb >> 24);
-              dest_g += pixel_weight * static_cast<uint8_t>(argb >> 16);
-              dest_r += pixel_weight * static_cast<uint8_t>(argb >> 8);
+              dest_b += FPIntMultDiv<kShortFractPartBits>(
+                  pixel_weight, static_cast<uint8_t>(argb >> 24));
+              dest_g += FPIntMultDiv<kShortFractPartBits>(
+                  pixel_weight, static_cast<uint8_t>(argb >> 16));
+              dest_r += FPIntMultDiv<kShortFractPartBits>(
+                  pixel_weight, static_cast<uint8_t>(argb >> 8));
             }
           }
-          *dest_scan++ = static_cast<uint8_t>(dest_b >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_g >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_r >> kFixedPointBits);
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_b));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_g));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_r));
         }
         break;
       }
       case TransformMethod::k8BppToManyBppWithAlpha: {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
-          int dest_a = 0;
-          int dest_r = 0;
-          int dest_g = 0;
-          int dest_b = 0;
+          FPInt<kFractionalPartBits> dest_a = 0;
+          FPInt<kShortFractPartBits> dest_r = 0;
+          FPInt<kShortFractPartBits> dest_g = 0;
+          FPInt<kShortFractPartBits> dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = m_WeightTable.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
-            pixel_weight = pixel_weight * src_scan_mask[j] / 255;
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
+            pixel_weight = FPIntMultDiv<kFractionalPartBits>(
+                pixel_weight, src_scan_mask[j], 255);
             unsigned long argb = m_pSrcPalette[src_scan[j]];
-            dest_b += pixel_weight * static_cast<uint8_t>(argb >> 24);
-            dest_g += pixel_weight * static_cast<uint8_t>(argb >> 16);
-            dest_r += pixel_weight * static_cast<uint8_t>(argb >> 8);
+            dest_b += FPIntMultDiv<kShortFractPartBits>(
+                pixel_weight, static_cast<uint8_t>(argb >> 24));
+            dest_g += FPIntMultDiv<kShortFractPartBits>(
+                pixel_weight, static_cast<uint8_t>(argb >> 16));
+            dest_r += FPIntMultDiv<kShortFractPartBits>(
+                pixel_weight, static_cast<uint8_t>(argb >> 8));
             dest_a += pixel_weight;
           }
-          *dest_scan++ = static_cast<uint8_t>(dest_b >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_g >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_r >> kFixedPointBits);
-          *dest_scan_mask++ =
-              static_cast<uint8_t>((dest_a * 255) >> kFixedPointBits);
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_b));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_g));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_r));
+          *dest_scan_mask++ = static_cast<uint8_t>(
+              FPIntToInt(FPIntMultDiv<kShortFractPartBits>(dest_a, 255)));
         }
         break;
       }
       case TransformMethod::kManyBpptoManyBpp: {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
-          int dest_r = 0;
-          int dest_g = 0;
-          int dest_b = 0;
+          FPInt<kShortFractPartBits> dest_r = 0;
+          FPInt<kShortFractPartBits> dest_g = 0;
+          FPInt<kShortFractPartBits> dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = m_WeightTable.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
             const uint8_t* src_pixel = src_scan + j * Bpp;
-            dest_b += pixel_weight * (*src_pixel++);
-            dest_g += pixel_weight * (*src_pixel++);
-            dest_r += pixel_weight * (*src_pixel);
+            dest_b +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_g +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_r +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel);
           }
-          *dest_scan++ = static_cast<uint8_t>(dest_b >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_g >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_r >> kFixedPointBits);
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_b));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_g));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_r));
           dest_scan += Bpp - 3;
         }
         break;
@@ -447,36 +542,41 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
       case TransformMethod::kManyBpptoManyBppWithAlpha: {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
-          int dest_a = 0;
-          int dest_r = 0;
-          int dest_g = 0;
-          int dest_b = 0;
+          FPInt<kFractionalPartBits> dest_a = 0;
+          FPInt<kShortFractPartBits> dest_r = 0;
+          FPInt<kShortFractPartBits> dest_g = 0;
+          FPInt<kShortFractPartBits> dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = m_WeightTable.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return false;
 
-            int pixel_weight = *pWeight;
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
             const uint8_t* src_pixel = src_scan + j * Bpp;
             if (m_DestFormat == FXDIB_Format::kArgb) {
-              pixel_weight = pixel_weight * src_pixel[3] / 255;
+              pixel_weight = FPIntMultDiv<kFractionalPartBits>(
+                  pixel_weight, src_pixel[3], 255);
             } else {
-              pixel_weight = pixel_weight * src_scan_mask[j] / 255;
+              pixel_weight = FPIntMultDiv<kFractionalPartBits>(
+                  pixel_weight, src_scan_mask[j], 255);
             }
-            dest_b += pixel_weight * (*src_pixel++);
-            dest_g += pixel_weight * (*src_pixel++);
-            dest_r += pixel_weight * (*src_pixel);
+            dest_b +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_g +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_r +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel);
             dest_a += pixel_weight;
           }
-          *dest_scan++ = static_cast<uint8_t>(dest_b >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_g >> kFixedPointBits);
-          *dest_scan++ = static_cast<uint8_t>(dest_r >> kFixedPointBits);
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_b));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_g));
+          *dest_scan++ = static_cast<uint8_t>(FPIntToInt(dest_r));
           if (m_DestFormat == FXDIB_Format::kArgb)
-            *dest_scan =
-                static_cast<uint8_t>((dest_a * 255) >> kFixedPointBits);
+            *dest_scan = static_cast<uint8_t>(
+                FPIntToInt(FPIntMultDiv<kShortFractPartBits>(dest_a, 255)));
           if (dest_scan_mask)
-            *dest_scan_mask++ =
-                static_cast<uint8_t>((dest_a * 255) >> kFixedPointBits);
+            *dest_scan_mask++ = static_cast<uint8_t>(
+                FPIntToInt(FPIntMultDiv<kShortFractPartBits>(dest_a, 255)));
           dest_scan += Bpp - 3;
         }
         break;
@@ -510,17 +610,17 @@ void CStretchEngine::StretchVert() {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           unsigned char* src_scan =
               m_InterBuf.data() + (col - m_DestClip.left) * DestBpp;
-          int dest_a = 0;
+          FPInt<kShortFractPartBits> dest_a = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = table.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
-            dest_a +=
-                pixel_weight * src_scan[(j - m_SrcClip.top) * m_InterPitch];
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
+            dest_a += FPIntMultDiv<kShortFractPartBits>(
+                pixel_weight, src_scan[(j - m_SrcClip.top) * m_InterPitch]);
           }
-          *dest_scan = static_cast<uint8_t>(dest_a >> kFixedPointBits);
+          *dest_scan = static_cast<uint8_t>(FPIntToInt(dest_a));
           dest_scan += DestBpp;
         }
         break;
@@ -531,22 +631,23 @@ void CStretchEngine::StretchVert() {
               m_InterBuf.data() + (col - m_DestClip.left) * DestBpp;
           unsigned char* src_scan_mask =
               m_ExtraAlphaBuf.data() + (col - m_DestClip.left);
-          int dest_a = 0;
-          int dest_k = 0;
+          FPInt<kShortFractPartBits> dest_a = 0;
+          FPInt<kShortFractPartBits> dest_k = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = table.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
-            dest_k +=
-                pixel_weight * src_scan[(j - m_SrcClip.top) * m_InterPitch];
-            dest_a += pixel_weight *
-                      src_scan_mask[(j - m_SrcClip.top) * m_ExtraMaskPitch];
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
+            dest_k += FPIntMultDiv<kShortFractPartBits>(
+                pixel_weight, src_scan[(j - m_SrcClip.top) * m_InterPitch]);
+            dest_a += FPIntMultDiv<kShortFractPartBits>(
+                pixel_weight,
+                src_scan_mask[(j - m_SrcClip.top) * m_ExtraMaskPitch]);
           }
-          *dest_scan = static_cast<uint8_t>(dest_k >> kFixedPointBits);
+          *dest_scan = static_cast<uint8_t>(FPIntToInt(dest_k));
           dest_scan += DestBpp;
-          *dest_scan_mask++ = static_cast<uint8_t>(dest_a >> kFixedPointBits);
+          *dest_scan_mask++ = static_cast<uint8_t>(FPIntToInt(dest_a));
         }
         break;
       }
@@ -555,24 +656,27 @@ void CStretchEngine::StretchVert() {
         for (int col = m_DestClip.left; col < m_DestClip.right; ++col) {
           unsigned char* src_scan =
               m_InterBuf.data() + (col - m_DestClip.left) * DestBpp;
-          int dest_r = 0;
-          int dest_g = 0;
-          int dest_b = 0;
+          FPInt<kShortFractPartBits> dest_r = 0;
+          FPInt<kShortFractPartBits> dest_g = 0;
+          FPInt<kShortFractPartBits> dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = table.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
             const uint8_t* src_pixel =
                 src_scan + (j - m_SrcClip.top) * m_InterPitch;
-            dest_b += pixel_weight * (*src_pixel++);
-            dest_g += pixel_weight * (*src_pixel++);
-            dest_r += pixel_weight * (*src_pixel);
+            dest_b +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_g +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_r +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel);
           }
-          dest_scan[0] = static_cast<uint8_t>(dest_b >> kFixedPointBits);
-          dest_scan[1] = static_cast<uint8_t>(dest_g >> kFixedPointBits);
-          dest_scan[2] = static_cast<uint8_t>(dest_r >> kFixedPointBits);
+          dest_scan[0] = static_cast<uint8_t>(FPIntToInt(dest_b));
+          dest_scan[1] = static_cast<uint8_t>(FPIntToInt(dest_g));
+          dest_scan[2] = static_cast<uint8_t>(FPIntToInt(dest_r));
           dest_scan += DestBpp;
         }
         break;
@@ -585,41 +689,48 @@ void CStretchEngine::StretchVert() {
           unsigned char* src_scan_mask = nullptr;
           if (m_DestFormat != FXDIB_Format::kArgb)
             src_scan_mask = m_ExtraAlphaBuf.data() + (col - m_DestClip.left);
-          int dest_a = 0;
-          int dest_r = 0;
-          int dest_g = 0;
-          int dest_b = 0;
+          FPInt<kShortFractPartBits> dest_a = 0;
+          FPInt<kShortFractPartBits> dest_r = 0;
+          FPInt<kShortFractPartBits> dest_g = 0;
+          FPInt<kShortFractPartBits> dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
             int* pWeight = table.GetValueFromPixelWeight(pWeights, j);
             if (!pWeight)
               return;
 
-            int pixel_weight = *pWeight;
+            FPInt<kFractionalPartBits> pixel_weight = *pWeight;
             const uint8_t* src_pixel =
                 src_scan + (j - m_SrcClip.top) * m_InterPitch;
             int mask_v = 255;
             if (src_scan_mask)
               mask_v = src_scan_mask[(j - m_SrcClip.top) * m_ExtraMaskPitch];
-            dest_b += pixel_weight * (*src_pixel++);
-            dest_g += pixel_weight * (*src_pixel++);
-            dest_r += pixel_weight * (*src_pixel);
+            dest_b +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_g +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel++);
+            dest_r +=
+                FPIntMultDiv<kShortFractPartBits>(pixel_weight, *src_pixel);
             if (m_DestFormat == FXDIB_Format::kArgb)
-              dest_a += pixel_weight * (*(src_pixel + 1));
+              dest_a += FPIntMultDiv<kShortFractPartBits>(pixel_weight,
+                                                          *(src_pixel + 1));
             else
-              dest_a += pixel_weight * mask_v;
+              dest_a += FPIntMultDiv<kShortFractPartBits>(pixel_weight, mask_v);
           }
-          if (dest_a) {
-            int r = static_cast<uint32_t>(dest_r) * 255 / dest_a;
-            int g = static_cast<uint32_t>(dest_g) * 255 / dest_a;
-            int b = static_cast<uint32_t>(dest_b) * 255 / dest_a;
+          if (dest_a.ToInt()) {
+            int r = FPIntToInt(FPIntMultDiv<kFractionalPartBits>(
+                FPIntDiv(dest_r, dest_a), 255));
+            int g = FPIntToInt(FPIntMultDiv<kFractionalPartBits>(
+                FPIntDiv(dest_g, dest_a), 255));
+            int b = FPIntToInt(FPIntMultDiv<kFractionalPartBits>(
+                FPIntDiv(dest_b, dest_a), 255));
             dest_scan[0] = pdfium::clamp(b, 0, 255);
             dest_scan[1] = pdfium::clamp(g, 0, 255);
             dest_scan[2] = pdfium::clamp(r, 0, 255);
           }
           if (m_DestFormat == FXDIB_Format::kArgb)
-            dest_scan[3] = static_cast<uint8_t>((dest_a) >> kFixedPointBits);
+            dest_scan[3] = static_cast<uint8_t>(FPIntToInt(dest_a));
           else
-            *dest_scan_mask = static_cast<uint8_t>((dest_a) >> kFixedPointBits);
+            *dest_scan_mask = static_cast<uint8_t>(FPIntToInt(dest_a));
           dest_scan += DestBpp;
           if (dest_scan_mask)
             dest_scan_mask++;
