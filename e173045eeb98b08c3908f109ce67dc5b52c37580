@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1623297790 -0700\nnonce ALC2d18Cn+WACmmBAYlXM+cQEk7p82M5z+2eeahFGk5benfOsBIqi6+MQGistzB9BSDKF7ixtWjF\n\n0000000000000000000000000000000000000000 e173045eeb98b08c3908f109ce67dc5b52c37580 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmDBjv4ACgkQqzYtYVpm\n/XvcLwf/T2EmD8Fa5FwZiUPlpIGFjHINc7nupDdbbGQdc2rX1jgTnrJfPrkjgtcm\nUlVF4UPobQQR+XlwlS52GjhIfa9yz0UmfFac4KYVMd5bil1TP3W6MZAej6TlrLxs\nIiYdPbNZ5CnJ/d9/DJ+bTA+y8iOlA61kWRnumBNkIjfhcnv6VFDbAWuV19Qc6spP\n25ZzllY9vhpASh+XLeCm4mwzhS8nHNjSo4va0SeBGARYIj8oXPhUfEQ0EVOxAPlO\nQhkhAESLlcN0UhFWPylpXRxzRyOS2uA2pUXnYzJ+etulepEAiltW7Px415lmxu9B\nGUZMMusW7h04SfEU8p0uIQSoC5uOiw\u003d\u003d\n\u003dL6IG\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38c0067_65ae9ff7",
+        "filename": "core/fxge/cfx_pathdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-10T17:56:21Z",
+      "side": 1,
+      "message": "nest as FX_PathPoint::Type ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "e173045eeb98b08c3908f109ce67dc5b52c37580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f308619_59603c89",
+        "filename": "core/fxge/cfx_pathdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-10T17:56:21Z",
+      "side": 1,
+      "message": "follow-up: nest as CFX_PathData::Point ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "e173045eeb98b08c3908f109ce67dc5b52c37580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49162b0c_0084b579",
+        "filename": "core/fxge/cfx_pathdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-10T17:56:21Z",
+      "side": 1,
+      "message": "follow-up: drop the `Data`, I think CFX_Path is unused.\n\nSo in the end, the enum becomes\n\nCFX_Path::Point::Type::kLine",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "e173045eeb98b08c3908f109ce67dc5b52c37580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
