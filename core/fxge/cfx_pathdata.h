@@ -14,21 +14,21 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/optional.h"
 
-enum class FXPT_TYPE : uint8_t { LineTo, BezierTo, MoveTo };
+enum class FX_PathToType : uint8_t { kLineTo, kBezierTo, kMoveTo };
 
 class FX_PATHPOINT {
  public:
   FX_PATHPOINT();
-  FX_PATHPOINT(const CFX_PointF& point, FXPT_TYPE type, bool close);
+  FX_PATHPOINT(const CFX_PointF& point, FX_PathToType type, bool close);
   FX_PATHPOINT(const FX_PATHPOINT& other);
   ~FX_PATHPOINT();
 
-  bool IsTypeAndOpen(FXPT_TYPE type) const {
+  bool IsTypeAndOpen(FX_PathToType type) const {
     return m_Type == type && !m_CloseFigure;
   }
 
   CFX_PointF m_Point;
-  FXPT_TYPE m_Type;
+  FX_PathToType m_Type;
   bool m_CloseFigure;
 };
 
@@ -41,7 +41,7 @@ class CFX_PathData {
 
   void Clear();
 
-  FXPT_TYPE GetType(int index) const { return m_Points[index].m_Type; }
+  FX_PathToType GetType(int index) const { return m_Points[index].m_Type; }
   bool IsClosingFigure(int index) const {
     return m_Points[index].m_CloseFigure;
   }
@@ -62,8 +62,8 @@ class CFX_PathData {
   void AppendFloatRect(const CFX_FloatRect& rect);
   void AppendRect(float left, float bottom, float right, float top);
   void AppendLine(const CFX_PointF& pt1, const CFX_PointF& pt2);
-  void AppendPoint(const CFX_PointF& point, FXPT_TYPE type);
-  void AppendPointAndClose(const CFX_PointF& point, FXPT_TYPE type);
+  void AppendPoint(const CFX_PointF& point, FX_PathToType type);
+  void AppendPointAndClose(const CFX_PointF& point, FX_PathToType type);
   void ClosePath();
 
  private:
