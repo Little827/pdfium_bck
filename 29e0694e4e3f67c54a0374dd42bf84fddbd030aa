@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a786d321_83d03845",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-10T21:51:19Z",
+      "side": 1,
+      "message": "Maybe use ScopedFPDFDocument instead?",
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78fc9e3a_7a323cb5",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-10T21:51:19Z",
+      "side": 1,
+      "message": "Do you think this is a helpful feature, or should the function return an error in this case? i.e. Caller gets exactly what the ask for, no exceptions like this.",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a1a1f3_5033f3b3",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-10T21:51:19Z",
+      "side": 1,
+      "message": "If |page_indices| contains an invalid value, then?",
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28bb26c4_4a35af43",
         "filename": "public/fpdf_ppo.h",
         "patchSetId": 1
@@ -20,6 +77,47 @@
         "endLine": 33,
         "endChar": 33
       },
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cf6ba3_59d4f7ce",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-10T21:51:19Z",
+      "side": 1,
+      "message": "As you wish.",
+      "parentUuid": "28bb26c4_4a35af43",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023c0f4e_86c06958",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-10T21:51:19Z",
+      "side": 1,
+      "message": "It\u0027s not clear whether all callers will prefer FPDF_ImportPagesByIndex(). Maybe leave this off for now?",
       "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
