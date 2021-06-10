@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbffede9_35fb16d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-10T18:47:26Z",
+      "side": 1,
+      "message": "next one:\n./../core/fxge/dib/cstretchengine.cpp:83:7: runtime error: left shift of negative value -268435695",
+      "revId": "2564ad10ef8cc92ae6fa44c0eeb2ee6806995fb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
