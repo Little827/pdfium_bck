@@ -322,72 +322,74 @@ bool ProgressiveDecoder::PngAskScanlineBuf(int line, uint8_t** pSrcBuf) {
     NOTREACHED();
     return false;
   }
-  if (line >= m_clipBox.top && line < m_clipBox.bottom) {
-    double scale_y = static_cast<double>(m_sizeY) / m_clipBox.Height();
-    int32_t row =
-        static_cast<int32_t>((line - m_clipBox.top) * scale_y) + m_startY;
-    const uint8_t* src_scan = pDIBitmap->GetScanline(row);
-    uint8_t* dest_scan = m_pDecodeBuf.get();
-    *pSrcBuf = m_pDecodeBuf.get();
-    int32_t src_Bpp = pDIBitmap->GetBPP() >> 3;
-    int32_t dest_Bpp = (m_SrcFormat & 0xff) >> 3;
-    int32_t src_left = m_startX;
-    int32_t dest_left = m_clipBox.left;
-    src_scan += src_left * src_Bpp;
-    dest_scan += dest_left * dest_Bpp;
-    for (int32_t src_col = 0; src_col < m_sizeX; src_col++) {
-      PixelWeight* pPixelWeights = m_WeightHorzOO.GetPixelWeight(src_col);
-      if (pPixelWeights->m_SrcStart != pPixelWeights->m_SrcEnd) {
-        continue;
-      }
-      switch (pDIBitmap->GetFormat()) {
-        case FXDIB_Format::k1bppMask:
-        case FXDIB_Format::k1bppRgb:
-          NOTREACHED();
-          return false;
-        case FXDIB_Format::k8bppMask:
-        case FXDIB_Format::k8bppRgb: {
-          if (pDIBitmap->HasPalette())
-            return false;
+  if (line < m_clipBox.top || line >= m_clipBox.bottom)
+    return true;
 
-          uint32_t dest_g = 0;
-          dest_g += pPixelWeights->m_Weights[0] * src_scan[src_col];
-          dest_scan[pPixelWeights->m_SrcStart] = (uint8_t)(dest_g >> 16);
-        } break;
-        case FXDIB_Format::kRgb:
-        case FXDIB_Format::kRgb32: {
-          uint32_t dest_b = 0;
-          uint32_t dest_g = 0;
-          uint32_t dest_r = 0;
-          const uint8_t* p = src_scan + src_col * src_Bpp;
-          dest_b += pPixelWeights->m_Weights[0] * (*p++);
-          dest_g += pPixelWeights->m_Weights[0] * (*p++);
-          dest_r += pPixelWeights->m_Weights[0] * (*p);
-          uint8_t* pDes = &dest_scan[pPixelWeights->m_SrcStart * dest_Bpp];
-          *pDes++ = (uint8_t)((dest_b) >> 16);
-          *pDes++ = (uint8_t)((dest_g) >> 16);
-          *pDes = (uint8_t)((dest_r) >> 16);
-        } break;
-        case FXDIB_Format::kArgb: {
-          uint32_t dest_r = 0;
-          uint32_t dest_g = 0;
-          uint32_t dest_b = 0;
-          const uint8_t* p = src_scan + src_col * src_Bpp;
-          dest_b += pPixelWeights->m_Weights[0] * (*p++);
-          dest_g += pPixelWeights->m_Weights[0] * (*p++);
-          dest_r += pPixelWeights->m_Weights[0] * (*p++);
-          uint8_t* pDes = &dest_scan[pPixelWeights->m_SrcStart * dest_Bpp];
-          *pDes++ = (uint8_t)((dest_b) >> 16);
-          *pDes++ = (uint8_t)((dest_g) >> 16);
-          *pDes++ = (uint8_t)((dest_r) >> 16);
-          *pDes = *p;
-        } break;
-        default:
-          return false;
+  double scale_y = static_cast<double>(m_sizeY) / m_clipBox.Height();
+  int32_t row =
+      static_cast<int32_t>((line - m_clipBox.top) * scale_y) + m_startY;
+  const uint8_t* src_scan = pDIBitmap->GetScanline(row);
+  uint8_t* dest_scan = m_pDecodeBuf.get();
+  *pSrcBuf = m_pDecodeBuf.get();
+  int32_t src_Bpp = pDIBitmap->GetBPP() >> 3;
+  int32_t dest_Bpp = (m_SrcFormat & 0xff) >> 3;
+  int32_t src_left = m_startX;
+  int32_t dest_left = m_clipBox.left;
+  src_scan += src_left * src_Bpp;
+  dest_scan += dest_left * dest_Bpp;
+
+  switch (pDIBitmap->GetFormat()) {
+    case FXDIB_Format::k1bppMask:
+    case FXDIB_Format::k1bppRgb:
+      NOTREACHED();
+      return false;
+    case FXDIB_Format::k8bppMask:
+    case FXDIB_Format::k8bppRgb:
+      if (pDIBitmap->HasPalette())
+        return false;
+      for (int32_t src_col = 0; src_col < m_sizeX; src_col++) {
+        PixelWeight* pPixelWeights = m_WeightHorzOO.GetPixelWeight(src_col);
+        if (pPixelWeights->m_SrcStart != pPixelWeights->m_SrcEnd)
+          continue;
+        uint32_t dest_g = pPixelWeights->m_Weights[0] * src_scan[src_col];
+        dest_scan[pPixelWeights->m_SrcStart] = (uint8_t)(dest_g >> 16);
       }
-    }
+      return true;
+    case FXDIB_Format::kRgb:
+    case FXDIB_Format::kRgb32:
+      for (int32_t src_col = 0; src_col < m_sizeX; src_col++) {
+        PixelWeight* pPixelWeights = m_WeightHorzOO.GetPixelWeight(src_col);
+        if (pPixelWeights->m_SrcStart != pPixelWeights->m_SrcEnd)
+          continue;
+        const uint8_t* p = src_scan + src_col * src_Bpp;
+        uint32_t dest_b = pPixelWeights->m_Weights[0] * (*p++);
+        uint32_t dest_g = pPixelWeights->m_Weights[0] * (*p++);
+        uint32_t dest_r = pPixelWeights->m_Weights[0] * (*p);
+        uint8_t* pDes = &dest_scan[pPixelWeights->m_SrcStart * dest_Bpp];
+        *pDes++ = (uint8_t)((dest_b) >> 16);
+        *pDes++ = (uint8_t)((dest_g) >> 16);
+        *pDes = (uint8_t)((dest_r) >> 16);
+      }
+      return true;
+    case FXDIB_Format::kArgb:
+      for (int32_t src_col = 0; src_col < m_sizeX; src_col++) {
+        PixelWeight* pPixelWeights = m_WeightHorzOO.GetPixelWeight(src_col);
+        if (pPixelWeights->m_SrcStart != pPixelWeights->m_SrcEnd)
+          continue;
+        const uint8_t* p = src_scan + src_col * src_Bpp;
+        uint32_t dest_b = pPixelWeights->m_Weights[0] * (*p++);
+        uint32_t dest_g = pPixelWeights->m_Weights[0] * (*p++);
+        uint32_t dest_r = pPixelWeights->m_Weights[0] * (*p++);
+        uint8_t* pDes = &dest_scan[pPixelWeights->m_SrcStart * dest_Bpp];
+        *pDes++ = (uint8_t)((dest_b) >> 16);
+        *pDes++ = (uint8_t)((dest_g) >> 16);
+        *pDes++ = (uint8_t)((dest_r) >> 16);
+        *pDes = *p;
+      }
+      return true;
+    default:
+      return false;
   }
-  return true;
 }
 
 void ProgressiveDecoder::PngFillScanlineBufCompleted(int pass, int line) {
@@ -657,7 +659,7 @@ void ProgressiveDecoder::ResampleVertBT(
           if (pDeviceBitmap->HasPalette())
             return;
 
-          int dest_g = 0;
+          uint32_t dest_g = 0;
           dest_g += pWeight->m_Weights[0] * (*scan_src1++);
           dest_g += pWeight->m_Weights[1] * (*scan_src2++);
           *scan_des++ = (uint8_t)(dest_g >> 16);
@@ -932,7 +934,7 @@ void ProgressiveDecoder::GifDoubleLineResampleVert(
           if (pDeviceBitmap->HasPalette())
             return;
 
-          int dest_g = 0;
+          uint32_t dest_g = 0;
           dest_g += pWeight->m_Weights[0] * (*scan_src1++);
           dest_g += pWeight->m_Weights[1] * (*scan_src2++);
           *scan_des++ = (uint8_t)(dest_g >> 16);
@@ -1154,8 +1156,7 @@ void ProgressiveDecoder::PngOneOneMapResampleHorz(
         uint32_t dest_b = 0;
         uint32_t dest_g = 0;
         uint32_t dest_r = 0;
-        const uint8_t* p = src_scan;
-        p = src_scan + pPixelWeights->m_SrcStart * src_Bpp;
+        const uint8_t* p = src_scan + pPixelWeights->m_SrcStart * src_Bpp;
         dest_b += pPixelWeights->m_Weights[0] * (*p++);
         dest_g += pPixelWeights->m_Weights[0] * (*p++);
         dest_r += pPixelWeights->m_Weights[0] * (*p);
@@ -1173,8 +1174,7 @@ void ProgressiveDecoder::PngOneOneMapResampleHorz(
         uint32_t dest_b = 0;
         uint32_t dest_g = 0;
         uint32_t dest_r = 0;
-        const uint8_t* p = src_scan;
-        p = src_scan + pPixelWeights->m_SrcStart * src_Bpp;
+        const uint8_t* p = src_scan + pPixelWeights->m_SrcStart * src_Bpp;
         dest_b += pPixelWeights->m_Weights[0] * (*p++);
         dest_g += pPixelWeights->m_Weights[0] * (*p++);
         dest_r += pPixelWeights->m_Weights[0] * (*p++);
@@ -1773,21 +1773,21 @@ void ProgressiveDecoder::ReSampleScanline(
         uint32_t dest_g = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           dest_g += pixel_weight * src_scan[j];
         }
         *dest_scan++ = (uint8_t)(dest_g >> 16);
       } break;
       case 3: {
-        int dest_r = 0;
-        int dest_g = 0;
-        int dest_b = 0;
+        uint32_t dest_r = 0;
+        uint32_t dest_g = 0;
+        uint32_t dest_b = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
-          unsigned long argb = m_pSrcPalette.get()[src_scan[j]];
+          uint32_t argb = m_pSrcPalette.get()[src_scan[j]];
           dest_r += pixel_weight * FXARGB_R(argb);
           dest_g += pixel_weight * FXARGB_G(argb);
           dest_b += pixel_weight * FXARGB_B(argb);
@@ -1801,7 +1801,7 @@ void ProgressiveDecoder::ReSampleScanline(
         uint32_t dest_r = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           const uint8_t* src_pixel = src_scan + j * src_bytes_per_pixel;
           dest_b += pixel_weight * (*src_pixel++);
@@ -1817,7 +1817,7 @@ void ProgressiveDecoder::ReSampleScanline(
         uint32_t dest_r = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           const uint8_t* src_pixel = src_scan + j * src_bytes_per_pixel;
           uint8_t src_b = 0;
@@ -1839,7 +1839,7 @@ void ProgressiveDecoder::ReSampleScanline(
         uint32_t dest_g = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           dest_g += pixel_weight * src_scan[j];
         }
@@ -1847,14 +1847,14 @@ void ProgressiveDecoder::ReSampleScanline(
         dest_scan += dest_bytes_per_pixel;
       } break;
       case 8: {
-        int dest_r = 0;
-        int dest_g = 0;
-        int dest_b = 0;
+        uint32_t dest_r = 0;
+        uint32_t dest_g = 0;
+        uint32_t dest_b = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
-          unsigned long argb = m_pSrcPalette.get()[src_scan[j]];
+          uint32_t argb = m_pSrcPalette.get()[src_scan[j]];
           dest_r += pixel_weight * FXARGB_R(argb);
           dest_g += pixel_weight * FXARGB_G(argb);
           dest_b += pixel_weight * FXARGB_B(argb);
@@ -1867,14 +1867,14 @@ void ProgressiveDecoder::ReSampleScanline(
       case 12: {
 #ifdef PDF_ENABLE_XFA_BMP
         if (m_pBmpContext) {
-          int dest_r = 0;
-          int dest_g = 0;
-          int dest_b = 0;
+          uint32_t dest_r = 0;
+          uint32_t dest_g = 0;
+          uint32_t dest_b = 0;
           for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
                j++) {
-            int pixel_weight =
+            uint32_t pixel_weight =
                 pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
-            unsigned long argb = m_pSrcPalette.get()[src_scan[j]];
+            uint32_t argb = m_pSrcPalette.get()[src_scan[j]];
             dest_r += pixel_weight * FXARGB_R(argb);
             dest_g += pixel_weight * FXARGB_G(argb);
             dest_b += pixel_weight * FXARGB_B(argb);
@@ -1886,13 +1886,13 @@ void ProgressiveDecoder::ReSampleScanline(
           break;
         }
 #endif  // PDF_ENABLE_XFA_BMP
-        int dest_a = 0;
-        int dest_r = 0;
-        int dest_g = 0;
-        int dest_b = 0;
+        uint32_t dest_a = 0;
+        uint32_t dest_r = 0;
+        uint32_t dest_g = 0;
+        uint32_t dest_b = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           unsigned long argb = m_pSrcPalette.get()[src_scan[j]];
           dest_a += pixel_weight * FXARGB_A(argb);
@@ -1911,7 +1911,7 @@ void ProgressiveDecoder::ReSampleScanline(
         uint32_t dest_r = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           const uint8_t* src_pixel = src_scan + j * src_bytes_per_pixel;
           dest_b += pixel_weight * (*src_pixel++);
@@ -1929,7 +1929,7 @@ void ProgressiveDecoder::ReSampleScanline(
         uint32_t dest_r = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           const uint8_t* src_pixel = src_scan + j * src_bytes_per_pixel;
           uint8_t src_b = 0;
@@ -1954,7 +1954,7 @@ void ProgressiveDecoder::ReSampleScanline(
         uint32_t dest_b = 0;
         for (int j = pPixelWeights->m_SrcStart; j <= pPixelWeights->m_SrcEnd;
              j++) {
-          int pixel_weight =
+          uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           const uint8_t* src_pixel = src_scan + j * src_bytes_per_pixel;
           pixel_weight = pixel_weight * src_pixel[3] / 255;
@@ -2019,7 +2019,7 @@ void ProgressiveDecoder::ResampleVert(
           if (pDeviceBitmap->HasPalette())
             return;
 
-          int dest_g = 0;
+          uint32_t dest_g = 0;
           dest_g += pWeight->m_Weights[0] * (*scan_src1++);
           dest_g += pWeight->m_Weights[1] * (*scan_src2++);
           *scan_des++ = (uint8_t)(dest_g >> 16);
