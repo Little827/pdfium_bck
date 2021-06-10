@@ -573,12 +573,12 @@ void CStretchEngine::StretchVert() {
               dest_a += pixel_weight * mask_v;
           }
           if (dest_a) {
-            int r = static_cast<uint32_t>(dest_r) * 255 / dest_a;
-            int g = static_cast<uint32_t>(dest_g) * 255 / dest_a;
-            int b = static_cast<uint32_t>(dest_b) * 255 / dest_a;
-            dest_scan[0] = pdfium::clamp(b, 0, 255);
-            dest_scan[1] = pdfium::clamp(g, 0, 255);
-            dest_scan[2] = pdfium::clamp(r, 0, 255);
+            uint32_t r = static_cast<uint64_t>(dest_r) * 255 / dest_a;
+            uint32_t g = static_cast<uint64_t>(dest_g) * 255 / dest_a;
+            uint32_t b = static_cast<uint64_t>(dest_b) * 255 / dest_a;
+            dest_scan[0] = pdfium::clamp<uint32_t>(b, 0, 255);
+            dest_scan[1] = pdfium::clamp<uint32_t>(g, 0, 255);
+            dest_scan[2] = pdfium::clamp<uint32_t>(r, 0, 255);
           }
           if (m_DestFormat == FXDIB_Format::kArgb)
             dest_scan[3] = static_cast<uint8_t>((dest_a) >> kFixedPointBits);
