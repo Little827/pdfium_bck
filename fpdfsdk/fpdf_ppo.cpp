@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <map>
 #include <memory>
+#include <numeric>
 #include <sstream>
 #include <utility>
 #include <vector>
@@ -207,9 +208,30 @@ std::vector<uint32_t> GetPageNumbers(const CPDF_Document& doc,
   if (!bsPageRange.IsEmpty())
     return ParsePageRangeString(bsPageRange, nCount);
 
+  std::vector<uint32_t> page_numbers(nCount);
+  std::iota(page_numbers.begin(), page_numbers.end(), 1);
+
+  return page_numbers;
+}
+
+std::vector<uint32_t> GetPageNumbersFromIndices(const CPDF_Document& doc,
+                                                const int* page_indices,
+                                                unsigned long length) {
+  const int page_count = doc.GetPageCount();
   std::vector<uint32_t> page_numbers;
-  for (uint32_t i = 1; i <= nCount; ++i)
-    page_numbers.push_back(i);
+
+  if (!page_indices) {
+    page_numbers.resize(page_count);
+    std::iota(page_numbers.begin(), page_numbers.end(), 1);
+    return page_numbers;
+  }
+
+  page_numbers.reserve(length);
+  for (size_t i = 0; i < length; ++i) {
+    if (page_indices[i] < 0 || page_indices[i] >= page_count)
+      return std::vector<uint32_t>();
+    page_numbers.push_back(page_indices[i] + 1);
+  }
 
   return page_numbers;
 }
@@ -679,6 +701,29 @@ void CPDF_NPageToOneExporter::FinishPage(CPDF_Dictionary* pDestPageDict,
 }
 
 }  // namespace
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_ImportPagesByIndex(FPDF_DOCUMENT dest_doc,
+                        FPDF_DOCUMENT src_doc,
+                        const int* page_indices,
+                        unsigned long length,
+                        int index) {
+  CPDF_Document* pDestDoc = CPDFDocumentFromFPDFDocument(dest_doc);
+  if (!dest_doc)
+    return false;
+
+  CPDF_Document* pSrcDoc = CPDFDocumentFromFPDFDocument(src_doc);
+  if (!pSrcDoc)
+    return false;
+
+  std::vector<uint32_t> page_numbers =
+      GetPageNumbersFromIndices(*pSrcDoc, page_indices, length);
+  if (page_numbers.empty())
+    return false;
+
+  CPDF_PageExporter exporter(pDestDoc, pSrcDoc);
+  return exporter.ExportPage(page_numbers, index);
+}
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_ImportPages(FPDF_DOCUMENT dest_doc,
                                                      FPDF_DOCUMENT src_doc,
