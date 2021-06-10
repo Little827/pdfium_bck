@@ -114,7 +114,7 @@ void CFX_PSRenderer::OutputPath(const CFX_PathData* pPathData,
   size_t size = pPathData->GetPoints().size();
 
   for (size_t i = 0; i < size; i++) {
-    FXPT_TYPE type = pPathData->GetType(i);
+    FX_PathToType type = pPathData->GetType(i);
     bool closing = pPathData->IsClosingFigure(i);
     CFX_PointF pos = pPathData->GetPoint(i);
     if (pObject2Device)
@@ -122,15 +122,15 @@ void CFX_PSRenderer::OutputPath(const CFX_PathData* pPathData,
 
     buf << pos.x << " " << pos.y;
     switch (type) {
-      case FXPT_TYPE::MoveTo:
+      case FX_PathToType::kMove:
         buf << " m ";
         break;
-      case FXPT_TYPE::LineTo:
+      case FX_PathToType::kLine:
         buf << " l ";
         if (closing)
           buf << "h ";
         break;
-      case FXPT_TYPE::BezierTo: {
+      case FX_PathToType::kBezier: {
         CFX_PointF pos1 = pPathData->GetPoint(i + 1);
         CFX_PointF pos2 = pPathData->GetPoint(i + 2);
         if (pObject2Device) {
@@ -531,15 +531,15 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
   for (size_t p = 0; p < TransformedPath.GetPoints().size(); p++) {
     CFX_PointF point = TransformedPath.GetPoint(p);
     switch (TransformedPath.GetType(p)) {
-      case FXPT_TYPE::MoveTo: {
+      case FX_PathToType::kMove: {
         buf << point.x << " " << point.y << " m\n";
         break;
       }
-      case FXPT_TYPE::LineTo: {
+      case FX_PathToType::kLine: {
         buf << point.x << " " << point.y << " l\n";
         break;
       }
-      case FXPT_TYPE::BezierTo: {
+      case FX_PathToType::kBezier: {
         CFX_PointF point1 = TransformedPath.GetPoint(p + 1);
         CFX_PointF point2 = TransformedPath.GetPoint(p + 2);
         buf << point.x << " " << point.y << " " << point1.x << " " << point1.y

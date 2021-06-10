@@ -326,9 +326,9 @@ bool CheckSimpleLinePath(pdfium::span<const FX_PATHPOINT> points,
   if (points.size() != 2 && points.size() != 3)
     return false;
 
-  if (points[0].m_Type != FXPT_TYPE::MoveTo ||
-      points[1].m_Type != FXPT_TYPE::LineTo ||
-      (points.size() == 3 && (points[2].m_Type != FXPT_TYPE::LineTo ||
+  if (points[0].m_Type != FX_PathToType::kMove ||
+      points[1].m_Type != FX_PathToType::kLine ||
+      (points.size() == 3 && (points[2].m_Type != FX_PathToType::kLine ||
                               points[0].m_Point != points[2].m_Point))) {
     return false;
   }
@@ -348,7 +348,7 @@ bool CheckSimpleLinePath(pdfium::span<const FX_PATHPOINT> points,
                          static_cast<int>(point.y) + 0.5f);
     }
     new_path->AppendPoint(point,
-                          i == 0 ? FXPT_TYPE::MoveTo : FXPT_TYPE::LineTo);
+                          i == 0 ? FX_PathToType::kMove : FX_PathToType::kLine);
   }
   if (adjust && matrix)
     *set_identity = true;
@@ -370,14 +370,14 @@ bool CheckPalindromicPath(pdfium::span<const FX_PATHPOINT> points,
   CFX_PathData temp_path;
   for (int i = 0; i < mid; i++) {
     if (!(points[mid - i - 1].m_Point == points[mid + i + 1].m_Point &&
-          points[mid - i - 1].m_Type != FXPT_TYPE::BezierTo &&
-          points[mid + i + 1].m_Type != FXPT_TYPE::BezierTo)) {
+          points[mid - i - 1].m_Type != FX_PathToType::kBezier &&
+          points[mid + i + 1].m_Type != FX_PathToType::kBezier)) {
       zero_area = false;
       break;
     }
 
-    temp_path.AppendPoint(points[mid - i].m_Point, FXPT_TYPE::MoveTo);
-    temp_path.AppendPoint(points[mid - i - 1].m_Point, FXPT_TYPE::LineTo);
+    temp_path.AppendPoint(points[mid - i].m_Point, FX_PathToType::kMove);
+    temp_path.AppendPoint(points[mid - i - 1].m_Point, FX_PathToType::kLine);
   }
   if (!zero_area)
     return false;
@@ -426,23 +426,25 @@ bool GetZeroAreaPath(pdfium::span<const FX_PATHPOINT> points,
     return true;
 
   for (size_t i = 0; i < points.size(); i++) {
-    FXPT_TYPE point_type = points[i].m_Type;
-    if (point_type == FXPT_TYPE::MoveTo) {
+    FX_PathToType point_type = points[i].m_Type;
+    if (point_type == FX_PathToType::kMove) {
       DCHECK_EQ(0, i);
       continue;
     }
 
-    if (point_type == FXPT_TYPE::BezierTo) {
+    if (point_type == FX_PathToType::kBezier) {
       i += 2;
       DCHECK(i < points.size());
       continue;
     }
 
-    DCHECK_EQ(point_type, FXPT_TYPE::LineTo);
+    DCHECK_EQ(point_type, FX_PathToType::kLine);
     int next_index = (i + 1) % (points.size());
     const FX_PATHPOINT& next = points[next_index];
-    if (next.m_Type == FXPT_TYPE::BezierTo || next.m_Type == FXPT_TYPE::MoveTo)
+    if (next.m_Type == FX_PathToType::kBezier ||
+        next.m_Type == FX_PathToType::kMove) {
       continue;
+    }
 
     const FX_PATHPOINT& prev = points[i - 1];
     const FX_PATHPOINT& cur = points[i];
@@ -451,8 +453,8 @@ bool GetZeroAreaPath(pdfium::span<const FX_PATHPOINT> points,
                       fabs(cur.m_Point.y - next.m_Point.y);
       const FX_PATHPOINT& start = use_prev ? prev : cur;
       const FX_PATHPOINT& end = use_prev ? points[next_index - 1] : next;
-      new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
-      new_path->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
+      new_path->AppendPoint(start.m_Point, FX_PathToType::kMove);
+      new_path->AppendPoint(end.m_Point, FX_PathToType::kLine);
       continue;
     }
 
@@ -462,8 +464,8 @@ bool GetZeroAreaPath(pdfium::span<const FX_PATHPOINT> points,
                       fabs(cur.m_Point.x - next.m_Point.x);
       const FX_PATHPOINT& start = use_prev ? prev : cur;
       const FX_PATHPOINT& end = use_prev ? points[next_index - 1] : next;
-      new_path->AppendPoint(start.m_Point, FXPT_TYPE::MoveTo);
-      new_path->AppendPoint(end.m_Point, FXPT_TYPE::LineTo);
+      new_path->AppendPoint(start.m_Point, FX_PathToType::kMove);
+      new_path->AppendPoint(end.m_Point, FX_PathToType::kLine);
       continue;
     }
   }
@@ -695,8 +697,8 @@ bool CFX_RenderDevice::DrawPathWithBlend(
     bool adjust = !!m_pDeviceDriver->GetDriverType();
     std::vector<FX_PATHPOINT> sub_path;
     for (size_t i = 0; i < points.size(); i++) {
-      FXPT_TYPE point_type = points[i].m_Type;
-      if (point_type == FXPT_TYPE::MoveTo) {
+      FX_PathToType point_type = points[i].m_Type;
+      if (point_type == FX_PathToType::kMove) {
         // Process the exisitng sub path.
         DrawZeroAreaPath(sub_path, pObject2Device, adjust,
                          fill_options.aliased_path, fill_color, fill_alpha,
@@ -708,7 +710,7 @@ bool CFX_RenderDevice::DrawPathWithBlend(
         continue;
       }
 
-      if (point_type == FXPT_TYPE::BezierTo) {
+      if (point_type == FX_PathToType::kBezier) {
         sub_path.push_back(points[i]);
         sub_path.push_back(points[i + 1]);
         sub_path.push_back(points[i + 2]);
@@ -716,7 +718,7 @@ bool CFX_RenderDevice::DrawPathWithBlend(
         continue;
       }
 
-      DCHECK_EQ(point_type, FXPT_TYPE::LineTo);
+      DCHECK_EQ(point_type, FX_PathToType::kLine);
       sub_path.push_back(points[i]);
       continue;
     }
@@ -836,8 +838,8 @@ bool CFX_RenderDevice::DrawCosmeticLine(
   }
   CFX_GraphStateData graph_state;
   CFX_PathData path;
-  path.AppendPoint(ptMoveTo, FXPT_TYPE::MoveTo);
-  path.AppendPoint(ptLineTo, FXPT_TYPE::LineTo);
+  path.AppendPoint(ptMoveTo, FX_PathToType::kMove);
+  path.AppendPoint(ptLineTo, FX_PathToType::kLine);
   return m_pDeviceDriver->DrawPath(&path, nullptr, &graph_state, 0, color,
                                    fill_options, blend_type);
 }
@@ -1282,9 +1284,9 @@ void CFX_RenderDevice::DrawFillArea(const CFX_Matrix& mtUser2Device,
                                     const FX_COLORREF& color) {
   DCHECK(!points.empty());
   CFX_PathData path;
-  path.AppendPoint(points[0], FXPT_TYPE::MoveTo);
+  path.AppendPoint(points[0], FX_PathToType::kMove);
   for (size_t i = 1; i < points.size(); ++i)
-    path.AppendPoint(points[i], FXPT_TYPE::LineTo);
+    path.AppendPoint(points[i], FX_PathToType::kLine);
 
   DrawPath(&path, &mtUser2Device, nullptr, color, 0,
            CFX_FillRenderOptions::EvenOddOptions());
@@ -1309,8 +1311,8 @@ void CFX_RenderDevice::DrawStrokeLine(const CFX_Matrix* pUser2Device,
                                       const FX_COLORREF& color,
                                       float fWidth) {
   CFX_PathData path;
-  path.AppendPoint(ptMoveTo, FXPT_TYPE::MoveTo);
-  path.AppendPoint(ptLineTo, FXPT_TYPE::LineTo);
+  path.AppendPoint(ptMoveTo, FX_PathToType::kMove);
+  path.AppendPoint(ptLineTo, FX_PathToType::kLine);
 
   CFX_GraphStateData gsd;
   gsd.m_LineWidth = fWidth;
@@ -1404,15 +1406,15 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
 
       CFX_PathData path;
       path.AppendPoint(CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-                       FXPT_TYPE::MoveTo);
+                       FX_PathToType::kMove);
       path.AppendPoint(CFX_PointF(fLeft + fHalfWidth, fTop - fHalfWidth),
-                       FXPT_TYPE::LineTo);
+                       FX_PathToType::kLine);
       path.AppendPoint(CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
-                       FXPT_TYPE::LineTo);
+                       FX_PathToType::kLine);
       path.AppendPoint(CFX_PointF(fRight - fHalfWidth, fBottom + fHalfWidth),
-                       FXPT_TYPE::LineTo);
+                       FX_PathToType::kLine);
       path.AppendPoint(CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-                       FXPT_TYPE::LineTo);
+                       FX_PathToType::kLine);
       DrawPath(&path, pUser2Device, &gsd, 0, color.ToFXColor(nTransparency),
                CFX_FillRenderOptions::WindingOptions());
       break;
@@ -1425,21 +1427,22 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
       CFX_PathData path_left_top;
       path_left_top.AppendPoint(
           CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-          FXPT_TYPE::MoveTo);
+          FX_PathToType::kMove);
       path_left_top.AppendPoint(
-          CFX_PointF(fLeft + fHalfWidth, fTop - fHalfWidth), FXPT_TYPE::LineTo);
+          CFX_PointF(fLeft + fHalfWidth, fTop - fHalfWidth),
+          FX_PathToType::kLine);
       path_left_top.AppendPoint(
           CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
-          FXPT_TYPE::LineTo);
+          FX_PathToType::kLine);
       path_left_top.AppendPoint(CFX_PointF(fRight - fWidth, fTop - fWidth),
-                                FXPT_TYPE::LineTo);
+                                FX_PathToType::kLine);
       path_left_top.AppendPoint(CFX_PointF(fLeft + fWidth, fTop - fWidth),
-                                FXPT_TYPE::LineTo);
+                                FX_PathToType::kLine);
       path_left_top.AppendPoint(CFX_PointF(fLeft + fWidth, fBottom + fWidth),
-                                FXPT_TYPE::LineTo);
+                                FX_PathToType::kLine);
       path_left_top.AppendPoint(
           CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-          FXPT_TYPE::LineTo);
+          FX_PathToType::kLine);
       DrawPath(&path_left_top, pUser2Device, &gsd,
                crLeftTop.ToFXColor(nTransparency), 0,
                CFX_FillRenderOptions::EvenOddOptions());
@@ -1447,22 +1450,22 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
       CFX_PathData path_right_bottom;
       path_right_bottom.AppendPoint(
           CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
-          FXPT_TYPE::MoveTo);
+          FX_PathToType::kMove);
       path_right_bottom.AppendPoint(
           CFX_PointF(fRight - fHalfWidth, fBottom + fHalfWidth),
-          FXPT_TYPE::LineTo);
+          FX_PathToType::kLine);
       path_right_bottom.AppendPoint(
           CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-          FXPT_TYPE::LineTo);
+          FX_PathToType::kLine);
       path_right_bottom.AppendPoint(
-          CFX_PointF(fLeft + fWidth, fBottom + fWidth), FXPT_TYPE::LineTo);
+          CFX_PointF(fLeft + fWidth, fBottom + fWidth), FX_PathToType::kLine);
       path_right_bottom.AppendPoint(
-          CFX_PointF(fRight - fWidth, fBottom + fWidth), FXPT_TYPE::LineTo);
+          CFX_PointF(fRight - fWidth, fBottom + fWidth), FX_PathToType::kLine);
       path_right_bottom.AppendPoint(CFX_PointF(fRight - fWidth, fTop - fWidth),
-                                    FXPT_TYPE::LineTo);
+                                    FX_PathToType::kLine);
       path_right_bottom.AppendPoint(
           CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
-          FXPT_TYPE::LineTo);
+          FX_PathToType::kLine);
       DrawPath(&path_right_bottom, pUser2Device, &gsd,
                crRightBottom.ToFXColor(nTransparency), 0,
                CFX_FillRenderOptions::EvenOddOptions());
@@ -1481,9 +1484,9 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
 
       CFX_PathData path;
       path.AppendPoint(CFX_PointF(fLeft, fBottom + fHalfWidth),
-                       FXPT_TYPE::MoveTo);
+                       FX_PathToType::kMove);
       path.AppendPoint(CFX_PointF(fRight, fBottom + fHalfWidth),
-                       FXPT_TYPE::LineTo);
+                       FX_PathToType::kLine);
       DrawPath(&path, pUser2Device, &gsd, 0, color.ToFXColor(nTransparency),
                CFX_FillRenderOptions::EvenOddOptions());
       break;
