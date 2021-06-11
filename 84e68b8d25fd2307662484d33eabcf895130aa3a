@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd2935b_d25e2641",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-11T22:39:11Z",
+      "side": 1,
+      "message": "LGTM. It\u0027s nice to also include the link to the commit history!\n\nIt seems like https://pdfium-review.googlesource.com/c/pdfium/+/79016 used the full hash in the CL description. I guess to keep the title within a single line we will need to use the shorter version.",
+      "revId": "84e68b8d25fd2307662484d33eabcf895130aa3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
