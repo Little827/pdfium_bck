@@ -16,6 +16,24 @@
       "message": "BTW, after creating this vector of page numbers, CPDF_PageExporter takes it and converts it all back to page indices again. @_@",
       "revId": "aaf59c3b5ee9e27f665d60ab7b718b7b33cbc91d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d999bd_d8659f89",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-11T02:35:59Z",
+      "side": 1,
+      "message": "Oh my! Yup, I saw that. Do you think I should change CPDF_PageExporter in a follow-up?",
+      "parentUuid": "7ba3fadf_8fce4a30",
+      "revId": "aaf59c3b5ee9e27f665d60ab7b718b7b33cbc91d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
