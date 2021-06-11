@@ -69,6 +69,30 @@
       },
       "revId": "17e10cd0154019d26d470de726ad82342a116e95",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a6b791_249761e1",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-11T16:21:16Z",
+      "side": 1,
+      "message": "I thought so too, at first, but in the widening case, we\u0027ll get better precision if we divide after shifting so long as we don\u0027t overflow. I\u0027ll try it your way first, though.",
+      "parentUuid": "0497d82b_39babf6a",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 57
+      },
+      "revId": "17e10cd0154019d26d470de726ad82342a116e95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
