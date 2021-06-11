@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e55a461_e89dc323",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T20:18:07Z",
+      "side": 1,
+      "message": "I\u0027m having a bit of trouble reading this. Which API takes a string? How about: \"Introduce an FPDF_ImportPages() alternative that takes an array of indices for the pages to import, instead of a string.\"",
+      "revId": "2e8db3c58326cd68b58a0b77506da84530a88725",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edafbc74_2c9f5f58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T20:18:07Z",
+      "side": 1,
+      "message": "Not any more.",
+      "revId": "2e8db3c58326cd68b58a0b77506da84530a88725",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31923247_d103385e",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T20:18:07Z",
+      "side": 1,
+      "message": "Aren\u0027t you glad we found std::iota() a while back? 😊",
+      "revId": "2e8db3c58326cd68b58a0b77506da84530a88725",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
