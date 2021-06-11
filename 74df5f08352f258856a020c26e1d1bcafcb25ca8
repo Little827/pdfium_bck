@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1623437166 -0700\nnonce ALC2d182ln+BIv6cv42ahno04VA9As24TdtKA31c3S9oVrKZA2He5+ePBWPKNENWnKYsiaSkv/Ez\n\n0000000000000000000000000000000000000000 74df5f08352f258856a020c26e1d1bcafcb25ca8 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmDDr24ACgkQqzYtYVpm\n/XvfPwf/V+iJSb5Tm86fzg0pBYkRzYsTvcvCWChF6hI/lYUrfpVrtW3OtwUCChj2\naRP5wUvMUhApw0ieHDxrU6JvIwH+w9UzOviZvnd/Jo7OqaL7FhV4+O/ecvuDlYLT\nMPgGdRu4BCOEXOO6pLusq5Qw5PwS0TZzCISCwpGrj4EeW5LMWKVE8lbZ1jvdkDm3\nUVg0C00OZGz6mu8iHzOBrKSlojWsZ2uUTPPjRRIjjOJ3r8CtO0NHFczahWbp/6xn\nbKdpJDpvheVWsSoxgTrc6Tm9eqL+3rI/9Xz6bNf6XUTzmMpL2lwOQybIvQGKAXih\nASRVBNJUoCGpu5sQIG0VoK/gbauTsA\u003d\u003d\n\u003dM1Ll\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710927e8_5e41c1ff",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T18:48:35Z",
+      "side": 1,
+      "message": "Not sure what compilers support this. Putting it under is_clang is probably good enough to prevent regressions.",
+      "revId": "74df5f08352f258856a020c26e1d1bcafcb25ca8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
