@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16891642_e4389aa5",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-11T01:15:07Z",
+      "side": 1,
+      "message": "Those were my thoughts, but I kept this for consistency. I\u0027ll use it here and have a follow-up to change it in other parts of the doc.",
+      "parentUuid": "a786d321_83d03845",
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78fc9e3a_7a323cb5",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd736463_b000b3cd",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-11T01:15:07Z",
+      "side": 1,
+      "message": "I think it\u0027s reasonable. FWIW, it\u0027s consistent to FPDF_ImportPages(), but again, I\u0027m not married to the idea.",
+      "parentUuid": "78fc9e3a_7a323cb5",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38a1a1f3_5033f3b3",
         "filename": "public/fpdf_ppo.h",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2021-06-10T21:51:19Z",
       "side": 1,
       "message": "If |page_indices| contains an invalid value, then?",
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44eff365_0e5badc0",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-11T01:15:07Z",
+      "side": 1,
+      "message": "Yeah, but that\u0027s not the only condition for failure. E.g., if `src_doc` or `dest_doc` are bad ptrs, etc. I\u0027m not sure if they\u0027re worth enumerating in a comment (see the API below).",
+      "parentUuid": "38a1a1f3_5033f3b3",
       "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -118,6 +178,24 @@
       "writtenOn": "2021-06-10T21:51:19Z",
       "side": 1,
       "message": "It\u0027s not clear whether all callers will prefer FPDF_ImportPagesByIndex(). Maybe leave this off for now?",
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa6f58e_c9993053",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-11T01:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023c0f4e_86c06958",
       "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
