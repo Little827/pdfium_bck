@@ -52,6 +52,41 @@
       "parentUuid": "d4a5c866_33263a81",
       "revId": "060d53c4cd93dd24852e803f4da117e791f2041e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f132583a_730e752e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T17:21:05Z",
+      "side": 1,
+      "message": "Because this is XFA code, there aren\u0027t that many files to benchmark with. I only benchmarked xfa_png_image.in. I also don\u0027t usually benchmark with V8 and XFA turned on, as the initialization overhead for V8 is quite high.\n\nUsing safetynet_measure.py, this CL definitely speeds up the rendering of xfa_png_image.in, but the speed up in percentages is very small due to init overhead. To try to avoid that, I also measured the rendering of hello_world.pdf. Subtracting that to eliminate the overhead, we get a 1.3% speed up. I imagine if we wrote a micro benchmark, we\u0027ll get even better numbers.",
+      "parentUuid": "075e7817_6d831eaf",
+      "revId": "060d53c4cd93dd24852e803f4da117e791f2041e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70515299_c825c0d5",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T17:21:05Z",
+      "side": 1,
+      "message": "Just declare src_scan and dest_scan here?",
+      "revId": "060d53c4cd93dd24852e803f4da117e791f2041e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
