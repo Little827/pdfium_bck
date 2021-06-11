@@ -22,6 +22,30 @@
       },
       "revId": "a734066d7b45311ec9f3d0333aa588ea927c4a4c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8220b17e_a66974ed",
+        "filename": "core/fxge/dib/fx_dib.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-11T22:06:05Z",
+      "side": 1,
+      "message": "Nah, it needs to be trivially constructed/destructed since it is just made out of a vector of uint8_t underneath it, due to the C-Style variable length.  I might change it to be saner someday, but having a single-level cache of these weights probably runs fastest.",
+      "parentUuid": "02907d40_7a0b37bb",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "a734066d7b45311ec9f3d0333aa588ea927c4a4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
