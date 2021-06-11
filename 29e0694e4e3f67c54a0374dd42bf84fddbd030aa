@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "692e49b8_700a567f",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-11T02:09:06Z",
+      "side": 1,
+      "message": "I probably wouldn\u0027t have thought of this 😊\n\nBut, I see the value in it, and would prefer keeping it. It would come in handy for callers who are always importing all pages of a document, and it would be especially handy for documents of a few hundred pages.",
+      "parentUuid": "3e2a1021_ecf6e5a6",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38a1a1f3_5033f3b3",
         "filename": "public/fpdf_ppo.h",
         "patchSetId": 1
@@ -156,6 +180,24 @@
       "side": 1,
       "message": "With PDFium APIs, if one passes in a null FPDF_DOCUMENT, then failure is almost always the outcome. This shouldn\u0027t be that surprising. An array of page indices is less common. It is plausible that the API could also just skip the out of bounds indices and continue. That\u0027s why I felt this is something worth mentioning.",
       "parentUuid": "44eff365_0e5badc0",
+      "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61c4fcf_b07998d9",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-11T02:09:06Z",
+      "side": 1,
+      "message": "Fair enough. Done also for the API below.",
+      "parentUuid": "60063e83_e8d02bf6",
       "revId": "29e0694e4e3f67c54a0374dd42bf84fddbd030aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
