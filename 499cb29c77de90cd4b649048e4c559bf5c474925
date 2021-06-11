@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "286ed524_faa38f7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-11T15:37:56Z",
+      "side": 1,
+      "message": "Uh, is there some Gold magic to see if the image diffs are benign?",
+      "revId": "499cb29c77de90cd4b649048e4c559bf5c474925",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
