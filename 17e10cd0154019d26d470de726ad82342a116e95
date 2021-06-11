@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a1b8ff_49b933f2",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-11T16:08:18Z",
+      "side": 1,
+      "message": "Gah, typo on my part.  Indeed.",
+      "parentUuid": "0acef28f_0ac6ba38",
+      "range": {
+        "startLine": 36,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "17e10cd0154019d26d470de726ad82342a116e95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0497d82b_39babf6a",
