@@ -32,10 +32,6 @@ CStretchEngine::CWeightTable::CWeightTable() = default;
 
 CStretchEngine::CWeightTable::~CWeightTable() = default;
 
-size_t CStretchEngine::CWeightTable::GetPixelWeightCount() const {
-  return PixelWeight::WeightCountFromTotalBytes(m_ItemSizeBytes);
-}
-
 bool CStretchEngine::CWeightTable::Calc(int dest_len,
                                         int dest_min,
                                         int dest_max,
@@ -77,12 +73,13 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
       PixelWeight& pixel_weights = *GetPixelWeight(dest_pixel);
       double src_pos = dest_pixel * scale + scale / 2 + base;
       if (bilinear) {
-        pixel_weights.m_SrcStart =
+        int src_start =
             static_cast<int>(floor(static_cast<float>(src_pos) - 1.0f / 2));
-        pixel_weights.m_SrcEnd =
+        int src_end =
             static_cast<int>(floor(static_cast<float>(src_pos) + 1.0f / 2));
-        pixel_weights.m_SrcStart = std::max(pixel_weights.m_SrcStart, src_min);
-        pixel_weights.m_SrcEnd = std::min(pixel_weights.m_SrcEnd, src_max - 1);
+        src_start = std::max(src_start, src_min);
+        src_end = std::min(src_end, src_max - 1);
+        pixel_weights.SetStartEnd(src_start, src_end, weight_count);
         if (pixel_weights.m_SrcStart == pixel_weights.m_SrcEnd) {
           pixel_weights.m_Weights[0] = kFixedPointOne;
         } else {
@@ -95,8 +92,9 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
         }
       } else {
         int pixel_pos = static_cast<int>(floor(static_cast<float>(src_pos)));
-        pixel_weights.m_SrcStart = std::max(pixel_pos, src_min);
-        pixel_weights.m_SrcEnd = std::min(pixel_pos, src_max - 1);
+        int src_start = std::max(pixel_pos, src_min);
+        int src_end = std::min(pixel_pos, src_max - 1);
+        pixel_weights.SetStartEnd(src_start, src_end, weight_count);
         pixel_weights.m_Weights[0] = kFixedPointOne;
       }
     }
@@ -113,12 +111,10 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
     end_i = std::min(end_i, src_max - 1);
     if (start_i > end_i) {
       start_i = std::min(start_i, src_max - 1);
-      pixel_weights.m_SrcStart = start_i;
-      pixel_weights.m_SrcEnd = start_i;
+      pixel_weights.SetStartEnd(start_i, start_i, weight_count);
       continue;
     }
-    pixel_weights.m_SrcStart = start_i;
-    pixel_weights.m_SrcEnd = end_i;
+    pixel_weights.SetStartEnd(start_i, end_i, weight_count);
     for (int j = start_i; j <= end_i; ++j) {
       double dest_start = (j - base) / scale;
       double dest_end = (j + 1 - base) / scale;
@@ -132,7 +128,7 @@ bool CStretchEngine::CWeightTable::Calc(int dest_len,
         break;
       }
       size_t idx = j - start_i;
-      if (idx >= GetPixelWeightCount())
+      if (idx >= weight_count)
         return false;
 
       pixel_weights.m_Weights[idx] = FXSYS_roundf(weight * kFixedPointOne);
@@ -146,16 +142,6 @@ const PixelWeight* CStretchEngine::CWeightTable::GetPixelWeight(
   DCHECK(pixel >= m_DestMin);
   return reinterpret_cast<const PixelWeight*>(
       &m_WeightTables[(pixel - m_DestMin) * m_ItemSizeBytes]);
-}
-
-uint32_t CStretchEngine::CWeightTable::GetValueFromPixelWeight(
-    PixelWeight* pWeight,
-    int index) const {
-  if (index < pWeight->m_SrcStart)
-    return 0;
-
-  size_t idx = index - pWeight->m_SrcStart;
-  return idx < GetPixelWeightCount() ? pWeight->m_Weights[idx] : 0;
 }
 
 CStretchEngine::CStretchEngine(ScanlineComposerIface* pDestBitmap,
@@ -315,8 +301,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
           uint32_t dest_a = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight =
-                m_WeightTable.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             if (src_scan[j / 8] & (1 << (7 - j % 8)))
               dest_a += pixel_weight * 255;
           }
@@ -329,8 +314,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
           PixelWeight* pWeights = m_WeightTable.GetPixelWeight(col);
           uint32_t dest_a = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight =
-                m_WeightTable.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             dest_a += pixel_weight * src_scan[j];
           }
           *dest_scan++ = static_cast<uint8_t>(dest_a >> kFixedPointBits);
@@ -343,8 +327,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
           uint32_t dest_a = 0;
           uint32_t dest_r = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight =
-                m_WeightTable.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             pixel_weight = pixel_weight * src_scan_mask[j] / 255;
             dest_r += pixel_weight * src_scan[j];
             dest_a += pixel_weight;
@@ -362,8 +345,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
           uint32_t dest_g = 0;
           uint32_t dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight =
-                m_WeightTable.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             unsigned long argb = m_pSrcPalette[src_scan[j]];
             if (m_DestFormat == FXDIB_Format::kRgb) {
               dest_r += pixel_weight * static_cast<uint8_t>(argb >> 16);
@@ -389,8 +371,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
           uint32_t dest_g = 0;
           uint32_t dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight =
-                m_WeightTable.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             pixel_weight = pixel_weight * src_scan_mask[j] / 255;
             unsigned long argb = m_pSrcPalette[src_scan[j]];
             dest_b += pixel_weight * static_cast<uint8_t>(argb >> 24);
@@ -413,8 +394,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
           uint32_t dest_g = 0;
           uint32_t dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight =
-                m_WeightTable.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             const uint8_t* src_pixel = src_scan + j * Bpp;
             dest_b += pixel_weight * (*src_pixel++);
             dest_g += pixel_weight * (*src_pixel++);
@@ -435,8 +415,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
           uint32_t dest_g = 0;
           uint32_t dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight =
-                m_WeightTable.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             const uint8_t* src_pixel = src_scan + j * Bpp;
             if (m_DestFormat == FXDIB_Format::kArgb) {
               pixel_weight = pixel_weight * src_pixel[3] / 255;
@@ -492,7 +471,7 @@ void CStretchEngine::StretchVert() {
               m_InterBuf.data() + (col - m_DestClip.left) * DestBpp;
           uint32_t dest_a = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight = table.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             dest_a +=
                 pixel_weight * src_scan[(j - m_SrcClip.top) * m_InterPitch];
           }
@@ -510,7 +489,7 @@ void CStretchEngine::StretchVert() {
           uint32_t dest_a = 0;
           uint32_t dest_k = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight = table.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             dest_k +=
                 pixel_weight * src_scan[(j - m_SrcClip.top) * m_InterPitch];
             dest_a += pixel_weight *
@@ -531,7 +510,7 @@ void CStretchEngine::StretchVert() {
           uint32_t dest_g = 0;
           uint32_t dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight = table.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             const uint8_t* src_pixel =
                 src_scan + (j - m_SrcClip.top) * m_InterPitch;
             dest_b += pixel_weight * (*src_pixel++);
@@ -558,7 +537,7 @@ void CStretchEngine::StretchVert() {
           uint32_t dest_g = 0;
           uint32_t dest_b = 0;
           for (int j = pWeights->m_SrcStart; j <= pWeights->m_SrcEnd; ++j) {
-            uint32_t pixel_weight = table.GetValueFromPixelWeight(pWeights, j);
+            uint32_t pixel_weight = pWeights->GetWeight(j);
             const uint8_t* src_pixel =
                 src_scan + (j - m_SrcClip.top) * m_InterPitch;
             int mask_v = 255;
