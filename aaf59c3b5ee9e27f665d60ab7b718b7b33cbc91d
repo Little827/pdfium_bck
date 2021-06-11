@@ -34,6 +34,24 @@
       "parentUuid": "7ba3fadf_8fce4a30",
       "revId": "aaf59c3b5ee9e27f665d60ab7b718b7b33cbc91d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2912a3b2_cb6f2f80",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T03:31:53Z",
+      "side": 1,
+      "message": "If you change CPDF_PageExporter to take a span of page indices first, then for the non-null `page_indices` case, you can make a span from parameters and pass it in. There won\u0027t be a need for GetPageNumbersFromIndices().",
+      "parentUuid": "f6d999bd_d8659f89",
+      "revId": "aaf59c3b5ee9e27f665d60ab7b718b7b33cbc91d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
