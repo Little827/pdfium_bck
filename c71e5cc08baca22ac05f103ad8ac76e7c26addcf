@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9c9151_605af924",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-11T17:31:38Z",
+      "side": 1,
+      "message": "Thanks, Peter.  Is there a way to turn on this warning in PDFium\u0027s BUILD.gn files so we don\u0027t regress this?",
+      "revId": "c71e5cc08baca22ac05f103ad8ac76e7c26addcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
