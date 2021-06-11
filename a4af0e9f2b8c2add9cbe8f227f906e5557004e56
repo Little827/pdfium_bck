@@ -16,6 +16,24 @@
       "message": "WDYT about just CHECKing this and the value of `idx` below?",
       "revId": "a4af0e9f2b8c2add9cbe8f227f906e5557004e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305e3bc9_1e278167",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-11T21:30:47Z",
+      "side": 1,
+      "message": "We get there eventually in a follow-up.",
+      "parentUuid": "6eb0c50c_a8856e4e",
+      "revId": "a4af0e9f2b8c2add9cbe8f227f906e5557004e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
