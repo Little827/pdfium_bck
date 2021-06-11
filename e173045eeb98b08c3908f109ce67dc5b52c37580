@@ -19,6 +19,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6e8a71_372db91a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T23:14:25Z",
+      "side": 1,
+      "message": "I\u0027ll start at the other end.",
+      "revId": "e173045eeb98b08c3908f109ce67dc5b52c37580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f38c0067_65ae9ff7",
@@ -78,6 +95,30 @@
       "writtenOn": "2021-06-10T17:56:21Z",
       "side": 1,
       "message": "follow-up: drop the `Data`, I think CFX_Path is unused.\n\nSo in the end, the enum becomes\n\nCFX_Path::Point::Type::kLine",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "e173045eeb98b08c3908f109ce67dc5b52c37580",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4398ae9_a1d5cb5c",
+        "filename": "core/fxge/cfx_pathdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-11T23:14:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49162b0c_0084b579",
       "range": {
         "startLine": 35,
         "startChar": 6,
