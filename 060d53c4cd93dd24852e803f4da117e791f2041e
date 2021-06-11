@@ -16,6 +16,24 @@
       "message": "Any way to tell if this helps?",
       "revId": "060d53c4cd93dd24852e803f4da117e791f2041e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a5c866_33263a81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-11T16:09:33Z",
+      "side": 1,
+      "message": "Apart from noting the assy is longer, i.e. more tighter loops rather than fewer looser ones.",
+      "parentUuid": "6fd4c956_ac441ab2",
+      "revId": "060d53c4cd93dd24852e803f4da117e791f2041e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
