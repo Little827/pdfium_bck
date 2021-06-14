@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71459efc_a6986812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-14T18:52:05Z",
+      "side": 1,
+      "message": "I\u0027m becoming convinced that the issue isn\u0027t insufficient precision per-se, but not dealing with the effects of repeated rounding when setting up weights, see https://pdfium-review.googlesource.com/c/pdfium/+/82012. Aleksei, you might want to pull that patch and see if it makes things better for your test case (which isn\u0027t immediately obvious to my old eyes). Thanks.",
+      "revId": "13d475c98fa936c28c9ff6cbf05cb95ad40b2b65",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
