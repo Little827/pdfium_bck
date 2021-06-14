@@ -40,6 +40,30 @@
       },
       "revId": "3206d2d20aebad908c9be49d1a9ed96dd8134692",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c777bc_a0b2ed90",
+        "filename": "fxjs/cjs_util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-14T16:48:59Z",
+      "side": 1,
+      "message": "Meh. The scope of this enum is rather small. I don\u0027t think we\u0027ll get that much extra benefit in this case.",
+      "parentUuid": "6a7af8fc_b6f7d63e",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 402,
+        "endChar": 6
+      },
+      "revId": "3206d2d20aebad908c9be49d1a9ed96dd8134692",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
