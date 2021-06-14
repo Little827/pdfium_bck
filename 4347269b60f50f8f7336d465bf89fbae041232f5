@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c6e499_948d4958",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-14T18:31:34Z",
+      "side": 1,
+      "message": "Awright, one way to test this is to set kFixedPointBits \u003d 4, since that seems to trigger an overflow and periodic black lines in the image from the referenced bug prior to this patch.",
+      "revId": "4347269b60f50f8f7336d465bf89fbae041232f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
