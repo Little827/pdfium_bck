@@ -10,8 +10,8 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
-#include "core/fxge/dib/cstretchengine.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "core/fxge/dib/stretch_engine.h"
 #include "third_party/base/check.h"
 #include "third_party/base/stl_util.h"
 
@@ -98,7 +98,7 @@ RetainPtr<CFX_DIBBase> CFX_ImageStretcher::source() {
 }
 
 bool CFX_ImageStretcher::StartStretch() {
-  m_pStretchEngine = std::make_unique<CStretchEngine>(
+  m_pStretchEngine = std::make_unique<StretchEngine>(
       m_pDest.Get(), m_DestFormat, m_DestWidth, m_DestHeight, m_ClipRect,
       m_pSource, m_ResampleOptions);
   m_pStretchEngine->StartStretchHorz();

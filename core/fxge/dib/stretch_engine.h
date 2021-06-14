@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXGE_DIB_CSTRETCHENGINE_H_
-#define CORE_FXGE_DIB_CSTRETCHENGINE_H_
+#ifndef CORE_FXGE_DIB_STRETCH_ENGINE_H_
+#define CORE_FXGE_DIB_STRETCH_ENGINE_H_
 
 #include <vector>
 
@@ -14,22 +14,25 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "core/fxge/dib/weight_table.h"
 #include "third_party/base/span.h"
 
 class CFX_DIBBase;
 class PauseIndicatorIface;
 class ScanlineComposerIface;
 
-class CStretchEngine {
+namespace fxge {
+
+class StretchEngine {
  public:
-  CStretchEngine(ScanlineComposerIface* pDestBitmap,
-                 FXDIB_Format dest_format,
-                 int dest_width,
-                 int dest_height,
-                 const FX_RECT& clip_rect,
-                 const RetainPtr<CFX_DIBBase>& pSrcBitmap,
-                 const FXDIB_ResampleOptions& options);
-  ~CStretchEngine();
+  StretchEngine(ScanlineComposerIface* pDestBitmap,
+                FXDIB_Format dest_format,
+                int dest_width,
+                int dest_height,
+                const FX_RECT& clip_rect,
+                const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                const FXDIB_ResampleOptions& options);
+  ~StretchEngine();
 
   bool Continue(PauseIndicatorIface* pPause);
   bool StartStretchHorz();
@@ -41,32 +44,6 @@ class CStretchEngine {
   }
 
  private:
-  class CWeightTable {
-   public:
-    CWeightTable();
-    ~CWeightTable();
-
-    bool CalculateWeights(int dest_len,
-                          int dest_min,
-                          int dest_max,
-                          int src_len,
-                          int src_min,
-                          int src_max,
-                          const FXDIB_ResampleOptions& options);
-
-    const PixelWeight* GetPixelWeight(int pixel) const;
-    PixelWeight* GetPixelWeight(int pixel) {
-      return const_cast<PixelWeight*>(
-          static_cast<const CWeightTable*>(this)->GetPixelWeight(pixel));
-    }
-
-   private:
-    int m_DestMin = 0;
-    size_t m_ItemSizeBytes = 0;
-    size_t m_WeightTablesSizeBytes = 0;
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_WeightTables;
-  };
-
   enum class State : uint8_t { kInitial, kHorizontal, kVertical };
 
   enum class TransformMethod : uint8_t {
@@ -103,7 +80,11 @@ class CStretchEngine {
   TransformMethod m_TransMethod;
   State m_State = State::kInitial;
   int m_CurRow;
-  CWeightTable m_WeightTable;
+  WeightTable m_WeightTable;
 };
 
-#endif  // CORE_FXGE_DIB_CSTRETCHENGINE_H_
+}  // namespace fxge
+
+using fxge::StretchEngine;
+
+#endif  // CORE_FXGE_DIB_STRETCH_ENGINE_H_

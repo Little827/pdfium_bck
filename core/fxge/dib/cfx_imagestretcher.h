@@ -16,8 +16,11 @@
 #include "core/fxge/dib/scanlinecomposer_iface.h"
 
 class CFX_DIBBase;
-class CStretchEngine;
 class PauseIndicatorIface;
+
+namespace fxge {
+class StretchEngine;
+}  // namespace fxge
 
 class CFX_ImageStretcher {
  public:
@@ -40,7 +43,7 @@ class CFX_ImageStretcher {
 
   UnownedPtr<ScanlineComposerIface> const m_pDest;
   RetainPtr<CFX_DIBBase> m_pSource;
-  std::unique_ptr<CStretchEngine> m_pStretchEngine;
+  std::unique_ptr<fxge::StretchEngine> m_pStretchEngine;
   const FXDIB_ResampleOptions m_ResampleOptions;
   const int m_DestWidth;
   const int m_DestHeight;

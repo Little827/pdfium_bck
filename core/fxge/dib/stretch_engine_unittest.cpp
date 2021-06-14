@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "core/fxge/dib/cstretchengine.h"
+#include "core/fxge/dib/stretch_engine.h"
 
 #include <memory>
 #include <utility>
@@ -23,8 +23,8 @@ TEST(CStretchEngine, OverflowInCtor) {
       pdfium::MakeRetain<CPDF_Stream>(nullptr, 0, std::move(dict_obj));
   auto dib_source = pdfium::MakeRetain<CPDF_DIB>();
   dib_source->Load(nullptr, stream.Get());
-  CStretchEngine engine(nullptr, FXDIB_Format::k8bppRgb, 500, 500, clip_rect,
-                        dib_source, FXDIB_ResampleOptions());
+  StretchEngine engine(nullptr, FXDIB_Format::k8bppRgb, 500, 500, clip_rect,
+                       dib_source, FXDIB_ResampleOptions());
   EXPECT_TRUE(engine.GetResampleOptionsForTest().bInterpolateBilinear);
   EXPECT_FALSE(engine.GetResampleOptionsForTest().bHalftone);
   EXPECT_FALSE(engine.GetResampleOptionsForTest().bNoSmoothing);
