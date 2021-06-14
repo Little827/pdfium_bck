@@ -838,6 +838,65 @@ FPDFPageObj_SetLineCap(FPDF_PAGEOBJECT page_object, int line_cap) {
   return true;
 }
 
+FPDF_EXPORT float FPDF_CALLCONV
+FPDFPageObj_GetDashPhase(FPDF_PAGEOBJECT page_object) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  return pPageObj ? pPageObj->m_GraphState.GetLineDashPhase() : -1.0f;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_SetDashPhase(FPDF_PAGEOBJECT page_object, float phase) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
+  pPageObj->SetLineDashPhase(phase, 1.0f);
+  pPageObj->SetDirty(true);
+  return true;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObj_GetDashCount(FPDF_PAGEOBJECT page_object) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  return pPageObj ? pPageObj->m_GraphState.GetLineDashSize() : -1;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_GetDashArray(FPDF_PAGEOBJECT page_object, float* dashArray) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
+  auto m_dashArray = pPageObj->m_GraphState.GetLineDashArray();
+
+  if (dashArray)
+    memcpy(dashArray, m_dashArray.data(), m_dashArray.size() * sizeof(float));
+
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_SetDashArray(FPDF_PAGEOBJECT page_object,
+                         float* dashArray,
+                         int dashCount,
+                         float phase) {
+  if (dashCount <= 0 || !dashArray)
+    return false;
+
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
+  std::vector<float> dashes;
+  for (int i = 0; i < dashCount; i++)
+    dashes.push_back(dashArray[i]);
+
+  pPageObj->m_GraphState.SetLineDash(dashes, phase, 1.0f);
+
+  pPageObj->SetDirty(true);
+  return true;
+}
+
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFFormObj_CountObjects(FPDF_PAGEOBJECT form_object) {
   const auto* pObjectList = CPDFPageObjHolderFromFPDFFormObject(form_object);
