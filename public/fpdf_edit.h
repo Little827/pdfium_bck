@@ -896,6 +896,60 @@ FPDFPageObj_GetFillColor(FPDF_PAGEOBJECT page_object,
                          unsigned int* B,
                          unsigned int* A);
 
+// Experimental API.
+// Get the line dash phase of |page_object|.
+//
+// page_object - handle to a page object.
+//
+// Returns the line dash phase, or -1 on failure.
+FPDF_EXPORT float FPDF_CALLCONV
+FPDFPageObj_GetDashPhase(FPDF_PAGEOBJECT page_object);
+
+// Experimental API.
+// Set the line dash phase of |page_object|.
+//
+// page_object - handle to a page object.
+// phase - line dash phase
+//
+// Returns TRUE on success.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_SetDashPhase(FPDF_PAGEOBJECT page_object, float phase);
+
+// Experimental API.
+// Get the line dash array of |page_object|.
+//
+// page_object - handle to a page object.
+// dashArray - the dash array.
+//
+// Returns the line dash array size or -1 on failure.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObj_GetDashCount(FPDF_PAGEOBJECT page_object);
+
+// Experimental API.
+// Get the line dash array of |page_object|.
+//
+// page_object - handle to a page object.
+// dashArray - the dash array.
+//
+// Returns TRUE on success.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_GetDashArray(FPDF_PAGEOBJECT page_object, float* dashArray);
+
+// Experimental API.
+// Set the line dash array of |page_object|.
+//
+// page_object - handle to a page object.
+// dashArray - the dash array.
+// dashCount - number of elements in |dashArray|
+// phase - the line dash phase
+//
+// Returns TRUE on success.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_SetDashArray(FPDF_PAGEOBJECT page_object,
+                         float* dashArray,
+                         int dashCount,
+                         float phase);
+
 // Get number of segments inside |path|.
 //
 //   path - handle to a path.
