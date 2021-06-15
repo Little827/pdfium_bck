@@ -88,6 +88,24 @@
       "parentUuid": "7a126979_fcd21806",
       "revId": "492b219b2b984e6a5ba6e56337fb1f0c3c38bed1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5031c0f7_7fab539e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-15T21:08:24Z",
+      "side": 1,
+      "message": "Ack.  It worries me a bit that it came back clean, I didn\u0027t think we were that careful.  But it did report an issue when I deliberately entered a violation into one of my CLs.",
+      "parentUuid": "233fda3a_4ec12c00",
+      "revId": "492b219b2b984e6a5ba6e56337fb1f0c3c38bed1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
