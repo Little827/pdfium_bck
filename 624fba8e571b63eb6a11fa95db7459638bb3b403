@@ -22,6 +22,30 @@
       },
       "revId": "624fba8e571b63eb6a11fa95db7459638bb3b403",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e50185c_2886688e",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-15T23:20:03Z",
+      "side": 1,
+      "message": "If we fix all the pre-existing ones, then it probably doesn\u0027t matter either way after that, right?",
+      "parentUuid": "16deb4f8_6aa4e883",
+      "range": {
+        "startLine": 347,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 3
+      },
+      "revId": "624fba8e571b63eb6a11fa95db7459638bb3b403",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
