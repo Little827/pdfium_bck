@@ -129,11 +129,7 @@ bool CStretchEngine::CWeightTable::CalculateWeights(
         --pixel_weights.m_SrcEnd;
         break;
       }
-      size_t idx = j - start_i;
-      if (idx >= weight_count)
-        return false;
-
-      pixel_weights.m_Weights[idx] = FixedFromFloat(weight);
+      pixel_weights.SetWeightForPixel(j, FixedFromFloat(weight));
     }
   }
   return true;

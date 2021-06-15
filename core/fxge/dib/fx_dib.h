@@ -45,6 +45,12 @@ struct PixelWeight {
     return m_Weights[pixel - m_SrcStart];
   }
 
+  void SetWeightForPixel(int pixel, uint32_t weight) {
+    CHECK_GE(pixel, m_SrcStart);
+    CHECK_LE(pixel, m_SrcEnd);
+    m_Weights[pixel - m_SrcStart] = weight;
+  }
+
   int m_SrcStart;
   int m_SrcEnd;           // Note: inclusive.
   uint32_t m_Weights[1];  // Not really 1, variable size.
