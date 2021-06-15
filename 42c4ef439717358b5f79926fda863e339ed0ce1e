@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d254c17_91a4938b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-15T21:34:31Z",
+      "side": 1,
+      "message": "The number of newlines is inconsistent across the files. Otherwise, LGTM",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91366ef7_2dcd808a",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-15T21:34:31Z",
+      "side": 1,
+      "message": "One more newline?",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c77fc9_f023518f",
+        "filename": "public/PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-15T21:34:31Z",
+      "side": 1,
+      "message": "Too many newlines?",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
