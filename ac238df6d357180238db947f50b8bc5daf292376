@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509229c4_33840677",
+        "filename": "core/fpdfapi/parser/cpdf_object.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-15T23:03:07Z",
+      "side": 0,
+      "message": "Ok, I guess there isnt an AsNull() method since nulls can\u0027t do anything special and we never have to cast to them.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "ac238df6d357180238db947f50b8bc5daf292376",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
