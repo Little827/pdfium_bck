@@ -1734,3 +1734,8 @@ TEST_F(FPDFViewEmbedderTest, GetTrailerEndsWhitespace) {
   ASSERT_EQ(size, FPDF_GetTrailerEnds(document(), ends.data(), size));
   EXPECT_EQ(kExpectedEnds, ends);
 }
+
+TEST_F(FPDFViewEmbedderTest, Bug1692) {
+  FPDFBitmap_Destroy(FPDFBitmap_Create(495, 495, 4));
+  FPDFBitmap_Destroy(FPDFBitmap_Create(496, 496, 4));
+}
