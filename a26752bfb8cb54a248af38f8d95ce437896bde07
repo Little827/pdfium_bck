@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a1ef1f_ed0db01d",
+        "filename": "core/fxge/dib/fx_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-15T22:04:44Z",
+      "side": 1,
+      "message": "Move as well?",
+      "revId": "a26752bfb8cb54a248af38f8d95ce437896bde07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
