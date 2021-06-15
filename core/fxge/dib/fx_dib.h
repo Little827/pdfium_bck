@@ -51,9 +51,12 @@ struct PixelWeight {
     m_Weights[position - m_SrcStart] = weight;
   }
 
-  void RemoveLastWeight() {
-    CHECK_GT(m_SrcEnd, m_SrcStart);
+  // NOTE: relies on defined behaviour for unsigned overflow to
+  // decrement the previous position, as needed.
+  void RemoveLastWeightAndAdjust(uint32_t weight_change) {
     --m_SrcEnd;
+    SetWeightForPosition(m_SrcEnd,
+                         GetWeightForPosition(m_SrcEnd) + weight_change);
   }
 
   int m_SrcStart;
