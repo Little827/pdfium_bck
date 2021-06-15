@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9acabcce_8e4b140f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-06-15T03:33:42Z",
+      "side": 1,
+      "message": "Yeah, it can be rolled separately.  When I was doing a first pass through the DEPS buildtools was getting the same compile errors as build and clang.  But you\u0027re right that as of today it all still builds okay with only build and clang in this CL.\nRemoved, I\u0027ll do that one in a separate CL.",
+      "parentUuid": "8713cfcb_5b567c44",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "f56ea708c2acc3d36fd669388935c1941bb2e9a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65567282_642af603",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-15T03:16:38Z",
       "side": 1,
       "message": "https://crrev.com/886773 is a bit shorter",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 90
+      },
+      "revId": "f56ea708c2acc3d36fd669388935c1941bb2e9a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efa8939_8da5bdf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-06-15T03:33:42Z",
+      "side": 1,
+      "message": "I was lazy in my copy \u0026 paste of the URL.  Updated.",
+      "parentUuid": "65567282_642af603",
       "range": {
         "startLine": 14,
         "startChar": 5,
