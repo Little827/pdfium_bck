@@ -70,6 +70,24 @@
       "parentUuid": "9c1da1e9_c50736ba",
       "revId": "492b219b2b984e6a5ba6e56337fb1f0c3c38bed1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233fda3a_4ec12c00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-15T20:44:04Z",
+      "side": 1,
+      "message": "This may be an issue with \"git cl presubmit\". Locally, I made a dummy change to every header and ran the presubmit without --all, and it came back clean.",
+      "parentUuid": "7a126979_fcd21806",
+      "revId": "492b219b2b984e6a5ba6e56337fb1f0c3c38bed1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
