@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16deb4f8_6aa4e883",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-15T23:17:14Z",
+      "side": 1,
+      "message": "This is the part that restricts it to only new code, right?  Maybe we want to remove this to get folks to fix stuff whenever they touch it, cause we\u0027re picky?",
+      "range": {
+        "startLine": 347,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 3
+      },
+      "revId": "624fba8e571b63eb6a11fa95db7459638bb3b403",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
