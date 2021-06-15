@@ -14,10 +14,6 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 
-static_assert(
-    std::is_trivially_destructible<PixelWeight>::value,
-    "PixelWeight storage may be re-used without invoking its destructor");
-
 #if defined(OS_WIN)
 static_assert(sizeof(FX_COLORREF) == sizeof(COLORREF),
               "FX_COLORREF vs. COLORREF mismatch");
@@ -36,15 +32,6 @@ FXDIB_Format MakeRGBFormat(int bpp) {
     default:
       return FXDIB_Format::kInvalid;
   }
-}
-
-// static
-size_t PixelWeight::TotalBytesForWeightCount(size_t weight_count) {
-  const size_t extra_weights = weight_count > 0 ? weight_count - 1 : 0;
-  FX_SAFE_SIZE_T total_bytes = extra_weights;
-  total_bytes *= sizeof(m_Weights[0]);
-  total_bytes += sizeof(PixelWeight);
-  return total_bytes.ValueOrDie();
 }
 
 FXDIB_ResampleOptions::FXDIB_ResampleOptions() = default;
