@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42804be_c4ca101e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-15T21:42:13Z",
+      "side": 1,
+      "message": "No worries. It took me a minute to figure this out as well.",
+      "parentUuid": "c5fd4c98_d209c678",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91366ef7_2dcd808a",
