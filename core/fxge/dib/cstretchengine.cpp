@@ -117,7 +117,8 @@ bool CStretchEngine::CWeightTable::CalculateWeights(
     start_i = std::max(start_i, src_min);
     end_i = std::min(end_i, src_max - 1);
     pixel_weights.SetStartEnd(start_i, end_i, weight_count);
-    for (int j = start_i; j <= end_i; ++j) {
+    uint32_t remaining = kFixedPointOne;
+    for (int j = start_i; j < end_i; ++j) {
       double dest_start = (j - base) / scale;
       double dest_end = (j + 1 - base) / scale;
       if (dest_start > dest_end)
@@ -125,11 +126,20 @@ bool CStretchEngine::CWeightTable::CalculateWeights(
       double area_start = std::max(dest_start, static_cast<double>(dest_pixel));
       double area_end = std::min(dest_end, static_cast<double>(dest_pixel + 1));
       double weight = std::max(0.0, area_end - area_start);
-      if (weight == 0 && j == end_i) {
-        --pixel_weights.m_SrcEnd;
-        break;
-      }
-      pixel_weights.SetWeightForPixel(j, FixedFromFloat(weight));
+      uint32_t fixed_weight = FixedFromFloat(weight);
+      pixel_weights.SetWeightForPixel(j, fixed_weight);
+      remaining -= fixed_weight;
+    }
+    // Note: underflow is defined behaviour for unsigned types and will
+    // result in an out-of-range value.
+    if (remaining && remaining <= kFixedPointOne) {
+      pixel_weights.SetWeightForPixel(end_i, remaining);
+    } else {
+      --pixel_weights.m_SrcEnd;
+      // Either 0, or adding underflowed value subtracts as needed.
+      pixel_weights.SetWeightForPixel(
+          pixel_weights.m_SrcEnd,
+          pixel_weights.GetWeight(pixel_weights.m_SrcEnd) + remaining);
     }
   }
   return true;
