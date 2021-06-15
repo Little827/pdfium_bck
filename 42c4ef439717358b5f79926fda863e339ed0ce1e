@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b473fa08_bc1325b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-15T21:36:42Z",
+      "side": 1,
+      "message": "This is what git cl format came back with.",
+      "parentUuid": "3d254c17_91a4938b",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91366ef7_2dcd808a",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6f51c0_69aeee26",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-15T21:36:42Z",
+      "side": 1,
+      "message": "Line 13 is another constant.",
+      "parentUuid": "91366ef7_2dcd808a",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94c77fc9_f023518f",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-15T21:34:31Z",
       "side": 1,
       "message": "Too many newlines?",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05f0aeb_b5e3cd72",
+        "filename": "public/PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-15T21:36:42Z",
+      "side": 1,
+      "message": "Line 14 is a function. I believe the formatting is:\n\nCONST1 \u003d ...\n\nCONST2 \u003d ...\n\n\ndef Func(...)",
+      "parentUuid": "94c77fc9_f023518f",
       "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
