@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "895a5ce5_b70e80fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-15T20:28:02Z",
+      "side": 1,
+      "message": "\u003e \"betwen\" is a possible misspelling of \"between\".\n\nPlease fix.",
+      "parentUuid": "081937c4_6bbbf3a5",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "60e91c563b0e9d782776cf79864ff90f90ac41c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
