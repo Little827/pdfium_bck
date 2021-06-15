@@ -39,16 +39,24 @@ struct PixelWeight {
     m_SrcEnd = src_end;
   }
 
-  uint32_t GetWeight(int pixel) const {
-    CHECK_GE(pixel, m_SrcStart);
-    CHECK_LE(pixel, m_SrcEnd);
-    return m_Weights[pixel - m_SrcStart];
+  uint32_t GetWeightForPosition(int position) const {
+    CHECK_GE(position, m_SrcStart);
+    CHECK_LE(position, m_SrcEnd);
+    return m_Weights[position - m_SrcStart];
   }
 
-  void SetWeightForPixel(int pixel, uint32_t weight) {
-    CHECK_GE(pixel, m_SrcStart);
-    CHECK_LE(pixel, m_SrcEnd);
-    m_Weights[pixel - m_SrcStart] = weight;
+  void SetWeightForPosition(int position, uint32_t weight) {
+    CHECK_GE(position, m_SrcStart);
+    CHECK_LE(position, m_SrcEnd);
+    m_Weights[position - m_SrcStart] = weight;
+  }
+
+  // NOTE: relies on defined behaviour for unsigned overflow to
+  // decrement the previous position, as needed.
+  void RemoveLastWeightAndAdjust(uint32_t weight_change) {
+    --m_SrcEnd;
+    SetWeightForPosition(m_SrcEnd,
+                         GetWeightForPosition(m_SrcEnd) + weight_change);
   }
 
   int m_SrcStart;
