@@ -19,7 +19,7 @@
 #include "third_party/base/stl_util.h"
 
 static_assert(
-    std::is_trivially_destructible<PixelWeight>::value,
+    std::is_trivially_destructible<CStretchEngine::PixelWeight>::value,
     "PixelWeight storage may be re-used without invoking its destructor");
 
 namespace {
@@ -42,7 +42,8 @@ int GetPitchRoundUpTo4Bytes(int bits_per_pixel) {
 }  // namespace
 
 // static
-size_t PixelWeight::TotalBytesForWeightCount(size_t weight_count) {
+size_t CStretchEngine::PixelWeight::TotalBytesForWeightCount(
+    size_t weight_count) {
   const size_t extra_weights = weight_count > 0 ? weight_count - 1 : 0;
   FX_SAFE_SIZE_T total_bytes = extra_weights;
   total_bytes *= sizeof(m_Weights[0]);
@@ -50,11 +51,11 @@ size_t PixelWeight::TotalBytesForWeightCount(size_t weight_count) {
   return total_bytes.ValueOrDie();
 }
 
-CStretchEngine::CWeightTable::CWeightTable() = default;
+CStretchEngine::WeightTable::WeightTable() = default;
 
-CStretchEngine::CWeightTable::~CWeightTable() = default;
+CStretchEngine::WeightTable::~WeightTable() = default;
 
-bool CStretchEngine::CWeightTable::CalculateWeights(
+bool CStretchEngine::WeightTable::CalculateWeights(
     int dest_len,
     int dest_min,
     int dest_max,
@@ -149,7 +150,7 @@ bool CStretchEngine::CWeightTable::CalculateWeights(
   return true;
 }
 
-const PixelWeight* CStretchEngine::CWeightTable::GetPixelWeight(
+const CStretchEngine::PixelWeight* CStretchEngine::WeightTable::GetPixelWeight(
     int pixel) const {
   DCHECK(pixel >= m_DestMin);
   return reinterpret_cast<const PixelWeight*>(
@@ -456,7 +457,7 @@ void CStretchEngine::StretchVert() {
   if (m_DestHeight == 0)
     return;
 
-  CWeightTable table;
+  WeightTable table;
   if (!table.CalculateWeights(m_DestHeight, m_DestClip.top, m_DestClip.bottom,
                               m_SrcHeight, m_SrcClip.top, m_SrcClip.bottom,
                               m_ResampleOptions)) {
