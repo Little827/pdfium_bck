@@ -5,6 +5,9 @@
 #include <memory>
 #include <string>
 
+#include "core/fpdfapi/page/cpdf_form.h"
+#include "core/fpdfapi/page/cpdf_formobject.h"
+#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_edit.h"
 #include "public/fpdf_ppo.h"
@@ -141,6 +144,80 @@ TEST_F(FPDFPPOEmbedderTest, NupRenderImage) {
     EXPECT_EQ(612, FPDFBitmap_GetHeight(bitmap.get()));
     EXPECT_EQ(kExpectedMD5s[i], HashBitmap(bitmap.get()));
   }
+}
+
+TEST_F(FPDFPPOEmbedderTest, ImportPageToXObject) {
+  ASSERT_TRUE(OpenDocument("rectangles.pdf"));
+
+  {
+    ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
+    ASSERT_TRUE(output_doc);
+
+    FPDF_XOBJECT xobject =
+        FPDF_NewXObjectFromPage(output_doc.get(), document(), 0);
+    ASSERT_TRUE(xobject);
+
+    {
+      ScopedFPDFPage page(FPDFPage_New(output_doc.get(), 0, 612, 792));
+      ASSERT_TRUE(page);
+
+      FPDF_PAGEOBJECT page_object = FPDF_NewFormObjectFromXObject(xobject);
+      ASSERT_TRUE(page_object);
+      FPDFPage_InsertObject(page.get(), page_object);
+      EXPECT_TRUE(FPDFPage_GenerateContent(page.get()));
+    }
+    {
+      ScopedFPDFPage page(FPDFPage_New(output_doc.get(), 0, 612, 792));
+      ASSERT_TRUE(page);
+
+      FPDF_PAGEOBJECT page_object = FPDF_NewFormObjectFromXObject(xobject);
+      ASSERT_TRUE(page_object);
+      FPDFPage_InsertObject(page.get(), page_object);
+      EXPECT_TRUE(FPDFPage_GenerateContent(page.get()));
+    }
+
+    EXPECT_TRUE(FPDF_SaveAsCopy(output_doc.get(), this, 0));
+
+    FPDF_CloseXObject(xobject);
+  }
+
+  constexpr int kExpectedPageCount = 2;
+  ASSERT_TRUE(OpenSavedDocument());
+
+  FPDF_PAGE saved_pages[kExpectedPageCount];
+  FPDF_PAGEOBJECT xobjects[kExpectedPageCount];
+  for (int i = 0; i < kExpectedPageCount; ++i) {
+    saved_pages[i] = LoadSavedPage(i);
+    ASSERT_TRUE(saved_pages[i]);
+
+    EXPECT_EQ(1, FPDFPage_CountObjects(saved_pages[i]));
+    xobjects[i] = FPDFPage_GetObject(saved_pages[i], 0);
+    ASSERT_TRUE(xobjects[i]);
+    ASSERT_EQ(FPDF_PAGEOBJ_FORM, FPDFPageObj_GetType(xobjects[i]));
+    EXPECT_EQ(8, FPDFFormObj_CountObjects(xobjects[i]));
+
+    {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+      static const char kChecksum[] = "d6ebc0a8afc22fe0137f54ce54e1a19c";
+#else
+      static const char kChecksum[] = "2d88d180af7109eb346439f7c855bb29";
+#endif
+      ScopedFPDFBitmap page_bitmap = RenderPage(saved_pages[i]);
+      CompareBitmap(page_bitmap.get(), 612, 792, kChecksum);
+    }
+  }
+
+  // Peek at object internals to make sure the two XObjects use the same stream.
+  EXPECT_NE(xobjects[0], xobjects[1]);
+  CPDF_PageObject* obj1 = CPDFPageObjectFromFPDFPageObject(xobjects[0]);
+  CPDF_PageObject* obj2 = CPDFPageObjectFromFPDFPageObject(xobjects[1]);
+  EXPECT_EQ(obj1->AsForm()->form()->GetStream(),
+            obj2->AsForm()->form()->GetStream());
+
+  for (FPDF_PAGE saved_page : saved_pages)
+    CloseSavedPage(saved_page);
+
+  CloseSavedDocument();
 }
 
 TEST_F(FPDFPPOEmbedderTest, BUG_925981) {
