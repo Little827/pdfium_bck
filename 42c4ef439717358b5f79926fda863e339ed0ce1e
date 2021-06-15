@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fd4c98_d209c678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-15T21:41:10Z",
+      "side": 1,
+      "message": "Ah, in that case, we\u0027re good to go. Sorry, I\u0027m not too familiar with Python formatting.",
+      "parentUuid": "b473fa08_bc1325b2",
+      "revId": "42c4ef439717358b5f79926fda863e339ed0ce1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91366ef7_2dcd808a",
