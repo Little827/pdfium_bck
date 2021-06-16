@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2ab7ae_a21fb532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-16T19:19:09Z",
+      "side": 1,
+      "message": "argh, need different test to comply with the part about not accessing ranges.",
+      "revId": "eee7a3c3d651db6a2e72a5810e3951873e7570a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
