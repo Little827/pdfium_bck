@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f4e0f6_590d7028",
+        "filename": "core/fxge/dib/cstretchengine_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-16T00:37:18Z",
+      "side": 1,
+      "message": "Use `i`?",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "f2abda613ecaffd1dcdaca3d989e2e0e8b1a7691",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
