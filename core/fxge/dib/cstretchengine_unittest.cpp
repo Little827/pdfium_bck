@@ -18,7 +18,7 @@ namespace {
 
 // Discovered experimentally
 constexpr uint32_t kTooBigSrcLen = 20;
-constexpr uint32_t kTooBigDestLen = 32 * 1024 * 1024 + 1;
+constexpr uint32_t kTooBigDestLen = 2 * 1024 * 1024 + 1;
 
 uint32_t PixelWeightSum(const CStretchEngine::PixelWeight* weights) {
   uint32_t sum = 0;
