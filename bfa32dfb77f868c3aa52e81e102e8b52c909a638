@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792162f8_73a55f35",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-16T21:44:43Z",
+      "side": 1,
+      "message": "Anyway, given (0, 0) as input, we\u0027d wind up with src_start \u003d 0, src_end \u003d -1, and go into the next block rather than this one, which would trigger a store to m_Weights[1], one beyond the end of the table in some cases.  Hence the +4 I took out from the size calculation some time ago used to mask this from being noticed.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "bfa32dfb77f868c3aa52e81e102e8b52c909a638",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
