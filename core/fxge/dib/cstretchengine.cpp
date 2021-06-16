@@ -67,8 +67,10 @@ bool CStretchEngine::WeightTable::CalculateWeights(
     int src_min,
     int src_max,
     const FXDIB_ResampleOptions& options) {
-  // 512MB should be large enough for this while preventing OOM.
-  static constexpr size_t kMaxTableBytesAllowed = 512 * 1024 * 1024;
+  // 32MB should be large enough for this thus preventing `scale` from
+  // becoming too small to have meaningful precision when added to
+  // medium sized numbers.
+  static constexpr size_t kMaxTableBytesAllowed = 32 * 1024 * 1024;
 
   // Help the compiler realize that these can't change during a loop iteration:
   const bool bilinear = options.bInterpolateBilinear;
