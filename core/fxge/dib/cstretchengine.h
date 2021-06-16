@@ -44,9 +44,12 @@ class CStretchEngine {
       m_Weights[position - m_SrcStart] = weight;
     }
 
-    void RemoveLastWeight() {
+    // NOTE: relies on defined behaviour for unsigned overflow to
+    // decrement the previous position, as needed.
+    void RemoveLastWeightAndAdjust(uint32_t weight_change) {
       CHECK_GT(m_SrcEnd, m_SrcStart);
       --m_SrcEnd;
+      m_Weights[m_SrcEnd - m_SrcStart] += weight_change;
     }
 
     int m_SrcStart;
