@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "611b3809_0ef30674",
+        "filename": "core/fxge/dib/cstretchengine.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-16T19:16:31Z",
+      "side": 1,
+      "message": "Include core/fxcrt/fx_system.h.",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "a9f0ff5dbfffe18608e0ecf347e5898d20a46531",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35c1ead2_98a58354",
         "filename": "core/fxge/dib/cstretchengine_unittest.cpp",
         "patchSetId": 2
@@ -14,6 +37,30 @@
       "writtenOn": "2021-06-16T16:46:31Z",
       "side": 1,
       "message": "methinks this macro is somehow taking address-of its argument, and fails to link (!!!) if  the static constexpr class member  CStretchEngine::kFixedPointOne is passed directly.",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "a9f0ff5dbfffe18608e0ecf347e5898d20a46531",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e009765_2f93d7c6",
+        "filename": "core/fxge/dib/cstretchengine_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-16T19:16:31Z",
+      "side": 1,
+      "message": "I hit a similar problem recently here: https://pdfium-review.googlesource.com/c/pdfium/+/82072/3/fpdfsdk/fpdf_ppo.cpp#836\n\nNot sure what\u0027s going wrong.",
+      "parentUuid": "35c1ead2_98a58354",
       "range": {
         "startLine": 35,
         "startChar": 14,
