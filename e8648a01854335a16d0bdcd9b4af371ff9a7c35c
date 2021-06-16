@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36140689_09cd03f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-16T16:47:54Z",
+      "side": 1,
+      "message": "Small step towards making sure some widths etc. can never be negative.",
+      "revId": "e8648a01854335a16d0bdcd9b4af371ff9a7c35c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
