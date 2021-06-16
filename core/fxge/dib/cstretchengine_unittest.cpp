@@ -29,11 +29,25 @@ void ExecuteOneStretchTest(uint32_t dest_width,
                            const FXDIB_ResampleOptions& options) {
   constexpr uint32_t kExpectedSum = 65536;  // kFixedPointOne not exposed yet.
   CStretchEngine::WeightTable table;
-  table.CalculateWeights(dest_width, 0, dest_width, src_width, 0, src_width,
-                         options);
+  ASSERT_TRUE(table.CalculateWeights(dest_width, 0, dest_width, src_width, 0,
+                                     src_width, options));
   for (uint32_t i = 0; i < dest_width; ++i) {
     EXPECT_EQ(kExpectedSum, PixelWeightSum(table.GetPixelWeight(i)))
         << "for { " << src_width << ", " << dest_width << " } at " << i;
+  }
+}
+
+void ExecuteOneReversedStretchTest(uint32_t dest_width,
+                                   uint32_t src_width,
+                                   const FXDIB_ResampleOptions& options) {
+  constexpr uint32_t kExpectedSum = 65536;  // kFixedPointOne not exposed yet.
+  CStretchEngine::WeightTable table;
+  ASSERT_TRUE(table.CalculateWeights(-dest_width, 0, dest_width, src_width, 0,
+                                     src_width, options));
+  for (uint32_t i = 0; i < dest_width; ++i) {
+    EXPECT_EQ(kExpectedSum, PixelWeightSum(table.GetPixelWeight(i)))
+        << "for { " << src_width << ", " << dest_width << " } at " << i
+        << " (reversed)";
   }
 }
 
@@ -44,6 +58,7 @@ void ExecuteStretchTests(const FXDIB_ResampleOptions& options) {
   for (uint32_t src_width : kSrcWidths) {
     for (uint32_t dest_width : kDestWidths) {
       ExecuteOneStretchTest(dest_width, src_width, options);
+      ExecuteOneReversedStretchTest(dest_width, src_width, options);
     }
   }
 }
@@ -91,4 +106,31 @@ TEST(CStretchEngine, WeightRoundingNoSmoothingBilinear) {
   options.bNoSmoothing = true;
   options.bInterpolateBilinear = true;
   ExecuteStretchTests(options);
+}
+
+TEST(CStretchEngine, ZeroLengthSrc) {
+  {
+    FXDIB_ResampleOptions options;
+    CStretchEngine::WeightTable table;
+    ASSERT_TRUE(table.CalculateWeights(100, 0, 100, 0, 0, 0, options));
+  }
+  {
+    FXDIB_ResampleOptions options;
+    options.bNoSmoothing = true;
+    CStretchEngine::WeightTable table;
+    ASSERT_TRUE(table.CalculateWeights(100, 0, 100, 0, 0, 0, options));
+  }
+  {
+    FXDIB_ResampleOptions options;
+    options.bInterpolateBilinear = true;
+    CStretchEngine::WeightTable table;
+    ASSERT_TRUE(table.CalculateWeights(100, 0, 100, 0, 0, 0, options));
+  }
+  {
+    FXDIB_ResampleOptions options;
+    options.bNoSmoothing = true;
+    options.bInterpolateBilinear = true;
+    CStretchEngine::WeightTable table;
+    ASSERT_TRUE(table.CalculateWeights(100, 0, 100, 0, 0, 0, options));
+  }
 }
