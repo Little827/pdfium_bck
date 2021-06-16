@@ -40,7 +40,7 @@ void ExecuteOneStretchTest(uint32_t dest_width,
 void ExecuteStretchTests(const FXDIB_ResampleOptions& options) {
   // Can't test everything, few random values chosen.
   constexpr uint32_t kDestWidths[] = {1, 2, 337, 512, 808, 2550};
-  constexpr uint32_t kSrcWidths[] = {1, 2, 187, 256, 809, 1110};
+  constexpr uint32_t kSrcWidths[] = {0, 1, 2, 187, 256, 809, 1110};
   for (uint32_t src_width : kSrcWidths) {
     for (uint32_t dest_width : kDestWidths) {
       ExecuteOneStretchTest(dest_width, src_width, options);
