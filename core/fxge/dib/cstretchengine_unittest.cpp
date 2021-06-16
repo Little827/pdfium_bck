@@ -14,6 +14,36 @@
 #include "core/fxge/dib/fx_dib.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
+namespace {
+
+constexpr uint32_t kExpectedSum = 65536;  // kFixedPointOne not exposed yet.
+
+// Can't test everything, few random values chosen.
+constexpr uint32_t kDestWidths[] = {1, 2, 337, 512, 808, 2550};
+constexpr uint32_t kSrcWidths[] = {1, 2, 187, 256, 809, 1110};
+
+uint32_t PixelWeightSum(const CStretchEngine::PixelWeight* weights) {
+  uint32_t sum = 0;
+  for (int j = weights->m_SrcStart; j <= weights->m_SrcEnd; ++j) {
+    sum += weights->GetWeightForPosition(j);
+  }
+  return sum;
+}
+
+void ExecuteStretchTest(uint32_t dest_width,
+                        uint32_t src_width,
+                        const FXDIB_ResampleOptions& options) {
+  CStretchEngine::WeightTable table;
+  table.CalculateWeights(dest_width, 0, dest_width, src_width, 0, src_width,
+                         options);
+  for (uint32_t i = 0; i < dest_width; ++i) {
+    EXPECT_EQ(kExpectedSum, PixelWeightSum(table.GetPixelWeight(i)))
+        << "for { " << src_width << ", " << dest_width << " } at " << i;
+  }
+}
+
+}  // namespace
+
 TEST(CStretchEngine, OverflowInCtor) {
   FX_RECT clip_rect;
   RetainPtr<CPDF_Dictionary> dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
@@ -29,4 +59,46 @@ TEST(CStretchEngine, OverflowInCtor) {
   EXPECT_FALSE(engine.GetResampleOptionsForTest().bHalftone);
   EXPECT_FALSE(engine.GetResampleOptionsForTest().bNoSmoothing);
   EXPECT_FALSE(engine.GetResampleOptionsForTest().bLossy);
+}
+
+// See https://crbug.com/pdfium/1688
+TEST(CStretchEngine, DISABLED_WeightRounding) {
+  FXDIB_ResampleOptions options;
+  for (uint32_t src_width : kSrcWidths) {
+    for (uint32_t dest_width : kDestWidths) {
+      ExecuteStretchTest(dest_width, src_width, options);
+    }
+  }
+}
+
+TEST(CStretchEngine, WeightRoundingNoSmoothing) {
+  FXDIB_ResampleOptions options;
+  options.bNoSmoothing = true;
+  for (uint32_t src_width : kSrcWidths) {
+    for (uint32_t dest_width : kDestWidths) {
+      ExecuteStretchTest(dest_width, src_width, options);
+    }
+  }
+}
+
+// See https://crbug.com/pdfium/1688
+TEST(CStretchEngine, DISABLED_WeightRoundingBilinear) {
+  FXDIB_ResampleOptions options;
+  options.bInterpolateBilinear = true;
+  for (uint32_t src_width : kSrcWidths) {
+    for (uint32_t dest_width : kDestWidths) {
+      ExecuteStretchTest(dest_width, src_width, options);
+    }
+  }
+}
+
+TEST(CStretchEngine, WeightRoundingNoSmoothingBilinear) {
+  FXDIB_ResampleOptions options;
+  options.bNoSmoothing = true;
+  options.bInterpolateBilinear = true;
+  for (uint32_t src_width : kSrcWidths) {
+    for (uint32_t dest_width : kDestWidths) {
+      ExecuteStretchTest(dest_width, src_width, options);
+    }
+  }
 }
