@@ -22,6 +22,30 @@
       },
       "revId": "ac238df6d357180238db947f50b8bc5daf292376",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa8e9d8_48f4208b",
+        "filename": "core/fpdfapi/parser/cpdf_object.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-16T00:41:14Z",
+      "side": 0,
+      "message": "Yep, even IsNull() doesn\u0027t have any non-test usage.",
+      "parentUuid": "509229c4_33840677",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "ac238df6d357180238db947f50b8bc5daf292376",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
