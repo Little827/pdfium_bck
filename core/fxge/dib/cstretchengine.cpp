@@ -25,17 +25,6 @@ static_assert(
 
 namespace {
 
-constexpr uint32_t kFixedPointBits = 16;
-constexpr uint32_t kFixedPointOne = 1 << kFixedPointBits;
-
-inline uint32_t FixedFromFloat(float f) {
-  return static_cast<uint32_t>(FXSYS_roundf(f * kFixedPointOne));
-}
-
-inline uint8_t PixelFromFixed(uint32_t fixed) {
-  return static_cast<uint8_t>(fixed >> kFixedPointBits);
-}
-
 int GetPitchRoundUpTo4Bytes(int bits_per_pixel) {
   return (bits_per_pixel + 31) / 32 * 4;
 }
