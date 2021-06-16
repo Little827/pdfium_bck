@@ -105,7 +105,9 @@ bool CStretchEngine::WeightTable::CalculateWeights(
         src_start = std::max(src_start, src_min);
         src_end = std::min(src_end, src_max - 1);
         pixel_weights.SetStartEnd(src_start, src_end, weight_count);
-        if (pixel_weights.m_SrcStart == pixel_weights.m_SrcEnd) {
+        if (pixel_weights.m_SrcStart == pixel_weights.m_SrcEnd - 1) {
+          // Beware zero-length inclusive ranges.
+        } else if (pixel_weights.m_SrcStart == pixel_weights.m_SrcEnd) {
           pixel_weights.m_Weights[0] = kFixedPointOne;
         } else {
           pixel_weights.m_Weights[1] = FixedFromFloat(
