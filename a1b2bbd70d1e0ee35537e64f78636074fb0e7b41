@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e13f1c_4b1f8972",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T01:00:14Z",
+      "side": 1,
+      "message": "yep.  We might wind up with 4294967295 or the like here.",
+      "parentUuid": "1f357cb9_7dbc82e5",
+      "revId": "a1b2bbd70d1e0ee35537e64f78636074fb0e7b41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2498cb77_1f5345ec",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-17T00:57:33Z",
       "side": 1,
       "message": "To be clear, this is saying line 52 will overflow if the caller\u0027s `remaining` value underflowed, so `weight_change` here can be a very large number. But it all works out correctly in the end.",
+      "revId": "a1b2bbd70d1e0ee35537e64f78636074fb0e7b41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cca3ab07_92a36130",
+        "filename": "core/fxge/dib/cstretchengine.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T01:00:14Z",
+      "side": 1,
+      "message": "Yep. We add a large number here when we want to decrement it.",
+      "parentUuid": "2498cb77_1f5345ec",
       "revId": "a1b2bbd70d1e0ee35537e64f78636074fb0e7b41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
