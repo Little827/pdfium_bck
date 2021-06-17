@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0c674b0b_cfc2b00d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26cfc993_1184e64a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f983a914_5e6c3730",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +82,41 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4840a5_49cfc03b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "It\u0027s not clear what to do at this point to submit the changes. Do I use `git cl upload` again or is `git push` what is needed?",
+      "parentUuid": "20ba48ea_87e45467",
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be4eced_a2fdae81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "I\u0027ll make the changes in the morning (EDT).",
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29e27c0f_d38e70e7",
@@ -71,6 +130,30 @@
       "writtenOn": "2021-06-17T00:56:03Z",
       "side": 1,
       "message": "can you explain why this was necessary? We probably don\u0027t need this for our builders even though you may have had to do this for your local build.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb204934_124aa376",
+        "filename": "build_overrides/build.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "Ack. That snuck in. I\u0027ll remove it.",
+      "parentUuid": "29e27c0f_d38e70e7",
       "range": {
         "startLine": 43,
         "startChar": 1,
@@ -104,6 +187,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb08f3ef_e4e59520",
+        "filename": "core/fxge/cfx_graphstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb73ac23_7714c7fb",
+      "range": {
+        "startLine": 51,
+        "startChar": 62,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "879229a8_60f02b08",
@@ -117,6 +224,30 @@
       "writtenOn": "2021-06-17T00:56:03Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 55,
+        "startChar": 62,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2369417_04c9066f",
+        "filename": "core/fxge/cfx_graphstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "879229a8_60f02b08",
       "range": {
         "startLine": 55,
         "startChar": 62,
@@ -150,6 +281,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2649c4ad_cd656efa",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da785b3d_0bf0e2e2",
+      "range": {
+        "startLine": 865,
+        "startChar": 61,
+        "endLine": 865,
+        "endChar": 70
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da539ed6_89eb7e06",
@@ -163,6 +318,30 @@
       "writtenOn": "2021-06-17T00:56:03Z",
       "side": 1,
       "message": "the m_ prefix is reserved for class/struct members, this should be something like dash_vector ?",
+      "range": {
+        "startLine": 870,
+        "startChar": 7,
+        "endLine": 870,
+        "endChar": 19
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d950066_87ba2272",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T02:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da539ed6_89eb7e06",
       "range": {
         "startLine": 870,
         "startChar": 7,
