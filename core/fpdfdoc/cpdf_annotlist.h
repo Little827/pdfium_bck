@@ -28,21 +28,12 @@ class CPDF_AnnotList : public CPDF_PageRenderContext::AnnotListIface {
   ~CPDF_AnnotList() override;
 
   void DisplayAnnots(CPDF_Page* pPage,
-                     CFX_RenderDevice* device,
+                     CFX_RenderDevice* pDevice,
                      CPDF_RenderContext* pContext,
                      bool bPrinting,
                      const CFX_Matrix& mtMatrix,
                      bool bShowWidget,
                      CPDF_RenderOptions* pOptions);
-
-  void DisplayAnnots(CPDF_Page* pPage,
-                     CFX_RenderDevice* pDevice,
-                     CPDF_RenderContext* pContext,
-                     bool bPrinting,
-                     const CFX_Matrix& mtUser2Device,
-                     uint32_t dwAnnotFlags,
-                     CPDF_RenderOptions* pOptions,
-                     FX_RECT* pClipRect);
 
   size_t Count() const { return m_AnnotList.size(); }
   CPDF_Annot* GetAt(size_t index) const { return m_AnnotList[index].get(); }
