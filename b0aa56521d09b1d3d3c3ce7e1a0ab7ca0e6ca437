@@ -27,6 +27,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2370e0b4_52605233",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-17T21:30:38Z",
+      "side": 1,
+      "message": "I think this is by design in Markdown, so if one inserts a new item, they don\u0027t have to renumber all the other items or create duplicates/missing numbers. If you just want to read the document, see https://pdfium.googlesource.com/pdfium/+/b0aa56521d09b1d3d3c3ce7e1a0ab7ca0e6ca437/CONTRIBUTING.md",
+      "parentUuid": "e1281086_1b987546",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "b0aa56521d09b1d3d3c3ce7e1a0ab7ca0e6ca437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee5764e2_40cf91b7",
         "filename": "CONTRIBUTING.md",
         "patchSetId": 1
@@ -38,6 +62,30 @@
       "writtenOn": "2021-06-17T21:26:28Z",
       "side": 1,
       "message": "Usage where? Chromium? Other embedders?",
+      "range": {
+        "startLine": 99,
+        "startChar": 52,
+        "endLine": 99,
+        "endChar": 57
+      },
+      "revId": "b0aa56521d09b1d3d3c3ce7e1a0ab7ca0e6ca437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7261533_b36807cb",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-17T21:30:38Z",
+      "side": 1,
+      "message": "Given PDFium is not solely used by Chromium, it would be any embedder.",
+      "parentUuid": "ee5764e2_40cf91b7",
       "range": {
         "startLine": 99,
         "startChar": 52,
