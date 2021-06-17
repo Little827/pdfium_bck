@@ -33,6 +33,24 @@
       "message": "From the buildbots:\n\n../../fpdfsdk/fpdf_editpage.cpp:853:13: error: no member named \u0027SetLineDashPhase\u0027 in \u0027CPDF_PageObject\u0027\n  pPageObj-\u003eSetLineDashPhase(phase, 1.0f);\n  ~~~~~~~~  ^\n../../fpdfsdk/fpdf_editpage.cpp:870:45: error: no member named \u0027GetLineDash_array\u0027 in \u0027CFX_GraphState\u0027; did you mean \u0027GetLineDashArray\u0027?\n  auto dash_vector \u003d pPageObj-\u003em_GraphState.GetLineDash_array();\n                                            ^~~~~~~~~~~~~~~~~\n                                            GetLineDashArray\n../../core/fxge/cfx_graphstate.h:25:22: note: \u0027GetLineDashArray\u0027 declared here\n  std::vector\u003cfloat\u003e GetLineDashArray() const;\n",
       "revId": "416f86ddb5cdd472aad352cf059cb1a61b4b00d4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "358ccb14_fc047ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-17T17:25:05Z",
+      "side": 1,
+      "message": "corrected.",
+      "parentUuid": "bf2b0e77_1855ab80",
+      "revId": "416f86ddb5cdd472aad352cf059cb1a61b4b00d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
