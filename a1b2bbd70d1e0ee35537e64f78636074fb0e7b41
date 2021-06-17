@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c089368_d544c408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T17:23:31Z",
+      "side": 1,
+      "message": "Yes. Help is great, esp. if there are some gold tricks to getting to green.",
+      "parentUuid": "68de878b_1e96fc7a",
+      "revId": "a1b2bbd70d1e0ee35537e64f78636074fb0e7b41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f357cb9_7dbc82e5",
