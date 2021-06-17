@@ -154,3 +154,68 @@ TEST_F(FPDFEditPageEmbedderTest, GetFillAndStrokeForImage) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFEditPageEmbedderTest, DashingArrayAndPhase) {
+  constexpr int kExpectedObjectCount = 3;
+  ASSERT_TRUE(OpenDocument("dashed_lines.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  ASSERT_EQ(kExpectedObjectCount, FPDFPage_CountObjects(page));
+
+  {
+    FPDF_PAGEOBJECT path = FPDFPage_GetObject(page, 0);
+    ASSERT_TRUE(path);
+    EXPECT_EQ(FPDF_PAGEOBJ_PATH, FPDFPageObj_GetType(path));
+
+    EXPECT_FLOAT_EQ(0.f, FPDFPageObj_GetDashPhase(path));
+    EXPECT_EQ(0, FPDFPageObj_GetDashCount(path));
+  }
+
+  {
+    FPDF_PAGEOBJECT path = FPDFPage_GetObject(page, 1);
+    ASSERT_TRUE(path);
+    EXPECT_EQ(FPDF_PAGEOBJ_PATH, FPDFPageObj_GetType(path));
+
+    EXPECT_LT(0.f, FPDFPageObj_GetDashPhase(path));
+    ASSERT_EQ(6, FPDFPageObj_GetDashCount(path));
+
+    float dash_array[6];
+    ASSERT_TRUE(FPDFPageObj_GetDashArray(path, dash_array));
+
+    for (int i = 0; i < 6; i++) 
+      EXPECT_LT(0.f, dash_array[i]);
+
+    // the array is decreasing in value.
+    for (int i = 0; i < 5; i++) 
+      EXPECT_GT(dash_array[i], dash_array[i + 1]);
+
+    // modify phase
+    EXPECT_TRUE(FPDFPageObj_SetDashPhase(path, 0.f));
+
+    EXPECT_FLOAT_EQ(0.f, FPDFPageObj_GetDashPhase(path));
+  }
+  
+  {
+    FPDF_PAGEOBJECT path = FPDFPage_GetObject(page, 2);
+    ASSERT_TRUE(path);
+    EXPECT_EQ(FPDF_PAGEOBJ_PATH, FPDFPageObj_GetType(path));
+
+    EXPECT_FLOAT_EQ(0.f, FPDFPageObj_GetDashPhase(path));
+    EXPECT_EQ(0, FPDFPageObj_GetDashCount(path));
+
+    // modify dash_array and phase
+    float dash_array[] = {1.f, 2.f, 3.f};
+    EXPECT_TRUE(FPDFPageObj_SetDashArray(path, dash_array, 3, 5.f));
+
+    EXPECT_FLOAT_EQ(5.f, FPDFPageObj_GetDashPhase(path));
+    ASSERT_EQ(3, FPDFPageObj_GetDashCount(path));
+
+    ASSERT_TRUE(FPDFPageObj_GetDashArray(path, dash_array));
+
+    for (int i = 0; i < 3; i++) 
+      EXPECT_FLOAT_EQ(static_cast<float>(i + 1), dash_array[i]);
+  }
+
+  UnloadPage(page);
+}
