@@ -101,12 +101,8 @@ class CPDF_RenderStatus {
   RetainPtr<CPDF_TransferFunc> GetTransferFunc(
       const CPDF_Object* pObject) const;
 
-  FX_ARGB GetFillArgb(CPDF_PageObject* pObj) const {
-    return GetFillArgbInternal(pObj, false);
-  }
-  FX_ARGB GetFillArgbForType3(CPDF_PageObject* pObj) const {
-    return GetFillArgbInternal(pObj, true);
-  }
+  FX_ARGB GetFillArgb(CPDF_PageObject* pObj) const;
+  FX_ARGB GetFillArgbForType3(CPDF_PageObject* pObj) const;
 
   void DrawTilingPattern(CPDF_TilingPattern* pPattern,
                          CPDF_PageObject* pPageObj,
