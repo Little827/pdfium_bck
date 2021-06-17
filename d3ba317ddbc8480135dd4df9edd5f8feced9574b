@@ -16,6 +16,24 @@
       "message": "To be clear, does it return false for src \u0026\u0026 dest, or src || dest?",
       "revId": "d3ba317ddbc8480135dd4df9edd5f8feced9574b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "908d3e4c_02101682",
+        "filename": "core/fxge/dib/cstretchengine_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T18:27:31Z",
+      "side": 1,
+      "message": "So long as we\u0027re expanding, src size doesn\u0027t matter too much as we get 2 weights for each of the destination pixels.  When shrinking, we can get more weights per destination pixel, but then the destination is smaller if we are shrinking ...",
+      "parentUuid": "745be8b0_9be659fb",
+      "revId": "d3ba317ddbc8480135dd4df9edd5f8feced9574b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
