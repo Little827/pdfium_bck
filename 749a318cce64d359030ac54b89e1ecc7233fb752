@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "26cfc993_1184e64a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:56:03Z",
+      "side": 1,
+      "message": "If you write\n\nBug: pdfium:1187\n\nit will link to the correct bug (in the pdfium tracker, rather than the chromium tracker).",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f983a914_5e6c3730",
@@ -14,6 +37,138 @@
       "writtenOn": "2021-06-17T00:39:27Z",
       "side": 1,
       "message": "Robert, the reason this CL didn\u0027t come immediately to my attention is that it is still in the \"work in progress\" state. To move it into the ready to be reviewed state, the steps are\n\n- bring up the send for review dialog via the keyboard shortcut \u0027a\u0027\n- add reviewers in this dialog\n- push the \"send and start review\" button\n\nI\u0027m not sure why there isn\u0027t a more obvious navigation to this dialog than typing \u0027a\u0027 in the main window ...",
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ba48ea_87e45467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:56:03Z",
+      "side": 1,
+      "message": "Anyways, this is quite good, if you revert the change to the .gni file, I can give this a go against our builders. We\u0027ll also want to add coverage for these new interfaces to fpdfsdk/fpdf_editpage_embeddertest.cpp. There\u0027s probably some existing .pdf file among our existing tests that has dash arrays for you to extract.",
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e27c0f_d38e70e7",
+        "filename": "build_overrides/build.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:56:03Z",
+      "side": 1,
+      "message": "can you explain why this was necessary? We probably don\u0027t need this for our builders even though you may have had to do this for your local build.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb73ac23_7714c7fb",
+        "filename": "core/fxge/cfx_graphstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:56:03Z",
+      "side": 1,
+      "message": "nit: stylistically, we prefer 1.0f just for consistency with the rest of the code base.",
+      "range": {
+        "startLine": 51,
+        "startChar": 62,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "879229a8_60f02b08",
+        "filename": "core/fxge/cfx_graphstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:56:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 55,
+        "startChar": 62,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da785b3d_0bf0e2e2",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:56:03Z",
+      "side": 1,
+      "message": "nit: maybe snake_case for consistency with other arguments.",
+      "range": {
+        "startLine": 865,
+        "startChar": 61,
+        "endLine": 865,
+        "endChar": 70
+      },
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da539ed6_89eb7e06",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:56:03Z",
+      "side": 1,
+      "message": "the m_ prefix is reserved for class/struct members, this should be something like dash_vector ?",
+      "range": {
+        "startLine": 870,
+        "startChar": 7,
+        "endLine": 870,
+        "endChar": 19
+      },
       "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
