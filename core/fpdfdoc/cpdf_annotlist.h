@@ -31,9 +31,7 @@ class CPDF_AnnotList : public CPDF_PageRenderContext::AnnotListIface {
                      CFX_RenderDevice* device,
                      CPDF_RenderContext* pContext,
                      bool bPrinting,
-                     const CFX_Matrix& mtMatrix,
-                     bool bShowWidget,
-                     CPDF_RenderOptions* pOptions);
+                     const CFX_Matrix& mtMatrix);
 
   void DisplayAnnots(CPDF_Page* pPage,
                      CFX_RenderDevice* pDevice,
