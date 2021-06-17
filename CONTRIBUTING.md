@@ -17,7 +17,7 @@ before investing effort in coding. Coordinating up front makes it much easier
 to avoid frustration later on.
 
 If it‘s a new feature, or updating existing code, first propose it to the
-[mailing list](https://groups.google.com/forum/#!forum/pdfium).
+[mailing list](https://groups.google.com/g/pdfium).
 
  * If a change needs further context outside the CL, it should be tracked in
    the [bug system](https://bugs.chromium.org/p/pdfium). Bugs are the right
@@ -75,13 +75,31 @@ Experimental APIs may be changed or removed entirely without formal notice to
 the community.
 
 #### Stable
-APIs eventually graduate to stable. This is done by removing the
-`// Experimental API.` marker in the documentation. We endeavor to not change
+APIs that work well eventually graduate to stable. We endeavor to not change
 stable APIs without notice to the community.
 
-NOTE, the process of migrating from experimental to stable isn’t well defined
-at this point. We have experimental APIs which have been that way for multiple
-years. We should work to better define how this transition happens.
+The process to promote experimental APIs to stable is as follows:
+
+1.  Create a CL to remove the `// Experimental API.` marker in the API
+    documentation. Closely related APIs may go through the process at the same
+    time.
+1.  In the CL description, briefly explain why the API should be considered
+    stable.
+1.  Inform the [mailing list](https://groups.google.com/g/pdfium) of the CL, so
+    anyone interested can have a chance to chime in.
+1.  Add all reviewers from `public/OWNERS` to the CL for review.
+1.  If the API passes the scrutiny of all reviewers from `public/OWNERS`, and
+    it has been 3 weeks since the mailing list announcement without any other
+    objections, and all issues raised during the review have been addressed,
+    then the CL reviewers will approve the CL.
+1.  If the API does not get promoted, address the concerns regarding the API in
+    separate CLs. When ready, go through the promotion process again.
+
+While there is no requirement for how long an API must remain experimental
+before going to stable, API reviewers will take API usage into account in the
+decision process. So a brand new API with little or no usage probably will not
+be ready for promotion to stable yet. Similarly, an API that has spent a long
+time as experimental does not necessarily mean it should be promoted.
 
 #### Deprecated
 If the API is retired, it is marked as deprecated and will eventually be removed.
