@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f983a914_5e6c3730",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-17T00:39:27Z",
+      "side": 1,
+      "message": "Robert, the reason this CL didn\u0027t come immediately to my attention is that it is still in the \"work in progress\" state. To move it into the ready to be reviewed state, the steps are\n\n- bring up the send for review dialog via the keyboard shortcut \u0027a\u0027\n- add reviewers in this dialog\n- push the \"send and start review\" button\n\nI\u0027m not sure why there isn\u0027t a more obvious navigation to this dialog than typing \u0027a\u0027 in the main window ...",
+      "revId": "749a318cce64d359030ac54b89e1ecc7233fb752",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
