@@ -17,6 +17,24 @@
       "message": "Yes, but does it matter?  We could change the function description to say \"if visible\" (that\u0027s what non-zero means, no?).  As you like.",
       "revId": "dd601f692e398da7bd77abcd384b8623b6f5b791",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a566ba2b_6b49397e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-18T17:43:38Z",
+      "side": 1,
+      "message": "It does matter. If a caller wants to find all the text objects with font size 0, they can\u0027t tell if FPDFTextObj_GetFontSize() returned 0 to mean font size 0 or failure. We deprecated FPDFDest_GetPageIndex() because it had a similar ambiguity.",
+      "parentUuid": "1ca649c6_ed5d0bd6",
+      "revId": "dd601f692e398da7bd77abcd384b8623b6f5b791",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
