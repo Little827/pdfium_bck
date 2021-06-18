@@ -13,7 +13,6 @@
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
-#include "core/fxcrt/stl_util.h"
 #include "core/fxcrt/xml/cfx_xmlchardata.h"
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmlnode.h"
@@ -225,12 +224,8 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
         buf << "<";
         buf << bodyTagName;
         buf << " xmlns=\"\"\n>";
-        for (int32_t i = 0; i < fxcrt::CollectionSize<int32_t>(wsSelTextArray);
-             i++) {
-          buf << "<value\n>";
-          buf << ExportEncodeContent(wsSelTextArray[i]);
-          buf << "</value\n>";
-        }
+        for (const WideString& text : wsSelTextArray)
+          buf << "<value\n>" << ExportEncodeContent(text) << "</value\n>";
         buf << "</";
         buf << bodyTagName;
         buf << "\n>";
