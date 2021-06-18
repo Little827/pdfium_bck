@@ -33,6 +33,24 @@
       "message": "There are 2 failing pixel tests. Can you grab the new PNG output and add them to this CL?\n\nFor corpus tests, I uploaded a CL for that here: https://pdfium-review.googlesource.com/c/pdfium_tests/+/82270, which can be patched in via DEPS by updating pdfium_tests_revision to \u0027refs/changes/70/82270/1\u0027.\n\nI can take care of Gold later in the afternoon.",
       "revId": "a28dd7269293b6838da3245fc7782edd5ba379d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d385c0_9662694e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-18T20:38:24Z",
+      "side": 1,
+      "message": "I found the \"bulk triage\" button in Gold, so hopefully that\u0027s all taken care of.",
+      "parentUuid": "7bbc8360_47dd76e6",
+      "revId": "a28dd7269293b6838da3245fc7782edd5ba379d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
