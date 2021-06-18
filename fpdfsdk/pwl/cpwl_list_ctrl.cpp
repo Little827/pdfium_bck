@@ -18,7 +18,8 @@
 CPWL_ListCtrl::NotifyIface::~NotifyIface() = default;
 
 CPWL_ListCtrl::Item::Item() : m_pEdit(std::make_unique<CPWL_EditImpl>()) {
-  m_pEdit->SetAlignmentV(1, true);
+  m_pEdit->SetAlignmentV(1);
+  m_pEdit->Paint();
   m_pEdit->Initialize();
 }
 
@@ -33,7 +34,8 @@ void CPWL_ListCtrl::Item::SetText(const WideString& text) {
 }
 
 void CPWL_ListCtrl::Item::SetFontSize(float fFontSize) {
-  m_pEdit->SetFontSize(fFontSize);
+  m_pEdit->SetFontSize_(fFontSize);
+  m_pEdit->Paint();
 }
 
 float CPWL_ListCtrl::Item::GetItemHeight() const {
