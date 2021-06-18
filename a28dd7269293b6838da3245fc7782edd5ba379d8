@@ -16,6 +16,23 @@
       "message": "For FPDFEditEmbedderTest.GetRenderedBitmapHandlesSetMatrix, just update the bitmap hashes. I used WriteBitmapToPng() to save the output and the difference cannot be seen even at 20X zoom.",
       "revId": "a28dd7269293b6838da3245fc7782edd5ba379d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbc8360_47dd76e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-18T20:23:46Z",
+      "side": 1,
+      "message": "There are 2 failing pixel tests. Can you grab the new PNG output and add them to this CL?\n\nFor corpus tests, I uploaded a CL for that here: https://pdfium-review.googlesource.com/c/pdfium_tests/+/82270, which can be patched in via DEPS by updating pdfium_tests_revision to \u0027refs/changes/70/82270/1\u0027.\n\nI can take care of Gold later in the afternoon.",
+      "revId": "a28dd7269293b6838da3245fc7782edd5ba379d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
