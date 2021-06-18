@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c5dd21_96708a98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-18T22:03:52Z",
+      "side": 1,
+      "message": "crap, the xfa_specific doesn\u0027t look right.  I\u0027m hoping its my local machine missing fonts and not some consequence of the change. I may need to get an image from elsewhere?",
+      "revId": "372e026d54cd4a66e29cd8f0b325d8f73d03d263",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
