@@ -41,7 +41,7 @@ CPWL_Edit::~CPWL_Edit() {
 }
 
 void CPWL_Edit::SetText(const WideString& csText) {
-  m_pEditImpl->SetText(csText);
+  m_pEditImpl->SetTextAndPaint(csText);
 }
 
 bool CPWL_Edit::RePosChildWnd() {
@@ -67,7 +67,7 @@ bool CPWL_Edit::RePosChildWnd() {
     m_pCaret->SetClipRect(rect);
   }
 
-  m_pEditImpl->SetPlateRect(GetClientRect());
+  m_pEditImpl->SetPlateRectAndPaint(GetClientRect());
   return true;
 }
 
@@ -84,7 +84,7 @@ CFX_FloatRect CPWL_Edit::GetClientRect() const {
 }
 
 void CPWL_Edit::SetAlignFormatVerticalCenter() {
-  m_pEditImpl->SetAlignmentV(static_cast<int32_t>(PEAV_CENTER), true);
+  m_pEditImpl->SetAlignmentVAndPaint(static_cast<int32_t>(PEAV_CENTER));
 }
 
 bool CPWL_Edit::CanSelectAll() const {
@@ -122,32 +122,32 @@ void CPWL_Edit::OnCreated() {
 
 void CPWL_Edit::SetParamByFlag() {
   if (HasFlag(PES_RIGHT)) {
-    m_pEditImpl->SetAlignmentH(2, false);
+    m_pEditImpl->SetAlignmentH(2);
   } else if (HasFlag(PES_MIDDLE)) {
-    m_pEditImpl->SetAlignmentH(1, false);
+    m_pEditImpl->SetAlignmentH(1);
   } else {
-    m_pEditImpl->SetAlignmentH(0, false);
+    m_pEditImpl->SetAlignmentH(0);
   }
 
   if (HasFlag(PES_CENTER)) {
-    m_pEditImpl->SetAlignmentV(1, false);
+    m_pEditImpl->SetAlignmentV(1);
   } else {
-    m_pEditImpl->SetAlignmentV(0, false);
+    m_pEditImpl->SetAlignmentV(0);
   }
 
   if (HasFlag(PES_PASSWORD)) {
-    m_pEditImpl->SetPasswordChar('*', false);
+    m_pEditImpl->SetPasswordChar('*');
   }
 
-  m_pEditImpl->SetMultiLine(HasFlag(PES_MULTILINE), false);
-  m_pEditImpl->SetAutoReturn(HasFlag(PES_AUTORETURN), false);
-  m_pEditImpl->SetAutoFontSize(HasFlag(PWS_AUTOFONTSIZE), false);
-  m_pEditImpl->SetAutoScroll(HasFlag(PES_AUTOSCROLL), false);
+  m_pEditImpl->SetMultiLine(HasFlag(PES_MULTILINE));
+  m_pEditImpl->SetAutoReturn(HasFlag(PES_AUTORETURN));
+  m_pEditImpl->SetAutoFontSize(HasFlag(PWS_AUTOFONTSIZE));
+  m_pEditImpl->SetAutoScroll(HasFlag(PES_AUTOSCROLL));
   m_pEditImpl->EnableUndo(HasFlag(PES_UNDO));
 
   if (HasFlag(PES_TEXTOVERFLOW)) {
     SetClipRect(CFX_FloatRect());
-    m_pEditImpl->SetTextOverflow(true, false);
+    m_pEditImpl->SetTextOverflow(true);
   } else {
     if (m_pCaret) {
       CFX_FloatRect rect = GetClientRect();
@@ -258,7 +258,7 @@ void CPWL_Edit::OnKillFocus() {
 }
 
 void CPWL_Edit::SetCharSpace(float fCharSpace) {
-  m_pEditImpl->SetCharSpace(fCharSpace);
+  m_pEditImpl->SetCharSpaceAndPaint(fCharSpace);
 }
 
 CPVT_WordRange CPWL_Edit::GetSelectWordRange() const {
@@ -297,8 +297,8 @@ void CPWL_Edit::SetCharArray(int32_t nCharArray) {
   if (!HasFlag(PES_CHARARRAY) || nCharArray <= 0)
     return;
 
-  m_pEditImpl->SetCharArray(nCharArray);
-  m_pEditImpl->SetTextOverflow(true, true);
+  m_pEditImpl->SetCharArrayAndPaint(nCharArray);
+  m_pEditImpl->SetTextOverflowAndPaint(true);
 
   if (!HasFlag(PWS_AUTOFONTSIZE))
     return;
@@ -312,12 +312,12 @@ void CPWL_Edit::SetCharArray(int32_t nCharArray) {
   if (fFontSize <= 0.0f)
     return;
 
-  m_pEditImpl->SetAutoFontSize(false, true);
-  m_pEditImpl->SetFontSize(fFontSize);
+  m_pEditImpl->SetAutoFontSizeAndPaint(false);
+  m_pEditImpl->SetFontSizeAndPaint(fFontSize);
 }
 
 void CPWL_Edit::SetLimitChar(int32_t nLimitChar) {
-  m_pEditImpl->SetLimitChar(nLimitChar);
+  m_pEditImpl->SetLimitCharAndPaint(nLimitChar);
 }
 
 CFX_FloatRect CPWL_Edit::GetFocusRect() const {
@@ -539,7 +539,7 @@ void CPWL_Edit::CreateEditCaret(const CreateParams& cp) {
 }
 
 void CPWL_Edit::SetFontSize(float fFontSize) {
-  m_pEditImpl->SetFontSize(fFontSize);
+  m_pEditImpl->SetFontSizeAndPaint(fFontSize);
 }
 
 float CPWL_Edit::GetFontSize() const {

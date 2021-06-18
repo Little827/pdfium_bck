@@ -63,27 +63,35 @@ class CPWL_EditImpl {
   void Initialize();
 
   // Set the bounding box of the text area.
-  void SetPlateRect(const CFX_FloatRect& rect);
+  void SetPlateRectAndPaint(const CFX_FloatRect& rect);
   void SetScrollPos(const CFX_PointF& point);
 
   // Set the horizontal text alignment. (nFormat [0:left, 1:middle, 2:right])
-  void SetAlignmentH(int32_t nFormat, bool bPaint);
+  void SetAlignmentH(int32_t nFormat);
+  void SetAlignmentHAndPaint(int32_t nFormat);
+
   // Set the vertical text alignment. (nFormat [0:left, 1:middle, 2:right])
-  void SetAlignmentV(int32_t nFormat, bool bPaint);
+  void SetAlignmentV(int32_t nFormat);
+  void SetAlignmentVAndPaint(int32_t nFormat);
 
   // Set the substitution character for hidden text.
-  void SetPasswordChar(uint16_t wSubWord, bool bPaint);
+  void SetPasswordChar(uint16_t wSubWord);
+  void SetPasswordCharAndPaint(uint16_t wSubWord);
 
   // Set the maximum number of words in the text.
-  void SetLimitChar(int32_t nLimitChar);
-  void SetCharArray(int32_t nCharArray);
-  void SetCharSpace(float fCharSpace);
-  void SetMultiLine(bool bMultiLine, bool bPaint);
-  void SetAutoReturn(bool bAuto, bool bPaint);
-  void SetAutoFontSize(bool bAuto, bool bPaint);
-  void SetAutoScroll(bool bAuto, bool bPaint);
-  void SetFontSize(float fFontSize);
-  void SetTextOverflow(bool bAllowed, bool bPaint);
+  void SetLimitCharAndPaint(int32_t nLimitChar);
+  void SetCharArrayAndPaint(int32_t nCharArray);
+  void SetCharSpaceAndPaint(float fCharSpace);
+  void SetMultiLine(bool bMultiLine);
+  void SetMultiLineAndPaint(bool bMultiLine);
+  void SetAutoReturn(bool bAuto);
+  void SetAutoReturnAndPaint(bool bAuto);
+  void SetAutoFontSize(bool bAuto);
+  void SetAutoFontSizeAndPaint(bool bAuto);
+  void SetAutoScroll(bool bAuto);
+  void SetFontSizeAndPaint(float fFontSize);
+  void SetTextOverflow(bool bAllowed);
+  void SetTextOverflowAndPaint(bool bAllowed);
   void OnMouseDown(const CFX_PointF& point, bool bShift, bool bCtrl);
   void OnMouseMove(const CFX_PointF& point, bool bShift, bool bCtrl);
   void OnVK_UP(bool bShift, bool bCtrl);
@@ -92,7 +100,7 @@ class CPWL_EditImpl {
   void OnVK_RIGHT(bool bShift, bool bCtrl);
   void OnVK_HOME(bool bShift, bool bCtrl);
   void OnVK_END(bool bShift, bool bCtrl);
-  void SetText(const WideString& sText);
+  void SetTextAndPaint(const WideString& sText);
   bool InsertWord(uint16_t word, int32_t charset);
   bool InsertReturn();
   bool Backspace();
