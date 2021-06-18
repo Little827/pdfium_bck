@@ -254,6 +254,24 @@
       "message": "\u003e Do you have insights to real world usage for these APIs?\n\nI assumed that LibreOffice uses all these, but now that I double-checked I found that its core.git\nrepo doesn\u0027t use all 12 APIs, only 9 ones:\n\n- FPDFPageObj_GetStrokeWidth: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFPath_GetDrawMode: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFPath_GetMatrix: turns out libreoffice doesn\u0027t use these anymore after core.git commit bc8016b81c2c609711c26af1f85da327cf30a4ff\n- FPDFPath_SetMatrix: turns out libreoffice doesn\u0027t use these anymore after core.git commit 1445d84cdc906fabf6cc7a59f3c94b4049477701\n- FPDFTextObj_GetMatrix: turns out libreoffice doesn\u0027t use these anymore after core.git commit 4e9b03d04f740a0cbafa22a4f3cedfae7f37a994\n- FPDFTextObj_GetFontSize: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFTextObj_GetTextRenderMode: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFTextObj_GetFontName: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFTextObj_GetText: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFFormObj_CountObjects: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFFormObj_GetObject: vcl/source/pdf/PDFiumLibrary.cxx\n- FPDFFormObj_GetMatrix: vcl/source/pdf/PDFiumLibrary.cxx\n\nI\u0027m happy to exclude FPDFPath_GetMatrix, FPDFPath_SetMatrix and FPDFTextObj_GetMatrix from this\nchange if it helps, since we don\u0027t actually need them today.\n\nFor the rest, I guess the best is if I wait till\nhttps://pdfium-review.googlesource.com/c/pdfium/+/82197/ is merged, then I can fix up\nFPDFTextObj_GetFontSize in a separate change.",
       "revId": "40bdeaf003000991a069dc526ebc43a13ac90c20",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cecfff_6ee98cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-18T17:24:03Z",
+      "side": 1,
+      "message": "I don\u0027t see any problems with the matrix functions. Feel free to keep them. I presume LibreOffice has been using these for at least a couple years now?",
+      "parentUuid": "0b7435e5_bbcfc2bf",
+      "revId": "40bdeaf003000991a069dc526ebc43a13ac90c20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
