@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff401a3e_62ad6300",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-18T18:05:10Z",
+      "side": 1,
+      "message": "This CL looks a bit odd, but I see from the chained CLs where this is going.",
+      "revId": "49c36326051212bf770045656f0400e731192077",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
