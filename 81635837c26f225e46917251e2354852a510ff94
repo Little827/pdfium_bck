@@ -16,6 +16,24 @@
       "message": "heh, it might help if I didn\u0027t accidentally have skia_paths \u003d true in my local .gn when generating ref images ...",
       "revId": "81635837c26f225e46917251e2354852a510ff94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47f1f6e_5a8d4b7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-18T23:43:22Z",
+      "side": 1,
+      "message": "I just have separate sub-dirs in out/ for nov8, noxfa, skia, skiapaths, etc. Then I never have to change the GN settings.",
+      "parentUuid": "60149b02_578d99ee",
+      "revId": "81635837c26f225e46917251e2354852a510ff94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
