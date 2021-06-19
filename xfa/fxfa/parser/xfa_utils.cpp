@@ -224,16 +224,16 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
 
         buf << "<";
         buf << bodyTagName;
-        buf << " xmlns=\"\"\n>";
+        buf << " xmlns=\"\">";
         for (int32_t i = 0; i < fxcrt::CollectionSize<int32_t>(wsSelTextArray);
              i++) {
-          buf << "<value\n>";
+          buf << "<value>";
           buf << ExportEncodeContent(wsSelTextArray[i]);
-          buf << "</value\n>";
+          buf << "</value>";
         }
         buf << "</";
         buf << bodyTagName;
-        buf << "\n>";
+        buf << ">";
         wsChildren += buf.AsStringView();
         buf.Clear();
       } else {
@@ -292,13 +292,13 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
     buf << wsName;
     buf << wsAttrs;
     if (wsChildren.IsEmpty()) {
-      buf << "\n/>";
+      buf << "/>";
     } else {
-      buf << "\n>";
+      buf << ">";
       buf << wsChildren;
       buf << "</";
       buf << wsElement;
-      buf << "\n>";
+      buf << ">";
     }
   }
 }
@@ -477,7 +477,7 @@ void XFA_DataExporter_RegenerateFormFile(
     if (wsVersionNumber.IsEmpty())
       wsVersionNumber = L"2.8";
 
-    wsVersionNumber += L"/\"\n>";
+    wsVersionNumber += L"/\">";
     pStream->WriteString(wsVersionNumber.ToUTF8().AsStringView());
 
     CXFA_Node* pChildNode = pNode->GetFirstChild();
@@ -485,7 +485,7 @@ void XFA_DataExporter_RegenerateFormFile(
       RegenerateFormFile_Container(pChildNode, pStream, false);
       pChildNode = pChildNode->GetNextSibling();
     }
-    pStream->WriteString("</form\n>");
+    pStream->WriteString("</form>");
   } else {
     RegenerateFormFile_Container(pNode, pStream, bSaveXML);
   }
