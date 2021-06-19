@@ -52,6 +52,23 @@
       "parentUuid": "c47f1f6e_5a8d4b7e",
       "revId": "81635837c26f225e46917251e2354852a510ff94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7028a7_5b4e293d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-19T00:06:06Z",
+      "side": 1,
+      "message": "yay, good apart from the platform corpus",
+      "revId": "81635837c26f225e46917251e2354852a510ff94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
