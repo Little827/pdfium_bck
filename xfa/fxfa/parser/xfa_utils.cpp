@@ -222,18 +222,10 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
         if (bodyTagName.IsEmpty())
           bodyTagName = L"ListBox1";
 
-        buf << "<";
-        buf << bodyTagName;
-        buf << " xmlns=\"\"\n>";
-        for (int32_t i = 0; i < fxcrt::CollectionSize<int32_t>(wsSelTextArray);
-             i++) {
-          buf << "<value\n>";
-          buf << ExportEncodeContent(wsSelTextArray[i]);
-          buf << "</value\n>";
-        }
-        buf << "</";
-        buf << bodyTagName;
-        buf << "\n>";
+        buf << "<" << bodyTagName << " xmlns=\"\">";
+        for (const auto& text : wsSelTextArray)
+          buf << "<value>" << ExportEncodeContent(text) << "</value>";
+        buf << "</" << bodyTagName << ">";
         wsChildren += buf.AsStringView();
         buf.Clear();
       } else {
@@ -292,13 +284,9 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
     buf << wsName;
     buf << wsAttrs;
     if (wsChildren.IsEmpty()) {
-      buf << "\n/>";
+      buf << "/>";
     } else {
-      buf << "\n>";
-      buf << wsChildren;
-      buf << "</";
-      buf << wsElement;
-      buf << "\n>";
+      buf << ">" << wsChildren << "</" << wsElement << ">";
     }
   }
 }
@@ -477,7 +465,7 @@ void XFA_DataExporter_RegenerateFormFile(
     if (wsVersionNumber.IsEmpty())
       wsVersionNumber = L"2.8";
 
-    wsVersionNumber += L"/\"\n>";
+    wsVersionNumber += L"/\">";
     pStream->WriteString(wsVersionNumber.ToUTF8().AsStringView());
 
     CXFA_Node* pChildNode = pNode->GetFirstChild();
@@ -485,7 +473,7 @@ void XFA_DataExporter_RegenerateFormFile(
       RegenerateFormFile_Container(pChildNode, pStream, false);
       pChildNode = pChildNode->GetNextSibling();
     }
-    pStream->WriteString("</form\n>");
+    pStream->WriteString("</form>");
   } else {
     RegenerateFormFile_Container(pNode, pStream, bSaveXML);
   }
