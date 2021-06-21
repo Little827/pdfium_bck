@@ -150,6 +150,8 @@ CXFA_FFWidget* FilteredLoadedWidgetFromLayoutItem(CXFA_LayoutItem* pLayoutItem,
 }
 
 class CXFA_TabParam {
+  CPPGC_STACK_ALLOCATED();
+
  public:
   CXFA_TabParam() = default;
   explicit CXFA_TabParam(CXFA_FFWidget* pWidget)
@@ -161,13 +163,8 @@ class CXFA_TabParam {
   CXFA_TabParam& operator=(const CXFA_TabParam&) = delete;
   CXFA_TabParam& operator=(CXFA_TabParam&&) noexcept = default;
 
-  void Trace(cppgc::Visitor* visitor) const {
-    visitor->Trace(m_pItem);
-    ContainerTrace(visitor, m_Children);
-  }
-
   CXFA_FFWidget* GetWidget() const { return m_pItem->GetFFWidget(); }
-  const std::vector<cppgc::Member<CXFA_ContentLayoutItem>>& GetChildren()
+  const std::vector<cppgc::Persistent<CXFA_ContentLayoutItem>>& GetChildren()
       const {
     return m_Children;
   }
@@ -179,8 +176,8 @@ class CXFA_TabParam {
   }
 
  private:
-  cppgc::Member<CXFA_ContentLayoutItem> m_pItem;
-  std::vector<cppgc::Member<CXFA_ContentLayoutItem>> m_Children;
+  CXFA_ContentLayoutItem* m_pItem;
+  std::vector<cppgc::Persistent<CXFA_ContentLayoutItem>> m_Children;
 };
 
 void OrderContainer(CXFA_LayoutItemIterator* sIterator,
