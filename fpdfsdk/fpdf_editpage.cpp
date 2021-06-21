@@ -838,6 +838,63 @@ FPDFPageObj_SetLineCap(FPDF_PAGEOBJECT page_object, int line_cap) {
   return true;
 }
 
+FPDF_EXPORT float FPDF_CALLCONV
+FPDFPageObj_GetDashPhase(FPDF_PAGEOBJECT page_object) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  return pPageObj ? pPageObj->m_GraphState.GetLineDashPhase() : -1.0f;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_SetDashPhase(FPDF_PAGEOBJECT page_object, float phase) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
+  pPageObj->m_GraphState.SetLineDashPhase(phase, 1.0f);
+  pPageObj->SetDirty(true);
+  return true;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObj_GetDashCount(FPDF_PAGEOBJECT page_object) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  return pPageObj ? pPageObj->m_GraphState.GetLineDashSize() : -1;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_GetDashArray(FPDF_PAGEOBJECT page_object, float* dash_array) {
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj || !dash_array)
+    return false;
+
+  auto dash_vector = pPageObj->m_GraphState.GetLineDashArray();
+  memcpy(dash_array, dash_vector.data(), dash_vector.size() * sizeof(float));
+
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_SetDashArray(FPDF_PAGEOBJECT page_object,
+                         float* dash_array,
+                         int dash_count,
+                         float phase) {
+  if (dash_count <= 0 || !dash_array)
+    return false;
+
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
+  std::vector<float> dashes;
+  for (int i = 0; i < dash_count; i++)
+    dashes.push_back(dash_array[i]);
+
+  pPageObj->m_GraphState.SetLineDash(dashes, phase, 1.0f);
+
+  pPageObj->SetDirty(true);
+  return true;
+}
+
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFFormObj_CountObjects(FPDF_PAGEOBJECT form_object) {
   const auto* pObjectList = CPDFPageObjHolderFromFPDFFormObject(form_object);
