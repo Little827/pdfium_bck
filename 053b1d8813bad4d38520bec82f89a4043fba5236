@@ -33,6 +33,63 @@
       "message": "Oh, and git cl upload gave a warning:\n\n\u003e pdfium/public/fpdf_edit.h:13:  Include the directory when naming .h files  [build/include_directory]\n\nPerhaps pdfium/public/fpdf_edit.h:12 needs to be changed to disable linting for build/include_directory instead of build/include? I did not change anything regarding that in this change.",
       "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7db6d4e_b52effdc",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2297,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-21T17:10:39Z",
+      "side": 1,
+      "message": "This should become EXPECT_FALSE().",
+      "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb827db_e71d8ab4",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-21T17:10:39Z",
+      "side": 1,
+      "message": "Set the value to something other than 0. Otherwise, FPDFTextObj_GetFontSize() could have not touched the out-parameter at all, and the test would still pass.",
+      "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30fbb985_358fc5a9",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-21T17:10:39Z",
+      "side": 1,
+      "message": "Since CPDFTextObjectFromFPDFPageObject() handles the case of null FPDF_PAGEOBJECTs, please omit this check, like the other CPDFTextObjectFromFPDFPageObject() callers.",
+      "range": {
+        "startLine": 537,
+        "startChar": 6,
+        "endLine": 537,
+        "endChar": 15
+      },
+      "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
