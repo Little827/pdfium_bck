@@ -17,6 +17,24 @@
       "message": "Same entry exists in Chromium\u0027s .vpython files. See https://chromium.googlesource.com/infra/infra/+/a997f30a/doc/users/vpython.md for reference. vpython !\u003d Visual Python here.",
       "revId": "5cbfdc3b72c9452956553a237759afb8a4520052",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289b0eae_cffde16f",
+        "filename": ".vpython",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-06-21T23:38:50Z",
+      "side": 1,
+      "message": "\u003e vpython !\u003d Visual Python here.\n\nYou saved me a lot of confusion 😄",
+      "parentUuid": "ef7a6062_15d8474f",
+      "revId": "5cbfdc3b72c9452956553a237759afb8a4520052",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
