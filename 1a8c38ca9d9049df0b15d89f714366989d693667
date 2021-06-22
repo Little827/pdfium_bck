@@ -16,6 +16,80 @@
       "message": "Ran `git cl format`, added new tests, fixed what bug the tests found.",
       "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da21f25_cf6ee0e2",
+        "filename": "core/fxge/cfx_graphstate.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-22T17:35:30Z",
+      "side": 1,
+      "message": "If the only caller always passes in 1.0f for the scale, should we just omit that parameter? Or does it make sense to expose the scale in the public API?",
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961b3b0c_861c80d4",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-22T17:35:30Z",
+      "side": 1,
+      "message": "Since we know the number of elements that will go into this vector, call dashes.reserve(dash_count)?",
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f538974e_1625d129",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-22T17:35:30Z",
+      "side": 1,
+      "message": "Does it ever make sense for a PDF to have negative dash phase values?",
+      "range": {
+        "startLine": 904,
+        "startChar": 35,
+        "endLine": 904,
+        "endChar": 48
+      },
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73164044_b8a77fad",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-22T17:35:30Z",
+      "side": 1,
+      "message": "In other APIs where the out parameter is an array, usually the caller has to pass in the number of elements the array can hold. Then the API checks that and refuses to copy into the array unless it is sufficiently big. Otherwise, it is very easy to accidentally pass in an array that\u0027s too small and get a buffer overflow.",
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
