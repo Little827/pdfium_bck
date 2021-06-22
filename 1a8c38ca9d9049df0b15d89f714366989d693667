@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc57b9d1_d5b4b56d",
+        "filename": "core/fxge/cfx_graphstate.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-22T21:06:36Z",
+      "side": 1,
+      "message": "Fair questions. Two things of note:\n1. internally, it seems that scale is always set to 1.0f, although I may have missed something.\n2. this is not used internally, so setting a scale may not be needed at all.\n\nWhat about a default parameter in the public API, e.g.\n\nFPDF_EXPORT FPDF_BOOL FPDF_CALLCONV\nFPDFPageObj_SetDashPhase(FPDF_PAGEOBJECT page_object, \n    float phase, \n    float scale \u003d 1.0f);\n    \n? If not, I think removing it would be the better solution.",
+      "parentUuid": "5da21f25_cf6ee0e2",
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961b3b0c_861c80d4",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-22T17:35:30Z",
       "side": 1,
       "message": "Since we know the number of elements that will go into this vector, call dashes.reserve(dash_count)?",
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca91375_dd473329",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-22T21:06:36Z",
+      "side": 1,
+      "message": "agreed.",
+      "parentUuid": "961b3b0c_861c80d4",
       "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -75,6 +111,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ab65d8_3b41f3fc",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-22T21:06:36Z",
+      "side": 1,
+      "message": "Fair point. Looking at PDF Reference 1.7, I can\u0027t find anything definitive. To me, the algorithm for determining where to start the dash pattern relative to the phase implies a non-negative phase (\"Line Dash Pattern\", p217-218). But, unlike for dash array, no constraints are mentioned. Similarly, table of graphics operators (tbl 4.7, p. 219) doesn\u0027t mention any either. But, the table of entries in a graphics state parameter dictionary (tbl 4.8, p. 220) says it has to be an integer. So, for completeness, I think phase should be allowed to be negative, and I\u0027ll make changes like in https://pdfium-review.googlesource.com/c/pdfium/+/82330 \n\nFor the record, though, Preview (on mac) isn\u0027t a fan of a negative phase where\n\n[6 1] -5 d\n10 50 m 190 50 l S\n[6 1] -1 d\n10 60 m 190 60 l S\n\ndisplays different dashing patterns for different zoom levels. Chrome works fine.\n\nhttps://www.adobe.com/content/dam/acom/en/devnet/pdf/pdf_reference_archive/pdf_reference_1-7.pdf",
+      "parentUuid": "f538974e_1625d129",
+      "range": {
+        "startLine": 904,
+        "startChar": 35,
+        "endLine": 904,
+        "endChar": 48
+      },
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73164044_b8a77fad",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-06-22T17:35:30Z",
       "side": 1,
       "message": "In other APIs where the out parameter is an array, usually the caller has to pass in the number of elements the array can hold. Then the API checks that and refuses to copy into the array unless it is sufficiently big. Otherwise, it is very easy to accidentally pass in an array that\u0027s too small and get a buffer overflow.",
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37bbe402_1241a441",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-22T21:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73164044_b8a77fad",
       "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
