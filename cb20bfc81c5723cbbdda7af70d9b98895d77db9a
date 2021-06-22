@@ -46,6 +46,30 @@
       },
       "revId": "cb20bfc81c5723cbbdda7af70d9b98895d77db9a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3a9fb5_48b71cdd",
+        "filename": "xfa/fxfa/cxfa_ffpageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2021-06-22T17:14:08Z",
+      "side": 0,
+      "message": "Sorry, I forgot to update this comment.\nI was going to mark it with CPPGC_STACK_ALLOCATED() but then realized that it is also used in std::vector below (in OrderContainer method).\nCXFA_TabParam is always used when there\u0027s a stack but it\u0027s not always directly on stack (it can also reside on the malloced heap). Since the std::vector is on stack, a Trace method is still not needed as it will never be executed.\nSince all Members are replaced with Persistents now, the Trace method would also be empty.",
+      "parentUuid": "13385ef7_50b53421",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 12
+      },
+      "revId": "cb20bfc81c5723cbbdda7af70d9b98895d77db9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
