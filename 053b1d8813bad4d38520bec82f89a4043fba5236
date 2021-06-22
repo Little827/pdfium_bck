@@ -35,6 +35,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05997bb_57a143c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-06-22T12:42:00Z",
+      "side": 1,
+      "message": "Addressed all the feedback, I think.",
+      "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7db6d4e_b52effdc",
@@ -48,6 +65,24 @@
       "writtenOn": "2021-06-21T17:10:39Z",
       "side": 1,
       "message": "This should become EXPECT_FALSE().",
+      "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fce6f76_d23230ee",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2297,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-06-22T12:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7db6d4e_b52effdc",
       "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -69,6 +104,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e7e3117_e7f7b2e7",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-06-22T12:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb827db_e71d8ab4",
+      "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30fbb985_358fc5a9",
@@ -82,6 +135,30 @@
       "writtenOn": "2021-06-21T17:10:39Z",
       "side": 1,
       "message": "Since CPDFTextObjectFromFPDFPageObject() handles the case of null FPDF_PAGEOBJECTs, please omit this check, like the other CPDFTextObjectFromFPDFPageObject() callers.",
+      "range": {
+        "startLine": 537,
+        "startChar": 6,
+        "endLine": 537,
+        "endChar": 15
+      },
+      "revId": "053b1d8813bad4d38520bec82f89a4043fba5236",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338ba420_7a6a693e",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-06-22T12:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30fbb985_358fc5a9",
       "range": {
         "startLine": 537,
         "startChar": 6,
