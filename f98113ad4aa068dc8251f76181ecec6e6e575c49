@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33eecf15_133786bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2021-06-22T08:26:37Z",
+      "side": 1,
+      "message": "Ptal. These are the fixes I mentioned in our meeting yesterday.\nI added comments to all the changes explaining why I made them so we have it as further documentation.",
+      "revId": "f98113ad4aa068dc8251f76181ecec6e6e575c49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a554fb_9bbe5d10",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2021-06-22T08:26:37Z",
+      "side": 1,
+      "message": "This one avoids creating a Member of stack which is mostly a performance issue.",
+      "range": {
+        "startLine": 535,
+        "startChar": 7,
+        "endLine": 535,
+        "endChar": 12
+      },
+      "revId": "f98113ad4aa068dc8251f76181ecec6e6e575c49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547d3729_38cae6d3",
+        "filename": "xfa/fxfa/cxfa_ffpageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2021-06-22T08:26:37Z",
+      "side": 1,
+      "message": "I was going to use a raw pointer here which is preferable for on-stack objects since it will be found by conservative stack scanning.\nUnfortunately that won\u0027t suffice here due to using std::vector\u003cCXFA_TabParam\u003e below, which means CXFA_TabParam can be on the malloced heap which is never scanned by the GC.",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 19
+      },
+      "revId": "f98113ad4aa068dc8251f76181ecec6e6e575c49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5dbd95_7364b89f",
+        "filename": "xfa/fxfa/cxfa_ffpageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2021-06-22T08:26:37Z",
+      "side": 1,
+      "message": "using std::vector\u003ccppgc::Member\u003c...\u003e\u003e on stack is not safe.\nstd::vector uses a malloced backing store which isn\u0027t traced by the GC and thus the members won\u0027t be found.\nUsing Persistents instead which are registered with the GC and are guaranteed to be traced.",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 31
+      },
+      "revId": "f98113ad4aa068dc8251f76181ecec6e6e575c49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
