@@ -75,6 +75,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f2c19a2_2ac33f86",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 8636
+      },
+      "writtenOn": "2021-06-23T17:26:38Z",
+      "side": 1,
+      "message": "Is there anything you can say about the principles public/OWNERS will be operating under when doing their review? Is this simply the judgement of a \"benevolent dictator\" or is there at least something you can briefly say about what they\u0027re trying to uphold?",
+      "revId": "b0aa56521d09b1d3d3c3ce7e1a0ab7ca0e6ca437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d69dbad_433ebe12",
+        "filename": "CONTRIBUTING.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 8636
+      },
+      "writtenOn": "2021-06-23T17:26:38Z",
+      "side": 1,
+      "message": "Suggest replacing \"passes scrutiny of all\" with \"gets LGTM from one without objection from any others\". I.e. are you really asking for explicit LGTM from ALL? What if one is on vacation or otherwise unreachable? One approval with zero unresolved objections seems like a reasonable bar to me.",
+      "revId": "b0aa56521d09b1d3d3c3ce7e1a0ab7ca0e6ca437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee5764e2_40cf91b7",
         "filename": "CONTRIBUTING.md",
         "patchSetId": 1
