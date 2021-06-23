@@ -55,6 +55,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e7f8c31_898f5cbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2021-06-23T14:36:16Z",
+      "side": 1,
+      "message": "I can\u0027t reproduce the msvc build failures locally.\nI\u0027m building ToT with my changes on Win10 using msvc 2019 and it builds successfully.\nI\u0027m using the following GN args which I think are the same as the win_xfa_msvc bot:\nis_debug\u003dtrue\nis_component_build\u003dfalse\npdf_enable_v8\u003dtrue\npdf_enable_xfa\u003dtrue\npdf_use_skia\u003dfalse\npdf_use_skia_paths\u003dfalse\npdf_is_standalone\u003dtrue\nsymbol_level\u003d1\nis_clang\u003dfalse\n\nLei can you try running the CQ again? Maybe it was a bug in the bot?",
+      "revId": "f98113ad4aa068dc8251f76181ecec6e6e575c49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a554fb_9bbe5d10",
         "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
         "patchSetId": 2
