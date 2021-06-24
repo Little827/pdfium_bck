@@ -71,6 +71,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b16437a_16971d3a",
+        "filename": "core/fxge/cfx_graphstate.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Thanks, I wasn\u0027t familiar with that difference between c and c++. Removed.",
+      "parentUuid": "e5d5c67b_781ef0b5",
+      "revId": "1a8c38ca9d9049df0b15d89f714366989d693667",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961b3b0c_861c80d4",

@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18aebeb_b69a4a82",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e32fd8_acdf5845",
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47e30bd3_dd90fc09",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-24T04:56:03Z",
       "side": 1,
       "message": "Similarly, omit this line, like lines 847-848.",
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0375bae_c8d19513",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47e30bd3_dd90fc09",
       "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +94,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92de41b0_b1e19e07",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a893db9_fdcb25b1",
+      "range": {
+        "startLine": 891,
+        "startChar": 6,
+        "endLine": 891,
+        "endChar": 21
+      },
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba8362e_49da52bb",
@@ -75,6 +135,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f5ca5a_7ea6d342",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba8362e_49da52bb",
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "452ce899_65297edc",
@@ -88,6 +166,30 @@
       "writtenOn": "2021-06-24T04:56:03Z",
       "side": 1,
       "message": "The preferred way to reference variables is with backticks. e.g. `get_array`. The public headers all still use pipes. That\u0027s ok. We\u0027ll probably mass convert them one day.",
+      "range": {
+        "startLine": 246,
+        "startChar": 7,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7db17d_238a5a2b",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "452ce899_65297edc",
       "range": {
         "startLine": 246,
         "startChar": 7,
@@ -121,6 +223,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f0172d_153058d5",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "494bf255_009f5621",
+      "range": {
+        "startLine": 903,
+        "startChar": 11,
+        "endLine": 903,
+        "endChar": 42
+      },
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da714ed2_383894c4",
@@ -144,6 +270,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c75ce8f_efe1149b",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da714ed2_383894c4",
+      "range": {
+        "startLine": 933,
+        "startChar": 16,
+        "endLine": 933,
+        "endChar": 23
+      },
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bb7549f_072929fb",
@@ -157,6 +307,30 @@
       "writtenOn": "2021-06-24T04:56:03Z",
       "side": 1,
       "message": "We\u0027ve been using size_t in new APIs. Let\u0027s go with that.",
+      "range": {
+        "startLine": 939,
+        "startChar": 25,
+        "endLine": 939,
+        "endChar": 38
+      },
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29dea9b3_43f0012d",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T15:48:52Z",
+      "side": 1,
+      "message": "I took care of SetDashArray, too.",
+      "parentUuid": "7bb7549f_072929fb",
       "range": {
         "startLine": 939,
         "startChar": 25,
