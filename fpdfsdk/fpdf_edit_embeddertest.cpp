@@ -2430,7 +2430,7 @@ TEST_F(FPDFEditEmbedderTest, SetTextRenderMode) {
   }
 }
 
-TEST_F(FPDFEditEmbedderTest, TestGetTextFontName) {
+TEST_F(FPDFEditEmbedderTest, GetTextFontName) {
   ASSERT_TRUE(OpenDocument("text_font.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
@@ -2458,14 +2458,14 @@ TEST_F(FPDFEditEmbedderTest, TestGetTextFontName) {
   UnloadPage(page);
 }
 
-TEST_F(FPDFEditEmbedderTest, TestFormGetObjects) {
+TEST_F(FPDFEditEmbedderTest, FormGetObjects) {
   ASSERT_TRUE(OpenDocument("form_object.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
   ASSERT_EQ(1, FPDFPage_CountObjects(page));
 
   FPDF_PAGEOBJECT form = FPDFPage_GetObject(page, 0);
-  EXPECT_EQ(FPDF_PAGEOBJ_FORM, FPDFPageObj_GetType(form));
+  ASSERT_EQ(FPDF_PAGEOBJ_FORM, FPDFPageObj_GetType(form));
   ASSERT_EQ(-1, FPDFFormObj_CountObjects(nullptr));
   ASSERT_EQ(2, FPDFFormObj_CountObjects(form));
 
@@ -2490,8 +2490,7 @@ TEST_F(FPDFEditEmbedderTest, TestFormGetObjects) {
   ASSERT_EQ(nullptr, FPDFFormObj_GetObject(form, 2));
 
   // Reset the form object matrix to identity.
-  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(form);
-  CPDF_FormObject* pFormObj = pPageObj->AsForm();
+  CPDF_FormObject* pFormObj = CPDFPageObjectFromFPDFPageObject(form)->AsForm();
   pFormObj->Transform(pFormObj->form_matrix().GetInverse());
 
   // FPDFFormObj_GetMatrix() positive testing.
@@ -2511,6 +2510,50 @@ TEST_F(FPDFEditEmbedderTest, TestFormGetObjects) {
   EXPECT_FALSE(FPDFFormObj_GetMatrix(nullptr, &matrix));
   EXPECT_FALSE(FPDFFormObj_GetMatrix(form, nullptr));
   EXPECT_FALSE(FPDFFormObj_GetMatrix(nullptr, nullptr));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFEditEmbedderTest, ModifyFormObject) {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  const char kOrigMd5sum[] = "6332486c11a830d52163e453cac3f0f7";
+  const char kNewMd5sum[] = "9851fb1b59d91655ac8961ac89f383ae";
+#else
+  const char kOrigMd5sum[] = "26e65fb47da5674d1b7284932c3c94d6";
+  const char kNewMd5sum[] = "fd408e99373b275316f7816ae8d35842";
+#endif
+
+  ASSERT_TRUE(OpenDocument("form_object.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(1, FPDFPage_CountObjects(page));
+
+  {
+    ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+    CompareBitmap(bitmap.get(), 62, 69, kOrigMd5sum);
+  }
+
+  FPDF_PAGEOBJECT form = FPDFPage_GetObject(page, 0);
+  ASSERT_EQ(FPDF_PAGEOBJ_FORM, FPDFPageObj_GetType(form));
+
+  // Access the CPDF_FormObject underneath, as there is no public API to set the
+  // matrix for form objects. (yet)
+  static constexpr FS_MATRIX kMatrix = {0.5f, 0.0f, 0.0f, 0.5f, 0.0f, 0.0f};
+  CPDF_FormObject* pFormObj = CPDFPageObjectFromFPDFPageObject(form)->AsForm();
+  pFormObj->Transform(CFXMatrixFromFSMatrix(kMatrix));
+  pFormObj->SetDirty(true);
+
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+
+  {
+    ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+    CompareBitmap(bitmap.get(), 62, 69, kNewMd5sum);
+  }
+
+  // TODO(thestig): This renders blank, but should not.
+  const char kBlankMd5sum[] = "0617d6a83d3a8c0eeedcfd6e5b98f994";
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  VerifySavedDocument(62, 69, kBlankMd5sum);
 
   UnloadPage(page);
 }
