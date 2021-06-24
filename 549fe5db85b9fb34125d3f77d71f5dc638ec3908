@@ -46,6 +46,30 @@
       },
       "revId": "549fe5db85b9fb34125d3f77d71f5dc638ec3908",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af2575f_3fa4557f",
+        "filename": "xfa/fxfa/parser/xfa_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-24T21:31:12Z",
+      "side": 0,
+      "message": "Ack. Ya, I don\u0027t know why XFA files are often written in that style. I always just run the XML through a prettifier for my own sanity.",
+      "parentUuid": "f5ed395a_addcb543",
+      "range": {
+        "startLine": 230,
+        "startChar": 24,
+        "endLine": 230,
+        "endChar": 26
+      },
+      "revId": "549fe5db85b9fb34125d3f77d71f5dc638ec3908",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
