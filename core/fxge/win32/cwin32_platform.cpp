@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "core/fxcrt/fx_codepage.h"
+#include "core/fxcrt/fx_string.h"
 #include "core/fxge/cfx_folderfontinfo.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "third_party/base/cxx17_backports.h"

@@ -10,9 +10,9 @@
 #include <memory>
 #include <vector>
 
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/widestring.h"
 
 class CFGAS_GEFont;
 

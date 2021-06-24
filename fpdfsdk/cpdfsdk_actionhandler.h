@@ -12,7 +12,7 @@
 
 #include "core/fpdfdoc/cpdf_aaction.h"
 #include "core/fpdfdoc/cpdf_action.h"
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widestring.h"
 #include "fpdfsdk/cpdfsdk_fieldaction.h"
 
 class CPDFSDK_FormFillEnvironment;

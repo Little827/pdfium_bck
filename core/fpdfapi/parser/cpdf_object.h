@@ -11,9 +11,10 @@
 #include <set>
 #include <type_traits>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/widestring.h"
 
 class CPDF_Array;
 class CPDF_Boolean;

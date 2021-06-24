@@ -8,8 +8,8 @@
 #define FXBARCODE_CBC_CODE39_H_
 
 #include "core/fxcrt/fx_coordinates.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/widestring.h"
 #include "fxbarcode/cbc_onecode.h"
 
 class CBC_OnedCode39Writer;

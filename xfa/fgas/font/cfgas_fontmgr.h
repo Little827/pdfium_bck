@@ -15,8 +15,8 @@
 
 #include "build/build_config.h"
 #include "core/fxcrt/fx_extension.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/widestring.h"
 #include "core/fxge/cfx_face.h"
 #include "core/fxge/fx_freetype.h"
 #include "third_party/base/optional.h"

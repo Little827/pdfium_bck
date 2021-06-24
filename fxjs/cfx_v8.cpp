@@ -7,6 +7,7 @@
 #include "fxjs/cfx_v8.h"
 
 #include "core/fxcrt/fx_memory.h"
+#include "core/fxcrt/fx_string.h"
 #include "fxjs/fxv8.h"
 #include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 

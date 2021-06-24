@@ -11,6 +11,7 @@
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/stl_util.h"
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/fxv8.h"

@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_pattern.h"
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"

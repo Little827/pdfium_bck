@@ -6,6 +6,8 @@
 
 #include "fxjs/fxv8.h"
 
+#include "core/fxcrt/fx_string.h"
+
 namespace fxv8 {
 
 bool IsUndefined(v8::Local<v8::Value> value) {

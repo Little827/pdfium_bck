@@ -14,11 +14,12 @@
 #include <vector>
 
 #include "core/fpdfapi/parser/cpdf_object.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_coordinates.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/string_pool_template.h"
 #include "core/fxcrt/weak_ptr.h"
+#include "core/fxcrt/widestring.h"
 #include "third_party/base/check.h"
 
 class CPDF_IndirectObjectHolder;

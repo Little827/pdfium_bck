@@ -27,6 +27,7 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/fxcrt/fx_string.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_font.h"
