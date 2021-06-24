@@ -42,6 +42,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec029ed_2e8d2e3d",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-24T15:10:28Z",
+      "side": 1,
+      "message": "CPDF_PageContentGenerator was missing this all along. See:\nhttps://pdfium-review.googlesource.com/82452\nhttps://pdfium-review.googlesource.com/82453",
+      "parentUuid": "5216dde6_2887a8d8",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 4
+      },
+      "revId": "36db9db6a1f3f4fda7c6aaa7356ee0ce0e29aad9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf26e05b_66f1f175",
