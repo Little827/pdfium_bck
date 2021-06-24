@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45764ce7_166c0f71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-24T18:23:59Z",
+      "side": 1,
+      "message": "Lei, we should land your patch first, then we can diff this against it to make sure I\u0027ve not undone anything.",
+      "revId": "253328b5321ebe9295449d174f397471434a90c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
