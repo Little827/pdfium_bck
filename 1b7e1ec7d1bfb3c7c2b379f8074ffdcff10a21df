@@ -17,6 +17,573 @@
       "message": "Sorry this CL is a bit big. Basically fx_string.h includes move out of headers and into .cpp files that use them.",
       "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "358de601_2230e7df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "All comments are about the same 2 issues: forward declaration and IWYU.",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3afcdb_7bb57227",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "Need to add \"core/fxcrt/bytestring.h\" here as well. ByteString is used in this file.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d03fcee_b21a47fe",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "Forward declaration instead?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3d4e7a_eec65010",
+        "filename": "core/fpdfapi/page/cpdf_generalstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "Also include core/fxcrt/bytestring.h",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2573fa4f_ebce6067",
+        "filename": "core/fpdfapi/page/cpdf_occontext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward declaration?",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64ab9a6_d17cdcb3",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "Include core/fxcrt/bytestring.h for ByteString.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602d0b1e_12c56acc",
+        "filename": "core/fpdfapi/page/cpdf_textobject.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward declaration",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29259312_214492d6",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward declaration.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7e1f85_503e9fdb",
+        "filename": "core/fpdfdoc/cpdf_apsettings.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward declaration",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cea54e9_92e52e05",
+        "filename": "core/fpdfdoc/cpdf_defaultappearance.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "also add bytestring.h",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3e07f8_dda1a3c7",
+        "filename": "core/fpdfdoc/cpdf_nametree.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "replaced bytestring.h and widestring.h by forward declaration.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402aff8e_7b7cbee1",
+        "filename": "core/fpdfdoc/cpvt_variabletext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward?",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7595c5d2_43d5ac1a",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "also include the header for ByteString.",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71e4274_4b143ab9",
+        "filename": "core/fxcrt/cfx_fileaccess_posix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "Include headers for ByteString and WideString.",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec3f4d1_c7acf34f",
+        "filename": "core/fxcrt/cfx_widetextbuf.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "Include headers for ByteString and WideString.",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68039c94_ba86231d",
+        "filename": "core/fxcrt/css/cfx_cssrulecollection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "replace it by forward declaration.",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fb7743_8cdbc818",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "also need headers for ByteString and WideString.",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd39f48_5a8c35fa",
+        "filename": "fxbarcode/oned/BC_OnedCode128Writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward?",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6123c69b_a042439a",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "also include headers for ByteString and WideString.",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139810d0_017efd47",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward?",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9207e0a6_d21568e9",
+        "filename": "fxbarcode/oned/BC_OnedEAN8Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "also add bytestring.h?",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fcb5cad_3786a021",
+        "filename": "fxbarcode/oned/BC_OnedEAN8Writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward declaration?",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c38fe0d_a6989398",
+        "filename": "fxbarcode/oned/BC_OnedEANChecksum.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "forward?",
+      "range": {
+        "startLine": 8,
+        "startChar": 19,
+        "endLine": 8,
+        "endChar": 34
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11aa423f_60edeec7",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "also include bytestring.h?",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7bea8a_fd60a92c",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "include headers for ByteString and WideString.",
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca4f0b2_b589cb8a",
+        "filename": "fxjs/fx_date_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "Replace it by forward declaration.",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfbae84_750b5abe",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-06-24T18:58:52Z",
+      "side": 1,
+      "message": "also include bytestring.h",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "1b7e1ec7d1bfb3c7c2b379f8074ffdcff10a21df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
