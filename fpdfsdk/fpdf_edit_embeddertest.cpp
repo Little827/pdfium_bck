@@ -2562,10 +2562,8 @@ TEST_F(FPDFEditEmbedderTest, ModifyFormObject) {
     CompareBitmap(bitmap.get(), 62, 69, kNewMd5sum);
   }
 
-  // TODO(thestig): This renders blank, but should not.
-  const char kBlankMd5sum[] = "0617d6a83d3a8c0eeedcfd6e5b98f994";
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
-  VerifySavedDocument(62, 69, kBlankMd5sum);
+  VerifySavedDocument(62, 69, kNewMd5sum);
 
   UnloadPage(page);
 }
