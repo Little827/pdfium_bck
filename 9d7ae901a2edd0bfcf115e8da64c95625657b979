@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ac06d16_e545d5e9",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-24T16:12:02Z",
+      "side": 1,
+      "message": "I meant we can check: dash_count \u003d\u003d 0. Taking a step back, should FPDFPageObj_SetDashArray() return false, or should it allow setting the dashes to an empty vector as a way to clear it? In either case, we should add a test for this behavior.",
+      "parentUuid": "92de41b0_b1e19e07",
+      "range": {
+        "startLine": 891,
+        "startChar": 6,
+        "endLine": 891,
+        "endChar": 21
+      },
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aba8362e_49da52bb",
         "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
         "patchSetId": 7
