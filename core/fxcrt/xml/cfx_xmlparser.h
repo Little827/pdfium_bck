@@ -11,8 +11,8 @@
 #include <vector>
 
 #include "core/fxcrt/fx_memory_wrappers.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/widestring.h"
 
 class CFX_SeekableStreamProxy;
 class CFX_XMLDocument;

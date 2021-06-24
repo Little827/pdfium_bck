@@ -9,8 +9,9 @@
 
 #include <vector>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/widestring.h"
 #include "fxbarcode/oned/BC_OneDimWriter.h"
 
 class CBC_OnedCode128Writer final : public CBC_OneDimWriter {

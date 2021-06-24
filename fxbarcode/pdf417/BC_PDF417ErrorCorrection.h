@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widestring.h"
 #include "third_party/base/optional.h"
 
 class CBC_PDF417ErrorCorrection {

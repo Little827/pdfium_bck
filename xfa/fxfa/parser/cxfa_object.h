@@ -7,7 +7,8 @@
 #ifndef XFA_FXFA_PARSER_CXFA_OBJECT_H_
 #define XFA_FXFA_PARSER_CXFA_OBJECT_H_
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
+#include "core/fxcrt/widestring.h"
 #include "fxjs/gc/heap.h"
 #include "fxjs/xfa/fxjse.h"
 #include "v8/include/cppgc/garbage-collected.h"

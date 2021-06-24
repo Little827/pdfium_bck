@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/widestring.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 
 class CFX_Matrix;

@@ -9,7 +9,8 @@
 
 #include <unordered_set>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
+#include "core/fxcrt/widestring.h"
 
 namespace fxcrt {
 

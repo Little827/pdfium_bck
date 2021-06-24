@@ -10,8 +10,8 @@
 #include <vector>
 
 #include "core/fxcrt/fx_memory_wrappers.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/widestring.h"
 #include "fxbarcode/BC_TwoDimWriter.h"
 
 class CBC_PDF417Writer final : public CBC_TwoDimWriter {

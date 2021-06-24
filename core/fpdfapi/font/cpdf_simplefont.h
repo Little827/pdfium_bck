@@ -11,8 +11,9 @@
 
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/font/cpdf_fontencoding.h"
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/widestring.h"
 
 class CPDF_SimpleFont : public CPDF_Font {
  public:

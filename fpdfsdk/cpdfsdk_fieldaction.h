@@ -7,7 +7,7 @@
 #ifndef FPDFSDK_CPDFSDK_FIELDACTION_H_
 #define FPDFSDK_CPDFSDK_FIELDACTION_H_
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widestring.h"
 
 struct CPDFSDK_FieldAction {
   CPDFSDK_FieldAction();

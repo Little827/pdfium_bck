@@ -32,6 +32,7 @@
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcodec/icc/iccmodule.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/maybe_owned.h"
 #include "core/fxcrt/scoped_set_insertion.h"
 #include "core/fxcrt/stl_util.h"

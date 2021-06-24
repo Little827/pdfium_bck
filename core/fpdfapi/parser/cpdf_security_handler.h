@@ -10,7 +10,7 @@
 #include <memory>
 
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 

@@ -8,6 +8,7 @@
 
 #include "core/fpdfapi/page/cpdf_transferfunc.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
+#include "core/fxcrt/fx_string.h"
 
 namespace {
 

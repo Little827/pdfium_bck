@@ -9,7 +9,7 @@
 
 #include <utility>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widestring.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 
 class IPWL_FillerNotify {

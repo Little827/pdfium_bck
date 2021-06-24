@@ -7,9 +7,9 @@
 #ifndef XFA_FXFA_PARSER_CXFA_LOCALEVALUE_H_
 #define XFA_FXFA_PARSER_CXFA_LOCALEVALUE_H_
 
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "core/fxcrt/widestring.h"
 #include "v8/include/cppgc/macros.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 

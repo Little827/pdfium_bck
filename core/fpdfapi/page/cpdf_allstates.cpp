@@ -16,6 +16,7 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
+#include "core/fxcrt/fx_string.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "third_party/base/compiler_specific.h"
 #include "third_party/base/numerics/ranges.h"

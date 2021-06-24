@@ -9,7 +9,8 @@
 
 #include <vector>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
+#include "core/fxcrt/widestring.h"
 #include "third_party/base/span.h"
 #include "v8/include/v8.h"
 
