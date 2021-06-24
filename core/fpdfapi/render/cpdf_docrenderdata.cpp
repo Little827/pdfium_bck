@@ -79,7 +79,6 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
       return nullptr;
   }
 
-  int noutput;
   float output[kMaxOutputs];
   memset(output, 0, sizeof(output));
 
@@ -100,7 +99,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
           samples[i][v] = v;
           continue;
         }
-        pFuncs[i]->Call(&input, 1, output, &noutput);
+        pFuncs[i]->Call({&input, 1}, output);
         size_t o = FXSYS_roundf(output[0] * 255);
         if (o != v)
           bIdentity = false;
@@ -109,7 +108,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
       continue;
     }
     if (pFuncs[0]->CountOutputs() <= kMaxOutputs)
-      pFuncs[0]->Call(&input, 1, output, &noutput);
+      pFuncs[0]->Call({&input, 1}, output);
     size_t o = FXSYS_roundf(output[0] * 255);
     if (o != v)
       bIdentity = false;
