@@ -66,16 +66,16 @@ std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
   DCHECK(results_count >= pCS->CountComponents());
   std::array<FX_ARGB, kShadingSteps> shading_steps;
   std::vector<float> result_array(results_count);
+  pdfium::span<float> result_span = pdfium::make_span(result_array);
   float diff = t_max - t_min;
   for (int i = 0; i < kShadingSteps; ++i) {
     float input = diff * i / kShadingSteps + t_min;
-    int offset = 0;
     for (const auto& func : funcs) {
-      if (func) {
-        int nresults = 0;
-        if (func->Call(&input, 1, &result_array[offset], &nresults))
-          offset += nresults;
-      }
+      if (!func)
+        continue;
+      Optional<int> nresults = func->Call({&input, 1}, result_span);
+      if (nresults.has_value())
+        result_span = result_span.subspan(nresults.value());
     }
     float R = 0.0f;
     float G = 0.0f;
@@ -287,6 +287,7 @@ void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   DCHECK(total_results >= CountOutputsFromFunctions(funcs));
   DCHECK(total_results >= pCS->CountComponents());
   std::vector<float> result_array(total_results);
+  pdfium::span<float> result_span = pdfium::make_span(result_array);
   for (int row = 0; row < height; ++row) {
     uint32_t* dib_buf = (uint32_t*)(pBitmap->GetBuffer() + row * pitch);
     for (int column = 0; column < width; column++) {
@@ -295,16 +296,14 @@ void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
       if (pos.x < xmin || pos.x > xmax || pos.y < ymin || pos.y > ymax)
         continue;
 
-      float input[] = {pos.x, pos.y};
-      int offset = 0;
+      float input[2] = {pos.x, pos.y};
       for (const auto& func : funcs) {
-        if (func) {
-          int nresults;
-          if (func->Call(input, 2, &result_array[offset], &nresults))
-            offset += nresults;
-        }
+        if (!func)
+          continue;
+        Optional<int> nresults = func->Call(input, result_span);
+        if (nresults.has_value())
+          result_span = result_span.subspan(nresults.value());
       }
-
       float R = 0.0f;
       float G = 0.0f;
       float B = 0.0f;
