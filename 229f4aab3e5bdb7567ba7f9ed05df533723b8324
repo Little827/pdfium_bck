@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb9a975_a76f1025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-24T19:46:51Z",
+      "side": 1,
+      "message": "I kinda wanted this format very badly during the previous CL since the other one is all or nothing.",
+      "revId": "229f4aab3e5bdb7567ba7f9ed05df533723b8324",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
