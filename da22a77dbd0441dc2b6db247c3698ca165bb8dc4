@@ -40,6 +40,30 @@
       },
       "revId": "da22a77dbd0441dc2b6db247c3698ca165bb8dc4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1010688_3cd7e4c3",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-24T18:30:10Z",
+      "side": 1,
+      "message": "Ya, it\u0027s on my list. I took a quick stab at it but I think I found some cases where this doesn\u0027t do what we think it does.",
+      "parentUuid": "d3bfd5f2_f73f9867",
+      "range": {
+        "startLine": 335,
+        "startChar": 3,
+        "endLine": 338,
+        "endChar": 3
+      },
+      "revId": "da22a77dbd0441dc2b6db247c3698ca165bb8dc4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
