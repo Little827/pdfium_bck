@@ -81,6 +81,24 @@
       "message": "can we get some tests calling these with bad arguments, just for completeness?  We do some null check up front? or bad inidices? or such?",
       "revId": "36db9db6a1f3f4fda7c6aaa7356ee0ce0e29aad9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b276fa77_77bb6d17",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-24T16:02:48Z",
+      "side": 1,
+      "message": "Done. I added more tests and found some issues where the modified in-memory document does not render the modification . I think some other tests have this problem too, so it may not be specific to the new APIs here.",
+      "parentUuid": "bf26e05b_66f1f175",
+      "revId": "36db9db6a1f3f4fda7c6aaa7356ee0ce0e29aad9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
