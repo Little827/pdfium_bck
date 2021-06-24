@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c167bef1_cb822a7f",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T16:26:26Z",
+      "side": 1,
+      "message": "Hadn\u0027t considered that. So, how about this: when dash_count is set to 0, it clears the array regardless of whether or not dash_array is set (i.e. it could be null), and if dash_count \u003e 0, dash_array cannot be null? Reasonable?",
+      "parentUuid": "9ac06d16_e545d5e9",
+      "range": {
+        "startLine": 891,
+        "startChar": 6,
+        "endLine": 891,
+        "endChar": 21
+      },
+      "revId": "9d7ae901a2edd0bfcf115e8da64c95625657b979",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aba8362e_49da52bb",
         "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
         "patchSetId": 7

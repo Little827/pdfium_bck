@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc583af_34e87e2e",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T16:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c10b0310_3b28cdd4",
+      "range": {
+        "startLine": 200,
+        "startChar": 20,
+        "endLine": 200,
+        "endChar": 23
+      },
+      "revId": "3db28681d67d603aaf91a990bcc4df205cfa3d69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a88f62e9_785ef901",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-24T16:12:02Z",
       "side": 1,
       "message": "nit: would you mind adding a period to the end, so this matches line 902? Same for line 933, 946 and 947.",
+      "revId": "3db28681d67d603aaf91a990bcc4df205cfa3d69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e416eb3_c98b98aa",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-06-24T16:26:26Z",
+      "side": 1,
+      "message": "903 and 913, too. Fixed.",
+      "parentUuid": "a88f62e9_785ef901",
       "revId": "3db28681d67d603aaf91a990bcc4df205cfa3d69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
