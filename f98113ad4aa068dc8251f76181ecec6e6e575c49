@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6006c54b_185c2f62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-24T04:31:54Z",
+      "side": 1,
+      "message": "We need to land https://chromium-review.googlesource.com/2983712 in V8. Then wait for that to make it into a tagged V8 release. After that, I\u0027ll roll DEPS for V8 in PDFium, and then this CL should be able to land.",
+      "parentUuid": "a2ee0f79_3cb2b4f9",
+      "revId": "f98113ad4aa068dc8251f76181ecec6e6e575c49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a554fb_9bbe5d10",
         "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
         "patchSetId": 2
