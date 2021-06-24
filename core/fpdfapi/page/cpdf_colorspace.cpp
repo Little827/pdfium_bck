@@ -1284,9 +1284,9 @@ bool CPDF_SeparationCS::GetRGB(pdfium::span<const float> pBuf,
 
   // Using at least 16 elements due to the call m_pAltCS->GetRGB() below.
   std::vector<float> results(std::max(m_pFunc->CountOutputs(), 16u));
-  int nresults = 0;
-  if (!m_pFunc->Call(pBuf.data(), 1, results.data(), &nresults) ||
-      nresults == 0)
+  pdfium::span<float> result_span = pdfium::make_span(results);
+  Optional<int> nresults = m_pFunc->Call(pBuf, result_span);
+  if (!nresults.has_value() || nresults.value() == 0)
     return false;
 
   if (m_pAltCS)
@@ -1352,12 +1352,11 @@ bool CPDF_DeviceNCS::GetRGB(pdfium::span<const float> pBuf,
 
   // Using at least 16 elements due to the call m_pAltCS->GetRGB() below.
   std::vector<float> results(std::max(m_pFunc->CountOutputs(), 16u));
-  int nresults = 0;
-  if (!m_pFunc->Call(pBuf.data(), CountComponents(), results.data(),
-                     &nresults) ||
-      nresults == 0) {
+  Optional<int> nresults =
+      m_pFunc->Call(pBuf.first(CountComponents()), pdfium::make_span(results));
+
+  if (!nresults.has_value() || nresults.value() == 0)
     return false;
-  }
 
   return m_pAltCS->GetRGB(results, R, G, B);
 }
