@@ -16,6 +16,24 @@
       "message": "Same as pdfium::clamp(128 + delta_r * 8, 0, 255)? clamp() is in third_party/base/numerics/ranges.h",
       "revId": "252bcda8ecafc8406625d9656e605ac73ad3c098",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24781b5f_f3b07b8b",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T19:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "749cfec8_00087773",
+      "revId": "252bcda8ecafc8406625d9656e605ac73ad3c098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
