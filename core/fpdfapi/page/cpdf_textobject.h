@@ -66,6 +66,7 @@ class CPDF_TextObject final : public CPDF_PageObject {
   const std::vector<uint32_t>& GetCharCodes() const { return m_CharCodes; }
   const std::vector<float>& GetCharPositions() const { return m_CharPos; }
 
+  void SetTextMatrix(const CFX_Matrix& matrix);
   void SetSegments(const ByteString* pStrs,
                    const std::vector<float>& kernings,
                    size_t nSegs);
