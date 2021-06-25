@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3b3922_bb5ec3bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T21:07:55Z",
+      "side": 1,
+      "message": "Something to ponder for a Friday afternoon.  Better? Worse?",
+      "revId": "583b88adbe9ed5b8032d539fcf0ee7f159c94539",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
