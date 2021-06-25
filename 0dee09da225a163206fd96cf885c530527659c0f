@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "636eea50_7c08aea9",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T01:16:57Z",
+      "side": 1,
+      "message": "The span\u003cconst T\u003e(const std::vector\u003cT\u003e\u0026) constructor is implicit.\nThe span\u003cT\u003e(std::vector\u003cT\u003e\u0026) constructor isn\u0027t, because STL doesn\u0027t really like mutable spans as much as we do.  So it is required for this case.",
+      "parentUuid": "0a6cde57_1b48ea6a",
+      "range": {
+        "startLine": 1288,
+        "startChar": 35,
+        "endLine": 1288,
+        "endChar": 61
+      },
+      "revId": "0dee09da225a163206fd96cf885c530527659c0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d19ffbc3_903eb601",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-25T01:04:40Z",
       "side": 1,
       "message": "Should this return a uint32_t to match the type of `m_nOutputs`?",
+      "range": {
+        "startLine": 37,
+        "startChar": 11,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "0dee09da225a163206fd96cf885c530527659c0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c29601_ac5e4f86",
+        "filename": "core/fpdfapi/page/cpdf_function.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T01:16:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19ffbc3_903eb601",
       "range": {
         "startLine": 37,
         "startChar": 11,
