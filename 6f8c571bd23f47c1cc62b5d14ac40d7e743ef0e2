@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507a7c73_cf0adf72",
+        "filename": "core/fpdfapi/page/cpdf_meshstream.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-25T20:37:53Z",
+      "side": 1,
+      "message": "Would make_span() make it more obvious what this is?",
+      "range": {
+        "startLine": 208,
+        "startChar": 17,
+        "endLine": 208,
+        "endChar": 33
+      },
+      "revId": "6f8c571bd23f47c1cc62b5d14ac40d7e743ef0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa095118_c602deb5",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-25T20:37:53Z",
+      "side": 1,
+      "message": "More not needed?",
+      "range": {
+        "startLine": 1451,
+        "startChar": 31,
+        "endLine": 1451,
+        "endChar": 48
+      },
+      "revId": "6f8c571bd23f47c1cc62b5d14ac40d7e743ef0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
