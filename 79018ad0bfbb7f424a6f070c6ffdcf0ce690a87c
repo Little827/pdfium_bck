@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1641d1ef_f0e608ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2021-06-25T17:26:21Z",
+      "side": 1,
+      "message": "Do I need to produce a .patch file for the third_party/ changes here?",
+      "revId": "79018ad0bfbb7f424a6f070c6ffdcf0ce690a87c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
