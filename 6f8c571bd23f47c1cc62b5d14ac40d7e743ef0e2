@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ffb61a2_6c0f5cbb",
+        "filename": "core/fpdfapi/page/cpdf_meshstream.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T20:45:01Z",
+      "side": 1,
+      "message": "agreed. Done",
+      "parentUuid": "507a7c73_cf0adf72",
+      "range": {
+        "startLine": 208,
+        "startChar": 17,
+        "endLine": 208,
+        "endChar": 33
+      },
+      "revId": "6f8c571bd23f47c1cc62b5d14ac40d7e743ef0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b10fbdc8_9b0f4970",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad2184b_e935b400",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T20:45:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b10fbdc8_9b0f4970",
+      "revId": "6f8c571bd23f47c1cc62b5d14ac40d7e743ef0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa095118_c602deb5",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-25T20:37:53Z",
       "side": 1,
       "message": "More not needed?",
+      "range": {
+        "startLine": 1451,
+        "startChar": 31,
+        "endLine": 1451,
+        "endChar": 48
+      },
+      "revId": "6f8c571bd23f47c1cc62b5d14ac40d7e743ef0e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab950081_f78ece7e",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T20:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa095118_c602deb5",
       "range": {
         "startLine": 1451,
         "startChar": 31,
