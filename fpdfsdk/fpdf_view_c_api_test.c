@@ -157,7 +157,6 @@ int CheckPDFiumCApi() {
     // fpdf_edit.h
     CHK(FPDFFont_Close);
     CHK(FPDFFormObj_CountObjects);
-    CHK(FPDFFormObj_GetMatrix);
     CHK(FPDFFormObj_GetObject);
     CHK(FPDFImageObj_GetBitmap);
     CHK(FPDFImageObj_GetImageDataDecoded);
@@ -165,12 +164,10 @@ int CheckPDFiumCApi() {
     CHK(FPDFImageObj_GetImageFilter);
     CHK(FPDFImageObj_GetImageFilterCount);
     CHK(FPDFImageObj_GetImageMetadata);
-    CHK(FPDFImageObj_GetMatrix);
     CHK(FPDFImageObj_GetRenderedBitmap);
     CHK(FPDFImageObj_LoadJpegFile);
     CHK(FPDFImageObj_LoadJpegFileInline);
     CHK(FPDFImageObj_SetBitmap);
-    CHK(FPDFImageObj_SetMatrix);
     CHK(FPDFPageObjMark_CountParams);
     CHK(FPDFPageObjMark_GetName);
     CHK(FPDFPageObjMark_GetParamBlobValue);
@@ -196,6 +193,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFPageObj_GetLineCap);
     CHK(FPDFPageObj_GetLineJoin);
     CHK(FPDFPageObj_GetMark);
+    CHK(FPDFPageObj_GetMatrix);
     CHK(FPDFPageObj_GetStrokeColor);
     CHK(FPDFPageObj_GetStrokeWidth);
     CHK(FPDFPageObj_GetType);
@@ -209,6 +207,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFPageObj_SetFillColor);
     CHK(FPDFPageObj_SetLineCap);
     CHK(FPDFPageObj_SetLineJoin);
+    CHK(FPDFPageObj_SetMatrix);
     CHK(FPDFPageObj_SetStrokeColor);
     CHK(FPDFPageObj_SetStrokeWidth);
     CHK(FPDFPageObj_Transform);
@@ -230,15 +229,12 @@ int CheckPDFiumCApi() {
     CHK(FPDFPath_Close);
     CHK(FPDFPath_CountSegments);
     CHK(FPDFPath_GetDrawMode);
-    CHK(FPDFPath_GetMatrix);
     CHK(FPDFPath_GetPathSegment);
     CHK(FPDFPath_LineTo);
     CHK(FPDFPath_MoveTo);
     CHK(FPDFPath_SetDrawMode);
-    CHK(FPDFPath_SetMatrix);
     CHK(FPDFTextObj_GetFontName);
     CHK(FPDFTextObj_GetFontSize);
-    CHK(FPDFTextObj_GetMatrix);
     CHK(FPDFTextObj_GetText);
     CHK(FPDFTextObj_GetTextRenderMode);
     CHK(FPDFTextObj_SetTextRenderMode);
