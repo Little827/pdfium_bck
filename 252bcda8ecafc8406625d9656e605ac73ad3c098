@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749cfec8_00087773",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-25T18:59:57Z",
+      "side": 1,
+      "message": "Same as pdfium::clamp(128 + delta_r * 8, 0, 255)? clamp() is in third_party/base/numerics/ranges.h",
+      "revId": "252bcda8ecafc8406625d9656e605ac73ad3c098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
