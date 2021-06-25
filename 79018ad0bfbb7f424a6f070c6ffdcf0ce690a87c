@@ -16,6 +16,24 @@
       "message": "Do I need to produce a .patch file for the third_party/ changes here?",
       "revId": "79018ad0bfbb7f424a6f070c6ffdcf0ce690a87c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e93d1197_b4df8dd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-25T17:31:47Z",
+      "side": 1,
+      "message": "Since this is third party code, can we just exempt them from the extra compiler warnings? In third_party/BUILD.gn, the fx_libopenjpeg target already has //build/config/compiler:no_chromium_code in its configs.\n\nIf we can\u0027t exempt them, then yes, we\u0027ll need a .patch file, and update third_party/libopenjpeg20/README.pdfium.",
+      "parentUuid": "1641d1ef_f0e608ff",
+      "revId": "79018ad0bfbb7f424a6f070c6ffdcf0ce690a87c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
