@@ -72,6 +72,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0ec098_296790ec",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-25T19:18:40Z",
+      "side": 1,
+      "message": "Huh. I thought I got a compilation error.  But checking again it seems OK as you say.\ndone.",
+      "parentUuid": "a7e84087_a6dee6b3",
+      "range": {
+        "startLine": 1288,
+        "startChar": 35,
+        "endLine": 1288,
+        "endChar": 61
+      },
+      "revId": "0dee09da225a163206fd96cf885c530527659c0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d19ffbc3_903eb601",
