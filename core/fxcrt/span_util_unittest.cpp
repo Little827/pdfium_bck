@@ -27,7 +27,7 @@ TEST(Spanset, Empty) {
 }
 
 TEST(Spancpy, FitsEntirely) {
-  std::vector<char> src(4, 'A');
+  std::vector<const char> src(4, 'A');
   std::vector<char> dst(4, 'B');
   fxcrt::spancpy(pdfium::make_span(dst), pdfium::make_span(src));
   EXPECT_EQ(dst[0], 'A');
@@ -37,7 +37,7 @@ TEST(Spancpy, FitsEntirely) {
 }
 
 TEST(Spancpy, FitsWithin) {
-  std::vector<char> src(2, 'A');
+  std::vector<const char> src(2, 'A');
   std::vector<char> dst(4, 'B');
   fxcrt::spancpy(fxcrt::Subspan(dst, 1), pdfium::make_span(src));
   EXPECT_EQ(dst[0], 'B');
@@ -47,7 +47,7 @@ TEST(Spancpy, FitsWithin) {
 }
 
 TEST(Spancpy, EmptyCopyWithin) {
-  std::vector<char> src(2, 'A');
+  std::vector<const char> src(2, 'A');
   std::vector<char> dst(4, 'B');
   fxcrt::spancpy(fxcrt::Subspan(dst, 1), fxcrt::Subspan(src, 2));
   EXPECT_EQ(dst[0], 'B');
@@ -57,7 +57,7 @@ TEST(Spancpy, EmptyCopyWithin) {
 }
 
 TEST(Spancpy, EmptyCopyToEmpty) {
-  std::vector<char> src(2, 'A');
+  std::vector<const char> src(2, 'A');
   std::vector<char> dst(4, 'B');
   fxcrt::spancpy(fxcrt::Subspan(dst, 4), fxcrt::Subspan(src, 2));
   EXPECT_EQ(dst[0], 'B');
