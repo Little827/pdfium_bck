@@ -8,7 +8,6 @@
 #define _TIFFCONF_
 
 #include "build/build_config.h"
-#include "core/fxcrt/fx_system.h"
 
 //NOTE: The tiff codec requires an ANSI C compiler environment for building and 
 //    presumes an ANSI C environment for use.
@@ -26,8 +25,10 @@
 #define HAVE_IEEEFP 1
 
 /* Define to 1 if you have the <string.h> header file. */
-//#define HAVE_STRING_H 1
-//fx_system.h already include the string.h in ANSIC
+#define HAVE_STRING_H 1
+
+/* Define to 1 if you have snprintf(). */
+#define HAVE_SNPRINTF 1
 
 /* Define to 1 if you have the <search.h> header file. */
 #if defined(OS_WIN)
