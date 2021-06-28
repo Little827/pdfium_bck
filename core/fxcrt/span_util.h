@@ -12,31 +12,19 @@
 
 namespace fxcrt {
 
-// NOTE: there are separate versions fot span<T> and span<const T>
-// source arguments because type deduction seems to have trouble with
-// automatically converting span<T> to span<const T>.
-
 // Bounds-checked copies from spans into spans.
-template <typename T>
-void spancpy(pdfium::span<T> dst, pdfium::span<const T> src) {
-  CHECK_GE(dst.size(), src.size());
-  memcpy(dst.data(), src.data(), src.size_bytes());
-}
-
-template <typename T>
-void spancpy(pdfium::span<T> dst, pdfium::span<T> src) {
+template <typename T,
+          typename U,
+          typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>>
+void spancpy(pdfium::span<T> dst, pdfium::span<U> src) {
   CHECK_GE(dst.size(), src.size());
   memcpy(dst.data(), src.data(), src.size_bytes());
 }
 
 // Bounds-checked moves from spans into spans.
-template <typename T>
-void spanmove(pdfium::span<T> dst, pdfium::span<T> src) {
-  CHECK_GE(dst.size(), src.size());
-  memmove(dst.data(), src.data(), src.size_bytes());
-}
-
-template <typename T>
+template <typename T,
+          typename U,
+          typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>>
 void spanmove(pdfium::span<T> dst, pdfium::span<const T> src) {
   CHECK_GE(dst.size(), src.size());
   memmove(dst.data(), src.data(), src.size_bytes());
