@@ -549,19 +549,24 @@ bool CJPX_Decoder::Decode(uint8_t* dest_buf, uint32_t pitch, bool swap_rgb) {
           *pPixel = static_cast<uint8_t>(src << -adjust);
         }
       }
+    } else if (adjust == 0) {
+      for (uint32_t row = 0; row < height; ++row) {
+        uint8_t* pScanline = pChannel + row * pitch;
+        for (uint32_t col = 0; col < width; ++col) {
+          uint8_t* pPixel = pScanline + col * m_Image->numcomps;
+          int src = comps.data[row * width + col] + src_offset;
+          *pPixel = static_cast<uint8_t>(src);
+        }
+      }
     } else {
       for (uint32_t row = 0; row < height; ++row) {
         uint8_t* pScanline = pChannel + row * pitch;
         for (uint32_t col = 0; col < width; ++col) {
           uint8_t* pPixel = pScanline + col * m_Image->numcomps;
           int src = comps.data[row * width + col] + src_offset;
-          if (adjust == 0) {
-            *pPixel = static_cast<uint8_t>(src);
-          } else {
-            int pixel = (src >> adjust) + ((src >> (adjust - 1)) % 2);
-            pixel = pdfium::clamp(pixel, 0, 255);
-            *pPixel = static_cast<uint8_t>(pixel);
-          }
+          int pixel = (src >> adjust) + ((src >> (adjust - 1)) % 2);
+          pixel = pdfium::clamp(pixel, 0, 255);
+          *pPixel = static_cast<uint8_t>(pixel);
         }
       }
     }
