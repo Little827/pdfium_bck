@@ -23,6 +23,30 @@
       },
       "revId": "f70ec6676e183d528e6ecf0e10469a58b4b590c8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037037fc_447d4cba",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T17:20:32Z",
+      "side": 1,
+      "message": "Sure. Will take a look.",
+      "parentUuid": "863c5fb9_1506b399",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 1
+      },
+      "revId": "f70ec6676e183d528e6ecf0e10469a58b4b590c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
