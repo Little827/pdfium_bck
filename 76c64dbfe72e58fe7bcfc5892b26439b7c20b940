@@ -112,6 +112,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cdbfea_11b4fd94",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T18:09:08Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/82770",
+      "parentUuid": "66c711ce_d5e14f76",
+      "range": {
+        "startLine": 548,
+        "startChar": 17,
+        "endLine": 548,
+        "endChar": 55
+      },
+      "revId": "76c64dbfe72e58fe7bcfc5892b26439b7c20b940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0276d838_c6640dcf",
