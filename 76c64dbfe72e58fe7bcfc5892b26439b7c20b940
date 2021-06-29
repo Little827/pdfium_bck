@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "afc1724e_6c30b927",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T17:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e79a332_b0d68434",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "76c64dbfe72e58fe7bcfc5892b26439b7c20b940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1ce23cc3_dfd0639c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66c711ce_d5e14f76",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T17:13:07Z",
+      "side": 1,
+      "message": "Will follow-up.",
+      "parentUuid": "827d8557_2393abc5",
+      "range": {
+        "startLine": 548,
+        "startChar": 17,
+        "endLine": 548,
+        "endChar": 55
+      },
+      "revId": "76c64dbfe72e58fe7bcfc5892b26439b7c20b940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0276d838_c6640dcf",
         "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
         "patchSetId": 2
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-29T15:46:28Z",
       "side": 1,
       "message": "follow-on: next pull this out at the cost of introducing two nearly identical loops.",
+      "range": {
+        "startLine": 549,
+        "startChar": 10,
+        "endLine": 550,
+        "endChar": 24
+      },
+      "revId": "76c64dbfe72e58fe7bcfc5892b26439b7c20b940",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391c8075_8eb26331",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T17:13:07Z",
+      "side": 1,
+      "message": "This is dead code due to line 542. Deleted in the next CL in the CL chain.",
+      "parentUuid": "0276d838_c6640dcf",
       "range": {
         "startLine": 549,
         "startChar": 10,
