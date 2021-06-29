@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b8548b_1ad8c710",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T17:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9791b069_9d8f2aca",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "dfd7a1dfffa2d6f875fee46eba1f00befa42796c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55d193d2_a3268ced",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-29T15:51:58Z",
       "side": 1,
       "message": "nit: over-()",
+      "range": {
+        "startLine": 567,
+        "startChar": 43,
+        "endLine": 567,
+        "endChar": 58
+      },
+      "revId": "dfd7a1dfffa2d6f875fee46eba1f00befa42796c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f7d168_2be3c54f",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T17:04:55Z",
+      "side": 1,
+      "message": "Fixed later in the CL chain, when we find out `adjust` is always 0 here.",
+      "parentUuid": "55d193d2_a3268ced",
       "range": {
         "startLine": 567,
         "startChar": 43,
