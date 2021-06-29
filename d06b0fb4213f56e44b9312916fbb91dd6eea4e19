@@ -16,6 +16,24 @@
       "message": "Ah, hang on. This isn\u0027t experimental. I need to restore it and deprecated it.",
       "revId": "d06b0fb4213f56e44b9312916fbb91dd6eea4e19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef25b2c7_7f0876d7",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T18:12:35Z",
+      "side": 0,
+      "message": "Done. Will start deprecating when FPDFPageObj_SetMatrix() is stable. Don\u0027t want to force callers to choose between a deprecated API and an experimental one.",
+      "parentUuid": "bb2174b0_a2233f63",
+      "revId": "d06b0fb4213f56e44b9312916fbb91dd6eea4e19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
