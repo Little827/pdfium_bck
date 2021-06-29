@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1624928012 -0700\nnonce ALC2d1+FZJcA9eM8Y19o9VZbZgMaekDvkcj86bisXifDm1bEoDSzMThkea+TCyjq6BOPTCqubtMe\n\n0000000000000000000000000000000000000000 5a1ac325271905b5434bc1145ce403834c234a40 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmDabwwACgkQqzYtYVpm\n/Xu3rQgAiZrqbH7LER7rPhqEVaw6EpicFPumwU/d3sMEOkBSsYd3sBQ7K5tCca5K\n4TF7vJI51R4w0EeFNdQPM67SJ/7Z2Yr6osKtsvc0ettVkCQCxZ8GgIvvO1u6coDX\nqOxIP//1oVnaBUe6KbmBQ50uc/zGtiEGYDrSdgPehTHjcLPEZvVQP5bB8aMKcnV+\nk7i9Yig1Q67XiEw10S/pqXYWuXPogo2dsm5Rj4Ns/M9GnD6kBrnHINbfF9gxpZmW\nNxc469TudvpsmtNgfaaB0G+V1/e/lpJMla8grnNFfGadOZ3aUdmzovsqW4iituqI\n22dFcGzvBJzKsGekoGDXQ7cGbzecnw\u003d\u003d\n\u003dhbZ1\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33145e39_fc419b44",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-29T15:32:14Z",
+      "side": 1,
+      "message": "Hmmm.  This is technically in \u003ccstdint\u003e not \u003cstdint.h\u003e. Do we want to remove the std:: prefix because I think we came down on the side of preferring stdint.h?  Or do we want to keep this because it matches the STL template return type and also include \u003ccstdint\u003e ?  Ideally, we\u0027d not want to drag cstdint through everything that includes bytestring.h",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 13
+      },
+      "revId": "5a1ac325271905b5434bc1145ce403834c234a40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9afc860d_042883eb",
+        "filename": "core/fxge/dib/cstretchengine.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-29T15:32:14Z",
+      "side": 1,
+      "message": "Ah, IWYU, OK.",
+      "range": {
+        "startLine": 35,
+        "startChar": 33,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "5a1ac325271905b5434bc1145ce403834c234a40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8676158b_d2cbbbbb",
+        "filename": "core/fxge/dib/fx_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-29T15:32:14Z",
+      "side": 1,
+      "message": "Do we need compiler-specific?",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "5a1ac325271905b5434bc1145ce403834c234a40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d124b7e_8243e615",
+        "filename": "core/fxge/dib/fx_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-29T15:32:14Z",
+      "side": 1,
+      "message": "nit: feel free to combine if you\u0027d like.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "5a1ac325271905b5434bc1145ce403834c234a40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
