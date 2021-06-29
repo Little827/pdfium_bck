@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7c5bec_3cb8edc6",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-29T23:38:40Z",
+      "side": 1,
+      "message": "are we sure this doesn\u0027t make the object dirty, so that the setdirty call should go here?",
+      "revId": "f8aaea443ead4f64ae7f3c62ce68589251217b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
