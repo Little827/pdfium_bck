@@ -51,6 +51,42 @@
       "message": "Let me dry-run the commit queue, but I lack the credentials to actually approve this (just to set expectations :-) )",
       "revId": "e25902edde2bfdf8b4505bafc619e9849b8f1000",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cb3b53_73237138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T06:45:09Z",
+      "side": 1,
+      "message": "Would it be helpful if you can dry-run your own CLs?",
+      "parentUuid": "856687b1_5cbf807d",
+      "revId": "e25902edde2bfdf8b4505bafc619e9849b8f1000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3449a2c5_12329c74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T06:45:09Z",
+      "side": 1,
+      "message": "It also took 2-3 years before the light bulb for this CL lit up in my head.",
+      "parentUuid": "b6c809e7_ae1043b7",
+      "revId": "e25902edde2bfdf8b4505bafc619e9849b8f1000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
