@@ -105,6 +105,24 @@
       "parentUuid": "09cb3b53_73237138",
       "revId": "e25902edde2bfdf8b4505bafc619e9849b8f1000",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd9de9b9_386126c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T07:01:19Z",
+      "side": 1,
+      "message": "Ah, but you not trigger the CQ for other people\u0027s CLs. I didn\u0027t realize Gerrit is set up this way. A bit out of my control.",
+      "parentUuid": "09cb3b53_73237138",
+      "revId": "e25902edde2bfdf8b4505bafc619e9849b8f1000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
