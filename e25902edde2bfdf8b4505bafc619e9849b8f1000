@@ -87,6 +87,24 @@
       "parentUuid": "b6c809e7_ae1043b7",
       "revId": "e25902edde2bfdf8b4505bafc619e9849b8f1000",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d972c6_414f494f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-06-29T06:59:51Z",
+      "side": 1,
+      "message": "That\u0027s already the case, and it\u0027s useful: I can see if I break any tests without blocking on committers. :-)",
+      "parentUuid": "09cb3b53_73237138",
+      "revId": "e25902edde2bfdf8b4505bafc619e9849b8f1000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
