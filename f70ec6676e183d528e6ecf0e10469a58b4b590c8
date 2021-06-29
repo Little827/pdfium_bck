@@ -47,6 +47,30 @@
       },
       "revId": "f70ec6676e183d528e6ecf0e10469a58b4b590c8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de6d81c_6f64e0d2",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-29T19:42:09Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/82773",
+      "parentUuid": "037037fc_447d4cba",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 1
+      },
+      "revId": "f70ec6676e183d528e6ecf0e10469a58b4b590c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
