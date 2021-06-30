@@ -4,6 +4,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6488b624_de7f5eaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-30T21:37:23Z",
+      "side": 1,
+      "message": "Kinda sorta.  I\u0027d describe the bug as not accepting empty keys for dictionaries during a document parse. Then the\n-- Add DCHECK() to dictionary\nbecomes a secondary point.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "cb5b5afb16daa14c70df695bd1537d4c6d86d06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340ace3b_f65cc46e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-30T21:37:23Z",
+      "side": 1,
+      "message": "As you like.  I\u0027m not 100% on forcing a change to the dcheck.",
+      "revId": "cb5b5afb16daa14c70df695bd1537d4c6d86d06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7a0b59b_60cb45f9",
         "filename": "core/fpdfapi/parser/cpdf_dictionary.cpp",
         "patchSetId": 1
