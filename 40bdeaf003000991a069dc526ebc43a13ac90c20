@@ -361,6 +361,24 @@
       "parentUuid": "bae0d896_052e07f1",
       "revId": "40bdeaf003000991a069dc526ebc43a13ac90c20",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2720fb_2f3fb538",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-06-30T06:44:03Z",
+      "side": 1,
+      "message": "Thanks! I plan to fix up FPDFTextObj_GetText() based on your comments in this CL (in a separate CL) and then I\u0027ll rebase this one.",
+      "parentUuid": "7432ab52_6964bf55",
+      "revId": "40bdeaf003000991a069dc526ebc43a13ac90c20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
