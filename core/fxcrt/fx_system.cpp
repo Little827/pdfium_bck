@@ -265,3 +265,7 @@ uint32_t FXSYS_GetLastError() {
   return g_last_error;
 }
 #endif  // defined(OS_WIN)
+
+float FXSYS_sqrt2(float a, float b) {
+  return (float)sqrt((a) * (a) + (b) * (b));
+}
