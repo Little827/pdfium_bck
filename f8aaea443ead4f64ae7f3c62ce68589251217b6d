@@ -16,6 +16,24 @@
       "message": "are we sure this doesn\u0027t make the object dirty, so that the setdirty call should go here?",
       "revId": "f8aaea443ead4f64ae7f3c62ce68589251217b6d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbe4005_2d31916e",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T00:21:03Z",
+      "side": 1,
+      "message": "Both callers call SetDirty(true). I can add a comment to document the expectation.",
+      "parentUuid": "1f7c5bec_3cb8edc6",
+      "revId": "f8aaea443ead4f64ae7f3c62ce68589251217b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
