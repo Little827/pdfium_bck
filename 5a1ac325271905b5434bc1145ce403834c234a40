@@ -95,6 +95,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ed992c_29970979",
+        "filename": "core/fxge/dib/fx_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T03:51:50Z",
+      "side": 1,
+      "message": "OS_WIN is from build_config.h. compiler_specific.h is most often used for WARN_UNUSED_RESULT.",
+      "parentUuid": "8676158b_d2cbbbbb",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "5a1ac325271905b5434bc1145ce403834c234a40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d124b7e_8243e615",
@@ -108,6 +132,30 @@
       "writtenOn": "2021-06-29T15:32:14Z",
       "side": 1,
       "message": "nit: feel free to combine if you\u0027d like.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "5a1ac325271905b5434bc1145ce403834c234a40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18cbb75_c47f31b0",
+        "filename": "core/fxge/dib/fx_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T03:51:50Z",
+      "side": 1,
+      "message": "Nah. If we ever have an OS-specific include, then we have to split it up.",
+      "parentUuid": "9d124b7e_8243e615",
       "range": {
         "startLine": 17,
         "startChar": 0,
