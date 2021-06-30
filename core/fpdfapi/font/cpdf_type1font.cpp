@@ -97,7 +97,7 @@ bool CPDF_Type1Font::Load() {
     m_Flags = FXFONT_NONSYMBOLIC;
   }
   if (IsFixedFont()) {
-    for (int i = 0; i < 256; i++)
+    for (size_t i = 0; i < kInternalTableSize; i++)
       m_CharWidth[i] = 600;
   }
   if (m_Base14Font == CFX_FontMapper::kSymbol)
@@ -139,7 +139,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
   if (!IsEmbedded() && !IsSymbolicFont() && m_Font.IsTTFont()) {
     if (FT_UseTTCharmap(m_Font.GetFaceRec(), 3, 0)) {
       bool bGotOne = false;
-      for (uint32_t charcode = 0; charcode < 256; charcode++) {
+      for (uint32_t charcode = 0; charcode < kInternalTableSize; charcode++) {
         const uint8_t prefix[4] = {0x00, 0xf0, 0xf1, 0xf2};
         for (int j = 0; j < 4; j++) {
           uint16_t unicode = prefix[j] * 256 + charcode;
@@ -166,7 +166,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
     if (m_BaseEncoding == 0)
       m_BaseEncoding = PDFFONT_ENCODING_STANDARD;
 
-    for (uint32_t charcode = 0; charcode < 256; charcode++) {
+    for (uint32_t charcode = 0; charcode < kInternalTableSize; charcode++) {
       const char* name =
           GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
       if (!name)
@@ -187,8 +187,10 @@ void CPDF_Type1Font::LoadGlyphMap() {
       }
     }
 #if defined(OS_APPLE)
-    if (!bCoreText)
-      memcpy(m_ExtGID, m_GlyphIndex, sizeof(m_ExtGID));
+    if (!bCoreText) {
+      pdfium::spancpy(pdfium::make_span(m_ExtGID),
+                      pdfium::make_span(m_GlyphIndex));
+    }
 #endif
     return;
   }
@@ -196,7 +198,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
 #if defined(OS_APPLE)
   if (bCoreText) {
     if (FontStyleIsSymbolic(m_Flags)) {
-      for (uint32_t charcode = 0; charcode < 256; charcode++) {
+      for (uint32_t charcode = 0; charcode < kInternalTableSize; charcode++) {
         const char* name =
             GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
         if (name) {
@@ -212,11 +214,11 @@ void CPDF_Type1Font::LoadGlyphMap() {
             unicode =
                 FT_UnicodeFromCharCode(PDFFONT_ENCODING_STANDARD, charcode);
           }
-          char name_glyph[256];
-          memset(name_glyph, 0, sizeof(name_glyph));
+          char name_glyph[kInternalTableSize];
+          pdfium::spanclr(pdfium::make_span(name_glyph));
           FT_Get_Glyph_Name(m_Font.GetFaceRec(), m_GlyphIndex[charcode],
-                            name_glyph, 256);
-          name_glyph[255] = 0;
+                            name_glyph, sizeof(name_glyph));
+          name_glyph[kInternalTableSize - 1] = 0;
           if (unicode == 0 && name_glyph[0] != 0)
             unicode = PDF_UnicodeFromAdobeName(name_glyph);
 
@@ -229,7 +231,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
 
     bool bUnicode =
         FXFT_Select_Charmap(m_Font.GetFaceRec(), FT_ENCODING_UNICODE) == 0;
-    for (uint32_t charcode = 0; charcode < 256; charcode++) {
+    for (uint32_t charcode = 0; charcode < kInternalTableSize; charcode++) {
       const char* name =
           GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
       if (!name)
@@ -261,7 +263,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
   }
 #endif  // defined(OS_APPLE)
   if (FontStyleIsSymbolic(m_Flags)) {
-    for (int charcode = 0; charcode < 256; charcode++) {
+    for (size_t charcode = 0; charcode < kInternalTableSize; charcode++) {
       const char* name =
           GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
       if (name) {
@@ -274,11 +276,11 @@ void CPDF_Type1Font::LoadGlyphMap() {
           wchar_t unicode =
               FT_UnicodeFromCharCode(PDFFONT_ENCODING_STANDARD, charcode);
           if (unicode == 0) {
-            char name_glyph[256];
+            char name_glyph[kInternalTableSize];
             memset(name_glyph, 0, sizeof(name_glyph));
             FT_Get_Glyph_Name(m_Font.GetFaceRec(), m_GlyphIndex[charcode],
-                              name_glyph, 256);
-            name_glyph[255] = 0;
+                              name_glyph, sizeof(name_glyph));
+            name_glyph[kInternalTableSize - 1] = 0;
             if (name_glyph[0] != 0)
               unicode = PDF_UnicodeFromAdobeName(name_glyph);
           }
@@ -295,7 +297,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
 
   bool bUnicode =
       FXFT_Select_Charmap(m_Font.GetFaceRec(), FT_ENCODING_UNICODE) == 0;
-  for (int charcode = 0; charcode < 256; charcode++) {
+  for (size_t charcode = 0; charcode < kInternalTableSize; charcode++) {
     const char* name = GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
     if (!name)
       continue;
@@ -341,10 +343,10 @@ void CPDF_Type1Font::SetExtGID(const char* name, uint32_t charcode) {
 }
 
 void CPDF_Type1Font::CalcExtGID(uint32_t charcode) {
-  char name_glyph[256];
+  char name_glyph[kInternalTableSize];
   FT_Get_Glyph_Name(m_Font.GetFaceRec(), m_GlyphIndex[charcode], name_glyph,
-                    256);
-  name_glyph[255] = 0;
+                    sizeof(name_glyph));
+  name_glyph[kInternalTableSize - 1] = 0;
   SetExtGID(name_glyph, charcode);
 }
 #endif  // defined(OS_APPLE)
