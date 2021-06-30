@@ -7,6 +7,8 @@
 #ifndef CORE_FXCRT_BYTESTRING_H_
 #define CORE_FXCRT_BYTESTRING_H_
 
+#include <stddef.h>
+
 #include <functional>
 #include <iosfwd>
 #include <iterator>
@@ -285,7 +287,7 @@ namespace std {
 
 template <>
 struct hash<ByteString> {
-  std::size_t operator()(const ByteString& str) const {
+  size_t operator()(const ByteString& str) const {
     return FX_HashCode_GetA(str.AsStringView());
   }
 };
