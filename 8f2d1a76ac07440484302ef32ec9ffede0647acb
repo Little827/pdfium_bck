@@ -17,6 +17,24 @@
       "message": "I know the bug is closed, but would this technically be chromium:1216563?",
       "revId": "8f2d1a76ac07440484302ef32ec9ffede0647acb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98179f8a_c73c4563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T16:56:35Z",
+      "side": 1,
+      "message": "I feel that\u0027s more for what the infrastructure team has to do to make the main branch work, and not a catch-all bug for everything in the migration.",
+      "parentUuid": "277535ea_d80fe738",
+      "revId": "8f2d1a76ac07440484302ef32ec9ffede0647acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
