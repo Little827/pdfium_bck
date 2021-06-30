@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1625086512 -0700\nnonce ALC2d1+YYPbZQ+9dxCjxggQrNs8ll5YyQnCN5ssvKUopl5MQbo+QG89KQ0hIGiyCVMdgZbynBzi6\n\n0000000000000000000000000000000000000000 cb5b5afb16daa14c70df695bd1537d4c6d86d06b refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmDc2jEACgkQqzYtYVpm\n/Xs37wf9FzzlV17Z07VBhABG6X+6zu9Ia9FTZI/13A0X4Qo9b6+AhHKg898+4NLJ\n7ZDVh8483K9DT0UE52ENyw4blklZXEs4XysyvfmDIODTqpJWbkbpUW7JvgqrJLUT\nbMy1w8mDvKxYIN4xllCN65k3N7uRMTo16N3ydOk8zdtUrQ+8cRCY9UUeQWM4W5nu\narqab6Lhs/xVlmA8Eq5sxSslzfLfnoZbEZXaCPwVmnOxGmKGW3/gBdz5op2VQEmp\nVL5rS1ZSXaOlcwZQKRd5y7udx8PE9br4VE2/68OEr0/H9bOFlQflCN4OUcS+8Rna\nmyVXtAlUS4nCRKgCvJXqC7cq0AE/NQ\u003d\u003d\n\u003dX0h3\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a0b59b_60cb45f9",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-30T21:18:26Z",
+      "side": 1,
+      "message": "maybe early return for null keys which is stronger than a DCHECK.  \nAre there other callers that pass non-literal keys to this?",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "cb5b5afb16daa14c70df695bd1537d4c6d86d06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
