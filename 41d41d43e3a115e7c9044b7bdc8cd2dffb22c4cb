@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d83d47ac_89051a05",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-06-30T22:39:07Z",
+      "side": 1,
+      "message": "Dumb, but I left it for now.",
+      "range": {
+        "startLine": 1370,
+        "startChar": 26,
+        "endLine": 1370,
+        "endChar": 30
+      },
+      "revId": "41d41d43e3a115e7c9044b7bdc8cd2dffb22c4cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
