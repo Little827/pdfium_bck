@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26aeb8c2_1c21f25d",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T22:54:05Z",
+      "side": 1,
+      "message": "spanset() or std::fill()?",
+      "revId": "874566aae0f712d253f108dfdb71a8bbefaed3bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9899339_b2fe9683",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T22:54:05Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "874566aae0f712d253f108dfdb71a8bbefaed3bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f21bc27_6674a8de",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T22:54:05Z",
+      "side": 1,
+      "message": "spanclr() like line 219? Or can we just write: char name_glyph[kInternalTableSize] \u003d {};",
+      "revId": "874566aae0f712d253f108dfdb71a8bbefaed3bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a057da67_1fbaafee",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T22:54:05Z",
+      "side": 1,
+      "message": "This FT_Get_Glyph_Name() call isn\u0027t preceeded by a memset(). Probably should clear `name_glyph` for consistency.",
+      "revId": "874566aae0f712d253f108dfdb71a8bbefaed3bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
