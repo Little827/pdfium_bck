@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9bd740cf_ed9c88c5",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-06-30T00:25:40Z",
+      "side": 1,
+      "message": "I\u0027d like to get rid of std::size_t usage -\u003e https://pdfium-review.googlesource.com/82774\n\nI looked at Chromium code and I see struct hash\u003cT\u003e using size_t, so that should be fine.",
+      "parentUuid": "33145e39_fc419b44",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 13
+      },
+      "revId": "5a1ac325271905b5434bc1145ce403834c234a40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9afc860d_042883eb",
         "filename": "core/fxge/dib/cstretchengine.h",
         "patchSetId": 3
