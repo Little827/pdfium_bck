@@ -210,6 +210,7 @@ std::vector<ByteString> CPDF_Dictionary::GetKeys() const {
 
 CPDF_Object* CPDF_Dictionary::SetFor(const ByteString& key,
                                      RetainPtr<CPDF_Object> pObj) {
+  DCHECK(!key.IsEmpty());
   CHECK(!IsLocked());
   if (!pObj) {
     m_Map.erase(key);
