@@ -80,8 +80,3 @@ TEST_F(CPDFParserEmbedderTest, Bug_828049) {
   EXPECT_NE(nullptr, page);
   UnloadPage(page);
 }
-
-// crbug.com/1191313
-TEST_F(CPDFParserEmbedderTest, InvalidDictionaryKeys) {
-  ASSERT_TRUE(OpenDocument("bad_dict_keys.pdf"));
-}
