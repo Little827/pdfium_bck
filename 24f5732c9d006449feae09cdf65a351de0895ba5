@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf044352_5ccbb59b",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T17:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1644e8_138b3630",
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26df6bac_4344291f",
@@ -76,6 +94,54 @@
         "startChar": 21,
         "endLine": 270,
         "endChar": 42
+      },
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "669e2471_a80d54af",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T17:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8942566_ca6e4add",
+      "range": {
+        "startLine": 270,
+        "startChar": 21,
+        "endLine": 270,
+        "endChar": 42
+      },
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8882c349_393cbbd8",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T17:06:52Z",
+      "side": 1,
+      "message": "Lets try.  Previously, passing a and b as doubles and then doing a double multiply gave a different result in some of the pixel tests than doing a float multiply then promoting to double, so we\u0027ll see if the values are the same given the less precise sqrt.",
+      "parentUuid": "26df6bac_4344291f",
+      "range": {
+        "startLine": 270,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 20
       },
       "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
@@ -141,6 +207,30 @@
       "writtenOn": "2021-07-01T00:01:32Z",
       "side": 1,
       "message": "cast necessary?",
+      "range": {
+        "startLine": 1564,
+        "startChar": 43,
+        "endLine": 1564,
+        "endChar": 72
+      },
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc05d3e_d19bac09",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T17:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "527cb958_f29e6155",
       "range": {
         "startLine": 1564,
         "startChar": 43,
