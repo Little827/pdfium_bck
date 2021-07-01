@@ -16,6 +16,24 @@
       "message": "To be clear, is this intended to be transitional or permanent? Considering this header doesn\u0027t actually use size_t and friends.",
       "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9491c7e_44c9e877",
+        "filename": "core/fxcrt/fx_types.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T20:39:05Z",
+      "side": 1,
+      "message": "Permanent. Including this one header gives you all the types we use all over the place, without worrying about which c library header gives which one at a pretty small cost inclusion-wise. Otherwise, if we remove fx_system.h from a header, we have to add stdint, unless it uses size_t, in which case stdint and stddef, unless it uses FX_FILESIZE in which case FX_SYSTEM. \n\nIdeally we stop dragging stdlib and stdio though every file, even if nearly every header will end up including fx_types.",
+      "parentUuid": "78c13c5e_30b4e6f9",
+      "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
