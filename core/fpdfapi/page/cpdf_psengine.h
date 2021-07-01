@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "third_party/base/span.h"
 
 class CPDF_PSEngine;
