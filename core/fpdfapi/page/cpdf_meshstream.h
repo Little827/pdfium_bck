@@ -13,7 +13,7 @@
 
 #include "core/fpdfapi/page/cpdf_shadingpattern.h"
 #include "core/fxcrt/cfx_bitstream.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
 
 class CPDF_StreamAcc;
