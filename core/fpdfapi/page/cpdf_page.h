@@ -13,7 +13,7 @@
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
 #include "core/fpdfapi/page/ipdf_page.h"
 #include "core/fxcrt/fx_coordinates.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -59,14 +59,15 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
   CPDF_Document* GetDocument() const override;
   float GetPageWidth() const override;
   float GetPageHeight() const override;
-  CFX_Matrix GetDisplayMatrix(const FX_RECT& rect, int iRotate) const override;
+  CFX_Matrix GetDisplayMatrix(const FX_RECT& rect,
+                              int32_t iRotate) const override;
   Optional<CFX_PointF> DeviceToPage(
       const FX_RECT& rect,
-      int rotate,
+      int32_t rotate,
       const CFX_PointF& device_point) const override;
   Optional<CFX_PointF> PageToDevice(
       const FX_RECT& rect,
-      int rotate,
+      int32_t rotate,
       const CFX_PointF& page_point) const override;
 
   // CPDF_PageObjectHolder:
@@ -74,7 +75,7 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
 
   void ParseContent();
   const CFX_SizeF& GetPageSize() const { return m_PageSize; }
-  int GetPageRotation() const;
+  int32_t GetPageRotation() const;
   RenderCacheIface* GetRenderCache() const { return m_pRenderCache.get(); }
   void SetRenderCache(std::unique_ptr<RenderCacheIface> pCache) {
     m_pRenderCache = std::move(pCache);

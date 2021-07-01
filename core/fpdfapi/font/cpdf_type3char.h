@@ -12,7 +12,7 @@
 
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fxcrt/fx_coordinates.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/optional.h"
 
@@ -35,7 +35,7 @@ class CPDF_Type3Char {
   const RetainPtr<CFX_DIBitmap>& GetBitmap() const;
 
   bool colored() const { return m_bColored; }
-  int width() const { return m_Width; }
+  int32_t width() const { return m_Width; }
   const CFX_Matrix& matrix() const { return m_ImageMatrix; }
   const FX_RECT& bbox() const { return m_BBox; }
 
@@ -46,7 +46,7 @@ class CPDF_Type3Char {
   std::unique_ptr<CPDF_Font::FormIface> m_pForm;
   RetainPtr<CFX_DIBitmap> m_pBitmap;
   bool m_bColored = false;
-  int m_Width = 0;
+  int32_t m_Width = 0;
   CFX_Matrix m_ImageMatrix;
   FX_RECT m_BBox;
 };

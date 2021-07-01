@@ -8,7 +8,7 @@
 #define CORE_FPDFAPI_PAGE_CPDF_IMAGE_H_
 
 #include "core/fpdfapi/page/cpdf_colorspace.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/span.h"
