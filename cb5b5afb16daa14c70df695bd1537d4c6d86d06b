@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "195e040e_cde91645",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T04:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6488b624_de7f5eaf",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "cb5b5afb16daa14c70df695bd1537d4c6d86d06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "340ace3b_f65cc46e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -55,6 +79,30 @@
       "writtenOn": "2021-06-30T21:18:26Z",
       "side": 1,
       "message": "maybe early return for null keys which is stronger than a DCHECK.  \nAre there other callers that pass non-literal keys to this?",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "cb5b5afb16daa14c70df695bd1537d4c6d86d06b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdc7ad9_bad4ff58",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T04:55:22Z",
+      "side": 1,
+      "message": "SetFor() has many callers via SetNewFor(). So there are actually many callers. I found a few that pass non-literal keys. I changed this to a CHECK() to help flush out all the potential troublemakers.",
+      "parentUuid": "a7a0b59b_60cb45f9",
       "range": {
         "startLine": 213,
         "startChar": 1,
