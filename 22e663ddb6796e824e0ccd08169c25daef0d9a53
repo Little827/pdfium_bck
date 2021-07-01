@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c13c5e_30b4e6f9",
+        "filename": "core/fxcrt/fx_types.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T19:43:31Z",
+      "side": 1,
+      "message": "To be clear, is this intended to be transitional or permanent? Considering this header doesn\u0027t actually use size_t and friends.",
+      "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
