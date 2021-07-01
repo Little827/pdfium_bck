@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "082b53dc_eaf959a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T20:43:37Z",
+      "side": 1,
+      "message": "e.g turns out this is https://docs.microsoft.com/en-us/cpp/code-quality/understanding-sal?view\u003dmsvc-160",
+      "revId": "371e29977cadfc57f4ea2d7a729306edddcb985d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
