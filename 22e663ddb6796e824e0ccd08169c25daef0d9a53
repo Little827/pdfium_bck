@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d3afed_c4adf16a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T21:51:17Z",
+      "side": 1,
+      "message": "See e.g. https://pdfium-review.googlesource.com/c/pdfium/+/82833/5 for why I want to do this.",
+      "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c13c5e_30b4e6f9",
