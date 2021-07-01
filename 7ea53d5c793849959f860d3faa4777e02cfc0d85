@@ -22,6 +22,30 @@
       },
       "revId": "7ea53d5c793849959f860d3faa4777e02cfc0d85",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e3a187_e3d69c32",
+        "filename": "core/fxcrt/fx_types.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-01T23:43:19Z",
+      "side": 1,
+      "message": "resolved",
+      "parentUuid": "7e0e7017_d802273d",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "7ea53d5c793849959f860d3faa4777e02cfc0d85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
