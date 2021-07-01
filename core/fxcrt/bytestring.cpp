@@ -495,14 +495,10 @@ ByteString ByteString::Substr(size_t first, size_t count) const {
 }
 
 ByteString ByteString::First(size_t count) const {
-  if (count == 0 || !IsValidLength(count))
-    return ByteString();
   return Substr(0, count);
 }
 
 ByteString ByteString::Last(size_t count) const {
-  if (count == 0 || !IsValidLength(count))
-    return ByteString();
   return Substr(GetLength() - count, count);
 }
 

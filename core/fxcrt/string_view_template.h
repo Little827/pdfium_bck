@@ -214,14 +214,10 @@ class StringViewTemplate {
   }
 
   StringViewTemplate First(size_t count) const {
-    if (count == 0 || !IsValidLength(count))
-      return StringViewTemplate();
     return Substr(0, count);
   }
 
   StringViewTemplate Last(size_t count) const {
-    if (count == 0 || !IsValidLength(count))
-      return StringViewTemplate();
     return Substr(GetLength() - count, count);
   }
 
