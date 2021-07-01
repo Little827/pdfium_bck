@@ -101,7 +101,7 @@ CFX_FloatRect CPDF_Page::GetBox(const ByteString& name) const {
 
 Optional<CFX_PointF> CPDF_Page::DeviceToPage(
     const FX_RECT& rect,
-    int rotate,
+    int32_t rotate,
     const CFX_PointF& device_point) const {
   CFX_Matrix page2device = GetDisplayMatrix(rect, rotate);
   return page2device.GetInverse().Transform(device_point);
@@ -109,13 +109,14 @@ Optional<CFX_PointF> CPDF_Page::DeviceToPage(
 
 Optional<CFX_PointF> CPDF_Page::PageToDevice(
     const FX_RECT& rect,
-    int rotate,
+    int32_t rotate,
     const CFX_PointF& page_point) const {
   CFX_Matrix page2device = GetDisplayMatrix(rect, rotate);
   return page2device.Transform(page_point);
 }
 
-CFX_Matrix CPDF_Page::GetDisplayMatrix(const FX_RECT& rect, int iRotate) const {
+CFX_Matrix CPDF_Page::GetDisplayMatrix(const FX_RECT& rect,
+                                       int32_t iRotate) const {
   if (m_PageSize.width == 0 || m_PageSize.height == 0)
     return CFX_Matrix();
 
@@ -172,7 +173,7 @@ CFX_Matrix CPDF_Page::GetDisplayMatrix(const FX_RECT& rect, int iRotate) const {
   return m_PageMatrix * matrix;
 }
 
-int CPDF_Page::GetPageRotation() const {
+int32_t CPDF_Page::GetPageRotation() const {
   CPDF_Object* pRotate = GetPageAttr(pdfium::page_object::kRotate);
   int rotate = pRotate ? (pRotate->GetInteger() / 90) % 4 : 0;
   return (rotate < 0) ? (rotate + 4) : rotate;

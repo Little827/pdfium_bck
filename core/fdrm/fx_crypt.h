@@ -7,7 +7,7 @@
 #ifndef CORE_FDRM_FX_CRYPT_H_
 #define CORE_FDRM_FX_CRYPT_H_
 
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "third_party/base/span.h"
 
 struct CRYPT_rc4_context {

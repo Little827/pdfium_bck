@@ -13,7 +13,7 @@
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_string.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 

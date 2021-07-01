@@ -10,7 +10,7 @@
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/page/cpdf_path.h"
 #include "core/fxcrt/fx_coordinates.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 
 class CPDF_PathObject final : public CPDF_PageObject {
