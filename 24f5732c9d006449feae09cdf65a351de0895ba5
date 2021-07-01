@@ -20,6 +20,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a1644e8_138b3630",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T00:01:32Z",
+      "side": 1,
+      "message": "IWYU \u003cmath.h\u003e",
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26df6bac_4344291f",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T00:01:32Z",
+      "side": 1,
+      "message": "Does sqrtf() work here?",
+      "range": {
+        "startLine": 270,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 20
+      },
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8942566_ca6e4add",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T00:01:32Z",
+      "side": 1,
+      "message": "Remove parens since this is no longer a macro.",
+      "range": {
+        "startLine": 270,
+        "startChar": 21,
+        "endLine": 270,
+        "endChar": 42
+      },
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "270ec8f2_767049cc",
         "filename": "core/fxcrt/fx_system.h",
         "patchSetId": 5
@@ -36,6 +99,53 @@
         "startChar": 18,
         "endLine": 155,
         "endChar": 25
+      },
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b170a53c_bce8daf7",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T00:01:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "270ec8f2_767049cc",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527cb958_f29e6155",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-01T00:01:32Z",
+      "side": 1,
+      "message": "cast necessary?",
+      "range": {
+        "startLine": 1564,
+        "startChar": 43,
+        "endLine": 1564,
+        "endChar": 72
       },
       "revId": "24f5732c9d006449feae09cdf65a351de0895ba5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
