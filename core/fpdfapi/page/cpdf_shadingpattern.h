@@ -12,7 +12,7 @@
 
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_pattern.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
 
 // Values used in PDFs except for |kInvalidShading| and |kMaxShading|.

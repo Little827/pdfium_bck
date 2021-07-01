@@ -10,7 +10,7 @@
 #include "core/fpdfapi/page/cpdf_contentmarks.h"
 #include "core/fpdfapi/page/cpdf_graphicstates.h"
 #include "core/fxcrt/fx_coordinates.h"
-#include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/fx_types.h"
 
 class CPDF_FormObject;
 class CPDF_ImageObject;
