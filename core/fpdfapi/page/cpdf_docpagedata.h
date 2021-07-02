@@ -29,6 +29,10 @@ class CPDF_Pattern;
 class CPDF_Stream;
 class CPDF_StreamAcc;
 
+#if defined(OS_WIN)
+struct LOGFONTA;
+#endif  // define(OS_WIN)
+
 class CPDF_DocPageData : public CPDF_Document::PageDataIface,
                          public CPDF_Font::FormFactoryIface {
  public:

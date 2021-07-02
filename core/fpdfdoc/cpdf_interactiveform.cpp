@@ -33,6 +33,10 @@
 #include "third_party/base/check.h"
 #include "third_party/base/containers/contains.h"
 
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
+
 namespace {
 
 const int nMaxRecursion = 32;
