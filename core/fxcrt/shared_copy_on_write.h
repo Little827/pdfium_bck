@@ -7,7 +7,6 @@
 #ifndef CORE_FXCRT_SHARED_COPY_ON_WRITE_H_
 #define CORE_FXCRT_SHARED_COPY_ON_WRITE_H_
 
-#include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 
 namespace fxcrt {

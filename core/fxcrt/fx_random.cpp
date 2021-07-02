@@ -9,7 +9,6 @@
 #include "build/build_config.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_string.h"
-#include "core/fxcrt/fx_system.h"
 
 #define MT_N 848
 #define MT_M 456

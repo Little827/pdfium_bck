@@ -7,7 +7,6 @@
 #include "core/fxcrt/cfx_datetime.h"
 
 #include "build/build_config.h"
-#include "core/fxcrt/fx_system.h"
 #include "third_party/base/check.h"
 
 #if defined(OS_ANDROID) || defined(OS_LINUX) || defined(OS_CHROMEOS) || \
