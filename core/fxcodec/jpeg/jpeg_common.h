@@ -12,6 +12,12 @@
 
 #include <stdio.h>
 
+#include "build/build_config.h"
+
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
+
 extern "C" {
 
 #undef FAR
