@@ -6,6 +6,8 @@
 
 #include "core/fxcrt/cfx_fileaccess_windows.h"
 
+#include <windows.h>
+
 #include <memory>
 
 #include "core/fxcrt/fx_stream.h"

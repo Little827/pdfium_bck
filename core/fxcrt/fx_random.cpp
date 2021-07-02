@@ -19,6 +19,7 @@
 
 #if defined(OS_WIN)
 #include <wincrypt.h>
+#include <windows.h>  // windows.h must come first.
 #else
 #include <sys/time.h>
 #include <unistd.h>

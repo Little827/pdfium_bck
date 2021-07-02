@@ -17,6 +17,7 @@
 
 #if defined(OS_WIN)
 #include <direct.h>
+#include <windows.h>  // windows.h must come first.
 
 struct FX_FolderHandle {
   HANDLE m_Handle;

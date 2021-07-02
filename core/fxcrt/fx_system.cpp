@@ -12,6 +12,10 @@
 #include "build/build_config.h"
 #include "core/fxcrt/fx_extension.h"
 
+#if defined(OS_WIN)
+#include <windows.h>
+#endif  // defined(OS_WIN)
+
 namespace {
 
 #if !defined(OS_WIN)
@@ -88,6 +92,213 @@ STR_T FXSYS_IntToStr(T value, STR_T str, int radix) {
 
 }  // namespace
 
+int FXSYS_GetACP() {
+#if defined(OS_WIN)
+  return GetACP();
+#else
+  return 0;
+#endif
+}
+
+char* FXSYS_strlwr(char* str) {
+#if defined(OS_WIN)
+  return _strlwr(str);
+#else
+  if (!str) {
+    return nullptr;
+  }
+  char* s = str;
+  while (*str) {
+    *str = tolower(*str);
+    str++;
+  }
+  return s;
+#endif
+}
+
+char* FXSYS_strupr(char* str) {
+#if defined(OS_WIN)
+  return _strupr(str);
+#else
+  if (!str) {
+    return nullptr;
+  }
+  char* s = str;
+  while (*str) {
+    *str = toupper(*str);
+    str++;
+  }
+  return s;
+#endif
+}
+
+wchar_t* FXSYS_wcslwr(wchar_t* str) {
+#if defined(OS_WIN)
+  return _wcslwr(str);
+#else
+  if (!str) {
+    return nullptr;
+  }
+  wchar_t* s = str;
+  while (*str) {
+    *str = FXSYS_towlower(*str);
+    str++;
+  }
+  return s;
+#endif
+}
+
+wchar_t* FXSYS_wcsupr(wchar_t* str) {
+#if defined(OS_WIN)
+  return _wcsupr(str);
+#else
+  if (!str) {
+    return nullptr;
+  }
+  wchar_t* s = str;
+  while (*str) {
+    *str = FXSYS_towupper(*str);
+    str++;
+  }
+  return s;
+#endif
+}
+
+size_t FXSYS_wcsftime(wchar_t* strDest,
+                      size_t maxsize,
+                      const wchar_t* format,
+                      const struct tm* timeptr) {
+#if defined(OS_WIN)
+  // Avoid tripping an invalid parameter handler and crashing process.
+  // Note: leap seconds may cause tm_sec == 60.
+  if (timeptr->tm_year < -1900 || timeptr->tm_year > 8099 ||
+      timeptr->tm_mon < 0 || timeptr->tm_mon > 11 || timeptr->tm_mday < 1 ||
+      timeptr->tm_mday > 31 || timeptr->tm_hour < 0 || timeptr->tm_hour > 23 ||
+      timeptr->tm_min < 0 || timeptr->tm_min > 59 || timeptr->tm_sec < 0 ||
+      timeptr->tm_sec > 60 || timeptr->tm_wday < 0 || timeptr->tm_wday > 6 ||
+      timeptr->tm_yday < 0 || timeptr->tm_yday > 365) {
+    strDest[0] = L'\0';
+    return 0;
+  }
+#endif
+  return wcsftime(strDest, maxsize, format, timeptr);
+}
+
+int FXSYS_stricmp(const char* str1, const char* str2) {
+#if defined(OS_WIN)
+  return _stricmp(str1, str2);
+#else
+  int f;
+  int l;
+  do {
+    f = toupper(*str1);
+    l = toupper(*str2);
+    ++str1;
+    ++str2;
+  } while (f && f == l);
+  return f - l;
+#endif
+}
+
+int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2) {
+#if defined(OS_WIN)
+  return _wcsicmp(str1, str2);
+#else
+  wchar_t f;
+  wchar_t l;
+  do {
+    f = FXSYS_towupper(*str1);
+    l = FXSYS_towupper(*str2);
+    ++str1;
+    ++str2;
+  } while (f && f == l);
+  return f - l;
+#endif
+}
+
+char* FXSYS_itoa(int value, char* str, int radix) {
+#if defined(OS_WIN)
+  return _itoa(value, str, radix);
+#else
+  return FXSYS_IntToStr<int32_t, uint32_t, char*>(value, str, radix);
+#endif
+}
+
+int FXSYS_WideCharToMultiByte(uint32_t codepage,
+                              uint32_t dwFlags,
+                              const wchar_t* wstr,
+                              int wlen,
+                              char* buf,
+                              int buflen,
+                              const char* default_str,
+                              int* pUseDefault) {
+#if defined(OS_WIN)
+  return WideCharToMultiByte(codepage, dwFlags, wstr, wlen, buf, buflen,
+                             default_str, pUseDefault);
+#else
+  int len = 0;
+  for (int i = 0; i < wlen; i++) {
+    if (wstr[i] < 0x100) {
+      if (buf && len < buflen)
+        buf[len] = static_cast<char>(wstr[i]);
+      len++;
+    }
+  }
+  return len;
+#endif
+}
+
+int FXSYS_MultiByteToWideChar(uint32_t codepage,
+                              uint32_t dwFlags,
+                              const char* bstr,
+                              int blen,
+                              wchar_t* buf,
+                              int buflen) {
+#if defined(OS_WIN)
+  return MultiByteToWideChar(codepage, dwFlags, bstr, blen, buf, buflen);
+#else
+  int wlen = 0;
+  for (int i = 0; i < blen; i++) {
+    if (buf && wlen < buflen)
+      buf[wlen] = reinterpret_cast<const uint8_t*>(bstr)[i];
+    wlen++;
+  }
+  return wlen;
+#endif
+}
+
+void FXSYS_SetLastError(uint32_t err) {
+#if defined(OS_WIN)
+  SetLastError(err);
+#else
+  g_last_error = err;
+#endif
+}
+
+uint32_t FXSYS_GetLastError() {
+#if defined(OS_WIN)
+  return GetLastError();
+#else
+  return g_last_error;
+#endif
+}
+
+int32_t FXSYS_atoi(const char* str) {
+  return FXSYS_StrToInt<int32_t, char>(str);
+}
+uint32_t FXSYS_atoui(const char* str) {
+  return FXSYS_StrToInt<uint32_t>(str);
+}
+int32_t FXSYS_wtoi(const wchar_t* str) {
+  return FXSYS_StrToInt<int32_t, wchar_t>(str);
+}
+int64_t FXSYS_atoi64(const char* str) {
+  return FXSYS_StrToInt<int64_t, char>(str);
+}
+const char* FXSYS_i64toa(int64_t value, char* str, int radix) {
+  return FXSYS_IntToStr<int64_t, uint64_t, char*>(value, str, radix);
+}
+
 int FXSYS_roundf(float f) {
   if (std::isnan(f))
     return 0;
@@ -107,164 +318,6 @@ int FXSYS_round(double d) {
     return std::numeric_limits<int>::max();
   return static_cast<int>(round(d));
 }
-
-int32_t FXSYS_atoi(const char* str) {
-  return FXSYS_StrToInt<int32_t, char>(str);
-}
-uint32_t FXSYS_atoui(const char* str) {
-  return FXSYS_StrToInt<uint32_t>(str);
-}
-int32_t FXSYS_wtoi(const wchar_t* str) {
-  return FXSYS_StrToInt<int32_t, wchar_t>(str);
-}
-int64_t FXSYS_atoi64(const char* str) {
-  return FXSYS_StrToInt<int64_t, char>(str);
-}
-const char* FXSYS_i64toa(int64_t value, char* str, int radix) {
-  return FXSYS_IntToStr<int64_t, uint64_t, char*>(value, str, radix);
-}
-
-#if defined(OS_WIN)
-
-size_t FXSYS_wcsftime(wchar_t* strDest,
-                      size_t maxsize,
-                      const wchar_t* format,
-                      const struct tm* timeptr) {
-  // Avoid tripping an invalid parameter handler and crashing process.
-  // Note: leap seconds may cause tm_sec == 60.
-  if (timeptr->tm_year < -1900 || timeptr->tm_year > 8099 ||
-      timeptr->tm_mon < 0 || timeptr->tm_mon > 11 || timeptr->tm_mday < 1 ||
-      timeptr->tm_mday > 31 || timeptr->tm_hour < 0 || timeptr->tm_hour > 23 ||
-      timeptr->tm_min < 0 || timeptr->tm_min > 59 || timeptr->tm_sec < 0 ||
-      timeptr->tm_sec > 60 || timeptr->tm_wday < 0 || timeptr->tm_wday > 6 ||
-      timeptr->tm_yday < 0 || timeptr->tm_yday > 365) {
-    strDest[0] = L'\0';
-    return 0;
-  }
-  return wcsftime(strDest, maxsize, format, timeptr);
-}
-
-#else   // defined(OS_WIN)
-
-int FXSYS_GetACP() {
-  return 0;
-}
-
-char* FXSYS_strlwr(char* str) {
-  if (!str) {
-    return nullptr;
-  }
-  char* s = str;
-  while (*str) {
-    *str = tolower(*str);
-    str++;
-  }
-  return s;
-}
-char* FXSYS_strupr(char* str) {
-  if (!str) {
-    return nullptr;
-  }
-  char* s = str;
-  while (*str) {
-    *str = toupper(*str);
-    str++;
-  }
-  return s;
-}
-wchar_t* FXSYS_wcslwr(wchar_t* str) {
-  if (!str) {
-    return nullptr;
-  }
-  wchar_t* s = str;
-  while (*str) {
-    *str = FXSYS_towlower(*str);
-    str++;
-  }
-  return s;
-}
-wchar_t* FXSYS_wcsupr(wchar_t* str) {
-  if (!str) {
-    return nullptr;
-  }
-  wchar_t* s = str;
-  while (*str) {
-    *str = FXSYS_towupper(*str);
-    str++;
-  }
-  return s;
-}
-
-int FXSYS_stricmp(const char* str1, const char* str2) {
-  int f;
-  int l;
-  do {
-    f = toupper(*str1);
-    l = toupper(*str2);
-    ++str1;
-    ++str2;
-  } while (f && f == l);
-  return f - l;
-}
-
-int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2) {
-  wchar_t f;
-  wchar_t l;
-  do {
-    f = FXSYS_towupper(*str1);
-    l = FXSYS_towupper(*str2);
-    ++str1;
-    ++str2;
-  } while (f && f == l);
-  return f - l;
-}
-
-char* FXSYS_itoa(int value, char* str, int radix) {
-  return FXSYS_IntToStr<int32_t, uint32_t, char*>(value, str, radix);
-}
-
-int FXSYS_WideCharToMultiByte(uint32_t codepage,
-                              uint32_t dwFlags,
-                              const wchar_t* wstr,
-                              int wlen,
-                              char* buf,
-                              int buflen,
-                              const char* default_str,
-                              int* pUseDefault) {
-  int len = 0;
-  for (int i = 0; i < wlen; i++) {
-    if (wstr[i] < 0x100) {
-      if (buf && len < buflen)
-        buf[len] = static_cast<char>(wstr[i]);
-      len++;
-    }
-  }
-  return len;
-}
-
-int FXSYS_MultiByteToWideChar(uint32_t codepage,
-                              uint32_t dwFlags,
-                              const char* bstr,
-                              int blen,
-                              wchar_t* buf,
-                              int buflen) {
-  int wlen = 0;
-  for (int i = 0; i < blen; i++) {
-    if (buf && wlen < buflen)
-      buf[wlen] = reinterpret_cast<const uint8_t*>(bstr)[i];
-    wlen++;
-  }
-  return wlen;
-}
-
-void FXSYS_SetLastError(uint32_t err) {
-  g_last_error = err;
-}
-
-uint32_t FXSYS_GetLastError() {
-  return g_last_error;
-}
-#endif  // defined(OS_WIN)
 
 float FXSYS_sqrt2(float a, float b) {
   return sqrtf(a * a + b * b);
