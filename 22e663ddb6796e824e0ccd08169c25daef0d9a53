@@ -87,6 +87,24 @@
       "parentUuid": "22eb58b4_8d8f0c6f",
       "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6c8962_f7703368",
+        "filename": "core/fxcrt/fx_types.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-02T01:41:58Z",
+      "side": 1,
+      "message": "Ok, fair enough.  I can type \u003cstdint.h\u003e in a lot of places.",
+      "parentUuid": "e9046999_6bc29c25",
+      "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
