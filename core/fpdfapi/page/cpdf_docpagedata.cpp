@@ -42,6 +42,10 @@
 #include "third_party/base/containers/contains.h"
 #include "third_party/base/cxx17_backports.h"
 
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
+
 namespace {
 
 void InsertWidthArrayImpl(std::vector<int> widths, CPDF_Array* pWidthArray) {
