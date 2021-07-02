@@ -40,6 +40,30 @@
       },
       "revId": "1c6a0eb2474b459f6c610e23836e9acf152f09d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a5e21b_b65445ae",
+        "filename": "testing/resources/bad_dict_keys.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-02T17:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbe4833_71095d51",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "1c6a0eb2474b459f6c610e23836e9acf152f09d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
