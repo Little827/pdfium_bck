@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991c036d_0f46f019",
+        "filename": "core/fxcrt/fx_types.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-02T02:43:54Z",
+      "side": 1,
+      "message": "Do we need \u003cstdint.h\u003e here, like line 17 for the POSIX side?",
+      "revId": "c517360e0dd2826b0ab80205330d6f71329cd317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
