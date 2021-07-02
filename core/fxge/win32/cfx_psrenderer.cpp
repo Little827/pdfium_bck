@@ -23,7 +23,6 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "core/fxge/text_char_pos.h"
-#include "core/fxge/win32/cpsoutput.h"
 
 struct PSGlyph {
   UnownedPtr<CFX_Font> m_pFont;
