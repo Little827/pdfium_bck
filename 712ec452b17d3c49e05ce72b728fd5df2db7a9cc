@@ -46,6 +46,30 @@
       },
       "revId": "712ec452b17d3c49e05ce72b728fd5df2db7a9cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039e6d36_603fa19b",
+        "filename": "core/fxcodec/jpeg/jpeg_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-02T16:01:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ed32415_526681fc",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "712ec452b17d3c49e05ce72b728fd5df2db7a9cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
