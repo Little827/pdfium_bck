@@ -16,6 +16,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 
 #if defined(OS_WIN)
+#include <windows.h>  // windows.h must come first.
 #include <direct.h>
 
 struct FX_FolderHandle {

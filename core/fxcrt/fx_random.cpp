@@ -18,6 +18,7 @@
 #define MT_Lower_Mask 0x7fffffff
 
 #if defined(OS_WIN)
+#include <windows.h>  // windows.h must come first.
 #include <wincrypt.h>
 #else
 #include <sys/time.h>
