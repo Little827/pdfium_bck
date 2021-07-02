@@ -42,6 +42,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "767b3348_4852c7b1",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-02T17:49:19Z",
+      "side": 1,
+      "message": "Sure. I don\u0027t think it matters too much either way.",
+      "parentUuid": "cf5021aa_0670315e",
+      "range": {
+        "startLine": 687,
+        "startChar": 2,
+        "endLine": 687,
+        "endChar": 13
+      },
+      "revId": "07b20f820c4e986b8f0f2d5d992f6d22bd49be29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32585470_67cfd4ad",
@@ -55,6 +79,30 @@
       "writtenOn": "2021-07-02T17:33:09Z",
       "side": 1,
       "message": "This can be removed.",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "07b20f820c4e986b8f0f2d5d992f6d22bd49be29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5e2c318_c2b571a1",
+        "filename": "testing/resources/bug_1549.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-02T17:49:19Z",
+      "side": 1,
+      "message": "Remove /ImageC as well.",
+      "parentUuid": "32585470_67cfd4ad",
       "range": {
         "startLine": 40,
         "startChar": 17,
