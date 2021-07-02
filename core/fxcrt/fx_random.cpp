@@ -18,6 +18,12 @@
 #define MT_Lower_Mask 0x7fffffff
 
 #if defined(OS_WIN)
+// windows.h must come first. Place in its own block so clang-format
+// won't attempt to move it.
+#include <windows.h>
+#endif
+
+#if defined(OS_WIN)
 #include <wincrypt.h>
 #else
 #include <sys/time.h>

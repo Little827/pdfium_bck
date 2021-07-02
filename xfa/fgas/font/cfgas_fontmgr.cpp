@@ -26,6 +26,10 @@
 #include "xfa/fgas/font/cfgas_gefont.h"
 #include "xfa/fgas/font/fgas_fontutils.h"
 
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
+
 namespace {
 
 bool VerifyUnicode(const RetainPtr<CFGAS_GEFont>& pFont, wchar_t wcUnicode) {
@@ -174,7 +178,7 @@ CFGAS_FontMgr::CFGAS_FontMgr() : m_FontFaces(EnumGdiFonts(nullptr, 0xFEFF)) {}
 
 CFGAS_FontMgr::~CFGAS_FontMgr() = default;
 
-bool CFGAS_FontMgr::EnumFonts() {
+bool CFGAS_FontMgr::EnumerateFonts() {
   return true;
 }
 
@@ -609,7 +613,7 @@ CFGAS_FontMgr::CFGAS_FontMgr() = default;
 
 CFGAS_FontMgr::~CFGAS_FontMgr() = default;
 
-bool CFGAS_FontMgr::EnumFontsFromFontMapper() {
+bool CFGAS_FontMgr::EnumerateFontsFromFontMapper() {
   CFX_FontMapper* pFontMapper =
       CFX_GEModule::Get()->GetFontMgr()->GetBuiltinMapper();
   pFontMapper->LoadInstalledFonts();
@@ -628,8 +632,8 @@ bool CFGAS_FontMgr::EnumFontsFromFontMapper() {
   return !m_InstalledFonts.empty();
 }
 
-bool CFGAS_FontMgr::EnumFonts() {
-  return EnumFontsFromFontMapper();
+bool CFGAS_FontMgr::EnumerateFonts() {
+  return EnumerateFontsFromFontMapper();
 }
 
 RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByUnicodeImpl(

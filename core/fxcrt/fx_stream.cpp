@@ -16,6 +16,12 @@
 #include "core/fxcrt/unowned_ptr.h"
 
 #if defined(OS_WIN)
+// windows.h must come first. Place in its own block so clang-format won't
+// be tempted to move it.
+#include <windows.h>
+#endif
+
+#if defined(OS_WIN)
 #include <direct.h>
 
 struct FX_FolderHandle {

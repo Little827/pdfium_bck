@@ -98,7 +98,7 @@ class CFGAS_FontMgr {
   CFGAS_FontMgr();
   ~CFGAS_FontMgr();
 
-  bool EnumFonts();
+  bool EnumerateFonts();
   RetainPtr<CFGAS_GEFont> GetFontByCodePage(uint16_t wCodePage,
                                             uint32_t dwFontStyles,
                                             const wchar_t* pszFontFamily);
@@ -126,8 +126,7 @@ class CFGAS_FontMgr {
                                     wchar_t wUnicode);
 
 #else   // defined(OS_WIN)
-  bool EnumFontsFromFontMapper();
-  bool EnumFontsFromFiles();
+  bool EnumerateFontsFromFontMapper();
   void RegisterFace(RetainPtr<CFX_Face> pFace, const WideString* pFaceName);
   void RegisterFaces(const RetainPtr<IFX_SeekableReadStream>& pFontStream,
                      const WideString* pFaceName);
