@@ -7,11 +7,11 @@
 #include "core/fxcrt/cfx_datetime.h"
 
 #include "build/build_config.h"
-#include "core/fxcrt/fx_system.h"
 #include "third_party/base/check.h"
 
-#if defined(OS_ANDROID) || defined(OS_LINUX) || defined(OS_CHROMEOS) || \
-    defined(OS_APPLE) || defined(OS_ASMJS)
+#if defined(OS_WIN)
+#include <windows.h>
+#else
 #include <sys/time.h>
 #include <time.h>
 #endif
