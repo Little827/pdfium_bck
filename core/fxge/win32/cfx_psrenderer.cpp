@@ -23,7 +23,6 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "core/fxge/text_char_pos.h"
-#include "core/fxge/win32/cpsoutput.h"
 
 struct PSGlyph {
   UnownedPtr<CFX_Font> m_pFont;
@@ -555,12 +554,12 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
   WriteToStream(&buf);
 }
 
-bool CFX_PSRenderer::DrawText(int nChars,
-                              const TextCharPos* pCharPos,
-                              CFX_Font* pFont,
-                              const CFX_Matrix& mtObject2Device,
-                              float font_size,
-                              uint32_t color) {
+bool CFX_PSRenderer::DrawTxt(int nChars,
+                             const TextCharPos* pCharPos,
+                             CFX_Font* pFont,
+                             const CFX_Matrix& mtObject2Device,
+                             float font_size,
+                             uint32_t color) {
   // Check object to device matrix first, since it can scale the font size.
   if ((mtObject2Device.a == 0 && mtObject2Device.b == 0) ||
       (mtObject2Device.c == 0 && mtObject2Device.d == 0)) {
