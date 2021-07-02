@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd779304_612f6ece",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-02T17:44:59Z",
+      "side": 1,
+      "message": "Missing windows.h in one place that actually used some of it. But worse, \nit looks like windows has been secretly re-writing the names of our methods behind the covers !!!!\n\n./../core/fpdfapi/page/cpdf_textstate.cpp(21,16): error: no member named \u0027GetObjectW\u0027 in \u0027fxcrt::SharedCopyOnWrite\u003cCPDF_TextState::TextData\u003e\u0027; did you mean \u0027GetObject\u0027?\n  return m_Ref.GetObject()-\u003em_pFont;\n               ^~~~~~~~~\n               GetObject\n../../third_party/depot_tools/win_toolchain/vs_files/20d5f2553f\\Windows Kits\\10\\Include\\10.0.19041.0\\um\\wingdi.h(5072,20): note: expanded from macro \u0027GetObject\u0027\n#define GetObject  GetObjectW\n                   ^\n\nstay tuned.",
+      "revId": "a5577e763b51bfd79dd90735c428c5efce1903e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
