@@ -91,12 +91,14 @@ class CFX_PSRenderer {
                   uint32_t color,
                   const CFX_Matrix& matrix,
                   const FXDIB_ResampleOptions& options);
-  bool DrawText(int nChars,
-                const TextCharPos* pCharPos,
-                CFX_Font* pFont,
-                const CFX_Matrix& mtObject2Device,
-                float font_size,
-                uint32_t color);
+
+  // NOTE: named to avoid collision with win32 DrawText macro.
+  bool DrawTxt(int nChars,
+               const TextCharPos* pCharPos,
+               CFX_Font* pFont,
+               const CFX_Matrix& mtObject2Device,
+               float font_size,
+               uint32_t color);
 
  private:
   void OutputPath(const CFX_Path* pPath, const CFX_Matrix* pObject2Device);

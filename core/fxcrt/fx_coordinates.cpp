@@ -14,6 +14,10 @@
 #include "core/fxcrt/fx_system.h"
 #include "third_party/base/cxx17_backports.h"
 
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
+
 #ifndef NDEBUG
 #include <ostream>
 #endif
