@@ -10,10 +10,15 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/compiler_specific.h"
+
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
 
 struct FX_FolderHandle;
 
