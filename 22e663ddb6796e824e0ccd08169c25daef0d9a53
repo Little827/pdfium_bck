@@ -69,6 +69,24 @@
       "parentUuid": "a9491c7e_44c9e877",
       "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9046999_6bc29c25",
+        "filename": "core/fxcrt/fx_types.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-02T00:45:12Z",
+      "side": 1,
+      "message": "Well, Chromium had base/basictypes.h, but we removed it in favor of including system headers directly. I think it would be good to be aligned with that, so developers don\u0027t have to know there\u0027s a special header to include instead of \u003cstdint.h\u003e. https://chromium.googlesource.com/chromium/src/+/a97fe0c8f0017c2dc3dad1aeb7607f3499e19f32%5E%21/#F4\n\nCan we keep this file just for FX_FILESIZE?",
+      "parentUuid": "22eb58b4_8d8f0c6f",
+      "revId": "22e663ddb6796e824e0ccd08169c25daef0d9a53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
