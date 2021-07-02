@@ -191,6 +191,6 @@ bool CPSPrinterDriver::DrawDeviceText(
     float font_size,
     uint32_t color,
     const CFX_TextRenderOptions& /*options*/) {
-  return m_PSRenderer.DrawText(nChars, pCharPos, pFont, mtObject2Device,
-                               font_size, color);
+  return m_PSRenderer.DrawTxt(nChars, pCharPos, pFont, mtObject2Device,
+                              font_size, color);
 }

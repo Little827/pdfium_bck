@@ -42,6 +42,10 @@
 #include "third_party/base/containers/contains.h"
 #include "third_party/base/cxx17_backports.h"
 
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
+
 namespace {
 
 void InsertWidthArrayImpl(std::vector<int> widths, CPDF_Array* pWidthArray) {
@@ -550,7 +554,8 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
 }
 
 #if defined(OS_WIN)
-RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
+RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(void* arg) {
+  auto* pLogFont = static_cast<LOGFONTA*>(arg);
   pLogFont->lfHeight = -1000;
   pLogFont->lfWidth = 0;
   HGDIOBJ hFont = CreateFontIndirectA(pLogFont);

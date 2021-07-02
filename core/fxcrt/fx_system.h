@@ -25,14 +25,11 @@
 #error Cannot compile v8 with wasm.
 #endif  // PDF_ENABLE_V8
 
-#if defined(OS_WIN)
-#include <windows.h>
-#endif  // defined(OS_WIN)
-
 #ifdef __cplusplus
 extern "C" {
 #endif  // __cplusplus
 
+// Functions and definitions in this section are available in C and C++.
 #define FXSYS_IsFloatZero(f) ((f) < 0.0001 && (f) > -0.0001)
 #define FXSYS_IsFloatBigger(fa, fb) \
   ((fa) > (fb) && !FXSYS_IsFloatZero((fa) - (fb)))
@@ -51,8 +48,59 @@ extern "C" {
 #define FXSYS_sprintf DO_NOT_USE_SPRINTF_DIE_DIE_DIE
 #define FXSYS_vsprintf DO_NOT_USE_VSPRINTF_DIE_DIE_DIE
 
+int FXSYS_GetACP();
+char* FXSYS_itoa(int value, char* str, int radix);
+int FXSYS_WideCharToMultiByte(uint32_t codepage,
+                              uint32_t dwFlags,
+                              const wchar_t* wstr,
+                              int wlen,
+                              char* buf,
+                              int buflen,
+                              const char* default_str,
+                              int* pUseDefault);
+int FXSYS_MultiByteToWideChar(uint32_t codepage,
+                              uint32_t dwFlags,
+                              const char* bstr,
+                              int blen,
+                              wchar_t* buf,
+                              int buflen);
+char* FXSYS_strlwr(char* str);
+char* FXSYS_strupr(char* str);
+int FXSYS_stricmp(const char* str1, const char* str2);
+int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2);
+wchar_t* FXSYS_wcslwr(wchar_t* str);
+wchar_t* FXSYS_wcsupr(wchar_t* str);
+size_t FXSYS_wcsftime(wchar_t* strDest,
+                      size_t maxsize,
+                      const wchar_t* format,
+                      const struct tm* timeptr);
+void FXSYS_SetLastError(uint32_t err);
+uint32_t FXSYS_GetLastError();
+int32_t FXSYS_atoi(const char* str);
+uint32_t FXSYS_atoui(const char* str);
+int32_t FXSYS_wtoi(const wchar_t* str);
+int64_t FXSYS_atoi64(const char* str);
+const char* FXSYS_i64toa(int64_t value, char* str, int radix);
+int FXSYS_roundf(float f);
+int FXSYS_round(double d);
+float FXSYS_sqrt2(float a, float b);
+
 #ifdef __cplusplus
 }  // extern "C"
+
+// Functions and definitions in this section are available in C++ only.
+#define FXSYS_WORD_GET_LSBFIRST(p)                            \
+  (static_cast<uint16_t>((static_cast<uint16_t>(p[1]) << 8) | \
+                         (static_cast<uint16_t>(p[0]))))
+#define FXSYS_WORD_GET_MSBFIRST(p)                            \
+  (static_cast<uint16_t>((static_cast<uint16_t>(p[0]) << 8) | \
+                         (static_cast<uint16_t>(p[1]))))
+#define FXSYS_DWORD_GET_LSBFIRST(p)                                            \
+  ((static_cast<uint32_t>(p[3]) << 24) | (static_cast<uint32_t>(p[2]) << 16) | \
+   (static_cast<uint32_t>(p[1]) << 8) | (static_cast<uint32_t>(p[0])))
+#define FXSYS_DWORD_GET_MSBFIRST(p)                                            \
+  ((static_cast<uint32_t>(p[0]) << 24) | (static_cast<uint32_t>(p[1]) << 16) | \
+   (static_cast<uint32_t>(p[2]) << 8) | (static_cast<uint32_t>(p[3])))
 
 // Overloaded functions for C++ templates
 inline size_t FXSYS_len(const char* ptr) {
@@ -78,77 +126,5 @@ inline const char* FXSYS_chr(const char* ptr, char ch, size_t len) {
 inline const wchar_t* FXSYS_chr(const wchar_t* ptr, wchar_t ch, size_t len) {
   return wmemchr(ptr, ch, len);
 }
-
-extern "C" {
 #endif  // __cplusplus
-
-#if defined(OS_WIN)
-#define FXSYS_GetACP GetACP
-#define FXSYS_itoa _itoa
-#define FXSYS_WideCharToMultiByte WideCharToMultiByte
-#define FXSYS_MultiByteToWideChar MultiByteToWideChar
-#define FXSYS_strlwr _strlwr
-#define FXSYS_strupr _strupr
-#define FXSYS_stricmp _stricmp
-#define FXSYS_wcsicmp _wcsicmp
-#define FXSYS_wcslwr _wcslwr
-#define FXSYS_wcsupr _wcsupr
-size_t FXSYS_wcsftime(wchar_t* strDest,
-                      size_t maxsize,
-                      const wchar_t* format,
-                      const struct tm* timeptr);
-#define FXSYS_SetLastError SetLastError
-#define FXSYS_GetLastError GetLastError
-#else  // defined(OS_WIN)
-int FXSYS_GetACP();
-char* FXSYS_itoa(int value, char* str, int radix);
-int FXSYS_WideCharToMultiByte(uint32_t codepage,
-                              uint32_t dwFlags,
-                              const wchar_t* wstr,
-                              int wlen,
-                              char* buf,
-                              int buflen,
-                              const char* default_str,
-                              int* pUseDefault);
-int FXSYS_MultiByteToWideChar(uint32_t codepage,
-                              uint32_t dwFlags,
-                              const char* bstr,
-                              int blen,
-                              wchar_t* buf,
-                              int buflen);
-char* FXSYS_strlwr(char* str);
-char* FXSYS_strupr(char* str);
-int FXSYS_stricmp(const char* str1, const char* str2);
-int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2);
-wchar_t* FXSYS_wcslwr(wchar_t* str);
-wchar_t* FXSYS_wcsupr(wchar_t* str);
-#define FXSYS_wcsftime wcsftime
-void FXSYS_SetLastError(uint32_t err);
-uint32_t FXSYS_GetLastError();
-#endif  // defined(OS_WIN)
-
-#define FXSYS_WORD_GET_LSBFIRST(p)                            \
-  (static_cast<uint16_t>((static_cast<uint16_t>(p[1]) << 8) | \
-                         (static_cast<uint16_t>(p[0]))))
-#define FXSYS_WORD_GET_MSBFIRST(p)                            \
-  (static_cast<uint16_t>((static_cast<uint16_t>(p[0]) << 8) | \
-                         (static_cast<uint16_t>(p[1]))))
-#define FXSYS_DWORD_GET_LSBFIRST(p)                                            \
-  ((static_cast<uint32_t>(p[3]) << 24) | (static_cast<uint32_t>(p[2]) << 16) | \
-   (static_cast<uint32_t>(p[1]) << 8) | (static_cast<uint32_t>(p[0])))
-#define FXSYS_DWORD_GET_MSBFIRST(p)                                            \
-  ((static_cast<uint32_t>(p[0]) << 24) | (static_cast<uint32_t>(p[1]) << 16) | \
-   (static_cast<uint32_t>(p[2]) << 8) | (static_cast<uint32_t>(p[3])))
-int32_t FXSYS_atoi(const char* str);
-uint32_t FXSYS_atoui(const char* str);
-int32_t FXSYS_wtoi(const wchar_t* str);
-int64_t FXSYS_atoi64(const char* str);
-const char* FXSYS_i64toa(int64_t value, char* str, int radix);
-int FXSYS_roundf(float f);
-int FXSYS_round(double d);
-float FXSYS_sqrt2(float a, float b);
-#ifdef __cplusplus
-}  // extern C
-#endif  // __cplusplus
-
 #endif  // CORE_FXCRT_FX_SYSTEM_H_
