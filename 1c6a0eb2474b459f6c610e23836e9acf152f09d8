@@ -17,6 +17,29 @@
       "message": "In the last bug with empty keys, noticed the fuzzer-generated PDF also has invalid chars. Hopefully with the CHECK() in place, the fuzzer can flush out some other bad callers.",
       "revId": "1c6a0eb2474b459f6c610e23836e9acf152f09d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bbe4833_71095d51",
+        "filename": "testing/resources/bad_dict_keys.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-02T17:51:40Z",
+      "side": 1,
+      "message": "nit: might be happier with 0x80 in case someone decides NUL is an OK ascii char down the road.",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "1c6a0eb2474b459f6c610e23836e9acf152f09d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
