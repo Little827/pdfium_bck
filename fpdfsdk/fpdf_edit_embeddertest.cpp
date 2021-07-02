@@ -661,6 +661,42 @@ TEST_F(FPDFEditEmbedderTest, BUG_1399) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbedderTest, BUG_1549) {
+  static const char kOriginalChecksum[] = "126366fb95e6caf8ea196780075b22b2";
+  static const char kRemovedChecksum[] = "6ec2f27531927882624b37bc7d8e12f4";
+
+  ASSERT_TRUE(OpenDocument("bug_1549.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+
+  {
+    ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+    CompareBitmap(bitmap.get(), 100, 150, kOriginalChecksum);
+
+    ScopedFPDFPageObject obj(FPDFPage_GetObject(page, 0));
+    ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj.get()));
+    ASSERT_TRUE(FPDFPage_RemoveObject(page, obj.get()));
+  }
+
+  ASSERT_TRUE(FPDFPage_GenerateContent(page));
+
+  {
+    ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+    CompareBitmap(bitmap.get(), 100, 150, kRemovedChecksum);
+  }
+
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  UnloadPage(page);
+
+  ASSERT_TRUE(OpenSavedDocument());
+  page = LoadSavedPage(0);
+  ASSERT_TRUE(page);
+  // TODO(crbug.com/pdfium/1549): Should be `kRemovedChecksum`.
+  VerifySavedRendering(page, 100, 150, "4f9889cd5993db20f1ab37d677ac8d26");
+
+  CloseSavedPage(page);
+  CloseSavedDocument();
+}
+
 TEST_F(FPDFEditEmbedderTest, SetText) {
   // Load document with some text.
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
