@@ -14,10 +14,6 @@
 
 #include <stddef.h>
 
-#if defined(_WIN32) && !defined(__WINDOWS__)
-#include <windows.h>
-#endif
-
 #ifdef PDF_ENABLE_XFA
 // PDF_USE_XFA is set in confirmation that this version of PDFium can support
 // XFA forms as requested by the PDF_ENABLE_XFA setting.
