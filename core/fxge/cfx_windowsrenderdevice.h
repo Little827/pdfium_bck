@@ -36,7 +36,7 @@ extern WindowsPrintMode g_pdfium_print_mode;
 
 class CFX_WindowsRenderDevice : public CFX_RenderDevice {
  public:
-  CFX_WindowsRenderDevice(HDC hDC, const EncoderIface* pEncoderIface);
+  CFX_WindowsRenderDevice(void* hDC, const EncoderIface* pEncoderIface);
   ~CFX_WindowsRenderDevice() override;
 
 #if defined(_SKIA_SUPPORT_)
