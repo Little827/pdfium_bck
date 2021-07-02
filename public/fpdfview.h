@@ -14,10 +14,6 @@
 
 #include <stddef.h>
 
-#if defined(_WIN32) && !defined(__WINDOWS__)
-#include <windows.h>
-#endif
-
 #ifdef PDF_ENABLE_XFA
 // PDF_USE_XFA is set in confirmation that this version of PDFium can support
 // XFA forms as requested by the PDF_ENABLE_XFA setting.
@@ -811,7 +807,7 @@ typedef struct FPDF_COLORSCHEME_ {
 //          Render contents of a page to a device (screen, bitmap, or printer).
 //          This function is only supported on Windows.
 // Parameters:
-//          dc          -   Handle to the device context.
+//          dc          -   Handle to the device context (windows HDC).
 //          page        -   Handle to the page. Returned by FPDF_LoadPage.
 //          start_x     -   Left pixel position of the display area in
 //                          device coordinates.
@@ -828,7 +824,7 @@ typedef struct FPDF_COLORSCHEME_ {
 //                          defined above.
 // Return value:
 //          None.
-FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
+FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(void* dc,
                                                FPDF_PAGE page,
                                                int start_x,
                                                int start_y,

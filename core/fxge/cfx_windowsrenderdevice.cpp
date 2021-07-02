@@ -46,9 +46,9 @@ std::unique_ptr<RenderDeviceDriverIface> CreateDriver(
 WindowsPrintMode g_pdfium_print_mode = WindowsPrintMode::kModeEmf;
 
 CFX_WindowsRenderDevice::CFX_WindowsRenderDevice(
-    HDC hDC,
+    void* hDC,
     const EncoderIface* pEncoderIface) {
-  SetDeviceDriver(CreateDriver(hDC, pEncoderIface));
+  SetDeviceDriver(CreateDriver(static_cast<HDC>(hDC), pEncoderIface));
 }
 
 CFX_WindowsRenderDevice::~CFX_WindowsRenderDevice() = default;
