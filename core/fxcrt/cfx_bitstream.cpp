@@ -9,7 +9,6 @@
 #include <limits>
 
 #include "core/fxcrt/fx_memory.h"
-#include "core/fxcrt/fx_system.h"
 #include "third_party/base/check.h"
 
 CFX_BitStream::CFX_BitStream(pdfium::span<const uint8_t> pData)

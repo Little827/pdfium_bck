@@ -13,7 +13,6 @@
 #include <memory>
 #include <utility>
 
-#include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 
 namespace fxcrt {
@@ -27,7 +26,6 @@ class WeakPtr {
   explicit WeakPtr(std::unique_ptr<T, D> pObj)
       : m_pHandle(new Handle(std::move(pObj))) {}
 
-  // Deliberately implicit to allow passing nullptr.
   // NOLINTNEXTLINE(runtime/explicit)
   WeakPtr(std::nullptr_t arg) {}
 
