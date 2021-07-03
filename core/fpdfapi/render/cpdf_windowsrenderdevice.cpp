@@ -20,7 +20,7 @@ constexpr EncoderIface kEncoderIface = {
 
 }  // namespace
 
-CPDF_WindowsRenderDevice::CPDF_WindowsRenderDevice(HDC hDC)
+CPDF_WindowsRenderDevice::CPDF_WindowsRenderDevice(void* hDC)
     : CFX_WindowsRenderDevice(hDC, &kEncoderIface) {}
 
 CPDF_WindowsRenderDevice::~CPDF_WindowsRenderDevice() = default;

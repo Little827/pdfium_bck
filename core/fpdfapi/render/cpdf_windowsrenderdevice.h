@@ -11,7 +11,7 @@
 
 class CPDF_WindowsRenderDevice final : public CFX_WindowsRenderDevice {
  public:
-  explicit CPDF_WindowsRenderDevice(HDC hDC);
+  explicit CPDF_WindowsRenderDevice(void* hDC);
   ~CPDF_WindowsRenderDevice() override;
 };
 

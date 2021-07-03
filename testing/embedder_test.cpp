@@ -31,6 +31,10 @@
 #include "v8/include/v8.h"
 #endif  // PDF_ENABLE_V8
 
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
+
 namespace {
 
 int GetBitmapBytesPerPixel(FPDF_BITMAP bitmap) {

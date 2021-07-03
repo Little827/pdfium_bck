@@ -489,7 +489,7 @@ void RenderBitmap(CFX_RenderDevice* device,
 
 }  // namespace
 
-FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
+FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(void* dc,
                                                FPDF_PAGE page,
                                                int start_x,
                                                int start_y,
