@@ -157,6 +157,30 @@
       },
       "revId": "d459c6d096f40018b5ffdad085c2da0a56fcb811",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29444c2_bba376e5",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-07-05T08:07:44Z",
+      "side": 0,
+      "message": "Done in https://pdfium-review.googlesource.com/c/pdfium/+/82930",
+      "parentUuid": "b429549c_56f3420f",
+      "range": {
+        "startLine": 1205,
+        "startChar": 20,
+        "endLine": 1205,
+        "endChar": 24
+      },
+      "revId": "d459c6d096f40018b5ffdad085c2da0a56fcb811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
