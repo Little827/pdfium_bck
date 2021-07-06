@@ -14,8 +14,8 @@
 
 #include <stddef.h>
 
-#if defined(_WIN32) && !defined(__WINDOWS__)
-#include <windows.h>
+#if defined(_WIN32) && !defined(__WINDEF__)
+#include <windef.h>
 #endif
 
 #ifdef PDF_ENABLE_XFA
