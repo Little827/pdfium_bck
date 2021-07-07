@@ -27,6 +27,8 @@
 
 #if defined(OS_WIN)
 #include <windows.h>
+#undef GetObject
+#undef DrawText
 #endif  // defined(OS_WIN)
 
 #ifdef __cplusplus
