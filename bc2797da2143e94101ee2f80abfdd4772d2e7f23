@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719a808f_0c7baa93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-07-07T22:40:27Z",
+      "side": 1,
+      "message": "FYI, I don\u0027t have authority to approve these.",
+      "revId": "bc2797da2143e94101ee2f80abfdd4772d2e7f23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
