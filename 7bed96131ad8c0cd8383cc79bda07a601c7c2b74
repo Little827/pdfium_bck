@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8fd52b_0e11cffc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-07T17:50:51Z",
+      "side": 1,
+      "message": "And this seems intractable because:\npublic/fpdf_sysfontinfo.h(85,10): note: \u0027EnumFonts\u0027 declared here\n  void (*EnumFonts)(struct _FPDF_SYSFONTINFO* pThis, void* pMapper);\n  \nwhich has been silently renamed for years so no embedder that includes windows.h will be able to set this up properly without resorting to their own #undef trickery.",
+      "revId": "7bed96131ad8c0cd8383cc79bda07a601c7c2b74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
