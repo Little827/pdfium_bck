@@ -16,6 +16,24 @@
       "message": "FYI, I don\u0027t have authority to approve these.",
       "revId": "bc2797da2143e94101ee2f80abfdd4772d2e7f23",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de06598c_eeebbb0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-07-07T22:41:33Z",
+      "side": 1,
+      "message": "Yup. My bad. I was trying to distribute these across the team.",
+      "parentUuid": "719a808f_0c7baa93",
+      "revId": "bc2797da2143e94101ee2f80abfdd4772d2e7f23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
