@@ -11,6 +11,7 @@
 #include <utility>
 #include <vector>
 
+#include "build/build_config.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
 #include "public/fpdf_attachment.h"
@@ -19,6 +20,10 @@
 #include "testing/fx_string_testhelpers.h"
 #include "testing/image_diff/image_diff_png.h"
 #include "third_party/base/notreached.h"
+
+#if defined(OS_WIN)
+#include <windows.h>
+#endif
 
 namespace {
 

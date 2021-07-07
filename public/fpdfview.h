@@ -15,7 +15,8 @@
 #include <stddef.h>
 
 #if defined(_WIN32) && !defined(__WINDOWS__)
-#include <windows.h>
+// Forward-declare Windows compatible handles.
+typedef struct HDC__* HDC;
 #endif
 
 #ifdef PDF_ENABLE_XFA
