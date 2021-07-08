@@ -16,7 +16,7 @@ class CPDF_StringArchiveStream final : public IFX_ArchiveStream {
   bool WriteByte(uint8_t byte) override;
   bool WriteDWord(uint32_t i) override;
   FX_FILESIZE CurrentOffset() const override;
-  bool WriteBlock(const void* pData, size_t size) override;
+  bool WriteBlock(pdfium::span<const uint8_t> pData) override;
   bool WriteString(ByteStringView str) override;
 
  private:

@@ -95,8 +95,8 @@ RetainPtr<IFX_SeekableReadStream> IFX_SeekableReadStream::CreateFromFilename(
   return IFX_SeekableStream::CreateFromFilename(filename, FX_FILEMODE_ReadOnly);
 }
 
-bool IFX_SeekableWriteStream::WriteBlock(const void* pData, size_t size) {
-  return WriteBlockAtOffset(pData, GetSize(), size);
+bool IFX_SeekableWriteStream::WriteBlock(pdfium::span<const uint8_t> pData) {
+  return WriteBlockAtOffset(pData.data(), GetSize(), pData.size());
 }
 
 bool IFX_SeekableReadStream::IsEOF() {
@@ -111,12 +111,12 @@ size_t IFX_SeekableReadStream::ReadBlock(void* buffer, size_t size) {
   return 0;
 }
 
-bool IFX_SeekableStream::WriteBlock(const void* buffer, size_t size) {
-  return WriteBlockAtOffset(buffer, GetSize(), size);
+bool IFX_SeekableStream::WriteBlock(pdfium::span<const uint8_t> buffer) {
+  return WriteBlockAtOffset(buffer.data(), GetSize(), buffer.size());
 }
 
 bool IFX_SeekableStream::WriteString(ByteStringView str) {
-  return WriteBlock(str.unterminated_c_str(), str.GetLength());
+  return WriteBlock(str.raw_span());
 }
 
 FX_FolderHandle* FX_OpenFolder(const char* path) {

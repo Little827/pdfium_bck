@@ -33,7 +33,7 @@ struct FxFolderHandleCloser {
 
 class IFX_WriteStream {
  public:
-  virtual bool WriteBlock(const void* pData, size_t size) = 0;
+  virtual bool WriteBlock(pdfium::span<const uint8_t> pData) = 0;
   virtual bool WriteString(ByteStringView str) = 0;
 
  protected:
@@ -59,7 +59,7 @@ class IFX_SeekableWriteStream : virtual public IFX_StreamWithSize,
                                 public IFX_RetainableWriteStream {
  public:
   // IFX_WriteStream:
-  bool WriteBlock(const void* pData, size_t size) override;
+  bool WriteBlock(pdfium::span<const uint8_t> pData) override;
 
   virtual bool Flush() = 0;
   virtual bool WriteBlockAtOffset(const void* pData,
@@ -93,7 +93,7 @@ class IFX_SeekableStream : public IFX_SeekableReadStream,
       uint32_t dwModes);
 
   // IFX_SeekableWriteStream:
-  bool WriteBlock(const void* buffer, size_t size) override;
+  bool WriteBlock(pdfium::span<const uint8_t> buffer) override;
   bool WriteString(ByteStringView str) override;
 };
 
