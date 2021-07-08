@@ -52,6 +52,16 @@ pdfium::span<T> Subspan(std::vector<T, A>& vec,
   return pdfium::make_span(vec).subspan(start, count);
 }
 
+template <typename T, typename A>
+pdfium::span<T> First(std::vector<T, A>& vec, size_t count) {
+  return pdfium::make_span(vec).first(count);
+}
+
+template <typename T, typename A>
+pdfium::span<T> Last(std::vector<T, A>& vec, size_t count) {
+  return pdfium::make_span(vec).last(count);
+}
+
 }  // namespace fxcrt
 
 #endif  // CORE_FXCRT_SPAN_UTIL_H_
