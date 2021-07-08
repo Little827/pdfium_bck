@@ -665,9 +665,9 @@ void CFX_PSRenderer::WritePSBinary(const uint8_t* data, int len) {
   uint32_t dest_size;
   if (m_pEncoderIface->pA85EncodeFunc({data, static_cast<size_t>(len)},
                                       &dest_buf, &dest_size)) {
-    m_pStream->WriteBlock(dest_buf.get(), dest_size);
+    m_pStream->WriteBlock({dest_buf.get, dest_size});
   } else {
-    m_pStream->WriteBlock(data, len);
+    m_pStream->WriteBlock({data, len});
   }
 }
 

@@ -39,7 +39,7 @@ class CFX_FileBufferArchive final : public IFX_ArchiveStream {
       const RetainPtr<IFX_RetainableWriteStream>& file);
   ~CFX_FileBufferArchive() override;
 
-  bool WriteBlock(const void* pBuf, size_t size) override;
+  bool WriteBlock(pdfium::span<const uint8_t> pBuf) override;
   bool WriteByte(uint8_t byte) override;
   bool WriteDWord(uint32_t i) override;
   bool WriteString(ByteStringView str) override;
@@ -72,15 +72,14 @@ bool CFX_FileBufferArchive::Flush() {
     return false;
   if (!nRemaining)
     return true;
-  return backing_file_->WriteBlock(buffer_.data(), nRemaining);
+  return backing_file_->WriteBlock(fxcrt::First(buffer_, nRemaining));
 }
 
-bool CFX_FileBufferArchive::WriteBlock(const void* pBuf, size_t size) {
-  DCHECK(pBuf);
-  DCHECK(size > 0);
+bool CFX_FileBufferArchive::WriteBlock(pdfium::span<const uint8_t> pBuf) {
+  DCHECK(!pBuf.empty());
 
-  const uint8_t* buffer = reinterpret_cast<const uint8_t*>(pBuf);
-  size_t temp_size = size;
+  const uint8_t* buffer = pBuf.data();
+  size_t temp_size = pBuf.size();
   while (temp_size) {
     size_t buf_size = std::min(kArchiveBufferSize - current_length_, temp_size);
     fxcrt::spancpy(fxcrt::Subspan(buffer_, current_length_),
@@ -95,7 +94,7 @@ bool CFX_FileBufferArchive::WriteBlock(const void* pBuf, size_t size) {
   }
 
   FX_SAFE_FILESIZE safe_offset = offset_;
-  safe_offset += size;
+  safe_offset += pBuf.size();
   if (!safe_offset.IsValid())
     return false;
 
@@ -104,17 +103,17 @@ bool CFX_FileBufferArchive::WriteBlock(const void* pBuf, size_t size) {
 }
 
 bool CFX_FileBufferArchive::WriteByte(uint8_t byte) {
-  return WriteBlock(&byte, 1);
+  return WriteBlock({&byte, 1});
 }
 
 bool CFX_FileBufferArchive::WriteDWord(uint32_t i) {
   char buf[32];
   FXSYS_itoa(i, buf, 10);
-  return WriteBlock(buf, strlen(buf));
+  return WriteBlock({reinterpret_cast<uint8_t*>(buf), strlen(buf)});
 }
 
 bool CFX_FileBufferArchive::WriteString(ByteStringView str) {
-  return WriteBlock(str.raw_str(), str.GetLength());
+  return WriteBlock(str.raw_span());
 }
 
 ByteString GenerateFileID(uint32_t dwSeed1, uint32_t dwSeed2) {
@@ -269,7 +268,7 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage1() {
         if (!m_pParser->GetSyntax()->ReadBlock(buffer.data(), block_size)) {
           return Stage::kInvalid;
         }
-        if (!m_Archive->WriteBlock(buffer.data(), block_size))
+        if (!m_Archive->WriteBlock(fxcrt::First(buffer, block_size)))
           return Stage::kInvalid;
 
         src_size -= block_size;
@@ -503,8 +502,10 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage4() {
       char offset_buf[20];
       memset(offset_buf, 0, sizeof(offset_buf));
       FXSYS_i64toa(prev, offset_buf, 10);
-      if (!m_Archive->WriteBlock(offset_buf, strlen(offset_buf)))
+      if (!m_Archive->WriteBlock(
+              {reinterpret_cast<uint8_t*>(offset_buf), strlen(offset_buf)})) {
         return Stage::kInvalid;
+      }
     }
   }
   if (m_pIDArray) {
@@ -568,7 +569,8 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage4() {
   char offset_buf[20];
   memset(offset_buf, 0, sizeof(offset_buf));
   FXSYS_i64toa(m_XrefStart, offset_buf, 10);
-  if (!m_Archive->WriteBlock(offset_buf, strlen(offset_buf)) ||
+  if (!m_Archive->WriteBlock(
+          {reinterpret_cast<uint8_t*>(offset_buf), strlen(offset_buf)}) ||
       !m_Archive->WriteString("\r\n%%EOF\r\n")) {
     return Stage::kInvalid;
   }
