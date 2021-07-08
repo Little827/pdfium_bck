@@ -665,13 +665,16 @@ void CFX_PSRenderer::WritePSBinary(const uint8_t* data, int len) {
   uint32_t dest_size;
   if (m_pEncoderIface->pA85EncodeFunc({data, static_cast<size_t>(len)},
                                       &dest_buf, &dest_size)) {
-    m_pStream->WriteBlock(dest_buf.get(), dest_size);
+    m_pStream->WriteBlock({dest_buf.get(), dest_size});
   } else {
-    m_pStream->WriteBlock(data, len);
+    m_pStream->WriteBlock({data, static_cast<size_t>(len)});
   }
 }
 
 void CFX_PSRenderer::WriteToStream(std::ostringstream* stringStream) {
-  if (stringStream->tellp() > 0)
-    m_pStream->WriteBlock(stringStream->str().c_str(), stringStream->tellp());
+  if (stringStream->tellp() > 0) {
+    m_pStream->WriteBlock(
+        {reinterpret_cast<const uint8_t*>(stringStream->str().c_str()),
+         static_cast<size_t>(stringStream->tellp())});
+  }
 }
