@@ -14,6 +14,7 @@
 #include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/compiler_specific.h"
+#include "third_party/base/span.h"
 
 struct FX_FolderHandle;
 
@@ -33,7 +34,7 @@ struct FxFolderHandleCloser {
 
 class IFX_WriteStream {
  public:
-  virtual bool WriteBlock(const void* pData, size_t size) = 0;
+  virtual bool WriteBlock(pdfium::span<const uint8_t> pData) = 0;
 
   bool WriteString(ByteStringView str);
   bool WriteByte(uint8_t byte);
@@ -61,12 +62,11 @@ class IFX_SeekableWriteStream : virtual public IFX_StreamWithSize,
                                 public IFX_RetainableWriteStream {
  public:
   // IFX_WriteStream:
-  bool WriteBlock(const void* pData, size_t size) override;
+  bool WriteBlock(pdfium::span<const uint8_t> pData) override;
 
   virtual bool Flush() = 0;
-  virtual bool WriteBlockAtOffset(const void* pData,
-                                  FX_FILESIZE offset,
-                                  size_t size) = 0;
+  virtual bool WriteBlockAtOffset(pdfium::span<const uint8_t> pData,
+                                  FX_FILESIZE offset) = 0;
 };
 
 class IFX_SeekableReadStream : virtual public Retainable,
@@ -95,7 +95,7 @@ class IFX_SeekableStream : public IFX_SeekableReadStream,
       uint32_t dwModes);
 
   // IFX_SeekableWriteStream:
-  bool WriteBlock(const void* buffer, size_t size) override;
+  bool WriteBlock(pdfium::span<const uint8_t> pData) override;
 };
 
 #endif  // CORE_FXCRT_FX_STREAM_H_
