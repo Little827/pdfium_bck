@@ -122,7 +122,6 @@ class CFX_CTTGSUBTable {
   };
 
   bool LoadGSUBTable(FT_Bytes gsub);
-  bool Parse(FT_Bytes scriptlist, FT_Bytes featurelist, FT_Bytes lookuplist);
   void ParseScriptList(FT_Bytes raw);
   void ParseScript(FT_Bytes raw, TScriptRecord* rec);
   void ParseLangSys(FT_Bytes raw, TLangSysRecord* rec);

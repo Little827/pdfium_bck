@@ -53,9 +53,10 @@ bool CFX_CTTGSUBTable::LoadGSUBTable(FT_Bytes gsub) {
   if (FXSYS_UINT32_GET_MSBFIRST(gsub) != 0x00010000)
     return false;
 
-  return Parse(&gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 4)],
-               &gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 6)],
-               &gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 8)]);
+  ParseScriptList(&gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 4)]);
+  ParseFeatureList(&gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 6)]);
+  ParseLookupList(&gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 8)]);
+  return true;
 }
 
 uint32_t CFX_CTTGSUBTable::GetVerticalGlyph(uint32_t glyphnum) const {
@@ -168,15 +169,6 @@ uint32_t CFX_CTTGSUBTable::GetUInt32(FT_Bytes& p) const {
   uint32_t ret = p[0] << 24 | p[1] << 16 | p[2] << 8 | p[3];
   p += 4;
   return ret;
-}
-
-bool CFX_CTTGSUBTable::Parse(FT_Bytes scriptlist,
-                             FT_Bytes featurelist,
-                             FT_Bytes lookuplist) {
-  ParseScriptList(scriptlist);
-  ParseFeatureList(featurelist);
-  ParseLookupList(lookuplist);
-  return true;
 }
 
 void CFX_CTTGSUBTable::ParseScriptList(FT_Bytes raw) {

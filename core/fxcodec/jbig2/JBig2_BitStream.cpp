@@ -8,6 +8,8 @@
 
 #include <algorithm>
 
+#include "core/fxcrt/fx_system.h"
+
 namespace {
 
 pdfium::span<const uint8_t> ValidatedSpan(pdfium::span<const uint8_t> sp) {
@@ -99,8 +101,8 @@ int32_t CJBig2_BitStream::readInteger(uint32_t* dwResult) {
   if (m_dwByteIdx + 3 >= m_Span.size())
     return -1;
 
-  *dwResult = (m_Span[m_dwByteIdx] << 24) | (m_Span[m_dwByteIdx + 1] << 16) |
-              (m_Span[m_dwByteIdx + 2] << 8) | m_Span[m_dwByteIdx + 3];
+  pdfium::span<const uint8_t> read_span = m_Span.subspan(m_dwByteIdx);
+  *dwResult = FXSYS_UINT32_GET_MSBFIRST(read_span);
   m_dwByteIdx += 4;
   return 0;
 }
@@ -109,7 +111,8 @@ int32_t CJBig2_BitStream::readShortInteger(uint16_t* dwResult) {
   if (m_dwByteIdx + 1 >= m_Span.size())
     return -1;
 
-  *dwResult = (m_Span[m_dwByteIdx] << 8) | m_Span[m_dwByteIdx + 1];
+  pdfium::span<const uint8_t> read_span = m_Span.subspan(m_dwByteIdx);
+  *dwResult = FXSYS_UINT16_GET_MSBFIRST(read_span);
   m_dwByteIdx += 2;
   return 0;
 }
