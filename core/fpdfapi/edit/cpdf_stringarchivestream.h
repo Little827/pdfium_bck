@@ -13,7 +13,7 @@ class CPDF_StringArchiveStream final : public IFX_ArchiveStream {
   ~CPDF_StringArchiveStream() override;
 
   // IFX_ArchiveStream:
-  bool WriteBlock(const void* pData, size_t size) override;
+  bool WriteBlock(pdfium::span<const uint8_t> pData) override;
   FX_FILESIZE CurrentOffset() const override;
 
  private:
