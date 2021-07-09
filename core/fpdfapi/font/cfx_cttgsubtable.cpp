@@ -24,7 +24,7 @@ bool IsVerticalFeatureTag(uint32_t tag) {
 
 }  // namespace
 
-CFX_CTTGSUBTable::CFX_CTTGSUBTable(FT_Bytes gsub) {
+CFX_CTTGSUBTable::CFX_CTTGSUBTable(pdfium::span<const uint8_t> gsub) {
   if (!LoadGSUBTable(gsub))
     return;
 
@@ -49,13 +49,22 @@ CFX_CTTGSUBTable::CFX_CTTGSUBTable(FT_Bytes gsub) {
 
 CFX_CTTGSUBTable::~CFX_CTTGSUBTable() = default;
 
-bool CFX_CTTGSUBTable::LoadGSUBTable(FT_Bytes gsub) {
+bool CFX_CTTGSUBTable::LoadGSUBTable(pdfium::span<const uint8_t> gsub) {
   if (FXSYS_UINT32_GET_MSBFIRST(gsub) != 0x00010000)
     return false;
 
-  return Parse(&gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 4)],
-               &gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 6)],
-               &gsub[FXSYS_UINT16_GET_MSBFIRST(gsub + 8)]);
+  pdfium::span<const uint8_t> script_offset_span = gsub.subspan(4);
+  uint16_t script_offset = FXSYS_UINT16_GET_MSBFIRST(script_offset_span);
+  ParseScriptList(gsub.subspan(script_offset));
+
+  pdfium::span<const uint8_t> feature_offset_span = gsub.subspan(6);
+  uint16_t feature_offset = FXSYS_UINT16_GET_MSBFIRST(feature_offset_span);
+  ParseFeatureList(gsub.subspan(feature_offset));
+
+  pdfium::span<const uint8_t> lookup_offset_span = gsub.subspan(8);
+  uint16_t lookup_offset = FXSYS_UINT16_GET_MSBFIRST(lookup_offset_span);
+  ParseLookupList(gsub.subspan(lookup_offset));
+  return true;
 }
 
 uint32_t CFX_CTTGSUBTable::GetVerticalGlyph(uint32_t glyphnum) const {
@@ -170,36 +179,29 @@ uint32_t CFX_CTTGSUBTable::GetUInt32(FT_Bytes& p) const {
   return ret;
 }
 
-bool CFX_CTTGSUBTable::Parse(FT_Bytes scriptlist,
-                             FT_Bytes featurelist,
-                             FT_Bytes lookuplist) {
-  ParseScriptList(scriptlist);
-  ParseFeatureList(featurelist);
-  ParseLookupList(lookuplist);
-  return true;
-}
-
-void CFX_CTTGSUBTable::ParseScriptList(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseScriptList(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   ScriptList = std::vector<TScriptRecord>(GetUInt16(sp));
   for (auto& scriptRec : ScriptList) {
     scriptRec.ScriptTag = GetUInt32(sp);
-    ParseScript(&raw[GetUInt16(sp)], &scriptRec);
+    ParseScript(raw.subspan(GetUInt16(sp)), &scriptRec);
   }
 }
 
-void CFX_CTTGSUBTable::ParseScript(FT_Bytes raw, TScriptRecord* rec) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseScript(pdfium::span<const uint8_t> raw,
+                                   TScriptRecord* rec) {
+  FT_Bytes sp = raw.data();
   rec->DefaultLangSys = GetUInt16(sp);
   rec->LangSysRecords = std::vector<TLangSysRecord>(GetUInt16(sp));
   for (auto& sysRecord : rec->LangSysRecords) {
     sysRecord.LangSysTag = GetUInt32(sp);
-    ParseLangSys(&raw[GetUInt16(sp)], &sysRecord);
+    ParseLangSys(raw.subspan(GetUInt16(sp)), &sysRecord);
   }
 }
 
-void CFX_CTTGSUBTable::ParseLangSys(FT_Bytes raw, TLangSysRecord* rec) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseLangSys(pdfium::span<const uint8_t> raw,
+                                    TLangSysRecord* rec) {
+  FT_Bytes sp = raw.data();
   rec->LookupOrder = GetUInt16(sp);
   rec->ReqFeatureIndex = GetUInt16(sp);
   rec->FeatureIndices =
@@ -208,17 +210,18 @@ void CFX_CTTGSUBTable::ParseLangSys(FT_Bytes raw, TLangSysRecord* rec) {
     element = GetUInt16(sp);
 }
 
-void CFX_CTTGSUBTable::ParseFeatureList(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseFeatureList(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   FeatureList = std::vector<TFeatureRecord>(GetUInt16(sp));
   for (auto& featureRec : FeatureList) {
     featureRec.FeatureTag = GetUInt32(sp);
-    ParseFeature(&raw[GetUInt16(sp)], &featureRec);
+    ParseFeature(raw.subspan(GetUInt16(sp)), &featureRec);
   }
 }
 
-void CFX_CTTGSUBTable::ParseFeature(FT_Bytes raw, TFeatureRecord* rec) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseFeature(pdfium::span<const uint8_t> raw,
+                                    TFeatureRecord* rec) {
+  FT_Bytes sp = raw.data();
   rec->FeatureParams = GetUInt16(sp);
   rec->LookupListIndices =
       std::vector<uint16_t, FxAllocAllocator<uint16_t>>(GetUInt16(sp));
@@ -226,15 +229,16 @@ void CFX_CTTGSUBTable::ParseFeature(FT_Bytes raw, TFeatureRecord* rec) {
     listIndex = GetUInt16(sp);
 }
 
-void CFX_CTTGSUBTable::ParseLookupList(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseLookupList(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   LookupList = std::vector<TLookup>(GetUInt16(sp));
   for (auto& lookup : LookupList)
-    ParseLookup(&raw[GetUInt16(sp)], &lookup);
+    ParseLookup(raw.subspan(GetUInt16(sp)), &lookup);
 }
 
-void CFX_CTTGSUBTable::ParseLookup(FT_Bytes raw, TLookup* rec) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseLookup(pdfium::span<const uint8_t> raw,
+                                   TLookup* rec) {
+  FT_Bytes sp = raw.data();
   rec->LookupType = GetUInt16(sp);
   rec->LookupFlag = GetUInt16(sp);
   rec->SubTables = std::vector<std::unique_ptr<TSubTableBase>>(GetUInt16(sp));
@@ -242,12 +246,12 @@ void CFX_CTTGSUBTable::ParseLookup(FT_Bytes raw, TLookup* rec) {
     return;
 
   for (auto& subTable : rec->SubTables)
-    subTable = ParseSingleSubst(&raw[GetUInt16(sp)]);
+    subTable = ParseSingleSubst(raw.subspan(GetUInt16(sp)));
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormatBase>
-CFX_CTTGSUBTable::ParseCoverage(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::ParseCoverage(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   uint16_t format = GetUInt16(sp);
   if (format == 1)
     return ParseCoverageFormat1(raw);
@@ -257,8 +261,8 @@ CFX_CTTGSUBTable::ParseCoverage(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormat1>
-CFX_CTTGSUBTable::ParseCoverageFormat1(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::ParseCoverageFormat1(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   (void)GetUInt16(sp);
   auto rec = std::make_unique<TCoverageFormat1>(GetUInt16(sp));
   for (auto& glyph : rec->GlyphArray)
@@ -267,8 +271,8 @@ CFX_CTTGSUBTable::ParseCoverageFormat1(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormat2>
-CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::ParseCoverageFormat2(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   (void)GetUInt16(sp);
   auto rec = std::make_unique<TCoverageFormat2>(GetUInt16(sp));
   for (auto& rangeRec : rec->RangeRecords) {
@@ -280,8 +284,8 @@ CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::TSubTableBase>
-CFX_CTTGSUBTable::ParseSingleSubst(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::ParseSingleSubst(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   uint16_t format = GetUInt16(sp);
   if (format == 1)
     return ParseSingleSubstFormat1(raw);
@@ -291,23 +295,23 @@ CFX_CTTGSUBTable::ParseSingleSubst(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::TSubTable1>
-CFX_CTTGSUBTable::ParseSingleSubstFormat1(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::ParseSingleSubstFormat1(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   GetUInt16(sp);
   uint16_t offset = GetUInt16(sp);
   auto rec = std::make_unique<TSubTable1>();
-  rec->Coverage = ParseCoverage(&raw[offset]);
+  rec->Coverage = ParseCoverage(raw.subspan(offset));
   rec->DeltaGlyphID = GetInt16(sp);
   return rec;
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::TSubTable2>
-CFX_CTTGSUBTable::ParseSingleSubstFormat2(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::ParseSingleSubstFormat2(pdfium::span<const uint8_t> raw) {
+  FT_Bytes sp = raw.data();
   (void)GetUInt16(sp);
   uint16_t offset = GetUInt16(sp);
   auto rec = std::make_unique<TSubTable2>();
-  rec->Coverage = ParseCoverage(&raw[offset]);
+  rec->Coverage = ParseCoverage(raw.subspan(offset));
   rec->Substitutes =
       std::vector<uint16_t, FxAllocAllocator<uint16_t>>(GetUInt16(sp));
   for (auto& substitute : rec->Substitutes)
