@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde8bc39_878a5a7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-10T02:33:06Z",
+      "side": 1,
+      "message": "The updated pixel tests will pass for both Skia and SkiaPaths with this CL.",
+      "revId": "72a1cad1efa206f02035c21425b26f0ce3fbae64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
