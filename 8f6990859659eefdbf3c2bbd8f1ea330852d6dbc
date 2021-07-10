@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c71a34_39e3af38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-10T02:46:05Z",
+      "side": 1,
+      "message": "All the updated pixel tests will pass for SkiaPaths.\n\nbug_736695_1.in and bug_736695_4.in will still fail for Skia, but their expectations are correct. (Filed crbug.com/pdfium/1703 for the Skia-only issue.)",
+      "revId": "8f6990859659eefdbf3c2bbd8f1ea330852d6dbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edabcfbf_0cc2fc9e",
+        "filename": "testing/resources/pixel/bug_736695_1_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-10T02:46:05Z",
+      "side": 1,
+      "message": "This is the correct expectation for both Skia and SkiaPaths.\nHowever, Skia rendering result is not correct at the moment.",
+      "revId": "8f6990859659eefdbf3c2bbd8f1ea330852d6dbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb515cec_e588179e",
+        "filename": "testing/resources/pixel/bug_736695_4_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-10T02:46:05Z",
+      "side": 1,
+      "message": "This is the correct expectation for both Skia and SkiaPaths.\nHowever, the Skia rendering result is not correct at the moment.",
+      "revId": "8f6990859659eefdbf3c2bbd8f1ea330852d6dbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
