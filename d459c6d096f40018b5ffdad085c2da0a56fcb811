@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ab8d340_21155d40",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-07-12T10:31:51Z",
+      "side": 0,
+      "message": "FPDFTextObj_GetFontName() is modeled after FPDF_VIEWERREF_GetName(), which has the same \u0027encoded in UTF-8\u0027 wording. Looking at the pdf reference, a font name is a \"name\", and looking at the \"name objects\" section, it does mention [ the name object ] \"should be interpreted according to UTF-8\". So I think this is correct, even if I only have ascii font names on my system.\n\nDoes that address your concern?",
+      "parentUuid": "6c044a0a_f12249b6",
+      "revId": "d459c6d096f40018b5ffdad085c2da0a56fcb811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecbe0172_7da61093",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
