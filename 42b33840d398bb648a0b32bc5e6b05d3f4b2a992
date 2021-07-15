@@ -22,6 +22,30 @@
       },
       "revId": "42b33840d398bb648a0b32bc5e6b05d3f4b2a992",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4323fb5f_ddf3f1f7",
+        "filename": "testing/resources/bigtable_mini.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-15T18:27:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da29adfd_6140f641",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "42b33840d398bb648a0b32bc5e6b05d3f4b2a992",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
