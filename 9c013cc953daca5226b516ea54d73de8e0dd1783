@@ -70,6 +70,24 @@
       "parentUuid": "83695c61_ee836e60",
       "revId": "9c013cc953daca5226b516ea54d73de8e0dd1783",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88eacfda_7f03e75d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-15T16:56:45Z",
+      "side": 1,
+      "message": "I figured. 😊",
+      "parentUuid": "c7734f11_379ec499",
+      "revId": "9c013cc953daca5226b516ea54d73de8e0dd1783",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
