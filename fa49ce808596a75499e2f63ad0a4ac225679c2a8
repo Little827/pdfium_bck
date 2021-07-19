@@ -16,6 +16,24 @@
       "message": "Turns out if someone tried to build this file on non-Windows, they\u0027ll get an error from line 9 first.",
       "revId": "fa49ce808596a75499e2f63ad0a4ac225679c2a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a32481_cf4279fc",
+        "filename": "core/fxcrt/fx_folder_windows.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-19T16:22:04Z",
+      "side": 1,
+      "message": "Ack. See https://pdfium-review.googlesource.com/c/pdfium/+/83130",
+      "parentUuid": "5020efae_7586be41",
+      "revId": "fa49ce808596a75499e2f63ad0a4ac225679c2a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
