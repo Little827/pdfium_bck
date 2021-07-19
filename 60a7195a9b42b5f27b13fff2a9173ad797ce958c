@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae506d3f_c04ee836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-19T19:30:16Z",
+      "side": 1,
+      "message": "FYI, I added a test case for the regression in https://pdfium-review.googlesource.com/83072",
+      "revId": "60a7195a9b42b5f27b13fff2a9173ad797ce958c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
