@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2ad67f_4ec7936d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7652
+      },
+      "writtenOn": "2021-07-19T00:13:58Z",
+      "side": 1,
+      "message": "LGTM (I can\u0027t CR+1)",
+      "revId": "a3ad77c94c5f135ae91649047e2db6cbf5d86233",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
