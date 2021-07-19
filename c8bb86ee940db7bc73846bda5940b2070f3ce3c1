@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8df12d9_1575d78c",
+        "filename": "core/fpdfapi/edit/cpdf_stringarchivestream.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-19T23:52:50Z",
+      "side": 1,
+      "message": "Would putting \u003ciosfwd\u003e here and leaving cpdf_stringarchivestream.cpp alone work?",
+      "revId": "c8bb86ee940db7bc73846bda5940b2070f3ce3c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
