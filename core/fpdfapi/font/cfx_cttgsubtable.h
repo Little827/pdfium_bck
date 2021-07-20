@@ -16,10 +16,11 @@
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxge/fx_freetype.h"
 #include "third_party/base/optional.h"
+#include "third_party/base/span.h"
 
 class CFX_CTTGSUBTable {
  public:
-  explicit CFX_CTTGSUBTable(FT_Bytes gsub);
+  explicit CFX_CTTGSUBTable(pdfium::span<const uint8_t> gsub);
   ~CFX_CTTGSUBTable();
 
   uint32_t GetVerticalGlyph(uint32_t glyphnum) const;
@@ -121,21 +122,26 @@ class CFX_CTTGSUBTable {
     std::vector<std::unique_ptr<TSubTableBase>> SubTables;
   };
 
-  bool LoadGSUBTable(FT_Bytes gsub);
-  bool Parse(FT_Bytes scriptlist, FT_Bytes featurelist, FT_Bytes lookuplist);
-  void ParseScriptList(FT_Bytes raw);
-  void ParseScript(FT_Bytes raw, TScriptRecord* rec);
-  void ParseLangSys(FT_Bytes raw, TLangSysRecord* rec);
-  void ParseFeatureList(FT_Bytes raw);
-  void ParseFeature(FT_Bytes raw, TFeatureRecord* rec);
-  void ParseLookupList(FT_Bytes raw);
-  void ParseLookup(FT_Bytes raw, TLookup* rec);
-  std::unique_ptr<TCoverageFormatBase> ParseCoverage(FT_Bytes raw);
-  std::unique_ptr<TCoverageFormat1> ParseCoverageFormat1(FT_Bytes raw);
-  std::unique_ptr<TCoverageFormat2> ParseCoverageFormat2(FT_Bytes raw);
-  std::unique_ptr<TSubTableBase> ParseSingleSubst(FT_Bytes raw);
-  std::unique_ptr<TSubTable1> ParseSingleSubstFormat1(FT_Bytes raw);
-  std::unique_ptr<TSubTable2> ParseSingleSubstFormat2(FT_Bytes raw);
+  bool LoadGSUBTable(pdfium::span<const uint8_t> gsub);
+  void ParseScriptList(pdfium::span<const uint8_t> raw);
+  void ParseScript(pdfium::span<const uint8_t> raw, TScriptRecord* rec);
+  void ParseLangSys(pdfium::span<const uint8_t> raw, TLangSysRecord* rec);
+  void ParseFeatureList(pdfium::span<const uint8_t> raw);
+  void ParseFeature(pdfium::span<const uint8_t> raw, TFeatureRecord* rec);
+  void ParseLookupList(pdfium::span<const uint8_t> raw);
+  void ParseLookup(pdfium::span<const uint8_t> raw, TLookup* rec);
+  std::unique_ptr<TCoverageFormatBase> ParseCoverage(
+      pdfium::span<const uint8_t> raw);
+  std::unique_ptr<TCoverageFormat1> ParseCoverageFormat1(
+      pdfium::span<const uint8_t> raw);
+  std::unique_ptr<TCoverageFormat2> ParseCoverageFormat2(
+      pdfium::span<const uint8_t> raw);
+  std::unique_ptr<TSubTableBase> ParseSingleSubst(
+      pdfium::span<const uint8_t> raw);
+  std::unique_ptr<TSubTable1> ParseSingleSubstFormat1(
+      pdfium::span<const uint8_t> raw);
+  std::unique_ptr<TSubTable2> ParseSingleSubstFormat2(
+      pdfium::span<const uint8_t> raw);
 
   Optional<uint32_t> GetVerticalGlyphSub(const TFeatureRecord& feature,
                                          uint32_t glyphnum) const;

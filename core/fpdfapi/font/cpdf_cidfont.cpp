@@ -624,19 +624,17 @@ int CPDF_CIDFont::GetGlyphIndex(uint32_t unicode, bool* pVertGlyph) {
   if (m_pTTGSUBTable)
     return GetVerticalGlyph(index, pVertGlyph);
 
-  if (!m_Font.GetSubData()) {
-    unsigned long length = 0;
-    int error = FT_Load_Sfnt_Table(face, FT_MAKE_TAG('G', 'S', 'U', 'B'), 0,
-                                   nullptr, &length);
-    if (!error)
-      m_Font.SetSubData(FX_Alloc(uint8_t, length));
-  }
-  int error = FT_Load_Sfnt_Table(face, FT_MAKE_TAG('G', 'S', 'U', 'B'), 0,
-                                 m_Font.GetSubData(), nullptr);
-  if (error || !m_Font.GetSubData())
+  const FT_Tag tag = FT_MAKE_TAG('G', 'S', 'U', 'B');
+  unsigned long length = 0;
+  if (FT_Load_Sfnt_Table(face, tag, 0, nullptr, &length) != 0 || length == 0)
     return index;
 
-  m_pTTGSUBTable = std::make_unique<CFX_CTTGSUBTable>(m_Font.GetSubData());
+  m_Font.SetSubDataSize(length);
+  pdfium::span<uint8_t> subdata = m_Font.GetSubData();
+  if (FT_Load_Sfnt_Table(face, tag, 0, subdata.data(), nullptr) != 0)
+    return index;
+
+  m_pTTGSUBTable = std::make_unique<CFX_CTTGSUBTable>(subdata);
   return GetVerticalGlyph(index, pVertGlyph);
 }
 

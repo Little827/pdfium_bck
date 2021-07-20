@@ -112,8 +112,8 @@ class CFX_Font {
   bool IsTTFont() const;
   Optional<FX_RECT> GetBBox();
   bool IsEmbedded() const { return m_bEmbedded; }
-  uint8_t* GetSubData() const { return m_pGsubData.get(); }
-  void SetSubData(uint8_t* data) { m_pGsubData.reset(data); }
+  pdfium::span<uint8_t> GetSubData() { return m_GsubData; }
+  void SetSubDataSize(size_t size) { m_GsubData.resize(size); }
   pdfium::span<uint8_t> GetFontSpan() const { return m_FontData; }
   void AdjustMMParams(int glyph_index, int dest_width, int weight) const;
   std::unique_ptr<CFX_Path> LoadGlyphPathImpl(uint32_t glyph_index,
@@ -146,7 +146,7 @@ class CFX_Font {
   mutable RetainPtr<CFX_Face> m_Face;
   mutable RetainPtr<CFX_GlyphCache> m_GlyphCache;
   std::unique_ptr<CFX_SubstFont> m_pSubstFont;
-  std::unique_ptr<uint8_t, FxFreeDeleter> m_pGsubData;
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_GsubData;
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_FontDataAllocation;
   pdfium::span<uint8_t> m_FontData;
   bool m_bEmbedded = false;
