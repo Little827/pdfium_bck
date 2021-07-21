@@ -47,6 +47,30 @@
       },
       "revId": "38d4bbd97d8f3a98af40a3e6f1b954c5ae7dc0a9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a08e39e_310b7098",
+        "filename": "xfa/fde/cfde_texteditengine_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-21T16:59:16Z",
+      "side": 1,
+      "message": "Thanks for the explanation! Still LGTM.",
+      "parentUuid": "493eba58_f9de75a2",
+      "range": {
+        "startLine": 530,
+        "startChar": 5,
+        "endLine": 530,
+        "endChar": 18
+      },
+      "revId": "38d4bbd97d8f3a98af40a3e6f1b954c5ae7dc0a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
