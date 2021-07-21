@@ -658,8 +658,9 @@ struct Coon_Color {
   int comp[3];
 };
 
-#define COONCOLOR_THRESHOLD 4
-struct CPDF_PatchDrawer {
+struct PatchDrawer {
+  static constexpr int kCoonColorThreshold = 4;
+
   void Draw(int x_scale,
             int y_scale,
             int left,
@@ -699,8 +700,8 @@ struct CPDF_PatchDrawer {
     }
 
     if (bSmall ||
-        (d_bottom < COONCOLOR_THRESHOLD && d_left < COONCOLOR_THRESHOLD &&
-         d_top < COONCOLOR_THRESHOLD && d_right < COONCOLOR_THRESHOLD)) {
+        (d_bottom < kCoonColorThreshold && d_left < kCoonColorThreshold &&
+         d_top < kCoonColorThreshold && d_right < kCoonColorThreshold)) {
       pdfium::span<CFX_Path::Point> points = path.GetPoints();
       C1.GetPoints(points.subspan(0, 4));
       D2.GetPoints(points.subspan(3, 4));
@@ -717,7 +718,7 @@ struct CPDF_PatchDrawer {
                      div_colors[0].comp[2]),
           0, fill_options);
     } else {
-      if (d_bottom < COONCOLOR_THRESHOLD && d_top < COONCOLOR_THRESHOLD) {
+      if (d_bottom < kCoonColorThreshold && d_top < kCoonColorThreshold) {
         Coon_Bezier m1;
         m1.BezierInterpol(D1, D2, C1, C2);
         y_scale *= 2;
@@ -726,8 +727,8 @@ struct CPDF_PatchDrawer {
              D2.first_half());
         Draw(x_scale, y_scale, left, bottom + 1, m1, C2, D1.second_half(),
              D2.second_half());
-      } else if (d_left < COONCOLOR_THRESHOLD &&
-                 d_right < COONCOLOR_THRESHOLD) {
+      } else if (d_left < kCoonColorThreshold &&
+                 d_right < kCoonColorThreshold) {
         Coon_Bezier m2;
         m2.BezierInterpol(C1, C2, D1, D2);
         x_scale *= 2;
@@ -787,7 +788,7 @@ void DrawCoonPatchMeshes(
   if (!stream.Load())
     return;
 
-  CPDF_PatchDrawer patch;
+  PatchDrawer patch;
   patch.alpha = alpha;
   patch.pDevice = &device;
   patch.bNoPathSmooth = bNoPathSmooth;
