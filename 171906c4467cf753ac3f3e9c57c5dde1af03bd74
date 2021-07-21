@@ -16,6 +16,24 @@
       "message": "BTW, the Google C++ style guide now allows non-const refs, so you can leave them as non-const refs if you\u0027d like.",
       "revId": "171906c4467cf753ac3f3e9c57c5dde1af03bd74",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb0f7e0_2cbc44db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-21T01:17:00Z",
+      "side": 1,
+      "message": "I made the change because I almost concluded that these were const, because looking at the one-line summaries in code search, I didn\u0027t see any places where they might be modified.  Seeing an \u0026 would have helped.",
+      "parentUuid": "78312a29_10a9fec0",
+      "revId": "171906c4467cf753ac3f3e9c57c5dde1af03bd74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
