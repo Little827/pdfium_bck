@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb82d01_acc6375a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-21T19:40:27Z",
+      "side": 1,
+      "message": "My fault for trying to kill a #define ...",
+      "revId": "f2a48f14dd7f5ff2bc7214e696c53ab85037fdd5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
