@@ -23,6 +23,30 @@
       },
       "revId": "38d4bbd97d8f3a98af40a3e6f1b954c5ae7dc0a9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493eba58_f9de75a2",
+        "filename": "xfa/fde/cfde_texteditengine_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-21T14:23:49Z",
+      "side": 1,
+      "message": "I figured it out. TODO has been replaced with an explanation.",
+      "parentUuid": "c26d7282_e01f8748",
+      "range": {
+        "startLine": 530,
+        "startChar": 5,
+        "endLine": 530,
+        "endChar": 18
+      },
+      "revId": "38d4bbd97d8f3a98af40a3e6f1b954c5ae7dc0a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
