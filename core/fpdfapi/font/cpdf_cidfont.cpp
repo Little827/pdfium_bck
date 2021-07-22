@@ -21,6 +21,7 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
+#include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_unicode.h"
@@ -34,8 +35,13 @@
 
 namespace {
 
-constexpr uint16_t kCharsetCodePages[CIDSET_NUM_SETS] = {0,   936, 950,
-                                                         932, 949, 1200};
+constexpr FX_CodePage kCharsetCodePages[CIDSET_NUM_SETS] = {
+    FX_CodePage::kDefANSI,
+    FX_CodePage::kChineseSimplified,
+    FX_CodePage::kChineseTraditional,
+    FX_CodePage::kShiftJIS,
+    FX_CodePage::kHangul,
+    FX_CodePage::kUTF16LE};
 
 constexpr struct CIDTransform {
   uint16_t cid;

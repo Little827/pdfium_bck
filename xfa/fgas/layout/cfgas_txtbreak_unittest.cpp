@@ -16,7 +16,7 @@
 class CFGAS_TxtBreakTest : public testing::Test {
  public:
   void SetUp() override {
-    font_ = CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0);
+    font_ = CFGAS_GEFont::LoadFont(L"Arial Black", 0, FX_CodePage::kDefANSI);
     ASSERT_TRUE(font_);
   }
 
