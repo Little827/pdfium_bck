@@ -385,7 +385,8 @@ uint32_t CPDF_Font::FallbackFontFromCharcode(uint32_t charcode) {
     safeWeight *= 5;
     m_FontFallbacks[0]->LoadSubst("Arial", IsTrueTypeFont(), m_Flags,
                                   safeWeight.ValueOrDefault(FXFONT_FW_NORMAL),
-                                  m_ItalicAngle, 0, IsVertWriting());
+                                  m_ItalicAngle, FX_CodePage::kDefANSI,
+                                  IsVertWriting());
   }
   return 0;
 }
