@@ -14,7 +14,6 @@
 #include <vector>
 
 #include "build/build_config.h"
-#include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/stl_util.h"
@@ -408,7 +407,7 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
                                                   uint32_t flags,
                                                   int weight,
                                                   int italic_angle,
-                                                  int CharsetCP,
+                                                  FX_CodePage code_page,
                                                   CFX_SubstFont* pSubstFont) {
   if (weight == 0)
     weight = FXFONT_FW_NORMAL;
@@ -546,8 +545,8 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
   }
 
   int Charset = FX_CHARSET_ANSI;
-  if (CharsetCP)
-    Charset = FX_GetCharsetFromCodePage(CharsetCP);
+  if (code_page != FX_CodePage::kDefANSI)
+    Charset = FX_GetCharsetFromCodePage(code_page);
   else if (iBaseFont == kNumStandardFonts && FontStyleIsSymbolic(flags))
     Charset = FX_CHARSET_Symbol;
   const bool bCJK = FX_CharSetIsCJK(Charset);
@@ -625,7 +624,8 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
         }
 #endif
         return FindSubstFont(family, bTrueType, flags & ~FXFONT_SYMBOLIC,
-                             weight, italic_angle, 0, pSubstFont);
+                             weight, italic_angle, FX_CodePage::kDefANSI,
+                             pSubstFont);
       }
       if (Charset == FX_CHARSET_ANSI) {
         return UseInternalSubst(pSubstFont, iBaseFont, italic_angle, old_weight,

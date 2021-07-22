@@ -266,7 +266,7 @@ void CPDF_SimpleFont::LoadSubstFont() {
       m_Flags |= FXFONT_FIXED_PITCH;
   }
   m_Font.LoadSubst(m_BaseFontName, IsTrueTypeFont(), m_Flags, GetFontWeight(),
-                   m_ItalicAngle, 0, false);
+                   m_ItalicAngle, FX_CodePage::kDefANSI, false);
 }
 
 bool CPDF_SimpleFont::IsUnicodeCompatible() const {
