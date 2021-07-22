@@ -7,13 +7,16 @@
 #ifndef XFA_FGAS_FONT_FGAS_FONTUTILS_H_
 #define XFA_FGAS_FONT_FGAS_FONTUTILS_H_
 
+#include <stdint.h>
+
+#include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/widestring.h"
 
 struct FGAS_FONTUSB {
   uint16_t wStartUnicode;
   uint16_t wEndUnicode;
   uint16_t wBitField;
-  uint16_t wCodePage;
+  FX_CodePage wCodePage;
 };
 
 const FGAS_FONTUSB* FGAS_GetUnicodeBitField(wchar_t wUnicode);

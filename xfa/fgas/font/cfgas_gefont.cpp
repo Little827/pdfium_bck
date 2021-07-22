@@ -11,7 +11,6 @@
 
 #include "build/build_config.h"
 #include "core/fpdfapi/font/cpdf_font.h"
-#include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/cfx_unicodeencodingex.h"
@@ -24,7 +23,7 @@
 // static
 RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const wchar_t* pszFontFamily,
                                                uint32_t dwFontStyles,
-                                               uint16_t wCodePage) {
+                                               FX_CodePage wCodePage) {
 #if defined(OS_WIN)
   auto pFont = pdfium::MakeRetain<CFGAS_GEFont>();
   if (!pFont->LoadFontInternal(pszFontFamily, dwFontStyles, wCodePage))
