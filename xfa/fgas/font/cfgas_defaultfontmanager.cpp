@@ -18,8 +18,8 @@ RetainPtr<CFGAS_GEFont> CFGAS_DefaultFontManager::GetFont(
     uint32_t dwFontStyles) {
   WideString wsFontName(wsFontFamily);
   CFGAS_FontMgr* pFontMgr = CFGAS_GEModule::Get()->GetFontMgr();
-  RetainPtr<CFGAS_GEFont> pFont =
-      pFontMgr->LoadFont(wsFontName.c_str(), dwFontStyles, 0xFFFF);
+  RetainPtr<CFGAS_GEFont> pFont = pFontMgr->LoadFont(
+      wsFontName.c_str(), dwFontStyles, FX_CodePage::kFailure);
   if (pFont)
     return pFont;
 
@@ -45,7 +45,8 @@ RetainPtr<CFGAS_GEFont> CFGAS_DefaultFontManager::GetFont(
     }
     WideString wsReplace =
         WideString::FromASCII(ByteStringView(pReplace, pNameText - pReplace));
-    pFont = pFontMgr->LoadFont(wsReplace.c_str(), dwStyle, 0xFFFF);
+    pFont =
+        pFontMgr->LoadFont(wsReplace.c_str(), dwStyle, FX_CodePage::kFailure);
     if (pFont)
       break;
 
@@ -61,9 +62,9 @@ RetainPtr<CFGAS_GEFont> CFGAS_DefaultFontManager::GetDefaultFont(
     uint32_t dwFontStyles) {
   CFGAS_FontMgr* pFontMgr = CFGAS_GEModule::Get()->GetFontMgr();
   RetainPtr<CFGAS_GEFont> pFont =
-      pFontMgr->LoadFont(L"Arial Narrow", dwFontStyles, 0xFFFF);
+      pFontMgr->LoadFont(L"Arial Narrow", dwFontStyles, FX_CodePage::kFailure);
   if (pFont)
     return pFont;
 
-  return pFontMgr->LoadFont(nullptr, dwFontStyles, 0xFFFF);
+  return pFontMgr->LoadFont(nullptr, dwFontStyles, FX_CodePage::kFailure);
 }
