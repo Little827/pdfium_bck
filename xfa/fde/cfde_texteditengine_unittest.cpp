@@ -38,7 +38,7 @@ class CFDE_TextEditEngineTest : public testing::Test {
   ~CFDE_TextEditEngineTest() override = default;
 
   void SetUp() override {
-    font_ = CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0);
+    font_ = CFGAS_GEFont::LoadFont(L"Arial Black", 0, FX_CodePage::kDefANSI);
     ASSERT_TRUE(font_);
 
     engine_ = std::make_unique<CFDE_TextEditEngine>();

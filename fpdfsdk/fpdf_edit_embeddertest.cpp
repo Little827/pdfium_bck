@@ -3006,7 +3006,7 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
   CFX_Font CIDfont;
   {
     // First, get the data from the font
-    CIDfont.LoadSubst("IPAGothic", 1, 0, 400, 0, 932, 0);
+    CIDfont.LoadSubst("IPAGothic", 1, 0, 400, 0, FX_CodePage::kShiftJIS, 0);
     EXPECT_EQ("IPAGothic", CIDfont.GetFaceName());
     pdfium::span<const uint8_t> span = CIDfont.GetFontSpan();
 
