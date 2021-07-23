@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bfd6ef_a9018f18",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-23T18:38:04Z",
+      "side": 1,
+      "message": "Oh, interesting. Did not know we had to specify this.",
+      "range": {
+        "startLine": 32,
+        "startChar": 22,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "661588a412b6e1ab08b918aebf8753975bfe2343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b407924_284c72d3",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-23T18:38:04Z",
+      "side": 1,
+      "message": "I suppose this makes the compiler happy on line 34, since it needs to know the size of the struct member.",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "661588a412b6e1ab08b918aebf8753975bfe2343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
