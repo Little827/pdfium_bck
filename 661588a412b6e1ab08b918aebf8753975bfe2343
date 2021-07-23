@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6f47c006_b9e64026",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-23T18:59:52Z",
+      "side": 1,
+      "message": "Yeah, only if we are using something other than int.  Otherwise the compiler can\u0027t know how wide to make it.\n\nYou don\u0027t suppose we should have fx_codepage_fwd.h that just defines this?\nEventually FX_CHARSET_ would be handled in the same way.",
+      "parentUuid": "29bfd6ef_a9018f18",
+      "range": {
+        "startLine": 32,
+        "startChar": 22,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "661588a412b6e1ab08b918aebf8753975bfe2343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4b407924_284c72d3",
         "filename": "xfa/fgas/font/cfgas_fontmgr.h",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-23T18:38:04Z",
       "side": 1,
       "message": "I suppose this makes the compiler happy on line 34, since it needs to know the size of the struct member.",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "661588a412b6e1ab08b918aebf8753975bfe2343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c060b5_071db20e",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-23T18:59:52Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "4b407924_284c72d3",
       "range": {
         "startLine": 25,
         "startChar": 22,
