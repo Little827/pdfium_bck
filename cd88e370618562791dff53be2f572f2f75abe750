@@ -18,6 +18,47 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c816c678_0001d5d2",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-23T18:25:15Z",
+      "side": 1,
+      "message": "$ git grep -L FX_CodePage:: `git grep -l FX_CodePage`\ncore/fxcrt/fx_codepage.h\ncore/fxge/cfx_font.cpp\ncore/fxge/cfx_font.h\ncore/fxge/cfx_fontmapper.h\ncore/fxge/cfx_fontmgr.cpp\ncore/fxge/cfx_fontmgr.h\nxfa/fgas/font/cfgas_fontmgr.h\nxfa/fgas/font/cfgas_gefont.cpp\nxfa/fgas/font/cfgas_gefont.h\nxfa/fgas/font/fgas_fontutils.h\nxfa/fwl/theme/cfwl_fontmanager.cpp",
+      "parentUuid": "f9691e2b_87ecb410",
+      "revId": "cd88e370618562791dff53be2f572f2f75abe750",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62109484_1ce9b930",
+        "filename": "xfa/fgas/font/fgas_fontutils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-23T18:25:15Z",
+      "side": 1,
+      "message": "e.g. here be a longstanding botch.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 61
+      },
+      "revId": "cd88e370618562791dff53be2f572f2f75abe750",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de3e3517_35f34385",
@@ -31,6 +72,24 @@
       "writtenOn": "2021-07-23T16:06:52Z",
       "side": 1,
       "message": "Change this one as well?",
+      "revId": "cd88e370618562791dff53be2f572f2f75abe750",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b823ec6d_64664ceb",
+        "filename": "xfa/fgas/font/fgas_fontutils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-23T18:25:15Z",
+      "side": 1,
+      "message": "Done.\n\nNice catch.  In turn this required updating some more tables.  In turn, this found they were using integer value 847 which is undefined for thai charsets, where thai is defined as 874 -- nice transposition of digits.  I updated these to the actual values for thai.",
+      "parentUuid": "de3e3517_35f34385",
       "revId": "cd88e370618562791dff53be2f572f2f75abe750",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
