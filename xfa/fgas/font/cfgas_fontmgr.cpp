@@ -84,10 +84,10 @@ const FX_FONTDESCRIPTOR* MatchDefaultFont(
     if (pParams->pwsFamily) {
       if (FXSYS_wcsicmp(pParams->pwsFamily, font.wsFontFace))
         continue;
-      if (font.uCharSet == FX_CHARSET_Symbol)
+      if (font.uCharSet == FX_CharSet::kSymbol)
         return &font;
     }
-    if (font.uCharSet == FX_CHARSET_Symbol)
+    if (font.uCharSet == FX_CharSet::kSymbol)
       continue;
     if (pParams->wCodePage != FX_CodePage::kFailure) {
       if (FX_GetCodePageFromCharset(font.uCharSet) != pParams->wCodePage)

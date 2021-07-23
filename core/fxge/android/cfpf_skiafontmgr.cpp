@@ -101,35 +101,35 @@ enum FPF_SKIACHARSET {
 
 uint32_t FPF_SkiaGetCharset(uint8_t uCharset) {
   switch (uCharset) {
-    case FX_CHARSET_ANSI:
+    case FX_CharSet::kANSI:
       return FPF_SKIACHARSET_Ansi;
-    case FX_CHARSET_Default:
+    case FX_CharSet::kDefault:
       return FPF_SKIACHARSET_Default;
-    case FX_CHARSET_Symbol:
+    case FX_CharSet::kSymbol:
       return FPF_SKIACHARSET_Symbol;
-    case FX_CHARSET_ShiftJIS:
+    case FX_CharSet::kShiftJIS:
       return FPF_SKIACHARSET_ShiftJIS;
-    case FX_CHARSET_Hangul:
+    case FX_CharSet::kHangul:
       return FPF_SKIACHARSET_Korean;
-    case FX_CHARSET_ChineseSimplified:
+    case FX_CharSet::kChineseSimplified:
       return FPF_SKIACHARSET_GB2312;
-    case FX_CHARSET_ChineseTraditional:
+    case FX_CharSet::kChineseTraditional:
       return FPF_SKIACHARSET_BIG5;
-    case FX_CHARSET_MSWin_Greek:
+    case FX_CharSet::kMSWin_Greek:
       return FPF_SKIACHARSET_Greek;
-    case FX_CHARSET_MSWin_Turkish:
+    case FX_CharSet::kMSWin_Turkish:
       return FPF_SKIACHARSET_Turkish;
-    case FX_CHARSET_MSWin_Hebrew:
+    case FX_CharSet::kMSWin_Hebrew:
       return FPF_SKIACHARSET_Hebrew;
-    case FX_CHARSET_MSWin_Arabic:
+    case FX_CharSet::kMSWin_Arabic:
       return FPF_SKIACHARSET_Arabic;
-    case FX_CHARSET_MSWin_Baltic:
+    case FX_CharSet::kMSWin_Baltic:
       return FPF_SKIACHARSET_Baltic;
-    case FX_CHARSET_MSWin_Cyrillic:
+    case FX_CharSet::kMSWin_Cyrillic:
       return FPF_SKIACHARSET_Cyrillic;
-    case FX_CHARSET_Thai:
+    case FX_CharSet::kThai:
       return FPF_SKIACHARSET_Thai;
-    case FX_CHARSET_MSWin_EasternEuropean:
+    case FX_CharSet::kMSWin_EasternEuropean:
       return FPF_SKIACHARSET_EeasternEuropean;
   }
   return FPF_SKIACHARSET_Default;
@@ -268,11 +268,11 @@ CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(ByteStringView bsFamilyname,
   uint32_t dwSubstSans = FPF_SkiaGetSubstFont(dwFaceName, g_SkiaSansFontMap,
                                               pdfium::size(g_SkiaSansFontMap));
   bool bMaybeSymbol = FPF_SkiaMaybeSymbol(bsFamilyname);
-  if (uCharset != FX_CHARSET_MSWin_Arabic &&
+  if (uCharset != FX_CharSet::kMSWin_Arabic &&
       FPF_SkiaMaybeArabic(bsFamilyname)) {
-    uCharset = FX_CHARSET_MSWin_Arabic;
-  } else if (uCharset == FX_CHARSET_ANSI) {
-    uCharset = FX_CHARSET_Default;
+    uCharset = FX_CharSet::kMSWin_Arabic;
+  } else if (uCharset == FX_CharSet::kANSI) {
+    uCharset = FX_CharSet::kDefault;
   }
   int32_t nExpectVal = FPF_SKIAMATCHWEIGHT_NAME1 + FPF_SKIAMATCHWEIGHT_1 * 3 +
                        FPF_SKIAMATCHWEIGHT_2 * 2;
@@ -304,7 +304,7 @@ CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(ByteStringView bsFamilyname,
       nFind += FPF_SKIAMATCHWEIGHT_NAME2;
       bMatchedName = true;
     }
-    if (uCharset == FX_CHARSET_Default || bMaybeSymbol) {
+    if (uCharset == FX_CharSet::kDefault || bMaybeSymbol) {
       if (nFind > nMax && bMatchedName) {
         nMax = nFind;
         pBestFont = font.get();

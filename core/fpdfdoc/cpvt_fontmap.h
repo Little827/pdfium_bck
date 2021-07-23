@@ -30,10 +30,10 @@ class CPVT_FontMap final : public IPVT_FontMap {
   RetainPtr<CPDF_Font> GetPDFFont(int32_t nFontIndex) override;
   ByteString GetPDFFontAlias(int32_t nFontIndex) override;
   int32_t GetWordFontIndex(uint16_t word,
-                           int32_t charset,
+                           FX_CharSet charset,
                            int32_t nFontIndex) override;
   int32_t CharCodeFromUnicode(int32_t nFontIndex, uint16_t word) override;
-  int32_t CharSetFromUnicode(uint16_t word, int32_t nOldCharset) override;
+  FX_CharSet CharSetFromUnicode(uint16_t word, FX_CharSet nOldCharset) override;
 
   static RetainPtr<CPDF_Font> GetAnnotSysPDFFont(CPDF_Document* pDoc,
                                                  CPDF_Dictionary* pResDict,

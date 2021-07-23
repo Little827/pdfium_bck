@@ -97,23 +97,23 @@ void* CFX_MacFontInfo::MapFont(int weight,
   if (it != m_FontList.end())
     return it->second.get();
 
-  if (charset == FX_CHARSET_ANSI && FontFamilyIsFixedPitch(pitch_family))
+  if (charset == FX_CharSet::kANSI && FontFamilyIsFixedPitch(pitch_family))
     return GetFont("Courier New");
 
-  if (charset == FX_CHARSET_ANSI || charset == FX_CHARSET_Symbol)
+  if (charset == FX_CharSet::kANSI || charset == FX_CharSet::kSymbol)
     return nullptr;
 
   switch (charset) {
-    case FX_CHARSET_ShiftJIS:
+    case FX_CharSet::kShiftJIS:
       GetJapanesePreference(&face, weight, pitch_family);
       break;
-    case FX_CHARSET_ChineseSimplified:
+    case FX_CharSet::kChineseSimplified:
       face = "STSong";
       break;
-    case FX_CHARSET_Hangul:
+    case FX_CharSet::kHangul:
       face = "AppleMyungjo";
       break;
-    case FX_CHARSET_ChineseTraditional:
+    case FX_CharSet::kChineseTraditional:
       face = "LiSong Pro Light";
   }
   it = m_FontList.find(face);
