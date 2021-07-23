@@ -22,6 +22,7 @@
 class CFX_FontMgr;
 class CFX_SubstFont;
 class SystemFontInfoIface;
+enum class FX_CodePage : uint16_t;
 
 class CFX_FontMapper {
  public:
@@ -64,7 +65,7 @@ class CFX_FontMapper {
                                     uint32_t flags,
                                     int weight,
                                     int italic_angle,
-                                    int CharsetCP,
+                                    FX_CodePage code_page,
                                     CFX_SubstFont* pSubstFont);
 
   bool IsBuiltinFace(const RetainPtr<CFX_Face>& face) const;
