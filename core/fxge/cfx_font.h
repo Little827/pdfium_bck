@@ -29,6 +29,7 @@ class CFX_GlyphCache;
 class CFX_Path;
 class CFX_SubstFont;
 class IFX_SeekableReadStream;
+enum class FX_CodePage : uint16_t;
 struct CFX_TextRenderOptions;
 
 class CFX_Font {
@@ -67,7 +68,7 @@ class CFX_Font {
                  uint32_t flags,
                  int weight,
                  int italic_angle,
-                 int CharsetCP,
+                 FX_CodePage code_page,
                  bool bVertical);
 
   bool LoadEmbedded(pdfium::span<const uint8_t> src_span,

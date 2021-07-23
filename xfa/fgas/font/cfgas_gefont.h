@@ -24,6 +24,7 @@ class CFX_Font;
 class CFX_UnicodeEncodingEx;
 class CPDF_Document;
 class CPDF_Font;
+enum class FX_CodePage : uint16_t;
 
 class CFGAS_GEFont final : public Retainable {
  public:
@@ -31,7 +32,7 @@ class CFGAS_GEFont final : public Retainable {
 
   static RetainPtr<CFGAS_GEFont> LoadFont(const wchar_t* pszFontFamily,
                                           uint32_t dwFontStyles,
-                                          uint16_t wCodePage);
+                                          FX_CodePage wCodePage);
   static RetainPtr<CFGAS_GEFont> LoadFont(const RetainPtr<CPDF_Font>& pFont);
   static RetainPtr<CFGAS_GEFont> LoadFont(std::unique_ptr<CFX_Font> pFont);
   static RetainPtr<CFGAS_GEFont> LoadStockFont(CPDF_Document* pDoc,
@@ -59,7 +60,7 @@ class CFGAS_GEFont final : public Retainable {
 #if defined(OS_WIN)
   bool LoadFontInternal(const wchar_t* pszFontFamily,
                         uint32_t dwFontStyles,
-                        uint16_t wCodePage);
+                        FX_CodePage wCodePage);
   bool LoadFontInternal(const uint8_t* pBuffer, int32_t length);
 #endif
   bool LoadFontInternal(std::unique_ptr<CFX_Font> pInternalFont);

@@ -22,6 +22,7 @@
 
 class CFGAS_GEFont;
 class IFX_SeekableReadStream;
+enum class FX_CodePage : uint16_t;
 
 #if defined(OS_WIN)
 struct FX_FONTMATCHPARAMS {
@@ -30,7 +31,7 @@ struct FX_FONTMATCHPARAMS {
   uint32_t dwUSB;
   bool matchParagraphStyle;
   wchar_t wUnicode;
-  uint16_t wCodePage;
+  FX_CodePage wCodePage;
 };
 
 struct FX_FONTSIGNATURE {
@@ -99,7 +100,7 @@ class CFGAS_FontMgr {
   ~CFGAS_FontMgr();
 
   bool EnumFonts();
-  RetainPtr<CFGAS_GEFont> GetFontByCodePage(uint16_t wCodePage,
+  RetainPtr<CFGAS_GEFont> GetFontByCodePage(FX_CodePage wCodePage,
                                             uint32_t dwFontStyles,
                                             const wchar_t* pszFontFamily);
   RetainPtr<CFGAS_GEFont> GetFontByUnicode(wchar_t wUnicode,
@@ -107,21 +108,21 @@ class CFGAS_FontMgr {
                                            const wchar_t* pszFontFamily);
   RetainPtr<CFGAS_GEFont> LoadFont(const wchar_t* pszFontFamily,
                                    uint32_t dwFontStyles,
-                                   uint16_t wCodePage);
+                                   FX_CodePage wCodePage);
 
  private:
   RetainPtr<CFGAS_GEFont> GetFontByUnicodeImpl(wchar_t wUnicode,
                                                uint32_t dwFontStyles,
                                                const wchar_t* pszFontFamily,
                                                uint32_t dwHash,
-                                               uint16_t wCodePage,
+                                               FX_CodePage wCodePage,
                                                uint16_t wBitField);
 
 #if defined(OS_WIN)
   const FX_FONTDESCRIPTOR* FindFont(const wchar_t* pszFontFamily,
                                     uint32_t dwFontStyles,
                                     bool matchParagraphStyle,
-                                    uint16_t wCodePage,
+                                    FX_CodePage wCodePage,
                                     uint32_t dwUSB,
                                     wchar_t wUnicode);
 
@@ -131,7 +132,7 @@ class CFGAS_FontMgr {
   void RegisterFace(RetainPtr<CFX_Face> pFace, const WideString* pFaceName);
   void RegisterFaces(const RetainPtr<IFX_SeekableReadStream>& pFontStream,
                      const WideString* pFaceName);
-  std::vector<CFGAS_FontDescriptorInfo> MatchFonts(uint16_t wCodePage,
+  std::vector<CFGAS_FontDescriptorInfo> MatchFonts(FX_CodePage wCodePage,
                                                    uint32_t dwFontStyles,
                                                    const WideString& FontName,
                                                    wchar_t wcUnicode);
