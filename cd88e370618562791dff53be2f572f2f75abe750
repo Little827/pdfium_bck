@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9691e2b_87ecb410",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-23T16:06:52Z",
+      "side": 1,
+      "message": "Since FX_CodePage is an enum class, we can forward declare in this header and many others.",
+      "revId": "cd88e370618562791dff53be2f572f2f75abe750",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3e3517_35f34385",
+        "filename": "xfa/fgas/font/fgas_fontutils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-23T16:06:52Z",
+      "side": 1,
+      "message": "Change this one as well?",
+      "revId": "cd88e370618562791dff53be2f572f2f75abe750",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
