@@ -79,11 +79,11 @@ bool RetrieveSpecificFont(uint8_t charSet, LPCSTR pcsFontName, LOGFONTA& lf) {
 }
 #endif  // defined(OS_WIN)
 
-ByteString GetNativeFontName(uint8_t charSet, void* pLogFont) {
+ByteString GetNativeFontName(FX_CharSet charSet, void* pLogFont) {
   ByteString csFontName;
 #if defined(OS_WIN)
   LOGFONTA lf = {};
-  if (charSet == FX_CHARSET_ANSI) {
+  if (charSet == FX_CharSet::kANSI) {
     csFontName = CFX_Font::kDefaultAnsiFontName;
     return csFontName;
   }
@@ -150,7 +150,8 @@ RetainPtr<CPDF_Font> AddStandardFont(CPDF_Document* pDocument) {
   return pPageData->AddStandardFont(CFX_Font::kDefaultAnsiFontName, &encoding);
 }
 
-RetainPtr<CPDF_Font> AddNativeFont(uint8_t charSet, CPDF_Document* pDocument) {
+RetainPtr<CPDF_Font> AddNativeFont(FX_CharSet charSet,
+                                   CPDF_Document* pDocument) {
   DCHECK(pDocument);
 
 #if defined(OS_WIN)
@@ -265,7 +266,7 @@ void AddFont(CPDF_Dictionary*& pFormDict,
                                     pFont->GetFontDict()->GetObjNum());
 }
 
-uint8_t GetNativeCharSet() {
+FX_CharSet GetNativeCharSet() {
   return FX_GetCharsetFromCodePage(FX_GetACP());
 }
 
@@ -281,12 +282,12 @@ void InitDict(CPDF_Dictionary*& pFormDict, CPDF_Document* pDocument) {
   ByteString csDA;
   if (!pFormDict->KeyExist("DR")) {
     ByteString csBaseName;
-    uint8_t charSet = GetNativeCharSet();
+    FX_CharSet charSet = GetNativeCharSet();
     RetainPtr<CPDF_Font> pFont = AddStandardFont(pDocument);
     if (pFont)
       AddFont(pFormDict, pDocument, pFont, &csBaseName);
 
-    if (charSet != FX_CHARSET_ANSI) {
+    if (charSet != FX_CharSet::kANSI) {
       ByteString csFontName = GetNativeFontName(charSet, nullptr);
       if (!pFont || csFontName != CFX_Font::kDefaultAnsiFontName) {
         pFont = AddNativeFont(charSet, pDocument);
@@ -309,7 +310,7 @@ void InitDict(CPDF_Dictionary*& pFormDict, CPDF_Document* pDocument) {
 
 RetainPtr<CPDF_Font> GetNativeFont(CPDF_Dictionary* pFormDict,
                                    CPDF_Document* pDocument,
-                                   uint8_t charSet,
+                                   FX_CharSet charSet,
                                    ByteString* csNameTag) {
   CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
   if (!pDR)
@@ -338,7 +339,7 @@ RetainPtr<CPDF_Font> GetNativeFont(CPDF_Dictionary* pFormDict,
     if (!pSubst)
       continue;
 
-    if (pSubst->m_Charset == static_cast<int>(charSet)) {
+    if (pSubst->m_Charset == charSet) {
       *csNameTag = csKey;
       return pFind;
     }
@@ -587,7 +588,7 @@ RetainPtr<CPDF_Font> CPDF_InteractiveForm::AddNativeInteractiveFormFont(
     InitDict(pFormDict, pDocument);
   DCHECK(pFormDict);
 
-  uint8_t charSet = GetNativeCharSet();
+  FX_CharSet charSet = GetNativeCharSet();
   ByteString csTemp;
   RetainPtr<CPDF_Font> pFont =
       GetNativeFont(pFormDict, pDocument, charSet, &csTemp);

@@ -192,7 +192,7 @@ bool CFX_Win32FontInfo::EnumFontList(CFX_FontMapper* pMapper) {
   m_pMapper = pMapper;
   LOGFONTA lf;
   memset(&lf, 0, sizeof(LOGFONTA));
-  lf.lfCharSet = FX_CHARSET_Default;
+  lf.lfCharSet = FX_CharSet::kDefault;
   lf.lfFaceName[0] = 0;
   lf.lfPitchAndFamily = 0;
   EnumFontFamiliesExA(m_hDC, &lf, (FONTENUMPROCA)FontEnumProc, (uintptr_t)this,
@@ -228,10 +228,10 @@ void* CFX_Win32FallbackFontInfo::MapFont(int weight,
 
   bool bCJK = true;
   switch (charset) {
-    case FX_CHARSET_ShiftJIS:
-    case FX_CHARSET_ChineseSimplified:
-    case FX_CHARSET_ChineseTraditional:
-    case FX_CHARSET_Hangul:
+    case FX_CharSet::kShiftJIS:
+    case FX_CharSet::kChineseSimplified:
+    case FX_CharSet::kChineseTraditional:
+    case FX_CharSet::kHangul:
       break;
     default:
       bCJK = false;
@@ -322,17 +322,17 @@ void* CFX_Win32FontInfo::MapFont(int weight,
       break;
     }
   }
-  if (charset == FX_CHARSET_ANSI || charset == FX_CHARSET_Symbol)
-    charset = FX_CHARSET_Default;
+  if (charset == FX_CharSet::kANSI || charset == FX_CharSet::kSymbol)
+    charset = FX_CharSet::kDefault;
 
   int subst_pitch_family = pitch_family;
   switch (charset) {
-    case FX_CHARSET_ShiftJIS:
+    case FX_CharSet::kShiftJIS:
       subst_pitch_family = FF_ROMAN;
       break;
-    case FX_CHARSET_ChineseTraditional:
-    case FX_CHARSET_Hangul:
-    case FX_CHARSET_ChineseSimplified:
+    case FX_CharSet::kChineseTraditional:
+    case FX_CharSet::kHangul:
+    case FX_CharSet::kChineseSimplified:
       subst_pitch_family = 0;
       break;
   }
@@ -359,20 +359,20 @@ void* CFX_Win32FontInfo::MapFont(int weight,
       return hFont;
   }
   ::DeleteObject(hFont);
-  if (charset == FX_CHARSET_Default)
+  if (charset == FX_CharSet::kDefault)
     return nullptr;
 
   switch (charset) {
-    case FX_CHARSET_ShiftJIS:
+    case FX_CharSet::kShiftJIS:
       GetJapanesePreference(face, weight, pitch_family);
       break;
-    case FX_CHARSET_ChineseSimplified:
+    case FX_CharSet::kChineseSimplified:
       GetGBPreference(face, weight, pitch_family);
       break;
-    case FX_CHARSET_Hangul:
+    case FX_CharSet::kHangul:
       face = "Gulim";
       break;
-    case FX_CHARSET_ChineseTraditional:
+    case FX_CharSet::kChineseTraditional:
       if (face.Contains("MSung")) {
         face = "MingLiU";
       } else {
