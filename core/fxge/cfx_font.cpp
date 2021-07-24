@@ -202,20 +202,23 @@ static_assert(kWeightPowArraySize == pdfium::size(kWeightPowShiftJis),
 
 }  // namespace
 
+#define TTFMAP__(x, y) \
+  { static_cast<int>(FX_CharSet::x), y }
 const CFX_Font::CharsetFontMap CFX_Font::kDefaultTTFMap[] = {
-    {FX_CHARSET_ANSI, kDefaultAnsiFontName},
-    {FX_CHARSET_ChineseSimplified, "SimSun"},
-    {FX_CHARSET_ChineseTraditional, "MingLiU"},
-    {FX_CHARSET_ShiftJIS, "MS Gothic"},
-    {FX_CHARSET_Hangul, "Batang"},
-    {FX_CHARSET_MSWin_Cyrillic, "Arial"},
+    TTFMAP__(kANSI, kDefaultAnsiFontName),
+    TTFMAP__(kChineseSimplified, "SimSun"),
+    TTFMAP__(kChineseTraditional, "MingLiU"),
+    TTFMAP__(kShiftJIS, "MS Gothic"),
+    TTFMAP__(kHangul, "Batang"),
+    TTFMAP__(kMSWin_Cyrillic, "Arial"),
 #if defined(OS_WIN)
-    {FX_CHARSET_MSWin_EasternEuropean, "Tahoma"},
+    TTFMAP__(kMSWin_EasternEuropean, "Tahoma"),
 #else
-    {FX_CHARSET_MSWin_EasternEuropean, "Arial"},
+    TTFMAP__(kMSWin_EasternEuropean, "Arial"),
 #endif
-    {FX_CHARSET_MSWin_Arabic, "Arial"},
+    TTFMAP__(kMSWin_Arabic, "Arial"),
     {-1, nullptr}};
+#undef TTFMAP__
 
 // static
 const char CFX_Font::kUntitledFontName[] = "Untitled";
@@ -227,63 +230,63 @@ const char CFX_Font::kDefaultAnsiFontName[] = "Helvetica";
 const char CFX_Font::kUniversalDefaultFontName[] = "Arial Unicode MS";
 
 // static
-ByteString CFX_Font::GetDefaultFontNameByCharset(uint8_t nCharset) {
+ByteString CFX_Font::GetDefaultFontNameByCharset(FX_CharSet nCharset) {
   for (size_t i = 0; i < pdfium::size(kDefaultTTFMap) - 1; ++i) {
-    if (nCharset == static_cast<uint8_t>(kDefaultTTFMap[i].charset))
+    if (static_cast<int>(nCharset) == kDefaultTTFMap[i].charset)
       return kDefaultTTFMap[i].fontname;
   }
   return kUniversalDefaultFontName;
 }
 
 // static
-uint8_t CFX_Font::GetCharSetFromUnicode(uint16_t word) {
+FX_CharSet CFX_Font::GetCharSetFromUnicode(uint16_t word) {
   // to avoid CJK Font to show ASCII
   if (word < 0x7F)
-    return FX_CHARSET_ANSI;
+    return FX_CharSet::kANSI;
 
   // find new charset
   if ((word >= 0x4E00 && word <= 0x9FA5) ||
       (word >= 0xE7C7 && word <= 0xE7F3) ||
       (word >= 0x3000 && word <= 0x303F) ||
       (word >= 0x2000 && word <= 0x206F)) {
-    return FX_CHARSET_ChineseSimplified;
+    return FX_CharSet::kChineseSimplified;
   }
 
   if (((word >= 0x3040) && (word <= 0x309F)) ||
       ((word >= 0x30A0) && (word <= 0x30FF)) ||
       ((word >= 0x31F0) && (word <= 0x31FF)) ||
       ((word >= 0xFF00) && (word <= 0xFFEF))) {
-    return FX_CHARSET_ShiftJIS;
+    return FX_CharSet::kShiftJIS;
   }
 
   if (((word >= 0xAC00) && (word <= 0xD7AF)) ||
       ((word >= 0x1100) && (word <= 0x11FF)) ||
       ((word >= 0x3130) && (word <= 0x318F))) {
-    return FX_CHARSET_Hangul;
+    return FX_CharSet::kHangul;
   }
 
   if (word >= 0x0E00 && word <= 0x0E7F)
-    return FX_CHARSET_Thai;
+    return FX_CharSet::kThai;
 
   if ((word >= 0x0370 && word <= 0x03FF) || (word >= 0x1F00 && word <= 0x1FFF))
-    return FX_CHARSET_MSWin_Greek;
+    return FX_CharSet::kMSWin_Greek;
 
   if ((word >= 0x0600 && word <= 0x06FF) || (word >= 0xFB50 && word <= 0xFEFC))
-    return FX_CHARSET_MSWin_Arabic;
+    return FX_CharSet::kMSWin_Arabic;
 
   if (word >= 0x0590 && word <= 0x05FF)
-    return FX_CHARSET_MSWin_Hebrew;
+    return FX_CharSet::kMSWin_Hebrew;
 
   if (word >= 0x0400 && word <= 0x04FF)
-    return FX_CHARSET_MSWin_Cyrillic;
+    return FX_CharSet::kMSWin_Cyrillic;
 
   if (word >= 0x0100 && word <= 0x024F)
-    return FX_CHARSET_MSWin_EasternEuropean;
+    return FX_CharSet::kMSWin_EasternEuropean;
 
   if (word >= 0x1E00 && word <= 0x1EFF)
-    return FX_CHARSET_MSWin_Vietnamese;
+    return FX_CharSet::kMSWin_Vietnamese;
 
-  return FX_CHARSET_ANSI;
+  return FX_CharSet::kANSI;
 }
 
 CFX_Font::CFX_Font() = default;
@@ -668,7 +671,7 @@ std::unique_ptr<CFX_Path> CFX_Font::LoadGlyphPathImpl(uint32_t glyph_index,
     uint32_t index = std::min<uint32_t>((m_pSubstFont->m_Weight - 400) / 10,
                                         kWeightPowArraySize - 1);
     int level;
-    if (m_pSubstFont->m_Charset == FX_CHARSET_ShiftJIS)
+    if (m_pSubstFont->m_Charset == FX_CharSet::kShiftJIS)
       level = kWeightPowShiftJis[index] * 65536 / 36655;
     else
       level = kWeightPow[index];
@@ -717,11 +720,11 @@ const CFX_Path* CFX_Font::LoadGlyphPath(uint32_t glyph_index,
 }
 
 // static
-int CFX_Font::GetWeightLevel(int charset, size_t index) {
+int CFX_Font::GetWeightLevel(FX_CharSet charset, size_t index) {
   if (index >= kWeightPowArraySize)
     return -1;
 
-  if (charset == FX_CHARSET_ShiftJIS)
+  if (charset == FX_CharSet::kShiftJIS)
     return kWeightPowShiftJis[index];
   return kWeightPow11[index];
 }
