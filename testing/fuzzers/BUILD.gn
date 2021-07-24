@@ -68,7 +68,10 @@ if (pdf_enable_v8) {
 }
 if (is_clang) {
   # Fuzzers that use FuzzedDataProvider can only be built with Clang.
-  fuzzer_list += [ "pdf_nametree_fuzzer" ]
+  fuzzer_list += [
+    "pdf_cpdf_tounicodemap_fuzzer",
+    "pdf_nametree_fuzzer",
+  ]
 }
 
 # Note that this only compiles all the fuzzers, to prevent compile breakages.
@@ -496,6 +499,16 @@ pdfium_fuzzer("pdf_codec_rle_fuzzer") {
   deps = [
     "../../core/fxcodec",
     "../../core/fxcrt",
+  ]
+}
+
+pdfium_fuzzer("pdf_cpdf_tounicodemap_fuzzer") {
+  sources = [ "pdf_cpdf_tounicodemap_fuzzer.cc" ]
+  deps = [
+    ":fuzzer_utils",
+    "../../core/fpdfapi/font",
+    "../../core/fpdfapi/page",
+    "../../core/fpdfapi/parser",
   ]
 }
 
