@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dae91c6_b6b72225",
+        "filename": "testing/fuzzers/pdf_cpdf_tounicodemap_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T23:02:27Z",
+      "side": 1,
+      "message": "Is this the number of bytes necessary to generate `charcode_to_lookup`? If so, use sizeof(), like the latter part of this statement.",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "93a8f07fb3b910e48bf40108b48c9cd7a8a56b0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f3f0faa_65c0645e",
+        "filename": "testing/fuzzers/pdf_cpdf_tounicodemap_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T23:02:27Z",
+      "side": 1,
+      "message": "If this becomes \u003c\u003d, then the check on line 30 should never evaluate to true.",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "93a8f07fb3b910e48bf40108b48c9cd7a8a56b0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
