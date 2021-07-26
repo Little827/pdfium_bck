@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd07f7c1_f0084eb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2021-07-26T11:19:28Z",
+      "side": 1,
+      "message": "Is editing these files OK, or am I supposed to leave them pristine and just disable the warning?",
+      "revId": "850b5e7e23b38ea6065fcb481f85c182cf8cc1af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
