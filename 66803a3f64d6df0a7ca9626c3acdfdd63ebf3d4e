@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8fb4c4_04c04880",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T19:26:12Z",
+      "side": 1,
+      "message": "Do we want to save the result from this call, and avoid repeating it elsewhere in this function? That\u0027ll also avoid several static_casts.",
+      "range": {
+        "startLine": 577,
+        "startChar": 36,
+        "endLine": 577,
+        "endChar": 56
+      },
+      "revId": "66803a3f64d6df0a7ca9626c3acdfdd63ebf3d4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b912b8_791bb18d",
+        "filename": "core/fxcrt/fx_codepage_forward.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T19:26:12Z",
+      "side": 1,
+      "message": "nit: sort",
+      "revId": "66803a3f64d6df0a7ca9626c3acdfdd63ebf3d4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d05a37_de157665",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T19:26:12Z",
+      "side": 1,
+      "message": "If we tweak the macro or don\u0027t use it, then it\u0027ll be easier to find the references to FX_Charset::kFoo here.",
+      "revId": "66803a3f64d6df0a7ca9626c3acdfdd63ebf3d4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

@@ -22,6 +22,30 @@
       },
       "revId": "d050c55d5747a847f865b24878286a10caa4cd43",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c18eba9_f5e2f1ad",
+        "filename": "core/fxcrt/fx_codepage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T19:26:12Z",
+      "side": 1,
+      "message": "Last one SGTM. This CL or follow-up?",
+      "parentUuid": "d0cf5262_01148c1b",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "d050c55d5747a847f865b24878286a10caa4cd43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
