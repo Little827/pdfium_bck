@@ -16,6 +16,24 @@
       "message": "Is editing these files OK, or am I supposed to leave them pristine and just disable the warning?",
       "revId": "850b5e7e23b38ea6065fcb481f85c182cf8cc1af",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee42ccb_34b32887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T17:57:14Z",
+      "side": 1,
+      "message": "You can edit them, but please add .patch files and update README.pdfium as needed.\n\nOr you can disable the warning. What are you planning on doing for libpng in Chromium?",
+      "parentUuid": "dd07f7c1_f0084eb1",
+      "revId": "850b5e7e23b38ea6065fcb481f85c182cf8cc1af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
