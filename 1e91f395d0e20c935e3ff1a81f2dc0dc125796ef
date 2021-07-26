@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4360229_13898c29",
+        "filename": "testing/fuzzers/pdf_cpdf_tounicodemap_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-26T22:34:28Z",
+      "side": 1,
+      "message": "Thanks for pointing it out! ConsumeIntegral() was quite nice to use. 😄",
+      "parentUuid": "1c40c819_b22641a3",
+      "revId": "1e91f395d0e20c935e3ff1a81f2dc0dc125796ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4ed617_47103870",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-26T20:35:15Z",
       "side": 1,
       "message": "How do we know `object` is going to be a CPDF_Stream, and not a different type of CPDF_Object?",
+      "revId": "1e91f395d0e20c935e3ff1a81f2dc0dc125796ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090dbab6_778b481c",
+        "filename": "testing/fuzzers/pdf_cpdf_tounicodemap_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-26T22:34:28Z",
+      "side": 1,
+      "message": "The new patchset directly creates a CPDF_Stream and set its data with `remaining`.",
+      "parentUuid": "4e4ed617_47103870",
       "revId": "1e91f395d0e20c935e3ff1a81f2dc0dc125796ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
