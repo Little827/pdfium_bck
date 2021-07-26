@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0cf5262_01148c1b",
+        "filename": "core/fxcrt/fx_codepage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-26T16:08:00Z",
+      "side": 1,
+      "message": "So do we accept anything here, given that this is called to take the values passed through the public API and convert to enum class? Or do we tighten it up to match only the subset of enums in the public .h? Or all enum values for this enum class?  I\u0027m leaning toward the last one but wanted your thoughts.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "d050c55d5747a847f865b24878286a10caa4cd43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
