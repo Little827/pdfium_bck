@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c40c819_b22641a3",
+        "filename": "testing/fuzzers/pdf_cpdf_tounicodemap_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T20:35:15Z",
+      "side": 1,
+      "message": "If you are already using FuzzedDataProvider, ask FuzzedDataProvider for this, instead of reading it from `data` directly.",
+      "revId": "1e91f395d0e20c935e3ff1a81f2dc0dc125796ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4ed617_47103870",
+        "filename": "testing/fuzzers/pdf_cpdf_tounicodemap_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-26T20:35:15Z",
+      "side": 1,
+      "message": "How do we know `object` is going to be a CPDF_Stream, and not a different type of CPDF_Object?",
+      "revId": "1e91f395d0e20c935e3ff1a81f2dc0dc125796ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
