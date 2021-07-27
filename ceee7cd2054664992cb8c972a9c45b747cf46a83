@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5788cdbf_9bdf4428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-27T23:00:03Z",
+      "side": 1,
+      "message": "Less elegant, but smaller compilation unit, I think.",
+      "revId": "ceee7cd2054664992cb8c972a9c45b747cf46a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
