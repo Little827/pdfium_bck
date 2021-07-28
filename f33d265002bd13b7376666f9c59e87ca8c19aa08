@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ffded3_932e00e9",
+        "filename": "xfa/fwl/theme/cfwl_comboboxtp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-28T22:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98225ba6_4e9ea3b6",
+      "revId": "f33d265002bd13b7376666f9c59e87ca8c19aa08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c92943b_b4d521ab",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-28T20:54:57Z",
       "side": 1,
       "message": "Maybe add an IndexFromFWLThemeState() helper?",
+      "range": {
+        "startLine": 197,
+        "startChar": 37,
+        "endLine": 197,
+        "endChar": 68
+      },
+      "revId": "f33d265002bd13b7376666f9c59e87ca8c19aa08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23d0cd1_b4c909d3",
+        "filename": "xfa/fwl/theme/cfwl_widgettp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-28T22:00:51Z",
+      "side": 1,
+      "message": "I\u0027m hoping to make this enum be 0-based once I clear up some other issues, in which case the helper isn\u0027t all that helpful.",
+      "parentUuid": "2c92943b_b4d521ab",
       "range": {
         "startLine": 197,
         "startChar": 37,
