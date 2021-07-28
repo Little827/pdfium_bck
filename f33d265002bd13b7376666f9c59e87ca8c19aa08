@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98225ba6_4e9ea3b6",
+        "filename": "xfa/fwl/theme/cfwl_comboboxtp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-28T20:54:57Z",
+      "side": 1,
+      "message": "Can the assignment part be the default case below?",
+      "revId": "f33d265002bd13b7376666f9c59e87ca8c19aa08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c92943b_b4d521ab",
+        "filename": "xfa/fwl/theme/cfwl_widgettp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-28T20:54:57Z",
+      "side": 1,
+      "message": "Maybe add an IndexFromFWLThemeState() helper?",
+      "range": {
+        "startLine": 197,
+        "startChar": 37,
+        "endLine": 197,
+        "endChar": 68
+      },
+      "revId": "f33d265002bd13b7376666f9c59e87ca8c19aa08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
