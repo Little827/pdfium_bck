@@ -11,3 +11,13 @@ CFWL_ThemeBackground::CFWL_ThemeBackground(CFWL_Widget* pWidget,
     : CFWL_ThemePart(pWidget), m_pGraphics(pGraphics) {}
 
 CFWL_ThemeBackground::~CFWL_ThemeBackground() = default;
+
+FWLTHEME_STATE CFWL_ThemeBackground::GetThemeState() const {
+  if (dwFWLStates & CFWL_PartState_Disabled)
+    return FWLTHEME_STATE::kDisabled;
+  if (dwFWLStates & CFWL_PartState_Pressed)
+    return FWLTHEME_STATE::kPressed;
+  if (dwFWLStates & CFWL_PartState_Hovered)
+    return FWLTHEME_STATE::kHover;
+  return FWLTHEME_STATE::kNormal;
+}
