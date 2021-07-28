@@ -52,6 +52,24 @@
       "parentUuid": "cee42ccb_34b32887",
       "revId": "850b5e7e23b38ea6065fcb481f85c182cf8cc1af",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974020fd_1895ec3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-28T00:43:18Z",
+      "side": 1,
+      "message": "Thanks. Hope that goes smoothly.",
+      "parentUuid": "eaa0d291_e092d05b",
+      "revId": "850b5e7e23b38ea6065fcb481f85c182cf8cc1af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
