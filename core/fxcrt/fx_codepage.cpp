@@ -295,12 +295,10 @@ int FX_WideCharToMultiByte(FX_CodePage codepage,
                            const wchar_t* wstr,
                            int wlen,
                            char* buf,
-                           int buflen,
-                           const char* default_str,
-                           int* pUseDefault) {
+                           int buflen) {
 #if defined(OS_WIN)
   return WideCharToMultiByte(static_cast<UINT>(codepage), dwFlags, wstr, wlen,
-                             buf, buflen, default_str, pUseDefault);
+                             buf, buflen, nullptr, nullptr);
 #else
   int len = 0;
   for (int i = 0; i < wlen; i++) {
