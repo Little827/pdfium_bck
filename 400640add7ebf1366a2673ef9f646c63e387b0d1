@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3a236a_4b196b94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-29T23:09:04Z",
+      "side": 1,
+      "message": "If you want to squish the 2 CLs together, that\u0027s fine too.",
+      "revId": "400640add7ebf1366a2673ef9f646c63e387b0d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
