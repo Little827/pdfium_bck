@@ -54,10 +54,9 @@ const char* const g_LinuxHGFontList[] = {
     "UnDotum",
 };
 
-uint8_t GetJapanesePreference(const char* facearr,
+uint8_t GetJapanesePreference(const ByteString& face,
                               int weight,
                               int pitch_family) {
-  ByteString face = facearr;
   if (face.Contains("Gothic") ||
       face.Contains("\x83\x53\x83\x56\x83\x62\x83\x4e")) {
     if (face.Contains("PGothic") ||
@@ -88,7 +87,7 @@ class CFX_LinuxFontInfo final : public CFX_FolderFontInfo {
                 bool bItalic,
                 FX_Charset charset,
                 int pitch_family,
-                const char* family) override;
+                const ByteString& family) override;
 
   bool ParseFontCfg(const char** pUserPaths);
 };
@@ -97,7 +96,7 @@ void* CFX_LinuxFontInfo::MapFont(int weight,
                                  bool bItalic,
                                  FX_Charset charset,
                                  int pitch_family,
-                                 const char* family) {
+                                 const ByteString& family) {
   void* font = GetSubstFont(family);
   if (font)
     return font;
