@@ -45,7 +45,7 @@ class CFX_MacFontInfo final : public CFX_FolderFontInfo {
                 bool bItalic,
                 FX_Charset charset,
                 int pitch_family,
-                const char* family) override;
+                const ByteString& family) override;
 
   bool ParseFontCfg(const char** pUserPaths);
 };
@@ -66,13 +66,10 @@ void* CFX_MacFontInfo::MapFont(int weight,
                                bool bItalic,
                                FX_Charset charset,
                                int pitch_family,
-                               const char* cstr_face) {
-  ByteString face = cstr_face;
+                               const ByteString& face) {
   for (const auto& sub : g_Base14Substs) {
-    if (face == ByteStringView(sub.m_pName)) {
-      face = sub.m_pSubstName;
-      return GetFont(face.c_str());
-    }
+    if (face == ByteStringView(sub.m_pName))
+      return GetFont(sub.m_pSubstName);
   }
 
   // The request may not ask for the bold and/or italic version of a font by
