@@ -598,7 +598,7 @@ bool CPDF_StreamParser::PositionIsInBounds() const {
   return m_Pos < m_pBuf.size();
 }
 
-bool CPDF_StreamParser::WordBufferMatches(const char* pWord) const {
-  const size_t iLength = strlen(pWord);
-  return m_WordSize == iLength && memcmp(m_WordBuffer, pWord, iLength) == 0;
+bool CPDF_StreamParser::WordBufferMatches(ByteStringView bsWord) const {
+  return m_WordSize == bsWord.GetLength() &&
+         memcmp(m_WordBuffer, bsWord.unterminated_c_str(), m_WordSize) == 0;
 }
