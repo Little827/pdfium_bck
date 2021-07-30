@@ -106,11 +106,8 @@ bool CXFA_FFText::AcceptsFocusOnButtonDown(uint32_t dwFlags,
   if (!GetRectWithoutRotate().Contains(point))
     return false;
 
-  const wchar_t* wsURLContent = GetLinkURLAtPoint(point);
-  if (!wsURLContent)
-    return false;
-
-  return true;
+  Optional<WideString> wsURLContent = GetLinkURLAtPoint(point);
+  return wsURLContent.has_value();
 }
 
 bool CXFA_FFText::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
@@ -127,11 +124,11 @@ bool CXFA_FFText::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
     return false;
 
   SetButtonDown(false);
-  const wchar_t* wsURLContent = GetLinkURLAtPoint(point);
-  if (!wsURLContent)
+  Optional<WideString> wsURLContent = GetLinkURLAtPoint(point);
+  if (!wsURLContent.has_value())
     return false;
 
-  GetDoc()->GotoURL(wsURLContent);
+  GetDoc()->GotoURL(wsURLContent.value());
   return true;
 }
 
@@ -143,10 +140,10 @@ FWL_WidgetHit CXFA_FFText::HitTest(const CFX_PointF& point) {
   return FWL_WidgetHit::HyperLink;
 }
 
-const wchar_t* CXFA_FFText::GetLinkURLAtPoint(const CFX_PointF& point) {
+Optional<WideString> CXFA_FFText::GetLinkURLAtPoint(const CFX_PointF& point) {
   CXFA_TextLayout* pTextLayout = m_pNode->GetTextLayout();
   if (!pTextLayout)
-    return nullptr;
+    return pdfium::nullopt;
 
   CFX_RectF rect = GetRectWithoutRotate();
   return pTextLayout->GetLinkURLAtPoint(point - rect.TopLeft());
