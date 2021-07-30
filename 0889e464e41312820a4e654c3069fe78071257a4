@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b111b6_98019cd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-30T19:37:24Z",
+      "side": 1,
+      "message": "Ah, good catch.  There\u0027e  also a public/ callback called MapFont that needs c_str() but it is only called in one place.",
+      "parentUuid": "7c5e45df_64f659d8",
+      "revId": "0889e464e41312820a4e654c3069fe78071257a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "764750eb_8867bad8",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f61063_69ad454f",
+        "filename": "core/fxge/systemfontinfo_iface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-30T19:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "764750eb_8867bad8",
+      "revId": "0889e464e41312820a4e654c3069fe78071257a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8cf9b46_64c29a19",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-07-30T16:58:30Z",
       "side": 1,
       "message": "const-ref?",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "0889e464e41312820a4e654c3069fe78071257a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80218609_b3de590a",
+        "filename": "core/fxge/systemfontinfo_iface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-30T19:37:24Z",
+      "side": 1,
+      "message": "Ok, I though most impls modified `face`, with a first line like ByteString new_face \u003d face; which didn\u0027t save anything, but only some do.  Done.",
+      "parentUuid": "b8cf9b46_64c29a19",
       "range": {
         "startLine": 27,
         "startChar": 24,
