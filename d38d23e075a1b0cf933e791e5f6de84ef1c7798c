@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645069f5_9605dd5c",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-30T20:34:38Z",
+      "side": 1,
+      "message": "Does: return m_WordSize \u003d\u003d bsWord work?",
+      "revId": "d38d23e075a1b0cf933e791e5f6de84ef1c7798c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
