@@ -93,6 +93,30 @@
       },
       "revId": "3d1d50bfd81b820a58aead26afb3618742e0595c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a279c888_4d6bc373",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-07-30T22:21:08Z",
+      "side": 1,
+      "message": "I think the only place that constructs CFGAS_LinkUserData is CXFA_TextLayout::LoadRichText(), and there it is gated on the link being non-empty.",
+      "parentUuid": "97282839_e12d1229",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "3d1d50bfd81b820a58aead26afb3618742e0595c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
