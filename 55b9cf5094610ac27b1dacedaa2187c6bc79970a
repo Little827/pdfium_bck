@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e6a73e_cc012a04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-07-30T21:41:45Z",
+      "side": 1,
+      "message": "Mindless cleanup for a Fri afternoon.",
+      "revId": "55b9cf5094610ac27b1dacedaa2187c6bc79970a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
