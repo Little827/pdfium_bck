@@ -31,26 +31,26 @@ enum JpFontFamily : uint8_t {
   kCount
 };
 
-const char* const g_LinuxJpFontList[][JpFontFamily::kCount] = {
+const char* const kLinuxJpFontList[][JpFontFamily::kCount] = {
     {"TakaoPGothic", "VL PGothic", "IPAPGothic", "VL Gothic"},
     {"TakaoGothic", "VL Gothic", "IPAGothic", "Kochi Gothic"},
     {"TakaoPMincho", "IPAPMincho", "VL Gothic", "Kochi Mincho"},
     {"TakaoMincho", "IPAMincho", "VL Gothic", "Kochi Mincho"},
 };
 
-const char* const g_LinuxGbFontList[] = {
+const char* const kLinuxGbFontList[] = {
     "AR PL UMing CN Light",
     "WenQuanYi Micro Hei",
     "AR PL UKai CN",
 };
 
-const char* const g_LinuxB5FontList[] = {
+const char* const kLinuxB5FontList[] = {
     "AR PL UMing TW Light",
     "WenQuanYi Micro Hei",
     "AR PL UKai TW",
 };
 
-const char* const g_LinuxHGFontList[] = {
+const char* const kLinuxHGFontList[] = {
     "UnDotum",
 };
 
@@ -106,8 +106,8 @@ void* CFX_LinuxFontInfo::MapFont(int weight,
   switch (charset) {
     case FX_Charset::kShiftJIS: {
       uint8_t index = GetJapanesePreference(family, weight, pitch_family);
-      DCHECK(index < pdfium::size(g_LinuxJpFontList));
-      for (const char* name : g_LinuxJpFontList[index]) {
+      DCHECK(index < pdfium::size(kLinuxJpFontList));
+      for (const char* name : kLinuxJpFontList[index]) {
         auto it = m_FontList.find(name);
         if (it != m_FontList.end())
           return it->second.get();
@@ -115,7 +115,7 @@ void* CFX_LinuxFontInfo::MapFont(int weight,
       break;
     }
     case FX_Charset::kChineseSimplified: {
-      for (const char* name : g_LinuxGbFontList) {
+      for (const char* name : kLinuxGbFontList) {
         auto it = m_FontList.find(name);
         if (it != m_FontList.end())
           return it->second.get();
@@ -123,7 +123,7 @@ void* CFX_LinuxFontInfo::MapFont(int weight,
       break;
     }
     case FX_Charset::kChineseTraditional: {
-      for (const char* name : g_LinuxB5FontList) {
+      for (const char* name : kLinuxB5FontList) {
         auto it = m_FontList.find(name);
         if (it != m_FontList.end())
           return it->second.get();
@@ -131,7 +131,7 @@ void* CFX_LinuxFontInfo::MapFont(int weight,
       break;
     }
     case FX_Charset::kHangul: {
-      for (const char* name : g_LinuxHGFontList) {
+      for (const char* name : kLinuxHGFontList) {
         auto it = m_FontList.find(name);
         if (it != m_FontList.end())
           return it->second.get();
