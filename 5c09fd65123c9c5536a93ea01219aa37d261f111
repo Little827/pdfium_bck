@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5bb343_1822a528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-07-30T22:52:09Z",
+      "side": 1,
+      "message": "Hi Quinten,\n \nOn PDFium main console[1], a red bot happened but the tree was not automatically closed. I am wondering whether this has anything to do with PDFium not having a tree_closer? (I thought tree_closer was not necessary for the tree to close if I set up luci.notify with \"tree_closing_enabled \u003d True\".)\n\nBut after adding a default tree closer in main.star, I noticed that the generated files didn\u0027t change due to adding the tree closer.\n\nMy questions are:\n1. Is luci.tree_closer optional or mandatory to handle opening/closing the tree?\n2. Maybe the tree didn\u0027t close because this failed bot didn\u0027t meet certain criteria?\n\n[1] https://ci.chromium.org/p/pdfium/g/main/console\n[2] https://ci.chromium.org/p/pdfium/builders/ci/win_xfa_component/2748",
+      "revId": "5c09fd65123c9c5536a93ea01219aa37d261f111",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
