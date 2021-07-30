@@ -306,6 +306,11 @@ luci.notifier_template(
     body = io.read_file("template/tree_closure_email.template"),
 )
 
+luci.tree_closer(
+    name = "pdfium tree closer",
+    tree_status_host = "pdfium-status.appspot.com",
+)
+
 # Recipes
 luci.recipe(
     name = "pdfium",
