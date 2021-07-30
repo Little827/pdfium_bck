@@ -17,6 +17,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "fxjs/gc/heap.h"
+#include "third_party/base/optional.h"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/visitor.h"
@@ -62,7 +63,7 @@ class CXFA_TextLayout final : public cppgc::GarbageCollected<CXFA_TextLayout> {
   bool HasBlock() const { return m_bHasBlock; }
   void ClearBlocks() { m_Blocks.clear(); }
   void ResetHasBlock() { m_bHasBlock = false; }
-  const wchar_t* GetLinkURLAtPoint(const CFX_PointF& point);
+  Optional<WideString> GetLinkURLAtPoint(const CFX_PointF& point);
 
  private:
   class TextPiece : public CFGAS_TextPiece {

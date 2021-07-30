@@ -7,6 +7,7 @@
 #ifndef XFA_FXFA_CXFA_FFTEXT_H_
 #define XFA_FXFA_CXFA_FFTEXT_H_
 
+#include "third_party/base/optional.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
 
 class CXFA_FFText final : public CXFA_FFWidget {
@@ -31,7 +32,7 @@ class CXFA_FFText final : public CXFA_FFWidget {
  private:
   explicit CXFA_FFText(CXFA_Node* pNode);
 
-  const wchar_t* GetLinkURLAtPoint(const CFX_PointF& point);
+  Optional<WideString> GetLinkURLAtPoint(const CFX_PointF& point);
 };
 
 #endif  // XFA_FXFA_CXFA_FFTEXT_H_
