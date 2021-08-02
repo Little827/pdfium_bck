@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88fbb8d_0ebe8a40",
+        "filename": "third_party/base/cxx17_backports.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2021-08-02T19:58:06Z",
+      "side": 1,
+      "message": "This is causing the build to fail internally, since the compiler can\u0027t disambiguate between pdfium::clamp and std::clamp. Would it be possible to call pdfium::clamp explicitly here? I\u0027ve tested internally that the change fixes the build.",
+      "revId": "efd4423b6a4ca3aae2885f06390ada39bae7855f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
