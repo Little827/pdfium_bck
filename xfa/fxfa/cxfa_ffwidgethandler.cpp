@@ -120,7 +120,7 @@ bool CXFA_FFWidgetHandler::OnRButtonDblClk(CXFA_FFWidget* hWidget,
 }
 
 bool CXFA_FFWidgetHandler::OnKeyDown(CXFA_FFWidget* hWidget,
-                                     uint32_t dwKeyCode,
+                                     XFA_FWL_VKEYCODE dwKeyCode,
                                      uint32_t dwFlags) {
   bool bRet = hWidget->OnKeyDown(dwKeyCode, dwFlags);
   m_pDocView->UpdateDocView();
@@ -128,13 +128,13 @@ bool CXFA_FFWidgetHandler::OnKeyDown(CXFA_FFWidget* hWidget,
 }
 
 bool CXFA_FFWidgetHandler::OnKeyUp(CXFA_FFWidget* hWidget,
-                                   uint32_t dwKeyCode,
+                                   XFA_FWL_VKEYCODE dwKeyCode,
                                    uint32_t dwFlags) {
   return hWidget->OnKeyUp(dwKeyCode, dwFlags);
 }
 
 bool CXFA_FFWidgetHandler::OnChar(CXFA_FFWidget* hWidget,
-                                  uint32_t dwChar,
+                                  XFA_FWL_VKEYCODE dwChar,
                                   uint32_t dwFlags) {
   return hWidget->OnChar(dwChar, dwFlags);
 }
