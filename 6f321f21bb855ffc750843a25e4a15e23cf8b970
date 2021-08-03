@@ -81,6 +81,24 @@
       "parentUuid": "2edf7dd3_43ecb037",
       "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29de87bc_b2ad984d",
+        "filename": "fpdfsdk/fpdf_progressive.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-03T23:31:20Z",
+      "side": 1,
+      "message": "Would it be possible to resolve that as follows?\n\n1) Add DCHECK(!m_pRenderContext) as suggested.\n2) Add ClearRenderContext() and convert the callers that pass in nullptr.\n3) Add a ClearRenderContext() call in the case of [1], to avoid tripping the newly added DCHECK().",
+      "parentUuid": "074f01cb_486d8af2",
+      "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
