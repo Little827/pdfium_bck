@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1b0d53_d9b03367",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-08-03T21:25:14Z",
+      "side": 1,
+      "message": "I can\u0027t wait to get rid of this butterfly keyboard...",
+      "parentUuid": "a6c7a150_c63d92f9",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2edf7dd3_43ecb037",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-08-03T20:33:26Z",
       "side": 1,
       "message": "Instead of adding this at every callsite, what about putting it into CPDF_Page::SetRenderContext()?",
+      "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074f01cb_486d8af2",
+        "filename": "fpdfsdk/fpdf_progressive.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-08-03T21:25:14Z",
+      "side": 1,
+      "message": "I didn\u0027t think it was necessarily appropriate there. There\u0027s at least one caller that passes in a nullptr, so the DCHECK would have to be\n\n DCHECK(!pContext || !m_pRenderContext);\n \nBut even that wouldn\u0027t be appropriate, because there\u0027s one case in FPDF_RenderPage() where the context is overriden [1].\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/fpdfsdk/fpdf_view.cpp;l\u003d580;drc\u003dd0b89fe9c3d6ecc1ec4ffaf0baeb6b36c34ba7fd",
+      "parentUuid": "2edf7dd3_43ecb037",
       "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
