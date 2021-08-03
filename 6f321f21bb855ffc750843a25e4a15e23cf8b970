@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c7a150_c63d92f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-03T20:33:26Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edf7dd3_43ecb037",
+        "filename": "fpdfsdk/fpdf_progressive.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-03T20:33:26Z",
+      "side": 1,
+      "message": "Instead of adding this at every callsite, what about putting it into CPDF_Page::SetRenderContext()?",
+      "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
