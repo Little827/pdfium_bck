@@ -48,6 +48,7 @@
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
+#include "third_party/base/check.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
 
@@ -501,6 +502,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
   if (!pPage)
     return;
 
+  DCHECK(!pPage->GetRenderContext());
   auto pOwnedContext = std::make_unique<CPDF_PageRenderContext>();
   CPDF_PageRenderContext* pContext = pOwnedContext.get();
   CPDF_Page::RenderContextClearer clearer(pPage);
@@ -614,6 +616,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPageBitmap(FPDF_BITMAP bitmap,
   if (!pPage)
     return;
 
+  DCHECK(!pPage->GetRenderContext());
   auto pOwnedContext = std::make_unique<CPDF_PageRenderContext>();
   CPDF_PageRenderContext* pContext = pOwnedContext.get();
   CPDF_Page::RenderContextClearer clearer(pPage);
@@ -649,6 +652,7 @@ FPDF_RenderPageBitmapWithMatrix(FPDF_BITMAP bitmap,
   if (!pPage)
     return;
 
+  DCHECK(!pPage->GetRenderContext());
   auto pOwnedContext = std::make_unique<CPDF_PageRenderContext>();
   CPDF_PageRenderContext* pContext = pOwnedContext.get();
   CPDF_Page::RenderContextClearer clearer(pPage);
@@ -682,6 +686,7 @@ FPDF_EXPORT FPDF_RECORDER FPDF_CALLCONV FPDF_RenderPageSkp(FPDF_PAGE page,
   if (!pPage)
     return nullptr;
 
+  DCHECK(!pPage->GetRenderContext());
   auto pOwnedContext = std::make_unique<CPDF_PageRenderContext>();
   CPDF_PageRenderContext* pContext = pOwnedContext.get();
   CPDF_Page::RenderContextClearer clearer(pPage);

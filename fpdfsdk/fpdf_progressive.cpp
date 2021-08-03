@@ -17,6 +17,7 @@
 #include "fpdfsdk/cpdfsdk_pauseadapter.h"
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "public/fpdfview.h"
+#include "third_party/base/check.h"
 
 #if defined(_SKIA_SUPPORT_PATHS_)
 #include "core/fxge/cfx_renderdevice.h"
@@ -59,6 +60,7 @@ FPDF_RenderPageBitmapWithColorScheme_Start(FPDF_BITMAP bitmap,
   if (!pPage)
     return FPDF_RENDER_FAILED;
 
+  DCHECK(!pPage->GetRenderContext());
   auto pOwnedContext = std::make_unique<CPDF_PageRenderContext>();
   CPDF_PageRenderContext* pContext = pOwnedContext.get();
   pPage->SetRenderContext(std::move(pOwnedContext));
