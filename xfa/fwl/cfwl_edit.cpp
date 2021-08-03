@@ -795,19 +795,19 @@ void CFWL_Edit::OnProcessMessage(CFWL_Message* pMessage) {
     case CFWL_Message::Type::kMouse: {
       CFWL_MessageMouse* pMsg = static_cast<CFWL_MessageMouse*>(pMessage);
       switch (pMsg->m_dwCmd) {
-        case FWL_MouseCommand::LeftButtonDown:
+        case CFWL_MessageMouse::MouseCommand::kLeftButtonDown:
           OnLButtonDown(pMsg);
           break;
-        case FWL_MouseCommand::LeftButtonUp:
+        case CFWL_MessageMouse::MouseCommand::kLeftButtonUp:
           OnLButtonUp(pMsg);
           break;
-        case FWL_MouseCommand::LeftButtonDblClk:
+        case CFWL_MessageMouse::MouseCommand::kLeftButtonDblClk:
           OnButtonDoubleClick(pMsg);
           break;
-        case FWL_MouseCommand::Move:
+        case CFWL_MessageMouse::MouseCommand::kMove:
           OnMouseMove(pMsg);
           break;
-        case FWL_MouseCommand::RightButtonDown:
+        case CFWL_MessageMouse::MouseCommand::kRightButtonDown:
           DoRButtonDown(pMsg);
           break;
         default:
@@ -817,9 +817,9 @@ void CFWL_Edit::OnProcessMessage(CFWL_Message* pMessage) {
     }
     case CFWL_Message::Type::kKey: {
       CFWL_MessageKey* pKey = static_cast<CFWL_MessageKey*>(pMessage);
-      if (pKey->m_dwCmd == CFWL_MessageKey::Type::kKeyDown)
+      if (pKey->m_dwCmd == CFWL_MessageKey::KeyCommand::kKeyDown)
         OnKeyDown(pKey);
-      else if (pKey->m_dwCmd == CFWL_MessageKey::Type::kChar)
+      else if (pKey->m_dwCmd == CFWL_MessageKey::KeyCommand::kChar)
         OnChar(pKey);
       break;
     }

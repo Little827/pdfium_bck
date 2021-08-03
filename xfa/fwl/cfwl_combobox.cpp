@@ -392,10 +392,10 @@ void CFWL_ComboBox::OnProcessMessage(CFWL_Message* pMessage) {
       backDefault = false;
       CFWL_MessageMouse* pMsg = static_cast<CFWL_MessageMouse*>(pMessage);
       switch (pMsg->m_dwCmd) {
-        case FWL_MouseCommand::LeftButtonDown:
+        case CFWL_MessageMouse::MouseCommand::kLeftButtonDown:
           OnLButtonDown(pMsg);
           break;
-        case FWL_MouseCommand::LeftButtonUp:
+        case CFWL_MessageMouse::MouseCommand::kLeftButtonUp:
           OnLButtonUp(pMsg);
           break;
         default:
@@ -406,10 +406,10 @@ void CFWL_ComboBox::OnProcessMessage(CFWL_Message* pMessage) {
     case CFWL_Message::Type::kKey: {
       backDefault = false;
       CFWL_MessageKey* pKey = static_cast<CFWL_MessageKey*>(pMessage);
-      if (pKey->m_dwCmd == CFWL_MessageKey::Type::kKeyUp)
+      if (pKey->m_dwCmd == CFWL_MessageKey::KeyCommand::kKeyUp)
         break;
       if (IsDropListVisible() &&
-          pKey->m_dwCmd == CFWL_MessageKey::Type::kKeyDown) {
+          pKey->m_dwCmd == CFWL_MessageKey::KeyCommand::kKeyDown) {
         bool bListKey = pKey->m_dwKeyCode == XFA_FWL_VKEY_Up ||
                         pKey->m_dwKeyCode == XFA_FWL_VKEY_Down ||
                         pKey->m_dwKeyCode == XFA_FWL_VKEY_Return ||

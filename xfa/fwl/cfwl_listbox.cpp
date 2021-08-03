@@ -606,10 +606,10 @@ void CFWL_ListBox::OnProcessMessage(CFWL_Message* pMessage) {
     case CFWL_Message::Type::kMouse: {
       CFWL_MessageMouse* pMsg = static_cast<CFWL_MessageMouse*>(pMessage);
       switch (pMsg->m_dwCmd) {
-        case FWL_MouseCommand::LeftButtonDown:
+        case CFWL_MessageMouse::MouseCommand::kLeftButtonDown:
           OnLButtonDown(pMsg);
           break;
-        case FWL_MouseCommand::LeftButtonUp:
+        case CFWL_MessageMouse::MouseCommand::kLeftButtonUp:
           OnLButtonUp(pMsg);
           break;
         default:
@@ -622,7 +622,7 @@ void CFWL_ListBox::OnProcessMessage(CFWL_Message* pMessage) {
       break;
     case CFWL_Message::Type::kKey: {
       CFWL_MessageKey* pMsg = static_cast<CFWL_MessageKey*>(pMessage);
-      if (pMsg->m_dwCmd == CFWL_MessageKey::Type::kKeyDown)
+      if (pMsg->m_dwCmd == CFWL_MessageKey::KeyCommand::kKeyDown)
         OnKeyDown(pMsg);
       break;
     }
