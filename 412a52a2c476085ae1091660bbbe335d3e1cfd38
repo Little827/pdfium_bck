@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd45c5df_5b0f191e",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-03T22:42:13Z",
+      "side": 1,
+      "message": "NOTE: since this is the file with the ASSERTS, it should also be the one place doing the casts between the two.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "412a52a2c476085ae1091660bbbe335d3e1cfd38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
