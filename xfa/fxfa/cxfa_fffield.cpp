@@ -545,7 +545,7 @@ bool CXFA_FFField::OnKeyUp(XFA_FWL_VKEYCODE dwKeyCode, uint32_t dwFlags) {
   return true;
 }
 
-bool CXFA_FFField::OnChar(XFA_FWL_VKEYCODE dwChar, uint32_t dwFlags) {
+bool CXFA_FFField::OnChar(uint32_t dwChar, uint32_t dwFlags) {
   if (!GetDoc()->GetXFADoc()->IsInteractive())
     return false;
   if (dwChar == XFA_FWL_VKEY_Tab)
@@ -556,7 +556,7 @@ bool CXFA_FFField::OnChar(XFA_FWL_VKEYCODE dwChar, uint32_t dwFlags) {
     return false;
 
   CFWL_MessageKey msg(GetNormalWidget(), CFWL_MessageKey::KeyCommand::kChar,
-                      dwFlags, dwChar);
+                      dwFlags, static_cast<XFA_FWL_VKEYCODE>(dwChar));
   SendMessageToFWLWidget(&msg);
   return true;
 }
