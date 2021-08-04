@@ -37,8 +37,8 @@ bool CPWL_CBListBox::OnLButtonUp(uint32_t nFlag, const CFX_PointF& point) {
   return !OnNotifySelectionChanged(false, nFlag);
 }
 
-bool CPWL_CBListBox::IsMovementKey(uint16_t nChar) const {
-  switch (nChar) {
+bool CPWL_CBListBox::IsMovementKey(FWL_VKEYCODE nKeyCode) const {
+  switch (nKeyCode) {
     case FWL_VKEY_Up:
     case FWL_VKEY_Down:
     case FWL_VKEY_Home:
@@ -51,10 +51,10 @@ bool CPWL_CBListBox::IsMovementKey(uint16_t nChar) const {
   }
 }
 
-bool CPWL_CBListBox::OnMovementKeyDown(uint16_t nChar, uint32_t nFlag) {
-  DCHECK(IsMovementKey(nChar));
+bool CPWL_CBListBox::OnMovementKeyDown(FWL_VKEYCODE nKeyCode, uint32_t nFlag) {
+  DCHECK(IsMovementKey(nKeyCode));
 
-  switch (nChar) {
+  switch (nKeyCode) {
     case FWL_VKEY_Up:
       m_pListCtrl->OnVK_UP(IsSHIFTKeyDown(nFlag), IsCTRLKeyDown(nFlag));
       break;
@@ -72,6 +72,8 @@ bool CPWL_CBListBox::OnMovementKeyDown(uint16_t nChar, uint32_t nFlag) {
       break;
     case FWL_VKEY_Right:
       m_pListCtrl->OnVK_RIGHT(IsSHIFTKeyDown(nFlag), IsCTRLKeyDown(nFlag));
+      break;
+    default:
       break;
   }
   return OnNotifySelectionChanged(true, nFlag);
