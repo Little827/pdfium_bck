@@ -34,9 +34,10 @@ using FPDFFormFillEmbedderTest = EmbedderTest;
 
 namespace {
 
-int TranslateOnCharToModifierOnChar(int keychar) {
-  return keychar - FWL_VKEY_A + 1;
-}
+constexpr int kCharCtrlA = 0x01;
+constexpr int kCharTab = 0x09;
+constexpr int kCharReturn = 0x0d;
+constexpr int kCharSpace = 0x20;
 
 }  // namespace
 
@@ -94,7 +95,7 @@ class FPDFFormFillInteractiveEmbedderTest : public FPDFFormFillEmbedderTest {
 
     // Type text starting with 'A' to as many chars as specified by |num_chars|.
     for (int i = 0; i < num_chars; ++i) {
-      FORM_OnChar(form_handle(), page_, FWL_VKEY_A + i, 0);
+      FORM_OnChar(form_handle(), page_, 'A' + i, 0);
     }
   }
 
@@ -1045,10 +1046,10 @@ TEST_F(FPDFFormFillEmbedderTest, CheckReadOnlyInCheckbox) {
     // The read-only checkbox is initially in checked state.
     EXPECT_TRUE(FPDFAnnot_IsChecked(form_handle(), annot));
 
-    EXPECT_TRUE(FORM_OnChar(form_handle(), page, FWL_VKEY_Return, 0));
+    EXPECT_TRUE(FORM_OnChar(form_handle(), page, kCharReturn, 0));
     EXPECT_TRUE(FPDFAnnot_IsChecked(form_handle(), annot));
 
-    EXPECT_TRUE(FORM_OnChar(form_handle(), page, FWL_VKEY_Space, 0));
+    EXPECT_TRUE(FORM_OnChar(form_handle(), page, kCharSpace, 0));
     EXPECT_TRUE(FPDFAnnot_IsChecked(form_handle(), annot));
 
     FPDFPage_CloseAnnot(annot);
@@ -1079,10 +1080,10 @@ TEST_F(FPDFFormFillEmbedderTest, CheckReadOnlyInRadiobutton) {
     // The read-only radio button is initially in checked state.
     EXPECT_FALSE(FPDFAnnot_IsChecked(form_handle(), annot));
 
-    EXPECT_TRUE(FORM_OnChar(form_handle(), page, FWL_VKEY_Return, 0));
+    EXPECT_TRUE(FORM_OnChar(form_handle(), page, kCharReturn, 0));
     EXPECT_FALSE(FPDFAnnot_IsChecked(form_handle(), annot));
 
-    EXPECT_TRUE(FORM_OnChar(form_handle(), page, FWL_VKEY_Space, 0));
+    EXPECT_TRUE(FORM_OnChar(form_handle(), page, kCharSpace, 0));
     EXPECT_FALSE(FPDFAnnot_IsChecked(form_handle(), annot));
 
     FPDFPage_CloseAnnot(annot);
@@ -1367,9 +1368,9 @@ TEST_F(FPDFFormFillEmbedderTest, FormText) {
     FORM_OnLButtonUp(form_handle(), page, 0, 120.0, 120.0);
 
     // Write "ABC"
-    FORM_OnChar(form_handle(), page, FWL_VKEY_A, 0);
-    FORM_OnChar(form_handle(), page, FWL_VKEY_B, 0);
-    FORM_OnChar(form_handle(), page, FWL_VKEY_C, 0);
+    FORM_OnChar(form_handle(), page, 'A', 0);
+    FORM_OnChar(form_handle(), page, 'B', 0);
+    FORM_OnChar(form_handle(), page, 'C', 0);
     ScopedFPDFBitmap bitmap2 = RenderLoadedPage(page);
     CompareBitmap(bitmap2.get(), 300, 300, kFocusedTextFormWithAbcChecksum);
 
@@ -2355,7 +2356,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   CheckIsIndexSelected(1, true);
 
   // Verify that the Enter key is handled.
-  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, 0));
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), kCharReturn, 0));
 
   // Change the selection in the combo-box using the arrow down key.
   EXPECT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Down, 0));
@@ -2363,24 +2364,24 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   CheckIsIndexSelected(2, true);
 
   // Tab to the next control.
-  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Tab, 0));
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), kCharTab, 0));
 
   // Shift-tab to the previous control.
   EXPECT_TRUE(
-      FORM_OnChar(form_handle(), page(), FWL_VKEY_Tab, FWL_EVENTFLAG_ShiftKey));
+      FORM_OnChar(form_handle(), page(), kCharTab, FWL_EVENTFLAG_ShiftKey));
 
   // Verify that the selection is unchanged.
   CheckIsIndexSelected(2, true);
 
   // Verify that the Space key is handled.
-  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Space, 0));
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), kCharSpace, 0));
 
   // Change the selection in the combo-box using the arrow down key.
   EXPECT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Down, 0));
   CheckIsIndexSelected(3, true);
 
   // Tab to the next control.
-  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Tab, 0));
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), kCharTab, 0));
 
   // Shift-tab to the previous control.
   EXPECT_TRUE(
@@ -2398,7 +2399,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   CheckIsIndexSelected(1, false);
 
   // Verify that the Enter key is handled.
-  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, 0));
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), kCharReturn, 0));
 
   // Change the selection in the combo-box using the arrow down key.
   EXPECT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Down, 0));
@@ -2406,17 +2407,17 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   CheckIsIndexSelected(1, false);
 
   // Tab to the next control.
-  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Tab, 0));
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), kCharTab, 0));
 
   // Shift-tab to the previous control.
   EXPECT_TRUE(
-      FORM_OnChar(form_handle(), page(), FWL_VKEY_Tab, FWL_EVENTFLAG_ShiftKey));
+      FORM_OnChar(form_handle(), page(), kCharTab, FWL_EVENTFLAG_ShiftKey));
 
   // Verify that the selection is unchanged.
   CheckIsIndexSelected(0, true);
 
   // Verify that the Space key is handled.
-  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Space, 0));
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page(), kCharSpace, 0));
 
   CheckFocusedFieldText(L" ");
   CheckIsIndexSelected(0, false);
@@ -3146,8 +3147,7 @@ TEST_F(FPDFFormFillTextFormEmbedderTest, SelectAllWithKeyboardShortcut) {
 #else
   constexpr int kCorrectModifier = FWL_EVENTFLAG_ControlKey;
 #endif
-  FORM_OnChar(form_handle(), page(),
-              TranslateOnCharToModifierOnChar(FWL_VKEY_A), kCorrectModifier);
+  FORM_OnChar(form_handle(), page(), kCharCtrlA, kCorrectModifier);
   CheckSelection(L"AB");
 
   // Reset the selection again.
@@ -3160,8 +3160,7 @@ TEST_F(FPDFFormFillTextFormEmbedderTest, SelectAllWithKeyboardShortcut) {
 #else
   constexpr int kWrongModifier = FWL_EVENTFLAG_MetaKey;
 #endif
-  FORM_OnChar(form_handle(), page(),
-              TranslateOnCharToModifierOnChar(FWL_VKEY_A), kWrongModifier);
+  FORM_OnChar(form_handle(), page(), kCharCtrlA, kWrongModifier);
   CheckSelection(L"");
 }
 
@@ -3250,7 +3249,7 @@ TEST_F(FPDFFormFillActionUriTest, ButtonActionInvokeTest) {
 
   // TODO(crbug.com/1028991): Following should be changed to ASSERT_TRUE after
   // handling key press implementation on buttons.
-  ASSERT_FALSE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, 0));
+  ASSERT_FALSE(FORM_OnChar(form_handle(), page(), kCharReturn, 0));
 }
 
 TEST_F(FPDFFormFillActionUriTest, LinkActionInvokeTest) {
