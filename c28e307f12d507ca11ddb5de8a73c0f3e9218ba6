@@ -33,6 +33,24 @@
       "message": "Does `buffer` even need to be this big?",
       "revId": "c28e307f12d507ca11ddb5de8a73c0f3e9218ba6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f54c745_191bc134",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-04T17:03:43Z",
+      "side": 1,
+      "message": "Obviously not, but we do pass it off to a vendor library routine, and in practice, it could scribble all over the place, so I left it as is.",
+      "parentUuid": "05a240de_39e86a01",
+      "revId": "c28e307f12d507ca11ddb5de8a73c0f3e9218ba6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
