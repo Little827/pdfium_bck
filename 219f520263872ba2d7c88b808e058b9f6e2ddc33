@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df567571_de1239b7",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-04T19:53:57Z",
+      "side": 1,
+      "message": "It\u0027s not obvious why \\x01 maps to \u0027A\u0027. Maybe keep TranslateOnCharToModifierOnChar(), but modify it to not use VKEYCODES?",
+      "range": {
+        "startLine": 3139,
+        "startChar": 37,
+        "endLine": 3139,
+        "endChar": 43
+      },
+      "revId": "219f520263872ba2d7c88b808e058b9f6e2ddc33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
