@@ -22,6 +22,30 @@
       },
       "revId": "219f520263872ba2d7c88b808e058b9f6e2ddc33",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91982990_a212f5ff",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3139,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-04T20:00:44Z",
+      "side": 1,
+      "message": "\\x01 maps to CTRL-A per e.g. man ascii. Actually, I found TranslateOnCharToModifierOnChar() confusing, as it should really be called TranslateUpperAlphaCharToControlCharWithSameName() or some such.",
+      "parentUuid": "df567571_de1239b7",
+      "range": {
+        "startLine": 3139,
+        "startChar": 37,
+        "endLine": 3139,
+        "endChar": 43
+      },
+      "revId": "219f520263872ba2d7c88b808e058b9f6e2ddc33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
