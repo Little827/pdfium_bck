@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4b07b1_fabc3c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-04T13:53:38Z",
+      "side": 1,
+      "message": "Removing math.h from fx_coordinates.h later in the CL chain.\n",
+      "revId": "2681122fbfb77c9aae14855ae9f9098b42c0e9a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
