@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86f1e6a_d7a7a06c",
+        "filename": "fpdfsdk/pwl/cpwl_edit.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-04T22:18:24Z",
+      "side": 0,
+      "message": "NOTE: wrong, \u0027c\u0027 \u003d\u003d 0x6e \u003d\u003e  FWL_VKEY_Keypad3.",
+      "range": {
+        "startLine": 577,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 13
+      },
+      "revId": "53783ad97610d218e4e6ce04413e0ef18ee21b7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4095fd_23699079",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-04T22:18:24Z",
+      "side": 0,
+      "message": "Note: these two now have different args, so the macro not useful.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 24
+      },
+      "revId": "53783ad97610d218e4e6ce04413e0ef18ee21b7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
