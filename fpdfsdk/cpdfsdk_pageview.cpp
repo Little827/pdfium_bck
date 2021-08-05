@@ -373,7 +373,8 @@ bool CPDFSDK_PageView::OnRButtonUp(uint32_t nFlag, const CFX_PointF& point) {
   return true;
 }
 
-bool CPDFSDK_PageView::OnMouseMove(int nFlag, const CFX_PointF& point) {
+bool CPDFSDK_PageView::OnMouseMove(FWL_EventFlagMask nFlag,
+                                   const CFX_PointF& point) {
   CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
       m_pFormFillEnv->GetAnnotHandlerMgr();
 
@@ -430,7 +431,7 @@ void CPDFSDK_PageView::ExitWidget(CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr,
   m_pCaptureWidget.Reset();
 }
 
-bool CPDFSDK_PageView::OnMouseWheel(int nFlag,
+bool CPDFSDK_PageView::OnMouseWheel(FWL_EventFlagMask nFlag,
                                     const CFX_PointF& point,
                                     const CFX_Vector& delta) {
   ObservedPtr<CPDFSDK_Annot> pAnnot(GetFXWidgetAtPoint(point));
@@ -476,14 +477,15 @@ bool CPDFSDK_PageView::OnChar(uint32_t nChar, uint32_t nFlag) {
   return false;
 }
 
-bool CPDFSDK_PageView::OnKeyDown(FWL_VKEYCODE nKeyCode, int nFlag) {
+bool CPDFSDK_PageView::OnKeyDown(FWL_VKEYCODE nKeyCode,
+                                 FWL_EventFlagMask nFlag) {
   CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
       m_pFormFillEnv->GetAnnotHandlerMgr();
   return pAnnotHandlerMgr->Annot_OnKeyDown(this, GetFocusAnnot(), nKeyCode,
                                            nFlag);
 }
 
-bool CPDFSDK_PageView::OnKeyUp(FWL_VKEYCODE nKeyCode, int nFlag) {
+bool CPDFSDK_PageView::OnKeyUp(FWL_VKEYCODE nKeyCode, FWL_EventFlagMask nFlag) {
   return false;
 }
 
