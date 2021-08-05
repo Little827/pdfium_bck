@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bafb59d_f07d451a",
+        "filename": "constants/ascii.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-05T00:58:36Z",
+      "side": 1,
+      "message": "- Should these be uint8_t?\n- Include \u003cstdint.h\u003e.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "459445608aa3e3f68c8abbc86f23c12f0f2143f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e41e7e0_3ea6f867",
+        "filename": "fpdfsdk/pwl/cpwl_cblistbox.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-05T00:58:36Z",
+      "side": 1,
+      "message": "Maybe this default case can add a NOTREACHED(), and the DCHECK() on line 55 can go away.",
+      "revId": "459445608aa3e3f68c8abbc86f23c12f0f2143f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
