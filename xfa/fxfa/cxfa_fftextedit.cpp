@@ -132,7 +132,8 @@ bool CXFA_FFTextEdit::AcceptsFocusOnButtonDown(
   return true;
 }
 
-bool CXFA_FFTextEdit::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
+bool CXFA_FFTextEdit::OnLButtonDown(FWL_KeyFlagMask dwFlags,
+                                    const CFX_PointF& point) {
   if (!IsFocused()) {
     GetLayoutItem()->SetStatusBits(XFA_WidgetStatus_Focused);
     UpdateFWLData();
@@ -146,7 +147,8 @@ bool CXFA_FFTextEdit::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   return true;
 }
 
-bool CXFA_FFTextEdit::OnRButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
+bool CXFA_FFTextEdit::OnRButtonDown(FWL_KeyFlagMask dwFlags,
+                                    const CFX_PointF& point) {
   if (!IsFocused()) {
     GetLayoutItem()->SetStatusBits(XFA_WidgetStatus_Focused);
     UpdateFWLData();
@@ -160,7 +162,8 @@ bool CXFA_FFTextEdit::OnRButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   return true;
 }
 
-bool CXFA_FFTextEdit::OnRButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
+bool CXFA_FFTextEdit::OnRButtonUp(FWL_KeyFlagMask dwFlags,
+                                  const CFX_PointF& point) {
   if (!CXFA_FFField::OnRButtonUp(dwFlags, point))
     return false;
 

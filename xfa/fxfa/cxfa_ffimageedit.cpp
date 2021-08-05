@@ -109,7 +109,7 @@ bool CXFA_FFImageEdit::AcceptsFocusOnButtonDown(
   return true;
 }
 
-bool CXFA_FFImageEdit::OnLButtonDown(uint32_t dwFlags,
+bool CXFA_FFImageEdit::OnLButtonDown(FWL_KeyFlagMask dwFlags,
                                      const CFX_PointF& point) {
   SetButtonDown(true);
   CFWL_MessageMouse msg(GetNormalWidget(),
