@@ -110,27 +110,27 @@ class CPWL_MsgControl final : public Observable {
 };
 
 // static
-bool CPWL_Wnd::IsSHIFTKeyDown(uint32_t nFlag) {
+bool CPWL_Wnd::IsSHIFTKeyDown(FWL_EventFlagMask nFlag) {
   return !!(nFlag & FWL_EVENTFLAG_ShiftKey);
 }
 
 // static
-bool CPWL_Wnd::IsCTRLKeyDown(uint32_t nFlag) {
+bool CPWL_Wnd::IsCTRLKeyDown(FWL_EventFlagMask nFlag) {
   return !!(nFlag & FWL_EVENTFLAG_ControlKey);
 }
 
 // static
-bool CPWL_Wnd::IsALTKeyDown(uint32_t nFlag) {
+bool CPWL_Wnd::IsALTKeyDown(FWL_EventFlagMask nFlag) {
   return !!(nFlag & FWL_EVENTFLAG_AltKey);
 }
 
 // static
-bool CPWL_Wnd::IsMETAKeyDown(uint32_t nFlag) {
+bool CPWL_Wnd::IsMETAKeyDown(FWL_EventFlagMask nFlag) {
   return !!(nFlag & FWL_EVENTFLAG_MetaKey);
 }
 
 // static
-bool CPWL_Wnd::IsPlatformShortcutKey(uint32_t nFlag) {
+bool CPWL_Wnd::IsPlatformShortcutKey(FWL_EventFlagMask nFlag) {
 #if defined(OS_APPLE)
   return IsMETAKeyDown(nFlag);
 #else

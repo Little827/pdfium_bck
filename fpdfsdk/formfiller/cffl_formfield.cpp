@@ -461,7 +461,7 @@ CFX_PointF CFFL_FormField::PWLtoFFL(const CFX_PointF& point) {
 }
 
 bool CFFL_FormField::CommitData(const CPDFSDK_PageView* pPageView,
-                                uint32_t nFlag) {
+                                FWL_EventFlagMask nFlag) {
   if (!IsDataChanged(pPageView))
     return true;
 
