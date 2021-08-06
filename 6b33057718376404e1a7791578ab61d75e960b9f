@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1628286174 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1+rnN5estbyI/1s30MHCe8W6ERrdaXeahrvkfUJ5DmC2xZkOrU6HF3oSIKZy1vTpIorc7oM\n\n0000000000000000000000000000000000000000 6b33057718376404e1a7791578ab61d75e960b9f refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmENrN4ACgkQqzYtYVpm\n/XtEiwf/VmESzi91WjR13rjDPuVkqke2tpd71sjToJ+mr/n2Tg9P0anvjidW1ljG\nrDOMcFVCUuU28LNIkfoJYLv5Bq4e9j9rxudsUqWuOfPYAr94RWV/R7VGtvs7h5NE\nX+OFapfeifoFtPULnLVWkBEd8T86OpEwwip/Z+q+r5jvE3hgYFXhqxJWiR7yXpWt\nq2UqD7L2erspDnWx70hVR8/bMMHqupyfzdSyG7H2q/VkPBQuPIWuDGLqahGJebNm\ncUroA2UdI6Wicc7AbaZ+JurGIOuJpOolAld4s688kweoEVaTOTozgzGRJCFLDH9G\nFaaJjKHHibKKV1LBqfKVa3kxRKladA\u003d\u003d\n\u003dpmlb\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b394d634_760ab6f2",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-06T23:23:35Z",
+      "side": 1,
+      "message": "or just:\nWritePSBinary({output_buf.get, output_size}) if you\u0027d prefer.",
+      "range": {
+        "startLine": 362,
+        "startChar": 18,
+        "endLine": 362,
+        "endChar": 36
+      },
+      "revId": "6b33057718376404e1a7791578ab61d75e960b9f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be417d4_302442c5",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-06T23:23:35Z",
+      "side": 1,
+      "message": "I\u0027ve wanted to spanify these for a while, but you know ...",
+      "range": {
+        "startLine": 669,
+        "startChar": 15,
+        "endLine": 669,
+        "endChar": 25
+      },
+      "revId": "6b33057718376404e1a7791578ab61d75e960b9f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
