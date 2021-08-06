@@ -99,6 +99,24 @@
       "parentUuid": "074f01cb_486d8af2",
       "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e35ac84_cb63d31e",
+        "filename": "fpdfsdk/fpdf_progressive.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-08-06T19:48:40Z",
+      "side": 1,
+      "message": "Perfectly reasonable. Done.",
+      "parentUuid": "29de87bc_b2ad984d",
+      "revId": "6f321f21bb855ffc750843a25e4a15e23cf8b970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
