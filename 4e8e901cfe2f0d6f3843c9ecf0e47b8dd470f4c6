@@ -17,6 +17,24 @@
       "message": "Or always define it?",
       "revId": "4e8e901cfe2f0d6f3843c9ecf0e47b8dd470f4c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d565229_7065f01b",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-06T18:51:43Z",
+      "side": 1,
+      "message": "always.  Should someone need to log these, it\u0027s easy enough to fix with .value_or().",
+      "parentUuid": "c0dd613b_bbe6e685",
+      "revId": "4e8e901cfe2f0d6f3843c9ecf0e47b8dd470f4c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
