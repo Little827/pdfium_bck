@@ -16,6 +16,24 @@
       "message": "Something to ponder for a Friday afternoon.  Too weird? Risk of inventing our own language?",
       "revId": "067f6b6142a298edb7e9a9edd157759c9b9ac86f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800bcaa7_e450ef3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-06T23:01:48Z",
+      "side": 1,
+      "message": "We have many smart pointers, so why not a smart mask?",
+      "parentUuid": "d62c847d_d36bc036",
+      "revId": "067f6b6142a298edb7e9a9edd157759c9b9ac86f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

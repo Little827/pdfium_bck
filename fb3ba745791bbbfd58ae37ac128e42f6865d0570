@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb09196_bec33827",
+        "filename": "core/fxcrt/mask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-06T23:01:48Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 65,
+        "startChar": 54,
+        "endLine": 65,
+        "endChar": 62
+      },
+      "revId": "fb3ba745791bbbfd58ae37ac128e42f6865d0570",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bd3178_00bcb391",
+        "filename": "core/fxcrt/mask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-06T23:01:48Z",
+      "side": 1,
+      "message": "How about UncheckedValue(), to mirror FromUnderlyingUnchecked()?",
+      "revId": "fb3ba745791bbbfd58ae37ac128e42f6865d0570",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
