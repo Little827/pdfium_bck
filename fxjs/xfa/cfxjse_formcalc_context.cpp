@@ -1553,9 +1553,9 @@ v8::Local<v8::Value> GetObjectForName(CFXJSE_HostObject* pHostObject,
     return v8::Local<v8::Value>();
 
   CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
-  constexpr XFA_ResolveNodeMask kFlags =
-      XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
-      XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
+  constexpr Mask<XFA_ResolveFlag> kFlags = {
+      XFA_ResolveFlag::kChildren, XFA_ResolveFlag::kProperties,
+      XFA_ResolveFlag::kSiblings, XFA_ResolveFlag::kParent};
   Optional<CFXJSE_Engine::ResolveResult> maybeResult =
       pScriptContext->ResolveObjects(
           pScriptContext->GetThisObject(),
@@ -1583,11 +1583,11 @@ Optional<CFXJSE_Engine::ResolveResult> ResolveObjects(
   WideString wsSomExpression = WideString::FromUTF8(bsSomExp);
   CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
   CXFA_Object* pNode = nullptr;
-  XFA_ResolveNodeMask dwFlags = 0;
+  Mask<XFA_ResolveFlag> dwFlags;
   if (bDotAccessor) {
     if (fxv8::IsNull(pRefValue)) {
       pNode = pScriptContext->GetThisObject();
-      dwFlags = XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
+      dwFlags = {XFA_ResolveFlag::kSiblings, XFA_ResolveFlag::kParent};
     } else {
       pNode = CFXJSE_Engine::ToObject(pIsolate, pRefValue);
       if (!pNode)
@@ -1605,17 +1605,18 @@ Optional<CFXJSE_Engine::ResolveResult> ResolveObjects(
           wsName = L"#" + WideString::FromASCII(pNode->GetClassName());
 
         wsSomExpression = wsName + wsSomExpression;
-        dwFlags = XFA_RESOLVENODE_Siblings;
+        dwFlags = XFA_ResolveFlag::kSiblings;
       } else {
         dwFlags = (bsSomExp == "*")
-                      ? (XFA_RESOLVENODE_Children)
-                      : (XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Attributes |
-                         XFA_RESOLVENODE_Properties);
+                      ? Mask<XFA_ResolveFlag>{XFA_ResolveFlag::kChildren}
+                      : Mask<XFA_ResolveFlag>{XFA_ResolveFlag::kChildren,
+                                              XFA_ResolveFlag::kAttributes,
+                                              XFA_ResolveFlag::kProperties};
       }
     }
   } else {
     pNode = CFXJSE_Engine::ToObject(pIsolate, pRefValue);
-    dwFlags = XFA_RESOLVENODE_AnyChild;
+    dwFlags = XFA_ResolveFlag::kAnyChild;
   }
   return pScriptContext->ResolveObjects(pNode, wsSomExpression.AsStringView(),
                                         dwFlags);
