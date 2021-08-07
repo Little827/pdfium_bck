@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88897510_b8e2f86f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-07T15:32:00Z",
+      "side": 1,
+      "message": "Let\u0027s see if this revert can go through without the Rubber Stamper bot.",
+      "revId": "78979d175824a026bab401bf5ce12a92454ab4d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
