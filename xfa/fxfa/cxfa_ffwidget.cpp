@@ -385,49 +385,49 @@ bool CXFA_FFWidget::OnMouseExit() {
 }
 
 bool CXFA_FFWidget::AcceptsFocusOnButtonDown(
-    FWL_KeyFlagMask dwFlags,
+    Mask<FWL_KeyFlag> dwFlags,
     const CFX_PointF& point,
     CFWL_MessageMouse::MouseCommand command) {
   return false;
 }
 
-bool CXFA_FFWidget::OnLButtonDown(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnLButtonDown(Mask<FWL_KeyFlag> dwFlags,
                                   const CFX_PointF& point) {
   return false;
 }
 
-bool CXFA_FFWidget::OnLButtonUp(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnLButtonUp(Mask<FWL_KeyFlag> dwFlags,
                                 const CFX_PointF& point) {
   return false;
 }
 
-bool CXFA_FFWidget::OnLButtonDblClk(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnLButtonDblClk(Mask<FWL_KeyFlag> dwFlags,
                                     const CFX_PointF& point) {
   return false;
 }
 
-bool CXFA_FFWidget::OnMouseMove(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnMouseMove(Mask<FWL_KeyFlag> dwFlags,
                                 const CFX_PointF& point) {
   return false;
 }
 
-bool CXFA_FFWidget::OnMouseWheel(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnMouseWheel(Mask<FWL_KeyFlag> dwFlags,
                                  const CFX_PointF& point,
                                  const CFX_Vector& delta) {
   return false;
 }
 
-bool CXFA_FFWidget::OnRButtonDown(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnRButtonDown(Mask<FWL_KeyFlag> dwFlags,
                                   const CFX_PointF& point) {
   return false;
 }
 
-bool CXFA_FFWidget::OnRButtonUp(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnRButtonUp(Mask<FWL_KeyFlag> dwFlags,
                                 const CFX_PointF& point) {
   return false;
 }
 
-bool CXFA_FFWidget::OnRButtonDblClk(FWL_KeyFlagMask dwFlags,
+bool CXFA_FFWidget::OnRButtonDblClk(Mask<FWL_KeyFlag> dwFlags,
                                     const CFX_PointF& point) {
   return false;
 }
@@ -462,16 +462,16 @@ bool CXFA_FFWidget::OnKillFocus(CXFA_FFWidget* pNewWidget) {
 }
 
 bool CXFA_FFWidget::OnKeyDown(XFA_FWL_VKEYCODE dwKeyCode,
-                              FWL_KeyFlagMask dwFlags) {
+                              Mask<FWL_KeyFlag> dwFlags) {
   return false;
 }
 
 bool CXFA_FFWidget::OnKeyUp(XFA_FWL_VKEYCODE dwKeyCode,
-                            FWL_KeyFlagMask dwFlags) {
+                            Mask<FWL_KeyFlag> dwFlags) {
   return false;
 }
 
-bool CXFA_FFWidget::OnChar(uint32_t dwChar, FWL_KeyFlagMask dwFlags) {
+bool CXFA_FFWidget::OnChar(uint32_t dwChar, Mask<FWL_KeyFlag> dwFlags) {
   return false;
 }
 
