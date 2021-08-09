@@ -17,6 +17,24 @@
       "message": "test?",
       "revId": "2bedfb35a8b64729130963158a175151bb8f4188",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05939b0_66308253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-09T18:53:24Z",
+      "side": 1,
+      "message": "It turns out CPDFSDK_AppStream::AddImage() doesn\u0027t have existing test coverage. I\u0027ll try adding some.",
+      "parentUuid": "332b89d4_ae8a7ab3",
+      "revId": "2bedfb35a8b64729130963158a175151bb8f4188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
