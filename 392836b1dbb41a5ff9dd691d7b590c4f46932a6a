@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "161cf374_f3c29601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-09T23:09:13Z",
+      "side": 1,
+      "message": "Need c++17 designated initializer to make mask of bools convenient to write, along the lines of \n  { .kProperites \u003d true,\n    .kChildren \u003d true\n   }  \n   \n   Also, some of these can come across public APIs + a cast/unchecked.",
+      "parentUuid": "325795fe_5396bcb5",
+      "revId": "392836b1dbb41a5ff9dd691d7b590c4f46932a6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e3ae288_08cccce2",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67e6062_8bd65cab",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-09T23:09:13Z",
+      "side": 1,
+      "message": "Yep.  Old code from first pass at Mask\u003c\u003e.",
+      "parentUuid": "7e3ae288_08cccce2",
+      "revId": "392836b1dbb41a5ff9dd691d7b590c4f46932a6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e15d052a_d778192e",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-08-09T22:27:57Z",
       "side": 1,
       "message": "(Existing) Are lines 728-730 pointless?",
+      "revId": "392836b1dbb41a5ff9dd691d7b590c4f46932a6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c131d5_ef149ac3",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-09T23:09:13Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "e15d052a_d778192e",
       "revId": "392836b1dbb41a5ff9dd691d7b590c4f46932a6a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
