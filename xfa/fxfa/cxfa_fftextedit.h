@@ -30,12 +30,14 @@ class CXFA_FFTextEdit : public CXFA_FFField {
   bool LoadWidget() override;
   void UpdateWidgetProperty() override;
   bool AcceptsFocusOnButtonDown(
-      FWL_KeyFlagMask dwFlags,
+      Mask<FWL_KeyFlag> dwFlags,
       const CFX_PointF& point,
       CFWL_MessageMouse::MouseCommand command) override;
-  bool OnLButtonDown(FWL_KeyFlagMask dwFlags, const CFX_PointF& point) override;
-  bool OnRButtonDown(FWL_KeyFlagMask dwFlags, const CFX_PointF& point) override;
-  bool OnRButtonUp(FWL_KeyFlagMask dwFlags, const CFX_PointF& point) override;
+  bool OnLButtonDown(Mask<FWL_KeyFlag> dwFlags,
+                     const CFX_PointF& point) override;
+  bool OnRButtonDown(Mask<FWL_KeyFlag> dwFlags,
+                     const CFX_PointF& point) override;
+  bool OnRButtonUp(Mask<FWL_KeyFlag> dwFlags, const CFX_PointF& point) override;
   bool OnSetFocus(CXFA_FFWidget* pOldWidget) override WARN_UNUSED_RESULT;
   bool OnKillFocus(CXFA_FFWidget* pNewWidget) override WARN_UNUSED_RESULT;
   void OnProcessMessage(CFWL_Message* pMessage) override;
