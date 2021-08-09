@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325795fe_5396bcb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-09T22:27:57Z",
+      "side": 1,
+      "message": "- Got red bots.\n- (Light bulb was slow to go off) Thoughts on masks vs. struct of (tightly packed) bools?",
+      "revId": "392836b1dbb41a5ff9dd691d7b590c4f46932a6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3ae288_08cccce2",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-09T22:27:57Z",
+      "side": 1,
+      "message": "Can\u0027t we initialize this as {kFoo, kBar}?",
+      "revId": "392836b1dbb41a5ff9dd691d7b590c4f46932a6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15d052a_d778192e",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-09T22:27:57Z",
+      "side": 1,
+      "message": "(Existing) Are lines 728-730 pointless?",
+      "revId": "392836b1dbb41a5ff9dd691d7b590c4f46932a6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
