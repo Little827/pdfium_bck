@@ -418,8 +418,8 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
 
   if (dwStyles & XFA_ResolveFlag::kSiblings) {
     CXFA_Node* child = parentNode->GetFirstChild();
-    auto dwSubStyles = Mask<XFA_ResolveFlag>() | XFA_ResolveFlag::kChildren |
-                       XFA_ResolveFlag::kProperties;
+    Mask<XFA_ResolveFlag> dwSubStyles = {XFA_ResolveFlag::kChildren,
+                                         XFA_ResolveFlag::kProperties};
     if (dwStyles & XFA_ResolveFlag::kTagName)
       dwSubStyles |= XFA_ResolveFlag::kTagName;
     if (dwStyles & XFA_ResolveFlag::kALL)
@@ -721,14 +721,10 @@ void CFXJSE_ResolveProcessor::FilterCondition(v8::Isolate* pIsolate,
 void CFXJSE_ResolveProcessor::SetStylesForChild(
     Mask<XFA_ResolveFlag> dwParentStyles,
     CFXJSE_ResolveNodeData& rnd) {
-  Mask<XFA_ResolveFlag> dwSubStyles = XFA_ResolveFlag::kChildren;
+  Mask<XFA_ResolveFlag> dwSubStyles = {XFA_ResolveFlag::kChildren,
+                                       XFA_ResolveFlag::kALL};
   if (dwParentStyles & XFA_ResolveFlag::kTagName)
     dwSubStyles |= XFA_ResolveFlag::kTagName;
-
-  dwSubStyles.Clear(XFA_ResolveFlag::kParent);
-  dwSubStyles.Clear(XFA_ResolveFlag::kSiblings);
-  dwSubStyles.Clear(XFA_ResolveFlag::kProperties);
-  dwSubStyles |= XFA_ResolveFlag::kALL;
   rnd.m_dwStyles = dwSubStyles;
 }
 
