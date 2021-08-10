@@ -171,8 +171,8 @@ class CXFA_FFWidget : public cppgc::GarbageCollected<CXFA_FFWidget>,
   CXFA_FFWidget* GetNextFFWidget() const;
   const CFX_RectF& GetWidgetRect() const;
   const CFX_RectF& RecacheWidgetRect() const;
-  void ModifyStatus(XFA_WidgetStatusMask dwAdded,
-                    XFA_WidgetStatusMask dwRemoved);
+  void ModifyStatus(Mask<XFA_WidgetStatus> dwAdded,
+                    Mask<XFA_WidgetStatus> dwRemoved);
 
   CXFA_FFDoc* GetDoc();
   CXFA_FFApp* GetApp();
@@ -180,7 +180,7 @@ class CXFA_FFWidget : public cppgc::GarbageCollected<CXFA_FFWidget>,
   CFWL_App* GetFWLApp() const;
   void InvalidateRect();
   bool IsFocused() const {
-    return GetLayoutItem()->TestStatusBits(XFA_WidgetStatus_Focused);
+    return GetLayoutItem()->TestStatusBits(XFA_WidgetStatus::kFocused);
   }
   CFX_PointF Rotate2Normal(const CFX_PointF& point);
   bool IsLayoutRectEmpty();
