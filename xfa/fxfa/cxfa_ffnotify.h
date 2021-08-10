@@ -55,7 +55,7 @@ class CXFA_FFNotify : public cppgc::GarbageCollected<CXFA_FFNotify> {
   void OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
                          CXFA_LayoutItem* pSender,
                          int32_t iPageIdx,
-                         XFA_WidgetStatusMask dwStatus);
+                         Mask<XFA_WidgetStatus> dwStatus);
   void OnLayoutItemRemoving(CXFA_LayoutProcessor* pLayout,
                             CXFA_LayoutItem* pSender);
   void StartFieldDrawLayout(CXFA_Node* pItem,
