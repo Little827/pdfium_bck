@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16c03b86_415f5940",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-10T00:09:36Z",
+      "side": 1,
+      "message": "More Mask\u003cXFA_ResolveFlag\u003e() | kFoo to convert.",
+      "revId": "fbb68bd6f7904bdb1335e4668079f292ce00d9bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8bb5e9_806d32c4",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-10T00:09:36Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "fbb68bd6f7904bdb1335e4668079f292ce00d9bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00df6eb7_86d18842",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-10T00:09:36Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "fbb68bd6f7904bdb1335e4668079f292ce00d9bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11f6317c_5d39ed19",
         "filename": "testing/resources/javascript/xfa_specific/xfa_host_pseudomodel_expected.txt",
         "patchSetId": 6
@@ -14,6 +65,30 @@
       "writtenOn": "2021-08-09T23:09:13Z",
       "side": 1,
       "message": "Added !! to get bool from mask of (x \u0026 kFoo) in CPDFXFA_DocEnvironment::Print - API only promises 0/non-zero so the new args are still legit (dare say better).",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "fbb68bd6f7904bdb1335e4668079f292ce00d9bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26084ff3_abc134ca",
+        "filename": "testing/resources/javascript/xfa_specific/xfa_host_pseudomodel_expected.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-10T00:09:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11f6317c_5d39ed19",
       "range": {
         "startLine": 55,
         "startChar": 1,
