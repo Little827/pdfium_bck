@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1628694748 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d18x3IyYUSvt2o8zLM4mNf0VGjZMzODEZSEXWRgEEKhNlWLDtkuC3287+dky7HvRPwBSPP6o\n\n0000000000000000000000000000000000000000 faed54e6dbe417e490714fd840f42cd7b395d180 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmET6NwACgkQqzYtYVpm\n/XvywQf/d1RLTAJETBRamW9x7ZvCv6cFo09l4NLM79zeWz86J6OHi8l+WdxZh04g\nGy4xizoLyl8KlhUa8jR5khaLkYg1rleV7cjH7+7ND+39Q1lEbNo4mn6H7SleCVj+\nB2yLeaJq5kYCizkETaGJh+OvXpKZNjkztlMwfM/qcknOcbSRME1ciRE9Rxhx9rQ7\nv0pUCRH8VCa2diX2C14py98QtWtSksZUUZIoP7JqUN8BX01ZJkgZSECb+KHcyvUH\naNmVhwYbzJU+Xp96wPfL2w/iJEBm6srPPU1FafmGH1NI1f0K5hoz8zjrg7JiFLV7\ns0jfcgchLEgecBwU69bF8pGpC67zFA\u003d\u003d\n\u003dx3JY\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a2b5b4_59d560aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-11T18:56:16Z",
+      "side": 1,
+      "message": "Yay, more scoped variables!",
+      "revId": "faed54e6dbe417e490714fd840f42cd7b395d180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
