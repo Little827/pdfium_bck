@@ -521,8 +521,9 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
 
 bool CFXJSE_ResolveProcessor::ResolveAsterisk(CFXJSE_ResolveNodeData& rnd) {
   CXFA_Node* curNode = ToNode(rnd.m_CurObject.Get());
-  std::vector<CXFA_Node*> array = curNode->GetNodeListWithFilter(
-      XFA_NodeFilter_Children | XFA_NodeFilter_Properties);
+  std::vector<CXFA_Node*> array =
+      curNode->GetNodeListWithFilter(Mask<XFA_NodeFilter>{
+          XFA_NodeFilter::kChildren, XFA_NodeFilter::kProperties});
   rnd.m_Result.objects.insert(rnd.m_Result.objects.end(), array.begin(),
                               array.end());
   return !rnd.m_Result.objects.empty();
