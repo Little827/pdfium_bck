@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ddd451_348a2f4e",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-11T00:19:41Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "8ce5952f91a41efb6b0225e59391de13910d56e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2126f1_329775c8",
+        "filename": "xfa/fxfa/cxfa_ffnotify.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-11T00:19:41Z",
+      "side": 1,
+      "message": "Include mask.h",
+      "revId": "8ce5952f91a41efb6b0225e59391de13910d56e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b757064_a7a8725d",
+        "filename": "xfa/fxfa/cxfa_ffpageview.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-11T00:19:41Z",
+      "side": 1,
+      "message": "Include mask.h",
+      "revId": "8ce5952f91a41efb6b0225e59391de13910d56e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86765f5b_e13297c9",
+        "filename": "xfa/fxfa/cxfa_ffwidget.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-11T00:19:41Z",
+      "side": 1,
+      "message": "Include mask.h",
+      "revId": "8ce5952f91a41efb6b0225e59391de13910d56e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef52f6f_b7d9d1d8",
+        "filename": "xfa/fxfa/fxfa.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-11T00:19:41Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "8ce5952f91a41efb6b0225e59391de13910d56e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
