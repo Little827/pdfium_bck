@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1628695379 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1/mVVSAlUSr2hT5OM0lURjFvXKJCMwWgtV9t9DBSt94rrEYeK1eiV1VSqgIjs+ODsY+9l8F\n\n0000000000000000000000000000000000000000 e515a78a659139e029de46a50ec70d5a0f476038 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmET61MACgkQqzYtYVpm\n/XtYSQf7Bwkpf+3uB6JWRjlE2xtrPCaukDDLEhHZnLsc84gn9vZWwWn8N43Se5xV\nkzTdAIHoNnMleJEjnvB3li2HneGC7jEDZ9EGbNS9HaCeie5EL8vta2uYN+dfUec8\nWHs+zN7xIKXr+z6NKNJ9ZPxTHIZInU9VVIQH8fWc2p3JI3dEbMzAqStWzsgU0PXI\nONTIaHGnm6srE3HVnOV0TPeFe4ILLb84cCqhq6GLMitc/5z6ic3laRHc8I/fJW6K\nu07F8abTu4AsFmDvz7KEfj35QkUbSTtNvNS918vSulXTbZ8a3XsWW58X8F9rez5P\nWwuJe74Nj2xw8uTrTnw2rEApS3GOXQ\u003d\u003d\n\u003dygfc\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805d4d67_aa9e7d28",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-11T19:10:58Z",
+      "side": 1,
+      "message": "Optional:\nIn this file the hash value consts are still named \"XXXXMd5sum\" (to be consistent). But a lot of other embeddertest files have switched to use \"XXXXChecksum\" moving forward.\n\nSince this is a new test, I am leaning towards name the hashes \"XXXXChecksum\". It\u0027s up to you.",
+      "range": {
+        "startLine": 309,
+        "startChar": 26,
+        "endLine": 309,
+        "endChar": 33
+      },
+      "revId": "e515a78a659139e029de46a50ec70d5a0f476038",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
