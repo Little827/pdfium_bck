@@ -85,18 +85,19 @@ enum class XFA_NodeFlag : uint8_t {
   kLayoutGeneratedNode = 1 << 6
 };
 
-enum XFA_PropertyFlag : uint8_t {
-  XFA_PropertyFlag_OneOf = 1 << 0,
-  XFA_PropertyFlag_DefaultOneOf = 1 << 1,
+enum class XFA_PropertyFlag : uint8_t {
+  kOneOf = 1 << 0,
+  kDefaultOneOf = 1 << 1,
 };
-using XFA_PropertyFlagMask = std::underlying_type<XFA_PropertyFlag>::type;
 
 class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
  public:
   struct PropertyData {
+    PropertyData() = delete;
+
     XFA_Element property;
     uint8_t occurance_count;
-    XFA_PropertyFlagMask flags;
+    Mask<XFA_PropertyFlag> flags;
   };
 
   struct AttributeData {
@@ -116,7 +117,7 @@ class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
   void Trace(cppgc::Visitor* visitor) const override;
 
   bool HasProperty(XFA_Element property) const;
-  bool HasPropertyFlags(XFA_Element property, uint8_t flags) const;
+  bool HasPropertyFlag(XFA_Element property, XFA_PropertyFlag flag) const;
   uint8_t PropertyOccuranceCount(XFA_Element property) const;
 
   std::pair<CXFA_Node*, int32_t> GetProperty(int32_t index,
@@ -437,8 +438,7 @@ class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
   bool HasFlag(XFA_NodeFlag dwFlag) const;
   const PropertyData* GetPropertyData(XFA_Element property) const;
   const AttributeData* GetAttributeData(XFA_Attribute attr) const;
-  Optional<XFA_Element> GetFirstPropertyWithFlag(
-      XFA_PropertyFlagMask flag) const;
+  Optional<XFA_Element> GetFirstPropertyWithFlag(XFA_PropertyFlag flag) const;
   void OnRemoved(bool bNotify) const;
   Optional<void*> GetDefaultValue(XFA_Attribute attr,
                                   XFA_AttributeType eType) const;
