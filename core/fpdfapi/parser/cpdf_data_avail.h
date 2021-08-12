@@ -43,13 +43,6 @@ enum PDF_DATAAVAIL_STATUS {
   PDF_DATAAVAIL_LOADALLFILE,
 };
 
-enum PDF_PAGENODE_TYPE {
-  PDF_PAGENODE_UNKNOWN = 0,
-  PDF_PAGENODE_PAGE,
-  PDF_PAGENODE_PAGES,
-  PDF_PAGENODE_ARRAY,
-};
-
 class CPDF_DataAvail final : public Observable::ObserverIface {
  public:
   // Must match PDF_DATA_* definitions in public/fpdf_dataavail.h, but cannot
@@ -117,11 +110,13 @@ class CPDF_DataAvail final : public Observable::ObserverIface {
  private:
   class PageNode {
    public:
+    enum class Type { kUnknown = 0, kPage, kPages, kArray };
+
     PageNode();
     ~PageNode();
 
-    PDF_PAGENODE_TYPE m_type;
-    uint32_t m_dwPageNo;
+    Type m_type = Type::kUnknown;
+    uint32_t m_dwPageNo = 0;
     std::vector<std::unique_ptr<PageNode>> m_ChildNodes;
   };
 
