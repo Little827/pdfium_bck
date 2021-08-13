@@ -13,7 +13,6 @@
 
 class CPDF_Bookmark;
 class CPDF_FormField;
-class CPDFSDK_Annot;
 
 // Records the details of an event and triggers JS execution for it. There
 // can be more than one of these at any given time, as JS callbacks to C++
@@ -85,43 +84,10 @@ class IJS_EventContext {
                                 WideString* Value,
                                 bool* bRc) = 0;
 
-  virtual void OnScreen_Focus(bool bModifier,
-                              bool bShift,
-                              CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_Blur(bool bModifier,
-                             bool bShift,
-                             CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_Open(bool bModifier,
-                             bool bShift,
-                             CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_Close(bool bModifier,
-                              bool bShift,
-                              CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_MouseDown(bool bModifier,
-                                  bool bShift,
-                                  CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_MouseUp(bool bModifier,
-                                bool bShift,
-                                CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_MouseEnter(bool bModifier,
-                                   bool bShift,
-                                   CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_MouseExit(bool bModifier,
-                                  bool bShift,
-                                  CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_InView(bool bModifier,
-                               bool bShift,
-                               CPDFSDK_Annot* pScreen) = 0;
-  virtual void OnScreen_OutView(bool bModifier,
-                                bool bShift,
-                                CPDFSDK_Annot* pScreen) = 0;
 
   virtual void OnBookmark_MouseUp(CPDF_Bookmark* pBookMark) = 0;
   virtual void OnLink_MouseUp() = 0;
 
-  virtual void OnMenu_Exec(const WideString&) = 0;
-  virtual void OnBatch_Exec() = 0;
-  virtual void OnConsole_Exec() = 0;
   virtual void OnExternal_Exec() = 0;
 };
 
