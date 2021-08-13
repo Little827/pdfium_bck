@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "core/fxcrt/fx_coordinates.h"
 #include "fxjs/cjs_document.h"
 #include "fxjs/cjs_object.h"
 #include "fxjs/js_define.h"
