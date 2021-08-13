@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a94725_6f325bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-13T17:39:30Z",
+      "side": 1,
+      "message": "Cannot roll v8 up-to-date yet:\nFirst issue encountered is the embedder test failure, which is addressed in this CL.\nNext issue to be resolved is msvc compilation error.",
+      "revId": "416afcf789a3ec71d3733bfd62ee6a1d9a587459",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
