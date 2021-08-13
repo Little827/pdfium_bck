@@ -105,9 +105,6 @@ class CJS_EventContextStub final : public IJS_EventContext {
                         CPDFSDK_Annot* pScreen) override {}
   void OnBookmark_MouseUp(CPDF_Bookmark* pBookMark) override {}
   void OnLink_MouseUp() override {}
-  void OnMenu_Exec(const WideString&) override {}
-  void OnBatch_Exec() override {}
-  void OnConsole_Exec() override {}
   void OnExternal_Exec() override {}
 };
 
