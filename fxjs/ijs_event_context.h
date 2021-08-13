@@ -119,9 +119,6 @@ class IJS_EventContext {
   virtual void OnBookmark_MouseUp(CPDF_Bookmark* pBookMark) = 0;
   virtual void OnLink_MouseUp() = 0;
 
-  virtual void OnMenu_Exec(const WideString&) = 0;
-  virtual void OnBatch_Exec() = 0;
-  virtual void OnConsole_Exec() = 0;
   virtual void OnExternal_Exec() = 0;
 };
 

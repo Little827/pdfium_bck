@@ -52,9 +52,6 @@ enum JS_EVENT_T {
   JET_SCREEN_MOUSEEXIT,
   JET_SCREEN_INVIEW,
   JET_SCREEN_OUTVIEW,
-  JET_BATCH_EXEC,
-  JET_MENU_EXEC,
-  JET_CONSOLE_EXEC,
   JET_EXTERNAL_EXEC,
   JET_BOOKMARK_MOUSEUP,
   JET_LINK_MOUSEUP
@@ -155,9 +152,6 @@ class CJS_EventContext final : public IJS_EventContext {
                         CPDFSDK_Annot* pScreen) override;
   void OnBookmark_MouseUp(CPDF_Bookmark* pBookMark) override;
   void OnLink_MouseUp() override;
-  void OnMenu_Exec(const WideString& strTargetName) override;
-  void OnBatch_Exec() override;
-  void OnConsole_Exec() override;
   void OnExternal_Exec() override;
 
   CJS_Runtime* GetJSRuntime() const { return m_pRuntime.Get(); }
@@ -202,6 +196,8 @@ class CJS_EventContext final : public IJS_EventContext {
   void Destroy();
 
   UnownedPtr<CJS_Runtime> const m_pRuntime;
+  ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
+  bool m_bBusy = false;
   JS_EVENT_T m_eEventType = JET_UNKNOWN;
   bool m_bValid = false;
   UnownedPtr<WideString> m_pValue;
@@ -223,9 +219,7 @@ class CJS_EventContext final : public IJS_EventContext {
   bool m_bRcDu = false;
   UnownedPtr<bool> m_pbRc;
   UnownedPtr<const CPDF_Bookmark> m_pTargetBookMark;
-  ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
   ObservedPtr<CPDFSDK_Annot> m_pTargetAnnot;
-  bool m_bBusy = false;
 };
 
 #endif  // FXJS_CJS_EVENT_CONTEXT_H_

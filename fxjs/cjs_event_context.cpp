@@ -402,21 +402,8 @@ void CJS_EventContext::OnBookmark_MouseUp(CPDF_Bookmark* pBookMark) {
   m_pTargetBookMark = pBookMark;
 }
 
-void CJS_EventContext::OnMenu_Exec(const WideString& strTargetName) {
-  Initialize(JET_MENU_EXEC);
-  m_strTargetName = strTargetName;
-}
-
 void CJS_EventContext::OnExternal_Exec() {
   Initialize(JET_EXTERNAL_EXEC);
-}
-
-void CJS_EventContext::OnBatch_Exec() {
-  Initialize(JET_BATCH_EXEC);
-}
-
-void CJS_EventContext::OnConsole_Exec() {
-  Initialize(JET_CONSOLE_EXEC);
 }
 
 void CJS_EventContext::Initialize(JS_EVENT_T type) {
@@ -471,12 +458,8 @@ ByteStringView CJS_EventContext::Name() const {
   switch (m_eEventType) {
     case JET_APP_INIT:
       return "Init";
-    case JET_BATCH_EXEC:
-      return "Exec";
     case JET_BOOKMARK_MOUSEUP:
       return "Mouse Up";
-    case JET_CONSOLE_EXEC:
-      return "Exec";
     case JET_DOC_DIDPRINT:
       return "DidPrint";
     case JET_DOC_DIDSAVE:
@@ -519,8 +502,6 @@ ByteStringView CJS_EventContext::Name() const {
       return "Validate";
     case JET_LINK_MOUSEUP:
       return "Mouse Up";
-    case JET_MENU_EXEC:
-      return "Exec";
     case JET_PAGE_OPEN:
     case JET_SCREEN_OPEN:
       return "Open";
@@ -542,12 +523,8 @@ ByteStringView CJS_EventContext::Type() const {
   switch (m_eEventType) {
     case JET_APP_INIT:
       return "App";
-    case JET_BATCH_EXEC:
-      return "Batch";
     case JET_BOOKMARK_MOUSEUP:
       return "BookMark";
-    case JET_CONSOLE_EXEC:
-      return "Console";
     case JET_DOC_DIDPRINT:
     case JET_DOC_DIDSAVE:
     case JET_DOC_OPEN:
@@ -581,8 +558,6 @@ ByteStringView CJS_EventContext::Type() const {
       return "Screen";
     case JET_LINK_MOUSEUP:
       return "Link";
-    case JET_MENU_EXEC:
-      return "Menu";
     case JET_PAGE_OPEN:
     case JET_PAGE_CLOSE:
     case JET_PAGE_INVIEW:
