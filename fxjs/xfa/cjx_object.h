@@ -42,12 +42,6 @@ struct CJX_MethodSpec {
   CJX_MethodCall pMethodCall;
 };
 
-enum XFA_SOM_MESSAGETYPE {
-  XFA_SOM_ValidationMessage,
-  XFA_SOM_FormatMessage,
-  XFA_SOM_MandatoryMessage
-};
-
 class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
                    public CFXJSE_HostObject {
  public:
@@ -88,6 +82,12 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
     TreeList,
     WsdlConnection,
     Xfa,
+  };
+
+  enum class SOMMessageType {
+    kValidationMessage,
+    kFormatMessage,
+    kMandatoryMessage
   };
 
   class CalcData : public cppgc::GarbageCollected<CalcData> {
@@ -183,7 +183,7 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
   void ScriptSomMessage(v8::Isolate* pIsolate,
                         v8::Local<v8::Value>* pValue,
                         bool bSetting,
-                        XFA_SOM_MESSAGETYPE iMessageType);
+                        SOMMessageType iMessageType);
 
   Optional<WideString> TryNamespace() const;
 
