@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a38a48_e0f7b32e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-16T23:55:13Z",
+      "side": 1,
+      "message": "XFA_PropertyFlag",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "3729992a8959ac618874eae72427d2c4e2086c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34fb2a96_3cb24e69",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-16T23:55:13Z",
+      "side": 1,
+      "message": "Should be renamed to `flag` to match the header.",
+      "range": {
+        "startLine": 1098,
+        "startChar": 49,
+        "endLine": 1098,
+        "endChar": 54
+      },
+      "revId": "3729992a8959ac618874eae72427d2c4e2086c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194515c2_cd00fba5",
+        "filename": "xfa/fxfa/parser/cxfa_node.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-16T23:55:13Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "3729992a8959ac618874eae72427d2c4e2086c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
