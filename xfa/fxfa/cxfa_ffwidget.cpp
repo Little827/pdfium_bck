@@ -66,12 +66,7 @@ FXDIB_Format XFA_GetDIBFormat(FXCODEC_IMAGE_TYPE type,
 }
 
 bool IsFXCodecErrorStatus(FXCODEC_STATUS status) {
-  return (status == FXCODEC_STATUS_ERROR ||
-          status == FXCODEC_STATUS_ERR_MEMORY ||
-          status == FXCODEC_STATUS_ERR_READ ||
-          status == FXCODEC_STATUS_ERR_FLUSH ||
-          status == FXCODEC_STATUS_ERR_FORMAT ||
-          status == FXCODEC_STATUS_ERR_PARAMS);
+  return status == FXCODEC_STATUS_ERROR;
 }
 
 }  // namespace
