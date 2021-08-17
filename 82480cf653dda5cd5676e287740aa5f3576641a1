@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c851e2_c84f25aa",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-17T23:03:23Z",
+      "side": 0,
+      "message": "Existing: isn\u0027t this a pointless assignment?",
+      "revId": "82480cf653dda5cd5676e287740aa5f3576641a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90cd24a7_670c6a0b",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-17T23:03:23Z",
+      "side": 0,
+      "message": "Existing: Variable name has a typo.",
+      "range": {
+        "startLine": 389,
+        "startChar": 4,
+        "endLine": 389,
+        "endChar": 20
+      },
+      "revId": "82480cf653dda5cd5676e287740aa5f3576641a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
