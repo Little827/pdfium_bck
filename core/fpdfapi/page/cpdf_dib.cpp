@@ -367,13 +367,13 @@ CPDF_DIB::LoadState CPDF_DIB::ContinueLoadDIBBase(PauseIndicatorIface* pPause) {
     iDecodeStatus = Jbig2Decoder::ContinueDecode(m_pJbig2Context.get(), pPause);
   }
 
-  if (iDecodeStatus < 0) {
+  if (iDecodeStatus == FXCODEC_STATUS::kERROR) {
     m_pJbig2Context.reset();
     m_pCachedBitmap.Reset();
     m_pGlobalAcc.Reset();
     return LoadState::kFail;
   }
-  if (iDecodeStatus == FXCODEC_STATUS_DECODE_TOBECONTINUE)
+  if (iDecodeStatus == FXCODEC_STATUS::kDECODE_TOBECONTINUE)
     return LoadState::kContinue;
 
   LoadState iContinueStatus = LoadState::kSuccess;
