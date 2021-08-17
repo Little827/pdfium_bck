@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a880d0_f57977b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-17T00:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68a38a48_e0f7b32e",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "3729992a8959ac618874eae72427d2c4e2086c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34fb2a96_3cb24e69",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79bab028_0c2c4371",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-17T00:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34fb2a96_3cb24e69",
+      "range": {
+        "startLine": 1098,
+        "startChar": 49,
+        "endLine": 1098,
+        "endChar": 54
+      },
+      "revId": "3729992a8959ac618874eae72427d2c4e2086c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "194515c2_cd00fba5",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-08-16T23:55:13Z",
       "side": 1,
       "message": "Remove",
+      "revId": "3729992a8959ac618874eae72427d2c4e2086c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9587cae9_92e3ebd6",
+        "filename": "xfa/fxfa/parser/cxfa_node.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-17T00:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "194515c2_cd00fba5",
       "revId": "3729992a8959ac618874eae72427d2c4e2086c4a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
