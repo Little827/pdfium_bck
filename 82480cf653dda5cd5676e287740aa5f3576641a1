@@ -18,6 +18,47 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de761d72_0a81c56c",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-17T23:25:25Z",
+      "side": 0,
+      "message": "It certainly is, and has been pointlessly assigned as far back as the xfa to main merge in 2016 ...",
+      "parentUuid": "55c851e2_c84f25aa",
+      "revId": "82480cf653dda5cd5676e287740aa5f3576641a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d67076d5_d9f6aeae",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-17T23:25:25Z",
+      "side": 0,
+      "message": "And this looks like another candidate for enum-ification down the road?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "82480cf653dda5cd5676e287740aa5f3576641a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90cd24a7_670c6a0b",
@@ -31,6 +72,30 @@
       "writtenOn": "2021-08-17T23:03:23Z",
       "side": 0,
       "message": "Existing: Variable name has a typo.",
+      "range": {
+        "startLine": 389,
+        "startChar": 4,
+        "endLine": 389,
+        "endChar": 20
+      },
+      "revId": "82480cf653dda5cd5676e287740aa5f3576641a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b712f5e1_8df6e845",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-17T23:25:25Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "90cd24a7_670c6a0b",
       "range": {
         "startLine": 389,
         "startChar": 4,
