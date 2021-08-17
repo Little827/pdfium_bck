@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b413d502_9ba201a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-17T23:05:54Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "7a782a4878745916b70f2d072e851ec6f436e343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c88752_cdd72839",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-17T23:05:54Z",
+      "side": 1,
+      "message": "Are these publicly available somewhere?",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "7a782a4878745916b70f2d072e851ec6f436e343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "872a9292_eff9a1ba",
@@ -14,6 +60,24 @@
       "writtenOn": "2021-08-17T21:56:52Z",
       "side": 1,
       "message": "Measurable perf impact?",
+      "revId": "7a782a4878745916b70f2d072e851ec6f436e343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63871d6_6bdd98af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-17T23:05:54Z",
+      "side": 1,
+      "message": "Checking...",
+      "parentUuid": "872a9292_eff9a1ba",
       "revId": "7a782a4878745916b70f2d072e851ec6f436e343",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
