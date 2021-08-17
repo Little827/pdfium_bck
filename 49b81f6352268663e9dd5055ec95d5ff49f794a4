@@ -16,6 +16,24 @@
       "message": "Forward declare CFX_FloatRect instead?",
       "revId": "49b81f6352268663e9dd5055ec95d5ff49f794a4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb3acfd_5e2d9fbb",
+        "filename": "fxjs/cjs_field.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-17T22:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "993cbd65_fd404fbf",
+      "revId": "49b81f6352268663e9dd5055ec95d5ff49f794a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
