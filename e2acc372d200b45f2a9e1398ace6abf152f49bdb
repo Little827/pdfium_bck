@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9821b06_6a676be8",
+        "filename": "fxjs/ijs_runtime.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2021-08-19T22:22:55Z",
+      "side": 1,
+      "message": "Hey Tom, is this addition necessary? Doesn\u0027t this introduce an additional circular dependency between the fpdfsdk directory and the fxjs directory? Was this introduced by IWYU, and if so, we can we guard it behind the PDF_ENABLE_V8 or PDF_ENABLE_XFA defines?",
+      "revId": "e2acc372d200b45f2a9e1398ace6abf152f49bdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
