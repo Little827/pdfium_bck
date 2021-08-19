@@ -52,10 +52,8 @@ struct PacketTableRecord {
 
 const PacketTableRecord kPacketTable[] = {
 #undef PCKT____
-#define PCKT____(a, b, c, d, e, f)                                        \
-  {a,                                                                     \
-   {XFA_PacketType::c, XFA_XDPPACKET_FLAGS_##e | XFA_XDPPACKET_FLAGS_##f, \
-    L##b, d}},
+#define PCKT____(a, b, c, d, e, f) \
+  {a, {XFA_PacketType::c, XFA_PacketMatch::e, XFA_PacketSupport::f, b, d}},
 #include "xfa/fxfa/parser/packets.inc"
 #undef PCKT____
 };
@@ -172,7 +170,7 @@ Optional<XFA_PACKETINFO> XFA_GetPacketByName(WideStringView wsName) {
   auto* elem = std::lower_bound(
       std::begin(kPacketTable), std::end(kPacketTable), hash,
       [](const PacketTableRecord& a, uint32_t hash) { return a.hash < hash; });
-  if (elem != std::end(kPacketTable) && elem->info.name == wsName)
+  if (elem != std::end(kPacketTable) && wsName.EqualsASCII(elem->info.name))
     return elem->info;
   return pdfium::nullopt;
 }
