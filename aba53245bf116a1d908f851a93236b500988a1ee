@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547088f0_40902c00",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-20T18:50:58Z",
+      "side": 0,
+      "message": "Or maybe keep this and just have it call ResetForm({}, false)",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 774,
+        "endChar": 40
+      },
+      "revId": "aba53245bf116a1d908f851a93236b500988a1ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
