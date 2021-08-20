@@ -760,20 +760,6 @@ void CPDF_InteractiveForm::ResetForm(const std::vector<CPDF_FormField*>& fields,
     m_pFormNotify->AfterFormReset(this);
 }
 
-void CPDF_InteractiveForm::ResetForm() {
-  CFieldTree::Node* pRoot = m_pFieldTree->GetRoot();
-  const size_t nCount = pRoot->CountFields();
-  for (size_t i = 0; i < nCount; ++i) {
-    CPDF_FormField* pField = pRoot->GetFieldAtIndex(i);
-    if (!pField)
-      continue;
-
-    pField->ResetField();
-  }
-  if (m_pFormNotify)
-    m_pFormNotify->AfterFormReset(this);
-}
-
 const std::vector<UnownedPtr<CPDF_FormControl>>&
 CPDF_InteractiveForm::GetControlsForField(const CPDF_FormField* pField) {
   return m_ControlLists[pField];

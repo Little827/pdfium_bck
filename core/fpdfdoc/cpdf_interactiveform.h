@@ -83,8 +83,6 @@ class CPDF_InteractiveForm {
       const std::vector<CPDF_FormField*>& fields,
       bool bIncludeOrExclude) const;
 
-  void ResetForm();
-
   // TODO(tsepez): Use a span.
   void ResetForm(const std::vector<CPDF_FormField*>& fields,
                  bool bIncludeOrExclude);

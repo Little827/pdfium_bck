@@ -523,7 +523,7 @@ CJS_Result CJS_Document::resetForm(
 
   CPDF_InteractiveForm* pPDFForm = GetCoreInteractiveForm();
   if (params.empty()) {
-    pPDFForm->ResetForm();
+    pPDFForm->ResetForm(/*fields=*/{}, /*bIncludeOrExclude=*/false);
     m_pFormFillEnv->SetChangeMark();
     return CJS_Result::Success();
   }

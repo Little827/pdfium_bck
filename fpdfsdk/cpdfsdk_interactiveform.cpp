@@ -493,7 +493,7 @@ void CPDFSDK_InteractiveForm::DoAction_ResetForm(const CPDF_Action& action) {
   DCHECK(action.GetDict());
   const CPDF_Dictionary* pActionDict = action.GetDict();
   if (!pActionDict->KeyExist("Fields")) {
-    m_pInteractiveForm->ResetForm();
+    m_pInteractiveForm->ResetForm(/*fields=*/{}, /*bIncludeOrExclude=*/false);
     return;
   }
   uint32_t dwFlags = action.GetFlags();
