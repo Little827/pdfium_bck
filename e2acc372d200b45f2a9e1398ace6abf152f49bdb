@@ -16,6 +16,24 @@
       "message": "Hey Tom, is this addition necessary? Doesn\u0027t this introduce an additional circular dependency between the fpdfsdk directory and the fxjs directory? Was this introduced by IWYU, and if so, we can we guard it behind the PDF_ENABLE_V8 or PDF_ENABLE_XFA defines?",
       "revId": "e2acc372d200b45f2a9e1398ace6abf152f49bdb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61116d68_f73eccda",
+        "filename": "fxjs/ijs_runtime.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-20T00:24:32Z",
+      "side": 1,
+      "message": "fpdfsdk and fxjs are already circularly dependent despite my efforts at layering: https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/fpdfsdk/BUILD.gn;drc\u003d7a5f8eecb2e23bad05a6060ac7bfa6e00465a3b1;l\u003d93\n\nBut yes, I think we ought move this inside an ifdef, I\u0027ll cobble a CL.",
+      "parentUuid": "e9821b06_6a676be8",
+      "revId": "e2acc372d200b45f2a9e1398ace6abf152f49bdb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
