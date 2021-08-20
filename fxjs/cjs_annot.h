@@ -40,7 +40,7 @@ class CJS_Annot final : public CJS_Object {
   CJS_Result get_type(CJS_Runtime* pRuntime);
   CJS_Result set_type(CJS_Runtime* pRuntime, v8::Local<v8::Value> vp);
 
-  ObservedPtr<CPDFSDK_Annot> m_pAnnot;
+  ObservedPtr<CPDFSDK_BAAnnot> m_pAnnot;
 };
 
 #endif  // FXJS_CJS_ANNOT_H_
