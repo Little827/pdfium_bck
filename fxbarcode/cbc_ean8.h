@@ -18,7 +18,6 @@ class CBC_EAN8 final : public CBC_EANCode {
 
   // CBC_EANCode:
   BC_TYPE GetType() override;
-  BCFORMAT GetFormat() const override;
   size_t GetMaxLength() const override;
 };
 

@@ -25,7 +25,7 @@ bool CBC_EANCode::Encode(WideStringView contents) {
   if (!pWriter->CheckContentValidity(contents))
     return false;
 
-  BCFORMAT format = GetFormat();
+  BC_TYPE format = GetType();
   int32_t out_width = 0;
   int32_t out_height = 0;
   m_renderContents = Preprocess(contents);
