@@ -2341,7 +2341,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
 #elif defined(OS_APPLE)
     static constexpr char md5[] = "26a516d923b0a18fbea0a24e3aca5562";
 #else
-    static constexpr char md5[] = "76fcc7d08aa15445efd2e2ceb7c6cc3b";
+    static constexpr char md5[] = "ad25881ed8ea4f0e3b22963a7beeda51";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     CompareBitmap(page_bitmap.get(), 612, 792, md5);
@@ -2373,7 +2373,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
 #elif defined(OS_APPLE)
     static constexpr char md5[] = "532024c9ded47843313bb64a060118f3";
 #else
-    static constexpr char md5[] = "344534539aa7c5cc78404cfff4bde7fb";
+    static constexpr char md5[] = "ca120ec6aeabfe96934e103890811ffc";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
     CompareBitmap(page_bitmap.get(), 612, 792, md5);
@@ -3111,7 +3111,7 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   static constexpr char md5[] = "683eefd6c31206de23b7f709b66e6daf";
 #else
-  static constexpr char md5[] = "5159a72903fe57bf0cf645c894de8a74";
+  static constexpr char md5[] = "4d7ad0dc333fde3987b79122c00a3f2a";
 #endif
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
