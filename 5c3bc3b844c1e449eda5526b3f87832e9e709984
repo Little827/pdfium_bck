@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e42072_4d82523c",
+        "filename": "fxbarcode/oned/BC_OnedCodaBarWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-24T18:28:54Z",
+      "side": 1,
+      "message": "BTW, after this CL, I believe all SetTextLocation() impls return true. The default impl in CBC_OneDimWriter that returns false is actually dead code because it is always overridden. So the whole SetTextLocation() callstack can return void instead of bool. Then at the top of the stack, we will find that nobody checks the bool return value anyway...",
+      "revId": "5c3bc3b844c1e449eda5526b3f87832e9e709984",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
