@@ -108,12 +108,10 @@ WideString CBC_OnedCode39Writer::RenderTextContents(WideStringView contents) {
 }
 
 bool CBC_OnedCode39Writer::SetTextLocation(BC_TEXT_LOC location) {
-  if (location < BC_TEXT_LOC_NONE || location > BC_TEXT_LOC_BELOWEMBED) {
-    return false;
-  }
   m_locTextLoc = location;
   return true;
 }
+
 bool CBC_OnedCode39Writer::SetWideNarrowRatio(int8_t ratio) {
   if (ratio < 2 || ratio > 3)
     return false;

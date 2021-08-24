@@ -34,7 +34,7 @@ class CBC_Writer {
   int32_t m_Height = 320;
   int32_t m_Width = 640;
   FXDIB_Format m_colorSpace = FXDIB_Format::kArgb;
-  BC_CHAR_ENCODING m_CharEncoding = BC_CHAR_ENCODING_UTF8;
+  BC_CHAR_ENCODING m_CharEncoding = BC_CHAR_ENCODING::kUTF8;
 };
 
 #endif  // FXBARCODE_BC_WRITER_H_
