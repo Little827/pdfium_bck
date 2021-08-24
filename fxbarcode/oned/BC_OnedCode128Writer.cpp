@@ -114,9 +114,6 @@ WideString CBC_OnedCode128Writer::FilterContents(WideStringView contents) {
 }
 
 bool CBC_OnedCode128Writer::SetTextLocation(BC_TEXT_LOC location) {
-  if (location < BC_TEXT_LOC_NONE || location > BC_TEXT_LOC_BELOWEMBED) {
-    return false;
-  }
   m_locTextLoc = location;
   return true;
 }
