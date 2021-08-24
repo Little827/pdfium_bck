@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0eb1320_6ce6e631",
+        "filename": "fxbarcode/BC_Writer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-24T18:20:58Z",
+      "side": 1,
+      "message": "Include fxbarcode/BC_Library.h here.\n\nIt seems like most of the .cpp files where BC_TYPE are used are missing fxbarcode/BC_Library.h.",
+      "revId": "2b38767beae7df414c29e5e563059c656dd315e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
