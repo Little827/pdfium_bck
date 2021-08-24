@@ -34,6 +34,24 @@
       "parentUuid": "60e42072_4d82523c",
       "revId": "5c3bc3b844c1e449eda5526b3f87832e9e709984",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c92b53_0b389334",
+        "filename": "fxbarcode/oned/BC_OnedCodaBarWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-24T19:55:56Z",
+      "side": 1,
+      "message": "I guess Code Search failed me. I eyeballed it and thought it was always implemented.",
+      "parentUuid": "bd7530c2_843ff780",
+      "revId": "5c3bc3b844c1e449eda5526b3f87832e9e709984",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
