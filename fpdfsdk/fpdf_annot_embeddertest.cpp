@@ -3618,8 +3618,8 @@ TEST_F(FPDFAnnotEmbedderTest, AnnotationBorderRendering) {
   constexpr char kOriginalChecksum[] = "bc9ba381d6d46ff93ed0b5288b763b60";
   constexpr char kModifiedChecksum[] = "0f3e10336f67cb6a8731a06d26d01e50";
 #elif defined(OS_WIN)
-  constexpr char kOriginalChecksum[] = "f9fcab6ac610ee2347c4eba6be86a90c";
-  constexpr char kModifiedChecksum[] = "e0e9ad5b67ef84288d446861265898b3";
+  constexpr char kOriginalChecksum[] = "768b9edd280a535b4223e57bf17940e3";
+  constexpr char kModifiedChecksum[] = "ab367296994b5dc1a178820626601ffc";
 #elif defined(OS_APPLE)
   constexpr char kOriginalChecksum[] = "1839f5df5fb4fae10cf3793568e73ede";
   constexpr char kModifiedChecksum[] = "abd4f5d1c3b8d8cfc572b389e589da5a";
