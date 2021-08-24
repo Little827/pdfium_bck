@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3264df0_eded4fc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-24T22:28:22Z",
+      "side": 1,
+      "message": "Should be covered by the included in equivalent .h file rule.",
+      "parentUuid": "d69cfcd1_73733c38",
+      "revId": "4923554edcffbbf62b5c3b4777e7575769f540c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5458bbd_efe348ca",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-24T18:58:27Z",
       "side": 1,
       "message": "`pName`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "4923554edcffbbf62b5c3b4777e7575769f540c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4024525_98de18b2",
+        "filename": "xfa/fxfa/cxfa_ffbarcode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-24T22:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5458bbd_efe348ca",
       "range": {
         "startLine": 26,
         "startChar": 28,
