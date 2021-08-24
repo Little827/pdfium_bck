@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69cfcd1_73733c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-24T18:58:27Z",
+      "side": 1,
+      "message": "Both .cpp files are missing #include \"fxbarcode/BC_Library.h\".",
+      "revId": "4923554edcffbbf62b5c3b4777e7575769f540c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5458bbd_efe348ca",
+        "filename": "xfa/fxfa/cxfa_ffbarcode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-24T18:58:27Z",
+      "side": 1,
+      "message": "`pName`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "4923554edcffbbf62b5c3b4777e7575769f540c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
