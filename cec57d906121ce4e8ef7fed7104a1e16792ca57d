@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ba035f_caf61a2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-24T22:54:52Z",
+      "side": 1,
+      "message": "LGTM.\n\nHope I understand it correctly: Choosing \"Kind\" is to avoid duplicate naming with the method Type() in the same header file, right?",
+      "revId": "cec57d906121ce4e8ef7fed7104a1e16792ca57d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
