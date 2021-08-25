@@ -30,6 +30,10 @@ config("pdfium_samples_config") {
   if (enable_callgrind) {
     defines += [ "ENABLE_CALLGRIND" ]
   }
+
+  if (msvc_use_sse2) {
+    defines += [ "MSVC_ENABLE_SSE2" ]
+  }
 }
 
 executable("pdfium_test") {

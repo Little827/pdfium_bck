@@ -18,6 +18,10 @@
 #define _SKIA_SUPPORT_
 #endif
 
+#if defined(ENABLE_SSE2)
+#define __SSE2__
+#endif
+
 #if defined(PDF_ENABLE_SKIA_PATHS) && !defined(_SKIA_SUPPORT_PATHS_)
 #define _SKIA_SUPPORT_PATHS_
 #endif
