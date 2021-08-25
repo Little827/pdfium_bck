@@ -31,7 +31,7 @@ class CPDF_Stream;
 
 class CPDF_Annot {
  public:
-  enum AppearanceMode { Normal, Rollover, Down };
+  enum class AppearanceMode { kNormal, kRollover, kDown };
   enum class Subtype {
     UNKNOWN = 0,
     TEXT,
@@ -64,8 +64,8 @@ class CPDF_Annot {
     REDACT
   };
 
-  static CPDF_Annot::Subtype StringToAnnotSubtype(const ByteString& sSubtype);
-  static ByteString AnnotSubtypeToString(CPDF_Annot::Subtype nSubtype);
+  static Subtype StringToAnnotSubtype(const ByteString& sSubtype);
+  static ByteString AnnotSubtypeToString(Subtype nSubtype);
   static CFX_FloatRect RectFromQuadPointsArray(const CPDF_Array* pArray,
                                                size_t nIndex);
   static CFX_FloatRect BoundingRectFromQuadPoints(
@@ -74,12 +74,10 @@ class CPDF_Annot {
                                           size_t nIndex);
   static size_t QuadPointCount(const CPDF_Array* pArray);
 
-  // The second constructor does not take ownership of the dictionary.
-  CPDF_Annot(RetainPtr<CPDF_Dictionary> pDict, CPDF_Document* pDocument);
   CPDF_Annot(CPDF_Dictionary* pDict, CPDF_Document* pDocument);
   ~CPDF_Annot();
 
-  CPDF_Annot::Subtype GetSubtype() const;
+  Subtype GetSubtype() const;
   uint32_t GetFlags() const;
   CFX_FloatRect GetRect() const;
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
@@ -115,9 +113,9 @@ class CPDF_Annot {
 
   CFX_FloatRect RectForDrawing() const;
 
+  Subtype m_nSubtype;
   RetainPtr<CPDF_Dictionary> const m_pAnnotDict;
   UnownedPtr<CPDF_Document> const m_pDocument;
-  CPDF_Annot::Subtype m_nSubtype;
   std::map<CPDF_Stream*, std::unique_ptr<CPDF_Form>> m_APMap;
   // If non-null, then this is not a popup annotation.
   UnownedPtr<CPDF_Annot> m_pPopupAnnot;
