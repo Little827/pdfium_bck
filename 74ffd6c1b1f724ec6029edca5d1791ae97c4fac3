@@ -16,6 +16,40 @@
       "message": "https://crrev.com/c/3120265 is the follow-up CL that updates the build flag for actual MSVC bots.",
       "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f024ca88_8f773743",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-25T23:56:44Z",
+      "side": 1,
+      "message": "You probably want to set /arch:SSE2 instead.",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa2285d_99a1d070",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-25T23:56:44Z",
+      "side": 1,
+      "message": "If BUILD.gn alrady defined __SSE2__, why does this file need to do it again?",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
