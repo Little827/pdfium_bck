@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f647c239_cb9bbe28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-25T23:47:50Z",
+      "side": 1,
+      "message": "https://crrev.com/c/3120265 is the follow-up CL that updates the build flag for actual MSVC bots.",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
