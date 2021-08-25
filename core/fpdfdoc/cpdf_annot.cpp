@@ -64,9 +64,9 @@ CPDF_Stream* GetAnnotAPInternal(CPDF_Dictionary* pAnnotDict,
     return nullptr;
 
   const char* ap_entry = "N";
-  if (eMode == CPDF_Annot::Down)
+  if (eMode == CPDF_Annot::AppearanceMode::kDown)
     ap_entry = "D";
-  else if (eMode == CPDF_Annot::Rollover)
+  else if (eMode == CPDF_Annot::AppearanceMode::kRollover)
     ap_entry = "R";
   if (bFallbackToNormal && !pAP->KeyExist(ap_entry))
     ap_entry = "N";
