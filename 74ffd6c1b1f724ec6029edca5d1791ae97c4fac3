@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fa9cdbe_c9b99325",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-26T04:54:40Z",
+      "side": 1,
+      "message": "Yes, /arch:SSE2 is a cflag, so don\u0027t try to set it in defines.\n\nIf you look at the MSVC documentation, you\u0027ll see MSVC doesn\u0027t set __SSE2__. Instead, it sets _M_IX86_FP to 2.\n\nbungeman/drott: Can we add the following additional check when defining BEZIER_USE_DDA?\n\ndefined(_M_IX86_FP) \u0026\u0026 _M_IX86_FP \u003e\u003d 2\n\nThis is used in libpng and some other libraries.",
+      "parentUuid": "b6c8ba4b_2e1be3ec",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad1139a0_62092d39",
         "filename": "pdfium.gni",
         "patchSetId": 3
