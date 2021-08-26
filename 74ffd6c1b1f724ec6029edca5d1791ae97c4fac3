@@ -191,6 +191,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0acd6e67_ddc7c582",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2021-08-26T18:43:43Z",
+      "side": 1,
+      "message": "So what you would like is for FreeType to check \"( defined(_M_IX86_FP) \u0026\u0026 _M_IX86_FP \u003e\u003d 2 )\" here as well as __SSE2__? That sounds reasonable. Seems this needs to be done in pngshim.c and ftgrays.c, though might be better to have a FT_SSE2_DETECTED macro somewhere central. This is certainly something upstream would be interested in.",
+      "parentUuid": "3e3756c6_0e1fbbe7",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad1139a0_62092d39",
         "filename": "pdfium.gni",
         "patchSetId": 3
