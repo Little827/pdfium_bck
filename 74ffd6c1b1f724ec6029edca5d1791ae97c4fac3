@@ -77,6 +77,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6c8ba4b_2e1be3ec",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-26T03:01:17Z",
+      "side": 1,
+      "message": "/ach:SSE2 is usually used as a cflag.\n\nSo far I tried the following changes:\ncflags +\u003d [ \"/arch:SSE2\" ] or defines +\u003d[ \"/arch:SSE2\" ], either way will result in freetype code not recognizing flag __SSE2__.",
+      "parentUuid": "f024ca88_8f773743",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad1139a0_62092d39",
         "filename": "pdfium.gni",
         "patchSetId": 3
@@ -110,6 +128,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a92cfe_9db3ac3f",
+        "filename": "pdfium.gni",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-26T03:01:17Z",
+      "side": 1,
+      "message": "Thanks for the update! Done.",
+      "parentUuid": "366932ee_20fe04d8",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfa2285d_99a1d070",
@@ -123,6 +159,24 @@
       "writtenOn": "2021-08-25T23:56:44Z",
       "side": 1,
       "message": "If BUILD.gn alrady defined __SSE2__, why does this file need to do it again?",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2520b8ed_4fcb6b5c",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-26T03:01:17Z",
+      "side": 1,
+      "message": "Updating BUILD.gn will affect the \"__SSE2__\" flag in third_party/freetype. However, it doesn\u0027t affect the \"__SSE2__\" flag inside sample/pdfium_test.cc.\n\n(1) If __SSE2__ is only going to be used in other third-party libraries, we could remove the changes in samples/BUILD.gn files and samples/pdfium_test.cc.\n\n(2) If we ever going to directly use __SSE2__ in PDFium, we\u0027ll need to update samples/BUILD.gn files and samples/pdfium_test.cc so that the flag \"__SSE2__\" value is consistent with what\u0027s used in third-party code. (It\u0027s done in a similar way for _SKIA_SUPPORT_PATHS_ flag as well.)\n\nI think right now we are in case (1). I will remove the changes in //samples/.",
+      "parentUuid": "dfa2285d_99a1d070",
       "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
