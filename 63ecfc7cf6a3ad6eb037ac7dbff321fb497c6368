@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc2d787_ebf71e2c",
+        "filename": "fpdfsdk/formfiller/cffl_button.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-26T18:14:10Z",
+      "side": 1,
+      "message": "BTW, the if and else bodies are nearly identical. Select an AppearanceMode and just call DrawAppearance() in one place? Same for line 84 below.",
+      "revId": "63ecfc7cf6a3ad6eb037ac7dbff321fb497c6368",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
