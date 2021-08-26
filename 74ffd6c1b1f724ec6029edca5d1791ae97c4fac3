@@ -155,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5930a58f_2bdff290",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-26T17:52:55Z",
+      "side": 1,
+      "message": "I tested using \"cflags +\u003d [ \"/arch:SSE2\" ]\" in BUILD.gn, and replacing \"defined(__SSE2__)\" with \"defined(_M_IX86_FP) \u0026\u0026 _M_IX86_FP \u003e\u003d 2\" in freetype\\src\\src\\smooth\\ftgrays.c. This change guaranteed `BEZIER_USE_DDA` to be true but the value of \"defined(__SSE2__)\" will be false.\n\nIf we use \"defines +\u003d [\"__SSE2__\"]\" in BUILD.gn and replace \"defined(__SSE2__)\" with \"defined(_M_IX86_FP) \u0026\u0026 _M_IX86_FP \u003e\u003d 2\" in freetype\\src\\src\\smooth\\ftgrays.c, \n`BEZIER_USE_DDA` and the value of \"defined(__SSE2__)\" will both be true.\n\nBoth ways fit PDFium\u0027s need (`BEZIER_USE_DDA` being true) and I don\u0027t see checks of __SSE2__ outside freetype\\src\\src\\smooth\\ftgrays.c. So the first change is preferable.\n\nNow we will need bungeman@\u0027s / drott@\u0027s approval for the freetype change.",
+      "parentUuid": "7fa9cdbe_c9b99325",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad1139a0_62092d39",
         "filename": "pdfium.gni",
         "patchSetId": 3
