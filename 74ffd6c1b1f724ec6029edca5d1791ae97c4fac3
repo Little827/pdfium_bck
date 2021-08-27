@@ -297,6 +297,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30400870_d6e45a48",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-27T16:40:29Z",
+      "side": 1,
+      "message": "Thanks Ben! We need to merge this change first so that the PDFium bots can be updated.\n\nA roll FreeType CL and its matching corpus tests can be merged after this, since we are first blocked on change https://chromium.googlesource.com/chromium/src/third_party/freetype2.git/+/56cc2ad446e920164e823e78a21972cadb339bfc.",
+      "parentUuid": "6c296c04_2f257434",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad1139a0_62092d39",
