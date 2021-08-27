@@ -263,6 +263,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2358054d_c39f7060",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2021-08-27T14:02:19Z",
+      "side": 1,
+      "message": "So this FreeType pull request has landed upstream and has rolled into Chromium. I think you\u0027ll want to roll FreeType in Pdfium and then the \u0027/arch:SSE2\u0027 here (at Patch set 9) should have the expected effect.",
+      "parentUuid": "06e2a2e2_27030245",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad1139a0_62092d39",
         "filename": "pdfium.gni",
         "patchSetId": 3
