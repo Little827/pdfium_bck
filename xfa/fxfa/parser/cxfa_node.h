@@ -183,7 +183,7 @@ class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
   size_t CountChildren(XFA_Element eType, bool bOnlyChild);
 
   template <typename T>
-  T* GetChild(size_t index, XFA_Element eType, bool bOnlyChild) {
+  T* GetChild(size_t index, XFA_Element eType, bool bOnlyChild) const {
     return static_cast<T*>(GetChildInternal(index, eType, bOnlyChild));
   }
 
