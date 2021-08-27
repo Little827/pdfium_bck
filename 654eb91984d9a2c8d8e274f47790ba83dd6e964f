@@ -16,6 +16,24 @@
       "message": "#include \"third_party/base/span.h\" is needed in this file and core/fpdfapi/render/cpdf_renderstatus.cpp.",
       "revId": "654eb91984d9a2c8d8e274f47790ba83dd6e964f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2939ed_c393c576",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-27T19:08:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e566148_ad664c0c",
+      "revId": "654eb91984d9a2c8d8e274f47790ba83dd6e964f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
