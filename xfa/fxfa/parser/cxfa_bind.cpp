@@ -47,8 +47,8 @@ CXFA_Bind::CXFA_Bind(CXFA_Document* doc, XFA_PacketType packet)
 
 CXFA_Bind::~CXFA_Bind() = default;
 
-WideString CXFA_Bind::GetPicture() {
-  CXFA_Picture* pPicture =
+WideString CXFA_Bind::GetPicture() const {
+  const CXFA_Picture* pPicture =
       GetChild<CXFA_Picture>(0, XFA_Element::Picture, false);
   return pPicture ? pPicture->JSObject()->GetContent(false) : WideString();
 }
