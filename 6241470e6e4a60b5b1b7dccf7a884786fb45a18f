@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d04463_62504f73",
+        "filename": "xfa/fxfa/parser/cxfa_fill.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-27T21:38:37Z",
+      "side": 1,
+      "message": "NOTE: auto because we already said the typename in the \u003c\u003e s.\nexplicit const otherwise auto deduces to const type under the covers.",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "6241470e6e4a60b5b1b7dccf7a884786fb45a18f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
