@@ -19,7 +19,7 @@ const char kAnnotationStampWithApChecksum[] =
 #else
 #if defined(OS_WIN)
 const char kAnnotationStampWithApChecksum[] =
-    "6aa001a77ec05d0f1b0d1d22e28744d4";
+    "6712a912af61cb45809e343f59b62432";
 #elif defined(OS_APPLE)
 const char kAnnotationStampWithApChecksum[] =
     "80d7b6cc7b13a78d77a6151bc846e80b";
