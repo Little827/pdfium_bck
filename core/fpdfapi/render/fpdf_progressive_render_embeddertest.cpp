@@ -33,7 +33,7 @@ static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
 #else
 #if defined(OS_WIN)
 static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
-    "649d6792ea50faf98c013c2d81710595";
+    "91c59c89f03be6c12a9af956b9955c47";
 #elif defined(OS_APPLE)
 static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
     "83e9f5222c4c959b0b63a5cd24f773a1";
@@ -503,7 +503,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
 #else
 #if defined(OS_WIN)
   static constexpr char kContentWithStampChecksum[] =
-      "71dce8f1221e1d2fe59d74258c3afd54";
+      "2f91d6e380cc85b3f700bc7eb9bc0cef";
 #elif defined(OS_APPLE)
   static constexpr char kContentWithStampChecksum[] =
       "e2d9bef817d366021e5727d9350bde43";

@@ -45,7 +45,7 @@ TEST_F(FPDFFlattenEmbedderTest, BUG_861842) {
 #else
 #if defined(OS_WIN)
   static constexpr char kCheckboxChecksum[] =
-      "95fba3cb7bce7e0d3c94279f60984e17";
+      "594265790b81df2d93120d33b72a6ada";
 #elif defined(OS_APPLE)
   static constexpr char kCheckboxChecksum[] =
       "6aafcb2d98da222964bcdbf5aa1f4f1f";
