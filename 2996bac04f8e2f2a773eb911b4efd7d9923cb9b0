@@ -16,6 +16,24 @@
       "message": "Great to see more tests gaining cross-platform consistency with this FreeType update.",
       "revId": "2996bac04f8e2f2a773eb911b4efd7d9923cb9b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4812a0a6_15a72efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-30T22:58:02Z",
+      "side": 1,
+      "message": "Yup! Deleted a lot of lines 😄",
+      "parentUuid": "1d525eb2_7160fe32",
+      "revId": "2996bac04f8e2f2a773eb911b4efd7d9923cb9b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
