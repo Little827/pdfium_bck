@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af040615_d288e7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-30T16:07:15Z",
+      "side": 1,
+      "message": "Hi Peter, and welcome!  We really appreciate patches like this that fix the so-called \"Include what you use\" issues. There are just a few comments about a couple of the changes before we can land, but in general, you are right that there are a number of includes that are no longer required (typically these creep in as we\u0027ve broken things into smaller files over time, removing the last actual usage).\n\nAlso, I was wondering if you hit any build issues on a particular platform that inspired this patch? ",
+      "revId": "34d71fde147b683d68c42bb3eee9d7da0683e4b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74dead68_92c15699",
+        "filename": "core/fxcodec/png/png_decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-30T16:07:15Z",
+      "side": 1,
+      "message": "\u003cmemory\u003e is already included in the corresponding png_decoder.h file. Although there has been a change to the style guide to recommend inclusion in both the .h and .cpp file, PDFium is still content with the old style-guide rule not duplicating if the .h already includes it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "34d71fde147b683d68c42bb3eee9d7da0683e4b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09de0365_fe337dde",
+        "filename": "core/fxcodec/png/png_decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-30T16:07:15Z",
+      "side": 1,
+      "message": "I didn\u0027t see any usage of any std::string as provided by \u003cstring\u003e in this file, but I did see usage of memset(), strncpy(), and strcmp() as provided by \u003cstring.h\u003e.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "34d71fde147b683d68c42bb3eee9d7da0683e4b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803e6f8d_c5ba3f19",
+        "filename": "core/fxcodec/png/png_decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-30T16:07:15Z",
+      "side": 1,
+      "message": "we probably want to include \u003csetjmp.h\u003e while we\u0027re at it.",
+      "range": {
+        "startLine": 214,
+        "startChar": 6,
+        "endLine": 214,
+        "endChar": 12
+      },
+      "revId": "34d71fde147b683d68c42bb3eee9d7da0683e4b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acc18f1_68880ab6",
+        "filename": "core/fxge/text_char_pos.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-30T16:07:15Z",
+      "side": 1,
+      "message": "nit: no need to explain.",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "34d71fde147b683d68c42bb3eee9d7da0683e4b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
