@@ -133,6 +133,6 @@ void CXFA_Font::SetColor(FX_ARGB color) {
 }
 
 FX_ARGB CXFA_Font::GetColor() {
-  CXFA_Fill* fill = GetChild<CXFA_Fill>(0, XFA_Element::Fill, false);
+  const auto* fill = GetChild<CXFA_Fill>(0, XFA_Element::Fill, false);
   return fill ? fill->GetTextColor() : 0xFF000000;
 }
