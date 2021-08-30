@@ -22,6 +22,30 @@
       },
       "revId": "9fa6858a6282040ad3cb5bfcab1afbf724d839c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8eb5f9_cd08e425",
+        "filename": "third_party/freetype/README.pdfium",
+        "patchSetId": 21
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-30T19:32:51Z",
+      "side": 1,
+      "message": "Sure, I manually updated it to 2.11.0 in the new patchset.\nAlso I rolled freetype to revision \"efa1a35907ec678186e0828a78e6d1ee96896404\" to sync with Chromium in the new patchset.",
+      "parentUuid": "34d79d53_dc6f84cb",
+      "range": {
+        "startLine": 4,
+        "startChar": 27,
+        "endLine": 4,
+        "endChar": 31
+      },
+      "revId": "9fa6858a6282040ad3cb5bfcab1afbf724d839c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
