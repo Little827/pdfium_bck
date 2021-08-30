@@ -386,6 +386,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3a139f_0c3b2bd6",
+        "filename": "pdfium.gni",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-08-30T19:45:24Z",
+      "side": 1,
+      "message": "Emailed pdfium@googlegroups.com this morning about the new flag.\n\nI will fix the MSVC with ARM issue in a follow-up CL and keep crbug.com/pdfium/1714 open until that is addressed.",
+      "parentUuid": "7d2591d7_b8d3dd81",
+      "revId": "74ffd6c1b1f724ec6029edca5d1791ae97c4fac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfa2285d_99a1d070",
