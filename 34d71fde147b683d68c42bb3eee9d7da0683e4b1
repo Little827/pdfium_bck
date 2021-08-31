@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a52ea1_4198ba67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-08-31T16:32:45Z",
+      "side": 1,
+      "message": "Good to know.  I pasted some of this into the change description.",
+      "parentUuid": "53b45f39_b7895ac1",
+      "revId": "34d71fde147b683d68c42bb3eee9d7da0683e4b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74dead68_92c15699",
