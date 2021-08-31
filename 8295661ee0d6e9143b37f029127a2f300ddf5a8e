@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d732ea5f_9eb0e329",
+        "filename": "core/fxcodec/icc/iccmodule.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-31T22:18:24Z",
+      "side": 1,
+      "message": "Comment still references removed parameter.",
+      "range": {
+        "startLine": 121,
+        "startChar": 52,
+        "endLine": 121,
+        "endChar": 68
+      },
+      "revId": "8295661ee0d6e9143b37f029127a2f300ddf5a8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7331f73d_1912dfc9",
+        "filename": "testing/fuzzers/pdf_codec_icc_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-31T22:18:24Z",
+      "side": 1,
+      "message": "Maybe as a follow-up: Would it make sense to vary these values based on `data`?",
+      "revId": "8295661ee0d6e9143b37f029127a2f300ddf5a8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
