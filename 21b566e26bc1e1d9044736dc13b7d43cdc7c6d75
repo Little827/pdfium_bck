@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdddbc51_66d48780",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-08-31T18:45:42Z",
+      "side": 1,
+      "message": "Thanks for noticing the build issue and writing this CL.",
+      "revId": "21b566e26bc1e1d9044736dc13b7d43cdc7c6d75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
