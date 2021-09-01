@@ -106,6 +106,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "020d1f02_acc077fa",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-01T16:53:45Z",
+      "side": 1,
+      "message": "Maybe a comment to use ByteStringView::GetID() would be even more helpful?",
+      "parentUuid": "6175fe90_885474cd",
+      "revId": "bbde9c19b163e157a005e365689f5e7cb9a2c91a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f57c87c9_8d2aa305",
