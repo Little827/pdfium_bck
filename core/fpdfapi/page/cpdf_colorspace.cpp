@@ -136,7 +136,7 @@ class CPDF_CalGray final : public CPDF_ColorSpace {
  private:
   static constexpr float kDefaultGamma = 1.0f;
 
-  explicit CPDF_CalGray(CPDF_Document* pDoc);
+  CPDF_CalGray();
 
   float m_Gamma = kDefaultGamma;
   float m_WhitePoint[kBlackWhitePointCount] = {1.0f, 1.0f, 1.0f};
@@ -167,7 +167,7 @@ class CPDF_CalRGB final : public CPDF_ColorSpace {
   static constexpr size_t kGammaCount = 3;
   static constexpr size_t kMatrixCount = 9;
 
-  explicit CPDF_CalRGB(CPDF_Document* pDoc);
+  CPDF_CalRGB();
 
   float m_WhitePoint[kBlackWhitePointCount] = {1.0f, 1.0f, 1.0f};
   float m_BlackPoint[kBlackWhitePointCount] = {0.0f, 0.0f, 0.0f};
@@ -204,7 +204,7 @@ class CPDF_LabCS final : public CPDF_ColorSpace {
  private:
   static constexpr size_t kRangesCount = 4;
 
-  explicit CPDF_LabCS(CPDF_Document* pDoc);
+  CPDF_LabCS();
 
   float m_WhitePoint[kBlackWhitePointCount] = {1.0f, 1.0f, 1.0f};
   float m_BlackPoint[kBlackWhitePointCount] = {0.0f, 0.0f, 0.0f};
@@ -234,7 +234,7 @@ class CPDF_ICCBasedCS final : public CPDF_ColorSpace {
                   std::set<const CPDF_Object*>* pVisited) override;
 
  private:
-  explicit CPDF_ICCBasedCS(CPDF_Document* pDoc);
+  CPDF_ICCBasedCS();
 
   // If no valid ICC profile or using sRGB, try looking for an alternate.
   bool FindAlternateProfile(CPDF_Document* pDoc,
@@ -268,7 +268,7 @@ class CPDF_IndexedCS final : public CPDF_ColorSpace {
                   std::set<const CPDF_Object*>* pVisited) override;
 
  private:
-  explicit CPDF_IndexedCS(CPDF_Document* pDoc);
+  CPDF_IndexedCS();
 
   RetainPtr<CPDF_ColorSpace> m_pBaseCS;
   uint32_t m_nBaseComponents = 0;
@@ -297,7 +297,7 @@ class CPDF_SeparationCS final : public CPDF_ColorSpace {
                   std::set<const CPDF_Object*>* pVisited) override;
 
  private:
-  explicit CPDF_SeparationCS(CPDF_Document* pDoc);
+  CPDF_SeparationCS();
 
   bool m_IsNoneType;
   RetainPtr<CPDF_ColorSpace> m_pAltCS;
@@ -324,7 +324,7 @@ class CPDF_DeviceNCS final : public CPDF_ColorSpace {
                   std::set<const CPDF_Object*>* pVisited) override;
 
  private:
-  explicit CPDF_DeviceNCS(CPDF_Document* pDoc);
+  CPDF_DeviceNCS();
 
   RetainPtr<CPDF_ColorSpace> m_pAltCS;
   std::unique_ptr<const CPDF_Function> m_pFunc;
@@ -551,22 +551,22 @@ RetainPtr<CPDF_ColorSpace> CPDF_ColorSpace::AllocateColorSpace(
     ByteStringView bsFamilyName) {
   switch (bsFamilyName.GetID()) {
     case FXBSTR_ID('C', 'a', 'l', 'G'):
-      return pdfium::MakeRetain<CPDF_CalGray>(pDocument);
+      return pdfium::MakeRetain<CPDF_CalGray>();
     case FXBSTR_ID('C', 'a', 'l', 'R'):
-      return pdfium::MakeRetain<CPDF_CalRGB>(pDocument);
+      return pdfium::MakeRetain<CPDF_CalRGB>();
     case FXBSTR_ID('L', 'a', 'b', 0):
-      return pdfium::MakeRetain<CPDF_LabCS>(pDocument);
+      return pdfium::MakeRetain<CPDF_LabCS>();
     case FXBSTR_ID('I', 'C', 'C', 'B'):
-      return pdfium::MakeRetain<CPDF_ICCBasedCS>(pDocument);
+      return pdfium::MakeRetain<CPDF_ICCBasedCS>();
     case FXBSTR_ID('I', 'n', 'd', 'e'):
     case FXBSTR_ID('I', 0, 0, 0):
-      return pdfium::MakeRetain<CPDF_IndexedCS>(pDocument);
+      return pdfium::MakeRetain<CPDF_IndexedCS>();
     case FXBSTR_ID('S', 'e', 'p', 'a'):
-      return pdfium::MakeRetain<CPDF_SeparationCS>(pDocument);
+      return pdfium::MakeRetain<CPDF_SeparationCS>();
     case FXBSTR_ID('D', 'e', 'v', 'i'):
-      return pdfium::MakeRetain<CPDF_DeviceNCS>(pDocument);
+      return pdfium::MakeRetain<CPDF_DeviceNCS>();
     case FXBSTR_ID('P', 'a', 't', 't'):
-      return pdfium::MakeRetain<CPDF_PatternCS>(pDocument);
+      return pdfium::MakeRetain<CPDF_PatternCS>();
     default:
       return nullptr;
   }
@@ -662,18 +662,15 @@ const CPDF_PatternCS* CPDF_ColorSpace::AsPatternCS() const {
   return nullptr;
 }
 
-CPDF_ColorSpace::CPDF_ColorSpace(CPDF_Document* pDoc, Family family)
-    : m_pDocument(pDoc), m_Family(family) {}
+CPDF_ColorSpace::CPDF_ColorSpace(Family family) : m_Family(family) {}
 
 CPDF_ColorSpace::~CPDF_ColorSpace() = default;
 
 void CPDF_ColorSpace::SetComponentsForStockCS(uint32_t nComponents) {
-  DCHECK(!m_pDocument);  // Stock colorspace is not associated with a document.
   m_nComponents = nComponents;
 }
 
-CPDF_CalGray::CPDF_CalGray(CPDF_Document* pDoc)
-    : CPDF_ColorSpace(pDoc, Family::kCalGray) {}
+CPDF_CalGray::CPDF_CalGray() : CPDF_ColorSpace(Family::kCalGray) {}
 
 CPDF_CalGray::~CPDF_CalGray() = default;
 
@@ -718,8 +715,7 @@ void CPDF_CalGray::TranslateImageLine(uint8_t* pDestBuf,
   }
 }
 
-CPDF_CalRGB::CPDF_CalRGB(CPDF_Document* pDoc)
-    : CPDF_ColorSpace(pDoc, Family::kCalRGB) {}
+CPDF_CalRGB::CPDF_CalRGB() : CPDF_ColorSpace(Family::kCalRGB) {}
 
 CPDF_CalRGB::~CPDF_CalRGB() = default;
 
@@ -809,8 +805,7 @@ void CPDF_CalRGB::TranslateImageLine(uint8_t* pDestBuf,
   }
 }
 
-CPDF_LabCS::CPDF_LabCS(CPDF_Document* pDoc)
-    : CPDF_ColorSpace(pDoc, Family::kLab) {}
+CPDF_LabCS::CPDF_LabCS() : CPDF_ColorSpace(Family::kLab) {}
 
 CPDF_LabCS::~CPDF_LabCS() = default;
 
@@ -915,8 +910,7 @@ void CPDF_LabCS::TranslateImageLine(uint8_t* pDestBuf,
   }
 }
 
-CPDF_ICCBasedCS::CPDF_ICCBasedCS(CPDF_Document* pDoc)
-    : CPDF_ColorSpace(pDoc, Family::kICCBased) {}
+CPDF_ICCBasedCS::CPDF_ICCBasedCS() : CPDF_ColorSpace(Family::kICCBased) {}
 
 CPDF_ICCBasedCS::~CPDF_ICCBasedCS() = default;
 
@@ -1130,8 +1124,7 @@ std::vector<float> CPDF_ICCBasedCS::GetRanges(const CPDF_Dictionary* pDict,
   return ranges;
 }
 
-CPDF_IndexedCS::CPDF_IndexedCS(CPDF_Document* pDoc)
-    : CPDF_ColorSpace(pDoc, Family::kIndexed) {}
+CPDF_IndexedCS::CPDF_IndexedCS() : CPDF_ColorSpace(Family::kIndexed) {}
 
 CPDF_IndexedCS::~CPDF_IndexedCS() = default;
 
@@ -1216,8 +1209,7 @@ void CPDF_IndexedCS::EnableStdConversion(bool bEnabled) {
     m_pBaseCS->EnableStdConversion(bEnabled);
 }
 
-CPDF_SeparationCS::CPDF_SeparationCS(CPDF_Document* pDoc)
-    : CPDF_ColorSpace(pDoc, Family::kSeparation) {}
+CPDF_SeparationCS::CPDF_SeparationCS() : CPDF_ColorSpace(Family::kSeparation) {}
 
 CPDF_SeparationCS::~CPDF_SeparationCS() = default;
 
@@ -1296,8 +1288,7 @@ void CPDF_SeparationCS::EnableStdConversion(bool bEnabled) {
     m_pAltCS->EnableStdConversion(bEnabled);
 }
 
-CPDF_DeviceNCS::CPDF_DeviceNCS(CPDF_Document* pDoc)
-    : CPDF_ColorSpace(pDoc, Family::kDeviceN) {}
+CPDF_DeviceNCS::CPDF_DeviceNCS() : CPDF_ColorSpace(Family::kDeviceN) {}
 
 CPDF_DeviceNCS::~CPDF_DeviceNCS() = default;
 
