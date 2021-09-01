@@ -124,6 +124,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10ebd2a_2df2ceca",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-01T17:04:16Z",
+      "side": 1,
+      "message": "I think I\u0027ll move all these BSTR_ID(xxx) to kConstants in a follow-up. Then it might be more obvious.",
+      "parentUuid": "020d1f02_acc077fa",
+      "revId": "bbde9c19b163e157a005e365689f5e7cb9a2c91a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f57c87c9_8d2aa305",
