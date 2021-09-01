@@ -69,17 +69,11 @@ class CPDF_ColorSpace : public Retainable, public Observable {
   };
 
   static RetainPtr<CPDF_ColorSpace> GetStockCS(Family family);
-  static RetainPtr<CPDF_ColorSpace> ColorspaceFromName(const ByteString& name);
-  static RetainPtr<CPDF_ColorSpace> Load(CPDF_Document* pDoc,
-                                         CPDF_Object* pObj);
+  static RetainPtr<CPDF_ColorSpace> GetStockCSForName(const ByteString& name);
   static RetainPtr<CPDF_ColorSpace> Load(
       CPDF_Document* pDoc,
       const CPDF_Object* pObj,
       std::set<const CPDF_Object*>* pVisited);
-
-  static RetainPtr<CPDF_ColorSpace> AllocateColorSpaceForID(
-      CPDF_Document* pDocument,
-      uint32_t family_id);
 
   static uint32_t ComponentsForFamily(Family family);
   static bool IsValidIccComponents(int components);
@@ -145,6 +139,13 @@ class CPDF_ColorSpace : public Retainable, public Observable {
   uint32_t m_dwStdConversion = 0;
 
  private:
+  friend class CPDF_CalGray_TranslateImageLine_Test;
+  friend class CPDF_CalRGB_TranslateImageLine_Test;
+
+  static RetainPtr<CPDF_ColorSpace> AllocateColorSpace(
+      CPDF_Document* pDocument,
+      ByteStringView bsFamilyName);
+
   uint32_t m_nComponents = 0;
 };
 
