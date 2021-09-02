@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a5166bf_e156b057",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2637,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T19:44:14Z",
+      "side": 1,
+      "message": "Is the FPDFPathSegment_GetType() return value deterministic? Assuming yes, check it is exactly that, rather than not `FPDF_SEGMENT_UNKNOWN`.",
+      "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696f7a3a_42f3db4e",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T19:44:14Z",
+      "side": 1,
+      "message": "This is neither Hungarian notation nor snake_case. Please use one of those styles and not add in a 3rd style. There may be a few more like this throughout the CL.",
+      "range": {
+        "startLine": 665,
+        "startChar": 12,
+        "endLine": 665,
+        "endChar": 19
+      },
+      "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6701e2a8_00828751",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T19:44:14Z",
+      "side": 1,
+      "message": "Document returned FPDF_FONT lifetime / ownership.",
+      "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b671a68_4f57e8cf",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T19:44:14Z",
+      "side": 1,
+      "message": "Does this overlap with FPDFTextObj_GetFontName()?",
+      "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22be857_d25a7aec",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T19:44:14Z",
+      "side": 1,
+      "message": "Would you mind referencing ISO 32000 instead? We are trying to consistently use that going forward. See https://crbug.com/pdfium/1477\n\nThe table numbers are different in the two specs, but generally there should be an equivalent table.",
+      "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
