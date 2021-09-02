@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "766ad48f_7da7f3a6",
+        "filename": "core/fpdfapi/page/cpdf_basedcs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T00:30:14Z",
+      "side": 1,
+      "message": "Maybe mention this includes all the special color spaces in ISO 32000, table 62, as well asthe  ICCBased color space. Or \"colour space\" as the standard puts it. 😊",
+      "revId": "6ef138c0292bfcfe64960908766f5a55ea04ba54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc13c36_01f442d0",
+        "filename": "core/fpdfapi/page/cpdf_basedcs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T00:30:14Z",
+      "side": 1,
+      "message": "Maybe mention in some cases, this is the alternate (fallback) color space?",
+      "revId": "6ef138c0292bfcfe64960908766f5a55ea04ba54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
