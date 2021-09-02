@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed72b33_061c6d67",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b727b8_3a59745f",
+      "range": {
+        "startLine": 452,
+        "startChar": 15,
+        "endLine": 452,
+        "endChar": 24
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad491d7b_461bfff8",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-02T17:48:09Z",
       "side": 1,
       "message": "nit: ditto",
+      "range": {
+        "startLine": 455,
+        "startChar": 27,
+        "endLine": 455,
+        "endChar": 36
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61691edf_6a04ff07",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad491d7b_461bfff8",
       "range": {
         "startLine": 455,
         "startChar": 27,
@@ -104,6 +152,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cacbc58_464966dd",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f4b361_c2981ff6",
+      "range": {
+        "startLine": 665,
+        "startChar": 2,
+        "endLine": 665,
+        "endChar": 6
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2d8e24_5a0e6f40",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-09-02T17:48:09Z",
       "side": 1,
       "message": "nit: overparen\u0027d, also invert test and swap operands (several places) \n\n  return pFont ? pFont-\u003eGetFontWeight() : 0;",
+      "range": {
+        "startLine": 681,
+        "startChar": 2,
+        "endLine": 681,
+        "endChar": 47
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "063f0858_d0ac073c",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d2d8e24_5a0e6f40",
       "range": {
         "startLine": 681,
         "startChar": 2,
@@ -150,6 +246,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49de4e92_f9161380",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "This is almost verbatim from cpdf_textobject.cpp:226-234, and other than confirming that it worked, I did not look at it too closely. I can update it there as well, if desired. Otherwise, done.",
+      "parentUuid": "2c653208_1cd93a5e",
+      "range": {
+        "startLine": 719,
+        "startChar": 2,
+        "endLine": 728,
+        "endChar": 58
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11392551_3fd2eb0e",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-09-02T17:48:09Z",
       "side": 1,
       "message": "nit: FPDFGlyphFromCFXPath() handles reinterpret_cast\u003c\u003e(0), no?",
+      "range": {
+        "startLine": 747,
+        "startChar": 2,
+        "endLine": 749,
+        "endChar": 0
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31330487_d86c182e",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11392551_3fd2eb0e",
       "range": {
         "startLine": 747,
         "startChar": 2,
@@ -242,6 +386,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97105d76_1f796b39",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "I thought I got them all. I\u0027ll get it on the next pass.",
+      "parentUuid": "3357e030_efa92757",
+      "range": {
+        "startLine": 1346,
+        "startChar": 9,
+        "endLine": 1346,
+        "endChar": 10
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36f76b73_30068ecc",
@@ -255,6 +423,30 @@
       "writtenOn": "2021-09-02T17:48:09Z",
       "side": 1,
       "message": "nit: try to avoid const in typedefs, add as needed for each usage.",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09ee891_3441c0c9",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-02T18:48:01Z",
+      "side": 1,
+      "message": "CFX_Font::LoadGlyphPath returns const CFX_Path*, so const was added here like for FPDF_PATHSEGMENT and FPDFPathSegmentFromFXPathPoint/FXPathPointFromFPDFPathSegment, etc.",
+      "parentUuid": "36f76b73_30068ecc",
       "range": {
         "startLine": 65,
         "startChar": 8,
