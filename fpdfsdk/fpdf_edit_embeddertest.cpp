@@ -2556,6 +2556,89 @@ TEST_F(FPDFEditEmbedderTest, GetTextFontName) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbedderTest, TextFontProperties) {
+  // bad object tests
+  EXPECT_FALSE(FPDFTextObj_GetFont(nullptr));
+  EXPECT_EQ(0U, FPDFFont_GetFontName(nullptr, nullptr, 5));
+  EXPECT_FLOAT_EQ(0.0f, FPDFFont_GetAscent(nullptr, 12.f));
+  EXPECT_FLOAT_EQ(0, FPDFFont_GetDescent(nullptr, 12.f));
+  EXPECT_EQ(0, FPDFFont_GetWeight(nullptr));
+  EXPECT_EQ(0, FPDFFont_GetItalicAngle(nullptr));
+  EXPECT_EQ(0, FPDFFont_GetFlags(nullptr));
+  EXPECT_FLOAT_EQ(0.0f, FPDFFont_GetGlyphWidth(nullptr, 'c', 12.f));
+  EXPECT_FALSE(FPDFFont_GetGlyphPath(nullptr, 'c', 12.f));
+
+  // good object tests
+  ASSERT_TRUE(OpenDocument("text_font.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(1, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT text = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(text);
+  float fontSize;
+  ASSERT_TRUE(FPDFTextObj_GetFontSize(text, &fontSize));
+  FPDF_FONT font = FPDFTextObj_GetFont(text);
+  ASSERT_TRUE(font);
+
+  EXPECT_FLOAT_EQ(891 * fontSize / 1000.0f, FPDFFont_GetAscent(font, fontSize));
+  EXPECT_FLOAT_EQ(-216 * fontSize / 1000.0f,
+                  FPDFFont_GetDescent(font, fontSize));
+  EXPECT_EQ(80 * 5, FPDFFont_GetWeight(font));
+  EXPECT_EQ(0, FPDFFont_GetItalicAngle(font));
+  EXPECT_LT(0.0f, FPDFFont_GetGlyphWidth(font, 'a', 12.0f));
+  EXPECT_EQ(4, FPDFFont_GetFlags(font));
+
+  // FPDFFont_GetFontName() positive testing.
+  unsigned long size = FPDFFont_GetFontName(font, nullptr, 0);
+  const char kExpectedFontName[] = "Liberation Serif";
+  ASSERT_EQ(sizeof(kExpectedFontName), size);
+  std::vector<char> font_name(size);
+  ASSERT_EQ(size, FPDFFont_GetFontName(font, font_name.data(), size));
+  ASSERT_STREQ(kExpectedFontName, font_name.data());
+
+  // FPDFFont_GetFontName() negative testing.
+  ASSERT_EQ(0U, FPDFFont_GetFontName(nullptr, nullptr, 0));
+
+  font_name.resize(2);
+  font_name[0] = 'x';
+  font_name[1] = '\0';
+  size = FPDFFont_GetFontName(font, font_name.data(), font_name.size());
+  ASSERT_EQ(sizeof(kExpectedFontName), size);
+  ASSERT_EQ(std::string("x"), std::string(font_name.data()));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFEditEmbedderTest, GlyphPaths) {
+  // bad glyphpath
+  EXPECT_EQ(-1, FPDFGlyphPath_CountGlyphSegments(nullptr));
+  EXPECT_FALSE(FPDFGlyphPath_GetGlyphPathSegment(nullptr, 1));
+
+  ASSERT_TRUE(OpenDocument("text_font.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(1, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT text = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(text);
+  FPDF_FONT font = FPDFTextObj_GetFont(text);
+  ASSERT_TRUE(font);
+
+  // good glyphpath
+  FPDF_GLYPHPATH gpath = FPDFFont_GetGlyphPath(font, 's', 12.0f);
+  ASSERT_TRUE(gpath);
+
+  int count = FPDFGlyphPath_CountGlyphSegments(gpath);
+  ASSERT_LT(0, count);
+  EXPECT_FALSE(FPDFGlyphPath_GetGlyphPathSegment(gpath, -1));
+  EXPECT_FALSE(FPDFGlyphPath_GetGlyphPathSegment(gpath, count));
+
+  FPDF_PATHSEGMENT segment = FPDFGlyphPath_GetGlyphPathSegment(gpath, 1);
+  ASSERT_TRUE(segment);
+  EXPECT_EQ(FPDF_SEGMENT_BEZIERTO, FPDFPathSegment_GetType(segment));
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbedderTest, FormGetObjects) {
   ASSERT_TRUE(OpenDocument("form_object.pdf"));
   FPDF_PAGE page = LoadPage(0);
