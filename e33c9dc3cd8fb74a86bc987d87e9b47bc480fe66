@@ -90,6 +90,23 @@
       "message": "Would you mind referencing ISO 32000 instead? We are trying to consistently use that going forward. See https://crbug.com/pdfium/1477\n\nThe table numbers are different in the two specs, but generally there should be an equivalent table.",
       "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2faf0d8a_fbd6fa59",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-02T19:48:02Z",
+      "side": 1,
+      "message": "Same here and with FPDFGlyphPath_GetGlyphPathSegment() below. Document returned object lifetime / ownership.",
+      "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
