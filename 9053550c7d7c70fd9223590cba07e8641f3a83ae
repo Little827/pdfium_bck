@@ -70,6 +70,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f603be7d_60183d1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7439
+      },
+      "writtenOn": "2021-09-03T19:25:58Z",
+      "side": 1,
+      "message": "Looks like https://source.chromium.org/chromium/chromium/src/+/main:v8/src/wasm/wasm-code-manager.cc;l\u003d671;drc\u003ddd152c48779ba15f6d6249bd007199e01db6f2e6 is new since 9.5, so likely will be a problem when you roll.\n\nAdding Clemens who added this code. The error logs are not totally clear:\nhttps://logs.chromium.org/logs/pdfium/buildbucket/cr-buildbucket/8837088212082996641/+/steps/compile_with_ninja/0/stdout\n\nbut I think msvc must be putting [[nodiscard]] on std::accumulate and v8 is ignoring the return value.",
+      "revId": "9053550c7d7c70fd9223590cba07e8641f3a83ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26404996_87cc6b29",
