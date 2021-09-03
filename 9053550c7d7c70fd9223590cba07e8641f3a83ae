@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2b59bb_8b208164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T18:15:40Z",
+      "side": 1,
+      "message": "+kmoon@ re: V8 roll.",
+      "parentUuid": "6f22a6e2_ab98694e",
+      "revId": "9053550c7d7c70fd9223590cba07e8641f3a83ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26404996_87cc6b29",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-03T18:03:35Z",
       "side": 1,
       "message": "This obviously should be reverted before submitting, but is necessary until pdfium rolls v8 9.5.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 60
+      },
+      "revId": "9053550c7d7c70fd9223590cba07e8641f3a83ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48f1d20_e75ce4e1",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T18:15:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26404996_87cc6b29",
       "range": {
         "startLine": 130,
         "startChar": 2,
