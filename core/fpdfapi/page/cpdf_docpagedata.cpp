@@ -98,8 +98,6 @@ void InsertWidthArray1(CFX_Font* pFont,
 int CalculateFlags(bool bold,
                    bool italic,
                    bool fixedPitch,
-                   bool serif,
-                   bool script,
                    bool symbolic) {
   int flags = 0;
   if (bold)
@@ -108,10 +106,6 @@ int CalculateFlags(bool bold,
     flags |= FXFONT_ITALIC;
   if (fixedPitch)
     flags |= FXFONT_FIXED_PITCH;
-  if (serif)
-    flags |= FXFONT_SERIF;
-  if (script)
-    flags |= FXFONT_SCRIPT;
   if (symbolic)
     flags |= FXFONT_SYMBOLIC;
   else
@@ -477,7 +471,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
   basefont.Replace(" ", "");
   int flags =
       CalculateFlags(pFont->IsBold(), pFont->IsItalic(), pFont->IsFixedWidth(),
-                     false, false, charset == FX_Charset::kSymbol);
+                     charset == FX_Charset::kSymbol);
 
   CPDF_Dictionary* pBaseDict = GetDocument()->NewIndirect<CPDF_Dictionary>();
   pBaseDict->SetNewFor<CPDF_Name>("Type", "Font");
