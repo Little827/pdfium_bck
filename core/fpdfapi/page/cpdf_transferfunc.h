@@ -16,7 +16,6 @@
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/base/span.h"
 
-class CPDF_Document;
 class CFX_DIBBase;
 
 class CPDF_TransferFunc final : public Retainable, public Observable {
@@ -28,8 +27,6 @@ class CPDF_TransferFunc final : public Retainable, public Observable {
   FX_COLORREF TranslateColor(FX_COLORREF colorref) const;
   RetainPtr<CFX_DIBBase> TranslateImage(const RetainPtr<CFX_DIBBase>& pSrc);
 
-  const CPDF_Document* GetDocument() const { return m_pPDFDoc.Get(); }
-
   // Spans are |kChannelSampleSize| in size.
   pdfium::span<const uint8_t> GetSamplesR() const;
   pdfium::span<const uint8_t> GetSamplesG() const;
@@ -38,14 +35,12 @@ class CPDF_TransferFunc final : public Retainable, public Observable {
   bool GetIdentity() const { return m_bIdentity; }
 
  private:
-  CPDF_TransferFunc(const CPDF_Document* pDoc,
-                    bool bIdentify,
+  CPDF_TransferFunc(bool bIdentify,
                     std::vector<uint8_t, FxAllocAllocator<uint8_t>> samples_r,
                     std::vector<uint8_t, FxAllocAllocator<uint8_t>> samples_g,
                     std::vector<uint8_t, FxAllocAllocator<uint8_t>> samples_b);
   ~CPDF_TransferFunc() override;
 
-  UnownedPtr<const CPDF_Document> const m_pPDFDoc;
   const bool m_bIdentity;
   const std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_SamplesR;
   const std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_SamplesG;
