@@ -16,6 +16,182 @@
       "message": "I approve, but we\u0027ll wait for a second from Lei before landing, Thanks for your efforts.",
       "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f04e3e1_2f474463",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "Variable naming style.",
+      "range": {
+        "startLine": 2578,
+        "startChar": 8,
+        "endLine": 2578,
+        "endChar": 16
+      },
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f96c5c8_f7f53d97",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2607,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "Can this consistently use ASSERT_STREQ() like line 2597?",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addfdd70_997881e8",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "How about: ASSERT_GT(count, 0) ?\n\nIn my mind that reads as \"if (count \u003e 0)\", which is more natural since PDFium does not use Yoda conditions.",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4133e16_2d132d56",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "Please try to order the .cpp file in the same order as the corresponding header. e.g. GetWeight() can go after GetFlags().",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75851323_ff7adb31",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "FPDFText_GetFontWeight() returns -1 on failure. Can this API do the same?",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f925384_7e2a0e7c",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "A return value of 0 on failure is ambiguous for this case. How does the caller tell a font with 0 angle from a call failure?",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d073bfb0_beb1b354",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "Should this return -1 on failure? The value of 0 is ambiguous, because the case of no flags being set is a valid use case.",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633cc753_609d5409",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "Is there a good value to use to indicate failure for GetAscent() and GetDescent()?",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabdd62b_a53ca53d",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "Same question here, is 0 ever a valid return value? -1?",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b60f6e1_5d5d0f7a",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "Please document the return value on failure in the newly added APIs.",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

@@ -172,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ae0f5f5_7aec7341",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T23:50:08Z",
+      "side": 1,
+      "message": "I wonder if we should delete FPDFTextObj_GetFontName() and just keep this instead. Existing FPDFTextObj_GetFontName() callers can just first call FPDFTextObj_GetFont().",
+      "parentUuid": "971cca98_b1f8f946",
+      "revId": "e33c9dc3cd8fb74a86bc987d87e9b47bc480fe66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e22be857_d25a7aec",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 3
