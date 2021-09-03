@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065cf4f0_edf3c21c",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T22:09:00Z",
+      "side": 1,
+      "message": "Windows-only code uses these.",
+      "revId": "08bfe70a4b992cfbae66096c4adcc21289b1c680",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
