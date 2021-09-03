@@ -104,6 +104,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bd1fc3_8fe74068",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-03T19:35:45Z",
+      "side": 1,
+      "message": "BTW, I have MSVC, so I can help if you like. You can see my V8 commit history. It\u0027s all MSVC fixes. 😊",
+      "parentUuid": "23c20304_709dbb83",
+      "revId": "9053550c7d7c70fd9223590cba07e8641f3a83ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26404996_87cc6b29",
