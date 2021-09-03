@@ -288,6 +288,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e538844_dd5139e2",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-03T16:40:52Z",
+      "side": 1,
+      "message": "No worries, I\u0027m never surprised that there\u0027s a simpler way to do things in the existing code. I\u0027ll cobble together a change to tidy the other usages apart from this CL.",
+      "parentUuid": "49de4e92_f9161380",
+      "range": {
+        "startLine": 719,
+        "startChar": 2,
+        "endLine": 728,
+        "endChar": 58
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11392551_3fd2eb0e",
@@ -531,6 +555,30 @@
       "side": 1,
       "message": "CFX_Font::LoadGlyphPath returns const CFX_Path*, so const was added here like for FPDF_PATHSEGMENT and FPDFPathSegmentFromFXPathPoint/FXPathPointFromFPDFPathSegment, etc.",
       "parentUuid": "36f76b73_30068ecc",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "f16a968d777c9dc71b30bbd18334b375ec09dcf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f47ab79_c17de9eb",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-03T16:40:52Z",
+      "side": 1,
+      "message": "\u003e CFX_Font::LoadGlyphPath returns const CFX_Path*, so const was added here like for FPDF_PATHSEGMENT and FPDFPathSegmentFromFXPathPoint/FXPathPointFromFPDFPathSegment, etc.",
+      "parentUuid": "e09ee891_3441c0c9",
       "range": {
         "startLine": 65,
         "startChar": 8,

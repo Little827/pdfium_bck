@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711254c1_1a4089b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-03T16:40:52Z",
+      "side": 1,
+      "message": "I approve, but we\u0027ll wait for a second from Lei before landing, Thanks for your efforts.",
+      "revId": "4200bf32eba1f5e511d94477d285fcb1355fbf24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
