@@ -13,14 +13,11 @@
 #include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
 
-class CPDFSDK_InteractiveForm;
 class CPDFSDK_PageView;
 
 class CPDFXFA_Widget final : public CPDFSDK_Annot {
  public:
-  CPDFXFA_Widget(CXFA_FFWidget* pXFAFFWidget,
-                 CPDFSDK_PageView* pPageView,
-                 CPDFSDK_InteractiveForm* pInteractiveForm);
+  CPDFXFA_Widget(CXFA_FFWidget* pXFAFFWidget, CPDFSDK_PageView* pPageView);
   ~CPDFXFA_Widget() override;
 
   // CPDFSDK_Annot:
@@ -29,12 +26,8 @@ class CPDFXFA_Widget final : public CPDFSDK_Annot {
   CFX_FloatRect GetRect() const override;
 
   CXFA_FFWidget* GetXFAFFWidget() const { return m_pXFAFFWidget.Get(); }
-  CPDFSDK_InteractiveForm* GetInteractiveForm() const {
-    return m_pInteractiveForm.Get();
-  }
 
  private:
-  UnownedPtr<CPDFSDK_InteractiveForm> const m_pInteractiveForm;
   cppgc::Persistent<CXFA_FFWidget> const m_pXFAFFWidget;
 };
 
