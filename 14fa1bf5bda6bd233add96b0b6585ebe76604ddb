@@ -34,6 +34,24 @@
       "parentUuid": "fb2c5904_8ea5f3f5",
       "revId": "14fa1bf5bda6bd233add96b0b6585ebe76604ddb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e36217_7e9ca133",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-09-04T02:40:33Z",
+      "side": 1,
+      "message": "True, I don\u0027t think we want ARM CPU to execute x86 code. 😂\nDone.",
+      "parentUuid": "db1f3858_93b4334b",
+      "revId": "14fa1bf5bda6bd233add96b0b6585ebe76604ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
