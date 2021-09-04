@@ -16,6 +16,24 @@
       "message": "Is the target_cpu check before this sufficient?",
       "revId": "14fa1bf5bda6bd233add96b0b6585ebe76604ddb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1f3858_93b4334b",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-04T00:42:40Z",
+      "side": 1,
+      "message": "Setting just current_cpu \u003d\u003d \"x86\" may be sufficient?",
+      "parentUuid": "fb2c5904_8ea5f3f5",
+      "revId": "14fa1bf5bda6bd233add96b0b6585ebe76604ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
