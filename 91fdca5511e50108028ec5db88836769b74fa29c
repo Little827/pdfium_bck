@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc47c2e_bf505b60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-04T02:37:17Z",
+      "side": 1,
+      "message": "I was reminded that some of these may not work for type 3 fonts. Some of the properties are optional for type 3 only, and glyph paths are empty for type 3s as they are drawn via bitmaps. So, first, should these be documented? (I lean towards yes.) Second, should the type be queryable? E.g. FPDFFont_GetType? ",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
