@@ -47,6 +47,30 @@
       },
       "revId": "19193d815840540e7ca06c73a549640a99d9bcb3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083e64fc_ac5abae3",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-07T23:54:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2138c62d_e0b03a28",
+      "range": {
+        "startLine": 146,
+        "startChar": 14,
+        "endLine": 146,
+        "endChar": 19
+      },
+      "revId": "19193d815840540e7ca06c73a549640a99d9bcb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
