@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0e20e6_31514c32",
+        "filename": "fpdfsdk/formfiller/cffl_privatedata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-07T17:19:54Z",
+      "side": 1,
+      "message": "Note: clone remains correct because it invokes wrap unique around new with the copy-constructor, and that is defined as \u003ddefault so it picks up the new field automatically.",
+      "range": {
+        "startLine": 30,
+        "startChar": 53,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "b0485228007cdffcf68f20a864e1639aaf7066de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
