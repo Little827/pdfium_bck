@@ -297,6 +297,8 @@ int CFX_Font::GetSubstFontItalicAngle() const {
 bool CFX_Font::LoadFile(RetainPtr<IFX_SeekableReadStream> pFile,
                         int nFaceIndex) {
   m_bEmbedded = false;
+  m_ObjectNumber = 0;
+  m_GenerationNumber = 0;
 
   auto pStreamRec = std::make_unique<FXFT_StreamRec>();
   pStreamRec->base = nullptr;
@@ -324,6 +326,8 @@ bool CFX_Font::LoadFile(RetainPtr<IFX_SeekableReadStream> pFile,
 #if !defined(OS_WIN)
 void CFX_Font::SetFace(RetainPtr<CFX_Face> face) {
   ClearGlyphCache();
+  m_ObjectNumber = 0;
+  m_GenerationNumber = 0;
   m_Face = face;
 }
 
@@ -351,6 +355,8 @@ void CFX_Font::LoadSubst(const ByteString& face_name,
                          bool bVertical) {
   m_bEmbedded = false;
   m_bVertical = bVertical;
+  m_ObjectNumber = 0;
+  m_GenerationNumber = 0;
   m_pSubstFont = std::make_unique<CFX_SubstFont>();
   m_Face = CFX_GEModule::Get()->GetFontMgr()->FindSubstFont(
       face_name, bTrueType, flags, weight, italic_angle, code_page,
@@ -380,9 +386,12 @@ int CFX_Font::GetGlyphWidth(uint32_t glyph_index) {
 }
 
 bool CFX_Font::LoadEmbedded(pdfium::span<const uint8_t> src_span,
-                            bool bForceAsVertical) {
-  if (bForceAsVertical)
-    m_bVertical = true;
+                            bool force_vertical,
+                            uint32_t object_number,
+                            uint32_t generation_number) {
+  m_bVertical = force_vertical;
+  m_ObjectNumber = object_number;
+  m_GenerationNumber = generation_number;
   m_FontDataAllocation = std::vector<uint8_t, FxAllocAllocator<uint8_t>>(
       src_span.begin(), src_span.end());
   m_Face = CFX_GEModule::Get()->GetFontMgr()->NewFixedFace(

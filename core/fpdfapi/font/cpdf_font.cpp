@@ -216,7 +216,8 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
   if (!m_pFontFile)
     return;
 
-  if (!m_Font.LoadEmbedded(m_pFontFile->GetSpan(), IsVertWriting())) {
+  if (!m_Font.LoadEmbedded(m_pFontFile->GetSpan(), IsVertWriting(),
+                           pFontFile->GetObjNum(), pFontFile->GetGenNum())) {
     pData->MaybePurgeFontFileStreamAcc(m_pFontFile->GetStream()->AsStream());
     m_pFontFile = nullptr;
   }
