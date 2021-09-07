@@ -15,6 +15,7 @@
 
 #include "core/fxcrt/maybe_owned.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
+#include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_fontcache.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/cfx_glyphcache.h"
@@ -25,6 +26,16 @@
 #include "core/fxge/dib/fx_dib.h"
 #include "core/fxge/text_char_pos.h"
 #include "core/fxge/win32/cpsoutput.h"
+
+namespace {
+
+bool CanEmbed(CFX_Font* font) {
+  FT_UShort fstype = FT_Get_FSType_Flags(font->GetFaceRec());
+  return (fstype & (FT_FSTYPE_RESTRICTED_LICENSE_EMBEDDING |
+                    FT_FSTYPE_BITMAP_EMBEDDING_ONLY)) == 0;
+}
+
+}  // namespace
 
 CFX_PSRenderer::Glyph::Glyph(CFX_Font* font, uint32_t glyph_index)
     : font(font), glyph_index(glyph_index) {}
@@ -539,6 +550,44 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
   WriteStream(buf);
 }
 
+void CFX_PSRenderer::DrawTextAsType3Font(int char_count,
+                                         const TextCharPos* char_pos,
+                                         CFX_Font* font,
+                                         float font_size,
+                                         std::ostringstream& buf) {
+  CFX_FontCache* pCache = CFX_GEModule::Get()->GetFontCache();
+  RetainPtr<CFX_GlyphCache> pGlyphCache = pCache->GetGlyphCache(font);
+  int last_fontnum = -1;
+  for (int i = 0; i < char_count; i++) {
+    int ps_fontnum;
+    int ps_glyphindex;
+    FindPSFontGlyph(pGlyphCache.Get(), font, char_pos[i], &ps_fontnum,
+                    &ps_glyphindex);
+    if (last_fontnum != ps_fontnum) {
+      buf << "/X" << ps_fontnum << " Ff " << font_size << " Fs Sf ";
+      last_fontnum = ps_fontnum;
+    }
+    buf << char_pos[i].m_Origin.x << " " << char_pos[i].m_Origin.y << " m";
+    ByteString hex = ByteString::Format("<%02X>", ps_glyphindex);
+    buf << hex.AsStringView() << "Tj\n";
+  }
+}
+
+bool CFX_PSRenderer::DrawTextAsType42Font(int char_count,
+                                          const TextCharPos* char_pos,
+                                          CFX_Font* font,
+                                          float font_size,
+                                          std::ostringstream& buf) {
+  if (!CanEmbed(font))
+    return false;
+
+  if (font->GetFontType() != CFX_Font::FontType::kCIDTrueType)
+    return false;
+
+  // TODO(thestig): Write out text here.
+  return false;
+}
+
 bool CFX_PSRenderer::DrawText(int nChars,
                               const TextCharPos* pCharPos,
                               CFX_Font* pFont,
@@ -569,22 +618,10 @@ bool CFX_PSRenderer::DrawText(int nChars,
       << mtObject2Device.c << " " << mtObject2Device.d << " "
       << mtObject2Device.e << " " << mtObject2Device.f << "]cm\n";
 
-  CFX_FontCache* pCache = CFX_GEModule::Get()->GetFontCache();
-  RetainPtr<CFX_GlyphCache> pGlyphCache = pCache->GetGlyphCache(pFont);
-  int last_fontnum = -1;
-  for (int i = 0; i < nChars; i++) {
-    int ps_fontnum;
-    int ps_glyphindex;
-    FindPSFontGlyph(pGlyphCache.Get(), pFont, pCharPos[i], &ps_fontnum,
-                    &ps_glyphindex);
-    if (last_fontnum != ps_fontnum) {
-      buf << "/X" << ps_fontnum << " Ff " << font_size << " Fs Sf ";
-      last_fontnum = ps_fontnum;
-    }
-    buf << pCharPos[i].m_Origin.x << " " << pCharPos[i].m_Origin.y << " m";
-    ByteString hex = ByteString::Format("<%02X>", ps_glyphindex);
-    buf << hex.AsStringView() << "Tj\n";
+  if (!DrawTextAsType42Font(nChars, pCharPos, pFont, font_size, buf)) {
+    DrawTextAsType3Font(nChars, pCharPos, pFont, font_size, buf);
   }
+
   buf << "Q\n";
   WriteStream(buf);
   return true;
