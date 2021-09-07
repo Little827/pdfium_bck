@@ -520,8 +520,10 @@ FPDF_EXPORT FPDF_FONT FPDF_CALLCONV FPDFText_LoadFont(FPDF_DOCUMENT document,
   // TODO(npm): Maybe use FT_Get_X11_Font_Format to check format? Otherwise, we
   // are allowing giving any font that can be loaded on freetype and setting it
   // as any font type.
-  if (!pFont->LoadEmbedded(span, false))
+  if (!pFont->LoadEmbedded(span, /*force_vertical=*/false, /*object_number=*/0,
+                           /*generation_number=*/0)) {
     return nullptr;
+  }
 
   // Caller takes ownership.
   return FPDFFontFromCPDFFont(
