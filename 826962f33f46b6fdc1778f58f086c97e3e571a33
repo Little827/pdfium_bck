@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1631043015 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1+aWWr/ULjMibuy9rDSvELtpbnVoKBEVTDev0ERPbtkmMvFZMPqbki7dKdEnGOTT2tqCfXg\n\n0000000000000000000000000000000000000000 826962f33f46b6fdc1778f58f086c97e3e571a33 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmE3vccACgkQqzYtYVpm\n/XtQGgf/f/CMkh1Vma+ygR2h+Bs7VgHBko6oBAf2KSnu0BFEHHPrRXxF5v93gdrh\naLekZR6Te3JT0Ju6uWLbTIF1VRHaPXkWaxG/9DR/ldJ8h3EIUlhfT18WS0V7gtrX\n1aq7MldhEJrvPgaoNwma85COJ64mBAW7gpX3cKiMmRKtJnYRyxb6hfSs6THMNjeu\n+BDJ+vqaYgbJL6lUrhDJ7mOO5IvhWv0WQfJ2o6E0kv5nczzHTnpAKbXxbV5cYjHI\nrqD8kuexXZFEfuzLtHdv+7Bd5fiXB2Mj+v0VEuwaG3OOfVedvZoS2euD2vnWKCrv\nNR05YyUA3yyXY+mSW6Awr5qubcuuJw\u003d\u003d\n\u003dza4H\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2395185_c706b6e0",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-07T20:12:43Z",
+      "side": 1,
+      "message": "nit: maybe invert order and explicitly set kTrueType \u003d false to keep same  bool values as m_bType1 used to hold.",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "826962f33f46b6fdc1778f58f086c97e3e571a33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
