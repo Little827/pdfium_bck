@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d62a65_3fbef06b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-07T17:23:21Z",
+      "side": 1,
+      "message": "I may wait until after m95 branchpoint to land this, just to let it bake longer since it is a bit riskier than our usual cleanups.",
+      "revId": "b0485228007cdffcf68f20a864e1639aaf7066de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d0e20e6_31514c32",
