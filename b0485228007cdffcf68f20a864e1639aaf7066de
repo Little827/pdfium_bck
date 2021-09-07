@@ -39,6 +39,53 @@
       },
       "revId": "b0485228007cdffcf68f20a864e1639aaf7066de",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3b7878_dcea7582",
+        "filename": "fpdfsdk/formfiller/cffl_privatedata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-07T18:40:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d0e20e6_31514c32",
+      "range": {
+        "startLine": 30,
+        "startChar": 53,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "b0485228007cdffcf68f20a864e1639aaf7066de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76047302_9a90c38d",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-07T18:40:01Z",
+      "side": 1,
+      "message": "Get rid of this, since the class owns `m_pAttachedData`?",
+      "range": {
+        "startLine": 223,
+        "startChar": 55,
+        "endLine": 223,
+        "endChar": 60
+      },
+      "revId": "b0485228007cdffcf68f20a864e1639aaf7066de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
