@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1631057772 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1+9dXnhVSiMLGuagPqlYyc5kzMwLFQ7uKXbOpaliM9/RuKMdIK84KF9JelK/0tPqDiGlkak\n\n0000000000000000000000000000000000000000 19193d815840540e7ca06c73a549640a99d9bcb3 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmE392wACgkQqzYtYVpm\n/XssPgf+NwZ7Jec+tBQYhlCrSLejwrzQQNlJrdCf3bpPdtsgcP+QHtpf6M1+CN52\nWmLnYqsNNU6/ThyKl2pAtG9Vo4pdWTWx6dobuyQ/vMD9DLVwJxr4s0CF6l1UBf9M\nFzQFtxKjMnKQjQrXPIHykLZqaBE/2tuC1PHLxzFoNxQVLmwsLEaj4i2kfKH/N+dx\nIWE4krdojQRT+cJTOlwcHvSz4vC92QYZIw/uJT6XLBeBsb9zijcdMCQ6Lg5vbVNY\nnV58N0nZon/Np9wR6RqxmgRucI+ebDDP1G9MpLrEh2JTiWpmwkN378BA4qxGxWON\nDgeQt3CQLFVTd4suGP/5iCoSz4FCXA\u003d\u003d\n\u003dR02D\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff577198_fd419813",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-07T23:45:53Z",
+      "side": 1,
+      "message": "I might have kept this as unique_ptr to glyph, as copying glyphs could be expensive during a vector resize.",
+      "range": {
+        "startLine": 146,
+        "startChar": 14,
+        "endLine": 146,
+        "endChar": 19
+      },
+      "revId": "19193d815840540e7ca06c73a549640a99d9bcb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
