@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ccf115_26918a9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-07T23:42:56Z",
+      "side": 1,
+      "message": "argh, crossed branches.  restored original patch.",
+      "revId": "8758191cf7a23f7fb2e98679ef6d9795cc64dbbb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
