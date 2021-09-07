@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <array>
 #include <memory>
 #include <vector>
 
@@ -25,7 +26,6 @@ class CFX_DIBBase;
 class CFX_GlyphCache;
 class CFX_Font;
 class CFX_Path;
-class CPSFont;
 class TextCharPos;
 struct CFX_FillRenderOptions;
 struct FXDIB_ResampleOptions;
@@ -102,6 +102,16 @@ class CFX_PSRenderer {
                 uint32_t color);
 
  private:
+  struct Glyph {
+    Glyph(CFX_Font* font, uint32_t glyph_index);
+    Glyph(const Glyph& other);
+    ~Glyph();
+
+    UnownedPtr<CFX_Font> const font;
+    const uint32_t glyph_index;
+    Optional<std::array<float, 4>> adjust_matrix;
+  };
+
   void OutputPath(const CFX_Path* pPath, const CFX_Matrix* pObject2Device);
   void SetGraphState(const CFX_GraphStateData* pGraphState);
   void SetColor(uint32_t color);
@@ -133,7 +143,7 @@ class CFX_PSRenderer {
   CFX_GraphStateData m_CurGraphState;
   UnownedPtr<const EncoderIface> const m_pEncoderIface;
   RetainPtr<IFX_RetainableWriteStream> m_pStream;
-  std::vector<std::unique_ptr<CPSFont>> m_PSFontList;
+  std::vector<Glyph> m_PSFontList;
   std::vector<FX_RECT> m_ClipBoxStack;
 };
 
