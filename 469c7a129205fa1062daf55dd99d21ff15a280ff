@@ -46,6 +46,29 @@
       },
       "revId": "469c7a129205fa1062daf55dd99d21ff15a280ff",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5cbee7_02298347",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-07T22:35:07Z",
+      "side": 1,
+      "message": "follow-up: might we be better served with a 1-d vector of unique_ptr to PSGlyph rather than the 2-level lookup that the CPSFont/PSFontGlyphs give us, esp. since we\u0027re going to initialize these in batches of 256 ?",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "469c7a129205fa1062daf55dd99d21ff15a280ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
