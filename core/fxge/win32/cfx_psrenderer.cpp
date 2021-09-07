@@ -26,6 +26,8 @@
 #include "core/fxge/text_char_pos.h"
 #include "core/fxge/win32/cpsoutput.h"
 
+namespace {
+
 struct PSGlyph {
   UnownedPtr<CFX_Font> m_pFont;
   uint32_t m_GlyphIndex;
@@ -33,7 +35,9 @@ struct PSGlyph {
   float m_AdjustMatrix[4];
 };
 
-class CPSFont {
+}  // namespace
+
+class CFX_PSRenderer::PSFontGlyphs {
  public:
   int m_nGlyphs;
   PSGlyph m_Glyphs[256];
@@ -477,7 +481,7 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
   }
 
   if (m_PSFontList.empty() || m_PSFontList.back()->m_nGlyphs == 256) {
-    m_PSFontList.push_back(std::make_unique<CPSFont>());
+    m_PSFontList.push_back(std::make_unique<PSFontGlyphs>());
     m_PSFontList.back()->m_nGlyphs = 0;
     std::ostringstream buf;
     buf << "8 dict begin/FontType 3 def/FontMatrix[1 0 0 1 0 0]def\n"
@@ -495,7 +499,7 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
   }
 
   *ps_fontnum = m_PSFontList.size() - 1;
-  CPSFont* pPSFont = m_PSFontList[*ps_fontnum].get();
+  PSFontGlyphs* pPSFont = m_PSFontList[*ps_fontnum].get();
   int glyphindex = pPSFont->m_nGlyphs;
   *ps_glyphindex = glyphindex;
   pPSFont->m_Glyphs[glyphindex].m_GlyphIndex = charpos.m_GlyphIndex;
