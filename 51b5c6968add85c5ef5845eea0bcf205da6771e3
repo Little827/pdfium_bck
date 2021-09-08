@@ -72,6 +72,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d20cdba_c89fdeb5",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T16:40:14Z",
+      "side": 1,
+      "message": "I can glue the two together into an opaque uint64_t.",
+      "parentUuid": "b4039f2b_b1f2892f",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 82,
+        "endChar": 46
+      },
+      "revId": "51b5c6968add85c5ef5845eea0bcf205da6771e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ecea8403_2b8a6a33",
