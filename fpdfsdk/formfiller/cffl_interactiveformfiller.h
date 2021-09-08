@@ -89,6 +89,15 @@ class CFFL_InteractiveFormFiller final : public IPWL_FillerNotify {
   bool OnKillFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot,
                    Mask<FWL_EVENTFLAG> nFlag);
 
+  // Calls propagated up to the form fill environment.
+  void OnSetFieldInputFocus(const WideString& wsText);
+  void Invalidate(CPDFSDK_Annot* pAnnot, const FX_RECT& rect);
+  CPDFSDK_PageView* GetOrCreatePageView(IPDF_Page* pPage);
+  CPDFSDK_PageView* GetPageView(IPDF_Page* pPage);
+  CFX_Timer::HandlerIface* GetTimerHandler();
+  IPWL_SystemHandler* GetSysHandler();
+  void OnChange();
+
   CFFL_FormField* GetFormFieldForTesting(CPDFSDK_Annot* pAnnot) {
     return GetFormField(pAnnot);
   }

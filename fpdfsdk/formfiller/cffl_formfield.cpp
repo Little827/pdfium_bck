@@ -11,16 +11,15 @@
 #include "constants/form_flags.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fxge/cfx_renderdevice.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_privatedata.h"
 #include "third_party/base/check.h"
 
-CFFL_FormField::CFFL_FormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+CFFL_FormField::CFFL_FormField(CFFL_InteractiveFormFiller* pFormFiller,
                                CPDFSDK_Widget* pWidget)
-    : m_pFormFillEnv(pFormFillEnv), m_pWidget(pWidget) {
-  DCHECK(m_pFormFillEnv);
+    : m_pFormFiller(pFormFiller), m_pWidget(pWidget) {
+  DCHECK(m_pFormFiller);
 }
 
 CFFL_FormField::~CFFL_FormField() {
@@ -261,7 +260,7 @@ void CFFL_FormField::SetFocusForAnnot(CPDFSDK_Annot* pAnnot,
                                       Mask<FWL_EVENTFLAG> nFlag) {
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
   IPDF_Page* pPage = pWidget->GetPage();
-  CPDFSDK_PageView* pPageView = m_pFormFillEnv->GetOrCreatePageView(pPage);
+  CPDFSDK_PageView* pPageView = m_pFormFiller->GetOrCreatePageView(pPage);
   CPWL_Wnd* pWnd = CreateOrUpdatePWLWindow(pPageView);
   if (pWnd)
     pWnd->SetFocus();
@@ -275,7 +274,7 @@ void CFFL_FormField::KillFocusForAnnot(Mask<FWL_EVENTFLAG> nFlag) {
     return;
 
   CPDFSDK_PageView* pPageView =
-      m_pFormFillEnv->GetPageView(m_pWidget->GetPage());
+      m_pFormFiller->GetPageView(m_pWidget->GetPage());
   if (!pPageView || !CommitData(pPageView, nFlag))
     return;
   if (CPWL_Wnd* pWnd = GetPWLWindow(pPageView))
@@ -342,8 +341,8 @@ CPWL_Wnd::CreateParams CFFL_FormField::GetCreateParam() {
     dwCreateFlags |= PWS_AUTOFONTSIZE;
 
   cp.dwFlags = dwCreateFlags;
-  cp.pTimerHandler.Reset(m_pFormFillEnv->GetTimerHandler());
-  cp.pSystemHandler = m_pFormFillEnv->GetSysHandler();
+  cp.pTimerHandler.Reset(m_pFormFiller->GetTimerHandler());
+  cp.pSystemHandler = m_pFormFiller->GetSysHandler();
   return cp;
 }
 
@@ -424,7 +423,6 @@ CFX_Matrix CFFL_FormField::GetCurMatrix() {
 
 CFX_FloatRect CFFL_FormField::GetPDFAnnotRect() const {
   CFX_FloatRect rectAnnot = m_pWidget->GetPDFAnnot()->GetRect();
-
   float fWidth = rectAnnot.Width();
   float fHeight = rectAnnot.Height();
   if ((m_pWidget->GetRotate() / 90) & 0x01)
@@ -433,8 +431,7 @@ CFX_FloatRect CFFL_FormField::GetPDFAnnotRect() const {
 }
 
 CPDFSDK_PageView* CFFL_FormField::GetCurPageView() {
-  IPDF_Page* pPage = m_pWidget->GetPage();
-  return m_pFormFillEnv->GetOrCreatePageView(pPage);
+  return m_pFormFiller->GetOrCreatePageView(m_pWidget->GetPage());
 }
 
 CFX_FloatRect CFFL_FormField::GetFocusBox(const CPDFSDK_PageView* pPageView) {
@@ -468,12 +465,9 @@ bool CFFL_FormField::CommitData(const CPDFSDK_PageView* pPageView,
   if (!IsDataChanged(pPageView))
     return true;
 
-  CFFL_InteractiveFormFiller* pInteractiveFormFiller =
-      m_pFormFillEnv->GetInteractiveFormFiller();
   ObservedPtr<CPDFSDK_Annot> pObserved(m_pWidget.Get());
 
-  if (!pInteractiveFormFiller->OnKeyStrokeCommit(&pObserved, pPageView,
-                                                 nFlag)) {
+  if (!m_pFormFiller->OnKeyStrokeCommit(&pObserved, pPageView, nFlag)) {
     if (!pObserved)
       return false;
     ResetPWLWindow(pPageView);
@@ -482,7 +476,7 @@ bool CFFL_FormField::CommitData(const CPDFSDK_PageView* pPageView,
   if (!pObserved)
     return false;
 
-  if (!pInteractiveFormFiller->OnValidate(&pObserved, pPageView, nFlag)) {
+  if (!m_pFormFiller->OnValidate(&pObserved, pPageView, nFlag)) {
     if (!pObserved)
       return false;
     ResetPWLWindow(pPageView);
@@ -495,11 +489,11 @@ bool CFFL_FormField::CommitData(const CPDFSDK_PageView* pPageView,
   if (!pObserved)
     return false;
 
-  pInteractiveFormFiller->OnCalculate(&pObserved, pPageView, nFlag);
+  m_pFormFiller->OnCalculate(&pObserved, pPageView, nFlag);
   if (!pObserved)
     return false;
 
-  pInteractiveFormFiller->OnFormat(&pObserved, pPageView, nFlag);
+  m_pFormFiller->OnFormat(&pObserved, pPageView, nFlag);
   if (!pObserved)
     return false;
 
@@ -519,7 +513,7 @@ bool CFFL_FormField::IsFieldFull(const CPDFSDK_PageView* pPageView) {
 #endif  // PDF_ENABLE_XFA
 
 void CFFL_FormField::SetChangeMark() {
-  m_pFormFillEnv->OnChange();
+  m_pFormFiller->OnChange();
 }
 
 void CFFL_FormField::GetActionData(const CPDFSDK_PageView* pPageView,
@@ -565,5 +559,5 @@ void CFFL_FormField::EscapeFiller(CPDFSDK_PageView* pPageView,
 }
 
 void CFFL_FormField::InvalidateRect(const FX_RECT& rect) {
-  m_pFormFillEnv->Invalidate(m_pWidget->GetPage(), rect);
+  m_pFormFiller->Invalidate(m_pWidget, rect);
 }

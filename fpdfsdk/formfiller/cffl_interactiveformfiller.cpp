@@ -489,28 +489,22 @@ CFFL_FormField* CFFL_InteractiveFormFiller::GetOrCreateFormField(
   std::unique_ptr<CFFL_FormField> pFormField;
   switch (pWidget->GetFieldType()) {
     case FormFieldType::kPushButton:
-      pFormField =
-          std::make_unique<CFFL_PushButton>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_PushButton>(this, pWidget);
       break;
     case FormFieldType::kCheckBox:
-      pFormField =
-          std::make_unique<CFFL_CheckBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_CheckBox>(this, pWidget);
       break;
     case FormFieldType::kRadioButton:
-      pFormField =
-          std::make_unique<CFFL_RadioButton>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_RadioButton>(this, pWidget);
       break;
     case FormFieldType::kTextField:
-      pFormField =
-          std::make_unique<CFFL_TextField>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_TextField>(this, pWidget);
       break;
     case FormFieldType::kListBox:
-      pFormField =
-          std::make_unique<CFFL_ListBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_ListBox>(this, pWidget);
       break;
     case FormFieldType::kComboBox:
-      pFormField =
-          std::make_unique<CFFL_ComboBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_ComboBox>(this, pWidget);
       break;
     case FormFieldType::kUnknown:
     default:
@@ -520,6 +514,40 @@ CFFL_FormField* CFFL_InteractiveFormFiller::GetOrCreateFormField(
   result = pFormField.get();
   m_Map[pAnnot] = std::move(pFormField);
   return result;
+}
+
+void CFFL_InteractiveFormFiller::OnSetFieldInputFocus(
+    const WideString& wsText) {
+  int nCharacters = wsText.GetLength();
+  ByteString bsUTFText = wsText.ToUTF16LE();
+  auto* pBuffer = reinterpret_cast<const unsigned short*>(bsUTFText.c_str());
+  m_pFormFillEnv->OnSetFieldInputFocus(pBuffer, nCharacters, true);
+}
+
+void CFFL_InteractiveFormFiller::Invalidate(CPDFSDK_Annot* pAnnot,
+                                            const FX_RECT& rect) {
+  m_pFormFillEnv->Invalidate(pAnnot->GetPage(), rect);
+}
+
+CPDFSDK_PageView* CFFL_InteractiveFormFiller::GetOrCreatePageView(
+    IPDF_Page* pPage) {
+  return m_pFormFillEnv->GetOrCreatePageView(pPage);
+}
+
+CPDFSDK_PageView* CFFL_InteractiveFormFiller::GetPageView(IPDF_Page* pPage) {
+  return m_pFormFillEnv->GetPageView(pPage);
+}
+
+CFX_Timer::HandlerIface* CFFL_InteractiveFormFiller::GetTimerHandler() {
+  return m_pFormFillEnv->GetTimerHandler();
+}
+
+IPWL_SystemHandler* CFFL_InteractiveFormFiller::GetSysHandler() {
+  return m_pFormFillEnv->GetSysHandler();
+}
+
+void CFFL_InteractiveFormFiller::OnChange() {
+  return m_pFormFillEnv->OnChange();
 }
 
 WideString CFFL_InteractiveFormFiller::GetText(CPDFSDK_Annot* pAnnot) {
