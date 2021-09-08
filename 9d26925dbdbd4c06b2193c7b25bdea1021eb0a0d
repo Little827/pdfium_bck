@@ -23,6 +23,30 @@
       },
       "revId": "9d26925dbdbd4c06b2193c7b25bdea1021eb0a0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e567d905_7d44f78d",
+        "filename": "core/fxge/win32/cfx_psfonttracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T21:14:48Z",
+      "side": 1,
+      "message": "I was hoping that would be the case, thus I thought CFX_PSFontTracker could go away. However, there are cases where there is no CPDF_Object at all. e.g. when the CFX_Font is created via FPDFText_LoadFont().",
+      "parentUuid": "0f366062_73cf7f50",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "9d26925dbdbd4c06b2193c7b25bdea1021eb0a0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
