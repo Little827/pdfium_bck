@@ -2,6 +2,23 @@
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1631138474 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1/LXXf2VNVh5tbr7hfGAxPyZI7xoQh18eCcpXy4cx7J93g1oaLNeTskXTmqs2Vv9+Xe/U63\n\n0000000000000000000000000000000000000000 0babbc7a9d74819a44c63db4b28b61b2c122a7c4 refs/for/refs/heads/main%notify\u003dNONE,m\u003dchain,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmE5MqoACgkQqzYtYVpm\n/XuujggAo1frMyTjleHTnKVxQkuocbPygZjPyYK45kK+aKTjrczhkMUQaV7UJgXG\nYNE8Z0uj7W32BiW1z21fbp3pLJHoaRoZPVFYmRS5Zu0JK+J2tidmwTsDc17xVqwg\n2dB0SsCavvXhZZlo7yDHT81dWnrkBSDdy1RCu4yY0luajsOrUt+TKQDs2xC8FluO\nVf2ym0lG42ajwhQ3azWfzjtt1aE5RYRHK8032FMo6zvL8VUDClyJkEGvasWJEXBY\nUOaoZf0MgowYXbZtBQeGEd6nuiMJt0qCtc22QRJCMeda8rbDd7JO+lubeSVNYVyZ\n7qdSt/fpCd8ASrs5a0ouKdMv4eMwfQ\u003d\u003d\n\u003dgmco\n-----END PGP SIGNATURE-----\n",
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7416ad_272183b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T22:46:53Z",
+      "side": 1,
+      "message": "Add comment saying this only affects standalone PDFium.",
+      "revId": "0babbc7a9d74819a44c63db4b28b61b2c122a7c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b4d7b2c8_b9a9aff2",
@@ -15,6 +32,23 @@
       "writtenOn": "2021-09-08T22:43:26Z",
       "side": 1,
       "message": "Only applies to standalone PDFium, of course.",
+      "revId": "0babbc7a9d74819a44c63db4b28b61b2c122a7c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dabda75_84523471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T22:46:53Z",
+      "side": 1,
+      "message": "Ok, but lets say so in the CL description.",
       "revId": "0babbc7a9d74819a44c63db4b28b61b2c122a7c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
