@@ -42,6 +42,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c184ed6_b0f365b6",
+        "filename": "core/fxge/cfx_windowsrenderdevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T17:47:19Z",
+      "side": 1,
+      "message": "I can save this for a follow-up.",
+      "parentUuid": "8292baa2_c03a967f",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "61d6fba3_64ae9814",
@@ -123,6 +147,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49bff300_fc4dd75a",
+        "filename": "core/fxge/win32/cps_printer_driver.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T17:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e699094_784192e5",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97aaa903_5c9758d1",
@@ -136,6 +184,54 @@
       "writtenOn": "2021-09-08T16:46:41Z",
       "side": 1,
       "message": "kPs3Type42?",
+      "range": {
+        "startLine": 574,
+        "startChar": 45,
+        "endLine": 574,
+        "endChar": 49
+      },
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd08c2d_a5dcc15a",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T17:47:19Z",
+      "side": 1,
+      "message": "Done. 42 is always the answer.",
+      "parentUuid": "97aaa903_5c9758d1",
+      "range": {
+        "startLine": 574,
+        "startChar": 45,
+        "endLine": 574,
+        "endChar": 49
+      },
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af24308_6ce1ddce",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T17:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97aaa903_5c9758d1",
       "range": {
         "startLine": 574,
         "startChar": 45,
