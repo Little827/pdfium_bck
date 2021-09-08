@@ -16,7 +16,18 @@
 #include "core/fxcrt/fx_string.h"
 #include "third_party/base/notreached.h"
 
+static_assert(sizeof(uint64_t) >= sizeof(CPDF_Object*),
+              "Need a bigger type for cache keys");
+
 CPDF_Object::~CPDF_Object() = default;
+
+uin64_t CPDF_Object::KeyForCache() const {
+  if (IsInline())
+    return reinterpret_cast<uint64_t>(this) | 1;
+
+  return (static_cast<uint64_t>(m_ObjNum) << 33) |
+         (static_cast<uint64_t>(m_GenNum) << 1);
+}
 
 CPDF_Object* CPDF_Object::GetDirect() {
   return this;
