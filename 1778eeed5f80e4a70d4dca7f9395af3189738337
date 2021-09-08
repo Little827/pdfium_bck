@@ -2,6 +2,121 @@
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1631064490 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1/GCpMJ1YOxq9QZzh/cTrldMG2uZ/ucrSBWwhdJCrhfscKMszhaZSX6X6oIfFFWFi9lGyuS\n\n0000000000000000000000000000000000000000 1778eeed5f80e4a70d4dca7f9395af3189738337 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmE4EaoACgkQqzYtYVpm\n/XsH/Qf/ZJp0pDWjxDUWY0IaryNtHl6odEYf+LHvgzG4GRZj6orS73bIg5nzOxY4\ndZv1VdD/ivFx3+KMv4Yv4/XJfPWlzMIWKApPiUjGoKwf4zsZoMeiFLLoBOcGwg6i\n5c1bOKdSvbaqa9uz++NvnHBvVHMqdbJ8Khclw77ya8y+N6k9/9xOrIKCjZPGATG2\n5owRHyMudPo0mfcbZWMXdcQ/RnE/nTNY6H/dc65PEoJ4MRZFzkbVUc/OCwFDByFh\n+Rqic62tyklg0uGfnyhP6MH5EvIgRG653C//rOQdrDh+g+9MnGu6gXAz4V8Dyu1k\nkpYD25j7kGFw7Xil0xyW9Qx8tlCCCg\u003d\u003d\n\u003dtdxg\n-----END PGP SIGNATURE-----\n",
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bf4c24_834cc232",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:08:59Z",
+      "side": 1,
+      "message": "nit: guarded by OS_WIN",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411cab3f_9d1f88fb",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:08:59Z",
+      "side": 1,
+      "message": "nit: feel free to abbreviate to GetPSFontTracker() for consistency with all other names ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e8c2e6_60540a9b",
+        "filename": "core/fxge/win32/cfx_psfonttracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:08:59Z",
+      "side": 1,
+      "message": "nit: obj 0 with non-zero gen seems weird.  Is that allowed per specs?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ad9630_155efad2",
+        "filename": "core/fxge/win32/cfx_psfonttracker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:08:59Z",
+      "side": 1,
+      "message": "big disruptive follow-up: I\u0027ve wanted this class throughout the code base.",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274dc7a5_c0c12252",
+        "filename": "core/fxge/win32/cfx_psfonttracker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:08:59Z",
+      "side": 1,
+      "message": "how about std::set\u003cUnownedPtr\u003cconst CFX_Font\u003e\u003e ? \n\nIn particular this works as long as fonts outlive the font tracker, otherwise we can free and allocate a different font in the same memmory, esp. with partition alloc slabbing objects.",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "336ed8b6_c9bb23ac",
@@ -15,6 +130,24 @@
       "writtenOn": "2021-09-08T15:03:49Z",
       "side": 1,
       "message": "This path looks like it\u0027s only doing bitmap operations.",
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98468f9a_4cc53426",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:08:59Z",
+      "side": 1,
+      "message": "Would that fall back to making a new font every time if it were to try to do otherwise?  Or just crash?",
+      "parentUuid": "336ed8b6_c9bb23ac",
       "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
