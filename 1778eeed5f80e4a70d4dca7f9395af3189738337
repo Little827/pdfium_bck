@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c205292c_8c0e0ae2",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T20:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30bf4c24_834cc232",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "411cab3f_9d1f88fb",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-09-08T16:08:59Z",
       "side": 1,
       "message": "nit: feel free to abbreviate to GetPSFontTracker() for consistency with all other names ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ddb173c_dda4e2a5",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T20:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411cab3f_9d1f88fb",
       "range": {
         "startLine": 39,
         "startChar": 24,
@@ -95,6 +143,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64161f95_bcd204b0",
+        "filename": "core/fxge/win32/cfx_psfonttracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T20:19:29Z",
+      "side": 1,
+      "message": "On second thought, CFX_PSFontTracker lives.",
+      "parentUuid": "33faf566_8eff87f9",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ad9630_155efad2",
@@ -118,6 +190,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db29da74_558c7a2c",
+        "filename": "core/fxge/win32/cfx_psfonttracker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T20:19:29Z",
+      "side": 1,
+      "message": "Please take the code and run with it. I won\u0027t need it in this CL though.",
+      "parentUuid": "f7ad9630_155efad2",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "274dc7a5_c0c12252",
@@ -131,6 +227,30 @@
       "writtenOn": "2021-09-08T16:08:59Z",
       "side": 1,
       "message": "how about std::set\u003cUnownedPtr\u003cconst CFX_Font\u003e\u003e ? \n\nIn particular this works as long as fonts outlive the font tracker, otherwise we can free and allocate a different font in the same memmory, esp. with partition alloc slabbing objects.",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0ccff4_6e565c93",
+        "filename": "core/fxge/win32/cfx_psfonttracker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T20:19:29Z",
+      "side": 1,
+      "message": "Done.\n\nCFX_PSFontTracker usually lives in `CPDF_Document::m_pDocRender`. Many fonts live in `CPDF_Document::m_pDocPage`. `m_pDocRender` outlives `m_pDocPage`, but only for a brief moment. So the chances of free/allocate happening are fairly low.",
+      "parentUuid": "274dc7a5_c0c12252",
       "range": {
         "startLine": 41,
         "startChar": 12,
@@ -237,6 +357,24 @@
       "side": 1,
       "message": "I don\u0027t think this code path will ever reach the text drawing code, but to be on the safe side, I\u0027ll just pass something in here to avoid a potential crash.",
       "parentUuid": "98468f9a_4cc53426",
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c3923b_cb9514a2",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T20:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ba4cdb_286c51f7",
       "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
