@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4224e7d_0421f6c5",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T16:34:16Z",
+      "side": 1,
+      "message": "I\u0027m hoping to fill this enum with more entries from table 110 [1] over time. Prioritizing CID TrueType first. Given the table\u0027s title is \"Font types\", I think this is standard PDF terminology.\n\n[1] https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#page\u003d261",
+      "parentUuid": "7ad31b8e_34fa6989",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "51b5c6968add85c5ef5845eea0bcf205da6771e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ecea8403_2b8a6a33",
