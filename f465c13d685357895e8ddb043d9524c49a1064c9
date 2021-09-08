@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1631061209 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d18Rv653C6k93L58KNEQBwzBXj9nUOLG4QY70uJzFt7BjWMBKK6jVALSPUJQtvMXy/AitSXW\n\n0000000000000000000000000000000000000000 f465c13d685357895e8ddb043d9524c49a1064c9 refs/for/refs/heads/main%notify\u003dNONE,m\u003drebase,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmE4BNkACgkQqzYtYVpm\n/XvIRwgAzIP/Vnd47IE/xPpoYA19tpnIA73nGmMoEPr7LvHTG45T3pbMi/QugJue\nO2wY16sDBOARrPCw88F92YU3EMX9DrnORQhIwX/SVVmj2WlQ+gAu0SdxaNQKNY8z\noPq3WehpT0AL6M7tqkI8wfu+JloF6UTQLpVsfsLsnhOFsILHoy51VZEtga+qTi/h\nP/J+RPws5IDdqaozdMgIgxyqA+6TDjlGwOog3hHg27DUH9Bf1w+vWAvaKb6yIsF5\neIxTnZjlnw3VBFsDbudX4q+aTHhotPRpKkygZhJVJ2Fw9Hj9m+6CPlC5XollK8JA\nhp974rQEhgQz5ib8u2zy2dNPBFZzFw\u003d\u003d\n\u003dh/F6\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e5d4a39_4f5747c2",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T14:28:46Z",
+      "side": 1,
+      "message": "Borrowed from Skia. https://skia.googlesource.com/skia.git/+/b5e449b6d5/src/ports/SkFontHost_FreeType.cpp#411",
+      "revId": "f465c13d685357895e8ddb043d9524c49a1064c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3f843c_1c9de259",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T14:28:46Z",
+      "side": 1,
+      "message": "Moved from DrawText(), but renamed parameters.",
+      "revId": "f465c13d685357895e8ddb043d9524c49a1064c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
