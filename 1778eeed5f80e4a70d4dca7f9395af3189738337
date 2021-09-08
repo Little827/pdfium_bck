@@ -71,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33faf566_8eff87f9",
+        "filename": "core/fxge/win32/cfx_psfonttracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T19:25:34Z",
+      "side": 1,
+      "message": "I know https://pdfium-review.googlesource.com/84910 is coming, so I\u0027ll just replace CFX_PSFontTracker with a std::set\u003cuint64_t\u003e. Thus side-stepping this and a few other questions on this CL.",
+      "parentUuid": "70e8c2e6_60540a9b",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ad9630_155efad2",
@@ -142,6 +166,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fc83f2c0_116c5317",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T19:25:34Z",
+      "side": 1,
+      "message": "See reply to tsepez\u0027s comment. I\u0027ll change it so it will be never null.",
+      "parentUuid": "6444f89e_3a817126",
+      "range": {
+        "startLine": 595,
+        "startChar": 26,
+        "endLine": 595,
+        "endChar": 40
+      },
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "336ed8b6_c9bb23ac",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 1
@@ -171,6 +219,24 @@
       "side": 1,
       "message": "Would that fall back to making a new font every time if it were to try to do otherwise?  Or just crash?",
       "parentUuid": "336ed8b6_c9bb23ac",
+      "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ba4cdb_286c51f7",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T19:25:34Z",
+      "side": 1,
+      "message": "I don\u0027t think this code path will ever reach the text drawing code, but to be on the safe side, I\u0027ll just pass something in here to avoid a potential crash.",
+      "parentUuid": "98468f9a_4cc53426",
       "revId": "1778eeed5f80e4a70d4dca7f9395af3189738337",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
