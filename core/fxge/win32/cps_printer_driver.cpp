@@ -23,18 +23,32 @@ CPSPrinterDriver::CPSPrinterDriver(HDC hDC,
                                    WindowsPrintMode mode,
                                    const EncoderIface* pEncoderIface)
     : m_hDC(hDC), m_PSRenderer(pEncoderIface) {
-  // |mode| should be PostScript.
-  DCHECK(mode == WindowsPrintMode::kModePostScript2 ||
-         mode == WindowsPrintMode::kModePostScript3 ||
-         mode == WindowsPrintMode::kModePostScript2PassThrough ||
-         mode == WindowsPrintMode::kModePostScript3PassThrough);
-  int pslevel = (mode == WindowsPrintMode::kModePostScript2 ||
-                 mode == WindowsPrintMode::kModePostScript2PassThrough)
-                    ? 2
-                    : 3;
+  CFX_PSRenderer::RenderingLevel level;
+  switch (mode) {
+    case WindowsPrintMode::kModePostScript2:
+    case WindowsPrintMode::kModePostScript2PassThrough:
+      level = CFX_PSRenderer::RenderingLevel::kLevel2;
+      break;
+    case WindowsPrintMode::kModePostScript3:
+    case WindowsPrintMode::kModePostScript3PassThrough:
+      level = CFX_PSRenderer::RenderingLevel::kLevel3;
+      break;
+    case WindowsPrintMode::kModePostScript3Type42:
+    case WindowsPrintMode::kModePostScript3Type42PassThrough:
+      level = CFX_PSRenderer::RenderingLevel::kLevel3Type42;
+      break;
+    default:
+      // |mode| should be PostScript.
+      NOTREACHED();
+      // Initialize `level` to make the compiler happy.
+      level = CFX_PSRenderer::RenderingLevel::kLevel2;
+      break;
+  }
+
   CPSOutput::OutputMode output_mode =
       (mode == WindowsPrintMode::kModePostScript2 ||
-       mode == WindowsPrintMode::kModePostScript3)
+       mode == WindowsPrintMode::kModePostScript3 ||
+       mode == WindowsPrintMode::kModePostScript3Type42)
           ? CPSOutput::OutputMode::kGdiComment
           : CPSOutput::OutputMode::kExtEscape;
 
@@ -44,7 +58,7 @@ CPSPrinterDriver::CPSPrinterDriver(HDC hDC,
   m_Height = ::GetDeviceCaps(m_hDC, VERTRES);
   m_nBitsPerPixel = ::GetDeviceCaps(m_hDC, BITSPIXEL);
 
-  m_PSRenderer.Init(pdfium::MakeRetain<CPSOutput>(m_hDC, output_mode), pslevel,
+  m_PSRenderer.Init(pdfium::MakeRetain<CPSOutput>(m_hDC, output_mode), level,
                     m_Width, m_Height);
   HRGN hRgn = ::CreateRectRgn(0, 0, 1, 1);
   if (::GetClipRgn(m_hDC, hRgn) == 1) {
