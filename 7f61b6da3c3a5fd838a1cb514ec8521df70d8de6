@@ -68,6 +68,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14eb54f2_b1c2aebc",
+        "filename": "core/fxge/cfx_windowsrenderdevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-08T17:55:07Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/84911",
+      "parentUuid": "2c184ed6_b0f365b6",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "61d6fba3_64ae9814",
         "filename": "core/fxge/win32/cfx_psrenderer.h",
         "patchSetId": 5
