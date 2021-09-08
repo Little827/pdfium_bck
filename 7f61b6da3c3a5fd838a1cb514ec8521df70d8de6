@@ -4,6 +4,69 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e6f4c1bf_790a4549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:20:51Z",
+      "side": 1,
+      "message": "Some suggestions, ignore as you like.",
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8292baa2_c03a967f",
+        "filename": "core/fxge/cfx_windowsrenderdevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:20:51Z",
+      "side": 1,
+      "message": "pre-existing: this can be enum class, too?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d6fba3_64ae9814",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:20:51Z",
+      "side": 1,
+      "message": "Thanks.  I had left a lot of the win-only code alone during my recent conversions from ints/flags to enums ...",
+      "range": {
+        "startLine": 59,
+        "startChar": 13,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6c958dd9_edc26dcf",
         "filename": "core/fxge/win32/cfx_psrenderer.h",
         "patchSetId": 5
@@ -15,6 +78,47 @@
       "writtenOn": "2021-09-08T14:34:35Z",
       "side": 1,
       "message": "I don\u0027t think this is ever nullopt in practice, but using Optional instead of adding an \"invalid\" RenderingLevel enum value means:\n1) The impl doesn\u0027t have to deal with handling the invalid value.\n2) If it\u0027s nullopt, reading from `m_Level` will trigger a crash and make it obvious that something is wrong.",
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6215f5b1_69f455b9",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:20:51Z",
+      "side": 1,
+      "message": "Alternatively, could we set this during the constructor and make it const rather than waiting for Init()?  Looks like most of Init() should actually occur at construct time ...",
+      "parentUuid": "6c958dd9_edc26dcf",
+      "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e699094_784192e5",
+        "filename": "core/fxge/win32/cps_printer_driver.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-08T16:20:51Z",
+      "side": 1,
+      "message": "nit: helper fn in anon namespace?",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 0
+      },
       "revId": "7f61b6da3c3a5fd838a1cb514ec8521df70d8de6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
