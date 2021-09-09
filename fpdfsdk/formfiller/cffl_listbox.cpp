@@ -10,15 +10,14 @@
 
 #include "constants/form_flags.h"
 #include "core/fpdfdoc/cpdf_bafontmap.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/pwl/cpwl_list_box.h"
 #include "third_party/base/containers/contains.h"
 
-CFFL_ListBox::CFFL_ListBox(CPDFSDK_FormFillEnvironment* pApp,
+CFFL_ListBox::CFFL_ListBox(CFFL_InteractiveFormFiller* pFormFiller,
                            CPDFSDK_Widget* pWidget)
-    : CFFL_TextObject(pApp, pWidget) {}
+    : CFFL_TextObject(pFormFiller, pWidget) {}
 
 CFFL_ListBox::~CFFL_ListBox() = default;
 
@@ -45,7 +44,7 @@ std::unique_ptr<CPWL_Wnd> CFFL_ListBox::NewPWLWindow(
   auto pWnd = std::make_unique<CPWL_ListBox>(cp, std::move(pAttachedData));
   pWnd->AttachFFLData(this);
   pWnd->Realize();
-  pWnd->SetFillerNotify(m_pFormFillEnv->GetInteractiveFormFiller());
+  pWnd->SetFillerNotify(m_pFormFiller.Get());
 
   for (int32_t i = 0, sz = m_pWidget->CountOptions(); i < sz; i++)
     pWnd->AddString(m_pWidget->GetOptionLabel(i));
