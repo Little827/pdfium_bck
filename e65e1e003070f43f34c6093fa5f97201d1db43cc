@@ -105,6 +105,30 @@
       },
       "revId": "e65e1e003070f43f34c6093fa5f97201d1db43cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc66320_8fca0089",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-09-09T17:11:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "691ab1e7_83dd9d33",
+      "range": {
+        "startLine": 722,
+        "startChar": 41,
+        "endLine": 722,
+        "endChar": 55
+      },
+      "revId": "e65e1e003070f43f34c6093fa5f97201d1db43cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
