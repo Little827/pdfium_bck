@@ -81,6 +81,30 @@
       },
       "revId": "e65e1e003070f43f34c6093fa5f97201d1db43cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691ab1e7_83dd9d33",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-09T16:52:11Z",
+      "side": 1,
+      "message": "Since this is really a pre-existing issue with WriteString(ByteStringView str).",
+      "parentUuid": "e5cc4154_9bef074d",
+      "range": {
+        "startLine": 722,
+        "startChar": 41,
+        "endLine": 722,
+        "endChar": 55
+      },
+      "revId": "e65e1e003070f43f34c6093fa5f97201d1db43cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
