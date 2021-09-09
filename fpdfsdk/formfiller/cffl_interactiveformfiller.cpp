@@ -29,9 +29,8 @@
 #include "third_party/base/check_op.h"
 #include "third_party/base/cxx17_backports.h"
 
-CFFL_InteractiveFormFiller::CFFL_InteractiveFormFiller(
-    CPDFSDK_FormFillEnvironment* pFormFillEnv)
-    : m_pFormFillEnv(pFormFillEnv) {}
+CFFL_InteractiveFormFiller::CFFL_InteractiveFormFiller(Delegate* pDelegate)
+    : m_pDelegate(pDelegate) {}
 
 CFFL_InteractiveFormFiller::~CFFL_InteractiveFormFiller() = default;
 
@@ -70,7 +69,7 @@ void CFFL_InteractiveFormFiller::OnDraw(CPDFSDK_PageView* pPageView,
   CFFL_FormField* pFormField = GetFormField(pAnnot);
   if (pFormField && pFormField->IsValid()) {
     pFormField->OnDraw(pPageView, pAnnot, pDevice, mtUser2Device);
-    if (m_pFormFillEnv->GetFocusAnnot() != pAnnot)
+    if (m_pDelegate->GetFocusAnnot() != pAnnot)
       return;
 
     CFX_FloatRect rcFocus = pFormField->GetFocusBox(pPageView);
@@ -227,12 +226,12 @@ bool CFFL_InteractiveFormFiller::OnLButtonUp(CPDFSDK_PageView* pPageView,
       break;
   }
   if (bSetFocus)
-    m_pFormFillEnv->SetFocusAnnot(pAnnot);
+    m_pDelegate->SetFocusAnnot(pAnnot);
 
   CFFL_FormField* pFormField = GetFormField(pAnnot->Get());
   bool bRet = pFormField &&
               pFormField->OnLButtonUp(pPageView, pAnnot->Get(), nFlags, point);
-  if (m_pFormFillEnv->GetFocusAnnot() != pAnnot->Get())
+  if (m_pDelegate->GetFocusAnnot() != pAnnot->Get())
     return bRet;
   if (OnButtonUp(pAnnot, pPageView, nFlags) || !pAnnot)
     return true;
@@ -467,7 +466,7 @@ bool CFFL_InteractiveFormFiller::IsFillingAllowed(
   if (pWidget->GetFieldType() == FormFieldType::kPushButton)
     return false;
 
-  return m_pFormFillEnv->HasPermissions(
+  return m_pDelegate->HasPermissions(
       pdfium::access_permissions::kFillForm |
       pdfium::access_permissions::kModifyAnnotation |
       pdfium::access_permissions::kModifyContent);
@@ -489,28 +488,22 @@ CFFL_FormField* CFFL_InteractiveFormFiller::GetOrCreateFormField(
   std::unique_ptr<CFFL_FormField> pFormField;
   switch (pWidget->GetFieldType()) {
     case FormFieldType::kPushButton:
-      pFormField =
-          std::make_unique<CFFL_PushButton>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_PushButton>(this, pWidget);
       break;
     case FormFieldType::kCheckBox:
-      pFormField =
-          std::make_unique<CFFL_CheckBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_CheckBox>(this, pWidget);
       break;
     case FormFieldType::kRadioButton:
-      pFormField =
-          std::make_unique<CFFL_RadioButton>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_RadioButton>(this, pWidget);
       break;
     case FormFieldType::kTextField:
-      pFormField =
-          std::make_unique<CFFL_TextField>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_TextField>(this, pWidget);
       break;
     case FormFieldType::kListBox:
-      pFormField =
-          std::make_unique<CFFL_ListBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_ListBox>(this, pWidget);
       break;
     case FormFieldType::kComboBox:
-      pFormField =
-          std::make_unique<CFFL_ComboBox>(m_pFormFillEnv.Get(), pWidget);
+      pFormField = std::make_unique<CFFL_ComboBox>(this, pWidget);
       break;
     case FormFieldType::kUnknown:
     default:
