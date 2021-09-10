@@ -16,6 +16,148 @@
       "message": "I was reminded that some of these may not work for type 3 fonts. Some of the properties are optional for type 3 only, and glyph paths are empty for type 3s as they are drawn via bitmaps. So, first, should these be documented? (I lean towards yes.) Second, should the type be queryable? E.g. FPDFFont_GetType? ",
       "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea3345c_1982ed6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "Thanks for waiting. Had a rather busy week.",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a954b5_4cd385ad",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2592,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "Just put 400 here?",
+      "range": {
+        "startLine": 2592,
+        "startChar": 14,
+        "endLine": 2592,
+        "endChar": 20
+      },
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f61002d_30e0f4da",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2606,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "nit: one variable declaration per line.",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4ca628_d359eac6",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2608,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "Is there a deterministic value to compare to? If you have issues comparing floats with EXPECT_EQ(), try switching to EXPECT_FLOAT_EQ().",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5354e1a_1e2eb23d",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "Is this helper function really necessary, given it\u0027s short and there\u0027s only 1 caller?",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9beda16a_4501ea30",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "nit: no blank line, like lines 695-696.",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7f9b83_d4eac463",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1526a2_c344696a",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-10T19:10:23Z",
+      "side": 1,
+      "message": "For the new APIs with out-parameters, it would be good to mention they are unmodified on failure. Same for other APIs.",
+      "revId": "91fdca5511e50108028ec5db88836769b74fa29c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
