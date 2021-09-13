@@ -16,6 +16,24 @@
       "message": "This code path didn\u0027t reset `m_bNotifying` before, but now does. Not sure what difference this makes.",
       "revId": "d5ba169f5f8bda9ba760e8911ac20122edfc9761",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72521a1f_646221e0",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-13T23:18:55Z",
+      "side": 0,
+      "message": "I suspect all usages of these in this file would be happier with an autorestorer. As originally written by FX, none of these early return paths existed and they expected things to carry along to the end. But alas they used to crash without the early return ...\n\nSo let\u0027s fix this first in a pre-CL.",
+      "parentUuid": "94abd94f_95a0aaa7",
+      "revId": "d5ba169f5f8bda9ba760e8911ac20122edfc9761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
