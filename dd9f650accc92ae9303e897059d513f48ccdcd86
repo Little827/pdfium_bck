@@ -52,6 +52,24 @@
       "parentUuid": "105b1c77_10a427c2",
       "revId": "dd9f650accc92ae9303e897059d513f48ccdcd86",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04f9834_e531c252",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-13T22:44:56Z",
+      "side": 1,
+      "message": "We can probably land this now and add such a test later when an IsWasmExposed() API becomes available in V8. I don\u0027t expect V8 to suddenly change their mind w.r.t. jitless and WASM.",
+      "parentUuid": "3f7cf581_347c172c",
+      "revId": "dd9f650accc92ae9303e897059d513f48ccdcd86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
