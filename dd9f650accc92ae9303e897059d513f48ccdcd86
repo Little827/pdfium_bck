@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9326c548_2acf5008",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-13T21:55:44Z",
+      "side": 1,
+      "message": "Yea, OK, was worried about a future where these were independent, because that change in v8 might not be noticed by us should it happen.",
+      "revId": "dd9f650accc92ae9303e897059d513f48ccdcd86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
