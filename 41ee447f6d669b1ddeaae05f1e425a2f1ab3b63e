@@ -16,6 +16,24 @@
       "message": "Is it possible to also use EXPECT_FLOAT_EQ() to check the value of `a24`?",
       "revId": "41ee447f6d669b1ddeaae05f1e425a2f1ab3b63e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da442c34_1f355a89",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2611,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2021-09-13T19:32:28Z",
+      "side": 1,
+      "message": "Fair enough. As former QA, I tend to prefer relative tests as they tend to be less brittle. Done",
+      "parentUuid": "8956bc8c_7a3469a2",
+      "revId": "41ee447f6d669b1ddeaae05f1e425a2f1ab3b63e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
