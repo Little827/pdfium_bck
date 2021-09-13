@@ -6,6 +6,10 @@ import("//build/config/clang/clang.gni")
 import("//testing/test.gni")
 import("pdfium.gni")
 
+if (pdf_enable_v8) {
+  import("//v8/gni/v8.gni")
+}
+
 group("freetype_common") {
   public_deps = []
   if (pdf_bundle_freetype) {
@@ -376,6 +380,10 @@ if (pdf_is_standalone) {
     testonly = true
     deps = [ "//testing/fuzzers" ]
   }
+}
+
+if (pdf_enable_v8 && v8_enable_webassembly) {
+  defines = [ "PDF_ENABLE_V8_WASM" ]
 }
 
 group("pdfium_all") {
