@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94abd94f_95a0aaa7",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-13T23:00:44Z",
+      "side": 0,
+      "message": "This code path didn\u0027t reset `m_bNotifying` before, but now does. Not sure what difference this makes.",
+      "revId": "d5ba169f5f8bda9ba760e8911ac20122edfc9761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
