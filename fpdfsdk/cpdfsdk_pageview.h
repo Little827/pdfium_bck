@@ -37,6 +37,10 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
 
   void LoadFXAnnots();
   CPDFSDK_Annot* GetFocusAnnot();
+  CPDFSDK_Annot* GetNextAnnot(CPDFSDK_Annot* pAnnot);
+  CPDFSDK_Annot* GetPrevAnnot(CPDFSDK_Annot* pAnnot);
+  CPDFSDK_Annot* GetFirstFocusableAnnot();
+  CPDFSDK_Annot* GetLastFocusableAnnot();
   bool IsValidAnnot(const CPDF_Annot* p) const;
   bool IsValidSDKAnnot(const CPDFSDK_Annot* p) const;
 
