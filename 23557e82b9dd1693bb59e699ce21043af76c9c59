@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cb5042_976f29c3",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-14T17:37:27Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "revId": "23557e82b9dd1693bb59e699ce21043af76c9c59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
