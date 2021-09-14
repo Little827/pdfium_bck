@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73acb52e_8e5d76f8",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-14T23:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07006c86_a61a717e",
+      "revId": "b507b4f88380546d64b8087cc2909a6a79f8cd3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a3ac78f_728492b7",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73832b57_e2c63935",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-14T23:20:55Z",
+      "side": 1,
+      "message": "Done, I\u0027ll invert these in a follow-up to get the braces out again.",
+      "parentUuid": "1a3ac78f_728492b7",
+      "revId": "b507b4f88380546d64b8087cc2909a6a79f8cd3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7791b2a_a84b9668",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-09-14T23:09:57Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "b507b4f88380546d64b8087cc2909a6a79f8cd3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "190d0a2c_cb1277ca",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-14T23:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7791b2a_a84b9668",
       "revId": "b507b4f88380546d64b8087cc2909a6a79f8cd3d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
