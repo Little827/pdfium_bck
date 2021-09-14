@@ -70,6 +70,24 @@
       "parentUuid": "61689544_10335ce2",
       "revId": "d5ba169f5f8bda9ba760e8911ac20122edfc9761",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58743bde_d68a636d",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-14T00:53:31Z",
+      "side": 0,
+      "message": "And it turns out it probably doesn\u0027t matter.  Going back as far as 2016, before most of our re-writes, m_bNotifying was always set and cleared in pairs, with no way out after setting without an unpaired clear.  So even if the code we\u0027re changing called into one of those paths, by the time we get back we\u0027re clear, Esp since we abort on set at the start of the method.",
+      "parentUuid": "8b0e71ed_b3824a3e",
+      "revId": "d5ba169f5f8bda9ba760e8911ac20122edfc9761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
