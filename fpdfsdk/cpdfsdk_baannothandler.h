@@ -16,7 +16,6 @@
 class CFX_Matrix;
 class CFX_RenderDevice;
 class CPDF_Annot;
-class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_Annot;
 class CPDFSDK_PageView;
 
@@ -26,8 +25,6 @@ class CPDFSDK_BAAnnotHandler final : public IPDFSDK_AnnotHandler {
   ~CPDFSDK_BAAnnotHandler() override;
 
   // IPDFSDK_AnnotHandler:
-  void SetFormFillEnvironment(
-      CPDFSDK_FormFillEnvironment* pFormFillEnv) override;
   bool CanAnswer(CPDFSDK_Annot* pAnnot) override;
   std::unique_ptr<CPDFSDK_Annot> NewAnnot(CPDF_Annot* pAnnot,
                                           CPDFSDK_PageView* pPageView) override;
@@ -113,7 +110,6 @@ class CPDFSDK_BAAnnotHandler final : public IPDFSDK_AnnotHandler {
   void InvalidateRect(CPDFSDK_Annot* annot);
   bool IsFocusableAnnot(const CPDF_Annot::Subtype& annot_type) const;
 
-  UnownedPtr<CPDFSDK_FormFillEnvironment> form_fill_environment_;
   bool is_annotation_focused_ = false;
 };
 
