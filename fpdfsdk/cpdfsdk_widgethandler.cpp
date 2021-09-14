@@ -57,6 +57,7 @@ bool CPDFSDK_WidgetHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
 std::unique_ptr<CPDFSDK_Annot> CPDFSDK_WidgetHandler::NewAnnot(
     CPDF_Annot* pAnnot,
     CPDFSDK_PageView* pPageView) {
+  CHECK(pPageView);
   CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
   CPDF_FormControl* pCtrl = pPDFForm->GetControlByDict(pAnnot->GetAnnotDict());
@@ -86,6 +87,7 @@ void CPDFSDK_WidgetHandler::OnDraw(CPDFSDK_PageView* pPageView,
                                    CFX_RenderDevice* pDevice,
                                    const CFX_Matrix& mtUser2Device,
                                    bool bDrawAnnots) {
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   if (pAnnot->IsSignatureWidget()) {
     pAnnot->AsBAAnnot()->DrawAppearance(
         pDevice, mtUser2Device, CPDF_Annot::AppearanceMode::kNormal, nullptr);
@@ -98,6 +100,7 @@ void CPDFSDK_WidgetHandler::OnDraw(CPDFSDK_PageView* pPageView,
 void CPDFSDK_WidgetHandler::OnMouseEnter(CPDFSDK_PageView* pPageView,
                                          ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                          Mask<FWL_EVENTFLAG> nFlag) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!(*pAnnot)->IsSignatureWidget()) {
     m_pFormFillEnv->GetInteractiveFormFiller()->OnMouseEnter(pPageView, pAnnot,
                                                              nFlag);
@@ -107,6 +110,7 @@ void CPDFSDK_WidgetHandler::OnMouseEnter(CPDFSDK_PageView* pPageView,
 void CPDFSDK_WidgetHandler::OnMouseExit(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlag) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!(*pAnnot)->IsSignatureWidget()) {
     m_pFormFillEnv->GetInteractiveFormFiller()->OnMouseExit(pPageView, pAnnot,
                                                             nFlag);
@@ -117,6 +121,7 @@ bool CPDFSDK_WidgetHandler::OnLButtonDown(CPDFSDK_PageView* pPageView,
                                           ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                           Mask<FWL_EVENTFLAG> nFlags,
                                           const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return !(*pAnnot)->IsSignatureWidget() &&
          m_pFormFillEnv->GetInteractiveFormFiller()->OnLButtonDown(
              pPageView, pAnnot, nFlags, point);
@@ -126,6 +131,7 @@ bool CPDFSDK_WidgetHandler::OnLButtonUp(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlags,
                                         const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return !(*pAnnot)->IsSignatureWidget() &&
          m_pFormFillEnv->GetInteractiveFormFiller()->OnLButtonUp(
              pPageView, pAnnot, nFlags, point);
@@ -135,6 +141,7 @@ bool CPDFSDK_WidgetHandler::OnLButtonDblClk(CPDFSDK_PageView* pPageView,
                                             ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                             Mask<FWL_EVENTFLAG> nFlags,
                                             const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return !(*pAnnot)->IsSignatureWidget() &&
          m_pFormFillEnv->GetInteractiveFormFiller()->OnLButtonDblClk(
              pPageView, pAnnot, nFlags, point);
@@ -144,6 +151,7 @@ bool CPDFSDK_WidgetHandler::OnMouseMove(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlags,
                                         const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return !(*pAnnot)->IsSignatureWidget() &&
          m_pFormFillEnv->GetInteractiveFormFiller()->OnMouseMove(
              pPageView, pAnnot, nFlags, point);
@@ -154,6 +162,7 @@ bool CPDFSDK_WidgetHandler::OnMouseWheel(CPDFSDK_PageView* pPageView,
                                          Mask<FWL_EVENTFLAG> nFlags,
                                          const CFX_PointF& point,
                                          const CFX_Vector& delta) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return !(*pAnnot)->IsSignatureWidget() &&
          m_pFormFillEnv->GetInteractiveFormFiller()->OnMouseWheel(
              pPageView, pAnnot, nFlags, point, delta);
@@ -163,6 +172,7 @@ bool CPDFSDK_WidgetHandler::OnRButtonDown(CPDFSDK_PageView* pPageView,
                                           ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                           Mask<FWL_EVENTFLAG> nFlags,
                                           const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return !(*pAnnot)->IsSignatureWidget() &&
          m_pFormFillEnv->GetInteractiveFormFiller()->OnRButtonDown(
              pPageView, pAnnot, nFlags, point);
@@ -172,6 +182,7 @@ bool CPDFSDK_WidgetHandler::OnRButtonUp(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlags,
                                         const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return !(*pAnnot)->IsSignatureWidget() &&
          m_pFormFillEnv->GetInteractiveFormFiller()->OnRButtonUp(
              pPageView, pAnnot, nFlags, point);
@@ -181,6 +192,7 @@ bool CPDFSDK_WidgetHandler::OnRButtonDblClk(CPDFSDK_PageView* pPageView,
                                             ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                             Mask<FWL_EVENTFLAG> nFlags,
                                             const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -271,6 +283,7 @@ bool CPDFSDK_WidgetHandler::IsIndexSelected(ObservedPtr<CPDFSDK_Annot>* pAnnot,
 
 CFX_FloatRect CPDFSDK_WidgetHandler::GetViewBBox(CPDFSDK_PageView* pPageView,
                                                  CPDFSDK_Annot* pAnnot) {
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   if (!pAnnot->IsSignatureWidget()) {
     return CFX_FloatRect(
         m_pFormFillEnv->GetInteractiveFormFiller()->GetViewBBox(pPageView,
@@ -327,6 +340,7 @@ bool CPDFSDK_WidgetHandler::HitTest(CPDFSDK_PageView* pPageView,
                                     const CFX_PointF& point) {
   DCHECK(pPageView);
   DCHECK(pAnnot);
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   return GetViewBBox(pPageView, pAnnot).Contains(point);
 }
 

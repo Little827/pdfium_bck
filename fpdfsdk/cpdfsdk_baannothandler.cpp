@@ -21,6 +21,7 @@
 #include "fpdfsdk/formfiller/cffl_formfield.h"
 #include "public/fpdf_fwlevent.h"
 #include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/containers/contains.h"
 
 namespace {
@@ -56,6 +57,7 @@ bool CPDFSDK_BAAnnotHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
 std::unique_ptr<CPDFSDK_Annot> CPDFSDK_BAAnnotHandler::NewAnnot(
     CPDF_Annot* pAnnot,
     CPDFSDK_PageView* pPageView) {
+  CHECK(pPageView);
   return std::make_unique<CPDFSDK_BAAnnot>(pAnnot, pPageView);
 }
 
@@ -69,6 +71,7 @@ void CPDFSDK_BAAnnotHandler::OnDraw(CPDFSDK_PageView* pPageView,
                                     CFX_RenderDevice* pDevice,
                                     const CFX_Matrix& mtUser2Device,
                                     bool bDrawAnnots) {
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   if (pAnnot->AsXFAWidget())
     return;
 
@@ -98,6 +101,7 @@ void CPDFSDK_BAAnnotHandler::OnDraw(CPDFSDK_PageView* pPageView,
 void CPDFSDK_BAAnnotHandler::OnMouseEnter(CPDFSDK_PageView* pPageView,
                                           ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                           Mask<FWL_EVENTFLAG> nFlag) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   CPDFSDK_BAAnnot* pBAAnnot = (*pAnnot)->AsBAAnnot();
   pBAAnnot->SetOpenState(true);
   UpdateAnnotRects(pPageView, pBAAnnot);
@@ -106,6 +110,7 @@ void CPDFSDK_BAAnnotHandler::OnMouseEnter(CPDFSDK_PageView* pPageView,
 void CPDFSDK_BAAnnotHandler::OnMouseExit(CPDFSDK_PageView* pPageView,
                                          ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                          Mask<FWL_EVENTFLAG> nFlag) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   CPDFSDK_BAAnnot* pBAAnnot = (*pAnnot)->AsBAAnnot();
   pBAAnnot->SetOpenState(false);
   UpdateAnnotRects(pPageView, pBAAnnot);
@@ -115,6 +120,7 @@ bool CPDFSDK_BAAnnotHandler::OnLButtonDown(CPDFSDK_PageView* pPageView,
                                            ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                            Mask<FWL_EVENTFLAG> nFlags,
                                            const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -122,6 +128,7 @@ bool CPDFSDK_BAAnnotHandler::OnLButtonUp(CPDFSDK_PageView* pPageView,
                                          ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                          Mask<FWL_EVENTFLAG> nFlags,
                                          const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -129,6 +136,7 @@ bool CPDFSDK_BAAnnotHandler::OnLButtonDblClk(CPDFSDK_PageView* pPageView,
                                              ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                              Mask<FWL_EVENTFLAG> nFlags,
                                              const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -136,6 +144,7 @@ bool CPDFSDK_BAAnnotHandler::OnMouseMove(CPDFSDK_PageView* pPageView,
                                          ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                          Mask<FWL_EVENTFLAG> nFlags,
                                          const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -144,6 +153,7 @@ bool CPDFSDK_BAAnnotHandler::OnMouseWheel(CPDFSDK_PageView* pPageView,
                                           Mask<FWL_EVENTFLAG> nFlags,
                                           const CFX_PointF& point,
                                           const CFX_Vector& delta) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -151,6 +161,7 @@ bool CPDFSDK_BAAnnotHandler::OnRButtonDown(CPDFSDK_PageView* pPageView,
                                            ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                            Mask<FWL_EVENTFLAG> nFlags,
                                            const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -158,6 +169,7 @@ bool CPDFSDK_BAAnnotHandler::OnRButtonUp(CPDFSDK_PageView* pPageView,
                                          ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                          Mask<FWL_EVENTFLAG> nFlags,
                                          const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -165,6 +177,7 @@ bool CPDFSDK_BAAnnotHandler::OnRButtonDblClk(CPDFSDK_PageView* pPageView,
                                              ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                              Mask<FWL_EVENTFLAG> nFlags,
                                              const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   return false;
 }
 
@@ -261,6 +274,7 @@ bool CPDFSDK_BAAnnotHandler::IsIndexSelected(ObservedPtr<CPDFSDK_Annot>* pAnnot,
 
 CFX_FloatRect CPDFSDK_BAAnnotHandler::GetViewBBox(CPDFSDK_PageView* pPageView,
                                                   CPDFSDK_Annot* pAnnot) {
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   return pAnnot->GetRect();
 }
 
@@ -300,5 +314,6 @@ bool CPDFSDK_BAAnnotHandler::HitTest(CPDFSDK_PageView* pPageView,
                                      const CFX_PointF& point) {
   DCHECK(pPageView);
   DCHECK(pAnnot);
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   return GetViewBBox(pPageView, pAnnot).Contains(point);
 }

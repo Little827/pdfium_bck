@@ -13,6 +13,7 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_widget.h"
 #include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "xfa/fgas/graphics/cfgas_gegraphics.h"
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fwl/fwl_widgetdef.h"
@@ -221,6 +222,7 @@ std::unique_ptr<CPDFSDK_Annot> CPDFXFA_WidgetHandler::NewAnnot(
 std::unique_ptr<CPDFSDK_Annot> CPDFXFA_WidgetHandler::NewAnnotForXFA(
     CXFA_FFWidget* pAnnot,
     CPDFSDK_PageView* pPageView) {
+  CHECK(pPageView);
   return std::make_unique<CPDFXFA_Widget>(pAnnot, pPageView);
 }
 
@@ -229,6 +231,7 @@ void CPDFXFA_WidgetHandler::OnDraw(CPDFSDK_PageView* pPageView,
                                    CFX_RenderDevice* pDevice,
                                    const CFX_Matrix& mtUser2Device,
                                    bool bDrawAnnots) {
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   CPDFXFA_Widget* pXFAWidget = ToXFAWidget(pAnnot);
   DCHECK(pXFAWidget);
 
@@ -251,6 +254,7 @@ void CPDFXFA_WidgetHandler::ReleaseAnnot(
 
 CFX_FloatRect CPDFXFA_WidgetHandler::GetViewBBox(CPDFSDK_PageView* pPageView,
                                                  CPDFSDK_Annot* pAnnot) {
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   CPDFXFA_Widget* pXFAWidget = ToXFAWidget(pAnnot);
   CXFA_Node* node = pXFAWidget->GetXFAFFWidget()->GetNode();
   DCHECK(node->IsWidgetReady());
@@ -341,6 +345,7 @@ bool CPDFXFA_WidgetHandler::Redo(CPDFSDK_Annot* pAnnot) {
 bool CPDFXFA_WidgetHandler::HitTest(CPDFSDK_PageView* pPageView,
                                     CPDFSDK_Annot* pAnnot,
                                     const CFX_PointF& point) {
+  CHECK_EQ(pPageView, pAnnot->GetPageView());
   if (!pPageView)
     return false;
 
@@ -370,6 +375,7 @@ bool CPDFXFA_WidgetHandler::HitTest(CPDFSDK_PageView* pPageView,
 void CPDFXFA_WidgetHandler::OnMouseEnter(CPDFSDK_PageView* pPageView,
                                          ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                          Mask<FWL_EVENTFLAG> nFlag) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return;
 
@@ -384,6 +390,7 @@ void CPDFXFA_WidgetHandler::OnMouseEnter(CPDFSDK_PageView* pPageView,
 void CPDFXFA_WidgetHandler::OnMouseExit(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlag) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return;
 
@@ -399,6 +406,7 @@ bool CPDFXFA_WidgetHandler::OnLButtonDown(CPDFSDK_PageView* pPageView,
                                           ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                           Mask<FWL_EVENTFLAG> nFlags,
                                           const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
@@ -415,6 +423,7 @@ bool CPDFXFA_WidgetHandler::OnLButtonUp(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlags,
                                         const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
@@ -431,6 +440,7 @@ bool CPDFXFA_WidgetHandler::OnLButtonDblClk(CPDFSDK_PageView* pPageView,
                                             ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                             Mask<FWL_EVENTFLAG> nFlags,
                                             const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
@@ -447,6 +457,7 @@ bool CPDFXFA_WidgetHandler::OnMouseMove(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlags,
                                         const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
@@ -464,6 +475,7 @@ bool CPDFXFA_WidgetHandler::OnMouseWheel(CPDFSDK_PageView* pPageView,
                                          Mask<FWL_EVENTFLAG> nFlags,
                                          const CFX_PointF& point,
                                          const CFX_Vector& delta) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
@@ -480,6 +492,7 @@ bool CPDFXFA_WidgetHandler::OnRButtonDown(CPDFSDK_PageView* pPageView,
                                           ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                           Mask<FWL_EVENTFLAG> nFlags,
                                           const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
@@ -496,6 +509,7 @@ bool CPDFXFA_WidgetHandler::OnRButtonUp(CPDFSDK_PageView* pPageView,
                                         ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                         Mask<FWL_EVENTFLAG> nFlags,
                                         const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
@@ -512,6 +526,7 @@ bool CPDFXFA_WidgetHandler::OnRButtonDblClk(CPDFSDK_PageView* pPageView,
                                             ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                             Mask<FWL_EVENTFLAG> nFlags,
                                             const CFX_PointF& point) {
+  CHECK_EQ(pPageView, (*pAnnot)->GetPageView());
   if (!pPageView)
     return false;
 
