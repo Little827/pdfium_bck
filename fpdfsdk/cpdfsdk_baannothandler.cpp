@@ -23,6 +23,7 @@
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/contains.h"
+#include "third_party/base/notreached.h"
 
 namespace {
 
@@ -55,6 +56,15 @@ std::unique_ptr<CPDFSDK_Annot> CPDFSDK_BAAnnotHandler::NewAnnot(
   CHECK(pPageView);
   return std::make_unique<CPDFSDK_BAAnnot>(pAnnot, pPageView);
 }
+
+#ifdef PDF_ENABLE_XFA
+std::unique_ptr<CPDFSDK_Annot> CPDFSDK_BAAnnotHandler::NewAnnotForXFA(
+    CXFA_FFWidget* pWidget,
+    CPDFSDK_PageView* pPageView) {
+  NOTREACHED();
+  return nullptr;
+}
+#endif
 
 void CPDFSDK_BAAnnotHandler::ReleaseAnnot(
     std::unique_ptr<CPDFSDK_Annot> pAnnot) {
