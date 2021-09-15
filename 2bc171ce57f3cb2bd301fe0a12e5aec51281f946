@@ -16,6 +16,24 @@
       "message": "Curious how you select the results to group into a CL. For instance, bug_1161_expected_skia.pdf.0.png is a rectangle missing corners case, which we see often. Why not group all the rectangle renderings into one CL? Similarly, bug_1282_expected_skia.pdf.0.png is a form field color being slightly off case. Why not group all of those into a single CL?",
       "revId": "2bc171ce57f3cb2bd301fe0a12e5aec51281f946",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ead972_c7807ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-09-15T00:15:05Z",
+      "side": 1,
+      "message": "It takes too long to build on Windows cloudtop and the macbook therefore I was trying to pick around 10 tests to update a time.\nAt first it was easy to find cases which were having the same issues, but as the number of the remaining failed tests drops, it gets harder.\nAlso, you can keep track of how many tests\u0027 expectation have been updated in the \"pixel\" tab here:\nhttps://docs.google.com/spreadsheets/d/1e9V_vZgcgta0FU-D8QndvrdI3DbqjXd3MuToyc9uebQ/edit?usp\u003dsharing\n(So far most pixel tests have been updated and marked \"add skiapaths\u0026skia results\")",
+      "parentUuid": "e4df0adb_c521a29e",
+      "revId": "2bc171ce57f3cb2bd301fe0a12e5aec51281f946",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
