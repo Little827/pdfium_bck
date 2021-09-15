@@ -13,14 +13,11 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/mask.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
-#include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "public/fpdf_fwlevent.h"
 
 class CFX_Matrix;
 class CFX_RenderDevice;
 class CPDFSDK_FormFillEnvironment;
-class CPDFSDK_BAAnnotHandler;
-class CPDFSDK_WidgetHandler;
 class CPDFSDK_PageView;
 class IPDFSDK_AnnotHandler;
 
@@ -31,8 +28,8 @@ class CXFA_FFWidget;
 class CPDFSDK_AnnotHandlerMgr {
  public:
   CPDFSDK_AnnotHandlerMgr(
-      std::unique_ptr<CPDFSDK_BAAnnotHandler> pBAAnnotHandler,
-      std::unique_ptr<CPDFSDK_WidgetHandler> pWidgetHandler,
+      std::unique_ptr<IPDFSDK_AnnotHandler> pBAAnnotHandler,
+      std::unique_ptr<IPDFSDK_AnnotHandler> pWidgetHandler,
       std::unique_ptr<IPDFSDK_AnnotHandler> pXFAWidgetHandler);
 
   ~CPDFSDK_AnnotHandlerMgr();
@@ -133,15 +130,11 @@ class CPDFSDK_AnnotHandlerMgr {
   IPDFSDK_AnnotHandler* GetAnnotHandler(CPDFSDK_Annot* pAnnot) const;
   IPDFSDK_AnnotHandler* GetAnnotHandlerOfType(
       CPDF_Annot::Subtype nAnnotSubtype) const;
-  CPDFSDK_Annot* GetNextAnnot(CPDFSDK_Annot* pSDKAnnot) const;
-  CPDFSDK_Annot* GetPrevAnnot(CPDFSDK_Annot* pSDKAnnot) const;
-  CPDFSDK_Annot* GetFirstFocusableAnnot(CPDFSDK_PageView* page_view) const;
-  CPDFSDK_Annot* GetLastFocusableAnnot(CPDFSDK_PageView* page_view) const;
 
   // |m_pBAAnnotHandler| and |m_pWidgetHandler| are always present, but
   // |m_pXFAWidgetHandler| is only present in XFA mode.
-  std::unique_ptr<CPDFSDK_BAAnnotHandler> const m_pBAAnnotHandler;
-  std::unique_ptr<CPDFSDK_WidgetHandler> const m_pWidgetHandler;
+  std::unique_ptr<IPDFSDK_AnnotHandler> const m_pBAAnnotHandler;
+  std::unique_ptr<IPDFSDK_AnnotHandler> const m_pWidgetHandler;
   std::unique_ptr<IPDFSDK_AnnotHandler> const m_pXFAWidgetHandler;
 };
 
