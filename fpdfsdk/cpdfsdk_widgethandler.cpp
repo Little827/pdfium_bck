@@ -23,6 +23,7 @@
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/contains.h"
+#include "third_party/base/notreached.h"
 
 CPDFSDK_WidgetHandler::CPDFSDK_WidgetHandler() = default;
 
@@ -355,3 +356,19 @@ bool CPDFSDK_WidgetHandler::IsFocusableAnnot(
   return pdfium::Contains(GetFormFillEnvironment()->GetFocusableAnnotSubtypes(),
                           annot_type);
 }
+
+#ifdef PDF_ENABLE_XFA
+std::unique_ptr<CPDFSDK_Annot> CPDFSDK_WidgetHandler::NewAnnotForXFA(
+    CXFA_FFWidget* pWidget,
+    CPDFSDK_PageView* pPageView) {
+  NOTREACHED();
+  return nullptr;
+}
+
+bool CPDFSDK_WidgetHandler::OnXFAChangedFocus(
+    ObservedPtr<CPDFSDK_Annot>* pOldAnnot,
+    ObservedPtr<CPDFSDK_Annot>* pNewAnnot) {
+  NOTREACHED();
+  return false;
+}
+#endif
