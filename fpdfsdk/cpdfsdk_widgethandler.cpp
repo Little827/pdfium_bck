@@ -23,6 +23,7 @@
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/contains.h"
+#include "third_party/base/notreached.h"
 
 CPDFSDK_WidgetHandler::CPDFSDK_WidgetHandler() = default;
 
