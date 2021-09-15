@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "339679ca_48d37b55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d28f1bc_d366c8d0",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "635ec15e_64ebf0b4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 23
@@ -58,6 +82,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37df261b_bc552dfe",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "Yeah, this was my one concern, but the point of an interface is that they all look alike and are interchangeable. We\u0027d crash pretty badly if these got permuted as they downcast to a specific type of annot.",
+      "parentUuid": "cb0a42f4_b9836dc8",
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d18fb01_4f08676f",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-09-15T22:34:29Z",
       "side": 1,
       "message": "\"pWidget\" to match .cc file.",
+      "range": {
+        "startLine": 42,
+        "startChar": 63,
+        "endLine": 42,
+        "endChar": 69
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170aec6c_69cd4d33",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "changed to pFFWidget, since this is yet another layer\u0027s widget that is not part of the CPFSDK_Annot hierarchy.",
+      "parentUuid": "4d18fb01_4f08676f",
       "range": {
         "startLine": 42,
         "startChar": 63,
@@ -104,6 +170,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16310563_303bf580",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "no longer exists after moving default impl.",
+      "parentUuid": "5a2896ab_b0a00649",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c385cd9_753691dd",
@@ -117,6 +207,42 @@
       "writtenOn": "2021-09-15T22:34:29Z",
       "side": 1,
       "message": "nit: The various overrides don\u0027t need blank line separators. The overrides should be grouped together.",
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a073986_99ee83a4",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "Done. Also added tradtional // IPDFSDK_AnnotHandler:  comment before this block.",
+      "parentUuid": "0c385cd9_753691dd",
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c389f7c_8843a258",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c385cd9_753691dd",
       "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -144,6 +270,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecc7db6_e4d1d35e",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "No longer exists after consolidation of defautl impl.",
+      "parentUuid": "a207cd54_b9f58f79",
+      "range": {
+        "startLine": 110,
+        "startChar": 21,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f172c33c_727586c4",
@@ -157,6 +307,30 @@
       "writtenOn": "2021-09-15T22:34:29Z",
       "side": 1,
       "message": "\"pWidget\" here also.",
+      "range": {
+        "startLine": 113,
+        "startChar": 21,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b02b31_8361d323",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-15T23:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f172c33c_727586c4",
       "range": {
         "startLine": 113,
         "startChar": 21,
