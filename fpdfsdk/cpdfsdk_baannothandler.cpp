@@ -23,6 +23,7 @@
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/contains.h"
+#include "third_party/base/notreached.h"
 
 namespace {
 
@@ -312,3 +313,19 @@ bool CPDFSDK_BAAnnotHandler::HitTest(CPDFSDK_PageView* pPageView,
   CHECK_EQ(pPageView, pAnnot->GetPageView());
   return GetViewBBox(pPageView, pAnnot).Contains(point);
 }
+
+#ifdef PDF_ENABLE_XFA
+std::unique_ptr<CPDFSDK_Annot> CPDFSDK_BAAnnotHandler::NewAnnotForXFA(
+    CXFA_FFWidget* pWidget,
+    CPDFSDK_PageView* pPageView) {
+  NOTREACHED();
+  return nullptr;
+}
+
+bool CPDFSDK_BAAnnotHandler::OnXFAChangedFocus(
+    ObservedPtr<CPDFSDK_Annot>* pOldAnnot,
+    ObservedPtr<CPDFSDK_Annot>* pNewAnnot) {
+  NOTREACHED();
+  return false;
+}
+#endif

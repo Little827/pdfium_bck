@@ -26,6 +26,7 @@ class CPDFSDK_WidgetHandler final : public IPDFSDK_AnnotHandler {
   bool CanAnswer(CPDFSDK_Annot* pAnnot) override;
   std::unique_ptr<CPDFSDK_Annot> NewAnnot(CPDF_Annot* pAnnot,
                                           CPDFSDK_PageView* pPageView) override;
+
   void ReleaseAnnot(std::unique_ptr<CPDFSDK_Annot> pAnnot) override;
   CFX_FloatRect GetViewBBox(CPDFSDK_PageView* pPageView,
                             CPDFSDK_Annot* pAnnot) override;
@@ -103,6 +104,15 @@ class CPDFSDK_WidgetHandler final : public IPDFSDK_AnnotHandler {
                         int index,
                         bool selected) override;
   bool IsIndexSelected(ObservedPtr<CPDFSDK_Annot>* pAnnot, int index) override;
+
+#ifdef PDF_ENABLE_XFA
+  std::unique_ptr<CPDFSDK_Annot> NewAnnotForXFA(
+      CXFA_FFWidget* pWiget,
+      CPDFSDK_PageView* pPageView) override;
+
+  bool OnXFAChangedFocus(ObservedPtr<CPDFSDK_Annot>* pOldAnnot,
+                         ObservedPtr<CPDFSDK_Annot>* pNewAnnot) override;
+#endif
 
  private:
   bool IsFocusableAnnot(const CPDF_Annot::Subtype& annot_type) const;
