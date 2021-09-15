@@ -23,6 +23,7 @@
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/contains.h"
+#include "third_party/base/notreached.h"
 
 CPDFSDK_WidgetHandler::CPDFSDK_WidgetHandler() = default;
 
@@ -66,6 +67,15 @@ std::unique_ptr<CPDFSDK_Annot> CPDFSDK_WidgetHandler::NewAnnot(
     pWidget->ResetAppearance(pdfium::nullopt, CPDFSDK_Widget::kValueUnchanged);
   return pWidget;
 }
+
+#ifdef PDF_ENABLE_XFA
+std::unique_ptr<CPDFSDK_Annot> CPDFSDK_WidgetHandler::NewAnnotForXFA(
+    CXFA_FFWidget* pWidget,
+    CPDFSDK_PageView* pPageView) {
+  NOTREACHED();
+  return nullptr;
+}
+#endif
 
 void CPDFSDK_WidgetHandler::ReleaseAnnot(
     std::unique_ptr<CPDFSDK_Annot> pAnnot) {
