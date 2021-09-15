@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d28f1bc_d366c8d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:34:29Z",
+      "side": 1,
+      "message": "Thoughts on making that the default impl, rather than having the interface be pure virtual?",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "635ec15e_64ebf0b4",
@@ -14,6 +37,132 @@
       "writtenOn": "2021-09-15T18:09:08Z",
       "side": 1,
       "message": "Ok now, I think.",
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0a42f4_b9836dc8",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:34:29Z",
+      "side": 1,
+      "message": "I suppose if the caller flips the ordering of these handlers, tests should easily catch that mistake?",
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d18fb01_4f08676f",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:34:29Z",
+      "side": 1,
+      "message": "\"pWidget\" to match .cc file.",
+      "range": {
+        "startLine": 42,
+        "startChar": 63,
+        "endLine": 42,
+        "endChar": 69
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2896ab_b0a00649",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:34:29Z",
+      "side": 1,
+      "message": "Should be \"pWidget\" to match the interface and .cc file.",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c385cd9_753691dd",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:34:29Z",
+      "side": 1,
+      "message": "nit: The various overrides don\u0027t need blank line separators. The overrides should be grouped together.",
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a207cd54_b9f58f79",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:34:29Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 110,
+        "startChar": 21,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f172c33c_727586c4",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:34:29Z",
+      "side": 1,
+      "message": "\"pWidget\" here also.",
+      "range": {
+        "startLine": 113,
+        "startChar": 21,
+        "endLine": 113,
+        "endChar": 27
+      },
       "revId": "7f28e523dc56decc1ac411c792b2132f19545ff0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
