@@ -23,6 +23,10 @@ class CPDF_Annot;
 class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_PageView;
 
+#ifdef PDF_ENABLE_XFA
+class CXFA_FFWidget;
+#endif
+
 class IPDFSDK_AnnotHandler {
  public:
   IPDFSDK_AnnotHandler();
@@ -39,6 +43,13 @@ class IPDFSDK_AnnotHandler {
   virtual std::unique_ptr<CPDFSDK_Annot> NewAnnot(
       CPDF_Annot* pAnnot,
       CPDFSDK_PageView* pPageView) = 0;
+
+#ifdef PDF_ENABLE_XFA
+  virtual std::unique_ptr<CPDFSDK_Annot> NewAnnotForXFA(
+      CXFA_FFWidget* pWidget,
+      CPDFSDK_PageView* pPageView) = 0;
+#endif  // PDF_ENABLE_XF
+
   virtual void ReleaseAnnot(std::unique_ptr<CPDFSDK_Annot> pAnnot) = 0;
   virtual CFX_FloatRect GetViewBBox(CPDFSDK_PageView* pPageView,
                                     CPDFSDK_Annot* pAnnot) = 0;
