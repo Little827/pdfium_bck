@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46d4870_a501a42f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:39:17Z",
+      "side": 1,
+      "message": "Horray for simpler code.",
+      "revId": "60220f3c9b9c1dcf06ee90a6a59e49dee45058c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b545ef8f_2588b239",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-15T22:39:17Z",
+      "side": 1,
+      "message": "Safe to remove now? (Same for other similarly modified files.)",
+      "revId": "60220f3c9b9c1dcf06ee90a6a59e49dee45058c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
