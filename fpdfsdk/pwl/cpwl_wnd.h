@@ -86,12 +86,8 @@ class CPWL_Wnd : public Observable {
     // get a matrix which map user space to CWnd client space
     virtual CFX_Matrix GetWindowMatrix(
         const IPWL_SystemHandler::PerWindowData* pAttached) = 0;
-  };
 
-  class FocusHandlerIface {
-   public:
-    virtual ~FocusHandlerIface() = default;
-    virtual void OnSetFocus(CPWL_Edit* pEdit) = 0;
+    virtual void OnChildEditSetFocus(CPWL_Edit* pEdit) = 0;
   };
 
   // Caller-provided options for window creation.
@@ -106,10 +102,9 @@ class CPWL_Wnd : public Observable {
     ObservedPtr<CFX_Timer::HandlerIface> pTimerHandler;
     UnownedPtr<IPWL_SystemHandler> pSystemHandler;
     UnownedPtr<IPVT_FontMap> pFontMap;
-    ObservedPtr<ProviderIface> pProvider;
 
     // Optional:
-    UnownedPtr<FocusHandlerIface> pFocusHandler;
+    ObservedPtr<ProviderIface> pProvider;
     uint32_t dwFlags = 0;
     CFX_Color sBackgroundColor;
     BorderStyle nBorderStyle = BorderStyle::kSolid;
@@ -189,8 +184,7 @@ class CPWL_Wnd : public Observable {
   void Destroy();
   bool Move(const CFX_FloatRect& rcNew, bool bReset, bool bRefresh);
 
-  void InvalidateFocusHandler(FocusHandlerIface* handler);
-  void InvalidateProvider(ProviderIface* provider);
+  void InvalidateProvider(ProviderIface* pProvider);
   void SetCapture();
   void ReleaseCapture();
   void DrawAppearance(CFX_RenderDevice* pDevice,
@@ -237,9 +231,6 @@ class CPWL_Wnd : public Observable {
   IPVT_FontMap* GetFontMap() const { return m_CreationParams.pFontMap.Get(); }
   ProviderIface* GetProvider() const {
     return m_CreationParams.pProvider.Get();
-  }
-  FocusHandlerIface* GetFocusHandler() const {
-    return m_CreationParams.pFocusHandler.Get();
   }
 
   int32_t GetTransparency();
