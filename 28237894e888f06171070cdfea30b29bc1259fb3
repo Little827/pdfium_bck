@@ -51,6 +51,47 @@
       "message": "I can\u0027t get this JS to run in Acrobat. I\u0027m not sure if the latest Acrobat has changed its behavior, or if this file (and some variants I tried) are broken. I\u0027ll poke at this some more...",
       "revId": "28237894e888f06171070cdfea30b29bc1259fb3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467255ce_e052f3c3",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1248901.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-16T20:53:32Z",
+      "side": 1,
+      "message": "Acrobat expects the \u003cevent\u003e to have: ref\u003d\"$host\"",
+      "parentUuid": "2113b130_9f953601",
+      "revId": "28237894e888f06171070cdfea30b29bc1259fb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1bfb16_46cc300d",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1248901_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-16T20:53:32Z",
+      "side": 1,
+      "message": "Acrobat responds with:\n\nGeneralError: Operation failed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 21,
+        "endLine": 1,
+        "endChar": 70
+      },
+      "revId": "28237894e888f06171070cdfea30b29bc1259fb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
