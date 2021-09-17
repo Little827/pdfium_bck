@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "589547b9_cb51c78a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2021-09-17T06:21:12Z",
+      "side": 1,
+      "message": "Lei, Tom: could you please take a look? I\u0027m not exactly sure why this started to happen only now; but surely having a macro which matches a macro name from the Windows SDK is not ideal. :-) Thanks.",
+      "revId": "761a98a62283d80685349914aefd37d90d7b7d4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
