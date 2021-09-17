@@ -723,8 +723,3 @@ CFX_FloatRect CPWL_Wnd::PWLtoWnd(const CFX_FloatRect& rect) const {
   CFX_Matrix mt = GetWindowMatrix();
   return mt.TransformRect(rect);
 }
-
-const CPWL_Wnd* CPWL_Wnd::GetFocused() const {
-  CPWL_MsgControl* pMsgCtrl = GetMsgControl();
-  return pMsgCtrl ? pMsgCtrl->GetFocusedWindow() : nullptr;
-}
