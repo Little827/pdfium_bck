@@ -12,7 +12,7 @@
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_formfield.h"
-#include "fpdfsdk/pwl/cpwl_special_button.h"
+#include "fpdfsdk/pwl/cpwl_stateful_button.h"
 #include "public/fpdf_fwlevent.h"
 #include "third_party/base/check.h"
 
