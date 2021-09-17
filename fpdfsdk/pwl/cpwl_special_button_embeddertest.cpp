@@ -7,7 +7,7 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/formfiller/cffl_formfield.h"
-#include "fpdfsdk/pwl/cpwl_special_button.h"
+#include "fpdfsdk/pwl/cpwl_stateful_button.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "testing/embedder_test.h"
 
