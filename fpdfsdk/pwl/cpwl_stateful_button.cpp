@@ -4,69 +4,53 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "fpdfsdk/pwl/cpwl_special_button.h"
+#include "fpdfsdk/pwl/cpwl_stateful_button.h"
 
 #include <utility>
 
-#include "fpdfsdk/pwl/cpwl_button.h"
-#include "fpdfsdk/pwl/cpwl_wnd.h"
-
-CPWL_PushButton::CPWL_PushButton(
+CPWL_StatefulButton::CPWL_StatefulButton(
     const CreateParams& cp,
     std::unique_ptr<IPWL_SystemHandler::PerWindowData> pAttachedData)
-    : CPWL_Button(cp, std::move(pAttachedData)) {}
+    : CPWL_Wnd(cp, std::move(pAttachedData)) {}
 
-CPWL_PushButton::~CPWL_PushButton() = default;
+CPWL_StatefulButton::~CPWL_StatefulButton() = default;
 
-CFX_FloatRect CPWL_PushButton::GetFocusRect() const {
-  return GetWindowRect().GetDeflated(static_cast<float>(GetBorderWidth()),
-                                     static_cast<float>(GetBorderWidth()));
+bool CPWL_StatefulButton::SetCheck(bool bCheck) {
+  if (IsReadOnly())
+    return false;
+
+  m_bChecked = bCheck;
+  return true;
 }
 
 CPWL_CheckBox::CPWL_CheckBox(
     const CreateParams& cp,
     std::unique_ptr<IPWL_SystemHandler::PerWindowData> pAttachedData)
-    : CPWL_Button(cp, std::move(pAttachedData)) {}
+    : CPWL_StatefulButton(cp, std::move(pAttachedData)) {}
 
 CPWL_CheckBox::~CPWL_CheckBox() = default;
 
 bool CPWL_CheckBox::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
                                 const CFX_PointF& point) {
-  if (IsReadOnly())
-    return false;
-
-  SetCheck(!IsChecked());
-  return true;
+  return SetCheck(!IsChecked());
 }
 
 bool CPWL_CheckBox::OnChar(uint16_t nChar, Mask<FWL_EVENTFLAG> nFlag) {
-  if (IsReadOnly())
-    return false;
-
-  SetCheck(!IsChecked());
-  return true;
+  return SetCheck(!IsChecked());
 }
 
 CPWL_RadioButton::CPWL_RadioButton(
     const CreateParams& cp,
     std::unique_ptr<IPWL_SystemHandler::PerWindowData> pAttachedData)
-    : CPWL_Button(cp, std::move(pAttachedData)) {}
+    : CPWL_StatefulButton(cp, std::move(pAttachedData)) {}
 
 CPWL_RadioButton::~CPWL_RadioButton() = default;
 
 bool CPWL_RadioButton::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
                                    const CFX_PointF& point) {
-  if (IsReadOnly())
-    return false;
-
-  SetCheck(true);
-  return true;
+  return SetCheck(true);
 }
 
 bool CPWL_RadioButton::OnChar(uint16_t nChar, Mask<FWL_EVENTFLAG> nFlag) {
-  if (IsReadOnly())
-    return false;
-
-  SetCheck(true);
-  return true;
+  return SetCheck(true);
 }
