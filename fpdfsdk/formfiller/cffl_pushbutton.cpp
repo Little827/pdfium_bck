@@ -9,7 +9,7 @@
 #include <utility>
 
 #include "fpdfsdk/formfiller/cffl_formfield.h"
-#include "fpdfsdk/pwl/cpwl_special_button.h"
+#include "fpdfsdk/pwl/cpwl_stateful_button.h"
 
 CFFL_PushButton::CFFL_PushButton(CFFL_InteractiveFormFiller* pFormFiller,
                                  CPDFSDK_Widget* pWidget)
