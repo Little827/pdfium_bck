@@ -229,7 +229,6 @@ class CPWL_Wnd : public Observable {
   bool ClientHitTest(const CFX_PointF& point) const;
   bool IsCaptureMouse() const;
 
-  const CPWL_Wnd* GetFocused() const;
   bool IsFocused() const;
   bool IsReadOnly() const;
   CPWL_ScrollBar* GetVScrollBar() const;
