@@ -586,8 +586,8 @@ float CPVT_VariableText::GetWordWidth(int32_t nFontIndex,
 }
 
 float CPVT_VariableText::GetWordWidth(const CPVT_WordInfo& WordInfo) const {
-  return GetWordWidth(WordInfo.nFontIndex, WordInfo.Word, GetSubWord(),
-                      GetCharSpace(), GetWordFontSize(), WordInfo.fWordTail);
+  return GetWordWidth(WordInfo.nFontIndex, WordInfo.Word, GetSubWord(), 0.0f,
+                      GetWordFontSize(), WordInfo.fWordTail);
 }
 
 float CPVT_VariableText::GetLineAscent() {
