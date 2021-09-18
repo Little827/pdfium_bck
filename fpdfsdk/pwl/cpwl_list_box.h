@@ -60,7 +60,6 @@ class CPWL_ListBox : public CPWL_Wnd, public CPWL_ListCtrl::NotifyIface {
   void AddString(const WideString& str);
   void SetTopVisibleIndex(int32_t nItemIndex);
   void ScrollToListItem(int32_t nItemIndex);
-  void ResetContent();
   void Reset();
   void Select(int32_t nItemIndex);
   void Deselect(int32_t nItemIndex);
