@@ -741,10 +741,6 @@ void CPWL_EditImpl::SetCharArray(int32_t nCharArray) {
   m_pVT->SetCharArray(nCharArray);
 }
 
-void CPWL_EditImpl::SetCharSpace(float fCharSpace) {
-  m_pVT->SetCharSpace(fCharSpace);
-}
-
 void CPWL_EditImpl::SetMultiLine(bool bMultiLine) {
   m_pVT->SetMultiLine(bMultiLine);
 }
