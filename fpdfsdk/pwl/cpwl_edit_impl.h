@@ -77,7 +77,6 @@ class CPWL_EditImpl {
   // Set the maximum number of words in the text.
   void SetLimitChar(int32_t nLimitChar);
   void SetCharArray(int32_t nCharArray);
-  void SetCharSpace(float fCharSpace);
   void SetMultiLine(bool bMultiLine);
   void SetAutoReturn(bool bAuto);
   void SetAutoFontSize(bool bAuto);
