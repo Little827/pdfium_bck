@@ -79,7 +79,6 @@ class CPVT_VariableText {
   void SetAlignment(int32_t nFormat) { m_nAlignment = nFormat; }
   void SetPasswordChar(uint16_t wSubWord) { m_wSubWord = wSubWord; }
   void SetLimitChar(int32_t nLimitChar) { m_nLimitChar = nLimitChar; }
-  void SetCharSpace(float fCharSpace) { m_fCharSpace = fCharSpace; }
   void SetMultiLine(bool bMultiLine) { m_bMultiLine = bMultiLine; }
   void SetAutoReturn(bool bAuto) { m_bLimitWidth = bAuto; }
   void SetFontSize(float fFontSize) { m_fFontSize = fFontSize; }
