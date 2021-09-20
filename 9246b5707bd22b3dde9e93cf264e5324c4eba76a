@@ -17,6 +17,24 @@
       "message": "Makes sense, I don\u0027t think I was aware that FPDFTextObj_GetFontName() can be replaced with a pair of existing APIs when this was added.",
       "revId": "9246b5707bd22b3dde9e93cf264e5324c4eba76a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8895b3_14ba0476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-20T15:12:17Z",
+      "side": 1,
+      "message": "FPDFFont_GetFontName() just got added last week.",
+      "parentUuid": "e75a020d_493d51b7",
+      "revId": "9246b5707bd22b3dde9e93cf264e5324c4eba76a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
