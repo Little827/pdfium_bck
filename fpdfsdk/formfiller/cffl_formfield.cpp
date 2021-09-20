@@ -343,7 +343,7 @@ CPWL_Wnd::CreateParams CFFL_FormField::GetCreateParam() {
 
   cp.dwFlags = dwCreateFlags;
   cp.pTimerHandler.Reset(m_pFormFiller->GetCallbackIface()->GetTimerHandler());
-  cp.pSystemHandler = m_pFormFiller->GetCallbackIface()->GetSysHandler();
+  cp.pSystemHandler = m_pFormFiller;
   return cp;
 }
 

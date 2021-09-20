@@ -28,25 +28,6 @@
 #include "fxjs/ijs_runtime.h"
 #include "third_party/base/check.h"
 
-static_assert(FXCT_ARROW ==
-                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kArrow),
-              "kArrow value mismatch");
-static_assert(FXCT_NESW ==
-                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kNESW),
-              "kNEWS value mismatch");
-static_assert(FXCT_NWSE ==
-                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kNWSE),
-              "kNWSE value mismatch");
-static_assert(FXCT_VBEAM ==
-                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kVBeam),
-              "kVBeam value mismatch");
-static_assert(FXCT_HBEAM ==
-                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kHBeam),
-              "HBeam value mismatch");
-static_assert(FXCT_HAND ==
-                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kHand),
-              "kHand value mismatch");
-
 FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
   // Force a private version of the string, since we're about to hand it off
   // to the embedder. Should the embedder modify it by accident, it won't
@@ -89,19 +70,14 @@ CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
     m_pInfo->Release(m_pInfo);
 }
 
-void CPDFSDK_FormFillEnvironment::InvalidateRect(PerWindowData* pWidgetData,
+void CPDFSDK_FormFillEnvironment::InvalidateRect(CPDFSDK_Widget* pWidget,
                                                  const CFX_FloatRect& rect) {
-  auto* pPrivateData = static_cast<CFFL_PerWindowData*>(pWidgetData);
-  CPDFSDK_Widget* widget = pPrivateData->GetWidget();
-  if (!widget)
-    return;
-
-  IPDF_Page* pPage = widget->GetPage();
+  IPDF_Page* pPage = pWidget->GetPage();
   if (!pPage)
     return;
 
   CFX_Matrix device2page =
-      widget->GetPageView()->GetCurrentMatrix().GetInverse();
+      pWidget->GetPageView()->GetCurrentMatrix().GetInverse();
   CFX_PointF left_top = device2page.Transform(CFX_PointF(rect.left, rect.top));
   CFX_PointF right_bottom =
       device2page.Transform(CFX_PointF(rect.right, rect.bottom));
@@ -112,17 +88,9 @@ void CPDFSDK_FormFillEnvironment::InvalidateRect(PerWindowData* pWidgetData,
 }
 
 void CPDFSDK_FormFillEnvironment::OutputSelectedRect(
-    PerWindowData* pWidgetData,
+    CFFL_FormField* pFormField,
     const CFX_FloatRect& rect) {
   if (!m_pInfo || !m_pInfo->FFI_OutputSelectedRect)
-    return;
-
-  auto* pPrivateData = static_cast<CFFL_PerWindowData*>(pWidgetData);
-  if (!pPrivateData)
-    return;
-
-  CFFL_FormField* pFormField = pPrivateData->GetFormField();
-  if (!pFormField)
     return;
 
   auto* pPage = FPDFPageFromIPDFPage(pFormField->GetSDKAnnot()->GetPage());
@@ -367,9 +335,9 @@ void CPDFSDK_FormFillEnvironment::Invalidate(IPDF_Page* page,
   }
 }
 
-void CPDFSDK_FormFillEnvironment::SetCursor(CursorStyle nCursorType) {
+void CPDFSDK_FormFillEnvironment::SetCursor(int nCursorType) {
   if (m_pInfo && m_pInfo->FFI_SetCursor)
-    m_pInfo->FFI_SetCursor(m_pInfo, static_cast<int>(nCursorType));
+    m_pInfo->FFI_SetCursor(m_pInfo, nCursorType);
 }
 
 int CPDFSDK_FormFillEnvironment::SetTimer(int uElapse,
@@ -643,10 +611,6 @@ CPDFSDK_PageView* CPDFSDK_FormFillEnvironment::GetPageView(
 }
 
 CFX_Timer::HandlerIface* CPDFSDK_FormFillEnvironment::GetTimerHandler() {
-  return this;
-}
-
-IPWL_SystemHandler* CPDFSDK_FormFillEnvironment::GetSysHandler() {
   return this;
 }
 
