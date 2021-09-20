@@ -23,12 +23,19 @@ class CFFL_FormField;
 class CPDFSDK_PageView;
 class CPDFSDK_Widget;
 
-class CFFL_InteractiveFormFiller final : public IPWL_FillerNotify {
+class CFFL_InteractiveFormFiller final : public IPWL_SystemHandler,
+                                         public IPWL_FillerNotify {
  public:
   class CallbackIface {
    public:
     virtual ~CallbackIface() = default;
 
+    virtual void InvalidateRect(CPDFSDK_Widget* pWidget,
+                                const CFX_FloatRect& rect) = 0;
+    virtual void OutputSelectedRect(CFFL_FormField* pField,
+                                    const CFX_FloatRect& rect) = 0;
+    virtual bool IsSelectionImplemented() const = 0;
+    virtual void SetCursor(int fxct_cursor) = 0;
     virtual void OnSetFieldInputFocus(const WideString& text) = 0;
     virtual void OnCalculate(ObservedPtr<CPDFSDK_Annot>* pAnnot) = 0;
     virtual void OnFormat(ObservedPtr<CPDFSDK_Annot>* pAnnot) = 0;
@@ -36,7 +43,6 @@ class CFFL_InteractiveFormFiller final : public IPWL_FillerNotify {
     virtual CPDFSDK_PageView* GetOrCreatePageView(IPDF_Page* pPage) = 0;
     virtual CPDFSDK_PageView* GetPageView(IPDF_Page* pPage) = 0;
     virtual CFX_Timer::HandlerIface* GetTimerHandler() = 0;
-    virtual IPWL_SystemHandler* GetSysHandler() = 0;
     virtual CPDFSDK_Annot* GetFocusAnnot() const = 0;
     virtual bool SetFocusAnnot(ObservedPtr<CPDFSDK_Annot>* pAnnot) = 0;
 
@@ -146,6 +152,14 @@ class CFFL_InteractiveFormFiller final : public IPWL_FillerNotify {
  private:
   using WidgetToFormFillerMap =
       std::map<CPDFSDK_Annot*, std::unique_ptr<CFFL_FormField>>;
+
+  // IPWL_SystemHandler:
+  void InvalidateRect(PerWindowData* pWidgetData,
+                      const CFX_FloatRect& rect) override;
+  void OutputSelectedRect(PerWindowData* pWidgetData,
+                          const CFX_FloatRect& rect) override;
+  bool IsSelectionImplemented() const override;
+  void SetCursor(CursorStyle nCursorStyle) override;
 
   // IPWL_FillerNotify:
   void QueryWherePopup(const IPWL_SystemHandler::PerWindowData* pAttached,

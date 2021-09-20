@@ -22,10 +22,30 @@
 #include "fpdfsdk/formfiller/cffl_pushbutton.h"
 #include "fpdfsdk/formfiller/cffl_radiobutton.h"
 #include "fpdfsdk/formfiller/cffl_textfield.h"
+#include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/cxx17_backports.h"
+
+static_assert(FXCT_ARROW ==
+                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kArrow),
+              "kArrow value mismatch");
+static_assert(FXCT_NESW ==
+                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kNESW),
+              "kNEWS value mismatch");
+static_assert(FXCT_NWSE ==
+                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kNWSE),
+              "kNWSE value mismatch");
+static_assert(FXCT_VBEAM ==
+                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kVBeam),
+              "kVBeam value mismatch");
+static_assert(FXCT_HBEAM ==
+                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kHBeam),
+              "HBeam value mismatch");
+static_assert(FXCT_HAND ==
+                  static_cast<int>(IPWL_SystemHandler::CursorStyle::kHand),
+              "kHand value mismatch");
 
 CFFL_InteractiveFormFiller::CFFL_InteractiveFormFiller(
     CallbackIface* pCallbackIface)
@@ -578,6 +598,40 @@ void CFFL_InteractiveFormFiller::UnregisterFormField(CPDFSDK_Annot* pAnnot) {
     return;
 
   m_Map.erase(it);
+}
+
+void CFFL_InteractiveFormFiller::InvalidateRect(PerWindowData* pWidgetData,
+                                                const CFX_FloatRect& rect) {
+  auto* pPrivateData = static_cast<CFFL_PerWindowData*>(pWidgetData);
+  if (!pPrivateData)
+    return;
+
+  CPDFSDK_Widget* widget = pPrivateData->GetWidget();
+  if (!widget)
+    return;
+
+  m_pCallbackIface->InvalidateRect(widget, rect);
+}
+
+void CFFL_InteractiveFormFiller::OutputSelectedRect(PerWindowData* pWidgetData,
+                                                    const CFX_FloatRect& rect) {
+  auto* pPrivateData = static_cast<CFFL_PerWindowData*>(pWidgetData);
+  if (!pPrivateData)
+    return;
+
+  CFFL_FormField* pFormField = pPrivateData->GetFormField();
+  if (!pFormField)
+    return;
+
+  m_pCallbackIface->OutputSelectedRect(pFormField, rect);
+}
+
+bool CFFL_InteractiveFormFiller::IsSelectionImplemented() const {
+  return m_pCallbackIface->IsSelectionImplemented();
+}
+
+void CFFL_InteractiveFormFiller::SetCursor(CursorStyle nCursorStyle) {
+  m_pCallbackIface->SetCursor(static_cast<int>(nCursorStyle));
 }
 
 void CFFL_InteractiveFormFiller::QueryWherePopup(

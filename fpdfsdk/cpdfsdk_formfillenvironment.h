@@ -21,8 +21,6 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
-#include "fpdfsdk/pwl/cpwl_wnd.h"
-#include "fpdfsdk/pwl/ipwl_systemhandler.h"
 #include "public/fpdf_formfill.h"
 
 class CPDFSDK_ActionHandler;
@@ -48,7 +46,6 @@ FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE);
 
 class CPDFSDK_FormFillEnvironment final
     : public CFX_Timer::HandlerIface,
-      public IPWL_SystemHandler,
       public CFFL_InteractiveFormFiller::CallbackIface {
  public:
   CPDFSDK_FormFillEnvironment(
@@ -62,15 +59,13 @@ class CPDFSDK_FormFillEnvironment final
   int32_t SetTimer(int32_t uElapse, TimerCallback lpTimerFunc) override;
   void KillTimer(int32_t nTimerID) override;
 
-  // IPWL_SystemHandler:
-  void InvalidateRect(PerWindowData* pWidgetData,
+  // CFFL_InteractiveFormFiller::CallbackIface:
+  void InvalidateRect(CPDFSDK_Widget* pWidget,
                       const CFX_FloatRect& rect) override;
-  void OutputSelectedRect(PerWindowData* pWidgetData,
+  void OutputSelectedRect(CFFL_FormField* pField,
                           const CFX_FloatRect& rect) override;
   bool IsSelectionImplemented() const override;
-  void SetCursor(CursorStyle nCursorType) override;
-
-  // CFFL_InteractiveFormFiller::CallbackIface:
+  void SetCursor(int fxct_cursor) override;
   void OnSetFieldInputFocus(const WideString& text) override;
   void OnCalculate(ObservedPtr<CPDFSDK_Annot>* pAnnot) override;
   void OnFormat(ObservedPtr<CPDFSDK_Annot>* pAnnot) override;
@@ -78,7 +73,6 @@ class CPDFSDK_FormFillEnvironment final
   CPDFSDK_PageView* GetOrCreatePageView(IPDF_Page* pUnderlyingPage) override;
   CPDFSDK_PageView* GetPageView(IPDF_Page* pUnderlyingPage) override;
   CFX_Timer::HandlerIface* GetTimerHandler() override;
-  IPWL_SystemHandler* GetSysHandler() override;
   CPDFSDK_Annot* GetFocusAnnot() const override;
   bool SetFocusAnnot(ObservedPtr<CPDFSDK_Annot>* pAnnot) override;
   bool HasPermissions(uint32_t flags) const override;
