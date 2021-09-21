@@ -243,14 +243,10 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_IsIndexSelected(
 
 #ifdef PDF_ENABLE_XFA
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnChangeFocus(
-    ObservedPtr<CPDFSDK_Annot>* pSetAnnot,
-    ObservedPtr<CPDFSDK_Annot>* pKillAnnot) {
+    ObservedPtr<CPDFSDK_Annot>* pSetAnnot) {
   CPDFXFA_Widget* pSetXFAWidget = ToXFAWidget(pSetAnnot->Get());
-  CPDFXFA_Widget* pKillXFAWidget = ToXFAWidget(pKillAnnot->Get());
-  bool bXFA = (pSetXFAWidget && pSetXFAWidget->GetXFAFFWidget()) ||
-              (pKillXFAWidget && pKillXFAWidget->GetXFAFFWidget());
-
-  return !bXFA || m_pXFAWidgetHandler->OnXFAChangedFocus(pKillAnnot, pSetAnnot);
+  const bool bXFA = pSetXFAWidget && pSetXFAWidget->GetXFAFFWidget();
+  return !bXFA || m_pXFAWidgetHandler->OnXFAChangedFocus(pSetAnnot);
 }
 #endif  // PDF_ENABLE_XFA
 
