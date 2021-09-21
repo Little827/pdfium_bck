@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1632238460 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d18Lj3ZRkKcBC40k2yOc6cJawSh1SCq1xBrXNnYZGkbK8VYbms9v+NLJ0HlbWVILbOcSV9en\n\n0000000000000000000000000000000000000000 b41edf69706d5ddb640aecbf5683070a9d1be9b3 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFJ+3wACgkQqzYtYVpm\n/XulQAf/euljXTpduXjuoJXg8V979IrP0dyEkAXdcoopfflPK7hKNPUWgWyy2v6Q\nfvbvRFF9ssLr+kZzgxQJVlBsc6qfsz/0yeyD/qQ5teefUJwCQlee6OEULKkTB6Mm\nhlBhWBWTOA+kdjfEg+XL/ak2tSSx7Ma3cx1XA5c+P4r3PwHX0r4vq1dCvAlrcuCn\nrvO69fYHmA2VvAlqHXhVcceoNRGvhOO1utp/I42E04OZtXJidxGbIBqU9bNggczS\nVrw8P0uVLgB/3T3G5t62jkZFJXLprvm7LqlQLJTKR5PaDtkdc+3shsx1mzC5D5sa\nl83iu8+jKjzcLaPgIwl8eXC3bWxGEw\u003d\u003d\n\u003dxZNk\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4429066_97811bbf",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-09-21T23:48:39Z",
+      "side": 1,
+      "message": "Old habit from embedded, one can avoid the modulo in a case like this:\n\n  descendant_font_count \u003d\n    (num_glyphs + glyphs_per_descendant_font - 1)\n    / glyphs_per_descendant_font\n\n\nThis is safe so long as the numbers are not at the upper boundaries of size_t (which shouldn\u0027t be the case with # glyphs).",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06d6f30_9e011221",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-09-21T23:48:39Z",
+      "side": 1,
+      "message": "Should this really be hardcoded to 256?  E.g., for the last iteration of `i`, when \u003c 256 entries might be written out?\n\nSimilar concern for `/CharStrings 257` below at line 116.",
+      "range": {
+        "startLine": 99,
+        "startChar": 25,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e31ff4_a6acac9e",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-09-21T23:48:39Z",
+      "side": 1,
+      "message": "As written, it isn\u0027t locally clear that ending up with 256 entries is guaranteed.  This is dependent upon `glyphs_per_descendant_font` being passed in `kGlyphsPerDescendantFont`.\n\nWhat is the reason for having the `glyphs_per_descendant_font` parameter?  If this function is hard-coded for 256 blocks then that should be local to here.",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 53
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a665936f_444f4e2b",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-09-21T23:48:39Z",
+      "side": 1,
+      "message": "The multiplication isn\u0027t necessary, why not initialize `pos` outside of this loop, and just increment here?  Same below at line 119.",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
