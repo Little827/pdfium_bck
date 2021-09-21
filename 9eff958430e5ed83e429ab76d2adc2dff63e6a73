@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60552cfa_783215e7",
+        "filename": "third_party/libtiff/0000-build-config.patch",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-21T23:54:29Z",
+      "side": 1,
+      "message": "Whoops, these are actually from 0031-safe_size_ingtStripContig.patch. Will fix.",
+      "revId": "9eff958430e5ed83e429ab76d2adc2dff63e6a73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
