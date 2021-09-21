@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2520bf9_1093f416",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-21T21:54:33Z",
+      "side": 1,
+      "message": "To be removed next?",
+      "revId": "206a9aa4ae1517f4ac7a78e18141632e64907e73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e98ea1d_68bbd92a",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-21T21:54:33Z",
+      "side": 1,
+      "message": "Drop this variable and combine with line 543? Then combine lines 538 and 543?",
+      "revId": "206a9aa4ae1517f4ac7a78e18141632e64907e73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
