@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2692ed6b_a12a4848",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T00:04:43Z",
+      "side": 1,
+      "message": "Ya, this stopped making sense because of the `glyphs_per_descendant_font` variable. See next comment.",
+      "parentUuid": "d06d6f30_9e011221",
+      "range": {
+        "startLine": 99,
+        "startChar": 25,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86e31ff4_a6acac9e",
         "filename": "core/fxge/win32/cfx_psrenderer.cpp",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "writtenOn": "2021-09-21T23:48:39Z",
       "side": 1,
       "message": "As written, it isn\u0027t locally clear that ending up with 256 entries is guaranteed.  This is dependent upon `glyphs_per_descendant_font` being passed in `kGlyphsPerDescendantFont`.\n\nWhat is the reason for having the `glyphs_per_descendant_font` parameter?  If this function is hard-coded for 256 blocks then that should be local to here.",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 53
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b2394b_750409b8",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T00:04:43Z",
+      "side": 1,
+      "message": "It\u0027s a variable to facilitate testing with a shorter number of entries. Otherwise the test expectation will be much longer in an uninteresting way.",
+      "parentUuid": "86e31ff4_a6acac9e",
       "range": {
         "startLine": 100,
         "startChar": 27,
