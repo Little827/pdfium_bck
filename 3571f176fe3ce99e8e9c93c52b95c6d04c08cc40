@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1632269702 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d18B+3osdTPqnKXmmKmJhmjqP/qdh/cBffOsjbVZIiU+9P4AWcf7ukyinbHJP6AxRgLYWNXX\n\n0000000000000000000000000000000000000000 3571f176fe3ce99e8e9c93c52b95c6d04c08cc40 refs/for/refs/heads/main%notify\u003dNONE,m\u003daddress_comments,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFKdYYACgkQqzYtYVpm\n/Xs12AgA02cYN+cUAMhR0DZU0Gkqil91ygJZcLbo3hl2IxSoqP7CJhVAJZtidufM\n63V8tdyzeqpUHLe29OLDnwwvRpoFllbLKnSHhUp1/RW3zDb/reBWuYYNkSF03688\n33MQbcSOlTtR7heDNUp1kAVF8OsqoSjBCR1Z1qSxP3GvbQsFJKWvaiNGdc9DEzBf\n5fp5JPa1HqqW/pEk+NpQG2krYZFNjthm6ZGYBg3USbyGo577WVhtDwws5eWMdhF+\nvUamHCunzb1Bh9wIB9S+wIjYjFvmOoKDArsPABYgP5FmEYRcGUywcGM9RNs193l0\nFusc6GQnPJ1kf9xUMLTxd3/WCy5wYA\u003d\u003d\n\u003dub8+\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db234d44_3a78c565",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-09-22T00:26:15Z",
+      "side": 1,
+      "message": "With `pos` only incremented in outer `i` loop, this probably isn\u0027t quite right.  Similary down at line 127.",
+      "range": {
+        "startLine": 109,
+        "startChar": 10,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "3571f176fe3ce99e8e9c93c52b95c6d04c08cc40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
