@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92877fb_a2ad3023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T21:52:31Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure I once wrote a CL doing the opposite.",
+      "revId": "80b2a2799a51e75dfb1e3358817ff60566e2e67f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
