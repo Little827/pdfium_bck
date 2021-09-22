@@ -17,6 +17,190 @@
       "message": "LGTM",
       "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3662df_847a7529",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "nit: Invert and early return of nullopt?",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 27
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67ca819_8e50f11e",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "nit: this is really counting output character pairs per line, and the constants might all be named to include the term CharPairs or some such\nsince we worry about overflowing the output line (not the input line)?",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32bd88e_1b028890",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "you mean \u003d\u003d 1?  It seems odd to pad out an even length to an odd length.\nOr the so so clever FX_IsOdd() macro could strike here again.",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d80b49b_3eb5cad9",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "The 0 + 0 - 1 case underflows to a large unsigned constant.",
+      "range": {
+        "startLine": 97,
+        "startChar": 7,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e8b326_694c9e80",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "second memcpy here, the first took place when we made a bytestring from the stringstream for the result return from GenerateType42FontDictioary().  Maybe we can avoid this?",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 40
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d49c6a6_7ec8b1e9",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "follow-up: Optional\u003costringstream\u003e return? Or are we appending to buf so it really is in-out?",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 4
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b07adc_5900e328",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "follow-up: span\u003cconst TextCharPos\u003e",
+      "range": {
+        "startLine": 744,
+        "startChar": 42,
+        "endLine": 745,
+        "endChar": 70
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5324c920_56d064eb",
+        "filename": "core/fxge/win32/cfx_psrenderer_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T15:49:30Z",
+      "side": 1,
+      "message": "nit: can\u0027t be constexpr because gtest makes undefined symbols from address of kExpected1DescendantFontResult, right?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
