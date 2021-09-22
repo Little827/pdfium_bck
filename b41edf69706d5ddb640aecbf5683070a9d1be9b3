@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d5df75_73ba6a17",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T00:15:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4429066_97811bbf",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d06d6f30_9e011221",
@@ -62,6 +86,30 @@
       "side": 1,
       "message": "Ya, this stopped making sense because of the `glyphs_per_descendant_font` variable. See next comment.",
       "parentUuid": "d06d6f30_9e011221",
+      "range": {
+        "startLine": 99,
+        "startChar": 25,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338966ee_be1cf545",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T00:15:20Z",
+      "side": 1,
+      "message": "Rather, it works, but it is just a bit wasteful for the cases where `glyphs_per_descendant_font` is less than 256. I\u0027ll fix it anyway, and check that the count is never above 256.",
+      "parentUuid": "2692ed6b_a12a4848",
       "range": {
         "startLine": 99,
         "startChar": 25,
@@ -132,6 +180,30 @@
       "writtenOn": "2021-09-21T23:48:39Z",
       "side": 1,
       "message": "The multiplication isn\u0027t necessary, why not initialize `pos` outside of this loop, and just increment here?  Same below at line 119.",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2245276_d9240b19",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T00:15:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a665936f_444f4e2b",
       "range": {
         "startLine": 101,
         "startChar": 13,
