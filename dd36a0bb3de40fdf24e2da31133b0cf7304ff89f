@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb8c4f1d_1ccc8e4d",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T16:20:53Z",
+      "side": 1,
+      "message": "(Note: part of my confusion is the input is octets or bytes, not necessarily meaningful when interpreted directly as characters, right?)",
+      "parentUuid": "b67ca819_8e50f11e",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a32bd88e_1b028890",
         "filename": "core/fxge/win32/cfx_psrenderer.cpp",
         "patchSetId": 4
