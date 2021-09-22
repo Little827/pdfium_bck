@@ -16,6 +16,24 @@
       "message": "I think this can remain a DCHECK(), and some of the other ToXFAWidget() calls can be changed to DCHECK() for consistency in the other direction. The only way to get to CPDFXFA_WidgetHandler::OnDraw() is if `pAnnot` is an XFA widget. If it was another type of widget, then the other OnDraw() impls, like CPDFSDK_BAAnnotHandler::OnDraw(), would get called instead.",
       "revId": "266ec01291a9425607fcbb1cb43d16cac84c5507",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5faa503_5c6b1c53",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T22:26:17Z",
+      "side": 1,
+      "message": "We don\u0027t even need the dcheck since we get a segv for free at line 238. Do we remove them all?",
+      "parentUuid": "9d2807c6_26e329b0",
+      "revId": "266ec01291a9425607fcbb1cb43d16cac84c5507",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
