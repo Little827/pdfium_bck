@@ -16,6 +16,23 @@
       "message": "tada",
       "revId": "17b7bb885c7e782632cd971745b8a04fbc45bc1c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a34265_28f39705",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T22:43:27Z",
+      "side": 1,
+      "message": "Potential merge conflict with your own CL here?",
+      "revId": "17b7bb885c7e782632cd971745b8a04fbc45bc1c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
