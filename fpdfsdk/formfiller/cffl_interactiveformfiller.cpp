@@ -236,10 +236,10 @@ bool CFFL_InteractiveFormFiller::OnLButtonUp(CPDFSDK_PageView* pPageView,
                                       nFlags, point);
   if (m_pCallbackIface->GetFocusAnnot() != pAnnot->Get())
     return bRet;
-  if (OnButtonUp(pAnnot, pPageView, nFlags) || !pAnnot)
+  if (OnButtonUp(pAnnot, pPageView, nFlags) || !pAnnot->HasObservable())
     return true;
 #ifdef PDF_ENABLE_XFA
-  if (OnClick(pAnnot, pPageView, nFlags) || !pAnnot)
+  if (OnClick(pAnnot, pPageView, nFlags) || !pAnnot->HasObservable())
     return true;
 #endif  // PDF_ENABLE_XFA
   return bRet;
