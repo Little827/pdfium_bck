@@ -23,6 +23,30 @@
       },
       "revId": "3571f176fe3ce99e8e9c93c52b95c6d04c08cc40",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d05eb6f_51728e0e",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T00:30:57Z",
+      "side": 1,
+      "message": "That\u0027s what I get for trying to develop a Windows CL on a Linux machine.",
+      "parentUuid": "db234d44_3a78c565",
+      "range": {
+        "startLine": 109,
+        "startChar": 10,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "3571f176fe3ce99e8e9c93c52b95c6d04c08cc40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
