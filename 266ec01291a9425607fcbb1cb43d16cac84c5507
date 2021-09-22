@@ -34,6 +34,24 @@
       "parentUuid": "9d2807c6_26e329b0",
       "revId": "266ec01291a9425607fcbb1cb43d16cac84c5507",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337bf70c_f9b87b24",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T22:30:19Z",
+      "side": 1,
+      "message": "I looked at code coverage to see if the !pXFAWidget path ever gets taken. They never do, for the methods in this file that have coverage.\n\nAnother way to cross-check is to see if CPDFSDK_AnnotHandlerMgr is routing the calls to this class via GetAnnotHandler().",
+      "parentUuid": "b5faa503_5c6b1c53",
+      "revId": "266ec01291a9425607fcbb1cb43d16cac84c5507",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
