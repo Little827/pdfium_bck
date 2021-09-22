@@ -241,6 +241,7 @@ CJS_Result CJS_Document::exportAsXFDF(
   return CJS_Result::Success();
 }
 
+// Get feild from docment.
 CJS_Result CJS_Document::getField(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
