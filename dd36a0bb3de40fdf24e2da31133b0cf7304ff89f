@@ -278,6 +278,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "302466cc_07e87f9a",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T17:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1251cd9_ccc4a9f4",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 40
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d49c6a6_7ec8b1e9",
@@ -362,6 +386,30 @@
       "side": 1,
       "message": "Yep, on the TODO list.",
       "parentUuid": "71b07adc_5900e328",
+      "range": {
+        "startLine": 744,
+        "startChar": 42,
+        "endLine": 745,
+        "endChar": 70
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603889c2_2fea3fb3",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-22T17:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "324fdc17_09ceb64a",
       "range": {
         "startLine": 744,
         "startChar": 42,
