@@ -167,6 +167,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c67a2b_7ea65e1e",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-09-22T00:51:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84b2394b_750409b8",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 53
+      },
+      "revId": "b41edf69706d5ddb640aecbf5683070a9d1be9b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a665936f_444f4e2b",
