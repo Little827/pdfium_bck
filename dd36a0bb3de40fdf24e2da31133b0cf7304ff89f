@@ -42,6 +42,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de0d3d8f_ab5c8b74",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3662df_847a7529",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 27
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b67ca819_8e50f11e",
@@ -89,6 +113,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81f91bf_134e8663",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "Renamed and added comment. Hope that\u0027s clearer.",
+      "parentUuid": "eb8c4f1d_1ccc8e4d",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a32bd88e_1b028890",
@@ -112,6 +160,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba2510f_5b98c85e",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "That\u0027s what the spec says. https://adobe-type-tools.github.io/font-tech-notes/pdfs/5012.Type42_Spec.pdf#page\u003d13 right above section 4.3.",
+      "parentUuid": "a32bd88e_1b028890",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d80b49b_3eb5cad9",
@@ -125,6 +197,30 @@
       "writtenOn": "2021-09-22T15:49:30Z",
       "side": 1,
       "message": "The 0 + 0 - 1 case underflows to a large unsigned constant.",
+      "range": {
+        "startLine": 97,
+        "startChar": 7,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb40ef3_1b26d7a6",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "- If the code has made it this far, `num_glyphs` is unlikely to be 0.\n- `glyphs_per_descendant_font` is always 256 in production, and only lower for testing. It is never 0, as that would cause a divide by 0 error as well. I added another DCHECK().",
+      "parentUuid": "3d80b49b_3eb5cad9",
       "range": {
         "startLine": 97,
         "startChar": 7,
@@ -160,6 +256,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1251cd9_ccc4a9f4",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "Do you see a better way to balance ease of testing with performance? Since this is used for printing, and printing doesn\u0027t happen that often, relatively speaking, the cost of \u003c 1 MB of data copying in memory (likely cached) per page isn\u0027t a deal breaker IMO.",
+      "parentUuid": "c7e8b326_694c9e80",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 40
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d49c6a6_7ec8b1e9",
         "filename": "core/fxge/win32/cfx_psrenderer.cpp",
         "patchSetId": 4
@@ -171,6 +291,30 @@
       "writtenOn": "2021-09-22T15:49:30Z",
       "side": 1,
       "message": "follow-up: Optional\u003costringstream\u003e return? Or are we appending to buf so it really is in-out?",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 4
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da731884_f1652854",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "Appending to `buf`.",
+      "parentUuid": "9d49c6a6_7ec8b1e9",
       "range": {
         "startLine": 744,
         "startChar": 0,
@@ -206,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "324fdc17_09ceb64a",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "Yep, on the TODO list.",
+      "parentUuid": "71b07adc_5900e328",
+      "range": {
+        "startLine": 744,
+        "startChar": 42,
+        "endLine": 745,
+        "endChar": 70
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5324c920_56d064eb",
         "filename": "core/fxge/win32/cfx_psrenderer_unittest.cpp",
         "patchSetId": 4
@@ -217,6 +385,30 @@
       "writtenOn": "2021-09-22T15:49:30Z",
       "side": 1,
       "message": "nit: can\u0027t be constexpr because gtest makes undefined symbols from address of kExpected1DescendantFontResult, right?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "dd36a0bb3de40fdf24e2da31133b0cf7304ff89f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1f3672_4c9555fd",
+        "filename": "core/fxge/win32/cfx_psrenderer_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T17:04:57Z",
+      "side": 1,
+      "message": "It can be. Done.",
+      "parentUuid": "5324c920_56d064eb",
       "range": {
         "startLine": 46,
         "startChar": 2,
