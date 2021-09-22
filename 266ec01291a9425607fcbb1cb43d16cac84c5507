@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2807c6_26e329b0",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-22T22:23:28Z",
+      "side": 1,
+      "message": "I think this can remain a DCHECK(), and some of the other ToXFAWidget() calls can be changed to DCHECK() for consistency in the other direction. The only way to get to CPDFXFA_WidgetHandler::OnDraw() is if `pAnnot` is an XFA widget. If it was another type of widget, then the other OnDraw() impls, like CPDFSDK_BAAnnotHandler::OnDraw(), would get called instead.",
+      "revId": "266ec01291a9425607fcbb1cb43d16cac84c5507",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
