@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "409ada1a_698191d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-23T00:16:39Z",
+      "side": 1,
+      "message": "Although a little more verbose, we\u0027re going to need to covert to Widgets in\nthe CPDFSDK_WidgetHandler once CFFL becomes widget-only.",
+      "revId": "0166467c6bd4828fff3580759c6610142c4cc2ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
