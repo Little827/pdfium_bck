@@ -288,7 +288,7 @@ WideString CPDFSDK_WidgetHandler::GetText(CPDFSDK_Annot* pAnnot) {
   if (pWidget->IsSignatureWidget())
     return WideString();
 
-  return GetFormFillEnvironment()->GetInteractiveFormFiller()->GetText(pAnnot);
+  return GetFormFillEnvironment()->GetInteractiveFormFiller()->GetText(pWidget);
 }
 
 WideString CPDFSDK_WidgetHandler::GetSelectedText(CPDFSDK_Annot* pAnnot) {
@@ -297,7 +297,7 @@ WideString CPDFSDK_WidgetHandler::GetSelectedText(CPDFSDK_Annot* pAnnot) {
     return WideString();
 
   return GetFormFillEnvironment()->GetInteractiveFormFiller()->GetSelectedText(
-      pAnnot);
+      pWidget);
 }
 
 void CPDFSDK_WidgetHandler::ReplaceSelection(CPDFSDK_Annot* pAnnot,
@@ -306,39 +306,39 @@ void CPDFSDK_WidgetHandler::ReplaceSelection(CPDFSDK_Annot* pAnnot,
   if (pWidget->IsSignatureWidget())
     return;
 
-  GetFormFillEnvironment()->GetInteractiveFormFiller()->ReplaceSelection(pAnnot,
-                                                                         text);
+  GetFormFillEnvironment()->GetInteractiveFormFiller()->ReplaceSelection(
+      pWidget, text);
 }
 
 bool CPDFSDK_WidgetHandler::SelectAllText(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
   return !pWidget->IsSignatureWidget() &&
          GetFormFillEnvironment()->GetInteractiveFormFiller()->SelectAllText(
-             pAnnot);
+             pWidget);
 }
 
 bool CPDFSDK_WidgetHandler::CanUndo(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
   return !pWidget->IsSignatureWidget() &&
-         GetFormFillEnvironment()->GetInteractiveFormFiller()->CanUndo(pAnnot);
+         GetFormFillEnvironment()->GetInteractiveFormFiller()->CanUndo(pWidget);
 }
 
 bool CPDFSDK_WidgetHandler::CanRedo(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
   return !pWidget->IsSignatureWidget() &&
-         GetFormFillEnvironment()->GetInteractiveFormFiller()->CanRedo(pAnnot);
+         GetFormFillEnvironment()->GetInteractiveFormFiller()->CanRedo(pWidget);
 }
 
 bool CPDFSDK_WidgetHandler::Undo(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
   return !pWidget->IsSignatureWidget() &&
-         GetFormFillEnvironment()->GetInteractiveFormFiller()->Undo(pAnnot);
+         GetFormFillEnvironment()->GetInteractiveFormFiller()->Undo(pWidget);
 }
 
 bool CPDFSDK_WidgetHandler::Redo(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
   return !pWidget->IsSignatureWidget() &&
-         GetFormFillEnvironment()->GetInteractiveFormFiller()->Redo(pAnnot);
+         GetFormFillEnvironment()->GetInteractiveFormFiller()->Redo(pWidget);
 }
 
 bool CPDFSDK_WidgetHandler::HitTest(CPDFSDK_Annot* pAnnot,

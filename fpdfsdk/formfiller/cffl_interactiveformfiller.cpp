@@ -186,7 +186,7 @@ bool CFFL_InteractiveFormFiller::OnLButtonDown(
       if (!pAnnot)
         return true;
 
-      if (!IsValidAnnot(pPageView, pAnnot.Get()))
+      if (!IsValidAnnot(pPageView, pWidget))
         return true;
 
       if (pWidget->IsAppModified()) {
@@ -510,55 +510,48 @@ CFFL_FormField* CFFL_InteractiveFormFiller::GetOrCreateFormField(
   return result;
 }
 
-WideString CFFL_InteractiveFormFiller::GetText(CPDFSDK_Annot* pAnnot) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
+WideString CFFL_InteractiveFormFiller::GetText(CPDFSDK_Widget* pWidget) {
+  CFFL_FormField* pFormField = GetFormField(pWidget);
   return pFormField ? pFormField->GetText() : WideString();
 }
 
-WideString CFFL_InteractiveFormFiller::GetSelectedText(CPDFSDK_Annot* pAnnot) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
+WideString CFFL_InteractiveFormFiller::GetSelectedText(
+    CPDFSDK_Widget* pWidget) {
+  CFFL_FormField* pFormField = GetFormField(pWidget);
   return pFormField ? pFormField->GetSelectedText() : WideString();
 }
 
-void CFFL_InteractiveFormFiller::ReplaceSelection(CPDFSDK_Annot* pAnnot,
+void CFFL_InteractiveFormFiller::ReplaceSelection(CPDFSDK_Widget* pWidget,
                                                   const WideString& text) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
+  CFFL_FormField* pFormField = GetFormField(pWidget);
   if (!pFormField)
     return;
 
   pFormField->ReplaceSelection(text);
 }
 
-bool CFFL_InteractiveFormFiller::SelectAllText(CPDFSDK_Annot* pAnnot) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
-  return pAnnot && pFormField->SelectAllText();
+bool CFFL_InteractiveFormFiller::SelectAllText(CPDFSDK_Widget* pWidget) {
+  CFFL_FormField* pFormField = GetFormField(pWidget);
+  return pFormField && pFormField->SelectAllText();
 }
 
-bool CFFL_InteractiveFormFiller::CanUndo(CPDFSDK_Annot* pAnnot) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
+bool CFFL_InteractiveFormFiller::CanUndo(CPDFSDK_Widget* pWidget) {
+  CFFL_FormField* pFormField = GetFormField(pWidget);
   return pFormField && pFormField->CanUndo();
 }
 
-bool CFFL_InteractiveFormFiller::CanRedo(CPDFSDK_Annot* pAnnot) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
+bool CFFL_InteractiveFormFiller::CanRedo(CPDFSDK_Widget* pWidget) {
+  CFFL_FormField* pFormField = GetFormField(pWidget);
   return pFormField && pFormField->CanRedo();
 }
 
-bool CFFL_InteractiveFormFiller::Undo(CPDFSDK_Annot* pAnnot) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
+bool CFFL_InteractiveFormFiller::Undo(CPDFSDK_Widget* pWidget) {
+  CFFL_FormField* pFormField = GetFormField(pWidget);
   return pFormField && pFormField->Undo();
 }
 
-bool CFFL_InteractiveFormFiller::Redo(CPDFSDK_Annot* pAnnot) {
-  DCHECK_EQ(pAnnot->GetPDFAnnot()->GetSubtype(), CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormField* pFormField = GetFormField(pAnnot);
+bool CFFL_InteractiveFormFiller::Redo(CPDFSDK_Widget* pWidget) {
+  CFFL_FormField* pFormField = GetFormField(pWidget);
   return pFormField && pFormField->Redo();
 }
 
@@ -848,8 +841,8 @@ bool CFFL_InteractiveFormFiller::OnPostOpen(ObservedPtr<CPDFSDK_Annot>& pAnnot,
 
 // static
 bool CFFL_InteractiveFormFiller::IsValidAnnot(const CPDFSDK_PageView* pPageView,
-                                              CPDFSDK_Annot* pAnnot) {
-  return pPageView && pPageView->IsValidAnnot(pAnnot->GetPDFAnnot());
+                                              CPDFSDK_Widget* pWidget) {
+  return pPageView && pPageView->IsValidAnnot(pWidget->GetPDFAnnot());
 }
 
 std::pair<bool, bool> CFFL_InteractiveFormFiller::OnBeforeKeyStroke(

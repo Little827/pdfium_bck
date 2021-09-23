@@ -111,20 +111,20 @@ class CFFL_InteractiveFormFiller final : public IPWL_FillerNotify {
     return GetFormField(pAnnot);
   }
 
-  WideString GetText(CPDFSDK_Annot* pAnnot);
-  WideString GetSelectedText(CPDFSDK_Annot* pAnnot);
-  void ReplaceSelection(CPDFSDK_Annot* pAnnot, const WideString& text);
-  bool SelectAllText(CPDFSDK_Annot* pAnnot);
+  WideString GetText(CPDFSDK_Widget* pWidget);
+  WideString GetSelectedText(CPDFSDK_Widget* pWidget);
+  void ReplaceSelection(CPDFSDK_Widget* pWidget, const WideString& text);
+  bool SelectAllText(CPDFSDK_Widget* pWidget);
 
-  bool CanUndo(CPDFSDK_Annot* pAnnot);
-  bool CanRedo(CPDFSDK_Annot* pAnnot);
-  bool Undo(CPDFSDK_Annot* pAnnot);
-  bool Redo(CPDFSDK_Annot* pAnnot);
+  bool CanUndo(CPDFSDK_Widget* pWidget);
+  bool CanRedo(CPDFSDK_Widget* pWidget);
+  bool Undo(CPDFSDK_Widget* pWidget);
+  bool Redo(CPDFSDK_Widget* pWidget);
 
   static bool IsVisible(CPDFSDK_Widget* pWidget);
   static bool IsReadOnly(CPDFSDK_Widget* pWidget);
   static bool IsValidAnnot(const CPDFSDK_PageView* pPageView,
-                           CPDFSDK_Annot* pAnnot);
+                           CPDFSDK_Widget* pWidget);
 
   bool OnKeyStrokeCommit(ObservedPtr<CPDFSDK_Annot>& pAnnot,
                          const CPDFSDK_PageView* pPageView,
