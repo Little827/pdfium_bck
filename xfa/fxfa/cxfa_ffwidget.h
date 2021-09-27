@@ -65,7 +65,7 @@ void XFA_RectWithoutMargin(CFX_RectF* rt, const CXFA_Margin* margin);
 
 class CXFA_FFWidget : public cppgc::GarbageCollected<CXFA_FFWidget>,
                       public CFWL_Widget::AdapterIface {
-  CPPGC_USING_PRE_FINALIZER(CXFA_FFWidget, PreFinalize);
+  CPPGC_USING_PRE_FINALIZER(CXFA_FFWidget, CallVirtualPreFinalize);
 
  public:
   enum FocusOption { kDoNotDrawFocus = 0, kDrawFocus };
@@ -87,6 +87,10 @@ class CXFA_FFWidget : public cppgc::GarbageCollected<CXFA_FFWidget>,
 
   CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CXFA_FFWidget() override;
+
+  // ccpgc doesn't handle virtual finalizer dispatch, so do it
+  // explicitly through a non-virtual method.
+  void CallVirtualPreFinalize();
 
   virtual void PreFinalize();
   void Trace(cppgc::Visitor* visitor) const override;

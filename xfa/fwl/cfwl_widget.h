@@ -66,7 +66,7 @@ enum class FWL_Type {
 // NOTE: CFWL_Widget serves as its own delegate until replaced at runtime.
 class CFWL_Widget : public cppgc::GarbageCollected<CFWL_Widget>,
                     public IFWL_WidgetDelegate {
-  CPPGC_USING_PRE_FINALIZER(CFWL_Widget, PreFinalize);
+  CPPGC_USING_PRE_FINALIZER(CFWL_Widget, CallVirtualPreFinalize);
 
  public:
   class AdapterIface : public cppgc::GarbageCollectedMixin {
@@ -97,6 +97,10 @@ class CFWL_Widget : public cppgc::GarbageCollected<CFWL_Widget>,
 
   CONSTRUCT_VIA_MAKE_GARBAGE_COLLECTED;
   ~CFWL_Widget() override;
+
+  // ccpgc doesn't handle virtual finalizer dispatch, so do it
+  // explicitly through a non-virtual method.
+  void CallVirtualPreFinalize();
 
   virtual void PreFinalize();
   void Trace(cppgc::Visitor* visitor) const override;
