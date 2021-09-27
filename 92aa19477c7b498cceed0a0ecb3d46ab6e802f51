@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2f7373_82a8073a",
+        "filename": "xfa/fxfa/cxfa_fftextedit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-27T18:22:27Z",
+      "side": 1,
+      "message": "nit: newline to separate from override.",
+      "revId": "92aa19477c7b498cceed0a0ecb3d46ab6e802f51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
