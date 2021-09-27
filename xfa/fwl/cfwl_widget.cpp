@@ -49,6 +49,10 @@ CFWL_Widget::CFWL_Widget(CFWL_App* app,
 
 CFWL_Widget::~CFWL_Widget() = default;
 
+void CFWL_Widget::CallVirtualPreFinalize() {
+  PreFinalize();
+}
+
 void CFWL_Widget::PreFinalize() {
   CHECK(!IsLocked());  // Prefer hard stop to UaF.
   NotifyDriver();
