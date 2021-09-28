@@ -468,7 +468,7 @@ class FaxDecoder final : public ScanlineDecoder {
 
   // ScanlineDecoder:
   bool Rewind() override;
-  uint8_t* GetNextLine() override;
+  pdfium::span<uint8_t> GetNextLine() override;
   uint32_t GetSrcOffset() override;
 
  private:
@@ -514,11 +514,11 @@ bool FaxDecoder::Rewind() {
   return true;
 }
 
-uint8_t* FaxDecoder::GetNextLine() {
+pdfium::span<uint8_t> FaxDecoder::GetNextLine() {
   int bitsize = m_SrcSpan.size() * 8;
   FaxSkipEOL(m_SrcSpan.data(), bitsize, &m_bitpos);
   if (m_bitpos >= bitsize)
-    return nullptr;
+    return pdfium::span<uint8_t>();
 
   memset(m_ScanlineBuf.data(), 0xff, m_ScanlineBuf.size());
   if (m_Encoding < 0) {
@@ -556,7 +556,7 @@ uint8_t* FaxDecoder::GetNextLine() {
   }
   if (m_bBlack)
     InvertBuffer();
-  return m_ScanlineBuf.data();
+  return m_ScanlineBuf;
 }
 
 uint32_t FaxDecoder::GetSrcOffset() {
