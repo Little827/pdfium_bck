@@ -17,6 +17,23 @@
       "message": "Note that V8 has landed + reverted their \"enable abseil\" CL 3 times now. I\u0027ll hold off on this until their landing sticks.",
       "revId": "cd53b89552a561d18656992fbc9c7a090563e91d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcf6443_85bee027",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-28T22:24:56Z",
+      "side": 1,
+      "message": "Maybe split the CL into a DEPS + BUILD.gn part to land first, so we can experiment?",
+      "revId": "cd53b89552a561d18656992fbc9c7a090563e91d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
