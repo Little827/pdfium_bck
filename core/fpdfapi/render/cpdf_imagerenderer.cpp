@@ -421,7 +421,7 @@ bool CPDF_ImageRenderer::StartDIBBase() {
       return false;
     }
 
-    Optional<FX_RECT> image_rect = GetUnitRect();
+    absl::optional<FX_RECT> image_rect = GetUnitRect();
     if (!image_rect.has_value())
       return false;
 
@@ -433,7 +433,7 @@ bool CPDF_ImageRenderer::StartDIBBase() {
     return true;
   }
 
-  Optional<FX_RECT> image_rect = GetUnitRect();
+  absl::optional<FX_RECT> image_rect = GetUnitRect();
   if (!image_rect.has_value())
     return false;
 
@@ -515,7 +515,7 @@ bool CPDF_ImageRenderer::StartBitmapAlpha() {
     return false;
   }
 
-  Optional<FX_RECT> image_rect = GetUnitRect();
+  absl::optional<FX_RECT> image_rect = GetUnitRect();
   if (!image_rect.has_value())
     return false;
 
@@ -592,7 +592,7 @@ bool CPDF_ImageRenderer::ContinueTransform(PauseIndicatorIface* pPause) {
 }
 
 void CPDF_ImageRenderer::HandleFilters() {
-  Optional<DecoderArray> decoder_array =
+  absl::optional<DecoderArray> decoder_array =
       GetDecoderArray(m_pImageObject->GetImage()->GetStream()->GetDict());
   if (!decoder_array.has_value())
     return;
@@ -605,7 +605,7 @@ void CPDF_ImageRenderer::HandleFilters() {
   }
 }
 
-Optional<FX_RECT> CPDF_ImageRenderer::GetUnitRect() const {
+absl::optional<FX_RECT> CPDF_ImageRenderer::GetUnitRect() const {
   CFX_FloatRect image_rect_f = m_ImageMatrix.GetUnitRect();
   FX_RECT image_rect = image_rect_f.GetOuterRect();
   if (!image_rect.Valid())
