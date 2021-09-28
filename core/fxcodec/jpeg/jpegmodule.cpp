@@ -395,7 +395,7 @@ Optional<JpegModule::ImageInfo> JpegModule::LoadInfo(
     pdfium::span<const uint8_t> src_span) {
   ImageInfo info;
   if (!JpegLoadInfo(src_span, &info))
-    return pdfium::nullopt;
+    return absl::nullopt;
 
   return info;
 }
