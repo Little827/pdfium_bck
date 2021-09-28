@@ -1445,8 +1445,8 @@ double ValueToDouble(v8::Isolate* pIsolate, v8::Local<v8::Value> arg) {
   return fxv8::ReentrantToDoubleHelper(pIsolate, extracted);
 }
 
-Optional<double> ExtractDouble(v8::Isolate* pIsolate,
-                               v8::Local<v8::Value> src) {
+absl::optional<double> ExtractDouble(v8::Isolate* pIsolate,
+                                     v8::Local<v8::Value> src) {
   if (src.IsEmpty())
     return 0.0;
 
@@ -1557,7 +1557,7 @@ v8::Local<v8::Value> GetObjectForName(CFXJSE_HostObject* pHostObject,
     return v8::Local<v8::Value>();
 
   CFXJSE_Engine* pScriptContext = pDoc->GetScriptContext();
-  Optional<CFXJSE_Engine::ResolveResult> maybeResult =
+  absl::optional<CFXJSE_Engine::ResolveResult> maybeResult =
       pScriptContext->ResolveObjects(
           pScriptContext->GetThisObject(),
           WideString::FromUTF8(bsAccessorName).AsStringView(),
@@ -1573,7 +1573,7 @@ v8::Local<v8::Value> GetObjectForName(CFXJSE_HostObject* pHostObject,
       maybeResult.value().objects.front().Get());
 }
 
-Optional<CFXJSE_Engine::ResolveResult> ResolveObjects(
+absl::optional<CFXJSE_Engine::ResolveResult> ResolveObjects(
     CFXJSE_HostObject* pHostObject,
     v8::Local<v8::Value> pRefValue,
     ByteStringView bsSomExp,
@@ -1600,7 +1600,7 @@ Optional<CFXJSE_Engine::ResolveResult> ResolveObjects(
       if (bHasNoResolveName) {
         WideString wsName;
         if (CXFA_Node* pXFANode = pNode->AsNode()) {
-          Optional<WideString> ret =
+          absl::optional<WideString> ret =
               pXFANode->JSObject()->TryAttribute(XFA_Attribute::Name, false);
           if (ret.has_value())
             wsName = ret.value();
@@ -1827,8 +1827,10 @@ void CFXJSE_FormCalcContext::Mod(
     return;
   }
 
-  Optional<double> maybe_dividend = ExtractDouble(info.GetIsolate(), info[0]);
-  Optional<double> maybe_divisor = ExtractDouble(info.GetIsolate(), info[1]);
+  absl::optional<double> maybe_dividend =
+      ExtractDouble(info.GetIsolate(), info[0]);
+  absl::optional<double> maybe_divisor =
+      ExtractDouble(info.GetIsolate(), info[1]);
   if (!maybe_dividend.has_value() || !maybe_divisor.has_value()) {
     pContext->ThrowArgumentMismatchException();
     return;
@@ -1861,7 +1863,8 @@ void CFXJSE_FormCalcContext::Round(
     return;
   }
 
-  Optional<double> maybe_value = ExtractDouble(info.GetIsolate(), info[0]);
+  absl::optional<double> maybe_value =
+      ExtractDouble(info.GetIsolate(), info[0]);
   if (!maybe_value.has_value()) {
     pContext->ThrowArgumentMismatchException();
     return;
@@ -1874,7 +1877,7 @@ void CFXJSE_FormCalcContext::Round(
       info.GetReturnValue().SetNull();
       return;
     }
-    Optional<double> maybe_precision =
+    absl::optional<double> maybe_precision =
         ExtractDouble(info.GetIsolate(), info[1]);
     if (!maybe_precision.has_value()) {
       pContext->ThrowArgumentMismatchException();
@@ -3299,8 +3302,9 @@ void CFXJSE_FormCalcContext::Eval(
   }
 
   WideString wsCalcScript = WideString::FromUTF8(bsUtf8Script.AsStringView());
-  Optional<CFX_WideTextBuf> wsJavaScriptBuf = CFXJSE_FormCalcContext::Translate(
-      pContext->GetDocument()->GetHeap(), wsCalcScript.AsStringView());
+  absl::optional<CFX_WideTextBuf> wsJavaScriptBuf =
+      CFXJSE_FormCalcContext::Translate(pContext->GetDocument()->GetHeap(),
+                                        wsCalcScript.AsStringView());
   if (!wsJavaScriptBuf.has_value()) {
     pContext->ThrowCompilerErrorException();
     return;
@@ -5108,8 +5112,9 @@ void CFXJSE_FormCalcContext::eval_translation(
   }
 
   WideString wsCalcScript = WideString::FromUTF8(bsArg.AsStringView());
-  Optional<CFX_WideTextBuf> wsJavaScriptBuf = CFXJSE_FormCalcContext::Translate(
-      pContext->GetDocument()->GetHeap(), wsCalcScript.AsStringView());
+  absl::optional<CFX_WideTextBuf> wsJavaScriptBuf =
+      CFXJSE_FormCalcContext::Translate(pContext->GetDocument()->GetHeap(),
+                                        wsCalcScript.AsStringView());
   if (!wsJavaScriptBuf.has_value()) {
     pContext->ThrowCompilerErrorException();
     return;
@@ -5289,7 +5294,7 @@ ByteString CFXJSE_FormCalcContext::GenerateSomExpression(ByteStringView bsName,
   return bsSomExp;
 }
 
-Optional<CFX_WideTextBuf> CFXJSE_FormCalcContext::Translate(
+absl::optional<CFX_WideTextBuf> CFXJSE_FormCalcContext::Translate(
     cppgc::Heap* pHeap,
     WideStringView wsFormcalc) {
   if (wsFormcalc.IsEmpty())
@@ -5302,7 +5307,7 @@ Optional<CFX_WideTextBuf> CFXJSE_FormCalcContext::Translate(
     return absl::nullopt;
 
   CXFA_FMToJavaScriptDepth::Reset();
-  Optional<CFX_WideTextBuf> wsJavaScript = ast->ToJavaScript();
+  absl::optional<CFX_WideTextBuf> wsJavaScript = ast->ToJavaScript();
   if (!wsJavaScript.has_value())
     return absl::nullopt;
 
@@ -5377,7 +5382,7 @@ void CFXJSE_FormCalcContext::DotAccessorCommon(
     for (uint32_t i = 2; i < iLength; i++) {
       v8::Local<v8::Value> hJSObjValue =
           fxv8::ReentrantGetArrayElementHelper(info.GetIsolate(), arr, i);
-      Optional<CFXJSE_Engine::ResolveResult> maybeResult =
+      absl::optional<CFXJSE_Engine::ResolveResult> maybeResult =
           ResolveObjects(pThis, hJSObjValue, bsSomExp.AsStringView(),
                          bDotAccessor, bHasNoResolveName);
       if (maybeResult.has_value()) {
@@ -5407,7 +5412,7 @@ void CFXJSE_FormCalcContext::DotAccessorCommon(
     return;
   }
 
-  Optional<CFXJSE_Engine::ResolveResult> maybeResult;
+  absl::optional<CFXJSE_Engine::ResolveResult> maybeResult;
   ByteString bsAccessorName =
       fxv8::ReentrantToByteStringHelper(info.GetIsolate(), info[1]);
   if (fxv8::IsObject(argAccessor) ||
