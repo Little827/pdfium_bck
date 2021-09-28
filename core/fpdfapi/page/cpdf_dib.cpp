@@ -725,7 +725,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap() {
       m_JpxInlineData.height = image_info.height;
       m_JpxInlineData.data.reserve(image_info.width * image_info.height);
       for (uint32_t row = 0; row < image_info.height; ++row) {
-        const uint8_t* src = result_bitmap->GetScanline(row);
+        const uint8_t* src = result_bitmap->GetScanline(row).data();
         uint8_t* dest = rgb_bitmap->GetWritableScanline(row);
         for (uint32_t col = 0; col < image_info.width; ++col) {
           uint8_t a = src[3];
@@ -744,7 +744,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap() {
     } else {
       // TODO(thestig): Is there existing code that does this already?
       for (uint32_t row = 0; row < image_info.height; ++row) {
-        const uint8_t* src = result_bitmap->GetScanline(row);
+        const uint8_t* src = result_bitmap->GetScanline(row).data();
         uint8_t* dest = rgb_bitmap->GetWritableScanline(row);
         for (uint32_t col = 0; col < image_info.width; ++col) {
           memcpy(dest, src, 3);
@@ -1072,14 +1072,14 @@ uint8_t* CPDF_DIB::GetBuffer() const {
   return m_pCachedBitmap ? m_pCachedBitmap->GetBuffer() : nullptr;
 }
 
-const uint8_t* CPDF_DIB::GetScanline(int line) const {
+pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
   if (m_bpc == 0)
-    return nullptr;
+    return pdfium::span<const uint8_t>();
 
   const Optional<uint32_t> src_pitch =
       fxcodec::CalculatePitch8(m_bpc, m_nComponents, m_Width);
   if (!src_pitch.has_value())
-    return nullptr;
+    return pdfium::span<const uint8_t>();
 
   uint32_t src_pitch_value = src_pitch.value();
   const uint8_t* pSrcLine = nullptr;
@@ -1087,28 +1087,28 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
     if (line >= m_pCachedBitmap->GetHeight()) {
       line = m_pCachedBitmap->GetHeight() - 1;
     }
-    pSrcLine = m_pCachedBitmap->GetScanline(line);
+    pSrcLine = m_pCachedBitmap->GetScanline(line).data();
   } else if (m_pDecoder) {
-    pSrcLine = m_pDecoder->GetScanline(line);
+    pSrcLine = m_pDecoder->GetScanline(line).data();
   } else if (m_pStreamAcc->GetSize() >= (line + 1) * src_pitch_value) {
     pSrcLine = m_pStreamAcc->GetData() + line * src_pitch_value;
   }
   if (!pSrcLine) {
     uint8_t* pLineBuf = m_pMaskedLine ? m_pMaskedLine.get() : m_pLineBuf.get();
     memset(pLineBuf, 0xFF, m_Pitch);
-    return pLineBuf;
+    return {pLineBuf, m_Pitch};
   }
 
   if (m_bpc * m_nComponents == 1) {
     if (m_bImageMask && m_bDefaultDecode) {
       for (uint32_t i = 0; i < src_pitch_value; i++)
         m_pLineBuf.get()[i] = ~pSrcLine[i];
-      return m_pLineBuf.get();
+      return {m_pLineBuf.get(), m_Pitch};
     }
 
     if (!m_bColorKey) {
       memcpy(m_pLineBuf.get(), pSrcLine, src_pitch_value);
-      return m_pLineBuf.get();
+      return {m_pLineBuf.get(), m_Pitch};
     }
 
     uint32_t reset_argb = Get1BitResetValue();
@@ -1118,7 +1118,7 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
       *dest_scan = GetBitValue(pSrcLine, col) ? set_argb : reset_argb;
       dest_scan++;
     }
-    return m_pMaskedLine.get();
+    return {m_pMaskedLine.get(), m_Pitch};
   }
   if (m_bpc * m_nComponents <= 8) {
     if (m_bpc == 8) {
@@ -1136,7 +1136,7 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
       }
     }
     if (!m_bColorKey)
-      return m_pLineBuf.get();
+      return {m_pLineBuf.get(), m_Pitch};
 
     uint8_t* pDestPixel = m_pMaskedLine.get();
     const uint8_t* pSrcPixel = m_pLineBuf.get();
@@ -1155,7 +1155,7 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
       *pDestPixel = IsColorIndexOutOfBounds(index, m_CompData[0]) ? 0xFF : 0;
       pDestPixel++;
     }
-    return m_pMaskedLine.get();
+    return {m_pMaskedLine.get(), m_Pitch};
   }
   if (m_bColorKey) {
     if (m_nComponents == 3 && m_bpc == 8) {
@@ -1174,7 +1174,7 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
     pSrcLine = m_pLineBuf.get();
   }
   if (!m_bColorKey)
-    return pSrcLine;
+    return {pSrcLine, src_pitch_value};
 
   const uint8_t* pSrcPixel = pSrcLine;
   uint8_t* pDestPixel = m_pMaskedLine.get();
@@ -1184,7 +1184,7 @@ const uint8_t* CPDF_DIB::GetScanline(int line) const {
     *pDestPixel++ = *pSrcPixel++;
     pDestPixel++;
   }
-  return m_pMaskedLine.get();
+  return {m_pMaskedLine.get(), m_Pitch};
 }
 
 bool CPDF_DIB::SkipToScanline(int line, PauseIndicatorIface* pPause) const {

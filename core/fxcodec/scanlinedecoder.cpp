@@ -29,13 +29,13 @@ ScanlineDecoder::ScanlineDecoder(int nOrigWidth,
 
 ScanlineDecoder::~ScanlineDecoder() = default;
 
-const uint8_t* ScanlineDecoder::GetScanline(int line) {
+pdfium::span<const uint8_t> ScanlineDecoder::GetScanline(int line) {
   if (m_NextLine == line + 1)
     return m_pLastScanline;
 
   if (m_NextLine < 0 || m_NextLine > line) {
     if (!Rewind())
-      return nullptr;
+      return pdfium::span<const uint8_t>();
     m_NextLine = 0;
   }
   while (m_NextLine < line) {
@@ -55,7 +55,7 @@ bool ScanlineDecoder::SkipToScanline(int line, PauseIndicatorIface* pPause) {
     Rewind();
     m_NextLine = 0;
   }
-  m_pLastScanline = nullptr;
+  m_pLastScanline = pdfium::span<uint8_t>();
   while (m_NextLine < line) {
     m_pLastScanline = GetNextLine();
     m_NextLine++;
