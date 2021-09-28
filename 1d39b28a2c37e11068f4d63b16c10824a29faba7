@@ -16,6 +16,24 @@
       "message": "Would a comment be helpful here and in other dtors? In core/fxcodec/scanlinedecoder.h?",
       "revId": "1d39b28a2c37e11068f4d63b16c10824a29faba7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a32e63_54e328ff",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-28T22:13:57Z",
+      "side": 1,
+      "message": "My hope is to remove the m_pLastScanLine down the road, but comment for now.",
+      "parentUuid": "31833954_28e45551",
+      "revId": "1d39b28a2c37e11068f4d63b16c10824a29faba7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
