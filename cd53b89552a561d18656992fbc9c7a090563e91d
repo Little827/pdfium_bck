@@ -52,6 +52,24 @@
       "parentUuid": "e342e8ca_63c0709c",
       "revId": "cd53b89552a561d18656992fbc9c7a090563e91d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "970c830c_743a4e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5760
+      },
+      "writtenOn": "2021-09-29T16:13:46Z",
+      "side": 1,
+      "message": "Yes, we have a bug open for adding a gcc bot.\n\nI do build with gcc locally and this doesn\u0027t break the build.",
+      "parentUuid": "b323c6d4_12a37412",
+      "revId": "cd53b89552a561d18656992fbc9c7a090563e91d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
