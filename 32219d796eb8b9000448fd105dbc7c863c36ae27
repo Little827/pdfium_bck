@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2a0e0b_baeefb8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-29T21:25:40Z",
+      "side": 1,
+      "message": "Yep, all is good, if you go to v8/ and manually checkout a revision that requires abseil (say 1054ee7f), it all builds.  ",
+      "revId": "32219d796eb8b9000448fd105dbc7c863c36ae27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
