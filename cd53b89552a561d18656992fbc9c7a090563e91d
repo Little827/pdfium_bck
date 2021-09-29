@@ -34,6 +34,24 @@
       "message": "Maybe split the CL into a DEPS + BUILD.gn part to land first, so we can experiment?",
       "revId": "cd53b89552a561d18656992fbc9c7a090563e91d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b323c6d4_12a37412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-09-29T15:35:37Z",
+      "side": 1,
+      "message": "Also, it looks like the upstream issue is with gcc. We might consider getting a gcc bot on some platform?",
+      "parentUuid": "e342e8ca_63c0709c",
+      "revId": "cd53b89552a561d18656992fbc9c7a090563e91d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
