@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ff7ac5_369700ca",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-29T19:40:23Z",
+      "side": 1,
+      "message": "curly braces",
+      "revId": "6fc03784d4f6c2e736123e71568794a891140ae3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
