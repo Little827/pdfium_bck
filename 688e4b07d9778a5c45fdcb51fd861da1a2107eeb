@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1d4243_2bf1b25c",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-29T22:35:28Z",
+      "side": 1,
+      "message": "existing: typo",
+      "range": {
+        "startLine": 1945,
+        "startChar": 37,
+        "endLine": 1945,
+        "endChar": 51
+      },
+      "revId": "688e4b07d9778a5c45fdcb51fd861da1a2107eeb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
