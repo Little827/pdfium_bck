@@ -2818,7 +2818,7 @@ bool CFX_DefaultRenderDevice::SetBitsWithMask(
 }
 #endif  // defined(_SKIA_SUPPORT_)
 
-void CFX_DIBBase::DebugVerifyBitmapIsPreMultiplied(void* opt) const {
+void CFX_DIBitmap::DebugVerifyBitmapIsPreMultiplied(void* opt) const {
 #ifdef SK_DEBUG
   DCHECK_EQ(GetBPP(), 32);
   const uint32_t* buffer = (const uint32_t*)(opt ? opt : GetBuffer());

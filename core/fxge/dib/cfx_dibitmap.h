@@ -14,7 +14,7 @@
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/base/optional.h"
 
-class CFX_DIBitmap : public CFX_DIBBase {
+class CFX_DIBitmap final : public CFX_DIBBase {
  public:
   struct PitchAndSize {
     uint32_t pitch;
@@ -107,6 +107,7 @@ class CFX_DIBitmap : public CFX_DIBBase {
 
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   void PreMultiply();
+  void DebugVerifyBitmapIsPreMultiplied(void* buffer) const;
 #endif
 #if defined(_SKIA_SUPPORT_PATHS_)
   void UnPreMultiply();
