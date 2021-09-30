@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba59c9ed_f100d1ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-09-30T18:21:52Z",
+      "side": 1,
+      "message": "Haven\u0027t heard any objections, and I think this is safe to do, so I\u0027ll go ahead and land this, and only this, pdfium::Optional CL today. Then let\u0027s see if anything breaks.",
+      "revId": "ea55ea46b08469fc9ca47ec3d61c0e9c0c9537b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
