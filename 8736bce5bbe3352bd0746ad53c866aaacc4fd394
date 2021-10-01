@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f40f686_fefb812e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-01T18:20:40Z",
+      "side": 1,
+      "message": "\u003e \"menas\" is a possible misspelling of \"means\".\n\nPlease fix.",
+      "parentUuid": "f3f09493_38064b8f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "8736bce5bbe3352bd0746ad53c866aaacc4fd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c381e04b_335cf20d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-01T18:20:40Z",
+      "side": 1,
+      "message": "Got red bots.",
+      "revId": "8736bce5bbe3352bd0746ad53c866aaacc4fd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
