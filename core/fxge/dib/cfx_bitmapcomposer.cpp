@@ -124,13 +124,13 @@ void CFX_BitmapComposer::ComposeScanline(int line,
     // Help some compilers perform pointer arithmetic against safe numerics.
     dest_scan += static_cast<uint32_t>(offset.ValueOrDie());
   }
-  uint8_t* dest_alpha_scan =
-      m_pBitmap->GetWritableAlphaMaskScanline(line + m_DestTop).data();
-  if (dest_alpha_scan)
-    dest_alpha_scan += m_DestLeft;
+  pdfium::span<uint8_t> dest_alpha_scan =
+      m_pBitmap->GetWritableAlphaMaskScanline(line + m_DestTop);
+  if (!dest_alpha_scan.empty())
+    dest_alpha_scan = dest_alpha_scan.subspan(m_DestLeft);
 
   DoCompose(dest_scan, scanline, m_DestWidth, clip_scan, scan_extra_alpha,
-            dest_alpha_scan);
+            dest_alpha_scan.data());
 }
 
 void CFX_BitmapComposer::ComposeScanlineV(int line,
