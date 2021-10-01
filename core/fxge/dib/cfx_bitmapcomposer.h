@@ -43,8 +43,8 @@ class CFX_BitmapComposer final : public ScanlineComposerIface {
                pdfium::span<const uint32_t> src_palette) override;
 
   void ComposeScanline(int line,
-                       const uint8_t* scanline,
-                       const uint8_t* scan_extra_alpha) override;
+                       pdfium::span<const uint8_t> scanline,
+                       pdfium::span<const uint8_t> scan_extra_alpha) override;
 
  private:
   void DoCompose(uint8_t* dest_scan,
@@ -54,8 +54,8 @@ class CFX_BitmapComposer final : public ScanlineComposerIface {
                  const uint8_t* src_extra_alpha,
                  uint8_t* dst_extra_alpha);
   void ComposeScanlineV(int line,
-                        const uint8_t* scanline,
-                        const uint8_t* scan_extra_alpha);
+                        pdfium::span<const uint8_t> scanline,
+                        pdfium::span<const uint8_t> scan_extra_alpha);
 
   RetainPtr<CFX_DIBitmap> m_pBitmap;
   UnownedPtr<const CFX_ClipRgn> m_pClipRgn;

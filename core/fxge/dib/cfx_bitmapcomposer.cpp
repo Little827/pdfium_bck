@@ -99,9 +99,10 @@ void CFX_BitmapComposer::DoCompose(uint8_t* dest_scan,
   }
 }
 
-void CFX_BitmapComposer::ComposeScanline(int line,
-                                         const uint8_t* scanline,
-                                         const uint8_t* scan_extra_alpha) {
+void CFX_BitmapComposer::ComposeScanline(
+    int line,
+    pdfium::span<const uint8_t> scanline,
+    pdfium::span<const uint8_t> scan_extra_alpha) {
   if (m_bVertical) {
     ComposeScanlineV(line, scanline, scan_extra_alpha);
     return;
@@ -124,18 +125,19 @@ void CFX_BitmapComposer::ComposeScanline(int line,
     // Help some compilers perform pointer arithmetic against safe numerics.
     dest_scan += static_cast<uint32_t>(offset.ValueOrDie());
   }
-  uint8_t* dest_alpha_scan =
-      m_pBitmap->GetWritableAlphaMaskScanline(line + m_DestTop).data();
-  if (dest_alpha_scan)
-    dest_alpha_scan += m_DestLeft;
+  pdfium::span<uint8_t> dest_alpha_scan =
+      m_pBitmap->GetWritableAlphaMaskScanline(line + m_DestTop);
+  if (!dest_alpha_scan.empty())
+    dest_alpha_scan = dest_alpha_scan.subspan(m_DestLeft);
 
-  DoCompose(dest_scan, scanline, m_DestWidth, clip_scan, scan_extra_alpha,
-            dest_alpha_scan);
+  DoCompose(dest_scan, scanline.data(), m_DestWidth, clip_scan,
+            scan_extra_alpha.data(), dest_alpha_scan.data());
 }
 
-void CFX_BitmapComposer::ComposeScanlineV(int line,
-                                          const uint8_t* scanline,
-                                          const uint8_t* scan_extra_alpha) {
+void CFX_BitmapComposer::ComposeScanlineV(
+    int line,
+    pdfium::span<const uint8_t> scanline,
+    pdfium::span<const uint8_t> scan_extra_alpha) {
   int Bpp = m_pBitmap->GetBPP() / 8;
   int dest_pitch = m_pBitmap->GetPitch();
   int dest_alpha_pitch = m_pBitmap->GetAlphaMaskPitch();
@@ -190,8 +192,8 @@ void CFX_BitmapComposer::ComposeScanlineV(int line,
       src_clip += clip_pitch;
     }
   }
-  DoCompose(m_pScanlineV.data(), scanline, m_DestHeight, clip_scan,
-            scan_extra_alpha, m_pScanlineAlphaV.data());
+  DoCompose(m_pScanlineV.data(), scanline.data(), m_DestHeight, clip_scan,
+            scan_extra_alpha.data(), m_pScanlineAlphaV.data());
   src_scan = m_pScanlineV.data();
   dest_scan = dest_buf;
   for (int i = 0; i < m_DestHeight; ++i) {
