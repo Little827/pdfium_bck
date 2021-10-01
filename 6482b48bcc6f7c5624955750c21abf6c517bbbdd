@@ -34,6 +34,42 @@
       "parentUuid": "16055286_37f7dde5",
       "revId": "6482b48bcc6f7c5624955750c21abf6c517bbbdd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517b3660_a07d7ce5",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-01T17:19:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "581ee0c5_956fa19a",
+      "revId": "6482b48bcc6f7c5624955750c21abf6c517bbbdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1102bff_0255a150",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-01T17:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "581ee0c5_956fa19a",
+      "revId": "6482b48bcc6f7c5624955750c21abf6c517bbbdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
