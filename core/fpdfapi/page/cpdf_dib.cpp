@@ -1074,6 +1074,10 @@ uint8_t* CPDF_DIB::GetBuffer() const {
   return m_pCachedBitmap ? m_pCachedBitmap->GetBuffer() : nullptr;
 }
 
+uint32_t CPDF_DIB::GetEstimatedImageMemoryBurden() const {
+  return m_pCachedBitmap ? m_pCachedBitmap->GetEstimatedImageMemoryBurden() : 0;
+}
+
 pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
   if (m_bpc == 0)
     return pdfium::span<const uint8_t>();
