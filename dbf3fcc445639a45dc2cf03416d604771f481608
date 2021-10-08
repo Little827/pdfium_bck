@@ -17,6 +17,24 @@
       "message": "Note this rolls to last week. After this, there will be some MSVC configuration fun.",
       "revId": "dbf3fcc445639a45dc2cf03416d604771f481608",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c67c2b_62a0c17a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-10-08T22:11:13Z",
+      "side": 1,
+      "message": "Got it~",
+      "parentUuid": "e997614f_5c47fec5",
+      "revId": "dbf3fcc445639a45dc2cf03416d604771f481608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
