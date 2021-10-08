@@ -70,7 +70,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
       !dest_bitmap->Create(width, height, dest_format)) {
     return 0;
   }
-  if (!src_bitmap->GetBuffer() || !dest_bitmap->GetBuffer()) {
+  if (!src_bitmap->HasBuffer() || !dest_bitmap->HasBuffer()) {
     return 0;
   }
 
