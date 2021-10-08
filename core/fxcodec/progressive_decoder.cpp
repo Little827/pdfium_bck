@@ -1283,7 +1283,7 @@ FXCODEC_STATUS ProgressiveDecoder::TiffContinueDecode() {
 
   auto pDIBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
   pDIBitmap->Create(m_SrcWidth, m_SrcHeight, FXDIB_Format::kArgb);
-  if (!pDIBitmap->GetBuffer()) {
+  if (!pDIBitmap->HasBuffer()) {
     m_pDeviceBitmap = nullptr;
     m_pFile = nullptr;
     m_status = FXCODEC_STATUS::kError;
@@ -1689,8 +1689,7 @@ void ProgressiveDecoder::ReSampleScanline(
     FXCodec_Format src_format) {
   int src_left = m_clipBox.left;
   int dest_left = m_startX;
-  uint8_t* dest_scan =
-      pDeviceBitmap->GetBuffer() + dest_line * pDeviceBitmap->GetPitch();
+  uint8_t* dest_scan = pDeviceBitmap->GetWritableScanline(dest_line).data();
   int src_bytes_per_pixel = (src_format & 0xff) / 8;
   int dest_bytes_per_pixel = pDeviceBitmap->GetBPP() / 8;
   src_scan += src_left * src_bytes_per_pixel;
