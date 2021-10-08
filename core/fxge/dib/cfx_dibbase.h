@@ -32,7 +32,6 @@ class CFX_DIBBase : public Retainable {
 
   ~CFX_DIBBase() override;
 
-  virtual uint8_t* GetBuffer() const;
   virtual pdfium::span<const uint8_t> GetScanline(int line) const = 0;
   virtual bool SkipToScanline(int line, PauseIndicatorIface* pPause) const;
   virtual uint32_t GetEstimatedImageMemory() const;
