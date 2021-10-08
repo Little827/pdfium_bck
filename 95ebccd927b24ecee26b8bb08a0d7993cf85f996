@@ -17,6 +17,75 @@
       "message": "Note that this may be a game of whac-a-mole with ClusterFuzz, but this one has been around for a while, so it\u0027s time to give it a whack.",
       "revId": "95ebccd927b24ecee26b8bb08a0d7993cf85f996",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761eb61a_ff0b0026",
+        "filename": "third_party/lcms/src/cmsintrp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-08T19:35:43Z",
+      "side": 1,
+      "message": "nit: this might make more sense as a hex constant 0x7fff0000",
+      "range": {
+        "startLine": 846,
+        "startChar": 41,
+        "endLine": 846,
+        "endChar": 51
+      },
+      "revId": "95ebccd927b24ecee26b8bb08a0d7993cf85f996",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80afc9a8_63a88efa",
+        "filename": "third_party/lcms/src/cmsintrp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-08T19:35:43Z",
+      "side": 1,
+      "message": "Can you explain why not 32767 if we care about signed short and 32768 doesn\u0027t fit in signed short?\nnit: this might make more sense as 0x00010000",
+      "range": {
+        "startLine": 847,
+        "startChar": 54,
+        "endLine": 847,
+        "endChar": 59
+      },
+      "revId": "95ebccd927b24ecee26b8bb08a0d7993cf85f996",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3874684_c3b95294",
+        "filename": "third_party/lcms/src/cmsintrp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-08T19:35:43Z",
+      "side": 1,
+      "message": "so does this overflow, too, otherwise wondering why we don\u0027t just clamp this result to 32768",
+      "range": {
+        "startLine": 949,
+        "startChar": 36,
+        "endLine": 949,
+        "endChar": 54
+      },
+      "revId": "95ebccd927b24ecee26b8bb08a0d7993cf85f996",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
