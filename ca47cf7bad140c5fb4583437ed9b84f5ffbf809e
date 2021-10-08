@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a238f0be_486d80bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-08T20:27:14Z",
+      "side": 1,
+      "message": "This one I think is reasonable, even if the rest of the chained CLs aren\u0027t workable.",
+      "revId": "ca47cf7bad140c5fb4583437ed9b84f5ffbf809e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
