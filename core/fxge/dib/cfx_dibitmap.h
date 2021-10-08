@@ -33,10 +33,10 @@ class CFX_DIBitmap final : public CFX_DIBBase {
   bool Copy(const RetainPtr<CFX_DIBBase>& pSrc);
 
   // CFX_DIBBase
-  uint8_t* GetBuffer() const override;
   pdfium::span<const uint8_t> GetScanline(int line) const override;
   uint32_t GetEstimatedImageMemory() const override;
 
+  uint8_t* GetBuffer() const;
   void TakeOver(RetainPtr<CFX_DIBitmap>&& pSrcBitmap);
   bool ConvertFormat(FXDIB_Format format);
   void Clear(uint32_t color);

@@ -1069,10 +1069,6 @@ bool CPDF_DIB::TranslateScanline24bppDefaultDecode(
   return true;
 }
 
-uint8_t* CPDF_DIB::GetBuffer() const {
-  return m_pCachedBitmap ? m_pCachedBitmap->GetBuffer() : nullptr;
-}
-
 uint32_t CPDF_DIB::GetEstimatedImageMemory() const {
   return m_pCachedBitmap ? m_pCachedBitmap->GetEstimatedImageMemory() : 0;
 }
