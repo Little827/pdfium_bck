@@ -1,0 +1,45 @@
+diff --git a/third_party/lcms/src/cmsintrp.c b/third_party/lcms/src/cmsintrp.c
+index 3d9a40530..675b7e671 100644
+--- a/third_party/lcms/src/cmsintrp.c
++++ b/third_party/lcms/src/cmsintrp.c
+@@ -843,6 +843,8 @@ void Eval4Inputs(CMSREGISTER const cmsUInt16Number Input[],
+                      CMSREGISTER const cmsInterpParams* p16)
+ {
+     const cmsUInt16Number* LutTable;
++    const cmsS15Fixed16Number kMaxRest = 2147418112;
++    const cmsS15Fixed16Number kSaturatedRoundedRest = 32768;
+     cmsS15Fixed16Number fk;
+     cmsS15Fixed16Number k0, rk;
+     int K0, K1;
+@@ -852,6 +854,7 @@ void Eval4Inputs(CMSREGISTER const cmsUInt16Number Input[],
+     cmsS15Fixed16Number    X0, X1, Y0, Y1, Z0, Z1;
+     cmsUInt32Number i;
+     cmsS15Fixed16Number    c0, c1, c2, c3, Rest;
++    cmsS15Fixed16Number    RoundedRest;
+     cmsUInt32Number        OutChan;
+     cmsUInt16Number        Tmp1[MAX_STAGE_CHANNELS], Tmp2[MAX_STAGE_CHANNELS];
+ 
+@@ -942,8 +945,10 @@ void Eval4Inputs(CMSREGISTER const cmsUInt16Number Input[],
+                             }
+ 
+         Rest = c1 * rx + c2 * ry + c3 * rz;
++        RoundedRest = Rest > kMaxRest ?
++            kSaturatedRoundedRest : ROUND_FIXED_TO_INT(_cmsToFixedDomain(Rest));
+ 
+-        Tmp1[OutChan] = (cmsUInt16Number)(c0 + ROUND_FIXED_TO_INT(_cmsToFixedDomain(Rest)));
++        Tmp1[OutChan] = (cmsUInt16Number)(c0 + RoundedRest);
+     }
+ 
+ 
+@@ -1006,8 +1011,10 @@ void Eval4Inputs(CMSREGISTER const cmsUInt16Number Input[],
+                             }
+ 
+         Rest = c1 * rx + c2 * ry + c3 * rz;
++        RoundedRest = Rest > kMaxRest ?
++            kSaturatedRoundedRest : ROUND_FIXED_TO_INT(_cmsToFixedDomain(Rest));
+ 
+-        Tmp2[OutChan] = (cmsUInt16Number) (c0 + ROUND_FIXED_TO_INT(_cmsToFixedDomain(Rest)));
++        Tmp2[OutChan] = (cmsUInt16Number) (c0 + RoundedRest);
+     }
+ 
+ 
