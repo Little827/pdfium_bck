@@ -751,7 +751,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::GetBackdrop(
   else
     m_pDevice->CreateCompatibleBitmap(pBackdrop, width, height);
 
-  if (!pBackdrop->GetBuffer())
+  if (!pBackdrop->HasBuffer())
     return nullptr;
 
   bool bNeedDraw;

@@ -194,7 +194,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
     return nullptr;
 
   pScreen->Clear(0);
-  const uint8_t* const src_buf = pPatternBitmap->GetBuffer();
+  const uint8_t* src_buf = pPatternBitmap->GetBuffer();
   for (int col = min_col; col <= max_col; col++) {
     for (int row = min_row; row <= max_row; row++) {
       int start_x;
@@ -225,7 +225,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
           continue;
         }
         uint32_t* dest_buf = reinterpret_cast<uint32_t*>(
-            pScreen->GetBuffer() + pScreen->GetPitch() * start_y + start_x * 4);
+            pScreen->GetWritableScanline(start_y).subspan(start_x * 4).data());
         if (pPattern->colored()) {
           const auto* src_buf32 = reinterpret_cast<const uint32_t*>(src_buf);
           *dest_buf = *src_buf32;
