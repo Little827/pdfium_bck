@@ -90,6 +90,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f36f7b66_acb9da26",
+        "filename": "third_party/lcms/src/cmsintrp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-08T19:53:48Z",
+      "side": 1,
+      "message": "isn\u0027t this really a int32_t - equivalent, since its in the 0..32768, not a (0 .. 32767) \u003c\u003c 16 | fract ?",
+      "range": {
+        "startLine": 857,
+        "startChar": 4,
+        "endLine": 857,
+        "endChar": 23
+      },
+      "revId": "95ebccd927b24ecee26b8bb08a0d7993cf85f996",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3874684_c3b95294",
         "filename": "third_party/lcms/src/cmsintrp.c",
         "patchSetId": 1
