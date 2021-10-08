@@ -604,10 +604,6 @@ CFX_DIBBase::CFX_DIBBase() = default;
 
 CFX_DIBBase::~CFX_DIBBase() = default;
 
-uint8_t* CFX_DIBBase::GetBuffer() const {
-  return nullptr;
-}
-
 bool CFX_DIBBase::SkipToScanline(int line, PauseIndicatorIface* pPause) const {
   return false;
 }
