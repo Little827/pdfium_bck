@@ -14,7 +14,7 @@
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/base/optional.h"
 
-class CFX_DIBitmap : public CFX_DIBBase {
+class CFX_DIBitmap final : public CFX_DIBBase {
  public:
   struct PitchAndSize {
     uint32_t pitch;
@@ -35,6 +35,7 @@ class CFX_DIBitmap : public CFX_DIBBase {
   // CFX_DIBBase
   uint8_t* GetBuffer() const override;
   pdfium::span<const uint8_t> GetScanline(int line) const override;
+  uint32_t GetEstimatedImageMemoryBurden() const override;
 
   void TakeOver(RetainPtr<CFX_DIBitmap>&& pSrcBitmap);
   bool ConvertFormat(FXDIB_Format format);
