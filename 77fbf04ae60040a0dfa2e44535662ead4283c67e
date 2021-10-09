@@ -22,6 +22,30 @@
       },
       "revId": "77fbf04ae60040a0dfa2e44535662ead4283c67e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42e8b35_9b984d44",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-09T01:35:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a48d4eae_3b5d783c",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "77fbf04ae60040a0dfa2e44535662ead4283c67e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
