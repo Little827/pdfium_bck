@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fb3551_ad61e566",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-09T00:12:17Z",
+      "side": 0,
+      "message": "It\u0027s October, no more pitching until spring.",
+      "range": {
+        "startLine": 1693,
+        "startChar": 62,
+        "endLine": 1693,
+        "endChar": 70
+      },
+      "revId": "0d5f6f89743f6b667f054e6cb5df03e6c7ea62bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
