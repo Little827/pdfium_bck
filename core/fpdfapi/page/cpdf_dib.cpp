@@ -1084,18 +1084,18 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
     return pdfium::span<const uint8_t>();
 
   uint32_t src_pitch_value = src_pitch.value();
-  const uint8_t* pSrcLine = nullptr;
+  pdfium::span<const uint8_t> pSrcLine;
   if (m_pCachedBitmap && src_pitch_value <= m_pCachedBitmap->GetPitch()) {
-    if (line >= m_pCachedBitmap->GetHeight()) {
+    if (line >= m_pCachedBitmap->GetHeight())
       line = m_pCachedBitmap->GetHeight() - 1;
-    }
-    pSrcLine = m_pCachedBitmap->GetScanline(line).data();
+    pSrcLine = m_pCachedBitmap->GetScanline(line);
   } else if (m_pDecoder) {
-    pSrcLine = m_pDecoder->GetScanline(line).data();
+    pSrcLine = m_pDecoder->GetScanline(line);
   } else if (m_pStreamAcc->GetSize() >= (line + 1) * src_pitch_value) {
-    pSrcLine = m_pStreamAcc->GetData() + line * src_pitch_value;
+    pSrcLine = pdfium::make_span(
+        m_pStreamAcc->GetData() + line * src_pitch_value, src_pitch_value);
   }
-  if (!pSrcLine) {
+  if (pSrcLine.empty()) {
     pdfium::span<uint8_t> pLineBuf = !m_MaskBuf.empty() ? m_MaskBuf : m_LineBuf;
     fxcrt::spanset(pLineBuf, 0xFF);
     return pLineBuf;
@@ -1103,14 +1103,16 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
 
   if (m_bpc * m_nComponents == 1) {
     if (m_bImageMask && m_bDefaultDecode) {
-      for (uint32_t i = 0; i < src_pitch_value; i++)
-        m_LineBuf[i] = ~pSrcLine[i];
+      for (uint32_t i = 0; i < src_pitch_value; i++) {
+        // TODO(tsepez): Bounds check if cost is acceptable.
+        m_LineBuf[i] = ~pSrcLine.data()[i];
+      }
       return m_LineBuf;
     }
 
     if (!m_bColorKey) {
       fxcrt::spancpy(pdfium::make_span(m_LineBuf),
-                     pdfium::make_span(pSrcLine, src_pitch_value));
+                     pSrcLine.subspan(src_pitch_value));
       return m_LineBuf;
     }
 
@@ -1118,7 +1120,7 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
     uint32_t set_argb = Get1BitSetValue();
     uint32_t* dest_scan = reinterpret_cast<uint32_t*>(m_MaskBuf.data());
     for (int col = 0; col < m_Width; col++) {
-      *dest_scan = GetBitValue(pSrcLine, col) ? set_argb : reset_argb;
+      *dest_scan = GetBitValue(pSrcLine.data(), col) ? set_argb : reset_argb;
       dest_scan++;
     }
     return m_MaskBuf;
@@ -1126,13 +1128,13 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
   if (m_bpc * m_nComponents <= 8) {
     if (m_bpc == 8) {
       fxcrt::spancpy(pdfium::make_span(m_LineBuf),
-                     pdfium::make_span(pSrcLine, src_pitch_value));
+                     pSrcLine.subspan(src_pitch_value));
     } else {
       uint64_t src_bit_pos = 0;
       for (int col = 0; col < m_Width; col++) {
         unsigned int color_index = 0;
         for (uint32_t color = 0; color < m_nComponents; color++) {
-          unsigned int data = GetBits8(pSrcLine, src_bit_pos, m_bpc);
+          unsigned int data = GetBits8(pSrcLine.data(), src_bit_pos, m_bpc);
           color_index |= data << (color * m_bpc);
           src_bit_pos += m_bpc;
         }
@@ -1165,7 +1167,7 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
     if (m_nComponents == 3 && m_bpc == 8) {
       uint8_t* alpha_channel = m_MaskBuf.data() + 3;
       for (int col = 0; col < m_Width; col++) {
-        const uint8_t* pPixel = pSrcLine + col * 3;
+        const uint8_t* pPixel = pSrcLine.data() + col * 3;
         alpha_channel[col * 4] =
             AreColorIndicesOutOfBounds(pPixel, m_CompData.data(), 3) ? 0xFF : 0;
       }
@@ -1174,14 +1176,15 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
     }
   }
   if (m_pColorSpace) {
-    TranslateScanline24bpp(m_LineBuf.data(), pSrcLine);
-    pSrcLine = m_LineBuf.data();
+    TranslateScanline24bpp(m_LineBuf.data(), pSrcLine.data());
     src_pitch_value = 3 * m_Width;
+    pSrcLine = pdfium::make_span(m_LineBuf).subspan(src_pitch_value);
   }
   if (!m_bColorKey)
-    return {pSrcLine, src_pitch_value};
+    return pSrcLine;
 
-  const uint8_t* pSrcPixel = pSrcLine;
+  // TODO(tsepez): Bounds check if cost is acceptable.
+  const uint8_t* pSrcPixel = pSrcLine.data();
   uint8_t* pDestPixel = m_MaskBuf.data();
   for (int col = 0; col < m_Width; col++) {
     *pDestPixel++ = *pSrcPixel++;
