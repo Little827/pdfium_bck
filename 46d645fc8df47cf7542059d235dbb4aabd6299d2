@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f708b1b8_0f6bd1f6",
+        "filename": "core/fpdfdoc/cpvt_variabletext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-12T19:00:56Z",
+      "side": 0,
+      "message": "In turn, does this become unused?",
+      "range": {
+        "startLine": 885,
+        "startChar": 30,
+        "endLine": 885,
+        "endChar": 37
+      },
+      "revId": "46d645fc8df47cf7542059d235dbb4aabd6299d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
