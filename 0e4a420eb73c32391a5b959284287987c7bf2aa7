@@ -69,6 +69,24 @@
       "parentUuid": "3cdc2b9f_53f717be",
       "revId": "0e4a420eb73c32391a5b959284287987c7bf2aa7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523a4dfc_fa6d831f",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-12T21:29:33Z",
+      "side": 1,
+      "message": "Indeed. But https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fpdfapi/page/cpdf_dib.cpp;drc\u003df26a4d7ff08614daa145943a4aacdec3562ff3c6;l\u003d242\n\nsizes m_MaskBuf and m_LineBuf (nearby) according to pitch, which was computed from m_Width. So I\u0027d assumed loops up to m_Width didn\u0027t require\nspecial checks. So that covers the loop at 1122.\n\nYou\u0027re right that the code at 1130 might be short.\nThe code at 1134, 1150, 1169. etc. should be coverd by the m_Width case. I\u0027m not sure how to make this clearer",
+      "parentUuid": "4c33d134_eb19f07f",
+      "revId": "0e4a420eb73c32391a5b959284287987c7bf2aa7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
