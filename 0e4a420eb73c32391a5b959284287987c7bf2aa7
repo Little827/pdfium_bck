@@ -16,6 +16,23 @@
       "message": "So I think this might fix some of the CHECKS() I disabled.",
       "revId": "0e4a420eb73c32391a5b959284287987c7bf2aa7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72fb546b_3fce3dd6",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-12T19:50:48Z",
+      "side": 1,
+      "message": "Should this also return a span of size `src_pitch_value`, like line 1110? Should we make sure all the return paths that are not failures return a span of the same size?",
+      "revId": "0e4a420eb73c32391a5b959284287987c7bf2aa7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
