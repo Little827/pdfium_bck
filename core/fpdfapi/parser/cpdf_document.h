@@ -22,8 +22,8 @@ class CPDF_StreamAcc;
 class IFX_SeekableReadStream;
 class JBig2_DocumentContext;
 
-class CPDF_Document : public Observable,
-                      public CPDF_Parser::ParsedObjectsHolder {
+class CPDF_Document final : public Observable,
+                            public CPDF_Parser::ParsedObjectsHolder {
  public:
   // Type from which the XFA extension can subclass itself.
   class Extension {
