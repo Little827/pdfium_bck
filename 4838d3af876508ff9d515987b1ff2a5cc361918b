@@ -16,6 +16,46 @@
       "message": "Since this is a hand-minimization of a CF test case, and who knows where CF got the original, we might want to check to see how it renders in other readers before publishing.",
       "revId": "4838d3af876508ff9d515987b1ff2a5cc361918b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1370f9e7_9f408b79",
+        "filename": "testing/resources/pixel/bug_1258634.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-14T18:19:30Z",
+      "side": 1,
+      "message": "nit: space before /Catalog. Same for line 8. Also space before brackets.",
+      "revId": "4838d3af876508ff9d515987b1ff2a5cc361918b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d49f7b_caeb5d85",
+        "filename": "testing/resources/pixel/bug_1258634.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-14T18:19:30Z",
+      "side": 1,
+      "message": "Safe to omit?",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 2
+      },
+      "revId": "4838d3af876508ff9d515987b1ff2a5cc361918b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
