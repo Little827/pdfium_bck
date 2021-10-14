@@ -13,7 +13,7 @@
 #include "core/fxge/renderdevicedriver_iface.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 
-class CGdiDeviceDriver : public RenderDeviceDriverIface {
+class CGdiDeviceDriver final : public RenderDeviceDriverIface {
  protected:
   CGdiDeviceDriver(HDC hDC, DeviceType device_type);
   ~CGdiDeviceDriver() override;
