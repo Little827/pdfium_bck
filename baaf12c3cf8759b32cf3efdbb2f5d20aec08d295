@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835f839a_537482d8",
+        "filename": "core/fxge/apple/fx_apple_platform.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T16:51:03Z",
+      "side": 1,
+      "message": "BTW, not private. (For later)",
+      "revId": "baaf12c3cf8759b32cf3efdbb2f5d20aec08d295",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a0ea51_592134a5",
+        "filename": "core/fxge/win32/cwin32_platform.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T16:51:03Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "baaf12c3cf8759b32cf3efdbb2f5d20aec08d295",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e94b96_167053ac",
+        "filename": "fxjs/xfa/cfxjse_runtimedata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T16:51:03Z",
+      "side": 1,
+      "message": "Merge into private section?",
+      "revId": "baaf12c3cf8759b32cf3efdbb2f5d20aec08d295",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
