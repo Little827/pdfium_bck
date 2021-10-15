@@ -1,4 +1,120 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1634339686 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1/0j6xFaXmRSWX28OiD2SWuSSP6KbH7BeMzXjjaDqvDiYMvaVvbDGcfkGBBWJ2kq5+KPTLh\n\n0000000000000000000000000000000000000000 6a6fa69ad3fa0e2b8829760481e1e218ecf52743 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFqC2YACgkQqzYtYVpm\n/Xti/AgAjO/kiez+sOjJAMSyWUwxEmYkyoROsLfEmJmZNWGmfK/nrs7z3CaI2af0\nHTZiSRbaeuXS2msddYxi6qCDSCQe6lusNAJbgAHNU8Z0EKwn8Y/XE0ELeBpb2iFY\nRAKfVQ+t8KqPPkLluVHb4wZy7a6aEKa4FYfe0B+oOLrlmbqtYFkPaYPJKWgT0FRQ\njWpCtBEXn3iNTursYmnYwQZcwjYcarixYcbnar9EHoaYzHm9j8VQy6wiX8vjKtPC\nHyVQUtk7OVh5u5jnbvBaTP46FOSjYNqIAwGoEfuNGJaklW1EJ87cgsHJfWC4qCEe\ncDyUs3Yqmg6okHxg3m3Q4Nifaeh5lw\u003d\u003d\n\u003dnI4l\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80d801d_4b86d387",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-15T23:44:42Z",
+      "side": 1,
+      "message": "nit: might just write it out in the two places it is used and avoid the ref.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14495a6_ff9d6db6",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-15T23:44:42Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 49
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb5cb46_6be6d37c",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-15T23:44:42Z",
+      "side": 1,
+      "message": "nit: here we use \u0027word\u0027 all over the place, so ref is more suitable.",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 41
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0b4f1e_b416d4db",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-15T23:44:42Z",
+      "side": 1,
+      "message": "nit:ditto",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 507,
+        "endChar": 44
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422b27ae_9c6d2071",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-15T23:44:42Z",
+      "side": 1,
+      "message": "nit: are the {} just to avoid shadowing the \u0027word_result\u0027? if so, maybe pick non-conflicting names, unindent, and restore const to parser_*num.",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 620,
+        "endChar": 43
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
