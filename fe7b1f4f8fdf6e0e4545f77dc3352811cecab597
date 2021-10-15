@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c79615_6749c610",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T02:18:20Z",
+      "side": 1,
+      "message": "A bit late, as we already marked the API as stable, but I would have changed the out-parameters to a FS_POINTF*",
+      "revId": "fe7b1f4f8fdf6e0e4545f77dc3352811cecab597",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
