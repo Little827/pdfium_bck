@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31fb2324_98f3967b",
+        "filename": "core/fpdfapi/parser/cpdf_object_stream_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T22:18:32Z",
+      "side": 1,
+      "message": "Maybe in the next round of adding tests? None of the test cases do object parsing yet, and with the current implementation, a large offset won\u0027t be noticed until then.",
+      "parentUuid": "3a2aeeec_075f1133",
+      "range": {
+        "startLine": 141,
+        "startChar": 38,
+        "endLine": 141,
+        "endChar": 52
+      },
+      "revId": "fb2f1071c9ea10ed2646ddd400e0d47288cb7df1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a1cb2af_8fa0294d",
         "filename": "core/fpdfapi/parser/cpdf_object_stream_unittest.cpp",
         "patchSetId": 4
@@ -55,6 +79,30 @@
       "writtenOn": "2021-10-15T21:31:38Z",
       "side": 1,
       "message": "would like a test where this offset is beyond end of stream.\nwould like a test where offsets are not strictly ascending.",
+      "range": {
+        "startLine": 205,
+        "startChar": 41,
+        "endLine": 205,
+        "endChar": 43
+      },
+      "revId": "fb2f1071c9ea10ed2646ddd400e0d47288cb7df1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6d4fc7_53beb01a",
+        "filename": "core/fpdfapi/parser/cpdf_object_stream_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T22:18:32Z",
+      "side": 1,
+      "message": "Ack. Next round?",
+      "parentUuid": "8a1cb2af_8fa0294d",
       "range": {
         "startLine": 205,
         "startChar": 41,
