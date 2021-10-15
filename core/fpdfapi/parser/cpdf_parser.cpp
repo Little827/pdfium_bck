@@ -228,9 +228,9 @@ FX_FILESIZE CPDF_Parser::ParseStartXRef() {
   m_pSyntax->GetKeyword();
 
   // Read XRef offset.
-  bool bNumber;
-  const ByteString xref_offset_str = m_pSyntax->GetNextWord(&bNumber);
-  if (!bNumber || xref_offset_str.IsEmpty())
+  const CPDF_SyntaxParser::WordResult word_result = m_pSyntax->GetNextWord();
+  const ByteString& xref_offset_str = word_result.word;
+  if (!word_result.is_number || xref_offset_str.IsEmpty())
     return 0;
 
   const FX_SAFE_FILESIZE result = FXSYS_atoi64(xref_offset_str.c_str());
@@ -275,10 +275,10 @@ bool CPDF_Parser::VerifyCrossRefV4() {
     // Find the first non-zero position.
     FX_FILESIZE SavedPos = m_pSyntax->GetPos();
     m_pSyntax->SetPos(it.second.pos);
-    bool is_num = false;
-    ByteString num_str = m_pSyntax->GetNextWord(&is_num);
+    CPDF_SyntaxParser::WordResult word_result = m_pSyntax->GetNextWord();
+    const ByteString& num_str = word_result.word;
     m_pSyntax->SetPos(SavedPos);
-    if (!is_num || num_str.IsEmpty() ||
+    if (!word_result.is_number || num_str.IsEmpty() ||
         FXSYS_atoui(num_str.c_str()) != it.first) {
       // If the object number read doesn't match the one stored,
       // something is wrong with the cross reference table.
@@ -511,12 +511,12 @@ bool CPDF_Parser::ParseCrossRefV4(std::vector<CrossRefObjData>* out_objects) {
   std::vector<CrossRefObjData> result_objects;
   while (1) {
     FX_FILESIZE saved_pos = m_pSyntax->GetPos();
-    bool bIsNumber;
-    ByteString word = m_pSyntax->GetNextWord(&bIsNumber);
+    CPDF_SyntaxParser::WordResult word_result = m_pSyntax->GetNextWord();
+    const ByteString& word = word_result.word;
     if (word.IsEmpty())
       return false;
 
-    if (!bIsNumber) {
+    if (!word_result.is_number) {
       m_pSyntax->SetPos(saved_pos);
       break;
     }
@@ -595,11 +595,11 @@ bool CPDF_Parser::RebuildCrossRef() {
   m_pSyntax->SetReadBufferSize(kBufferSize);
   m_pSyntax->SetPos(0);
 
-  bool bIsNumber;
   std::vector<std::pair<uint32_t, FX_FILESIZE>> numbers;
-  for (ByteString word = m_pSyntax->GetNextWord(&bIsNumber); !word.IsEmpty();
-       word = m_pSyntax->GetNextWord(&bIsNumber)) {
-    if (bIsNumber) {
+  for (CPDF_SyntaxParser::WordResult result = m_pSyntax->GetNextWord();
+       !result.word.IsEmpty(); result = m_pSyntax->GetNextWord()) {
+    const ByteString& word = result.word;
+    if (result.is_number) {
       numbers.emplace_back(FXSYS_atoui(word.c_str()),
                            m_pSyntax->GetPos() - word.GetLength());
       if (numbers.size() > 2u)
