@@ -13,7 +13,7 @@
 #include "v8/include/v8-forward.h"
 #include "v8/include/v8-persistent-handle.h"
 
-class CFXJSE_RuntimeData : public FXJS_PerIsolateData::ExtensionIface {
+class CFXJSE_RuntimeData final : public FXJS_PerIsolateData::ExtensionIface {
  public:
   ~CFXJSE_RuntimeData() override;
 
