@@ -94,7 +94,8 @@ class CPDF_SyntaxParser {
 
   bool ReadBlockAt(FX_FILESIZE read_pos);
   bool GetCharAtBackward(FX_FILESIZE pos, uint8_t* ch);
-  void GetNextWordInternal(bool* bIsNumber);
+  // Returns true if the word is a number.
+  bool GetNextWordInternal();
   bool IsWholeWord(FX_FILESIZE startpos,
                    FX_FILESIZE limit,
                    ByteStringView tag,
