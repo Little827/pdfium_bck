@@ -784,8 +784,8 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadMask() {
     dict->SetNewFor<CPDF_Number>("Height", m_JpxInlineData.height);
     dict->SetNewFor<CPDF_Number>("BitsPerComponent", 8);
 
-    auto mask_in_data = pdfium::MakeRetain<CPDF_Stream>();
-    mask_in_data->InitStream(m_JpxInlineData.data, dict);
+    auto mask_in_data =
+        pdfium::MakeRetain<CPDF_Stream>(m_JpxInlineData.data, dict);
     return StartLoadMaskDIB(std::move(mask_in_data));
   }
 
