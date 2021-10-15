@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f93331_72a2f1ed",
+        "filename": "testing/resources/pixel/bug_1258968.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T18:53:56Z",
+      "side": 1,
+      "message": "Can omit.",
+      "revId": "30dd73fa45d9897f8091da796d747d53529c4a3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07d9578_5f7c6d99",
+        "filename": "testing/resources/pixel/bug_1258968.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T18:53:56Z",
+      "side": 1,
+      "message": "Width can probably be cut in half. Use integers.",
+      "revId": "30dd73fa45d9897f8091da796d747d53529c4a3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ed897d_8322b48e",
+        "filename": "testing/resources/pixel/bug_1258968.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T18:53:56Z",
+      "side": 1,
+      "message": "No space, like line 10. Also before end bracket. More below.",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "30dd73fa45d9897f8091da796d747d53529c4a3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00973d8a_0b189917",
+        "filename": "testing/resources/pixel/bug_1258968.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T18:53:56Z",
+      "side": 1,
+      "message": "Put the various type keys first.",
+      "revId": "30dd73fa45d9897f8091da796d747d53529c4a3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78841a08_ead4e8c4",
+        "filename": "testing/resources/pixel/bug_1258968.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-15T18:53:56Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "30dd73fa45d9897f8091da796d747d53529c4a3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
