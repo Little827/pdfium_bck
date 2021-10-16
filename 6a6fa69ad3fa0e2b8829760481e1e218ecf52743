@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d87c173_bee81221",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-16T00:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e80d801d_4b86d387",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e14495a6_ff9d6db6",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-10-15T23:44:42Z",
       "side": 1,
       "message": "nit: ditto",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 49
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d64557d_318fa492",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-16T00:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14495a6_ff9d6db6",
       "range": {
         "startLine": 279,
         "startChar": 0,
@@ -71,6 +119,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8f35f4_9a917006",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-16T00:10:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dbb5cb46_6be6d37c",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 41
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c0b4f1e_b416d4db",
@@ -94,6 +166,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "101ebdc7_aeb807c9",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-16T00:10:51Z",
+      "side": 1,
+      "message": "It\u0027s referenced 14 times. Thus I\u0027m leaving this as is.",
+      "parentUuid": "0c0b4f1e_b416d4db",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 507,
+        "endChar": 44
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "422b27ae_9c6d2071",
@@ -107,6 +203,30 @@
       "writtenOn": "2021-10-15T23:44:42Z",
       "side": 1,
       "message": "nit: are the {} just to avoid shadowing the \u0027word_result\u0027? if so, maybe pick non-conflicting names, unindent, and restore const to parser_*num.",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 620,
+        "endChar": 43
+      },
+      "revId": "6a6fa69ad3fa0e2b8829760481e1e218ecf52743",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "572b6760_fdf1270b",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-16T00:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422b27ae_9c6d2071",
       "range": {
         "startLine": 620,
         "startChar": 0,

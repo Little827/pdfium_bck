@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1634342720 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1/nav+Drazbr8yNynJ2DE2svFU8jdSjhkoWtpgSvwIY8Bdfkwu2RGUxXSzpGMOAfD+r51Ib\n\n0000000000000000000000000000000000000000 4b6250d9183d14aa034ef19e04ba64f6d7727a84 refs/for/refs/heads/main%notify\u003dNONE,m\u003daddress_comments,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFqF0AACgkQqzYtYVpm\n/Xu71wf/WSqRWDt9R7FY0/R1ejwHcvL+DHBNihKeGQeJQUOV48W/IgcC+GA4MtDG\nEjHdoNS24+HCbmxBvpzw4glSjj6NVF1sK8HAjgj7hd9S1qeLwsESslerCtKEAAS1\nk+iC64MXGJSKtAXgkgI1tGUO7v1wvaOL/Tk3KKsGVQzlfOYTMUZunfzAkYfUspZP\nPAIphWLM4mmE4tf3K6rKh48v+CDtlTZypXQD6Z0yjC4YarHFlrSbze/owYAVeoBW\nf/MhSd9YxjBwpBOTC/Gx2dFSvaphhQxh0appgritpJEkCmOu+NhBSxI0GNBg6RNn\nCcBq8uqPSRKZCl7EeJKHmflEKaQ2Rg\u003d\u003d\n\u003dtvHx\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffb952d_8923dc32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-16T00:10:51Z",
+      "side": 1,
+      "message": "I kept `is_number` as is, since it is fairly readable the way it\u0027s being used.",
+      "revId": "4b6250d9183d14aa034ef19e04ba64f6d7727a84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
