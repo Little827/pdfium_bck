@@ -69,6 +69,29 @@
       },
       "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4785e5ae_8ba07348",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T21:24:56Z",
+      "side": 1,
+      "message": "follow-on: we should teach our python script to generate this number, maybe alternate form of {{startxref}} like {{startxref 11 0}} giving the number of the xref stream.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
