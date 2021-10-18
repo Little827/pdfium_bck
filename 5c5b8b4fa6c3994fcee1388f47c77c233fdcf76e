@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1634585074 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1/+NfwCiqo9yyujCJ9ybnCWugqShGtWnuD92jLF5MP0mYOAPClZNYjgybxrJs5u+ET/QpIg\n\n0000000000000000000000000000000000000000 5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFtyfIACgkQqzYtYVpm\n/XtQWQf9HYg/YRNIYUNUpv1PUVGcQEA99ZzFUtvho+9AHcKVsM11LuoxN8o9uiAt\nImHx/Qe1hlMpUDCZCQfHyGsXs6nCiNnuGT7OJWGluv6zLaIE9yKGon/up8CWagrE\nStO/z71AeejI0vUydMlASYgm/s8eAA4+QOBFfNlnI23RE6Ig60N/DNghQNNkMFXl\nnegB8FRP47rwcARIm6RueZsNUPyrAouXL+oRMSWsyBQXjUADIiARcfRkwWo1aN7A\nu1IjG+7SolgFMifnXfDe75tqfxMb0Bf/WA432MOWItKYybBLhIkBQcM9PNCo6Wo2\nB7URMXVpa5yGhHaKGgPXy/OygnUcNQ\u003d\u003d\n\u003dfqhV\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e35dd92_c0b89994",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T21:20:12Z",
+      "side": 1,
+      "message": "nit: maybe comment that says\n% This object stream is ambiguous about whether object 9 is the 0th or 1st object in the stream, and whether object 10 is the 2nd or 3rd.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4243deee_a04ed64d",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T21:20:12Z",
+      "side": 1,
+      "message": "nit: maybe add a comment that says\n% This xref stream defines the usual file-positon offsets for traditional objects, but also disambiguates object 9 as the 0th object in object stream 8, and object 10 as the 3rd object in object stream 8.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca5bcf6_2ebfedff",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T21:20:12Z",
+      "side": 1,
+      "message": "nit: maybe add a comment that says\n% This xref stream defines the usual file-positon offsets for traditional objects, but also disambiguates object 9 as the 0th object in object stream 8, and object 10 as the 3rd object in object stream 8.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
