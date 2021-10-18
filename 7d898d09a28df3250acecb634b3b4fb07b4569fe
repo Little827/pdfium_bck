@@ -2,6 +2,23 @@
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1634592145 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1+KO5nhkEly617XNu2HJETvKu+E/Hz/ZFhHzKxJA3Tcvw3puhnDIQZjNKU0sqexsQXUihaX\n\n0000000000000000000000000000000000000000 7d898d09a28df3250acecb634b3b4fb07b4569fe refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFt5ZEACgkQqzYtYVpm\n/Xurmwf/Yg6Aee09n45rD7r56Y9jpIlw9TkJ7Vy+1tqRpf3GypVVzr6S7/epznuN\nMJgv68/kpfn0ZZIQDfK2V8T/u3sKSuhfwhZlf0YW4r6/WBQwtlJO3ROAFBiYBM1s\nrO9MALkMQwu5/pyQMuBtEw0qiOrkuuCK3ee2VykJuO/Ig6BpLXXDhkmtf/vhUVx0\niMDlh2X35vJ1hq5lCLif/vB3/pG0jNacbr000PrR4E2aPw8lmBrHMUQIGYBphBbL\nGRtRIMPLyjEcMwZmNL1hsOQqwMQmgD7oNza+FrgMG5+hrAv/oYfZi8WjNcrPJ6cE\nvpAbC6mG97vihJZ8ClFbuxfNzNpu0g\u003d\u003d\n\u003dGoVj\n-----END PGP SIGNATURE-----\n",
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff21bb59_0f1ef6a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T23:10:46Z",
+      "side": 1,
+      "message": "still lg, tho",
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70027d49_5916a554",
@@ -43,6 +60,52 @@
         "startChar": 24,
         "endLine": 711,
         "endChar": 35
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37fd074_e51fbb2f",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T23:10:46Z",
+      "side": 1,
+      "message": "for later: do we care about anything other than the first three terms, eg. [1 2 2 4294967295] would fail here.  but the widths that are used are ok?",
+      "range": {
+        "startLine": 713,
+        "startChar": 33,
+        "endLine": 713,
+        "endChar": 37
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea4ba1b_c86eed92",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T23:10:46Z",
+      "side": 1,
+      "message": "for later: is it me, or is anything greater than [4 4 4] going to silently overflow in getint() above? What do other readers do.",
+      "range": {
+        "startLine": 718,
+        "startChar": 7,
+        "endLine": 718,
+        "endChar": 17
       },
       "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
