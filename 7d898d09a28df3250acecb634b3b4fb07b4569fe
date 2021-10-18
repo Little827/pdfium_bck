@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1634592145 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1+KO5nhkEly617XNu2HJETvKu+E/Hz/ZFhHzKxJA3Tcvw3puhnDIQZjNKU0sqexsQXUihaX\n\n0000000000000000000000000000000000000000 7d898d09a28df3250acecb634b3b4fb07b4569fe refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFt5ZEACgkQqzYtYVpm\n/Xurmwf/Yg6Aee09n45rD7r56Y9jpIlw9TkJ7Vy+1tqRpf3GypVVzr6S7/epznuN\nMJgv68/kpfn0ZZIQDfK2V8T/u3sKSuhfwhZlf0YW4r6/WBQwtlJO3ROAFBiYBM1s\nrO9MALkMQwu5/pyQMuBtEw0qiOrkuuCK3ee2VykJuO/Ig6BpLXXDhkmtf/vhUVx0\niMDlh2X35vJ1hq5lCLif/vB3/pG0jNacbr000PrR4E2aPw8lmBrHMUQIGYBphBbL\nGRtRIMPLyjEcMwZmNL1hsOQqwMQmgD7oNza+FrgMG5+hrAv/oYfZi8WjNcrPJ6cE\nvpAbC6mG97vihJZ8ClFbuxfNzNpu0g\u003d\u003d\n\u003dGoVj\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70027d49_5916a554",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T22:59:25Z",
+      "side": 1,
+      "message": "for later: wonders why these aren\u0027t \u003cuint32_t, uint32_t\u003e ?",
+      "range": {
+        "startLine": 688,
+        "startChar": 24,
+        "endLine": 688,
+        "endChar": 31
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e277746_d83e6ad5",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T22:59:25Z",
+      "side": 1,
+      "message": "later: then cast here is redundant per above",
+      "range": {
+        "startLine": 732,
+        "startChar": 35,
+        "endLine": 732,
+        "endChar": 57
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0fc25c6_0e5b4ff5",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-18T22:59:25Z",
+      "side": 1,
+      "message": "nit: entry_span.first(width_array[0])",
+      "range": {
+        "startLine": 754,
+        "startChar": 32,
+        "endLine": 754,
+        "endChar": 59
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
