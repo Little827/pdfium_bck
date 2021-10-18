@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d72433_08c78afa",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:16:17Z",
+      "side": 1,
+      "message": "I combined it all into 1 comment.",
+      "parentUuid": "2e35dd92_c0b89994",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4243deee_a04ed64d",
@@ -71,6 +95,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73680f20_cfbf3879",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4243deee_a04ed64d",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b543753b_9bede954",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ca5bcf6_2ebfedff",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4785e5ae_8ba07348",
@@ -84,6 +156,30 @@
       "writtenOn": "2021-10-18T21:24:56Z",
       "side": 1,
       "message": "follow-on: we should teach our python script to generate this number, maybe alternate form of {{startxref}} like {{startxref 11 0}} giving the number of the xref stream.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "5c5b8b4fa6c3994fcee1388f47c77c233fdcf76e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d58898e_2f316746",
+        "filename": "testing/resources/pixel/bug_1733.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:16:17Z",
+      "side": 1,
+      "message": "Done in this CL, so I have 1 fewer number to calculate.",
+      "parentUuid": "4785e5ae_8ba07348",
       "range": {
         "startLine": 103,
         "startChar": 0,
