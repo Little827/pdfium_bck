@@ -65,6 +65,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b85b54_bd6462cd",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42acd86c_6543536f",
+      "range": {
+        "startLine": 711,
+        "startChar": 24,
+        "endLine": 711,
+        "endChar": 35
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c37fd074_e51fbb2f",
@@ -90,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4ecef39_ede2d29b",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:35:00Z",
+      "side": 1,
+      "message": "Well, it would fail earlier in the parsing, or get a default value. I forget what the parser actually does. The PDF spec doesn\u0027t have an opinion on this.",
+      "parentUuid": "c37fd074_e51fbb2f",
+      "range": {
+        "startLine": 713,
+        "startChar": 33,
+        "endLine": 713,
+        "endChar": 37
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ea4ba1b_c86eed92",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 1
@@ -101,6 +149,30 @@
       "writtenOn": "2021-10-18T23:10:46Z",
       "side": 1,
       "message": "for later: is it me, or is anything greater than [4 4 4] going to silently overflow in getint() above? What do other readers do.",
+      "range": {
+        "startLine": 718,
+        "startChar": 7,
+        "endLine": 718,
+        "endChar": 17
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526c9ec4_85462ad1",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:35:00Z",
+      "side": 1,
+      "message": "Not following. Can you give an example? Isn\u0027t [5 4 4] going to result in `dwAccWidth` being 13?",
+      "parentUuid": "0ea4ba1b_c86eed92",
       "range": {
         "startLine": 718,
         "startChar": 7,
@@ -147,6 +219,30 @@
       "writtenOn": "2021-10-18T22:59:25Z",
       "side": 1,
       "message": "nit: entry_span.first(width_array[0])",
+      "range": {
+        "startLine": 754,
+        "startChar": 32,
+        "endLine": 754,
+        "endChar": 59
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029ed13f_6a57d2a8",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0fc25c6_0e5b4ff5",
       "range": {
         "startLine": 754,
         "startChar": 32,
