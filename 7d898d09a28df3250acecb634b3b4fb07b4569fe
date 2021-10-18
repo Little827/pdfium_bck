@@ -42,6 +42,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa86f83_5081f5f3",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:45:21Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/86110",
+      "parentUuid": "70027d49_5916a554",
+      "range": {
+        "startLine": 688,
+        "startChar": 24,
+        "endLine": 688,
+        "endChar": 31
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42acd86c_6543536f",
@@ -196,6 +220,30 @@
       "writtenOn": "2021-10-18T22:59:25Z",
       "side": 1,
       "message": "later: then cast here is redundant per above",
+      "range": {
+        "startLine": 732,
+        "startChar": 35,
+        "endLine": 732,
+        "endChar": 57
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "604d3d91_5e33b2a1",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-18T23:45:21Z",
+      "side": 1,
+      "message": "Done in next CL.",
+      "parentUuid": "8e277746_d83e6ad5",
       "range": {
         "startLine": 732,
         "startChar": 35,
