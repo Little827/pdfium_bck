@@ -212,6 +212,30 @@
       },
       "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c441ec09_d75fa619",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-19T16:28:54Z",
+      "side": 1,
+      "message": "Right, this is a struct. That can work when available.",
+      "parentUuid": "9bd47ba4_6a7759b0",
+      "range": {
+        "startLine": 705,
+        "startChar": 31,
+        "endLine": 705,
+        "endChar": 38
+      },
+      "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
