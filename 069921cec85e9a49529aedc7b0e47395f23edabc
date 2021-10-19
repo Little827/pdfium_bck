@@ -16,6 +16,24 @@
       "message": "Would adding .vscode-server/, like in https://crrev.com/896718, be helpful as well?",
       "revId": "069921cec85e9a49529aedc7b0e47395f23edabc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef88257_ca08363c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-10-19T20:00:44Z",
+      "side": 1,
+      "message": "Yes, it seems like it\u0027d be helpful (though .vscode-server files weren\u0027t generated for me -- it certainly would not hurt to add them).",
+      "parentUuid": "986c889c_0b2b3cab",
+      "revId": "069921cec85e9a49529aedc7b0e47395f23edabc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
