@@ -178,8 +178,8 @@ class CPDF_Parser {
   bool ParseFileVersion();
 
   ObjectType GetObjectType(uint32_t objnum) const;
-  ObjectType GetObjectTypeFromCrossRefStreamType(
-      uint32_t cross_ref_stream_type) const;
+  static ObjectType GetObjectTypeFromCrossRefStreamType(
+      uint32_t cross_ref_stream_type);
 
   std::unique_ptr<ParsedObjectsHolder> m_pOwnedObjectsHolder;
   UnownedPtr<ParsedObjectsHolder> m_pObjectsHolder;

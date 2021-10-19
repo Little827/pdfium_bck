@@ -1118,8 +1118,9 @@ CPDF_Parser::Error CPDF_Parser::LoadLinearizedMainXRefTable() {
   return SUCCESS;
 }
 
+// static
 CPDF_Parser::ObjectType CPDF_Parser::GetObjectTypeFromCrossRefStreamType(
-    uint32_t cross_ref_stream_type) const {
+    uint32_t cross_ref_stream_type) {
   switch (cross_ref_stream_type) {
     case 0:
       return CPDF_Parser::ObjectType::kFree;
