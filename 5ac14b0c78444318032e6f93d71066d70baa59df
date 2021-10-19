@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41419a0a_24bcd18c",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-19T04:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4bea92_c3be6d7d",
+      "range": {
+        "startLine": 697,
+        "startChar": 6,
+        "endLine": 697,
+        "endChar": 17
+      },
+      "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25034a38_9e05f312",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-10-19T00:55:41Z",
       "side": 1,
       "message": "... then we can remove the ToNumber here ...",
+      "range": {
+        "startLine": 700,
+        "startChar": 5,
+        "endLine": 700,
+        "endChar": 57
+      },
+      "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d24391_7f6ac94d",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-19T04:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25034a38_9e05f312",
       "range": {
         "startLine": 700,
         "startChar": 5,
@@ -71,6 +119,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fbb38b4_1a8fea6e",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-19T04:32:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc83c054_34322a7c",
+      "range": {
+        "startLine": 701,
+        "startChar": 38,
+        "endLine": 701,
+        "endChar": 49
+      },
+      "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592175f7_311f7725",
@@ -84,6 +156,30 @@
       "writtenOn": "2021-10-19T00:55:41Z",
       "side": 1,
       "message": "nit: member is obj_count above.  Not sure these comment adds a lot of info at a cost of clutter, given local names that include terms like \u0027start\u0027 and \u0027count.",
+      "range": {
+        "startLine": 705,
+        "startChar": 31,
+        "endLine": 705,
+        "endChar": 38
+      },
+      "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc487c0_d738b663",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-19T04:32:11Z",
+      "side": 1,
+      "message": "I saw a comment on https://crrev.com/c/3212727 saying the compiler checks these to help avoid mixing up the variables, especially given they are the same type. But then again, I can\u0027t verify the compiler actually does this, so I\u0027ll drop them.",
+      "parentUuid": "592175f7_311f7725",
       "range": {
         "startLine": 705,
         "startChar": 31,
