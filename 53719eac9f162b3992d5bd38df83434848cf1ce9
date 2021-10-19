@@ -4,6 +4,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6fcd876a_95d5af79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-10-19T20:30:39Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "53719eac9f162b3992d5bd38df83434848cf1ce9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d87d3f28_56576626",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-10-19T20:30:39Z",
+      "side": 1,
+      "message": "Optional: use a ScopedFPDFPage.",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 31
+      },
+      "revId": "53719eac9f162b3992d5bd38df83434848cf1ce9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f682e56d_11f78ec2",
         "filename": "testing/resources/tagged_table_bad_elem.in",
         "patchSetId": 1
@@ -15,6 +55,24 @@
       "writtenOn": "2021-10-19T17:39:20Z",
       "side": 1,
       "message": "Modified copy of tagged_table.in.",
+      "revId": "53719eac9f162b3992d5bd38df83434848cf1ce9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "934f0011_08921017",
+        "filename": "testing/resources/tagged_table_bad_elem.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-10-19T20:30:39Z",
+      "side": 1,
+      "message": "Got it, thanks!",
+      "parentUuid": "f682e56d_11f78ec2",
       "revId": "53719eac9f162b3992d5bd38df83434848cf1ce9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
