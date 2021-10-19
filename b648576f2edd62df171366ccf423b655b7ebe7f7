@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c60b817_9e4da84d",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-19T20:06:10Z",
+      "side": 1,
+      "message": "I noticed in Chromium\u0027s .gitignore is slightly different: https://chromium.googlesource.com/chromium/src/+/b01631610a/.gitignore#71\n\nI don\u0027t use VS Code, so I have no idea which is better.",
+      "revId": "b648576f2edd62df171366ccf423b655b7ebe7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
