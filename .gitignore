@@ -40,5 +40,7 @@
 *.user
 *.vcxproj
 *.xcodeproj
+*.vscode
+*.vscode-server
 *~
 
