@@ -160,6 +160,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31ef790_8fb12c0e",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-19T00:35:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4ecef39_ede2d29b",
+      "range": {
+        "startLine": 713,
+        "startChar": 33,
+        "endLine": 713,
+        "endChar": 37
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ea4ba1b_c86eed92",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "Not following. Can you give an example? Isn\u0027t [5 4 4] going to result in `dwAccWidth` being 13?",
       "parentUuid": "0ea4ba1b_c86eed92",
+      "range": {
+        "startLine": 718,
+        "startChar": 7,
+        "endLine": 718,
+        "endChar": 17
+      },
+      "revId": "7d898d09a28df3250acecb634b3b4fb07b4569fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976475b5_6f8096f0",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-19T00:35:37Z",
+      "side": 1,
+      "message": "at line 52, \n  result \u003d result * 256 + c; \nso the uint32_t result can\u0027t handle anything bigger than 4 byte fields. Does the spec allow for, say, a million leading 0s for a million-byte field? Or is 4 the max width (since it is the max that makes sense).",
+      "parentUuid": "526c9ec4_85462ad1",
       "range": {
         "startLine": 718,
         "startChar": 7,
