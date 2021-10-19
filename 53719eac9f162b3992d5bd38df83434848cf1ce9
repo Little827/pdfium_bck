@@ -44,6 +44,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2ebe5489_d009e439",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-19T23:28:17Z",
+      "side": 1,
+      "message": "EmbedderTest::LoadPage() has to be used in conjunction with EmbedderTest::UnloadPage(). Maybe I\u0027ll write a custom deleter later so we can use a different scoper here.",
+      "parentUuid": "d87d3f28_56576626",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 31
+      },
+      "revId": "53719eac9f162b3992d5bd38df83434848cf1ce9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f682e56d_11f78ec2",
         "filename": "testing/resources/tagged_table_bad_elem.in",
         "patchSetId": 1
