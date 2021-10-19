@@ -126,6 +126,20 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
                                                int page_index);
 
+// Reorder and potentially delete pages in the PDF, to match the destination
+// page order.
+//
+// Returns TRUE on success.
+//
+// Examples: the document has pages [A, B, C, D].
+// Reorder(doc, [0, 2],       2) => [A, C]
+// Reorder(doc, [1, 2, 0, 3], 4) => [B, C, A, D]
+// Reorder(doc, [4, 2],     , 0) => returns FALSE because index 4 is out of
+// range.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_Reorder(FPDF_DOCUMENT document,
+                                                     int* dest_page_order,
+                                                     int dest_page_order_len);
+
 // Get the rotation of |page|.
 //
 //   page - handle to a page
