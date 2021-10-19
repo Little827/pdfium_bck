@@ -188,6 +188,30 @@
       },
       "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd47ba4_6a7759b0",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-19T15:54:39Z",
+      "side": 1,
+      "message": "Wait for c++17 designated initializers?\n  { .start_obj_num \u003d foo, .obj_count \u003d 32 }",
+      "parentUuid": "2fc487c0_d738b663",
+      "range": {
+        "startLine": 705,
+        "startChar": 31,
+        "endLine": 705,
+        "endChar": 38
+      },
+      "revId": "5ac14b0c78444318032e6f93d71066d70baa59df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
