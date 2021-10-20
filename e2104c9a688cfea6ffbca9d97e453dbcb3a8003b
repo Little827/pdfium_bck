@@ -16,6 +16,24 @@
       "message": "Let\u0027s make CF happy for now. I\u0027ll test the behavior against other PDF viewers later and see if we need more adjustments.",
       "revId": "e2104c9a688cfea6ffbca9d97e453dbcb3a8003b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e25ca2_febaeb14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-20T19:16:05Z",
+      "side": 1,
+      "message": "Follow up filed as a bug: https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1738",
+      "parentUuid": "c392f775_f5ce055a",
+      "revId": "e2104c9a688cfea6ffbca9d97e453dbcb3a8003b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
