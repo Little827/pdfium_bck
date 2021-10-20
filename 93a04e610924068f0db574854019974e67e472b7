@@ -34,6 +34,24 @@
       "parentUuid": "e2bbc7c2_56f2c451",
       "revId": "93a04e610924068f0db574854019974e67e472b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d34e3547_780a9289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-20T17:44:48Z",
+      "side": 1,
+      "message": "Sure, go for it.",
+      "parentUuid": "7ba6685c_0b81d96c",
+      "revId": "93a04e610924068f0db574854019974e67e472b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
