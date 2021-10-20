@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d6c195_2d87d688",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-20T18:54:30Z",
+      "side": 1,
+      "message": "I had a \"duh\" moment and remembered given the changes in testing/pdf_test_environment.cpp, this only affects pdfium_unittests. Tests that run using pdfium_test and pdfium_embeddertests, are still using system fonts.\n\nthomasanderson@: Do you have plans to make those run with hermetic fonts as well?",
+      "parentUuid": "fe9eb39a_55fdb59a",
+      "revId": "8cb22d3457a4d753f0043f6387dce39a3a5cd00e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9127b8f4_8b2d4c28",
