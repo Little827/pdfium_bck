@@ -50,8 +50,8 @@ int32_t GetDirectInteger(const CPDF_Dictionary* pDict, const ByteString& key);
 ByteString PDF_NameDecode(ByteStringView orig);
 ByteString PDF_NameEncode(const ByteString& orig);
 
-// Return |nCount| elements from |pArray| as a vector of floats. |pArray| must
-// have at least |nCount| elements.
+// Return the first |nCount| elements from |pArray| as a vector of floats,
+// padding with 0.0f if |pArray| does not have at least |nCount| elements.
 std::vector<float> ReadArrayElementsToVector(const CPDF_Array* pArray,
                                              size_t nCount);
 
