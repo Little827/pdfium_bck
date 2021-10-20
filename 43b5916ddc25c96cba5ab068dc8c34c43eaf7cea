@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194511a0_2fec1a70",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2021-10-20T23:04:30Z",
+      "side": 1,
+      "message": "nit: it\u0027s not really a handle in the v8 sense of the term, rather a vanilla C-style pointer in all cases. Should be noted that on callbacks, v8 passes this in an .info struct, and on initial calls to v8, we should know this already since we had to enter it.  Not sure how to phrase that.",
+      "range": {
+        "startLine": 64,
+        "startChar": 71,
+        "endLine": 64,
+        "endChar": 77
+      },
+      "revId": "43b5916ddc25c96cba5ab068dc8c34c43eaf7cea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
