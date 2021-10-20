@@ -8,9 +8,11 @@
 
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
+#include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
+#include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
@@ -107,4 +109,40 @@ TEST(fpdf_parser_utility, ValidateDictAllResourcesOfType) {
   }
 
   CPDF_PageModule::Destroy();
+}
+
+TEST(fpdf_parser_utility, ReadArrayElementsToVector) {
+  auto pArray = pdfium::MakeRetain<CPDF_Array>();
+  std::vector<float> result = ReadArrayElementsToVector(pArray.Get(), 0);
+  EXPECT_EQ(result.size(), 0u);
+
+  result = ReadArrayElementsToVector(pArray.Get(), 2);
+  ASSERT_EQ(result.size(), 2u);
+  EXPECT_FLOAT_EQ(result[0], 0.0f);
+  EXPECT_FLOAT_EQ(result[1], 0.0f);
+
+  pArray->AppendNew<CPDF_Number>(1.11f);
+  pArray->AppendNew<CPDF_Number>(2.22f);
+  pArray->AppendNew<CPDF_Number>(3.33f);
+
+  result = ReadArrayElementsToVector(pArray.Get(), 0);
+  EXPECT_EQ(result.size(), 0u);
+
+  result = ReadArrayElementsToVector(pArray.Get(), 2);
+  ASSERT_EQ(result.size(), 2u);
+  EXPECT_FLOAT_EQ(result[0], 1.11f);
+  EXPECT_FLOAT_EQ(result[1], 2.22f);
+
+  result = ReadArrayElementsToVector(pArray.Get(), 3);
+  ASSERT_EQ(result.size(), 3u);
+  EXPECT_FLOAT_EQ(result[0], 1.11f);
+  EXPECT_FLOAT_EQ(result[1], 2.22f);
+  EXPECT_FLOAT_EQ(result[2], 3.33f);
+
+  result = ReadArrayElementsToVector(pArray.Get(), 4);
+  ASSERT_EQ(result.size(), 4u);
+  EXPECT_FLOAT_EQ(result[0], 1.11f);
+  EXPECT_FLOAT_EQ(result[1], 2.22f);
+  EXPECT_FLOAT_EQ(result[2], 3.33f);
+  EXPECT_FLOAT_EQ(result[3], 0.0f);
 }
