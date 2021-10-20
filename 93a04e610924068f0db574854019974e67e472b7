@@ -16,6 +16,24 @@
       "message": "Let me know if you need help triggering the CQ.",
       "revId": "93a04e610924068f0db574854019974e67e472b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ba6685c_0b81d96c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-10-20T17:42:46Z",
+      "side": 1,
+      "message": "Should I just wait for the dry run to finish then press the \"SUBMIT TO CQ\" button?",
+      "parentUuid": "e2bbc7c2_56f2c451",
+      "revId": "93a04e610924068f0db574854019974e67e472b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
