@@ -72,6 +72,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd743ecd_1917320f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-10-20T19:40:45Z",
+      "side": 1,
+      "message": "Re thesig@: Yes, it\u0027s only affecting the unit tests. If the changes were applied to embedder tests as well, failures would have been caught by the skia/skiapaths trybots.",
+      "parentUuid": "e2d6c195_2d87d688",
+      "revId": "8cb22d3457a4d753f0043f6387dce39a3a5cd00e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9127b8f4_8b2d4c28",
