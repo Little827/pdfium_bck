@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79c5d40_c591de16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-20T17:55:17Z",
+      "side": 1,
+      "message": "Alternatively, check the array size before calling ReadArrayElementsToVector()? I think some of the other callers to ReadArrayElementsToVector() do that. Or do the check earlier and reject the colorspace altogether.\n\nFor padding, it may be better to pad 0, 1, 0, 1... here. It also doesn\u0027t make sense for the range array to have an odd number of values.\n\nI suspect we may want to put together a test case or 2 and see what Acrobat Reader does.",
+      "revId": "be296f229a077b50b65ee880a6746b64e7c8fb69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
