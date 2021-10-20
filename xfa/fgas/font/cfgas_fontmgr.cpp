@@ -368,31 +368,32 @@ std::vector<WideString> GetNames(pdfium::span<const uint8_t> name_table) {
   if (name_table.empty())
     return results;
 
-  const uint8_t* pTable = name_table.data();
-  WideString wsFamily;
-  const uint8_t* sp = pTable + 2;
-  const uint8_t* pNameRecord = pTable + 6;
-  uint16_t nNameCount = GetUInt16(sp);
-  const uint8_t* pStr = pTable + GetUInt16(sp + 2);
-  for (uint16_t j = 0; j < nNameCount; j++) {
-    uint16_t nNameID = GetUInt16(pNameRecord + j * 12 + 6);
+  uint16_t nNameCount = GetUInt16(name_table.subspan(2, 2).data());
+  pdfium::span<const uint8_t> str =
+      name_table.subspan(GetUInt16(name_table.subspan(4, 2).data()));
+  pdfium::span<const uint8_t> name_record = name_table.subspan(6);
+  for (uint16_t i = 0; i < nNameCount; ++i) {
+    uint16_t nNameID = GetUInt16(name_table.subspan(i * 12 + 6, 2).data());
     if (nNameID != 1)
       continue;
 
-    uint16_t nPlatformID = GetUInt16(pNameRecord + j * 12 + 0);
-    uint16_t nNameLength = GetUInt16(pNameRecord + j * 12 + 8);
-    uint16_t nNameOffset = GetUInt16(pNameRecord + j * 12 + 10);
-    wsFamily.clear();
+    uint16_t nPlatformID = GetUInt16(name_record.subspan(i * 12, 2).data());
+    uint16_t nNameLength = GetUInt16(name_record.subspan(i * 12 + 8, 2).data());
+    uint16_t nNameOffset =
+        GetUInt16(name_record.subspan(i * 12 + 10, 2).data());
     if (nPlatformID != 1) {
-      for (uint16_t k = 0; k < nNameLength / 2; k++) {
-        wchar_t wcTemp = GetUInt16(pStr + nNameOffset + k * 2);
+      WideString wsFamily;
+      for (uint16_t j = 0; j < nNameLength / 2; ++j) {
+        wchar_t wcTemp = GetUInt16(str.subspan(nNameOffset + j * 2, 2).data());
         wsFamily += wcTemp;
       }
       results.push_back(wsFamily);
       continue;
     }
-    for (uint16_t k = 0; k < nNameLength; k++) {
-      wchar_t wcTemp = GetUInt8(pStr + nNameOffset + k);
+
+    WideString wsFamily;
+    for (uint16_t j = 0; j < nNameLength; ++j) {
+      wchar_t wcTemp = GetUInt8(str.subspan(nNameOffset + j, 1).data());
       wsFamily += wcTemp;
     }
     results.push_back(wsFamily);
