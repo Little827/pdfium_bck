@@ -6,6 +6,13 @@
 
 #include "core/fxge/dib/cfx_bitmapcomposer.h"
 
+<<<<<<< HEAD   (df97b1 Split a path into sub paths for drawing zero area.)
+=======
+#include <string.h>
+
+#include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/fx_safe_types.h"
+>>>>>>> CHANGE (a8b293 Use more safe arithmetic in CFX_DIBBase)
 #include "core/fxge/cfx_cliprgn.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 
@@ -109,8 +116,22 @@ void CFX_BitmapComposer::ComposeScanline(int line,
                     m_pClipMask->GetPitch() +
                 (m_DestLeft - m_pClipRgn->GetBox().left);
   }
+<<<<<<< HEAD   (df97b1 Split a path into sub paths for drawing zero area.)
   uint8_t* dest_scan = m_pBitmap->GetWritableScanline(line + m_DestTop) +
                        m_DestLeft * m_pBitmap->GetBPP() / 8;
+=======
+  uint8_t* dest_scan = m_pBitmap->GetWritableScanline(line + m_DestTop);
+  if (dest_scan) {
+    FX_SAFE_UINT32 offset = m_DestLeft;
+    offset *= m_pBitmap->GetBPP();
+    offset /= 8;
+    if (!offset.IsValid())
+      return;
+
+    // Help some compilers perform pointer arithmetic against safe numerics.
+    dest_scan += static_cast<uint32_t>(offset.ValueOrDie());
+  }
+>>>>>>> CHANGE (a8b293 Use more safe arithmetic in CFX_DIBBase)
   uint8_t* dest_alpha_scan =
       m_pBitmap->m_pAlphaMask
           ? m_pBitmap->m_pAlphaMask->GetWritableScanline(line + m_DestTop) +
