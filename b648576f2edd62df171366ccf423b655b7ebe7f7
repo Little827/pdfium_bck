@@ -16,6 +16,24 @@
       "message": "I noticed in Chromium\u0027s .gitignore is slightly different: https://chromium.googlesource.com/chromium/src/+/b01631610a/.gitignore#71\n\nI don\u0027t use VS Code, so I have no idea which is better.",
       "revId": "b648576f2edd62df171366ccf423b655b7ebe7f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f58e84_a8a69f69",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-10-20T16:58:43Z",
+      "side": 1,
+      "message": "Ah yes, I should just make Git ignore the .vscode/ and .vscode-server/ directories. VS Code does not generate files named .vscode or .vscode-server.",
+      "parentUuid": "2c60b817_9e4da84d",
+      "revId": "b648576f2edd62df171366ccf423b655b7ebe7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
