@@ -1101,16 +1101,15 @@ std::vector<float> CPDF_ICCBasedCS::GetRanges(const CPDF_Dictionary* pDict,
                                               uint32_t nComponents) {
   DCHECK(IsValidIccComponents(nComponents));
 
-  std::vector<float> ranges;
   const CPDF_Array* pRanges = pDict->GetArrayFor("Range");
-  if (pRanges) {
-    ranges = ReadArrayElementsToVector(pRanges, nComponents * 2);
-  } else {
-    ranges.reserve(nComponents * 2);
-    for (uint32_t i = 0; i < nComponents; i++) {
-      ranges.push_back(0.0f);
-      ranges.push_back(1.0f);
-    }
+  if (pRanges)
+    return ReadArrayElementsToVector(pRanges, nComponents * 2);
+
+  std::vector<float> ranges;
+  ranges.reserve(nComponents * 2);
+  for (uint32_t i = 0; i < nComponents; i++) {
+    ranges.push_back(0.0f);
+    ranges.push_back(1.0f);
   }
   return ranges;
 }
