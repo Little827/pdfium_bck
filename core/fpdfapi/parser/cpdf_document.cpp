@@ -4,6 +4,9 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
+#include <algorithm>
+#include <functional>
+
 #include "core/fpdfapi/parser/cpdf_document.h"
 
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -494,6 +497,62 @@ void CPDF_Document::DeletePage(int iPage) {
     return;
 
   m_PageList.erase(m_PageList.begin() + iPage);
+}
+
+bool CPDF_Document::MovePages(const int* iPageIndices,
+                              int iPageIndicesLen,
+                              int iDestPageIndex) {
+  CPDF_Dictionary* pPages = GetPagesDict();
+  if (!pPages)
+    return false;
+  int nPages = pPages->GetIntegerFor("Count");
+
+  if (iPageIndicesLen < 1 || iPageIndicesLen > nPages)
+    return false;
+
+  if (iDestPageIndex < 0 || iDestPageIndex > (nPages - iPageIndicesLen))
+    return false;
+
+  // Check for duplicate and out-of-range page indices
+  std::set<int> sUniqueIndices;
+  for (int i = 0; i < iPageIndicesLen; i++) {
+    int iPageIndex = iPageIndices[i];
+    if (iPageIndex < 0 || iPageIndex >= nPages)
+      return false;
+    if (sUniqueIndices.count(iPageIndex) > 0)
+      return false;
+    sUniqueIndices.insert(iPageIndex);
+  }
+
+  // Store the pages that will be moved.
+  std::vector<CPDF_Dictionary*> pPagesToMove;
+  // Store the page indices that will be moved in descending order.
+  std::vector<int> iDescendingIndices;
+  for (int i = 0; i < iPageIndicesLen; i++) {
+    int iPageIndex = iPageIndices[i];
+    CPDF_Dictionary* pPage = GetPageDictionary(iPageIndex);
+    if (!pPage) {
+      return false;
+    }
+    pPagesToMove.push_back(pPage);
+    iDescendingIndices.push_back(iPageIndex);
+  }
+  std::sort(iDescendingIndices.begin(), iDescendingIndices.end(),
+            std::greater<int>());
+
+  // Delete the pages that will be moved from the dictionary in descending
+  // order.
+  for (size_t i = 0; i < iDescendingIndices.size(); i++) {
+    DeletePage(iDescendingIndices[i]);
+  }
+
+  // Now insert the stored pages back into the document.
+  for (size_t i = 0; i < pPagesToMove.size(); i++) {
+    if (!InsertNewPage(static_cast<int>(i) + iDestPageIndex, pPagesToMove[i])) {
+      return false;
+    }
+  }
+  return true;
 }
 
 void CPDF_Document::SetRootForTesting(CPDF_Dictionary* root) {
