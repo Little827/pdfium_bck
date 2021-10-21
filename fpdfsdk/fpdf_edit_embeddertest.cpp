@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <iostream>
 #include <memory>
 #include <string>
 #include <utility>
@@ -4065,4 +4066,97 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadataJpxLzw) {
   EXPECT_EQ(FPDF_COLORSPACE_UNKNOWN, metadata.colorspace);
 
   UnloadPage(page);
+}
+
+struct FPDFEditMoveEmbedderTestCase {
+  std::vector<int> page_indices;
+  int page_indices_len;
+  int dest_page_index;
+  bool expected_result;
+  std::vector<int> resulting_order;  // only relevant if expected_result is true
+};
+
+std::ostream& operator<<(std::ostream& os,
+                         const FPDFEditMoveEmbedderTestCase& t) {
+  os << "Page indices are {";
+  for (size_t i = 0; i < t.page_indices.size(); i++) {
+    os << t.page_indices[i] << ", ";
+  }
+  os << "}, \n page order len is " << t.page_indices_len
+     << ", \n dest page index is " << t.dest_page_index
+     << ", \n expected result is " << t.expected_result;
+  return os;
+}
+
+class FPDFEditMoveEmbedderTest : public EmbedderTest {
+ public:
+  std::string HashForPage(int page_index) {
+    FPDF_PAGE page = LoadPage(page_index);
+    EXPECT_TRUE(page);
+    ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+    std::string hash = HashBitmap(bitmap.get());
+    UnloadPage(page);
+    return hash;
+  }
+};
+
+#if defined(PDF_ENABLE_XFA)
+#define MAYBE_MovePagesTest DISABLED_MovePagesTest
+#else  // PDF_ENABLE_XFA
+#define MAYBE_MovePagesTest MovePagesTest
+#endif  // PDF_ENABLE_XFA
+TEST_F(FPDFEditMoveEmbedderTest, MAYBE_MovePagesTest) {
+  std::vector<FPDFEditMoveEmbedderTestCase> test_cases{
+      {{0, 1, 2, 3, 4}, 5, 0, true, {0, 1, 2, 3, 4}},
+      {{0, 4, 2, 1, 3}, 5, 0, true, {0, 4, 2, 1, 3}},
+      {{0, 2, 4, 3}, 4, 1, true, {1, 0, 2, 4, 3}},
+      {{1, 4, 2}, 3, 2, true, {0, 3, 1, 4, 2}},
+      {{3, 2}, 2, 3, true, {0, 1, 4, 3, 2}},
+      {{3}, 1, 4, true, {0, 1, 2, 4, 3}},
+      {{1, 1}, 2, 2, false, {}},     // duplicate index
+      {{5, 3, 2}, 3, 0, false, {}},  // out of range index
+      {{3}, 0, 0, false, {}},  // page_indices_len needs to be in range [1, 5]
+      {{4, 3, 2, 1, 0}, 6, 0, false, {}},  // page_indices_len is too big
+      {{3}, 0, 5, false, {}},              // dest_page_index is out of range
+      {{3, 1, 4}, 0, -1, false, {}},       // dest_page_index is out of range
+  };
+
+  // Try all test cases with a freshly opened document that has 5 pages.
+  for (auto it = test_cases.begin(); it != test_cases.end(); ++it) {
+    ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
+    const int page_count = FPDF_GetPageCount(document());
+    FPDFEditMoveEmbedderTestCase tc = *it;
+
+    // Build the list of the original pages' hashes.
+    std::vector<std::string> orig_hashes;
+    for (int i = 0; i < page_count; i++) {
+      std::string hash = HashForPage(i);
+      // Ensure this hash isn't repeated
+      EXPECT_EQ(std::find(orig_hashes.begin(), orig_hashes.end(), hash),
+                orig_hashes.end())
+          << tc;
+      orig_hashes.push_back(hash);
+    }
+
+    EXPECT_EQ(FPDFPage_Move(document(), &tc.page_indices[0],
+                            tc.page_indices_len, tc.dest_page_index),
+              tc.expected_result)
+        << tc;
+
+    if (tc.expected_result) {
+      // Check for correct page order
+      for (int i = 0; i < page_count; i++) {
+        std::string hash = HashForPage(i);
+        EXPECT_EQ(hash, orig_hashes[tc.resulting_order[i]]) << tc;
+      }
+    } else {
+      // Check that pages are unchanged.
+      for (int i = 0; i < page_count; i++) {
+        std::string hash = HashForPage(i);
+        EXPECT_EQ(hash, orig_hashes[i]) << tc;
+      }
+    }
+
+    CloseDocument();
+  }
 }

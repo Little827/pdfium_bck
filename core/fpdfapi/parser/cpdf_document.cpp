@@ -4,6 +4,9 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
+#include <algorithm>
+#include <functional>
+
 #include "core/fpdfapi/parser/cpdf_document.h"
 
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -494,6 +497,64 @@ void CPDF_Document::DeletePage(int iPage) {
     return;
 
   m_PageList.erase(m_PageList.begin() + iPage);
+}
+
+bool CPDF_Document::MovePages(const int* pPageIndices,
+                              unsigned long page_indices_len,
+                              int iDestPageIndex) {
+  CPDF_Dictionary* pPages = GetPagesDict();
+  if (!pPages)
+    return false;
+  int nPages = pPages->GetIntegerFor("Count");
+
+  int iPageIndicesLen = static_cast<int>(page_indices_len);
+  if (iPageIndicesLen <= 0 || iPageIndicesLen > nPages)
+    return false;
+
+  if (iDestPageIndex < 0 || iDestPageIndex > (nPages - iPageIndicesLen))
+    return false;
+
+  // Check for duplicate and out-of-range page indices
+  std::set<int> unique_page_indices;
+  for (int i = 0; i < iPageIndicesLen; i++) {
+    int page_index = pPageIndices[i];
+    if (page_index < 0 || page_index >= nPages)
+      return false;
+    if (unique_page_indices.count(page_index) > 0)
+      return false;
+    unique_page_indices.insert(page_index);
+  }
+
+  // Store the pages that will be moved.
+  std::vector<CPDF_Dictionary*> pages_to_move;
+  // Store the page indices that will be moved in descending order.
+  std::vector<int> descending_page_indices;
+  for (int i = 0; i < iPageIndicesLen; i++) {
+    int page_index = pPageIndices[i];
+    CPDF_Dictionary* pPage = GetPageDictionary(page_index);
+    if (!pPage) {
+      return false;
+    }
+    pages_to_move.push_back(pPage);
+    descending_page_indices.push_back(page_index);
+  }
+  std::sort(descending_page_indices.begin(), descending_page_indices.end(),
+            std::greater<int>());
+
+  // Delete the pages that will be moved from the dictionary in descending
+  // order.
+  for (size_t i = 0; i < descending_page_indices.size(); i++) {
+    DeletePage(descending_page_indices[i]);
+  }
+
+  // Now insert the stored pages back into the document.
+  for (size_t i = 0; i < pages_to_move.size(); i++) {
+    if (!InsertNewPage(static_cast<int>(i) + iDestPageIndex,
+                       pages_to_move[i])) {
+      return false;
+    }
+  }
+  return true;
 }
 
 void CPDF_Document::SetRootForTesting(CPDF_Dictionary* root) {
