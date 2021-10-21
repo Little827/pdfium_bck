@@ -16,6 +16,29 @@
       "message": "And this should be the last one!",
       "revId": "5ce878e8331de042d0992887715fb72587632e98",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408c4a07_1188a4bf",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-21T19:10:34Z",
+      "side": 1,
+      "message": "cfxjs_engine inherits from CFX_V8 which already holds the isolate.",
+      "range": {
+        "startLine": 641,
+        "startChar": 12,
+        "endLine": 641,
+        "endChar": 24
+      },
+      "revId": "5ce878e8331de042d0992887715fb72587632e98",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
