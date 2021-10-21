@@ -231,6 +231,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFPage_InsertObject);
     CHK(FPDFPage_New);
     CHK(FPDFPage_RemoveObject);
+    CHK(FPDFPage_Move);
     CHK(FPDFPage_SetRotation);
     CHK(FPDFPage_TransformAnnots);
     CHK(FPDFPathSegment_GetClose);
