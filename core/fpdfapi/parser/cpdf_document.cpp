@@ -6,6 +6,9 @@
 
 #include "core/fpdfapi/parser/cpdf_document.h"
 
+#include <algorithm>
+#include <functional>
+
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_linearized_header.h"
@@ -22,6 +25,7 @@
 #include "core/fxcrt/stl_util.h"
 #include "third_party/base/check.h"
 #include "third_party/base/containers/contains.h"
+#include "third_party/base/span.h"
 
 namespace {
 
@@ -504,6 +508,76 @@ void CPDF_Document::DeletePage(int iPage) {
     return;
 
   m_PageList.erase(m_PageList.begin() + iPage);
+}
+
+bool CPDF_Document::MovePages(pdfium::span<const int> page_indices,
+                              int dest_page_index) {
+  CPDF_Dictionary* pPages = GetPagesDict();
+  if (!pPages)
+    return false;
+  int nPages = pPages->GetIntegerFor("Count");
+
+  if (!pdfium::base::IsValueInRangeForNumericType<int>(page_indices.size()))
+    return false;
+  int iPageIndicesLen = static_cast<int>(page_indices.size());
+  // Check the number of pages is in range.
+  if (iPageIndicesLen <= 0 || iPageIndicesLen > nPages)
+    return false;
+  // Check that destination page index is in range.
+  if (dest_page_index < 0 || dest_page_index > (nPages - iPageIndicesLen))
+    return false;
+
+  // Check for if XFA is enabled.
+  Extension* extension = GetExtension();
+  if (extension && extension->ContainsExtensionForm()) {
+    // Don't manipulate XFA PDFs.
+    return false;
+  }
+
+  // Check for duplicate and out-of-range page indices
+  std::set<int> unique_page_indices;
+  // Store the pages that need to be moved. They'll be deleted then reinserted.
+  std::vector<CPDF_Dictionary*> pages_to_move;
+  pages_to_move.reserve(iPageIndicesLen);
+  // Store the page indices that will be deleted (and moved).
+  std::vector<int> page_indices_to_delete;
+  page_indices_to_delete.reserve(iPageIndicesLen);
+  for (const int page_index : page_indices) {
+    if (!unique_page_indices.insert(page_index).second) {
+      // Duplicate page index found
+      return false;
+    }
+    CPDF_Dictionary* pPage = GetPageDictionary(page_index);
+    if (!pPage) {
+      // Page not found, index might be out of range.
+      return false;
+    }
+    pages_to_move.push_back(pPage);
+    page_indices_to_delete.push_back(page_index);
+  }
+
+  // Sort the page indices to be deleted in descending order.
+  std::sort(page_indices_to_delete.begin(), page_indices_to_delete.end(),
+            std::greater<int>());
+  // Delete the pages in descending order.
+  for (int page_index : page_indices_to_delete) {
+    DeletePage(page_index);
+  }
+
+  // Now insert the deleted pages back into the document at the destination page
+  // index..
+  for (size_t i = 0; i < pages_to_move.size(); i++) {
+    if (!InsertNewPage(static_cast<int>(i) + dest_page_index,
+                       pages_to_move[i])) {
+      // We fail in an indeterminate state.
+      return false;
+    }
+  }
+
+  // TODO(oliviadang@): If an extension exists, rearrange the pages in the
+  // extension to keep CPDFXFA_Context::m_XFAPageList in sync.
+
+  return true;
 }
 
 void CPDF_Document::SetRootForTesting(CPDF_Dictionary* root) {
