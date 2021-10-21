@@ -16,6 +16,23 @@
       "message": "rebased the latest patch set",
       "revId": "564c8fc68d8010e678a06e3ed979378d4e519fd6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c47e3c_55ab41c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-21T20:14:02Z",
+      "side": 1,
+      "message": "Oh, why is this on the master branch?",
+      "revId": "564c8fc68d8010e678a06e3ed979378d4e519fd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
