@@ -496,6 +496,66 @@ void CPDF_Document::DeletePage(int iPage) {
   m_PageList.erase(m_PageList.begin() + iPage);
 }
 
+bool CPDF_Document::ReorderPages(int* iDestPageOrder, int iDestPageOrderLen) {
+  CPDF_Dictionary* pPages = GetPagesDict();
+  if (!pPages)
+    return false;
+
+  int nPages = pPages->GetIntegerFor("Count");
+  if (iDestPageOrderLen > nPages || iDestPageOrderLen < 1) {
+    fprintf(stderr, "Page order length must be in [1, %i)\n", nPages);
+    return false;
+  }
+
+  // Check for valid page indices, and the optimal index to start at (the index
+  // at which pages start to differ between the new pages and the existing
+  // pages).
+  int startingIndex = -1;
+  for (int i = 0; i < iDestPageOrderLen; i += 1) {
+    int pageIndex = iDestPageOrder[i];
+    if (pageIndex < 0 || pageIndex >= nPages) {
+      fprintf(stderr, "Page indices must be in [0, %i)\n", nPages);
+      return false;
+    }
+    if (pageIndex != i && startingIndex == -1) {
+      startingIndex = i;
+    }
+  }
+  if (startingIndex == -1) {
+    // The new page order is exactly the same as the existing order, ie.
+    // [0, 1, 2 …, nPages - 1].
+    return true;
+  }
+
+  // Store pages to keep, in the new page index order
+  std::vector<CPDF_Dictionary*> pages;
+  for (int i = startingIndex; i < iDestPageOrderLen; i += 1) {
+    int pageIndex = iDestPageOrder[i];
+    CPDF_Dictionary* page = GetPageDictionary(pageIndex);
+    if (!page) {
+      fprintf(stderr, "Could not get page for index %i.\n", pageIndex);
+      return false;
+    }
+    pages.push_back(page);
+  }
+
+  // Delete the pages following startingIndex. Go in reverse order so that page
+  // numbers don't move around before they can be deleted.
+  for (int i = nPages - 1; i >= startingIndex; i -= 1) {
+    DeletePage(i);
+  }
+
+  // Now insert the stored pages (in the new order) back into the document.
+  for (auto it = pages.begin(); it != pages.end(); ++it) {
+    CPDF_Dictionary* page = *it;
+    if (!InsertNewPage(startingIndex, page)) {
+      return false;
+    }
+    startingIndex += 1;
+  }
+  return true;
+}
+
 void CPDF_Document::SetRootForTesting(CPDF_Dictionary* root) {
   m_pRootDict.Reset(root);
 }

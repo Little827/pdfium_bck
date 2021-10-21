@@ -4124,3 +4124,82 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadataJpxLzw) {
 
   UnloadPage(page);
 }
+
+struct FPDFEditReorderEmbedderTestCase {
+  std::vector<int> dest_page_order;
+  bool expected_result;
+};
+
+// This class is structured to contain an EmbedderTest and derive from
+// TestWithParam. The reason we don't also derive from EmbedderTest is
+// because that will result in having two Test parent classes.
+class FPDFEditReorderEmbedderTest
+    : public testing::TestWithParam<FPDFEditReorderEmbedderTestCase> {
+ public:
+  std::string HashForPage(int pageno) {
+    FPDF_PAGE page = et_.LoadPage(pageno);
+    EXPECT_TRUE(page);
+    ScopedFPDFBitmap bitmap = et_.RenderLoadedPage(page);
+    std::string ret = et_.HashBitmap(bitmap.get());
+    et_.UnloadPage(page);
+    return ret;
+  }
+  void SetUp() override { et_.SetUp(); }
+  void TearDown() override { et_.TearDown(); }
+
+ protected:
+  // This class makes some members of EmbedderTest public and stubs out
+  // TestBody so that we can just use the helper functions.
+  class EmbedderTestPublicHelper : public EmbedderTest {
+   public:
+    void TestBody() final {}
+    using EmbedderTest::document_;
+    using EmbedderTest::HashBitmap;
+  };
+  EmbedderTestPublicHelper et_;
+};
+
+TEST_P(FPDFEditReorderEmbedderTest, ReorderPagesTest) {
+  FPDFEditReorderEmbedderTestCase params = GetParam();
+
+  EXPECT_TRUE(et_.OpenDocument("rectangles_multi_pages.pdf"));
+  int page_count = FPDF_GetPageCount(et_.document_);
+
+  std::vector<std::string> orig_hashes;
+  for (int i = 0; i < page_count; i++) {
+    std::string hash = HashForPage(i);
+    // Ensure this hash isn't repeated
+    EXPECT_EQ(std::find(orig_hashes.begin(), orig_hashes.end(), hash),
+              orig_hashes.end());
+    orig_hashes.push_back(hash);
+  }
+
+  EXPECT_EQ(FPDFPage_Reorder(et_.document_, &params.dest_page_order[0],
+                             static_cast<int>(params.dest_page_order.size())),
+            params.expected_result);
+  if (params.expected_result) {
+    // Check if reordered pages have the expected hashes.
+    page_count =
+        params.dest_page_order.size();  // page(s) mav have been deleted
+    for (int i = 0; i < page_count; i++) {
+      std::string hash = HashForPage(i);
+      EXPECT_EQ(hash, orig_hashes[params.dest_page_order[i]])
+          << "new page: " << i << ", old page: " << params.dest_page_order[i];
+    }
+  } else {
+    // Check if the pages are unchanged.
+    for (int i = 0; i < page_count; i++) {
+      std::string hash = HashForPage(i);
+      EXPECT_EQ(hash, orig_hashes[i]);
+    }
+  }
+}
+
+FPDFEditReorderEmbedderTestCase move_pages_test_cases[] = {
+    {{0, 1, 2, 3, 4}, true}, {{0, 2, 4, 3}, true}, {{2, 3, 1, 4, 0}, true},
+    {{4, 2}, true},          {{3}, true},          {{0, 1, 5}, false},
+    {{-4, 2, 3}, false}};
+
+INSTANTIATE_TEST_SUITE_P(FPDFEditReorderEmbedderTestParameters,
+                         FPDFEditReorderEmbedderTest,
+                         testing::ValuesIn(move_pages_test_cases));
