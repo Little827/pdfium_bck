@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8fa2850_04f65975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-21T23:25:13Z",
+      "side": 1,
+      "message": "2 colons",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ac191f_9503e6d8",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-21T23:25:13Z",
+      "side": 1,
+      "message": "I think this part of the string needs a trailing space. As is, it will print out \"Google StyleGuide\", right?",
+      "range": {
+        "startLine": 54,
+        "startChar": 77,
+        "endLine": 54,
+        "endChar": 84
+      },
+      "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d22d1c_8f7fc25a",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-21T23:25:13Z",
+      "side": 1,
+      "message": "https",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58772deb_acdb3191",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-21T23:25:13Z",
+      "side": 1,
+      "message": "Why not make this an error as well? i.e. Set to True.",
+      "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
