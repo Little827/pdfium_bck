@@ -93,6 +93,10 @@ class CPDF_Document : public Observable,
   const CPDF_Array* GetFileIdentifier() const;
 
   void DeletePage(int iPage);
+  bool MovePages(const int* pPageIndices,
+                 int iPageIndicesLen,
+                 int iDestPageIndex);
+
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
   CPDF_Dictionary* GetPageDictionary(int iPage);
