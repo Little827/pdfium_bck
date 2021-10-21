@@ -196,6 +196,17 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
   pDoc->DeletePage(page_index);
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPage_Reorder(FPDF_DOCUMENT document,
+                 const int* dest_page_order,
+                 const int dest_page_order_len) {
+  auto* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return false;
+
+  return pDoc->ReorderPages(dest_page_order, dest_page_order_len);
+}
+
 FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
                                                  int page_index,
                                                  double width,

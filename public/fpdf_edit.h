@@ -126,6 +126,37 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
                                                int page_index);
 
+// Experimental API.
+// Reorder the pages in the document, to match the destination page order.
+//
+//   dest_page_order     - the desired order of pages, represented by their
+//                         existing indices. Each index must be in [0, N), where
+//                         N is the number of pages in the document. No
+//                         duplicates allowed.
+//   dest_page_order_len - the length of the desired page order. Must be N.
+//
+// Returns TRUE on success.
+//
+// Example: The PDF document starts out with pages [A, B, C, D], with indices
+// [0, 1, 2, 3].
+//
+// >  Reorder(doc, /*dest_page_order*/ [1, 2, 0, 3], /*len*/ 4); // true
+// >  // The document has pages [B, C, A, D].
+// >
+// >  Reorder(doc, /*dest_page_order*/ [0, 1, 4, 2], /*len*/ 4); // false
+// >  // Returned false because 4 is out of range.
+// >
+// >  Reorder(doc, /*dest_page_order*/ [3, 2, 1], /*len*/ 3); // false
+// >  // Returned false because dest_page_order_len must be 4.
+// >
+// >  Reorder(doc, /*dest_page_order*/ [0, 1, 1, 2], /*len*/ 4); // false
+// >  // Returned false because 1 is a duplicate index.
+//
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPage_Reorder(FPDF_DOCUMENT document,
+                 const int* dest_page_order,
+                 const int dest_page_order_len);
+
 // Get the rotation of |page|.
 //
 //   page - handle to a page

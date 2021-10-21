@@ -496,6 +496,63 @@ void CPDF_Document::DeletePage(int iPage) {
   m_PageList.erase(m_PageList.begin() + iPage);
 }
 
+bool CPDF_Document::ReorderPages(const int* iDestPageOrder,
+                                 const int iDestPageOrderLen) {
+  CPDF_Dictionary* pPages = GetPagesDict();
+  if (!pPages)
+    return false;
+
+  int nPages = pPages->GetIntegerFor("Count");
+  if (iDestPageOrderLen < 1) {
+    return false;
+  }
+
+  // Check for valid page indices, and the optimal index to start at (the index
+  // at which pages start to differ between the new pages and the existing
+  // pages).
+  int iStartIndex = -1;
+  for (int i = 0; i < iDestPageOrderLen; i++) {
+    int iPageIndex = iDestPageOrder[i];
+    if (iPageIndex < 0 || iPageIndex >= nPages) {
+      return false;
+    }
+    if (iPageIndex != i && iStartIndex == -1) {
+      iStartIndex = i;
+    }
+  }
+  if (iStartIndex == -1) {
+    // The new page order is exactly the same as the existing order, ie.
+    // [0, 1, 2 …, nPages - 1].
+    return true;
+  }
+
+  // Store the pages to keep, in the new page index order
+  std::vector<CPDF_Dictionary*> pPagesToKeep;
+  for (int i = iStartIndex; i < iDestPageOrderLen; i++) {
+    int iPageIndex = iDestPageOrder[i];
+    CPDF_Dictionary* pPage = GetPageDictionary(iPageIndex);
+    if (!pPage) {
+      return false;
+    }
+    pPagesToKeep.push_back(pPage);
+  }
+
+  // Delete the pages following startingIndex. Go in reverse order so that page
+  // numbers don't move around before they can be deleted.
+  for (int i = nPages - 1; i >= iStartIndex; i--) {
+    DeletePage(i);
+  }
+
+  // Now insert the stored pages (in the new order) back into the document.
+  for (size_t i = 0; i < pPagesToKeep.size(); i++) {
+    if (!InsertNewPage(iStartIndex, pPagesToKeep[i])) {
+      return false;
+    }
+    iStartIndex ++;
+  }
+  return true;
+}
+
 void CPDF_Document::SetRootForTesting(CPDF_Dictionary* root) {
   m_pRootDict.Reset(root);
 }
