@@ -128,7 +128,6 @@ bool EmbedderTest::OpenDocumentWithOptions(const std::string& filename,
   if (!file_contents_)
     return false;
 
-  EXPECT_TRUE(!loader_);
   loader_ = std::make_unique<TestLoader>(
       pdfium::make_span(file_contents_.get(), file_length_));
 
