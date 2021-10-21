@@ -108,6 +108,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9fb81c7_8c2fe3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-10-21T00:13:25Z",
+      "side": 1,
+      "message": "Sure, I can address those in followups.",
+      "parentUuid": "5ffdaf20_72d5dd2a",
+      "revId": "8cb22d3457a4d753f0043f6387dce39a3a5cd00e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9127b8f4_8b2d4c28",
@@ -121,6 +139,24 @@
       "writtenOn": "2021-10-20T05:39:40Z",
       "side": 1,
       "message": "Does PDFium\u0027s existing PathService::GetExecutableDir() do the same thing?",
+      "revId": "8cb22d3457a4d753f0043f6387dce39a3a5cd00e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45890f2_e17a637d",
+        "filename": "testing/pdf_test_environment.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-10-21T00:13:25Z",
+      "side": 1,
+      "message": "Much cleaner, done!",
+      "parentUuid": "9127b8f4_8b2d4c28",
       "revId": "8cb22d3457a4d753f0043f6387dce39a3a5cd00e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -148,6 +184,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28dc27c6_eec573d2",
+        "filename": "xfa/fde/cfde_texteditengine_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-10-21T00:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0664ff_13a290eb",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "8cb22d3457a4d753f0043f6387dce39a3a5cd00e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2adfcbdc_c88466f8",
@@ -161,6 +221,30 @@
       "writtenOn": "2021-10-20T05:39:40Z",
       "side": 1,
       "message": "Comment out of date. WDYT about adjusting the width here instead?",
+      "range": {
+        "startLine": 149,
+        "startChar": 42,
+        "endLine": 149,
+        "endChar": 58
+      },
+      "revId": "8cb22d3457a4d753f0043f6387dce39a3a5cd00e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36d086f_d43ceed1",
+        "filename": "xfa/fde/cfde_texteditengine_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-10-21T00:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adfcbdc_c88466f8",
       "range": {
         "startLine": 149,
         "startChar": 42,
