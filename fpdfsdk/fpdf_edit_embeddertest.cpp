@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include <memory>
+#include <ostream>
 #include <string>
 #include <utility>
 #include <vector>
@@ -4106,4 +4107,106 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadataJpxLzw) {
   EXPECT_EQ(FPDF_COLORSPACE_UNKNOWN, metadata.colorspace);
 
   UnloadPage(page);
+}
+
+struct FPDFEditMoveEmbedderTestCase {
+  std::vector<int> page_indices;
+  int page_indices_len;
+  int dest_page_index;
+  bool expected_result;  // whether FPDFPage_Move() will succeed or fail
+  std::vector<int>
+      expected_order;  // expected order of pages if `expected_result` is true
+  std::string name;
+};
+
+std::ostream& operator<<(std::ostream& os,
+                         const FPDFEditMoveEmbedderTestCase& t) {
+  os << t.name << ": Indices are {";
+  for (size_t i = 0; i < t.page_indices.size(); ++i) {
+    os << t.page_indices[i] << ", ";
+  }
+  os << "}, \n page order len is " << t.page_indices_len
+     << ", \n dest page index is " << t.dest_page_index
+     << ", \n expected result is " << t.expected_result;
+  return os;
+}
+
+class FPDFEditMoveEmbedderTest : public EmbedderTest {
+ protected:
+  std::vector<std::string> HashesForDocument() {
+    std::vector<std::string> hashes;
+    hashes.reserve(GetPageCount());
+    for (int i = 0; i < GetPageCount(); ++i) {
+      hashes.push_back(HashForPage(i));
+    }
+    return hashes;
+  }
+
+ private:
+  std::string HashForPage(int page_index) {
+    FPDF_PAGE page = LoadPage(page_index);
+    EXPECT_TRUE(page);
+    ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+    std::string hash = HashBitmap(bitmap.get());
+    UnloadPage(page);
+    return hash;
+  }
+};
+
+#if defined(PDF_ENABLE_XFA)
+#define MAYBE_MovePagesTest DISABLED_MovePagesTest
+#else  // PDF_ENABLE_XFA
+#define MAYBE_MovePagesTest MovePagesTest
+#endif  // PDF_ENABLE_XFA
+TEST_F(FPDFEditMoveEmbedderTest, MAYBE_MovePagesTest) {
+  const FPDFEditMoveEmbedderTestCase kTestCases[]{
+      {{0, 1, 2, 3, 4}, 5, 0, true, {0, 1, 2, 3, 4}, "no change"},
+      {{0, 4, 2, 1, 3}, 5, 0, true, {0, 4, 2, 1, 3}, "reorder all pages"},
+      {{0, 2, 4, 3}, 4, 1, true, {1, 0, 2, 4, 3}, "reorder 4 pages"},
+      {{1, 4, 2}, 3, 2, true, {0, 3, 1, 4, 2}, "reorder 3 pages"},
+      {{3, 2}, 2, 3, true, {0, 1, 4, 3, 2}, "reorder 2 pages"},
+      {{3}, 1, 4, true, {0, 1, 2, 4, 3}, "reorder 1 page"},
+      {{1, 1}, 2, 2, false, {}, "duplicate index"},
+      {{5, 3, 2}, 3, 0, false, {}, "out of range index"},
+      {{3}, 0, 0, false, {}, "page_indices_len needs to be in range [1, 5]"},
+      {{4, 3, 2, 1, 0}, 6, 0, false, {}, "page_indices_len is too big"},
+      {{3}, 0, 5, false, {}, "dest_page_index is out of range"},
+      {{3, 1, 4}, 0, -1, false, {}, "dest_page_index is out of range"},
+  };
+
+  // Try all test cases with a freshly opened document that has 5 pages.
+  for (const FPDFEditMoveEmbedderTestCase& tc : kTestCases) {
+    ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
+    const int page_count = GetPageCount();
+    ASSERT_EQ(page_count, 5);
+    // Check that the test case has correctly formed expected result.
+    if (tc.expected_result) {
+      ASSERT_THAT(tc.expected_order, testing::SizeIs(page_count));
+    }
+
+    // Cache the original pages' hashes.
+    std::vector<std::string> orig_hashes = HashesForDocument();
+    ASSERT_THAT(orig_hashes, testing::SizeIs(page_count));
+
+    EXPECT_EQ(FPDFPage_Move(document(), &tc.page_indices[0],
+                            tc.page_indices_len, tc.dest_page_index),
+              tc.expected_result)
+        << tc;
+
+    if (tc.expected_result) {
+      // Check for updated page order.
+      std::vector<std::string> new_hashes = HashesForDocument();
+      std::vector<std::string> expected_hashes;
+      expected_hashes.reserve(page_count);
+      for (int i = 0; i < page_count; ++i) {
+        expected_hashes.push_back(orig_hashes[tc.expected_order[i]]);
+      }
+      EXPECT_THAT(new_hashes, testing::ContainerEq(expected_hashes)) << tc;
+    } else {
+      // Check that pages are unchanged.
+      EXPECT_THAT(HashesForDocument(), testing::ContainerEq(orig_hashes)) << tc;
+    }
+
+    CloseDocument();
+  }
 }

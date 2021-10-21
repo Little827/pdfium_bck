@@ -17,6 +17,7 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/base/span.h"
 
 class CPDF_ReadValidator;
 class CPDF_StreamAcc;
@@ -94,6 +95,8 @@ class CPDF_Document : public Observable,
   const CPDF_Array* GetFileIdentifier() const;
 
   void DeletePage(int iPage);
+  bool MovePages(pdfium::span<const int> page_indices, int dest_page_index);
+
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
   CPDF_Dictionary* GetPageDictionary(int iPage);
