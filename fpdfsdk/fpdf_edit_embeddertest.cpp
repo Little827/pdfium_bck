@@ -4124,3 +4124,77 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadataJpxLzw) {
 
   UnloadPage(page);
 }
+
+struct FPDFEditReorderEmbedderTestCase {
+  std::vector<int> dest_page_order;
+  bool expected_result;
+};
+
+std::ostream& operator<<(std::ostream& os,
+                         const FPDFEditReorderEmbedderTestCase& t) {
+  os << "Page order is {";
+  for (size_t i = 0; i < t.dest_page_order.size(); i++) {
+    os << t.dest_page_order[i] << ", ";
+  }
+  os << "}, page order len is " << t.dest_page_order.size()
+     << ", expected result is " << t.expected_result;
+  return os;
+}
+
+class FPDFEditReorderEmbedderTest : public EmbedderTest {
+ public:
+  std::string HashForPage(int page_index) {
+    FPDF_PAGE page = LoadPage(page_index);
+    EXPECT_TRUE(page);
+    ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+    std::string ret = HashBitmap(bitmap.get());
+    UnloadPage(page);
+    return ret;
+  }
+};
+
+TEST_F(FPDFEditReorderEmbedderTest, ReorderPagesTest) {
+  std::vector<FPDFEditReorderEmbedderTestCase> test_cases{
+      {{0, 1, 2, 3, 4}, true}, {{0, 2, 4, 3}, true}, {{2, 3, 1, 4, 0}, true},
+      {{4, 2}, true},          {{3}, true},          {{0, 1, 5}, false},
+      {{-4, 2, 3}, false}, {{1, 1, 1, 1, 1, 2}, true}};
+
+  // Try all test cases with a freshly opened document.
+  for (auto it = test_cases.begin(); it != test_cases.end(); ++it) {
+    ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
+    const int page_count = FPDF_GetPageCount(document());
+    // Build the list of the original pages' hashes.
+    std::vector<std::string> orig_hashes;
+    for (int i = 0; i < page_count; i++) {
+      std::string hash = HashForPage(i);
+      // Ensure this hash isn't repeated
+      EXPECT_EQ(std::find(orig_hashes.begin(), orig_hashes.end(), hash),
+                orig_hashes.end());
+      orig_hashes.push_back(hash);
+    }
+
+    FPDFEditReorderEmbedderTestCase test_case = *it;
+    EXPECT_EQ(
+        FPDFPage_Reorder(document(), &test_case.dest_page_order[0],
+                         static_cast<int>(test_case.dest_page_order.size())),
+        test_case.expected_result)
+        << test_case;
+
+    if (test_case.expected_result) {
+      // Check if reordered pages have the expected hashes.
+      const int updated_page_count = test_case.dest_page_order.size();
+      for (int i = 0; i < updated_page_count; i++) {
+        std::string hash = HashForPage(i);
+        EXPECT_EQ(hash, orig_hashes[test_case.dest_page_order[i]]) << test_case;
+      }
+    } else {
+      // Check that pages are unchanged.
+      for (int i = 0; i < page_count; i++) {
+        std::string hash = HashForPage(i);
+        EXPECT_EQ(hash, orig_hashes[i]) << test_case;
+      }
+    }
+
+    CloseDocument();
+  }
+}
