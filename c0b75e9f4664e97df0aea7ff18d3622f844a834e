@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3df570_9db0c421",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-10-22T02:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8fa2850_04f65975",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70ac191f_9503e6d8",
@@ -94,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a226bc10_015b7c61",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-10-22T02:12:12Z",
+      "side": 1,
+      "message": "Done.  Shouldn\u0027t blindly copy code 😐",
+      "parentUuid": "65d22d1c_8f7fc25a",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58772deb_acdb3191",
@@ -107,6 +155,24 @@
       "writtenOn": "2021-10-21T23:25:13Z",
       "side": 1,
       "message": "Why not make this an error as well? i.e. Set to True.",
+      "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803f9620_237d78e5",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-10-22T02:12:12Z",
+      "side": 1,
+      "message": "I can imagine it being useful in DCHECKs and such, so I don\u0027t want to completely ban its use.\n\nMost importantly, there\u0027s no other way of checking whether an isolate is entered. Maybe I can chat with the V8 folks about adding a v8::Isolate::IsCurrent() [1] API. Once that\u0027s offered, we can completely ban this function.\n\n[1] I assume it can be simply defined as `this \u003d\u003d v8::Isolate::GetCurrent()`",
+      "parentUuid": "58772deb_acdb3191",
       "revId": "c0b75e9f4664e97df0aea7ff18d3622f844a834e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
