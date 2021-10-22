@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a50cf3_7f4acdf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-22T00:19:58Z",
+      "side": 1,
+      "message": "Reverse the 2 words? \"render-oneshot\" option",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "360d0778d76e67b93e349c6d9a806f8d328f1def",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44bc3a78_08a17466",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-22T00:19:58Z",
+      "side": 1,
+      "message": "This CL is trying to do 2 things at once. Can we instead switch to progressive rendering in another CL first?",
+      "revId": "360d0778d76e67b93e349c6d9a806f8d328f1def",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc438ca_180a948f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-22T00:19:58Z",
+      "side": 1,
+      "message": "progressive rendering\n\n(and also oneshot rendering)",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "360d0778d76e67b93e349c6d9a806f8d328f1def",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9abc08_3bfa8771",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-22T00:19:58Z",
+      "side": 1,
+      "message": "Chrome",
+      "range": {
+        "startLine": 14,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "360d0778d76e67b93e349c6d9a806f8d328f1def",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2351a952_554accc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-22T00:19:58Z",
+      "side": 1,
+      "message": "a \"render-oneshot\" runtime option",
+      "range": {
+        "startLine": 14,
+        "startChar": 53,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "360d0778d76e67b93e349c6d9a806f8d328f1def",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
