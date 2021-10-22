@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1634863031 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d19vrsUnKXmjpnYb6TiWiXWNmF6qfmnmjkBW3P8jpLATsPAyq2UGF7x8eECOx7QwMiHmOHFz\n\n0000000000000000000000000000000000000000 14ea263297a2f150cd88bbaea44c80afbc43de64 refs/for/refs/heads/main%notify\u003dNONE,m\u003dself_review\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmFyB7cACgkQqzYtYVpm\n/Xu9Ngf8DhFDOQpGz/PfD1/jv7V9Ei2usfkvDVec9YlCcc7EYsdMv8l914vyf5J1\nviP2syxNxy4PrZivbRfOBsxNU8TBYhCskyrmiSmm5axeKUL7LcRiR7IzF+kz+0nE\nwqB3pyDg42ym7m9G6di55UrBt5knkl3qzQf8yIFWy2ClJy4Vr8UseL9qRF8PUS7J\nm3qOzo9cBXQaZBK5JWWngBaJNUBlpXYIfn5ZCHO6vlN7VHmVImTfEyid0jbc01a3\nSlMh9a3t2KIM+HSjFCEeAytCANfkYtSfo4DCyLwKYtwX3lX4lBeuNslqHf0Yl9ul\nAdOGPZRc6mUmfCubq/jb6DxFEy6nkw\u003d\u003d\n\u003dcqtA\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c0f2a7_3c5c1c87",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-22T00:38:21Z",
+      "side": 1,
+      "message": "This is RebuildCrossRef(). Given the original xref is presumably bad, there\u0027s no way to know what the intended index was. Just use the latest, as AddCompressed() will overwrite old entries. This is the same behavior as before.",
+      "revId": "14ea263297a2f150cd88bbaea44c80afbc43de64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
