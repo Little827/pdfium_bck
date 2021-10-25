@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c486a86a_3c93fab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-25T23:24:02Z",
+      "side": 1,
+      "message": "Diffing intermediate patch sets shows the progression.",
+      "revId": "073f613d92f1f81621a0b05a61e50194b6788e4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
