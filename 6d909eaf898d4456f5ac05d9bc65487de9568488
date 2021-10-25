@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d07fc2f9_a444acf7",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T20:46:01Z",
+      "side": 1,
+      "message": "WDYT about an API that just moved 1 page at a time? e.g. FPDF_BOOL FPDFPage_Move(FPDF_DOCUMENT document, int page_index, int new_page_index)\n\nThen [A, B, C, D] \u003d\u003e [A, C] can be:\n// Doesn\u0027t even need a new API.\nFPDFPage_Delete(doc, 3);\nFPDFPage_Delete(doc, 1);\n\nThen [A, B, C, D] \u003d\u003e [C, A] can be:\nFPDFPage_Delete(doc, 3);\nFPDFPage_Delete(doc, 1);\nFPDFPage_Move(doc, 1, 0);  // Or FPDFPage_Move(doc, 0, 1)\n\nThen [A, B, C, D] \u003d\u003e [B, C, A, D]\nFPDFPage_Move(doc, 1, 0);  // [B, A, C, D]\nFPDFPage_Move(doc, 2, 1);  // [B, C, A, D]\n\nBeing simpler, input validation would be a lot easier. It shouldn\u0027t be too hard to transform a vector that contains what the end result should be into a set of FPDFPage_Move() calls, right?",
+      "parentUuid": "5d1b454d_2bc40c0d",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "447ae097_816e32cf",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
