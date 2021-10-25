@@ -379,8 +379,7 @@ size_t CPDF_Annot::QuadPointCount(const CPDF_Array* pArray) {
 bool CPDF_Annot::DrawAppearance(CPDF_Page* pPage,
                                 CFX_RenderDevice* pDevice,
                                 const CFX_Matrix& mtUser2Device,
-                                AppearanceMode mode,
-                                const CPDF_RenderOptions* pOptions) {
+                                AppearanceMode mode) {
   if (!ShouldDrawAnnotation())
     return false;
 
@@ -400,7 +399,7 @@ bool CPDF_Annot::DrawAppearance(CPDF_Page* pPage,
       pPage->GetDocument(), pPage->GetPageResources(),
       static_cast<CPDF_PageRenderCache*>(pPage->GetRenderCache()));
   context.AppendLayer(pForm, matrix);
-  context.Render(pDevice, pOptions, nullptr);
+  context.Render(pDevice, nullptr, nullptr);
   return true;
 }
 
