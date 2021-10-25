@@ -22,7 +22,6 @@ class CFX_RenderDevice;
 class CPDF_Annot;
 class CPDF_FormControl;
 class CPDF_FormField;
-class CPDF_RenderOptions;
 class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_InteractiveForm;
 class CPDFSDK_PageView;
@@ -123,8 +122,7 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
   bool IsWidgetAppearanceValid(CPDF_Annot::AppearanceMode mode);
   void DrawAppearance(CFX_RenderDevice* pDevice,
                       const CFX_Matrix& mtUser2Device,
-                      CPDF_Annot::AppearanceMode mode,
-                      const CPDF_RenderOptions* pOptions) override;
+                      CPDF_Annot::AppearanceMode mode) override;
 
   CFX_Matrix GetMatrix() const;
   CFX_FloatRect GetClientRect() const;
