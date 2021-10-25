@@ -208,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d1b454d_2bc40c0d",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-10-25T19:08:04Z",
+      "side": 1,
+      "message": "Yes.\n\nI realize this is not convenient for other clients, but Ink keeps track of page reorders and deletions by keeping an array of the old page indices, which represents the new order of pages. So we could easily just pass that into this PDFium API.\n\nI considered trying to submit an API similar to adlr@\u0027s abandoned CL (https://pdfium-review.googlesource.com/c/pdfium/+/56235/) but it would be a lot of complicated logic for Ink to figure out how to translate its array of old page indices to PDFium MovePage calls.",
+      "parentUuid": "dc83fe13_2d29c77f",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "447ae097_816e32cf",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
