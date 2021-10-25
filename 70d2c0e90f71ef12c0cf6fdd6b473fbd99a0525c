@@ -142,6 +142,30 @@
       },
       "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7baff0fa_839a7726",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-25T17:21:07Z",
+      "side": 1,
+      "message": "Actually, I guess it would be to add a more recent version of this file to the patch set.",
+      "parentUuid": "b8f2a8d3_cb349a09",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 60
+      },
+      "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
