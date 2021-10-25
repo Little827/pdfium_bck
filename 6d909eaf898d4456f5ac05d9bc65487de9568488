@@ -244,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b5dc382_b7af6acf",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-10-25T20:54:08Z",
+      "side": 1,
+      "message": "I considered an API like that from adlr@\u0027s abandoned CL. \n\nIt would be inefficient for Ink to make up to O(n) FPDFPage_Move calls. If our new page order looks like [3, 2, 1, 0], we would have to call\n\nFPDFPage_Move(3, 0);\nFPDFPage_Move(2, 1);\nFPDFPage_Move(1, 2);\n\nEach FPDFPage_Move call deletes the pages starting from min(page_index, new_page_index) and reinserts them in the new order.",
+      "parentUuid": "d07fc2f9_a444acf7",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "447ae097_816e32cf",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
