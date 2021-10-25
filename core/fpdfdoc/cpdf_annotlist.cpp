@@ -276,30 +276,7 @@ void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
                                    CFX_RenderDevice* pDevice,
                                    CPDF_RenderContext* pContext,
                                    bool bPrinting,
-                                   const CFX_Matrix& mtUser2Device,
-                                   uint32_t dwAnnotFlags,
-                                   CPDF_RenderOptions* pOptions,
-                                   FX_RECT* pClipRect) {
-  if (dwAnnotFlags & pdfium::annotation_flags::kInvisible) {
-    DisplayPass(pPage, pDevice, pContext, bPrinting, mtUser2Device, false,
-                pOptions, pClipRect);
-  }
-  if (dwAnnotFlags & pdfium::annotation_flags::kHidden) {
-    DisplayPass(pPage, pDevice, pContext, bPrinting, mtUser2Device, true,
-                pOptions, pClipRect);
-  }
-}
-
-void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
-                                   CFX_RenderDevice* device,
-                                   CPDF_RenderContext* pContext,
-                                   bool bPrinting,
-                                   const CFX_Matrix& mtMatrix,
-                                   bool bShowWidget,
-                                   CPDF_RenderOptions* pOptions) {
-  uint32_t dwAnnotFlags = bShowWidget ? pdfium::annotation_flags::kInvisible |
-                                            pdfium::annotation_flags::kHidden
-                                      : pdfium::annotation_flags::kInvisible;
-  DisplayAnnots(pPage, device, pContext, bPrinting, mtMatrix, dwAnnotFlags,
-                pOptions, nullptr);
+                                   const CFX_Matrix& mtUser2Device) {
+  DisplayPass(pPage, pDevice, pContext, bPrinting, mtUser2Device, false,
+              nullptr, nullptr);
 }
