@@ -26,7 +26,6 @@ class CPDF_Document;
 class CPDF_Form;
 class CPDF_Page;
 class CPDF_RenderContext;
-class CPDF_RenderOptions;
 class CPDF_Stream;
 
 class CPDF_Annot {
@@ -96,9 +95,7 @@ class CPDF_Annot {
                      AppearanceMode mode);
 
   void ClearCachedAP();
-  void DrawBorder(CFX_RenderDevice* pDevice,
-                  const CFX_Matrix* pUser2Device,
-                  const CPDF_RenderOptions* pOptions);
+  void DrawBorder(CFX_RenderDevice* pDevice, const CFX_Matrix& mtUser2Device);
   CPDF_Form* GetAPForm(const CPDF_Page* pPage, AppearanceMode mode);
   void SetOpenState(bool bOpenState) { m_bOpenState = bOpenState; }
   CPDF_Annot* GetPopupAnnot() const { return m_pPopupAnnot.Get(); }
