@@ -166,6 +166,30 @@
       },
       "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9bd99d_8d3ee33a",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T17:32:42Z",
+      "side": 1,
+      "message": "I wasn\u0027t involved in this effort, but we may need to merge several CLs from https://crbug.com/pdfium/1642 to M90 to get the CQ to run properly on this branch.\n\nMore generally, we need to figure out how other build waterfalls support branches. If each branch has its own recipes, for example, then we won\u0027t need to do the test runner backporting.",
+      "parentUuid": "7baff0fa_839a7726",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 60
+      },
+      "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
