@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd41827c_b426727a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "Thanks for putting this together. I think we should work out the API first, as that will affect everything else.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d83968b8_88d83c63",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "FWIW, I would suggest trying to use Google C++ style in new code, or use the existing code style (typically Hungarian notation) if that looks really out of place with existing code. Here, \"startingIndex\" is neither of those styles.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1fd281_478195c0",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "++i ?\n\nThere are a few other places that can use operator++ or operator--.",
+      "range": {
+        "startLine": 514,
+        "startChar": 41,
+        "endLine": 514,
+        "endChar": 47
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd84fc4_8067ba43",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "Use a range-based for-loop instead?",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f422ae_820bea0c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "PDFium (and Chromium in general) do not use TestWithParam to iterate through test cases. FPDFEditReorderEmbedderTest should just inherit from EmbedderTest, and the test cases can just be a for-loop in the test case itself.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a55d77_7712a2aa",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "\"pagenum\" is probably a slightly better name. I oftentimes expand this to \"page no\" and then wonder \"no? why not?\"",
+      "range": {
+        "startLine": 4139,
+        "startChar": 30,
+        "endLine": 4139,
+        "endChar": 36
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943548c3_9808c964",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4156,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary. Just call document().",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7970d7_276008bc",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4157,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "Also not necessary. This is protected in EmbedderTest, so if FPDFEditReorderEmbedderTest derived from EmbedderTest, then it can access it.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89125d7b_d6fc90e3",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "Is deletion a requirement for this API?",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f4e2f1_f7c7cf41",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "The documentation needs to clearly state somewhere that it takes page indices and not page numbers.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc83fe13_2d29c77f",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "If the PDF document has 1000 pages, the caller needs to pass in an array of 1000 elements, even if they just need to reorder 2 pages within?",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447ae097_816e32cf",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "Thinking of other inputs... can the caller pass in duplicate page indices? e.g. [0, 0], 2?",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b8574d_31ad4659",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-25T18:50:13Z",
+      "side": 1,
+      "message": "All new APIs need to start out in the experimental state. PDFium uses a comment above the API to indicate this. Look around for examples.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
