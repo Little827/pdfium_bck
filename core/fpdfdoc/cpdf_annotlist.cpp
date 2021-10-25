@@ -294,12 +294,7 @@ void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
                                    CFX_RenderDevice* device,
                                    CPDF_RenderContext* pContext,
                                    bool bPrinting,
-                                   const CFX_Matrix& mtMatrix,
-                                   bool bShowWidget,
-                                   CPDF_RenderOptions* pOptions) {
-  uint32_t dwAnnotFlags = bShowWidget ? pdfium::annotation_flags::kInvisible |
-                                            pdfium::annotation_flags::kHidden
-                                      : pdfium::annotation_flags::kInvisible;
-  DisplayAnnots(pPage, device, pContext, bPrinting, mtMatrix, dwAnnotFlags,
-                pOptions, nullptr);
+                                   const CFX_Matrix& mtMatrix) {
+  DisplayAnnots(pPage, device, pContext, bPrinting, mtMatrix,
+                pdfium::annotation_flags::kInvisible, nullptr, nullptr);
 }
