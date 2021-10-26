@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b89211b_31b60f6a",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-26T15:56:42Z",
+      "side": 1,
+      "message": "pdfium::span uses UnownedPtr, and thus cannot be a constexpr global. It triggers -Wexit-time-destructors.",
+      "parentUuid": "f7ff7569_1fd5a214",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "e493546f025c612e381273e191b9d96fecc96c95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0437a37d_257a31ef",
         "filename": "core/fxge/cfx_fontmgr.cpp",
         "patchSetId": 1
