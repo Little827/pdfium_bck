@@ -34,6 +34,24 @@
       "parentUuid": "ce9cfd5c_3ae8aa87",
       "revId": "bbf994ffe3ce08b5ea6e6e886d66416d6c86bf28",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66bf15b_95fd49c0",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-26T20:01:34Z",
+      "side": 1,
+      "message": "Maybe I should have spent more time last year investigating the note above. Ideally, we would not have this out-parameter at all.",
+      "parentUuid": "7da8848b_9aa95aac",
+      "revId": "bbf994ffe3ce08b5ea6e6e886d66416d6c86bf28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
