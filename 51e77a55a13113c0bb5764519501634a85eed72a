@@ -23,6 +23,30 @@
       },
       "revId": "51e77a55a13113c0bb5764519501634a85eed72a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e868c55_680044ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-26T16:33:22Z",
+      "side": 1,
+      "message": "Parsing is hard!",
+      "parentUuid": "52fe6856_cb1eca45",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "51e77a55a13113c0bb5764519501634a85eed72a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
