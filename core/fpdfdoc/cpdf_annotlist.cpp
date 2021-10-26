@@ -245,7 +245,7 @@ void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
                             CPDF_Annot::AppearanceMode::kNormal);
     } else if (!pAnnot->DrawAppearance(pPage, pDevice, matrix,
                                        CPDF_Annot::AppearanceMode::kNormal)) {
-      pAnnot->DrawBorder(pDevice, &matrix, nullptr);
+      pAnnot->DrawBorder(pDevice, matrix);
     }
   }
 }
