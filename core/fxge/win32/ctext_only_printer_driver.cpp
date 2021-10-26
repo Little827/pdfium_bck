@@ -55,6 +55,10 @@ int CTextOnlyPrinterDriver::GetDeviceCaps(int caps_id) const {
   }
 }
 
+void CTextOnlyPrinterDriver::SaveState() {}
+
+void CTextOnlyPrinterDriver::RestoreState(bool bKeepSaved) {}
+
 bool CTextOnlyPrinterDriver::SetClip_PathFill(
     const CFX_Path* pPath,
     const CFX_Matrix* pObject2Device,

@@ -73,14 +73,14 @@ class CFX_PSRenderer {
             int height);
   void SaveState();
   void RestoreState(bool bKeepSaved);
-  void SetClip_PathFill(const CFX_Path* pPath,
+  void SetClip_PathFill(const CFX_Path& pPath,
                         const CFX_Matrix* pObject2Device,
                         const CFX_FillRenderOptions& fill_options);
-  void SetClip_PathStroke(const CFX_Path* pPath,
+  void SetClip_PathStroke(const CFX_Path& pPath,
                           const CFX_Matrix* pObject2Device,
                           const CFX_GraphStateData* pGraphState);
   FX_RECT GetClipBox() { return m_ClipBox; }
-  bool DrawPath(const CFX_Path* pPath,
+  bool DrawPath(const CFX_Path& pPath,
                 const CFX_Matrix* pObject2Device,
                 const CFX_GraphStateData* pGraphState,
                 uint32_t fill_color,
