@@ -13,7 +13,6 @@ PDFTestEnvironment::~PDFTestEnvironment() = default;
 
 // testing::Environment:
 void PDFTestEnvironment::SetUp() {
-#if defined(OS_LINUX) || defined(OS_CHROMEOS)
   if (PathService::GetExecutableDir(&font_path_)) {
     font_path_ += "/test_fonts";
     font_paths_[0] = font_path_.c_str();
@@ -21,7 +20,6 @@ void PDFTestEnvironment::SetUp() {
     CFX_GEModule::Create(font_paths_);
     return;
   }
-#endif
   CFX_GEModule::Create(nullptr);
 }
 
