@@ -18,8 +18,6 @@ class CFX_CodecMemory;
 
 namespace fxcodec {
 
-class CFX_DIBAttribute;
-
 class ProgressiveDecoderIface {
  public:
   class Context {
@@ -36,8 +34,7 @@ class ProgressiveDecoderIface {
   // setting details about the image extracted from the buffer into |pAttribute|
   // (if provided and the codec is capable providing that information).
   virtual bool Input(Context* pContext,
-                     RetainPtr<CFX_CodecMemory> codec_memory,
-                     CFX_DIBAttribute* pAttribute) = 0;
+                     RetainPtr<CFX_CodecMemory> codec_memory) = 0;
 };
 
 }  // namespace fxcodec
