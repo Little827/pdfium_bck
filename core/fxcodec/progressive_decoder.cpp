@@ -935,7 +935,7 @@ bool ProgressiveDecoder::JpegDetectImageTypeInBuffer(
     return false;
   }
   JpegProgressiveDecoder::GetInstance()->Input(m_pJpegContext.get(),
-                                               m_pCodecMemory, nullptr);
+                                               m_pCodecMemory);
 
   // Setting jump marker before calling ReadHeader, since a longjmp to
   // the marker indicates a fatal error.
@@ -1486,7 +1486,7 @@ bool ProgressiveDecoder::ReadMoreData(
     return false;
   }
   m_offSet += dwBytesToFetchFromFile;
-  return pModule->Input(pContext, m_pCodecMemory, nullptr);
+  return pModule->Input(pContext, m_pCodecMemory);
 }
 
 FXCODEC_STATUS ProgressiveDecoder::LoadImageInfo(
