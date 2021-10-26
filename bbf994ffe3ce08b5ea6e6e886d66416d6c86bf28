@@ -16,6 +16,24 @@
       "message": "Non-const refs are allowed by the style guide these days. Keep as it was?",
       "revId": "bbf994ffe3ce08b5ea6e6e886d66416d6c86bf28",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da8848b_9aa95aac",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-26T19:58:12Z",
+      "side": 1,
+      "message": "The line that irked me was BuildAggPath(pPath, pObject2Device, path_data) where you couldn\u0027t tell which was the input vs. output just by looking. In fact if you had a path rather than a pointer to it, we might have written in the old way\n  BuildAggPath(\u0026path, pObject2Device, path_data);\n\nwith the \u0026 applied to the input and not applied to the output which would be exactly backwards.",
+      "parentUuid": "ce9cfd5c_3ae8aa87",
+      "revId": "bbf994ffe3ce08b5ea6e6e886d66416d6c86bf28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
