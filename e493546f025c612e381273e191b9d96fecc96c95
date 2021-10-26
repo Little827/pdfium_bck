@@ -147,6 +147,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8922a2f_3ba2b628",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-26T16:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0437a37d_257a31ef",
+      "revId": "e493546f025c612e381273e191b9d96fecc96c95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74c66d71_a374dfe0",
@@ -160,6 +178,24 @@
       "writtenOn": "2021-10-25T17:15:00Z",
       "side": 1,
       "message": "nit: if this were a span, per above, then you\u0027d be done already.",
+      "revId": "e493546f025c612e381273e191b9d96fecc96c95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d18cb9_f46f8ead",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-26T16:05:35Z",
+      "side": 1,
+      "message": "No span for now.",
+      "parentUuid": "74c66d71_a374dfe0",
       "revId": "e493546f025c612e381273e191b9d96fecc96c95",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
