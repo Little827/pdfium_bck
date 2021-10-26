@@ -26,7 +26,6 @@ class CPDF_Document;
 class CPDF_Form;
 class CPDF_Page;
 class CPDF_RenderContext;
-class CPDF_RenderOptions;
 class CPDF_Stream;
 
 class CPDF_Annot {
@@ -86,7 +85,7 @@ class CPDF_Annot {
 
   bool IsHidden() const;
 
-  bool DrawAppearance(CPDF_Page* pPage,
+  bool DrawAppearance(const CPDF_Page* pPage,
                       CFX_RenderDevice* pDevice,
                       const CFX_Matrix& mtUser2Device,
                       AppearanceMode mode);
@@ -96,9 +95,7 @@ class CPDF_Annot {
                      AppearanceMode mode);
 
   void ClearCachedAP();
-  void DrawBorder(CFX_RenderDevice* pDevice,
-                  const CFX_Matrix* pUser2Device,
-                  const CPDF_RenderOptions* pOptions);
+  void DrawBorder(CFX_RenderDevice* pDevice, const CFX_Matrix& mtUser2Device);
   CPDF_Form* GetAPForm(const CPDF_Page* pPage, AppearanceMode mode);
   void SetOpenState(bool bOpenState) { m_bOpenState = bOpenState; }
   CPDF_Annot* GetPopupAnnot() const { return m_pPopupAnnot.Get(); }
@@ -108,7 +105,6 @@ class CPDF_Annot {
   void GenerateAPIfNeeded();
   bool ShouldGenerateAP() const;
   bool ShouldDrawAnnotation() const;
-
   CFX_FloatRect RectForDrawing() const;
 
   RetainPtr<CPDF_Dictionary> const m_pAnnotDict;
