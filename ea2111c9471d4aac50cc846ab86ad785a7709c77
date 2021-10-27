@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d026ade_0790063a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-27T22:49:10Z",
+      "side": 1,
+      "message": "It just blows up at runtime. The original path_storage frees the memory, and the copy tries to access it. It usually blows up before it even has a chance to do a double free.",
+      "parentUuid": "91a898ac_7a2e9001",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "ea2111c9471d4aac50cc846ab86ad785a7709c77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4834bc98_60f6d739",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-27T17:19:14Z",
       "side": 1,
       "message": "Can we split the CL into a 3rd-party change by itself, then the PDFium change?",
+      "revId": "ea2111c9471d4aac50cc846ab86ad785a7709c77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bdfe456_7a67f012",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-27T22:49:10Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "4834bc98_60f6d739",
       "revId": "ea2111c9471d4aac50cc846ab86ad785a7709c77",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dc22163_cf27905d",
+        "filename": "third_party/agg23/agg_path_storage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-27T22:49:10Z",
+      "side": 1,
+      "message": "https://en.cppreference.com/w/cpp/language/copy_constructor says the user defined move ctor implies the implicit copy ctor gets deleted, but I can add some explicit deletions just to be clearer.",
+      "parentUuid": "1f19fff2_24c99692",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "ea2111c9471d4aac50cc846ab86ad785a7709c77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c763d7bf_a93b549c",
         "filename": "third_party/agg23/agg_path_storage.h",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2021-10-27T17:19:14Z",
       "side": 1,
       "message": "nit: as long as we\u0027re fudging with this, can we add spaces to make this align horizontally with the other members?",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "ea2111c9471d4aac50cc846ab86ad785a7709c77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58eee962_48e8faf8",
+        "filename": "third_party/agg23/agg_path_storage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-27T22:49:10Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "c763d7bf_a93b549c",
       "range": {
         "startLine": 123,
         "startChar": 11,
