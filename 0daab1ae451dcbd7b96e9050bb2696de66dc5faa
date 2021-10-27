@@ -16,6 +16,24 @@
       "message": "BTW, this leaves `kOC` with no users, though CPDF_OCContext::CheckObjectVisible() probably can use it.",
       "revId": "0daab1ae451dcbd7b96e9050bb2696de66dc5faa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f970af1_b09d08a8",
+        "filename": "core/fpdfdoc/cpdf_annotlist.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-27T23:24:03Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "79efe454_1791bc79",
+      "revId": "0daab1ae451dcbd7b96e9050bb2696de66dc5faa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
