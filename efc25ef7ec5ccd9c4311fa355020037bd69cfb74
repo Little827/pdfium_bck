@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5ca27a_548a37cf",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-27T22:40:56Z",
+      "side": 1,
+      "message": "Inline?",
+      "revId": "efc25ef7ec5ccd9c4311fa355020037bd69cfb74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
