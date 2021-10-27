@@ -238,6 +238,30 @@
       },
       "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a09401e0_02cbfc68",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2021-10-27T08:51:01Z",
+      "side": 1,
+      "message": "Would pdfium_unittests and pdfium_embeddertests be enough to validate it? I tried them on a standalone build:\n\npdfium_unittests: All passing\n\npdfium_embeddertests:\nFails on FPDFEditEmbedderTest.AddCIDFontText, but also fails on origin/chromium/4430 without applying this CL",
+      "parentUuid": "f1bd3301_02b7bc10",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 60
+      },
+      "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
