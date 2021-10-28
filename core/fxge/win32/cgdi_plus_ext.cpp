@@ -212,7 +212,7 @@ void OutputImage(Gdiplus::GpGraphics* pGraphics,
   const CGdiplusExt& GdiplusExt = GetGdiplusExt();
   if (pBitmap->GetBPP() == 1 && (pSrcRect->left % 8)) {
     FX_RECT new_rect(0, 0, src_width, src_height);
-    RetainPtr<CFX_DIBitmap> pCloned = pBitmap->Clone(pSrcRect);
+    RetainPtr<CFX_DIBitmap> pCloned = pBitmap->ClipTo(pSrcRect);
     if (!pCloned)
       return;
     OutputImage(pGraphics, pCloned, &new_rect, dest_left, dest_top, dest_width,
