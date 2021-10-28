@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9129a867_2c31ede9",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-28T20:52:22Z",
+      "side": 1,
+      "message": "Done. Rewrote paragraph.",
+      "parentUuid": "8ed507b5_2df1adcb",
+      "revId": "f629d55c83888d94858e0902082cc1b348017f37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8594262_1773289c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-28T20:21:38Z",
       "side": 1,
       "message": "Do we want the public ClipTo() to take a const FX_RECT\u0026? The internal impl shared with Realize() can still take a pointer.",
+      "revId": "f629d55c83888d94858e0902082cc1b348017f37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3c27dd_b7b588d2",
+        "filename": "core/fxge/dib/cfx_dibbase.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-28T20:52:22Z",
+      "side": 1,
+      "message": "Oooh. yes. done.",
+      "parentUuid": "d8594262_1773289c",
       "revId": "f629d55c83888d94858e0902082cc1b348017f37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
