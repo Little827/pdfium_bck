@@ -5,7 +5,6 @@
 #include "core/fpdftext/cpdf_linkextract.h"
 
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/cxx17_backports.h"
 
 // Class to help test functions in CPDF_LinkExtract class.
 class CPDF_TestLinkExtract final : public CPDF_LinkExtract {
@@ -31,8 +30,7 @@ TEST(CPDF_LinkExtractTest, CheckMailLink) {
       L"abc@.xyz.org",    // Domain name should not start with '.'.
       L"fan@g..com"       // Domain name should not have consecutive '.'
   };
-  for (size_t i = 0; i < pdfium::size(invalid_strs); ++i) {
-    const wchar_t* const input = invalid_strs[i];
+  for (const wchar_t* input : invalid_strs) {
     WideString text_str(input);
     EXPECT_FALSE(extractor.CheckMailLink(&text_str)) << input;
   }
@@ -52,11 +50,11 @@ TEST(CPDF_LinkExtractTest, CheckMailLink) {
       {L"fan@g.com..", L"fan@g.com"},           // Trim the ending periods.
       {L"CAP.cap@Gmail.Com", L"CAP.cap@Gmail.Com"},  // Keep the original case.
   };
-  for (size_t i = 0; i < pdfium::size(valid_strs); ++i) {
-    const wchar_t* const input = valid_strs[i][0];
+  for (const auto& it : valid_strs) {
+    const wchar_t* const input = it[0];
     WideString text_str(input);
     WideString expected_str(L"mailto:");
-    expected_str += valid_strs[i][1];
+    expected_str += it[1];
     EXPECT_TRUE(extractor.CheckMailLink(&text_str)) << input;
     EXPECT_STREQ(expected_str.c_str(), text_str.c_str());
   }
@@ -78,16 +76,15 @@ TEST(CPDF_LinkExtractTest, CheckWebLink) {
       // Web addresses that in correct format that we don't handle.
       L"abc.example.com",  // URL without scheme.
   };
-  const int32_t DEFAULT_VALUE = -42;
-  for (size_t i = 0; i < pdfium::size(invalid_cases); ++i) {
-    const wchar_t* const input = invalid_cases[i];
+  constexpr int32_t kDefaultValue = -42;
+  for (const wchar_t* input : invalid_cases) {
     WideString text_str(input);
-    int32_t start_offset = DEFAULT_VALUE;
-    int32_t count = DEFAULT_VALUE;
+    int32_t start_offset = kDefaultValue;
+    int32_t count = kDefaultValue;
     EXPECT_FALSE(extractor.CheckWebLink(&text_str, &start_offset, &count))
         << input;
-    EXPECT_EQ(DEFAULT_VALUE, start_offset) << input;
-    EXPECT_EQ(DEFAULT_VALUE, count) << input;
+    EXPECT_EQ(kDefaultValue, start_offset) << input;
+    EXPECT_EQ(kDefaultValue, count) << input;
   }
 
   // Check cases that can extract valid web link.
@@ -174,15 +171,15 @@ TEST(CPDF_LinkExtractTest, CheckWebLink) {
       {L"www.测试。net。", L"http://www.测试。net。", 0, 11},
       {L"www.测试.net；", L"http://www.测试.net；", 0, 11},
   };
-  for (size_t i = 0; i < pdfium::size(valid_cases); ++i) {
-    const wchar_t* const input = valid_cases[i].input_string;
+  for (const auto& it : valid_cases) {
+    const wchar_t* const input = it.input_string;
     WideString text_str(input);
-    int32_t start_offset = DEFAULT_VALUE;
-    int32_t count = DEFAULT_VALUE;
+    int32_t start_offset = kDefaultValue;
+    int32_t count = kDefaultValue;
     EXPECT_TRUE(extractor.CheckWebLink(&text_str, &start_offset, &count))
         << input;
-    EXPECT_STREQ(valid_cases[i].url_extracted, text_str.c_str());
-    EXPECT_EQ(valid_cases[i].start_offset, start_offset) << input;
-    EXPECT_EQ(valid_cases[i].count, count) << input;
+    EXPECT_STREQ(it.url_extracted, text_str.c_str());
+    EXPECT_EQ(it.start_offset, start_offset) << input;
+    EXPECT_EQ(it.count, count) << input;
   }
 }
