@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ba418b_8cc645dc",
+        "filename": "fxjs/cjs_global.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-28T22:24:49Z",
+      "side": 0,
+      "message": "this could be pRuntime-\u003eGetIsolate().",
+      "range": {
+        "startLine": 360,
+        "startChar": 39,
+        "endLine": 360,
+        "endChar": 49
+      },
+      "revId": "085979a99379de4ddc5a678b72997ee251e5857c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
