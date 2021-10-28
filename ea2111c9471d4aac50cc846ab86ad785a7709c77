@@ -83,6 +83,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa0e5c7_2aafdc9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-28T00:47:42Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/86551",
+      "parentUuid": "8bdfe456_7a67f012",
+      "revId": "ea2111c9471d4aac50cc846ab86ad785a7709c77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f19fff2_24c99692",
@@ -167,6 +185,30 @@
       "side": 1,
       "message": "Will do.",
       "parentUuid": "c763d7bf_a93b549c",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "ea2111c9471d4aac50cc846ab86ad785a7709c77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d1106c_2108786a",
+        "filename": "third_party/agg23/agg_path_storage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-28T00:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58eee962_48e8faf8",
       "range": {
         "startLine": 123,
         "startChar": 11,
