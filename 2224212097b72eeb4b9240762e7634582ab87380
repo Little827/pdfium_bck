@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b4b7bf_1fd8e319",
+        "filename": "third_party/agg23/agg_path_storage.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-10-28T18:48:26Z",
+      "side": 1,
+      "message": "nit: should this be const path_storage\u0026 here and on the next line?\nnit: no need to say \u0027other\u0027 for consistency with below, or add variable names to all.",
+      "range": {
+        "startLine": 55,
+        "startChar": 17,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "2224212097b72eeb4b9240762e7634582ab87380",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
