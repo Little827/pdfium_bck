@@ -65,7 +65,7 @@ RetainPtr<CFX_DIBitmap> CPDF_ImageObject::GetIndependentBitmap() const {
   // such a method. Instead, it only clones the CFX_DIBBase, none of whose
   // members point to objects owned by |this| or the form containing |this|.
   // As a result, the clone may outlive them.
-  return pSource ? pSource->Clone(nullptr) : nullptr;
+  return pSource ? pSource->Realize() : nullptr;
 }
 
 void CPDF_ImageObject::SetImageMatrix(const CFX_Matrix& matrix) {
