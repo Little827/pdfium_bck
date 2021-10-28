@@ -334,42 +334,6 @@ void CJS_Global::UpdateGlobalPersistentVariables() {
   }
 }
 
-void CJS_Global::CommitGlobalPersisitentVariables(CJS_Runtime* pRuntime) {
-  for (const auto& iter : m_MapGlobal) {
-    ByteString name = iter.first;
-    JSGlobalData* pData = iter.second.get();
-    if (pData->bDeleted) {
-      m_pGlobalData->DeleteGlobalVariable(name);
-      continue;
-    }
-    switch (pData->nType) {
-      case CFX_Value::DataType::kNumber:
-        m_pGlobalData->SetGlobalVariableNumber(name, pData->dData);
-        m_pGlobalData->SetGlobalVariablePersistent(name, pData->bPersistent);
-        break;
-      case CFX_Value::DataType::kBoolean:
-        m_pGlobalData->SetGlobalVariableBoolean(name, pData->bData);
-        m_pGlobalData->SetGlobalVariablePersistent(name, pData->bPersistent);
-        break;
-      case CFX_Value::DataType::kString:
-        m_pGlobalData->SetGlobalVariableString(name, pData->sData);
-        m_pGlobalData->SetGlobalVariablePersistent(name, pData->bPersistent);
-        break;
-      case CFX_Value::DataType::kObject: {
-        v8::Local<v8::Object> obj =
-            v8::Local<v8::Object>::New(GetIsolate(), pData->pData);
-        m_pGlobalData->SetGlobalVariableObject(name,
-                                               ObjectToArray(pRuntime, obj));
-        m_pGlobalData->SetGlobalVariablePersistent(name, pData->bPersistent);
-      } break;
-      case CFX_Value::DataType::kNull:
-        m_pGlobalData->SetGlobalVariableNull(name);
-        m_pGlobalData->SetGlobalVariablePersistent(name, pData->bPersistent);
-        break;
-    }
-  }
-}
-
 std::vector<std::unique_ptr<CFX_KeyValue>> CJS_Global::ObjectToArray(
     CJS_Runtime* pRuntime,
     v8::Local<v8::Object> pObj) {
