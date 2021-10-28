@@ -286,6 +286,30 @@
       },
       "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821de14d_07c39469",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2021-10-28T09:17:10Z",
+      "side": 1,
+      "message": "Thanks, I tried the reproduction steps in an asan build:\n\nOn chromium/4430 without the patch\n\n./out/Default/pdfium_test ~/Downloads/off_by_2432.pdf \nProcessing PDF file /usr/local/google/home/rzanoni/Downloads/off_by_2432.pdf.\nDocument has invalid cross reference table\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\u003d\u003d2583836\u003d\u003dERROR: AddressSanitizer: heap-buffer-overflow on address 0x7f571a2c2e80 at pc 0x560074347697 bp 0x7fff46083790 sp 0x7fff46082f58\nREAD of size 56 at 0x7f571a2c2e80 thread T0\n(...)\n\n\nOn chromium/4430 with the patch:\n\n./out/Default/pdfium_test ~/Downloads/off_by_2432.pdf \nProcessing PDF file /usr/local/google/home/rzanoni/Downloads/off_by_2432.pdf.\nDocument has invalid cross reference table\nProcessed 1 pages.",
+      "parentUuid": "b1f9faf4_7868b11a",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 60
+      },
+      "revId": "70d2c0e90f71ef12c0cf6fdd6b473fbd99a0525c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
