@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd54aebd_6635c2a1",
+        "filename": "third_party/lcms/0034-eval4inputs-integer-overflow.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-28T01:45:43Z",
+      "side": 1,
+      "message": "Ya, I don\u0027t know what to make of this. I was trying to treat cmsS15Fixed16Number as the underlying type, which is an int. On second look, I realized cmsS15Fixed16Number is not an integer, but rather a fixed point number where 1 bit is for the sign, 15 bits for before the decimal point, and 16 bits for after.\n\nSo for the line in question: c0 + ROUND_FIXED_TO_INT(_cmsToFixedDomain(Rest))\n\nType-wise, it\u0027s: cmsS15Fixed16Number + int, which doesn\u0027t make sense as the two sides don\u0027t have the same scale for their values.\n\nThe right side also don\u0027t make sense on its own, as it is passing a cmsS15Fixed16Number into a function that takes an int, and then taking an int and passing it to a macro that\u0027s suppose to take a cmsS15Fixed16Number.\n\nMaybe we should just kick this bug upstream.",
+      "parentUuid": "2e2f0b05_a6d7ee6c",
+      "range": {
+        "startLine": 27,
+        "startChar": 56,
+        "endLine": 27,
+        "endChar": 78
+      },
+      "revId": "95ebccd927b24ecee26b8bb08a0d7993cf85f996",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "761eb61a_ff0b0026",
         "filename": "third_party/lcms/src/cmsintrp.c",
         "patchSetId": 1
