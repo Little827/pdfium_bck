@@ -6,6 +6,7 @@
 
 #include "xfa/fxfa/cxfa_ffdocview.h"
 
+#include <memory>
 #include <set>
 #include <utility>
 
@@ -196,7 +197,7 @@ void CXFA_FFDocView::UpdateDocView() {
   if (IsUpdateLocked())
     return;
 
-  LockUpdate();
+  UpdateScope scope(this);
   while (!m_NewAddedNodes.empty()) {
     CXFA_Node* pNode = m_NewAddedNodes.front();
     m_NewAddedNodes.pop_front();
@@ -216,7 +217,6 @@ void CXFA_FFDocView::UpdateDocView() {
 
   m_bLayoutEvent = false;
   m_CalculateNodes.clear();
-  UnlockUpdate();
 }
 
 void CXFA_FFDocView::UpdateUIDisplay(CXFA_Node* pNode, CXFA_FFWidget* pExcept) {
@@ -481,22 +481,20 @@ void CXFA_FFDocView::InvalidateRect(CXFA_FFPageView* pPageView,
 }
 
 bool CXFA_FFDocView::RunLayout() {
-  LockUpdate();
+  auto scope = std::make_unique<UpdateScope>(this);
   m_bInLayoutStatus = true;
 
   CXFA_LayoutProcessor* pProcessor = GetLayoutProcessor();
-  if (!pProcessor->IncrementLayout() && pProcessor->StartLayout() < 100) {
+  bool result =
+      !pProcessor->IncrementLayout() && pProcessor->StartLayout() < 100;
+  if (result) {
     pProcessor->DoLayout();
-    UnlockUpdate();
-    m_bInLayoutStatus = false;
-    m_pDoc->OnPageViewEvent(nullptr, CXFA_FFDoc::PageViewEvent::kStopLayout);
-    return true;
+    scope.reset();
   }
 
   m_bInLayoutStatus = false;
   m_pDoc->OnPageViewEvent(nullptr, CXFA_FFDoc::PageViewEvent::kStopLayout);
-  UnlockUpdate();
-  return false;
+  return result;
 }
 
 void CXFA_FFDocView::RunSubformIndexChange() {
