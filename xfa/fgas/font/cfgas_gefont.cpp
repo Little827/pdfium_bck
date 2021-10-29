@@ -21,7 +21,7 @@
 #include "xfa/fgas/font/fgas_fontutils.h"
 
 // static
-RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const wchar_t* pszFontFamily,
+RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const WideString& pszFontFamily,
                                                uint32_t dwFontStyles,
                                                FX_CodePage wCodePage) {
 #if defined(OS_WIN)
