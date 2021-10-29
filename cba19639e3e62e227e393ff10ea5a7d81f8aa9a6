@@ -52,6 +52,24 @@
       "parentUuid": "05908d78_4c9b3c51",
       "revId": "cba19639e3e62e227e393ff10ea5a7d81f8aa9a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b855281d_f7c7fb96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-10-29T18:57:40Z",
+      "side": 1,
+      "message": "SG. The roll should come next week anyway, so I don\u0027t mind the wait.",
+      "parentUuid": "a024fda4_b8e8035f",
+      "revId": "cba19639e3e62e227e393ff10ea5a7d81f8aa9a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
