@@ -45,7 +45,7 @@ class CFDE_TextEditEngineTest : public testing::Test {
 #else
     const wchar_t kFontFamily[] = L"Arial Bold";
 #endif
-    font_ = CFGAS_GEFont::LoadFont(kFontFamily, 0, FX_CodePage::kDefANSI);
+    font_ = CFGAS_GEFont::LoadFont(FX_CodePage::kDefANSI, 0, kFontFamily);
     ASSERT_TRUE(font_);
 
     engine_ = std::make_unique<CFDE_TextEditEngine>();

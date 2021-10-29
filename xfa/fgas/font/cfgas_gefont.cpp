@@ -21,9 +21,10 @@
 #include "xfa/fgas/font/fgas_fontutils.h"
 
 // static
-RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const wchar_t* pszFontFamily,
-                                               uint32_t dwFontStyles,
-                                               FX_CodePage wCodePage) {
+RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(
+    FX_CodePage wCodePage,
+    uint32_t dwFontStyles,
+    const WideString& pszFontFamily) {
 #if defined(OS_WIN)
   auto pFont = pdfium::MakeRetain<CFGAS_GEFont>();
   if (!pFont->LoadFontInternal(pszFontFamily, dwFontStyles, wCodePage))
