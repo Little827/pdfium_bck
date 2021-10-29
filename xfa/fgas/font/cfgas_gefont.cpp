@@ -21,7 +21,7 @@
 #include "xfa/fgas/font/fgas_fontutils.h"
 
 // static
-RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const wchar_t* pszFontFamily,
+RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const WideString& pszFontFamily,
                                                uint32_t dwFontStyles,
                                                FX_CodePage wCodePage) {
 #if defined(OS_WIN)
@@ -241,7 +241,7 @@ std::pair<int32_t, RetainPtr<CFGAS_GEFont>> CFGAS_GEFont::GetGlyphIndexAndFont(
       pFontMgr->GetFontByUnicode(wUnicode, GetFontStyles(), wsFamily.c_str());
 #if !defined(OS_WIN)
   if (!pFont)
-    pFont = pFontMgr->GetFontByUnicode(wUnicode, GetFontStyles(), nullptr);
+    pFont = pFontMgr->GetFontByUnicode(wUnicode, GetFontStyles(), WideString());
 #endif
   if (!pFont || pFont == this)  // Avoids direct cycles below.
     return {0xFFFF, nullptr};
