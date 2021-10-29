@@ -18,6 +18,40 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af3f289_2d6ffc3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-29T21:08:37Z",
+      "side": 1,
+      "message": "I forgot to kick off the try bots earlier. I think all the XFA bots will fail here.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824c9b39_84dc361c",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-29T21:08:37Z",
+      "side": 1,
+      "message": "PDFium generally don\u0027t print errors to stderr. Just returning false is fine.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d83968b8_88d83c63",
@@ -151,6 +185,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8ee4618_0c39f428",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4183,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-29T21:08:37Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 4183,
+        "startChar": 51,
+        "endLine": 4183,
+        "endChar": 54
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89125d7b_d6fc90e3",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -262,6 +319,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75dc28ad_dca90e24",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-29T21:08:37Z",
+      "side": 1,
+      "message": "Yes, moving one page at a time would be less efficient, as many data internal structures are std::vector based. Though in practice it might be ok, because:\n\na) The number of pages is usually small. Even 100,000 pages can be shuffled around relatively quickly.\nb) This API doesn\u0027t get called that often, compared to page rendering APIs for example.\n\nEfficiency is certainly important, but in this case, it is a trade off against API simplicity. Either way, since the API starts off in an experimental state, we can try it out and see how it goes.",
+      "parentUuid": "3b5dc382_b7af6acf",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "447ae097_816e32cf",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -290,6 +365,23 @@
       "writtenOn": "2021-10-25T18:50:13Z",
       "side": 1,
       "message": "All new APIs need to start out in the experimental state. PDFium uses a comment above the API to indicate this. Look around for examples.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be62b82_d60f0cde",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-29T21:08:37Z",
+      "side": 1,
+      "message": "const int*, as FPDFPage_Reorder() does not write into `dest_page_order`, right?",
       "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
