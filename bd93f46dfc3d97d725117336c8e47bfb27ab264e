@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb4f248_ba6346ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-29T21:10:57Z",
+      "side": 1,
+      "message": "\u003e Patch Set 10:\n\u003e \n\u003e Gold has detected about 1 new digest(s) on patchset 10.\n\u003e View them at https://pdfium-gold.skia.org/cl/gerrit/86610\n\nDid this CL change PDF rendering in some way? Or are we seeing some quirk with Gold?",
+      "revId": "bd93f46dfc3d97d725117336c8e47bfb27ab264e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
