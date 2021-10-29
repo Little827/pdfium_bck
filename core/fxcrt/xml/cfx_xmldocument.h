@@ -31,7 +31,7 @@ class CFX_XMLDocument {
   // This is used in CJX_Node::loadXML to transfer ownership of the newly
   // created nodes to the top-level XML doc for the PDF, after parsing an XML
   // blob.
-  void AppendNodesFrom(CFX_XMLDocument* other);
+  void AppendNodesFrom(std::unique_ptr<CFX_XMLDocument> other);
 
  private:
   std::vector<std::unique_ptr<CFX_XMLNode>> nodes_;

@@ -231,7 +231,7 @@ CJS_Result CJX_Node::loadXML(CFX_V8* runtime,
 
   CFX_XMLDocument* top_xml_doc =
       GetXFANode()->GetDocument()->GetNotify()->GetFFDoc()->GetXMLDocument();
-  top_xml_doc->AppendNodesFrom(xml_doc.get());
+  top_xml_doc->AppendNodesFrom(std::move(xml_doc));
 
   if (bIgnoreRoot &&
       (pXMLNode->GetType() != CFX_XMLNode::Type::kElement ||
