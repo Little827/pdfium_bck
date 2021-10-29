@@ -8,7 +8,6 @@
 
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cjx_object.h"
-#include "third_party/base/containers/contains.h"
 #include "v8/include/cppgc/heap.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h"
@@ -139,8 +138,7 @@ CXFA_LayoutItem* CXFA_LayoutProcessor::GetLayoutItem(CXFA_Node* pFormItem) {
 }
 
 void CXFA_LayoutProcessor::AddChangedContainer(CXFA_Node* pContainer) {
-  if (!pdfium::Contains(m_rgChangedContainers, pContainer))
-    m_rgChangedContainers.push_back(pContainer);
+  m_rgChangedContainers.insert(pContainer);
 }
 
 bool CXFA_LayoutProcessor::NeedLayout() const {

@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 
-#include <vector>
+#include <set>
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/gc/heap.h"
@@ -41,9 +41,7 @@ class CXFA_LayoutProcessor final : public CXFA_Document::LayoutProcessorIface {
   void SetForceRelayout() override;
   void AddChangedContainer(CXFA_Node* pContainer) override;
 
-  cppgc::Heap* GetHeap() { return m_pHeap.Get(); }
   int32_t StartLayout();
-  int32_t RestartLayout();
   int32_t DoLayout();
   bool IncrementLayout();
   int32_t CountPages() const;
@@ -58,12 +56,15 @@ class CXFA_LayoutProcessor final : public CXFA_Document::LayoutProcessorIface {
 
  private:
   explicit CXFA_LayoutProcessor(cppgc::Heap* pHeap);
+
+  cppgc::Heap* GetHeap() { return m_pHeap.Get(); }
   bool NeedLayout() const;
+  int32_t RestartLayout();
 
   UnownedPtr<cppgc::Heap> const m_pHeap;
   cppgc::Member<CXFA_ViewLayoutProcessor> m_pViewLayoutProcessor;
   cppgc::Member<CXFA_ContentLayoutProcessor> m_pContentLayoutProcessor;
-  std::vector<cppgc::Member<CXFA_Node>> m_rgChangedContainers;
+  std::set<cppgc::Member<CXFA_Node>> m_rgChangedContainers;
   uint32_t m_nProgressCounter = 0;
   bool m_bNeedLayout = true;
 };
