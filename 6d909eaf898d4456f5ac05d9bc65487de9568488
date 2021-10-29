@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36896403_4a1118a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-10-29T22:28:07Z",
+      "side": 1,
+      "message": "It\u0027s fine if the API doesn\u0027t work for XFA PDFs. However, it needs to work for non-XFA PDFs when PDFium\u0027s XFA support is enabled.",
+      "parentUuid": "6af3f289_2d6ffc3c",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "824c9b39_84dc361c",
