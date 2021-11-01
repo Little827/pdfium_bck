@@ -46,6 +46,30 @@
       },
       "revId": "b7bdf3b47d33c2f2bac3c87a6438d88d58cf437f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e96043_3e619620",
+        "filename": "xfa/fxfa/layout/cxfa_layoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-01T21:08:56Z",
+      "side": 0,
+      "message": "I wonder if `m_rgChangedContainers` holding on to its members makes a difference in terms of object lifecycle. Any thoughts on that?",
+      "parentUuid": "88265dc6_f7a3ea8e",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 48
+      },
+      "revId": "b7bdf3b47d33c2f2bac3c87a6438d88d58cf437f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
