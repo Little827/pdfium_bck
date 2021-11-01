@@ -16,6 +16,24 @@
       "message": "\u003e Patch Set 10:\n\u003e \n\u003e Gold has detected about 1 new digest(s) on patchset 10.\n\u003e View them at https://pdfium-gold.skia.org/cl/gerrit/86610\n\nDid this CL change PDF rendering in some way? Or are we seeing some quirk with Gold?",
       "revId": "bd93f46dfc3d97d725117336c8e47bfb27ab264e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646a933e_3565ba02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-01T16:37:09Z",
+      "side": 1,
+      "message": "Should not have changed things. This is very suspicious, guessing a supressed test on win might be rendering differently. \n\nTest_Checkbox.pdf.0.png appears to be missing a colon following text \"your hobby\".",
+      "parentUuid": "4cb4f248_ba6346ca",
+      "revId": "bd93f46dfc3d97d725117336c8e47bfb27ab264e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
