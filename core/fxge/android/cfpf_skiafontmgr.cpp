@@ -357,8 +357,8 @@ RetainPtr<CFX_Face> CFPF_SkiaFontMgr::GetFontFace(ByteStringView bsFile,
 }
 
 void CFPF_SkiaFontMgr::ScanPath(const ByteString& path) {
-  std::unique_ptr<FX_FolderHandle, FxFolderHandleCloser> handle(
-      FX_OpenFolder(path.c_str()));
+  std::unique_ptr<FX_FolderHandle, FxFolderHandleCloser> handle =
+      FX_OpenFolder(path);
   if (!handle)
     return;
 
