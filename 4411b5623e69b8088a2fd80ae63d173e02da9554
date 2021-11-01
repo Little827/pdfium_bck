@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1635801575 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d1/XaQ7KshIGgnLdVgDNnqcXbA4GEdVydDLah2K1sjQitbtws51sD80YHSnGlWuafQ1t6+d1\n\n0000000000000000000000000000000000000000 4411b5623e69b8088a2fd80ae63d173e02da9554 refs/for/refs/heads/main%notify\u003dNONE,m\u003dJust_store_a_bool,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmGAWecACgkQqzYtYVpm\n/XvJbAgAk3BPI9es5qe+vRAqJi30cothWye6MYkByyHDOr7O8XBYfUWYTNvYJUX4\nLWoutm7N7Nk+g6KRkL89yXy5vjYbevsbeRd0il5XwF4A9NnhS4wXqFB9NvRkPS9+\nGnV1aJGi+64gKJTP/P3Zgbhb8wwqrOtUI1gYNBPJSM3wAmUKlXWZc8LW3cLJ49V6\nX73Oo8ijD3Ay0obw6TkvUIsJNdpqzrF0OlM4/U/KMU3GP0eg2WqEC+4WKw2cIZwM\ngeo6NA/qZ9HIFRw0Ja7gCxiwGeyppLxsODFFtTlJvUENEWsPT8MYKtrT+1hK9hS5\nqG07NeLzyQTt+da262nOgWlagVYaHQ\u003d\u003d\n\u003dsTZL\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
