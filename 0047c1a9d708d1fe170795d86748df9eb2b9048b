@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9e93b8_048de0c0",
+        "filename": "core/fxcrt/fx_folder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-02T16:53:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7d458d_905ec6d3",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "0047c1a9d708d1fe170795d86748df9eb2b9048b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f396615e_865b843a",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-11-02T01:03:32Z",
       "side": 1,
       "message": "Document if the out-parameters are optional or not?",
+      "revId": "0047c1a9d708d1fe170795d86748df9eb2b9048b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde076b6_10434bf5",
+        "filename": "core/fxcrt/fx_folder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-02T16:53:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f396615e_865b843a",
       "revId": "0047c1a9d708d1fe170795d86748df9eb2b9048b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
