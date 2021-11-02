@@ -6,6 +6,7 @@
 
 #include "xfa/fxfa/cxfa_ffdocview.h"
 
+#include <memory>
 #include <set>
 #include <utility>
 
@@ -42,6 +43,24 @@
 #include "xfa/fxfa/parser/cxfa_subform.h"
 #include "xfa/fxfa/parser/cxfa_validate.h"
 #include "xfa/fxfa/parser/xfa_utils.h"
+
+namespace {
+
+// Similar to UpdateScope, but without the call to
+// CXFA_FFDocView::UpdateDocView().
+class InternalUpdateScope {
+ public:
+  explicit InternalUpdateScope(CXFA_FFDocView* pDocView)
+      : m_pDocView(pDocView) {
+    m_pDocView->LockUpdate();
+  }
+  ~InternalUpdateScope() { m_pDocView->UnlockUpdate(); }
+
+ private:
+  UnownedPtr<CXFA_FFDocView> const m_pDocView;
+};
+
+}  // namespace
 
 const XFA_AttributeValue kXFAEventActivity[] = {
     XFA_AttributeValue::Click,      XFA_AttributeValue::Change,
@@ -196,7 +215,7 @@ void CXFA_FFDocView::UpdateDocView() {
   if (IsUpdateLocked())
     return;
 
-  LockUpdate();
+  InternalUpdateScope scope(this);
   while (!m_NewAddedNodes.empty()) {
     CXFA_Node* pNode = m_NewAddedNodes.front();
     m_NewAddedNodes.pop_front();
@@ -216,7 +235,6 @@ void CXFA_FFDocView::UpdateDocView() {
 
   m_bLayoutEvent = false;
   m_CalculateNodes.clear();
-  UnlockUpdate();
 }
 
 void CXFA_FFDocView::UpdateUIDisplay(CXFA_Node* pNode, CXFA_FFWidget* pExcept) {
@@ -481,22 +499,20 @@ void CXFA_FFDocView::InvalidateRect(CXFA_FFPageView* pPageView,
 }
 
 bool CXFA_FFDocView::RunLayout() {
-  LockUpdate();
+  auto scope = std::make_unique<InternalUpdateScope>(this);
   m_bInLayoutStatus = true;
 
   CXFA_LayoutProcessor* pProcessor = GetLayoutProcessor();
-  if (!pProcessor->IncrementLayout() && pProcessor->StartLayout() < 100) {
+  bool result =
+      !pProcessor->IncrementLayout() && pProcessor->StartLayout() < 100;
+  if (result) {
     pProcessor->DoLayout();
-    UnlockUpdate();
-    m_bInLayoutStatus = false;
-    m_pDoc->OnPageViewEvent(nullptr, CXFA_FFDoc::PageViewEvent::kStopLayout);
-    return true;
+    scope.reset();
   }
 
   m_bInLayoutStatus = false;
   m_pDoc->OnPageViewEvent(nullptr, CXFA_FFDoc::PageViewEvent::kStopLayout);
-  UnlockUpdate();
-  return false;
+  return result;
 }
 
 void CXFA_FFDocView::RunSubformIndexChange() {
