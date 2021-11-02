@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "238fed10_1e7cb7c9",
+        "filename": "xfa/fxfa/parser/cxfa_document_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-02T20:13:32Z",
+      "side": 1,
+      "message": "Or in both places.  Here we need the implicit widestring constructor from literals.  Theoretically, cxfa_document might only have a forward declaration for the string type.  Which I why I included it.",
+      "parentUuid": "24e11a84_d05d5b34",
+      "revId": "77456457da1a7c3ea31bef279906e872fe2a3f35",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "343491b4_52c4e4d2",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-02T18:59:48Z",
       "side": 1,
       "message": "I haven\u0027t look at the spec, but I wonder if these should fail parsing as well.",
+      "revId": "77456457da1a7c3ea31bef279906e872fe2a3f35",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44147905_e331334a",
+        "filename": "xfa/fxfa/parser/cxfa_document_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-02T20:13:32Z",
+      "side": 1,
+      "message": "Indeed. Moved down to the next section with other weird cases.",
+      "parentUuid": "343491b4_52c4e4d2",
       "revId": "77456457da1a7c3ea31bef279906e872fe2a3f35",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
