@@ -573,6 +573,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3de689d2_401592f4",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T19:39:30Z",
+      "side": 1,
+      "message": "Can Ink first use FPDFPage_Delete() to delete pages first, and use FPDFPage_Reorder() to purely do reordering? Again, I\u0027m not concerned about the implementation yet. Just want to understand requirements.",
+      "parentUuid": "47558d12_ec6b8b0e",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0f4e2f1_f7c7cf41",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -849,6 +873,24 @@
       "side": 1,
       "message": "Yes, I removed intentionally. If I don\u0027t remove it, then I can\u0027t call EmbedderTest::OpenDocument again after calling EmbedderTest::CloseDocument. Then what is the purpose of having a CloseDocument function, if I can\u0027t call OpenDocument again?",
       "parentUuid": "33e5e0c1_a04f1fc4",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ee5134_72859893",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T19:39:30Z",
+      "side": 1,
+      "message": "Thanks for noticing the issue. I can try to fix that EmbedderTest problem separately. Let\u0027s try to just work on the API in this CL.",
+      "parentUuid": "1365eee8_e714523a",
       "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
