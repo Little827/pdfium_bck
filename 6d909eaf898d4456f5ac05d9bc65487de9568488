@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cad193d6_66c63d64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T17:59:25Z",
+      "side": 1,
+      "message": "Given the failing XFA bots, yes. When XFA support is compiled in, page handling going through a different class. Look at CPDF_Page vs. CPDFXFA_Page.",
+      "parentUuid": "62513728_41b10c26",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "824c9b39_84dc361c",
         "filename": "core/fpdfapi/parser/cpdf_document.cpp",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Does PDFium print errors at all? Seems bad for client debugging.",
       "parentUuid": "824c9b39_84dc361c",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f345c7_66ece05e",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T17:59:25Z",
+      "side": 1,
+      "message": "Nope. Just like when POSIX open() fails, it doesn\u0027t print anything either.\n\nThere is FPDF_GetLastError(), but that is generally only used for PDF loading.",
+      "parentUuid": "4ec3de76_277f80a8",
       "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -219,6 +255,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8cd84fc4_8067ba43",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90796ac0_a9e0608a",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T17:59:25Z",
+      "side": 1,
+      "message": "A range-based for-loop looks like:\n\nfor (CPDF_Dictionary* pPage : pPagesToKeep) {\n  DoSomethingWith(pPage);\n}",
+      "parentUuid": "41e6aa30_f4ed8a57",
       "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -459,6 +513,30 @@
       "side": 1,
       "message": "Do you mean: is the page deletion API required to implement this page reorder API? Yes. \n\nIs the caller required to delete pages using the page order API? No, but they can, if they specify a page order that is missing an index, e.g. dest_page_order of [0, 1, 3] will delete page 2.",
       "parentUuid": "89125d7b_d6fc90e3",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775670f4_ba6d8986",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T17:59:25Z",
+      "side": 1,
+      "message": "I\u0027m asking if FPDFPage_Reorder(), as an API, regardless of the implementation, has to support page deletion. Similarly, while the current implementation can copy pages, is that a requirement for this API?\n\nIn general, I\u0027m in favor of simpler APIs that are easier to understand, implement, and test. FPDFPage_Reorder(), as is, seems to be a \"do it all\" API. So before we discuss the implementation, I want to first figure out the API, which means asking if deletion is required, or if it just happens to be a capability that one gets with the current implementation.",
+      "parentUuid": "30f2d893_d3c7df74",
       "range": {
         "startLine": 129,
         "startChar": 27,
@@ -712,6 +790,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5be62b82_d60f0cde",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e5e0c1_a04f1fc4",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T17:59:25Z",
+      "side": 1,
+      "message": "Was this removed intentionally? If this was failing, I think it may mean something is wrong with the calling code. In which case, try fixing the calling code and not just remove the existing failing check.",
       "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
