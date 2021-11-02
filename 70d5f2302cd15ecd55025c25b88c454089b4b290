@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6d90e2_b50df441",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-02T16:39:48Z",
+      "side": 1,
+      "message": "use FX_STACK_ALLOCATED() macro (from fx_memory.h)",
+      "revId": "70d5f2302cd15ecd55025c25b88c454089b4b290",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e75ecf_7600ef96",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-02T16:39:48Z",
+      "side": 1,
+      "message": "me no like scopes on heap.",
+      "range": {
+        "startLine": 502,
+        "startChar": 32,
+        "endLine": 502,
+        "endChar": 51
+      },
+      "revId": "70d5f2302cd15ecd55025c25b88c454089b4b290",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1688abe1_c1a96332",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-02T16:39:48Z",
+      "side": 1,
+      "message": "If you want to dedup these two lines, maybe add a helper and call it in two places.  Otherwise I\u0027d just write this in two places and revert to stack-allocated scopers.",
+      "range": {
+        "startLine": 513,
+        "startChar": 2,
+        "endLine": 514,
+        "endChar": 74
+      },
+      "revId": "70d5f2302cd15ecd55025c25b88c454089b4b290",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
