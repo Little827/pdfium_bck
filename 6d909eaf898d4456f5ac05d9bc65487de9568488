@@ -549,6 +549,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47558d12_ec6b8b0e",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-11-02T18:15:23Z",
+      "side": 1,
+      "message": "Ah, I see. \n\nInk needs FPDFPage_Reorder() to be able to delete pages. It does not need the API to be able to copy pages right now, but I can see it being useful for us in the future. Many PDF editors allow the user to copy a page.\n\nCopying is a capability that one gets with the current implementation. I think it would be great to have simpler APIs like FPDFPage_MovePage(), and FPDFPage_CopyPage(), that manipulate pages one at a time... in addition to this very powerful API. This powerful API should actually be used to implement simpler APIs. It is extremely useful for Ink, and its implementation is actually very simple, so it could be used to prevent duplicate code in implementations of simpler APIs.\n\nWDYT?",
+      "parentUuid": "775670f4_ba6d8986",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0f4e2f1_f7c7cf41",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -807,6 +831,24 @@
       "writtenOn": "2021-11-02T17:59:25Z",
       "side": 1,
       "message": "Was this removed intentionally? If this was failing, I think it may mean something is wrong with the calling code. In which case, try fixing the calling code and not just remove the existing failing check.",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1365eee8_e714523a",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-11-02T18:15:23Z",
+      "side": 1,
+      "message": "Yes, I removed intentionally. If I don\u0027t remove it, then I can\u0027t call EmbedderTest::OpenDocument again after calling EmbedderTest::CloseDocument. Then what is the purpose of having a CloseDocument function, if I can\u0027t call OpenDocument again?",
+      "parentUuid": "33e5e0c1_a04f1fc4",
       "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
