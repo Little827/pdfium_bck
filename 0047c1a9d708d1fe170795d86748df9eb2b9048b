@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7d458d_905ec6d3",
+        "filename": "core/fxcrt/fx_folder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T01:03:32Z",
+      "side": 1,
+      "message": "\u003d default;",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "0047c1a9d708d1fe170795d86748df9eb2b9048b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f396615e_865b843a",
+        "filename": "core/fxcrt/fx_folder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T01:03:32Z",
+      "side": 1,
+      "message": "Document if the out-parameters are optional or not?",
+      "revId": "0047c1a9d708d1fe170795d86748df9eb2b9048b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
