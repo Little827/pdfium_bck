@@ -145,6 +145,10 @@ class CXFA_Document final : public cppgc::GarbageCollected<CXFA_Document> {
   void SetPendingNodesUnusedAndUnbound();
 
  private:
+  friend class CXFA_DocumentTest_ParseXFAVersion_Test;
+
+  static XFA_VERSION ParseXFAVersion(const WideString& wsTemplateNS);
+
   CXFA_Document(CXFA_FFNotify* notify,
                 cppgc::Heap* heap,
                 LayoutProcessorIface* pLayout);
