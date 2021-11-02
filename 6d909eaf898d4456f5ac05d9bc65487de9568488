@@ -597,6 +597,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0785f4cf_db084a93",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-11-02T20:34:56Z",
+      "side": 1,
+      "message": "Yes. We could use FPDFPage_Delete() to delete pages and just use FPDFPage_Reorder to purely reorder.\n\nJust to explain why I decided to design FPDFPage_Reorder as it is currently:\n\nInk stores an internal representation of the PDF in the Ink scene as an order of page indices, much like the dest_page_order that FPDFPage_Reorder takes. \n\nEg. The original PDF has pages [A, B, C, D] with indices [0, 1, 2, 3].\n\n\u003e Our internal representation is initialized as [0, 1, 2, 3].\n\n\u003e Backlight deletes page C. Internal PDF is now [A, B, D].\n\u003e Internal representation is now [0, 1, 3].\n\n\u003e Backlight moves page D index 0. Internal PDF is now [D, A, B]. \n\u003e Internal representation is now [3, 0, 1].\n\n\u003e Backlight deletes page A. Internal PDF is now [D, B].\n\u003e Internal representation is now [3, 1].\n\n\u003e Backlight wants to save the PDF.\n\u003e We now need to use PDFium to modify the PDF document object. \n\nI would like to be able to just call FPDFPage_Reorder([3, 1], 2). \n\nOtherwise, I would have to do one of these options:\n\nA. Delete then reorder\n\u003e FPDFPage_Delete(2); // Delete page C.\n\u003e FPDFPage_Delete(0); // Delete page A.\n\u003e // Now PDF document has [B, D].\n\u003e // Our internal representation is still [3, 1], but the indices changed.\n\u003e // Page D is now index 1, and page B is index 0 in the document.\n\u003e // I have to recompute our internal representation to pass to FPDFPage_Reorder.\n\u003e // The recomputation logic is:\n\u003e // 1 page was deleted preceding page B, so its new index is 1 - 1 \u003d\u003d 0.\n\u003e // 2 pages were deleted preceding page D, so its new index is 3 - 2 \u003d\u003d 1.\n\u003e FPDFPage_PureReorder([1, 0]); // Now we finally have [D, B].\n\nB. Reorder then delete.\n\u003e // First pad our internal representation, [3, 1] with indices that\n\u003e // don\u0027t matter, because FPDFPage_PureReorder must take an order whose\n\u003e // size \u003d NumDocumentPages.\n\u003e FPDFPage_PureReorder([3, 1, 0, 2]); // Just make sure D is before B. \n\u003e // Now we can delete the pages.\n\u003e FPDFPage_Delete(3); // Delete C.\n\u003e FPDFPage_Delete(2); // Delete A. Now we have [D, B].\n\nI\u0027m happy to go with option B; it\u0027s simple enough to keep this logic in Ink. But, if Backlight wants to support copying pages, you can see how Ink will have to add onto its logic to figure out which simple PDFium API calls to make, instead of just passing the internal page index representation to a powerful FPDFPage_Reorder API.",
+      "parentUuid": "3de689d2_401592f4",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0f4e2f1_f7c7cf41",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -891,6 +915,24 @@
       "side": 1,
       "message": "Thanks for noticing the issue. I can try to fix that EmbedderTest problem separately. Let\u0027s try to just work on the API in this CL.",
       "parentUuid": "1365eee8_e714523a",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb99270_8d4fd572",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-11-02T20:34:56Z",
+      "side": 1,
+      "message": "So no tests in this CL at all?",
+      "parentUuid": "21ee5134_72859893",
       "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
