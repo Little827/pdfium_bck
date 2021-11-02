@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf7f3d2_26936ead",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1619,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-02T22:36:25Z",
+      "side": 1,
+      "message": "// static comment, to be consistent with line 1593.",
+      "revId": "b5e3df0e340442049391b07096a825f9b0311125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
