@@ -645,6 +645,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e0a9fb1_a1369633",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-11-02T21:52:58Z",
+      "side": 1,
+      "message": "I just realized the pages are stored in a tree and not linearly, so local operations such as moving one page at a time might may be as equally or more performant. I\u0027d like your thoughts on the best design for a simple FPDFPage_Move() API.",
+      "parentUuid": "bed84be7_04c6fe47",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0f4e2f1_f7c7cf41",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
