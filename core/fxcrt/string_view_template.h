@@ -199,6 +199,13 @@ class StringViewTemplate {
 
   bool Contains(CharType ch) const { return Find(ch).has_value(); }
 
+  StringViewTemplate Substr(size_t offset) const {
+    if (offset >= GetLength())
+      return StringViewTemplate();
+
+    return Substr(offset, GetLength() - offset);
+  }
+
   StringViewTemplate Substr(size_t first, size_t count) const {
     if (!m_Span.data())
       return StringViewTemplate();
