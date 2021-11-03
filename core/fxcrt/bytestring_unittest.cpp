@@ -1298,7 +1298,28 @@ TEST(ByteStringView, Find) {
   EXPECT_EQ(2u, result.value());
 }
 
-TEST(ByteStringView, Substr) {
+TEST(ByteStringView, OneArgSubstr) {
+  ByteStringView null_string;
+  EXPECT_EQ(null_string, null_string.Substr(0));
+  EXPECT_EQ(null_string, null_string.Substr(1));
+
+  ByteStringView empty_string("");
+  EXPECT_EQ("", empty_string.Substr(0));
+  EXPECT_EQ("", empty_string.Substr(1));
+
+  ByteStringView single_character("a");
+  EXPECT_EQ(single_character, single_character.Substr(0));
+  EXPECT_EQ("", single_character.Substr(1));
+
+  ByteStringView longer_string("abcdef");
+  EXPECT_EQ(longer_string, longer_string.Substr(0));
+  EXPECT_EQ("", longer_string.Substr(187));
+
+  ByteStringView trailing_substring("ef");
+  EXPECT_EQ(trailing_substring, longer_string.Substr(4));
+}
+
+TEST(ByteStringView, TwoArgSubstr) {
   ByteStringView null_string;
   EXPECT_EQ(null_string, null_string.Substr(0, 1));
   EXPECT_EQ(null_string, null_string.Substr(1, 1));
