@@ -1612,8 +1612,7 @@ void CXFA_Document::ParseUseHref(const WideString& wsUseVal,
                                            uLen - 1 - uSharpPos.value() - 5);
     return;
   }
-  wsID = wsUseVal.AsStringView().Substr(uSharpPos.value() + 1,
-                                        uLen - uSharpPos.value() - 1);
+  wsID = wsUseVal.AsStringView().Substr(uSharpPos.value() + 1);
 }
 
 // static
@@ -1624,7 +1623,7 @@ void CXFA_Document::ParseUse(const WideString& wsUseVal,
     return;
 
   if (wsUseVal[0] == '#') {
-    wsID = wsUseVal.AsStringView().Substr(1, wsUseVal.GetLength() - 1);
+    wsID = wsUseVal.AsStringView().Substr(1);
     return;
   }
   wsSOM = wsUseVal.AsStringView();
