@@ -26,6 +26,10 @@ namespace fxcrt {
 //
 // String view arguments should be passed by value, since they are small,
 // rather than const-ref, even if they are not modified.
+//
+// Substr(), First(), and Last() tolerate out-of-range indicies and
+// must return an empy string view in those cases, which may allow
+// callers to avoid range-checking first.
 template <typename T>
 class StringViewTemplate {
  public:
@@ -198,6 +202,13 @@ class StringViewTemplate {
   }
 
   bool Contains(CharType ch) const { return Find(ch).has_value(); }
+
+  StringViewTemplate Substr(size_t offset) const {
+    if (offset >= GetLength())
+      return StringViewTemplate();
+
+    return Substr(offset, GetLength() - offset);
+  }
 
   StringViewTemplate Substr(size_t first, size_t count) const {
     if (!m_Span.data())
