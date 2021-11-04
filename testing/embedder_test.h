@@ -101,7 +101,9 @@ class EmbedderTest : public ::testing::Test,
     form_fill_info_version_ = form_fill_info_version;
   }
 
-  FPDF_DOCUMENT document() const { return document_; }
+  void SetDocument(ScopedFPDFDocument doc);
+  FPDF_DOCUMENT document() const { return document_.get(); }
+  FPDF_DOCUMENT saved_document() const { return saved_document_.get(); }
   FPDF_FORMHANDLE form_handle() const { return form_handle_.get(); }
   FPDF_FORMHANDLE saved_form_handle() const { return saved_form_handle_.get(); }
 
@@ -214,7 +216,7 @@ class EmbedderTest : public ::testing::Test,
                           LinearizeOption linearize_option,
                           JavaScriptOption javascript_option,
                           FakeFileAccess* network_simulator,
-                          FPDF_DOCUMENT* document,
+                          ScopedFPDFDocument* document,
                           ScopedFPDFAvail* avail,
                           ScopedFPDFFormHandle* form_handle);
 
@@ -285,7 +287,7 @@ class EmbedderTest : public ::testing::Test,
   FPDF_FILEACCESS file_access_;                       // must outlive `avail_`.
   std::unique_ptr<FakeFileAccess> fake_file_access_;  // must outlive `avail_`.
   ScopedFPDFAvail avail_;
-  FPDF_DOCUMENT document_ = nullptr;
+  ScopedFPDFDocument document_;
   ScopedFPDFFormHandle form_handle_;
   PageNumberToHandleMap page_map_;
 
@@ -293,7 +295,7 @@ class EmbedderTest : public ::testing::Test,
   // must outlive `saved_avail_`.
   std::unique_ptr<FakeFileAccess> saved_fake_file_access_;
   ScopedFPDFAvail saved_avail_;
-  FPDF_DOCUMENT saved_document_ = nullptr;
+  ScopedFPDFDocument saved_document_;
   ScopedFPDFFormHandle saved_form_handle_;
   PageNumberToHandleMap saved_page_map_;
 

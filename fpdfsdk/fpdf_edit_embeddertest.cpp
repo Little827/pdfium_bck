@@ -94,9 +94,9 @@ const char kEmbeddedImage33Checksum[] = "cb3637934bb3b95a6e4ae1ea9eb9e56e";
 class FPDFEditEmbedderTest : public EmbedderTest {
  protected:
   FPDF_DOCUMENT CreateNewDocument() {
-    document_ = FPDF_CreateNewDocument();
-    cpdf_doc_ = CPDFDocumentFromFPDFDocument(document_);
-    return document_;
+    SetDocument(ScopedFPDFDocument(FPDF_CreateNewDocument()));
+    cpdf_doc_ = CPDFDocumentFromFPDFDocument(document());
+    return document();
   }
 
   void CheckFontDescriptor(const CPDF_Dictionary* font_dict,
@@ -1994,7 +1994,7 @@ TEST_F(FPDFEditEmbedderTest, InsertAndRemoveLargeFile) {
 
   // Save the file again.
   EXPECT_TRUE(FPDFPage_GenerateContent(saved_page));
-  EXPECT_TRUE(FPDF_SaveAsCopy(saved_document_, this, 0));
+  EXPECT_TRUE(FPDF_SaveAsCopy(saved_document(), this, 0));
 
   CloseSavedPage(saved_page);
   CloseSavedDocument();
@@ -2057,7 +2057,7 @@ TEST_F(FPDFEditEmbedderTest, AddAndRemovePaths) {
 
 TEST_F(FPDFEditEmbedderTest, PathsPoints) {
   CreateNewDocument();
-  FPDF_PAGEOBJECT img = FPDFPageObj_NewImageObj(document_);
+  FPDF_PAGEOBJECT img = FPDFPageObj_NewImageObj(document());
   // This should fail gracefully, even if img is not a path.
   ASSERT_EQ(-1, FPDFPath_CountSegments(img));
 
@@ -2180,7 +2180,7 @@ TEST_F(FPDFEditEmbedderTest, EditOverExistingContent) {
   EXPECT_TRUE(FPDFPage_GenerateContent(saved_page));
 
   // Now save the result, closing the page and document
-  EXPECT_TRUE(FPDF_SaveAsCopy(saved_document_, this, 0));
+  EXPECT_TRUE(FPDF_SaveAsCopy(saved_document(), this, 0));
 
   CloseSavedPage(saved_page);
   CloseSavedDocument();
