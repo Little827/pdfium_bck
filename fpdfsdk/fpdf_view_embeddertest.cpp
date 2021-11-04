@@ -1707,7 +1707,7 @@ TEST_F(FPDFViewEmbedderTest, GetTrailerEndsLinearized) {
   fake_acc.SetWholeFileAvailable();
 
   // Multiple trailers, \r line ending at the trailer ends (no \n).
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
   ASSERT_TRUE(document());
 
   // FPDF_GetTrailerEnds() positive testing.

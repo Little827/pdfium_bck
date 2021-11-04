@@ -178,8 +178,8 @@ TEST_F(FPDFDataAvailEmbedderTest, LoadUsingHintTables) {
   SetAvail(ScopedFPDFAvail(
       FPDFAvail_Create(loader.file_avail(), loader.file_access())));
   ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsDocAvail(avail(), loader.hints()));
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
   ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsPageAvail(avail(), 1, loader.hints()));
 
   // No new data available, to prevent load "Pages" node.
@@ -193,8 +193,8 @@ TEST_F(FPDFDataAvailEmbedderTest, CheckFormAvailIfLinearized) {
   SetAvail(ScopedFPDFAvail(
       FPDFAvail_Create(loader.file_avail(), loader.file_access())));
   ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsDocAvail(avail(), loader.hints()));
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
 
   // Prevent access to non-requested data to coerce the parser to send new
   // request for non available (non-requested before) data.
@@ -215,9 +215,9 @@ TEST_F(FPDFDataAvailEmbedderTest,
   SetAvail(ScopedFPDFAvail(
       FPDFAvail_Create(loader.file_avail(), loader.file_access())));
   ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsDocAvail(avail(), loader.hints()));
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
-  const int first_page_num = FPDFAvail_GetFirstPageNum(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
+  const int first_page_num = FPDFAvail_GetFirstPageNum(document());
 
   // The main cross ref table should not be processed.
   // (It is always at file end)
@@ -254,8 +254,8 @@ TEST_F(FPDFDataAvailEmbedderTest, LoadSecondPageIfLinearizedWithHints) {
   SetAvail(ScopedFPDFAvail(
       FPDFAvail_Create(loader.file_avail(), loader.file_access())));
   ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsDocAvail(avail(), loader.hints()));
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
 
   static constexpr uint32_t kSecondPageNum = 1;
 
@@ -286,18 +286,18 @@ TEST_F(FPDFDataAvailEmbedderTest, LoadInfoAfterReceivingWholeDocument) {
     loader.FlushRequestedData();
   }
 
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
 
   // The "info" dictionary should still be unavailable.
-  EXPECT_FALSE(FPDF_GetMetaText(document_, "CreationDate", nullptr, 0));
+  EXPECT_FALSE(FPDF_GetMetaText(document(), "CreationDate", nullptr, 0));
 
   // Simulate receiving whole file.
   loader.set_is_new_data_available(true);
   // Load second page, to parse additional crossref sections.
   EXPECT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsPageAvail(avail(), 1, loader.hints()));
 
-  EXPECT_TRUE(FPDF_GetMetaText(document_, "CreationDate", nullptr, 0));
+  EXPECT_TRUE(FPDF_GetMetaText(document(), "CreationDate", nullptr, 0));
 }
 
 TEST_F(FPDFDataAvailEmbedderTest, LoadInfoAfterReceivingFirstPage) {
@@ -316,14 +316,14 @@ TEST_F(FPDFDataAvailEmbedderTest, LoadInfoAfterReceivingFirstPage) {
     loader.FlushRequestedData();
   }
 
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
 
   // The "Info" dictionary should be available for the linearized document, if
   // it is located in the first page section.
   // Info was remapped to a dictionary with Type "Catalog"
   unsigned short buffer[100] = {0};
-  EXPECT_TRUE(FPDF_GetMetaText(document_, "Type", buffer, sizeof(buffer)));
+  EXPECT_TRUE(FPDF_GetMetaText(document(), "Type", buffer, sizeof(buffer)));
   constexpr wchar_t kExpectedValue[] = L"Catalog";
   EXPECT_EQ(WideString(kExpectedValue),
             WideString::FromUTF16LE(buffer, FXSYS_len(kExpectedValue)));
@@ -344,8 +344,8 @@ TEST_F(FPDFDataAvailEmbedderTest, TryLoadInvalidInfo) {
     loader.FlushRequestedData();
   }
 
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
 
   // Set all data available.
   loader.set_is_new_data_available(true);
@@ -353,7 +353,7 @@ TEST_F(FPDFDataAvailEmbedderTest, TryLoadInvalidInfo) {
   ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsPageAvail(avail(), 0, loader.hints()));
 
   // Test that api is robust enough to handle the bad case.
-  EXPECT_FALSE(FPDF_GetMetaText(document_, "Type", nullptr, 0));
+  EXPECT_FALSE(FPDF_GetMetaText(document(), "Type", nullptr, 0));
 }
 
 TEST_F(FPDFDataAvailEmbedderTest, TryLoadNonExistsInfo) {
@@ -371,8 +371,8 @@ TEST_F(FPDFDataAvailEmbedderTest, TryLoadNonExistsInfo) {
     loader.FlushRequestedData();
   }
 
-  document_ = FPDFAvail_GetDocument(avail(), nullptr);
-  ASSERT_TRUE(document_);
+  SetDocument(ScopedFPDFDocument(FPDFAvail_GetDocument(avail(), nullptr)));
+  ASSERT_TRUE(document());
 
   // Set all data available.
   loader.set_is_new_data_available(true);
@@ -380,7 +380,7 @@ TEST_F(FPDFDataAvailEmbedderTest, TryLoadNonExistsInfo) {
   ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsPageAvail(avail(), 0, loader.hints()));
 
   // Test that api is robust enough to handle the bad case.
-  EXPECT_FALSE(FPDF_GetMetaText(document_, "Type", nullptr, 0));
+  EXPECT_FALSE(FPDF_GetMetaText(document(), "Type", nullptr, 0));
 }
 
 TEST_F(FPDFDataAvailEmbedderTest, BadInputsToAPIs) {

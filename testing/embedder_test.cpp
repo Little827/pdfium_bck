@@ -66,7 +66,6 @@ void EmbedderTest::SetUp() {
   info->version = 1;
   info->FSDK_UnSupport_Handler = UnsupportedHandlerTrampoline;
   FSDK_SetUnSpObjProcessHandler(info);
-  saved_document_ = nullptr;
 }
 
 void EmbedderTest::TearDown() {
@@ -74,17 +73,17 @@ void EmbedderTest::TearDown() {
   // possible. This can fail when an DCHECK test fails in a test case.
   EXPECT_EQ(0U, page_map_.size());
   EXPECT_EQ(0U, saved_page_map_.size());
-  if (document_)
+  if (document())
     CloseDocument();
 }
 
 bool EmbedderTest::CreateEmptyDocument() {
-  document_ = FPDF_CreateNewDocument();
-  if (!document_)
+  document_.reset(FPDF_CreateNewDocument());
+  if (!document())
     return false;
 
-  form_handle_.reset(
-      SetupFormFillEnvironment(document_, JavaScriptOption::kEnableJavaScript));
+  form_handle_.reset(SetupFormFillEnvironment(
+      document(), JavaScriptOption::kEnableJavaScript));
   return true;
 }
 
@@ -144,7 +143,7 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
                                       LinearizeOption linearize_option,
                                       JavaScriptOption javascript_option,
                                       FakeFileAccess* network_simulator,
-                                      FPDF_DOCUMENT* document,
+                                      ScopedFPDFDocument* document,
                                       ScopedFPDFAvail* avail,
                                       ScopedFPDFFormHandle* form_handle) {
   network_simulator->AddSegment(0, 1024);
@@ -152,6 +151,7 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
   avail->reset(FPDFAvail_Create(network_simulator->GetFileAvail(),
                                 network_simulator->GetFileAccess()));
   FPDF_AVAIL avail_ptr = avail->get();
+  FPDF_DOCUMENT document_ptr = nullptr;
   if (FPDFAvail_IsLinearized(avail_ptr) == PDF_LINEARIZED) {
     int32_t nRet = PDF_DATA_NOTAVAIL;
     while (nRet == PDF_DATA_NOTAVAIL) {
@@ -162,8 +162,9 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
     if (nRet == PDF_DATA_ERROR)
       return false;
 
-    *document = FPDFAvail_GetDocument(avail_ptr, password);
-    if (!*document)
+    document->reset(FPDFAvail_GetDocument(avail_ptr, password));
+    document_ptr = document->get();
+    if (!document_ptr)
       return false;
 
     nRet = PDF_DATA_NOTAVAIL;
@@ -175,7 +176,7 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
     if (nRet == PDF_FORM_ERROR)
       return false;
 
-    int page_count = FPDF_GetPageCount(*document);
+    int page_count = FPDF_GetPageCount(document_ptr);
     for (int i = 0; i < page_count; ++i) {
       nRet = PDF_DATA_NOTAVAIL;
       while (nRet == PDF_DATA_NOTAVAIL) {
@@ -190,18 +191,19 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
     if (linearize_option == LinearizeOption::kMustLinearize)
       return false;
     network_simulator->SetWholeFileAvailable();
-    *document =
-        FPDF_LoadCustomDocument(network_simulator->GetFileAccess(), password);
-    if (!*document)
+    document->reset(
+        FPDF_LoadCustomDocument(network_simulator->GetFileAccess(), password));
+    document_ptr = document->get();
+    if (!document_ptr)
       return false;
   }
-  form_handle->reset(SetupFormFillEnvironment(*document, javascript_option));
+  form_handle->reset(SetupFormFillEnvironment(document_ptr, javascript_option));
 
-  int doc_type = FPDF_GetFormType(*document);
+  int doc_type = FPDF_GetFormType(document_ptr);
   if (doc_type == FORMTYPE_XFA_FULL || doc_type == FORMTYPE_XFA_FOREGROUND)
-    FPDF_LoadXFA(*document);
+    FPDF_LoadXFA(document_ptr);
 
-  (void)FPDF_GetDocPermissions(*document);
+  (void)FPDF_GetDocPermissions(document_ptr);
   return true;
 }
 
@@ -209,8 +211,7 @@ void EmbedderTest::CloseDocument() {
   FORM_DoDocumentAAction(form_handle(), FPDFDOC_AACTION_WC);
   form_handle_.reset();
 
-  FPDF_CloseDocument(document_);
-  document_ = nullptr;
+  document_.reset();
 }
 
 FPDF_FORMHANDLE EmbedderTest::SetupFormFillEnvironment(
@@ -249,14 +250,14 @@ void EmbedderTest::DoOpenActions() {
 }
 
 int EmbedderTest::GetFirstPageNum() {
-  int first_page = FPDFAvail_GetFirstPageNum(document_);
+  int first_page = FPDFAvail_GetFirstPageNum(document());
   (void)FPDFAvail_IsPageAvail(avail(), first_page,
                               fake_file_access_->GetDownloadHints());
   return first_page;
 }
 
 int EmbedderTest::GetPageCount() {
-  int page_count = FPDF_GetPageCount(document_);
+  int page_count = FPDF_GetPageCount(document());
   for (int i = 0; i < page_count; ++i)
     (void)FPDFAvail_IsPageAvail(avail(), i,
                                 fake_file_access_->GetDownloadHints());
@@ -276,7 +277,7 @@ FPDF_PAGE EmbedderTest::LoadPageCommon(int page_number, bool do_events) {
   DCHECK(page_number >= 0);
   DCHECK(!pdfium::Contains(page_map_, page_number));
 
-  FPDF_PAGE page = FPDF_LoadPage(document_, page_number);
+  FPDF_PAGE page = FPDF_LoadPage(document(), page_number);
   if (!page)
     return nullptr;
 
@@ -460,17 +461,15 @@ FPDF_DOCUMENT EmbedderTest::OpenSavedDocumentWithPassword(
       password, LinearizeOption::kDefaultLinearize,
       JavaScriptOption::kEnableJavaScript, saved_fake_file_access_.get(),
       &saved_document_, &saved_avail_, &saved_form_handle_));
-  return saved_document_;
+  return saved_document();
 }
 
 void EmbedderTest::CloseSavedDocument() {
-  DCHECK(saved_document_);
+  DCHECK(saved_document());
 
   saved_form_handle_.reset();
-  FPDF_CloseDocument(saved_document_);
+  saved_document_.reset();
   saved_avail_.reset();
-
-  saved_document_ = nullptr;
 }
 
 FPDF_PAGE EmbedderTest::LoadSavedPage(int page_number) {
@@ -478,7 +477,7 @@ FPDF_PAGE EmbedderTest::LoadSavedPage(int page_number) {
   DCHECK(page_number >= 0);
   DCHECK(!pdfium::Contains(saved_page_map_, page_number));
 
-  FPDF_PAGE page = FPDF_LoadPage(saved_document_, page_number);
+  FPDF_PAGE page = FPDF_LoadPage(saved_document(), page_number);
   if (!page)
     return nullptr;
 
@@ -508,7 +507,7 @@ void EmbedderTest::VerifySavedRendering(FPDF_PAGE page,
                                         int width,
                                         int height,
                                         const char* md5) {
-  DCHECK(saved_document_);
+  DCHECK(saved_document());
   DCHECK(page);
 
   ScopedFPDFBitmap bitmap = RenderSavedPageWithFlags(page, FPDF_ANNOT);
@@ -526,6 +525,10 @@ void EmbedderTest::VerifySavedDocument(int width, int height, const char* md5) {
 void EmbedderTest::SetWholeFileAvailable() {
   DCHECK(fake_file_access_);
   fake_file_access_->SetWholeFileAvailable();
+}
+
+void EmbedderTest::SetDocument(ScopedFPDFDocument doc) {
+  document_ = std::move(doc);
 }
 
 void EmbedderTest::SetAvail(ScopedFPDFAvail avail) {
