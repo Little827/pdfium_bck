@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b31a23bf_27e470f9",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-05T17:28:03Z",
+      "side": 1,
+      "message": "This looks to be the one way that a nullptr might make its way into a CPDF_Array. Long term it might be nice to come up with an invariant that the array doesn\u0027t have nullptrs, which would mean changing this behaviour.",
+      "range": {
+        "startLine": 106,
+        "startChar": 61,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25693cd6_cbdacb02",
         "filename": "core/fpdfapi/parser/cpdf_array.h",
         "patchSetId": 1
