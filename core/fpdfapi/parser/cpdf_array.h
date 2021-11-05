@@ -101,7 +101,10 @@ class CPDF_Array final : public CPDF_Object {
 
   // Takes ownership of |pObj|, returns unowned pointer to it.
   CPDF_Object* Append(RetainPtr<CPDF_Object> pObj);
+  // `index` must be less than the array size.
   CPDF_Object* SetAt(size_t index, RetainPtr<CPDF_Object> pObj);
+  // `index` can be greater than or equal to the array size. In which case, the
+  // array will be resized such that `index` is the last object.
   CPDF_Object* InsertAt(size_t index, RetainPtr<CPDF_Object> pObj);
 
   void Clear();

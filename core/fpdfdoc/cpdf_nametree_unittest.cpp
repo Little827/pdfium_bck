@@ -121,6 +121,23 @@ TEST(cpdf_nametree, GetUnicodeNameWithBOM) {
   EXPECT_EQ(100, pObj->AsNumber()->GetInteger());
 }
 
+TEST(cpdf_nametree, GetFromTreeWithMalformedLimitsArray) {
+  // After creating a name tree, mutate a /Limits array so it is missing an
+  // element.
+  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  FillNameTreeDict(pRootDict.Get());
+  CPDF_Dictionary* pKid1 = pRootDict->GetArrayFor("Kids")->GetDictAt(0);
+  CPDF_Dictionary* pGrandKid3 = pKid1->GetArrayFor("Kids")->GetDictAt(1);
+  CPDF_Array* pLimits = pGrandKid3->GetArrayFor("Limits");
+  ASSERT_EQ(2u, pLimits->size());
+  pLimits->RemoveAt(1);
+  ASSERT_EQ(1u, pLimits->size());
+  std::unique_ptr<CPDF_NameTree> name_tree =
+      CPDF_NameTree::CreateForTesting(pRootDict.Get());
+
+  name_tree->LookupValue(L"9.txt");
+}
+
 TEST(cpdf_nametree, AddIntoNames) {
   // Set up a name tree with a single Names array.
   auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();

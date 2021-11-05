@@ -28,8 +28,8 @@ std::pair<WideString, WideString> GetNodeLimitsMaybeSwap(CPDF_Array* pLimits) {
   WideString csRight = pLimits->GetUnicodeTextAt(1);
   // If the lower limit is greater than the upper limit, swap them.
   if (csLeft.Compare(csRight) > 0) {
-    pLimits->SetNewAt<CPDF_String>(0, csRight);
-    pLimits->SetNewAt<CPDF_String>(1, csLeft);
+    pLimits->InsertNewAt<CPDF_String>(0, csRight);
+    pLimits->InsertNewAt<CPDF_String>(1, csLeft);
     csLeft = pLimits->GetUnicodeTextAt(0);
     csRight = pLimits->GetUnicodeTextAt(1);
   }
