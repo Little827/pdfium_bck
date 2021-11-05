@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a8f8883_1e8a1202",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-05T18:28:10Z",
+      "side": 1,
+      "message": "This set of inputs all allow null `pObj` arguments. Maybe that needs to be changed as well.",
+      "parentUuid": "b31a23bf_27e470f9",
+      "range": {
+        "startLine": 106,
+        "startChar": 61,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25693cd6_cbdacb02",
         "filename": "core/fpdfapi/parser/cpdf_array.h",
         "patchSetId": 1
@@ -107,6 +131,30 @@
       "writtenOn": "2021-11-05T17:16:57Z",
       "side": 1,
       "message": "so now we might have a 4-elt array via insert",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4d2a22_2e0c0476",
+        "filename": "core/fpdfdoc/cpdf_nametree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-05T18:28:10Z",
+      "side": 1,
+      "message": "Whoops. Will redo this.",
+      "parentUuid": "2a1aa4f1_6c3ab675",
       "range": {
         "startLine": 32,
         "startChar": 4,
