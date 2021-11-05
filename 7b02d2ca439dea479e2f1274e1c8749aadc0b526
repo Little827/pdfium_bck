@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1636076489 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d18DIJMPDGFyYLGc+QzgFmxw5AAzuvsqiBAV41WsZN76l3Jk2v2PMKIges3X/QsXBWln7Xtc\n\n0000000000000000000000000000000000000000 7b02d2ca439dea479e2f1274e1c8749aadc0b526 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmGEi8kACgkQqzYtYVpm\n/XvijQgAwXLWi9PApkmlup9vE0JGNzt6ACNQDgSIk1EAYPY7/9WuzdWBzC7UalGb\nJch4dQT618Al6V7ePCzOXbIq0pe83h8jLLH1IG9N9X1D6IInTm1szgXWrhTB0Xr1\nQQVnjx6/yc9OOsyHTy4TGX5pGRAvmMYaSxelgopje6F5WEcr5+sjfzYUUx9Ytxyi\nhuFphyAuhfa3zvOSdgxOJWVWJP2imqO8CNw2M5qOd/QObwedYG23uNAPXbye46TX\nzz9nVLFKjBMnCUoTgIawXnP9mqy68O+kK3HwCiacgM3h9TJzc4hxmpyUYmXcGc92\nvJA1m9HEW7rfnxokhSmLLzbNw77wHA\u003d\u003d\n\u003dBfWn\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f07f41e_0749a80f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-05T17:16:57Z",
+      "side": 1,
+      "message": "nit: SetAt() and InsertAt()",
+      "range": {
+        "startLine": 16,
+        "startChar": 37,
+        "endLine": 16,
+        "endChar": 65
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d939a669_09befdd0",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-05T17:16:57Z",
+      "side": 1,
+      "message": "this overwrites elements per vector::operator[].",
+      "range": {
+        "startLine": 105,
+        "startChar": 15,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25693cd6_cbdacb02",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-05T17:16:57Z",
+      "side": 1,
+      "message": "this shuffles the remaining elements down per vector::insert().",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 23
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1aa4f1_6c3ab675",
+        "filename": "core/fpdfdoc/cpdf_nametree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-05T17:16:57Z",
+      "side": 1,
+      "message": "so now we might have a 4-elt array via insert",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
