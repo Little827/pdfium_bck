@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2ccf83_4f32e76f",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-05T19:44:57Z",
+      "side": 1,
+      "message": "Since I botched this, I put together a separate CL just to elaborate more here. https://pdfium-review.googlesource.com/86900",
+      "parentUuid": "d939a669_09befdd0",
+      "range": {
+        "startLine": 105,
+        "startChar": 15,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b31a23bf_27e470f9",
@@ -108,6 +132,30 @@
       "writtenOn": "2021-11-05T17:16:57Z",
       "side": 1,
       "message": "this shuffles the remaining elements down per vector::insert().",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 23
+      },
+      "revId": "7b02d2ca439dea479e2f1274e1c8749aadc0b526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ebbce2_ad619dc3",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-05T19:44:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25693cd6_cbdacb02",
       "range": {
         "startLine": 108,
         "startChar": 15,
