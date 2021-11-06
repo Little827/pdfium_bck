@@ -125,6 +125,47 @@ TEST(cpdf_nametree, GetUnicodeNameWithBOM) {
   EXPECT_EQ(100, pNumber->GetInteger());
 }
 
+TEST(cpdf_nametree, GetFromTreeWithLimitsArrayWith0Items) {
+  // After creating a name tree, clear a /Limits array so it has no elements.
+  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  FillNameTreeDict(pRootDict.Get());
+  CPDF_Dictionary* pKid1 = pRootDict->GetArrayFor("Kids")->GetDictAt(0);
+  CPDF_Dictionary* pGrandKid3 = pKid1->GetArrayFor("Kids")->GetDictAt(1);
+  CPDF_Array* pLimits = pGrandKid3->GetArrayFor("Limits");
+  ASSERT_EQ(2u, pLimits->size());
+  pLimits->Clear();
+  ASSERT_EQ(0u, pLimits->size());
+  std::unique_ptr<CPDF_NameTree> name_tree =
+      CPDF_NameTree::CreateForTesting(pRootDict.Get());
+
+  const CPDF_Number* pNumber = ToNumber(name_tree->LookupValue(L"9.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(999, pNumber->GetInteger());
+  CheckLimitsArray(pKid1, "1.txt", "9.txt");
+  CheckLimitsArray(pGrandKid3, "9.txt", "9.txt");
+}
+
+TEST(cpdf_nametree, GetFromTreeWithLimitsArrayWith1Item) {
+  // After creating a name tree, mutate a /Limits array so it is missing an
+  // element.
+  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  FillNameTreeDict(pRootDict.Get());
+  CPDF_Dictionary* pKid1 = pRootDict->GetArrayFor("Kids")->GetDictAt(0);
+  CPDF_Dictionary* pGrandKid3 = pKid1->GetArrayFor("Kids")->GetDictAt(1);
+  CPDF_Array* pLimits = pGrandKid3->GetArrayFor("Limits");
+  ASSERT_EQ(2u, pLimits->size());
+  pLimits->RemoveAt(1);
+  ASSERT_EQ(1u, pLimits->size());
+  std::unique_ptr<CPDF_NameTree> name_tree =
+      CPDF_NameTree::CreateForTesting(pRootDict.Get());
+
+  const CPDF_Number* pNumber = ToNumber(name_tree->LookupValue(L"9.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(999, pNumber->GetInteger());
+  CheckLimitsArray(pKid1, "1.txt", "9.txt");
+  CheckLimitsArray(pGrandKid3, "9.txt", "9.txt");
+}
+
 TEST(cpdf_nametree, GetFromTreeWithLimitsArrayWith4Items) {
   // After creating a name tree, mutate a /Limits array so it has excess
   // elements.
