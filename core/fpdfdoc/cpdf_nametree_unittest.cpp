@@ -147,6 +147,88 @@ TEST(cpdf_nametree, GetFromTreeWithLimitsArrayWith4Items) {
   CheckLimitsArray(pGrandKid3, "9.txt", "9.txt");
 }
 
+TEST(cpdf_nametree, GetFromTreeWithMissingLimitsArrayAtLeafNodes) {
+  // After creating a name tree, remove some /Limits arrays from leaf nodes.
+  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  FillNameTreeDict(pRootDict.Get());
+  CPDF_Dictionary* pKid1 = pRootDict->GetArrayFor("Kids")->GetDictAt(0);
+  ASSERT_TRUE(pKid1);
+  CPDF_Dictionary* pGrandKid2 = pKid1->GetArrayFor("Kids")->GetDictAt(0);
+  ASSERT_TRUE(pGrandKid2);
+  CPDF_Dictionary* pGrandKid3 = pKid1->GetArrayFor("Kids")->GetDictAt(1);
+  ASSERT_TRUE(pGrandKid3);
+  CPDF_Dictionary* pGreatGrandKid4 =
+      pGrandKid2->GetArrayFor("Kids")->GetDictAt(0);
+  ASSERT_TRUE(pGreatGrandKid4);
+  ASSERT_TRUE(pGrandKid3->RemoveFor("Limits"));
+  ASSERT_TRUE(pGreatGrandKid4->RemoveFor("Limits"));
+
+  std::unique_ptr<CPDF_NameTree> name_tree =
+      CPDF_NameTree::CreateForTesting(pRootDict.Get());
+
+  const CPDF_Number* pNumber = ToNumber(name_tree->LookupValue(L"1.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(111, pNumber->GetInteger());
+
+  pNumber = ToNumber(name_tree->LookupValue(L"2.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(222, pNumber->GetInteger());
+
+  pNumber = ToNumber(name_tree->LookupValue(L"9.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(999, pNumber->GetInteger());
+
+  const CPDF_Dictionary* pGreatGrandKid5 =
+      pGrandKid2->GetArrayFor("Kids")->GetDictAt(1);
+
+  CheckLimitsArray(pKid1, "1.txt", "9.txt");
+  CheckLimitsArray(pGrandKid2, "1.txt", "5.txt");
+  CheckLimitsArray(pGrandKid3, "9.txt", "9.txt");
+  CheckLimitsArray(pGreatGrandKid4, "1.txt", "2.txt");
+  CheckLimitsArray(pGreatGrandKid5, "3.txt", "5.txt");
+  ASSERT_FALSE(pRootDict->KeyExist("Limits"));
+}
+
+TEST(cpdf_nametree, GetFromTreeWithMissingLimitsArrayAtIntermediateNode) {
+  // After creating a name tree, remove a /Limits array from an intermediate
+  // node.
+  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  FillNameTreeDict(pRootDict.Get());
+  CPDF_Dictionary* pKid1 = pRootDict->GetArrayFor("Kids")->GetDictAt(0);
+  ASSERT_TRUE(pKid1);
+  CPDF_Dictionary* pGrandKid2 = pKid1->GetArrayFor("Kids")->GetDictAt(0);
+  ASSERT_TRUE(pGrandKid2);
+  ASSERT_TRUE(pGrandKid2->RemoveFor("Limits"));
+
+  std::unique_ptr<CPDF_NameTree> name_tree =
+      CPDF_NameTree::CreateForTesting(pRootDict.Get());
+
+  const CPDF_Number* pNumber = ToNumber(name_tree->LookupValue(L"1.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(111, pNumber->GetInteger());
+
+  pNumber = ToNumber(name_tree->LookupValue(L"2.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(222, pNumber->GetInteger());
+
+  pNumber = ToNumber(name_tree->LookupValue(L"9.txt"));
+  ASSERT_TRUE(pNumber);
+  EXPECT_EQ(999, pNumber->GetInteger());
+
+  CPDF_Dictionary* pGrandKid3 = pKid1->GetArrayFor("Kids")->GetDictAt(1);
+  CPDF_Dictionary* pGreatGrandKid4 =
+      pGrandKid2->GetArrayFor("Kids")->GetDictAt(0);
+  CPDF_Dictionary* pGreatGrandKid5 =
+      pGrandKid2->GetArrayFor("Kids")->GetDictAt(1);
+
+  CheckLimitsArray(pKid1, "1.txt", "9.txt");
+  CheckLimitsArray(pGrandKid2, "1.txt", "5.txt");
+  CheckLimitsArray(pGrandKid3, "9.txt", "9.txt");
+  CheckLimitsArray(pGreatGrandKid4, "1.txt", "2.txt");
+  CheckLimitsArray(pGreatGrandKid5, "3.txt", "5.txt");
+  ASSERT_FALSE(pRootDict->KeyExist("Limits"));
+}
+
 TEST(cpdf_nametree, AddIntoNames) {
   // Set up a name tree with a single Names array.
   auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
