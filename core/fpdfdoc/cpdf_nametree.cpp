@@ -53,25 +53,6 @@ NodeLimits GetSanitizedNodeLimits(const CPDF_Array* limits) {
   return node_limits;
 }
 
-std::pair<WideString, WideString> GetNodeLimitsAndSanitize(
-    CPDF_Array* pLimits) {
-  DCHECK(pLimits);
-  WideString csLeft = pLimits->GetUnicodeTextAt(0);
-  WideString csRight = pLimits->GetUnicodeTextAt(1);
-  // If the lower limit is greater than the upper limit, swap them.
-  if (csLeft.Compare(csRight) > 0) {
-    // TODO(thestig): This is wrong for cases when `pLimits` has fewer than 2
-    // elements.
-    pLimits->SetNewAt<CPDF_String>(0, csRight);
-    pLimits->SetNewAt<CPDF_String>(1, csLeft);
-    csLeft = pLimits->GetUnicodeTextAt(0);
-    csRight = pLimits->GetUnicodeTextAt(1);
-  }
-  while (pLimits->size() > 2)
-    pLimits->RemoveAt(pLimits->size() - 1);
-  return {csLeft, csRight};
-}
-
 void MaybeCreateNewLimitsForLeafNode(CPDF_Dictionary* node) {
   if (IsValidLimitsArray(node->GetArrayFor("Limits")))
     return;
@@ -187,34 +168,15 @@ bool UpdateNodesAndLimitsUponDeletion(CPDF_Dictionary* pNode,
   if (nLevel > kNameTreeMaxRecursion)
     return false;
 
-  CPDF_Array* pLimits = pNode->GetArrayFor("Limits");
-  WideString csLeft;
-  WideString csRight;
-  if (pLimits)
-    std::tie(csLeft, csRight) = GetNodeLimitsAndSanitize(pLimits);
-
-  CPDF_Array* pNames = pNode->GetArrayFor("Names");
+  const CPDF_Array* pNames = pNode->GetArrayFor("Names");
   if (pNames) {
     if (pNames != pFind)
       return false;
-    if (pNames->IsEmpty() || !pLimits)
-      return true;
-    if (csLeft != csName && csRight != csName)
-      return true;
 
-    // Since |csName| defines |pNode|'s limits, we need to loop through the
-    // names to find the new lower and upper limits.
-    WideString csNewLeft = csRight;
-    WideString csNewRight = csLeft;
-    for (size_t i = 0; i < pNames->size() / 2; ++i) {
-      WideString wsName = pNames->GetUnicodeTextAt(i * 2);
-      if (wsName.Compare(csNewLeft) < 0)
-        csNewLeft = wsName;
-      if (wsName.Compare(csNewRight) > 0)
-        csNewRight = wsName;
+    if (!pNames->IsEmpty()) {
+      pNode->RemoveFor("Limits");
+      MaybeCreateNewLimitsForLeafNode(pNode);
     }
-    pLimits->SetNewAt<CPDF_String>(0, csNewLeft);
-    pLimits->SetNewAt<CPDF_String>(1, csNewRight);
     return true;
   }
 
@@ -227,33 +189,22 @@ bool UpdateNodesAndLimitsUponDeletion(CPDF_Dictionary* pNode,
     CPDF_Dictionary* pKid = pKids->GetDictAt(i);
     if (!pKid)
       continue;
+
     if (!UpdateNodesAndLimitsUponDeletion(pKid, pFind, csName, nLevel + 1))
       continue;
 
     // Remove this child node if it's empty.
-    if ((pKid->KeyExist("Names") && pKid->GetArrayFor("Names")->IsEmpty()) ||
-        (pKid->KeyExist("Kids") && pKid->GetArrayFor("Kids")->IsEmpty())) {
+    const CPDF_Array* pKidNames = pKid->GetArrayFor("Names");
+    const CPDF_Array* pKidKids = pKid->GetArrayFor("Kids");
+    if ((pKidNames && pKidNames->IsEmpty()) ||
+        (pKidKids && pKidKids->IsEmpty())) {
       pKids->RemoveAt(i);
     }
-    if (pKids->IsEmpty() || !pLimits)
-      return true;
-    if (csLeft != csName && csRight != csName)
-      return true;
 
-    // Since |csName| defines |pNode|'s limits, we need to loop through the
-    // kids to find the new lower and upper limits.
-    WideString csNewLeft = csRight;
-    WideString csNewRight = csLeft;
-    for (size_t j = 0; j < pKids->size(); ++j) {
-      CPDF_Array* pKidLimits = pKids->GetDictAt(j)->GetArrayFor("Limits");
-      DCHECK(pKidLimits);
-      if (pKidLimits->GetUnicodeTextAt(0).Compare(csNewLeft) < 0)
-        csNewLeft = pKidLimits->GetUnicodeTextAt(0);
-      if (pKidLimits->GetUnicodeTextAt(1).Compare(csNewRight) > 0)
-        csNewRight = pKidLimits->GetUnicodeTextAt(1);
+    if (!pKids->IsEmpty() && nLevel > 0) {
+      pNode->RemoveFor("Limits");
+      MaybeCreateNewLimitsForIntermediateNode(pNode, nLevel);
     }
-    pLimits->SetNewAt<CPDF_String>(0, csNewLeft);
-    pLimits->SetNewAt<CPDF_String>(1, csNewRight);
     return true;
   }
   return false;
