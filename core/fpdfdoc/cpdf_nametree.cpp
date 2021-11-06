@@ -15,12 +15,43 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
-#include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/ptr_util.h"
 
 namespace {
 
 constexpr int kNameTreeMaxRecursion = 32;
+
+bool IsValidLimitsArray(const CPDF_Array* limits) {
+  if (!limits)
+    return false;
+
+  if (limits->size() != 2)
+    return false;
+
+  const CPDF_String* left = ToString(limits->GetObjectAt(0));
+  if (!left)
+    return false;
+
+  const CPDF_String* right = ToString(limits->GetObjectAt(1));
+  if (!right)
+    return false;
+
+  return left->GetUnicodeText().Compare(right->GetUnicodeText()) <= 0;
+}
+
+struct NodeLimits {
+  WideString left;
+  WideString right;
+};
+
+NodeLimits GetSanitizedNodeLimits(const CPDF_Array* limits) {
+  DCHECK(IsValidLimitsArray(limits));
+  NodeLimits node_limits;
+  node_limits.left = limits->GetUnicodeTextAt(0);
+  node_limits.right = limits->GetUnicodeTextAt(1);
+  return node_limits;
+}
 
 std::pair<WideString, WideString> GetNodeLimitsAndSanitize(
     CPDF_Array* pLimits) {
@@ -37,6 +68,70 @@ std::pair<WideString, WideString> GetNodeLimitsAndSanitize(
   while (pLimits->size() > 2)
     pLimits->RemoveAt(pLimits->size() - 1);
   return {csLeft, csRight};
+}
+
+void MaybeCreateNewLimitsForLeafNode(CPDF_Dictionary* node) {
+  if (IsValidLimitsArray(node->GetArrayFor("Limits")))
+    return;
+
+  const CPDF_Array* names = node->GetArrayFor("Names");
+  WideString left;
+  WideString right;
+  for (size_t i = 0; i < names->size() / 2; ++i) {
+    WideString current_name = names->GetUnicodeTextAt(i * 2);
+    if (left.IsEmpty() || current_name.Compare(left) < 0)
+      left = current_name;
+    if (right.IsEmpty() || current_name.Compare(right) > 0)
+      right = current_name;
+  }
+  CPDF_Array* limits = node->SetNewFor<CPDF_Array>("Limits");
+  limits->AppendNew<CPDF_String>(left);
+  limits->AppendNew<CPDF_String>(right);
+}
+
+void MaybeCreateNewLimitsForIntermediateNode(CPDF_Dictionary* node,
+                                             int nLevel) {
+  // Not for use with the root node.
+  DCHECK_NE(nLevel, 0);
+
+  if (nLevel > kNameTreeMaxRecursion)
+    return;
+
+  if (IsValidLimitsArray(node->GetArrayFor("Limits")))
+    return;
+
+  CPDF_Array* kids = node->GetArrayFor("Kids");
+  if (!kids || kids->IsEmpty())
+    return;
+
+  for (size_t i = 0; i < kids->size(); ++i) {
+    CPDF_Dictionary* kid = kids->GetDictAt(i);
+    if (!kid)
+      continue;
+
+    const CPDF_Array* names = kid->GetArrayFor("Names");
+    if (names)
+      MaybeCreateNewLimitsForLeafNode(kid);
+    else
+      MaybeCreateNewLimitsForIntermediateNode(kid, nLevel + 1);
+  }
+
+  WideString left;
+  WideString right;
+  for (size_t i = 0; i < kids->size(); ++i) {
+    CPDF_Dictionary* kid = kids->GetDictAt(i);
+    if (!kid)
+      continue;
+
+    NodeLimits node_limits = GetSanitizedNodeLimits(kid->GetArrayFor("Limits"));
+    if (left.IsEmpty() || node_limits.left.Compare(left) < 0)
+      left = node_limits.left;
+    if (right.IsEmpty() || node_limits.right.Compare(right) > 0)
+      right = node_limits.right;
+  }
+  CPDF_Array* limits = node->SetNewFor<CPDF_Array>("Limits");
+  limits->AppendNew<CPDF_String>(left);
+  limits->AppendNew<CPDF_String>(right);
 }
 
 // Get the limit arrays that leaf array |pFind| is under in the tree with root
@@ -215,6 +310,7 @@ CPDF_Object* SearchNameNodeByNameInternal(CPDF_Dictionary* pNode,
         continue;
 
       *nIndex += i;
+      MaybeCreateNewLimitsForLeafNode(pNode);
       return pNames->GetDirectObjectAt(i * 2 + 1);
     }
     *nIndex += dwCount;
@@ -233,8 +329,12 @@ CPDF_Object* SearchNameNodeByNameInternal(CPDF_Dictionary* pNode,
 
     CPDF_Object* pFound = SearchNameNodeByNameInternal(
         pKid, csName, nLevel + 1, nIndex, ppFind, pFindIndex);
-    if (pFound)
-      return pFound;
+    if (!pFound)
+      continue;
+
+    if (nLevel > 0)
+      MaybeCreateNewLimitsForIntermediateNode(pNode, nLevel);
+    return pFound;
   }
   return nullptr;
 }
