@@ -60,6 +60,8 @@ std::pair<WideString, WideString> GetNodeLimitsAndSanitize(
   WideString csRight = pLimits->GetUnicodeTextAt(1);
   // If the lower limit is greater than the upper limit, swap them.
   if (csLeft.Compare(csRight) > 0) {
+    // TODO(thestig): This is wrong for cases when `pLimits` has fewer than 2
+    // elements.
     pLimits->SetNewAt<CPDF_String>(0, csRight);
     pLimits->SetNewAt<CPDF_String>(1, csLeft);
     csLeft = pLimits->GetUnicodeTextAt(0);
@@ -274,17 +276,15 @@ CPDF_Object* SearchNameNodeByNameInternal(CPDF_Dictionary* pNode,
 
   CPDF_Array* pLimits = pNode->GetArrayFor("Limits");
   CPDF_Array* pNames = pNode->GetArrayFor("Names");
-  if (pLimits) {
-    WideString csLeft;
-    WideString csRight;
-    std::tie(csLeft, csRight) = GetNodeLimitsAndSanitize(pLimits);
+  if (IsValidLimitsArray(pLimits)) {
+    NodeLimits node_limits = GetSanitizedNodeLimits(pLimits);
     // Skip this node if the name to look for is smaller than its lower limit.
-    if (csName.Compare(csLeft) < 0)
+    if (csName.Compare(node_limits.left) < 0)
       return nullptr;
 
     // Skip this node if the name to look for is greater than its higher limit,
     // and the node itself is a leaf node.
-    if (csName.Compare(csRight) > 0 && pNames) {
+    if (csName.Compare(node_limits.right) > 0 && pNames) {
       if (ppFind)
         *ppFind = pNames;
       if (pFindIndex)
@@ -292,6 +292,8 @@ CPDF_Object* SearchNameNodeByNameInternal(CPDF_Dictionary* pNode,
 
       return nullptr;
     }
+  } else {
+    pNode->RemoveFor("Limits");
   }
 
   // If the node is a leaf node, look for the name in its names array.
