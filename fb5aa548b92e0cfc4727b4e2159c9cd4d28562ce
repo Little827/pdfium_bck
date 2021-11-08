@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1636181046 -0700\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d193dMVbslb3DikVSByZD9GcZ8POfnsin8Q4H/FLD2h08he6q2VTm58Vq8ifSukEnYJKZkdq\n\n0000000000000000000000000000000000000000 fb5aa548b92e0cfc4727b4e2159c9cd4d28562ce refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmGGJDYACgkQqzYtYVpm\n/XuLfQgAg8h1WGU6XlF/GNVOSWqh8mmSGu+8pn3Sz/Qegc+txxMsaRcGSONTQXrA\nOUOSX7QrtNz4PFWd/Vto6Kit46vqYzdtu5Fpw4+O0W0Wafzh5WZc66SYGCrt5m94\nHNgQQJzF7ZOTlAG4eHtFA5mGCKaoYNJe9JLhj3sFi4ehbPnD1HG8DcnoJRUrwGzM\ny7FKXwhuHsrDN0XupvH6JsH5sOLcX7cDhJfRL9q+FQIhjgd91HsbStAloamljiFL\nDDy3EKLhz3MiaCQIUsiu29gkjgj/rxQmXZg5VOIaT7m/guLLpA3lZF4gi2Bv0CFg\nx0KOrR3AExZWfKITftQJ98Nn/xuvxQ\u003d\u003d\n\u003dw6Ti\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d49718_c8ddfd8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-08T18:08:43Z",
+      "side": 1,
+      "message": "FYI, size_t being unsigned catches a bunch of these, eg.\n\n(gdb) p -100 \u003c 400\n$3 \u003d 1\n(gdb) p (unsigned long long)-100 \u003c 400\n$4 \u003d 0",
+      "range": {
+        "startLine": 11,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "fb5aa548b92e0cfc4727b4e2159c9cd4d28562ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
