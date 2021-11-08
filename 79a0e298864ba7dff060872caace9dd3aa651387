@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67fe10a3_f4b247a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-08T20:16:14Z",
+      "side": 1,
+      "message": "This final CL of the chain should suppress the remaining failures from pixel test.\nAfter this CL, we can enable pixel test on Skia/SkiaPaths bots.",
+      "revId": "79a0e298864ba7dff060872caace9dd3aa651387",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
