@@ -16,6 +16,40 @@
       "message": "This first CL in the chain should address the rest of failed pixel tests due to slight graphic rendering discrepancy caused by Skia/SkiaPaths.",
       "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c13c52_049239f7",
+        "filename": "testing/resources/pixel/bug_1015233_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-08T23:58:05Z",
+      "side": 1,
+      "message": "Is this change intentional? If yes, what happened since when this PNG was originally added?",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b580ed0_68f5603f",
+        "filename": "testing/resources/pixel/bug_1330_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-08T23:58:05Z",
+      "side": 1,
+      "message": "The difference here looks more than just a rounding error. Can you take a closer look? Are my eyes just playing tricks on me?",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
