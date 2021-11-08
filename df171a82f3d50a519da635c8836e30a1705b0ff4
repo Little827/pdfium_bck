@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0dc793d_5168c808",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-08T20:13:35Z",
+      "side": 1,
+      "message": "This first CL in the chain should address the rest of failed pixel tests due to slight graphic rendering discrepancy caused by Skia/SkiaPaths.",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
