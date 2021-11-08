@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf9adfa_f8919e67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-08T23:44:42Z",
+      "side": 1,
+      "message": "Actually, it\u0027s because https://pdfium-review.googlesource.com/85728 added the suppression to gtest.",
+      "revId": "1d5e9c1796232e127e653dbdaf5bbaddca868f53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
