@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8515017a_e0367dd7",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-09T22:33:42Z",
+      "side": 1,
+      "message": "nLen? Or is this all getting span-ified in the near future anyway?",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "b46c9ceae036f528487652604e61947a526a6d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db955258_b989826b",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-09T22:33:42Z",
+      "side": 1,
+      "message": "Mismatch with definition.",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "b46c9ceae036f528487652604e61947a526a6d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
