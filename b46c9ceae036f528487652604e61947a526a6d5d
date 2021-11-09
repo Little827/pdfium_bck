@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b25eed5_f39a580a",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-09T22:38:53Z",
+      "side": 1,
+      "message": "nLen. This is a place where I\u0027ve wanted to convert to WideStringView, but there\u0027s just too much ptr++ in the impls for me to deal.",
+      "parentUuid": "8515017a_e0367dd7",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "b46c9ceae036f528487652604e61947a526a6d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db955258_b989826b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-09T22:33:42Z",
       "side": 1,
       "message": "Mismatch with definition.",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "b46c9ceae036f528487652604e61947a526a6d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "373b518b_74cc1fc2",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-09T22:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db955258_b989826b",
       "range": {
         "startLine": 20,
         "startChar": 25,
