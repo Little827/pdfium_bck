@@ -37,7 +37,7 @@ bool ParseCSSNumber(const wchar_t* pszValue,
   DCHECK(pszValue);
   DCHECK_GT(iValueLen, 0);
 
-  int32_t iUsedLen = 0;
+  size_t iUsedLen = 0;
   *pValue = FXSYS_wcstof(pszValue, iValueLen, &iUsedLen);
   if (iUsedLen <= 0 || !isfinite(*pValue))
     return false;
