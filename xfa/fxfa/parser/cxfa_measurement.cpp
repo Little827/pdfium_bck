@@ -42,7 +42,7 @@ void CXFA_Measurement::SetString(WideStringView wsMeasure) {
   if (wsMeasure[0] == L'=')
     wsMeasure = wsMeasure.Last(wsMeasure.GetLength() - 1);
 
-  int32_t iUsedLen = 0;
+  size_t iUsedLen = 0;
   float fValue = FXSYS_wcstof(wsMeasure.unterminated_c_str(),
                               wsMeasure.GetLength(), &iUsedLen);
   if (!isfinite(fValue))
