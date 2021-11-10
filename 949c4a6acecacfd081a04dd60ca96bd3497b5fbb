@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed1ca4f_a4964b7e",
+        "filename": "fxjs/fxv8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-10T02:11:37Z",
+      "side": 1,
+      "message": "Thanks for adding the curly braces. Or maybe a local uint32_t variable would help make this easier to read.",
+      "revId": "949c4a6acecacfd081a04dd60ca96bd3497b5fbb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
