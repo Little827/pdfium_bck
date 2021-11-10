@@ -50,6 +50,24 @@
       "message": "The AGG version looks a lot more bold. Is that expected?",
       "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a252817_50091e40",
+        "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-10T16:25:32Z",
+      "side": 1,
+      "message": "AGG and Skia both render this test file at weight 400 (this weight is also verified in the substitute font that was used for rendering.)\n\nThe difference is AGG uses pFont-\u003eAdjustMMParams() which uses font weight as a `coords` to modify the font face rec.\n\nHowever, Skia doesn\u0027t incorporate the font weight while using the face rec. Skia directly use the font face rec as it is and consider any weight that\u0027s no more than 400 as \"no need to be embolden\". If the font weight is more than 400, Skia rendering will embolden the fonts (using its own API) without changing font face rec.",
+      "parentUuid": "d9ff8082_1493a8ec",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
