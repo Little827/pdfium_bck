@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183c6d13_56c3131a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5025
+      },
+      "writtenOn": "2021-11-10T02:18:00Z",
+      "side": 1,
+      "message": "PTAL and land if looks good.",
+      "revId": "218ff7a9486caaa0dbdfbbf6c333c027ac4756ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
