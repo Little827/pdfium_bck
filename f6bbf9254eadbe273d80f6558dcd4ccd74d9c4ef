@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a04321_450f3306",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-11T20:15:20Z",
+      "side": 1,
+      "message": "Is this needed to make the compiler happy. (in the future?)",
+      "revId": "f6bbf9254eadbe273d80f6558dcd4ccd74d9c4ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b30024e_62b721ac",
+        "filename": "fxjs/fx_date_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-11T20:15:20Z",
+      "side": 1,
+      "message": "Just int?",
+      "range": {
+        "startLine": 119,
+        "startChar": 25,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "f6bbf9254eadbe273d80f6558dcd4ccd74d9c4ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0cbcd01_a461d1e4",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-11T20:15:20Z",
+      "side": 1,
+      "message": "Existing: I wonder if this handles empty `wsName` correctly.",
+      "revId": "f6bbf9254eadbe273d80f6558dcd4ccd74d9c4ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dbe36e8_e5ae55cf",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-11T20:15:20Z",
+      "side": 1,
+      "message": "empty() / IsEmpty()?",
+      "revId": "f6bbf9254eadbe273d80f6558dcd4ccd74d9c4ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
