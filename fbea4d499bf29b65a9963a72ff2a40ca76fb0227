@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83bcb570_50b908e2",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-11T00:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c64b62_eddda183",
+      "range": {
+        "startLine": 2296,
+        "startChar": 12,
+        "endLine": 2296,
+        "endChar": 15
+      },
+      "revId": "fbea4d499bf29b65a9963a72ff2a40ca76fb0227",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5189c154_0c29259f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-11T00:32:54Z",
       "side": 1,
       "message": ".empty() ?",
+      "range": {
+        "startLine": 2336,
+        "startChar": 12,
+        "endLine": 2336,
+        "endChar": 24
+      },
+      "revId": "fbea4d499bf29b65a9963a72ff2a40ca76fb0227",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f60d7ef4_04e5a2ea",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2336,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-11T00:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5189c154_0c29259f",
       "range": {
         "startLine": 2336,
         "startChar": 12,
