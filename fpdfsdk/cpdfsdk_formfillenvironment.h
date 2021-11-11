@@ -7,6 +7,8 @@
 #ifndef FPDFSDK_CPDFSDK_FORMFILLENVIRONMENT_H_
 #define FPDFSDK_CPDFSDK_FORMFILLENVIRONMENT_H_
 
+#include <stdint.h>
+
 #include <map>
 #include <memory>
 #include <vector>
@@ -24,6 +26,7 @@
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 #include "public/fpdf_formfill.h"
+#include "third_party/base/span.h"
 
 class CPDFSDK_ActionHandler;
 class CPDFSDK_AnnotHandlerMgr;
@@ -137,8 +140,7 @@ class CPDFSDK_FormFillEnvironment final
                      int length);
   void JS_appBeep(int nType);
   WideString JS_fieldBrowse();
-  void JS_docmailForm(void* mailData,
-                      int length,
+  void JS_docmailForm(pdfium::span<uint8_t> mailData,
                       FPDF_BOOL bUI,
                       const WideString& To,
                       const WideString& Subject,

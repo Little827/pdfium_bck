@@ -27,6 +27,7 @@
 #include "fpdfsdk/formfiller/cffl_perwindowdata.h"
 #include "fxjs/ijs_runtime.h"
 #include "third_party/base/check.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 static_assert(FXCT_ARROW ==
                   static_cast<int>(IPWL_SystemHandler::CursorStyle::kArrow),
@@ -259,8 +260,7 @@ WideString CPDFSDK_FormFillEnvironment::JS_fieldBrowse() {
   return WideString::FromDefANSI(ByteStringView(pBuff));
 }
 
-void CPDFSDK_FormFillEnvironment::JS_docmailForm(void* mailData,
-                                                 int length,
+void CPDFSDK_FormFillEnvironment::JS_docmailForm(pdfium::span<uint8_t> mailData,
                                                  FPDF_BOOL bUI,
                                                  const WideString& To,
                                                  const WideString& Subject,
@@ -276,7 +276,8 @@ void CPDFSDK_FormFillEnvironment::JS_docmailForm(void* mailData,
   ByteString bsCC = CC.ToUTF16LE();
   ByteString bsBcc = BCC.ToUTF16LE();
   ByteString bsMsg = Msg.ToUTF16LE();
-  js_platform->Doc_mail(js_platform, mailData, length, bUI,
+  js_platform->Doc_mail(js_platform, mailData.data(),
+                        pdfium::base::checked_cast<int>(mailData.size()), bUI,
                         AsFPDFWideString(&bsTo), AsFPDFWideString(&bsSubject),
                         AsFPDFWideString(&bsCC), AsFPDFWideString(&bsBcc),
                         AsFPDFWideString(&bsMsg));

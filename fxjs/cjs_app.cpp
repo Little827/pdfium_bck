@@ -458,8 +458,8 @@ CJS_Result CJS_App::mailMsg(CJS_Runtime* pRuntime,
     cMsg = pRuntime->ToWideString(newParams[5]);
 
   pRuntime->BeginBlock();
-  pRuntime->GetFormFillEnv()->JS_docmailForm(nullptr, 0, bUI, cTo, cSubject,
-                                             cCc, cBcc, cMsg);
+  pRuntime->GetFormFillEnv()->JS_docmailForm(pdfium::span<uint8_t>(), bUI, cTo,
+                                             cSubject, cCc, cBcc, cMsg);
   pRuntime->EndBlock();
   return CJS_Result::Success();
 }
