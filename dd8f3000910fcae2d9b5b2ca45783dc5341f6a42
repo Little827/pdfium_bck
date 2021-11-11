@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6ef7654_87a13c14",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-11T16:48:58Z",
+      "side": 1,
+      "message": "This is because Skia/SkiaPaths scales the glyph down horizontally when the width for that glyph defined in the PDF is smaller than the glyph\u0027s default width defined in the font (See [1]). This was introduced to prevent the case that a series of characters on the same line would overlap if their default glyph widths are too big for the width allocated for them in the PDF file.\n\nIn this particular case, font glyph width is 583, pdf glyph width is 376, glyph bounding box width is 506. Currently Skia scales down the glyph by (pdf glyph width/font glyph width). If we want a tighter fit, we can scale down the glyph by (pdf glyph width / bounding box width).\n\nFir this particular test file, to make the Skia rendering result closer to the original glyph, I think we can skip the scaling down process when there is no more than 1 character.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fxge/skia/fx_skia_device.cpp;drc\u003d7f90a811412cc677fa49ee5611747c5f37e0b1fa;l\u003d1026",
+      "parentUuid": "bf9e47a9_1e74ef43",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ff8082_1493a8ec",
         "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
         "patchSetId": 2
