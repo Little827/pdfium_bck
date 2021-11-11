@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e53b500_086cfd52",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-11T20:56:22Z",
+      "side": 1,
+      "message": "Also wondering if the AGG rendering is more correct, or the Skia rendering. Or are they both acceptable? Some of these cases may be a bit tricky, depending on the font substitution.",
+      "parentUuid": "b6ef7654_87a13c14",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ff8082_1493a8ec",
         "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "AGG and Skia both render this test file at weight 400 (this weight is also verified in the substitute font that was used for rendering.)\n\nThe difference is AGG uses pFont-\u003eAdjustMMParams() which uses font weight as a `coords` to modify the font face rec.\n\nHowever, Skia doesn\u0027t incorporate the font weight while using the face rec. Skia directly use the font face rec as it is and consider any weight that\u0027s no more than 400 as \"no need to be embolden\". If the font weight is more than 400, Skia rendering will embolden the fonts (using its own API) without changing font face rec.",
       "parentUuid": "d9ff8082_1493a8ec",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437d6cc6_1d318b87",
+        "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-11T20:56:22Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation, but the original question remains. Should the rendered text be bold or not? If it should be bold, like with the AGG rendering, then it may make more sense to file a bug for that and try to fix it somehow, rather than setting a less-bold expectation.",
+      "parentUuid": "5a252817_50091e40",
       "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
