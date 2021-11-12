@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "277f3f2d_7b2a39de",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-12T19:58:53Z",
+      "side": 1,
+      "message": "For this specific test, Acrobat and foxit reader render nothing and macOS Preview can\u0027t open this file. \nI tried opening it with Okular and Zathura, their rendering results are narrower than the AGG. So I think Skia rendering result is more accurate in this case.",
+      "parentUuid": "3e53b500_086cfd52",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ff8082_1493a8ec",
         "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
         "patchSetId": 2
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Thanks for the detailed explanation, but the original question remains. Should the rendered text be bold or not? If it should be bold, like with the AGG rendering, then it may make more sense to file a bug for that and try to fix it somehow, rather than setting a less-bold expectation.",
       "parentUuid": "5a252817_50091e40",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a0a684b_b365f4c1",
+        "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-12T19:58:53Z",
+      "side": 1,
+      "message": "For font-weight: 400 is supposed to be equal to normal , while 700 is equal to bold. Both AGG and Skia results look normal (it\u0027s hard to tell at scale\u003d1. But it\u0027s easier to observe you scale up more, for example scale \u003d 4), but the AGG result looks slightly thicker. \n\nHowever, rendering results from Acrobat(Win) and Foxit reader are on the thicker side (thicker than AGG result). I filed crbug.com/pdfium/1752 for this issue and it is added to the suppression list in the follow-up CL.",
+      "parentUuid": "437d6cc6_1d318b87",
       "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
