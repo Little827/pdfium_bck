@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8f1c06c_57b715b7",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-12T20:40:17Z",
+      "side": 1,
+      "message": "Perhaps the effort to produce this minimal test case removed some of the required bits for other PDF viewers to validate the PDF. Given this is associated with a bug, and the URL on the bug [2] is still valid, can you check how that PDF renders in various PDF viewers to help make this decision?\n\nSeparately, maybe we can rewrite the minimal test case, such that it works in other PDF viewers.\n\n[2] http://vtsns.edu.rs/wp-content/uploads/2016/10/III-IT-2016-2017-2.pdf",
+      "parentUuid": "277f3f2d_7b2a39de",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ff8082_1493a8ec",
         "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
         "patchSetId": 2
