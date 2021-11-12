@@ -122,6 +122,24 @@
       "parentUuid": "72acce6b_428ed40d",
       "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26db577b_63970dff",
+        "filename": "testing/resources/pixel/bug_1330_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-12T03:10:00Z",
+      "side": 1,
+      "message": "Hopefully we can fix crbug.com/pdfium/1330 sooner rather than later?",
+      "parentUuid": "05c82ed8_404838d0",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
