@@ -71,6 +71,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f397217b_fc1482ab",
+        "filename": "testing/resources/pixel/bug_1015233_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-12T19:57:48Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "c3eae2ae_f27d258c",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b580ed0_68f5603f",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Hopefully we can fix crbug.com/pdfium/1330 sooner rather than later?",
       "parentUuid": "05c82ed8_404838d0",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d297040_50a2926f",
+        "filename": "testing/resources/pixel/bug_1330_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-12T19:57:48Z",
+      "side": 1,
+      "message": "Once pixel tests are enabled on trybots, the next step is to focus on fixing each individual bug. 😄",
+      "parentUuid": "26db577b_63970dff",
       "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
