@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3eae2ae_f27d258c",
+        "filename": "testing/resources/pixel/bug_1015233_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-12T03:06:45Z",
+      "side": 1,
+      "message": "Sounds like this is correcting https://pdfium-review.googlesource.com/85111 then?",
+      "parentUuid": "5f0d20fa_8f39e381",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b580ed0_68f5603f",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Right now even the AGG expectation is just the current rendering result but not the correct expectation, the spike is not supposed to be rendered (compared to Acrobat result).\nI left some more comments about Acrobat always trys to smooth out spikes by default in https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1330#c8 . But I couldn\u0027t find any resources about the exact precision Acrobat is using when it comes to drawing bezier curves.",
       "parentUuid": "5b580ed0_68f5603f",
+      "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c82ed8_404838d0",
+        "filename": "testing/resources/pixel/bug_1330_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-12T03:06:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72acce6b_428ed40d",
       "revId": "df171a82f3d50a519da635c8836e30a1705b0ff4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
