@@ -1,0 +1,7 @@
+Description:
+Chromium's safe numerics library
+
+Local Modifications:
+
+Namespaced from base:: to pdfium::base:: in all files.
+Include <iosfwd> instead of <ostream> in safe_conversions.h

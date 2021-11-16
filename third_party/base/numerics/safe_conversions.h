@@ -20,7 +20,7 @@
 #endif
 
 #if !BASE_NUMERICS_DISABLE_OSTREAM_OPERATORS
-#include <ostream>
+#include <iosfwd>
 #endif
 
 namespace pdfium {
