@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d01df367_e8db27d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-16T21:53:50Z",
+      "side": 1,
+      "message": "With the rewritten pixel test, AGG and Skia results don\u0027t show significant width difference since the required \"Widths\" entry is available now.",
+      "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ecd19e_f74c694a",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-16T21:53:50Z",
+      "side": 1,
+      "message": "Linux and macOS rendering results are the same.",
+      "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
