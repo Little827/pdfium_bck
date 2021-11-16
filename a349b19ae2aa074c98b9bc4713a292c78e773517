@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4343b1_a5a99e46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-16T22:57:41Z",
+      "side": 1,
+      "message": "Tag with bug: chromium:665467 ?",
+      "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d01df367_e8db27d7",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-11-16T21:53:50Z",
       "side": 1,
       "message": "Linux and macOS rendering results are the same.",
+      "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46ad7b0_8cd54b1c",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-16T22:57:41Z",
+      "side": 1,
+      "message": "I noticed that some platforms are using a serif font, whereas others are using a sans-serif font. Would it be possible to change the test PDF to make this more consistent?",
+      "parentUuid": "21ecd19e_f74c694a",
       "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
