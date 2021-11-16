@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac51add1_d04faec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-16T23:39:00Z",
+      "side": 1,
+      "message": "Bug: entries in PDFium CLs need the project prefix. Otherwise, some tools will get confused about whether this is a Chromium bug number or PDFium bug number.",
+      "parentUuid": "4d4343b1_a5a99e46",
+      "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d01df367_e8db27d7",
