@@ -16,6 +16,24 @@
       "message": "But aren\u0027t we using std::ostream here in the header?",
       "revId": "1c717121fb18d2f45d9ed26b272959ad11b8502c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8475f47_588f0a04",
+        "filename": "third_party/base/numerics/safe_conversions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-16T20:11:00Z",
+      "side": 1,
+      "message": "Yeah, kinda sorta, but the template should be fine until instantiated when used, and when used you already have to have the stream (and its header included).",
+      "parentUuid": "64ac4a4f_2524b0d9",
+      "revId": "1c717121fb18d2f45d9ed26b272959ad11b8502c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
