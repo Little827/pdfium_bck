@@ -52,6 +52,24 @@
       "parentUuid": "c8475f47_588f0a04",
       "revId": "1c717121fb18d2f45d9ed26b272959ad11b8502c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824e69cd_bf8014f7",
+        "filename": "third_party/base/numerics/safe_conversions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-16T20:15:11Z",
+      "side": 1,
+      "message": "Maybe we can just delete it from the PDFium copy, since no code is actively using it?",
+      "parentUuid": "ae8eda7a_a1528c87",
+      "revId": "1c717121fb18d2f45d9ed26b272959ad11b8502c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
