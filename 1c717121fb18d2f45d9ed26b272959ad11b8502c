@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ac4a4f_2524b0d9",
+        "filename": "third_party/base/numerics/safe_conversions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-16T20:02:16Z",
+      "side": 1,
+      "message": "But aren\u0027t we using std::ostream here in the header?",
+      "revId": "1c717121fb18d2f45d9ed26b272959ad11b8502c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
