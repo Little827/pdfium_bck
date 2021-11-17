@@ -16,6 +16,24 @@
       "message": "I tried the test file with Chromium 54.0.2840.0 on Windows, and it doesn\u0027t preserve the quirks of the bug. The existing test file renders as an \u0027i\u0027 in Chromium 54.0.2840.0, and a sans-serif Cyrillic letter in Chromium 96.x. The new test file renders as a serif Cyrillic letter in 54.x and 96.x.",
       "revId": "ff02d22934223645af7b6e7fb64d4bfda96228a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c774f4_f2963dac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-17T15:32:47Z",
+      "side": 1,
+      "message": "54.0.2840.0 might not be a good version to test?\nWhen opening the original PDF that came with the bug in 54.0.2840.0, the characters were rendered correctly.\n\nBy changing \"Ordering\" to \"Identity\" and \"Diffenreces\" to \"someunknownname\", Acrobat will stop rendering the character. So far I haven\u0027t found a a combination that could make Acrobat render correctly while 54.0.2840.0 renders incorrectly (still trying on this).",
+      "parentUuid": "e6235fc6_616b97c6",
+      "revId": "ff02d22934223645af7b6e7fb64d4bfda96228a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
