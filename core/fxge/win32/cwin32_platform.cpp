@@ -441,6 +441,12 @@ void CWin32Platform::Init() {
 
 std::unique_ptr<SystemFontInfoIface>
 CWin32Platform::CreateDefaultSystemFontInfo() {
+  if (CFX_GEModule::Get()->GetUserFontPaths()) {
+    auto font_info = std::make_unique<CFX_Win32FallbackFontInfo>();
+    font_info->AddPath(*CFX_GEModule::Get()->GetUserFontPaths());
+    return std::move(font_info);
+  }
+
   if (pdfium::base::win::IsUser32AndGdi32Available())
     return std::make_unique<CFX_Win32FontInfo>();
 

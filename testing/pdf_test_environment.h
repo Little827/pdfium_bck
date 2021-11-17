@@ -20,10 +20,8 @@ class PDFTestEnvironment : public testing::Environment {
   void TearDown() override;
 
  private:
-#if defined(OS_LINUX) || defined(OS_CHROMEOS)
   std::string font_path_;
   const char* font_paths_[2];
-#endif
 };
 
 #endif  // TESTING_PDF_TEST_ENVIRONMENT_H_
