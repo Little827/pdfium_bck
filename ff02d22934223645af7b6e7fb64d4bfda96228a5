@@ -34,6 +34,24 @@
       "parentUuid": "e6235fc6_616b97c6",
       "revId": "ff02d22934223645af7b6e7fb64d4bfda96228a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef2c146_04a1634f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-17T22:09:59Z",
+      "side": 1,
+      "message": "It didn\u0027t render the same for me. Another way to look at it is to sync and build PDFium at commit c559156da and commit 17f4e0268. Given that\u0027s a few years old, doing that build comes with some difficulty. But after doing so, one can see the existing test file renders differently with the 2 commits, while the new one here does not.\n\nTo sanity check, does the user provided PDF from the bug render correctly in Acrobat? Assuming yes, there must be some way to generate a smaller PDF that Acrobat accepts that can replicate the bug.",
+      "parentUuid": "a1c774f4_f2963dac",
+      "revId": "ff02d22934223645af7b6e7fb64d4bfda96228a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
