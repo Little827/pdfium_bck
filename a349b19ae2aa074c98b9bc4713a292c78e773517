@@ -104,6 +104,24 @@
       "parentUuid": "21ecd19e_f74c694a",
       "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec90589_77049523",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-18T21:41:08Z",
+      "side": 1,
+      "message": "I changed the font to ArialMT which is sans-serif. Now results across platforms are more consistent.",
+      "parentUuid": "e46ad7b0_8cd54b1c",
+      "revId": "a349b19ae2aa074c98b9bc4713a292c78e773517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
