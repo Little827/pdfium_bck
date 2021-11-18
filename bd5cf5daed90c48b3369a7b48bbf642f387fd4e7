@@ -16,6 +16,24 @@
       "message": "\u003e Patch Set 5:\n\u003e \n\u003e Gold has detected about 3 new digest(s) on patchset 5.\n\u003e View them at https://pdfium-gold.skia.org/cl/gerrit/86511\n\nFYI, the core/fxge/win32/cwin32_platform.cpp change actually affects a few pixel tests that tell the test runner to set the font dir. I think that\u0027s going in the right direction anyway?",
       "revId": "bd5cf5daed90c48b3369a7b48bbf642f387fd4e7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792e813a_67c9f49b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-11-18T01:05:32Z",
+      "side": 1,
+      "message": "Yes I agree that\u0027s the right direction.  Actually, I\u0027m looking at rebaselining the embeddertests now.  It looks like 64/755 tests need changes (though most of those appear to share a common issue, so the actual number of changes may be smaller).\n\nOne issue I\u0027m facing is there\u0027s no automated way to rewrite eg. Arial-\u003eArimo.  This wasn\u0027t a problem in the Chromium repo because we could use fontconfig to do the rewrite [1].  So we may end up either changing a bunch of resource files or adding some test-only hack.  wdyt?\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:third_party/test_fonts/fontconfig/fonts.conf;drc\u003d7eeb3469934941da58b774a7fea5e61f610c5a80;l\u003d130",
+      "parentUuid": "50d1e6ac_b1fb4858",
+      "revId": "bd5cf5daed90c48b3369a7b48bbf642f387fd4e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
