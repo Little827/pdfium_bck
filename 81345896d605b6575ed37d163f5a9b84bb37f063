@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b2943ec_a8b232e7",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-18T00:22:13Z",
+      "side": 1,
+      "message": "We usually don\u0027t declare variables in the if-statement. Move outside?",
+      "revId": "81345896d605b6575ed37d163f5a9b84bb37f063",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27ad924_d6fa35bf",
+        "filename": "testing/pdf_test_environment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-18T00:22:13Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "81345896d605b6575ed37d163f5a9b84bb37f063",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e99324af_af3c205a",
+        "filename": "xfa/fde/cfde_texteditengine_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-18T00:22:13Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "81345896d605b6575ed37d163f5a9b84bb37f063",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
