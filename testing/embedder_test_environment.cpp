@@ -6,6 +6,7 @@
 
 #include "core/fxcrt/fx_system.h"
 #include "public/fpdfview.h"
+#include "testing/utils/path_service.h"
 #include "third_party/base/check.h"
 
 #ifdef PDF_ENABLE_V8
@@ -39,6 +40,14 @@ void EmbedderTestEnvironment::SetUp() {
   config.m_pUserFontPaths = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pPlatform = nullptr;
+
+  ASSERT_TRUE(PathService::GetExecutableDir(&font_path_));
+  font_path_.push_back(PATH_SEPARATOR);
+  font_path_.append("test_fonts");
+  font_paths_[0] = font_path_.c_str();
+  font_paths_[1] = nullptr;
+  config.m_pUserFontPaths = font_paths_;
+
 #ifdef PDF_ENABLE_V8
   config.m_pIsolate = V8TestEnvironment::GetInstance()->isolate();
   config.m_pPlatform = V8TestEnvironment::GetInstance()->platform();
