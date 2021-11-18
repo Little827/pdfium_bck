@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d1e6ac_b1fb4858",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-18T00:51:12Z",
+      "side": 1,
+      "message": "\u003e Patch Set 5:\n\u003e \n\u003e Gold has detected about 3 new digest(s) on patchset 5.\n\u003e View them at https://pdfium-gold.skia.org/cl/gerrit/86511\n\nFYI, the core/fxge/win32/cwin32_platform.cpp change actually affects a few pixel tests that tell the test runner to set the font dir. I think that\u0027s going in the right direction anyway?",
+      "revId": "bd5cf5daed90c48b3369a7b48bbf642f387fd4e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
