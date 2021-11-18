@@ -71,22 +71,22 @@ TEST_F(FPDFFlattenEmbedderTest, BUG_861842) {
 
 TEST_F(FPDFFlattenEmbedderTest, BUG_889099) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kPageHash[] = "ee08bafede5faf129e866cbf173bb0f3";
+  static constexpr char kPageHash[] = "a66f4383530e3009330a1c227e5883ae";
   static constexpr char kFlattenedPageHash[] =
-      "e4b95ee3d450cf9ede225a2d16d101f0";
+      "8c7562dc3c226d947c7e0376ed74f4f4";
 #else
 #if defined(OS_WIN)
-  static constexpr char kPageHash[] = "8c6e1dab0a15072f2c9c0ca240fdc739";
+  static constexpr char kPageHash[] = "b6c55f7b26c32ab35d4a5e39427fa3b4";
   static constexpr char kFlattenedPageHash[] =
-      "9fb932ce7f370c0e68eec0a5d4d76271";
+      "d9b1b32a60f4e89997042a5235a3dc09";
 #elif defined(OS_APPLE)
-  static constexpr char kPageHash[] = "d43f54c60b325726392a558f861402a9";
+  static constexpr char kPageHash[] = "a017b5760779a1f510e4271058a709cb";
   static constexpr char kFlattenedPageHash[] =
-      "627f143efb920a5e7ddd311e963b9c66";
+      "2c14120a05cef9e5061a1f6f3077f569";
 #else
-  static constexpr char kPageHash[] = "51f35e80dbc8a69a024b5a02aa64d463";
+  static constexpr char kPageHash[] = "b6c55f7b26c32ab35d4a5e39427fa3b4";
   static constexpr char kFlattenedPageHash[] =
-      "ef01f57507662ec9aef7cc7cff92f96c";
+      "d9b1b32a60f4e89997042a5235a3dc09";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
