@@ -33,13 +33,13 @@ static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
 #else
 #if defined(OS_WIN)
 static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
-    "91c59c89f03be6c12a9af956b9955c47";
+    "7bd29af94a889ce69f848cfb44ff91b9";
 #elif defined(OS_APPLE)
 static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
-    "83e9f5222c4c959b0b63a5cd24f773a1";
+    "3eae3cfa9b4914c0b165f28bf30ecc4f";
 #else
 static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
-    "a24edc7740f1d6f76899652dcf825dea";
+    "7bd29af94a889ce69f848cfb44ff91b9";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
@@ -328,13 +328,13 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderTextWithColorScheme) {
 #else
 #if defined(OS_WIN)
   static constexpr char kContentWithTextChecksum[] =
-      "4245f32cc11748a00fd69852a5e5808d";
+      "5009998d2d5dedaa4a71c1be870a9224";
 #elif defined(OS_APPLE)
   static constexpr char kContentWithTextChecksum[] =
-      "754a742f10ce0926b766dc3dd47d1f64";
+      "6e59aadae5cd1202cb69d1d5e5445d19";
 #else
   static constexpr char kContentWithTextChecksum[] =
-      "f14d3caba5a973a28be8653aac9e4df3";
+      "5009998d2d5dedaa4a71c1be870a9224";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
@@ -498,13 +498,13 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
 #else
 #if defined(OS_WIN)
   static constexpr char kContentWithStampChecksum[] =
-      "2f91d6e380cc85b3f700bc7eb9bc0cef";
+      "c5c9816dae88735670048f1d710831e2";
 #elif defined(OS_APPLE)
   static constexpr char kContentWithStampChecksum[] =
-      "e2d9bef817d366021e5727d9350bde43";
+      "32e35a3d39403d13671eb0f057a3b316";
 #else
   static constexpr char kContentWithStampChecksum[] =
-      "d5518b1d9765fa62897a24d12244080f";
+      "c5c9816dae88735670048f1d710831e2";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 

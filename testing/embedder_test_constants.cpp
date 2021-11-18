@@ -19,13 +19,13 @@ const char kAnnotationStampWithApChecksum[] =
 #else
 #if defined(OS_WIN)
 const char kAnnotationStampWithApChecksum[] =
-    "6712a912af61cb45809e343f59b62432";
+    "9e41f0b3f7e4f6d393f57b404a4de394";
 #elif defined(OS_APPLE)
 const char kAnnotationStampWithApChecksum[] =
-    "80d7b6cc7b13a78d77a6151bc846e80b";
+    "17d2d76ba4352fbab8934ac35217229c";
 #else
 const char kAnnotationStampWithApChecksum[] =
-    "b42cef463483e668eaf4055a65e4f1f5";
+    "9e41f0b3f7e4f6d393f57b404a4de394";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
@@ -41,11 +41,11 @@ const char kBug890322Checksum[] = "6c674642154408e877d88c6c082d67e9";
 const char kHelloWorldChecksum[] = "66ecb880a880dd263ff495b28aeda0d1";
 #else
 #if defined(OS_WIN)
-const char kHelloWorldChecksum[] = "795b7ce1626931aa06af0fa23b7d80bb";
+const char kHelloWorldChecksum[] = "62b9261f546e2e31f4d56e9121189087";
 #elif defined(OS_APPLE)
-const char kHelloWorldChecksum[] = "c38b75e16a13852aee3b97d77a0f0ee7";
+const char kHelloWorldChecksum[] = "2f64de98fcd521d6688d7e2d98cb2b01";
 #else
-const char kHelloWorldChecksum[] = "2baa4c0e1758deba1b9c908e1fbd04ed";
+const char kHelloWorldChecksum[] = "62b9261f546e2e31f4d56e9121189087";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
@@ -53,11 +53,11 @@ const char kHelloWorldChecksum[] = "2baa4c0e1758deba1b9c908e1fbd04ed";
 const char kHelloWorldRemovedChecksum[] = "f87c63cbbc83fbb0f5b7b1d9e67448d0";
 #else
 #if defined(OS_WIN)
-const char kHelloWorldRemovedChecksum[] = "93db13099042bafefb3c22a165bad684";
+const char kHelloWorldRemovedChecksum[] = "8931c5a3547db48a0be22dd8f4d43c49";
 #elif defined(OS_APPLE)
-const char kHelloWorldRemovedChecksum[] = "572b1022bb3e8f43dc671162fc62cf7f";
+const char kHelloWorldRemovedChecksum[] = "0f23757ffaed0619ab04b1fa2538e5bd";
 #else
-const char kHelloWorldRemovedChecksum[] = "93dcc09055f87a2792c8e3065af99a1b";
+const char kHelloWorldRemovedChecksum[] = "8931c5a3547db48a0be22dd8f4d43c49";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
@@ -73,11 +73,11 @@ const char kRectanglesChecksum[] = "0a90de37f52127619c3dfb642b5fa2fe";
 const char kTextFormChecksum[] = "17efe329169f5b7681fbe939894a35de";
 #else
 #if defined(OS_WIN)
-const char kTextFormChecksum[] = "d3204faa62b607f0bd3893c9c22cabcb";
+const char kTextFormChecksum[] = "1683a3f5c394cdab4f0b73e4eafe2e88";
 #elif defined(OS_APPLE)
-const char kTextFormChecksum[] = "d485541d958fef08d24e8eca3e537023";
+const char kTextFormChecksum[] = "290a75a81e4efd53e736d68e6565326f";
 #else
-const char kTextFormChecksum[] = "b890950d4b9bc163b1a96797f3004b53";
+const char kTextFormChecksum[] = "1683a3f5c394cdab4f0b73e4eafe2e88";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
