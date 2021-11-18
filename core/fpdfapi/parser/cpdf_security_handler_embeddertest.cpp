@@ -136,17 +136,17 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPassword) {
 TEST_F(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 #if defined(OS_WIN)
-  const char kChecksum[] = "06fe5a97341b3e0f0a22ccc242fd9040";
+  const char kChecksum[] = "95a66039853f7986e028190b20620ce5";
 #else
-  const char kChecksum[] = "169c8e3acea8fba5a40f695bbbc96273";
+  const char kChecksum[] = "95a66039853f7986e028190b20620ce5";
 #endif  // defined(OS_WIN)
 #else
 #if defined(OS_WIN)
-  const char kChecksum[] = "041c2fb541c8907cc22ce101b686c79e";
+  const char kChecksum[] = "942b8c1b270948430e0952110f2c22fa";
 #elif defined(OS_APPLE)
-  const char kChecksum[] = "1ace03eb7c466c132aacf319cb9d69d3";
+  const char kChecksum[] = "a05a855034283d49c14ce2789048245e";
 #else
-  const char kChecksum[] = "7048dca58e2ed8f93339008b91e4eb4e";
+  const char kChecksum[] = "942b8c1b270948430e0952110f2c22fa";
 #endif
 #endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   {
