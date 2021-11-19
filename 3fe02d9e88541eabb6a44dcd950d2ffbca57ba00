@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dec4ef3_aa5d6bb1",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-19T02:32:59Z",
+      "side": 1,
+      "message": "The external font mapper can no longer find a substitute for Times-Bold. So it falls back to the internal substitute fonts. In this case, it\u0027s getting the data in `kFoxitSerifBoldFontData`. I\u0027m guessing it\u0027s because pdfium_embeddertest doesn\u0027t know to use third_party/test_fonts/fontconfig/fonts.conf?",
+      "parentUuid": "e18bfef0_551e514b",
+      "range": {
+        "startLine": 2836,
+        "startChar": 13,
+        "endLine": 2836,
+        "endChar": 26
+      },
+      "revId": "3fe02d9e88541eabb6a44dcd950d2ffbca57ba00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59964080_cf981a5e",
         "filename": "testing/embedder_test_environment.h",
         "patchSetId": 7
