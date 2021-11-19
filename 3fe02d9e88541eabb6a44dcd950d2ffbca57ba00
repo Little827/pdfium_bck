@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd72862f_6b1e3b26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-11-19T01:03:13Z",
+      "side": 1,
+      "message": "Font rendering on Linux and Windows is now the same in tests which gives a nice +208 -385 size change.  However, rendering on MacOS is still different.  Do you know why?",
+      "revId": "3fe02d9e88541eabb6a44dcd950d2ffbca57ba00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc210d0_973eb0c8",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-11-19T01:03:13Z",
+      "side": 1,
+      "message": "I actually have no idea where these \"Chrom\" fonts are coming from.  All I know is they\u0027re not coming from the system so at least they\u0027re deterministic.",
+      "range": {
+        "startLine": 2836,
+        "startChar": 13,
+        "endLine": 2836,
+        "endChar": 26
+      },
+      "revId": "3fe02d9e88541eabb6a44dcd950d2ffbca57ba00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59964080_cf981a5e",
+        "filename": "testing/embedder_test_environment.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-11-19T01:03:13Z",
+      "side": 1,
+      "message": "This is currently duplicated with PdfTestEnvironment.  Do you think it\u0027s worth extracting this and the SetUp() code into a base class like TestFontEnvironment?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "3fe02d9e88541eabb6a44dcd950d2ffbca57ba00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
