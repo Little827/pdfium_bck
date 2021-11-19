@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7256cde_573ce05f",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-19T02:45:11Z",
+      "side": 1,
+      "message": "Rather, core/fxge/cfx_folderfontinfo.cpp tries to map Times-Bold to Times New Roman Bold, but can no longer find Times New Roman Bold from the system.",
+      "parentUuid": "9dec4ef3_aa5d6bb1",
+      "range": {
+        "startLine": 2836,
+        "startChar": 13,
+        "endLine": 2836,
+        "endChar": 26
+      },
+      "revId": "3fe02d9e88541eabb6a44dcd950d2ffbca57ba00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59964080_cf981a5e",
         "filename": "testing/embedder_test_environment.h",
         "patchSetId": 7
