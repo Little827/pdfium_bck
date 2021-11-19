@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f638e82_2b0f58f6",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2021-11-19T21:28:31Z",
+      "side": 1,
+      "message": "Thanks for investigating.  PDFium doesn\u0027t use fontconfig so the mapping that we do in Chromium tests won\u0027t work here.\n\nWe\u0027d ideally like to use the ChromeOS core fonts which are open source fonts that are metrically-compatible with the monotype fonts.  The mapping we\u0027d like is:\nArial -\u003e Arimo\nCourier -\u003e Cousine\nTimes -\u003e Tinos\n\nWhat do you think is the best way of achieving this?  If we hardcode those fonts as fallbacks, would it matter if it affects production too?",
+      "parentUuid": "a7256cde_573ce05f",
+      "range": {
+        "startLine": 2836,
+        "startChar": 13,
+        "endLine": 2836,
+        "endChar": 26
+      },
+      "revId": "3fe02d9e88541eabb6a44dcd950d2ffbca57ba00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59964080_cf981a5e",
         "filename": "testing/embedder_test_environment.h",
         "patchSetId": 7
