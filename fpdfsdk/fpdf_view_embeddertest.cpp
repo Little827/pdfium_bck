@@ -1256,18 +1256,14 @@ TEST_F(FPDFViewEmbedderTest, MAYBE_RenderBug664284WithNoNativeText) {
 // FPDF_NO_NATIVETEXT flag only disables native text support on macOS, therefore
 // Windows and Linux rendering results remain the same as rendering with no
 // flags, while the macOS rendering result doesn't.
-#if defined(OS_WIN)
-  static const char kOriginalChecksum[] = "4671643caf99a1f4b6c0117ccb7bc9e7";
+#if defined(OS_APPLE)
+  static const char kOriginalChecksum[] = "4465a17db1a7ae07eb3dc1fdcccf3395";
   static const char kNoNativeTextChecksum[] =
-      "4671643caf99a1f4b6c0117ccb7bc9e7";
-#elif defined(OS_APPLE)
-  static const char kOriginalChecksum[] = "41ada106c6133b52ea45280eaaa38ae1";
-  static const char kNoNativeTextChecksum[] =
-      "d64d6b0fc39a8cefc43de39da5c60b17";
+      "f1fb45ef4b9a5ab03c21e0df82acf99a";
 #else
-  static const char kOriginalChecksum[] = "d64d6b0fc39a8cefc43de39da5c60b17";
+  static const char kOriginalChecksum[] = "f1fb45ef4b9a5ab03c21e0df82acf99a";
   static const char kNoNativeTextChecksum[] =
-      "d64d6b0fc39a8cefc43de39da5c60b17";
+      "f1fb45ef4b9a5ab03c21e0df82acf99a";
 #endif
 
   ASSERT_TRUE(OpenDocument("bug_664284.pdf"));
@@ -1388,24 +1384,18 @@ TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithFlags) {
                                 kHelloWorldChecksum);
 
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kLcdTextChecksum[] = "66ecb880a880dd263ff495b28aeda0d1";
+  static const char kLcdTextChecksum[] = "fdfa3ba6a0da9cba3e438932a9a4d9c0";
   static const char kNoSmoothtextChecksum[] =
-      "18156d2a55ae142c3870da7229650890";
-#else
-#if defined(OS_WIN)
-  static const char kLcdTextChecksum[] = "6e32f5a9c46e4e0730481081fe80617d";
-  static const char kNoSmoothtextChecksum[] =
-      "106cb0b6941feb3319e0e7391d02f61e";
+      "3aef5184a4a1a0eb5ccdad3f641692c2";
 #elif defined(OS_APPLE)
-  static const char kLcdTextChecksum[] = "c38b75e16a13852aee3b97d77a0f0ee7";
+  static const char kLcdTextChecksum[] = "2f64de98fcd521d6688d7e2d98cb2b01";
   static const char kNoSmoothtextChecksum[] =
-      "c38b75e16a13852aee3b97d77a0f0ee7";
+      "2f64de98fcd521d6688d7e2d98cb2b01";
 #else
-  static const char kLcdTextChecksum[] = "825e881f39e48254e64e2808987a6b8c";
+  static const char kLcdTextChecksum[] = "aac2abc8b7a8367eb72ac834fc06b8d9";
   static const char kNoSmoothtextChecksum[] =
-      "40740e0f219f6834581119d2ceb48911";
+      "8c16cfeef6e5e90441a7784366aed0d7";
 #endif
-#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
   TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_RENDER_NO_SMOOTHTEXT,
