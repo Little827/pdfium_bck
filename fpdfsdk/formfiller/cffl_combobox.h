@@ -9,7 +9,7 @@
 
 #include <memory>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "fpdfsdk/formfiller/cffl_textobject.h"
 
 class CPWL_ComboBox;

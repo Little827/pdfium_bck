@@ -9,8 +9,8 @@
 
 #include <memory>
 
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_memory.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 

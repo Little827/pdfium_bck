@@ -7,10 +7,10 @@
 #ifndef CORE_FXCRT_CSS_CFX_CSSDATA_H_
 #define CORE_FXCRT_CSS_CFX_CSSDATA_H_
 
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/css/cfx_css.h"
 #include "core/fxcrt/css/cfx_cssnumbervalue.h"
 #include "core/fxcrt/css/cfx_cssvalue.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxge/dib/fx_dib.h"
 
 class CFX_CSSData {

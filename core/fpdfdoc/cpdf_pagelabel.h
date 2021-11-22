@@ -7,7 +7,7 @@
 #ifndef CORE_FPDFDOC_CPDF_PAGELABEL_H_
 #define CORE_FPDFDOC_CPDF_PAGELABEL_H_
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 

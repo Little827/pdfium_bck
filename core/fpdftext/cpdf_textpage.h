@@ -12,10 +12,10 @@
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 

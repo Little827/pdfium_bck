@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 
 class CBC_PDF417ErrorCorrection {

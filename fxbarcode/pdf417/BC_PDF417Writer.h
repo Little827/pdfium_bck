@@ -11,8 +11,8 @@
 
 #include <vector>
 
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
-#include "core/fxcrt/fx_string.h"
 #include "fxbarcode/BC_TwoDimWriter.h"
 
 class CBC_PDF417Writer final : public CBC_TwoDimWriter {

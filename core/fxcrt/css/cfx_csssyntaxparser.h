@@ -9,9 +9,9 @@
 
 #include <stack>
 
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/css/cfx_cssinputtextbuf.h"
 #include "core/fxcrt/css/cfx_cssoutputtextbuf.h"
-#include "core/fxcrt/fx_string.h"
 
 class CFX_CSSSyntaxParser {
  public:

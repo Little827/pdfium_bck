@@ -7,7 +7,7 @@
 #ifndef XFA_FWL_CFWL_THEMETEXT_H_
 #define XFA_FWL_CFWL_THEMETEXT_H_
 
-#include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fde/cfde_data.h"
 #include "xfa/fwl/cfwl_themepart.h"
