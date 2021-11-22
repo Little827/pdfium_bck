@@ -135,6 +135,15 @@ size_t ToString(T value, int (*round_func)(T), char* buf) {
 
 }  // namespace
 
+namespace fxcrt {
+
+template std::vector<ByteString> Split<ByteString>(const ByteString& that,
+                                                   ByteString::CharType ch);
+template std::vector<WideString> Split<WideString>(const WideString& that,
+                                                   WideString::CharType ch);
+
+}  // namespace fxcrt
+
 float StringToFloat(ByteStringView strc) {
   return StringTo<float>(strc, kFractionScalesFloat,
                          pdfium::size(kFractionScalesFloat));
