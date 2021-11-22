@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfad6e2_e2bf444b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-22T20:42:04Z",
+      "side": 1,
+      "message": "PS1 is botched.\nPS2 is automated script result.\nPS3 fixes IWYU on top of PS2.",
+      "revId": "b2f1a15d0726401bc0c8d17b09defb19f98a9fbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
