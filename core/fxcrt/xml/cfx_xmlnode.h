@@ -7,8 +7,8 @@
 #ifndef CORE_FXCRT_XML_CFX_XMLNODE_H_
 #define CORE_FXCRT_XML_CFX_XMLNODE_H_
 
+#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_stream.h"
-#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/tree_node.h"
 
