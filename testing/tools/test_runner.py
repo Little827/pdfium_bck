@@ -15,7 +15,6 @@ import shutil
 import subprocess
 import sys
 
-# pylint: disable=relative-import
 import common
 import pngdiffer
 import suppressor
@@ -48,8 +47,8 @@ def TestOneFileParallel(this, test_case):
     input_filename, source_dir = test_case
     result = this.GenerateAndTest(input_filename, source_dir)
     return (result, input_filename, source_dir)
-  except KeyboardInterrupt:
-    raise KeyboardInterruptError()
+  except KeyboardInterrupt as e:
+    raise KeyboardInterruptError() from e
 
 
 def RunSkiaWrapper(this, input_chunk):
@@ -63,8 +62,8 @@ def RunSkiaWrapper(this, input_chunk):
       test_name, skia_success = this.RunSkia(img_path, multiprocessing_name)
       results.append((test_name, skia_success, input_filename))
     return results
-  except KeyboardInterrupt:
-    raise KeyboardInterruptError()
+  except KeyboardInterrupt as e:
+    raise KeyboardInterruptError() from e
 
 
 def DeleteFiles(files):
@@ -227,7 +226,7 @@ class TestRunner:
     try:
       with open(txt_path, "r") as txt_file:
         txt_data = txt_file.readlines()
-      if not len(txt_data):
+      if txt_data:
         return None
       sys.stdout.write('Unexpected output:\n')
       for line in txt_data:
