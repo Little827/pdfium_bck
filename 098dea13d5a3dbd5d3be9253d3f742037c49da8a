@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32d3c95_562f9877",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8731
+      },
+      "writtenOn": "2021-11-22T12:00:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure if they can be executed with Python3.. Could you help dry run this CL?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "098dea13d5a3dbd5d3be9253d3f742037c49da8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
