@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72a18ae0_4e7a9e1f",
+        "filename": "testing/resources/pixel/bug_665467_expected_skia.pdf.0.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-22T07:28:37Z",
+      "side": 1,
+      "message": "Updated Skia results for all platforms.",
+      "parentUuid": "7e803937_4231ff25",
+      "revId": "dd8f3000910fcae2d9b5b2ca45783dc5341f6a42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ff8082_1493a8ec",
         "filename": "testing/resources/pixel/bug_845697_expected_skia.pdf.0.png",
         "patchSetId": 2
