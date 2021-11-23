@@ -316,6 +316,9 @@ bug_679642.in * * noxfa *
 bug_679643.in * * noxfa *
 bug_735912.in * * noxfa *
 
+# TODO(pdfium:1753): Remove after associated bug is fixed
+util_printd.in win * * skia,skiapaths
+
 # xfa_specific
 
 # TODO(pdfium:1106): Remove after associated bug is fixed
