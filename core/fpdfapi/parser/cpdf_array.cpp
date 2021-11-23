@@ -88,6 +88,18 @@ CFX_Matrix CPDF_Array::GetMatrix() const {
                     GetNumberAt(3), GetNumberAt(4), GetNumberAt(5));
 }
 
+bool CPDF_Array::Contains(const CPDF_Object* pThat) const {
+  for (size_t i = 0; i < m_Objects.size(); ++i) {
+    if (m_Objects[i].Get() == pThat)
+      return true;
+  }
+  return false;
+}
+
+bool CPDF_Array::ContainsNonNull(const CPDF_Object* pThat) const {
+  return pThat && Contains(pThat);
+}
+
 CPDF_Object* CPDF_Array::GetObjectAt(size_t index) {
   if (index >= m_Objects.size())
     return nullptr;
