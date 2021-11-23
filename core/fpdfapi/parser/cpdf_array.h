@@ -50,8 +50,10 @@ class CPDF_Array final : public CPDF_Object {
   const CPDF_Stream* GetStreamAt(size_t index) const;
   CPDF_Array* GetArrayAt(size_t index);
   const CPDF_Array* GetArrayAt(size_t index) const;
-  CFX_Matrix GetMatrix() const;
   CFX_FloatRect GetRect() const;
+  CFX_Matrix GetMatrix() const;
+  bool Contains(const CPDF_Object* pThat) const;
+  bool ContainsNonNull(const CPDF_Object* pThat) const;
 
   // Creates object owned by the array, returns unowned pointer to it.
   // We have special cases for objects that can intern strings from
