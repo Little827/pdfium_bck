@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e14af0ff_ceda01fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8731
+      },
+      "writtenOn": "2021-11-23T03:33:06Z",
+      "side": 1,
+      "message": "Currently the policy seems to be:\n* if run_on_python3 \u003d true, skip_shebang_check\u003dTrue should be set as well.  https://crbug.com/1262354\n* input_api.canned_checks.GetPylint should specify Pylint\u0027s version to 2.6 or 2.7  https://crbug.com/1262297",
+      "parentUuid": "515ade39_4a24b067",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "098dea13d5a3dbd5d3be9253d3f742037c49da8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58549a4a_08750ff9",
         "filename": "testing/tools/test_runner.py",
         "patchSetId": 7
@@ -85,6 +109,24 @@
       "writtenOn": "2021-11-22T19:23:02Z",
       "side": 1,
       "message": "Given the bots don\u0027t like this, I think we should revert this chaneg to keep the script compatible with Python 2 for now. Once the scripts used by the bots can all run with Python 3, switch the bots to use Python 3 and then revisit this.",
+      "revId": "098dea13d5a3dbd5d3be9253d3f742037c49da8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af91f2d_ce131a55",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 8731
+      },
+      "writtenOn": "2021-11-23T03:33:06Z",
+      "side": 1,
+      "message": "Thanks! I removed this and added TODOs.",
+      "parentUuid": "58549a4a_08750ff9",
       "revId": "098dea13d5a3dbd5d3be9253d3f742037c49da8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -102,6 +144,24 @@
       "writtenOn": "2021-11-22T19:23:02Z",
       "side": 1,
       "message": "Did this invert the logic?",
+      "revId": "098dea13d5a3dbd5d3be9253d3f742037c49da8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3153dbd2_d9d5ed06",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 8731
+      },
+      "writtenOn": "2021-11-23T03:33:06Z",
+      "side": 1,
+      "message": "oops. sorry I forgot the not. fixed.",
+      "parentUuid": "6ba65a20_4f319bcc",
       "revId": "098dea13d5a3dbd5d3be9253d3f742037c49da8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
