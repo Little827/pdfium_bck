@@ -91,22 +91,6 @@ TEST(cpdf_array, InsertAt) {
     for (size_t i = 0; i < pdfium::size(expected); ++i)
       EXPECT_EQ(expected[i], arr->GetIntegerAt(i));
   }
-  {
-    // When the position to insert is beyond the upper bound,
-    // an element is inserted at that position while other unfilled
-    // positions have nullptr.
-    const int elems[] = {1, 2};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
-    for (size_t i = 0; i < pdfium::size(elems); ++i)
-      arr->InsertNewAt<CPDF_Number>(i, elems[i]);
-    arr->InsertNewAt<CPDF_Number>(10, 10);
-    ASSERT_EQ(11u, arr->size());
-    for (size_t i = 0; i < pdfium::size(elems); ++i)
-      EXPECT_EQ(elems[i], arr->GetIntegerAt(i));
-    for (size_t i = pdfium::size(elems); i < 10; ++i)
-      EXPECT_EQ(nullptr, arr->GetObjectAt(i));
-    EXPECT_EQ(10, arr->GetIntegerAt(10));
-  }
 }
 
 TEST(cpdf_array, Clone) {
