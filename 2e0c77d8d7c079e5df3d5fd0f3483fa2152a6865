@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8fcb8e9_7a657142",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-24T22:57:08Z",
+      "side": 1,
+      "message": "Anyways, I updated the comments to be more precise to guide those who would eliminate null checks.",
+      "revId": "2e0c77d8d7c079e5df3d5fd0f3483fa2152a6865",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
