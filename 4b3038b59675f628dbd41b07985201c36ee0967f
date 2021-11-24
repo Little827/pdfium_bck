@@ -52,6 +52,24 @@
       "parentUuid": "b130a2be_b423ef07",
       "revId": "4b3038b59675f628dbd41b07985201c36ee0967f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd3785f_09dbb108",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-11-24T19:29:44Z",
+      "side": 1,
+      "message": "Sure. I will add more comment on the bug.",
+      "parentUuid": "3672d59f_a97ebe1c",
+      "revId": "4b3038b59675f628dbd41b07985201c36ee0967f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
