@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "096d525a_46f11ab4",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-24T21:29:08Z",
+      "side": 1,
+      "message": "Maybe rephrase this since null objects, AKA CPDF_Null, are a thing. How about:\n\nFor valid keys in a dictionary, the corresponding values are never nullptr.",
+      "range": {
+        "startLine": 25,
+        "startChar": 30,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "fcb2967123d40ada011e1dddda4b6761ef2774ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
