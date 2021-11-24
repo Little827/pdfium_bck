@@ -22,6 +22,8 @@
 
 class CPDF_IndirectObjectHolder;
 
+// Dictionaries never contain nullptr objects for valid keys, but some
+// of the methods will return nullptr for non-existent keys.
 class CPDF_Dictionary final : public CPDF_Object {
  public:
   using const_iterator =
@@ -76,6 +78,11 @@ class CPDF_Dictionary final : public CPDF_Object {
   bool KeyExist(const ByteString& key) const;
   std::vector<ByteString> GetKeys() const;
 
+  // Set* functions invalidate iterators for the element with the key |key|.
+  // If |pObj| is null, then |key| is erased from the map. Otherwise, takes
+  // ownership of |pObj|, returns an unowned pointer to it.
+  CPDF_Object* SetFor(const ByteString& key, RetainPtr<CPDF_Object> pObj);
+
   // Creates a new object owned by the dictionary and returns an unowned
   // pointer to it. Prefer using these templates over calls to SetFor(),
   // since by creating a new object with no previous references, they ensure
@@ -98,10 +105,6 @@ class CPDF_Dictionary final : public CPDF_Object {
   // Convenience functions to convert native objects to array form.
   void SetRectFor(const ByteString& key, const CFX_FloatRect& rect);
   void SetMatrixFor(const ByteString& key, const CFX_Matrix& matrix);
-
-  // Set* functions invalidate iterators for the element with the key |key|.
-  // Takes ownership of |pObj|, returns an unowned pointer to it.
-  CPDF_Object* SetFor(const ByteString& key, RetainPtr<CPDF_Object> pObj);
 
   void ConvertToIndirectObjectFor(const ByteString& key,
                                   CPDF_IndirectObjectHolder* pHolder);
