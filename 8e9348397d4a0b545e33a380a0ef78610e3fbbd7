@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c5eaa9b_493ff0bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-11-24T22:39:27Z",
+      "side": 1,
+      "message": "Cleanup as a consequence of the other checks.",
+      "revId": "8e9348397d4a0b545e33a380a0ef78610e3fbbd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
