@@ -548,11 +548,7 @@ CFieldTree::Node* CFieldTree::FindNode(const WideString& full_name) {
 
 CPDF_InteractiveForm::CPDF_InteractiveForm(CPDF_Document* pDocument)
     : m_pDocument(pDocument), m_pFieldTree(std::make_unique<CFieldTree>()) {
-  CPDF_Dictionary* pRoot = m_pDocument->GetRoot();
-  if (!pRoot)
-    return;
-
-  m_pFormDict.Reset(pRoot->GetDictFor("AcroForm"));
+  m_pFormDict.Reset(m_pDocument->GetAcroForm());
   if (!m_pFormDict)
     return;
 

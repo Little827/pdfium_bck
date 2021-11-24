@@ -43,11 +43,7 @@ bool RaiseUnsupportedError(int nError) {
 
 // Use the existence of the XFA array as a signal for XFA forms.
 bool DocHasXFA(const CPDF_Document* doc) {
-  const CPDF_Dictionary* root = doc->GetRoot();
-  if (!root)
-    return false;
-
-  const CPDF_Dictionary* form = root->GetDictFor("AcroForm");
+  const CPDF_Dictionary* form = doc->GetAcroForm();
   return form && form->GetArrayFor("XFA");
 }
 

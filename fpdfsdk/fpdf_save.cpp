@@ -45,11 +45,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   if (!pPDFDocument)
     return false;
 
-  CPDF_Dictionary* pRoot = pPDFDocument->GetRoot();
-  if (!pRoot)
-    return false;
-
-  CPDF_Dictionary* pAcroForm = pRoot->GetDictFor("AcroForm");
+  CPDF_Dictionary* pAcroForm = pPDFDocument->GetAcroForm();
   if (!pAcroForm)
     return false;
 

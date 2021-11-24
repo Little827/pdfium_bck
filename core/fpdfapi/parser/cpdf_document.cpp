@@ -480,6 +480,16 @@ const CPDF_Array* CPDF_Document::GetFileIdentifier() const {
   return m_pParser ? m_pParser->GetIDArray() : nullptr;
 }
 
+const CPDF_Dictionary* CPDF_Document::GetAcroForm() const {
+  const CPDF_Dictionary* root = GetRoot();
+  return root ? root->GetDictFor("AcroForm") : nullptr;
+}
+
+CPDF_Dictionary* CPDF_Document::GetAcroForm() {
+  return const_cast<CPDF_Dictionary*>(
+      static_cast<const CPDF_Document*>(this)->GetAcroForm());
+}
+
 void CPDF_Document::DeletePage(int iPage) {
   CPDF_Dictionary* pPages = GetPagesDict();
   if (!pPages)

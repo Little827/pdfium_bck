@@ -58,11 +58,7 @@ bool IsValidAlertIcon(int type) {
 
 RetainPtr<CPDF_SeekableMultiStream> CreateXFAMultiStream(
     const CPDF_Document* pPDFDoc) {
-  const CPDF_Dictionary* pRoot = pPDFDoc->GetRoot();
-  if (!pRoot)
-    return nullptr;
-
-  const CPDF_Dictionary* pAcroForm = pRoot->GetDictFor("AcroForm");
+  const CPDF_Dictionary* pAcroForm = pPDFDoc->GetAcroForm();
   if (!pAcroForm)
     return nullptr;
 

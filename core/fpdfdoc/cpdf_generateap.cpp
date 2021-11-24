@@ -918,11 +918,7 @@ bool GenerateStrikeOutAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
                                      CPDF_Dictionary* pAnnotDict,
                                      FormType type) {
-  CPDF_Dictionary* pRootDict = pDoc->GetRoot();
-  if (!pRootDict)
-    return;
-
-  CPDF_Dictionary* pFormDict = pRootDict->GetDictFor("AcroForm");
+  CPDF_Dictionary* pFormDict = pDoc->GetAcroForm();
   if (!pFormDict)
     return;
 
