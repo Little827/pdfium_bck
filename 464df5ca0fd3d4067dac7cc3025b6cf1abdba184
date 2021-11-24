@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5c51c6_6242d822",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-24T22:18:55Z",
+      "side": 1,
+      "message": "Then?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "464df5ca0fd3d4067dac7cc3025b6cf1abdba184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0682568c_097aef5b",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-24T22:18:55Z",
+      "side": 1,
+      "message": "Leave as it was, since CFX_V8::NewNumber() takes int?",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 7
+      },
+      "revId": "464df5ca0fd3d4067dac7cc3025b6cf1abdba184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
