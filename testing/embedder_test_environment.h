@@ -5,6 +5,8 @@
 #ifndef TESTING_EMBEDDER_TEST_ENVIRONMENT_H_
 #define TESTING_EMBEDDER_TEST_ENVIRONMENT_H_
 
+#include <string>
+
 #include "public/fpdfview.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -20,6 +22,10 @@ class EmbedderTestEnvironment : public testing::Environment {
   // testing::Environment:
   void SetUp() override;
   void TearDown() override;
+
+ private:
+  std::string font_path_;
+  const char* font_paths_[2];
 };
 
 #endif  // TESTING_EMBEDDER_TEST_ENVIRONMENT_H_
