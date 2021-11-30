@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b9a943_231243b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-11-30T00:09:02Z",
+      "side": 1,
+      "message": "For this one, we decided to match Chromium\u0027s revision. Since Chromium doesn\u0027t have an auto-roller, it hasn\u0027t rolled forward yet. I would hold on to this CL for now and wait for Chromium to roll forward first.",
+      "revId": "e7ef7046736c6dc352615275fb05b15e412b750d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
