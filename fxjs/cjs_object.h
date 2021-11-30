@@ -7,11 +7,13 @@
 #ifndef FXJS_CJS_OBJECT_H_
 #define FXJS_CJS_OBJECT_H_
 
-#include "core/fxcrt/unowned_ptr.h"
-#include "fxjs/cjs_runtime.h"
+#include "core/fxcrt/observed_ptr.h"
 #include "third_party/base/span.h"
+#include "v8/include/v8-function-callback.h"
+#include "v8/include/v8-object.h"
 
 class CFXJS_Engine;
+class CJS_Runtime;
 
 struct JSConstSpec {
   enum Type { Number = 0, String = 1 };
@@ -48,9 +50,7 @@ class CJS_Object {
   CJS_Object(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
   virtual ~CJS_Object();
 
-  v8::Local<v8::Object> ToV8Object() {
-    return m_pV8Object.Get(GetRuntime()->GetIsolate());
-  }
+  v8::Local<v8::Object> ToV8Object();
   CJS_Runtime* GetRuntime() const { return m_pRuntime.Get(); }
 
  private:

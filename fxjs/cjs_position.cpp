@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_position.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_Position::ConstSpecs[] = {
     {"textOnly", JSConstSpec::Number, 0, 0},
     {"iconOnly", JSConstSpec::Number, 1, 0},
