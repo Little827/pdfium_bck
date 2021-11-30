@@ -5,11 +5,8 @@
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
 // CFXJS_ENGINE is a layer that makes it easier to define native objects in V8,
-// but has no knowledge of PDF-specific native objects. It could in theory be
-// used to implement other sets of native objects.
-
-// PDFium code should include this file rather than including V8 headers
-// directly.
+// but has no knowledge of PDF-specific native objects. It is used to implement
+// the (non-XFA) PDF objects and their bindings.
 
 #ifndef FXJS_CFXJS_ENGINE_H_
 #define FXJS_CFXJS_ENGINE_H_

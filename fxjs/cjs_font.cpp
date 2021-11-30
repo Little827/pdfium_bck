@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_font.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_Font::ConstSpecs[] = {
     {"Times", JSConstSpec::String, 0, "Times-Roman"},
     {"TimesB", JSConstSpec::String, 0, "Times-Bold"},

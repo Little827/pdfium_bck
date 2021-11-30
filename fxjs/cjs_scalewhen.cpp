@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_scalewhen.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_ScaleWhen::ConstSpecs[] = {
     {"always", JSConstSpec::Number, 0, 0},
     {"never", JSConstSpec::Number, 1, 0},
