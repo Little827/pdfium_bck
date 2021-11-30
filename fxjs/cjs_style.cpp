@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_style.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_Style::ConstSpecs[] = {
     {"ch", JSConstSpec::String, 0, "check"},
     {"cr", JSConstSpec::String, 0, "cross"},

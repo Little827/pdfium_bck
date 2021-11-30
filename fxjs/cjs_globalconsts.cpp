@@ -6,6 +6,7 @@
 
 #include "fxjs/cjs_globalconsts.h"
 
+#include "fxjs/cjs_runtime.h"
 #include "fxjs/fxv8.h"
 
 #define GLOBAL_STRING(rt, name, value)                              \

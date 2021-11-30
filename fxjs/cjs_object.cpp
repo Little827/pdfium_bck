@@ -7,6 +7,7 @@
 #include "fxjs/cjs_object.h"
 
 #include "fxjs/cfxjs_engine.h"
+#include "fxjs/cjs_runtime.h"
 
 // static
 void CJS_Object::DefineConsts(CFXJS_Engine* pEngine,
@@ -42,3 +43,7 @@ CJS_Object::CJS_Object(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime)
     : m_pV8Object(pObject->GetIsolate(), pObject), m_pRuntime(pRuntime) {}
 
 CJS_Object::~CJS_Object() = default;
+
+v8::Local<v8::Object> CJS_Object::ToV8Object() {
+  return m_pV8Object.Get(GetRuntime()->GetIsolate());
+}

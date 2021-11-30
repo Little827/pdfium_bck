@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_display.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_Display::ConstSpecs[] = {
     {"visible", JSConstSpec::Number, 0, 0},
     {"hidden", JSConstSpec::Number, 1, 0},

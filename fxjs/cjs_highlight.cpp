@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_highlight.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_Highlight::ConstSpecs[] = {
     {"n", JSConstSpec::String, 0, "none"},
     {"i", JSConstSpec::String, 0, "invert"},

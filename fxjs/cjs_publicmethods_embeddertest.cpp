@@ -10,6 +10,7 @@
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fxjs/cjs_event_context.h"
 #include "fxjs/cjs_publicmethods.h"
+#include "fxjs/cjs_runtime.h"
 #include "testing/external_engine_embedder_test.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
