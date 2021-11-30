@@ -5,7 +5,12 @@
 #include "testing/embedder_test_environment.h"
 
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_fontmapper.h"
+#include "core/fxge/cfx_fontmgr.h"
+#include "core/fxge/cfx_gemodule.h"
+#include "core/fxge/systemfontinfo_iface.h"
 #include "public/fpdfview.h"
+#include "testing/utils/path_service.h"
 #include "third_party/base/check.h"
 
 #ifdef PDF_ENABLE_V8
@@ -39,6 +44,9 @@ void EmbedderTestEnvironment::SetUp() {
   config.m_pUserFontPaths = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pPlatform = nullptr;
+
+  config.m_pUserFontPaths = test_fonts_.font_paths();
+
 #ifdef PDF_ENABLE_V8
   config.m_pIsolate = V8TestEnvironment::GetInstance()->isolate();
   config.m_pPlatform = V8TestEnvironment::GetInstance()->platform();
@@ -48,6 +56,8 @@ void EmbedderTestEnvironment::SetUp() {
 #endif  // PDF_ENABLE_V8
 
   FPDF_InitLibraryWithConfig(&config);
+
+  test_fonts_.InstallFontMapper();
 }
 
 void EmbedderTestEnvironment::TearDown() {

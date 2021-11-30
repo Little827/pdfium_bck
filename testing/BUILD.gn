@@ -7,6 +7,7 @@ import("../pdfium.gni")
 source_set("test_support") {
   testonly = true
   sources = [
+    "test_fonts.h", "test_fonts.cpp",
     "fx_string_testhelpers.cpp",
     "fx_string_testhelpers.h",
     "invalid_seekable_read_stream.cpp",
@@ -153,6 +154,7 @@ source_set("embedder_test_support") {
     "../:pdfium_public_headers",
     "../core/fdrm",
     "../core/fxcrt",
+    "../core/fxge",
     "../third_party:pdfium_base",
     "//testing/gmock",
     "//testing/gtest",
