@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_border.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_Border::ConstSpecs[] = {
     {"s", JSConstSpec::String, 0, "solid"},
     {"b", JSConstSpec::String, 0, "beveled"},

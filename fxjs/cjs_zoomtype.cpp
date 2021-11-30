@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_zoomtype.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_Zoomtype::ConstSpecs[] = {
     {"none", JSConstSpec::String, 0, "NoVary"},
     {"fitP", JSConstSpec::String, 0, "FitPage"},

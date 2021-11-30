@@ -6,6 +6,7 @@
 
 #include "fxjs/cjs_globalarrays.h"
 
+#include "fxjs/cjs_runtime.h"
 #include "third_party/base/cxx17_backports.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/v8-container.h"
