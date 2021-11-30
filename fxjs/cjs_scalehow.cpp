@@ -6,6 +6,8 @@
 
 #include "fxjs/cjs_scalehow.h"
 
+#include "fxjs/cfxjs_engine.h"
+
 const JSConstSpec CJS_ScaleHow::ConstSpecs[] = {
     {"proportional", JSConstSpec::Number, 0, 0},
     {"anamorphic", JSConstSpec::Number, 1, 0}};
