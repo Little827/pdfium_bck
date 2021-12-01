@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d62ee0_be699802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T17:52:20Z",
+      "side": 1,
+      "message": "Please give yourself credit and add yourself to the AUTHORS file.",
+      "revId": "94c658436b46671776bc4eb07c79a83777d8b4e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d1bd7f_db8c2cc8",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T17:52:20Z",
+      "side": 1,
+      "message": "nit: Keep the list ASCII sorted.",
+      "revId": "94c658436b46671776bc4eb07c79a83777d8b4e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
