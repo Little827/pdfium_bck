@@ -83,6 +83,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3969f81b_f7a13c30",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T23:10:57Z",
+      "side": 1,
+      "message": "Needed?",
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0245551_aefac28b",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T23:10:57Z",
+      "side": 1,
+      "message": "A lot of PDFium code wasn\u0027t originally written to the Google C++ Style Guide, so code style is all over the place in some files. For new files, it would be good to follow the style guide, so we have a chance at eventually reaching consistency.",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9352150e_8b64444b",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 3
@@ -106,6 +146,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bb7078c_575f6387",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T23:10:57Z",
+      "side": 1,
+      "message": "Use third_party/base/no_destructor.h instead?",
+      "parentUuid": "9352150e_8b64444b",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 23
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18c6242_de0842cd",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T23:10:57Z",
+      "side": 1,
+      "message": "Is there some scheme to this ordering? Should it just be sorted instead?",
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7471a6b1_a87d2aef",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 3
@@ -123,6 +204,47 @@
         "endLine": 571,
         "endChar": 24
       },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121b2959_bd81eed8",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T23:10:57Z",
+      "side": 1,
+      "message": "Also, std::string doesn\u0027t need to be explicitly initialized to an empty string.",
+      "parentUuid": "7471a6b1_a87d2aef",
+      "range": {
+        "startLine": 571,
+        "startChar": 14,
+        "endLine": 571,
+        "endChar": 24
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0caae63f_28a812b9",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T23:10:57Z",
+      "side": 1,
+      "message": "Just use a std::vector, reserve(elemCount), push_back(), and then read from it in reverse?",
       "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
