@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52361b25_8ed16302",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-12-01T06:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "981e327c_04dd068e",
+      "revId": "6405fd5160d2e18b7b7ae7f01108bb07856b74bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2130b7d2_f0bad93e",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-12-01T03:02:54Z",
       "side": 1,
       "message": "Mode `SkBlendMode::kModulate` was the default for the deleted method. Can we use that here?",
+      "range": {
+        "startLine": 2333,
+        "startChar": 52,
+        "endLine": 2333,
+        "endChar": 69
+      },
+      "revId": "6405fd5160d2e18b7b7ae7f01108bb07856b74bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09a902e_9b0ebebd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2333,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-12-01T06:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2130b7d2_f0bad93e",
       "range": {
         "startLine": 2333,
         "startChar": 52,
