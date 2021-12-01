@@ -16,6 +16,24 @@
       "message": "Mention crrev.com/935493 for reference.",
       "revId": "6405fd5160d2e18b7b7ae7f01108bb07856b74bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "981e327c_04dd068e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-12-01T02:46:21Z",
+      "side": 1,
+      "message": "Maybe also mention the following change removed a SkCanvas::drawPatch() methods. https://skia.googlesource.com/skia.git/+/90ef83af20d8fa5b7b8e8f6ebe3e2443ebf34f91",
+      "parentUuid": "a7ee24d9_3c9b212b",
+      "revId": "6405fd5160d2e18b7b7ae7f01108bb07856b74bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
