@@ -16,6 +16,24 @@
       "message": "Mention new V8 version: 9.8.128",
       "revId": "ca51431a887fead233502280eb565a79ccb1ccf5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4d5821_130dfae8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2021-12-01T23:02:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ddd1b3_573debea",
+      "revId": "ca51431a887fead233502280eb565a79ccb1ccf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
