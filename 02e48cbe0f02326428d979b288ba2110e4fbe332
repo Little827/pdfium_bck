@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b06aec7_de19c34b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "Thanks immensely.\n\nDo we know if the output from this is actually well-formed? If someone down the road were to change it so that it wasn\u0027t, how would we know?\n\nI worry a bit about the amount of string arithemetic and whether we will spend more time cobbling strings together than required. Since this is PDFium, it might make sense to write this in terms of ByteStringView and friends.\n\n",
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8618998a_4167a1f1",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "nit: should this be called pdf_xfa_fdp_fuzzer for consistency?",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d99ab48_968034ca",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "where does this file come from? Is there some new dependency required to get this to build?",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bba7d6a_95105447",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "Did you mean static, so that every time we call this, we dont convert all these c-strings into std::string, place them in a vector, pick one to return, and then throw away the whole thing?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781b4f90_75d9645d",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "nit: local not needed, just return xfa_script_funcs[elemSelector]; here and in several other places.",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179d9a25_cb7b0206",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "same, static here too and for each of these.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb8d1de_0cb2670e",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t want to generate these strings if not used?",
+      "range": {
+        "startLine": 581,
+        "startChar": 2,
+        "endLine": 584,
+        "endChar": 0
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c76e904_e676097e",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "nit: might be easier to just do several string +\u003d rather than replace to avoid searching for tokens.",
+      "range": {
+        "startLine": 677,
+        "startChar": 2,
+        "endLine": 677,
+        "endChar": 15
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d658ccd_3e65e881",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "nit: should be size_t",
+      "range": {
+        "startLine": 681,
+        "startChar": 9,
+        "endLine": 681,
+        "endChar": 22
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71919e6_6425b3ba",
+        "filename": "testing/fuzzers/pdf_xfa_fdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-01T18:28:30Z",
+      "side": 1,
+      "message": "curious why cast needed?",
+      "range": {
+        "startLine": 687,
+        "startChar": 19,
+        "endLine": 687,
+        "endChar": 49
+      },
+      "revId": "02e48cbe0f02326428d979b288ba2110e4fbe332",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
