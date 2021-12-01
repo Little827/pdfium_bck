@@ -34,6 +34,29 @@
       "parentUuid": "a7ee24d9_3c9b212b",
       "revId": "6405fd5160d2e18b7b7ae7f01108bb07856b74bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2130b7d2_f0bad93e",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2333,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-12-01T03:02:54Z",
+      "side": 1,
+      "message": "Mode `SkBlendMode::kModulate` was the default for the deleted method. Can we use that here?",
+      "range": {
+        "startLine": 2333,
+        "startChar": 52,
+        "endLine": 2333,
+        "endChar": 69
+      },
+      "revId": "6405fd5160d2e18b7b7ae7f01108bb07856b74bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
