@@ -72,6 +72,9 @@ if (is_clang) {
     "pdf_cpdf_tounicodemap_fuzzer",
     "pdf_nametree_fuzzer",
   ]
+  if (pdf_enable_xfa) {
+    fuzzer_list += [ "pdf_xfa_fdp_fuzzer" ]
+  }
 }
 
 # Note that this only compiles all the fuzzers, to prevent compile breakages.
@@ -265,6 +268,15 @@ if (pdf_enable_v8) {
         "../../xfa/fgas/layout",
         "//third_party/icu:icuuc",
       ]
+    }
+
+    pdfium_fuzzer("pdf_xfa_fdp_fuzzer") {
+      sources = [ "pdf_xfa_fdp_fuzzer.cc" ]
+      deps = [
+        ":fuzzer_helper",
+        "../../core/fxcrt",
+      ]
+      public_fuzzer = true
     }
 
     pdfium_fuzzer("pdf_cfgas_stringformatter_fuzzer") {
