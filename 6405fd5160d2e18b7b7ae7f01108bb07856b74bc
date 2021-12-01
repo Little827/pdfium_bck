@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ee24d9_3c9b212b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-01T02:05:57Z",
+      "side": 1,
+      "message": "Mention crrev.com/935493 for reference.",
+      "revId": "6405fd5160d2e18b7b7ae7f01108bb07856b74bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
