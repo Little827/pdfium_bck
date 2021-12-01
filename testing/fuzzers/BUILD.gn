@@ -48,6 +48,7 @@ if (pdf_enable_v8) {
       "pdf_formcalc_fuzzer",
       "pdfium_xfa_fuzzer",
       "pdfium_xfa_lpm_fuzzer",
+      "pdf_xfa_fdp",
     ]
     if (pdf_enable_xfa_bmp) {
       fuzzer_list += [ "pdf_codec_bmp_fuzzer" ]
@@ -265,6 +266,15 @@ if (pdf_enable_v8) {
         "../../xfa/fgas/layout",
         "//third_party/icu:icuuc",
       ]
+    }
+
+    pdfium_fuzzer("pdf_xfa_fdp") {
+      sources = [ "pdf_xfa_fdp.cc" ]
+      deps = [
+        ":fuzzer_helper",
+        "../../core/fxcrt",
+      ]
+      public_fuzzer = true
     }
 
     pdfium_fuzzer("pdf_cfgas_stringformatter_fuzzer") {
