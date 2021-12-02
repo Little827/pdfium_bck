@@ -1,0 +1,238 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639cb6d6_c3998919",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "This conditional should match line 75.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299bf2d2_f3454f7d",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "Not (no longer?) needed.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b453cc_d4541bc4",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "Maybe use pdfium::size() from third_party/base/cxx17_backports.h?",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b1e316_38346c9f",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "This code snippet gets repeated a few times. Refactor into a helper function?",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408a30ea_aa7a330e",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "XFA",
+      "range": {
+        "startLine": 479,
+        "startChar": 12,
+        "endLine": 479,
+        "endChar": 15
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c11b10_d5dfc13a",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "num_params",
+      "range": {
+        "startLine": 530,
+        "startChar": 6,
+        "endLine": 530,
+        "endChar": 15
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0303e9f4_307824dc",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "Use else if here and on line 540.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d3f605_639aaf60",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "No need for the local variable here, since it\u0027s immediately being returned.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7e76fa_3b346135",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "How about \"tag\" as the var name?",
+      "range": {
+        "startLine": 571,
+        "startChar": 18,
+        "endLine": 571,
+        "endChar": 21
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fa753f_b1b3feed",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "Fix variable naming style, and no need to initialize.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074240d7_fbc72a14",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "style",
+      "range": {
+        "startLine": 576,
+        "startChar": 12,
+        "endLine": 576,
+        "endChar": 26
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d675427_39e4416d",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T21:17:19Z",
+      "side": 1,
+      "message": "Alternatives:\n\nfor (auto it \u003d xml_stack.rbegin(); it !\u003d xml_stack.rend(); ++it)\n\nfor (const std::string\u0026 tag : pdfium::base::Reversed(xml_stack))",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
