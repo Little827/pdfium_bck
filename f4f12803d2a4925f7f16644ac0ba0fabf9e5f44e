@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e54b542_2c4c3ea5",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T22:51:12Z",
+      "side": 1,
+      "message": "To be clear, I meant the other way around. Both lines can just check pdf_enable_xfa.",
+      "parentUuid": "6a29ae05_1b7f9853",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "299bf2d2_f3454f7d",
         "filename": "testing/fuzzers/BUILD.gn",
         "patchSetId": 6
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Curious what that error was. I tried and it works fine for me locally.",
       "parentUuid": "22efc085_7a73240d",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09abe50c_4a020249",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-02T22:51:12Z",
+      "side": 1,
+      "message": "In the current patch set, maybe depend on ../../third_party:pdfium_base ?",
+      "parentUuid": "2292144e_75698128",
       "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
