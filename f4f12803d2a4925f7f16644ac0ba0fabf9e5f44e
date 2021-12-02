@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4258e652_45b06553",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:51:39Z",
+      "side": 1,
+      "message": "Notice that I build it from a full chromium checkout. The error I get is:\n\n[0/1] Regenerating ninja files                                                                                                   ERROR at //third_party/pdfium/testing/fuzzers/pdf_xfa_fdp_fuzzer.cc:12:11: Can\u0027t include this header from here.\n#include \"third_party/base/containers/adapters.h\"             \n          ^-------------------------------------                                         \nThe target:                                                            \n  //third_party/pdfium/testing/fuzzers:pdf_xfa_fdp_fuzzer_impl\nis including a file from the target:\n  //third_party/pdfium/third_party:pdfium_base\n                                  \nIt\u0027s usually best to depend directly on the destination target.\nIn some cases, the destination target is considered a subcomponent\nof an intermediate target. In this case, the intermediate target\nshould depend publicly on the destination to forward the ability\nto include headers.\n\nDependency chain (there may also be others):\n  //third_party/pdfium/testing/fuzzers:pdf_xfa_fdp_fuzzer_impl --\u003e\n  //third_party/pdfium/testing/fuzzers:fuzzer_helper --[private]--\u003e\n  //third_party/pdfium/third_party:pdfium_base\n\n___________________\nERROR at //third_party/pdfium/testing/fuzzers/pdf_xfa_fdp_fuzzer.cc:13:11: Can\u0027t include this header from here.\n#include \"third_party/base/cxx17_backports.h\"\n          ^---------------------------------\nThe target:\n  //third_party/pdfium/testing/fuzzers:pdf_xfa_fdp_fuzzer_impl\nis including a file from the target:\n  //third_party/pdfium/third_party:pdfium_base",
+      "parentUuid": "2292144e_75698128",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30b453cc_d4541bc4",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 6
