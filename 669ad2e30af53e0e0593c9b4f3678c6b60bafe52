@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5056df12_79eea638",
+        "filename": "AUTHORS",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9af9c9aa_53cf1c5b",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a07a4e1_cf97662a",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-12-01T22:49:32Z",
       "side": 1,
       "message": "similarly, I think this has to move to the section at 454.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 4
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7591dd97_c4d47d5f",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a07a4e1_cf97662a",
       "range": {
         "startLine": 273,
         "startChar": 0,
@@ -100,6 +148,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c633c93e_6ef9dbcb",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "No, solved",
+      "parentUuid": "3969f81b_f7a13c30",
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0245551_aefac28b",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 3
@@ -111,6 +177,30 @@
       "writtenOn": "2021-12-01T23:10:57Z",
       "side": 1,
       "message": "A lot of PDFium code wasn\u0027t originally written to the Google C++ Style Guide, so code style is all over the place in some files. For new files, it would be good to follow the style guide, so we have a chance at eventually reaching consistency.",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6476d724_9b733a30",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0245551_aefac28b",
       "range": {
         "startLine": 55,
         "startChar": 9,
@@ -170,6 +260,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2103a6a_328e8171",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "I changed this to use a char array instead. Warnings did happen without the annotation, but figured it could be simplified as it is now.",
+      "parentUuid": "2bb7078c_575f6387",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 23
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e18c6242_de0842cd",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 3
@@ -181,6 +295,24 @@
       "writtenOn": "2021-12-01T23:10:57Z",
       "side": 1,
       "message": "Is there some scheme to this ordering? Should it just be sorted instead?",
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e81682_b57c27ff",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e18c6242_de0842cd",
       "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -232,6 +364,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de99e748_e5573007",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121b2959_bd81eed8",
+      "range": {
+        "startLine": 571,
+        "startChar": 14,
+        "endLine": 571,
+        "endChar": 24
+      },
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0caae63f_28a812b9",
@@ -245,6 +401,24 @@
       "writtenOn": "2021-12-01T23:10:57Z",
       "side": 1,
       "message": "Just use a std::vector, reserve(elemCount), push_back(), and then read from it in reverse?",
+      "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1968b8_1e4a1637",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T20:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0caae63f_28a812b9",
       "revId": "669ad2e30af53e0e0593c9b4f3678c6b60bafe52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
