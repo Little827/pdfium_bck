@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a29ae05_1b7f9853",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "639cb6d6_c3998919",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "299bf2d2_f3454f7d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-02T21:17:19Z",
       "side": 1,
       "message": "Not (no longer?) needed.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22efc085_7a73240d",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "I get a compilation error if I remove it",
+      "parentUuid": "299bf2d2_f3454f7d",
       "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +94,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b738013c_f587b9ca",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b453cc_d4541bc4",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7b1e316_38346c9f",
@@ -75,6 +135,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e96ea9_c6aee77a",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7b1e316_38346c9f",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "408a30ea_aa7a330e",
@@ -88,6 +166,30 @@
       "writtenOn": "2021-12-02T21:17:19Z",
       "side": 1,
       "message": "XFA",
+      "range": {
+        "startLine": 479,
+        "startChar": 12,
+        "endLine": 479,
+        "endChar": 15
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e59fab5_fccb0ea2",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408a30ea_aa7a330e",
       "range": {
         "startLine": 479,
         "startChar": 12,
@@ -121,6 +223,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83bea46e_21fdcb28",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c11b10_d5dfc13a",
+      "range": {
+        "startLine": 530,
+        "startChar": 6,
+        "endLine": 530,
+        "endChar": 15
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0303e9f4_307824dc",
@@ -138,6 +264,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "048dd079_dde54e78",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0303e9f4_307824dc",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5d3f605_639aaf60",
@@ -151,6 +295,24 @@
       "writtenOn": "2021-12-02T21:17:19Z",
       "side": 1,
       "message": "No need for the local variable here, since it\u0027s immediately being returned.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9505919d_b9d8bf1b",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d3f605_639aaf60",
       "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -178,6 +340,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c943c6e5_e09d74e4",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c7e76fa_3b346135",
+      "range": {
+        "startLine": 571,
+        "startChar": 18,
+        "endLine": 571,
+        "endChar": 21
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21fa753f_b1b3feed",
@@ -191,6 +377,24 @@
       "writtenOn": "2021-12-02T21:17:19Z",
       "side": 1,
       "message": "Fix variable naming style, and no need to initialize.",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51945226_acb95e03",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21fa753f_b1b3feed",
       "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -218,6 +422,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a6253d_b88caf84",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "074240d7_fbc72a14",
+      "range": {
+        "startLine": 576,
+        "startChar": 12,
+        "endLine": 576,
+        "endChar": 26
+      },
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d675427_39e4416d",
@@ -231,6 +459,24 @@
       "writtenOn": "2021-12-02T21:17:19Z",
       "side": 1,
       "message": "Alternatives:\n\nfor (auto it \u003d xml_stack.rbegin(); it !\u003d xml_stack.rend(); ++it)\n\nfor (const std::string\u0026 tag : pdfium::base::Reversed(xml_stack))",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f0d475_2bf23e4d",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d675427_39e4416d",
       "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
