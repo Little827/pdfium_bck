@@ -65,7 +65,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_PDFFontMgr::FindFont(const ByteString& strPsName,
       return nullptr;
 
     RetainPtr<CPDF_Font> pPDFFont = pData->GetFont(pFontDict);
-    if (!pPDFFont || !pPDFFont->IsEmbedded())
+    if (!pPDFFont)
       return nullptr;
 
     return CFGAS_GEFont::LoadFont(pPDFFont);
