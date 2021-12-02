@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6cbb77b_1ffd04c2",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e54b542_2c4c3ea5",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "299bf2d2_f3454f7d",
@@ -157,6 +175,24 @@
       "side": 1,
       "message": "Your suggestion of pdfium_base worked!",
       "parentUuid": "4258e652_45b06553",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e4168e_5ccb305b",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea70d3bc_0d046ff2",
       "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
