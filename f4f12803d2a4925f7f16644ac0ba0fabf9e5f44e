@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea70d3bc_0d046ff2",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T22:55:57Z",
+      "side": 1,
+      "message": "Your suggestion of pdfium_base worked!",
+      "parentUuid": "4258e652_45b06553",
+      "revId": "f4f12803d2a4925f7f16644ac0ba0fabf9e5f44e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30b453cc_d4541bc4",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 6
