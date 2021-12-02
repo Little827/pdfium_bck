@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de48bb8b_cb493965",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T21:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d02371b5_603cac33",
+      "range": {
+        "startLine": 32,
+        "startChar": 21,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "7e4f87f1db3cd1e4a1e56bc610ee91e81c025daf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61eb483_3418bd3c",
@@ -64,6 +88,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d7d463_dee8a198",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T21:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61eb483_3418bd3c",
+      "range": {
+        "startLine": 481,
+        "startChar": 5,
+        "endLine": 481,
+        "endChar": 6
+      },
+      "revId": "7e4f87f1db3cd1e4a1e56bc610ee91e81c025daf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22463a81_c6831bf6",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-02T20:22:14Z",
       "side": 1,
       "message": "nit: let\u0027s just #ifdef this out so we don\u0027t have to worry about the portability of GETENV() or puct().",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 37
+      },
+      "revId": "7e4f87f1db3cd1e4a1e56bc610ee91e81c025daf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ebe99e_cb08de26",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-02T21:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22463a81_c6831bf6",
       "range": {
         "startLine": 632,
         "startChar": 0,
