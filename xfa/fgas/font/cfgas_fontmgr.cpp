@@ -172,11 +172,12 @@ std::deque<FX_FONTDESCRIPTOR> EnumGdiFonts(const wchar_t* pwsFaceName,
 
 }  // namespace
 
-CFGAS_FontMgr::CFGAS_FontMgr() : m_FontFaces(EnumGdiFonts(nullptr, 0xFEFF)) {}
+CFGAS_FontMgr::CFGAS_FontMgr() = default;
 
 CFGAS_FontMgr::~CFGAS_FontMgr() = default;
 
 bool CFGAS_FontMgr::EnumFonts() {
+  m_FontFaces = EnumGdiFonts(nullptr, 0xFEFF);
   return true;
 }
 
