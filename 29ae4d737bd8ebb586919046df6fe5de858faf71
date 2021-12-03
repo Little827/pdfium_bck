@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a956ac9e_ba5884d2",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-03T00:11:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this will make font substitution in the real world better or worse. I guess we can try and see.",
+      "revId": "29ae4d737bd8ebb586919046df6fe5de858faf71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9fc1459_b0bab612",
         "filename": "testing/BUILD.gn",
         "patchSetId": 20
