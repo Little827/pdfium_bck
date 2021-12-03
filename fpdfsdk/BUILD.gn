@@ -97,6 +97,7 @@ source_set("fpdfsdk") {
 
   if (pdf_enable_xfa) {
     deps += [
+      "../xfa/fgas/font",
       "../xfa/fxfa",
       "../xfa/fxfa/parser",
       "fpdfxfa",
