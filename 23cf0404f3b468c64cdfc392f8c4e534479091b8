@@ -73,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8802f550_cda71a5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T22:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee9bce50_3243dde8",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "71bf7a0c_8a3164f0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "I put it out in a header file. This will also be useful for the future as I am working on fuzzers that rely on other PDF templates.",
       "parentUuid": "3a68b583_408e183c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0c91e7_d5864838",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T22:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94fb5518_b0e5fb34",
       "range": {
         "startLine": 27,
         "startChar": 0,
