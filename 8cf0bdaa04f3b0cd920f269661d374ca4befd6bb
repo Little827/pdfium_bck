@@ -104,6 +104,24 @@
       "parentUuid": "94561880_3c6db40f",
       "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24fa644f_d77bd122",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T22:27:33Z",
+      "side": 1,
+      "message": "I\u0027m curious why though. This is going to throw away some valid cases. The comment here does a good job of explaining what the intention is, but there\u0027s a discrepency in the implementation. It may be helpful to add a comment to explain why it is implemented this way.",
+      "parentUuid": "421490aa_f9c2c327",
+      "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
