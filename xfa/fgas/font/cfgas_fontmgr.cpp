@@ -807,7 +807,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByUnicode(
 
   const FGAS_FONTUSB* x = FGAS_GetUnicodeBitField(wUnicode);
   FX_CodePage wCodePage = x ? x->wCodePage : FX_CodePage::kFailure;
-  uint16_t wBitField = x ? x->wBitField : 0x03E7;
+  uint16_t wBitField = x ? x->wBitField : 999;
   ByteString bsHash;
   if (wCodePage == FX_CodePage::kFailure) {
     bsHash =
