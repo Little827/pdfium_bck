@@ -48,6 +48,29 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9bce50_3243dde8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-06T22:20:33Z",
+      "side": 1,
+      "message": "nit: no space here so gerrit will auto-link it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "71bf7a0c_8a3164f0",
@@ -61,6 +84,29 @@
       "writtenOn": "2021-12-06T20:59:42Z",
       "side": 1,
       "message": "+me",
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a68b583_408e183c",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-06T22:20:33Z",
+      "side": 1,
+      "message": "Is there a way to de-duplicate this between this and the previous fuzzer?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
       "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -161,6 +207,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a27248ae_8e1b3f9e",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-06T22:20:33Z",
+      "side": 1,
+      "message": "nit: not really a kConstant (compile time constant) per our naming scheme, ptr is fine to use instead.",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2897a3ba_62d7b9af",
         "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
         "patchSetId": 2
@@ -190,6 +259,29 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2897a3ba_62d7b9af",
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe7d253_9fdccd7a",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-06T22:20:33Z",
+      "side": 1,
+      "message": "nit: overparenthesized.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 15
+      },
       "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
