@@ -16,6 +16,40 @@
       "message": "Fixed review requests",
       "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff47a8e_630c5165",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:43:59Z",
+      "side": 1,
+      "message": "So this is used to check all the angle brackets as a whole are balanced. In which case, sample input such as \"\u003c\u003cfoo\u003e\u003c\u003e\u003c\u003e\u003e\" will be considered valid. What do you think about a simple state machine to check that after an open angle bracket, the next angle bracket should be a close angle bracket, and one after that is open, and so on? Would that be a better filter?",
+      "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94561880_3c6db40f",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:43:59Z",
+      "side": 1,
+      "message": "Should this check for \"\u003cscript\" instead?",
+      "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
