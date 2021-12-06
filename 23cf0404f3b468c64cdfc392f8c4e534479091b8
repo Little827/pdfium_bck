@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94fb5518_b0e5fb34",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T22:39:51Z",
+      "side": 1,
+      "message": "I put it out in a header file. This will also be useful for the future as I am working on fuzzers that rely on other PDF templates.",
+      "parentUuid": "3a68b583_408e183c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a037926b_22bc1197",
         "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
         "patchSetId": 2
@@ -228,6 +252,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae92ae1b_499009e4",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T22:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a27248ae_8e1b3f9e",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2897a3ba_62d7b9af",
@@ -276,6 +324,30 @@
       "writtenOn": "2021-12-06T22:20:33Z",
       "side": 1,
       "message": "nit: overparenthesized.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8137b57f_5964889c",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T22:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe7d253_9fdccd7a",
       "range": {
         "startLine": 61,
         "startChar": 8,

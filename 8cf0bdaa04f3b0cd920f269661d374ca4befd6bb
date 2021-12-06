@@ -122,6 +122,24 @@
       "parentUuid": "421490aa_f9c2c327",
       "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "613089b9_37e3c9a3",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T22:39:51Z",
+      "side": 1,
+      "message": "What I had in mind was whether e.g. \"\u003c    script\" or other whitespace might influence tag recognition, i.e. would rather over-approximate the filtering. Another option is cases where \"Javascript\" or something like that are used to instantiate a script - notice I am not as much into the pdfium code or PDF in general, so I am not fully into the details of what will create a script. \n\nAre there any specific valid cases where avoiding anything with \"script\" will backfire in a serious way? For example, if it will only backfire in cases where \"script\" can be substitute for something else, e.g. a name of something, then I am happy to keep the over-approximated filtering.",
+      "parentUuid": "24fa644f_d77bd122",
+      "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
