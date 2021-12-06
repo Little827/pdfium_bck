@@ -140,6 +140,24 @@
       "parentUuid": "24fa644f_d77bd122",
       "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d20526a_35651145",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T23:28:08Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I can certainly accept that a fuzzer has some limitations and will occasionally reject valid fuzzing data.\n\nFrom your last fuzzer, I see \"scriptModel\" as the one tag that will get scripted. I haven\u0027t looked at the specs closely to see what else will get skipped.",
+      "parentUuid": "613089b9_37e3c9a3",
+      "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
