@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60f0ca7_14afaf2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2021-12-06T22:46:16Z",
+      "side": 1,
+      "message": "PTAL\n\nThe Chromium-side CL has landed, but not sure how long it will take to be pulled into PDFium.",
+      "revId": "6139074d6c646fdf188bf08e0ddb4779304daf6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
