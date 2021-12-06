@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb872f6_da15be55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:00:01Z",
+      "side": 1,
+      "message": "chromium:1276950",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "71bf7a0c_8a3164f0",
@@ -14,6 +37,103 @@
       "writtenOn": "2021-12-06T20:59:42Z",
       "side": 1,
       "message": "+me",
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a037926b_22bc1197",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:00:01Z",
+      "side": 1,
+      "message": "IsValidForFuzzing",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b3cafd_d25637f1",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:00:01Z",
+      "side": 1,
+      "message": "Not a true constant, so not \"kFoo\" naming.",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2897a3ba_62d7b9af",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:00:01Z",
+      "side": 1,
+      "message": "Include \u003ccctype\u003e",
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4999bc_dc9c7c6c",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:00:01Z",
+      "side": 1,
+      "message": "Lines 72-75 cam just become: return less_thans \u003d\u003d 0.",
+      "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70f0cb8_902515e1",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T21:00:01Z",
+      "side": 1,
+      "message": "Include \u003cstring\u003e.",
       "revId": "23cf0404f3b468c64cdfc392f8c4e534479091b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
