@@ -53,6 +53,15 @@ bool VerifyUnicode(const RetainPtr<CFGAS_GEFont>& pFont, wchar_t wcUnicode) {
 
 namespace {
 
+struct FX_FONTMATCHPARAMS {
+  const wchar_t* pwsFamily;
+  uint32_t dwFontStyles;
+  uint32_t dwUSB;
+  bool matchParagraphStyle;
+  wchar_t wUnicode;
+  FX_CodePage wCodePage;
+};
+
 int32_t GetSimilarityScore(FX_FONTDESCRIPTOR const* pFont,
                            uint32_t dwFontStyles) {
   int32_t iValue = 0;
@@ -331,7 +340,7 @@ uint16_t FX_GetCodePageBit(FX_CodePage wCodePage) {
 
 uint16_t FX_GetUnicodeBit(wchar_t wcUnicode) {
   const FGAS_FONTUSB* x = FGAS_GetUnicodeBitField(wcUnicode);
-  return x ? x->wBitField : 999;
+  return x ? x->wBitField : FGAS_FONTUSB::kNoBitField;
 }
 
 uint16_t ReadUInt16FromSpanAtOffset(pdfium::span<const uint8_t> data,
@@ -587,9 +596,9 @@ int32_t CalcPenalty(CFGAS_FontDescriptor* pInstalled,
     else
       nPenalty -= 60000;
   }
-  wBit = (wcUnicode == 0 || wcUnicode == 0xFFFE) ? static_cast<uint16_t>(999)
+  wBit = (wcUnicode == 0 || wcUnicode == 0xFFFE) ? FGAS_FONTUSB::kNoBitField
                                                  : FX_GetUnicodeBit(wcUnicode);
-  if (wBit != static_cast<uint16_t>(999)) {
+  if (wBit != FGAS_FONTUSB::kNoBitField) {
     DCHECK(wBit < 128);
     if ((pInstalled->m_dwUsb[wBit / 32] & (1 << (wBit % 32))) == 0)
       nPenalty += 0xFFFF;
@@ -765,11 +774,14 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByCodePage(
 
 #if defined(OS_WIN)
   const FX_FONTDESCRIPTOR* pFD =
-      FindFont(pszFontFamily, dwFontStyles, true, wCodePage, 999, 0);
+      FindFont(pszFontFamily, dwFontStyles, true, wCodePage,
+               FGAS_FONTUSB::kNoBitField, 0);
   if (!pFD)
-    pFD = FindFont(nullptr, dwFontStyles, true, wCodePage, 999, 0);
+    pFD = FindFont(nullptr, dwFontStyles, true, wCodePage,
+                   FGAS_FONTUSB::kNoBitField, 0);
   if (!pFD)
-    pFD = FindFont(nullptr, dwFontStyles, false, wCodePage, 999, 0);
+    pFD = FindFont(nullptr, dwFontStyles, false, wCodePage,
+                   FGAS_FONTUSB::kNoBitField, 0);
   if (!pFD)
     return nullptr;
 
@@ -839,9 +851,11 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFont(const wchar_t* pszFontFamily,
     return (*pFontArray)[0];
 
   const FX_FONTDESCRIPTOR* pFD =
-      FindFont(pszFontFamily, dwFontStyles, true, wCodePage, 999, 0);
+      FindFont(pszFontFamily, dwFontStyles, true, wCodePage,
+               FGAS_FONTUSB::kNoBitField, 0);
   if (!pFD)
-    pFD = FindFont(pszFontFamily, dwFontStyles, false, wCodePage, 999, 0);
+    pFD = FindFont(pszFontFamily, dwFontStyles, false, wCodePage,
+                   FGAS_FONTUSB::kNoBitField, 0);
   if (!pFD)
     return nullptr;
 
