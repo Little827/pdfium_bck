@@ -158,6 +158,24 @@
       "parentUuid": "613089b9_37e3c9a3",
       "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7880e0_6feb6daa",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T23:39:50Z",
+      "side": 1,
+      "message": "Sounds good, let\u0027s leave it as it is then. I will continue to keep an eye on coverage and observe if any tags are missed in the coverage reports!",
+      "parentUuid": "0d20526a_35651145",
+      "revId": "8cf0bdaa04f3b0cd920f269661d374ca4befd6bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

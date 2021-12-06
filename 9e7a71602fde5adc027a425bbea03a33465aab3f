@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84565aa_27eb3bc4",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T23:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80174c4f_1bb85e60",
+      "revId": "9e7a71602fde5adc027a425bbea03a33465aab3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3edf159_0e8f7637",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "449a8548_5bbbcfe5",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T23:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3edf159_0e8f7637",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "9e7a71602fde5adc027a425bbea03a33465aab3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c1ffd0b_09521ab7",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-12-06T23:28:08Z",
       "side": 1,
       "message": "!is_open",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "9e7a71602fde5adc027a425bbea03a33465aab3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bcb4e86_cbd56d33",
+        "filename": "testing/fuzzers/pdf_xfa_raw_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-06T23:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c1ffd0b_09521ab7",
       "range": {
         "startLine": 66,
         "startChar": 9,
