@@ -16,6 +16,23 @@
       "message": "Note: us \u003d\u003d me, most likely.",
       "revId": "a255d646fbdee2999ffc61fb66fe13656f18c990",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce502b2c_84f63b15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-06T19:59:13Z",
+      "side": 1,
+      "message": "I see 999 used in a bunch of places, can we replace them with a constant?",
+      "revId": "a255d646fbdee2999ffc61fb66fe13656f18c990",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
