@@ -26,14 +26,14 @@ class IFX_SeekableReadStream;
 
 #if defined(OS_WIN)
 struct FX_FONTSIGNATURE {
-  uint32_t fsUsb[4];
+  uint32_t fsUsb_[4];
   uint32_t fsCsb[2];
 };
 
 inline bool operator==(const FX_FONTSIGNATURE& left,
                        const FX_FONTSIGNATURE& right) {
-  return left.fsUsb[0] == right.fsUsb[0] && left.fsUsb[1] == right.fsUsb[1] &&
-         left.fsUsb[2] == right.fsUsb[2] && left.fsUsb[3] == right.fsUsb[3] &&
+  return left.fsUsb_[0] == right.fsUsb_[0] && left.fsUsb_[1] == right.fsUsb_[1] &&
+         left.fsUsb_[2] == right.fsUsb_[2] && left.fsUsb_[3] == right.fsUsb_[3] &&
          left.fsCsb[0] == right.fsCsb[0] && left.fsCsb[1] == right.fsCsb[1];
 }
 
