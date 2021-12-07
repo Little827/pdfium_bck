@@ -567,21 +567,23 @@ bool CXFA_FMDotAccessorExpression::ToJavaScript(CFX_WideTextBuf* js,
 
   *js << "pfm_rt.dot_acc(";
 
-  CFX_WideTextBuf tempExp1;
   CXFA_FMSimpleExpression* exp1 = GetFirstExpression();
   if (exp1) {
-    if (!exp1->ToJavaScript(&tempExp1, ReturnType::kInferred))
-      return false;
+    if (exp1->GetOperatorToken() == TOKidentifier) {
+      CFX_WideTextBuf tempExp1;
+      if (!exp1->ToJavaScript(&tempExp1, ReturnType::kInferred))
+        return false;
 
-    *js << tempExp1;
+      *js << tempExp1 << ", \"" << tempExp1;
+    } else {
+      // Avoid copying long expressions here, see https://crbug.com/1274018.
+      if (!exp1->ToJavaScript(js, ReturnType::kInferred))
+        return false;
+      *js << ", \"";
+    }
   } else {
-    *js << "null";
+    *js << "null, \"";
   }
-  *js << ", \"";
-
-  if (exp1 && exp1->GetOperatorToken() == TOKidentifier)
-    *js << tempExp1;
-
   *js << "\", ";
   if (GetOperatorToken() == TOKdotscream)
     *js << "\"#" << m_wsIdentifier << "\", ";
