@@ -39,6 +39,30 @@
       },
       "revId": "08bb1eb8ef6719d9e99b13e43fbd65e2b158ac26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32846d00_c4adcbf7",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-07T00:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "520f2972_882039b8",
+      "range": {
+        "startLine": 97,
+        "startChar": 32,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "08bb1eb8ef6719d9e99b13e43fbd65e2b158ac26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
