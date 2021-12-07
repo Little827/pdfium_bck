@@ -19,6 +19,7 @@
 #include "core/fxcrt/cfx_datetime.h"
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_random.h"
 #include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_class.h"
@@ -4178,16 +4179,11 @@ void CFXJSE_FormCalcContext::Space(
     return;
   }
 
-  int32_t count = std::max(0, ValueToInteger(info.GetIsolate(), argOne));
-  std::ostringstream spaceString;
-  int32_t index = 0;
-  while (index < count) {
-    spaceString << ' ';
-    index++;
-  }
-  spaceString << '\0';
+  int count = std::max(0, ValueToInteger(info.GetIsolate(), argOne));
+  std::vector<char, FxAllocAllocator<char>> space_string(count, ' ');
   info.GetReturnValue().Set(fxv8::NewStringHelper(
-      info.GetIsolate(), ByteStringView(spaceString.str().c_str())));
+      info.GetIsolate(),
+      ByteStringView(space_string.data(), space_string.size())));
 }
 
 // static
