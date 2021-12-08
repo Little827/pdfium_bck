@@ -530,7 +530,15 @@ std::string GenXfacript(FuzzedDataProvider* data_provider) {
   int num_params = data_provider->ConsumeIntegralInRange(0, 3);
   // 0 case we do nothing.
   if (num_params == 1) {
-    xfa_string += GenXfaScriptParam(data_provider);
+    // Fix Space parameter to avoid any large memory allocations that
+    // significantly slows down the fuzzer.
+    if (xfa_string == "Space(") {
+      xfa_string +=
+          "\"" + std::to_string(data_provider->ConsumeIntegralInRange(0, 100)) +
+          "\"";
+    } else {
+      xfa_string += GenXfaScriptParam(data_provider);
+    }
   } else if (num_params == 2) {
     xfa_string += GenXfaScriptParam(data_provider);
     xfa_string += ",";
