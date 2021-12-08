@@ -4179,7 +4179,12 @@ void CFXJSE_FormCalcContext::Space(
     return;
   }
 
+  constexpr int kMaxSpaces = 15654908;
   int count = std::max(0, ValueToInteger(info.GetIsolate(), argOne));
+  if (count > kMaxSpaces) {
+    ToFormCalcContext(pThis)->ThrowException(L"String too long.");
+    return;
+  }
   std::vector<char, FxAllocAllocator<char>> space_string(count, ' ');
   info.GetReturnValue().Set(
       fxv8::NewStringHelper(info.GetIsolate(), ByteStringView(space_string)));
