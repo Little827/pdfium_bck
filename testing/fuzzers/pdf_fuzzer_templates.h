@@ -27,4 +27,25 @@ trailer
 <</Root 1 0 R /Size 31>>
 %%EOF)";
 
+// Template PDF file for XDP-spec fuzzing. There are three unknowns in 2 0 obj,
+// which are to be subtitued by the types of objects 6, 7 and 8.
+const char kSimpleXDPPdfTemplate[] = R""(%PDF-1.7
+%âãÏÓ
+1 0 obj
+<</AcroForm 2 0 R /Extensions
+  <</ADBE <</BaseVersion /1.7 /ExtensionLevel 8>>>> /NeedsRendering true
+  /Pages 3 0 R /Type /Catalog>>
+endobj
+2 0 obj
+<</XFA
+  [(preamble) 5 0 R ($1) 6 0 R ($2) 7 0 R ($3) 8 0 R
+  (postamble) 9 0 R]>>
+endobj
+3 0 obj
+<</Count 1 /Kids [4 0 R] /Type /Pages>>
+endobj
+4 0 obj
+<</MediaBox [0 0 612 792] /Parent 2 0 R /Type /Page>>
+endobj)"";
+
 #endif  // TESTING_FUZZERS_PDF_FUZZER_TEMPLATES_H_
