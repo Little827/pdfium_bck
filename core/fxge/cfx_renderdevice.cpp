@@ -1061,6 +1061,14 @@ bool CFX_RenderDevice::DrawNormalText(int nChars,
     }
   }
 
+#if defined(_SKIA_SUPPORT_)
+  if (GetDeviceType() == DeviceType::kDisplay) {
+    m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
+                                    font_size, fill_color, text_options);
+    return true;
+  }
+#endif
+
   if (GetDeviceType() != DeviceType::kDisplay) {
     if (ShouldDrawDeviceText(pFont, options) &&
         m_pDeviceDriver->DrawDeviceText(nChars, pCharPos, pFont, mtText2Device,
