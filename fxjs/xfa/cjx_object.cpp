@@ -171,35 +171,29 @@ CJS_Result CJX_Object::RunMethod(
 
 void CJX_Object::ThrowTooManyOccurrencesException(v8::Isolate* pIsolate,
                                                   const WideString& obj) const {
-  ThrowException(
-      pIsolate, WideString::FromASCII("The element [") + obj +
-                    WideString::FromASCII(
-                        "] has violated its allowable number of occurrences."));
+  ThrowException(pIsolate,
+                 L"The element [" + obj +
+                     L"] has violated its allowable number of occurrences.");
 }
 
 void CJX_Object::ThrowInvalidPropertyException(v8::Isolate* pIsolate) const {
-  ThrowException(pIsolate,
-                 WideString::FromASCII("Invalid property set operation."));
+  ThrowException(pIsolate, L"Invalid property set operation.");
 }
 
 void CJX_Object::ThrowIndexOutOfBoundsException(v8::Isolate* pIsolate) const {
-  ThrowException(pIsolate,
-                 WideString::FromASCII("Index value is out of bounds."));
+  ThrowException(pIsolate, L"Index value is out of bounds.");
 }
 
 void CJX_Object::ThrowParamCountMismatchException(
     v8::Isolate* pIsolate,
     const WideString& method) const {
-  ThrowException(
-      pIsolate,
-      WideString::FromASCII("Incorrect number of parameters calling method '") +
-          method + WideString::FromASCII("'."));
+  ThrowException(pIsolate, L"Incorrect number of parameters calling method '" +
+                               method + L"'.");
 }
 
 void CJX_Object::ThrowArgumentMismatchException(v8::Isolate* pIsolate) const {
   ThrowException(pIsolate,
-                 WideString::FromASCII(
-                     "Argument mismatch in property or function argument."));
+                 L"Argument mismatch in property or function argument.");
 }
 
 void CJX_Object::ThrowException(v8::Isolate* pIsolate,
