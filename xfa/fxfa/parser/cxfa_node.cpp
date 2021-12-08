@@ -128,6 +128,7 @@
 #include "xfa/fxfa/parser/cxfa_defaultui.h"
 #include "xfa/fxfa/parser/cxfa_delete.h"
 #include "xfa/fxfa/parser/cxfa_delta.h"
+#include "xfa/fxfa/parser/cxfa_deltas.h"
 #include "xfa/fxfa/parser/cxfa_desc.h"
 #include "xfa/fxfa/parser/cxfa_destination.h"
 #include "xfa/fxfa/parser/cxfa_digestmethod.h"
@@ -5911,6 +5912,10 @@ CXFA_Node* CXFA_Node::Create(CXFA_Document* doc,
       break;
     case XFA_Element::Delete:
       node = cppgc::MakeGarbageCollected<CXFA_Delete>(
+          doc->GetHeap()->GetAllocationHandle(), doc, packet);
+      break;
+    case XFA_Element::Deltas:
+      node = cppgc::MakeGarbageCollected<CXFA_Deltas>(
           doc->GetHeap()->GetAllocationHandle(), doc, packet);
       break;
     case XFA_Element::DigestMethod:
