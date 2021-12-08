@@ -14,11 +14,16 @@
 #include "third_party/base/cxx17_backports.h"
 
 class PDFiumXFAFuzzer : public PDFiumFuzzerHelper {
+ private:
+  FuzzedDataProvider* fdp = nullptr;
+
  public:
   PDFiumXFAFuzzer() = default;
   ~PDFiumXFAFuzzer() override = default;
 
   int GetFormCallbackVersion() const override { return 2; }
+
+  void SetFdp(FuzzedDataProvider* param_fdp) { fdp = param_fdp; }
 
   // Return false if XFA doesn't load as otherwise we're duplicating the work
   // done by the non-xfa fuzzer.
@@ -27,6 +32,122 @@ class PDFiumXFAFuzzer : public PDFiumFuzzerHelper {
     if (form_type != FORMTYPE_XFA_FULL && form_type != FORMTYPE_XFA_FOREGROUND)
       return false;
     return FPDF_LoadXFA(doc);
+  }
+
+  void FormActionHandler(FPDF_FORMHANDLE form,
+                         FPDF_DOCUMENT doc,
+                         FPDF_PAGE page) override {
+    if (fdp == nullptr) {
+      return;
+    }
+    char local_buf[50];
+    int number_of_calls = fdp->ConsumeIntegralInRange<int>(0, 20);
+    for (int i = 0; i < number_of_calls; i++) {
+      int selector = fdp->ConsumeIntegralInRange<int>(0, 20);
+      switch (selector) {
+        case 0:
+          FORM_OnLButtonUp(form, page, fdp->ConsumeIntegral<int>(),
+                           fdp->ConsumeIntegral<int>(),
+                           fdp->ConsumeIntegral<int>());
+          break;
+        case 1:
+          FORM_OnRButtonUp(form, page, fdp->ConsumeIntegral<int>(),
+                           fdp->ConsumeIntegral<int>(),
+                           fdp->ConsumeIntegral<int>());
+          break;
+        case 2:
+          FORM_OnLButtonDown(form, page, fdp->ConsumeIntegral<int>(),
+                             fdp->ConsumeIntegral<int>(),
+                             fdp->ConsumeIntegral<int>());
+          break;
+        case 3:
+          FORM_OnRButtonDown(form, page, fdp->ConsumeIntegral<int>(),
+                             fdp->ConsumeIntegral<int>(),
+                             fdp->ConsumeIntegral<int>());
+          break;
+        case 4:
+          FORM_OnChar(form, page, fdp->ConsumeIntegral<int>(), 0);
+          break;
+        case 5:
+          FORM_OnKeyDown(form, page, fdp->ConsumeIntegral<int>(),
+                         fdp->ConsumeIntegral<int>());
+          break;
+        case 6:
+          FORM_OnKeyUp(form, page, fdp->ConsumeIntegral<int>(),
+                       fdp->ConsumeIntegral<int>());
+          break;
+        case 7:
+          FORM_OnLButtonDoubleClick(form, page, fdp->ConsumeIntegral<int>(),
+                                    fdp->ConsumeIntegral<int>(),
+                                    fdp->ConsumeIntegral<int>());
+          break;
+        case 8:
+          FORM_OnMouseMove(form, page, 0, fdp->ConsumeIntegral<int>(),
+                           fdp->ConsumeIntegral<int>());
+          break;
+        case 9: {
+          const FS_POINTF point = {fdp->ConsumeFloatingPoint<float>(),
+                                   fdp->ConsumeFloatingPoint<float>()};
+          FORM_OnMouseWheel(form, page, fdp->ConsumeIntegral<int>(), &point,
+                            fdp->ConsumeIntegral<int>(),
+                            fdp->ConsumeIntegral<int>());
+          break;
+        }
+        case 10:
+          FORM_OnFocus(form, page, 0, fdp->ConsumeIntegral<int>(),
+                       fdp->ConsumeIntegral<int>());
+          break;
+        case 11: {
+          if (FORM_CanUndo(form, page)) {
+            FORM_Undo(form, page);
+          }
+          break;
+        }
+        case 12: {
+          FORM_SelectAllText(form, page);
+          break;
+        }
+        case 13: {
+          if (FORM_CanRedo(form, page)) {
+            FORM_Redo(form, page);
+          }
+          break;
+        }
+        case 14: {
+          FPDF_ANNOTATION annot = nullptr;
+          int page_index = -2;
+          FORM_GetFocusedAnnot(form, &page_index, &annot);
+          if (annot != nullptr) {
+            FORM_SetFocusedAnnot(form, annot);
+          }
+          break;
+        }
+        case 15:
+          FORM_SetIndexSelected(form, page, fdp->ConsumeIntegral<int>(),
+                                fdp->ConsumeBool());
+          break;
+        case 16:
+          FORM_IsIndexSelected(form, page, fdp->ConsumeIntegral<int>());
+          break;
+        case 17:
+          FPDFPage_HasFormFieldAtPoint(form, page, fdp->ConsumeIntegral<int>(),
+                                       fdp->ConsumeIntegral<int>());
+          break;
+        case 18:
+          FPDFPage_FormFieldZOrderAtPoint(form, page,
+                                          fdp->ConsumeIntegral<int>(),
+                                          fdp->ConsumeIntegral<int>());
+          break;
+        case 19:
+          FORM_GetSelectedText(form, page, local_buf, 50);
+          break;
+        case 20:
+          FORM_GetFocusedText(form, page, local_buf, 50);
+          break;
+        default:
+          break;
+      }
+    }
   }
 };
 
@@ -612,6 +733,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 #endif
 
   PDFiumXFAFuzzer fuzzer;
+  fuzzer.SetFdp(&data_provider);
   fuzzer.RenderPdf(xfa_final_str.c_str(), xfa_final_str.size());
   return 0;
 }

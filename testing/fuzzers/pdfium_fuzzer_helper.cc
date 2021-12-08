@@ -212,6 +212,8 @@ bool PDFiumFuzzerHelper::RenderPage(FPDF_DOCUMENT doc,
   if (!page)
     return false;
 
+  FormActionHandler(form, doc, page.get());
+
   ScopedFPDFTextPage text_page(FPDFText_LoadPage(page.get()));
   FORM_OnAfterLoadPage(page.get(), form);
   FORM_DoPageAAction(page.get(), form, FPDFPAGE_AACTION_OPEN);
