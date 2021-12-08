@@ -71,8 +71,7 @@ void CJX_LayoutPseudoModel::ready(v8::Isolate* pIsolate,
   if (!pNotify)
     return;
   if (bSetting) {
-    ThrowException(pIsolate,
-                   WideString::FromASCII("Unable to set ready value."));
+    ThrowException(pIsolate, L"Unable to set ready value.");
     return;
   }
 
@@ -94,7 +93,7 @@ CJS_Result CJX_LayoutPseudoModel::DoHWXYInternal(
   if (!pNode)
     return CJS_Result::Success();
 
-  WideString unit = WideString::FromASCII("pt");
+  WideString unit(L"pt");
   if (params.size() >= 2) {
     WideString tmp_unit = runtime->ToWideString(params[1]);
     if (!tmp_unit.IsEmpty())

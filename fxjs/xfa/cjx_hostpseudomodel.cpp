@@ -132,8 +132,7 @@ void CJX_HostPseudoModel::language(v8::Isolate* pIsolate,
     return;
 
   if (bSetting) {
-    ThrowException(pIsolate,
-                   WideString::FromASCII("Unable to set language value."));
+    ThrowException(pIsolate, L"Unable to set language value.");
     return;
   }
   ByteString lang = pNotify->GetAppProvider()->GetLanguage().ToUTF8();
@@ -150,8 +149,7 @@ void CJX_HostPseudoModel::numPages(v8::Isolate* pIsolate,
 
   CXFA_FFDoc* hDoc = pNotify->GetFFDoc();
   if (bSetting) {
-    ThrowException(pIsolate,
-                   WideString::FromASCII("Unable to set numPages value."));
+    ThrowException(pIsolate, L"Unable to set numPages value.");
     return;
   }
   *pValue = fxv8::NewNumberHelper(pIsolate, hDoc->CountPages());
@@ -166,8 +164,7 @@ void CJX_HostPseudoModel::platform(v8::Isolate* pIsolate,
     return;
 
   if (bSetting) {
-    ThrowException(pIsolate,
-                   WideString::FromASCII("Unable to set platform value."));
+    ThrowException(pIsolate, L"Unable to set platform value.");
     return;
   }
   ByteString plat = pNotify->GetAppProvider()->GetPlatform().ToUTF8();
@@ -221,8 +218,7 @@ void CJX_HostPseudoModel::variation(v8::Isolate* pIsolate,
     return;
 
   if (bSetting) {
-    ThrowException(pIsolate,
-                   WideString::FromASCII("Unable to set variation value."));
+    ThrowException(pIsolate, L"Unable to set variation value.");
     return;
   }
   *pValue = fxv8::NewStringHelper(pIsolate, "Full");
@@ -233,8 +229,7 @@ void CJX_HostPseudoModel::version(v8::Isolate* pIsolate,
                                   bool bSetting,
                                   XFA_Attribute eAttribute) {
   if (bSetting) {
-    ThrowException(pIsolate,
-                   WideString::FromASCII("Unable to set version value."));
+    ThrowException(pIsolate, L"Unable to set version value.");
     return;
   }
   *pValue = fxv8::NewStringHelper(pIsolate, "11");

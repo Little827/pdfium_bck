@@ -125,11 +125,8 @@ CXFA_FMLexer::Token::~Token() = default;
 
 #ifndef NDEBUG
 WideString CXFA_FMLexer::Token::ToDebugString() const {
-  WideString str = WideString::FromASCII("type = ");
-  str += WideString::FromASCII(tokenStrings[m_type]);
-  str += WideString::FromASCII(", string = ");
-  str += m_string;
-  return str;
+  return L"type = " + WideString::FromASCII(tokenStrings[m_type]) +
+         L", string = " + m_string;
 }
 #endif  // NDEBUG
 
