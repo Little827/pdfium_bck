@@ -34,6 +34,24 @@
       "parentUuid": "fa195a9c_c5f12d3e",
       "revId": "b443c81636f5fce97c5789c3a5a6503a35b8a817",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc86cbe_3702d9b3",
+        "filename": "xfa/fxfa/parser/cxfa_deltas.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-09T01:21:44Z",
+      "side": 1,
+      "message": "The XFA spec I\u0027m looking at says the parent class of deltas is list. The parent class of items is node.",
+      "parentUuid": "ba26c784_365f66c5",
+      "revId": "b443c81636f5fce97c5789c3a5a6503a35b8a817",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
