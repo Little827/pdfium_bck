@@ -47,6 +47,30 @@
       },
       "revId": "93374b73dc648df31024234f197aee7511245ca9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4215a0be_b16db1d4",
+        "filename": "fxjs/cjs_result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T20:11:17Z",
+      "side": 1,
+      "message": "Ok, if you want this, I\u0027ve +1\u0027d. Note that making references to what is essentially a ref-counted type (under the covers) runs risks either as args or results.  We accept it in the downward direction (args_, since there\u0027s reason to believe the referred-to object stays alive by the action of some previous frame, but when returning such a reference, its harder to be sure it doesn\u0027t go away unexpectedly.",
+      "parentUuid": "ff9fcf56_6696748f",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "93374b73dc648df31024234f197aee7511245ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
