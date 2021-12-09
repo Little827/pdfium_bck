@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d193629_e58dc155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T01:30:28Z",
+      "side": 1,
+      "message": "I think I deliberately did the opposite of this to squeeze out 0s from our string literals in the binary.",
+      "revId": "b89ca76c4527b7fa0a9b13e768bbd7ec7c98ca20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
