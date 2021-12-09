@@ -41,6 +41,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edabc901_509a0982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-09T01:32:10Z",
+      "side": 1,
+      "message": "I actually tried writing a similar fuzzer once, but maybe the base fuzzer I had wasn\u0027t very good, so adding inputs to that didn\u0027t seem to do much.",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93040180_f23e71e2",
@@ -158,6 +175,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "805d2857_2f1f5501",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-09T01:32:10Z",
+      "side": 1,
+      "message": "Create an enum and use ConsumeEnum()?",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f88a0a6_3325f681",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-09T01:32:10Z",
+      "side": 1,
+      "message": "If we know the page\u0027s dimensions, we can better target that with the x/y coordinates. e.g. if the width is 200, generate [-1, 201] here.",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "844dc101_130e3f6b",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 2
@@ -198,6 +249,23 @@
         "endLine": 120,
         "endChar": 19
       },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be72c7da_545fe50c",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-09T01:32:10Z",
+      "side": 1,
+      "message": "Not sure how useful it is to give the already focused annot focus.",
       "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
