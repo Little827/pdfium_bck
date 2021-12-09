@@ -16,6 +16,24 @@
       "message": "Back before the beginning, this was a CJX_List, but that doesn\u0027t seem right as that class is not descendent from CJX_Node. I\u0027ve modelled this on the \u003citems\u003e class and its \u003citem\u003e, hopefully \u003cdeltas\u003e and \u003cdelta\u003e aren\u0027t too different.",
       "revId": "b443c81636f5fce97c5789c3a5a6503a35b8a817",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba26c784_365f66c5",
+        "filename": "xfa/fxfa/parser/cxfa_deltas.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:23:33Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/21110/7/xfa/fxfa/parser/cxfa_node_statics.cpp throws some shade on this idea though.",
+      "parentUuid": "fa195a9c_c5f12d3e",
+      "revId": "b443c81636f5fce97c5789c3a5a6503a35b8a817",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
