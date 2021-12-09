@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "18d88a3e_29193fc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0fbea9b_bf4a7f4f",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e339c903_2954677f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db069f5_0178bad1",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93040180_f23e71e2",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361375c5_50d4fc7b",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-12-09T00:48:08Z",
       "side": 1,
       "message": "nit: If we want to write this in google style (and I think we should), private members end in _ , as in fdp_",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa27b2e7_f9513327",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361375c5_50d4fc7b",
       "range": {
         "startLine": 18,
         "startChar": 22,
@@ -127,6 +199,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2340818b_03dcf17c",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e5b02a_b32d8bf1",
+      "range": {
+        "startLine": 26,
+        "startChar": 34,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a15820f4_9fe80982",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-12-09T00:48:08Z",
       "side": 1,
       "message": "nit: just if (!fdp_) {",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d40a75_c3e6670f",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a15820f4_9fe80982",
       "range": {
         "startLine": 40,
         "startChar": 8,
@@ -175,6 +295,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0236515_e83ce998",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Agreed - it\u0027s a fairly cheap operation so I put in a max of 250!",
+      "parentUuid": "b87aca4c_92d4a572",
+      "range": {
+        "startLine": 44,
+        "startChar": 62,
+        "endLine": 44,
+        "endChar": 64
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "805d2857_2f1f5501",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 2
@@ -186,6 +330,24 @@
       "writtenOn": "2021-12-09T01:32:10Z",
       "side": 1,
       "message": "Create an enum and use ConsumeEnum()?",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a26272_6e434502",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "805d2857_2f1f5501",
       "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -209,6 +371,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af6c26de_53ac747a",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "I think in this context I would prefer to have an over-approximation. Later, this can be migrated to other fuzzers, including a fuzzer where we will retrict the scope.\nIn general, quite a bit of the work I am doing atm can be used by other fuzzers, e.g. the user interaction and also the creation of XFA trees. My plan is to refactor some of this out in the future so the logic can be used and applied by other fuzzers.",
+      "parentUuid": "9f88a0a6_3325f681",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "844dc101_130e3f6b",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 2
@@ -220,6 +400,30 @@
       "writtenOn": "2021-12-09T00:48:08Z",
       "side": 1,
       "message": "nit: another style rule is that if any of the cases have braces, they all should have braces.",
+      "range": {
+        "startLine": 88,
+        "startChar": 16,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5f3e109_33bf3729",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844dc101_130e3f6b",
       "range": {
         "startLine": 88,
         "startChar": 16,
@@ -253,6 +457,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6219990c_86e14254",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908f8b4f_517b11a0",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be72c7da_545fe50c",
@@ -272,6 +500,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35606324_fb2d4224",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Interesting, am happy to lave it as is and monitor progress in coverage in terms of what the effects are.",
+      "parentUuid": "be72c7da_545fe50c",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11e11ef7_01d379c9",
         "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
         "patchSetId": 2
@@ -283,6 +529,30 @@
       "writtenOn": "2021-12-09T00:48:08Z",
       "side": 1,
       "message": "not sure if we want to do this here, or at line 220.  I\u0027m guessing 220 where the page is fully open.",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 43
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8094405_b483b889",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T11:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e11ef7_01d379c9",
       "range": {
         "startLine": 215,
         "startChar": 2,
