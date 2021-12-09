@@ -23,6 +23,30 @@
       },
       "revId": "93374b73dc648df31024234f197aee7511245ca9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9fcf56_6696748f",
+        "filename": "fxjs/cjs_result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-09T01:35:29Z",
+      "side": 1,
+      "message": "Yes, but when all the callers just pass the returned result into JSFormatErrorString(), and JSFormatErrorString() takes a const WideString\u0026 param, we might as well pass it through as a const-ref the entire way.",
+      "parentUuid": "1301f9d5_fbc6b980",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "93374b73dc648df31024234f197aee7511245ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
