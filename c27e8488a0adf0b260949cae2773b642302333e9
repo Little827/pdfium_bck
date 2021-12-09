@@ -24,6 +24,47 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc5fce0_a9a07191",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70fff649_cd4af92d",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "669d573e_667b9ca0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "Fixed most of the stuff Tom, I left a few comments on others - let me know!",
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "098d561f_fcbb1c4b",
@@ -37,6 +78,30 @@
       "writtenOn": "2021-12-09T00:56:48Z",
       "side": 1,
       "message": "nit: constexpr",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb47d6d_4a7fef2b",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "098d561f_fcbb1c4b",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -72,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43b695ff_09bf9bcc",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "Do you mind if I leave this as is? I can always add more PDF templates down the line",
+      "parentUuid": "86f9b8eb_3c4f5255",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "766bd5f4_cd644328",
         "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
         "patchSetId": 1
@@ -83,6 +172,30 @@
       "writtenOn": "2021-12-09T00:56:48Z",
       "side": 1,
       "message": "nit: else after return not needed and should be removed per style.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a33af34_a00633e9",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "766bd5f4_cd644328",
       "range": {
         "startLine": 54,
         "startChar": 4,
@@ -118,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27badf09_bc18f618",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "I do $ git cl format - this is post git cl format. Would you want me to change it still?",
+      "parentUuid": "ef9f1da0_fcb88a71",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 82
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56c1ad81_389c801d",
         "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
         "patchSetId": 1
@@ -129,6 +266,30 @@
       "writtenOn": "2021-12-09T00:56:48Z",
       "side": 1,
       "message": "where do these constants come from? They break if we tweak things, no?",
+      "range": {
+        "startLine": 124,
+        "startChar": 27,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161f3da2_996537a9",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "I have now fixed it so the constants are gone",
+      "parentUuid": "56c1ad81_389c801d",
       "range": {
         "startLine": 124,
         "startChar": 27,
@@ -164,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5989d27a_da820d83",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "I used a macro!",
+      "parentUuid": "50783de1_8a6fbb21",
+      "range": {
+        "startLine": 139,
+        "startChar": 10,
+        "endLine": 140,
+        "endChar": 40
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71e5b7bb_3b5fe1e8",
         "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
         "patchSetId": 1
@@ -175,6 +360,30 @@
       "writtenOn": "2021-12-09T00:56:48Z",
       "side": 1,
       "message": "nit: .",
+      "range": {
+        "startLine": 168,
+        "startChar": 9,
+        "endLine": 168,
+        "endChar": 10
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9c6b10_54fd0195",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-09T13:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71e5b7bb_3b5fe1e8",
       "range": {
         "startLine": 168,
         "startChar": 9,
