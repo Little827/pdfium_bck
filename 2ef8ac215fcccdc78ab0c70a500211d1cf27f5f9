@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fbea9b_bf4a7f4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "nit: no space.",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e339c903_2954677f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "I like it.",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93040180_f23e71e2",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "nit: prefer private members come last per style rules.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361375c5_50d4fc7b",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "nit: If we want to write this in google style (and I think we should), private members end in _ , as in fdp_",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e5b02a_b32d8bf1",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "nit: having made the member named fdp_, we can call the arg fdf and write\n  fdp_ \u003d fdp;\n  \nwhich is a really common naming patter throughout the code.",
+      "range": {
+        "startLine": 26,
+        "startChar": 34,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15820f4_9fe80982",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "nit: just if (!fdp_) {",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87aca4c_92d4a572",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "I think we\u0027d be better off being click-happy, as hitting a gadget is hit or miss based on random coords.  Maybe 100?",
+      "range": {
+        "startLine": 44,
+        "startChar": 62,
+        "endLine": 44,
+        "endChar": 64
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844dc101_130e3f6b",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "nit: another style rule is that if any of the cases have braces, they all should have braces.",
+      "range": {
+        "startLine": 88,
+        "startChar": 16,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908f8b4f_517b11a0",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "nit: just if (annot) {",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e11ef7_01d379c9",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T00:48:08Z",
+      "side": 1,
+      "message": "not sure if we want to do this here, or at line 220.  I\u0027m guessing 220 where the page is fully open.",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 43
+      },
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
