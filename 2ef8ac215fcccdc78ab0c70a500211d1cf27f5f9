@@ -413,6 +413,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d135f37f_396e8cfe",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T20:19:46Z",
+      "side": 1,
+      "message": "Except that a page is typically something like 512 units across, and given uniform ints in the 0..2G, only something like one in a million results will be on the page where it might do something (did I count bits right?).",
+      "parentUuid": "af6c26de_53ac747a",
+      "revId": "2ef8ac215fcccdc78ab0c70a500211d1cf27f5f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "844dc101_130e3f6b",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 2
