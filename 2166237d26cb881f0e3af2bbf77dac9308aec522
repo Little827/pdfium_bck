@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20391e65_264b835d",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T23:52:22Z",
+      "side": 1,
+      "message": "This is OK, but generally we prefer functions so we don\u0027t worry about multi-evaluation etc. And we trust the compiler to give essentially equivalent code doing inline optimizations.",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "2166237d26cb881f0e3af2bbf77dac9308aec522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64c4e8c_1f2cf8b6",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-09T23:52:22Z",
+      "side": 1,
+      "message": "want to add the usual ifdef + dumper (I\u0027ve used the dumper in the other fuzzer already to figure something out locally).",
+      "revId": "2166237d26cb881f0e3af2bbf77dac9308aec522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
