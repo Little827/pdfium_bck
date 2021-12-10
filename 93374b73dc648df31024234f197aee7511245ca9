@@ -88,6 +88,30 @@
       },
       "revId": "93374b73dc648df31024234f197aee7511245ca9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6540cc2_5dd891b3",
+        "filename": "fxjs/cjs_result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T23:08:30Z",
+      "side": 1,
+      "message": "Doesn\u0027t that risk exist any time something is returned by pointer/reference?",
+      "parentUuid": "4215a0be_b16db1d4",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "93374b73dc648df31024234f197aee7511245ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
