@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "772d700d_58030b8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T10:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b05809aa_cf6e0149",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ec8456_56ecc38c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-10T00:23:22Z",
       "side": 1,
       "message": "Are we planning on leaving these modifiers as 0 always, or changing them later to consume another int, or should we change them now?",
+      "range": {
+        "startLine": 46,
+        "startChar": 39,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a572727_15738dd6",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T10:30:36Z",
+      "side": 1,
+      "message": "Let\u0027s consume another int! Fixed.",
+      "parentUuid": "c1ec8456_56ecc38c",
       "range": {
         "startLine": 46,
         "startChar": 39,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82930b61_f7be42f2",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T10:30:36Z",
+      "side": 1,
+      "message": "I would prefer to leave them as is for now and then generalise the user interaction code later such that it can be used by other fuzzers.",
+      "parentUuid": "c47df18a_d64a892e",
+      "range": {
+        "startLine": 47,
+        "startChar": 61,
+        "endLine": 47,
+        "endChar": 71
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30224623_13774481",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 7
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-10T00:33:21Z",
       "side": 1,
       "message": "the more I think about this, the more I think it needs to be bounded to page geometry. Currently, many pages are 612x792 so for such a page, the chances of X being on the page are 612/5500 \u003d .111 and the chances of Y being on the page are .144 so the chances of both of them being on the page as required to hit a widget is .016, or about 61 page clicks for every on page one.",
+      "range": {
+        "startLine": 54,
+        "startChar": 67,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4d46e8_1abab4e5",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T10:30:36Z",
+      "side": 1,
+      "message": "This is a common theme in fuzzing though - that the probability of getting something right seems impractical. However, you mentioned a uniform distribution previously and this is not really how fuzzing work. At the core it\u0027s an evolutionary algorithm that over time will generate more and more useful inputs, and the same principle applies here. The way this plays into this given context is I would prefer for the fuzzer to discover these inputs itself. Finally, notice that the fuzzer engines will have a ton of instrumentation that it uses to identify \"what is a good mutation\", which helps in these types of situations. With that said, let me reduce the size even more so we get a bit of both worlds.\n\nWhat we really need in the medium-term is to use the logic of user-interaction in various other fuzzers and perform the user-interaction within various boundaries. Cover all cases. As such, in the future I would like to generalise this code and apply it elsewhere, but, before then it would be great to test it out on clusterfuzz and observe the effects.",
+      "parentUuid": "30224623_13774481",
       "range": {
         "startLine": 54,
         "startChar": 67,
@@ -116,6 +212,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1556aa0e_35ec6a02",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T10:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e8968d6_f1b2d3c6",
+      "range": {
+        "startLine": 153,
+        "startChar": 54,
+        "endLine": 153,
+        "endChar": 56
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81620cc9_e9df7f33",
@@ -133,6 +253,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7485ea7c_c50a55b5",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T10:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81620cc9_e9df7f33",
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aca4d31c_cdc4da29",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-12-10T00:23:22Z",
       "side": 1,
       "message": "Omitting the trailing comma is a subtle hint that this is the last item.",
+      "range": {
+        "startLine": 192,
+        "startChar": 31,
+        "endLine": 192,
+        "endChar": 32
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c670b48_23ad8c82",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T10:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca4d31c_cdc4da29",
       "range": {
         "startLine": 192,
         "startChar": 31,
