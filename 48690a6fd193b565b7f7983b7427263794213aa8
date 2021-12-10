@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05809aa_cf6e0149",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T00:23:22Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ec8456_56ecc38c",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T00:23:22Z",
+      "side": 1,
+      "message": "Are we planning on leaving these modifiers as 0 always, or changing them later to consume another int, or should we change them now?",
+      "range": {
+        "startLine": 46,
+        "startChar": 39,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47df18a_d64a892e",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T00:23:22Z",
+      "side": 1,
+      "message": "Would it make sense to convert these to constants, so they can be adjusted once if needed?",
+      "range": {
+        "startLine": 47,
+        "startChar": 61,
+        "endLine": 47,
+        "endChar": 71
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8968d6_f1b2d3c6",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T00:23:22Z",
+      "side": 1,
+      "message": "sizeof(local_buf)",
+      "range": {
+        "startLine": 153,
+        "startChar": 54,
+        "endLine": 153,
+        "endChar": 56
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81620cc9_e9df7f33",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T00:23:22Z",
+      "side": 1,
+      "message": "Move below the enum.\n\nThis usually comes naturally, as one would first have the define the enum before declaring a variable of that type.",
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca4d31c_cdc4da29",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T00:23:22Z",
+      "side": 1,
+      "message": "Omitting the trailing comma is a subtle hint that this is the last item.",
+      "range": {
+        "startLine": 192,
+        "startChar": 31,
+        "endLine": 192,
+        "endChar": 32
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
