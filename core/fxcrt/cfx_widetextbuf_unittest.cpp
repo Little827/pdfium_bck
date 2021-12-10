@@ -17,12 +17,6 @@ TEST(WideTextBuf, EmptyBuf) {
   EXPECT_TRUE(wtb.MakeString().IsEmpty());
 }
 
-TEST(WideTextBuf, OperatorLtLt) {
-  CFX_WideTextBuf wtb;
-  wtb << 42 << 3.14 << "clams" << L"\u208c\u208e";
-  EXPECT_EQ(wtb.MakeString(), L"423.14clams\u208c\u208e");
-}
-
 TEST(WideTextBuf, Deletion) {
   CFX_WideTextBuf wtb;
   wtb << L"ABCDEFG";
