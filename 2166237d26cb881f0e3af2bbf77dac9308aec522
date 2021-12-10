@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca7fa0c_c45f7138",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T00:01:53Z",
+      "side": 1,
+      "message": "I switched to a function now! It actually helped spot a bug: the `xref_0` should be substituted for `offset`.",
+      "parentUuid": "20391e65_264b835d",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "2166237d26cb881f0e3af2bbf77dac9308aec522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a64c4e8c_1f2cf8b6",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-09T23:52:22Z",
       "side": 1,
       "message": "want to add the usual ifdef + dumper (I\u0027ve used the dumper in the other fuzzer already to figure something out locally).",
+      "revId": "2166237d26cb881f0e3af2bbf77dac9308aec522",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe35249_b2224f3e",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T00:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a64c4e8c_1f2cf8b6",
       "revId": "2166237d26cb881f0e3af2bbf77dac9308aec522",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
