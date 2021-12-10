@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30224623_13774481",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-10T00:33:21Z",
+      "side": 1,
+      "message": "the more I think about this, the more I think it needs to be bounded to page geometry. Currently, many pages are 612x792 so for such a page, the chances of X being on the page are 612/5500 \u003d .111 and the chances of Y being on the page are .144 so the chances of both of them being on the page as required to hit a widget is .016, or about 61 page clicks for every on page one.",
+      "range": {
+        "startLine": 54,
+        "startChar": 67,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e8968d6_f1b2d3c6",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 7
