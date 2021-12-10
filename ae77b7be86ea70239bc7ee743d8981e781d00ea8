@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00dd279_4c7c2ff0",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "Calling this an object is slightly on the vague side. Can we emphasize that it\u0027s a Pages object? Similarly, `kSimpleMediabox` is a Page.",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6813d7_8899ef03",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "As used in the code, the parent is the XFA data. Shouldn\u0027t that be the Pages object, AKA 3 0 R?",
+      "range": {
+        "startLine": 43,
+        "startChar": 34,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a92e57_16d03ba4",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "style nit: Wrap near 80 columns?",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df3a31f_213e94f6",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "Do you ever intend to pass in a nonsensical number like \"a5\"? Or can this be an int?",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50e69e1_70e62d3a",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "nit: remove blank line to be consistent with lines 37-38.",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af25eac_dced8c41",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "BTW, have you tried PickValueInArray()?",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115e1946_631ad8f4",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "The first entry in the xref table, AKA object 0, has to be a free entry. So effectively object numbers should start with 1.",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2296c984_35807b00",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "Do you want to put the xrefN and objN entries into arrays, so code like this can become for-loops?",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

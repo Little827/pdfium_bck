@@ -183,6 +183,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f929d9_42e278bb",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T01:00:17Z",
+      "side": 1,
+      "message": "It does make it easier to see what the object is.",
+      "parentUuid": "70604558_8e015529",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "c27e8488a0adf0b260949cae2773b642302333e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "766bd5f4_cd644328",
