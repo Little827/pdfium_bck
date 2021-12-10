@@ -142,6 +142,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831bfdc0_f6d36109",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-10T18:52:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82930b61_f7be42f2",
+      "range": {
+        "startLine": 47,
+        "startChar": 61,
+        "endLine": 47,
+        "endChar": 71
+      },
+      "revId": "48690a6fd193b565b7f7983b7427263794213aa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30224623_13774481",
