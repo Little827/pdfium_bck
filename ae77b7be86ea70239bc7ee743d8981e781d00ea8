@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dd7f38_0e8042fd",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a00dd279_4c7c2ff0",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce6813d7_8899ef03",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-10T01:00:17Z",
       "side": 1,
       "message": "As used in the code, the parent is the XFA data. Shouldn\u0027t that be the Pages object, AKA 3 0 R?",
+      "range": {
+        "startLine": 43,
+        "startChar": 34,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2473f622_54cd40a1",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6813d7_8899ef03",
       "range": {
         "startLine": 43,
         "startChar": 34,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46a6a3f_d2e9453d",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a92e57_16d03ba4",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2df3a31f_213e94f6",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-12-10T01:00:17Z",
       "side": 1,
       "message": "Do you ever intend to pass in a nonsensical number like \"a5\"? Or can this be an int?",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7f2071_2e0cfa2b",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "I did not, so switched to an int!",
+      "parentUuid": "2df3a31f_213e94f6",
       "range": {
         "startLine": 30,
         "startChar": 25,
@@ -104,6 +194,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5102f54_3dd8ca7c",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50e69e1_70e62d3a",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1af25eac_dced8c41",
@@ -117,6 +225,24 @@
       "writtenOn": "2021-12-10T01:00:17Z",
       "side": 1,
       "message": "BTW, have you tried PickValueInArray()?",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c1acc9_6c3704c1",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "Ah nice catch! I will apply this on all the other fuzzers following this.",
+      "parentUuid": "1af25eac_dced8c41",
       "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -138,6 +264,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19406e94_e6933820",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "115e1946_631ad8f4",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2296c984_35807b00",
@@ -151,6 +295,24 @@
       "writtenOn": "2021-12-10T01:00:17Z",
       "side": 1,
       "message": "Do you want to put the xrefN and objN entries into arrays, so code like this can become for-loops?",
+      "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271dbbb1_fbcd33e6",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-10T13:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2296c984_35807b00",
       "revId": "ae77b7be86ea70239bc7ee743d8981e781d00ea8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
