@@ -297,6 +297,10 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
       NextPixel(&src_scan, &dest_scan, Bpp);
     }
   }
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATH_)
+  bitmap->PreMultiply();
+#endif
 }
 
 bool ShouldDrawDeviceText(const CFX_Font* pFont,
