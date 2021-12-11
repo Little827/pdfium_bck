@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929e1d77_d4cbf284",
+        "filename": "testing/fuzzers/pdf_fuzzer_templates.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-11T00:30:12Z",
+      "side": 1,
+      "message": "Should also be named based on type - kCatalog?",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "d68c78c50f0074e066d0624f072eb8af4524e944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f3139c_f0c7032b",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-11T00:30:12Z",
+      "side": 1,
+      "message": "Do we need these 2 third_party/base headers?",
+      "revId": "d68c78c50f0074e066d0624f072eb8af4524e944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2213b1_960cd390",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-11T00:30:12Z",
+      "side": 1,
+      "message": "const-ref",
+      "range": {
+        "startLine": 31,
+        "startChar": 38,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "d68c78c50f0074e066d0624f072eb8af4524e944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1b10fc_384e2a73",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-11T00:30:12Z",
+      "side": 1,
+      "message": "Another potential way to structure the data is with something like:\n\nstruct Tag {\n  const char* tag_name;\n  const char* tag_start;\n  const char* tag_end;\n};\n\nconst Tag kTags[] \u003d { ... };\n\nThen GenXDPTagBody() can be a lot shorter. WDYT?",
+      "revId": "d68c78c50f0074e066d0624f072eb8af4524e944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbff7cc9_6eb16354",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-11T00:30:12Z",
+      "side": 1,
+      "message": "Many of these objN variables are no longer necessary.",
+      "revId": "d68c78c50f0074e066d0624f072eb8af4524e944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
