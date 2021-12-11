@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "378f323d_c34ae1fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-11T12:58:51Z",
+      "side": 1,
+      "message": "I was going through the fuzz corpus and noticed a somewhat similar behavior for the \"Str\" function where there also a lot of while loops concatenating strings. Would it be possible to use something similar there, because currently this slows down fuzzing as well.",
+      "revId": "a053c6700aa26177c08912edad41b0e49879c0a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
