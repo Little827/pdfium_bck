@@ -76,6 +76,7 @@ if (is_clang) {
     fuzzer_list += [
       "pdf_xfa_fdp_fuzzer",
       "pdf_xfa_raw_fuzzer",
+      "pdf_xfa_xdp_fdp_fuzzer",
     ]
   }
 }
@@ -482,6 +483,15 @@ if (is_clang) {
       deps = [
         ":fuzzer_helper",
         ":fuzzer_pdf_templates",
+        "../../third_party:pdfium_base",
+      ]
+      public_fuzzer = true
+    }
+    pdfium_fuzzer("pdf_xfa_xdp_fdp_fuzzer") {
+      sources = [ "pdf_xfa_xdp_fdp_fuzzer.cc" ]
+      deps = [
+        ":fuzzer_helper",
+        ":fuzzer_pdf_templates_header",
         "../../third_party:pdfium_base",
       ]
       public_fuzzer = true
