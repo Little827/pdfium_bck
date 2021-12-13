@@ -9,8 +9,9 @@
 
 #include <map>
 
-#include "core/fxcrt/cfx_widetextbuf.h"
+#include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/abseil-cpp/absl/types/optional.h"
 
 class CPDF_CID2UnicodeMap;
 class CPDF_SimpleParser;
@@ -39,7 +40,7 @@ class CPDF_ToUnicodeMap {
 
   std::multimap<uint32_t, uint32_t> m_Multimap;
   UnownedPtr<const CPDF_CID2UnicodeMap> m_pBaseMap;
-  CFX_WideTextBuf m_MultiCharBuf;
+  WideString m_MultiCharBuf;
 };
 
 #endif  // CORE_FPDFAPI_FONT_CPDF_TOUNICODEMAP_H_
