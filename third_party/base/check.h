@@ -11,12 +11,22 @@
 #include "third_party/base/compiler_specific.h"
 #include "third_party/base/immediate_crash.h"
 
+#ifdef FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION
+#include <stdlib.h>
+#define CHECK(condition)          \
+  do {                            \
+    if (UNLIKELY(!(condition))) { \
+      abort();                    \
+    }                             \
+  } while (0)
+#else
 #define CHECK(condition)          \
   do {                            \
     if (UNLIKELY(!(condition))) { \
       IMMEDIATE_CRASH();          \
     }                             \
   } while (0)
+#endif
 
 #if defined(NDEBUG) && !defined(DCHECK_ALWAYS_ON)
 #define DCHECK_IS_ON() 0
