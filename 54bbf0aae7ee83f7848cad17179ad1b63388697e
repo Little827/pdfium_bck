@@ -16,6 +16,24 @@
       "message": "I\u0027m curious here, because there is a \"return false\" in the original loop. This return false is only satisfied if there is a out-of-bounds, i.e. iIndex\u003d\u003dpData.size(). However, is this meant to have a \"return false\" in case there are neither a \u0027T\u0027 or \u0027t\u0027 in pData? Because if so, then this should be supported?",
       "revId": "54bbf0aae7ee83f7848cad17179ad1b63388697e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d046828_eeb8560b",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-13T21:38:12Z",
+      "side": 1,
+      "message": "yep, I just noticed that, too.",
+      "parentUuid": "1f49f29b_44affbde",
+      "revId": "54bbf0aae7ee83f7848cad17179ad1b63388697e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
