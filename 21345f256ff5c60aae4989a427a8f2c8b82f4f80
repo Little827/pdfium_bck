@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "378cf7d7_169e6d89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-13T19:10:35Z",
+      "side": 1,
+      "message": "CFX_RenderDevice::DrawNormalText(), the only caller to DrawNormalTextHelper(), calls DrawNormalTextHelper() inside a for-loop. With this CL, wouldn\u0027t the same bitmap get pre-multiplied multiple times?",
+      "revId": "21345f256ff5c60aae4989a427a8f2c8b82f4f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
