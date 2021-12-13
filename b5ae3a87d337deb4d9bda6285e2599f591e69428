@@ -87,6 +87,30 @@
       },
       "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05365a04_49ec7ff2",
+        "filename": "third_party/base/check.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T18:28:37Z",
+      "side": 1,
+      "message": "I just tried using ud2 instead of int3 and that works okay. One issue is that the stack trace seems to not show the actual function where the ud2 is issued but rather one the caller of the function where the ud2 is issued, which might complicate root-cause analysis. For this reason I would probably prefer a solution with abort() in fuzzing modes.",
+      "parentUuid": "86100791_cfd9e252",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
