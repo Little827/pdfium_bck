@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbdebac_3d0cfa81",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 8
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T22:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5459a67_e1452190",
+      "revId": "80a1e402075672aefa6a9fd539d247a0c0d7ba5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffb3cab5_bf2bddec",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3804d6_6402eadd",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T22:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffb3cab5_bf2bddec",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "80a1e402075672aefa6a9fd539d247a0c0d7ba5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c2769d3_d82dd8a7",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-12-13T21:49:17Z",
       "side": 1,
       "message": "Can this be: const auto\u0026? Same for line 168.",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 12
+      },
+      "revId": "80a1e402075672aefa6a9fd539d247a0c0d7ba5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91de3259_ae77162d",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T22:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c2769d3_d82dd8a7",
       "range": {
         "startLine": 155,
         "startChar": 7,
