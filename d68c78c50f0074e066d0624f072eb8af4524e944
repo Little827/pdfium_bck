@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74b3c391_4d8749ba",
+        "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-13T19:18:25Z",
+      "side": 1,
+      "message": "The const part is there, but not the ref part. Same goes for CreateStreamObject() and other functions.",
+      "parentUuid": "51f47782_25b37edd",
+      "range": {
+        "startLine": 31,
+        "startChar": 38,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "d68c78c50f0074e066d0624f072eb8af4524e944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da1b10fc_384e2a73",
         "filename": "testing/fuzzers/pdf_xfa_xdp_fdp_fuzzer.cc",
         "patchSetId": 5
