@@ -752,13 +752,10 @@ bool IsIsoDateTimeFormat(pdfium::span<const char> pData,
   iMinute = 0;
   iSecond = 0;
 
-  if (pData.empty())
-    return false;
-
   size_t iIndex = 0;
-  while (pData[iIndex] != 'T' && pData[iIndex] != 't') {
-    if (iIndex >= pData.size())
-      return false;
+  while (iIndex < pData.size()) {
+    if (pData[iIndex] == 'T' || pData[iIndex] == 't')
+      break;
     ++iIndex;
   }
   if (iIndex != 8 && iIndex != 10)
