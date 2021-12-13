@@ -16,6 +16,24 @@
       "message": "Is this really because of DrawNormalTextHelper()? Line 1154 in this method creates the bitmap.",
       "revId": "4018260b8bfc34e4ab08edbdf3678765bb56ae67",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60cb0d6_04ed9cad",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-12-13T22:33:43Z",
+      "side": 1,
+      "message": "Yes, I did the premultiplied check before and after DrawNormalTextHelper(). The check fails immediately after DrawNormalTextHelper() is done.",
+      "parentUuid": "11f1b9d8_66d58e02",
+      "revId": "4018260b8bfc34e4ab08edbdf3678765bb56ae67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
