@@ -159,6 +159,30 @@
       },
       "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4383e633_0f3c6a02",
+        "filename": "third_party/base/check.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-13T19:49:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure how well Chromium deals with CHECKs when fuzzing. It may be best to sort that out first, since PDFium tends to copy from Chromium when it comes to its third_party/base code.",
+      "parentUuid": "daf56051_ef10e1c0",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
