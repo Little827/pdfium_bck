@@ -135,6 +135,30 @@
       },
       "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf56051_ef10e1c0",
+        "filename": "third_party/base/check.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T18:43:04Z",
+      "side": 1,
+      "message": "Ah interesting. Then, this must mean that all failed CHECKs in Chromium will not be found by CF?",
+      "parentUuid": "e58a4a42_82264e17",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
