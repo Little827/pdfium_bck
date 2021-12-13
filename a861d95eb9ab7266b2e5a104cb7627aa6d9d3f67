@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0935c77_1a046439",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T20:26:14Z",
+      "side": 1,
+      "message": "I removed the use of attribute_string entirely!",
+      "parentUuid": "1df44c13_cdb41867",
+      "revId": "a861d95eb9ab7266b2e5a104cb7627aa6d9d3f67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7584e329_e5d79a28",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-13T20:09:26Z",
       "side": 1,
       "message": "can we just append onto the end of xfa_string rather than using a temporary?",
+      "range": {
+        "startLine": 739,
+        "startChar": 10,
+        "endLine": 739,
+        "endChar": 26
+      },
+      "revId": "a861d95eb9ab7266b2e5a104cb7627aa6d9d3f67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e38b2ed_300283e4",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T20:26:14Z",
+      "side": 1,
+      "message": "Yes we can, thanks!",
+      "parentUuid": "7584e329_e5d79a28",
       "range": {
         "startLine": 739,
         "startChar": 10,
