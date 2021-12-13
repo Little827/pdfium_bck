@@ -111,6 +111,30 @@
       },
       "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e58a4a42_82264e17",
+        "filename": "third_party/base/check.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-13T18:37:10Z",
+      "side": 1,
+      "message": "Problem is that CF also runs pdfium_test and chrome binaries, which may or may not be built from the same build as the one that specified use_libfuzzer\u003dtrue. So we\u0027d want something that works for all of these.  In particular, the IMMEDIATE_CRASH code originates in chrome\u0027s repository, and we just copy it into pdfium\u0027s standalone repository.  So we\u0027d need to update chrome as well. It would be really bad if chrome, as shipped, were just silently exiting here without triggering the crash reporting logic. So we need a little bit more investigation before we just hammer it with the big hammer of abort().",
+      "parentUuid": "05365a04_49ec7ff2",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
