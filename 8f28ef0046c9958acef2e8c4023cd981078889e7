@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa4647ed_7397a48c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-13T22:03:06Z",
+      "side": 1,
+      "message": "LGTM! ",
+      "revId": "8f28ef0046c9958acef2e8c4023cd981078889e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
