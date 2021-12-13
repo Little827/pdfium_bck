@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e2964f_1b732d51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-13T18:00:18Z",
+      "side": 1,
+      "message": "Thanks! A couple of questions, though.",
+      "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68956a43_2075e9e7",
+        "filename": "third_party/base/check.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-13T18:00:18Z",
+      "side": 1,
+      "message": "How does this affect an ordinary ASAN build?  When building a shared library, for example, how does the compiler know if it is going to wind up as part of a fuzzer or just part of an asanified chrome binary?\n\nI think we might be better off going to an ud2 instruction even though it costs one byte more than the int3 for all cases if int3 isn\u0027t sufficient.  Alternatively, there might be a best practice from the CF folks who have yet to respond.\n\nEither way, the place to conditionalize it probably would be in the IMMEDIATE_CRASH definition itself.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "b5ae3a87d337deb4d9bda6285e2599f591e69428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
