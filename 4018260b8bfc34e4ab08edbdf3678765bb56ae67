@@ -34,6 +34,24 @@
       "parentUuid": "11f1b9d8_66d58e02",
       "revId": "4018260b8bfc34e4ab08edbdf3678765bb56ae67",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72f21e6_2a9cbf37",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-13T22:36:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e60cb0d6_04ed9cad",
+      "revId": "4018260b8bfc34e4ab08edbdf3678765bb56ae67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
