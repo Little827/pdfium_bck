@@ -752,27 +752,19 @@ bool IsIsoDateTimeFormat(pdfium::span<const char> pData,
   iMinute = 0;
   iSecond = 0;
 
-  if (pData.empty())
-    return false;
-
   size_t iIndex = 0;
-  while (pData[iIndex] != 'T' && pData[iIndex] != 't') {
-    if (iIndex >= pData.size())
-      return false;
+  while (iIndex < pData.size()) {
+    if (pData[iIndex] == 'T' || pData[iIndex] == 't')
+      break;
     ++iIndex;
   }
-  if (iIndex != 8 && iIndex != 10)
+  if (iIndex == pData.size() || (iIndex != 8 && iIndex != 10))
     return false;
 
   int32_t iStyle = -1;
-  if (!IsIsoDateFormat(pData.subspan(0, iIndex), &iStyle, &iYear, &iMonth,
-                       &iDay)) {
-    return false;
-  }
-  if (pData[iIndex] != 'T' && pData[iIndex] != 't')
-    return true;
-
-  return IsIsoTimeFormat(pData.subspan(iIndex + 1), &iHour, &iMinute, &iSecond,
+  return IsIsoDateFormat(pData.subspan(0, iIndex), &iStyle, &iYear, &iMonth,
+                         &iDay) &&
+         IsIsoTimeFormat(pData.subspan(iIndex + 1), &iHour, &iMinute, &iSecond,
                          &iMilliSecond, &iZoneHour, &iZoneMinute);
 }
 
