@@ -1087,9 +1087,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Space) {
   for (size_t i = 0; i < pdfium::size(tests); ++i)
     ExecuteExpectString(tests[i].program, tests[i].result);
 
-  const char* const kErrorCases[] = {"Space(15654909)", "Space(99999999)"};
+  const char* const kErrorCases[] = {"Space(15654909)", "Space(99999999)",
+                                     "Space()", "Space(1, 2)"};
   for (const char* error_case : kErrorCases)
     ExecuteExpectError(error_case);
+
+  ExecuteExpectNull("Space( $)");
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Str) {
@@ -1098,13 +1101,23 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Str) {
   struct {
     const char* program;
     const char* result;
-  } tests[] = {{"Str(2.456)", "         2"},
-               {"Str(4.532, 6, 4)", "4.5320"},
-               {"Str(234.458, 4)", " 234"},
-               {"Str(31.2345, 4, 2)", "****"}};
+  } kTests[] = {
+      {"Str(2.456)", "         2"},
+      {"Str(4.532, 6, 4)", "4.5320"},
+      {"Str(234.458, 4)", " 234"},
+      {"Str(31.2345, 4, 2)", "****"},
+  };
+  for (const auto& test : kTests)
+    ExecuteExpectString(test.program, test.result);
 
-  for (size_t i = 0; i < pdfium::size(tests); ++i)
-    ExecuteExpectString(tests[i].program, tests[i].result);
+  const char* const kErrorCases[] = {
+      "Str()",
+      "Str(1, 2, 3, 4)",
+  };
+  for (const char* error_case : kErrorCases)
+    ExecuteExpectError(error_case);
+
+  ExecuteExpectNull("Str( $)");
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Stuff) {
