@@ -42,6 +42,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e792e7_4732431c",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-14T05:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ddb62c2_6ead6895",
+      "range": {
+        "startLine": 78,
+        "startChar": 43,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "cd784535a21f32a8b066d5c0c99eedb995cbacba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e0198a7_374a16f3",
@@ -55,6 +79,30 @@
       "writtenOn": "2021-12-13T19:05:12Z",
       "side": 1,
       "message": "nit: as may arise from malformed documents.",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "cd784535a21f32a8b066d5c0c99eedb995cbacba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9256107_70bc16a3",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-14T05:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e0198a7_374a16f3",
       "range": {
         "startLine": 79,
         "startChar": 13,
