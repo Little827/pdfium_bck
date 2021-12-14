@@ -54,13 +54,13 @@ WideString CPDF_ToUnicodeMap::Lookup(uint32_t charcode) const {
   uint32_t value = it->second;
   wchar_t unicode = static_cast<wchar_t>(value & 0xffff);
   if (unicode != 0xffff)
-    return unicode;
+    return WideString(unicode);
 
-  WideStringView buf = m_MultiCharBuf.AsStringView();
   size_t index = value >> 16;
-  if (!buf.IsValidIndex(index))
+  if (!m_MultiCharBuf.IsValidIndex(index))
     return WideString();
-  return WideString(buf.Substr(index + 1, buf[index]));
+
+  return m_MultiCharBuf.Substr(index + 1, m_MultiCharBuf[index]);
 }
 
 uint32_t CPDF_ToUnicodeMap::ReverseLookup(wchar_t unicode) const {
@@ -196,8 +196,9 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
         WideString retcode =
             code == lowcode ? destcode : StringDataAdd(destcode);
         m_Multimap.emplace(code, GetUnicode());
-        m_MultiCharBuf.AppendChar(retcode.GetLength());
-        m_MultiCharBuf << retcode;
+        m_MultiCharBuf +=
+            pdfium::base::checked_cast<wchar_t>(retcode.GetLength());
+        m_MultiCharBuf += retcode;
         destcode = std::move(retcode);
       }
     }
@@ -219,7 +220,7 @@ void CPDF_ToUnicodeMap::SetCode(uint32_t srccode, WideString destcode) {
     m_Multimap.emplace(srccode, destcode[0]);
   } else {
     m_Multimap.emplace(srccode, GetUnicode());
-    m_MultiCharBuf.AppendChar(len);
-    m_MultiCharBuf << destcode;
+    m_MultiCharBuf += pdfium::base::checked_cast<wchar_t>(len);
+    m_MultiCharBuf += destcode;
   }
 }
