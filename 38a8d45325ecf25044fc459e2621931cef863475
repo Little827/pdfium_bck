@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63422e1f_07ff3b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-14T19:26:13Z",
+      "side": 1,
+      "message": "Do we have a way to tell if this is too bloaty?",
+      "revId": "38a8d45325ecf25044fc459e2621931cef863475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
