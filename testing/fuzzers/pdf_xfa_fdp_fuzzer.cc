@@ -195,8 +195,8 @@ class PDFiumXFAFuzzer : public PDFiumFuzzerHelper {
   FuzzedDataProvider* fdp_ = nullptr;
 };
 
-// Possible names of an XFA script function
-std::string GenXfaScriptFuncName(FuzzedDataProvider* data_provider) {
+// Possible names of an XFA FormCalc script function
+std::string GenXfaFormCalcScriptFuncName(FuzzedDataProvider* data_provider) {
   static const char* const kXfaScriptFuncs[] = {
       "Abs",       "Apr",        "At",           "Avg",          "Ceil",
       "Choose",    "Concat",     "Count",        "Cterm",        "Date",
@@ -648,17 +648,18 @@ std::string GenXfaTag(FuzzedDataProvider* data_provider) {
 // Possible XFA attributes values
 std::string GenXfaTagValue(FuzzedDataProvider* data_provider) {
   static const char* const kXfaTagVals[] = {
-      "0",         "0pt",          "-1",
-      "123",       "1pt",          "203.2mm",
-      "22.1404mm", "255",          "256",
-      "321",       "5431.21mm",    "6.35mm",
-      "8in",       "8pt",          "application/x-javascript",
-      "bold",      "bold",         "consumeData",
-      "en_US",     "form1",        "initialize",
-      "italic",    "middle",       "name2",
-      "name3",     "name4",        "name5",
-      "Page1",     "RadioList[0]", "subform_1",
-      "tb",        "Verdana",      "Verdana",
+      "0",         "0pt",         "-1",
+      "123",       "1pt",         "203.2mm",
+      "22.1404mm", "255",         "256",
+      "321",       "5431.21mm",   "6.35mm",
+      "8in",       "8pt",         "application/x-javascript",
+      "bold",      "bold",        "change",
+      "click",     "consumeData", "docReady",
+      "en_US",     "form1",       "initialize",
+      "italic",    "middle",      "name2",
+      "name3",     "name4",       "name5",
+      "onEnter",   "Page1",       "RadioList[0]",
+      "subform_1", "tb",          "Verdana",
   };
 
   size_t elem_selector = data_provider->ConsumeIntegralInRange<size_t>(
@@ -669,17 +670,22 @@ std::string GenXfaTagValue(FuzzedDataProvider* data_provider) {
 // possible XFA attributes
 std::string GenXfaTagName(FuzzedDataProvider* data_provider) {
   static const char* const kXfaTagNames[] = {
-      "activity",    "activity",    "baselineShift",
-      "contentType", "h",           "id",
-      "layout",      "layout",      "leftInset",
-      "locale",      "long",        "marginLeft",
-      "marginRight", "marginRight", "mergeMode",
-      "name",        "ref",         "scriptTest",
-      "short",       "size",        "spaceAbove",
-      "spaceBelow",  "startNew",    "stock",
-      "tetIndent",   "timeStamp",   "typeface",
-      "uuid",        "vAlign",      "value",
-      "w",           "weight",      "x",
+      "activity",    "baselineShift",
+      "contentType", "h",
+      "id",          "layout",
+      "layout",      "leftInset",
+      "locale",      "long",
+      "marginLeft",  "marginRight",
+      "marginRight", "mergeMode",
+      "name",        "ref",
+      "scriptTest",  "short",
+      "size",        "spaceAbove",
+      "spaceBelow",  "startNew",
+      "stock",       "tetIndent",
+      "timeStamp",   "typeface",
+      "uuid",        "vAlign",
+      "value",       "w",
+      "weight",      "x",
       "y",
   };
   size_t elem_selector = data_provider->ConsumeIntegralInRange<size_t>(
@@ -687,28 +693,152 @@ std::string GenXfaTagName(FuzzedDataProvider* data_provider) {
   return kXfaTagNames[elem_selector];
 }
 
-// Will create a simple XFA script that calls a single function.
-std::string GenXfacript(FuzzedDataProvider* data_provider) {
-  std::string xfa_string = GenXfaScriptFuncName(data_provider);
+// Will create a simple XFA FormCalc script that calls a single function.
+std::string GenXfaFormCalcScript(FuzzedDataProvider* data_provider) {
+  std::string xfa_string = GenXfaFormCalcScriptFuncName(data_provider);
   xfa_string += "(";
 
-  int num_params = data_provider->ConsumeIntegralInRange(0, 3);
-  // 0 case we do nothing.
-  if (num_params == 1) {
+  // Generate parameters
+  for (int param_count = data_provider->ConsumeIntegralInRange(0, 3);
+       param_count > 0; param_count--) {
     xfa_string += GenXfaScriptParam(data_provider);
-  } else if (num_params == 2) {
-    xfa_string += GenXfaScriptParam(data_provider);
-    xfa_string += ",";
-    xfa_string += GenXfaScriptParam(data_provider);
-  } else if (num_params == 3) {
-    xfa_string += GenXfaScriptParam(data_provider);
-    xfa_string += ",";
-    xfa_string += GenXfaScriptParam(data_provider);
-    xfa_string += ",";
-    xfa_string += GenXfaScriptParam(data_provider);
+    if (param_count > 1) {
+      xfa_string += ",";
+    }
   }
   xfa_string += ")";
   return xfa_string;
+}
+
+// XFA Javascript logic
+std::string GenXfaName(FuzzedDataProvider* data_provider) {
+  return "name" + std::to_string(data_provider->ConsumeIntegralInRange(0, 25));
+}
+
+std::string GetXfaJSPrimitiveType(FuzzedDataProvider* data_provider) {
+  return GenXfaScriptParam(data_provider);
+}
+
+std::string GenXfaJSRValue(FuzzedDataProvider* data_provider) {
+  if (data_provider->ConsumeProbability<float>() < 0.5) {
+    return GenXfaScriptParam(data_provider);
+  }
+
+  std::string xfa_string;
+  size_t prefix = data_provider->ConsumeIntegralInRange<size_t>(0, 1);
+  if (prefix == 1) {
+    xfa_string += "xfa.form.";
+  }
+
+  // Handle the posibility of nested names
+  // size_t num_of_names = data_provider->ConsumeIntegralInRange<size_t>(1, 3);
+  for (size_t name_count = data_provider->ConsumeIntegralInRange<size_t>(1, 3);
+       name_count > 0; name_count--) {
+    xfa_string += GenXfaName(data_provider);
+    if (name_count > 1) {
+      xfa_string += ".";
+    }
+  }
+  return MaybeQuote(data_provider, xfa_string);
+}
+
+std::string GenXfaJSAssignment(FuzzedDataProvider* data_provider) {
+  return GenXfaName(data_provider) + " = " + GenXfaJSRValue(data_provider);
+}
+
+std::string GenXfaJSMethodCall(FuzzedDataProvider* data_provider) {
+  static const char* const kXfaJSFuncs[] = {
+      "addItem",
+      "boundItem",
+      "clearItems",
+      "deleteItem",
+      "execCalculate",
+      "execEvent",
+      "execInitialize",
+      "execValidate",
+      "getDisplayItem",
+      "getItemState",
+      "getSaveItem",
+      "exec.form.formNodes",
+      "exec.form.recalculate",
+      "setItemState",
+      "xfa.container.getDelta",
+      "xfa.container.getDeltas",
+      "xfa.event.emit",
+      "xfa.event.reset",
+      "xfa.form.execCalculat",
+      "xfa.form.execInitialize",
+      "xfa.form.execValidate",
+      "xfa.form.remerge",
+      "xfa.host.beep",
+      "xfa.host.documentCountInBatch",
+      "xfa.host.documentInBatch",
+      "xfa.host.exportData",
+      "xfa.host.getFocus",
+      "xfa.host.gotoURL",
+      "xfa.host.importData",
+      "xfa.host.messageBox",
+      "xfa.host.openList",
+      "xfa.host.pageDown",
+      "xfa.host.pageUp",
+      "xfa.host.print",
+      "xfa.host.resetData",
+      "xfa.host.setFocus",
+      "xfa.host.response",
+      "xfa.resolveNode",
+  };
+
+  std::string xfa_string = data_provider->PickValueInArray(kXfaJSFuncs);
+  xfa_string += "(";
+
+  // Get the params
+  for (size_t param_count = data_provider->ConsumeIntegralInRange<size_t>(0, 3);
+       param_count > 0; param_count--) {
+    xfa_string += GenXfaJSRValue(data_provider);
+    if (param_count > 1) {
+      xfa_string += ",";
+    }
+  }
+  xfa_string += ")";
+  return xfa_string;
+}
+
+// This is a simple generator of xfa-based javascript. The function creates
+// simple javascript statements that are related to XFA logic and the goal is
+// not to create fully-fleged javascript programs but rather use simple
+// statements to ensure XFA code is covered.
+std::string GenXfaJSScript(FuzzedDataProvider* data_provider) {
+  std::string xfa_string;
+
+  size_t num_stmts = data_provider->ConsumeIntegralInRange<size_t>(1, 10);
+  for (size_t stmt_idx = 0; stmt_idx < num_stmts; stmt_idx++) {
+    int selector = data_provider->ConsumeIntegralInRange<int>(0, 2);
+
+    // Create either an assignment, a pure method call or a call on an object.
+    if (selector == 0) {
+      // Assignment
+      xfa_string += GenXfaJSAssignment(data_provider);
+    } else if (selector == 1) {
+      // Method call
+      xfa_string += GenXfaJSMethodCall(data_provider);
+    } else if (selector == 2) {
+      // Object call
+      xfa_string += GenXfaName(data_provider);
+      xfa_string += ".";
+      xfa_string += GenXfaJSMethodCall(data_provider);
+    }
+    xfa_string += ";\n";
+  }
+  return xfa_string;
+}
+
+std::string GenXfacript(FuzzedDataProvider* data_provider) {
+  // Determine if this should be a FormCalc script or Javascript, 50/50 chance
+  // for each.
+  if (data_provider->ConsumeProbability<float>() < 0.5) {
+    return GenXfaFormCalcScript(data_provider);
+  }
+  return GenXfaJSScript(data_provider);
 }
 
 // Will create a single XFA attributes, with both lhs and rhs.
