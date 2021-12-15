@@ -577,7 +577,7 @@ absl::optional<size_t> ByteString::ReverseFind(char ch) const {
 }
 
 void ByteString::MakeLower() {
-  if (!m_pData)
+  if (!m_pData || m_pData->m_nDataLength == 0)
     return;
 
   ReallocBeforeWrite(m_pData->m_nDataLength);
@@ -585,7 +585,7 @@ void ByteString::MakeLower() {
 }
 
 void ByteString::MakeUpper() {
-  if (!m_pData)
+  if (!m_pData || m_pData->m_nDataLength == 0)
     return;
 
   ReallocBeforeWrite(m_pData->m_nDataLength);
