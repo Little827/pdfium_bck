@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7202c463_1320425b",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T23:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ff2aca_187a31ad",
+      "range": {
+        "startLine": 702,
+        "startChar": 7,
+        "endLine": 702,
+        "endChar": 13
+      },
+      "revId": "ad4932b0987e47caf0d729e9a65b69a7a47d46c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51414c0_d758b4e6",
@@ -64,6 +88,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17a97ec_4b17225b",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T23:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51414c0_d758b4e6",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 77
+      },
+      "revId": "ad4932b0987e47caf0d729e9a65b69a7a47d46c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2562f4a2_5a98da77",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-15T22:43:20Z",
       "side": 1,
       "message": "and here, too.",
+      "range": {
+        "startLine": 793,
+        "startChar": 2,
+        "endLine": 793,
+        "endChar": 5
+      },
+      "revId": "ad4932b0987e47caf0d729e9a65b69a7a47d46c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69d0a89_b594c95e",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T23:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2562f4a2_5a98da77",
       "range": {
         "startLine": 793,
         "startChar": 2,
