@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7808c348_860afe26",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-15T18:05:33Z",
+      "side": 1,
+      "message": "ConsumeIntegral() for type T \u003d bool? Same for line 727 above, assuming we keep it at 50/50.",
+      "revId": "b63389242743cb7eb9b99899ed365f3799a97e5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019d6331_a41195f5",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-15T18:05:33Z",
+      "side": 1,
+      "message": "Just use `i` since there\u0027s no other index vars here?",
+      "range": {
+        "startLine": 826,
+        "startChar": 14,
+        "endLine": 826,
+        "endChar": 22
+      },
+      "revId": "b63389242743cb7eb9b99899ed365f3799a97e5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8f0d3d_3fdabe8a",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-15T18:05:33Z",
+      "side": 1,
+      "message": "Enum + switch statement instead?",
+      "revId": "b63389242743cb7eb9b99899ed365f3799a97e5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

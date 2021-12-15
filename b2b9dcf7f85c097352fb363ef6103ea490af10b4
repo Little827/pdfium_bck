@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa0ad289_5b055bb8",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-15T18:05:33Z",
+      "side": 1,
+      "message": "Do you think it will be helpful to borrow Chromium\u0027s base::JoinString()?",
+      "parentUuid": "61e06c00_fd9893ab",
+      "range": {
+        "startLine": 738,
+        "startChar": 1,
+        "endLine": 746,
+        "endChar": 3
+      },
+      "revId": "b2b9dcf7f85c097352fb363ef6103ea490af10b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "862f87b4_ead05d14",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 1
