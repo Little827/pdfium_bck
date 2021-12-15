@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81aa49ac_f4014b14",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T18:25:28Z",
+      "side": 1,
+      "message": "Hah, fixed! We also had two \"activity\" so removed one of those as well.",
+      "parentUuid": "31ecef12_9cce267e",
+      "range": {
+        "startLine": 662,
+        "startChar": 35,
+        "endLine": 662,
+        "endChar": 42
+      },
+      "revId": "b2b9dcf7f85c097352fb363ef6103ea490af10b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae1019e_d8ea7053",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-15T17:56:12Z",
       "side": 1,
       "message": "pre-existing: loop here instead?",
+      "range": {
+        "startLine": 700,
+        "startChar": 2,
+        "endLine": 712,
+        "endChar": 3
+      },
+      "revId": "b2b9dcf7f85c097352fb363ef6103ea490af10b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b54778_f9cccca0",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T18:25:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae1019e_d8ea7053",
       "range": {
         "startLine": 700,
         "startChar": 2,
@@ -96,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7551787f_fb3a8771",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T18:25:28Z",
+      "side": 1,
+      "message": "I fixed the loop up.",
+      "parentUuid": "fa0ad289_5b055bb8",
+      "range": {
+        "startLine": 738,
+        "startChar": 1,
+        "endLine": 746,
+        "endChar": 3
+      },
+      "revId": "b2b9dcf7f85c097352fb363ef6103ea490af10b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "862f87b4_ead05d14",
         "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
         "patchSetId": 1
@@ -107,6 +179,30 @@
       "writtenOn": "2021-12-15T17:56:12Z",
       "side": 1,
       "message": "Loop here, too?",
+      "range": {
+        "startLine": 800,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 0
+      },
+      "revId": "b2b9dcf7f85c097352fb363ef6103ea490af10b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec133df_b85bbb75",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T18:25:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "862f87b4_ead05d14",
       "range": {
         "startLine": 800,
         "startChar": 0,
@@ -130,6 +226,30 @@
       "writtenOn": "2021-12-15T17:56:12Z",
       "side": 1,
       "message": "does this help vs. 50/50 per our previous discussion about coverage-driven fuzzing?",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 849,
+        "endChar": 72
+      },
+      "revId": "b2b9dcf7f85c097352fb363ef6103ea490af10b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fe7276_28c07159",
+        "filename": "testing/fuzzers/pdf_xfa_fdp_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 8736
+      },
+      "writtenOn": "2021-12-15T18:25:28Z",
+      "side": 1,
+      "message": "Not in the same manner, no. In this case, I am fairly sure both the amount of formcalc scripts and javascripts this fuzzer is able to create will be exercised in a reasonable time frame. Furthermore, there is no completely random strings in either of these cases (e.g. we don\u0027t call fdp-\u003eConsumeRandomString) which ensures the fuzzer wont explore v8 in a very broad manner. As such, I simply switched it to a 50/50 as it won\u0027t have any noticeable impact.",
+      "parentUuid": "a068d2a0_c0915899",
       "range": {
         "startLine": 849,
         "startChar": 0,
