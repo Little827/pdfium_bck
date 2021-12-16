@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5928cf82_baef29bf",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-16T22:55:05Z",
+      "side": 1,
+      "message": "Just curious - this issue doesn\u0027t affect Mac?",
+      "revId": "588f9eea64e30c5e6dd13f9092bb56e3545873c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
