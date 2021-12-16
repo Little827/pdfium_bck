@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c60cf5c_c2b86671",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-16T22:56:20Z",
+      "side": 1,
+      "message": "BTW, is this needed? Considering `adjust` just got created.",
+      "revId": "578e25b01a04efbf3dc06563de88ce4ebf12cb94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
