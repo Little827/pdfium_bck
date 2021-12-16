@@ -16,6 +16,29 @@
       "message": "No rush.",
       "revId": "aad5860a7425fe7ff17b302798ee8b43cfac8369",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0b3a36_ff2fd6d2",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-16T20:55:20Z",
+      "side": 1,
+      "message": "ByteString",
+      "range": {
+        "startLine": 70,
+        "startChar": 61,
+        "endLine": 70,
+        "endChar": 71
+      },
+      "revId": "aad5860a7425fe7ff17b302798ee8b43cfac8369",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
