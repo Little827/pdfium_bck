@@ -73,7 +73,8 @@ ProgressiveDecoder::HorzTable::~HorzTable() = default;
 void ProgressiveDecoder::HorzTable::CalculateWeights(int dest_len,
                                                      int src_len) {
   CHECK_GE(dest_len, 0);
-  m_ItemSize = PixelWeight::TotalBytesForWeightCount(2);
+  m_ItemSize =
+      pdfium::base::checked_cast<int>(PixelWeight::TotalBytesForWeightCount(2));
   FX_SAFE_SIZE_T safe_size = m_ItemSize;
   safe_size *= dest_len;
   m_pWeightTables.resize(safe_size.ValueOrDie(), 0);
@@ -129,7 +130,8 @@ ProgressiveDecoder::VertTable::~VertTable() = default;
 void ProgressiveDecoder::VertTable::CalculateWeights(int dest_len,
                                                      int src_len) {
   CHECK_GE(dest_len, 0);
-  m_ItemSize = PixelWeight::TotalBytesForWeightCount(2);
+  m_ItemSize =
+      pdfium::base::checked_cast<int>(PixelWeight::TotalBytesForWeightCount(2));
   FX_SAFE_SIZE_T safe_size = m_ItemSize;
   safe_size *= dest_len;
   m_pWeightTables.resize(safe_size.ValueOrDie(), 0);
@@ -356,7 +358,8 @@ void ProgressiveDecoder::PngFillScanlineBufCompleted(int pass, int line) {
 
 #ifdef PDF_ENABLE_XFA_GIF
 uint32_t ProgressiveDecoder::GifCurrentPosition() const {
-  uint32_t remain_size = GifDecoder::GetAvailInput(m_pGifContext.get());
+  uint32_t remain_size = pdfium::base::checked_cast<uint32_t>(
+      GifDecoder::GetAvailInput(m_pGifContext.get()));
   return m_offSet - remain_size;
 }
 
@@ -691,8 +694,9 @@ bool ProgressiveDecoder::BmpDetectImageTypeInBuffer(
     return false;
   }
 
-  uint32_t available_data = m_pFile->GetSize() - m_offSet +
-                            BmpDecoder::GetAvailInput(pBmpContext.get());
+  uint32_t available_data = pdfium::base::checked_cast<uint32_t>(
+      m_pFile->GetSize() - m_offSet +
+      BmpDecoder::GetAvailInput(pBmpContext.get()));
   if (needed_data.value().size > available_data) {
     m_status = FXCODEC_STATUS::kError;
     return false;
@@ -1450,7 +1454,8 @@ bool ProgressiveDecoder::ReadMoreData(
     return false;
 
   // Try to get whatever remains.
-  uint32_t dwBytesToFetchFromFile = m_pFile->GetSize() - m_offSet;
+  uint32_t dwBytesToFetchFromFile =
+      pdfium::base::checked_cast<uint32_t>(m_pFile->GetSize() - m_offSet);
 
   // Figure out if the codec stopped processing midway through the buffer.
   size_t dwUnconsumed = 0;
@@ -1475,8 +1480,8 @@ bool ProgressiveDecoder::ReadMoreData(
   } else {
     size_t dwConsumed = m_pCodecMemory->GetSize() - dwUnconsumed;
     m_pCodecMemory->Consume(dwConsumed);
-    dwBytesToFetchFromFile =
-        std::min<uint32_t>(dwBytesToFetchFromFile, dwConsumed);
+    dwBytesToFetchFromFile = pdfium::base::checked_cast<uint32_t>(
+        std::min<size_t>(dwBytesToFetchFromFile, dwConsumed));
   }
 
   // Append new data past the bytes not yet processed by the codec.

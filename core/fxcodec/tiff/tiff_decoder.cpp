@@ -144,7 +144,8 @@ toff_t tiff_seek(thandle_t context, toff_t offset, int whence) {
     case 0: {
       if (file_offset > pTiffContext->io_in()->GetSize())
         return static_cast<toff_t>(-1);
-      pTiffContext->set_offset(file_offset);
+      pTiffContext->set_offset(
+          pdfium::base::checked_cast<uint32_t>(file_offset));
       return pTiffContext->offset();
     }
     case 1: {
@@ -158,7 +159,8 @@ toff_t tiff_seek(thandle_t context, toff_t offset, int whence) {
     case 2: {
       if (pTiffContext->io_in()->GetSize() < file_offset)
         return static_cast<toff_t>(-1);
-      pTiffContext->set_offset(pTiffContext->io_in()->GetSize() - file_offset);
+      pTiffContext->set_offset(pdfium::base::checked_cast<uint32_t>(
+          pTiffContext->io_in()->GetSize() - file_offset));
       return pTiffContext->offset();
     }
     default:
@@ -332,7 +334,8 @@ void CTiffContext::SetPalette(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
   uint16_t* blue_orig = nullptr;
   TIFFGetField(m_tif_ctx.get(), TIFFTAG_COLORMAP, &red_orig, &green_orig,
                &blue_orig);
-  for (int32_t i = (1L << bps) - 1; i >= 0; i--) {
+  for (int32_t i = pdfium::base::checked_cast<int32_t>((1L << bps) - 1); i >= 0;
+       i--) {
 #define CVT(x) ((uint16_t)((x) >> 8))
     red_orig[i] = CVT(red_orig[i]);
     green_orig[i] = CVT(green_orig[i]);

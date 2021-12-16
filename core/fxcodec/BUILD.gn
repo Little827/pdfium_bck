@@ -69,6 +69,10 @@ source_set("fxcodec") {
     "scanlinedecoder.cpp",
     "scanlinedecoder.h",
   ]
+  cflags = []
+  if (is_clang) {
+    cflags += [ "-Wshorten-64-to-32" ]
+  }
   configs += [ "../../:pdfium_strict_config" ]
   include_dirs = []
   deps = [
@@ -79,7 +83,6 @@ source_set("fxcodec") {
     "../fxge",
     "//third_party:jpeg",
   ]
-
   if (pdf_enable_xfa) {
     sources += [
       "jpeg/jpeg_progressive_decoder.cpp",
@@ -130,7 +133,6 @@ source_set("fxcodec") {
       deps += [ "../../third_party:fx_tiff" ]
     }
   }
-
   visibility = [ "../../*" ]
 }
 
