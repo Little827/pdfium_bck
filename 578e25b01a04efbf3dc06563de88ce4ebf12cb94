@@ -16,6 +16,24 @@
       "message": "BTW, is this needed? Considering `adjust` just got created.",
       "revId": "578e25b01a04efbf3dc06563de88ce4ebf12cb94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76eeb1b7_5cb26ed3",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2021-12-16T23:25:24Z",
+      "side": 1,
+      "message": "Thanks for noticing that! reset() is not needed here.\nRemoved this line in the new patchset.",
+      "parentUuid": "1c60cf5c_c2b86671",
+      "revId": "578e25b01a04efbf3dc06563de88ce4ebf12cb94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
