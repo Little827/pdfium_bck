@@ -518,7 +518,7 @@ bool FaxDecoder::Rewind() {
 }
 
 pdfium::span<uint8_t> FaxDecoder::GetNextLine() {
-  int bitsize = m_SrcSpan.size() * 8;
+  int bitsize = pdfium::base::checked_cast<int>(m_SrcSpan.size() * 8);
   FaxSkipEOL(m_SrcSpan.data(), bitsize, &m_bitpos);
   if (m_bitpos >= bitsize)
     return pdfium::span<uint8_t>();
@@ -563,7 +563,8 @@ pdfium::span<uint8_t> FaxDecoder::GetNextLine() {
 }
 
 uint32_t FaxDecoder::GetSrcOffset() {
-  return std::min(static_cast<size_t>((m_bitpos + 7) / 8), m_SrcSpan.size());
+  return pdfium::base::checked_cast<uint32_t>(
+      std::min<size_t>((m_bitpos + 7) / 8, m_SrcSpan.size()));
 }
 
 void FaxDecoder::InvertBuffer() {
