@@ -22,6 +22,30 @@
       },
       "revId": "be5c7f27b267327cca13b5e3f34a69885958e1af",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780c712a_6721bcfa",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-17T00:00:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aeaaac76_5f56a773",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "be5c7f27b267327cca13b5e3f34a69885958e1af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
