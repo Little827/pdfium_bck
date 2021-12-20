@@ -42,6 +42,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d24420b_bf4d3f28",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-20T19:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d94ccb09_88b9f4ed",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 12
+      },
+      "revId": "a658658342e282f3c0c8feb19291921b76857d4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28f62512_0afa56e0",
@@ -55,6 +79,30 @@
       "writtenOn": "2021-12-20T19:22:33Z",
       "side": 1,
       "message": "nit: prefer 1 for scalar over sizeof(uint8_t), since the argument to span is in terms of elements, not bytes (several places).",
+      "range": {
+        "startLine": 446,
+        "startChar": 49,
+        "endLine": 446,
+        "endChar": 67
+      },
+      "revId": "a658658342e282f3c0c8feb19291921b76857d4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6896af52_f7bf5cfc",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-20T19:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28f62512_0afa56e0",
       "range": {
         "startLine": 446,
         "startChar": 49,
