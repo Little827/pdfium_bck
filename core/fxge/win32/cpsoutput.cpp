@@ -25,11 +25,13 @@ bool CPSOutput::WriteBlock(const void* str, size_t len) {
 
     switch (m_mode) {
       case OutputMode::kExtEscape:
-        ExtEscape(m_hDC, PASSTHROUGH, send_len + 2,
+        ExtEscape(m_hDC, PASSTHROUGH,
+                  pdfium::base::checked_cast<int>(send_len + 2),
                   reinterpret_cast<const char*>(buffer), 0, nullptr);
         break;
       case OutputMode::kGdiComment:
-        GdiComment(m_hDC, send_len + 2, buffer);
+        GdiComment(m_hDC, pdfium::base::checked_cast<UINT>(send_len + 2),
+                   buffer);
         break;
     }
     input = input.subspan(send_len);
