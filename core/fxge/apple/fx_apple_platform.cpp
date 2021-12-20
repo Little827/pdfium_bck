@@ -14,6 +14,7 @@
 #include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/fx_font.h"
 #include "core/fxge/systemfontinfo_iface.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 
@@ -154,7 +155,8 @@ CApplePlatform::CreateDefaultSystemFontInfo() {
 
 void* CApplePlatform::CreatePlatformFont(
     pdfium::span<const uint8_t> font_span) {
-  return m_quartz2d.CreateFont(font_span.data(), font_span.size());
+  return m_quartz2d.CreateFont(
+      font_span.data(), pdfium::base::checked_cast<uint32_t>(font_span.size()));
 }
 
 // static
