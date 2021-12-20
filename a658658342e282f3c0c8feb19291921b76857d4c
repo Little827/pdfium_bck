@@ -1,4 +1,68 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1639769789 -0800\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d19L4aNk0ZzaOvJMNC1ideoCVoLmydchngoX8Q334PwxG8ToeSjmL1ZpKbnl+eFj3SKSvqkV\n\n0000000000000000000000000000000000000000 a658658342e282f3c0c8feb19291921b76857d4c refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmG85r0ACgkQqzYtYVpm\n/XvXgwgA0lWz/sXN3Ya4JGeJySAL0yjMO9bRd6i8L83IW5l3acTBNhGwt9ahoFxS\nPPBBwY7+6xmOfLsvNPN7pXRr8uHFnwxm4PSirB0zJLV83H3fZphjKYO5KosjpHa4\ndAz9vGwB25T3yl+P5uJnea8EqoYVcT2wkB0WXb+NYduRRuK3ydSgv454wMP096ib\nsE/t8U16gTBLRlUnKrJYM0fRZ9SzkAHLSKQ/t4tSMUF4MbQhEfvzqh+EBWxEPyNH\nFymqb8JsPg1ZFj/IuH/zzpM0iG8nfDvIoBqvDD8pzlQm9TREvRjmSczbjpxn4duS\nA+LV79/E6jB1XGmnYVtpS0Wzj01kyQ\u003d\u003d\n\u003dtmXs\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8996e0bd_d36133e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-20T19:22:33Z",
+      "side": 1,
+      "message": "Nits",
+      "revId": "a658658342e282f3c0c8feb19291921b76857d4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94ccb09_88b9f4ed",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-20T19:22:33Z",
+      "side": 1,
+      "message": "nit: might src_pal_size be size_t too?",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 12
+      },
+      "revId": "a658658342e282f3c0c8feb19291921b76857d4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f62512_0afa56e0",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-20T19:22:33Z",
+      "side": 1,
+      "message": "nit: prefer 1 for scalar over sizeof(uint8_t), since the argument to span is in terms of elements, not bytes (several places).",
+      "range": {
+        "startLine": 446,
+        "startChar": 49,
+        "endLine": 446,
+        "endChar": 67
+      },
+      "revId": "a658658342e282f3c0c8feb19291921b76857d4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
