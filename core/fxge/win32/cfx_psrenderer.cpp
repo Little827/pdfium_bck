@@ -35,6 +35,7 @@
 #include "core/fxge/text_char_pos.h"
 #include "core/fxge/win32/cfx_psfonttracker.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 
@@ -288,9 +289,9 @@ void CFX_PSRenderer::RestoreState(bool bKeepSaved) {
 void CFX_PSRenderer::OutputPath(const CFX_Path& path,
                                 const CFX_Matrix* pObject2Device) {
   std::ostringstream buf;
-  size_t size = path.GetPoints().size();
+  int size = pdfium::base::checked_cast<int>(path.GetPoints().size());
 
-  for (size_t i = 0; i < size; i++) {
+  for (int i = 0; i < size; i++) {
     CFX_Path::Point::Type type = path.GetType(i);
     bool closing = path.IsClosingFigure(i);
     CFX_PointF pos = path.GetPoint(i);
