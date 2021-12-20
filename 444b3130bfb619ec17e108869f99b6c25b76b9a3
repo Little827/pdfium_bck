@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26052f7e_e79112fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-12-20T18:38:34Z",
+      "side": 1,
+      "message": "https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1763",
+      "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
