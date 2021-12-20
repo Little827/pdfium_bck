@@ -6,6 +6,7 @@
 
 #include "core/fxcrt/fx_string.h"
 
+#include "core/fxcrt/fx_number.h"
 #include "core/fxcrt/cfx_utf8decoder.h"
 #include "core/fxcrt/cfx_utf8encoder.h"
 #include "core/fxcrt/fx_extension.h"
@@ -74,11 +75,24 @@ T StringTo(ByteStringView strc,
   if (cc < len && strc[cc] == '.') {
     cc++;
     while (cc < len) {
+      if (strc[cc] == 'e')
+        break;
       value +=
           fractional_scales[scale] * FXSYS_DecimalCharToInt(strc.CharAt(cc));
       scale++;
       if (scale == fractional_scales_size)
         break;
+      cc++;
+    }
+
+    while (cc < len) {
+      if (strc[cc] == 'e') {
+        if (cc + 1 < len) {
+          auto exponent = FX_Number(strc.Substr(cc + 1, len - cc - 1));
+          value *= FXSYS_pow(10, exponent.GetFloat());
+        }
+        break;
+      }
       cc++;
     }
   }
