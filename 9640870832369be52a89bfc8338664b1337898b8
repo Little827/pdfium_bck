@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1640115185 -0800\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d18GvFO9zJ8OV0ZKWc5ehixLYRIRWdGn6/itTvmmgLrNVxo0lpeaa1md4MlQp5iycKgZMXI8\n\n0000000000000000000000000000000000000000 9640870832369be52a89bfc8338664b1337898b8 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmHCK/EACgkQqzYtYVpm\n/Xu9BggA0E+COJ6UKxQvUj8zjocVRct1E6WLRtobxlh1htsR4sgAV2UIN6z2v9hJ\n2Eo1Xq8zvZ98t6FyL5WBOXLHuWidIVQ4ymoHQmaMDUmqRH3BszXVjtl6JWCCOOwU\nUXYdeM+PA0HGK1AActOtAk3XPB5raLrbRYxe2FXlqXiBCU0vSTq728RrJBz2ck1+\nzvR41I56bQuSPUR1aqOQooXvgneAmoeamNT7aTwTtDunsUKLpiKx/kdO7iuaBL0G\n2xQIOD318WofmRrIPY0eotTIw94qFZc87CW9ZJBKYfS3f/BZ6TX8tkgC1yohfIxg\nvpkoyc5ENWV5QGUaGaPK/Ckb0eFErg\u003d\u003d\n\u003dn1YC\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5137eb86_a98a1624",
+        "filename": "core/fxge/win32/cgdi_plus_ext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T19:55:38Z",
+      "side": 1,
+      "message": "these are now in terms of possibly transformed co-ordinates following line 634 whereas before they were from the untransformed space?",
+      "range": {
+        "startLine": 636,
+        "startChar": 35,
+        "endLine": 636,
+        "endChar": 40
+      },
+      "revId": "9640870832369be52a89bfc8338664b1337898b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
