@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3af887_f463de02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T17:01:09Z",
+      "side": 1,
+      "message": "If you add\n\nBug: pdfium:1763\n\nit will automatically link to your bug report.",
+      "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "26052f7e_e79112fe",
@@ -14,6 +31,69 @@
       "writtenOn": "2021-12-20T18:38:34Z",
       "side": 1,
       "message": "https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1763",
+      "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b868d56d_90dbbd7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T17:01:09Z",
+      "side": 1,
+      "message": "Hi, thanks for your contribution! You\u0027re right that generally we want to display PDFs found in the wild no matter what the spec might say about whether e+ notation is formally allowed here, but Lei will confirm.\n\nI\u0027d like to ask you to add some test cases to fx_string_unittest.cpp to cover this new code before we can take the patch.",
+      "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6bc5aa_a930eebf",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T17:01:09Z",
+      "side": 1,
+      "message": "this could probably move outside of this while, right?",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ccc7f6_314d69e9",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T17:01:09Z",
+      "side": 1,
+      "message": "can we continue parsing here without introducing FX_Number?",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 35
+      },
       "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
