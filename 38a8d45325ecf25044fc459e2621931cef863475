@@ -16,6 +16,24 @@
       "message": "Do we have a way to tell if this is too bloaty?",
       "revId": "38a8d45325ecf25044fc459e2621931cef863475",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7453c1e_c3780a28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-21T01:16:34Z",
+      "side": 1,
+      "message": "Multi-char ToUnicode map entries are relatively uncommon, so the affected code paths does not run very often compared to the single-char code path. CFX_BinaryBuf::ExpandBuf() allocates 128 bytes at the minimum, so sometimes this CL allocates less memory, but does more allocations.",
+      "parentUuid": "63422e1f_07ff3b3b",
+      "revId": "38a8d45325ecf25044fc459e2621931cef863475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
