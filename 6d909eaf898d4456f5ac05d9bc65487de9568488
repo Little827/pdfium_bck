@@ -89,6 +89,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c563b5f3_c5865b3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-12-21T17:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cad193d6_66c63d64",
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "824c9b39_84dc361c",
@@ -705,6 +723,54 @@
       "side": 1,
       "message": "In the PDF structure, it can have tree nodes, where each node stores a variable number of pages. It can also only have 1 tree node, that contains all the pages.\n\nIn PDFium\u0027s CPDF_Page, there\u0027s both the tree structure, and also a vector that stores all the pages.\n\n\nFor copying, you may want to try and see if FPDFPage_Reorder() does a shallow copy. That is, if one copies [A] to [A, A], and then modify the first page, does the second page also get modified, because the two pages share the same content? If so, that behavior can be surprising. It will either need to be documented, or not be allowed.",
       "parentUuid": "6a3a2a30_b6dd3fa3",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42190f0_e4f43821",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-12-21T17:21:54Z",
+      "side": 1,
+      "message": "API design finalized in design doc: https://docs.google.com/document/d/1V7FnmuLJ_rpUvZr5lsEmiLN4sqbYxsIHixRYw0ZREpo/edit?usp\u003dsharing\u0026resourcekey\u003d0-xkrKcEfmLbQNdWBtxmuYMA",
+      "parentUuid": "a4feb3cd_d403d367",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6d909eaf898d4456f5ac05d9bc65487de9568488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "302613b2_13096393",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2021-12-21T17:21:54Z",
+      "side": 1,
+      "message": "API design solidified in design doc: https://docs.google.com/document/d/1V7FnmuLJ_rpUvZr5lsEmiLN4sqbYxsIHixRYw0ZREpo/edit?usp\u003dsharing\u0026resourcekey\u003d0-xkrKcEfmLbQNdWBtxmuYMA",
+      "parentUuid": "a4feb3cd_d403d367",
       "range": {
         "startLine": 129,
         "startChar": 27,
