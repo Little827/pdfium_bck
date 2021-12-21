@@ -629,21 +629,12 @@ bool CGdiplusExt::DrawPath(HDC hDC,
   size_t pos_subclose = 0;
   size_t startpoint = 0;
   for (size_t i = 0; i < points.size(); ++i) {
-    gp_points[i].X = points[i].m_Point.x;
-    gp_points[i].Y = points[i].m_Point.y;
-
     CFX_PointF pos = points[i].m_Point;
     if (pObject2Device)
       pos = pObject2Device->Transform(pos);
 
-    if (pos.x > 50000.0f)
-      gp_points[i].X = 50000.0f;
-    if (pos.x < -50000.0f)
-      gp_points[i].X = -50000.0f;
-    if (pos.y > 50000.0f)
-      gp_points[i].Y = 50000.0f;
-    if (pos.y < -50000.0f)
-      gp_points[i].Y = -50000.0f;
+    gp_points[i].X = pdfium::clamp(pos.x, -50000.0f, 50000.0f);
+    gp_points[i].Y = pdfium::clamp(pos.y, -50000.0f, 50000.0f);
 
     CFX_Path::Point::Type point_type = points[i].m_Type;
     if (point_type == CFX_Path::Point::Type::kMove) {
