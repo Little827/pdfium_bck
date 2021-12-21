@@ -35,6 +35,7 @@
 #include "core/fxge/text_char_pos.h"
 #include "core/fxge/win32/cfx_psfonttracker.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 
@@ -254,12 +255,15 @@ void CFX_PSRenderer::EndRendering() {
   // Flush `m_PreambleOutput` if it is not empty.
   std::streampos preamble_pos = m_PreambleOutput.tellp();
   if (preamble_pos > 0) {
-    m_pStream->WriteBlock(m_PreambleOutput.str().c_str(), preamble_pos);
+    m_pStream->WriteBlock(m_PreambleOutput.str().c_str(),
+                          pdfium::base::checked_cast<size_t>(preamble_pos));
     m_PreambleOutput.str(std::string());
   }
 
   // Flush `m_Output`. It's never empty because of the WriteString() call above.
-  m_pStream->WriteBlock(m_Output.str().c_str(), m_Output.tellp());
+  std::streampos output_pos = m_Output.tellp();
+  m_pStream->WriteBlock(m_Output.str().c_str(),
+                        pdfium::base::checked_cast<size_t>(output_pos));
   m_Output.str(std::string());
 }
 
@@ -288,9 +292,9 @@ void CFX_PSRenderer::RestoreState(bool bKeepSaved) {
 void CFX_PSRenderer::OutputPath(const CFX_Path& path,
                                 const CFX_Matrix* pObject2Device) {
   std::ostringstream buf;
-  size_t size = path.GetPoints().size();
+  int size = pdfium::base::checked_cast<int>(path.GetPoints().size());
 
-  for (size_t i = 0; i < size; i++) {
+  for (int i = 0; i < size; i++) {
     CFX_Path::Point::Type type = path.GetType(i);
     bool closing = path.IsClosingFigure(i);
     CFX_PointF pos = path.GetPoint(i);
@@ -588,8 +592,9 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
       }
       uint8_t* compressed_buf;
       uint32_t compressed_size;
-      PSCompressData(output_buf, output_size, &compressed_buf, &compressed_size,
-                     &filter);
+      PSCompressData(output_buf,
+                     pdfium::base::checked_cast<uint32_t>(output_size),
+                     &compressed_buf, &compressed_size, &filter);
       if (output_buf != compressed_buf)
         FX_Free(output_buf);
 
@@ -646,7 +651,7 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
         found = true;
       }
       if (found) {
-        *ps_fontnum = i / 256;
+        *ps_fontnum = pdfium::base::checked_cast<int>(i / 256);
         *ps_glyphindex = i % 256;
         return;
       }
@@ -654,7 +659,8 @@ void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pGlyphCache,
   }
 
   m_PSFontList.push_back(std::make_unique<Glyph>(pFont, charpos.m_GlyphIndex));
-  *ps_fontnum = (m_PSFontList.size() - 1) / 256;
+  *ps_fontnum =
+      pdfium::base::checked_cast<int>((m_PSFontList.size() - 1) / 256);
   *ps_glyphindex = (m_PSFontList.size() - 1) % 256;
   if (*ps_glyphindex == 0) {
     std::ostringstream buf;
@@ -886,8 +892,11 @@ void CFX_PSRenderer::WritePSBinary(pdfium::span<const uint8_t> data) {
 }
 
 void CFX_PSRenderer::WriteStream(std::ostringstream& stream) {
-  if (stream.tellp() > 0)
-    m_Output.write(stream.str().c_str(), stream.tellp());
+  std::streamoff output_pos = stream.tellp();
+  if (output_pos > 0) {
+    m_Output.write(stream.str().c_str(),
+                   pdfium::base::checked_cast<size_t>(output_pos));
+  }
 }
 
 void CFX_PSRenderer::WriteString(ByteStringView str) {

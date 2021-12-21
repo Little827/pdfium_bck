@@ -20,6 +20,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/fx_freetype.h"
 #include "core/fxge/text_char_pos.h"
+#include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/span.h"
 
 #if !defined(_SKIA_SUPPORT_)
@@ -55,7 +56,8 @@ bool CGDrawGlyphRun(CGContextRef pContext,
       return false;
 
     pdfium::span<const uint8_t> span = pFont->GetFontSpan();
-    pFont->SetPlatformFont(quartz2d.CreateFont(span.data(), span.size()));
+    pFont->SetPlatformFont(quartz2d.CreateFont(
+        span.data(), pdfium::base::checked_cast<uint32_t>(span.size())));
     if (!pFont->GetPlatformFont())
       return false;
   }
