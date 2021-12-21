@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2199cb93_ab6e29da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T19:03:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cac8f131_bbb67f73",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b07792b318cdddd880b54e84a24c7fcfa00c2882",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e273dbd7_f4ef0f85",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "656d80e1_ddeeae94",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T19:03:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e273dbd7_f4ef0f85",
+      "revId": "b07792b318cdddd880b54e84a24c7fcfa00c2882",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "939638a6_b245f655",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-12-21T18:52:56Z",
       "side": 1,
       "message": "Be consistent with ctext_only_printer_driver.cpp?",
+      "revId": "b07792b318cdddd880b54e84a24c7fcfa00c2882",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23dc874_f6afc244",
+        "filename": "core/fxge/win32/cpsoutput.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-21T19:03:40Z",
+      "side": 1,
+      "message": "I didn\u0027t grok this. Can you explain more?",
+      "parentUuid": "939638a6_b245f655",
       "revId": "b07792b318cdddd880b54e84a24c7fcfa00c2882",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
