@@ -52,6 +52,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00eeca89_db40ce8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-21T18:03:14Z",
+      "side": 1,
+      "message": "BTW, please use the main branch instead of master branch.",
+      "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f6bc5aa_a930eebf",
