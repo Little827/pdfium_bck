@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac8f131_bbb67f73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-21T18:52:56Z",
+      "side": 1,
+      "message": "Windows",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b07792b318cdddd880b54e84a24c7fcfa00c2882",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e273dbd7_f4ef0f85",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-21T18:52:56Z",
+      "side": 1,
+      "message": "Just inline, like in cgdi_plus_ext.cpp?",
+      "revId": "b07792b318cdddd880b54e84a24c7fcfa00c2882",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939638a6_b245f655",
+        "filename": "core/fxge/win32/cpsoutput.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-21T18:52:56Z",
+      "side": 1,
+      "message": "Be consistent with ctext_only_printer_driver.cpp?",
+      "revId": "b07792b318cdddd880b54e84a24c7fcfa00c2882",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
