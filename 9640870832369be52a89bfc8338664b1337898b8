@@ -23,6 +23,30 @@
       },
       "revId": "9640870832369be52a89bfc8338664b1337898b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4dba53c_2f336edc",
+        "filename": "core/fxge/win32/cgdi_plus_ext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T00:20:02Z",
+      "side": 1,
+      "message": "Hmm, would be the intuitive behavior that is consistent with BuildAggPath(). I guess I\u0027ll hold off until I can prove this is correct.",
+      "parentUuid": "5137eb86_a98a1624",
+      "range": {
+        "startLine": 636,
+        "startChar": 35,
+        "endLine": 636,
+        "endChar": 40
+      },
+      "revId": "9640870832369be52a89bfc8338664b1337898b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
