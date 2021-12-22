@@ -54,6 +54,137 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2efca6ac_bc132348",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T18:16:01Z",
+      "side": 1,
+      "message": "It\u0027s safer to use IsValueInRangeForNumericType() to make sure the cast will work as intended.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324f3f65_09d13f34",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T18:16:01Z",
+      "side": 1,
+      "message": "Instead of doing this, just insert() and see if the insert() succeeded or not.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b5512f_ef8a006e",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T18:16:01Z",
+      "side": 1,
+      "message": "Since the number of elements in this vector is a known value, reserve() that many elements before the for-loop.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3b2045_3b7ab111",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T18:16:01Z",
+      "side": 1,
+      "message": "Can we use a pdfium::span internally?",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 48
+      },
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8877da02_13b98c8b",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T18:16:01Z",
+      "side": 1,
+      "message": "As mentioned before, let\u0027s just use Google Style for variable names. The 3 parameters to this method have mixed style.",
+      "range": {
+        "startLine": 98,
+        "startChar": 21,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a516c87d_6019f60e",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T18:16:01Z",
+      "side": 1,
+      "message": "We really should get this to work when XFA is enabled. Note that there\u0027s no expectation that this API will handle XFA PDFs, but it should be able to handle normal PDFs when XFA is enabled.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf091e2_9b81ad72",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T18:16:01Z",
+      "side": 1,
+      "message": "Use pdfium::Contains() to make this easier to understand.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4d6efb_c784c096",
         "filename": "fpdfsdk/fpdf_view_c_api_test.c",
         "patchSetId": 9
