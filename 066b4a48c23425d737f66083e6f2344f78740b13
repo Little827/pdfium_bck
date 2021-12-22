@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57dbff0_a92f19df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-22T17:52:20Z",
+      "side": 1,
+      "message": "Oh, it looks like the automatic summary generation really wants a blank line between lines 7 and 8 and not between 8 and 9. Sorry!",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 3
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab034a96_7a08ae00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-22T17:52:20Z",
+      "side": 1,
+      "message": "Good, we\u0027re getting much closer. Thanks for your patience. \n\nNote that most people will be out of the office presently, so this may wait until the new year. Apologies in advance.",
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f8a6ab_958a68bd",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-22T17:52:20Z",
+      "side": 1,
+      "message": "I\u0027m glad you tested the min max allowed values.  Can we also add tests for out-of-range values? as in e+39? How about overly long values as in 1e0000000000000000000000000000000000004 or\n4.1e+11111111111111111111111111111111\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 48,
+        "endLine": 93,
+        "endChar": 61
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc7fb66_37ecc283",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-22T17:52:20Z",
+      "side": 1,
+      "message": "I\u0027d also like to see some \"degenerate\" cases, e.g.\n\"e\"\n\".e\"\n\"..\"\n\"e.e\"\n\"ee\"\n\".0e0\"\n\"0e+.\"\n\nand so forth as you might think up.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
