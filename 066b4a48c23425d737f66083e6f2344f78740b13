@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8f92075_c526894b",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-22T20:33:40Z",
+      "side": 1,
+      "message": "Ah, most of these tests are not for whether we handle a well-formed document, but rather that we can handle (malicious) crafted ones.",
+      "parentUuid": "7784cfcc_9de06ae6",
+      "range": {
+        "startLine": 93,
+        "startChar": 48,
+        "endLine": 93,
+        "endChar": 61
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dc7fb66_37ecc283",
         "filename": "core/fxcrt/fx_string_unittest.cpp",
         "patchSetId": 1
