@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1c7041f_bd79b13a",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-12-22T13:01:15Z",
+      "side": 1,
+      "message": "if we leave the previous while by the condition \"scale \u003d\u003d fractional_scales_size\", then this while will be needed",
+      "parentUuid": "6f6bc5aa_a930eebf",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "444b3130bfb619ec17e108869f99b6c25b76b9a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05ccc7f6_314d69e9",
         "filename": "core/fxcrt/fx_string.cpp",
         "patchSetId": 1
