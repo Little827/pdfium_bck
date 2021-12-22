@@ -89,6 +89,12 @@ TEST(fxstring, ByteStringToFloat) {
 
   EXPECT_FLOAT_EQ(1.000000119f, StringToFloat("1.000000119"));
   EXPECT_FLOAT_EQ(1.999999881f, StringToFloat("1.999999881"));
+
+  EXPECT_FLOAT_EQ(3.402823e+38f, StringToFloat("3.402823e+38"));
+  EXPECT_FLOAT_EQ(-3.402823e+38f, StringToFloat("-3.402823e+38"));
+  EXPECT_FLOAT_EQ(0.0155f, StringToFloat("1.55e-2"));
+  EXPECT_FLOAT_EQ(-0.13f, StringToFloat("-1.3e-1"));
+  EXPECT_FLOAT_EQ(1.3f, StringToFloat("1.3e+0"));
 }
 
 TEST(fxstring, WideStringToFloat) {
@@ -173,6 +179,12 @@ TEST(fxstring, ByteStringToDouble) {
 
   EXPECT_FLOAT_EQ(1.000000119, StringToDouble("1.000000119"));
   EXPECT_FLOAT_EQ(1.999999881, StringToDouble("1.999999881"));
+
+  EXPECT_FLOAT_EQ(3.402823e+38f, StringToFloat("3.402823e+38"));
+  EXPECT_FLOAT_EQ(-3.402823e+38f, StringToFloat("-3.402823e+38"));
+  EXPECT_FLOAT_EQ(0.0155f, StringToFloat("1.55e-2"));
+  EXPECT_FLOAT_EQ(-0.13f, StringToFloat("-1.3e-1"));
+  EXPECT_FLOAT_EQ(1.3f, StringToFloat("1.3e+0"));
 }
 
 TEST(fxstring, WideStringToDouble) {
