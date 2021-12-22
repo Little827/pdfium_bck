@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e0ba4bc_e15050e5",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-22T22:03:32Z",
+      "side": 1,
+      "message": "For example, given 1e+9999999999999999999999999999, this is going to result in a signed integer overflow, which our fuzzers are sure to flag as undefined behaviour.",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45f8a6ab_958a68bd",
         "filename": "core/fxcrt/fx_string_unittest.cpp",
         "patchSetId": 1
