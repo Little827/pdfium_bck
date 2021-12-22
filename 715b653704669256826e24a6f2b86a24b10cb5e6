@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5646a51d_cd762f79",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T19:12:31Z",
+      "side": 1,
+      "message": "These includes are in the wrong spot.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2efca6ac_bc132348",
         "filename": "core/fpdfapi/parser/cpdf_document.cpp",
         "patchSetId": 9
@@ -65,6 +82,23 @@
       "writtenOn": "2021-12-22T18:16:01Z",
       "side": 1,
       "message": "It\u0027s safer to use IsValueInRangeForNumericType() to make sure the cast will work as intended.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1271263a_a466a7c1",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T19:12:31Z",
+      "side": 1,
+      "message": "If this loop also constructs `pages_to_move` at the same time, then this check is no longer necessary. GetPageDictionary() will do a more thorough check that includes this bounds check.",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -162,6 +196,24 @@
       "writtenOn": "2021-12-22T18:16:01Z",
       "side": 1,
       "message": "We really should get this to work when XFA is enabled. Note that there\u0027s no expectation that this API will handle XFA PDFs, but it should be able to handle normal PDFs when XFA is enabled.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d11829_1f539ba6",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-22T19:12:31Z",
+      "side": 1,
+      "message": "Let me know if you need help here.",
+      "parentUuid": "a516c87d_6019f60e",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
