@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7784cfcc_9de06ae6",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-12-22T19:44:30Z",
+      "side": 1,
+      "message": "I wonder what is the point of such checks?\nyes, we will get some invalid value.",
+      "parentUuid": "45f8a6ab_958a68bd",
+      "range": {
+        "startLine": 93,
+        "startChar": 48,
+        "endLine": 93,
+        "endChar": 61
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dc7fb66_37ecc283",
         "filename": "core/fxcrt/fx_string_unittest.cpp",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2021-12-22T17:52:20Z",
       "side": 1,
       "message": "I\u0027d also like to see some \"degenerate\" cases, e.g.\n\"e\"\n\".e\"\n\"..\"\n\"e.e\"\n\"ee\"\n\".0e0\"\n\"0e+.\"\n\nand so forth as you might think up.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad01aa3_c07a0125",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-12-22T19:44:30Z",
+      "side": 1,
+      "message": "yes, let\u0027s add such checks\nbut i have a question - what will be considered a standard in this case?\nfor example, in the case of \"e\" or \"e.e\"?",
+      "parentUuid": "7dc7fb66_37ecc283",
       "range": {
         "startLine": 97,
         "startChar": 2,
