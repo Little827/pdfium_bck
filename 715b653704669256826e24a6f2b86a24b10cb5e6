@@ -139,6 +139,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e43ed283_d00062a9",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T23:32:56Z",
+      "side": 1,
+      "message": "re: Indeterminate state - when this fails in the middle of the loop.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc3b2045_3b7ab111",
         "filename": "core/fpdfapi/parser/cpdf_document.h",
         "patchSetId": 9
@@ -249,6 +266,24 @@
       "side": 1,
       "message": "I found that if pages in a documents are not loaded/unloaded to compute the original hash before doing the move, then it works correctly for XFA.",
       "parentUuid": "98d11829_1f539ba6",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3583e2b5_695e81a4",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T23:32:56Z",
+      "side": 1,
+      "message": "So what we need to do is:\n1) Call CPDF_Document::GetExtension(). If an extension exists and ContainsExtensionForm() returns true, then it\u0027s some kind of XFA PDF. Refuse to manipulate such a PDF.\n2) After successfully rearranging all the pages in CPDF_Document, if an extension exists, rearrange the pages in the extension. In practice, this means keeping  `CPDFXFA_Context::m_XFAPageList` in sync.\n3) The API needs a warning that if it fails, the document may be in an indeterminate state.",
+      "parentUuid": "b1d482a6_ef7c44d7",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
