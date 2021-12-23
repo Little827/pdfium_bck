@@ -237,6 +237,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1d482a6_ef7c44d7",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T23:07:23Z",
+      "side": 1,
+      "message": "I found that if pages in a documents are not loaded/unloaded to compute the original hash before doing the move, then it works correctly for XFA.",
+      "parentUuid": "98d11829_1f539ba6",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd89292d_16a6a63d",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 9
