@@ -64,6 +64,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e3c2bd_803aafd0",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-12-23T10:59:13Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "7e0ba4bc_e15050e5",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45f8a6ab_958a68bd",
@@ -135,6 +159,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68128e5c_05365434",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-12-23T10:59:13Z",
+      "side": 1,
+      "message": "fixed code and tests",
+      "parentUuid": "d8f92075_c526894b",
+      "range": {
+        "startLine": 93,
+        "startChar": 48,
+        "endLine": 93,
+        "endChar": 61
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dc7fb66_37ecc283",
@@ -172,6 +220,30 @@
       "side": 1,
       "message": "yes, let\u0027s add such checks\nbut i have a question - what will be considered a standard in this case?\nfor example, in the case of \"e\" or \"e.e\"?",
       "parentUuid": "7dc7fb66_37ecc283",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "066b4a48c23425d737f66083e6f2344f78740b13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df25e07_fde932f1",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2021-12-23T10:59:13Z",
+      "side": 1,
+      "message": "added",
+      "parentUuid": "0ad01aa3_c07a0125",
       "range": {
         "startLine": 97,
         "startChar": 2,
