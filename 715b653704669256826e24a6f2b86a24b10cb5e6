@@ -220,6 +220,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd89292d_16a6a63d",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T22:24:13Z",
+      "side": 1,
+      "message": "No need to use std::vector:\n\nconst FPDFEditMoveEmbedderTestCase kTestCases[] \u003d { ... };",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5441e5b_9ce6e99e",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T22:24:13Z",
+      "side": 1,
+      "message": "Verify the page count, given rectangles_multi_pages.pdf is not set in stone.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4a8e29_22a113d6",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T22:24:13Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary with range-based for-loops:\n\nfor (const FPDFEditMoveEmbedderTestCase\u0026 tc : kTestCases) { ... }",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdf091e2_9b81ad72",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 9
@@ -231,6 +282,23 @@
       "writtenOn": "2021-12-22T18:16:01Z",
       "side": 1,
       "message": "Use pdfium::Contains() to make this easier to understand.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c005f93_f851b651",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T22:24:13Z",
+      "side": 1,
+      "message": "Maybe a helper function that returns all the page hashes for a document as a vector would be helpful. Then the test can just check one vector vs. the other, and not worry about issues like FPDFPage_Move() being buggy and making the document have a different number of pages.",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
