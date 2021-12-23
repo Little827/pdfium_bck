@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e30d800_20806994",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-23T00:33:57Z",
+      "side": 1,
+      "message": "need to have actually allocated more than size_t::max() bytes to overflow, so can\u0027t happen, just use ordinary wider type.",
+      "range": {
+        "startLine": 178,
+        "startChar": 43,
+        "endLine": 178,
+        "endChar": 60
+      },
+      "revId": "15738d947615b1792a99167ad27f6492d5447163",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f008bc99_cbf9e427",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-23T00:33:57Z",
+      "side": 1,
+      "message": "callers either pass 1, or check for 0 before invoking.  So can\u0027t underflow, even so we added check at 194.",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 18
+      },
+      "revId": "15738d947615b1792a99167ad27f6492d5447163",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d66746_c3139b04",
+        "filename": "core/fpdfapi/parser/cpdf_seekablemultistream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2021-12-23T00:33:57Z",
+      "side": 1,
+      "message": "No idea if this actually requires underlying memory, or just a lying stream to overflow. Make both 64-bit and safe from overflow.",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "15738d947615b1792a99167ad27f6492d5447163",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
