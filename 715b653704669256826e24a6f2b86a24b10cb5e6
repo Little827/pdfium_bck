@@ -185,6 +185,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d6c141a_e2214fa9",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4071,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2021-12-23T22:29:51Z",
+      "side": 1,
+      "message": "Maybe this can have a name field, then:\n- There\u0027s less of a need for operator\u003c\u003c below. One can look up the test case on an as-needed bases.\n- Test cases like the one on line 4116 can just put the comment into this field.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a516c87d_6019f60e",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 9
