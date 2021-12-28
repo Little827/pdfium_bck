@@ -16,6 +16,24 @@
       "message": "While testing, I noticed a segfault with document /home/manuel/projects/pypdfium2/sourcebuild/pdfium/testing/corpus/fx/FRC_8.2.2_part1/FRC_53_8.2.2_T_8.4__Count_empty.pdf",
       "revId": "2f28b5ee7180a852e4a7f11b367ca1f08023dbaa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1bbae7_f215d40a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2021-12-28T22:24:32Z",
+      "side": 1,
+      "message": "The crash occurs in `FX_Number::GetSigned()`, because it got an invalid input. We need to add a check that `cObj` is a valid value that can be converted to an integer.",
+      "parentUuid": "141f7b04_159ac56f",
+      "revId": "2f28b5ee7180a852e4a7f11b367ca1f08023dbaa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
