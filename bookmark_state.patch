@@ -1,0 +1,98 @@
+From 8bf1e01e2140924b4bb1e23904aecb673fdc9777 Mon Sep 17 00:00:00 2001
+Message-Id: <8bf1e01e2140924b4bb1e23904aecb673fdc9777.1640718466.git.geisserml@gmail.com>
+From: geisserml <geisserml@gmail.com>
+Date: Tue, 28 Dec 2021 17:28:57 +0100
+Subject: [PATCH] Add a method to get bookmark state
+
+Implement a new public method `FPDFBookmark_IsClosed` in fpdf_doc  with
+corresponding backend in cpdf_bookmark that enables PDFium users to
+determine whether an outline item is opened or closed.
+CCBUG 1758
+---
+ core/fpdfdoc/cpdf_bookmark.cpp | 12 ++++++++++++
+ core/fpdfdoc/cpdf_bookmark.h   |  1 +
+ fpdfsdk/fpdf_doc.cpp           |  9 +++++++++
+ public/fpdf_doc.h              |  8 ++++++++
+ 4 files changed, 30 insertions(+)
+
+diff --git a/core/fpdfdoc/cpdf_bookmark.cpp b/core/fpdfdoc/cpdf_bookmark.cpp
+index 236b5ec..861e107 100644
+--- a/core/fpdfdoc/cpdf_bookmark.cpp
++++ b/core/fpdfdoc/cpdf_bookmark.cpp
+@@ -10,6 +10,7 @@
+ 
+ #include "core/fpdfapi/parser/cpdf_dictionary.h"
+ #include "core/fpdfapi/parser/cpdf_string.h"
++#include "core/fpdfapi/parser/cpdf_number.h"
+ #include "core/fxcrt/fx_memory_wrappers.h"
+ #include "core/fxge/dib/fx_dib.h"
+ 
+@@ -51,3 +52,14 @@ CPDF_Dest CPDF_Bookmark::GetDest(CPDF_Document* pDocument) const {
+ CPDF_Action CPDF_Bookmark::GetAction() const {
+   return CPDF_Action(m_pDict ? m_pDict->GetDictFor("A") : nullptr);
+ }
++
++bool CPDF_Bookmark::IsClosed() const {
++    const CPDF_Object* cObj = m_pDict->GetDirectObjectFor("Count");
++    if (!cObj)
++        return false;
++    const CPDF_Number* cNum = ToNumber(cObj);
++    int count = cNum->GetInteger();
++    if (count < 0)
++        return true;
++    return false;
++}
+diff --git a/core/fpdfdoc/cpdf_bookmark.h b/core/fpdfdoc/cpdf_bookmark.h
+index 5b166a9..cf21dec 100644
+--- a/core/fpdfdoc/cpdf_bookmark.h
++++ b/core/fpdfdoc/cpdf_bookmark.h
+@@ -27,6 +27,7 @@ class CPDF_Bookmark {
+   WideString GetTitle() const;
+   CPDF_Dest GetDest(CPDF_Document* pDocument) const;
+   CPDF_Action GetAction() const;
++  bool IsClosed() const;
+ 
+  private:
+   RetainPtr<const CPDF_Dictionary> m_pDict;
+diff --git a/fpdfsdk/fpdf_doc.cpp b/fpdfsdk/fpdf_doc.cpp
+index 459f8d5..09e4251 100644
+--- a/fpdfsdk/fpdf_doc.cpp
++++ b/fpdfsdk/fpdf_doc.cpp
+@@ -110,6 +110,15 @@ FPDFBookmark_GetTitle(FPDF_BOOKMARK bookmark,
+   return Utf16EncodeMaybeCopyAndReturnLength(title, buffer, buflen);
+ }
+ 
++FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
++FPDFBookmark_IsClosed(FPDF_BOOKMARK bookmark) {
++    if (!bookmark)
++        return 0;
++    CPDF_Bookmark cBookmark(CPDFDictionaryFromFPDFBookmark(bookmark));
++    FPDF_BOOL is_closed = cBookmark.IsClosed();
++    return is_closed;
++}
++
+ FPDF_EXPORT FPDF_BOOKMARK FPDF_CALLCONV
+ FPDFBookmark_Find(FPDF_DOCUMENT document, FPDF_WIDESTRING title) {
+   CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+diff --git a/public/fpdf_doc.h b/public/fpdf_doc.h
+index df453ad..3bb30b4 100644
+--- a/public/fpdf_doc.h
++++ b/public/fpdf_doc.h
+@@ -98,6 +98,14 @@ FPDFBookmark_GetTitle(FPDF_BOOKMARK bookmark,
+                       void* buffer,
+                       unsigned long buflen);
+ 
++// Get the state of |bookmark|.
++//
++//   bookmark - handle to the bookmark.
++//
++// Returns whether the bookmark is closed.
++FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
++FPDFBookmark_IsClosed(FPDF_BOOKMARK bookmark);
++
+ // Find the bookmark with |title| in |document|.
+ //
+ //   document - handle to the document.
+-- 
+2.25.1
+
