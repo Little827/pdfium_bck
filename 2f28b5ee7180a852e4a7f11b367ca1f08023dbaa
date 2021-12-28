@@ -34,6 +34,24 @@
       "parentUuid": "141f7b04_159ac56f",
       "revId": "2f28b5ee7180a852e4a7f11b367ca1f08023dbaa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8892ca74_1d677e36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2021-12-28T22:34:46Z",
+      "side": 1,
+      "message": "I have found a fix: use `m_pDict-\u003eGetIntegerFor(\"Count\")` - that\u0027s much easier anyway",
+      "parentUuid": "5b1bbae7_f215d40a",
+      "revId": "2f28b5ee7180a852e4a7f11b367ca1f08023dbaa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
