@@ -10,6 +10,7 @@
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
+#include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxge/dib/fx_dib.h"
 
@@ -50,4 +51,15 @@ CPDF_Dest CPDF_Bookmark::GetDest(CPDF_Document* pDocument) const {
 
 CPDF_Action CPDF_Bookmark::GetAction() const {
   return CPDF_Action(m_pDict ? m_pDict->GetDictFor("A") : nullptr);
+}
+
+bool CPDF_Bookmark::IsClosed() const {
+    const CPDF_Object* cObj = m_pDict->GetDirectObjectFor("Count");
+    if (!cObj)
+        return false;
+    const CPDF_Number* cNum = ToNumber(cObj);
+    int count = cNum->GetInteger();
+    if (count < 0)
+        return true;
+    return false;
 }
