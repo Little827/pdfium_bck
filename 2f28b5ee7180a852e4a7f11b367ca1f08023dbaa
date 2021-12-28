@@ -52,6 +52,23 @@
       "parentUuid": "5b1bbae7_f215d40a",
       "revId": "2f28b5ee7180a852e4a7f11b367ca1f08023dbaa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421f25b6_f199edf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2021-12-28T22:35:24Z",
+      "side": 1,
+      "message": "I\u0027m abandoning this one and sending a new, clean MR.",
+      "revId": "2f28b5ee7180a852e4a7f11b367ca1f08023dbaa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
