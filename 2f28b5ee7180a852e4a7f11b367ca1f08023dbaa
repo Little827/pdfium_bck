@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "141f7b04_159ac56f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2021-12-28T22:04:30Z",
+      "side": 1,
+      "message": "While testing, I noticed a segfault with document /home/manuel/projects/pypdfium2/sourcebuild/pdfium/testing/corpus/fx/FRC_8.2.2_part1/FRC_53_8.2.2_T_8.4__Count_empty.pdf",
+      "revId": "2f28b5ee7180a852e4a7f11b367ca1f08023dbaa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
