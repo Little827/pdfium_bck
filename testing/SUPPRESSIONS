@@ -325,12 +325,6 @@ resolve_nodes_1.pdf * * * *
 # Pixel tests
 #
 
-# TODO(pdfium:1746): Remove after associated bug is fixed
-bug_1128284.in * * * skia
-
-# TODO(pdfium:1747): Remove after associated bug is fixed
-bug_1241587.in * * * skia
-
 # TODO(pdfium:1747): Remove after associated bug is fixed
 bug_1258634.in * * * skia
 
@@ -371,9 +365,6 @@ bug_451366.in * * * *
 # TODO(pdfium:492): Remove after associated bug is fixed
 bug_492.in * nov8 * *
 
-# TODO(pdfium:1746): Remove after associated bug is fixed
-bug_591137.in * * * skia
-
 # TODO(chromium:725555, skia:9265): Remove after associated bug is fixed
 bug_725555.in * * * skia,skiapaths
 
@@ -392,9 +383,6 @@ bug_736695_4.in * * * skia
 # TODO(pdfium:1752): Remove after associated bug is fixed
 bug_845697.in * * * skia,skiapaths
 
-# TODO(pdfium:1749): Remove after associated bug is fixed
-bug_966263.in * * * skia
-
 # TODO(pdfium:1736): Remove after associated bug is fixed
 checkbox_radiobutton.in * * * skia
 
@@ -406,9 +394,6 @@ radial_shading_point_at_border.in * * * skia,skiapaths
 
 # TODO(chromium:1028991): Remove after associated bug is fixed
 reset_button.in * * * *
-
-# TODO(pdfium:1749): Remove after associated bug is fixed (skia doesn't render right, between 2 straight lines.)
-type3.in * * * skia
 
 # xfa_specific
 
