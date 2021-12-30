@@ -630,7 +630,7 @@ void SetBitmapPaint(bool isAlphaMask,
                     SkPaint* paint) {
   paint->setAntiAlias(anti_alias);
   if (isAlphaMask)
-    paint->setColorFilter(SkColorFilters::Blend(argb, SkBlendMode::kSrc));
+    paint->setColorFilter(SkColorFilters::Blend(argb, SkBlendMode::kSrcATop));
 
   // paint->setFilterQuality(kHigh_SkFilterQuality);
   paint->setBlendMode(GetSkiaBlendMode(blend_type));
