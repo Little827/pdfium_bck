@@ -2545,7 +2545,10 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
     SetBitmapMatrix(matrix, width, height, &skMatrix);
     m_pCanvas->concat(skMatrix);
     SkPaint paint;
-    SetBitmapPaint(pSource->IsMaskFormat(), !m_FillOptions.aliased_path, argb,
+    // Despite that `pSource` sometimes can be in mask format, make sure
+    // `isAlphaMask` is set to false since its bitmap will be directly painted
+    // onto the canvas as an image.
+    SetBitmapPaint(/*isAlphaMask=*/false, !m_FillOptions.aliased_path, argb,
                    bitmap_alpha, blend_type, &paint);
     // TODO(caryclark) Once Skia supports 8 bit src to 8 bit dst remove this
     if (m_pBitmap && m_pBitmap->GetBPP() == 8 && pSource->GetBPP() == 8) {
