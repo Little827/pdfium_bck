@@ -16,6 +16,24 @@
       "message": "Red bots.",
       "revId": "4dd0d1b72460451e4663ffcab3593f30bfbe9023",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5823217d_c90c3fcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2021-12-31T01:15:23Z",
+      "side": 1,
+      "message": "Ah, yeah. That\u0027s why I unchained this one. \n\nRed bots are due to affected test expectations. Should be good to go now.\n\nI\u0027ll change the pdfium_test_revision once that CL lands",
+      "parentUuid": "ed1d874d_fb18bd5a",
+      "revId": "4dd0d1b72460451e4663ffcab3593f30bfbe9023",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
