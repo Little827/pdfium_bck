@@ -34,7 +34,7 @@ CXFA_Measurement::CXFA_Measurement(float fValue, XFA_Unit eUnit) {
 }
 
 void CXFA_Measurement::SetString(WideStringView wsMeasure) {
-  if (wsMeasure.IsEmpty()) {
+  if (wsMeasure.IsEmpty() || wsMeasure == L'=') {
     Set(0, XFA_Unit::Unknown);
     return;
   }
