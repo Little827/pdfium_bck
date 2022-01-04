@@ -4302,18 +4302,20 @@ void CFXJSE_FormCalcContext::Stuff(
     return;
   }
 
-  ByteString bsSource;
-  ByteString bsInsert;
-  int32_t iLength = 0;
-  int32_t iStart = 0;
-  int32_t iDelete = 0;
   v8::Local<v8::Value> sourceValue = GetSimpleValue(info, 0);
   v8::Local<v8::Value> startValue = GetSimpleValue(info, 1);
   v8::Local<v8::Value> deleteValue = GetSimpleValue(info, 2);
-  if (!fxv8::IsNull(sourceValue) && !fxv8::IsNull(startValue) &&
-      !fxv8::IsNull(deleteValue)) {
-    bsSource = ValueToUTF8String(info.GetIsolate(), sourceValue);
-    iLength = bsSource.GetLength();
+  if (fxv8::IsNull(sourceValue) || fxv8::IsNull(startValue) ||
+      fxv8::IsNull(deleteValue)) {
+    info.GetReturnValue().SetNull();
+    return;
+  }
+
+  int32_t iStart = 1;  // one-based character indexing.
+  int32_t iDelete = 0;
+  ByteString bsSource = ValueToUTF8String(info.GetIsolate(), sourceValue);
+  int32_t iLength = bsSource.GetLength();
+  if (iLength) {
     iStart = pdfium::clamp(
         static_cast<int32_t>(ValueToFloat(info.GetIsolate(), startValue)), 1,
         iLength);
@@ -4321,12 +4323,13 @@ void CFXJSE_FormCalcContext::Stuff(
         0, static_cast<int32_t>(ValueToFloat(info.GetIsolate(), deleteValue)));
   }
 
+  ByteString bsInsert;
   if (argc > 3) {
     v8::Local<v8::Value> insertValue = GetSimpleValue(info, 3);
     bsInsert = ValueToUTF8String(info.GetIsolate(), insertValue);
   }
 
-  --iStart;
+  --iStart;  // now zero-based.
   std::ostringstream szResult;
   int32_t i = 0;
   while (i < iStart) {
