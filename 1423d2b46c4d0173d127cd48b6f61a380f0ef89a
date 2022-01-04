@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c35eaee_a88a99a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-04T18:18:38Z",
+      "side": 1,
+      "message": "Aleksei, I\u0027m not sure why we\u0027re getting the recent commit queue error, but typically this happens when the infrastructure is upgraded underneath an existing patch.  I\u0027d suggest re-creating the patch on top of the most recent PDFium version and uploading as a new issue, so we can try again.",
+      "revId": "1423d2b46c4d0173d127cd48b6f61a380f0ef89a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
