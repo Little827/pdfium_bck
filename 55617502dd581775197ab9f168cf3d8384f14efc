@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9a6af5_3e72e774",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 4311,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-04T22:22:13Z",
+      "side": 1,
+      "message": "NOTE: spec says returns null if any of its required parameter are null.",
+      "range": {
+        "startLine": 4311,
+        "startChar": 4,
+        "endLine": 4311,
+        "endChar": 8
+      },
+      "revId": "55617502dd581775197ab9f168cf3d8384f14efc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
