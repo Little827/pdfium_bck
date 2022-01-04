@@ -22,6 +22,23 @@
       },
       "revId": "55617502dd581775197ab9f168cf3d8384f14efc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcbd576c_a0dfaa9b",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 4334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-04T23:36:10Z",
+      "side": 1,
+      "message": "Maybe use a new variable, so one variable can always be 1-based while the other is always 0-based?",
+      "revId": "55617502dd581775197ab9f168cf3d8384f14efc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
