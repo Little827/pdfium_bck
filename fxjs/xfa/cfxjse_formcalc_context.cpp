@@ -4314,11 +4314,13 @@ void CFXJSE_FormCalcContext::Stuff(
       !fxv8::IsNull(deleteValue)) {
     bsSource = ValueToUTF8String(info.GetIsolate(), sourceValue);
     iLength = bsSource.GetLength();
-    iStart = pdfium::clamp(
-        static_cast<int32_t>(ValueToFloat(info.GetIsolate(), startValue)), 1,
-        iLength);
-    iDelete = std::max(
-        0, static_cast<int32_t>(ValueToFloat(info.GetIsolate(), deleteValue)));
+    if (iLength) {
+      iStart = pdfium::clamp(
+          static_cast<int32_t>(ValueToFloat(info.GetIsolate(), startValue)), 1,
+          iLength);
+      iDelete = std::max(0, static_cast<int32_t>(
+                                ValueToFloat(info.GetIsolate(), deleteValue)));
+    }
   }
 
   if (argc > 3) {
