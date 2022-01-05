@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1abb8f_ad01bfaa",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-05T22:35:41Z",
+      "side": 1,
+      "message": "At first I experimented with changing `isAlphaMask` value/ignoring `isAlphaMask`, which caused regression on rendering bug_1087.pdf. (bug_1087 and the suppressed type3 tests are all mask format. And `isAlphaMask` remain true for all of them.)\n\nBy testing both bug_1087.pdf and all the suppressed type3 pixel tests, only two SkBlendModes can make all these tests render correctly: `SkBlendMode::kSrcATop` and `SkBlendMode::kSrcIn`.\n\nAn overview for all SkBlendMode can be found at [1].\nI feel that the original code using `kSrc` made more sense since it directly put the src bitmap (aka the glyph bitmap) on top of the background, but it led to wrong rendering results. I am still trying to create a case to make using `kSrcATop` and `kSrcIn` lead to different results.\n\n[1] https://skia.org/docs/user/api/skblendmode_overview/",
+      "range": {
+        "startLine": 633,
+        "startChar": 54,
+        "endLine": 633,
+        "endChar": 75
+      },
+      "revId": "8e195045af94e350179bf70db626da3512901d21",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
