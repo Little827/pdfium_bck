@@ -74,10 +74,12 @@ FPDF_RenderPageBitmapWithColorScheme_Start(FPDF_BITMAP bitmap,
                                 size_y, rotate, flags, color_scheme,
                                 /*need_to_restore=*/false, &pause_adapter);
 
-#if defined(_SKIA_SUPPORT_PATHS_)
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   pDevice->Flush(false);
+#if defined(_SKIA_SUPPORT_PATHS_)
   pBitmap->UnPreMultiply();
-#endif
+#endif  // defined(_SKIA_SUPPORT_PATHS_)
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
   if (!pContext->m_pRenderer)
     return FPDF_RENDER_FAILED;
@@ -115,11 +117,14 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPage_Continue(FPDF_PAGE page,
 
   CPDFSDK_PauseAdapter pause_adapter(pause);
   pContext->m_pRenderer->Continue(&pause_adapter);
-#if defined(_SKIA_SUPPORT_PATHS_)
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   CFX_RenderDevice* pDevice = pContext->m_pDevice.get();
   pDevice->Flush(false);
+#if defined(_SKIA_SUPPORT_PATHS_)
   pDevice->GetBitmap()->UnPreMultiply();
-#endif
+#endif  // defined(_SKIA_SUPPORT_PATHS_)
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   return ToFPDFStatus(pContext->m_pRenderer->GetStatus());
 }
 
