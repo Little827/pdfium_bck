@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a77494_a69fc2b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-05T17:03:13Z",
+      "side": 1,
+      "message": "I tested this extensively using pypdfium2 built with this patch, and it seems to work correctly. Could you please review/merge?",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
