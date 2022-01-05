@@ -596,7 +596,6 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
   const FX_COLORREF crWhite = ArgbEncode(255, 255, 255, 255);
   const FX_COLORREF crSelBK = ArgbEncode(255, 0, 51, 113);
 
-  std::ostringstream sTextBuf;
   int32_t nFontIndex = -1;
   CFX_PointF ptBT;
   CFX_RenderDevice::StateRestorer restorer(pDevice);
@@ -613,6 +612,7 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
   else
     pIterator->SetAt(0);
 
+  ByteString sTextBuf;
   CPVT_WordPlace oldplace;
   while (pIterator->NextWord()) {
     CPVT_WordPlace place = pIterator->GetAt();
@@ -632,7 +632,6 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
       if (bSelect) {
         CPVT_Line line;
         pIterator->GetLine(line);
-
         if (pSystemHandler->IsSelectionImplemented()) {
           CFX_FloatRect rc(word.ptWord.x, line.ptLine.y + line.fLineDescent,
                            word.ptWord.x + word.fWidth,
@@ -649,24 +648,21 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
                             CFX_FillRenderOptions::WindingOptions());
         }
       }
-
       if (bContinuous) {
         if (place.LineCmp(oldplace) != 0 || word.nFontIndex != nFontIndex ||
             crOldFill != crCurFill) {
-          if (sTextBuf.tellp() > 0) {
+          if (sTextBuf.GetLength() > 0) {
             DrawTextString(pDevice,
                            CFX_PointF(ptBT.x + ptOffset.x, ptBT.y + ptOffset.y),
                            pFontMap->GetPDFFont(nFontIndex).Get(), fFontSize,
-                           mtUser2Device, ByteString(sTextBuf), crOldFill);
-
-            sTextBuf.str("");
+                           mtUser2Device, sTextBuf, crOldFill);
+            sTextBuf.clear();
           }
           nFontIndex = word.nFontIndex;
           ptBT = word.ptWord;
           crOldFill = crCurFill;
         }
-
-        sTextBuf << GetPDFWordString(word.nFontIndex, word.Word, SubWord);
+        sTextBuf += GetPDFWordString(word.nFontIndex, word.Word, SubWord);
       } else {
         DrawTextString(
             pDevice,
@@ -678,12 +674,11 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
       oldplace = place;
     }
   }
-
-  if (sTextBuf.tellp() > 0) {
+  if (sTextBuf.GetLength() > 0) {
     DrawTextString(pDevice,
                    CFX_PointF(ptBT.x + ptOffset.x, ptBT.y + ptOffset.y),
                    pFontMap->GetPDFFont(nFontIndex).Get(), fFontSize,
-                   mtUser2Device, ByteString(sTextBuf), crOldFill);
+                   mtUser2Device, sTextBuf, crOldFill);
   }
 }
 
