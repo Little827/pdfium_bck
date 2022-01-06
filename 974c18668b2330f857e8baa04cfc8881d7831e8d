@@ -16,6 +16,24 @@
       "message": "In core/fpdfdoc/cpdf_generateap.cpp, you didn\u0027t bother calling clear() after the last usage.",
       "revId": "974c18668b2330f857e8baa04cfc8881d7831e8d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7757811_0017cf1f",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-06T19:14:07Z",
+      "side": 1,
+      "message": "Right. Superfluous, removed. Done.",
+      "parentUuid": "a9812e5a_bca575fc",
+      "revId": "974c18668b2330f857e8baa04cfc8881d7831e8d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
