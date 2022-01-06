@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee89694_094ee3dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-06T21:10:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "452acc0c_0c9f744f",
+      "revId": "903ec97ab367a947190a0f4352459a027eee52b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39afb0f9_efe689ee",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-06T20:27:54Z",
       "side": 1,
       "message": "Also just remove the list of commits. We really don\u0027t care how many times the Fuchsia SDK has been updated.",
+      "revId": "903ec97ab367a947190a0f4352459a027eee52b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880ded45_a5a55480",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-06T21:10:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39afb0f9_efe689ee",
       "revId": "903ec97ab367a947190a0f4352459a027eee52b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
