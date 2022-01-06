@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "452acc0c_0c9f744f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-06T20:27:54Z",
+      "side": 1,
+      "message": "This is formatted funny. Needs a blank line separator and less indentation.",
+      "revId": "903ec97ab367a947190a0f4352459a027eee52b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39afb0f9_efe689ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-06T20:27:54Z",
+      "side": 1,
+      "message": "Also just remove the list of commits. We really don\u0027t care how many times the Fuchsia SDK has been updated.",
+      "revId": "903ec97ab367a947190a0f4352459a027eee52b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f21e6068_4673ef14",
