@@ -22,6 +22,30 @@
       },
       "revId": "164307279de3d88d93e45e15b407440c109d0985",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50bd56a9_91664859",
+        "filename": "third_party/base/span.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-06T21:49:13Z",
+      "side": 1,
+      "message": "Avoid dragging \u003climits\u003e in everywhere span is used.  a web search for std::dynamic_extent shows -1 as a possible impl.",
+      "parentUuid": "c97bcab0_7f7b0ced",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "164307279de3d88d93e45e15b407440c109d0985",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
