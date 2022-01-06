@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50323631_078b720d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-06T00:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e739f9_c7beb2fd",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "0daf70b794b5cada9a76927c48ac8436c1a905e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ca1a00c_659b07db",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T00:28:11Z",
       "side": 1,
       "message": "This needs to be rephrased. It doesn\u0027t quite parse.",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "0daf70b794b5cada9a76927c48ac8436c1a905e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b64f646_6b2daa98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-06T00:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca1a00c_659b07db",
       "range": {
         "startLine": 19,
         "startChar": 17,
@@ -77,6 +125,24 @@
       "writtenOn": "2022-01-06T00:28:11Z",
       "side": 1,
       "message": "Unnest this?",
+      "revId": "0daf70b794b5cada9a76927c48ac8436c1a905e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1536687_01b71ae6",
+        "filename": "fpdfsdk/fpdf_progressive.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-06T00:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27857b94_675b5a54",
       "revId": "0daf70b794b5cada9a76927c48ac8436c1a905e7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
