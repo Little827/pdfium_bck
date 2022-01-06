@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1edf42_3e2f3c97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-06T20:16:19Z",
+      "side": 1,
+      "message": "Can we use the CL description for that roll-dep produces? e.g. https://pdfium-review.googlesource.com/88771",
+      "revId": "1e2a2f7a6ce43045d178f37b187489c621fe6f8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "928797fe_8b174637",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-01-06T20:11:33Z",
       "side": 1,
       "message": "Is there bot that does this? If so, can we kick it off?",
+      "revId": "1e2a2f7a6ce43045d178f37b187489c621fe6f8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a59b9bf9_bf6ed387",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-06T20:16:19Z",
+      "side": 1,
+      "message": "There are for a few DEPS entries, but build/ is oftentimes tricky to roll, so we do it manually with roll-dep.",
+      "parentUuid": "928797fe_8b174637",
       "revId": "1e2a2f7a6ce43045d178f37b187489c621fe6f8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
