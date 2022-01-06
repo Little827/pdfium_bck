@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9812e5a_bca575fc",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-06T19:07:40Z",
+      "side": 1,
+      "message": "In core/fpdfdoc/cpdf_generateap.cpp, you didn\u0027t bother calling clear() after the last usage.",
+      "revId": "974c18668b2330f857e8baa04cfc8881d7831e8d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
