@@ -104,6 +104,24 @@
       "parentUuid": "a27298fe_856de5f1",
       "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7b360b_5ff6b33c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T19:25:23Z",
+      "side": 1,
+      "message": "Hmm, I started working with the PDFium test suite now. I ran `./pdfium_embeddertests --gtest_filter\u003d\"FPDFDocEmbedderTest.FindBookmarks\"`, which fails at loading the document. This seems unrelated to my changes, and I\u0027m not able to implement a test in this state. Here\u0027s the output:\n```\nNote: Google Test filter \u003d FPDFDocEmbedderTest.FindBookmarks\n[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] Running 1 test from 1 test suite.\n[----------] Global test environment set-up.\n[----------] 1 test from FPDFDocEmbedderTest\n[ RUN      ] FPDFDocEmbedderTest.FindBookmarks\n../fpdfsdk/fpdf_doc_embeddertest.cpp:502: Failure\nValue of: OpenDocument(\"bookmarks.pdf\")\n  Actual: false\nExpected: true\nStack trace:\n  0x5566bd4e4c02: FPDFDocEmbedderTest_FindBookmarks_Test::TestBody()\n  0x5566bd6b3945: testing::Test::Run()\n  0x5566bd6b47d8: testing::TestInfo::Run()\n... Google Test internal frames ...\n\n[  FAILED  ] FPDFDocEmbedderTest.FindBookmarks (3 ms)\n[----------] 1 test from FPDFDocEmbedderTest (3 ms total)\n\n[----------] Global test environment tear-down\n[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] 1 test from 1 test suite ran. (4 ms total)\n[  PASSED  ] 0 tests.\n[  FAILED  ] 1 test, listed below:\n[  FAILED  ] FPDFDocEmbedderTest.FindBookmarks\n\n 1 FAILED TEST\n```",
+      "parentUuid": "5c852b71_9e91f71e",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
