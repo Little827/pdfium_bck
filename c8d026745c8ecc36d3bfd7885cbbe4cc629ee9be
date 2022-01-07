@@ -140,6 +140,24 @@
       "parentUuid": "1a7b360b_5ff6b33c",
       "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689c3ffd_36265e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-07T19:46:27Z",
+      "side": 1,
+      "message": "It shouldn\u0027t matter what CWD is, since the bookmarks.pdf file is found relative to the path that contains pdfium_embeddertests itself. If you moved the file from its build location it will have problems. One other thing to consider is whether there are any permissions problems between testing/resources/bookmarks.pdf (as created by the user ID that checked out the tree), and the user ID current running the tests.",
+      "parentUuid": "71d75bd1_40c89b2a",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
