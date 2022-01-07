@@ -232,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dad24937_74340b27",
+        "filename": "core/fpdfdoc/cpdf_bookmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T21:24:41Z",
+      "side": 1,
+      "message": "The definition for FPF_BOOL is `typedef int FPDF_BOOL;` in `fpdfview.h`, so I thought it makes sense to use an int, but I can change to bool if you like.",
+      "parentUuid": "005f1e00_ec0bd8c4",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7b3bf67_8fd4e4d0",
         "filename": "fpdfsdk/fpdf_doc.cpp",
         "patchSetId": 2
