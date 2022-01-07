@@ -284,6 +284,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f781b80_d246e499",
+        "filename": "core/fpdfdoc/cpdf_bookmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad24937_74340b27",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7b3bf67_8fd4e4d0",
@@ -463,6 +481,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a444a8de_3b2c08c3",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d3bf427_5ba14e4e",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a443ebd0_64921aa6",
@@ -480,6 +516,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ec7332_0318863d",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a443ebd0_64921aa6",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88cf17c7_da67f15b",
@@ -493,6 +547,24 @@
       "writtenOn": "2022-01-07T19:49:02Z",
       "side": 1,
       "message": "New APIs need to start in an experimental state. Add a comment like line 216 below.",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba89d95f_f2e11780",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88cf17c7_da67f15b",
       "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
