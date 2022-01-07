@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d3b538_067dd66a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-07T19:49:02Z",
+      "side": 1,
+      "message": "Add another line here to reference the bug for this.\n\nBug: pdfium:1758",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "29a77494_a69fc2b8",
@@ -156,6 +173,92 @@
       "side": 1,
       "message": "It shouldn\u0027t matter what CWD is, since the bookmarks.pdf file is found relative to the path that contains pdfium_embeddertests itself. If you moved the file from its build location it will have problems. One other thing to consider is whether there are any permissions problems between testing/resources/bookmarks.pdf (as created by the user ID that checked out the tree), and the user ID current running the tests.",
       "parentUuid": "71d75bd1_40c89b2a",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9134bf_ea42cd15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-07T19:49:02Z",
+      "side": 1,
+      "message": "Your pdfium_embeddertests may need to be in a directory like out/Default, and not just out. I think the test utilities aren\u0027t fancy enough to detect the root source directory, and just assume it\u0027s 2 levels up.",
+      "parentUuid": "689c3ffd_36265e8f",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005f1e00_ec0bd8c4",
+        "filename": "core/fpdfdoc/cpdf_bookmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-07T19:49:02Z",
+      "side": 1,
+      "message": "Since this is C++, return a bool?",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b3bf67_8fd4e4d0",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-07T19:49:02Z",
+      "side": 1,
+      "message": "Indentation is off. Just run \"git cl format\" to auto-format.",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a443ebd0_64921aa6",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-07T19:49:02Z",
+      "side": 1,
+      "message": "I think this should still compile:\n\nreturn cBookmark.IsClosed();\n\ni.e. no need for a local variable that\u0027ll be immediately returned.",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88cf17c7_da67f15b",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-07T19:49:02Z",
+      "side": 1,
+      "message": "New APIs need to start in an experimental state. Add a comment like line 216 below.",
       "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
