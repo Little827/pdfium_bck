@@ -134,6 +134,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d5165f_1cf786fd",
+        "filename": "core/fpdfdoc/cpdf_bookmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d4f8011_f39545a3",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "328955057fd42145ee0762462e3ba24973740014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9915a05_0f989ada",
@@ -147,6 +171,30 @@
       "writtenOn": "2022-01-07T22:47:55Z",
       "side": 1,
       "message": "nit: I\u0027d write this as the one-liner\n  return m_pDict-\u003eGetIntegerFor(\"Count\") \u003c 0;",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "328955057fd42145ee0762462e3ba24973740014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc5e205_c44981af",
+        "filename": "core/fpdfdoc/cpdf_bookmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9915a05_0f989ada",
       "range": {
         "startLine": 56,
         "startChar": 2,
@@ -263,6 +311,30 @@
       "writtenOn": "2022-01-07T22:55:44Z",
       "side": 1,
       "message": "I would also reference ISO 32000-1:2008 Table 153, so readers can look up what \"closed\" means.",
+      "revId": "328955057fd42145ee0762462e3ba24973740014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c146c4_972d93d3",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "824086dc_b7e88636",
+      "range": {
+        "startLine": 106,
+        "startChar": 11,
+        "endLine": 106,
+        "endChar": 18
+      },
       "revId": "328955057fd42145ee0762462e3ba24973740014",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
