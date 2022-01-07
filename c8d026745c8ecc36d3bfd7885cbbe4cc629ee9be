@@ -16,6 +16,23 @@
       "message": "I tested this extensively using pypdfium2 built with this patch, and it seems to work correctly. Could you please review/merge?",
       "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65a5b53_f5158ba1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-07T17:17:13Z",
+      "side": 1,
+      "message": "Before we\u0027d consider this, you\u0027d need to add some tests for this new function to fpdf_doc_embeddertest.cpp.",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
