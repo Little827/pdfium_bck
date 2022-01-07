@@ -303,6 +303,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c678480f_42e3e08d",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T21:38:56Z",
+      "side": 1,
+      "message": "I\u0027d like to work on this and the other suggestions, but it seems that I lost the local sources - is there any way to check this out from gerrit again, or will I have to submit a new MR? (I only worked with Github/Gitlab so far, and the Gerrit workflow apears fundamentally different...)",
+      "parentUuid": "a7b3bf67_8fd4e4d0",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a443ebd0_64921aa6",
         "filename": "fpdfsdk/fpdf_doc.cpp",
         "patchSetId": 2
