@@ -393,6 +393,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b03ddf24_a13d53c8",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T22:15:21Z",
+      "side": 1,
+      "message": "I have a local commit that addresses all requests, but am unable to push it, error message: \"! [remote rejected]     HEAD -\u003e main (prohibited by Gerrit: not permitted: update)\"",
+      "parentUuid": "58298484_a7e3657e",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a443ebd0_64921aa6",
         "filename": "fpdfsdk/fpdf_doc.cpp",
         "patchSetId": 2
