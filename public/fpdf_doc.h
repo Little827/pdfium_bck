@@ -98,6 +98,15 @@ FPDFBookmark_GetTitle(FPDF_BOOKMARK bookmark,
                       void* buffer,
                       unsigned long buflen);
 
+// Experimental API.
+// Get the state of |bookmark|.
+//
+//   bookmark - handle to the bookmark.
+//
+// Returns whether the bookmark is closed.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFBookmark_IsClosed(FPDF_BOOKMARK bookmark);
+
 // Find the bookmark with |title| in |document|.
 //
 //   document - handle to the document.

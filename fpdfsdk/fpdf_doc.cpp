@@ -110,6 +110,14 @@ FPDFBookmark_GetTitle(FPDF_BOOKMARK bookmark,
   return Utf16EncodeMaybeCopyAndReturnLength(title, buffer, buflen);
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFBookmark_IsClosed(FPDF_BOOKMARK bookmark) {
+    if (!bookmark)
+      return 0;
+    CPDF_Bookmark cBookmark(CPDFDictionaryFromFPDFBookmark(bookmark));
+    return cBookmark.IsClosed();
+}
+
 FPDF_EXPORT FPDF_BOOKMARK FPDF_CALLCONV
 FPDFBookmark_Find(FPDF_DOCUMENT document, FPDF_WIDESTRING title) {
   CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
