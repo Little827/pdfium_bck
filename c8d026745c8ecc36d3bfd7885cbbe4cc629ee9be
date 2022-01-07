@@ -33,6 +33,23 @@
       "message": "Before we\u0027d consider this, you\u0027d need to add some tests for this new function to fpdf_doc_embeddertest.cpp.",
       "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e8cdd3_079c511e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-07T17:23:02Z",
+      "side": 1,
+      "message": "Also, I didn\u0027t see a record of a contributor agreement on file for your email address, see https://cla.developers.google.com",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
