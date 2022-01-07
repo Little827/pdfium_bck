@@ -50,6 +50,42 @@
       "message": "Also, I didn\u0027t see a record of a contributor agreement on file for your email address, see https://cla.developers.google.com",
       "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397376ef_02ba4d9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T18:51:39Z",
+      "side": 1,
+      "message": "Thanks, I filed the CLA now.",
+      "parentUuid": "b6e8cdd3_079c511e",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27298fe_856de5f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-01-07T18:51:39Z",
+      "side": 1,
+      "message": "I\u0027m primarily a Python developer and only know very little C/C++; I built this patch out of personal need for PyPDFium. Working with the PDFium test suite would take me a lot of time, much more than for someone who is already used to it.\nIs it possible that a member of PDFium team could please implement a test for the new method? After all, I already tested it extensively on the Python side as stated below, and Chromium would benefit from the new feature equally.\nAnyway, it seems like an oversight that there was not method to get bookmark state? Except for this one thing, the TOC parser of PDFium seems pretty complete...",
+      "parentUuid": "b65a5b53_f5158ba1",
+      "revId": "c8d026745c8ecc36d3bfd7885cbbe4cc629ee9be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
