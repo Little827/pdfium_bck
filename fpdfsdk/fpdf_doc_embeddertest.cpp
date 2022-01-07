@@ -513,6 +513,9 @@ TEST_F(FPDFDocEmbedderTest, FindBookmarks) {
   // Check that it is them same as the one returned by GetFirstChild.
   EXPECT_EQ(child, FPDFBookmark_GetFirstChild(document(), nullptr));
 
+  // Check state
+  EXPECT_FALSE(FPDFBookmark_IsClosed(child));
+
   // Try to find one using a non-existent title.
   ScopedFPDFWideString bad_title = GetFPDFWideString(L"A BAD Beginning");
   EXPECT_EQ(nullptr, FPDFBookmark_Find(document(), bad_title.get()));
