@@ -259,7 +259,8 @@ CPDF_StreamParser::ElementType CPDF_StreamParser::ParseNextElement() {
     if (m_WordSize < kMaxWordLength)
       m_WordBuffer[m_WordSize++] = ch;
 
-    if (!PDFCharIsNumeric(ch))
+    // exponential writing of a floating-point number is possible
+    if (!PDFCharIsNumeric(ch) && !(bIsNumber && ch == 'e'))
       bIsNumber = false;
 
     if (!PositionIsInBounds())
