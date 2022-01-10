@@ -17,6 +17,24 @@
       "message": "lgtm (note that \u0027use_python3\u003dTrue\u0027 also implies \u0027use_bbagent\u003dTrue\u0027)",
       "revId": "3d0200087e56894571fede131045f8fb6c61eb55",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2aa654b_a3a0582b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-10T23:43:40Z",
+      "side": 1,
+      "message": "Ack. I wanted to land them separately. The separation also makes it easier to see the associated config changes.",
+      "parentUuid": "4f29065c_6ff01876",
+      "revId": "3d0200087e56894571fede131045f8fb6c61eb55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
