@@ -6,6 +6,7 @@
 
 #include "core/fxcrt/fx_string.h"
 
+#include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/cfx_utf8decoder.h"
 #include "core/fxcrt/cfx_utf8encoder.h"
 #include "core/fxcrt/fx_extension.h"
@@ -67,18 +68,66 @@ T StringTo(ByteStringView strc,
   while (cc < len) {
     if (strc[cc] == '.')
       break;
+    if (strc[cc] == 'e')
+      break;
     value = value * 10 + FXSYS_DecimalCharToInt(strc.CharAt(cc));
     cc++;
   }
   size_t scale = 0;
-  if (cc < len && strc[cc] == '.') {
-    cc++;
+  if (cc < len && (strc[cc] == '.' || strc[cc] == 'e')) {
+    if (strc[cc] != 'e') {
+      cc++;
+      while (cc < len) {
+        if (strc[cc] == 'e')
+          break;
+        value +=
+            fractional_scales[scale] * FXSYS_DecimalCharToInt(strc.CharAt(cc));
+        scale++;
+        if (scale == fractional_scales_size)
+          break;
+        cc++;
+      }
+    }
+
     while (cc < len) {
-      value +=
-          fractional_scales[scale] * FXSYS_DecimalCharToInt(strc.CharAt(cc));
-      scale++;
-      if (scale == fractional_scales_size)
+      if (strc[cc] == 'e') {
+        if (cc + 1 < len) {
+          cc++;
+          bool exponent_negative = false;
+          if (strc[cc] == '+') {
+            cc++;
+          } else if (strc[cc] == '-') {
+            cc++;
+            exponent_negative = true;
+          }
+          FX_SAFE_INT32 exponent = 0;
+          while (cc < len) {
+            exponent = exponent * 10 + FXSYS_DecimalCharToInt(strc.CharAt(cc));
+            cc++;
+          }
+          if (exponent_negative)
+            exponent *= -1;
+          if (!exponent.IsValid())
+            // out-of-range
+            return 0;
+          const int32_t exponent_val = exponent.ValueOrDefault(0);
+
+          using limit = std::numeric_limits<T>;
+          if ((exponent_negative && limit::min_exponent10 != 0 &&
+                  limit::min_exponent10 <= exponent_val &&
+                  limit::min() / pow(10, exponent_val) <= value) ||
+              (!exponent_negative && limit::max_exponent10 != 0 &&
+                  limit::max_exponent10 >= exponent_val &&
+                  limit::max() / pow(10, exponent_val) >= value)) 
+          {
+            value *= pow(10, exponent_val);
+          } else {
+            // out-of-range
+            return 0;
+          }
+        }
         break;
+      }
       cc++;
     }
   }
