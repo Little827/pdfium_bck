@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06074cae_fb037adb",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-10T19:32:05Z",
+      "side": 0,
+      "message": "NB: only way to reach this is break out of loop at 549, right? If so, then this can\u0027t happen, and we can just return there instead.",
+      "range": {
+        "startLine": 553,
+        "startChar": 0,
+        "endLine": 553,
+        "endChar": 27
+      },
+      "revId": "d8851a7fd3c12685297ff4690e3dae842be85777",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
