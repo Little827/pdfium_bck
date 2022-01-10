@@ -20,6 +20,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/string_data_template.h"
 #include "core/fxcrt/string_view_template.h"
+#include "core/fxcrt/stringstream_util.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/check.h"
 #include "third_party/base/compiler_specific.h"
@@ -63,7 +64,7 @@ class ByteString {
   explicit ByteString(ByteStringView bstrc);
   ByteString(ByteStringView str1, ByteStringView str2);
   ByteString(const std::initializer_list<ByteStringView>& list);
-  explicit ByteString(const std::ostringstream& outStream);
+  explicit ByteString(const fxcrt::ostringstream& outStream);
 
   ~ByteString();
 
