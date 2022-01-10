@@ -89,6 +89,32 @@ TEST(fxstring, ByteStringToFloat) {
 
   EXPECT_FLOAT_EQ(1.000000119f, StringToFloat("1.000000119"));
   EXPECT_FLOAT_EQ(1.999999881f, StringToFloat("1.999999881"));
+
+  EXPECT_FLOAT_EQ(3.402823e+38f, StringToFloat("3.402823e+38"));
+  EXPECT_FLOAT_EQ(3.402823e+38f, StringToFloat("3.402823e38"));
+  EXPECT_FLOAT_EQ(-3.402823e+38f, StringToFloat("-3.402823e+38"));
+  EXPECT_FLOAT_EQ(1.17549e-38f, StringToDouble("1.17549e-38"));
+  EXPECT_FLOAT_EQ(0.0155f, StringToFloat("1.55e-2"));
+  EXPECT_FLOAT_EQ(-0.13f, StringToFloat("-1.3e-1"));
+  EXPECT_FLOAT_EQ(1.3f, StringToFloat("1.3e+0"));
+
+  // out-of-range values
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("3.402823e+39"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("3.403e+38"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("4.1e+11111111111111111111111111111111"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("1.17e-38"));
+
+  // "degenerate" values
+  EXPECT_FLOAT_EQ(10000.0f,
+                  StringToFloat("1e0000000000000000000000000000000000004"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("e"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat(".e"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat(".."));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("e.e"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("ee"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat(".0e0"));
+  EXPECT_FLOAT_EQ(0.0f, StringToFloat("0e+."));
+  EXPECT_FLOAT_EQ(1.5f, StringToFloat("1.5e"));
 }
 
 TEST(fxstring, WideStringToFloat) {
@@ -173,6 +199,31 @@ TEST(fxstring, ByteStringToDouble) {
 
   EXPECT_FLOAT_EQ(1.000000119, StringToDouble("1.000000119"));
   EXPECT_FLOAT_EQ(1.999999881, StringToDouble("1.999999881"));
+
+  EXPECT_FLOAT_EQ(1.79769e+308, StringToDouble("1.79769e+308"));
+  EXPECT_FLOAT_EQ(-1.79769e+308, StringToDouble("-1.79769e+308"));
+  EXPECT_FLOAT_EQ(2.22507e-308, StringToDouble("2.22507e-308"));
+  EXPECT_FLOAT_EQ(0.0155, StringToDouble("1.55e-2"));
+  EXPECT_FLOAT_EQ(-0.13, StringToDouble("-1.3e-1"));
+  EXPECT_FLOAT_EQ(1.3, StringToDouble("1.3e+0"));
+
+  // out-of-range values
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("1.79769e+309"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("1.798e+308"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("4.1e+11111111111111111111111111111111"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("2.2e-308"));
+
+  // "degenerate" values
+  EXPECT_FLOAT_EQ(10000.0,
+                  StringToDouble("1e0000000000000000000000000000000000004"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("e"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble(".e"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble(".."));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("e.e"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("ee"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble(".0e0"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("0e+."));
+  EXPECT_FLOAT_EQ(1.5, StringToDouble("1.5e"));
 }
 
 TEST(fxstring, WideStringToDouble) {
