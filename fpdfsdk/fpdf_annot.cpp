@@ -170,7 +170,7 @@ void UpdateContentStream(CPDF_Form* pForm, CPDF_Stream* pStream) {
   DCHECK(pStream);
 
   CPDF_PageContentGenerator generator(pForm);
-  std::ostringstream buf;
+  fxcrt::ostringstream buf;
   generator.ProcessPageObjects(&buf);
   pStream->SetDataFromStringstreamAndRemoveFilter(&buf);
 }

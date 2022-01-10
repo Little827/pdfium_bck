@@ -22,6 +22,7 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fxcrt/stl_util.h"
+#include "core/fxcrt/stringstream_util.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_path.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
@@ -63,7 +64,7 @@ CPDF_Object* GetPageContent(CPDF_Dictionary* pPageDict) {
   return pPageDict->GetDirectObjectFor(pdfium::page_object::kContents);
 }
 
-void OutputPath(std::ostringstream& buf, CPDF_Path path) {
+void OutputPath(fxcrt::ostringstream& buf, CPDF_Path path) {
   const CFX_Path* pPath = path.GetObject();
   if (!pPath)
     return;
@@ -215,7 +216,7 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
   if (!pDoc)
     return false;
 
-  std::ostringstream text_buf;
+  fxcrt::ostringstream text_buf;
   text_buf << "q ";
 
   if (clipRect) {
@@ -388,7 +389,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_InsertClipPath(FPDF_PAGE page,
   if (!pContentObj)
     return;
 
-  std::ostringstream strClip;
+  fxcrt::ostringstream strClip;
   CPDF_ClipPath* pClipPath = CPDFClipPathFromFPDFClipPath(clipPath);
   for (size_t i = 0; i < pClipPath->GetPathCount(); ++i) {
     CPDF_Path path = pClipPath->GetPath(i);
