@@ -62,7 +62,7 @@ class FPDF_FileAvailContext final : public CPDF_DataAvail::FileAvail {
   }
 
  private:
-  FX_FILEAVAIL* const avail_;
+  UnownedPtr<FX_FILEAVAIL> const avail_;
 };
 
 class FPDF_FileAccessContext final : public IFX_SeekableReadStream {
@@ -92,7 +92,7 @@ class FPDF_FileAccessContext final : public IFX_SeekableReadStream {
   explicit FPDF_FileAccessContext(FPDF_FILEACCESS* file) : file_(file) {}
   ~FPDF_FileAccessContext() override = default;
 
-  FPDF_FILEACCESS* const file_;
+  UnownedPtr<FPDF_FILEACCESS> const file_;
 };
 
 class FPDF_DownloadHintsContext final : public CPDF_DataAvail::DownloadHints {
