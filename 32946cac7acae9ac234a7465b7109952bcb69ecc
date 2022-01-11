@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1641941400 -0800\npushee https://pdfium.googlesource.com/pdfium.git/\nnonce ALC2d19LkLpDxRJ+GroatWqKst3VMIh10HOmvPS3JMq9kXyi33W/rl9SzljPqeDCBeL5AUPCMlwz\n\n0000000000000000000000000000000000000000 32946cac7acae9ac234a7465b7109952bcb69ecc refs/for/refs/heads/infra/config%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmHeCZgACgkQqzYtYVpm\n/XsVgAf/cS00DYsdA0/ZpyXgKyDxRmri+hk/SB6qQtp8ZT113lWcq3VjzIJQmNuM\n8iF0kEPxrZVy70bukgpBVHvNgFtlqHVTqbKxt6aqQILZjLIQBqFTdo6m0ezUfoAv\n8XPgMcokDftxLS1s6LZe8alVoHt1sjtbQyO85QQKeGhpH/V4lW+Yc32TNWNJIX9T\n/R7rdRqGa7uwv4KhLMYeam6OZqmpS9mxRcaDG5bFndO+Zk5wPbtu0BKuIAJtvwYq\n3qi9JXPhY+ItiDTgsQhFI+SCfxAVL76WGJUs72bluvawd1RKXmTMB2oI+5gGwUZs\n5plxIojq+PRJ7qeTE9glwerUdkGxKw\u003d\u003d\n\u003d6rGE\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9e660f_f2a854b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-11T22:51:34Z",
+      "side": 1,
+      "message": "Here is a sample purple MSVC bot:\nhttps://ci.chromium.org/ui/p/pdfium/builders/try/win_xfa_msvc_32/14123/overview\nhttps://logs.chromium.org/logs/pdfium/buildbucket/cr-buildbucket/8825297777052238385/+/u/stderr\n\nAll the other bots use Goma, so their $build/goma property fields are non-empty maps.",
+      "revId": "32946cac7acae9ac234a7465b7109952bcb69ecc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
