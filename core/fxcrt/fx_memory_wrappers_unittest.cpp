@@ -31,3 +31,16 @@ TEST(fxcrt, FxAllocAllocator) {
   vec2.resize(0);
   vec2.push_back(42);
 }
+
+TEST(fxcrt, FxStringAllocator) {
+  std::vector<int, FxStringAllocator<int>> vec;
+  vec.push_back(42);
+  vec.reserve(100);
+  vec.resize(20);
+  vec[11] = 42;
+
+  std::vector<int, FxStringAllocator<int>> vec2 = vec;
+  vec = std::move(vec2);
+  vec2.resize(0);
+  vec2.push_back(42);
+}
