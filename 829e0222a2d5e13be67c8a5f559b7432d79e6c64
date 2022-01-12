@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10b1028_e059a8e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-12T21:06:14Z",
+      "side": 1,
+      "message": "Maybe tag with Bug: chromium:1195670 ?",
+      "revId": "829e0222a2d5e13be67c8a5f559b7432d79e6c64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dafc16d7_11e7ebca",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-12T21:06:14Z",
+      "side": 1,
+      "message": "Add a comment similar to line 216 for crbug.com/1195670?",
+      "revId": "829e0222a2d5e13be67c8a5f559b7432d79e6c64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
