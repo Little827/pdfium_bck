@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ca221a_5a9bde07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-12T21:09:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c10b1028_e059a8e2",
+      "revId": "829e0222a2d5e13be67c8a5f559b7432d79e6c64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dafc16d7_11e7ebca",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-12T21:06:14Z",
       "side": 1,
       "message": "Add a comment similar to line 216 for crbug.com/1195670?",
+      "revId": "829e0222a2d5e13be67c8a5f559b7432d79e6c64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0991d408_638531bf",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-12T21:09:21Z",
+      "side": 1,
+      "message": "Probably not needed, as fixing that bug won\u0027t change this?",
+      "parentUuid": "dafc16d7_11e7ebca",
       "revId": "829e0222a2d5e13be67c8a5f559b7432d79e6c64",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
