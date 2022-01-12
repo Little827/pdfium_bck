@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed487a0_9bb528bf",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-12T02:10:45Z",
+      "side": 1,
+      "message": "Did an early driveby~\nOptional: Not directly related to this CL. Since this is a nested #if, I think we can add the matching comments at the matching #endif while at it.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "f861ede030ecf03a9e1bd97f31f86dd96c47733d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
