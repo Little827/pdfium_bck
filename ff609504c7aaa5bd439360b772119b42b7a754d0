@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "ff609504c7aaa5bd439360b772119b42b7a754d0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e70f7ab_066d5fcf",
+        "filename": "core/fxcrt/stl_util.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-13T20:24:58Z",
+      "side": 1,
+      "message": "nit: PartitionAlloc (as opposed to something else that works with partitions)",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "ff609504c7aaa5bd439360b772119b42b7a754d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
