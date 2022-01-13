@@ -1,0 +1,34 @@
+diff --git a/third_party/lcms/src/cmsio0.c b/third_party/lcms/src/cmsio0.c
+index 743b958df..86b6412af 100644
+--- a/third_party/lcms/src/cmsio0.c
++++ b/third_party/lcms/src/cmsio0.c
+@@ -1533,6 +1533,7 @@ void* CMSEXPORT cmsReadTag(cmsHPROFILE hProfile, cmsTagSignature sig)
+     cmsTagTypeSignature BaseType;
+     cmsUInt32Number Offset, TagSize;
+     cmsUInt32Number ElemCount;
++    void* LocalTagPtr;
+     int n;
+ 
+     if (!_cmsLockMutex(Icc->ContextID, Icc ->UsrMutex)) return NULL;
+@@ -1603,11 +1604,11 @@ void* CMSEXPORT cmsReadTag(cmsHPROFILE hProfile, cmsTagSignature sig)
+ 
+     LocalTypeHandler.ContextID = Icc ->ContextID;
+     LocalTypeHandler.ICCVersion = Icc ->Version;
+-    Icc -> TagPtrs[n] = LocalTypeHandler.ReadPtr(&LocalTypeHandler, io, &ElemCount, TagSize);
++    LocalTagPtr = LocalTypeHandler.ReadPtr(&LocalTypeHandler, io, &ElemCount, TagSize);
+ 
+     // The tag type is supported, but something wrong happened and we cannot read the tag.
+     // let know the user about this (although it is just a warning)
+-    if (Icc -> TagPtrs[n] == NULL) {
++    if (LocalTagPtr == NULL) {
+ 
+         char String[5];
+ 
+@@ -1630,6 +1631,7 @@ void* CMSEXPORT cmsReadTag(cmsHPROFILE hProfile, cmsTagSignature sig)
+ 
+ 
+     // Return the data
++    Icc -> TagPtrs[n] = LocalTagPtr;
+     _cmsUnlockMutex(Icc->ContextID, Icc ->UsrMutex);
+     return Icc -> TagPtrs[n];
+ 
