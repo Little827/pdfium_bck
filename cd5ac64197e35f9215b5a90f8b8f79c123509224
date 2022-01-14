@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76452128_149ce06c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-14T00:12:04Z",
+      "side": 1,
+      "message": "Redbots appear to be python script failure in infrastructure. Landing.",
+      "revId": "cd5ac64197e35f9215b5a90f8b8f79c123509224",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
