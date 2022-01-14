@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13259f81_3d114e41",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-14T23:19:45Z",
+      "side": 1,
+      "message": "Not needed now?",
+      "revId": "f5b5e1d9d4ca8e6d1d63c8a2151b28bba979dbfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574a751b_7677dbaa",
+        "filename": "core/fpdfapi/edit/cpdf_stringarchivestream.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-14T23:19:45Z",
+      "side": 1,
+      "message": "Ditto. Check other headers too.",
+      "revId": "f5b5e1d9d4ca8e6d1d63c8a2151b28bba979dbfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
