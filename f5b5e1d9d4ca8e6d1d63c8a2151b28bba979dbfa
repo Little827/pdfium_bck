@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "734694bd_f54f45bc",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-14T23:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13259f81_3d114e41",
+      "revId": "f5b5e1d9d4ca8e6d1d63c8a2151b28bba979dbfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574a751b_7677dbaa",
@@ -31,6 +49,47 @@
       "writtenOn": "2022-01-14T23:19:45Z",
       "side": 1,
       "message": "Ditto. Check other headers too.",
+      "revId": "f5b5e1d9d4ca8e6d1d63c8a2151b28bba979dbfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13028d0a_118567e4",
+        "filename": "core/fpdfapi/edit/cpdf_stringarchivestream.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-14T23:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574a751b_7677dbaa",
+      "revId": "f5b5e1d9d4ca8e6d1d63c8a2151b28bba979dbfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a1ed33_50e5b4bd",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-14T23:55:24Z",
+      "side": 1,
+      "message": "NOTE: kept \u003ciosfwd\u003e in this header for std:ostream IWYU.",
+      "range": {
+        "startLine": 281,
+        "startChar": 5,
+        "endLine": 281,
+        "endChar": 12
+      },
       "revId": "f5b5e1d9d4ca8e6d1d63c8a2151b28bba979dbfa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
