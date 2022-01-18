@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c134a7d_52f136e7",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-18T23:02:14Z",
+      "side": 1,
+      "message": "I think this is a subtle change, as previously negative index would have caused CPDF_Array::GetInteger() to return 0 instead. But then I wonder if any caller actually pass in a negative index in the first place.",
+      "revId": "1cbe650ddec5ea88d61622a4d02fb00646fe28b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
