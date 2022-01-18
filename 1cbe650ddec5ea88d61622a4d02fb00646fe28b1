@@ -16,6 +16,24 @@
       "message": "I think this is a subtle change, as previously negative index would have caused CPDF_Array::GetInteger() to return 0 instead. But then I wonder if any caller actually pass in a negative index in the first place.",
       "revId": "1cbe650ddec5ea88d61622a4d02fb00646fe28b1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7d234f_ec76ced0",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-18T23:08:43Z",
+      "side": 1,
+      "message": "easy enough to make 0.",
+      "parentUuid": "6c134a7d_52f136e7",
+      "revId": "1cbe650ddec5ea88d61622a4d02fb00646fe28b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
