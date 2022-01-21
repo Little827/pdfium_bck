@@ -33,6 +33,24 @@
       "message": "Can the two test files be consolidated together? e.g. a 200x100 page, with the bug_1750_1.in image on the left, and the bug_1750_2.in on the right. Are there any disadvantages to doing that?",
       "revId": "d007b43d1f8298becbef829952dcd73452c71658",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad25f556_41284f1a",
+        "filename": "testing/resources/pixel/bug_1750_2.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-21T22:48:34Z",
+      "side": 1,
+      "message": "Sure. I will combine them. I don\u0027t think there is any disadvantage since these test cases are pretty minimal.",
+      "parentUuid": "d8871e17_d9c2b15d",
+      "revId": "d007b43d1f8298becbef829952dcd73452c71658",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
