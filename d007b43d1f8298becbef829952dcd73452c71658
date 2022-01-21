@@ -16,6 +16,23 @@
       "message": "I added more detailed explanation why these two test cases are needed at https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1750#c8",
       "revId": "d007b43d1f8298becbef829952dcd73452c71658",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8871e17_d9c2b15d",
+        "filename": "testing/resources/pixel/bug_1750_2.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-21T22:16:23Z",
+      "side": 1,
+      "message": "Can the two test files be consolidated together? e.g. a 200x100 page, with the bug_1750_1.in image on the left, and the bug_1750_2.in on the right. Are there any disadvantages to doing that?",
+      "revId": "d007b43d1f8298becbef829952dcd73452c71658",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
