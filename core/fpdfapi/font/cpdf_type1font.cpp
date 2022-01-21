@@ -267,8 +267,8 @@ void CPDF_Type1Font::LoadGlyphMap() {
 #endif  // BUILDFLAG(IS_APPLE)
   if (FontStyleIsSymbolic(m_Flags)) {
     for (size_t charcode = 0; charcode < kInternalTableSize; charcode++) {
-      const char* name =
-          GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
+      const char* name = GetAdobeCharName(m_BaseEncoding, m_CharNames,
+                                          static_cast<uint32_t>(charcode));
       if (name) {
         m_Encoding.SetUnicode(charcode, PDF_UnicodeFromAdobeName(name));
         m_GlyphIndex[charcode] = FXFT_Get_Name_Index(m_Font.GetFaceRec(), name);
@@ -276,8 +276,8 @@ void CPDF_Type1Font::LoadGlyphMap() {
         m_GlyphIndex[charcode] =
             FT_Get_Char_Index(m_Font.GetFaceRec(), charcode);
         if (m_GlyphIndex[charcode]) {
-          wchar_t unicode =
-              FT_UnicodeFromCharCode(PDFFONT_ENCODING_STANDARD, charcode);
+          wchar_t unicode = FT_UnicodeFromCharCode(
+              PDFFONT_ENCODING_STANDARD, static_cast<uint32_t>(charcode));
           if (unicode == 0) {
             char name_glyph[kInternalTableSize] = {};
             FT_Get_Glyph_Name(m_Font.GetFaceRec(), m_GlyphIndex[charcode],
@@ -300,7 +300,8 @@ void CPDF_Type1Font::LoadGlyphMap() {
   bool bUnicode =
       FXFT_Select_Charmap(m_Font.GetFaceRec(), FT_ENCODING_UNICODE) == 0;
   for (size_t charcode = 0; charcode < kInternalTableSize; charcode++) {
-    const char* name = GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
+    const char* name = GetAdobeCharName(m_BaseEncoding, m_CharNames,
+                                        static_cast<uint32_t>(charcode));
     if (!name)
       continue;
 

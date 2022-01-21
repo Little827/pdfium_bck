@@ -518,19 +518,22 @@ FX_RECT CPDF_CIDFont::GetCharBBox(uint32_t charcode) {
         if (!err) {
           FT_BBox cbox;
           FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_PIXELS, &cbox);
-          cbox.xMin = pdfium::clamp(cbox.xMin, kMinCBox, kMaxCBox);
-          cbox.xMax = pdfium::clamp(cbox.xMax, kMinCBox, kMaxCBox);
-          cbox.yMin = pdfium::clamp(cbox.yMin, kMinCBox, kMaxCBox);
-          cbox.yMax = pdfium::clamp(cbox.yMax, kMinCBox, kMaxCBox);
-          int pixel_size_x = face->size->metrics.x_ppem;
-          int pixel_size_y = face->size->metrics.y_ppem;
+          const int xMin =
+              static_cast<int>(pdfium::clamp(cbox.xMin, kMinCBox, kMaxCBox));
+          const int xMax =
+              static_cast<int>(pdfium::clamp(cbox.xMax, kMinCBox, kMaxCBox));
+          const int yMin =
+              static_cast<int>(pdfium::clamp(cbox.yMin, kMinCBox, kMaxCBox));
+          const int yMax =
+              static_cast<int>(pdfium::clamp(cbox.yMax, kMinCBox, kMaxCBox));
+          const int pixel_size_x = face->size->metrics.x_ppem;
+          const int pixel_size_y = face->size->metrics.y_ppem;
           if (pixel_size_x == 0 || pixel_size_y == 0) {
-            rect = FX_RECT(cbox.xMin, cbox.yMax, cbox.xMax, cbox.yMin);
+            rect = FX_RECT(xMin, yMax, xMax, yMin);
           } else {
-            rect = FX_RECT(cbox.xMin * 1000 / pixel_size_x,
-                           cbox.yMax * 1000 / pixel_size_y,
-                           cbox.xMax * 1000 / pixel_size_x,
-                           cbox.yMin * 1000 / pixel_size_y);
+            rect =
+                FX_RECT(xMin * 1000 / pixel_size_x, yMax * 1000 / pixel_size_y,
+                        xMax * 1000 / pixel_size_x, yMin * 1000 / pixel_size_y);
           }
           rect.top = std::min(rect.top,
                               static_cast<int>(FXFT_Get_Face_Ascender(face)));
