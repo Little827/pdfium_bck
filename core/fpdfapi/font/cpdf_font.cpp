@@ -402,11 +402,13 @@ CFX_Font* CPDF_Font::GetFontFallback(int position) {
 }
 
 // static
-int CPDF_Font::TT2PDF(int m, FXFT_FaceRec* face) {
+int CPDF_Font::TT2PDF(FT_Pos m, FXFT_FaceRec* face) {
   int upm = FXFT_Get_Face_UnitsPerEM(face);
-  if (upm == 0)
-    return m;
-
+  if (upm == 0) {
+    return static_cast<int>(
+        pdfium::clamp(m, static_cast<FT_Pos>(std::numeric_limits<int>::min()),
+                      static_cast<FT_Pos>(std::numeric_limits<int>::max())));
+  }
   return static_cast<int>(
       pdfium::clamp((m * 1000.0 + upm / 2) / upm,
                     static_cast<double>(std::numeric_limits<int>::min()),
