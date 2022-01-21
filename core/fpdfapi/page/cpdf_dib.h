@@ -50,7 +50,6 @@ class CPDF_DIB final : public CFX_DIBBase {
   bool SkipToScanline(int line, PauseIndicatorIface* pPause) const override;
   size_t GetEstimatedImageMemoryBurden() const override;
 
-  RetainPtr<CPDF_ColorSpace> GetColorSpace() const { return m_pColorSpace; }
   uint32_t GetMatteColor() const { return m_MatteColor; }
 
   LoadState StartLoadDIBBase(CPDF_Document* pDoc,
@@ -107,7 +106,6 @@ class CPDF_DIB final : public CFX_DIBBase {
   RetainPtr<const CPDF_Stream> m_pStream;
   RetainPtr<const CPDF_Dictionary> m_pDict;
   RetainPtr<CPDF_StreamAcc> m_pStreamAcc;
-  RetainPtr<CPDF_ColorSpace> m_pColorSpace;
   uint32_t m_bpc = 0;
   uint32_t m_bpc_orig = 0;
   uint32_t m_nComponents = 0;

@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/dib/fx_dib.h"
@@ -81,6 +82,8 @@ class CFX_DIBBase : public Retainable {
   RetainPtr<CFX_DIBitmap> GetAlphaMask();
   RetainPtr<CFX_DIBitmap> CloneAlphaMask() const;
 
+  RetainPtr<CPDF_ColorSpace> GetColorSpace() const { return m_pColorSpace; }
+
   // Copies into internally-owned mask.
   bool SetAlphaMask(const RetainPtr<CFX_DIBBase>& pAlphaMask,
                     const FX_RECT* pClip);
@@ -123,6 +126,7 @@ class CFX_DIBBase : public Retainable {
   int m_Height = 0;
   uint32_t m_Pitch = 0;
   RetainPtr<CFX_DIBitmap> m_pAlphaMask;
+  RetainPtr<CPDF_ColorSpace> m_pColorSpace;
   std::vector<uint32_t, FxAllocAllocator<uint32_t>> m_palette;
 };
 
