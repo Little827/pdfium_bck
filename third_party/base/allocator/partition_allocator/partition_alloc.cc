@@ -834,7 +834,7 @@ void PartitionRoot::DumpStats(const char* partition_name,
   DCHECK(partition_num_buckets <= kMaxReportableBuckets);
 
   for (size_t i = 0; i < partition_num_buckets; ++i) {
-    PartitionBucketMemoryStats bucket_stats = {0};
+    PartitionBucketMemoryStats bucket_stats = {false};
     PartitionDumpBucketStats(&bucket_stats, &buckets()[i]);
     if (bucket_stats.is_valid) {
       stats.total_resident_bytes += bucket_stats.resident_bytes;
