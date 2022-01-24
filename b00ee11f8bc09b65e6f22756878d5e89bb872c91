@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894778a7_d8ada382",
+        "filename": "third_party/base/numerics/safe_conversions_impl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-24T20:24:30Z",
+      "side": 1,
+      "message": "Lets also remove this file from the patch (sorry I missed this the first time around) for the same reason: we copy this in from chromium\u0027s copy and will pick it up evenutally once the change is made there.",
+      "range": {
+        "startLine": 197,
+        "startChar": 27,
+        "endLine": 197,
+        "endChar": 68
+      },
+      "revId": "b00ee11f8bc09b65e6f22756878d5e89bb872c91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
