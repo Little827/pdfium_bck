@@ -16,6 +16,24 @@
       "message": "Maybe a helper function to interpret this bit in `m_cFlags`?",
       "revId": "4b1cc4234360de5b8ab65f00288590aea5155e21",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fec80b5_23b3f715",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-24T22:27:38Z",
+      "side": 1,
+      "message": "Not sure what to call it, as I didn\u0027t find an explanation of this field.",
+      "parentUuid": "964d6eff_dfba180e",
+      "revId": "4b1cc4234360de5b8ab65f00288590aea5155e21",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
