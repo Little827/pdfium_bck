@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb306f2d_ff43bf74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-24T17:21:30Z",
+      "side": 1,
+      "message": "Thanks Anton, apart from the while(1), there are a surprising number of places where we have legitimate mismatches, and this makes them much better. LG apart from one file.",
+      "revId": "f7d1a1c3428e81097809f95c122082c62293c4a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c91bb3da_38b7d725",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-24T17:21:30Z",
+      "side": 1,
+      "message": "pre-existing: ?-operators with true/false literals are kind of a code smell to me, and can usually be replaced with a better boolean expression, such as !!(pPageInfo-\u003em_cFlags \u0026 4).\n\nI\u0027ll do this later as a follow-up to keep this CL simple.",
+      "revId": "f7d1a1c3428e81097809f95c122082c62293c4a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9efb9b_073b13ec",
+        "filename": "third_party/base/allocator/partition_allocator/partition_alloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-24T17:21:30Z",
+      "side": 1,
+      "message": "Let\u0027s remove this file from this CL, since we pick up PartitionAlloc changes from //base when we periodically roll a copy of it into PDFium.",
+      "range": {
+        "startLine": 837,
+        "startChar": 4,
+        "endLine": 837,
+        "endChar": 30
+      },
+      "revId": "f7d1a1c3428e81097809f95c122082c62293c4a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
