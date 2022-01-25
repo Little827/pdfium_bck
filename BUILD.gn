@@ -451,7 +451,7 @@ test("pdfium_unittests") {
         "xfa/fgas/font:unittests",
         "xfa/fgas/layout:unittests",
         "xfa/fxfa:unittests",
-        "xfa/fxfa/fm2js:unittests",
+        "xfa/fxfa/formcalc_transpiler:unittests",
         "xfa/fxfa/parser:unittests",
       ]
     }
