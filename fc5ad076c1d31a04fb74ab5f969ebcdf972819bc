@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6522ed_05e5f280",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-25T19:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca6e55e2_332e9994",
+      "range": {
+        "startLine": 334,
+        "startChar": 40,
+        "endLine": 334,
+        "endChar": 58
+      },
+      "revId": "fc5ad076c1d31a04fb74ab5f969ebcdf972819bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89c12e92_44a0fc45",
@@ -38,6 +62,30 @@
       "writtenOn": "2022-01-25T19:05:00Z",
       "side": 1,
       "message": "pre-nit: needless comparison of bool with one, several places, i.e.\n$ git grep -n \u0027m_bIsStriped [\u003d!]\u003d\u0027\ncore/fxcodec/jbig2/JBig2_Context.cpp:804:      if ((pPageInfo-\u003em_bIsStriped \u003d\u003d 1) \u0026\u0026\ncore/fxcodec/jbig2/JBig2_Context.cpp:920:      if (pPageInfo-\u003em_bIsStriped \u003d\u003d 1 \u0026\u0026\ncore/fxcodec/jbig2/JBig2_Context.cpp:986:            if ((pPageInfo-\u003em_bIsStriped \u003d\u003d 1) \u0026\u0026\ncore/fxcodec/jbig2/JBig2_Context.cpp:1020:      if ((pPageInfo-\u003em_bIsStriped \u003d\u003d 1) \u0026\u0026\ncore/fxcodec/jbig2/JBig2_Context.cpp:1093:      if ((pPageInfo-\u003em_bIsStriped \u003d\u003d 1) \u0026\u0026",
+      "range": {
+        "startLine": 808,
+        "startChar": 35,
+        "endLine": 808,
+        "endChar": 39
+      },
+      "revId": "fc5ad076c1d31a04fb74ab5f969ebcdf972819bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e970065_d78a291f",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-25T19:36:38Z",
+      "side": 1,
+      "message": "Will follow-up.",
+      "parentUuid": "89c12e92_44a0fc45",
       "range": {
         "startLine": 808,
         "startChar": 35,
