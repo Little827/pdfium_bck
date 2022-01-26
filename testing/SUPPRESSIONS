@@ -363,7 +363,7 @@ bug_1519.in * * * *
 bug_1571.in * * * *
 
 # TODO(pdfium:1750): Remove after associated bug is fixed
-bug_1750.in * * * *
+bug_1750.in * * * skia
 
 # TODO(chromium:237527): Remove after associated bug is fixed
 bug_237527_1.in * * * *
