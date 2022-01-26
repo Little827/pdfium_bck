@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "466b8fc6_54297aee",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-26T21:14:56Z",
+      "side": 1,
+      "message": "It would be nice to be able to avoid calculating this if line 905 will reassign the value anyway.",
+      "revId": "02581491b929aeab720829f90d4b59922fd37d11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2364be0_d47bac1d",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 4
