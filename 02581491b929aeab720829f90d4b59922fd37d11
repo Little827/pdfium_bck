@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b4ed36_614f2e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-26T18:08:57Z",
+      "side": 1,
+      "message": "This fixes the discrepancy between AGG/Skiapaths and Acrobat. This is also a stepping stone for fixing Skia rendering in the next CL, since it puts the correct colors into palette.",
+      "revId": "02581491b929aeab720829f90d4b59922fd37d11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
