@@ -125,8 +125,7 @@ bool CTextOnlyPrinterDriver::StartDIBits(
 }
 
 bool CTextOnlyPrinterDriver::DrawDeviceText(
-    int nChars,
-    const TextCharPos* pCharPos,
+    pdfium::span<const TextCharPos> pCharPos,
     CFX_Font* pFont,
     const CFX_Matrix& mtObject2Device,
     float font_size,
