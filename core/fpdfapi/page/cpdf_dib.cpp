@@ -894,6 +894,18 @@ void CPDF_DIB::LoadPalette() {
     m_pColorSpace->GetRGB(color_values, &R, &G, &B);
     FX_ARGB argb1 = ArgbEncode(255, FXSYS_roundf(R * 255),
                                FXSYS_roundf(G * 255), FXSYS_roundf(B * 255));
+
+    if (m_pColorSpace->GetFamily() == CPDF_ColorSpace::Family::kIndexed) {
+      // If an indexed colorspace's hival value is 0, only 1 color is specified
+      // in the lookup table. Then the default current color should be set to
+      // 0xFF000000.
+      const CPDF_Array* indexed_cs = m_pColorSpace->GetArray();
+      if (indexed_cs->GetIntegerAt(2) == 0) {
+        DCHECK(argb0 == argb1);
+        argb1 = 0xFF000000;
+      }
+    }
+
     if (argb0 != 0xFF000000 || argb1 != 0xFFFFFFFF) {
       SetPaletteArgb(0, argb0);
       SetPaletteArgb(1, argb1);
