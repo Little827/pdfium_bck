@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0229bed7_f04f5cc8",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-27T01:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466b8fc6_54297aee",
+      "revId": "02581491b929aeab720829f90d4b59922fd37d11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2364be0_d47bac1d",
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62eb15b6_666b5b96",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-27T01:54:43Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/89891/ handles moving CPDF_IndexedCS out of cpdf_colorspace.cpp.\n\nAdded GetMaxIndex() method to get `m_MaxIndex` in the new patchset of this CL.",
+      "parentUuid": "a2364be0_d47bac1d",
+      "revId": "02581491b929aeab720829f90d4b59922fd37d11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "341cb9aa_47d31da1",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-01-26T21:11:48Z",
       "side": 1,
       "message": "Use DCHECK_EQ().",
+      "revId": "02581491b929aeab720829f90d4b59922fd37d11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e830691_f3416ee1",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-01-27T01:54:43Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "341cb9aa_47d31da1",
       "revId": "02581491b929aeab720829f90d4b59922fd37d11",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
