@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45910aac_8426cb20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-27T19:18:54Z",
+      "side": 1,
+      "message": "Found another one (or rather clang did, as int nChars is not compatible with shorten-64, so make span instead).",
+      "revId": "78ec8df40f486b14ff67b9c572943c5b49e0387e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
