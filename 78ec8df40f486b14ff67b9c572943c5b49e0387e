@@ -39,6 +39,23 @@
       },
       "revId": "78ec8df40f486b14ff67b9c572943c5b49e0387e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00b93ab_09dd7b79",
+        "filename": "core/fxge/win32/cgdi_printer_driver.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-27T19:50:37Z",
+      "side": 1,
+      "message": "There\u0027s some code here that\u0027s not compile be default. I\u0027ve been meaning to delete it. Why don\u0027t I do that first?",
+      "revId": "78ec8df40f486b14ff67b9c572943c5b49e0387e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
