@@ -46,6 +46,30 @@
       },
       "revId": "f9abe2b75419dbafbc67cbfaa659e8cebf505d6e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bc8cdf_10b92aae",
+        "filename": "public/fpdf_sysfontinfo.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 8761
+      },
+      "writtenOn": "2022-01-27T17:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "349c6838_f0453558",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "f9abe2b75419dbafbc67cbfaa659e8cebf505d6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
