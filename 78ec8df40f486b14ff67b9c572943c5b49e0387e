@@ -16,6 +16,29 @@
       "message": "Found another one (or rather clang did, as int nChars is not compatible with shorten-64, so make span instead).",
       "revId": "78ec8df40f486b14ff67b9c572943c5b49e0387e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14547449_d9d19624",
+        "filename": "core/fxge/apple/fx_quartz_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-27T19:28:21Z",
+      "side": 1,
+      "message": "follow-up: I can\u0027t think of any rational reason for doing this, except that it may be a vestige from someone passing struct {float, float} as a void* arg in the historical past.  But I didn\u0027t find any code (going back to the beginning) that ever did this.  But it seems important as there is a #error at line 20 to be sure its done right (unlikely FX would have added this, prolly added by jam in the pre-history).",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "78ec8df40f486b14ff67b9c572943c5b49e0387e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
