@@ -8,7 +8,9 @@
 #define CORE_FXCODEC_FX_CODEC_H_
 
 #include <map>
+#include <memory>
 
+#include "core/fxcrt/fx_memory_wrappers.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 
 namespace fxcodec {
@@ -22,7 +24,7 @@ class CFX_DIBAttribute {
   int32_t m_nXDPI = -1;
   int32_t m_nYDPI = -1;
   uint16_t m_wDPIUnit = 0;
-  std::map<uint32_t, void*> m_Exif;
+  std::map<uint32_t, std::unique_ptr<void, FxFreeDeleter>> m_Exif;
 };
 #endif  // PDF_ENABLE_XFA
 

@@ -203,7 +203,7 @@ bool Tiff_Exif_GetInfo(TIFF* tif_ctx, ttag_t tag, CFX_DIBAttribute* pAttr) {
     return false;
   T* ptr = FX_Alloc(T, 1);
   *ptr = val;
-  pAttr->m_Exif[tag] = ptr;
+  pAttr->m_Exif[tag].reset(ptr);
   return true;
 }
 
@@ -218,7 +218,7 @@ void Tiff_Exif_GetStringInfo(TIFF* tif_ctx,
   uint8_t* ptr = FX_AllocUninit(uint8_t, size + 1);
   memcpy(ptr, buf, size);
   ptr[size] = 0;
-  pAttr->m_Exif[tag] = ptr;
+  pAttr->m_Exif[tag].reset(ptr);
 }
 
 void TiffBGRA2RGBA(uint8_t* pBuf, int32_t pixel, int32_t spp) {
@@ -267,13 +267,13 @@ bool CTiffContext::LoadFrameInfo(int32_t frame,
   Tiff_Exif_GetInfo<uint16_t>(m_tif_ctx.get(), TIFFTAG_ORIENTATION, pAttribute);
   if (Tiff_Exif_GetInfo<float>(m_tif_ctx.get(), TIFFTAG_XRESOLUTION,
                                pAttribute)) {
-    void* val = pAttribute->m_Exif[TIFFTAG_XRESOLUTION];
+    void* val = pAttribute->m_Exif[TIFFTAG_XRESOLUTION].get();
     float fDpi = val ? *reinterpret_cast<float*>(val) : 0;
     pAttribute->m_nXDPI = static_cast<int32_t>(fDpi + 0.5f);
   }
   if (Tiff_Exif_GetInfo<float>(m_tif_ctx.get(), TIFFTAG_YRESOLUTION,
                                pAttribute)) {
-    void* val = pAttribute->m_Exif[TIFFTAG_YRESOLUTION];
+    void* val = pAttribute->m_Exif[TIFFTAG_YRESOLUTION].get();
     float fDpi = val ? *reinterpret_cast<float*>(val) : 0;
     pAttribute->m_nYDPI = static_cast<int32_t>(fDpi + 0.5f);
   }
