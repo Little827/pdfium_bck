@@ -16,6 +16,24 @@
       "message": "It looks like we are storing several types of data, but only ever reading the TIFFTAG_XRESOLUTION/TIFFTAG_YRESOLUTION values. Perhaps we can just remove this field altogether?",
       "revId": "26af65130c83be0738761b399972d681b37ddc92",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f063ee_8258e1bd",
+        "filename": "core/fxcodec/fx_codec.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-28T20:44:40Z",
+      "side": 1,
+      "message": "Makes sense. Will upload new patch.",
+      "parentUuid": "940caeae_c774d975",
+      "revId": "26af65130c83be0738761b399972d681b37ddc92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
