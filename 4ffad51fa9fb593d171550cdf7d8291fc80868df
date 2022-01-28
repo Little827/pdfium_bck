@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a6ed85_460bf85e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-28T23:01:51Z",
+      "side": 1,
+      "message": "Did you mean: uint16_t type?",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "4ffad51fa9fb593d171550cdf7d8291fc80868df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc9a9e9_62744d5a",
+        "filename": "core/fxcodec/tiff/tiff_decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-01-28T23:01:51Z",
+      "side": 1,
+      "message": "Note libtiff doesn\u0027t have a kResUnitMeter equivalent. Amazingly, the other values are in the same order as libjpeg.",
+      "revId": "4ffad51fa9fb593d171550cdf7d8291fc80868df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
