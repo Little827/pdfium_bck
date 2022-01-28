@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc10e2e_9ca3ab14",
+        "filename": "core/fxcodec/fx_codec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-28T23:04:55Z",
+      "side": 1,
+      "message": "Done. Also added include of stdint for all the uint types.",
+      "parentUuid": "15f1e23a_fa2a1cff",
+      "revId": "6d9f4d673cb7fd17b79814484722e054961a98d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "531077cd_f1c848ca",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-01-28T21:45:51Z",
       "side": 1,
       "message": "Is this needed given the else block?",
+      "range": {
+        "startLine": 236,
+        "startChar": 22,
+        "endLine": 236,
+        "endChar": 27
+      },
+      "revId": "6d9f4d673cb7fd17b79814484722e054961a98d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbaa66f8_f9160adf",
+        "filename": "core/fxcodec/tiff/tiff_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-01-28T23:04:55Z",
+      "side": 1,
+      "message": "Probably not, but I still don\u0027t like uninit vars.",
+      "parentUuid": "531077cd_f1c848ca",
       "range": {
         "startLine": 236,
         "startChar": 22,
