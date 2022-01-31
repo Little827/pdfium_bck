@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3aabf5_1713055a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8771
+      },
+      "writtenOn": "2022-01-31T14:09:49Z",
+      "side": 1,
+      "message": "Tested on Arch Linux with system freetype and it fixes the crashes seen with the sample PDFs from issues chromium:1104541 and pdfium:1400. It should keep CFI enabled for Chromium builds with bundled freetype. Perhaps a better fix would be to avoid the indirect call if possible, but I\u0027m not sure how to implement that (bungeman has hinted at FT_Done_MM_Var as a possible replacement in pdfium:1400).",
+      "revId": "1b658cbb93a851d41c62f5611c9021e76ff6e2dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
