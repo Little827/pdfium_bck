@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70436d1b_c3850862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8771
+      },
+      "writtenOn": "2022-01-31T21:48:54Z",
+      "side": 1,
+      "message": "Patch works for me on Arch Linux x86_64 with system freetype 2.11.1. Tested on top of Chromium 98.0.4758.74 (after substituting defined(OS_WIN) for BUILDFLAG(IS_WIN) due to the older pdfium pin in Chromium 98). Without the patch, the PDF viewer immediately crashes with SIGILL when viewing the PDFs from issues chromium:1104541 and pdfium:1400.",
+      "revId": "0f82eb7883fdfcacd86355d22fe6bb2917511a58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
