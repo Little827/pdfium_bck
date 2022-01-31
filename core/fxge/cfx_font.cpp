@@ -610,6 +610,10 @@ void CFX_Font::ClearGlyphCache() {
   m_GlyphCache = nullptr;
 }
 
+#if defined(USE_SYSTEM_FREETYPE)
+// Calling FXFT_Free triggers a CFI violation (https://crbug.com/pdfium/1400)
+DISABLE_CFI_ICALL
+#endif
 void CFX_Font::AdjustMMParams(int glyph_index,
                               int dest_width,
                               int weight) const {
