@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2279fac6_91f3ee02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-02-01T14:44:33Z",
+      "side": 1,
+      "message": "Sorry for the delay. I looked into tests again and made some improvements:\n- moved IsClosed tests into an own test group\n- added nullptr test\n- updated fpdfsdk/fpdf_view_c_api_test.c\n\nWhat is still missing is the test case that returns true. I have not found a file with closed bookmark among the existing test documents yet, though I\u0027m not familiar enough with the arrangement of your sample files.",
+      "parentUuid": "5e42d146_2bf4244e",
+      "revId": "328955057fd42145ee0762462e3ba24973740014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77dbc10f_5125b241",
         "filename": "core/fpdfdoc/cpdf_bookmark.cpp",
         "patchSetId": 4
