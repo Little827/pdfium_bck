@@ -495,6 +495,27 @@ TEST_F(FPDFDocEmbedderTest, Bookmarks) {
   EXPECT_EQ(nullptr, FPDFBookmark_GetNextSibling(document(), sibling));
 }
 
+TEST_F(FPDFDocEmbedderTest, BookmarkIsClosed) {
+
+  // Open a document with opened and closed bookmarks
+  ASSERT_TRUE(OpenDocument("bookmark_state.pdf"));
+
+  // Get a closed bookmark
+  FPDF_BOOKMARK c_bookmark = FPDFBookmark_GetFirstChild(document(), nullptr);
+
+  // Get an opened bookmark
+  FPDF_BOOKMARK o_bookmark = FPDFBookmark_GetFirstChild(document(), c_bookmark);
+
+  // Test IsClosed returning True
+  EXPECT_TRUE(FPDFBookmark_IsClosed(c_bookmark));
+
+  // Test IsClosed returning False
+  EXPECT_FALSE(FPDFBookmark_IsClosed(o_bookmark));
+
+  // Test IsClosed when called with nullptr argument
+  EXPECT_FALSE(FPDFBookmark_IsClosed(nullptr));
+}
+
 TEST_F(FPDFDocEmbedderTest, FindBookmarks) {
   unsigned short buf[128];
 
