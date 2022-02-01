@@ -23,6 +23,30 @@
       },
       "revId": "f5709afb9802443c4d4fe95390550fa715944145",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f6a0ce_5293d59f",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-02-01T22:12:58Z",
+      "side": 1,
+      "message": "Thanks for adding the comment. Still LGTM.",
+      "parentUuid": "eed5e0e7_e7c7141c",
+      "range": {
+        "startLine": 1698,
+        "startChar": 36,
+        "endLine": 1698,
+        "endChar": 60
+      },
+      "revId": "f5709afb9802443c4d4fe95390550fa715944145",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
