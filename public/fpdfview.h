@@ -342,6 +342,20 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_SetPrintMode(int mode);
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_LoadDocument(FPDF_STRING file_path, FPDF_BYTESTRING password);
 
+// Experimental API.
+// Function: FPDF_LoadWstringDocument
+//          Open and load a PDF document from a file path that may contain non-ascii
+//          characters.
+// Parameters:
+//          file_path -  Path to the PDF file (including extension).
+//          password  -  A string used as the password for the PDF file.
+//                       If no password is needed, empty or NULL can be used.
+//                       See comments below regarding the encoding.
+// Return value:
+//          A handle to the loaded document, or NULL on failure.
+FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
+FPDF_LoadWstringDocument(FPDF_WIDESTRING file_path, FPDF_BYTESTRING password);
+
 // Function: FPDF_LoadMemDocument
 //          Open and load a PDF document from memory.
 // Parameters:

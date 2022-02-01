@@ -60,6 +60,8 @@ class IFX_SeekableReadStream : virtual public Retainable,
  public:
   static RetainPtr<IFX_SeekableReadStream> CreateFromFilename(
       const char* filename);
+  static RetainPtr<IFX_SeekableReadStream> CreateFromFilename(
+      const wchar_t* filename);
 
   virtual bool IsEOF();
   virtual FX_FILESIZE GetPosition();

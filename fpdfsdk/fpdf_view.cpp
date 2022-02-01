@@ -236,6 +236,12 @@ FPDF_LoadDocument(FPDF_STRING file_path, FPDF_BYTESTRING password) {
                           password);
 }
 
+FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
+FPDF_LoadWstringDocument(FPDF_WIDESTRING file_path, FPDF_BYTESTRING password) {
+  return LoadDocumentImpl(IFX_SeekableReadStream::CreateFromFilename(
+                          (const wchar_t*)file_path), password);
+}
+
 FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
   const CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   if (!pDoc)

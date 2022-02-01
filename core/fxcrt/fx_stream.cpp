@@ -92,6 +92,12 @@ RetainPtr<IFX_SeekableReadStream> IFX_SeekableReadStream::CreateFromFilename(
   return IFX_SeekableStream::CreateFromFilename(filename, FX_FILEMODE_ReadOnly);
 }
 
+// static
+RetainPtr<IFX_SeekableReadStream> IFX_SeekableReadStream::CreateFromFilename(
+    const wchar_t* filename) {
+  return IFX_SeekableStream::CreateFromFilename(filename, FX_FILEMODE_ReadOnly);
+}
+
 bool IFX_SeekableWriteStream::WriteBlock(const void* pData, size_t size) {
   return WriteBlockAtOffset(pData, GetSize(), size);
 }
