@@ -477,7 +477,7 @@ TEST_F(FPDFDocEmbedderTest, Bookmarks) {
   EXPECT_TRUE(child);
   EXPECT_EQ(34u, FPDFBookmark_GetTitle(child, buf, sizeof(buf)));
   EXPECT_EQ(WideString(L"A Good Beginning"), WideString::FromUTF16LE(buf, 16));
-
+  
   FPDF_DEST dest = FPDFBookmark_GetDest(document(), child);
   EXPECT_FALSE(dest);  // TODO(tsepez): put real dest into bookmarks.pdf
 
@@ -493,6 +493,20 @@ TEST_F(FPDFDocEmbedderTest, Bookmarks) {
   EXPECT_EQ(WideString(L"A Good Ending"), WideString::FromUTF16LE(buf, 13));
 
   EXPECT_EQ(nullptr, FPDFBookmark_GetNextSibling(document(), sibling));
+}
+
+TEST_F(FPDFDocEmbedderTest, BookmarkIsClosed) {
+    
+    ASSERT_TRUE(OpenDocument("bookmarks.pdf"));
+    
+    FPDF_BOOKMARK bookmark = FPDFBookmark_GetFirstChild(document(), nullptr);
+    EXPECT_TRUE(bookmark);
+    
+    // Test IsClosed (nullptr)
+    EXPECT_FALSE(FPDFBookmark_IsClosed(nullptr));
+    
+    // Test IsClosed (false)
+    EXPECT_FALSE(FPDFBookmark_IsClosed(bookmark));
 }
 
 TEST_F(FPDFDocEmbedderTest, FindBookmarks) {
