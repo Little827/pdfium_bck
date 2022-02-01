@@ -495,6 +495,20 @@ TEST_F(FPDFDocEmbedderTest, Bookmarks) {
   EXPECT_EQ(nullptr, FPDFBookmark_GetNextSibling(document(), sibling));
 }
 
+TEST_F(FPDFDocEmbedderTest, BookmarkIsClosed) {
+    
+    ASSERT_TRUE(OpenDocument("bookmarks.pdf"));
+    
+    FPDF_BOOKMARK bookmark = FPDFBookmark_GetFirstChild(document(), nullptr);
+    EXPECT_TRUE(bookmark);
+    
+    // Test IsClosed (nullptr)
+    EXPECT_FALSE(FPDFBookmark_IsClosed(nullptr));
+    
+    // Test IsClosed (false)
+    EXPECT_FALSE(FPDFBookmark_IsClosed(bookmark));
+}
+
 TEST_F(FPDFDocEmbedderTest, FindBookmarks) {
   unsigned short buf[128];
 
