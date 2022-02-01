@@ -16,6 +16,41 @@
       "message": "Perhaps it would make more sense to return nullptr in this case?",
       "revId": "70bfe8247a62b99b543194fc42c028ccf3c6509c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d937d4_f031284e",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-01T20:22:31Z",
+      "side": 1,
+      "message": "It\u0027s fine as is.",
+      "parentUuid": "bd727407_781f00cf",
+      "revId": "70bfe8247a62b99b543194fc42c028ccf3c6509c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e51885_42cb0fbb",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-01T20:22:31Z",
+      "side": 1,
+      "message": "Add EXPECT_TRUE(c_bookmark) and EXPECT_TRUE(o_bookmark). Then the test can make sure line 510/513 isn\u0027t passing in a nullptr, like line 516.",
+      "revId": "70bfe8247a62b99b543194fc42c028ccf3c6509c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

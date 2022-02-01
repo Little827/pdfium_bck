@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62217c9d_176a9a23",
+        "filename": "testing/resources/bookmark_state.pdf",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-01T20:22:31Z",
+      "side": 1,
+      "message": "It would be nicer to check in handwritten PDFs, which have an associated \u0027.in\u0027 file as the source. e.g. testing/resources/bug_1769.pdf in https://pdfium-review.googlesource.com/90170 is less than 1 KB. If you need help with this, let me know and I can write the test file.",
+      "revId": "dc56575d339024249ebf2c520664f18f90888370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
