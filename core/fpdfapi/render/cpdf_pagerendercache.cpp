@@ -36,7 +36,7 @@ void CPDF_PageRenderCache::CacheOptimization(int32_t dwLimitCacheSize) {
   if (m_nCacheSize <= (uint32_t)dwLimitCacheSize)
     return;
 
-  size_t nCount = m_ImageCache.size();
+  uint32_t nCount = fxcrt::CollectionSize<uint32_t>(m_ImageCache);
   std::vector<CacheInfo> cache_info;
   cache_info.reserve(nCount);
   for (const auto& it : m_ImageCache) {
@@ -49,7 +49,7 @@ void CPDF_PageRenderCache::CacheOptimization(int32_t dwLimitCacheSize) {
   // The comparison is legal because uint32_t is an unsigned type.
   uint32_t nTimeCount = m_nTimeCount;
   if (nTimeCount + 1 < nTimeCount) {
-    for (size_t i = 0; i < nCount; i++)
+    for (uint32_t i = 0; i < nCount; i++)
       m_ImageCache[cache_info[i].pStream]->SetTimeCount(i);
     m_nTimeCount = nCount;
   }
