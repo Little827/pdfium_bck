@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1643681762 -0800\npushee https://pdfium.googlesource.com/pdfium/\nnonce ALC2d19sb2R1nP2q6djtvtiN50+Zx5unNHOEC8fRf3TeuAY7tWmAF5GN/EAFum+S70hnxstAi0PU\n\n0000000000000000000000000000000000000000 a487a290967d67740a9efc4bcf4786e804c6b322 refs/for/refs/heads/main%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,l\u003dCommit-Queue+1\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAmH4l+IACgkQqzYtYVpm\n/XuFuAf8DbpTE0eubL1GZxFyMvAficsopWDp8OfZoypuitXrncze/2vnsyrNCb7K\nA2t0YrKMYiq2iVub7Rx1EvcyBIYQKvjl5EuRpx2Mvz/5f7b2jITegSVRpfuRpmUi\nZkBtFgxNAmeJAmAvowTXg+R6w2tB3jPD7wu3E0ZRBz7T/1/xfnrQ3efCgJIBXvR8\ngzp9H0EmhyJDE8edJyfXBRyCBxE2Zbi1FFBG4BDxp3vJcjnP59T7QiwrV94WYToy\n8dShcXgnTiHCsK8de4XEcCZ2jDKkLetma+p36ayH1V+My8bTVMYe33EMXnc9AaZo\n3BmPs6v0mR5vq6kXK+AdZXg0dRczxg\u003d\u003d\n\u003djphI\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a225c26_c3efb371",
+        "filename": "testing/resources/bug_1768.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-02-01T20:32:27Z",
+      "side": 1,
+      "message": "{{object 5 0}} is missing. Is it done on purpose to reproduce the bug?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "a487a290967d67740a9efc4bcf4786e804c6b322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
 }
