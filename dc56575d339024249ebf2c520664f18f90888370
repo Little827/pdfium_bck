@@ -16,6 +16,24 @@
       "message": "It would be nicer to check in handwritten PDFs, which have an associated \u0027.in\u0027 file as the source. e.g. testing/resources/bug_1769.pdf in https://pdfium-review.googlesource.com/90170 is less than 1 KB. If you need help with this, let me know and I can write the test file.",
       "revId": "dc56575d339024249ebf2c520664f18f90888370",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f00b991_e055c766",
+        "filename": "testing/resources/bookmark_state.pdf",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-02-02T12:12:38Z",
+      "side": 1,
+      "message": "Yeah, it would be helpful if you could write the test file in case the current one is too big. I\u0027d rather not craft a PDF from scratch.",
+      "parentUuid": "62217c9d_176a9a23",
+      "revId": "dc56575d339024249ebf2c520664f18f90888370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
