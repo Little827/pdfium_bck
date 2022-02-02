@@ -16,6 +16,24 @@
       "message": "Is your use case only on Windows? I think FPDF_LoadDocument() works just fine on POSIX platforms.",
       "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a689f33_32047701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-02-02T19:28:56Z",
+      "side": 1,
+      "message": "Yes, this is specifically for Windows. See the referenced bug.",
+      "parentUuid": "1ef78699_dbe5b2b0",
+      "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
