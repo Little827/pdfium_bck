@@ -113,6 +113,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0adcf684_cd2f9a9c",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-02T18:44:55Z",
+      "side": 1,
+      "message": "Ok, leave as is.",
+      "parentUuid": "b2e6c361_c2bd6e9d",
+      "range": {
+        "startLine": 2922,
+        "startChar": 2,
+        "endLine": 2922,
+        "endChar": 31
+      },
+      "revId": "11ef1fd11ab1487f4b9c36125e3191d8425e50c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12d1ed06_a4631557",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "Let me see if I can switch to pow() after the test passes. FWIW, this feels like Adobe\u0027s implementation, based on how it performs with large `nPeriods` values...",
       "parentUuid": "12d1ed06_a4631557",
+      "range": {
+        "startLine": 2931,
+        "startChar": 2,
+        "endLine": 2932,
+        "endChar": 17
+      },
+      "revId": "11ef1fd11ab1487f4b9c36125e3191d8425e50c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67193b1_4a1d0fe3",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2932,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-02T18:44:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0931033c_c251d507",
       "range": {
         "startLine": 2931,
         "startChar": 2,
