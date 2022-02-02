@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "65fb4374_8bd5caac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-02T18:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1a49f2_5ba5c7ed",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "11ef1fd11ab1487f4b9c36125e3191d8425e50c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b677c4d0_0c64f16f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -67,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2e6c361_c2bd6e9d",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-02T18:41:48Z",
+      "side": 1,
+      "message": "ValueToInteger() does funny things. e.g. for 99999997952, it returns 1215750144.\n\nIf I store an int, how do I check it\u0027s larger than INT_MAX?",
+      "parentUuid": "99e8eb5b_a3f7f00c",
+      "range": {
+        "startLine": 2922,
+        "startChar": 2,
+        "endLine": 2922,
+        "endChar": 31
+      },
+      "revId": "11ef1fd11ab1487f4b9c36125e3191d8425e50c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12d1ed06_a4631557",
         "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
         "patchSetId": 1
@@ -78,6 +126,30 @@
       "writtenOn": "2022-02-02T16:56:50Z",
       "side": 1,
       "message": "we really ought to do better here, call to pow() something to avoid a billion potential iterations.",
+      "range": {
+        "startLine": 2931,
+        "startChar": 2,
+        "endLine": 2932,
+        "endChar": 17
+      },
+      "revId": "11ef1fd11ab1487f4b9c36125e3191d8425e50c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0931033c_c251d507",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2932,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-02T18:41:48Z",
+      "side": 1,
+      "message": "Let me see if I can switch to pow() after the test passes. FWIW, this feels like Adobe\u0027s implementation, based on how it performs with large `nPeriods` values...",
+      "parentUuid": "12d1ed06_a4631557",
       "range": {
         "startLine": 2931,
         "startChar": 2,
