@@ -66,9 +66,14 @@ void CPDF_StructTree::LoadPageTree(const CPDF_Dictionary* pPageDict) {
     return;
 
   CPDF_NumberTree parent_tree(pParentTree);
+  // The specification states that both StructParents or StructParent are
+  // acceptable keys.
   int parents_id = pPageDict->GetIntegerFor("StructParents", -1);
-  if (parents_id < 0)
-    return;
+  if (parents_id < 0) {
+    parents_id = pPageDict->GetIntegerFor("StructParent", -1);
+    if (parents_id < 0)
+      return;
+  }
 
   const CPDF_Array* pParentArray = ToArray(parent_tree.LookupValue(parents_id));
   if (!pParentArray)
@@ -99,6 +104,7 @@ RetainPtr<CPDF_StructElement> CPDF_StructTree::AddPageNode(
   if (!pParent || pParent->GetNameFor("Type") == "StructTreeRoot") {
     if (!AddTopLevelNode(pDict, pElement))
       map->erase(pDict);
+    pElement->SetParent(nullptr);
     return pElement;
   }
 
@@ -109,6 +115,8 @@ RetainPtr<CPDF_StructElement> CPDF_StructTree::AddPageNode(
 
   if (!pParentElement->UpdateKidIfElement(pDict, pElement.Get()))
     map->erase(pDict);
+
+  pElement->SetParent(pParentElement.Get());
 
   return pElement;
 }

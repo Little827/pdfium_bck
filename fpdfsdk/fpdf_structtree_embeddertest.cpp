@@ -74,6 +74,66 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFStructTreeEmbedderTest, GetActualText) {
+  ASSERT_TRUE(OpenDocument("tagged_alt_text.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+
+    FPDF_STRUCTELEMENT element =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), -1);
+    EXPECT_FALSE(element);
+    element = FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 1);
+    EXPECT_FALSE(element);
+    element = FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+    ASSERT_TRUE(element);
+    EXPECT_EQ(0U, FPDF_StructElement_GetActualText(element, nullptr, 0));
+
+    ASSERT_EQ(1, FPDF_StructElement_CountChildren(element));
+    FPDF_STRUCTELEMENT child_element =
+        FPDF_StructElement_GetChildAtIndex(element, -1);
+    EXPECT_FALSE(child_element);
+    child_element = FPDF_StructElement_GetChildAtIndex(element, 1);
+    EXPECT_FALSE(child_element);
+    child_element = FPDF_StructElement_GetChildAtIndex(element, 0);
+    ASSERT_TRUE(child_element);
+    EXPECT_EQ(0U, FPDF_StructElement_GetActualText(child_element, nullptr, 0));
+
+    ASSERT_EQ(1, FPDF_StructElement_CountChildren(child_element));
+    FPDF_STRUCTELEMENT gchild_element =
+        FPDF_StructElement_GetChildAtIndex(child_element, -1);
+    EXPECT_FALSE(gchild_element);
+    gchild_element = FPDF_StructElement_GetChildAtIndex(child_element, 1);
+    EXPECT_FALSE(gchild_element);
+    gchild_element = FPDF_StructElement_GetChildAtIndex(child_element, 0);
+    ASSERT_TRUE(gchild_element);
+    ASSERT_EQ(24U,
+              FPDF_StructElement_GetActualText(gchild_element, nullptr, 0));
+
+    unsigned short buffer[12];
+    memset(buffer, 0, sizeof(buffer));
+    // Deliberately pass in a small buffer size to make sure |buffer| remains
+    // untouched.
+    ASSERT_EQ(24U, FPDF_StructElement_GetActualText(gchild_element, buffer, 1));
+    for (size_t i = 0; i < pdfium::size(buffer); ++i)
+      EXPECT_EQ(0U, buffer[i]);
+    ASSERT_EQ(24U, FPDF_StructElement_GetActualText(gchild_element, buffer,
+                                                    sizeof(buffer)));
+    EXPECT_EQ(L"Actual Text", GetPlatformWString(buffer));
+
+    ASSERT_EQ(1, FPDF_StructElement_CountChildren(gchild_element));
+    FPDF_STRUCTELEMENT ggchild_element =
+        FPDF_StructElement_GetChildAtIndex(gchild_element, 0);
+    EXPECT_FALSE(ggchild_element);
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFStructTreeEmbedderTest, GetStringAttribute) {
   ASSERT_TRUE(OpenDocument("tagged_table.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -315,6 +375,73 @@ TEST_F(FPDFStructTreeEmbedderTest, GetType) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFStructTreeEmbedderTest, GetObjType) {
+  ASSERT_TRUE(OpenDocument("tagged_alt_text.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+
+    FPDF_STRUCTELEMENT element =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+    ASSERT_TRUE(element);
+
+    // test nullptr inputs
+    unsigned short buffer[12];
+    ASSERT_EQ(0U,
+              FPDF_StructElement_GetObjType(nullptr, buffer, sizeof(buffer)));
+    ASSERT_EQ(0U, FPDF_StructElement_GetObjType(nullptr, nullptr, 0));
+    ASSERT_EQ(22U, FPDF_StructElement_GetObjType(element, nullptr, 0));
+
+    memset(buffer, 0, sizeof(buffer));
+    // Deliberately pass in a small buffer size to make sure |buffer| remains
+    // untouched.
+    ASSERT_EQ(22U, FPDF_StructElement_GetObjType(element, buffer, 1));
+    for (size_t i = 0; i < pdfium::size(buffer); ++i)
+      EXPECT_EQ(0U, buffer[i]);
+
+    ASSERT_EQ(22U,
+              FPDF_StructElement_GetObjType(element, buffer, sizeof(buffer)));
+    EXPECT_EQ(L"StructElem", GetPlatformWString(buffer));
+  }
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFStructTreeEmbedderTest, GetParent) {
+  ASSERT_TRUE(OpenDocument("tagged_alt_text.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+
+    FPDF_STRUCTELEMENT parent =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+    ASSERT_TRUE(parent);
+
+    ASSERT_EQ(1, FPDF_StructElement_CountChildren(parent));
+
+    FPDF_STRUCTELEMENT child = FPDF_StructElement_GetChildAtIndex(parent, 0);
+    ASSERT_TRUE(child);
+
+    // test nullptr inputs
+    ASSERT_EQ(nullptr, FPDF_StructElement_GetParent(nullptr));
+
+    ASSERT_EQ(parent, FPDF_StructElement_GetParent(child));
+    // while GetParent(parent) should be structtree here, we are limited by API.
+    // It currently returns nullptr.
+    ASSERT_EQ(nullptr, FPDF_StructElement_GetParent(parent));
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFStructTreeEmbedderTest, GetTitle) {
   ASSERT_TRUE(OpenDocument("tagged_alt_text.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -355,6 +482,83 @@ TEST_F(FPDFStructTreeEmbedderTest, GetTitle) {
     ASSERT_EQ(26U, FPDF_StructElement_GetTitle(child_element, buffer,
                                                sizeof(buffer)));
     EXPECT_EQ(L"symbol: 100k", GetPlatformWString(buffer));
+  }
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFStructTreeEmbedderTest, GetAttributes) {
+  ASSERT_TRUE(OpenDocument("tagged_table.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+
+    FPDF_STRUCTELEMENT document =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+    ASSERT_TRUE(document);
+
+    ASSERT_EQ(1, FPDF_StructElement_CountChildren(document));
+    ASSERT_EQ(0, FPDF_StructElement_GetAttributeCount(document));
+    FPDF_STRUCTELEMENT table = FPDF_StructElement_GetChildAtIndex(document, 0);
+    ASSERT_TRUE(table);
+    ASSERT_EQ(1, FPDF_StructElement_GetAttributeCount(table));
+
+    // nullptr test
+    ASSERT_EQ(nullptr, FPDF_StructElement_GetAttributeAtIndex(document, 0));
+    ASSERT_EQ(nullptr, FPDF_StructElement_GetAttributeAtIndex(document, -1));
+    ASSERT_EQ(nullptr, FPDF_StructElement_GetAttributeAtIndex(table, 1));
+
+    FPDF_STRUCTELEMENT_ATTR attr =
+        FPDF_StructElement_GetAttributeAtIndex(table, 0);
+    ASSERT_TRUE(attr);
+
+    ASSERT_EQ(3, FPDF_StructElement_Attr_GetCount(attr));
+    ASSERT_FALSE(
+        FPDF_StructElement_Attr_GetName(attr, 0, nullptr, 0U, nullptr));
+    unsigned short buffer[18];
+    unsigned long out_len = -1;
+    memset(buffer, 0, sizeof(buffer));
+    // Deliberately pass in a small buffer size to make sure |buffer| remains
+    // untouched.
+    ASSERT_TRUE(FPDF_StructElement_Attr_GetName(attr, 0, buffer, 1, &out_len));
+    for (size_t i = 0; i < pdfium::size(buffer); ++i)
+      EXPECT_EQ(0U, buffer[i]);
+    EXPECT_EQ(4U, out_len);
+
+    ASSERT_TRUE(FPDF_StructElement_Attr_GetName(attr, 0, buffer, sizeof(buffer),
+                                                &out_len));
+    EXPECT_EQ(4U, out_len);
+    EXPECT_EQ(L"O", GetPlatformWString(buffer));
+    EXPECT_EQ(FPDF_OBJECT_NAME, FPDF_StructElement_Attr_GetType(
+                                    attr, GetPlatformString(buffer).c_str()));
+
+    unsigned short str_val[12];
+    memset(str_val, 0, sizeof(str_val));
+    ASSERT_TRUE(FPDF_StructElement_Attr_GetStringValue(
+        attr, GetPlatformString(buffer).c_str(), str_val, sizeof(str_val),
+        &out_len));
+    EXPECT_EQ(12U, out_len);
+    EXPECT_EQ(L"Table", GetPlatformWString(str_val));
+
+    memset(buffer, 0, sizeof(buffer));
+    ASSERT_TRUE(FPDF_StructElement_Attr_GetName(attr, 1, buffer, sizeof(buffer),
+                                                &out_len));
+    EXPECT_EQ(18U, out_len);
+    EXPECT_EQ(L"RowCount", GetPlatformWString(buffer));
+    EXPECT_EQ(FPDF_OBJECT_NUMBER, FPDF_StructElement_Attr_GetType(
+                                      attr, GetPlatformString(buffer).c_str()));
+    int int_val;
+    ASSERT_TRUE(FPDF_StructElement_Attr_GetIntValue(
+        attr, GetPlatformString(buffer).c_str(), &int_val));
+    EXPECT_EQ(2, int_val);
+    float num_val;
+    ASSERT_TRUE(FPDF_StructElement_Attr_GetNumberValue(
+        attr, GetPlatformString(buffer).c_str(), &num_val));
+    EXPECT_EQ(2.0, num_val);
   }
 
   UnloadPage(page);
