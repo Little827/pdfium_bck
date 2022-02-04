@@ -22,7 +22,9 @@ class CPDF_StructElement final : public Retainable {
   CONSTRUCT_VIA_MAKE_RETAIN;
 
   ByteString GetType() const { return m_Type; }
+  ByteString GetObjType() const { return m_ObjType; }
   WideString GetAltText() const;
+  WideString GetActualText() const;
   WideString GetTitle() const;
 
   // Never returns nullptr.
@@ -30,8 +32,14 @@ class CPDF_StructElement final : public Retainable {
 
   size_t CountKids() const;
   CPDF_StructElement* GetKidIfElement(size_t index) const;
+  CPDF_StructElement* GetKidParentIfElement(size_t index) const;
   bool UpdateKidIfElement(const CPDF_Dictionary* pDict,
                           CPDF_StructElement* pElement);
+
+  CPDF_StructElement* GetParent() const { return m_pParentElement.Get(); }
+  void SetParent(CPDF_StructElement* pParentElement) {
+    m_pParentElement = pParentElement;
+  }
 
  private:
   struct Kid {
@@ -58,7 +66,9 @@ class CPDF_StructElement final : public Retainable {
 
   UnownedPtr<const CPDF_StructTree> const m_pTree;
   RetainPtr<const CPDF_Dictionary> const m_pDict;
+  UnownedPtr<CPDF_StructElement> m_pParentElement;
   const ByteString m_Type;
+  const ByteString m_ObjType;
   std::vector<Kid> m_Kids;
 };
 
