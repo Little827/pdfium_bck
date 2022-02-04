@@ -3,6 +3,7 @@
 /buildtools
 /out
 /testing/corpus
+/test_case
 /third_party/abseil-cpp
 /third_party/android_ndk
 /third_party/catapult
