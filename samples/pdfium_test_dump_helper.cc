@@ -28,10 +28,6 @@ std::wstring ConvertToWString(const unsigned short* buf,
   return result;
 }
 
-//std::string ConvertToString(const std::wstring& wide) {
-//  return std::string(wide.begin(), wide.end());
-//}
-
 void DumpBoxInfo(GetBoxInfoFunc func,
                  const char* box_type,
                  FPDF_PAGE page,
@@ -98,16 +94,12 @@ void DumpChildStructure(FPDF_STRUCTELEMENT child, int indent) {
   }
 
   FPDF_STRUCTELEMENT parent = FPDF_StructElement_GetParent(child);
-  if (!parent) {
+  if (parent) {
     memset(buf, 0, sizeof(buf));
     len = FPDF_StructElement_GetID(parent, buf, kBufSize);
     if (len > 0) {
       printf("%*s Parent ID: %ls\n", indent*2, "", ConvertToWString(buf, len).c_str());
-    } else {
-      printf("%*s No Parent ID\n", indent*2, "");
     }
-  } else {
-    printf("%*s No Parent\n", indent*2, "");
   }
 
   for (int i = 0; i < FPDF_StructElement_CountChildren(child); ++i) {

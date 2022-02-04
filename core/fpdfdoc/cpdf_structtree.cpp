@@ -121,7 +121,8 @@ RetainPtr<CPDF_StructElement> CPDF_StructTree::AddPageNode(
     map->erase(pDict);
 
   printf("Setting parent at level: %d\n", nLevel);
-  pElement->SetParent(pParentElement.Get());
+  pElement->SetParent(pParentElement.Get()); 
+ 
   return pElement;
 }
 

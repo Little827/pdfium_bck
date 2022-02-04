@@ -32,11 +32,12 @@ class CPDF_StructElement final : public Retainable {
 
   size_t CountKids() const;
   CPDF_StructElement* GetKidIfElement(size_t index) const;
+  CPDF_StructElement* GetKidParentIfElement(size_t index) const;
   bool UpdateKidIfElement(const CPDF_Dictionary* pDict,
                           CPDF_StructElement* pElement);
 
   CPDF_StructElement* GetParent() const { return m_pParentElement.Get(); }
-  void SetParent(CPDF_StructElement* pParentElement) { m_pParentElement.Reset(pParentElement); }
+  void SetParent(CPDF_StructElement* pParentElement) { m_pParentElement = pParentElement; }
 
  private:
   struct Kid {
@@ -63,7 +64,7 @@ class CPDF_StructElement final : public Retainable {
 
   UnownedPtr<const CPDF_StructTree> const m_pTree;
   RetainPtr<const CPDF_Dictionary> const m_pDict;
-  RetainPtr<CPDF_StructElement> m_pParentElement;
+  UnownedPtr<CPDF_StructElement> m_pParentElement;
   const ByteString m_Type;
   const ByteString m_ObjType;
   std::vector<Kid> m_Kids;
