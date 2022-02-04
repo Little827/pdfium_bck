@@ -80,6 +80,15 @@ FPDF_StructElement_GetAltText(FPDF_STRUCTELEMENT struct_element,
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetActualText(FPDF_STRUCTELEMENT struct_element,
+                                 void* buffer,
+                                 unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  return elem ? WideStringToBuffer(elem->GetActualText(), buffer, buflen) : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDF_StructElement_GetID(FPDF_STRUCTELEMENT struct_element,
                          void* buffer,
                          unsigned long buflen) {
@@ -102,11 +111,46 @@ FPDF_StructElement_GetLang(FPDF_STRUCTELEMENT struct_element,
   CPDF_StructElement* elem =
       CPDFStructElementFromFPDFStructElement(struct_element);
   const CPDF_Dictionary* dict = elem ? elem->GetDict() : nullptr;
+  if (!dict)
+    return 0;
   const CPDF_Object* obj = dict->GetObjectFor("Lang");
   if (!obj || !obj->IsString())
     return 0;
   return Utf16EncodeMaybeCopyAndReturnLength(obj->GetUnicodeText(), buffer,
                                              buflen);
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_StructElement_GetAttributeCount(FPDF_STRUCTELEMENT struct_element) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  const CPDF_Dictionary* dict = elem ? elem->GetDict() : nullptr;
+  const CPDF_Object* attr_obj = dict ? dict->GetObjectFor("A") : nullptr;
+  return attr_obj ? (attr_obj->IsArray() ? attr_obj->AsArray()->size() : 1) : 0;
+}
+
+FPDF_EXPORT FPDF_STRUCTELEMENT_ATTR FPDF_CALLCONV
+FPDF_StructElement_GetAttributeAtIndex(FPDF_STRUCTELEMENT struct_element,
+                                       int index) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  const CPDF_Dictionary* dict = elem ? elem->GetDict() : nullptr;
+  const CPDF_Object* attr_obj = dict ? dict->GetObjectFor("A") : nullptr;
+  if (!attr_obj)
+    return nullptr;
+
+  if (attr_obj->IsDictionary())
+    return FPDFStructElementAttrFromCPDFDictionary(attr_obj->AsDictionary());
+
+  if (attr_obj->IsArray()) {
+    const CPDF_Array* array = attr_obj->AsArray();
+    if (!array || index < 0 || static_cast<size_t>(index) >= array->size())
+      return nullptr;
+    if (const CPDF_Dictionary* obj = array->GetDictAt(index))
+      return FPDFStructElementAttrFromCPDFDictionary(obj);
+  }
+
+  return nullptr;
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
@@ -155,6 +199,18 @@ FPDF_StructElement_GetType(FPDF_STRUCTELEMENT struct_element,
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetObjType(FPDF_STRUCTELEMENT struct_element,
+                              void* buffer,
+                              unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  return elem ? WideStringToBuffer(
+                    WideString::FromUTF8(elem->GetObjType().AsStringView()),
+                    buffer, buflen)
+              : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDF_StructElement_GetTitle(FPDF_STRUCTELEMENT struct_element,
                             void* buffer,
                             unsigned long buflen) {
@@ -183,4 +239,153 @@ FPDF_StructElement_GetChildAtIndex(FPDF_STRUCTELEMENT struct_element,
     return nullptr;
 
   return FPDFStructElementFromCPDFStructElement(elem->GetKidIfElement(index));
+}
+
+FPDF_EXPORT FPDF_STRUCTELEMENT FPDF_CALLCONV
+FPDF_StructElement_GetParent(FPDF_STRUCTELEMENT struct_element) {
+  if (CPDF_StructElement* elem =
+          CPDFStructElementFromFPDFStructElement(struct_element)) {
+    if (CPDF_StructElement* parent = elem->GetParent()) {
+      return FPDFStructElementFromCPDFStructElement(parent);
+    }
+  }
+  return nullptr;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_StructElement_Attr_GetCount(FPDF_STRUCTELEMENT_ATTR struct_attribute) {
+  if (const CPDF_Dictionary* dict =
+          CPDFDictionaryFromFPDFStructElementAttr(struct_attribute))
+    return dict->size();
+  return -1;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetName(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                int index,
+                                void* buffer,
+                                unsigned long buflen,
+                                unsigned long* out_buflen) {
+  if (!out_buflen || !buffer)
+    return false;
+
+  const CPDF_Dictionary* dict =
+      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
+
+  if (!dict)
+    return false;
+
+  CPDF_DictionaryLocker locker(dict);
+  for (auto& it : locker) {
+    if (index == 0) {
+      *out_buflen = Utf16EncodeMaybeCopyAndReturnLength(
+          WideString::FromUTF8(it.first.AsStringView()), buffer, buflen);
+      return true;
+    }
+    --index;
+  }
+  return false;
+}
+
+FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
+FPDF_StructElement_Attr_GetType(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                FPDF_BYTESTRING name) {
+  const CPDF_Dictionary* dict =
+      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
+  if (!dict)
+    return FPDF_OBJECT_UNKNOWN;
+
+  const CPDF_Object* obj = dict->GetObjectFor(name);
+  return obj ? obj->GetType() : FPDF_OBJECT_UNKNOWN;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetIntValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                    FPDF_BYTESTRING name,
+                                    int* out_value) {
+  if (!out_value)
+    return false;
+
+  const CPDF_Dictionary* dict =
+      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
+  if (!dict)
+    return false;
+
+  const CPDF_Object* obj = dict->GetObjectFor(name);
+  if (!obj || !(obj->IsNumber() || obj->IsBoolean()))
+    return false;
+
+  *out_value = obj->GetInteger();
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetNumberValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                    FPDF_BYTESTRING name,
+                                    float* out_value) {
+  if (!out_value)
+    return false;
+
+  const CPDF_Dictionary* dict =
+      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
+  if (!dict)
+    return false;
+
+  const CPDF_Object* obj = dict->GetObjectFor(name);
+  if (!obj || !(obj->IsNumber()))
+    return false;
+
+  *out_value = obj->GetNumber();
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                       FPDF_BYTESTRING name,
+                                       void* buffer,
+                                       unsigned long buflen,
+                                       unsigned long* out_buflen) {
+  if (!out_buflen)
+    return false;
+
+  const CPDF_Dictionary* dict =
+      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
+  if (!dict)
+    return false;
+
+  const CPDF_Object* obj = dict->GetObjectFor(name);
+  if (!obj || !(obj->IsString() || obj->IsName()))
+    return false;
+
+  *out_buflen = Utf16EncodeMaybeCopyAndReturnLength(
+      WideString::FromUTF8(obj->GetString().AsStringView()), buffer, buflen);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                     FPDF_BYTESTRING name,
+                                     void* buffer,
+                                     unsigned long buflen,
+                                     unsigned long* out_buflen) {
+  if (!out_buflen)
+    return false;
+
+  const CPDF_Dictionary* dict =
+      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
+  if (!dict)
+    return false;
+
+  const CPDF_Object* obj = dict->GetObjectFor(name);
+  if (!obj || !obj->IsString())
+    return false;
+
+  ByteString result = obj->GetString();
+  unsigned long len = result.GetLength();
+
+  if (buffer && len <= buflen)
+    memcpy(buffer, result.c_str(), len);
+
+  *out_buflen = len;
+  return true;
 }
