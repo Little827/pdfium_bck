@@ -62,7 +62,7 @@ FPDF_StructTree_GetChildAtIndex(FPDF_STRUCTTREE struct_tree, int index);
 //          buffer         -   A buffer for output the alt text. May be NULL.
 //          buflen         -   The length of the buffer, in bytes. May be 0.
 // Return value:
-//          The number of bytes in the title, including the terminating NUL
+//          The number of bytes in the alt text, including the terminating NUL
 //          character. The number of bytes is returned regardless of the
 //          |buffer| and |buflen| parameters.
 // Comments:
@@ -72,6 +72,26 @@ FPDF_StructTree_GetChildAtIndex(FPDF_STRUCTTREE struct_tree, int index);
 //          |buffer| will not be modified.
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDF_StructElement_GetAltText(FPDF_STRUCTELEMENT struct_element,
+                              void* buffer,
+                              unsigned long buflen);
+
+// Function: FPDF_StructElement_GetActualText
+//          Get the actual text for a given element.
+// Parameters:
+//          struct_element -   Handle to the struct element.
+//          buffer         -   A buffer for output the actual text. May be NULL.
+//          buflen         -   The length of the buffer, in bytes. May be 0.
+// Return value:
+//          The number of bytes in the actual text, including the terminating NUL
+//          character. The number of bytes is returned regardless of the
+//          |buffer| and |buflen| parameters.
+// Comments:
+//          Regardless of the platform, the |buffer| is always in UTF-16LE
+//          encoding. The string is terminated by a UTF16 NUL character. If
+//          |buflen| is less than the required length, or |buffer| is NULL,
+//          |buffer| will not be modified.
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetActualText(FPDF_STRUCTELEMENT struct_element,
                               void* buffer,
                               unsigned long buflen);
 
@@ -170,6 +190,47 @@ FPDF_StructElement_GetType(FPDF_STRUCTELEMENT struct_element,
                            void* buffer,
                            unsigned long buflen);
 
+// Function: FPDF_StructElement_GetObjType
+//           Get the object type (/Type) for a given element.
+// Parameters:
+//           struct_element - Handle to the struct element.
+//           buffer        - A buffer for output. May be NULL.
+//           buflen        - The length of the buffer, in bytes. May be 0.
+// Return value:
+//           The number of bytes in the object type, including the terminating NUL
+//           character. The number of bytes is returned regardless of the
+//           |buffer| and |buflen| parameters.
+// Comments:
+//           Regardless of the platform, the |buffer| is always in UTF-16LE
+//           encoding. The string is terminated by a UTF16 NUL character. If
+//           |buflen| is less than the required length, or |buffer| is NULL,
+//           |buffer| will not be modified.
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetObjType(FPDF_STRUCTELEMENT struct_element,
+                           void* buffer,
+                           unsigned long buflen);
+
+// Function: FPDF_StructElement_GetType
+//           Get the type (/S) for a given element.
+// Parameters:
+//           struct_element - Handle to the struct element.
+//           buffer        - A buffer for output. May be NULL.
+//           buflen        - The length of the buffer, in bytes. May be 0.
+// Return value:
+//           The number of bytes in the type, including the terminating NUL
+//           character. The number of bytes is returned regardless of the
+//           |buffer| and |buflen| parameters.
+// Comments:
+//           Regardless of the platform, the |buffer| is always in UTF-16LE
+//           encoding. The string is terminated by a UTF16 NUL character. If
+//           |buflen| is less than the required length, or |buffer| is NULL,
+//           |buffer| will not be modified.
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetType(FPDF_STRUCTELEMENT struct_element,
+                           void* buffer,
+                           unsigned long buflen);
+
+
 // Function: FPDF_StructElement_GetTitle
 //           Get the title (/T) for a given element.
 // Parameters:
@@ -213,6 +274,74 @@ FPDF_EXPORT FPDF_STRUCTELEMENT FPDF_CALLCONV
 FPDF_StructElement_GetChildAtIndex(FPDF_STRUCTELEMENT struct_element,
                                    int index);
 
+// Function: FPDF_StructElement_GetParent
+//          Get the parent of the structure element.
+// Parameters:
+//          struct_tree -   Handle to the struct element.
+// Return value:
+//          The parent structure element or NULL on error.
+// Comments:
+//          If structure element is StructTreeRoot, then this function will
+//          return NULL.
+FPDF_EXPORT FPDF_STRUCTELEMENT FPDF_CALLCONV
+FPDF_StructElement_GetParent(FPDF_STRUCTELEMENT struct_element);
+
+// Function: FPDF_StructElement_GetAttributeCount
+//          Count the number of attributes for the structure element.
+// Parameters:
+//          struct_element -   Handle to the struct element.
+// Return value:
+//          The number of attributes, or -1 on error.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_StructElement_GetAttributeCount(FPDF_STRUCTELEMENT struct_element);
+
+// Function: FPDF_StructElement_GetAttributeAtIndex
+//          Get a attribute object in the structure element.
+// Parameters:
+//          struct_tree -   Handle to the struct element.
+//          index       -   The index for the attribute object, 0-based.
+// Return value:
+//          The attribute object at the n-th index or NULL on error.
+// Comments:
+//          If the attribute object exists but is not a dict, then this function will
+//          return NULL. This will also return NULL for out of bounds indices.
+FPDF_EXPORT FPDF_STRUCTELEMENT_ATTR FPDF_CALLCONV
+FPDF_StructElement_GetAttributeAtIndex(FPDF_STRUCTELEMENT struct_element, int index);
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_StructElement_Attr_GetCount(FPDF_STRUCTELEMENT_ATTR struct_attribute);
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetName(FPDF_STRUCTELEMENT_ATTR struct_attribute, 
+  int index, void* buffer, unsigned long buflen, unsigned long* out_buflen);
+
+FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
+FPDF_StructElement_Attr_GetType(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                FPDF_BYTESTRING name);
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetIntValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                       FPDF_BYTESTRING name,
+                                       int* out_value);
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetBoolValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                       FPDF_BYTESTRING name,
+                                       int* out_value);
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                       FPDF_BYTESTRING name,
+                                       void* buffer,
+                                       unsigned long buflen,
+                                       unsigned long* out_buflen);
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                  FPDF_BYTESTRING name,
+                                  void* buffer,
+                                  unsigned long buflen,
+                                  unsigned long* out_buflen);
 #ifdef __cplusplus
 }  // extern "C"
 #endif

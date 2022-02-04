@@ -79,6 +79,7 @@ enum class OutputFormat {
   kNone,
   kPageInfo,
   kStructure,
+  kMarkedContent,
   kText,
   kPpm,
   kPng,
@@ -621,6 +622,12 @@ bool ParseCommandLine(const std::vector<std::string>& args,
         return false;
       }
       options->output_format = OutputFormat::kStructure;
+    } else if (cur_arg == "--marked_content") {
+      if (options->output_format != OutputFormat::kNone) {
+        fprintf(stderr, "Duplicate or conflicting --show-structure argument\n");
+        return false;
+      }
+      options->output_format = OutputFormat::kMarkedContent;
     } else if (ParseSwitchKeyValue(cur_arg, "--pages=", &value)) {
       if (options->pages) {
         fprintf(stderr, "Duplicate --pages argument\n");
@@ -761,6 +768,10 @@ bool ProcessPage(const std::string& name,
   }
   if (options.output_format == OutputFormat::kStructure) {
     DumpPageStructure(page, page_index);
+    return true;
+  }
+  if (options.output_format == OutputFormat::kMarkedContent) {
+    DumpMarkedContentInfo(page, page_index);
     return true;
   }
 
