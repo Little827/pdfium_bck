@@ -34,6 +34,23 @@
       "parentUuid": "f1dad8d8_26d44973",
       "revId": "f0295a18cced6388fa49b34311fc7ff811df8c51",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "829ecc36_0c7841dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-04T19:45:53Z",
+      "side": 1,
+      "message": "Not sure if Chromium is done with their work on the NDK.",
+      "revId": "f0295a18cced6388fa49b34311fc7ff811df8c51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
