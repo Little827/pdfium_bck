@@ -105,7 +105,6 @@ RetainPtr<CPDF_StructElement> CPDF_StructTree::AddPageNode(
   if (!pParent || pParent->GetNameFor("Type") == "StructTreeRoot") {
     if (!AddTopLevelNode(pDict, pElement))
       map->erase(pDict);
-    printf("Parent is StructTreeRoot at level: %d \n", nLevel);
     pElement->SetParent(nullptr);
     return pElement;
   }
@@ -113,16 +112,14 @@ RetainPtr<CPDF_StructElement> CPDF_StructTree::AddPageNode(
   RetainPtr<CPDF_StructElement> pParentElement =
       AddPageNode(pParent, map, nLevel + 1);
   if (!pParentElement) {
-    printf("No parent at level: %d\n", nLevel);
     return pElement;
   }
 
   if (!pParentElement->UpdateKidIfElement(pDict, pElement.Get()))
     map->erase(pDict);
 
-  printf("Setting parent at level: %d\n", nLevel);
-  pElement->SetParent(pParentElement.Get()); 
- 
+  pElement->SetParent(pParentElement.Get());
+
   return pElement;
 }
 
