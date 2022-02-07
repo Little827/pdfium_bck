@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ae09e3_a0b98e09",
+        "filename": "xfa/DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-07T20:16:00Z",
+      "side": 0,
+      "message": "I think the intent of this comment is to explain why the next line exists, with the bug number there for context. There\u0027s no TODO here to take any further action. Maybe it just needs some rephrasing?",
+      "revId": "5769b0a018cd77fb0dd1e955b992e53935f6489c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
