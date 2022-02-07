@@ -34,6 +34,24 @@
       "parentUuid": "b6ae09e3_a0b98e09",
       "revId": "5769b0a018cd77fb0dd1e955b992e53935f6489c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36c75f8_06bc10b2",
+        "filename": "xfa/DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-07T20:44:04Z",
+      "side": 0,
+      "message": "In other words, taking away fwl here does not make fwl standalone. It just restricts its callers, not its dependents. See the new file.",
+      "parentUuid": "dd9502d0_71a30fa9",
+      "revId": "5769b0a018cd77fb0dd1e955b992e53935f6489c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
