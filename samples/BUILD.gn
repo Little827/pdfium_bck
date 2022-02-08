@@ -45,11 +45,10 @@ executable("pdfium_test") {
   ]
 
   # Note: One should write programs that depend on ../:pdfium. Whereas this
-  # sample program does not set a good example, and depends on PDFium internals,
-  # as well as test support code, for convenience.
+  # sample program does not set the best example, and depends on test support
+  # code for convenience.
   deps = [
-    "../:pdfium_public_headers",
-    "../fpdfsdk",
+    "../:pdfium",
     "../testing:test_support",
     "../testing/image_diff",
     "../third_party:pdfium_base",
