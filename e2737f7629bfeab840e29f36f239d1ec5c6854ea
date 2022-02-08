@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aeb56f2_b3a3b6c1",
+        "filename": "xfa/fgas/crt/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-08T19:53:24Z",
+      "side": 1,
+      "message": "note: other variables alphabetically after sources\u003d[]",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "e2737f7629bfeab840e29f36f239d1ec5c6854ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67984670_5867d92f",
+        "filename": "xfa/fgas/crt/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-08T19:53:24Z",
+      "side": 1,
+      "message": "note: then conditional logic last.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "e2737f7629bfeab840e29f36f239d1ec5c6854ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76e84f8_c0dd9e59",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-08T19:53:24Z",
+      "side": 1,
+      "message": "NOTE: I\u0027m pretty sure we could get negative index here and a few other places if we could get a 2GB+ size string argument.",
+      "range": {
+        "startLine": 945,
+        "startChar": 46,
+        "endLine": 945,
+        "endChar": 54
+      },
+      "revId": "e2737f7629bfeab840e29f36f239d1ec5c6854ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5799b219_6c64010b",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-08T19:53:24Z",
+      "side": 1,
+      "message": "note: re-ordered because the in/out/in/out indentation makes my eyes hurt.",
+      "range": {
+        "startLine": 1172,
+        "startChar": 2,
+        "endLine": 1172,
+        "endChar": 8
+      },
+      "revId": "e2737f7629bfeab840e29f36f239d1ec5c6854ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
