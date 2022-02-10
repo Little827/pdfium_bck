@@ -409,6 +409,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f0ec8e8_428e6fde",
+        "filename": "testing/resources/tagged_alt_text.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T22:29:26Z",
+      "side": 1,
+      "message": "This just doesn\u0027t set a good example. It is possible to have a semantically correct PDF and still be able to test FPDF_StructElement_GetActualText(). Can we just do that?",
+      "parentUuid": "6c9d5fff_7b290557",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd45767f_537ff8fe",
         "filename": "testing/resources/tagged_table.pdf",
         "patchSetId": 12
