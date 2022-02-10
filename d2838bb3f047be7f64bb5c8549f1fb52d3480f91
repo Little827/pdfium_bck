@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68cf7691_75d1c276",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "Changing it to RetainPtr",
+      "parentUuid": "3c061902_48f5a18b",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8655722_4e87571c",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-10T21:12:18Z",
       "side": 1,
       "message": "Is this necessary?",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20b5e84_f99cfd57",
+        "filename": "core/fpdfdoc/cpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "Should work without it.",
+      "parentUuid": "f8655722_4e87571c",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d60007cb_d66729d3",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "They are all struct tree related so I would prefer if they can all go in together to avoid latency and I can be quickly unblocked. However, if they must be splitted, I guess I would do that. The changes are minor in nature so I doubt if they will break anything.",
+      "parentUuid": "f7ebd796_f8b8b056",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a55bab63_f5b93531",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 12
@@ -82,6 +136,24 @@
       "writtenOn": "2022-02-10T21:12:18Z",
       "side": 1,
       "message": "Can this simple fix go in into its own CL, with a corresponding test case change to trigger this code path?",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64eeef82_09552dd7",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "As same above.",
+      "parentUuid": "a55bab63_f5b93531",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -105,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14dfdab8_ecc508cf",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "I saw several instances where this isn\u0027t true:\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fpdfdoc/cpdf_structelement.cpp;l\u003d92\n\nI can change if that was accidentally slipped and it shouldn\u0027t have been allowed.",
+      "parentUuid": "8827332a_c16dfe38",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ed6e5cf_c3e29c50",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 12
@@ -116,6 +206,24 @@
       "writtenOn": "2022-02-10T21:12:18Z",
       "side": 1,
       "message": "nit: Add curly braces.",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a7ff92_fc249eda",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed6e5cf_c3e29c50",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -139,6 +247,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "623de839_693754a1",
+        "filename": "testing/resources/tagged_alt_text.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "I am going to explore the entire tree and it would be great to have complete visibility. It doesn\u0027t harm in exposing what is already present?",
+      "parentUuid": "017e64b2_b22dd84f",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd45767f_537ff8fe",
         "filename": "testing/resources/tagged_table.pdf",
         "patchSetId": 12
@@ -150,6 +276,24 @@
       "writtenOn": "2022-02-10T21:12:18Z",
       "side": 1,
       "message": "I\u0027m guessing this is added to test when the value is an integer. Is the existing /ColSpan 2 in object 14 0 sufficient for that purpose?",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f358dcb1_296cf5ed",
+        "filename": "testing/resources/tagged_table.pdf",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T21:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd45767f_537ff8fe",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
