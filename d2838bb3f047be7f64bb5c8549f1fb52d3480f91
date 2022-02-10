@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8c0fd5_a280d681",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T22:01:27Z",
+      "side": 1,
+      "message": "The change didn\u0027t make it in the patch set 13 upload.",
+      "parentUuid": "68cf7691_75d1c276",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8655722_4e87571c",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "They are all struct tree related so I would prefer if they can all go in together to avoid latency and I can be quickly unblocked. However, if they must be splitted, I guess I would do that. The changes are minor in nature so I doubt if they will break anything.",
       "parentUuid": "f7ebd796_f8b8b056",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850252fa_3b243bbc",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T22:01:27Z",
+      "side": 1,
+      "message": "Wouldn\u0027t bundling all of the changes together create additional latency? The FPDF_StructElement_GetActualText() change can\u0027t land until everything here has been reviewed.\n\nWith finer grain changes, if something goes wrong, it is easier to locate the cause when bisecting. If many things get bunched together into one large CL, it will be much harder to figure out where in that large CL the problem lies.",
+      "parentUuid": "d60007cb_d66729d3",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -195,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "782fdf8e_0903f187",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T22:01:27Z",
+      "side": 1,
+      "message": "Sure. This code base is far from perfect. Let\u0027s go in the preferred direction for new code.",
+      "parentUuid": "14dfdab8_ecc508cf",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ed6e5cf_c3e29c50",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 12
@@ -259,6 +313,24 @@
       "side": 1,
       "message": "I am going to explore the entire tree and it would be great to have complete visibility. It doesn\u0027t harm in exposing what is already present?",
       "parentUuid": "017e64b2_b22dd84f",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aba9c30_6a9e072a",
+        "filename": "testing/resources/tagged_alt_text.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T22:01:27Z",
+      "side": 1,
+      "message": "Not sure what you mean by \"already present\" when this line is being added by this CL. I\u0027ve never seen a PDF where the same StructElem has both of these. They usually only have one or the other.",
+      "parentUuid": "623de839_693754a1",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
