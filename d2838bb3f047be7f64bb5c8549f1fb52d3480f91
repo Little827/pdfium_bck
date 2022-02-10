@@ -427,6 +427,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43ef405d_0166be29",
+        "filename": "testing/resources/tagged_alt_text.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T22:39:19Z",
+      "side": 1,
+      "message": "I am sorry I didn\u0027t get \"It is possible to have a semantically correct PDF and still be able to test FPDF_StructElement_GetActualText().\"? \n\nOur goal is really to not judge whether pdf is semantically correct or not. We can\u0027t tell customers that since PDF isn\u0027t semantically correct we can\u0027t extract something. Our goal in this project is to identify with our best effort majority of tables. Highly likely that the output of our parsing might end up feeding as feature to a ML model. In this case, all I am doing is adding a getter for a well defined field in the spec, why is that a wrong thing to do?",
+      "parentUuid": "0f0ec8e8_428e6fde",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd45767f_537ff8fe",
         "filename": "testing/resources/tagged_table.pdf",
         "patchSetId": 12
