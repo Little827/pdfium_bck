@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "496cf67b_defb993e",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T23:05:59Z",
+      "side": 1,
+      "message": "I would definitely prefer smaller CLs. Your suggestion sounds good. I would also fix FPDF_StructElement_GetLang() in a separate CL.",
+      "parentUuid": "42386ae7_99cef674",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a55bab63_f5b93531",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 12
@@ -475,6 +493,24 @@
       "side": 1,
       "message": "I am sorry I didn\u0027t get \"It is possible to have a semantically correct PDF and still be able to test FPDF_StructElement_GetActualText().\"? \n\nOur goal is really to not judge whether pdf is semantically correct or not. We can\u0027t tell customers that since PDF isn\u0027t semantically correct we can\u0027t extract something. Our goal in this project is to identify with our best effort majority of tables. Highly likely that the output of our parsing might end up feeding as feature to a ML model. In this case, all I am doing is adding a getter for a well defined field in the spec, why is that a wrong thing to do?",
       "parentUuid": "0f0ec8e8_428e6fde",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99da7d99_4bc0ec96",
+        "filename": "testing/resources/tagged_alt_text.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T23:05:59Z",
+      "side": 1,
+      "message": "I was thinking one can add another image in the PDF, and that PDF can have an associated struct tree element that uses /ActualText. Leaving this struct tree element as is.\n\nThere\u0027s nothing wrong with adding the FPDF_StructElement_GetActualText() getter. I\u0027m just saying this test example is not the most realistic one.",
+      "parentUuid": "43ef405d_0166be29",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
