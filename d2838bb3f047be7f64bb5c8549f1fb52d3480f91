@@ -71,6 +71,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7563b50d_8a7ec0f6",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T22:16:46Z",
+      "side": 1,
+      "message": "Apologies, I did commit without add.",
+      "parentUuid": "6a8c0fd5_a280d681",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8655722_4e87571c",
@@ -247,6 +265,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a15e6b4_1bbd9a74",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T22:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "782fdf8e_0903f187",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ed6e5cf_c3e29c50",
@@ -331,6 +367,24 @@
       "side": 1,
       "message": "Not sure what you mean by \"already present\" when this line is being added by this CL. I\u0027ve never seen a PDF where the same StructElem has both of these. They usually only have one or the other.",
       "parentUuid": "623de839_693754a1",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9d5fff_7b290557",
+        "filename": "testing/resources/tagged_alt_text.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T22:16:46Z",
+      "side": 1,
+      "message": "I understand but we get a lot of PDFs (100s of thousands, pretty random ones from cloud customers), not having a way to read a field is a limitation. I am trying to expose whatever is defined in the specs, whether it exists in particular PDF or not. My project is exploratory in nature, where I am going to run it on thousands of PDFs and see what I find.\n\nHow does it hurt anyway? It is defined in the spec and spec doesn\u0027t restrict one from setting both of them, hence API should provide support to read those fields.",
+      "parentUuid": "9aba9c30_6a9e072a",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
