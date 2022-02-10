@@ -34,6 +34,24 @@
       "parentUuid": "a5fbdfd3_8c6bedc3",
       "revId": "851947a641cb34b8f2f4fca6b6dea20c9e6cac2a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757bdf11_f3de8f11",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T22:39:59Z",
+      "side": 1,
+      "message": "Huh, ok. But if I fix the indent locally, \"git cl format\" also doesn\u0027t put it back like this. Anyway, the indentation is still off. Fix manually please.",
+      "parentUuid": "f64f3b21_7d327c87",
+      "revId": "851947a641cb34b8f2f4fca6b6dea20c9e6cac2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
