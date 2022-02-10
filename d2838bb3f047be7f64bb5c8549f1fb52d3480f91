@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7008ffce_e1f79664",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-10T23:34:08Z",
+      "side": 1,
+      "message": "Patch set 22 isn\u0027t right. The parent has to tell its children to reset their parent pointers when the parent is being destroyed. Thus the change has to happen in ~CPDF_StructElement and not in LoadKid().\n\nAs is, patch set 22 causes a nullptr dereference when running FPDFStructTreeEmbedderTest.GetAltText, for example.",
+      "parentUuid": "8d6f2ad5_4fc2447c",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8655722_4e87571c",
         "filename": "core/fpdfdoc/cpdf_structtree.cpp",
         "patchSetId": 12
