@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42386ae7_99cef674",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T22:49:32Z",
+      "side": 1,
+      "message": "I understand cons of large CLs. FPDF_StructElement_GetActualText is not useful in isolation anyway. None of it is useful in the isolation, since I would anyway wait for it all to be merged to perform analysis on our dataset.\n\nTo make progress, are you OK with entire CL as is or you would like it to be broken down before approval. If it needs to be broken down, how many would you like to see?\n\n- GetActualText --\u003e CL1\n- GetObjType --\u003e CL2\n- Rest --\u003e CL3 \n\nor more? that would help.",
+      "parentUuid": "850252fa_3b243bbc",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a55bab63_f5b93531",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 12
@@ -226,6 +244,24 @@
       "side": 1,
       "message": "As same above.",
       "parentUuid": "a55bab63_f5b93531",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3009ee2_d9088f4a",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T22:49:32Z",
+      "side": 1,
+      "message": "Resolving this since we are discussing the same issue in another comment.",
+      "parentUuid": "64eeef82_09552dd7",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
