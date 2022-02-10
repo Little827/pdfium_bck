@@ -231,6 +231,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de861ecf_0dd7aad1",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T23:10:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "496cf67b_defb993e",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a55bab63_f5b93531",
@@ -511,6 +529,24 @@
       "side": 1,
       "message": "I was thinking one can add another image in the PDF, and that PDF can have an associated struct tree element that uses /ActualText. Leaving this struct tree element as is.\n\nThere\u0027s nothing wrong with adding the FPDF_StructElement_GetActualText() getter. I\u0027m just saying this test example is not the most realistic one.",
       "parentUuid": "43ef405d_0166be29",
+      "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09d32bc_0eb8b2aa",
+        "filename": "testing/resources/tagged_alt_text.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-10T23:10:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99da7d99_4bc0ec96",
       "revId": "d2838bb3f047be7f64bb5c8549f1fb52d3480f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
