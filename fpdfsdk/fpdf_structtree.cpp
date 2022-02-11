@@ -184,3 +184,17 @@ FPDF_StructElement_GetChildAtIndex(FPDF_STRUCTELEMENT struct_element,
 
   return FPDFStructElementFromCPDFStructElement(elem->GetKidIfElement(index));
 }
+
+FPDF_EXPORT FPDF_STRUCTELEMENT FPDF_CALLCONV
+FPDF_StructElement_GetParent(FPDF_STRUCTELEMENT struct_element) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  if (elem) {
+    CPDF_StructElement* parent = elem->GetParent();
+    if (parent) {
+      return FPDFStructElementFromCPDFStructElement(parent);
+    }
+  }
+  return nullptr;
+}
+
