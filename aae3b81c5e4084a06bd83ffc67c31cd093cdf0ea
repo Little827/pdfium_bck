@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a680cf3_ef767ef1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:23:55Z",
+      "side": 1,
+      "message": "Acrobat\u0027s output",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "aae3b81c5e4084a06bd83ffc67c31cd093cdf0ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23d3c3a_56a2f6cc",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:23:55Z",
+      "side": 1,
+      "message": "Does this compile? There\u0027s no `i` here?",
+      "revId": "aae3b81c5e4084a06bd83ffc67c31cd093cdf0ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f472aef_69c5558c",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:23:55Z",
+      "side": 1,
+      "message": "indent +\u003d 2;",
+      "revId": "aae3b81c5e4084a06bd83ffc67c31cd093cdf0ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6f1129_7f387c22",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:23:55Z",
+      "side": 1,
+      "message": "If there\u0027s no `i`, then there\u0027s no need to start with `j`.",
+      "revId": "aae3b81c5e4084a06bd83ffc67c31cd093cdf0ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78011b61_2e393071",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:23:55Z",
+      "side": 1,
+      "message": "Initialize on previous line.",
+      "revId": "aae3b81c5e4084a06bd83ffc67c31cd093cdf0ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f15499_cbcb18eb",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:23:55Z",
+      "side": 1,
+      "message": "Not needed. ConvertToWString() already return a std::wstring. There\u0027s no need to grab its data pointer, and then construct a string object from that.",
+      "revId": "aae3b81c5e4084a06bd83ffc67c31cd093cdf0ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
