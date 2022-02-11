@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50283ce1_7bd40c60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T02:21:30Z",
+      "side": 1,
+      "message": "Isn\u0027t the /Type of every valid struct element going to be StructElem, or there\u0027s no /Type at all? How is retrieving this information helpful? Are you trying to find cases where there are invalid values?",
+      "revId": "5aeb3f876cc909487edceb76821657816750f7e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b957c9e_18a499f1",
+        "filename": "third_party/freetype/README.pdfium",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T02:21:30Z",
+      "side": 1,
+      "message": "Unrelated change?",
+      "revId": "5aeb3f876cc909487edceb76821657816750f7e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
