@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e0a3399_d47c7b28",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:46:53Z",
+      "side": 1,
+      "message": "Maybe more compactly written follows, with a pattern similar to FPDF_StructElement_GetChildAtIndex() above:\n\n```\nCPDF_StructElement* parent \u003d elem ? elem-\u003eGetParent() : nullptr;\nif (!parent)\n  return nullptr;\n  \nreturn FPDFStructElementFromCPDFStructElement(parent);\n```",
+      "revId": "34ae10492e49f4cf40fca7cf9eb5b216db6a1523",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79219c2f_3fa505e0",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 3
@@ -14,6 +31,23 @@
       "writtenOn": "2022-02-11T20:35:35Z",
       "side": 1,
       "message": "Since the caller uses `parent` to get a handle to `child` in the first place, doesn\u0027t the caller already know who the parent of `child` is?",
+      "revId": "34ae10492e49f4cf40fca7cf9eb5b216db6a1523",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e704efe0_ad887aca",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:46:53Z",
+      "side": 1,
+      "message": "Isn\u0027t the parent of `parent` an object of type StructTreeRoot and no longer a StructElem? Given the API is to for fetching StructElem objects, this is by design, right?\n\nIf that\u0027s the case, can we rephrase this comment to make it clearer this is what the API is suppose to do. The first time I read this, I thought there was a bug in the API.",
       "revId": "34ae10492e49f4cf40fca7cf9eb5b216db6a1523",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
