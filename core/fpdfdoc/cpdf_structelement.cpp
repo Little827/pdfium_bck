@@ -31,6 +31,17 @@ ByteString GetStructElementType(const CPDF_StructTree* pTree,
   return type;
 }
 
+ByteString GetStructureElementObjType(const CPDF_StructTree* pTree,
+                                      const CPDF_Dictionary* pDict) {
+  ByteString type = pDict->GetNameFor("Type");
+  if (pTree->GetRoleMap()) {
+    ByteString mapped = pTree->GetRoleMap()->GetNameFor(type);
+    if (!mapped.IsEmpty())
+      type = std::move(mapped);
+  }
+  return type;
+}
+
 }  // namespace
 
 CPDF_StructElement::Kid::Kid() = default;
@@ -43,7 +54,8 @@ CPDF_StructElement::CPDF_StructElement(const CPDF_StructTree* pTree,
                                        const CPDF_Dictionary* pDict)
     : m_pTree(pTree),
       m_pDict(pDict),
-      m_Type(GetStructElementType(m_pTree.Get(), m_pDict.Get())) {
+      m_Type(GetStructElementType(m_pTree.Get(), m_pDict.Get())),
+      m_ObjType(GetStructureElementObjType(m_pTree.Get(), m_pDict.Get())) {
   LoadKids(m_pDict.Get());
 }
 
