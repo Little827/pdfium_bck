@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d08055c_dd58cd08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-11T22:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76477f89_89e2ea96",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d6a200_35cfff6b",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab56186_3222f155",
+        "filename": "core/fpdfdoc/cpdf_structelement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-11T22:09:13Z",
+      "side": 1,
+      "message": "/Type is name type and not \u0027string\u0027 or \u0027text string\u0027 etc. It is identical to /S in its handling. Name type are associated to rolemap. According to spec /S and /Type are pretty identical in terms of type and handling.",
+      "parentUuid": "e4d6a200_35cfff6b",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36c620d9_61e27bd1",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-02-11T18:48:07Z",
       "side": 1,
       "message": "Let wait for https://pdfium-review.googlesource.com/90571 to land, then this test case can use that to also check for missing /Type.",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eac385e_2cf468cc",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-11T22:09:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36c620d9_61e27bd1",
       "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
