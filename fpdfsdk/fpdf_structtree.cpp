@@ -366,31 +366,3 @@ FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
       WideString::FromUTF8(obj->GetString().AsStringView()), buffer, buflen);
   return true;
 }
-
-FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                     FPDF_BYTESTRING name,
-                                     void* buffer,
-                                     unsigned long buflen,
-                                     unsigned long* out_buflen) {
-  if (!out_buflen)
-    return false;
-
-  const CPDF_Dictionary* dict =
-      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
-  if (!dict)
-    return false;
-
-  const CPDF_Object* obj = dict->GetObjectFor(name);
-  if (!obj || !obj->IsString())
-    return false;
-
-  ByteString result = obj->GetString();
-  unsigned long len = result.GetLength();
-
-  if (buffer && len <= buflen)
-    memcpy(buffer, result.c_str(), len);
-
-  *out_buflen = len;
-  return true;
-}
