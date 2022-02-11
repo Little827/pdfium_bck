@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76477f89_89e2ea96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T18:48:07Z",
+      "side": 1,
+      "message": "It may be helpful to summarize our findings with Acrobat Reader and bad /Type values.",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d6a200_35cfff6b",
+        "filename": "core/fpdfdoc/cpdf_structelement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T18:48:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t /Type just be returned as is? Why go through the role map?",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c620d9_61e27bd1",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T18:48:07Z",
+      "side": 1,
+      "message": "Let wait for https://pdfium-review.googlesource.com/90571 to land, then this test case can use that to also check for missing /Type.",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
