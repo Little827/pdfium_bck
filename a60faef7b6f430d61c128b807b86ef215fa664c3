@@ -96,6 +96,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ade60b_56c4795d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T22:07:06Z",
+      "side": 1,
+      "message": "I was hoping we could have written out \"FPDF_StructElement_GetLang()\". Without context, it is unclear what \"GetLang\" means.",
+      "parentUuid": "a97dcedb_27f01ce6",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "a60faef7b6f430d61c128b807b86ef215fa664c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f71bcb9c_2e41ab2b",
