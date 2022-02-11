@@ -22,6 +22,7 @@ class CPDF_StructElement final : public Retainable {
   CONSTRUCT_VIA_MAKE_RETAIN;
 
   ByteString GetType() const { return m_Type; }
+  ByteString GetObjType() const { return m_ObjType; }
   WideString GetAltText() const;
   WideString GetTitle() const;
 
@@ -59,6 +60,7 @@ class CPDF_StructElement final : public Retainable {
   UnownedPtr<const CPDF_StructTree> const m_pTree;
   RetainPtr<const CPDF_Dictionary> const m_pDict;
   const ByteString m_Type;
+  const ByteString m_ObjType;
   std::vector<Kid> m_Kids;
 };
 
