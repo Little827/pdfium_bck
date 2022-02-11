@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d591192d_4e844780",
+        "filename": "core/fpdfdoc/cpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T10:37:51Z",
+      "side": 1,
+      "message": "... but not in this way. In particular, ISO 32000-1:2008 spec, table 30 only lists StructParents. StructParent is listed in table 89 and table 164. Both are listed in table 95.",
+      "revId": "7a506d547540671af5c8685964f3548194990d9f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
