@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f958f4fd_a1316b28",
+        "filename": "core/fpdfdoc/cpdf_structelement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T22:27:16Z",
+      "side": 1,
+      "message": "The spec is very long. Can you specify what part of the spec you are referencing?\n\nI\u0027m looking at section 14.8.4 in ISO 32000-1:2008. It only talks about the /S key. I\u0027ve never seen /Type for a PDF object interpreted this way.",
+      "parentUuid": "8ab56186_3222f155",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36c620d9_61e27bd1",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 1
