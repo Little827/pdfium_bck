@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79219c2f_3fa505e0",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:35:35Z",
+      "side": 1,
+      "message": "Since the caller uses `parent` to get a handle to `child` in the first place, doesn\u0027t the caller already know who the parent of `child` is?",
+      "revId": "34ae10492e49f4cf40fca7cf9eb5b216db6a1523",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
