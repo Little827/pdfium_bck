@@ -156,6 +156,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetStringAttributeBadStructElement) {
     EXPECT_EQ(18U, FPDF_StructElement_GetType(document, buffer, kBufLen));
     EXPECT_EQ("Document", GetPlatformString(buffer));
 
+    // The table can be retrieved, even though it does not have /Type.
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(document));
     FPDF_STRUCTELEMENT table = FPDF_StructElement_GetChildAtIndex(document, 0);
     ASSERT_TRUE(table);
@@ -166,6 +167,11 @@ TEST_F(FPDFStructTreeEmbedderTest, GetStringAttributeBadStructElement) {
     // The table entry cannot be retrieved, as the element is malformed.
     EXPECT_EQ(0U, FPDF_StructElement_GetStringAttribute(table, "Summary",
                                                         buffer, kBufLen));
+
+    // The row cannot be retrieved, because it had an invalid /Type.
+    ASSERT_EQ(1, FPDF_StructElement_CountChildren(table));
+    FPDF_STRUCTELEMENT row = FPDF_StructElement_GetChildAtIndex(table, 0);
+    EXPECT_FALSE(row);
   }
 
   UnloadPage(page);

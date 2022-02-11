@@ -11,6 +11,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
+#include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fpdfdoc/cpdf_numbertree.h"
 #include "core/fpdfdoc/cpdf_structelement.h"
 
@@ -87,6 +88,10 @@ RetainPtr<CPDF_StructElement> CPDF_StructTree::AddPageNode(
     int nLevel) {
   static constexpr int kStructTreeMaxRecursion = 32;
   if (nLevel > kStructTreeMaxRecursion)
+    return nullptr;
+
+  // See ISO 32000-1:2008 spec, table 323.
+  if (!ValidateDictOptionalType(pDict, "StructElem"))
     return nullptr;
 
   auto it = map->find(pDict);
