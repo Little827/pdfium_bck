@@ -22,6 +22,30 @@
       },
       "revId": "d157048923fdd2fa0d983e957201bb26d765be9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d577d50_43172a85",
+        "filename": "testing/resources/tagged_table_bad_elem.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T20:11:33Z",
+      "side": 1,
+      "message": "Should I rename \"NotStructElem\" to be more obviously bad?",
+      "parentUuid": "38ad7a8a_ae2b150c",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 3
+      },
+      "revId": "d157048923fdd2fa0d983e957201bb26d765be9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
