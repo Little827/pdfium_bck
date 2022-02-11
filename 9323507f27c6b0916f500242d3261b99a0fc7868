@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5c8f72_67289e38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T01:34:58Z",
+      "side": 1,
+      "message": "Maybe:\n\nAdd FPDF_StructElement_GetActualText API\n\n\u003cBriefly explain what the API does\u003e\n\n\u003cLeave metadata here\u003e",
+      "revId": "9323507f27c6b0916f500242d3261b99a0fc7868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2c5d8543_46a95742",
@@ -14,6 +31,63 @@
       "writtenOn": "2022-02-11T01:20:40Z",
       "side": 1,
       "message": "Split 1 of https://pdfium-review.googlesource.com/c/pdfium/+/90327 ",
+      "revId": "9323507f27c6b0916f500242d3261b99a0fc7868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65203cf8_43601a38",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T01:34:58Z",
+      "side": 1,
+      "message": "Not related to this CL.",
+      "revId": "9323507f27c6b0916f500242d3261b99a0fc7868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe1cb71_7b916cd3",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T01:34:58Z",
+      "side": 1,
+      "message": "Since other tests already cover testing FPDF_StructTree_GetChildAtIndex() with boundary conditions, this test doesn\u0027t have to repeat them.",
+      "revId": "9323507f27c6b0916f500242d3261b99a0fc7868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa3806a_28ad1010",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T01:34:58Z",
+      "side": 1,
+      "message": "buffer[12] \u003d {};\n\nThen `buffer` is already initialized and the memset() becomes unnecessary.",
+      "range": {
+        "startLine": 117,
+        "startChar": 19,
+        "endLine": 117,
+        "endChar": 30
+      },
       "revId": "9323507f27c6b0916f500242d3261b99a0fc7868",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
