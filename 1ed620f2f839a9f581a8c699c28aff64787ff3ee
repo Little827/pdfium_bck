@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8ed3542_c74d923d",
+        "filename": "core/fpdfdoc/cpdf_structelement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-11T22:51:09Z",
+      "side": 1,
+      "message": "Based on our offline discussion, making a change to just return from dict instead of going via role map. Just to note that both ways work fine, role map also returns correct string.",
+      "parentUuid": "f958f4fd_a1316b28",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36c620d9_61e27bd1",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 1
