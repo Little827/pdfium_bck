@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd298254_17fc22ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-11T03:12:41Z",
+      "side": 1,
+      "message": "Correct. To find invalid values it would be helpful.",
+      "parentUuid": "50283ce1_7bd40c60",
+      "revId": "5aeb3f876cc909487edceb76821657816750f7e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b957c9e_18a499f1",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-11T02:21:30Z",
       "side": 1,
       "message": "Unrelated change?",
+      "revId": "5aeb3f876cc909487edceb76821657816750f7e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d8aab9_f2153a1e",
+        "filename": "third_party/freetype/README.pdfium",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-11T03:12:41Z",
+      "side": 1,
+      "message": "No clue how this happened. Removing it.",
+      "parentUuid": "7b957c9e_18a499f1",
       "revId": "5aeb3f876cc909487edceb76821657816750f7e0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
