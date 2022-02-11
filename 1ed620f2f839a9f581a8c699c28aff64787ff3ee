@@ -107,6 +107,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f8ddaa_64866836",
+        "filename": "core/fpdfdoc/cpdf_structelement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T23:00:04Z",
+      "side": 1,
+      "message": "If there was a role map that actually mapped StructElem to something, that would have been yielded the incorrect result.",
+      "parentUuid": "d8ed3542_c74d923d",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36c620d9_61e27bd1",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "36c620d9_61e27bd1",
+      "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d416157_7ce08146",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T23:00:04Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/90571 landed. Want to use it in this CL for testing?",
+      "parentUuid": "8eac385e_2cf468cc",
       "revId": "1ed620f2f839a9f581a8c699c28aff64787ff3ee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

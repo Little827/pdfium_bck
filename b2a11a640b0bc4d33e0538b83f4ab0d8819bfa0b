@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74653564_9b30fc94",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T23:00:04Z",
+      "side": 1,
+      "message": "\"NUL\" character - it\u0027s not a typo. The ASCII character with the value 0 is called NUL.",
+      "range": {
+        "startLine": 182,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "b2a11a640b0bc4d33e0538b83f4ab0d8819bfa0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e2ba9a_82a81b85",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-11T23:00:04Z",
+      "side": 1,
+      "message": "bad intentation",
+      "revId": "b2a11a640b0bc4d33e0538b83f4ab0d8819bfa0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
