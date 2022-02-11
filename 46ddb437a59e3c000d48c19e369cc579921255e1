@@ -16,6 +16,24 @@
       "message": "e.g. \"Fix a crash in FPDF_StructElement_GetLang()\" or \"Fix a crash with FPDF_StructElement_GetLang() and a nullptr input\"\n\nThen a reader who just glances at the subject line can more easily understand what this CL is about.",
       "revId": "46ddb437a59e3c000d48c19e369cc579921255e1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7379885b_db0b6237",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-11T22:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b006a0_a6ae2857",
+      "revId": "46ddb437a59e3c000d48c19e369cc579921255e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
