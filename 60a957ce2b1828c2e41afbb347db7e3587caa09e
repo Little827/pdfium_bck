@@ -1,0 +1,306 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f472e851_2d07ffea",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Documentation says it returns -1 on error.",
+      "range": {
+        "startLine": 118,
+        "startChar": 78,
+        "endLine": 118,
+        "endChar": 79
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f890a99_408a33e8",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Can we avoid double ternary operators? Very compact, but also becomes a bit harder to read.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57445fbf_37105610",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Can\u0027t happen.",
+      "range": {
+        "startLine": 136,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97725ae4_ded5504a",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Check not needed?",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7571718d_f7b16749",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Use fxcrt::CollectionSize\u003cint\u003e(dict-\u003esize()), instead of implicitly converting from size_t to int.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d06a0e_fa2ccfe4",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Remove blank line, for consistency with lines 225-227.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82656fe9_a5f4722a",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Excess parenthesis.",
+      "range": {
+        "startLine": 304,
+        "startChar": 15,
+        "endLine": 304,
+        "endChar": 16
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4494de60_78c82fe3",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "More memset() calls to replace.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6c46a3_39834a72",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Consistently check `out_len` first?",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1e35a8_e1a90593",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "EXPECT_FLOAT_EQ(2.0f, num_val);",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3c5e40_9048d551",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "\"an attribute\", more instances below.",
+      "range": {
+        "startLine": 228,
+        "startChar": 16,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d78a93_dfaa3111",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem convenient for the caller if the returned name is in UTF-16LE here, but the FPDF_StructElement_Attr_Get* APIs take a FPDF_BYTESTRING. Should this return data in the same format that those APIs take?",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e39320a_523046ac",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "number or boolean",
+      "range": {
+        "startLine": 300,
+        "startChar": 47,
+        "endLine": 300,
+        "endChar": 53
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb8a41c_b8a609d1",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae82652_2db91e2c",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "How should the caller choose between FPDF_StructElement_Attr_GetIntValue() and FPDF_StructElement_Attr_GetNumberValue()? If FPDF_StructElement_Attr_GetIntValue() didn\u0027t exist, would that be ok?",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5ffced_3ac9fb53",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T03:54:25Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
