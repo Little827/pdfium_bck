@@ -41,6 +41,48 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c4636f_d150ea67",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f472e851_2d07ffea",
+      "range": {
+        "startLine": 118,
+        "startChar": 78,
+        "endLine": 118,
+        "endChar": 79
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f38e865d_894ea8e2",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f890a99_408a33e8",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57445fbf_37105610",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-02-12T03:54:25Z",
       "side": 1,
       "message": "Can\u0027t happen.",
+      "range": {
+        "startLine": 136,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1ba8c7_7aa8721a",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57445fbf_37105610",
       "range": {
         "startLine": 136,
         "startChar": 7,
@@ -83,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4886c76_10c868d0",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Array can\u0027t store nullptr at certain index? Removing it but typically an array of pointers can store anything, including nullptr.",
+      "parentUuid": "97725ae4_ded5504a",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7571718d_f7b16749",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 1
@@ -94,6 +178,24 @@
       "writtenOn": "2022-02-12T03:54:25Z",
       "side": 1,
       "message": "Use fxcrt::CollectionSize\u003cint\u003e(dict-\u003esize()), instead of implicitly converting from size_t to int.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b7a708_b609d2a2",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7571718d_f7b16749",
       "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -111,6 +213,24 @@
       "writtenOn": "2022-02-12T03:54:25Z",
       "side": 1,
       "message": "Remove blank line, for consistency with lines 225-227.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e3e55d_9fef9231",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2d06a0e_fa2ccfe4",
       "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -138,6 +258,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cb0749_3ddff155",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82656fe9_a5f4722a",
+      "range": {
+        "startLine": 304,
+        "startChar": 15,
+        "endLine": 304,
+        "endChar": 16
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4494de60_78c82fe3",
@@ -151,6 +295,24 @@
       "writtenOn": "2022-02-12T03:54:25Z",
       "side": 1,
       "message": "More memset() calls to replace.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c15257_41dfd115",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4494de60_78c82fe3",
       "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -172,6 +334,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b54bb7_9c22b28c",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6c46a3_39834a72",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b1e35a8_e1a90593",
@@ -189,6 +369,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56fadbfa_f8903a94",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b1e35a8_e1a90593",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c3c5e40_9048d551",
@@ -202,6 +400,30 @@
       "writtenOn": "2022-02-12T03:54:25Z",
       "side": 1,
       "message": "\"an attribute\", more instances below.",
+      "range": {
+        "startLine": 228,
+        "startChar": 16,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da8b14df_64010a2d",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c3c5e40_9048d551",
       "range": {
         "startLine": 228,
         "startChar": 16,
@@ -231,6 +453,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "baff1d48_e4f7b2e8",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "I had this issue in those API which read marks: https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/fpdfsdk/fpdf_editpage.cpp;drc\u003da7a7c92593780538444d4c7224e07301c661a739;l\u003d371\n\nNot sure what was the rationale behind doing it that way there but I followed that convention.",
+      "parentUuid": "80d78a93_dfaa3111",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e39320a_523046ac",
         "filename": "public/fpdf_structtree.h",
         "patchSetId": 1
@@ -242,6 +482,30 @@
       "writtenOn": "2022-02-12T03:54:25Z",
       "side": 1,
       "message": "number or boolean",
+      "range": {
+        "startLine": 300,
+        "startChar": 47,
+        "endLine": 300,
+        "endChar": 53
+      },
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89419eed_b79bb0d3",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e39320a_523046ac",
       "range": {
         "startLine": 300,
         "startChar": 47,
@@ -269,6 +533,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cacffd_1aeff1aa",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb8a41c_b8a609d1",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eae82652_2db91e2c",
@@ -288,6 +570,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "658514ba_ce34fcfd",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "No, GetIntValue is also used to get boolean value. I checked GetBooleanValue was essentially calling GetIntValue in marks API so I combined them.\n\nGetNumberValue is of course to get float value which GetIntValue can\u0027t give.",
+      "parentUuid": "eae82652_2db91e2c",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca5ffced_3ac9fb53",
         "filename": "public/fpdf_structtree.h",
         "patchSetId": 1
@@ -299,6 +599,24 @@
       "writtenOn": "2022-02-12T03:54:25Z",
       "side": 1,
       "message": "Indent.",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355644d0_60673289",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5ffced_3ac9fb53",
       "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
