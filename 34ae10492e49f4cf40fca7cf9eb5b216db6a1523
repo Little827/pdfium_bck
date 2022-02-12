@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5750c578_effaf8fe",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T00:39:43Z",
+      "side": 1,
+      "message": "\"Is the concern that there are struct elements, where the parent element points to a child element via /K, but the child element doesn\u0027t point back to the parent via /P?\"\n\nIt is possible. Also implementation matters because parent traversed through K may not be same as one from P.\n\nAlso, child only have parent if they are storing it, there is no direct way otherwise. For instance if you are recursively calling a function with StructElem in signature, you won\u0027t have parent unless you keep track of it. It just makes writing code much easier for the client and makes it look complete from specification side without someone digging deep into code.",
+      "parentUuid": "c312d7ec_e219ef3d",
+      "revId": "34ae10492e49f4cf40fca7cf9eb5b216db6a1523",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e704efe0_ad887aca",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 3
