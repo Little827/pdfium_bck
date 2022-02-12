@@ -167,6 +167,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87cb9d27_839fe39a",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T04:35:48Z",
+      "side": 1,
+      "message": "Correct, somewhere around https://pdfium-review.googlesource.com/87431 we eliminated the possibility of nullptr in CPDF_Arrays. However, an array can contain a number, and GetDictAt(index) can still return nullptr due to the type mismatch.\n\nRegardless of that, if `obj` is nullptr, then this function returns a nullptr in patch set 1 on line 144 below. In patch set 2, line 141 will also return nullptr. Same result.",
+      "parentUuid": "e4886c76_10c868d0",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7571718d_f7b16749",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 1
@@ -489,6 +507,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7748800d_3e0eac1f",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T04:35:48Z",
+      "side": 1,
+      "message": "I didn\u0027t participate in the code review for that set ofAPIs. Regardless of what those APIs do, what do you think of this issue?",
+      "parentUuid": "baff1d48_e4f7b2e8",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e39320a_523046ac",
         "filename": "public/fpdf_structtree.h",
         "patchSetId": 1
@@ -600,6 +636,24 @@
       "side": 1,
       "message": "No, GetIntValue is also used to get boolean value. I checked GetBooleanValue was essentially calling GetIntValue in marks API so I combined them.\n\nGetNumberValue is of course to get float value which GetIntValue can\u0027t give.",
       "parentUuid": "eae82652_2db91e2c",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e33381_fbd629e5",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T04:35:48Z",
+      "side": 1,
+      "message": "So how about a GetBooleanValue API and a GetNumberValue API? That would be 2 APIs, just like now, but the caller can more easily choose the API based on FPDF_OBJECT_BOOLEAN vs. FPDF_OBJECT_NUMBER.",
+      "parentUuid": "658514ba_ce34fcfd",
       "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
