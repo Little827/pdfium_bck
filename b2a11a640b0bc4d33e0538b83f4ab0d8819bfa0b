@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465a22ec_a6ddf114",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T00:13:33Z",
+      "side": 1,
+      "message": "Even Wikipedia refers to it as \"null character\" not \"NULL character\". \"NULL\" is a C macro/define. It just happens to have the same value as NUL in ASCII. I\u0027ve mixed them up a few times too, and other reviewers pointed this out to me. NULL vs. NUL vs. null is certainly confusing.",
+      "parentUuid": "8f9ca9a0_166ec6ab",
+      "range": {
+        "startLine": 182,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "b2a11a640b0bc4d33e0538b83f4ab0d8819bfa0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81e2ba9a_82a81b85",

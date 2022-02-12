@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db8748b_02e3f0eb",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T00:13:33Z",
+      "side": 1,
+      "message": "Can we use backticks in new code, since that\u0027s now the preferred way of referring to variables?",
+      "range": {
+        "startLine": 392,
+        "startChar": 61,
+        "endLine": 392,
+        "endChar": 62
+      },
+      "revId": "ca0135d35bf7593545c20f9cd49c1dfb2360d475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b771c0_41a3eb14",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T00:13:33Z",
+      "side": 1,
+      "message": "Backticks here too.",
+      "range": {
+        "startLine": 406,
+        "startChar": 24,
+        "endLine": 406,
+        "endChar": 30
+      },
+      "revId": "ca0135d35bf7593545c20f9cd49c1dfb2360d475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162ba199_2aeeea94",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T00:13:33Z",
+      "side": 1,
+      "message": "Is this indented correctly? Please auto-format the CL.",
+      "revId": "ca0135d35bf7593545c20f9cd49c1dfb2360d475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
