@@ -202,6 +202,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d730c8e2_6eed778d",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T04:27:54Z",
+      "side": 1,
+      "message": "../../core/fxcrt/stl_util.h:32:59: error: member reference base type \u0027const unsigned long\u0027 is not a structure or union\n  return pdfium::base::checked_cast\u003cResultType\u003e(collection.size());\n                                                ~~~~~~~~~~^~~~~\n../../fpdfsdk/fpdf_structtree.cpp:263:17: note: in instantiation of function template specialization \u0027fxcrt::CollectionSize\u003cint, unsigned long\u003e\u0027 requested here\n  return fxcrt::CollectionSize\u003cint\u003e(dict-\u003esize());",
+      "parentUuid": "85b7a708_b609d2a2",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2d06a0e_fa2ccfe4",
         "filename": "fpdfsdk/fpdf_structtree.cpp",
         "patchSetId": 1
