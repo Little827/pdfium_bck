@@ -183,6 +183,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07627173_8442d46d",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T05:53:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87cb9d27_839fe39a",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7571718d_f7b16749",
@@ -250,6 +268,24 @@
       "side": 1,
       "message": "Should have been: fxcrt::CollectionSize\u003cint\u003e(*dict);",
       "parentUuid": "d730c8e2_6eed778d",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98252adb_64f6a52b",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T05:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ebf562_7c34318c",
       "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },

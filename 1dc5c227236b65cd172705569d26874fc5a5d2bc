@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ac59b2_99851e81",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T05:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc02dda_6faddf35",
+      "revId": "1dc5c227236b65cd172705569d26874fc5a5d2bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eef41b21_9d455996",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-12T04:35:48Z",
       "side": 1,
       "message": "Return nullptr if `index` is anything other than 0? When the count is 1, the caller shouldn\u0027t be able to call FPDF_StructElement_GetAttributeAtIndex(elem, 1000) and get back a non-null result. More testing would help catch this.",
+      "revId": "1dc5c227236b65cd172705569d26874fc5a5d2bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5458058e_a806d587",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T05:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef41b21_9d455996",
       "revId": "1dc5c227236b65cd172705569d26874fc5a5d2bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e182ba17_fa2af22e",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T05:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e725e41_68266c1c",
+      "revId": "1dc5c227236b65cd172705569d26874fc5a5d2bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f47b238_e55f258d",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-02-12T04:35:48Z",
       "side": 1,
       "message": "Trailing space here?",
+      "revId": "1dc5c227236b65cd172705569d26874fc5a5d2bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "134c0de4_bdb71927",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T05:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f47b238_e55f258d",
       "revId": "1dc5c227236b65cd172705569d26874fc5a5d2bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
