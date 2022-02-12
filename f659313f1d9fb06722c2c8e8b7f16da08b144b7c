@@ -22,6 +22,30 @@
       },
       "revId": "f659313f1d9fb06722c2c8e8b7f16da08b144b7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb344023_fbefe5ad",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T01:14:37Z",
+      "side": 1,
+      "message": "This is crbug.com/pdfium/1566. I have way too many bugs on my plate and forgot it existed.",
+      "parentUuid": "887fe3ad_93d0ca5e",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 35
+      },
+      "revId": "f659313f1d9fb06722c2c8e8b7f16da08b144b7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
