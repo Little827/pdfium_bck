@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887fe3ad_93d0ca5e",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-12T01:11:41Z",
+      "side": 1,
+      "message": "BTW, all the APIs that use WideStringToBuffer() have a small bug. On failure, these APIs return 0. On success with an empty string, they also return 0. This is ambiguous, and it would be best to not have APIs with ambiguous return values.\n\nIf the caller looks past the API boundary, they can of course see that if they passed in a non-null FPDF_STRUCTELEMENT, the API will succeed. But the caller shouldn\u0027t have to rely on this knowledge.\n\nAll the APIs outside of this file uses Utf16EncodeMaybeCopyAndReturnLength(), which solves the ambiguity by returning 2 for empty string and 0 for failure. The APIs that use that helper function writes a double NUL (\"\\0\\0\") into the buffer for empty strings.\n\nTo fix this for the existing, non-experimental API, they\u0027ll need replacement APIs and an API deprecation cycle that will run for some time. For FPDF_StructElement_GetObjType(), if you want to switch to Utf16EncodeMaybeCopyAndReturnLength() now, that would be great. Or leave it as is, but it\u0027ll just change at some point in the future, as this is an experimental API with no API guarantees.",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 35
+      },
+      "revId": "f659313f1d9fb06722c2c8e8b7f16da08b144b7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
