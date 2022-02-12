@@ -714,6 +714,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6734f73_26407fb9",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-12T06:02:36Z",
+      "side": 1,
+      "message": "GetBooleanValue is little odd in C land because it is essentially an integer with 0 or 1 value. So GetBooleanValue will look exactly like GetIntValue just I will rename it. That is why GetIntValue checks if obj is a number or boolean type, and then only returns value in those two cases. Otherwise returns false.\n\nNow if you know you have an integer field, if you are using GetBooleanValue to get its integer value -- that is will be odd. If you are using GetNumberValue then you need to cast float to integer in client code. Both look worse to me.\n\nI thought about this for a while and this made the most sense to me. Most people would understand that GetIntValue for boolean and int make sense. For other cases, you call GetNumberValue().",
+      "parentUuid": "d4e33381_fbd629e5",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca5ffced_3ac9fb53",
         "filename": "public/fpdf_structtree.h",
         "patchSetId": 1
