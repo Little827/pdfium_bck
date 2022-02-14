@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd6ce65_7ad5a129",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-02-14T22:53:19Z",
+      "side": 1,
+      "message": "Non-committer LGTM",
+      "revId": "ec5b3b0f1254f82232cabd6cb3f12642566cad0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7288bd32_0f0e2081",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-02-14T22:53:19Z",
+      "side": 1,
+      "message": "Optional nit: Fix spelling? 😊",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 14
+      },
+      "revId": "ec5b3b0f1254f82232cabd6cb3f12642566cad0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
