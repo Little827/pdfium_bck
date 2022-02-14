@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e95ef265_590693bb",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-14T18:40:35Z",
+      "side": 1,
+      "message": "BTW, is this the Skia equivalent of Chromium\u0027s DCHECK(DoSomethingThatHasSideEffect())? i.e. The value of `inv` is different between a release and debug build. If so, does this affect the bug in question, since it has to do with the use of `inv` below?",
+      "revId": "6103c457dcde89bcc6c03aca2de902721ca25b4d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
