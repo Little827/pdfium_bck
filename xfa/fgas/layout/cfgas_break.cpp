@@ -74,7 +74,7 @@ void CFGAS_Break::SetBreakStatus() {
   if (m_pCurLine->m_LineChars.empty())
     return;
 
-  CFGAS_Char* tc = m_pCurLine->GetChar(m_pCurLine->m_LineChars.size() - 1);
+  CFGAS_Char* tc = m_pCurLine->LastChar();
   if (tc->m_dwStatus == CFGAS_Char::BreakType::kNone)
     tc->m_dwStatus = CFGAS_Char::BreakType::kPiece;
 }
