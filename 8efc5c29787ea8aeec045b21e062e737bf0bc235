@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3466ec9_09c5f954",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-14T17:35:39Z",
+      "side": 1,
+      "message": "Reference bug numbers on a separate line near the bottom:\n\n```\nBug: chromium:1296920\n```\n\nSee prior commits for examples.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "8efc5c29787ea8aeec045b21e062e737bf0bc235",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d6d84c_481366d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-14T17:35:39Z",
+      "side": 1,
+      "message": "In plain English, something like \"Avoid nullptr crash in CPDF_StructElement\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 86
+      },
+      "revId": "8efc5c29787ea8aeec045b21e062e737bf0bc235",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ad7dee_44c97eec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-14T17:35:39Z",
+      "side": 1,
+      "message": "Thanks for the quick fix.",
+      "revId": "8efc5c29787ea8aeec045b21e062e737bf0bc235",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
