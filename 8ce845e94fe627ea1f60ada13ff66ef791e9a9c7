@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afed34db_7e5944bd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2579,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-14T05:13:55Z",
+      "side": 1,
+      "message": "This comparison doesn\u0027t make sense, because all of these will return false:\n\nNAN \u003d\u003d 0\nNAN \u003c 0\nNAN \u003e 0\nNAN \u003d\u003d NAN\n\nSee http://www.gnu.org/software/libc/manual/html_node/Infinity-and-NaN.html (search for \"unordered\")",
+      "range": {
+        "startLine": 2579,
+        "startChar": 21,
+        "endLine": 2579,
+        "endChar": 34
+      },
+      "revId": "8ce845e94fe627ea1f60ada13ff66ef791e9a9c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
