@@ -16,6 +16,10 @@
 #include "third_party/base/debug/alias.h"
 #include "third_party/base/no_destructor.h"
 
+#if BUILDFLAG(IS_WIN)
+#include <windows.h>
+#endif
+
 pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator() {
   static pdfium::base::NoDestructor<pdfium::base::PartitionAllocatorGeneric>
       s_array_buffer_allocator;
@@ -71,6 +75,14 @@ NOINLINE void FX_OutOfMemoryTerminate(size_t size) {
   // Identical Code Folding.
   static int make_this_function_aliased = 0xbd;
   pdfium::base::debug::Alias(&make_this_function_aliased);
+
+#if BUILDFLAG(IS_WIN)
+  // The same custom Windows exception code used in Chromium and Breakpad.
+  constexpr DWORD kOomExceptionCode = 0xe0000008;
+  ULONG_PTR exception_args[] = {size};
+  ::RaiseException(kOomExceptionCode, EXCEPTION_NONCONTINUABLE,
+                   pdfium::size(exception_args), exception_args);
+#endif
 
   // Termimate cleanly.
   abort();
