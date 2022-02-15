@@ -331,6 +331,27 @@ TEST_F(FPDFStructTreeEmbedderTest, GetMarkedContentID) {
     EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentID(element));
   }
 
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+
+    FPDF_STRUCTELEMENT element =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+
+    // invalid case
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdCount(nullptr));
+
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(element));
+
+    // invalid cases
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(nullptr, 0));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(element, -1));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(element, 1));
+
+    EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentIdAtIndex(element, 0));
+  }
+
   UnloadPage(page);
 }
 
