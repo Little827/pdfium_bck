@@ -16,6 +16,24 @@
       "message": "BTW, is this the Skia equivalent of Chromium\u0027s DCHECK(DoSomethingThatHasSideEffect())? i.e. The value of `inv` is different between a release and debug build. If so, does this affect the bug in question, since it has to do with the use of `inv` below?",
       "revId": "6103c457dcde89bcc6c03aca2de902721ca25b4d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ef3cf2_581cdfc2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-02-15T19:22:32Z",
+      "side": 1,
+      "message": "skMatrix.invert(\u0026inv) will happen in both release and debug build and `inv` is the same for both builds.",
+      "parentUuid": "e95ef265_590693bb",
+      "revId": "6103c457dcde89bcc6c03aca2de902721ca25b4d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
