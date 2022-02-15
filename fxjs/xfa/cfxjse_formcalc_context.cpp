@@ -3029,11 +3029,7 @@ void CFXJSE_FormCalcContext::PV(
     return;
   }
 
-  double nTemp = 1;
-  for (int32_t i = 0; i < nPeriods; ++i)
-    nTemp *= 1 + nRate;
-
-  nTemp = 1 / nTemp;
+  double nTemp = 1 / pow(nRate + 1, nPeriods);
   info.GetReturnValue().Set(nAmount * ((1 - nTemp) / nRate));
 }
 
