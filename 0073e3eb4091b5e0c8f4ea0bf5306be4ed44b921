@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633d8b9b_a457fe10",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3032,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-15T18:56:02Z",
+      "side": 1,
+      "message": "nit: 1.0 + nRate to emphasize nRate is double and likely fractional.",
+      "range": {
+        "startLine": 3032,
+        "startChar": 25,
+        "endLine": 3032,
+        "endChar": 34
+      },
+      "revId": "0073e3eb4091b5e0c8f4ea0bf5306be4ed44b921",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7b8ce4_4745a91f",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-15T18:56:02Z",
+      "side": 1,
+      "message": "nit: 1.0 also maybe",
+      "range": {
+        "startLine": 3033,
+        "startChar": 40,
+        "endLine": 3033,
+        "endChar": 41
+      },
+      "revId": "0073e3eb4091b5e0c8f4ea0bf5306be4ed44b921",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
