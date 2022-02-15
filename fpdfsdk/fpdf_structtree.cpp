@@ -218,3 +218,40 @@ FPDF_StructElement_GetParent(FPDF_STRUCTELEMENT struct_element) {
   }
   return FPDFStructElementFromCPDFStructElement(parent);
 }
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_StructElement_GetMarkedContentIdCount(FPDF_STRUCTELEMENT struct_element) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  const CPDF_Dictionary* dict = elem ? elem->GetDict() : nullptr;
+  const CPDF_Object* pObj = dict ? dict->GetObjectFor("K") : nullptr;
+  if (!pObj)
+    return -1;
+
+  if (pObj->IsNumber())
+    return 1;
+
+  return pObj->IsArray() ? pObj->AsArray()->size() : -1;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_StructElement_GetMarkedContentIdAtIndex(FPDF_STRUCTELEMENT struct_element,
+                                             int index) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  const CPDF_Dictionary* dict = elem ? elem->GetDict() : nullptr;
+  const CPDF_Object* pObj = dict ? dict->GetObjectFor("K") : nullptr;
+  if (!pObj)
+    return -1;
+
+  if (pObj->IsNumber())
+    return index == 0 ? pObj->GetInteger() : -1;
+
+  if (pObj->IsArray()) {
+    const CPDF_Array* array = pObj->AsArray();
+    if (index < 0 || static_cast<size_t>(index) >= array->size())
+      return -1;
+    return array->GetIntegerAt(index);
+  }
+  return -1;
+}
