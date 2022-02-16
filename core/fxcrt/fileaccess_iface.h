@@ -17,7 +17,6 @@ class FileAccessIface {
   virtual ~FileAccessIface() = default;
 
   virtual bool Open(ByteStringView fileName, uint32_t dwMode) = 0;
-  virtual bool Open(WideStringView fileName, uint32_t dwMode) = 0;
   virtual void Close() = 0;
   virtual FX_FILESIZE GetSize() const = 0;
   virtual FX_FILESIZE GetPosition() const = 0;
