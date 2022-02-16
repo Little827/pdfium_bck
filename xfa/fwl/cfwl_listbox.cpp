@@ -832,7 +832,9 @@ int32_t CFWL_ListBox::GetItemIndex(CFWL_Widget* pWidget, Item* pItem) {
                          [pItem](const std::unique_ptr<Item>& candidate) {
                            return candidate.get() == pItem;
                          });
-  return it != m_ItemArray.end() ? it - m_ItemArray.begin() : -1;
+  return it != m_ItemArray.end()
+             ? pdfium::base::checked_cast<int32_t>(it - m_ItemArray.begin())
+             : -1;
 }
 
 CFWL_ListBox::Item* CFWL_ListBox::AddString(const WideString& wsAdd) {

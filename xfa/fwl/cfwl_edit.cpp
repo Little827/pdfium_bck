@@ -157,7 +157,7 @@ void CFWL_Edit::SetTextSkipNotify(const WideString& wsText) {
                         CFDE_TextEditEngine::RecordOperation::kSkipNotify);
 }
 
-int32_t CFWL_Edit::GetTextLength() const {
+size_t CFWL_Edit::GetTextLength() const {
   return m_pEditEngine->GetLength();
 }
 
@@ -327,8 +327,9 @@ void CFWL_Edit::DrawContent(CFGAS_GEGraphics* pGraphics,
     size_t sel_start;
     size_t count;
     std::tie(sel_start, count) = m_pEditEngine->GetSelection();
-    std::vector<CFX_RectF> rects =
-        m_pEditEngine->GetCharacterRectsInRange(sel_start, count);
+    std::vector<CFX_RectF> rects = m_pEditEngine->GetCharacterRectsInRange(
+        pdfium::base::checked_cast<int32_t>(sel_start),
+        pdfium::base::checked_cast<int32_t>(count));
 
     CFGAS_GEPath path;
     for (auto& rect : rects) {
@@ -758,8 +759,8 @@ void CFWL_Edit::InitCaret() {
 void CFWL_Edit::UpdateCursorRect() {
   int32_t bidi_level;
   if (m_pEditEngine->CanGenerateCharacterInfo()) {
-    std::tie(bidi_level, m_CaretRect) =
-        m_pEditEngine->GetCharacterInfo(m_CursorPosition);
+    std::tie(bidi_level, m_CaretRect) = m_pEditEngine->GetCharacterInfo(
+        pdfium::base::checked_cast<int32_t>(m_CursorPosition));
   } else {
     bidi_level = 0;
     m_CaretRect = CFX_RectF();
