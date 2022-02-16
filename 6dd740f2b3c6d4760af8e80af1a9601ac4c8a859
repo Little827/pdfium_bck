@@ -88,6 +88,58 @@
       "parentUuid": "fc235fa3_98b7dbd6",
       "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b943e254_fe31c0d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-16T06:04:42Z",
+      "side": 1,
+      "message": "Remember to update fpdfsdk/fpdf_view_c_api_test.c with the new API.",
+      "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad3b5f1_59c77120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-16T06:04:42Z",
+      "side": 1,
+      "message": "This new API should at least be able to open hello_world.pdf like FPDF_LoadDocument() can. Please consider adding tests in fpdfsdk/fpdf_view_embeddertest.cpp.\n\nIf it is going to be available on Linux, then it needs to work on Linux. It cannot in its current state, because it assumes FPDF_WIDESTRING and wchar_t are interchangable, which is not the case on Linux. Many POSIX platforms have 32-bit wchar_t. An pdfium_embeddertests test case should reveal this issue.",
+      "parentUuid": "cf32190b_05a94d71",
+      "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c408b901_f2870914",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-16T06:04:42Z",
+      "side": 1,
+      "message": "Probably should be using WideStringFromFPDFWideString().",
+      "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
