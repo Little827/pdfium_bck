@@ -750,6 +750,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef614664_ac0338a1",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-16T21:31:33Z",
+      "side": 1,
+      "message": "If I were to implement GetBooleanValue(), I would make it fail if the caller tried to fetch a number with it. The API clearly has \"Boolean\" in the name and is associated with boolean objects. Yes, FPDF_BOOL is a typedef for int, but the reason this typedef exists is to help make the distinction.\n\nWith my suggestion, the mapping is clear to the caller:\n\nFPDF_OBJECT_BOOLEAN -\u003e use GetBooleanValue()\nFPDF_OBJECT_NUMBER -\u003e use GetNumberValue()\n\nThe caller would have to cast a float to an int if they really want an int, but is casting that hard?\n\nWith the current mapping in this CL, the mapping seems less straight-forward to me:\n\nFPDF_OBJECT_BOOLEAN -\u003e use GetIntValue()\nFPDF_OBJECT_NUMBER -\u003e use GetIntValue() or GetNumberValue()",
+      "parentUuid": "d6734f73_26407fb9",
+      "revId": "60a957ce2b1828c2e41afbb347db7e3587caa09e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca5ffced_3ac9fb53",
         "filename": "public/fpdf_structtree.h",
         "patchSetId": 1
