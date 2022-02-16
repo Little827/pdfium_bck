@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d075fea9_c7b2981d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-02-16T11:34:15Z",
+      "side": 1,
+      "message": "This is confusing. I did test the implementation on Linux and it works correctly. The approach I am using was also suggested and confimred in Comment 7 of the referenced bug.\nAnyway, I can change to `WideStringFromFPDFWideString()` as suggested.",
+      "parentUuid": "4ad3b5f1_59c77120",
+      "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c408b901_f2870914",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 1
