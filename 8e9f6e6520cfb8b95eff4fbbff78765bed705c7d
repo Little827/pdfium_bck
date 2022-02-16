@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9547e383_2fb378e1",
+        "filename": "core/fxge/cfx_path.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-16T17:13:25Z",
+      "side": 1,
+      "message": "just inline this expression at point-of-use and avoid the local entirely?",
+      "range": {
+        "startLine": 373,
+        "startChar": 33,
+        "endLine": 373,
+        "endChar": 64
+      },
+      "revId": "8e9f6e6520cfb8b95eff4fbbff78765bed705c7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
