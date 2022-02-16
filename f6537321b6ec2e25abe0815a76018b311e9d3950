@@ -45,6 +45,30 @@
       },
       "revId": "f6537321b6ec2e25abe0815a76018b311e9d3950",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1de0aa_3bd53568",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-16T23:18:24Z",
+      "side": 1,
+      "message": "Yes, FT only reads in 4 bytes. In a 32-bit build, FT_Ulong is 4 bytes.",
+      "parentUuid": "8bea3307_a639e4e3",
+      "range": {
+        "startLine": 440,
+        "startChar": 39,
+        "endLine": 440,
+        "endChar": 54
+      },
+      "revId": "f6537321b6ec2e25abe0815a76018b311e9d3950",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
