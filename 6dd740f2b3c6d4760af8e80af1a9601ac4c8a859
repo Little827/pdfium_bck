@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67482b3f_4e73f97d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-16T17:15:53Z",
+      "side": 1,
+      "message": "Not sure why it worked for you. For me, FPDF_LoadDocument() works on Linux, but not FPDF_LoadWstringDocument(). Anyway, thanks for putting this together.",
+      "parentUuid": "ac79e1a3_7f2c5a0f",
+      "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c408b901_f2870914",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 1
@@ -177,6 +195,5 @@
       "revId": "6dd740f2b3c6d4760af8e80af1a9601ac4c8a859",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
-  ],
-  "submitRequirementResults": []
+  ]
 }
