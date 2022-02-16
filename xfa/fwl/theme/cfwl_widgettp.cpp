@@ -32,8 +32,8 @@ void CFWL_WidgetTP::DrawBackground(const CFWL_ThemeBackground& pParams) {}
 
 void CFWL_WidgetTP::DrawText(const CFWL_ThemeText& pParams) {
   EnsureTTOInitialized();
-  int32_t iLen = pParams.m_wsText.GetLength();
-  if (iLen <= 0)
+  size_t iLen = pParams.m_wsText.GetLength();
+  if (iLen == 0)
     return;
 
   CFGAS_GEGraphics* pGraphics = pParams.GetGraphics();
