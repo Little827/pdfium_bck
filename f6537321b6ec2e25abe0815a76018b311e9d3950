@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f285a5f2_3fccc92e",
+        "filename": "xfa/fgas/font/cfgas_defaultfontmanager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-16T22:26:50Z",
+      "side": 1,
+      "message": "NOTE: this can underflow, hence kept as int.",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "f6537321b6ec2e25abe0815a76018b311e9d3950",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bea3307_a639e4e3",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-16T22:26:50Z",
+      "side": 1,
+      "message": "note: although represented as FT_Ulong, these are constrained to unicode valuse, right?",
+      "range": {
+        "startLine": 440,
+        "startChar": 39,
+        "endLine": 440,
+        "endChar": 54
+      },
+      "revId": "f6537321b6ec2e25abe0815a76018b311e9d3950",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
