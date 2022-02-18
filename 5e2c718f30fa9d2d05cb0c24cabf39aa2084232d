@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7208e5e5_6e9ca5cf",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T20:10:43Z",
+      "side": 1,
+      "message": "And FPDF_BOOL here.",
+      "revId": "5e2c718f30fa9d2d05cb0c24cabf39aa2084232d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9da0e6_e1ba957e",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T20:10:43Z",
+      "side": 1,
+      "message": "The indentation here is also funny. I don\u0027t know why clang-format can\u0027t format this correctly, but I\u0027d go with 4 space indent here.",
+      "revId": "5e2c718f30fa9d2d05cb0c24cabf39aa2084232d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
