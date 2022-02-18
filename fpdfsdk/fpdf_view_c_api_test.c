@@ -362,9 +362,12 @@ int CheckPDFiumCApi() {
     CHK(FPDF_StructElement_CountChildren);
     CHK(FPDF_StructElement_GetActualText);
     CHK(FPDF_StructElement_GetAltText);
+    CHK(FPDF_StructElement_GetAlternateText);
     CHK(FPDF_StructElement_GetAttributeAtIndex);
     CHK(FPDF_StructElement_GetAttributeCount);
     CHK(FPDF_StructElement_GetChildAtIndex);
+    CHK(FPDF_StructElement_GetElementTitle);
+    CHK(FPDF_StructElement_GetElementType);
     CHK(FPDF_StructElement_GetID);
     CHK(FPDF_StructElement_GetLang);
     CHK(FPDF_StructElement_GetMarkedContentID);

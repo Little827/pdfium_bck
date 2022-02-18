@@ -47,16 +47,16 @@ void DumpBoxInfo(GetBoxInfoFunc func,
 void DumpChildStructure(FPDF_STRUCTELEMENT child, int indent) {
   static const size_t kBufSize = 1024;
   unsigned short buf[kBufSize];
-  unsigned long len = FPDF_StructElement_GetType(child, buf, kBufSize);
+  unsigned long len = FPDF_StructElement_GetElementType(child, buf, kBufSize);
   printf("%*s%ls", indent * 2, "", ConvertToWString(buf, len).c_str());
 
   memset(buf, 0, sizeof(buf));
-  len = FPDF_StructElement_GetTitle(child, buf, kBufSize);
+  len = FPDF_StructElement_GetElementTitle(child, buf, kBufSize);
   if (len > 0)
     printf(": '%ls'", ConvertToWString(buf, len).c_str());
 
   memset(buf, 0, sizeof(buf));
-  len = FPDF_StructElement_GetAltText(child, buf, kBufSize);
+  len = FPDF_StructElement_GetAlternateText(child, buf, kBufSize);
   if (len > 0)
     printf(" (%ls)", ConvertToWString(buf, len).c_str());
   printf("\n");

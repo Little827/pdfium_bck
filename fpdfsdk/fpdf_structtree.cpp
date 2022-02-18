@@ -71,6 +71,17 @@ FPDF_StructTree_GetChildAtIndex(FPDF_STRUCTTREE struct_tree, int index) {
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetAlternateText(FPDF_STRUCTELEMENT struct_element,
+                                    void* buffer,
+                                    unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  return elem ? Utf16EncodeMaybeCopyAndReturnLength(elem->GetAltText(), buffer,
+                                                    buflen)
+              : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDF_StructElement_GetAltText(FPDF_STRUCTELEMENT struct_element,
                               void* buffer,
                               unsigned long buflen) {
@@ -194,6 +205,18 @@ FPDF_StructElement_GetMarkedContentID(FPDF_STRUCTELEMENT struct_element) {
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetElementType(FPDF_STRUCTELEMENT struct_element,
+                                  void* buffer,
+                                  unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  return elem ? Utf16EncodeMaybeCopyAndReturnLength(
+                    WideString::FromUTF8(elem->GetType().AsStringView()),
+                    buffer, buflen)
+              : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDF_StructElement_GetType(FPDF_STRUCTELEMENT struct_element,
                            void* buffer,
                            unsigned long buflen) {
@@ -214,6 +237,17 @@ FPDF_StructElement_GetObjType(FPDF_STRUCTELEMENT struct_element,
   return elem ? WideStringToBuffer(
                     WideString::FromUTF8(elem->GetObjType().AsStringView()),
                     buffer, buflen)
+              : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_StructElement_GetElementTitle(FPDF_STRUCTELEMENT struct_element,
+                                   void* buffer,
+                                   unsigned long buflen) {
+  CPDF_StructElement* elem =
+      CPDFStructElementFromFPDFStructElement(struct_element);
+  return elem ? Utf16EncodeMaybeCopyAndReturnLength(elem->GetTitle(), buffer,
+                                                    buflen)
               : 0;
 }
 
