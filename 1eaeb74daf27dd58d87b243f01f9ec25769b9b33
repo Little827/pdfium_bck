@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f293652_a05a0fe8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T08:00:20Z",
+      "side": 1,
+      "message": "Looking good. Can we add tests for FPDF_StructElement_Attr_GetBlobValue() and FPDF_StructElement_Attr_GetBooleanValue()?",
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c06a78_4855bc0b",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T08:00:20Z",
+      "side": 1,
+      "message": "Maybe avoid negative values when the type is unsigned?",
+      "range": {
+        "startLine": 544,
+        "startChar": 30,
+        "endLine": 544,
+        "endChar": 32
+      },
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f0ccc1c_aca2cc38",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T08:00:20Z",
+      "side": 1,
+      "message": "EXPECT_STREQ(\"O\", buffer); also works, and no need to create a std::string.",
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f044a87_fb2b8308",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T08:00:20Z",
+      "side": 1,
+      "message": "Wrong parameter name. This is also an existing issue for FPDF_StructElement_GetChildAtIndex() and FPDF_StructElement_GetParent() above.",
+      "range": {
+        "startLine": 283,
+        "startChar": 12,
+        "endLine": 283,
+        "endChar": 23
+      },
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b4e26c_97774190",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T08:00:20Z",
+      "side": 1,
+      "message": "Not encoded. If it was, this would be identical to FPDF_StructElement_Attr_GetStringValue() for string objects.",
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
