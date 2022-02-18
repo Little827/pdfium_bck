@@ -16,6 +16,29 @@
       "message": "Not sure why OpenJPEG provides time code.",
       "revId": "1d78cffa7859936e00877175019f2580b927a205",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82085c49_109db358",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-18T21:42:01Z",
+      "side": 1,
+      "message": "nit: need a comment here mentioning that the file is not used by PDFium lest someone discover it is missing and add it back in.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 34
+      },
+      "revId": "1d78cffa7859936e00877175019f2580b927a205",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
