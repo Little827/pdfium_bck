@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8562cb9c_c73cecfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-18T19:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f293652_a05a0fe8",
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86c06a78_4855bc0b",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-18T08:00:20Z",
       "side": 1,
       "message": "Maybe avoid negative values when the type is unsigned?",
+      "range": {
+        "startLine": 544,
+        "startChar": 30,
+        "endLine": 544,
+        "endChar": 32
+      },
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31482ca2_32f97478",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-18T19:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c06a78_4855bc0b",
       "range": {
         "startLine": 544,
         "startChar": 30,
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17d5638_9b4fe1fb",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-18T19:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f0ccc1c_aca2cc38",
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f044a87_fb2b8308",
@@ -81,6 +141,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "409d66c4_47f2b2ba",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-18T19:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f044a87_fb2b8308",
+      "range": {
+        "startLine": 283,
+        "startChar": 12,
+        "endLine": 283,
+        "endChar": 23
+      },
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b4e26c_97774190",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-02-18T08:00:20Z",
       "side": 1,
       "message": "Not encoded. If it was, this would be identical to FPDF_StructElement_Attr_GetStringValue() for string objects.",
+      "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1456763a_5c46c481",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 8786
+      },
+      "writtenOn": "2022-02-18T19:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b4e26c_97774190",
       "revId": "1eaeb74daf27dd58d87b243f01f9ec25769b9b33",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
