@@ -11,9 +11,13 @@
 #include "third_party/base/check.h"
 
 #if BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || \
-    BUILDFLAG(IS_APPLE) || defined(OS_ASMJS)
+    BUILDFLAG(IS_APPLE) || BUILDFLAG(IS_FUCHSIA) || defined(OS_ASMJS)
 #include <sys/time.h>
 #include <time.h>
+#endif
+
+#if BUILDFLAG(IS_FUCHSIA)
+#include <zircon/types.h>
 #endif
 
 namespace {
@@ -101,6 +105,21 @@ CFX_DateTime CFX_DateTime::Now() {
   FXUT_SYSTEMTIME utLocal;
 #if BUILDFLAG(IS_WIN)
   ::GetLocalTime((LPSYSTEMTIME)&utLocal);
+#elif BUILDFLAG(IS_FUCHSIA)
+  timespec ts;
+  int status = timespec_get(&ts, TIME_UTC);
+  CHECK(status != 0);
+
+  struct tm st;
+  localtime_r(&ts.tv_sec, &st);
+  utLocal.wYear = st.tm_year + 1900;
+  utLocal.wMonth = st.tm_mon + 1;
+  utLocal.wDayOfWeek = st.tm_wday;
+  utLocal.wDay = st.tm_mday;
+  utLocal.wHour = st.tm_hour;
+  utLocal.wMinute = st.tm_min;
+  utLocal.wSecond = st.tm_sec;
+  utLocal.wMillisecond = ts.tv_nsec * 100000;
 #else
   timeval curTime;
   gettimeofday(&curTime, nullptr);
