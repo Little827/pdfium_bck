@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81cc51b_81a655fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-18T21:38:35Z",
+      "side": 1,
+      "message": "Not sure why OpenJPEG provides time code.",
+      "revId": "1d78cffa7859936e00877175019f2580b927a205",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
