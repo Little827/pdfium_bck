@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da189b23_7d377d72",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-19T01:27:11Z",
+      "side": 1,
+      "message": "Can the caller do this instead?",
+      "revId": "e9a0eda81d1d49b852011373b943c84bb6aa13d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c14d61_beff1ec6",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-19T01:27:11Z",
+      "side": 1,
+      "message": "nit: flip lines 57 and 58.",
+      "revId": "e9a0eda81d1d49b852011373b943c84bb6aa13d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad52e520_bde01c7c",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-19T01:27:11Z",
+      "side": 1,
+      "message": "Up until this point, it\u0027s been alphabetical, except /S, which is the struct type, taking precedence. Not sure if there\u0027s some logic to this ordering, or if you want to rearrange this to fit some particular ordering.",
+      "revId": "e9a0eda81d1d49b852011373b943c84bb6aa13d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
