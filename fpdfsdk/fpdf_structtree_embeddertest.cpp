@@ -317,18 +317,54 @@ TEST_F(FPDFStructTreeEmbedderTest, GetLang) {
 // See also FPDFEditEmbedderTest.TraverseMarkedContentID, which traverses the
 // marked contents using FPDFPageObj_GetMark() and related API.
 TEST_F(FPDFStructTreeEmbedderTest, GetMarkedContentID) {
-  ASSERT_TRUE(OpenDocument("marked_content_id.pdf"));
+  ASSERT_TRUE(OpenDocument("tagged_marked_content.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
   {
     ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
     ASSERT_TRUE(struct_tree);
-    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+    ASSERT_EQ(4, FPDF_StructTree_CountChildren(struct_tree.get()));
 
-    FPDF_STRUCTELEMENT element =
+    // K is an integer MCID
+    FPDF_STRUCTELEMENT child1 =
         FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
-    EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentID(element));
+    ASSERT_TRUE(child1);
+    // Legacy API
+    EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentID(child1));
+
+    // K is a dict containing MCR object reference
+    FPDF_STRUCTELEMENT child2 =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 1);
+    ASSERT_TRUE(child2);
+
+    // K is an array containing dict MCR object reference and integer MCID
+    FPDF_STRUCTELEMENT child3 =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 2);
+    ASSERT_TRUE(child3);
+
+    // K does not exist
+    FPDF_STRUCTELEMENT child4 =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 3);
+    ASSERT_TRUE(child4);
+
+    // New APIs
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdCount(nullptr));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(nullptr, 0));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(child1, -1));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(child1, 1));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(child1));
+    EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentIdAtIndex(child1, 0));
+
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(child2));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdAtIndex(child2, 0));
+
+    EXPECT_EQ(2, FPDF_StructElement_GetMarkedContentIdCount(child3));
+    EXPECT_EQ(2, FPDF_StructElement_GetMarkedContentIdAtIndex(child3, 0));
+    EXPECT_EQ(3, FPDF_StructElement_GetMarkedContentIdAtIndex(child3, 1));
+
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdCount(child4));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(child4, 0));
   }
 
   UnloadPage(page);
