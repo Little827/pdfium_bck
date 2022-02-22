@@ -89,7 +89,7 @@ XFA_AttributeValue CXFA_Box::GetPresence() {
       .value_or(XFA_AttributeValue::Visible);
 }
 
-int32_t CXFA_Box::CountEdges() {
+size_t CXFA_Box::CountEdges() {
   return CountChildren(XFA_Element::Edge, false);
 }
 
