@@ -62,8 +62,8 @@ bool IsXMLValidChar(wchar_t ch) {
 
 WideString ExportEncodeContent(const WideString& str) {
   CFX_WideTextBuf textBuf;
-  int32_t iLen = str.GetLength();
-  for (int32_t i = 0; i < iLen; i++) {
+  size_t iLen = str.GetLength();
+  for (size_t i = 0; i < iLen; i++) {
     wchar_t ch = str[i];
     if (!IsXMLValidChar(ch))
       continue;
