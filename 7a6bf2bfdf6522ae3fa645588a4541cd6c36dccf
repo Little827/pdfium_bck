@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8931ad1d_33bdb2f3",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-23T17:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06bb97b1_96af92e5",
+      "revId": "7a6bf2bfdf6522ae3fa645588a4541cd6c36dccf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5019c7a2_b2bd2a64",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-22T23:35:42Z",
       "side": 1,
       "message": "Also size_t here?",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "7a6bf2bfdf6522ae3fa645588a4541cd6c36dccf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b10982_d5384bf7",
+        "filename": "xfa/fxfa/parser/cxfa_box.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-23T17:24:23Z",
+      "side": 1,
+      "message": "sure.",
+      "parentUuid": "5019c7a2_b2bd2a64",
       "range": {
         "startLine": 31,
         "startChar": 29,
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8431ae6a_d142364a",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4355,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-23T17:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2cb10d_2b893f7b",
+      "revId": "7a6bf2bfdf6522ae3fa645588a4541cd6c36dccf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0a32559_b1b67885",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-02-22T23:35:42Z",
       "side": 1,
       "message": "Why not go with size_t?",
+      "revId": "7a6bf2bfdf6522ae3fa645588a4541cd6c36dccf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7463c2c_49cd2df3",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4992,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-23T17:24:23Z",
+      "side": 1,
+      "message": "iLead and iTread are signed 32s from GetLeadFracDigit() assignment, and might overflow when incremented if we allowed iCount to be larger. I didn\u0027t want to straighten all that out",
+      "parentUuid": "e0a32559_b1b67885",
       "revId": "7a6bf2bfdf6522ae3fa645588a4541cd6c36dccf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
