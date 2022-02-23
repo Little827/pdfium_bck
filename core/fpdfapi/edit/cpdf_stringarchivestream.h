@@ -6,7 +6,7 @@
 #define CORE_FPDFAPI_EDIT_CPDF_STRINGARCHIVESTREAM_H_
 
 #include "core/fxcrt/fx_stream.h"
-#include "core/fxcrt/stl_util.h"
+#include "core/fxcrt/stl_string_util.h"
 
 class CPDF_StringArchiveStream final : public IFX_ArchiveStream {
  public:

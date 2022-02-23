@@ -18,7 +18,7 @@
 #include <utility>
 
 #include "core/fxcrt/retain_ptr.h"
-#include "core/fxcrt/stl_util.h"
+#include "core/fxcrt/stl_string_util.h"
 #include "core/fxcrt/string_data_template.h"
 #include "core/fxcrt/string_view_template.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
