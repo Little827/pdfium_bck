@@ -33,7 +33,7 @@
 #include "core/fpdfdoc/cpvt_fontmap.h"
 #include "core/fpdfdoc/cpvt_variabletext.h"
 #include "core/fpdfdoc/cpvt_word.h"
-#include "core/fxcrt/stl_util.h"
+#include "core/fxcrt/stl_string_util.h"
 #include "core/fxge/cfx_renderdevice.h"
 
 namespace {
