@@ -24,6 +24,7 @@
 #include "third_party/base/check.h"
 #include "third_party/base/containers/contains.h"
 #include "third_party/base/notreached.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 #ifdef PDF_ENABLE_V8
 #include "testing/v8_test_environment.h"
@@ -390,7 +391,8 @@ std::vector<uint8_t> EmbedderTest::RenderPageWithFlagsToEmf(FPDF_PAGE page,
   HENHMETAFILE emf = CloseEnhMetaFile(dc);
   size_t size_in_bytes = GetEnhMetaFileBits(emf, 0, nullptr);
   std::vector<uint8_t> buffer(size_in_bytes);
-  GetEnhMetaFileBits(emf, size_in_bytes, buffer.data());
+  GetEnhMetaFileBits(emf, pdfium::base::checked_cast<UINT>(size_in_bytes),
+                     buffer.data());
   DeleteEnhMetaFile(emf);
   return buffer;
 }
@@ -399,7 +401,8 @@ std::vector<uint8_t> EmbedderTest::RenderPageWithFlagsToEmf(FPDF_PAGE page,
 std::string EmbedderTest::GetPostScriptFromEmf(
     pdfium::span<const uint8_t> emf_data) {
   // This comes from Emf::InitFromData() in Chromium.
-  HENHMETAFILE emf = SetEnhMetaFileBits(emf_data.size(), emf_data.data());
+  HENHMETAFILE emf = SetEnhMetaFileBits(
+      pdfium::base::checked_cast<UINT>(emf_data.size()), emf_data.data());
   if (!emf)
     return std::string();
 
@@ -453,7 +456,8 @@ int EmbedderTest::BytesPerPixelForFormat(int format) {
 FPDF_DOCUMENT EmbedderTest::OpenSavedDocumentWithPassword(
     const char* password) {
   memset(&saved_file_access_, 0, sizeof(saved_file_access_));
-  saved_file_access_.m_FileLen = data_string_.size();
+  saved_file_access_.m_FileLen =
+      pdfium::base::checked_cast<unsigned long>(data_string_.size());
   saved_file_access_.m_GetBlock = GetBlockFromString;
   // Copy data to prevent clearing it before saved document close.
   saved_document_file_data_ = data_string_;
