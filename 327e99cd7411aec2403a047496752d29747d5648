@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959b42cf_5505f142",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-23T18:01:01Z",
+      "side": 1,
+      "message": "Just call: pBitmap-\u003eIsAlphaFormat(), which does the same thing, but in a way consistent with the RHS of this OR logic.",
+      "range": {
+        "startLine": 1670,
+        "startChar": 8,
+        "endLine": 1670,
+        "endChar": 50
+      },
+      "revId": "327e99cd7411aec2403a047496752d29747d5648",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
