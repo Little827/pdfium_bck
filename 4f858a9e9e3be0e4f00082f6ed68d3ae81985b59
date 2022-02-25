@@ -16,6 +16,24 @@
       "message": "checked_cast not needed with the current `kMaxBytes` value? i.e. The width will always fit in an int32_t as is.",
       "revId": "4f858a9e9e3be0e4f00082f6ed68d3ae81985b59",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1beeea2f_208d79f5",
+        "filename": "fxbarcode/qrcode/BC_QRCoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-25T23:51:40Z",
+      "side": 1,
+      "message": "kMaxBytes might change down the road and this breaks. I expect m_MatrixWidth will become size_t in some subsequent noshorten CL (and these are separate CLs, since the noshorten consequences are seismic shifts).",
+      "parentUuid": "213f4d15_e26b54b2",
+      "revId": "4f858a9e9e3be0e4f00082f6ed68d3ae81985b59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
