@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6ceca6_2b0f5d80",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-25T23:33:50Z",
+      "side": 1,
+      "message": "Sure.  Only worry is someone pulling the checks in a subsequent cl, but eh.\nDone.",
+      "parentUuid": "f90e79db_29543caf",
+      "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e319a3_6542dd1a",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Doesn\u0027t matter, as they promote to large unsigned and are caught.",
       "parentUuid": "20e319a3_6542dd1a",
+      "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b91aaf_d5f03af8",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-25T23:33:50Z",
+      "side": 1,
+      "message": "\u003e Doesn\u0027t matter, as they promote to large unsigned and are caught.",
+      "parentUuid": "c0676b26_95b38e05",
       "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
