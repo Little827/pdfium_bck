@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae576667_7540a82b",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-25T22:32:57Z",
+      "side": 1,
+      "message": "this just makes it consistent with the bit matrix version.",
+      "parentUuid": "9a30fc33_d40b381d",
+      "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e319a3_6542dd1a",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-25T21:47:30Z",
       "side": 1,
       "message": "Same as the bit matrix - do we know if the callers ever pass in negative int values? Same for Get() and Set(). Those have a lot more callers to audit vs. the bit matrix.",
+      "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0676b26_95b38e05",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-25T22:32:57Z",
+      "side": 1,
+      "message": "Doesn\u0027t matter, as they promote to large unsigned and are caught.",
+      "parentUuid": "20e319a3_6542dd1a",
       "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
