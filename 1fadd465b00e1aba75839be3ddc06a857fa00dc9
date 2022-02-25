@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90e79db_29543caf",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T22:53:04Z",
+      "side": 1,
+      "message": "WDYT about making it consistent, but in the other direction? At least in the bit matrix case, it\u0027s easy to see with a single caller that it never goes OOB there.",
+      "parentUuid": "ae576667_7540a82b",
+      "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e319a3_6542dd1a",
