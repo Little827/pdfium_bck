@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213f4d15_e26b54b2",
+        "filename": "fxbarcode/qrcode/BC_QRCoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:46:53Z",
+      "side": 1,
+      "message": "checked_cast not needed with the current `kMaxBytes` value? i.e. The width will always fit in an int32_t as is.",
+      "revId": "4f858a9e9e3be0e4f00082f6ed68d3ae81985b59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
