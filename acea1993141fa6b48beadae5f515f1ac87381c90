@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9309e2c2_b118099a",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-25T21:47:22Z",
+      "side": 1,
+      "message": "Nope. The formal args are now size_t, so say -3 \u003d\u003e 18446744073709551613 and we then flunk the dimensions CHECK_LT() in the constructor.",
+      "parentUuid": "35f52745_644362a3",
+      "revId": "acea1993141fa6b48beadae5f515f1ac87381c90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70716520_6bde72e2",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-25T21:41:11Z",
       "side": 1,
       "message": "BTW, these 2 are unused.",
+      "revId": "acea1993141fa6b48beadae5f515f1ac87381c90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8936cb17_f4595ef7",
+        "filename": "fxbarcode/common/BC_CommonBitMatrix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-25T21:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70716520_6bde72e2",
       "revId": "acea1993141fa6b48beadae5f515f1ac87381c90",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
