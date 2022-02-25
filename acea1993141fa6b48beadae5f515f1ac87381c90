@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f42e8c4a_23e2d182",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T21:53:05Z",
+      "side": 1,
+      "message": "Maybe add a comment in the ctor near the CHECK_LT() to explain this to future readers?",
+      "parentUuid": "9309e2c2_b118099a",
+      "revId": "acea1993141fa6b48beadae5f515f1ac87381c90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70716520_6bde72e2",
