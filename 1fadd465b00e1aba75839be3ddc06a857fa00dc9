@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a30fc33_d40b381d",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T21:47:30Z",
+      "side": 1,
+      "message": "Should Get() and Set() fail a CHECK() if their offsets are OOB instead?",
+      "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e319a3_6542dd1a",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T21:47:30Z",
+      "side": 1,
+      "message": "Same as the bit matrix - do we know if the callers ever pass in negative int values? Same for Get() and Set(). Those have a lot more callers to audit vs. the bit matrix.",
+      "revId": "1fadd465b00e1aba75839be3ddc06a857fa00dc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
