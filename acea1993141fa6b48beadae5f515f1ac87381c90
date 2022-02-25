@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f52745_644362a3",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T21:41:11Z",
+      "side": 1,
+      "message": "Do we need to make sure the dimensions passed in are not negative?",
+      "revId": "acea1993141fa6b48beadae5f515f1ac87381c90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70716520_6bde72e2",
+        "filename": "fxbarcode/common/BC_CommonBitMatrix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T21:41:11Z",
+      "side": 1,
+      "message": "BTW, these 2 are unused.",
+      "revId": "acea1993141fa6b48beadae5f515f1ac87381c90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
