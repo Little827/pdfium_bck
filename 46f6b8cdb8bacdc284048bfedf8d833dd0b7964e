@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d06c2d2_80d78c3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:39:00Z",
+      "side": 1,
+      "message": "Maybe summarize this to get it under 72 chars, and mention the new APIs by name in the description below.",
+      "revId": "46f6b8cdb8bacdc284048bfedf8d833dd0b7964e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d422aaa_6ba8aa95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:39:00Z",
+      "side": 1,
+      "message": "Wrap at 72 columns.",
+      "revId": "46f6b8cdb8bacdc284048bfedf8d833dd0b7964e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52403b3a_557a8c28",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:39:00Z",
+      "side": 1,
+      "message": "GetIntegerFor() is convenient, but it doesn\u0027t check the type. It\u0027s better to call GetObjectFor() and then make sure the returned object is a number.",
+      "revId": "46f6b8cdb8bacdc284048bfedf8d833dd0b7964e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af856b71_f5f98f40",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:39:00Z",
+      "side": 1,
+      "message": "This file now repeats the pattern on line 409-412 many times. Want to break that out into a helper function in another CL?",
+      "revId": "46f6b8cdb8bacdc284048bfedf8d833dd0b7964e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a438373f_944af3e3",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:39:00Z",
+      "side": 1,
+      "message": "Use fxcrt::CollectionSize here.",
+      "range": {
+        "startLine": 419,
+        "startChar": 24,
+        "endLine": 419,
+        "endChar": 43
+      },
+      "revId": "46f6b8cdb8bacdc284048bfedf8d833dd0b7964e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3be49b7_fa33467c",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:39:00Z",
+      "side": 1,
+      "message": "No need for curly braces when it\u0027s single line conditional plus single line body. Be consistent with line 432-433.",
+      "revId": "46f6b8cdb8bacdc284048bfedf8d833dd0b7964e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c07f54e_4a7a34a0",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-25T23:39:00Z",
+      "side": 1,
+      "message": "New test cases are of course welcome, but can we preserve a pair of tests that operate on the same file, so one can see how different APIs relate?",
+      "revId": "46f6b8cdb8bacdc284048bfedf8d833dd0b7964e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
