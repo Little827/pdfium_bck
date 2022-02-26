@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc10336b_80e24f5c",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-26T01:29:16Z",
+      "side": 1,
+      "message": "It saves a look up to just check if `obj` is null or not.",
+      "range": {
+        "startLine": 33,
+        "startChar": 47,
+        "endLine": 33,
+        "endChar": 73
+      },
+      "revId": "066ea1dd6ac01e8fdae1c51343d8242a479313ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
