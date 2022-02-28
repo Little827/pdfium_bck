@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c352f32e_40f53f0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-02-28T20:52:34Z",
+      "side": 1,
+      "message": "Thank you for the quick fixes! LGTM with comments.",
+      "revId": "f259e9bb3754b6a32ca5e04502e89b936bbb02b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00785e41_b0a4a768",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-02-28T20:52:34Z",
+      "side": 1,
+      "message": "FYI, You will likely need fuchsia_images_bucket if you want to set up bots that run tests. That can be done later, though.\n\nTechnically, you probably don\u0027t need those paths in .gitignore, but there\u0027s no harm.",
+      "revId": "f259e9bb3754b6a32ca5e04502e89b936bbb02b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7751e620_d6482aaf",
+        "filename": "third_party/fuchsia-sdk/DIR_METADATA",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-02-28T20:52:34Z",
+      "side": 1,
+      "message": "This is a crbug component, not a Pdfium one. Not sure if that matters.",
+      "revId": "f259e9bb3754b6a32ca5e04502e89b936bbb02b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae22a03_1dc9047a",
+        "filename": "third_party/fuchsia-sdk/DIR_METADATA",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-02-28T20:52:34Z",
+      "side": 1,
+      "message": "Please use fuchsia-dev@chromium.org. I\u0027ll update the instances in Chromium.",
+      "revId": "f259e9bb3754b6a32ca5e04502e89b936bbb02b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
