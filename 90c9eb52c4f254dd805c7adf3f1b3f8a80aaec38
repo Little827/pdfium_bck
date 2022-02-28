@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea69854_52e884e8",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-28T23:43:24Z",
+      "side": 1,
+      "message": "I backed out the change and just left a stub here so it compiles. Some tests may fail, but CFX_DateTime is not critical to PDFium. I\u0027ll fill in the stub in another CL.",
+      "parentUuid": "ecebc473_46809a4b",
+      "revId": "90c9eb52c4f254dd805c7adf3f1b3f8a80aaec38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d8a5451_39c152e1",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a4930f9_b3af5cb9",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-28T23:43:24Z",
+      "side": 1,
+      "message": "Gah. I deleted this code for now. Will try to get that right next time.",
+      "parentUuid": "5d8a5451_39c152e1",
+      "range": {
+        "startLine": 122,
+        "startChar": 36,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "90c9eb52c4f254dd805c7adf3f1b3f8a80aaec38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "379f608d_bda7e162",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-02-28T21:05:11Z",
       "side": 1,
       "message": "Can this be written as follows?\n```\n#else\n#if BUILDFLAG(IS_FUCHSIA)\n  timespec ts;\n  int status \u003d timespec_get(\u0026ts, TIME_UTC);\n  CHECK(status !\u003d 0);\n\n  struct tm st;\n  localtime_r(\u0026ts.tv_sec, \u0026st);\n\n  utLocal.wMillisecond \u003d ts.tv_nsec * 100000;\n#else\n  timeval curTime;\n  gettimeofday(\u0026curTime, nullptr);\n\n  struct tm st;\n  localtime_r(\u0026curTime.tv_sec, \u0026st);\n\n  utLocal.wMillisecond \u003d curTime.tv_usec / 1000;\n#endif\n\n  utLocal.wYear \u003d st.tm_year + 1900;\n  utLocal.wMonth \u003d st.tm_mon + 1;\n  utLocal.wDayOfWeek \u003d st.tm_wday;\n  utLocal.wDay \u003d st.tm_mday;\n  utLocal.wHour \u003d st.tm_hour;\n  utLocal.wMinute \u003d st.tm_min;\n  utLocal.wSecond \u003d st.tm_sec;\n#endif\n```\n\nYou could also create a temp var for the ms and set wMillisecond at the end for consistency.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "90c9eb52c4f254dd805c7adf3f1b3f8a80aaec38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a853978_3cde5f51",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-02-28T23:43:24Z",
+      "side": 1,
+      "message": "Ya, I can do that in the next CL, if it ends up looking like this.",
+      "parentUuid": "379f608d_bda7e162",
       "range": {
         "startLine": 108,
         "startChar": 0,
