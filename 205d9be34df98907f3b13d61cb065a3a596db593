@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4d62b1_2e99f1e8",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5278,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-02-28T19:08:54Z",
+      "side": 1,
+      "message": "can we write something else that avoids the issue without multiply? I think either of these would work:\n\n  safe_index \u003d 0 - safe_index;\n  \nor, removing 5276 and doing:\n  iIndexValue \u003d (FX_SAFE_UINT32(0) - iIndexValue).ValueOrDefault(0);",
+      "range": {
+        "startLine": 5278,
+        "startChar": 4,
+        "endLine": 5278,
+        "endChar": 21
+      },
+      "revId": "205d9be34df98907f3b13d61cb065a3a596db593",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
