@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abc4ce0_92f9dd31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-01T05:11:31Z",
+      "side": 1,
+      "message": "Issue found on this discussion thread. https://groups.google.com/g/pdfium/c/GDB1txSx1N8",
+      "revId": "c671211596c2d88543d139f82407627c1f0010a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7e71c8_bcf778b4",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-01T05:11:31Z",
+      "side": 1,
+      "message": "This is what Skia uses. See third_party/skia/third_party/BUILD.gn.",
+      "revId": "c671211596c2d88543d139f82407627c1f0010a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
