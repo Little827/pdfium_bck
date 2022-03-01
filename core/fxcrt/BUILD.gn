@@ -126,6 +126,9 @@ source_set("fxcrt") {
     "//third_party/icu:icuuc",
   ]
 
+  if (is_fuchsia) {
+    deps += [ "//third_party/icu:icui18n" ]
+  }
   if (is_posix || is_fuchsia) {
     sources += [
       "cfx_fileaccess_posix.cpp",
