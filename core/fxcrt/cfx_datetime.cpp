@@ -11,9 +11,16 @@
 #include "third_party/base/check.h"
 
 #if BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || \
-    BUILDFLAG(IS_APPLE) || defined(OS_ASMJS)
+    BUILDFLAG(IS_APPLE) || BUILDFLAG(IS_FUCHSIA) || defined(OS_ASMJS)
 #include <sys/time.h>
 #include <time.h>
+#endif
+
+#if BUILDFLAG(IS_FUCHSIA)
+#include <limits>
+
+#include "third_party/icu/source/i18n/unicode/calendar.h"  // nogncheck
+#include "third_party/icu/source/i18n/unicode/gregocal.h"  // nogncheck
 #endif
 
 namespace {
@@ -28,6 +35,9 @@ constexpr int32_t kDaysBeforeLeapMonth[12] = {0,   31,  60,  91,  121, 152,
                                               182, 213, 244, 274, 305, 335};
 constexpr int32_t kDaysPerYear = 365;
 constexpr int32_t kDaysPerLeapYear = 366;
+#if BUILDFLAG(IS_FUCHSIA)
+constexpr int32_t kMillisecondsPerDay = 86400000;
+#endif
 
 int32_t DaysBeforeMonthInYear(int32_t iYear, uint8_t iMonth) {
   DCHECK(iYear != 0);
@@ -81,6 +91,66 @@ struct FX_SYSTEMTIME {
   uint16_t wMillisecond;
 };
 
+#if BUILDFLAG(IS_FUCHSIA)
+// Explodes `millis_since_unix_epoch` using icu::Calendar. Returns true if the
+// conversion was successful.
+bool ExplodeUsingIcuCalendar(int64_t millis_since_unix_epoch,
+                             FX_SYSTEMTIME* exploded) {
+  // ICU's year calculation is wrong for years too far in the past (though
+  // other fields seem to be correct). Given that Windows datetime code only
+  // works for values on/after 1601-01-01 00:00:00 UTC, just use that as a
+  // reasonable lower-bound here as well.
+  // This value is derived from the following:
+  // ((1601-1970)*365+89)*24*60*60*1000*1000, where 89 is the number of leap
+  // year days between 1601 and 1970: (1970-1601)/4 excluding 1700, 1800, and
+  // 1900.
+  constexpr int64_t kInputLowerBound =
+      static_cast<int64_t>(-134774) * kMillisecondsPerDay;
+
+  // FX_SYSTEMTIME's `wYear` field has an upper limit, just like Windows
+  // datetime code. Use a rough approximation of this as the upper bound.
+  constexpr int64_t kInputUpperBound =
+      (static_cast<int64_t>(std::numeric_limits<uint16_t>::max()) - 1970) *
+      kDaysPerYear * kMillisecondsPerDay;
+
+  if (millis_since_unix_epoch < kInputLowerBound ||
+      millis_since_unix_epoch > kInputUpperBound) {
+    return false;
+  }
+
+  UErrorCode status = U_ZERO_ERROR;
+  icu::GregorianCalendar calendar(*icu::TimeZone::getGMT(),
+                                  icu::Locale::getUS(), status);
+  if (!U_SUCCESS(status))
+    return false;
+
+  calendar.setTime(millis_since_unix_epoch, status);
+  if (!U_SUCCESS(status))
+    return false;
+
+  bool got_all_fields = true;
+  exploded->wYear = calendar.get(UCAL_YEAR, status);
+  got_all_fields &= !!U_SUCCESS(status);
+  // ICU's UCalendarMonths is 0-based. E.g., 0 for January.
+  exploded->wMonth = calendar.get(UCAL_MONTH, status) + 1;
+  got_all_fields &= !!U_SUCCESS(status);
+  // ICU's UCalendarDaysOfWeek is 1-based. E.g., 1 for Sunday.
+  exploded->wDayOfWeek = calendar.get(UCAL_DAY_OF_WEEK, status) - 1;
+  got_all_fields &= !!U_SUCCESS(status);
+  exploded->wDay = calendar.get(UCAL_DAY_OF_MONTH, status);
+  got_all_fields &= !!U_SUCCESS(status);
+  exploded->wHour = calendar.get(UCAL_HOUR_OF_DAY, status);
+  got_all_fields &= !!U_SUCCESS(status);
+  exploded->wMinute = calendar.get(UCAL_MINUTE, status);
+  got_all_fields &= !!U_SUCCESS(status);
+  exploded->wSecond = calendar.get(UCAL_SECOND, status);
+  got_all_fields &= !!U_SUCCESS(status);
+  exploded->wMillisecond = calendar.get(UCAL_MILLISECOND, status);
+  got_all_fields &= !!U_SUCCESS(status);
+  return got_all_fields;
+}
+#endif  // BUILDFLAG(IS_FUCHSIA)
+
 }  // namespace
 
 uint8_t FX_DaysInMonth(int32_t iYear, uint8_t iMonth) {
@@ -103,7 +173,11 @@ CFX_DateTime CFX_DateTime::Now() {
 #if BUILDFLAG(IS_WIN)
   ::GetLocalTime(reinterpret_cast<LPSYSTEMTIME>(&local_time));
 #elif BUILDFLAG(IS_FUCHSIA)
-  // TODO(crbug.com/pdfium/1775): Implement using ICU.
+  timespec ts;
+  int status = timespec_get(&ts, TIME_UTC);
+  CHECK(status != 0);
+  int64_t millis_since_unix_epoch = ts.tv_sec * 1000 + ts.tv_nsec / 1000000;
+  CHECK(ExplodeUsingIcuCalendar(millis_since_unix_epoch, &local_time));
 #else
   timeval tv;
   gettimeofday(&tv, nullptr);
