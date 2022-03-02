@@ -22,6 +22,30 @@
       },
       "revId": "5119fad6c5339f3327a990c2d69aa78e91cf5471",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8987c644_cd5c59ef",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-02T17:56:03Z",
+      "side": 1,
+      "message": "Should line 102 be renamed as well?",
+      "parentUuid": "bd5341e1_010eab7d",
+      "range": {
+        "startLine": 107,
+        "startChar": 43,
+        "endLine": 107,
+        "endChar": 52
+      },
+      "revId": "5119fad6c5339f3327a990c2d69aa78e91cf5471",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
