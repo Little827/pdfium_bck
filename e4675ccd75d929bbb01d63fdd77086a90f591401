@@ -16,6 +16,29 @@
       "message": "I think win is now going to pass ...",
       "revId": "e4675ccd75d929bbb01d63fdd77086a90f591401",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba887b24_316c1e94",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-02T17:59:55Z",
+      "side": 1,
+      "message": "Can this switch to %zu instead of casting?",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "e4675ccd75d929bbb01d63fdd77086a90f591401",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
