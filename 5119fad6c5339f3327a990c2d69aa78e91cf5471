@@ -46,6 +46,30 @@
       },
       "revId": "5119fad6c5339f3327a990c2d69aa78e91cf5471",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c70966_396caf4b",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-02T19:01:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8987c644_cd5c59ef",
+      "range": {
+        "startLine": 107,
+        "startChar": 43,
+        "endLine": 107,
+        "endChar": 52
+      },
+      "revId": "5119fad6c5339f3327a990c2d69aa78e91cf5471",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
