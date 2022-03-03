@@ -39,6 +39,29 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
                        int bitmap_alpha,
                        BlendMode blend_type) override;
 #endif
+
+  static void SetSkiaAsDefaultRenderer();
+
+ private:
+  bool AttachAgg(const RetainPtr<CFX_DIBitmap>& pBitmap,
+                 bool bRgbByteOrder,
+                 const RetainPtr<CFX_DIBitmap>& pBackdropBitmap,
+                 bool bGroupKnockout);
+
+  bool CreateAgg(int width,
+                 int height,
+                 FXDIB_Format format,
+                 const RetainPtr<CFX_DIBitmap>& pBackdropBitmap);
+
+  bool AttachSkia(const RetainPtr<CFX_DIBitmap>& pBitmap,
+                  bool bRgbByteOrder,
+                  const RetainPtr<CFX_DIBitmap>& pBackdropBitmap,
+                  bool bGroupKnockout);
+
+  bool CreateSkia(int width,
+                  int height,
+                  FXDIB_Format format,
+                  const RetainPtr<CFX_DIBitmap>& pBackdropBitmap);
 };
 
 #endif  // CORE_FXGE_CFX_DEFAULTRENDERDEVICE_H_
