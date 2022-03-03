@@ -1418,39 +1418,3 @@ bool CFX_AggDeviceDriver::ContinueDIBits(CFX_ImageRenderer* pHandle,
 }
 
 }  // namespace pdfium
-
-#if !defined(_SKIA_SUPPORT_)
-CFX_DefaultRenderDevice::CFX_DefaultRenderDevice() = default;
-
-CFX_DefaultRenderDevice::~CFX_DefaultRenderDevice() = default;
-
-bool CFX_DefaultRenderDevice::Attach(
-    const RetainPtr<CFX_DIBitmap>& pBitmap,
-    bool bRgbByteOrder,
-    const RetainPtr<CFX_DIBitmap>& pBackdropBitmap,
-    bool bGroupKnockout) {
-  if (!pBitmap)
-    return false;
-
-  SetBitmap(pBitmap);
-  SetDeviceDriver(std::make_unique<pdfium::CFX_AggDeviceDriver>(
-      pBitmap, bRgbByteOrder, pBackdropBitmap, bGroupKnockout));
-  return true;
-}
-
-bool CFX_DefaultRenderDevice::Create(
-    int width,
-    int height,
-    FXDIB_Format format,
-    const RetainPtr<CFX_DIBitmap>& pBackdropBitmap) {
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!pBitmap->Create(width, height, format))
-    return false;
-
-  SetBitmap(pBitmap);
-  SetDeviceDriver(std::make_unique<pdfium::CFX_AggDeviceDriver>(
-      pBitmap, false, pBackdropBitmap, false));
-  return true;
-}
-
-#endif  // !defined(_SKIA_SUPPORT_)

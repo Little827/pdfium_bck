@@ -2758,8 +2758,6 @@ void CFX_SkiaDeviceDriver::DebugVerifyBitmapIsPreMultiplied() const {
 }
 #endif
 
-CFX_DefaultRenderDevice::CFX_DefaultRenderDevice() = default;
-
 #if defined(_SKIA_SUPPORT_)
 void CFX_DefaultRenderDevice::Clear(uint32_t color) {
   CFX_SkiaDeviceDriver* skDriver =
@@ -2775,19 +2773,6 @@ SkPictureRecorder* CFX_DefaultRenderDevice::CreateRecorder(int size_x,
 }
 #endif  // defined(_SKIA_SUPPORT_)
 
-bool CFX_DefaultRenderDevice::Attach(
-    const RetainPtr<CFX_DIBitmap>& pBitmap,
-    bool bRgbByteOrder,
-    const RetainPtr<CFX_DIBitmap>& pBackdropBitmap,
-    bool bGroupKnockout) {
-  if (!pBitmap)
-    return false;
-  SetBitmap(pBitmap);
-  SetDeviceDriver(std::make_unique<CFX_SkiaDeviceDriver>(
-      pBitmap, bRgbByteOrder, pBackdropBitmap, bGroupKnockout));
-  return true;
-}
-
 #if defined(_SKIA_SUPPORT_)
 bool CFX_DefaultRenderDevice::AttachRecorder(SkPictureRecorder* recorder) {
   if (!recorder)
@@ -2796,25 +2781,6 @@ bool CFX_DefaultRenderDevice::AttachRecorder(SkPictureRecorder* recorder) {
   return true;
 }
 #endif
-
-bool CFX_DefaultRenderDevice::Create(
-    int width,
-    int height,
-    FXDIB_Format format,
-    const RetainPtr<CFX_DIBitmap>& pBackdropBitmap) {
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!pBitmap->Create(width, height, format)) {
-    return false;
-  }
-  SetBitmap(pBitmap);
-  SetDeviceDriver(std::make_unique<CFX_SkiaDeviceDriver>(
-      pBitmap, false, pBackdropBitmap, false));
-  return true;
-}
-
-CFX_DefaultRenderDevice::~CFX_DefaultRenderDevice() {
-  Flush(true);
-}
 
 #if defined(_SKIA_SUPPORT_)
 void CFX_DefaultRenderDevice::DebugVerifyBitmapIsPreMultiplied() const {
