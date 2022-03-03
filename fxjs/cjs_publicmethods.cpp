@@ -1326,7 +1326,7 @@ CJS_Result CJS_PublicMethods::AFSimple_Calculate(
           break;
         case FormFieldType::kCheckBox:
         case FormFieldType::kRadioButton:
-          for (int c = 0; c < pFormField->CountControls(); ++c) {
+          for (size_t c = 0; c < pFormField->CountControls(); ++c) {
             CPDF_FormControl* pFormCtrl = pFormField->GetControl(c);
             if (!pFormField || !pFormCtrl->IsChecked())
               continue;

@@ -88,8 +88,8 @@ class CPDF_FormField {
   CPDF_Dictionary* GetFieldDict() const { return m_pDict.Get(); }
   bool ResetField();
 
-  int CountControls() const;
-  CPDF_FormControl* GetControl(int index) const;
+  size_t CountControls() const;
+  CPDF_FormControl* GetControl(size_t index) const;
   int GetControlIndex(const CPDF_FormControl* pControl) const;
 
   FormFieldType GetFieldType() const;
@@ -125,7 +125,7 @@ class CPDF_FormField {
   WideString GetOptionValue(int index) const;
   int FindOption(const WideString& csOptValue) const;
 
-  bool CheckControl(int iControlIndex,
+  bool CheckControl(size_t iControlIndex,
                     bool bChecked,
                     NotificationOption notify);
 

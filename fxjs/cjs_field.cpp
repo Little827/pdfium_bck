@@ -289,10 +289,11 @@ void SetBorderStyle(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       if (bSet)
         UpdateFormField(pFormFillEnv, pFormField, true, true, true);
     } else {
-      if (nControlIndex >= pFormField->CountControls())
+      size_t nPositiveIndex = static_cast<size_t>(nControlIndex);
+      if (nPositiveIndex >= pFormField->CountControls())
         return;
       if (CPDF_FormControl* pFormControl =
-              pFormField->GetControl(nControlIndex)) {
+              pFormField->GetControl(nPositiveIndex)) {
         CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
         if (pWidget) {
           if (pWidget->GetBorderStyle() != nBorderStyle) {
@@ -354,10 +355,11 @@ void SetDisplay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       if (bAnySet)
         UpdateFormField(pFormFillEnv, pFormField, true, false, true);
     } else {
-      if (nControlIndex >= pFormField->CountControls())
+      size_t nPositiveIndex = static_cast<size_t>(nControlIndex);
+      if (nPositiveIndex >= pFormField->CountControls())
         return;
 
-      CPDF_FormControl* pFormControl = pFormField->GetControl(nControlIndex);
+      CPDF_FormControl* pFormControl = pFormField->GetControl(nPositiveIndex);
       if (!pFormControl)
         return;
 
@@ -400,10 +402,11 @@ void SetLineWidth(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       if (bSet)
         UpdateFormField(pFormFillEnv, pFormField, true, true, true);
     } else {
-      if (nControlIndex >= pFormField->CountControls())
+      size_t nPositiveIndex = static_cast<size_t>(nControlIndex);
+      if (nPositiveIndex >= pFormField->CountControls())
         return;
       if (CPDF_FormControl* pFormControl =
-              pFormField->GetControl(nControlIndex)) {
+              pFormField->GetControl(nPositiveIndex)) {
         if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
           if (number != pWidget->GetBorderWidth()) {
             pWidget->SetBorderWidth(number);
@@ -452,10 +455,11 @@ void SetRect(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       continue;
     }
 
-    if (nControlIndex >= pFormField->CountControls())
+    size_t nPositiveIndex = static_cast<size_t>(nControlIndex);
+    if (nPositiveIndex >= pFormField->CountControls())
       return;
     if (CPDF_FormControl* pFormControl =
-            pFormField->GetControl(nControlIndex)) {
+            pFormField->GetControl(nPositiveIndex)) {
       if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
         CFX_FloatRect crRect = rect;
         CPDF_Page* pPDFPage = pWidget->GetPDFPage();
@@ -682,12 +686,12 @@ CPDF_FormField* CJS_Field::GetFirstFormField() const {
 }
 
 CPDF_FormControl* CJS_Field::GetSmartFieldControl(CPDF_FormField* pFormField) {
-  if (!pFormField->CountControls() ||
-      m_nFormControlIndex >= pFormField->CountControls())
+  const size_t nPositiveIndex =
+      m_nFormControlIndex > 0 ? static_cast<size_t>(m_nFormControlIndex) : 0;
+  if (nPositiveIndex >= pFormField->CountControls())
     return nullptr;
-  if (m_nFormControlIndex < 0)
-    return pFormField->GetControl(0);
-  return pFormField->GetControl(m_nFormControlIndex);
+
+  return pFormField->GetControl(nPositiveIndex);
 }
 
 CJS_Result CJS_Field::get_alignment(CJS_Runtime* pRuntime) {
@@ -1250,11 +1254,11 @@ CJS_Result CJS_Field::get_export_values(CJS_Runtime* pRuntime) {
           pRuntime->NewString(pFormControl->GetExportValue().AsStringView()));
     }
   } else {
-    if (m_nFormControlIndex >= pFormField->CountControls())
+    size_t nPositiveIndex = static_cast<size_t>(m_nFormControlIndex);
+    if (nPositiveIndex >= pFormField->CountControls())
       return CJS_Result::Failure(JSMessage::kValueError);
 
-    CPDF_FormControl* pFormControl =
-        pFormField->GetControl(m_nFormControlIndex);
+    CPDF_FormControl* pFormControl = pFormField->GetControl(nPositiveIndex);
     if (!pFormControl)
       return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -1613,11 +1617,12 @@ CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
       continue;
     }
 
-    if (m_nFormControlIndex >= pFormField->CountControls())
+    size_t nPositiveIndex = static_cast<size_t>(m_nFormControlIndex);
+    if (nPositiveIndex >= pFormField->CountControls())
       return CJS_Result::Failure(JSMessage::kValueError);
 
     if (CPDF_FormControl* pFormControl =
-            pFormField->GetControl(m_nFormControlIndex)) {
+            pFormField->GetControl(nPositiveIndex)) {
       if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
         uint32_t dwFlags = pWidget->GetFlags();
         if (pRuntime->ToBoolean(vp))
@@ -1628,8 +1633,8 @@ CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
         if (dwFlags != pWidget->GetFlags()) {
           pWidget->SetFlags(dwFlags);
           UpdateFormControl(m_pFormFillEnv.Get(),
-                            pFormField->GetControl(m_nFormControlIndex), true,
-                            false, true);
+                            pFormField->GetControl(nPositiveIndex), true, false,
+                            true);
         }
       }
     }
@@ -2311,12 +2316,16 @@ CJS_Result CJS_Field::checkThisBox(
   if (!IsCheckBoxOrRadioButton(pFormField))
     return CJS_Result::Failure(JSMessage::kObjectTypeError);
 
-  if (nWidget < 0 || nWidget >= pFormField->CountControls())
+  if (nWidget < 0)
+    return CJS_Result::Failure(JSMessage::kValueError);
+
+  size_t nPositiveIdx = static_cast<size_t>(nWidget);
+  if (nPositiveIdx >= pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kValueError);
 
   // TODO(weili): Check whether anything special needed for radio button.
   // (When pFormField->GetFieldType() == FormFieldType::kRadioButton.)
-  pFormField->CheckControl(nWidget, bCheckit, NotificationOption::kNotify);
+  pFormField->CheckControl(nPositiveIdx, bCheckit, NotificationOption::kNotify);
   UpdateFormField(m_pFormFillEnv.Get(), pFormField, true, true, true);
   return CJS_Result::Success();
 }
@@ -2341,7 +2350,11 @@ CJS_Result CJS_Field::defaultIsChecked(
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   int nWidget = pRuntime->ToInt32(params[0]);
-  if (nWidget < 0 || nWidget >= pFormField->CountControls())
+  if (nWidget < 0)
+    return CJS_Result::Failure(JSMessage::kValueError);
+
+  size_t nPositiveIdx = static_cast<size_t>(nWidget);
+  if (nPositiveIdx >= pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kValueError);
 
   return CJS_Result::Success(
@@ -2437,39 +2450,41 @@ CJS_Result CJS_Field::insertItemAt(
 CJS_Result CJS_Field::isBoxChecked(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  int nIndex = -1;
-  if (params.size() >= 1)
-    nIndex = pRuntime->ToInt32(params[0]);
-
   CPDF_FormField* pFormField = GetFirstFormField();
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  if (nIndex < 0 || nIndex >= pFormField->CountControls())
+  int nIndex = params.size() >= 1 ? pRuntime->ToInt32(params[0]) : -1;
+  if (nIndex < 0)
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  return CJS_Result::Success(
-      pRuntime->NewBoolean((IsCheckBoxOrRadioButton(pFormField) &&
-                            pFormField->GetControl(nIndex)->IsChecked() != 0)));
+  size_t nPositiveIdx = static_cast<size_t>(nIndex);
+  if (nPositiveIdx >= pFormField->CountControls())
+    return CJS_Result::Failure(JSMessage::kValueError);
+
+  return CJS_Result::Success(pRuntime->NewBoolean(
+      (IsCheckBoxOrRadioButton(pFormField) &&
+       pFormField->GetControl(nPositiveIdx)->IsChecked() != 0)));
 }
 
 CJS_Result CJS_Field::isDefaultChecked(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  int nIndex = -1;
-  if (params.size() >= 1)
-    nIndex = pRuntime->ToInt32(params[0]);
-
+  int nIndex = params.size() >= 1 ? pRuntime->ToInt32(params[0]) : -1;
   CPDF_FormField* pFormField = GetFirstFormField();
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  if (nIndex < 0 || nIndex >= pFormField->CountControls())
+  if (nIndex < 0)
+    return CJS_Result::Failure(JSMessage::kValueError);
+
+  size_t nPositiveIdx = static_cast<size_t>(nIndex);
+  if (nPositiveIdx >= pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kValueError);
 
   return CJS_Result::Success(pRuntime->NewBoolean(
       (IsCheckBoxOrRadioButton(pFormField) &&
-       pFormField->GetControl(nIndex)->IsDefaultChecked() != 0)));
+       pFormField->GetControl(nPositiveIdx)->IsDefaultChecked() != 0)));
 }
 
 CJS_Result CJS_Field::setAction(

@@ -149,10 +149,10 @@ bool CPDF_FormField::ResetField() {
   switch (m_Type) {
     case kCheckBox:
     case kRadioButton: {
-      int iCount = CountControls();
+      size_t iCount = CountControls();
       // TODO(weili): Check whether anything special needs to be done for
       // |m_bIsUnison|.
-      for (int i = 0; i < iCount; i++) {
+      for (size_t i = 0; i < iCount; i++) {
         CheckControl(i, GetControl(i)->IsDefaultChecked(),
                      NotificationOption::kDoNotNotify);
       }
@@ -218,11 +218,11 @@ bool CPDF_FormField::ResetField() {
   return true;
 }
 
-int CPDF_FormField::CountControls() const {
-  return fxcrt::CollectionSize<int>(GetControls());
+size_t CPDF_FormField::CountControls() const {
+  return GetControls().size();
 }
 
-CPDF_FormControl* CPDF_FormField::GetControl(int index) const {
+CPDF_FormControl* CPDF_FormField::GetControl(size_t index) const {
   return GetControls()[index].Get();
 }
 
@@ -592,7 +592,7 @@ int CPDF_FormField::FindOption(const WideString& csOptValue) const {
   return -1;
 }
 
-bool CPDF_FormField::CheckControl(int iControlIndex,
+bool CPDF_FormField::CheckControl(size_t iControlIndex,
                                   bool bChecked,
                                   NotificationOption notify) {
   DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
@@ -603,8 +603,8 @@ bool CPDF_FormField::CheckControl(int iControlIndex,
     return false;
 
   const WideString csWExport = pControl->GetExportValue();
-  int iCount = CountControls();
-  for (int i = 0; i < iCount; i++) {
+  const size_t iCount = CountControls();
+  for (size_t i = 0; i < iCount; i++) {
     CPDF_FormControl* pCtrl = GetControl(i);
     if (m_bIsUnison) {
       WideString csEValue = pCtrl->GetExportValue();
@@ -648,26 +648,21 @@ bool CPDF_FormField::CheckControl(int iControlIndex,
 
 WideString CPDF_FormField::GetCheckValue(bool bDefault) const {
   DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
-  WideString csExport = L"Off";
-  int iCount = CountControls();
-  for (int i = 0; i < iCount; i++) {
+  const size_t iCount = CountControls();
+  for (size_t i = 0; i < iCount; i++) {
     CPDF_FormControl* pControl = GetControl(i);
-    bool bChecked =
-        bDefault ? pControl->IsDefaultChecked() : pControl->IsChecked();
-    if (bChecked) {
-      csExport = pControl->GetExportValue();
-      break;
-    }
+    if (bDefault ? pControl->IsDefaultChecked() : pControl->IsChecked())
+      return pControl->GetExportValue();
   }
-  return csExport;
+  return L"Off";
 }
 
 bool CPDF_FormField::SetCheckValue(const WideString& value,
                                    bool bDefault,
                                    NotificationOption notify) {
   DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
-  int iCount = CountControls();
-  for (int i = 0; i < iCount; i++) {
+  const size_t iCount = CountControls();
+  for (size_t i = 0; i < iCount; i++) {
     CPDF_FormControl* pControl = GetControl(i);
     WideString csExport = pControl->GetExportValue();
     bool val = csExport == value;
