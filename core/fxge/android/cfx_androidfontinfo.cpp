@@ -55,7 +55,7 @@ void* CFX_AndroidFontInfo::GetFont(const ByteString& face) {
   return nullptr;
 }
 
-uint32_t CFX_AndroidFontInfo::GetFontData(void* hFont,
+size_t CFX_AndroidFontInfo::GetFontData(void* hFont,
                                           uint32_t table,
                                           pdfium::span<uint8_t> buffer) {
   if (!hFont)
