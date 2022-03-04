@@ -65,15 +65,10 @@ uint32_t FPF_SkiaGetSubstFont(uint32_t dwHash,
   return 0;
 }
 
-uint32_t FPF_GetHashCode_StringA(const char* pStr, int32_t iLength) {
-  if (!pStr)
-    return 0;
-  if (iLength < 0)
-    iLength = strlen(pStr);
-  const char* pStrEnd = pStr + iLength;
+uint32_t FPF_GetHashCode_StringA(ByteStringView bsStr) {
   uint32_t uHashCode = 0;
-  while (pStr < pStrEnd)
-    uHashCode = 31 * uHashCode + tolower(*pStr++);
+  for (char ch : bsStr)
+    uHashCode = 31 * uHashCode + tolower(ch);
   return uHashCode;
 }
 
@@ -137,9 +132,9 @@ uint32_t FPF_SkiaGetCharset(FX_Charset uCharset) {
 
 uint32_t FPF_SKIANormalizeFontName(ByteStringView bsfamily) {
   uint32_t dwHash = 0;
-  int32_t iLength = bsfamily.GetLength();
+  size_t iLength = bsfamily.GetLength();
   const char* pBuffer = bsfamily.unterminated_c_str();
-  for (int32_t i = 0; i < iLength; i++) {
+  for (size_t i = 0; i < iLength; i++) {
     char ch = pBuffer[i];
     if (ch == ' ' || ch == '-' || ch == ',')
       continue;
@@ -159,7 +154,7 @@ uint32_t FPF_SKIAGetFamilyHash(ByteStringView bsFamily,
   if (FontStyleIsSerif(dwStyle))
     bsFont += "Serif";
   bsFont += static_cast<uint8_t>(uCharset);
-  return FPF_GetHashCode_StringA(bsFont.c_str(), bsFont.GetLength());
+  return FPF_GetHashCode_StringA(bsFont.AsStringView());
 }
 
 bool FPF_SkiaIsCJK(FX_Charset uCharset) {
