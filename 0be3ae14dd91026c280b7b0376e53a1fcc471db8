@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d7c61cf_db515f53",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-04T21:54:59Z",
+      "side": 1,
+      "message": "It\u0027s nicer for APIs to be able to distinguish an empty result from an error result.",
+      "parentUuid": "0b1de8d9_d3d6d0fa",
+      "range": {
+        "startLine": 137,
+        "startChar": 19,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "0be3ae14dd91026c280b7b0376e53a1fcc471db8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9813699_f3c6921e",
         "filename": "samples/pdfium_test_dump_helper.cc",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-04T21:44:49Z",
       "side": 1,
       "message": "nit: redunant, given check in loop.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "0be3ae14dd91026c280b7b0376e53a1fcc471db8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e948e2f_ec8f06b8",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-04T21:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9813699_f3c6921e",
       "range": {
         "startLine": 138,
         "startChar": 1,
