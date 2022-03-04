@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a94c18b_ae8a7d41",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-04T18:49:19Z",
+      "side": 1,
+      "message": "This looks a lot like FX_HashCode_GetLoweredA() now.",
+      "revId": "6bcb7626f77b4159123587b86f881a836fe60ae6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
