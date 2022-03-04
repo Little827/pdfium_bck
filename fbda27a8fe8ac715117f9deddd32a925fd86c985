@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e78c993_b963a904",
+        "filename": "core/fxge/android/cfpf_skiafont.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-04T18:35:18Z",
+      "side": 1,
+      "message": "Apparently not. These eventually retrieve fields with smaller units than FT_LONG, eg.\n\nFT_UShort         units_per_EM;",
+      "parentUuid": "42ed6400_683c00f4",
+      "revId": "fbda27a8fe8ac715117f9deddd32a925fd86c985",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd17c7e3_e103f71e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-04T18:27:47Z",
       "side": 1,
       "message": "Maybe just pass in a ByteStringView? (In a follow-up?)",
+      "revId": "fbda27a8fe8ac715117f9deddd32a925fd86c985",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3750d047_a08a22eb",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-04T18:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd17c7e3_e103f71e",
       "revId": "fbda27a8fe8ac715117f9deddd32a925fd86c985",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
