@@ -123,23 +123,6 @@ uint32_t FPF_SkiaGetCharset(FX_Charset uCharset) {
   return FPF_SKIACHARSET_Default;
 }
 
-uint32_t FPF_GetHashCode_StringA(ByteStringView bsStr) {
-  uint32_t uHashCode = 0;
-  for (char ch : bsStr)
-    uHashCode = 31 * uHashCode + tolower(ch);
-  return uHashCode;
-}
-
-uint32_t FPF_SKIANormalizeFontName(ByteStringView bsFamily) {
-  uint32_t uHashCode = 0;
-  for (char ch : bsFamily) {
-    if (ch == ' ' || ch == '-' || ch == ',')
-      continue;
-    uHashCode = 31 * uHashCode + tolower(ch);
-  }
-  return uHashCode;
-}
-
 uint32_t FPF_SKIAGetFamilyHash(ByteStringView bsFamily,
                                uint32_t dwStyle,
                                FX_Charset uCharset) {
@@ -151,7 +134,7 @@ uint32_t FPF_SKIAGetFamilyHash(ByteStringView bsFamily,
   if (FontStyleIsSerif(dwStyle))
     bsFont += "Serif";
   bsFont += static_cast<uint8_t>(uCharset);
-  return FPF_GetHashCode_StringA(bsFont.AsStringView());
+  return FX_HashCode_GetA(bsFont.AsStringView());
 }
 
 bool FPF_SkiaIsCJK(FX_Charset uCharset) {
@@ -254,7 +237,7 @@ CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(ByteStringView bsFamilyname,
   if (family_iter != m_FamilyFonts.end())
     return family_iter->second.get();
 
-  uint32_t dwFaceName = FPF_SKIANormalizeFontName(bsFamilyname);
+  uint32_t dwFaceName = FX_HashCode_GetLoweredA(bsFamilyname);
   uint32_t dwSubst = FPF_SkiaGetSubstFont(dwFaceName, kSkiaFontmap,
                                           pdfium::size(kSkiaFontmap));
   uint32_t dwSubstSans = FPF_SkiaGetSubstFont(dwFaceName, kSkiaSansFontMap,
@@ -276,7 +259,7 @@ CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(ByteStringView bsFamilyname,
     if (!(font->charsets() & FPF_SkiaGetCharset(uCharset)))
       continue;
     int32_t nFind = 0;
-    uint32_t dwSysFontName = FPF_SKIANormalizeFontName(font->family());
+    uint32_t dwSysFontName = FX_HashCode_GetLoweredA(font->family());
     if (dwFaceName == dwSysFontName)
       nFind += FPF_SKIAMATCHWEIGHT_NAME1;
     bool bMatchedName = (nFind == FPF_SKIAMATCHWEIGHT_NAME1);
