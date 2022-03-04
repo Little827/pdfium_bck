@@ -16,6 +16,23 @@
       "message": "Needed something to test 64-bit Android.",
       "revId": "11c0d05567e7d1837fd3fa3157bf198ebae0b0d0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a82a614_ab7dce90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-04T02:52:30Z",
+      "side": 1,
+      "message": "Zzzzzzzzzzzzzzzzzzzzzzz  .. boring. Thanks!",
+      "revId": "11c0d05567e7d1837fd3fa3157bf198ebae0b0d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
