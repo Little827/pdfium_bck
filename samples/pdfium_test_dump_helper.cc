@@ -134,9 +134,12 @@ void DumpChildStructure(FPDF_STRUCTELEMENT child, int indent) {
            ConvertToWString(buf, len).c_str());
   }
 
-  int mcid = FPDF_StructElement_GetMarkedContentID(child);
-  if (mcid != -1)
-    printf("%*s MCID: %d\n", indent * 2, "", mcid);
+  int mcid_count = FPDF_StructElement_GetMarkedContentIdCount(child);
+  for (int i = 0; i < mcid_count; ++i) {
+    int mcid = FPDF_StructElement_GetMarkedContentIdAtIndex(child, i);
+    if (mcid != -1)
+      printf("%*s MCID: %d\n", indent * 2, "", mcid);
+  }
 
   FPDF_STRUCTELEMENT parent = FPDF_StructElement_GetParent(child);
   if (parent) {

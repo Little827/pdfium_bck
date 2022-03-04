@@ -160,6 +160,10 @@ FPDF_StructElement_GetStringAttribute(FPDF_STRUCTELEMENT struct_element,
                                       void* buffer,
                                       unsigned long buflen);
 
+// DEPRECATED as of March 2022. This API will be removed in the future. Please
+// use FPDF_StructElement_GetMarkedContentIdCount() and
+// FPDF_StructElement_GetMarkedContentIdAtIndex() instead.
+//
 // Function: FPDF_StructElement_GetMarkedContentID
 //          Get the marked content ID for a given element.
 // Parameters:

@@ -27,7 +27,8 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
     EXPECT_FALSE(element);
     element = FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
     ASSERT_TRUE(element);
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(element));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(element));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(element, 0));
     EXPECT_EQ(0U, FPDF_StructElement_GetAltText(element, nullptr, 0));
 
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(element));
@@ -38,7 +39,9 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
     EXPECT_FALSE(child_element);
     child_element = FPDF_StructElement_GetChildAtIndex(element, 0);
     ASSERT_TRUE(child_element);
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(child_element));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(child_element));
+    EXPECT_EQ(-1,
+              FPDF_StructElement_GetMarkedContentIdAtIndex(child_element, 0));
     EXPECT_EQ(0U, FPDF_StructElement_GetAltText(child_element, nullptr, 0));
 
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(child_element));
@@ -49,7 +52,9 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
     EXPECT_FALSE(gchild_element);
     gchild_element = FPDF_StructElement_GetChildAtIndex(child_element, 0);
     ASSERT_TRUE(gchild_element);
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(gchild_element));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(gchild_element));
+    EXPECT_EQ(0,
+              FPDF_StructElement_GetMarkedContentIdAtIndex(gchild_element, 0));
     ASSERT_EQ(24U, FPDF_StructElement_GetAltText(gchild_element, nullptr, 0));
 
     unsigned short buffer[12];
@@ -60,7 +65,6 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
     for (size_t i = 0; i < pdfium::size(buffer); ++i)
       EXPECT_EQ(0U, buffer[i]);
 
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(gchild_element));
     ASSERT_EQ(24U, FPDF_StructElement_GetAltText(gchild_element, buffer,
                                                  sizeof(buffer)));
     EXPECT_EQ(L"Black Image", GetPlatformWString(buffer));
@@ -328,7 +332,8 @@ TEST_F(FPDFStructTreeEmbedderTest, GetMarkedContentID) {
 
     FPDF_STRUCTELEMENT element =
         FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
-    EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentID(element));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(element));
+    EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentIdAtIndex(element, 0));
   }
 
   UnloadPage(page);
@@ -726,7 +731,9 @@ TEST_F(FPDFStructTreeEmbedderTest, MarkedContentReferenceAndObjectReference) {
     unsigned short buffer[12];
     ASSERT_EQ(18U, FPDF_StructElement_GetType(object8, buffer, sizeof(buffer)));
     EXPECT_EQ(L"Document", GetPlatformWString(buffer));
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(object8));
+    EXPECT_EQ(2, FPDF_StructElement_GetMarkedContentIdCount(object8));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(object8, 0));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(object8, 1));
     ASSERT_EQ(2, FPDF_StructElement_CountChildren(object8));
 
     // First branch. 10 -> 12 -> 13 -> Inline dict.
@@ -736,7 +743,8 @@ TEST_F(FPDFStructTreeEmbedderTest, MarkedContentReferenceAndObjectReference) {
     ASSERT_EQ(20U,
               FPDF_StructElement_GetType(object10, buffer, sizeof(buffer)));
     EXPECT_EQ(L"NonStruct", GetPlatformWString(buffer));
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(object10));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(object10));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(object10, 0));
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(object10));
 
     FPDF_STRUCTELEMENT object12 =
@@ -744,7 +752,8 @@ TEST_F(FPDFStructTreeEmbedderTest, MarkedContentReferenceAndObjectReference) {
     ASSERT_TRUE(object12);
     ASSERT_EQ(4U, FPDF_StructElement_GetType(object12, buffer, sizeof(buffer)));
     EXPECT_EQ(L"P", GetPlatformWString(buffer));
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(object12));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(object12));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(object12, 0));
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(object12));
 
     FPDF_STRUCTELEMENT object13 =
@@ -753,7 +762,8 @@ TEST_F(FPDFStructTreeEmbedderTest, MarkedContentReferenceAndObjectReference) {
     ASSERT_EQ(20U,
               FPDF_StructElement_GetType(object13, buffer, sizeof(buffer)));
     EXPECT_EQ(L"NonStruct", GetPlatformWString(buffer));
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(object13));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(object13));
+    EXPECT_EQ(0, FPDF_StructElement_GetMarkedContentIdAtIndex(object13, 0));
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(object13));
 
     // TODO(crbug.com/pdfium/672): Fetch this child element.
@@ -766,7 +776,8 @@ TEST_F(FPDFStructTreeEmbedderTest, MarkedContentReferenceAndObjectReference) {
     ASSERT_TRUE(object11);
     ASSERT_EQ(4U, FPDF_StructElement_GetType(object11, buffer, sizeof(buffer)));
     EXPECT_EQ(L"P", GetPlatformWString(buffer));
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(object11));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(object11));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(object11, 0));
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(object11));
 
     FPDF_STRUCTELEMENT object14 =
@@ -775,7 +786,9 @@ TEST_F(FPDFStructTreeEmbedderTest, MarkedContentReferenceAndObjectReference) {
     ASSERT_EQ(20U,
               FPDF_StructElement_GetType(object14, buffer, sizeof(buffer)));
     EXPECT_EQ(L"NonStruct", GetPlatformWString(buffer));
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(object14));
+    EXPECT_EQ(2, FPDF_StructElement_GetMarkedContentIdCount(object14));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(object14, 0));
+    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentIdAtIndex(object14, 1));
     ASSERT_EQ(2, FPDF_StructElement_CountChildren(object14));
 
     // TODO(crbug.com/pdfium/672): Object 15 should be at index 1.
@@ -786,7 +799,8 @@ TEST_F(FPDFStructTreeEmbedderTest, MarkedContentReferenceAndObjectReference) {
     ASSERT_EQ(20U,
               FPDF_StructElement_GetType(object15, buffer, sizeof(buffer)));
     EXPECT_EQ(L"NonStruct", GetPlatformWString(buffer));
-    EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(object15));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdCount(object15));
+    EXPECT_EQ(1, FPDF_StructElement_GetMarkedContentIdAtIndex(object15, 0));
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(object15));
 
     // TODO(crbug.com/pdfium/672): Fetch this child element.
