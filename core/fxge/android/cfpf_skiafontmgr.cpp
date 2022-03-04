@@ -65,11 +65,9 @@ uint32_t FPF_SkiaGetSubstFont(uint32_t dwHash,
   return 0;
 }
 
-uint32_t FPF_GetHashCode_StringA(const char* pStr, int32_t iLength) {
+uint32_t FPF_GetHashCode_StringA(const char* pStr, size_t iLength) {
   if (!pStr)
     return 0;
-  if (iLength < 0)
-    iLength = strlen(pStr);
   const char* pStrEnd = pStr + iLength;
   uint32_t uHashCode = 0;
   while (pStr < pStrEnd)
@@ -137,9 +135,9 @@ uint32_t FPF_SkiaGetCharset(FX_Charset uCharset) {
 
 uint32_t FPF_SKIANormalizeFontName(ByteStringView bsfamily) {
   uint32_t dwHash = 0;
-  int32_t iLength = bsfamily.GetLength();
+  size_t iLength = bsfamily.GetLength();
   const char* pBuffer = bsfamily.unterminated_c_str();
-  for (int32_t i = 0; i < iLength; i++) {
+  for (size_t i = 0; i < iLength; i++) {
     char ch = pBuffer[i];
     if (ch == ' ' || ch == '-' || ch == ',')
       continue;
