@@ -179,7 +179,11 @@ bool PathService::GetThirdPartyFilePath(const std::string& file_name,
 
   std::string potential_path = *path;
   potential_path.append("third_party");
-  if (PathService::DirectoryExists(potential_path)) {
+
+  // Use third_party/bigint as a way to distinguish PDFium's copy vs. other
+  // project's.
+  std::string bigint = potential_path + PATH_SEPARATOR + "bigint";
+  if (PathService::DirectoryExists(bigint)) {
     *path = potential_path;
     path->append(PATH_SEPARATOR + file_name);
     return true;
@@ -191,6 +195,7 @@ bool PathService::GetThirdPartyFilePath(const std::string& file_name,
   potential_path.append("pdfium");
   potential_path.push_back(PATH_SEPARATOR);
   potential_path.append("third_party");
+  bigint = potential_path + PATH_SEPARATOR + "bigint";
   if (PathService::DirectoryExists(potential_path)) {
     *path = potential_path;
     path->append(PATH_SEPARATOR + file_name);
