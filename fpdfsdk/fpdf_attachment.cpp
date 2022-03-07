@@ -57,7 +57,7 @@ FPDFDoc_GetAttachmentCount(FPDF_DOCUMENT document) {
     return 0;
 
   auto name_tree = CPDF_NameTree::Create(pDoc, "EmbeddedFiles");
-  return name_tree ? name_tree->GetCount() : 0;
+  return name_tree ? pdfium::base::checked_cast<int>(name_tree->GetCount()) : 0;
 }
 
 FPDF_EXPORT FPDF_ATTACHMENT FPDF_CALLCONV
