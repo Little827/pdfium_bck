@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce9ff23_69a41337",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-07T22:58:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f20d97d5_9b573039",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 25
+      },
+      "revId": "09daadc763b65dbb52f6871f459de7adbdd0e673",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab088dd3_ecf33d13",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-07T22:28:53Z",
       "side": 1,
       "message": "note: public API",
+      "range": {
+        "startLine": 343,
+        "startChar": 15,
+        "endLine": 343,
+        "endChar": 29
+      },
+      "revId": "09daadc763b65dbb52f6871f459de7adbdd0e673",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c64eb30_498f2e77",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-07T22:58:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab088dd3_ecf33d13",
       "range": {
         "startLine": 343,
         "startChar": 15,
