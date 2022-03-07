@@ -118,6 +118,30 @@
       },
       "revId": "5236aca39f1c30319f99289742ca20b59dd77c12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afa3d055_9a14ceba",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-07T19:54:55Z",
+      "side": 1,
+      "message": "Anyways, despite being ugly when checking for membership, UnownedPtr should work since these are indirect objects, owned by the indirect object holder, which is document superclass, so the unowned should be cleaned up first.",
+      "parentUuid": "e60f8750_ea2f6786",
+      "range": {
+        "startLine": 200,
+        "startChar": 17,
+        "endLine": 200,
+        "endChar": 28
+      },
+      "revId": "5236aca39f1c30319f99289742ca20b59dd77c12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
