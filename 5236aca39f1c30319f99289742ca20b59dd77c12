@@ -70,6 +70,30 @@
       },
       "revId": "5236aca39f1c30319f99289742ca20b59dd77c12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98a2a72_1b93001e",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-07T19:18:31Z",
+      "side": 1,
+      "message": "Problem is if the object gets deleted, then reallocated over itself, etc.",
+      "parentUuid": "240110ff_f5cc043e",
+      "range": {
+        "startLine": 200,
+        "startChar": 17,
+        "endLine": 200,
+        "endChar": 28
+      },
+      "revId": "5236aca39f1c30319f99289742ca20b59dd77c12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
