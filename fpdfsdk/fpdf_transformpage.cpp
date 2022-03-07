@@ -321,7 +321,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFClipPath_CountPaths(FPDF_CLIPPATH clip_path) {
   if (!pClipPath || !pClipPath->HasRef())
     return -1;
 
-  return pClipPath->GetPathCount();
+  return pdfium::base::checked_cast<int>(pClipPath->GetPathCount());
 }
 
 FPDF_EXPORT int FPDF_CALLCONV
