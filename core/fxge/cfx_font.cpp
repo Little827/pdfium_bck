@@ -411,10 +411,14 @@ void CFX_Font::LoadSubst(const ByteString& face_name,
 }
 
 int CFX_Font::GetGlyphWidth(uint32_t glyph_index) {
+  return GetGlyphWidth(glyph_index, 0, 0);
+}
+
+int CFX_Font::GetGlyphWidth(uint32_t glyph_index, int dest_width, int weight) {
   if (!m_Face)
     return 0;
   if (m_pSubstFont && m_pSubstFont->m_bFlagMM)
-    AdjustMMParams(glyph_index, 0, 0);
+    AdjustMMParams(glyph_index, dest_width, weight);
   int err =
       FT_Load_Glyph(m_Face->GetRec(), glyph_index,
                     FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
