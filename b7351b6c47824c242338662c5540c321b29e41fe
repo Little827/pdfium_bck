@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbac2ac9_c6556e7d",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-07T23:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaecede5_dd0db340",
+      "revId": "b7351b6c47824c242338662c5540c321b29e41fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7b2cec9_ac743aa4",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97965fb1_5cc6c900",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-07T23:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7b2cec9_ac743aa4",
+      "revId": "b7351b6c47824c242338662c5540c321b29e41fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f69dce8_608c9b58",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-07T22:58:39Z",
       "side": 1,
       "message": "IWYU",
+      "revId": "b7351b6c47824c242338662c5540c321b29e41fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e959c5_83ad75b2",
+        "filename": "fpdfsdk/fpdf_transformpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-07T23:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f69dce8_608c9b58",
       "revId": "b7351b6c47824c242338662c5540c321b29e41fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
