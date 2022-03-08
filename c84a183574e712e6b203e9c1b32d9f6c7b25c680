@@ -72,6 +72,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de23a8b_2de29f5e",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-08T05:22:47Z",
+      "side": 1,
+      "message": "I thought FT_Load_Glyph() would modify the FT_Face but it doesn\u0027t. \nMarked GetGlyphWidth() and `pFont` const in the new patchset.",
+      "parentUuid": "6a8ce194_74d3061f",
+      "range": {
+        "startLine": 304,
+        "startChar": 26,
+        "endLine": 304,
+        "endChar": 42
+      },
+      "revId": "c84a183574e712e6b203e9c1b32d9f6c7b25c680",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6e56c16_7ada5671",
