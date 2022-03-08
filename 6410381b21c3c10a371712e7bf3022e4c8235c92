@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b9ac51b_b0312a51",
+        "filename": "third_party/freetype/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T00:52:54Z",
+      "side": 0,
+      "message": "Filed crbug.com/pdfium/1783 to automatically update this.",
+      "range": {
+        "startLine": 4,
+        "startChar": 25,
+        "endLine": 4,
+        "endChar": 31
+      },
+      "revId": "6410381b21c3c10a371712e7bf3022e4c8235c92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
