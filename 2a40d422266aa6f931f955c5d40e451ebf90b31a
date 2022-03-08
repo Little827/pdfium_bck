@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0328e1_f16782ee",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-08T18:59:24Z",
+      "side": 1,
+      "message": "Ah, indeed, we\u0027re returning i (int) not j. done.",
+      "parentUuid": "ff41865b_a7540c1f",
+      "revId": "2a40d422266aa6f931f955c5d40e451ebf90b31a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cfdc270_071a5b89",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-08T18:45:19Z",
       "side": 1,
       "message": "IWYU",
+      "revId": "2a40d422266aa6f931f955c5d40e451ebf90b31a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f5857c_c5bc1a99",
+        "filename": "fpdfsdk/fpdf_dataavail.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-08T18:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cfdc270_071a5b89",
       "revId": "2a40d422266aa6f931f955c5d40e451ebf90b31a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87238f40_b1cab1f8",
+        "filename": "fpdfsdk/fpdf_dataavail.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-08T18:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98be1b81_b435bd46",
+      "revId": "2a40d422266aa6f931f955c5d40e451ebf90b31a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a1d235a_3c615e0d",
@@ -69,6 +123,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3774ee0a_b695f689",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-08T18:59:24Z",
+      "side": 1,
+      "message": "I thought there were some paths that might return false earlier on rather than crashing, even if it is too big.",
+      "parentUuid": "4a1d235a_3c615e0d",
+      "revId": "2a40d422266aa6f931f955c5d40e451ebf90b31a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb747f67_fb20417f",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-03-08T18:45:19Z",
       "side": 1,
       "message": "checked_cast into an unsigned long variable, and use that everywhere?",
+      "revId": "2a40d422266aa6f931f955c5d40e451ebf90b31a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39ada45_eda519c9",
+        "filename": "fpdfsdk/fpdf_sysfontinfo.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-08T18:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb747f67_fb20417f",
       "revId": "2a40d422266aa6f931f955c5d40e451ebf90b31a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
