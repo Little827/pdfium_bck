@@ -1039,17 +1039,8 @@ class SkiaState {
       skCanvas->drawTextBlob(blob, 0, 0, skPaint);
     } else {
       const SkTDArray<SkPoint>& positions = m_charDetails.GetPositions();
-      const SkTDArray<uint32_t>& widths = m_charDetails.GetFontCharWidths();
+      font.setScaleX(SkIntToScalar(1));
       for (int i = 0; i < m_charDetails.Count(); ++i) {
-        uint32_t font_glyph_width =
-            m_pFont ? m_pFont->GetGlyphWidth(glyphs[i]) : 0;
-        uint32_t pdf_glyph_width = widths[i];
-        if (font_glyph_width && pdf_glyph_width &&
-            font_glyph_width > pdf_glyph_width) {
-          font.setScaleX(SkIntToScalar(pdf_glyph_width) / font_glyph_width);
-        } else {
-          font.setScaleX(SkIntToScalar(1));
-        }
         sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromText(
             &glyphs[i], sizeof(glyphs[i]), font, SkTextEncoding::kGlyphID);
         skCanvas->drawTextBlob(blob, positions[i].fX, positions[i].fY, skPaint);
@@ -1842,17 +1833,8 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
       }
     }
   } else {
+    font.setScaleX(SkIntToScalar(1));
     for (int index = 0; index < nChars; ++index) {
-      const TextCharPos& cp = pCharPos[index];
-      uint32_t font_glyph_width =
-          pFont ? pFont->GetGlyphWidth(cp.m_GlyphIndex) : 0;
-      uint32_t pdf_glyph_width = cp.m_FontCharWidth;
-      if (font_glyph_width && pdf_glyph_width &&
-          font_glyph_width > pdf_glyph_width) {
-        font.setScaleX(SkIntToScalar(pdf_glyph_width) / font_glyph_width);
-      } else {
-        font.setScaleX(SkIntToScalar(1));
-      }
       auto blob =
           SkTextBlob::MakeFromText(&glyphs[index], sizeof(glyphs[index]), font,
                                    SkTextEncoding::kGlyphID);
