@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e775afe6_c1386c67",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T02:06:39Z",
+      "side": 1,
+      "message": "Is there a way to keep this const? Ideally, asking \"should draw ...\" should not modify the font.",
+      "range": {
+        "startLine": 304,
+        "startChar": 26,
+        "endLine": 304,
+        "endChar": 42
+      },
+      "revId": "c84a183574e712e6b203e9c1b32d9f6c7b25c680",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e56c16_7ada5671",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T02:06:39Z",
+      "side": 1,
+      "message": "Can this just use size_t? `i` should never be negative.",
+      "revId": "c84a183574e712e6b203e9c1b32d9f6c7b25c680",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ed1813_3d123659",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T02:06:39Z",
+      "side": 1,
+      "message": "Never null, given line 311.",
+      "range": {
+        "startLine": 325,
+        "startChar": 8,
+        "endLine": 325,
+        "endChar": 13
+      },
+      "revId": "c84a183574e712e6b203e9c1b32d9f6c7b25c680",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b347e74_9560f1da",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T02:06:39Z",
+      "side": 1,
+      "message": "If the scale is always going to be 1, is it ok to move this out of the for-loop?",
+      "revId": "c84a183574e712e6b203e9c1b32d9f6c7b25c680",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
