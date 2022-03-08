@@ -84,8 +84,10 @@ class FPDF_FileAccessContext final : public IFX_SeekableReadStream {
     FX_SAFE_FILESIZE new_pos = size;
     new_pos += offset;
     return new_pos.IsValid() && new_pos.ValueOrDie() <= GetSize() &&
-           file_->m_GetBlock(file_->m_Param, offset,
-                             static_cast<uint8_t*>(buffer), size);
+           file_->m_GetBlock(file_->m_Param,
+                             pdfium::base::checked_cast<unsigned long>(offset),
+                             static_cast<uint8_t*>(buffer),
+                             pdfium::base::checked_cast<unsigned long>(size));
   }
 
  private:
