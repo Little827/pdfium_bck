@@ -248,7 +248,8 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage1() {
       m_pParser->GetSyntax()->SetPos(0);
       while (src_size) {
         const FX_FILESIZE block_size = std::min(kBufferSize, src_size);
-        if (!m_pParser->GetSyntax()->ReadBlock(buffer.data(), block_size)) {
+        if (!m_pParser->GetSyntax()->ReadBlock(
+                buffer.data(), static_cast<uint32_t>(block_size))) {
           return Stage::kInvalid;
         }
         if (!m_Archive->WriteBlock(buffer.data(), block_size))
@@ -516,8 +517,8 @@ CPDF_Creator::Stage CPDF_Creator::WriteDoc_Stage4() {
           return Stage::kInvalid;
       }
     } else {
-      size_t count = m_NewObjNumArray.size();
-      size_t i = 0;
+      int count = fxcrt::CollectionSize<int>(m_NewObjNumArray);
+      int i = 0;
       for (i = 0; i < count; i++) {
         if (!m_Archive->WriteDWord(m_NewObjNumArray[i]) ||
             !m_Archive->WriteString(" 1 ")) {
