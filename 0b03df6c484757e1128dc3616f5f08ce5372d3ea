@@ -22,6 +22,30 @@
       },
       "revId": "0b03df6c484757e1128dc3616f5f08ce5372d3ea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14830301_a3a56a23",
+        "filename": "third_party/libtiff/tif_dirread.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5777,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T20:12:46Z",
+      "side": 1,
+      "message": "Just applying code from upstream.",
+      "parentUuid": "e0c36c65_cb339498",
+      "range": {
+        "startLine": 5777,
+        "startChar": 0,
+        "endLine": 5777,
+        "endChar": 1
+      },
+      "revId": "0b03df6c484757e1128dc3616f5f08ce5372d3ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
