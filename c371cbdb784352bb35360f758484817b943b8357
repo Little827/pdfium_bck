@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c70302_ce9aa926",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-08T20:52:25Z",
+      "side": 1,
+      "message": "NOTE: no getting around the range limit of int here,",
+      "range": {
+        "startLine": 529,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 46
+      },
+      "revId": "c371cbdb784352bb35360f758484817b943b8357",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
