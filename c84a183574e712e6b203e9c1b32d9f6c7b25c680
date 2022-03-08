@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a8ce194_74d3061f",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T04:48:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t getters be logically const? And better yet, also physically const? https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/const.md",
+      "parentUuid": "94cdaab5_f11ab280",
+      "range": {
+        "startLine": 304,
+        "startChar": 26,
+        "endLine": 304,
+        "endChar": 42
+      },
+      "revId": "c84a183574e712e6b203e9c1b32d9f6c7b25c680",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6e56c16_7ada5671",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 8
