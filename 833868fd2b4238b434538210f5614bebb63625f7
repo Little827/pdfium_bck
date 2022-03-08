@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cda1ad1_e2b0cf5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T06:28:36Z",
+      "side": 1,
+      "message": "Is it impossible for all device drivers to draw the glyph correctly in this case?",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73897c8d_5ce29e40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T06:28:36Z",
+      "side": 1,
+      "message": "I\u0027d still like to understand the bug a bit better. I don\u0027t think bug_845697.in is the best input to base rendering changes on. See comments on the bug.",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ca2836_8c7c0a14",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T06:28:36Z",
+      "side": 1,
+      "message": "What if it\u0027s smaller?",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3d48d8_f455f818",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T06:28:36Z",
+      "side": 1,
+      "message": "This doesn\u0027t make sense. Why check to see if it\u0027s safe to cast from size_t to size_t? (Never fails)\n\nIt\u0027s more straight forward to just call pCharPos.size().  Or just switch to a range-based for-loop and don\u0027t bother with these extra variables.",
+      "range": {
+        "startLine": 321,
+        "startChar": 18,
+        "endLine": 321,
+        "endChar": 47
+      },
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9faf33c8_d4c24a33",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T06:28:36Z",
+      "side": 1,
+      "message": "```\nThis conditional spans 4\n    lines\n       and is hard\n           to read.\n```",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac4d637_0b4456fa",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T06:28:36Z",
+      "side": 1,
+      "message": "What effect is this going to have when the device is not of the display type?",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a5a701_3b737ba6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-08T06:28:36Z",
+      "side": 1,
+      "message": "Can this go outside of the loop as well?",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
