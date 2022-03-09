@@ -650,9 +650,10 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
   void* buffer = pSource->GetBuffer();
   if (!buffer)
     return false;
-  SkColorType colorType = forceAlpha || pSource->IsMaskFormat()
-                              ? SkColorType::kAlpha_8_SkColorType
-                              : SkColorType::kGray_8_SkColorType;
+  SkColorType colorType =
+      forceAlpha || pSource->IsMaskFormat() || pSource->IsAlphaFormat()
+          ? SkColorType::kAlpha_8_SkColorType
+          : SkColorType::kGray_8_SkColorType;
   SkAlphaType alphaType =
       pSource->IsMaskFormat() ? kPremul_SkAlphaType : kOpaque_SkAlphaType;
   int width = pSource->GetWidth();
