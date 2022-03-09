@@ -24,6 +24,7 @@
 #include "core/fxge/cfx_glyphcache.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_path.h"
+#include "core/fxge/cfx_substfont.h"
 #include "core/fxge/cfx_textrenderoptions.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagerenderer.h"
@@ -300,7 +301,8 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
 }
 
 bool ShouldDrawDeviceText(const CFX_Font* pFont,
-                          const CFX_TextRenderOptions& options) {
+                          const CFX_TextRenderOptions& options,
+                          pdfium::span<const TextCharPos> pCharPos) {
 #if BUILDFLAG(IS_APPLE)
   if (options.font_is_cid)
     return false;
@@ -312,6 +314,25 @@ bool ShouldDrawDeviceText(const CFX_Font* pFont,
   if (bsPsName == "CNAAJI+cmex10")
     return false;
 #endif
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // If a glyph's default width is larger than its width defined in the PDF,
+  // draw the glyph with path since it can be scaled to avoid overlapping with
+  // the adjacent glyphs (if there are any). Otherwise, use the device driver
+  // to render the glyph without any adjustments.
+  size_t nChars = pCharPos.size();
+  for (size_t i = 0; i < nChars; ++i) {
+    const TextCharPos& cp = pCharPos[i];
+    const CFX_SubstFont* subst_font = pFont->GetSubstFont();
+    const int subst_font_weight =
+        (subst_font && subst_font->m_bFlagMM) ? subst_font->m_Weight : 0;
+    const int glyph_width = pFont->GetGlyphWidth(
+        cp.m_GlyphIndex, cp.m_FontCharWidth, subst_font_weight);
+    if (cp.m_FontCharWidth < glyph_width)
+      return false;
+  }
+#endif
+
   return true;
 }
 
@@ -1061,7 +1082,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
   }
 
   if (GetDeviceType() != DeviceType::kDisplay) {
-    if (ShouldDrawDeviceText(pFont, options) &&
+    if (ShouldDrawDeviceText(pFont, options, pCharPos) &&
         m_pDeviceDriver->DrawDeviceText(pCharPos, pFont, mtText2Device,
                                         font_size, fill_color, text_options)) {
       return true;
@@ -1069,7 +1090,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
     if (FXARGB_A(fill_color) < 255)
       return false;
   } else if (options.native_text) {
-    if (ShouldDrawDeviceText(pFont, options) &&
+    if (ShouldDrawDeviceText(pFont, options, pCharPos) &&
         m_pDeviceDriver->DrawDeviceText(pCharPos, pFont, mtText2Device,
                                         font_size, fill_color, text_options)) {
       return true;
