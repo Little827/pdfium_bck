@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1db56ae2_5d70b0cb",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-09T01:43:28Z",
+      "side": 1,
+      "message": "Does this value ever change between loop iterations?",
+      "revId": "f86c4a61a2277e4b73a172dc5d7f1fd112e5ff16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

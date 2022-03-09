@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2310bfef_e8bc83e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-09T01:43:28Z",
+      "side": 1,
+      "message": "Doesn\u0027t SkFont::setScaleX() scale on the x-axis though? https://fiddle.skia.org/c/54847bc6d4cab74c376aaf83113c0e5e\n\nAre you trying to make the font thicker, rather than wider?",
+      "parentUuid": "cd27906a_2caa1e00",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "73897c8d_5ce29e40",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "If it\u0027s smaller, the glyph will be rendered as it is since we won\u0027t have to worry about the glyphs overlapping with each other.",
       "parentUuid": "81ca2836_8c7c0a14",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd2404f3_6fe1e3b8",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-09T01:43:28Z",
+      "side": 1,
+      "message": "I\u0027m still a bit confused. Maybe we can talk this over sometime? Why does overlapping text matter?",
+      "parentUuid": "f1381ea0_ed540dad",
       "revId": "833868fd2b4238b434538210f5614bebb63625f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -170,6 +206,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0227f5_d7113e88",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-09T01:43:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d577df9a_20c1b5a3",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ac4d637_0b4456fa",
@@ -201,6 +255,24 @@
       "side": 1,
       "message": "We should let CPSPrinterDriver, CTextOnlyPrinterDriver handles text drawing with DrawDeviceText(). Both these drivers are printer type.\n\nWhen device CGdiDeviceDriver is printer type,DrawDeviceText() is a no op.\n\nI should limit this change to skia/skiapaths only.",
       "parentUuid": "7ac4d637_0b4456fa",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f26919_4cfa9fd4",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-09T01:43:28Z",
+      "side": 1,
+      "message": "Adding the #if avoids changing non-display type rendering, but only when Skia is disabled at build time. If someone is using Skia, then the #if doesn\u0027t help.",
+      "parentUuid": "45a84904_a7990354",
       "revId": "833868fd2b4238b434538210f5614bebb63625f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
