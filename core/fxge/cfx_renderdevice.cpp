@@ -300,7 +300,8 @@ void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
 }
 
 bool ShouldDrawDeviceText(const CFX_Font* pFont,
-                          const CFX_TextRenderOptions& options) {
+                          const CFX_TextRenderOptions& options,
+                          pdfium::span<const TextCharPos> pCharPos) {
 #if BUILDFLAG(IS_APPLE)
   if (options.font_is_cid)
     return false;
@@ -1061,7 +1062,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
   }
 
   if (GetDeviceType() != DeviceType::kDisplay) {
-    if (ShouldDrawDeviceText(pFont, options) &&
+    if (ShouldDrawDeviceText(pFont, options, pCharPos) &&
         m_pDeviceDriver->DrawDeviceText(pCharPos, pFont, mtText2Device,
                                         font_size, fill_color, text_options)) {
       return true;
@@ -1069,7 +1070,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
     if (FXARGB_A(fill_color) < 255)
       return false;
   } else if (options.native_text) {
-    if (ShouldDrawDeviceText(pFont, options) &&
+    if (ShouldDrawDeviceText(pFont, options, pCharPos) &&
         m_pDeviceDriver->DrawDeviceText(pCharPos, pFont, mtText2Device,
                                         font_size, fill_color, text_options)) {
       return true;
