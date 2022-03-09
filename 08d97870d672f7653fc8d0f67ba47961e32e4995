@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d83cf2eb_23dcc793",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-03-09T00:17:04Z",
+      "side": 1,
+      "message": "nit: Specifically mention ExplodeUsingIcuCalendar() since the only function mentioned is Now().",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "08d97870d672f7653fc8d0f67ba47961e32e4995",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f01f20_ee94061e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-03-09T00:17:04Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "08d97870d672f7653fc8d0f67ba47961e32e4995",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6881a6d6_32dfd240",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-03-09T00:17:04Z",
+      "side": 1,
+      "message": "Are these used in the implementation?",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "08d97870d672f7653fc8d0f67ba47961e32e4995",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88bcac2_7ecadbec",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-03-09T00:17:04Z",
+      "side": 1,
+      "message": "I\u0027d mention \"local time [zone]\" in the comment and name. See also below.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "08d97870d672f7653fc8d0f67ba47961e32e4995",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27818553_01361637",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-03-09T00:17:04Z",
+      "side": 1,
+      "message": "There is an extra `*1000` here.\nnit: Either group this in parentheses or use \"milliseconds per day\"",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 44
+      },
+      "revId": "08d97870d672f7653fc8d0f67ba47961e32e4995",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b62c7a_24c296e8",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-03-09T00:17:04Z",
+      "side": 1,
+      "message": "Looking at the [Chromium implementation](https://source.chromium.org/chromium/chromium/src/+/main:base/time/time_exploded_icu.cc;drc\u003d459dba1945dd88c8dd98c6fbfd617f84e62eba99;l\u003d28), this will cause a *non-*local time to be returned. I believe the other path uses the default time zone, which Chromium sets during startup.\n\nThus, the current code would be the same as calling `localtime_r` without a fix for https://fxbug.dev/94589.\n\nI suggest removing this parameter, which will cause ICU\u0027s default time zone to be used, and clearly documenting somewhere that it must be set before loading Pdfium.\n\nYou might also reference https://fxbug.dev/94589 somewhere or reference that from the bug and reference a specific comment from the code.",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 58
+      },
+      "revId": "08d97870d672f7653fc8d0f67ba47961e32e4995",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e222917_883c0dca",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 8827
+      },
+      "writtenOn": "2022-03-09T00:17:04Z",
+      "side": 1,
+      "message": "Is there a reason you chose to use a different function to get the time? It appears that both are supported by Fuchsia FDIO.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 43
+      },
+      "revId": "08d97870d672f7653fc8d0f67ba47961e32e4995",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
