@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7f2f17_fcfa1f34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-09T16:59:16Z",
+      "side": 1,
+      "message": "Yes, SkFont::setScaleX() scales on the x-axis (which is the current implementation) but the characters are rendered thinner than expected.\n\nAnd yes, I am trying to make the font thicker but not wider.\nOnly going through AdjustMMParams() with the correct target width and font weight, will the glyph path be rendered thicker.",
+      "parentUuid": "2310bfef_e8bc83e5",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "73897c8d_5ce29e40",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "I\u0027m still a bit confused. Maybe we can talk this over sometime? Why does overlapping text matter?",
       "parentUuid": "f1381ea0_ed540dad",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b689785d_1b1f51fc",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-09T16:59:16Z",
+      "side": 1,
+      "message": "A glyph should be adjusted to fit in the destination width defined in the PDF. Without proper scaling/adjustment for these wide characters, the characters will be rendered out of the boundaries.",
+      "parentUuid": "cd2404f3_6fe1e3b8",
       "revId": "833868fd2b4238b434538210f5614bebb63625f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -273,6 +309,24 @@
       "side": 1,
       "message": "Adding the #if avoids changing non-display type rendering, but only when Skia is disabled at build time. If someone is using Skia, then the #if doesn\u0027t help.",
       "parentUuid": "45a84904_a7990354",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545e1f34_d0fe9683",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-09T16:59:16Z",
+      "side": 1,
+      "message": "Moved the logic from ShouldDrawDeviceText() to CFX_SkiaDeviceDriver so that it can be limited to Skia/SkiaPaths.",
+      "parentUuid": "e5f26919_4cfa9fd4",
       "revId": "833868fd2b4238b434538210f5614bebb63625f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
