@@ -1243,6 +1243,11 @@ FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFFont_GetFontName(FPDF_FONT font, char* buffer, unsigned long length);
 
 // Experimental API.
+FPDF_EXPORT size_t FPDF_CALLCONV FPDFFont_GetFontData(FPDF_FONT font,
+                                                      uint8_t* buffer,
+                                                      size_t length);
+
+// Experimental API.
 // Get the descriptor flags of a font.
 //
 // font - the handle to the font object.

@@ -2515,6 +2515,17 @@ TEST_F(FPDFEditEmbedderTest, TextFontProperties) {
     ASSERT_STREQ("x", font_name.data());
   }
 
+  {
+    constexpr size_t kExpectedSize = 8268;
+    std::vector<uint8_t> buf;
+    ASSERT_EQ(kExpectedSize, FPDFFont_GetFontData(font, nullptr, 0));
+    buf.resize(kExpectedSize);
+    EXPECT_EQ(kExpectedSize,
+              FPDFFont_GetFontData(font, buf.data(), buf.size()));
+    EXPECT_EQ("1a67be75f719b6c476804d85bb9e4844",
+              GenerateMD5Base16(buf.data(), buf.size()));
+  }
+
   UnloadPage(page);
 }
 
