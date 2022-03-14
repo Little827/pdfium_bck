@@ -15,6 +15,46 @@
 
 namespace {
 
+// Remove characters from the end of |str|, delimited by |start| and |end|, up
+// to and including |charToFind|. No-op if |charToFind| is not present. Updates
+// |end| if characters were removed.
+void TrimBackwardsToChar(const WideString& str,
+                         wchar_t charToFind,
+                         size_t start,
+                         size_t* end) {
+  for (size_t pos = *end; pos >= start; pos--) {
+    if (str[pos] == charToFind) {
+      *end = pos - 1;
+      break;
+    }
+  }
+}
+
+// Finds opening brackets ()[]{}<> and quotes "'  before the URL delimited by
+// |start| and |end| in |str|. Matches a closing bracket or quote for each
+// opening character and, if present, removes everything afterwards. Returns the
+// new end position for the string.
+size_t TrimExternalBracketsFromWebLink(const WideString& str,
+                                       size_t start,
+                                       size_t end) {
+  for (size_t pos = 0; pos < start; pos++) {
+    if (str[pos] == '(') {
+      TrimBackwardsToChar(str, ')', start, &end);
+    } else if (str[pos] == '[') {
+      TrimBackwardsToChar(str, ']', start, &end);
+    } else if (str[pos] == '{') {
+      TrimBackwardsToChar(str, '}', start, &end);
+    } else if (str[pos] == '<') {
+      TrimBackwardsToChar(str, '>', start, &end);
+    } else if (str[pos] == '"') {
+      TrimBackwardsToChar(str, '"', start, &end);
+    } else if (str[pos] == '\'') {
+      TrimBackwardsToChar(str, '\'', start, &end);
+    }
+  }
+  return end;
+}
+
 // Find the end of a web link starting from offset |start| and ending at offset
 // |end|. The purpose of this function is to separate url from the surrounding
 // context characters, we do not intend to fully validate the url. |str|
@@ -59,46 +99,6 @@ size_t FindWebLinkEnding(const WideString& str, size_t start, size_t end) {
       break;
     }
     end--;
-  }
-  return end;
-}
-
-// Remove characters from the end of |str|, delimited by |start| and |end|, up
-// to and including |charToFind|. No-op if |charToFind| is not present. Updates
-// |end| if characters were removed.
-void TrimBackwardsToChar(const WideString& str,
-                         wchar_t charToFind,
-                         size_t start,
-                         size_t* end) {
-  for (size_t pos = *end; pos >= start; pos--) {
-    if (str[pos] == charToFind) {
-      *end = pos - 1;
-      break;
-    }
-  }
-}
-
-// Finds opening brackets ()[]{}<> and quotes "'  before the URL delimited by
-// |start| and |end| in |str|. Matches a closing bracket or quote for each
-// opening character and, if present, removes everything afterwards. Returns the
-// new end position for the string.
-size_t TrimExternalBracketsFromWebLink(const WideString& str,
-                                       size_t start,
-                                       size_t end) {
-  for (size_t pos = 0; pos < start; pos++) {
-    if (str[pos] == '(') {
-      TrimBackwardsToChar(str, ')', start, &end);
-    } else if (str[pos] == '[') {
-      TrimBackwardsToChar(str, ']', start, &end);
-    } else if (str[pos] == '{') {
-      TrimBackwardsToChar(str, '}', start, &end);
-    } else if (str[pos] == '<') {
-      TrimBackwardsToChar(str, '>', start, &end);
-    } else if (str[pos] == '"') {
-      TrimBackwardsToChar(str, '"', start, &end);
-    } else if (str[pos] == '\'') {
-      TrimBackwardsToChar(str, '\'', start, &end);
-    }
   }
   return end;
 }
