@@ -15,11 +15,53 @@
 
 namespace {
 
+// Remove characters from the end of |str|, delimited by |start| and |end|, up
+// to and including |charToFind|. No-op if |charToFind| is not present. Updates
+// |end| if characters were removed.
+void TrimBackwardsToChar(const WideString& str,
+                         wchar_t charToFind,
+                         size_t start,
+                         size_t* end) {
+  for (size_t pos = *end; pos >= start; pos--) {
+    if (str[pos] == charToFind) {
+      *end = pos - 1;
+      break;
+    }
+  }
+}
+
+// Finds opening brackets ()[]{}<> and quotes "'  before the URL delimited by
+// |start| and |end| in |str|. Matches a closing bracket or quote for each
+// opening character and, if present, removes everything afterwards. Returns the
+// new end position for the string.
+size_t TrimExternalBracketsFromWebLink(const WideString& str, size_t start) {
+  size_t end = str.GetLength() - 1;
+  for (size_t pos = 0; pos < start; pos++) {
+    if (str[pos] == '(') {
+      TrimBackwardsToChar(str, ')', start, &end);
+    } else if (str[pos] == '[') {
+      TrimBackwardsToChar(str, ']', start, &end);
+    } else if (str[pos] == '{') {
+      TrimBackwardsToChar(str, '}', start, &end);
+    } else if (str[pos] == '<') {
+      TrimBackwardsToChar(str, '>', start, &end);
+    } else if (str[pos] == '"') {
+      TrimBackwardsToChar(str, '"', start, &end);
+    } else if (str[pos] == '\'') {
+      TrimBackwardsToChar(str, '\'', start, &end);
+    }
+  }
+  return end;
+}
+
 // Find the end of a web link starting from offset |start| and ending at offset
 // |end|. The purpose of this function is to separate url from the surrounding
 // context characters, we do not intend to fully validate the url. |str|
 // contains lower case characters only.
-size_t FindWebLinkEnding(const WideString& str, size_t start, size_t end) {
+size_t FindWebLinkEnding(const WideString& str,
+                         size_t start,
+                         size_t trim_start) {
+  size_t end = TrimExternalBracketsFromWebLink(str, trim_start);
   if (str.Contains(L'/', start)) {
     // When there is a path and query after '/', most ASCII chars are allowed.
     // We don't sanitize in this case.
@@ -59,46 +101,6 @@ size_t FindWebLinkEnding(const WideString& str, size_t start, size_t end) {
       break;
     }
     end--;
-  }
-  return end;
-}
-
-// Remove characters from the end of |str|, delimited by |start| and |end|, up
-// to and including |charToFind|. No-op if |charToFind| is not present. Updates
-// |end| if characters were removed.
-void TrimBackwardsToChar(const WideString& str,
-                         wchar_t charToFind,
-                         size_t start,
-                         size_t* end) {
-  for (size_t pos = *end; pos >= start; pos--) {
-    if (str[pos] == charToFind) {
-      *end = pos - 1;
-      break;
-    }
-  }
-}
-
-// Finds opening brackets ()[]{}<> and quotes "'  before the URL delimited by
-// |start| and |end| in |str|. Matches a closing bracket or quote for each
-// opening character and, if present, removes everything afterwards. Returns the
-// new end position for the string.
-size_t TrimExternalBracketsFromWebLink(const WideString& str,
-                                       size_t start,
-                                       size_t end) {
-  for (size_t pos = 0; pos < start; pos++) {
-    if (str[pos] == '(') {
-      TrimBackwardsToChar(str, ')', start, &end);
-    } else if (str[pos] == '[') {
-      TrimBackwardsToChar(str, ']', start, &end);
-    } else if (str[pos] == '{') {
-      TrimBackwardsToChar(str, '}', start, &end);
-    } else if (str[pos] == '<') {
-      TrimBackwardsToChar(str, '>', start, &end);
-    } else if (str[pos] == '"') {
-      TrimBackwardsToChar(str, '"', start, &end);
-    } else if (str[pos] == '\'') {
-      TrimBackwardsToChar(str, '\'', start, &end);
-    }
   }
   return end;
 }
@@ -196,10 +198,7 @@ absl::optional<CPDF_LinkExtract::Link> CPDF_LinkExtract::CheckWebLink(
         off++;
       if (str[off] == L':' && str[off + 1] == L'/' && str[off + 2] == L'/') {
         off += 3;
-        const size_t end =
-            FindWebLinkEnding(str, off,
-                              TrimExternalBracketsFromWebLink(
-                                  str, start.value(), str.GetLength() - 1));
+        const size_t end = FindWebLinkEnding(str, off, start.value());
         if (end > off) {  // Non-empty host name.
           const size_t nStart = start.value();
           const size_t nCount = end - nStart + 1;
@@ -214,10 +213,7 @@ absl::optional<CPDF_LinkExtract::Link> CPDF_LinkExtract::CheckWebLink(
   if (start.has_value()) {
     size_t off = start.value() + kWWWAddrStartLen;
     if (str.GetLength() > off) {
-      const size_t end =
-          FindWebLinkEnding(str, start.value(),
-                            TrimExternalBracketsFromWebLink(
-                                str, start.value(), str.GetLength() - 1));
+      const size_t end = FindWebLinkEnding(str, start.value(), start.value());
       if (end > off) {
         const size_t nStart = start.value();
         const size_t nCount = end - nStart + 1;
