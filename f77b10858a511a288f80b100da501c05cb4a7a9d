@@ -16,6 +16,24 @@
       "message": "Can we wait a month until PDFium officially switches to C++17?",
       "revId": "f77b10858a511a288f80b100da501c05cb4a7a9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9739930a_791b59d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-15T23:51:32Z",
+      "side": 1,
+      "message": "I didn\u0027t think this variant was C+17, as there is already a usage in https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/fpdfsdk/cpdfsdk_annotiteration.cpp;drc\u003d0e744a2a712c01ca67cdd6161da561e2c6bc5925;l\u003d33 and\n https://en.cppreference.com/w/cpp/algorithm/reverse \n says until c++20 which I thought meant c++11 or recent. Or is there a callout in our standards?",
+      "parentUuid": "2945879e_8f7b216c",
+      "revId": "f77b10858a511a288f80b100da501c05cb4a7a9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
