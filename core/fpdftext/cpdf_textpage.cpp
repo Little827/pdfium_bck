@@ -923,22 +923,18 @@ void CPDF_TextPage::FindPreviousTextObject() {
     m_pPrevTextObj = pPrevCharInfo->m_pTextObj;
 }
 
-void CPDF_TextPage::SwapTempTextBuf(int iCharListStartAppend,
-                                    int iBufStartAppend) {
+void CPDF_TextPage::SwapTempTextBuf(size_t iCharListStartAppend,
+                                    size_t iBufStartAppend) {
   DCHECK(!m_TempCharList.empty());
-  int i = iCharListStartAppend;
-  int j = fxcrt::CollectionSize<int>(m_TempCharList) - 1;
-  for (; i < j; ++i, --j) {
-    std::swap(m_TempCharList[i], m_TempCharList[j]);
-    std::swap(m_TempCharList[i].m_Index, m_TempCharList[j].m_Index);
+  if (iCharListStartAppend < m_TempCharList.size()) {
+    std::reverse(m_TempCharList.begin() + iCharListStartAppend,
+                 m_TempCharList.end());
   }
-
   pdfium::span<wchar_t> temp_span = m_TempTextBuf.GetWideSpan();
   DCHECK(!temp_span.empty());
-  i = iBufStartAppend;
-  j = fxcrt::CollectionSize<int>(temp_span) - 1;
-  for (; i < j; ++i, --j)
-    std::swap(temp_span[i], temp_span[j]);
+  if (iBufStartAppend < temp_span.size()) {
+    std::reverse(temp_span.begin() + iBufStartAppend, temp_span.end());
+  }
 }
 
 void CPDF_TextPage::ProcessTextObject(const TransformedTextObject& obj) {
@@ -1023,8 +1019,9 @@ void CPDF_TextPage::ProcessTextObject(const TransformedTextObject& obj) {
   const bool bR2L = IsRightToLeft(*pTextObj, *pFont);
   const bool bIsBidiAndMirrorInverse =
       bR2L && (matrix.a * matrix.d - matrix.b * matrix.c) < 0;
-  int32_t iBufStartAppend = m_TempTextBuf.GetLength();
-  int32_t iCharListStartAppend = fxcrt::CollectionSize<int32_t>(m_TempCharList);
+  const int32_t iBufStartAppend = m_TempTextBuf.GetLength();
+  const int32_t iCharListStartAppend =
+      fxcrt::CollectionSize<int32_t>(m_TempCharList);
 
   float spacing = 0;
   const size_t nItems = pTextObj->CountItems();
@@ -1118,7 +1115,7 @@ void CPDF_TextPage::ProcessTextObject(const TransformedTextObject& obj) {
       m_TempTextBuf.AppendChar(0xfffe);
       continue;
     }
-    int nTotal = wstrItem.GetLength();
+    size_t nTotal = wstrItem.GetLength();
     bool bDel = false;
     const int count = std::min(fxcrt::CollectionSize<int>(m_TempCharList), 7);
     constexpr float kTextCharRatioGapDelta = 0.07f;
@@ -1136,7 +1133,7 @@ void CPDF_TextPage::ProcessTextObject(const TransformedTextObject& obj) {
       }
     }
     if (!bDel) {
-      for (int nIndex = 0; nIndex < nTotal; ++nIndex) {
+      for (size_t nIndex = 0; nIndex < nTotal; ++nIndex) {
         charinfo.m_Unicode = wstrItem[nIndex];
         if (charinfo.m_Unicode) {
           charinfo.m_Index = m_TextBuf.GetLength();
