@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0081832b_aa34ec2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-16T21:18:24Z",
+      "side": 1,
+      "message": "As an intellectual exercise, I was trying to see if I could come up with a tail-recursive version of RDFD(), but I don\u0027t think there\u0027s a way to do that over intializer lists.",
+      "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9411b8d3_970c30a0",
