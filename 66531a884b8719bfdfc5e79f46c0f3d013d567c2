@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71362fc_cca620a0",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-16T16:14:30Z",
+      "side": 1,
+      "message": "I think this works.  If size \u003d\u003d 0, we never enter since iCharListStartAppend is unisgned size t and this becomes if (false) since no unsigneds are \u003c 0.",
+      "range": {
+        "startLine": 929,
+        "startChar": 29,
+        "endLine": 929,
+        "endChar": 50
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574ef6c2_6c2204b3",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-16T16:14:30Z",
+      "side": 1,
+      "message": "otherwise, size() \u003e\u003d 1 so rev is valid.",
+      "range": {
+        "startLine": 931,
+        "startChar": 15,
+        "endLine": 931,
+        "endChar": 40
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de463cfa_1434aedd",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-16T16:14:30Z",
+      "side": 1,
+      "message": "fwd is a valid iterator less than rev, so if this step is executed, there are iterators less than rev that are valid, so --rev is valid as well.",
+      "range": {
+        "startLine": 932,
+        "startChar": 28,
+        "endLine": 932,
+        "endChar": 36
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837acb18_7b02a162",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-16T16:14:30Z",
+      "side": 1,
+      "message": "it would be funny if we forgot the *s and instead swapped iterators themselves, forever adding and then subtracting in turn.",
+      "range": {
+        "startLine": 933,
+        "startChar": 16,
+        "endLine": 933,
+        "endChar": 26
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
