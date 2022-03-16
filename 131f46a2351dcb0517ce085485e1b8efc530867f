@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d4d150_24bd99c3",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-16T17:04:42Z",
+      "side": 1,
+      "message": "WDYT about returning false if the values are out range, instead of crashing?",
+      "revId": "131f46a2351dcb0517ce085485e1b8efc530867f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
