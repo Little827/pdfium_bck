@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2878405_840e5235",
+        "filename": "testing/resources/bug_1752_truetype_font.fragment",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-16T22:02:54Z",
+      "side": 1,
+      "message": "Is this the whole font or just the subset needed for this test? Is it possible to subset the font to reduce the size?",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641a5777_a70f806b",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-16T22:02:54Z",
+      "side": 1,
+      "message": "No spaces immediately inside the brackets. (Like line 34) Same for lines 11 and 42.",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72942ecf_c825cd1e",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-16T22:02:54Z",
+      "side": 1,
+      "message": "Can the data stream also be flate encoded to further reduce the size of the fragment file?",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
