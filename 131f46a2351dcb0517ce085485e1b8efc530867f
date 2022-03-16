@@ -16,6 +16,24 @@
       "message": "WDYT about returning false if the values are out range, instead of crashing?",
       "revId": "131f46a2351dcb0517ce085485e1b8efc530867f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5454714e_845165ff",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-16T17:11:17Z",
+      "side": 1,
+      "message": "Then I\u0027d have to test it, and I\u0027m not sure how to set up such a test even if possible.",
+      "parentUuid": "85d4d150_24bd99c3",
+      "revId": "131f46a2351dcb0517ce085485e1b8efc530867f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
