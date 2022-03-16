@@ -22,6 +22,30 @@
       },
       "revId": "accb35c5188d27c3bd29c9ee7177a839d78cce68",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2af1f4c_e33d232a",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-16T16:41:22Z",
+      "side": 1,
+      "message": "GetString() returns the saved data, not the original data. Even without modifications, there\u0027s no guarantee that FPDF_SaveAsCopy() will write out a PDF with a smaller size than the original.",
+      "parentUuid": "c2bf519b_2b84321d",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "accb35c5188d27c3bd29c9ee7177a839d78cce68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
