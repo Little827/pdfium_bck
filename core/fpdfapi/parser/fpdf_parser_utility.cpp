@@ -107,6 +107,25 @@ CPDF_Dictionary* GetOrCreateDict(CPDF_Dictionary* dict, const ByteString& key) {
   return dict->SetNewFor<CPDF_Dictionary>(key);
 }
 
+const CPDF_Dictionary* ReadDictFromDicts(
+    const CPDF_Dictionary* dict,
+    const std::initializer_list<ByteString>& keys) {
+  const CPDF_Dictionary* cur_dict = dict;
+  for (const auto& key : keys) {
+    if (!cur_dict)
+      break;
+    cur_dict = cur_dict->GetDictFor(key);
+  }
+  return cur_dict;
+}
+
+CPDF_Dictionary* ReadDictFromDicts(
+    CPDF_Dictionary* dict,
+    const std::initializer_list<ByteString>& keys) {
+  return const_cast<CPDF_Dictionary*>(
+      ReadDictFromDicts(static_cast<const CPDF_Dictionary*>(dict), keys));
+}
+
 ByteString PDF_NameDecode(ByteStringView orig) {
   size_t src_size = orig.GetLength();
   size_t out_index = 0;

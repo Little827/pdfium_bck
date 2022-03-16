@@ -169,29 +169,8 @@ RetainPtr<CPDF_Font> CPDF_BAFontMap::FindFontSameCharset(ByteString* sFontAlias,
   if (m_pAnnotDict->GetNameFor(pdfium::annotation::kSubtype) != "Widget")
     return nullptr;
 
-  const CPDF_Dictionary* pRootDict = m_pDocument->GetRoot();
-  if (!pRootDict)
-    return nullptr;
-
-  const CPDF_Dictionary* pAcroFormDict = pRootDict->GetDictFor("AcroForm");
-  if (!pAcroFormDict)
-    return nullptr;
-
-  const CPDF_Dictionary* pDRDict = pAcroFormDict->GetDictFor("DR");
-  if (!pDRDict)
-    return nullptr;
-
-  return FindResFontSameCharset(pDRDict, sFontAlias, nCharset);
-}
-
-RetainPtr<CPDF_Font> CPDF_BAFontMap::FindResFontSameCharset(
-    const CPDF_Dictionary* pResDict,
-    ByteString* sFontAlias,
-    FX_Charset nCharset) {
-  if (!pResDict)
-    return nullptr;
-
-  const CPDF_Dictionary* pFonts = pResDict->GetDictFor("Font");
+  const CPDF_Dictionary* pFonts =
+      ReadDictFromDicts(m_pDocument->GetRoot(), {"AcroForm", "DR", "Font"});
   if (!pFonts)
     return nullptr;
 
@@ -250,23 +229,11 @@ RetainPtr<CPDF_Font> CPDF_BAFontMap::GetAnnotDefaultFont(ByteString* sAlias) {
   absl::optional<ByteString> font = appearance.GetFont(&font_size);
   *sAlias = font.value_or(ByteString());
 
-  CPDF_Dictionary* pFontDict = nullptr;
-  if (CPDF_Dictionary* pAPDict =
-          m_pAnnotDict->GetDictFor(pdfium::annotation::kAP)) {
-    if (CPDF_Dictionary* pNormalDict = pAPDict->GetDictFor("N")) {
-      if (CPDF_Dictionary* pNormalResDict =
-              pNormalDict->GetDictFor("Resources")) {
-        if (CPDF_Dictionary* pResFontDict = pNormalResDict->GetDictFor("Font"))
-          pFontDict = pResFontDict->GetDictFor(*sAlias);
-      }
-    }
-  }
-  if (bWidget && !pFontDict && pAcroFormDict) {
-    if (CPDF_Dictionary* pDRDict = pAcroFormDict->GetDictFor("DR")) {
-      if (CPDF_Dictionary* pDRFontDict = pDRDict->GetDictFor("Font"))
-        pFontDict = pDRFontDict->GetDictFor(*sAlias);
-    }
-  }
+  CPDF_Dictionary* pFontDict = ReadDictFromDicts(
+      m_pAnnotDict.Get(),
+      {pdfium::annotation::kAP, "N", "Resources", "Font", *sAlias});
+  if (bWidget && !pFontDict && pAcroFormDict)
+    pFontDict = ReadDictFromDicts(pAcroFormDict, {"DR", "Font", *sAlias});
   if (!pFontDict)
     return nullptr;
 

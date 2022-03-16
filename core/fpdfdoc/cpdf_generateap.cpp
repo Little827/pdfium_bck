@@ -919,7 +919,8 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     return;
 
   CPDF_Dictionary* pFormDict = pRootDict->GetDictFor("AcroForm");
-  if (!pFormDict)
+  CPDF_Dictionary* pDRFontDict = ReadDictFromDicts(pFormDict, {"DR", "Font"});
+  if (!ValidateFontResourceDict(pDRFontDict))
     return;
 
   ByteString DA;
@@ -938,16 +939,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     return;
 
   ByteString font_name = font.value();
-
   CFX_Color crText = fpdfdoc::CFXColorFromString(DA);
-  CPDF_Dictionary* pDRDict = pFormDict->GetDictFor("DR");
-  if (!pDRDict)
-    return;
-
-  CPDF_Dictionary* pDRFontDict = pDRDict->GetDictFor("Font");
-  if (!ValidateFontResourceDict(pDRFontDict))
-    return;
-
   CPDF_Dictionary* pFontDict = pDRFontDict->GetDictFor(font_name);
   if (!pFontDict) {
     pFontDict = pDoc->NewIndirect<CPDF_Dictionary>();
