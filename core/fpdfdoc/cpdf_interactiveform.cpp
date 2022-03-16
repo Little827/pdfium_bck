@@ -174,11 +174,7 @@ RetainPtr<CPDF_Font> AddNativeFont(FX_Charset charSet,
 bool FindFont(CPDF_Dictionary* pFormDict,
               const CPDF_Font* pFont,
               ByteString* csNameTag) {
-  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
-  if (!pDR)
-    return false;
-
-  CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
+  CPDF_Dictionary* pFonts = ReadDictFromDicts(pFormDict, {"DR", "Font"});
   if (!ValidateFontResourceDict(pFonts))
     return false;
 
@@ -204,11 +200,7 @@ bool FindFontFromDoc(CPDF_Dictionary* pFormDict,
   if (csFontName.IsEmpty())
     return false;
 
-  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
-  if (!pDR)
-    return false;
-
-  CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
+  CPDF_Dictionary* pFonts = ReadDictFromDicts(pFormDict, {"DR", "Font"});
   if (!ValidateFontResourceDict(pFonts))
     return false;
 
@@ -305,11 +297,7 @@ RetainPtr<CPDF_Font> GetNativeFont(CPDF_Dictionary* pFormDict,
                                    CPDF_Document* pDocument,
                                    FX_Charset charSet,
                                    ByteString* csNameTag) {
-  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
-  if (!pDR)
-    return nullptr;
-
-  CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
+  CPDF_Dictionary* pFonts = ReadDictFromDicts(pFormDict, {"DR", "Font"});
   if (!ValidateFontResourceDict(pFonts))
     return nullptr;
 
@@ -703,14 +691,11 @@ int CPDF_InteractiveForm::FindFieldInCalculationOrder(
 RetainPtr<CPDF_Font> CPDF_InteractiveForm::GetFormFont(
     ByteString csNameTag) const {
   ByteString csAlias = PDF_NameDecode(csNameTag.AsStringView());
-  if (!m_pFormDict || csAlias.IsEmpty())
+  if (csAlias.IsEmpty())
     return nullptr;
 
-  CPDF_Dictionary* pDR = m_pFormDict->GetDictFor("DR");
-  if (!pDR)
-    return nullptr;
-
-  CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
+  CPDF_Dictionary* pFonts =
+      ReadDictFromDicts(m_pFormDict.Get(), {"DR", "Font"});
   if (!ValidateFontResourceDict(pFonts))
     return nullptr;
 

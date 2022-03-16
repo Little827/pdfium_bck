@@ -41,11 +41,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_PDFFontMgr::FindFont(const ByteString& strPsName,
                                                    bool bItalic,
                                                    bool bStrictMatch) {
   CPDF_Dictionary* pFontSetDict =
-      m_pDoc->GetRoot()->GetDictFor("AcroForm")->GetDictFor("DR");
-  if (!pFontSetDict)
-    return nullptr;
-
-  pFontSetDict = pFontSetDict->GetDictFor("Font");
+      ReadDictFromDicts(m_pDoc->GetRoot(), {"AcroForm", "DR", "Font"});
   if (!pFontSetDict)
     return nullptr;
 

@@ -836,7 +836,8 @@ bool CPDF_FormField::UseSelectedIndicesObject() const {
 
 void CPDF_FormField::LoadDA() {
   CPDF_Dictionary* pFormDict = m_pForm->GetFormDict();
-  if (!pFormDict)
+  CPDF_Dictionary* pFont = ReadDictFromDicts(pFormDict, {"DR", "Font"});
+  if (!ValidateFontResourceDict(pFont))
     return;
 
   ByteString DA;
@@ -847,14 +848,6 @@ void CPDF_FormField::LoadDA() {
     DA = pFormDict->GetStringFor("DA");
 
   if (DA.IsEmpty())
-    return;
-
-  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
-  if (!pDR)
-    return;
-
-  CPDF_Dictionary* pFont = pDR->GetDictFor("Font");
-  if (!ValidateFontResourceDict(pFont))
     return;
 
   CPDF_DefaultAppearance appearance(DA);
