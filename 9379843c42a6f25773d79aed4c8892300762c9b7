@@ -56,6 +56,29 @@
       },
       "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939e9d14_a9553719",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-16T21:27:43Z",
+      "side": 1,
+      "message": "the only downside is we allocate and copy all of these into bytestring temporaries even if the earlier keys are not found (and this is a consequence of std::map needing a bytestring for key purposes.) Bytestringviews would be cheaper to set-up, but there are places where you are using *alias or something which is already a bytestring.",
+      "range": {
+        "startLine": 173,
+        "startChar": 47,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
