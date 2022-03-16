@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2bf519b_2b84321d",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-16T02:26:15Z",
+      "side": 1,
+      "message": "Maybe we can declare const size_t kOriginalFileSize \u003d GetString().size() when jpx_lzw was first loaded (before deleting objects). Then use `kOriginalFileSize` to replace 1300u here.",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "accb35c5188d27c3bd29c9ee7177a839d78cce68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
