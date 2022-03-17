@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c3bad5_cec44876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-17T19:15:25Z",
+      "side": 1,
+      "message": "I think my suggestion on one of your CLs is blocked by the problem that this takes a first step towards resolving.",
+      "revId": "39bcfe6e1f50798f1f878a63d5616923f4c0b275",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
