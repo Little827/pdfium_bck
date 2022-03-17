@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1399ed3_8ba2ff48",
+        "filename": "testing/resources/bug_1752_truetype_font.fragment",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T18:13:33Z",
+      "side": 1,
+      "message": "Is that due to a bad filter? (See other comment)",
+      "parentUuid": "40beeef2_61483c78",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "641a5777_a70f806b",
         "filename": "testing/resources/pixel/bug_1752.in",
         "patchSetId": 2
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "I tried to use zlib-flate to compress the embedded font, but it triggers pdfium to look for substitute font again instead of using the embedded font.\nMaybe there are other ways to add the Flate encoding without sacrifice the embedded font?",
       "parentUuid": "72942ecf_c825cd1e",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1d0fb8_ff4ca59f",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T18:13:33Z",
+      "side": 1,
+      "message": "Did this object have the right filters? I only see /ASCIIHexDecode here in patch set 4.",
+      "parentUuid": "6e790c86_7d6ddb3f",
       "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
