@@ -184,10 +184,10 @@ FPDFAttachment_GetStringValue(FPDF_ATTACHMENT attachment,
   if (!pParamsDict)
     return 0;
 
-  ByteString bsKey = key;
-  WideString value = pParamsDict->GetUnicodeTextFor(bsKey);
-  if (bsKey == kChecksumKey && !value.IsEmpty()) {
-    CPDF_String* stringValue = pParamsDict->GetObjectFor(bsKey)->AsString();
+  ByteStringView key_view(key);
+  WideString value = pParamsDict->GetUnicodeTextFor(key_view);
+  if (key_view == kChecksumKey && !value.IsEmpty()) {
+    CPDF_String* stringValue = pParamsDict->GetObjectFor(key_view)->AsString();
     if (stringValue->IsHex()) {
       ByteString encoded =
           PDF_HexEncodeString(stringValue->GetString().AsStringView());

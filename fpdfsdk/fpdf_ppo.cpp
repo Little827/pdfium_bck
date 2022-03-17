@@ -168,14 +168,12 @@ const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
   if (!pp)
     return nullptr;
 
-  // TODO(thestig): Remove and just use `src_tag`.
-  ByteString src_tag_str(src_tag);
-  if (pDict->KeyExist(src_tag_str))
-    return pDict->GetObjectFor(src_tag_str);
+  if (pDict->KeyExist(src_tag))
+    return pDict->GetObjectFor(src_tag);
 
   while (pp) {
-    if (pp->KeyExist(src_tag_str))
-      return pp->GetObjectFor(src_tag_str);
+    if (pp->KeyExist(src_tag))
+      return pp->GetObjectFor(src_tag);
     if (!pp->KeyExist(pdfium::page_object::kParent))
       break;
     pp = ToDictionary(
@@ -187,7 +185,7 @@ const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
 bool CopyInheritable(CPDF_Dictionary* pDestPageDict,
                      const CPDF_Dictionary* pSrcPageDict,
                      ByteStringView key) {
-  if (pDestPageDict->KeyExist(ByteString(key)))
+  if (pDestPageDict->KeyExist(key))
     return true;
 
   const CPDF_Object* pInheritable =

@@ -177,7 +177,7 @@ void CPDF_PageContentGenerator::UpdateContentStreams(
 
 ByteString CPDF_PageContentGenerator::RealizeResource(
     const CPDF_Object* pResource,
-    const ByteString& bsType) const {
+    ByteStringView bsType) const {
   DCHECK(pResource);
   if (!m_pObjHolder->GetResources()) {
     m_pObjHolder->SetResources(m_pDocument->NewIndirect<CPDF_Dictionary>());
@@ -192,7 +192,7 @@ ByteString CPDF_PageContentGenerator::RealizeResource(
   int idnum = 1;
   while (true) {
     name = ByteString::Format("FX%c%d", bsType[0], idnum);
-    if (!pResList->KeyExist(name))
+    if (!pResList->KeyExist(name.AsStringView()))
       break;
 
     idnum++;

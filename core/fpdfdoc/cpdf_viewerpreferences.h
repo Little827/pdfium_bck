@@ -28,8 +28,8 @@ class CPDF_ViewerPreferences {
   CPDF_Array* PrintPageRange() const;
   ByteString Duplex() const;
 
-  // Gets the entry for |bsKey|.
-  absl::optional<ByteString> GenericName(const ByteString& bsKey) const;
+  // Gets the entry for `key`.
+  absl::optional<ByteString> GenericName(ByteStringView key) const;
 
  private:
   CPDF_Dictionary* GetViewerPreferences() const;

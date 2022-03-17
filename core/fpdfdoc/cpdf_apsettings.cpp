@@ -18,7 +18,7 @@ CPDF_ApSettings::CPDF_ApSettings(const CPDF_ApSettings& that) = default;
 
 CPDF_ApSettings::~CPDF_ApSettings() = default;
 
-bool CPDF_ApSettings::HasMKEntry(const ByteString& csEntry) const {
+bool CPDF_ApSettings::HasMKEntry(ByteStringView csEntry) const {
   return m_pDict && m_pDict->KeyExist(csEntry);
 }
 
@@ -27,7 +27,7 @@ int CPDF_ApSettings::GetRotation() const {
 }
 
 CFX_Color::TypeAndARGB CPDF_ApSettings::GetColorARGB(
-    const ByteString& csEntry) const {
+    ByteStringView csEntry) const {
   if (!m_pDict)
     return {CFX_Color::Type::kTransparent, 0};
 
@@ -59,9 +59,8 @@ CFX_Color::TypeAndARGB CPDF_ApSettings::GetColorARGB(
   return {CFX_Color::Type::kTransparent, 0};
 }
 
-float CPDF_ApSettings::GetOriginalColorComponent(
-    int index,
-    const ByteString& csEntry) const {
+float CPDF_ApSettings::GetOriginalColorComponent(int index,
+                                                 ByteStringView csEntry) const {
   if (!m_pDict)
     return 0;
 
@@ -69,7 +68,7 @@ float CPDF_ApSettings::GetOriginalColorComponent(
   return pEntry ? pEntry->GetNumberAt(index) : 0;
 }
 
-CFX_Color CPDF_ApSettings::GetOriginalColor(const ByteString& csEntry) const {
+CFX_Color CPDF_ApSettings::GetOriginalColor(ByteStringView csEntry) const {
   if (!m_pDict)
     return CFX_Color();
 
@@ -93,11 +92,11 @@ CFX_Color CPDF_ApSettings::GetOriginalColor(const ByteString& csEntry) const {
   return CFX_Color();
 }
 
-WideString CPDF_ApSettings::GetCaption(const ByteString& csEntry) const {
+WideString CPDF_ApSettings::GetCaption(ByteStringView csEntry) const {
   return m_pDict ? m_pDict->GetUnicodeTextFor(csEntry) : WideString();
 }
 
-CPDF_Stream* CPDF_ApSettings::GetIcon(const ByteString& csEntry) const {
+CPDF_Stream* CPDF_ApSettings::GetIcon(ByteStringView csEntry) const {
   return m_pDict ? m_pDict->GetStreamFor(csEntry) : nullptr;
 }
 

@@ -76,9 +76,9 @@ class CPDF_FormField {
   static absl::optional<FormFieldType> IntToFormFieldType(int value);
 
   static const CPDF_Object* GetFieldAttr(const CPDF_Dictionary* pFieldDict,
-                                         const ByteString& name);
+                                         ByteStringView name);
   static CPDF_Object* GetFieldAttr(CPDF_Dictionary* pFieldDict,
-                                   const ByteString& name);
+                                   ByteStringView name);
 
   static WideString GetFullNameForDict(CPDF_Dictionary* pFieldDict);
 

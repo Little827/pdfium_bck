@@ -272,8 +272,9 @@ RetainPtr<CPDF_ColorSpace> CPDF_DocPageData::GetColorSpaceInternal(
     if (!pCS && pResources) {
       const CPDF_Dictionary* pList = pResources->GetDictFor("ColorSpace");
       if (pList) {
-        return GetColorSpaceInternal(pList->GetDirectObjectFor(name), nullptr,
-                                     pVisited, pVisitedInternal);
+        return GetColorSpaceInternal(
+            pList->GetDirectObjectFor(name.AsStringView()), nullptr, pVisited,
+            pVisitedInternal);
       }
     }
     if (!pCS || !pResources)

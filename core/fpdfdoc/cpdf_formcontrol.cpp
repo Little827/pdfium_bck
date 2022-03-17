@@ -139,7 +139,7 @@ CPDF_ApSettings CPDF_FormControl::GetMK() const {
   return CPDF_ApSettings(m_pWidgetDict->GetDictFor("MK"));
 }
 
-bool CPDF_FormControl::HasMKEntry(const ByteString& csEntry) const {
+bool CPDF_FormControl::HasMKEntry(ByteStringView csEntry) const {
   return GetMK().HasMKEntry(csEntry);
 }
 
@@ -147,25 +147,24 @@ int CPDF_FormControl::GetRotation() const {
   return GetMK().GetRotation();
 }
 
-CFX_Color::TypeAndARGB CPDF_FormControl::GetColorARGB(
-    const ByteString& csEntry) {
+CFX_Color::TypeAndARGB CPDF_FormControl::GetColorARGB(ByteStringView csEntry) {
   return GetMK().GetColorARGB(csEntry);
 }
 
 float CPDF_FormControl::GetOriginalColorComponent(int index,
-                                                  const ByteString& csEntry) {
+                                                  ByteStringView csEntry) {
   return GetMK().GetOriginalColorComponent(index, csEntry);
 }
 
-CFX_Color CPDF_FormControl::GetOriginalColor(const ByteString& csEntry) {
+CFX_Color CPDF_FormControl::GetOriginalColor(ByteStringView csEntry) {
   return GetMK().GetOriginalColor(csEntry);
 }
 
-WideString CPDF_FormControl::GetCaption(const ByteString& csEntry) const {
+WideString CPDF_FormControl::GetCaption(ByteStringView csEntry) const {
   return GetMK().GetCaption(csEntry);
 }
 
-CPDF_Stream* CPDF_FormControl::GetIcon(const ByteString& csEntry) {
+CPDF_Stream* CPDF_FormControl::GetIcon(ByteStringView csEntry) {
   return GetMK().GetIcon(csEntry);
 }
 
@@ -206,7 +205,8 @@ RetainPtr<CPDF_Font> CPDF_FormControl::GetDefaultControlFont() const {
   if (CPDF_Dictionary* pDict = ToDictionary(pObj)) {
     CPDF_Dictionary* pFonts = pDict->GetDictFor("Font");
     if (ValidateFontResourceDict(pFonts)) {
-      CPDF_Dictionary* pElement = pFonts->GetDictFor(csFontNameTag.value());
+      CPDF_Dictionary* pElement =
+          pFonts->GetDictFor(csFontNameTag.value().AsStringView());
       if (pElement) {
         auto* pData = CPDF_DocPageData::FromDocument(m_pForm->GetDocument());
         RetainPtr<CPDF_Font> pFont = pData->GetFont(pElement);
@@ -229,7 +229,8 @@ RetainPtr<CPDF_Font> CPDF_FormControl::GetDefaultControlFont() const {
   if (!ValidateFontResourceDict(pFonts))
     return nullptr;
 
-  CPDF_Dictionary* pElement = pFonts->GetDictFor(csFontNameTag.value());
+  CPDF_Dictionary* pElement =
+      pFonts->GetDictFor(csFontNameTag.value().AsStringView());
   if (!pElement)
     return nullptr;
 

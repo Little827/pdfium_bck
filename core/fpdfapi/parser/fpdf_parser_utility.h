@@ -45,11 +45,10 @@ inline bool PDFCharIsLineEnding(uint8_t c) {
 absl::optional<FX_FILESIZE> GetHeaderOffset(
     const RetainPtr<IFX_SeekableReadStream>& pFile);
 
-int32_t GetDirectInteger(const CPDF_Dictionary* pDict, const ByteString& key);
+int32_t GetDirectInteger(const CPDF_Dictionary* pDict, ByteStringView key);
 
-// TODO(thestig): Switch to ByteStringView.
-CPDF_Array* GetOrCreateArray(CPDF_Dictionary* dict, const ByteString& key);
-CPDF_Dictionary* GetOrCreateDict(CPDF_Dictionary* dict, const ByteString& key);
+CPDF_Array* GetOrCreateArray(CPDF_Dictionary* dict, ByteStringView key);
+CPDF_Dictionary* GetOrCreateDict(CPDF_Dictionary* dict, ByteStringView key);
 
 ByteString PDF_NameDecode(ByteStringView orig);
 ByteString PDF_NameEncode(const ByteString& orig);

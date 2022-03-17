@@ -88,23 +88,23 @@ absl::optional<FX_FILESIZE> GetHeaderOffset(
   return absl::nullopt;
 }
 
-int32_t GetDirectInteger(const CPDF_Dictionary* pDict, const ByteString& key) {
+int32_t GetDirectInteger(const CPDF_Dictionary* pDict, ByteStringView key) {
   const CPDF_Number* pObj = ToNumber(pDict->GetObjectFor(key));
   return pObj ? pObj->GetInteger() : 0;
 }
 
-CPDF_Array* GetOrCreateArray(CPDF_Dictionary* dict, const ByteString& key) {
+CPDF_Array* GetOrCreateArray(CPDF_Dictionary* dict, ByteStringView key) {
   CPDF_Array* result = dict->GetArrayFor(key);
   if (result)
     return result;
-  return dict->SetNewFor<CPDF_Array>(key.AsStringView());
+  return dict->SetNewFor<CPDF_Array>(key);
 }
 
-CPDF_Dictionary* GetOrCreateDict(CPDF_Dictionary* dict, const ByteString& key) {
+CPDF_Dictionary* GetOrCreateDict(CPDF_Dictionary* dict, ByteStringView key) {
   CPDF_Dictionary* result = dict->GetDictFor(key);
   if (result)
     return result;
-  return dict->SetNewFor<CPDF_Dictionary>(key.AsStringView());
+  return dict->SetNewFor<CPDF_Dictionary>(key);
 }
 
 ByteString PDF_NameDecode(ByteStringView orig) {

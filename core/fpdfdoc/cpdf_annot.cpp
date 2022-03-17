@@ -88,9 +88,10 @@ CPDF_Stream* GetAnnotAPInternal(CPDF_Dictionary* pAnnotDict,
       const CPDF_Dictionary* pParentDict = pAnnotDict->GetDictFor("Parent");
       value = pParentDict ? pParentDict->GetStringFor("V") : ByteString();
     }
-    as = (!value.IsEmpty() && pDict->KeyExist(value)) ? value : "Off";
+    bool has_value = !value.IsEmpty() && pDict->KeyExist(value.AsStringView());
+    as = has_value ? value : "Off";
   }
-  return pDict->GetStreamFor(as);
+  return pDict->GetStreamFor(as.AsStringView());
 }
 
 }  // namespace

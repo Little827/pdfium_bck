@@ -24,7 +24,7 @@ ByteString GetStructElementType(const CPDF_StructTree* pTree,
                                 const CPDF_Dictionary* pDict) {
   ByteString type = pDict->GetNameFor("S");
   if (pTree->GetRoleMap()) {
-    ByteString mapped = pTree->GetRoleMap()->GetNameFor(type);
+    ByteString mapped = pTree->GetRoleMap()->GetNameFor(type.AsStringView());
     if (!mapped.IsEmpty())
       type = std::move(mapped);
   }

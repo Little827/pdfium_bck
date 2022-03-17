@@ -29,10 +29,10 @@ class CPDFSDK_AppStream {
   void SetAsTextField(absl::optional<WideString> sValue);
 
  private:
-  void AddImage(const ByteString& sAPType, CPDF_Stream* pImage);
-  void Write(const ByteString& sAPType,
+  void AddImage(ByteStringView sAPType, CPDF_Stream* pImage);
+  void Write(ByteStringView sAPType,
              const ByteString& sContents,
-             const ByteString& sAPState);
+             ByteStringView sAPState);
   void Remove(ByteStringView sAPType);
 
   ByteString GetBackgroundAppStream() const;

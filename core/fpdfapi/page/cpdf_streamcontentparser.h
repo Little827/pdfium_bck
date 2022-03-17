@@ -62,7 +62,7 @@ class CPDF_StreamContentParser {
   CPDF_AllStates* GetCurStates() const { return m_pCurStates.get(); }
   bool IsColored() const { return m_bColored; }
   pdfium::span<const float> GetType3Data() const { return m_Type3Data; }
-  RetainPtr<CPDF_Font> FindFont(const ByteString& name);
+  RetainPtr<CPDF_Font> FindFont(ByteStringView name);
 
   static ByteStringView FindKeyAbbreviationForTesting(ByteStringView abbr);
   static ByteStringView FindValueAbbreviationForTesting(ByteStringView abbr);
@@ -130,11 +130,11 @@ class CPDF_StreamContentParser {
                         bool bColor,
                         bool bText,
                         bool bGraph);
-  RetainPtr<CPDF_ColorSpace> FindColorSpace(const ByteString& name);
-  RetainPtr<CPDF_Pattern> FindPattern(const ByteString& name);
-  RetainPtr<CPDF_ShadingPattern> FindShading(const ByteString& name);
-  CPDF_Dictionary* FindResourceHolder(const ByteString& type);
-  CPDF_Object* FindResourceObj(const ByteString& type, const ByteString& name);
+  RetainPtr<CPDF_ColorSpace> FindColorSpace(ByteStringView name);
+  RetainPtr<CPDF_Pattern> FindPattern(ByteStringView name);
+  RetainPtr<CPDF_ShadingPattern> FindShading(ByteStringView name);
+  CPDF_Dictionary* FindResourceHolder(ByteStringView type);
+  CPDF_Object* FindResourceObj(ByteStringView type, ByteStringView name);
 
   // Takes ownership of |pImageObj|, returns unowned pointer to it.
   CPDF_ImageObject* AddImageObject(std::unique_ptr<CPDF_ImageObject> pImageObj);

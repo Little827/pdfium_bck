@@ -228,7 +228,7 @@ uint32_t CPDF_SecurityHandler::GetPermissions() const {
 }
 
 static bool LoadCryptInfo(const CPDF_Dictionary* pEncryptDict,
-                          const ByteString& name,
+                          ByteStringView name,
                           CPDF_CryptoHandler::Cipher* cipher,
                           size_t* keylen_out) {
   int Version = pEncryptDict->GetIntegerFor("V");
@@ -286,14 +286,15 @@ bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict) {
   m_Revision = pEncryptDict->GetIntegerFor("R");
   m_Permissions = pEncryptDict->GetIntegerFor("P", -1);
   if (m_Version < 4)
-    return LoadCryptInfo(pEncryptDict, ByteString(), &m_Cipher, &m_KeyLen);
+    return LoadCryptInfo(pEncryptDict, ByteStringView(), &m_Cipher, &m_KeyLen);
 
   ByteString stmf_name = pEncryptDict->GetStringFor("StmF");
   ByteString strf_name = pEncryptDict->GetStringFor("StrF");
   if (stmf_name != strf_name)
     return false;
 
-  return LoadCryptInfo(pEncryptDict, strf_name, &m_Cipher, &m_KeyLen);
+  return LoadCryptInfo(pEncryptDict, strf_name.AsStringView(), &m_Cipher,
+                       &m_KeyLen);
 }
 
 bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict,
@@ -312,7 +313,7 @@ bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict,
     if (stmf_name != strf_name)
       return false;
   }
-  if (!LoadCryptInfo(pEncryptDict, strf_name, cipher, key_len))
+  if (!LoadCryptInfo(pEncryptDict, strf_name.AsStringView(), cipher, key_len))
     return false;
 
   m_Cipher = *cipher;

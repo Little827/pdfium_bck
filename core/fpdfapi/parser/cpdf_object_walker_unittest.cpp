@@ -138,7 +138,7 @@ TEST(ObjectWalkerTest, DictionaryKey) {
     }
     // Test that, dictionary key is correct.
     EXPECT_EQ(walker.GetParent()->AsDictionary()->GetObjectFor(
-                  walker.dictionary_key()),
+                  walker.dictionary_key().AsStringView()),
               obj);
   }
 }
