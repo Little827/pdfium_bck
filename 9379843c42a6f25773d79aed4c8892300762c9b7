@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12695a04_f8737c3e",
+        "filename": "core/fpdfapi/parser/fpdf_parser_utility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T16:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9411b8d3_970c30a0",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 41
+      },
+      "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "939e9d14_a9553719",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "Maybe we can switch CPDF_Dictionary to use ByteStringView for keys in its public APIs. e.g. https://pdfium-review.googlesource.com/91611",
       "parentUuid": "939e9d14_a9553719",
+      "range": {
+        "startLine": 173,
+        "startChar": 47,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2817912_b2ed6825",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T16:41:15Z",
+      "side": 1,
+      "message": "Done in the new CL chain. Switched to ByteStringView here too.",
+      "parentUuid": "6b057152_cc772936",
       "range": {
         "startLine": 173,
         "startChar": 47,
