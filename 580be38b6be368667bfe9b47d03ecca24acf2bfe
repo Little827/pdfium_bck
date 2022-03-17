@@ -33,6 +33,29 @@
       "message": "\u003e Patch Set 2:\n\u003e \n\u003e Gold has detected about 4 new digest(s) on patchset 2.\n\u003e View them at https://pdfium-gold.skia.org/cl/gerrit/91613\n\nOne of the suppressed tests changed. I\u0027ll need to check that out.",
       "revId": "580be38b6be368667bfe9b47d03ecca24acf2bfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c037ce2_91bbae88",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-17T18:44:41Z",
+      "side": 1,
+      "message": "these should stay as-is, I think, since we need to make a ByteString to hold in the dictionary. And if the caller already has one, it is just a matter of ref count manipulation to add it to the dictionary without allocation.",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "580be38b6be368667bfe9b47d03ecca24acf2bfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
