@@ -7,6 +7,7 @@
 #ifndef CORE_FPDFAPI_PARSER_FPDF_PARSER_UTILITY_H_
 #define CORE_FPDFAPI_PARSER_FPDF_PARSER_UTILITY_H_
 
+#include <initializer_list>
 #include <iosfwd>
 #include <vector>
 
@@ -49,6 +50,16 @@ int32_t GetDirectInteger(const CPDF_Dictionary* pDict, ByteStringView key);
 
 CPDF_Array* GetOrCreateArray(CPDF_Dictionary* dict, ByteStringView key);
 CPDF_Dictionary* GetOrCreateDict(CPDF_Dictionary* dict, ByteStringView key);
+
+// With `dict` as a starting point, read its value with key=`keys[0]`. If that
+// is a dictionary, then read that dictionary's value with key=`keys[1]` and so
+// on.
+const CPDF_Dictionary* ReadDictFromDicts(
+    const CPDF_Dictionary* dict,
+    const std::initializer_list<ByteStringView>& keys);
+CPDF_Dictionary* ReadDictFromDicts(
+    CPDF_Dictionary* dict,
+    const std::initializer_list<ByteStringView>& keys);
 
 ByteString PDF_NameDecode(ByteStringView orig);
 ByteString PDF_NameEncode(const ByteString& orig);
