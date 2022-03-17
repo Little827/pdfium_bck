@@ -33,7 +33,7 @@
 namespace {
 
 const CPDF_Object* GetFieldAttrRecursive(const CPDF_Dictionary* pFieldDict,
-                                         const ByteString& name,
+                                         ByteStringView name,
                                          int nLevel) {
   static constexpr int kGetFieldMaxRecursion = 32;
   if (!pFieldDict || nLevel > kGetFieldMaxRecursion)
@@ -61,13 +61,13 @@ absl::optional<FormFieldType> CPDF_FormField::IntToFormFieldType(int value) {
 // static
 const CPDF_Object* CPDF_FormField::GetFieldAttr(
     const CPDF_Dictionary* pFieldDict,
-    const ByteString& name) {
+    ByteStringView name) {
   return GetFieldAttrRecursive(pFieldDict, name, 0);
 }
 
 // static
 CPDF_Object* CPDF_FormField::GetFieldAttr(CPDF_Dictionary* pFieldDict,
-                                          const ByteString& name) {
+                                          ByteStringView name) {
   return const_cast<CPDF_Object*>(GetFieldAttrRecursive(
       static_cast<const CPDF_Dictionary*>(pFieldDict), name, 0));
 }
@@ -352,10 +352,9 @@ bool CPDF_FormField::SetValue(const WideString& value,
           !NotifyBeforeValueChange(csValue)) {
         return false;
       }
-      // TODO(thestig): Switch to ByteStringView.
-      ByteString key(bDefault ? pdfium::form_fields::kDV
-                              : pdfium::form_fields::kV);
-      m_pDict->SetNewFor<CPDF_String>(key.AsStringView(), csValue);
+      ByteStringView key(bDefault ? pdfium::form_fields::kDV
+                                  : pdfium::form_fields::kV);
+      m_pDict->SetNewFor<CPDF_String>(key, csValue);
       int iIndex = FindOption(csValue);
       if (iIndex < 0) {
         if (m_Type == kRichText && !bDefault) {
@@ -863,7 +862,8 @@ void CPDF_FormField::LoadDA() {
   if (!font_name.has_value())
     return;
 
-  CPDF_Dictionary* pFontDict = pFont->GetDictFor(font_name.value());
+  CPDF_Dictionary* pFontDict =
+      pFont->GetDictFor(font_name.value().AsStringView());
   if (!pFontDict)
     return;
 

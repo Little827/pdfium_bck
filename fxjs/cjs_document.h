@@ -300,8 +300,8 @@ class CJS_Document final : public CJS_Object, public Observable {
   CJS_Result removeIcon(CJS_Runtime* pRuntime,
                         const std::vector<v8::Local<v8::Value>>& params);
 
-  CJS_Result getPropertyInternal(CJS_Runtime* pRuntime,
-                                 const ByteString& propName);
+  CJS_Result GetPropertyInternal(CJS_Runtime* pRuntime,
+                                 ByteStringView prop_name);
   CJS_Result SetPropertyInternal(CJS_Runtime* pRuntime,
                                  v8::Local<v8::Value> vp,
                                  ByteStringView prop_name);

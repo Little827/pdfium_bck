@@ -1049,7 +1049,7 @@ FPDF_GetNamedDestByName(FPDF_DOCUMENT document, FPDF_BYTESTRING name) {
   if (!pDoc)
     return nullptr;
 
-  ByteString dest_name(name);
+  ByteStringView dest_name(name);
   return FPDFDestFromCPDFArray(CPDF_NameTree::LookupNamedDest(pDoc, dest_name));
 }
 

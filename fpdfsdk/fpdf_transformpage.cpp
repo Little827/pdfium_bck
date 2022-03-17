@@ -42,7 +42,7 @@ void SetBoundingBox(CPDF_Page* page,
 }
 
 bool GetBoundingBox(CPDF_Page* page,
-                    const ByteString& key,
+                    ByteStringView key,
                     float* left,
                     float* bottom,
                     float* right,

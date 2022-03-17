@@ -937,8 +937,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
   if (!font.has_value())
     return;
 
-  // TODO(thestig): Switch to ByteStringView.
-  ByteString font_name = font.value();
+  ByteStringView font_name = font.value().AsStringView();
 
   CFX_Color crText = fpdfdoc::CFXColorFromString(DA);
   CPDF_Dictionary* pDRDict = pFormDict->GetDictFor("DR");
@@ -956,7 +955,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     pFontDict->SetNewFor<CPDF_Name>("Subtype", "Type1");
     pFontDict->SetNewFor<CPDF_Name>("BaseFont", CFX_Font::kDefaultAnsiFontName);
     pFontDict->SetNewFor<CPDF_Name>("Encoding", "WinAnsiEncoding");
-    pDRFontDict->SetNewFor<CPDF_Reference>(font_name.AsStringView(), pDoc,
+    pDRFontDict->SetNewFor<CPDF_Reference>(font_name, pDoc,
                                            pFontDict->GetObjNum());
   }
   auto* pData = CPDF_DocPageData::FromDocument(pDoc);
@@ -1081,8 +1080,8 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
         pStreamResFontList = pStreamResList->SetNewFor<CPDF_Dictionary>("Font");
       }
       if (!pStreamResFontList->KeyExist(font_name)) {
-        pStreamResFontList->SetNewFor<CPDF_Reference>(
-            font_name.AsStringView(), pDoc, pFontDict->GetObjNum());
+        pStreamResFontList->SetNewFor<CPDF_Reference>(font_name, pDoc,
+                                                      pFontDict->GetObjNum());
       }
     } else {
       pStreamDict->SetFor("Resources", pFormDict->GetDictFor("DR")->Clone());
@@ -1105,7 +1104,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       uint32_t dwMaxLen = pMaxLen ? pMaxLen->GetInteger() : 0;
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
-          pDefFont, font_name);
+          pDefFont, font.value());
       CPVT_VariableText::Provider prd(&map);
       CPVT_VariableText vt;
       vt.SetProvider(&prd);
@@ -1165,7 +1164,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       WideString swValue = pV ? pV->GetUnicodeText() : WideString();
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
-          pDefFont, font_name);
+          pDefFont, font.value());
       CPVT_VariableText::Provider prd(&map);
       CPVT_VariableText vt;
       vt.SetProvider(&prd);
@@ -1234,7 +1233,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     case CPDF_GenerateAP::kListBox: {
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
-          pDefFont, font_name);
+          pDefFont, font.value());
       CPVT_VariableText::Provider prd(&map);
       CPDF_Array* pOpts =
           ToArray(CPDF_FormField::GetFieldAttr(pAnnotDict, "Opt"));
@@ -1341,8 +1340,8 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
   }
 
   if (!pStreamResFontList->KeyExist(font_name)) {
-    pStreamResFontList->SetNewFor<CPDF_Reference>(font_name.AsStringView(),
-                                                  pDoc, pFontDict->GetObjNum());
+    pStreamResFontList->SetNewFor<CPDF_Reference>(font_name, pDoc,
+                                                  pFontDict->GetObjNum());
   }
 }
 

@@ -74,7 +74,7 @@ void CPDF_Page::ParseContent() {
   ContinueParse(nullptr);
 }
 
-CPDF_Object* CPDF_Page::GetPageAttr(const ByteString& name) const {
+CPDF_Object* CPDF_Page::GetPageAttr(ByteStringView name) const {
   CPDF_Dictionary* pPageDict = GetDict();
   std::set<CPDF_Dictionary*> visited;
   while (true) {
@@ -89,7 +89,7 @@ CPDF_Object* CPDF_Page::GetPageAttr(const ByteString& name) const {
   return nullptr;
 }
 
-CFX_FloatRect CPDF_Page::GetBox(const ByteString& name) const {
+CFX_FloatRect CPDF_Page::GetBox(ByteStringView name) const {
   CFX_FloatRect box;
   CPDF_Array* pBox = ToArray(GetPageAttr(name));
   if (pBox) {

@@ -41,12 +41,12 @@ ByteString CPDF_ViewerPreferences::Duplex() const {
 }
 
 absl::optional<ByteString> CPDF_ViewerPreferences::GenericName(
-    const ByteString& bsKey) const {
+    ByteStringView key) const {
   const CPDF_Dictionary* pDict = GetViewerPreferences();
   if (!pDict)
     return absl::nullopt;
 
-  const CPDF_Name* pName = ToName(pDict->GetObjectFor(bsKey));
+  const CPDF_Name* pName = ToName(pDict->GetObjectFor(key));
   if (!pName)
     return absl::nullopt;
 

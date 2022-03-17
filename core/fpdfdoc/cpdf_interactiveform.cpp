@@ -138,7 +138,7 @@ ByteString GenerateNewFontResourceName(const CPDF_Dictionary* pResDict,
   ByteString bsNum;
   while (true) {
     ByteString csKey = csTmp + bsNum;
-    if (!pDict->KeyExist(csKey))
+    if (!pDict->KeyExist(csKey.AsStringView()))
       return csKey;
     if (m < szCount)
       csTmp += csStr[m++];
@@ -704,7 +704,7 @@ RetainPtr<CPDF_Font> CPDF_InteractiveForm::GetFormFont(
   if (!ValidateFontResourceDict(pFonts))
     return nullptr;
 
-  CPDF_Dictionary* pElement = pFonts->GetDictFor(csAlias);
+  CPDF_Dictionary* pElement = pFonts->GetDictFor(csAlias.AsStringView());
   if (!ValidateDictType(pElement, "Font"))
     return nullptr;
 

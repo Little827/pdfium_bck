@@ -1252,7 +1252,7 @@ void CPDFSDK_AppStream::SetAsPushButton() {
                                &font_map, pNormalIcon, iconFit, csNormalCaption,
                                crText, fFontSize, nLayout);
 
-    Write("N", csAP, ByteString());
+    Write("N", csAP, ByteStringView());
     if (pNormalIcon)
       AddImage("N", pNormalIcon);
 
@@ -1279,7 +1279,7 @@ void CPDFSDK_AppStream::SetAsPushButton() {
                                &font_map, pRolloverIcon, iconFit,
                                csRolloverCaption, crText, fFontSize, nLayout);
 
-    Write("R", csAP, ByteString());
+    Write("R", csAP, ByteStringView());
     if (pRolloverIcon)
       AddImage("R", pRolloverIcon);
 
@@ -1315,7 +1315,7 @@ void CPDFSDK_AppStream::SetAsPushButton() {
                                &font_map, pDownIcon, iconFit, csDownCaption,
                                crText, fFontSize, nLayout);
 
-    Write("D", csAP, ByteString());
+    Write("D", csAP, ByteStringView());
     if (pDownIcon)
       AddImage("D", pDownIcon);
   }
@@ -1389,10 +1389,10 @@ void CPDFSDK_AppStream::SetAsCheckBox() {
   csAP_N_ON += GetCheckBoxAppStream(rcClient, nStyle, crText);
   csAP_D_ON += GetCheckBoxAppStream(rcClient, nStyle, crText);
 
-  Write("N", csAP_N_ON, pControl->GetCheckedAPState());
+  Write("N", csAP_N_ON, pControl->GetCheckedAPState().AsStringView());
   Write("N", csAP_N_OFF, "Off");
 
-  Write("D", csAP_D_ON, pControl->GetCheckedAPState());
+  Write("D", csAP_D_ON, pControl->GetCheckedAPState().AsStringView());
   Write("D", csAP_D_OFF, "Off");
 
   ByteString csAS = widget_->GetAppState();
@@ -1505,10 +1505,10 @@ void CPDFSDK_AppStream::SetAsRadioButton() {
   csAP_N_ON += app_stream;
   csAP_D_ON += app_stream;
 
-  Write("N", csAP_N_ON, pControl->GetCheckedAPState());
+  Write("N", csAP_N_ON, pControl->GetCheckedAPState().AsStringView());
   Write("N", csAP_N_OFF, "Off");
 
-  Write("D", csAP_D_ON, pControl->GetCheckedAPState());
+  Write("D", csAP_D_ON, pControl->GetCheckedAPState().AsStringView());
   Write("D", csAP_D_OFF, "Off");
 
   ByteString csAS = widget_->GetAppState();
@@ -1584,7 +1584,7 @@ void CPDFSDK_AppStream::SetAsComboBox(absl::optional<WideString> sValue) {
   sBody << GetDropButtonAppStream(rcButton);
   Write("N",
         GetBackgroundAppStream() + GetBorderAppStream() + ByteString(sBody),
-        ByteString());
+        ByteStringView());
 }
 
 void CPDFSDK_AppStream::SetAsListBox() {
@@ -1669,7 +1669,7 @@ void CPDFSDK_AppStream::SetAsListBox() {
   }
   Write("N",
         GetBackgroundAppStream() + GetBorderAppStream() + ByteString(sBody),
-        ByteString());
+        ByteStringView());
 }
 
 void CPDFSDK_AppStream::SetAsTextField(absl::optional<WideString> sValue) {
@@ -1818,11 +1818,10 @@ void CPDFSDK_AppStream::SetAsTextField(absl::optional<WideString> sValue) {
   Write("N",
         GetBackgroundAppStream() + GetBorderAppStream() + ByteString(sLines) +
             ByteString(sBody),
-        ByteString());
+        ByteStringView());
 }
 
-void CPDFSDK_AppStream::AddImage(const ByteString& sAPType,
-                                 CPDF_Stream* pImage) {
+void CPDFSDK_AppStream::AddImage(ByteStringView sAPType, CPDF_Stream* pImage) {
   CPDF_Stream* pStream = dict_->GetStreamFor(sAPType);
   CPDF_Dictionary* pStreamDict = pStream->GetDict();
   ByteString sImageAlias = "IMG";
@@ -1839,12 +1838,11 @@ void CPDFSDK_AppStream::AddImage(const ByteString& sAPType,
                                       pImage->GetObjNum());
 }
 
-void CPDFSDK_AppStream::Write(const ByteString& sAPType,
+void CPDFSDK_AppStream::Write(ByteStringView sAPType,
                               const ByteString& sContents,
-                              const ByteString& sAPState) {
+                              ByteStringView sAPState) {
   CPDF_Dictionary* pParentDict;
-  // TODO(thestig): Switch to ByteStringView.
-  ByteString key;
+  ByteStringView key;
   if (sAPState.IsEmpty()) {
     pParentDict = dict_.Get();
     key = sAPType;
@@ -1859,8 +1857,7 @@ void CPDFSDK_AppStream::Write(const ByteString& sAPType,
   CPDF_Document* doc = widget_->GetPageView()->GetPDFDocument();
   if (!doc->IsModifiedAPStream(pStream)) {
     pStream = doc->CreateModifiedAPStream();
-    pParentDict->SetNewFor<CPDF_Reference>(key.AsStringView(), doc,
-                                           pStream->GetObjNum());
+    pParentDict->SetNewFor<CPDF_Reference>(key, doc, pStream->GetObjNum());
   }
 
   CPDF_Dictionary* pStreamDict = pStream->GetDict();

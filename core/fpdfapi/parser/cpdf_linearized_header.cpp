@@ -25,7 +25,7 @@ constexpr size_t kMaxInt = static_cast<size_t>(std::numeric_limits<int>::max());
 
 template <class T>
 bool IsValidNumericDictionaryValue(const CPDF_Dictionary* pDict,
-                                   const ByteString& key,
+                                   ByteStringView key,
                                    T min_value,
                                    bool must_exist = true) {
   if (!pDict->KeyExist(key))

@@ -37,8 +37,8 @@ class CPDF_PageContentGeneratorTest : public TestWithPageModule {
   }
 
   const CPDF_Dictionary* TestGetResource(CPDF_PageContentGenerator* pGen,
-                                         const ByteString& type,
-                                         const ByteString& name) {
+                                         ByteStringView type,
+                                         ByteStringView name) {
     const CPDF_Dictionary* pResources = pGen->m_pObjHolder->GetResources();
     return pResources->GetDictFor(type)->GetDictFor(name);
   }
@@ -209,17 +209,18 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessGraphics) {
   CPDF_PageContentGenerator generator(pTestPage.Get());
   fxcrt::ostringstream buf;
   TestProcessPath(&generator, &buf, pPathObj.get());
-  ByteString pathString(buf);
+  ByteString path_string(buf);
+  ByteStringView path_string_view = path_string.AsStringView();
 
   // Color RGB values used are integers divided by 255.
   EXPECT_EQ("q 0.501961 0.701961 0.34902 rg 1 0.901961 0 RG /",
-            pathString.First(48));
+            path_string_view.First(48));
   EXPECT_EQ(" gs 1 0 0 1 0 0 cm 1 2 m 3 4 l 5 6 l h B Q\n",
-            pathString.Last(43));
-  ASSERT_GT(pathString.GetLength(), 91U);
-  const CPDF_Dictionary* externalGS =
-      TestGetResource(&generator, "ExtGState",
-                      pathString.Substr(48, pathString.GetLength() - 91));
+            path_string_view.Last(43));
+  ASSERT_GT(path_string_view.GetLength(), 91U);
+  const CPDF_Dictionary* externalGS = TestGetResource(
+      &generator, "ExtGState",
+      path_string_view.Substr(48, path_string_view.GetLength() - 91));
   ASSERT_TRUE(externalGS);
   EXPECT_EQ(0.5f, externalGS->GetNumberFor("ca"));
   EXPECT_EQ(0.8f, externalGS->GetNumberFor("CA"));
@@ -235,8 +236,8 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessGraphics) {
             pathString2.Last(43));
 
   // Compare with the previous (should use same dictionary for gs)
-  EXPECT_EQ(pathString.GetLength() + 7, pathString2.GetLength());
-  EXPECT_EQ(pathString.Substr(48, pathString.GetLength() - 76),
+  EXPECT_EQ(path_string_view.GetLength() + 7, pathString2.GetLength());
+  EXPECT_EQ(path_string_view.Substr(48, path_string_view.GetLength() - 76),
             pathString2.Substr(55, pathString2.GetLength() - 83));
 }
 
@@ -273,11 +274,11 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessStandardText) {
   auto secondResourceAt = textString.ReverseFind('/');
   ASSERT_TRUE(secondResourceAt.has_value());
   secondResourceAt = secondResourceAt.value() + 1;
-  ByteString firstString = textString.First(firstResourceAt.value());
-  ByteString midString =
+  ByteString first_string = textString.First(firstResourceAt.value());
+  ByteString mid_string =
       textString.Substr(firstResourceAt.value(),
                         secondResourceAt.value() - firstResourceAt.value());
-  ByteString lastString =
+  ByteString last_string =
       textString.Last(textString.GetLength() - secondResourceAt.value());
   // q and Q must be outside the BT .. ET operations
   ByteString compareString1 =
@@ -288,18 +289,20 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessStandardText) {
   EXPECT_LT(compareString1.GetLength() + compareString2.GetLength() +
                 compareString3.GetLength(),
             textString.GetLength());
-  EXPECT_EQ(compareString1, firstString.First(compareString1.GetLength()));
-  EXPECT_EQ(compareString2, midString.Last(compareString2.GetLength()));
-  EXPECT_EQ(compareString3, lastString.Last(compareString3.GetLength()));
-  const CPDF_Dictionary* externalGS = TestGetResource(
-      &generator, "ExtGState",
-      midString.First(midString.GetLength() - compareString2.GetLength()));
+  EXPECT_EQ(compareString1, first_string.First(compareString1.GetLength()));
+  EXPECT_EQ(compareString2, mid_string.Last(compareString2.GetLength()));
+  EXPECT_EQ(compareString3, last_string.Last(compareString3.GetLength()));
+  const CPDF_Dictionary* externalGS =
+      TestGetResource(&generator, "ExtGState",
+                      mid_string.AsStringView().First(
+                          mid_string.GetLength() - compareString2.GetLength()));
   ASSERT_TRUE(externalGS);
   EXPECT_EQ(0.5f, externalGS->GetNumberFor("ca"));
   EXPECT_EQ(0.8f, externalGS->GetNumberFor("CA"));
   const CPDF_Dictionary* fontDict = TestGetResource(
       &generator, "Font",
-      lastString.First(lastString.GetLength() - compareString3.GetLength()));
+      last_string.AsStringView().First(last_string.GetLength() -
+                                       compareString3.GetLength()));
   ASSERT_TRUE(fontDict);
   EXPECT_EQ("Font", fontDict->GetNameFor("Type"));
   EXPECT_EQ("Type1", fontDict->GetNameFor("Subtype"));
@@ -356,8 +359,8 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessText) {
   auto firstResourceAt = textString.Find('/');
   ASSERT_TRUE(firstResourceAt.has_value());
   firstResourceAt = firstResourceAt.value() + 1;
-  ByteString firstString = textString.First(firstResourceAt.value());
-  ByteString lastString =
+  ByteString first_string = textString.First(firstResourceAt.value());
+  ByteString last_string =
       textString.Last(textString.GetLength() - firstResourceAt.value());
   // q and Q must be outside the BT .. ET operations
   ByteString compareString1 = "q 0 0 5 4 re W* n BT 1 0 0 1 0 0 Tm /";
@@ -367,11 +370,12 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessText) {
             textString.GetLength());
   EXPECT_EQ(compareString1, textString.First(compareString1.GetLength()));
   EXPECT_EQ(compareString2, textString.Last(compareString2.GetLength()));
-  const CPDF_Dictionary* fontDict = TestGetResource(
-      &generator, "Font",
-      textString.Substr(compareString1.GetLength(),
-                        textString.GetLength() - compareString1.GetLength() -
-                            compareString2.GetLength()));
+  const CPDF_Dictionary* fontDict =
+      TestGetResource(&generator, "Font",
+                      textString.AsStringView().Substr(
+                          compareString1.GetLength(),
+                          textString.GetLength() - compareString1.GetLength() -
+                              compareString2.GetLength()));
   ASSERT_TRUE(fontDict);
   EXPECT_TRUE(fontDict->GetObjNum());
   EXPECT_EQ("Font", fontDict->GetNameFor("Type"));

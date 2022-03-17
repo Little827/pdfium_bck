@@ -50,11 +50,11 @@ class CPDF_FormControl {
   bool IsDefaultChecked() const;
 
   HighlightingMode GetHighlightingMode() const;
-  bool HasMKEntry(const ByteString& csEntry) const;
+  bool HasMKEntry(ByteStringView csEntry) const;
   int GetRotation() const;
 
-  CFX_Color::TypeAndARGB GetColorARGB(const ByteString& csEntry);
-  float GetOriginalColorComponent(int index, const ByteString& csEntry);
+  CFX_Color::TypeAndARGB GetColorARGB(ByteStringView csEntry);
+  float GetOriginalColorComponent(int index, ByteStringView csEntry);
 
   CFX_Color GetOriginalBorderColor() {
     return GetOriginalColor(pdfium::appearance::kBC);
@@ -90,10 +90,10 @@ class CPDF_FormControl {
 
  private:
   RetainPtr<CPDF_Font> GetDefaultControlFont() const;
-  CFX_Color GetOriginalColor(const ByteString& csEntry);
+  CFX_Color GetOriginalColor(ByteStringView csEntry);
 
-  WideString GetCaption(const ByteString& csEntry) const;
-  CPDF_Stream* GetIcon(const ByteString& csEntry);
+  WideString GetCaption(ByteStringView csEntry) const;
+  CPDF_Stream* GetIcon(ByteStringView csEntry);
   CPDF_ApSettings GetMK() const;
 
   UnownedPtr<CPDF_FormField> const m_pField;

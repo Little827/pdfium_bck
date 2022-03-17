@@ -207,7 +207,7 @@ void ReplaceAbbrInDictionary(CPDF_Dictionary* pDict) {
   }
   for (const auto& op : replacements) {
     if (op.is_replace_key) {
-      pDict->ReplaceKey(op.key, ByteString(op.replacement));
+      pDict->ReplaceKey(op.key.AsStringView(), op.replacement);
     } else {
       pDict->SetNewFor<CPDF_Name>(op.key.AsStringView(),
                                   ByteString(op.replacement));
@@ -593,7 +593,7 @@ void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
   if (pProperty->IsName()) {
     ByteString property_name = pProperty->GetString();
     CPDF_Dictionary* pHolder = FindResourceHolder("Properties");
-    if (!pHolder || !pHolder->GetDictFor(property_name))
+    if (!pHolder || !pHolder->GetDictFor(property_name.AsStringView()))
       return;
     new_marks->AddMarkWithPropertiesHolder(tag, pHolder, property_name);
   } else if (pProperty->IsDictionary()) {
@@ -637,7 +637,7 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
     if (pCSObj->IsName()) {
       ByteString name = pCSObj->GetString();
       if (name != "DeviceRGB" && name != "DeviceGray" && name != "DeviceCMYK") {
-        pCSObj = FindResourceObj("ColorSpace", name);
+        pCSObj = FindResourceObj("ColorSpace", name.AsStringView());
         if (pCSObj && pCSObj->IsInline())
           pDict->SetFor("ColorSpace", pCSObj->Clone());
       }
@@ -690,7 +690,7 @@ void CPDF_StreamContentParser::Handle_ConcatMatrix() {
 }
 
 void CPDF_StreamContentParser::Handle_SetColorSpace_Fill() {
-  RetainPtr<CPDF_ColorSpace> pCS = FindColorSpace(GetString(0));
+  RetainPtr<CPDF_ColorSpace> pCS = FindColorSpace(GetString(0).AsStringView());
   if (!pCS)
     return;
 
@@ -698,7 +698,7 @@ void CPDF_StreamContentParser::Handle_SetColorSpace_Fill() {
 }
 
 void CPDF_StreamContentParser::Handle_SetColorSpace_Stroke() {
-  RetainPtr<CPDF_ColorSpace> pCS = FindColorSpace(GetString(0));
+  RetainPtr<CPDF_ColorSpace> pCS = FindColorSpace(GetString(0).AsStringView());
   if (!pCS)
     return;
 
@@ -738,7 +738,8 @@ void CPDF_StreamContentParser::Handle_ExecuteXObject() {
     return;
   }
 
-  CPDF_Stream* pXObject = ToStream(FindResourceObj("XObject", name));
+  CPDF_Stream* pXObject =
+      ToStream(FindResourceObj("XObject", name.AsStringView()));
   if (!pXObject)
     return;
 
@@ -894,7 +895,8 @@ void CPDF_StreamContentParser::Handle_SetGray_Stroke() {
 
 void CPDF_StreamContentParser::Handle_SetExtendGraphState() {
   ByteString name = GetString(0);
-  CPDF_Dictionary* pGS = ToDictionary(FindResourceObj("ExtGState", name));
+  CPDF_Dictionary* pGS =
+      ToDictionary(FindResourceObj("ExtGState", name.AsStringView()));
   if (!pGS)
     return;
 
@@ -1052,7 +1054,7 @@ void CPDF_StreamContentParser::Handle_SetColorPS_Fill() {
 
   // A valid |pLastParam| implies |m_ParamCount| > 0, so GetNamedColors() call
   // below is safe.
-  RetainPtr<CPDF_Pattern> pPattern = FindPattern(GetString(0));
+  RetainPtr<CPDF_Pattern> pPattern = FindPattern(GetString(0).AsStringView());
   if (pPattern)
     m_pCurStates->m_ColorState.SetFillPattern(pPattern, GetNamedColors());
 }
@@ -1069,13 +1071,14 @@ void CPDF_StreamContentParser::Handle_SetColorPS_Stroke() {
 
   // A valid |pLastParam| implies |m_ParamCount| > 0, so GetNamedColors() call
   // below is safe.
-  RetainPtr<CPDF_Pattern> pPattern = FindPattern(GetString(0));
+  RetainPtr<CPDF_Pattern> pPattern = FindPattern(GetString(0).AsStringView());
   if (pPattern)
     m_pCurStates->m_ColorState.SetStrokePattern(pPattern, GetNamedColors());
 }
 
 void CPDF_StreamContentParser::Handle_ShadeFill() {
-  RetainPtr<CPDF_ShadingPattern> pShading = FindShading(GetString(0));
+  RetainPtr<CPDF_ShadingPattern> pShading =
+      FindShading(GetString(0).AsStringView());
   if (!pShading)
     return;
 
@@ -1116,13 +1119,13 @@ void CPDF_StreamContentParser::Handle_SetFont() {
   }
 
   m_pCurStates->m_TextState.SetFontSize(fs);
-  RetainPtr<CPDF_Font> pFont = FindFont(GetString(1));
+  RetainPtr<CPDF_Font> pFont = FindFont(GetString(1).AsStringView());
   if (pFont)
     m_pCurStates->m_TextState.SetFont(pFont);
 }
 
 CPDF_Dictionary* CPDF_StreamContentParser::FindResourceHolder(
-    const ByteString& type) {
+    ByteStringView type) {
   if (!m_pResources)
     return nullptr;
 
@@ -1136,14 +1139,13 @@ CPDF_Dictionary* CPDF_StreamContentParser::FindResourceHolder(
   return m_pPageResources->GetDictFor(type);
 }
 
-CPDF_Object* CPDF_StreamContentParser::FindResourceObj(const ByteString& type,
-                                                       const ByteString& name) {
+CPDF_Object* CPDF_StreamContentParser::FindResourceObj(ByteStringView type,
+                                                       ByteStringView name) {
   CPDF_Dictionary* pHolder = FindResourceHolder(type);
   return pHolder ? pHolder->GetDirectObjectFor(name) : nullptr;
 }
 
-RetainPtr<CPDF_Font> CPDF_StreamContentParser::FindFont(
-    const ByteString& name) {
+RetainPtr<CPDF_Font> CPDF_StreamContentParser::FindFont(ByteStringView name) {
   CPDF_Dictionary* pFontDict = ToDictionary(FindResourceObj("Font", name));
   if (!pFontDict) {
     return CPDF_Font::GetStockFont(m_pDocument.Get(),
@@ -1159,14 +1161,15 @@ RetainPtr<CPDF_Font> CPDF_StreamContentParser::FindFont(
 }
 
 RetainPtr<CPDF_ColorSpace> CPDF_StreamContentParser::FindColorSpace(
-    const ByteString& name) {
+    ByteStringView name) {
   if (name == "Pattern")
     return CPDF_ColorSpace::GetStockCS(CPDF_ColorSpace::Family::kPattern);
 
   if (name == "DeviceGray" || name == "DeviceCMYK" || name == "DeviceRGB") {
     ByteString defname = "Default";
     defname += name.Last(name.GetLength() - 7);
-    const CPDF_Object* pDefObj = FindResourceObj("ColorSpace", defname);
+    const CPDF_Object* pDefObj =
+        FindResourceObj("ColorSpace", defname.AsStringView());
     if (!pDefObj) {
       if (name == "DeviceGray") {
         return CPDF_ColorSpace::GetStockCS(
@@ -1188,7 +1191,7 @@ RetainPtr<CPDF_ColorSpace> CPDF_StreamContentParser::FindColorSpace(
 }
 
 RetainPtr<CPDF_Pattern> CPDF_StreamContentParser::FindPattern(
-    const ByteString& name) {
+    ByteStringView name) {
   CPDF_Object* pPattern = FindResourceObj("Pattern", name);
   if (!pPattern || (!pPattern->IsDictionary() && !pPattern->IsStream()))
     return nullptr;
@@ -1197,7 +1200,7 @@ RetainPtr<CPDF_Pattern> CPDF_StreamContentParser::FindPattern(
 }
 
 RetainPtr<CPDF_ShadingPattern> CPDF_StreamContentParser::FindShading(
-    const ByteString& name) {
+    ByteStringView name) {
   CPDF_Object* pPattern = FindResourceObj("Shading", name);
   if (!pPattern || (!pPattern->IsDictionary() && !pPattern->IsStream()))
     return nullptr;

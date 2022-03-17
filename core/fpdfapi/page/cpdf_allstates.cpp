@@ -88,7 +88,8 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
           break;
 
         m_TextState.SetFontSize(pFont->GetNumberAt(1));
-        m_TextState.SetFont(pParser->FindFont(pFont->GetStringAt(0)));
+        m_TextState.SetFont(
+            pParser->FindFont(pFont->GetStringAt(0).AsStringView()));
         break;
       }
       case FXBSTR_ID('T', 'R', 0, 0):

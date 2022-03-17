@@ -142,7 +142,7 @@ const CPDF_Stream* CPDF_FileSpec::GetFileStream() const {
   static constexpr const char* kKeys[] = {"UF", "F", "DOS", "Mac", "Unix"};
   size_t end = pDict->GetStringFor("FS") == "URL" ? 2 : pdfium::size(kKeys);
   for (size_t i = 0; i < end; ++i) {
-    ByteString key = kKeys[i];
+    ByteStringView key = kKeys[i];
     if (!pDict->GetUnicodeTextFor(key).IsEmpty()) {
       const CPDF_Stream* pStream = pFiles->GetStreamFor(key);
       if (pStream)

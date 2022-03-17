@@ -25,22 +25,20 @@ class CPDF_NameTree {
   CPDF_NameTree& operator=(const CPDF_NameTree&) = delete;
   ~CPDF_NameTree();
 
-  // TODO(thestig): Convert `category` to ByteStringView.
   static std::unique_ptr<CPDF_NameTree> Create(CPDF_Document* pDoc,
-                                               const ByteString& category);
+                                               ByteStringView category);
 
   // If necessary, create missing Names dictionary in |pDoc|, and/or missing
   // Names array in the dictionary that corresponds to |category|, if necessary.
   // Returns nullptr on failure.
   static std::unique_ptr<CPDF_NameTree> CreateWithRootNameArray(
       CPDF_Document* pDoc,
-      const ByteString& category);
+      ByteStringView category);
 
   static std::unique_ptr<CPDF_NameTree> CreateForTesting(
       CPDF_Dictionary* pRoot);
 
-  static CPDF_Array* LookupNamedDest(CPDF_Document* doc,
-                                     const ByteString& name);
+  static CPDF_Array* LookupNamedDest(CPDF_Document* doc, ByteStringView name);
 
   bool AddValueAndName(RetainPtr<CPDF_Object> pObj, const WideString& name);
   bool DeleteValueAndName(size_t nIndex);
@@ -54,7 +52,7 @@ class CPDF_NameTree {
  private:
   explicit CPDF_NameTree(CPDF_Dictionary* pRoot);
 
-  CPDF_Array* LookupNewStyleNamedDest(const ByteString& name);
+  CPDF_Array* LookupNewStyleNamedDest(ByteStringView name);
 
   const RetainPtr<CPDF_Dictionary> m_pRoot;
 };

@@ -79,7 +79,7 @@ CPDF_BAFontMap::CPDF_BAFontMap(CPDF_Document* pDocument,
       nCharset = FX_Charset::kANSI;
     }
     AddFontData(m_pDefaultFont, m_sDefaultFontName, nCharset);
-    AddFontToAnnotDict(m_pDefaultFont, m_sDefaultFontName);
+    AddFontToAnnotDict(m_pDefaultFont, m_sDefaultFontName.AsStringView());
   }
 
   if (nCharset != FX_Charset::kANSI)
@@ -257,14 +257,14 @@ RetainPtr<CPDF_Font> CPDF_BAFontMap::GetAnnotDefaultFont(ByteString* sAlias) {
       if (CPDF_Dictionary* pNormalResDict =
               pNormalDict->GetDictFor("Resources")) {
         if (CPDF_Dictionary* pResFontDict = pNormalResDict->GetDictFor("Font"))
-          pFontDict = pResFontDict->GetDictFor(*sAlias);
+          pFontDict = pResFontDict->GetDictFor(sAlias->AsStringView());
       }
     }
   }
   if (bWidget && !pFontDict && pAcroFormDict) {
     if (CPDF_Dictionary* pDRDict = pAcroFormDict->GetDictFor("DR")) {
       if (CPDF_Dictionary* pDRFontDict = pDRDict->GetDictFor("Font"))
-        pFontDict = pDRFontDict->GetDictFor(*sAlias);
+        pFontDict = pDRFontDict->GetDictFor(sAlias->AsStringView());
     }
   }
   if (!pFontDict)
@@ -274,7 +274,7 @@ RetainPtr<CPDF_Font> CPDF_BAFontMap::GetAnnotDefaultFont(ByteString* sAlias) {
 }
 
 void CPDF_BAFontMap::AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
-                                        const ByteString& sAlias) {
+                                        ByteStringView sAlias) {
   if (!pFont)
     return;
 
@@ -282,10 +282,10 @@ void CPDF_BAFontMap::AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
       GetOrCreateDict(m_pAnnotDict.Get(), pdfium::annotation::kAP);
 
   // to avoid checkbox and radiobutton
-  if (ToDictionary(pAPDict->GetObjectFor(m_sAPType)))
+  if (ToDictionary(pAPDict->GetObjectFor(m_sAPType.AsStringView())))
     return;
 
-  CPDF_Stream* pStream = pAPDict->GetStreamFor(m_sAPType);
+  CPDF_Stream* pStream = pAPDict->GetStreamFor(m_sAPType.AsStringView());
   if (!pStream) {
     pStream = m_pDocument->NewIndirect<CPDF_Stream>();
     pAPDict->SetNewFor<CPDF_Reference>(m_sAPType.AsStringView(),
@@ -311,7 +311,7 @@ void CPDF_BAFontMap::AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
     RetainPtr<CPDF_Object> pObject =
         pFontDict->IsInline() ? pFontDict->Clone()
                               : pFontDict->MakeReference(m_pDocument.Get());
-    pStreamResFontList->SetFor(sAlias.AsStringView(), std::move(pObject));
+    pStreamResFontList->SetFor(sAlias, std::move(pObject));
   }
 }
 
@@ -335,7 +335,7 @@ int32_t CPDF_BAFontMap::GetFontIndex(const ByteString& sFontName,
     pFont = AddFontToDocument(sTemp, nCharset);
     sAlias = EncodeFontAlias(sTemp, nCharset);
   }
-  AddFontToAnnotDict(pFont, sAlias);
+  AddFontToAnnotDict(pFont, sAlias.AsStringView());
   return AddFontData(pFont, sAlias, nCharset);
 }
 
