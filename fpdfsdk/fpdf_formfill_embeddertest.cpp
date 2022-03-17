@@ -9,6 +9,7 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
@@ -23,7 +24,7 @@
 #include "third_party/base/check_op.h"
 #include "third_party/base/cxx17_backports.h"
 
-using pdfium::kTextFormChecksum;
+using pdfium::TextFormChecksum;
 
 using testing::_;
 using testing::InSequence;
@@ -1319,28 +1320,35 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_765384) {
 #endif  // PDF_ENABLE_V8
 
 TEST_F(FPDFFormFillEmbedderTest, FormText) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kFocusedTextFormWithAbcChecksum[] =
+  const char kFocusedTextFormWithAbcChecksumSkia[] =
       "199536b979a42da3c2745297f6e87a77";
-  const char kUnfocusedTextFormWithAbcChecksum[] =
+  const char kUnfocusedTextFormWithAbcChecksumSkia[] =
       "574aa06445957315f0dadd24a0c59811";
-#elif BUILDFLAG(IS_APPLE)
-  const char kFocusedTextFormWithAbcChecksum[] =
+#if BUILDFLAG(IS_APPLE)
+  const char kFocusedTextFormWithAbcChecksumAgg[] =
       "9fb14198d75ca0a107060c60ca21b0c7";
-  const char kUnfocusedTextFormWithAbcChecksum[] =
+  const char kUnfocusedTextFormWithAbcChecksumAgg[] =
       "3c3209357e0c057a0620afa7d83eb784";
 #else
-  const char kFocusedTextFormWithAbcChecksum[] =
+  const char kFocusedTextFormWithAbcChecksumAgg[] =
       "6e6f790bb14c4fc6107faf8c17d23dbd";
-  const char kUnfocusedTextFormWithAbcChecksum[] =
+  const char kUnfocusedTextFormWithAbcChecksumAgg[] =
       "94b7e10ac8c662b73e33628ca2f5e63b";
 #endif
+  const char* kFocusedTextFormWithAbcChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kFocusedTextFormWithAbcChecksumSkia
+          : kFocusedTextFormWithAbcChecksumAgg;
+  const char* kUnfocusedTextFormWithAbcChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kUnfocusedTextFormWithAbcChecksumSkia
+          : kUnfocusedTextFormWithAbcChecksumAgg;
   {
     ASSERT_TRUE(OpenDocument("text_form.pdf"));
     FPDF_PAGE page = LoadPage(0);
     ASSERT_TRUE(page);
     ScopedFPDFBitmap bitmap1 = RenderLoadedPage(page);
-    CompareBitmap(bitmap1.get(), 300, 300, kTextFormChecksum);
+    CompareBitmap(bitmap1.get(), 300, 300, TextFormChecksum());
 
     // Click on the textfield
     EXPECT_EQ(FPDF_FORMFIELD_TEXTFIELD,
@@ -1384,18 +1392,19 @@ TEST_F(FPDFFormFillEmbedderTest, FormText) {
 // Tests using FPDF_REVERSE_BYTE_ORDER with FPDF_FFLDraw(). The two rendered
 // bitmaps should be different.
 TEST_F(FPDFFormFillEmbedderTest, BUG_1281) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kMd5ReverseByteOrder[] = "8077970bbd10333f18186a9bb459bbe6";
-#else
-  const char kMd5ReverseByteOrder[] = "24fff03d1e663b7ece5f6e69ad837124";
-#endif
+  const char kMd5ReverseByteOrderSkia[] = "8077970bbd10333f18186a9bb459bbe6";
+  const char kMd5ReverseByteOrderAgg[] = "24fff03d1e663b7ece5f6e69ad837124";
+  const char* kMd5ReverseByteOrder =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kMd5ReverseByteOrderSkia
+          : kMd5ReverseByteOrderAgg;
 
   ASSERT_TRUE(OpenDocument("bug_890322.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
   ScopedFPDFBitmap bitmap_normal = RenderLoadedPage(page);
-  CompareBitmap(bitmap_normal.get(), 200, 200, pdfium::kBug890322Checksum);
+  CompareBitmap(bitmap_normal.get(), 200, 200, pdfium::Bug890322Checksum());
 
   ScopedFPDFBitmap bitmap_reverse_byte_order =
       RenderLoadedPageWithFlags(page, FPDF_REVERSE_BYTE_ORDER);
@@ -1406,19 +1415,21 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_1281) {
 }
 
 TEST_F(FPDFFormFillEmbedderTest, RemoveFormFieldHighlight) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kMd5NoHighlight[] = "013aa241c39c02505d9525550be04e48";
-#elif BUILDFLAG(IS_APPLE)
-  const char kMd5NoHighlight[] = "5c82aa43e3b478aa1e4c94bb9ef1f11f";
+  const char kMd5NoHighlightSkia[] = "013aa241c39c02505d9525550be04e48";
+#if BUILDFLAG(IS_APPLE)
+  const char kMd5NoHighlightAgg[] = "5c82aa43e3b478aa1e4c94bb9ef1f11f";
 #else
-  const char kMd5NoHighlight[] = "a6268304f7eedfa9ee98fac3caaf2efb";
+  const char kMd5NoHighlightAgg[] = "a6268304f7eedfa9ee98fac3caaf2efb";
 #endif
+  const char* kMd5NoHighlight = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                    ? kMd5NoHighlightSkia
+                                    : kMd5NoHighlightAgg;
 
   ASSERT_TRUE(OpenDocument("text_form.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
   ScopedFPDFBitmap bitmap1 = RenderLoadedPage(page);
-  CompareBitmap(bitmap1.get(), 300, 300, kTextFormChecksum);
+  CompareBitmap(bitmap1.get(), 300, 300, TextFormChecksum());
 
   // Removing the highlight changes the rendering.
   FPDF_RemoveFormFieldHighlight(form_handle());
@@ -1428,7 +1439,7 @@ TEST_F(FPDFFormFillEmbedderTest, RemoveFormFieldHighlight) {
   // Restoring it gives the original rendering.
   SetInitialFormFieldHighlight(form_handle());
   ScopedFPDFBitmap bitmap3 = RenderLoadedPage(page);
-  CompareBitmap(bitmap3.get(), 300, 300, kTextFormChecksum);
+  CompareBitmap(bitmap3.get(), 300, 300, TextFormChecksum());
 
   UnloadPage(page);
 }

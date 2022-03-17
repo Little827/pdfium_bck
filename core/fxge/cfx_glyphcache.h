@@ -15,17 +15,17 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_face.h"
-
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 #include "core/fxge/fx_font.h"
-#include "third_party/skia/include/core/SkTypeface.h"  // nogncheck
-#endif
+#include "third_party/skia/include/core/SkTypeface.h"
 
 class CFX_Font;
 class CFX_GlyphBitmap;
 class CFX_Matrix;
 class CFX_Path;
+class SkTypeface;
 struct CFX_TextRenderOptions;
+
+using CFX_TypeFace = SkTypeface;
 
 class CFX_GlyphCache final : public Retainable, public Observable {
  public:
@@ -46,9 +46,8 @@ class CFX_GlyphCache final : public Retainable, public Observable {
   RetainPtr<CFX_Face> GetFace() { return m_Face; }
   FXFT_FaceRec* GetFaceRec() { return m_Face ? m_Face->GetRec() : nullptr; }
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // For Skia only.
   CFX_TypeFace* GetDeviceCache(const CFX_Font* pFont);
-#endif
 
  private:
   explicit CFX_GlyphCache(RetainPtr<CFX_Face> face);
@@ -82,9 +81,7 @@ class CFX_GlyphCache final : public Retainable, public Observable {
   RetainPtr<CFX_Face> const m_Face;
   std::map<ByteString, SizeGlyphCache> m_SizeMap;
   std::map<PathMapKey, std::unique_ptr<CFX_Path>> m_PathMap;
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   sk_sp<SkTypeface> m_pTypeface;
-#endif
 };
 
 #endif  //  CORE_FXGE_CFX_GLYPHCACHE_H_
