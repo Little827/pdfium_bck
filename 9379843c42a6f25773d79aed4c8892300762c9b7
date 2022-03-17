@@ -79,6 +79,30 @@
       },
       "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b057152_cc772936",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T01:45:01Z",
+      "side": 1,
+      "message": "Maybe we can switch CPDF_Dictionary to use ByteStringView for keys in its public APIs. e.g. https://pdfium-review.googlesource.com/91611",
+      "parentUuid": "939e9d14_a9553719",
+      "range": {
+        "startLine": 173,
+        "startChar": 47,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
