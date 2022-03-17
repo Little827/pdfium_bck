@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40beeef2_61483c78",
+        "filename": "testing/resources/bug_1752_truetype_font.fragment",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-17T17:31:13Z",
+      "side": 1,
+      "message": "This is the whole font I got from core/fxge/fontdata/chromefontdata/FoxitSansMM.cpp.\n\nI used fontforge to extract just ABCDEFG glyphs in the new patchset. But it somehow changed macOS rendering results and now mac bots are red.",
+      "parentUuid": "c2878405_840e5235",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "641a5777_a70f806b",
         "filename": "testing/resources/pixel/bug_1752.in",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-16T22:02:54Z",
       "side": 1,
       "message": "No spaces immediately inside the brackets. (Like line 34) Same for lines 11 and 42.",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "150953ef_e80f5332",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-17T17:31:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "641a5777_a70f806b",
       "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-16T22:02:54Z",
       "side": 1,
       "message": "Can the data stream also be flate encoded to further reduce the size of the fragment file?",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e790c86_7d6ddb3f",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-17T17:31:13Z",
+      "side": 1,
+      "message": "I tried to use zlib-flate to compress the embedded font, but it triggers pdfium to look for substitute font again instead of using the embedded font.\nMaybe there are other ways to add the Flate encoding without sacrifice the embedded font?",
+      "parentUuid": "72942ecf_c825cd1e",
       "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
