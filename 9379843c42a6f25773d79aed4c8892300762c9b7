@@ -151,6 +151,30 @@
       },
       "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f09b35_fcda9ac9",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-17T18:39:05Z",
+      "side": 1,
+      "message": "Ack. Indeed I was playing around with the same thing yesterday, but couldn\u0027t get the templates to resolve. Glad you found the missing pieces.",
+      "parentUuid": "f2817912_b2ed6825",
+      "range": {
+        "startLine": 173,
+        "startChar": 47,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "9379843c42a6f25773d79aed4c8892300762c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
