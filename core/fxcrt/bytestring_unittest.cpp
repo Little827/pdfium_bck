@@ -229,6 +229,9 @@ TEST(ByteString, OperatorLT) {
   EXPECT_FALSE(def < c_abc);
   EXPECT_TRUE(abc < v_def);
   EXPECT_FALSE(def < v_abc);
+
+  EXPECT_TRUE(v_empty < a);
+  EXPECT_TRUE(v_empty < c_a);
 }
 
 TEST(ByteString, OperatorEQ) {
