@@ -140,6 +140,24 @@
       "parentUuid": "6e790c86_7d6ddb3f",
       "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb96ce3_9e8ae0f4",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-17T18:28:11Z",
+      "side": 1,
+      "message": "When I tested, I had /FlateDecode in the Filter array (after /ASCIIHexDecode). But the embedded font wasn\u0027t recognized and pdfium_test went through the path of finding substitute font.",
+      "parentUuid": "9f1d0fb8_ff4ca59f",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
