@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a99ee295_5c603d1e",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T17:27:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c71362fc_cca620a0",
+      "range": {
+        "startLine": 929,
+        "startChar": 29,
+        "endLine": 929,
+        "endChar": 50
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574ef6c2_6c2204b3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-16T16:14:30Z",
       "side": 1,
       "message": "otherwise, size() \u003e\u003d 1 so rev is valid.",
+      "range": {
+        "startLine": 931,
+        "startChar": 15,
+        "endLine": 931,
+        "endChar": 40
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e9383d_c330c556",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T17:27:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "574ef6c2_6c2204b3",
       "range": {
         "startLine": 931,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1cd0df_a736d625",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T17:27:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de463cfa_1434aedd",
+      "range": {
+        "startLine": 932,
+        "startChar": 28,
+        "endLine": 932,
+        "endChar": 36
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "837acb18_7b02a162",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-16T16:14:30Z",
       "side": 1,
       "message": "it would be funny if we forgot the *s and instead swapped iterators themselves, forever adding and then subtracting in turn.",
+      "range": {
+        "startLine": 933,
+        "startChar": 16,
+        "endLine": 933,
+        "endChar": 26
+      },
+      "revId": "66531a884b8719bfdfc5e79f46c0f3d013d567c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aad4168_71a7bf66",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T17:27:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "837acb18_7b02a162",
       "range": {
         "startLine": 933,
         "startChar": 16,
