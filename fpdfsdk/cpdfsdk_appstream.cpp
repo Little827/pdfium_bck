@@ -1834,7 +1834,7 @@ void CPDFSDK_AppStream::AddImage(const ByteString& sAPType,
   CPDF_Dictionary* pStreamResList = GetOrCreateDict(pStreamDict, "Resources");
   CPDF_Dictionary* pXObject =
       pStreamResList->SetNewFor<CPDF_Dictionary>("XObject");
-  pXObject->SetNewFor<CPDF_Reference>(sImageAlias,
+  pXObject->SetNewFor<CPDF_Reference>(sImageAlias.AsStringView(),
                                       widget_->GetPageView()->GetPDFDocument(),
                                       pImage->GetObjNum());
 }
@@ -1843,6 +1843,7 @@ void CPDFSDK_AppStream::Write(const ByteString& sAPType,
                               const ByteString& sContents,
                               const ByteString& sAPState) {
   CPDF_Dictionary* pParentDict;
+  // TODO(thestig): Switch to ByteStringView.
   ByteString key;
   if (sAPState.IsEmpty()) {
     pParentDict = dict_.Get();
@@ -1858,7 +1859,8 @@ void CPDFSDK_AppStream::Write(const ByteString& sAPType,
   CPDF_Document* doc = widget_->GetPageView()->GetPDFDocument();
   if (!doc->IsModifiedAPStream(pStream)) {
     pStream = doc->CreateModifiedAPStream();
-    pParentDict->SetNewFor<CPDF_Reference>(key, doc, pStream->GetObjNum());
+    pParentDict->SetNewFor<CPDF_Reference>(key.AsStringView(), doc,
+                                           pStream->GetObjNum());
   }
 
   CPDF_Dictionary* pStreamDict = pStream->GetDict();

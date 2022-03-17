@@ -32,7 +32,7 @@
 namespace {
 
 void SetBoundingBox(CPDF_Page* page,
-                    const ByteString& key,
+                    ByteStringView key,
                     const CFX_FloatRect& rect) {
   if (!page)
     return;

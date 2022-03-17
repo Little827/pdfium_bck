@@ -161,13 +161,13 @@ FPDFAttachment_SetStringValue(FPDF_ATTACHMENT attachment,
   if (!pParamsDict)
     return false;
 
-  ByteString bsKey = key;
+  ByteStringView key_view = key;
   ByteString bsValue = ByteStringFromFPDFWideString(value);
-  bool bEncodedAsHex = bsKey == kChecksumKey;
+  bool bEncodedAsHex = key_view == kChecksumKey;
   if (bEncodedAsHex)
     bsValue = CFXByteStringHexDecode(bsValue);
 
-  pParamsDict->SetNewFor<CPDF_String>(bsKey, bsValue, bEncodedAsHex);
+  pParamsDict->SetNewFor<CPDF_String>(key_view, bsValue, bEncodedAsHex);
   return true;
 }
 

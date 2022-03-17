@@ -654,7 +654,7 @@ CJS_Result CJS_Document::get_author(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Document::set_author(CJS_Runtime* pRuntime,
                                     v8::Local<v8::Value> vp) {
-  return setPropertyInternal(pRuntime, vp, "Author");
+  return SetPropertyInternal(pRuntime, vp, "Author");
 }
 
 CJS_Result CJS_Document::get_info(CJS_Runtime* pRuntime) {
@@ -734,9 +734,9 @@ CJS_Result CJS_Document::getPropertyInternal(CJS_Runtime* pRuntime,
       pDictionary->GetUnicodeTextFor(propName).AsStringView()));
 }
 
-CJS_Result CJS_Document::setPropertyInternal(CJS_Runtime* pRuntime,
+CJS_Result CJS_Document::SetPropertyInternal(CJS_Runtime* pRuntime,
                                              v8::Local<v8::Value> vp,
-                                             const ByteString& propName) {
+                                             ByteStringView prop_name) {
   if (!m_pFormFillEnv)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -748,7 +748,7 @@ CJS_Result CJS_Document::setPropertyInternal(CJS_Runtime* pRuntime,
   if (!m_pFormFillEnv->HasPermissions(kModifyContent))
     return CJS_Result::Failure(JSMessage::kPermissionError);
 
-  pDictionary->SetNewFor<CPDF_String>(propName, pRuntime->ToWideString(vp));
+  pDictionary->SetNewFor<CPDF_String>(prop_name, pRuntime->ToWideString(vp));
   m_pFormFillEnv->SetChangeMark();
   return CJS_Result::Success();
 }
@@ -759,7 +759,7 @@ CJS_Result CJS_Document::get_creation_date(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Document::set_creation_date(CJS_Runtime* pRuntime,
                                            v8::Local<v8::Value> vp) {
-  return setPropertyInternal(pRuntime, vp, "CreationDate");
+  return SetPropertyInternal(pRuntime, vp, "CreationDate");
 }
 
 CJS_Result CJS_Document::get_creator(CJS_Runtime* pRuntime) {
@@ -768,7 +768,7 @@ CJS_Result CJS_Document::get_creator(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Document::set_creator(CJS_Runtime* pRuntime,
                                      v8::Local<v8::Value> vp) {
-  return setPropertyInternal(pRuntime, vp, "Creator");
+  return SetPropertyInternal(pRuntime, vp, "Creator");
 }
 
 CJS_Result CJS_Document::get_delay(CJS_Runtime* pRuntime) {
@@ -806,7 +806,7 @@ CJS_Result CJS_Document::get_keywords(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Document::set_keywords(CJS_Runtime* pRuntime,
                                       v8::Local<v8::Value> vp) {
-  return setPropertyInternal(pRuntime, vp, "Keywords");
+  return SetPropertyInternal(pRuntime, vp, "Keywords");
 }
 
 CJS_Result CJS_Document::get_mod_date(CJS_Runtime* pRuntime) {
@@ -815,7 +815,7 @@ CJS_Result CJS_Document::get_mod_date(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Document::set_mod_date(CJS_Runtime* pRuntime,
                                       v8::Local<v8::Value> vp) {
-  return setPropertyInternal(pRuntime, vp, "ModDate");
+  return SetPropertyInternal(pRuntime, vp, "ModDate");
 }
 
 CJS_Result CJS_Document::get_producer(CJS_Runtime* pRuntime) {
@@ -824,7 +824,7 @@ CJS_Result CJS_Document::get_producer(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Document::set_producer(CJS_Runtime* pRuntime,
                                       v8::Local<v8::Value> vp) {
-  return setPropertyInternal(pRuntime, vp, "Producer");
+  return SetPropertyInternal(pRuntime, vp, "Producer");
 }
 
 CJS_Result CJS_Document::get_subject(CJS_Runtime* pRuntime) {
@@ -833,7 +833,7 @@ CJS_Result CJS_Document::get_subject(CJS_Runtime* pRuntime) {
 
 CJS_Result CJS_Document::set_subject(CJS_Runtime* pRuntime,
                                      v8::Local<v8::Value> vp) {
-  return setPropertyInternal(pRuntime, vp, "Subject");
+  return SetPropertyInternal(pRuntime, vp, "Subject");
 }
 
 CJS_Result CJS_Document::get_title(CJS_Runtime* pRuntime) {
@@ -846,7 +846,7 @@ CJS_Result CJS_Document::set_title(CJS_Runtime* pRuntime,
                                    v8::Local<v8::Value> vp) {
   if (!m_pFormFillEnv)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
-  return setPropertyInternal(pRuntime, vp, "Title");
+  return SetPropertyInternal(pRuntime, vp, "Title");
 }
 
 CJS_Result CJS_Document::get_num_pages(CJS_Runtime* pRuntime) {
