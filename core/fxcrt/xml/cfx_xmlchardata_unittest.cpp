@@ -8,19 +8,18 @@
 #include "testing/string_write_stream.h"
 
 TEST(CFX_XMLCharDataTest, GetType) {
-  CFX_XMLCharData data(L"My Data");
+  CFX_XMLCharData data(WideString(L"My Data"));
   EXPECT_EQ(CFX_XMLNode::Type::kCharData, data.GetType());
 }
 
 TEST(CFX_XMLCharDataTest, GetText) {
-  CFX_XMLCharData data(L"My Data");
+  CFX_XMLCharData data(WideString(L"My Data"));
   EXPECT_EQ(L"My Data", data.GetText());
 }
 
 TEST(CFX_XMLCharDataTest, Clone) {
   CFX_XMLDocument doc;
-
-  CFX_XMLCharData data(L"My Data");
+  CFX_XMLCharData data(WideString(L"My Data"));
   CFX_XMLNode* clone = data.Clone(&doc);
   EXPECT_TRUE(clone != nullptr);
   EXPECT_NE(&data, clone);
@@ -30,7 +29,7 @@ TEST(CFX_XMLCharDataTest, Clone) {
 
 TEST(CFX_XMLCharDataTest, Save) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLCharData data(L"My Data");
+  CFX_XMLCharData data(WideString(L"My Data"));
   data.Save(stream);
   EXPECT_EQ("<![CDATA[My Data]]>", stream->ToString());
 }

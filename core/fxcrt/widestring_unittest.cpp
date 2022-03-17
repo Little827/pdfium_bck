@@ -112,7 +112,7 @@ TEST(WideString, Assign) {
   }
   {
     // From wchar_t*.
-    WideString string1 = L"abc";
+    WideString string1(L"abc");
     EXPECT_EQ(L"abc", string1);
     string1 = nullptr;
     EXPECT_TRUE(string1.IsEmpty());
@@ -1142,12 +1142,12 @@ TEST(WideString, ToUTF16LE) {
     WideString ws;
     ByteString bs;
   } const utf16le_encode_cases[] = {
-      {L"", ByteString("\0\0", 2)},
-      {L"abc", ByteString("a\0b\0c\0\0\0", 8)},
-      {L"abcdef", ByteString("a\0b\0c\0d\0e\0f\0\0\0", 14)},
-      {L"abc\0def", ByteString("a\0b\0c\0\0\0", 8)},
-      {L"\xaabb\xccdd", ByteString("\xbb\xaa\xdd\xcc\0\0", 6)},
-      {L"\x3132\x6162", ByteString("\x32\x31\x62\x61\0\0", 6)},
+      {WideString(L""), ByteString("\0\0", 2)},
+      {WideString(L"abc"), ByteString("a\0b\0c\0\0\0", 8)},
+      {WideString(L"abcdef"), ByteString("a\0b\0c\0d\0e\0f\0\0\0", 14)},
+      {WideString(L"abc\0def"), ByteString("a\0b\0c\0\0\0", 8)},
+      {WideString(L"\xaabb\xccdd"), ByteString("\xbb\xaa\xdd\xcc\0\0", 6)},
+      {WideString(L"\x3132\x6162"), ByteString("\x32\x31\x62\x61\0\0", 6)},
   };
 
   for (size_t i = 0; i < pdfium::size(utf16le_encode_cases); ++i) {

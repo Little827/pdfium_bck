@@ -392,7 +392,7 @@ TEST(ParserDecodeTest, EncodeText) {
   };
 
   for (const auto& test_case : kTestData) {
-    ByteString output = PDF_EncodeText(test_case.input);
+    ByteString output = PDF_EncodeText(WideString(test_case.input));
     ASSERT_EQ(test_case.expected_length, output.GetLength())
         << "for case " << test_case.input;
     const char* str_ptr = output.c_str();

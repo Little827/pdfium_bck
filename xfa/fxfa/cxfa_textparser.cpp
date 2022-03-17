@@ -212,9 +212,9 @@ RetainPtr<CFX_CSSComputedStyle> CXFA_TextParser::ComputeStyle(
     return nullptr;
 
   auto pStyle = CreateStyle(pParentStyle);
-  m_pSelector->ComputeStyle(pContext->GetDecls(),
-                            tagProvider->GetAttribute(L"style"),
-                            tagProvider->GetAttribute(L"align"), pStyle.Get());
+  m_pSelector->ComputeStyle(
+      pContext->GetDecls(), tagProvider->GetAttribute(WideString(L"style")),
+      tagProvider->GetAttribute(WideString(L"align")), pStyle.Get());
   return pStyle;
 }
 
@@ -247,9 +247,9 @@ void CXFA_TextParser::ParseRichText(const CFX_XMLNode* pXMLNode,
       auto declArray =
           m_pSelector->MatchDeclarations(tagProvider->GetTagName());
       pNewStyle = CreateStyle(pParentStyle);
-      m_pSelector->ComputeStyle(declArray, tagProvider->GetAttribute(L"style"),
-                                tagProvider->GetAttribute(L"align"),
-                                pNewStyle.Get());
+      m_pSelector->ComputeStyle(
+          declArray, tagProvider->GetAttribute(WideString(L"style")),
+          tagProvider->GetAttribute(WideString(L"align")), pNewStyle.Get());
 
       if (!declArray.empty())
         pTextContext->SetDecls(std::move(declArray));
@@ -295,9 +295,9 @@ std::unique_ptr<CXFA_TextParser::TagProvider> CXFA_TextParser::ParseTagInfo(
     WideString wsName = pXMLElement->GetLocalTagName();
     tagProvider->SetTagName(wsName);
     tagProvider->m_bTagAvailable = TagValidate(wsName);
-    WideString wsValue = pXMLElement->GetAttribute(L"style");
+    WideString wsValue = pXMLElement->GetAttribute(WideString(L"style"));
     if (!wsValue.IsEmpty())
-      tagProvider->SetAttribute(L"style", wsValue);
+      tagProvider->SetAttribute(WideString(L"style"), wsValue);
 
     return tagProvider;
   }
@@ -317,21 +317,22 @@ XFA_AttributeValue CXFA_TextParser::GetVAlign(
 float CXFA_TextParser::GetTabInterval(
     const CFX_CSSComputedStyle* pStyle) const {
   WideString wsValue;
-  if (pStyle && pStyle->GetCustomStyle(L"tab-interval", &wsValue))
+  if (pStyle && pStyle->GetCustomStyle(WideString(L"tab-interval"), &wsValue))
     return CXFA_Measurement(wsValue.AsStringView()).ToUnit(XFA_Unit::Pt);
   return 36;
 }
 
 int32_t CXFA_TextParser::CountTabs(const CFX_CSSComputedStyle* pStyle) const {
   WideString wsValue;
-  if (pStyle && pStyle->GetCustomStyle(L"xfa-tab-count", &wsValue))
+  if (pStyle && pStyle->GetCustomStyle(WideString(L"xfa-tab-count"), &wsValue))
     return wsValue.GetInteger();
   return 0;
 }
 
 bool CXFA_TextParser::IsSpaceRun(const CFX_CSSComputedStyle* pStyle) const {
   WideString wsValue;
-  return pStyle && pStyle->GetCustomStyle(L"xfa-spacerun", &wsValue) &&
+  return pStyle &&
+         pStyle->GetCustomStyle(WideString(L"xfa-spacerun"), &wsValue) &&
          wsValue.EqualsASCIINoCase("yes");
 }
 
@@ -339,7 +340,7 @@ RetainPtr<CFGAS_GEFont> CXFA_TextParser::GetFont(
     CXFA_FFDoc* doc,
     CXFA_TextProvider* pTextProvider,
     const CFX_CSSComputedStyle* pStyle) const {
-  WideString wsFamily = L"Courier";
+  WideString wsFamily(L"Courier");
   uint32_t dwStyle = 0;
   CXFA_Font* font = pTextProvider->GetFontIfExists();
   if (font) {
@@ -380,16 +381,17 @@ int32_t CXFA_TextParser::GetHorScale(CXFA_TextProvider* pTextProvider,
                                      const CFX_XMLNode* pXMLNode) const {
   if (pStyle) {
     WideString wsValue;
-    if (pStyle->GetCustomStyle(L"xfa-font-horizontal-scale", &wsValue))
+    if (pStyle->GetCustomStyle(WideString(L"xfa-font-horizontal-scale"),
+                               &wsValue)) {
       return wsValue.GetInteger();
-
+    }
     while (pXMLNode) {
       auto it = m_mapXMLNodeToParseContext.find(pXMLNode);
       if (it != m_mapXMLNodeToParseContext.end()) {
         Context* pContext = it->second.get();
         if (pContext && pContext->GetParentStyle() &&
             pContext->GetParentStyle()->GetCustomStyle(
-                L"xfa-font-horizontal-scale", &wsValue)) {
+                WideString(L"xfa-font-horizontal-scale"), &wsValue)) {
           return wsValue.GetInteger();
         }
       }
@@ -405,7 +407,8 @@ int32_t CXFA_TextParser::GetVerScale(CXFA_TextProvider* pTextProvider,
                                      const CFX_CSSComputedStyle* pStyle) const {
   if (pStyle) {
     WideString wsValue;
-    if (pStyle->GetCustomStyle(L"xfa-font-vertical-scale", &wsValue))
+    if (pStyle->GetCustomStyle(WideString(L"xfa-font-vertical-scale"),
+                               &wsValue))
       return wsValue.GetInteger();
   }
 
@@ -432,7 +435,8 @@ XFA_AttributeValue CXFA_TextParser::GetUnderlinePeriod(
     CXFA_TextProvider* pTextProvider,
     const CFX_CSSComputedStyle* pStyle) const {
   WideString wsValue;
-  if (pStyle && pStyle->GetCustomStyle(L"underlinePeriod", &wsValue)) {
+  if (pStyle &&
+      pStyle->GetCustomStyle(WideString(L"underlinePeriod"), &wsValue)) {
     return wsValue.EqualsASCII("word") ? XFA_AttributeValue::Word
                                        : XFA_AttributeValue::All;
   }
@@ -510,20 +514,20 @@ absl::optional<WideString> CXFA_TextParser::GetEmbeddedObj(
   if (!pElement)
     return absl::nullopt;
 
-  WideString wsAttr = pElement->GetAttribute(L"xfa:embed");
+  WideString wsAttr = pElement->GetAttribute(WideString(L"xfa:embed"));
   if (wsAttr.IsEmpty())
     return absl::nullopt;
 
   if (wsAttr[0] == L'#')
     wsAttr.Delete(0);
 
-  WideString ws =
-      GetLowerCaseElementAttributeOrDefault(pElement, L"xfa:embedType", L"som");
+  WideString ws = GetLowerCaseElementAttributeOrDefault(
+      pElement, WideString(L"xfa:embedType"), WideString(L"som"));
   if (!ws.EqualsASCII("uri"))
     return absl::nullopt;
 
-  ws = GetLowerCaseElementAttributeOrDefault(pElement, L"xfa:embedMode",
-                                             L"formatted");
+  ws = GetLowerCaseElementAttributeOrDefault(
+      pElement, WideString(L"xfa:embedMode"), WideString(L"formatted"));
   if (!(ws.EqualsASCII("raw") || ws.EqualsASCII("formatted")))
     return absl::nullopt;
 
@@ -542,8 +546,8 @@ bool CXFA_TextParser::GetTabstops(const CFX_CSSComputedStyle* pStyle,
     return false;
 
   WideString wsValue;
-  if (!pStyle->GetCustomStyle(L"xfa-tab-stops", &wsValue) &&
-      !pStyle->GetCustomStyle(L"tab-stops", &wsValue)) {
+  if (!pStyle->GetCustomStyle(WideString(L"xfa-tab-stops"), &wsValue) &&
+      !pStyle->GetCustomStyle(WideString(L"tab-stops"), &wsValue)) {
     return false;
   }
 

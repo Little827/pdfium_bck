@@ -9,7 +9,7 @@
 #include "core/fxcrt/xml/cfx_xmlinstruction.h"
 
 CFX_XMLDocument::CFX_XMLDocument() {
-  root_ = CreateNode<CFX_XMLElement>(L"root");
+  root_ = CreateNode<CFX_XMLElement>(WideString(L"root"));
 }
 
 CFX_XMLDocument::~CFX_XMLDocument() = default;

@@ -277,7 +277,8 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
       pNode->JSObject()->HasAttribute(XFA_Attribute::Name)) {
     WideString wsElement = WideString::FromASCII(pNode->GetClassName());
     WideString wsName;
-    SaveAttribute(pNode, XFA_Attribute::Name, L"name", true, wsName);
+    SaveAttribute(pNode, XFA_Attribute::Name, WideString(L"name"), true,
+                  wsName);
     buf << "<";
     buf << wsElement;
     buf << wsName;
@@ -309,7 +310,8 @@ void RegenerateFormFile_Container(CXFA_Node* pNode,
   pStream->WriteString(wsElement.ToUTF8().AsStringView());
 
   WideString wsOutput;
-  SaveAttribute(pNode, XFA_Attribute::Name, L"name", true, wsOutput);
+  SaveAttribute(pNode, XFA_Attribute::Name, WideString(L"name"), true,
+                wsOutput);
 
   WideString wsAttrs;
   for (size_t i = 0;; ++i) {
@@ -445,11 +447,11 @@ void XFA_DataExporter_DealWithDataGroupNode(CXFA_Node* pDataNode) {
 
   CFX_XMLElement* pElement = ToXMLElement(pDataNode->GetXMLMappingNode());
   if (iChildNum > 0) {
-    if (pElement->HasAttribute(L"xfa:dataNode"))
-      pElement->RemoveAttribute(L"xfa:dataNode");
+    if (pElement->HasAttribute(WideString(L"xfa:dataNode")))
+      pElement->RemoveAttribute(WideString(L"xfa:dataNode"));
     return;
   }
-  pElement->SetAttribute(L"xfa:dataNode", L"dataGroup");
+  pElement->SetAttribute(WideString(L"xfa:dataNode"), WideString(L"dataGroup"));
 }
 
 void XFA_DataExporter_RegenerateFormFile(

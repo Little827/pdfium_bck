@@ -181,7 +181,7 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument() {
   if (pInfoDict) {
     if (IsPDFSandboxPolicyEnabled(FPDF_POLICY_MACHINETIME_ACCESS))
       pInfoDict->SetNewFor<CPDF_String>("CreationDate", DateStr, false);
-    pInfoDict->SetNewFor<CPDF_String>("Creator", L"PDFium");
+    pInfoDict->SetNewFor<CPDF_String>("Creator", WideString(L"PDFium"));
   }
 
   // Caller takes ownership of pDoc.

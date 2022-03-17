@@ -42,7 +42,7 @@ TEST(ParserUtilityTest, ValidateDictType) {
   EXPECT_FALSE(ValidateDictType(dict.Get(), "bar"));
 
   // Add the wrong object type.
-  dict->SetNewFor<CPDF_String>("Type", L"foo");
+  dict->SetNewFor<CPDF_String>("Type", WideString(L"foo"));
   EXPECT_FALSE(ValidateDictType(dict.Get(), "foo"));
   EXPECT_FALSE(ValidateDictType(dict.Get(), "bar"));
 
@@ -72,7 +72,7 @@ TEST(ParserUtilityTest, ValidateDictAllResourcesOfType) {
     new_dict->SetNewFor<CPDF_Name>("Type", "foo");
     new_dict = dict->SetNewFor<CPDF_Dictionary>("f2");
     new_dict->SetNewFor<CPDF_Name>("Type", "foo");
-    dict->SetNewFor<CPDF_String>("f3", L"foo");
+    dict->SetNewFor<CPDF_String>("f3", WideString(L"foo"));
     EXPECT_FALSE(ValidateDictAllResourcesOfType(dict.Get(), "foo"));
     EXPECT_FALSE(ValidateDictAllResourcesOfType(dict.Get(), "bar"));
 
@@ -113,7 +113,7 @@ TEST(ParserUtilityTest, ValidateDictOptionalType) {
   EXPECT_TRUE(ValidateDictOptionalType(dict.Get(), "bar"));
 
   // Add the wrong object type.
-  dict->SetNewFor<CPDF_String>("Type", L"foo");
+  dict->SetNewFor<CPDF_String>("Type", WideString(L"foo"));
   EXPECT_FALSE(ValidateDictOptionalType(dict.Get(), "foo"));
   EXPECT_FALSE(ValidateDictOptionalType(dict.Get(), "bar"));
 

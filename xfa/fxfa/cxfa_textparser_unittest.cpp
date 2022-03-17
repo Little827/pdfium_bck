@@ -25,24 +25,24 @@ class CXFATextParserTest : public FXGCUnitTest {};
 TEST_F(CXFATextParserTest, TagValidate) {
   auto* parser = cppgc::MakeGarbageCollected<CXFA_TestTextParser>(
       heap()->GetAllocationHandle());
-  EXPECT_TRUE(parser->TagValidate(L"br"));
-  EXPECT_TRUE(parser->TagValidate(L"Br"));
-  EXPECT_TRUE(parser->TagValidate(L"BR"));
-  EXPECT_TRUE(parser->TagValidate(L"a"));
-  EXPECT_TRUE(parser->TagValidate(L"b"));
-  EXPECT_TRUE(parser->TagValidate(L"i"));
-  EXPECT_TRUE(parser->TagValidate(L"p"));
-  EXPECT_TRUE(parser->TagValidate(L"li"));
-  EXPECT_TRUE(parser->TagValidate(L"ol"));
-  EXPECT_TRUE(parser->TagValidate(L"ul"));
-  EXPECT_TRUE(parser->TagValidate(L"sub"));
-  EXPECT_TRUE(parser->TagValidate(L"sup"));
-  EXPECT_TRUE(parser->TagValidate(L"span"));
-  EXPECT_TRUE(parser->TagValidate(L"body"));
-  EXPECT_TRUE(parser->TagValidate(L"html"));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"br")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"Br")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"BR")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"a")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"b")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"i")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"p")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"li")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"ol")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"ul")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"sub")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"sup")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"span")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"body")));
+  EXPECT_TRUE(parser->TagValidate(WideString(L"html")));
 
-  EXPECT_FALSE(parser->TagValidate(L""));
-  EXPECT_FALSE(parser->TagValidate(L"tml"));
-  EXPECT_FALSE(parser->TagValidate(L"xhtml"));
-  EXPECT_FALSE(parser->TagValidate(L"htmlx"));
+  EXPECT_FALSE(parser->TagValidate(WideString(L"")));
+  EXPECT_FALSE(parser->TagValidate(WideString(L"tml")));
+  EXPECT_FALSE(parser->TagValidate(WideString(L"xhtml")));
+  EXPECT_FALSE(parser->TagValidate(WideString(L"htmlx")));
 }

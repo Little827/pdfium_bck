@@ -61,7 +61,7 @@ CXFA_XMLLocale::~CXFA_XMLLocale() = default;
 void CXFA_XMLLocale::Trace(cppgc::Visitor* visitor) const {}
 
 WideString CXFA_XMLLocale::GetName() const {
-  return locale_->GetAttribute(L"name");
+  return locale_->GetAttribute(WideString(L"name"));
 }
 
 WideString CXFA_XMLLocale::GetDecimalSymbol() const {
@@ -134,7 +134,7 @@ WideString CXFA_XMLLocale::GetCalendarSymbol(WideStringView symbol,
     if (!elem || elem->GetName() != pstrSymbolNames)
       continue;
 
-    WideString abbr = elem->GetAttribute(L"abbr");
+    WideString abbr = elem->GetAttribute(WideString(L"abbr"));
     bool abbr_value = false;
     if (!abbr.IsEmpty())
       abbr_value = abbr.EqualsASCII("1");
@@ -211,7 +211,7 @@ WideString CXFA_XMLLocale::GetPattern(CFX_XMLElement* patterns,
        child = child->GetNextSibling()) {
     CFX_XMLElement* pattern = ToXMLElement(child);
     if (pattern && pattern->GetName() == bsTag &&
-        pattern->GetAttribute(L"name") == wsName) {
+        pattern->GetAttribute(WideString(L"name")) == wsName) {
       return pattern->GetTextData();
     }
   }

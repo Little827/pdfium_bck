@@ -58,8 +58,9 @@ class PDFObjectsTest : public testing::Test {
     auto number_float_obj = pdfium::MakeRetain<CPDF_Number>(9.00345f);
     // String objects.
     auto str_reg_obj =
-        pdfium::MakeRetain<CPDF_String>(nullptr, L"A simple test");
-    auto str_spec_obj = pdfium::MakeRetain<CPDF_String>(nullptr, L"\t\n");
+        pdfium::MakeRetain<CPDF_String>(nullptr, WideString(L"A simple test"));
+    auto str_spec_obj =
+        pdfium::MakeRetain<CPDF_String>(nullptr, WideString(L"\t\n"));
     // Name object.
     auto name_obj = pdfium::MakeRetain<CPDF_Name>(nullptr, "space");
     // Array object.
@@ -78,7 +79,7 @@ class PDFObjectsTest : public testing::Test {
     memcpy(buf.get(), content, buf_len);
     auto pNewDict = pdfium::MakeRetain<CPDF_Dictionary>();
     m_StreamDictObj = pNewDict;
-    m_StreamDictObj->SetNewFor<CPDF_String>("key1", L" test dict");
+    m_StreamDictObj->SetNewFor<CPDF_String>("key1", WideString(L" test dict"));
     m_StreamDictObj->SetNewFor<CPDF_Number>("key2", -1);
     auto stream_obj = pdfium::MakeRetain<CPDF_Stream>(std::move(buf), buf_len,
                                                       std::move(pNewDict));
@@ -847,9 +848,9 @@ TEST(PDFStreamTest, SetData) {
             stream->GetDict()->GetIntegerFor(pdfium::stream::kLength));
 
   stream->GetDict()->SetNewFor<CPDF_String>(pdfium::stream::kFilter,
-                                            L"SomeFilter");
+                                            WideString(L"SomeFilter"));
   stream->GetDict()->SetNewFor<CPDF_String>(pdfium::stream::kDecodeParms,
-                                            L"SomeParams");
+                                            WideString(L"SomeParams"));
 
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> new_data(data.size() * 2);
   stream->SetData(new_data);
@@ -873,9 +874,9 @@ TEST(PDFStreamTest, SetDataAndRemoveFilter) {
             stream->GetDict()->GetIntegerFor(pdfium::stream::kLength));
 
   stream->GetDict()->SetNewFor<CPDF_String>(pdfium::stream::kFilter,
-                                            L"SomeFilter");
+                                            WideString(L"SomeFilter"));
   stream->GetDict()->SetNewFor<CPDF_String>(pdfium::stream::kDecodeParms,
-                                            L"SomeParams");
+                                            WideString(L"SomeParams"));
 
   std::vector<uint8_t, FxAllocAllocator<uint8_t>> new_data(data.size() * 2);
   stream->SetDataAndRemoveFilter(new_data);

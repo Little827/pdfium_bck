@@ -51,10 +51,11 @@ TEST(cpdf_filespec, EncodeDecodeFileName) {
   };
   for (const auto& data : test_data) {
     EXPECT_STREQ(data.expected,
-                 CPDF_FileSpec::EncodeFileName(data.input).c_str());
+                 CPDF_FileSpec::EncodeFileName(WideString(data.input)).c_str());
     // DecodeFileName is the reverse procedure of EncodeFileName.
-    EXPECT_STREQ(data.input,
-                 CPDF_FileSpec::DecodeFileName(data.expected).c_str());
+    EXPECT_STREQ(
+        data.input,
+        CPDF_FileSpec::DecodeFileName(WideString(data.expected)).c_str());
   }
 }
 
@@ -73,7 +74,8 @@ TEST(cpdf_filespec, GetFileName) {
       L"/docs/test.pdf"
 #endif
     };
-    auto str_obj = pdfium::MakeRetain<CPDF_String>(nullptr, test_data.input);
+    auto str_obj =
+        pdfium::MakeRetain<CPDF_String>(nullptr, WideString(test_data.input));
     CPDF_FileSpec file_spec(str_obj.Get());
     EXPECT_STREQ(test_data.expected, file_spec.GetFileName().c_str());
   }
@@ -108,7 +110,8 @@ TEST(cpdf_filespec, GetFileName) {
     CPDF_FileSpec file_spec(dict_obj.Get());
     EXPECT_TRUE(file_spec.GetFileName().IsEmpty());
     for (size_t i = 0; i < pdfium::size(keywords); ++i) {
-      dict_obj->SetNewFor<CPDF_String>(keywords[i], test_data[i].input);
+      dict_obj->SetNewFor<CPDF_String>(keywords[i],
+                                       WideString(test_data[i].input));
       EXPECT_STREQ(test_data[i].expected, file_spec.GetFileName().c_str());
     }
 
@@ -150,9 +153,10 @@ TEST(cpdf_filespec, SetFileName) {
 #endif
   };
   // String object.
-  auto str_obj = pdfium::MakeRetain<CPDF_String>(nullptr, L"babababa");
+  auto str_obj =
+      pdfium::MakeRetain<CPDF_String>(nullptr, WideString(L"babababa"));
   CPDF_FileSpec file_spec1(str_obj.Get());
-  file_spec1.SetFileName(test_data.input);
+  file_spec1.SetFileName(WideString(test_data.input));
   // Check internal object value.
   EXPECT_STREQ(test_data.expected, str_obj->GetUnicodeText().c_str());
   // Check we can get the file name back.
@@ -161,7 +165,7 @@ TEST(cpdf_filespec, SetFileName) {
   // Dictionary object.
   auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
   CPDF_FileSpec file_spec2(dict_obj.Get());
-  file_spec2.SetFileName(test_data.input);
+  file_spec2.SetFileName(WideString(test_data.input));
   // Check internal object value.
   EXPECT_STREQ(test_data.expected, dict_obj->GetUnicodeTextFor("F").c_str());
   EXPECT_STREQ(test_data.expected, dict_obj->GetUnicodeTextFor("UF").c_str());
@@ -205,7 +209,7 @@ TEST(cpdf_filespec, GetFileStream) {
     // Keys in reverse order of precedence to retrieve the file content stream.
     for (size_t i = 0; i < pdfium::size(keys); ++i) {
       // Set the file name.
-      dict_obj->SetNewFor<CPDF_String>(keys[i], file_name);
+      dict_obj->SetNewFor<CPDF_String>(keys[i], WideString(file_name));
 
       // Set the file stream.
       auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
@@ -240,7 +244,7 @@ TEST(cpdf_filespec, GetParamsDict) {
     // Dictionary object.
     auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
     dict_obj->SetNewFor<CPDF_Dictionary>("EF");
-    dict_obj->SetNewFor<CPDF_String>("UF", L"test.pdf");
+    dict_obj->SetNewFor<CPDF_String>("UF", WideString(L"test.pdf"));
     CPDF_FileSpec file_spec(dict_obj.Get());
     EXPECT_FALSE(file_spec.GetParamsDict());
 

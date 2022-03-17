@@ -75,9 +75,10 @@ bool CXFA_DataExporter::Export(const RetainPtr<IFX_SeekableStream>& pStream,
     return false;
 
   XFA_DataExporter_DealWithDataGroupNode(pExportNode);
-  pElement->SetAttribute(L"xmlns:xfa",
-                         L"http://www.xfa.org/schema/xfa-data/1.0/");
+  pElement->SetAttribute(
+      WideString(L"xmlns:xfa"),
+      WideString(L"http://www.xfa.org/schema/xfa-data/1.0/"));
   pElement->Save(pStream);
-  pElement->RemoveAttribute(L"xmlns:xfa");
+  pElement->RemoveAttribute(WideString(L"xmlns:xfa"));
   return true;
 }

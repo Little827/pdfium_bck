@@ -14,8 +14,7 @@ TEST(CFX_XMLDocumentTest, Root) {
 
 TEST(CFX_XMLDocumentTest, CreateNode) {
   CFX_XMLDocument doc;
-  auto* node = doc.CreateNode<CFX_XMLElement>(L"elem");
-
+  auto* node = doc.CreateNode<CFX_XMLElement>(WideString(L"elem"));
   ASSERT_EQ(CFX_XMLNode::Type::kElement, node->GetType());
   EXPECT_EQ(L"elem", node->GetName());
 }

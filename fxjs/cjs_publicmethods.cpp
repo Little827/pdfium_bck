@@ -721,7 +721,7 @@ CJS_Result CJS_PublicMethods::AFNumber_Keystroke(
     if (!IsNumber(swTemp)) {
       pContext->Rc() = false;
       WideString sError = JSGetStringFromID(JSMessage::kInvalidInputError);
-      AlertIfPossible(pContext, L"AFNumber_Keystroke", sError);
+      AlertIfPossible(pContext, WideString(L"AFNumber_Keystroke"), sError);
       return CJS_Result::Failure(sError);
     }
     // It happens after the last keystroke and before validating,
@@ -908,7 +908,7 @@ CJS_Result CJS_PublicMethods::AFDate_FormatEx(
   if (isnan(dDate)) {
     WideString swMsg = WideString::Format(
         JSGetStringFromID(JSMessage::kParseDateError).c_str(), sFormat.c_str());
-    AlertIfPossible(pEvent, L"AFDate_FormatEx", swMsg);
+    AlertIfPossible(pEvent, WideString(L"AFDate_FormatEx"), swMsg);
     return CJS_Result::Failure(JSMessage::kParseDateError);
   }
 
@@ -980,7 +980,7 @@ CJS_Result CJS_PublicMethods::AFDate_KeystrokeEx(
   if (bWrongFormat || isnan(dRet)) {
     WideString swMsg = WideString::Format(
         JSGetStringFromID(JSMessage::kParseDateError).c_str(), sFormat.c_str());
-    AlertIfPossible(pEvent, L"AFDate_KeystrokeEx", swMsg);
+    AlertIfPossible(pEvent, WideString(L"AFDate_KeystrokeEx"), swMsg);
     pEvent->Rc() = false;
   }
   return CJS_Result::Success();
@@ -1073,7 +1073,8 @@ CJS_Result CJS_PublicMethods::AFSpecial_Format(
       wsFormat = L"99999-9999";
       break;
     case 2:
-      if (CJS_Util::StringPrintx(L"9999999999", wsSource).GetLength() >= 10)
+      if (CJS_Util::StringPrintx(WideString(L"9999999999"), wsSource)
+              .GetLength() >= 10)
         wsFormat = L"(999) 999-9999";
       else
         wsFormat = L"999-9999";
@@ -1108,7 +1109,7 @@ CJS_Result CJS_PublicMethods::AFSpecial_KeystrokeEx(
       return CJS_Result::Success();
 
     if (valEvent.GetLength() > wstrMask.GetLength()) {
-      AlertIfPossible(pEvent, L"AFSpecial_KeystrokeEx",
+      AlertIfPossible(pEvent, WideString(L"AFSpecial_KeystrokeEx"),
                       JSGetStringFromID(JSMessage::kParamTooLongError));
       pEvent->Rc() = false;
       return CJS_Result::Success();
@@ -1120,7 +1121,7 @@ CJS_Result CJS_PublicMethods::AFSpecial_KeystrokeEx(
         break;
     }
     if (iIndex != wstrMask.GetLength()) {
-      AlertIfPossible(pEvent, L"AFSpecial_KeystrokeEx",
+      AlertIfPossible(pEvent, WideString(L"AFSpecial_KeystrokeEx"),
                       JSGetStringFromID(JSMessage::kInvalidInputError));
       pEvent->Rc() = false;
     }
@@ -1136,14 +1137,14 @@ CJS_Result CJS_PublicMethods::AFSpecial_KeystrokeEx(
   size_t combined_len = valEvent.GetLength() + wChange.GetLength() +
                         pEvent->SelStart() - pEvent->SelEnd();
   if (combined_len > wstrMask.GetLength()) {
-    AlertIfPossible(pEvent, L"AFSpecial_KeystrokeEx",
+    AlertIfPossible(pEvent, WideString(L"AFSpecial_KeystrokeEx"),
                     JSGetStringFromID(JSMessage::kParamTooLongError));
     pEvent->Rc() = false;
     return CJS_Result::Success();
   }
 
   if (iIndexMask >= wstrMask.GetLength() && !wChange.IsEmpty()) {
-    AlertIfPossible(pEvent, L"AFSpecial_KeystrokeEx",
+    AlertIfPossible(pEvent, WideString(L"AFSpecial_KeystrokeEx"),
                     JSGetStringFromID(JSMessage::kParamTooLongError));
     pEvent->Rc() = false;
     return CJS_Result::Success();
@@ -1151,7 +1152,7 @@ CJS_Result CJS_PublicMethods::AFSpecial_KeystrokeEx(
 
   for (size_t i = 0; i < wChange.GetLength(); ++i) {
     if (iIndexMask >= wstrMask.GetLength()) {
-      AlertIfPossible(pEvent, L"AFSpecial_KeystrokeEx",
+      AlertIfPossible(pEvent, WideString(L"AFSpecial_KeystrokeEx"),
                       JSGetStringFromID(JSMessage::kParamTooLongError));
       pEvent->Rc() = false;
       return CJS_Result::Success();
@@ -1237,8 +1238,8 @@ CJS_Result CJS_PublicMethods::AFParseDateEx(
   if (isnan(dDate)) {
     WideString swMsg = WideString::Format(
         JSGetStringFromID(JSMessage::kParseDateError).c_str(), sFormat.c_str());
-    AlertIfPossible(pRuntime->GetCurrentEventContext(), L"AFParseDateEx",
-                    swMsg);
+    AlertIfPossible(pRuntime->GetCurrentEventContext(),
+                    WideString(L"AFParseDateEx"), swMsg);
     return CJS_Result::Failure(JSMessage::kParseDateError);
   }
   return CJS_Result::Success(pRuntime->NewNumber(dDate));
@@ -1418,7 +1419,7 @@ CJS_Result CJS_PublicMethods::AFRange_Validate(
   }
 
   if (!swMsg.IsEmpty()) {
-    AlertIfPossible(pEvent, L"AFRange_Validate", swMsg);
+    AlertIfPossible(pEvent, WideString(L"AFRange_Validate"), swMsg);
     pEvent->Rc() = false;
   }
   return CJS_Result::Success();

@@ -21,7 +21,7 @@ class FMStringExpressionTest : public FXGCUnitTest {};
 TEST_F(FMCallExpressionTest, more_than_32_arguments) {
   // Use sign as it has 3 object parameters at positions 0, 5, and 6.
   auto* exp = cppgc::MakeGarbageCollected<CXFA_FMIdentifierExpression>(
-      heap()->GetAllocationHandle(), L"sign");
+      heap()->GetAllocationHandle(), WideString(L"sign"));
 
   std::vector<cppgc::Member<CXFA_FMSimpleExpression>> args;
   for (size_t i = 0; i < 50; i++) {
@@ -36,7 +36,7 @@ TEST_F(FMCallExpressionTest, more_than_32_arguments) {
   callExp->ToJavaScript(&js, CXFA_FMAssignExpression::ReturnType::kInferred);
 
   // Generate the result javascript string.
-  WideString result = L"sign(";
+  WideString result(L"sign(");
   for (size_t i = 0; i < 50; i++) {
     if (i > 0)
       result += L", ";
@@ -57,7 +57,7 @@ TEST_F(FMStringExpressionTest, Empty) {
   CXFA_FMToJavaScriptDepth::Reset();
   CFX_WideTextBuf accumulator;
   auto* exp = cppgc::MakeGarbageCollected<CXFA_FMStringExpression>(
-      heap()->GetAllocationHandle(), L"");
+      heap()->GetAllocationHandle(), WideString(L""));
   exp->ToJavaScript(&accumulator,
                     CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_EQ(L"", accumulator.AsStringView());
@@ -67,7 +67,7 @@ TEST_F(FMStringExpressionTest, Short) {
   CXFA_FMToJavaScriptDepth::Reset();
   CFX_WideTextBuf accumulator;
   auto* exp = cppgc::MakeGarbageCollected<CXFA_FMStringExpression>(
-      heap()->GetAllocationHandle(), L"a");
+      heap()->GetAllocationHandle(), WideString(L"a"));
   exp->ToJavaScript(&accumulator,
                     CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_EQ(L"a", accumulator.AsStringView());
@@ -77,7 +77,7 @@ TEST_F(FMStringExpressionTest, Medium) {
   CXFA_FMToJavaScriptDepth::Reset();
   CFX_WideTextBuf accumulator;
   auto* exp = cppgc::MakeGarbageCollected<CXFA_FMStringExpression>(
-      heap()->GetAllocationHandle(), L".abcd.");
+      heap()->GetAllocationHandle(), WideString(L".abcd."));
   exp->ToJavaScript(&accumulator,
                     CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_EQ(L"\"abcd\"", accumulator.AsStringView());
@@ -98,7 +98,7 @@ TEST_F(FMStringExpressionTest, Quoted) {
   CXFA_FMToJavaScriptDepth::Reset();
   CFX_WideTextBuf accumulator;
   auto* exp = cppgc::MakeGarbageCollected<CXFA_FMStringExpression>(
-      heap()->GetAllocationHandle(), L".Simon says \"\"run\"\".");
+      heap()->GetAllocationHandle(), WideString(L".Simon says \"\"run\"\"."));
   exp->ToJavaScript(&accumulator,
                     CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_EQ(L"\"Simon says \\\"run\\\"\"", accumulator.AsStringView());
@@ -109,7 +109,7 @@ TEST_F(FMExpressionTest, VarExpressionInitNull) {
   CFX_WideTextBuf accumulator;
 
   auto* expr = cppgc::MakeGarbageCollected<CXFA_FMVarExpression>(
-      heap()->GetAllocationHandle(), L"s", nullptr);
+      heap()->GetAllocationHandle(), WideString(L"s"), nullptr);
   expr->ToJavaScript(&accumulator,
                      CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_STREQ(
@@ -123,9 +123,9 @@ TEST_F(FMExpressionTest, VarExpressionInitBlank) {
   CFX_WideTextBuf accumulator;
 
   auto* init = cppgc::MakeGarbageCollected<CXFA_FMStringExpression>(
-      heap()->GetAllocationHandle(), LR"("")");
+      heap()->GetAllocationHandle(), WideString(LR"("")"));
   auto* expr = cppgc::MakeGarbageCollected<CXFA_FMVarExpression>(
-      heap()->GetAllocationHandle(), L"s", init);
+      heap()->GetAllocationHandle(), WideString(L"s"), init);
   expr->ToJavaScript(&accumulator,
                      CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_STREQ(
@@ -140,9 +140,9 @@ TEST_F(FMExpressionTest, VarExpressionInitString) {
   CFX_WideTextBuf accumulator;
 
   auto* init = cppgc::MakeGarbageCollected<CXFA_FMStringExpression>(
-      heap()->GetAllocationHandle(), LR"("foo")");
+      heap()->GetAllocationHandle(), WideString(LR"("foo")"));
   auto* expr = cppgc::MakeGarbageCollected<CXFA_FMVarExpression>(
-      heap()->GetAllocationHandle(), L"s", init);
+      heap()->GetAllocationHandle(), WideString(L"s"), init);
   expr->ToJavaScript(&accumulator,
                      CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_STREQ(
@@ -157,9 +157,9 @@ TEST_F(FMExpressionTest, VarExpressionInitNumeric) {
   CFX_WideTextBuf accumulator;
 
   auto* init = cppgc::MakeGarbageCollected<CXFA_FMNumberExpression>(
-      heap()->GetAllocationHandle(), L"112");
+      heap()->GetAllocationHandle(), WideString(L"112"));
   auto* expr = cppgc::MakeGarbageCollected<CXFA_FMVarExpression>(
-      heap()->GetAllocationHandle(), L"s", init);
+      heap()->GetAllocationHandle(), WideString(L"s"), init);
   expr->ToJavaScript(&accumulator,
                      CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_STREQ(

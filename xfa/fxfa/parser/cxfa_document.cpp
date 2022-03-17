@@ -525,7 +525,7 @@ void CreateDataBinding(CXFA_Node* pFormNode,
         pDataNode->JSObject()->SetCData(XFA_Attribute::ContentType,
                                         wsContentType);
         if (!wsHref.IsEmpty())
-          pXMLDataElement->SetAttribute(L"href", wsHref);
+          pXMLDataElement->SetAttribute(WideString(L"href"), wsHref);
 
         break;
       }
@@ -538,7 +538,8 @@ void CreateDataBinding(CXFA_Node* pFormNode,
             for (const auto& text : wsSelTextArray) {
               CXFA_Node* pValue =
                   pDataNode->CreateSamePacketNode(XFA_Element::DataValue);
-              pValue->JSObject()->SetCData(XFA_Attribute::Name, L"value");
+              pValue->JSObject()->SetCData(XFA_Attribute::Name,
+                                           WideString(L"value"));
               pValue->CreateXMLMappingNode();
               pDataNode->InsertChildAndNotify(pValue, nullptr);
               pValue->JSObject()->SetCData(XFA_Attribute::Value, text);
@@ -546,7 +547,8 @@ void CreateDataBinding(CXFA_Node* pFormNode,
           } else {
             CFX_XMLElement* pElement =
                 ToXMLElement(pDataNode->GetXMLMappingNode());
-            pElement->SetAttribute(L"xfa:dataNode", L"dataGroup");
+            pElement->SetAttribute(WideString(L"xfa:dataNode"),
+                                   WideString(L"dataGroup"));
           }
         } else if (!wsValue.IsEmpty()) {
           pDataNode->JSObject()->SetAttributeValue(
@@ -660,14 +662,14 @@ void CreateDataBinding(CXFA_Node* pFormNode,
         CFX_XMLElement* pXMLDataElement =
             ToXMLElement(pDataNode->GetXMLMappingNode());
         WideString wsContentType =
-            pXMLDataElement->GetAttribute(L"xfa:contentType");
+            pXMLDataElement->GetAttribute(WideString(L"xfa:contentType"));
         if (!wsContentType.IsEmpty()) {
           pDataNode->JSObject()->SetCData(XFA_Attribute::ContentType,
                                           wsContentType);
           image->SetContentType(wsContentType);
         }
 
-        WideString wsHref = pXMLDataElement->GetAttribute(L"href");
+        WideString wsHref = pXMLDataElement->GetAttribute(WideString(L"href"));
         if (!wsHref.IsEmpty())
           image->SetHref(wsHref);
       }
@@ -691,7 +693,8 @@ void CreateDataBinding(CXFA_Node* pFormNode,
           CXFA_ExData* exData =
               defValue ? defValue->GetExDataIfExists() : nullptr;
           if (exData)
-            exData->SetContentType(single ? L"text/plain" : L"text/xml");
+            exData->SetContentType(single ? WideString(L"text/plain")
+                                          : WideString(L"text/xml"));
         }
         FormValueNode_SetChildContent(defValue, wsNormalizeValue,
                                       XFA_Element::ExData);
@@ -1680,12 +1683,14 @@ void CXFA_Document::DoDataMerge() {
     // Ownership will be passed in the AppendChild below to the XML tree.
     auto* pDatasetsXMLNode =
         notify_->GetFFDoc()->GetXMLDocument()->CreateNode<CFX_XMLElement>(
-            L"xfa:datasets");
-    pDatasetsXMLNode->SetAttribute(L"xmlns:xfa",
-                                   L"http://www.xfa.org/schema/xfa-data/1.0/");
+            WideString(L"xfa:datasets"));
+    pDatasetsXMLNode->SetAttribute(
+        WideString(L"xmlns:xfa"),
+        WideString(L"http://www.xfa.org/schema/xfa-data/1.0/"));
     pDatasetsRoot =
         CreateNode(XFA_PacketType::Datasets, XFA_Element::DataModel);
-    pDatasetsRoot->JSObject()->SetCData(XFA_Attribute::Name, L"datasets");
+    pDatasetsRoot->JSObject()->SetCData(XFA_Attribute::Name,
+                                        WideString(L"datasets"));
 
     m_pRootNode->GetXMLMappingNode()->AppendLastChild(pDatasetsXMLNode);
     m_pRootNode->InsertChildAndNotify(pDatasetsRoot, nullptr);
@@ -1724,11 +1729,11 @@ void CXFA_Document::DoDataMerge() {
 
   if (!pDataRoot) {
     pDataRoot = CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
-    pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, L"data");
+    pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, WideString(L"data"));
 
     auto* elem =
         notify_->GetFFDoc()->GetXMLDocument()->CreateNode<CFX_XMLElement>(
-            L"xfa:data");
+            WideString(L"xfa:data"));
     pDataRoot->SetXMLMappingNode(elem);
     pDatasetsRoot->InsertChildAndNotify(pDataRoot, nullptr);
   }
@@ -1760,7 +1765,7 @@ void CXFA_Document::DoDataMerge() {
     pFormRoot = static_cast<CXFA_Form*>(
         CreateNode(XFA_PacketType::Form, XFA_Element::Form));
     DCHECK(pFormRoot);
-    pFormRoot->JSObject()->SetCData(XFA_Attribute::Name, L"form");
+    pFormRoot->JSObject()->SetCData(XFA_Attribute::Name, WideString(L"form"));
     m_pRootNode->InsertChildAndNotify(pFormRoot, nullptr);
   } else {
     CXFA_NodeIteratorTemplate<CXFA_Node, CXFA_TraverseStrategy_XFANode>
@@ -1777,7 +1782,8 @@ void CXFA_Document::DoDataMerge() {
   if (!pDataTopLevel) {
     WideString wsFormName =
         pSubformSetNode->JSObject()->GetCData(XFA_Attribute::Name);
-    WideString wsDataTopLevelName(wsFormName.IsEmpty() ? L"form" : wsFormName);
+    WideString wsDataTopLevelName =
+        wsFormName.IsEmpty() ? WideString(L"form") : wsFormName;
 
     pDataTopLevel = static_cast<CXFA_DataGroup*>(
         CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup));

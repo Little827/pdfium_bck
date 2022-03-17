@@ -44,13 +44,13 @@ int32_t CJX_InstanceManager::SetInstances(v8::Isolate* pIsolate,
   CXFA_Occur* occur = GetXFANode()->GetOccurIfExists();
   int32_t iMin = occur ? occur->GetMin() : CXFA_Occur::kDefaultMin;
   if (iDesired < iMin) {
-    ThrowTooManyOccurrencesException(pIsolate, L"min");
+    ThrowTooManyOccurrencesException(pIsolate, WideString(L"min"));
     return 1;
   }
 
   int32_t iMax = occur ? occur->GetMax() : CXFA_Occur::kDefaultMax;
   if (iMax >= 0 && iDesired > iMax) {
-    ThrowTooManyOccurrencesException(pIsolate, L"max");
+    ThrowTooManyOccurrencesException(pIsolate, WideString(L"max"));
     return 2;
   }
 

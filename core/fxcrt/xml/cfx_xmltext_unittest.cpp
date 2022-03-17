@@ -8,19 +8,19 @@
 #include "testing/string_write_stream.h"
 
 TEST(CFX_XMLTextTest, GetType) {
-  CFX_XMLText text(L"My Text");
+  CFX_XMLText text(WideString(L"My Text"));
   EXPECT_EQ(CFX_XMLNode::Type::kText, text.GetType());
 }
 
 TEST(CFX_XMLTextTest, GetText) {
-  CFX_XMLText data(L"My Data");
+  CFX_XMLText data(WideString(L"My Data"));
   EXPECT_EQ(L"My Data", data.GetText());
 }
 
 TEST(CFX_XMLTextTest, Clone) {
   CFX_XMLDocument doc;
 
-  CFX_XMLText data(L"My Data");
+  CFX_XMLText data(WideString(L"My Data"));
   CFX_XMLNode* clone = data.Clone(&doc);
   EXPECT_TRUE(clone != nullptr);
   ASSERT_EQ(CFX_XMLNode::Type::kText, clone->GetType());
@@ -29,15 +29,16 @@ TEST(CFX_XMLTextTest, Clone) {
 
 TEST(CFX_XMLTextTest, Save) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLText data(L"My Data & this is < and > and ' and \" stuff.");
+  CFX_XMLText data(
+      WideString(L"My Data & this is < and > and ' and \" stuff."));
   data.Save(stream);
   EXPECT_EQ("My Data &amp; this is &lt; and &gt; and &apos; and &quot; stuff.",
             stream->ToString());
 }
 
 TEST(CFX_XMLTextTest, SetText) {
-  CFX_XMLText data(L"My Data");
+  CFX_XMLText data(WideString(L"My Data"));
   EXPECT_EQ(L"My Data", data.GetText());
-  data.SetText(L"New Text");
+  data.SetText(WideString(L"New Text"));
   EXPECT_EQ(L"New Text", data.GetText());
 }

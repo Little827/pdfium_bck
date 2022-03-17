@@ -40,8 +40,9 @@ TEST_F(CFX_XMLParserTest, Attributes) {
   CFX_XMLElement* script = doc->GetRoot()->GetFirstChildNamed(L"script");
   ASSERT_TRUE(script != nullptr);
 
-  EXPECT_EQ(L"application/x-javascript", script->GetAttribute(L"contentType"));
-  EXPECT_EQ(L"1", script->GetAttribute(L"display"));
+  EXPECT_EQ(L"application/x-javascript",
+            script->GetAttribute(WideString(L"contentType")));
+  EXPECT_EQ(L"1", script->GetAttribute(WideString(L"display")));
 }
 
 TEST_F(CFX_XMLParserTest, CData) {

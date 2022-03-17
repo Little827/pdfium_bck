@@ -145,7 +145,7 @@ void CFX_XMLElement::RemoveAttribute(const WideString& name) {
 
 WideString CFX_XMLElement::AttributeToString(const WideString& name,
                                              const WideString& value) {
-  WideString ret = L" ";
+  WideString ret(L" ");
   ret += name;
   ret += L"=\"";
   ret += value.EncodeEntities();

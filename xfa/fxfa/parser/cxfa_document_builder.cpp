@@ -247,7 +247,7 @@ CFX_XMLNode* CXFA_DocumentBuilder::Build(CFX_XMLDocument* pXML) {
 
   xml_doc_ = pXML;
   xml_doc_->GetRoot()->InsertChildNode(
-      xml_doc_->CreateNode<CFX_XMLInstruction>(L"xml"), 0);
+      xml_doc_->CreateNode<CFX_XMLInstruction>(WideString(L"xml")), 0);
 
   return GetDocumentNode(xml_doc_->GetRoot());
 }
@@ -340,7 +340,7 @@ CXFA_Node* CXFA_DocumentBuilder::ParseAsXDPPacket_XDP(
     return nullptr;
 
   root_node_ = pXFARootNode;
-  pXFARootNode->JSObject()->SetCData(XFA_Attribute::Name, L"xfa");
+  pXFARootNode->JSObject()->SetCData(XFA_Attribute::Name, WideString(L"xfa"));
 
   for (auto it : ToXMLElement(pXMLDocumentNode)->GetAttributes()) {
     if (it.first.EqualsASCII("uuid"))
@@ -483,7 +483,8 @@ CXFA_Node* CXFA_DocumentBuilder::ParseAsXDPPacket_Template(
   CFX_XMLElement* pXMLDocumentElement = ToXMLElement(pXMLDocumentNode);
   WideString wsNamespaceURI = pXMLDocumentElement->GetNamespaceURI();
   if (wsNamespaceURI.IsEmpty())
-    wsNamespaceURI = pXMLDocumentElement->GetAttribute(L"xmlns:xfa");
+    wsNamespaceURI =
+        pXMLDocumentElement->GetAttribute(WideString(L"xmlns:xfa"));
 
   pNode->GetDocument()->RecognizeXFAVersionNumber(wsNamespaceURI);
 
@@ -548,14 +549,15 @@ CXFA_Node* CXFA_DocumentBuilder::ParseAsXDPPacket_Data(
 
   CFX_XMLNode* pDataXMLNode = nullptr;
   if (MatchNodeName(pXMLDocumentNode, "data", packet.uri, packet.match)) {
-    ToXMLElement(pXMLDocumentNode)->RemoveAttribute(L"xmlns:xfa");
+    ToXMLElement(pXMLDocumentNode)->RemoveAttribute(WideString(L"xmlns:xfa"));
     pDataXMLNode = pXMLDocumentNode;
   } else {
-    auto* pDataElement = xml_doc_->CreateNode<CFX_XMLElement>(L"xfa:data");
+    auto* pDataElement =
+        xml_doc_->CreateNode<CFX_XMLElement>(WideString(L"xfa:data"));
     pXMLDocumentNode->RemoveSelfIfParented();
 
     CFX_XMLElement* pElement = ToXMLElement(pXMLDocumentNode);
-    pElement->RemoveAttribute(L"xmlns:xfa");
+    pElement->RemoveAttribute(WideString(L"xmlns:xfa"));
 
     // The node was either removed from the parent above, or already has no
     // parent so we can take ownership.
@@ -869,7 +871,7 @@ void CXFA_DocumentBuilder::ParseDataGroup(CXFA_Node* pXFANode,
         }
 
         if (!bNeedValue)
-          pXMLElement->RemoveAttribute(L"xsi:nil");
+          pXMLElement->RemoveAttribute(WideString(L"xsi:nil"));
 
         pXFANode->InsertChildAndNotify(pXFAChild, nullptr);
         if (eNodeType == XFA_Element::DataGroup)

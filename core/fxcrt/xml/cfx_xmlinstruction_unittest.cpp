@@ -14,28 +14,28 @@
 #include "testing/string_write_stream.h"
 
 TEST(CFX_XMLInstructionTest, GetType) {
-  CFX_XMLInstruction node(L"acrobat");
+  CFX_XMLInstruction node(WideString(L"acrobat"));
   EXPECT_EQ(CFX_XMLNode::Type::kInstruction, node.GetType());
 }
 
 TEST(CFX_XMLInstructionTest, AcrobatInstruction) {
-  CFX_XMLInstruction node(L"acrobat");
+  CFX_XMLInstruction node(WideString(L"acrobat"));
   EXPECT_TRUE(node.IsAcrobat());
   EXPECT_FALSE(node.IsOriginalXFAVersion());
 }
 
 TEST(CFX_XMLInstructionTest, OriginalXFAInstruction) {
-  CFX_XMLInstruction node(L"originalXFAVersion");
+  CFX_XMLInstruction node(WideString(L"originalXFAVersion"));
   EXPECT_TRUE(node.IsOriginalXFAVersion());
   EXPECT_FALSE(node.IsAcrobat());
 }
 
 TEST(CFX_XMLInstructionTest, TargetData) {
-  CFX_XMLInstruction node(L"acrobat");
+  CFX_XMLInstruction node(WideString(L"acrobat"));
   EXPECT_EQ(0U, node.GetTargetData().size());
 
-  node.AppendData(L"firstString");
-  node.AppendData(L"secondString");
+  node.AppendData(WideString(L"firstString"));
+  node.AppendData(WideString(L"secondString"));
 
   auto& data = node.GetTargetData();
   ASSERT_EQ(2U, data.size());
@@ -46,9 +46,9 @@ TEST(CFX_XMLInstructionTest, TargetData) {
 TEST(CFX_XMLInstructionTest, Clone) {
   CFX_XMLDocument doc;
 
-  CFX_XMLInstruction node(L"acrobat");
-  node.AppendData(L"firstString");
-  node.AppendData(L"secondString");
+  CFX_XMLInstruction node(WideString(L"acrobat"));
+  node.AppendData(WideString(L"firstString"));
+  node.AppendData(WideString(L"secondString"));
 
   CFX_XMLNode* clone = node.Clone(&doc);
   EXPECT_TRUE(clone != nullptr);
@@ -65,17 +65,16 @@ TEST(CFX_XMLInstructionTest, Clone) {
 
 TEST(CFX_XMLInstructionTest, SaveXML) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLInstruction node(L"xml");
+  CFX_XMLInstruction node(WideString(L"xml"));
   node.Save(stream);
   EXPECT_EQ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", stream->ToString());
 }
 
 TEST(CFX_XMLInstructionTest, SaveAcrobat) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLInstruction node(L"acrobat");
-  node.AppendData(L"http://www.xfa.org/schema/xfa-template/3.3/");
-  node.AppendData(L"Display:1");
-
+  CFX_XMLInstruction node(WideString(L"acrobat"));
+  node.AppendData(WideString(L"http://www.xfa.org/schema/xfa-template/3.3/"));
+  node.AppendData(WideString(L"Display:1"));
   node.Save(stream);
   EXPECT_EQ(
       "<?acrobat http://www.xfa.org/schema/xfa-template/3.3/ Display:1 ?>\n",

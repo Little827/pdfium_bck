@@ -10,77 +10,81 @@
 #include "testing/string_write_stream.h"
 
 TEST(CFX_XMLElementTest, GetType) {
-  CFX_XMLElement node(L"node");
+  CFX_XMLElement node(WideString(L"node"));
   EXPECT_EQ(CFX_XMLNode::Type::kElement, node.GetType());
 }
 
 TEST(CFX_XMLElementTest, GetName) {
-  CFX_XMLElement node(L"node");
+  CFX_XMLElement node(WideString(L"node"));
   EXPECT_EQ(L"node", node.GetName());
 }
 
 TEST(CFX_XMLElementTest, GetLocalTagName) {
-  CFX_XMLElement node1(L"node1");
+  CFX_XMLElement node1(WideString(L"node1"));
   EXPECT_EQ(L"node1", node1.GetLocalTagName());
 
-  CFX_XMLElement node2(L"test:node2");
+  CFX_XMLElement node2(WideString(L"test:node2"));
   EXPECT_EQ(L"node2", node2.GetLocalTagName());
 }
 
 TEST(CFX_XMLElementTest, GetNamespacePrefix) {
-  CFX_XMLElement node1(L"node1");
+  CFX_XMLElement node1(WideString(L"node1"));
   EXPECT_EQ(L"", node1.GetNamespacePrefix());
 
-  CFX_XMLElement node2(L"test:node2");
+  CFX_XMLElement node2(WideString(L"test:node2"));
   EXPECT_EQ(L"test", node2.GetNamespacePrefix());
 }
 
 TEST(CFX_XMLElementTest, GetNamespaceURI) {
-  CFX_XMLElement node1(L"node1");
+  CFX_XMLElement node1(WideString(L"node1"));
   EXPECT_EQ(L"", node1.GetNamespaceURI());
 
-  node1.SetAttribute(L"xmlns", L"https://example.org/ns1");
+  node1.SetAttribute(WideString(L"xmlns"),
+                     WideString(L"https://example.org/ns1"));
   EXPECT_EQ(L"https://example.org/ns1", node1.GetNamespaceURI());
 
-  CFX_XMLElement node2(L"test:node2");
+  CFX_XMLElement node2(WideString(L"test:node2"));
   EXPECT_EQ(L"", node2.GetNamespaceURI());
 
-  node2.SetAttribute(L"xmlns", L"https://example.org/ns2");
+  node2.SetAttribute(WideString(L"xmlns"),
+                     WideString(L"https://example.org/ns2"));
   EXPECT_EQ(L"", node2.GetNamespaceURI());
 
-  node2.SetAttribute(L"xmlns:test", L"https://example.org/ns2");
+  node2.SetAttribute(WideString(L"xmlns:test"),
+                     WideString(L"https://example.org/ns2"));
   EXPECT_EQ(L"https://example.org/ns2", node2.GetNamespaceURI());
 }
 
 TEST(CFX_XMLElementTest, Attributes) {
-  CFX_XMLElement node(L"test:node");
-  node.SetAttribute(L"first", L"one");
-  node.SetAttribute(L"second", L"two");
+  CFX_XMLElement node(WideString(L"test:node"));
+  node.SetAttribute(WideString(L"first"), WideString(L"one"));
+  node.SetAttribute(WideString(L"second"), WideString(L"two"));
 
-  ASSERT_TRUE(node.HasAttribute(L"first"));
-  EXPECT_EQ(L"one", node.GetAttribute(L"first"));
-  ASSERT_TRUE(node.HasAttribute(L"second"));
-  EXPECT_EQ(L"two", node.GetAttribute(L"second"));
+  ASSERT_TRUE(node.HasAttribute(WideString(L"first")));
+  EXPECT_EQ(L"one", node.GetAttribute(WideString(L"first")));
+  ASSERT_TRUE(node.HasAttribute(WideString(L"second")));
+  EXPECT_EQ(L"two", node.GetAttribute(WideString(L"second")));
 
   ASSERT_EQ(2U, node.GetAttributes().size());
 
-  node.RemoveAttribute(L"first");
-  EXPECT_FALSE(node.HasAttribute(L"first"));
+  node.RemoveAttribute(WideString(L"first"));
+  EXPECT_FALSE(node.HasAttribute(WideString(L"first")));
 
   ASSERT_EQ(1U, node.GetAttributes().size());
 }
 
 TEST(CFX_XMLElementTest, Clone) {
   CFX_XMLDocument doc;
-  CFX_XMLElement node(L"test:node");
-  node.SetAttribute(L"first", L"one");
-  node.SetAttribute(L"second", L"two");
-  node.SetAttribute(L"xmlns:test", L"https://example.org/test");
+  CFX_XMLElement node(WideString(L"test:node"));
+  node.SetAttribute(WideString(L"first"), WideString(L"one"));
+  node.SetAttribute(WideString(L"second"), WideString(L"two"));
+  node.SetAttribute(WideString(L"xmlns:test"),
+                    WideString(L"https://example.org/test"));
 
-  CFX_XMLText text_child1(L"Text Child");
+  CFX_XMLText text_child1(WideString(L"Text Child"));
   node.AppendLastChild(&text_child1);
 
-  CFX_XMLElement node_child1(L"Node child");
+  CFX_XMLElement node_child1(WideString(L"Node child"));
   node.AppendLastChild(&node_child1);
 
   CFX_XMLNode* clone = node.Clone(&doc);
@@ -93,10 +97,10 @@ TEST(CFX_XMLElementTest, Clone) {
   EXPECT_EQ(L"test", inst->GetNamespacePrefix());
   EXPECT_EQ(L"https://example.org/test", inst->GetNamespaceURI());
 
-  ASSERT_TRUE(inst->HasAttribute(L"first"));
-  EXPECT_EQ(L"one", inst->GetAttribute(L"first"));
-  ASSERT_TRUE(inst->HasAttribute(L"second"));
-  EXPECT_EQ(L"two", inst->GetAttribute(L"second"));
+  ASSERT_TRUE(inst->HasAttribute(WideString(L"first")));
+  EXPECT_EQ(L"one", inst->GetAttribute(WideString(L"first")));
+  ASSERT_TRUE(inst->HasAttribute(WideString(L"second")));
+  EXPECT_EQ(L"two", inst->GetAttribute(WideString(L"second")));
 
   // Only clone the Text node, so expect only one child.
   ASSERT_TRUE(inst->GetFirstChild() != nullptr);
@@ -109,7 +113,7 @@ TEST(CFX_XMLElementTest, Clone) {
 
 TEST(CFX_XMLElementTest, Save) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLElement node(L"root");
+  CFX_XMLElement node(WideString(L"root"));
 
   node.Save(stream);
   EXPECT_EQ("<root />\n", stream->ToString());
@@ -117,28 +121,27 @@ TEST(CFX_XMLElementTest, Save) {
 
 TEST(CFX_XMLElementTest, SaveWithAttributes) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLElement node(L"root");
-  node.SetAttribute(L"first", L"one");
-  node.SetAttribute(L"second", L"two");
-
+  CFX_XMLElement node(WideString(L"root"));
+  node.SetAttribute(WideString(L"first"), WideString(L"one"));
+  node.SetAttribute(WideString(L"second"), WideString(L"two"));
   node.Save(stream);
   EXPECT_EQ("<root first=\"one\" second=\"two\" />\n", stream->ToString());
 }
 
 TEST(CFX_XMLElementTest, SaveWithChildren) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLElement node(L"node");
+  CFX_XMLElement node(WideString(L"node"));
 
-  CFX_XMLText text_child1(L"Text Child 1");
+  CFX_XMLText text_child1(WideString(L"Text Child 1"));
   node.AppendLastChild(&text_child1);
 
-  CFX_XMLElement node_child1(L"node-child");
+  CFX_XMLElement node_child1(WideString(L"node-child"));
   node.AppendLastChild(&node_child1);
 
-  CFX_XMLText text_child2(L"Text Child 2");
+  CFX_XMLText text_child2(WideString(L"Text Child 2"));
   node_child1.AppendLastChild(&text_child2);
 
-  CFX_XMLCharData char_data1(L"Char Data");
+  CFX_XMLCharData char_data1(WideString(L"Char Data"));
   node.AppendLastChild(&char_data1);
 
   node.Save(stream);
@@ -153,8 +156,9 @@ TEST(CFX_XMLElementTest, SaveWithChildren) {
 
 TEST(CFX_XMLElementTest, SaveWithNamespace) {
   auto stream = pdfium::MakeRetain<StringWriteStream>();
-  CFX_XMLElement node(L"test:root");
-  node.SetAttribute(L"xmlns:test", L"https://example.org/ns1");
+  CFX_XMLElement node(WideString(L"test:root"));
+  node.SetAttribute(WideString(L"xmlns:test"),
+                    WideString(L"https://example.org/ns1"));
 
   node.Save(stream);
   EXPECT_EQ("<test:root xmlns:test=\"https://example.org/ns1\" />\n",
@@ -162,8 +166,8 @@ TEST(CFX_XMLElementTest, SaveWithNamespace) {
 }
 
 TEST(CFX_XMLElementTest, GetFirstChildNamed) {
-  CFX_XMLElement node(L"node");
-  CFX_XMLElement node_child1(L"node-child");
+  CFX_XMLElement node(WideString(L"node"));
+  CFX_XMLElement node_child1(WideString(L"node-child"));
   node.AppendLastChild(&node_child1);
 
   auto* found = node.GetFirstChildNamed(L"node-child");
@@ -172,8 +176,8 @@ TEST(CFX_XMLElementTest, GetFirstChildNamed) {
 }
 
 TEST(CFX_XMLElementTest, GetFirstChildNamedMissing) {
-  CFX_XMLElement node(L"node");
-  CFX_XMLElement node_child1(L"node-child");
+  CFX_XMLElement node(WideString(L"node"));
+  CFX_XMLElement node_child1(WideString(L"node-child"));
   node.AppendLastChild(&node_child1);
 
   auto* found = node.GetFirstChildNamed(L"node-sibling");
@@ -181,10 +185,10 @@ TEST(CFX_XMLElementTest, GetFirstChildNamedMissing) {
 }
 
 TEST(CFX_XMLElementTest, GetNthChildNamed) {
-  CFX_XMLElement node(L"node");
-  CFX_XMLElement node_child1(L"node-child");
-  CFX_XMLElement node_child2(L"node-child");
-  CFX_XMLElement node_child3(L"node-child");
+  CFX_XMLElement node(WideString(L"node"));
+  CFX_XMLElement node_child1(WideString(L"node-child"));
+  CFX_XMLElement node_child2(WideString(L"node-child"));
+  CFX_XMLElement node_child3(WideString(L"node-child"));
   node.AppendLastChild(&node_child1);
   node.AppendLastChild(&node_child2);
   node.AppendLastChild(&node_child3);
@@ -195,10 +199,10 @@ TEST(CFX_XMLElementTest, GetNthChildNamed) {
 }
 
 TEST(CFX_XMLElementTest, GetNthChildNamedMissingChild) {
-  CFX_XMLElement node(L"node");
-  CFX_XMLElement node_child1(L"node-child");
-  CFX_XMLElement node_child2(L"node-child");
-  CFX_XMLElement node_child3(L"node-child");
+  CFX_XMLElement node(WideString(L"node"));
+  CFX_XMLElement node_child1(WideString(L"node-child"));
+  CFX_XMLElement node_child2(WideString(L"node-child"));
+  CFX_XMLElement node_child3(WideString(L"node-child"));
   node.AppendLastChild(&node_child1);
   node.AppendLastChild(&node_child2);
   node.AppendLastChild(&node_child3);
@@ -208,18 +212,18 @@ TEST(CFX_XMLElementTest, GetNthChildNamedMissingChild) {
 }
 
 TEST(CFX_XMLElementTest, GetTextData) {
-  CFX_XMLElement node(L"node");
+  CFX_XMLElement node(WideString(L"node"));
 
-  CFX_XMLText text_child1(L"Text Child 1");
+  CFX_XMLText text_child1(WideString(L"Text Child 1"));
   node.AppendLastChild(&text_child1);
 
-  CFX_XMLElement node_child1(L"Node child");
+  CFX_XMLElement node_child1(WideString(L"Node child"));
   node.AppendLastChild(&node_child1);
 
-  CFX_XMLText text_child2(L"Text Child 2");
+  CFX_XMLText text_child2(WideString(L"Text Child 2"));
   node_child1.AppendLastChild(&text_child2);
 
-  CFX_XMLCharData char_data1(L"Char Data");
+  CFX_XMLCharData char_data1(WideString(L"Char Data"));
   node.AppendLastChild(&char_data1);
 
   EXPECT_EQ(L"Text Child 1Char Data", node.GetTextData());

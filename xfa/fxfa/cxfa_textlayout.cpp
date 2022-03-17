@@ -789,7 +789,7 @@ bool CXFA_TextLayout::LoadRichText(
       }
 
       if (wsName.EqualsASCII("a")) {
-        WideString wsLinkContent = pElement->GetAttribute(L"href");
+        WideString wsLinkContent = pElement->GetAttribute(WideString(L"href"));
         if (!wsLinkContent.IsEmpty())
           pLinkData = pdfium::MakeRetain<CFGAS_LinkUserData>(wsLinkContent);
       }

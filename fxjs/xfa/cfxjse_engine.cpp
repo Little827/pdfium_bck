@@ -515,7 +515,7 @@ CJS_Result CFXJSE_Engine::NormalMethodCall(
     const WideString& functionName) {
   CXFA_Object* pObject = ToObject(info);
   if (!pObject)
-    return CJS_Result::Failure(L"no Holder() present.");
+    return CJS_Result::Failure(WideString(L"no Holder() present."));
 
   CFXJSE_Engine* pScriptContext = pObject->GetDocument()->GetScriptContext();
   pObject = pScriptContext->GetVariablesThis(pObject);

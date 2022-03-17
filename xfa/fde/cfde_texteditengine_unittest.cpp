@@ -63,36 +63,36 @@ class CFDE_TextEditEngineTest : public testing::Test {
 TEST_F(CFDE_TextEditEngineTest, Insert) {
   EXPECT_STREQ(L"", engine()->GetText().c_str());
 
-  engine()->Insert(0, L"");
+  engine()->Insert(0, WideString(L""));
   EXPECT_STREQ(L"", engine()->GetText().c_str());
   EXPECT_EQ(0U, engine()->GetLength());
 
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
   EXPECT_STREQ(L"Hello", engine()->GetText().c_str());
   EXPECT_EQ(5U, engine()->GetLength());
 
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
   EXPECT_EQ(11U, engine()->GetLength());
 
-  engine()->Insert(5, L" New");
+  engine()->Insert(5, WideString(L" New"));
   EXPECT_STREQ(L"Hello New World", engine()->GetText().c_str());
 
-  engine()->Insert(100, L" Cat");
+  engine()->Insert(100, WideString(L" Cat"));
   EXPECT_STREQ(L"Hello New World Cat", engine()->GetText().c_str());
 
   engine()->Clear();
 
   engine()->SetHasCharacterLimit(true);
   engine()->SetCharacterLimit(5);
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
 
   // No delegate
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_STREQ(L"Hello", engine()->GetText().c_str());
 
   engine()->SetCharacterLimit(8);
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_STREQ(L"Hello Wo", engine()->GetText().c_str());
 
   engine()->Clear();
@@ -102,38 +102,38 @@ TEST_F(CFDE_TextEditEngineTest, Insert) {
   engine()->SetDelegate(delegate.get());
 
   engine()->SetCharacterLimit(5);
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
 
   // Insert when full.
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_TRUE(delegate->text_is_full);
   EXPECT_STREQ(L"Hello", engine()->GetText().c_str());
   delegate->Reset();
 
   engine()->SetCharacterLimit(8);
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_TRUE(delegate->text_is_full);
   EXPECT_STREQ(L"Hello Wo", engine()->GetText().c_str());
   delegate->Reset();
   engine()->SetHasCharacterLimit(false);
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
 
   // Insert Invalid text
   delegate->fail_validation = true;
   engine()->EnableValidation(true);
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_STREQ(L"Hello", engine()->GetText().c_str());
 
   delegate->fail_validation = false;
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
   engine()->EnableValidation(false);
 
   engine()->Clear();
 
-  engine()->Insert(0, L"Hello\nWorld");
+  engine()->Insert(0, WideString(L"Hello\nWorld"));
   EXPECT_FALSE(delegate->text_is_full);
   EXPECT_STREQ(L"Hello\nWorld", engine()->GetText().c_str());
   delegate->Reset();
@@ -142,9 +142,9 @@ TEST_F(CFDE_TextEditEngineTest, Insert) {
   // Insert with limited area and over-fill
   engine()->LimitHorizontalScroll(true);
   engine()->SetAvailableWidth(52.0f);  // Fits 'Hello Wo'.
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
   EXPECT_FALSE(delegate->text_is_full);
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_TRUE(delegate->text_is_full);
   EXPECT_STREQ(L"Hello Wo", engine()->GetText().c_str());
   engine()->LimitHorizontalScroll(false);
@@ -155,9 +155,9 @@ TEST_F(CFDE_TextEditEngineTest, Insert) {
   engine()->SetLineSpace(12.0f);
   engine()->LimitVerticalScroll(true);
   // Default is one line of text.
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
   EXPECT_FALSE(delegate->text_is_full);
-  engine()->Insert(5, L" Wo\nrld");
+  engine()->Insert(5, WideString(L" Wo\nrld"));
   EXPECT_TRUE(delegate->text_is_full);
   EXPECT_STREQ(L"Hello Wo\n", engine()->GetText().c_str());
   engine()->LimitVerticalScroll(false);
@@ -167,40 +167,40 @@ TEST_F(CFDE_TextEditEngineTest, Insert) {
 
 TEST_F(CFDE_TextEditEngineTest, InsertToggleLimit) {
   engine()->SetHasCharacterLimit(true);
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->SetCharacterLimit(5);
-  engine()->Insert(0, L"Not Inserted before ");
+  engine()->Insert(0, WideString(L"Not Inserted before "));
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
 
   engine()->SetHasCharacterLimit(false);
-  engine()->Insert(0, L"Inserted before ");
+  engine()->Insert(0, WideString(L"Inserted before "));
   engine()->SetHasCharacterLimit(true);
-  engine()->Insert(0, L"Not Inserted before ");
+  engine()->Insert(0, WideString(L"Not Inserted before "));
   EXPECT_STREQ(L"Inserted before Hello World", engine()->GetText().c_str());
 }
 
 TEST_F(CFDE_TextEditEngineTest, InsertSkipNotify) {
   engine()->SetHasCharacterLimit(true);
   engine()->SetCharacterLimit(8);
-  engine()->Insert(0, L"Hello");
-  engine()->Insert(5, L" World",
+  engine()->Insert(0, WideString(L"Hello"));
+  engine()->Insert(5, WideString(L" World"),
                    CFDE_TextEditEngine::RecordOperation::kSkipNotify);
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
 
-  engine()->Insert(0, L"Not inserted");
+  engine()->Insert(0, WideString(L"Not inserted"));
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
 
   engine()->Delete(5, 1);
   EXPECT_STREQ(L"HelloWorld", engine()->GetText().c_str());
 
-  engine()->Insert(0, L"****");
+  engine()->Insert(0, WideString(L"****"));
   EXPECT_STREQ(L"*HelloWorld", engine()->GetText().c_str());
 }
 
 TEST_F(CFDE_TextEditEngineTest, InsertGrowGap) {
-  engine()->Insert(0, L"||");
+  engine()->Insert(0, WideString(L"||"));
   for (size_t i = 1; i < 1023; ++i) {
-    engine()->Insert(i, L"a");
+    engine()->Insert(i, WideString(L"a"));
   }
   WideString result = engine()->GetText();
   ASSERT_EQ(result.GetLength(), 1024u);
@@ -216,12 +216,12 @@ TEST_F(CFDE_TextEditEngineTest, Delete) {
   EXPECT_STREQ(L"", engine()->Delete(0, 50).c_str());
   EXPECT_STREQ(L"", engine()->GetText().c_str());
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   EXPECT_STREQ(L" World", engine()->Delete(5, 6).c_str());
   EXPECT_STREQ(L"Hello", engine()->GetText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   EXPECT_STREQ(L" ", engine()->Delete(5, 1).c_str());
   EXPECT_STREQ(L"HelloWorld", engine()->GetText().c_str());
 
@@ -235,7 +235,7 @@ TEST_F(CFDE_TextEditEngineTest, Clear) {
   engine()->Clear();
   EXPECT_STREQ(L"", engine()->GetText().c_str());
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
 
   engine()->Clear();
@@ -247,12 +247,12 @@ TEST_F(CFDE_TextEditEngineTest, GetChar) {
   // Out of bounds.
   EXPECT_EQ(L'\0', engine()->GetChar(0));
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   EXPECT_EQ(L'H', engine()->GetChar(0));
   EXPECT_EQ(L'd', engine()->GetChar(engine()->GetLength() - 1));
   EXPECT_EQ(L' ', engine()->GetChar(5));
 
-  engine()->Insert(5, L" A");
+  engine()->Insert(5, WideString(L" A"));
   EXPECT_STREQ(L"Hello A World", engine()->GetText().c_str());
   EXPECT_EQ(L'W', engine()->GetChar(8));
 
@@ -267,11 +267,11 @@ TEST_F(CFDE_TextEditEngineTest, GetWidthOfChar) {
   // Out of Bounds.
   EXPECT_EQ(0U, engine()->GetWidthOfChar(0));
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   EXPECT_EQ(173280U, engine()->GetWidthOfChar(0));
   EXPECT_EQ(133440U, engine()->GetWidthOfChar(1));
 
-  engine()->Insert(0, L"\t");
+  engine()->Insert(0, WideString(L"\t"));
   EXPECT_EQ(0U, engine()->GetWidthOfChar(0));
 }
 
@@ -284,7 +284,7 @@ TEST_F(CFDE_TextEditEngineTest, Selection) {
   engine()->SelectAll();
   EXPECT_FALSE(engine()->HasSelection());
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   EXPECT_STREQ(L"", engine()->DeleteSelectedText().c_str());
 
   EXPECT_FALSE(engine()->HasSelection());
@@ -308,7 +308,7 @@ TEST_F(CFDE_TextEditEngineTest, Selection) {
   EXPECT_TRUE(engine()->HasSelection());
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
 
-  engine()->Insert(5, L" A");
+  engine()->Insert(5, WideString(L" A"));
   EXPECT_FALSE(engine()->HasSelection());
   EXPECT_STREQ(L"", engine()->GetSelectedText().c_str());
 
@@ -318,42 +318,42 @@ TEST_F(CFDE_TextEditEngineTest, Selection) {
   EXPECT_STREQ(L"Hello A World", engine()->GetSelectedText().c_str());
   engine()->Clear();
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->SelectAll();
 
   EXPECT_STREQ(L"Hello World", engine()->DeleteSelectedText().c_str());
   EXPECT_FALSE(engine()->HasSelection());
   EXPECT_STREQ(L"", engine()->GetText().c_str());
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->SetSelection(5, 5);
   EXPECT_STREQ(L" Worl", engine()->DeleteSelectedText().c_str());
   EXPECT_FALSE(engine()->HasSelection());
   EXPECT_STREQ(L"Hellod", engine()->GetText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->SelectAll();
-  engine()->ReplaceSelectedText(L"Goodbye Everybody");
+  engine()->ReplaceSelectedText(WideString(L"Goodbye Everybody"));
   EXPECT_FALSE(engine()->HasSelection());
   EXPECT_STREQ(L"Goodbye Everybody", engine()->GetText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->SetSelection(1, 4);
-  engine()->ReplaceSelectedText(L"i,");
+  engine()->ReplaceSelectedText(WideString(L"i,"));
   EXPECT_FALSE(engine()->HasSelection());
   EXPECT_STREQ(L"Hi, World", engine()->GetText().c_str());
 
   // Selection fully after gap.
   engine()->Clear();
-  engine()->Insert(0, L"Hello");
-  engine()->Insert(0, L"A ");
+  engine()->Insert(0, WideString(L"Hello"));
+  engine()->Insert(0, WideString(L"A "));
   engine()->SetSelection(3, 6);
   EXPECT_STREQ(L"ello", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->ClearSelection();
   engine()->DeleteSelectedText();
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
@@ -365,7 +365,7 @@ TEST_F(CFDE_TextEditEngineTest, UndoRedo) {
   EXPECT_FALSE(engine()->Undo());
   EXPECT_FALSE(engine()->Redo());
 
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
   EXPECT_TRUE(engine()->CanUndo());
   EXPECT_FALSE(engine()->CanRedo());
   EXPECT_TRUE(engine()->Undo());
@@ -381,7 +381,7 @@ TEST_F(CFDE_TextEditEngineTest, UndoRedo) {
   EXPECT_FALSE(engine()->CanUndo());
   EXPECT_FALSE(engine()->CanRedo());
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->SelectAll();
   engine()->DeleteSelectedText();
   EXPECT_STREQ(L"", engine()->GetText().c_str());
@@ -394,9 +394,9 @@ TEST_F(CFDE_TextEditEngineTest, UndoRedo) {
   EXPECT_TRUE(engine()->CanUndo());
   EXPECT_FALSE(engine()->CanRedo());
 
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   engine()->SelectAll();
-  engine()->ReplaceSelectedText(L"Goodbye Friend");
+  engine()->ReplaceSelectedText(WideString(L"Goodbye Friend"));
   EXPECT_STREQ(L"Goodbye Friend", engine()->GetText().c_str());
   EXPECT_TRUE(engine()->CanUndo());
   EXPECT_TRUE(engine()->Undo());
@@ -407,9 +407,9 @@ TEST_F(CFDE_TextEditEngineTest, UndoRedo) {
 
   engine()->Clear();
   engine()->SetMaxEditOperationsForTesting(3);
-  engine()->Insert(0, L"First ");
-  engine()->Insert(engine()->GetLength(), L"Second ");
-  engine()->Insert(engine()->GetLength(), L"Third");
+  engine()->Insert(0, WideString(L"First "));
+  engine()->Insert(engine()->GetLength(), WideString(L"Second "));
+  engine()->Insert(engine()->GetLength(), WideString(L"Third"));
 
   EXPECT_TRUE(engine()->CanUndo());
   EXPECT_TRUE(engine()->Undo());
@@ -432,12 +432,12 @@ TEST_F(CFDE_TextEditEngineTest, UndoRedo) {
   engine()->SetMaxEditOperationsForTesting(4);
 
   // Go beyond the max operations limit.
-  engine()->Insert(0, L"H");
-  engine()->Insert(1, L"e");
-  engine()->Insert(2, L"l");
-  engine()->Insert(3, L"l");
-  engine()->Insert(4, L"o");
-  engine()->Insert(5, L" World");
+  engine()->Insert(0, WideString(L"H"));
+  engine()->Insert(1, WideString(L"e"));
+  engine()->Insert(2, WideString(L"l"));
+  engine()->Insert(3, WideString(L"l"));
+  engine()->Insert(4, WideString(L"o"));
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
 
   // Do A, undo. Do B, undo. Redo should cause B.
@@ -465,7 +465,7 @@ TEST_F(CFDE_TextEditEngineTest, UndoRedo) {
 
 TEST_F(CFDE_TextEditEngineTest, GetIndexForPoint) {
   engine()->SetFontSize(10.0f);
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   EXPECT_EQ(0U, engine()->GetIndexForPoint({0.0f, 0.0f}));
   EXPECT_EQ(11U, engine()->GetIndexForPoint({999999.0f, 9999999.0f}));
   EXPECT_EQ(11U, engine()->GetIndexForPoint({999999.0f, 0.0f}));
@@ -475,9 +475,9 @@ TEST_F(CFDE_TextEditEngineTest, GetIndexForPoint) {
 
 TEST_F(CFDE_TextEditEngineTest, GetIndexForPointLineWrap) {
   engine()->SetFontSize(10.0f);
-  engine()->Insert(0,
-                   L"A text long enough to span multiple lines and test "
-                   L"getting indexes on multi-line edits.");
+  engine()->Insert(
+      0, WideString(L"A text long enough to span multiple lines and test "
+                    L"getting indexes on multi-line edits."));
   EXPECT_EQ(0U, engine()->GetIndexForPoint({0.0f, 0.0f}));
   EXPECT_EQ(87U, engine()->GetIndexForPoint({999999.0f, 9999999.0f}));
   EXPECT_EQ(18U, engine()->GetIndexForPoint({999999.0f, 0.0f}));
@@ -488,7 +488,7 @@ TEST_F(CFDE_TextEditEngineTest, GetIndexForPointLineWrap) {
 
 TEST_F(CFDE_TextEditEngineTest, GetIndexForPointSpaceAtEnd) {
   engine()->SetFontSize(10.0f);
-  engine()->Insert(0, L"Hello World ");
+  engine()->Insert(0, WideString(L"Hello World "));
   EXPECT_EQ(0U, engine()->GetIndexForPoint({0.0f, 0.0f}));
   EXPECT_EQ(12U, engine()->GetIndexForPoint({999999.0f, 9999999.0f}));
   EXPECT_EQ(12U, engine()->GetIndexForPoint({999999.0f, 0.0f}));
@@ -496,7 +496,7 @@ TEST_F(CFDE_TextEditEngineTest, GetIndexForPointSpaceAtEnd) {
 
 TEST_F(CFDE_TextEditEngineTest, GetIndexForPointLineBreaks) {
   engine()->SetFontSize(10.0f);
-  engine()->Insert(0, L"Hello\nWorld");
+  engine()->Insert(0, WideString(L"Hello\nWorld"));
   EXPECT_EQ(0U, engine()->GetIndexForPoint({0.0f, 0.0f}));
   EXPECT_EQ(5U, engine()->GetIndexForPoint({999999.0f, 0.0f}));
   EXPECT_EQ(6U, engine()->GetIndexForPoint({0.0f, 10.0f}));
@@ -511,7 +511,7 @@ TEST_F(CFDE_TextEditEngineTest, CanGenerateCharacterInfo) {
   EXPECT_FALSE(engine()->CanGenerateCharacterInfo());
 
   // Has font and text.
-  engine()->Insert(0, L"Hi!");
+  engine()->Insert(0, WideString(L"Hi!"));
   EXPECT_TRUE(engine()->CanGenerateCharacterInfo());
 
   // Has text but no font.
@@ -526,7 +526,7 @@ TEST_F(CFDE_TextEditEngineTest, CanGenerateCharacterInfo) {
 TEST_F(CFDE_TextEditEngineTest, GetCharacterInfo) {
   std::pair<int32_t, CFX_RectF> char_info;
 
-  engine()->Insert(0, L"Hi!");
+  engine()->Insert(0, WideString(L"Hi!"));
   ASSERT_EQ(3U, engine()->GetLength());
 
   char_info = engine()->GetCharacterInfo(0);
@@ -572,7 +572,7 @@ TEST_F(CFDE_TextEditEngineTest, BoundsForWordAt) {
   EXPECT_STREQ(L"", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(0);
   EXPECT_EQ(0U, start_idx);
   EXPECT_EQ(5U, count);
@@ -580,7 +580,7 @@ TEST_F(CFDE_TextEditEngineTest, BoundsForWordAt) {
   EXPECT_STREQ(L"Hello", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello World");
+  engine()->Insert(0, WideString(L"Hello World"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(100);
   EXPECT_EQ(0U, start_idx);
   EXPECT_EQ(0U, count);
@@ -619,43 +619,43 @@ TEST_F(CFDE_TextEditEngineTest, BoundsForWordAt) {
   EXPECT_STREQ(L"World", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"123 456 789");
+  engine()->Insert(0, WideString(L"123 456 789"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(5);
   engine()->SetSelection(start_idx, count);
   EXPECT_STREQ(L"456", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"123def789");
+  engine()->Insert(0, WideString(L"123def789"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(5);
   engine()->SetSelection(start_idx, count);
   EXPECT_STREQ(L"123def789", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"abc456ghi");
+  engine()->Insert(0, WideString(L"abc456ghi"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(5);
   engine()->SetSelection(start_idx, count);
   EXPECT_STREQ(L"abc456ghi", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"hello, world");
+  engine()->Insert(0, WideString(L"hello, world"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(0);
   engine()->SetSelection(start_idx, count);
   EXPECT_STREQ(L"hello", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"hello, world");
+  engine()->Insert(0, WideString(L"hello, world"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(5);
   engine()->SetSelection(start_idx, count);
   EXPECT_STREQ(L",", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"np-complete");
+  engine()->Insert(0, WideString(L"np-complete"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(6);
   engine()->SetSelection(start_idx, count);
   EXPECT_STREQ(L"complete", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"(123) 456-7890");
+  engine()->Insert(0, WideString(L"(123) 456-7890"));
   std::tie(start_idx, count) = engine()->BoundsForWordAt(0);
   engine()->SetSelection(start_idx, count);
   EXPECT_STREQ(L"(", engine()->GetSelectedText().c_str());
@@ -703,7 +703,7 @@ TEST_F(CFDE_TextEditEngineTest, BoundsForWordAt) {
 
   for (auto t : tests) {
     engine()->Clear();
-    engine()->Insert(0, t.str);
+    engine()->Insert(0, WideString(t.str));
 
     size_t idx = 0;
     for (const auto* res : t.results) {
@@ -718,7 +718,7 @@ TEST_F(CFDE_TextEditEngineTest, BoundsForWordAt) {
 
 TEST_F(CFDE_TextEditEngineTest, CursorMovement) {
   engine()->Clear();
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
 
   EXPECT_EQ(0U, engine()->GetIndexLeft(0));
   EXPECT_EQ(5U, engine()->GetIndexRight(5));
@@ -730,7 +730,7 @@ TEST_F(CFDE_TextEditEngineTest, CursorMovement) {
   EXPECT_EQ(5U, engine()->GetIndexAtEndOfLine(2));
 
   engine()->Clear();
-  engine()->Insert(0, L"The book is \"مدخل إلى C++\"");
+  engine()->Insert(0, WideString(L"The book is \"مدخل إلى C++\""));
   EXPECT_FALSE(FX_IsOdd(engine()->GetCharacterInfo(3).first));
   EXPECT_EQ(2U, engine()->GetIndexLeft(3));
   EXPECT_EQ(4U, engine()->GetIndexRight(3));
@@ -742,7 +742,7 @@ TEST_F(CFDE_TextEditEngineTest, CursorMovement) {
   EXPECT_EQ(24U, engine()->GetIndexRight(23));
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello\r\nWorld\r\nTest");
+  engine()->Insert(0, WideString(L"Hello\r\nWorld\r\nTest"));
   // Move to end of Hello from start of World.
   engine()->SetSelection(engine()->GetIndexLeft(7U), 7);
   EXPECT_STREQ(L"\r\nWorld", engine()->GetSelectedText().c_str());
@@ -773,16 +773,16 @@ TEST_F(CFDE_TextEditEngineTest, CursorMovement) {
   EXPECT_STREQ(L"World", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Short\nAnd a very long line");
+  engine()->Insert(0, WideString(L"Short\nAnd a very long line"));
   engine()->SetSelection(engine()->GetIndexUp(14U), 11);
   EXPECT_STREQ(L"\nAnd a very", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"A Very long line\nShort");
+  engine()->Insert(0, WideString(L"A Very long line\nShort"));
   EXPECT_EQ(engine()->GetLength(), engine()->GetIndexDown(8U));
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello\rWorld\rTest");
+  engine()->Insert(0, WideString(L"Hello\rWorld\rTest"));
   // Move to end of Hello from start of World.
   engine()->SetSelection(engine()->GetIndexLeft(6U), 6);
   EXPECT_STREQ(L"\rWorld", engine()->GetSelectedText().c_str());
@@ -813,7 +813,7 @@ TEST_F(CFDE_TextEditEngineTest, CursorMovement) {
   EXPECT_STREQ(L"World", engine()->GetSelectedText().c_str());
 
   engine()->Clear();
-  engine()->Insert(0, L"Hello\nWorld\nTest");
+  engine()->Insert(0, WideString(L"Hello\nWorld\nTest"));
   // Move to end of Hello from start of World.
   engine()->SetSelection(engine()->GetIndexLeft(6U), 6);
   EXPECT_STREQ(L"\nWorld", engine()->GetSelectedText().c_str());

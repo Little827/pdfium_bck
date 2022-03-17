@@ -109,11 +109,11 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   ScopedCPDF_PageModule page_module;
 
   auto opt_array = pdfium::MakeRetain<CPDF_Array>();
-  opt_array->AppendNew<CPDF_String>(L"Alpha");
-  opt_array->AppendNew<CPDF_String>(L"Beta");
-  opt_array->AppendNew<CPDF_String>(L"Gamma");
-  opt_array->AppendNew<CPDF_String>(L"Delta");
-  opt_array->AppendNew<CPDF_String>(L"Epsilon");
+  opt_array->AppendNew<CPDF_String>(WideString(L"Alpha"));
+  opt_array->AppendNew<CPDF_String>(WideString(L"Beta"));
+  opt_array->AppendNew<CPDF_String>(WideString(L"Gamma"));
+  opt_array->AppendNew<CPDF_String>(WideString(L"Delta"));
+  opt_array->AppendNew<CPDF_String>(WideString(L"Epsilon"));
 
   {
     // No Values (/V) or Selected Indices (/I) objects.
@@ -126,7 +126,8 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   }
   {
     // Values (/V) object is just a string.
-    auto values = pdfium::MakeRetain<CPDF_String>(/*pPool=*/nullptr, L"Gamma");
+    auto values = pdfium::MakeRetain<CPDF_String>(/*pPool=*/nullptr,
+                                                  WideString(L"Gamma"));
     std::vector<int> expected_indices{2};
     std::vector<int> excluded_indices{-1, 5};
     TestMultiselectFieldDict(opt_array, values, /*selected_indices=*/nullptr,
@@ -135,7 +136,8 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   }
   {
     // Values (/V) object is just an invalid string.
-    auto values = pdfium::MakeRetain<CPDF_String>(/*pPool=*/nullptr, L"Omega");
+    auto values = pdfium::MakeRetain<CPDF_String>(/*pPool=*/nullptr,
+                                                  WideString(L"Omega"));
     std::vector<int> expected_indices;
     std::vector<int> excluded_indices{-1, 5};
     TestMultiselectFieldDict(opt_array, values, /*selected_indices=*/nullptr,
@@ -145,7 +147,7 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   {
     // Values (/V) object is an array with one object.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Beta");
+    values->AppendNew<CPDF_String>(WideString(L"Beta"));
     std::vector<int> expected_indices{1};
     std::vector<int> excluded_indices{-1, 5};
     TestMultiselectFieldDict(opt_array, values, /*selected_indices=*/nullptr,
@@ -155,7 +157,7 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   {
     // Values (/V) object is an array with one invalid object.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Omega");
+    values->AppendNew<CPDF_String>(WideString(L"Omega"));
     std::vector<int> expected_indices;
     std::vector<int> excluded_indices{-1, 5};
     TestMultiselectFieldDict(opt_array, values, /*selected_indices=*/nullptr,
@@ -165,8 +167,8 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   {
     // Values (/V) object is an array with multiple objects.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Beta");
-    values->AppendNew<CPDF_String>(L"Epsilon");
+    values->AppendNew<CPDF_String>(WideString(L"Beta"));
+    values->AppendNew<CPDF_String>(WideString(L"Epsilon"));
     std::vector<int> expected_indices{1, 4};
     std::vector<int> excluded_indices{-1, 5};
     TestMultiselectFieldDict(opt_array, values, /*selected_indices=*/nullptr,
@@ -176,9 +178,9 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   {
     // Values (/V) object is an array with multiple objects with one invalid.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Beta");
-    values->AppendNew<CPDF_String>(L"Epsilon");
-    values->AppendNew<CPDF_String>(L"Omega");
+    values->AppendNew<CPDF_String>(WideString(L"Beta"));
+    values->AppendNew<CPDF_String>(WideString(L"Epsilon"));
+    values->AppendNew<CPDF_String>(WideString(L"Omega"));
     std::vector<int> expected_indices{1, 4};
     std::vector<int> excluded_indices{-1, 5};
     TestMultiselectFieldDict(opt_array, values, /*selected_indices=*/nullptr,
@@ -245,8 +247,8 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
     // Values (/V) or Selected Indices (/I) objects conflict with different
     // lengths.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Beta");
-    values->AppendNew<CPDF_String>(L"Epsilon");
+    values->AppendNew<CPDF_String>(WideString(L"Beta"));
+    values->AppendNew<CPDF_String>(WideString(L"Epsilon"));
     auto selected_indices = pdfium::MakeRetain<CPDF_Array>();
     selected_indices->AppendNew<CPDF_Number>(0);
     selected_indices->AppendNew<CPDF_Number>(2);
@@ -260,8 +262,8 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   {
     // Values (/V) or Selected Indices (/I) objects conflict with same lengths.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Alpha");
-    values->AppendNew<CPDF_String>(L"Epsilon");
+    values->AppendNew<CPDF_String>(WideString(L"Alpha"));
+    values->AppendNew<CPDF_String>(WideString(L"Epsilon"));
     auto selected_indices = pdfium::MakeRetain<CPDF_Array>();
     selected_indices->AppendNew<CPDF_Number>(2);
     selected_indices->AppendNew<CPDF_Number>(3);
@@ -275,9 +277,9 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
     // Values (/V) or Selected Indices (/I) objects conflict with values being
     // invalid.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Beta");
-    values->AppendNew<CPDF_String>(L"Epsilon");
-    values->AppendNew<CPDF_String>(L"Omega");
+    values->AppendNew<CPDF_String>(WideString(L"Beta"));
+    values->AppendNew<CPDF_String>(WideString(L"Epsilon"));
+    values->AppendNew<CPDF_String>(WideString(L"Omega"));
     auto selected_indices = pdfium::MakeRetain<CPDF_Array>();
     selected_indices->AppendNew<CPDF_Number>(1);
     selected_indices->AppendNew<CPDF_Number>(4);
@@ -291,8 +293,8 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
     // Values (/V) or Selected Indices (/I) objects conflict with selected
     // indices being invalid.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Beta");
-    values->AppendNew<CPDF_String>(L"Epsilon");
+    values->AppendNew<CPDF_String>(WideString(L"Beta"));
+    values->AppendNew<CPDF_String>(WideString(L"Epsilon"));
     auto selected_indices = pdfium::MakeRetain<CPDF_Array>();
     selected_indices->AppendNew<CPDF_Number>(1);
     selected_indices->AppendNew<CPDF_Number>(4);
@@ -307,9 +309,9 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
     // Values (/V) or Selected Indices (/I) objects conflict with both being
     // invalid.
     auto values = pdfium::MakeRetain<CPDF_Array>();
-    values->AppendNew<CPDF_String>(L"Beta");
-    values->AppendNew<CPDF_String>(L"Epsilon");
-    values->AppendNew<CPDF_String>(L"Omega");
+    values->AppendNew<CPDF_String>(WideString(L"Beta"));
+    values->AppendNew<CPDF_String>(WideString(L"Epsilon"));
+    values->AppendNew<CPDF_String>(WideString(L"Omega"));
     auto selected_indices = pdfium::MakeRetain<CPDF_Array>();
     selected_indices->AppendNew<CPDF_Number>(0);
     selected_indices->AppendNew<CPDF_Number>(2);
@@ -324,7 +326,8 @@ TEST(CPDF_FormFieldTest, IsItemSelected) {
   {
     // Values (/V) or Selected Indices (/I) objects conflict with each not being
     // an array.
-    auto values = pdfium::MakeRetain<CPDF_String>(/*pPool=*/nullptr, L"Gamma");
+    auto values = pdfium::MakeRetain<CPDF_String>(/*pPool=*/nullptr,
+                                                  WideString(L"Gamma"));
     auto selected_indices = pdfium::MakeRetain<CPDF_Number>(4);
     std::vector<int> expected_indices{2};
     std::vector<int> excluded_indices{-1, 5};

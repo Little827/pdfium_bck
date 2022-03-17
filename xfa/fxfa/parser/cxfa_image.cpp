@@ -44,12 +44,17 @@ XFA_AttributeValue CXFA_Image::GetAspect() {
   return JSObject()->GetEnum(XFA_Attribute::Aspect);
 }
 
+// TODO(tsepez): needless allocation of value_or() arg if have value.
 WideString CXFA_Image::GetContentType() {
-  return JSObject()->TryCData(XFA_Attribute::ContentType, true).value_or(L"");
+  return JSObject()
+      ->TryCData(XFA_Attribute::ContentType, true)
+      .value_or(WideString(L""));
 }
 
 WideString CXFA_Image::GetHref() {
-  return JSObject()->TryCData(XFA_Attribute::Href, true).value_or(L"");
+  return JSObject()
+      ->TryCData(XFA_Attribute::Href, true)
+      .value_or(WideString(L""));
 }
 
 XFA_AttributeValue CXFA_Image::GetTransferEncoding() {
@@ -58,7 +63,7 @@ XFA_AttributeValue CXFA_Image::GetTransferEncoding() {
 }
 
 WideString CXFA_Image::GetContent() {
-  return JSObject()->TryContent(false, true).value_or(L"");
+  return JSObject()->TryContent(false, true).value_or(WideString(L""));
 }
 
 void CXFA_Image::SetContentType(const WideString& wsContentType) {
