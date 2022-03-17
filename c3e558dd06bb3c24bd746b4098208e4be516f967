@@ -16,6 +16,23 @@
       "message": "Are you willing to jump off this cliff?",
       "revId": "c3e558dd06bb3c24bd746b4098208e4be516f967",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a64f35a_2d068186",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-17T22:42:24Z",
+      "side": 1,
+      "message": "Well, I get to the edge of the cliff here, and I wonder if PDF_EncodeText() and CPDF_String\u0027s WideString ctor should really take WideStringView.",
+      "revId": "c3e558dd06bb3c24bd746b4098208e4be516f967",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
