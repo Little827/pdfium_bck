@@ -197,7 +197,7 @@ ByteString CPDF_PageContentGenerator::RealizeResource(
 
     idnum++;
   }
-  pResList->SetNewFor<CPDF_Reference>(name, m_pDocument.Get(),
+  pResList->SetNewFor<CPDF_Reference>(name.AsStringView(), m_pDocument.Get(),
                                       pResource->GetObjNum());
   return name;
 }

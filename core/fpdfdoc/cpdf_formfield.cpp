@@ -352,9 +352,10 @@ bool CPDF_FormField::SetValue(const WideString& value,
           !NotifyBeforeValueChange(csValue)) {
         return false;
       }
+      // TODO(thestig): Switch to ByteStringView.
       ByteString key(bDefault ? pdfium::form_fields::kDV
                               : pdfium::form_fields::kV);
-      m_pDict->SetNewFor<CPDF_String>(key, csValue);
+      m_pDict->SetNewFor<CPDF_String>(key.AsStringView(), csValue);
       int iIndex = FindOption(csValue);
       if (iIndex < 0) {
         if (m_Type == kRichText && !bDefault) {

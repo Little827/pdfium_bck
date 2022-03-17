@@ -206,10 +206,12 @@ void ReplaceAbbrInDictionary(CPDF_Dictionary* pDict) {
     }
   }
   for (const auto& op : replacements) {
-    if (op.is_replace_key)
+    if (op.is_replace_key) {
       pDict->ReplaceKey(op.key, ByteString(op.replacement));
-    else
-      pDict->SetNewFor<CPDF_Name>(op.key, ByteString(op.replacement));
+    } else {
+      pDict->SetNewFor<CPDF_Name>(op.key.AsStringView(),
+                                  ByteString(op.replacement));
+    }
   }
 }
 
@@ -617,7 +619,7 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
       break;
     }
     auto word = m_pSyntax->GetWord();
-    ByteString key(word.Last(word.GetLength() - 1));
+    ByteStringView key(word.Last(word.GetLength() - 1));
     auto pObj = m_pSyntax->ReadNextObject(false, false, 0);
     if (pObj && !pObj->IsInline()) {
       pDict->SetNewFor<CPDF_Reference>(key, m_pDocument.Get(),

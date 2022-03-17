@@ -317,7 +317,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
 
   CPDF_Dictionary* pNewXORes = nullptr;
   if (!key.IsEmpty()) {
-    pPageXObject->SetNewFor<CPDF_Reference>(key, pDocument,
+    pPageXObject->SetNewFor<CPDF_Reference>(key.AsStringView(), pDocument,
                                             pNewXObject->GetObjNum());
 
     CPDF_Dictionary* pNewOXbjectDic = pNewXObject->GetDict();
@@ -392,7 +392,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
 
     CPDF_Dictionary* pXObject = GetOrCreateDict(pNewXORes, "XObject");
     ByteString sFormName = ByteString::Format("F%d", i);
-    pXObject->SetNewFor<CPDF_Reference>(sFormName, pDocument,
+    pXObject->SetNewFor<CPDF_Reference>(sFormName.AsStringView(), pDocument,
                                         pObj->GetObjNum());
 
     ByteString sStream;

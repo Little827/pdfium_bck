@@ -97,14 +97,14 @@ CPDF_Array* GetOrCreateArray(CPDF_Dictionary* dict, const ByteString& key) {
   CPDF_Array* result = dict->GetArrayFor(key);
   if (result)
     return result;
-  return dict->SetNewFor<CPDF_Array>(key);
+  return dict->SetNewFor<CPDF_Array>(key.AsStringView());
 }
 
 CPDF_Dictionary* GetOrCreateDict(CPDF_Dictionary* dict, const ByteString& key) {
   CPDF_Dictionary* result = dict->GetDictFor(key);
   if (result)
     return result;
-  return dict->SetNewFor<CPDF_Dictionary>(key);
+  return dict->SetNewFor<CPDF_Dictionary>(key.AsStringView());
 }
 
 ByteString PDF_NameDecode(ByteStringView orig) {

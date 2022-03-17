@@ -401,7 +401,7 @@ ByteString GetPopupContentsString(CPDF_Document* pDoc,
 
 RetainPtr<CPDF_Dictionary> GenerateResourceFontDict(
     CPDF_Document* pDoc,
-    const ByteString& sFontDictName) {
+    ByteStringView font_dict_name) {
   CPDF_Dictionary* pFontDict = pDoc->NewIndirect<CPDF_Dictionary>();
   pFontDict->SetNewFor<CPDF_Name>("Type", "Font");
   pFontDict->SetNewFor<CPDF_Name>("Subtype", "Type1");
@@ -409,7 +409,7 @@ RetainPtr<CPDF_Dictionary> GenerateResourceFontDict(
   pFontDict->SetNewFor<CPDF_Name>("Encoding", "WinAnsiEncoding");
 
   auto pResourceFontDict = pDoc->New<CPDF_Dictionary>();
-  pResourceFontDict->SetNewFor<CPDF_Reference>(sFontDictName, pDoc,
+  pResourceFontDict->SetNewFor<CPDF_Reference>(font_dict_name, pDoc,
                                                pFontDict->GetObjNum());
   return pResourceFontDict;
 }
@@ -472,7 +472,7 @@ ByteString GenerateTextSymbolAP(const CFX_FloatRect& rect) {
 
 RetainPtr<CPDF_Dictionary> GenerateExtGStateDict(
     const CPDF_Dictionary& pAnnotDict,
-    const ByteString& sExtGSDictName,
+    ByteStringView ext_gs_dict_name,
     const ByteString& sBlendMode) {
   auto pGSDict =
       pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
@@ -487,7 +487,7 @@ RetainPtr<CPDF_Dictionary> GenerateExtGStateDict(
 
   auto pExtGStateDict =
       pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
-  pExtGStateDict->SetFor(sExtGSDictName, pGSDict);
+  pExtGStateDict->SetFor(ext_gs_dict_name, pGSDict);
   return pExtGStateDict;
 }
 
@@ -530,7 +530,7 @@ void GenerateAndSetAPDict(CPDF_Document* pDoc,
 
 bool GenerateCircleAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   CPDF_Array* pInteriorColor = pAnnotDict->GetArrayFor("IC");
@@ -603,7 +603,7 @@ bool GenerateCircleAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 bool GenerateHighlightAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   sAppStream << GetColorStringWithDefault(
@@ -645,7 +645,7 @@ bool GenerateInkAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
     return false;
 
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   sAppStream << GetColorStringWithDefault(
@@ -688,7 +688,7 @@ bool GenerateInkAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 bool GenerateTextAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   CFX_FloatRect rect = pAnnotDict->GetRectFor(pdfium::annotation::kRect);
@@ -710,7 +710,7 @@ bool GenerateTextAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 bool GenerateUnderlineAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   sAppStream << GetColorStringWithDefault(
@@ -741,7 +741,7 @@ bool GenerateUnderlineAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 bool GeneratePopupAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs\n";
 
   sAppStream << GenerateColorAP(CFX_Color(CFX_Color::Type::kRGB, 1, 1, 0),
@@ -761,7 +761,7 @@ bool GeneratePopupAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
   ByteString sFontName = "FONT";
   RetainPtr<CPDF_Dictionary> pResourceFontDict =
-      GenerateResourceFontDict(pDoc, sFontName);
+      GenerateResourceFontDict(pDoc, sFontName.AsStringView());
 
   auto* pData = CPDF_DocPageData::FromDocument(pDoc);
   RetainPtr<CPDF_Font> pDefFont = pData->GetFont(pResourceFontDict.Get());
@@ -781,7 +781,7 @@ bool GeneratePopupAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 bool GenerateSquareAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   CPDF_Array* pInteriorColor = pAnnotDict->GetArrayFor("IC");
@@ -828,7 +828,7 @@ bool GenerateSquareAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 bool GenerateSquigglyAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   sAppStream << GetColorStringWithDefault(
@@ -878,7 +878,7 @@ bool GenerateSquigglyAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 bool GenerateStrikeOutAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
-  ByteString sExtGSDictName = "GS";
+  ByteStringView sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
 
   sAppStream << GetColorStringWithDefault(
@@ -937,6 +937,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
   if (!font.has_value())
     return;
 
+  // TODO(thestig): Switch to ByteStringView.
   ByteString font_name = font.value();
 
   CFX_Color crText = fpdfdoc::CFXColorFromString(DA);
@@ -955,7 +956,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     pFontDict->SetNewFor<CPDF_Name>("Subtype", "Type1");
     pFontDict->SetNewFor<CPDF_Name>("BaseFont", CFX_Font::kDefaultAnsiFontName);
     pFontDict->SetNewFor<CPDF_Name>("Encoding", "WinAnsiEncoding");
-    pDRFontDict->SetNewFor<CPDF_Reference>(font_name, pDoc,
+    pDRFontDict->SetNewFor<CPDF_Reference>(font_name.AsStringView(), pDoc,
                                            pFontDict->GetObjNum());
   }
   auto* pData = CPDF_DocPageData::FromDocument(pDoc);
@@ -1080,8 +1081,8 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
         pStreamResFontList = pStreamResList->SetNewFor<CPDF_Dictionary>("Font");
       }
       if (!pStreamResFontList->KeyExist(font_name)) {
-        pStreamResFontList->SetNewFor<CPDF_Reference>(font_name, pDoc,
-                                                      pFontDict->GetObjNum());
+        pStreamResFontList->SetNewFor<CPDF_Reference>(
+            font_name.AsStringView(), pDoc, pFontDict->GetObjNum());
       }
     } else {
       pStreamDict->SetFor("Resources", pFormDict->GetDictFor("DR")->Clone());
@@ -1340,8 +1341,8 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
   }
 
   if (!pStreamResFontList->KeyExist(font_name)) {
-    pStreamResFontList->SetNewFor<CPDF_Reference>(font_name, pDoc,
-                                                  pFontDict->GetObjNum());
+    pStreamResFontList->SetNewFor<CPDF_Reference>(font_name.AsStringView(),
+                                                  pDoc, pFontDict->GetObjNum());
   }
 }
 

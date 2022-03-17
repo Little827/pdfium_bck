@@ -150,8 +150,8 @@ NupPageSettings NupState::CalculateNewPagePosition(const CFX_SizeF& pagesize) {
 }
 
 const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
-                                             const ByteString& bsSrcTag) {
-  if (!pDict || bsSrcTag.IsEmpty())
+                                             ByteStringView src_tag) {
+  if (!pDict || src_tag.IsEmpty())
     return nullptr;
   if (!pDict->KeyExist(pdfium::page_object::kParent) ||
       !pDict->KeyExist(pdfium::page_object::kType)) {
@@ -168,12 +168,14 @@ const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
   if (!pp)
     return nullptr;
 
-  if (pDict->KeyExist(bsSrcTag))
-    return pDict->GetObjectFor(bsSrcTag);
+  // TODO(thestig): Remove and just use `src_tag`.
+  ByteString src_tag_str(src_tag);
+  if (pDict->KeyExist(src_tag_str))
+    return pDict->GetObjectFor(src_tag_str);
 
   while (pp) {
-    if (pp->KeyExist(bsSrcTag))
-      return pp->GetObjectFor(bsSrcTag);
+    if (pp->KeyExist(src_tag_str))
+      return pp->GetObjectFor(src_tag_str);
     if (!pp->KeyExist(pdfium::page_object::kParent))
       break;
     pp = ToDictionary(
@@ -184,8 +186,8 @@ const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
 
 bool CopyInheritable(CPDF_Dictionary* pDestPageDict,
                      const CPDF_Dictionary* pSrcPageDict,
-                     const ByteString& key) {
-  if (pDestPageDict->KeyExist(key))
+                     ByteStringView key) {
+  if (pDestPageDict->KeyExist(ByteString(key)))
     return true;
 
   const CPDF_Object* pInheritable =
@@ -400,14 +402,14 @@ bool CPDF_PageExporter::ExportPage(pdfium::span<const uint32_t> pageIndices,
     // Clone the page dictionary
     CPDF_DictionaryLocker locker(pSrcPageDict);
     for (const auto& it : locker) {
-      const ByteString& cbSrcKeyStr = it.first;
-      if (cbSrcKeyStr == pdfium::page_object::kType ||
-          cbSrcKeyStr == pdfium::page_object::kParent) {
+      const ByteString& src_key = it.first;
+      if (src_key == pdfium::page_object::kType ||
+          src_key == pdfium::page_object::kParent) {
         continue;
       }
 
       CPDF_Object* pObj = it.second.Get();
-      pDestPageDict->SetFor(cbSrcKeyStr, pObj->Clone());
+      pDestPageDict->SetFor(src_key.AsStringView(), pObj->Clone());
     }
 
     // inheritable item
@@ -672,8 +674,10 @@ void CPDF_NPageToOneExporter::FinishPage(CPDF_Dictionary* pDestPageDict,
   CPDF_Dictionary* pRes =
       GetOrCreateDict(pDestPageDict, pdfium::page_object::kResources);
   CPDF_Dictionary* pPageXObject = GetOrCreateDict(pRes, "XObject");
-  for (auto& it : m_XObjectNameToNumberMap)
-    pPageXObject->SetNewFor<CPDF_Reference>(it.first, dest(), it.second);
+  for (auto& it : m_XObjectNameToNumberMap) {
+    pPageXObject->SetNewFor<CPDF_Reference>(it.first.AsStringView(), dest(),
+                                            it.second);
+  }
 
   auto pDict = dest()->New<CPDF_Dictionary>();
   CPDF_Stream* pStream =
