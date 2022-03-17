@@ -75,13 +75,20 @@ source_set("parser") {
     "fpdf_parser_utility.h",
   ]
   configs += [ "../../../:pdfium_strict_config" ]
+  defines = []
+  if (pdf_default_renderer == "agg") {
+    defines += [ "PDFIUM_DEFAULT_RENDERER=AGG" ]
+  } else {
+    defines += [ "PDFIUM_DEFAULT_RENDERER=SKIA" ]
+  }
   deps = [
     "../../../constants",
     "../../fdrm",
     "../../fxcodec",
+    "../../fxge",
   ]
   public_deps = [ "../../fxcrt" ]
-  allow_circular_includes_from = []
+  allow_circular_includes_from = [ "../../fxge" ]
   visibility = [ "../../../*" ]
 
   if (pdf_enable_xfa) {
@@ -89,10 +96,6 @@ source_set("parser") {
       "cpdf_seekablemultistream.cpp",
       "cpdf_seekablemultistream.h",
     ]
-  }
-  if (pdf_use_skia || pdf_use_skia_paths) {
-    deps += [ "../../fxge" ]
-    allow_circular_includes_from += [ "../../fxge" ]
   }
 }
 

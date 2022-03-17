@@ -22,6 +22,7 @@
 #define _SKIA_SUPPORT_PATHS_
 #endif
 
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
 #include "public/fpdf_attachment.h"
@@ -123,6 +124,7 @@ struct Options {
   bool save_thumbnails = false;
   bool save_thumbnails_decoded = false;
   bool save_thumbnails_raw = false;
+  bool skia_renderer = false;
 #ifdef PDF_ENABLE_V8
   bool disable_javascript = false;
   std::string js_flags;  // Extra flags to pass to v8 init.
@@ -473,6 +475,8 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       options->save_thumbnails_decoded = true;
     } else if (cur_arg == "--save-thumbs-raw") {
       options->save_thumbnails_raw = true;
+    } else if (cur_arg == "--skia-renderer") {
+      options->skia_renderer = true;
 #ifdef PDF_ENABLE_V8
     } else if (cur_arg == "--disable-javascript") {
       options->disable_javascript = true;
@@ -1080,6 +1084,15 @@ void ShowConfig() {
   config.append("SKIAPATHS");
   maybe_comma = ",";
 #endif
+#if PDF_DEFAULT_RENDERER_USE_SKIA == 1
+  config.append(maybe_comma);
+  config.append("SKIA_RENDERER");
+  maybe_comma = ",";
+#else
+  config.append(maybe_comma);
+  config.append("AGG_RENDERER");
+  maybe_comma = ",";
+#endif
   printf("%s\n", config.c_str());
 }
 
@@ -1119,9 +1132,10 @@ constexpr char kUsageString[] =
     "<pdf-name>.thumbnail.decoded.<page-number>.png\n"
     "  --save-thumbs-raw      - write page thumbnails' raw stream data"
     "<pdf-name>.thumbnail.raw.<page-number>.png\n"
+    "  --skia-renderer        - use Skia instead of AGG for device renderer\n"
 #ifdef PDF_ENABLE_V8
     "  --disable-javascript   - do not execute JS in PDF files\n"
-    "  --js-flags=<flags>     - additional flags to pas to V8"
+    "  --js-flags=<flags>     - additional flags to pas to V8\n"
 #ifdef PDF_ENABLE_XFA
     "  --disable-xfa          - do not process XFA forms\n"
 #endif  // PDF_ENABLE_XFA
@@ -1179,6 +1193,9 @@ int main(int argc, const char* argv[]) {
     fprintf(stderr, "No input files.\n");
     return 1;
   }
+
+  if (options.skia_renderer)
+    CFX_DefaultRenderDevice::SetSkiaAsDefaultRenderer();
 
   FPDF_LIBRARY_CONFIG config;
   config.version = 3;

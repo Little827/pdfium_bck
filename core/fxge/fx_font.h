@@ -38,12 +38,6 @@
 /* Other font flags */
 #define FXFONT_USEEXTERNATTR 0x80000
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-class SkTypeface;
-
-using CFX_TypeFace = SkTypeface;
-#endif
-
 class TextGlyphPos;
 
 FX_RECT GetGlyphsBBox(const std::vector<TextGlyphPos>& glyphs, int anti_alias);

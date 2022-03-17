@@ -116,9 +116,8 @@ class RenderDeviceDriverIface {
                                int bitmap_alpha,
                                BlendMode blend_type);
 #endif
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // For Skia only.
   virtual void Flush();
-#endif
 };
 
 #endif  // CORE_FXGE_RENDERDEVICEDRIVER_IFACE_H_
