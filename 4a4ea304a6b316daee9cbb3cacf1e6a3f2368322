@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "127a54dd_077f915f",
+        "filename": "testing/resources/bug_1752_truetype_font.fragment",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-18T19:56:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure what problem you ran into. I sent you a version of this PDF that has /Filter [/ASCIIHexDecode /FlateDecode], and I believe it\u0027s working fine. Please double check.\n\nI still see bug_1752_type1_font.fragment containing TrueType font data, while the PDF says it\u0027s Type 1.",
+      "parentUuid": "dbe0105b_7ffc3b32",
+      "revId": "4a4ea304a6b316daee9cbb3cacf1e6a3f2368322",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "641a5777_a70f806b",
         "filename": "testing/resources/pixel/bug_1752.in",
         "patchSetId": 2
