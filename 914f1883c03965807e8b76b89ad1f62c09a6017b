@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2954a8_bafe1076",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-19T00:30:52Z",
+      "side": 1,
+      "message": "Even if it doesn\u0027t matter, why not set this correctly?",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "914f1883c03965807e8b76b89ad1f62c09a6017b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e3a6678_48b3867d",
+        "filename": "testing/resources/pixel/bug_1752.in",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-19T00:30:52Z",
+      "side": 1,
+      "message": "Doesn\u0027t matter from a PDF rendering perspective, but this is still confusing to readers. Also line 44.",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "914f1883c03965807e8b76b89ad1f62c09a6017b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
