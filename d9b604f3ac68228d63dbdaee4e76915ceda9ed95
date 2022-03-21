@@ -16,6 +16,24 @@
       "message": "Please reformat to avoid going over 72 columns.",
       "revId": "d9b604f3ac68228d63dbdaee4e76915ceda9ed95",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22f6f46_544ae5b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 8731
+      },
+      "writtenOn": "2022-03-21T08:20:00Z",
+      "side": 1,
+      "message": "Thanks! Done",
+      "parentUuid": "a1e3009e_0d48633e",
+      "revId": "d9b604f3ac68228d63dbdaee4e76915ceda9ed95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
