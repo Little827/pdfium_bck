@@ -15,9 +15,9 @@ class CFX_SubstFont {
   CFX_SubstFont();
   ~CFX_SubstFont();
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // For Skia only.
   int GetOriginalWeight() const;
-#endif
+
   void UseChromeSerif();
 
   ByteString m_Family;
