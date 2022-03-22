@@ -54,6 +54,13 @@ RetainPtr<CPDF_Font> AddNativeTrueTypeFontToPDF(CPDF_Document* pDoc,
   return pDocPageData->AddFont(std::move(pFXFont), nCharset);
 }
 
+ByteString EncodeFontAlias(const ByteString& sFontName, FX_Charset nCharset) {
+  ByteString sRet = sFontName;
+  sRet.Remove(' ');
+  sRet += ByteString::Format("_%02X", nCharset);
+  return sRet;
+}
+
 }  // namespace
 
 CPDF_BAFontMap::Data::Data() = default;
@@ -348,14 +355,6 @@ int32_t CPDF_BAFontMap::AddFontData(const RetainPtr<CPDF_Font>& pFont,
   pNewData->nCharset = nCharset;
   m_Data.push_back(std::move(pNewData));
   return fxcrt::CollectionSize<int32_t>(m_Data) - 1;
-}
-
-ByteString CPDF_BAFontMap::EncodeFontAlias(const ByteString& sFontName,
-                                           FX_Charset nCharset) {
-  ByteString sRet = sFontName;
-  sRet.Remove(' ');
-  sRet += ByteString::Format("_%02X", nCharset);
-  return sRet;
 }
 
 int32_t CPDF_BAFontMap::FindFont(const ByteString& sFontName,
