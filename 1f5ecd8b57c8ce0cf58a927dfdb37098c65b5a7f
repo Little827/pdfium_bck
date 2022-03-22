@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc2367bf_11c14279",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-22T18:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11bcaefe_3f28b426",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "1f5ecd8b57c8ce0cf58a927dfdb37098c65b5a7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58d0d5a3_430b91d8",
