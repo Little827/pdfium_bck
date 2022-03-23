@@ -33,6 +33,23 @@
       "message": "Instead of using BI/ID/EI to add an inline image into the stream, is it possible to use an XObject image and possibly avoid having binary data in the .in file? Or stick with the inline image, but add an ASCIIHexDecode/ASCII85Decode filter? See PDF 32000-1:2008 table 92-94.",
       "revId": "e9144023c16033104ef5a40e4a7adcdd1b639e6e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "463b0ea3_19525d71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-23T21:26:37Z",
+      "side": 1,
+      "message": "For testing/resources/pixel/bug_1746.in;\n- Be consistent with spacing around brackets.\n- Object 11 0 can be numbered at 8 0. (No gaps in object numbers)\n- Use {{trailer}} instead of manually writing out the trailer, when the trailer has nothing special inside.",
+      "revId": "e9144023c16033104ef5a40e4a7adcdd1b639e6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
