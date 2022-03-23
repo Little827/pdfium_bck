@@ -16,6 +16,23 @@
       "message": "This new test proves https://pdfium-review.googlesource.com/c/pdfium/+/88810 is the wrong since that fix will make bug_1746 render in different colors.",
       "revId": "e9144023c16033104ef5a40e4a7adcdd1b639e6e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04517cac_562f0fb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-23T21:24:08Z",
+      "side": 1,
+      "message": "Instead of using BI/ID/EI to add an inline image into the stream, is it possible to use an XObject image and possibly avoid having binary data in the .in file? Or stick with the inline image, but add an ASCIIHexDecode/ASCII85Decode filter? See PDF 32000-1:2008 table 92-94.",
+      "revId": "e9144023c16033104ef5a40e4a7adcdd1b639e6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
