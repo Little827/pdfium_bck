@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b849b98_70f7f28f",
+        "filename": "testing/resources/pixel/bug_1271578.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T15:44:25Z",
+      "side": 1,
+      "message": "Required according to PDF 32000-1:2008, table 127. Many PDF viewers don\u0027t care, as it can be calculated by running the stream data through the filters, but Acrobat Reader does care.",
+      "revId": "17b1e4bb5a3912c922929c66afd5092c81027f9f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
