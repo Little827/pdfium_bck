@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c4c070_9ccc4c67",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-24T01:58:09Z",
+      "side": 1,
+      "message": "Moved contents up as obj 3. And all font objs are 5,6,7 now.",
+      "parentUuid": "09aed8d4_ead628db",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7accbf50_6b76cbb3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-24T01:30:23Z",
       "side": 1,
       "message": "Can this be the identity matrix, so the text matrix won\u0027t need to counteract this?",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5907945_25e4c149",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-24T01:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7accbf50_6b76cbb3",
       "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f2a7e8_b1892ea0",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-24T01:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301179b5_6e4aefed",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25d20fdf_793a776b",
@@ -69,6 +123,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28326244_4ceb86df",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-24T01:58:09Z",
+      "side": 1,
+      "message": "Done. Combined the graphicstate and cm command too.",
+      "parentUuid": "25d20fdf_793a776b",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ccaf678_8d99dc82",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-03-24T01:30:23Z",
       "side": 1,
       "message": "Can this be 10X bigger, and then not scale the text matrix?",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a688ac_2b9b3907",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-24T01:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccaf678_8d99dc82",
       "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
