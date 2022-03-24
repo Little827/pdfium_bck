@@ -22,6 +22,30 @@
       },
       "revId": "77180567ad97be5175c14145b04777cb9600bca5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67e3bb3_896c9c7d",
+        "filename": "core/fpdfapi/font/cpdf_truetypefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T18:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c4fe92_2a96e9ea",
+      "range": {
+        "startLine": 225,
+        "startChar": 6,
+        "endLine": 225,
+        "endChar": 16
+      },
+      "revId": "77180567ad97be5175c14145b04777cb9600bca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
