@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d223dcf_f60ec820",
+        "filename": "core/fpdfapi/font/cpdf_truetypefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T16:11:26Z",
+      "side": 0,
+      "message": "Already checked on line 55.",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "1eb80444e65e3fd36881fc068b17cddffb2816db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
