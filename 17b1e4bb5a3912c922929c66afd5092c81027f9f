@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "59174978_03aa6407",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-24T16:00:02Z",
+      "side": 1,
+      "message": "I tried rendering the test and the current rendering result is different from the correct expectation. I wonder when(or which version of) PDFium was rendering this glyph correctly.",
+      "revId": "17b1e4bb5a3912c922929c66afd5092c81027f9f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4b849b98_70f7f28f",
         "filename": "testing/resources/pixel/bug_1271578.in",
         "patchSetId": 2
