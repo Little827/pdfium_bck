@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63dc598_24d6b191",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T02:01:48Z",
+      "side": 1,
+      "message": "Probably not needed since that\u0027s the starting state.",
+      "revId": "0c27868abeadf914eaee61b1b695a99a4946cb7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68dc8c02_8b68b9a0",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T02:01:48Z",
+      "side": 1,
+      "message": "Also not needed, since lines 40 and 48 specify colors.",
+      "revId": "0c27868abeadf914eaee61b1b695a99a4946cb7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
