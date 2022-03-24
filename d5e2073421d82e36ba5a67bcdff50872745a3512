@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09aed8d4_ead628db",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T01:30:23Z",
+      "side": 1,
+      "message": "It would be nicer to rearrange the PDF objects, so the font ones are adjacent. Right now, it\u0027s 4, 5, 7.",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7accbf50_6b76cbb3",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T01:30:23Z",
+      "side": 1,
+      "message": "Can this be the identity matrix, so the text matrix won\u0027t need to counteract this?",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301179b5_6e4aefed",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T01:30:23Z",
+      "side": 1,
+      "message": "Indent all the streamlen macros.",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d20fdf_793a776b",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T01:30:23Z",
+      "side": 1,
+      "message": "Do we need the 0.1X scaling here, followed by the 10X scaling on line 61? Can we simplify this content stream?",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccaf678_8d99dc82",
+        "filename": "testing/resources/pixel/bug_1746.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-24T01:30:23Z",
+      "side": 1,
+      "message": "Can this be 10X bigger, and then not scale the text matrix?",
+      "revId": "d5e2073421d82e36ba5a67bcdff50872745a3512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
