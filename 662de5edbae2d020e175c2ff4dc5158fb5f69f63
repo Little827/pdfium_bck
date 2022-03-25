@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47d7be9_313aaed7",
+        "filename": "third_party/base/win/scoped_select_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T16:44:38Z",
+      "side": 1,
+      "message": "Small tweak, because PDFium\u0027s DCHECK() gets completely compiled out in release builds.",
+      "revId": "662de5edbae2d020e175c2ff4dc5158fb5f69f63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
