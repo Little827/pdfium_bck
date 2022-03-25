@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ad2dfed_031e94c0",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-25T18:17:55Z",
+      "side": 1,
+      "message": "pre-nit: sizeof(facebuf) maybe",
+      "range": {
+        "startLine": 353,
+        "startChar": 24,
+        "endLine": 353,
+        "endChar": 27
+      },
+      "revId": "662de5edbae2d020e175c2ff4dc5158fb5f69f63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bba9933_59d2192e",
         "filename": "core/fxge/win32/cwin32_platform.cpp",
         "patchSetId": 2
