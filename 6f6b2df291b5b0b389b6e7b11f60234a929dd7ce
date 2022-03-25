@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0797bab_05cb30a7",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T01:00:54Z",
+      "side": 1,
+      "message": "No longer used?",
+      "revId": "6f6b2df291b5b0b389b6e7b11f60234a929dd7ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f956271b_acd3de64",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T01:00:54Z",
+      "side": 1,
+      "message": "Should this move into the if block on line 1037? Then, does line 1043 still need to make a setScaleX() call, or is the scale already 1 by default?",
+      "revId": "6f6b2df291b5b0b389b6e7b11f60234a929dd7ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3d99ec_1989c38d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T01:00:54Z",
+      "side": 1,
+      "message": "Any reason to not use a range-based for-loop?",
+      "revId": "6f6b2df291b5b0b389b6e7b11f60234a929dd7ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa2a110_a2336dc4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T01:00:54Z",
+      "side": 1,
+      "message": "Also wondering if this is necessary. Does the scale start off as 1 already?",
+      "revId": "6f6b2df291b5b0b389b6e7b11f60234a929dd7ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
