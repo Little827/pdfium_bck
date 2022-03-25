@@ -59,54 +59,58 @@ int CPDF_SimpleFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
 }
 
 void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
-  if (!m_Font.GetFaceRec())
+  FXFT_FaceRec* face = m_Font.GetFaceRec();
+  if (!face)
     return;
 
-  if (charcode < 0 || charcode > 0xff) {
+  if (charcode < 0 || charcode > 255)
     return;
-  }
+
+  FX_RECT& cur_bbox = m_CharBBox[charcode];
+  uint16_t& cur_width = m_CharWidth[charcode];
   int glyph_index = m_GlyphIndex[charcode];
   if (glyph_index == 0xffff) {
     if (!m_pFontFile && charcode != 32) {
       LoadCharMetrics(32);
-      m_CharBBox[charcode] = m_CharBBox[32];
+      cur_bbox = m_CharBBox[32];
       if (m_bUseFontWidth) {
-        m_CharWidth[charcode] = m_CharWidth[32];
+        cur_width = m_CharWidth[32];
       }
     }
     return;
   }
-  FXFT_FaceRec* face = m_Font.GetFaceRec();
-  int err =
-      FT_Load_Glyph(face, glyph_index,
-                    FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
+
+  constexpr int kFlags = FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH;
+  int err = FT_Load_Glyph(face, glyph_index, kFlags);
   if (err)
     return;
 
   FT_Pos iHoriBearingX = FXFT_Get_Glyph_HoriBearingX(face);
   FT_Pos iHoriBearingY = FXFT_Get_Glyph_HoriBearingY(face);
-  m_CharBBox[charcode] =
-      FX_RECT(TT2PDF(iHoriBearingX, face), TT2PDF(iHoriBearingY, face),
-              TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face), face),
-              TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face), face));
+  cur_bbox = FX_RECT(TT2PDF(iHoriBearingX, face), TT2PDF(iHoriBearingY, face),
+                     TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face), face),
+                     TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face), face));
 
-  if (m_bUseFontWidth) {
-    int TT_Width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face), face);
-    if (m_CharWidth[charcode] == 0xffff) {
-      m_CharWidth[charcode] = TT_Width;
-    } else if (TT_Width && !IsEmbedded()) {
-      m_CharBBox[charcode].right =
-          m_CharBBox[charcode].right * m_CharWidth[charcode] / TT_Width;
-      m_CharBBox[charcode].left =
-          m_CharBBox[charcode].left * m_CharWidth[charcode] / TT_Width;
-    }
+  if (!m_bUseFontWidth)
+    return;
+
+  int width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face), face);
+  if (cur_width == 0xffff) {
+    cur_width = width;
+    return;
   }
+
+  if (!width || IsEmbedded())
+    return;
+
+  cur_bbox.left = cur_bbox.left * cur_width / width;
+  cur_bbox.right = cur_bbox.right * cur_width / width;
 }
 
 void CPDF_SimpleFont::LoadCharWidths(const CPDF_Dictionary* font_desc) {
   const CPDF_Array* width_array = m_pFontDict->GetArrayFor("Widths");
-  m_bUseFontWidth = !width_array;
-  if (!width_array)
+  m_bUseFontWidth = !width_array || width_array->IsEmpty();
+  if (m_bUseFontWidth)
     return;
 
   if (font_desc && font_desc->KeyExist("MissingWidth")) {
@@ -119,10 +123,10 @@ void CPDF_SimpleFont::LoadCharWidths(const CPDF_Dictionary* font_desc) {
   if (width_start > 255)
     return;
 
-  if (width_end == 0 || width_end >= width_start + width_array->size())
-    width_end = width_start + width_array->size() - 1;
-  if (width_end > 255)
-    width_end = 255;
+  size_t max_end = width_start + width_array->size() - 1;
+  if (width_end == 0 || width_end > max_end)
+    width_end = max_end;
+  width_end = std::min<size_t>(width_end, 255);
   for (size_t i = width_start; i <= width_end; i++)
     m_CharWidth[i] = width_array->GetIntegerAt(i - width_start);
 }
@@ -241,8 +245,7 @@ bool CPDF_SimpleFont::LoadCommon() {
   if (FontStyleIsAllCaps(m_Flags)) {
     static const unsigned char kLowercases[][2] = {
         {'a', 'z'}, {0xe0, 0xf6}, {0xf8, 0xfd}};
-    for (size_t range = 0; range < pdfium::size(kLowercases); ++range) {
-      const auto& lower = kLowercases[range];
+    for (const auto& lower : kLowercases) {
       for (int i = lower[0]; i <= lower[1]; ++i) {
         if (m_GlyphIndex[i] != 0xffff && m_pFontFile)
           continue;
@@ -277,7 +280,7 @@ void CPDF_SimpleFont::LoadSubstFont() {
       m_Flags |= FXFONT_FIXED_PITCH;
   }
   m_Font.LoadSubst(m_BaseFontName, IsTrueTypeFont(), m_Flags, GetFontWeight(),
-                   m_ItalicAngle, FX_CodePage::kDefANSI, false);
+                   m_ItalicAngle, FX_CodePage::kDefANSI, /*bVertical=*/false);
 }
 
 bool CPDF_SimpleFont::IsUnicodeCompatible() const {
