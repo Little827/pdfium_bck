@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f35c042_bbdc7a16",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T20:34:21Z",
+      "side": 1,
+      "message": "Went with pdfium::size() since it\u0027s a count. e.g. sizeof() wouldn\u0027t be correct if one switched to GetTextFaceW().",
+      "parentUuid": "0ad2dfed_031e94c0",
+      "range": {
+        "startLine": 353,
+        "startChar": 24,
+        "endLine": 353,
+        "endChar": 27
+      },
+      "revId": "662de5edbae2d020e175c2ff4dc5158fb5f69f63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bba9933_59d2192e",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f45947_c0027291",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T20:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bba9933_59d2192e",
+      "range": {
+        "startLine": 369,
+        "startChar": 2,
+        "endLine": 369,
+        "endChar": 24
+      },
+      "revId": "662de5edbae2d020e175c2ff4dc5158fb5f69f63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb1bcec9_37d8d47e",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-25T18:04:24Z",
       "side": 1,
       "message": "nit: might want to make this nullptr upstream, or just DCHECK(oldobj_ \u0026\u0026 ...",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "662de5edbae2d020e175c2ff4dc5158fb5f69f63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186511f5_8171b3ad",
+        "filename": "third_party/base/win/scoped_select_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-25T20:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb1bcec9_37d8d47e",
       "range": {
         "startLine": 24,
         "startChar": 21,
