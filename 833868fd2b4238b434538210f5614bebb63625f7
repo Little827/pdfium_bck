@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59fd058b_c13c48b8",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-25T00:28:47Z",
+      "side": 1,
+      "message": "The way how PDFium works around glyph width:\n1. Only scale down the width of the glyph. No scaling up.\n2. Only scale for substitute font. It doesn\u0027t prevent glyph overlapping for embedded fonts.\n\nAcrobat is the only PDF reader that scales down the glyph width for both embedded fonts and substitute font to prevent overlapping. Other PDF viewing tools does the same as PDFium. (The test with embedded font is bug_1752.in.)\n\nWhen the width in the PDF is larger than the glyph default width, no scaling up is happening for all PDF viewers.",
+      "parentUuid": "32f33e17_478d13c1",
+      "revId": "833868fd2b4238b434538210f5614bebb63625f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea3d48d8_f455f818",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 10
