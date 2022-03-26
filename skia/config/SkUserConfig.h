@@ -249,6 +249,39 @@ SK_API void SkDebugf_FileLine(const char* file,
 
 #define SK_DISABLE_TILE_IMAGE_FILTER_OPTIMIZATION
 
+#if defined(SK_BUILD_FOR_WIN) && !defined(__clang__)
+
+#if defined(SkMalloc_DEFINED)
+
+// SkMemory_malloc.cpp has inline dependency for a definition on `SkDebugf()`
+// which is incompatible with `SK_PRINTF_LIKE()`.
+#define SkDebugf(...) SkDebugf_FileLine(__FILE__, __LINE__, __VA_ARGS__)
+SK_API void SkDebugf_FileLine(const char* file,
+                              int line,
+                              const char* format,
+                              ...);
+
+#else
+
+// Log the file and line number for debug and assertions.
+#if defined(SkDebugf)
+#undef SkDebugf
+#define SkDebugf(...) SK_PRINTF_LIKE(1, 2)
+#endif
+
+#endif  // defined(SkMalloc_DEFINED)
+
+#if !defined(SK_ABORT)
+[[noreturn]] SK_API void SkAbort_FileLine(const char* file,
+                                          int line,
+                                          const char* format,
+                                          ...);
+#define SK_ABORT(format, ...) \
+  SkAbort_FileLine(__FILE__, __LINE__, format, ##__VA_ARGS__)
+#endif  // !defined(SK_ABORT)
+
+#endif  // defined(SK_BUILD_FOR_WIN) && !defined(__clang__)
+
 // ===== End Chrome-specific definitions =====
 
 #endif  // SKIA_CONFIG_SKUSERCONFIG_H_
