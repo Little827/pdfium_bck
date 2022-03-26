@@ -16,6 +16,24 @@
       "message": "Move this down closer to line 1733. i.e. Insert the new code above this.",
       "revId": "f2930ff190e331a2377e31b4eabc0c8b7ee4bd75",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a8c005_4e0cc297",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-26T21:35:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e15aa9b9_bf3b61ed",
+      "revId": "f2930ff190e331a2377e31b4eabc0c8b7ee4bd75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
