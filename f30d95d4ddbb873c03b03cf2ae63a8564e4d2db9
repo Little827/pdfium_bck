@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "410566d7_0519c23b",
+        "filename": "skia/ext/google_logging.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-28T17:21:35Z",
+      "side": 1,
+      "message": "This is an equivalent to\n\n void SkAbort_FileLine(const char* file, int line, const char* format, ...) {\n  int severity \u003d logging::LOG_FATAL;\n\n  va_list ap;\n  va_start(ap, format);\n\n  std::string msg;\n  base::StringAppendV(\u0026msg, format, ap);\n  va_end(ap);\n\n  logging::LogMessage(file, line, severity).stream() \u003c\u003c msg;\n  sk_abort_no_print();\n  // Extra safety abort().\n  abort();\n} \n\nwhich exists for skia_revision \u003d \"c40158ab98b34dbab07f760e7a4c39e0290cd192\".",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 76
+      },
+      "revId": "f30d95d4ddbb873c03b03cf2ae63a8564e4d2db9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
