@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c982ad_cfe6ad3e",
+        "filename": "skia/config/SkUserConfig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-28T18:35:38Z",
+      "side": 1,
+      "message": "Chromium\u0027s skia/config/SkUserConfig.h does not bother with this check. Why does PDFium\u0027s skia/config/SkUserConfig.h need it?",
+      "revId": "f30d95d4ddbb873c03b03cf2ae63a8564e4d2db9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fbbb5c_242f10bb",
+        "filename": "skia/config/SkUserConfig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-28T18:35:38Z",
+      "side": 1,
+      "message": "Consistently declare this after the #define, like in Chromium\u0027s skia/config/SkUserConfig.h, and on lines 258-259.",
+      "revId": "f30d95d4ddbb873c03b03cf2ae63a8564e4d2db9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "410566d7_0519c23b",
