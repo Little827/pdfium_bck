@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2479836d_affb1518",
+        "filename": "skia/config/SkUserConfig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-28T21:19:52Z",
+      "side": 1,
+      "message": "This makes assumptions on the Skia implementation. An alternative would be to just have a SkDebugf() that ignores __VA_ARGS__ in MSVC builds. That would avoid making assumptions and make this section simpler, at the cost of not having good messages with SkDebugf() in MSVC builds. Most developers use Clang, so that\u0027s probably ok.",
+      "revId": "f30d95d4ddbb873c03b03cf2ae63a8564e4d2db9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9700bef_5ddd777b",
+        "filename": "skia/config/SkUserConfig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-28T21:19:52Z",
+      "side": 1,
+      "message": "Isn\u0027t this a repeat of line 138? Should we try to group the SkDebugf() definitions together, instead of putting two parts of it 100+ lines apart?",
+      "revId": "f30d95d4ddbb873c03b03cf2ae63a8564e4d2db9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5c982ad_cfe6ad3e",
         "filename": "skia/config/SkUserConfig.h",
         "patchSetId": 1
