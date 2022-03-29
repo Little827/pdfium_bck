@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea3aaf4_cfc1d183",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-29T00:06:17Z",
+      "side": 1,
+      "message": "nit: it",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "b9689344ef76ac5eeb0486c30ae49f434724cbf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7875b8bd_ae489be5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-29T00:06:17Z",
+      "side": 1,
+      "message": "LG with nit.",
+      "revId": "b9689344ef76ac5eeb0486c30ae49f434724cbf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e20ffa_0e243b4b",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-29T00:06:17Z",
+      "side": 1,
+      "message": "OK, TIL that constexpr implies inline.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "b9689344ef76ac5eeb0486c30ae49f434724cbf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
