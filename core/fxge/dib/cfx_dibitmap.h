@@ -41,9 +41,8 @@ class CFX_DIBitmap final : public CFX_DIBBase {
   bool ConvertFormat(FXDIB_Format format);
   void Clear(uint32_t color);
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // For Skia only.
   uint32_t GetPixel(int x, int y) const;
-#endif
 #if defined(_SKIA_SUPPORT_)
   void SetPixel(int x, int y, uint32_t color);
 #endif
@@ -106,10 +105,9 @@ class CFX_DIBitmap final : public CFX_DIBBase {
                                                             FXDIB_Format format,
                                                             uint32_t pitch);
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // For Skia only.
   void PreMultiply();
   void DebugVerifyBitmapIsPreMultiplied() const;
-#endif
 #if defined(_SKIA_SUPPORT_PATHS_)
   void UnPreMultiply();
 #endif
