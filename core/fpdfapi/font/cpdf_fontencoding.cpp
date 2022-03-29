@@ -1663,7 +1663,7 @@ int CPDF_FontEncoding::CharCodeFromUnicode(wchar_t unicode) const {
 }
 
 CPDF_FontEncoding::CPDF_FontEncoding(FontEncoding predefined_encoding) {
-  const uint16_t* pSrc = PDF_UnicodesForPredefinedCharSet(predefined_encoding);
+  const uint16_t* pSrc = UnicodesForPredefinedCharSet(predefined_encoding);
   if (pSrc) {
     for (size_t i = 0; i < pdfium::size(m_Unicodes); i++)
       m_Unicodes[i] = pSrc[i];
@@ -1686,7 +1686,7 @@ RetainPtr<CPDF_Object> CPDF_FontEncoding::Realize(
 
   absl::optional<FontEncoding> predefined;
   for (FontEncoding cs : kEncodings) {
-    const uint16_t* pSrc = PDF_UnicodesForPredefinedCharSet(cs);
+    const uint16_t* pSrc = UnicodesForPredefinedCharSet(cs);
     bool match = true;
     for (size_t i = 0; i < pdfium::size(m_Unicodes); i++) {
       if (m_Unicodes[i] != pSrc[i]) {
@@ -1713,7 +1713,7 @@ RetainPtr<CPDF_Object> CPDF_FontEncoding::Realize(
     return pdfium::MakeRetain<CPDF_Name>(pPool, pName);
   }
   const uint16_t* pStandard =
-      PDF_UnicodesForPredefinedCharSet(FontEncoding::kWinAnsi);
+      UnicodesForPredefinedCharSet(FontEncoding::kWinAnsi);
   auto pDiff = pdfium::MakeRetain<CPDF_Array>();
   for (size_t i = 0; i < pdfium::size(m_Unicodes); i++) {
     if (pStandard[i] == m_Unicodes[i])
@@ -1753,7 +1753,7 @@ wchar_t UnicodeFromAppleRomanCharCode(uint8_t charcode) {
   return kMacRomanEncoding[charcode];
 }
 
-const uint16_t* PDF_UnicodesForPredefinedCharSet(FontEncoding encoding) {
+const uint16_t* UnicodesForPredefinedCharSet(FontEncoding encoding) {
   switch (encoding) {
     case FontEncoding::kBuiltin:
       return nullptr;
@@ -1776,8 +1776,8 @@ const uint16_t* PDF_UnicodesForPredefinedCharSet(FontEncoding encoding) {
   }
 }
 
-const char* PDF_CharNameFromPredefinedCharSet(FontEncoding encoding,
-                                              uint8_t charcode) {
+const char* CharNameFromPredefinedCharSet(FontEncoding encoding,
+                                          uint8_t charcode) {
   if (encoding == FontEncoding::kPdfDoc) {
     if (charcode < kPDFDocEncodingTableFirstChar)
       return nullptr;

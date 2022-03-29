@@ -12,15 +12,14 @@
 #include "testing/utils/path_service.h"
 #include "third_party/base/check.h"
 
-TEST(FXFontTest, PDF_UnicodeFromAdobeName) {
-  EXPECT_EQ(static_cast<wchar_t>(0x0000), PDF_UnicodeFromAdobeName("nonesuch"));
-  EXPECT_EQ(static_cast<wchar_t>(0x0000), PDF_UnicodeFromAdobeName(""));
-  EXPECT_EQ(static_cast<wchar_t>(0x00b6),
-            PDF_UnicodeFromAdobeName("paragraph"));
-  EXPECT_EQ(static_cast<wchar_t>(0x00d3), PDF_UnicodeFromAdobeName("Oacute"));
-  EXPECT_EQ(static_cast<wchar_t>(0x00fe), PDF_UnicodeFromAdobeName("thorn"));
-  EXPECT_EQ(static_cast<wchar_t>(0x0384), PDF_UnicodeFromAdobeName("tonos"));
-  EXPECT_EQ(static_cast<wchar_t>(0x2022), PDF_UnicodeFromAdobeName("bullet"));
+TEST(FXFontTest, UnicodeFromAdobeName) {
+  EXPECT_EQ(static_cast<wchar_t>(0x0000), UnicodeFromAdobeName("nonesuch"));
+  EXPECT_EQ(static_cast<wchar_t>(0x0000), UnicodeFromAdobeName(""));
+  EXPECT_EQ(static_cast<wchar_t>(0x00b6), UnicodeFromAdobeName("paragraph"));
+  EXPECT_EQ(static_cast<wchar_t>(0x00d3), UnicodeFromAdobeName("Oacute"));
+  EXPECT_EQ(static_cast<wchar_t>(0x00fe), UnicodeFromAdobeName("thorn"));
+  EXPECT_EQ(static_cast<wchar_t>(0x0384), UnicodeFromAdobeName("tonos"));
+  EXPECT_EQ(static_cast<wchar_t>(0x2022), UnicodeFromAdobeName("bullet"));
 }
 
 TEST(FXFontTest, PDF_AdobeNameFromUnicode) {

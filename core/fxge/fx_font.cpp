@@ -139,7 +139,7 @@ size_t GetTTCIndex(pdfium::span<const uint8_t> pFontData, size_t font_offset) {
   return 0;
 }
 
-wchar_t PDF_UnicodeFromAdobeName(const char* name) {
+wchar_t UnicodeFromAdobeName(const char* name) {
   return (wchar_t)(FXFT_unicode_from_adobe_name(name) & 0x7FFFFFFF);
 }
 
