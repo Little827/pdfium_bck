@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00025577_5e43702d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-29T00:23:20Z",
+      "side": 1,
+      "message": "If bots come back red, I\u0027ll prepend more CLs to the CL chain.",
+      "revId": "0f3eafa1775012cc85d6e55fa8d58e753166516b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
