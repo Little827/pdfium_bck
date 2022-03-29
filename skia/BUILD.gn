@@ -164,11 +164,8 @@ source_set("skcms") {
 }
 
 component("skia") {
-  sources = [
-    # PDFium sources.
-    "config/SkUserConfig.h",
-    "ext/google_logging.cc",
-  ]
+  # PDFium sources.
+  sources = [ "config/SkUserConfig.h" ]
 
   # The skia sources values are relative to the skia_dir, so we need to rebase.
   sources += skia_sksl_gpu_sources
@@ -218,6 +215,10 @@ component("skia") {
   ]
 
   if (is_win) {
+    if (!is_clang) {
+      # Include Pdfium source workaround for logging.
+      sources += [ "ext/google_logging.cc" ]
+    }
     sources -= [
       # Keeping _win.cpp
       "//third_party/skia/src/utils/SkThreadUtils_pthread.cpp",
