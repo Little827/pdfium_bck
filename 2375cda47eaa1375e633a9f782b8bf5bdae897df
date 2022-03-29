@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43271054_ac650d39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-29T19:37:52Z",
+      "side": 1,
+      "message": "Hi vadimsh@. The PDFium tree had a failure this morning, and I got email notifications for that, but the tree itself didn\u0027t actually close automatically. I closed it manually instead.\n\nIs this CL the right way to configure the tree to close itself?",
+      "revId": "2375cda47eaa1375e633a9f782b8bf5bdae897df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
