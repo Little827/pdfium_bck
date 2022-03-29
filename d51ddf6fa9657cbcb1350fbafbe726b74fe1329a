@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6deb5d5f_2d608cd5",
+        "filename": "core/fpdfapi/font/cpdf_fontencoding.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1705,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-29T17:07:09Z",
+      "side": 1,
+      "message": "follow-up: looks like we don\u0027t have kStringConstant for these anywhere.",
+      "range": {
+        "startLine": 1705,
+        "startChar": 0,
+        "endLine": 1705,
+        "endChar": 32
+      },
+      "revId": "d51ddf6fa9657cbcb1350fbafbe726b74fe1329a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe271c49_6ef53f48",
+        "filename": "core/fpdfapi/font/cpdf_fontencoding.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-03-29T17:07:09Z",
+      "side": 1,
+      "message": "pre-nit:  blank line between functions.",
+      "range": {
+        "startLine": 1751,
+        "startChar": 0,
+        "endLine": 1751,
+        "endChar": 5
+      },
+      "revId": "d51ddf6fa9657cbcb1350fbafbe726b74fe1329a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
