@@ -7,6 +7,7 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "public/fpdf_progressive.h"
 #include "testing/embedder_test.h"
@@ -22,16 +23,21 @@ constexpr FX_ARGB kGreen = 0xFF00FF00;
 constexpr FX_ARGB kRed = 0xFFFF0000;
 constexpr FX_ARGB kWhite = 0xFFFFFFFF;
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
+constexpr char kAnnotationStampWithApBaseContentChecksumSkia[] =
     "1a6cb54b1cfc5bb9f6ec3923a52ea7cc";
-#elif BUILDFLAG(IS_APPLE)
-static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
+#if BUILDFLAG(IS_APPLE)
+constexpr char kAnnotationStampWithApBaseContentChecksumAgg[] =
     "243f3d6267d9db09198fed9f8c4957fd";
 #else
-static constexpr char kAnnotationStampWithApBaseContentChecksum[] =
+constexpr char kAnnotationStampWithApBaseContentChecksumAgg[] =
     "e31414933c9ff3950773981e5bf61678";
 #endif
+
+const char* AnnotationStampWithApBaseContentChecksum() {
+  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+             ? kAnnotationStampWithApBaseContentChecksumSkia
+             : kAnnotationStampWithApBaseContentChecksumAgg;
+}
 
 }  // namespace
 
@@ -231,7 +237,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithoutPause) {
   EXPECT_TRUE(StartRenderPage(page, &pause));
   ScopedFPDFBitmap bitmap = FinishRenderPage(page);
   CompareBitmap(bitmap.get(), 595, 842,
-                kAnnotationStampWithApBaseContentChecksum);
+                AnnotationStampWithApBaseContentChecksum());
   UnloadPage(page);
 }
 
@@ -250,7 +256,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithPause) {
   }
   ScopedFPDFBitmap bitmap = FinishRenderPage(page);
   CompareBitmap(bitmap.get(), 595, 842,
-                kAnnotationStampWithApBaseContentChecksum);
+                AnnotationStampWithApBaseContentChecksum());
   UnloadPage(page);
 }
 
@@ -268,7 +274,8 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderAnnotWithPause) {
     render_done = ContinueRenderPage(page, &pause);
   }
   ScopedFPDFBitmap bitmap = FinishRenderPage(page);
-  CompareBitmap(bitmap.get(), 595, 842, pdfium::kAnnotationStampWithApChecksum);
+  CompareBitmap(bitmap.get(), 595, 842,
+                pdfium::AnnotationStampWithApChecksum());
   UnloadPage(page);
 }
 
@@ -286,7 +293,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderFormsWithPause) {
     render_done = ContinueRenderPage(page, &pause);
   }
   ScopedFPDFBitmap bitmap = FinishRenderPageWithForms(page, form_handle());
-  CompareBitmap(bitmap.get(), 300, 300, pdfium::kTextFormChecksum);
+  CompareBitmap(bitmap.get(), 300, 300, pdfium::TextFormChecksum());
   UnloadPage(page);
 }
 
@@ -312,33 +319,36 @@ void FPDFProgressiveRenderEmbedderTest::VerifyRenderingWithColorScheme(
 
 TEST_F(FPDFProgressiveRenderEmbedderTest, RenderTextWithColorScheme) {
 // Test rendering of text with forced color scheme on.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kContentWithTextChecksum[] =
-      "6bbe5a547115b4aa30b49fe7c34030e3";
-#elif BUILDFLAG(IS_APPLE)
-  static constexpr char kContentWithTextChecksum[] =
-      "ee4ec12f54ce8d117a73bd9b85a8954d";
+static constexpr char kContentWithTextChecksumSkia[] =
+    "6bbe5a547115b4aa30b49fe7c34030e3";
+#if BUILDFLAG(IS_APPLE)
+static constexpr char kContentWithTextChecksumAgg[] =
+    "ee4ec12f54ce8d117a73bd9b85a8954d";
 #else
-  static constexpr char kContentWithTextChecksum[] =
-      "704db63ed2bf77254ecaa8035b85f21a";
+static constexpr char kContentWithTextChecksumAgg[] =
+    "704db63ed2bf77254ecaa8035b85f21a";
 #endif
+const char* kContentWithTextChecksum =
+    CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+        ? kContentWithTextChecksumSkia
+        : kContentWithTextChecksumAgg;
 
-  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+ASSERT_TRUE(OpenDocument("hello_world.pdf"));
 
-  FPDF_COLORSCHEME color_scheme{kBlack, kWhite, kWhite, kWhite};
-  VerifyRenderingWithColorScheme(/*page_num=*/0, /*flags=*/0, &color_scheme,
-                                 kBlack, 200, 200, kContentWithTextChecksum);
+FPDF_COLORSCHEME color_scheme{kBlack, kWhite, kWhite, kWhite};
+VerifyRenderingWithColorScheme(/*page_num=*/0, /*flags=*/0, &color_scheme,
+                               kBlack, 200, 200, kContentWithTextChecksum);
 }
 
 TEST_F(FPDFProgressiveRenderEmbedderTest, RenderPathWithColorScheme) {
   // Test rendering of paths with forced color scheme on.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kRectanglesChecksum[] =
+  static constexpr char kRectanglesChecksumSkia[] =
       "4b0f850a94698d07b6cd2814d1b4ccb7";
-#else
-  static constexpr char kRectanglesChecksum[] =
+  static constexpr char kRectanglesChecksumAgg[] =
       "249f59b0d066c4f6bd89782a80822219";
-#endif
+  const char* kRectanglesChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kRectanglesChecksumSkia
+                                                       : kRectanglesChecksumAgg;
 
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
 
@@ -351,13 +361,13 @@ TEST_F(FPDFProgressiveRenderEmbedderTest,
        RenderPathWithColorSchemeAndConvertFillToStroke) {
   // Test rendering of paths with forced color scheme on and conversion from
   // fill to stroke enabled. The fill paths should be rendered as stroke.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kRectanglesChecksum[] =
+  static constexpr char kRectanglesChecksumSkia[] =
       "c1cbbd2ce6921f608a3c55140592419b";
-#else
-  static constexpr char kRectanglesChecksum[] =
+  static constexpr char kRectanglesChecksumAgg[] =
       "0ebcc11e617635eca1fa9ce475383a80";
-#endif
+  const char* kRectanglesChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kRectanglesChecksumSkia
+                                                       : kRectanglesChecksumAgg;
 
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
 
@@ -367,52 +377,46 @@ TEST_F(FPDFProgressiveRenderEmbedderTest,
                                  kRectanglesChecksum);
 }
 
-// TODO(crbug.com/pdfium/1500): When Skia is enabled, the hightlighted area is
-// not rendered. Fix this issue and enable the test.
+TEST_F(FPDFProgressiveRenderEmbedderTest, RenderHighlightWithColorScheme) {
+  // TODO(crbug.com/pdfium/1500): When Skia is enabled, the hightlighted area is
+  // not rendered. Fix this issue and enable the test.
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_RenderHighlightWithColorScheme \
-  DISABLED_RenderHighlightWithColorScheme
-#else
-#define MAYBE_RenderHighlightWithColorScheme RenderHighlightWithColorScheme
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
 #endif
-TEST_F(FPDFProgressiveRenderEmbedderTest,
-       MAYBE_RenderHighlightWithColorScheme) {
+
 // Test rendering of highlight with forced color scheme on.
 //
 // Note: The fill color rendered for highlight is different from the normal
 // path since highlights have Multiply blend mode, while the other path has
 // Normal blend mode.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kContentWithHighlightFillChecksum[] =
-      "1ad601278736432e2f82ea37ab6a28ba";
-#else
+static constexpr char kContentWithHighlightFillChecksumSkia[] =
+    "1ad601278736432e2f82ea37ab6a28ba";
 #if BUILDFLAG(IS_APPLE)
-  static constexpr char kContentWithHighlightFillChecksum[] =
-      "a820afec9b99d3d3f2e9e9382bbad7c1";
+static constexpr char kContentWithHighlightFillChecksumAgg[] =
+    "a820afec9b99d3d3f2e9e9382bbad7c1";
 #else
-  static constexpr char kContentWithHighlightFillChecksum[] =
-      "a08a0639f89446f66f3689ee8e08b9fe";
+static constexpr char kContentWithHighlightFillChecksumAgg[] =
+    "a08a0639f89446f66f3689ee8e08b9fe";
 #endif  // BUILDFLAG(IS_APPLE)
-#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+const char* kContentWithHighlightFillChecksum =
+    CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+        ? kContentWithHighlightFillChecksumSkia
+        : kContentWithHighlightFillChecksumAgg;
 
-  ASSERT_TRUE(OpenDocument("annotation_highlight_square_with_ap.pdf"));
+ASSERT_TRUE(OpenDocument("annotation_highlight_square_with_ap.pdf"));
 
-  FPDF_COLORSCHEME color_scheme{kRed, kGreen, kWhite, kWhite};
-  VerifyRenderingWithColorScheme(/*page_num=*/0, FPDF_ANNOT, &color_scheme,
-                                 kBlue, 612, 792,
-                                 kContentWithHighlightFillChecksum);
+FPDF_COLORSCHEME color_scheme{kRed, kGreen, kWhite, kWhite};
+VerifyRenderingWithColorScheme(/*page_num=*/0, FPDF_ANNOT, &color_scheme, kBlue,
+                               612, 792, kContentWithHighlightFillChecksum);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_RenderHighlightWithColorSchemeAndConvertFillToStroke \
-  DISABLED_RenderHighlightWithColorSchemeAndConvertFillToStroke
-#else
-#define MAYBE_RenderHighlightWithColorSchemeAndConvertFillToStroke \
-  RenderHighlightWithColorSchemeAndConvertFillToStroke
-#endif
 TEST_F(FPDFProgressiveRenderEmbedderTest,
-       MAYBE_RenderHighlightWithColorSchemeAndConvertFillToStroke) {
+       RenderHighlightWithColorSchemeAndConvertFillToStroke) {
+  // TODO(crbug.com/pdfium/11): Fix this test and enable.
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
+
   // Test rendering of highlight with forced color and converting fill to
   // stroke. The highlight should be rendered as a stroke of the rect.
   //
@@ -435,28 +439,29 @@ TEST_F(FPDFProgressiveRenderEmbedderTest,
       kBlue, 612, 792, kMD5ContentWithHighlight);
 }
 
-// TODO(crbug.com/pdfium/1500): When Skia is enabled, the rendering result is
-// acceptable but the test fails due to assertion failure. Fix the assertion
-// failure for Skia and enable this test.
+TEST_F(FPDFProgressiveRenderEmbedderTest, RenderInkWithColorScheme) {
+  // TODO(crbug.com/pdfium/1500): When Skia is enabled, the rendering result is
+  // acceptable but the test fails due to assertion failure. Fix the assertion
+  // failure for Skia and enable this test.
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_RenderInkWithColorScheme DISABLED_RenderInkWithColorScheme
-#else
-#define MAYBE_RenderInkWithColorScheme RenderInkWithColorScheme
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
 #endif
-TEST_F(FPDFProgressiveRenderEmbedderTest, MAYBE_RenderInkWithColorScheme) {
+
 // Test rendering of multiple ink with forced color scheme on.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kContentWithInkChecksum[] =
+  static constexpr char kContentWithInkChecksumSkia[] =
       "ebc57721e4c8da34156e09b9b2e62fb0";
-#else
 #if BUILDFLAG(IS_WIN)
-  static constexpr char kContentWithInkChecksum[] =
+  static constexpr char kContentWithInkChecksumAgg[] =
       "1933e4ab19b9108ddcecd1a6abb20c85";
 #else
-  static constexpr char kContentWithInkChecksum[] =
+  static constexpr char kContentWithInkChecksumAgg[] =
       "797bce7dc6c50ee86b095405df9fe5aa";
 #endif  // BUILDFLAG(IS_WIN)
-#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  const char* kContentWithInkChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kContentWithInkChecksumSkia
+          : kContentWithInkChecksumAgg;
 
   ASSERT_TRUE(OpenDocument("annotation_ink_multiple.pdf"));
 
@@ -467,33 +472,37 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, MAYBE_RenderInkWithColorScheme) {
 
 TEST_F(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
 // Test rendering of static annotation with forced color scheme on.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kContentWithStampChecksum[] =
-      "bdcd2b91223b1a73582b341d0153a73f";
-#elif BUILDFLAG(IS_APPLE)
-  static constexpr char kContentWithStampChecksum[] =
-      "7a209e29caeeab7d2b25b34570a4ace6";
+static constexpr char kContentWithStampChecksumSkia[] =
+    "bdcd2b91223b1a73582b341d0153a73f";
+#if BUILDFLAG(IS_APPLE)
+static constexpr char kContentWithStampChecksumAgg[] =
+    "7a209e29caeeab7d2b25b34570a4ace6";
 #else
-  static constexpr char kContentWithStampChecksum[] =
-      "3bbbfc6cc18801906285a232c4a20617";
+static constexpr char kContentWithStampChecksumAgg[] =
+    "3bbbfc6cc18801906285a232c4a20617";
 #endif
+const char* kContentWithStampChecksum =
+    CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+        ? kContentWithStampChecksumSkia
+        : kContentWithStampChecksumAgg;
 
-  ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
+ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
 
-  FPDF_COLORSCHEME color_scheme{kBlue, kGreen, kRed, kRed};
-  VerifyRenderingWithColorScheme(/*page_num=*/0, FPDF_ANNOT, &color_scheme,
-                                 kWhite, 595, 842, kContentWithStampChecksum);
+FPDF_COLORSCHEME color_scheme{kBlue, kGreen, kRed, kRed};
+VerifyRenderingWithColorScheme(/*page_num=*/0, FPDF_ANNOT, &color_scheme,
+                               kWhite, 595, 842, kContentWithStampChecksum);
 }
 
 TEST_F(FPDFProgressiveRenderEmbedderTest, RenderFormWithColorScheme) {
   // Test rendering of form does not change with forced color scheme on.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kContentWithFormChecksum[] =
+  static constexpr char kContentWithFormChecksumSkia[] =
       "9f75d98afc6d6313bd87e6562ea6df15";
-#else
-  static constexpr char kContentWithFormChecksum[] =
+  static constexpr char kContentWithFormChecksumAgg[] =
       "080f7a4381606659301440e1b14dca35";
-#endif
+  const char* kContentWithFormChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kContentWithFormChecksumSkia
+          : kContentWithFormChecksumAgg;
 
   ASSERT_TRUE(OpenDocument("annotiter.pdf"));
 

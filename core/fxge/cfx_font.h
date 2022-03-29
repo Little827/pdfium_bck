@@ -17,20 +17,20 @@
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_face.h"
+#include "core/fxge/fx_font.h"
 #include "core/fxge/fx_freetype.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/span.h"
-
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#include "core/fxge/fx_font.h"
-#endif
 
 class CFX_GlyphBitmap;
 class CFX_GlyphCache;
 class CFX_Path;
 class CFX_SubstFont;
 class IFX_SeekableReadStream;
+class SkTypeface;
 struct CFX_TextRenderOptions;
+
+using CFX_TypeFace = SkTypeface;
 
 class CFX_Font {
  public:
@@ -136,10 +136,9 @@ class CFX_Font {
   std::unique_ptr<CFX_Path> LoadGlyphPathImpl(uint32_t glyph_index,
                                               int dest_width) const;
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // For Skia only.
   CFX_TypeFace* GetDeviceCache() const;
   bool IsSubstFontBold() const;
-#endif
 
 #if BUILDFLAG(IS_APPLE)
   void* GetPlatformFont() const { return m_pPlatformFont; }
