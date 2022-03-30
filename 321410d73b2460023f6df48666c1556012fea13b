@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddde2ef_51d87b59",
+        "filename": "skia/config/SkUserConfig.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-03-30T01:16:05Z",
+      "side": 1,
+      "message": "nit: no extra blank lines, for consistency with the line 138 block.",
+      "revId": "321410d73b2460023f6df48666c1556012fea13b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
