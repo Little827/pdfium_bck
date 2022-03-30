@@ -5,8 +5,6 @@
 #ifndef CORE_FXGE_SKIA_FX_SKIA_DEVICE_H_
 #define CORE_FXGE_SKIA_FX_SKIA_DEVICE_H_
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-
 #include <memory>
 #include <vector>
 
@@ -185,6 +183,5 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   bool m_bRgbByteOrder;
   bool m_bGroupKnockout;
 };
-#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
 #endif  // CORE_FXGE_SKIA_FX_SKIA_DEVICE_H_

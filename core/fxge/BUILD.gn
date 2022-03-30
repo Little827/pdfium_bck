@@ -6,6 +6,14 @@ import("//build/config/freetype/freetype.gni")
 import("../../pdfium.gni")
 import("../../testing/test.gni")
 
+config("fxge_defines") {
+  if (pdf_default_renderer == "skia") {
+    defines = [ "PDF_DEFAULT_RENDERER_USE_SKIA=1" ]
+  } else {
+    defines = [ "PDF_DEFAULT_RENDERER_USE_SKIA=0" ]
+  }
+}
+
 config("fxge_warnings") {
   visibility = [ ":*" ]
   if (is_clang) {
@@ -24,6 +32,7 @@ source_set("fxge") {
     "cfx_cliprgn.h",
     "cfx_color.cpp",
     "cfx_color.h",
+    "cfx_defaultrenderdevice.cpp",
     "cfx_defaultrenderdevice.h",
     "cfx_drawutils.cpp",
     "cfx_drawutils.h",
@@ -108,6 +117,7 @@ source_set("fxge") {
     "renderdevicedriver_iface.h",
     "scoped_font_transform.cpp",
     "scoped_font_transform.h",
+    "skia/fx_skia_device.cpp",
     "systemfontinfo_iface.h",
     "text_char_pos.cpp",
     "text_char_pos.h",
@@ -116,12 +126,16 @@ source_set("fxge") {
   ]
 
   configs += [
+    ":fxge_defines",
     ":fxge_warnings",
     "../../:pdfium_strict_config",
     "../../:pdfium_noshorten_config",
   ]
 
-  deps = [ "../fxcrt" ]
+  deps = [
+    "../fxcrt",
+    "//skia",
+  ]
 
   if (is_component_build || use_system_freetype) {
     # ft_adobe_glyph_list is not exported from the Freetype shared library so we
@@ -136,10 +150,8 @@ source_set("fxge") {
     ]
   }
 
-  if (pdf_use_skia || pdf_use_skia_paths) {
-    sources += [ "skia/fx_skia_device.cpp" ]
-    deps += [ "//skia" ]
-  } else {
+  # TODO(crbug.com/pdfium/11)  AGG is deprecated and slated for removal.
+  if (pdf_include_agg) {
     sources += [
       "agg/fx_agg_driver.cpp",
       "agg/fx_agg_driver.h",
@@ -235,18 +247,16 @@ pdfium_unittest_source_set("unittests") {
 }
 
 pdfium_embeddertest_source_set("embeddertests") {
-  sources = [ "fx_ge_text_embeddertest.cpp" ]
-  deps = []
+  sources = [
+    "fx_ge_text_embeddertest.cpp",
+    "skia/fx_skia_device_embeddertest.cpp",
+  ]
+  deps = [
+    ":fxge",
+    "../../fpdfsdk",
+    "//skia",
+  ]
   pdfium_root_dir = "../../"
-
-  if (pdf_use_skia || pdf_use_skia_paths) {
-    sources += [ "skia/fx_skia_device_embeddertest.cpp" ]
-    deps += [
-      ":fxge",
-      "../../fpdfsdk",
-      "//skia",
-    ]
-  }
 
   if (is_win) {
     sources += [ "cfx_windowsrenderdevice_embeddertest.cpp" ]

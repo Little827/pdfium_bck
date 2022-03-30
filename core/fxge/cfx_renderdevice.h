@@ -218,9 +218,8 @@ class CFX_RenderDevice {
                                int bitmap_alpha,
                                BlendMode blend_type);
 #endif
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // For Skia only.
   void Flush(bool release);
-#endif
 
  protected:
   CFX_RenderDevice();
