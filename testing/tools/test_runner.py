@@ -250,7 +250,10 @@ class TestRunner:
     ]
 
     if use_ahem:
+      cmd_to_run.append('--font-dir=%s' % self.ahem_font_dir)
+    else:
       cmd_to_run.append('--font-dir=%s' % self.font_dir)
+      cmd_to_run.append('--croscore-font-names')
 
     if self.options.disable_javascript:
       cmd_to_run.append('--disable-javascript')
@@ -369,7 +372,8 @@ class TestRunner:
     finder = common.DirectoryFinder(self.options.build_dir)
     self.fixup_path = finder.ScriptPath('fixup_pdf_template.py')
     self.text_diff_path = finder.ScriptPath('text_diff.py')
-    self.font_dir = os.path.join(finder.TestingDir(), 'resources', 'fonts')
+    self.ahem_font_dir = os.path.join(finder.TestingDir(), 'resources', 'fonts')
+    self.font_dir = finder.FontsDir()
 
     self.source_dir = finder.TestingDir()
     if self.test_dir != 'corpus':
