@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8fc9525_37202851",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-30T23:08:03Z",
+      "side": 1,
+      "message": "Dug into the older version of the code and it turned out that `isAlphaMask` had always stood for \"mask format\" and it had nothing to do with \"alpha format\".",
+      "revId": "b54571a117344d849156edf3b056f6e4e7a4c480",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
