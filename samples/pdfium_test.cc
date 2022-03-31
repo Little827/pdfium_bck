@@ -31,6 +31,7 @@
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_progressive.h"
 #include "public/fpdf_structtree.h"
+#include "public/fpdf_sysfontinfo.h"
 #include "public/fpdf_text.h"
 #include "public/fpdfview.h"
 #include "samples/pdfium_test_dump_helper.h"
@@ -138,6 +139,7 @@ struct Options {
 #if defined(__APPLE__) || (defined(__linux__) && !defined(__ANDROID__))
   bool linux_no_system_fonts = false;
 #endif
+  bool croscore_font_names = false;
   OutputFormat output_format = OutputFormat::kNone;
   std::string password;
   std::string scale_factor_as_string;
@@ -208,6 +210,115 @@ absl::optional<const char*> GetCustomFontPath(const Options& options) {
   // Set custom font path to |options.font_directory|.
   return options.font_directory.c_str();
 }
+
+class FontRenamer final : public FPDF_SYSFONTINFO {
+ public:
+  FontRenamer() : impl_(FPDF_GetDefaultSystemFontInfo()) {
+    version = 1;
+    Release = FontRenamer::ReleaseImpl;
+    EnumFonts = FontRenamer::EnumFontsImpl;
+    MapFont = FontRenamer::MapFontImpl;
+    GetFont = FontRenamer::GetFontImpl;
+    GetFontData = FontRenamer::GetFontDataImpl;
+    GetFaceName = FontRenamer::GetFaceNameImpl;
+    GetFontCharset = FontRenamer::GetFontCharsetImpl;
+    DeleteFont = FontRenamer::DeleteFontImpl;
+    FPDF_SetSystemFontInfo(this);
+  }
+
+  ~FontRenamer() { FPDF_FreeDefaultSystemFontInfo(impl_); }
+
+ private:
+  static void ReleaseImpl(FPDF_SYSFONTINFO* info) {
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    impl->Release(impl);
+  }
+  static void EnumFontsImpl(FPDF_SYSFONTINFO* info, void* mapper) {
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    impl->EnumFonts(impl, mapper);
+  }
+
+  static void* MapFontImpl(FPDF_SYSFONTINFO* info,
+                           int weight,
+                           FPDF_BOOL italic,
+                           int charset,
+                           int pitch_family,
+                           const char* face,
+                           FPDF_BOOL* exact) {
+    std::string renamed_face = RenameFont(face);
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    return impl->MapFont(impl, weight, italic, charset, pitch_family,
+                         renamed_face.c_str(), exact);
+  }
+
+  static void* GetFontImpl(FPDF_SYSFONTINFO* info, const char* face) {
+    // Any non-null return will do.
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    return impl->GetFont(impl, face);
+  }
+
+  static unsigned long GetFontDataImpl(FPDF_SYSFONTINFO* info,
+                                       void* font,
+                                       unsigned int table,
+                                       unsigned char* buffer,
+                                       unsigned long buf_size) {
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    return impl->GetFontData(impl, font, table, buffer, buf_size);
+  }
+
+  static unsigned long GetFaceNameImpl(FPDF_SYSFONTINFO* info,
+                                       void* font,
+                                       char* buffer,
+                                       unsigned long buf_size) {
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    return impl->GetFaceName(impl, font, buffer, buf_size);
+  }
+
+  static int GetFontCharsetImpl(FPDF_SYSFONTINFO* info, void* font) {
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    return impl->GetFontCharset(impl, font);
+  }
+
+  static void DeleteFontImpl(FPDF_SYSFONTINFO* info, void* font) {
+    FPDF_SYSFONTINFO* impl = GetImpl(info);
+    impl->DeleteFont(impl, font);
+  }
+
+  static FPDF_SYSFONTINFO* GetImpl(FPDF_SYSFONTINFO* info) {
+    return static_cast<FontRenamer*>(info)->impl_;
+  }
+
+  static std::string RenameFont(const std::string& face) {
+    std::string result;
+    if (face.find("Arial") != std::string::npos ||
+        face.find("Calibri") != std::string::npos ||
+        face.find("Helvetica") != std::string::npos) {
+      // Sans
+      result = "Arimo";
+    } else if (face.empty() || face.find("Times") != std::string::npos) {
+      // Serif
+      result = "Tinos";
+    } else if (face.find("Courier") != std::string::npos) {
+      // Mono
+      result = "Cousine";
+    } else {
+      // Some tests expect the fallback font.
+      return face;
+    }
+
+    if (face.find("Bold") != std::string::npos)
+      result += " Bold";
+
+    if (face.find("Italic") != std::string::npos ||
+        face.find("Oblique") != std::string::npos) {
+      result += " Italic";
+    }
+
+    return result;
+  }
+
+  FPDF_SYSFONTINFO* const impl_;
+};
 
 struct FPDF_FORMFILLINFO_PDFiumTest final : public FPDF_FORMFILLINFO {
   // Hold a map of the currently loaded pages in order to avoid them
@@ -495,6 +606,8 @@ bool ParseCommandLine(const std::vector<std::string>& args,
     } else if (cur_arg == "--no-system-fonts") {
       options->linux_no_system_fonts = true;
 #endif
+    } else if (cur_arg == "--croscore-font-names") {
+      options->croscore_font_names = true;
     } else if (cur_arg == "--ppm") {
       if (options->output_format != OutputFormat::kNone) {
         fprintf(stderr, "Duplicate or conflicting --ppm argument\n");
@@ -1133,6 +1246,7 @@ constexpr char kUsageString[] =
 #if defined(__APPLE__) || (defined(__linux__) && !defined(__ANDROID__))
     "  --no-system-fonts      - do not use system fonts, overrides --font-dir\n"
 #endif
+    "  --croscore-font-names  - use Croscore font names\n"
     "  --bin-dir=<path>       - override path to v8 external data\n"
     "  --font-dir=<path>      - override path to external fonts\n"
     "  --scale=<number>       - scale output size by number (e.g. 0.5)\n"
@@ -1231,6 +1345,10 @@ int main(int argc, const char* argv[]) {
   }
 
   FPDF_InitLibraryWithConfig(&config);
+
+  std::unique_ptr<FontRenamer> font_renamer;
+  if (options.croscore_font_names)
+    font_renamer = std::make_unique<FontRenamer>();
 
   UNSUPPORT_INFO unsupported_info = {};
   unsupported_info.version = 1;
