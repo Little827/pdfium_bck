@@ -16,6 +16,23 @@
       "message": "Corpus update CLs:\n\nhttps://pdfium-review.googlesource.com/c/pdfium_tests/+/92050\nhttps://pdfium-review.googlesource.com/c/pdfium_tests/+/92070\nhttps://pdfium-review.googlesource.com/c/pdfium_tests/+/92051\nhttps://pdfium-review.googlesource.com/c/pdfium_tests/+/92071\nhttps://pdfium-review.googlesource.com/c/pdfium_tests/+/92072",
       "revId": "a35e7247cf4665571447b144ac3a42fc3ef45e80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e34817_b6a1c51d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-03-31T06:20:55Z",
+      "side": 1,
+      "message": "bug_1308_1 is the only one that has a bigger difference. All png files checked.",
+      "revId": "a35e7247cf4665571447b144ac3a42fc3ef45e80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
