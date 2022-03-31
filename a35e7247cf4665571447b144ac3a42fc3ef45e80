@@ -69,6 +69,23 @@
       "parentUuid": "5269fa21_f5777859",
       "revId": "a35e7247cf4665571447b144ac3a42fc3ef45e80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb69213d_d7320ad3",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2022-03-31T17:55:05Z",
+      "side": 1,
+      "message": "consider deduping this with RenameFontForTesting: https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/testing/test_fonts.cpp;l\u003d18\n\nThe whole class looks similar to SystemFontInfoWrapper.  I wonder if it\u0027s possible to reuse it by writing an adapter from SystemFontInfoIface to FPDF_SYSFONTINFO?",
+      "revId": "a35e7247cf4665571447b144ac3a42fc3ef45e80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
