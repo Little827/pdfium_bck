@@ -33,6 +33,24 @@
       "message": "Wouldn\u0027t copy elision make it more efficient this way? \n\n```\nCFX_Matrix matrix \u003d charpos.GetEffectiveMatrix(\n                        CFX_Matrix(font_size, 0, 0, font_size, charpos.m_Origin.x,\n                                   charpos.m_Origin.y));\n```",
       "revId": "ae7f074f91593159d2c5f9b5f4d37bbaeb3e12e1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "460b8d0c_683170df",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T23:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e4b44a_c3a8c364",
+      "revId": "ae7f074f91593159d2c5f9b5f4d37bbaeb3e12e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
