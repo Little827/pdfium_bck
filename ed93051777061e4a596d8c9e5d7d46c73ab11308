@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "751efdea_01e0b267",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T19:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57c1c0a3_9bac76fb",
+      "range": {
+        "startLine": 215,
+        "startChar": 10,
+        "endLine": 215,
+        "endChar": 17
+      },
+      "revId": "ed93051777061e4a596d8c9e5d7d46c73ab11308",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "193ab8cc_fa468031",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-29T17:11:06Z",
       "side": 1,
       "message": "nit: ditto const",
+      "range": {
+        "startLine": 272,
+        "startChar": 10,
+        "endLine": 272,
+        "endChar": 17
+      },
+      "revId": "ed93051777061e4a596d8c9e5d7d46c73ab11308",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a80ce1e_14d8c8cb",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T19:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "193ab8cc_fa468031",
       "range": {
         "startLine": 272,
         "startChar": 10,
