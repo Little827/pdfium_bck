@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edb022c9_3bae96bd",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T23:29:05Z",
+      "side": 1,
+      "message": "As mentioned in the CL description, the vector just contains a dummy value. For GetCharPosList(), the 2nd argument is expected to have 1 fewer element compared to the first element.",
+      "parentUuid": "5d0362c2_ac1ffbe9",
+      "range": {
+        "startLine": 734,
+        "startChar": 21,
+        "endLine": 734,
+        "endChar": 48
+      },
+      "revId": "a7fde5662b04ac5109c2844caaf8ecc9eb0483b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8da2f45f_c71d7d89",
         "filename": "fpdfsdk/fpdf_edittext.cpp",
         "patchSetId": 1
