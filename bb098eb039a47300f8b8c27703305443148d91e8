@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0182592_aeb2f716",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T19:16:59Z",
+      "side": 1,
+      "message": "I\u0027m curious how other PDF viewers handle this test case.",
+      "revId": "bb098eb039a47300f8b8c27703305443148d91e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078fbc01_86ce8584",
+        "filename": "testing/resources/pixel/bug_1723.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T19:16:59Z",
+      "side": 1,
+      "message": "Reduce the spacing inside the braces. (Repeated style common from a recent code review.)",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "bb098eb039a47300f8b8c27703305443148d91e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119328e1_5c02ad89",
+        "filename": "testing/resources/pixel/bug_1723.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T19:16:59Z",
+      "side": 1,
+      "message": "This is the value that corresponds to the key on line 20, right? Put them on the same line, like most dictionary entries?",
+      "revId": "bb098eb039a47300f8b8c27703305443148d91e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
