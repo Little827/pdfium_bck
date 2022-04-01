@@ -79,7 +79,7 @@ TEST(CPDF_LinkExtractTest, CheckWebLink) {
       L"abc.example.com",           // URL without scheme.
   };
   for (const wchar_t* input : kInvalidCases) {
-    auto maybe_link = extractor.CheckWebLink(input);
+    auto maybe_link = extractor.CheckWebLink(WideString(input));
     EXPECT_FALSE(maybe_link.has_value()) << input;
   }
 

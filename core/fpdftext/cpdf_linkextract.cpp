@@ -230,6 +230,11 @@ absl::optional<CPDF_LinkExtract::Link> CPDF_LinkExtract::CheckWebLink(
   return absl::nullopt;
 }
 
+absl::optional<CPDF_LinkExtract::Link> CPDF_LinkExtract::CheckWebLink(
+    WideStringView strBeCheck) {
+  return CheckWebLink(WideString(strBeCheck));
+}
+
 bool CPDF_LinkExtract::CheckMailLink(WideString* str) {
   auto aPos = str->Find(L'@');
   // Invalid when no '@' or when starts/ends with '@'.

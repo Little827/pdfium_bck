@@ -59,3 +59,6 @@ IJS_Runtime::JS_Error::JS_Error(int line,
                                 int column,
                                 const WideString& exception)
     : line(line), column(column), exception(exception) {}
+
+IJS_Runtime::JS_Error::JS_Error(int line, int column, WideStringView exception)
+    : JS_Error(line, column, WideString(exception)) {}

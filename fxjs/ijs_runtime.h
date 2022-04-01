@@ -29,6 +29,7 @@ class IJS_Runtime {
     WideString exception;
 
     JS_Error(int line, int column, const WideString& exception);
+    JS_Error(int line, int column, WideStringView exception);
   };
 
   class ScopedEventContext {

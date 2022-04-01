@@ -7,12 +7,15 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(CXFA_FFBarcode, GetBarcodeTypeByName) {
-  EXPECT_EQ(BC_TYPE::kUnknown, CXFA_FFBarcode::GetBarcodeTypeByName(L""));
   EXPECT_EQ(BC_TYPE::kUnknown,
-            CXFA_FFBarcode::GetBarcodeTypeByName(L"not_found"));
+            CXFA_FFBarcode::GetBarcodeTypeByName(WideString()));
+  EXPECT_EQ(BC_TYPE::kUnknown,
+            CXFA_FFBarcode::GetBarcodeTypeByName(WideString(L"not_found")));
 
-  EXPECT_EQ(BC_TYPE::kEAN13, CXFA_FFBarcode::GetBarcodeTypeByName(L"ean13"));
-  EXPECT_EQ(BC_TYPE::kPDF417, CXFA_FFBarcode::GetBarcodeTypeByName(L"pdf417"));
+  EXPECT_EQ(BC_TYPE::kEAN13,
+            CXFA_FFBarcode::GetBarcodeTypeByName(WideString(L"ean13")));
+  EXPECT_EQ(BC_TYPE::kPDF417,
+            CXFA_FFBarcode::GetBarcodeTypeByName(WideString(L"pdf417")));
   EXPECT_EQ(BC_TYPE::kCode39,
-            CXFA_FFBarcode::GetBarcodeTypeByName(L"code3Of9"));
+            CXFA_FFBarcode::GetBarcodeTypeByName(WideString(L"code3Of9")));
 }

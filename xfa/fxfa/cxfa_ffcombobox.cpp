@@ -156,7 +156,7 @@ WideString CXFA_FFComboBox::GetCurrentText() const {
   if (iCursel >= 0) {
     WideString wsSel = pFWLcombobox->GetTextByIndex(iCursel);
     if (wsSel == wsText)
-      wsText = m_pNode->GetChoiceListItem(iCursel, true).value_or(L"");
+      wsText = m_pNode->GetChoiceListItem(iCursel, true).value_or(WideString());
   }
   return wsText;
 }

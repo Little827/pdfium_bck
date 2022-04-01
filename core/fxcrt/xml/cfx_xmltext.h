@@ -15,6 +15,7 @@ class CFX_XMLDocument;
 class CFX_XMLText : public CFX_XMLNode {
  public:
   explicit CFX_XMLText(const WideString& wsText);
+  explicit CFX_XMLText(WideStringView wsText);
   ~CFX_XMLText() override;
 
   // CFX_XMLNode
@@ -24,6 +25,7 @@ class CFX_XMLText : public CFX_XMLNode {
 
   const WideString& GetText() const { return text_; }
   void SetText(const WideString& wsText) { text_ = wsText; }
+  void SetText(WideStringView wsText) { SetText(WideString(wsText)); }
 
  private:
   WideString text_;

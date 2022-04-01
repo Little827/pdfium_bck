@@ -340,7 +340,7 @@ CXFA_Node* CXFA_DocumentBuilder::ParseAsXDPPacket_XDP(
     return nullptr;
 
   root_node_ = pXFARootNode;
-  pXFARootNode->JSObject()->SetCData(XFA_Attribute::Name, L"xfa");
+  pXFARootNode->JSObject()->SetCData(XFA_Attribute::Name, WideString(L"xfa"));
 
   for (auto it : ToXMLElement(pXMLDocumentNode)->GetAttributes()) {
     if (it.first.EqualsASCII("uuid"))

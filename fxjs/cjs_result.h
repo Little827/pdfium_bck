@@ -31,6 +31,9 @@ class CJS_Result {
   static CJS_Result Failure(const WideString& str) WARN_UNUSED_RESULT {
     return CJS_Result(str);
   }
+  static CJS_Result Failure(WideStringView str) WARN_UNUSED_RESULT {
+    return CJS_Result(WideString(str));
+  }
   static CJS_Result Failure(JSMessage id) WARN_UNUSED_RESULT {
     return CJS_Result(id);
   }
