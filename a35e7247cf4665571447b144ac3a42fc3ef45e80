@@ -86,6 +86,24 @@
       "message": "consider deduping this with RenameFontForTesting: https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/testing/test_fonts.cpp;l\u003d18\n\nThe whole class looks similar to SystemFontInfoWrapper.  I wonder if it\u0027s possible to reuse it by writing an adapter from SystemFontInfoIface to FPDF_SYSFONTINFO?",
       "revId": "a35e7247cf4665571447b144ac3a42fc3ef45e80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088bd4b1_e8d1ee0a",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-01T01:06:49Z",
+      "side": 1,
+      "message": "They do look a lot alike, but I don\u0027t want to use ByteString (or anything from core/, really) in this sample program that is only suppose to access the public interface. Though I think it already does indirectly via //testing. I\u0027ll see what I can do to merge the two...",
+      "parentUuid": "cb69213d_d7320ad3",
+      "revId": "a35e7247cf4665571447b144ac3a42fc3ef45e80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
