@@ -315,7 +315,7 @@ void CPDFXFA_DocEnvironment::OnPageViewEvent(CXFA_FFPageView* pPageView,
 }
 
 void CPDFXFA_DocEnvironment::WidgetPostAdd(CXFA_FFWidget* hWidget) {
-  if (m_pContext->GetFormType() != FormType::kXFAFull || !hWidget)
+  if (m_pContext->GetFormType() != FormType::kXFAFull)
     return;
 
   CXFA_FFPageView* pPageView = hWidget->GetPageView();
@@ -326,13 +326,12 @@ void CPDFXFA_DocEnvironment::WidgetPostAdd(CXFA_FFWidget* hWidget) {
   if (!pXFAPage)
     return;
 
-  m_pContext->GetFormFillEnv()
-      ->GetOrCreatePageView(pXFAPage.Get())
-      ->AddAnnot(hWidget);
+  auto* formfill = m_pContext->GetFormFillEnv();
+  formfill->GetOrCreatePageView(pXFAPage.Get())->AddAnnotForWidget(hWidget);
 }
 
 void CPDFXFA_DocEnvironment::WidgetPreRemove(CXFA_FFWidget* hWidget) {
-  if (m_pContext->GetFormType() != FormType::kXFAFull || !hWidget)
+  if (m_pContext->GetFormType() != FormType::kXFAFull)
     return;
 
   CXFA_FFPageView* pPageView = hWidget->GetPageView();

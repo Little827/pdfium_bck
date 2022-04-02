@@ -53,8 +53,8 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   CPDFSDK_Annot* GetAnnotByDict(CPDF_Dictionary* pDict);
 
 #ifdef PDF_ENABLE_XFA
+  CPDFSDK_Annot* AddAnnotForWidget(CXFA_FFWidget* pWidget);
   void DeleteAnnotForWidget(CXFA_FFWidget* pWidget);
-  CPDFSDK_Annot* AddAnnot(CXFA_FFWidget* pPDFAnnot);
   CPDFSDK_Annot* GetAnnotByXFAWidget(CXFA_FFWidget* pWidget);
   IPDF_Page* GetXFAPage();
 #endif  // PDF_ENABLE_XFA
