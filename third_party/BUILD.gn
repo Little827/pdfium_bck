@@ -207,7 +207,10 @@ if (pdf_use_skia || pdf_use_skia_paths) {
   group("fontconfig") {
     public_configs = [ ":system_fontconfig" ]
   }
-} else {
+}
+
+# TODO(crbug.com/pdfium/11)  AGG is deprecated and slated for removal.
+if (pdf_include_agg) {
   config("fx_agg_warnings") {
     visibility = [ ":*" ]
     if (is_clang) {
