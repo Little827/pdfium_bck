@@ -36,13 +36,19 @@ declare_args() {
   # If XFA, also support tiff codec. Ignored if not XFA.
   pdf_enable_xfa_tiff = true
 
-  # Build PDFium against Skia (experimental) rather than AGG. Use Skia to draw
-  # everything.
+  # Build PDFium to use Skia (experimental) for all PDFium graphics.
+  # If enabled, might coexist in build with deprecated AGG graphics, in which
+  # case the default renderer is selectable at runtime.
   pdf_use_skia = pdf_use_skia_override
 
-  # Build PDFium against Skia (experimental) rather than AGG. Use Skia to draw
-  # paths.
-  pdf_use_skia_paths = pdf_use_skia_paths_override
+  # Determine if runtime selection of the renderer is allowed.
+  if (is_android) {
+    # Skia is not supported in Android build.
+    pdf_allow_runtime_renderer_selection = false
+  } else {
+    pdf_allow_runtime_renderer_selection =
+        pdf_allow_runtime_renderer_selection_override
+  }
 
   # Build PDFium standalone
   pdf_is_standalone = false
@@ -67,6 +73,31 @@ declare_args() {
 
   # Enable SSE2 for MSVC builds. Ignored if it's not a MSVC build.
   msvc_use_sse2 = true
+}
+
+declare_args() {
+  # Build PDFium to use AGG (deprecated).  Might coexist with Skia, in which
+  # case the selection of default renderer is selectable at runtime.
+  if (pdf_use_skia_paths_override || pdf_allow_runtime_renderer_selection) {
+    pdf_include_agg = true
+  } else {
+    pdf_include_agg = !pdf_use_skia
+  }
+
+  # Using Skia only for path support requires AGG.  If runtime renderer
+  # selection is requested but neither variation of Skia support is selected
+  # then just use Skia paths support and default to using AGG for the renderer.
+  if (pdf_allow_runtime_renderer_selection &&
+      (pdf_use_skia || pdf_use_skia_paths_override)) {
+    # A Skia build variation was explicitly selected, that is the initial default.
+    pdf_default_renderer = "skia"
+    pdf_use_skia_paths = pdf_use_skia_paths_override
+  } else {
+    # Since one of the Skia variants must be present for runtime selection, choose
+    # `pdf_use_skia_paths` as enabled.  AGG is still the default at runtime.
+    pdf_use_skia_paths = pdf_allow_runtime_renderer_selection
+    pdf_default_renderer = "agg"
+  }
 }
 
 if (pdf_use_skia && pdf_use_skia_paths) {

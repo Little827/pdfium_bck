@@ -23,6 +23,11 @@ config("pdfium_samples_config") {
   } else if (pdf_use_skia_paths) {
     defines += [ "PDF_ENABLE_SKIA_PATHS" ]
   }
+  if (pdf_default_renderer == "agg") {
+    defines += [ "PDFIUM_DEFAULT_RENDERER=AGG" ]
+  } else {
+    defines += [ "PDFIUM_DEFAULT_RENDERER=SKIA" ]
+  }
   if (is_asan) {
     defines += [ "PDF_ENABLE_ASAN" ]
   }
@@ -49,13 +54,17 @@ executable("pdfium_test") {
   # as well as test support code, for convenience.
   deps = [
     "../:pdfium_public_headers",
+    "../core/fxge",
     "../fpdfsdk",
     "../testing:test_support",
     "../testing/image_diff",
     "../third_party:pdfium_base",
     "//build/win:default_exe_manifest",
   ]
-  configs += [ ":pdfium_samples_config" ]
+  configs += [
+    ":pdfium_samples_config",
+    "../core/fxge:fxge_defines",
+  ]
 
   if (pdf_enable_v8) {
     deps += [
