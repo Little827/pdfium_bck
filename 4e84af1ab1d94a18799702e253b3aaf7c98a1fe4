@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec580360_0326f0b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8861
+      },
+      "writtenOn": "2022-04-03T23:14:09Z",
+      "side": 1,
+      "message": "Alternatively, you may try and fix the permission issue on pdfium-status.appspot.com.",
+      "revId": "4e84af1ab1d94a18799702e253b3aaf7c98a1fe4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
