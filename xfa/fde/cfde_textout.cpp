@@ -14,6 +14,7 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/stl_util.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_path.h"
 #include "core/fxge/cfx_renderdevice.h"
@@ -119,7 +120,8 @@ bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
                                   -fFontSize, matrix, color, kOptions);
   }
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  device->Flush(false);
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    device->Flush(false);
 #endif
 
   return bRet;

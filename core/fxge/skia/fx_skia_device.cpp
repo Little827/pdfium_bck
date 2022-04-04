@@ -2753,8 +2753,6 @@ void CFX_SkiaDeviceDriver::DebugVerifyBitmapIsPreMultiplied() const {
 }
 #endif
 
-CFX_DefaultRenderDevice::CFX_DefaultRenderDevice() = default;
-
 #if defined(_SKIA_SUPPORT_)
 void CFX_DefaultRenderDevice::Clear(uint32_t color) {
   CFX_SkiaDeviceDriver* skDriver =
@@ -2770,7 +2768,7 @@ SkPictureRecorder* CFX_DefaultRenderDevice::CreateRecorder(int size_x,
 }
 #endif  // defined(_SKIA_SUPPORT_)
 
-bool CFX_DefaultRenderDevice::Attach(
+bool CFX_DefaultRenderDevice::AttachSkia(
     const RetainPtr<CFX_DIBitmap>& pBitmap,
     bool bRgbByteOrder,
     const RetainPtr<CFX_DIBitmap>& pBackdropBitmap,
@@ -2792,7 +2790,7 @@ bool CFX_DefaultRenderDevice::AttachRecorder(SkPictureRecorder* recorder) {
 }
 #endif
 
-bool CFX_DefaultRenderDevice::Create(
+bool CFX_DefaultRenderDevice::CreateSkia(
     int width,
     int height,
     FXDIB_Format format,
@@ -2805,10 +2803,6 @@ bool CFX_DefaultRenderDevice::Create(
   SetDeviceDriver(std::make_unique<CFX_SkiaDeviceDriver>(
       pBitmap, false, pBackdropBitmap, false));
   return true;
-}
-
-CFX_DefaultRenderDevice::~CFX_DefaultRenderDevice() {
-  Flush(true);
 }
 
 #if defined(_SKIA_SUPPORT_)
