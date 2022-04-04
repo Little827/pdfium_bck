@@ -4342,8 +4342,8 @@ bool CXFA_Node::GetItemState(int32_t nIndex) {
 void CXFA_Node::SetItemState(int32_t nIndex,
                              bool bSelected,
                              bool bNotify,
-                             bool bScriptModify,
-                             bool bSyncData) {
+                             bool bScriptModify) {
+  const bool bSyncData = true;
   std::vector<WideString> wsSaveTextArray = GetChoiceListItems(true);
   if (!fxcrt::IndexInBounds(wsSaveTextArray, nIndex))
     return;
@@ -4574,7 +4574,7 @@ bool CXFA_Node::DeleteItem(int32_t nIndex, bool bNotify, bool bScriptModify) {
       }
     } else {
       if (!bSetValue && pItems->JSObject()->GetBoolean(XFA_Attribute::Save)) {
-        SetItemState(nIndex, false, true, bScriptModify, true);
+        SetItemState(nIndex, false, true, bScriptModify);
         bSetValue = true;
       }
       int32_t i = 0;
