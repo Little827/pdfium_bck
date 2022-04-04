@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2b1d5d_af5b0ceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-04T22:42:59Z",
+      "side": 1,
+      "message": "Will slowly chip away at CPDFSDK_AnnotHandlerMgr and IPDFSDK_AnnotHandler.",
+      "revId": "84510b5930d2aded2d01a715139d859fdf5fed06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
