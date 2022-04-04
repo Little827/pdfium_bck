@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c3ed2d_5621cacf",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-04T18:07:28Z",
+      "side": 1,
+      "message": "Whoops, this is causing a nullptr dereference. crbug.com/1313008",
+      "revId": "e8e1dfec684164b8b093ea5a00bd45a06b03447d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
