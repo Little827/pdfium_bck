@@ -46,6 +46,30 @@
       },
       "revId": "1fe58a586d496a9a6982e7fb8d4351f46c1c617b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b710aed_8b14e36c",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-04T18:26:54Z",
+      "side": 1,
+      "message": "Ah, I forgot the newly-added DCHECK. Thanks!\nLGTM~",
+      "parentUuid": "5f324245_a3659b5c",
+      "range": {
+        "startLine": 738,
+        "startChar": 2,
+        "endLine": 739,
+        "endChar": 19
+      },
+      "revId": "1fe58a586d496a9a6982e7fb8d4351f46c1c617b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
