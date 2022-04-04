@@ -1311,12 +1311,12 @@ void CFX_RenderDevice::DrawFillRect(const CFX_Matrix* pUser2Device,
 }
 
 void CFX_RenderDevice::DrawShadow(const CFX_Matrix& mtUser2Device,
-                                  bool bVertical,
-                                  bool bHorizontal,
                                   const CFX_FloatRect& rect,
                                   int32_t nTransparency,
                                   int32_t nStartGray,
                                   int32_t nEndGray) {
+  const bool bVertical = true;
+  const bool bHorizontal = false;
   constexpr float kBorder = 0.5f;
   constexpr float kSegmentWidth = 1.0f;
   constexpr float kLineWidth = 1.5f;
