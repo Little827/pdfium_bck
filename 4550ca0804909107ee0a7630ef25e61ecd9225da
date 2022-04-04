@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53ba30a_9f6d68bc",
+        "filename": "fpdfsdk/cpdfsdk_pageview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-04T17:54:51Z",
+      "side": 1,
+      "message": "nit: either \u0027ForWidget\" or the two above should be \u0027ForXFAWidget\u0027 or maybe all should be \u0027ForFFWidget\u0027 since there\u0027s a lot of widgets and FF is distinctive.",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "4550ca0804909107ee0a7630ef25e61ecd9225da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
