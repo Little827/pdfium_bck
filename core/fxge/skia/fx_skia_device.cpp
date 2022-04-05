@@ -631,13 +631,25 @@ void SetBitmapPaint(bool is_mask,
                     int bitmap_alpha,
                     BlendMode blend_type,
                     SkPaint* paint) {
+  if (is_mask)
+    paint->setColor(argb);
+
   paint->setAntiAlias(anti_alias);
+  paint->setBlendMode(GetSkiaBlendMode(blend_type));
+}
+
+void SetBitmapPaintForMerge(bool is_mask,
+                            bool anti_alias,
+                            uint32_t argb,
+                            int bitmap_alpha,
+                            BlendMode blend_type,
+                            SkPaint* paint) {
   if (is_mask)
     paint->setColorFilter(SkColorFilters::Blend(argb, SkBlendMode::kSrc));
 
-  // paint->setFilterQuality(kHigh_SkFilterQuality);
-  paint->setBlendMode(GetSkiaBlendMode(blend_type));
   paint->setAlpha(bitmap_alpha);
+  paint->setAntiAlias(anti_alias);
+  paint->setBlendMode(GetSkiaBlendMode(blend_type));
 }
 
 bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
@@ -2702,8 +2714,8 @@ bool CFX_SkiaDeviceDriver::DrawBitsWithMask(
     SetBitmapMatrix(matrix, srcWidth, srcHeight, &skMatrix);
     m_pCanvas->concat(skMatrix);
     SkPaint paint;
-    SetBitmapPaint(pSource->IsMaskFormat(), !m_FillOptions.aliased_path,
-                   0xFFFFFFFF, bitmap_alpha, blend_type, &paint);
+    SetBitmapPaintForMerge(pSource->IsMaskFormat(), !m_FillOptions.aliased_path,
+                           0xFFFFFFFF, bitmap_alpha, blend_type, &paint);
     sk_sp<SkImage> skSrc = SkImage::MakeFromBitmap(skBitmap);
     sk_sp<SkShader> skSrcShader = skSrc->makeShader(
         SkTileMode::kClamp, SkTileMode::kClamp, SkSamplingOptions());
