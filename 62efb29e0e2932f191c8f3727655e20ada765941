@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb7dc73_d73fb170",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-05T23:03:46Z",
+      "side": 1,
+      "message": "Instead of adding more parameters to this function, would it be simpler to split this into 2 functions?",
+      "revId": "62efb29e0e2932f191c8f3727655e20ada765941",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "562d420e_638b29f1",
