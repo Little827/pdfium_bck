@@ -625,19 +625,24 @@ void SetBitmapMatrix(const CFX_Matrix& m,
                    -m.d / height, m.d + m.f, 0, 0, 1);
 }
 
-void SetBitmapPaint(bool is_mask,
+void SetBitmapPaint(bool merge,
+                    bool is_mask,
                     bool anti_alias,
                     uint32_t argb,
                     int bitmap_alpha,
                     BlendMode blend_type,
                     SkPaint* paint) {
-  paint->setAntiAlias(anti_alias);
-  if (is_mask)
+  if (merge && is_mask)
     paint->setColorFilter(SkColorFilters::Blend(argb, SkBlendMode::kSrc));
 
-  // paint->setFilterQuality(kHigh_SkFilterQuality);
+  if (merge) {
+    paint->setAlpha(bitmap_alpha);
+  } else if (is_mask) {
+    paint->setColor(argb);
+  }
+
+  paint->setAntiAlias(anti_alias);
   paint->setBlendMode(GetSkiaBlendMode(blend_type));
-  paint->setAlpha(bitmap_alpha);
 }
 
 bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
@@ -2556,8 +2561,9 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
     SetBitmapMatrix(matrix, width, height, &skMatrix);
     m_pCanvas->concat(skMatrix);
     SkPaint paint;
-    SetBitmapPaint(pSource->IsMaskFormat(), !m_FillOptions.aliased_path, argb,
-                   bitmap_alpha, blend_type, &paint);
+    SetBitmapPaint(/*merge=*/false, pSource->IsMaskFormat(),
+                   !m_FillOptions.aliased_path, argb, bitmap_alpha, blend_type,
+                   &paint);
     // TODO(caryclark) Once Skia supports 8 bit src to 8 bit dst remove this
     if (m_pBitmap && m_pBitmap->GetBPP() == 8 && pSource->GetBPP() == 8) {
       SkMatrix inv;
@@ -2702,8 +2708,9 @@ bool CFX_SkiaDeviceDriver::DrawBitsWithMask(
     SetBitmapMatrix(matrix, srcWidth, srcHeight, &skMatrix);
     m_pCanvas->concat(skMatrix);
     SkPaint paint;
-    SetBitmapPaint(pSource->IsMaskFormat(), !m_FillOptions.aliased_path,
-                   0xFFFFFFFF, bitmap_alpha, blend_type, &paint);
+    SetBitmapPaint(/*merge=*/true, pSource->IsMaskFormat(),
+                   !m_FillOptions.aliased_path, 0xFFFFFFFF, bitmap_alpha,
+                   blend_type, &paint);
     sk_sp<SkImage> skSrc = SkImage::MakeFromBitmap(skBitmap);
     sk_sp<SkShader> skSrcShader = skSrc->makeShader(
         SkTileMode::kClamp, SkTileMode::kClamp, SkSamplingOptions());
