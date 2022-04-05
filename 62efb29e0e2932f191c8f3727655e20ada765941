@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa6ccf0_2bcb52b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-05T22:41:49Z",
+      "side": 1,
+      "message": "What is not reflected in this CL:\n\nPixel test bug_1087.pdf is the test which is applying a mask image as a color filter onto another image. When tweaking the code in SetBitmapPaint(), bug_1087.pdf always regressed (therefore an extra parameter was introduced in this CL).\n\nbut_1087.pdf happens to be rendered correctly with the existing PDFium code, therefore it\u0027s not in the list of the deleted suppressed test.\n",
+      "revId": "62efb29e0e2932f191c8f3727655e20ada765941",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562d420e_638b29f1",
+        "filename": "testing/resources/pixel/bug_1746_expected_skia.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-05T22:41:49Z",
+      "side": 1,
+      "message": "This newest test file has transparency and the Skia result has slight rounding difference compared to AGG expectations.",
+      "revId": "62efb29e0e2932f191c8f3727655e20ada765941",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
