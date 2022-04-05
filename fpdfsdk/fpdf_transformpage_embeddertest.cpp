@@ -5,6 +5,7 @@
 #include "public/fpdf_transformpage.h"
 
 #include "build/build_config.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_constants.h"
 
@@ -12,15 +13,17 @@
 #include "third_party/base/test/scoped_locale.h"
 #endif
 
-using pdfium::kRectanglesChecksum;
+using pdfium::RectanglesChecksum;
 
 namespace {
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-constexpr char kShrunkMD5[] = "78c52d6029283090036e6db6683401e2";
-#else
-constexpr char kShrunkMD5[] = "f4136cc9209207ab60eb8381a3df2e69";
-#endif
+constexpr char kShrunkMD5Skia[] = "78c52d6029283090036e6db6683401e2";
+constexpr char kShrunkMD5Agg[] = "f4136cc9209207ab60eb8381a3df2e69";
+
+const char* ShrunkMD5() {
+  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kShrunkMD5Skia
+                                                          : kShrunkMD5Agg;
+}
 
 }  // namespace
 
@@ -208,11 +211,11 @@ TEST_F(FPDFTransformEmbedderTest, NoArtBox) {
 }
 
 TEST_F(FPDFTransformEmbedderTest, SetCropBox) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kCroppedMD5[] = "4b9d2d2246be61c583f454245fe3172f";
-#else
-  const char kCroppedMD5[] = "9937883715d5144c079fb8f7e3d4f395";
-#endif
+  const char kCroppedMD5Skia[] = "4b9d2d2246be61c583f454245fe3172f";
+  const char kCroppedMD5Agg[] = "9937883715d5144c079fb8f7e3d4f395";
+  const char* kCroppedMD5 = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                ? kCroppedMD5Skia
+                                : kCroppedMD5Agg;
   {
     ASSERT_TRUE(OpenDocument("rectangles.pdf"));
     FPDF_PAGE page = LoadPage(0);
@@ -228,7 +231,8 @@ TEST_F(FPDFTransformEmbedderTest, SetCropBox) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kRectanglesChecksum);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    RectanglesChecksum());
     }
 
     FPDFPage_SetCropBox(page, 10, 20, 100, 150);
@@ -283,11 +287,12 @@ TEST_F(FPDFTransformEmbedderTest, SetCropBox) {
 }
 
 TEST_F(FPDFTransformEmbedderTest, SetMediaBox) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kShrunkMD5SetMediaBox[] = "9f28f0610a7f789c24cfd5f9bd5dc3de";
-#else
-  const char kShrunkMD5SetMediaBox[] = "eab5958f62f7ce65d7c32de98389fee1";
-#endif
+  const char kShrunkMD5SetMediaBoxSkia[] = "9f28f0610a7f789c24cfd5f9bd5dc3de";
+  const char kShrunkMD5SetMediaBoxAgg[] = "eab5958f62f7ce65d7c32de98389fee1";
+  const char* kShrunkMD5SetMediaBox =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kShrunkMD5SetMediaBoxSkia
+          : kShrunkMD5SetMediaBoxAgg;
 
   {
     ASSERT_TRUE(OpenDocument("rectangles.pdf"));
@@ -304,7 +309,8 @@ TEST_F(FPDFTransformEmbedderTest, SetMediaBox) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kRectanglesChecksum);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    RectanglesChecksum());
     }
 
     FPDFPage_SetMediaBox(page, 20, 30, 100, 150);
@@ -432,7 +438,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSave) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kRectanglesChecksum);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    RectanglesChecksum());
     }
 
     {
@@ -447,7 +454,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSave) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kRectanglesChecksum);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    RectanglesChecksum());
     }
 
     UnloadPage(page);
@@ -466,7 +474,7 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSave) {
     EXPECT_EQ(200, page_width);
     EXPECT_EQ(300, page_height);
     ScopedFPDFBitmap bitmap = RenderSavedPage(saved_page);
-    CompareBitmap(bitmap.get(), page_width, page_height, kShrunkMD5);
+    CompareBitmap(bitmap.get(), page_width, page_height, ShrunkMD5());
 
     CloseSavedPage(saved_page);
     CloseSavedDocument();
@@ -489,7 +497,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSaveWithLocale) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kRectanglesChecksum);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    RectanglesChecksum());
     }
 
     {
@@ -504,7 +513,8 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSaveWithLocale) {
       EXPECT_EQ(200, page_width);
       EXPECT_EQ(300, page_height);
       ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-      CompareBitmap(bitmap.get(), page_width, page_height, kRectanglesChecksum);
+      CompareBitmap(bitmap.get(), page_width, page_height,
+                    RectanglesChecksum());
     }
 
     UnloadPage(page);
@@ -523,7 +533,7 @@ TEST_F(FPDFTransformEmbedderTest, TransFormWithClipAndSaveWithLocale) {
     EXPECT_EQ(200, page_width);
     EXPECT_EQ(300, page_height);
     ScopedFPDFBitmap bitmap = RenderSavedPage(saved_page);
-    CompareBitmap(bitmap.get(), page_width, page_height, kShrunkMD5);
+    CompareBitmap(bitmap.get(), page_width, page_height, ShrunkMD5());
 
     CloseSavedPage(saved_page);
     CloseSavedDocument();
