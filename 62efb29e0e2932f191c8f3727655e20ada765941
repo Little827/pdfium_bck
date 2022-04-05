@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a92c0ca1_9eaa1554",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-05T23:56:39Z",
+      "side": 1,
+      "message": "Sure, that was my original approach.\nApplied the changes in the new patchset and updated the commit message.",
+      "parentUuid": "3bb7dc73_d73fb170",
+      "revId": "62efb29e0e2932f191c8f3727655e20ada765941",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "562d420e_638b29f1",
         "filename": "testing/resources/pixel/bug_1746_expected_skia.pdf.0.png",
         "patchSetId": 3
