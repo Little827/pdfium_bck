@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_path.h"
@@ -24,7 +25,7 @@
 #include "third_party/base/notreached.h"
 #include "third_party/base/numerics/safe_conversions.h"
 
-#if !defined(_SKIA_SUPPORT_)
+#if defined(_AGG_SUPPORT_)
 #include "core/fxge/agg/fx_agg_driver.h"
 #include "third_party/agg23/agg_clip_liang_barsky.h"
 #endif
@@ -510,7 +511,17 @@ void CGdiDeviceDriver::DrawLine(float x1, float y1, float x2, float y2) {
       float x[2];
       float y[2];
       int np;
-#if defined(_SKIA_SUPPORT_)
+#if defined(_SKIA_SUPPORT_) && defined(_AGG_SUPPORT_)
+      if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+        // TODO(caryclark) temporary replacement of antigrain in line function
+        // to permit removing antigrain altogether
+        rect_base rect = {0.0f, 0.0f, (float)(m_Width), (float)(m_Height)};
+        np = clip_liang_barsky(x1, y1, x2, y2, rect, x, y);
+      } else {
+        rect_base rect = {0.0f, 0.0f, (float)(m_Width), (float)(m_Height)};
+        np = clip_liang_barsky(x1, y1, x2, y2, rect, x, y);
+      }
+#elif defined(_SKIA_SUPPORT_)
       // TODO(caryclark) temporary replacement of antigrain in line function
       // to permit removing antigrain altogether
       rect_base rect = {0.0f, 0.0f, (float)(m_Width), (float)(m_Height)};

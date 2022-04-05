@@ -191,7 +191,7 @@ if (pdf_bundle_freetype) {
       "//third_party/freetype/src/src/truetype/truetype.c",
       "//third_party/freetype/src/src/type1/type1.c",
     ]
-    if (pdf_use_skia || pdf_use_skia_paths) {
+    if (pdf_use_skia || pdf_include_skia_paths) {
       sources += [
         "//third_party/freetype/src/include/freetype/ftsynth.h",
         "//third_party/freetype/src/src/base/fttype1.c",
@@ -200,14 +200,17 @@ if (pdf_bundle_freetype) {
   }
 }
 
-if (pdf_use_skia || pdf_use_skia_paths) {
+if (pdf_use_skia || pdf_include_skia_paths) {
   config("system_fontconfig") {
     libs = [ "fontconfig" ]
   }
   group("fontconfig") {
     public_configs = [ ":system_fontconfig" ]
   }
-} else {
+}
+
+# TODO(crbug.com/pdfium/11)  AGG is deprecated and slated for removal.
+if (pdf_include_agg) {
   config("fx_agg_warnings") {
     visibility = [ ":*" ]
     if (is_clang) {
