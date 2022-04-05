@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562e2d2d_792e96a7",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-05T03:46:12Z",
+      "side": 1,
+      "message": "`context` is never null, BTW.",
+      "revId": "7ae547d2247fa514f1ed9c9b624e36f2a8119361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d949706f_c346978d",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-05T03:46:12Z",
+      "side": 1,
+      "message": "Can probably just return std::vector\u003cuint8_t, FxAllocAllocator\u003cuint8_t\u003e\u003e in a follow-up.",
+      "revId": "7ae547d2247fa514f1ed9c9b624e36f2a8119361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
