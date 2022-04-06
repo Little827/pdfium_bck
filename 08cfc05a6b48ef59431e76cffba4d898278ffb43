@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21bc970d_453c0857",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-06T23:51:31Z",
+      "side": 0,
+      "message": "I see it. The if (!m_bpc || !m_nComponents) check.",
+      "parentUuid": "2165814a_ef338c9b",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 74
+      },
+      "revId": "08cfc05a6b48ef59431e76cffba4d898278ffb43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c4ff70_0fb05c19",
