@@ -698,6 +698,93 @@ CFX_FloatRect CPDFSDK_Widget::GetViewBBox() {
   return CFX_FloatRect(form_filler->GetViewBBox(GetPageView(), this));
 }
 
+void CPDFSDK_Widget::OnMouseEnter(Mask<FWL_EVENTFLAG> nFlags) {
+  if (IsSignatureWidget())
+    return;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  GetInteractiveFormFiller()->OnMouseEnter(GetPageView(), observer, nFlags);
+}
+
+void CPDFSDK_Widget::OnMouseExit(Mask<FWL_EVENTFLAG> nFlags) {
+  if (IsSignatureWidget())
+    return;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  GetInteractiveFormFiller()->OnMouseEnter(GetPageView(), observer, nFlags);
+}
+
+bool CPDFSDK_Widget::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                                   const CFX_PointF& point) {
+  if (IsSignatureWidget())
+    return false;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  return GetInteractiveFormFiller()->OnLButtonDown(GetPageView(), observer,
+                                                   nFlags, point);
+}
+
+bool CPDFSDK_Widget::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                                 const CFX_PointF& point) {
+  if (IsSignatureWidget())
+    return false;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  return GetInteractiveFormFiller()->OnLButtonUp(GetPageView(), observer,
+                                                 nFlags, point);
+}
+
+bool CPDFSDK_Widget::OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlags,
+                                     const CFX_PointF& point) {
+  if (IsSignatureWidget())
+    return false;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  return GetInteractiveFormFiller()->OnLButtonDblClk(GetPageView(), observer,
+                                                     nFlags, point);
+}
+
+bool CPDFSDK_Widget::OnMouseMove(Mask<FWL_EVENTFLAG> nFlags,
+                                 const CFX_PointF& point) {
+  if (IsSignatureWidget())
+    return false;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  return GetInteractiveFormFiller()->OnMouseMove(GetPageView(), observer,
+                                                 nFlags, point);
+}
+
+bool CPDFSDK_Widget::OnMouseWheel(Mask<FWL_EVENTFLAG> nFlags,
+                                  const CFX_PointF& point,
+                                  const CFX_Vector& delta) {
+  if (IsSignatureWidget())
+    return false;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  return GetInteractiveFormFiller()->OnMouseWheel(GetPageView(), observer,
+                                                  nFlags, point, delta);
+}
+
+bool CPDFSDK_Widget::OnRButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                                   const CFX_PointF& point) {
+  if (IsSignatureWidget())
+    return false;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  return GetInteractiveFormFiller()->OnRButtonDown(GetPageView(), observer,
+                                                   nFlags, point);
+}
+
+bool CPDFSDK_Widget::OnRButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                                 const CFX_PointF& point) {
+  if (IsSignatureWidget())
+    return false;
+
+  ObservedPtr<CPDFSDK_Widget> observer(this);
+  return GetInteractiveFormFiller()->OnRButtonDown(GetPageView(), observer,
+                                                   nFlags, point);
+}
+
 bool CPDFSDK_Widget::CanUndo() {
   return !IsSignatureWidget() && GetInteractiveFormFiller()->CanUndo(this);
 }
