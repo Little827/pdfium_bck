@@ -6,6 +6,8 @@
 
 #include "fpdfsdk/cpdfsdk_baannot.h"
 
+#include <vector>
+
 #include "constants/annotation_common.h"
 #include "constants/annotation_flags.h"
 #include "constants/form_fields.h"
@@ -205,6 +207,20 @@ void CPDFSDK_BAAnnot::SetOpenState(bool bOpenState) {
     pAnnot->SetOpenState(bOpenState);
 }
 
+void CPDFSDK_BAAnnot::UpdateAnnotRects() {
+  std::vector<CFX_FloatRect> rects;
+  rects.push_back(GetRect());
+  CPDF_Annot* popup = GetPDFPopupAnnot();
+  if (popup)
+    rects.push_back(popup->GetRect());
+
+  // Make the rects round up to avoid https://crbug.com/662804
+  for (CFX_FloatRect& rect : rects)
+    rect.Inflate(1, 1);
+
+  GetPageView()->UpdateRects(rects);
+}
+
 int CPDFSDK_BAAnnot::GetLayoutOrder() const {
   if (m_pAnnot->GetSubtype() == CPDF_Annot::Subtype::POPUP)
     return 1;
@@ -218,6 +234,52 @@ bool CPDFSDK_BAAnnot::DoHitTest(const CFX_PointF& point) {
 
 CFX_FloatRect CPDFSDK_BAAnnot::GetViewBBox() {
   return GetRect();
+}
+
+void CPDFSDK_BAAnnot::OnMouseEnter(Mask<FWL_EVENTFLAG> nFlags) {
+  SetOpenState(true);
+  UpdateAnnotRects();
+}
+
+void CPDFSDK_BAAnnot::OnMouseExit(Mask<FWL_EVENTFLAG> nFlags) {
+  SetOpenState(false);
+  UpdateAnnotRects();
+}
+
+bool CPDFSDK_BAAnnot::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                                    const CFX_PointF& point) {
+  return false;
+}
+
+bool CPDFSDK_BAAnnot::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                                  const CFX_PointF& point) {
+  return false;
+}
+
+bool CPDFSDK_BAAnnot::OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlags,
+                                      const CFX_PointF& point) {
+  return false;
+}
+
+bool CPDFSDK_BAAnnot::OnMouseMove(Mask<FWL_EVENTFLAG> nFlags,
+                                  const CFX_PointF& point) {
+  return false;
+}
+
+bool CPDFSDK_BAAnnot::OnMouseWheel(Mask<FWL_EVENTFLAG> nFlags,
+                                   const CFX_PointF& point,
+                                   const CFX_Vector& delta) {
+  return false;
+}
+
+bool CPDFSDK_BAAnnot::OnRButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                                    const CFX_PointF& point) {
+  return false;
+}
+
+bool CPDFSDK_BAAnnot::OnRButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                                  const CFX_PointF& point) {
+  return false;
 }
 
 bool CPDFSDK_BAAnnot::CanUndo() {

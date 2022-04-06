@@ -9,8 +9,10 @@
 
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/mask.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "public/fpdf_fwlevent.h"
 
 class CPDF_Page;
 class CPDFSDK_BAAnnot;
@@ -32,6 +34,23 @@ class CPDFSDK_Annot : public Observable {
   virtual CFX_FloatRect GetRect() const = 0;
   virtual bool DoHitTest(const CFX_PointF& point) = 0;
   virtual CFX_FloatRect GetViewBBox() = 0;
+  virtual void OnMouseEnter(Mask<FWL_EVENTFLAG> nFlags) = 0;
+  virtual void OnMouseExit(Mask<FWL_EVENTFLAG> nFlags) = 0;
+  virtual bool OnLButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                             const CFX_PointF& point) = 0;
+  virtual bool OnLButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                           const CFX_PointF& point) = 0;
+  virtual bool OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlags,
+                               const CFX_PointF& point) = 0;
+  virtual bool OnMouseMove(Mask<FWL_EVENTFLAG> nFlags,
+                           const CFX_PointF& point) = 0;
+  virtual bool OnMouseWheel(Mask<FWL_EVENTFLAG> nFlags,
+                            const CFX_PointF& point,
+                            const CFX_Vector& delta) = 0;
+  virtual bool OnRButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                             const CFX_PointF& point) = 0;
+  virtual bool OnRButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                           const CFX_PointF& point) = 0;
   virtual bool CanUndo() = 0;
   virtual bool CanRedo() = 0;
   virtual bool Undo() = 0;
