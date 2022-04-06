@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7502a9e2_edebc5c9",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-06T20:20:21Z",
+      "side": 1,
+      "message": "Maybe worth investigating as a follow-up: Lines 268-271 is very similar, but does not have this check.",
+      "revId": "5c5e5f3197c0b0e448d4c44e0ed01b51824cedca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
