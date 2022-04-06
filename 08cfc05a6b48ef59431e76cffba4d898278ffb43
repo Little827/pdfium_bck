@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39735aaa_af313320",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-06T23:11:38Z",
+      "side": 0,
+      "message": "additional \u003d\u003d 0 check not performed here can\u0027t hurt when introduced below.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 74
+      },
+      "revId": "08cfc05a6b48ef59431e76cffba4d898278ffb43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c4ff70_0fb05c19",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-06T23:11:38Z",
+      "side": 0,
+      "message": "This should be able to come earlier without affecting things.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "08cfc05a6b48ef59431e76cffba4d898278ffb43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6349f331_1f762ac7",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-06T23:11:38Z",
+      "side": 0,
+      "message": "this should be able to come later without affecting things since we give up on error and the stored members don\u0027t matter.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 32
+      },
+      "revId": "08cfc05a6b48ef59431e76cffba4d898278ffb43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

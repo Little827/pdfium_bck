@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87dd368a_0bc6e195",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-06T23:11:38Z",
+      "side": 0,
+      "message": "These two are already set by constructor to these values.",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 22
+      },
+      "revId": "9fe22fe6534fcde099aadd46f6d857aa64710ed2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
