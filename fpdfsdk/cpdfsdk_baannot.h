@@ -33,6 +33,23 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot {
   int GetLayoutOrder() const override;
   bool DoHitTest(const CFX_PointF& point) override;
   CFX_FloatRect GetViewBBox() override;
+  void OnMouseEnter(Mask<FWL_EVENTFLAG> nFlags) override;
+  void OnMouseExit(Mask<FWL_EVENTFLAG> nFlags) override;
+  bool OnLButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                     const CFX_PointF& point) override;
+  bool OnLButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                   const CFX_PointF& point) override;
+  bool OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlags,
+                       const CFX_PointF& point) override;
+  bool OnMouseMove(Mask<FWL_EVENTFLAG> nFlags,
+                   const CFX_PointF& point) override;
+  bool OnMouseWheel(Mask<FWL_EVENTFLAG> nFlags,
+                    const CFX_PointF& point,
+                    const CFX_Vector& delta) override;
+  bool OnRButtonDown(Mask<FWL_EVENTFLAG> nFlags,
+                     const CFX_PointF& point) override;
+  bool OnRButtonUp(Mask<FWL_EVENTFLAG> nFlags,
+                   const CFX_PointF& point) override;
   bool CanUndo() override;
   bool CanRedo() override;
   bool Undo() override;
@@ -68,12 +85,12 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot {
 
   CPDF_AAction GetAAction() const;
 
-  void SetOpenState(bool bOpenState);
-
   CPDF_Dest GetDestination() const;
 
  protected:
   CPDF_Dictionary* GetAPDict() const;
+  void SetOpenState(bool bOpenState);
+  void UpdateAnnotRects();
 
   UnownedPtr<CPDF_Annot> const m_pAnnot;
 };
