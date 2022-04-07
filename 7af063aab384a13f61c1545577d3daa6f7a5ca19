@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7530aaed_38fd96b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-04-07T22:49:03Z",
+      "side": 1,
+      "message": "Still need to fix a separate set of buffer management bugs for the LZW decoder before the pixel tests are fixed.",
+      "revId": "7af063aab384a13f61c1545577d3daa6f7a5ca19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
