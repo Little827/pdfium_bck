@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fa34119_be390098",
+        "filename": "fpdfsdk/cpdfsdk_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T19:39:04Z",
+      "side": 1,
+      "message": "these can still be public since they can\u0027t destroy \u0027this\u0027",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "6dda7f4ec29581ae5d98e52bde96052006b556ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66019684_3a1ada51",
         "filename": "fpdfsdk/cpdfsdk_widget.cpp",
         "patchSetId": 3
