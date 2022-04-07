@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b3dcb4_8e38e9ec",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-07T18:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11f0f5c4_17a91d98",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 3
+      },
+      "revId": "28efdbdb4bc576da7b349241da55d1a82b591e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "300499e9_5d88dcd2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-07T18:16:20Z",
       "side": 1,
       "message": "as before, do we need to return false if observer is destroyed?",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 13
+      },
+      "revId": "28efdbdb4bc576da7b349241da55d1a82b591e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25aeaf11_082122a0",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-07T18:28:10Z",
+      "side": 1,
+      "message": "Still just moving over code from CPDFSDK_WidgetHandler. Looking at this more closely, CFFL_InteractiveFormFiller::OnSetFocus() actually receives the observer, and it will check the observer\u0027s validity.\n\nI\u0027ll try to chain another CL to the end to remove the observer here and create it within CFFL_InteractiveFormFiller instead.",
+      "parentUuid": "300499e9_5d88dcd2",
       "range": {
         "startLine": 817,
         "startChar": 2,
