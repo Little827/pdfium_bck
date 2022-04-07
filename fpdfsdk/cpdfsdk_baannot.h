@@ -31,6 +31,9 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot {
   CFX_FloatRect GetRect() const override;
   CPDF_Annot* GetPDFAnnot() const override;
   int GetLayoutOrder() const override;
+  void OnDraw(CFX_RenderDevice* pDevice,
+              const CFX_Matrix& mtUser2Device,
+              bool bDrawAnnots) override;
   bool DoHitTest(const CFX_PointF& point) override;
   CFX_FloatRect GetViewBBox() override;
   void OnMouseEnter(Mask<FWL_EVENTFLAG> nFlags) override;
@@ -50,6 +53,10 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot {
                      const CFX_PointF& point) override;
   bool OnRButtonUp(Mask<FWL_EVENTFLAG> nFlags,
                    const CFX_PointF& point) override;
+  bool OnChar(uint32_t nChar, Mask<FWL_EVENTFLAG> nFlags) override;
+  bool OnKeyDown(FWL_VKEYCODE nKeyCode, Mask<FWL_EVENTFLAG> nFlag) override;
+  bool OnSetFocus(Mask<FWL_EVENTFLAG> nFlag) override;
+  bool OnKillFocus(Mask<FWL_EVENTFLAG> nFlag) override;
   bool CanUndo() override;
   bool CanRedo() override;
   bool Undo() override;
@@ -91,7 +98,10 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot {
   CPDF_Dictionary* GetAPDict() const;
   void SetOpenState(bool bOpenState);
   void UpdateAnnotRects();
+  bool IsFocusableAnnot(const CPDF_Annot::Subtype& annot_type) const;
+  void InvalidateRect();
 
+  bool is_focused_ = false;
   UnownedPtr<CPDF_Annot> const m_pAnnot;
 };
 

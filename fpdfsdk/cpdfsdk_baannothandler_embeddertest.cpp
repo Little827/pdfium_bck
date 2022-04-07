@@ -85,16 +85,14 @@ TEST_F(CPDFSDK_BAAnnotHandlerTest, TabToLinkOrHighlightAnnot) {
   ASSERT_TRUE(pAnnot);
   EXPECT_EQ(pAnnot->GetAnnotSubtype(), CPDF_Annot::Subtype::LINK);
 
-  ObservedPtr<CPDFSDK_Annot> pLinkAnnot(pAnnot);
-  EXPECT_TRUE(GetBAAnnotHandler()->OnSetFocus(pLinkAnnot, {}));
-  EXPECT_TRUE(GetBAAnnotHandler()->OnKillFocus(pLinkAnnot, {}));
+  EXPECT_TRUE(pAnnot->OnSetFocus({}));
+  EXPECT_TRUE(pAnnot->OnKillFocus({}));
 
   // Get highlight annot.
   pAnnot = GetNthFocusableAnnot(4);
   ASSERT_TRUE(pAnnot);
   EXPECT_EQ(pAnnot->GetAnnotSubtype(), CPDF_Annot::Subtype::HIGHLIGHT);
 
-  ObservedPtr<CPDFSDK_Annot> pHighlightAnnot(pAnnot);
-  EXPECT_TRUE(GetBAAnnotHandler()->OnSetFocus(pHighlightAnnot, {}));
-  EXPECT_TRUE(GetBAAnnotHandler()->OnKillFocus(pHighlightAnnot, {}));
+  EXPECT_TRUE(pAnnot->OnSetFocus({}));
+  EXPECT_TRUE(pAnnot->OnKillFocus({}));
 }
