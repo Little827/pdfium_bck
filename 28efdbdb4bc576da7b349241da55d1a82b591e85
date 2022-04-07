@@ -93,6 +93,30 @@
       },
       "revId": "28efdbdb4bc576da7b349241da55d1a82b591e85",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e889523_e53daac6",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T18:34:03Z",
+      "side": 1,
+      "message": "Recall that taking an observed ptr as an argument means that the code beneath it may silently destroy the object. Generally, we want the observed_ptr to come into existence as high up as possible, but in this case, returning false from the inner routine *should* short circuit things. We came up with observers here because failure to check/propogate the return code leads to UAF.  So maybe higher callers want to pass observedptr all the way down?",
+      "parentUuid": "25aeaf11_082122a0",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 13
+      },
+      "revId": "28efdbdb4bc576da7b349241da55d1a82b591e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
