@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48ddf19_3f8912e6",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-07T18:17:20Z",
+      "side": 1,
+      "message": "This is just moving over the code from CPDFSDK_WidgetHandler::OnLButtonDown(), and it keeps the existing behavior.",
+      "parentUuid": "66019684_3a1ada51",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 75
+      },
+      "revId": "6dda7f4ec29581ae5d98e52bde96052006b556ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a1a9ed55_320e3747",
