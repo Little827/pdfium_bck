@@ -32,6 +32,9 @@ class CPDFSDK_Annot : public Observable {
   virtual CPDF_Annot* GetPDFAnnot() const;
   virtual CPDF_Annot::Subtype GetAnnotSubtype() const = 0;
   virtual CFX_FloatRect GetRect() const = 0;
+  virtual void OnDraw(CFX_RenderDevice* pDevice,
+                      const CFX_Matrix& mtUser2Device,
+                      bool bDrawAnnots) = 0;
   virtual bool DoHitTest(const CFX_PointF& point) = 0;
   virtual CFX_FloatRect GetViewBBox() = 0;
   virtual void OnMouseEnter(Mask<FWL_EVENTFLAG> nFlags) = 0;
@@ -51,6 +54,10 @@ class CPDFSDK_Annot : public Observable {
                              const CFX_PointF& point) = 0;
   virtual bool OnRButtonUp(Mask<FWL_EVENTFLAG> nFlags,
                            const CFX_PointF& point) = 0;
+  virtual bool OnChar(uint32_t nChar, Mask<FWL_EVENTFLAG> nFlags) = 0;
+  virtual bool OnKeyDown(FWL_VKEYCODE nKeyCode, Mask<FWL_EVENTFLAG> nFlag) = 0;
+  virtual bool OnSetFocus(Mask<FWL_EVENTFLAG> nFlag) = 0;
+  virtual bool OnKillFocus(Mask<FWL_EVENTFLAG> nFlag) = 0;
   virtual bool CanUndo() = 0;
   virtual bool CanRedo() = 0;
   virtual bool Undo() = 0;

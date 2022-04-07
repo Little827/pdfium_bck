@@ -54,6 +54,9 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
   CPDF_Action GetAAction(CPDF_AAction::AActionType eAAT) override;
   bool IsAppearanceValid() override;
   int GetLayoutOrder() const override;
+  void OnDraw(CFX_RenderDevice* pDevice,
+              const CFX_Matrix& mtUser2Device,
+              bool bDrawAnnots) override;
   bool DoHitTest(const CFX_PointF& point) override;
   CFX_FloatRect GetViewBBox() override;
   void OnMouseEnter(Mask<FWL_EVENTFLAG> nFlags) override;
@@ -73,6 +76,10 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
                      const CFX_PointF& point) override;
   bool OnRButtonUp(Mask<FWL_EVENTFLAG> nFlags,
                    const CFX_PointF& point) override;
+  bool OnChar(uint32_t nChar, Mask<FWL_EVENTFLAG> nFlags) override;
+  bool OnKeyDown(FWL_VKEYCODE nKeyCode, Mask<FWL_EVENTFLAG> nFlag) override;
+  bool OnSetFocus(Mask<FWL_EVENTFLAG> nFlag) override;
+  bool OnKillFocus(Mask<FWL_EVENTFLAG> nFlag) override;
   bool CanUndo() override;
   bool CanRedo() override;
   bool Undo() override;

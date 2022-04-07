@@ -83,8 +83,7 @@ void CPDFSDK_PageView::PageView_OnDraw(CFX_RenderDevice* pDevice,
   // for pdf/static xfa.
   CPDFSDK_AnnotReverseIteration annot_iteration(this);
   for (const auto& pSDKAnnot : annot_iteration) {
-    m_pFormFillEnv->GetAnnotHandlerMgr()->Annot_OnDraw(
-        pSDKAnnot.Get(), pDevice, mtUser2Device, pOptions->GetDrawAnnots());
+    pSDKAnnot->OnDraw(pDevice, mtUser2Device, pOptions->GetDrawAnnots());
   }
 }
 
@@ -482,21 +481,13 @@ bool CPDFSDK_PageView::IsIndexSelected(int index) {
 }
 
 bool CPDFSDK_PageView::OnChar(uint32_t nChar, Mask<FWL_EVENTFLAG> nFlag) {
-  if (CPDFSDK_Annot* pAnnot = GetFocusAnnot()) {
-    CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
-        m_pFormFillEnv->GetAnnotHandlerMgr();
-    return pAnnotHandlerMgr->Annot_OnChar(pAnnot, nChar, nFlag);
-  }
-
-  return false;
+  CPDFSDK_Annot* pAnnot = GetFocusAnnot();
+  return pAnnot && pAnnot->OnChar(nChar, nFlag);
 }
 
 bool CPDFSDK_PageView::OnKeyDown(FWL_VKEYCODE nKeyCode,
                                  Mask<FWL_EVENTFLAG> nFlag) {
   CPDFSDK_Annot* pAnnot = GetFocusAnnot();
-  CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
-      m_pFormFillEnv->GetAnnotHandlerMgr();
-
   if (!pAnnot) {
     // If pressed key is not tab then no action is needed.
     if (nKeyCode != FWL_VKEY_Tab)
@@ -513,7 +504,7 @@ bool CPDFSDK_PageView::OnKeyDown(FWL_VKEYCODE nKeyCode,
   }
 
   if (CPWL_Wnd::IsCTRLKeyDown(nFlag) || CPWL_Wnd::IsALTKeyDown(nFlag))
-    return pAnnotHandlerMgr->Annot_OnKeyDown(pAnnot, nKeyCode, nFlag);
+    return pAnnot->OnKeyDown(nKeyCode, nFlag);
 
   ObservedPtr<CPDFSDK_Annot> pObservedAnnot(pAnnot);
   CPDFSDK_Annot* pFocusAnnot = GetFocusAnnot();
@@ -533,7 +524,7 @@ bool CPDFSDK_PageView::OnKeyDown(FWL_VKEYCODE nKeyCode,
   if (!pObservedAnnot)
     return false;
 
-  return pAnnotHandlerMgr->Annot_OnKeyDown(pAnnot, nKeyCode, nFlag);
+  return pAnnot->OnKeyDown(nKeyCode, nFlag);
 }
 
 void CPDFSDK_PageView::LoadFXAnnots() {
