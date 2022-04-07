@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0deae832_292fac5b",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T18:11:14Z",
+      "side": 1,
+      "message": "Looks like this is the current behaviour, i.e. all pathways eventually hit a return false, so OK, but do we want to change this to always true?",
+      "range": {
+        "startLine": 1484,
+        "startChar": 37,
+        "endLine": 1484,
+        "endChar": 57
+      },
+      "revId": "a278c8bf625ca99646b0988f751553d8e2ec0232",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
