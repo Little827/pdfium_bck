@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "66019684_3a1ada51",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T18:07:46Z",
+      "side": 1,
+      "message": "Do we need to return false if observer is destroyed by the callback?",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 75
+      },
+      "revId": "6dda7f4ec29581ae5d98e52bde96052006b556ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a1a9ed55_320e3747",
