@@ -48,6 +48,29 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d14ab6_f82016e7",
+        "filename": "fpdfsdk/cpdfsdk_widget.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T19:07:07Z",
+      "side": 1,
+      "message": "I guess the issue is that there\u0027s no indication that these methods may well destroy \u0027this\u0027 as a side-effect.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "6dda7f4ec29581ae5d98e52bde96052006b556ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a1a9ed55_320e3747",
