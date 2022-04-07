@@ -39,6 +39,30 @@
       },
       "revId": "8d8b69678509fe180b5414df21fc0df511111dcb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049acb9a_25fd395b",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-07T21:33:33Z",
+      "side": 1,
+      "message": "With std::make_unique\u003cCPDFXFA\u003eWidget\u003e(...) directly. https://pdfium-review.googlesource.com/c/pdfium/+/92193/3/fpdfsdk/cpdfsdk_pageview.cpp\n\nI believe this is reachable, as CPDF_AnnotList\u0027s ctor directly reads from the annot dictionaries, and those can contain /SubType entries with arbitrary value.",
+      "parentUuid": "f08d6fad_8afd904e",
+      "range": {
+        "startLine": 109,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "8d8b69678509fe180b5414df21fc0df511111dcb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
