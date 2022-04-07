@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "018984e3_039ddf8a",
+        "filename": "fpdfsdk/cpdfsdk_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T19:37:33Z",
+      "side": 1,
+      "message": "So maybe\n  static void ObservedMouseEnter(ObservedPtr\u003cCPDFSDK_Annot\u003e \u0026pAnnot, flags) {\n    pAnnot-\u003eOnMouseEnter(flags);\n }",
+      "revId": "6dda7f4ec29581ae5d98e52bde96052006b556ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab1dc1c_00246103",
+        "filename": "fpdfsdk/cpdfsdk_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T19:37:33Z",
+      "side": 1,
+      "message": "then \n protected:",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "6dda7f4ec29581ae5d98e52bde96052006b556ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66019684_3a1ada51",
         "filename": "fpdfsdk/cpdfsdk_widget.cpp",
         "patchSetId": 3
