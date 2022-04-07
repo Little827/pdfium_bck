@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f0f5c4_17a91d98",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T18:16:20Z",
+      "side": 1,
+      "message": "nit: prefer early return over else.",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 3
+      },
+      "revId": "28efdbdb4bc576da7b349241da55d1a82b591e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300499e9_5d88dcd2",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-07T18:16:20Z",
+      "side": 1,
+      "message": "as before, do we need to return false if observer is destroyed?",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 13
+      },
+      "revId": "28efdbdb4bc576da7b349241da55d1a82b591e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
