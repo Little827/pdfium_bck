@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6c1710_1bd8fef3",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-08T21:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c55f0e_2894d801",
+      "revId": "2f0f0f2ac1c33ab91c245e0236a6513327e23bbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48261c18_e11d6e60",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-08T03:56:24Z",
       "side": 1,
       "message": "Just omit the `action` variable here and on line 817?",
+      "revId": "2f0f0f2ac1c33ab91c245e0236a6513327e23bbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be156fb_4870a86d",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-08T21:29:21Z",
+      "side": 1,
+      "message": "Done. Also made line 824 and 832 into a one-liners.",
+      "parentUuid": "48261c18_e11d6e60",
       "revId": "2f0f0f2ac1c33ab91c245e0236a6513327e23bbf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
