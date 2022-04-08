@@ -16,6 +16,40 @@
       "message": "Because your CL chain reminded me of another handler I\u0027ve wanted to nuke for some time.  Not sure what the deal is with all the gold digests.",
       "revId": "2f0f0f2ac1c33ab91c245e0236a6513327e23bbf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c55f0e_2894d801",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-08T03:56:24Z",
+      "side": 1,
+      "message": "IWYU: \u003cutility\u003e",
+      "revId": "2f0f0f2ac1c33ab91c245e0236a6513327e23bbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48261c18_e11d6e60",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-08T03:56:24Z",
+      "side": 1,
+      "message": "Just omit the `action` variable here and on line 817?",
+      "revId": "2f0f0f2ac1c33ab91c245e0236a6513327e23bbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
