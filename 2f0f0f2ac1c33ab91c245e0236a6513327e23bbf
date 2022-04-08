@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c0d140_74321e7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-08T00:53:09Z",
+      "side": 1,
+      "message": "Because your CL chain reminded me of another handler I\u0027ve wanted to nuke for some time.  Not sure what the deal is with all the gold digests.",
+      "revId": "2f0f0f2ac1c33ab91c245e0236a6513327e23bbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
