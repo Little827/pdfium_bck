@@ -1858,7 +1858,7 @@ void CPDFSDK_AppStream::Write(const ByteString& sAPType,
   // If `pStream` is created by CreateModifiedAPStream(), then it is safe to
   // edit, as it is not shared.
   CPDF_Stream* pStream = pParentDict->GetStreamFor(key);
-  CPDF_Dictionary* pOrigStreamDict = nullptr;
+  RetainPtr<CPDF_Dictionary> pOrigStreamDict;
   CPDF_Document* doc = widget_->GetPageView()->GetPDFDocument();
   if (!doc->IsModifiedAPStream(pStream)) {
     if (pStream)
