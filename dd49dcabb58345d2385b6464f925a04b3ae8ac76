@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f882e894_44c84be8",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-08T21:15:57Z",
+      "side": 1,
+      "message": "No opportunity to become invalidated after line 748.",
+      "revId": "dd49dcabb58345d2385b6464f925a04b3ae8ac76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1018b48_86d45c87",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-08T21:15:57Z",
+      "side": 1,
+      "message": "No null objects in `m_SDKAnnotArray`.",
+      "revId": "dd49dcabb58345d2385b6464f925a04b3ae8ac76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
