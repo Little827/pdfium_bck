@@ -20,7 +20,6 @@
 #include "core/fpdfdoc/cpdf_formfield.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
-#include "fpdfsdk/cpdfsdk_actionhandler.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/cpdfsdk_baannothandler.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -789,8 +788,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoDocumentAAction(FPDF_FORMHANDLE hHandle,
   auto type = static_cast<CPDF_AAction::AActionType>(aaType);
   if (aa.ActionExist(type)) {
     CPDF_Action action = aa.GetAction(type);
-    pFormFillEnv->GetActionHandler()->DoAction_Document(action, type,
-                                                        pFormFillEnv);
+    pFormFillEnv->DoActionDocument(action, type);
   }
 }
 
@@ -810,7 +808,6 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
   if (!pFormFillEnv->GetPageView(pPage))
     return;
 
-  CPDFSDK_ActionHandler* pActionHandler = pFormFillEnv->GetActionHandler();
   CPDF_Dictionary* pPageDict = pPDFPage->GetDict();
   CPDF_AAction aa(pPageDict->GetDictFor(pdfium::form_fields::kAA));
   CPDF_AAction::AActionType type = aaType == FPDFPAGE_AACTION_OPEN
@@ -818,7 +815,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
                                        : CPDF_AAction::kClosePage;
   if (aa.ActionExist(type)) {
     CPDF_Action action = aa.GetAction(type);
-    pActionHandler->DoAction_Page(action, type, pFormFillEnv);
+    pFormFillEnv->DoActionPage(action, type);
   }
 }
 
