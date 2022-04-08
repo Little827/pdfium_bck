@@ -13,7 +13,6 @@
 #include "core/fpdfdoc/cpdf_action.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxge/cfx_drawutils.h"
-#include "fpdfsdk/cpdfsdk_actionhandler.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/cpdfsdk_baannot.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -166,12 +165,12 @@ bool CPDFSDK_BAAnnotHandler::OnKeyDown(CPDFSDK_Annot* pAnnot,
   CPDF_Action action = ba_annot->GetAAction(CPDF_AAction::kKeyStroke);
 
   if (action.GetDict()) {
-    return GetFormFillEnvironment()->GetActionHandler()->DoAction_Link(
-        action, CPDF_AAction::kKeyStroke, GetFormFillEnvironment(), nFlag);
+    return GetFormFillEnvironment()->DoActionLink(
+        action, CPDF_AAction::kKeyStroke, nFlag);
   }
 
-  return GetFormFillEnvironment()->GetActionHandler()->DoAction_Destination(
-      ba_annot->GetDestination(), GetFormFillEnvironment());
+  return GetFormFillEnvironment()->DoActionDestination(
+      ba_annot->GetDestination());
 }
 
 bool CPDFSDK_BAAnnotHandler::OnKeyUp(CPDFSDK_Annot* pAnnot,
