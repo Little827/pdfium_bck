@@ -29,9 +29,9 @@ void LZWFuzz(const uint8_t* src_buf,
     // This cast should be safe since the caller is checking for overflow on
     // the initial data.
     uint32_t dest_size = static_cast<uint32_t>(dest_buf.size());
+    decompressor->SetSource(src_buf, static_cast<uint32_t>(src_size));
     if (LZWDecompressor::Status::kInsufficientDestSize !=
-        decompressor->Decode(src_buf, static_cast<uint32_t>(src_size),
-                             dest_buf.data(), &dest_size)) {
+        decompressor->Decode(dest_buf.data(), &dest_size)) {
       return;
     }
   }
