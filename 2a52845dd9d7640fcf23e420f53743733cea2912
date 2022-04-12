@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8fdaa7ea_207c563b",
+        "filename": "core/fxcodec/gif/cfx_gifcontext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-04-12T02:52:27Z",
+      "side": 1,
+      "message": "Done\n\nThanks for catching this! I handled this in an earlier version of this patchset, but went through 2-3 different approaches and forgot about it.",
+      "parentUuid": "09f174f0_a4e54864",
+      "revId": "2a52845dd9d7640fcf23e420f53743733cea2912",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4be54fc5_6e871b48",
         "filename": "core/fxcodec/gif/cfx_gifcontext.cpp",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-12T01:02:02Z",
       "side": 1,
       "message": "(Just commenting on existing code) BTW, I wonder if this is necessary, given the line 229 block. I don\u0027t think Create() will behave differently between these 2 calls.",
+      "revId": "2a52845dd9d7640fcf23e420f53743733cea2912",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220e3832_bd19f66d",
+        "filename": "core/fxcodec/gif/cfx_gifcontext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-04-12T02:52:27Z",
+      "side": 1,
+      "message": "Done\n\nI\u0027m pretty sure it\u0027s not necessary, but I was suppressing the urge to fix... everything. 😊 (Hence the TODO on line 216.) It\u0027s fairly clear that a bunch of code just got cut-and-pasted at some point.\n\nI think this improvement falls naturally out of the fix for line 233, though.",
+      "parentUuid": "4be54fc5_6e871b48",
       "revId": "2a52845dd9d7640fcf23e420f53743733cea2912",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +94,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3abcade1_1ea1cb87",
+        "filename": "core/fxcodec/gif/lzw_decompressor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-04-12T02:52:27Z",
+      "side": 1,
+      "message": "Ack; I think this is better for a follow-up.\n\nI originally thought it\u0027d be better to change the LZWDecompressor API to use a buffer or stream class, or share more implementation with the LZW filter, but I ultimately decided tackling crbug.com/pdfium/1793 was a better place to invest the time.",
+      "parentUuid": "0d79019d_bc1f36b0",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "2a52845dd9d7640fcf23e420f53743733cea2912",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "541385bd_0f89047c",
@@ -75,6 +135,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b76f193_8f68ca4d",
+        "filename": "core/fxcodec/gif/lzw_decompressor_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-04-12T02:52:27Z",
+      "side": 1,
+      "message": "Done\n\nGiven these are used once--essentially to name the Create() parameters--I got rid of these entirely in favor of argument name comments.",
+      "parentUuid": "541385bd_0f89047c",
+      "revId": "2a52845dd9d7640fcf23e420f53743733cea2912",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43935940_b416af26",
@@ -88,6 +166,30 @@
       "writtenOn": "2022-04-12T01:02:02Z",
       "side": 1,
       "message": "Instead of casting here, change the `src_size` parameter type to uint32_t. That\u0027s the type the caller passes in.",
+      "range": {
+        "startLine": 32,
+        "startChar": 37,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "2a52845dd9d7640fcf23e420f53743733cea2912",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba274348_17474d59",
+        "filename": "testing/fuzzers/pdf_lzw_fuzzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-04-12T02:52:27Z",
+      "side": 1,
+      "message": "Done\n\nSGTM. I cut-and-paste this cast came from the original line 33, so I wasn\u0027t thinking about this.",
+      "parentUuid": "43935940_b416af26",
       "range": {
         "startLine": 32,
         "startChar": 37,
