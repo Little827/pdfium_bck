@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d601c26_ee59fd00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Oops, just copied these from adlr@\u0027s old CR. The real bug is here: pdfium:1587",
+      "parentUuid": "a02b3d3b_ffa83ee0",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e526b797_e51a4f7b",
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2707008_4fa0adca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e526b797_e51a4f7b",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5646a51d_cd762f79",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-12-22T19:12:31Z",
       "side": 1,
       "message": "These includes are in the wrong spot.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0cf8d95_f97562fc",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5646a51d_cd762f79",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -86,6 +140,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9159f54a_a7431965",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2efca6ac_bc132348",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1271263a_a466a7c1",
@@ -99,6 +171,24 @@
       "writtenOn": "2021-12-22T19:12:31Z",
       "side": 1,
       "message": "If this loop also constructs `pages_to_move` at the same time, then this check is no longer necessary. GetPageDictionary() will do a more thorough check that includes this bounds check.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65949482_dbc531f5",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1271263a_a466a7c1",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -120,6 +210,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ea70dc_c535e74e",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "324f3f65_09d13f34",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83b5512f_ef8a006e",
@@ -133,6 +241,24 @@
       "writtenOn": "2021-12-22T18:16:01Z",
       "side": 1,
       "message": "Since the number of elements in this vector is a known value, reserve() that many elements before the for-loop.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aff5cc4_46533e7f",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b5512f_ef8a006e",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -156,6 +282,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4326fca2_0d3ef23a",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to prevent the possibility of failure in the middle of the loop. I added documentation to warn about this, but is that sufficient?",
+      "parentUuid": "e43ed283_d00062a9",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc3b2045_3b7ab111",
         "filename": "core/fpdfapi/parser/cpdf_document.h",
         "patchSetId": 9
@@ -167,6 +311,30 @@
       "writtenOn": "2021-12-22T18:16:01Z",
       "side": 1,
       "message": "Can we use a pdfium::span internally?",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 48
+      },
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c665706_f5d27f14",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc3b2045_3b7ab111",
       "range": {
         "startLine": 96,
         "startChar": 17,
@@ -200,6 +368,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4331a53_6956032d",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8877da02_13b98c8b",
+      "range": {
+        "startLine": 98,
+        "startChar": 21,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d6c141a_e2214fa9",
@@ -213,6 +405,24 @@
       "writtenOn": "2021-12-23T22:29:51Z",
       "side": 1,
       "message": "Maybe this can have a name field, then:\n- There\u0027s less of a need for operator\u003c\u003c below. One can look up the test case on an as-needed bases.\n- Test cases like the one on line 4116 can just put the comment into this field.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a01588_680f9f04",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4071,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "I\u0027d still like the \u003c\u003c operator to see each test case\u0027s details. WDYT?",
+      "parentUuid": "7d6c141a_e2214fa9",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -290,6 +500,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7212e96_bc54324d",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "To do step #2, I think I may need a `CPDFXFA_Context::InsertPage` API that overrides a new virtual function on the `CPDFDocument::Extension` interface. Is this correct? If so, it seems like it should live in a separate pull request.\n\nI will also need to write tests for this logic. Can you explain how to:\n\n1. Test XFA PDFs\n2. Test PDFs with an extension, to make sure `CPDFXFA_Context::m_XFAPageList` is kept in sync. Do I just re-enable the MovePagesTest when XFA is enabled?",
+      "parentUuid": "3583e2b5_695e81a4",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd89292d_16a6a63d",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 9
@@ -301,6 +529,24 @@
       "writtenOn": "2021-12-23T22:24:13Z",
       "side": 1,
       "message": "No need to use std::vector:\n\nconst FPDFEditMoveEmbedderTestCase kTestCases[] \u003d { ... };",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930ec5af_ef6106ef",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4109,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd89292d_16a6a63d",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -322,6 +568,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f64926_fc522c7f",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4127,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5441e5b_9ce6e99e",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a4a8e29_22a113d6",
@@ -335,6 +599,24 @@
       "writtenOn": "2021-12-23T22:24:13Z",
       "side": 1,
       "message": "This isn\u0027t necessary with range-based for-loops:\n\nfor (const FPDFEditMoveEmbedderTestCase\u0026 tc : kTestCases) { ... }",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a85dd1d_a1390cad",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4128,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4a8e29_22a113d6",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -356,6 +638,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81c58a5_a53f9911",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4135,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdf091e2_9b81ad72",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c005f93_f851b651",
@@ -373,6 +673,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b11e757_0b8b2f0b",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4148,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done. I made it a method on FPDFEditMoveEmbedderTest.",
+      "parentUuid": "3c005f93_f851b651",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f4d6efb_c784c096",
@@ -386,6 +704,24 @@
       "writtenOn": "2021-12-22T18:02:51Z",
       "side": 1,
       "message": "This list should be ASCII sorted to satisfy the presubmit.",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e998ce_8b97ee04",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-14T20:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f4d6efb_c784c096",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
