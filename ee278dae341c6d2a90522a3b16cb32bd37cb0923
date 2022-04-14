@@ -105,6 +105,24 @@
       "parentUuid": "9dd2988e_fecccb09",
       "revId": "ee278dae341c6d2a90522a3b16cb32bd37cb0923",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdc1dbd_3901f409",
+        "filename": "third_party/freetype/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-14T18:17:12Z",
+      "side": 1,
+      "message": "There\u0027s no reason to chain these 2 CLs together though. They can be submitted independently.",
+      "parentUuid": "b1777150_066530e3",
+      "revId": "ee278dae341c6d2a90522a3b16cb32bd37cb0923",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
