@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1787945_39521fab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-14T23:57:49Z",
+      "side": 1,
+      "message": "Need to do some cleanups+updates in xfa_specific directory before adding the bots.\nThis CL simply runs optipng in the directory.\nNext step will be updating the skia/skiapaths expectation in xfa_specific so that we won\u0027t have red bots.",
+      "revId": "66ebe206d952617e39114ca02fcf3e99662b44f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
