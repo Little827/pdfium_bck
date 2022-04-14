@@ -1054,7 +1054,8 @@ class SkiaState {
       for (int i = 0; i < m_charDetails.Count(); ++i) {
         sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromText(
             &glyphs[i], sizeof(glyphs[i]), font, SkTextEncoding::kGlyphID);
-        skCanvas->drawTextBlob(blob, positions[i].fX, positions[i].fY, skPaint);
+        skCanvas->drawTextBlob(blob, positions[i].fX, flip * positions[i].fY,
+                               skPaint);
       }
     }
 
@@ -1763,6 +1764,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
   SkScalar vFlip = flip;
   if (pFont->IsVertical())
     vFlip *= -1;
+
   SkMatrix skMatrix = ToFlippedSkMatrix(mtObject2Device, flip);
   m_pCanvas->concat(skMatrix);
   SkTDArray<SkPoint> positions;
@@ -1862,8 +1864,8 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
       auto blob =
           SkTextBlob::MakeFromText(&glyphs[index], sizeof(glyphs[index]), font,
                                    SkTextEncoding::kGlyphID);
-      m_pCanvas->drawTextBlob(blob, positions[index].fX, positions[index].fY,
-                              paint);
+      m_pCanvas->drawTextBlob(blob, positions[index].fX,
+                              flip * positions[index].fY, paint);
     }
   }
 
