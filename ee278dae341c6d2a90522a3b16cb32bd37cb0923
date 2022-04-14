@@ -51,6 +51,24 @@
       "parentUuid": "146ed62f_5e789d70",
       "revId": "ee278dae341c6d2a90522a3b16cb32bd37cb0923",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c20fef0_fa4d89d2",
+        "filename": "third_party/freetype/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-04-14T18:06:54Z",
+      "side": 1,
+      "message": "Added https://pdfium-review.googlesource.com/c/pdfium/+/92650 ahead of this CL, and then reran the roll using it.",
+      "parentUuid": "69bd6ffd_3af95828",
+      "revId": "ee278dae341c6d2a90522a3b16cb32bd37cb0923",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
