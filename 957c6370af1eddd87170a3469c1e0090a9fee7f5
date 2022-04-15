@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c547bee5_72e5a7c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-15T01:00:43Z",
+      "side": 1,
+      "message": "Oh, I shouldn\u0027t have rebased, as now I\u0027m the CL uploader and I can\u0027t approve my own CL.",
+      "revId": "957c6370af1eddd87170a3469c1e0090a9fee7f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
