@@ -16,6 +16,23 @@
       "message": "Need to do some cleanups+updates in xfa_specific directory before adding the bots.\nThis CL simply runs optipng in the directory.\nNext step will be updating the skia/skiapaths expectation in xfa_specific so that we won\u0027t have red bots.",
       "revId": "66ebe206d952617e39114ca02fcf3e99662b44f4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f21f0cf_c4f21e01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-15T00:52:30Z",
+      "side": 1,
+      "message": "We usually just do this when some pixels in a file changes. This doesn\u0027t save disk space, as a copy of the file is permanently stored in git.",
+      "revId": "66ebe206d952617e39114ca02fcf3e99662b44f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
