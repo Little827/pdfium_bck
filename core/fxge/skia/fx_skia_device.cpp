@@ -968,7 +968,7 @@ class SkiaState {
       const TextCharPos& cp = pCharPos[index];
       int cur_index = index + count;
       m_charDetails.SetPositionAt(
-          cur_index, {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip});
+          cur_index, {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip * flip});
       m_charDetails.SetGlyphAt(cur_index,
                                static_cast<uint16_t>(cp.m_GlyphIndex));
       m_charDetails.SetFontCharWidthAt(cur_index, cp.m_FontCharWidth);
@@ -1763,6 +1763,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
   SkScalar vFlip = flip;
   if (pFont->IsVertical())
     vFlip *= -1;
+
   SkMatrix skMatrix = ToFlippedSkMatrix(mtObject2Device, flip);
   m_pCanvas->concat(skMatrix);
   SkTDArray<SkPoint> positions;
@@ -1773,7 +1774,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
   bool oneAtATime = false;
   for (int index = 0; index < nChars; ++index) {
     const TextCharPos& cp = pCharPos[index];
-    positions[index] = {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip};
+    positions[index] = {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip * flip};
     if (cp.m_bGlyphAdjust) {
       useRSXform = true;
       if (cp.m_AdjustMatrix[0] != cp.m_AdjustMatrix[3] ||
