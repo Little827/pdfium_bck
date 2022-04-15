@@ -18,7 +18,7 @@
 class CFGAS_GEFont;
 class CPDF_Document;
 
-class CFGAS_PDFFontMgr final : public Observable {
+class CFGAS_PDFFontMgr final {
  public:
   explicit CFGAS_PDFFontMgr(const CPDF_Document* pDoc);
   ~CFGAS_PDFFontMgr();
