@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1b735e_95ff3ba5",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 7
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-18T15:53:24Z",
+      "side": 0,
+      "message": "It turned out there were 2 separate issues in this test and this CL only fixes part of it.",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 20
+      },
+      "revId": "5f1d61264285048fedec2fd868c0a1f5ef74ed53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
