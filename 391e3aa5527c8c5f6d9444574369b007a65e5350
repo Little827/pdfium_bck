@@ -22,6 +22,30 @@
       },
       "revId": "391e3aa5527c8c5f6d9444574369b007a65e5350",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277746bb_140d14a6",
+        "filename": "core/fxcodec/jbig2/JBig2_ArithDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-18T22:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a46d0123_13b40b25",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "391e3aa5527c8c5f6d9444574369b007a65e5350",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
