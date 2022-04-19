@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a039f73_fe457d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-19T23:31:05Z",
+      "side": 1,
+      "message": "Sure. The JBIG2 code still has a lot of room for improvement.",
+      "parentUuid": "779e9c1e_e4abcfde",
+      "revId": "534edbd8ae7c5ee517d989602cbd17b6b2aca1da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d627c076_130decaf",
