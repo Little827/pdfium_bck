@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00dfdd13_21c13148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-19T07:23:24Z",
+      "side": 1,
+      "message": "Now I am sure the remaining issue in xfa_node_caption.pdf is related to glyphs\u0027 bounds being rejected in Skia and it has nothing to do with this CL. Send this CL out for review again.",
+      "revId": "3f0547e524c85e0ad2e904c875a30a17bd2160e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
