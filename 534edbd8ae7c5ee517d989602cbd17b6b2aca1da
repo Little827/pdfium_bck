@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "779e9c1e_e4abcfde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-19T22:55:00Z",
+      "side": 1,
+      "message": "Maybe follow-ups?",
+      "revId": "534edbd8ae7c5ee517d989602cbd17b6b2aca1da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d627c076_130decaf",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-19T22:55:00Z",
+      "side": 1,
+      "message": "dubious: HCHEIGHT is unsigned, so if (int)HCHEIGHT is negative, then HCHEIGHT \u003e 2GB which is already covered if we test uncasted HCHEIGHT against the kJBig2Max",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 25
+      },
+      "revId": "534edbd8ae7c5ee517d989602cbd17b6b2aca1da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02461ee_f7e88b64",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-19T22:55:00Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 66
+      },
+      "revId": "534edbd8ae7c5ee517d989602cbd17b6b2aca1da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c0ee6c_95c159a0",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-19T22:55:00Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 21
+      },
+      "revId": "534edbd8ae7c5ee517d989602cbd17b6b2aca1da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9ba229_abc476ce",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-19T22:55:00Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 315,
+        "startChar": 7,
+        "endLine": 315,
+        "endChar": 66
+      },
+      "revId": "534edbd8ae7c5ee517d989602cbd17b6b2aca1da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
