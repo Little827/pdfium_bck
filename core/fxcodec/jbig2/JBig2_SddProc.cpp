@@ -283,12 +283,12 @@ std::unique_ptr<CJBig2_SymbolDict> CJBig2_SDDProc::DecodeHuffman(
       SYMWIDTH = SYMWIDTH + DW;
       if ((int)SYMWIDTH < 0 || (int)SYMWIDTH > kJBig2MaxImageSize)
         return nullptr;
+
+      TOTWIDTH += SYMWIDTH;
       if (HCHEIGHT == 0 || SYMWIDTH == 0) {
-        TOTWIDTH = TOTWIDTH + SYMWIDTH;
         ++NSYMSDECODED;
         continue;
       }
-      TOTWIDTH = TOTWIDTH + SYMWIDTH;
       if (SDREFAGG == 1) {
         uint32_t REFAGGNINST;
         if (pHuffmanDecoder->DecodeAValue(SDHUFFAGGINST.Get(),
@@ -425,6 +425,9 @@ std::unique_ptr<CJBig2_SymbolDict> CJBig2_SDDProc::DecodeHuffman(
       pStream->alignByte();
       std::unique_ptr<CJBig2_Image> BHC;
       if (BMSIZE == 0) {
+        if (static_cast<int>(TOTWIDTH) > kJBig2MaxImageSize)
+          return nullptr;
+
         FX_SAFE_UINT32 safe_stride = TOTWIDTH;
         safe_stride += 7;
         safe_stride /= 8;
