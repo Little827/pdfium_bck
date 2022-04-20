@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b94078d_9393e3d4",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T20:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "550bd3da_336e65aa",
+      "range": {
+        "startLine": 510,
+        "startChar": 2,
+        "endLine": 512,
+        "endChar": 41
+      },
+      "revId": "4ac8dd2b359588f3fa5a1613603624cb17b6337c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a84697d7_602147a9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T19:17:06Z",
       "side": 1,
       "message": "Ok, could be span passed by value, but ok.",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "4ac8dd2b359588f3fa5a1613603624cb17b6337c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7791a7d6_c06c03db",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T20:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84697d7_602147a9",
       "range": {
         "startLine": 58,
         "startChar": 12,
