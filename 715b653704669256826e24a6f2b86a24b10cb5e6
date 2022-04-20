@@ -554,6 +554,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07ffb43e_4329b90f",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Gotcha, thank you for the clarification. We don\u0027t need to test that XFA PDFs fail, I\u0027m assuming?\n\nI\u0027ll create a separate PR to make changes to `CPDF_Document::Extension`.",
+      "parentUuid": "4d7bad20_032f3a41",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd89292d_16a6a63d",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 9

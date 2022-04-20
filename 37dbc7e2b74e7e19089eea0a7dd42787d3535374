@@ -41,6 +41,48 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62090e51_6e35e61a",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb9c7f1_c4e527d7",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "941b5034_ccdde32c",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a12464_503d15dc",
+      "range": {
+        "startLine": 515,
+        "startChar": 19,
+        "endLine": 515,
+        "endChar": 25
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "227ef61e_b1d2fec4",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-04-20T01:29:17Z",
       "side": 1,
       "message": "nit: Extra set of parenthesis not needed.",
+      "range": {
+        "startLine": 527,
+        "startChar": 47,
+        "endLine": 527,
+        "endChar": 48
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70fecdd_09ea568f",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "227ef61e_b1d2fec4",
       "range": {
         "startLine": 527,
         "startChar": 47,
@@ -81,6 +147,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27bd79a8_2fc97ede",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da4dcaca_0bc124a1",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfdd8522_1e927314",
@@ -98,6 +182,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c432f0_fd394f9b",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfdd8522_1e927314",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6ccf75a_42e02949",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-04-20T01:29:17Z",
       "side": 1,
       "message": "nit: Extra period? Or is it missing one?",
+      "range": {
+        "startLine": 568,
+        "startChar": 10,
+        "endLine": 568,
+        "endChar": 12
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "667399a8_8c359b21",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ccf75a_42e02949",
       "range": {
         "startLine": 568,
         "startChar": 10,
@@ -144,6 +270,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1882e65_5344901f",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864f5df5_12b3f2c2",
+      "range": {
+        "startLine": 569,
+        "startChar": 47,
+        "endLine": 569,
+        "endChar": 50
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f0ba635_b574f2f1",
@@ -157,6 +307,30 @@
       "writtenOn": "2022-04-20T01:29:17Z",
       "side": 1,
       "message": "nit: Method fails\n\nYou didn\u0027t fail. I didn\u0027t fail -\u003e We didn\u0027t fail. 😊",
+      "range": {
+        "startLine": 572,
+        "startChar": 9,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1141fdb_def3ef1a",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f0ba635_b574f2f1",
       "range": {
         "startLine": 572,
         "startChar": 9,
@@ -184,6 +358,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9a2461_7e42732b",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b0e5e0_b3d18c01",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab7d4216_7ef41d4f",
@@ -197,6 +389,24 @@
       "writtenOn": "2022-04-20T01:29:17Z",
       "side": 1,
       "message": "nit: This ended up not getting used.",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac76e170_2f703156",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab7d4216_7ef41d4f",
       "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -224,6 +434,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "089fb771_94bcf874",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4117,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27986944_f7245475",
+      "range": {
+        "startLine": 4117,
+        "startChar": 36,
+        "endLine": 4117,
+        "endChar": 49
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2946c265_4095e0c3",
@@ -237,6 +471,30 @@
       "writtenOn": "2022-04-20T01:29:17Z",
       "side": 1,
       "message": "nit: Wrap in backticks.",
+      "range": {
+        "startLine": 4118,
+        "startChar": 57,
+        "endLine": 4118,
+        "endChar": 72
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c504ed0a_21d4d272",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4118,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2946c265_4095e0c3",
       "range": {
         "startLine": 4118,
         "startChar": 57,
@@ -287,6 +545,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57620158_669e44ac",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4148,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "131821ee_724b37f7",
+      "range": {
+        "startLine": 4148,
+        "startChar": 24,
+        "endLine": 4148,
+        "endChar": 38
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d4e56f_902d9ae3",
@@ -304,6 +586,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba224ce_43ee87fd",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4193,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Yes, created `expected_hashes` to compare `new_hashes` to using `ContainerEq`.",
+      "parentUuid": "d3d4e56f_902d9ae3",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5862f34f_a0059786",
@@ -317,6 +617,24 @@
       "writtenOn": "2022-04-20T01:29:17Z",
       "side": 1,
       "message": "nit: Does inlining this on the next line as `{page_indices, page_indices_len}` work?",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3beab8c_859a2406",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-20T19:50:43Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "5862f34f_a0059786",
       "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
