@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f7ea9b_0746292d",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T03:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70080fd_8a8e4a63",
+      "range": {
+        "startLine": 54,
+        "startChar": 19,
+        "endLine": 54,
+        "endChar": 31
+      },
+      "revId": "a111b0e046cb8ede93f192ac9b064e6df038e080",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2da442_b74524e3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T01:36:10Z",
       "side": 1,
       "message": "ditto, except maybe avoid std::copy with iterator-based form of vector construction?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 35
+      },
+      "revId": "a111b0e046cb8ede93f192ac9b064e6df038e080",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "807b8961_fb3a70d0",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T03:46:53Z",
+      "side": 1,
+      "message": "Leaving this one as is for now. Will follow-up and simplify this further.",
+      "parentUuid": "8c2da442_b74524e3",
       "range": {
         "startLine": 178,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c238d082_8f87e75c",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T03:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d9cb72_48866ec4",
+      "range": {
+        "startLine": 254,
+        "startChar": 19,
+        "endLine": 254,
+        "endChar": 31
+      },
+      "revId": "a111b0e046cb8ede93f192ac9b064e6df038e080",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d315c6e_2cc952cf",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-20T01:36:10Z",
       "side": 1,
       "message": "this should be an unsigned constant, then forget about the int casts and nothing is below zero.",
+      "range": {
+        "startLine": 267,
+        "startChar": 45,
+        "endLine": 267,
+        "endChar": 63
+      },
+      "revId": "a111b0e046cb8ede93f192ac9b064e6df038e080",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2016fe6_b11b193c",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T03:46:53Z",
+      "side": 1,
+      "message": "Already on the follow-up TODO list from earlier today.",
+      "parentUuid": "4d315c6e_2cc952cf",
       "range": {
         "startLine": 267,
         "startChar": 45,
