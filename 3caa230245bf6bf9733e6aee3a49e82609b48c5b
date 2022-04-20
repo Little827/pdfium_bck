@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4406b74a_726afaad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-20T23:10:46Z",
+      "side": 1,
+      "message": "Wish I could understand why we need this second, very similar impl.",
+      "revId": "3caa230245bf6bf9733e6aee3a49e82609b48c5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
