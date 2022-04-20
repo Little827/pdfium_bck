@@ -95,6 +95,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c410e66_d5d75d75",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T05:15:17Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/92873",
+      "parentUuid": "807b8961_fb3a70d0",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 35
+      },
+      "revId": "a111b0e046cb8ede93f192ac9b064e6df038e080",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45d9cb72_48866ec4",
