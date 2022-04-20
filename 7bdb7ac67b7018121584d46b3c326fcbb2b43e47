@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58b8d705_efdc95aa",
+        "filename": "xfa/fgas/font/fgas_fontutils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T23:46:09Z",
+      "side": 1,
+      "message": "Change this too?",
+      "revId": "7bdb7ac67b7018121584d46b3c326fcbb2b43e47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ab34585_e6f82e40",
         "filename": "xfa/fxfa/cxfa_fontmgr.cpp",
         "patchSetId": 7
@@ -48,6 +65,30 @@
       "writtenOn": "2022-04-20T20:26:37Z",
       "side": 1,
       "message": "I\u0027ve always hated this, since it funnels into vsnprintf which treats %ls as a call to wctombs() which depends on C\u0027s locale setting, which seems like a bad thing to interpret this according to locale. Dya think we can get away with .ToUTF8() or .ToDefANSI() instead here?",
+      "range": {
+        "startLine": 54,
+        "startChar": 27,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "7bdb7ac67b7018121584d46b3c326fcbb2b43e47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab13db3b_6a8da896",
+        "filename": "xfa/fxfa/cxfa_fontmgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T23:46:09Z",
+      "side": 1,
+      "message": "Probably go with ToUTF8().",
+      "parentUuid": "6ab34585_e6f82e40",
       "range": {
         "startLine": 54,
         "startChar": 27,
