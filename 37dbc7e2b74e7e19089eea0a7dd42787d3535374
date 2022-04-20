@@ -1,0 +1,324 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb9c7f1_c4e527d7",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: Since this dictionary is only being read from, it can be const.",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a12464_503d15dc",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "Please make another pass through this method and use Google style naming.",
+      "range": {
+        "startLine": 515,
+        "startChar": 19,
+        "endLine": 515,
+        "endChar": 25
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227ef61e_b1d2fec4",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: Extra set of parenthesis not needed.",
+      "range": {
+        "startLine": 527,
+        "startChar": 47,
+        "endLine": 527,
+        "endChar": 48
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4dcaca_0bc124a1",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "Can the line 577 TODO be merged here?",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdd8522_1e927314",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: If someone doesn\u0027t know STL well, this will be not obvious. Even though this alternative is more verbose, it is easier for readers to understand:\n\n```\nbool inserted \u003d unique_page_indices.insert(page_index).second;\nif (!inserted) {\n   ...\n}\n```",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ccf75a_42e02949",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: Extra period? Or is it missing one?",
+      "range": {
+        "startLine": 568,
+        "startChar": 10,
+        "endLine": 568,
+        "endChar": 12
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864f5df5_12b3f2c2",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: Better to just always preincrement when possible. https://google.github.io/styleguide/cppguide.html#Preincrement_and_Predecrement",
+      "range": {
+        "startLine": 569,
+        "startChar": 47,
+        "endLine": 569,
+        "endChar": 50
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0ba635_b574f2f1",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: Method fails\n\nYou didn\u0027t fail. I didn\u0027t fail -\u003e We didn\u0027t fail. 😊",
+      "range": {
+        "startLine": 572,
+        "startChar": 9,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b0e5e0_b3d18c01",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: I think only \u003costream\u003e is necessary? It\u0027s all \u003c\u003c and no \u003e\u003e.\n\n\u003e\u003e __ \u003c\u003c",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7d4216_7ef41d4f",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: This ended up not getting used.",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27986944_f7245475",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: FPDFPage_Move()",
+      "range": {
+        "startLine": 4117,
+        "startChar": 36,
+        "endLine": 4117,
+        "endChar": 49
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2946c265_4095e0c3",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: Wrap in backticks.",
+      "range": {
+        "startLine": 4118,
+        "startChar": 57,
+        "endLine": 4118,
+        "endChar": 72
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3706b658_962f6a50",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "BTW, there will be an extra trailing comma, but that\u0027s ok since PDFium doesn\u0027t have a JoinString() function to use.",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131821ee_724b37f7",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: No need to call GetPageCount() again. Just use hashes.size().",
+      "range": {
+        "startLine": 4148,
+        "startChar": 24,
+        "endLine": 4148,
+        "endChar": 38
+      },
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d4e56f_902d9ae3",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4193,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "Does using EXPECT_THAT() with ElementsAre() or some other container matcher work well here?",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5862f34f_a0059786",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "nit: Does inlining this on the next line as `{page_indices, page_indices_len}` work?",
+      "revId": "37dbc7e2b74e7e19089eea0a7dd42787d3535374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

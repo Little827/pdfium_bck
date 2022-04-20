@@ -298,6 +298,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14afca91_d55ab1c5",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "SGTM. I don\u0027t think that\u0027ll actually happen with well-formed PDFs.",
+      "parentUuid": "4326fca2_0d3ef23a",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc3b2045_3b7ab111",
@@ -512,6 +530,24 @@
       "side": 1,
       "message": "To do step #2, I think I may need a `CPDFXFA_Context::InsertPage` API that overrides a new virtual function on the `CPDFDocument::Extension` interface. Is this correct? If so, it seems like it should live in a separate pull request.\n\nI will also need to write tests for this logic. Can you explain how to:\n\n1. Test XFA PDFs\n2. Test PDFs with an extension, to make sure `CPDFXFA_Context::m_XFAPageList` is kept in sync. Do I just re-enable the MovePagesTest when XFA is enabled?",
       "parentUuid": "3583e2b5_695e81a4",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7bad20_032f3a41",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-20T01:29:17Z",
+      "side": 1,
+      "message": "It would be fine to fail for XFA PDFs. The problem here is not XFA PDFs. It\u0027s normal PDFs being processed when PDFium is built with XFA enabled. Here, rectangles_multi_pages.pdf is not an XFA PDF, yet this test doesn\u0027t work with it.\n\nYes, it is very likely that `CPDF_Document::Extension` will need to change to make it work.",
+      "parentUuid": "e7212e96_bc54324d",
       "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
