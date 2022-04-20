@@ -49,6 +49,13 @@ class CJBig2_SDDProc {
   UnownedPtr<const CJBig2_HuffmanTable> SDHUFFAGGINST;
   int8_t SDAT[8];
   int8_t SDRAT[4];
+
+ private:
+  // Reads from `SDINSYMS` if `i` is in-bounds. Otherwise, reduce `i` by
+  // `SDNUMINSYMS` and read from `new_syms` at the new index.
+  CJBig2_Image* GetImage(
+      uint32_t i,
+      const std::vector<std::unique_ptr<CJBig2_Image>>& new_syms) const;
 };
 
 #endif  // CORE_FXCODEC_JBIG2_JBIG2_SDDPROC_H_
