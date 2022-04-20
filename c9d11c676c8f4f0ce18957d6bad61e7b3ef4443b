@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11dafbf2_b698785e",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-20T01:29:52Z",
+      "side": 1,
+      "message": "nit: redundant with comparison in for() loop below.",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 225,
+        "endChar": 27
+      },
+      "revId": "c9d11c676c8f4f0ce18957d6bad61e7b3ef4443b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
