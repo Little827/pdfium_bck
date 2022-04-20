@@ -3936,7 +3936,7 @@ RetainPtr<CFGAS_GEFont> CXFA_Node::GetFGASFont(CXFA_FFDoc* doc) {
 
     wsFontName = font->GetTypeface();
   }
-  return doc->GetApp()->GetXFAFontMgr()->GetFont(doc, wsFontName.AsStringView(),
+  return doc->GetApp()->GetXFAFontMgr()->GetFont(doc, std::move(wsFontName),
                                                  dwFontStyle);
 }
 
