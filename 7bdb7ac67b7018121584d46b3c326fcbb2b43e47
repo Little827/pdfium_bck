@@ -52,6 +52,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75af81f8_e7213377",
+        "filename": "xfa/fgas/font/fgas_fontutils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-21T00:07:35Z",
+      "side": 1,
+      "message": "Mutation on next line will cause Copy on Write fault either way.",
+      "parentUuid": "58b8d705_efdc95aa",
+      "revId": "7bdb7ac67b7018121584d46b3c326fcbb2b43e47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ab34585_e6f82e40",
@@ -89,6 +107,30 @@
       "side": 1,
       "message": "Probably go with ToUTF8().",
       "parentUuid": "6ab34585_e6f82e40",
+      "range": {
+        "startLine": 54,
+        "startChar": 27,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "7bdb7ac67b7018121584d46b3c326fcbb2b43e47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eab4771_8ebde116",
+        "filename": "xfa/fxfa/cxfa_fontmgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-21T00:07:35Z",
+      "side": 1,
+      "message": "Ack, follow up.",
+      "parentUuid": "ab13db3b_6a8da896",
       "range": {
         "startLine": 54,
         "startChar": 27,
