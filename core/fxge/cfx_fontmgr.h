@@ -12,6 +12,7 @@
 
 #include <map>
 #include <memory>
+#include <tuple>
 
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
@@ -80,14 +81,17 @@ class CFX_FontMgr {
   bool FTLibrarySupportsHinting() const { return m_FTLibrarySupportsHinting; }
 
  private:
+  using FaceKey = std::tuple<ByteString, int, bool>;
+  using TTCFaceKey = std::tuple<size_t, uint32_t>;
+
   bool FreeTypeVersionSupportsHinting() const;
   bool SetLcdFilterMode() const;
 
   // Must come before |m_pBuiltinMapper| and |m_FaceMap|.
   ScopedFXFTLibraryRec const m_FTLibrary;
   std::unique_ptr<CFX_FontMapper> m_pBuiltinMapper;
-  std::map<ByteString, ObservedPtr<FontDesc>> m_FaceMap;
-  std::map<ByteString, ObservedPtr<FontDesc>> m_TTCFaceMap;
+  std::map<FaceKey, ObservedPtr<FontDesc>> m_FaceMap;
+  std::map<TTCFaceKey, ObservedPtr<FontDesc>> m_TTCFaceMap;
   const bool m_FTLibrarySupportsHinting;
 };
 
