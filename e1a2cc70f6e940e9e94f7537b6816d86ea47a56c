@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c951a26_91df9d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-22T16:01:31Z",
+      "side": 1,
+      "message": "oops.  FWIW, I thought it was fine on first inspection, too.",
+      "revId": "e1a2cc70f6e940e9e94f7537b6816d86ea47a56c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
