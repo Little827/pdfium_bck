@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7774b15_2fcfdb02",
+        "filename": "testing/resources/pixel/bug_736703.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-22T18:06:08Z",
+      "side": 1,
+      "message": "Just use RGB or grayscale instead of CMYK?",
+      "revId": "4fee79f055afef7ecf65b29e13dfc5706f461e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7dafaa0_e2468069",
+        "filename": "testing/resources/pixel/bug_736703.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-22T18:06:08Z",
+      "side": 1,
+      "message": "Just put this small dictionary that\u0027s not shared inline at line 17.",
+      "revId": "4fee79f055afef7ecf65b29e13dfc5706f461e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c9de11_85fe66d0",
+        "filename": "testing/resources/pixel/bug_736703.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-22T18:06:08Z",
+      "side": 1,
+      "message": "Wrap at 80 columns.",
+      "revId": "4fee79f055afef7ecf65b29e13dfc5706f461e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
