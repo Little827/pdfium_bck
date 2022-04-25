@@ -17,6 +17,7 @@
 // Line dash generator
 //
 //----------------------------------------------------------------------------
+#include <cmath>
 
 #include "agg_shorten_path.h"
 #include "agg_vcgen_dash.h"
@@ -60,21 +61,30 @@ void vcgen_dash::dash_start(float ds)
 }
 void vcgen_dash::calc_dash_start(float ds)
 {
-    m_curr_dash = 0;
-    m_curr_dash_start = 0;
-    while(ds > 0) {
-        if(ds > m_dashes[m_curr_dash]) {
-            ds -= m_dashes[m_curr_dash];
-            ++m_curr_dash;
-            m_curr_dash_start = 0;
-            if(m_curr_dash >= m_num_dashes) {
-                m_curr_dash = 0;
-            }
-        } else {
-            m_curr_dash_start = ds;
-            ds = 0;
-        }
+  // Using float variables in incremental/decremental loops might cause the
+  // loop to stuck. Scale the float variables by 100 and round them to
+  // integers so that we can keep 2 decimal digits of precision.
+  long long scaled_ds = std::llround(ds * 100.0);
+  long long scaled_dashes[max_dashes];
+  for (int i = 0; i < m_num_dashes; i++) {
+    scaled_dashes[i] = std::llround(m_dashes[i] * 100.0);
+  }
+
+  long long scaled_curr_dash_start = 0;
+  m_curr_dash = 0;
+  while (scaled_ds > 0) {
+    if (scaled_ds > scaled_dashes[m_curr_dash]) {
+      scaled_ds -= scaled_dashes[m_curr_dash];
+      ++m_curr_dash;
+      if (m_curr_dash >= m_num_dashes) {
+        m_curr_dash = 0;
+      }
+    } else {
+      scaled_curr_dash_start = scaled_ds;
+      break;
     }
+  }
+  m_curr_dash_start = static_cast<float>(scaled_curr_dash_start) / 100.0;
 }
 void vcgen_dash::remove_all()
 {
