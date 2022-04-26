@@ -16,6 +16,24 @@
       "message": "Unused?",
       "revId": "6e81aa13885753f6d930227e1883b770aa56b356",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d511c1_64deb20a",
+        "filename": "core/fxcrt/css/cfx_cssrulecollection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-26T17:56:26Z",
+      "side": 1,
+      "message": "Done, and thus renamed.",
+      "parentUuid": "bd266f41_e4fe7849",
+      "revId": "6e81aa13885753f6d930227e1883b770aa56b356",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
