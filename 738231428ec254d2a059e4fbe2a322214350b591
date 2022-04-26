@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfafd229_162a35c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-26T21:09:50Z",
+      "side": 1,
+      "message": "Updated corpus tests are in https://pdfium-review.googlesource.com/c/pdfium_tests/+/93070",
+      "revId": "738231428ec254d2a059e4fbe2a322214350b591",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
