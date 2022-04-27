@@ -33,6 +33,75 @@
       "message": "Let\u0027s come to an agreement on the AGG changes first. Before landing the CL, update third_party/agg23/README.pdfium and add a .patch file.",
       "revId": "738231428ec254d2a059e4fbe2a322214350b591",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d739b4b_170edbdc",
+        "filename": "third_party/agg23/agg_vcgen_dash.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-27T02:26:22Z",
+      "side": 1,
+      "message": "\"the loop to get stuck\"\n\n\"an infinite loop\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 72,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "738231428ec254d2a059e4fbe2a322214350b591",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ec5850_fdf22fe2",
+        "filename": "third_party/agg23/agg_vcgen_dash.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-27T02:26:22Z",
+      "side": 1,
+      "message": "What happens if this calculation\u0027s result is too big to fit in a long long?",
+      "range": {
+        "startLine": 67,
+        "startChar": 37,
+        "endLine": 67,
+        "endChar": 48
+      },
+      "revId": "738231428ec254d2a059e4fbe2a322214350b591",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0f6ed3_9f018815",
+        "filename": "third_party/agg23/agg_vcgen_dash.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-27T02:26:22Z",
+      "side": 1,
+      "message": "If this calculation comes out to be less than 0.5, would\u0027s the result be 0? Can there be cases where the original `ds` and `m_dashes` would have worked together, but will now infinite loop due to 0 values in `scaled_dashes`?",
+      "range": {
+        "startLine": 70,
+        "startChar": 36,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "738231428ec254d2a059e4fbe2a322214350b591",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

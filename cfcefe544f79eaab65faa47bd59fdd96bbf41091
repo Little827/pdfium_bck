@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9e5a1d_6c5fa09b",
+        "filename": "third_party/agg23/agg_vcgen_dash.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-27T02:26:22Z",
+      "side": 0,
+      "message": "There\u0027s no equivalent to this in the new code. Was it removed intentionally?",
+      "revId": "cfcefe544f79eaab65faa47bd59fdd96bbf41091",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
