@@ -16,6 +16,23 @@
       "message": "Updated corpus tests are in https://pdfium-review.googlesource.com/c/pdfium_tests/+/93070",
       "revId": "738231428ec254d2a059e4fbe2a322214350b591",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4ad03e_650e9777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-27T02:10:00Z",
+      "side": 1,
+      "message": "Let\u0027s come to an agreement on the AGG changes first. Before landing the CL, update third_party/agg23/README.pdfium and add a .patch file.",
+      "revId": "738231428ec254d2a059e4fbe2a322214350b591",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
