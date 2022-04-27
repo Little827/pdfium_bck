@@ -572,6 +572,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "280586aa_319f69a1",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 4104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-27T21:50:06Z",
+      "side": 1,
+      "message": "It would be good to have that test case. I made a test document here: https://pdfium-review.googlesource.com/93171",
+      "parentUuid": "07ffb43e_4329b90f",
+      "revId": "715b653704669256826e24a6f2b86a24b10cb5e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd89292d_16a6a63d",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 9

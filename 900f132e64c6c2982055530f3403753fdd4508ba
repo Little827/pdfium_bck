@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1208ea9d_5267390d",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 4193,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-27T21:50:06Z",
+      "side": 1,
+      "message": "This needs to be resize() instead. Calling reserve() changes the vector capacity, but not its size. Then operator[] below is technically undefined behavior.\n\n```\n$ cat foo.cc \n#include \u003cvector\u003e\n\nint main() {\n  std::vector\u003cint\u003e vec;\n  vec.reserve(10);\n  vec[8] \u003d 5;\n  return 0;\n}\n```\n\n```\n$ g++ -Wall -D_GLIBCXX_DEBUG foo.cc \u0026\u0026 ./a.out\n/usr/include/c++/11/debug/vector:438:\nIn function:\n    std::__debug::vector\u003c_Tp, _Allocator\u003e::reference \n    std::__debug::vector\u003c_Tp, \n    _Allocator\u003e::operator[](std::__debug::vector\u003c_Tp, \n    _Allocator\u003e::size_type) [with _Tp \u003d int; _Allocator \u003d \n    std::allocator\u003cint\u003e; std::__debug::vector\u003c_Tp, _Allocator\u003e::reference \u003d \n    int\u0026; std::__debug::vector\u003c_Tp, _Allocator\u003e::size_type \u003d long unsigned \n    int]\n\nError: attempt to subscript container with out-of-bounds index 8, but \ncontainer only holds 0 elements.\n```",
+      "range": {
+        "startLine": 4193,
+        "startChar": 22,
+        "endLine": 4193,
+        "endChar": 29
+      },
+      "revId": "900f132e64c6c2982055530f3403753fdd4508ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79577217_ddfa36e3",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 16
