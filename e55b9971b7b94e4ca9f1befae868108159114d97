@@ -103,6 +103,30 @@
       },
       "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b1c0c0_b0ca625a",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-27T23:16:46Z",
+      "side": 1,
+      "message": "Also, not sure we need this, since rhs silently promotes to BSV?",
+      "parentUuid": "7866314f_259eebfa",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 67
+      },
+      "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
