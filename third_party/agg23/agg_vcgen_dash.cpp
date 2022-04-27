@@ -18,6 +18,8 @@
 //
 //----------------------------------------------------------------------------
 
+#include <cmath>
+
 #include "agg_shorten_path.h"
 #include "agg_vcgen_dash.h"
 
@@ -60,6 +62,7 @@ void vcgen_dash::dash_start(float ds)
 }
 void vcgen_dash::calc_dash_start(float ds)
 {
+    ds -= floor(ds / m_total_dash_len) * m_total_dash_len;
     m_curr_dash = 0;
     m_curr_dash_start = 0;
     while(ds > 0) {
