@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e35c60_55aa3c4c",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-27T21:50:41Z",
+      "side": 1,
+      "message": "We can deal with this later once the bytestring() ctor is explicit, then literals become unabigous.",
+      "parentUuid": "603b234d_986ae107",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7866314f_259eebfa",
