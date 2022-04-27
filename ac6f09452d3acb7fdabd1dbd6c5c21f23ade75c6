@@ -16,6 +16,24 @@
       "message": "Instead of changing AGG code, would it be possible to instead change the caller in fx_agg_driver.cpp to avoid this problem? How does that compare to the current solution of changing AGG?",
       "revId": "ac6f09452d3acb7fdabd1dbd6c5c21f23ade75c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69002fd_1feee19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-04-27T23:28:46Z",
+      "side": 1,
+      "message": "The call stack is as following:\n\n0x00005555564120b5 in pdfium::agg::vcgen_dash::calc_dash_start (this\u003d0x7fffffffc7c0, ds\u003d96636760) at ../../third_party/agg23/agg_vcgen_dash.cpp:65\n65\t    while(ds \u003e 0) {\n(gdb) where\n#0  0x00005555564120b5 in pdfium::agg::vcgen_dash::calc_dash_start (this\u003d0x7fffffffc7c0, ds\u003d96636760) at ../../third_party/agg23/agg_vcgen_dash.cpp:65\n#1  0x0000555556412079 in pdfium::agg::vcgen_dash::dash_start (this\u003d0x7fffffffc7c0, ds\u003d96636760) at ../../third_party/agg23/agg_vcgen_dash.cpp:59\n#2  0x0000555556408cc7 in pdfium::agg::conv_dash\u003cpdfium::agg::path_storage, pdfium::agg::null_markers\u003e::dash_start (this\u003d0x7fffffffc7b8, ds\u003d96636760)\n    at ../../third_party/agg23/agg_conv_dash.h:47\n#3  0x0000555556401ec9 in pdfium::(anonymous namespace)::RasterizeStroke (rasterizer\u003d0x7fffffffc9b0, path_data\u003d0x7fffffffca60, \n    pObject2Device\u003d0x7fffffffc948, pGraphState\u003d0x555558d4bde0, scale\u003d1, bTextMode\u003dfalse) at ../../core/fxge/agg/fx_agg_driver.cpp:273\n    \n\nIf we move this newly-added optimization process outside third_party/agg23/, we should have the dash starting point pre-calculated in core/fxge/agg/fx_agg_driver.cpp instead of going through vcgen_dash::calc_dash_start() to do the calculation again. In that case, we should delete vcgen_dash::calc_dash_start() since there will be duplicate code.\n\nvcgen_dash::calc_dash_start() is also called by vcgen_dash::vertex(). I think we should keep vcgen_dash::calc_dash_start() function the same as it was, which is to expect the dash phase value and output the starting distance of the dash pattern.",
+      "parentUuid": "4bc85cbc_1ec85135",
+      "revId": "ac6f09452d3acb7fdabd1dbd6c5c21f23ade75c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
