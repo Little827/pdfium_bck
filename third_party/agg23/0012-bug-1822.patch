@@ -1,0 +1,28 @@
+diff --git a/third_party/agg23/agg_vcgen_dash.cpp b/third_party/agg23/agg_vcgen_dash.cpp
+index f690760b0..1f8968a4f 100644
+--- a/third_party/agg23/agg_vcgen_dash.cpp
++++ b/third_party/agg23/agg_vcgen_dash.cpp
+@@ -18,6 +18,8 @@
+ //
+ //----------------------------------------------------------------------------
+ 
++#include <cmath>
++
+ #include "agg_shorten_path.h"
+ #include "agg_vcgen_dash.h"
+ 
+@@ -60,13 +62,13 @@ void vcgen_dash::dash_start(float ds)
+ }
+ void vcgen_dash::calc_dash_start(float ds)
+ {
++    ds -= floor(ds / m_total_dash_len) * m_total_dash_len;
+     m_curr_dash = 0;
+     m_curr_dash_start = 0;
+     while(ds > 0) {
+         if(ds > m_dashes[m_curr_dash]) {
+             ds -= m_dashes[m_curr_dash];
+             ++m_curr_dash;
+-            m_curr_dash_start = 0;
+             if(m_curr_dash >= m_num_dashes) {
+                 m_curr_dash = 0;
+             }
