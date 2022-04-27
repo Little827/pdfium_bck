@@ -344,6 +344,12 @@ void CFDE_TextEditEngine::Insert(size_t idx,
   }
 }
 
+void CFDE_TextEditEngine::Insert(size_t idx,
+                                 WideStringView request_text,
+                                 RecordOperation add_operation) {
+  Insert(idx, WideString(request_text), add_operation);
+}
+
 void CFDE_TextEditEngine::AddOperationRecord(std::unique_ptr<Operation> op) {
   size_t last_insert_position = next_operation_index_to_insert_ == 0
                                     ? max_edit_operations_ - 1

@@ -111,7 +111,7 @@ TEST(WideString, Assign) {
   }
   {
     // From wchar_t*.
-    WideString string1 = L"abc";
+    WideString string1(L"abc");
     EXPECT_EQ(L"abc", string1);
     string1 = nullptr;
     EXPECT_TRUE(string1.IsEmpty());
@@ -1141,12 +1141,12 @@ TEST(WideString, ToUTF16LE) {
     WideString ws;
     ByteString bs;
   } const utf16le_encode_cases[] = {
-      {L"", ByteString("\0\0", 2)},
-      {L"abc", ByteString("a\0b\0c\0\0\0", 8)},
-      {L"abcdef", ByteString("a\0b\0c\0d\0e\0f\0\0\0", 14)},
-      {L"abc\0def", ByteString("a\0b\0c\0\0\0", 8)},
-      {L"\xaabb\xccdd", ByteString("\xbb\xaa\xdd\xcc\0\0", 6)},
-      {L"\x3132\x6162", ByteString("\x32\x31\x62\x61\0\0", 6)},
+      {WideString(), ByteString("\0\0", 2)},
+      {WideString(L"abc"), ByteString("a\0b\0c\0\0\0", 8)},
+      {WideString(L"abcdef"), ByteString("a\0b\0c\0d\0e\0f\0\0\0", 14)},
+      {WideString(L"abc\0def"), ByteString("a\0b\0c\0\0\0", 8)},
+      {WideString(L"\xaabb\xccdd"), ByteString("\xbb\xaa\xdd\xcc\0\0", 6)},
+      {WideString(L"\x3132\x6162"), ByteString("\x32\x31\x62\x61\0\0", 6)},
   };
 
   for (size_t i = 0; i < std::size(utf16le_encode_cases); ++i) {
@@ -1168,9 +1168,9 @@ TEST(WideString, IsASCII) {
 }
 
 TEST(WideString, EqualsASCII) {
-  EXPECT_TRUE(WideString(L"").EqualsASCII(""));
+  EXPECT_TRUE(WideString().EqualsASCII(""));
   EXPECT_FALSE(WideString(L"A").EqualsASCII(""));
-  EXPECT_FALSE(WideString(L"").EqualsASCII("A"));
+  EXPECT_FALSE(WideString().EqualsASCII("A"));
   EXPECT_FALSE(WideString(L"A").EqualsASCII("B"));
   EXPECT_TRUE(WideString(L"ABC").EqualsASCII("ABC"));
   EXPECT_FALSE(WideString(L"ABC").EqualsASCII("AEC"));
@@ -1179,7 +1179,7 @@ TEST(WideString, EqualsASCII) {
 }
 
 TEST(WideString, EqualsASCIINoCase) {
-  EXPECT_TRUE(WideString(L"").EqualsASCIINoCase(""));
+  EXPECT_TRUE(WideString().EqualsASCIINoCase(""));
   EXPECT_FALSE(WideString(L"A").EqualsASCIINoCase("b"));
   EXPECT_TRUE(WideString(L"AbC").EqualsASCIINoCase("aBc"));
   EXPECT_FALSE(WideString(L"ABc").EqualsASCIINoCase("AeC"));

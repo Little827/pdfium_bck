@@ -211,7 +211,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest, DeleteEntireTextSelection) {
   EXPECT_STREQ(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLComboBox()->GetSelectedText().c_str());
 
-  GetCPWLComboBox()->ReplaceSelection(L"");
+  GetCPWLComboBox()->ReplaceSelection(WideString());
   EXPECT_TRUE(GetCPWLComboBox()->GetText().IsEmpty());
 }
 
@@ -222,7 +222,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest, DeleteTextSelectionMiddle) {
   GetCPWLComboBox()->SetEditSelection(12, 23);
   EXPECT_STREQ(L"MNOPQRSTUVW", GetCPWLComboBox()->GetSelectedText().c_str());
 
-  GetCPWLComboBox()->ReplaceSelection(L"");
+  GetCPWLComboBox()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"ABCDEFGHIJKLXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLComboBox()->GetText().c_str());
 }
@@ -234,7 +234,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest, DeleteTextSelectionLeft) {
   GetCPWLComboBox()->SetEditSelection(0, 5);
   EXPECT_STREQ(L"ABCDE", GetCPWLComboBox()->GetSelectedText().c_str());
 
-  GetCPWLComboBox()->ReplaceSelection(L"");
+  GetCPWLComboBox()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"FGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLComboBox()->GetText().c_str());
 }
@@ -246,7 +246,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest, DeleteTextSelectionRight) {
   GetCPWLComboBox()->SetEditSelection(45, 50);
   EXPECT_STREQ(L"nopqr", GetCPWLComboBox()->GetSelectedText().c_str());
 
-  GetCPWLComboBox()->ReplaceSelection(L"");
+  GetCPWLComboBox()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklm",
                GetCPWLComboBox()->GetText().c_str());
 }
@@ -255,14 +255,14 @@ TEST_F(CPWLComboBoxEditEmbedderTest, DeleteEmptyTextSelection) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnotUserEditable());
   TypeTextIntoTextField(50);
 
-  GetCPWLComboBox()->ReplaceSelection(L"");
+  GetCPWLComboBox()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLComboBox()->GetText().c_str());
 }
 
 TEST_F(CPWLComboBoxEditEmbedderTest, InsertTextInEmptyEditableComboBox) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnotUserEditable());
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"Hello", GetCPWLComboBox()->GetText().c_str());
 }
 
@@ -274,7 +274,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest,
   // Move cursor to beginning of user-editable combobox text field.
   EXPECT_TRUE(GetCFFLFormFiller()->OnKeyDown(FWL_VKEY_Home, {}));
 
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"HelloABCDEFGHIJ", GetCPWLComboBox()->GetText().c_str());
 }
 
@@ -288,7 +288,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest,
     EXPECT_TRUE(GetCFFLFormFiller()->OnKeyDown(FWL_VKEY_Left, {}));
   }
 
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABCDEHelloFGHIJ", GetCPWLComboBox()->GetText().c_str());
 }
 
@@ -297,7 +297,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest,
   FormFillerAndWindowSetup(GetCPDFSDKAnnotUserEditable());
   TypeTextIntoTextField(10);
 
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABCDEFGHIJHello", GetCPWLComboBox()->GetText().c_str());
 }
 
@@ -308,7 +308,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest,
 
   GetCPWLComboBox()->SetEditSelection(0, -1);
   EXPECT_STREQ(L"ABCDEFGHIJ", GetCPWLComboBox()->GetSelectedText().c_str());
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"Hello", GetCPWLComboBox()->GetText().c_str());
 }
 
@@ -319,7 +319,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest,
 
   GetCPWLComboBox()->SetEditSelection(0, 5);
   EXPECT_STREQ(L"ABCDE", GetCPWLComboBox()->GetSelectedText().c_str());
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"HelloFGHIJ", GetCPWLComboBox()->GetText().c_str());
 }
 
@@ -330,7 +330,7 @@ TEST_F(CPWLComboBoxEditEmbedderTest,
 
   GetCPWLComboBox()->SetEditSelection(2, 7);
   EXPECT_STREQ(L"CDEFG", GetCPWLComboBox()->GetSelectedText().c_str());
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABHelloHIJ", GetCPWLComboBox()->GetText().c_str());
 }
 
@@ -341,6 +341,6 @@ TEST_F(CPWLComboBoxEditEmbedderTest,
 
   GetCPWLComboBox()->SetEditSelection(5, 10);
   EXPECT_STREQ(L"FGHIJ", GetCPWLComboBox()->GetSelectedText().c_str());
-  GetCPWLComboBox()->ReplaceSelection(L"Hello");
+  GetCPWLComboBox()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABCDEHello", GetCPWLComboBox()->GetText().c_str());
 }

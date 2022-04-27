@@ -63,29 +63,29 @@ class CFDE_TextEditEngineTest : public testing::Test {
 TEST_F(CFDE_TextEditEngineTest, Insert) {
   EXPECT_STREQ(L"", engine()->GetText().c_str());
 
-  engine()->Insert(0, L"");
+  engine()->Insert(0, WideString());
   EXPECT_STREQ(L"", engine()->GetText().c_str());
   EXPECT_EQ(0U, engine()->GetLength());
 
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
   EXPECT_STREQ(L"Hello", engine()->GetText().c_str());
   EXPECT_EQ(5U, engine()->GetLength());
 
-  engine()->Insert(5, L" World");
+  engine()->Insert(5, WideString(L" World"));
   EXPECT_STREQ(L"Hello World", engine()->GetText().c_str());
   EXPECT_EQ(11U, engine()->GetLength());
 
-  engine()->Insert(5, L" New");
+  engine()->Insert(5, WideString(L" New"));
   EXPECT_STREQ(L"Hello New World", engine()->GetText().c_str());
 
-  engine()->Insert(100, L" Cat");
+  engine()->Insert(100, WideString(L" Cat"));
   EXPECT_STREQ(L"Hello New World Cat", engine()->GetText().c_str());
 
   engine()->Clear();
 
   engine()->SetHasCharacterLimit(true);
   engine()->SetCharacterLimit(5);
-  engine()->Insert(0, L"Hello");
+  engine()->Insert(0, WideString(L"Hello"));
 
   // No delegate
   engine()->Insert(5, L" World");
@@ -334,14 +334,14 @@ TEST_F(CFDE_TextEditEngineTest, Selection) {
   engine()->Clear();
   engine()->Insert(0, L"Hello World");
   engine()->SelectAll();
-  engine()->ReplaceSelectedText(L"Goodbye Everybody");
+  engine()->ReplaceSelectedText(WideString(L"Goodbye Everybody"));
   EXPECT_FALSE(engine()->HasSelection());
   EXPECT_STREQ(L"Goodbye Everybody", engine()->GetText().c_str());
 
   engine()->Clear();
   engine()->Insert(0, L"Hello World");
   engine()->SetSelection(1, 4);
-  engine()->ReplaceSelectedText(L"i,");
+  engine()->ReplaceSelectedText(WideString(L"i,"));
   EXPECT_FALSE(engine()->HasSelection());
   EXPECT_STREQ(L"Hi, World", engine()->GetText().c_str());
 
@@ -396,7 +396,7 @@ TEST_F(CFDE_TextEditEngineTest, UndoRedo) {
 
   engine()->Insert(0, L"Hello World");
   engine()->SelectAll();
-  engine()->ReplaceSelectedText(L"Goodbye Friend");
+  engine()->ReplaceSelectedText(WideString(L"Goodbye Friend"));
   EXPECT_STREQ(L"Goodbye Friend", engine()->GetText().c_str());
   EXPECT_TRUE(engine()->CanUndo());
   EXPECT_TRUE(engine()->Undo());

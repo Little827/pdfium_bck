@@ -95,8 +95,7 @@ class CFX_CSSComputedStyle final : public Retainable {
   void SetTextDecoration(Mask<CFX_CSSTEXTDECORATION> dwTextDecoration);
   void SetLetterSpacing(const CFX_CSSLength& letterSpacing);
   void AddCustomStyle(const CFX_CSSCustomProperty& prop);
-
-  bool GetCustomStyle(const WideString& wsName, WideString* pValue) const;
+  bool GetCustomStyle(WideStringView wsName, WideString* pValue) const;
 
   InheritedData m_InheritedData;
   NonInheritedData m_NonInheritedData;

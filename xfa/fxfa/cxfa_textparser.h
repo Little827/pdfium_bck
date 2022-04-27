@@ -118,7 +118,7 @@ class CXFA_TextParser : public cppgc::GarbageCollected<CXFA_TextParser> {
  protected:
   CXFA_TextParser();
 
-  bool TagValidate(const WideString& str) const;
+  bool TagValidate(WideStringView str) const;
 
  private:
   class TagProvider {

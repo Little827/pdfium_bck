@@ -10,6 +10,9 @@
 
 CFX_XMLText::CFX_XMLText(const WideString& wsText) : text_(wsText) {}
 
+CFX_XMLText::CFX_XMLText(WideStringView wsText)
+    : CFX_XMLText(WideString(wsText)) {}
+
 CFX_XMLText::~CFX_XMLText() = default;
 
 CFX_XMLNode::Type CFX_XMLText::GetType() const {

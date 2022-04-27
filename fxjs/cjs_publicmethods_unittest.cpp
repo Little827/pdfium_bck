@@ -46,7 +46,7 @@ TEST(CJS_PublicMethods, IsNumber) {
   };
   for (size_t i = 0; i < std::size(test_data); ++i) {
     EXPECT_EQ(test_data[i].expected,
-              CJS_PublicMethods::IsNumber(test_data[i].input))
+              CJS_PublicMethods::IsNumber(WideString(test_data[i].input)))
         << "for case " << i;
   }
 }

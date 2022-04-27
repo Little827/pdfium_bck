@@ -11,7 +11,8 @@ namespace {
 // We don't expect more precision than a float's worth from this code.
 float MakeDoubleNumAsFloat(const wchar_t* str) {
   return static_cast<float>(
-      CXFA_LocaleValue(CXFA_LocaleValue::ValueType::kFloat, str, nullptr)
+      CXFA_LocaleValue(CXFA_LocaleValue::ValueType::kFloat, WideString(str),
+                       nullptr)
           .GetDoubleNum());
 }
 

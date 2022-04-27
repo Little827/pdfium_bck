@@ -114,7 +114,7 @@ void CFWL_CheckBox::Layout() {
   m_CaptionRect.Inflate(-kCaptionMargin, -kCaptionMargin);
 
   CFX_RectF rtFocus = m_CaptionRect;
-  CalcTextRect(L"Check box", m_TTOStyles, m_iTTOAlign, &rtFocus);
+  CalcTextRect(WideString(L"Check box"), m_TTOStyles, m_iTTOAlign, &rtFocus);
   m_FocusRect = CFX_RectF(m_CaptionRect.TopLeft(),
                           std::max(m_CaptionRect.width, rtFocus.width),
                           std::min(m_CaptionRect.height, rtFocus.height));

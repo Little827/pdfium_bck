@@ -40,26 +40,26 @@ TEST(CFGAS_Decimal, FromUint64) {
 
 TEST(CFGAS_Decimal, FromFloat) {
   WideString big = CFGAS_Decimal(powf(2.0f, 95.0f), 0).ToWideString();
-  WideString big_expected = L"39614081257132168796771975168";
+  WideString big_expected(L"39614081257132168796771975168");
 
   // Precision may not be the same on all platforms.
   EXPECT_EQ(big_expected.GetLength(), big.GetLength());
   EXPECT_STREQ(big_expected.First(8).c_str(), big.First(8).c_str());
 
   WideString tiny = CFGAS_Decimal(1e20f, 0).ToWideString();
-  WideString tiny_expected = L"100000000000000000000";
+  WideString tiny_expected(L"100000000000000000000");
   EXPECT_EQ(tiny_expected.GetLength(), tiny.GetLength());
   EXPECT_STREQ(tiny_expected.First(8).c_str(), tiny.First(8).c_str());
 
   WideString teeny = CFGAS_Decimal(1e14f, 4).ToWideString();
-  WideString teeny_expected = L"100000000000000.0000";
+  WideString teeny_expected(L"100000000000000.0000");
   EXPECT_EQ(teeny_expected.GetLength(), teeny.GetLength());
   EXPECT_STREQ(teeny_expected.First(8).c_str(), teeny.First(8).c_str());
 }
 
 TEST(CFGAS_Decimal, FromFloatFractional) {
   WideString case1 = CFGAS_Decimal(123.456f, 10).ToWideString();
-  WideString case1_expected = L"123.4560000000";
+  WideString case1_expected(L"123.4560000000");
 
   // Precision may not be the same on all platforms.
   EXPECT_EQ(case1_expected.GetLength(), case1.GetLength());

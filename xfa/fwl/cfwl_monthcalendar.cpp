@@ -36,54 +36,54 @@ constexpr float kMonthCalHeaderBtnHMargin = 5.0f;
 WideString GetAbbreviatedDayOfWeek(int day) {
   switch (day) {
     case 0:
-      return L"Sun";
+      return WideString(L"Sun");
     case 1:
-      return L"Mon";
+      return WideString(L"Mon");
     case 2:
-      return L"Tue";
+      return WideString(L"Tue");
     case 3:
-      return L"Wed";
+      return WideString(L"Wed");
     case 4:
-      return L"Thu";
+      return WideString(L"Thu");
     case 5:
-      return L"Fri";
+      return WideString(L"Fri");
     case 6:
-      return L"Sat";
+      return WideString(L"Sat");
     default:
       NOTREACHED();
-      return L"";
+      return WideString();
   }
 }
 
 WideString GetMonth(int month) {
   switch (month) {
     case 0:
-      return L"January";
+      return WideString(L"January");
     case 1:
-      return L"February";
+      return WideString(L"February");
     case 2:
-      return L"March";
+      return WideString(L"March");
     case 3:
-      return L"April";
+      return WideString(L"April");
     case 4:
-      return L"May";
+      return WideString(L"May");
     case 5:
-      return L"June";
+      return WideString(L"June");
     case 6:
-      return L"July";
+      return WideString(L"July");
     case 7:
-      return L"August";
+      return WideString(L"August");
     case 8:
-      return L"September";
+      return WideString(L"September");
     case 9:
-      return L"October";
+      return WideString(L"October");
     case 10:
-      return L"November";
+      return WideString(L"November");
     case 11:
-      return L"December";
+      return WideString(L"December");
     default:
       NOTREACHED();
-      return L"";
+      return WideString();
   }
 }
 

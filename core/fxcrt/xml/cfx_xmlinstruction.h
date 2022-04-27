@@ -17,6 +17,7 @@ class CFX_XMLDocument;
 class CFX_XMLInstruction final : public CFX_XMLNode {
  public:
   explicit CFX_XMLInstruction(const WideString& wsTarget);
+  explicit CFX_XMLInstruction(WideStringView wsTarget);
   ~CFX_XMLInstruction() override;
 
   // CFX_XMLNode
@@ -29,6 +30,7 @@ class CFX_XMLInstruction final : public CFX_XMLNode {
 
   const std::vector<WideString>& GetTargetData() const { return target_data_; }
   void AppendData(const WideString& wsData);
+  void AppendData(WideStringView wsData);
 
  private:
   const WideString name_;

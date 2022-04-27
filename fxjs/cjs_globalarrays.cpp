@@ -23,14 +23,16 @@
                 (rt)->NewString(values[i]))                                    \
           .FromJust();                                                         \
     }                                                                          \
-    (rt)->SetConstArray((name), array);                                        \
+    (rt)->SetConstArray(WideString(name), array);                              \
     (rt)->DefineGlobalConst(                                                   \
         (name), [](const v8::FunctionCallbackInfo<v8::Value>& info) {          \
           CJS_Object* pObj = CFXJS_Engine::GetObjectPrivate(info.GetIsolate(), \
                                                             info.Holder());    \
           CJS_Runtime* pCurrentRuntime = pObj->GetRuntime();                   \
-          if (pCurrentRuntime)                                                 \
-            info.GetReturnValue().Set(pCurrentRuntime->GetConstArray(name));   \
+          if (pCurrentRuntime) {                                               \
+            info.GetReturnValue().Set(                                         \
+                pCurrentRuntime->GetConstArray(WideString(name)));             \
+          }                                                                    \
         });                                                                    \
   }
 

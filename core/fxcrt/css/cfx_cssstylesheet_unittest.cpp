@@ -38,7 +38,7 @@ class CFX_CSSStyleSheetTest : public testing::Test {
   }
 
   void LoadAndVerifyDecl(WideStringView buf,
-                         const std::vector<WideString>& selectors,
+                         const std::vector<WideStringView>& selectors,
                          size_t decl_count) {
     LoadAndVerifyRuleCount(buf, 1);
     CFX_CSSStyleRule* style = sheet_->GetRule(0);
@@ -46,7 +46,7 @@ class CFX_CSSStyleSheetTest : public testing::Test {
     EXPECT_EQ(selectors.size(), style->CountSelectorLists());
 
     for (size_t i = 0; i < selectors.size(); i++) {
-      uint32_t hash = FX_HashCode_GetLoweredW(selectors[i].AsStringView());
+      uint32_t hash = FX_HashCode_GetLoweredW(selectors[i]);
       EXPECT_EQ(hash, style->GetSelectorList(i)->name_hash());
     }
 

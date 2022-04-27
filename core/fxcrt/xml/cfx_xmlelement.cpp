@@ -16,6 +16,9 @@ CFX_XMLElement::CFX_XMLElement(const WideString& wsTag) : name_(wsTag) {
   DCHECK(!name_.IsEmpty());
 }
 
+CFX_XMLElement::CFX_XMLElement(WideStringView wsTag)
+    : CFX_XMLElement(WideString(wsTag)) {}
+
 CFX_XMLElement::~CFX_XMLElement() = default;
 
 CFX_XMLNode::Type CFX_XMLElement::GetType() const {
@@ -129,9 +132,17 @@ bool CFX_XMLElement::HasAttribute(const WideString& name) const {
   return attrs_.find(name) != attrs_.end();
 }
 
+bool CFX_XMLElement::HasAttribute(WideStringView name) const {
+  return HasAttribute(WideString(name));
+}
+
 WideString CFX_XMLElement::GetAttribute(const WideString& name) const {
   auto it = attrs_.find(name);
   return it != attrs_.end() ? it->second : WideString();
+}
+
+WideString CFX_XMLElement::GetAttribute(WideStringView name) const {
+  return GetAttribute(WideString(name));
 }
 
 void CFX_XMLElement::SetAttribute(const WideString& name,
@@ -139,13 +150,26 @@ void CFX_XMLElement::SetAttribute(const WideString& name,
   attrs_[name] = value;
 }
 
+void CFX_XMLElement::SetAttribute(WideStringView name,
+                                  const WideString& value) {
+  SetAttribute(WideString(name), value);
+}
+
+void CFX_XMLElement::SetAttribute(WideStringView name, WideStringView value) {
+  SetAttribute(WideString(name), WideString(value));
+}
+
 void CFX_XMLElement::RemoveAttribute(const WideString& name) {
   attrs_.erase(name);
 }
 
+void CFX_XMLElement::RemoveAttribute(WideStringView name) {
+  RemoveAttribute(WideString(name));
+}
+
 WideString CFX_XMLElement::AttributeToString(const WideString& name,
                                              const WideString& value) {
-  WideString ret = L" ";
+  WideString ret(L" ");
   ret += name;
   ret += L"=\"";
   ret += value.EncodeEntities();

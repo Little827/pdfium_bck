@@ -9,77 +9,78 @@
 
 TEST(CXFA_DocumentTest, ParseXFAVersion) {
   // Malformed
-  EXPECT_EQ(XFA_VERSION_UNKNOWN, CXFA_Document::ParseXFAVersion(L""));
+  EXPECT_EQ(XFA_VERSION_UNKNOWN, CXFA_Document::ParseXFAVersion(WideString()));
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template"));
+                WideString(L"http://www.xfa.org/schema/xfa-template")));
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-templatX/"));
+                WideString(L"http://www.xfa.org/schema/xfa-templatX/")));
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/")));
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/2"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/2")));
 
   // Out-of-range
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/-1.0"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/-1.0")));
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/1.9"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/1.9")));
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/4.1"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/4.1")));
 
   // Missing digits
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/."));
+                WideString(L"http://www.xfa.org/schema/xfa-template/.")));
   EXPECT_EQ(XFA_VERSION_UNKNOWN,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/.3"));
-  EXPECT_EQ(XFA_VERSION_300, CXFA_Document::ParseXFAVersion(
-                                 L"http://www.xfa.org/schema/xfa-template/3."));
-  EXPECT_EQ(XFA_VERSION_UNKNOWN,
-            CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/clams.6"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/.3")));
   EXPECT_EQ(XFA_VERSION_300,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/3.clams"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/3.")));
+  EXPECT_EQ(XFA_VERSION_UNKNOWN,
+            CXFA_Document::ParseXFAVersion(
+                WideString(L"http://www.xfa.org/schema/xfa-template/clams.6")));
+  EXPECT_EQ(XFA_VERSION_300,
+            CXFA_Document::ParseXFAVersion(
+                WideString(L"http://www.xfa.org/schema/xfa-template/3.clams")));
 
   // Min / max values
   EXPECT_EQ(XFA_VERSION_200,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/2.0"));
-  EXPECT_EQ(400, CXFA_Document::ParseXFAVersion(
-                     L"http://www.xfa.org/schema/xfa-template/4.0"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/2.0")));
+  EXPECT_EQ(400, CXFA_Document::ParseXFAVersion(WideString(
+                     L"http://www.xfa.org/schema/xfa-template/4.0")));
 
   // Number and decimal point parsing.
   EXPECT_EQ(XFA_VERSION_306,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/3.6"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/3.6")));
 
   // TODO(tsepez): maybe fail on these dubious values?
   EXPECT_EQ(XFA_VERSION_306,
-            CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/0003.00006"));
+            CXFA_Document::ParseXFAVersion(WideString(
+                L"http://www.xfa.org/schema/xfa-template/0003.00006")));
   EXPECT_EQ(XFA_VERSION_306,
-            CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/0003.00006.0000"));
+            CXFA_Document::ParseXFAVersion(WideString(
+                L"http://www.xfa.org/schema/xfa-template/0003.00006.0000")));
+  EXPECT_EQ(XFA_VERSION_206,
+            CXFA_Document::ParseXFAVersion(WideString(
+                L"http://www.xfa.org/schema/xfa-template/2.6clams")));
   EXPECT_EQ(XFA_VERSION_206,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/2.6clams"));
-  EXPECT_EQ(XFA_VERSION_206,
-            CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/1.106"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/1.106")));
   EXPECT_EQ(XFA_VERSION_306,
             CXFA_Document::ParseXFAVersion(
-                L"http://www.xfa.org/schema/xfa-template/4.-94"));
-  EXPECT_EQ(317, CXFA_Document::ParseXFAVersion(
-                     L"http://www.xfa.org/schema/xfa-template/3.17"));
+                WideString(L"http://www.xfa.org/schema/xfa-template/4.-94")));
+  EXPECT_EQ(317, CXFA_Document::ParseXFAVersion(WideString(
+                     L"http://www.xfa.org/schema/xfa-template/3.17")));
 }
 
 TEST(CXFA_DocumentTest, ParseUseHref) {

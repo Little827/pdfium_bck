@@ -787,7 +787,8 @@ CXFA_FMSimpleExpression* CXFA_FMParser::ParsePostExpression(
             m_heap->GetAllocationHandle(),
             CXFA_FMIndexExpression::AccessorIndex::kNoIndex, nullptr, false);
         expr = cppgc::MakeGarbageCollected<CXFA_FMDotAccessorExpression>(
-            m_heap->GetAllocationHandle(), expr, TOKdotstar, L"*", subexpr);
+            m_heap->GetAllocationHandle(), expr, TOKdotstar, WideString(L"*"),
+            subexpr);
         break;
       }
       default:

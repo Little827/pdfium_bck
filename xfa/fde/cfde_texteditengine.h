@@ -98,6 +98,10 @@ class CFDE_TextEditEngine final : public CFGAS_TxtBreak::Engine {
   void Insert(size_t idx,
               const WideString& text,
               RecordOperation add_operation = RecordOperation::kInsertRecord);
+  void Insert(size_t idx,
+              WideStringView text,
+              RecordOperation add_operation = RecordOperation::kInsertRecord);
+
   WideString Delete(
       size_t start_idx,
       size_t length,

@@ -99,7 +99,9 @@ void CJX_Subform::locale(v8::Isolate* pIsolate,
     return;
   }
 
-  WideString wsLocaleName = GetXFANode()->GetLocaleName().value_or(L"");
+  // TODO(tsepez): needless allocation for value_or() arg if value present.
+  WideString wsLocaleName =
+      GetXFANode()->GetLocaleName().value_or(WideString());
   *pValue =
       fxv8::NewStringHelper(pIsolate, wsLocaleName.ToUTF8().AsStringView());
 }

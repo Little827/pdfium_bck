@@ -36,7 +36,7 @@ TEST_F(FMCallExpressionTest, more_than_32_arguments) {
   callExp->ToJavaScript(&js, CXFA_FMAssignExpression::ReturnType::kInferred);
 
   // Generate the result javascript string.
-  WideString result = L"sign(";
+  WideString result(L"sign(");
   for (size_t i = 0; i < 50; i++) {
     if (i > 0)
       result += L", ";

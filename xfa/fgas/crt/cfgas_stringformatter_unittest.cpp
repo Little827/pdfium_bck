@@ -92,10 +92,10 @@ TEST_F(CFGAS_StringFormatterTest, DateFormat) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     WideString result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
-    EXPECT_TRUE(fmt.FormatDateTime(Mgr(tests[i].locale), tests[i].input,
-                                   CFGAS_StringFormatter::DateTimeType::kDate,
-                                   &result));
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
+    EXPECT_TRUE(fmt.FormatDateTime(
+        Mgr(WideString(tests[i].locale)), WideString(tests[i].input),
+        CFGAS_StringFormatter::DateTimeType::kDate, &result));
     EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
   }
 }
@@ -143,10 +143,10 @@ TEST_F(CFGAS_StringFormatterTest, TimeFormat) {
 
     for (size_t i = 0; i < std::size(tests); ++i) {
       WideString result;
-      CFGAS_StringFormatter fmt(tests[i].pattern);
-      EXPECT_TRUE(fmt.FormatDateTime(Mgr(tests[i].locale), tests[i].input,
-                                     CFGAS_StringFormatter::DateTimeType::kTime,
-                                     &result));
+      CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
+      EXPECT_TRUE(fmt.FormatDateTime(
+          Mgr(WideString(tests[i].locale)), WideString(tests[i].input),
+          CFGAS_StringFormatter::DateTimeType::kTime, &result));
       EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
     }
   }
@@ -175,9 +175,9 @@ TEST_F(CFGAS_StringFormatterTest, DateTimeFormat) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     WideString result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
     EXPECT_TRUE(fmt.FormatDateTime(
-        Mgr(tests[i].locale), tests[i].input,
+        Mgr(WideString(tests[i].locale)), WideString(tests[i].input),
         CFGAS_StringFormatter::DateTimeType::kDateTime, &result));
     EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
   }
@@ -204,9 +204,9 @@ TEST_F(CFGAS_StringFormatterTest, TimeDateFormat) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     WideString result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
     EXPECT_TRUE(fmt.FormatDateTime(
-        Mgr(tests[i].locale), tests[i].input,
+        Mgr(WideString(tests[i].locale)), WideString(tests[i].input),
         CFGAS_StringFormatter::DateTimeType::kTimeDate, &result));
     EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
   }
@@ -266,10 +266,10 @@ TEST_F(CFGAS_StringFormatterTest, DateParse) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     CFX_DateTime result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
-    EXPECT_TRUE(fmt.ParseDateTime(Mgr(tests[i].locale), tests[i].input,
-                                  CFGAS_StringFormatter::DateTimeType::kDate,
-                                  &result));
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
+    EXPECT_TRUE(fmt.ParseDateTime(
+        Mgr(WideString(tests[i].locale)), WideString(tests[i].input),
+        CFGAS_StringFormatter::DateTimeType::kDate, &result));
     EXPECT_EQ(tests[i].output, result) << " TEST: " << i;
   }
 }
@@ -303,17 +303,18 @@ TEST_F(CFGAS_StringFormatterTest, DateParse) {
 // }
 
 TEST_F(CFGAS_StringFormatterTest, SplitFormatString) {
-  std::vector<WideString> results = CFGAS_StringFormatter::SplitOnBars(L"");
+  std::vector<WideString> results =
+      CFGAS_StringFormatter::SplitOnBars(WideString());
   EXPECT_EQ(1UL, results.size());
   EXPECT_TRUE(results[0].IsEmpty());
 
-  results = CFGAS_StringFormatter::SplitOnBars(L"|");
+  results = CFGAS_StringFormatter::SplitOnBars(WideString(L"|"));
   EXPECT_EQ(2UL, results.size());
   EXPECT_TRUE(results[0].IsEmpty());
   EXPECT_TRUE(results[1].IsEmpty());
 
-  results = CFGAS_StringFormatter::SplitOnBars(
-      L"null{'No|data'} | null{} | text{999*9999} | text{999*999*9999}");
+  results = CFGAS_StringFormatter::SplitOnBars(WideString(
+      L"null{'No|data'} | null{} | text{999*9999} | text{999*999*9999}"));
   EXPECT_EQ(4UL, results.size());
 
   const wchar_t* patterns[] = {L"null{'No|data'} ", L" null{} ",
@@ -456,8 +457,9 @@ TEST_F(CFGAS_StringFormatterTest, NumParse) {
 
   for (const auto& test : tests) {
     WideString result;
-    CFGAS_StringFormatter fmt(test.pattern);
-    EXPECT_TRUE(fmt.ParseNum(Mgr(test.locale), test.input, &result))
+    CFGAS_StringFormatter fmt(WideString(test.pattern));
+    EXPECT_TRUE(fmt.ParseNum(Mgr(WideString(test.locale)),
+                             WideString(test.input), &result))
         << " TEST: " << test.input << ", " << test.pattern;
     EXPECT_STREQ(test.output, result.c_str())
         << " TEST: " << test.input << ", " << test.pattern;
@@ -465,8 +467,9 @@ TEST_F(CFGAS_StringFormatterTest, NumParse) {
 
   for (const auto& test : failures) {
     WideString result;
-    CFGAS_StringFormatter fmt(test.pattern);
-    EXPECT_FALSE(fmt.ParseNum(Mgr(test.locale), test.input, &result))
+    CFGAS_StringFormatter fmt(WideString(test.pattern));
+    EXPECT_FALSE(fmt.ParseNum(Mgr(WideString(test.locale)),
+                              WideString(test.input), &result))
         << " TEST: " << test.input << ", " << test.pattern;
   }
 }
@@ -587,8 +590,9 @@ TEST_F(CFGAS_StringFormatterTest, NumFormat) {
 
   for (const auto& test : tests) {
     WideString result;
-    CFGAS_StringFormatter fmt(test.pattern);
-    EXPECT_TRUE(fmt.FormatNum(Mgr(test.locale), test.input, &result))
+    CFGAS_StringFormatter fmt(WideString(test.pattern));
+    EXPECT_TRUE(fmt.FormatNum(Mgr(WideString(test.locale)),
+                              WideString(test.input), &result))
         << " TEST: " << test.input << ", " << test.pattern;
     EXPECT_STREQ(test.output, result.c_str())
         << " TEST: " << test.input << ", " << test.pattern;
@@ -596,8 +600,9 @@ TEST_F(CFGAS_StringFormatterTest, NumFormat) {
 
   for (const auto& test : failures) {
     WideString result;
-    CFGAS_StringFormatter fmt(test.pattern);
-    EXPECT_FALSE(fmt.FormatNum(Mgr(test.locale), test.input, &result))
+    CFGAS_StringFormatter fmt(WideString(test.pattern));
+    EXPECT_FALSE(fmt.FormatNum(Mgr(WideString(test.locale)),
+                               WideString(test.input), &result))
         << " TEST: " << test.input << ", " << test.pattern;
   }
 }
@@ -620,8 +625,8 @@ TEST_F(CFGAS_StringFormatterTest, TextParse) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     WideString result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
-    EXPECT_TRUE(fmt.ParseText(tests[i].input, &result));
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
+    EXPECT_TRUE(fmt.ParseText(WideString(tests[i].input), &result));
     EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
   }
 }
@@ -629,8 +634,8 @@ TEST_F(CFGAS_StringFormatterTest, TextParse) {
 TEST_F(CFGAS_StringFormatterTest, InvalidTextParse) {
   // Input does not match mask.
   WideString result;
-  CFGAS_StringFormatter fmt(L"AAA-9999-X");
-  EXPECT_FALSE(fmt.ParseText(L"123-4567-8", &result));
+  CFGAS_StringFormatter fmt(WideString(L"AAA-9999-X"));
+  EXPECT_FALSE(fmt.ParseText(WideString(L"123-4567-8"), &result));
 }
 
 TEST_F(CFGAS_StringFormatterTest, TextFormat) {
@@ -651,8 +656,8 @@ TEST_F(CFGAS_StringFormatterTest, TextFormat) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     WideString result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
-    EXPECT_TRUE(fmt.FormatText(tests[i].input, &result));
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
+    EXPECT_TRUE(fmt.FormatText(WideString(tests[i].input), &result));
     EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
   }
 }
@@ -667,8 +672,8 @@ TEST_F(CFGAS_StringFormatterTest, NullParse) {
   };
 
   for (size_t i = 0; i < std::size(tests); ++i) {
-    CFGAS_StringFormatter fmt(tests[i].pattern);
-    EXPECT_TRUE(fmt.ParseNull(tests[i].input)) << " TEST: " << i;
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
+    EXPECT_TRUE(fmt.ParseNull(WideString(tests[i].input))) << " TEST: " << i;
   }
 }
 
@@ -680,7 +685,7 @@ TEST_F(CFGAS_StringFormatterTest, NullFormat) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     WideString result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
     EXPECT_TRUE(fmt.FormatNull(&result));
     EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
   }
@@ -693,8 +698,8 @@ TEST_F(CFGAS_StringFormatterTest, ZeroParse) {
   } tests[] = {{L"", L"zero{}"}, {L"9", L"zero{9}"}, {L"a", L"zero{'a'}"}};
 
   for (size_t i = 0; i < std::size(tests); ++i) {
-    CFGAS_StringFormatter fmt(tests[i].pattern);
-    EXPECT_TRUE(fmt.ParseZero(tests[i].input)) << " TEST: " << i;
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
+    EXPECT_TRUE(fmt.ParseZero(WideString(tests[i].input))) << " TEST: " << i;
   }
 }
 
@@ -712,7 +717,7 @@ TEST_F(CFGAS_StringFormatterTest, ZeroFormat) {
 
   for (size_t i = 0; i < std::size(tests); ++i) {
     WideString result;
-    CFGAS_StringFormatter fmt(tests[i].pattern);
+    CFGAS_StringFormatter fmt(WideString(tests[i].pattern));
     EXPECT_TRUE(fmt.FormatZero(&result));
     EXPECT_STREQ(tests[i].output, result.c_str()) << " TEST: " << i;
   }
@@ -720,27 +725,27 @@ TEST_F(CFGAS_StringFormatterTest, ZeroFormat) {
 
 TEST_F(CFGAS_StringFormatterTest, GetCategory) {
   EXPECT_EQ(CFGAS_StringFormatter::Category::kUnknown,
-            CFGAS_StringFormatter(L"'just text'").GetCategory());
+            CFGAS_StringFormatter(WideString(L"'just text'")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kNull,
-            CFGAS_StringFormatter(L"null{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"null{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kZero,
-            CFGAS_StringFormatter(L"zero{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"zero{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kNum,
-            CFGAS_StringFormatter(L"num{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"num{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kText,
-            CFGAS_StringFormatter(L"text{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"text{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kDateTime,
-            CFGAS_StringFormatter(L"datetime{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"datetime{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kTime,
-            CFGAS_StringFormatter(L"time{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"time{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kDate,
-            CFGAS_StringFormatter(L"date{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"date{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kDateTime,
-            CFGAS_StringFormatter(L"time{} date{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"time{} date{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kDateTime,
-            CFGAS_StringFormatter(L"date{} time{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"date{} time{}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kNum,
-            CFGAS_StringFormatter(L"num(en_GB){}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"num(en_GB){}")).GetCategory());
   EXPECT_EQ(CFGAS_StringFormatter::Category::kDate,
-            CFGAS_StringFormatter(L"date.long{}").GetCategory());
+            CFGAS_StringFormatter(WideString(L"date.long{}")).GetCategory());
 }

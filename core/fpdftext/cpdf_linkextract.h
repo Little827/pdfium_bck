@@ -41,6 +41,7 @@ class CPDF_LinkExtract {
   };
 
   absl::optional<Link> CheckWebLink(const WideString& str);
+  absl::optional<Link> CheckWebLink(WideStringView str);
   bool CheckMailLink(WideString* str);
 
   UnownedPtr<const CPDF_TextPage> const m_pTextPage;

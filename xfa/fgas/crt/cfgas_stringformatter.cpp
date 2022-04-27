@@ -2014,7 +2014,7 @@ bool CFGAS_StringFormatter::FormatNum(LocaleMgrIface* pLocaleMgr,
         break;
       case 'R':
         if (ccf - 1 < spNumFormat.size() && spNumFormat[ccf - 1] == 'C') {
-          *wsOutput = bNeg ? L"CR" : L"  " + *wsOutput;
+          *wsOutput = bNeg ? WideString(L"CR") : L"  " + *wsOutput;
           ccf--;
           bAddNeg = true;
         } else {
@@ -2033,7 +2033,7 @@ bool CFGAS_StringFormatter::FormatNum(LocaleMgrIface* pLocaleMgr,
         break;
       case 'B':
         if (ccf - 1 < spNumFormat.size() && spNumFormat[ccf - 1] == 'D') {
-          *wsOutput = bNeg ? L"DB" : L"  " + *wsOutput;
+          *wsOutput = bNeg ? WideString(L"DB") : L"  " + *wsOutput;
           ccf--;
           bAddNeg = true;
         } else {

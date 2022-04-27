@@ -13,6 +13,9 @@
 CFX_XMLInstruction::CFX_XMLInstruction(const WideString& wsTarget)
     : name_(wsTarget) {}
 
+CFX_XMLInstruction::CFX_XMLInstruction(WideStringView wsTarget)
+    : CFX_XMLInstruction(WideString(wsTarget)) {}
+
 CFX_XMLInstruction::~CFX_XMLInstruction() = default;
 
 CFX_XMLNode::Type CFX_XMLInstruction::GetType() const {
@@ -27,6 +30,10 @@ CFX_XMLNode* CFX_XMLInstruction::Clone(CFX_XMLDocument* doc) {
 
 void CFX_XMLInstruction::AppendData(const WideString& wsData) {
   target_data_.push_back(wsData);
+}
+
+void CFX_XMLInstruction::AppendData(WideStringView wsData) {
+  AppendData(WideString(wsData));
 }
 
 bool CFX_XMLInstruction::IsOriginalXFAVersion() const {
