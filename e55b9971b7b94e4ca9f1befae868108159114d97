@@ -127,6 +127,53 @@
       },
       "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce91d351_a894bd4e",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-28T16:39:34Z",
+      "side": 1,
+      "message": "Or is this just to avoid ambiguity in template resolution?",
+      "parentUuid": "e5b1c0c0_b0ca625a",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 67
+      },
+      "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfebc2e8_23453b2c",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-28T16:39:34Z",
+      "side": 1,
+      "message": "might be fun to add a test involving, say,  std::set\u003cByteString, std::less\u003c\u003e\u003e and show that insert from bytestring is found via lookup from views.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 0
+      },
+      "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
