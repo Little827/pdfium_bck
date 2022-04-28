@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177ff304_7b1ffa2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-28T22:08:09Z",
+      "side": 1,
+      "message": "no \u0027s\u0027.",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "d61bcb2098452e21a6437017e551f6dadd2f834b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd1cbe0_c8fd369a",
+        "filename": "xfa/fxfa/parser/xfa_utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-28T22:08:09Z",
+      "side": 1,
+      "message": "BTW, does this generate the same result as WideString::EncodeEntities()?",
+      "revId": "d61bcb2098452e21a6437017e551f6dadd2f834b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68ae3b7_b86f6df3",
+        "filename": "xfa/fxfa/parser/xfa_utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-28T22:08:09Z",
+      "side": 1,
+      "message": "BTW, every non-test XFA_AttributeToName() call is wrapped in WideString::FromASCII(). Maybe it should just return a WideStringView.",
+      "revId": "d61bcb2098452e21a6437017e551f6dadd2f834b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
