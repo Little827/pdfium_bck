@@ -56,6 +56,30 @@
       },
       "revId": "580be38b6be368667bfe9b47d03ecca24acf2bfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eccbcfe8_758df7a7",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-28T16:42:27Z",
+      "side": 1,
+      "message": "Alternativley, once we make Bytestring(char*) explicit ctor, we could have two forms, in particular if the dictionary is using a string pool, we could teach the pool how to lookup the shared bytestring from a view, and not do any allocs when it is already known.",
+      "parentUuid": "3c037ce2_91bbae88",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "580be38b6be368667bfe9b47d03ecca24acf2bfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
