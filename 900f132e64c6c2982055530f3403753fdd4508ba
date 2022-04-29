@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a787bf03_acc627ce",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 4193,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-29T16:30:02Z",
+      "side": 1,
+      "message": "This was a really good catch. The test seemed to pass because it was comparing an empty `expected_hashes` vector to an empty `orig_hashes` vector. I fixed the test and added checks to ensure `expected_hashes` and `orig_hashes` are populated correctly.",
+      "parentUuid": "1208ea9d_5267390d",
+      "range": {
+        "startLine": 4193,
+        "startChar": 22,
+        "endLine": 4193,
+        "endChar": 29
+      },
+      "revId": "900f132e64c6c2982055530f3403753fdd4508ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79577217_ddfa36e3",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-23T17:55:47Z",
       "side": 1,
       "message": "What\u0027s the problem with supporting page duplication?",
+      "revId": "900f132e64c6c2982055530f3403753fdd4508ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ca74e6_95d24065",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 8711
+      },
+      "writtenOn": "2022-04-29T16:30:02Z",
+      "side": 1,
+      "message": "thestig@ can confirm, but duplicating a page just in the existing page list structure results is a shallow copy. If the new order of pages is [0 1 0], if the first page gets modified, that modification will show up on page 2 as well.\n\nIn designing this API, we believe it should be simple and not too powerful in its capabilities. A separate duplication API should handle that behavior.",
+      "parentUuid": "79577217_ddfa36e3",
       "revId": "900f132e64c6c2982055530f3403753fdd4508ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
