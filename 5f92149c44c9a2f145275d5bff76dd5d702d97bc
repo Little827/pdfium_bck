@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e65509_df0adeef",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 4118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-29T19:22:05Z",
+      "side": 1,
+      "message": "I would format this as:\n\n// comment\nstd::vector\u003cint\u003e expected_order;",
+      "revId": "5f92149c44c9a2f145275d5bff76dd5d702d97bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89688f65_81333513",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 4139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-29T19:22:05Z",
+      "side": 1,
+      "message": "This patch set lost the call to hashes.size().",
+      "range": {
+        "startLine": 4139,
+        "startChar": 24,
+        "endLine": 4139,
+        "endChar": 36
+      },
+      "revId": "5f92149c44c9a2f145275d5bff76dd5d702d97bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

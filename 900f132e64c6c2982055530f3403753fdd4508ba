@@ -81,6 +81,24 @@
       "parentUuid": "79577217_ddfa36e3",
       "revId": "900f132e64c6c2982055530f3403753fdd4508ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd4e478_3a3c3cf1",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-29T19:22:05Z",
+      "side": 1,
+      "message": "Yes, a shallow copy can be surprising, so we decided to make the API simpler and avoid this feature.",
+      "parentUuid": "55ca74e6_95d24065",
+      "revId": "900f132e64c6c2982055530f3403753fdd4508ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
