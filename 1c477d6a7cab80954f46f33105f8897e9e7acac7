@@ -16,6 +16,24 @@
       "message": "Our goal is to make it easier to construct string views, since that\u0027s cheaper. Is there a reason we can\u0027t just leave this ctor implicit?",
       "revId": "1c477d6a7cab80954f46f33105f8897e9e7acac7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ab41bb_18710260",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-29T18:31:07Z",
+      "side": 1,
+      "message": "Just a kinda foot shooting prevention here, not related to the larger task. How about I keep the ctor implicit but land the bytestring/widestring changes for the sake of clarity?",
+      "parentUuid": "07b11799_96419beb",
+      "revId": "1c477d6a7cab80954f46f33105f8897e9e7acac7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
