@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aef1e77_366ce381",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-30T00:47:43Z",
+      "side": 1,
+      "message": "For reference: https://chromium.googlesource.com/v8/v8.git/+/21fc9cd3b0/BUILD.gn#1455",
+      "range": {
+        "startLine": 12,
+        "startChar": 58,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "64e23ed85487133a91357835b2a8ac66baa14db8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
