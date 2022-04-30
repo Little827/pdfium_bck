@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0db722_1ef468c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-04-30T00:49:22Z",
+      "side": 1,
+      "message": "This refers to https://pdfium-review.googlesource.com/86391\n\nWaiting for feedback from that CL\u0027s author, so not landing this CL yet.",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "017c2a10528d34c57b2003510e2e75e6d262821c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
