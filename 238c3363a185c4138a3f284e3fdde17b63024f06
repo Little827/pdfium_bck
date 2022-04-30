@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd88178_a283d5d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-04-30T00:27:09Z",
+      "side": 1,
+      "message": "But yes, security positive in that the fewer things that can be mutated from JS, the fewer ways there are to mess with us.",
+      "revId": "238c3363a185c4138a3f284e3fdde17b63024f06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "492fe192_37dda18f",
