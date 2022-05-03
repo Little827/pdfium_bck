@@ -200,9 +200,6 @@ component("skia") {
 
     #pdfium
     "//third_party/skia/src/ports/SkDiscardableMemory_none.cpp",
-    "//third_party/skia/src/ports/SkFontMgr_custom.cpp",
-    "//third_party/skia/src/ports/SkFontMgr_custom_empty.cpp",
-    "//third_party/skia/src/ports/SkFontMgr_custom_empty_factory.cpp",
     "//third_party/skia/src/ports/SkMemory_malloc.cpp",
   ]
 
@@ -280,6 +277,7 @@ component("skia") {
     ]
   }
 
+  frameworks = []
   if (is_apple) {
     sources += [
       "//third_party/skia/include/ports/SkFontMgr_mac_ct.h",
@@ -289,6 +287,17 @@ component("skia") {
       "//third_party/skia/src/ports/SkScalerContext_mac_ct.h",
       "//third_party/skia/src/ports/SkTypeface_mac_ct.cpp",
       "//third_party/skia/src/ports/SkTypeface_mac_ct.h",
+    ]
+    frameworks += [
+      "CoreFoundation.framework",
+      "CoreGraphics.framework",
+      "CoreText.framework",
+    ]
+  } else {
+    sources += [
+      "//third_party/skia/src/ports/SkFontMgr_custom.cpp",
+      "//third_party/skia/src/ports/SkFontMgr_custom_empty.cpp",
+      "//third_party/skia/src/ports/SkFontMgr_custom_empty_factory.cpp",
     ]
   }
 
