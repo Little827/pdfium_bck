@@ -16,6 +16,24 @@
       "message": "nit: no extra blank lines, for consistency with the line 138 block.",
       "revId": "321410d73b2460023f6df48666c1556012fea13b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a2c7f3_b1e40877",
+        "filename": "skia/config/SkUserConfig.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-03T00:55:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddde2ef_51d87b59",
+      "revId": "321410d73b2460023f6df48666c1556012fea13b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
