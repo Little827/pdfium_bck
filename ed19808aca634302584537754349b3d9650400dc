@@ -69,6 +69,24 @@
       "parentUuid": "89870e14_f78ea58d",
       "revId": "ed19808aca634302584537754349b3d9650400dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52daf099_f6fec377",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-03T17:47:42Z",
+      "side": 1,
+      "message": "I\u0027m not the one using MSVC. The public pdfium mailing list would be the right place to ask.",
+      "parentUuid": "aca0e81e_f7f967e7",
+      "revId": "ed19808aca634302584537754349b3d9650400dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
