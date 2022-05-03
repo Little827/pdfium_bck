@@ -33,11 +33,15 @@ config("pdfium_common_config") {
     defines += [ "PDF_ENABLE_CLICK_LOGGING" ]
   }
 
+  if (pdf_include_agg) {
+    defines += [ "_AGG_SUPPORT_" ]
+  }
+
   if (pdf_use_skia) {
     defines += [ "_SKIA_SUPPORT_" ]
   }
 
-  if (pdf_use_skia_paths) {
+  if (pdf_include_skia_paths) {
     defines += [ "_SKIA_SUPPORT_PATHS_" ]
   }
 
