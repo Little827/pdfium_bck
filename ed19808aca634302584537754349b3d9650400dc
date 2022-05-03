@@ -16,6 +16,24 @@
       "message": "(why is non-clang a config we care about?)",
       "revId": "ed19808aca634302584537754349b3d9650400dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d94130_88474e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-03T16:37:33Z",
+      "side": 1,
+      "message": "PDFium needs to run on some non-clang platforms, such as Windows MSVC bots.",
+      "parentUuid": "c2f045d9_f142bfd8",
+      "revId": "ed19808aca634302584537754349b3d9650400dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
