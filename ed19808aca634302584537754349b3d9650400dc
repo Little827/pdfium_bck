@@ -104,6 +104,24 @@
       "message": "I mean, it\u0027s up to you as project owners to make this decision and inform the mailing list, no?\n\nclang produces ms-abi-compatible outputs, so people who do want to use msvc for some reason can still link clang-built pdfium into their programs.",
       "revId": "ed19808aca634302584537754349b3d9650400dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a5a4cf_93747f5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-03T19:00:51Z",
+      "side": 1,
+      "message": "I imagine someone using MSVC will want to understand why PDFium is dropping support, so I would want to hear your thoughts on this. Is Chromium going to break MSVC is //build at some point? If the concern over maintenance costs?\n\nBTW, V8 has https://crbug.com/v8/9835 open for this topic as well.",
+      "parentUuid": "3396b2ac_94d53cd8",
+      "revId": "ed19808aca634302584537754349b3d9650400dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
