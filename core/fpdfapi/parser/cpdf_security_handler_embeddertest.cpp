@@ -9,6 +9,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_edit.h"
 #include "public/fpdf_save.h"
@@ -93,7 +94,7 @@ class CPDFSecurityHandlerEmbedderTest : public EmbedderTest {
     ASSERT_TRUE(page);
 
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, pdfium::kHelloWorldChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, pdfium::HelloWorldChecksum());
   }
 
   void VerifyModifiedHelloWorldPage(FPDF_PAGE page) {
@@ -101,7 +102,7 @@ class CPDFSecurityHandlerEmbedderTest : public EmbedderTest {
 
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200,
-                  pdfium::kHelloWorldRemovedChecksum);
+                  pdfium::HelloWorldRemovedChecksum());
   }
 };
 
@@ -134,13 +135,16 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPassword) {
 }
 
 TEST_F(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kChecksum[] = "c3c4fc0032f5d252327bf52d29a074fa";
-#elif BUILDFLAG(IS_APPLE)
-  const char kChecksum[] = "2a308e8cc20a6221112c387d122075a8";
+  const char kChecksumSkia[] = "c3c4fc0032f5d252327bf52d29a074fa";
+#if BUILDFLAG(IS_APPLE)
+  const char kChecksumAgg[] = "2a308e8cc20a6221112c387d122075a8";
 #else
-  const char kChecksum[] = "9fe7eef8e51d15a604001854be6ed1ee";
+  const char kChecksumAgg[] = "9fe7eef8e51d15a604001854be6ed1ee";
 #endif
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
+
   {
     ASSERT_TRUE(OpenDocumentWithOptions("encrypted.pdf", "5678",
                                         LinearizeOption::kMustLinearize,

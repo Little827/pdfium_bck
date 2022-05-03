@@ -480,7 +480,8 @@ CFX_RenderDevice::CFX_RenderDevice() = default;
 CFX_RenderDevice::~CFX_RenderDevice() {
   RestoreState(false);
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  Flush(true);
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    Flush(true);
 #endif
 }
 
@@ -553,7 +554,9 @@ bool CFX_RenderDevice::CreateCompatibleBitmap(
   if (m_RenderCaps & FXRC_BYTEMASK_OUTPUT)
     return pDIB->Create(width, height, FXDIB_Format::k8bppMask);
 #if defined(_SKIA_SUPPORT_PATHS_)
-  constexpr FXDIB_Format kFormat = FXDIB_Format::kRgb32;
+  const FXDIB_Format kFormat = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                   ? FXDIB_Format::kRgb32
+                                   : CFX_DIBBase::kPlatformRGBFormat;
 #else
   constexpr FXDIB_Format kFormat = CFX_DIBBase::kPlatformRGBFormat;
 #endif
@@ -787,7 +790,8 @@ bool CFX_RenderDevice::DrawFillStrokePath(
     return false;
   }
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  bitmap_device.GetDeviceDriver()->Flush();
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    bitmap_device.GetDeviceDriver()->Flush();
 #endif
   FX_RECT src_rect(0, 0, rect.Width(), rect.Height());
   return m_pDeviceDriver->SetDIBits(bitmap, 0, src_rect, rect.left, rect.top,
@@ -1034,11 +1038,13 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
         // instead fall back on NORMAL anti-aliasing.
         anti_alias = FT_RENDER_MODE_NORMAL;
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-        // Since |anti_alias| doesn't affect Skia rendering, and Skia only
-        // follows strictly to the options provided by |text_options|, we need
-        // to update |text_options| so that Skia falls back on normal
-        // anti-aliasing as well.
-        text_options.aliasing_type = CFX_TextRenderOptions::kAntiAliasing;
+        if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+          // Since |anti_alias| doesn't affect Skia rendering, and Skia only
+          // follows strictly to the options provided by |text_options|, we need
+          // to update |text_options| so that Skia falls back on normal
+          // anti-aliasing as well.
+          text_options.aliasing_type = CFX_TextRenderOptions::kAntiAliasing;
+        }
 #endif
       } else if ((m_RenderCaps & FXRC_ALPHA_OUTPUT)) {
         // Whether Skia uses LCD optimization should strictly follow the
@@ -1199,10 +1205,12 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
   }
 
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATH_)
-  // DrawNormalTextHelper() can result in unpremultiplied bitmaps for rendering
-  // glyphs. Make sure `bitmap` is premultiplied before proceeding or
-  // CFX_DIBBase::DebugVerifyBufferIsPreMultiplied() check will fail.
-  bitmap->PreMultiply();
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    // DrawNormalTextHelper() can result in unpremultiplied bitmaps for
+    // rendering glyphs. Make sure `bitmap` is premultiplied before proceeding
+    // or CFX_DIBBase::DebugVerifyBufferIsPreMultiplied() check will fail.
+    bitmap->PreMultiply();
+  }
 #endif
 
   if (bitmap->IsMaskFormat())

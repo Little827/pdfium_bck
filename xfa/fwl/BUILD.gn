@@ -127,6 +127,9 @@ source_set("fwl") {
 
 pdfium_embeddertest_source_set("embeddertests") {
   sources = [ "cfwl_edit_embeddertest.cpp" ]
-  deps = [ "../../fxjs:gc" ]
+  deps = [
+    "../../core/fxge",
+    "../../fxjs:gc",
+  ]
   pdfium_root_dir = "../../"
 }
