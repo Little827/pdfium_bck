@@ -9,14 +9,12 @@
 >>
 endobj
 {{include checkbox_radiobutton.fragment}}
-% Make some buttons be reset. Note that /T as an array of dict references
-% does not seem to work as expected. /Flags 1 means all fields *except*
-% those listed.
+% Make some buttons be hidden. Note that /T as an array of dict references
+% does not seem to work as expected.
 {{object 13 0}} <<
   /Type /Action
-  /S /ResetForm
-  /Fields [(readOnlyRadioButton.Widget8) (readOnlyCheckbox)]
-  /Flags 1
+  /S /Hide
+  /T [(readOnlyRadioButton.Widget8) (readOnlyCheckbox)]
 >>
 endobj
 {{xref}}
