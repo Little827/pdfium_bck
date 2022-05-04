@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d8b89c_0c1e6b1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-04T20:23:33Z",
+      "side": 1,
+      "message": "LG % question.",
+      "revId": "3b5a941d6f13466e1f4045f98acc17395a193f23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d4addb_8698cf3e",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-04T20:23:33Z",
+      "side": 1,
+      "message": "better to be static or non-static? Not sure which is best.",
+      "range": {
+        "startLine": 649,
+        "startChar": 2,
+        "endLine": 649,
+        "endChar": 8
+      },
+      "revId": "3b5a941d6f13466e1f4045f98acc17395a193f23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
