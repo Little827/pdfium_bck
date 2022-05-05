@@ -99,6 +99,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e636d4_3d57348f",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-05T23:53:53Z",
+      "side": 1,
+      "message": "In Chromium, the API would just take base::StringPiece, and the caller can pass in std::string without an explicit conversion. If we follow that pattern, we would not add a ByteString variant here, and change the caller to not have to call ByteString::AsStringView().",
+      "parentUuid": "e2e35c60_55aa3c4c",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7866314f_259eebfa",
@@ -170,6 +194,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97eb8e4e_a65ba172",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-05T23:53:53Z",
+      "side": 1,
+      "message": "To make template resolution work. Without these, the std::map change in cpdf_dictionary.h triggers a compiler error: no matching function for call to object of type \u0027const std::less\u003c\u003e\u0027",
+      "parentUuid": "ce91d351_a894bd4e",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 67
+      },
+      "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfebc2e8_23453b2c",
@@ -183,6 +231,30 @@
       "writtenOn": "2022-04-28T16:39:34Z",
       "side": 1,
       "message": "might be fun to add a test involving, say,  std::set\u003cByteString, std::less\u003c\u003e\u003e and show that insert from bytestring is found via lookup from views.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 0
+      },
+      "revId": "e55b9971b7b94e4ca9f1befae868108159114d97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671b92d4_94781d7f",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-05T23:53:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfebc2e8_23453b2c",
       "range": {
         "startLine": 236,
         "startChar": 0,
