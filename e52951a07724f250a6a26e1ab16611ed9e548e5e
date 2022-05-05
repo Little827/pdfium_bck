@@ -70,6 +70,30 @@
       },
       "revId": "e52951a07724f250a6a26e1ab16611ed9e548e5e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "025b5c14_29f4233f",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-05T00:05:09Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/93379",
+      "parentUuid": "5d5f07ba_5020501d",
+      "range": {
+        "startLine": 23,
+        "startChar": 42,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "e52951a07724f250a6a26e1ab16611ed9e548e5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
