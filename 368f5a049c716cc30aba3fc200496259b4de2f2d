@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4495ac3_6c6380dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-05T05:23:07Z",
+      "side": 1,
+      "message": "[1] makes compiling fail on Windows. And another compilation error was introduced in [2] and then got fixed after [1] was merged. Therefore this CL only rolls build as far as a9b5feb78. \n\n[1]https://chromium-review.googlesource.com/c/chromium/src/+/3585346.\n[2] https://chromium.googlesource.com/chromium/src/build.git/+/e41ca7149336a5413786b484f9535f5d5dc2c2b7",
+      "revId": "368f5a049c716cc30aba3fc200496259b4de2f2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
