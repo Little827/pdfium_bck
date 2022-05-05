@@ -439,6 +439,16 @@ void ExampleNamedAction(FPDF_FORMFILLINFO* pInfo, FPDF_BYTESTRING name) {
   printf("Execute named action: %s\n", name);
 }
 
+void ExampleOutputSelectedRect(FPDF_FORMFILLINFO* pThis,
+                               FPDF_PAGE page,
+                               double left,
+                               double top,
+                               double right,
+                               double bottom) {
+  // NO-OP implementation, but PDFium will short-circuit some code
+  // paths if this is not present.
+}
+
 void ExampleUnsupportedHandler(UNSUPPORT_INFO*, int type) {
   std::string feature = "Unknown";
   switch (type) {
@@ -1070,6 +1080,7 @@ void ProcessPdf(const std::string& name,
   form_callbacks.version = 1;
 #endif  // PDF_ENABLE_XFA
   form_callbacks.FFI_ExecuteNamedAction = ExampleNamedAction;
+  form_callbacks.FFI_OutputSelectedRect = ExampleOutputSelectedRect;
   form_callbacks.FFI_GetPage = GetPageForIndex;
 
 #ifdef PDF_ENABLE_V8
