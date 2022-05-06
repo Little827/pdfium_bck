@@ -235,6 +235,7 @@ FPDF_BOOL PostRequestURLStub(FPDF_FORMFILLINFO* pThis,
                              FPDF_WIDESTRING wsEncode,
                              FPDF_WIDESTRING wsHeader,
                              FPDF_BSTR* response) {
+  FPDF_BStr_Set(response, "p\0o\0s\0t\0e\0d\0", 12);
   return true;
 }
 
