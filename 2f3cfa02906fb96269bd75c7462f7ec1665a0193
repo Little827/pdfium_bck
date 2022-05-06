@@ -70,6 +70,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6033d580_178350c9",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-06T18:25:03Z",
+      "side": 1,
+      "message": "Resolving per comment below for now.",
+      "parentUuid": "ad93bbdd_0b0b9055",
+      "range": {
+        "startLine": 266,
+        "startChar": 51,
+        "endLine": 266,
+        "endChar": 75
+      },
+      "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0688052b_5a9a22e6",
@@ -83,6 +107,24 @@
       "writtenOn": "2022-05-06T17:30:26Z",
       "side": 1,
       "message": "Chromium\u0027s skia/BUILD.gn file doesn\u0027t have this entry. Why does PDFium\u0027s skia/BUILD.gn need it?",
+      "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6301384_d54accae",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-06T18:25:03Z",
+      "side": 1,
+      "message": "Looks like Chromium uses skia/ext/fontmgr_default.cc and related files instead.",
+      "parentUuid": "0688052b_5a9a22e6",
       "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
