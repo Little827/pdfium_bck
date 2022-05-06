@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6aca376e_05c63cbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-06T19:20:35Z",
+      "side": 1,
+      "message": "SkFontMgr is not a font renderer. It\u0027s an interface for enumerating and looking up fonts. If the caller requests Times, SkFontMgr_A may return font A and SkFontMgr_B may return font B. Having different fonts would certainly cause a rendering difference, but is this an optimization?",
+      "parentUuid": "439a68dc_43c968ec",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad93bbdd_0b0b9055",
         "filename": "skia/BUILD.gn",
         "patchSetId": 2
