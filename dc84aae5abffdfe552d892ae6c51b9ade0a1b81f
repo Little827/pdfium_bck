@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bffa9ac_09ba0e3e",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-06T18:20:40Z",
+      "side": 1,
+      "message": "Maybe add a \"TODO(C++20): Use designated initializers\" comment here? (MSVC is strict about it and won\u0027t compile as is.)",
+      "revId": "dc84aae5abffdfe552d892ae6c51b9ade0a1b81f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
