@@ -204,10 +204,12 @@ void ReplaceAbbrInDictionary(CPDF_Dictionary* pDict) {
     }
   }
   for (const auto& op : replacements) {
-    if (op.is_replace_key)
+    if (op.is_replace_key) {
       pDict->ReplaceKey(op.key, ByteString(op.replacement));
-    else
-      pDict->SetNewFor<CPDF_Name>(op.key, ByteString(op.replacement));
+    } else {
+      pDict->SetNewFor<CPDF_Name>(op.key.AsStringView(),
+                                  ByteString(op.replacement));
+    }
   }
 }
 
@@ -613,14 +615,16 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
     if (type != CPDF_StreamParser::ElementType::kName) {
       break;
     }
-    auto word = m_pSyntax->GetWord();
+    ByteStringView word = m_pSyntax->GetWord();
+    // This must be a ByteString, as the ReadNextObject() call below invalidates
+    // the buffer `word` uses.
     ByteString key(word.Last(word.GetLength() - 1));
     auto pObj = m_pSyntax->ReadNextObject(false, false, 0);
     if (pObj && !pObj->IsInline()) {
-      pDict->SetNewFor<CPDF_Reference>(key, m_pDocument.Get(),
+      pDict->SetNewFor<CPDF_Reference>(key.AsStringView(), m_pDocument.Get(),
                                        pObj->GetObjNum());
     } else {
-      pDict->SetFor(key, std::move(pObj));
+      pDict->SetFor(key.AsStringView(), std::move(pObj));
     }
   }
   ReplaceAbbr(pDict.Get());

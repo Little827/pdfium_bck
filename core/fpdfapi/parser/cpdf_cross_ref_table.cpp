@@ -155,6 +155,8 @@ void CPDF_CrossRefTable::UpdateTrailer(RetainPtr<CPDF_Dictionary> new_trailer) {
   new_trailer->SetFor("XRefStm", trailer_->RemoveFor("XRefStm"));
   new_trailer->SetFor("Prev", trailer_->RemoveFor("Prev"));
 
-  for (const auto& key : new_trailer->GetKeys())
-    trailer_->SetFor(key, new_trailer->RemoveFor(key.AsStringView()));
+  for (const auto& key : new_trailer->GetKeys()) {
+    trailer_->SetFor(key.AsStringView(),
+                     new_trailer->RemoveFor(key.AsStringView()));
+  }
 }

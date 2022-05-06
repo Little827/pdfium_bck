@@ -25,6 +25,7 @@ class CPDF_NameTree {
   CPDF_NameTree& operator=(const CPDF_NameTree&) = delete;
   ~CPDF_NameTree();
 
+  // TODO(thestig): Convert `category` to ByteStringView.
   static std::unique_ptr<CPDF_NameTree> Create(CPDF_Document* pDoc,
                                                const ByteString& category);
 

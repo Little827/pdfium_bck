@@ -302,7 +302,6 @@ class CJS_Document final : public CJS_Object, public Observable {
 
   CJS_Result getPropertyInternal(CJS_Runtime* pRuntime,
                                  const ByteString& propName);
-
   CPDF_InteractiveForm* GetCoreInteractiveForm();
   CPDFSDK_InteractiveForm* GetSDKInteractiveForm();
 

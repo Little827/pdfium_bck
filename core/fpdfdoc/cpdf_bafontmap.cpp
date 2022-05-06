@@ -294,8 +294,8 @@ void CPDF_BAFontMap::AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
   CPDF_Stream* pStream = pAPDict->GetStreamFor(m_sAPType);
   if (!pStream) {
     pStream = m_pDocument->NewIndirect<CPDF_Stream>();
-    pAPDict->SetNewFor<CPDF_Reference>(m_sAPType, m_pDocument.Get(),
-                                       pStream->GetObjNum());
+    pAPDict->SetNewFor<CPDF_Reference>(m_sAPType.AsStringView(),
+                                       m_pDocument.Get(), pStream->GetObjNum());
   }
 
   CPDF_Dictionary* pStreamDict = pStream->GetDict();
@@ -317,7 +317,7 @@ void CPDF_BAFontMap::AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
     RetainPtr<CPDF_Object> pObject =
         pFontDict->IsInline() ? pFontDict->Clone()
                               : pFontDict->MakeReference(m_pDocument.Get());
-    pStreamResFontList->SetFor(sAlias, std::move(pObject));
+    pStreamResFontList->SetFor(sAlias.AsStringView(), std::move(pObject));
   }
 }
 

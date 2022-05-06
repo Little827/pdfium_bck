@@ -57,6 +57,7 @@ class CPDF_BAFontMap final : public IPVT_FontMap {
                                               ByteString* sFontAlias,
                                               FX_Charset nCharset);
   RetainPtr<CPDF_Font> GetAnnotDefaultFont(ByteString* sAlias);
+  // TODO(thestig): Switch to ByteStringView.
   void AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
                           const ByteString& sAlias);
 

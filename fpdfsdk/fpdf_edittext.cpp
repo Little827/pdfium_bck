@@ -121,8 +121,9 @@ CPDF_Dictionary* LoadFontDesc(CPDF_Document* pDoc,
     pStream->GetDict()->SetNewFor<CPDF_Number>("Length1",
                                                static_cast<int>(span.size()));
   }
-  ByteString fontFile = font_type == FPDF_FONT_TYPE1 ? "FontFile" : "FontFile2";
-  pFontDesc->SetNewFor<CPDF_Reference>(fontFile, pDoc, pStream->GetObjNum());
+  ByteStringView font_file =
+      font_type == FPDF_FONT_TYPE1 ? "FontFile" : "FontFile2";
+  pFontDesc->SetNewFor<CPDF_Reference>(font_file, pDoc, pStream->GetObjNum());
   return pFontDesc;
 }
 

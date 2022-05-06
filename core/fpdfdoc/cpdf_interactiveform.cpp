@@ -255,7 +255,7 @@ void AddFont(CPDF_Dictionary* pFormDict,
 
   csNameTag->Remove(' ');
   *csNameTag = GenerateNewFontResourceName(pDR, *csNameTag);
-  pFonts->SetNewFor<CPDF_Reference>(*csNameTag, pDocument,
+  pFonts->SetNewFor<CPDF_Reference>(csNameTag->AsStringView(), pDocument,
                                     pFont->GetFontDict()->GetObjNum());
 }
 

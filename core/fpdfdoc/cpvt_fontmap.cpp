@@ -42,7 +42,8 @@ void CPVT_FontMap::SetupAnnotSysPDFFont() {
   CPDF_Dictionary* pFontList = m_pResDict->GetDictFor("Font");
   if (ValidateFontResourceDict(pFontList) &&
       !pFontList->KeyExist(m_sSysFontAlias)) {
-    pFontList->SetNewFor<CPDF_Reference>(m_sSysFontAlias, m_pDocument.Get(),
+    pFontList->SetNewFor<CPDF_Reference>(m_sSysFontAlias.AsStringView(),
+                                         m_pDocument.Get(),
                                          pPDFFont->GetFontDict()->GetObjNum());
   }
   m_pSysFont = std::move(pPDFFont);

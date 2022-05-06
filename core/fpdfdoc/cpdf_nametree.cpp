@@ -409,7 +409,8 @@ std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateWithRootNameArray(
   if (!pCategory) {
     pCategory = pDoc->NewIndirect<CPDF_Dictionary>();
     pCategory->SetNewFor<CPDF_Array>("Names");
-    pNames->SetNewFor<CPDF_Reference>(category, pDoc, pCategory->GetObjNum());
+    pNames->SetNewFor<CPDF_Reference>(category.AsStringView(), pDoc,
+                                      pCategory->GetObjNum());
   }
 
   return pdfium::WrapUnique(new CPDF_NameTree(pCategory));  // Private ctor.
