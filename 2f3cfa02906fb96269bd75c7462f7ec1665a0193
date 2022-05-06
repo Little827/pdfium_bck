@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63bdc53_6bf191ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-06T19:02:10Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "00ed0a0b_7612c708",
+      "range": {
+        "startLine": 9,
+        "startChar": 69,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9640d361_47441f23",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-06T17:30:26Z",
       "side": 1,
       "message": "Are the various platform-specific SkFontMgr code really just optimizations? Are rendering tests suppose to have different hash results when they become optimized?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439a68dc_43c968ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-06T19:02:10Z",
+      "side": 1,
+      "message": "I don\u0027t view it as the hashes are supposed to be different because of optimizations, but rather it\u0027s a possibility.\n\nIf a low-level renderer does something like anti-aliasing just a little different (maybe because of how floating point numbers are handled internally), then that can cause subtle differences that can affect the hashes.\n\nI discovered that some of the test hashes definitely change for a build that switches to use the macOS or Windows specific font manager factories.\n\nWhat surprised me during the investigation was that I originally thought that we were already using the platform-specific FontMgr factories, and I learned that we were not.  I suspect that this was not the intention; if it in fact was then my change here is off in the wrong direction.",
+      "parentUuid": "9640d361_47441f23",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -142,6 +190,24 @@
       "writtenOn": "2022-05-06T18:55:22Z",
       "side": 1,
       "message": "Since this CL is switching away from SkFontMgr_mac_ct.cpp, are these needed right now?",
+      "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67574dc6_516ad8bc",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-06T19:02:10Z",
+      "side": 1,
+      "message": "Yes -- the component build needs these due to references from files SkCTFont and SkCreateCGImageRef (and others).",
+      "parentUuid": "7ae43771_7a45e1fb",
       "revId": "2f3cfa02906fb96269bd75c7462f7ec1665a0193",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
