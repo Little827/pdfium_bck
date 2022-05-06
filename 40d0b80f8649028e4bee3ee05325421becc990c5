@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125ac77b_edd0df41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-06T23:07:02Z",
+      "side": 1,
+      "message": "So anyway, the difference between the chrome model and PDFium matters when we have\nstring \u003d string vs. string \u003d view \u003d string. In chrome, both of these cause a malloc since no shared storage, and are equally \"cheap\" as getting the view from the string is cheap.  But in pdfium, going to an intermediate view causes a malloc we can avoid via the string to string case.",
+      "revId": "40d0b80f8649028e4bee3ee05325421becc990c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
