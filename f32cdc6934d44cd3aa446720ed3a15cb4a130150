@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e648ac_d46bb989",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-06T20:33:16Z",
+      "side": 1,
+      "message": "Need to roll clang with zlib since zlib change [1] will cause compile error.\nClang can\u0027t roll past d0d1c12 since the next change introduced msan failure on a Linux bot.\n\n[1]https://crrev.com/b55552138c566f8f861eadb0b6cb44deea5d24fe",
+      "revId": "f32cdc6934d44cd3aa446720ed3a15cb4a130150",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
