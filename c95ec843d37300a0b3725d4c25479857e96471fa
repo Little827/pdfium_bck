@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d5023a_f97782a3",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-06T16:53:24Z",
+      "side": 1,
+      "message": "Care to make the string a constant and use std::size(kPosted) - 1 here?",
+      "range": {
+        "startLine": 238,
+        "startChar": 48,
+        "endLine": 238,
+        "endChar": 50
+      },
+      "revId": "c95ec843d37300a0b3725d4c25479857e96471fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
