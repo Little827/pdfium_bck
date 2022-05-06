@@ -6,6 +6,14 @@ import("//build/config/freetype/freetype.gni")
 import("../../pdfium.gni")
 import("../../testing/test.gni")
 
+config("fxge_defines") {
+  if (pdf_default_renderer == "skia") {
+    defines = [ "PDF_DEFAULT_RENDERER_USE_SKIA=1" ]
+  } else {
+    defines = [ "PDF_DEFAULT_RENDERER_USE_SKIA=0" ]
+  }
+}
+
 config("fxge_warnings") {
   visibility = [ ":*" ]
   if (is_clang) {
@@ -24,6 +32,7 @@ source_set("fxge") {
     "cfx_cliprgn.h",
     "cfx_color.cpp",
     "cfx_color.h",
+    "cfx_defaultrenderdevice.cpp",
     "cfx_defaultrenderdevice.h",
     "cfx_drawutils.cpp",
     "cfx_drawutils.h",
@@ -116,6 +125,7 @@ source_set("fxge") {
   ]
 
   configs += [
+    ":fxge_defines",
     ":fxge_warnings",
     "../../:pdfium_strict_config",
     "../../:pdfium_noshorten_config",
@@ -136,10 +146,13 @@ source_set("fxge") {
     ]
   }
 
-  if (pdf_use_skia || pdf_use_skia_paths) {
+  if (pdf_use_skia || pdf_include_skia_paths) {
     sources += [ "skia/fx_skia_device.cpp" ]
     deps += [ "//skia" ]
-  } else {
+  }
+
+  # TODO(crbug.com/pdfium/11)  AGG is deprecated and slated for removal.
+  if (pdf_include_agg) {
     sources += [
       "agg/fx_agg_driver.cpp",
       "agg/fx_agg_driver.h",
@@ -239,7 +252,7 @@ pdfium_embeddertest_source_set("embeddertests") {
   deps = []
   pdfium_root_dir = "../../"
 
-  if (pdf_use_skia || pdf_use_skia_paths) {
+  if (pdf_use_skia || pdf_include_skia_paths) {
     sources += [ "skia/fx_skia_device_embeddertest.cpp" ]
     deps += [
       ":fxge",
