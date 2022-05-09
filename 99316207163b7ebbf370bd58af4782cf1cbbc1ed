@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dd6fe64_6bf425fd",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-09T17:08:29Z",
+      "side": 1,
+      "message": "} else {\n#endif\n    pDIBitmap-\u003eMultiplyAlpha(bitmap_alpha);\n#if defined(_SKIA_SUPPORT_)\n}\n#endif",
+      "range": {
+        "startLine": 1288,
+        "startChar": 8,
+        "endLine": 1290,
+        "endChar": 47
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
