@@ -22,6 +22,30 @@
       },
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694f5962_d55e720b",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-09T17:56:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this would be needed, given that there is a `return` in the preceding `if` block.  I have a pattern like you\u0027re suggesting elsewhere when the control flow would need to continue on, but this spot is different.",
+      "parentUuid": "9dd6fe64_6bf425fd",
+      "range": {
+        "startLine": 1288,
+        "startChar": 8,
+        "endLine": 1290,
+        "endChar": 47
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
