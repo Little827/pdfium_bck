@@ -694,7 +694,7 @@ ByteString GenerateIconAppStream(CPDF_IconFit& fit,
 
   auto pPDFIcon = std::make_unique<CPDF_Icon>(pIconStream);
 
-  CPWL_Wnd::CreateParams cp;
+  CPWL_Wnd::CreateParams cp(nullptr);
   cp.dwFlags = PWS_VISIBLE;
   auto pWnd = std::make_unique<CPWL_Wnd>(cp, nullptr);
   pWnd->Realize();
