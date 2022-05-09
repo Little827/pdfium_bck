@@ -3,6 +3,109 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "083b0b7a_a52fddc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "Android apps. Android, the OS, already uses Skia, so it can potentially enable Skia at very little additional binary size cost.",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06672e30_f4a6870a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "When I read this, I assumed the default PDFium build would be Skia-enabled, and have Skia selectable at runtime. Is this the case? If so, wouldn\u0027t this be a surprise to a PDFium embedder? Update PDFium, and suddenly the binary size has increased. If not, can this be rephrased to be clearer on what\u0027s changing?",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4559ed04_60e59420",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "I tried doing this for another scoped object, and tsepez@ disliked the idea. Would letting ScopedSkiaDeviceFlush like on the stack only, but do nothing when appropriate, be a possible alternative?",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3fa3d1_cc0d27a1",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "I don\u0027t think we are anywhere close to being ready to deprecate the AGG code. Especially when the Skia renderer is not even fully ready yet. https://goomics.net/50/",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a659c2_83359da0",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "If this didn\u0027t exist, and Skia-enabled went from Skia-only to runtime-selectable, i.e. no more Skia-only mode for now, how much would that simplify this CL?",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd6fe64_6bf425fd",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 19
@@ -72,6 +175,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0184a8de_fee2004c",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "Can this dtor be simplified, so this dtor just the following?\n\n```\n#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\n  if (g_default_renderer_is_skia)\n    Flush(true);\n#endif\n```",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4da903f2_e139e1d7",
@@ -114,6 +234,57 @@
         "endLine": 107,
         "endChar": 40
       },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc41863f_44476344",
+        "filename": "pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "Why does this need to be gated on `is_android`?",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c91c4ae_245241a5",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "This should be a public API instead. Otherwise, PDFium embedders have to follow this example and ready into PDFium internals.",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7215b8_03b03a7f",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-09T22:08:44Z",
+      "side": 1,
+      "message": "No longer need externs.",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
