@@ -19,8 +19,7 @@ struct FFL_TextFieldState {
   WideString sValue;
 };
 
-class CFFL_TextField final : public CFFL_TextObject,
-                             public CPWL_Wnd::FocusHandlerIface {
+class CFFL_TextField final : public CFFL_TextObject {
  public:
   CFFL_TextField(CFFL_InteractiveFormFiller* pFormFiller,
                  CPDFSDK_Widget* pWidget);
@@ -49,7 +48,7 @@ class CFFL_TextField final : public CFFL_TextObject,
   bool IsFieldFull(const CPDFSDK_PageView* pPageView) override;
 #endif
 
-  // CPWL_Wnd::FocusHandlerIface:
+  // CPWL_Wnd::ProviderIface:
   void OnSetFocus(CPWL_Edit* pEdit) override;
 
  private:

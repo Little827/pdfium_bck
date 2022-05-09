@@ -223,8 +223,8 @@ void CPWL_Edit::OnSetFocus() {
     return;
 
   if (!IsReadOnly()) {
-    if (CPWL_Wnd::FocusHandlerIface* pFocusHandler = GetFocusHandler()) {
-      pFocusHandler->OnSetFocus(this);
+    if (CPWL_Wnd::ProviderIface* pProvider = GetProvider()) {
+      pProvider->OnSetFocus(this);
       if (!observed_ptr)
         return;
     }

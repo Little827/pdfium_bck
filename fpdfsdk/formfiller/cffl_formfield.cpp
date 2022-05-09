@@ -395,6 +395,8 @@ CFX_Matrix CFFL_FormField::GetWindowMatrix(
   return GetCurMatrix() * pPageView->GetCurrentMatrix();
 }
 
+void CFFL_FormField::OnSetFocus(CPWL_Edit* pEdit) {}
+
 CFX_Matrix CFFL_FormField::GetCurMatrix() {
   CFX_Matrix mt;
   CFX_FloatRect rcDA = m_pWidget->GetPDFAnnot()->GetRect();

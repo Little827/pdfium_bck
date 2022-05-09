@@ -21,9 +21,6 @@ CFFL_ComboBox::CFFL_ComboBox(CFFL_InteractiveFormFiller* pFormFiller,
     : CFFL_TextObject(pFormFiller, pWidget) {}
 
 CFFL_ComboBox::~CFFL_ComboBox() {
-  for (const auto& it : m_Maps)
-    it.second->InvalidateFocusHandler(this);
-
   // See comment in cffl_formfiller.h.
   // The font map should be stored somewhere more appropriate so it will live
   // until the PWL_Edit is done with it. pdfium:566
@@ -36,7 +33,6 @@ CPWL_Wnd::CreateParams CFFL_ComboBox::GetCreateParam() {
     cp.dwFlags |= PCBS_ALLOWCUSTOMTEXT;
 
   cp.pFontMap = GetOrCreateFontMap();
-  cp.pFocusHandler = this;
   return cp;
 }
 
