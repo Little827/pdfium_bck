@@ -340,7 +340,6 @@ CPWL_Wnd::CreateParams CFFL_FormField::GetCreateParam() {
 
   cp.dwFlags = dwCreateFlags;
   cp.pTimerHandler.Reset(m_pFormFiller->GetCallbackIface()->GetTimerHandler());
-  cp.pSystemHandler = m_pFormFiller->GetCallbackIface()->GetSysHandler();
   return cp;
 }
 
@@ -383,7 +382,7 @@ void CFFL_FormField::DestroyPWLWindow(const CPDFSDK_PageView* pPageView) {
 }
 
 CFX_Matrix CFFL_FormField::GetWindowMatrix(
-    const IPWL_SystemHandler::PerWindowData* pAttached) {
+    const IPWL_FillerNotify::PerWindowData* pAttached) {
   const auto* pPrivateData = static_cast<const CFFL_PerWindowData*>(pAttached);
   if (!pPrivateData)
     return CFX_Matrix();
