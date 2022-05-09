@@ -16,6 +16,23 @@
       "message": "Hey! Could you take a look at this CL (and kick-off a dry run since I seem to lack permissions for that)? Thanks!",
       "revId": "19f5cb3a5f7ec65b8354a10fc868e7815f11dbb9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2e4b11_f8ff2e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8882
+      },
+      "writtenOn": "2022-05-09T17:22:04Z",
+      "side": 1,
+      "message": "Ok, dry running seems to work now! :)",
+      "revId": "19f5cb3a5f7ec65b8354a10fc868e7815f11dbb9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
