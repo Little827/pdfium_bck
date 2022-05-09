@@ -46,6 +46,53 @@
       },
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "351d90f7_c58d7af5",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-09T18:21:43Z",
+      "side": 1,
+      "message": "Ack. Still looking through the rest of the CL. 😊",
+      "parentUuid": "694f5962_d55e720b",
+      "range": {
+        "startLine": 1288,
+        "startChar": 8,
+        "endLine": 1290,
+        "endChar": 47
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da903f2_e139e1d7",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-09T18:21:43Z",
+      "side": 1,
+      "message": "This can be omitted.",
+      "range": {
+        "startLine": 919,
+        "startChar": 8,
+        "endLine": 919,
+        "endChar": 30
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
