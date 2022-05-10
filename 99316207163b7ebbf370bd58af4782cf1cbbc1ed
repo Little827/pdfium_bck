@@ -343,6 +343,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9cced7ee_7af86deb",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T22:27:37Z",
+      "side": 1,
+      "message": "That was leftover from the nested `#if`s - removed now.",
+      "parentUuid": "4da903f2_e139e1d7",
+      "range": {
+        "startLine": 919,
+        "startChar": 8,
+        "endLine": 919,
+        "endChar": 30
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2edc85c0_e264a4c0",
         "filename": "fxbarcode/cfx_barcode_unittest.cpp",
         "patchSetId": 19
@@ -454,6 +478,24 @@
       "side": 1,
       "message": "Ack.  Not having updated the public API before, I\u0027m guessing that updating `FPDF_LIBRARY_CONFIG` for use by `FPDF_InitLibraryWithConfig()` is the right place (please correct me if I\u0027m looking in the wrong place), which I can update in a follow-on patch set.",
       "parentUuid": "3c91c4ae_245241a5",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960fffd3_5e568cc3",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T22:27:37Z",
+      "side": 1,
+      "message": "Updated to have an extra field in `FPDF_LIBRARY_CONFIG`.  I tacked this onto as part of \"Version 3 - experimental\", in the hopes that this didn\u0027t have treated separately with its own version number.",
+      "parentUuid": "13028bbe_6f6190c7",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },

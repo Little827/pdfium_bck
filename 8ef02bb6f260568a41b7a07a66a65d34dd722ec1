@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5590b1_3d378b4a",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T22:27:37Z",
+      "side": 1,
+      "message": "Any embedder who is using this config version 3 will break with this change if they don\u0027t also initialize `m_pRendererType`.\n\nI am assuming that this is okay because it is \"experimental\".  If that\u0027s an erroneous assumption, then I can update this to be for yet another version number.",
+      "range": {
+        "startLine": 258,
+        "startChar": 16,
+        "endLine": 258,
+        "endChar": 31
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
