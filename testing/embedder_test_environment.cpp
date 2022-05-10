@@ -39,6 +39,7 @@ void EmbedderTestEnvironment::SetUp() {
   config.m_pUserFontPaths = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pPlatform = nullptr;
+  config.m_pRendererType = nullptr;
 
   config.m_pUserFontPaths = test_fonts_.font_paths();
 

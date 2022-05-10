@@ -246,10 +246,16 @@ typedef struct FPDF_LIBRARY_CONFIG_ {
   // embedders.
   unsigned int m_v8EmbedderSlot;
 
-  // Version 3 - Experimantal,
+  // Version 3 - Experimental,
 
   // Pointer to the V8::Platform to use.
   void* m_pPlatform;
+
+  // Pointer to explicit specification of renderer to use, or NULL to use the
+  // build's default.  If specified, use value of 0 for AGG or a value of 1 for
+  // Skia.  All other values are invalid and will be ignored.  Only valid for
+  // builds which include both renderers.
+  unsigned int* m_pRendererType;
 
 } FPDF_LIBRARY_CONFIG;
 

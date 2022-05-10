@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_formobject.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_edit.h"
@@ -24,6 +25,34 @@ int FakeBlockWriter(FPDF_FILEWRITE* pThis,
                     const void* pData,
                     unsigned long size) {
   return size;
+}
+
+constexpr int kRectanglesMultiPagesPageCount = 2;
+constexpr const char*
+    kRectanglesMultiPagesExpectedMD5sSkia[kRectanglesMultiPagesPageCount] = {
+        "7a4cddd5a17a60ce50acb53e318d94f8", "4fa6a7507e9f3ef4f28719a7d656c3a5"};
+constexpr const char*
+    kRectanglesMultiPagesExpectedMD5sAgg[kRectanglesMultiPagesPageCount] = {
+        "72d0d7a19a2f40e010ca6a1133b33e1e", "fb18142190d770cfbc329d2b071aee4d"};
+
+const char* RectanglesMultiPagesExpectedMD5s(int page_index) {
+  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+             ? kRectanglesMultiPagesExpectedMD5sSkia[page_index]
+             : kRectanglesMultiPagesExpectedMD5sAgg[page_index];
+}
+
+constexpr int kBug750568PageCount = 4;
+constexpr const char* kBug750568PageHashesSkia[kBug750568PageCount] = {
+    "eaa139e944eafb43d31e8742a0e158de", "226485e9d4fa6a67dfe0a88723f12060",
+    "c5601a3492ae5dcc5dd25140fc463bfe", "1f60055b54de4fac8a59c65e90da156e"};
+constexpr const char* kBug750568PageHashesAgg[kBug750568PageCount] = {
+    "64ad08132a1c5a166768298c8a578f57", "83b83e2f6bc80707d0a917c7634140b9",
+    "913cd3723a451e4e46fbc2c05702d1ee", "81fb7cfd4860f855eb468f73dfeb6d60"};
+
+const char* Bug750568PageHash(int page_index) {
+  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+             ? kBug750568PageHashesSkia[page_index]
+             : kBug750568PageHashesAgg[page_index];
 }
 
 }  // namespace
@@ -122,34 +151,27 @@ TEST_F(FPDFPPOEmbedderTest, BadNupParams) {
 // FPDF_ImportNPagesToOne()
 TEST_F(FPDFPPOEmbedderTest, NupRenderImage) {
   ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
-  const int kPageCount = 2;
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr const char* kExpectedMD5s[kPageCount] = {
-      "7a4cddd5a17a60ce50acb53e318d94f8", "4fa6a7507e9f3ef4f28719a7d656c3a5"};
-#else
-  static constexpr const char* kExpectedMD5s[kPageCount] = {
-      "72d0d7a19a2f40e010ca6a1133b33e1e", "fb18142190d770cfbc329d2b071aee4d"};
-#endif
   ScopedFPDFDocument output_doc_3up(
       FPDF_ImportNPagesToOne(document(), 792, 612, 3, 1));
   ASSERT_TRUE(output_doc_3up);
-  ASSERT_EQ(kPageCount, FPDF_GetPageCount(output_doc_3up.get()));
-  for (int i = 0; i < kPageCount; ++i) {
+  ASSERT_EQ(kRectanglesMultiPagesPageCount,
+            FPDF_GetPageCount(output_doc_3up.get()));
+  for (int i = 0; i < kRectanglesMultiPagesPageCount; ++i) {
     ScopedFPDFPage page(FPDF_LoadPage(output_doc_3up.get(), i));
     ASSERT_TRUE(page);
     ScopedFPDFBitmap bitmap = RenderPage(page.get());
     EXPECT_EQ(792, FPDFBitmap_GetWidth(bitmap.get()));
     EXPECT_EQ(612, FPDFBitmap_GetHeight(bitmap.get()));
-    EXPECT_EQ(kExpectedMD5s[i], HashBitmap(bitmap.get()));
+    EXPECT_EQ(RectanglesMultiPagesExpectedMD5s(i), HashBitmap(bitmap.get()));
   }
 }
 
 TEST_F(FPDFPPOEmbedderTest, ImportPageToXObject) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kChecksum[] = "d6ebc0a8afc22fe0137f54ce54e1a19c";
-#else
-  static const char kChecksum[] = "2d88d180af7109eb346439f7c855bb29";
-#endif
+  static const char kChecksumSkia[] = "d6ebc0a8afc22fe0137f54ce54e1a19c";
+  static const char kChecksumAgg[] = "2d88d180af7109eb346439f7c855bb29";
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
 
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
 
@@ -223,11 +245,11 @@ TEST_F(FPDFPPOEmbedderTest, ImportPageToXObject) {
 }
 
 TEST_F(FPDFPPOEmbedderTest, ImportPageToXObjectWithSameDoc) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kChecksum[] = "8e7d672f49f9ca98fb9157824cefc204";
-#else
-  static const char kChecksum[] = "4d5ca14827b7707f8283e639b33c121a";
-#endif
+  static const char kChecksumSkia[] = "8e7d672f49f9ca98fb9157824cefc204";
+  static const char kChecksumAgg[] = "4d5ca14827b7707f8283e639b33c121a";
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
 
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
 
@@ -239,7 +261,7 @@ TEST_F(FPDFPPOEmbedderTest, ImportPageToXObjectWithSameDoc) {
 
   {
     ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-    CompareBitmap(bitmap.get(), 200, 300, pdfium::kRectanglesChecksum);
+    CompareBitmap(bitmap.get(), 200, 300, pdfium::RectanglesChecksum());
   }
 
   FPDF_PAGEOBJECT page_object = FPDF_NewFormObjectFromXObject(xobject);
@@ -255,7 +277,7 @@ TEST_F(FPDFPPOEmbedderTest, ImportPageToXObjectWithSameDoc) {
   {
     // TODO(thestig): This should have `kChecksum`.
     ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-    CompareBitmap(bitmap.get(), 200, 300, pdfium::kRectanglesChecksum);
+    CompareBitmap(bitmap.get(), 200, 300, pdfium::RectanglesChecksum());
   }
 
   FPDF_CloseXObject(xobject);
@@ -490,16 +512,6 @@ TEST_F(FPDFPPOEmbedderTest, BUG_664284) {
 }
 
 TEST_F(FPDFPPOEmbedderTest, BUG_750568) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char* const kHashes[] = {
-      "eaa139e944eafb43d31e8742a0e158de", "226485e9d4fa6a67dfe0a88723f12060",
-      "c5601a3492ae5dcc5dd25140fc463bfe", "1f60055b54de4fac8a59c65e90da156e"};
-#else
-  const char* const kHashes[] = {
-      "64ad08132a1c5a166768298c8a578f57", "83b83e2f6bc80707d0a917c7634140b9",
-      "913cd3723a451e4e46fbc2c05702d1ee", "81fb7cfd4860f855eb468f73dfeb6d60"};
-#endif
-
   ASSERT_TRUE(OpenDocument("bug_750568.pdf"));
   ASSERT_EQ(4, FPDF_GetPageCount(document()));
 
@@ -508,7 +520,7 @@ TEST_F(FPDFPPOEmbedderTest, BUG_750568) {
     ASSERT_TRUE(page);
 
     ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-    CompareBitmap(bitmap.get(), 200, 200, kHashes[i]);
+    CompareBitmap(bitmap.get(), 200, 200, Bug750568PageHash(i));
     UnloadPage(page);
   }
 
@@ -524,7 +536,7 @@ TEST_F(FPDFPPOEmbedderTest, BUG_750568) {
     ASSERT_TRUE(page);
 
     ScopedFPDFBitmap bitmap = RenderPage(page);
-    CompareBitmap(bitmap.get(), 200, 200, kHashes[i]);
+    CompareBitmap(bitmap.get(), 200, 200, Bug750568PageHash(i));
     FPDF_ClosePage(page);
   }
   FPDF_CloseDocument(output_doc);
@@ -536,7 +548,7 @@ TEST_F(FPDFPPOEmbedderTest, ImportWithZeroLengthStream) {
   ASSERT_TRUE(page);
 
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-  CompareBitmap(bitmap.get(), 200, 200, pdfium::kHelloWorldChecksum);
+  CompareBitmap(bitmap.get(), 200, 200, pdfium::HelloWorldChecksum());
   UnloadPage(page);
 
   ScopedFPDFDocument new_doc(FPDF_CreateNewDocument());
@@ -550,5 +562,5 @@ TEST_F(FPDFPPOEmbedderTest, ImportWithZeroLengthStream) {
   ScopedFPDFPage new_page(FPDF_LoadPage(new_doc.get(), 0));
   ASSERT_TRUE(new_page);
   ScopedFPDFBitmap new_bitmap = RenderPage(new_page.get());
-  CompareBitmap(new_bitmap.get(), 200, 200, pdfium::kHelloWorldChecksum);
+  CompareBitmap(new_bitmap.get(), 200, 200, pdfium::HelloWorldChecksum());
 }
