@@ -14,6 +14,10 @@
 #include <string>
 #include <vector>
 
+#if defined(PDF_ENABLE_AGG) && !defined(_AGG_SUPPORT_)
+#define _AGG_SUPPORT_
+#endif
+
 #if defined(PDF_ENABLE_SKIA) && !defined(_SKIA_SUPPORT_)
 #define _SKIA_SUPPORT_
 #endif
@@ -22,6 +26,7 @@
 #define _SKIA_SUPPORT_PATHS_
 #endif
 
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
 #include "public/fpdf_attachment.h"
@@ -125,6 +130,10 @@ struct Options {
   bool save_thumbnails = false;
   bool save_thumbnails_decoded = false;
   bool save_thumbnails_raw = false;
+#if defined(_AGG_SUPPORT_) && \
+    (defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_))
+  absl::optional<bool> use_skia_renderer;
+#endif
 #ifdef PDF_ENABLE_V8
   bool disable_javascript = false;
   std::string js_flags;  // Extra flags to pass to v8 init.
@@ -561,6 +570,21 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       options->save_thumbnails_decoded = true;
     } else if (cur_arg == "--save-thumbs-raw") {
       options->save_thumbnails_raw = true;
+#if defined(_AGG_SUPPORT_) && \
+    (defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_))
+    } else if (ParseSwitchKeyValue(cur_arg, "--use-renderer=", &value)) {
+      if (options->use_skia_renderer.has_value()) {
+        fprintf(stderr, "Duplicate --use-renderer argument\n");
+        return false;
+      }
+      if (value != "skia" && value != "agg") {
+        fprintf(
+            stderr,
+            "Invalid --use-renderer argument, must be one of skia or agg\n");
+        return false;
+      }
+      options->use_skia_renderer = value == "skia";
+#endif
 #ifdef PDF_ENABLE_V8
     } else if (cur_arg == "--disable-javascript") {
       options->disable_javascript = true;
@@ -1162,6 +1186,11 @@ void ShowConfig() {
   config.append("ASAN");
   maybe_comma = ",";
 #endif  // PDF_ENABLE_ASAN
+#if defined(PDF_ENABLE_AGG)
+  config.append(maybe_comma);
+  config.append("AGG");
+  maybe_comma = ",";
+#endif
 #if defined(PDF_ENABLE_SKIA)
   config.append(maybe_comma);
   config.append("SKIA");
@@ -1210,9 +1239,13 @@ constexpr char kUsageString[] =
     "<pdf-name>.thumbnail.decoded.<page-number>.png\n"
     "  --save-thumbs-raw      - write page thumbnails' raw stream data"
     "<pdf-name>.thumbnail.raw.<page-number>.png\n"
+#if defined(_AGG_SUPPORT_) && \
+    (defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_))
+    "  --use-renderer         - renderer to use, one of [agg | skia]\n"
+#endif
 #ifdef PDF_ENABLE_V8
     "  --disable-javascript   - do not execute JS in PDF files\n"
-    "  --js-flags=<flags>     - additional flags to pas to V8"
+    "  --js-flags=<flags>     - additional flags to pas to V8\n"
 #ifdef PDF_ENABLE_XFA
     "  --disable-xfa          - do not process XFA forms\n"
 #endif  // PDF_ENABLE_XFA
@@ -1278,6 +1311,16 @@ int main(int argc, const char* argv[]) {
   config.m_pIsolate = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pPlatform = nullptr;
+  config.m_pRendererType = nullptr;
+
+#if defined(_AGG_SUPPORT_) && \
+    (defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_))
+  unsigned int renderer_type;
+  if (options.use_skia_renderer.has_value()) {
+    renderer_type = *options.use_skia_renderer ? 1u : 0u;
+    config.m_pRendererType = &renderer_type;
+  }
+#endif
 
   std::function<void()> idler = []() {};
 #ifdef PDF_ENABLE_V8
