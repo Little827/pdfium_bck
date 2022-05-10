@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e6eb1d_ea4ff8d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Updated description to clarify apps.",
+      "parentUuid": "083b0b7a_a52fddc8",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06672e30_f4a6870a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-09T22:08:44Z",
       "side": 1,
       "message": "When I read this, I assumed the default PDFium build would be Skia-enabled, and have Skia selectable at runtime. Is this the case? If so, wouldn\u0027t this be a surprise to a PDFium embedder? Update PDFium, and suddenly the binary size has increased. If not, can this be rephrased to be clearer on what\u0027s changing?",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b08b9a2_3f5a40bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Reworked such that the description which was mentioned under the sample code is now here, explicitly describing how the default renderer is specified for a build.\n\nI think your interpretation is correct.  The approach used means that if Skia is being requested in args.gn then it is the default once it is runtime selectable.  Similarly, if Skia is not requested then AGG is the default.\n\nRegarding embedders, that gets to how we want to roll this change out.  I intentionally defaulted `pdf_allow_runtime_renderer_selection` to true so that the CQ bots would exercise the code with runtime selection.  To not increase the code size for embedders then I will need to adjust the recipes to explicitly enable `pdf_allow_runtime_renderer_selection`.  I can do that in a separate patchset (and this commit message would need another tweak as part of that).",
+      "parentUuid": "06672e30_f4a6870a",
       "range": {
         "startLine": 13,
         "startChar": 14,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f6e46c_c2ac3458",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Sure - moved the runtime check into `~ScopedSkiaDeviceFlush()`.",
+      "parentUuid": "4559ed04_60e59420",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d3fa3d1_cc0d27a1",
@@ -87,6 +153,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c570d664_c3e58661",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Ack - dropped deprecated here and elsewhere.",
+      "parentUuid": "9d3fa3d1_cc0d27a1",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20a659c2_83359da0",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-05-09T22:08:44Z",
       "side": 1,
       "message": "If this didn\u0027t exist, and Skia-enabled went from Skia-only to runtime-selectable, i.e. no more Skia-only mode for now, how much would that simplify this CL?",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9b64ee_2cd5b96a",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "The main issue I had here is the Android build - that is AGG only, it is broken for Skia even before this CL\u0027s changes.  The Android build for Skia is broken at the `gn gen` phase.  I spent a little time exploring what was awry for Android, and then backed off when it was turning out to be a bit of a rabbit hole.  I chose this approach instead as it was simpler to get forward progress for this effort.\n\nWe will of course want the Android build to also work with Skia at some point.  Whether or not that should be a blocker to enabling more progress on the desktop platforms from this CL could be discussed.\n\nI realized that there doesn\u0027t seem to be a bug filed for this Android problem, so I added https://crbug.com/pdfium/1832.",
+      "parentUuid": "20a659c2_83359da0",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -194,6 +302,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c5694456_ae6a9373",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Done somewhat close to that.  Can use the common query like everywhere else instead of directly referencing the global (which only exists if both AGG and one Skia variant are defined).",
+      "parentUuid": "0184a8de_fee2004c",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4da903f2_e139e1d7",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 19
@@ -238,6 +364,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ed5d6c_b83dba19",
+        "filename": "fxbarcode/cfx_barcode_unittest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Ack.  Updated here and elsewhere too.",
+      "parentUuid": "2edc85c0_e264a4c0",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc41863f_44476344",
@@ -251,6 +401,24 @@
       "writtenOn": "2022-05-09T22:08:44Z",
       "side": 1,
       "message": "Why does this need to be gated on `is_android`?",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc2f38e_ab2327ce",
+        "filename": "pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "As mentioned above, the Pdfium build for Android is broken for Skia (even prior to this CL).",
+      "parentUuid": "bc41863f_44476344",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -274,6 +442,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13028bbe_6f6190c7",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Ack.  Not having updated the public API before, I\u0027m guessing that updating `FPDF_LIBRARY_CONFIG` for use by `FPDF_InitLibraryWithConfig()` is the right place (please correct me if I\u0027m looking in the wrong place), which I can update in a follow-on patch set.",
+      "parentUuid": "3c91c4ae_245241a5",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad7215b8_03b03a7f",
         "filename": "testing/embedder_test_constants.h",
         "patchSetId": 19
@@ -285,6 +471,24 @@
       "writtenOn": "2022-05-09T22:08:44Z",
       "side": 1,
       "message": "No longer need externs.",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75058b1f_faf8dd32",
+        "filename": "testing/embedder_test_constants.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-05-10T00:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad7215b8_03b03a7f",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
