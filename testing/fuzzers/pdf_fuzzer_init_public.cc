@@ -90,6 +90,7 @@ PDFFuzzerInitPublic::PDFFuzzerInitPublic() {
   config_.m_pPlatform = platform_.get();
   config_.m_pIsolate = isolate_.get();
 #endif  // PDF_ENABLE_V8
+  config_.m_pRendererType = nullptr;
   FPDF_InitLibraryWithConfig(&config_);
 
   memset(&unsupport_info_, '\0', sizeof(unsupport_info_));
