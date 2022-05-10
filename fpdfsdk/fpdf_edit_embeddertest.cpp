@@ -2499,6 +2499,32 @@ TEST_F(FPDFEditEmbedderTest, TextFontProperties) {
     ASSERT_STREQ("x", font_name.data());
   }
 
+  {
+    // FPDFFont_GetFontData() positive testing.
+    constexpr size_t kExpectedSize = 8268;
+    std::vector<uint8_t> buf;
+    size_t buf_bytes_required = 123;
+    ASSERT_TRUE(FPDFFont_GetFontData(font, nullptr, 0, &buf_bytes_required));
+    ASSERT_EQ(kExpectedSize, buf_bytes_required);
+    buf.resize(kExpectedSize);
+    buf_bytes_required = 234;
+    EXPECT_TRUE(FPDFFont_GetFontData(font, buf.data(), buf.size(),
+                                     &buf_bytes_required));
+    EXPECT_EQ("1a67be75f719b6c476804d85bb9e4844", GenerateMD5Base16(buf));
+    EXPECT_EQ(kExpectedSize, buf_bytes_required);
+
+    // FPDFFont_GetFontData() negative testing.
+    EXPECT_FALSE(FPDFFont_GetFontData(nullptr, nullptr, 0, nullptr));
+    EXPECT_FALSE(FPDFFont_GetFontData(font, nullptr, 0, nullptr));
+    EXPECT_FALSE(
+        FPDFFont_GetFontData(nullptr, nullptr, 0, &buf_bytes_required));
+    EXPECT_FALSE(
+        FPDFFont_GetFontData(nullptr, buf.data(), buf.size(), nullptr));
+    EXPECT_FALSE(FPDFFont_GetFontData(font, buf.data(), buf.size(), nullptr));
+    EXPECT_FALSE(FPDFFont_GetFontData(nullptr, buf.data(), buf.size(),
+                                      &buf_bytes_required));
+  }
+
   UnloadPage(page);
 }
 
