@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "575ba6d4_3b66914c",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-11T23:55:45Z",
+      "side": 1,
+      "message": "Not sure.  I thought these arrays might be parallel with each other with one entry in each for each trailer.",
+      "parentUuid": "81917f2c_946abbd1",
+      "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e66ae49_d29f23da",
@@ -58,6 +76,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0f46fc_16008d34",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-11T23:55:45Z",
+      "side": 1,
+      "message": "except that we update it at 391 do more work at 397.  The whole loop is terrible and be combined with line 372 someday.",
+      "parentUuid": "2f619fe4_b2fa896a",
+      "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "391a6c77_1a69dde7",
@@ -71,6 +107,24 @@
       "writtenOn": "2022-05-11T23:46:16Z",
       "side": 1,
       "message": "I don\u0027t feel too strongly about it, but another possibility is to write ParserTest test cases, where the dummy PDF data goes in a string constant.",
+      "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc39d05_8ac05d4f",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-11T23:55:45Z",
+      "side": 1,
+      "message": "This kinda needs correct offsets, I\u0027d think so hence the .in file.",
+      "parentUuid": "391a6c77_1a69dde7",
       "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
