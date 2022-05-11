@@ -70,6 +70,30 @@
       },
       "revId": "c46b0f9906f22ff1d72b521fc7a060e52334e243",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9e077b_407331ad",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T22:33:57Z",
+      "side": 1,
+      "message": "The SyntaxParser is just a tool used by other code to parse parts of the PDF. If the caller is asking for bad positions, then yes, I think SyntaxParser should indicate failure. I\u0027m just not sure how many moles we\u0027ll flush out by doing this.",
+      "parentUuid": "cc464e75_c627241b",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "c46b0f9906f22ff1d72b521fc7a060e52334e243",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
