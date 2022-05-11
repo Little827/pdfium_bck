@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81917f2c_946abbd1",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T23:46:16Z",
+      "side": 1,
+      "message": "Can this function just skip negative values and not add them to the list?",
+      "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f619fe4_b2fa896a",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T23:46:16Z",
+      "side": 1,
+      "message": "And instead, line 375 should make sure `xref_offset` has not gone negative.",
+      "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391a6c77_1a69dde7",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T23:46:16Z",
+      "side": 1,
+      "message": "I don\u0027t feel too strongly about it, but another possibility is to write ParserTest test cases, where the dummy PDF data goes in a string constant.",
+      "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
