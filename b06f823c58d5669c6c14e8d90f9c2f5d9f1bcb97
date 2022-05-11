@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a8792f_f9d0152b",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-11T17:30:41Z",
+      "side": 1,
+      "message": "I am having a similar question in the previous CL about whether we want to keep the newly added code comply with the new style guide.",
+      "range": {
+        "startLine": 1270,
+        "startChar": 15,
+        "endLine": 1270,
+        "endChar": 21
+      },
+      "revId": "b06f823c58d5669c6c14e8d90f9c2f5d9f1bcb97",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
