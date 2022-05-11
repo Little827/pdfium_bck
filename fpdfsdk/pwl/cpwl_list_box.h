@@ -76,16 +76,10 @@ class CPWL_ListBox : public CPWL_Wnd, public CPWL_ListCtrl::NotifyIface {
   float GetFirstHeight() const;
   CFX_FloatRect GetListRect() const;
 
-  void SetFillerNotify(IPWL_FillerNotify* pNotify) {
-    DCHECK_EQ(pNotify, GetCreationParams()->pFillerNotify);
-    m_pFillerNotify = pNotify;
-  }
-
  protected:
   bool m_bMouseDown = false;
   bool m_bHoverSel = false;
   std::unique_ptr<CPWL_ListCtrl> m_pListCtrl;
-  UnownedPtr<IPWL_FillerNotify> m_pFillerNotify;
 };
 
 #endif  // FPDFSDK_PWL_CPWL_LIST_BOX_H_
