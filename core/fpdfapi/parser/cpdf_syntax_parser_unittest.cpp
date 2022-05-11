@@ -87,11 +87,12 @@ TEST(SyntaxParserTest, ReadHexString) {
     parser.SetPos(6);
     EXPECT_EQ("", parser.ReadHexString());
 
-    parser.SetPos(-1);
-    EXPECT_EQ("", parser.ReadHexString());
-
     parser.SetPos(std::numeric_limits<FX_FILESIZE>::max());
     EXPECT_EQ("", parser.ReadHexString());
+
+    // Negative values reset to the beginning.
+    parser.SetPos(-1);
+    EXPECT_EQ("\x12\xab", parser.ReadHexString());
 
     // Check string still parses when set to 0.
     parser.SetPos(0);

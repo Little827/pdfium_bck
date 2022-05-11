@@ -29,6 +29,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/cxx17_backports.h"
 #include "third_party/base/numerics/safe_math.h"
 
 namespace {
@@ -481,7 +482,7 @@ ByteString CPDF_SyntaxParser::GetKeyword() {
 }
 
 void CPDF_SyntaxParser::SetPos(FX_FILESIZE pos) {
-  m_Pos = std::min(pos, m_FileLen);
+  m_Pos = pdfium::clamp<FX_FILESIZE>(pos, 0, m_FileLen);
 }
 
 RetainPtr<CPDF_Object> CPDF_SyntaxParser::GetObjectBody(
