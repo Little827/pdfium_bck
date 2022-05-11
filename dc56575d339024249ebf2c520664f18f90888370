@@ -142,6 +142,24 @@
       "parentUuid": "6453f97e_a6b860dd",
       "revId": "dc56575d339024249ebf2c520664f18f90888370",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe0ae84_5cd4c0ee",
+        "filename": "testing/resources/bookmark_state.pdf",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-05-11T20:06:06Z",
+      "side": 1,
+      "message": "New CL uploaded: https://pdfium-review.googlesource.com/c/pdfium/+/93630",
+      "parentUuid": "6cd0e233_93cf0c9f",
+      "revId": "dc56575d339024249ebf2c520664f18f90888370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
