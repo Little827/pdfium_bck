@@ -70,6 +70,24 @@
       "parentUuid": "4bdd9275_637d9698",
       "revId": "dc56575d339024249ebf2c520664f18f90888370",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe0ab15_80520a6a",
+        "filename": "testing/resources/bookmark_state.pdf",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T19:04:59Z",
+      "side": 1,
+      "message": "If you sync your git tree with origin/main, the updates bookmarks.pdf is available for use with this CL. (AKA PR)",
+      "parentUuid": "3019c95b_ab01d646",
+      "revId": "dc56575d339024249ebf2c520664f18f90888370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
