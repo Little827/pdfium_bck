@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "474a482c_33d6ce35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T19:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2d7c89_540fd028",
+      "revId": "feeb07d93b3fc8251ae43b05857e97a4fab33d74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fd0c72a_744df313",
@@ -67,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a66fbc63_b4f1f07a",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T19:01:23Z",
+      "side": 1,
+      "message": "The entire public/ directory is consistently using pipes. We may want to change it all in one go at some point, but for now, just keeping it consistent.",
+      "parentUuid": "b1791acf_48d21c41",
+      "range": {
+        "startLine": 1246,
+        "startChar": 33,
+        "endLine": 1246,
+        "endChar": 39
+      },
+      "revId": "feeb07d93b3fc8251ae43b05857e97a4fab33d74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98a920ee_f144dc4f",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 7
@@ -78,6 +120,30 @@
       "writtenOn": "2022-05-11T17:20:52Z",
       "side": 1,
       "message": "Missing a verb here.\n\"will return the data for the substitution font it is using instead\"",
+      "range": {
+        "startLine": 1262,
+        "startChar": 46,
+        "endLine": 1263,
+        "endChar": 32
+      },
+      "revId": "feeb07d93b3fc8251ae43b05857e97a4fab33d74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b670ce_fc6a6c63",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T19:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98a920ee_f144dc4f",
       "range": {
         "startLine": 1262,
         "startChar": 46,
