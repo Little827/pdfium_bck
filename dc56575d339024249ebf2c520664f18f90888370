@@ -34,6 +34,24 @@
       "parentUuid": "62217c9d_176a9a23",
       "revId": "dc56575d339024249ebf2c520664f18f90888370",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdd9275_637d9698",
+        "filename": "testing/resources/bookmark_state.pdf",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T00:12:56Z",
+      "side": 1,
+      "message": "Apologies for the wait. I updated bookmarks.in and bookmarks.pdf here: https://pdfium-review.googlesource.com/93590",
+      "parentUuid": "0f00b991_e055c766",
+      "revId": "dc56575d339024249ebf2c520664f18f90888370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
