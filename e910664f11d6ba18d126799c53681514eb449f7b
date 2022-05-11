@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c9324cd_a130c960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-05-11T21:15:18Z",
+      "side": 1,
+      "message": "Hello,\nthis CL is meant to supersede https://pdfium-review.googlesource.com/c/pdfium/+/88791\nI changed it to `FPDFBookmark_GetCount()` instead of `FPDFBookmark_IsClosed()` as suggested by Lei Zhang, and modified tests to use the recently improved `bookmarks.pdf` file.\nFor reference, this is the pypdfium2 branch which I used to test the new API: https://github.com/pypdfium2-team/pypdfium2/pull/107/files\nKind regards",
+      "revId": "e910664f11d6ba18d126799c53681514eb449f7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
