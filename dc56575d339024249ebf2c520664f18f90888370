@@ -106,6 +106,24 @@
       "parentUuid": "dbe0ab15_80520a6a",
       "revId": "dc56575d339024249ebf2c520664f18f90888370",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6453f97e_a6b860dd",
+        "filename": "testing/resources/bookmark_state.pdf",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T19:24:13Z",
+      "side": 1,
+      "message": "However you like.",
+      "parentUuid": "730d3d1b_93ae43b1",
+      "revId": "dc56575d339024249ebf2c520664f18f90888370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
