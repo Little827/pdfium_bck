@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1791acf_48d21c41",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-11T17:25:31Z",
+      "side": 1,
+      "message": "Do we want to keep the public API comments in the old way or should we make the whole file comply with the new style guide at certain point?",
+      "parentUuid": "5fd0c72a_744df313",
+      "range": {
+        "startLine": 1246,
+        "startChar": 33,
+        "endLine": 1246,
+        "endChar": 39
+      },
+      "revId": "feeb07d93b3fc8251ae43b05857e97a4fab33d74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98a920ee_f144dc4f",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 7
