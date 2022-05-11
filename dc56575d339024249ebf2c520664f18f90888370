@@ -88,6 +88,24 @@
       "parentUuid": "3019c95b_ab01d646",
       "revId": "dc56575d339024249ebf2c520664f18f90888370",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730d3d1b_93ae43b1",
+        "filename": "testing/resources/bookmark_state.pdf",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-05-11T19:22:13Z",
+      "side": 1,
+      "message": "Maybe it would be better to abandon this CL and restart fresh with the FPDFBookmark_GetCount() approach as you suggested earlier? What do you think?",
+      "parentUuid": "dbe0ab15_80520a6a",
+      "revId": "dc56575d339024249ebf2c520664f18f90888370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
