@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2d7c89_540fd028",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-11T17:20:52Z",
+      "side": 1,
+      "message": "I think we should add another test that `buf` size is not big enough to hold the font data, so that FPDFFont_GetFontData() returns true and `buf` remain unchanged.",
+      "revId": "feeb07d93b3fc8251ae43b05857e97a4fab33d74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd0c72a_744df313",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-11T17:20:52Z",
+      "side": 1,
+      "message": "Since this section is new, we can follow the latest style guide using \"``\"instead of \"||\".",
+      "range": {
+        "startLine": 1246,
+        "startChar": 33,
+        "endLine": 1246,
+        "endChar": 39
+      },
+      "revId": "feeb07d93b3fc8251ae43b05857e97a4fab33d74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a920ee_f144dc4f",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-05-11T17:20:52Z",
+      "side": 1,
+      "message": "Missing a verb here.\n\"will return the data for the substitution font it is using instead\"",
+      "range": {
+        "startLine": 1262,
+        "startChar": 46,
+        "endLine": 1263,
+        "endChar": 32
+      },
+      "revId": "feeb07d93b3fc8251ae43b05857e97a4fab33d74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
