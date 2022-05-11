@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb76faa_63eaee38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T21:57:30Z",
+      "side": 1,
+      "message": "Can we do the more standard git commit message format? (Need to edit with the web interface or \"git cl description\")\n\n```\nSubject line\n\nDescription\n```",
+      "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a95f0b_65ff60dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T21:57:30Z",
+      "side": 1,
+      "message": "Don\u0027t forget to give yourself credit in the AUTHORS file.",
+      "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964666ed_2ebb0b2f",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T21:57:30Z",
+      "side": 1,
+      "message": "Should be some integer value here to match the return type.",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088edc4d_10afe387",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-11T21:57:30Z",
+      "side": 1,
+      "message": "What about on failure?",
+      "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
