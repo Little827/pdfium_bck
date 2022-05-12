@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d2c6663_abcdb0d0",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-12T18:29:43Z",
+      "side": 1,
+      "message": "Maybe we should put the values in a struct, to avoid having 2 vectors where the elements / sizes get out of sync.\n\nAnyway, can we just add negative numbers as is to `xref_stream_list` then? When line 407 reads it, check it\u0027s greater than 0 and not just non-zero.",
+      "parentUuid": "575ba6d4_3b66914c",
+      "revId": "47f2f98766598fd1274a1920f4bb62f8677473a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e66ae49_d29f23da",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 4
