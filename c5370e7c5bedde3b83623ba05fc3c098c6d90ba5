@@ -16,6 +16,24 @@
       "message": "Can we do the same for `xref_offset`? i.e. no new std::max() calls in this CL?",
       "revId": "c5370e7c5bedde3b83623ba05fc3c098c6d90ba5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa41d938_ef807c11",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-12T21:49:43Z",
+      "side": 1,
+      "message": "Tried, but I\u0027m getting numerous crashes in other parts of the parser, e.g. StartParseIntenal.",
+      "parentUuid": "c3e04bd4_5b972d73",
+      "revId": "c5370e7c5bedde3b83623ba05fc3c098c6d90ba5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
