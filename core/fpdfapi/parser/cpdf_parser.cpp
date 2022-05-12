@@ -360,14 +360,16 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xref_offset) {
   if (xrefsize > 0 && xrefsize <= kMaxXRefSize)
     ShrinkObjectMap(xrefsize);
 
-  std::vector<FX_FILESIZE> xref_stream_list{
-      GetDirectInteger(GetTrailer(), "XRefStm")};
+  FX_FILESIZE xref_stm = GetDirectInteger(GetTrailer(), "XRefStm");
+  std::vector<FX_FILESIZE> xref_stream_list{xref_stm};
   std::vector<FX_FILESIZE> xref_list{xref_offset};
   std::set<FX_FILESIZE> seen_xref_offset{xref_offset};
 
   // When the trailer doesn't have Prev entry or Prev entry value is not
   // numerical, GetDirectInteger() returns 0. Loading will end.
   xref_offset = GetDirectInteger(GetTrailer(), "Prev");
+  xref_offset = std::max<FX_FILESIZE>(0, xref_offset);
+
   while (xref_offset) {
     // Check for circular references.
     if (pdfium::Contains(seen_xref_offset, xref_offset))
@@ -384,11 +386,11 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xref_offset) {
       return false;
 
     xref_offset = GetDirectInteger(pDict.Get(), "Prev");
+    xref_offset = std::max<FX_FILESIZE>(0, xref_offset);
 
     // SLOW ...
-    xref_stream_list.insert(xref_stream_list.begin(),
-                            pDict->GetIntegerFor("XRefStm"));
-
+    xref_stm = pDict->GetIntegerFor("XRefStm");
+    xref_stream_list.insert(xref_stream_list.begin(), xref_stm);
     m_CrossRefTable = CPDF_CrossRefTable::MergeUp(
         std::make_unique<CPDF_CrossRefTable>(std::move(pDict)),
         std::move(m_CrossRefTable));
@@ -398,7 +400,7 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xref_offset) {
     if (!LoadCrossRefV4(xref_list[i], false))
       return false;
 
-    if (xref_stream_list[i] && !LoadCrossRefV5(&xref_stream_list[i], false))
+    if (xref_stream_list[i] > 0 && !LoadCrossRefV5(&xref_stream_list[i], false))
       return false;
 
     if (i == 0 && !VerifyCrossRefV4())
@@ -422,8 +424,10 @@ bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE main_xref_offset) {
   // Read /XRefStm from the first-page trailer. No need to read /Prev for the
   // first-page trailer, as the caller already did that and passed it in as
   // |main_xref_offset|.
-  std::vector<FX_FILESIZE> xref_stream_list{
-      GetDirectInteger(GetTrailer(), "XRefStm")};
+  FX_FILESIZE xref_stm = GetDirectInteger(GetTrailer(), "XRefStm");
+  xref_stm = std::max<FX_FILESIZE>(0, xref_stm);
+
+  std::vector<FX_FILESIZE> xref_stream_list{xref_stm};
   std::vector<FX_FILESIZE> xref_list{main_xref_offset};
   std::set<FX_FILESIZE> seen_xref_offset{main_xref_offset};
 
@@ -435,6 +439,8 @@ bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE main_xref_offset) {
   // Now GetTrailer() returns the merged trailer, where /Prev is from the
   // main-trailer.
   FX_FILESIZE xref_offset = GetDirectInteger(GetTrailer(), "Prev");
+  xref_offset = std::max<FX_FILESIZE>(0, xref_offset);
+
   while (xref_offset) {
     // Check for circular references.
     if (pdfium::Contains(seen_xref_offset, xref_offset))
@@ -451,11 +457,13 @@ bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE main_xref_offset) {
       return false;
 
     xref_offset = GetDirectInteger(pDict.Get(), "Prev");
+    xref_offset = std::max<FX_FILESIZE>(0, xref_offset);
+
+    xref_stm = pDict->GetIntegerFor("XRefStm");
+    xref_stm = std::max<FX_FILESIZE>(0, xref_stm);
 
     // SLOW ...
-    xref_stream_list.insert(xref_stream_list.begin(),
-                            pDict->GetIntegerFor("XRefStm"));
-
+    xref_stream_list.insert(xref_stream_list.begin(), xref_stm);
     m_CrossRefTable = CPDF_CrossRefTable::MergeUp(
         std::make_unique<CPDF_CrossRefTable>(std::move(pDict)),
         std::move(m_CrossRefTable));
@@ -633,7 +641,7 @@ bool CPDF_Parser::LoadAllCrossRefV5(FX_FILESIZE xref_offset) {
     return false;
 
   std::set<FX_FILESIZE> seen_xref_offset;
-  while (xref_offset) {
+  while (xref_offset > 0) {
     seen_xref_offset.insert(xref_offset);
     if (!LoadCrossRefV5(&xref_offset, false))
       return false;
@@ -730,10 +738,14 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
     return false;
 
   const CPDF_Dictionary* pDict = pStream->GetDict();
-  *pos = pDict->GetIntegerFor("Prev");
+  int32_t prev = pDict->GetIntegerFor("Prev");
+  prev = std::max<FX_FILESIZE>(0, prev);
+
   int32_t size = pDict->GetIntegerFor("Size");
   if (size < 0)
     return false;
+
+  *pos = prev;
 
   RetainPtr<CPDF_Dictionary> pNewTrailer = ToDictionary(pDict->Clone());
   if (bMainXRef) {
