@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5b1c29_2c7f7ee7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-05-12T10:55:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb76faa_63eaee38",
+      "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2a95f0b_65ff60dd",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-11T21:57:30Z",
       "side": 1,
       "message": "Should be some integer value here to match the return type.",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485b77b1_598e5da9",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-05-12T10:55:12Z",
+      "side": 1,
+      "message": "Oh yes, sorry about that mistake.",
+      "parentUuid": "964666ed_2ebb0b2f",
       "range": {
         "startLine": 116,
         "startChar": 11,
@@ -89,6 +131,24 @@
       "side": 1,
       "message": "To go with this, test FPDFBookmark_GetCount(nullptr).",
       "parentUuid": "088edc4d_10afe387",
+      "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ddc889f_7747ab2f",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-05-12T10:55:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d53563_75616e84",
       "revId": "3f84a892dc38ba4d96698f1a044f90ee3a33a374",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
