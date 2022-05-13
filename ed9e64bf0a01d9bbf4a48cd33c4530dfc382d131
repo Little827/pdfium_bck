@@ -16,6 +16,24 @@
       "message": "Maybe note that the widget / field are always non-null?",
       "revId": "ed9e64bf0a01d9bbf4a48cd33c4530dfc382d131",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c911d9_f9d00806",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-13T23:36:13Z",
+      "side": 1,
+      "message": "Meh. Long term we\u0027d like to just annotate the cases where they might *be* null.",
+      "parentUuid": "94ed314b_bd467fd9",
+      "revId": "ed9e64bf0a01d9bbf4a48cd33c4530dfc382d131",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
