@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66553f70_ae3f0b54",
+        "filename": "fxjs/cjs_global.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-13T23:31:34Z",
+      "side": 1,
+      "message": "Yes, this looks insane to make a v8 string, a wide string, and then a byte string in separate steps when we could just make a v8 string and then a byte string. But let\u0027s pretend there\u0027s persistent data somewhere in some embedder, and so we can\u0027t change the key name, which currently omits chars \u003e 0xFF. There isn\u0027t a ByteString method equivalent, and if we cobble one up, we might miss. And then the old data wouldn\u0027t load.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "a3e53de9517dc0ab2b330a817263dad71c67ef42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
