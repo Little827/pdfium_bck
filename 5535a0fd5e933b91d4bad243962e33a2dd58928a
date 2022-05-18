@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8d5fef_fc9b0ace",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-18T20:19:45Z",
+      "side": 1,
+      "message": "\"ever\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "5535a0fd5e933b91d4bad243962e33a2dd58928a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a236905_aad8ade4",
+        "filename": "xfa/fwl/theme/cfwl_fontmanager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-18T20:19:45Z",
+      "side": 1,
+      "message": "Can this just be wrapped in a NoDestructor and live inside xfa/fwl/theme/cfwl_widgettp.cpp? Then get rid of CFWL_FontManager altogether?",
+      "revId": "5535a0fd5e933b91d4bad243962e33a2dd58928a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
