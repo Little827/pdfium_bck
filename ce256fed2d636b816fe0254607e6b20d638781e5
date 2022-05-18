@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdf2698_88e57872",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-18T20:07:29Z",
+      "side": 1,
+      "message": "Should this bail out if the value isn\u0027t ASCII?",
+      "revId": "ce256fed2d636b816fe0254607e6b20d638781e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
