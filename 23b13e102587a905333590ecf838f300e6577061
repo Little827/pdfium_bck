@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0677a0a4_8d462312",
+        "filename": "third_party/libopenjpeg20/0041-remove_opj_clock.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-18T01:59:44Z",
+      "side": 0,
+      "message": "stray deletion from previous CL?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 96
+      },
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
