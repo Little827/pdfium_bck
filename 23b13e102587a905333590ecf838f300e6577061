@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982a3f65_adefd81a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-18T01:57:54Z",
+      "side": 1,
+      "message": "Took a cursory look and seems legit. STAMP.",
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc18eba_fe6959d7",
+        "filename": "third_party/libopenjpeg20/j2k.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1680,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-18T01:57:54Z",
+      "side": 1,
+      "message": "this makes me very happy (thwarts overflow).",
+      "range": {
+        "startLine": 1680,
+        "startChar": 45,
+        "endLine": 1680,
+        "endChar": 52
+      },
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986bdef9_bf5ba1b7",
+        "filename": "third_party/libopenjpeg20/pi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-18T01:57:54Z",
+      "side": 1,
+      "message": "Infinte loop much?",
+      "range": {
+        "startLine": 1324,
+        "startChar": 22,
+        "endLine": 1324,
+        "endChar": 23
+      },
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7120d8_52986844",
+        "filename": "third_party/libopenjpeg20/sparse_array.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-18T01:57:54Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 72,
+        "startChar": 21,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e7b9b0_fe4a1dc1",
+        "filename": "third_party/libopenjpeg20/sparse_array.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-18T01:57:54Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 238,
+        "startChar": 57,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540d4f81_292d658c",
+        "filename": "third_party/libopenjpeg20/t1_ht_luts.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-18T01:57:54Z",
+      "side": 1,
+      "message": "do we need this?  Bloaty. Also let\u0027s hope the header is only included in one file.",
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
