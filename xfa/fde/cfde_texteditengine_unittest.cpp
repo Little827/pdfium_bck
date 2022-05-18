@@ -40,7 +40,7 @@ class CFDE_TextEditEngineTest : public testing::Test {
 
   void SetUp() override {
     const wchar_t kFontFamily[] = L"Arimo Bold";
-    font_ = CFGAS_GEFont::LoadFont(kFontFamily, 0, FX_CodePage::kDefANSI);
+    font_ = CFGAS_GEFont::LoadFont(kFontFamily, 0);
     ASSERT_TRUE(font_);
 
     engine_ = std::make_unique<CFDE_TextEditEngine>();

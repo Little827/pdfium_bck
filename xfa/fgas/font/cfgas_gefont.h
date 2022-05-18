@@ -32,8 +32,7 @@ class CFGAS_GEFont final : public Retainable {
   CONSTRUCT_VIA_MAKE_RETAIN;
 
   static RetainPtr<CFGAS_GEFont> LoadFont(const wchar_t* pszFontFamily,
-                                          uint32_t dwFontStyles,
-                                          FX_CodePage wCodePage);
+                                          uint32_t dwFontStyles);
   static RetainPtr<CFGAS_GEFont> LoadFont(const RetainPtr<CPDF_Font>& pFont);
   static RetainPtr<CFGAS_GEFont> LoadFont(std::unique_ptr<CFX_Font> pFont);
   static RetainPtr<CFGAS_GEFont> LoadStockFont(CPDF_Document* pDoc,

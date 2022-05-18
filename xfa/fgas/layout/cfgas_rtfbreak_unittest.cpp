@@ -21,7 +21,7 @@ class CFGAS_RTFBreakTest : public testing::Test {
  public:
   void SetUp() override {
     const wchar_t kFontFamily[] = L"Arimo Bold";
-    font_ = CFGAS_GEFont::LoadFont(kFontFamily, 0, FX_CodePage::kDefANSI);
+    font_ = CFGAS_GEFont::LoadFont(kFontFamily, 0);
     ASSERT_TRUE(font_);
   }
 
