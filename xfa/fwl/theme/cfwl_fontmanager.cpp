@@ -34,14 +34,13 @@ CFWL_FontManager::CFWL_FontManager() = default;
 CFWL_FontManager::~CFWL_FontManager() = default;
 
 RetainPtr<CFGAS_GEFont> CFWL_FontManager::FindFont(WideStringView wsFontFamily,
-                                                   uint32_t dwFontStyles,
-                                                   FX_CodePage wCodePage) {
+                                                   uint32_t dwFontStyles) {
   for (const auto& pData : m_FontsArray) {
-    if (pData->Equal(wsFontFamily, dwFontStyles, wCodePage))
+    if (pData->Equal(wsFontFamily, dwFontStyles, FX_CodePage::kDefANSI))
       return pData->GetFont();
   }
   auto pFontData = std::make_unique<FontData>();
-  if (!pFontData->LoadFont(wsFontFamily, dwFontStyles, wCodePage))
+  if (!pFontData->LoadFont(wsFontFamily, dwFontStyles, FX_CodePage::kDefANSI))
     return nullptr;
 
   m_FontsArray.push_back(std::move(pFontData));

@@ -24,8 +24,7 @@ class CFWL_FontManager final {
   static void DestroyInstance();
 
   RetainPtr<CFGAS_GEFont> FindFont(WideStringView wsFontFamily,
-                                   uint32_t dwFontStyles,
-                                   FX_CodePage dwCodePage);
+                                   uint32_t dwFontStyles);
 
  private:
   class FontData final {
