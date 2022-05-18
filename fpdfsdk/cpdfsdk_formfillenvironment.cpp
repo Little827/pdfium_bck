@@ -241,6 +241,8 @@ WideString CPDFSDK_FormFillEnvironment::JS_fieldBrowse() {
 
   // Don't include trailing NUL.
   pBuff.resize(nActualLen - 1);
+
+  // Respect comment about "local encoding" in fpdf_fomfill.h.
   return WideString::FromDefANSI(ByteStringView(pBuff));
 }
 
@@ -314,6 +316,8 @@ WideString CPDFSDK_FormFillEnvironment::GetFilePath() const {
 
   // Don't include trailing NUL.
   pBuff.resize(nActualLen - 1);
+
+  // Respect comment about "local encoding" in fpdf_formfill.h.
   return WideString::FromDefANSI(ByteStringView(pBuff));
 }
 
