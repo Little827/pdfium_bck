@@ -9,8 +9,11 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/fxcrt/fx_codepage.h"
 #include "xfa/fde/cfde_textout.h"
+#include "xfa/fgas/font/cfgas_fontmgr.h"
 #include "xfa/fgas/font/cfgas_gefont.h"
+#include "xfa/fgas/font/cfgas_gemodule.h"
 #include "xfa/fgas/graphics/cfgas_gecolor.h"
 #include "xfa/fgas/graphics/cfgas_gegraphics.h"
 #include "xfa/fgas/graphics/cfgas_gepath.h"
@@ -20,7 +23,6 @@
 #include "xfa/fwl/cfwl_widget.h"
 #include "xfa/fwl/cfwl_widgetmgr.h"
 #include "xfa/fwl/ifwl_themeprovider.h"
-#include "xfa/fwl/theme/cfwl_fontmanager.h"
 
 CFWL_WidgetTP::CFWL_WidgetTP() = default;
 
@@ -78,7 +80,8 @@ void CFWL_WidgetTP::EnsureTTOInitialized() {
   if (m_pTextOut)
     return;
 
-  m_pFGASFont = CFWL_FontManager::GetInstance()->GetFWLFont();
+  CFGAS_FontMgr* pMgr = CFGAS_GEModule::Get()->GetFontMgr();
+  m_pFGASFont = pMgr->LoadFont(L"Helvetica", 0, FX_CodePage::kDefANSI);
   m_pTextOut = std::make_unique<CFDE_TextOut>();
   m_pTextOut->SetFont(m_pFGASFont);
   m_pTextOut->SetFontSize(FWLTHEME_CAPACITY_FontSize);
