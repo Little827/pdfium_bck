@@ -207,8 +207,26 @@ TEST_F(CFWLEditEmbedderTest, DISABLED_FillWithNewLineWithMultiline) {
 TEST_F(CFWLEditEmbedderTest, MAYBE_DateTimePickerTest) {
   CreateAndInitializeFormPDF("xfa/xfa_date_time_edit.pdf");
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
+  FORM_OnLButtonUp(form_handle(), page(), 0, 115, 58);
+  const char kSelectedMD5[] = "1036b8837a9dba75c6bd8f9347ae2eb2";
+  {
+    ScopedFPDFBitmap page_bitmap =
+        RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
+    CompareBitmap(page_bitmap.get(), 612, 792, kSelectedMD5);
+  }
 
-  const char kFilledMD5[] = "1036b8837a9dba75c6bd8f9347ae2eb2";
+  FORM_OnLButtonDown(form_handle(), page(), 0, 446, 54);
+  FORM_OnLButtonUp(form_handle(), page(), 0, 446, 54);
+  const char kCalendarOpenMD5[] = "eef25049c9e5756c64cf19ec07e38b74";
+  {
+    ScopedFPDFBitmap page_bitmap =
+        RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
+    CompareBitmap(page_bitmap.get(), 612, 792, kCalendarOpenMD5);
+  }
+
+  FORM_OnLButtonDown(form_handle(), page(), 0, 100, 162);
+  FORM_OnLButtonUp(form_handle(), page(), 0, 100, 162);
+  const char kFilledMD5[] = "32ca0e94845b3513615259b033a54397";
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
