@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc2ca032_594ba196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-20T15:48:24Z",
+      "side": 1,
+      "message": "Argh, fonts I think. Is there something I can install on my cloudtop to get the same fonts as on the bots?",
+      "revId": "9d4ba0d1bc5949ea78f6d3971f03fcdebc10a10e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
