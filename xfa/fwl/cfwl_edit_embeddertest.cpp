@@ -3,10 +3,12 @@
 // found in the LICENSE file.
 
 #include "core/fxcrt/widestring.h"
+#include "public/fpdf_ext.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_timer_handling_delegate.h"
+#include "testing/font_renamer.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/xfa_js_embedder_test.h"
 
@@ -22,9 +24,15 @@ class CFWLEditEmbedderTest : public XFAJSEmbedderTest {
   void SetUp() override {
     EmbedderTest::SetUp();
     SetDelegate(&delegate_);
+
+    // Arbitrary, picked nice even number, 2020-09-13 12:26:40.
+    FSDK_SetTimeFunction([]() -> time_t { return 1600000000; });
+    FSDK_SetLocaltimeFunction([](const time_t* t) { return gmtime(t); });
   }
 
   void TearDown() override {
+    FSDK_SetTimeFunction(nullptr);
+    FSDK_SetLocaltimeFunction(nullptr);
     UnloadPage(page());
     EmbedderTest::TearDown();
   }
@@ -205,10 +213,29 @@ TEST_F(CFWLEditEmbedderTest, DISABLED_FillWithNewLineWithMultiline) {
 #define MAYBE_DateTimePickerTest DateTimePickerTest
 #endif
 TEST_F(CFWLEditEmbedderTest, MAYBE_DateTimePickerTest) {
+  FontRenamer renamed_fonts_scope;
   CreateAndInitializeFormPDF("xfa/xfa_date_time_edit.pdf");
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
+  FORM_OnLButtonUp(form_handle(), page(), 0, 115, 58);
+  const char kSelectedMD5[] = "1036b8837a9dba75c6bd8f9347ae2eb2";
+  {
+    ScopedFPDFBitmap page_bitmap =
+        RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
+    CompareBitmap(page_bitmap.get(), 612, 792, kSelectedMD5);
+  }
 
-  const char kFilledMD5[] = "1036b8837a9dba75c6bd8f9347ae2eb2";
+  FORM_OnLButtonDown(form_handle(), page(), 0, 446, 54);
+  FORM_OnLButtonUp(form_handle(), page(), 0, 446, 54);
+  const char kCalendarOpenMD5[] = "02de64e7e83c82c1ef0ae484d671a51d";
+  {
+    ScopedFPDFBitmap page_bitmap =
+        RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
+    CompareBitmap(page_bitmap.get(), 612, 792, kCalendarOpenMD5);
+  }
+
+  FORM_OnLButtonDown(form_handle(), page(), 0, 100, 162);
+  FORM_OnLButtonUp(form_handle(), page(), 0, 100, 162);
+  const char kFilledMD5[] = "1bce66c11f1c87b8d639ce0076ac36d3";
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
