@@ -16,6 +16,40 @@
       "message": "Anyways, I feel like a fink for punting on the hash comparisons, but this will get Asan runs against more code.",
       "revId": "58dde02ca6c1f2cf97f6480a938cf28cc92c8929",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9c2798_c620103b",
+        "filename": "xfa/fwl/cfwl_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-20T21:22:53Z",
+      "side": 1,
+      "message": "Existing, but also applies to the new events below. Please document what these click coordinates represent.",
+      "revId": "58dde02ca6c1f2cf97f6480a938cf28cc92c8929",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370c1513_cffa0c9c",
+        "filename": "xfa/fwl/cfwl_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-20T21:22:53Z",
+      "side": 1,
+      "message": "The issue might be because XFA code has its own font lookup. Because it reinvents the wheel, this font lookup isn\u0027t hermetic like the non-XFA code.",
+      "revId": "58dde02ca6c1f2cf97f6480a938cf28cc92c8929",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
