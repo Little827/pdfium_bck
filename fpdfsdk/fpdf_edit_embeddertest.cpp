@@ -4189,3 +4189,95 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadataJpxLzw) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapForHelloWorldText) {
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    FPDF_PAGEOBJECT text_object = FPDFPage_GetObject(page, 0);
+    ASSERT_EQ(FPDF_PAGEOBJ_TEXT, FPDFPageObj_GetType(text_object));
+
+    ScopedFPDFBitmap bitmap(
+        FPDFTextObj_GetRenderedBitmap(document(), page, text_object));
+    ASSERT_TRUE(bitmap);
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    const char kChecksum[] = "b31371b5135ad9db5b1bde2e157efaad";
+#else
+    const char kChecksum[] = "f19bd18df17fe783f01d2c593d0d63cf";
+#endif
+    CompareBitmap(bitmap.get(), 64, 11, kChecksum);
+  }
+
+  {
+    FPDF_PAGEOBJECT text_object = FPDFPage_GetObject(page, 1);
+    ASSERT_EQ(FPDF_PAGEOBJ_TEXT, FPDFPageObj_GetType(text_object));
+
+    ScopedFPDFBitmap bitmap(
+        FPDFTextObj_GetRenderedBitmap(document(), page, text_object));
+    ASSERT_TRUE(bitmap);
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    const char kChecksum[] = "1368af46729abd3b405c9ee91f498b08";
+#else
+    const char kChecksum[] = "15c26a9a8be11955f52562a44ad810cc";
+#endif
+    CompareBitmap(bitmap.get(), 116, 16, kChecksum);
+  }
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapForNewlyCreatedText) {
+  // Start with a blank document.
+  ASSERT_TRUE(CreateNewDocument());
+
+  // Create a new text object.
+  FPDF_PAGEOBJECT text_object =
+      FPDFPageObj_NewTextObj(document(), "Arial", 12.0f);
+  ASSERT_EQ(FPDF_PAGEOBJ_TEXT, FPDFPageObj_GetType(text_object));
+  ScopedFPDFWideString text = GetFPDFWideString(kBottomText);
+  EXPECT_TRUE(FPDFText_SetText(text_object, text.get()));
+
+  ScopedFPDFBitmap bitmap(
+      FPDFTextObj_GetRenderedBitmap(document(), nullptr, text_object));
+  ASSERT_TRUE(bitmap);
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  const char kChecksum[] = "52d5a943f377009271b56de915abc489";
+#else
+  const char kChecksum[] = "754032cb11e0b249d19661fba7c97d93";
+#endif
+  CompareBitmap(bitmap.get(), 151, 12, kChecksum);
+}
+
+TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapForTextWithBadParameters) {
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_PAGEOBJECT text_object = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(text_object);
+
+  // Simple bad parameters testing.
+  EXPECT_FALSE(FPDFTextObj_GetRenderedBitmap(nullptr, nullptr, nullptr));
+  EXPECT_FALSE(FPDFTextObj_GetRenderedBitmap(document(), nullptr, nullptr));
+  EXPECT_FALSE(FPDFTextObj_GetRenderedBitmap(nullptr, page, nullptr));
+  EXPECT_FALSE(FPDFTextObj_GetRenderedBitmap(nullptr, nullptr, text_object));
+  EXPECT_FALSE(FPDFTextObj_GetRenderedBitmap(document(), page, nullptr));
+  EXPECT_FALSE(FPDFTextObj_GetRenderedBitmap(nullptr, page, text_object));
+
+  {
+    // `text_object` will render without `page`, but may not render correctly
+    // without the resources from `page`. Although it does in this simple case.
+    ScopedFPDFBitmap bitmap(
+        FPDFTextObj_GetRenderedBitmap(document(), nullptr, text_object));
+    EXPECT_TRUE(bitmap);
+  }
+
+  // Mismatch between the document and the page fails too.
+  ScopedFPDFDocument empty_document(FPDF_CreateNewDocument());
+  EXPECT_FALSE(
+      FPDFTextObj_GetRenderedBitmap(empty_document.get(), page, text_object));
+
+  UnloadPage(page);
+}
