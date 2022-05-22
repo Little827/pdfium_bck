@@ -1728,7 +1728,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
   for (const TextCharPos& cp : pCharPos) {
     const int glyph_width = pFont->GetGlyphWidth(
         cp.m_GlyphIndex, cp.m_FontCharWidth, subst_font_weight);
-    if (cp.m_FontCharWidth < glyph_width)
+    if (cp.m_FontCharWidth <= glyph_width)
       return false;
   }
 
