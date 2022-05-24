@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3a86bf_bc54d751",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-24T18:55:43Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/92596 did the same thing. Abandon?",
+      "revId": "e33e4f2ea7160aecd43c9a5df167d29566a7db89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
