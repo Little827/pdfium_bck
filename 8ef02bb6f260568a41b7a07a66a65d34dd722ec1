@@ -47,6 +47,63 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d866d9f_e0b0ef8b",
+        "filename": "pdfium.gni",
+        "patchSetId": 24
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T20:33:10Z",
+      "side": 1,
+      "message": "Can we make it always co-exist? Does anyone need a Skia-only build config?",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab2453d_cfd594c6",
+        "filename": "pdfium.gni",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T20:33:10Z",
+      "side": 1,
+      "message": "Can the logic become:\n1) AGG only configs - set to false, since there\u0027s only 1 possible renderer and nothing else to select.\n2) If Skia is enabled, then always allow selection.",
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eece559d_a9c0da4b",
+        "filename": "pdfium.gni",
+        "patchSetId": 24
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T20:33:10Z",
+      "side": 1,
+      "message": "Then this shouldn\u0027t be necessary, as AGG is always included.",
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6d5590b1_3d378b4a",
@@ -114,6 +171,23 @@
         "endLine": 258,
         "endChar": 31
       },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc56b40e_f86b7a4e",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 24
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T20:33:10Z",
+      "side": 1,
+      "message": "Still more deprecation messages hanging around.",
       "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
