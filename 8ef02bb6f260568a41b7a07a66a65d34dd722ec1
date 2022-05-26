@@ -68,6 +68,30 @@
       },
       "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d369b6b_e2013032",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T00:02:13Z",
+      "side": 1,
+      "message": "Well, that\u0027s what experimental is for.\n\nWhy is it a pointer and not just an int?",
+      "parentUuid": "6d5590b1_3d378b4a",
+      "range": {
+        "startLine": 258,
+        "startChar": 16,
+        "endLine": 258,
+        "endChar": 31
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

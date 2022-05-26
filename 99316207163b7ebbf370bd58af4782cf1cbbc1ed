@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "870f4de6_6020f67d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T00:02:13Z",
+      "side": 1,
+      "message": "We discussed this a bit yesterday, in the context of bot selection. In the build configs where Skia(paths) is not turned on, having `pdf_allow_runtime_renderer_selection` is not useful since the only available renderer is AGG.",
+      "parentUuid": "8b08b9a2_3f5a40bc",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4559ed04_60e59420",
         "filename": "/COMMIT_MSG",
         "patchSetId": 19
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "Sure - moved the runtime check into `~ScopedSkiaDeviceFlush()`.",
       "parentUuid": "4559ed04_60e59420",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e0479c_bb17a02f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T00:02:13Z",
+      "side": 1,
+      "message": "The CL description needs to be updated.",
+      "parentUuid": "04f6e46c_c2ac3458",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -208,6 +250,24 @@
       "side": 1,
       "message": "The main issue I had here is the Android build - that is AGG only, it is broken for Skia even before this CL\u0027s changes.  The Android build for Skia is broken at the `gn gen` phase.  I spent a little time exploring what was awry for Android, and then backed off when it was turning out to be a bit of a rabbit hole.  I chose this approach instead as it was simpler to get forward progress for this effort.\n\nWe will of course want the Android build to also work with Skia at some point.  Whether or not that should be a blocker to enabling more progress on the desktop platforms from this CL could be discussed.\n\nI realized that there doesn\u0027t seem to be a bug filed for this Android problem, so I added https://crbug.com/pdfium/1832.",
       "parentUuid": "20a659c2_83359da0",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3004cd0e_78822ec7",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T00:02:13Z",
+      "side": 1,
+      "message": "I know this has been mentioned a couple of times, but I still don\u0027t see how Android is relevant here. Nobody is using the Android + Skia build config. Can Android just stay AGG-only for now?",
+      "parentUuid": "2d9b64ee_2cd5b96a",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
