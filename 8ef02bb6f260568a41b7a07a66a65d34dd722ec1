@@ -92,6 +92,30 @@
       },
       "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6942b6_1028fa6d",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-05-26T18:30:33Z",
+      "side": 1,
+      "message": "Is the tri-state really necessary, or can the FPDF_InitLibraryWithConfig() caller just be forced to choose when using a V3 config? For V1/V2, PDFium has to pick a default.",
+      "parentUuid": "3d369b6b_e2013032",
+      "range": {
+        "startLine": 258,
+        "startChar": 16,
+        "endLine": 258,
+        "endChar": 31
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
