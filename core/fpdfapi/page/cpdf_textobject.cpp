@@ -15,6 +15,13 @@
 
 #define ISLATINWORD(u) (u != 0x20 && u <= 0x28FF)
 
+namespace {
+
+// For passing to CalcPositionData() when the value does not matter.
+constexpr float kDummyHorizontalScale = 0;
+
+}  // namespace
+
 CPDF_TextObject::Item::Item() = default;
 
 CPDF_TextObject::Item::Item(const Item& that) = default;
@@ -180,7 +187,7 @@ void CPDF_TextObject::SetTextMatrix(const CFX_Matrix& matrix) {
   pTextMatrix[2] = matrix.b;
   pTextMatrix[3] = matrix.d;
   m_Pos = CFX_PointF(matrix.e, matrix.f);
-  CalcPositionData(0);
+  CalcPositionData(kDummyHorizontalScale);
 }
 
 void CPDF_TextObject::SetSegments(const ByteString* pStrs,
@@ -214,7 +221,7 @@ void CPDF_TextObject::SetSegments(const ByteString* pStrs,
 
 void CPDF_TextObject::SetText(const ByteString& str) {
   SetSegments(&str, std::vector<float>(), 1);
-  CalcPositionData(/*horz_scale=*/1.0f);
+  CalcPositionData(kDummyHorizontalScale);
   SetDirty(true);
 }
 
