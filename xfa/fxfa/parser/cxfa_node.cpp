@@ -1287,6 +1287,9 @@ CXFA_Node* CXFA_Node::GetTemplateNodeIfExists() const {
 }
 
 void CXFA_Node::SetTemplateNode(CXFA_Node* pTemplateNode) {
+  if (pTemplateNode) {
+    CHECK_EQ(pTemplateNode->m_elementType, XFA_Element::Template);
+  }
   m_pAuxNode = pTemplateNode;
 }
 
