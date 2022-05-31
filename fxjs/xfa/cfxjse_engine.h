@@ -169,7 +169,7 @@ class CFXJSE_Engine final : public CFX_V8 {
   bool UpdateVariableValue(CXFA_Node* pScriptNode,
                            ByteStringView szPropName,
                            v8::Local<v8::Value> pValue);
-  bool RunVariablesScript(CXFA_Node* pScriptNode);
+  void RunVariablesScript(CXFA_Script* pScriptNode);
 
   UnownedPtr<CJS_Runtime> const m_pSubordinateRuntime;
   cppgc::WeakPersistent<CXFA_Document> const m_pDocument;
