@@ -26,7 +26,7 @@ _LINUX_DIMENSIONS = {
 }
 _MACOS_DIMENSIONS = {
     "cpu": "x86-64",
-    "os": "Mac-11",
+    "os": "Mac-12",
 }
 _WINDOWS_DIMENSIONS = {
     "cores": "8",
@@ -111,11 +111,11 @@ def get_properties_by_name(name):
 
     is_32_bit = name.endswith("32")
     if name.startswith("android"):
-      # Android bots default to "arm". (32-bit)
-      if not is_32_bit:
-        properties.update({"target_cpu": "arm64"})
+        # Android bots default to "arm". (32-bit)
+        if not is_32_bit:
+            properties.update({"target_cpu": "arm64"})
     elif is_32_bit:
-      properties.update({"target_cpu": "x86"})
+        properties.update({"target_cpu": "x86"})
 
     if name.find("component") != -1:
         properties.update({"component": True})
@@ -318,22 +318,22 @@ luci.notifier_template(
 luci.recipe(
     name = "pdfium",
     cipd_package = _CIPD_PACKAGE,
-    use_bbagent=True,
-    use_python3=True,
+    use_bbagent = True,
+    use_python3 = True,
 )
 
 luci.recipe(
     name = "pdfium_analysis",
     cipd_package = _CIPD_PACKAGE,
-    use_bbagent=True,
-    use_python3=True,
+    use_bbagent = True,
+    use_python3 = True,
 )
 
 luci.recipe(
     name = "presubmit",
     cipd_package = _CIPD_PACKAGE,
-    use_bbagent=True,
-    use_python3=True,
+    use_bbagent = True,
+    use_python3 = True,
 )
 
 # Buckets
