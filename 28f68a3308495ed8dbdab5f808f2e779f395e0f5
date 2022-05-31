@@ -16,6 +16,24 @@
       "message": "mona_lisa.fragment?",
       "revId": "28f68a3308495ed8dbdab5f808f2e779f395e0f5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf388e38_bc35367c",
+        "filename": "testing/resources/mona_lisa.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-05-31T16:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7ef326_1430b1a0",
+      "revId": "28f68a3308495ed8dbdab5f808f2e779f395e0f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
