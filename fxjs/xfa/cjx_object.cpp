@@ -1426,14 +1426,13 @@ void CJX_Object::ScriptSomInstanceIndex(v8::Isolate* pIsolate,
     return;
 
   CXFA_Node* pToInstance = pManagerNode->GetItemIfExists(iTo);
-  if (pToInstance && pToInstance->GetElementType() == XFA_Element::Subform) {
-    pNotify->RunSubformIndexChange(pToInstance);
-  }
+  if (pToInstance && pToInstance->GetElementType() == XFA_Element::Subform)
+    pNotify->RunSubformIndexChange(static_cast<CXFA_Subform*>(pToInstance));
 
   CXFA_Node* pFromInstance = pManagerNode->GetItemIfExists(iFrom);
   if (pFromInstance &&
       pFromInstance->GetElementType() == XFA_Element::Subform) {
-    pNotify->RunSubformIndexChange(pFromInstance);
+    pNotify->RunSubformIndexChange(static_cast<CXFA_Subform*>(pFromInstance));
   }
 }
 
