@@ -75,7 +75,9 @@ class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
   CXFA_List* AsList();
   CXFA_Node* AsNode();
   CXFA_TreeList* AsTreeList();
-  CXFA_ThisProxy* AsThisProxy();
+
+  CXFA_Object* GetVariablesThis();
+  CXFA_Object* GetVariablesScript();
 
   CJX_Object* JSObject() { return m_pJSObject; }
   const CJX_Object* JSObject() const { return m_pJSObject; }
@@ -99,6 +101,8 @@ class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
               XFA_Element eType,
               CJX_Object* jsObject);
 
+  CXFA_ThisProxy* AsThisProxy();
+
   const XFA_ObjectType m_objectType;
   const XFA_Element m_elementType;
   const ByteStringView m_elementName;
@@ -111,6 +115,5 @@ class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
 CXFA_List* ToList(CXFA_Object* pObj);
 CXFA_Node* ToNode(CXFA_Object* pObj);
 CXFA_TreeList* ToTreeList(CXFA_Object* pObj);
-CXFA_ThisProxy* ToThisProxy(CXFA_Object* pObj);
 
 #endif  // XFA_FXFA_PARSER_CXFA_OBJECT_H_
