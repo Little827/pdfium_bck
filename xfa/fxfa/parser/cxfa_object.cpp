@@ -56,6 +56,16 @@ CXFA_ThisProxy* CXFA_Object::AsThisProxy() {
   return IsThisProxy() ? static_cast<CXFA_ThisProxy*>(this) : nullptr;
 }
 
+CXFA_Object* CXFA_Object::GetVariablesThis() {
+  CXFA_ThisProxy* pProxy = AsThisProxy();
+  return pProxy ? pProxy->GetThisNode() : this;
+}
+
+CXFA_Object* CXFA_Object::GetVariablesScript() {
+  CXFA_ThisProxy* pProxy = AsThisProxy();
+  return pProxy ? pProxy->GetScriptNode() : this;
+}
+
 CXFA_List* ToList(CXFA_Object* pObj) {
   return pObj ? pObj->AsList() : nullptr;
 }

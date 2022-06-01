@@ -77,6 +77,9 @@ class CXFA_Object : public cppgc::GarbageCollected<CXFA_Object> {
   CXFA_TreeList* AsTreeList();
   CXFA_ThisProxy* AsThisProxy();
 
+  CXFA_Object* GetVariablesThis();
+  CXFA_Object* GetVariablesScript();
+
   CJX_Object* JSObject() { return m_pJSObject; }
   const CJX_Object* JSObject() const { return m_pJSObject; }
 
