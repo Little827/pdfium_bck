@@ -99,7 +99,7 @@ vars = {
   # and whatever else without interference from each other.
   # If you change this, also update the libc++ revision in
   # //buildtools/deps_revisions.gni.
-  'libcxx_revision': '79a2e924d96e2fc1e4b937c42efd08898fa472d7',
+  'libcxx_revision': 'b1269813eaf5b8ac78e35e45a0f7cc320bd3e7d6',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling libc++abi
   # and whatever else without interference from each other.
