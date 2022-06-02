@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77f531d_098ff812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-06-02T15:12:37Z",
+      "side": 1,
+      "message": "bungeman: Thanks for the +1! It looks like OWNERS only acknowledges your @chromium.org account, though.",
+      "revId": "2919bd8b38c14a9587dd23189ff7ddb7605fd219",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
