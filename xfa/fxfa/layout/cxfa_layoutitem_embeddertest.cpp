@@ -48,3 +48,12 @@ TEST_F(CXFALayoutItemEmbedderTest, Bug_306123) {
   UnloadPage(page0);
   UnloadPage(page1);
 }
+
+TEST_F(CXFALayoutItemEmbedderTest, BreakBeforeAfter) {
+  static constexpr int kExpectedPageCount = 10;
+  ASSERT_TRUE(OpenDocument("xfa/xfa_break_before_after.pdf"));
+  for (int i = 0; i < kExpectedPageCount; ++i) {
+    FPDF_PAGE page0 = LoadPage(i);
+    UnloadPage(page0);
+  }
+}
