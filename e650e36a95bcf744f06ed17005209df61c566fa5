@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5f2b89_df47723c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-02T20:41:12Z",
+      "side": 1,
+      "message": "Maybe add \"Bug: pdfium:1301\" here?",
+      "revId": "e650e36a95bcf744f06ed17005209df61c566fa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
