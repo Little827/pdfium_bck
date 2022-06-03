@@ -1237,32 +1237,15 @@ CJS_Result CJS_Document::getPageNthWord(
   int nWordNo = params.size() > 1 ? pRuntime->ToInt32(params[1]) : 0;
   bool bStrip = params.size() > 2 ? pRuntime->ToBoolean(params[2]) : true;
 
-  CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
-  if (nPageNo < 0 || nPageNo >= pDocument->GetPageCount())
+  if (!m_pFormFillEnv->HasPDFPage(nPageNo))
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(nPageNo);
-  if (!pPageDict)
+  absl::optional<WideString> maybe_result =
+      m_pFormFillEnv->GetPageNthWord(nPageNo, nWordNo);
+  if (!maybe_result.has_value())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, pPageDict);
-  page->SetRenderCache(std::make_unique<CPDF_PageRenderCache>(page.Get()));
-  page->ParseContent();
-
-  int nWords = 0;
-  WideString swRet;
-  for (auto& pPageObj : *page) {
-    if (pPageObj->IsText()) {
-      CPDF_TextObject* pTextObj = pPageObj->AsText();
-      int nObjWords = pTextObj->CountWords();
-      if (nWords + nObjWords >= nWordNo) {
-        swRet = pTextObj->GetWordString(nWordNo - nWords);
-        break;
-      }
-      nWords += nObjWords;
-    }
-  }
-
+  WideString swRet = std::move(maybe_result.value());
   if (bStrip)
     swRet.Trim();
   return CJS_Result::Success(pRuntime->NewString(swRet.AsStringView()));
@@ -1292,24 +1275,14 @@ CJS_Result CJS_Document::getPageNumWords(
     return CJS_Result::Failure(JSMessage::kPermissionError);
 
   int nPageNo = params.size() > 0 ? pRuntime->ToInt32(params[0]) : 0;
-  CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
-  if (nPageNo < 0 || nPageNo >= pDocument->GetPageCount())
+  if (!m_pFormFillEnv->HasPDFPage(nPageNo))
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(nPageNo);
-  if (!pPageDict)
+  absl::optional<int> maybe_words = m_pFormFillEnv->GetPageNumWords(nPageNo);
+  if (!maybe_words.has_value())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, pPageDict);
-  page->SetRenderCache(std::make_unique<CPDF_PageRenderCache>(page.Get()));
-  page->ParseContent();
-
-  int nWords = 0;
-  for (auto& pPageObj : *page) {
-    if (pPageObj->IsText())
-      nWords += pPageObj->AsText()->CountWords();
-  }
-  return CJS_Result::Success(pRuntime->NewNumber(nWords));
+  return CJS_Result::Success(pRuntime->NewNumber(maybe_words.value()));
 }
 
 CJS_Result CJS_Document::getPrintParams(

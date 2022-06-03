@@ -11,8 +11,11 @@
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_annotcontext.h"
+#include "core/fpdfapi/page/cpdf_pageobject.h"
+#include "core/fpdfapi/page/cpdf_textobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fpdfapi/render/cpdf_pagerendercache.h"
 #include "core/fpdfdoc/cpdf_nametree.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/stl_util.h"
@@ -135,6 +138,61 @@ FPDF_PAGE CPDFSDK_FormFillEnvironment::GetCurrentPage() const {
         m_pInfo, FPDFDocumentFromCPDFDocument(m_pCPDFDoc.Get()));
   }
   return nullptr;
+}
+
+bool CPDFSDK_FormFillEnvironment::ContainsExtensionForm() const {
+  CPDF_Document::Extension* pContext = GetDocExtension();
+  return pContext && pContext->ContainsExtensionForm();
+}
+
+bool CPDFSDK_FormFillEnvironment::HasPDFPage(int nPageNum) const {
+  return nPageNum >= 0 && nPageNum < GetPDFDocument()->GetPageCount();
+}
+
+absl::optional<WideString> CPDFSDK_FormFillEnvironment::GetPageNthWord(
+    int nPageNum,
+    int nWordNum) {
+  CPDF_Document* pDocument = GetPDFDocument();
+  CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(nPageNum);
+  if (!pPageDict)
+    return absl::nullopt;
+
+  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, pPageDict);
+  page->SetRenderCache(std::make_unique<CPDF_PageRenderCache>(page.Get()));
+  page->ParseContent();
+
+  int nWords = 0;
+  WideString swRet;
+  for (auto& pPageObj : *page) {
+    if (pPageObj->IsText()) {
+      CPDF_TextObject* pTextObj = pPageObj->AsText();
+      int nObjWords = pTextObj->CountWords();
+      if (nWords + nObjWords >= nWordNum) {
+        swRet = pTextObj->GetWordString(nWordNum - nWords);
+        break;
+      }
+      nWords += nObjWords;
+    }
+  }
+  return swRet;
+}
+
+absl::optional<int> CPDFSDK_FormFillEnvironment::GetPageNumWords(int nPageNum) {
+  CPDF_Document* pDocument = GetPDFDocument();
+  CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(nPageNum);
+  if (!pPageDict)
+    return absl::nullopt;
+
+  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, pPageDict);
+  page->SetRenderCache(std::make_unique<CPDF_PageRenderCache>(page.Get()));
+  page->ParseContent();
+
+  int nWords = 0;
+  for (auto& pPageObj : *page) {
+    if (pPageObj->IsText())
+      nWords += pPageObj->AsText()->CountWords();
+  }
+  return nWords;
 }
 
 WideString CPDFSDK_FormFillEnvironment::GetLanguage() {

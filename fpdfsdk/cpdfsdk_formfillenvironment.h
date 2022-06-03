@@ -147,7 +147,11 @@ class CPDFSDK_FormFillEnvironment final
 #ifdef PDF_ENABLE_V8
   CPDFSDK_PageView* GetCurrentView();
   FPDF_PAGE GetCurrentPage() const;
+  bool HasPDFPage(int nPageNum) const;
+  absl::optional<WideString> GetPageNthWord(int nPageNum, int nWordNum);
+  absl::optional<int> GetPageNumWords(int nPageNum);
 
+  bool ContainsExtensionForm() const;
   WideString GetLanguage();
   WideString GetPlatform();
 
