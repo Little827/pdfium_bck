@@ -166,12 +166,11 @@ TEST_F(HeapUnitTest, DeleteHeapNoReferences) {
   EXPECT_EQ(1u, PseudoCollectible::DeadCount());
 }
 
-// TODO(tsepez): find conditions that will trigger a GC.
-TEST_F(HeapUnitTest, DISABLED_Bloat) {
+TEST_F(HeapUnitTest, Bloat) {
   FXGCScopedHeap heap1 = FXGC_CreateHeap();
   ASSERT_TRUE(heap1);
   for (int i = 0; i < 100000; ++i) {
     cppgc::MakeGarbageCollected<Bloater>(heap1->GetAllocationHandle());
-    V8TestEnvironment::PumpPlatformMessageLoop(isolate());
+    Pump();
   }
 }
