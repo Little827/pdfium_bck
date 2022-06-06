@@ -149,8 +149,8 @@ CJS_Result CJS_App::set_viewer_variation(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_viewer_version(CJS_Runtime* pRuntime) {
-  CPDF_Document::Extension* pContext =
-      pRuntime->GetFormFillEnv()->GetDocExtension();
+  CPDF_Document* pDocument = pRuntime->GetFormFillEnv()->GetPDFDocument();
+  CPDF_Document::Extension* pContext = pDocument->GetExtension();
   int version = pContext && pContext->ContainsExtensionForm()
                     ? kNumViewerVersionXfa
                     : kNumViewerVersion;
@@ -163,7 +163,7 @@ CJS_Result CJS_App::set_viewer_version(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_platform(CJS_Runtime* pRuntime) {
-  CPDFSDK_FormFillEnvironment* pFormFillEnv = pRuntime->GetFormFillEnv();
+  IJS_Runtime::FormFillEnvIface* pFormFillEnv = pRuntime->GetFormFillEnv();
   if (pFormFillEnv) {
     WideString platform = pFormFillEnv->GetPlatform();
     if (!platform.IsEmpty())
@@ -178,7 +178,7 @@ CJS_Result CJS_App::set_platform(CJS_Runtime* pRuntime,
 }
 
 CJS_Result CJS_App::get_language(CJS_Runtime* pRuntime) {
-  CPDFSDK_FormFillEnvironment* pFormFillEnv = pRuntime->GetFormFillEnv();
+  IJS_Runtime::FormFillEnvIface* pFormFillEnv = pRuntime->GetFormFillEnv();
   if (pFormFillEnv) {
     WideString language = pFormFillEnv->GetLanguage();
     if (!language.IsEmpty())
@@ -195,7 +195,7 @@ CJS_Result CJS_App::set_language(CJS_Runtime* pRuntime,
 // creates a new fdf object that contains no data
 // comment: need reader support
 // note:
-// CFDF_Document * CPDFSDK_FormFillEnvironment::NewFDF();
+// CFDF_Document * IJS_Runtime::FormFillEnvIface::NewFDF();
 CJS_Result CJS_App::newFDF(CJS_Runtime* pRuntime,
                            const std::vector<v8::Local<v8::Value>>& params) {
   return CJS_Result::Success();
@@ -205,7 +205,7 @@ CJS_Result CJS_App::newFDF(CJS_Runtime* pRuntime,
 // comment:need reader support
 // note: as defined in js reference, the proto of this function's fourth
 // parmeters, how old an fdf document while do not show it.
-// CFDF_Document * CPDFSDK_FormFillEnvironment::OpenFDF(string strPath,bool
+// CFDF_Document * IJS_Runtime::FormFillEnvIface::OpenFDF(string strPath,bool
 // bUserConv);
 
 CJS_Result CJS_App::openFDF(CJS_Runtime* pRuntime,
@@ -221,7 +221,7 @@ CJS_Result CJS_App::alert(CJS_Runtime* pRuntime,
   if (!IsExpandedParamKnown(newParams[0]))
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  CPDFSDK_FormFillEnvironment* pFormFillEnv = pRuntime->GetFormFillEnv();
+  IJS_Runtime::FormFillEnvIface* pFormFillEnv = pRuntime->GetFormFillEnv();
   if (!pFormFillEnv)
     return CJS_Result::Success(pRuntime->NewNumber(0));
 

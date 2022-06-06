@@ -10,11 +10,10 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fxjs/ijs_event_context.h"
+#include "fxjs/ijs_runtime.h"
 
 class CJS_Field;
-class CJS_Runtime;
 
 class CJS_EventContext final : public IJS_EventContext {
  public:
@@ -107,7 +106,7 @@ class CJS_EventContext final : public IJS_EventContext {
   void OnExternal_Exec() override;
 
   CJS_Runtime* GetJSRuntime() const { return m_pRuntime.Get(); }
-  CPDFSDK_FormFillEnvironment* GetFormFillEnv() const {
+  IJS_Runtime::FormFillEnvIface* GetFormFillEnv() const {
     return m_pFormFillEnv.Get();
   }
   CJS_Field* SourceField();
@@ -148,7 +147,7 @@ class CJS_EventContext final : public IJS_EventContext {
   void Destroy();
 
   UnownedPtr<CJS_Runtime> const m_pRuntime;
-  ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
+  ObservedPtr<IJS_Runtime::FormFillEnvIface> m_pFormFillEnv;
   Kind m_eKind = Kind::kUnknown;
   bool m_bBusy = false;
   bool m_bValid = false;

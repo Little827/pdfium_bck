@@ -44,7 +44,7 @@
 #include "v8/include/v8-exception.h"
 #include "v8/include/v8-isolate.h"
 
-CJS_Runtime::CJS_Runtime(CPDFSDK_FormFillEnvironment* pFormFillEnv)
+CJS_Runtime::CJS_Runtime(FormFillEnvIface* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv) {
   v8::Isolate* pIsolate = nullptr;
   IPDF_JSPLATFORM* pPlatform = m_pFormFillEnv->GetFormFillInfo()->m_pJsPlatform;
@@ -162,7 +162,7 @@ void CJS_Runtime::SetFormFillEnvToDocument() {
   pJSDocument->SetFormFillEnv(m_pFormFillEnv.Get());
 }
 
-CPDFSDK_FormFillEnvironment* CJS_Runtime::GetFormFillEnv() const {
+IJS_Runtime::FormFillEnvIface* CJS_Runtime::GetFormFillEnv() const {
   return m_pFormFillEnv.Get();
 }
 

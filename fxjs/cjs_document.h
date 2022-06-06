@@ -27,8 +27,8 @@ class CJS_Document final : public CJS_Object, public Observable {
   CJS_Document(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
   ~CJS_Document() override;
 
-  void SetFormFillEnv(CPDFSDK_FormFillEnvironment* pFormFillEnv);
-  CPDFSDK_FormFillEnvironment* GetFormFillEnv() const {
+  void SetFormFillEnv(IJS_Runtime::FormFillEnvIface* pFormFillEnv);
+  IJS_Runtime::FormFillEnvIface* GetFormFillEnv() const {
     return m_pFormFillEnv.Get();
   }
   void AddDelayData(std::unique_ptr<CJS_DelayData> pData);
@@ -307,7 +307,7 @@ class CJS_Document final : public CJS_Object, public Observable {
   CPDFSDK_InteractiveForm* GetSDKInteractiveForm();
 
   WideString m_cwBaseURL;
-  ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
+  ObservedPtr<IJS_Runtime::FormFillEnvIface> m_pFormFillEnv;
   std::list<std::unique_ptr<CJS_DelayData>> m_DelayData;
   // Needs to be a std::list for iterator stability.
   std::list<WideString> m_IconNames;

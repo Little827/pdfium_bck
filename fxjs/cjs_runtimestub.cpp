@@ -8,7 +8,7 @@
 
 #include "fxjs/cjs_event_context_stub.h"
 
-CJS_RuntimeStub::CJS_RuntimeStub(CPDFSDK_FormFillEnvironment* pFormFillEnv)
+CJS_RuntimeStub::CJS_RuntimeStub(FormFillEnvIface* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv) {}
 
 CJS_RuntimeStub::~CJS_RuntimeStub() = default;
@@ -21,7 +21,7 @@ IJS_EventContext* CJS_RuntimeStub::NewEventContext() {
 
 void CJS_RuntimeStub::ReleaseEventContext(IJS_EventContext* pContext) {}
 
-CPDFSDK_FormFillEnvironment* CJS_RuntimeStub::GetFormFillEnv() const {
+IJS_Runtime::FormFillEnvIface* CJS_RuntimeStub::GetFormFillEnv() const {
   return m_pFormFillEnv.Get();
 }
 

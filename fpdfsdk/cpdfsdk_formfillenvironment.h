@@ -27,6 +27,7 @@
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_fillernotify.h"
+#include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/span.h"
 
@@ -35,7 +36,6 @@ class CPDF_FormField;
 class CPDFSDK_InteractiveForm;
 class CPDFSDK_PageView;
 class IJS_EventContext;
-class IJS_Runtime;
 class IPDF_Page;
 struct CFFL_FieldAction;
 
@@ -56,6 +56,7 @@ FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE);
 
 class CPDFSDK_FormFillEnvironment final
     : public CFX_Timer::HandlerIface,
+      public IJS_Runtime::FormFillEnvIface,
       public CFFL_InteractiveFormFiller::CallbackIface {
  public:
   CPDFSDK_FormFillEnvironment(CPDF_Document* pDoc, FPDF_FORMFILLINFO* pFFinfo);
@@ -85,34 +86,69 @@ class CPDFSDK_FormFillEnvironment final
   bool HasPermissions(uint32_t flags) const override;
   void OnChange() override;
 
-  CPDFSDK_PageView* GetPageViewAtIndex(int nIndex);
+  // IJS_Runtime::FormFillEnvIface;
+  int GetPageCount() const override;
+  FPDF_FORMFILLINFO* GetFormFillInfo() const override;
+  CPDF_Document* GetPDFDocument() const override;
+  bool GetChangeMark() const override;
+  void SetChangeMark() override;
+  void ClearChangeMark() override;
+  bool IsJSPlatformPresent() const override;
+  CPDFSDK_PageView* GetCurrentView() override;
+  CPDFSDK_InteractiveForm* GetInteractiveForm() override;
+  WideString GetLanguage() const override;
+  WideString GetPlatform() const override;
+  void JS_DocGotoPage(int nPageNum) override;
+  WideString JS_fieldBrowse() override;
+  int JS_appAlert(const WideString& Msg,
+                  const WideString& Title,
+                  int Type,
+                  int Icon) override;
+  int JS_appResponse(const WideString& Question,
+                     const WideString& Title,
+                     const WideString& Default,
+                     const WideString& cLabel,
+                     bool bPassword,
+                     pdfium::span<uint8_t> response) override;
+  void JS_appBeep(int nType) override;
+  void JS_docmailForm(pdfium::span<uint8_t> mailData,
+                      bool bUI,
+                      const WideString& To,
+                      const WideString& Subject,
+                      const WideString& CC,
+                      const WideString& BCC,
+                      const WideString& Msg) override;
+  void JS_docprint(bool bUI,
+                   int nStart,
+                   int nEnd,
+                   bool bSilent,
+                   bool bShrinkToFit,
+                   bool bPrintAsImage,
+                   bool bReverse,
+                   bool bAnnotations) override;
+  WideString JS_docGetFilePath() override;
+  bool KillFocusAnnot(int nFlags) override;
+  CPDFSDK_PageView* GetPageViewAtIndex(int nIndex) override;
+  IPDF_Page* GetCurrentPage() const override;
+  void DoGoToAction(int nPageIndex,
+                    int zoomMode,
+                    pdfium::span<float> fPosArray) override;
+
   void RemovePageView(IPDF_Page* pUnderlyingPage);
   void UpdateAllViews(CPDFSDK_Annot* pAnnot);
 
-  bool KillFocusAnnot(Mask<FWL_EVENTFLAG> nFlags);
   void ClearAllFocusedAnnots();
-
-  int GetPageCount() const;
-
-  bool GetChangeMark() const { return m_bChangeMask; }
-  void SetChangeMark() { m_bChangeMask = true; }
-  void ClearChangeMark() { m_bChangeMask = false; }
 
   void ProcJavascriptAction();
   bool ProcOpenAction();
 
   void ExecuteNamedAction(const ByteString& namedAction);
   void DoURIAction(const ByteString& bsURI, Mask<FWL_EVENTFLAG> modifiers);
-  void DoGoToAction(int nPageIndex,
-                    int zoomMode,
-                    pdfium::span<float> fPosArray);
 
-  CPDF_Document* GetPDFDocument() const { return m_pCPDFDoc.Get(); }
   CPDF_Document::Extension* GetDocExtension() const {
     return m_pCPDFDoc->GetExtension();
   }
 
-  bool IsJSPlatformPresent() const { return m_pInfo && m_pInfo->m_pJsPlatform; }
   IPDF_JSPLATFORM* GetJSPlatform() const {
     return m_pInfo ? m_pInfo->m_pJsPlatform : nullptr;
   }
@@ -145,41 +181,6 @@ class CPDFSDK_FormFillEnvironment final
   void DoActionResetForm(const CPDF_Action& action);
 
 #ifdef PDF_ENABLE_V8
-  CPDFSDK_PageView* GetCurrentView();
-  FPDF_PAGE GetCurrentPage() const;
-
-  WideString GetLanguage();
-  WideString GetPlatform();
-
-  int JS_appAlert(const WideString& Msg,
-                  const WideString& Title,
-                  int Type,
-                  int Icon);
-  int JS_appResponse(const WideString& Question,
-                     const WideString& Title,
-                     const WideString& Default,
-                     const WideString& cLabel,
-                     FPDF_BOOL bPassword,
-                     pdfium::span<uint8_t> response);
-  void JS_appBeep(int nType);
-  WideString JS_fieldBrowse();
-  void JS_docmailForm(pdfium::span<uint8_t> mailData,
-                      FPDF_BOOL bUI,
-                      const WideString& To,
-                      const WideString& Subject,
-                      const WideString& CC,
-                      const WideString& BCC,
-                      const WideString& Msg);
-  void JS_docprint(FPDF_BOOL bUI,
-                   int nStart,
-                   int nEnd,
-                   FPDF_BOOL bSilent,
-                   FPDF_BOOL bShrinkToFit,
-                   FPDF_BOOL bPrintAsImage,
-                   FPDF_BOOL bReverse,
-                   FPDF_BOOL bAnnotations);
-  void JS_docgotoPage(int nPageNum);
-  WideString JS_docGetFilePath();
 
 #ifdef PDF_ENABLE_XFA
   int GetPageViewCount() const;
@@ -226,7 +227,6 @@ class CPDFSDK_FormFillEnvironment final
 
   WideString GetFilePath() const;
   ByteString GetAppName() const { return ByteString(); }
-  FPDF_FORMFILLINFO* GetFormFillInfo() const { return m_pInfo; }
   void SubmitForm(pdfium::span<uint8_t> form_data, const WideString& URL);
 
   void SetFocusableAnnotSubtypes(
@@ -242,8 +242,7 @@ class CPDFSDK_FormFillEnvironment final
     return m_pInteractiveFormFiller.get();
   }
 
-  IJS_Runtime* GetIJSRuntime();                   // Creates if not present.
-  CPDFSDK_InteractiveForm* GetInteractiveForm();  // Creates if not present.
+  IJS_Runtime* GetIJSRuntime();  // Creates if not present.
 
  private:
   using RunScriptCallback = std::function<void(IJS_EventContext* context)>;

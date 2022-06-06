@@ -23,7 +23,6 @@
 #include "fpdfsdk/formfiller/cffl_formfield.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fxjs/ijs_event_context.h"
-#include "fxjs/ijs_runtime.h"
 #include "third_party/base/check.h"
 #include "third_party/base/containers/contains.h"
 #include "third_party/base/notreached.h"
@@ -125,19 +124,19 @@ bool CPDFSDK_FormFillEnvironment::IsSelectionImplemented() const {
 
 #ifdef PDF_ENABLE_V8
 CPDFSDK_PageView* CPDFSDK_FormFillEnvironment::GetCurrentView() {
-  IPDF_Page* pPage = IPDFPageFromFPDFPage(GetCurrentPage());
+  IPDF_Page* pPage = GetCurrentPage();
   return pPage ? GetOrCreatePageView(pPage) : nullptr;
 }
 
-FPDF_PAGE CPDFSDK_FormFillEnvironment::GetCurrentPage() const {
+IPDF_Page* CPDFSDK_FormFillEnvironment::GetCurrentPage() const {
   if (m_pInfo && m_pInfo->FFI_GetCurrentPage) {
-    return m_pInfo->FFI_GetCurrentPage(
-        m_pInfo, FPDFDocumentFromCPDFDocument(m_pCPDFDoc.Get()));
+    return IPDFPageFromFPDFPage(m_pInfo->FFI_GetCurrentPage(
+        m_pInfo, FPDFDocumentFromCPDFDocument(m_pCPDFDoc.Get())));
   }
   return nullptr;
 }
 
-WideString CPDFSDK_FormFillEnvironment::GetLanguage() {
+WideString CPDFSDK_FormFillEnvironment::GetLanguage() const {
 #ifdef PDF_ENABLE_XFA
   if (!m_pInfo || m_pInfo->version < 2 || !m_pInfo->FFI_GetLanguage)
     return WideString();
@@ -159,7 +158,7 @@ WideString CPDFSDK_FormFillEnvironment::GetLanguage() {
 #endif  // PDF_ENABLE_XFA
 }
 
-WideString CPDFSDK_FormFillEnvironment::GetPlatform() {
+WideString CPDFSDK_FormFillEnvironment::GetPlatform() const {
 #ifdef PDF_ENABLE_XFA
   if (!m_pInfo || m_pInfo->version < 2 || !m_pInfo->FFI_GetPlatform)
     return WideString();
@@ -200,7 +199,7 @@ int CPDFSDK_FormFillEnvironment::JS_appResponse(
     const WideString& Title,
     const WideString& Default,
     const WideString& Label,
-    FPDF_BOOL bPassword,
+    bool bPassword,
     pdfium::span<uint8_t> response) {
   IPDF_JSPLATFORM* js_platform = GetJSPlatform();
   if (!js_platform || !js_platform->app_response)
@@ -247,7 +246,7 @@ WideString CPDFSDK_FormFillEnvironment::JS_fieldBrowse() {
 }
 
 void CPDFSDK_FormFillEnvironment::JS_docmailForm(pdfium::span<uint8_t> mailData,
-                                                 FPDF_BOOL bUI,
+                                                 bool bUI,
                                                  const WideString& To,
                                                  const WideString& Subject,
                                                  const WideString& CC,
@@ -269,14 +268,14 @@ void CPDFSDK_FormFillEnvironment::JS_docmailForm(pdfium::span<uint8_t> mailData,
                         AsFPDFWideString(&bsMsg));
 }
 
-void CPDFSDK_FormFillEnvironment::JS_docprint(FPDF_BOOL bUI,
+void CPDFSDK_FormFillEnvironment::JS_docprint(bool bUI,
                                               int nStart,
                                               int nEnd,
-                                              FPDF_BOOL bSilent,
-                                              FPDF_BOOL bShrinkToFit,
-                                              FPDF_BOOL bPrintAsImage,
-                                              FPDF_BOOL bReverse,
-                                              FPDF_BOOL bAnnotations) {
+                                              bool bSilent,
+                                              bool bShrinkToFit,
+                                              bool bPrintAsImage,
+                                              bool bReverse,
+                                              bool bAnnotations) {
   IPDF_JSPLATFORM* js_platform = GetJSPlatform();
   if (!js_platform || !js_platform->Doc_print)
     return;
@@ -285,7 +284,7 @@ void CPDFSDK_FormFillEnvironment::JS_docprint(FPDF_BOOL bUI,
                          bPrintAsImage, bReverse, bAnnotations);
 }
 
-void CPDFSDK_FormFillEnvironment::JS_docgotoPage(int nPageNum) {
+void CPDFSDK_FormFillEnvironment::JS_DocGotoPage(int nPageNum) {
   IPDF_JSPLATFORM* js_platform = GetJSPlatform();
   if (!js_platform || !js_platform->Doc_gotoPage)
     return;
@@ -758,7 +757,8 @@ bool CPDFSDK_FormFillEnvironment::SetFocusAnnot(
   return true;
 }
 
-bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(Mask<FWL_EVENTFLAG> nFlags) {
+bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(int x) {
+  auto nFlags = Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(x);
   if (!m_pFocusAnnot)
     return false;
 
@@ -788,6 +788,30 @@ bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(Mask<FWL_EVENTFLAG> nFlags) {
 int CPDFSDK_FormFillEnvironment::GetPageCount() const {
   CPDF_Document::Extension* pExtension = m_pCPDFDoc->GetExtension();
   return pExtension ? pExtension->GetPageCount() : m_pCPDFDoc->GetPageCount();
+}
+
+FPDF_FORMFILLINFO* CPDFSDK_FormFillEnvironment::GetFormFillInfo() const {
+  return m_pInfo;
+}
+
+CPDF_Document* CPDFSDK_FormFillEnvironment::GetPDFDocument() const {
+  return m_pCPDFDoc.Get();
+}
+
+bool CPDFSDK_FormFillEnvironment::GetChangeMark() const {
+  return m_bChangeMask;
+}
+
+void CPDFSDK_FormFillEnvironment::SetChangeMark() {
+  m_bChangeMask = true;
+}
+
+void CPDFSDK_FormFillEnvironment::ClearChangeMark() {
+  m_bChangeMask = false;
+}
+
+bool CPDFSDK_FormFillEnvironment::IsJSPlatformPresent() const {
+  return m_pInfo && m_pInfo->m_pJsPlatform;
 }
 
 bool CPDFSDK_FormFillEnvironment::HasPermissions(uint32_t flags) const {
