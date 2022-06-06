@@ -197,11 +197,11 @@ CJS_Result CJS_Document::set_page_num(CJS_Runtime* pRuntime,
   int iPageCount = m_pFormFillEnv->GetPageCount();
   int iPageNum = pRuntime->ToInt32(vp);
   if (iPageNum >= 0 && iPageNum < iPageCount)
-    m_pFormFillEnv->JS_docgotoPage(iPageNum);
+    m_pFormFillEnv->JS_DocGotoPage(iPageNum);
   else if (iPageNum >= iPageCount)
-    m_pFormFillEnv->JS_docgotoPage(iPageCount - 1);
+    m_pFormFillEnv->JS_DocGotoPage(iPageCount - 1);
   else if (iPageNum < 0)
-    m_pFormFillEnv->JS_docgotoPage(0);
+    m_pFormFillEnv->JS_DocGotoPage(0);
 
   return CJS_Result::Success();
 }
@@ -635,7 +635,7 @@ CJS_Result CJS_Document::submitForm(
   return CJS_Result::Success();
 }
 
-void CJS_Document::SetFormFillEnv(CPDFSDK_FormFillEnvironment* pFormFillEnv) {
+void CJS_Document::SetFormFillEnv(IJS_Runtime::FormFillEnvIface* pFormFillEnv) {
   m_pFormFillEnv.Reset(pFormFillEnv);
 }
 

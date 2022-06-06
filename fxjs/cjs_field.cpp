@@ -56,7 +56,7 @@ bool IsComboBoxOrTextField(const CPDF_FormField* pFormField) {
          pFormField->GetFieldType() == FormFieldType::kTextField;
 }
 
-void UpdateFormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void UpdateFormField(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                      CPDF_FormField* pFormField,
                      bool bResetAP) {
   CPDFSDK_InteractiveForm* pForm = pFormFillEnv->GetInteractiveForm();
@@ -105,7 +105,7 @@ void UpdateFormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   pFormFillEnv->SetChangeMark();
 }
 
-void UpdateFormControl(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void UpdateFormControl(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                        CPDF_FormControl* pFormControl,
                        bool bResetAP) {
   DCHECK(pFormControl);
@@ -165,7 +165,7 @@ absl::optional<FieldNameData> ParseFieldName(const WideString& field_name) {
 }
 
 std::vector<CPDF_FormField*> GetFormFieldsForName(
-    CPDFSDK_FormFillEnvironment* pFormFillEnv,
+    IJS_Runtime::FormFillEnvIface* pFormFillEnv,
     const WideString& csFieldName) {
   std::vector<CPDF_FormField*> fields;
   CPDFSDK_InteractiveForm* pReaderForm = pFormFillEnv->GetInteractiveForm();
@@ -240,7 +240,7 @@ bool SetWidgetDisplayStatus(CPDFSDK_Widget* pWidget, int value) {
   return false;
 }
 
-void SetBorderStyle(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void SetBorderStyle(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                     const WideString& swFieldName,
                     int nControlIndex,
                     const ByteString& bsString) {
@@ -294,7 +294,7 @@ void SetBorderStyle(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   }
 }
 
-void SetCurrentValueIndices(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void SetCurrentValueIndices(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                             const WideString& swFieldName,
                             int nControlIndex,
                             const std::vector<uint32_t>& array) {
@@ -321,7 +321,7 @@ void SetCurrentValueIndices(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   }
 }
 
-void SetDisplay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void SetDisplay(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                 const WideString& swFieldName,
                 int nControlIndex,
                 int number) {
@@ -357,7 +357,7 @@ void SetDisplay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   }
 }
 
-void SetHidden(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void SetHidden(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                const WideString& swFieldName,
                int nControlIndex,
                bool b) {
@@ -365,7 +365,7 @@ void SetHidden(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   SetDisplay(pFormFillEnv, swFieldName, nControlIndex, display);
 }
 
-void SetLineWidth(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void SetLineWidth(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                   const WideString& swFieldName,
                   int nControlIndex,
                   int number) {
@@ -404,7 +404,7 @@ void SetLineWidth(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   }
 }
 
-void SetRect(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void SetRect(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
              const WideString& swFieldName,
              int nControlIndex,
              const CFX_FloatRect& rect) {
@@ -462,7 +462,7 @@ void SetRect(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   }
 }
 
-void SetFieldValue(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void SetFieldValue(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                    const WideString& swFieldName,
                    int nControlIndex,
                    const std::vector<WideString>& strArray) {
@@ -2490,7 +2490,7 @@ CJS_Result CJS_Field::setFocus(
   if (nCount == 1) {
     pWidget = pForm->GetWidget(pFormField->GetControl(0));
   } else {
-    IPDF_Page* pPage = IPDFPageFromFPDFPage(m_pFormFillEnv->GetCurrentPage());
+    IPDF_Page* pPage = m_pFormFillEnv->GetCurrentPage();
     if (!pPage)
       return CJS_Result::Failure(JSMessage::kBadObjectError);
     CPDFSDK_PageView* pCurPageView = m_pFormFillEnv->GetOrCreatePageView(pPage);
@@ -2613,7 +2613,7 @@ void CJS_Field::AddDelay_WideStringArray(FIELD_PROP prop,
   m_pJSDoc->AddDelayData(std::move(pNewData));
 }
 
-void CJS_Field::DoDelay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+void CJS_Field::DoDelay(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                         CJS_DelayData* pData) {
   DCHECK(pFormFillEnv);
   switch (pData->eProp) {
