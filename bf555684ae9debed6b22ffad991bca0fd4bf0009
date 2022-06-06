@@ -16,6 +16,24 @@
       "message": "owners stamp, if you need it.",
       "revId": "bf555684ae9debed6b22ffad991bca0fd4bf0009",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe489d6b_c9f3d4a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-06T18:14:21Z",
+      "side": 1,
+      "message": "Thanks Tom!",
+      "parentUuid": "94652e84_3e1ca835",
+      "revId": "bf555684ae9debed6b22ffad991bca0fd4bf0009",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
