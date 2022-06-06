@@ -317,7 +317,7 @@ bool CPDFSDK_PageView::OnFocus(Mask<FWL_EVENTFLAG> nFlags,
                                const CFX_PointF& point) {
   ObservedPtr<CPDFSDK_Annot> pAnnot(GetFXWidgetAtPoint(point));
   if (!pAnnot) {
-    m_pFormFillEnv->KillFocusAnnot(nFlags);
+    m_pFormFillEnv->KillFocusAnnot(nFlags.UncheckedValue());
     return false;
   }
 
@@ -329,7 +329,7 @@ bool CPDFSDK_PageView::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlags,
                                      const CFX_PointF& point) {
   ObservedPtr<CPDFSDK_Annot> pAnnot(GetFXWidgetAtPoint(point));
   if (!pAnnot) {
-    m_pFormFillEnv->KillFocusAnnot(nFlags);
+    m_pFormFillEnv->KillFocusAnnot(nFlags.UncheckedValue());
     return false;
   }
 
@@ -359,7 +359,7 @@ bool CPDFSDK_PageView::OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlags,
                                        const CFX_PointF& point) {
   ObservedPtr<CPDFSDK_Annot> pAnnot(GetFXWidgetAtPoint(point));
   if (!pAnnot) {
-    m_pFormFillEnv->KillFocusAnnot(nFlags);
+    m_pFormFillEnv->KillFocusAnnot(nFlags.UncheckedValue());
     return false;
   }
 

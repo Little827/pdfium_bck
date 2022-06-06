@@ -16,7 +16,7 @@ class CFX_Timer {
  public:
   // HandlerIface is implemented by upper layers that actually perform
   // the system-dependent actions of scheduling and triggering timers.
-  class HandlerIface : public Observable {
+  class HandlerIface : virtual public Observable {
    public:
     static constexpr int32_t kInvalidTimerID = 0;
     using TimerCallback = void (*)(int32_t idEvent);

@@ -31,7 +31,7 @@ class CJS_Field final : public CJS_Object {
  public:
   static uint32_t GetObjDefnID();
   static void DefineJSObjects(CFXJS_Engine* pEngine);
-  static void DoDelay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+  static void DoDelay(IJS_Runtime::FormFillEnvIface* pFormFillEnv,
                       CJS_DelayData* pData);
 
   CJS_Field(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
@@ -364,7 +364,7 @@ class CJS_Field final : public CJS_Object {
   void DoDelay();
 
   ObservedPtr<CJS_Document> m_pJSDoc;
-  ObservedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
+  ObservedPtr<IJS_Runtime::FormFillEnvIface> m_pFormFillEnv;
   WideString m_FieldName;
   int m_nFormControlIndex = -1;
   bool m_bCanSet = false;

@@ -99,7 +99,7 @@ T StrTrim(const T& str) {
 void AlertIfPossible(CJS_EventContext* pContext,
                      const WideString& wsCaller,
                      const WideString& wsMsg) {
-  CPDFSDK_FormFillEnvironment* pFormFillEnv = pContext->GetFormFillEnv();
+  IJS_Runtime::FormFillEnvIface* pFormFillEnv = pContext->GetFormFillEnv();
   if (pFormFillEnv) {
     pFormFillEnv->JS_appAlert(wsMsg, wsCaller, JSPLATFORM_ALERT_BUTTON_OK,
                               JSPLATFORM_ALERT_ICON_STATUS);
