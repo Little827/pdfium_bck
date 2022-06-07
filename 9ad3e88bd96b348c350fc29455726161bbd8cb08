@@ -52,6 +52,24 @@
       "parentUuid": "6db4a980_644183e5",
       "revId": "9ad3e88bd96b348c350fc29455726161bbd8cb08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c16a6d4_6230d3ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-07T01:58:01Z",
+      "side": 1,
+      "message": "Swarm task returned NO_RESOURCE. Probably because the bot pool doesn\u0027t have any bots that can satisfy the resource constraints.",
+      "parentUuid": "6db4a980_644183e5",
+      "revId": "9ad3e88bd96b348c350fc29455726161bbd8cb08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
