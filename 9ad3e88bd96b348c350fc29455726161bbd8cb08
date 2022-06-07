@@ -34,6 +34,24 @@
       "parentUuid": "b2b331bf_0584c566",
       "revId": "9ad3e88bd96b348c350fc29455726161bbd8cb08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f98117_9a23fab1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-07T01:57:49Z",
+      "side": 1,
+      "message": "FYI, no useful output in those logs, speculative revert.",
+      "parentUuid": "6db4a980_644183e5",
+      "revId": "9ad3e88bd96b348c350fc29455726161bbd8cb08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
