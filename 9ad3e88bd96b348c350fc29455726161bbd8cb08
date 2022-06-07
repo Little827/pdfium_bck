@@ -16,6 +16,24 @@
       "message": "Curious what the failure was. Got a link?",
       "revId": "9ad3e88bd96b348c350fc29455726161bbd8cb08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db4a980_644183e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-07T01:55:12Z",
+      "side": 1,
+      "message": "See https://luci-change-verifier.appspot.com/ui/run/pdfium/8968422056854-1-19ba58e823806201",
+      "parentUuid": "b2b331bf_0584c566",
+      "revId": "9ad3e88bd96b348c350fc29455726161bbd8cb08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
