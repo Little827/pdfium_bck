@@ -22,6 +22,30 @@
       },
       "revId": "c0460b70601b89cf1ff2cba48ba316b389ceb90b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b03cc1_8b76e189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-08T00:08:57Z",
+      "side": 1,
+      "message": "Alas the repro in the bug is such a mess of mangled flateencoded object streams that I couldn\u0027t expand/simplify, so I left it out.",
+      "parentUuid": "1649d399_9397cb42",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "c0460b70601b89cf1ff2cba48ba316b389ceb90b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
