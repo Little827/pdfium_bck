@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d19dd1_257db4b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-08T15:54:19Z",
+      "side": 1,
+      "message": "Follow-on thought from your comment on my other CL. Fully automated patch except for IWYU.",
+      "revId": "41fc52aa7d8c9404cde3bea9b021e2b22aff9a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
