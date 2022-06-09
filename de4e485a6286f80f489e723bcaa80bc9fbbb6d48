@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d58238c_4f279167",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-09T16:30:36Z",
+      "side": 1,
+      "message": "I spent some time minimizing it, and didn\u0027t want to lose the work even if we postpone fixing the CHECK().",
+      "revId": "de4e485a6286f80f489e723bcaa80bc9fbbb6d48",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
