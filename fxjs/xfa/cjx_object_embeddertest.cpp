@@ -13,3 +13,8 @@ class CJX_ObjectEmbedderTest : public XFAJSEmbedderTest {};
 TEST_F(CJX_ObjectEmbedderTest, BUG_1327884) {
   ASSERT_FALSE(OpenDocument("bug_1327884.pdf"));
 }
+
+// TODO(https://crbug.com/1333298
+TEST_F(CJX_ObjectEmbedderTest, DISABLED_BUG_1333298) {
+  ASSERT_FALSE(OpenDocument("bug_1333298.pdf"));
+}
