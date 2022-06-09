@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a8d387_1f517e3e",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-09T17:56:26Z",
+      "side": 1,
+      "message": "Or should this be deleted?",
+      "revId": "b0a0db7e620707bef0366c381589a836ac8ab496",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a754de8_d4623cd4",
+        "filename": "xfa/fxfa/parser/cxfa_variables.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-09T17:56:26Z",
+      "side": 1,
+      "message": "Copy pasta error?",
+      "range": {
+        "startLine": 24,
+        "startChar": 58,
+        "endLine": 24,
+        "endChar": 64
+      },
+      "revId": "b0a0db7e620707bef0366c381589a836ac8ab496",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
