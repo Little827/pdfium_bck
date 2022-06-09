@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa0d2df5_03429356",
+        "filename": "fxjs/xfa/cjx_object_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-09T17:59:04Z",
+      "side": 1,
+      "message": "Gtest actually prefers no underscores in test cases. Want to rename to DISABLED_Bug1333298 instead? See https://crbug.com/pdfium/1779 for context.",
+      "range": {
+        "startLine": 18,
+        "startChar": 43,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "0ae3aff2c13e2db9e8336825954d3f66c5eac808",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
