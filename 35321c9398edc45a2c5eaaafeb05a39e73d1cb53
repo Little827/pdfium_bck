@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2885604_d2b093de",
+        "filename": "fxjs/xfa/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-09T23:15:28Z",
+      "side": 0,
+      "message": "combined with line 44 in the new version, otherwise just moved and made into a method to access m_pEngine.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "35321c9398edc45a2c5eaaafeb05a39e73d1cb53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
