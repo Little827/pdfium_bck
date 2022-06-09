@@ -128,6 +128,7 @@ CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
                                          pDocument->GetRoot()->JSObject(),
                                          nullptr)),
       m_ResolveProcessor(std::make_unique<CFXJSE_ResolveProcessor>()) {
+  m_ResolveProcessor->SetEngine(this);
   RemoveBuiltInObjs(m_JsContext.get());
   m_JsContext->EnableCompatibleMode();
 
@@ -704,7 +705,7 @@ CFXJSE_Engine::ResolveObjectsWithBindNode(CXFA_Object* refObject,
   pNodeHelper->m_pCreateParent = nullptr;
   pNodeHelper->m_iCurAllStart = -1;
 
-  CFXJSE_ResolveProcessor::NodeData rndFind(this);
+  CFXJSE_ResolveProcessor::NodeData rndFind;
   int32_t nStart = 0;
   int32_t nLevel = 0;
 
@@ -757,7 +758,7 @@ CFXJSE_Engine::ResolveObjectsWithBindNode(CXFA_Object* refObject,
       if (((dwStyles & XFA_ResolveFlag::kBind) ||
            (dwStyles & XFA_ResolveFlag::kCreateNode)) &&
           nNodes > 1) {
-        CFXJSE_ResolveProcessor::NodeData rndBind(nullptr);
+        CFXJSE_ResolveProcessor::NodeData rndBind;
         m_ResolveProcessor->GetFilter(wsExpression, nStart, rndBind);
         i = m_ResolveProcessor->IndexForDataBind(rndBind.m_wsCondition, nNodes);
         bDataBind = true;
