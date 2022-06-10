@@ -38,13 +38,10 @@ CPDF_TextObject::Item CPDF_TextObject::GetItemInfo(size_t index) const {
   Item info;
   info.m_CharCode = m_CharCodes[index];
   info.m_Origin = CFX_PointF(index > 0 ? m_CharPos[index - 1] : 0, 0);
-  if (info.m_CharCode == CPDF_Font::kInvalidCharCode)
+  if (info.m_CharCode == CPDF_Font::kInvalidCharCode || !IsVertWriting())
     return info;
 
   RetainPtr<CPDF_Font> pFont = GetFont();
-  if (!pFont->IsCIDFont() || !pFont->AsCIDFont()->IsVertWriting())
-    return info;
-
   uint16_t cid = pFont->AsCIDFont()->CIDFromCharCode(info.m_CharCode);
   info.m_Origin = CFX_PointF(0, info.m_Origin.x);
 
@@ -219,15 +216,12 @@ void CPDF_TextObject::SetText(const ByteString& str) {
 }
 
 float CPDF_TextObject::GetCharWidth(uint32_t charcode) const {
-  float fontsize = GetFontSize() / 1000;
+  const float fontsize = GetFontSize() / 1000;
   RetainPtr<CPDF_Font> pFont = GetFont();
-  bool bVertWriting = false;
-  CPDF_CIDFont* pCIDFont = pFont->AsCIDFont();
-  if (pCIDFont)
-    bVertWriting = pCIDFont->IsVertWriting();
-  if (!bVertWriting)
+  if (!IsVertWriting())
     return pFont->GetCharWidthF(charcode) * fontsize;
 
+  const CPDF_CIDFont* pCIDFont = pFont->AsCIDFont();
   uint16_t cid = pCIDFont->CIDFromCharCode(charcode);
   return pCIDFont->GetVertWidth(cid) * fontsize;
 }
@@ -257,7 +251,6 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   float max_y = -10000.0f;
   RetainPtr<CPDF_Font> pFont = GetFont();
   const CPDF_CIDFont* pCIDFont = pFont->AsCIDFont();
-  const bool bVertWriting = pCIDFont && pCIDFont->IsVertWriting();
   const float fontsize = GetFontSize();
 
   for (size_t i = 0; i < m_CharCodes.size(); ++i) {
@@ -272,7 +265,7 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
 
     FX_RECT char_rect = pFont->GetCharBBox(charcode);
     float charwidth;
-    if (bVertWriting) {
+    if (IsVertWriting()) {
       uint16_t cid = pCIDFont->CIDFromCharCode(charcode);
       CFX_Point16 vertical_origin = pCIDFont->GetVertOrigin(cid);
       char_rect.Offset(-vertical_origin.x, -vertical_origin.y);
@@ -304,7 +297,7 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   }
 
   CFX_PointF ret;
-  if (bVertWriting) {
+  if (IsVertWriting()) {
     ret.y = curpos;
     min_x = min_x * fontsize / 1000;
     max_x = max_x * fontsize / 1000;
@@ -323,4 +316,10 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   SetRect(rect);
 
   return ret;
+}
+
+bool CPDF_TextObject::IsVertWriting() const {
+  const RetainPtr<CPDF_Font> pFont = GetFont();
+  const CPDF_CIDFont* pCIDFont = pFont->AsCIDFont();
+  return pCIDFont && pCIDFont->IsVertWriting();
 }
