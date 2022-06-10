@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "fxjs/cfx_v8.h"
+#include "fxjs/cfx_v8_isolate_wrapper.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "v8/include/v8-primitive.h"
@@ -29,7 +29,7 @@ bool CJX_WsdlConnection::DynamicTypeIs(TypeTag eType) const {
 }
 
 CJS_Result CJX_WsdlConnection::execute(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (!params.empty() && params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);

@@ -135,7 +135,7 @@ int32_t CJX_InstanceManager::MoveInstance(v8::Isolate* pIsolate,
 }
 
 CJS_Result CJX_InstanceManager::moveInstance(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   CXFA_Document* doc = static_cast<CFXJSE_Engine*>(runtime)->GetDocument();
   if (doc->GetFormType() != FormType::kXFAFull)
@@ -165,7 +165,7 @@ CJS_Result CJX_InstanceManager::moveInstance(
 }
 
 CJS_Result CJX_InstanceManager::removeInstance(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   CXFA_Document* doc = static_cast<CFXJSE_Engine*>(runtime)->GetDocument();
   if (doc->GetFormType() != FormType::kXFAFull)
@@ -204,7 +204,7 @@ CJS_Result CJX_InstanceManager::removeInstance(
 }
 
 CJS_Result CJX_InstanceManager::setInstances(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   CXFA_Document* doc = static_cast<CFXJSE_Engine*>(runtime)->GetDocument();
   if (doc->GetFormType() != FormType::kXFAFull)
@@ -218,7 +218,7 @@ CJS_Result CJX_InstanceManager::setInstances(
 }
 
 CJS_Result CJX_InstanceManager::addInstance(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   CXFA_Document* doc = static_cast<CFXJSE_Engine*>(runtime)->GetDocument();
   if (doc->GetFormType() != FormType::kXFAFull)
@@ -255,7 +255,7 @@ CJS_Result CJX_InstanceManager::addInstance(
 }
 
 CJS_Result CJX_InstanceManager::insertInstance(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   CXFA_Document* doc = static_cast<CFXJSE_Engine*>(runtime)->GetDocument();
   if (doc->GetFormType() != FormType::kXFAFull)

@@ -39,7 +39,7 @@ bool CJX_Form::DynamicTypeIs(TypeTag eType) const {
 }
 
 CJS_Result CJX_Form::formNodes(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -58,7 +58,7 @@ CJS_Result CJX_Form::formNodes(
   return CJS_Result::Success(value);
 }
 
-CJS_Result CJX_Form::remerge(CFX_V8* runtime,
+CJS_Result CJX_Form::remerge(CFX_V8IsolateWrapper* runtime,
                              const std::vector<v8::Local<v8::Value>>& params) {
   if (!params.empty())
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -68,7 +68,7 @@ CJS_Result CJX_Form::remerge(CFX_V8* runtime,
 }
 
 CJS_Result CJX_Form::execInitialize(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (!params.empty())
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -81,7 +81,7 @@ CJS_Result CJX_Form::execInitialize(
 }
 
 CJS_Result CJX_Form::recalculate(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   CXFA_EventParam* pEventParam =
       GetDocument()->GetScriptContext()->GetEventParam();
@@ -103,7 +103,7 @@ CJS_Result CJX_Form::recalculate(
 }
 
 CJS_Result CJX_Form::execCalculate(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (!params.empty())
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -116,7 +116,7 @@ CJS_Result CJX_Form::execCalculate(
 }
 
 CJS_Result CJX_Form::execValidate(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 0)
     return CJS_Result::Failure(JSMessage::kParamError);

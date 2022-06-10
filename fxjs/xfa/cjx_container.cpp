@@ -32,13 +32,13 @@ bool CJX_Container::DynamicTypeIs(TypeTag eType) const {
 }
 
 CJS_Result CJX_Container::getDelta(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   return CJS_Result::Success();
 }
 
 CJS_Result CJX_Container::getDeltas(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   CXFA_Document* pDoc = GetDocument();
   auto* pList = cppgc::MakeGarbageCollected<CXFA_ArrayNodeList>(

@@ -38,7 +38,7 @@ CXFA_List* CJX_List::GetXFAList() {
   return ToList(GetXFAObject());
 }
 
-CJS_Result CJX_List::append(CFX_V8* runtime,
+CJS_Result CJX_List::append(CFX_V8IsolateWrapper* runtime,
                             const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -54,7 +54,7 @@ CJS_Result CJX_List::append(CFX_V8* runtime,
   return CJS_Result::Success();
 }
 
-CJS_Result CJX_List::insert(CFX_V8* runtime,
+CJS_Result CJX_List::insert(CFX_V8IsolateWrapper* runtime,
                             const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 2)
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -72,7 +72,7 @@ CJS_Result CJX_List::insert(CFX_V8* runtime,
   return CJS_Result::Success();
 }
 
-CJS_Result CJX_List::remove(CFX_V8* runtime,
+CJS_Result CJX_List::remove(CFX_V8IsolateWrapper* runtime,
                             const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -86,7 +86,7 @@ CJS_Result CJX_List::remove(CFX_V8* runtime,
   return CJS_Result::Success();
 }
 
-CJS_Result CJX_List::item(CFX_V8* runtime,
+CJS_Result CJX_List::item(CFX_V8IsolateWrapper* runtime,
                           const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);

@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "fxjs/cfx_v8.h"
+#include "fxjs/cfx_v8_isolate_wrapper.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "v8/include/v8-primitive.h"
@@ -26,7 +26,7 @@ bool CJX_Desc::DynamicTypeIs(TypeTag eType) const {
   return eType == static_type__ || ParentType__::DynamicTypeIs(eType);
 }
 
-CJS_Result CJX_Desc::metadata(CFX_V8* runtime,
+CJS_Result CJX_Desc::metadata(CFX_V8IsolateWrapper* runtime,
                               const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 0 && params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);

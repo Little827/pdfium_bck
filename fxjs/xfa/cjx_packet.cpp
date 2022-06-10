@@ -12,7 +12,7 @@
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
-#include "fxjs/cfx_v8.h"
+#include "fxjs/cfx_v8_isolate_wrapper.h"
 #include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "v8/include/v8-primitive.h"
@@ -36,7 +36,7 @@ bool CJX_Packet::DynamicTypeIs(TypeTag eType) const {
 }
 
 CJS_Result CJX_Packet::getAttribute(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -51,7 +51,7 @@ CJS_Result CJX_Packet::getAttribute(
 }
 
 CJS_Result CJX_Packet::setAttribute(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 2)
     return CJS_Result::Failure(JSMessage::kParamError);
@@ -65,7 +65,7 @@ CJS_Result CJX_Packet::setAttribute(
 }
 
 CJS_Result CJX_Packet::removeAttribute(
-    CFX_V8* runtime,
+    CFX_V8IsolateWrapper* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
   if (params.size() != 1)
     return CJS_Result::Failure(JSMessage::kParamError);
