@@ -177,7 +177,7 @@ void CPDF_TextObject::SetTextMatrix(const CFX_Matrix& matrix) {
   pTextMatrix[2] = matrix.b;
   pTextMatrix[3] = matrix.d;
   m_Pos = CFX_PointF(matrix.e, matrix.f);
-  CalcPositionData(0);
+  CalcPositionDataInternal();
 }
 
 void CPDF_TextObject::SetSegments(const ByteString* pStrs,
@@ -211,7 +211,7 @@ void CPDF_TextObject::SetSegments(const ByteString* pStrs,
 
 void CPDF_TextObject::SetText(const ByteString& str) {
   SetSegments(&str, std::vector<float>(), 1);
-  CalcPositionData(/*horz_scale=*/1.0f);
+  CalcPositionDataInternal();
   SetDirty(true);
 }
 
@@ -244,6 +244,16 @@ void CPDF_TextObject::SetTextRenderMode(TextRenderingMode mode) {
 }
 
 CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
+  const float curpos = CalcPositionDataInternal();
+  CFX_PointF ret;
+  if (IsVertWriting())
+    ret.y = curpos;
+  else
+    ret.x = curpos * horz_scale;
+  return ret;
+}
+
+float CPDF_TextObject::CalcPositionDataInternal() {
   float curpos = 0;
   float min_x = 10000.0f;
   float max_x = -10000.0f;
@@ -297,13 +307,10 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
     curpos += m_TextState.GetCharSpace();
   }
 
-  CFX_PointF ret;
   if (bVertWriting) {
-    ret.y = curpos;
     min_x = min_x * fontsize / 1000;
     max_x = max_x * fontsize / 1000;
   } else {
-    ret.x = curpos * horz_scale;
     min_y = min_y * fontsize / 1000;
     max_y = max_y * fontsize / 1000;
   }
@@ -316,7 +323,7 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   }
   SetRect(rect);
 
-  return ret;
+  return curpos;
 }
 
 bool CPDF_TextObject::IsVertWriting() const {
