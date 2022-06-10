@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "11add8ac_78e2645c",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 24
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "There\u0027s no style guide guidance for single vs. double spaces.\n\nI had a similar discussion with dhoss@ about this a while back as well.  While many people have switched to single space, I\u0027m one of those who still finds it much easier to read with the double space, and have maintained that habit in the code I maintain.  It is automatic for me to double space between sentences.\n\nEven so, you\u0027ve got ownership of this file, so done.",
+      "parentUuid": "f2b74a0a_7b15465c",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44a88b62_42d01cc6",
         "filename": "fxbarcode/cfx_barcode_unittest.cpp",
         "patchSetId": 24
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-18T23:12:20Z",
       "side": 1,
       "message": "How about \": Fix and run the test for Skia.\"?\n\"Update\" might be a bit vague.",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efdd8347_821ac26a",
+        "filename": "fxbarcode/cfx_barcode_unittest.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "44a88b62_42d01cc6",
       "range": {
         "startLine": 69,
         "startChar": 39,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3908ba1a_2a60a5de",
+        "filename": "pdfium.gni",
+        "patchSetId": 24
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3d866d9f_e0b0ef8b",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ab2453d_cfd594c6",
@@ -87,6 +159,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0384661a_d63523f8",
+        "filename": "pdfium.gni",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab2453d_cfd594c6",
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eece559d_a9c0da4b",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-05-26T20:33:10Z",
       "side": 1,
       "message": "Then this shouldn\u0027t be necessary, as AGG is always included.",
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52bd26f_39fb4301",
+        "filename": "pdfium.gni",
+        "patchSetId": 24
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eece559d_a9c0da4b",
       "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -175,6 +283,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e72263_018ec4e7",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "I\u0027m fine with requiring it to be set for V3, knowing that it can still be adjusted because of being experimental.",
+      "parentUuid": "8e6942b6_1028fa6d",
+      "range": {
+        "startLine": 258,
+        "startChar": 16,
+        "endLine": 258,
+        "endChar": 31
+      },
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc56b40e_f86b7a4e",
@@ -188,6 +320,24 @@
       "writtenOn": "2022-05-26T20:33:10Z",
       "side": 1,
       "message": "Still more deprecation messages hanging around.",
+      "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb68814a_23899c89",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 24
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc56b40e_f86b7a4e",
       "revId": "8ef02bb6f260568a41b7a07a66a65d34dd722ec1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

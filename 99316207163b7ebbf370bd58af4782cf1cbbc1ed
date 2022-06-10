@@ -119,6 +119,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adceac7e_e9c51afe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "`pdf_allow_runtime_renderer_selection` is gone now.",
+      "parentUuid": "870f4de6_6020f67d",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4559ed04_60e59420",
@@ -168,6 +192,24 @@
       "side": 1,
       "message": "The CL description needs to be updated.",
       "parentUuid": "04f6e46c_c2ac3458",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8302ec_026c98f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e0479c_bb17a02f",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -268,6 +310,24 @@
       "side": 1,
       "message": "I know this has been mentioned a couple of times, but I still don\u0027t see how Android is relevant here. Nobody is using the Android + Skia build config. Can Android just stay AGG-only for now?",
       "parentUuid": "2d9b64ee_2cd5b96a",
+      "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae336816_62426dac",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-10T21:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3004cd0e_78822ec7",
       "revId": "99316207163b7ebbf370bd58af4782cf1cbbc1ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
