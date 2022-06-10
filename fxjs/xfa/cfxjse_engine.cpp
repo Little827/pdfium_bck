@@ -121,7 +121,7 @@ CXFA_Object* CFXJSE_Engine::ToObject(CFXJSE_HostObject* pHostObj) {
 
 CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
                              CJS_Runtime* fxjs_runtime)
-    : CFX_V8(fxjs_runtime->GetIsolate()),
+    : CFX_V8IsolateWrapper(fxjs_runtime->GetIsolate()),
       m_pSubordinateRuntime(fxjs_runtime),
       m_pDocument(pDocument),
       m_JsContext(CFXJSE_Context::Create(fxjs_runtime->GetIsolate(),

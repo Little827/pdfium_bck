@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "fxjs/cfx_v8.h"
+#include "fxjs/cfx_v8_isolate_wrapper.h"
 #include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "third_party/base/numerics/safe_conversions.h"
