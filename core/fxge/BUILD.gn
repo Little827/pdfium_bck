@@ -24,6 +24,7 @@ source_set("fxge") {
     "cfx_cliprgn.h",
     "cfx_color.cpp",
     "cfx_color.h",
+    "cfx_defaultrenderdevice.cpp",
     "cfx_defaultrenderdevice.h",
     "cfx_drawutils.cpp",
     "cfx_drawutils.h",
@@ -139,13 +140,14 @@ source_set("fxge") {
   if (pdf_use_skia || pdf_use_skia_paths) {
     sources += [ "skia/fx_skia_device.cpp" ]
     deps += [ "//skia" ]
-  } else {
-    sources += [
-      "agg/fx_agg_driver.cpp",
-      "agg/fx_agg_driver.h",
-    ]
-    deps += [ "../../third_party:fx_agg" ]
   }
+
+  # AGG is always included.
+  sources += [
+    "agg/fx_agg_driver.cpp",
+    "agg/fx_agg_driver.h",
+  ]
+  deps += [ "../../third_party:fx_agg" ]
 
   if (is_android) {
     sources += [

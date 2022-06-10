@@ -49,6 +49,7 @@ executable("pdfium_test") {
   # as well as test support code, for convenience.
   deps = [
     "../:pdfium_public_headers",
+    "../core/fxge",
     "../fpdfsdk",
     "../testing:test_support",
     "../testing/image_diff",

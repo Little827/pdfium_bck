@@ -39,6 +39,38 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
                        int bitmap_alpha,
                        BlendMode blend_type) override;
 #endif
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  static bool SkiaIsDefaultRenderer();
+
+  // Update default renderer.  `use_skia` is true for Skia, false for AGG.
+  static void SetDefaultRenderer(bool use_skia);
+#else
+  static bool SkiaIsDefaultRenderer() { return false; }
+#endif
+
+ private:
+  bool AttachAgg(const RetainPtr<CFX_DIBitmap>& pBitmap,
+                 bool bRgbByteOrder,
+                 const RetainPtr<CFX_DIBitmap>& pBackdropBitmap,
+                 bool bGroupKnockout);
+
+  bool CreateAgg(int width,
+                 int height,
+                 FXDIB_Format format,
+                 const RetainPtr<CFX_DIBitmap>& pBackdropBitmap);
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  bool AttachSkia(const RetainPtr<CFX_DIBitmap>& pBitmap,
+                  bool bRgbByteOrder,
+                  const RetainPtr<CFX_DIBitmap>& pBackdropBitmap,
+                  bool bGroupKnockout);
+
+  bool CreateSkia(int width,
+                  int height,
+                  FXDIB_Format format,
+                  const RetainPtr<CFX_DIBitmap>& pBackdropBitmap);
+#endif
 };
 
 #endif  // CORE_FXGE_CFX_DEFAULTRENDERDEVICE_H_
