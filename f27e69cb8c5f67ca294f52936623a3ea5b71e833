@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be26e8d1_337b392e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-10T03:18:15Z",
+      "side": 1,
+      "message": "Ok, looks like we are already using safe_numerics here, so no new layering issues.",
+      "revId": "f27e69cb8c5f67ca294f52936623a3ea5b71e833",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
