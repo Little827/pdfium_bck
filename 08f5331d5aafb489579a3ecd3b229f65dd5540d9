@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d1aa80_a228f30c",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-10T23:03:21Z",
+      "side": 1,
+      "message": "In which case this becomes\n  RetainPtr\u003cCPDF_Font\u003e pFont \u003d GetFont();\n  CPDF_CIDFont* pCidFont \u003d pFont-\u003eAsVertWritingCIDFont();\n  if (pCidFont) {\n    uint16_t cid \u003d pCIDFont-\u003eCIDFromCharCode(charcode);\n    return pCIDFont-\u003eGetVertWidth(cid) * fontsize;\n  } \n  return pFont-\u003eGetCharWidthF(charcode) * fontsize;",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 1
+      },
+      "revId": "08f5331d5aafb489579a3ecd3b229f65dd5540d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53acfffe_f412dfef",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-10T23:03:21Z",
+      "side": 1,
+      "message": "Another thought would be if there was a method\n\n  CPDF_CIDFont* CPDF_Font::AsVertWritingCIDFont();\n\nwhich might solve some of the double getfont() calls.",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 45
+      },
+      "revId": "08f5331d5aafb489579a3ecd3b229f65dd5540d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
