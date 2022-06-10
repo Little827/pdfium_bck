@@ -46,6 +46,30 @@
       },
       "revId": "23b13e102587a905333590ecf838f300e6577061",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0798210_6c1423c7",
+        "filename": "third_party/libopenjpeg20/0041-remove_opj_clock.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-10T21:27:40Z",
+      "side": 0,
+      "message": "Ack. still lg.",
+      "parentUuid": "4e786401_61a1d88c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 96
+      },
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
