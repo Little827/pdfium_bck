@@ -22,6 +22,30 @@
       },
       "revId": "23b13e102587a905333590ecf838f300e6577061",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e786401_61a1d88c",
+        "filename": "third_party/libopenjpeg20/0041-remove_opj_clock.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-10T21:12:21Z",
+      "side": 0,
+      "message": "I think this is because the .patch file is very short, so Gerrit/git can\u0027t figure out from the diff that this is a file move. So Gerrit treats it as a deletion and an addition.",
+      "parentUuid": "0677a0a4_8d462312",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 96
+      },
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
