@@ -362,9 +362,10 @@ uint32_t FXJS_PerIsolateData::AssignIDForObjDefinition(
   return CurrentMaxObjDefinitionID();
 }
 
-CFXJS_Engine::CFXJS_Engine() : CFX_V8(nullptr) {}
+CFXJS_Engine::CFXJS_Engine() : CFX_V8IsolateWrapper(nullptr) {}
 
-CFXJS_Engine::CFXJS_Engine(v8::Isolate* pIsolate) : CFX_V8(pIsolate) {}
+CFXJS_Engine::CFXJS_Engine(v8::Isolate* pIsolate)
+    : CFX_V8IsolateWrapper(pIsolate) {}
 
 CFXJS_Engine::~CFXJS_Engine() = default;
 
