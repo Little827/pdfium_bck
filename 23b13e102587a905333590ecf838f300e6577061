@@ -167,6 +167,24 @@
       "parentUuid": "540d4f81_292d658c",
       "revId": "23b13e102587a905333590ecf838f300e6577061",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "367eb4cf_c9ce4715",
+        "filename": "third_party/libopenjpeg20/t1_ht_luts.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-10T22:46:24Z",
+      "side": 1,
+      "message": "Besides making sure the ht_dec.c code performs well, it may be good to wait and let people shake out all the bugs. e.g. https://github.com/uclouvain/openjpeg/issues/1413",
+      "parentUuid": "ef346b45_dde038ff",
+      "revId": "23b13e102587a905333590ecf838f300e6577061",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
