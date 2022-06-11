@@ -59,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab9087b_b5c8061c",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-11T07:00:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "43d1aa80_a228f30c",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 1
+      },
+      "revId": "08f5331d5aafb489579a3ecd3b229f65dd5540d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53acfffe_f412dfef",
@@ -72,6 +96,30 @@
       "writtenOn": "2022-06-10T23:03:21Z",
       "side": 1,
       "message": "Another thought would be if there was a method\n\n  CPDF_CIDFont* CPDF_Font::AsVertWritingCIDFont();\n\nwhich might solve some of the double getfont() calls.",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 45
+      },
+      "revId": "08f5331d5aafb489579a3ecd3b229f65dd5540d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b89a31_eda68f0a",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-11T07:00:29Z",
+      "side": 1,
+      "message": "I made it a standalone function to avoid the double GetFont() calls. I also wanted the calling function to hold a RetainPtr, so this CL doesn\u0027t introduce the possibility of the pointer getting destroyed from underneath somehow.",
+      "parentUuid": "53acfffe_f412dfef",
       "range": {
         "startLine": 322,
         "startChar": 0,
