@@ -2728,6 +2728,10 @@ bool CFX_SkiaDeviceDriver::SetBitsWithMask(
   return DrawBitsWithMask(pBitmap, pMask, bitmap_alpha, m, blend_type);
 }
 
+void CFX_SkiaDeviceDriver::SetGroupKnockout(bool group_knockout) {
+  m_bGroupKnockout = group_knockout;
+}
+
 void CFX_SkiaDeviceDriver::Clear(uint32_t color) {
   m_pCanvas->clear(color);
 }
