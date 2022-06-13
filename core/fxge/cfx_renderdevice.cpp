@@ -724,6 +724,9 @@ bool CFX_RenderDevice::DrawPathWithBlend(
 
   if (fill && fill_alpha && stroke_alpha < 0xff && fill_options.stroke) {
     if (m_RenderCaps & FXRC_FILLSTROKE_PATH) {
+#if defined(_SKIA_SUPPORT_)
+      m_pDeviceDriver->SetGroupKnockout(true);
+#endif
       return m_pDeviceDriver->DrawPath(path, pObject2Device, pGraphState,
                                        fill_color, stroke_color, fill_options,
                                        blend_type);
