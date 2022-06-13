@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2e2415_08b8fccf",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_embeddertest.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-13T19:05:37Z",
+      "side": 1,
+      "message": "This looks like a relatively mechanical change. Split into a separate CL to reduce the size of this one?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264cd093_215c29fc",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-13T19:05:37Z",
+      "side": 1,
+      "message": "- I see SkiaIsDefaultRenderer() is available, even in AGG-only builds. Can the code here be simplified?\n- Would moving this into a helper function improve readability?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c75a02_f9897bd2",
+        "filename": "core/fxge/BUILD.gn",
+        "patchSetId": 26
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-13T19:05:37Z",
+      "side": 1,
+      "message": "Just merge into the main list?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a5f188_11cbf89e",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-13T19:05:37Z",
+      "side": 1,
+      "message": "Combine the if-statements.",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ebc466_f452f6eb",
+        "filename": "core/fxge/win32/cgdi_device_driver.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-13T19:05:37Z",
+      "side": 1,
+      "message": "Is this identical to the if-block?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c439f3a_b62991af",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 26
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-13T19:05:37Z",
+      "side": 1,
+      "message": "Is this, samples/DEPS changes, and samples/BUILD.gn changes all leftover cruft?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
