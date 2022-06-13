@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1655654d_e551070f",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 26
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-13T19:54:25Z",
+      "side": 1,
+      "message": "Maybe get rid of the coma? \"use Skia (experimental) only for path support.\"",
+      "range": {
+        "startLine": 25,
+        "startChar": 18,
+        "endLine": 25,
+        "endChar": 53
+      },
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce2e2415_08b8fccf",
         "filename": "core/fpdfapi/parser/fpdf_parser_decode_embeddertest.cpp",
         "patchSetId": 26
@@ -156,6 +179,29 @@
       "writtenOn": "2022-06-13T19:05:37Z",
       "side": 1,
       "message": "Is this, samples/DEPS changes, and samples/BUILD.gn changes all leftover cruft?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd532df8_05dce1c8",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-13T19:54:25Z",
+      "side": 1,
+      "message": "Make `m_pRendererType` enums?",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 28
+      },
       "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
