@@ -17,12 +17,12 @@ pdf_enable_v8_override = true
 # Default: Without XFA support.
 pdf_enable_xfa_override = false
 
-# Build PDFium against skia (experimental) rather than agg, replacing all PDFium
-# graphics.
-# Default: Use agg.
+# Build PDFium to use Skia (experimental) for all PDFium graphics.
+# If enabled, coexists in build with AGG graphics and the default
+# renderer is selectable at runtime.
 pdf_use_skia_override = false
 
-# Build PDFium against skia (experimental) rather than agg, adding only path
-# support.
-# Default: Use agg.
+# Build PDFium to use Skia (experimental) where Skia is only for path support.
+# Coexists in build with AGG graphics. Selection of default renderer is
+# selectable at runtime.
 pdf_use_skia_paths_override = false

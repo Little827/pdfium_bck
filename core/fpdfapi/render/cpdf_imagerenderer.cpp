@@ -55,6 +55,16 @@ bool IsImageValueTooBig(int val) {
   return safe_val.ValueOrDefault(kLimit) >= kLimit;
 }
 
+void ClearBitmap(CFX_DefaultRenderDevice& bitmap_device) {
+#if defined(_SKIA_SUPPORT_)
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    bitmap_device.Clear(0xffffff);
+    return;
+  }
+#endif
+  bitmap_device.GetBitmap()->Clear(0xffffff);
+}
+
 }  // namespace
 
 CPDF_ImageRenderer::CPDF_ImageRenderer() = default;
@@ -334,11 +344,7 @@ bool CPDF_ImageRenderer::DrawMaskedImage() {
                              nullptr)) {
     return true;
   }
-#if defined(_SKIA_SUPPORT_)
-  bitmap_device1.Clear(0xffffff);
-#else
-  bitmap_device1.GetBitmap()->Clear(0xffffff);
-#endif
+  ClearBitmap(bitmap_device1);
   CPDF_RenderStatus bitmap_render(m_pRenderStatus->GetContext(),
                                   &bitmap_device1);
   bitmap_render.SetDropObjects(m_pRenderStatus->GetDropObjects());
@@ -354,25 +360,23 @@ bool CPDF_ImageRenderer::DrawMaskedImage() {
                              FXDIB_Format::k8bppRgb, nullptr)) {
     return true;
   }
-#if defined(_SKIA_SUPPORT_)
-  bitmap_device2.Clear(0);
-#else
-  bitmap_device2.GetBitmap()->Clear(0);
-#endif
+  ClearBitmap(bitmap_device2);
   CalculateDrawImage(&bitmap_device1, &bitmap_device2, m_Loader.GetMask(),
                      new_matrix, rect);
 #if defined(_SKIA_SUPPORT_)
-  m_pRenderStatus->GetRenderDevice()->SetBitsWithMask(
-      bitmap_device1.GetBitmap(), bitmap_device2.GetBitmap(), rect.left,
-      rect.top, m_BitmapAlpha, m_BlendType);
-#else
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    m_pRenderStatus->GetRenderDevice()->SetBitsWithMask(
+        bitmap_device1.GetBitmap(), bitmap_device2.GetBitmap(), rect.left,
+        rect.top, m_BitmapAlpha, m_BlendType);
+    return false;
+  }
+#endif
   bitmap_device2.GetBitmap()->ConvertFormat(FXDIB_Format::k8bppMask);
   bitmap_device1.GetBitmap()->MultiplyAlpha(bitmap_device2.GetBitmap());
   if (m_BitmapAlpha < 255)
     bitmap_device1.GetBitmap()->MultiplyAlpha(m_BitmapAlpha);
   m_pRenderStatus->GetRenderDevice()->SetDIBitsWithBlend(
       bitmap_device1.GetBitmap(), rect.left, rect.top, m_BlendType);
-#endif  //  defined(_SKIA_SUPPORT_)
   return false;
 }
 
@@ -391,29 +395,33 @@ bool CPDF_ImageRenderer::StartDIBBase() {
     }
   }
 #if defined(_SKIA_SUPPORT_)
-  RetainPtr<CFX_DIBitmap> premultiplied = m_pDIBBase->Realize();
-  if (m_pDIBBase->IsAlphaFormat())
-    CFX_SkiaDeviceDriver::PreMultiply(premultiplied);
-  if (m_pRenderStatus->GetRenderDevice()->StartDIBitsWithBlend(
-          premultiplied, m_BitmapAlpha, m_FillArgb, m_ImageMatrix,
-          m_ResampleOptions, &m_DeviceHandle, m_BlendType)) {
-    if (m_DeviceHandle) {
-      m_Mode = Mode::kBlend;
-      return true;
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    RetainPtr<CFX_DIBitmap> premultiplied = m_pDIBBase->Realize();
+    if (m_pDIBBase->IsAlphaFormat())
+      CFX_SkiaDeviceDriver::PreMultiply(premultiplied);
+    if (m_pRenderStatus->GetRenderDevice()->StartDIBitsWithBlend(
+            premultiplied, m_BitmapAlpha, m_FillArgb, m_ImageMatrix,
+            m_ResampleOptions, &m_DeviceHandle, m_BlendType)) {
+      if (m_DeviceHandle) {
+        m_Mode = Mode::kBlend;
+        return true;
+      }
+      return false;
     }
-    return false;
-  }
-#else
-  if (m_pRenderStatus->GetRenderDevice()->StartDIBitsWithBlend(
-          m_pDIBBase, m_BitmapAlpha, m_FillArgb, m_ImageMatrix,
-          m_ResampleOptions, &m_DeviceHandle, m_BlendType)) {
-    if (m_DeviceHandle) {
-      m_Mode = Mode::kBlend;
-      return true;
-    }
-    return false;
-  }
+  } else {
 #endif  // defined(_SKIA_SUPPORT_)
+    if (m_pRenderStatus->GetRenderDevice()->StartDIBitsWithBlend(
+            m_pDIBBase, m_BitmapAlpha, m_FillArgb, m_ImageMatrix,
+            m_ResampleOptions, &m_DeviceHandle, m_BlendType)) {
+      if (m_DeviceHandle) {
+        m_Mode = Mode::kBlend;
+        return true;
+      }
+      return false;
+    }
+#if defined(_SKIA_SUPPORT_)
+  }
+#endif
 
   if ((fabs(m_ImageMatrix.b) >= 0.5f || m_ImageMatrix.a == 0) ||
       (fabs(m_ImageMatrix.c) >= 0.5f || m_ImageMatrix.d == 0)) {
