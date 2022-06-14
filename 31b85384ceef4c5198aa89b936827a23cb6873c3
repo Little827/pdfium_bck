@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "097da301_a1332923",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 26
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "1655654d_e551070f",
+      "range": {
+        "startLine": 25,
+        "startChar": 18,
+        "endLine": 25,
+        "endChar": 53
+      },
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce2e2415_08b8fccf",
@@ -76,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec5300d_9dab4c42",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "Yes, good points - done.",
+      "parentUuid": "264cd093_215c29fc",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65c75a02_f9897bd2",
@@ -89,6 +131,24 @@
       "writtenOn": "2022-06-13T19:05:37Z",
       "side": 1,
       "message": "Just merge into the main list?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c429b212_f5ae746f",
+        "filename": "core/fxge/BUILD.gn",
+        "patchSetId": 26
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "At one point I had the thought that keeping the AGG-specific files specially identified would make removing them later easier.  Given the way the CL is evolving with comments, that no longer seems like a necessary goal.  Done.",
+      "parentUuid": "65c75a02_f9897bd2",
       "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -110,6 +170,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed34adb_1cb5e173",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a5f188_11cbf89e",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52ebc466_f452f6eb",
@@ -123,6 +201,24 @@
       "writtenOn": "2022-06-13T19:05:37Z",
       "side": 1,
       "message": "Is this identical to the if-block?",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf7e7ab_c9c46120",
+        "filename": "core/fxge/win32/cgdi_device_driver.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "!!\n\nYes...  and it is somewhat surprising that a test didn\u0027t catch that copy pasta oops.",
+      "parentUuid": "52ebc466_f452f6eb",
       "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -179,6 +275,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f40b9ce_25f3fd77",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "Done with an enum.",
+      "parentUuid": "2b7ddd83_2b8cdcde",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f58d9040_7b3f9f4d",
@@ -192,6 +306,30 @@
       "writtenOn": "2022-06-13T19:13:52Z",
       "side": 1,
       "message": "It\u0027ll be helpful to generalize this statement to make it more futureproof.",
+      "range": {
+        "startLine": 255,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 41
+      },
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb21f6e0_40a06b94",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "Covered by the use of an enum.",
+      "parentUuid": "f58d9040_7b3f9f4d",
       "range": {
         "startLine": 255,
         "startChar": 27,
@@ -219,6 +357,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b690dfdc_8d09d08c",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 26
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "Yes, seems to be.  Removed.",
+      "parentUuid": "9c439f3a_b62991af",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd532df8_05dce1c8",
@@ -232,6 +388,30 @@
       "writtenOn": "2022-06-13T19:54:25Z",
       "side": 1,
       "message": "Make `m_pRendererType` enums?",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef9dbb48_3b713892",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T06:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd532df8_05dce1c8",
       "range": {
         "startLine": 44,
         "startChar": 9,
