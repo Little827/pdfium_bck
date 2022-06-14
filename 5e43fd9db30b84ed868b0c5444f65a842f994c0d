@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf614626_1ffe37be",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "Without looking at CFX_DefaultRenderDevice::SetDefaultRenderer() and surrounding code, it\u0027s unclear what \"ignore\" implies.",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 209,
+        "endChar": 35
+      },
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c16b10_79f8424b",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "With this, the embedder can say \"I want the unknown renderer type\". What does that mean?",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48bfd02e_437533f4",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "Should this be defined in an AGG-only build, and ignored if used, or not defined at all?",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4f11010_ac4a2b8f",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f144cc87_e2536a5e",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "What\u0027s the plan for running embedder tests with Skia enabled?",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

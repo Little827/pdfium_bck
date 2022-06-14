@@ -225,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "482fc15e_b706514a",
+        "filename": "core/fxge/win32/cgdi_device_driver.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "Less concerning, but there\u0027s still a duplication between lines 518-520 and 523-525. Is it possible to do more merging here?",
+      "parentUuid": "3cf7e7ab_c9c46120",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9ba415e_9c52e9ae",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 26
@@ -254,6 +272,24 @@
       "side": 1,
       "message": "As written there is no need -- this is already protected by line 192, since this is inside the inner block for `config-version \u003e\u003d 2`.\n\nAre you wanting this to be it\u0027s own standalone block for `config-\u003eversion \u003e\u003d 3`, not nested inside the `\u003e\u003d 2` block?",
       "parentUuid": "a9ba415e_9c52e9ae",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1224f315_cb083521",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "I probably read the indentation level wrong.",
+      "parentUuid": "d58aea6b_db9da81e",
       "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -330,6 +366,30 @@
       "side": 1,
       "message": "Covered by the use of an enum.",
       "parentUuid": "f58d9040_7b3f9f4d",
+      "range": {
+        "startLine": 255,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 41
+      },
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d331c78_863c2151",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-14T23:39:27Z",
+      "side": 1,
+      "message": "I was more thinking about the \"both renderers\" part, which is effectively a hard coded assumption about the state of the renderer types.",
+      "parentUuid": "cb21f6e0_40a06b94",
       "range": {
         "startLine": 255,
         "startChar": 27,
