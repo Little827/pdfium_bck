@@ -34,7 +34,7 @@
 #include "testing/utils/path_service.h"
 #include "third_party/base/check.h"
 
-using pdfium::kHelloWorldChecksum;
+using pdfium::HelloWorldChecksum;
 
 namespace {
 
@@ -51,12 +51,20 @@ static constexpr char kBottomTextChecksum[] =
     "891dcb6e914c8360998055f1f47c9727";
 #endif
 
+const char* BottomTextChecksum() {
+  return kBottomTextChecksum;
+}
+
 #if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
     !defined(_SKIA_SUPPORT_PATHS_)
 const char kFirstRemovedChecksum[] = "a1dc2812692fcc7ee4f01ca77435df9d";
 #else
 const char kFirstRemovedChecksum[] = "e1477dc3b5b3b9c560814c4d1135a02b";
 #endif
+
+const char* FirstRemovedChecksum() {
+  return kFirstRemovedChecksum;
+}
 
 const wchar_t kLoadedFontText[] = L"I am testing my loaded font, WEE.";
 
@@ -67,6 +75,10 @@ const char kLoadedFontTextChecksum[] = "0f3e4a7d71f9e7eb8a1a0d69403b9848";
 #else
 const char kLoadedFontTextChecksum[] = "d58570cc045dfb818b92cbabbd1a364c";
 #endif
+
+const char* LoadedFontTextChecksum() {
+  return kLoadedFontTextChecksum;
+}
 
 const char kRedRectangleChecksum[] = "66d02eaa6181e2c069ce2ea99beda497";
 
@@ -897,7 +909,7 @@ TEST_F(FPDFEditEmbedderTest, RemovePageObject) {
   // Show what the original file looks like.
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldChecksum());
   }
 
   // Get the "Hello, world!" text object and remove it.
@@ -909,7 +921,7 @@ TEST_F(FPDFEditEmbedderTest, RemovePageObject) {
   // Verify the "Hello, world!" text is gone.
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kFirstRemovedChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, FirstRemovedChecksum());
   }
   ASSERT_EQ(1, FPDFPage_CountObjects(page));
 
@@ -1423,7 +1435,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveExistingPageObjectSplitStreamsLonely) {
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldChecksum());
   }
 
   // Save the file
@@ -1440,7 +1452,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveExistingPageObjectSplitStreamsLonely) {
   EXPECT_EQ(2, FPDFPage_CountObjects(saved_page));
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(saved_page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldChecksum());
   }
 
   CloseSavedPage(saved_page);
@@ -1666,7 +1678,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveFirstFromSingleStream) {
 
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kFirstRemovedChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, FirstRemovedChecksum());
   }
 
   // Save the file
@@ -1685,7 +1697,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveFirstFromSingleStream) {
   ASSERT_EQ(0, cpdf_page_object->GetContentStream());
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(saved_page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kFirstRemovedChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, FirstRemovedChecksum());
   }
 
   CloseSavedPage(saved_page);
@@ -1726,10 +1738,10 @@ TEST_F(FPDFEditEmbedderTest, RemoveLastFromSingleStream) {
   cpdf_page_object = CPDFPageObjectFromFPDFPageObject(page_object);
   ASSERT_EQ(0, cpdf_page_object->GetContentStream());
 
-  using pdfium::kHelloWorldRemovedChecksum;
+  using pdfium::HelloWorldRemovedChecksum;
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldRemovedChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldRemovedChecksum());
   }
 
   // Save the file
@@ -1748,7 +1760,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveLastFromSingleStream) {
   ASSERT_EQ(0, cpdf_page_object->GetContentStream());
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(saved_page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldRemovedChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldRemovedChecksum());
   }
 
   CloseSavedPage(saved_page);
@@ -1879,10 +1891,10 @@ TEST_F(FPDFEditEmbedderTest, InsertAndRemoveLargeFile) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
-  using pdfium::kManyRectanglesChecksum;
+  using pdfium::ManyRectanglesChecksum;
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 300, kManyRectanglesChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 300, ManyRectanglesChecksum());
   }
 
   // Add a black rectangle.
@@ -1926,7 +1938,7 @@ TEST_F(FPDFEditEmbedderTest, InsertAndRemoveLargeFile) {
   FPDFPageObj_Destroy(added_object);
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(saved_page);
-    CompareBitmap(page_bitmap.get(), 200, 300, kManyRectanglesChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 300, ManyRectanglesChecksum());
   }
   EXPECT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(saved_page));
 
@@ -1945,7 +1957,7 @@ TEST_F(FPDFEditEmbedderTest, InsertAndRemoveLargeFile) {
   EXPECT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(saved_page));
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(saved_page);
-    CompareBitmap(page_bitmap.get(), 200, 300, kManyRectanglesChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 300, ManyRectanglesChecksum());
   }
 
   CloseSavedPage(saved_page);
@@ -2215,10 +2227,10 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
   EXPECT_TRUE(FPDFPage_GenerateContent(page.get()));
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page.get());
-    CompareBitmap(page_bitmap.get(), 612, 792, kBottomTextChecksum);
+    CompareBitmap(page_bitmap.get(), 612, 792, BottomTextChecksum());
 
     EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
-    VerifySavedDocument(612, 792, kBottomTextChecksum);
+    VerifySavedDocument(612, 792, BottomTextChecksum());
   }
 
   // Try another font
@@ -2710,7 +2722,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText2) {
   FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 20, 20);
   FPDFPage_InsertObject(page.get(), text_object);
   ScopedFPDFBitmap page_bitmap = RenderPage(page.get());
-  CompareBitmap(page_bitmap.get(), 612, 792, kBottomTextChecksum);
+  CompareBitmap(page_bitmap.get(), 612, 792, BottomTextChecksum());
 }
 
 TEST_F(FPDFEditEmbedderTest, LoadStandardFonts) {
@@ -3051,7 +3063,7 @@ TEST_F(FPDFEditEmbedderTest, AddTrueTypeFontText) {
     FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 400, 400);
     FPDFPage_InsertObject(page, text_object);
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 612, 792, kLoadedFontTextChecksum);
+    CompareBitmap(page_bitmap.get(), 612, 792, LoadedFontTextChecksum());
 
     // Add some more text, same font
     FPDF_PAGEOBJECT text_object2 =
@@ -3237,7 +3249,7 @@ TEST_F(FPDFEditEmbedderTest, AddMarkCompressedStream) {
   // Render and check there are no marks.
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldChecksum());
   }
   CheckMarkCounts(page, 0, 2, 0, 0, 0, 0);
 
@@ -3251,7 +3263,7 @@ TEST_F(FPDFEditEmbedderTest, AddMarkCompressedStream) {
   // Render and check there is 1 mark.
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldChecksum());
   }
   CheckMarkCounts(page, 0, 2, 0, 0, 0, 1);
 
@@ -3267,7 +3279,7 @@ TEST_F(FPDFEditEmbedderTest, AddMarkCompressedStream) {
 
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(saved_page);
-    CompareBitmap(page_bitmap.get(), 200, 200, kHelloWorldChecksum);
+    CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldChecksum());
   }
   CheckMarkCounts(saved_page, 0, 2, 0, 0, 0, 1);
 
@@ -3419,7 +3431,7 @@ TEST_F(FPDFEditEmbedderTest, AddMarkedText) {
   // Render and check the bitmap is the expected one.
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 612, 792, kLoadedFontTextChecksum);
+    CompareBitmap(page_bitmap.get(), 612, 792, LoadedFontTextChecksum());
   }
 
   // Now save the result.

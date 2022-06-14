@@ -19,6 +19,10 @@ const char kAnnotationStampWithApChecksum[] =
     "cdde6c161679ab10b07c38c1ef04b7e8";
 #endif
 
+const char* AnnotationStampWithApChecksum() {
+  return kAnnotationStampWithApChecksum;
+}
+
 const char kBlankPage612By792Checksum[] = "1940568c9ba33bac5d0b1ee9558c76b3";
 
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
@@ -27,6 +31,10 @@ const char kBug890322Checksum[] = "793689536cf64fe792c2f241888c0cf3";
 const char kBug890322Checksum[] = "6c674642154408e877d88c6c082d67e9";
 #endif
 
+const char* Bug890322Checksum() {
+  return kBug890322Checksum;
+}
+
 #if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
     !defined(_SKIA_SUPPORT_PATHS_)
 const char kHelloWorldChecksum[] = "6eef7237f7591f07616e238422086737";
@@ -34,12 +42,20 @@ const char kHelloWorldChecksum[] = "6eef7237f7591f07616e238422086737";
 const char kHelloWorldChecksum[] = "c1c548442e0e0f949c5550d89bf8ae3b";
 #endif
 
+const char* HelloWorldChecksum() {
+  return kHelloWorldChecksum;
+}
+
 #if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
     !defined(_SKIA_SUPPORT_PATHS_)
 const char kHelloWorldRemovedChecksum[] = "6e1cae48a2e35c521dee4ca502f48af6";
 #else
 const char kHelloWorldRemovedChecksum[] = "4a9b80f675f7f3bf2da1b02f12449e4b";
 #endif
+
+const char* HelloWorldRemovedChecksum() {
+  return kHelloWorldRemovedChecksum;
+}
 
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 const char kManyRectanglesChecksum[] = "4e7e280c1597222afcb0ee3bb90ec119";
@@ -49,6 +65,14 @@ const char kManyRectanglesChecksum[] = "b0170c575b65ecb93ebafada0ff0f038";
 const char kRectanglesChecksum[] = "0a90de37f52127619c3dfb642b5fa2fe";
 #endif
 
+const char* ManyRectanglesChecksum() {
+  return kManyRectanglesChecksum;
+}
+
+const char* RectanglesChecksum() {
+  return kRectanglesChecksum;
+}
+
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 const char kTextFormChecksum[] = "e6d2eb75f18d773f0dad938b1bb22e23";
 #elif BUILDFLAG(IS_APPLE)
@@ -56,5 +80,9 @@ const char kTextFormChecksum[] = "fa2bf756942a950101fc147fc4ef3f82";
 #else
 const char kTextFormChecksum[] = "6f86fe1dbed5965d91aec6e0b829e29f";
 #endif
+
+const char* TextFormChecksum() {
+  return kTextFormChecksum;
+}
 
 }  // namespace pdfium
