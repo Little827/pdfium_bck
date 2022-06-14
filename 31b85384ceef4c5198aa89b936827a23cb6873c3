@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d58aea6b_db9da81e",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-06-14T05:57:31Z",
+      "side": 1,
+      "message": "As written there is no need -- this is already protected by line 192, since this is inside the inner block for `config-version \u003e\u003d 2`.\n\nAre you wanting this to be it\u0027s own standalone block for `config-\u003eversion \u003e\u003d 3`, not nested inside the `\u003e\u003d 2` block?",
+      "parentUuid": "a9ba415e_9c52e9ae",
+      "revId": "31b85384ceef4c5198aa89b936827a23cb6873c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b7ddd83_2b8cdcde",
         "filename": "public/fpdfview.h",
         "patchSetId": 26
