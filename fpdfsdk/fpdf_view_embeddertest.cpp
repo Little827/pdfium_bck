@@ -11,6 +11,7 @@
 
 #include "build/build_config.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/fpdf_view_c_api_test.h"
 #include "public/cpp/fpdf_scopers.h"
@@ -843,35 +844,63 @@ TEST_F(FPDFViewEmbedderTest, Hang_1055) {
 }
 
 TEST_F(FPDFViewEmbedderTest, FPDF_RenderPageBitmapWithMatrix) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kClippedMD5[] = "d2929fae285593cd1c1d446750d47d60";
-  const char kTopLeftQuarterMD5[] = "31d24d8c6a2bac380b2f5c393e77ecc9";
-  const char kHoriStretchedMD5[] = "af6eaa0d3388261693df5390138e4da1";
-  const char kRotated90ClockwiseMD5[] = "b4baa001d201baed576cd6d5d0d5a160";
-  const char kRotated180ClockwiseMD5[] = "51819227d0863222aed366d5d7c5d9c8";
-  const char kRotated270ClockwiseMD5[] = "f2b046e46c2751cebc777a9725ae2f3e";
-  const char kMirrorHoriMD5[] = "c7fbec322b4fc6bcf46ec1eb89661c41";
-  const char kMirrorVertMD5[] = "a8b00bc40677a73c15a08b9769d1b576";
-  const char kLargerTopLeftQuarterMD5[] = "35deb5ed4b73675ce33f68328a33c687";
-  const char kLargerRotatedDiagonalMD5[] = "1dbf599403c235926d3ddcbc0ea10ee8";
-  const char kTileMD5[] = "387be3a84774f39aaa955314d2fe7106";
-#else
-  const char kClippedMD5[] = "a84cab93c102b9b9290fba3047ba702c";
-  const char kTopLeftQuarterMD5[] = "f11a11137c8834389e31cf555a4a6979";
-  const char kHoriStretchedMD5[] = "48ef9205941ed19691ccfa00d717187e";
-  const char kRotated90ClockwiseMD5[] = "d8da2c7bf77521550d0f2752b9cf3482";
-  const char kRotated180ClockwiseMD5[] = "0113386bb0bd45125bacc6dee78bfe78";
-  const char kRotated270ClockwiseMD5[] = "a287e0f74ce203699cda89f9cc97a240";
-  const char kMirrorHoriMD5[] = "6e8d7a6fde39d8e720fb9e620102918c";
-  const char kMirrorVertMD5[] = "8f3a555ef9c0d5031831ae3715273707";
-  const char kLargerTopLeftQuarterMD5[] = "172a2f4adafbadbe98017b1c025b9e27";
-  const char kLargerRotatedDiagonalMD5[] = "3d62417468bdaff0eb14391a0c30a3b1";
-  const char kTileMD5[] = "0a190003c97220bf8877684c8d7e89cf";
-#endif
+  const bool skia_is_default_renderer =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer();
+  const char kClippedMD5Skia[] = "d2929fae285593cd1c1d446750d47d60";
+  const char kTopLeftQuarterMD5Skia[] = "31d24d8c6a2bac380b2f5c393e77ecc9";
+  const char kHoriStretchedMD5Skia[] = "af6eaa0d3388261693df5390138e4da1";
+  const char kRotated90ClockwiseMD5Skia[] = "b4baa001d201baed576cd6d5d0d5a160";
+  const char kRotated180ClockwiseMD5Skia[] = "51819227d0863222aed366d5d7c5d9c8";
+  const char kRotated270ClockwiseMD5Skia[] = "f2b046e46c2751cebc777a9725ae2f3e";
+  const char kMirrorHoriMD5Skia[] = "c7fbec322b4fc6bcf46ec1eb89661c41";
+  const char kMirrorVertMD5Skia[] = "a8b00bc40677a73c15a08b9769d1b576";
+  const char kLargerTopLeftQuarterMD5Skia[] =
+      "35deb5ed4b73675ce33f68328a33c687";
+  const char kLargerRotatedDiagonalMD5Skia[] =
+      "1dbf599403c235926d3ddcbc0ea10ee8";
+  const char kTileMD5Skia[] = "387be3a84774f39aaa955314d2fe7106";
+  const char kClippedMD5Agg[] = "a84cab93c102b9b9290fba3047ba702c";
+  const char kTopLeftQuarterMD5Agg[] = "f11a11137c8834389e31cf555a4a6979";
+  const char kHoriStretchedMD5Agg[] = "48ef9205941ed19691ccfa00d717187e";
+  const char kRotated90ClockwiseMD5Agg[] = "d8da2c7bf77521550d0f2752b9cf3482";
+  const char kRotated180ClockwiseMD5Agg[] = "0113386bb0bd45125bacc6dee78bfe78";
+  const char kRotated270ClockwiseMD5Agg[] = "a287e0f74ce203699cda89f9cc97a240";
+  const char kMirrorHoriMD5Agg[] = "6e8d7a6fde39d8e720fb9e620102918c";
+  const char kMirrorVertMD5Agg[] = "8f3a555ef9c0d5031831ae3715273707";
+  const char kLargerTopLeftQuarterMD5Agg[] = "172a2f4adafbadbe98017b1c025b9e27";
+  const char kLargerRotatedDiagonalMD5Agg[] =
+      "3d62417468bdaff0eb14391a0c30a3b1";
+  const char kTileMD5Agg[] = "0a190003c97220bf8877684c8d7e89cf";
   const char kLargerMD5[] = "c806145641c3e6fc4e022c7065343749";
   const char kLargerClippedMD5[] = "091d3b1c7933c8f6945eb2cb41e588e9";
   const char kLargerRotatedMD5[] = "115f13353ebfc82ddb392d1f0059eb12";
   const char kLargerRotatedLandscapeMD5[] = "c901239d17d84ac84cb6f2124da71b0d";
+  const char* kClippedMD5 =
+      skia_is_default_renderer ? kClippedMD5Skia : kClippedMD5Agg;
+  const char* kTopLeftQuarterMD5 =
+      skia_is_default_renderer ? kTopLeftQuarterMD5Skia : kTopLeftQuarterMD5Agg;
+  const char* kHoriStretchedMD5 =
+      skia_is_default_renderer ? kHoriStretchedMD5Skia : kHoriStretchedMD5Agg;
+  const char* kRotated90ClockwiseMD5 = skia_is_default_renderer
+                                           ? kRotated90ClockwiseMD5Skia
+                                           : kRotated90ClockwiseMD5Agg;
+  const char* kRotated180ClockwiseMD5 = skia_is_default_renderer
+                                            ? kRotated180ClockwiseMD5Skia
+                                            : kRotated180ClockwiseMD5Agg;
+  const char* kRotated270ClockwiseMD5 = skia_is_default_renderer
+                                            ? kRotated270ClockwiseMD5Skia
+                                            : kRotated270ClockwiseMD5Agg;
+  const char* kMirrorHoriMD5 =
+      skia_is_default_renderer ? kMirrorHoriMD5Skia : kMirrorHoriMD5Agg;
+  const char* kMirrorVertMD5 =
+      skia_is_default_renderer ? kMirrorVertMD5Skia : kMirrorVertMD5Agg;
+  const char* kLargerTopLeftQuarterMD5 = skia_is_default_renderer
+                                             ? kLargerTopLeftQuarterMD5Skia
+                                             : kLargerTopLeftQuarterMD5Agg;
+  const char* kLargerRotatedDiagonalMD5 = skia_is_default_renderer
+                                              ? kLargerRotatedDiagonalMD5Skia
+                                              : kLargerRotatedDiagonalMD5Agg;
+  const char* kTileMD5 = skia_is_default_renderer ? kTileMD5Skia : kTileMD5Agg;
 
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -1257,32 +1286,39 @@ TEST_F(FPDFViewEmbedderTest, LoadDocumentWithEmptyXRefConsistently) {
 }
 
 TEST_F(FPDFViewEmbedderTest, RenderBug664284WithNoNativeText) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   // For Skia/SkiaPaths, since the font used in bug_664284.pdf is not a CID
   // font, ShouldDrawDeviceText() will always return true. Therefore
   // FPDF_NO_NATIVETEXT and the font widths defined in the PDF determines
   // whether to go through the rendering path in
   // CFX_SkiaDeviceDriver::DrawDeviceText(). In this case, it returns false and
   // affects the rendering results across all platforms.
-  static const char kOriginalChecksum[] = "288502887ffc63291f35a0573b944375";
-  static const char kNoNativeTextChecksum[] =
+  static const char kOriginalChecksumSkia[] =
       "288502887ffc63291f35a0573b944375";
-#else
+  static const char kNoNativeTextChecksumSkia[] =
+      "288502887ffc63291f35a0573b944375";
+
 // For AGG, since CFX_AggDeviceDriver::DrawDeviceText() always returns false,
 // FPDF_NO_NATIVETEXT won't affect device-specific rendering path and it will
 // only disable native text support on macOS. Therefore Windows and Linux
 // rendering results remain the same as rendering with no flags, while the macOS
 // rendering result doesn't.
 #if BUILDFLAG(IS_APPLE)
-  static const char kOriginalChecksum[] = "0e339d606aafb63077f49e238dc27cb0";
-  static const char kNoNativeTextChecksum[] =
+  static const char kOriginalChecksumAgg[] = "0e339d606aafb63077f49e238dc27cb0";
+  static const char kNoNativeTextChecksumAgg[] =
       "288502887ffc63291f35a0573b944375";
 #else
-  static const char kOriginalChecksum[] = "288502887ffc63291f35a0573b944375";
-  static const char kNoNativeTextChecksum[] =
+  static const char kOriginalChecksumAgg[] = "288502887ffc63291f35a0573b944375";
+  static const char kNoNativeTextChecksumAgg[] =
       "288502887ffc63291f35a0573b944375";
 #endif  // BUILDFLAG(IS_APPLE)
-#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  const char* kOriginalChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kOriginalChecksumSkia
+                                                       : kOriginalChecksumAgg;
+  const char* kNoNativeTextChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kNoNativeTextChecksumSkia
+          : kNoNativeTextChecksumAgg;
+
   ASSERT_TRUE(OpenDocument("bug_664284.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
@@ -1323,13 +1359,16 @@ TEST_F(FPDFViewEmbedderTest, RenderJpxLzwImageWithFlags) {
 }
 
 TEST_F(FPDFViewEmbedderTest, RenderManyRectanglesWithFlags) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kGrayscaleMD5[] = "b596ac8bbe64e7bff31888ab05e4dcf4";
-  static const char kNoSmoothpathMD5[] = "4d71ed53d9f6e6a761876ebb4ff23e19";
-#else
-  static const char kGrayscaleMD5[] = "7b553f1052069a9c61237a05db0955d6";
-  static const char kNoSmoothpathMD5[] = "ff6e5c509d1f6984bcdfd18b26a4203a";
-#endif
+  static const char kGrayscaleMD5Skia[] = "b596ac8bbe64e7bff31888ab05e4dcf4";
+  static const char kNoSmoothpathMD5Skia[] = "4d71ed53d9f6e6a761876ebb4ff23e19";
+  static const char kGrayscaleMD5Agg[] = "7b553f1052069a9c61237a05db0955d6";
+  static const char kNoSmoothpathMD5Agg[] = "ff6e5c509d1f6984bcdfd18b26a4203a";
+  const char* kGrayscaleMD5 = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                  ? kGrayscaleMD5Skia
+                                  : kGrayscaleMD5Agg;
+  const char* kNoSmoothpathMD5 =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kNoSmoothpathMD5Skia
+                                                       : kNoSmoothpathMD5Agg;
 
   ASSERT_TRUE(OpenDocument("many_rectangles.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -1361,17 +1400,17 @@ TEST_F(FPDFViewEmbedderTest, RenderManyRectanglesWithExternalMemory) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kGrayMD5[] = "3dfe1fc3889123d68e1748fefac65e72";
+  static const char kGrayMD5Skia[] = "3dfe1fc3889123d68e1748fefac65e72";
+  static const char kGrayMD5Agg[] = "b561c11edc44dc3972125a9b8744fa2f";
+  static const char kBgrMD5[] = "ab6312e04c0d3f4e46fb302a45173d05";
+  const char* kGrayMD5 = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                             ? kGrayMD5Skia
+                             : kGrayMD5Agg;
 
   // TODO(crbug.com/pdfium/1489): Add a test for FPDFBitmap_BGR in
   // Skia/SkiaPaths modes once Skia provides support for BGR24 format.
-#else
-  static const char kGrayMD5[] = "b561c11edc44dc3972125a9b8744fa2f";
-  static const char kBgrMD5[] = "ab6312e04c0d3f4e46fb302a45173d05";
-
-  TestRenderPageBitmapWithExternalMemory(page, FPDFBitmap_BGR, kBgrMD5);
-#endif
+  if (!CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    TestRenderPageBitmapWithExternalMemory(page, FPDFBitmap_BGR, kBgrMD5);
   TestRenderPageBitmapWithExternalMemory(page, FPDFBitmap_Gray, kGrayMD5);
   TestRenderPageBitmapWithExternalMemory(page, FPDFBitmap_BGRx,
                                          ManyRectanglesChecksum());
@@ -1401,18 +1440,30 @@ TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithFlags) {
                                 HelloWorldChecksum());
 
 #if defined(_SKIA_SUPPORT_)
-  static const char kLcdTextChecksum[] = "c1c548442e0e0f949c5550d89bf8ae3b";
-  static const char kNoSmoothtextChecksum[] =
+  static const char kLcdTextChecksumSkia[] = "c1c548442e0e0f949c5550d89bf8ae3b";
+  static const char kNoSmoothtextChecksumSkia[] =
       "37d0b34e1762fdda4c05ce7ea357b828";
-#elif BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_PATHS_)
-  static const char kLcdTextChecksum[] = "6eef7237f7591f07616e238422086737";
-  static const char kNoSmoothtextChecksum[] =
-      "6eef7237f7591f07616e238422086737";
 #else
-  static const char kLcdTextChecksum[] = "09152e25e51fa8ca31fc28d0937bf477";
-  static const char kNoSmoothtextChecksum[] =
+  static const char kLcdTextChecksumSkia[] = "09152e25e51fa8ca31fc28d0937bf477";
+  static const char kNoSmoothtextChecksumSkia[] =
       "37d0b34e1762fdda4c05ce7ea357b828";
 #endif
+#if BUILDFLAG(IS_APPLE)
+  static const char kLcdTextChecksumAgg[] = "6eef7237f7591f07616e238422086737";
+  static const char kNoSmoothtextChecksumAgg[] =
+      "6eef7237f7591f07616e238422086737";
+#else
+  static const char kLcdTextChecksumAgg[] = "09152e25e51fa8ca31fc28d0937bf477";
+  static const char kNoSmoothtextChecksumAgg[] =
+      "37d0b34e1762fdda4c05ce7ea357b828";
+#endif
+  const char* kLcdTextChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kLcdTextChecksumSkia
+                                                       : kLcdTextChecksumAgg;
+  const char* kNoSmoothtextChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kNoSmoothtextChecksumSkia
+          : kNoSmoothtextChecksumAgg;
 
   TestRenderPageBitmapWithFlags(page, FPDF_LCD_TEXT, kLcdTextChecksum);
   TestRenderPageBitmapWithFlags(page, FPDF_RENDER_NO_SMOOTHTEXT,
@@ -1631,13 +1682,13 @@ restore
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/1500): Fix this test and enable.
+TEST_F(FPDFViewEmbedderTest, ImageMask) {
+  // TODO(crbug.com/pdfium/1500): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_ImageMask DISABLED_ImageMask
-#else
-#define MAYBE_ImageMask ImageMask
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
 #endif
-TEST_F(FPDFViewEmbedderTest, MAYBE_ImageMask) {
+
   ASSERT_TRUE(OpenDocument("bug_674771.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);

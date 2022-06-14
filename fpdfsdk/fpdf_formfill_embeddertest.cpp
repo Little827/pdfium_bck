@@ -9,6 +9,7 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
@@ -1319,26 +1320,35 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_765384) {
 
 TEST_F(FPDFFormFillEmbedderTest, FormText) {
 #if defined(_SKIA_SUPPORT_)
-  const char kFocusedTextFormWithAbcChecksum[] =
+  const char kFocusedTextFormWithAbcChecksumSkia[] =
       "07a179a9dfb8f5462746262984109a99";
-  const char kUnfocusedTextFormWithAbcChecksum[] =
+  const char kUnfocusedTextFormWithAbcChecksumSkia[] =
       "a21b74cc620db8a9891ebd69e1aeda98";
-#elif defined(_SKIA_SUPPORT_PATHS_)
-  const char kFocusedTextFormWithAbcChecksum[] =
+#else
+  const char kFocusedTextFormWithAbcChecksumSkia[] =
       "2866312fb36e9afdc0a99d547027d484";
-  const char kUnfocusedTextFormWithAbcChecksum[] =
+  const char kUnfocusedTextFormWithAbcChecksumSkia[] =
       "03216cae48813f71f81f53b49e3a8aaa";
-#elif BUILDFLAG(IS_APPLE)
-  const char kFocusedTextFormWithAbcChecksum[] =
+#endif
+#if BUILDFLAG(IS_APPLE)
+  const char kFocusedTextFormWithAbcChecksumAgg[] =
       "9fb14198d75ca0a107060c60ca21b0c7";
-  const char kUnfocusedTextFormWithAbcChecksum[] =
+  const char kUnfocusedTextFormWithAbcChecksumAgg[] =
       "3c3209357e0c057a0620afa7d83eb784";
 #else
-  const char kFocusedTextFormWithAbcChecksum[] =
+  const char kFocusedTextFormWithAbcChecksumAgg[] =
       "6e6f790bb14c4fc6107faf8c17d23dbd";
-  const char kUnfocusedTextFormWithAbcChecksum[] =
+  const char kUnfocusedTextFormWithAbcChecksumAgg[] =
       "94b7e10ac8c662b73e33628ca2f5e63b";
 #endif
+  const char* kFocusedTextFormWithAbcChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kFocusedTextFormWithAbcChecksumSkia
+          : kFocusedTextFormWithAbcChecksumAgg;
+  const char* kUnfocusedTextFormWithAbcChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kUnfocusedTextFormWithAbcChecksumSkia
+          : kUnfocusedTextFormWithAbcChecksumAgg;
   {
     ASSERT_TRUE(OpenDocument("text_form.pdf"));
     FPDF_PAGE page = LoadPage(0);
@@ -1388,11 +1398,12 @@ TEST_F(FPDFFormFillEmbedderTest, FormText) {
 // Tests using FPDF_REVERSE_BYTE_ORDER with FPDF_FFLDraw(). The two rendered
 // bitmaps should be different.
 TEST_F(FPDFFormFillEmbedderTest, BUG_1281) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kMd5ReverseByteOrder[] = "8077970bbd10333f18186a9bb459bbe6";
-#else
-  const char kMd5ReverseByteOrder[] = "24fff03d1e663b7ece5f6e69ad837124";
-#endif
+  const char kMd5ReverseByteOrderSkia[] = "8077970bbd10333f18186a9bb459bbe6";
+  const char kMd5ReverseByteOrderAgg[] = "24fff03d1e663b7ece5f6e69ad837124";
+  const char* kMd5ReverseByteOrder =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kMd5ReverseByteOrderSkia
+          : kMd5ReverseByteOrderAgg;
 
   ASSERT_TRUE(OpenDocument("bug_890322.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -1410,11 +1421,12 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_1281) {
 }
 
 TEST_F(FPDFFormFillEmbedderTest, Bug1302455RenderOnly) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kChecksum[] = "520c4415c9977f40d6b4af5a0a94d764";
-#else
-  const char kChecksum[] = "bbee92af1daec2340c81f482878744d8";
-#endif
+  const char kChecksumSkia[] = "520c4415c9977f40d6b4af5a0a94d764";
+  const char kChecksumAgg[] = "bbee92af1daec2340c81f482878744d8";
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
+
   {
     ASSERT_TRUE(OpenDocument("bug_1302455.pdf"));
     FPDF_PAGE page = LoadPage(0);
@@ -1431,13 +1443,16 @@ TEST_F(FPDFFormFillEmbedderTest, Bug1302455RenderOnly) {
 }
 
 TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditFirstForm) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kChecksum[] = "29a06da3e47f67535e266b090a5ac82d";
-#elif BUILDFLAG(IS_APPLE)
-  const char kChecksum[] = "bf5423874f188427d2500a2bc4abebbe";
+  const char kChecksumSkia[] = "29a06da3e47f67535e266b090a5ac82d";
+#if BUILDFLAG(IS_APPLE)
+  const char kChecksumAgg[] = "bf5423874f188427d2500a2bc4abebbe";
 #else
-  const char kChecksum[] = "6a4ac9a15d2c34589616c8f2b05fbedd";
+  const char kChecksumAgg[] = "6a4ac9a15d2c34589616c8f2b05fbedd";
 #endif
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
+
   {
     ASSERT_TRUE(OpenDocument("bug_1302455.pdf"));
     FPDF_PAGE page = LoadPage(0);
@@ -1462,13 +1477,16 @@ TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditFirstForm) {
 }
 
 TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditSecondForm) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kChecksum[] = "19f8574d6378ee36e349376d88b7a2c4";
-#elif BUILDFLAG(IS_APPLE)
-  const char kChecksum[] = "8a0fd8772dba6e1e952e49d159cc64b5";
+  const char kChecksumSkia[] = "19f8574d6378ee36e349376d88b7a2c4";
+#if BUILDFLAG(IS_APPLE)
+  const char kChecksumAgg[] = "8a0fd8772dba6e1e952e49d159cc64b5";
 #else
-  const char kChecksum[] = "45a7694933c2ba3c5dc8f6cc18b79175";
+  const char kChecksumAgg[] = "45a7694933c2ba3c5dc8f6cc18b79175";
 #endif
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
+
   {
     ASSERT_TRUE(OpenDocument("bug_1302455.pdf"));
     FPDF_PAGE page = LoadPage(0);
@@ -1493,13 +1511,16 @@ TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditSecondForm) {
 }
 
 TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditBothForms) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kChecksum[] = "edbc9b0e190118a9039fffc11e494081";
-#elif BUILDFLAG(IS_APPLE)
-  const char kChecksum[] = "1f422ee1c520ad74b1a993b64bd4dc4a";
+  const char kChecksumSkia[] = "edbc9b0e190118a9039fffc11e494081";
+#if BUILDFLAG(IS_APPLE)
+  const char kChecksumAgg[] = "1f422ee1c520ad74b1a993b64bd4dc4a";
 #else
-  const char kChecksum[] = "13984969b1e141079ab5f4aa80185463";
+  const char kChecksumAgg[] = "13984969b1e141079ab5f4aa80185463";
 #endif
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
+
   {
     ASSERT_TRUE(OpenDocument("bug_1302455.pdf"));
     FPDF_PAGE page = LoadPage(0);
@@ -1531,12 +1552,15 @@ TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditBothForms) {
 }
 
 TEST_F(FPDFFormFillEmbedderTest, RemoveFormFieldHighlight) {
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  const char kMd5NoHighlight[] = "5c82aa43e3b478aa1e4c94bb9ef1f11f";
+  const char kMd5NoHighlightSkia[] = "a6268304f7eedfa9ee98fac3caaf2efb";
+#if BUILDFLAG(IS_APPLE)
+  const char kMd5NoHighlightAgg[] = "5c82aa43e3b478aa1e4c94bb9ef1f11f";
 #else
-  const char kMd5NoHighlight[] = "a6268304f7eedfa9ee98fac3caaf2efb";
+  const char kMd5NoHighlightAgg[] = "a6268304f7eedfa9ee98fac3caaf2efb";
 #endif
+  const char* kMd5NoHighlight = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                    ? kMd5NoHighlightSkia
+                                    : kMd5NoHighlightAgg;
 
   ASSERT_TRUE(OpenDocument("text_form.pdf"));
   FPDF_PAGE page = LoadPage(0);
