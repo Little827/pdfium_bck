@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe35f3e_576b8c6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-14T19:10:07Z",
+      "side": 1,
+      "message": "But do see https://crbug.com/1335861",
+      "revId": "6212b78169a615ed78ffc9c0cbe193de6d4b7849",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
