@@ -9,6 +9,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_edit.h"
 #include "public/fpdf_save.h"
@@ -135,12 +136,19 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPassword) {
 
 TEST_F(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
 #if defined(_SKIA_SUPPORT_)
-  const char kChecksum[] = "df9fe67555b7ceb59c99036e8d2c1c76";
-#elif BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_PATHS_)
-  const char kChecksum[] = "2a308e8cc20a6221112c387d122075a8";
+  const char kChecksumSkia[] = "df9fe67555b7ceb59c99036e8d2c1c76";
 #else
-  const char kChecksum[] = "9fe7eef8e51d15a604001854be6ed1ee";
+  const char kChecksumSkia[] = "9fe7eef8e51d15a604001854be6ed1ee";
 #endif
+#if BUILDFLAG(IS_APPLE)
+  const char kChecksumAgg[] = "2a308e8cc20a6221112c387d122075a8";
+#else
+  const char kChecksumAgg[] = "9fe7eef8e51d15a604001854be6ed1ee";
+#endif
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
+
   {
     ASSERT_TRUE(OpenDocumentWithOptions("encrypted.pdf", "5678",
                                         LinearizeOption::kMustLinearize,

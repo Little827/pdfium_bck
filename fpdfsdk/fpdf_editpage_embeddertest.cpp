@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/fpdf_edit.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_constants.h"
@@ -10,11 +11,11 @@
 class FPDFEditPageEmbedderTest : public EmbedderTest {};
 
 TEST_F(FPDFEditPageEmbedderTest, Rotation) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kRotatedMD5[] = "eded83f75f3d0332c584c416c571c0df";
-#else
-  const char kRotatedMD5[] = "d599429574ff0dcad3bc898ea8b874ca";
-#endif
+  const char kRotatedMD5Skia[] = "eded83f75f3d0332c584c416c571c0df";
+  const char kRotatedMD5Agg[] = "d599429574ff0dcad3bc898ea8b874ca";
+  const char* kRotatedMD5 = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                ? kRotatedMD5Skia
+                                : kRotatedMD5Agg;
 
   {
     ASSERT_TRUE(OpenDocument("rectangles.pdf"));
