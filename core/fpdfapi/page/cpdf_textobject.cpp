@@ -325,9 +325,11 @@ float CPDF_TextObject::CalcPositionDataInternal(
     max_y = max_y * fontsize / 1000;
   }
 
-  CFX_FloatRect rect =
-      GetTextMatrix().TransformRect(CFX_FloatRect(min_x, min_y, max_x, max_y));
+  SetOriginalRect(CFX_FloatRect(min_x, min_y, max_x, max_y));
+  CFX_FloatRect rect = GetTextMatrix().TransformRect(GetOriginalRect());
   if (TextRenderingModeIsStrokeMode(m_TextState.GetTextMode())) {
+    // TODO(crbug.com/pdfium/1840): Does the original rect need a similar
+    // adjustment?
     const float half_width = m_GraphState.GetLineWidth() / 2;
     rect.Inflate(half_width, half_width);
   }
