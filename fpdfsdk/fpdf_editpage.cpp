@@ -786,6 +786,43 @@ FPDFPageObj_GetBounds(FPDF_PAGEOBJECT page_object,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_GetRotatedBounds(FPDF_PAGEOBJECT page_object,
+                             FS_QUADPOINTSF* quad_points) {
+  CPDF_PageObject* cpage_object = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!cpage_object || !quad_points)
+    return false;
+
+  CFX_Matrix matrix;
+  switch (cpage_object->GetType()) {
+    case CPDF_PageObject::Type::kText:
+      matrix = cpage_object->AsText()->GetTextMatrix();
+      break;
+    case CPDF_PageObject::Type::kImage:
+      matrix = cpage_object->AsImage()->matrix();
+      break;
+    default:
+      // TODO(crbug.com/pdfium/1840): Support more object types.
+      return false;
+  }
+
+  const CFX_FloatRect& bbox = cpage_object->GetOriginalRect();
+  const CFX_PointF p1 = matrix.Transform({bbox.left, bbox.top});
+  const CFX_PointF p2 = matrix.Transform({bbox.right, bbox.top});
+  const CFX_PointF p3 = matrix.Transform({bbox.right, bbox.bottom});
+  const CFX_PointF p4 = matrix.Transform({bbox.left, bbox.bottom});
+
+  quad_points->x1 = p1.x;
+  quad_points->y1 = p1.y;
+  quad_points->x2 = p2.x;
+  quad_points->y2 = p2.y;
+  quad_points->x3 = p3.x;
+  quad_points->y3 = p3.y;
+  quad_points->x4 = p4.x;
+  quad_points->y4 = p4.y;
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObj_SetStrokeColor(FPDF_PAGEOBJECT page_object,
                            unsigned int R,
                            unsigned int G,
