@@ -49,4 +49,7 @@ inline const CPDF_Number* ToNumber(const CPDF_Object* obj) {
   return obj ? obj->AsNumber() : nullptr;
 }
 
+inline RetainPtr<CPDF_Number> ToNumber(RetainPtr<CPDF_Object> obj) {
+  return RetainPtr<CPDF_Number>(ToNumber(obj.Get()));
+}
 #endif  // CORE_FPDFAPI_PARSER_CPDF_NUMBER_H_
