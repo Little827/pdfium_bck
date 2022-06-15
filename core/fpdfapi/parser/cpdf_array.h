@@ -48,10 +48,10 @@ class CPDF_Array final : public CPDF_Object {
   CPDF_Object* GetObjectAt(size_t index);
   const CPDF_Object* GetObjectAt(size_t index) const;
 
-  // The GetDirectObjectAt() methods tolerate out-of-bounds indices and
+  // The Get*DirectObjectAt() methods tolerate out-of-bounds indices and
   // return nullptr in those cases. Furthermore, for reference objects that
   // do not correspond to a valid indirect object, nullptr is returned.
-  CPDF_Object* GetDirectObjectAt(size_t index);
+  RetainPtr<CPDF_Object> GetMutableDirectObjectAt(size_t index);
   const CPDF_Object* GetDirectObjectAt(size_t index) const;
 
   // The Get*At() methods tolerate out-of-bounds indices and return nullptr
@@ -63,11 +63,10 @@ class CPDF_Array final : public CPDF_Object {
   int GetIntegerAt(size_t index) const;
   float GetNumberAt(size_t index) const;
   RetainPtr<CPDF_Dictionary> GetMutableDictAt(size_t index);
-  CPDF_Dictionary* GetDictAt(size_t index);  // prefer previous form.
   const CPDF_Dictionary* GetDictAt(size_t index) const;
-  CPDF_Stream* GetStreamAt(size_t index);
+  RetainPtr<CPDF_Stream> GetMutableStreamAt(size_t index);
   const CPDF_Stream* GetStreamAt(size_t index) const;
-  CPDF_Array* GetArrayAt(size_t index);
+  RetainPtr<CPDF_Array> GetMutableArrayAt(size_t index);
   const CPDF_Array* GetArrayAt(size_t index) const;
 
   CFX_FloatRect GetRect() const;

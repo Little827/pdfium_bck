@@ -130,10 +130,11 @@ bool UpdateNodesAndLimitsUponDeletion(CPDF_Dictionary* pNode,
 
   // Loop through the kids to find the leaf array |pFind|.
   for (size_t i = 0; i < pKids->size(); ++i) {
-    CPDF_Dictionary* pKid = pKids->GetDictAt(i);
+    RetainPtr<CPDF_Dictionary> pKid = pKids->GetMutableDictAt(i);
     if (!pKid)
       continue;
-    if (!UpdateNodesAndLimitsUponDeletion(pKid, pFind, csName, nLevel + 1))
+    if (!UpdateNodesAndLimitsUponDeletion(pKid.Get(), pFind, csName,
+                                          nLevel + 1))
       continue;
 
     // Remove this child node if it's empty.
@@ -151,7 +152,7 @@ bool UpdateNodesAndLimitsUponDeletion(CPDF_Dictionary* pNode,
     WideString csNewLeft = csRight;
     WideString csNewRight = csLeft;
     for (size_t j = 0; j < pKids->size(); ++j) {
-      CPDF_Array* pKidLimits = pKids->GetDictAt(j)->GetArrayFor("Limits");
+      const CPDF_Array* pKidLimits = pKids->GetDictAt(j)->GetArrayFor("Limits");
       DCHECK(pKidLimits);
       if (pKidLimits->GetUnicodeTextAt(0).Compare(csNewLeft) < 0)
         csNewLeft = pKidLimits->GetUnicodeTextAt(0);
@@ -171,7 +172,7 @@ bool UpdateNodesAndLimitsUponDeletion(CPDF_Dictionary* pNode,
 // will be the index of |csName| in |ppFind|. If |csName| is not found, |ppFind|
 // will be the leaf array that |csName| should be added to, and |pFindIndex|
 // will be the index that it should be added at.
-CPDF_Object* SearchNameNodeByNameInternal(
+RetainPtr<CPDF_Object> SearchNameNodeByNameInternal(
     const RetainPtr<CPDF_Dictionary>& pNode,
     const WideString& csName,
     int nLevel,
@@ -218,7 +219,7 @@ CPDF_Object* SearchNameNodeByNameInternal(
         continue;
 
       *nIndex += i;
-      return pNames->GetDirectObjectAt(i * 2 + 1);
+      return pNames->GetMutableDirectObjectAt(i * 2 + 1);
     }
     *nIndex += dwCount;
     return nullptr;
@@ -234,7 +235,7 @@ CPDF_Object* SearchNameNodeByNameInternal(
     if (!pKid)
       continue;
 
-    CPDF_Object* pFound = SearchNameNodeByNameInternal(
+    RetainPtr<CPDF_Object> pFound = SearchNameNodeByNameInternal(
         pKid, csName, nLevel + 1, nIndex, ppFind, pFindIndex);
     if (pFound)
       return pFound;
@@ -244,10 +245,11 @@ CPDF_Object* SearchNameNodeByNameInternal(
 
 // Wrapper for SearchNameNodeByNameInternal() so callers do not need to know
 // about the details.
-CPDF_Object* SearchNameNodeByName(const RetainPtr<CPDF_Dictionary>& pNode,
-                                  const WideString& csName,
-                                  RetainPtr<CPDF_Array>* ppFind,
-                                  int* pFindIndex) {
+RetainPtr<CPDF_Object> SearchNameNodeByName(
+    const RetainPtr<CPDF_Dictionary>& pNode,
+    const WideString& csName,
+    RetainPtr<CPDF_Array>* ppFind,
+    int* pFindIndex) {
   size_t nIndex = 0;
   return SearchNameNodeByNameInternal(pNode, csName, 0, &nIndex, ppFind,
                                       pFindIndex);
@@ -256,7 +258,7 @@ CPDF_Object* SearchNameNodeByName(const RetainPtr<CPDF_Dictionary>& pNode,
 struct IndexSearchResult {
   // For the n-th object in a tree, the key and value.
   WideString key;
-  CPDF_Object* value;
+  RetainPtr<CPDF_Object> value;
   // The leaf node that holds `key` and `value`.
   CPDF_Array* container;
   // The index for `key` in `container`. Must be even.
@@ -283,13 +285,13 @@ absl::optional<IndexSearchResult> SearchNameNodeByIndexInternal(
     }
 
     size_t index = 2 * (nTargetPairIndex - *nCurPairIndex);
-    CPDF_Object* value = pNames->GetDirectObjectAt(index + 1);
+    RetainPtr<CPDF_Object> value = pNames->GetMutableDirectObjectAt(index + 1);
     if (!value)
       return absl::nullopt;
 
     IndexSearchResult result;
     result.key = pNames->GetUnicodeTextAt(index);
-    result.value = value;
+    result.value = std::move(value);
     result.container = pNames;
     result.index = index;
     return result;
@@ -300,11 +302,11 @@ absl::optional<IndexSearchResult> SearchNameNodeByIndexInternal(
     return absl::nullopt;
 
   for (size_t i = 0; i < pKids->size(); i++) {
-    CPDF_Dictionary* pKid = pKids->GetDictAt(i);
+    RetainPtr<CPDF_Dictionary> pKid = pKids->GetMutableDictAt(i);
     if (!pKid)
       continue;
     absl::optional<IndexSearchResult> result = SearchNameNodeByIndexInternal(
-        pKid, nTargetPairIndex, nLevel + 1, nCurPairIndex);
+        pKid.Get(), nTargetPairIndex, nLevel + 1, nCurPairIndex);
     if (result.has_value())
       return result;
   }
@@ -531,13 +533,15 @@ CPDF_Object* CPDF_NameTree::LookupValueAndName(size_t nIndex,
   }
 
   *csName = std::move(result.value().key);
-  return result.value().value;
+  return result.value().value.Get();
 }
 
-CPDF_Object* CPDF_NameTree::LookupValue(const WideString& csName) const {
+RetainPtr<CPDF_Object> CPDF_NameTree::LookupValue(
+    const WideString& csName) const {
   return SearchNameNodeByName(m_pRoot, csName, nullptr, nullptr);
 }
 
 CPDF_Array* CPDF_NameTree::LookupNewStyleNamedDest(const ByteString& sName) {
-  return GetNamedDestFromObject(LookupValue(PDF_DecodeText(sName.raw_span())));
+  return GetNamedDestFromObject(
+      LookupValue(PDF_DecodeText(sName.raw_span())).Get());
 }

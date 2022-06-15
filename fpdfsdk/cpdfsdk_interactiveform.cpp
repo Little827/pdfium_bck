@@ -85,7 +85,7 @@ bool FDFToURLEncodedData(
 
   fxcrt::ostringstream fdfEncodedData;
   for (uint32_t i = 0; i < pFields->size(); i++) {
-    CPDF_Dictionary* pField = pFields->GetDictAt(i);
+    const CPDF_Dictionary* pField = pFields->GetDictAt(i);
     if (!pField)
       continue;
     WideString name = pField->GetUnicodeTextFor("T");
@@ -190,7 +190,7 @@ int CPDFSDK_InteractiveForm::GetPageIndexByAnnotDict(
       continue;
 
     for (size_t j = 0, jsz = pAnnots->size(); j < jsz; j++) {
-      CPDF_Object* pDict = pAnnots->GetDirectObjectAt(j);
+      const CPDF_Object* pDict = pAnnots->GetDirectObjectAt(j);
       if (pAnnotDict == pDict)
         return i;
     }

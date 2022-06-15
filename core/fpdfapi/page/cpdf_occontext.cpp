@@ -34,8 +34,8 @@ bool HasIntent(const CPDF_Dictionary* pDict,
   return bsIntent == "All" || bsIntent == csElement;
 }
 
-CPDF_Dictionary* GetConfig(CPDF_Document* pDoc,
-                           const CPDF_Dictionary* pOCGDict) {
+const CPDF_Dictionary* GetConfig(CPDF_Document* pDoc,
+                                 const CPDF_Dictionary* pOCGDict) {
   DCHECK(pOCGDict);
   CPDF_Dictionary* pOCProperties = pDoc->GetRoot()->GetDictFor("OCProperties");
   if (!pOCProperties)
@@ -54,7 +54,7 @@ CPDF_Dictionary* GetConfig(CPDF_Document* pDoc,
     return pConfig;
 
   for (size_t i = 0; i < pConfigs->size(); i++) {
-    CPDF_Dictionary* pFind = pConfigs->GetDictAt(i);
+    const CPDF_Dictionary* pFind = pConfigs->GetDictAt(i);
     if (pFind && HasIntent(pFind, "View", ""))
       return pFind;
   }
@@ -92,12 +92,12 @@ CPDF_OCContext::~CPDF_OCContext() = default;
 bool CPDF_OCContext::LoadOCGStateFromConfig(
     const ByteString& csConfig,
     const CPDF_Dictionary* pOCGDict) const {
-  CPDF_Dictionary* pConfig = GetConfig(m_pDocument.Get(), pOCGDict);
+  const CPDF_Dictionary* pConfig = GetConfig(m_pDocument.Get(), pOCGDict);
   if (!pConfig)
     return true;
 
   bool bState = pConfig->GetStringFor("BaseState", "ON") != "OFF";
-  CPDF_Array* pArray = pConfig->GetArrayFor("ON");
+  const CPDF_Array* pArray = pConfig->GetArrayFor("ON");
   if (pArray && pArray->Contains(pOCGDict))
     bState = true;
 
@@ -111,21 +111,21 @@ bool CPDF_OCContext::LoadOCGStateFromConfig(
 
   ByteString csFind = csConfig + "State";
   for (size_t i = 0; i < pArray->size(); i++) {
-    CPDF_Dictionary* pUsage = pArray->GetDictAt(i);
+    const CPDF_Dictionary* pUsage = pArray->GetDictAt(i);
     if (!pUsage)
       continue;
 
     if (pUsage->GetStringFor("Event", "View") != csConfig)
       continue;
 
-    CPDF_Array* pOCGs = pUsage->GetArrayFor("OCGs");
+    const CPDF_Array* pOCGs = pUsage->GetArrayFor("OCGs");
     if (!pOCGs)
       continue;
 
     if (!pOCGs->Contains(pOCGDict))
       continue;
 
-    CPDF_Dictionary* pState = pUsage->GetDictFor(csConfig);
+    const CPDF_Dictionary* pState = pUsage->GetDictFor(csConfig);
     if (!pState)
       continue;
 
