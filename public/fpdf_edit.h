@@ -753,6 +753,7 @@ FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV FPDFPageObj_CreateNewRect(float x,
                                                                     float w,
                                                                     float h);
 
+// Experimental API.
 // Get the bounding box of |page_object|.
 //
 // page_object  - handle to a page object.
@@ -761,13 +762,28 @@ FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV FPDFPageObj_CreateNewRect(float x,
 // right        - pointer where the right coordinate will be stored
 // top          - pointer where the top coordinate will be stored
 //
-// Returns TRUE on success.
+// On success, returns TRUE and fills in the 4 coordinates.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObj_GetBounds(FPDF_PAGEOBJECT page_object,
                       float* left,
                       float* bottom,
                       float* right,
                       float* top);
+
+// Get the quad points that bounds |page_object|.
+//
+// page_object  - handle to a page object.
+// quad_points  - pointer where the quadrilateral points will be stored.
+//
+// On success, returns TRUE and fills in |quad_points|.
+//
+// Similar to FPDFPageObj_GetBounds(), this returns the bounds of a page
+// object. When the object is rotated by a non-multiple of 90 degrees, this API
+// returns a tighter bound that cannot be represented with just the 4 sides of
+// a rectangle.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_GetRotatedBounds(FPDF_PAGEOBJECT page_object,
+                             FS_QUADPOINTSF* quad_points);
 
 // Set the blend mode of |page_object|.
 //

@@ -45,6 +45,7 @@ const CPDF_ImageObject* CPDF_ImageObject::AsImage() const {
 
 void CPDF_ImageObject::CalcBoundingBox() {
   static constexpr CFX_FloatRect kRect(0.0f, 0.0f, 1.0f, 1.0f);
+  SetOriginalRect(kRect);
   SetRect(m_Matrix.TransformRect(kRect));
 }
 
