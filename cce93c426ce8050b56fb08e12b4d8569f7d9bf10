@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e0345e_0eb7f0d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-16T21:56:25Z",
+      "side": 1,
+      "message": "I noticed with AGG, its version of CFX_DefaultRenderDevice::Attach() gets called 5 times. The 4th call sets the knockout boolean to true. With Skia, all 5 calls to CFX_DefaultRenderDevice::Attach() have the knockout boolean set to false.\n\nIs it possible for Skia\u0027s CFX_DefaultRenderDevice::Attach() to get the correct knockout value in the first place? Then maybe the changes in this CL would become unnecessary.",
+      "revId": "cce93c426ce8050b56fb08e12b4d8569f7d9bf10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
