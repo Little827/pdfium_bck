@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfb8a3c_f9e25e2c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4194,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-17T18:04:52Z",
+      "side": 1,
+      "message": "2.4 rounds down to 2? ;-)",
+      "parentUuid": "db64eb20_23f10336",
+      "range": {
+        "startLine": 4194,
+        "startChar": 21,
+        "endLine": 4194,
+        "endChar": 30
+      },
+      "revId": "01980e4d6e4980e7466e7d8feafbac93aaaee4c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc0e6d68_d11fccdc",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ab7e3d7_8c6b82c3",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-17T18:04:52Z",
+      "side": 1,
+      "message": "The GetRenderedBitmapForTextWithBadParameters test case passes in std::numeric_limits\u003cfloat\u003e::max() and std::numeric_limits\u003cfloat\u003e::infinity(). They fail as expected, but I\u0027ll double check to see exactly what condition they fail on.",
+      "parentUuid": "fc0e6d68_d11fccdc",
+      "range": {
+        "startLine": 621,
+        "startChar": 22,
+        "endLine": 621,
+        "endChar": 28
+      },
+      "revId": "01980e4d6e4980e7466e7d8feafbac93aaaee4c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1b42e2a_d8a9cc93",
         "filename": "fpdfsdk/fpdf_edittext.cpp",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-17T15:41:39Z",
       "side": 1,
       "message": "seems odd that this handles null page, but no matter.",
+      "range": {
+        "startLine": 626,
+        "startChar": 13,
+        "endLine": 626,
+        "endChar": 33
+      },
+      "revId": "01980e4d6e4980e7466e7d8feafbac93aaaee4c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a17d464_42bbebe5",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-17T18:04:52Z",
+      "side": 1,
+      "message": "The alternative is to have RenderContextClearer not handle null pages, and instead allocate RenderContextClearer on the heap. But I remembered you did not like that idea either.",
+      "parentUuid": "e1b42e2a_d8a9cc93",
       "range": {
         "startLine": 626,
         "startChar": 13,
