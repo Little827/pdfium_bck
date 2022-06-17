@@ -95,6 +95,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e337e0e_3000f5bb",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-17T18:39:38Z",
+      "side": 1,
+      "message": "Added one more test scale to trigger this check failure.",
+      "parentUuid": "9ab7e3d7_8c6b82c3",
+      "range": {
+        "startLine": 621,
+        "startChar": 22,
+        "endLine": 621,
+        "endChar": 28
+      },
+      "revId": "01980e4d6e4980e7466e7d8feafbac93aaaee4c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1b42e2a_d8a9cc93",
