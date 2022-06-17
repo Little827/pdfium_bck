@@ -268,7 +268,7 @@ RetainPtr<CPDF_Dictionary> SetExtGStateInResourceDict(
 }
 
 CPDF_FormField* GetFormField(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
-  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  const CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return nullptr;
 
@@ -277,12 +277,12 @@ CPDF_FormField* GetFormField(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
     return nullptr;
 
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
-  return pPDFForm->GetFieldByDict(pAnnotDict);
+  return pPDFForm->GetMutableFieldByDict(pAnnotDict);
 }
 
 const CPDFSDK_Widget* GetRadioButtonOrCheckBoxWidget(FPDF_FORMHANDLE hHandle,
                                                      FPDF_ANNOTATION annot) {
-  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  const CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return nullptr;
 
@@ -291,7 +291,7 @@ const CPDFSDK_Widget* GetRadioButtonOrCheckBoxWidget(FPDF_FORMHANDLE hHandle,
     return nullptr;
 
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
-  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  CPDF_FormField* pFormField = pPDFForm->GetMutableFieldByDict(pAnnotDict);
   if (!pFormField || (pFormField->GetType() != CPDF_FormField::kCheckBox &&
                       pFormField->GetType() != CPDF_FormField::kRadioButton)) {
     return nullptr;
@@ -432,7 +432,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_RemoveAnnot(FPDF_PAGE page,
 
 FPDF_EXPORT FPDF_ANNOTATION_SUBTYPE FPDF_CALLCONV
 FPDFAnnot_GetSubtype(FPDF_ANNOTATION annot) {
-  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  const CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return FPDF_ANNOT_UNKNOWN;
 
@@ -489,7 +489,6 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_AddInkStroke(FPDF_ANNOTATION annot,
   }
 
   CPDF_Dictionary* annot_dict = GetAnnotDictFromFPDFAnnotation(annot);
-
   CPDF_Array* inklist = GetOrCreateArray(annot_dict, "InkList");
   FX_SAFE_SIZE_T safe_ink_size = inklist->size();
   safe_ink_size += 1;
@@ -1108,7 +1107,7 @@ FPDFAnnot_GetAP(FPDF_ANNOTATION annot,
   CPDF_Annot::AppearanceMode mode =
       static_cast<CPDF_Annot::AppearanceMode>(appearanceMode);
 
-  CPDF_Stream* pStream = GetAnnotAPNoFallback(pAnnotDict, mode);
+  const CPDF_Stream* pStream = GetAnnotAPNoFallback(pAnnotDict, mode);
   return Utf16EncodeMaybeCopyAndReturnLength(
       pStream ? pStream->GetUnicodeText() : WideString(), buffer, buflen);
 }
@@ -1259,7 +1258,7 @@ FPDFAnnot_GetFontSize(FPDF_FORMHANDLE hHandle,
   if (!pForm)
     return false;
 
-  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  const CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -1360,7 +1359,7 @@ FPDFAnnot_GetFormControlCount(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
 
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFAnnot_GetFormControlIndex(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
-  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  const CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return -1;
 
@@ -1369,7 +1368,7 @@ FPDFAnnot_GetFormControlIndex(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
     return -1;
 
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
-  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  CPDF_FormField* pFormField = pPDFForm->GetMutableFieldByDict(pAnnotDict);
   CPDF_FormControl* pFormControl = pPDFForm->GetControlByDict(pAnnotDict);
   return pFormField ? pFormField->GetControlIndex(pFormControl) : -1;
 }

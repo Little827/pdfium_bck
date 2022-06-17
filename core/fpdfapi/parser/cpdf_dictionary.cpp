@@ -304,7 +304,7 @@ bool CPDF_Dictionary::WriteTo(IFX_ArchiveStream* archive,
   CPDF_DictionaryLocker locker(this);
   for (const auto& it : locker) {
     const ByteString& key = it.first;
-    CPDF_Object* pValue = it.second.Get();
+    const CPDF_Object* pValue = it.second.Get();
     if (!archive->WriteString("/") ||
         !archive->WriteString(PDF_NameEncode(key).AsStringView())) {
       return false;

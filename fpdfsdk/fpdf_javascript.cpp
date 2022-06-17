@@ -39,7 +39,7 @@ FPDFDoc_GetJavaScriptAction(FPDF_DOCUMENT document, int index) {
     return nullptr;
 
   WideString name;
-  CPDF_Dictionary* obj =
+  const CPDF_Dictionary* obj =
       ToDictionary(name_tree->LookupValueAndName(index, &name));
   if (!obj)
     return nullptr;
