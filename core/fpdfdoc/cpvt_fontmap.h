@@ -21,7 +21,7 @@ class CPDF_Font;
 class CPVT_FontMap final : public IPVT_FontMap {
  public:
   CPVT_FontMap(CPDF_Document* pDoc,
-               CPDF_Dictionary* pResDict,
+               CPDF_Dictionary* pResDict,  // mutable
                const RetainPtr<CPDF_Font>& pDefFont,
                const ByteString& sDefFontAlias);
   ~CPVT_FontMap() override;
@@ -39,7 +39,7 @@ class CPVT_FontMap final : public IPVT_FontMap {
   void SetupAnnotSysPDFFont();
 
   UnownedPtr<CPDF_Document> const m_pDocument;
-  RetainPtr<CPDF_Dictionary> const m_pResDict;
+  RetainPtr<CPDF_Dictionary> const m_pResDict;  // mutable
   RetainPtr<CPDF_Font> const m_pDefFont;
   RetainPtr<CPDF_Font> m_pSysFont;
   const ByteString m_sDefFontAlias;

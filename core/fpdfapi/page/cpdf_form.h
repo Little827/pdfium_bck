@@ -25,17 +25,18 @@ class CPDF_Form final : public CPDF_PageObjectHolder,
                         public CPDF_Font::FormIface {
  public:
   // Helper method to choose the first non-null resources dictionary.
-  static CPDF_Dictionary* ChooseResourcesDict(CPDF_Dictionary* pResources,
-                                              CPDF_Dictionary* pParentResources,
-                                              CPDF_Dictionary* pPageResources);
+  static CPDF_Dictionary* ChooseResourcesDict(
+      CPDF_Dictionary* pResources,
+      CPDF_Dictionary* pParentResources,
+      CPDF_Dictionary* pPageResources);  // mutable
 
   CPDF_Form(CPDF_Document* pDocument,
             CPDF_Dictionary* pPageResources,
             CPDF_Stream* pFormStream);
   CPDF_Form(CPDF_Document* pDocument,
-            CPDF_Dictionary* pPageResources,
-            CPDF_Stream* pFormStream,
-            CPDF_Dictionary* pParentResources);
+            CPDF_Dictionary* pPageResources,     // mutable
+            CPDF_Stream* pFormStream,            // mutable.
+            CPDF_Dictionary* pParentResources);  // mutable
   ~CPDF_Form() override;
 
   // CPDF_Font::FormIface:
@@ -59,7 +60,7 @@ class CPDF_Form final : public CPDF_PageObjectHolder,
                             std::set<const uint8_t*>* pParsedSet);
 
   std::set<const uint8_t*> m_ParsedSet;
-  RetainPtr<CPDF_Stream> const m_pFormStream;
+  RetainPtr<const CPDF_Stream> const m_pFormStream;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_FORM_H_

@@ -61,7 +61,7 @@ bool GetBoundingBox(const CPDF_Page* page,
   return true;
 }
 
-CPDF_Object* GetPageContent(CPDF_Dictionary* pPageDict) {
+CPDF_Object* GetPageContent(CPDF_Dictionary* pPageDict) {  // mutable.
   return pPageDict->GetDirectObjectFor(pdfium::page_object::kContents);
 }
 
@@ -255,12 +255,12 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
   }
 
   // Need to transform the patterns as well.
-  CPDF_Dictionary* pRes =
+  const CPDF_Dictionary* pRes =
       pPageDict->GetDictFor(pdfium::page_object::kResources);
   if (!pRes)
     return true;
 
-  CPDF_Dictionary* pPatternDict = pRes->GetDictFor("Pattern");
+  const CPDF_Dictionary* pPatternDict = pRes->GetDictFor("Pattern");
   if (!pPatternDict)
     return true;
 

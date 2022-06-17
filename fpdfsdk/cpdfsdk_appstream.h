@@ -18,7 +18,7 @@ class CPDF_Stream;
 
 class CPDFSDK_AppStream {
  public:
-  CPDFSDK_AppStream(CPDFSDK_Widget* widget, CPDF_Dictionary* dict);
+  CPDFSDK_AppStream(CPDFSDK_Widget* widget, CPDF_Dictionary* dict);  // Mutable
   ~CPDFSDK_AppStream();
 
   void SetAsPushButton();
@@ -39,7 +39,7 @@ class CPDFSDK_AppStream {
   ByteString GetBorderAppStream() const;
 
   UnownedPtr<CPDFSDK_Widget> const widget_;
-  RetainPtr<CPDF_Dictionary> const dict_;
+  RetainPtr<CPDF_Dictionary> const dict_;  // Mutable
 };
 
 #endif  // FPDFSDK_CPDFSDK_APPSTREAM_H_

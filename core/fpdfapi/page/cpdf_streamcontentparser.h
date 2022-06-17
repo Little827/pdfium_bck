@@ -42,11 +42,11 @@ class CPDF_TextObject;
 class CPDF_StreamContentParser {
  public:
   CPDF_StreamContentParser(CPDF_Document* pDoc,
-                           CPDF_Dictionary* pPageResources,
-                           CPDF_Dictionary* pParentResources,
+                           CPDF_Dictionary* pPageResources,    // mutable
+                           CPDF_Dictionary* pParentResources,  // mutable
                            const CFX_Matrix* pmtContentToUser,
                            CPDF_PageObjectHolder* pObjHolder,
-                           CPDF_Dictionary* pResources,
+                           CPDF_Dictionary* pResources,  // mutable
                            const CFX_FloatRect& rcBBox,
                            const CPDF_AllStates* pStates,
                            std::set<const uint8_t*>* pParsedSet);
@@ -133,8 +133,9 @@ class CPDF_StreamContentParser {
   RetainPtr<CPDF_ColorSpace> FindColorSpace(const ByteString& name);
   RetainPtr<CPDF_Pattern> FindPattern(const ByteString& name);
   RetainPtr<CPDF_ShadingPattern> FindShading(const ByteString& name);
-  CPDF_Dictionary* FindResourceHolder(const ByteString& type);
-  CPDF_Object* FindResourceObj(const ByteString& type, const ByteString& name);
+  CPDF_Dictionary* FindResourceHolder(const ByteString& type);  // mutable
+  CPDF_Object* FindResourceObj(const ByteString& type,
+                               const ByteString& name);  // mutable
 
   // Takes ownership of |pImageObj|, returns unowned pointer to it.
   CPDF_ImageObject* AddImageObject(std::unique_ptr<CPDF_ImageObject> pImageObj);
@@ -217,9 +218,9 @@ class CPDF_StreamContentParser {
   void Handle_Invalid();
 
   UnownedPtr<CPDF_Document> const m_pDocument;
-  RetainPtr<CPDF_Dictionary> const m_pPageResources;
-  RetainPtr<CPDF_Dictionary> const m_pParentResources;
-  RetainPtr<CPDF_Dictionary> const m_pResources;
+  RetainPtr<CPDF_Dictionary> const m_pPageResources;    // mutable
+  RetainPtr<CPDF_Dictionary> const m_pParentResources;  // mutable
+  RetainPtr<CPDF_Dictionary> const m_pResources;        // mutable
   UnownedPtr<CPDF_PageObjectHolder> const m_pObjectHolder;
   UnownedPtr<std::set<const uint8_t*>> const m_ParsedSet;
   CFX_Matrix m_mtContentToUser;

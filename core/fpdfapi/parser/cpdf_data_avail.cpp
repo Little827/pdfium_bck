@@ -35,17 +35,16 @@
 
 namespace {
 
-// static
-CPDF_Object* GetResourceObject(CPDF_Dictionary* pDict) {
+const CPDF_Object* GetResourceObject(const CPDF_Dictionary* pDict) {
   constexpr size_t kMaxHierarchyDepth = 64;
   size_t depth = 0;
 
-  CPDF_Dictionary* dictionary_to_check = pDict;
+  const CPDF_Dictionary* dictionary_to_check = pDict;
   while (dictionary_to_check) {
-    CPDF_Object* result = dictionary_to_check->GetObjectFor("Resources");
+    const CPDF_Object* result = dictionary_to_check->GetObjectFor("Resources");
     if (result)
       return result;
-    CPDF_Object* parent = dictionary_to_check->GetObjectFor("Parent");
+    const CPDF_Object* parent = dictionary_to_check->GetObjectFor("Parent");
     dictionary_to_check = parent ? parent->GetDict() : nullptr;
 
     if (++depth > kMaxHierarchyDepth) {
@@ -586,7 +585,7 @@ bool CPDF_DataAvail::CheckUnknownPageNode(uint32_t dwPageNo,
   }
 
   pPageNode->m_dwPageNo = dwPageNo;
-  CPDF_Dictionary* pDict = pPage->GetDict();
+  const CPDF_Dictionary* pDict = pPage->GetDict();
   const ByteString type = pDict->GetNameFor("Type");
   if (type == "Page") {
     pPageNode->m_type = PageNode::Type::kPage;
@@ -599,7 +598,7 @@ bool CPDF_DataAvail::CheckUnknownPageNode(uint32_t dwPageNo,
   }
 
   pPageNode->m_type = PageNode::Type::kPages;
-  CPDF_Object* pKids = pDict->GetObjectFor("Kids");
+  const CPDF_Object* pKids = pDict->GetObjectFor("Kids");
   if (!pKids) {
     m_internalStatus = InternalStatus::kPage;
     return true;
@@ -607,16 +606,16 @@ bool CPDF_DataAvail::CheckUnknownPageNode(uint32_t dwPageNo,
 
   switch (pKids->GetType()) {
     case CPDF_Object::kReference: {
-      CPDF_Reference* pKid = pKids->AsReference();
+      const CPDF_Reference* pKid = pKids->AsReference();
       auto pNode = std::make_unique<PageNode>();
       pNode->m_dwPageNo = pKid->GetRefObjNum();
       pPageNode->m_ChildNodes.push_back(std::move(pNode));
       break;
     }
     case CPDF_Object::kArray: {
-      CPDF_Array* pKidsArray = pKids->AsArray();
+      const CPDF_Array* pKidsArray = pKids->AsArray();
       for (size_t i = 0; i < pKidsArray->size(); ++i) {
-        CPDF_Reference* pKid = ToReference(pKidsArray->GetObjectAt(i));
+        const CPDF_Reference* pKid = ToReference(pKidsArray->GetObjectAt(i));
         if (!pKid)
           continue;
 
@@ -708,7 +707,7 @@ bool CPDF_DataAvail::CheckPageCount() {
   if (!pPages)
     return false;
 
-  CPDF_Dictionary* pPagesDict = pPages->GetDict();
+  const CPDF_Dictionary* pPagesDict = pPages->GetDict();
   if (!pPagesDict) {
     m_internalStatus = InternalStatus::kError;
     return false;
@@ -888,10 +887,10 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
 }
 
 CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::CheckResources(
-    CPDF_Dictionary* page) {
+    const CPDF_Dictionary* page) {
   DCHECK(page);
   CPDF_ReadValidator::ScopedSession read_session(GetValidator());
-  CPDF_Object* resources = GetResourceObject(page);
+  const CPDF_Object* resources = GetResourceObject(page);
   if (GetValidator()->has_read_problems())
     return kDataNotAvailable;
 
@@ -922,10 +921,10 @@ int CPDF_DataAvail::GetPageCount() const {
   return m_pDocument ? m_pDocument->GetPageCount() : 0;
 }
 
-CPDF_Dictionary* CPDF_DataAvail::GetPageDictionary(int index) const {
+const CPDF_Dictionary* CPDF_DataAvail::GetPageDictionary(int index) const {
   if (!m_pDocument || index < 0 || index >= GetPageCount())
     return nullptr;
-  CPDF_Dictionary* page = m_pDocument->GetPageDictionary(index);
+  const CPDF_Dictionary* page = m_pDocument->GetPageDictionary(index);
   if (page)
     return page;
   if (!m_pLinearized || !m_pHintTables)
@@ -972,11 +971,11 @@ CPDF_DataAvail::DocFormStatus CPDF_DataAvail::CheckAcroForm() {
   }
 
   if (!m_pFormAvail) {
-    CPDF_Dictionary* pRoot = m_pDocument->GetRoot();
+    const CPDF_Dictionary* pRoot = m_pDocument->GetRoot();
     if (!pRoot)
       return kFormAvailable;
 
-    CPDF_Object* pAcroForm = pRoot->GetObjectFor("AcroForm");
+    const CPDF_Object* pAcroForm = pRoot->GetObjectFor("AcroForm");
     if (!pAcroForm)
       return kFormNotExist;
 

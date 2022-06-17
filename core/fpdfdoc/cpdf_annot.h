@@ -110,7 +110,7 @@ class CPDF_Annot {
 
   RetainPtr<CPDF_Dictionary> const m_pAnnotDict;
   UnownedPtr<CPDF_Document> const m_pDocument;
-  std::map<CPDF_Stream*, std::unique_ptr<CPDF_Form>> m_APMap;
+  std::map<const CPDF_Stream*, std::unique_ptr<CPDF_Form>> m_APMap;
   // If non-null, then this is not a popup annotation.
   UnownedPtr<CPDF_Annot> m_pPopupAnnot;
   const Subtype m_nSubtype;
@@ -123,12 +123,12 @@ class CPDF_Annot {
 // Get the AP in an annotation dict for a given appearance mode.
 // If |eMode| is not Normal and there is not AP for that mode, falls back to
 // the Normal AP.
-CPDF_Stream* GetAnnotAP(CPDF_Dictionary* pAnnotDict,
-                        CPDF_Annot::AppearanceMode eMode);
+CPDF_Stream* GetAnnotAP(CPDF_Dictionary* pAnnotDict,        // mutable
+                        CPDF_Annot::AppearanceMode eMode);  // mutable
 
 // Get the AP in an annotation dict for a given appearance mode.
 // No fallbacks to Normal like in GetAnnotAP.
-CPDF_Stream* GetAnnotAPNoFallback(CPDF_Dictionary* pAnnotDict,
-                                  CPDF_Annot::AppearanceMode eMode);
+CPDF_Stream* GetAnnotAPNoFallback(CPDF_Dictionary* pAnnotDict,        // mutable
+                                  CPDF_Annot::AppearanceMode eMode);  // mutable
 
 #endif  // CORE_FPDFDOC_CPDF_ANNOT_H_

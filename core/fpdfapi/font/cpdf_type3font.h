@@ -44,7 +44,7 @@ class CPDF_Type3Font final : public CPDF_SimpleFont {
 
  private:
   CPDF_Type3Font(CPDF_Document* pDocument,
-                 CPDF_Dictionary* pFontDict,
+                 CPDF_Dictionary* pFontDict,  // mutable
                  FormFactoryIface* pFormFactory);
 
   // CPDF_Font:
@@ -57,9 +57,9 @@ class CPDF_Type3Font final : public CPDF_SimpleFont {
   int m_CharLoadingDepth = 0;
   CFX_Matrix m_FontMatrix;
   UnownedPtr<FormFactoryIface> const m_pFormFactory;
-  RetainPtr<CPDF_Dictionary> m_pCharProcs;
+  RetainPtr<CPDF_Dictionary> m_pCharProcs;  // mutable
   RetainPtr<CPDF_Dictionary> m_pPageResources;
-  RetainPtr<CPDF_Dictionary> m_pFontResources;
+  RetainPtr<CPDF_Dictionary> m_pFontResources;  // mutable
   std::map<uint32_t, std::unique_ptr<CPDF_Type3Char>> m_CacheMap;
   int m_CharWidthL[256] = {};
 };

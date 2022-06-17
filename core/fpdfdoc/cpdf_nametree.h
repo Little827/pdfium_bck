@@ -38,8 +38,8 @@ class CPDF_NameTree {
   static std::unique_ptr<CPDF_NameTree> CreateForTesting(
       CPDF_Dictionary* pRoot);
 
-  static CPDF_Array* LookupNamedDest(CPDF_Document* doc,
-                                     const ByteString& name);
+  static const CPDF_Array* LookupNamedDest(CPDF_Document* doc,
+                                           const ByteString& name);
 
   bool AddValueAndName(RetainPtr<CPDF_Object> pObj, const WideString& name);
   bool DeleteValueAndName(size_t nIndex);
@@ -48,14 +48,14 @@ class CPDF_NameTree {
   CPDF_Object* LookupValue(const WideString& csName) const;
 
   size_t GetCount() const;
-  CPDF_Dictionary* GetRootForTesting() const { return m_pRoot.Get(); }
+  const CPDF_Dictionary* GetRootForTesting() const { return m_pRoot.Get(); }
 
  private:
-  explicit CPDF_NameTree(CPDF_Dictionary* pRoot);
+  explicit CPDF_NameTree(CPDF_Dictionary* pRoot);  // mutable
 
-  CPDF_Array* LookupNewStyleNamedDest(const ByteString& name);
+  const CPDF_Array* LookupNewStyleNamedDest(const ByteString& name);
 
-  const RetainPtr<CPDF_Dictionary> m_pRoot;
+  const RetainPtr<CPDF_Dictionary> m_pRoot;  // mutable
 };
 
 #endif  // CORE_FPDFDOC_CPDF_NAMETREE_H_

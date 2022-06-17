@@ -77,7 +77,7 @@ void CPDF_Image::ConvertStreamToIndirectObject() {
   m_pDocument->AddIndirectObject(m_pStream);
 }
 
-CPDF_Dictionary* CPDF_Image::GetDict() const {
+const CPDF_Dictionary* CPDF_Image::GetDict() const {
   return m_pStream ? m_pStream->GetDict() : nullptr;
 }
 

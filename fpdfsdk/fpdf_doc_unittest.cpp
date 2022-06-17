@@ -28,7 +28,7 @@ class PDFDocTest : public TestWithPageModule {
  public:
   struct DictObjInfo {
     uint32_t num;
-    CPDF_Dictionary* obj;
+    CPDF_Dictionary* obj;  // Mutable
   };
 
   void SetUp() override {
@@ -50,7 +50,6 @@ class PDFDocTest : public TestWithPageModule {
   std::vector<DictObjInfo> CreateDictObjs(int num) {
     std::vector<DictObjInfo> info;
     for (int i = 0; i < num; ++i) {
-      // Objects created will be released by the document.
       CPDF_Dictionary* obj = m_pIndirectObjs->NewIndirect<CPDF_Dictionary>();
       info.push_back({obj->GetObjNum(), obj});
     }

@@ -169,7 +169,7 @@ class CPDF_RenderStatus {
   RetainPtr<CFX_DIBitmap> GetBackdrop(const CPDF_PageObject* pObj,
                                       const FX_RECT& rect,
                                       bool bBackAlphaRequired);
-  RetainPtr<CFX_DIBitmap> LoadSMask(CPDF_Dictionary* pSMaskDict,
+  RetainPtr<CFX_DIBitmap> LoadSMask(CPDF_Dictionary* pSMaskDict,  // mutable
                                     FX_RECT* pClipRect,
                                     const CFX_Matrix& mtMatrix);
   // Optionally write the colorspace family value into |pCSFamily|.

@@ -587,7 +587,7 @@ void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
 
   if (pProperty->IsName()) {
     ByteString property_name = pProperty->GetString();
-    CPDF_Dictionary* pHolder = FindResourceHolder("Properties");
+    const CPDF_Dictionary* pHolder = FindResourceHolder("Properties");
     if (!pHolder || !pHolder->GetDictFor(property_name))
       return;
     new_marks->AddMarkWithPropertiesHolder(tag, pHolder, property_name);
@@ -624,7 +624,7 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
     }
   }
   ReplaceAbbr(pDict.Get());
-  CPDF_Object* pCSObj = nullptr;
+  const CPDF_Object* pCSObj = nullptr;
   if (pDict->KeyExist("ColorSpace")) {
     pCSObj = pDict->GetDirectObjectFor("ColorSpace");
     if (pCSObj->IsName()) {
@@ -887,7 +887,7 @@ void CPDF_StreamContentParser::Handle_SetGray_Stroke() {
 
 void CPDF_StreamContentParser::Handle_SetExtendGraphState() {
   ByteString name = GetString(0);
-  CPDF_Dictionary* pGS = ToDictionary(FindResourceObj("ExtGState", name));
+  const CPDF_Dictionary* pGS = ToDictionary(FindResourceObj("ExtGState", name));
   if (!pGS)
     return;
 

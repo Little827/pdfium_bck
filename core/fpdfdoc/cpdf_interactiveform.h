@@ -58,7 +58,10 @@ class CPDF_InteractiveForm {
 
   size_t CountFields(const WideString& csFieldName) const;
   CPDF_FormField* GetField(size_t index, const WideString& csFieldName) const;
-  CPDF_FormField* GetFieldByDict(CPDF_Dictionary* pFieldDict) const;
+  CPDF_FormField* GetMutableFieldByDict(const CPDF_Dictionary* pFieldDict) {
+    return const_cast<CPDF_FormField*>(GetFieldByDict(pFieldDict));
+  }
+  const CPDF_FormField* GetFieldByDict(const CPDF_Dictionary* pFieldDict) const;
 
   const CPDF_FormControl* GetControlAtPoint(const CPDF_Page* pPage,
                                             const CFX_PointF& point,
@@ -91,22 +94,23 @@ class CPDF_InteractiveForm {
 
   NotifierIface* GetFormNotify() const { return m_pFormNotify.Get(); }
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  CPDF_Dictionary* GetFormDict() const { return m_pFormDict.Get(); }
+  CPDF_Dictionary* GetFormDict() { return m_pFormDict.Get(); }
+  const CPDF_Dictionary* GetFormDict() const { return m_pFormDict.Get(); }
 
   const std::vector<UnownedPtr<CPDF_FormControl>>& GetControlsForField(
       const CPDF_FormField* pField);
 
  private:
-  void LoadField(CPDF_Dictionary* pFieldDict, int nLevel);
-  void AddTerminalField(CPDF_Dictionary* pFieldDict);
+  void LoadField(CPDF_Dictionary* pFieldDict, int nLevel);  // mutable
+  void AddTerminalField(CPDF_Dictionary* pFieldDict);       // mutable
   CPDF_FormControl* AddControl(CPDF_FormField* pField,
-                               CPDF_Dictionary* pWidgetDict);
+                               CPDF_Dictionary* pWidgetDict);  // mutable
 
   static bool s_bUpdateAP;
 
   ByteString m_bsEncoding;
   UnownedPtr<CPDF_Document> const m_pDocument;
-  RetainPtr<CPDF_Dictionary> m_pFormDict;
+  RetainPtr<CPDF_Dictionary> m_pFormDict;  // mutable.
   std::unique_ptr<CFieldTree> m_pFieldTree;
   std::map<const CPDF_Dictionary*, std::unique_ptr<CPDF_FormControl>>
       m_ControlMap;

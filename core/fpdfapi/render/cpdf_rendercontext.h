@@ -43,7 +43,7 @@ class CPDF_RenderContext {
   };
 
   CPDF_RenderContext(CPDF_Document* pDoc,
-                     CPDF_Dictionary* pPageResources,
+                     CPDF_Dictionary* pPageResources,  // mutable
                      CPDF_PageRenderCache* pPageCache);
   ~CPDF_RenderContext();
 
@@ -64,12 +64,12 @@ class CPDF_RenderContext {
   Layer* GetLayer(uint32_t index) { return &m_Layers[index]; }
 
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  CPDF_Dictionary* GetPageResources() const { return m_pPageResources.Get(); }
+  CPDF_Dictionary* GetPageResources() { return m_pPageResources.Get(); }
   CPDF_PageRenderCache* GetPageCache() const { return m_pPageCache.Get(); }
 
  protected:
   UnownedPtr<CPDF_Document> const m_pDocument;
-  RetainPtr<CPDF_Dictionary> const m_pPageResources;
+  RetainPtr<CPDF_Dictionary> const m_pPageResources;  // mutable.
   UnownedPtr<CPDF_PageRenderCache> const m_pPageCache;
   std::vector<Layer> m_Layers;
 };

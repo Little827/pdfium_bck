@@ -317,7 +317,7 @@ RetainPtr<CPDF_Font> LoadSimpleFont(CPDF_Document* pDoc,
                                     static_cast<int>(dwCurrentChar));
   pFontDict->SetNewFor<CPDF_Reference>("Widths", pDoc,
                                        widthsArray->GetObjNum());
-  CPDF_Dictionary* pFontDesc =
+  const CPDF_Dictionary* pFontDesc =
       LoadFontDesc(pDoc, name, pFont.get(), span, font_type);
 
   pFontDict->SetNewFor<CPDF_Reference>("FontDescriptor", pDoc,
@@ -355,7 +355,7 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
   pCIDFont->SetNewFor<CPDF_Reference>("CIDSystemInfo", pDoc,
                                       pCIDSystemInfo->GetObjNum());
 
-  CPDF_Dictionary* pFontDesc =
+  const CPDF_Dictionary* pFontDesc =
       LoadFontDesc(pDoc, name, pFont.get(), span, font_type);
   pCIDFont->SetNewFor<CPDF_Reference>("FontDescriptor", pDoc,
                                       pFontDesc->GetObjNum());

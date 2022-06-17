@@ -98,10 +98,14 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
   void UpdateDimensions();
 
  private:
-  CPDF_Page(CPDF_Document* pDocument, CPDF_Dictionary* pPageDict);
+  CPDF_Page(CPDF_Document* pDocument, CPDF_Dictionary* pPageDict);  // mutable.
   ~CPDF_Page() override;
 
-  CPDF_Object* GetPageAttr(const ByteString& name) const;
+  const CPDF_Object* GetPageAttr(const ByteString& name) const;
+  CPDF_Object* GetMutablePageAttr(const ByteString& name) {
+    return const_cast<CPDF_Object*>(GetPageAttr(name));
+  }
+
   CFX_FloatRect GetBox(const ByteString& name) const;
 
   CFX_SizeF m_PageSize;

@@ -35,12 +35,13 @@ class CPDF_FormControl {
  public:
   enum HighlightingMode { kNone = 0, kInvert, kOutline, kPush, kToggle };
 
-  CPDF_FormControl(CPDF_FormField* pField, CPDF_Dictionary* pWidgetDict);
+  CPDF_FormControl(CPDF_FormField* pField,
+                   CPDF_Dictionary* pWidgetDict);  // mutable
   ~CPDF_FormControl();
 
   CPDF_FormField::Type GetType() const { return m_pField->GetType(); }
   CPDF_FormField* GetField() const { return m_pField.Get(); }
-  CPDF_Dictionary* GetWidget() const { return m_pWidgetDict.Get(); }
+  const CPDF_Dictionary* GetWidget() const { return m_pWidgetDict.Get(); }
   CFX_FloatRect GetRect() const;
 
   ByteString GetCheckedAPState() const;
@@ -97,7 +98,7 @@ class CPDF_FormControl {
   CPDF_ApSettings GetMK() const;
 
   UnownedPtr<CPDF_FormField> const m_pField;
-  RetainPtr<CPDF_Dictionary> const m_pWidgetDict;
+  RetainPtr<CPDF_Dictionary> const m_pWidgetDict;  // mutable
   UnownedPtr<const CPDF_InteractiveForm> const m_pForm;
 };
 

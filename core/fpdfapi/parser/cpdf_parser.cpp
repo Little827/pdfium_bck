@@ -269,7 +269,7 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal() {
       return eRet;
   }
   if (m_pSecurityHandler && !m_pSecurityHandler->IsMetadataEncrypted()) {
-    CPDF_Reference* pMetadata =
+    const CPDF_Reference* pMetadata =
         ToReference(GetRoot()->GetObjectFor("Metadata"));
     if (pMetadata)
       m_MetadataObjnum = pMetadata->GetRefObjNum();
@@ -852,7 +852,7 @@ const CPDF_Array* CPDF_Parser::GetIDArray() const {
   return GetTrailer() ? GetTrailer()->GetArrayFor("ID") : nullptr;
 }
 
-CPDF_Dictionary* CPDF_Parser::GetRoot() const {
+const CPDF_Dictionary* CPDF_Parser::GetRoot() const {
   CPDF_Object* obj =
       m_pObjectsHolder->GetOrParseIndirectObject(GetRootObjNum());
   return obj ? obj->GetDict() : nullptr;
@@ -1086,7 +1086,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   }
 
   if (m_pSecurityHandler && m_pSecurityHandler->IsMetadataEncrypted()) {
-    if (CPDF_Reference* pMetadata =
+    if (const CPDF_Reference* pMetadata =
             ToReference(GetRoot()->GetObjectFor("Metadata")))
       m_MetadataObjnum = pMetadata->GetRefObjNum();
   }

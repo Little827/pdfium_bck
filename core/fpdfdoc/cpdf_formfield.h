@@ -70,7 +70,8 @@ class CPDF_FormField {
     kSign
   };
 
-  CPDF_FormField(CPDF_InteractiveForm* pForm, CPDF_Dictionary* pDict);
+  CPDF_FormField(CPDF_InteractiveForm* pForm,
+                 CPDF_Dictionary* pDict);  // mutable.
   ~CPDF_FormField();
 
   static absl::optional<FormFieldType> IntToFormFieldType(int value);
@@ -80,12 +81,12 @@ class CPDF_FormField {
   static CPDF_Object* GetFieldAttr(CPDF_Dictionary* pFieldDict,
                                    const ByteString& name);
 
-  static WideString GetFullNameForDict(CPDF_Dictionary* pFieldDict);
+  static WideString GetFullNameForDict(const CPDF_Dictionary* pFieldDict);
 
   WideString GetFullName() const;
   Type GetType() const { return m_Type; }
 
-  CPDF_Dictionary* GetFieldDict() const { return m_pDict.Get(); }
+  const CPDF_Dictionary* GetFieldDict() const { return m_pDict.Get(); }
   bool ResetField();
 
   int CountControls() const;
@@ -143,7 +144,7 @@ class CPDF_FormField {
   float GetFontSize() const { return m_FontSize; }
   CPDF_Font* GetFont() const { return m_pFont.Get(); }
 
-  CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
+  const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
   CPDF_InteractiveForm* GetForm() const { return m_pForm.Get(); }
 
   WideString GetCheckValue(bool bDefault) const;
@@ -190,7 +191,7 @@ class CPDF_FormField {
   bool m_bUseSelectedIndices = false;
   float m_FontSize = 0;
   UnownedPtr<CPDF_InteractiveForm> const m_pForm;
-  RetainPtr<CPDF_Dictionary> const m_pDict;
+  RetainPtr<CPDF_Dictionary> const m_pDict;  // mutable.
   RetainPtr<CPDF_Font> m_pFont;
 };
 

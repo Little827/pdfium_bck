@@ -56,9 +56,9 @@ class CPDF_PageObjectHolder {
       std::deque<std::unique_ptr<CPDF_PageObject>>::const_iterator;
 
   CPDF_PageObjectHolder(CPDF_Document* pDoc,
-                        CPDF_Dictionary* pDict,
-                        CPDF_Dictionary* pPageResources,
-                        CPDF_Dictionary* pResources);
+                        CPDF_Dictionary* pDict,           // mutable.
+                        CPDF_Dictionary* pPageResources,  // mutable
+                        CPDF_Dictionary* pResources);     // mutable
   virtual ~CPDF_PageObjectHolder();
 
   virtual bool IsPage() const;
@@ -68,10 +68,13 @@ class CPDF_PageObjectHolder {
   ParseState GetParseState() const { return m_ParseState; }
 
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
+  CPDF_Dictionary* GetDict() { return m_pDict.Get(); }
+  const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
   CPDF_Dictionary* GetResources() const { return m_pResources.Get(); }
   void SetResources(CPDF_Dictionary* pDict) { m_pResources.Reset(pDict); }
-  CPDF_Dictionary* GetPageResources() const { return m_pPageResources.Get(); }
+  CPDF_Dictionary* GetPageResources() {
+    return m_pPageResources.Get();
+  }  // mutable
   size_t GetPageObjectCount() const { return m_PageObjectList.size(); }
   CPDF_PageObject* GetPageObjectByIndex(size_t index) const;
   void AppendPageObject(std::unique_ptr<CPDF_PageObject> pPageObj);
@@ -110,8 +113,8 @@ class CPDF_PageObjectHolder {
  protected:
   void LoadTransparencyInfo();
 
-  RetainPtr<CPDF_Dictionary> m_pPageResources;
-  RetainPtr<CPDF_Dictionary> m_pResources;
+  RetainPtr<CPDF_Dictionary> m_pPageResources;  // Mutable
+  RetainPtr<CPDF_Dictionary> m_pResources;      // Mutable
   std::map<GraphicsData, ByteString> m_GraphicsMap;
   std::map<FontData, ByteString> m_FontsMap;
   CFX_FloatRect m_BBox;
@@ -120,7 +123,7 @@ class CPDF_PageObjectHolder {
  private:
   bool m_bBackgroundAlphaNeeded = false;
   ParseState m_ParseState = ParseState::kNotParsed;
-  RetainPtr<CPDF_Dictionary> const m_pDict;
+  RetainPtr<CPDF_Dictionary> const m_pDict;  // mutable.
   UnownedPtr<CPDF_Document> m_pDocument;
   std::vector<CFX_FloatRect> m_MaskBoundingBoxes;
   std::unique_ptr<CPDF_ContentParser> m_pParser;

@@ -182,7 +182,7 @@ const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
   return nullptr;
 }
 
-bool CopyInheritable(CPDF_Dictionary* pDestPageDict,
+bool CopyInheritable(CPDF_Dictionary* pDestPageDict,  // mutable.
                      const CPDF_Dictionary* pSrcPageDict,
                      const ByteString& key) {
   if (pDestPageDict->KeyExist(key))
@@ -250,7 +250,7 @@ bool CPDF_PageOrganizer::Init() {
   DCHECK(m_pDestDoc);
   DCHECK(m_pSrcDoc);
 
-  CPDF_Dictionary* pNewRoot = dest()->GetRoot();
+  CPDF_Dictionary* pNewRoot = dest()->GetMutableRoot();
   if (!pNewRoot)
     return false;
 
@@ -832,7 +832,7 @@ FPDF_CopyViewerPreferences(FPDF_DOCUMENT dest_doc, FPDF_DOCUMENT src_doc) {
   if (!pSrcDict)
     return false;
 
-  CPDF_Dictionary* pDstDict = pDstDoc->GetRoot();
+  CPDF_Dictionary* pDstDict = pDstDoc->GetMutableRoot();
   if (!pDstDict)
     return false;
 

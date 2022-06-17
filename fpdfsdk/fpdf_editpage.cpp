@@ -110,8 +110,9 @@ CPDF_Dictionary* GetMarkParamDict(FPDF_PAGEOBJECTMARK mark) {
   return pMarkItem ? pMarkItem->GetParam() : nullptr;
 }
 
-CPDF_Dictionary* GetOrCreateMarkParamsDict(FPDF_DOCUMENT document,
-                                           FPDF_PAGEOBJECTMARK mark) {
+CPDF_Dictionary* GetOrCreateMarkParamsDict(
+    FPDF_DOCUMENT document,
+    FPDF_PAGEOBJECTMARK mark) {  // mutable
   CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   if (!pDoc)
     return nullptr;

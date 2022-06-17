@@ -47,14 +47,14 @@ class CPDF_DocPageData final : public CPDF_Document::PageDataIface,
   // CPDF_Font::FormFactoryIFace:
   std::unique_ptr<CPDF_Font::FormIface> CreateForm(
       CPDF_Document* pDocument,
-      CPDF_Dictionary* pPageResources,
-      CPDF_Stream* pFormStream) override;
+      CPDF_Dictionary* pPageResources,     // mutable
+      CPDF_Stream* pFormStream) override;  // mutable
 
   bool IsForceClear() const { return m_bForceClear; }
 
   RetainPtr<CPDF_Font> AddFont(std::unique_ptr<CFX_Font> pFont,
                                FX_Charset charset);
-  RetainPtr<CPDF_Font> GetFont(CPDF_Dictionary* pFontDict);
+  RetainPtr<CPDF_Font> GetFont(CPDF_Dictionary* pFontDict);  // mutable
   RetainPtr<CPDF_Font> AddStandardFont(const ByteString& fontName,
                                        const CPDF_FontEncoding* pEncoding);
   RetainPtr<CPDF_Font> GetStandardFont(const ByteString& fontName,
@@ -97,12 +97,13 @@ class CPDF_DocPageData final : public CPDF_Document::PageDataIface,
       std::set<const CPDF_Object*>* pVisited,
       std::set<const CPDF_Object*>* pVisitedInternal);
 
-  size_t CalculateEncodingDict(FX_Charset charset, CPDF_Dictionary* pBaseDict);
+  size_t CalculateEncodingDict(FX_Charset charset,
+                               CPDF_Dictionary* pBaseDict);  // mutable.
   CPDF_Dictionary* ProcessbCJK(
-      CPDF_Dictionary* pBaseDict,
+      CPDF_Dictionary* pBaseDict,  // mutable
       FX_Charset charset,
       ByteString basefont,
-      std::function<void(wchar_t, wchar_t, CPDF_Array*)> Insert);
+      std::function<void(wchar_t, wchar_t, CPDF_Array*)> Insert);  // mutable
 
   bool m_bForceClear = false;
 

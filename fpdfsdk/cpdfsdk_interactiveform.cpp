@@ -75,17 +75,17 @@ bool FDFToURLEncodedData(
   if (!pFDF)
     return true;
 
-  CPDF_Dictionary* pMainDict = pFDF->GetRoot()->GetDictFor("FDF");
+  const CPDF_Dictionary* pMainDict = pFDF->GetRoot()->GetDictFor("FDF");
   if (!pMainDict)
     return false;
 
-  CPDF_Array* pFields = pMainDict->GetArrayFor("Fields");
+  const CPDF_Array* pFields = pMainDict->GetArrayFor("Fields");
   if (!pFields)
     return false;
 
   fxcrt::ostringstream fdfEncodedData;
   for (uint32_t i = 0; i < pFields->size(); i++) {
-    CPDF_Dictionary* pField = pFields->GetDictAt(i);
+    const CPDF_Dictionary* pField = pFields->GetDictAt(i);
     if (!pField)
       continue;
     WideString name = pField->GetUnicodeTextFor("T");
@@ -133,11 +133,11 @@ CPDFSDK_Widget* CPDFSDK_InteractiveForm::GetWidget(
   if (pWidget)
     return pWidget;
 
-  CPDF_Dictionary* pControlDict = pControl->GetWidget();
+  const CPDF_Dictionary* pControlDict = pControl->GetWidget();
   CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
   CPDFSDK_PageView* pPage = nullptr;
 
-  if (CPDF_Dictionary* pPageDict = pControlDict->GetDictFor("P")) {
+  if (const CPDF_Dictionary* pPageDict = pControlDict->GetDictFor("P")) {
     int nPageIndex = pDocument->GetPageIndex(pPageDict->GetObjNum());
     if (nPageIndex >= 0)
       pPage = m_pFormFillEnv->GetPageViewAtIndex(nPageIndex);
@@ -177,20 +177,20 @@ void CPDFSDK_InteractiveForm::GetWidgets(
 
 int CPDFSDK_InteractiveForm::GetPageIndexByAnnotDict(
     CPDF_Document* pDocument,
-    CPDF_Dictionary* pAnnotDict) const {
+    const CPDF_Dictionary* pAnnotDict) const {
   DCHECK(pAnnotDict);
 
   for (int i = 0, sz = pDocument->GetPageCount(); i < sz; i++) {
-    CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(i);
+    const CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(i);
     if (!pPageDict)
       continue;
 
-    CPDF_Array* pAnnots = pPageDict->GetArrayFor("Annots");
+    const CPDF_Array* pAnnots = pPageDict->GetArrayFor("Annots");
     if (!pAnnots)
       continue;
 
     for (size_t j = 0, jsz = pAnnots->size(); j < jsz; j++) {
-      CPDF_Object* pDict = pAnnots->GetDirectObjectAt(j);
+      const CPDF_Object* pDict = pAnnots->GetDirectObjectAt(j);
       if (pAnnotDict == pDict)
         return i;
     }

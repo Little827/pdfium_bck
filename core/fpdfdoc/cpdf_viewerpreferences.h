@@ -25,14 +25,14 @@ class CPDF_ViewerPreferences {
   bool IsDirectionR2L() const;
   bool PrintScaling() const;
   int32_t NumCopies() const;
-  CPDF_Array* PrintPageRange() const;
+  CPDF_Array* PrintPageRange() const;  // mutable
   ByteString Duplex() const;
 
   // Gets the entry for |bsKey|.
   absl::optional<ByteString> GenericName(const ByteString& bsKey) const;
 
  private:
-  CPDF_Dictionary* GetViewerPreferences() const;
+  CPDF_Dictionary* GetViewerPreferences() const;  // Mutable
 
   UnownedPtr<const CPDF_Document> const m_pDoc;
 };

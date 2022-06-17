@@ -28,7 +28,7 @@ CPDF_Page::CPDF_Page(CPDF_Document* pDocument, CPDF_Dictionary* pPageDict)
   // Cannot initialize |m_pResources| and |m_pPageResources| via the
   // CPDF_PageObjectHolder ctor because GetPageAttr() requires
   // CPDF_PageObjectHolder to finish initializing first.
-  CPDF_Object* pPageAttr = GetPageAttr(pdfium::page_object::kResources);
+  CPDF_Object* pPageAttr = GetMutablePageAttr(pdfium::page_object::kResources);
   m_pResources.Reset(pPageAttr ? pPageAttr->GetDict() : nullptr);
   m_pPageResources = m_pResources;
 
@@ -74,12 +74,13 @@ void CPDF_Page::ParseContent() {
   ContinueParse(nullptr);
 }
 
-CPDF_Object* CPDF_Page::GetPageAttr(const ByteString& name) const {
-  CPDF_Dictionary* pPageDict = GetDict();
-  std::set<CPDF_Dictionary*> visited;
+const CPDF_Object* CPDF_Page::GetPageAttr(const ByteString& name) const {
+  const CPDF_Dictionary* pPageDict = GetDict();
+  std::set<const CPDF_Dictionary*> visited;
   while (true) {
     visited.insert(pPageDict);
-    if (CPDF_Object* pObj = pPageDict->GetDirectObjectFor(name))
+    const CPDF_Object* pObj = pPageDict->GetDirectObjectFor(name);
+    if (pObj)
       return pObj;
 
     pPageDict = pPageDict->GetDictFor(pdfium::page_object::kParent);
@@ -91,7 +92,7 @@ CPDF_Object* CPDF_Page::GetPageAttr(const ByteString& name) const {
 
 CFX_FloatRect CPDF_Page::GetBox(const ByteString& name) const {
   CFX_FloatRect box;
-  CPDF_Array* pBox = ToArray(GetPageAttr(name));
+  const CPDF_Array* pBox = ToArray(GetPageAttr(name));
   if (pBox) {
     box = pBox->GetRect();
     box.Normalize();
@@ -173,7 +174,7 @@ CFX_Matrix CPDF_Page::GetDisplayMatrix(const FX_RECT& rect, int iRotate) const {
 }
 
 int CPDF_Page::GetPageRotation() const {
-  CPDF_Object* pRotate = GetPageAttr(pdfium::page_object::kRotate);
+  const CPDF_Object* pRotate = GetPageAttr(pdfium::page_object::kRotate);
   int rotate = pRotate ? (pRotate->GetInteger() / 90) % 4 : 0;
   return (rotate < 0) ? (rotate + 4) : rotate;
 }

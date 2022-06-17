@@ -157,7 +157,7 @@ void GenerateAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   if (pAnnotDict->KeyExist(pdfium::annotation::kAS))
     return;
 
-  CPDF_Dictionary* pParentDict =
+  const CPDF_Dictionary* pParentDict =
       pAnnotDict->GetDictFor(pdfium::form_fields::kParent);
   if (!pParentDict || !pParentDict->KeyExist(pdfium::annotation::kAS))
     return;

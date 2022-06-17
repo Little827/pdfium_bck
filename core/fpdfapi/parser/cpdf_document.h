@@ -89,14 +89,15 @@ class CPDF_Document : public Observable,
   }
 
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
-  CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
+  CPDF_Dictionary* GetMutableRoot() { return m_pRootDict.Get(); }
+  const CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
   CPDF_Dictionary* GetInfo();
   const CPDF_Array* GetFileIdentifier() const;
 
   void DeletePage(int iPage);
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
-  CPDF_Dictionary* GetPageDictionary(int iPage);
+  CPDF_Dictionary* GetPageDictionary(int iPage);  // Mutable
   int GetPageIndex(uint32_t objnum);
   uint32_t GetUserPermissions() const;
 
@@ -160,16 +161,18 @@ class CPDF_Document : public Observable,
   // Retrieve page count information by getting count value from the tree nodes
   int RetrievePageCount();
   // When this method is called, m_pTreeTraversal[level] exists.
-  CPDF_Dictionary* TraversePDFPages(int iPage, int* nPagesToGo, size_t level);
+  CPDF_Dictionary* TraversePDFPages(int iPage,
+                                    int* nPagesToGo,
+                                    size_t level);  // mutable.
 
   const CPDF_Dictionary* GetPagesDict() const;
   CPDF_Dictionary* GetPagesDict();
 
-  bool InsertDeletePDFPage(CPDF_Dictionary* pPages,
+  bool InsertDeletePDFPage(CPDF_Dictionary* pPages,  // mutable
                            int nPagesToGo,
-                           CPDF_Dictionary* pPageDict,
+                           CPDF_Dictionary* pPageDict,  // mutable.
                            bool bInsert,
-                           std::set<CPDF_Dictionary*>* pVisited);
+                           std::set<const CPDF_Dictionary*>* pVisited);
   bool InsertNewPage(int iPage, CPDF_Dictionary* pPageDict);
   void ResetTraversal();
   CPDF_Parser::Error HandleLoadResult(CPDF_Parser::Error error);
