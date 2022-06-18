@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6b85c160_de3b552d",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-18T01:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49f9ba65_c7b6264e",
+      "revId": "8422716b6ff67c33d47e91be995cf0f69ba42de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "18db869e_0b3cee16",
         "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-18T00:49:42Z",
       "side": 1,
       "message": "Optional: Use ScopedFPDFPage to avoid calling UnloadPage().",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 309,
+        "endChar": 19
+      },
+      "revId": "8422716b6ff67c33d47e91be995cf0f69ba42de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbb9076_50d8bd08",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-18T01:11:40Z",
+      "side": 1,
+      "message": "ScopedFPDFPage calls FPDFPageDeleter(), which is not UnloadPage().",
+      "parentUuid": "18db869e_0b3cee16",
       "range": {
         "startLine": 309,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "723b6a75_efa8d05f",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-18T01:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ab0cdca_752e09b4",
+      "range": {
+        "startLine": 362,
+        "startChar": 18,
+        "endLine": 362,
+        "endChar": 26
+      },
+      "revId": "8422716b6ff67c33d47e91be995cf0f69ba42de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa6ab6e7_0ce2a582",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-06-18T00:49:42Z",
       "side": 1,
       "message": "The comments in this file are still using \"||\" instead of \"``\".",
+      "range": {
+        "startLine": 785,
+        "startChar": 38,
+        "endLine": 785,
+        "endChar": 51
+      },
+      "revId": "8422716b6ff67c33d47e91be995cf0f69ba42de8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34020963_abb3f84e",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-18T01:11:40Z",
+      "side": 1,
+      "message": "Whoops. Done.",
+      "parentUuid": "fa6ab6e7_0ce2a582",
       "range": {
         "startLine": 785,
         "startChar": 38,
