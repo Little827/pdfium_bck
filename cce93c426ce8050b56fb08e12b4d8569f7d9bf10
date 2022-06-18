@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6c0f4b3_52eb36a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-18T00:50:22Z",
+      "side": 1,
+      "message": "Both AGG and SkiaPaths calls CFX_DefaultRenderDevice::Attach() 6 times and they are in the workflow of ProcessPage():\n 1. FPDFBitmap_FillRect() -\u003e Attach\n\n 2-5 happens within FPDF_RenderPageBitmapWithColorScheme_Start(). More specifically, 3 and 4 happens within one DrawPatternBitmap() call.\n\n  2. Attach\n  3. DrawPatternBitmap -\u003e Attach\n  4. DrawPatternBitmap -\u003e CPDF_RenderStatus::RenderSingleObject -\u003e Attach (This is the \"Attach\" that Skia is missing and sets groupknockout to true.)\n  5. CPDF_RenderStatus::ContinueSingleObject-\u003e DrawPatternBitmap -\u003e Attach\n\n 6. FPDF_FFLDraw()-\u003eFFLCommon()-\u003e Attach\n \nIf we want to set knockout value to true and apply it for tiles rendering, the exact place will be #3. I applied such change in the new patchset.",
+      "parentUuid": "43e0345e_0eb7f0d6",
+      "revId": "cce93c426ce8050b56fb08e12b4d8569f7d9bf10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2dd04fa4_1f7d4074",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 6
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-16T22:26:27Z",
       "side": 1,
       "message": "Oh, I see AGG goes through this path, but Skia does not.",
+      "revId": "cce93c426ce8050b56fb08e12b4d8569f7d9bf10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070a5f49_865c2ac8",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-18T00:50:22Z",
+      "side": 1,
+      "message": "Yes, according to the comment of this function, we will eventually get rid of DrawFillStrokePath() and rely on DrawPath() once we completely switch to Skia.",
+      "parentUuid": "2dd04fa4_1f7d4074",
       "revId": "cce93c426ce8050b56fb08e12b4d8569f7d9bf10",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-16T22:26:27Z",
       "side": 1,
       "message": "With this CL as is, make this pure virtual and don\u0027t bother providing a default impl in renderdevicedriver_iface.cpp.",
+      "revId": "cce93c426ce8050b56fb08e12b4d8569f7d9bf10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8521129f_71da9e73",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-18T00:50:22Z",
+      "side": 1,
+      "message": "With the new patch, the change in this file is no longer needed.",
+      "parentUuid": "736a06bf_fae54b63",
       "revId": "cce93c426ce8050b56fb08e12b4d8569f7d9bf10",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

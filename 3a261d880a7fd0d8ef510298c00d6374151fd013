@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bd7f22_0eeafd31",
+        "filename": "core/fpdfapi/render/cpdf_rendertiling.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-18T00:50:22Z",
+      "side": 1,
+      "message": "Since `bGroupKnockout` affects `pBackdropBitmap` only and `pBackdropBitmap` is nullptr here, this change does not affect any AGG rendering results.",
+      "range": {
+        "startLine": 41,
+        "startChar": 23,
+        "endLine": 41,
+        "endChar": 75
+      },
+      "revId": "3a261d880a7fd0d8ef510298c00d6374151fd013",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
