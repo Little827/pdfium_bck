@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1663b1_3f379f54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-21T19:03:03Z",
+      "side": 1,
+      "message": "Loops with if ... break as the last statement bug me.",
+      "revId": "c8e104d67c3a8d57b5c7523af7891ca59e4631d3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
