@@ -291,7 +291,7 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
     }
   }
 
-  CPDF_Stream* pStream = ToStream(pObject);
+  const CPDF_Stream* pStream = ToStream(pObject);
   if (!pStream)
     return nullptr;
 

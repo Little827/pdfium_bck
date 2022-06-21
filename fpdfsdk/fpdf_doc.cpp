@@ -401,7 +401,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetAnnotRect(FPDF_LINK link_annot,
   if (!link_annot || !rect)
     return false;
 
-  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFLink(link_annot);
+  const CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFLink(link_annot);
   *rect = FSRectFFromCFXFloatRect(pAnnotDict->GetRectFor("Rect"));
   return true;
 }
@@ -437,7 +437,7 @@ FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV FPDF_GetPageAAction(FPDF_PAGE page,
   if (!pdf_page)
     return nullptr;
 
-  CPDF_Dictionary* page_dict = pdf_page->GetDict();
+  const CPDF_Dictionary* page_dict = pdf_page->GetDict();
   CPDF_AAction aa(page_dict->GetDictFor(pdfium::form_fields::kAA));
 
   CPDF_AAction::AActionType type;

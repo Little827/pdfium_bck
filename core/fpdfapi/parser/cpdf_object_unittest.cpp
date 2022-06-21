@@ -33,7 +33,7 @@ void TestArrayAccessors(const CPDF_Array* arr,
                         int int_val,
                         float float_val,
                         CPDF_Array* arr_val,
-                        CPDF_Dictionary* dict_val,
+                        const CPDF_Dictionary* dict_val,
                         CPDF_Stream* stream_val) {
   EXPECT_STREQ(str_val, arr->GetStringAt(index).c_str());
   EXPECT_EQ(int_val, arr->GetIntegerAt(index));
@@ -942,7 +942,7 @@ TEST(PDFObjectTest, CloneCheckLoop) {
     // Cloned object should be the same as the original.
     ASSERT_TRUE(cloned_array);
     EXPECT_EQ(1u, cloned_array->size());
-    CPDF_Object* cloned_dict = cloned_array->GetObjectAt(0);
+    const CPDF_Object* cloned_dict = cloned_array->GetObjectAt(0);
     ASSERT_TRUE(cloned_dict);
     ASSERT_TRUE(cloned_dict->IsDictionary());
     // Recursively referenced object is not cloned.

@@ -66,7 +66,7 @@ void GetContentsRect(CPDF_Document* pDoc,
   }
 }
 
-void ParserStream(CPDF_Dictionary* pPageDic,
+void ParserStream(const CPDF_Dictionary* pPageDic,
                   CPDF_Dictionary* pStream,
                   std::vector<CFX_FloatRect>* pRectArray,
                   std::vector<CPDF_Dictionary*>* pObjectArray) {
@@ -93,7 +93,7 @@ int ParserAnnots(CPDF_Document* pSourceDoc,
     return FLATTEN_FAIL;
 
   GetContentsRect(pSourceDoc, pPageDic, pRectArray);
-  CPDF_Array* pAnnots = pPageDic->GetArrayFor("Annots");
+  const CPDF_Array* pAnnots = pPageDic->GetArrayFor("Annots");
   if (!pAnnots)
     return FLATTEN_NOTHINGTODO;
 
@@ -366,7 +366,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
     if (!pAPStream)
       continue;
 
-    CPDF_Dictionary* pAPDict = pAPStream->GetDict();
+    const CPDF_Dictionary* pAPDict = pAPStream->GetDict();
     CFX_FloatRect rcStream;
     if (pAPDict->KeyExist("Rect"))
       rcStream = pAPDict->GetRectFor("Rect");

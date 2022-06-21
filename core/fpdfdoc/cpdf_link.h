@@ -21,7 +21,8 @@ class CPDF_Link {
   CPDF_Link(const CPDF_Link& that);
   ~CPDF_Link();
 
-  CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
+  CPDF_Dictionary* GetDict() { return m_pDict.Get(); }
+  const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
   CFX_FloatRect GetRect();
   CPDF_Dest GetDest(CPDF_Document* pDoc);
   CPDF_Action GetAction();

@@ -100,7 +100,8 @@ class CPDF_Font : public Retainable, public Observable {
   ByteString GetBaseFontName() const { return m_BaseFontName; }
   CFX_SubstFont* GetSubstFont() const { return m_Font.GetSubstFont(); }
   bool IsEmbedded() const { return IsType3Font() || m_pFontFile != nullptr; }
-  CPDF_Dictionary* GetFontDict() const { return m_pFontDict.Get(); }
+  CPDF_Dictionary* GetFontDict() { return m_pFontDict.Get(); }
+  const CPDF_Dictionary* GetFontDict() const { return m_pFontDict.Get(); }
   void ClearFontDict() { m_pFontDict = nullptr; }
   bool IsStandardFont() const;
   bool HasFace() const { return !!m_Font.GetFaceRec(); }
