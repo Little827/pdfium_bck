@@ -16,6 +16,29 @@
       "message": "+tsepez@ for an extra pair of eyes.",
       "revId": "06708849066c8340d3f1aaa747a2259b81b2ff68",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c931f959_38ba71f5",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-21T16:28:55Z",
+      "side": 1,
+      "message": "follow-up: looking at CPDF_TextObject::GetTextMatrix(), it transforms a vector of 4 floats into a matrix.  Maybe we should store matrix directly in the text object.",
+      "range": {
+        "startLine": 798,
+        "startChar": 39,
+        "endLine": 798,
+        "endChar": 52
+      },
+      "revId": "06708849066c8340d3f1aaa747a2259b81b2ff68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
