@@ -39,6 +39,30 @@
       },
       "revId": "06708849066c8340d3f1aaa747a2259b81b2ff68",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574a3203_04d6ed8f",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-21T21:32:00Z",
+      "side": 1,
+      "message": "Creating the matrix on the fly is cheap, and the method won\u0027t have to worry if the text state changes.",
+      "parentUuid": "c931f959_38ba71f5",
+      "range": {
+        "startLine": 798,
+        "startChar": 39,
+        "endLine": 798,
+        "endChar": 52
+      },
+      "revId": "06708849066c8340d3f1aaa747a2259b81b2ff68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
