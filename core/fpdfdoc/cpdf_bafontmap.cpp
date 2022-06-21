@@ -231,7 +231,7 @@ RetainPtr<CPDF_Font> CPDF_BAFontMap::GetAnnotDefaultFont(ByteString* sAlias) {
   const bool bWidget =
       (m_pAnnotDict->GetNameFor(pdfium::annotation::kSubtype) == "Widget");
   if (bWidget) {
-    CPDF_Dictionary* pRootDict = m_pDocument->GetRoot();
+    CPDF_Dictionary* pRootDict = m_pDocument->GetMutableRoot();
     if (pRootDict)
       pAcroFormDict = pRootDict->GetDictFor("AcroForm");
   }
@@ -313,7 +313,7 @@ void CPDF_BAFontMap::AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
                                               pStreamResFontList->GetObjNum());
   }
   if (!pStreamResFontList->KeyExist(sAlias)) {
-    CPDF_Dictionary* pFontDict = pFont->GetFontDict();
+    const CPDF_Dictionary* pFontDict = pFont->GetFontDict();
     RetainPtr<CPDF_Object> pObject =
         pFontDict->IsInline() ? pFontDict->Clone()
                               : pFontDict->MakeReference(m_pDocument.Get());

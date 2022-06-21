@@ -29,7 +29,7 @@ CPDF_IndirectObjectHolder::~CPDF_IndirectObjectHolder() {
   m_pByteStringPool.DeleteObject();  // Make weak.
 }
 
-CPDF_Object* CPDF_IndirectObjectHolder::GetIndirectObject(
+const CPDF_Object* CPDF_IndirectObjectHolder::GetIndirectObject(
     uint32_t objnum) const {
   auto it = m_IndirectObjs.find(objnum);
   return (it != m_IndirectObjs.end()) ? FilterInvalidObjNum(it->second.Get())

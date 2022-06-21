@@ -157,9 +157,9 @@ TEST(ArrayTest, Clone) {
       EXPECT_NE(arr_elem, arr1_elem);
       EXPECT_NE(arr_elem, arr2_elem);
       for (size_t j = 0; j < kNumOfRowElems; ++j) {
-        auto* elem_obj = arr_elem->GetObjectAt(j);
-        auto* elem_obj1 = arr1_elem->GetObjectAt(j);
-        auto* elem_obj2 = arr2_elem->GetObjectAt(j);
+        const auto* elem_obj = arr_elem->GetObjectAt(j);
+        const auto* elem_obj1 = arr1_elem->GetObjectAt(j);
+        const auto* elem_obj2 = arr2_elem->GetObjectAt(j);
         // Results from not deferencing reference objects.
         EXPECT_NE(elem_obj, elem_obj1);
         EXPECT_TRUE(elem_obj1->IsReference());

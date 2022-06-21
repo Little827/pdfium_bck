@@ -26,7 +26,10 @@ class CPDF_IndirectObjectHolder {
   CPDF_IndirectObjectHolder();
   virtual ~CPDF_IndirectObjectHolder();
 
-  CPDF_Object* GetIndirectObject(uint32_t objnum) const;
+  CPDF_Object* GetMutableIndirectObject(uint32_t objnum) {
+    return const_cast<CPDF_Object*>(GetIndirectObject(objnum));
+  }
+  const CPDF_Object* GetIndirectObject(uint32_t objnum) const;
   virtual CPDF_Object* GetOrParseIndirectObject(uint32_t objnum);
   void DeleteIndirectObject(uint32_t objnum);
 

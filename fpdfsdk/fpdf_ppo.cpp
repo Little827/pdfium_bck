@@ -250,7 +250,7 @@ bool CPDF_PageOrganizer::Init() {
   DCHECK(m_pDestDoc);
   DCHECK(m_pSrcDoc);
 
-  CPDF_Dictionary* pNewRoot = dest()->GetRoot();
+  CPDF_Dictionary* pNewRoot = dest()->GetMutableRoot();
   if (!pNewRoot)
     return false;
 
@@ -343,7 +343,7 @@ uint32_t CPDF_PageOrganizer::GetNewObjId(CPDF_Reference* pRef) {
   if (dwNewObjNum)
     return dwNewObjNum;
 
-  CPDF_Object* pDirect = pRef->GetDirect();
+  const CPDF_Object* pDirect = pRef->GetDirect();
   if (!pDirect)
     return 0;
 
@@ -406,7 +406,7 @@ bool CPDF_PageExporter::ExportPage(pdfium::span<const uint32_t> pageIndices,
         continue;
       }
 
-      CPDF_Object* pObj = it.second.Get();
+      const CPDF_Object* pObj = it.second.Get();
       pDestPageDict->SetFor(cbSrcKeyStr, pObj->Clone());
     }
 
@@ -832,7 +832,7 @@ FPDF_CopyViewerPreferences(FPDF_DOCUMENT dest_doc, FPDF_DOCUMENT src_doc) {
   if (!pSrcDict)
     return false;
 
-  CPDF_Dictionary* pDstDict = pDstDoc->GetRoot();
+  CPDF_Dictionary* pDstDict = pDstDoc->GetMutableRoot();
   if (!pDstDict)
     return false;
 

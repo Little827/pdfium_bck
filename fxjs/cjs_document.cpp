@@ -701,7 +701,7 @@ CJS_Result CJS_Document::get_info(CJS_Runtime* pRuntime) {
   CPDF_DictionaryLocker locker(ToDictionary(pCopy.Get()));
   for (const auto& it : locker) {
     const ByteString& bsKey = it.first;
-    CPDF_Object* pValueObj = it.second.Get();
+    const CPDF_Object* pValueObj = it.second.Get();
     if (pValueObj->IsString() || pValueObj->IsName()) {
       pRuntime->PutObjectProperty(
           pObj, bsKey.AsStringView(),
@@ -728,7 +728,8 @@ CJS_Result CJS_Document::getPropertyInternal(CJS_Runtime* pRuntime,
   if (!m_pFormFillEnv)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  CPDF_Dictionary* pDictionary = m_pFormFillEnv->GetPDFDocument()->GetInfo();
+  const CPDF_Dictionary* pDictionary =
+      m_pFormFillEnv->GetPDFDocument()->GetInfo();
   if (!pDictionary)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
   return CJS_Result::Success(pRuntime->NewString(
@@ -1381,7 +1382,7 @@ CJS_Result CJS_Document::gotoNamedDest(
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
-  CPDF_Array* dest_array = CPDF_NameTree::LookupNamedDest(
+  const CPDF_Array* dest_array = CPDF_NameTree::LookupNamedDest(
       pDocument, pRuntime->ToByteString(params[0]));
   if (!dest_array)
     return CJS_Result::Failure(JSMessage::kBadObjectError);

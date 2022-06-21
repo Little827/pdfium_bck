@@ -54,6 +54,6 @@ absl::optional<ByteString> CPDF_ViewerPreferences::GenericName(
 }
 
 CPDF_Dictionary* CPDF_ViewerPreferences::GetViewerPreferences() const {
-  CPDF_Dictionary* pDict = m_pDoc->GetRoot();
+  CPDF_Dictionary* pDict = const_cast<CPDF_Dictionary*>(m_pDoc->GetRoot());
   return pDict ? pDict->GetDictFor("ViewerPreferences") : nullptr;
 }
