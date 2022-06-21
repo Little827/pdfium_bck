@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d4312e8_f7fb7ec9",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-21T15:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0126f81f_2757a372",
+      "revId": "7523ab9f9b02132b4fc5942565e7346a0a8c9aea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49cb26db_16793762",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-16T00:53:58Z",
       "side": 1,
       "message": "curly braces",
+      "revId": "7523ab9f9b02132b4fc5942565e7346a0a8c9aea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5df7d29_ef6e72cc",
+        "filename": "core/fpdfdoc/cpdf_nametree.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-21T15:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49cb26db_16793762",
       "revId": "7523ab9f9b02132b4fc5942565e7346a0a8c9aea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
