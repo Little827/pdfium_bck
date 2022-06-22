@@ -647,11 +647,11 @@ void CPDFSDK_FormFillEnvironment::ProcJavascriptAction() {
 }
 
 bool CPDFSDK_FormFillEnvironment::ProcOpenAction() {
-  CPDF_Dictionary* pRoot = m_pCPDFDoc->GetRoot();
+  const CPDF_Dictionary* pRoot = m_pCPDFDoc->GetRoot();
   if (!pRoot)
     return false;
 
-  CPDF_Object* pOpenAction = pRoot->GetDictFor("OpenAction");
+  const CPDF_Object* pOpenAction = pRoot->GetDictFor("OpenAction");
   if (!pOpenAction)
     pOpenAction = pRoot->GetArrayFor("OpenAction");
   if (!pOpenAction)
@@ -660,7 +660,7 @@ bool CPDFSDK_FormFillEnvironment::ProcOpenAction() {
   if (pOpenAction->IsArray())
     return true;
 
-  CPDF_Dictionary* pDict = pOpenAction->AsDictionary();
+  const CPDF_Dictionary* pDict = pOpenAction->AsDictionary();
   if (!pDict)
     return false;
 
@@ -969,7 +969,8 @@ bool CPDFSDK_FormFillEnvironment::ExecuteDocumentPageAction(
   return true;
 }
 
-bool CPDFSDK_FormFillEnvironment::IsValidField(CPDF_Dictionary* pFieldDict) {
+bool CPDFSDK_FormFillEnvironment::IsValidField(
+    const CPDF_Dictionary* pFieldDict) {
   DCHECK(pFieldDict);
 
   CPDFSDK_InteractiveForm* pForm = GetInteractiveForm();

@@ -89,7 +89,8 @@ class CPDF_Document : public Observable,
   }
 
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
-  CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
+  CPDF_Dictionary* GetMutableRoot() { return m_pRootDict.Get(); }
+  const CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
   CPDF_Dictionary* GetInfo();
   const CPDF_Array* GetFileIdentifier() const;
 
@@ -169,7 +170,7 @@ class CPDF_Document : public Observable,
                            int nPagesToGo,
                            CPDF_Dictionary* pPageDict,
                            bool bInsert,
-                           std::set<CPDF_Dictionary*>* pVisited);
+                           std::set<const CPDF_Dictionary*>* pVisited);
   bool InsertNewPage(int iPage, CPDF_Dictionary* pPageDict);
   void ResetTraversal();
   CPDF_Parser::Error HandleLoadResult(CPDF_Parser::Error error);

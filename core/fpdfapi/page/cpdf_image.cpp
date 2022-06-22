@@ -54,7 +54,7 @@ CPDF_Image::CPDF_Image(CPDF_Document* pDoc, RetainPtr<CPDF_Stream> pStream)
 
 CPDF_Image::CPDF_Image(CPDF_Document* pDoc, uint32_t dwStreamObjNum)
     : m_pDocument(pDoc),
-      m_pStream(ToStream(pDoc->GetIndirectObject(dwStreamObjNum))) {
+      m_pStream(ToStream(pDoc->GetMutableIndirectObject(dwStreamObjNum))) {
   DCHECK(m_pDocument);
   FinishInitialization(m_pStream->GetDict());
 }
@@ -77,7 +77,7 @@ void CPDF_Image::ConvertStreamToIndirectObject() {
   m_pDocument->AddIndirectObject(m_pStream);
 }
 
-CPDF_Dictionary* CPDF_Image::GetDict() const {
+const CPDF_Dictionary* CPDF_Image::GetDict() const {
   return m_pStream ? m_pStream->GetDict() : nullptr;
 }
 
@@ -237,7 +237,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
         ptr += 3;
       }
       auto pNewDict = m_pDocument->New<CPDF_Dictionary>();
-      CPDF_Stream* pCTS = m_pDocument->NewIndirect<CPDF_Stream>(
+      const CPDF_Stream* pCTS = m_pDocument->NewIndirect<CPDF_Stream>(
           std::move(pColorTable), palette_size * 3, std::move(pNewDict));
       pCS->AppendNew<CPDF_Reference>(m_pDocument.Get(), pCTS->GetObjNum());
       pDict->SetNewFor<CPDF_Reference>("ColorSpace", m_pDocument.Get(),
@@ -276,7 +276,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
       }
     }
     pMaskDict->SetNewFor<CPDF_Number>("Length", mask_size);
-    CPDF_Stream* pNewStream = m_pDocument->NewIndirect<CPDF_Stream>(
+    const CPDF_Stream* pNewStream = m_pDocument->NewIndirect<CPDF_Stream>(
         std::move(mask_buf), mask_size, std::move(pMaskDict));
     pDict->SetNewFor<CPDF_Reference>("SMask", m_pDocument.Get(),
                                      pNewStream->GetObjNum());
