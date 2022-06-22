@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9d5894_ab782b50",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-22T20:18:26Z",
+      "side": 1,
+      "message": "Someday this will return retainptr, too, then we write:\n\nRetainPtr\u003cCPDF_Dictionary\u003e pDict \u003d pDoc-\u003eNewIndirect\u003cCPDF_Dictionary\u003e();",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 75
+      },
+      "revId": "91999dfa9b6dacab3a7f09c97e7da910291daa36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8159081b_063ae653",
+        "filename": "xfa/fgas/font/cfgas_pdffontmgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-22T20:18:26Z",
+      "side": 1,
+      "message": "somdeay pObj-\u003eGetMutableDirect() and assignment rather than contruction.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "91999dfa9b6dacab3a7f09c97e7da910291daa36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
