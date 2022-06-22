@@ -598,8 +598,10 @@ void CPDFSDK_FormFillEnvironment::PageEvent(int iPageCount,
 
 void CPDFSDK_FormFillEnvironment::ClearAllFocusedAnnots() {
   for (auto& it : m_PageMap) {
-    if (it.second->IsValidSDKAnnot(GetFocusAnnot()))
+    if (it.second->IsValidSDKAnnot(GetFocusAnnot())) {
       KillFocusAnnot({});
+      break;
+    }
   }
 }
 
