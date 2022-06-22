@@ -81,7 +81,10 @@ class CPDF_DataAvail final : public Observable::ObserverIface {
   DocFormStatus IsFormAvail(DownloadHints* pHints);
   DocLinearizationStatus IsLinearizedPDF();
   int GetPageCount() const;
-  CPDF_Dictionary* GetPageDictionary(int index) const;
+  const CPDF_Dictionary* GetPageDictionary(int index) const;
+  CPDF_Dictionary* GetMutablePageDictionary(int index) {
+    return const_cast<CPDF_Dictionary*>(GetPageDictionary(index));
+  }
   RetainPtr<CPDF_ReadValidator> GetValidator() const;
 
   std::pair<CPDF_Parser::Error, std::unique_ptr<CPDF_Document>> ParseDocument(
@@ -130,7 +133,7 @@ class CPDF_DataAvail final : public Observable::ObserverIface {
   bool CheckInfo();
   bool CheckPages();
   bool CheckPage();
-  DocAvailStatus CheckResources(CPDF_Dictionary* page);
+  DocAvailStatus CheckResources(const CPDF_Dictionary* page);
   DocFormStatus CheckAcroForm();
   bool CheckPageStatus();
 

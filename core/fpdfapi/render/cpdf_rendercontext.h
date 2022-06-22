@@ -64,7 +64,7 @@ class CPDF_RenderContext {
   Layer* GetLayer(uint32_t index) { return &m_Layers[index]; }
 
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  CPDF_Dictionary* GetPageResources() const { return m_pPageResources.Get(); }
+  CPDF_Dictionary* GetPageResources() { return m_pPageResources.Get(); }
   CPDF_PageRenderCache* GetPageCache() const { return m_pPageCache.Get(); }
 
  protected:

@@ -337,7 +337,7 @@ RetainPtr<CPDF_Pattern> CPDF_DocPageData::GetPattern(CPDF_Object* pPatternObj,
   if (it != m_PatternMap.end() && it->second)
     return pdfium::WrapRetain(it->second.Get());
 
-  CPDF_Dictionary* pDict = pPatternObj->GetDict();
+  const CPDF_Dictionary* pDict = pPatternObj->GetDict();
   if (!pDict)
     return nullptr;
 
@@ -544,7 +544,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
         nStemV = width;
     }
   }
-  CPDF_Dictionary* pFontDesc =
+  const CPDF_Dictionary* pFontDesc =
       ToDictionary(GetDocument()->AddIndirectObject(CalculateFontDesc(
           GetDocument(), basefont, flags, italicangle, pFont->GetAscent(),
           pFont->GetDescent(), std::move(pBBox), nStemV)));

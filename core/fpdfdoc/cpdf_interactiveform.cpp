@@ -171,14 +171,14 @@ RetainPtr<CPDF_Font> AddNativeFont(FX_Charset charSet,
   return nullptr;
 }
 
-bool FindFont(CPDF_Dictionary* pFormDict,
+bool FindFont(const CPDF_Dictionary* pFormDict,
               const CPDF_Font* pFont,
               ByteString* csNameTag) {
-  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
+  const CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
   if (!pDR)
     return false;
 
-  CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
+  const CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
   if (!ValidateFontResourceDict(pFonts))
     return false;
 
@@ -196,7 +196,7 @@ bool FindFont(CPDF_Dictionary* pFormDict,
   return false;
 }
 
-bool FindFontFromDoc(CPDF_Dictionary* pFormDict,
+bool FindFontFromDoc(const CPDF_Dictionary* pFormDict,
                      CPDF_Document* pDocument,
                      ByteString csFontName,
                      RetainPtr<CPDF_Font>& pFont,
@@ -204,11 +204,11 @@ bool FindFontFromDoc(CPDF_Dictionary* pFormDict,
   if (csFontName.IsEmpty())
     return false;
 
-  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
+  const CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
   if (!pDR)
     return false;
 
-  CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
+  const CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
   if (!ValidateFontResourceDict(pFonts))
     return false;
 
@@ -266,8 +266,8 @@ FX_Charset GetNativeCharSet() {
 
 CPDF_Dictionary* InitDict(CPDF_Document* pDocument) {
   CPDF_Dictionary* pFormDict = pDocument->NewIndirect<CPDF_Dictionary>();
-  pDocument->GetRoot()->SetNewFor<CPDF_Reference>("AcroForm", pDocument,
-                                                  pFormDict->GetObjNum());
+  pDocument->GetMutableRoot()->SetNewFor<CPDF_Reference>(
+      "AcroForm", pDocument, pFormDict->GetObjNum());
 
   ByteString csBaseName;
   FX_Charset charSet = GetNativeCharSet();
@@ -293,15 +293,15 @@ CPDF_Dictionary* InitDict(CPDF_Document* pDocument) {
   return pFormDict;
 }
 
-RetainPtr<CPDF_Font> GetNativeFont(CPDF_Dictionary* pFormDict,
+RetainPtr<CPDF_Font> GetNativeFont(const CPDF_Dictionary* pFormDict,
                                    CPDF_Document* pDocument,
                                    FX_Charset charSet,
                                    ByteString* csNameTag) {
-  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
+  const CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
   if (!pDR)
     return nullptr;
 
-  CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
+  const CPDF_Dictionary* pFonts = pDR->GetDictFor("Font");
   if (!ValidateFontResourceDict(pFonts))
     return nullptr;
 
@@ -528,7 +528,7 @@ CFieldTree::Node* CFieldTree::FindNode(const WideString& full_name) {
 
 CPDF_InteractiveForm::CPDF_InteractiveForm(CPDF_Document* pDocument)
     : m_pDocument(pDocument), m_pFieldTree(std::make_unique<CFieldTree>()) {
-  CPDF_Dictionary* pRoot = m_pDocument->GetRoot();
+  CPDF_Dictionary* pRoot = m_pDocument->GetMutableRoot();
   if (!pRoot)
     return;
 
@@ -565,7 +565,8 @@ RetainPtr<CPDF_Font> CPDF_InteractiveForm::AddNativeInteractiveFormFont(
   DCHECK(pDocument);
   DCHECK(csNameTag);
 
-  CPDF_Dictionary* pFormDict = pDocument->GetRoot()->GetDictFor("AcroForm");
+  CPDF_Dictionary* pFormDict =
+      pDocument->GetMutableRoot()->GetDictFor("AcroForm");
   if (!pFormDict)
     pFormDict = InitDict(pDocument);
 
@@ -607,7 +608,7 @@ CPDF_FormField* CPDF_InteractiveForm::GetField(
   return pNode ? pNode->GetFieldAtIndex(index) : nullptr;
 }
 
-CPDF_FormField* CPDF_InteractiveForm::GetFieldByDict(
+const CPDF_FormField* CPDF_InteractiveForm::GetFieldByDict(
     const CPDF_Dictionary* pFieldDict) const {
   if (!pFieldDict)
     return nullptr;
@@ -659,7 +660,7 @@ int CPDF_InteractiveForm::CountFieldsInCalculationOrder() {
   if (!m_pFormDict)
     return 0;
 
-  CPDF_Array* pArray = m_pFormDict->GetArrayFor("CO");
+  const CPDF_Array* pArray = m_pFormDict->GetArrayFor("CO");
   return pArray ? fxcrt::CollectionSize<int>(*pArray) : 0;
 }
 
@@ -667,13 +668,13 @@ CPDF_FormField* CPDF_InteractiveForm::GetFieldInCalculationOrder(int index) {
   if (!m_pFormDict || index < 0)
     return nullptr;
 
-  CPDF_Array* pArray = m_pFormDict->GetArrayFor("CO");
+  const CPDF_Array* pArray = m_pFormDict->GetArrayFor("CO");
   if (!pArray)
     return nullptr;
 
   const CPDF_Dictionary* pElement =
       ToDictionary(pArray->GetDirectObjectAt(index));
-  return pElement ? GetFieldByDict(pElement) : nullptr;
+  return pElement ? GetMutableFieldByDict(pElement) : nullptr;
 }
 
 int CPDF_InteractiveForm::FindFieldInCalculationOrder(
@@ -681,7 +682,7 @@ int CPDF_InteractiveForm::FindFieldInCalculationOrder(
   if (!m_pFormDict)
     return -1;
 
-  CPDF_Array* pArray = m_pFormDict->GetArrayFor("CO");
+  const CPDF_Array* pArray = m_pFormDict->GetArrayFor("CO");
   if (!pArray)
     return -1;
 
@@ -795,7 +796,7 @@ void CPDF_InteractiveForm::FixPageFields(CPDF_Page* pPage) {
 void CPDF_InteractiveForm::AddTerminalField(CPDF_Dictionary* pFieldDict) {
   if (!pFieldDict->KeyExist(pdfium::form_fields::kFT)) {
     // Key "FT" is required for terminal fields, it is also inheritable.
-    CPDF_Dictionary* pParentDict =
+    const CPDF_Dictionary* pParentDict =
         pFieldDict->GetDictFor(pdfium::form_fields::kParent);
     if (!pParentDict || !pParentDict->KeyExist(pdfium::form_fields::kFT))
       return;
@@ -820,14 +821,14 @@ void CPDF_InteractiveForm::AddTerminalField(CPDF_Dictionary* pFieldDict) {
     if (pParent && pParent != pFieldDict &&
         !pParent->KeyExist(pdfium::form_fields::kFT)) {
       if (pFieldDict->KeyExist(pdfium::form_fields::kFT)) {
-        CPDF_Object* pFTValue =
+        const CPDF_Object* pFTValue =
             pFieldDict->GetDirectObjectFor(pdfium::form_fields::kFT);
         if (pFTValue)
           pParent->SetFor(pdfium::form_fields::kFT, pFTValue->Clone());
       }
 
       if (pFieldDict->KeyExist(pdfium::form_fields::kFf)) {
-        CPDF_Object* pFfValue =
+        const CPDF_Object* pFfValue =
             pFieldDict->GetDirectObjectFor(pdfium::form_fields::kFf);
         if (pFfValue)
           pParent->SetFor(pdfium::form_fields::kFf, pFfValue->Clone());
@@ -836,7 +837,7 @@ void CPDF_InteractiveForm::AddTerminalField(CPDF_Dictionary* pFieldDict) {
 
     auto newField = std::make_unique<CPDF_FormField>(this, pParent);
     pField = newField.get();
-    CPDF_Object* pTObj = pDict->GetObjectFor(pdfium::form_fields::kT);
+    const CPDF_Object* pTObj = pDict->GetObjectFor(pdfium::form_fields::kT);
     if (ToReference(pTObj)) {
       RetainPtr<CPDF_Object> pClone = pTObj->CloneDirectObject();
       if (pClone)
@@ -927,7 +928,7 @@ std::unique_ptr<CFDF_Document> CPDF_InteractiveForm::ExportToFDF(
   if (!pDoc)
     return nullptr;
 
-  CPDF_Dictionary* pMainDict = pDoc->GetRoot()->GetDictFor("FDF");
+  CPDF_Dictionary* pMainDict = pDoc->GetMutableRoot()->GetDictFor("FDF");
   if (!pdf_path.IsEmpty()) {
     auto pNewDict = pDoc->New<CPDF_Dictionary>();
     pNewDict->SetNewFor<CPDF_Name>("Type", "Filespec");
@@ -965,7 +966,7 @@ std::unique_ptr<CFDF_Document> CPDF_InteractiveForm::ExportToFDF(
         pField->GetType() == CPDF_FormField::kRadioButton) {
       WideString csExport = pField->GetCheckValue(false);
       ByteString csBExport = PDF_EncodeText(csExport.AsStringView());
-      CPDF_Object* pOpt =
+      const CPDF_Object* pOpt =
           CPDF_FormField::GetFieldAttr(pField->GetDict(), "Opt");
       if (pOpt) {
         pFieldDict->SetNewFor<CPDF_String>(pdfium::form_fields::kV, csBExport,
@@ -974,8 +975,8 @@ std::unique_ptr<CFDF_Document> CPDF_InteractiveForm::ExportToFDF(
         pFieldDict->SetNewFor<CPDF_Name>(pdfium::form_fields::kV, csBExport);
       }
     } else {
-      CPDF_Object* pV = CPDF_FormField::GetFieldAttr(pField->GetDict(),
-                                                     pdfium::form_fields::kV);
+      const CPDF_Object* pV = CPDF_FormField::GetFieldAttr(
+          pField->GetDict(), pdfium::form_fields::kV);
       if (pV)
         pFieldDict->SetFor(pdfium::form_fields::kV, pV->CloneDirectObject());
     }
