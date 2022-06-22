@@ -38,7 +38,7 @@ void CPDF_ContentMarkItem::SetDirectDict(RetainPtr<CPDF_Dictionary> pDict) {
 }
 
 void CPDF_ContentMarkItem::SetPropertiesHolder(
-    CPDF_Dictionary* pHolder,
+    const CPDF_Dictionary* pHolder,
     const ByteString& property_name) {
   m_ParamType = kPropertiesDict;
   m_pPropertiesHolder.Reset(pHolder);

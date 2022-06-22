@@ -649,7 +649,7 @@ FORM_SetFocusedAnnot(FPDF_FORMHANDLE handle, FPDF_ANNOTATION annot) {
   if (!page_view->IsValid())
     return false;
 
-  CPDF_Dictionary* annot_dict = annot_context->GetAnnotDict();
+  const CPDF_Dictionary* annot_dict = annot_context->GetAnnotDict();
   ObservedPtr<CPDFSDK_Annot> cpdfsdk_annot(
       page_view->GetAnnotByDict(annot_dict));
   if (!cpdfsdk_annot)
@@ -768,7 +768,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoDocumentAAction(FPDF_FORMHANDLE hHandle,
     return;
 
   CPDF_Document* pDoc = pFormFillEnv->GetPDFDocument();
-  CPDF_Dictionary* pDict = pDoc->GetRoot();
+  const CPDF_Dictionary* pDict = pDoc->GetRoot();
   if (!pDict)
     return;
 
@@ -794,7 +794,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
   if (!pFormFillEnv->GetPageView(pPage))
     return;
 
-  CPDF_Dictionary* pPageDict = pPDFPage->GetDict();
+  const CPDF_Dictionary* pPageDict = pPDFPage->GetDict();
   CPDF_AAction aa(pPageDict->GetDictFor(pdfium::form_fields::kAA));
   CPDF_AAction::AActionType type = aaType == FPDFPAGE_AACTION_OPEN
                                        ? CPDF_AAction::kOpenPage

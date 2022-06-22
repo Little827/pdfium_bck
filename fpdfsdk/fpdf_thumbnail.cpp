@@ -57,8 +57,7 @@ FPDFPage_GetThumbnailAsBitmap(FPDF_PAGE page) {
   if (!thumb_stream)
     return nullptr;
 
-  const CPDF_Page* p_page = CPDFPageFromFPDFPage(page);
-
+  CPDF_Page* p_page = CPDFPageFromFPDFPage(page);
   auto p_source =
       pdfium::MakeRetain<CPDF_DIB>(p_page->GetDocument(), thumb_stream);
   const CPDF_DIB::LoadState start_status = p_source->StartLoadDIBBase(
