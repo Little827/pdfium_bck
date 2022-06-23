@@ -54,11 +54,11 @@ CFX_FloatRect CPDF_FormControl::GetRect() const {
 ByteString CPDF_FormControl::GetOnStateName() const {
   DCHECK(GetType() == CPDF_FormField::kCheckBox ||
          GetType() == CPDF_FormField::kRadioButton);
-  CPDF_Dictionary* pAP = m_pWidgetDict->GetDictFor("AP");
+  const CPDF_Dictionary* pAP = m_pWidgetDict->GetDictFor("AP");
   if (!pAP)
     return ByteString();
 
-  CPDF_Dictionary* pN = pAP->GetDictFor("N");
+  const CPDF_Dictionary* pN = pAP->GetDictFor("N");
   if (!pN)
     return ByteString();
 
@@ -85,7 +85,7 @@ WideString CPDF_FormControl::GetExportValue() const {
   DCHECK(GetType() == CPDF_FormField::kCheckBox ||
          GetType() == CPDF_FormField::kRadioButton);
   ByteString csOn = GetOnStateName();
-  CPDF_Array* pArray =
+  const CPDF_Array* pArray =
       ToArray(CPDF_FormField::GetFieldAttr(m_pField->GetDict(), "Opt"));
   if (pArray)
     csOn = pArray->GetStringAt(m_pField->GetControlIndex(this));
@@ -105,7 +105,8 @@ bool CPDF_FormControl::IsChecked() const {
 bool CPDF_FormControl::IsDefaultChecked() const {
   DCHECK(GetType() == CPDF_FormField::kCheckBox ||
          GetType() == CPDF_FormField::kRadioButton);
-  CPDF_Object* pDV = CPDF_FormField::GetFieldAttr(m_pField->GetDict(), "DV");
+  const CPDF_Object* pDV =
+      CPDF_FormField::GetFieldAttr(m_pField->GetDict(), "DV");
   if (!pDV)
     return false;
 
@@ -183,7 +184,8 @@ CPDF_DefaultAppearance CPDF_FormControl::GetDefaultAppearance() const {
   if (m_pWidgetDict->KeyExist("DA"))
     return CPDF_DefaultAppearance(m_pWidgetDict->GetStringFor("DA"));
 
-  CPDF_Object* pObj = CPDF_FormField::GetFieldAttr(m_pField->GetDict(), "DA");
+  const CPDF_Object* pObj =
+      CPDF_FormField::GetFieldAttr(m_pField->GetDict(), "DA");
   if (!pObj)
     return m_pForm->GetDefaultAppearance();
   return CPDF_DefaultAppearance(pObj->GetString());
@@ -245,7 +247,8 @@ int CPDF_FormControl::GetControlAlignment() const {
   if (m_pWidgetDict->KeyExist("Q"))
     return m_pWidgetDict->GetIntegerFor("Q", 0);
 
-  CPDF_Object* pObj = CPDF_FormField::GetFieldAttr(m_pField->GetDict(), "Q");
+  const CPDF_Object* pObj =
+      CPDF_FormField::GetFieldAttr(m_pField->GetDict(), "Q");
   if (pObj)
     return pObj->GetInteger();
   return m_pForm->GetFormAlignment();

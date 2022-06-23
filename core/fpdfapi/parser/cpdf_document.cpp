@@ -28,7 +28,7 @@ namespace {
 const int kMaxPageLevel = 1024;
 
 int CountPages(CPDF_Dictionary* pPages,
-               std::set<CPDF_Dictionary*>* visited_pages) {
+               std::set<const CPDF_Dictionary*>* visited_pages) {
   int count = pPages->GetIntegerFor("Count");
   if (count > 0 && count < CPDF_Document::kPageMaxNum)
     return count;
@@ -42,7 +42,8 @@ int CountPages(CPDF_Dictionary* pPages,
       continue;
     if (pKid->KeyExist("Kids")) {
       // Use |visited_pages| to help detect circular references of pages.
-      ScopedSetInsertion<CPDF_Dictionary*> local_add(visited_pages, pKid.Get());
+      ScopedSetInsertion<const CPDF_Dictionary*> local_add(visited_pages,
+                                                           pKid.Get());
       count += CountPages(pKid.Get(), visited_pages);
     } else {
       // This page is a leaf node.
@@ -364,7 +365,7 @@ int CPDF_Document::RetrievePageCount() {
   if (!pPages->KeyExist("Kids"))
     return 1;
 
-  std::set<CPDF_Dictionary*> visited_pages;
+  std::set<const CPDF_Dictionary*> visited_pages;
   visited_pages.insert(pPages);
   return CountPages(pPages, &visited_pages);
 }
@@ -401,11 +402,12 @@ CPDF_Dictionary* CPDF_Document::CreateNewPage(int iPage) {
   return pDict;
 }
 
-bool CPDF_Document::InsertDeletePDFPage(CPDF_Dictionary* pPages,
-                                        int nPagesToGo,
-                                        CPDF_Dictionary* pPageDict,
-                                        bool bInsert,
-                                        std::set<CPDF_Dictionary*>* pVisited) {
+bool CPDF_Document::InsertDeletePDFPage(
+    CPDF_Dictionary* pPages,
+    int nPagesToGo,
+    CPDF_Dictionary* pPageDict,
+    bool bInsert,
+    std::set<const CPDF_Dictionary*>* pVisited) {
   CPDF_Array* pKidList = pPages->GetArrayFor("Kids");
   if (!pKidList)
     return false;
@@ -437,7 +439,7 @@ bool CPDF_Document::InsertDeletePDFPage(CPDF_Dictionary* pPages,
     if (pdfium::Contains(*pVisited, pKid))
       return false;
 
-    ScopedSetInsertion<CPDF_Dictionary*> insertion(pVisited, pKid.Get());
+    ScopedSetInsertion<const CPDF_Dictionary*> insertion(pVisited, pKid.Get());
     if (!InsertDeletePDFPage(pKid.Get(), nPagesToGo, pPageDict, bInsert,
                              pVisited)) {
       return false;
@@ -450,7 +452,7 @@ bool CPDF_Document::InsertDeletePDFPage(CPDF_Dictionary* pPages,
 }
 
 bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
-  CPDF_Dictionary* pRoot = GetRoot();
+  CPDF_Dictionary* pRoot = GetMutableRoot();
   CPDF_Dictionary* pPages = pRoot ? pRoot->GetDictFor("Pages") : nullptr;
   if (!pPages)
     return false;
@@ -466,7 +468,7 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
     pPageDict->SetNewFor<CPDF_Reference>("Parent", this, pPages->GetObjNum());
     ResetTraversal();
   } else {
-    std::set<CPDF_Dictionary*> stack = {pPages};
+    std::set<const CPDF_Dictionary*> stack = {pPages};
     if (!InsertDeletePDFPage(pPages, iPage, pPageDict, true, &stack))
       return false;
   }
@@ -500,7 +502,7 @@ void CPDF_Document::DeletePage(int iPage) {
   if (iPage < 0 || iPage >= nPages)
     return;
 
-  std::set<CPDF_Dictionary*> stack = {pPages};
+  std::set<const CPDF_Dictionary*> stack = {pPages};
   if (!InsertDeletePDFPage(pPages, iPage, nullptr, false, &stack))
     return;
 

@@ -48,12 +48,12 @@ CPDF_Annot* CPDFSDK_BAAnnot::GetPDFPopupAnnot() const {
   return m_pAnnot->GetPopupAnnot();
 }
 
-CPDF_Dictionary* CPDFSDK_BAAnnot::GetAnnotDict() const {
+const CPDF_Dictionary* CPDFSDK_BAAnnot::GetAnnotDict() const {
   return m_pAnnot->GetAnnotDict();
 }
 
-CPDF_Dictionary* CPDFSDK_BAAnnot::GetAPDict() const {
-  return GetOrCreateDict(GetAnnotDict(), pdfium::annotation::kAP);
+CPDF_Dictionary* CPDFSDK_BAAnnot::GetAPDict() {
+  return GetOrCreateDict(GetMutableAnnotDict(), pdfium::annotation::kAP);
 }
 
 void CPDFSDK_BAAnnot::ClearCachedAnnotAP() {
@@ -86,7 +86,7 @@ bool CPDFSDK_BAAnnot::IsAppearanceValid() {
 }
 
 void CPDFSDK_BAAnnot::SetAnnotName(const WideString& sName) {
-  CPDF_Dictionary* pDict = GetAnnotDict();
+  CPDF_Dictionary* pDict = GetMutableAnnotDict();
   if (sName.IsEmpty()) {
     pDict->RemoveFor(pdfium::annotation::kNM);
     return;
@@ -99,8 +99,8 @@ WideString CPDFSDK_BAAnnot::GetAnnotName() const {
 }
 
 void CPDFSDK_BAAnnot::SetFlags(uint32_t nFlags) {
-  GetAnnotDict()->SetNewFor<CPDF_Number>(pdfium::annotation::kF,
-                                         static_cast<int>(nFlags));
+  GetMutableAnnotDict()->SetNewFor<CPDF_Number>(pdfium::annotation::kF,
+                                                static_cast<int>(nFlags));
 }
 
 uint32_t CPDFSDK_BAAnnot::GetFlags() const {
@@ -108,7 +108,7 @@ uint32_t CPDFSDK_BAAnnot::GetFlags() const {
 }
 
 void CPDFSDK_BAAnnot::SetAppStateOff() {
-  CPDF_Dictionary* pDict = GetAnnotDict();
+  CPDF_Dictionary* pDict = GetMutableAnnotDict();
   pDict->SetNewFor<CPDF_String>(pdfium::annotation::kAS, "Off", false);
 }
 
@@ -118,11 +118,11 @@ ByteString CPDFSDK_BAAnnot::GetAppState() const {
 
 void CPDFSDK_BAAnnot::SetBorderWidth(int nWidth) {
   CPDF_Array* pBorder =
-      GetAnnotDict()->GetArrayFor(pdfium::annotation::kBorder);
+      GetMutableAnnotDict()->GetArrayFor(pdfium::annotation::kBorder);
   if (pBorder) {
     pBorder->SetNewAt<CPDF_Number>(2, nWidth);
   } else {
-    CPDF_Dictionary* pBSDict = GetOrCreateDict(GetAnnotDict(), "BS");
+    CPDF_Dictionary* pBSDict = GetOrCreateDict(GetMutableAnnotDict(), "BS");
     pBSDict->SetNewFor<CPDF_Number>("W", nWidth);
   }
 }
@@ -133,14 +133,14 @@ int CPDFSDK_BAAnnot::GetBorderWidth() const {
     return pBorder->GetIntegerAt(2);
   }
 
-  if (CPDF_Dictionary* pBSDict = GetAnnotDict()->GetDictFor("BS"))
+  if (const CPDF_Dictionary* pBSDict = GetAnnotDict()->GetDictFor("BS"))
     return pBSDict->GetIntegerFor("W", 1);
 
   return 1;
 }
 
 void CPDFSDK_BAAnnot::SetBorderStyle(BorderStyle nStyle) {
-  CPDF_Dictionary* pBSDict = GetOrCreateDict(GetAnnotDict(), "BS");
+  CPDF_Dictionary* pBSDict = GetOrCreateDict(GetMutableAnnotDict(), "BS");
   const char* name = nullptr;
   switch (nStyle) {
     case BorderStyle::kSolid:
@@ -165,7 +165,7 @@ void CPDFSDK_BAAnnot::SetBorderStyle(BorderStyle nStyle) {
 }
 
 BorderStyle CPDFSDK_BAAnnot::GetBorderStyle() const {
-  CPDF_Dictionary* pBSDict = GetAnnotDict()->GetDictFor("BS");
+  const CPDF_Dictionary* pBSDict = GetAnnotDict()->GetDictFor("BS");
   if (pBSDict) {
     ByteString sBorderStyle = pBSDict->GetStringFor("S", "S");
     if (sBorderStyle == "S")

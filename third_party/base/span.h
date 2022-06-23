@@ -117,7 +117,7 @@ using EnableIfConstSpanCompatibleContainer =
 //     std::vector<uint8_t> data_buffer = GenerateData();
 //     std::string r = HexEncode(data_buffer.data(), data_buffer.size());
 //
-//  Mutable:
+
 //     // ssize_t SafeSNPrintf(char* buf, size_t N, const char* fmt, Args...);
 //     char str_buffer[100];
 //     SafeSNPrintf(str_buffer, sizeof(str_buffer), "Pi ~= %lf", 3.14);
@@ -128,7 +128,7 @@ using EnableIfConstSpanCompatibleContainer =
 //     std::vector<uint8_t> data_buffer = GenerateData();
 //     std::string r = HexEncode(data_buffer);
 //
-//  Mutable:
+
 //     // ssize_t SafeSNPrintf(base::span<char>, const char* fmt, Args...);
 //     char str_buffer[100];
 //     SafeSNPrintf(str_buffer, "Pi ~= %lf", 3.14);

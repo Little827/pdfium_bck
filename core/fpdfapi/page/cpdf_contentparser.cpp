@@ -33,20 +33,20 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Page* pPage)
     return;
   }
 
-  CPDF_Object* pContent =
+  const CPDF_Object* pContent =
       pPage->GetDict()->GetDirectObjectFor(pdfium::page_object::kContents);
   if (!pContent) {
     HandlePageContentFailure();
     return;
   }
 
-  CPDF_Stream* pStream = pContent->AsStream();
+  const CPDF_Stream* pStream = pContent->AsStream();
   if (pStream) {
     HandlePageContentStream(pStream);
     return;
   }
 
-  CPDF_Array* pArray = pContent->AsArray();
+  const CPDF_Array* pArray = pContent->AsArray();
   if (pArray && HandlePageContentArray(pArray))
     return;
 
@@ -66,7 +66,7 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
   if (pGraphicStates)
     form_matrix.Concat(pGraphicStates->m_CTM);
 
-  CPDF_Array* pBBox = pForm->GetDict()->GetArrayFor("BBox");
+  const CPDF_Array* pBBox = pForm->GetDict()->GetArrayFor("BBox");
   CFX_FloatRect form_bbox;
   CPDF_Path ClipPath;
   if (pBBox) {
@@ -136,7 +136,7 @@ bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
 CPDF_ContentParser::Stage CPDF_ContentParser::GetContent() {
   DCHECK_EQ(m_CurrentStage, Stage::kGetContent);
   DCHECK(m_pObjectHolder->IsPage());
-  CPDF_Array* pContent =
+  const CPDF_Array* pContent =
       m_pObjectHolder->GetDict()->GetArrayFor(pdfium::page_object::kContents);
   const CPDF_Stream* pStreamObj = ToStream(
       pContent ? pContent->GetDirectObjectAt(m_CurrentOffset) : nullptr);
@@ -233,13 +233,13 @@ CPDF_ContentParser::Stage CPDF_ContentParser::CheckClip() {
   return Stage::kComplete;
 }
 
-void CPDF_ContentParser::HandlePageContentStream(CPDF_Stream* pStream) {
+void CPDF_ContentParser::HandlePageContentStream(const CPDF_Stream* pStream) {
   m_pSingleStream = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   m_pSingleStream->LoadAllDataFiltered();
   m_CurrentStage = Stage::kPrepareContent;
 }
 
-bool CPDF_ContentParser::HandlePageContentArray(CPDF_Array* pArray) {
+bool CPDF_ContentParser::HandlePageContentArray(const CPDF_Array* pArray) {
   m_nStreams = fxcrt::CollectionSize<uint32_t>(*pArray);
   if (m_nStreams == 0)
     return false;
