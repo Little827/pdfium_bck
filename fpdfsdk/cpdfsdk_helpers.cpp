@@ -225,10 +225,6 @@ const CPDF_Array* GetQuadPointsArrayFromDictionary(
   return dict->GetArrayFor("QuadPoints");
 }
 
-CPDF_Array* GetQuadPointsArrayFromDictionary(CPDF_Dictionary* dict) {
-  return dict->GetArrayFor("QuadPoints");
-}
-
 CPDF_Array* AddQuadPointsArrayToDictionary(CPDF_Dictionary* dict) {
   return dict->SetNewFor<CPDF_Array>(kQuadPoints);
 }

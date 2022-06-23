@@ -378,7 +378,8 @@ FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV FPDFPage_GetAnnot(FPDF_PAGE page,
   if (!pPage || index < 0)
     return nullptr;
 
-  CPDF_Array* pAnnots = pPage->GetDict()->GetArrayFor("Annots");
+  RetainPtr<CPDF_Array> pAnnots =
+      pPage->GetDict()->GetMutableArrayFor("Annots");
   if (!pAnnots || static_cast<size_t>(index) >= pAnnots->size())
     return nullptr;
 
@@ -430,7 +431,8 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_RemoveAnnot(FPDF_PAGE page,
   if (!pPage || index < 0)
     return false;
 
-  CPDF_Array* pAnnots = pPage->GetDict()->GetArrayFor("Annots");
+  RetainPtr<CPDF_Array> pAnnots =
+      pPage->GetDict()->GetMutableArrayFor("Annots");
   if (!pAnnots || static_cast<size_t>(index) >= pAnnots->size())
     return false;
 
@@ -660,7 +662,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetColor(FPDF_ANNOTATION annot,
 
   // Set the color of the annotation.
   ByteString key = type == FPDFANNOT_COLORTYPE_InteriorColor ? "IC" : "C";
-  CPDF_Array* pColor = pAnnotDict->GetArrayFor(key);
+  RetainPtr<CPDF_Array> pColor = pAnnotDict->GetMutableArrayFor(key);
   if (pColor)
     pColor->Clear();
   else
