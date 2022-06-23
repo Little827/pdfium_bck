@@ -271,7 +271,7 @@ FPDFImageObj_GetImageDataDecoded(FPDF_PAGEOBJECT image_object,
   if (!pImg)
     return 0;
 
-  CPDF_Stream* pImgStream = pImg->GetStream();
+  const CPDF_Stream* pImgStream = pImg->GetStream();
   if (!pImgStream)
     return 0;
 
@@ -290,7 +290,7 @@ FPDFImageObj_GetImageDataRaw(FPDF_PAGEOBJECT image_object,
   if (!pImg)
     return 0;
 
-  CPDF_Stream* pImgStream = pImg->GetStream();
+  const CPDF_Stream* pImgStream = pImg->GetStream();
   if (!pImgStream)
     return 0;
 
@@ -307,8 +307,9 @@ FPDFImageObj_GetImageFilterCount(FPDF_PAGEOBJECT image_object) {
   if (!pImg)
     return 0;
 
-  CPDF_Dictionary* pDict = pImg->GetDict();
-  CPDF_Object* pFilter = pDict ? pDict->GetDirectObjectFor("Filter") : nullptr;
+  const CPDF_Dictionary* pDict = pImg->GetDict();
+  const CPDF_Object* pFilter =
+      pDict ? pDict->GetDirectObjectFor("Filter") : nullptr;
   if (!pFilter)
     return 0;
 
@@ -330,7 +331,7 @@ FPDFImageObj_GetImageFilter(FPDF_PAGEOBJECT image_object,
     return 0;
 
   CPDF_PageObject* pObj = CPDFPageObjectFromFPDFPageObject(image_object);
-  CPDF_Object* pFilter =
+  const CPDF_Object* pFilter =
       pObj->AsImage()->GetImage()->GetDict()->GetDirectObjectFor("Filter");
   ByteString bsFilter;
   if (pFilter->IsName())

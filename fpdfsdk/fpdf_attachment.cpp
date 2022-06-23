@@ -135,7 +135,7 @@ FPDFAttachment_HasKey(FPDF_ATTACHMENT attachment, FPDF_BYTESTRING key) {
   if (!pFile)
     return 0;
 
-  CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
+  const CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
   return pParamsDict ? pParamsDict->KeyExist(key) : 0;
 }
 
@@ -145,7 +145,7 @@ FPDFAttachment_GetValueType(FPDF_ATTACHMENT attachment, FPDF_BYTESTRING key) {
     return FPDF_OBJECT_UNKNOWN;
 
   CPDF_FileSpec spec(CPDFObjectFromFPDFAttachment(attachment));
-  CPDF_Object* pObj = spec.GetParamsDict()->GetObjectFor(key);
+  const CPDF_Object* pObj = spec.GetParamsDict()->GetObjectFor(key);
   return pObj ? pObj->GetType() : FPDF_OBJECT_UNKNOWN;
 }
 
@@ -180,14 +180,15 @@ FPDFAttachment_GetStringValue(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return 0;
 
-  CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
+  const CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
   if (!pParamsDict)
     return 0;
 
   ByteString bsKey = key;
   WideString value = pParamsDict->GetUnicodeTextFor(bsKey);
   if (bsKey == kChecksumKey && !value.IsEmpty()) {
-    CPDF_String* stringValue = pParamsDict->GetObjectFor(bsKey)->AsString();
+    const CPDF_String* stringValue =
+        pParamsDict->GetObjectFor(bsKey)->AsString();
     if (stringValue->IsHex()) {
       ByteString encoded =
           PDF_HexEncodeString(stringValue->GetString().AsStringView());
@@ -261,7 +262,7 @@ FPDFAttachment_GetFile(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return false;
 
-  CPDF_Stream* pFileStream = CPDF_FileSpec(pFile).GetFileStream();
+  const CPDF_Stream* pFileStream = CPDF_FileSpec(pFile).GetFileStream();
   if (!pFileStream)
     return false;
 

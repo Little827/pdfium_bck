@@ -284,7 +284,7 @@ CPDF_FormField* GetFormField(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
     return nullptr;
 
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
-  return pPDFForm->GetFieldByDict(pAnnotDict);
+  return pPDFForm->GetMutableFieldByDict(pAnnotDict);
 }
 
 const CPDFSDK_Widget* GetRadioButtonOrCheckBoxWidget(FPDF_FORMHANDLE hHandle,
@@ -298,7 +298,7 @@ const CPDFSDK_Widget* GetRadioButtonOrCheckBoxWidget(FPDF_FORMHANDLE hHandle,
     return nullptr;
 
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
-  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  CPDF_FormField* pFormField = pPDFForm->GetMutableFieldByDict(pAnnotDict);
   if (!pFormField || (pFormField->GetType() != CPDF_FormField::kCheckBox &&
                       pFormField->GetType() != CPDF_FormField::kRadioButton)) {
     return nullptr;
@@ -1395,7 +1395,7 @@ FPDFAnnot_GetFormControlIndex(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
     return -1;
 
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
-  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  CPDF_FormField* pFormField = pPDFForm->GetMutableFieldByDict(pAnnotDict);
   CPDF_FormControl* pFormControl = pPDFForm->GetControlByDict(pAnnotDict);
   return pFormField ? pFormField->GetControlIndex(pFormControl) : -1;
 }
