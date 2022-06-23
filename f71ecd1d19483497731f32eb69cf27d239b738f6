@@ -33,6 +33,24 @@
       "message": "But, yes, the code does seem reasonable.  Let\u0027s see what trybots think.",
       "revId": "f71ecd1d19483497731f32eb69cf27d239b738f6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c703a81_a88e4c48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-23T19:17:13Z",
+      "side": 1,
+      "message": "Hard to say give PDF streams are generally compressed. I suppose I could try to detect it by adding a check to core/fpdfapi/page/cpdf_streamparser.cpp and running it over a sample PDF corpus.",
+      "parentUuid": "b989ed8a_f058b234",
+      "revId": "f71ecd1d19483497731f32eb69cf27d239b738f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
