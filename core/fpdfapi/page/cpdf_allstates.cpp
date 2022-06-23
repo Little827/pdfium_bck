@@ -42,7 +42,7 @@ void CPDF_AllStates::SetLineDash(const CPDF_Array* pArray,
   m_GraphState.SetLineDash(std::move(dashes), phase, scale);
 }
 
-void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
+void CPDF_AllStates::ProcessExtGS(const CPDF_Dictionary* pGS,
                                   CPDF_StreamContentParser* pParser) {
   CPDF_DictionaryLocker locker(pGS);
   for (const auto& it : locker) {
@@ -82,7 +82,7 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
         m_GeneralState.SetRenderIntent(pObject->GetString());
         break;
       case FXBSTR_ID('F', 'o', 'n', 't'): {
-        CPDF_Array* pFont = pObject->AsArray();
+        const CPDF_Array* pFont = pObject->AsArray();
         if (!pFont)
           break;
 
@@ -99,7 +99,7 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
         m_GeneralState.SetTR(!pObject->IsName() ? pObject : nullptr);
         break;
       case FXBSTR_ID('B', 'M', 0, 0): {
-        CPDF_Array* pArray = pObject->AsArray();
+        const CPDF_Array* pArray = pObject->AsArray();
         m_GeneralState.SetBlendMode(pArray ? pArray->GetStringAt(0)
                                            : pObject->GetString());
         if (m_GeneralState.GetBlendType() > BlendMode::kMultiply)

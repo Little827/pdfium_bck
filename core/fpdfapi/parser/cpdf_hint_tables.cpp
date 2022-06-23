@@ -440,8 +440,8 @@ bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
   if (!pHintStream || !m_pLinearized->HasHintTable())
     return false;
 
-  CPDF_Dictionary* pDict = pHintStream->GetDict();
-  CPDF_Object* pOffset = pDict ? pDict->GetObjectFor("S") : nullptr;
+  const CPDF_Dictionary* pDict = pHintStream->GetDict();
+  const CPDF_Object* pOffset = pDict ? pDict->GetObjectFor("S") : nullptr;
   if (!pOffset || !pOffset->IsNumber())
     return false;
 

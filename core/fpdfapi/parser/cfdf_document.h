@@ -26,7 +26,8 @@ class CFDF_Document final : public CPDF_IndirectObjectHolder {
   ~CFDF_Document() override;
 
   ByteString WriteToString() const;
-  CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
+  CPDF_Dictionary* GetMutableRoot() { return m_pRootDict.Get(); }
+  const CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
 
  private:
   void ParseStream(RetainPtr<IFX_SeekableReadStream> pFile);

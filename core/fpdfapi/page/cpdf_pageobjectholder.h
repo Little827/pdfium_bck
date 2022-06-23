@@ -68,10 +68,11 @@ class CPDF_PageObjectHolder {
   ParseState GetParseState() const { return m_ParseState; }
 
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
+  CPDF_Dictionary* GetDict() { return m_pDict.Get(); }
+  const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
   CPDF_Dictionary* GetResources() const { return m_pResources.Get(); }
   void SetResources(CPDF_Dictionary* pDict) { m_pResources.Reset(pDict); }
-  CPDF_Dictionary* GetPageResources() const { return m_pPageResources.Get(); }
+  CPDF_Dictionary* GetPageResources() { return m_pPageResources.Get(); }
   size_t GetPageObjectCount() const { return m_PageObjectList.size(); }
   CPDF_PageObject* GetPageObjectByIndex(size_t index) const;
   void AppendPageObject(std::unique_ptr<CPDF_PageObject> pPageObj);
