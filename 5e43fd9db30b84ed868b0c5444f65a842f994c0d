@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a55d70a0_efddda62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-24T16:40:05Z",
+      "side": 1,
+      "message": "We can move this before \"Approach for this large change\" since this explains the reason we want to enable runtime choices only when Skia/SkiaPaths is enabled. In this section we should also mention that AGG is still the default rendering method for PDFium, that\u0027s why we don\u0027t want to provide runtime choice when only AGG is available.",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf614626_1ffe37be",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 29
@@ -37,6 +60,24 @@
       "writtenOn": "2022-06-14T23:39:27Z",
       "side": 1,
       "message": "With this, the embedder can say \"I want the unknown renderer type\". What does that mean?",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4828302_d5623aa1",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-06-24T16:40:05Z",
+      "side": 1,
+      "message": "\"INVALID\" might be better? Since PDFium only offers AGG and Skia.",
+      "parentUuid": "39c16b10_79f8424b",
       "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
