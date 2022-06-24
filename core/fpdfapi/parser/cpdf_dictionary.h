@@ -44,8 +44,8 @@ class CPDF_Dictionary final : public CPDF_Object {
                const CPDF_Encryptor* encryptor) const override;
 
   bool IsLocked() const { return !!m_LockCount; }
-
   size_t size() const { return m_Map.size(); }
+
   const CPDF_Object* GetObjectFor(const ByteString& key) const;
   CPDF_Object* GetObjectFor(const ByteString& key);
 
