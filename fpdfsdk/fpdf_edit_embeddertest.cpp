@@ -3910,6 +3910,30 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_GetRenderedBitmapHandlesSMask) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapWithRotatedImage) {
+  ASSERT_TRUE(OpenDocument("rotated_image.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_PAGEOBJECT obj = FPDFPage_GetObject(page, 0);
+  ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
+  ScopedFPDFBitmap bitmap(
+      FPDFImageObj_GetRenderedBitmap(document(), page, obj));
+  ASSERT_TRUE(bitmap);
+
+  // TODO(thestig): The rendering is wrong.
+#if defined(_SKIA_SUPPORT_)
+  static constexpr char kExpectedChecksum[] =
+      "bba9e6f3b66b155c9f9537fc4df62842";
+#else
+  static constexpr char kExpectedChecksum[] =
+      "958d46936a2508e564c1f8f49794dd42";
+#endif
+  CompareBitmap(bitmap.get(), 30, 40, kExpectedChecksum);
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapBadParams) {
   ASSERT_TRUE(OpenDocument("embedded_images.pdf"));
   FPDF_PAGE page = LoadPage(0);
