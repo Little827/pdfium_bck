@@ -59,8 +59,7 @@ CPDF_Form* AnnotGetMatrix(const CPDF_Page* pPage,
 CPDF_Stream* GetAnnotAPInternal(CPDF_Dictionary* pAnnotDict,
                                 CPDF_Annot::AppearanceMode eMode,
                                 bool bFallbackToNormal) {
-  RetainPtr<CPDF_Dictionary> pAP =
-      pAnnotDict->GetMutableDictFor(pdfium::annotation::kAP);
+  CPDF_Dictionary* pAP = pAnnotDict->GetDictFor(pdfium::annotation::kAP);
   if (!pAP)
     return nullptr;
 
@@ -443,12 +442,12 @@ void CPDF_Annot::DrawBorder(CFX_RenderDevice* pDevice,
   if (!bPrinting && (annot_flags & pdfium::annotation_flags::kNoView)) {
     return;
   }
-  const CPDF_Dictionary* pBS = m_pAnnotDict->GetDictFor("BS");
+  CPDF_Dictionary* pBS = m_pAnnotDict->GetDictFor("BS");
   char style_char;
   float width;
   const CPDF_Array* pDashArray = nullptr;
   if (!pBS) {
-    const CPDF_Array* pBorderArray =
+    CPDF_Array* pBorderArray =
         m_pAnnotDict->GetArrayFor(pdfium::annotation::kBorder);
     style_char = 'S';
     if (pBorderArray) {
@@ -483,7 +482,7 @@ void CPDF_Annot::DrawBorder(CFX_RenderDevice* pDevice,
   if (width <= 0) {
     return;
   }
-  const CPDF_Array* pColor = m_pAnnotDict->GetArrayFor(pdfium::annotation::kC);
+  CPDF_Array* pColor = m_pAnnotDict->GetArrayFor(pdfium::annotation::kC);
   uint32_t argb = 0xff000000;
   if (pColor) {
     int R = static_cast<int32_t>(pColor->GetNumberAt(0) * 255);

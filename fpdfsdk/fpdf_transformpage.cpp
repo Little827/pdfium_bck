@@ -255,12 +255,12 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
   }
 
   // Need to transform the patterns as well.
-  const CPDF_Dictionary* pRes =
+  CPDF_Dictionary* pRes =
       pPageDict->GetDictFor(pdfium::page_object::kResources);
   if (!pRes)
     return true;
 
-  const CPDF_Dictionary* pPatternDict = pRes->GetDictFor("Pattern");
+  CPDF_Dictionary* pPatternDict = pRes->GetDictFor("Pattern");
   if (!pPatternDict)
     return true;
 

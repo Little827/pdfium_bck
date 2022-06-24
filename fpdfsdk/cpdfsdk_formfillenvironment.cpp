@@ -655,7 +655,7 @@ bool CPDFSDK_FormFillEnvironment::ProcOpenAction() {
   if (!pRoot)
     return false;
 
-  const CPDF_Object* pOpenAction = pRoot->GetDictFor("OpenAction");
+  CPDF_Object* pOpenAction = pRoot->GetDictFor("OpenAction");
   if (!pOpenAction)
     pOpenAction = pRoot->GetArrayFor("OpenAction");
   if (!pOpenAction)
@@ -664,7 +664,7 @@ bool CPDFSDK_FormFillEnvironment::ProcOpenAction() {
   if (pOpenAction->IsArray())
     return true;
 
-  const CPDF_Dictionary* pDict = pOpenAction->AsDictionary();
+  CPDF_Dictionary* pDict = pOpenAction->AsDictionary();
   if (!pDict)
     return false;
 

@@ -852,12 +852,12 @@ void CPDF_FormField::LoadDA() {
   if (DA.IsEmpty())
     return;
 
-  RetainPtr<CPDF_Dictionary> pDR = pFormDict->GetMutableDictFor("DR");
+  CPDF_Dictionary* pDR = pFormDict->GetDictFor("DR");
   if (!pDR)
     return;
 
-  RetainPtr<CPDF_Dictionary> pFont = pDR->GetMutableDictFor("Font");
-  if (!ValidateFontResourceDict(pFont.Get()))
+  CPDF_Dictionary* pFont = pDR->GetDictFor("Font");
+  if (!ValidateFontResourceDict(pFont))
     return;
 
   CPDF_DefaultAppearance appearance(DA);

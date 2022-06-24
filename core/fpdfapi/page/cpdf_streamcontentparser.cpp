@@ -213,7 +213,7 @@ void ReplaceAbbrInDictionary(CPDF_Dictionary* pDict) {
 
 void ReplaceAbbrInArray(CPDF_Array* pArray) {
   for (size_t i = 0; i < pArray->size(); ++i) {
-    CPDF_Object* pElement = pArray->GetObjectAt(i);
+    RetainPtr<CPDF_Object> pElement = pArray->GetMutableObjectAt(i);
     if (pElement->IsName()) {
       ByteString name = pElement->GetString();
       ByteStringView fullname = FindFullName(
@@ -221,7 +221,7 @@ void ReplaceAbbrInArray(CPDF_Array* pArray) {
       if (!fullname.IsEmpty())
         pArray->SetNewAt<CPDF_Name>(i, ByteString(fullname));
     } else {
-      ReplaceAbbr(pElement);
+      ReplaceAbbr(pElement.Get());
     }
   }
 }
@@ -1119,14 +1119,14 @@ CPDF_Dictionary* CPDF_StreamContentParser::FindResourceHolder(
   if (!m_pResources)
     return nullptr;
 
-  RetainPtr<CPDF_Dictionary> pDict = m_pResources->GetMutableDictFor(type);
+  CPDF_Dictionary* pDict = m_pResources->GetDictFor(type);
   if (pDict)
-    return pDict.Get();  // TODO(tsepez): return retained and below.
+    return pDict;
 
   if (m_pResources == m_pPageResources || !m_pPageResources)
     return nullptr;
 
-  return m_pPageResources->GetMutableDictFor(type).Get();
+  return m_pPageResources->GetDictFor(type);
 }
 
 CPDF_Object* CPDF_StreamContentParser::FindResourceObj(const ByteString& type,
