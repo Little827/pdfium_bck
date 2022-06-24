@@ -16,6 +16,40 @@
       "message": "The ripples from tossing this pebble in the pond spread out quite a ways, unfortunately.",
       "revId": "154d227f9275020543a7ca3cb8e7c921f1ed5014",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2161b291_aef45fda",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-24T01:21:43Z",
+      "side": 1,
+      "message": "Curly braces",
+      "revId": "154d227f9275020543a7ca3cb8e7c921f1ed5014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696b1468_0e6a1e66",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-24T01:21:43Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "154d227f9275020543a7ca3cb8e7c921f1ed5014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
