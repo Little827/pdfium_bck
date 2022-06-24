@@ -76,7 +76,8 @@ CPDF_Stream* GetAnnotAPInternal(CPDF_Dictionary* pAnnotDict,
   if (!psub)
     return nullptr;
 
-  if (CPDF_Stream* pStream = psub->AsStream())
+  CPDF_Stream* pStream = psub->AsStream();
+  if (pStream)
     return pStream;
 
   CPDF_Dictionary* pDict = psub->AsDictionary();
