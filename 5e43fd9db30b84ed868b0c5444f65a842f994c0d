@@ -84,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "077be444_1d66a17f",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-24T18:46:44Z",
+      "side": 1,
+      "message": "An embedder saying \"I want the invalid renderer type\" also doesn\u0027t make sense to me.",
+      "parentUuid": "f4828302_d5623aa1",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48bfd02e_437533f4",
         "filename": "public/fpdfview.h",
         "patchSetId": 29
