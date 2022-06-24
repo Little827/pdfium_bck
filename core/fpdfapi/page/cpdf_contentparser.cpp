@@ -33,14 +33,14 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Page* pPage)
     return;
   }
 
-  CPDF_Object* pContent =
-      pPage->GetDict()->GetDirectObjectFor(pdfium::page_object::kContents);
+  RetainPtr<CPDF_Object> pContent = pPage->GetDict()->GetMutableDirectObjectFor(
+      pdfium::page_object::kContents);
   if (!pContent) {
     HandlePageContentFailure();
     return;
   }
 
-  CPDF_Stream* pStream = pContent->AsStream();
+  const CPDF_Stream* pStream = pContent->AsStream();
   if (pStream) {
     HandlePageContentStream(pStream);
     return;
@@ -235,7 +235,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::CheckClip() {
   return Stage::kComplete;
 }
 
-void CPDF_ContentParser::HandlePageContentStream(CPDF_Stream* pStream) {
+void CPDF_ContentParser::HandlePageContentStream(const CPDF_Stream* pStream) {
   m_pSingleStream = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   m_pSingleStream->LoadAllDataFiltered();
   m_CurrentStage = Stage::kPrepareContent;
