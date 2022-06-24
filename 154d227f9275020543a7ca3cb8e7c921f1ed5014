@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c72757_879c455a",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-24T15:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2161b291_aef45fda",
+      "revId": "154d227f9275020543a7ca3cb8e7c921f1ed5014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "696b1468_0e6a1e66",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-24T01:21:43Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "154d227f9275020543a7ca3cb8e7c921f1ed5014",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63daace9_9a7e7d48",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-24T15:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696b1468_0e6a1e66",
       "revId": "154d227f9275020543a7ca3cb8e7c921f1ed5014",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
