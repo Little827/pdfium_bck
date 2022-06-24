@@ -353,7 +353,7 @@ size_t CountNamesInternal(const CPDF_Dictionary* pNode,
   return nCount;
 }
 
-CPDF_Array* GetNamedDestFromObject(CPDF_Object* obj) {
+const CPDF_Array* GetNamedDestFromObject(CPDF_Object* obj) {
   if (!obj)
     return nullptr;
   CPDF_Array* array = obj->AsArray();
@@ -361,12 +361,12 @@ CPDF_Array* GetNamedDestFromObject(CPDF_Object* obj) {
     return array;
   CPDF_Dictionary* dict = obj->AsDictionary();
   if (dict)
-    return dict->GetMutableArrayFor("D").Get();  // TODO(tsepez): retain.
+    return dict->GetArrayFor("D");
   return nullptr;
 }
 
-CPDF_Array* LookupOldStyleNamedDest(CPDF_Document* pDoc,
-                                    const ByteString& name) {
+const CPDF_Array* LookupOldStyleNamedDest(CPDF_Document* pDoc,
+                                          const ByteString& name) {
   RetainPtr<CPDF_Dictionary> pDests =
       pDoc->GetMutableRoot()->GetMutableDictFor("Dests");
   if (!pDests)
@@ -437,9 +437,9 @@ std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateForTesting(
 }
 
 // static
-CPDF_Array* CPDF_NameTree::LookupNamedDest(CPDF_Document* pDoc,
-                                           const ByteString& name) {
-  CPDF_Array* dest_array = nullptr;
+const CPDF_Array* CPDF_NameTree::LookupNamedDest(CPDF_Document* pDoc,
+                                                 const ByteString& name) {
+  const CPDF_Array* dest_array = nullptr;
   std::unique_ptr<CPDF_NameTree> name_tree = Create(pDoc, "Dests");
   if (name_tree)
     dest_array = name_tree->LookupNewStyleNamedDest(name);
@@ -546,7 +546,8 @@ RetainPtr<CPDF_Object> CPDF_NameTree::LookupValue(
   return SearchNameNodeByName(m_pRoot, csName, nullptr, nullptr);
 }
 
-CPDF_Array* CPDF_NameTree::LookupNewStyleNamedDest(const ByteString& sName) {
+const CPDF_Array* CPDF_NameTree::LookupNewStyleNamedDest(
+    const ByteString& sName) {
   return GetNamedDestFromObject(
       LookupValue(PDF_DecodeText(sName.raw_span())).Get());
 }
