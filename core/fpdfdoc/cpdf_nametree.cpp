@@ -540,13 +540,11 @@ CPDF_Object* CPDF_NameTree::LookupValueAndName(size_t nIndex,
   return result.value().value.Get();
 }
 
-RetainPtr<CPDF_Object> CPDF_NameTree::LookupValue(
-    const WideString& csName) const {
-  return SearchNameNodeByName(m_pRoot, csName, nullptr, nullptr);
+const CPDF_Object* CPDF_NameTree::LookupValue(const WideString& csName) const {
+  return SearchNameNodeByName(m_pRoot, csName, nullptr, nullptr).Get();
 }
 
 const CPDF_Array* CPDF_NameTree::LookupNewStyleNamedDest(
     const ByteString& sName) {
-  return GetNamedDestFromObject(
-      LookupValue(PDF_DecodeText(sName.raw_span())).Get());
+  return GetNamedDestFromObject(LookupValue(PDF_DecodeText(sName.raw_span())));
 }
