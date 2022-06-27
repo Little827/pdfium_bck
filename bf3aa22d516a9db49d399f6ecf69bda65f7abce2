@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e321c69_fb8ee985",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-27T18:35:00Z",
+      "side": 1,
+      "message": "Note: several files like this need a complete type to instantiate some ot the retainptr operation that now happen under the covers.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "bf3aa22d516a9db49d399f6ecf69bda65f7abce2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
