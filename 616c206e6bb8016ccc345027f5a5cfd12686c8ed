@@ -16,6 +16,24 @@
       "message": "No need to switch to ToStream(), as line 77 already did the null checked.",
       "revId": "616c206e6bb8016ccc345027f5a5cfd12686c8ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40771577_4a3caf5c",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-27T19:36:07Z",
+      "side": 1,
+      "message": "Except that there\u0027s a RetainPtr\u003c\u003e overload of the to() and currently the as just returns an unretained object. Changed anyways to init vs. assignment for pstream.",
+      "parentUuid": "85499746_60637d89",
+      "revId": "616c206e6bb8016ccc345027f5a5cfd12686c8ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
