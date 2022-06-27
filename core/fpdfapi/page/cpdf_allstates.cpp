@@ -46,7 +46,7 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
                                   CPDF_StreamContentParser* pParser) {
   CPDF_DictionaryLocker locker(pGS);
   for (const auto& it : locker) {
-    CPDF_Object* pObject = it.second->GetDirect();
+    RetainPtr<CPDF_Object> pObject = it.second->GetMutableDirect();
     if (!pObject)
       continue;
 
@@ -67,7 +67,7 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
         m_GraphState.SetMiterLimit(pObject->GetNumber());
         break;
       case FXBSTR_ID('D', 0, 0, 0): {
-        CPDF_Array* pDash = pObject->AsArray();
+        const CPDF_Array* pDash = pObject->AsArray();
         if (!pDash)
           break;
 
@@ -82,7 +82,7 @@ void CPDF_AllStates::ProcessExtGS(CPDF_Dictionary* pGS,
         m_GeneralState.SetRenderIntent(pObject->GetString());
         break;
       case FXBSTR_ID('F', 'o', 'n', 't'): {
-        CPDF_Array* pFont = pObject->AsArray();
+        const CPDF_Array* pFont = pObject->AsArray();
         if (!pFont)
           break;
 
