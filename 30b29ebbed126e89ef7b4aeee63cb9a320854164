@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816f8dac_0498e287",
+        "filename": "core/fpdfapi/page/cpdf_generalstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-27T23:09:46Z",
+      "side": 1,
+      "message": "m_pBG and friends are RetainPtr\u003cconst CPDF_Object\u003e. Can SetBG() take a const CPDF_Object*?",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bc0ef6_cbd132c7",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-27T23:09:46Z",
+      "side": 1,
+      "message": "Is this on the radar for a follow-up CL?",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5e60cd_b13fb053",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-27T23:09:46Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
