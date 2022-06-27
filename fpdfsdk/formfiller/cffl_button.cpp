@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/formfiller/cffl_button.h"
 
+#include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "third_party/base/check.h"
