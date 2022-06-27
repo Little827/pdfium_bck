@@ -16,6 +16,24 @@
       "message": "The initialization got lost, so the while-loop isn\u0027t running.",
       "revId": "16508c9e81d543f764236488b240ea3996b61793",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d14f8315_7be85ae2",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-27T20:49:50Z",
+      "side": 1,
+      "message": "yep.  thanks.",
+      "parentUuid": "43dd6098_106e71b4",
+      "revId": "16508c9e81d543f764236488b240ea3996b61793",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
