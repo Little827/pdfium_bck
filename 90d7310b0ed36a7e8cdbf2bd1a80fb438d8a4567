@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fbd608_ada5034f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-28T15:32:06Z",
+      "side": 1,
+      "message": "Merge request ... can\u0027t remember if trybots work on the branch .. we\u0027ll see,",
+      "revId": "90d7310b0ed36a7e8cdbf2bd1a80fb438d8a4567",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
