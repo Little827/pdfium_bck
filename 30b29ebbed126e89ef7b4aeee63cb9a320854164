@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ce44f3_7ec0e717",
+        "filename": "core/fpdfapi/page/cpdf_generalstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-28T23:26:30Z",
+      "side": 1,
+      "message": "Yes, but, its callers are, um, in a switch statement where one of the cases calls SetSoftMask(), which absolutely needs a mutable object. Hmmm. So I made the change, but there are .Gets() on a mutable obj.",
+      "parentUuid": "816f8dac_0498e287",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3bc0ef6_cbd132c7",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf026a60_4718160a",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-28T23:26:30Z",
+      "side": 1,
+      "message": "Follow-up radar is given by:\n\ngit grep -n \u0027^\\s*CPDF_\\w*\\* Get.*const\u0027 core/fpdfapi/*/*.h \n\nand includes both of these.",
+      "parentUuid": "d3bc0ef6_cbd132c7",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c5e60cd_b13fb053",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-27T23:09:46Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7310f1be_038ca6c8",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-06-28T23:26:30Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "0c5e60cd_b13fb053",
       "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
