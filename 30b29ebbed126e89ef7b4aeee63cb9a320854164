@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c04df8_32d1c960",
+        "filename": "core/fpdfapi/page/cpdf_generalstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-29T05:02:21Z",
+      "side": 1,
+      "message": "Sure, let\u0027s do this for now. I think in the long run, we can make a read-only version of CPDF_PageObjectHolder, and have CPDF_PageObjectHolder be a subclass of that. Then a read-only version of CPDF_Form can exist and SetSoftMask() won\u0027t need a mutable object anymore.",
+      "parentUuid": "28ce44f3_7ec0e717",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3bc0ef6_cbd132c7",
