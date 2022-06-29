@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "399418ad_be0639f6",
+        "filename": "core/fpdfapi/page/cpdf_generalstate.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-06-29T06:59:59Z",
+      "side": 1,
+      "message": "CPDF_Form::ParseContentInternal() uses a CPDF_ContentParser, which then uses a CPDF_StreamContentParser. Both of those classes are hairy and they require non-const pointers, so my idea probably won\u0027t work out.",
+      "parentUuid": "00c04df8_32d1c960",
+      "revId": "30b29ebbed126e89ef7b4aeee63cb9a320854164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3bc0ef6_cbd132c7",
