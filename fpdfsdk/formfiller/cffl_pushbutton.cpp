@@ -8,6 +8,7 @@
 
 #include <utility>
 
+#include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "fpdfsdk/formfiller/cffl_formfield.h"
 #include "fpdfsdk/pwl/cpwl_special_button.h"
 

@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/formfiller/cffl_perwindowdata.h"
 
+#include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "third_party/base/ptr_util.h"
 
