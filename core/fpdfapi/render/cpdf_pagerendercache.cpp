@@ -115,15 +115,14 @@ bool CPDF_PageRenderCache::Continue(PauseIndicatorIface* pPause,
   return false;
 }
 
-void CPDF_PageRenderCache::ResetBitmapForImage(
-    const RetainPtr<CPDF_Image>& pImage) {
-  CPDF_ImageCacheEntry* pEntry;
+void CPDF_PageRenderCache::UpdateEstimatesForImage(
+    RetainPtr<CPDF_Image> pImage) {
   const CPDF_Stream* pStream = pImage->GetStream();
   const auto it = m_ImageCache.find(pStream);
   if (it == m_ImageCache.end())
     return;
 
-  pEntry = it->second.get();
+  CPDF_ImageCacheEntry* pEntry = it->second.get();
   m_nCacheSize -= pEntry->EstimateSize();
   pEntry->Reset();
   m_nCacheSize += pEntry->EstimateSize();
