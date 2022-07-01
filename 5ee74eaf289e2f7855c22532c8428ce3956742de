@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b216a8d_0bd93aca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-01T00:27:24Z",
+      "side": 1,
+      "message": "Drats, gotta resolve the mksnapshot DCHECK issue and roll past that to get pick up the UAF fix.",
+      "revId": "5ee74eaf289e2f7855c22532c8428ce3956742de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
