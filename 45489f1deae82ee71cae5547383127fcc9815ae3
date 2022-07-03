@@ -16,6 +16,24 @@
       "message": "\u003e Patch Set 3:\n\u003e \n\u003e Gold has detected about 3 new digest(s) on patchset 3.\n\u003e View them at https://pdfium-gold.skia.org/cl/gerrit/94650\n\nCan you explain what these errors mean and how my corrections could affect some unit-tests errors?",
       "revId": "45489f1deae82ee71cae5547383127fcc9815ae3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bf7a83_ef2edca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-07-03T17:26:52Z",
+      "side": 1,
+      "message": "\u003e \u003e Patch Set 3:\n\u003e \u003e \n\u003e \u003e Gold has detected about 3 new digest(s) on patchset 3.\n\u003e \u003e View them at https://pdfium-gold.skia.org/cl/gerrit/94650\n\u003e \n\u003e Can you explain what these errors mean and how my corrections could affect some unit-tests errors?\n\nAccording to the unit-tests log, there are no errors, but they are still failed",
+      "parentUuid": "8c083d77_ded85d65",
+      "revId": "45489f1deae82ee71cae5547383127fcc9815ae3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
