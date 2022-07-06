@@ -15,6 +15,9 @@
 #include "testing/v8_initializer.h"
 #ifdef PDF_ENABLE_XFA
 #include "testing/fuzzers/xfa_process_state.h"
+#include "v8/include/v8-array-buffer.h"
+#include "v8/include/v8-isolate.h"
+#include "v8/include/v8-platform.h"
 #endif  // PDF_ENABLE_XFA
 #endif  // PDF_ENABLE_V8
 
