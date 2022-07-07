@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65e26e9_bb8f0659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T20:50:24Z",
+      "side": 1,
+      "message": "pdfium:1847 is a blocker for fixing embedder test PDFProgressiveRenderEmbedderTest.RenderHighlightWithColorSchemeAndConvertFillToStroke.",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
