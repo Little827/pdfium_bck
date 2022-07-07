@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb454bc_f9e7fd16",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T22:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ffcb732_ad701c93",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f89b98c_7f679568",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-07T20:59:54Z",
       "side": 1,
       "message": "Is this needed when there\u0027s an AP?",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2585d414_1269d1da",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T22:07:39Z",
+      "side": 1,
+      "message": "Not needed for rendering this PDF. It\u0027s for the popup color.",
+      "parentUuid": "8f89b98c_7f679568",
       "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -69,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2a2cbf_842a2594",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T22:07:39Z",
+      "side": 1,
+      "message": "Removed in the new patchset.",
+      "parentUuid": "aa91b0b6_253d9261",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "006e95c6_9df36391",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-07-07T20:59:54Z",
       "side": 1,
       "message": "Do the exact values matter? If not, just use some nice round ones?",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6caa7c6_579d1800",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T22:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "006e95c6_9df36391",
       "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -103,6 +175,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6355fa1e_a7b61585",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T22:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f33886e_d54cbaec",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a34591e_f58f56b5",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-07-07T20:59:54Z",
       "side": 1,
       "message": "Does the issue only repro when it\u0027s an XObject (5 0) rendering an XObject (6 0) rendering an XObject? (7 0) Or can the issue be triggered with fewer XObjects?",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0e7630_7061317f",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T22:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a34591e_f58f56b5",
       "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
