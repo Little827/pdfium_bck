@@ -16,6 +16,108 @@
       "message": "pdfium:1847 is a blocker for fixing embedder test PDFProgressiveRenderEmbedderTest.RenderHighlightWithColorSchemeAndConvertFillToStroke.",
       "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffcb732_ad701c93",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-07T20:59:54Z",
+      "side": 1,
+      "message": "Redundant with line 10.",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f89b98c_7f679568",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-07T20:59:54Z",
+      "side": 1,
+      "message": "Is this needed when there\u0027s an AP?",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa91b0b6_253d9261",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-07T20:59:54Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006e95c6_9df36391",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-07T20:59:54Z",
+      "side": 1,
+      "message": "Do the exact values matter? If not, just use some nice round ones?",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f33886e_d54cbaec",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-07T20:59:54Z",
+      "side": 1,
+      "message": "Replace tabs with spaces.",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a34591e_f58f56b5",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-07T20:59:54Z",
+      "side": 1,
+      "message": "Does the issue only repro when it\u0027s an XObject (5 0) rendering an XObject (6 0) rendering an XObject? (7 0) Or can the issue be triggered with fewer XObjects?",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
