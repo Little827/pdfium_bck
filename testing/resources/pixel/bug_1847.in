@@ -1,0 +1,105 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /MediaBox [0 0 400 400]
+  /Kids [3 0 R]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Annots [4 0 R]
+  /MediaBox [0 0 400 400]
+>>
+endobj
+{{object 4 0}} <<
+  /Type /Annot
+  /Subtype /Highlight
+  /AP <<
+    /N 5 0 R
+  >>
+  /C [1 0 0]
+  /F 4
+  /P 3 0 R
+  /QuadPoints [72 320.792 132.055 320.792 72 304.796 132.055 304.796]
+  /Rect [67.7299 304.296 136.325 321.292]
+>>
+endobj
+{{object 5 0}} <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /BBox [0 0 68.5953 16.9955]
+  /Matrix [1 0 0 1 0 0]
+  /ProcSet [/PDF]
+  /Resources <<
+    /ExtGState <<
+      /R0 <<
+        /Type /ExtGState
+	/AIS false
+	/BM /Multiply
+      >>
+    >>
+    /XObject <<
+      /MWFOForm 6 0 R
+    >>
+  >>
+  {{streamlen}}
+>>
+stream
+/R0 gs
+/MWFOForm Do
+endstream
+endobj
+{{object 6 0}} <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /BBox [0 0 68.5953 16.9955]
+  /Group <<
+    /S /Transparency
+  >>
+  /Matrix [1 0 0 1 0 0]
+  /Resources <<
+    /ProcSet [/PDF]
+    /XObject <<
+      /Form 7 0 R
+    >>
+  >>
+  {{streamlen}}
+>>
+stream
+/Form Do
+endstream
+endobj
+{{object 7 0}} <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /BBox [67.7299 304.296 136.325 321.292]
+  /Matrix [1 0 0 1 -67.7299 -304.296]
+  /Resources <<
+    /ProcSet [/PDF]
+  >>
+  {{streamlen}}
+>>
+stream
+1 1 0 rg
+1 w
+72 304.7961 m
+68.2298 308.5663 68.2298 317.0216 72 320.7918 c
+132.0551 320.7918 l
+135.8253 317.0216 135.8253 308.5663 132.0551 304.7961 c
+f
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
