@@ -16,6 +16,24 @@
       "message": "Can this PDF still preserve its interesting properties, if this line went away, and the coordinates in the data stream gets adjusted by the matrix offsets?",
       "revId": "cc6f4ecb52f50110dac185405b0eb0c7645a0c6a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c65ce51_43ed13a7",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-07T22:48:34Z",
+      "side": 1,
+      "message": "Adjusting the path in the stream with -67 and -304 did not work. \nBut simply deleting this line, the rendering result is the same. (Verified with acrobat as well)",
+      "parentUuid": "0f15e7c3_353c4bf6",
+      "revId": "cc6f4ecb52f50110dac185405b0eb0c7645a0c6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
