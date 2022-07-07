@@ -226,6 +226,24 @@
       "parentUuid": "5a34591e_f58f56b5",
       "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5901ce6d_d35c9fea",
+        "filename": "testing/resources/pixel/bug_1847.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-07T22:17:19Z",
+      "side": 1,
+      "message": "Yay, much simpler!",
+      "parentUuid": "ee0e7630_7061317f",
+      "revId": "fcdfa8b06ba04dba9d5b0f49a9f3989f4525397b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
