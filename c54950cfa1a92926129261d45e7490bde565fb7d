@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3832c13_7380cd7d",
+        "filename": "core/fpdfapi/render/cpdf_rendertiling.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-08T19:03:21Z",
+      "side": 1,
+      "message": "Optional: Keep the comment for parameters.\n/*pBackdropBitmap\u003d*/nullptr, /*bGroupKnockout\u003d*/true",
+      "range": {
+        "startLine": 40,
+        "startChar": 59,
+        "endLine": 40,
+        "endChar": 73
+      },
+      "revId": "c54950cfa1a92926129261d45e7490bde565fb7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
