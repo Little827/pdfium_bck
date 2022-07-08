@@ -37,8 +37,7 @@ RetainPtr<CFX_DIBitmap> DrawPatternBitmap(
     return nullptr;
   }
   CFX_DefaultRenderDevice bitmap_device;
-  bitmap_device.Attach(pBitmap, /*bRgbByteOrder=*/false,
-                       /*pBackdropBitmap=*/nullptr, /*bGroupKnockout=*/true);
+  bitmap_device.AttachWithBackdropAndGroupKnockout(pBitmap, nullptr, true);
   pBitmap->Clear(0);
   CFX_FloatRect cell_bbox =
       pPattern->pattern_to_form().TransformRect(pPattern->bbox());
