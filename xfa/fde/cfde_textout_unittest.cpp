@@ -114,8 +114,29 @@ class CFDETextOutLargeBitmapTest : public CFDETextOutTest {
   }
 };
 
-// See crbug.com/1342078
-TEST_F(CFDETextOutLargeBitmapTest, DrawLogicText) {
+TEST_F(CFDETextOutLargeBitmapTest, DrawLogicTextBug953881) {
+  FDE_TextStyle styles;
+  styles.single_line_ = true;
+  text_out().SetStyles(styles);
+  text_out().SetAlignment(FDE_TextAlignment::kCenterLeft);
+  text_out().SetFontSize(10.0f);
+
+  static const wchar_t kText[] =
+      L"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+      L"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSssssssssss"
+      L"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+      L"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+      L"sssssssssssssssssssssssssssssssssssssssssssssssssnnnnnnnnnnn"
+      "\xfeba"
+      L"Sssssssssssssssssss"
+      "\xfeba"
+      L"iiiiisssss";
+  text_out().DrawLogicText(device(), WideString(kText),
+                           CFX_RectF(3, 3, 2048, 10));
+  EXPECT_STREQ("268b71a8660b51e31c6bf30fc7ff1e08", GetBitmapChecksum().c_str());
+}
+
+TEST_F(CFDETextOutLargeBitmapTest, DrawLogicTextBug1342078) {
   FDE_TextStyle styles;
   styles.single_line_ = true;
   text_out().SetStyles(styles);
