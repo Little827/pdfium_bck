@@ -370,12 +370,19 @@ bool CFDE_TextOut::RetrievePieces(CFGAS_Char::BreakType dwBreakStatus,
   bool bNeedReload = false;
   int32_t iLineWidth = FXSYS_roundf(rect.Width() * 20000.0f);
   int32_t iCount = m_pTxtBreak->CountBreakPieces();
+
+  size_t chars_to_skip = *pStartChar;
   for (int32_t i = 0; i < iCount; i++) {
     const CFGAS_BreakPiece* pPiece = m_pTxtBreak->GetBreakPieceUnstable(i);
     size_t iPieceChars = pPiece->GetLength();
+    if (chars_to_skip > iPieceChars) {
+      chars_to_skip -= iPieceChars;
+      continue;
+    }
+
     size_t iChar = *pStartChar;
     int32_t iWidth = 0;
-    size_t j = 0;
+    size_t j = chars_to_skip;
     for (; j < iPieceChars; j++) {
       const CFGAS_Char* pTC = pPiece->GetChar(j);
       int32_t iCurCharWidth = std::max(pTC->m_iCharWidth, 0);
