@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "16192673_d8282b50",
+        "filename": "xfa/fde/cfde_textout_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-11T23:02:20Z",
+      "side": 1,
+      "message": "nit: /*dwFontStyles\u003d*/0",
+      "range": {
+        "startLine": 56,
+        "startChar": 47,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "de30cf23be99d23413047f04af720c5bf5a0c9c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fe57bfb4_cf69bf0f",
@@ -14,6 +37,24 @@
       "writtenOn": "2022-07-11T20:39:54Z",
       "side": 1,
       "message": "Thisssss is the best I can do to minimize the test case provided on the bug. It may be possible minimize it further, but I\u0027m not sure it\u0027s worth the effort.",
+      "revId": "de30cf23be99d23413047f04af720c5bf5a0c9c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81491ed_d40d0165",
+        "filename": "xfa/fde/cfde_textout_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-11T23:02:20Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "fe57bfb4_cf69bf0f",
       "revId": "de30cf23be99d23413047f04af720c5bf5a0c9c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
