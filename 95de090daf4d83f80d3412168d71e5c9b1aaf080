@@ -22,6 +22,30 @@
       },
       "revId": "95de090daf4d83f80d3412168d71e5c9b1aaf080",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f61b13_99cd5751",
+        "filename": "xfa/fgas/layout/cfgas_txtbreak.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-11T18:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb2495ef_9ed015a6",
+      "range": {
+        "startLine": 817,
+        "startChar": 6,
+        "endLine": 817,
+        "endChar": 22
+      },
+      "revId": "95de090daf4d83f80d3412168d71e5c9b1aaf080",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
