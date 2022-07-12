@@ -16,6 +16,24 @@
       "message": "This additional validation would most probably break pypdfium2 code, unless the bug I experience with `first_scan\u003dNone` \u0026\u0026 `stride\u003d0` is fixed.",
       "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6f0821_e84d9f52",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-12T16:38:30Z",
+      "side": 1,
+      "message": "In this case, we should handle the special case that first_scan \u003d\u003d nullptr and stride \u003d\u003d 0 here. And add a matching test case:\nFPDFBitmap_CreateEx(kWidth, kHeight, FPDFBitmap_BGRA, nullptr, 0)",
+      "parentUuid": "2588346b_285708cb",
+      "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
