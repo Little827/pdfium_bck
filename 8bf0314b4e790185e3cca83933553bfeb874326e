@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6190ccba_a79b0dce",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-07-12T11:34:58Z",
+      "side": 1,
+      "message": "I think, if you add a test case with FPDFBitmap_CreateEx(), internal memory, and rotated rendering, it will demonstrate the bug that I am experiencing.",
+      "revId": "8bf0314b4e790185e3cca83933553bfeb874326e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
