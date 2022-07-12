@@ -16,6 +16,24 @@
       "message": "I think, if you add a test case with FPDFBitmap_CreateEx(), internal memory, and rotated rendering, it will demonstrate the bug that I am experiencing.",
       "revId": "8bf0314b4e790185e3cca83933553bfeb874326e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67001328_d1141df3",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-12T20:55:25Z",
+      "side": 1,
+      "message": "I filed https://crbug.com/pdfium/1850 on your behalf earlier, and closed it as WontFix. Hope the explanation in the bug is helpful.",
+      "parentUuid": "6190ccba_a79b0dce",
+      "revId": "8bf0314b4e790185e3cca83933553bfeb874326e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
