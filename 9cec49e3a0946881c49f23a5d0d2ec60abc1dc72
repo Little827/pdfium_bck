@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2588346b_285708cb",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-07-12T10:36:35Z",
+      "side": 1,
+      "message": "This additional validation would most probably break pypdfium2 code, unless the bug I experience with `first_scan\u003dNone` \u0026\u0026 `stride\u003d0` is fixed.",
+      "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
