@@ -1761,3 +1761,34 @@ TEST_F(FPDFViewEmbedderTest, GetTrailerEndsWhitespace) {
   ASSERT_EQ(size, FPDF_GetTrailerEnds(document(), ends.data(), size));
   EXPECT_EQ(kExpectedEnds, ends);
 }
+
+TEST_F(FPDFViewEmbedderTest, BitmapCreateExWithBadStrideParameter) {
+  constexpr int kWidth = 10;
+  constexpr int kHeight = 15;
+  int bytes_per_pixel = BytesPerPixelForFormat(FPDFBitmap_BGRA);
+  int bitmap_stride = bytes_per_pixel * kWidth;
+  ASSERT_NE(0, bytes_per_pixel);
+
+  {
+    std::vector<uint8_t> external_memory(bitmap_stride * kHeight);
+    ScopedFPDFBitmap bitmap(FPDFBitmap_CreateEx(
+        kWidth, kHeight, FPDFBitmap_BGRA, external_memory.data(), 0));
+    EXPECT_FALSE(bitmap);
+  }
+  {
+    std::vector<uint8_t> external_memory(bitmap_stride * kHeight);
+    ScopedFPDFBitmap bitmap(FPDFBitmap_CreateEx(
+        kWidth, kHeight, FPDFBitmap_BGRA, external_memory.data(), -1));
+    EXPECT_FALSE(bitmap);
+  }
+  {
+    ScopedFPDFBitmap bitmap(FPDFBitmap_CreateEx(
+        kWidth, kHeight, FPDFBitmap_BGRA, nullptr, bitmap_stride));
+    EXPECT_FALSE(bitmap);
+  }
+  {
+    ScopedFPDFBitmap bitmap(
+        FPDFBitmap_CreateEx(kWidth, kHeight, FPDFBitmap_BGRA, nullptr, -1));
+    EXPECT_FALSE(bitmap);
+  }
+}

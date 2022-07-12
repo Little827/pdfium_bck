@@ -807,6 +807,11 @@ FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV FPDFBitmap_CreateEx(int width,
                                                           int format,
                                                           void* first_scan,
                                                           int stride) {
+  const bool has_external_memory = !!first_scan;
+  const bool has_stride = stride != 0;
+  if (has_external_memory != has_stride)
+    return nullptr;
+
   FXDIB_Format fx_format;
   switch (format) {
     case FPDFBitmap_Gray:

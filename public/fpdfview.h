@@ -1059,9 +1059,10 @@ FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV FPDFBitmap_Create(int width,
 //                          above.
 //          first_scan  -   A pointer to the first byte of the first line if
 //                          using an external buffer. If this parameter is NULL,
-//                          then the a new buffer will be created.
-//          stride      -   Number of bytes for each scan line, for external
-//                          buffer only.
+//                          then a new buffer will be created.
+//          stride      -   Number of bytes for each scan line. Must be > 0 for
+//                          external buffer only. Without an external buffer,
+//                          this value must be 0.
 // Return value:
 //          The bitmap handle, or NULL if parameter error or out of memory.
 // Comments:
