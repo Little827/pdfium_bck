@@ -106,6 +106,24 @@
       "parentUuid": "14533daa_29276070",
       "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca024382_6ee4d91f",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-12T22:33:55Z",
+      "side": 1,
+      "message": "FPDFBitmap_CreateEx() isn\u0027t going to change much, so if the caller wants an internal memory allocation with a specified stride, it will (continue to) work as long as the stride value is correct. No real negative implications other than the caller has to do the stride calculation when it is not strictly necessary. Other than that, it is just awkward.",
+      "parentUuid": "370ea183_36e79f64",
+      "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
