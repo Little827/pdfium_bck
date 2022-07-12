@@ -88,6 +88,24 @@
       "parentUuid": "4351a67b_d5e6cf75",
       "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370ea183_36e79f64",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-07-12T22:14:28Z",
+      "side": 1,
+      "message": "I doubt if the imaging library we use (Pillow) supports a custom stride value. I think it might always assume width*n_colours. Maybe I can switch the code to external buffer so we can set stride as we like, considering that the behaviour for internal buffer appears to be very awkward indeed.\nAs this patch would definitely break pypdfium2 code, I ask you to please delay merging this until I have decided what to do.\nThat said, can you please clarify if there are any negative implications of the current solution (using internal buffer and defining a certain stride)? If not, then perhaps this additional validation should be rejected.",
+      "parentUuid": "14533daa_29276070",
+      "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
