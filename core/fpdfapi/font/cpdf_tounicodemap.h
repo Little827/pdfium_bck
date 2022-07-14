@@ -26,6 +26,8 @@ class CPDF_ToUnicodeMap {
   WideString Lookup(uint32_t charcode) const;
   uint32_t ReverseLookup(wchar_t unicode) const;
 
+  size_t GetMultimapSizeForTesting() const { return m_Multimap.size(); }
+
  private:
   friend class cpdf_tounicodemap_StringToCode_Test;
   friend class cpdf_tounicodemap_StringToWideString_Test;
