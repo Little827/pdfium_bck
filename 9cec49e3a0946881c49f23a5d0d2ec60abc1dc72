@@ -160,6 +160,24 @@
       "parentUuid": "087c222c_16739db1",
       "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5aa85e_b235ae3e",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-07-14T19:09:31Z",
+      "side": 1,
+      "message": "Thanks, that looks better!",
+      "parentUuid": "9f04e9d7_231f94d1",
+      "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
