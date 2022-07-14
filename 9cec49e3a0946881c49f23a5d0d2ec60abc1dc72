@@ -142,6 +142,24 @@
       "parentUuid": "ca024382_6ee4d91f",
       "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f04e9d7_231f94d1",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-14T19:07:44Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/95330 is the alternative. Just leave the behavior as is, add tests for it, and document it.",
+      "parentUuid": "087c222c_16739db1",
+      "revId": "9cec49e3a0946881c49f23a5d0d2ec60abc1dc72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
