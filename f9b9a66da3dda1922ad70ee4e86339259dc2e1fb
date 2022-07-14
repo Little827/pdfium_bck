@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9ba58c_3b4506a2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-14T17:24:51Z",
+      "side": 1,
+      "message": "\"infinite loop\" is a more accurate description of the problem.",
+      "range": {
+        "startLine": 57,
+        "startChar": 64,
+        "endLine": 57,
+        "endChar": 68
+      },
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e81608_e04d13ea",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-14T17:24:51Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d9d9c17_783e6b85",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-14T17:24:51Z",
+      "side": 1,
+      "message": "Just declare on the stack? CPDF_ToUnicodeMap map(stream.Get());",
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0709503a_136676e0",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-14T17:24:51Z",
+      "side": 1,
+      "message": "I\u0027m curious why the test case needs to peek into the class internals? Is the Lookup() call on the previous line insufficient?",
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
