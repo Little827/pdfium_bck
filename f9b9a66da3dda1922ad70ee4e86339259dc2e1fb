@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeacf2df_bb2ff784",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-14T17:57:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad9ba58c_3b4506a2",
+      "range": {
+        "startLine": 57,
+        "startChar": 64,
+        "endLine": 57,
+        "endChar": 68
+      },
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7e81608_e04d13ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-14T17:24:51Z",
       "side": 1,
       "message": "constexpr",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2020cd_7360ce36",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-14T17:57:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e81608_e04d13ea",
       "range": {
         "startLine": 60,
         "startChar": 11,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "026c1154_0c938668",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-14T17:57:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d9d9c17_783e6b85",
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0709503a_136676e0",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-07-14T17:24:51Z",
       "side": 1,
       "message": "I\u0027m curious why the test case needs to peek into the class internals? Is the Lookup() call on the previous line insufficient?",
+      "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18544986_86201975",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-14T17:57:34Z",
+      "side": 1,
+      "message": "The original intention was to make sure the for-loop is only run once and won\u0027t fill up the map.\nI think if the test itself doesn\u0027t stuck, that\u0027s a good indicator for the success of the test as well.\n\nRemoved the size check in the new patchset.",
+      "parentUuid": "0709503a_136676e0",
       "revId": "f9b9a66da3dda1922ad70ee4e86339259dc2e1fb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
