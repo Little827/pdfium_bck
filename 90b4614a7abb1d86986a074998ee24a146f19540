@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef286910_f3989e02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-14T17:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f4fcc7f_8800b599",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "90b4614a7abb1d86986a074998ee24a146f19540",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb4590ea_2f562d00",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "335ad497_f812c8e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-14T17:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4590ea_2f562d00",
+      "range": {
+        "startLine": 11,
+        "startChar": 52,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "90b4614a7abb1d86986a074998ee24a146f19540",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ef87cb_b12e752f",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-07-13T22:12:59Z",
       "side": 1,
       "message": "Can we add test cases in cpdf_tounicodemap_unittest.cpp to trigger these overflows?",
+      "revId": "90b4614a7abb1d86986a074998ee24a146f19540",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "408f2beb_e02a782f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-14T17:05:59Z",
+      "side": 1,
+      "message": "The new patchset adds a unittest specific for this integer overflow issue.\nThe 3 sections inside this test will cover the 3 loops inside HandleBeginBFRange().",
+      "parentUuid": "f7ef87cb_b12e752f",
       "revId": "90b4614a7abb1d86986a074998ee24a146f19540",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
