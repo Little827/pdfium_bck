@@ -26,6 +26,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbedd28c_e2acdb42",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-15T23:53:01Z",
+      "side": 1,
+      "message": "If a separate CL first adds this method, and hard code the return value using #ifs, then much of the churn in embedder tests to switch compile time test expectations to run time test expectations can be done in separate CLs. That\u0027ll make this CL much smaller and easier to review.",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4faffa3d_d0c59a2c",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-15T23:53:01Z",
+      "side": 1,
+      "message": "Don\u0027t declare the same function twice.",
+      "revId": "5e43fd9db30b84ed868b0c5444f65a842f994c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf614626_1ffe37be",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 29
