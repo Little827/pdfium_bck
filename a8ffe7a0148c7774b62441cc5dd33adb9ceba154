@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea7527b_86745420",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-18T23:26:06Z",
+      "side": 1,
+      "message": "Needs chromium: prefix.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ab3d0a_4f05c8bb",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-18T23:26:06Z",
+      "side": 1,
+      "message": "Does the actual count matter? If not, use pdfium::Contains() instead. Then less time is spent counting all the matching values.",
+      "range": {
+        "startLine": 229,
+        "startChar": 18,
+        "endLine": 229,
+        "endChar": 23
+      },
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f05deba_e466983b",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-18T23:26:06Z",
+      "side": 1,
+      "message": "Does a range-based for-loop work here?",
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1244da6d_d9a8c7ef",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-18T23:26:06Z",
+      "side": 1,
+      "message": "Maybe rename this to InsertIntoMultimap() would make it clearer that it\u0027s not inserting a multimap into some other data structure?",
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
