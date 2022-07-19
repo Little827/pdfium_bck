@@ -35,11 +35,11 @@
 
 namespace {
 
-RetainPtr<CPDF_Object> GetResourceObject(CPDF_Dictionary* pDict) {
+RetainPtr<CPDF_Object> GetResourceObject(RetainPtr<CPDF_Dictionary> pDict) {
   constexpr size_t kMaxHierarchyDepth = 64;
   size_t depth = 0;
 
-  RetainPtr<CPDF_Dictionary> dictionary_to_check(pDict);
+  RetainPtr<CPDF_Dictionary> dictionary_to_check = std::move(pDict);
   while (dictionary_to_check) {
     RetainPtr<CPDF_Object> result =
         dictionary_to_check->GetMutableObjectFor("Resources");
@@ -863,14 +863,15 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
   if (CheckAcroForm() == kFormNotAvailable)
     return kDataNotAvailable;
 
-  auto* pPageDict = m_pDocument->GetPageDictionary(iPage);
+  RetainPtr<CPDF_Dictionary> pPageDict =
+      m_pDocument->GetMutablePageDictionary(iPage);
   if (!pPageDict)
     return kDataError;
 
   {
     auto page_num_obj = std::make_pair(
         dwPage, std::make_unique<CPDF_PageObjectAvail>(
-                    GetValidator(), m_pDocument.Get(), pPageDict));
+                    GetValidator(), m_pDocument.Get(), pPageDict.Get()));
     CPDF_PageObjectAvail* page_obj_avail =
         m_PagesObjAvail.insert(std::move(page_num_obj)).first->second.get();
     const DocAvailStatus status = page_obj_avail->CheckAvail();
@@ -878,7 +879,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
       return status;
   }
 
-  const DocAvailStatus resources_status = CheckResources(pPageDict);
+  const DocAvailStatus resources_status = CheckResources(std::move(pPageDict));
   if (resources_status != kDataAvailable)
     return resources_status;
 
@@ -889,10 +890,10 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
 }
 
 CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::CheckResources(
-    CPDF_Dictionary* page) {
+    RetainPtr<CPDF_Dictionary> page) {
   DCHECK(page);
   CPDF_ReadValidator::ScopedSession read_session(GetValidator());
-  RetainPtr<CPDF_Object> resources = GetResourceObject(page);
+  RetainPtr<CPDF_Object> resources = GetResourceObject(std::move(page));
   if (GetValidator()->has_read_problems())
     return kDataNotAvailable;
 
@@ -927,7 +928,7 @@ int CPDF_DataAvail::GetPageCount() const {
 const CPDF_Dictionary* CPDF_DataAvail::GetPageDictionary(int index) const {
   if (!m_pDocument || index < 0 || index >= GetPageCount())
     return nullptr;
-  CPDF_Dictionary* page = m_pDocument->GetPageDictionary(index);
+  const CPDF_Dictionary* page = m_pDocument->GetPageDictionary(index);
   if (page)
     return page;
   if (!m_pLinearized || !m_pHintTables)
