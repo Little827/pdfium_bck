@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ea7aa2_e0295d18",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-19T21:47:29Z",
+      "side": 1,
+      "message": "std::move()",
+      "revId": "1a39dd27d3b357060ab7473948377372b53e715d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafc728b_8e0d492a",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-19T21:47:29Z",
+      "side": 1,
+      "message": "std::move()",
+      "revId": "1a39dd27d3b357060ab7473948377372b53e715d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbebcf2_e389024f",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-19T21:47:29Z",
+      "side": 1,
+      "message": "Is this variable still needed?",
+      "revId": "1a39dd27d3b357060ab7473948377372b53e715d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33162b58_8af0bfe1",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-19T21:47:29Z",
+      "side": 1,
+      "message": "Can this method be const?",
+      "revId": "1a39dd27d3b357060ab7473948377372b53e715d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40483ca_ac6ddff0",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-19T21:47:29Z",
+      "side": 1,
+      "message": "`pStream` used on line 202 after this std::move().",
+      "revId": "1a39dd27d3b357060ab7473948377372b53e715d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06d6df1_c5c3ea1a",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-19T21:47:29Z",
+      "side": 1,
+      "message": "std::move()",
+      "revId": "1a39dd27d3b357060ab7473948377372b53e715d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
