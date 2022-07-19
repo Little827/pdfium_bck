@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f261e14_3ee38c7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-19T17:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea7527b_86745420",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70ab3d0a_4f05c8bb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-18T23:26:06Z",
       "side": 1,
       "message": "Does the actual count matter? If not, use pdfium::Contains() instead. Then less time is spent counting all the matching values.",
+      "range": {
+        "startLine": 229,
+        "startChar": 18,
+        "endLine": 229,
+        "endChar": 23
+      },
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0259c7f6_27218ff2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-19T17:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ab3d0a_4f05c8bb",
       "range": {
         "startLine": 229,
         "startChar": 18,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86e15ad8_085f1e88",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-19T17:12:19Z",
+      "side": 1,
+      "message": "I\u0027m afraid not. \nI don\u0027t see a std::multimap method that can return all the matching iterators of a given key in a vector format.",
+      "parentUuid": "5f05deba_e466983b",
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1244da6d_d9a8c7ef",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
         "patchSetId": 3
@@ -77,6 +143,24 @@
       "writtenOn": "2022-07-18T23:26:06Z",
       "side": 1,
       "message": "Maybe rename this to InsertIntoMultimap() would make it clearer that it\u0027s not inserting a multimap into some other data structure?",
+      "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3dfab7f_0b079f23",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-19T17:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1244da6d_d9a8c7ef",
       "revId": "a8ffe7a0148c7774b62441cc5dd33adb9ceba154",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
