@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bafbfcbc_c7988b54",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-07-20T17:18:22Z",
+      "side": 1,
+      "message": "Note: we\u0027ll get to fix this eventually, maybe.",
+      "range": {
+        "startLine": 256,
+        "startChar": 30,
+        "endLine": 256,
+        "endChar": 49
+      },
+      "revId": "288a7785060de136ec16c99b9aa5343b0947511a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
