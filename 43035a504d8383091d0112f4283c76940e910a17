@@ -70,6 +70,24 @@
       "parentUuid": "057eac15_aaa22e79",
       "revId": "43035a504d8383091d0112f4283c76940e910a17",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a2a4e0_5a87c65f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-20T17:46:58Z",
+      "side": 1,
+      "message": "Yes, it can be stored as std::set\u003cstd::pair\u003cuint32, uint32\u003e\u003e.\n\nI think the reason why we used map is because during text extraction, we only know the CIDs and we want to look up their matching unicodes. Map is more efficient for this purpose.",
+      "parentUuid": "5c62face_180c95a8",
+      "revId": "43035a504d8383091d0112f4283c76940e910a17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
