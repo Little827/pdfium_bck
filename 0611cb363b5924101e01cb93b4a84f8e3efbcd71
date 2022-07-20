@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5aa1c79_9c0c1823",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-07-20T23:02:04Z",
+      "side": 1,
+      "message": "Dawns on me we probably should have left this in fxcrt and unit tested it ...",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "0611cb363b5924101e01cb93b4a84f8e3efbcd71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
