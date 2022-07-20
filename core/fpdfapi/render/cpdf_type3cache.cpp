@@ -127,7 +127,7 @@ std::unique_ptr<CFX_GlyphBitmap> CPDF_Type3Cache::RenderGlyph(
     CPDF_Type3GlyphMap* pSize,
     uint32_t charcode,
     const CFX_Matrix& mtMatrix) {
-  const CPDF_Type3Char* pChar = m_pFont->LoadChar(charcode);
+  CPDF_Type3Char* pChar = m_pFont->LoadChar(charcode);
   if (!pChar || !pChar->GetBitmap())
     return nullptr;
 
