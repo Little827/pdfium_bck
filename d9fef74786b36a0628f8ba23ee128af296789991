@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "689f50b1_30adea36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-20T18:46:20Z",
+      "side": 1,
+      "message": "nit: nicer if the bug numbers are sorted in ascending order.",
+      "revId": "d9fef74786b36a0628f8ba23ee128af296789991",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "21ecb402_45bb45d2",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-07-20T18:37:29Z",
       "side": 1,
       "message": "I uploaded the new rendering results to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1541#c2.",
+      "revId": "d9fef74786b36a0628f8ba23ee128af296789991",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd365ed_d87d0625",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-20T18:46:20Z",
+      "side": 1,
+      "message": "Add a comment here as well.",
       "revId": "d9fef74786b36a0628f8ba23ee128af296789991",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
