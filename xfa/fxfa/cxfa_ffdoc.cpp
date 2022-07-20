@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <memory>
+#include <utility>
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -302,7 +303,7 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
       pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(pAcc->GetSpan());
 
   RetainPtr<CFX_DIBitmap> pDibSource = XFA_LoadImageFromBuffer(
-      pImageFileRead, FXCODEC_IMAGE_UNKNOWN, iImageXDpi, iImageYDpi);
+      std::move(pImageFileRead), FXCODEC_IMAGE_UNKNOWN, iImageXDpi, iImageYDpi);
   m_HashToDibDpiMap[dwHash] = {pDibSource, iImageXDpi, iImageYDpi};
   return pDibSource;
 }

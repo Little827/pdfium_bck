@@ -22,7 +22,7 @@ class CFX_ImageRenderer;
 class CXFA_ImageRenderer {
  public:
   CXFA_ImageRenderer(CFX_RenderDevice* pDevice,
-                     const RetainPtr<CFX_DIBBase>& pDIBBase,
+                     RetainPtr<CFX_DIBBase> pDIBBase,
                      const CFX_Matrix& mtImage2Device);
   ~CXFA_ImageRenderer();
 

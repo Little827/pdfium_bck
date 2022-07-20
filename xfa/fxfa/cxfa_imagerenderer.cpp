@@ -8,6 +8,8 @@
 
 #include <math.h>
 
+#include <utility>
+
 #include "core/fxge/cfx_renderdevice.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
@@ -15,9 +17,11 @@
 #include "core/fxge/dib/cfx_imagetransformer.h"
 
 CXFA_ImageRenderer::CXFA_ImageRenderer(CFX_RenderDevice* pDevice,
-                                       const RetainPtr<CFX_DIBBase>& pDIBBase,
+                                       RetainPtr<CFX_DIBBase> pDIBBase,
                                        const CFX_Matrix& pImage2Device)
-    : m_ImageMatrix(pImage2Device), m_pDevice(pDevice), m_pDIBBase(pDIBBase) {}
+    : m_ImageMatrix(pImage2Device),
+      m_pDevice(pDevice),
+      m_pDIBBase(std::move(pDIBBase)) {}
 
 CXFA_ImageRenderer::~CXFA_ImageRenderer() = default;
 

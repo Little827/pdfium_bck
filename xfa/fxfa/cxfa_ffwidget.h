@@ -48,14 +48,14 @@ constexpr float kXFAWidgetPrecision = 0.001f;
 void XFA_DrawImage(CFGAS_GEGraphics* pGS,
                    const CFX_RectF& rtImage,
                    const CFX_Matrix& matrix,
-                   const RetainPtr<CFX_DIBitmap>& pDIBitmap,
+                   RetainPtr<CFX_DIBitmap> pDIBitmap,
                    XFA_AttributeValue iAspect,
                    const CFX_Size& dpi,
                    XFA_AttributeValue iHorzAlign = XFA_AttributeValue::Left,
                    XFA_AttributeValue iVertAlign = XFA_AttributeValue::Top);
 
 RetainPtr<CFX_DIBitmap> XFA_LoadImageFromBuffer(
-    const RetainPtr<IFX_SeekableReadStream>& pImageFileRead,
+    RetainPtr<IFX_SeekableReadStream> pImageFileRead,
     FXCODEC_IMAGE_TYPE type,
     int32_t& iImageXDpi,
     int32_t& iImageYDpi);
