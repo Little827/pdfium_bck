@@ -16,6 +16,24 @@
       "message": "drive-by: can we just convert this to std::map and let it do the dup detection for us?",
       "revId": "43035a504d8383091d0112f4283c76940e910a17",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c107059_16fcc3b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-20T17:31:49Z",
+      "side": 1,
+      "message": "Hi Tom, here is some old context regarding `m_Multimap`: `m_Multimap` used to be a std::map until we found out that CID-Unicode mappings are not 1:1. CL https://pdfium-review.googlesource.com/95390 changed it into a multimap.\n\nIf we are to change it back into std::map, it will probably be something like the following:\n(1) std::map\u003cuint32_t/*cid*/, std::vector\u003cuint32_t\u003e/*unicodes*/)\u003e : we have to worry about where in the vector to insert the new element for efficiency. \nor \n(2) std::map\u003cuint32_t/*cid*/, std::map\u003cuint32_t\u003e/*unicodes*/\u003e: Easier to detect dups in the map of unicodes (no iteration is needed) and there no need to worry about where to insert the new mapping since the map will handle it for us.\n\nIt looks like (2) is a better choice so far. WDYT?",
+      "parentUuid": "526ca50e_62177066",
+      "revId": "43035a504d8383091d0112f4283c76940e910a17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
