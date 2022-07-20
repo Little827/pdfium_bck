@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/cxfa_ffimage.h"
 
+#include <utility>
+
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "xfa/fxfa/cxfa_ffapp.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
@@ -44,7 +46,6 @@ void CXFA_FFImage::RenderWidget(CFGAS_GEGraphics* pGS,
   mtRotate.Concat(matrix);
 
   CXFA_FFWidget::RenderWidget(pGS, mtRotate, highlight);
-
   RetainPtr<CFX_DIBitmap> pDIBitmap = GetNode()->GetImageImage();
   if (!pDIBitmap)
     return;
@@ -62,9 +63,14 @@ void CXFA_FFImage::RenderWidget(CFGAS_GEGraphics* pGS,
   }
 
   auto* value = m_pNode->GetFormValueIfExists();
-  CXFA_Image* image = value ? value->GetImageIfExists() : nullptr;
-  if (image) {
-    XFA_DrawImage(pGS, rtImage, mtRotate, pDIBitmap, image->GetAspect(),
-                  m_pNode->GetImageDpi(), iHorzAlign, iVertAlign);
-  }
+  if (!value)
+    return;
+
+  CXFA_Image* image = value->GetImageIfExists();
+  if (!image)
+    return;
+
+  XFA_DrawImage(pGS, rtImage, mtRotate, std::move(pDIBitmap),
+                image->GetAspect(), m_pNode->GetImageDpi(), iHorzAlign,
+                iVertAlign);
 }
