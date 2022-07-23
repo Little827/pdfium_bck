@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1710ca59_301faada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-23T01:14:32Z",
+      "side": 1,
+      "message": "Just wondering if we add the transform matrix into the PDF with a scale, will that also reproduce the issue? In that case adding a pixel test will become possible. ",
+      "revId": "55ff956c474de3a46cf99fe02f734acbc7fa2c70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
