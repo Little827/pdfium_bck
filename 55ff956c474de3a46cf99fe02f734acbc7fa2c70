@@ -16,6 +16,24 @@
       "message": "Just wondering if we add the transform matrix into the PDF with a scale, will that also reproduce the issue? In that case adding a pixel test will become possible. ",
       "revId": "55ff956c474de3a46cf99fe02f734acbc7fa2c70",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ca76a6_74e2eda5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-07-25T17:40:59Z",
+      "side": 1,
+      "message": "Good idea. Done. Let\u0027s see if it passes on all the bots.",
+      "parentUuid": "1710ca59_301faada",
+      "revId": "55ff956c474de3a46cf99fe02f734acbc7fa2c70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
