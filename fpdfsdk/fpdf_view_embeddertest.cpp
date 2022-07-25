@@ -1504,6 +1504,37 @@ TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithFlags) {
   UnloadPage(page);
 }
 
+// Demonstrates a line being drawn with the incorrect slope when rendering with
+// AGG at a particular scale factor. This test case can potentially be converted
+// into a pixel test, if the pixel test framework knows how to pass --scale to
+// pdfium_test when appropriate.
+TEST_F(FPDFViewEmbedderTest, Bug1846) {
+  ASSERT_TRUE(OpenDocument("bug_1846.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  auto result_lambda = [] {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    return "97177b4046cd352e4654b14843c379b5";
+#else
+    // TODO(crbug.com/pdfium/1846): AGG should render the line with the same
+    // slope as Skia.
+    return "70b01209602ca3bfbbab3f7ff351ad5e";
+#endif
+  };
+  constexpr int kScale = 5;
+
+  const int page_width = static_cast<int>(FPDF_GetPageWidthF(page) * kScale);
+  const int page_height = static_cast<int>(FPDF_GetPageHeightF(page) * kScale);
+  const FS_MATRIX matrix{kScale, 0, 0, kScale, 0, 0};
+  const FS_RECTF page_rect{0, 0, static_cast<float>(page_width),
+                           static_cast<float>(page_height)};
+  TestRenderPageBitmapWithMatrix(page, page_width, page_height, matrix,
+                                 page_rect, result_lambda());
+
+  UnloadPage(page);
+}
+
 #if BUILDFLAG(IS_WIN)
 TEST_F(FPDFViewEmbedderTest, FPDFRenderPageEmf) {
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
