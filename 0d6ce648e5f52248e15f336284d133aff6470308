@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92af6be_fd6a2391",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-07-26T00:09:37Z",
+      "side": 1,
+      "message": "\"the V8\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 74,
+        "endLine": 12,
+        "endChar": 76
+      },
+      "revId": "0d6ce648e5f52248e15f336284d133aff6470308",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
