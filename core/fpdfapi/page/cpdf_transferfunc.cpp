@@ -36,9 +36,10 @@ FX_COLORREF CPDF_TransferFunc::TranslateColor(FX_COLORREF colorref) const {
 }
 
 RetainPtr<CFX_DIBBase> CPDF_TransferFunc::TranslateImage(
-    const RetainPtr<CFX_DIBBase>& pSrc) {
+    RetainPtr<CFX_DIBBase> pSrc) {
   RetainPtr<CPDF_TransferFunc> pHolder(this);
-  return pdfium::MakeRetain<CPDF_TransferFuncDIB>(pSrc, pHolder);
+  return pdfium::MakeRetain<CPDF_TransferFuncDIB>(std::move(pSrc),
+                                                  std::move(pHolder));
 }
 
 pdfium::span<const uint8_t> CPDF_TransferFunc::GetSamplesR() const {
