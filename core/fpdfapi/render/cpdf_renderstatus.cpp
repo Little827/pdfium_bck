@@ -653,8 +653,8 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   RetainPtr<CFX_DIBitmap> backdrop;
   if (!transparency.IsIsolated() &&
       (m_pDevice->GetRenderCaps() & FXRC_GET_BITS)) {
-    backdrop = pdfium::MakeRetain<CFX_DIBitmap>();
-    if (!m_pDevice->CreateCompatibleBitmap(backdrop, width, height))
+    backdrop = m_pDevice->CreateCompatibleBitmap(width, height);
+    if (!backdrop)
       return true;
     m_pDevice->GetDIBits(backdrop, rect.left, rect.top);
   }
@@ -749,11 +749,13 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::GetBackdrop(
     bool bBackAlphaRequired) {
   int width = bbox.Width();
   int height = bbox.Height();
-  auto pBackdrop = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (bBackAlphaRequired && !m_bDropObjects)
+  RetainPtr<CFX_DIBitmap> pBackdrop;
+  if (bBackAlphaRequired && !m_bDropObjects) {
+    pBackdrop = pdfium::MakeRetain<CFX_DIBitmap>();
     pBackdrop->Create(width, height, FXDIB_Format::kArgb);
-  else
-    m_pDevice->CreateCompatibleBitmap(pBackdrop, width, height);
+  } else {
+    pBackdrop = m_pDevice->CreateCompatibleBitmap(width, height);
+  }
 
   if (!pBackdrop->GetBuffer())
     return nullptr;
