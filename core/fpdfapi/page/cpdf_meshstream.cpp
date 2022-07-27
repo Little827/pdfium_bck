@@ -149,6 +149,18 @@ bool CPDF_MeshStream::Load() {
   return true;
 }
 
+void CPDF_MeshStream::SkipBits(uint32_t nbits) {
+  m_BitStream->SkipBits(nbits);
+}
+
+void CPDF_MeshStream::ByteAlign() {
+  m_BitStream->ByteAlign();
+}
+
+bool CPDF_MeshStream::IsEOF() const {
+  return m_BitStream->IsEOF();
+}
+
 bool CPDF_MeshStream::CanReadFlag() const {
   return m_BitStream->BitsRemaining() >= m_nFlagBits;
 }
