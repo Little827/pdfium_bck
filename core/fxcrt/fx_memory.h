@@ -22,17 +22,12 @@ void FXMEM_DefaultFree(void* pointer);
 #ifdef __cplusplus
 }  // extern "C"
 
+#include "base/allocator/partition_allocator/partition_alloc_forward.h"
 #include "third_party/base/compiler_specific.h"
 
-namespace pdfium {
-namespace base {
-class PartitionAllocatorGeneric;
-}  // namespace base
-}  // namespace pdfium
-
-pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator();
-pdfium::base::PartitionAllocatorGeneric& GetGeneralPartitionAllocator();
-pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator();
+partition_alloc::ThreadSafePartitionRoot& GetArrayBufferPartitionAllocator();
+partition_alloc::ThreadSafePartitionRoot& GetGeneralPartitionAllocator();
+partition_alloc::ThreadSafePartitionRoot& GetStringPartitionAllocator();
 
 void FXMEM_InitializePartitionAlloc();
 NOINLINE void FX_OutOfMemoryTerminate(size_t size);

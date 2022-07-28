@@ -11,9 +11,9 @@
 #include <iterator>
 #include <limits>
 
+#include "base/allocator/partition_allocator/partition_alloc.h"
 #include "build/build_config.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 #include "third_party/base/debug/alias.h"
 #include "third_party/base/no_destructor.h"
 
@@ -21,20 +21,20 @@
 #include <windows.h>
 #endif
 
-pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator() {
-  static pdfium::base::NoDestructor<pdfium::base::PartitionAllocatorGeneric>
+partition_alloc::ThreadSafePartitionRoot& GetArrayBufferPartitionAllocator() {
+  static pdfium::base::NoDestructor<partition_alloc::ThreadSafePartitionRoot>
       s_array_buffer_allocator;
   return *s_array_buffer_allocator;
 }
 
-pdfium::base::PartitionAllocatorGeneric& GetGeneralPartitionAllocator() {
-  static pdfium::base::NoDestructor<pdfium::base::PartitionAllocatorGeneric>
+partition_alloc::ThreadSafePartitionRoot& GetGeneralPartitionAllocator() {
+  static pdfium::base::NoDestructor<partition_alloc::ThreadSafePartitionRoot>
       s_general_allocator;
   return *s_general_allocator;
 }
 
-pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator() {
-  static pdfium::base::NoDestructor<pdfium::base::PartitionAllocatorGeneric>
+partition_alloc::ThreadSafePartitionRoot& GetStringPartitionAllocator() {
+  static pdfium::base::NoDestructor<partition_alloc::ThreadSafePartitionRoot>
       s_string_allocator;
   return *s_string_allocator;
 }
@@ -42,18 +42,26 @@ pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator() {
 void FXMEM_InitializePartitionAlloc() {
   static bool s_partition_allocators_initialized = false;
   if (!s_partition_allocators_initialized) {
-    pdfium::base::PartitionAllocGlobalInit(FX_OutOfMemoryTerminate);
-    GetArrayBufferPartitionAllocator().init();
-    GetGeneralPartitionAllocator().init();
-    GetStringPartitionAllocator().init();
+    partition_alloc::PartitionAllocGlobalInit(FX_OutOfMemoryTerminate);
+    // Need to consider what options should be enabled:
+    partition_alloc::PartitionOptions options(
+        partition_alloc::PartitionOptions::AlignedAlloc::kDisallowed,
+        partition_alloc::PartitionOptions::ThreadCache::kDisabled,
+        partition_alloc::PartitionOptions::Quarantine::kDisallowed,
+        partition_alloc::PartitionOptions::Cookie::kAllowed,
+        partition_alloc::PartitionOptions::BackupRefPtr::kDisabled,
+        partition_alloc::PartitionOptions::BackupRefPtrZapping::kDisabled,
+        partition_alloc::PartitionOptions::UseConfigurablePool::kNo);
+    GetArrayBufferPartitionAllocator().Init(options);
+    GetGeneralPartitionAllocator().Init(options);
+    GetStringPartitionAllocator().Init(options);
     s_partition_allocators_initialized = true;
   }
 }
 
 void* FXMEM_DefaultAlloc(size_t byte_size) {
-  return pdfium::base::PartitionAllocGenericFlags(
-      GetGeneralPartitionAllocator().root(),
-      pdfium::base::PartitionAllocReturnNull, byte_size, "GeneralPartition");
+  return GetGeneralPartitionAllocator().AllocWithFlags(
+      partition_alloc::AllocFlags::kReturnNull, byte_size, "GeneralPartition");
 }
 
 void* FXMEM_DefaultCalloc(size_t num_elems, size_t byte_size) {
@@ -61,21 +69,20 @@ void* FXMEM_DefaultCalloc(size_t num_elems, size_t byte_size) {
 }
 
 void* FXMEM_DefaultRealloc(void* pointer, size_t new_size) {
-  return pdfium::base::PartitionReallocGenericFlags(
-      GetGeneralPartitionAllocator().root(),
-      pdfium::base::PartitionAllocReturnNull, pointer, new_size,
+  return GetGeneralPartitionAllocator().ReallocWithFlags(
+      partition_alloc::AllocFlags::kReturnNull, pointer, new_size,
       "GeneralPartition");
 }
 
 void FXMEM_DefaultFree(void* pointer) {
-  pdfium::base::PartitionFree(pointer);
+  partition_alloc::ThreadSafePartitionRoot::Free(pointer);
 }
 
 NOINLINE void FX_OutOfMemoryTerminate(size_t size) {
   // Convince the linker this should not be folded with similar functions using
   // Identical Code Folding.
   static int make_this_function_aliased = 0xbd;
-  pdfium::base::debug::Alias(&make_this_function_aliased);
+  partition_alloc::internal::base::debug::Alias(&make_this_function_aliased);
 
 #if BUILDFLAG(IS_WIN)
   // The same custom Windows exception code used in Chromium and Breakpad.
@@ -98,10 +105,9 @@ void* Alloc(size_t num_members, size_t member_size) {
   if (!total.IsValid())
     return nullptr;
 
-  constexpr int kFlags = pdfium::base::PartitionAllocReturnNull;
-  return pdfium::base::PartitionAllocGenericFlags(
-      GetGeneralPartitionAllocator().root(), kFlags, total.ValueOrDie(),
-      "GeneralPartition");
+  constexpr int kFlags = partition_alloc::AllocFlags::kReturnNull;
+  return GetGeneralPartitionAllocator().AllocWithFlags(
+      kFlags, total.ValueOrDie(), "GeneralPartition");
 }
 
 void* AllocOrDie(size_t num_members, size_t member_size) {
@@ -125,11 +131,10 @@ void* Calloc(size_t num_members, size_t member_size) {
   if (!total.IsValid())
     return nullptr;
 
-  constexpr int kFlags = pdfium::base::PartitionAllocReturnNull |
-                         pdfium::base::PartitionAllocZeroFill;
-  return pdfium::base::PartitionAllocGenericFlags(
-      GetGeneralPartitionAllocator().root(), kFlags, total.ValueOrDie(),
-      "GeneralPartition");
+  constexpr int kFlags = partition_alloc::AllocFlags::kReturnNull |
+                         partition_alloc::AllocFlags::kZeroFill;
+  return GetGeneralPartitionAllocator().AllocWithFlags(
+      kFlags, total.ValueOrDie(), "GeneralPartition");
 }
 
 void* Realloc(void* ptr, size_t num_members, size_t member_size) {
@@ -138,9 +143,8 @@ void* Realloc(void* ptr, size_t num_members, size_t member_size) {
   if (!size.IsValid())
     return nullptr;
 
-  return pdfium::base::PartitionReallocGenericFlags(
-      GetGeneralPartitionAllocator().root(),
-      pdfium::base::PartitionAllocReturnNull, ptr, size.ValueOrDie(),
+  return GetGeneralPartitionAllocator().ReallocWithFlags(
+      partition_alloc::AllocFlags::kReturnNull, ptr, size.ValueOrDie(),
       "GeneralPartition");
 }
 
@@ -181,10 +185,9 @@ void* StringAlloc(size_t num_members, size_t member_size) {
   if (!total.IsValid())
     return nullptr;
 
-  constexpr int kFlags = pdfium::base::PartitionAllocReturnNull;
-  return pdfium::base::PartitionAllocGenericFlags(
-      GetStringPartitionAllocator().root(), kFlags, total.ValueOrDie(),
-      "StringPartition");
+  constexpr int kFlags = partition_alloc::AllocFlags::kReturnNull;
+  return GetStringPartitionAllocator().AllocWithFlags(
+      kFlags, total.ValueOrDie(), "StringPartition");
 }
 
 }  // namespace internal
@@ -200,5 +203,5 @@ void FX_Free(void* ptr) {
   // So this check is hiding (what I consider to be) bugs, and we should try to
   // fix them. https://bugs.chromium.org/p/pdfium/issues/detail?id=690
   if (ptr)
-    pdfium::base::PartitionFree(ptr);
+    partition_alloc::ThreadSafePartitionRoot::Free(ptr);
 }

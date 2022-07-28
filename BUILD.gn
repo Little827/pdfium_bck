@@ -356,6 +356,7 @@ component("pdfium") {
     "fxjs",
     "third_party:pdfium_base",
     "third_party:skia_shared",
+    "//base/allocator/partition_allocator:partition_alloc",
   ]
 
   public_deps = [
