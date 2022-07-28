@@ -1096,6 +1096,12 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     pStreamDict->SetMatrixFor("Matrix", matrix);
     pStreamDict->SetRectFor("BBox", rcBBox);
   }
+  CPVT_FontMap map(
+      pDoc,
+      pStreamDict ? pStreamDict->GetMutableDictFor("Resources").Get() : nullptr,
+      pDefFont, font_name);
+  CPVT_VariableText::Provider prd(&map);
+
   switch (type) {
     case CPDF_GenerateAP::kTextField: {
       const CPDF_Object* pV =
@@ -1109,12 +1115,6 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       const CPDF_Object* pMaxLen =
           CPDF_FormField::GetFieldAttr(pAnnotDict, "MaxLen");
       uint32_t dwMaxLen = pMaxLen ? pMaxLen->GetInteger() : 0;
-      CPVT_FontMap map(pDoc,
-                       pStreamDict
-                           ? pStreamDict->GetMutableDictFor("Resources").Get()
-                           : nullptr,
-                       pDefFont, font_name);
-      CPVT_VariableText::Provider prd(&map);
       CPVT_VariableText vt;
       vt.SetProvider(&prd);
       vt.SetPlateRect(rcBody);
@@ -1171,12 +1171,6 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       const CPDF_Object* pV =
           CPDF_FormField::GetFieldAttr(pAnnotDict, pdfium::form_fields::kV);
       WideString swValue = pV ? pV->GetUnicodeText() : WideString();
-      CPVT_FontMap map(pDoc,
-                       pStreamDict
-                           ? pStreamDict->GetMutableDictFor("Resources").Get()
-                           : nullptr,
-                       pDefFont, font_name);
-      CPVT_VariableText::Provider prd(&map);
       CPVT_VariableText vt;
       vt.SetProvider(&prd);
       CFX_FloatRect rcButton = rcBody;
@@ -1242,12 +1236,6 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       break;
     }
     case CPDF_GenerateAP::kListBox: {
-      CPVT_FontMap map(pDoc,
-                       pStreamDict
-                           ? pStreamDict->GetMutableDictFor("Resources").Get()
-                           : nullptr,
-                       pDefFont, font_name);
-      CPVT_VariableText::Provider prd(&map);
       CPDF_Array* pOpts =
           ToArray(CPDF_FormField::GetFieldAttr(pAnnotDict, "Opt"));
       CPDF_Array* pSels =
