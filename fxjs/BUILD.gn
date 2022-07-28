@@ -19,6 +19,7 @@ source_set("fxjs") {
   deps = [ "../core/fxcrt" ]
   public_deps = []
   visibility = [ "../*" ]
+  defines = []
 
   if (pdf_enable_v8) {
     sources += [
@@ -110,6 +111,9 @@ source_set("fxjs") {
       "//v8",
       "//v8:v8_libplatform",
     ]
+    if (build_with_chromium) {
+      defines += [ "BUILD_WITH_CHROMIUM=1" ]
+    }
     configs += [ "//v8:external_startup_data" ]
     public_deps += [
       "../core/fxcrt",

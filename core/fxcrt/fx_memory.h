@@ -24,6 +24,19 @@ void FXMEM_DefaultFree(void* pointer);
 
 #include "third_party/base/compiler_specific.h"
 
+#if BUILD_WITH_CHROMIUM
+#include "base/allocator/partition_allocator/partition_alloc.h"
+
+namespace pdfium {
+namespace base {
+using PartitionAllocatorGeneric = ::partition_alloc::ThreadSafePartitionRoot;
+}  // namespace base
+}  // namespace pdfium
+
+partition_alloc::ThreadSafePartitionRoot& GetArrayBufferPartitionAllocator();
+partition_alloc::ThreadSafePartitionRoot& GetGeneralPartitionAllocator();
+partition_alloc::ThreadSafePartitionRoot& GetStringPartitionAllocator();
+#else
 namespace pdfium {
 namespace base {
 class PartitionAllocatorGeneric;
@@ -33,6 +46,7 @@ class PartitionAllocatorGeneric;
 pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator();
 pdfium::base::PartitionAllocatorGeneric& GetGeneralPartitionAllocator();
 pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator();
+#endif
 
 void FXMEM_InitializePartitionAlloc();
 NOINLINE void FX_OutOfMemoryTerminate(size_t size);

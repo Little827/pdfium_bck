@@ -146,6 +146,9 @@ source_set("fxcrt") {
       "cfx_memorystream.h",
     ]
   }
+  if (build_with_chromium) {
+    defines = [ "BUILD_WITH_CHROMIUM=1" ]
+  }
 }
 
 pdfium_unittest_source_set("unittests") {

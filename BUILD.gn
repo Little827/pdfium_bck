@@ -357,6 +357,9 @@ component("pdfium") {
     "third_party:pdfium_base",
     "third_party:skia_shared",
   ]
+  if (build_with_chromium) {
+    deps += [ "//base/allocator/partition_allocator:partition_alloc" ]
+  }
 
   public_deps = [
     ":pdfium_public_headers_impl",
