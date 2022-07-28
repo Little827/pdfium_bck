@@ -8,9 +8,9 @@
 #include <stddef.h>
 
 #include "build/build_config.h"
-#include "third_party/base/compiler_specific.h"
+#include "third_party/base/allocator/partition_allocator/partition_alloc_base/compiler_specific.h"
 
-#if BUILDFLAG(IS_APPLE)
+#if BUILDFLAG(IS_APPLE) && defined(ARCH_CPU_64_BITS)
 
 #include <mach/vm_page_size.h>
 
@@ -24,6 +24,31 @@
 // elimination.
 #define PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR __attribute__((const))
 
+#elif BUILDFLAG(IS_LINUX) && defined(ARCH_CPU_ARM64)
+// This should work for all POSIX (if needed), but currently all other
+// supported OS/architecture combinations use either hard-coded values
+// (such as x86) or have means to determine these values without needing
+// atomics (such as macOS on arm64).
+
+// Page allocator constants are run-time constant
+#define PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR __attribute__((const))
+
+#include <unistd.h>
+#include <atomic>
+
+namespace pdfium::base::internal {
+
+// Holds the current page size and shift, where size = 1 << shift
+// Use PageAllocationGranularity(), PageAllocationGranularityShift()
+// to initialize and retrieve these values safely.
+struct PageCharacteristics {
+  std::atomic<int> size;
+  std::atomic<int> shift;
+};
+extern PageCharacteristics page_characteristics;
+
+}  // namespace pdfium::base::internal
+
 #else
 
 // When defined, page size constants are fixed at compile time. When not
@@ -36,12 +61,14 @@
 
 #endif
 
-namespace pdfium {
-namespace {
+namespace pdfium::base::internal {
 
-#if !BUILDFLAG(IS_APPLE)
+// Forward declaration, implementation below
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
+PageAllocationGranularity();
 
-constexpr ALWAYS_INLINE int PageAllocationGranularityShift() {
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
+PageAllocationGranularityShift() {
 #if BUILDFLAG(IS_WIN) || defined(ARCH_CPU_PPC64)
   // Modern ppc64 systems support 4kB (shift = 12) and 64kB (shift = 16) page
   // sizes.  Since 64kB is the de facto standard on the platform and binaries
@@ -50,68 +77,90 @@ constexpr ALWAYS_INLINE int PageAllocationGranularityShift() {
   return 16;  // 64kB
 #elif defined(_MIPS_ARCH_LOONGSON)
   return 14;  // 16kB
+#elif BUILDFLAG(IS_APPLE) && defined(ARCH_CPU_64_BITS)
+  return vm_page_shift;
+#elif BUILDFLAG(IS_LINUX) && defined(ARCH_CPU_ARM64)
+  // arm64 supports 4kb (shift = 12), 16kb (shift = 14), and 64kb (shift = 16)
+  // page sizes. Retrieve from or initialize cache.
+  int shift = page_characteristics.shift.load(std::memory_order_relaxed);
+  if (PA_UNLIKELY(shift == 0)) {
+    shift = __builtin_ctz((int)PageAllocationGranularity());
+    page_characteristics.shift.store(shift, std::memory_order_relaxed);
+  }
+  return shift;
 #else
   return 12;  // 4kB
 #endif
 }
 
-#endif
-
-}  // namespace
-
-namespace base {
-
-PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR ALWAYS_INLINE size_t
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
 PageAllocationGranularity() {
-#if BUILDFLAG(IS_APPLE)
+#if BUILDFLAG(IS_APPLE) && defined(ARCH_CPU_64_BITS)
+  // This is literally equivalent to |1 << PageAllocationGranularityShift()|
+  // below, but was separated out for IS_APPLE to avoid << on a non-constexpr.
   return vm_page_size;
+#elif BUILDFLAG(IS_LINUX) && defined(ARCH_CPU_ARM64)
+  // arm64 supports 4kb, 16kb, and 64kb page sizes. Retrieve from or
+  // initialize cache.
+  int size = page_characteristics.size.load(std::memory_order_relaxed);
+  if (PA_UNLIKELY(size == 0)) {
+    size = getpagesize();
+    page_characteristics.size.store(size, std::memory_order_relaxed);
+  }
+  return size;
 #else
-  return 1ULL << PageAllocationGranularityShift();
+  return 1 << PageAllocationGranularityShift();
 #endif
 }
 
-PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR ALWAYS_INLINE size_t
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
 PageAllocationGranularityOffsetMask() {
   return PageAllocationGranularity() - 1;
 }
 
-PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR ALWAYS_INLINE size_t
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
 PageAllocationGranularityBaseMask() {
   return ~PageAllocationGranularityOffsetMask();
 }
 
-PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR ALWAYS_INLINE size_t
-SystemPageSize() {
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
+SystemPageShift() {
+  // On Windows allocation granularity is higher than the page size. This comes
+  // into play when reserving address space range (allocation granularity),
+  // compared to committing pages into memory (system page granularity).
 #if BUILDFLAG(IS_WIN)
-  return 4096;
+  return 12;  // 4096=1<<12
 #else
-  return PageAllocationGranularity();
+  return PageAllocationGranularityShift();
 #endif
 }
 
-PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR ALWAYS_INLINE size_t
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
+SystemPageSize() {
+#if (BUILDFLAG(IS_APPLE) && defined(ARCH_CPU_64_BITS)) || \
+    (BUILDFLAG(IS_LINUX) && defined(ARCH_CPU_ARM64))
+  // This is literally equivalent to |1 << SystemPageShift()| below, but was
+  // separated out for 64-bit IS_APPLE and arm64 on Linux to avoid << on a
+  // non-constexpr.
+  return PageAllocationGranularity();
+#else
+  return 1 << SystemPageShift();
+#endif
+}
+
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
 SystemPageOffsetMask() {
   return SystemPageSize() - 1;
 }
 
-PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR ALWAYS_INLINE size_t
+PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR PA_ALWAYS_INLINE size_t
 SystemPageBaseMask() {
   return ~SystemPageOffsetMask();
 }
 
-static constexpr size_t kPageMetadataShift = 5;  // 32 bytes per partition page.
-static constexpr size_t kPageMetadataSize = 1 << kPageMetadataShift;
+constexpr size_t kPageMetadataShift = 5;  // 32 bytes per partition page.
+constexpr size_t kPageMetadataSize = 1 << kPageMetadataShift;
 
-// See DecommitSystemPages(), this is not guaranteed to be synchronous on all
-// platforms.
-static constexpr bool kDecommittedPagesAreAlwaysZeroed =
-#if BUILDFLAG(IS_APPLE)
-    false;
-#else
-    true;
-#endif
-
-}  // namespace base
-}  // namespace pdfium
+}  // namespace pdfium::base::internal
 
 #endif  // THIRD_PARTY_BASE_ALLOCATOR_PARTITION_ALLOCATOR_PAGE_ALLOCATOR_CONSTANTS_H_

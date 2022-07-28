@@ -5,16 +5,18 @@
 #ifndef THIRD_PARTY_BASE_ALLOCATOR_PARTITION_ALLOCATOR_PAGE_ALLOCATOR_INTERNAL_H_
 #define THIRD_PARTY_BASE_ALLOCATOR_PARTITION_ALLOCATOR_PAGE_ALLOCATOR_INTERNAL_H_
 
-namespace pdfium {
-namespace base {
+#include <cstddef>
+#include <cstdint>
 
-void* SystemAllocPages(void* hint,
-                       size_t length,
-                       PageAccessibilityConfiguration accessibility,
-                       PageTag page_tag,
-                       bool commit);
+#include "third_party/base/allocator/partition_allocator/page_allocator.h"
 
-}  // namespace base
-}  // namespace pdfium
+namespace pdfium::base::internal {
+
+uintptr_t SystemAllocPages(uintptr_t hint,
+                           size_t length,
+                           PageAccessibilityConfiguration accessibility,
+                           PageTag page_tag);
+
+}  // namespace pdfium::base::internal
 
 #endif  // THIRD_PARTY_BASE_ALLOCATOR_PARTITION_ALLOCATOR_PAGE_ALLOCATOR_INTERNAL_H_

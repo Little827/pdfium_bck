@@ -4,93 +4,67 @@
 
 #include "third_party/base/allocator/partition_allocator/random.h"
 
-#include "build/build_config.h"
-#include "third_party/base/allocator/partition_allocator/spin_lock.h"
-#include "third_party/base/no_destructor.h"
+#include <type_traits>
 
-#if BUILDFLAG(IS_WIN)
-#include <windows.h>
-#else
-#include <sys/time.h>
-#include <unistd.h>
-#endif
+#include "third_party/base/allocator/partition_allocator/partition_alloc_base/rand_util.h"
+#include "third_party/base/allocator/partition_allocator/partition_alloc_base/thread_annotations.h"
+#include "third_party/base/allocator/partition_allocator/partition_lock.h"
 
-namespace pdfium {
-namespace base {
+namespace pdfium::base {
 
-// This is the same PRNG as used by tcmalloc for mapping address randomness;
-// see http://burtleburtle.net/bob/rand/smallprng.html.
-struct RandomContext {
-  subtle::SpinLock lock;
-  bool initialized;
-  uint32_t a;
-  uint32_t b;
-  uint32_t c;
-  uint32_t d;
+class RandomGenerator {
+ public:
+  constexpr RandomGenerator() {}
+
+  uint32_t RandomValue() {
+    ::pdfium::base::internal::ScopedGuard guard(lock_);
+    return GetGenerator()->RandUint32();
+  }
+
+  void SeedForTesting(uint64_t seed) {
+    ::pdfium::base::internal::ScopedGuard guard(lock_);
+    GetGenerator()->ReseedForTesting(seed);
+  }
+
+ private:
+  ::pdfium::base::internal::Lock lock_ = {};
+  bool initialized_ PA_GUARDED_BY(lock_) = false;
+  union {
+    internal::base::InsecureRandomGenerator instance_ PA_GUARDED_BY(lock_);
+    uint8_t instance_buffer_[sizeof(
+        internal::base::InsecureRandomGenerator)] PA_GUARDED_BY(lock_) = {};
+  };
+
+  internal::base::InsecureRandomGenerator* GetGenerator()
+      PA_EXCLUSIVE_LOCKS_REQUIRED(lock_) {
+    if (!initialized_) {
+      new (instance_buffer_) internal::base::InsecureRandomGenerator();
+      initialized_ = true;
+    }
+    return &instance_;
+  }
 };
+
+// Note: this is redundant, since the anonymous union is incompatible with a
+// non-trivial default destructor. Not meant to be destructed anyway.
+static_assert(std::is_trivially_destructible<RandomGenerator>::value, "");
 
 namespace {
 
-#define rot(x, k) (((x) << (k)) | ((x) >> (32 - (k))))
-
-uint32_t RandomValueInternal(RandomContext* x) {
-  uint32_t e = x->a - rot(x->b, 27);
-  x->a = x->b ^ rot(x->c, 17);
-  x->b = x->c + x->d;
-  x->c = x->d + e;
-  x->d = e + x->a;
-  return x->d;
-}
-
-#undef rot
-
-RandomContext* GetRandomContext() {
-  static NoDestructor<RandomContext> g_random_context;
-  RandomContext* x = g_random_context.get();
-  subtle::SpinLock::Guard guard(x->lock);
-  if (UNLIKELY(!x->initialized)) {
-    x->initialized = true;
-    char c;
-    uint32_t seed = static_cast<uint32_t>(reinterpret_cast<uintptr_t>(&c));
-    uint32_t pid;
-    uint32_t usec;
-#if BUILDFLAG(IS_WIN)
-    pid = GetCurrentProcessId();
-    SYSTEMTIME st;
-    GetSystemTime(&st);
-    usec = static_cast<uint32_t>(st.wMilliseconds * 1000);
-#else
-    pid = static_cast<uint32_t>(getpid());
-    struct timeval tv;
-    gettimeofday(&tv, 0);
-    usec = static_cast<uint32_t>(tv.tv_usec);
-#endif
-    seed ^= pid;
-    seed ^= usec;
-    x->a = 0xf1ea5eed;
-    x->b = x->c = x->d = seed;
-    for (int i = 0; i < 20; ++i) {
-      RandomValueInternal(x);
-    }
-  }
-  return x;
-}
+RandomGenerator g_generator = {};
 
 }  // namespace
 
+namespace internal {
+
 uint32_t RandomValue() {
-  RandomContext* x = GetRandomContext();
-  subtle::SpinLock::Guard guard(x->lock);
-  return RandomValueInternal(x);
+  return g_generator.RandomValue();
 }
 
-void SetMmapSeedForTesting(int64_t seed) {
-  RandomContext* x = GetRandomContext();
-  subtle::SpinLock::Guard guard(x->lock);
-  x->a = x->b = static_cast<uint32_t>(seed);
-  x->c = x->d = static_cast<uint32_t>(seed >> 32);
-  x->initialized = true;
+}  // namespace internal
+
+void SetMmapSeedForTesting(uint64_t seed) {
+  return g_generator.SeedForTesting(seed);
 }
 
-}  // namespace base
-}  // namespace pdfium
+}  // namespace pdfium::base
