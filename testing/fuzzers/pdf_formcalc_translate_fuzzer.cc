@@ -5,9 +5,9 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widetext_buffer.h"
 #include "fxjs/xfa/cfxjse_formcalc_context.h"
 #include "testing/fuzzers/pdfium_fuzzer_util.h"
 #include "testing/fuzzers/xfa_process_state.h"
