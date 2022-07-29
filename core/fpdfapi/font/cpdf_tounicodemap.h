@@ -8,6 +8,8 @@
 #define CORE_FPDFAPI_FONT_CPDF_TOUNICODEMAP_H_
 
 #include <map>
+#include <set>
+#include <utility>
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
@@ -41,10 +43,15 @@ class CPDF_ToUnicodeMap {
   uint32_t GetMultiCharIndexIndicator() const;
   void SetCode(uint32_t srccode, WideString destcode);
 
+  // Checks whether the current cid-unicode mapping already exists in
+  // `m_Multimap`.
+  bool FoundMapping(uint32_t code, uint32_t destcode);
+
   // Inserts a new entry which hasn't not been inserted into `m_Multimap`
   // before.
   void InsertIntoMultimap(uint32_t code, uint32_t destcode);
 
+  std::set<std::pair<uint32_t, uint32_t>> m_ExistingMapping;
   std::multimap<uint32_t, uint32_t> m_Multimap;
   UnownedPtr<const CPDF_CID2UnicodeMap> m_pBaseMap;
   std::vector<WideString> m_MultiCharVec;
