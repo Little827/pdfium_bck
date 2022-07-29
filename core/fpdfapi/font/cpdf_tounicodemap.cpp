@@ -7,6 +7,7 @@
 #include "core/fpdfapi/font/cpdf_tounicodemap.h"
 
 #include <map>
+#include <set>
 #include <utility>
 
 #include "core/fpdfapi/font/cpdf_cid2unicodemap.h"
@@ -227,19 +228,14 @@ void CPDF_ToUnicodeMap::SetCode(uint32_t srccode, WideString destcode) {
   }
 }
 
-void CPDF_ToUnicodeMap::InsertIntoMultimap(uint32_t code, uint32_t destcode) {
-  if (!pdfium::Contains(m_Multimap, code)) {
-    m_Multimap.emplace(code, destcode);
-    return;
-  }
+bool CPDF_ToUnicodeMap::FoundMapping(uint32_t code, uint32_t destcode) {
+  return pdfium::Contains(m_ExistingMapping, std::make_pair(code, destcode));
+}
 
-  auto ret = m_Multimap.equal_range(code);
-  for (auto iter = ret.first; iter != ret.second; ++iter) {
-    if (iter->second == destcode) {
-      // Do not insert since a duplicate mapping is found.
-      return;
-    }
-  }
+void CPDF_ToUnicodeMap::InsertIntoMultimap(uint32_t code, uint32_t destcode) {
+  if (FoundMapping(code, destcode))
+    return;
 
   m_Multimap.emplace(code, destcode);
+  m_ExistingMapping.emplace(std::make_pair(code, destcode));
 }
