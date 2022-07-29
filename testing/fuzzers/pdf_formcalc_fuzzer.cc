@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widetext_buffer.h"
 #include "testing/fuzzers/pdfium_fuzzer_util.h"
 #include "testing/fuzzers/xfa_process_state.h"
 #include "xfa/fxfa/formcalc/cxfa_fmparser.h"
