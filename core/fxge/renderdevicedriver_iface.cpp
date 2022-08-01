@@ -34,7 +34,7 @@ bool RenderDeviceDriverIface::DrawCosmeticLine(const CFX_PointF& ptMoveTo,
   return false;
 }
 
-bool RenderDeviceDriverIface::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
+bool RenderDeviceDriverIface::GetDIBits(RetainPtr<CFX_DIBitmap> pBitmap,
                                         int left,
                                         int top) {
   return false;
@@ -72,13 +72,12 @@ bool RenderDeviceDriverIface::DrawShading(const CPDF_ShadingPattern* pPattern,
 }
 
 #if defined(_SKIA_SUPPORT_)
-bool RenderDeviceDriverIface::SetBitsWithMask(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
-    const RetainPtr<CFX_DIBBase>& pMask,
-    int left,
-    int top,
-    int bitmap_alpha,
-    BlendMode blend_type) {
+bool RenderDeviceDriverIface::SetBitsWithMask(RetainPtr<CFX_DIBBase> pBitmap,
+                                              RetainPtr<CFX_DIBBase> pMask,
+                                              int left,
+                                              int top,
+                                              int bitmap_alpha,
+                                              BlendMode blend_type) {
   return false;
 }
 #endif

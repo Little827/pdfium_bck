@@ -42,7 +42,7 @@ class RetainPtr {
   RetainPtr(std::nullptr_t ptr) {}
 
   template <class U>
-  RetainPtr(const RetainPtr<U>& that) : RetainPtr(that.Get()) {}
+  RetainPtr(RetainPtr<U> that) : RetainPtr(that.Get()) {}
 
   template <class U>
   RetainPtr<U> As() const {
@@ -138,12 +138,12 @@ class Retainable {
 };
 
 template <typename T, typename U>
-inline bool operator==(const U* lhs, const RetainPtr<T>& rhs) {
+inline bool operator==(const U* lhs, RetainPtr<T> rhs) {
   return rhs == lhs;
 }
 
 template <typename T, typename U>
-inline bool operator!=(const U* lhs, const RetainPtr<T>& rhs) {
+inline bool operator!=(const U* lhs, RetainPtr<T> rhs) {
   return rhs != lhs;
 }
 

@@ -208,7 +208,7 @@ CFX_PSRenderer::~CFX_PSRenderer() {
   EndRendering();
 }
 
-void CFX_PSRenderer::Init(const RetainPtr<IFX_RetainableWriteStream>& pStream,
+void CFX_PSRenderer::Init(RetainPtr<IFX_RetainableWriteStream> pStream,
                           RenderingLevel level,
                           int width,
                           int height) {
@@ -457,7 +457,7 @@ void CFX_PSRenderer::SetGraphState(const CFX_GraphStateData* pGraphState) {
   WriteStream(buf);
 }
 
-bool CFX_PSRenderer::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
+bool CFX_PSRenderer::SetDIBits(RetainPtr<CFX_DIBBase> pSource,
                                uint32_t color,
                                int left,
                                int top) {
@@ -467,7 +467,7 @@ bool CFX_PSRenderer::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   return DrawDIBits(pSource, color, matrix, FXDIB_ResampleOptions());
 }
 
-bool CFX_PSRenderer::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
+bool CFX_PSRenderer::StretchDIBits(RetainPtr<CFX_DIBBase> pSource,
                                    uint32_t color,
                                    int dest_left,
                                    int dest_top,
@@ -480,7 +480,7 @@ bool CFX_PSRenderer::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   return DrawDIBits(pSource, color, matrix, options);
 }
 
-bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
+bool CFX_PSRenderer::DrawDIBits(RetainPtr<CFX_DIBBase> pSource,
                                 uint32_t color,
                                 const CFX_Matrix& matrix,
                                 const FXDIB_ResampleOptions& options) {

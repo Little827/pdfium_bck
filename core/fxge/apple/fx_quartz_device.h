@@ -19,7 +19,7 @@ class CFX_Matrix;
 
 class CQuartz2D {
  public:
-  void* CreateGraphics(const RetainPtr<CFX_DIBitmap>& bitmap);
+  void* CreateGraphics(RetainPtr<CFX_DIBitmap> bitmap);
   void DestroyGraphics(void* graphics);
 
   void* CreateFont(pdfium::span<const uint8_t> pFontData);

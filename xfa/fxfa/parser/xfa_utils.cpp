@@ -286,7 +286,7 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
 }
 
 void RegenerateFormFile_Container(CXFA_Node* pNode,
-                                  const RetainPtr<IFX_SeekableStream>& pStream,
+                                  RetainPtr<IFX_SeekableStream> pStream,
                                   bool bSaveXML) {
   XFA_Element eType = pNode->GetElementType();
   if (eType == XFA_Element::Field || eType == XFA_Element::Draw ||
@@ -442,10 +442,9 @@ void XFA_DataExporter_DealWithDataGroupNode(CXFA_Node* pDataNode) {
   pElement->SetAttribute(L"xfa:dataNode", L"dataGroup");
 }
 
-void XFA_DataExporter_RegenerateFormFile(
-    CXFA_Node* pNode,
-    const RetainPtr<IFX_SeekableStream>& pStream,
-    bool bSaveXML) {
+void XFA_DataExporter_RegenerateFormFile(CXFA_Node* pNode,
+                                         RetainPtr<IFX_SeekableStream> pStream,
+                                         bool bSaveXML) {
   if (pNode->IsModelNode()) {
     pStream->WriteString("<form xmlns=\"");
     pStream->WriteString(kFormNS);

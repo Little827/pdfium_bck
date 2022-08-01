@@ -29,10 +29,9 @@ bool XFA_RecognizeRichText(CFX_XMLElement* pRichTextXMLNode);
 bool XFA_FieldIsMultiListBox(const CXFA_Node* pFieldNode);
 
 void XFA_DataExporter_DealWithDataGroupNode(CXFA_Node* pDataNode);
-void XFA_DataExporter_RegenerateFormFile(
-    CXFA_Node* pNode,
-    const RetainPtr<IFX_SeekableStream>& pStream,
-    bool bSaveXML);
+void XFA_DataExporter_RegenerateFormFile(CXFA_Node* pNode,
+                                         RetainPtr<IFX_SeekableStream> pStream,
+                                         bool bSaveXML);
 
 void XFA_EventErrorAccumulate(XFA_EventError* pAcc, XFA_EventError eNew);
 

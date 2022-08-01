@@ -184,7 +184,7 @@ FPDF_StructElement_GetStringAttribute(FPDF_STRUCTELEMENT struct_element,
   if (!array)
     return 0;
   CPDF_ArrayLocker locker(array);
-  for (const RetainPtr<CPDF_Object>& obj : locker) {
+  for (RetainPtr<CPDF_Object> obj : locker) {
     const CPDF_Dictionary* obj_dict = obj->AsDictionary();
     if (!obj_dict)
       continue;

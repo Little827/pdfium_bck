@@ -126,7 +126,7 @@ RetainPtr<CPDF_Dictionary> CPDF_Image::InitJPEG(
   return pDict;
 }
 
-void CPDF_Image::SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile) {
+void CPDF_Image::SetJpegImage(RetainPtr<IFX_SeekableReadStream> pFile) {
   uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
   if (!size)
     return;
@@ -148,8 +148,7 @@ void CPDF_Image::SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile) {
   m_pStream->InitStreamFromFile(std::move(pFile), std::move(pDict));
 }
 
-void CPDF_Image::SetJpegImageInline(
-    const RetainPtr<IFX_SeekableReadStream>& pFile) {
+void CPDF_Image::SetJpegImageInline(RetainPtr<IFX_SeekableReadStream> pFile) {
   uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
   if (!size)
     return;
@@ -165,7 +164,7 @@ void CPDF_Image::SetJpegImageInline(
   m_pStream = pdfium::MakeRetain<CPDF_Stream>(data, std::move(pDict));
 }
 
-void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+void CPDF_Image::SetImage(RetainPtr<CFX_DIBitmap> pBitmap) {
   int32_t BitmapWidth = pBitmap->GetWidth();
   int32_t BitmapHeight = pBitmap->GetHeight();
   if (BitmapWidth < 1 || BitmapHeight < 1)

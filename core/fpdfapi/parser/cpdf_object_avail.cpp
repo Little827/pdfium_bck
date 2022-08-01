@@ -14,10 +14,9 @@
 #include "third_party/base/check.h"
 #include "third_party/base/containers/contains.h"
 
-CPDF_ObjectAvail::CPDF_ObjectAvail(
-    const RetainPtr<CPDF_ReadValidator>& validator,
-    CPDF_IndirectObjectHolder* holder,
-    const CPDF_Object* root)
+CPDF_ObjectAvail::CPDF_ObjectAvail(RetainPtr<CPDF_ReadValidator> validator,
+                                   CPDF_IndirectObjectHolder* holder,
+                                   const CPDF_Object* root)
     : validator_(validator), holder_(holder), root_(root) {
   DCHECK(validator_);
   DCHECK(holder);
@@ -26,10 +25,9 @@ CPDF_ObjectAvail::CPDF_ObjectAvail(
     parsed_objnums_.insert(root_->GetObjNum());
 }
 
-CPDF_ObjectAvail::CPDF_ObjectAvail(
-    const RetainPtr<CPDF_ReadValidator>& validator,
-    CPDF_IndirectObjectHolder* holder,
-    uint32_t obj_num)
+CPDF_ObjectAvail::CPDF_ObjectAvail(RetainPtr<CPDF_ReadValidator> validator,
+                                   CPDF_IndirectObjectHolder* holder,
+                                   uint32_t obj_num)
     : validator_(validator),
       holder_(holder),
       root_(pdfium::MakeRetain<CPDF_Reference>(holder, obj_num)) {

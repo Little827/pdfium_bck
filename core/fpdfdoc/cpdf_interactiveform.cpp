@@ -239,7 +239,7 @@ bool FindFontFromDoc(const CPDF_Dictionary* pFormDict,
 
 void AddFont(CPDF_Dictionary* pFormDict,
              CPDF_Document* pDocument,
-             const RetainPtr<CPDF_Font>& pFont,
+             RetainPtr<CPDF_Font> pFont,
              ByteString* csNameTag) {
   DCHECK(pFormDict);
   DCHECK(pFont);

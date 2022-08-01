@@ -99,7 +99,7 @@ void SwapByteOrder(uint16_t* pStr, size_t iLength) {
 #define BOM_UTF16_LE 0x0000FEFF
 
 CFX_SeekableStreamProxy::CFX_SeekableStreamProxy(
-    const RetainPtr<IFX_SeekableReadStream>& stream)
+    RetainPtr<IFX_SeekableReadStream> stream)
     : m_pStream(stream) {
   DCHECK(m_pStream);
 

@@ -32,7 +32,7 @@ class CPDF_StreamParser {
   }
   uint32_t GetPos() const { return m_Pos; }
   void SetPos(uint32_t pos) { m_Pos = pos; }
-  const RetainPtr<CPDF_Object>& GetObject() const { return m_pLastObj; }
+  RetainPtr<CPDF_Object> GetObject() const { return m_pLastObj; }
   RetainPtr<CPDF_Object> ReadNextObject(bool bAllowNestedArray,
                                         bool bInArray,
                                         uint32_t dwRecursionLevel);

@@ -41,9 +41,7 @@ class IJS_Runtime;
 struct FX_IMAGEDIB_AND_DPI {
   FX_IMAGEDIB_AND_DPI();
   FX_IMAGEDIB_AND_DPI(const FX_IMAGEDIB_AND_DPI& that);
-  FX_IMAGEDIB_AND_DPI(const RetainPtr<CFX_DIBBase>& pDib,
-                      int32_t xDpi,
-                      int32_t yDpi);
+  FX_IMAGEDIB_AND_DPI(RetainPtr<CFX_DIBBase> pDib, int32_t xDpi, int32_t yDpi);
   ~FX_IMAGEDIB_AND_DPI();
 
   RetainPtr<CFX_DIBBase> pDibSource;
@@ -173,8 +171,7 @@ class CXFA_FFDoc : public cppgc::GarbageCollected<CXFA_FFDoc> {
                                            int32_t& iImageXDpi,
                                            int32_t& iImageYDpi);
 
-  bool SavePackage(CXFA_Node* pNode,
-                   const RetainPtr<IFX_SeekableStream>& pFile);
+  bool SavePackage(CXFA_Node* pNode, RetainPtr<IFX_SeekableStream> pFile);
 
  private:
   CXFA_FFDoc(CXFA_FFApp* pApp,

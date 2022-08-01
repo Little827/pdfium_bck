@@ -40,7 +40,7 @@ int CGdiPrinterDriver::GetDeviceCaps(int caps_id) const {
   return CGdiDeviceDriver::GetDeviceCaps(caps_id);
 }
 
-bool CGdiPrinterDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
+bool CGdiPrinterDriver::SetDIBits(RetainPtr<CFX_DIBBase> pSource,
                                   uint32_t color,
                                   const FX_RECT& src_rect,
                                   int left,
@@ -68,7 +68,7 @@ bool CGdiPrinterDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   return GDI_SetDIBits(pBitmap, src_rect, left, top);
 }
 
-bool CGdiPrinterDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
+bool CGdiPrinterDriver::StretchDIBits(RetainPtr<CFX_DIBBase> pSource,
                                       uint32_t color,
                                       int dest_left,
                                       int dest_top,
@@ -131,7 +131,7 @@ bool CGdiPrinterDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                            dest_height, options);
 }
 
-bool CGdiPrinterDriver::StartDIBits(const RetainPtr<CFX_DIBBase>& pSource,
+bool CGdiPrinterDriver::StartDIBits(RetainPtr<CFX_DIBBase> pSource,
                                     int bitmap_alpha,
                                     uint32_t color,
                                     const CFX_Matrix& matrix,

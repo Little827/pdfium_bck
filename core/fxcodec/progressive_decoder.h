@@ -70,7 +70,7 @@ class ProgressiveDecoder final :
   ProgressiveDecoder();
   virtual ~ProgressiveDecoder();
 
-  FXCODEC_STATUS LoadImageInfo(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  FXCODEC_STATUS LoadImageInfo(RetainPtr<IFX_SeekableReadStream> pFile,
                                FXCODEC_IMAGE_TYPE imageType,
                                CFX_DIBAttribute* pAttribute,
                                bool bSkipImageTypeCheck);
@@ -83,7 +83,7 @@ class ProgressiveDecoder final :
   void SetClipBox(FX_RECT* clip);
 
   std::pair<FXCODEC_STATUS, size_t> GetFrames();
-  FXCODEC_STATUS StartDecode(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
+  FXCODEC_STATUS StartDecode(RetainPtr<CFX_DIBitmap> pDIBitmap,
                              int start_x,
                              int start_y,
                              int size_x,
@@ -168,13 +168,13 @@ class ProgressiveDecoder final :
   bool GifDetectImageTypeInBuffer();
   FXCODEC_STATUS GifStartDecode();
   FXCODEC_STATUS GifContinueDecode();
-  void GifDoubleLineResampleVert(const RetainPtr<CFX_DIBitmap>& pDeviceBitmap,
+  void GifDoubleLineResampleVert(RetainPtr<CFX_DIBitmap> pDeviceBitmap,
                                  double scale_y,
                                  int dest_row);
 #endif  // PDF_ENABLE_XFA_GIF
 
 #ifdef PDF_ENABLE_XFA_PNG
-  void PngOneOneMapResampleHorz(const RetainPtr<CFX_DIBitmap>& pDeviceBitmap,
+  void PngOneOneMapResampleHorz(RetainPtr<CFX_DIBitmap> pDeviceBitmap,
                                 int32_t dest_line,
                                 uint8_t* src_scan,
                                 FXCodec_Format src_format);
@@ -202,18 +202,18 @@ class ProgressiveDecoder final :
   int GetDownScale();
   void GetTransMethod(FXDIB_Format dest_format, FXCodec_Format src_format);
 
-  void ResampleScanline(const RetainPtr<CFX_DIBitmap>& pDeviceBitmap,
+  void ResampleScanline(RetainPtr<CFX_DIBitmap> pDeviceBitmap,
                         int32_t dest_line,
                         uint8_t* src_scan,
                         FXCodec_Format src_format);
-  void Resample(const RetainPtr<CFX_DIBitmap>& pDeviceBitmap,
+  void Resample(RetainPtr<CFX_DIBitmap> pDeviceBitmap,
                 int32_t src_line,
                 uint8_t* src_scan,
                 FXCodec_Format src_format);
-  void ResampleVert(const RetainPtr<CFX_DIBitmap>& pDeviceBitmap,
+  void ResampleVert(RetainPtr<CFX_DIBitmap> pDeviceBitmap,
                     double scale_y,
                     int dest_row);
-  void ResampleVertBT(const RetainPtr<CFX_DIBitmap>& pDeviceBitmap,
+  void ResampleVertBT(RetainPtr<CFX_DIBitmap> pDeviceBitmap,
                       double scale_y,
                       int dest_row);
 

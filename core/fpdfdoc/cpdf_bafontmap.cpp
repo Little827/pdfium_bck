@@ -288,7 +288,7 @@ RetainPtr<CPDF_Font> CPDF_BAFontMap::GetAnnotDefaultFont(ByteString* sAlias) {
   return CPDF_DocPageData::FromDocument(m_pDocument.Get())->GetFont(pFontDict);
 }
 
-void CPDF_BAFontMap::AddFontToAnnotDict(const RetainPtr<CPDF_Font>& pFont,
+void CPDF_BAFontMap::AddFontToAnnotDict(RetainPtr<CPDF_Font> pFont,
                                         const ByteString& sAlias) {
   if (!pFont)
     return;
@@ -355,7 +355,7 @@ int32_t CPDF_BAFontMap::GetFontIndex(const ByteString& sFontName,
   return AddFontData(pFont, sAlias, nCharset);
 }
 
-int32_t CPDF_BAFontMap::AddFontData(const RetainPtr<CPDF_Font>& pFont,
+int32_t CPDF_BAFontMap::AddFontData(RetainPtr<CPDF_Font> pFont,
                                     const ByteString& sFontAlias,
                                     FX_Charset nCharset) {
   auto pNewData = std::make_unique<Data>();

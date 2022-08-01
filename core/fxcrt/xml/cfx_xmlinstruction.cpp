@@ -37,8 +37,7 @@ bool CFX_XMLInstruction::IsAcrobat() const {
   return name_.EqualsASCII("acrobat");
 }
 
-void CFX_XMLInstruction::Save(
-    const RetainPtr<IFX_RetainableWriteStream>& pXMLStream) {
+void CFX_XMLInstruction::Save(RetainPtr<IFX_RetainableWriteStream> pXMLStream) {
   if (name_.EqualsASCIINoCase("xml")) {
     pXMLStream->WriteString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     return;

@@ -20,23 +20,23 @@ class RetainedTreeNode : public TreeNode<T> {
   template <typename U, typename... Args>
   friend RetainPtr<U> pdfium::MakeRetain(Args&&... args);
 
-  void AppendFirstChild(const RetainPtr<T>& child) {
+  void AppendFirstChild(RetainPtr<T> child) {
     TreeNode<T>::AppendFirstChild(child.Get());
   }
 
-  void AppendLastChild(const RetainPtr<T>& child) {
+  void AppendLastChild(RetainPtr<T> child) {
     TreeNode<T>::AppendLastChild(child.Get());
   }
 
-  void InsertBefore(const RetainPtr<T>& child, T* other) {
+  void InsertBefore(RetainPtr<T> child, T* other) {
     TreeNode<T>::InsertBefore(child.Get(), other);
   }
 
-  void InsertAfter(const RetainPtr<T>& child, T* other) {
+  void InsertAfter(RetainPtr<T> child, T* other) {
     TreeNode<T>::InsertAfter(child.Get(), other);
   }
 
-  void RemoveChild(const RetainPtr<T>& child) {
+  void RemoveChild(RetainPtr<T> child) {
     TreeNode<T>::RemoveChild(child.Get());
   }
 

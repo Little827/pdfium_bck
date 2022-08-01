@@ -20,9 +20,9 @@ class CFGAS_TextUserData final : public Retainable {
   RetainPtr<CFGAS_LinkUserData> m_pLinkData;
 
  private:
-  explicit CFGAS_TextUserData(const RetainPtr<CFX_CSSComputedStyle>& pStyle);
-  CFGAS_TextUserData(const RetainPtr<CFX_CSSComputedStyle>& pStyle,
-                     const RetainPtr<CFGAS_LinkUserData>& pLinkData);
+  explicit CFGAS_TextUserData(RetainPtr<CFX_CSSComputedStyle> pStyle);
+  CFGAS_TextUserData(RetainPtr<CFX_CSSComputedStyle> pStyle,
+                     RetainPtr<CFGAS_LinkUserData> pLinkData);
   ~CFGAS_TextUserData() override;
 };
 

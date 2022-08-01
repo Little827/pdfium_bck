@@ -177,8 +177,7 @@ void CPDF_Parser::ShrinkObjectMap(uint32_t size) {
   m_CrossRefTable->ShrinkObjectMap(size);
 }
 
-bool CPDF_Parser::InitSyntaxParser(
-    const RetainPtr<CPDF_ReadValidator>& validator) {
+bool CPDF_Parser::InitSyntaxParser(RetainPtr<CPDF_ReadValidator> validator) {
   const absl::optional<FX_FILESIZE> header_offset = GetHeaderOffset(validator);
   if (!header_offset.has_value())
     return false;
@@ -208,7 +207,7 @@ bool CPDF_Parser::ParseFileVersion() {
 }
 
 CPDF_Parser::Error CPDF_Parser::StartParse(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+    RetainPtr<IFX_SeekableReadStream> pFileAccess,
     const ByteString& password) {
   if (!InitSyntaxParser(
           pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr)))
@@ -1016,7 +1015,7 @@ std::unique_ptr<CPDF_LinearizedHeader> CPDF_Parser::ParseLinearizedHeader() {
 }
 
 CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
-    const RetainPtr<CPDF_ReadValidator>& validator,
+    RetainPtr<CPDF_ReadValidator> validator,
     const ByteString& password) {
   DCHECK(!m_bHasParsed);
   DCHECK(!m_bXRefTableRebuilt);

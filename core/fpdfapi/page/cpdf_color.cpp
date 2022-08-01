@@ -25,7 +25,7 @@ bool CPDF_Color::IsPatternInternal() const {
   return m_pCS->GetFamily() == CPDF_ColorSpace::Family::kPattern;
 }
 
-void CPDF_Color::SetColorSpace(const RetainPtr<CPDF_ColorSpace>& pCS) {
+void CPDF_Color::SetColorSpace(RetainPtr<CPDF_ColorSpace> pCS) {
   m_pCS = pCS;
   if (IsPatternInternal()) {
     m_Buffer.clear();
@@ -42,7 +42,7 @@ void CPDF_Color::SetValueForNonPattern(const std::vector<float>& values) {
   m_Buffer = values;
 }
 
-void CPDF_Color::SetValueForPattern(const RetainPtr<CPDF_Pattern>& pPattern,
+void CPDF_Color::SetValueForPattern(RetainPtr<CPDF_Pattern> pPattern,
                                     const std::vector<float>& values) {
   if (values.size() > kMaxPatternColorComps)
     return;

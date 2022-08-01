@@ -35,8 +35,8 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
   void Clear(uint32_t color);
   SkPictureRecorder* CreateRecorder(int size_x, int size_y);
   void DebugVerifyBitmapIsPreMultiplied() const override;
-  bool SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
-                       const RetainPtr<CFX_DIBBase>& pMask,
+  bool SetBitsWithMask(RetainPtr<CFX_DIBBase> pBitmap,
+                       RetainPtr<CFX_DIBBase> pMask,
                        int left,
                        int top,
                        int bitmap_alpha,

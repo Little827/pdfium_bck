@@ -23,7 +23,7 @@ RetainPtr<CPDF_Font> CPDF_TextState::GetFont() const {
   return m_Ref.GetObject()->m_pFont;
 }
 
-void CPDF_TextState::SetFont(const RetainPtr<CPDF_Font>& pFont) {
+void CPDF_TextState::SetFont(RetainPtr<CPDF_Font> pFont) {
   m_Ref.GetPrivateCopy()->SetFont(pFont);
 }
 
@@ -106,7 +106,7 @@ RetainPtr<CPDF_TextState::TextData> CPDF_TextState::TextData::Clone() const {
   return pdfium::MakeRetain<CPDF_TextState::TextData>(*this);
 }
 
-void CPDF_TextState::TextData::SetFont(const RetainPtr<CPDF_Font>& pFont) {
+void CPDF_TextState::TextData::SetFont(RetainPtr<CPDF_Font> pFont) {
   m_pDocument = pFont ? pFont->GetDocument() : nullptr;
   m_pFont = pFont;
 }

@@ -15,7 +15,7 @@
 #include "core/fxge/dib/cfx_imagetransformer.h"
 
 CXFA_ImageRenderer::CXFA_ImageRenderer(CFX_RenderDevice* pDevice,
-                                       const RetainPtr<CFX_DIBBase>& pDIBBase,
+                                       RetainPtr<CFX_DIBBase> pDIBBase,
                                        const CFX_Matrix& pImage2Device)
     : m_ImageMatrix(pImage2Device), m_pDevice(pDevice), m_pDIBBase(pDIBBase) {}
 
@@ -115,10 +115,9 @@ bool CXFA_ImageRenderer::Continue() {
   return false;
 }
 
-void CXFA_ImageRenderer::CompositeDIBitmap(
-    const RetainPtr<CFX_DIBitmap>& pDIBitmap,
-    int left,
-    int top) {
+void CXFA_ImageRenderer::CompositeDIBitmap(RetainPtr<CFX_DIBitmap> pDIBitmap,
+                                           int left,
+                                           int top) {
   if (!pDIBitmap)
     return;
 

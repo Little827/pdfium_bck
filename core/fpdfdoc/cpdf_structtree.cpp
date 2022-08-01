@@ -116,9 +116,8 @@ RetainPtr<CPDF_StructElement> CPDF_StructTree::AddPageNode(
   return pElement;
 }
 
-bool CPDF_StructTree::AddTopLevelNode(
-    const CPDF_Dictionary* pDict,
-    const RetainPtr<CPDF_StructElement>& pElement) {
+bool CPDF_StructTree::AddTopLevelNode(const CPDF_Dictionary* pDict,
+                                      RetainPtr<CPDF_StructElement> pElement) {
   const CPDF_Object* pObj = m_pTreeRoot->GetDirectObjectFor("K");
   if (!pObj)
     return false;

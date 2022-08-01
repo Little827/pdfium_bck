@@ -30,7 +30,7 @@ class CXFA_DocumentBuilderTest : public FXGCUnitTest {
 
   CXFA_Document* GetDoc() const { return doc_; }
 
-  CXFA_Node* ParseAndBuild(const RetainPtr<CFX_ReadOnlyMemoryStream>& stream) {
+  CXFA_Node* ParseAndBuild(RetainPtr<CFX_ReadOnlyMemoryStream> stream) {
     xml_ = CFX_XMLParser(stream).Parse();
     if (!xml_)
       return nullptr;

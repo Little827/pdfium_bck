@@ -30,7 +30,7 @@ class CGdiplusExt {
   void Load();
   bool IsAvailable() { return !!m_hModule; }
   bool StretchDIBits(HDC hDC,
-                     const RetainPtr<CFX_DIBitmap>& pBitmap,
+                     RetainPtr<CFX_DIBitmap> pBitmap,
                      int dest_left,
                      int dest_top,
                      int dest_width,

@@ -45,7 +45,7 @@ FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI() = default;
 FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI(const FX_IMAGEDIB_AND_DPI& that) =
     default;
 
-FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI(const RetainPtr<CFX_DIBBase>& pDib,
+FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI(RetainPtr<CFX_DIBBase> pDib,
                                          int32_t xDpi,
                                          int32_t yDpi)
     : pDibSource(pDib), iImageXDpi(xDpi), iImageYDpi(yDpi) {}
@@ -308,7 +308,7 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
 }
 
 bool CXFA_FFDoc::SavePackage(CXFA_Node* pNode,
-                             const RetainPtr<IFX_SeekableStream>& pFile) {
+                             RetainPtr<IFX_SeekableStream> pFile) {
   DCHECK(pNode || GetXFADoc()->GetRoot());
 
   CXFA_DataExporter exporter;

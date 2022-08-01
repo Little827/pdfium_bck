@@ -68,17 +68,15 @@ class RenderDeviceDriverIface {
                                 BlendMode blend_type);
 
   virtual bool GetClipBox(FX_RECT* pRect) = 0;
-  virtual bool GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
-                         int left,
-                         int top);
+  virtual bool GetDIBits(RetainPtr<CFX_DIBitmap> pBitmap, int left, int top);
   virtual RetainPtr<CFX_DIBitmap> GetBackDrop();
-  virtual bool SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  virtual bool SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                          uint32_t color,
                          const FX_RECT& src_rect,
                          int dest_left,
                          int dest_top,
                          BlendMode blend_type) = 0;
-  virtual bool StretchDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  virtual bool StretchDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                              uint32_t color,
                              int dest_left,
                              int dest_top,
@@ -87,7 +85,7 @@ class RenderDeviceDriverIface {
                              const FX_RECT* pClipRect,
                              const FXDIB_ResampleOptions& options,
                              BlendMode blend_type) = 0;
-  virtual bool StartDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  virtual bool StartDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                            int bitmap_alpha,
                            uint32_t color,
                            const CFX_Matrix& matrix,
@@ -109,8 +107,8 @@ class RenderDeviceDriverIface {
                            int alpha,
                            bool bAlphaMode);
 #if defined(_SKIA_SUPPORT_)
-  virtual bool SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
-                               const RetainPtr<CFX_DIBBase>& pMask,
+  virtual bool SetBitsWithMask(RetainPtr<CFX_DIBBase> pBitmap,
+                               RetainPtr<CFX_DIBBase> pMask,
                                int left,
                                int top,
                                int bitmap_alpha,

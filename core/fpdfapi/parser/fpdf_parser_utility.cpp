@@ -75,7 +75,7 @@ const char PDF_CharType[256] = {
     'R', 'R', 'R', 'R', 'R', 'R', 'R', 'W'};
 
 absl::optional<FX_FILESIZE> GetHeaderOffset(
-    const RetainPtr<IFX_SeekableReadStream>& pFile) {
+    RetainPtr<IFX_SeekableReadStream> pFile) {
   static constexpr size_t kBufSize = 4;
   uint8_t buf[kBufSize];
   for (FX_FILESIZE offset = 0; offset <= 1024; ++offset) {

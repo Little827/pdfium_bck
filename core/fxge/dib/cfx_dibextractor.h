@@ -14,7 +14,7 @@ class CFX_DIBitmap;
 
 class CFX_DIBExtractor {
  public:
-  explicit CFX_DIBExtractor(const RetainPtr<CFX_DIBBase>& pSrc);
+  explicit CFX_DIBExtractor(RetainPtr<CFX_DIBBase> pSrc);
   ~CFX_DIBExtractor();
 
   RetainPtr<CFX_DIBitmap> GetBitmap() { return m_pBitmap; }

@@ -81,21 +81,19 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   bool GetClipBox(FX_RECT* pRect) override;
 
   /** Load device buffer into a DIB */
-  bool GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
-                 int left,
-                 int top) override;
+  bool GetDIBits(RetainPtr<CFX_DIBitmap> pBitmap, int left, int top) override;
 
   RetainPtr<CFX_DIBitmap> GetBackDrop() override;
 
-  bool SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                  uint32_t color,
                  const FX_RECT& src_rect,
                  int dest_left,
                  int dest_top,
                  BlendMode blend_type) override;
 #if defined(_SKIA_SUPPORT_)
-  bool SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
-                       const RetainPtr<CFX_DIBBase>& pMask,
+  bool SetBitsWithMask(RetainPtr<CFX_DIBBase> pBitmap,
+                       RetainPtr<CFX_DIBBase> pMask,
                        int dest_left,
                        int dest_top,
                        int bitmap_alpha,
@@ -106,7 +104,7 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   void SetClipMask(const FX_RECT& clipBox, const SkPath& skClipPath);
 #endif
 
-  bool StretchDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StretchDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                      uint32_t color,
                      int dest_left,
                      int dest_top,
@@ -116,7 +114,7 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                      const FXDIB_ResampleOptions& options,
                      BlendMode blend_type) override;
 
-  bool StartDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StartDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                    int bitmap_alpha,
                    uint32_t color,
                    const CFX_Matrix& matrix,
@@ -127,8 +125,8 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   bool ContinueDIBits(CFX_ImageRenderer* handle,
                       PauseIndicatorIface* pPause) override;
 
-  bool DrawBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
-                        const RetainPtr<CFX_DIBBase>& pMask,
+  bool DrawBitsWithMask(RetainPtr<CFX_DIBBase> pBitmap,
+                        RetainPtr<CFX_DIBBase> pMask,
                         int bitmap_alpha,
                         const CFX_Matrix& matrix,
                         BlendMode blend_type);
@@ -157,7 +155,7 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   void Flush() override;
   SkPictureRecorder* GetRecorder() const { return m_pRecorder; }
   void PreMultiply();
-  static void PreMultiply(const RetainPtr<CFX_DIBitmap>& pDIBitmap);
+  static void PreMultiply(RetainPtr<CFX_DIBitmap> pDIBitmap);
   SkCanvas* SkiaCanvas() { return m_pCanvas; }
   void DebugVerifyBitmapIsPreMultiplied() const;
   void Dump() const;

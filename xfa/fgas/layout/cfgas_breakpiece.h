@@ -70,7 +70,7 @@ class CFGAS_BreakPiece {
   void SetChars(std::vector<CFGAS_Char>* chars) { m_pChars = chars; }
 
   const CFGAS_TextUserData* GetUserData() const { return m_pUserData.Get(); }
-  void SetUserData(const RetainPtr<CFGAS_TextUserData>& user_data) {
+  void SetUserData(RetainPtr<CFGAS_TextUserData> user_data) {
     m_pUserData = user_data;
   }
 

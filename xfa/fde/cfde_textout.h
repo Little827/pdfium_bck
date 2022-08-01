@@ -28,7 +28,7 @@ class CFDE_TextOut {
  public:
   static bool DrawString(CFX_RenderDevice* device,
                          FX_ARGB color,
-                         const RetainPtr<CFGAS_GEFont>& pFont,
+                         RetainPtr<CFGAS_GEFont> pFont,
                          pdfium::span<TextCharPos> pCharPos,
                          float fFontSize,
                          const CFX_Matrix& matrix);

@@ -157,7 +157,7 @@ bool CPSPrinterDriver::GetClipBox(FX_RECT* pRect) {
   return true;
 }
 
-bool CPSPrinterDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CPSPrinterDriver::SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                                  uint32_t color,
                                  const FX_RECT& src_rect,
                                  int left,
@@ -168,7 +168,7 @@ bool CPSPrinterDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
   return m_PSRenderer.SetDIBits(pBitmap, color, left, top);
 }
 
-bool CPSPrinterDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CPSPrinterDriver::StretchDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                                      uint32_t color,
                                      int dest_left,
                                      int dest_top,
@@ -183,7 +183,7 @@ bool CPSPrinterDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
                                     dest_width, dest_height, options);
 }
 
-bool CPSPrinterDriver::StartDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CPSPrinterDriver::StartDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                                    int bitmap_alpha,
                                    uint32_t color,
                                    const CFX_Matrix& matrix,

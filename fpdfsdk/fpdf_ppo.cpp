@@ -488,13 +488,13 @@ class CPDF_NPageToOneExporter final : public CPDF_PageOrganizer {
   // represents |pSrcPage|. The transformation matrix is specified in
   // |settings|.
   // Returns the XObject reference surrounded by the transformation matrix.
-  ByteString AddSubPage(const RetainPtr<CPDF_Page>& pSrcPage,
+  ByteString AddSubPage(RetainPtr<CPDF_Page> pSrcPage,
                         const NupPageSettings& settings);
 
   // Creates an XObject from |pSrcPage|. Updates mapping as needed.
   // Returns the name of the newly created XObject.
-  ByteString MakeXObjectFromPage(const RetainPtr<CPDF_Page>& pSrcPage);
-  CPDF_Stream* MakeXObjectFromPageRaw(const RetainPtr<CPDF_Page>& pSrcPage);
+  ByteString MakeXObjectFromPage(RetainPtr<CPDF_Page> pSrcPage);
+  CPDF_Stream* MakeXObjectFromPageRaw(RetainPtr<CPDF_Page> pSrcPage);
 
   // Adds |bsContent| as the Contents key in |pDestPageDict|.
   // Adds the objects in |m_XObjectNameToNumberMap| to the XObject dictionary in
@@ -577,7 +577,7 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
 }
 
 ByteString CPDF_NPageToOneExporter::AddSubPage(
-    const RetainPtr<CPDF_Page>& pSrcPage,
+    RetainPtr<CPDF_Page> pSrcPage,
     const NupPageSettings& settings) {
   uint32_t dwSrcPageObjnum = pSrcPage->GetDict()->GetObjNum();
   const auto it = m_SrcPageXObjectMap.find(dwSrcPageObjnum);
@@ -598,7 +598,7 @@ ByteString CPDF_NPageToOneExporter::AddSubPage(
 }
 
 CPDF_Stream* CPDF_NPageToOneExporter::MakeXObjectFromPageRaw(
-    const RetainPtr<CPDF_Page>& pSrcPage) {
+    RetainPtr<CPDF_Page> pSrcPage) {
   const CPDF_Dictionary* pSrcPageDict = pSrcPage->GetDict();
   const CPDF_Object* pSrcContentObj =
       pSrcPageDict->GetDirectObjectFor(pdfium::page_object::kContents);
@@ -644,7 +644,7 @@ CPDF_Stream* CPDF_NPageToOneExporter::MakeXObjectFromPageRaw(
 }
 
 ByteString CPDF_NPageToOneExporter::MakeXObjectFromPage(
-    const RetainPtr<CPDF_Page>& pSrcPage) {
+    RetainPtr<CPDF_Page> pSrcPage) {
   CPDF_Stream* pNewXObject = MakeXObjectFromPageRaw(pSrcPage);
 
   // TODO(xlou): A better name schema to avoid possible object name collision.

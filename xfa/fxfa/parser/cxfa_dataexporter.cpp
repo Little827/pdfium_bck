@@ -18,7 +18,7 @@ CXFA_DataExporter::CXFA_DataExporter() = default;
 
 CXFA_DataExporter::~CXFA_DataExporter() = default;
 
-bool CXFA_DataExporter::Export(const RetainPtr<IFX_SeekableStream>& pStream,
+bool CXFA_DataExporter::Export(RetainPtr<IFX_SeekableStream> pStream,
                                CXFA_Node* pNode) {
   DCHECK(pStream);
 

@@ -103,16 +103,15 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
   CFX_Timer::HandlerIface* GetTimerHandler() const override;
   cppgc::Heap* GetGCHeap() const override;
 
-  bool SaveDatasetsPackage(const RetainPtr<IFX_SeekableStream>& pStream);
-  bool SaveFormPackage(const RetainPtr<IFX_SeekableStream>& pStream);
+  bool SaveDatasetsPackage(RetainPtr<IFX_SeekableStream> pStream);
+  bool SaveFormPackage(RetainPtr<IFX_SeekableStream> pStream);
   void SendPostSaveToXFADoc();
   void SendPreSaveToXFADoc(
       std::vector<RetainPtr<IFX_SeekableStream>>* fileList);
 
  private:
   CJS_Runtime* GetCJSRuntime() const;
-  bool SavePackage(const RetainPtr<IFX_SeekableStream>& pStream,
-                   XFA_HashCode code);
+  bool SavePackage(RetainPtr<IFX_SeekableStream> pStream, XFA_HashCode code);
 
   FormType m_FormType = FormType::kNone;
   LoadStatus m_nLoadStatus = LoadStatus::kPreload;

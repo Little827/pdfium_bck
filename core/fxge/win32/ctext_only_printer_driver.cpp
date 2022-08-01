@@ -83,7 +83,7 @@ bool CTextOnlyPrinterDriver::DrawPath(const CFX_Path& path,
   return false;
 }
 
-bool CTextOnlyPrinterDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CTextOnlyPrinterDriver::SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                                        uint32_t color,
                                        const FX_RECT& src_rect,
                                        int left,
@@ -100,21 +100,20 @@ bool CTextOnlyPrinterDriver::GetClipBox(FX_RECT* pRect) {
   return true;
 }
 
-bool CTextOnlyPrinterDriver::StretchDIBits(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
-    uint32_t color,
-    int dest_left,
-    int dest_top,
-    int dest_width,
-    int dest_height,
-    const FX_RECT* pClipRect,
-    const FXDIB_ResampleOptions& options,
-    BlendMode blend_type) {
+bool CTextOnlyPrinterDriver::StretchDIBits(RetainPtr<CFX_DIBBase> pBitmap,
+                                           uint32_t color,
+                                           int dest_left,
+                                           int dest_top,
+                                           int dest_width,
+                                           int dest_height,
+                                           const FX_RECT* pClipRect,
+                                           const FXDIB_ResampleOptions& options,
+                                           BlendMode blend_type) {
   return false;
 }
 
 bool CTextOnlyPrinterDriver::StartDIBits(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
+    RetainPtr<CFX_DIBBase> pBitmap,
     int bitmap_alpha,
     uint32_t color,
     const CFX_Matrix& matrix,

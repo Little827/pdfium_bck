@@ -77,8 +77,7 @@ WideString CFX_XMLElement::GetTextData() const {
   return buffer;
 }
 
-void CFX_XMLElement::Save(
-    const RetainPtr<IFX_RetainableWriteStream>& pXMLStream) {
+void CFX_XMLElement::Save(RetainPtr<IFX_RetainableWriteStream> pXMLStream) {
   ByteString bsNameEncoded = name_.ToUTF8();
 
   pXMLStream->WriteString("<");

@@ -29,9 +29,9 @@ class CPDF_Color {
 
   bool IsNull() const { return m_Buffer.empty() && !m_pValue; }
   bool IsPattern() const;
-  void SetColorSpace(const RetainPtr<CPDF_ColorSpace>& pCS);
+  void SetColorSpace(RetainPtr<CPDF_ColorSpace> pCS);
   void SetValueForNonPattern(const std::vector<float>& values);
-  void SetValueForPattern(const RetainPtr<CPDF_Pattern>& pPattern,
+  void SetValueForPattern(RetainPtr<CPDF_Pattern> pPattern,
                           const std::vector<float>& values);
   uint32_t CountComponents() const;
   bool IsColorSpaceRGB() const;

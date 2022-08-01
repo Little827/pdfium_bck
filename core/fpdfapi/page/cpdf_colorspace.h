@@ -42,7 +42,7 @@ class PatternValue {
   }
 
   CPDF_Pattern* GetPattern() const { return m_pRetainedPattern.Get(); }
-  void SetPattern(const RetainPtr<CPDF_Pattern>& pPattern) {
+  void SetPattern(RetainPtr<CPDF_Pattern> pPattern) {
     m_pRetainedPattern = pPattern;
   }
 

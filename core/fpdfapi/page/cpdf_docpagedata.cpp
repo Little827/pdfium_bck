@@ -119,7 +119,7 @@ int CalculateFlags(bool bold,
   return flags;
 }
 
-void ProcessNonbCJK(const RetainPtr<CPDF_Dictionary>& pBaseDict,
+void ProcessNonbCJK(RetainPtr<CPDF_Dictionary> pBaseDict,
                     bool bold,
                     bool italic,
                     ByteString basefont,
@@ -669,7 +669,7 @@ size_t CPDF_DocPageData::CalculateEncodingDict(FX_Charset charset,
 }
 
 CPDF_Dictionary* CPDF_DocPageData::ProcessbCJK(
-    const RetainPtr<CPDF_Dictionary>& pBaseDict,
+    RetainPtr<CPDF_Dictionary> pBaseDict,
     FX_Charset charset,
     ByteString basefont,
     std::function<void(wchar_t, wchar_t, CPDF_Array*)> Insert) {

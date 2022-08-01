@@ -27,16 +27,14 @@ class CGdiDisplayDriver final : public CGdiDeviceDriver {
  private:
   // CGdiDisplayDriver:
   int GetDeviceCaps(int caps_id) const override;
-  bool GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
-                 int left,
-                 int top) override;
-  bool SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool GetDIBits(RetainPtr<CFX_DIBitmap> pBitmap, int left, int top) override;
+  bool SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                  uint32_t color,
                  const FX_RECT& src_rect,
                  int left,
                  int top,
                  BlendMode blend_type) override;
-  bool StretchDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StretchDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                      uint32_t color,
                      int dest_left,
                      int dest_top,
@@ -45,7 +43,7 @@ class CGdiDisplayDriver final : public CGdiDeviceDriver {
                      const FX_RECT* pClipRect,
                      const FXDIB_ResampleOptions& options,
                      BlendMode blend_type) override;
-  bool StartDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StartDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                    int bitmap_alpha,
                    uint32_t color,
                    const CFX_Matrix& matrix,
@@ -53,7 +51,7 @@ class CGdiDisplayDriver final : public CGdiDeviceDriver {
                    std::unique_ptr<CFX_ImageRenderer>* handle,
                    BlendMode blend_type) override;
 
-  bool UseFoxitStretchEngine(const RetainPtr<CFX_DIBBase>& pSource,
+  bool UseFoxitStretchEngine(RetainPtr<CFX_DIBBase> pSource,
                              uint32_t color,
                              int dest_left,
                              int dest_top,

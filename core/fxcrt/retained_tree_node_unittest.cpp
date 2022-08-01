@@ -21,16 +21,14 @@ class ObservableRetainedTreeNodeForTest
   ObservableRetainedTreeNodeForTest() = default;
 };
 
-void AddClutterToFront(
-    const RetainPtr<ObservableRetainedTreeNodeForTest>& parent) {
+void AddClutterToFront(RetainPtr<ObservableRetainedTreeNodeForTest> parent) {
   for (int i = 0; i < 4; ++i) {
     parent->AppendFirstChild(
         pdfium::MakeRetain<ObservableRetainedTreeNodeForTest>());
   }
 }
 
-void AddClutterToBack(
-    const RetainPtr<ObservableRetainedTreeNodeForTest>& parent) {
+void AddClutterToBack(RetainPtr<ObservableRetainedTreeNodeForTest> parent) {
   for (int i = 0; i < 4; ++i) {
     parent->AppendLastChild(
         pdfium::MakeRetain<ObservableRetainedTreeNodeForTest>());
