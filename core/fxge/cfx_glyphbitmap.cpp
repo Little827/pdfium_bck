@@ -10,3 +10,7 @@ CFX_GlyphBitmap::CFX_GlyphBitmap(int left, int top)
     : m_Left(left), m_Top(top), m_pBitmap(pdfium::MakeRetain<CFX_DIBitmap>()) {}
 
 CFX_GlyphBitmap::~CFX_GlyphBitmap() = default;
+
+RetainPtr<CFX_DIBitmap> CFX_GlyphBitmap::GetBitmap() const {
+  return m_pBitmap;
+}

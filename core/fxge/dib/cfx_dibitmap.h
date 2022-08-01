@@ -30,7 +30,7 @@ class CFX_DIBitmap final : public CFX_DIBBase {
               uint8_t* pBuffer,
               uint32_t pitch);
 
-  bool Copy(const RetainPtr<CFX_DIBBase>& pSrc);
+  bool Copy(RetainPtr<CFX_DIBBase> pSrc);
 
   // CFX_DIBBase
   uint8_t* GetBuffer() const override;
@@ -48,18 +48,18 @@ class CFX_DIBitmap final : public CFX_DIBBase {
   void SetPixel(int x, int y, uint32_t color);
 #endif
 
-  bool SetRedFromBitmap(const RetainPtr<CFX_DIBBase>& pSrcBitmap);
-  bool SetAlphaFromBitmap(const RetainPtr<CFX_DIBBase>& pSrcBitmap);
+  bool SetRedFromBitmap(RetainPtr<CFX_DIBBase> pSrcBitmap);
+  bool SetAlphaFromBitmap(RetainPtr<CFX_DIBBase> pSrcBitmap);
   bool SetUniformOpaqueAlpha();
 
   bool MultiplyAlpha(int alpha);
-  bool MultiplyAlpha(const RetainPtr<CFX_DIBBase>& pSrcBitmap);
+  bool MultiplyAlpha(RetainPtr<CFX_DIBBase> pSrcBitmap);
 
   bool TransferBitmap(int dest_left,
                       int dest_top,
                       int width,
                       int height,
-                      const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                      RetainPtr<CFX_DIBBase> pSrcBitmap,
                       int src_left,
                       int src_top);
 
@@ -67,7 +67,7 @@ class CFX_DIBitmap final : public CFX_DIBBase {
                        int dest_top,
                        int width,
                        int height,
-                       const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                       RetainPtr<CFX_DIBBase> pSrcBitmap,
                        int src_left,
                        int src_top,
                        BlendMode blend_type,
@@ -78,7 +78,7 @@ class CFX_DIBitmap final : public CFX_DIBBase {
                      int dest_top,
                      int width,
                      int height,
-                     const RetainPtr<CFX_DIBBase>& pMask,
+                     RetainPtr<CFX_DIBBase> pMask,
                      uint32_t color,
                      int src_left,
                      int src_top,
@@ -126,28 +126,28 @@ class CFX_DIBitmap final : public CFX_DIBBase {
   ~CFX_DIBitmap() override;
 
   bool SetChannelFromBitmap(Channel destChannel,
-                            const RetainPtr<CFX_DIBBase>& pSrcBitmap);
+                            RetainPtr<CFX_DIBBase> pSrcBitmap);
   void ConvertBGRColorScale(uint32_t forecolor, uint32_t backcolor);
   bool TransferWithUnequalFormats(FXDIB_Format dest_format,
                                   int dest_left,
                                   int dest_top,
                                   int width,
                                   int height,
-                                  const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                                  RetainPtr<CFX_DIBBase> pSrcBitmap,
                                   int src_left,
                                   int src_top);
   void TransferWithMultipleBPP(int dest_left,
                                int dest_top,
                                int width,
                                int height,
-                               const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                               RetainPtr<CFX_DIBBase> pSrcBitmap,
                                int src_left,
                                int src_top);
   void TransferEqualFormatsOneBPP(int dest_left,
                                   int dest_top,
                                   int width,
                                   int height,
-                                  const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                                  RetainPtr<CFX_DIBBase> pSrcBitmap,
                                   int src_left,
                                   int src_top);
 

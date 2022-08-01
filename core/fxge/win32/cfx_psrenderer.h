@@ -47,7 +47,7 @@ struct EncoderIface {
   bool (*pFlateEncodeFunc)(pdfium::span<const uint8_t> src_span,
                            std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
                            uint32_t* dest_size);
-  bool (*pJpegEncodeFunc)(const RetainPtr<CFX_DIBBase>& pSource,
+  bool (*pJpegEncodeFunc)(RetainPtr<CFX_DIBBase> pSource,
                           uint8_t** dest_buf,
                           size_t* dest_size);
   bool (*pRunLengthEncodeFunc)(
@@ -68,7 +68,7 @@ class CFX_PSRenderer {
                  const EncoderIface* encoder_iface);
   ~CFX_PSRenderer();
 
-  void Init(const RetainPtr<IFX_RetainableWriteStream>& stream,
+  void Init(RetainPtr<IFX_RetainableWriteStream> stream,
             RenderingLevel level,
             int width,
             int height);
@@ -87,18 +87,18 @@ class CFX_PSRenderer {
                 uint32_t fill_color,
                 uint32_t stroke_color,
                 const CFX_FillRenderOptions& fill_options);
-  bool SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                  uint32_t color,
                  int dest_left,
                  int dest_top);
-  bool StretchDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StretchDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                      uint32_t color,
                      int dest_left,
                      int dest_top,
                      int dest_width,
                      int dest_height,
                      const FXDIB_ResampleOptions& options);
-  bool DrawDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool DrawDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                   uint32_t color,
                   const CFX_Matrix& matrix,
                   const FXDIB_ResampleOptions& options);

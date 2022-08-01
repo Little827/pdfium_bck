@@ -53,7 +53,7 @@ CFX_PointF HardClip(const CFX_PointF& pos) {
                     pdfium::clamp(pos.y, -kMaxPos, kMaxPos));
 }
 
-void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
+void RgbByteOrderCompositeRect(RetainPtr<CFX_DIBitmap> pBitmap,
                                int left,
                                int top,
                                int width,
@@ -125,12 +125,12 @@ void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
   }
 }
 
-void RgbByteOrderTransferBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap,
+void RgbByteOrderTransferBitmap(RetainPtr<CFX_DIBitmap> pBitmap,
                                 int dest_left,
                                 int dest_top,
                                 int width,
                                 int height,
-                                const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                                RetainPtr<CFX_DIBBase> pSrcBitmap,
                                 int src_left,
                                 int src_top) {
   if (!pBitmap)
@@ -299,7 +299,7 @@ RetainPtr<CFX_DIBitmap> GetClipMaskFromRegion(const CFX_ClipRgn* r) {
   return (r && r->GetType() == CFX_ClipRgn::kMaskF) ? r->GetMask() : nullptr;
 }
 
-FX_RECT GetClipBoxFromRegion(const RetainPtr<CFX_DIBitmap>& device,
+FX_RECT GetClipBoxFromRegion(RetainPtr<CFX_DIBitmap> device,
                              const CFX_ClipRgn* region) {
   if (region)
     return region->GetBox();
@@ -308,8 +308,8 @@ FX_RECT GetClipBoxFromRegion(const RetainPtr<CFX_DIBitmap>& device,
 
 class CFX_Renderer {
  public:
-  CFX_Renderer(const RetainPtr<CFX_DIBitmap>& pDevice,
-               const RetainPtr<CFX_DIBitmap>& pBackdropDevice,
+  CFX_Renderer(RetainPtr<CFX_DIBitmap> pDevice,
+               RetainPtr<CFX_DIBitmap> pBackdropDevice,
                const CFX_ClipRgn* pClipRgn,
                uint32_t color,
                bool bFullCover,
@@ -391,7 +391,7 @@ class CFX_Renderer {
                                int span_left);
 
   static CompositeSpanFunc GetCompositeSpanFunc(
-      const RetainPtr<CFX_DIBitmap>& device) {
+      RetainPtr<CFX_DIBitmap> device) {
     if (device->GetBPP() == 1)
       return &CFX_Renderer::CompositeSpan1bpp;
     if (device->GetBPP() == 8)
@@ -810,8 +810,8 @@ void CFX_Renderer::CompositeSpanRGB(uint8_t* dest_scan,
   }
 }
 
-CFX_Renderer::CFX_Renderer(const RetainPtr<CFX_DIBitmap>& pDevice,
-                           const RetainPtr<CFX_DIBitmap>& pBackdropDevice,
+CFX_Renderer::CFX_Renderer(RetainPtr<CFX_DIBitmap> pDevice,
+                           RetainPtr<CFX_DIBitmap> pBackdropDevice,
                            const CFX_ClipRgn* pClipRgn,
                            uint32_t color,
                            bool bFullCover,
@@ -1306,7 +1306,7 @@ bool CFX_AggDeviceDriver::GetClipBox(FX_RECT* pRect) {
   return true;
 }
 
-bool CFX_AggDeviceDriver::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
+bool CFX_AggDeviceDriver::GetDIBits(RetainPtr<CFX_DIBitmap> pBitmap,
                                     int left,
                                     int top) {
   if (!m_pBitmap->GetBuffer())
@@ -1343,7 +1343,7 @@ RetainPtr<CFX_DIBitmap> CFX_AggDeviceDriver::GetBackDrop() {
   return m_pBackdropBitmap;
 }
 
-bool CFX_AggDeviceDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CFX_AggDeviceDriver::SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
                                     uint32_t argb,
                                     const FX_RECT& src_rect,
                                     int left,
@@ -1363,7 +1363,7 @@ bool CFX_AggDeviceDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
       src_rect.top, blend_type, m_pClipRgn.get(), m_bRgbByteOrder);
 }
 
-bool CFX_AggDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
+bool CFX_AggDeviceDriver::StretchDIBits(RetainPtr<CFX_DIBBase> pSource,
                                         uint32_t argb,
                                         int dest_left,
                                         int dest_top,
@@ -1397,7 +1397,7 @@ bool CFX_AggDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
 }
 
 bool CFX_AggDeviceDriver::StartDIBits(
-    const RetainPtr<CFX_DIBBase>& pSource,
+    RetainPtr<CFX_DIBBase> pSource,
     int bitmap_alpha,
     uint32_t argb,
     const CFX_Matrix& matrix,

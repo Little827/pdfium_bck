@@ -48,8 +48,7 @@ void CFGAS_RTFBreak::AddPositionedTab(float fTabPos) {
   m_PositionedTabs.insert(it, iTabPos);
 }
 
-void CFGAS_RTFBreak::SetUserData(
-    const RetainPtr<CFGAS_TextUserData>& pUserData) {
+void CFGAS_RTFBreak::SetUserData(RetainPtr<CFGAS_TextUserData> pUserData) {
   if (m_pUserData == pUserData)
     return;
 

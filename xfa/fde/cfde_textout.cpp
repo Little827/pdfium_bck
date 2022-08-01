@@ -43,7 +43,7 @@ bool IsTextAlignmentTop(const FDE_TextAlignment align) {
 // static
 bool CFDE_TextOut::DrawString(CFX_RenderDevice* device,
                               FX_ARGB color,
-                              const RetainPtr<CFGAS_GEFont>& pFont,
+                              RetainPtr<CFGAS_GEFont> pFont,
                               pdfium::span<TextCharPos> pCharPos,
                               float fFontSize,
                               const CFX_Matrix& matrix) {

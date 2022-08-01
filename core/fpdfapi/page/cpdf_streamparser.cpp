@@ -297,6 +297,10 @@ CPDF_StreamParser::ElementType CPDF_StreamParser::ParseNextElement() {
   return ElementType::kKeyword;
 }
 
+RetainPtr<CPDF_Object> CPDF_StreamParser::GetObject() const {
+  return m_pLastObj;
+}
+
 RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
     bool bAllowNestedArray,
     bool bInArray,

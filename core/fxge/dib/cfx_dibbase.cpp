@@ -906,7 +906,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::CloneAlphaMask() const {
   return pMask;
 }
 
-bool CFX_DIBBase::SetAlphaMask(const RetainPtr<CFX_DIBBase>& pAlphaMask,
+bool CFX_DIBBase::SetAlphaMask(RetainPtr<CFX_DIBBase> pAlphaMask,
                                const FX_RECT* pClip) {
   if (!IsAlphaFormat() || GetFormat() == FXDIB_Format::kArgb)
     return false;

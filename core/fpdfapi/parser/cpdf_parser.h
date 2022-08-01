@@ -64,9 +64,9 @@ class CPDF_Parser {
   CPDF_Parser();
   ~CPDF_Parser();
 
-  Error StartParse(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  Error StartParse(RetainPtr<IFX_SeekableReadStream> pFile,
                    const ByteString& password);
-  Error StartLinearizedParse(const RetainPtr<CPDF_ReadValidator>& validator,
+  Error StartLinearizedParse(RetainPtr<CPDF_ReadValidator> validator,
                              const ByteString& password);
 
   void SetPassword(const ByteString& password) { m_Password = password; }
@@ -99,9 +99,7 @@ class CPDF_Parser {
   bool IsValidObjectNumber(uint32_t objnum) const;
   FX_FILESIZE GetObjectPositionOrZero(uint32_t objnum) const;
   bool IsObjectFreeOrNull(uint32_t objnum) const;
-  const RetainPtr<CPDF_SecurityHandler>& GetSecurityHandler() const {
-    return m_pSecurityHandler;
-  }
+  RetainPtr<CPDF_SecurityHandler> GetSecurityHandler() const;
   bool IsObjectFree(uint32_t objnum) const;
 
   int GetFileVersion() const { return m_FileVersion; }
@@ -170,7 +168,7 @@ class CPDF_Parser {
   bool ParseCrossRefV4(std::vector<CrossRefObjData>* out_objects);
   void MergeCrossRefObjectsData(const std::vector<CrossRefObjData>& objects);
 
-  bool InitSyntaxParser(const RetainPtr<CPDF_ReadValidator>& validator);
+  bool InitSyntaxParser(RetainPtr<CPDF_ReadValidator> validator);
   bool ParseFileVersion();
 
   ObjectType GetObjectType(uint32_t objnum) const;

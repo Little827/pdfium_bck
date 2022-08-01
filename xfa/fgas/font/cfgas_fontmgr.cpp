@@ -31,7 +31,7 @@
 
 namespace {
 
-bool VerifyUnicode(const RetainPtr<CFGAS_GEFont>& pFont, wchar_t wcUnicode) {
+bool VerifyUnicode(RetainPtr<CFGAS_GEFont> pFont, wchar_t wcUnicode) {
   RetainPtr<CFX_Face> pFace = pFont->GetDevFont()->GetFace();
   if (!pFace)
     return false;
@@ -492,9 +492,8 @@ RetainPtr<IFX_SeekableReadStream> CreateFontStream(
   return nullptr;
 }
 
-RetainPtr<CFX_Face> LoadFace(
-    const RetainPtr<IFX_SeekableReadStream>& pFontStream,
-    int32_t iFaceIndex) {
+RetainPtr<CFX_Face> LoadFace(RetainPtr<IFX_SeekableReadStream> pFontStream,
+                             int32_t iFaceIndex) {
   if (!pFontStream)
     return nullptr;
 
@@ -753,9 +752,8 @@ void CFGAS_FontMgr::RegisterFace(RetainPtr<CFX_Face> pFace,
   m_InstalledFonts.push_back(std::move(pFont));
 }
 
-void CFGAS_FontMgr::RegisterFaces(
-    const RetainPtr<IFX_SeekableReadStream>& pFontStream,
-    const WideString& wsFaceName) {
+void CFGAS_FontMgr::RegisterFaces(RetainPtr<IFX_SeekableReadStream> pFontStream,
+                                  const WideString& wsFaceName) {
   int32_t index = 0;
   int32_t num_faces = 0;
   do {

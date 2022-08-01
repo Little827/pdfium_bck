@@ -154,7 +154,7 @@ void SetPathToDC(HDC hDC, const CFX_Path& path, const CFX_Matrix* pMatrix) {
   EndPath(hDC);
 }
 
-ByteString GetBitmapInfo(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+ByteString GetBitmapInfo(RetainPtr<CFX_DIBitmap> pBitmap) {
   int len = sizeof(BITMAPINFOHEADER);
   if (pBitmap->GetBPP() == 1 || pBitmap->GetBPP() == 8)
     len += sizeof(DWORD) * (int)(1 << pBitmap->GetBPP());
@@ -366,7 +366,7 @@ void CGdiDeviceDriver::RestoreState(bool bKeepSaved) {
     SaveDC(m_hDC);
 }
 
-bool CGdiDeviceDriver::GDI_SetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap1,
+bool CGdiDeviceDriver::GDI_SetDIBits(RetainPtr<CFX_DIBitmap> pBitmap1,
                                      const FX_RECT& src_rect,
                                      int left,
                                      int top) {
@@ -398,13 +398,12 @@ bool CGdiDeviceDriver::GDI_SetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap1,
   return true;
 }
 
-bool CGdiDeviceDriver::GDI_StretchDIBits(
-    const RetainPtr<CFX_DIBitmap>& pBitmap1,
-    int dest_left,
-    int dest_top,
-    int dest_width,
-    int dest_height,
-    const FXDIB_ResampleOptions& options) {
+bool CGdiDeviceDriver::GDI_StretchDIBits(RetainPtr<CFX_DIBitmap> pBitmap1,
+                                         int dest_left,
+                                         int dest_top,
+                                         int dest_width,
+                                         int dest_height,
+                                         const FXDIB_ResampleOptions& options) {
   RetainPtr<CFX_DIBitmap> pBitmap = pBitmap1;
   if (!pBitmap || dest_width == 0 || dest_height == 0)
     return false;
@@ -433,13 +432,12 @@ bool CGdiDeviceDriver::GDI_StretchDIBits(
   return true;
 }
 
-bool CGdiDeviceDriver::GDI_StretchBitMask(
-    const RetainPtr<CFX_DIBitmap>& pBitmap1,
-    int dest_left,
-    int dest_top,
-    int dest_width,
-    int dest_height,
-    uint32_t bitmap_color) {
+bool CGdiDeviceDriver::GDI_StretchBitMask(RetainPtr<CFX_DIBitmap> pBitmap1,
+                                          int dest_left,
+                                          int dest_top,
+                                          int dest_width,
+                                          int dest_height,
+                                          uint32_t bitmap_color) {
   RetainPtr<CFX_DIBitmap> pBitmap = pBitmap1;
   if (!pBitmap || dest_width == 0 || dest_height == 0)
     return false;

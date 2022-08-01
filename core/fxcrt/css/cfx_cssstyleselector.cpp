@@ -170,7 +170,7 @@ void CFX_CSSStyleSelector::AppendInlineStyle(CFX_CSSDeclaration* pDecl,
 }
 
 void CFX_CSSStyleSelector::ApplyProperty(CFX_CSSProperty eProperty,
-                                         const RetainPtr<CFX_CSSValue>& pValue,
+                                         RetainPtr<CFX_CSSValue> pValue,
                                          CFX_CSSComputedStyle* pComputedStyle) {
   if (pValue->GetType() != CFX_CSSValue::PrimitiveType::kList) {
     CFX_CSSValue::PrimitiveType eType = pValue->GetType();
@@ -473,7 +473,7 @@ CFX_CSSFontStyle CFX_CSSStyleSelector::ToFontStyle(
 bool CFX_CSSStyleSelector::SetLengthWithPercent(
     CFX_CSSLength& width,
     CFX_CSSValue::PrimitiveType eType,
-    const RetainPtr<CFX_CSSValue>& pValue,
+    RetainPtr<CFX_CSSValue> pValue,
     float fFontSize) {
   if (eType == CFX_CSSValue::PrimitiveType::kNumber) {
     RetainPtr<CFX_CSSNumberValue> v = pValue.As<CFX_CSSNumberValue>();
@@ -560,10 +560,9 @@ CFX_CSSVerticalAlign CFX_CSSStyleSelector::ToVerticalAlign(
 }
 
 Mask<CFX_CSSTEXTDECORATION> CFX_CSSStyleSelector::ToTextDecoration(
-    const RetainPtr<CFX_CSSValueList>& pValue) {
+    RetainPtr<CFX_CSSValueList> pValue) {
   Mask<CFX_CSSTEXTDECORATION> dwDecoration;
-  for (const RetainPtr<CFX_CSSValue>& val :
-       pdfium::base::Reversed(pValue->values())) {
+  for (RetainPtr<CFX_CSSValue> val : pdfium::base::Reversed(pValue->values())) {
     if (val->GetType() != CFX_CSSValue::PrimitiveType::kEnum)
       continue;
 

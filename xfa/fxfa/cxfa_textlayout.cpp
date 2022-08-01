@@ -729,16 +729,15 @@ void CXFA_TextLayout::LoadText(CXFA_Node* pNode,
     EndBreak(CFGAS_Char::BreakType::kParagraph, pLinePos, bSavePieces);
 }
 
-bool CXFA_TextLayout::LoadRichText(
-    const CFX_XMLNode* pXMLNode,
-    float textWidth,
-    float* pLinePos,
-    const RetainPtr<CFX_CSSComputedStyle>& pParentStyle,
-    bool bSavePieces,
-    RetainPtr<CFGAS_LinkUserData> pLinkData,
-    bool bEndBreak,
-    bool bIsOl,
-    int32_t iLiCount) {
+bool CXFA_TextLayout::LoadRichText(const CFX_XMLNode* pXMLNode,
+                                   float textWidth,
+                                   float* pLinePos,
+                                   RetainPtr<CFX_CSSComputedStyle> pParentStyle,
+                                   bool bSavePieces,
+                                   RetainPtr<CFGAS_LinkUserData> pLinkData,
+                                   bool bEndBreak,
+                                   bool bIsOl,
+                                   int32_t iLiCount) {
   if (!pXMLNode)
     return false;
 

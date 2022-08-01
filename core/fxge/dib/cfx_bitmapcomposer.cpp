@@ -17,7 +17,7 @@ CFX_BitmapComposer::CFX_BitmapComposer() = default;
 
 CFX_BitmapComposer::~CFX_BitmapComposer() = default;
 
-void CFX_BitmapComposer::Compose(const RetainPtr<CFX_DIBitmap>& pDest,
+void CFX_BitmapComposer::Compose(RetainPtr<CFX_DIBitmap> pDest,
                                  const CFX_ClipRgn* pClipRgn,
                                  int bitmap_alpha,
                                  uint32_t mask_color,

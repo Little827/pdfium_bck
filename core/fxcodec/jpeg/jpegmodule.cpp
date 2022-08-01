@@ -407,7 +407,7 @@ absl::optional<JpegModule::ImageInfo> JpegModule::LoadInfo(
 }
 
 #if BUILDFLAG(IS_WIN)
-bool JpegModule::JpegEncode(const RetainPtr<CFX_DIBBase>& pSource,
+bool JpegModule::JpegEncode(RetainPtr<CFX_DIBBase> pSource,
                             uint8_t** dest_buf,
                             size_t* dest_size) {
   jpeg_error_mgr jerr;

@@ -123,7 +123,7 @@ class CPDF_StreamContentParser {
                      RenderType render_type);
   CPDF_ImageObject* AddImage(RetainPtr<CPDF_Stream> pStream);
   CPDF_ImageObject* AddImage(uint32_t streamObjNum);
-  CPDF_ImageObject* AddImage(const RetainPtr<CPDF_Image>& pImage);
+  CPDF_ImageObject* AddImage(RetainPtr<CPDF_Image> pImage);
 
   void AddForm(RetainPtr<CPDF_Stream> pStream);
   void SetGraphicStates(CPDF_PageObject* pObj,

@@ -26,7 +26,7 @@ class CFX_DIBAttribute;
 class TiffDecoder {
  public:
   static std::unique_ptr<ProgressiveDecoderIface::Context> CreateDecoder(
-      const RetainPtr<IFX_SeekableReadStream>& file_ptr);
+      RetainPtr<IFX_SeekableReadStream> file_ptr);
 
   static bool LoadFrameInfo(ProgressiveDecoderIface::Context* ctx,
                             int32_t frame,
@@ -36,7 +36,7 @@ class TiffDecoder {
                             int32_t* bpc,
                             CFX_DIBAttribute* pAttribute);
   static bool Decode(ProgressiveDecoderIface::Context* ctx,
-                     const RetainPtr<CFX_DIBitmap>& pDIBitmap);
+                     RetainPtr<CFX_DIBitmap> pDIBitmap);
 
   TiffDecoder() = delete;
   TiffDecoder(const TiffDecoder&) = delete;

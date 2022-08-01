@@ -35,7 +35,7 @@ class CFGAS_RTFBreak final : public CFGAS_Break {
   void SetLineStartPos(float fLinePos);
 
   void SetAlignment(LineAlignment align) { m_iAlignment = align; }
-  void SetUserData(const RetainPtr<CFGAS_TextUserData>& pUserData);
+  void SetUserData(RetainPtr<CFGAS_TextUserData> pUserData);
 
   void AddPositionedTab(float fTabPos);
 

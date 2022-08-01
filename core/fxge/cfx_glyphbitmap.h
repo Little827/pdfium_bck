@@ -19,7 +19,7 @@ class CFX_GlyphBitmap {
   CFX_GlyphBitmap(const CFX_GlyphBitmap&) = delete;
   CFX_GlyphBitmap& operator=(const CFX_GlyphBitmap&) = delete;
 
-  const RetainPtr<CFX_DIBitmap>& GetBitmap() const { return m_pBitmap; }
+  RetainPtr<CFX_DIBitmap> GetBitmap() const;
   int left() const { return m_Left; }
   int top() const { return m_Top; }
 

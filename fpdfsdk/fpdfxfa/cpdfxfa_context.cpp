@@ -388,16 +388,15 @@ cppgc::Heap* CPDFXFA_Context::GetGCHeap() const {
 }
 
 bool CPDFXFA_Context::SaveDatasetsPackage(
-    const RetainPtr<IFX_SeekableStream>& pStream) {
+    RetainPtr<IFX_SeekableStream> pStream) {
   return SavePackage(pStream, XFA_HASHCODE_Datasets);
 }
 
-bool CPDFXFA_Context::SaveFormPackage(
-    const RetainPtr<IFX_SeekableStream>& pStream) {
+bool CPDFXFA_Context::SaveFormPackage(RetainPtr<IFX_SeekableStream> pStream) {
   return SavePackage(pStream, XFA_HASHCODE_Form);
 }
 
-bool CPDFXFA_Context::SavePackage(const RetainPtr<IFX_SeekableStream>& pStream,
+bool CPDFXFA_Context::SavePackage(RetainPtr<IFX_SeekableStream> pStream,
                                   XFA_HashCode code) {
   CXFA_FFDocView* pXFADocView = GetXFADocView();
   if (!pXFADocView)

@@ -66,7 +66,7 @@ bool IsScanLineBpp(int bpp, const uint8_t* pBuf, int width) {
   return IsScanLine8bpp(pBuf, width);
 }
 
-int DetectFirstScan(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+int DetectFirstScan(RetainPtr<CFX_DIBitmap> pBitmap) {
   const int height = pBitmap->GetHeight();
   const int width = pBitmap->GetWidth();
   const int bpp = pBitmap->GetBPP();
@@ -78,7 +78,7 @@ int DetectFirstScan(const RetainPtr<CFX_DIBitmap>& pBitmap) {
   return -1;
 }
 
-int DetectLastScan(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+int DetectLastScan(RetainPtr<CFX_DIBitmap> pBitmap) {
   const int height = pBitmap->GetHeight();
   const int bpp = pBitmap->GetBPP();
   const int width = pBitmap->GetWidth();

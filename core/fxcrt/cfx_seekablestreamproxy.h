@@ -34,8 +34,7 @@ class CFX_SeekableStreamProxy final : public Retainable {
     Current,
   };
 
-  explicit CFX_SeekableStreamProxy(
-      const RetainPtr<IFX_SeekableReadStream>& stream);
+  explicit CFX_SeekableStreamProxy(RetainPtr<IFX_SeekableReadStream> stream);
   ~CFX_SeekableStreamProxy() override;
 
   FX_FILESIZE GetPosition();

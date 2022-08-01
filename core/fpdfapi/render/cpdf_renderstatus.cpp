@@ -1247,7 +1247,7 @@ bool CPDF_RenderStatus::ProcessImage(CPDF_ImageObject* pImageObj,
 }
 
 void CPDF_RenderStatus::CompositeDIBitmap(
-    const RetainPtr<CFX_DIBitmap>& pDIBitmap,
+    RetainPtr<CFX_DIBitmap> pDIBitmap,
     int left,
     int top,
     FX_ARGB mask_argb,

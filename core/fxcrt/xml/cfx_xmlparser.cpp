@@ -60,7 +60,7 @@ bool CFX_XMLParser::IsXMLNameChar(wchar_t ch, bool bFirstChar) {
          (!bFirstChar || it->bStartChar);
 }
 
-CFX_XMLParser::CFX_XMLParser(const RetainPtr<IFX_SeekableReadStream>& pStream) {
+CFX_XMLParser::CFX_XMLParser(RetainPtr<IFX_SeekableReadStream> pStream) {
   DCHECK(pStream);
 
   auto proxy = pdfium::MakeRetain<CFX_SeekableStreamProxy>(pStream);

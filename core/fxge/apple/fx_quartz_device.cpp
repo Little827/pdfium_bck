@@ -21,7 +21,7 @@
 #error Expected CGFLOAT_IS_DOUBLE to be defined by CoreGraphics headers
 #endif
 
-void* CQuartz2D::CreateGraphics(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+void* CQuartz2D::CreateGraphics(RetainPtr<CFX_DIBitmap> pBitmap) {
   if (!pBitmap)
     return nullptr;
   CGBitmapInfo bmpInfo = kCGBitmapByteOrder32Little;

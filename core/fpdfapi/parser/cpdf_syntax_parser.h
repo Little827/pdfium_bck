@@ -37,12 +37,11 @@ class CPDF_SyntaxParser {
   };
 
   static std::unique_ptr<CPDF_SyntaxParser> CreateForTesting(
-      const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+      RetainPtr<IFX_SeekableReadStream> pFileAccess,
       FX_FILESIZE HeaderOffset);
 
-  explicit CPDF_SyntaxParser(
-      const RetainPtr<IFX_SeekableReadStream>& pFileAccess);
-  CPDF_SyntaxParser(const RetainPtr<CPDF_ReadValidator>& pValidator,
+  explicit CPDF_SyntaxParser(RetainPtr<IFX_SeekableReadStream> pFileAccess);
+  CPDF_SyntaxParser(RetainPtr<CPDF_ReadValidator> pValidator,
                     FX_FILESIZE HeaderOffset);
   ~CPDF_SyntaxParser();
 
@@ -69,9 +68,7 @@ class CPDF_SyntaxParser {
   WordResult GetNextWord();
   ByteString PeekNextWord();
 
-  const RetainPtr<CPDF_ReadValidator>& GetValidator() const {
-    return m_pFileAccess;
-  }
+  RetainPtr<CPDF_ReadValidator> GetValidator() const;
   uint32_t GetDirectNum();
   bool GetNextChar(uint8_t& ch);
 

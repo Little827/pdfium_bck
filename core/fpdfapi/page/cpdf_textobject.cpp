@@ -264,8 +264,7 @@ CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   return {curpos * horz_scale, 0};
 }
 
-float CPDF_TextObject::CalcPositionDataInternal(
-    const RetainPtr<CPDF_Font>& pFont) {
+float CPDF_TextObject::CalcPositionDataInternal(RetainPtr<CPDF_Font> pFont) {
   float curpos = 0;
   float min_x = 10000.0f;
   float max_x = -10000.0f;

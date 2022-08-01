@@ -44,7 +44,7 @@ std::pair<WideString, WideString> GetNodeLimitsAndSanitize(
 // Get the limit arrays that leaf array |pFind| is under in the tree with root
 // |pNode|. |pLimits| will hold all the limit arrays from the leaf up to before
 // the root. Return true if successful.
-bool GetNodeAncestorsLimitsInternal(const RetainPtr<CPDF_Dictionary>& pNode,
+bool GetNodeAncestorsLimitsInternal(RetainPtr<CPDF_Dictionary> pNode,
                                     const CPDF_Array* pFind,
                                     int nLevel,
                                     std::vector<CPDF_Array*>* pLimits) {
@@ -76,7 +76,7 @@ bool GetNodeAncestorsLimitsInternal(const RetainPtr<CPDF_Dictionary>& pNode,
 // Wrapper for GetNodeAncestorsLimitsInternal() so callers do not need to know
 // about the details.
 std::vector<CPDF_Array*> GetNodeAncestorsLimits(
-    const RetainPtr<CPDF_Dictionary>& pNode,
+    RetainPtr<CPDF_Dictionary> pNode,
     const CPDF_Array* pFind) {
   std::vector<CPDF_Array*> results;
   GetNodeAncestorsLimitsInternal(pNode, pFind, 0, &results);
@@ -173,7 +173,7 @@ bool UpdateNodesAndLimitsUponDeletion(CPDF_Dictionary* pNode,
 // will be the leaf array that |csName| should be added to, and |pFindIndex|
 // will be the index that it should be added at.
 const CPDF_Object* SearchNameNodeByNameInternal(
-    const RetainPtr<CPDF_Dictionary>& pNode,
+    RetainPtr<CPDF_Dictionary> pNode,
     const WideString& csName,
     int nLevel,
     size_t* nIndex,
@@ -245,7 +245,7 @@ const CPDF_Object* SearchNameNodeByNameInternal(
 
 // Wrapper for SearchNameNodeByNameInternal() so callers do not need to know
 // about the details.
-const CPDF_Object* SearchNameNodeByName(const RetainPtr<CPDF_Dictionary>& pNode,
+const CPDF_Object* SearchNameNodeByName(RetainPtr<CPDF_Dictionary> pNode,
                                         const WideString& csName,
                                         RetainPtr<CPDF_Array>* ppFind,
                                         int* pFindIndex) {

@@ -22,7 +22,7 @@ class CFX_ImageRenderer;
 class CXFA_ImageRenderer {
  public:
   CXFA_ImageRenderer(CFX_RenderDevice* pDevice,
-                     const RetainPtr<CFX_DIBBase>& pDIBBase,
+                     RetainPtr<CFX_DIBBase> pDIBBase,
                      const CFX_Matrix& mtImage2Device);
   ~CXFA_ImageRenderer();
 
@@ -32,9 +32,7 @@ class CXFA_ImageRenderer {
  private:
   enum class State : uint8_t { kInitial = 0, kTransforming, kStarted };
 
-  void CompositeDIBitmap(const RetainPtr<CFX_DIBitmap>& pDIBitmap,
-                         int left,
-                         int top);
+  void CompositeDIBitmap(RetainPtr<CFX_DIBitmap> pDIBitmap, int left, int top);
 
   State m_State = State::kInitial;
   CFX_Matrix m_ImageMatrix;

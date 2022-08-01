@@ -24,7 +24,7 @@ class CFX_XMLParser final {
  public:
   static bool IsXMLNameChar(wchar_t ch, bool bFirstChar);
 
-  explicit CFX_XMLParser(const RetainPtr<IFX_SeekableReadStream>& pStream);
+  explicit CFX_XMLParser(RetainPtr<IFX_SeekableReadStream> pStream);
   ~CFX_XMLParser();
 
   std::unique_ptr<CFX_XMLDocument> Parse();

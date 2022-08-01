@@ -211,8 +211,8 @@ void SetAlpha(bool has_alpha, uint8_t* alpha) {
     alpha[3] = 255;
 }
 
-void DrawNormalTextHelper(const RetainPtr<CFX_DIBitmap>& bitmap,
-                          const RetainPtr<CFX_DIBitmap>& pGlyph,
+void DrawNormalTextHelper(RetainPtr<CFX_DIBitmap> bitmap,
+                          RetainPtr<CFX_DIBitmap> pGlyph,
                           int nrows,
                           int left,
                           int top,
@@ -542,14 +542,13 @@ RetainPtr<CFX_DIBitmap> CFX_RenderDevice::GetBitmap() const {
   return m_pBitmap;
 }
 
-void CFX_RenderDevice::SetBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap) {
+void CFX_RenderDevice::SetBitmap(RetainPtr<CFX_DIBitmap> pBitmap) {
   m_pBitmap = pBitmap;
 }
 
-bool CFX_RenderDevice::CreateCompatibleBitmap(
-    const RetainPtr<CFX_DIBitmap>& pDIB,
-    int width,
-    int height) const {
+bool CFX_RenderDevice::CreateCompatibleBitmap(RetainPtr<CFX_DIBitmap> pDIB,
+                                              int width,
+                                              int height) const {
   if (m_RenderCaps & FXRC_BYTEMASK_OUTPUT)
     return pDIB->Create(width, height, FXDIB_Format::k8bppMask);
 #if defined(_SKIA_SUPPORT_PATHS_)
@@ -875,18 +874,24 @@ void CFX_RenderDevice::DrawZeroAreaPath(
                             path_options, blend_type);
 }
 
-bool CFX_RenderDevice::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
+bool CFX_RenderDevice::GetDIBits(RetainPtr<CFX_DIBitmap> pBitmap,
                                  int left,
                                  int top) {
   return (m_RenderCaps & FXRC_GET_BITS) &&
          m_pDeviceDriver->GetDIBits(pBitmap, left, top);
 }
 
+bool CFX_RenderDevice::SetDIBits(RetainPtr<CFX_DIBBase> pBitmap,
+                                 int left,
+                                 int top) {
+  return SetDIBitsWithBlend(pBitmap, left, top, BlendMode::kNormal);
+}
+
 RetainPtr<CFX_DIBitmap> CFX_RenderDevice::GetBackDrop() {
   return m_pDeviceDriver->GetBackDrop();
 }
 
-bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CFX_RenderDevice::SetDIBitsWithBlend(RetainPtr<CFX_DIBBase> pBitmap,
                                           int left,
                                           int top,
                                           BlendMode blend_mode) {
@@ -928,8 +933,18 @@ bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
                                     dest_rect.top, BlendMode::kNormal);
 }
 
+bool CFX_RenderDevice::StretchDIBits(RetainPtr<CFX_DIBBase> pBitmap,
+                                     int left,
+                                     int top,
+                                     int dest_width,
+                                     int dest_height) {
+  return StretchDIBitsWithFlagsAndBlend(pBitmap, left, top, dest_width,
+                                        dest_height, FXDIB_ResampleOptions(),
+                                        BlendMode::kNormal);
+}
+
 bool CFX_RenderDevice::StretchDIBitsWithFlagsAndBlend(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
+    RetainPtr<CFX_DIBBase> pBitmap,
     int left,
     int top,
     int dest_width,
@@ -944,7 +959,7 @@ bool CFX_RenderDevice::StretchDIBitsWithFlagsAndBlend(
                                    dest_height, &clip_box, options, blend_mode);
 }
 
-bool CFX_RenderDevice::SetBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CFX_RenderDevice::SetBitMask(RetainPtr<CFX_DIBBase> pBitmap,
                                   int left,
                                   int top,
                                   uint32_t argb) {
@@ -953,7 +968,7 @@ bool CFX_RenderDevice::SetBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                                     BlendMode::kNormal);
 }
 
-bool CFX_RenderDevice::StretchBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CFX_RenderDevice::StretchBitMask(RetainPtr<CFX_DIBBase> pBitmap,
                                       int left,
                                       int top,
                                       int dest_width,
@@ -964,7 +979,7 @@ bool CFX_RenderDevice::StretchBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
 }
 
 bool CFX_RenderDevice::StretchBitMaskWithFlags(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
+    RetainPtr<CFX_DIBBase> pBitmap,
     int left,
     int top,
     int dest_width,
@@ -979,8 +994,18 @@ bool CFX_RenderDevice::StretchBitMaskWithFlags(
                                         BlendMode::kNormal);
 }
 
+bool CFX_RenderDevice::StartDIBits(RetainPtr<CFX_DIBBase> pBitmap,
+                                   int bitmap_alpha,
+                                   uint32_t color,
+                                   const CFX_Matrix& matrix,
+                                   const FXDIB_ResampleOptions& options,
+                                   std::unique_ptr<CFX_ImageRenderer>* handle) {
+  return StartDIBitsWithBlend(pBitmap, bitmap_alpha, color, matrix, options,
+                              handle, BlendMode::kNormal);
+}
+
 bool CFX_RenderDevice::StartDIBitsWithBlend(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
+    RetainPtr<CFX_DIBBase> pBitmap,
     int bitmap_alpha,
     uint32_t argb,
     const CFX_Matrix& matrix,
@@ -1001,8 +1026,8 @@ void CFX_RenderDevice::DebugVerifyBitmapIsPreMultiplied() const {
   NOTREACHED();
 }
 
-bool CFX_RenderDevice::SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
-                                       const RetainPtr<CFX_DIBBase>& pMask,
+bool CFX_RenderDevice::SetBitsWithMask(RetainPtr<CFX_DIBBase> pBitmap,
+                                       RetainPtr<CFX_DIBBase> pMask,
                                        int left,
                                        int top,
                                        int bitmap_alpha,
@@ -1132,7 +1157,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
       if (!point.has_value())
         continue;
 
-      const RetainPtr<CFX_DIBitmap>& pGlyph = glyph.m_pGlyph->GetBitmap();
+      RetainPtr<CFX_DIBitmap> pGlyph = glyph.m_pGlyph->GetBitmap();
       bitmap->TransferBitmap(point.value().x, point.value().y,
                              pGlyph->GetWidth(), pGlyph->GetHeight(), pGlyph, 0,
                              0);
@@ -1172,7 +1197,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
     if (!point.has_value())
       continue;
 
-    const RetainPtr<CFX_DIBitmap>& pGlyph = glyph.m_pGlyph->GetBitmap();
+    RetainPtr<CFX_DIBitmap> pGlyph = glyph.m_pGlyph->GetBitmap();
     int ncols = pGlyph->GetWidth();
     int nrows = pGlyph->GetHeight();
     if (anti_alias == FT_RENDER_MODE_NORMAL) {

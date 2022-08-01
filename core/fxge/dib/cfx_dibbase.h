@@ -82,8 +82,7 @@ class CFX_DIBBase : public Retainable {
   RetainPtr<CFX_DIBitmap> CloneAlphaMask() const;
 
   // Copies into internally-owned mask.
-  bool SetAlphaMask(const RetainPtr<CFX_DIBBase>& pAlphaMask,
-                    const FX_RECT* pClip);
+  bool SetAlphaMask(RetainPtr<CFX_DIBBase> pAlphaMask, const FX_RECT* pClip);
 
   bool GetOverlapRect(int& dest_left,
                       int& dest_top,

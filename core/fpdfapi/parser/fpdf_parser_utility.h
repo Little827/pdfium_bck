@@ -43,7 +43,7 @@ inline bool PDFCharIsLineEnding(uint8_t c) {
 // cannot be found, or if there is an error reading from |pFile|, then return
 // nullopt.
 absl::optional<FX_FILESIZE> GetHeaderOffset(
-    const RetainPtr<IFX_SeekableReadStream>& pFile);
+    RetainPtr<IFX_SeekableReadStream> pFile);
 
 ByteString PDF_NameDecode(ByteStringView orig);
 ByteString PDF_NameEncode(const ByteString& orig);

@@ -58,7 +58,7 @@ class CFX_CSSStyleSelector {
       const CFX_CSSDeclaration* extraDecl,
       CFX_CSSComputedStyle* pDestStyle);
   void ApplyProperty(CFX_CSSProperty eProperty,
-                     const RetainPtr<CFX_CSSValue>& pValue,
+                     RetainPtr<CFX_CSSValue> pValue,
                      CFX_CSSComputedStyle* pComputedStyle);
   void ExtractValues(const CFX_CSSDeclaration* decl,
                      std::vector<const CFX_CSSPropertyHolder*>* importants,
@@ -67,7 +67,7 @@ class CFX_CSSStyleSelector {
 
   bool SetLengthWithPercent(CFX_CSSLength& width,
                             CFX_CSSValue::PrimitiveType eType,
-                            const RetainPtr<CFX_CSSValue>& pValue,
+                            RetainPtr<CFX_CSSValue> pValue,
                             float fFontSize);
   float ToFontSize(CFX_CSSPropertyValue eValue, float fCurFontSize);
   CFX_CSSDisplay ToDisplay(CFX_CSSPropertyValue eValue);
@@ -76,7 +76,7 @@ class CFX_CSSStyleSelector {
   CFX_CSSFontStyle ToFontStyle(CFX_CSSPropertyValue eValue);
   CFX_CSSVerticalAlign ToVerticalAlign(CFX_CSSPropertyValue eValue);
   Mask<CFX_CSSTEXTDECORATION> ToTextDecoration(
-      const RetainPtr<CFX_CSSValueList>& pList);
+      RetainPtr<CFX_CSSValueList> pList);
   CFX_CSSFontVariant ToFontVariant(CFX_CSSPropertyValue eValue);
 
   float m_fDefaultFontSize = 12.0f;

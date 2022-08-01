@@ -148,9 +148,8 @@ std::vector<XFAPacket> GetXFAPackets(const CPDF_Object* xfa_object) {
   return packets;
 }
 
-FPDF_DOCUMENT LoadDocumentImpl(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
-    FPDF_BYTESTRING password) {
+FPDF_DOCUMENT LoadDocumentImpl(RetainPtr<IFX_SeekableReadStream> pFileAccess,
+                               FPDF_BYTESTRING password) {
   if (!pFileAccess) {
     ProcessParseError(CPDF_Parser::FILE_ERROR);
     return nullptr;
@@ -436,7 +435,7 @@ RetainPtr<CFX_DIBitmap> GetMaskBitmap(CPDF_Page* pPage,
                                       int size_x,
                                       int size_y,
                                       int rotate,
-                                      const RetainPtr<CFX_DIBitmap>& pSrc,
+                                      RetainPtr<CFX_DIBitmap> pSrc,
                                       const CFX_FloatRect& mask_box,
                                       FX_RECT* bitmap_area) {
   if (IsPageTooSmall(pPage))
@@ -464,7 +463,7 @@ RetainPtr<CFX_DIBitmap> GetMaskBitmap(CPDF_Page* pPage,
 }
 
 void RenderBitmap(CFX_RenderDevice* device,
-                  const RetainPtr<CFX_DIBitmap>& pSrc,
+                  RetainPtr<CFX_DIBitmap> pSrc,
                   const FX_RECT& mask_area) {
   int size_x_bm = mask_area.Width();
   int size_y_bm = mask_area.Height();

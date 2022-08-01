@@ -368,7 +368,7 @@ ByteString GetDashPatternString(const CPDF_Dictionary& pAnnotDict) {
 
 ByteString GetPopupContentsString(CPDF_Document* pDoc,
                                   const CPDF_Dictionary& pAnnotDict,
-                                  const RetainPtr<CPDF_Font>& pDefFont,
+                                  RetainPtr<CPDF_Font> pDefFont,
                                   const ByteString& sFontName) {
   WideString swValue(pAnnotDict.GetUnicodeTextFor(pdfium::form_fields::kT));
   swValue += L'\n';

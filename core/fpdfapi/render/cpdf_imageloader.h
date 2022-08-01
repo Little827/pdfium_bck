@@ -30,8 +30,8 @@ class CPDF_ImageLoader {
   RetainPtr<CFX_DIBBase> TranslateImage(
       RetainPtr<CPDF_TransferFunc> pTransferFunc);
 
-  const RetainPtr<CFX_DIBBase>& GetBitmap() const { return m_pBitmap; }
-  const RetainPtr<CFX_DIBBase>& GetMask() const { return m_pMask; }
+  RetainPtr<CFX_DIBBase> GetBitmap() const { return m_pBitmap; }
+  RetainPtr<CFX_DIBBase> GetMask() const { return m_pMask; }
   uint32_t MatteColor() const { return m_MatteColor; }
 
  private:

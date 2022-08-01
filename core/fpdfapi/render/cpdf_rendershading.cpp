@@ -52,7 +52,7 @@ uint32_t CountOutputsFromFunctions(
 
 uint32_t GetValidatedOutputsCount(
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-    const RetainPtr<CPDF_ColorSpace>& pCS) {
+    RetainPtr<CPDF_ColorSpace> pCS) {
   uint32_t funcs_outputs = CountOutputsFromFunctions(funcs);
   return funcs_outputs ? std::max(funcs_outputs, pCS->CountComponents()) : 0;
 }
@@ -61,7 +61,7 @@ std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
     float t_min,
     float t_max,
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-    const RetainPtr<CPDF_ColorSpace>& pCS,
+    RetainPtr<CPDF_ColorSpace> pCS,
     int alpha,
     size_t results_count) {
   DCHECK(results_count >= CountOutputsFromFunctions(funcs));
@@ -90,11 +90,11 @@ std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
   return shading_steps;
 }
 
-void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
+void DrawAxialShading(RetainPtr<CFX_DIBitmap> pBitmap,
                       const CFX_Matrix& mtObject2Bitmap,
                       const CPDF_Dictionary* pDict,
                       const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-                      const RetainPtr<CPDF_ColorSpace>& pCS,
+                      RetainPtr<CPDF_ColorSpace> pCS,
                       int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);
 
@@ -157,11 +157,11 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   }
 }
 
-void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
+void DrawRadialShading(RetainPtr<CFX_DIBitmap> pBitmap,
                        const CFX_Matrix& mtObject2Bitmap,
                        const CPDF_Dictionary* pDict,
                        const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-                       const RetainPtr<CPDF_ColorSpace>& pCS,
+                       RetainPtr<CPDF_ColorSpace> pCS,
                        int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);
 
@@ -253,11 +253,11 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   }
 }
 
-void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
+void DrawFuncShading(RetainPtr<CFX_DIBitmap> pBitmap,
                      const CFX_Matrix& mtObject2Bitmap,
                      const CPDF_Dictionary* pDict,
                      const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-                     const RetainPtr<CPDF_ColorSpace>& pCS,
+                     RetainPtr<CPDF_ColorSpace> pCS,
                      int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);
 
@@ -331,7 +331,7 @@ bool GetScanlineIntersect(int y,
   return true;
 }
 
-void DrawGouraud(const RetainPtr<CFX_DIBitmap>& pBitmap,
+void DrawGouraud(RetainPtr<CFX_DIBitmap> pBitmap,
                  int alpha,
                  CPDF_MeshVertex triangle[3]) {
   float min_y = triangle[0].position.y;
@@ -414,11 +414,11 @@ void DrawGouraud(const RetainPtr<CFX_DIBitmap>& pBitmap,
 }
 
 void DrawFreeGouraudShading(
-    const RetainPtr<CFX_DIBitmap>& pBitmap,
+    RetainPtr<CFX_DIBitmap> pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
     const CPDF_Stream* pShadingStream,
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-    const RetainPtr<CPDF_ColorSpace>& pCS,
+    RetainPtr<CPDF_ColorSpace> pCS,
     int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);
 
@@ -453,11 +453,11 @@ void DrawFreeGouraudShading(
 }
 
 void DrawLatticeGouraudShading(
-    const RetainPtr<CFX_DIBitmap>& pBitmap,
+    RetainPtr<CFX_DIBitmap> pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
     const CPDF_Stream* pShadingStream,
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-    const RetainPtr<CPDF_ColorSpace>& pCS,
+    RetainPtr<CPDF_ColorSpace> pCS,
     int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);
 
@@ -774,11 +774,11 @@ struct PatchDrawer {
 
 void DrawCoonPatchMeshes(
     ShadingType type,
-    const RetainPtr<CFX_DIBitmap>& pBitmap,
+    RetainPtr<CFX_DIBitmap> pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
     const CPDF_Stream* pShadingStream,
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-    const RetainPtr<CPDF_ColorSpace>& pCS,
+    RetainPtr<CPDF_ColorSpace> pCS,
     bool bNoPathSmooth,
     int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);

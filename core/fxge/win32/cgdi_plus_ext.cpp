@@ -202,7 +202,7 @@ Gdiplus::GpBrush* GdipCreateBrushImpl(DWORD argb) {
 }
 
 void OutputImage(Gdiplus::GpGraphics* pGraphics,
-                 const RetainPtr<CFX_DIBitmap>& pBitmap,
+                 RetainPtr<CFX_DIBitmap> pBitmap,
                  const FX_RECT& src_rect,
                  int dest_left,
                  int dest_top,
@@ -568,7 +568,7 @@ void CGdiplusExt::Load() {
 }
 
 bool CGdiplusExt::StretchDIBits(HDC hDC,
-                                const RetainPtr<CFX_DIBitmap>& pBitmap,
+                                RetainPtr<CFX_DIBitmap> pBitmap,
                                 int dest_left,
                                 int dest_top,
                                 int dest_width,
