@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a018feee_217c098d",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-01T21:07:36Z",
+      "side": 1,
+      "message": "The method should be const.",
+      "revId": "7742103f72c7cc49efd33e69292565a13e4c7f4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ba037e_979c450f",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-01T21:07:36Z",
+      "side": 1,
+      "message": "Does there exist a single data structure that can keep track of everything efficiently, instead of having 2?",
+      "revId": "7742103f72c7cc49efd33e69292565a13e4c7f4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
