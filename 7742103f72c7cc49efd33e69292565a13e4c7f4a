@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b2da6ea_6f5a87c9",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-01T22:46:36Z",
+      "side": 1,
+      "message": "Ack. Ended up deleting this method in the new patchset.",
+      "parentUuid": "a018feee_217c098d",
+      "revId": "7742103f72c7cc49efd33e69292565a13e4c7f4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ba037e_979c450f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-01T21:07:36Z",
       "side": 1,
       "message": "Does there exist a single data structure that can keep track of everything efficiently, instead of having 2?",
+      "revId": "7742103f72c7cc49efd33e69292565a13e4c7f4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32858586_493d0c91",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-01T22:46:36Z",
+      "side": 1,
+      "message": "I changed the std::multimap into std::map\u003cuint32_t, std::set\u003cuint32_t\u003e\u003e. This should be able to help insertion to be more efficient since set doesn\u0027t hold duplicate values.",
+      "parentUuid": "c9ba037e_979c450f",
       "revId": "7742103f72c7cc49efd33e69292565a13e4c7f4a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
