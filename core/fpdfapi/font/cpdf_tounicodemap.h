@@ -8,6 +8,8 @@
 #define CORE_FPDFAPI_FONT_CPDF_TOUNICODEMAP_H_
 
 #include <map>
+#include <set>
+#include <utility>
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
@@ -45,7 +47,7 @@ class CPDF_ToUnicodeMap {
   // before.
   void InsertIntoMultimap(uint32_t code, uint32_t destcode);
 
-  std::multimap<uint32_t, uint32_t> m_Multimap;
+  std::map<uint32_t, std::set<uint32_t>> m_Multimap;
   UnownedPtr<const CPDF_CID2UnicodeMap> m_pBaseMap;
   std::vector<WideString> m_MultiCharVec;
 };
