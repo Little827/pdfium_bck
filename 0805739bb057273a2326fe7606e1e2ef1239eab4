@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef816267_ac7e5100",
+        "filename": "testing/fuzzers/pdf_formcalc_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e96ce5_73b4d463",
+      "revId": "0805739bb057273a2326fe7606e1e2ef1239eab4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afd49dba_2133a52f",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-02T19:26:31Z",
       "side": 1,
       "message": "Remove?",
+      "revId": "0805739bb057273a2326fe7606e1e2ef1239eab4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1269225_640aeed7",
+        "filename": "testing/fuzzers/pdf_formcalc_translate_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd49dba_2133a52f",
       "revId": "0805739bb057273a2326fe7606e1e2ef1239eab4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
