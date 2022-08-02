@@ -34,6 +34,24 @@
       "parentUuid": "838e5951_6d6d87db",
       "revId": "5066b9f2a2612498a94120f0a097ded9c814c963",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d396051_a0c1a065",
+        "filename": "xfa/fxfa/formcalc/cxfa_fmexpression.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T20:58:23Z",
+      "side": 0,
+      "message": "Yes, these goals conflict a little. The folks who decided this probably prioritized saving human time and making tooling easier.",
+      "parentUuid": "dbe829e2_2a1cb1b7",
+      "revId": "5066b9f2a2612498a94120f0a097ded9c814c963",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
