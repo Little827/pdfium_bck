@@ -106,6 +106,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4988a0ad_a6d22aef",
+        "filename": "core/fxcrt/small_buffer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T21:04:44Z",
+      "side": 1,
+      "message": "Though if SmallBuffer eventually returns a span, the caller can loop over the span instead.",
+      "parentUuid": "56e3728f_91871da8",
+      "revId": "273a408350b2e43a4aaeaab39d4f32899baf6246",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed0be21a_c6792fb3",
