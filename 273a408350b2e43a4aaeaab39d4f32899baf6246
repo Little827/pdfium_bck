@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4827d8_0801e481",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:24:20Z",
+      "side": 1,
+      "message": "Nope. Done.",
+      "parentUuid": "2ec05600_20a2f347",
+      "revId": "273a408350b2e43a4aaeaab39d4f32899baf6246",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9aded6b_80965a4e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-02T19:12:54Z",
       "side": 1,
       "message": "Convert to span later?",
+      "revId": "273a408350b2e43a4aaeaab39d4f32899baf6246",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "263c480d_1d42eb57",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:24:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a9aded6b_80965a4e",
       "revId": "273a408350b2e43a4aaeaab39d4f32899baf6246",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e3728f_91871da8",
+        "filename": "core/fxcrt/small_buffer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:24:20Z",
+      "side": 1,
+      "message": "Made dynamic() and fixed() test only, removed is_dynamic. Kept begin() and end() since if we ever want to use this again, want to do range-based for loops over it, say.",
+      "parentUuid": "cf582851_a9e95433",
+      "revId": "273a408350b2e43a4aaeaab39d4f32899baf6246",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed0be21a_c6792fb3",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-08-02T19:12:54Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "273a408350b2e43a4aaeaab39d4f32899baf6246",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50fd95e2_45931ca9",
+        "filename": "core/fxcrt/small_buffer_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0be21a_c6792fb3",
       "range": {
         "startLine": 1,
         "startChar": 13,
