@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b6648a_cbad9453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T18:27:52Z",
+      "side": 1,
+      "message": "Mindless fun from a Friday afternoon.",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
