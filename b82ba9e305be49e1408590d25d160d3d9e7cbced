@@ -16,6 +16,74 @@
       "message": "Mindless fun from a Friday afternoon.",
       "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2094e37d_a32d70b5",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T19:21:58Z",
+      "side": 1,
+      "message": "Forward declare + move to .cpp file?",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bd612c_0495217d",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T19:21:58Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3115fd_20f4b853",
+        "filename": "core/fxcrt/binary_buffer_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T19:21:58Z",
+      "side": 1,
+      "message": "ASSERT_EQ() before accessing index 0 on the next line?",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4912dad_4aca7fdb",
+        "filename": "fxjs/cfx_globaldata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T19:21:58Z",
+      "side": 1,
+      "message": "Move to .cpp file?",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
