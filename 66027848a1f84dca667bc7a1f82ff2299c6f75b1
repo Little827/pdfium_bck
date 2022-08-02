@@ -16,6 +16,24 @@
       "message": "Does it matter if the for-loop reinitializes `vt` multiple times?",
       "revId": "66027848a1f84dca667bc7a1f82ff2299c6f75b1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f711ab_6aa28de0",
+        "filename": "core/fpdfdoc/cpdf_generateap.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T23:16:36Z",
+      "side": 1,
+      "message": "probably.  Abandoning.",
+      "parentUuid": "4f6f2a77_810a0074",
+      "revId": "66027848a1f84dca667bc7a1f82ff2299c6f75b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
