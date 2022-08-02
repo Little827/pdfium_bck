@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d853e308_47ec20c7",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:51:53Z",
+      "side": 1,
+      "message": "Eh, its that darn using fxcrt::BinaryBuffer game, where I\u0027d have to namespace the forward declaration and write fxcrt:: in the header.",
+      "parentUuid": "2094e37d_a32d70b5",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4bd612c_0495217d",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-02T19:21:58Z",
       "side": 1,
       "message": "Remove?",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f5fd92_763016c7",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4bd612c_0495217d",
       "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -69,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12889de_a2ce71e7",
+        "filename": "core/fxcrt/binary_buffer_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3115fd_20f4b853",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4912dad_4aca7fdb",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-08-02T19:21:58Z",
       "side": 1,
       "message": "Move to .cpp file?",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9ee68d_410d9e66",
+        "filename": "fxjs/cfx_globaldata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-02T19:51:53Z",
+      "side": 1,
+      "message": "same problem as above.",
+      "parentUuid": "b4912dad_4aca7fdb",
       "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
