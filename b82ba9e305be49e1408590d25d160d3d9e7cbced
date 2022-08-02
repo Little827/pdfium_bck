@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "620ba4fa_0f70cf5a",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T20:29:20Z",
+      "side": 1,
+      "message": "Ah, right.",
+      "parentUuid": "d853e308_47ec20c7",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4bd612c_0495217d",
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "same problem as above.",
       "parentUuid": "b4912dad_4aca7fdb",
+      "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd1039f_caae3045",
+        "filename": "fxjs/cfx_globaldata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-02T20:29:20Z",
+      "side": 1,
+      "message": "Ack ack.",
+      "parentUuid": "1f9ee68d_410d9e66",
       "revId": "b82ba9e305be49e1408590d25d160d3d9e7cbced",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
