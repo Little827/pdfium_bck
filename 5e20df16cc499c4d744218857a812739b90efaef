@@ -16,6 +16,41 @@
       "message": "Need to evaluate the claims in the CL description with more than a grain of salt.",
       "revId": "5e20df16cc499c4d744218857a812739b90efaef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43377929_ba42d800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-03T23:01:28Z",
+      "side": 1,
+      "message": "Makes sense to me.",
+      "parentUuid": "90d913ce_f6d816fe",
+      "revId": "5e20df16cc499c4d744218857a812739b90efaef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b472abad_4bbebdf0",
+        "filename": "fpdfsdk/cpdfsdk_pageview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-03T23:01:28Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "5e20df16cc499c4d744218857a812739b90efaef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
