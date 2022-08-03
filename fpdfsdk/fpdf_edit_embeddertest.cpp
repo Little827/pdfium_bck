@@ -3879,14 +3879,15 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_GetRenderedBitmapHandlesSetMatrix) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapHandlesSMask) {
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_GetRenderedBitmapHandlesSMask \
-  DISABLED_GetRenderedBitmapHandlesSMask
+  static constexpr char kSMaskChecksum[] = "e57bbf00c6fcedf6f60009c3db992872";
+  static constexpr char kNoSMaskChecksum[] = "36652c58c01872923f105a5590ddcff1";
 #else
-#define MAYBE_GetRenderedBitmapHandlesSMask GetRenderedBitmapHandlesSMask
+  static constexpr char kSMaskChecksum[] = "5a3ae4a660ce919e29c42ec2258142f1";
+  static constexpr char kNoSMaskChecksum[] = "67504e83f5d78214ea00efc19082c5c1";
 #endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_GetRenderedBitmapHandlesSMask) {
+
   ASSERT_TRUE(OpenDocument("matte.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
@@ -3902,9 +3903,9 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_GetRenderedBitmapHandlesSMask) {
     ASSERT_TRUE(bitmap);
     EXPECT_EQ(FPDFBitmap_BGRA, FPDFBitmap_GetFormat(bitmap.get()));
     if (i == 0)
-      CompareBitmap(bitmap.get(), 40, 60, "5a3ae4a660ce919e29c42ec2258142f1");
+      CompareBitmap(bitmap.get(), 40, 60, kSMaskChecksum);
     else
-      CompareBitmap(bitmap.get(), 40, 60, "67504e83f5d78214ea00efc19082c5c1");
+      CompareBitmap(bitmap.get(), 40, 60, kNoSMaskChecksum);
   }
 
   UnloadPage(page);
