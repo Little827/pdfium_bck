@@ -93,10 +93,9 @@ CPDF_SyntaxParser::CPDF_SyntaxParser(
           pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr),
           0) {}
 
-CPDF_SyntaxParser::CPDF_SyntaxParser(
-    const RetainPtr<CPDF_ReadValidator>& validator,
-    FX_FILESIZE HeaderOffset)
-    : m_pFileAccess(validator),
+CPDF_SyntaxParser::CPDF_SyntaxParser(RetainPtr<CPDF_ReadValidator> validator,
+                                     FX_FILESIZE HeaderOffset)
+    : m_pFileAccess(std::move(validator)),
       m_HeaderOffset(HeaderOffset),
       m_FileLen(m_pFileAccess->GetSize()) {
   DCHECK(m_HeaderOffset <= m_FileLen);
