@@ -125,6 +125,9 @@ bool CXFA_FMNullExpression::ToJavaScript(WideTextBuffer* js,
 CXFA_FMNumberExpression::CXFA_FMNumberExpression(WideString wsNumber)
     : CXFA_FMSimpleExpression(TOKnumber), m_wsNumber(std::move(wsNumber)) {}
 
+CXFA_FMNumberExpression::CXFA_FMNumberExpression(WideStringView wsNumber)
+    : CXFA_FMNumberExpression(WideString(wsNumber)) {}
+
 CXFA_FMNumberExpression::~CXFA_FMNumberExpression() = default;
 
 bool CXFA_FMNumberExpression::ToJavaScript(WideTextBuffer* js,
@@ -139,6 +142,9 @@ bool CXFA_FMNumberExpression::ToJavaScript(WideTextBuffer* js,
 
 CXFA_FMStringExpression::CXFA_FMStringExpression(WideString wsString)
     : CXFA_FMSimpleExpression(TOKstring), m_wsString(std::move(wsString)) {}
+
+CXFA_FMStringExpression::CXFA_FMStringExpression(WideStringView wsString)
+    : CXFA_FMStringExpression(WideString(wsString)) {}
 
 CXFA_FMStringExpression::~CXFA_FMStringExpression() = default;
 
@@ -180,6 +186,10 @@ CXFA_FMIdentifierExpression::CXFA_FMIdentifierExpression(
     WideString wsIdentifier)
     : CXFA_FMSimpleExpression(TOKidentifier),
       m_wsIdentifier(std::move(wsIdentifier)) {}
+
+CXFA_FMIdentifierExpression::CXFA_FMIdentifierExpression(
+    WideStringView wsIdentifier)
+    : CXFA_FMIdentifierExpression(WideString(wsIdentifier)) {}
 
 CXFA_FMIdentifierExpression::~CXFA_FMIdentifierExpression() = default;
 
@@ -260,6 +270,12 @@ CXFA_FMBinExpression::CXFA_FMBinExpression(const WideString& opName,
                                            CXFA_FMSimpleExpression* pExp1,
                                            CXFA_FMSimpleExpression* pExp2)
     : CXFA_FMChainableExpression(op, pExp1, pExp2), m_OpName(opName) {}
+
+CXFA_FMBinExpression::CXFA_FMBinExpression(WideStringView opName,
+                                           XFA_FM_TOKEN op,
+                                           CXFA_FMSimpleExpression* pExp1,
+                                           CXFA_FMSimpleExpression* pExp2)
+    : CXFA_FMBinExpression(WideString(opName), op, pExp1, pExp2) {}
 
 CXFA_FMBinExpression::~CXFA_FMBinExpression() = default;
 
@@ -370,6 +386,11 @@ CXFA_FMUnaryExpression::CXFA_FMUnaryExpression(const WideString& opName,
                                                XFA_FM_TOKEN op,
                                                CXFA_FMSimpleExpression* pExp)
     : CXFA_FMSimpleExpression(op), m_OpName(opName), m_pExp(pExp) {}
+
+CXFA_FMUnaryExpression::CXFA_FMUnaryExpression(WideStringView opName,
+                                               XFA_FM_TOKEN op,
+                                               CXFA_FMSimpleExpression* pExp)
+    : CXFA_FMUnaryExpression(WideString(opName), op, pExp) {}
 
 CXFA_FMUnaryExpression::~CXFA_FMUnaryExpression() = default;
 
@@ -812,6 +833,10 @@ absl::optional<WideTextBuffer> CXFA_FMAST::ToJavaScript() const {
 CXFA_FMVarExpression::CXFA_FMVarExpression(WideString wsName,
                                            CXFA_FMSimpleExpression* pInit)
     : m_wsName(std::move(wsName)), m_pInit(pInit) {}
+
+CXFA_FMVarExpression::CXFA_FMVarExpression(WideStringView wsName,
+                                           CXFA_FMSimpleExpression* pInit)
+    : CXFA_FMVarExpression(WideString(wsName), pInit) {}
 
 CXFA_FMVarExpression::~CXFA_FMVarExpression() = default;
 

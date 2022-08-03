@@ -502,7 +502,7 @@ CJS_Result CJS_App::browseForDoc(
 }
 
 WideString CJS_App::SysPathToPDFPath(const WideString& sOldPath) {
-  WideString sRet = L"/";
+  WideString sRet(L"/");
   for (const wchar_t& c : sOldPath) {
     if (c != L':')
       sRet += (c == L'\\') ? L'/' : c;
@@ -530,7 +530,7 @@ CJS_Result CJS_App::response(CJS_Runtime* pRuntime,
     return CJS_Result::Failure(JSMessage::kParamError);
 
   WideString swQuestion = pRuntime->ToWideString(newParams[0]);
-  WideString swTitle = L"PDF";
+  WideString swTitle(L"PDF");
   if (IsExpandedParamKnown(newParams[1]))
     swTitle = pRuntime->ToWideString(newParams[1]);
 

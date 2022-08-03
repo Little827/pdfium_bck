@@ -70,7 +70,8 @@ bool CXFA_FWLTheme::LoadCalendarFont(CXFA_FFDoc* doc) {
     return true;
 
   for (const wchar_t* font : kFWLThemeCalFonts) {
-    m_pCalendarFont = m_pApp->GetXFAFontMgr()->GetFont(doc, font, 0);
+    m_pCalendarFont =
+        m_pApp->GetXFAFontMgr()->GetFont(doc, WideString(font), 0);
     if (m_pCalendarFont)
       return true;
   }

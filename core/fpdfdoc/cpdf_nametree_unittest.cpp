@@ -161,19 +161,19 @@ TEST(cpdf_nametree, AddIntoNames) {
 
   // Insert a name that already exists in the names array.
   EXPECT_FALSE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
-                                          L"2.txt"));
+                                          WideString(L"2.txt")));
 
   // Insert in the beginning of the names array.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
-                                         L"1.txt"));
+                                         WideString(L"1.txt")));
 
   // Insert in the middle of the names array.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(555),
-                                         L"5.txt"));
+                                         WideString(L"5.txt")));
 
   // Insert at the end of the names array.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(999),
-                                         L"9.txt"));
+                                         WideString(L"9.txt")));
 
   // Check that the names array has the expected key-value pairs.
   CheckNameKeyValue(pNames, 0, "1.txt", 111);
@@ -193,23 +193,23 @@ TEST(cpdf_nametree, AddIntoEmptyNames) {
 
   // Insert a name should work.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
-                                         L"2.txt"));
+                                         WideString(L"2.txt")));
 
   // Insert a name that already exists in the names array.
   EXPECT_FALSE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
-                                          L"2.txt"));
+                                          WideString(L"2.txt")));
 
   // Insert in the beginning of the names array.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
-                                         L"1.txt"));
+                                         WideString(L"1.txt")));
 
   // Insert in the middle of the names array.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(555),
-                                         L"5.txt"));
+                                         WideString(L"5.txt")));
 
   // Insert at the end of the names array.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(999),
-                                         L"9.txt"));
+                                         WideString(L"9.txt")));
 
   // Check that the names array has the expected key-value pairs.
   CheckNameKeyValue(pNames, 0, "1.txt", 111);
@@ -226,29 +226,29 @@ TEST(cpdf_nametree, AddIntoKids) {
 
   // Check that adding an existing name would fail.
   EXPECT_FALSE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(444),
-                                          L"9.txt"));
+                                          WideString(L"9.txt")));
 
   // Add a name within the limits of a leaf node.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(444),
-                                         L"4.txt"));
+                                         WideString(L"4.txt")));
   ASSERT_TRUE(name_tree->LookupValue(L"4.txt"));
   EXPECT_EQ(444, name_tree->LookupValue(L"4.txt")->GetInteger());
 
   // Add a name that requires changing the limits of two bottom levels.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(666),
-                                         L"6.txt"));
+                                         WideString(L"6.txt")));
   ASSERT_TRUE(name_tree->LookupValue(L"6.txt"));
   EXPECT_EQ(666, name_tree->LookupValue(L"6.txt")->GetInteger());
 
   // Add a name that requires changing the limits of two top levels.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(99),
-                                         L"99.txt"));
+                                         WideString(L"99.txt")));
   ASSERT_TRUE(name_tree->LookupValue(L"99.txt"));
   EXPECT_EQ(99, name_tree->LookupValue(L"99.txt")->GetInteger());
 
   // Add a name that requires changing the lower limit of all levels.
   EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(-5),
-                                         L"0.txt"));
+                                         WideString(L"0.txt")));
   ASSERT_TRUE(name_tree->LookupValue(L"0.txt"));
   EXPECT_EQ(-5, name_tree->LookupValue(L"0.txt")->GetInteger());
 

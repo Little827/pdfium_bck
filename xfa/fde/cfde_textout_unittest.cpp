@@ -85,12 +85,13 @@ class CFDETextOutTest : public testing::Test {
 };
 
 TEST_F(CFDETextOutTest, DrawLogicTextBasic) {
-  text_out().DrawLogicText(device(), L"foo", CFX_RectF(0, 0, 2100, 100));
+  text_out().DrawLogicText(device(), WideString(L"foo"),
+                           CFX_RectF(0, 0, 2100, 100));
   EXPECT_STREQ("b26f1c171fcdbf185823364185adacf0", GetBitmapChecksum().c_str());
 }
 
 TEST_F(CFDETextOutTest, DrawLogicTextEmptyRect) {
-  text_out().DrawLogicText(device(), L"foo", CFX_RectF());
+  text_out().DrawLogicText(device(), WideString(L"foo"), CFX_RectF());
   EXPECT_STREQ(GetEmptyBitmapChecksum(), GetBitmapChecksum().c_str());
 }
 

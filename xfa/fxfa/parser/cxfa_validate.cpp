@@ -96,27 +96,27 @@ WideString CXFA_Validate::GetMessageText(const WideString& wsMessageType) {
 }
 
 void CXFA_Validate::SetFormatMessageText(const WideString& wsMessage) {
-  SetMessageText(kFormatTest, wsMessage);
+  SetMessageText(WideString(kFormatTest), wsMessage);
 }
 
 WideString CXFA_Validate::GetFormatMessageText() {
-  return GetMessageText(kFormatTest);
+  return GetMessageText(WideString(kFormatTest));
 }
 
 void CXFA_Validate::SetNullMessageText(const WideString& wsMessage) {
-  SetMessageText(kNullTest, wsMessage);
+  SetMessageText(WideString(kNullTest), wsMessage);
 }
 
 WideString CXFA_Validate::GetNullMessageText() {
-  return GetMessageText(kNullTest);
+  return GetMessageText(WideString(kNullTest));
 }
 
 WideString CXFA_Validate::GetScriptMessageText() {
-  return GetMessageText(kScriptTest);
+  return GetMessageText(WideString(kScriptTest));
 }
 
 void CXFA_Validate::SetScriptMessageText(const WideString& wsMessage) {
-  SetMessageText(kScriptTest, wsMessage);
+  SetMessageText(WideString(kScriptTest), wsMessage);
 }
 
 void CXFA_Validate::SetMessageText(const WideString& wsMessageType,

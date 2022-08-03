@@ -17,6 +17,7 @@ class CFX_XMLDocument;
 class CFX_XMLElement final : public CFX_XMLNode {
  public:
   explicit CFX_XMLElement(const WideString& wsTag);
+  explicit CFX_XMLElement(WideStringView wsTag);
   ~CFX_XMLElement() override;
 
   // CFX_XMLNode
@@ -30,9 +31,15 @@ class CFX_XMLElement final : public CFX_XMLNode {
     return attrs_;
   }
   bool HasAttribute(const WideString& name) const;
+  bool HasAttribute(WideStringView name) const;
   void SetAttribute(const WideString& name, const WideString& value);
+  void SetAttribute(WideStringView name, const WideString& value);
+  void SetAttribute(WideStringView name, WideStringView value);
   WideString GetAttribute(const WideString& name) const;
+  WideString GetAttribute(WideStringView name) const;
+
   void RemoveAttribute(const WideString& name);
+  void RemoveAttribute(WideStringView name);
 
   CFX_XMLElement* GetFirstChildNamed(WideStringView name) const;
   CFX_XMLElement* GetNthChildNamed(WideStringView name, size_t idx) const;

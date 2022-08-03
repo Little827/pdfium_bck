@@ -538,7 +538,8 @@ void CreateDataBinding(CXFA_Node* pFormNode,
             for (const auto& text : wsSelTextArray) {
               CXFA_Node* pValue =
                   pDataNode->CreateSamePacketNode(XFA_Element::DataValue);
-              pValue->JSObject()->SetCData(XFA_Attribute::Name, L"value");
+              pValue->JSObject()->SetCData(XFA_Attribute::Name,
+                                           WideString(L"value"));
               pValue->CreateXMLMappingNode();
               pDataNode->InsertChildAndNotify(pValue, nullptr);
               pValue->JSObject()->SetCData(XFA_Attribute::Value, text);
@@ -691,7 +692,8 @@ void CreateDataBinding(CXFA_Node* pFormNode,
           CXFA_ExData* exData =
               defValue ? defValue->GetExDataIfExists() : nullptr;
           if (exData)
-            exData->SetContentType(single ? L"text/plain" : L"text/xml");
+            exData->SetContentType(
+                WideString(single ? L"text/plain" : L"text/xml"));
         }
         FormValueNode_SetChildContent(defValue, wsNormalizeValue,
                                       XFA_Element::ExData);
@@ -1686,7 +1688,8 @@ void CXFA_Document::DoDataMerge() {
                                    L"http://www.xfa.org/schema/xfa-data/1.0/");
     pDatasetsRoot =
         CreateNode(XFA_PacketType::Datasets, XFA_Element::DataModel);
-    pDatasetsRoot->JSObject()->SetCData(XFA_Attribute::Name, L"datasets");
+    pDatasetsRoot->JSObject()->SetCData(XFA_Attribute::Name,
+                                        WideString(L"datasets"));
 
     m_pRootNode->GetXMLMappingNode()->AppendLastChild(pDatasetsXMLNode);
     m_pRootNode->InsertChildAndNotify(pDatasetsRoot, nullptr);
@@ -1725,7 +1728,7 @@ void CXFA_Document::DoDataMerge() {
 
   if (!pDataRoot) {
     pDataRoot = CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
-    pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, L"data");
+    pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, WideString(L"data"));
 
     auto* elem =
         notify_->GetFFDoc()->GetXMLDocument()->CreateNode<CFX_XMLElement>(
@@ -1761,7 +1764,7 @@ void CXFA_Document::DoDataMerge() {
     pFormRoot = static_cast<CXFA_Form*>(
         CreateNode(XFA_PacketType::Form, XFA_Element::Form));
     DCHECK(pFormRoot);
-    pFormRoot->JSObject()->SetCData(XFA_Attribute::Name, L"form");
+    pFormRoot->JSObject()->SetCData(XFA_Attribute::Name, WideString(L"form"));
     m_pRootNode->InsertChildAndNotify(pFormRoot, nullptr);
   } else {
     CXFA_NodeIteratorTemplate<CXFA_Node, CXFA_TraverseStrategy_XFANode>
@@ -1778,7 +1781,8 @@ void CXFA_Document::DoDataMerge() {
   if (!pDataTopLevel) {
     WideString wsFormName =
         pSubformSetNode->JSObject()->GetCData(XFA_Attribute::Name);
-    WideString wsDataTopLevelName(wsFormName.IsEmpty() ? L"form" : wsFormName);
+    WideString wsDataTopLevelName(wsFormName.IsEmpty() ? WideString(L"form")
+                                                       : wsFormName);
 
     pDataTopLevel = static_cast<CXFA_DataGroup*>(
         CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup));

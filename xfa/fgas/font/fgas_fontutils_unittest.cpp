@@ -31,16 +31,16 @@ TEST(FGAS, GetUnicodeBitField) {
 
 TEST(FGAS, FontNameToEnglishName) {
   // These aren't found with spaces.
-  WideString result = FGAS_FontNameToEnglishName(L"Myriad Pro");
+  WideString result = FGAS_FontNameToEnglishName(WideString(L"Myriad Pro"));
   EXPECT_EQ(L"Myriad Pro", result);
 
-  result = FGAS_FontNameToEnglishName(L"mYriad pRo");
+  result = FGAS_FontNameToEnglishName(WideString(L"mYriad pRo"));
   EXPECT_EQ(L"mYriad pRo", result);
 
-  result = FGAS_FontNameToEnglishName(L"MyriadPro");
+  result = FGAS_FontNameToEnglishName(WideString(L"MyriadPro"));
   EXPECT_EQ(L"MyriadPro", result);
 
-  result = FGAS_FontNameToEnglishName(L"mYriadpRo");
+  result = FGAS_FontNameToEnglishName(WideString(L"mYriadpRo"));
   EXPECT_EQ(L"MyriadPro", result);
 }
 

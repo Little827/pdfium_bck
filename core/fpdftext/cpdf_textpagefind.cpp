@@ -134,7 +134,7 @@ std::vector<WideString> ExtractFindWhat(const WideString& findwhat) {
       break;
 
     if (word->IsEmpty()) {
-      findwhat_array.push_back(L"");
+      findwhat_array.emplace_back();
       index++;
       continue;
     }

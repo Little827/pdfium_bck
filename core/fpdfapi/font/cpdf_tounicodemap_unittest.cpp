@@ -41,7 +41,7 @@ TEST(cpdf_tounicodemap, StringToWideString) {
   EXPECT_EQ(L"", CPDF_ToUnicodeMap::StringToWideString("<c2D2"));
   EXPECT_EQ(L"", CPDF_ToUnicodeMap::StringToWideString("c2ab>"));
 
-  WideString res = L"\xc2ab";
+  WideString res(L"\xc2ab");
   EXPECT_EQ(res, CPDF_ToUnicodeMap::StringToWideString("<c2ab>"));
   EXPECT_EQ(res, CPDF_ToUnicodeMap::StringToWideString("<c2abab>"));
   EXPECT_EQ(res, CPDF_ToUnicodeMap::StringToWideString("<c2ab 1234>"));

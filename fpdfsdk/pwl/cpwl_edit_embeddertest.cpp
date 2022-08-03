@@ -160,7 +160,7 @@ TEST_F(CPWLEditEmbedderTest, DeleteEntireTextSelection) {
   EXPECT_STREQ(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLEdit()->GetSelectedText().c_str());
 
-  GetCPWLEdit()->ReplaceSelection(L"");
+  GetCPWLEdit()->ReplaceSelection(WideString());
   EXPECT_TRUE(GetCPWLEdit()->GetText().IsEmpty());
 }
 
@@ -171,7 +171,7 @@ TEST_F(CPWLEditEmbedderTest, DeleteTextSelectionMiddle) {
   GetCPWLEdit()->SetSelection(12, 23);
   EXPECT_STREQ(L"MNOPQRSTUVW", GetCPWLEdit()->GetSelectedText().c_str());
 
-  GetCPWLEdit()->ReplaceSelection(L"");
+  GetCPWLEdit()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"ABCDEFGHIJKLXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLEdit()->GetText().c_str());
 }
@@ -183,7 +183,7 @@ TEST_F(CPWLEditEmbedderTest, DeleteTextSelectionLeft) {
   GetCPWLEdit()->SetSelection(0, 5);
   EXPECT_STREQ(L"ABCDE", GetCPWLEdit()->GetSelectedText().c_str());
 
-  GetCPWLEdit()->ReplaceSelection(L"");
+  GetCPWLEdit()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"FGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLEdit()->GetText().c_str());
 }
@@ -195,7 +195,7 @@ TEST_F(CPWLEditEmbedderTest, DeleteTextSelectionRight) {
   GetCPWLEdit()->SetSelection(45, 50);
   EXPECT_STREQ(L"nopqr", GetCPWLEdit()->GetSelectedText().c_str());
 
-  GetCPWLEdit()->ReplaceSelection(L"");
+  GetCPWLEdit()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklm",
                GetCPWLEdit()->GetText().c_str());
 }
@@ -204,14 +204,14 @@ TEST_F(CPWLEditEmbedderTest, DeleteEmptyTextSelection) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
   TypeTextIntoTextField(50);
 
-  GetCPWLEdit()->ReplaceSelection(L"");
+  GetCPWLEdit()->ReplaceSelection(WideString());
   EXPECT_STREQ(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqr",
                GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, InsertTextInEmptyTextField) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"Hello", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -222,7 +222,7 @@ TEST_F(CPWLEditEmbedderTest, InsertTextInPopulatedTextFieldLeft) {
   // Move cursor to beginning of text field.
   EXPECT_TRUE(GetCFFLFormFiller()->OnKeyDown(FWL_VKEY_Home, {}));
 
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"HelloABCDEFGHIJ", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -235,7 +235,7 @@ TEST_F(CPWLEditEmbedderTest, InsertTextInPopulatedTextFieldMiddle) {
     EXPECT_TRUE(GetCFFLFormFiller()->OnKeyDown(FWL_VKEY_Left, {}));
   }
 
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABCDEHelloFGHIJ", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -243,7 +243,7 @@ TEST_F(CPWLEditEmbedderTest, InsertTextInPopulatedTextFieldRight) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
   TypeTextIntoTextField(10);
 
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABCDEFGHIJHello", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -254,7 +254,7 @@ TEST_F(CPWLEditEmbedderTest,
 
   GetCPWLEdit()->SetSelection(0, -1);
   EXPECT_STREQ(L"ABCDEFGHIJ", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"Hello", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -265,7 +265,7 @@ TEST_F(CPWLEditEmbedderTest,
 
   GetCPWLEdit()->SetSelection(0, 5);
   EXPECT_STREQ(L"ABCDE", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"HelloFGHIJ", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -276,7 +276,7 @@ TEST_F(CPWLEditEmbedderTest,
 
   GetCPWLEdit()->SetSelection(2, 7);
   EXPECT_STREQ(L"CDEFG", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABHelloHIJ", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -287,7 +287,7 @@ TEST_F(CPWLEditEmbedderTest,
 
   GetCPWLEdit()->SetSelection(5, 10);
   EXPECT_STREQ(L"FGHIJ", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hello");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hello"));
   EXPECT_STREQ(L"ABCDEHello", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -295,9 +295,9 @@ TEST_F(CPWLEditEmbedderTest, InsertTextInEmptyCharLimitTextFieldOverflow) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnotCharLimit());
   GetCPWLEdit()->SetSelection(0, -1);
   EXPECT_STREQ(L"Elephant", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"");
+  GetCPWLEdit()->ReplaceSelection(WideString());
 
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"Hippopotam", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -305,15 +305,15 @@ TEST_F(CPWLEditEmbedderTest, InsertTextInEmptyCharLimitTextFieldFit) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnotCharLimit());
   GetCPWLEdit()->SetSelection(0, -1);
   EXPECT_STREQ(L"Elephant", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"");
+  GetCPWLEdit()->ReplaceSelection(WideString());
 
-  GetCPWLEdit()->ReplaceSelection(L"Zebra");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Zebra"));
   EXPECT_STREQ(L"Zebra", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, InsertTextInPopulatedCharLimitTextFieldLeft) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnotCharLimit());
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"HiElephant", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -324,7 +324,7 @@ TEST_F(CPWLEditEmbedderTest, InsertTextInPopulatedCharLimitTextFieldMiddle) {
     EXPECT_TRUE(GetCFFLFormFiller()->OnKeyDown(FWL_VKEY_Right, {}));
   }
 
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"ElephHiant", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -333,7 +333,7 @@ TEST_F(CPWLEditEmbedderTest, InsertTextInPopulatedCharLimitTextFieldRight) {
   // Move cursor to end of text field.
   EXPECT_TRUE(GetCFFLFormFiller()->OnKeyDown(FWL_VKEY_End, {}));
 
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"ElephantHi", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -342,7 +342,7 @@ TEST_F(CPWLEditEmbedderTest,
   FormFillerAndWindowSetup(GetCPDFSDKAnnotCharLimit());
   GetCPWLEdit()->SetSelection(0, -1);
   EXPECT_STREQ(L"Elephant", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"Hippopotam", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -351,7 +351,7 @@ TEST_F(CPWLEditEmbedderTest,
   FormFillerAndWindowSetup(GetCPDFSDKAnnotCharLimit());
   GetCPWLEdit()->SetSelection(0, 4);
   EXPECT_STREQ(L"Elep", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"Hippophant", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -360,7 +360,7 @@ TEST_F(CPWLEditEmbedderTest,
   FormFillerAndWindowSetup(GetCPDFSDKAnnotCharLimit());
   GetCPWLEdit()->SetSelection(2, 6);
   EXPECT_STREQ(L"epha", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"ElHippopnt", GetCPWLEdit()->GetText().c_str());
 }
 
@@ -369,54 +369,54 @@ TEST_F(CPWLEditEmbedderTest,
   FormFillerAndWindowSetup(GetCPDFSDKAnnotCharLimit());
   GetCPWLEdit()->SetSelection(4, 8);
   EXPECT_STREQ(L"hant", GetCPWLEdit()->GetSelectedText().c_str());
-  GetCPWLEdit()->ReplaceSelection(L"Hippopotamus");
+  GetCPWLEdit()->ReplaceSelection(WideString(L"Hippopotamus"));
   EXPECT_STREQ(L"ElepHippop", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithEndCarriageFeed) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\r");
+  GetCPWLEdit()->SetText(WideString(L"Foo\r"));
   EXPECT_STREQ(L"Foo", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithEndNewline) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\n");
+  GetCPWLEdit()->SetText(WideString(L"Foo\n"));
   EXPECT_STREQ(L"Foo", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithEndCarriageFeedAndNewLine) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\r\n");
+  GetCPWLEdit()->SetText(WideString(L"Foo\r\n"));
   EXPECT_STREQ(L"Foo", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithEndNewLineAndCarriageFeed) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\n\r");
+  GetCPWLEdit()->SetText(WideString(L"Foo\n\r"));
   EXPECT_STREQ(L"Foo", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithBodyCarriageFeed) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\rBar");
+  GetCPWLEdit()->SetText(WideString(L"Foo\rBar"));
   EXPECT_STREQ(L"FooBar", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithBodyNewline) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\nBar");
+  GetCPWLEdit()->SetText(WideString(L"Foo\nBar"));
   EXPECT_STREQ(L"FooBar", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithBodyCarriageFeedAndNewLine) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\r\nBar");
+  GetCPWLEdit()->SetText(WideString(L"Foo\r\nBar"));
   EXPECT_STREQ(L"FooBar", GetCPWLEdit()->GetText().c_str());
 }
 
 TEST_F(CPWLEditEmbedderTest, SetTextWithBodyNewLineAndCarriageFeed) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnot());
-  GetCPWLEdit()->SetText(L"Foo\n\rBar");
+  GetCPWLEdit()->SetText(WideString(L"Foo\n\rBar"));
   EXPECT_STREQ(L"FooBar", GetCPWLEdit()->GetText().c_str());
 }

@@ -336,7 +336,7 @@ TEST(fxstring, SplitByteStringView) {
 
 TEST(fxstring, SplitWideString) {
   std::vector<WideString> result;
-  result = fxcrt::Split(WideString(L""), L',');
+  result = fxcrt::Split(WideString(), L',');
   ASSERT_EQ(1u, result.size());
   EXPECT_EQ(L"", result[0]);
 

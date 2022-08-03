@@ -45,11 +45,11 @@ enum class TabStopStatus {
 
 WideString GetLowerCaseElementAttributeOrDefault(
     const CFX_XMLElement* pElement,
-    const WideString& wsName,
-    const WideString& wsDefaultValue) {
+    WideStringView wsName,
+    WideStringView wsDefaultValue) {
   WideString ws = pElement->GetAttribute(wsName);
   if (ws.IsEmpty())
-    ws = wsDefaultValue;
+    ws = WideString(wsDefaultValue);
   else
     ws.MakeLower();
   return ws;
@@ -212,9 +212,9 @@ RetainPtr<CFX_CSSComputedStyle> CXFA_TextParser::ComputeStyle(
     return nullptr;
 
   auto pStyle = CreateStyle(pParentStyle);
-  m_pSelector->ComputeStyle(pContext->GetDecls(),
-                            tagProvider->GetAttribute(L"style"),
-                            tagProvider->GetAttribute(L"align"), pStyle.Get());
+  m_pSelector->ComputeStyle(
+      pContext->GetDecls(), tagProvider->GetAttribute(WideString(L"style")),
+      tagProvider->GetAttribute(WideString(L"align")), pStyle.Get());
   return pStyle;
 }
 
@@ -247,9 +247,9 @@ void CXFA_TextParser::ParseRichText(const CFX_XMLNode* pXMLNode,
       auto declArray =
           m_pSelector->MatchDeclarations(tagProvider->GetTagName());
       pNewStyle = CreateStyle(pParentStyle);
-      m_pSelector->ComputeStyle(declArray, tagProvider->GetAttribute(L"style"),
-                                tagProvider->GetAttribute(L"align"),
-                                pNewStyle.Get());
+      m_pSelector->ComputeStyle(
+          declArray, tagProvider->GetAttribute(WideString(L"style")),
+          tagProvider->GetAttribute(WideString(L"align")), pNewStyle.Get());
 
       if (!declArray.empty())
         pTextContext->SetDecls(std::move(declArray));
@@ -266,7 +266,7 @@ void CXFA_TextParser::ParseRichText(const CFX_XMLNode* pXMLNode,
   }
 }
 
-bool CXFA_TextParser::TagValidate(const WideString& wsName) const {
+bool CXFA_TextParser::TagValidate(WideStringView wsName) const {
   static const uint32_t s_XFATagName[] = {
       0x61,        // a
       0x62,        // b
@@ -283,7 +283,7 @@ bool CXFA_TextParser::TagValidate(const WideString& wsName) const {
       0xdb8ac455,  // html
   };
   return std::binary_search(std::begin(s_XFATagName), std::end(s_XFATagName),
-                            FX_HashCode_GetLoweredW(wsName.AsStringView()));
+                            FX_HashCode_GetLoweredW(wsName));
 }
 
 // static
@@ -294,10 +294,10 @@ std::unique_ptr<CXFA_TextParser::TagProvider> CXFA_TextParser::ParseTagInfo(
   if (pXMLElement) {
     WideString wsName = pXMLElement->GetLocalTagName();
     tagProvider->SetTagName(wsName);
-    tagProvider->m_bTagAvailable = TagValidate(wsName);
+    tagProvider->m_bTagAvailable = TagValidate(wsName.AsStringView());
     WideString wsValue = pXMLElement->GetAttribute(L"style");
     if (!wsValue.IsEmpty())
-      tagProvider->SetAttribute(L"style", wsValue);
+      tagProvider->SetAttribute(WideString(L"style"), wsValue);
 
     return tagProvider;
   }
@@ -339,7 +339,7 @@ RetainPtr<CFGAS_GEFont> CXFA_TextParser::GetFont(
     CXFA_FFDoc* doc,
     CXFA_TextProvider* pTextProvider,
     const CFX_CSSComputedStyle* pStyle) const {
-  WideString wsFamily = L"Courier";
+  WideString wsFamily(L"Courier");
   uint32_t dwStyle = 0;
   CXFA_Font* font = pTextProvider->GetFontIfExists();
   if (font) {
@@ -380,9 +380,9 @@ int32_t CXFA_TextParser::GetHorScale(CXFA_TextProvider* pTextProvider,
                                      const CFX_XMLNode* pXMLNode) const {
   if (pStyle) {
     WideString wsValue;
-    if (pStyle->GetCustomStyle(L"xfa-font-horizontal-scale", &wsValue))
+    if (pStyle->GetCustomStyle(L"xfa-font-horizontal-scale", &wsValue)) {
       return wsValue.GetInteger();
-
+    }
     while (pXMLNode) {
       auto it = m_mapXMLNodeToParseContext.find(pXMLNode);
       if (it != m_mapXMLNodeToParseContext.end()) {
@@ -405,8 +405,9 @@ int32_t CXFA_TextParser::GetVerScale(CXFA_TextProvider* pTextProvider,
                                      const CFX_CSSComputedStyle* pStyle) const {
   if (pStyle) {
     WideString wsValue;
-    if (pStyle->GetCustomStyle(L"xfa-font-vertical-scale", &wsValue))
+    if (pStyle->GetCustomStyle(L"xfa-font-vertical-scale", &wsValue)) {
       return wsValue.GetInteger();
+    }
   }
 
   CXFA_Font* font = pTextProvider->GetFontIfExists();

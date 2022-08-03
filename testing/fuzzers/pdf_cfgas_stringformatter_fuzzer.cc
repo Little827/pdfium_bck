@@ -59,14 +59,14 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     case 1: {
       auto* mgr = cppgc::MakeGarbageCollected<CXFA_LocaleMgr>(
           heap->GetAllocationHandle(), heap, nullptr,
-          kLocales[locale_selector]);
+          WideString(kLocales[locale_selector]));
       fmt->FormatNum(mgr, value, &result);
       break;
     }
     case 2: {
       auto* mgr = cppgc::MakeGarbageCollected<CXFA_LocaleMgr>(
           heap->GetAllocationHandle(), heap, nullptr,
-          kLocales[locale_selector]);
+          WideString(kLocales[locale_selector]));
       fmt->FormatDateTime(mgr, value, kTypes[type_selector], &result);
       break;
     }
@@ -85,14 +85,14 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     case 6: {
       auto* mgr = cppgc::MakeGarbageCollected<CXFA_LocaleMgr>(
           heap->GetAllocationHandle(), heap, nullptr,
-          kLocales[locale_selector]);
+          WideString(kLocales[locale_selector]));
       fmt->ParseNum(mgr, value, &result);
       break;
     }
     case 7: {
       auto* mgr = cppgc::MakeGarbageCollected<CXFA_LocaleMgr>(
           heap->GetAllocationHandle(), heap, nullptr,
-          kLocales[locale_selector]);
+          WideString(kLocales[locale_selector]));
       fmt->ParseDateTime(mgr, value, kTypes[type_selector], &dt);
       break;
     }

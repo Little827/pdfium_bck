@@ -3923,7 +3923,7 @@ void CXFA_Node::SetEditImage(RetainPtr<CFX_DIBitmap> newImage) {
 }
 
 RetainPtr<CFGAS_GEFont> CXFA_Node::GetFGASFont(CXFA_FFDoc* doc) {
-  WideString wsFontName = L"Courier";
+  WideString wsFontName(L"Courier");
   uint32_t dwFontStyle = 0;
   CXFA_Font* font = GetFontIfExists();
   if (font) {
@@ -5002,7 +5002,7 @@ WideString CXFA_Node::NumericLimit(const WideString& wsValue) {
       if (iLead >= 0) {
         iLead2++;
         if (iLead2 > iLead)
-          return L"0";
+          return WideString(L"0");
       } else if (iTread2 >= 0) {
         iTread2++;
         if (iTread2 > iTread) {

@@ -81,6 +81,7 @@ class CXFA_FMNumberExpression final : public CXFA_FMSimpleExpression {
 
  private:
   explicit CXFA_FMNumberExpression(WideString wsNumber);
+  explicit CXFA_FMNumberExpression(WideStringView wsNumber);
 
   WideString m_wsNumber;
 };
@@ -94,6 +95,7 @@ class CXFA_FMStringExpression final : public CXFA_FMSimpleExpression {
 
  private:
   explicit CXFA_FMStringExpression(WideString wsString);
+  explicit CXFA_FMStringExpression(WideStringView wsString);
 
   WideString m_wsString;
 };
@@ -107,6 +109,7 @@ class CXFA_FMIdentifierExpression final : public CXFA_FMSimpleExpression {
 
  private:
   explicit CXFA_FMIdentifierExpression(WideString wsIdentifier);
+  explicit CXFA_FMIdentifierExpression(WideStringView wsIdentifier);
 
   WideString m_wsIdentifier;
 };
@@ -132,6 +135,10 @@ class CXFA_FMBinExpression : public CXFA_FMChainableExpression {
 
  protected:
   CXFA_FMBinExpression(const WideString& opName,
+                       XFA_FM_TOKEN op,
+                       CXFA_FMSimpleExpression* pExp1,
+                       CXFA_FMSimpleExpression* pExp2);
+  CXFA_FMBinExpression(WideStringView opName,
                        XFA_FM_TOKEN op,
                        CXFA_FMSimpleExpression* pExp1,
                        CXFA_FMSimpleExpression* pExp2);
@@ -281,6 +288,9 @@ class CXFA_FMUnaryExpression : public CXFA_FMSimpleExpression {
 
  protected:
   CXFA_FMUnaryExpression(const WideString& opName,
+                         XFA_FM_TOKEN op,
+                         CXFA_FMSimpleExpression* pExp);
+  CXFA_FMUnaryExpression(WideStringView opName,
                          XFA_FM_TOKEN op,
                          CXFA_FMSimpleExpression* pExp);
 
@@ -437,6 +447,7 @@ class CXFA_FMVarExpression final : public CXFA_FMExpression {
 
  private:
   CXFA_FMVarExpression(WideString wsName, CXFA_FMSimpleExpression* pInit);
+  CXFA_FMVarExpression(WideStringView wsName, CXFA_FMSimpleExpression* pInit);
 
   WideString const m_wsName;
   cppgc::Member<CXFA_FMSimpleExpression> const m_pInit;

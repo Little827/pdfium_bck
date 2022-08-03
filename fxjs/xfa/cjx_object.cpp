@@ -169,10 +169,11 @@ CJS_Result CJX_Object::RunMethod(
                     params);
 }
 
-void CJX_Object::ThrowTooManyOccurrencesException(v8::Isolate* pIsolate,
-                                                  const WideString& obj) const {
+void CJX_Object::ThrowTooManyOccurrencesException(
+    v8::Isolate* pIsolate,
+    WideStringView methodname) const {
   ThrowException(
-      pIsolate, WideString::FromASCII("The element [") + obj +
+      pIsolate, WideString::FromASCII("The element [") + methodname +
                     WideString::FromASCII(
                         "] has violated its allowable number of occurrences."));
 }
@@ -326,7 +327,7 @@ void CJX_Object::SetBoolean(XFA_Attribute eAttr, bool bValue, bool bNotify) {
   CFX_XMLElement* elem = SetValue(eAttr, static_cast<int32_t>(bValue), bNotify);
   if (elem) {
     elem->SetAttribute(WideString::FromASCII(XFA_AttributeToName(eAttr)),
-                       bValue ? L"1" : L"0");
+                       WideString(bValue ? L"1" : L"0"));
   }
 }
 
@@ -544,7 +545,7 @@ void CJX_Object::SetContent(const WideString& wsContent,
 
         CXFA_Node* pChildValue = pValue->GetFirstChild();
         pChildValue->JSObject()->SetCData(XFA_Attribute::ContentType,
-                                          L"text/xml");
+                                          WideString(L"text/xml"));
         pChildValue->JSObject()->SetContent(wsContent, wsContent, bNotify,
                                             bScriptModify, false);
 
@@ -567,7 +568,7 @@ void CJX_Object::SetContent(const WideString& wsContent,
                 CXFA_Node* pValueNodes =
                     pBind->CreateSamePacketNode(XFA_Element::DataValue);
                 pValueNodes->JSObject()->SetCData(XFA_Attribute::Name,
-                                                  L"value");
+                                                  WideString(L"value"));
                 pValueNodes->CreateXMLMappingNode();
                 pBind->InsertChildAndNotify(pValueNodes, nullptr);
               }
@@ -708,7 +709,7 @@ absl::optional<WideString> CJX_Object::TryContent(bool bScriptModify,
         CXFA_Node* pChildValue = pValue->GetFirstChild();
         if (pChildValue && XFA_FieldIsMultiListBox(GetXFANode())) {
           pChildValue->JSObject()->SetAttributeByEnum(
-              XFA_Attribute::ContentType, L"text/xml", false);
+              XFA_Attribute::ContentType, WideString(L"text/xml"), false);
         }
         if (!pChildValue)
           return absl::nullopt;

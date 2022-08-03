@@ -11,6 +11,9 @@
 CFX_XMLCharData::CFX_XMLCharData(const WideString& wsCData)
     : CFX_XMLText(wsCData) {}
 
+CFX_XMLCharData::CFX_XMLCharData(WideStringView wsCData)
+    : CFX_XMLCharData(WideString(wsCData)) {}
+
 CFX_XMLCharData::~CFX_XMLCharData() = default;
 
 CFX_XMLNode::Type CFX_XMLCharData::GetType() const {

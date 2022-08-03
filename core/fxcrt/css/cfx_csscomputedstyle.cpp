@@ -14,7 +14,7 @@ CFX_CSSComputedStyle::CFX_CSSComputedStyle() = default;
 
 CFX_CSSComputedStyle::~CFX_CSSComputedStyle() = default;
 
-bool CFX_CSSComputedStyle::GetCustomStyle(const WideString& wsName,
+bool CFX_CSSComputedStyle::GetCustomStyle(WideStringView wsName,
                                           WideString* pValue) const {
   for (const auto& prop : pdfium::base::Reversed(m_CustomProperties)) {
     if (wsName == prop.name()) {

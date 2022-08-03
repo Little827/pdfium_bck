@@ -37,80 +37,86 @@ TEST_F(CJS_PublicMethodsEmbedderTest, ParseDateUsingFormat) {
 
   // 1968
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"06/25/1968",
-                                                 L"mm/dd/yyyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"06/25/1968"), WideString(L"mm/dd/yyyy"),
+      &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(-47865600000, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 1968
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"25061968",
-                                                 L"ddmmyyyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"25061968"), WideString(L"ddmmyyyy"),
+      &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(-47865600000, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 1968
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"19680625",
-                                                 L"yyyymmdd", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"19680625"), WideString(L"yyyymmdd"),
+      &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(-47865600000, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 1985
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"31121985",
-                                                 L"ddmmyyyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"31121985"), WideString(L"ddmmyyyy"),
+      &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(504835200000.0, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 2085, the other '85.
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"311285",
-                                                 L"ddmmyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"311285"), WideString(L"ddmmyy"), &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(3660595200000.0, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 1995
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"01021995",
-                                                 L"ddmmyyyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"01021995"), WideString(L"ddmmyyyy"),
+      &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(791596800000.0, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 2095, the other '95.
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"010295",
-                                                 L"ddmmyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"010295"), WideString(L"ddmmyy"), &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(3947356800000.0, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 2005
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"01022005",
-                                                 L"ddmmyyyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"01022005"), WideString(L"ddmmyyyy"),
+      &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(1107216000000.0, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 2005
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"010205",
-                                                 L"ddmmyy", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"010205"), WideString(L"ddmmyy"), &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(1107216000000.0, date);
   EXPECT_FALSE(bWrongFormat);
 
   // 2005 in a different format. https://crbug.com/436572
   bWrongFormat = false;
-  date = CJS_PublicMethods::ParseDateUsingFormat(isolate(), L"050201",
-                                                 L"yymmdd", &bWrongFormat);
+  date = CJS_PublicMethods::ParseDateUsingFormat(
+      isolate(), WideString(L"050201"), WideString(L"yymmdd"), &bWrongFormat);
   date = RoundDownDate(date);
   EXPECT_DOUBLE_EQ(1107216000000.0, date);
   EXPECT_FALSE(bWrongFormat);
@@ -123,63 +129,67 @@ TEST_F(CJS_PublicMethodsEmbedderTest, PrintDateUsingFormat) {
   WideString formatted_date;
 
   // 1968-06-25
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(-47952000000, L"ddmmyy");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      -47952000000, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"250668", formatted_date.c_str());
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(-47952000000, L"yy/mm/dd");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      -47952000000, WideString(L"yy/mm/dd"));
   EXPECT_STREQ(L"68/06/25", formatted_date.c_str());
 
   // 1969-12-31
-  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(-0.0001, L"ddmmyy");
+  formatted_date =
+      CJS_PublicMethods::PrintDateUsingFormat(-0.0001, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"311269", formatted_date.c_str());
-  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(-0.0001, L"yy!mmdd");
+  formatted_date =
+      CJS_PublicMethods::PrintDateUsingFormat(-0.0001, WideString(L"yy!mmdd"));
   EXPECT_STREQ(L"69!1231", formatted_date.c_str());
 
   // 1970-01-01
-  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(0, L"ddmmyy");
+  formatted_date =
+      CJS_PublicMethods::PrintDateUsingFormat(0, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"010170", formatted_date.c_str());
-  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(0, L"mm-yyyy-dd");
+  formatted_date =
+      CJS_PublicMethods::PrintDateUsingFormat(0, WideString(L"mm-yyyy-dd"));
   EXPECT_STREQ(L"01-1970-01", formatted_date.c_str());
 
   // 1985-12-31
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(504835200000.0, L"ddmmyy");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      504835200000.0, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"311285", formatted_date.c_str());
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(504835200000.0, L"yymmdd");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      504835200000.0, WideString(L"yymmdd"));
   EXPECT_STREQ(L"851231", formatted_date.c_str());
 
   // 1995-02-01
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(791596800000.0, L"ddmmyy");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      791596800000.0, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"010295", formatted_date.c_str());
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(791596800000.0, L"yyyymmdd");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      791596800000.0, WideString(L"yyyymmdd"));
   EXPECT_STREQ(L"19950201", formatted_date.c_str());
 
   // 2005-02-01
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(1107216000000.0, L"ddmmyy");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      1107216000000.0, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"010205", formatted_date.c_str());
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(1107216000000.0, L"yyyyddmm");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      1107216000000.0, WideString(L"yyyyddmm"));
   EXPECT_STREQ(L"20050102", formatted_date.c_str());
 
   // 2085-12-31
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(3660595200000.0, L"ddmmyy");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      3660595200000.0, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"311285", formatted_date.c_str());
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(3660595200000.0, L"yyyydd");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      3660595200000.0, WideString(L"yyyydd"));
   EXPECT_STREQ(L"208531", formatted_date.c_str());
 
   // 2095-02-01
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(3947356800000.0, L"ddmmyy");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      3947356800000.0, WideString(L"ddmmyy"));
   EXPECT_STREQ(L"010295", formatted_date.c_str());
-  formatted_date =
-      CJS_PublicMethods::PrintDateUsingFormat(3947356800000.0, L"mmddyyyy");
+  formatted_date = CJS_PublicMethods::PrintDateUsingFormat(
+      3947356800000.0, WideString(L"mmddyyyy"));
   EXPECT_STREQ(L"02012095", formatted_date.c_str());
 }
 
@@ -233,8 +243,8 @@ TEST_F(CJS_PublicMethodsEmbedderTest, AFNumber_Keystroke) {
   auto* handler = runtime.GetCurrentEventContext();
 
   bool valid = true;
-  WideString result = L"-10";
-  WideString change = L"";
+  WideString result(L"-10");
+  WideString change;
 
   handler->SetValueForTest(&result);
   handler->SetRCForTest(&valid);

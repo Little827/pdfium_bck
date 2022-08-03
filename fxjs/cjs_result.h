@@ -31,6 +31,9 @@ class CJS_Result {
   [[nodiscard]] static CJS_Result Failure(const WideString& str) {
     return CJS_Result(str);
   }
+  [[nodiscard]] static CJS_Result Failure(WideStringView str) {
+    return CJS_Result(WideString(str));
+  }
   [[nodiscard]] static CJS_Result Failure(JSMessage id) {
     return CJS_Result(id);
   }

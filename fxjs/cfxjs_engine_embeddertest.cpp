@@ -92,7 +92,7 @@ TEST_F(CFXJSEngineEmbedderTest, JSCompileError) {
   v8::Context::Scope context_scope(GetV8Context());
 
   absl::optional<IJS_Runtime::JS_Error> err =
-      engine()->Execute(L"functoon(x) { return x+1; }");
+      engine()->Execute(WideString(L"functoon(x) { return x+1; }"));
   EXPECT_TRUE(err);
   EXPECT_STREQ(L"SyntaxError: Unexpected token '{'", err->exception.c_str());
   EXPECT_EQ(1, err->line);
@@ -105,7 +105,7 @@ TEST_F(CFXJSEngineEmbedderTest, JSRuntimeError) {
   v8::Context::Scope context_scope(GetV8Context());
 
   absl::optional<IJS_Runtime::JS_Error> err =
-      engine()->Execute(L"let a = 3;\nundefined.colour");
+      engine()->Execute(WideString(L"let a = 3;\nundefined.colour"));
   EXPECT_TRUE(err);
   EXPECT_EQ(
       L"TypeError: Cannot read properties of undefined (reading 'colour')",

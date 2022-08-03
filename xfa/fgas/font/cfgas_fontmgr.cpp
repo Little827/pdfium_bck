@@ -668,8 +668,8 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::GetFontByUnicodeImpl(
     FX_CodePage wCodePage,
     uint16_t /* wBitField*/) {
   if (!pdfium::Contains(m_Hash2CandidateList, dwHash)) {
-    m_Hash2CandidateList[dwHash] =
-        MatchFonts(wCodePage, dwFontStyles, pszFontFamily, wUnicode);
+    m_Hash2CandidateList[dwHash] = MatchFonts(
+        wCodePage, dwFontStyles, WideString(pszFontFamily), wUnicode);
   }
   for (const auto& info : m_Hash2CandidateList[dwHash]) {
     CFGAS_FontDescriptor* pDesc = info.pFont;

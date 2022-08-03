@@ -98,11 +98,12 @@ T StrTrim(const T& str) {
 }
 
 void AlertIfPossible(CJS_EventContext* pContext,
-                     const WideString& wsCaller,
+                     WideStringView wsCaller,
                      const WideString& wsMsg) {
   CPDFSDK_FormFillEnvironment* pFormFillEnv = pContext->GetFormFillEnv();
   if (pFormFillEnv) {
-    pFormFillEnv->JS_appAlert(wsMsg, wsCaller, JSPLATFORM_ALERT_BUTTON_OK,
+    pFormFillEnv->JS_appAlert(wsMsg, WideString(wsCaller),
+                              JSPLATFORM_ALERT_BUTTON_OK,
                               JSPLATFORM_ALERT_ICON_STATUS);
   }
 }
@@ -1072,7 +1073,8 @@ CJS_Result CJS_PublicMethods::AFSpecial_Format(
       wsFormat = L"99999-9999";
       break;
     case 2:
-      if (CJS_Util::StringPrintx(L"9999999999", wsSource).GetLength() >= 10)
+      if (CJS_Util::StringPrintx(WideString(L"9999999999"), wsSource)
+              .GetLength() >= 10)
         wsFormat = L"(999) 999-9999";
       else
         wsFormat = L"999-9999";

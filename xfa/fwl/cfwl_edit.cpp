@@ -1035,12 +1035,12 @@ void CFWL_Edit::OnChar(CFWL_MessageKey* pMsg) {
     case 127:  // Delete
       break;
     case L'\t':
-      m_pEditEngine->Insert(m_CursorPosition, L"\t");
+      m_pEditEngine->Insert(m_CursorPosition, WideString(L"\t"));
       SetCursorPosition(m_CursorPosition + 1);
       break;
     case L'\r':
       if (m_Properties.m_dwStyleExts & FWL_STYLEEXT_EDT_WantReturn) {
-        m_pEditEngine->Insert(m_CursorPosition, L"\n");
+        m_pEditEngine->Insert(m_CursorPosition, WideString(L"\n"));
         SetCursorPosition(m_CursorPosition + 1);
       }
       break;

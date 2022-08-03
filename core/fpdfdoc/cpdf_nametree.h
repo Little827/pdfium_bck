@@ -46,6 +46,7 @@ class CPDF_NameTree {
 
   CPDF_Object* LookupValueAndName(size_t nIndex, WideString* csName) const;
   const CPDF_Object* LookupValue(const WideString& csName) const;
+  const CPDF_Object* LookupValue(WideStringView csName) const;
 
   size_t GetCount() const;
   CPDF_Dictionary* GetRootForTesting() const { return m_pRoot.Get(); }

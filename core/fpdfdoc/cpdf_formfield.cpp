@@ -652,7 +652,7 @@ bool CPDF_FormField::CheckControl(int iControlIndex,
 
 WideString CPDF_FormField::GetCheckValue(bool bDefault) const {
   DCHECK(GetType() == kCheckBox || GetType() == kRadioButton);
-  WideString csExport = L"Off";
+  WideString csExport(L"Off");
   int iCount = CountControls();
   for (int i = 0; i < iCount; i++) {
     CPDF_FormControl* pControl = GetControl(i);

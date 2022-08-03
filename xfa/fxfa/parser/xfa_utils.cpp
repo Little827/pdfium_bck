@@ -303,8 +303,7 @@ void RegenerateFormFile_Container(CXFA_Node* pNode,
   pStream->WriteString("<");
   pStream->WriteString(wsElement.ToUTF8().AsStringView());
 
-  WideString wsOutput =
-      SaveAttribute(pNode, XFA_Attribute::Name, L"name", true);
+  WideString wsOutput;
   for (size_t i = 0;; ++i) {
     XFA_Attribute attr = pNode->GetAttribute(i);
     if (attr == XFA_Attribute::Unknown)

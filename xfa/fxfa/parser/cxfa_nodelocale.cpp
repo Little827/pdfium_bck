@@ -27,13 +27,13 @@ const wchar_t kFxInteger[] = L"z,zzz,zzz,zzz,zzz,zzz";
 WideString XFA_PatternToString(LocaleIface::NumSubcategory category) {
   switch (category) {
     case LocaleIface::NumSubcategory::kPercent:
-      return kFxPercent;
+      return WideString(kFxPercent);
     case LocaleIface::NumSubcategory::kCurrency:
-      return kFxCurrency;
+      return WideString(kFxCurrency);
     case LocaleIface::NumSubcategory::kDecimal:
-      return kFxDecimal;
+      return WideString(kFxDecimal);
     case LocaleIface::NumSubcategory::kInteger:
-      return kFxInteger;
+      return WideString(kFxInteger);
   }
   return WideString();
 }
@@ -47,8 +47,9 @@ void CXFA_NodeLocale::Trace(cppgc::Visitor* visitor) const {
 }
 
 WideString CXFA_NodeLocale::GetName() const {
-  return WideString(m_pNode ? m_pNode->JSObject()->GetCData(XFA_Attribute::Name)
-                            : nullptr);
+  return m_pNode
+             ? WideString(m_pNode->JSObject()->GetCData(XFA_Attribute::Name))
+             : WideString();
 }
 
 WideString CXFA_NodeLocale::GetDecimalSymbol() const {

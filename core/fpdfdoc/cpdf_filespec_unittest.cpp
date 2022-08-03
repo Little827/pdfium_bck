@@ -51,10 +51,11 @@ TEST(cpdf_filespec, EncodeDecodeFileName) {
   };
   for (const auto& data : test_data) {
     EXPECT_STREQ(data.expected,
-                 CPDF_FileSpec::EncodeFileName(data.input).c_str());
+                 CPDF_FileSpec::EncodeFileName(WideString(data.input)).c_str());
     // DecodeFileName is the reverse procedure of EncodeFileName.
-    EXPECT_STREQ(data.input,
-                 CPDF_FileSpec::DecodeFileName(data.expected).c_str());
+    EXPECT_STREQ(
+        data.input,
+        CPDF_FileSpec::DecodeFileName(WideString(data.expected)).c_str());
   }
 }
 
@@ -151,7 +152,7 @@ TEST(cpdf_filespec, SetFileName) {
   // String object.
   auto str_obj = pdfium::MakeRetain<CPDF_String>(nullptr, L"babababa");
   CPDF_FileSpec file_spec1(str_obj.Get());
-  file_spec1.SetFileName(test_data.input);
+  file_spec1.SetFileName(WideString(test_data.input));
   // Check internal object value.
   EXPECT_STREQ(test_data.expected, str_obj->GetUnicodeText().c_str());
   // Check we can get the file name back.
@@ -160,7 +161,7 @@ TEST(cpdf_filespec, SetFileName) {
   // Dictionary object.
   auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
   CPDF_FileSpec file_spec2(dict_obj.Get());
-  file_spec2.SetFileName(test_data.input);
+  file_spec2.SetFileName(WideString(test_data.input));
   // Check internal object value.
   EXPECT_STREQ(test_data.expected, dict_obj->GetUnicodeTextFor("F").c_str());
   EXPECT_STREQ(test_data.expected, dict_obj->GetUnicodeTextFor("UF").c_str());

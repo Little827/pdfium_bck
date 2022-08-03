@@ -939,7 +939,7 @@ WideString DecodeMLInternal(const WideString& wsHTML, bool bIsHTML) {
     szBuffer[iStrIndex] = 0;
     if (bIsHTML) {
       uint32_t iData = 0;
-      if (HTMLSTR2Code(szBuffer, &iData))
+      if (HTMLSTR2Code(WideString(szBuffer), &iData))
         wsResultBuf.AppendChar((wchar_t)iData);
     } else {
       if (wcscmp(szBuffer, L"quot") == 0)
