@@ -102,7 +102,6 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   bool IsLocked() const { return m_bLocked; }
   void SetBeingDestroyed() { m_bBeingDestroyed = true; }
   bool IsBeingDestroyed() const { return m_bBeingDestroyed; }
-  void TakePageOwnership() { m_pOwnsPage.Reset(ToPDFPage(m_page)); }
 
  private:
 #ifdef PDF_ENABLE_XFA
@@ -126,7 +125,6 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   std::vector<std::unique_ptr<CPDFSDK_Annot>> m_SDKAnnotArray;
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
   ObservedPtr<CPDFSDK_Annot> m_pCaptureWidget;
-  RetainPtr<CPDF_Page> m_pOwnsPage;
   bool m_bOnWidget = false;
   bool m_bValid = false;
   bool m_bLocked = false;
