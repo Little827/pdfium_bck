@@ -22,6 +22,30 @@
       },
       "revId": "d695f0c535357fae4ae25285a79e1cd87d1387e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8406f1e1_a57b8126",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-03T23:54:39Z",
+      "side": 1,
+      "message": "Timeouts are often caused during the construction CPDF_ToUnicodeMap instead of ReverseLookUp().\n\nTo speed up the reverse lookup process, we will need to involve another extra map structure to use the unicode as the key and the charcode as its matching value.",
+      "parentUuid": "f14eda52_066e2cdf",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 70
+      },
+      "revId": "d695f0c535357fae4ae25285a79e1cd87d1387e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
