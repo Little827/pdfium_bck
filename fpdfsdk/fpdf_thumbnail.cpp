@@ -67,8 +67,8 @@ FPDFPage_GetThumbnailAsBitmap(FPDF_PAGE page) {
   if (start_status == CPDF_DIB::LoadState::kFail)
     return nullptr;
 
-  auto thumb_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!thumb_bitmap->Copy(p_source))
+  auto thumb_bitmap = CFX_DIBitmap::FromDIBBase(p_source);
+  if (!thumb_bitmap)
     return nullptr;
 
   return FPDFBitmapFromCFXDIBitmap(thumb_bitmap.Leak());

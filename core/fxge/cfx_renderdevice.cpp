@@ -762,18 +762,16 @@ bool CFX_RenderDevice::DrawFillStrokePath(
     return false;
 
   auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  auto backdrop = pdfium::MakeRetain<CFX_DIBitmap>();
   if (!CreateCompatibleBitmap(bitmap, rect.Width(), rect.Height()))
     return false;
 
   if (bitmap->IsAlphaFormat()) {
     bitmap->Clear(0);
-    backdrop->Copy(bitmap);
   } else {
     if (!m_pDeviceDriver->GetDIBits(bitmap, rect.left, rect.top))
       return false;
-    backdrop->Copy(bitmap);
   }
+  auto backdrop = CFX_DIBitmap::FromDIBBase(bitmap);
   CFX_DefaultRenderDevice bitmap_device;
   bitmap_device.AttachWithBackdropAndGroupKnockout(bitmap, std::move(backdrop),
                                                    /*bGroupKnockout=*/true);

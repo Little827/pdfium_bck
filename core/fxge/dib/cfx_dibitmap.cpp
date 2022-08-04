@@ -78,20 +78,19 @@ bool CFX_DIBitmap::Create(int width,
   return false;
 }
 
-bool CFX_DIBitmap::Copy(const RetainPtr<CFX_DIBBase>& pSrc) {
-  if (m_pBuffer)
-    return false;
+RetainPtr<CFX_DIBitmap> CFX_DIBitmap::FromDIBBase(
+    const RetainPtr<CFX_DIBBase>& pSrc) {
+  auto result = pdfium::MakeRetain<CFX_DIBitmap>();
+  if (!result->Create(pSrc->GetWidth(), pSrc->GetHeight(), pSrc->GetFormat()))
+    return nullptr;
 
-  if (!Create(pSrc->GetWidth(), pSrc->GetHeight(), pSrc->GetFormat()))
-    return false;
-
-  SetPalette(pSrc->GetPaletteSpan());
-  SetAlphaMask(pSrc->GetAlphaMask(), nullptr);
+  result->SetPalette(pSrc->GetPaletteSpan());
+  result->SetAlphaMask(pSrc->GetAlphaMask(), nullptr);
   for (int row = 0; row < pSrc->GetHeight(); row++) {
-    memcpy(m_pBuffer.Get() + row * m_Pitch, pSrc->GetScanline(row).data(),
-           m_Pitch);
+    memcpy(result->m_pBuffer.Get() + row * result->m_Pitch,
+           pSrc->GetScanline(row).data(), result->m_Pitch);
   }
-  return true;
+  return result;
 }
 
 CFX_DIBitmap::~CFX_DIBitmap() = default;
