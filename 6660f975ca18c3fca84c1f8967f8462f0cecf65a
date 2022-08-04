@@ -68,6 +68,24 @@
       "message": "Filed https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1866 for the try bot linking failure.",
       "revId": "6660f975ca18c3fca84c1f8967f8462f0cecf65a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65198e04_916a4eb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-04T19:39:33Z",
+      "side": 1,
+      "message": "And Chromium build infrastructure is having other issues today, so some bots are turning red with the purple square.",
+      "parentUuid": "d39a1129_f79ed414",
+      "revId": "6660f975ca18c3fca84c1f8967f8462f0cecf65a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
