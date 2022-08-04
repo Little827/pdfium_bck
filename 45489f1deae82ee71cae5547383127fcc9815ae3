@@ -51,6 +51,42 @@
       "message": "Do you need this fix? Or can you better fix the problem https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1763?",
       "revId": "45489f1deae82ee71cae5547383127fcc9815ae3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252e7f60_dcda52c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-04T17:42:04Z",
+      "side": 1,
+      "message": "I was trying to better understand the bug, but I missed your reply on the bug: https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1763#c9\n\nWill look into that.",
+      "parentUuid": "16bfb385_a6d45304",
+      "revId": "45489f1deae82ee71cae5547383127fcc9815ae3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2f93e4_bc0c37b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-04T17:42:04Z",
+      "side": 1,
+      "message": "\"Gold\" is an image diff system. Just treat it as an FYI message.\n\nThe unit test may have crashed. Does it run to success locally for you?",
+      "parentUuid": "d3bf7a83_ef2edca8",
+      "revId": "45489f1deae82ee71cae5547383127fcc9815ae3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
