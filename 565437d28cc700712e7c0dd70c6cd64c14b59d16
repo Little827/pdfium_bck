@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112081e5_687e7e09",
+        "filename": "testing/resources/pixel/bug_725389.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-04T23:47:19Z",
+      "side": 0,
+      "message": "In obj 4, there is some binary data for \"/V\".\nIs there any way we can make this .in file not a binary file?",
+      "revId": "565437d28cc700712e7c0dd70c6cd64c14b59d16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
