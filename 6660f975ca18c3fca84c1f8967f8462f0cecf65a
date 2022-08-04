@@ -86,6 +86,23 @@
       "parentUuid": "d39a1129_f79ed414",
       "revId": "6660f975ca18c3fca84c1f8967f8462f0cecf65a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006182c7_e7bcaf47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-04T20:19:41Z",
+      "side": 1,
+      "message": "Can this CL just apply https://github.com/uclouvain/openjpeg/commit/098bb874db85c185e2e3598f735fece7552e6dca instead?\n\nPlease also add a .patch file and update third_party/libopenjpeg/README.pdfium. PDFium can carry the patch until the next OpenJPEG release.",
+      "revId": "6660f975ca18c3fca84c1f8967f8462f0cecf65a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
