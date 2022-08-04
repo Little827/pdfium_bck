@@ -546,20 +546,25 @@ void CFX_RenderDevice::SetBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap) {
   m_pBitmap = pBitmap;
 }
 
-bool CFX_RenderDevice::CreateCompatibleBitmap(
-    const RetainPtr<CFX_DIBitmap>& pDIB,
+FXDIB_Format CFX_RenderDevice::GetCompatibleBitmapFormat() const {
+  if (m_RenderCaps & FXRC_BYTEMASK_OUTPUT)
+    return FXDIB_Format::k8bppMask;
+  if (m_RenderCaps & FXRC_ALPHA_OUTPUT)
+    return FXDIB_Format::kArgb;
+#if defined(_SKIA_SUPPORT_PATHS_)
+  return FXDIB_Format::kRgb32;
+#else
+  return CFX_DIBBase::kPlatformRGBFormat;
+#endif
+}
+
+RetainPtr<CFX_DIBitmap> CFX_RenderDevice::CreateCompatibleBitmap(
     int width,
     int height) const {
-  if (m_RenderCaps & FXRC_BYTEMASK_OUTPUT)
-    return pDIB->Create(width, height, FXDIB_Format::k8bppMask);
-#if defined(_SKIA_SUPPORT_PATHS_)
-  constexpr FXDIB_Format kFormat = FXDIB_Format::kRgb32;
-#else
-  constexpr FXDIB_Format kFormat = CFX_DIBBase::kPlatformRGBFormat;
-#endif
-  return pDIB->Create(
-      width, height,
-      m_RenderCaps & FXRC_ALPHA_OUTPUT ? FXDIB_Format::kArgb : kFormat);
+  auto pDIB = pdfium::MakeRetain<CFX_DIBitmap>();
+  if (!pDIB->Create(width, height, GetCompatibleBitmapFormat()))
+    return nullptr;
+  return pDIB;
 }
 
 void CFX_RenderDevice::SetBaseClip(const FX_RECT& rect) {
@@ -761,8 +766,8 @@ bool CFX_RenderDevice::DrawFillStrokePath(
   if (!rect.Valid())
     return false;
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!CreateCompatibleBitmap(bitmap, rect.Width(), rect.Height()))
+  auto bitmap = CreateCompatibleBitmap(rect.Width(), rect.Height());
+  if (!bitmap)
     return false;
 
   if (bitmap->IsAlphaFormat()) {
@@ -802,8 +807,8 @@ bool CFX_RenderDevice::FillRectWithBlend(const FX_RECT& rect,
   if (!(m_RenderCaps & FXRC_GET_BITS))
     return false;
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!CreateCompatibleBitmap(bitmap, rect.Width(), rect.Height()))
+  auto bitmap = CreateCompatibleBitmap(rect.Width(), rect.Height());
+  if (!bitmap)
     return false;
 
   if (!m_pDeviceDriver->GetDIBits(bitmap, rect.left, rect.top))
@@ -1137,12 +1142,14 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
     }
     return SetBitMask(bitmap, bmp_rect.left, bmp_rect.top, fill_color);
   }
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  RetainPtr<CFX_DIBitmap> bitmap;
   if (m_bpp == 8) {
+    bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
     if (!bitmap->Create(pixel_width, pixel_height, FXDIB_Format::k8bppMask))
       return false;
   } else {
-    if (!CreateCompatibleBitmap(bitmap, pixel_width, pixel_height))
+    bitmap = CreateCompatibleBitmap(pixel_width, pixel_height);
+    if (!bitmap)
       return false;
   }
   if (!bitmap->IsAlphaFormat() && !bitmap->IsMaskFormat()) {
