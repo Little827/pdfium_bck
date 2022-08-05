@@ -16,6 +16,24 @@
       "message": "PDFium code typically negate the logic. e.g. compare these search results:\n\ngit grep \u0027return it !\u003d .*end\u0027\n\nvs.\n\ngit grep \u0027return it \u003d\u003d .*end\u0027",
       "revId": "6650ba5ad66f8819884faf0f64f400b04f5ed6e0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf3f6a4_0c16d698",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-05T21:22:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "009587da_86b5f123",
+      "revId": "6650ba5ad66f8819884faf0f64f400b04f5ed6e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
