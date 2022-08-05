@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa5c93c_8afa3ae7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2022-08-05T12:53:54Z",
+      "side": 1,
+      "message": "Hm, the root cause seems to be:\n\n\u003e ld64.lld: error: undefined symbol: std::Cr::__libcpp_assertion_handler(char const*, ...)\n\nWhich is probably unrelated to this change, let me try a rebase.",
+      "revId": "23111f8c3eb2399b7b8c237778b496769ecdf4e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
