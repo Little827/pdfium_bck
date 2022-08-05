@@ -16,6 +16,24 @@
       "message": "Now the caller from core/fxge/cfx_renderdevice.cpp gets a nullptr on failure. Previously, they would have had a newly created bitmap.",
       "revId": "63b4b6ce8c9c1dadf291ed9ee1939f95cb9a2dd8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954e42cf_f3361f1c",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-05T16:15:42Z",
+      "side": 1,
+      "message": "Gah, there are a lot of places where we continue with a bufferless bitmap when this fails (adding [[nodiscard]] to, say the Create() methods gives a cavalcade of errors). Abandoning.",
+      "parentUuid": "ee28b5ad_a66ff473",
+      "revId": "63b4b6ce8c9c1dadf291ed9ee1939f95cb9a2dd8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
