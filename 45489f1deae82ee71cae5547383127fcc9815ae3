@@ -87,6 +87,24 @@
       "parentUuid": "d3bf7a83_ef2edca8",
       "revId": "45489f1deae82ee71cae5547383127fcc9815ae3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d193cf0_9cf1a2b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-08-05T09:28:08Z",
+      "side": 1,
+      "message": "Yes, locally I don\u0027t have problems with unit tests (except for the WideString.ToDefANSI and WideString.FromDefANSI, but I think it\u0027s my local problem on Windows)",
+      "parentUuid": "0a2f93e4_bc0c37b2",
+      "revId": "45489f1deae82ee71cae5547383127fcc9815ae3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
