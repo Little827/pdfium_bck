@@ -182,8 +182,7 @@ ByteString GenerateFlattenedContent(const ByteString& key) {
 
 CPDF_Object* NewIndirectContentsStream(CPDF_Document* pDocument,
                                        const ByteString& contents) {
-  CPDF_Stream* pNewContents = pDocument->NewIndirect<CPDF_Stream>(
-      nullptr, 0, pDocument->New<CPDF_Dictionary>());
+  CPDF_Stream* pNewContents = pDocument->NewIndirect<CPDF_Stream>();
   pNewContents->SetData(contents.raw_span());
   return pNewContents;
 }
@@ -297,8 +296,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
 
   RetainPtr<CPDF_Dictionary> pRes =
       pPageDict->GetOrCreateDictFor(pdfium::page_object::kResources);
-  CPDF_Stream* pNewXObject = pDocument->NewIndirect<CPDF_Stream>(
-      nullptr, 0, pDocument->New<CPDF_Dictionary>());
+  CPDF_Stream* pNewXObject = pDocument->NewIndirect<CPDF_Stream>();
   RetainPtr<CPDF_Dictionary> pPageXObject = pRes->GetOrCreateDictFor("XObject");
 
   ByteString key;

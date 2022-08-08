@@ -234,13 +234,12 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
     text_buf << m << " cm ";
   }
 
-  CPDF_Stream* pStream =
-      pDoc->NewIndirect<CPDF_Stream>(nullptr, 0, pDoc->New<CPDF_Dictionary>());
+  CPDF_Stream* pStream = pDoc->NewIndirect<CPDF_Stream>();
   pStream->SetDataFromStringstream(&text_buf);
 
-  CPDF_Stream* pEndStream =
-      pDoc->NewIndirect<CPDF_Stream>(nullptr, 0, pDoc->New<CPDF_Dictionary>());
-  pEndStream->SetData(ByteStringView(" Q").raw_span());
+  static constexpr uint8_t kEndStream[] = " Q";
+  CPDF_Stream* pEndStream = pDoc->NewIndirect<CPDF_Stream>();
+  pEndStream->SetData(kEndStream);
 
   RetainPtr<CPDF_Array> pContentArray = ToArray(pContentObj);
   if (pContentArray) {
@@ -412,8 +411,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_InsertClipPath(FPDF_PAGE page,
   if (!pDoc)
     return;
 
-  CPDF_Stream* pStream =
-      pDoc->NewIndirect<CPDF_Stream>(nullptr, 0, pDoc->New<CPDF_Dictionary>());
+  CPDF_Stream* pStream = pDoc->NewIndirect<CPDF_Stream>();
   pStream->SetDataFromStringstream(&strClip);
 
   RetainPtr<CPDF_Array> pArray = ToArray(pContentObj);

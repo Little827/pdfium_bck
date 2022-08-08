@@ -70,8 +70,7 @@ TEST(ObjectWalkerTest, CombinedObject) {
   auto array = pdfium::MakeRetain<CPDF_Array>();
   array->Append(pdfium::MakeRetain<CPDF_Reference>(nullptr, 0));
   array->Append(pdfium::MakeRetain<CPDF_Null>());
-  array->Append(pdfium::MakeRetain<CPDF_Stream>(
-      nullptr, 0, pdfium::MakeRetain<CPDF_Dictionary>()));
+  array->Append(pdfium::MakeRetain<CPDF_Stream>());
   dict->SetFor("3", std::move(array));
   // The last number for stream length.
   EXPECT_EQ(Walk(dict.Get()), "Dict Str Bool Arr Ref Null Stream Dict Num");

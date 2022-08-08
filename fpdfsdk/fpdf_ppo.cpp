@@ -603,8 +603,7 @@ CPDF_Stream* CPDF_NPageToOneExporter::MakeXObjectFromPageRaw(
   const CPDF_Object* pSrcContentObj =
       pSrcPageDict->GetDirectObjectFor(pdfium::page_object::kContents);
 
-  CPDF_Stream* pNewXObject = dest()->NewIndirect<CPDF_Stream>(
-      nullptr, 0, dest()->New<CPDF_Dictionary>());
+  CPDF_Stream* pNewXObject = dest()->NewIndirect<CPDF_Stream>();
   RetainPtr<CPDF_Dictionary> pNewXObjectDict = pNewXObject->GetMutableDict();
   static const char kResourceString[] = "Resources";
   if (!CopyInheritable(pNewXObjectDict, pSrcPageDict, kResourceString)) {
@@ -677,9 +676,7 @@ void CPDF_NPageToOneExporter::FinishPage(
   for (auto& it : m_XObjectNameToNumberMap)
     pPageXObject->SetNewFor<CPDF_Reference>(it.first, dest(), it.second);
 
-  auto pDict = dest()->New<CPDF_Dictionary>();
-  CPDF_Stream* pStream =
-      dest()->NewIndirect<CPDF_Stream>(nullptr, 0, std::move(pDict));
+  CPDF_Stream* pStream = dest()->NewIndirect<CPDF_Stream>();
   pStream->SetData(bsContent.raw_span());
   pDestPageDict->SetNewFor<CPDF_Reference>(pdfium::page_object::kContents,
                                            dest(), pStream->GetObjNum());
