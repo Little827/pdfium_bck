@@ -16,6 +16,24 @@
       "message": "Is the variable still necessary?",
       "revId": "2d14e5d5ae7cf30cebfc319ca06244dbf76c3aaa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88c1447_9396e08b",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-08T17:26:44Z",
+      "side": 1,
+      "message": "Naw, we could, say, wrap retain or pass a temporary.  OTOH, it might just protect destroying `this` during GetRenderCache() call.  I\u0027ll leave for the moment.",
+      "parentUuid": "c19ebd05_ab35d6fe",
+      "revId": "2d14e5d5ae7cf30cebfc319ca06244dbf76c3aaa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
