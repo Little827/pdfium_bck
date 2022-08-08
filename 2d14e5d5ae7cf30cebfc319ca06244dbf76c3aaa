@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19ebd05_ab35d6fe",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-08T17:19:52Z",
+      "side": 1,
+      "message": "Is the variable still necessary?",
+      "revId": "2d14e5d5ae7cf30cebfc319ca06244dbf76c3aaa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
