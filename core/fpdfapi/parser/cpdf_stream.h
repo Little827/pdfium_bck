@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <set>
+#include <vector>
 
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
@@ -62,6 +63,8 @@ class CPDF_Stream final : public CPDF_Object {
  private:
   CPDF_Stream();
   CPDF_Stream(pdfium::span<const uint8_t> pData,
+              RetainPtr<CPDF_Dictionary> pDict);
+  CPDF_Stream(std::vector<uint8_t, FxAllocAllocator<uint8_t>> pData,
               RetainPtr<CPDF_Dictionary> pDict);
   CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
               size_t size,
