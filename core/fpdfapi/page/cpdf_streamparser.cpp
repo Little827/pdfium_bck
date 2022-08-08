@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "constants/stream_dict_common.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
@@ -175,12 +176,12 @@ RetainPtr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
     return nullptr;
 
   uint32_t dwOrigSize = size.ValueOrDie();
-  std::unique_ptr<uint8_t, FxFreeDeleter> pData;
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> pData;
   uint32_t dwStreamSize;
   if (decoder.IsEmpty()) {
     dwOrigSize = std::min<uint32_t>(dwOrigSize, m_pBuf.size() - m_Pos);
-    pData.reset(FX_AllocUninit(uint8_t, dwOrigSize));
-    auto dest_span = pdfium::make_span(pData.get(), dwOrigSize);
+    pData.resize(dwOrigSize);
+    auto dest_span = pdfium::make_span(pData);
     fxcrt::spancpy(dest_span, m_pBuf.subspan(m_Pos, dwOrigSize));
     dwStreamSize = dwOrigSize;
     m_Pos += dwOrigSize;
@@ -209,14 +210,13 @@ RetainPtr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
       dwStreamSize += m_Pos - dwPrevPos;
     }
     m_Pos = dwSavePos;
-    pData.reset(FX_AllocUninit(uint8_t, dwStreamSize));
-    auto dest_span = pdfium::make_span(pData.get(), dwStreamSize);
+    pData.resize(dwStreamSize);
+    auto dest_span = pdfium::make_span(pData);
     fxcrt::spancpy(dest_span, m_pBuf.subspan(m_Pos, dwStreamSize));
     m_Pos += dwStreamSize;
   }
   pDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(dwStreamSize));
-  return pdfium::MakeRetain<CPDF_Stream>(std::move(pData), dwStreamSize,
-                                         std::move(pDict));
+  return pdfium::MakeRetain<CPDF_Stream>(std::move(pData), std::move(pDict));
 }
 
 CPDF_StreamParser::ElementType CPDF_StreamParser::ParseNextElement() {

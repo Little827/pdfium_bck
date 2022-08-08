@@ -8,6 +8,7 @@
 
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "constants/stream_dict_common.h"
 #include "core/fdrm/fx_crypt.h"
@@ -240,10 +241,11 @@ FPDFAttachment_SetFile(FPDF_ATTACHMENT attachment,
       true);
 
   // Create the file stream and have the filespec dictionary link to it.
-  std::unique_ptr<uint8_t, FxFreeDeleter> stream(FX_AllocUninit(uint8_t, len));
-  memcpy(stream.get(), contents, len);
+  const uint8_t* contents_as_bytes = static_cast<const uint8_t*>(contents);
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> stream(
+      contents_as_bytes, contents_as_bytes + len);
   CPDF_Stream* pFileStream = pDoc->NewIndirect<CPDF_Stream>(
-      std::move(stream), len, std::move(pFileStreamDict));
+      std::move(stream), std::move(pFileStreamDict));
   CPDF_Dictionary* pEFDict =
       pFile->AsDictionary()->SetNewFor<CPDF_Dictionary>("EF");
   pEFDict->SetNewFor<CPDF_Reference>("F", pDoc, pFileStream->GetObjNum());

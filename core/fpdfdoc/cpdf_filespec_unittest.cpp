@@ -209,10 +209,9 @@ TEST(cpdf_filespec, GetFileStream) {
       // Set the file stream.
       auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
       size_t buf_len = strlen(streams[i]) + 1;
-      std::unique_ptr<uint8_t, FxFreeDeleter> buf(
-          FX_AllocUninit(uint8_t, buf_len));
-      memcpy(buf.get(), streams[i], buf_len);
-      file_dict->SetNewFor<CPDF_Stream>(keys[i], std::move(buf), buf_len,
+      std::vector<uint8_t, FxAllocAllocator<uint8_t>> buf(buf_len);
+      memcpy(buf.data(), streams[i], buf_len);
+      file_dict->SetNewFor<CPDF_Stream>(keys[i], std::move(buf),
                                         std::move(pDict));
 
       // Check that the file content stream is as expected.
@@ -247,10 +246,9 @@ TEST(cpdf_filespec, GetParamsDict) {
     RetainPtr<CPDF_Dictionary> file_dict =
         file_spec.GetObj()->AsDictionary()->GetMutableDictFor("EF");
     auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
-    std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, 6));
-    memcpy(buf.get(), "hello", 6);
-    file_dict->SetNewFor<CPDF_Stream>("UF", std::move(buf), 6,
-                                      std::move(pDict));
+    std::vector<uint8_t, FxAllocAllocator<uint8_t>> buf(6);
+    memcpy(buf.data(), "hello", 6);
+    file_dict->SetNewFor<CPDF_Stream>("UF", std::move(buf), std::move(pDict));
 
     // Add a params dictionary to the file stream.
     RetainPtr<CPDF_Stream> stream = file_dict->GetMutableStreamFor("UF");

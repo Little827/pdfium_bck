@@ -97,6 +97,19 @@ std::unique_ptr<uint8_t, FxFreeDeleter> CPDF_StreamAcc::DetachData() {
   return p;
 }
 
+std::vector<uint8_t, FxAllocAllocator<uint8_t>>
+CPDF_StreamAcc::DetachDataAsVector() {
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> result(m_dwSize);
+  if (m_pData.IsOwned()) {
+    std::unique_ptr<uint8_t, FxFreeDeleter> data = m_pData.ReleaseAndClear();
+    m_dwSize = 0;
+    memcpy(result.data(), data.get(), result.size());
+  } else {
+    memcpy(result.data(), m_pData.Get(), result.size());
+  }
+  return result;
+}
+
 void CPDF_StreamAcc::ProcessRawData() {
   if (m_pStream->IsUninitialized())
     return;

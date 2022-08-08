@@ -10,6 +10,7 @@
 #include <stdint.h>
 
 #include <memory>
+#include <vector>
 
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
@@ -43,6 +44,7 @@ class CPDF_StreamAcc final : public Retainable {
   ByteString GetImageDecoder() const { return m_ImageDecoder; }
   const CPDF_Dictionary* GetImageParam() const { return m_pImageParam.Get(); }
   std::unique_ptr<uint8_t, FxFreeDeleter> DetachData();
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> DetachDataAsVector();
 
  private:
   explicit CPDF_StreamAcc(const CPDF_Stream* pStream);
