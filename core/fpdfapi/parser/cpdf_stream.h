@@ -44,6 +44,7 @@ class CPDF_Stream final : public CPDF_Object {
   void SetData(pdfium::span<const uint8_t> pData);
   void SetDataFromStringstream(fxcrt::ostringstream* stream);
 
+  void TakeData(std::vector<uint8_t, FxAllocAllocator<uint8_t>> data);
   void TakeData(std::unique_ptr<uint8_t, FxFreeDeleter> pData, size_t size);
 
   // Set data and remove "Filter" and "DecodeParms" fields from stream
@@ -72,13 +73,7 @@ class CPDF_Stream final : public CPDF_Object {
     size_t size = 0;
   };
 
-  struct MemoryStream {
-    MemoryStream(std::unique_ptr<uint8_t, FxFreeDeleter> buffer, size_t size);
-    ~MemoryStream();
-
-    std::unique_ptr<uint8_t, FxFreeDeleter> buffer;
-    size_t size = 0;
-  };
+  using MemoryStream = std::vector<uint8_t, FxAllocAllocator<uint8_t>>;
 
   CPDF_Stream();
   CPDF_Stream(pdfium::span<const uint8_t> pData,

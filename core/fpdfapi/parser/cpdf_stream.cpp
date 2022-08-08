@@ -44,7 +44,7 @@ CPDF_Stream::CPDF_Stream(pdfium::span<const uint8_t> pData,
 CPDF_Stream::CPDF_Stream(std::vector<uint8_t, FxAllocAllocator<uint8_t>> pData,
                          RetainPtr<CPDF_Dictionary> pDict)
     : dict_(std::move(pDict)) {
-  SetData(pData);
+  TakeData(pData);
 }
 
 CPDF_Stream::CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
@@ -137,22 +137,27 @@ void CPDF_Stream::SetDataFromStringstreamAndRemoveFilter(
 }
 
 void CPDF_Stream::SetData(pdfium::span<const uint8_t> pData) {
-  std::unique_ptr<uint8_t, FxFreeDeleter> data_copy;
-  if (!pData.empty()) {
-    data_copy.reset(FX_AllocUninit(uint8_t, pData.size()));
-    auto copy_span = pdfium::make_span(data_copy.get(), pData.size());
-    fxcrt::spancpy(copy_span, pData);
-  }
-  TakeData(std::move(data_copy), pData.size());
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> data_copy(pData.size());
+  if (!pData.empty())
+    fxcrt::spancpy(pdfium::make_span(data_copy), pData);
+  TakeData(std::move(data_copy));
 }
 
-void CPDF_Stream::TakeData(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
-                           size_t size) {
-  data_.emplace<MemoryStream>(std::move(pData), size);
+void CPDF_Stream::TakeData(
+    std::vector<uint8_t, FxAllocAllocator<uint8_t>> data) {
+  const size_t size = data.size();
+  data_.emplace<MemoryStream>(std::move(data));
   if (!dict_)
     dict_ = pdfium::MakeRetain<CPDF_Dictionary>();
   dict_->SetNewFor<CPDF_Number>("Length",
                                 pdfium::base::checked_cast<int>(size));
+}
+
+void CPDF_Stream::TakeData(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
+                           size_t size) {
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> buffer(size);
+  memcpy(buffer.data(), pData.get(), size);
+  TakeData(std::move(buffer));
 }
 
 void CPDF_Stream::SetDataFromStringstream(fxcrt::ostringstream* stream) {
@@ -173,7 +178,7 @@ bool CPDF_Stream::ReadRawData(FX_FILESIZE offset,
   }
 
   if (IsMemoryBased())
-    memcpy(buf, absl::get<MemoryStream>(data_).buffer.get() + offset, size);
+    memcpy(buf, absl::get<MemoryStream>(data_).data() + offset, size);
 
   return true;
 }
@@ -227,14 +232,15 @@ size_t CPDF_Stream::GetRawSize() const {
   if (IsFileBased())
     return absl::get<FileStream>(data_).size;
   if (IsMemoryBased())
-    return absl::get<MemoryStream>(data_).size;
+    return absl::get<MemoryStream>(data_).size();
   DCHECK(IsUninitialized());
   return 0;
 }
 
 uint8_t* CPDF_Stream::GetInMemoryRawData() const {
-  return IsMemoryBased() ? absl::get<MemoryStream>(data_).buffer.get()
-                         : nullptr;
+  return IsMemoryBased()
+             ? const_cast<uint8_t*>(absl::get<MemoryStream>(data_).data())
+             : nullptr;
 }
 
 CPDF_Stream::FileStream::FileStream(RetainPtr<IFX_SeekableReadStream> file,
@@ -242,10 +248,3 @@ CPDF_Stream::FileStream::FileStream(RetainPtr<IFX_SeekableReadStream> file,
     : file(std::move(file)), size(size) {}
 
 CPDF_Stream::FileStream::~FileStream() = default;
-
-CPDF_Stream::MemoryStream::MemoryStream(
-    std::unique_ptr<uint8_t, FxFreeDeleter> buffer,
-    size_t size)
-    : buffer(std::move(buffer)), size(size) {}
-
-CPDF_Stream::MemoryStream::~MemoryStream() = default;
