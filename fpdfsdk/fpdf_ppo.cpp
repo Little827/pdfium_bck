@@ -677,9 +677,7 @@ void CPDF_NPageToOneExporter::FinishPage(
   for (auto& it : m_XObjectNameToNumberMap)
     pPageXObject->SetNewFor<CPDF_Reference>(it.first, dest(), it.second);
 
-  auto pDict = dest()->New<CPDF_Dictionary>();
-  CPDF_Stream* pStream =
-      dest()->NewIndirect<CPDF_Stream>(nullptr, 0, std::move(pDict));
+  CPDF_Stream* pStream = dest()->NewIndirect<CPDF_Stream>();
   pStream->SetData(bsContent.raw_span());
   pDestPageDict->SetNewFor<CPDF_Reference>(pdfium::page_object::kContents,
                                            dest(), pStream->GetObjNum());

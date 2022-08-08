@@ -182,8 +182,7 @@ ByteString GenerateFlattenedContent(const ByteString& key) {
 
 CPDF_Object* NewIndirectContentsStream(CPDF_Document* pDocument,
                                        const ByteString& contents) {
-  CPDF_Stream* pNewContents = pDocument->NewIndirect<CPDF_Stream>(
-      nullptr, 0, pDocument->New<CPDF_Dictionary>());
+  CPDF_Stream* pNewContents = pDocument->NewIndirect<CPDF_Stream>();
   pNewContents->SetData(contents.raw_span());
   return pNewContents;
 }
