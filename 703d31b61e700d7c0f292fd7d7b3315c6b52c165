@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dff11c4_8e9e9044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-08T20:27:32Z",
+      "side": 1,
+      "message": "Lei, it dawns on me that we might be able to land a slightly less aggressive version of this patch. PTAL.",
+      "revId": "703d31b61e700d7c0f292fd7d7b3315c6b52c165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
