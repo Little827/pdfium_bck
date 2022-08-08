@@ -344,6 +344,7 @@ component("pdfium") {
   public_configs = [ ":pdfium_public_config" ]
 
   deps = [
+    "base/allocator/partition_allocator:partition_alloc",
     "constants",
     "core/fpdfapi/page",
     "core/fpdfapi/parser",
