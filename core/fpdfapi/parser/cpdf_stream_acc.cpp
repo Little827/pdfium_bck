@@ -98,6 +98,9 @@ std::unique_ptr<uint8_t, FxFreeDeleter> CPDF_StreamAcc::DetachData() {
 }
 
 void CPDF_StreamAcc::ProcessRawData() {
+  if (m_pStream->IsUninitialized())
+    return;
+
   uint32_t dwSrcSize = m_pStream->GetRawSize();
   if (dwSrcSize == 0)
     return;
@@ -118,6 +121,9 @@ void CPDF_StreamAcc::ProcessRawData() {
 
 void CPDF_StreamAcc::ProcessFilteredData(uint32_t estimated_size,
                                          bool bImageAcc) {
+  if (m_pStream->IsUninitialized())
+    return;
+
   uint32_t dwSrcSize = m_pStream->GetRawSize();
   if (dwSrcSize == 0)
     return;
@@ -159,7 +165,7 @@ void CPDF_StreamAcc::ProcessFilteredData(uint32_t estimated_size,
 
 std::unique_ptr<uint8_t, FxFreeDeleter> CPDF_StreamAcc::ReadRawStream() const {
   DCHECK(m_pStream);
-  DCHECK(!m_pStream->IsMemoryBased());
+  DCHECK(m_pStream->IsFileBased());
 
   uint32_t dwSrcSize = m_pStream->GetRawSize();
   DCHECK(dwSrcSize);
