@@ -69,21 +69,22 @@ bool IsFormFieldTypeXFA(FormFieldType fieldType) {
 }
 #endif  // PDF_ENABLE_XFA
 
-bool FDFToURLEncodedData(
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>>* pBuffer) {
-  std::unique_ptr<CFDF_Document> pFDF = CFDF_Document::ParseMemory(*pBuffer);
+std::vector<uint8_t, FxAllocAllocator<uint8_t>> FDFToURLEncodedData(
+    const ByteString& input) {
+  std::unique_ptr<CFDF_Document> pFDF =
+      CFDF_Document::ParseMemory(input.raw_span());
   if (!pFDF)
-    return true;
+    return {input.begin(), input.end()};
 
   const CPDF_Dictionary* pMainDict = pFDF->GetRoot()->GetDictFor("FDF");
   if (!pMainDict)
-    return false;
+    return {};
 
   const CPDF_Array* pFields = pMainDict->GetArrayFor("Fields");
   if (!pFields)
-    return false;
+    return {};
 
-  fxcrt::ostringstream fdfEncodedData;
+  fxcrt::ostringstream encoded_data;
   for (uint32_t i = 0; i < pFields->size(); i++) {
     const CPDF_Dictionary* pField = pFields->GetDictAt(i);
     if (!pField)
@@ -93,19 +94,19 @@ bool FDFToURLEncodedData(
     ByteString csBValue = pField->GetStringFor("V");
     WideString csWValue = PDF_DecodeText(csBValue.raw_span());
     ByteString csValue_b = csWValue.ToDefANSI();
-    fdfEncodedData << name_b << "=" << csValue_b;
+    encoded_data << name_b << "=" << csValue_b;
     if (i != pFields->size() - 1)
-      fdfEncodedData << "&";
+      encoded_data << "&";
   }
 
-  auto nBufSize = fdfEncodedData.tellp();
-  if (nBufSize <= 0)
-    return false;
+  auto encoded_size = encoded_data.tellp();
+  if (encoded_size <= 0)
+    return {};
 
-  size_t copy_size = static_cast<size_t>(nBufSize);
-  pBuffer->resize(copy_size);
-  memcpy(pBuffer->data(), fdfEncodedData.str().c_str(), copy_size);
-  return true;
+  size_t copy_size = static_cast<size_t>(encoded_size);
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> result(copy_size);
+  memcpy(result.data(), encoded_data.str().c_str(), copy_size);
+  return result;
 }
 
 }  // namespace
@@ -444,14 +445,18 @@ bool CPDFSDK_InteractiveForm::SubmitFields(
     const std::vector<CPDF_FormField*>& fields,
     bool bIncludeOrExclude,
     bool bUrlEncoded) {
-  ByteString textBuf = ExportFieldsToFDFTextBuf(fields, bIncludeOrExclude);
-  if (textBuf.IsEmpty())
+  ByteString text_buf = ExportFieldsToFDFTextBuf(fields, bIncludeOrExclude);
+  if (text_buf.IsEmpty())
     return false;
 
-  std::vector<uint8_t, FxAllocAllocator<uint8_t>> buffer(textBuf.begin(),
-                                                         textBuf.end());
-  if (bUrlEncoded && !FDFToURLEncodedData(&buffer))
-    return false;
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> buffer;
+  if (bUrlEncoded) {
+    buffer = FDFToURLEncodedData(text_buf);
+    if (buffer.empty())
+      return false;
+  } else {
+    buffer = {text_buf.begin(), text_buf.end()};
+  }
 
   m_pFormFillEnv->SubmitForm(buffer, csDestination);
   return true;
