@@ -479,23 +479,20 @@ RetainPtr<CFX_DIBitmap> XFA_LoadImageData(CXFA_FFDoc* pDoc,
     return nullptr;
 
   FXCODEC_IMAGE_TYPE type = XFA_GetImageType(pImage->GetContentType());
-  ByteString bsData;  // Must outlive |pImageFileRead|.
-
-  // Must outlive |pImageFileRead|.
-  std::vector<uint8_t, FxAllocAllocator<uint8_t>> buffer;
 
   RetainPtr<IFX_SeekableReadStream> pImageFileRead;
   if (wsImage.GetLength() > 0) {
     XFA_AttributeValue iEncoding = pImage->GetTransferEncoding();
     if (iEncoding == XFA_AttributeValue::Base64) {
-      bsData = wsImage.ToUTF8();
-      buffer = XFA_Base64Decode(bsData);
-      if (!buffer.empty())
-        pImageFileRead = pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(buffer);
+      std::vector<uint8_t, FxAllocAllocator<uint8_t>> buffer =
+          XFA_Base64Decode(wsImage.ToUTF8());
+      if (!buffer.empty()) {
+        pImageFileRead =
+            pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(std::move(buffer));
+      }
     } else {
-      bsData = wsImage.ToDefANSI();
       pImageFileRead =
-          pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(bsData.raw_span());
+          pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(wsImage.ToDefANSI());
     }
   } else {
     WideString wsURL = wsHref;

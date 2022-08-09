@@ -220,7 +220,7 @@ CJS_Result CJX_Node::loadXML(CFXJSE_Engine* runtime,
     bOverwrite = runtime->ToBoolean(params[2]);
 
   auto stream =
-      pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(expression.raw_span());
+      pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(std::move(expression));
 
   CFX_XMLParser parser(stream);
   std::unique_ptr<CFX_XMLDocument> xml_doc = parser.Parse();

@@ -11,19 +11,25 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/numerics/safe_conversions.h"
 
-CFX_ReadOnlyMemoryStream::CFX_ReadOnlyMemoryStream(
-    std::unique_ptr<uint8_t, FxFreeDeleter> data,
-    size_t size)
-    : m_data(std::move(data)), m_span(m_data.get(), size) {}
+CFX_ReadOnlyMemoryStream::CFX_ReadOnlyMemoryStream(SpanType span)
+    : span_(span) {}
 
-CFX_ReadOnlyMemoryStream::CFX_ReadOnlyMemoryStream(
-    pdfium::span<const uint8_t> span)
-    : m_span(span) {}
+CFX_ReadOnlyMemoryStream::CFX_ReadOnlyMemoryStream(VectorType data)
+    : data_(std::move(data)),
+      span_(pdfium::make_span(absl::get<VectorType>(data_))) {}
+
+CFX_ReadOnlyMemoryStream::CFX_ReadOnlyMemoryStream(ByteString data)
+    : data_(std::move(data)), span_(absl::get<ByteString>(data_).raw_span()) {}
+
+CFX_ReadOnlyMemoryStream::CFX_ReadOnlyMemoryStream(UniquePtrType data,
+                                                   size_t size)
+    : data_(std::move(data)),
+      span_(absl::get<UniquePtrType>(data_).get(), size) {}
 
 CFX_ReadOnlyMemoryStream::~CFX_ReadOnlyMemoryStream() = default;
 
 FX_FILESIZE CFX_ReadOnlyMemoryStream::GetSize() {
-  return pdfium::base::checked_cast<FX_FILESIZE>(m_span.size());
+  return pdfium::base::checked_cast<FX_FILESIZE>(span_.size());
 }
 
 bool CFX_ReadOnlyMemoryStream::ReadBlockAtOffset(void* buffer,
@@ -34,11 +40,11 @@ bool CFX_ReadOnlyMemoryStream::ReadBlockAtOffset(void* buffer,
 
   FX_SAFE_SIZE_T pos = size;
   pos += offset;
-  if (!pos.IsValid() || pos.ValueOrDie() > m_span.size())
+  if (!pos.IsValid() || pos.ValueOrDie() > span_.size())
     return false;
 
   auto copy_span =
-      m_span.subspan(pdfium::base::checked_cast<size_t>(offset), size);
+      span_.subspan(pdfium::base::checked_cast<size_t>(offset), size);
   memcpy(buffer, copy_span.data(), copy_span.size());
   return true;
 }
