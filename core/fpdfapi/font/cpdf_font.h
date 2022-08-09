@@ -24,7 +24,6 @@
 #include "core/fxge/freetype/fx_freetype.h"
 
 class CFX_DIBitmap;
-class CFX_SubstFont;
 class CPDF_CIDFont;
 class CPDF_Document;
 class CPDF_TrueTypeFont;
@@ -98,7 +97,7 @@ class CPDF_Font : public Retainable, public Observable {
   virtual bool HasFontWidths() const;
 
   ByteString GetBaseFontName() const { return m_BaseFontName; }
-  CFX_SubstFont* GetSubstFont() const { return m_Font.GetSubstFont(); }
+  absl::optional<FX_Charset> GetSubstFontCharset() const;
   bool IsEmbedded() const { return IsType3Font() || m_pFontFile != nullptr; }
   RetainPtr<CPDF_Dictionary> GetMutableFontDict() { return m_pFontDict; }
   const CPDF_Dictionary* GetFontDict() const { return m_pFontDict.Get(); }
