@@ -91,17 +91,10 @@ void UpdateFormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   // sure none of the widgets have been deleted.
   std::vector<ObservedPtr<CPDFSDK_Annot>> widgets;
   pForm->GetWidgets(pFormField, &widgets);
-
-  // TODO(dsinclair): Determine if all widgets share the same
-  // CPDFSDK_InteractiveForm. If that's the case, we can move the code to
-  // |GetFormFillEnv| out of the loop.
   for (auto& pObserved : widgets) {
-    if (pObserved) {
-      CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pObserved.Get());
-      pWidget->GetInteractiveForm()->GetFormFillEnv()->UpdateAllViews(pWidget);
-    }
+    if (pObserved)
+      pFormFillEnv->UpdateAllViews(ToCPDFSDKWidget(pObserved.Get()));
   }
-
   pFormFillEnv->SetChangeMark();
 }
 
@@ -128,8 +121,7 @@ void UpdateFormControl(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       if (!observed_widget)
         return;
     }
-    CPDFSDK_InteractiveForm* pWidgetForm = pWidget->GetInteractiveForm();
-    pWidgetForm->GetFormFillEnv()->UpdateAllViews(pWidget);
+    pFormFillEnv->UpdateAllViews(pWidget);
   }
   pFormFillEnv->SetChangeMark();
 }
