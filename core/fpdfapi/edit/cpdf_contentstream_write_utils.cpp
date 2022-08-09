@@ -15,6 +15,14 @@ std::ostream& WriteFloat(std::ostream& stream, float value) {
   return stream;
 }
 
+std::ostream& WriteFloatRect(std::ostream& stream, const CFX_FloatRect& rect) {
+  WriteFloat(stream, rect.left) << " ";
+  WriteFloat(stream, rect.bottom) << " ";
+  WriteFloat(stream, rect.Width()) << " ";
+  WriteFloat(stream, rect.Height());
+  return stream;
+}
+
 std::ostream& WriteMatrix(std::ostream& stream, const CFX_Matrix& matrix) {
   WriteFloat(stream, matrix.a) << " ";
   WriteFloat(stream, matrix.b) << " ";
