@@ -61,14 +61,13 @@ void UpdateFormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                      bool bResetAP) {
   CPDFSDK_InteractiveForm* pForm = pFormFillEnv->GetInteractiveForm();
   if (bResetAP) {
-    std::vector<ObservedPtr<CPDFSDK_Annot>> widgets;
+    std::vector<ObservedPtr<CPDFSDK_Widget>> widgets;
     pForm->GetWidgets(pFormField, &widgets);
 
     if (IsComboBoxOrTextField(pFormField)) {
       for (auto& pObserved : widgets) {
         if (pObserved) {
-          absl::optional<WideString> sValue =
-              ToCPDFSDKWidget(pObserved.Get())->OnFormat();
+          absl::optional<WideString> sValue = pObserved->OnFormat();
           if (pObserved) {  // Not redundant, may be clobbered by OnFormat.
             auto* pWidget = ToCPDFSDKWidget(pObserved.Get());
             pWidget->ResetAppearance(sValue, CPDFSDK_Widget::kValueUnchanged);
@@ -89,7 +88,7 @@ void UpdateFormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   // Refresh the widget list. The calls in |bResetAP| may have caused widgets
   // to be removed from the list. We need to call |GetWidgets| again to be
   // sure none of the widgets have been deleted.
-  std::vector<ObservedPtr<CPDFSDK_Annot>> widgets;
+  std::vector<ObservedPtr<CPDFSDK_Widget>> widgets;
   pForm->GetWidgets(pFormField, &widgets);
 
   // TODO(dsinclair): Determine if all widgets share the same
@@ -1515,7 +1514,7 @@ CJS_Result CJS_Field::get_page(CJS_Runtime* pRuntime) {
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  std::vector<ObservedPtr<CPDFSDK_Annot>> widgets;
+  std::vector<ObservedPtr<CPDFSDK_Widget>> widgets;
   m_pFormFillEnv->GetInteractiveForm()->GetWidgets(pFormField, &widgets);
   if (widgets.empty())
     return CJS_Result::Success(pRuntime->NewNumber(-1));
@@ -1526,7 +1525,7 @@ CJS_Result CJS_Field::get_page(CJS_Runtime* pRuntime) {
     if (!pObserved)
       return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-    auto* pWidget = ToCPDFSDKWidget(pObserved.Get());
+    auto* pWidget = pObserved.Get();
     pRuntime->PutArrayElement(
         PageArray, i,
         pRuntime->NewNumber(pWidget->GetPageView()->GetPageIndex()));
