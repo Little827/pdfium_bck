@@ -25,7 +25,6 @@ class CPDF_IccProfile final : public Retainable, public Observable {
  public:
   CONSTRUCT_VIA_MAKE_RETAIN;
 
-  const CPDF_Stream* GetStream() const { return m_pStream.Get(); }
   bool IsValid() const { return IsSRGB() || IsSupported(); }
   bool IsSRGB() const { return m_bsRGB; }
   bool IsSupported() const { return !!m_Transform; }
@@ -39,6 +38,7 @@ class CPDF_IccProfile final : public Retainable, public Observable {
                          int pixels);
 
  private:
+  // Keeps stream alive for the duration of the CPDF_IccProfile.
   CPDF_IccProfile(const CPDF_Stream* pStream, pdfium::span<const uint8_t> span);
   ~CPDF_IccProfile() override;
 
