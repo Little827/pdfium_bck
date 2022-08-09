@@ -16,6 +16,7 @@
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/fx_string_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/abseil-cpp/absl/types/variant.h"
 
 class CPDF_Stream final : public CPDF_Object {
  public:
@@ -34,10 +35,10 @@ class CPDF_Stream final : public CPDF_Object {
   bool WriteTo(IFX_ArchiveStream* archive,
                const CPDF_Encryptor* encryptor) const override;
 
-  size_t GetRawSize() const { return m_dwSize; }
+  size_t GetRawSize() const;
   // Will be null in case when stream is not memory based.
   // Use CPDF_StreamAcc to data access in all cases.
-  uint8_t* GetInMemoryRawData() const { return m_pDataBuf.get(); }
+  uint8_t* GetInMemoryRawData() const;
 
   // Copies span or stream into internally-owned buffer.
   void SetData(pdfium::span<const uint8_t> pData);
@@ -58,10 +59,28 @@ class CPDF_Stream final : public CPDF_Object {
 
   bool ReadRawData(FX_FILESIZE offset, uint8_t* pBuf, size_t buf_size) const;
 
-  bool IsMemoryBased() const { return m_bMemoryBased; }
+  bool IsUninitialized() const { return m_Data.index() == 0; }
+  bool IsFileBased() const { return m_Data.index() == 1; }
+  bool IsMemoryBased() const { return m_Data.index() == 2; }
   bool HasFilter() const;
 
  private:
+  struct FileStream {
+    FileStream(RetainPtr<IFX_SeekableReadStream> file, size_t size);
+    ~FileStream();
+
+    RetainPtr<IFX_SeekableReadStream> file;
+    size_t size = 0;
+  };
+
+  struct MemoryStream {
+    MemoryStream(std::unique_ptr<uint8_t, FxFreeDeleter> buffer, size_t size);
+    ~MemoryStream();
+
+    std::unique_ptr<uint8_t, FxFreeDeleter> buffer;
+    size_t size = 0;
+  };
+
   CPDF_Stream();
   CPDF_Stream(pdfium::span<const uint8_t> pData,
               RetainPtr<CPDF_Dictionary> pDict);
@@ -77,11 +96,8 @@ class CPDF_Stream final : public CPDF_Object {
       bool bDirect,
       std::set<const CPDF_Object*>* pVisited) const override;
 
-  bool m_bMemoryBased = true;
-  size_t m_dwSize = 0;
+  absl::variant<absl::monostate, FileStream, MemoryStream> m_Data;
   RetainPtr<CPDF_Dictionary> m_pDict;
-  std::unique_ptr<uint8_t, FxFreeDeleter> m_pDataBuf;
-  RetainPtr<IFX_SeekableReadStream> m_pFile;
 };
 
 inline CPDF_Stream* ToStream(CPDF_Object* obj) {
