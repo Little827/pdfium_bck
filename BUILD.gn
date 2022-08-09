@@ -269,6 +269,9 @@ config("pdfium_public_config") {
       }
     }
   }
+  if (pdf_use_chromium_partitionalloc) {
+    defines += [ "PDF_USE_CHROMIUM_PARTITIONALLOC" ]
+  }
 }
 
 config("pdfium_core_config") {

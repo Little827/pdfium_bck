@@ -50,6 +50,10 @@ declare_args() {
   # Build a complete static library
   pdf_is_complete_lib = false
 
+  # Build PDFium with Chromium's copy of PartitionAlloc.
+  # Implies that PDFium is being built inside of Chromium.
+  pdf_use_chromium_partitionalloc = false
+
   # Enable callgrind for performance profiling
   enable_callgrind = false
 
