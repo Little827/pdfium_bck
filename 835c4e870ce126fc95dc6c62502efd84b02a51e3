@@ -39,6 +39,30 @@
       },
       "revId": "835c4e870ce126fc95dc6c62502efd84b02a51e3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afdcda6d_ee317cc3",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-09T18:20:16Z",
+      "side": 1,
+      "message": "Done. FWIW, if this DCHECK() fails, then `m_pFile` should be null.",
+      "parentUuid": "8d3bc7c1_177e8ffc",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 3
+      },
+      "revId": "835c4e870ce126fc95dc6c62502efd84b02a51e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
