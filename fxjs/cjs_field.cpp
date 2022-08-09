@@ -93,12 +93,9 @@ void UpdateFormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   // CPDFSDK_InteractiveForm. If that's the case, we can move the code to
   // |GetFormFillEnv| out of the loop.
   for (auto& pWidget : widgets) {
-    if (pWidget) {
-      pWidget->GetInteractiveForm()->GetFormFillEnv()->UpdateAllViews(
-          pWidget.Get());
-    }
+    if (pWidget)
+      pFormFillEnv->UpdateAllViews(pWidget.Get());
   }
-
   pFormFillEnv->SetChangeMark();
 }
 
@@ -125,8 +122,7 @@ void UpdateFormControl(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       if (!observed_widget)
         return;
     }
-    CPDFSDK_InteractiveForm* pWidgetForm = pWidget->GetInteractiveForm();
-    pWidgetForm->GetFormFillEnv()->UpdateAllViews(pWidget);
+    pFormFillEnv->UpdateAllViews(pWidget);
   }
   pFormFillEnv->SetChangeMark();
 }
