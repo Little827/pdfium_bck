@@ -10,6 +10,7 @@
 #include "core/fxcrt/fx_coordinates.h"
 
 std::ostream& WriteFloat(std::ostream& stream, float value);
+std::ostream& WriteFloatRect(std::ostream& stream, const CFX_FloatRect& rect);
 std::ostream& WriteMatrix(std::ostream& stream, const CFX_Matrix& matrix);
 std::ostream& WritePoint(std::ostream& stream, const CFX_PointF& point);
 
