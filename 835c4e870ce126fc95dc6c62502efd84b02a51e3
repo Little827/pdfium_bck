@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656bee4d_210a28a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T17:35:58Z",
+      "side": 1,
+      "message": "LG w/one change.",
+      "revId": "835c4e870ce126fc95dc6c62502efd84b02a51e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3bc7c1_177e8ffc",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T17:35:58Z",
+      "side": 1,
+      "message": "CHECK(), otherwise might result in uninit memory or corruption",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 3
+      },
+      "revId": "835c4e870ce126fc95dc6c62502efd84b02a51e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
