@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fba5aae_1b34e839",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T20:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61bfec73_df54be44",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "83646775663fea4f9ce7b6e5a9ed2a7df08a0823",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff9be1cc_e40f2be7",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-09T20:52:11Z",
       "side": 1,
       "message": "Should GetWidgets() just return the vector instead?",
+      "revId": "83646775663fea4f9ce7b6e5a9ed2a7df08a0823",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed618b1_aeb1d5be",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T20:59:33Z",
+      "side": 1,
+      "message": "Probably.  But I\u0027m not 100% sure that RVO or copy elision will always occur given the interaction of the ObservedPtr type and the vector backing store, and doing a copy is expensive since we add the new addresses to the observer list one-by-one and then remove the old addresses one-by-one.\n\n[I thought about doing this, but decided we\u0027d need a unit test to guarantee move semantics first].",
+      "parentUuid": "ff9be1cc_e40f2be7",
       "revId": "83646775663fea4f9ce7b6e5a9ed2a7df08a0823",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
