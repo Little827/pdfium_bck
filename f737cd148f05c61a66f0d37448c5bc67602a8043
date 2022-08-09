@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2260dc7_5e3108d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T01:57:12Z",
+      "side": 1,
+      "message": "yep, this is exactly what variant was made for ...",
+      "revId": "f737cd148f05c61a66f0d37448c5bc67602a8043",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0086ea29_fc751d22",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T01:57:12Z",
+      "side": 1,
+      "message": "can we get away with returning false here for the presumably monostate case where we didn\u0027t assign to the variant yet?",
+      "range": {
+        "startLine": 179,
+        "startChar": 9,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "f737cd148f05c61a66f0d37448c5bc67602a8043",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
