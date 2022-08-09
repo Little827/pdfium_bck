@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "279245d2_d5e8c27a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T16:16:47Z",
+      "side": 1,
+      "message": "LG w/one consideration",
+      "revId": "f29fef5a42a7c257c8f84152c103f34c2554b28f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e60dbe_5bf7edcd",
+        "filename": "core/fxcrt/cfx_readonlymemorystream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-09T16:16:47Z",
+      "side": 1,
+      "message": "yeah, ok, as opposed to three sub-classes ReadOnlySpanStream, ReadOnlyVectorStream, ReadOnlyStringStream. Not sure if that is overdoing it.",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "f29fef5a42a7c257c8f84152c103f34c2554b28f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
