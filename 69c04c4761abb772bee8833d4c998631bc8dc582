@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "274f495a_0fcc64b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8946
+      },
+      "writtenOn": "2022-08-10T08:00:02Z",
+      "side": 1,
+      "message": "Dice roll selects Tom to review.",
+      "revId": "69c04c4761abb772bee8833d4c998631bc8dc582",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
