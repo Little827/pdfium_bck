@@ -51,6 +51,24 @@
       "message": "Needs a rebase. Shall we land this?",
       "revId": "65451ad61110837ea77d5bdd4a9f190cbbefe771",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ffa38c0_776f21f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-10T21:16:23Z",
+      "side": 1,
+      "message": "Sure! Maybe you can rebase it so that my +1 still works?",
+      "parentUuid": "28128726_f9f39bc5",
+      "revId": "65451ad61110837ea77d5bdd4a9f190cbbefe771",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
