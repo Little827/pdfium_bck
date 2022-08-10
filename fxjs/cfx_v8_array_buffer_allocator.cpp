@@ -6,8 +6,8 @@
 
 #include "fxjs/cfx_v8_array_buffer_allocator.h"
 
+#include "base/allocator/partition_allocator/partition_alloc.h"
 #include "core/fxcrt/fx_memory.h"
-#include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 
 void* CFX_V8ArrayBufferAllocator::Allocate(size_t length) {
   if (length > kMaxAllowedBytes)
