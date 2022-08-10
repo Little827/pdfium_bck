@@ -31,6 +31,8 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcodec/fx_codec.h"
+#include "core/fxcrt/data_vector.h"
+#include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/maybe_owned.h"
 #include "core/fxcrt/scoped_set_insertion.h"
@@ -244,7 +246,7 @@ class CPDF_ICCBasedCS final : public CPDF_BasedCS {
                                       uint32_t nComponents);
 
   RetainPtr<CPDF_IccProfile> m_pProfile;
-  mutable std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_pCache;
+  mutable DataVectorUint8 m_pCache;
   std::vector<float> m_pRanges;
 };
 

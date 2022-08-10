@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_colorspace.h"
-#include "core/fxcrt/fx_memory_wrappers.h"
+#include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/dib/cfx_dibbase.h"
@@ -72,7 +72,7 @@ class CPDF_DIB final : public CFX_DIBBase {
 
     int width;
     int height;
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> data;
+    DataVectorUint8 data;
   };
 
   bool LoadInternal(const CPDF_Dictionary* pFormResources,
@@ -122,8 +122,8 @@ class CPDF_DIB final : public CFX_DIBBase {
   bool m_bHasMask = false;
   bool m_bStdCS = false;
   std::vector<DIB_COMP_DATA> m_CompData;
-  mutable std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_LineBuf;
-  mutable std::vector<uint8_t, FxAllocAllocator<uint8_t>> m_MaskBuf;
+  mutable DataVectorUint8 m_LineBuf;
+  mutable DataVectorUint8 m_MaskBuf;
   RetainPtr<CFX_DIBitmap> m_pCachedBitmap;
   // Note: Must not create a cycle between CPDF_DIB instances.
   RetainPtr<CPDF_DIB> m_pMask;

@@ -10,14 +10,14 @@
 
 #include "core/fpdfapi/page/cpdf_transferfuncdib.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fxcrt/data_vector.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "third_party/base/check_op.h"
 
-CPDF_TransferFunc::CPDF_TransferFunc(
-    bool bIdentify,
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> samples_r,
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> samples_g,
-    std::vector<uint8_t, FxAllocAllocator<uint8_t>> samples_b)
+CPDF_TransferFunc::CPDF_TransferFunc(bool bIdentify,
+                                     DataVectorUint8 samples_r,
+                                     DataVectorUint8 samples_g,
+                                     DataVectorUint8 samples_b)
     : m_bIdentity(bIdentify),
       m_SamplesR(std::move(samples_r)),
       m_SamplesG(std::move(samples_g)),
