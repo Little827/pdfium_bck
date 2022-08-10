@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee47124_2d387fa3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-10T16:04:49Z",
+      "side": 1,
+      "message": "can you add a one-sentence description of the problem that occur when we don\u0027t do this or link to a Bug: ?",
+      "revId": "69c04c4761abb772bee8833d4c998631bc8dc582",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "274f495a_0fcc64b5",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-08-10T08:00:02Z",
       "side": 1,
       "message": "Dice roll selects Tom to review.",
+      "revId": "69c04c4761abb772bee8833d4c998631bc8dc582",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef77c660_b29d669d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-10T16:04:49Z",
+      "side": 1,
+      "message": "OWNERS stamp, but please provide an updated description.",
       "revId": "69c04c4761abb772bee8833d4c998631bc8dc582",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
