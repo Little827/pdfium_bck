@@ -103,11 +103,20 @@ float CPDF_PSOP::GetFloatValue() const {
   return 0;
 }
 
-CPDF_PSProc* CPDF_PSOP::GetProc() const {
-  if (m_op == PSOP_PROC)
-    return m_proc.get();
-  NOTREACHED();
-  return nullptr;
+bool CPDF_PSOP::Parse(CPDF_SimpleParser* parser, int depth) {
+  if (m_op != PSOP_PROC) {
+    NOTREACHED();
+    return false;
+  }
+  return m_proc->Parse(parser, depth);
+}
+
+bool CPDF_PSOP::Execute(CPDF_PSEngine* pEngine) {
+  if (m_op != PSOP_PROC) {
+    NOTREACHED();
+    return false;
+  }
+  return m_proc->Execute(pEngine);
 }
 
 bool CPDF_PSEngine::Execute() {
@@ -132,7 +141,7 @@ bool CPDF_PSProc::Parse(CPDF_SimpleParser* parser, int depth) {
 
     if (word == "{") {
       m_Operators.push_back(std::make_unique<CPDF_PSOP>());
-      if (!m_Operators.back()->GetProc()->Parse(parser, depth + 1))
+      if (!m_Operators.back()->Parse(parser, depth + 1))
         return false;
       continue;
     }
@@ -157,14 +166,14 @@ bool CPDF_PSProc::Execute(CPDF_PSEngine* pEngine) {
         return false;
 
       if (pEngine->PopInt())
-        m_Operators[i - 1]->GetProc()->Execute(pEngine);
+        m_Operators[i - 1]->Execute(pEngine);
     } else if (op == PSOP_IFELSE) {
       if (i < 2 || m_Operators[i - 1]->GetOp() != PSOP_PROC ||
           m_Operators[i - 2]->GetOp() != PSOP_PROC) {
         return false;
       }
       size_t offset = pEngine->PopInt() ? 2 : 1;
-      m_Operators[i - offset]->GetProc()->Execute(pEngine);
+      m_Operators[i - offset]->Execute(pEngine);
     } else {
       pEngine->DoOperator(op);
     }
