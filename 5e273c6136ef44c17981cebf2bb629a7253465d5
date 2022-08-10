@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7413b095_ed0ab2e6",
+        "filename": "core/fpdfapi/render/cpdf_imagecacheentry.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-10T18:56:31Z",
+      "side": 1,
+      "message": "Maybe a DCHECK_EQ() here to make sure the cache\u0027s doc matches the image\u0027s doc?",
+      "revId": "5e273c6136ef44c17981cebf2bb629a7253465d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2da6074_d85fd3f4",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-10T18:56:31Z",
+      "side": 1,
+      "message": "Do we know for sure that the page\u0027s document is the same as the image\u0027s document?",
+      "revId": "5e273c6136ef44c17981cebf2bb629a7253465d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
