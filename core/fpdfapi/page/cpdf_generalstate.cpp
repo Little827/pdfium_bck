@@ -9,6 +9,7 @@
 #include <utility>
 
 #include "core/fpdfapi/page/cpdf_transferfunc.h"
+#include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 
 namespace {
@@ -144,17 +145,17 @@ void CPDF_GeneralState::SetStrokeAlpha(float alpha) {
   m_Ref.GetPrivateCopy()->m_StrokeAlpha = alpha;
 }
 
-const CPDF_Object* CPDF_GeneralState::GetSoftMask() const {
+const CPDF_Dictionary* CPDF_GeneralState::GetSoftMask() const {
   const StateData* pData = m_Ref.GetObject();
   return pData ? pData->m_pSoftMask.Get() : nullptr;
 }
 
-RetainPtr<CPDF_Object> CPDF_GeneralState::GetMutableSoftMask() {
+RetainPtr<CPDF_Dictionary> CPDF_GeneralState::GetMutableSoftMask() {
   const StateData* pData = m_Ref.GetObject();
   return pData ? pData->m_pSoftMask : nullptr;
 }
 
-void CPDF_GeneralState::SetSoftMask(RetainPtr<CPDF_Object> pObject) {
+void CPDF_GeneralState::SetSoftMask(RetainPtr<CPDF_Dictionary> pObject) {
   m_Ref.GetPrivateCopy()->m_pSoftMask = std::move(pObject);
 }
 
