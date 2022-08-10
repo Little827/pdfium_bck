@@ -344,6 +344,8 @@ component("pdfium") {
   public_configs = [ ":pdfium_public_config" ]
 
   deps = [
+    # enable when standalone PA builds
+    # "base/allocator/partition_allocator:partition_alloc",
     "constants",
     "core/fpdfapi/page",
     "core/fpdfapi/parser",
