@@ -105,6 +105,24 @@
       "parentUuid": "4da15102_ba42a190",
       "revId": "5e273c6136ef44c17981cebf2bb629a7253465d5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed675a25_30aae01c",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-10T19:58:47Z",
+      "side": 1,
+      "message": "Anyways, the reason I hit this is I was looking at the Foo* GetFoo(); methods to see if there were ways to avoid handing callers unowned references, and GetDocument() here was a candidate, but still too many other uses to remove so using it here is still ok,",
+      "parentUuid": "b09db1f0_44039ca4",
+      "revId": "5e273c6136ef44c17981cebf2bb629a7253465d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
