@@ -75,8 +75,9 @@ class CPDF_PSOP {
   ~CPDF_PSOP();
 
   float GetFloatValue() const;
-  CPDF_PSProc* GetProc() const;
   PDF_PSOP GetOp() const { return m_op; }
+  bool Parse(CPDF_SimpleParser* parser, int depth);
+  bool Execute(CPDF_PSEngine* pEngine);
 
  private:
   const PDF_PSOP m_op;
