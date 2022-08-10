@@ -87,6 +87,24 @@
       "parentUuid": "1b829dbb_13bcd4d3",
       "revId": "5e273c6136ef44c17981cebf2bb629a7253465d5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09db1f0_44039ca4",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-10T19:56:03Z",
+      "side": 1,
+      "message": "Ah, right, I\u0027d forgotten we hand these out to the embedder. SGTM.",
+      "parentUuid": "4da15102_ba42a190",
+      "revId": "5e273c6136ef44c17981cebf2bb629a7253465d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
