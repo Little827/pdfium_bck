@@ -16,6 +16,24 @@
       "message": "Since there are limited number of ARM Mac bots available, I guess we are not going to add a Skia arm bots anytime soon? (Skia currently doesn\u0027t build with M1. I had to manually comment out some Skia code to make it work locally on my M1 machine)",
       "revId": "5a7e10db775a9f61842a99924ebea2a6cdccae27",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74e3799_cc146798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T18:15:33Z",
+      "side": 1,
+      "message": "Just this 1 experimental try bot for now.",
+      "parentUuid": "3f808002_70b68f32",
+      "revId": "5a7e10db775a9f61842a99924ebea2a6cdccae27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
