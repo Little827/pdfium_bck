@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60735ac8_ca1fe465",
+        "filename": "fxbarcode/datamatrix/BC_DefaultPlacement.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T22:41:38Z",
+      "side": 1,
+      "message": "Dead code.",
+      "parentUuid": "5f0b0b88_0a75c5d1",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "6ebb6b6f2946ff448ead1fae9a8f3ecebb196f4d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4272d07_d2ef7e3c",
@@ -81,6 +105,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d38f95_1c8421b0",
+        "filename": "fxbarcode/pdf417/BC_PDF417BarcodeRow.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T22:41:38Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/96412",
+      "parentUuid": "a4272d07_d2ef7e3c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "6ebb6b6f2946ff448ead1fae9a8f3ecebb196f4d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2882586b_76e504d6",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-08-11T18:11:13Z",
       "side": 1,
       "message": "follow-up: and here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "6ebb6b6f2946ff448ead1fae9a8f3ecebb196f4d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76f1333c_9a6b2b73",
+        "filename": "fxbarcode/qrcode/BC_QRCoderBitVector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T22:41:38Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/96413",
+      "parentUuid": "2882586b_76e504d6",
       "range": {
         "startLine": 20,
         "startChar": 8,
