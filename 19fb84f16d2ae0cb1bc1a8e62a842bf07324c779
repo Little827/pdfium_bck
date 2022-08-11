@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4265f937_c63a5f20",
+        "filename": "fpdfsdk/cpdfsdk_pageview.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T19:42:22Z",
+      "side": 1,
+      "message": "nit: colon after.",
+      "revId": "19fb84f16d2ae0cb1bc1a8e62a842bf07324c779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614e3ea9_76476771",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T19:42:22Z",
+      "side": 1,
+      "message": "Except there\u0027s no longer a variable with this name. Needs some rephrasing.",
+      "range": {
+        "startLine": 719,
+        "startChar": 40,
+        "endLine": 719,
+        "endChar": 49
+      },
+      "revId": "19fb84f16d2ae0cb1bc1a8e62a842bf07324c779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
