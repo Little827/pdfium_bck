@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ece364_539041b4",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T18:14:24Z",
+      "side": 1,
+      "message": "This is just filling in for the copy removed from CPDFSDK_InteractiveForm::SubmitFields().",
+      "parentUuid": "7e5bcc2a_47aaf4d7",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "cd0fa40fa3b95a09167f24760cac2e906e9c33a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c492121_82071192",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-09T16:23:37Z",
       "side": 1,
       "message": "nit: maybe write out std::vector\u003c...\u003e(text_buf.begin(), text_buf.end()); as there\u0027s a big memcpy in the ctor that might not be obvious since the { } form might be mistaken as a cheap agg initializer.",
+      "range": {
+        "startLine": 458,
+        "startChar": 13,
+        "endLine": 458,
+        "endChar": 48
+      },
+      "revId": "cd0fa40fa3b95a09167f24760cac2e906e9c33a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a88ec50d_a2dceeb5",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-11T18:14:24Z",
+      "side": 1,
+      "message": "I reworked the CL to use ByteStrings.",
+      "parentUuid": "2c492121_82071192",
       "range": {
         "startLine": 458,
         "startChar": 13,
