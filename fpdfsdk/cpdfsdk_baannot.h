@@ -55,8 +55,6 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot,
                               const CFX_Matrix& mtUser2Device,
                               CPDF_Annot::AppearanceMode mode);
 
-  const CPDF_Dictionary* GetAnnotDict() const;
-  RetainPtr<CPDF_Dictionary> GetMutableAnnotDict();
   CPDF_Annot* GetPDFPopupAnnot() const;
 
   void SetAnnotName(const WideString& sName);
@@ -82,6 +80,8 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot,
 
  protected:
   RetainPtr<CPDF_Dictionary> GetAPDict();
+  const CPDF_Dictionary* GetAnnotDict() const;
+  RetainPtr<CPDF_Dictionary> GetMutableAnnotDict();
   void ClearCachedAnnotAP();
   bool IsFocusableAnnot(const CPDF_Annot::Subtype& annot_type) const;
 
