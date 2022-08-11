@@ -716,15 +716,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
   if (pPage->AsXFAPage())
     return;
 
-  CPDFSDK_PageView* pPageView =
-      static_cast<CPDFSDK_PageView*>(pPage->AsPDFPage()->GetView());
-  if (!pPageView || pPageView->IsBeingDestroyed())
-    return;
-
-  // This will delete the |pPageView| object. We must cleanup the PageView
-  // first because it will attempt to reset the View on the |pPage| during
-  // destruction.
-  pPageView->GetFormFillEnv()->RemovePageView(pPage.Get());
+  pPage->AsPDFPage()->ClearView();
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document) {
