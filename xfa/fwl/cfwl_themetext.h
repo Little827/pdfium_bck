@@ -16,6 +16,8 @@ class CFGAS_GEGraphics;
 
 class CFWL_ThemeText final : public CFWL_ThemePart {
  public:
+  FX_STACK_ALLOCATED();
+
   CFWL_ThemeText(CFWL_Widget* pWidget, CFGAS_GEGraphics* pGraphics);
   ~CFWL_ThemeText();
 
