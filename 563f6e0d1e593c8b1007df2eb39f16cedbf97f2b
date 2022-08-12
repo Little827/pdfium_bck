@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "223607d6_bd32c673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-12T18:41:43Z",
+      "side": 1,
+      "message": "Current blocker is rand_util_posix.cc:22:10: fatal error: \u0027third_party/lss/linux_syscall_support.h\u0027 file not found\n",
+      "revId": "563f6e0d1e593c8b1007df2eb39f16cedbf97f2b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
