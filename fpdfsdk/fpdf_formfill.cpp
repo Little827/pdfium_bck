@@ -218,7 +218,7 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
       pPageView->PageView_OnDraw(pDevice.get(), matrix, &options, rect);
   }
 
-#if defined(_SKIA_SUPPORT_PATHS_)
+#if defined(_SKIA_SUPPORT_PATHS_) || defined(_SKIA_SUPPORT_)
   pDevice->Flush(true);
   holder->UnPreMultiply();
 #endif

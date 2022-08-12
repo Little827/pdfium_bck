@@ -77,7 +77,7 @@ FPDF_RenderPageBitmapWithColorScheme_Start(FPDF_BITMAP bitmap,
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   pDevice->Flush(false);
 #endif
-#if defined(_SKIA_SUPPORT_PATHS_)
+#if defined(_SKIA_SUPPORT_PATHS_) || defined(_SKIA_SUPPORT_)
   pBitmap->UnPreMultiply();
 #endif
 
@@ -121,8 +121,6 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPage_Continue(FPDF_PAGE page,
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
   CFX_RenderDevice* pDevice = pContext->m_pDevice.get();
   pDevice->Flush(false);
-#endif
-#if defined(_SKIA_SUPPORT_PATHS_)
   pDevice->GetBitmap()->UnPreMultiply();
 #endif
   return ToFPDFStatus(pContext->m_pRenderer->GetStatus());
@@ -131,7 +129,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPage_Continue(FPDF_PAGE page,
 FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage_Close(FPDF_PAGE page) {
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (pPage) {
-#if defined(_SKIA_SUPPORT_PATHS_)
+#if defined(_SKIA_SUPPORT_PATHS_) || defined(_SKIA_SUPPORT_)
     auto* pContext =
         static_cast<CPDF_PageRenderContext*>(pPage->GetRenderContext());
     if (pContext && pContext->m_pRenderer) {

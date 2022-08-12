@@ -700,9 +700,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   bitmap_render.ProcessObjectNoClip(pPageObj, new_matrix);
 #if defined(_SKIA_SUPPORT_PATHS_) || defined(_SKIA_SUPPORT_)
   bitmap_device.Flush(true);
-#if defined(_SKIA_SUPPORT_PATHS_)
   bitmap->UnPreMultiply();
-#endif  // defined(_SKIA_SUPPORT_PATHS_)
 #endif  // defined(_SKIA_SUPPORT_PATHS_) || defined(_SKIA_SUPPORT_)
   m_bStopped = bitmap_render.m_bStopped;
   if (pSMaskDict) {
@@ -720,16 +718,16 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   int32_t blitAlpha = 255;
   if (group_alpha != 1.0f && transparency.IsGroup()) {
     blitAlpha = static_cast<int32_t>(group_alpha * 255);
-#if !defined(_SKIA_SUPPORT_)
     bitmap->MultiplyAlpha(blitAlpha);
-    blitAlpha = 255;
-#endif
   }
+#if defined(_SKIA_SUPPORT_)
+  bitmap->PreMultiply();
+#endif
   transparency = m_Transparency;
   if (pPageObj->IsForm()) {
     transparency.SetGroup();
   }
-  CompositeDIBitmap(bitmap, rect.left, rect.top, 0, blitAlpha, blend_type,
+  CompositeDIBitmap(bitmap, rect.left, rect.top, 0, 255, blend_type,
                     transparency);
 #if defined(_SKIA_SUPPORT_)
   DebugVerifyDeviceIsPreMultiplied();
