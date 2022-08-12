@@ -22,6 +22,30 @@
       },
       "revId": "462b2503e038cb5ce8dbf8d36605ea1c86f29390",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa5a5b81_ffdf16c5",
+        "filename": "fxbarcode/qrcode/BC_QRCoderEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-12T00:47:03Z",
+      "side": 1,
+      "message": "That was the first thing I tried.\n\n```\n../../fxbarcode/qrcode/BC_QRCoderEncoder.cpp:324:5: error: no matching function for call to \u0027spancpy\u0027\n    fxcrt::spancpy(\n    ^~~~~~~~~~~~~~\n../../core/fxcrt/span_util.h:19:6: note: candidate template ignored: could not match \u0027span\u0027 against \u0027vector\u0027\nvoid spancpy(pdfium::span\u003cT\u003e dst, pdfium::span\u003cU\u003e src) {\n     ^\n1 error generated.\n```",
+      "parentUuid": "b52a469c_eb0e9ed5",
+      "range": {
+        "startLine": 325,
+        "startChar": 8,
+        "endLine": 325,
+        "endChar": 37
+      },
+      "revId": "462b2503e038cb5ce8dbf8d36605ea1c86f29390",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
