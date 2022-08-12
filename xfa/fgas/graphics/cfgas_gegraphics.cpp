@@ -431,3 +431,12 @@ CFGAS_GEGraphics::TInfo& CFGAS_GEGraphics::TInfo::operator=(
   fillColor = other.fillColor;
   return *this;
 }
+
+CFGAS_GEGraphics::StateRestorer::StateRestorer(CFGAS_GEGraphics* graphics)
+    : graphics_(graphics) {
+  graphics_->SaveGraphState();
+}
+
+CFGAS_GEGraphics::StateRestorer::~StateRestorer() {
+  graphics_->RestoreGraphState();
+}
