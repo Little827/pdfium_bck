@@ -16,7 +16,10 @@ source_set("fxjs") {
     "ijs_runtime.h",
   ]
   configs += [ "../:pdfium_strict_config" ]
-  deps = [ "../core/fxcrt" ]
+  deps = [
+    "../base/allocator/partition_allocator:partition_alloc",
+    "../core/fxcrt",
+  ]
   public_deps = []
   visibility = [ "../*" ]
 
