@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efe4586_6ee1d3ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-12T22:54:55Z",
+      "side": 1,
+      "message": "Aha, we can deps in LSS support same as chrome. This leaves just the .gni",
+      "revId": "5fcc84eb72ff3963287d334439202d5a7939c613",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
