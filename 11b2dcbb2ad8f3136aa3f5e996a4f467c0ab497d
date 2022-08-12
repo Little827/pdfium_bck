@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898cc691_87c06dc6",
+        "filename": "BUILD.gn",
+        "patchSetId": 9
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 8946
+      },
+      "writtenOn": "2022-08-12T09:10:24Z",
+      "side": 1,
+      "message": "Drive-by: I found it a bit easier to place this dependency into the `fxcrt` and `fxjs` source sets, if that makes sense to do?",
+      "revId": "11b2dcbb2ad8f3136aa3f5e996a4f467c0ab497d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
