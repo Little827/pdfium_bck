@@ -16,6 +16,23 @@
       "message": "Aha, we can deps in LSS support same as chrome. This leaves just the .gni",
       "revId": "5fcc84eb72ff3963287d334439202d5a7939c613",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "363d9ed6_5d7ce29b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-12T23:15:55Z",
+      "side": 1,
+      "message": "Making progres ... but we hit the MSVC question.",
+      "revId": "5fcc84eb72ff3963287d334439202d5a7939c613",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
