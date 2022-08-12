@@ -24,16 +24,15 @@ void CFWL_EditTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
       break;
     }
     case CFWL_ThemePart::Part::kBackground: {
+      CFGAS_GEGraphics* pGraphics = pParams.GetGraphics();
+      CFGAS_GEGraphics::StateRestorer restorer(pGraphics);
       if (pParams.m_pPath) {
-        CFGAS_GEGraphics* pGraphics = pParams.GetGraphics();
-        pGraphics->SaveGraphState();
         pGraphics->SetFillColor(CFGAS_GEColor(FWLTHEME_COLOR_BKSelected));
         if (pParams.m_pPath) {
           pGraphics->FillPath(*pParams.m_pPath,
                               CFX_FillRenderOptions::FillType::kWinding,
                               pParams.m_matrix);
         }
-        pGraphics->RestoreGraphState();
       } else {
         CFGAS_GEPath path;
         path.AddRectangle(pParams.m_PartRect.left, pParams.m_PartRect.top,
@@ -47,11 +46,9 @@ void CFWL_EditTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
           else
             cr = CFGAS_GEColor(0xFFFFFFFF);
         }
-        pParams.GetGraphics()->SaveGraphState();
-        pParams.GetGraphics()->SetFillColor(cr);
-        pParams.GetGraphics()->FillPath(
-            path, CFX_FillRenderOptions::FillType::kWinding, pParams.m_matrix);
-        pParams.GetGraphics()->RestoreGraphState();
+        pGraphics->SetFillColor(cr);
+        pGraphics->FillPath(path, CFX_FillRenderOptions::FillType::kWinding,
+                            pParams.m_matrix);
       }
       break;
     }
