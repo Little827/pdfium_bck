@@ -532,10 +532,10 @@ executable("pdfium_diff") {
   testonly = true
   sources = [ "testing/image_diff/image_diff.cpp" ]
   deps = [
-    "core/fxcrt",
     "testing:path_service",
     "testing/image_diff",
     "//build/win:default_exe_manifest",
+    "//third_party:pdfium_base",
   ]
   configs += [ ":pdfium_strict_config" ]
 }
