@@ -17,7 +17,6 @@
 #include <string>
 #include <vector>
 
-#include "core/fxcrt/fx_memory.h"
 #include "testing/image_diff/image_diff_png.h"
 #include "testing/utils/path_service.h"
 #include "third_party/base/cxx17_backports.h"
@@ -366,8 +365,6 @@ int DiffImages(const std::string& binary_name,
 }
 
 int main(int argc, const char* argv[]) {
-  FXMEM_InitializePartitionAlloc();
-
   bool histograms = false;
   bool produce_diff_image = false;
   bool produce_image_subtraction = false;
