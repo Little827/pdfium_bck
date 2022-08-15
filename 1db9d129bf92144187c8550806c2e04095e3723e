@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7450806e_b649a843",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-15T23:24:50Z",
+      "side": 1,
+      "message": "Kalvin, I think the mac build errors for component build require PA\u0027s BUILD.gn to add CoreFoundation.framework to frameworks GN variable.",
+      "revId": "1db9d129bf92144187c8550806c2e04095e3723e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
