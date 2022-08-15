@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61116ab1_9826672b",
+        "filename": "xfa/fwl/cfwl_edit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-15T19:15:49Z",
+      "side": 1,
+      "message": "WRT the left-hand comment, the flow is now AXXXX.\ncall non-comb to get AAXXXX, BAXXXX, AXXXX.\nthen AXXXX becomes AAXXXX at 316, CAXXXX, and finally AXXXX.",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 42
+      },
+      "revId": "c8b5733cb83cdf22721530bd31d0f1e189f5c321",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
