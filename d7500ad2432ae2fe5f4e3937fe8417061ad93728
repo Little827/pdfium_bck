@@ -16,6 +16,24 @@
       "message": "LG but red bots.",
       "revId": "d7500ad2432ae2fe5f4e3937fe8417061ad93728",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9c1328_d3f40b70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-15T18:37:54Z",
+      "side": 1,
+      "message": "The Mac ARM bot is experimental. I just needed a CL to test it with and happened to choose this one.",
+      "parentUuid": "2561cbd1_a09f2e03",
+      "revId": "d7500ad2432ae2fe5f4e3937fe8417061ad93728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
