@@ -119,7 +119,10 @@ source_set("fxcrt") {
     "../../third_party:fx_tiff",
     "../../xfa/*",
   ]
-  deps = [ "../../third_party:pdfium_base" ]
+  deps = [
+    "../../base/allocator/partition_allocator:partition_alloc",
+    "../../third_party:pdfium_base",
+  ]
   public_deps = [
     ":unowned_ptr",
     "../../:freetype_common",
