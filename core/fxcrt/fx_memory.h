@@ -24,16 +24,6 @@ void FXMEM_DefaultFree(void* pointer);
 
 #include "third_party/base/compiler_specific.h"
 
-namespace pdfium {
-namespace base {
-class PartitionAllocatorGeneric;
-}  // namespace base
-}  // namespace pdfium
-
-pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator();
-pdfium::base::PartitionAllocatorGeneric& GetGeneralPartitionAllocator();
-pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator();
-
 void FXMEM_InitializePartitionAlloc();
 NOINLINE void FX_OutOfMemoryTerminate(size_t size);
 
@@ -68,6 +58,17 @@ NOINLINE void FX_OutOfMemoryTerminate(size_t size);
 
 // Free accepts memory from all of the above.
 void FX_Free(void* ptr);
+
+// V8 Array Buffer Partition Allocatoprs
+
+// This never returns nullptr, and returns zeroed memory.
+void* FX_ArrayBufferAllocate(size_t length);
+
+// This never returns nullptr, but returns uninitialized memory.
+void* FX_ArrayBufferAllocateUninitialized(size_t length);
+
+// FX_ArrayBufferFree accepts memory from both of the above.
+void FX_ArrayBufferFree(void* data);
 
 namespace pdfium {
 namespace internal {
