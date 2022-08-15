@@ -22,6 +22,7 @@ void FXMEM_DefaultFree(void* pointer);
 #ifdef __cplusplus
 }  // extern "C"
 
+#include "base/allocator/partition_allocator/partition_alloc.h"
 #include "third_party/base/compiler_specific.h"
 
 void FXMEM_InitializePartitionAlloc();
