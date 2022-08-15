@@ -33,6 +33,23 @@
       "message": "Making progres ... but we hit the MSVC question.",
       "revId": "5fcc84eb72ff3963287d334439202d5a7939c613",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2a8a94_4b57051e",
+        "filename": "base/allocator/allocator.gni",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8946
+      },
+      "writtenOn": "2022-08-15T07:16:13Z",
+      "side": 1,
+      "message": "Just an FYI - I don\u0027t believe the PA team currently intends to port `//base/allocator/allocator.gni` (or to include it in the \"standard\" PA distribution). There is a WIP CL outstanding to separate the logic into `.gni`s at https://crrev.com/c/3754326, but its current state requires PDFium to provide `//build_overrides/partition_alloc.gni` instead...",
+      "revId": "5fcc84eb72ff3963287d334439202d5a7939c613",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
