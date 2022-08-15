@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1742a7_d305f9fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-15T21:08:58Z",
+      "side": 1,
+      "message": "Kalvin, it looks like both PDFium and V8 want MSVC support from PA. Is that on the roadmap?",
+      "revId": "dc049b1a7c30f8c6c95fcf7a781137ffe73a0eff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
