@@ -2620,15 +2620,16 @@ void CFX_SkiaDeviceDriver::PreMultiply(
 void CFX_DIBitmap::PreMultiply() {
   if (this->GetBPP() != 32)
     return;
+
   void* buffer = this->GetBuffer();
   if (!buffer)
     return;
-#if defined(_SKIA_SUPPORT_PATHS_)
+
   Format priorFormat = m_nFormat;
   m_nFormat = Format::kPreMultiplied;
-  if (priorFormat != Format::kUnPreMultiplied)
+  if (priorFormat == Format::kPreMultiplied)
     return;
-#endif
+
   int height = this->GetHeight();
   int width = this->GetWidth();
   int rowBytes = this->GetPitch();
@@ -2642,17 +2643,27 @@ void CFX_DIBitmap::PreMultiply() {
   this->DebugVerifyBitmapIsPreMultiplied();
 }
 
-#if defined(_SKIA_SUPPORT_PATHS_)
 void CFX_DIBitmap::UnPreMultiply() {
   if (this->GetBPP() != 32)
     return;
+
   void* buffer = this->GetBuffer();
   if (!buffer)
     return;
+
   Format priorFormat = m_nFormat;
   m_nFormat = Format::kUnPreMultiplied;
+
+#if defined(_SKIA_SUPPORT_)
+  if (priorFormat == Format::kUnPreMultiplied)
+    return;
+#endif
+
+#if defined(_SKIA_SUPPORT_PATHS_)
   if (priorFormat != Format::kPreMultiplied)
     return;
+#endif
+
   this->DebugVerifyBitmapIsPreMultiplied();
   int height = this->GetHeight();
   int width = this->GetWidth();
@@ -2665,7 +2676,6 @@ void CFX_DIBitmap::UnPreMultiply() {
   SkPixmap unpremultiplied(unpremultipliedInfo, buffer, rowBytes);
   premultiplied.readPixels(unpremultiplied);
 }
-#endif  // defined(_SKIA_SUPPORT_PATHS_)
 
 #if defined(_SKIA_SUPPORT_)
 bool CFX_SkiaDeviceDriver::DrawBitsWithMask(
