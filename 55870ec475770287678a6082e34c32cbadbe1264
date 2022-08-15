@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ac8d651_b8e8e3f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-15T18:56:04Z",
+      "side": 1,
+      "message": "For Skia, ARGB means unpremultiplied while Argb means the premultiplied format (rgb values are no larger than RGB values).",
+      "parentUuid": "b936494c_fa1a58a5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b14b3588_7dd599fb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
@@ -66,6 +90,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d45ff41b_53f5acd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-15T18:56:04Z",
+      "side": 1,
+      "message": "Rewrote the commit message in the new patchset. I hope it\u0027s more clear now.",
+      "parentUuid": "b14b3588_7dd599fb",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5600556a_490708d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-15T18:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "070fd2d7_1b0dcb3e",
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23ac5366_09b267ec",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 8
@@ -77,6 +143,24 @@
       "writtenOn": "2022-08-15T18:07:30Z",
       "side": 1,
       "message": "Can the operands to the OR operations be flipped around, for consistency?",
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939fa651_d9644ae4",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-15T18:56:04Z",
+      "side": 1,
+      "message": "Done. Also fixed the same issue in core/fpdfapi/render/cpdf_renderstatus.cpp",
+      "parentUuid": "23ac5366_09b267ec",
       "revId": "55870ec475770287678a6082e34c32cbadbe1264",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
