@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b936494c_fa1a58a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-15T18:07:30Z",
+      "side": 1,
+      "message": "Use \"ARGB\" consistently?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14b3588_7dd599fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-15T18:07:30Z",
+      "side": 1,
+      "message": "This part is confusing as written. Was this sentence suppose to say something about the rendering code needing a specific format?",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070fd2d7_1b0dcb3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-15T18:07:30Z",
+      "side": 1,
+      "message": "Wrap at 72 columns.",
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ac5366_09b267ec",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-15T18:07:30Z",
+      "side": 1,
+      "message": "Can the operands to the OR operations be flipped around, for consistency?",
+      "revId": "55870ec475770287678a6082e34c32cbadbe1264",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
