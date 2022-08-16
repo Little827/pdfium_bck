@@ -16,6 +16,24 @@
       "message": "Missing Version information here",
       "revId": "c26871dc7a7102a478f698727f5fef012dbcad76",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2dc38b_75e12cde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-16T17:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26727a56_a1109f07",
+      "revId": "c26871dc7a7102a478f698727f5fef012dbcad76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
