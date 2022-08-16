@@ -16,6 +16,24 @@
       "message": "I think the reason I did this was not just about corruption if embedders write beyond bounds, but rather that .raw_span() is part of a shared copy-on-write string, so if it were aliased to some other string, mutation by the embedder would not trigger the CoW and might corrupt unrelated things.  But that seems implausible given how the callers likely cobble stuff together.",
       "revId": "b8b4d368066a4075b7f9faf5138ba6010f8cac66",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c92743_f6beb5ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-16T20:29:24Z",
+      "side": 1,
+      "message": "I don\u0027t think this particular ByteString is shared, so there\u0027s no CoW going on anyway. The ByteString is never used for anything else.",
+      "parentUuid": "68dd46c2_a2208320",
+      "revId": "b8b4d368066a4075b7f9faf5138ba6010f8cac66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
