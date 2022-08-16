@@ -16,6 +16,24 @@
       "message": "Kalvin, I think the mac build errors for component build require PA\u0027s BUILD.gn to add CoreFoundation.framework to frameworks GN variable.",
       "revId": "1db9d129bf92144187c8550806c2e04095e3723e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30c8eb4_c11276b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8946
+      },
+      "writtenOn": "2022-08-16T08:57:29Z",
+      "side": 1,
+      "message": "I _think_ component build issues are being addressed separately, but I\u0027d like to think this won\u0027t be an issue for PDFium once we totally separate PA from the allocator shim (the primary blocker for component build IIUC).",
+      "parentUuid": "7450806e_b649a843",
+      "revId": "1db9d129bf92144187c8550806c2e04095e3723e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

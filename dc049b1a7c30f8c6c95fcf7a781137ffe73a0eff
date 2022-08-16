@@ -16,6 +16,24 @@
       "message": "Kalvin, it looks like both PDFium and V8 want MSVC support from PA. Is that on the roadmap?",
       "revId": "dc049b1a7c30f8c6c95fcf7a781137ffe73a0eff",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8574f52f_31775555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8946
+      },
+      "writtenOn": "2022-08-16T08:57:29Z",
+      "side": 1,
+      "message": "It wasn\u0027t until now - is it a hard blocker for DEPS\u0027ing PA in? If yes, we can start looking at the issues. If there\u0027s a PDFium bot that builds with MSVC, I\u0027d like to see it (I can\u0027t seem to see any of the trybots from the \"Checks\" tab atm).",
+      "parentUuid": "be1742a7_d305f9fd",
+      "revId": "dc049b1a7c30f8c6c95fcf7a781137ffe73a0eff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
