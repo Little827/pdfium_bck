@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efa13d3_b5d019e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-16T18:55:35Z",
+      "side": 1,
+      "message": "Kalvin, it occurs to me that maybe allocator.gni could move to //build/config. Both PDFium and Chrome deps this into the same place, and looking at allocator.gni, it pulls in a few //build/config files itself, so maybe it is a build/config file",
+      "revId": "0b4d5c5984d6cb0baf33e180a4c6caa9e82cced2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
