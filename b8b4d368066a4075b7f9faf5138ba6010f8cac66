@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68dd46c2_a2208320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-16T18:07:54Z",
+      "side": 1,
+      "message": "I think the reason I did this was not just about corruption if embedders write beyond bounds, but rather that .raw_span() is part of a shared copy-on-write string, so if it were aliased to some other string, mutation by the embedder would not trigger the CoW and might corrupt unrelated things.  But that seems implausible given how the callers likely cobble stuff together.",
+      "revId": "b8b4d368066a4075b7f9faf5138ba6010f8cac66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
