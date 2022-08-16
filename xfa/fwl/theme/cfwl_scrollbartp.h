@@ -41,6 +41,10 @@ class CFWL_ScrollBarTP final : public CFWL_WidgetTP {
                  FWLTHEME_STATE eState,
                  bool bLowerTrack,
                  const CFX_Matrix& matrix);
+  void DrawTrackBorder(CFGAS_GEGraphics* pGraphics,
+                       const CFX_RectF& rect,
+                       bool bVert,
+                       const CFX_Matrix& matrix);
   void DrawMaxMinBtn(CFGAS_GEGraphics* pGraphics,
                      const CFX_RectF& rect,
                      FWLTHEME_DIRECTION eDict,
