@@ -21,6 +21,11 @@
 #include <windows.h>
 #endif
 
+#if !defined(COMPILER_MSVC)
+#define FX_MEMORY_USE_PA
+#endif
+
+#if defined(FX_MEMORY_USE_PA)
 namespace {
 
 pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator() {
@@ -42,14 +47,17 @@ pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator() {
 }
 
 }  // namespace
+#endif  // defined(FX_MEMORY_USE_PA)
 
 void FX_InitializeMemoryAllocators() {
   static bool s_partition_allocators_initialized = false;
   if (!s_partition_allocators_initialized) {
+#if defined(FX_MEMORY_USE_PA)
     pdfium::base::PartitionAllocGlobalInit(FX_OutOfMemoryTerminate);
     GetArrayBufferPartitionAllocator().init();
     GetGeneralPartitionAllocator().init();
     GetStringPartitionAllocator().init();
+#endif  // defined(FX_MEMORY_USE_PA)
     s_partition_allocators_initialized = true;
   }
 }
@@ -96,11 +104,14 @@ void* Alloc(size_t num_members, size_t member_size) {
   total *= num_members;
   if (!total.IsValid())
     return nullptr;
-
+#if defined(FX_MEMORY_USE_PA)
   constexpr int kFlags = pdfium::base::PartitionAllocReturnNull;
   return pdfium::base::PartitionAllocGenericFlags(
       GetGeneralPartitionAllocator().root(), kFlags, total.ValueOrDie(),
       "GeneralPartition");
+#else
+  return malloc(total.ValueOrDie());
+#endif
 }
 
 void* AllocOrDie(size_t num_members, size_t member_size) {
@@ -119,6 +130,7 @@ void* AllocOrDie2D(size_t w, size_t h, size_t member_size) {
 }
 
 void* Calloc(size_t num_members, size_t member_size) {
+#if defined(FX_MEMORY_USE_PA)
   FX_SAFE_SIZE_T total = member_size;
   total *= num_members;
   if (!total.IsValid())
@@ -129,6 +141,9 @@ void* Calloc(size_t num_members, size_t member_size) {
   return pdfium::base::PartitionAllocGenericFlags(
       GetGeneralPartitionAllocator().root(), kFlags, total.ValueOrDie(),
       "GeneralPartition");
+#else
+  return calloc(num_members, member_size);
+#endif
 }
 
 void* Realloc(void* ptr, size_t num_members, size_t member_size) {
@@ -137,10 +152,14 @@ void* Realloc(void* ptr, size_t num_members, size_t member_size) {
   if (!size.IsValid())
     return nullptr;
 
+#if defined(FX_MEMORY_USE_PA)
   return pdfium::base::PartitionReallocGenericFlags(
       GetGeneralPartitionAllocator().root(),
       pdfium::base::PartitionAllocReturnNull, ptr, size.ValueOrDie(),
       "GeneralPartition");
+#else
+  return realloc(ptr, size.ValueOrDie());
+#endif
 }
 
 void* CallocOrDie(size_t num_members, size_t member_size) {
@@ -180,30 +199,47 @@ void* StringAlloc(size_t num_members, size_t member_size) {
   if (!total.IsValid())
     return nullptr;
 
+#if defined(FX_MEMORY_USE_PA)
   constexpr int kFlags = pdfium::base::PartitionAllocReturnNull;
   return pdfium::base::PartitionAllocGenericFlags(
       GetStringPartitionAllocator().root(), kFlags, total.ValueOrDie(),
       "StringPartition");
+#else
+  return malloc(total.ValueOrDie());
+#endif
 }
 
 }  // namespace internal
 }  // namespace pdfium
 
 void* FX_ArrayBufferAllocate(size_t length) {
+#if defined(FX_MEMORY_USE_PA)
   return GetArrayBufferPartitionAllocator().root()->AllocFlags(
       pdfium::base::PartitionAllocZeroFill, length, "FXArrayBuffer");
+#else
+  return calloc(length, 1);
+#endif
 }
 
 void* FX_ArrayBufferAllocateUninitialized(size_t length) {
+#if defined(FX_MEMORY_USE_PA)
   return GetArrayBufferPartitionAllocator().root()->Alloc(length,
                                                           "FXArrayBuffer");
+#else
+  return malloc(length);
+#endif
 }
 
 void FX_ArrayBufferFree(void* data) {
+#if defined(FX_MEMORY_USE_PA)
   GetArrayBufferPartitionAllocator().root()->Free(data);
+#else
+  free(data);
+#endif
 }
 
 void FX_Free(void* ptr) {
+#if defined(FX_MEMORY_USE_PA)
   // TODO(palmer): Removing this check exposes crashes when PDFium callers
   // attempt to free |nullptr|. Although libc's |free| allows freeing |NULL|, no
   // other Partition Alloc callers need this tolerant behavior. Additionally,
@@ -214,4 +250,7 @@ void FX_Free(void* ptr) {
   // fix them. https://bugs.chromium.org/p/pdfium/issues/detail?id=690
   if (ptr)
     pdfium::base::PartitionFree(ptr);
+#else
+  free(ptr);
+#endif
 }
