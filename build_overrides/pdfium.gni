@@ -26,3 +26,5 @@ pdf_use_skia_override = false
 # support.
 # Default: Use agg.
 pdf_use_skia_paths_override = false
+
+make_partition_alloc_standalone_override = true
