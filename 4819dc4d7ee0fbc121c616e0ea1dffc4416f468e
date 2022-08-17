@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6646e935_01b56c66",
+        "filename": "core/fxge/dib/cfx_dibitmap.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-17T00:11:19Z",
+      "side": 1,
+      "message": "It was very suspicious that Skia mode can only premultiply.",
+      "revId": "4819dc4d7ee0fbc121c616e0ea1dffc4416f468e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a25ccc0_ebd36cfa",
+        "filename": "core/fxge/dib/cfx_dibitmap.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-17T00:11:19Z",
+      "side": 1,
+      "message": "Should this be guarded by `defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)` instead?",
+      "revId": "4819dc4d7ee0fbc121c616e0ea1dffc4416f468e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2890a0d2_0e17eae5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2657,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-17T00:11:19Z",
+      "side": 1,
+      "message": "Why does Skia and SkiaPaths have different checks here?",
+      "revId": "4819dc4d7ee0fbc121c616e0ea1dffc4416f468e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
