@@ -108,7 +108,7 @@ class V8TemplateMap {
     m_map.Set(key, handle);
   }
 
-  friend class V8TemplateMapTraits;
+  MapType* GetMap() { return &m_map; }
 
  private:
   MapType m_map;
@@ -288,8 +288,8 @@ void V8TemplateMapTraits::DisposeWeak(
 V8TemplateMapTraits::MapType* V8TemplateMapTraits::MapFromWeakCallbackInfo(
     const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {
   V8TemplateMap* pMap =
-      FXJS_PerIsolateData::Get(data.GetIsolate())->m_pDynamicObjsMap.get();
-  return pMap ? &pMap->m_map : nullptr;
+      FXJS_PerIsolateData::Get(data.GetIsolate())->GetDynamicObjsMap();
+  return pMap ? pMap->GetMap() : nullptr;
 }
 
 void FXJS_Initialize(unsigned int embedderDataSlot, v8::Isolate* pIsolate) {
@@ -621,8 +621,9 @@ v8::Local<v8::Object> CFXJS_Engine::NewFXJSBoundObject(uint32_t nObjDefnID,
 
   if (type == FXJSOBJTYPE_DYNAMIC) {
     auto* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
-    if (pIsolateData->m_pDynamicObjsMap)
-      pIsolateData->m_pDynamicObjsMap->SetAndMakeWeak(pObjData, obj);
+    auto* pObjsMap = pIsolateData->GetDynamicObjsMap();
+    if (pObjsMap)
+      pObjsMap->SetAndMakeWeak(pObjData, obj);
   }
   return obj;
 }
