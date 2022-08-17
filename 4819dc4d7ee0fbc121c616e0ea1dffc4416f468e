@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3e414f_c2e37e9d",
+        "filename": "core/fxge/dib/cfx_dibitmap.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-17T20:25:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a25ccc0_ebd36cfa",
+      "revId": "4819dc4d7ee0fbc121c616e0ea1dffc4416f468e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2890a0d2_0e17eae5",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-17T00:11:19Z",
       "side": 1,
       "message": "Why does Skia and SkiaPaths have different checks here?",
+      "revId": "4819dc4d7ee0fbc121c616e0ea1dffc4416f468e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee42ddad_f9956ef3",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2657,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-17T20:25:28Z",
+      "side": 1,
+      "message": "It\u0027s due to a false call for UnPreMultiply() inside CFX_SkiaDeviceDriver::StartDIBits(). That call was causing an embedder test to crash while the bitmap was originally in the unpremultiplied format.",
+      "parentUuid": "2890a0d2_0e17eae5",
       "revId": "4819dc4d7ee0fbc121c616e0ea1dffc4416f468e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
