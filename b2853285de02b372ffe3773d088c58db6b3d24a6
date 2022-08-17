@@ -16,6 +16,24 @@
       "message": "Oops, didn\u0027t realize I needed committer access. I\u0027ll also be working on the PA-to-PDFium changes in the medium term, so should I ask for committer privileges or continue to proxy CQ+2 requests through you / another owner?",
       "revId": "b2853285de02b372ffe3773d088c58db6b3d24a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a97809_1624c19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-17T00:18:35Z",
+      "side": 1,
+      "message": "I granted try job access. Does that help? It definitely grants CQ+1, and I think it allows CQ+2. Please try it on your next CL and see.",
+      "parentUuid": "37e0a3c4_b9534c08",
+      "revId": "b2853285de02b372ffe3773d088c58db6b3d24a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
