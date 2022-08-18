@@ -13,7 +13,6 @@
 
 #include "build/build_config.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 #include "third_party/base/debug/alias.h"
 #include "third_party/base/no_destructor.h"
 
@@ -27,6 +26,8 @@
 #endif
 
 #if defined(FX_MEMORY_USE_PA)
+#include "third_party/base/allocator/partition_allocator/partition_alloc.h"
+
 namespace {
 
 pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator() {
@@ -48,6 +49,8 @@ pdfium::base::PartitionAllocatorGeneric& GetStringPartitionAllocator() {
 }
 
 }  // namespace
+#else
+#error "no soup for you"
 #endif  // defined(FX_MEMORY_USE_PA)
 
 void FX_InitializeMemoryAllocators() {
