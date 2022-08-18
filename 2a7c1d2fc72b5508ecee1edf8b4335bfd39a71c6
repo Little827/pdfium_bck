@@ -16,6 +16,57 @@
       "message": "Just in case we need this ...",
       "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37115599_da13fbe5",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-18T02:59:53Z",
+      "side": 1,
+      "message": "Do we want to attach a TODO to revisit this, once PA folks decide on MSVC support?",
+      "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673c4ef3_cc0f58d0",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-18T02:59:53Z",
+      "side": 1,
+      "message": "Wrap this in the #if as well?",
+      "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79eb46d9_1a86cb4d",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-18T02:59:53Z",
+      "side": 1,
+      "message": "Can this potentially return null, which PA does not? Or does the calloc() on line 145 never return null which PA could?",
+      "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
