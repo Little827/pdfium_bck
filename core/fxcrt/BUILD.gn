@@ -120,6 +120,9 @@ source_set("fxcrt") {
     "../../xfa/*",
   ]
   deps = [ "../../third_party:pdfium_base" ]
+  if (!is_win || is_clang) {
+    deps += [ "//third_party:pdfium_partition_alloc" ]
+  }
   public_deps = [
     ":unowned_ptr",
     "../../:freetype_common",
