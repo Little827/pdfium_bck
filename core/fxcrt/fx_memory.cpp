@@ -13,7 +13,6 @@
 
 #include "build/build_config.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 #include "third_party/base/debug/alias.h"
 #include "third_party/base/no_destructor.h"
 
@@ -21,12 +20,9 @@
 #include <windows.h>
 #endif
 
-// TODO(tsepez): remove if/when PartitionAlloc supports MSVC.
-#if !defined(COMPILER_MSVC)
-#define FX_MEMORY_USE_PA
-#endif
-
 #if defined(FX_MEMORY_USE_PA)
+#include "third_party/base/allocator/partition_allocator/partition_alloc.h"
+
 namespace {
 
 pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator() {
