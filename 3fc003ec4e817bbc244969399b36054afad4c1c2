@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7419db_b735fd1b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-18T23:28:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81e6947f_9064931e",
+      "revId": "3fc003ec4e817bbc244969399b36054afad4c1c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e87a7a0_61f93a39",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-18T23:22:47Z",
       "side": 1,
       "message": "Move above the member variables.",
+      "revId": "3fc003ec4e817bbc244969399b36054afad4c1c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81758a41_9c97209c",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-18T23:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e87a7a0_61f93a39",
       "revId": "3fc003ec4e817bbc244969399b36054afad4c1c2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
