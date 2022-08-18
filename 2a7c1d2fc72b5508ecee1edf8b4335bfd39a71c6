@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6b1a41_44650912",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-18T16:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37115599_da13fbe5",
+      "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "673c4ef3_cc0f58d0",
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ada13f_16355e02",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-18T16:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "673c4ef3_cc0f58d0",
+      "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79eb46d9_1a86cb4d",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-08-18T02:59:53Z",
       "side": 1,
       "message": "Can this potentially return null, which PA does not? Or does the calloc() on line 145 never return null which PA could?",
+      "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df1785c_f87f6cc1",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-18T16:42:41Z",
+      "side": 1,
+      "message": "Right, both of these should not return null.",
+      "parentUuid": "79eb46d9_1a86cb4d",
       "revId": "2a7c1d2fc72b5508ecee1edf8b4335bfd39a71c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
