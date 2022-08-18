@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27bae2d2_785a0fa5",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3889,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-18T23:41:56Z",
+      "side": 1,
+      "message": "Two SetWidgetHeight() calls in a row feels weird. Maybe:\n\nm_pLayoutData-\u003eSetWidgetHeight(CalculateWidgetAutoHeight(pTextLayout-\u003eGetLayoutHeight()));",
+      "revId": "50b217452922788cb317dd9ed6e2708d24b6add0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
