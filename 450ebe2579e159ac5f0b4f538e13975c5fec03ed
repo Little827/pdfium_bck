@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbb99075_807b31e3",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-19T18:37:43Z",
+      "side": 1,
+      "message": "Would it be more clear if I put a comment in this block something akin to:\n\n`// For defined(_SKIA_SUPPORT_PATHS_) case.`\n\n?",
+      "parentUuid": "fa79adf6_a89d49e6",
+      "revId": "450ebe2579e159ac5f0b4f538e13975c5fec03ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17c89463_0ec624e5",
         "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
         "patchSetId": 3
