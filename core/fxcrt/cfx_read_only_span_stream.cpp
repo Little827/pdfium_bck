@@ -21,16 +21,25 @@ FX_FILESIZE CFX_ReadOnlySpanStream::GetSize() {
 bool CFX_ReadOnlySpanStream::ReadBlockAtOffset(void* buffer,
                                                FX_FILESIZE offset,
                                                size_t size) {
+  return ReadBlockAtOffsetFromSpan(span_, buffer, offset, size);
+}
+
+// static
+bool CFX_ReadOnlySpanStream::ReadBlockAtOffsetFromSpan(
+    pdfium::span<const uint8_t> span,
+    void* buffer,
+    FX_FILESIZE offset,
+    size_t size) {
   if (!buffer || offset < 0 || size == 0)
     return false;
 
   FX_SAFE_SIZE_T pos = size;
   pos += offset;
-  if (!pos.IsValid() || pos.ValueOrDie() > span_.size())
+  if (!pos.IsValid() || pos.ValueOrDie() > span.size())
     return false;
 
   auto copy_span =
-      span_.subspan(pdfium::base::checked_cast<size_t>(offset), size);
+      span.subspan(pdfium::base::checked_cast<size_t>(offset), size);
   memcpy(buffer, copy_span.data(), copy_span.size());
   return true;
 }
