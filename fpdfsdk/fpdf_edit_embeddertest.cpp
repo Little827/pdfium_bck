@@ -19,6 +19,7 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/fx_font.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
@@ -44,46 +45,53 @@ const char kAllRemovedChecksum[] = "eee4600ac08b458ac7ac2320e225674c";
 const wchar_t kBottomText[] = L"I'm at the bottom of the page";
 
 const char* BottomTextChecksum() {
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kBottomTextChecksum[] =
+  static constexpr char kBottomTextChecksumSkia[] =
+      "891dcb6e914c8360998055f1f47c9727";
+#if BUILDFLAG(IS_APPLE)
+  static constexpr char kBottomTextChecksumAgg[] =
       "81636489006a31fcb00cf29efcdf7909";
 #else
-  static constexpr char kBottomTextChecksum[] =
+  static constexpr char kBottomTextChecksumAgg[] =
       "891dcb6e914c8360998055f1f47c9727";
 #endif
 
-  return kBottomTextChecksum;
+  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+             ? kBottomTextChecksumSkia
+             : kBottomTextChecksumAgg;
 }
 
 const char* FirstRemovedChecksum() {
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kFirstRemovedChecksum[] =
+  static constexpr char kFirstRemovedChecksumSkia[] =
+      "e1477dc3b5b3b9c560814c4d1135a02b";
+#if BUILDFLAG(IS_APPLE)
+  static constexpr char kFirstRemovedChecksumAgg[] =
       "a1dc2812692fcc7ee4f01ca77435df9d";
 #else
-  static constexpr char kFirstRemovedChecksum[] =
+  static constexpr char kFirstRemovedChecksumAgg[] =
       "e1477dc3b5b3b9c560814c4d1135a02b";
 #endif
 
-  return kFirstRemovedChecksum;
+  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+             ? kFirstRemovedChecksumSkia
+             : kFirstRemovedChecksumAgg;
 }
 
 const wchar_t kLoadedFontText[] = L"I am testing my loaded font, WEE.";
 
 const char* LoadedFontTextChecksum() {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kLoadedFontTextChecksum[] =
+  static constexpr char kLoadedFontTextChecksumSkia[] =
       "d58570cc045dfb818b92cbabbd1a364c";
-#elif BUILDFLAG(IS_APPLE)
-  static constexpr char kLoadedFontTextChecksum[] =
+#if BUILDFLAG(IS_APPLE)
+  static constexpr char kLoadedFontTextChecksumAgg[] =
       "0f3e4a7d71f9e7eb8a1a0d69403b9848";
 #else
-  static constexpr char kLoadedFontTextChecksum[] =
+  static constexpr char kLoadedFontTextChecksumAgg[] =
       "d58570cc045dfb818b92cbabbd1a364c";
 #endif
 
-  return kLoadedFontTextChecksum;
+  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+             ? kLoadedFontTextChecksumSkia
+             : kLoadedFontTextChecksumAgg;
 }
 
 const char kRedRectangleChecksum[] = "66d02eaa6181e2c069ce2ea99beda497";
@@ -531,11 +539,13 @@ TEST_F(FPDFEditEmbedderTest, AddPaths) {
   EXPECT_TRUE(FPDFPath_BezierTo(blue_path, 375, 330, 390, 360, 400, 400));
   EXPECT_TRUE(FPDFPath_Close(blue_path));
   FPDFPage_InsertObject(page, blue_path);
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kLastChecksum[] = "ed14c60702b1489c597c7d46ece7f86d";
-#else
-  static constexpr char kLastChecksum[] = "9823e1a21bd9b72b6a442ba4f12af946";
-#endif
+  static constexpr char kLastChecksumSkia[] =
+      "ed14c60702b1489c597c7d46ece7f86d";
+  static constexpr char kLastChecksumAgg[] = "9823e1a21bd9b72b6a442ba4f12af946";
+  const char* kLastChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                  ? kLastChecksumSkia
+                                  : kLastChecksumAgg;
+
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 612, 792, kLastChecksum);
@@ -732,12 +742,16 @@ TEST_F(FPDFEditEmbedderTest, SetText) {
   // now displayed.
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
 
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  const char kChangedChecksum[] = "b720e83476fd6819d47c533f1f43c728";
+  constexpr char kChangedChecksumSkia[] = "9a85b9354a69c61772ed24151c140f46";
+#if BUILDFLAG(IS_APPLE)
+  constexpr char kChangedChecksumAgg[] = "b720e83476fd6819d47c533f1f43c728";
 #else
-  const char kChangedChecksum[] = "9a85b9354a69c61772ed24151c140f46";
+  constexpr char kChangedChecksumAgg[] = "9a85b9354a69c61772ed24151c140f46";
 #endif
+  const char* kChangedChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kChangedChecksumSkia
+                                                       : kChangedChecksumAgg;
+
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kChangedChecksum);
@@ -788,14 +802,19 @@ TEST_F(FPDFEditEmbedderTest, SetTextKeepClippingPath) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kOriginalChecksum[] =
+  static constexpr char kOriginalChecksumSkia[] =
+      "7af7fe5b281298261eb66ac2d22f5054";
+#if BUILDFLAG(IS_APPLE)
+  static constexpr char kOriginalChecksumAgg[] =
       "ae7a25c85e0e2dd0c5cb9dd5cd37f6df";
 #else
-  static constexpr char kOriginalChecksum[] =
+  static constexpr char kOriginalChecksumAgg[] =
       "7af7fe5b281298261eb66ac2d22f5054";
 #endif
+  const char* kOriginalChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kOriginalChecksumSkia
+                                                       : kOriginalChecksumAgg;
+
   {
     // When opened before any editing and saving, the clipping path is rendered.
     ScopedFPDFBitmap original_bitmap = RenderPage(page);
@@ -854,14 +873,19 @@ TEST_F(FPDFEditEmbedderTest, BUG_1574) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kOriginalChecksum[] =
+  static constexpr char kOriginalChecksumSkia[] =
+      "c5241eef60b9eac68ed1f2a5fd002703";
+#if BUILDFLAG(IS_APPLE)
+  static constexpr char kOriginalChecksumAgg[] =
       "1226bc2b8072622eb28f52321876e814";
 #else
-  static constexpr char kOriginalChecksum[] =
+  static constexpr char kOriginalChecksumAgg[] =
       "c5241eef60b9eac68ed1f2a5fd002703";
 #endif
+  const char* kOriginalChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kOriginalChecksumSkia
+                                                       : kOriginalChecksumAgg;
+
   {
     // When opened before any editing and saving, the text object is rendered.
     ScopedFPDFBitmap original_bitmap = RenderPage(page);
@@ -1057,15 +1081,23 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
   // Show what the original file looks like.
   {
 #if defined(_SKIA_SUPPORT_)
-    static constexpr char kOriginalChecksum[] =
+    static constexpr char kOriginalChecksumSkia[] =
         "34ac4e0f3ba510760be09d0e19c1b43e";
-#elif BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_PATHS_)
-    static constexpr char kOriginalChecksum[] =
-        "966579fb98206858ce2f0a1f94a74d05";
 #else
-    static constexpr char kOriginalChecksum[] =
+    static constexpr char kOriginalChecksumSkia[] =
         "3d5a3de53d5866044c2b6bf339742c97";
 #endif
+#if BUILDFLAG(IS_APPLE)
+    static constexpr char kOriginalChecksumAgg[] =
+        "966579fb98206858ce2f0a1f94a74d05";
+#else
+    static constexpr char kOriginalChecksumAgg[] =
+        "3d5a3de53d5866044c2b6bf339742c97";
+#endif
+    const char* kOriginalChecksum =
+        CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kOriginalChecksumSkia
+                                                         : kOriginalChecksumAgg;
+
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kOriginalChecksum);
   }
@@ -1104,21 +1136,35 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
 
   EXPECT_EQ(11, FPDFPage_CountObjects(page));
 #if defined(_SKIA_SUPPORT_)
-  static constexpr char kNonPrimesChecksum[] =
+  static constexpr char kNonPrimesChecksumSkia[] =
       "c671fa07b63e85c4201b9926e880fda8";
-  static constexpr char kNonPrimesAfterSaveChecksum[] =
+  static constexpr char kNonPrimesAfterSaveChecksumSkia[] =
       "c671fa07b63e85c4201b9926e880fda8";
-#elif BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kNonPrimesChecksum[] =
-      "6e19a4dd674b522cd39cf41956559bd6";
-  static constexpr char kNonPrimesAfterSaveChecksum[] =
-      "3cb35c681f8fb5a43a49146ac7caa818";
 #else
-  static constexpr char kNonPrimesChecksum[] =
+  static constexpr char kNonPrimesChecksumSkia[] =
       "bc8623c052f12376c3d8dd09a6cd27df";
-  static constexpr char kNonPrimesAfterSaveChecksum[] =
+  static constexpr char kNonPrimesAfterSaveChecksumSkia[] =
       "bc8623c052f12376c3d8dd09a6cd27df";
 #endif
+#if BUILDFLAG(IS_APPLE)
+  static constexpr char kNonPrimesChecksumAgg[] =
+      "6e19a4dd674b522cd39cf41956559bd6";
+  static constexpr char kNonPrimesAfterSaveChecksumAgg[] =
+      "3cb35c681f8fb5a43a49146ac7caa818";
+#else
+  static constexpr char kNonPrimesChecksumAgg[] =
+      "bc8623c052f12376c3d8dd09a6cd27df";
+  static constexpr char kNonPrimesAfterSaveChecksumAgg[] =
+      "bc8623c052f12376c3d8dd09a6cd27df";
+#endif
+  const char* kNonPrimesChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kNonPrimesChecksumSkia
+                                                       : kNonPrimesChecksumAgg;
+  const char* kNonPrimesAfterSaveChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kNonPrimesAfterSaveChecksumSkia
+          : kNonPrimesAfterSaveChecksumAgg;
+
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kNonPrimesChecksum);
@@ -1392,12 +1438,17 @@ TEST_F(FPDFEditEmbedderTest, RemoveExistingPageObjectSplitStreamsNotLonely) {
 
   // Verify the "Hello, world!" text is gone.
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  const char kHelloRemovedChecksum[] = "5508c2f06d104050f74f655693e38c2c";
+  const char kHelloRemovedChecksumSkia[] = "a8cd82499cf744e0862ca468c9d4ceb8";
+#if BUILDFLAG(IS_APPLE)
+  const char kHelloRemovedChecksumAgg[] = "5508c2f06d104050f74f655693e38c2c";
 #else
-  const char kHelloRemovedChecksum[] = "a8cd82499cf744e0862ca468c9d4ceb8";
+  const char kHelloRemovedChecksumAgg[] = "a8cd82499cf744e0862ca468c9d4ceb8";
 #endif
+  const char* kHelloRemovedChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kHelloRemovedChecksumSkia
+          : kHelloRemovedChecksumAgg;
+
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kHelloRemovedChecksum);
@@ -1550,12 +1601,20 @@ TEST_F(FPDFEditEmbedderTest, RemoveAllFromStream) {
   }
 
 #if defined(_SKIA_SUPPORT_)
-  const char kStream1RemovedChecksum[] = "b9bb0acfdba4bb5d2e578e7b73341baf";
-#elif BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_PATHS_)
-  const char kStream1RemovedChecksum[] = "3cdc75af44c15bed80998facd6e674c9";
+  const char kStream1RemovedChecksumSkia[] = "b9bb0acfdba4bb5d2e578e7b73341baf";
 #else
-  const char kStream1RemovedChecksum[] = "b474826df1acedb05c7b82e1e49e64a6";
+  const char kStream1RemovedChecksumSkia[] = "b474826df1acedb05c7b82e1e49e64a6";
 #endif
+#if BUILDFLAG(IS_APPLE)
+  const char kStream1RemovedChecksumAgg[] = "3cdc75af44c15bed80998facd6e674c9";
+#else
+  const char kStream1RemovedChecksumAgg[] = "b474826df1acedb05c7b82e1e49e64a6";
+#endif
+  const char* kStream1RemovedChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kStream1RemovedChecksumSkia
+          : kStream1RemovedChecksumAgg;
+
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kStream1RemovedChecksum);
@@ -1912,11 +1971,12 @@ TEST_F(FPDFEditEmbedderTest, InsertAndRemoveLargeFile) {
 
   // Verify the black rectangle was added.
   ASSERT_EQ(kOriginalObjectCount + 1, FPDFPage_CountObjects(page));
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kPlusRectangleMD5[] = "0d3715fcfb9bd0dd25dcce60800bff47";
-#else
-  const char kPlusRectangleMD5[] = "6b9396ab570754b32b04ca629e902f77";
-#endif
+  const char kPlusRectangleMD5Skia[] = "0d3715fcfb9bd0dd25dcce60800bff47";
+  const char kPlusRectangleMD5Agg[] = "6b9396ab570754b32b04ca629e902f77";
+  const char* kPlusRectangleMD5 =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kPlusRectangleMD5Skia
+                                                       : kPlusRectangleMD5Agg;
+
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 300, kPlusRectangleMD5);
@@ -2061,13 +2121,15 @@ TEST_F(FPDFEditEmbedderTest, PathOnTopOfText) {
 
   // Render and check the result.
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kChecksum[] = "8a48b019826492331454f2809990aba8";
-#elif BUILDFLAG(IS_APPLE)
-  const char kChecksum[] = "279693baca9f48da2d75a8e289aed58e";
+  const char kChecksumSkia[] = "8a48b019826492331454f2809990aba8";
+#if BUILDFLAG(IS_APPLE)
+  const char kChecksumAgg[] = "279693baca9f48da2d75a8e289aed58e";
 #else
-  const char kChecksum[] = "fe415d47945c10b9cc8e9ca08887369e";
+  const char kChecksumAgg[] = "fe415d47945c10b9cc8e9ca08887369e";
 #endif
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
   CompareBitmap(bitmap.get(), 200, 200, kChecksum);
   UnloadPage(page);
 }
@@ -2090,11 +2152,11 @@ TEST_F(FPDFEditEmbedderTest, EditOverExistingContent) {
   EXPECT_TRUE(FPDFPath_SetDrawMode(red_rect, FPDF_FILLMODE_ALTERNATE, 0));
   FPDFPage_InsertObject(page, red_rect);
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kOriginalChecksum[] = "1e82fbdd21490cee9d3479fe6125af67";
-#else
-  const char kOriginalChecksum[] = "ad04e5bd0f471a9a564fb034bd0fb073";
-#endif
+  const char kOriginalChecksumSkia[] = "1e82fbdd21490cee9d3479fe6125af67";
+  const char kOriginalChecksumAgg[] = "ad04e5bd0f471a9a564fb034bd0fb073";
+  const char* kOriginalChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kOriginalChecksumSkia
+                                                       : kOriginalChecksumAgg;
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 612, 792, kOriginalChecksum);
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
@@ -2120,11 +2182,11 @@ TEST_F(FPDFEditEmbedderTest, EditOverExistingContent) {
   EXPECT_TRUE(FPDFPageObj_SetFillColor(green_rect2, 0, 255, 0, 100));
   EXPECT_TRUE(FPDFPath_SetDrawMode(green_rect2, FPDF_FILLMODE_ALTERNATE, 0));
   FPDFPage_InsertObject(saved_page, green_rect2);
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kLastChecksum[] = "8705d023e5fec3499d1e30cf2bcc5dc1";
-#else
-  const char kLastChecksum[] = "4b5b00f824620f8c9b8801ebb98e1cdd";
-#endif
+  const char kLastChecksumSkia[] = "8705d023e5fec3499d1e30cf2bcc5dc1";
+  const char kLastChecksumAgg[] = "4b5b00f824620f8c9b8801ebb98e1cdd";
+  const char* kLastChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                  ? kLastChecksumSkia
+                                  : kLastChecksumAgg;
   {
     ScopedFPDFBitmap new_bitmap = RenderSavedPage(saved_page);
     CompareBitmap(new_bitmap.get(), 612, 792, kLastChecksum);
@@ -2141,13 +2203,13 @@ TEST_F(FPDFEditEmbedderTest, EditOverExistingContent) {
   VerifySavedDocument(612, 792, kLastChecksum);
 }
 
-// TODO(crbug.com/pdfium/1651): Fix this issue and enable the test for Skia.
+TEST_F(FPDFEditEmbedderTest, AddStrokedPaths) {
+  // TODO(crbug.com/pdfium/1651): Fix this issue and enable the test for Skia.
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_AddStrokedPaths DISABLED_AddStrokedPaths
-#else
-#define MAYBE_AddStrokedPaths AddStrokedPaths
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
 #endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
+
   // Start with a blank page
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
 
@@ -2165,11 +2227,12 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
   FPDFPage_InsertObject(page, rect);
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static constexpr char kChecksum_1[] = "1469acf60e7647ebeb8e1fb08c5d6c7a";
-#else
-    static constexpr char kChecksum_1[] = "64bd31f862a89e0a9e505a5af6efd506";
-#endif
+    static constexpr char kChecksum_1Skia[] =
+        "1469acf60e7647ebeb8e1fb08c5d6c7a";
+    static constexpr char kChecksum_1Agg[] = "64bd31f862a89e0a9e505a5af6efd506";
+    const char* kChecksum_1 = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                  ? kChecksum_1Skia
+                                  : kChecksum_1Agg;
     CompareBitmap(page_bitmap.get(), 612, 792, kChecksum_1);
   }
 
@@ -2185,11 +2248,12 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
   FPDFPage_InsertObject(page, check);
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static constexpr char kChecksum_2[] = "68b3194f74abd9d471695ce1415be43f";
-#else
-    static constexpr char kChecksum_2[] = "4b6f3b9d25c4e194821217d5016c3724";
-#endif
+    static constexpr char kChecksum_2Skia[] =
+        "68b3194f74abd9d471695ce1415be43f";
+    static constexpr char kChecksum_2Agg[] = "4b6f3b9d25c4e194821217d5016c3724";
+    const char* kChecksum_2 = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                  ? kChecksum_2Skia
+                                  : kChecksum_2Agg;
     CompareBitmap(page_bitmap.get(), 612, 792, kChecksum_2);
   }
 
@@ -2206,11 +2270,12 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddStrokedPaths) {
   FPDFPage_InsertObject(page, path);
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static constexpr char kChecksum_3[] = "ea784068651df2b9ba132ce9215e6780";
-#else
-    static constexpr char kChecksum_3[] = "ff3e6a22326754944cc6e56609acd73b";
-#endif
+    static constexpr char kChecksum_3Skia[] =
+        "ea784068651df2b9ba132ce9215e6780";
+    static constexpr char kChecksum_3Agg[] = "ff3e6a22326754944cc6e56609acd73b";
+    const char* kChecksum_3 = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                  ? kChecksum_3Skia
+                                  : kChecksum_3Agg;
     CompareBitmap(page_bitmap.get(), 612, 792, kChecksum_3);
   }
   FPDF_ClosePage(page);
@@ -2251,16 +2316,18 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
   EXPECT_TRUE(FPDFPage_GenerateContent(page.get()));
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page.get());
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-    static constexpr char md5[] = "983baaa1f688eff7a14b1bf91c171a1a";
+    static constexpr char kMd5Skia[] = "161523e196eb5341604cd73e12c97922";
+#if BUILDFLAG(IS_APPLE)
+    static constexpr char kMd5Agg[] = "983baaa1f688eff7a14b1bf91c171a1a";
 #else
-    static constexpr char md5[] = "161523e196eb5341604cd73e12c97922";
+    static constexpr char kMd5Agg[] = "161523e196eb5341604cd73e12c97922";
 #endif
-    CompareBitmap(page_bitmap.get(), 612, 792, md5);
+    const char* kMd5 =
+        CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kMd5Skia : kMd5Agg;
+    CompareBitmap(page_bitmap.get(), 612, 792, kMd5);
 
     EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
-    VerifySavedDocument(612, 792, md5);
+    VerifySavedDocument(612, 792, kMd5);
   }
 
   // And some randomly transformed text
@@ -2274,16 +2341,18 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
   EXPECT_TRUE(FPDFPage_GenerateContent(page.get()));
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page.get());
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-    static constexpr char md5[] = "e0b3493c5c16e41d0d892ffb48e63fba";
+    static constexpr char kMd5Skia[] = "1fbf772dca8d82b960631e6683934964";
+#if BUILDFLAG(IS_APPLE)
+    static constexpr char kMd5Agg[] = "e0b3493c5c16e41d0d892ffb48e63fba";
 #else
-    static constexpr char md5[] = "1fbf772dca8d82b960631e6683934964";
+    static constexpr char kMd5Agg[] = "1fbf772dca8d82b960631e6683934964";
 #endif
-    CompareBitmap(page_bitmap.get(), 612, 792, md5);
+    const char* kMd5 =
+        CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kMd5Skia : kMd5Agg;
+    CompareBitmap(page_bitmap.get(), 612, 792, kMd5);
 
     EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
-    VerifySavedDocument(612, 792, md5);
+    VerifySavedDocument(612, 792, kMd5);
   }
 
   FS_MATRIX matrix;
@@ -2353,16 +2422,21 @@ TEST_F(FPDFEditEmbedderTest, GetTextRenderMode) {
 }
 
 TEST_F(FPDFEditEmbedderTest, SetTextRenderMode) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kOriginalChecksum[] = "39a4ac8f1fdc6653edd3b91862ea7b75";
-  const char kStrokeChecksum[] = "d16eb1bb4748eeb5fb801594da70d519";
-#elif BUILDFLAG(IS_APPLE)
-  const char kOriginalChecksum[] = "c488514ce0fc949069ff560407edacd2";
-  const char kStrokeChecksum[] = "e06ee84aeebe926e8c980b7822027e8a";
+  const char kOriginalChecksumSkia[] = "39a4ac8f1fdc6653edd3b91862ea7b75";
+  const char kStrokeChecksumSkia[] = "d16eb1bb4748eeb5fb801594da70d519";
+#if BUILDFLAG(IS_APPLE)
+  const char kOriginalChecksumAgg[] = "c488514ce0fc949069ff560407edacd2";
+  const char kStrokeChecksumAgg[] = "e06ee84aeebe926e8c980b7822027e8a";
 #else
-  const char kOriginalChecksum[] = "97a4fcf3c9581e19917895631af31d41";
-  const char kStrokeChecksum[] = "e06ee84aeebe926e8c980b7822027e8a";
+  const char kOriginalChecksumAgg[] = "97a4fcf3c9581e19917895631af31d41";
+  const char kStrokeChecksumAgg[] = "e06ee84aeebe926e8c980b7822027e8a";
 #endif
+  const char* kOriginalChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kOriginalChecksumSkia
+                                                       : kOriginalChecksumAgg;
+  const char* kStrokeChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                    ? kStrokeChecksumSkia
+                                    : kStrokeChecksumAgg;
 
   {
     ASSERT_TRUE(OpenDocument("text_render_mode.pdf"));
@@ -2674,14 +2748,21 @@ TEST_F(FPDFEditEmbedderTest, FormGetObjects) {
 }
 
 TEST_F(FPDFEditEmbedderTest, ModifyFormObject) {
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  const char kOrigChecksum[] = "a637057185f50aac1aa5490f726aef95";
-  const char kNewChecksum[] = "8ad9d79b02b609ff734e2a2195c96e2d";
+  const char kOrigChecksumSkia[] = "34a9ec0a9581a7970e073c0bcc4ca676";
+  const char kNewChecksumSkia[] = "609b5632a21c886fa93182dbc290bf7a";
+#if BUILDFLAG(IS_APPLE)
+  const char kOrigChecksumAgg[] = "a637057185f50aac1aa5490f726aef95";
+  const char kNewChecksumAgg[] = "8ad9d79b02b609ff734e2a2195c96e2d";
 #else
-  const char kOrigChecksum[] = "34a9ec0a9581a7970e073c0bcc4ca676";
-  const char kNewChecksum[] = "609b5632a21c886fa93182dbc290bf7a";
+  const char kOrigChecksumAgg[] = "34a9ec0a9581a7970e073c0bcc4ca676";
+  const char kNewChecksumAgg[] = "609b5632a21c886fa93182dbc290bf7a";
 #endif
+  const char* kOrigChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                  ? kOrigChecksumSkia
+                                  : kOrigChecksumAgg;
+  const char* kNewChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                 ? kNewChecksumSkia
+                                 : kNewChecksumAgg;
 
   ASSERT_TRUE(OpenDocument("form_object.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -3080,13 +3161,16 @@ TEST_F(FPDFEditEmbedderTest, AddTrueTypeFontText) {
     FPDFPage_InsertObject(page, text_object2);
   }
   ScopedFPDFBitmap page_bitmap2 = RenderPage(page);
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  const char kInsertTrueTypeChecksum[] = "683f4a385a891494100192cb338b11f0";
-#elif BUILDFLAG(IS_APPLE)
-  const char kInsertTrueTypeChecksum[] = "c7e2271a7f30e5b919a13ead47cea105";
+  const char kInsertTrueTypeChecksumSkia[] = "683f4a385a891494100192cb338b11f0";
+#if BUILDFLAG(IS_APPLE)
+  const char kInsertTrueTypeChecksumAgg[] = "c7e2271a7f30e5b919a13ead47cea105";
 #else
-  const char kInsertTrueTypeChecksum[] = "683f4a385a891494100192cb338b11f0";
+  const char kInsertTrueTypeChecksumAgg[] = "683f4a385a891494100192cb338b11f0";
 #endif
+  const char* kInsertTrueTypeChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kInsertTrueTypeChecksumSkia
+          : kInsertTrueTypeChecksumAgg;
   CompareBitmap(page_bitmap2.get(), 612, 792, kInsertTrueTypeChecksum);
 
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
@@ -3157,10 +3241,10 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
   }
 
   // Check that the text renders properly.
-  static constexpr char md5[] = "84d31d11b76845423a2cfc1879c0fbb9";
+  static constexpr char kMd5[] = "84d31d11b76845423a2cfc1879c0fbb9";
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
-    CompareBitmap(page_bitmap.get(), 612, 792, md5);
+    CompareBitmap(page_bitmap.get(), 612, 792, kMd5);
   }
 
   // Save the document, close the page.
@@ -3168,22 +3252,22 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
   FPDF_ClosePage(page);
 
-  VerifySavedDocument(612, 792, md5);
+  VerifySavedDocument(612, 792, kMd5);
 }
 #endif  // BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
 
-// TODO(crbug.com/pdfium/1651): Fix this issue and enable the test for Skia.
+TEST_F(FPDFEditEmbedderTest, SaveAndRender) {
+  // TODO(crbug.com/pdfium/1651): Fix this issue and enable the test for Skia.
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_SaveAndRender DISABLED_SaveAndRender
-#else
-#define MAYBE_SaveAndRender SaveAndRender
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
 #endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_SaveAndRender) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static constexpr char kChecksum[] = "0e8b079e349e34f64211c495845a3529";
-#else
-  static constexpr char kChecksum[] = "3c20472b0552c0c22b88ab1ed8c6202b";
-#endif
+
+  static constexpr char kChecksumSkia[] = "0e8b079e349e34f64211c495845a3529";
+  static constexpr char kChecksumAgg[] = "3c20472b0552c0c22b88ab1ed8c6202b";
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
   {
     ASSERT_TRUE(OpenDocument("bug_779.pdf"));
     FPDF_PAGE page = LoadPage(0);
@@ -3836,15 +3920,13 @@ TEST_F(FPDFEditEmbedderTest, GetBitmapIgnoresSMask) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapHandlesSetMatrix) {
+  // TODO(crbug.com/pdfium/11): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_GetRenderedBitmapHandlesSetMatrix \
-  DISABLED_GetRenderedBitmapHandlesSetMatrix
-#else
-#define MAYBE_GetRenderedBitmapHandlesSetMatrix \
-  GetRenderedBitmapHandlesSetMatrix
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
 #endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_GetRenderedBitmapHandlesSetMatrix) {
+
   ASSERT_TRUE(OpenDocument("embedded_images.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
@@ -3896,14 +3978,13 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_GetRenderedBitmapHandlesSetMatrix) {
   UnloadPage(page);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
+TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapHandlesSMask) {
+  // TODO(crbug.com/pdfium/11): Fix this test and enable.
 #if defined(_SKIA_SUPPORT_)
-#define MAYBE_GetRenderedBitmapHandlesSMask \
-  DISABLED_GetRenderedBitmapHandlesSMask
-#else
-#define MAYBE_GetRenderedBitmapHandlesSMask GetRenderedBitmapHandlesSMask
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
 #endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_GetRenderedBitmapHandlesSMask) {
+
   ASSERT_TRUE(OpenDocument("matte.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
