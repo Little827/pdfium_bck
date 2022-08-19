@@ -39,6 +39,30 @@
       },
       "revId": "f29fef5a42a7c257c8f84152c103f34c2554b28f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bf3d72_d063b596",
+        "filename": "core/fxcrt/cfx_readonlymemorystream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-19T22:41:30Z",
+      "side": 1,
+      "message": "Sure. I did that in a separate CL chain that ends with https://pdfium-review.googlesource.com/96758\n\nIt does make it easier to figure out what the object is by just looking at the name.",
+      "parentUuid": "66e60dbe_5bf7edcd",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "f29fef5a42a7c257c8f84152c103f34c2554b28f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
