@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b064c99e_e282f3f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-19T16:03:20Z",
+      "side": 1,
+      "message": "Can we file an umbrella bug for enabling skia as a runtime choice in PDFium bug tracker instead of using pdfium:11?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "46b15529c5817a323036708a6bcf3e03b0ce9fcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
