@@ -16,6 +16,7 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_edit.h"
@@ -400,11 +401,12 @@ TEST_F(FPDFAnnotEmbedderTest, RenderAnnotWithOnlyRolloverAP) {
 }
 
 TEST_F(FPDFAnnotEmbedderTest, RenderMultilineMarkupAnnotWithoutAP) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kChecksum[] = "ec1f4ccbd0aecfdea6d53893387a0101";
-#else
-  static const char kChecksum[] = "76512832d88017668d9acc7aacd13dae";
-#endif
+  static const char kChecksumSkia[] = "ec1f4ccbd0aecfdea6d53893387a0101";
+  static const char kChecksumAgg[] = "76512832d88017668d9acc7aacd13dae";
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
+
   // Open a file with multiline markup annotations.
   ASSERT_TRUE(OpenDocument("annotation_markup_multiline_no_ap.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -542,12 +544,18 @@ TEST_F(FPDFAnnotEmbedderTest, ExtractInkMultiple) {
   }
   {
 #if defined(_SKIA_SUPPORT_)
-    static constexpr char kExpectedHash[] = "fad91b9c968fe8019a774f5e2419b8fc";
-#elif defined(_SKIA_SUPPORT_PATHS_)
-    static constexpr char kExpectedHash[] = "acddfe688a117ead56af7b249a2cf8a1";
+    static constexpr char kExpectedHashSkia[] =
+        "fad91b9c968fe8019a774f5e2419b8fc";
 #else
-    static constexpr char kExpectedHash[] = "354002e1c4386d38fdde29ef8d61074a";
+    static constexpr char kExpectedHashSkia[] =
+        "acddfe688a117ead56af7b249a2cf8a1";
 #endif
+    static constexpr char kExpectedHashAgg[] =
+        "354002e1c4386d38fdde29ef8d61074a";
+    const char* kExpectedHash = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                    ? kExpectedHashSkia
+                                    : kExpectedHashAgg;
+
     ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
     CompareBitmap(bitmap.get(), 612, 792, kExpectedHash);
   }
@@ -765,12 +773,14 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndSaveUnderlineAnnotation) {
 
   // Open the saved document.
 #if defined(_SKIA_SUPPORT_)
-  static const char kChecksum[] = "899387ae792390cd0d83cf7e2bbebfb5";
-#elif defined(_SKIA_SUPPORT_PATHS_)
-  static const char kChecksum[] = "e40e235ee35f47ff28dda009aaaf36df";
+  static const char kChecksumSkia[] = "899387ae792390cd0d83cf7e2bbebfb5";
 #else
-  static const char kChecksum[] = "dba153419f67b7c0c0e3d22d3e8910d5";
+  static const char kChecksumSkia[] = "e40e235ee35f47ff28dda009aaaf36df";
 #endif
+  static const char kChecksumAgg[] = "dba153419f67b7c0c0e3d22d3e8910d5";
+  const char* kChecksum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kChecksumSkia
+                              : kChecksumAgg;
 
   ASSERT_TRUE(OpenSavedDocument());
   page = LoadSavedPage(0);
@@ -885,28 +895,42 @@ TEST_F(FPDFAnnotEmbedderTest, GetAndSetQuadPoints) {
 
 TEST_F(FPDFAnnotEmbedderTest, ModifyRectQuadpointsWithAP) {
 #if defined(_SKIA_SUPPORT_)
-  static const char kMd5Original[] = "0dd4c099b93d24eed9926a948ac5101c";
-  static const char kMd5ModifiedHighlight[] =
+  static const char kMd5OriginalSkia[] = "0dd4c099b93d24eed9926a948ac5101c";
+  static const char kMd5ModifiedHighlightSkia[] =
       "92dfe7960d248635a694f43c66db7a4d";
-  static const char kMd5ModifiedSquare[] = "eb16eae7904705fa24f4ec9c1acf90c7";
-#elif defined(_SKIA_SUPPORT_PATHS_)
-  static const char kMd5Original[] = "127c2d3b4452555e3317827b0dbbb6a0";
-  static const char kMd5ModifiedHighlight[] =
+  static const char kMd5ModifiedSquareSkia[] =
+      "eb16eae7904705fa24f4ec9c1acf90c7";
+#else
+  // defined(_SKIA_SUPPORT_PATHS_)
+  static const char kMd5OriginalSkia[] = "127c2d3b4452555e3317827b0dbbb6a0";
+  static const char kMd5ModifiedHighlightSkia[] =
       "6ffe732be6f80540b60921c4803b590a";
-  static const char kMd5ModifiedSquare[] = "9ecbeea7f54abea298b53ce79d301f4a";
-#else
-#if BUILDFLAG(IS_APPLE)
-  static const char kMd5Original[] = "fc59468d154f397fd298c69f47ef565a";
-  static const char kMd5ModifiedHighlight[] =
-      "e64bf648f6e9354d1f3eedb47a2c9498";
-  static const char kMd5ModifiedSquare[] = "a66591662c8e7ad3c6059952e234bebf";
-#else
-  static const char kMd5Original[] = "0e27376094f11490f74c65f3dc3a42c5";
-  static const char kMd5ModifiedHighlight[] =
-      "66f3caef3a7d488a4fa1ad37fc06310e";
-  static const char kMd5ModifiedSquare[] = "a456dad0bc6801ee2d6408a4394af563";
-#endif  // BUILDFLAG(IS_APPLE)
+  static const char kMd5ModifiedSquareSkia[] =
+      "9ecbeea7f54abea298b53ce79d301f4a";
 #endif
+#if BUILDFLAG(IS_APPLE)
+  static const char kMd5OriginalAgg[] = "fc59468d154f397fd298c69f47ef565a";
+  static const char kMd5ModifiedHighlightAgg[] =
+      "e64bf648f6e9354d1f3eedb47a2c9498";
+  static const char kMd5ModifiedSquareAgg[] =
+      "a66591662c8e7ad3c6059952e234bebf";
+#else
+  static const char kMd5OriginalAgg[] = "0e27376094f11490f74c65f3dc3a42c5";
+  static const char kMd5ModifiedHighlightAgg[] =
+      "66f3caef3a7d488a4fa1ad37fc06310e";
+  static const char kMd5ModifiedSquareAgg[] =
+      "a456dad0bc6801ee2d6408a4394af563";
+#endif  // BUILDFLAG(IS_APPLE)
+  const char* kMd5Original = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                 ? kMd5OriginalSkia
+                                 : kMd5OriginalAgg;
+  const char* kMd5ModifiedHighlight =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+          ? kMd5ModifiedHighlightSkia
+          : kMd5ModifiedHighlightAgg;
+  const char* kMd5ModifiedSquare =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kMd5ModifiedSquareSkia
+                                                       : kMd5ModifiedSquareAgg;
 
   // Open a file with four annotations and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_highlight_square_with_ap.pdf"));
@@ -1099,19 +1123,27 @@ TEST_F(FPDFAnnotEmbedderTest, RemoveAnnotation) {
 }
 
 TEST_F(FPDFAnnotEmbedderTest, AddAndModifyPath) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kMd5ModifiedPath[] = "f671765166acf45d80e833ea3aff8b90";
-  static const char kMd5TwoPaths[] = "7d2db46e1ae6bcf88d18d334af309551";
-  static const char kMd5NewAnnot[] = "92bfb06058ff608571a3baf65f7fc05d";
-#elif BUILDFLAG(IS_APPLE)
-  static const char kMd5ModifiedPath[] = "e31421f86c61d4e9cda138f15f561ca3";
-  static const char kMd5TwoPaths[] = "58d932492f9d485d6a4bc0ba76c04557";
-  static const char kMd5NewAnnot[] = "61f9ad13f2fd235753db198cf9704773";
+  static const char kMd5ModifiedPathSkia[] = "f671765166acf45d80e833ea3aff8b90";
+  static const char kMd5TwoPathsSkia[] = "7d2db46e1ae6bcf88d18d334af309551";
+  static const char kMd5NewAnnotSkia[] = "92bfb06058ff608571a3baf65f7fc05d";
+#if BUILDFLAG(IS_APPLE)
+  static const char kMd5ModifiedPathAgg[] = "e31421f86c61d4e9cda138f15f561ca3";
+  static const char kMd5TwoPathsAgg[] = "58d932492f9d485d6a4bc0ba76c04557";
+  static const char kMd5NewAnnotAgg[] = "61f9ad13f2fd235753db198cf9704773";
 #else
-  static const char kMd5ModifiedPath[] = "980e7636d864f7f7d323a31ad4e8fa04";
-  static const char kMd5TwoPaths[] = "4c779c394b6790f8cf80305b566b663b";
-  static const char kMd5NewAnnot[] = "97effd68dcf86273f68d126d6b45152e";
+  static const char kMd5ModifiedPathAgg[] = "980e7636d864f7f7d323a31ad4e8fa04";
+  static const char kMd5TwoPathsAgg[] = "4c779c394b6790f8cf80305b566b663b";
+  static const char kMd5NewAnnotAgg[] = "97effd68dcf86273f68d126d6b45152e";
 #endif
+  const char* kMd5ModifiedPath =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kMd5ModifiedPathSkia
+                                                       : kMd5ModifiedPathAgg;
+  const char* kMd5TwoPaths = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                 ? kMd5TwoPathsSkia
+                                 : kMd5TwoPathsAgg;
+  const char* kMd5NewAnnot = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                 ? kMd5NewAnnotSkia
+                                 : kMd5NewAnnotAgg;
 
   // Open a file with two annotations and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
@@ -1311,20 +1343,27 @@ TEST_F(FPDFAnnotEmbedderTest, ModifyAnnotationFlags) {
 // incorrect compared to the expectation.
 TEST_F(FPDFAnnotEmbedderTest, AddAndModifyImage) {
 #if defined(_SKIA_SUPPORT_)
-  static const char kMd5NewImage[] = "4ba31e174d873b3fda1d7a160d4a0e85";
-  static const char kMd5ModifiedImage[] = "5806fadc1a192bc4bb07511a0711c957";
-#elif defined(_SKIA_SUPPORT_PATHS_)
-  static const char kMd5NewImage[] = "bf158b64c0373f3f36e347ae83e55cde";
-  static const char kMd5ModifiedImage[] = "5806fadc1a192bc4bb07511a0711c957";
+  static const char kMd5NewImageSkia[] = "4ba31e174d873b3fda1d7a160d4a0e85";
+  static const char kMd5ModifiedImageSkia[] =
+      "5806fadc1a192bc4bb07511a0711c957";
 #else
+  static const char kMd5NewImageSkia[] = "bf158b64c0373f3f36e347ae83e55cde";
+  static const char kMd5ModifiedImageSkia[] =
+      "5806fadc1a192bc4bb07511a0711c957";
+#endif
 #if BUILDFLAG(IS_APPLE)
-  static const char kMd5NewImage[] = "c6fcbceb2f079bef10458ac60db3a10c";
-  static const char kMd5ModifiedImage[] = "8068eb568e5c1c5fbe84e98f7a980ac3";
+  static const char kMd5NewImageAgg[] = "c6fcbceb2f079bef10458ac60db3a10c";
+  static const char kMd5ModifiedImageAgg[] = "8068eb568e5c1c5fbe84e98f7a980ac3";
 #else
-  static const char kMd5NewImage[] = "62c2706511cb50e32e7caeb82b1d3d49";
-  static const char kMd5ModifiedImage[] = "83093ce9fac746db69fbd2fb394434ac";
-#endif  // BUILDFLAG(IS_APPLE)
-#endif  // defined(_SKIA_SUPPORT_)
+  static const char kMd5NewImageAgg[] = "62c2706511cb50e32e7caeb82b1d3d49";
+  static const char kMd5ModifiedImageAgg[] = "83093ce9fac746db69fbd2fb394434ac";
+#endif
+  const char* kMd5NewImage = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                 ? kMd5NewImageSkia
+                                 : kMd5NewImageAgg;
+  const char* kMd5ModifiedImage =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kMd5ModifiedImageSkia
+                                                       : kMd5ModifiedImageAgg;
 
   // Open a file with two annotations and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
@@ -1399,18 +1438,25 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyImage) {
 
 TEST_F(FPDFAnnotEmbedderTest, AddAndModifyText) {
 #if defined(_SKIA_SUPPORT_)
-  static const char kMd5NewText[] = "63b931799a9ba21c36d9d4f9711f252b";
-  static const char kMd5ModifiedText[] = "e29ddba6a49d5c9c5cdde7d1693a251c";
-#elif defined(_SKIA_SUPPORT_PATHS_)
-  static const char kMd5NewText[] = "e2a563fe60b263342347b84199649899";
-  static const char kMd5ModifiedText[] = "6052d53a7de28382e305d22edfb93873";
-#elif BUILDFLAG(IS_APPLE)
-  static const char kMd5NewText[] = "57a0fb3fba33e17de26bcde4c40b9a75";
-  static const char kMd5ModifiedText[] = "072574999f2e3f36774ee0b5bc94d4dd";
+  static const char kMd5NewTextSkia[] = "63b931799a9ba21c36d9d4f9711f252b";
+  static const char kMd5ModifiedTextSkia[] = "e29ddba6a49d5c9c5cdde7d1693a251c";
 #else
-  static const char kMd5NewText[] = "1c4198c38f890c208c5cbaad57be4dc6";
-  static const char kMd5ModifiedText[] = "cfa78d01406865f41f486bd34a8b9f7b";
+  static const char kMd5NewTextSkia[] = "e2a563fe60b263342347b84199649899";
+  static const char kMd5ModifiedTextSkia[] = "6052d53a7de28382e305d22edfb93873";
 #endif
+#if BUILDFLAG(IS_APPLE)
+  static const char kMd5NewTextAgg[] = "57a0fb3fba33e17de26bcde4c40b9a75";
+  static const char kMd5ModifiedTextAgg[] = "072574999f2e3f36774ee0b5bc94d4dd";
+#else
+  static const char kMd5NewTextAgg[] = "1c4198c38f890c208c5cbaad57be4dc6";
+  static const char kMd5ModifiedTextAgg[] = "cfa78d01406865f41f486bd34a8b9f7b";
+#endif
+  const char* kMd5NewText = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                ? kMd5NewTextSkia
+                                : kMd5NewTextAgg;
+  const char* kMd5ModifiedText =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kMd5ModifiedTextSkia
+                                                       : kMd5ModifiedTextAgg;
 
   // Open a file with two annotations and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
@@ -1538,13 +1584,14 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetStringValue) {
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
   UnloadPage(page);
 
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kMd5[] = "2b9078043cd6130fef4e8542dcda943e";
-#elif BUILDFLAG(IS_APPLE)
-  static const char kMd5[] = "cd90315b250dfe08265ce0ac335c5f76";
+  static const char kMd5Skia[] = "2b9078043cd6130fef4e8542dcda943e";
+#if BUILDFLAG(IS_APPLE)
+  static const char kMd5Agg[] = "cd90315b250dfe08265ce0ac335c5f76";
 #else
-  static const char kMd5[] = "c4fb6911f2a87f490be196f8898de738";
+  static const char kMd5Agg[] = "c4fb6911f2a87f490be196f8898de738";
 #endif
+  const char* kMd5 =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kMd5Skia : kMd5Agg;
 
   // Open the saved annotation.
   ASSERT_TRUE(OpenSavedDocument());
@@ -2076,11 +2123,11 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotAndCheckFlagsComboBox) {
 }
 
 TEST_F(FPDFAnnotEmbedderTest, BUG_1206) {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-  static const char kExpectedBitmap[] = "a1ea1ceebb26922fae576cb79ce63af0";
-#else
-  static const char kExpectedBitmap[] = "0d9fc05c6762fd788bd23fd87a4967bc";
-#endif
+  static const char kExpectedBitmapSkia[] = "a1ea1ceebb26922fae576cb79ce63af0";
+  static const char kExpectedBitmapAgg[] = "0d9fc05c6762fd788bd23fd87a4967bc";
+  const char* kExpectedBitmap = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                                    ? kExpectedBitmapSkia
+                                    : kExpectedBitmapAgg;
   static constexpr size_t kExpectedSize = 1590;
 
   ASSERT_TRUE(OpenDocument("bug_1206.pdf"));
@@ -3000,13 +3047,16 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotRendering) {
   ASSERT_TRUE(page);
 
   {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static const char kMd5sum[] = "7b08d6e8c0423302755c110e17abf7de";
-#elif BUILDFLAG(IS_APPLE)
-    static const char kMd5sum[] = "108a46c517c4eaace9982ee83e8e3296";
+    static const char kMd5sumSkia[] = "7b08d6e8c0423302755c110e17abf7de";
+#if BUILDFLAG(IS_APPLE)
+    static const char kMd5sumAgg[] = "108a46c517c4eaace9982ee83e8e3296";
 #else
-    static const char kMd5sum[] = "5550d8dcb4d1af1f50e8b4bcaef2ee60";
+    static const char kMd5sumAgg[] = "5550d8dcb4d1af1f50e8b4bcaef2ee60";
 #endif
+    const char* kMd5sum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kMd5sumSkia
+                              : kMd5sumAgg;
+
     // Check the initial rendering.
     ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
     CompareBitmap(bitmap.get(), 612, 792, kMd5sum);
@@ -3026,13 +3076,16 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotRendering) {
   ASSERT_EQ(FPDF_ANNOT_HIGHLIGHT, subtypes[1]);
 
   {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static const char kMd5sum[] = "371171ea3f000db6354b24a702b0312b";
-#elif BUILDFLAG(IS_APPLE)
-    static const char kMd5sum[] = "eb3869335e7a219e1b5f25c1c6037b97";
+    static const char kMd5sumSkia[] = "371171ea3f000db6354b24a702b0312b";
+#if BUILDFLAG(IS_APPLE)
+    static const char kMd5sumAgg[] = "eb3869335e7a219e1b5f25c1c6037b97";
 #else
-    static const char kMd5sum[] = "805fe7bb751ac4ed2b82bb66efe6db40";
+    static const char kMd5sumAgg[] = "805fe7bb751ac4ed2b82bb66efe6db40";
 #endif
+    const char* kMd5sum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kMd5sumSkia
+                              : kMd5sumAgg;
+
     // Focus the first link and check the rendering.
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
     ASSERT_TRUE(annot);
@@ -3043,13 +3096,16 @@ TEST_F(FPDFAnnotEmbedderTest, FocusableAnnotRendering) {
   }
 
   {
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-    static const char kMd5sum[] = "4aba010a83b9d91722921fde6bf30cdc";
-#elif BUILDFLAG(IS_APPLE)
-    static const char kMd5sum[] = "d20b1978da2362d3942ea0fc6d230997";
+    static const char kMd5sumSkia[] = "4aba010a83b9d91722921fde6bf30cdc";
+#if BUILDFLAG(IS_APPLE)
+    static const char kMd5sumAgg[] = "d20b1978da2362d3942ea0fc6d230997";
 #else
-    static const char kMd5sum[] = "c5c5dcb462af3ef5f43b298ec048feef";
+    static const char kMd5sumAgg[] = "c5c5dcb462af3ef5f43b298ec048feef";
 #endif
+    const char* kMd5sum = CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()
+                              ? kMd5sumSkia
+                              : kMd5sumAgg;
+
     // Focus the first highlight and check the rendering.
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 4));
     ASSERT_TRUE(annot);
@@ -3552,14 +3608,21 @@ TEST_F(FPDFAnnotEmbedderTest, AnnotationBorderRendering) {
   ASSERT_TRUE(page);
   EXPECT_EQ(3, FPDFPage_GetAnnotCount(page));
 
-#if BUILDFLAG(IS_APPLE) && !defined(_SKIA_SUPPORT_) && \
-    !defined(_SKIA_SUPPORT_PATHS_)
-  constexpr char kOriginalChecksum[] = "522a4a6b6c7eab5bf95ded1f21ea372e";
-  constexpr char kModifiedChecksum[] = "6844019e07b83cc01723415f58218d06";
+  constexpr char kOriginalChecksumSkia[] = "12127303aecd80c6288460f7c0d79f3f";
+  constexpr char kModifiedChecksumSkia[] = "73d06ff4c665fe85029acef30240dcca";
+#if BUILDFLAG(IS_APPLE)
+  constexpr char kOriginalChecksumAgg[] = "522a4a6b6c7eab5bf95ded1f21ea372e";
+  constexpr char kModifiedChecksumAgg[] = "6844019e07b83cc01723415f58218d06";
 #else
-  constexpr char kOriginalChecksum[] = "12127303aecd80c6288460f7c0d79f3f";
-  constexpr char kModifiedChecksum[] = "73d06ff4c665fe85029acef30240dcca";
+  constexpr char kOriginalChecksumAgg[] = "12127303aecd80c6288460f7c0d79f3f";
+  constexpr char kModifiedChecksumAgg[] = "73d06ff4c665fe85029acef30240dcca";
 #endif
+  const char* kOriginalChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kOriginalChecksumSkia
+                                                       : kOriginalChecksumAgg;
+  const char* kModifiedChecksum =
+      CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? kModifiedChecksumSkia
+                                                       : kModifiedChecksumAgg;
 
   {
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 2));
