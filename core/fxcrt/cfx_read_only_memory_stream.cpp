@@ -8,6 +8,7 @@
 
 #include <utility>
 
+#include "core/fxcrt/cfx_read_only_span_stream.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/numerics/safe_conversions.h"
 
@@ -25,16 +26,6 @@ FX_FILESIZE CFX_ReadOnlyMemoryStream::GetSize() {
 bool CFX_ReadOnlyMemoryStream::ReadBlockAtOffset(void* buffer,
                                                  FX_FILESIZE offset,
                                                  size_t size) {
-  if (!buffer || offset < 0 || size == 0)
-    return false;
-
-  FX_SAFE_SIZE_T pos = size;
-  pos += offset;
-  if (!pos.IsValid() || pos.ValueOrDie() > m_span.size())
-    return false;
-
-  auto copy_span =
-      m_span.subspan(pdfium::base::checked_cast<size_t>(offset), size);
-  memcpy(buffer, copy_span.data(), copy_span.size());
-  return true;
+  return CFX_ReadOnlySpanStream::ReadBlockAtOffsetFromSpan(m_span, buffer,
+                                                           offset, size);
 }
