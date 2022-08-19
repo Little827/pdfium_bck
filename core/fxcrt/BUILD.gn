@@ -138,6 +138,7 @@ source_set("fxcrt") {
       "cfx_fileaccess_posix.h",
       "fx_folder_posix.cpp",
     ]
+    deps += [ "../../base/allocator/partition_allocator:partition_alloc" ]
   }
   if (is_win) {
     sources += [
@@ -145,6 +146,9 @@ source_set("fxcrt") {
       "cfx_fileaccess_windows.h",
       "fx_folder_windows.cpp",
     ]
+    if (is_clang) {
+      deps += [ "../../base/allocator/partition_allocator:partition_alloc" ]
+    }
   }
   if (pdf_enable_xfa) {
     sources += [
