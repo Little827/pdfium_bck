@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa79adf6_a89d49e6",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-19T18:32:20Z",
+      "side": 1,
+      "message": "This is weird. What does it mean to have a Skia version of the expected checksum, when there\u0027s no Skia support?\n\nTaking a step back, if the goal is to get rid of compile-time selection and convert to run-time selection, then line 138 needs to be removed somehow.",
+      "revId": "450ebe2579e159ac5f0b4f538e13975c5fec03ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c89463_0ec624e5",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-19T18:32:20Z",
+      "side": 1,
+      "message": "No longer a kOnstant.",
+      "range": {
+        "startLine": 148,
+        "startChar": 14,
+        "endLine": 148,
+        "endChar": 23
+      },
+      "revId": "450ebe2579e159ac5f0b4f538e13975c5fec03ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
