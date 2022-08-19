@@ -16,6 +16,24 @@
       "message": "1) Why declare the same function twice? Same comment as on https://pdfium-review.googlesource.com/c/pdfium/+/91171/29/core/fxge/cfx_defaultrenderdevice.h\n2) Why not stash the implementation in core/fxge/cfx_defaultrenderdevice.cpp? It exists now.",
       "revId": "ac85b9e8191cca5edd8417165777a2f8c8ebc262",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1cfbe99_ff73b900",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-19T18:13:15Z",
+      "side": 1,
+      "message": "Done.\n\nI think the original thought I had to having it defined twice was that maybe the compiler might be able to inline this check when Skia wasn\u0027t defined.  From there, it happened to devolve into an admittedly silly looking duplicate when it didn\u0027t have the later use of the runtime variable (that will come in a later CL after breaking up that original large CL).",
+      "parentUuid": "6d91c616_37204da8",
+      "revId": "ac85b9e8191cca5edd8417165777a2f8c8ebc262",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
