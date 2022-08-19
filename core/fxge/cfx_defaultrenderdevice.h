@@ -43,6 +43,8 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
                        BlendMode blend_type) override;
 #endif
 
+  static bool SkiaIsDefaultRenderer();
+
  private:
   bool AttachImpl(RetainPtr<CFX_DIBitmap> pBitmap,
                   bool bRgbByteOrder,
