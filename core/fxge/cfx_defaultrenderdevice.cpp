@@ -8,6 +8,14 @@
 
 #include "core/fxge/dib/cfx_dibitmap.h"
 
+CFX_DefaultRenderDevice::CFX_DefaultRenderDevice() = default;
+
+CFX_DefaultRenderDevice::~CFX_DefaultRenderDevice() {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  Flush(true);
+#endif
+}
+
 bool CFX_DefaultRenderDevice::Attach(RetainPtr<CFX_DIBitmap> pBitmap) {
   return AttachWithRgbByteOrder(std::move(pBitmap), false);
 }
@@ -24,4 +32,28 @@ bool CFX_DefaultRenderDevice::AttachWithBackdropAndGroupKnockout(
     bool bGroupKnockout) {
   return AttachImpl(std::move(pBitmap), false, std::move(pBackdropBitmap),
                     bGroupKnockout);
+}
+
+bool CFX_DefaultRenderDevice::CFX_DefaultRenderDevice::AttachImpl(
+    RetainPtr<CFX_DIBitmap> pBitmap,
+    bool bRgbByteOrder,
+    RetainPtr<CFX_DIBitmap> pBackdropBitmap,
+    bool bGroupKnockout) {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  return AttachSkiaImpl(pBitmap, bRgbByteOrder, pBackdropBitmap,
+                        bGroupKnockout);
+#else
+  return AttachAggImpl(pBitmap, bRgbByteOrder, pBackdropBitmap, bGroupKnockout);
+#endif
+}
+
+bool CFX_DefaultRenderDevice::Create(int width,
+                                     int height,
+                                     FXDIB_Format format,
+                                     RetainPtr<CFX_DIBitmap> pBackdropBitmap) {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  return CreateSkia(width, height, format, pBackdropBitmap);
+#else
+  return CreateAgg(width, height, format, pBackdropBitmap);
+#endif
 }
