@@ -8,6 +8,17 @@
 
 #include "core/fxge/dib/cfx_dibitmap.h"
 
+// static
+bool SkiaIsDefaultRenderer() {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // TODO(crbug.com/pdfium/1878) This will become variable-based once a method
+  // is provided to set the default at runtime.
+  return true;
+#else
+  return false;
+#endif
+}
+
 bool CFX_DefaultRenderDevice::Attach(RetainPtr<CFX_DIBitmap> pBitmap) {
   return AttachWithRgbByteOrder(std::move(pBitmap), false);
 }
