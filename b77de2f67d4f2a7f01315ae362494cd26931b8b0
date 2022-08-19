@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8e0770_ae76dd25",
+        "filename": "core/fxcrt/fx_memory_pa.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-19T20:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "229d7da1_6899e9f7",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b77de2f67d4f2a7f01315ae362494cd26931b8b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fb7423e_5fab63c6",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-19T20:45:53Z",
       "side": 1,
       "message": "Is this needed?",
+      "revId": "b77de2f67d4f2a7f01315ae362494cd26931b8b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e485318_533b914c",
+        "filename": "core/fxcrt/fx_memory_pa.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-19T20:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fb7423e_5fab63c6",
       "revId": "b77de2f67d4f2a7f01315ae362494cd26931b8b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
