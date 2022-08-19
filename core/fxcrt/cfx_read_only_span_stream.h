@@ -21,6 +21,11 @@ class CFX_ReadOnlySpanStream final : public IFX_SeekableReadStream {
                          FX_FILESIZE offset,
                          size_t size) override;
 
+  static bool ReadBlockAtOffsetFromSpan(pdfium::span<const uint8_t> span,
+                                        void* buffer,
+                                        FX_FILESIZE offset,
+                                        size_t size);
+
  private:
   explicit CFX_ReadOnlySpanStream(pdfium::span<const uint8_t> span);
   ~CFX_ReadOnlySpanStream() override;
