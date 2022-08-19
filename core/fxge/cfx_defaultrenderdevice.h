@@ -43,6 +43,14 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
                        BlendMode blend_type) override;
 #endif
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // TODO(crbug.com/pdfium/11) This will become variable-based once a method
+  // is provided to set the default at runtime.
+  static bool SkiaIsDefaultRenderer() { return true; }
+#else
+  static bool SkiaIsDefaultRenderer() { return false; }
+#endif
+
  private:
   bool AttachImpl(RetainPtr<CFX_DIBitmap> pBitmap,
                   bool bRgbByteOrder,
