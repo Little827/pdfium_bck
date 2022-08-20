@@ -14,6 +14,8 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/span.h"
 
+class CFX_ReadOnlySpanStream;
+
 class CFX_ReadOnlyMemoryStream final : public IFX_SeekableReadStream {
  public:
   CONSTRUCT_VIA_MAKE_RETAIN;
@@ -30,7 +32,7 @@ class CFX_ReadOnlyMemoryStream final : public IFX_SeekableReadStream {
   ~CFX_ReadOnlyMemoryStream() override;
 
   std::unique_ptr<uint8_t, FxFreeDeleter> m_data;
-  const pdfium::span<const uint8_t> m_span;
+  RetainPtr<CFX_ReadOnlySpanStream> m_stream;
 };
 
 #endif  // CORE_FXCRT_CFX_READ_ONLY_MEMORY_STREAM_H_
