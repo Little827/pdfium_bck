@@ -56,6 +56,24 @@
       "message": "So a bitmap that had the `kCleared` state still needs to be pre-multiplied? Similarly, in UnPreMultiply(), bitmap that had the `kCleared` state needs to be un-pre-multiplied?",
       "revId": "d846318470704acbed1e9dfed42c98384edcc07b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1ab90c_4491b294",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-23T23:51:49Z",
+      "side": 1,
+      "message": "More generally, it is difficult to reason about the state of the bitmap, because of this conditional. There can be PreMultiply() calls in the code that have no reason to be there, because the bitmap is already pre-multiplied. This conditional masks the issue by turning it into a no-op.\n\nFor instance. I suspect the UnPreMultiply() in FPDF_RenderPage_Continue() may be unnecessary. It\u0027s sort of pre-existing, so this is ok for now, but I think we should do a follow-up to:\n1) change these to CHECKs.\n2) fix callers to avoid the CHECKs.",
+      "parentUuid": "942933a0_4b830719",
+      "revId": "d846318470704acbed1e9dfed42c98384edcc07b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
