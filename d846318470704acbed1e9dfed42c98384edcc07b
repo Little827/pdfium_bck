@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7618cdf_69e33dde",
+        "filename": "DEPS",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-23T23:31:51Z",
+      "side": 1,
+      "message": "Send this CL out for review?",
+      "range": {
+        "startLine": 125,
+        "startChar": 44,
+        "endLine": 125,
+        "endChar": 49
+      },
+      "revId": "d846318470704acbed1e9dfed42c98384edcc07b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9035e5ba_aa7ff5f6",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-23T23:31:51Z",
+      "side": 1,
+      "message": "This variable\u0027s scope can be narrower now, or it can be omitted altogether.",
+      "revId": "d846318470704acbed1e9dfed42c98384edcc07b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942933a0_4b830719",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-23T23:31:51Z",
+      "side": 1,
+      "message": "So a bitmap that had the `kCleared` state still needs to be pre-multiplied? Similarly, in UnPreMultiply(), bitmap that had the `kCleared` state needs to be un-pre-multiplied?",
+      "revId": "d846318470704acbed1e9dfed42c98384edcc07b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
