@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c77c9f62_03c7246c",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-23T06:28:24Z",
+      "side": 1,
+      "message": "Thinking about the comments here and https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1878#c3, I\u0027m concerned establishing a convention that implicitly assumes some case is SkiaPaths can be:\n- Hard to read / requires the reader to know this very specific convention.\n- Difficult to deal with, if the assumptions made about SkiaPaths are no longer true in the future.\n\nOne can put in comments, but because they are just comments, one can easily forget or put in the wrong comment, and that has no affect on actual test behavior. If one has to go through the trouble of adding something to explicitly mark the places that are for SkiaPaths, then it would be useful for that work to carry some weight. e.g. something like:\n\n```\nconst char* checksum \u003d []() {\n  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())\n    return \"df9fe67555b7ceb59c99036e8d2c1c76\";\n  if (CFX_DefaultRenderDevice::SkiaPathsIsDefaultRenderer())\n    return \"9fe7eef8e51d15a604001854be6ed1ee\";\n#if BUILDFLAG(IS_APPLE)\n  return \"2a308e8cc20a6221112c387d122075a8\";\n#else\n  return \"9fe7eef8e51d15a604001854be6ed1ee\";\n#endif\n}();\n```\n\nOr to preserve the existing logic, maybe something like:\n\n```\nconst char* checksum \u003d []() {\n  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())\n    return \"df9fe67555b7ceb59c99036e8d2c1c76\";\n#if BUILDFLAG(IS_APPLE)\n  if (!CFX_DefaultRenderDevice::SkiaPathsIsDefaultRenderer())\n    return \"2a308e8cc20a6221112c387d122075a8\";\n#endif\n  return \"9fe7eef8e51d15a604001854be6ed1ee\";\n}();\n```\n\nThen it would be much easier to spot all the spots where SkiaPaths behaves differently. Unlike comments, the logic has to be correct, or tests will fail.",
+      "parentUuid": "65f1235b_c41b1319",
+      "revId": "450ebe2579e159ac5f0b4f538e13975c5fec03ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17c89463_0ec624e5",
         "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
         "patchSetId": 3
