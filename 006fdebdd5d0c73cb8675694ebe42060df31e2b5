@@ -33,6 +33,24 @@
       "message": "Is this still needed?",
       "revId": "006fdebdd5d0c73cb8675694ebe42060df31e2b5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7904aa4_c885bf0b",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-24T01:27:33Z",
+      "side": 1,
+      "message": "Ah, not anymore.  Removed.",
+      "parentUuid": "6a4190d3_e7939c45",
+      "revId": "006fdebdd5d0c73cb8675694ebe42060df31e2b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
