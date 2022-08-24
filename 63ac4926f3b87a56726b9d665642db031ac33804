@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "026c2008_56b69532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T04:52:25Z",
+      "side": 1,
+      "message": "After we decided on using separate Skia and SkiaPaths renderer indication functions, the latest patchset LGTM. ",
+      "revId": "63ac4926f3b87a56726b9d665642db031ac33804",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
