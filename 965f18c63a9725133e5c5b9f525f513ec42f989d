@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bccbf9_eedefd18",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T21:21:28Z",
+      "side": 1,
+      "message": "Optional: When we first updated the Skia/SkiaPaths hash values for the embeddertests, we made a decision to change \"md5\" to \"checksum\" for naming. Going forward, feel free to change \"MD5xxxxx\" to \"xxxx_checksum\".",
+      "range": {
+        "startLine": 891,
+        "startChar": 14,
+        "endLine": 891,
+        "endChar": 26
+      },
+      "revId": "965f18c63a9725133e5c5b9f525f513ec42f989d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
