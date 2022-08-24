@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ef1c6d_5b28f3c1",
+        "filename": "core/fxge/win32/cgdi_device_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-24T21:07:20Z",
+      "side": 1,
+      "message": "Are the explict casts necessary?",
+      "revId": "be41483c114409d012a21478dbfa6c999c8e0bde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
