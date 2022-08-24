@@ -92,6 +92,24 @@
       "parentUuid": "942933a0_4b830719",
       "revId": "d846318470704acbed1e9dfed42c98384edcc07b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056a9bf4_a1830e15",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T18:07:17Z",
+      "side": 1,
+      "message": "`kCleared` format doesn\u0027t guarantee that the `CFX_DIBitmap` has no alpha channel.\n\n`m_nFormat` doesn\u0027t get changed until UnPreMultiply() or PreMultiply() is called. So if any (non-Skia) drawing happened after the `CFX_DIBitmap` is created, the bitmap is unpremultiplied.\n\nAn example is in CFX_RenderDevice::DrawNormalText(): the comment says \"DrawNormalTextHelper() can result unpremultipled bitmaps...\"\n\nBasically when m_nFormat \u003d\u003d`kCleared`, the bitmap is unpremultiplied.\n\nI think it would be nice to get rid of `kCleared` and make the `m_nFormat` reflect the actual premultiplied status. I am gonna explore this option.",
+      "parentUuid": "9f1ab90c_4491b294",
+      "revId": "d846318470704acbed1e9dfed42c98384edcc07b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
