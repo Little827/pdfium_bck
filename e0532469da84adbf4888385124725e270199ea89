@@ -22,6 +22,30 @@
       },
       "revId": "e0532469da84adbf4888385124725e270199ea89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecbc6cc_d7f9f483",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-24T17:40:30Z",
+      "side": 1,
+      "message": "Done, although I didn\u0027t notice where this is called out for as needed in the style guid.",
+      "parentUuid": "34ea6a16_2f73da81",
+      "range": {
+        "startLine": 381,
+        "startChar": 6,
+        "endLine": 381,
+        "endChar": 48
+      },
+      "revId": "e0532469da84adbf4888385124725e270199ea89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
