@@ -2596,7 +2596,7 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
   Flush();
   if (!m_pBitmap->GetBuffer())
     return true;
-  m_pBitmap->UnPreMultiply();
+
   *handle = std::make_unique<CFX_ImageRenderer>(
       m_pBitmap, m_pClipRgn.get(), pSource, bitmap_alpha, argb, matrix, options,
       m_bRgbByteOrder);
@@ -2630,15 +2630,16 @@ void CFX_SkiaDeviceDriver::PreMultiply(
 void CFX_DIBitmap::PreMultiply() {
   if (this->GetBPP() != 32)
     return;
+
   void* buffer = this->GetBuffer();
   if (!buffer)
     return;
-#if defined(_SKIA_SUPPORT_PATHS_)
+
   Format priorFormat = m_nFormat;
   m_nFormat = Format::kPreMultiplied;
-  if (priorFormat != Format::kUnPreMultiplied)
+  if (priorFormat == Format::kPreMultiplied)
     return;
-#endif
+
   int height = this->GetHeight();
   int width = this->GetWidth();
   int rowBytes = this->GetPitch();
@@ -2652,17 +2653,20 @@ void CFX_DIBitmap::PreMultiply() {
   this->DebugVerifyBitmapIsPreMultiplied();
 }
 
-#if defined(_SKIA_SUPPORT_PATHS_)
 void CFX_DIBitmap::UnPreMultiply() {
   if (this->GetBPP() != 32)
     return;
+
   void* buffer = this->GetBuffer();
   if (!buffer)
     return;
+
   Format priorFormat = m_nFormat;
   m_nFormat = Format::kUnPreMultiplied;
-  if (priorFormat != Format::kPreMultiplied)
+
+  if (priorFormat == Format::kUnPreMultiplied)
     return;
+
   this->DebugVerifyBitmapIsPreMultiplied();
   int height = this->GetHeight();
   int width = this->GetWidth();
@@ -2675,7 +2679,6 @@ void CFX_DIBitmap::UnPreMultiply() {
   SkPixmap unpremultiplied(unpremultipliedInfo, buffer, rowBytes);
   premultiplied.readPixels(unpremultiplied);
 }
-#endif  // defined(_SKIA_SUPPORT_PATHS_)
 
 #if defined(_SKIA_SUPPORT_)
 bool CFX_SkiaDeviceDriver::DrawBitsWithMask(
