@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb65522d_6dbb16bf",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-24T23:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edcf0eed_6a6806ff",
+      "range": {
+        "startLine": 1920,
+        "startChar": 14,
+        "endLine": 1920,
+        "endChar": 32
+      },
+      "revId": "a405e7d49a55ed1c8dc40d49d92e8a7b526e43d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24d45364_0ea12db3",
@@ -64,6 +88,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d37ed8_228bc166",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-24T23:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d45364_0ea12db3",
+      "range": {
+        "startLine": 2275,
+        "startChar": 16,
+        "endLine": 2275,
+        "endChar": 19
+      },
+      "revId": "a405e7d49a55ed1c8dc40d49d92e8a7b526e43d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de09fff_006fed23",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-24T23:17:52Z",
       "side": 1,
       "message": "Rename to `kChecksum` to be consistent with the rest of the file.",
+      "range": {
+        "startLine": 3209,
+        "startChar": 24,
+        "endLine": 3209,
+        "endChar": 28
+      },
+      "revId": "a405e7d49a55ed1c8dc40d49d92e8a7b526e43d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6d5230_d8c6f864",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3209,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-24T23:35:46Z",
+      "side": 1,
+      "message": "Done, and I did likewise for other \"md5\" occurrences that were contained completely within this file.  (E.g., I didn\u0027t touch `GenerateMD5Base16()`.)",
+      "parentUuid": "8de09fff_006fed23",
       "range": {
         "startLine": 3209,
         "startChar": 24,
