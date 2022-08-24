@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c54866f_eaf2952a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T23:17:52Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "a405e7d49a55ed1c8dc40d49d92e8a7b526e43d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edcf0eed_6a6806ff",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T23:17:52Z",
+      "side": 1,
+      "message": "Rename it to `plus_rectangle_checksum`.",
+      "range": {
+        "startLine": 1920,
+        "startChar": 14,
+        "endLine": 1920,
+        "endChar": 32
+      },
+      "revId": "a405e7d49a55ed1c8dc40d49d92e8a7b526e43d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d45364_0ea12db3",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T23:17:52Z",
+      "side": 1,
+      "message": "rename the hash value.",
+      "range": {
+        "startLine": 2275,
+        "startChar": 16,
+        "endLine": 2275,
+        "endChar": 19
+      },
+      "revId": "a405e7d49a55ed1c8dc40d49d92e8a7b526e43d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de09fff_006fed23",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3209,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T23:17:52Z",
+      "side": 1,
+      "message": "Rename to `kChecksum` to be consistent with the rest of the file.",
+      "range": {
+        "startLine": 3209,
+        "startChar": 24,
+        "endLine": 3209,
+        "endChar": 28
+      },
+      "revId": "a405e7d49a55ed1c8dc40d49d92e8a7b526e43d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
