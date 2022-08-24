@@ -46,6 +46,30 @@
       },
       "revId": "e0532469da84adbf4888385124725e270199ea89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfad3f2_2a2d48c8",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-24T17:43:14Z",
+      "side": 1,
+      "message": "We discussed this topic on https://pdfium-review.googlesource.com/c/pdfium/+/96871/comment/7b8832e5_ee2af9fc",
+      "parentUuid": "2ecbc6cc_d7f9f483",
+      "range": {
+        "startLine": 381,
+        "startChar": 6,
+        "endLine": 381,
+        "endChar": 48
+      },
+      "revId": "e0532469da84adbf4888385124725e270199ea89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
