@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55207fde_40fdf20a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-24T01:19:36Z",
+      "side": 1,
+      "message": "nigi@ should review again, since my opinion of patch set 8 is biased.",
+      "revId": "006fdebdd5d0c73cb8675694ebe42060df31e2b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
