@@ -22,6 +22,30 @@
       },
       "revId": "52fd66bf2e6b9bf990bf0b294c45a908afdde98e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8a07be_8f701560",
+        "filename": "xfa/fde/cfde_textout_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-24T16:46:18Z",
+      "side": 1,
+      "message": "Having related returns (the if and else values for the line 120 conditional) close together is not uncommon. e.g. core/fpdfapi/font/cfx_cttgsubtable.cpp 254 or core/fpdfapi/font/cpdf_cidfont.cpp 323.\n\nThe separation makes more sense when the \"else\" block is not closely related. e.g.\n\n```\nif (has_error_conditional)\n  return false;\n  \n// Do some work unrelated to error checking here.\nreturn true;\n```",
+      "parentUuid": "a2c8a5ae_cf2fcf1e",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 48
+      },
+      "revId": "52fd66bf2e6b9bf990bf0b294c45a908afdde98e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
