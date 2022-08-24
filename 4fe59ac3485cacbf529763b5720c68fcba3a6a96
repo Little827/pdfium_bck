@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa2d202_214eda28",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-24T01:10:32Z",
+      "side": 1,
+      "message": "\"renderer\"?",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "4fe59ac3485cacbf529763b5720c68fcba3a6a96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
