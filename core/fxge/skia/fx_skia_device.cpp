@@ -23,6 +23,7 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/cfx_bitstream.h"
+#include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/stl_util.h"
@@ -202,7 +203,7 @@ void DebugShowSkiaPath(const SkPath& path) {
 #else
   SkDynamicMemoryWStream stream;
   path.dump(&stream, false);
-  std::vector<char> storage(stream.bytesWritten());
+  DataVector<char> storage(stream.bytesWritten());
   stream.copyTo(storage.data());
   printf("%.*s", static_cast<int>(storage.size()), storage.data());
 #endif  // SHOW_SKIA_PATH_SHORTHAND
@@ -656,8 +657,8 @@ void SetBitmapPaintForMerge(bool is_mask,
 }
 
 bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
-              std::vector<uint8_t>& dst8_storage,
-              std::vector<uint32_t>& dst32_storage,
+              DataVector<uint8_t>& dst8_storage,
+              DataVector<uint32_t>& dst32_storage,
               SkBitmap* skBitmap,
               int* widthPtr,
               int* heightPtr,
@@ -676,7 +677,8 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
   int rowBytes = pSource->GetPitch();
   switch (pSource->GetBPP()) {
     case 1: {
-      dst8_storage = fxcrt::Vector2D<uint8_t>(width, height);
+      dst8_storage =
+          fxcrt::Vector2D<uint8_t, FxAllocAllocator<uint8_t>>(width, height);
       uint8_t* dst8Pixels = dst8_storage.data();
       // By default, the two colors for grayscale are 0xFF and 0x00 unless they
       // are specified in the palette.
@@ -706,7 +708,8 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
     case 8:
       // we upscale ctables to 32bit.
       if (pSource->HasPalette()) {
-        dst32_storage = fxcrt::Vector2D<uint32_t>(width, height);
+        dst32_storage = fxcrt::Vector2D<uint32_t, FxAllocAllocator<uint32_t>>(
+            width, height);
         SkPMColor* dst32Pixels = dst32_storage.data();
         const size_t src_palette_size = pSource->GetRequiredPaletteSize();
         pdfium::span<const uint32_t> src_palette = pSource->GetPaletteSpan();
@@ -729,7 +732,8 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
       }
       break;
     case 24: {
-      dst32_storage = fxcrt::Vector2D<uint32_t>(width, height);
+      dst32_storage =
+          fxcrt::Vector2D<uint32_t, FxAllocAllocator<uint32_t>>(width, height);
       uint32_t* dst32Pixels = dst32_storage.data();
       for (int y = 0; y < height; ++y) {
         const uint8_t* srcRow =
@@ -1616,7 +1620,7 @@ void CFX_SkiaDeviceDriver::PaintStroke(SkPaint* spaint,
                std::min(deviceUnits[0].length(), deviceUnits[1].length()));
   if (!pGraphState->m_DashArray.empty()) {
     size_t count = (pGraphState->m_DashArray.size() + 1) / 2;
-    std::vector<SkScalar> intervals(count * 2);
+    DataVector<SkScalar> intervals(count * 2);
     // Set dash pattern
     for (size_t i = 0; i < count; i++) {
       float on = pGraphState->m_DashArray[i * 2];
@@ -2542,8 +2546,8 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
   m_pCache->FlushForDraw();
   DebugValidate(m_pBitmap, m_pBackdropBitmap);
   // Storage vectors must outlive `skBitmap`.
-  std::vector<uint8_t> dst8_storage;
-  std::vector<uint32_t> dst32_storage;
+  DataVector<uint8_t> dst8_storage;
+  DataVector<uint32_t> dst32_storage;
   SkBitmap skBitmap;
   int width;
   int height;
@@ -2686,10 +2690,10 @@ bool CFX_SkiaDeviceDriver::DrawBitsWithMask(
     BlendMode blend_type) {
   DebugValidate(m_pBitmap, m_pBackdropBitmap);
   // Storage vectors must outlive `skBitmap` and `skMask`.
-  std::vector<uint8_t> src8_storage;
-  std::vector<uint8_t> mask8_storage;
-  std::vector<uint32_t> src32_storage;
-  std::vector<uint32_t> mask32_storage;
+  DataVector<uint8_t> src8_storage;
+  DataVector<uint8_t> mask8_storage;
+  DataVector<uint32_t> src32_storage;
+  DataVector<uint32_t> mask32_storage;
   SkBitmap skBitmap;
   SkBitmap skMask;
   int srcWidth;
