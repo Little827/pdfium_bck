@@ -531,14 +531,13 @@ void CXFA_ViewLayoutProcessor::SubmitContentItem(
     CXFA_ContentLayoutItem* pContentLayoutItem,
     CXFA_ContentLayoutProcessor::Result eStatus) {
   if (pContentLayoutItem) {
-    if (!HasCurrentViewRecord())
+    CXFA_ViewRecord* pViewRecord = GetCurrentViewRecord();
+    if (!pViewRecord)
       return;
 
-    GetCurrentViewRecord()->pCurContentArea->AppendLastChild(
-        pContentLayoutItem);
+    pViewRecord->pCurContentArea->AppendLastChild(pContentLayoutItem);
     m_bCreateOverFlowPage = false;
   }
-
   if (eStatus != CXFA_ContentLayoutProcessor::Result::kDone) {
     if (eStatus == CXFA_ContentLayoutProcessor::Result::kPageFullBreak &&
         m_CurrentViewRecordIter == GetTailPosition()) {
@@ -550,10 +549,11 @@ void CXFA_ViewLayoutProcessor::SubmitContentItem(
 }
 
 float CXFA_ViewLayoutProcessor::GetAvailHeight() {
-  if (!HasCurrentViewRecord())
+  CXFA_ViewRecord* pViewRecord = GetCurrentViewRecord();
+  if (!pViewRecord)
     return 0.0f;
 
-  CXFA_ViewLayoutItem* pLayoutItem = GetCurrentViewRecord()->pCurContentArea;
+  CXFA_ViewLayoutItem* pLayoutItem = pViewRecord->pCurContentArea;
   if (!pLayoutItem || !pLayoutItem->GetFormNode())
     return 0.0f;
 
@@ -1523,10 +1523,11 @@ void CXFA_ViewLayoutProcessor::ProcessLastPageSet() {
 }
 
 bool CXFA_ViewLayoutProcessor::GetNextAvailContentHeight(float fChildHeight) {
-  if (!HasCurrentViewRecord())
+  CXFA_ViewRecord* pViewRecord = GetCurrentViewRecord();
+  if (!pViewRecord)
     return false;
-  CXFA_Node* pCurContentNode =
-      GetCurrentViewRecord()->pCurContentArea->GetFormNode();
+
+  CXFA_Node* pCurContentNode = pViewRecord->pCurContentArea->GetFormNode();
   if (!pCurContentNode)
     return false;
 
