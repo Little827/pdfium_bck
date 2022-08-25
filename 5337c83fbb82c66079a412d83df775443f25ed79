@@ -16,6 +16,24 @@
       "message": "The alternative is to reset `m_pFont` here when handling the failure.",
       "revId": "5337c83fbb82c66079a412d83df775443f25ed79",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7198f7a_934e1998",
+        "filename": "xfa/fgas/font/cfgas_gefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-08-25T20:32:38Z",
+      "side": 0,
+      "message": "Nah, this is better, we are going to discard on failure.",
+      "parentUuid": "540ee62d_5bff54be",
+      "revId": "5337c83fbb82c66079a412d83df775443f25ed79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
