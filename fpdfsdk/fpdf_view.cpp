@@ -193,6 +193,29 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
     void* platform = config->version >= 3 ? config->m_pPlatform : nullptr;
     IJS_Runtime::Initialize(config->m_v8EmbedderSlot, config->m_pIsolate,
                             platform);
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    if (config->version >= 3) {
+      switch (config->m_RendererType) {
+        case FPDF_RENDERERTYPE_AGG:
+          CFX_DefaultRenderDevice::SetDefaultRenderer(
+              /*use_skia=*/false);
+          break;
+#if defined(_SKIA_SUPPORT_)
+        case FPDF_RENDERERTYPE_SKIA:
+#endif
+#if defined(_SKIA_SUPPORT_PATHS_)
+        case FPDF_RENDERERTYPE_SKIAPATHS:
+#endif
+          CFX_DefaultRenderDevice::SetDefaultRenderer(
+              /*use_skia=*/true);
+          break;
+        default:
+          // Invalid option, ignore.
+          break;
+      }
+    }
+#endif
   }
   g_bLibraryInitialized = true;
 }
