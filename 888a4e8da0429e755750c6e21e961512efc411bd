@@ -34,6 +34,24 @@
       "parentUuid": "9fc20162_c6b4f819",
       "revId": "888a4e8da0429e755750c6e21e961512efc411bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d120807b_d5ad523f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-25T01:44:07Z",
+      "side": 1,
+      "message": "For Windows, IS_PARTITION_ALLOC_IMPL needs to be defined, like it is in Chromium\u0027s base/BUILD.gn right now. https://crrev.com/c/3817876, which is also trying to fix the Mac component build, may remove it.",
+      "parentUuid": "6fbc1815_9bea5a03",
+      "revId": "888a4e8da0429e755750c6e21e961512efc411bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
