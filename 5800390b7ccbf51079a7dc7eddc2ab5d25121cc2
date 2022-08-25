@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107ca14c_804ab404",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-25T18:11:55Z",
+      "side": 1,
+      "message": "1) This is not sujfficiently const. It should remain constexpr const char*, which is roughly the same as const char* const. Note the inconsistency with `checksum2`.\n2) Once it\u0027s const, it can be named kFoo again.\n3) `checksum1` and `checksum2` have completely separate scopes, so they do not need different names.",
+      "revId": "5800390b7ccbf51079a7dc7eddc2ab5d25121cc2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
