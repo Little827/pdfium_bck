@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41da3cae_63fae059",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-25T17:15:59Z",
+      "side": 1,
+      "message": "This is the CL testing the updated corpus tests https://pdfium-review.googlesource.com/c/pdfium_tests/+/96895/",
+      "revId": "a5ed7517e2c7e53a5647d06f3d69f818a8bc63b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
