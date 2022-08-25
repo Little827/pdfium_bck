@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768ecdcc_a7430081",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-25T17:12:02Z",
+      "side": 1,
+      "message": "Need to pass the color to be used to clear the bitmap.\nOne call uses 0xffffffff and the other one uses 0.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 55
+      },
+      "revId": "4eb3c91eece8b78b6a4de21b30252ea29ecc8800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
