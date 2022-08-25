@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a9bf7c_a5da6f16",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-25T19:32:34Z",
+      "side": 1,
+      "message": "Nice DCHECK here!\nMaybe we can split this into two separate DCHECKs?",
+      "range": {
+        "startLine": 278,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 65
+      },
+      "revId": "41b7e523d366b8963f946e743f253758168a6583",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2564e091_e6a4422b",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-25T19:32:34Z",
+      "side": 1,
+      "message": "I couldn\u0027t decide which way is better:\n  \n#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\nif (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ||\n      CFX_DefaultRenderDevice::SkiaPathsIsDefaultRenderer()) {\n    device-\u003eFlush(false);\n}\n#endif\n\n \nor \n\nif (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ||\n      CFX_DefaultRenderDevice::SkiaPathsIsDefaultRenderer()) {\n#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\n    device-\u003eFlush(false);\n#endif\n} \n\nThe latter one can avoid doing the conditional include at line 29. In that case, including \"core/fxge/cfx_defaultrenderdevice.h\" will be unconditional just like other files changed in this CL.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 60
+      },
+      "revId": "41b7e523d366b8963f946e743f253758168a6583",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
