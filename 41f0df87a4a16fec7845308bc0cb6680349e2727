@@ -22,6 +22,30 @@
       },
       "revId": "41f0df87a4a16fec7845308bc0cb6680349e2727",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "765e96cc_14c82807",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-25T19:10:05Z",
+      "side": 1,
+      "message": "Surprised it wasn\u0027t there already. Done.",
+      "parentUuid": "94435800_07c96e6d",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "41f0df87a4a16fec7845308bc0cb6680349e2727",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
