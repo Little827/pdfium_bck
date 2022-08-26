@@ -77,19 +77,18 @@ bool CFX_FileBufferArchive::WriteBlock(const void* pBuf, size_t size) {
   DCHECK(pBuf);
   DCHECK(size > 0);
 
-  const uint8_t* buffer = reinterpret_cast<const uint8_t*>(pBuf);
-  size_t temp_size = size;
-  while (temp_size) {
-    size_t buf_size = std::min(kArchiveBufferSize - current_length_, temp_size);
-    fxcrt::spancpy(pdfium::make_span(buffer_).subspan(current_length_),
-                   pdfium::make_span(buffer, buf_size));
-
-    current_length_ += buf_size;
+  pdfium::span<const uint8_t> src_span(reinterpret_cast<const uint8_t*>(pBuf),
+                                       size);
+  while (!src_span.empty()) {
+    pdfium::span<uint8_t> dst_span =
+        pdfium::make_span(buffer_).subspan(current_length_);
+    size_t copy_size = std::min(dst_span.size(), src_span.size());
+    fxcrt::spancpy(dst_span, src_span.first(copy_size));
+    current_length_ += copy_size;
     if (current_length_ == kArchiveBufferSize && !Flush())
       return false;
 
-    temp_size -= buf_size;
-    buffer += buf_size;
+    src_span = src_span.subspan(copy_size);
   }
 
   FX_SAFE_FILESIZE safe_offset = offset_;
