@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b187a291_0450c400",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 35
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-26T21:02:41Z",
+      "side": 1,
+      "message": "This time, it needs to be an absolute path, so it points to //base in both PDFium and Chromium.",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 21
+      },
+      "revId": "f208bdd780484400889e98ed57f8b1c923c2c56b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
