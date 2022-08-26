@@ -316,7 +316,7 @@ RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
   int first_char = m_WordBuffer[0];
   if (first_char == '/') {
     ByteString name =
-        PDF_NameDecode(ByteStringView(m_WordBuffer + 1, m_WordSize - 1));
+        PDF_NameDecode(ByteStringView(m_WordBuffer, m_WordSize).Substr(1));
     return pdfium::MakeRetain<CPDF_Name>(m_pPool, name);
   }
 
@@ -339,7 +339,7 @@ RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
         return nullptr;
 
       ByteString key =
-          PDF_NameDecode(ByteStringView(m_WordBuffer + 1, m_WordSize - 1));
+          PDF_NameDecode(ByteStringView(m_WordBuffer, m_WordSize).Substr(1));
       RetainPtr<CPDF_Object> pObj =
           ReadNextObject(true, bInArray, dwRecursionLevel + 1);
       if (!pObj)
