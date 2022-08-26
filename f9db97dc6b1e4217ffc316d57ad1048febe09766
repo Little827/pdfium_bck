@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "207a4cf8_53635fb0",
+        "filename": "testing/resources/pixel/bug_1356149.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-26T19:51:01Z",
+      "side": 1,
+      "message": "The font size needs to stay small or it won\u0027t reproduce the issue on macOS.\nFor example, this issue will be gone if the font size is 20.",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "f9db97dc6b1e4217ffc316d57ad1048febe09766",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
