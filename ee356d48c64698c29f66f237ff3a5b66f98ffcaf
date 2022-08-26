@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d266eed_cf0e5f92",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 32
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-26T20:08:11Z",
+      "side": 1,
+      "message": "s/chromium/PDFium/ here and on the next line.",
+      "range": {
+        "startLine": 5,
+        "startChar": 64,
+        "endLine": 5,
+        "endChar": 72
+      },
+      "revId": "ee356d48c64698c29f66f237ff3a5b66f98ffcaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc70978c_9248ce2a",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 32
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-26T20:08:11Z",
+      "side": 1,
+      "message": "Huh, it used to work, but ok.",
+      "revId": "ee356d48c64698c29f66f237ff3a5b66f98ffcaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff218954_83eee70c",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 32
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-26T20:08:11Z",
+      "side": 1,
+      "message": "Is this applicable? If not, remove?",
+      "revId": "ee356d48c64698c29f66f237ff3a5b66f98ffcaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c739b82_9137914d",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 32
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-26T20:08:11Z",
+      "side": 1,
+      "message": "Does PDFium make use of this?",
+      "revId": "ee356d48c64698c29f66f237ff3a5b66f98ffcaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
