@@ -49,6 +49,12 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
   // Runtime check to see if SkiaPaths is the renderer variant in use.
   static bool SkiaPathsIsDefaultRenderer();
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // Update default renderer.  `use_skia` is true for Skia/SkiaPaths (depending
+  // upon build configuration), false for AGG.
+  static void SetDefaultRenderer(bool use_skia);
+#endif
+
  private:
   bool AttachImpl(RetainPtr<CFX_DIBitmap> pBitmap,
                   bool bRgbByteOrder,
