@@ -34,6 +34,24 @@
       "parentUuid": "484edb5e_a01c307d",
       "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa96041b_170f967f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-26T23:14:12Z",
+      "side": 1,
+      "message": "FYI, doing an official Chrome Linux build with chrome_pgo_phase\u003d0 only saw a 4 KB decrease in binary size. I would have expected a little more, but that\u0027s how it is.",
+      "parentUuid": "66801487_6c39132e",
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
