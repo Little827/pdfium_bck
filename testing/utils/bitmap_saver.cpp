@@ -11,9 +11,9 @@
 #include "testing/image_diff/image_diff_png.h"
 #include "third_party/base/check.h"
 
-// static
-void BitmapSaver::WriteBitmapToPng(FPDF_BITMAP bitmap,
-                                   const std::string& filename) {
+namespace {
+
+std::vector<uint8_t> BitmapToPng(FPDF_BITMAP bitmap) {
   const int stride = FPDFBitmap_GetStride(bitmap);
   const int width = FPDFBitmap_GetWidth(bitmap);
   const int height = FPDFBitmap_GetHeight(bitmap);
@@ -36,7 +36,27 @@ void BitmapSaver::WriteBitmapToPng(FPDF_BITMAP bitmap,
     png = image_diff_png::EncodeBGRAPNG(input, width, height, stride,
                                         /*discard_transparency=*/false);
   }
+  return png;
+}
 
+}  // namespace
+
+// static
+void BitmapSaver::PrintBitmapAsPngString(FPDF_BITMAP bitmap) {
+  std::vector<uint8_t> png = BitmapToPng(bitmap);
+  int i = 0;
+  for (uint8_t d : png) {
+    printf("%02x", d);
+    if (++i % 40 == 0)
+      printf("\n");
+  }
+  printf("\n");
+}
+
+// static
+void BitmapSaver::WriteBitmapToPng(FPDF_BITMAP bitmap,
+                                   const std::string& filename) {
+  std::vector<uint8_t> png = BitmapToPng(bitmap);
   DCHECK(!png.empty());
   DCHECK(filename.size() < 256u);
 

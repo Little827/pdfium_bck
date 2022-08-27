@@ -14,6 +14,7 @@
 #include "testing/embedder_test_environment.h"
 #include "testing/embedder_test_timer_handling_delegate.h"
 #include "testing/gtest/include/gtest/gtest.h"
+#include "testing/utils/bitmap_saver.h"
 #include "testing/xfa_js_embedder_test.h"
 
 namespace {
@@ -236,9 +237,9 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_DateTimePickerTest) {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
 
-    // TODO(tsepez): hermetic fonts.
-    // const char kCalendarOpenMD5[] = "02de64e7e83c82c1ef0ae484d671a51d";
-    // CompareBitmap(page_bitmap.get(), 612, 792, kCalendarOpenMD5);
+    const char kCalendarOpenMD5[] = "3f36bd5c525312fcb1e3048b26637478";
+    CompareBitmap(page_bitmap.get(), 612, 792, kCalendarOpenMD5);
+    BitmapSaver::PrintBitmapAsPngString(page_bitmap.get());
   }
 
   // Click on date on calendar, putting result into field as text.
@@ -248,9 +249,8 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_DateTimePickerTest) {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
 
-    // TODO(tsepez): hermetic fonts.
-    // const char kFilledMD5[] = "1bce66c11f1c87b8d639ce0076ac36d3";
-    // CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
+    const char kFilledMD5[] = "1bce66c11f1c87b8d639ce0076ac36d3";
+    CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
   }
 }
 
@@ -297,9 +297,8 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_ComboBoxTest) {
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
-    // TODO(tsepez): hermetic fonts.
-    // const char kFilledMD5[] = "dad642ae8a5afce2591ffbcabbfc58dd";
-    // CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
+    const char kFilledMD5[] = "cdae28563ae9c62ebed8f4de75e95c80";
+    CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
   }
 
   // Enter drop-down list, selection highlighted.
@@ -307,9 +306,8 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_ComboBoxTest) {
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
-    // TODO(tsepez): hermetic fonts.
-    // const char kFilledMD5[] = "dad642ae8a5afce2591ffbcabbfc58dd";
-    // CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
+    const char kFilledMD5[] = "388b3bf2410e9286bc31797750d9ad75";
+    CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
   }
 
   // Click on selection, putting result into field.
@@ -318,8 +316,7 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_ComboBoxTest) {
   {
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
-    // TODO(tsepez): hermetic fonts.
-    // const char kFilledMD5[] = "dad642ae8a5afce2591ffbcabbfc58dd";
-    // CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
+    const char kFilledMD5[] = "64a2a7588c5c4face8582214bf229f2c";
+    CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
   }
 }

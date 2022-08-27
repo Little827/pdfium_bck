@@ -13,6 +13,7 @@ class CFX_DIBitmap;
 
 class BitmapSaver {
  public:
+  static void PrintBitmapAsPngString(FPDF_BITMAP bitmap);
   static void WriteBitmapToPng(FPDF_BITMAP bitmap, const std::string& filename);
   static void WriteBitmapToPng(CFX_DIBitmap* bitmap,
                                const std::string& filename);
