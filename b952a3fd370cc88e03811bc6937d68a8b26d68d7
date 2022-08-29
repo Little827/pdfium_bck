@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b707b0_5051154b",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-29T22:32:31Z",
+      "side": 1,
+      "message": "Considering ScopedSkiaDeviceFlush above consolidated its runtime check within itself, should DebugVerifyDeviceIsPreMultiplied() do the same?",
+      "revId": "b952a3fd370cc88e03811bc6937d68a8b26d68d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d34ce2e_4ce1aa2e",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-29T22:32:31Z",
+      "side": 1,
+      "message": "- Double ternary operators are hard to read.\n- If `format` gets removed in favor of GetFormatForLuminosity(), is it possible to write more readable code for determining the format?",
+      "revId": "b952a3fd370cc88e03811bc6937d68a8b26d68d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43abbc23_b81775fc",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-29T22:32:31Z",
+      "side": 1,
+      "message": "This calculation result may not even be used. Previously, it was ok since it was constexpr.",
+      "revId": "b952a3fd370cc88e03811bc6937d68a8b26d68d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
