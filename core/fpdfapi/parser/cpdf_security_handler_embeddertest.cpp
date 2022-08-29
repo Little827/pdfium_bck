@@ -38,7 +38,17 @@ const char kHotelLatin1[] =
 
 }  // namespace
 
-class CPDFSecurityHandlerEmbedderTest : public EmbedderTest {
+class CPDFSecurityHandlerEmbedderTest
+    : public EmbedderTest,
+      public testing::WithParamInterface<bool> {
+ public:
+  void SetUp() override {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    CFX_DefaultRenderDevice::SetDefaultRenderer(GetParam());
+#endif
+    EmbedderTest::SetUp();
+  }
+
  protected:
   void OpenAndVerifyHelloWorldDocumentWithPassword(const char* filename,
                                                    const char* password) {
@@ -106,35 +116,46 @@ class CPDFSecurityHandlerEmbedderTest : public EmbedderTest {
   }
 };
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, Unencrypted) {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+INSTANTIATE_TEST_SUITE_P(All,
+                         CPDFSecurityHandlerEmbedderTest,
+                         /*use_skia=*/testing::Bool());
+#else
+INSTANTIATE_TEST_SUITE_P(
+    /* no prefix */,
+    CPDFSecurityHandlerEmbedderTest,
+    /*use_skia=*/testing::Values(false));
+#endif
+
+TEST_P(CPDFSecurityHandlerEmbedderTest, Unencrypted) {
   ASSERT_TRUE(OpenDocument("about_blank.pdf"));
   EXPECT_EQ(0xFFFFFFFF, FPDF_GetDocPermissions(document()));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UnencryptedWithPassword) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UnencryptedWithPassword) {
   ASSERT_TRUE(OpenDocumentWithPassword("about_blank.pdf", "foobar"));
   EXPECT_EQ(0xFFFFFFFF, FPDF_GetDocPermissions(document()));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, NoPassword) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, NoPassword) {
   EXPECT_FALSE(OpenDocument("encrypted.pdf"));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, BadPassword) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, BadPassword) {
   EXPECT_FALSE(OpenDocumentWithPassword("encrypted.pdf", "tiger"));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPassword) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPassword) {
   ASSERT_TRUE(OpenDocumentWithPassword("encrypted.pdf", "1234"));
   EXPECT_EQ(0xFFFFF2C0, FPDF_GetDocPermissions(document()));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPassword) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPassword) {
   ASSERT_TRUE(OpenDocumentWithPassword("encrypted.pdf", "5678"));
   EXPECT_EQ(0xFFFFFFFC, FPDF_GetDocPermissions(document()));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
   const char* checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
       return "df9fe67555b7ceb59c99036e8d2c1c76";
@@ -187,37 +208,37 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
   }
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, NoPasswordVersion5) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, NoPasswordVersion5) {
   ASSERT_FALSE(OpenDocument("bug_644.pdf"));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, BadPasswordVersion5) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, BadPasswordVersion5) {
   ASSERT_FALSE(OpenDocumentWithPassword("bug_644.pdf", "tiger"));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5) {
   ASSERT_TRUE(OpenDocumentWithPassword("bug_644.pdf", "a"));
   EXPECT_EQ(0xFFFFFFFC, FPDF_GetDocPermissions(document()));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5) {
   ASSERT_TRUE(OpenDocumentWithPassword("bug_644.pdf", "b"));
   EXPECT_EQ(0xFFFFFFFC, FPDF_GetDocPermissions(document()));
 }
 
 // Should not crash. https://crbug.com/pdfium/1436
-TEST_F(CPDFSecurityHandlerEmbedderTest, BadOkeyVersion2) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, BadOkeyVersion2) {
   EXPECT_FALSE(
       OpenDocumentWithPassword("encrypted_hello_world_r2_bad_okey.pdf", "a"));
 }
 
 // Should not crash. https://crbug.com/pdfium/1436
-TEST_F(CPDFSecurityHandlerEmbedderTest, BadOkeyVersion3) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, BadOkeyVersion3) {
   EXPECT_FALSE(
       OpenDocumentWithPassword("encrypted_hello_world_r3_bad_okey.pdf", "a"));
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2UTF8) {
   // The password is "age", where the 'a' has a circumflex. Encoding the
   // password as UTF-8 works.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
@@ -250,7 +271,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2Latin1) {
   // The same password encoded as Latin-1 also works at revision 2.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
                                               kAgeLatin1);
@@ -274,7 +295,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion2Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3UTF8) {
   // Same as OwnerPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kAgeUTF8);
@@ -298,7 +319,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3Latin1) {
   // Same as OwnerPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kAgeLatin1);
@@ -322,7 +343,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion3Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kAgeUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5UTF8) {
   // Same as OwnerPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kAgeUTF8);
@@ -350,7 +371,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5Latin1) {
   // Same as OwnerPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kAgeLatin1);
@@ -378,7 +399,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion5Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6UTF8) {
   // Same as OwnerPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kAgeUTF8);
@@ -406,7 +427,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6Latin1) {
   // Same as OwnerPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kAgeLatin1);
@@ -434,7 +455,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, OwnerPasswordVersion6Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2UTF8) {
   // The password is "hotel", where the 'o' has a circumflex. Encoding the
   // password as UTF-8 works.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
@@ -467,7 +488,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2Latin1) {
   // The same password encoded as Latin-1 also works at revision 2.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r2.pdf",
                                               kHotelLatin1);
@@ -495,7 +516,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion2Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3UTF8) {
   // Same as UserPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kHotelUTF8);
@@ -523,7 +544,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3Latin1) {
   // Same as UserPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r3.pdf",
                                               kHotelLatin1);
@@ -551,7 +572,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion3Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5UTF8) {
   // Same as UserPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kHotelUTF8);
@@ -579,7 +600,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5Latin1) {
   // Same as UserPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r5.pdf",
                                               kHotelLatin1);
@@ -607,7 +628,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion5Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6UTF8) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6UTF8) {
   // Same as UserPasswordVersion2UTF8 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kHotelUTF8);
@@ -635,7 +656,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6UTF8) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6Latin1) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6Latin1) {
   // Same as UserPasswordVersion2Latin1 test above.
   OpenAndVerifyHelloWorldDocumentWithPassword("encrypted_hello_world_r6.pdf",
                                               kHotelLatin1);
@@ -663,6 +684,6 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, UserPasswordVersion6Latin1) {
   VerifySavedModifiedHelloWorldDocumentWithPassword(kHotelUTF8);
 }
 
-TEST_F(CPDFSecurityHandlerEmbedderTest, Bug1124998) {
+TEST_P(CPDFSecurityHandlerEmbedderTest, Bug1124998) {
   OpenAndVerifyHelloWorldDocumentWithPassword("bug_1124998.pdf", "test");
 }
