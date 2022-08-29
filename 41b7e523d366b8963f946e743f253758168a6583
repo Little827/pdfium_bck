@@ -93,6 +93,30 @@
       },
       "revId": "41b7e523d366b8963f946e743f253758168a6583",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ab5014_53a0938f",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-29T16:24:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d88ce6a6_7bd88214",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 60
+      },
+      "revId": "41b7e523d366b8963f946e743f253758168a6583",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
