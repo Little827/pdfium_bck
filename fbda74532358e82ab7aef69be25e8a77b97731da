@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b884c70_09738fd8",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-29T23:35:32Z",
+      "side": 1,
+      "message": "How about negating this and returning `k8bppMask` early to reduce nesting?",
+      "revId": "fbda74532358e82ab7aef69be25e8a77b97731da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
