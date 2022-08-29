@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea6c7e3_97031e3c",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-29T23:03:30Z",
+      "side": 1,
+      "message": "Omit 1 space here.",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "22f260f56f64e80d401b1d8329d089d06462ed6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e988355_f0dde384",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-08-29T23:03:30Z",
+      "side": 1,
+      "message": "When Skia/SkiaPaths is not specified in the build configuration, AGG should be the default rendering type. Maybe `FPDF_RENDERTYPE_DEFAULT` can be omitted?",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 29
+      },
+      "revId": "22f260f56f64e80d401b1d8329d089d06462ed6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
