@@ -101,6 +101,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aaddb32_d4a0cc08",
+        "filename": "DEPS",
+        "patchSetId": 36
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T17:19:45Z",
+      "side": 1,
+      "message": "It\u0027s been over a decade since we did the Linux Chromium port, so I don\u0027t remember all the details. I thought Chromium patched getrandom() for sandboxed processes on Linux via the zygote process, but I also see a bunch of code in modern Chromium that updates the sandbox policy to allow reading /dev/urandom. Probably best to work out the preferred method with Chromium\u0027s sandbox/linux/OWNERS.",
+      "parentUuid": "3eea3ea1_ef170d7c",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 61
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad1e4d9_2f12abfb",
