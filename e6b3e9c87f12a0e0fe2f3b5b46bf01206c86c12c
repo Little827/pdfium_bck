@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3541996c_61d33833",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T01:01:31Z",
+      "side": 1,
+      "message": "Please restore the \"Default:\" entries. Given this CL, the entries may need a little clarification.",
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5265acbf_91de549c",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T01:01:31Z",
+      "side": 1,
+      "message": "I guess the previous CL in the chain missed this.",
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2cdcca5_ee0a995b",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T01:01:31Z",
+      "side": 1,
+      "message": "Can we avoid having AttachAggImpl() calls here and on line 86?",
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20bf239d_bb52d8a9",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T01:01:31Z",
+      "side": 1,
+      "message": "Would something like \"SetDefaultRendererToSkia\" be a slightly better name? Or pass an enum to SetDefaultRenderer()?",
+      "range": {
+        "startLine": 55,
+        "startChar": 14,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb475403_9c40f2b2",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T01:01:31Z",
+      "side": 1,
+      "message": "Can we shuffle this around to avoid nested #ifs?",
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a03803_bf32b43c",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T01:01:31Z",
+      "side": 1,
+      "message": "Any reason not to use absl::optional::value() or change the entire conditional to use value_or()?",
+      "range": {
+        "startLine": 1243,
+        "startChar": 7,
+        "endLine": 1243,
+        "endChar": 8
+      },
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
