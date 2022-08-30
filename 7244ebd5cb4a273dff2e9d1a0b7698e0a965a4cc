@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cbcbf22_bde08892",
+        "filename": "constants/form_fields.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T22:15:30Z",
+      "side": 0,
+      "message": "Chromium [1] tends to be put the comment with the definition rather than the declaration, so that carried over to here. Want to keep it that way?\n\n[1] e.g. chrome/common/pref_names.cc",
+      "revId": "7244ebd5cb4a273dff2e9d1a0b7698e0a965a4cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
