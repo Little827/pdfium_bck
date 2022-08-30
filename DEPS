@@ -32,7 +32,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling abseil
   # and whatever else without interference from each other.
-  'abseil_revision': '62a4d6866aeeca02036c510b2f3f286084dd62af',
+  'abseil_revision': '2ecd8167d1f18ad0dcb5975448beb06e4a037c4a',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling android_ndk
   # and whatever else without interference from each other.
@@ -40,7 +40,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
-  'build_revision': '26f8da34750ac3bccf683ed5f70d86f21c54b22b',
+  'build_revision': '72ff2b5c6fac2b7f16482067bfd3c4029825a19a',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling buildtools
   # and whatever else without interference from each other.
@@ -56,7 +56,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling clang
   # and whatever else without interference from each other.
-  'clang_revision': 'c8f1e5e5b7722962ecb28ba041775939d451ed82',
+  'clang_revision': 'b72e51a76ba2050274beafde8d3b3fd8143e7e5a',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling code_coverage
   # and whatever else without interference from each other.
@@ -76,7 +76,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling GN CIPD package version
   # and whatever else without interference from each other.
-  'gn_version': 'git_revision:9ef321772ecc161937db69acb346397e0ccc484d',
+  'gn_version': 'git_revision:5705e56a0e5856621415cfdf444432554e72c9c9',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling gtest
   # and whatever else without interference from each other.
