@@ -52,6 +52,115 @@
       "parentUuid": "66801487_6c39132e",
       "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1852936f_249915e0",
+        "filename": "DEPS",
+        "patchSetId": 36
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2022-08-30T05:35:51Z",
+      "side": 1,
+      "message": "I think there was work to remove this dependency, please check with Tasak/Kalvin.",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 61
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad1e4d9_2f12abfb",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2022-08-30T05:35:51Z",
+      "side": 1,
+      "message": "See my specific suggestions below. These make me wonder if you need this override file at all?",
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdcfd78_34f29f4d",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 36
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2022-08-30T05:35:51Z",
+      "side": 1,
+      "message": "I think this should be `false`. This enables PA-E. You\u0027ll get it automatically when building with Chromium, and I don\u0027t think it\u0027s ready when building outside of Chromium.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 73
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a35539_326e7b2e",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 36
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2022-08-30T05:35:51Z",
+      "side": 1,
+      "message": "You\u0027ll wanna jam it to `false` (with a similar comment as L74-75). You don\u0027t have raw_ptr in your codebase yet, so no need to compile in the BRP overhead.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 57
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04ea13a_3cb85be2",
+        "filename": "core/fxcrt/fx_memory_pa.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2022-08-30T05:35:51Z",
+      "side": 1,
+      "message": "Your code never calls or is planning to call AlignedAlloc?",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
