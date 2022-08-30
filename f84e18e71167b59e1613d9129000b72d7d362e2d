@@ -203,6 +203,30 @@
       },
       "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ab9fed_22b774b0",
+        "filename": "core/fxcrt/fx_memory_pa.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-30T17:14:23Z",
+      "side": 1,
+      "message": "There\u0027s AlignedAlloc() in third_party/base/memory/aligned_memory.cc, which is very similar to Chromium\u0027s base/memory/aligned_memory.cc. AlignedAlloc() calls posix_memalign().",
+      "parentUuid": "f04ea13a_3cb85be2",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
