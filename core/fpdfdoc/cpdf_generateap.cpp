@@ -926,7 +926,9 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     return;
 
   ByteString DA;
-  if (CPDF_Object* pDAObj = CPDF_FormField::GetFieldAttr(pAnnotDict, "DA"))
+  RetainPtr<CPDF_Object> pDAObj =
+      CPDF_FormField::GetMutableFieldAttr(pAnnotDict, "DA");
+  if (pDAObj)
     DA = pDAObj->GetString();
   if (DA.IsEmpty())
     DA = pFormDict->GetStringFor("DA");
@@ -1234,11 +1236,12 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       break;
     }
     case CPDF_GenerateAP::kListBox: {
-      CPDF_Array* pOpts =
-          ToArray(CPDF_FormField::GetFieldAttr(pAnnotDict, "Opt"));
-      CPDF_Array* pSels =
-          ToArray(CPDF_FormField::GetFieldAttr(pAnnotDict, "I"));
-      CPDF_Object* pTi = CPDF_FormField::GetFieldAttr(pAnnotDict, "TI");
+      RetainPtr<CPDF_Array> pOpts =
+          ToArray(CPDF_FormField::GetMutableFieldAttr(pAnnotDict, "Opt"));
+      RetainPtr<CPDF_Array> pSels =
+          ToArray(CPDF_FormField::GetMutableFieldAttr(pAnnotDict, "I"));
+      RetainPtr<CPDF_Object> pTi =
+          CPDF_FormField::GetMutableFieldAttr(pAnnotDict, "TI");
       int32_t nTop = pTi ? pTi->GetInteger() : 0;
       fxcrt::ostringstream sBody;
       if (pOpts) {
