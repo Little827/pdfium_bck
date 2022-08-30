@@ -67,10 +67,11 @@ const CPDF_Object* CPDF_FormField::GetFieldAttr(
 }
 
 // static
-CPDF_Object* CPDF_FormField::GetFieldAttr(CPDF_Dictionary* pFieldDict,
-                                          const ByteString& name) {
-  return const_cast<CPDF_Object*>(GetFieldAttrRecursive(
-      static_cast<const CPDF_Dictionary*>(pFieldDict), name, 0));
+RetainPtr<CPDF_Object> CPDF_FormField::GetMutableFieldAttr(
+    CPDF_Dictionary* pFieldDict,
+    const ByteString& name) {
+  return pdfium::WrapRetain(
+      const_cast<CPDF_Object*>(GetFieldAttrRecursive(pFieldDict, name, 0)));
 }
 
 // static
@@ -262,7 +263,8 @@ FormFieldType CPDF_FormField::GetFieldType() const {
 }
 
 CPDF_AAction CPDF_FormField::GetAdditionalAction() const {
-  CPDF_Object* pObj = GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kAA);
+  const CPDF_Object* pObj =
+      GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kAA);
   return CPDF_AAction(pObj ? pObj->GetDict() : nullptr);
 }
 
