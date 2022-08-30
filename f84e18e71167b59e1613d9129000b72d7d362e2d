@@ -77,6 +77,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eea3ea1_ef170d7c",
+        "filename": "DEPS",
+        "patchSetId": 36
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 8951
+      },
+      "writtenOn": "2022-08-30T05:49:40Z",
+      "side": 1,
+      "message": "Mmm, unfortunately, the last I heard of this was a CL from Benoit stuck on some bots. Slack tells me that we cannot lunge straight for `/dev/urandom` likely because of the sandboxed renderer process. We may be able to patch it with `getrandom()` - I don\u0027t know yet.",
+      "parentUuid": "1852936f_249915e0",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 61
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad1e4d9_2f12abfb",
