@@ -7,8 +7,6 @@
 namespace pdfium {
 namespace form_fields {
 
-// PDF 1.7 spec, table 8.69.
-// Entries common to all field dictionaries.
 const char kFT[] = "FT";
 const char kParent[] = "Parent";
 const char kKids[] = "Kids";
@@ -20,11 +18,15 @@ const char kV[] = "V";
 const char kDV[] = "DV";
 const char kAA[] = "AA";
 
-// FT values from PDF 1.7 spec, table 8.69.
 const char kBtn[] = "Btn";
 const char kTx[] = "Tx";
 const char kCh[] = "Ch";
 const char kSig[] = "Sig";
+
+const char kDA[] = "DA";
+const char kQ[] = "Q";
+const char kDS[] = "DS";
+const char kRV[] = "RV";
 
 }  // namespace form_fields
 }  // namespace pdfium

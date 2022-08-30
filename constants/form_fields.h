@@ -8,6 +8,8 @@
 namespace pdfium {
 namespace form_fields {
 
+// ISO 32000-1:2008 table 220.
+// Entries common to all field dictionaries.
 extern const char kFT[];
 extern const char kParent[];
 extern const char kKids[];
@@ -19,10 +21,19 @@ extern const char kV[];
 extern const char kDV[];
 extern const char kAA[];
 
+// ISO 32000-1:2008 table 220.
+// Values for FT keyword.
 extern const char kBtn[];
 extern const char kTx[];
 extern const char kCh[];
 extern const char kSig[];
+
+// ISO 32000-1:2008 table 222.
+// Entries common to fields containing variable text.
+extern const char kDA[];
+extern const char kQ[];
+extern const char kDS[];
+extern const char kRV[];
 
 }  // namespace form_fields
 }  // namespace pdfium

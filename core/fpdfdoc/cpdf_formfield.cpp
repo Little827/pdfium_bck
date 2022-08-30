@@ -178,38 +178,44 @@ bool CPDF_FormField::ResetField() {
     case kRichText:
     case kFile:
     default: {
-      const CPDF_Object* pDV = GetDefaultValueObject();
       WideString csDValue;
-      if (pDV)
-        csDValue = pDV->GetUnicodeText();
-
       WideString csValue;
       {
-        // Limit the scope of |pV| because it may get invalidated below.
+        // Limit scope of |pDV| and |pV| because they may get invalidated
+        // during notification below.
+        const CPDF_Object* pDV = GetDefaultValueObject();
+        if (pDV)
+          csDValue = pDV->GetUnicodeText();
+
         const CPDF_Object* pV = GetValueObject();
         if (pV)
           csValue = pV->GetUnicodeText();
       }
 
-      bool bHasRV = !!GetFieldAttr(m_pDict.Get(), "RV");
+      bool bHasRV = !!GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kRV);
       if (!bHasRV && (csDValue == csValue))
         return false;
 
-      if (!NotifyBeforeValueChange(csDValue)) {
+      if (!NotifyBeforeValueChange(csDValue))
         return false;
-      }
-      if (pDV) {
-        RetainPtr<CPDF_Object> pClone = pDV->Clone();
-        if (!pClone)
-          return false;
 
-        m_pDict->SetFor(pdfium::form_fields::kV, std::move(pClone));
-        if (bHasRV) {
-          m_pDict->SetFor("RV", pDV->Clone());
+      {
+        // Limit scope of |pDV| because it may get invalidated during
+        // notification below.
+        const CPDF_Object* pDV = GetDefaultValueObject();
+        if (pDV) {
+          RetainPtr<CPDF_Object> pClone = pDV->Clone();
+          if (!pClone)
+            return false;
+
+          m_pDict->SetFor(pdfium::form_fields::kV, std::move(pClone));
+          if (bHasRV) {
+            m_pDict->SetFor(pdfium::form_fields::kRV, pDV->Clone());
+          }
+        } else {
+          m_pDict->RemoveFor(pdfium::form_fields::kV);
+          m_pDict->RemoveFor(pdfium::form_fields::kRV);
         }
-      } else {
-        m_pDict->RemoveFor(pdfium::form_fields::kV);
-        m_pDict->RemoveFor("RV");
       }
       NotifyAfterValueChange();
       break;
@@ -349,7 +355,8 @@ bool CPDF_FormField::SetValue(const WideString& value,
       int iIndex = FindOption(csValue);
       if (iIndex < 0) {
         if (m_Type == kRichText && !bDefault) {
-          m_pDict->SetFor("RV", m_pDict->GetObjectFor(key)->Clone());
+          m_pDict->SetFor(pdfium::form_fields::kRV,
+                          m_pDict->GetObjectFor(key)->Clone());
         }
         m_pDict->RemoveFor("I");
       } else {
