@@ -16,6 +16,24 @@
       "message": "It would be helpful to have an automated test case to make sure the code added here works, and continues to work over time. Would you be interested in doing that, or is that something you need help with?",
       "revId": "da84a8dd9c94431c111670c6271283c4c31080e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ccf8a9_5dd76403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-08-31T18:30:48Z",
+      "side": 1,
+      "message": "I will try to add a check as a unittest. If it does not work, I will ask you for help",
+      "parentUuid": "6cba66a2_f6248547",
+      "revId": "da84a8dd9c94431c111670c6271283c4c31080e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
