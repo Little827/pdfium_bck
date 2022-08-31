@@ -52,6 +52,14 @@ void EmbedderTestEnvironment::SetUp() {
   config.m_pPlatform = nullptr;
 #endif  // PDF_ENABLE_V8
 
+#if defined(_SKIA_SUPPORT_)
+  config.m_RendererType = FPDF_RENDERERTYPE_SKIA;
+#elif defined(_SKIA_SUPPORT_PATHS_)
+  config.m_RendererType = FPDF_RENDERERTYPE_SKIAPATHS;
+#else
+  config.m_RendererType = FPDF_RENDERERTYPE_AGG;
+#endif
+
   FPDF_InitLibraryWithConfig(&config);
 
   test_fonts_.InstallFontMapper();

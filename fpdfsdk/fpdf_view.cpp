@@ -193,6 +193,11 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
     void* platform = config->version >= 3 ? config->m_pPlatform : nullptr;
     IJS_Runtime::Initialize(config->m_v8EmbedderSlot, config->m_pIsolate,
                             platform);
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    if (config->version >= 3)
+      CFX_DefaultRenderDevice::SetDefaultRenderer(config->m_RendererType);
+#endif
   }
   g_bLibraryInitialized = true;
 }
