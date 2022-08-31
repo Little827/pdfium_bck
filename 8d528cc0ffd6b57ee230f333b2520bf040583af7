@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2829d1e1_72f664e0",
+        "filename": "core/fpdfdoc/cpdf_annotlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-31T21:25:33Z",
+      "side": 1,
+      "message": "Stay with GetFieldAttr() and WrapRetain()?",
+      "range": {
+        "startLine": 131,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 41
+      },
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dcf095f_8dcaace4",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-31T21:25:33Z",
+      "side": 1,
+      "message": "Should this also retain like, GenerateAP(), or use a raw pointer in GenerateAP()?",
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc88f1f_7e0a0c38",
+        "filename": "core/fpdfdoc/cpdf_generateap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-31T21:25:33Z",
+      "side": 1,
+      "message": "Some kind of const obj here?",
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e65c587_83934d2b",
+        "filename": "core/fpdfdoc/cpdf_generateap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-31T21:25:33Z",
+      "side": 1,
+      "message": "Can these all be const?",
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
