@@ -2,6 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# Tweak which should be non-impacting in CQ bots.
+
 import("//build/config/clang/clang.gni")
 import("//testing/test.gni")
 import("pdfium.gni")
