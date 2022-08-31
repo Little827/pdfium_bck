@@ -214,6 +214,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2145034f_a67b8f4f",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-31T05:23:29Z",
+      "side": 1,
+      "message": "Indeed. When a project can be embedded in other projects via DEPS, it gets a bit tricky. If a project is expected to be in a fixed place when embedded, it\u0027s a little easier, but absolute and relative paths still matter, and they have subtle differences. A recent example of that for PDFium is https://pdfium-review.googlesource.com/96770.\n\nOn crbug.com/541704, we also did a bunch of work to carefully line up PDFium\u0027s libraries with Chromium\u0027s.",
+      "parentUuid": "19ea8135_f1386508",
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cdcfd78_34f29f4d",
