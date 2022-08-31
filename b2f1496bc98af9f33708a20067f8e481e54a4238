@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44a35b1_413ea01c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2022-08-31T12:12:15Z",
+      "side": 1,
+      "message": "Tests are passing locally:\n\n\n[----------] Global test environment tear-down\n[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] 1103 tests from 163 test suites ran. (21807 ms total)\n[  PASSED  ] 1103 tests.\n",
+      "revId": "b2f1496bc98af9f33708a20067f8e481e54a4238",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
