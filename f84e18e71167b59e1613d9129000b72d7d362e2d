@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d99bc5e_78043e8e",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-31T05:17:33Z",
+      "side": 1,
+      "message": "I think that file only gets used in standalone PartitionAlloc builds. No code explicitly references base/allocator/partition_allocator/build_overrides/partition_alloc.gni. They only reference //build_overrides/partition_alloc.gni, and that path depends on the PA embedder.",
+      "parentUuid": "24f66c61_5a7e6f4e",
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cdcfd78_34f29f4d",
         "filename": "build_overrides/partition_alloc.gni",
         "patchSetId": 36
