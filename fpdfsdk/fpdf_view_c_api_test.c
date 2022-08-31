@@ -500,6 +500,14 @@ int CheckPDFiumCApi() {
     CHK(FPDF_GetXFAPacketName);
     CHK(FPDF_InitLibrary);
     CHK(FPDF_InitLibraryWithConfig);
+    CHK(FPDF_InitLibraryWithParams);
+    CHK(FPDF_InitParamAppendFontPath);
+    CHK(FPDF_InitParamCreate);
+    CHK(FPDF_InitParamDestroy);
+#ifdef PDF_ENABLE_V8
+    CHK(FPDF_InitParamSetV8Isolate);
+    CHK(FPDF_InitParamSetV8Platform);
+#endif
     CHK(FPDF_LoadCustomDocument);
     CHK(FPDF_LoadDocument);
     CHK(FPDF_LoadMemDocument);
