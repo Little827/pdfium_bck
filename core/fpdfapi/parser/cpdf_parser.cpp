@@ -884,7 +884,7 @@ const CPDF_Dictionary* CPDF_Parser::GetTrailer() const {
   return m_CrossRefTable->trailer();
 }
 
-CPDF_Dictionary* CPDF_Parser::GetMutableTrailerForTesting() {
+RetainPtr<CPDF_Dictionary> CPDF_Parser::GetMutableTrailerForTesting() {
   return m_CrossRefTable->GetMutableTrailerForTesting();
 }
 

@@ -92,7 +92,8 @@ class CPDF_Document : public Observable,
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
   const CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
   RetainPtr<CPDF_Dictionary> GetMutableRoot() { return m_pRootDict; }
-  CPDF_Dictionary* GetInfo();
+  const CPDF_Dictionary* GetInfo();
+  RetainPtr<CPDF_Dictionary> GetMutableInfo();
   const CPDF_Array* GetFileIdentifier() const;
 
   void DeletePage(int iPage);
@@ -165,7 +166,7 @@ class CPDF_Document : public Observable,
   CPDF_Dictionary* TraversePDFPages(int iPage, int* nPagesToGo, size_t level);
 
   const CPDF_Dictionary* GetPagesDict() const;
-  CPDF_Dictionary* GetPagesDict();
+  RetainPtr<CPDF_Dictionary> GetMutablePagesDict();
 
   bool InsertDeletePDFPage(CPDF_Dictionary* pPages,
                            int nPagesToGo,

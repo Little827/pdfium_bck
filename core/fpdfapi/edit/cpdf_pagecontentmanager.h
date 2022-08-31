@@ -23,7 +23,7 @@ class CPDF_PageContentManager {
 
   // Gets the Content stream at a given index. If Contents is a single stream
   // rather than an array, it is considered to be at index 0.
-  CPDF_Stream* GetStreamByIndex(size_t stream_index);
+  RetainPtr<CPDF_Stream> GetStreamByIndex(size_t stream_index);
 
   // Adds a new Content stream. Its index in the array will be returned, or 0
   // if Contents is not an array, but only a single stream.

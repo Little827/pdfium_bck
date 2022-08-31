@@ -22,7 +22,8 @@ class CPDF_FlateEncoder {
   ~CPDF_FlateEncoder();
 
   void CloneDict();
-  CPDF_Dictionary* GetClonedDict();
+  const CPDF_Dictionary* GetClonedDict() const;
+  RetainPtr<CPDF_Dictionary> GetMutableClonedDict();
 
   // Returns |m_pClonedDict| if it is valid. Otherwise returns |m_pDict|.
   const CPDF_Dictionary* GetDict() const;

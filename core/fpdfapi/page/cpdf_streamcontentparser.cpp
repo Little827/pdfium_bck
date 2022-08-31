@@ -328,7 +328,15 @@ void CPDF_StreamContentParser::ClearAllParams() {
   m_ParamCount = 0;
 }
 
-CPDF_Object* CPDF_StreamContentParser::GetObject(uint32_t index) {
+// TODO(tsepez): avoid ref churn.
+const CPDF_Object* CPDF_StreamContentParser::GetObject(uint32_t index) const {
+  return const_cast<CPDF_StreamContentParser*>(this)
+      ->GetMutableObject(index)
+      .Get();
+}
+
+RetainPtr<CPDF_Object> CPDF_StreamContentParser::GetMutableObject(
+    uint32_t index) {
   if (index >= m_ParamCount) {
     return nullptr;
   }
@@ -343,15 +351,15 @@ CPDF_Object* CPDF_StreamContentParser::GetObject(uint32_t index) {
         param.m_Number.IsInteger()
             ? pdfium::MakeRetain<CPDF_Number>(param.m_Number.GetSigned())
             : pdfium::MakeRetain<CPDF_Number>(param.m_Number.GetFloat());
-    return param.m_pObject.Get();
+    return param.m_pObject;
   }
   if (param.m_Type == ContentParam::Type::kName) {
     param.m_Type = ContentParam::Type::kObject;
     param.m_pObject = m_pDocument->New<CPDF_Name>(param.m_Name);
-    return param.m_pObject.Get();
+    return param.m_pObject;
   }
   if (param.m_Type == ContentParam::Type::kObject)
-    return param.m_pObject.Get();
+    return param.m_pObject;
 
   NOTREACHED();
   return nullptr;
@@ -576,7 +584,7 @@ void CPDF_StreamContentParser::Handle_EOFillStrokePath() {
 }
 
 void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
-  CPDF_Object* pProperty = GetObject(0);
+  const CPDF_Object* pProperty = GetObject(0);
   if (!pProperty)
     return;
 
@@ -698,11 +706,11 @@ void CPDF_StreamContentParser::Handle_SetColorSpace_Stroke() {
 }
 
 void CPDF_StreamContentParser::Handle_SetDash() {
-  CPDF_Array* pArray = ToArray(GetObject(1));
+  RetainPtr<CPDF_Array> pArray = ToArray(GetMutableObject(1));
   if (!pArray)
     return;
 
-  m_pCurStates->SetLineDash(pArray, GetNumber(0), 1.0f);
+  m_pCurStates->SetLineDash(pArray.Get(), GetNumber(0), 1.0f);
 }
 
 void CPDF_StreamContentParser::Handle_SetCharWidth() {
@@ -1033,7 +1041,7 @@ void CPDF_StreamContentParser::Handle_SetColor_Stroke() {
 }
 
 void CPDF_StreamContentParser::Handle_SetColorPS_Fill() {
-  CPDF_Object* pLastParam = GetObject(0);
+  const CPDF_Object* pLastParam = GetObject(0);
   if (!pLastParam)
     return;
 
@@ -1050,7 +1058,7 @@ void CPDF_StreamContentParser::Handle_SetColorPS_Fill() {
 }
 
 void CPDF_StreamContentParser::Handle_SetColorPS_Stroke() {
-  CPDF_Object* pLastParam = GetObject(0);
+  const CPDF_Object* pLastParam = GetObject(0);
   if (!pLastParam)
     return;
 
@@ -1272,7 +1280,7 @@ void CPDF_StreamContentParser::Handle_ShowText() {
 }
 
 void CPDF_StreamContentParser::Handle_ShowText_Positioning() {
-  CPDF_Array* pArray = ToArray(GetObject(0));
+  const CPDF_Array* pArray = ToArray(GetObject(0));
   if (!pArray)
     return;
 

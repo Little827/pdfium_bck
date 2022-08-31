@@ -181,7 +181,7 @@ bool CPDF_Creator::WriteOldObjs() {
 bool CPDF_Creator::WriteNewObjs() {
   for (size_t i = m_CurObjNum; i < m_NewObjNumArray.size(); ++i) {
     uint32_t objnum = m_NewObjNumArray[i];
-    CPDF_Object* pObj = m_pDocument->GetIndirectObject(objnum);
+    const CPDF_Object* pObj = m_pDocument->GetIndirectObject(objnum);
     if (!pObj)
       continue;
 

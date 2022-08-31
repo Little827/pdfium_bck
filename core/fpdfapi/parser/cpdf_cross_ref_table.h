@@ -59,7 +59,7 @@ class CPDF_CrossRefTable {
 
   void SetTrailer(RetainPtr<CPDF_Dictionary> trailer);
   const CPDF_Dictionary* trailer() const { return trailer_.Get(); }
-  CPDF_Dictionary* GetMutableTrailerForTesting() { return trailer_.Get(); }
+  RetainPtr<CPDF_Dictionary> GetMutableTrailerForTesting() { return trailer_; }
 
   const ObjectInfo* GetObjectInfo(uint32_t obj_num) const;
 

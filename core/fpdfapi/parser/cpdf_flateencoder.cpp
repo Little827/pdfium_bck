@@ -68,9 +68,13 @@ void CPDF_FlateEncoder::CloneDict() {
   m_pDict.Reset();
 }
 
-CPDF_Dictionary* CPDF_FlateEncoder::GetClonedDict() {
+const CPDF_Dictionary* CPDF_FlateEncoder::GetClonedDict() const {
   DCHECK(!m_pDict);
   return m_pClonedDict.Get();
+}
+
+RetainPtr<CPDF_Dictionary> CPDF_FlateEncoder::GetMutableClonedDict() {
+  return pdfium::WrapRetain(const_cast<CPDF_Dictionary*>(GetClonedDict()));
 }
 
 const CPDF_Dictionary* CPDF_FlateEncoder::GetDict() const {

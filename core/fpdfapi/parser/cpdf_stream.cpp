@@ -205,8 +205,8 @@ bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive,
   size_t size = data.size();
   if (static_cast<size_t>(encoder.GetDict()->GetIntegerFor("Length")) != size) {
     encoder.CloneDict();
-    encoder.GetClonedDict()->SetNewFor<CPDF_Number>("Length",
-                                                    static_cast<int>(size));
+    encoder.GetMutableClonedDict()->SetNewFor<CPDF_Number>(
+        "Length", static_cast<int>(size));
   }
 
   if (!encoder.GetDict()->WriteTo(archive, encryptor))

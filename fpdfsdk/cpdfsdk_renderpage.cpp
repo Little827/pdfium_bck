@@ -9,6 +9,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/render/cpdf_pagerendercache.h"
 #include "core/fpdfapi/render/cpdf_pagerendercontext.h"
 #include "core/fpdfapi/render/cpdf_progressiverenderer.h"

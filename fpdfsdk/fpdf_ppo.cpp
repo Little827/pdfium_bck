@@ -17,6 +17,7 @@
 #include "constants/page_object.h"
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_formobject.h"
+#include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -254,7 +255,7 @@ bool CPDF_PageOrganizer::Init() {
   if (!pNewRoot)
     return false;
 
-  CPDF_Dictionary* pDocInfoDict = dest()->GetInfo();
+  RetainPtr<CPDF_Dictionary> pDocInfoDict = dest()->GetMutableInfo();
   if (!pDocInfoDict)
     return false;
 

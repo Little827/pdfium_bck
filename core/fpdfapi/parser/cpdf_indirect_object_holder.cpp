@@ -10,6 +10,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "third_party/base/check.h"
@@ -29,11 +30,17 @@ CPDF_IndirectObjectHolder::~CPDF_IndirectObjectHolder() {
   m_pByteStringPool.DeleteObject();  // Make weak.
 }
 
-CPDF_Object* CPDF_IndirectObjectHolder::GetIndirectObject(
+const CPDF_Object* CPDF_IndirectObjectHolder::GetIndirectObject(
     uint32_t objnum) const {
   auto it = m_IndirectObjs.find(objnum);
   return (it != m_IndirectObjs.end()) ? FilterInvalidObjNum(it->second.Get())
                                       : nullptr;
+}
+
+RetainPtr<CPDF_Object> CPDF_IndirectObjectHolder::GetMutableIndirectObject(
+    uint32_t objnum) {
+  return pdfium::WrapRetain(
+      const_cast<CPDF_Object*>(GetIndirectObject(objnum)));
 }
 
 CPDF_Object* CPDF_IndirectObjectHolder::GetOrParseIndirectObject(

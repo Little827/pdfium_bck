@@ -153,9 +153,8 @@ const CPDF_Stream* CPDF_FileSpec::GetFileStream() const {
   return nullptr;
 }
 
-CPDF_Stream* CPDF_FileSpec::GetFileStream() {
-  return const_cast<CPDF_Stream*>(
-      static_cast<const CPDF_FileSpec*>(this)->GetFileStream());
+RetainPtr<CPDF_Stream> CPDF_FileSpec::GetMutableFileStream() {
+  return pdfium::WrapRetain(const_cast<CPDF_Stream*>(GetFileStream()));
 }
 
 const CPDF_Dictionary* CPDF_FileSpec::GetParamsDict() const {
@@ -167,9 +166,8 @@ const CPDF_Dictionary* CPDF_FileSpec::GetParamsDict() const {
   return pDict ? pDict->GetDictFor("Params") : nullptr;
 }
 
-CPDF_Dictionary* CPDF_FileSpec::GetParamsDict() {
-  return const_cast<CPDF_Dictionary*>(
-      static_cast<const CPDF_FileSpec*>(this)->GetParamsDict());
+RetainPtr<CPDF_Dictionary> CPDF_FileSpec::GetMutableParamsDict() {
+  return pdfium::WrapRetain(const_cast<CPDF_Dictionary*>(GetParamsDict()));
 }
 
 WideString CPDF_FileSpec::EncodeFileName(const WideString& filepath) {
