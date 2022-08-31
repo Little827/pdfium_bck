@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ba9020_1abfa35b",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-08-31T21:54:49Z",
+      "side": 1,
+      "message": "I found the name \"fpdfview.h\" to be confusing. Maybe this would be a good opportunity to move this API to its own file?",
+      "revId": "8cd5c00502c085cbbd4d947eea82295d01354492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302d1e45_a17656e7",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-08-31T21:54:49Z",
+      "side": 1,
+      "message": "Design alternative: I started thinking about a version of this proposal that uses \"properties\" instead of functions for each setting.\n\nFor example, this API could look like this:\n\n  bool FPDF_InitParamSet(enum InitParamKey key, void* value);\n\n  FPDF_InitParamSet(kV8Isolate, ...);\n  FPDF_InitParamSet(kV8EmbedderDataSlot, ...);\n  \nThe main advantage of this approach would be that it minimizes the number of exported functions you\u0027d need to add in the future to support different init parameters. You also could support a more stable ABI, with feature testing by returning false/true if the property is set successfully.\n\nThe downside is less type safety.",
+      "revId": "8cd5c00502c085cbbd4d947eea82295d01354492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
