@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516e3e69_d3a0bc8a",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2022-08-31T15:18:15Z",
+      "side": 1,
+      "message": "Nit: not be initialized",
+      "range": {
+        "startLine": 104,
+        "startChar": 50,
+        "endLine": 104,
+        "endChar": 65
+      },
+      "revId": "e2d3e63f30cf7057d58d042a6e435861f0fe74ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
