@@ -60,11 +60,6 @@ CPDF_FileSpec::CPDF_FileSpec(const CPDF_Object* pObj) : m_pObj(pObj) {
   DCHECK(m_pObj);
 }
 
-CPDF_FileSpec::CPDF_FileSpec(CPDF_Object* pObj)
-    : m_pObj(pObj), m_pWritableObj(pObj) {
-  DCHECK(m_pObj);
-}
-
 CPDF_FileSpec::~CPDF_FileSpec() = default;
 
 WideString CPDF_FileSpec::DecodeFileName(const WideString& filepath) {
