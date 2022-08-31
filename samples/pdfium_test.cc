@@ -1197,12 +1197,11 @@ int main(int argc, const char* argv[]) {
     return 1;
   }
 
-  FPDF_LIBRARY_CONFIG config;
-  config.version = 3;
-  config.m_pUserFontPaths = nullptr;
-  config.m_pIsolate = nullptr;
-  config.m_v8EmbedderSlot = 0;
-  config.m_pPlatform = nullptr;
+  FPDF_INIT_PARAMS params = FPDF_InitParamCreate();
+  if (!params) {
+    fprintf(stderr, "FPDF_InitParamCreate() unexpectedly failed.\n");
+    return 1;
+  }
 
   std::function<void()> idler = []() {};
 #ifdef PDF_ENABLE_V8
@@ -1240,14 +1239,14 @@ int main(int argc, const char* argv[]) {
   }
 #endif  // PDF_ENABLE_V8
 
-  const char* path_array[2] = {nullptr, nullptr};
   absl::optional<const char*> custom_font_path = GetCustomFontPath(options);
-  if (custom_font_path.has_value()) {
-    path_array[0] = custom_font_path.value();
-    config.m_pUserFontPaths = path_array;
-  }
+  if (custom_font_path.has_value())
+    FPDF_InitParamAppendFontPath(params, custom_font_path.value());
 
-  FPDF_InitLibraryWithConfig(&config);
+  if (!FPDF_InitLibraryWithParams(params)) {
+    fprintf(stderr, "FPDF_InitLibraryWithParams() failed.\n");
+    return 1;
+  }
 
   std::unique_ptr<FontRenamer> font_renamer;
   if (options.croscore_font_names)
