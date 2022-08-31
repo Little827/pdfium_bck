@@ -420,6 +420,23 @@ TEST_F(FPDFAnnotEmbedderTest, RenderMultilineMarkupAnnotWithoutAP) {
   UnloadPage(page);
 }
 
+// Temporary disabled
+TEST_F(FPDFAnnotEmbedderTest, DISABLED_RenderAnnotWithNoRotateFlag) {
+  // Open a file with one annotation and load its first page.
+  ASSERT_TRUE(OpenDocument("norotate_annotation.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // This annotation is an arrow pointing from left to right.
+  // The page is rotate 90 degrees, but because of the NoRotation flag, the
+  // direction of the arrow in the annotation should be preserved (from left
+  // to right) when displayed
+  ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+  CompareBitmap(bitmap.get(), 792, 612, "975cb38fa1a94690291385b65d57fba1");
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbedderTest, ExtractHighlightLongContent) {
   // Open a file with one annotation and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_highlight_long_content.pdf"));
