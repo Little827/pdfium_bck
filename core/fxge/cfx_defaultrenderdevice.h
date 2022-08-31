@@ -11,6 +11,10 @@
 #include "core/fxge/cfx_renderdevice.h"
 #include "core/fxge/dib/fx_dib.h"
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#include "public/fpdfview.h"  // nogncheck
+#endif
+
 class SkPictureRecorder;
 
 class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
@@ -48,6 +52,11 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
 
   // Runtime check to see if SkiaPaths is the renderer variant in use.
   static bool SkiaPathsIsDefaultRenderer();
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // Update default renderer.
+  static void SetDefaultRenderer(FPDF_RENDERER_TYPE renderer_type);
+#endif
 
  private:
   bool AttachImpl(RetainPtr<CFX_DIBitmap> pBitmap,

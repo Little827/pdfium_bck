@@ -145,6 +145,7 @@ source_set("fxge") {
   if (pdf_use_skia || pdf_use_skia_paths) {
     sources += [ "skia/fx_skia_device.cpp" ]
     deps += [ "//skia" ]
+    public_deps = [ "//:pdfium_public_headers" ]
   }
 
   if (is_android) {
