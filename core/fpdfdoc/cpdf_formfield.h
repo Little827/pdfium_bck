@@ -76,8 +76,8 @@ class CPDF_FormField {
 
   static const CPDF_Object* GetFieldAttr(const CPDF_Dictionary* pFieldDict,
                                          const ByteString& name);
-  static CPDF_Object* GetFieldAttr(CPDF_Dictionary* pFieldDict,
-                                   const ByteString& name);
+  static RetainPtr<CPDF_Object> GetMutableFieldAttr(CPDF_Dictionary* pFieldDict,
+                                                    const ByteString& name);
 
   static WideString GetFullNameForDict(const CPDF_Dictionary* pFieldDict);
 

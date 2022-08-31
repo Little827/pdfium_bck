@@ -208,8 +208,9 @@ RetainPtr<CPDF_Font> CPDF_FormControl::GetDefaultControlFont() const {
   if (!csFontNameTag.has_value() || csFontNameTag->IsEmpty())
     return nullptr;
 
-  CPDF_Object* pObj = CPDF_FormField::GetFieldAttr(m_pWidgetDict.Get(), "DR");
-  if (CPDF_Dictionary* pDict = ToDictionary(pObj)) {
+  RetainPtr<CPDF_Dictionary> pDict = ToDictionary(
+      CPDF_FormField::GetMutableFieldAttr(m_pWidgetDict.Get(), "DR"));
+  if (pDict) {
     RetainPtr<CPDF_Dictionary> pFonts = pDict->GetMutableDictFor("Font");
     if (ValidateFontResourceDict(pFonts.Get())) {
       RetainPtr<CPDF_Dictionary> pElement =
@@ -227,12 +228,12 @@ RetainPtr<CPDF_Font> CPDF_FormControl::GetDefaultControlFont() const {
     return pFormFont;
 
   RetainPtr<CPDF_Dictionary> pPageDict = m_pWidgetDict->GetMutableDictFor("P");
-  CPDF_Dictionary* pDict =
-      ToDictionary(CPDF_FormField::GetFieldAttr(pPageDict.Get(), "Resources"));
-  if (!pDict)
+  RetainPtr<CPDF_Dictionary> pResDict = ToDictionary(
+      CPDF_FormField::GetMutableFieldAttr(pPageDict.Get(), "Resources"));
+  if (!pResDict)
     return nullptr;
 
-  RetainPtr<CPDF_Dictionary> pFonts = pDict->GetMutableDictFor("Font");
+  RetainPtr<CPDF_Dictionary> pFonts = pResDict->GetMutableDictFor("Font");
   if (!ValidateFontResourceDict(pFonts.Get()))
     return nullptr;
 
