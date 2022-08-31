@@ -69,6 +69,24 @@
       "parentUuid": "302d1e45_a17656e7",
       "revId": "8cd5c00502c085cbbd4d947eea82295d01354492",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fa7082_4af29a2d",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-08-31T22:36:45Z",
+      "side": 1,
+      "message": "\u003e Having to cast the V8 embedder data slot number to a void* on the caller side is slightly annoying.\n\nThere\u0027s a bit of design space here:\n\nI. Use a real pointer:\n  unsigned int slot \u003d 42u;\n  FPDF_InitParamSet(kV8EmbedderDataSlot, \u0026slot);\n  \nIa. Use a real pointer to a struct:\n\n  struct V8Basic \u003d { isolate, 42u };\n  FPDF_InitParamSet(kV8Basic, \u0026v8_params);\n\nII. Have a setter function for each primitive type:\n  FPDF_InitIntegerParamSet(kV8EmbedderDataSlot, 42);\n\netc.\n\n\u003e The public function is more stable, but PDFium still has to maintain a list of valid public property keys.\n\nYes, that\u0027s true. In theory, though, you\u0027d be able to use the latest headers with an older PDFium binary. If this isn\u0027t valuable, on the other hand, there\u0027s probably no need for this complexity.",
+      "parentUuid": "8975fcc5_661d7f92",
+      "revId": "8cd5c00502c085cbbd4d947eea82295d01354492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
