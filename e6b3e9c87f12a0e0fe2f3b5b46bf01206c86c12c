@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "851b19ba_fece8252",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-31T01:45:23Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "3541996c_61d33833",
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5265acbf_91de549c",
         "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
         "patchSetId": 5
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "585a3a4c_cdf2a72d",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-31T01:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2cdcca5_ee0a995b",
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20bf239d_bb52d8a9",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-08-30T01:01:31Z",
       "side": 1,
       "message": "Would something like \"SetDefaultRendererToSkia\" be a slightly better name? Or pass an enum to SetDefaultRenderer()?",
+      "range": {
+        "startLine": 55,
+        "startChar": 14,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d000ba55_256b5fd6",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-31T01:45:23Z",
+      "side": 1,
+      "message": "I think passing an enum is more clear, for supporting the case where we explicitly ask for AGG in a Skia-enabled build.\n\nUsing the enum here caused a bit of extra work, because of DEPS checks that were complaining.",
+      "parentUuid": "20bf239d_bb52d8a9",
       "range": {
         "startLine": 55,
         "startChar": 14,
@@ -92,6 +152,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f263965d_d68af1e8",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-31T01:45:23Z",
+      "side": 1,
+      "message": "Reworked by introducing `BuildDefaultRendererType()`.",
+      "parentUuid": "fb475403_9c40f2b2",
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79a03803_bf32b43c",
@@ -105,6 +183,30 @@
       "writtenOn": "2022-08-30T01:01:31Z",
       "side": 1,
       "message": "Any reason not to use absl::optional::value() or change the entire conditional to use value_or()?",
+      "range": {
+        "startLine": 1243,
+        "startChar": 7,
+        "endLine": 1243,
+        "endChar": 8
+      },
+      "revId": "e6b3e9c87f12a0e0fe2f3b5b46bf01206c86c12c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ed5a00_70a031f6",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-31T01:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79a03803_bf32b43c",
       "range": {
         "startLine": 1243,
         "startChar": 7,
