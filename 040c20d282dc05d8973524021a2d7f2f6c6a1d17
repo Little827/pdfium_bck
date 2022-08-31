@@ -33,6 +33,24 @@
       "message": "And it quickly gets a red bot.  I\u0027ll look into that.",
       "revId": "040c20d282dc05d8973524021a2d7f2f6c6a1d17",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d357b43a_b4d768a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-08-31T05:34:59Z",
+      "side": 1,
+      "message": "I had one \"oops\", plus some other weirdness in the underlying bots which ultimately went away.  Should be good now (without me knowing what was really going on with some of the intermittent complaints).\n\nI still need a follow-up for using the new init API logic.",
+      "parentUuid": "8b127832_88d4865e",
+      "revId": "040c20d282dc05d8973524021a2d7f2f6c6a1d17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
