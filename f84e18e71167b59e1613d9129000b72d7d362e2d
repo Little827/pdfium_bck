@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24f66c61_5a7e6f4e",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2022-08-31T05:08:15Z",
+      "side": 1,
+      "message": "I am not sure how this works, but I thought that if you don\u0027t provide an override file, it\u0027ll use the default one from base/allocator/partition_allocator/build_overrides/partition_alloc.gni. I think these are the settings you\u0027d want to use (see my other feedback in this file).",
+      "parentUuid": "6ff12a1c_25cfbd92",
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cdcfd78_34f29f4d",
         "filename": "build_overrides/partition_alloc.gni",
         "patchSetId": 36
@@ -243,6 +261,30 @@
       "side": 1,
       "message": "There\u0027s AlignedAlloc() in third_party/base/memory/aligned_memory.cc, which is very similar to Chromium\u0027s base/memory/aligned_memory.cc. AlignedAlloc() calls posix_memalign().",
       "parentUuid": "f04ea13a_3cb85be2",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df20187_6e0a70db",
+        "filename": "core/fxcrt/fx_memory_pa.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2022-08-31T05:08:15Z",
+      "side": 1,
+      "message": "This is fine. posix_memalign() will be routed to PartitionRoot::AlignedAlloc of the malloc partition when built with Chromium, and to the system allocator otherwise. I was wondering if you\u0027re planning to call PartitionRoot::AlignedAlloc on this very partition directly. If yes, or you think it\u0027s a possibility, you\u0027d want to use AlignedAlloc::kAllowed instead.",
+      "parentUuid": "42ab9fed_22b774b0",
       "range": {
         "startLine": 16,
         "startChar": 4,
