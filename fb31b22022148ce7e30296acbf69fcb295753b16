@@ -22,6 +22,30 @@
       },
       "revId": "fb31b22022148ce7e30296acbf69fcb295753b16",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0256c29f_743538ed",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-08-31T19:35:40Z",
+      "side": 1,
+      "message": "This is for consistency with the existing documentation. You\u0027ll notice there\u0027s no tickmarks anywhere in public/.\n\nFurthermore, there\u0027s a discussion to rewrite the documentation, so this may get rewritten at some point in the future anyway. https://groups.google.com/g/pdfium/c/e-5WkaGXMlY",
+      "parentUuid": "d1823f2e_0a30801b",
+      "range": {
+        "startLine": 287,
+        "startChar": 16,
+        "endLine": 287,
+        "endChar": 50
+      },
+      "revId": "fb31b22022148ce7e30296acbf69fcb295753b16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
