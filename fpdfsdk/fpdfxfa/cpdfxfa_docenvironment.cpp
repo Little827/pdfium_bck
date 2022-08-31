@@ -412,7 +412,8 @@ void CPDFXFA_DocEnvironment::SetTitle(CXFA_FFDoc* hDoc,
   if (hDoc != m_pContext->GetXFADoc() || !m_pContext->GetPDFDoc())
     return;
 
-  CPDF_Dictionary* pInfoDict = m_pContext->GetPDFDoc()->GetInfo();
+  RetainPtr<CPDF_Dictionary> pInfoDict =
+      m_pContext->GetPDFDoc()->GetMutableInfo();
   if (pInfoDict)
     pInfoDict->SetNewFor<CPDF_String>("Title", wsTitle.AsStringView());
 }

@@ -135,7 +135,7 @@ FPDFAttachment_HasKey(FPDF_ATTACHMENT attachment, FPDF_BYTESTRING key) {
   if (!pFile)
     return 0;
 
-  CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
+  const CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
   return pParamsDict ? pParamsDict->KeyExist(key) : 0;
 }
 
@@ -157,7 +157,8 @@ FPDFAttachment_SetStringValue(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return false;
 
-  CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
+  RetainPtr<CPDF_Dictionary> pParamsDict =
+      CPDF_FileSpec(pFile).GetMutableParamsDict();
   if (!pParamsDict)
     return false;
 
@@ -180,7 +181,7 @@ FPDFAttachment_GetStringValue(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return 0;
 
-  CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
+  const CPDF_Dictionary* pParamsDict = CPDF_FileSpec(pFile).GetParamsDict();
   if (!pParamsDict)
     return 0;
 
@@ -262,7 +263,7 @@ FPDFAttachment_GetFile(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return false;
 
-  CPDF_Stream* pFileStream = CPDF_FileSpec(pFile).GetFileStream();
+  const CPDF_Stream* pFileStream = CPDF_FileSpec(pFile).GetFileStream();
   if (!pFileStream)
     return false;
 

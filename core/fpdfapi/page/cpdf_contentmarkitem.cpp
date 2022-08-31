@@ -27,9 +27,8 @@ const CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() const {
   }
 }
 
-CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() {
-  return const_cast<CPDF_Dictionary*>(
-      static_cast<const CPDF_ContentMarkItem*>(this)->GetParam());
+RetainPtr<CPDF_Dictionary> CPDF_ContentMarkItem::GetMutableParam() {
+  return pdfium::WrapRetain(const_cast<CPDF_Dictionary*>(GetParam()));
 }
 
 void CPDF_ContentMarkItem::SetDirectDict(RetainPtr<CPDF_Dictionary> pDict) {

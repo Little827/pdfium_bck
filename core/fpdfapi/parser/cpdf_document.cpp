@@ -270,9 +270,8 @@ const CPDF_Dictionary* CPDF_Document::GetPagesDict() const {
   return pRoot ? pRoot->GetDictFor("Pages") : nullptr;
 }
 
-CPDF_Dictionary* CPDF_Document::GetPagesDict() {
-  return const_cast<CPDF_Dictionary*>(
-      static_cast<const CPDF_Document*>(this)->GetPagesDict());
+RetainPtr<CPDF_Dictionary> CPDF_Document::GetMutablePagesDict() {
+  return pdfium::WrapRetain(const_cast<CPDF_Dictionary*>(GetPagesDict()));
 }
 
 bool CPDF_Document::IsPageLoaded(int iPage) const {
@@ -290,13 +289,13 @@ const CPDF_Dictionary* CPDF_Document::GetPageDictionary(int iPage) {
       return result;
   }
 
-  CPDF_Dictionary* pPages = GetPagesDict();
+  RetainPtr<CPDF_Dictionary> pPages = GetMutablePagesDict();
   if (!pPages)
     return nullptr;
 
   if (m_pTreeTraversal.empty()) {
     ResetTraversal();
-    m_pTreeTraversal.push_back(std::make_pair(pPages, 0));
+    m_pTreeTraversal.push_back(std::make_pair(pPages.Get(), 0));
   }
   int nPagesToGo = iPage - m_iNextPageToTraverse + 1;
   CPDF_Dictionary* pPage = TraversePDFPages(iPage, &nPagesToGo, 0);
@@ -363,7 +362,7 @@ int CPDF_Document::GetPageCount() const {
 }
 
 int CPDF_Document::RetrievePageCount() {
-  CPDF_Dictionary* pPages = GetPagesDict();
+  RetainPtr<CPDF_Dictionary> pPages = GetMutablePagesDict();
   if (!pPages)
     return 0;
 
@@ -371,8 +370,8 @@ int CPDF_Document::RetrievePageCount() {
     return 1;
 
   std::set<CPDF_Dictionary*> visited_pages;
-  visited_pages.insert(pPages);
-  return CountPages(pPages, &visited_pages);
+  visited_pages.insert(pPages.Get());
+  return CountPages(pPages.Get(), &visited_pages);
 }
 
 uint32_t CPDF_Document::GetUserPermissions() const {
@@ -483,7 +482,7 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   return true;
 }
 
-CPDF_Dictionary* CPDF_Document::GetInfo() {
+const CPDF_Dictionary* CPDF_Document::GetInfo() {
   if (m_pInfoDict)
     return m_pInfoDict.Get();
 
@@ -499,12 +498,16 @@ CPDF_Dictionary* CPDF_Document::GetInfo() {
   return m_pInfoDict.Get();
 }
 
+RetainPtr<CPDF_Dictionary> CPDF_Document::GetMutableInfo() {
+  return pdfium::WrapRetain(const_cast<CPDF_Dictionary*>(GetInfo()));
+}
+
 const CPDF_Array* CPDF_Document::GetFileIdentifier() const {
   return m_pParser ? m_pParser->GetIDArray() : nullptr;
 }
 
 void CPDF_Document::DeletePage(int iPage) {
-  CPDF_Dictionary* pPages = GetPagesDict();
+  RetainPtr<CPDF_Dictionary> pPages = GetMutablePagesDict();
   if (!pPages)
     return;
 
@@ -512,8 +515,8 @@ void CPDF_Document::DeletePage(int iPage) {
   if (iPage < 0 || iPage >= nPages)
     return;
 
-  std::set<CPDF_Dictionary*> stack = {pPages};
-  if (!InsertDeletePDFPage(pPages, iPage, nullptr, false, &stack))
+  std::set<CPDF_Dictionary*> stack = {pPages.Get()};
+  if (!InsertDeletePDFPage(pPages.Get(), iPage, nullptr, false, &stack))
     return;
 
   m_PageList.erase(m_PageList.begin() + iPage);

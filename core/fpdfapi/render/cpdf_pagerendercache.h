@@ -59,7 +59,8 @@ class CPDF_PageRenderCache final : public CPDF_Page::RenderCacheIface {
     uint32_t GetMatteColor() const { return m_MatteColor; }
     uint32_t GetTimeCount() const { return m_dwTimeCount; }
     void SetTimeCount(uint32_t count) { m_dwTimeCount = count; }
-    CPDF_Image* GetImage() const { return m_pImage.Get(); }
+    const CPDF_Image* GetImage() const { return m_pImage.Get(); }
+    RetainPtr<CPDF_Image> GetMutableImage() const { return m_pImage; }
 
     CPDF_DIB::LoadState StartGetCachedBitmap(
         const CPDF_Dictionary* pPageResources,

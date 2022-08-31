@@ -11,6 +11,7 @@
 #include <utility>
 
 #include "constants/access_permissions.h"
+#include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/page/cpdf_textobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -726,9 +727,11 @@ CJS_Result CJS_Document::getPropertyInternal(CJS_Runtime* pRuntime,
   if (!m_pFormFillEnv)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  CPDF_Dictionary* pDictionary = m_pFormFillEnv->GetPDFDocument()->GetInfo();
+  const CPDF_Dictionary* pDictionary =
+      m_pFormFillEnv->GetPDFDocument()->GetInfo();
   if (!pDictionary)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
+
   return CJS_Result::Success(pRuntime->NewString(
       pDictionary->GetUnicodeTextFor(propName).AsStringView()));
 }

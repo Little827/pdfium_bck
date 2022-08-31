@@ -77,7 +77,7 @@ class CPDF_Parser {
   ByteString GetEncodedPassword() const;
 
   const CPDF_Dictionary* GetTrailer() const;
-  CPDF_Dictionary* GetMutableTrailerForTesting();
+  RetainPtr<CPDF_Dictionary> GetMutableTrailerForTesting();
 
   // Returns a new trailer which combines the last read trailer with the /Root
   // and /Info from previous ones.

@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "core/fpdfapi/page/cpdf_form.h"
+#include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/page/cpdf_tilingpattern.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/render/cpdf_pagerendercache.h"
