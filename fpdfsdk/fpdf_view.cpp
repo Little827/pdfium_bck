@@ -100,6 +100,30 @@ namespace {
 
 bool g_bLibraryInitialized = false;
 
+struct InitParameters {
+  // Cannot use ByteString, as PartitionAlloc may not initialized yet.
+  std::vector<std::unique_ptr<const char>> paths;
+  // TODO(crbug.com/pdfium/1446): Remove in favor of just `paths` when
+  // CFX_GEModule::Create() no longer needs to work with
+  // FPDF_InitLibraryWithConfig().
+  std::unique_ptr<const char*[]> paths_as_cstr;
+#ifdef PDF_ENABLE_V8
+  void* v8_isolate = nullptr;
+  unsigned int v8_embedder_data_slot = 0;
+  void* v8_platform = nullptr;
+#endif
+};
+
+InitParameters* g_init_parameters = nullptr;
+
+InitParameters* InitParametersFromFPDFInitParams(FPDF_INIT_PARAMS params) {
+  return reinterpret_cast<InitParameters*>(params);
+}
+
+FPDF_INIT_PARAMS FPDFInitParamsFromInitParameters(InitParameters* params) {
+  return reinterpret_cast<FPDF_INIT_PARAMS>(params);
+}
+
 const CPDF_Object* GetXFAEntryFromDocument(const CPDF_Document* doc) {
   const CPDF_Dictionary* root = doc->GetRoot();
   if (!root)
@@ -172,6 +196,100 @@ FPDF_DOCUMENT LoadDocumentImpl(
 
 }  // namespace
 
+FPDF_EXPORT FPDF_INIT_PARAMS FPDF_CALLCONV FPDF_InitParamCreate() {
+  auto params = std::make_unique<InitParameters>();
+  // Caller takes ownership.
+  return FPDFInitParamsFromInitParameters(params.release());
+}
+
+FPDF_EXPORT void FPDF_CALLCONV FPDF_InitParamDestroy(FPDF_INIT_PARAMS params) {
+  // Takes back ownership from caller.
+  std::unique_ptr<InitParameters> destroyer(
+      InitParametersFromFPDFInitParams(params));
+}
+
+FPDF_EXPORT void FPDF_CALLCONV
+FPDF_InitParamAppendFontPath(FPDF_INIT_PARAMS params, const char* font_path) {
+  auto* init_parameters = InitParametersFromFPDFInitParams(params);
+  if (!init_parameters || !font_path || !font_path[0])
+    return;
+
+  init_parameters->paths.push_back(
+      std::unique_ptr<const char>(strdup(font_path)));
+}
+
+#ifdef PDF_ENABLE_V8
+FPDF_EXPORT void FPDF_CALLCONV
+FPDF_InitParamSetV8Isolate(FPDF_INIT_PARAMS params,
+                           void* v8_isolate,
+                           unsigned int v8_embedder_data_slot) {
+  auto* init_parameters = InitParametersFromFPDFInitParams(params);
+  if (!init_parameters)
+    return;
+
+  init_parameters->v8_isolate = v8_isolate;
+  init_parameters->v8_embedder_data_slot = v8_embedder_data_slot;
+}
+
+FPDF_EXPORT void FPDF_CALLCONV
+FPDF_InitParamSetV8Platform(FPDF_INIT_PARAMS params, void* v8_platform) {
+  auto* init_parameters = InitParametersFromFPDFInitParams(params);
+  if (!init_parameters)
+    return;
+
+  init_parameters->v8_platform = v8_platform;
+}
+#endif  // PDF_ENABLE_V8
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_InitLibraryWithParams(FPDF_INIT_PARAMS params) {
+  if (g_bLibraryInitialized)
+    return false;
+
+  auto* init_parameters = InitParametersFromFPDFInitParams(params);
+  if (!init_parameters)
+    return false;
+
+  // Add 1 to hold the sentinel nullptr value.
+  FX_SAFE_SIZE_T safe_path_count = init_parameters->paths.size();
+  safe_path_count += 1;
+  if (!safe_path_count.IsValid())
+    return false;
+
+  DCHECK(!g_init_parameters);
+  g_init_parameters = init_parameters;
+  const size_t path_count = safe_path_count.ValueOrDie();
+  if (path_count) {
+    g_init_parameters->paths_as_cstr =
+        std::make_unique<const char*[]>(path_count);
+    size_t i = 0;
+    for (; i < g_init_parameters->paths.size(); ++i)
+      g_init_parameters->paths_as_cstr[i] = g_init_parameters->paths[i].get();
+    g_init_parameters->paths_as_cstr[i] = nullptr;
+  } else {
+    g_init_parameters->paths_as_cstr.reset();
+  }
+
+  FPDF_LIBRARY_CONFIG config;
+  config.m_pUserFontPaths = g_init_parameters->paths_as_cstr.get();
+#ifdef PDF_ENABLE_V8
+  if (g_init_parameters->v8_isolate)
+    config.version = g_init_parameters->v8_platform ? 3 : 2;
+  else
+    config.version = 1;
+  config.m_pIsolate = g_init_parameters->v8_isolate;
+  config.m_v8EmbedderSlot = g_init_parameters->v8_embedder_data_slot;
+  config.m_pPlatform = g_init_parameters->v8_platform;
+#else
+  config.version = 1;
+  config.m_pIsolate = nullptr;
+  config.m_v8EmbedderSlot = 0;
+  config.m_pPlatform = nullptr;
+#endif
+  FPDF_InitLibraryWithConfig(&config);
+  return true;
+}
+
 FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary() {
   FPDF_InitLibraryWithConfig(nullptr);
 }
@@ -208,6 +326,9 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   CPDF_PageModule::Destroy();
   CFX_GEModule::Destroy();
   IJS_Runtime::Destroy();
+
+  delete g_init_parameters;
+  g_init_parameters = nullptr;
 
   g_bLibraryInitialized = false;
 }

@@ -63,6 +63,7 @@ typedef struct fpdf_document_t__* FPDF_DOCUMENT;
 typedef struct fpdf_font_t__* FPDF_FONT;
 typedef struct fpdf_form_handle_t__* FPDF_FORMHANDLE;
 typedef const struct fpdf_glyphpath_t__* FPDF_GLYPHPATH;
+typedef struct fpdf_init_params_t__* FPDF_INIT_PARAMS;
 typedef struct fpdf_javascript_action_t* FPDF_JAVASCRIPT_ACTION;
 typedef struct fpdf_link_t__* FPDF_LINK;
 typedef struct fpdf_page_t__* FPDF_PAGE;
@@ -221,6 +222,112 @@ typedef int FPDF_OBJECT_TYPE;
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// Experimental API.
+// Function: FPDF_InitParamCreate
+//          Creates a new initialization parameters object
+// Parameters:
+//          None
+// Return value:
+//          A handle to a new initialization parameters object
+// Comments:
+//          Caller takes ownership of the returned handle.
+//          Can be called before FPDF_InitLibraryWithParams().
+FPDF_EXPORT FPDF_INIT_PARAMS FPDF_CALLCONV FPDF_InitParamCreate();
+
+// Experimental API.
+// Function: FPDF_InitParamDestroy
+//          Destroys an initialization parameters object
+// Parameters:
+//          params - handle to the initialization parameters object to destroy
+// Return value:
+//          None
+// Comments:
+//          Caller gives up ownership of the returned handle. Normally this is
+//          not used, as the caller would give up ownership to
+//          FPDF_InitLibraryWithParams() instead.
+//          Can be called before FPDF_InitLibraryWithParams().
+FPDF_EXPORT void FPDF_CALLCONV FPDF_InitParamDestroy(FPDF_INIT_PARAMS params);
+
+// Experimental API.
+// Function: FPDF_InitParamAppendFontPath
+//          Add a path to scan for fonts
+// Parameters:
+//          params - handle to the initialization parameters object to update
+//          font_path - path to scan
+// Return value:
+//          None
+// Comments:
+//          Can be called multiple times to append additional paths to a given
+//          initialization parameters object.
+//          If not called, PDFium will try some default paths, depending on the
+//          platform.
+//          Paths added using this API may be ignored entirely, depending on the
+//          platform.
+//          Can be called before FPDF_InitLibraryWithParams().
+FPDF_EXPORT void FPDF_CALLCONV FPDF_InitParamAppendFontPath(
+    FPDF_INIT_PARAMS params,
+    const char* font_path);
+
+#ifdef PDF_ENABLE_V8
+// Experimental API.
+// Function: FPDF_InitParamSetV8Isolate
+//          Set to V8::Isolate and embedder data slot to use
+// Parameters:
+//          params - handle to the initialization parameters object to update
+//          v8_isolate - pointer to the V8::Isolate
+//          v8_embedder_data_slot - the data slot to use in the v8::Isolate
+// Return value:
+//          None
+// Comments:
+//          Does not take ownership of the V8::Isolate.
+//          Can be called multiple times to update the values.
+//          If |v8_isolate| is NULL, then V8 will not be enabled.
+//          The value of |v8_embedder_data_slot| needs the in in the range
+//          0, |v8::Internals::kNumIsolateDataLots|). Note that 0 is fine for
+//          most embedders.
+//          Can be called before FPDF_InitLibraryWithParams().
+FPDF_EXPORT void FPDF_CALLCONV FPDF_InitParamSetV8Isolate(
+    FPDF_INIT_PARAMS params,
+    void* v8_isolate,
+    unsigned int v8_embedder_data_slot);
+
+// Experimental API.
+// Function: FPDF_InitParamSetV8Platform
+//          Set to V8::Platform to use
+// Parameters:
+//          params - handle to the initialization parameters object to update
+//          v8_platform - pointer to the V8::Platform
+// Return value:
+//          None
+// Comments:
+//          Does not take ownership of the V8::Platform.
+//          Can be called multiple times to update the pointer.
+//          Can be called before FPDF_InitLibraryWithParams().
+FPDF_EXPORT void FPDF_CALLCONV FPDF_InitParamSetV8Platform(
+    FPDF_INIT_PARAMS params,
+    void* v8_platform);
+#endif  // PDF_ENABLE_V8
+
+// Experimental API.
+// Function: FPDF_InitLibraryWithParams
+//          Initialize the PDFium library
+// Parameters:
+//          params - the initialization parameters
+// Return value:
+//          Whether initialization succeeded or not
+// Comments:
+//          PDFium embedder must call this function before using any other
+//          public APIs. The exception is the FPDF_InitParam* family of APIs.
+//          If initialization fails, then FPDF_DestroyLibrary() does not need to
+//          be called.
+//          If PDFium is already initialized, calling it again is a no-op. This
+//          function will return false in this case, though FPDF_DestroyLibrary()
+//          still needs to be called.
+//          Takes ownership of the |params| handle. |params| must be non-NULL.
+//          Caller must not modify |params| after giving up ownership.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_InitLibraryWithParams(
+    FPDF_INIT_PARAMS params);
 
 // Function: FPDF_InitLibrary
 //          Initialize the FPDFSDK library
