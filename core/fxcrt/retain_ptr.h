@@ -32,17 +32,28 @@ class RetainPtr {
   }
 
   RetainPtr() = default;
+
+  // Copy-construct a RetainPtr.
+  // Required in addition to copy conversion constructor below.
   RetainPtr(const RetainPtr& that) : RetainPtr(that.Get()) {}
 
   // Move-construct a RetainPtr. After construction, |that| will be NULL.
-  RetainPtr(RetainPtr&& that) noexcept { Swap(that); }
+  // Required in addition to move conversion constructor below.
+  RetainPtr(RetainPtr&& that) noexcept { Unleak(that.Leak()); }
 
   // Deliberately implicit to allow returning nullptrs.
   // NOLINTNEXTLINE(runtime/explicit)
   RetainPtr(std::nullptr_t ptr) {}
 
+  // Copy conversion constructor.
   template <class U>
   RetainPtr(const RetainPtr<U>& that) : RetainPtr(that.Get()) {}
+
+  // Move-conversion constructor.
+  template <class U>
+  RetainPtr(RetainPtr<U>&& that) noexcept {
+    Unleak(that.Leak());
+  }
 
   template <class U>
   RetainPtr<U> As() const {
