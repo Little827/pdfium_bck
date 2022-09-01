@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d271444b_d53cd7ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-01T21:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "229343e0_fea35da5",
+      "revId": "16ac61dd8bafc9bf1eaa027c8abb49abeafffd72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "333f0356_51253e06",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-01T19:49:19Z",
       "side": 1,
       "message": "Did you mean to change `direct` to a RetainPtr? As is, this is using ` operator\u003d(T* that)`, so no need to std::move()?",
+      "revId": "16ac61dd8bafc9bf1eaa027c8abb49abeafffd72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10280303_649f1133",
+        "filename": "core/fpdfapi/parser/cpdf_object_avail.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-01T21:42:36Z",
+      "side": 1,
+      "message": "Ah, that leaked in from a future chage.",
+      "parentUuid": "333f0356_51253e06",
       "revId": "16ac61dd8bafc9bf1eaa027c8abb49abeafffd72",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
