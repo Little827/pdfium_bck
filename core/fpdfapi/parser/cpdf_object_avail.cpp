@@ -60,7 +60,8 @@ bool CPDF_ObjectAvail::LoadRootObject() {
     }
 
     CPDF_ReadValidator::ScopedSession parse_session(validator_);
-    CPDF_Object* direct = holder_->GetOrParseIndirectObject(ref_obj_num);
+    RetainPtr<CPDF_Object> direct =
+        holder_->GetOrParseIndirectObject(ref_obj_num);
     if (validator_->has_read_problems())
       return false;
 
@@ -90,12 +91,13 @@ bool CPDF_ObjectAvail::CheckObjects() {
       continue;
 
     CPDF_ReadValidator::ScopedSession parse_session(validator_);
-    const CPDF_Object* direct = holder_->GetOrParseIndirectObject(obj_num);
+    RetainPtr<const CPDF_Object> direct =
+        holder_->GetOrParseIndirectObject(obj_num);
     if (direct == root_)
       continue;
 
     if (validator_->has_read_problems() ||
-        !AppendObjectSubRefs(direct, &objects_to_check)) {
+        !AppendObjectSubRefs(direct.Get(), &objects_to_check)) {
       non_parsed_objects_.push(obj_num);
       continue;
     }
