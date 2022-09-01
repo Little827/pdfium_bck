@@ -58,7 +58,7 @@ class CPDF_Object : public Retainable {
   // copied to the object it points to directly.
   virtual RetainPtr<CPDF_Object> CloneDirectObject() const;
 
-  virtual const CPDF_Object* GetDirect() const;
+  virtual RetainPtr<const CPDF_Object> GetDirect() const;
   virtual ByteString GetString() const;
   virtual WideString GetUnicodeText() const;
   virtual float GetNumber() const;
