@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23799966_bf740e4a",
+        "filename": "core/fxge/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-01T17:28:56Z",
+      "side": 1,
+      "message": "It\u0027s a layering violation for //core to depend on //fpdfsdk or //public.",
+      "revId": "985426e06e0bff528657a81f92263274b3ba94a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4f9c1a_12ab8344",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-01T17:28:56Z",
+      "side": 1,
+      "message": "checkdeps.py was trying to be helpful by complaining about this.",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "985426e06e0bff528657a81f92263274b3ba94a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
