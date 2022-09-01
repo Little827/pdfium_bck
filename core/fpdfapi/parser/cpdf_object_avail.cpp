@@ -65,7 +65,7 @@ bool CPDF_ObjectAvail::LoadRootObject() {
       return false;
 
     parsed_objnums_.insert(ref_obj_num);
-    root_.Reset(direct);
+    root_ = std::move(direct);
   }
   std::stack<uint32_t> non_parsed_objects_in_root;
   if (AppendObjectSubRefs(root_.Get(), &non_parsed_objects_in_root)) {
