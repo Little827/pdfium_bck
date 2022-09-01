@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74aeb6d3_f7c5f5c2",
+        "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-01T20:01:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "288c2ed8_f4475317",
+      "range": {
+        "startLine": 214,
+        "startChar": 18,
+        "endLine": 214,
+        "endChar": 32
+      },
+      "revId": "90b8db2ce54b06694dfd9f26f8b622a8d4892b91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49824d4c_580073d7",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-01T17:58:49Z",
       "side": 1,
       "message": "Is this object even needed now?",
+      "revId": "90b8db2ce54b06694dfd9f26f8b622a8d4892b91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e9ad10_76b74aa3",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-01T20:01:44Z",
+      "side": 1,
+      "message": "Nope.  It was just used to add strings to a dictionary.",
+      "parentUuid": "49824d4c_580073d7",
       "revId": "90b8db2ce54b06694dfd9f26f8b622a8d4892b91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
