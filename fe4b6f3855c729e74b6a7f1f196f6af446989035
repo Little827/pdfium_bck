@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc540fde_61ae97db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-01T21:31:24Z",
+      "side": 1,
+      "message": "See discussion on referenced bug.",
+      "parentUuid": "3a116a9f_ec73e263",
+      "revId": "fe4b6f3855c729e74b6a7f1f196f6af446989035",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f45712a_b810e14d",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-01T21:29:32Z",
       "side": 1,
       "message": "Just wondering if we should say \"must remain valid until the returned FPDF_FORMHANDLE is closed\" since \"outlive\" may not be meaningful to all readers.",
+      "range": {
+        "startLine": 1151,
+        "startChar": 61,
+        "endLine": 1151,
+        "endChar": 68
+      },
+      "revId": "fe4b6f3855c729e74b6a7f1f196f6af446989035",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c6daf9b_fe307955",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-01T21:31:24Z",
+      "side": 1,
+      "message": "Sure. Will update after fixing the tree.",
+      "parentUuid": "8f45712a_b810e14d",
       "range": {
         "startLine": 1151,
         "startChar": 61,
