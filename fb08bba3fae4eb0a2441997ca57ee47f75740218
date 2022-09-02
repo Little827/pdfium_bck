@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7030bc_4462a441",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-02T21:58:57Z",
+      "side": 1,
+      "message": "Formerly m_pData was null. Should we reset the variant to the uninitialized state?",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 13
+      },
+      "revId": "fb08bba3fae4eb0a2441997ca57ee47f75740218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1518ea65_fc159f79",
+        "filename": "core/fpdfapi/parser/cpdf_flateencoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-02T21:58:57Z",
+      "side": 1,
+      "message": "Got a plan to de-duplicate this from the other file?",
+      "range": {
+        "startLine": 93,
+        "startChar": 47,
+        "endLine": 93,
+        "endChar": 54
+      },
+      "revId": "fb08bba3fae4eb0a2441997ca57ee47f75740218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f49d60a_dfb61e6b",
+        "filename": "core/fpdfapi/parser/cpdf_flateencoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-02T21:58:57Z",
+      "side": 1,
+      "message": "good idea.",
+      "range": {
+        "startLine": 37,
+        "startChar": 54,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "fb08bba3fae4eb0a2441997ca57ee47f75740218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
