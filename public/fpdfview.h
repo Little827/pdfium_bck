@@ -234,6 +234,18 @@ extern "C" {
 //          future.
 FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary();
 
+// PDF renderers
+typedef enum {
+  FPDF_RENDERERTYPE_AGG = 0,
+#if defined(_SKIA_SUPPORT_)
+  FPDF_RENDERERTYPE_SKIA = 1,
+#endif
+#if defined(_SKIA_SUPPORT_PATHS_)
+  FPDF_RENDERERTYPE_SKIAPATHS = 2,
+#endif
+  FPDF_RENDERER_TYPE_VARIANTS_COUNT = 3,
+} FPDF_RENDERER_TYPE;
+
 // Process-wide options for initializing the library.
 typedef struct FPDF_LIBRARY_CONFIG_ {
   // Version number of the interface. Currently must be 2.
@@ -257,10 +269,16 @@ typedef struct FPDF_LIBRARY_CONFIG_ {
   // embedders.
   unsigned int m_v8EmbedderSlot;
 
-  // Version 3 - Experimantal,
+  // Version 3 - Experimental,
 
   // Pointer to the V8::Platform to use.
   void* m_pPlatform;
+
+  // Version 4 - Experimental,
+
+  // Explicit specification of renderer to use. Only valid for builds which
+  // include support for multiple renderers.
+  FPDF_RENDERER_TYPE m_RendererType;
 
 } FPDF_LIBRARY_CONFIG;
 

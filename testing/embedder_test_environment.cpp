@@ -37,7 +37,7 @@ EmbedderTestEnvironment* EmbedderTestEnvironment::GetInstance() {
 
 void EmbedderTestEnvironment::SetUp() {
   FPDF_LIBRARY_CONFIG config;
-  config.version = 3;
+  config.version = 4;
   config.m_pUserFontPaths = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pPlatform = nullptr;
@@ -51,6 +51,14 @@ void EmbedderTestEnvironment::SetUp() {
   config.m_pIsolate = nullptr;
   config.m_pPlatform = nullptr;
 #endif  // PDF_ENABLE_V8
+
+#if defined(_SKIA_SUPPORT_)
+  config.m_RendererType = FPDF_RENDERERTYPE_SKIA;
+#elif defined(_SKIA_SUPPORT_PATHS_)
+  config.m_RendererType = FPDF_RENDERERTYPE_SKIAPATHS;
+#else
+  config.m_RendererType = FPDF_RENDERERTYPE_AGG;
+#endif
 
   FPDF_InitLibraryWithConfig(&config);
 

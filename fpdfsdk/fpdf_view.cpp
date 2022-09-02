@@ -100,6 +100,27 @@ namespace {
 
 bool g_bLibraryInitialized = false;
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+// The public and internal definitions of renderer types need to stay in sync.
+static_assert(
+    static_cast<int>(CFX_DefaultRenderDevice::RendererType::kVariantsCount) ==
+    FPDF_RENDERER_TYPE_VARIANTS_COUNT);
+
+CFX_DefaultRenderDevice::RendererType PublicToInternalRendererType(
+    FPDF_RENDERER_TYPE public_type) {
+#if defined(_SKIA_SUPPORT_)
+  if (public_type == FPDF_RENDERERTYPE_SKIA)
+    return CFX_DefaultRenderDevice::RendererType::kSkia;
+#endif
+#if defined(_SKIA_SUPPORT_PATHS_)
+  if (public_type == FPDF_RENDERERTYPE_SKIAPATHS)
+    return CFX_DefaultRenderDevice::RendererType::kSkiaPaths;
+#endif
+  DCHECK(public_type == FPDF_RENDERERTYPE_AGG);
+  return CFX_DefaultRenderDevice::RendererType::kAgg;
+}
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+
 const CPDF_Object* GetXFAEntryFromDocument(const CPDF_Document* doc) {
   const CPDF_Dictionary* root = doc->GetRoot();
   if (!root)
@@ -193,6 +214,13 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
     void* platform = config->version >= 3 ? config->m_pPlatform : nullptr;
     IJS_Runtime::Initialize(config->m_v8EmbedderSlot, config->m_pIsolate,
                             platform);
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    if (config->version >= 4) {
+      CFX_DefaultRenderDevice::SetDefaultRenderer(
+          PublicToInternalRendererType(config->m_RendererType));
+    }
+#endif
   }
   g_bLibraryInitialized = true;
 }
