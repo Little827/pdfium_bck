@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "313d684c_32733b7f",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-02T23:45:17Z",
+      "side": 1,
+      "message": "And span doesn\u0027t let me do that, so empty span it is.",
+      "parentUuid": "b9ca435d_2329dead",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 13
+      },
+      "revId": "fb08bba3fae4eb0a2441997ca57ee47f75740218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1518ea65_fc159f79",
