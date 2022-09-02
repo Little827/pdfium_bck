@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "738d248f_61683104",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T18:39:25Z",
+      "side": 1,
+      "message": "Yes - updated.",
+      "parentUuid": "7df25ec5_213ec767",
+      "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ade36dd_73e27d71",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-01T20:01:10Z",
       "side": 1,
       "message": "Need to make sure the public values and the CFX_DefaultRenderDevice values stay in sync.",
+      "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9998a1_cc4af43b",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T18:39:25Z",
+      "side": 1,
+      "message": "Extended the types to include a count of variants, with which a compile-time check can be made.",
+      "parentUuid": "1ade36dd_73e27d71",
       "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -66,6 +102,24 @@
       "side": 1,
       "message": "I\u0027m expecting to rework this corner of the CL after https://pdfium-review.googlesource.com/c/pdfium/+/97151 lands.",
       "parentUuid": "eca7511a_cd66a8e5",
+      "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "381eabce_0403fdec",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T18:39:25Z",
+      "side": 1,
+      "message": "After offline discussion, proceeding with existing config API approach for now.  Updated for a bumped version number.",
+      "parentUuid": "937499a0_4fcdf94e",
       "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
