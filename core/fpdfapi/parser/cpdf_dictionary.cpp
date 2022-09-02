@@ -92,7 +92,7 @@ RetainPtr<CPDF_Object> CPDF_Dictionary::GetMutableObjectFor(
 const CPDF_Object* CPDF_Dictionary::GetDirectObjectFor(
     const ByteString& key) const {
   const CPDF_Object* p = GetObjectFor(key);
-  return p ? p->GetDirect() : nullptr;
+  return p ? p->GetDirect().Get() : nullptr;
 }
 
 RetainPtr<CPDF_Object> CPDF_Dictionary::GetMutableDirectObjectFor(
@@ -114,7 +114,7 @@ ByteString CPDF_Dictionary::GetStringFor(const ByteString& key,
 WideString CPDF_Dictionary::GetUnicodeTextFor(const ByteString& key) const {
   const CPDF_Object* p = GetObjectFor(key);
   if (const CPDF_Reference* pRef = ToReference(p))
-    p = pRef->GetDirect();
+    p = pRef->GetDirect().Get();
   return p ? p->GetUnicodeText() : WideString();
 }
 
