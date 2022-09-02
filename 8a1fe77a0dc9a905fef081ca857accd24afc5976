@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2257fa66_74c94ae8",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-02T23:54:50Z",
+      "side": 1,
+      "message": "Why can\u0027t the compiler static_assert() these?",
+      "parentUuid": "c5e2e7ea_bbfa6f59",
+      "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eca7511a_cd66a8e5",
         "filename": "public/fpdfview.h",
         "patchSetId": 8

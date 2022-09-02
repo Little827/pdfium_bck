@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183e36f9_919c3de4",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-02T23:54:50Z",
+      "side": 1,
+      "message": "Should the public documentation mention the consequences of passing in an invalid value?",
+      "revId": "d6c452429d001313bdb79c43f2f916f6609fbdf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
