@@ -216,6 +216,10 @@ class EmbedderTest : public ::testing::Test,
  protected:
   using PageNumberToHandleMap = std::map<int, FPDF_PAGE>;
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  void SetupForUsingRenderer(bool use_skia_variant);
+#endif
+
   bool OpenDocumentHelper(const char* password,
                           LinearizeOption linearize_option,
                           JavaScriptOption javascript_option,

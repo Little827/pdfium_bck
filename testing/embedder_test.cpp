@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "core/fdrm/fx_crypt.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_dataavail.h"
 #include "public/fpdf_edit.h"
@@ -285,6 +286,23 @@ void EmbedderTest::TearDown() {
   if (document())
     CloseDocument();
 }
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+void EmbedderTest::SetupForUsingRenderer(bool use_skia_variant) {
+  // Renderer will default to AGG unless we are using a Skia variant.
+  CFX_DefaultRenderDevice::RendererType renderer_type =
+      CFX_DefaultRenderDevice::RendererType::kAgg;
+  if (use_skia_variant) {
+#if defined(_SKIA_SUPPORT_)
+    renderer_type = CFX_DefaultRenderDevice::RendererType::kSkia;
+#endif
+#if defined(_SKIA_SUPPORT_PATHS_)
+    renderer_type = CFX_DefaultRenderDevice::RendererType::kSkiaPaths;
+#endif
+  }
+  CFX_DefaultRenderDevice::SetDefaultRenderer(renderer_type);
+}
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
 void EmbedderTest::CreateEmptyDocument() {
   CreateEmptyDocumentWithoutFormFillEnvironment();
