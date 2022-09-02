@@ -40,15 +40,15 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
-  'build_revision': '918b804ee4520a824bbb7bbd4c73087bd2c3e041',
+  'build_revision': '15f3aedda74ed6982c56152ea3a391c8d9bdb0c2',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling buildtools
   # and whatever else without interference from each other.
-  'buildtools_revision': '4ec3cf692d16a84c70e13ff3cc015d03e5c20cc0',
+  'buildtools_revision': '734683a3d67055f44046697efe2b54727c8ccee9',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling catapult
   # and whatever else without interference from each other.
-  'catapult_revision': '1c7fc8f4bdb81fa561152ab0ecb2a5647cb08f8b',
+  'catapult_revision': '7ee071132a536a6616589cc2411674d1b459b4da',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling clang format
   # and whatever else without interference from each other.
@@ -56,7 +56,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling clang
   # and whatever else without interference from each other.
-  'clang_revision': '3d8d88e8bb600789ba3e798f38ff314521aac524',
+  'clang_revision': 'e0c28817676accee858723e2d58f4dc7151cba83',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling code_coverage
   # and whatever else without interference from each other.
@@ -64,7 +64,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling depot_tools
   # and whatever else without interference from each other.
-  'depot_tools_revision': '3528d4d3c501d6585641a19ee5e3c692556498a9',
+  'depot_tools_revision': '8cdc635be8023cfcf2a9f5329dacd7d1e307169b',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling freetype
   # and whatever else without interference from each other.
@@ -142,7 +142,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling v8
   # and whatever else without interference from each other.
-  'v8_revision': '709443dcb7102cf51cf3ee8645b784483cd208f8',
+  'v8_revision': '26c18ab37425c30dd369df5b4ff03cca5dee6b6f',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling zlib
   # and whatever else without interference from each other.
