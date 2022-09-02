@@ -47,6 +47,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ef15b2_9f2ae153",
+        "filename": "core/fpdfapi/parser/cpdf_flateencoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-02T22:15:04Z",
+      "side": 1,
+      "message": "In other words, I think there might be a template for something like\n\ntemplate \u003ctypename T\u003e using foo \u003d absl::variant\u003cpdfium::span\u003cconst T\u003e, DataVector\u003cT\u003e\u003e;",
+      "parentUuid": "1518ea65_fc159f79",
+      "range": {
+        "startLine": 93,
+        "startChar": 47,
+        "endLine": 93,
+        "endChar": 54
+      },
+      "revId": "fb08bba3fae4eb0a2441997ca57ee47f75740218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0f49d60a_dfb61e6b",
