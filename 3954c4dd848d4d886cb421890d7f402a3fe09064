@@ -16,6 +16,24 @@
       "message": "Is const uint8_t* now returnable as a result?",
       "revId": "3954c4dd848d4d886cb421890d7f402a3fe09064",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91a5eaf_5ff3de43",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-02T21:57:12Z",
+      "side": 1,
+      "message": "See next CL in the chain.",
+      "parentUuid": "0eb3b675_561e6f1e",
+      "revId": "3954c4dd848d4d886cb421890d7f402a3fe09064",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
