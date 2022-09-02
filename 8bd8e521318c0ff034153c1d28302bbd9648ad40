@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aba4e89_a947ad46",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-02T18:51:48Z",
+      "side": 1,
+      "message": "- DCHECK_EQ() is available in PDFium.\n- Patch set 9 now has `FPDF_RENDERER_TYPE_VARIANTS_COUNT`. What\u0027s preventing embedders from passing that in? Even before that, what\u0027s stopping embedders from passing in garbage values?",
+      "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c609425c_e0738ae1",
         "filename": "public/fpdfview.h",
         "patchSetId": 9
