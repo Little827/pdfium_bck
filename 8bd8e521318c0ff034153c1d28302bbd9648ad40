@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d3b178_8d05f21b",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-02T18:45:30Z",
+      "side": 1,
+      "message": "What if someone reorders the RendererType enum values? Still the same count.",
+      "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c609425c_e0738ae1",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-02T18:45:30Z",
+      "side": 1,
+      "message": "What are PDFium embedders suppose to do with this?",
+      "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
