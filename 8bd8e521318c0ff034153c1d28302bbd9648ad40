@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb31cdc6_66c6bc29",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T23:01:44Z",
+      "side": 1,
+      "message": "The conversion logic doesn\u0027t rely on the particular enum values, it uses conditional logic to map from public to internal.  It should be sufficient so long as there is a mapping for all public entries to an internal value, reordering doesn\u0027t matter.",
+      "parentUuid": "a2d3b178_8d05f21b",
+      "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aba4e89_a947ad46",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-02T18:51:48Z",
       "side": 1,
       "message": "- DCHECK_EQ() is available in PDFium.\n- Patch set 9 now has `FPDF_RENDERER_TYPE_VARIANTS_COUNT`. What\u0027s preventing embedders from passing that in? Even before that, what\u0027s stopping embedders from passing in garbage values?",
+      "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "495e8d77_079b05f8",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T23:01:44Z",
+      "side": 1,
+      "message": "- `FPDF_RENDERER_TYPE_VARIANTS_COUNT` has been removed.\n- Upgraded this to a `CHECK_EQ`, which will ensure protection against garbage values.",
+      "parentUuid": "5aba4e89_a947ad46",
       "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea21d62_b5ac3489",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T23:01:44Z",
+      "side": 1,
+      "message": "Fair point.  I think I can rework the check without making use of this crutch.",
+      "parentUuid": "c609425c_e0738ae1",
+      "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1583172a_aa482494",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-02T18:46:35Z",
       "side": 1,
       "message": "These are just the defaults. Should there be a TODO here for a follow-up?",
+      "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c77f42_296ace4d",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T23:01:44Z",
+      "side": 1,
+      "message": "Added a comment about this.",
+      "parentUuid": "1583172a_aa482494",
       "revId": "8bd8e521318c0ff034153c1d28302bbd9648ad40",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

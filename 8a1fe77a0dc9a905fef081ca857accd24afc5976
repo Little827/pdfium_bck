@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5e2e7ea_bbfa6f59",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-02T23:01:44Z",
+      "side": 1,
+      "message": "I was trying to force this with the counts, but you pointed out some issues with that approach.\n\nI think the key here is that the internal type needs to at least cover all of the public type\u0027s values.  So I shouldn\u0027t have interpreted this as there needing to be an exact match (even if that is what it is right now).\n\nI\u0027ve got the comment to remind developers to ensure `CFX_DefaultRenderDevice::RendererType` stays in sync (weak), plus the `CHECK_EQ` at runtime to catch that any public type used must have found a match to a valid internal type (stronger).",
+      "parentUuid": "ab9998a1_cc4af43b",
+      "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eca7511a_cd66a8e5",
         "filename": "public/fpdfview.h",
         "patchSetId": 8
