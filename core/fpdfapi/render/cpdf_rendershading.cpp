@@ -416,14 +416,14 @@ void DrawGouraud(const RetainPtr<CFX_DIBitmap>& pBitmap,
 void DrawFreeGouraudShading(
     const RetainPtr<CFX_DIBitmap>& pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
-    const CPDF_Stream* pShadingStream,
+    RetainPtr<const CPDF_Stream> pShadingStream,
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS,
     int alpha) {
   DCHECK_EQ(pBitmap->GetFormat(), FXDIB_Format::kArgb);
 
   CPDF_MeshStream stream(kFreeFormGouraudTriangleMeshShading, funcs,
-                         pShadingStream, pCS);
+                         std::move(pShadingStream), pCS);
   if (!stream.Load())
     return;
 
@@ -455,7 +455,7 @@ void DrawFreeGouraudShading(
 void DrawLatticeGouraudShading(
     const RetainPtr<CFX_DIBitmap>& pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
-    const CPDF_Stream* pShadingStream,
+    RetainPtr<const CPDF_Stream> pShadingStream,
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS,
     int alpha) {
@@ -466,7 +466,7 @@ void DrawLatticeGouraudShading(
     return;
 
   CPDF_MeshStream stream(kLatticeFormGouraudTriangleMeshShading, funcs,
-                         pShadingStream, pCS);
+                         std::move(pShadingStream), pCS);
   if (!stream.Load())
     return;
 
@@ -776,7 +776,7 @@ void DrawCoonPatchMeshes(
     ShadingType type,
     const RetainPtr<CFX_DIBitmap>& pBitmap,
     const CFX_Matrix& mtObject2Bitmap,
-    const CPDF_Stream* pShadingStream,
+    RetainPtr<const CPDF_Stream> pShadingStream,
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
     const RetainPtr<CPDF_ColorSpace>& pCS,
     bool bNoPathSmooth,
@@ -787,7 +787,7 @@ void DrawCoonPatchMeshes(
 
   CFX_DefaultRenderDevice device;
   device.Attach(pBitmap);
-  CPDF_MeshStream stream(type, funcs, pShadingStream, pCS);
+  CPDF_MeshStream stream(type, funcs, std::move(pShadingStream), pCS);
   if (!stream.Load())
     return;
 
@@ -935,9 +935,10 @@ void CPDF_RenderShading::Draw(CFX_RenderDevice* pDevice,
     case kFreeFormGouraudTriangleMeshShading: {
       // The shading object can be a stream or a dictionary. We do not handle
       // the case of dictionary at the moment.
-      const CPDF_Stream* pStream = ToStream(pPattern->GetShadingObject());
+      RetainPtr<const CPDF_Stream> pStream(
+          ToStream(pPattern->GetShadingObject()));
       if (pStream) {
-        DrawFreeGouraudShading(pBitmap, FinalMatrix, pStream, funcs,
+        DrawFreeGouraudShading(pBitmap, FinalMatrix, std::move(pStream), funcs,
                                pColorSpace, alpha);
       }
       break;
@@ -945,10 +946,11 @@ void CPDF_RenderShading::Draw(CFX_RenderDevice* pDevice,
     case kLatticeFormGouraudTriangleMeshShading: {
       // The shading object can be a stream or a dictionary. We do not handle
       // the case of dictionary at the moment.
-      const CPDF_Stream* pStream = ToStream(pPattern->GetShadingObject());
+      RetainPtr<const CPDF_Stream> pStream(
+          ToStream(pPattern->GetShadingObject()));
       if (pStream) {
-        DrawLatticeGouraudShading(pBitmap, FinalMatrix, pStream, funcs,
-                                  pColorSpace, alpha);
+        DrawLatticeGouraudShading(pBitmap, FinalMatrix, std::move(pStream),
+                                  funcs, pColorSpace, alpha);
       }
       break;
     }
@@ -956,10 +958,11 @@ void CPDF_RenderShading::Draw(CFX_RenderDevice* pDevice,
     case kTensorProductPatchMeshShading: {
       // The shading object can be a stream or a dictionary. We do not handle
       // the case of dictionary at the moment.
-      const CPDF_Stream* pStream = ToStream(pPattern->GetShadingObject());
+      RetainPtr<const CPDF_Stream> pStream(
+          ToStream(pPattern->GetShadingObject()));
       if (pStream) {
         DrawCoonPatchMeshes(pPattern->GetShadingType(), pBitmap, FinalMatrix,
-                            pStream, funcs, pColorSpace,
+                            std::move(pStream), funcs, pColorSpace,
                             options.GetOptions().bNoPathSmooth, alpha);
       }
       break;

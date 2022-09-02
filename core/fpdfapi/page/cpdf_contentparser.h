@@ -57,7 +57,7 @@ class CPDF_ContentParser {
   Stage Parse();
   Stage CheckClip();
 
-  void HandlePageContentStream(const CPDF_Stream* pStream);
+  void HandlePageContentStream(RetainPtr<const CPDF_Stream> pStream);
   bool HandlePageContentArray(const CPDF_Array* pArray);
   void HandlePageContentFailure();
 

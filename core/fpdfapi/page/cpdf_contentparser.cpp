@@ -43,9 +43,9 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Page* pPage)
     return;
   }
 
-  const CPDF_Stream* pStream = pContent->AsStream();
+  RetainPtr<const CPDF_Stream> pStream(pContent->AsStream());
   if (pStream) {
-    HandlePageContentStream(pStream);
+    HandlePageContentStream(std::move(pStream));
     return;
   }
 
@@ -104,7 +104,8 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
     pState->SetFillAlpha(1.0f);
     pState->SetSoftMask(nullptr);
   }
-  m_pSingleStream = pdfium::MakeRetain<CPDF_StreamAcc>(pForm->GetStream());
+  m_pSingleStream = pdfium::MakeRetain<CPDF_StreamAcc>(
+      pdfium::WrapRetain(pForm->GetStream()));
   m_pSingleStream->LoadAllDataFiltered();
   m_pData.Reset(m_pSingleStream->GetData());
   m_Size = m_pSingleStream->GetSize();
@@ -143,10 +144,10 @@ CPDF_ContentParser::Stage CPDF_ContentParser::GetContent() {
   DCHECK(m_pObjectHolder->IsPage());
   const CPDF_Array* pContent =
       m_pObjectHolder->GetDict()->GetArrayFor(pdfium::page_object::kContents);
-  const CPDF_Stream* pStreamObj = ToStream(
-      pContent ? pContent->GetDirectObjectAt(m_CurrentOffset) : nullptr);
+  RetainPtr<const CPDF_Stream> pStreamObj(ToStream(
+      pContent ? pContent->GetDirectObjectAt(m_CurrentOffset) : nullptr));
   m_StreamArray[m_CurrentOffset] =
-      pdfium::MakeRetain<CPDF_StreamAcc>(pStreamObj);
+      pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStreamObj));
   m_StreamArray[m_CurrentOffset]->LoadAllDataFiltered();
   m_CurrentOffset++;
 
@@ -238,8 +239,9 @@ CPDF_ContentParser::Stage CPDF_ContentParser::CheckClip() {
   return Stage::kComplete;
 }
 
-void CPDF_ContentParser::HandlePageContentStream(const CPDF_Stream* pStream) {
-  m_pSingleStream = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+void CPDF_ContentParser::HandlePageContentStream(
+    RetainPtr<const CPDF_Stream> pStream) {
+  m_pSingleStream = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
   m_pSingleStream->LoadAllDataFiltered();
   m_CurrentStage = Stage::kPrepareContent;
 }

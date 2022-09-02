@@ -83,7 +83,7 @@ class CPDF_HintTables {
 
   CPDF_DataAvail::DocAvailStatus CheckPage(uint32_t index);
 
-  bool LoadHintStream(CPDF_Stream* pHintStream);
+  bool LoadHintStream(RetainPtr<const CPDF_Stream> pHintStream);
 
   const std::vector<PageInfo>& PageInfos() const { return m_PageInfos; }
   const std::vector<SharedObjGroupInfo>& SharedGroupInfos() const {

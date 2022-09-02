@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/page/cpdf_psfunc.h"
 
+#include <utility>
+
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 
@@ -13,9 +15,9 @@ CPDF_PSFunc::CPDF_PSFunc() : CPDF_Function(Type::kType4PostScript) {}
 
 CPDF_PSFunc::~CPDF_PSFunc() = default;
 
-bool CPDF_PSFunc::v_Init(const CPDF_Object* pObj,
+bool CPDF_PSFunc::v_Init(RetainPtr<const CPDF_Object> pObj,
                          std::set<const CPDF_Object*>* pVisited) {
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pObj->AsStream());
+  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(ToStream(std::move(pObj)));
   pAcc->LoadAllDataFiltered();
   return m_PS.Parse(pAcc->GetSpan());
 }

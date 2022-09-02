@@ -7,6 +7,7 @@
 #include "core/fpdfapi/parser/cpdf_hint_tables.h"
 
 #include <limits>
+#include <utility>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
@@ -64,13 +65,12 @@ std::unique_ptr<CPDF_HintTables> CPDF_HintTables::Parse(
   parser->SetPos(szHintStart);
   RetainPtr<CPDF_Stream> hints_stream = ToStream(
       parser->GetIndirectObject(nullptr, CPDF_SyntaxParser::ParseType::kLoose));
-
   if (!hints_stream)
     return nullptr;
 
   auto pHintTables = std::make_unique<CPDF_HintTables>(
       parser->GetValidator().Get(), pLinearized);
-  if (!pHintTables->LoadHintStream(hints_stream.Get()))
+  if (!pHintTables->LoadHintStream(std::move(hints_stream)))
     return nullptr;
 
   return pHintTables;
@@ -441,7 +441,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_HintTables::CheckPage(uint32_t index) {
   return CPDF_DataAvail::kDataAvailable;
 }
 
-bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
+bool CPDF_HintTables::LoadHintStream(RetainPtr<const CPDF_Stream> pHintStream) {
   if (!pHintStream || !m_pLinearized->HasHintTable())
     return false;
 
@@ -454,7 +454,7 @@ bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
   if (shared_hint_table_offset <= 0)
     return false;
 
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pHintStream);
+  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pHintStream));
   pAcc->LoadAllDataFiltered();
 
   uint32_t size = pAcc->GetSize();

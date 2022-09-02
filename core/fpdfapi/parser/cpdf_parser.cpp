@@ -696,7 +696,7 @@ bool CPDF_Parser::RebuildCrossRef() {
 
       if (obj_num < kMaxObjectNumber) {
         cross_ref_table->AddNormal(obj_num, gen_num, obj_pos);
-        const auto object_stream = CPDF_ObjectStream::Create(pStream.Get());
+        const auto object_stream = CPDF_ObjectStream::Create(pStream);
         if (object_stream) {
           const auto& object_info = object_stream->object_info();
           for (size_t i = 0; i < object_info.size(); ++i) {
@@ -723,7 +723,7 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   if (!pObject || !pObject->GetObjNum())
     return false;
 
-  CPDF_Stream* pStream = pObject->AsStream();
+  RetainPtr<CPDF_Stream> pStream(pObject->AsStream());
   if (!pStream)
     return false;
 
@@ -963,7 +963,7 @@ const CPDF_ObjectStream* CPDF_Parser::GetObjectStream(uint32_t object_number) {
     return nullptr;
 
   std::unique_ptr<CPDF_ObjectStream> objs_stream =
-      CPDF_ObjectStream::Create(ToStream(object.Get()));
+      CPDF_ObjectStream::Create(ToStream(object));
   const CPDF_ObjectStream* result = objs_stream.get();
   m_ObjectStreamMap[object_number] = std::move(objs_stream);
 

@@ -15,8 +15,8 @@
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "third_party/base/check.h"
 
-CPDF_StreamAcc::CPDF_StreamAcc(const CPDF_Stream* pStream)
-    : m_pStream(pStream) {}
+CPDF_StreamAcc::CPDF_StreamAcc(RetainPtr<const CPDF_Stream> pStream)
+    : m_pStream(std::move(pStream)) {}
 
 CPDF_StreamAcc::~CPDF_StreamAcc() = default;
 

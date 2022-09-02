@@ -6,6 +6,8 @@
 
 #include "fpdfsdk/cpdfsdk_helpers.h"
 
+#include <utility>
+
 #include "build/build_config.h"
 #include "constants/form_fields.h"
 #include "constants/stream_dict_common.h"
@@ -51,12 +53,13 @@ bool DocHasXFA(const CPDF_Document* doc) {
   return form && form->GetArrayFor("XFA");
 }
 
-unsigned long GetStreamMaybeCopyAndReturnLengthImpl(const CPDF_Stream* stream,
-                                                    void* buffer,
-                                                    unsigned long buflen,
-                                                    bool decode) {
+unsigned long GetStreamMaybeCopyAndReturnLengthImpl(
+    RetainPtr<const CPDF_Stream> stream,
+    void* buffer,
+    unsigned long buflen,
+    bool decode) {
   DCHECK(stream);
-  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream);
+  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(stream));
 
   if (decode)
     stream_acc->LoadAllDataFiltered();
@@ -301,17 +304,21 @@ unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
   return len;
 }
 
-unsigned long GetRawStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
-                                                   void* buffer,
-                                                   unsigned long buflen) {
-  return GetStreamMaybeCopyAndReturnLengthImpl(stream, buffer, buflen,
+unsigned long GetRawStreamMaybeCopyAndReturnLength(
+    RetainPtr<const CPDF_Stream> stream,
+    void* buffer,
+    unsigned long buflen) {
+  return GetStreamMaybeCopyAndReturnLengthImpl(std::move(stream), buffer,
+                                               buflen,
                                                /*decode=*/false);
 }
 
-unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
-                                                   void* buffer,
-                                                   unsigned long buflen) {
-  return GetStreamMaybeCopyAndReturnLengthImpl(stream, buffer, buflen,
+unsigned long DecodeStreamMaybeCopyAndReturnLength(
+    RetainPtr<const CPDF_Stream> stream,
+    void* buffer,
+    unsigned long buflen) {
+  return GetStreamMaybeCopyAndReturnLengthImpl(std::move(stream), buffer,
+                                               buflen,
                                                /*decode=*/true);
 }
 

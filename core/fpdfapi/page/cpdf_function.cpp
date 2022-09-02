@@ -40,21 +40,21 @@ CPDF_Function::Type IntegerToFunctionType(int iType) {
 
 // static
 std::unique_ptr<CPDF_Function> CPDF_Function::Load(
-    const CPDF_Object* pFuncObj) {
+    RetainPtr<const CPDF_Object> pFuncObj) {
   std::set<const CPDF_Object*> visited;
-  return Load(pFuncObj, &visited);
+  return LoadWithSet(std::move(pFuncObj), &visited);
 }
 
 // static
-std::unique_ptr<CPDF_Function> CPDF_Function::Load(
-    const CPDF_Object* pFuncObj,
+std::unique_ptr<CPDF_Function> CPDF_Function::LoadWithSet(
+    RetainPtr<const CPDF_Object> pFuncObj,
     std::set<const CPDF_Object*>* pVisited) {
   if (!pFuncObj)
     return nullptr;
 
-  if (pdfium::Contains(*pVisited, pFuncObj))
+  if (pdfium::Contains(*pVisited, pFuncObj.Get()))
     return nullptr;
-  ScopedSetInsertion<const CPDF_Object*> insertion(pVisited, pFuncObj);
+  ScopedSetInsertion<const CPDF_Object*> insertion(pVisited, pFuncObj.Get());
 
   int iType = -1;
   if (const CPDF_Stream* pStream = pFuncObj->AsStream())
@@ -73,7 +73,7 @@ std::unique_ptr<CPDF_Function> CPDF_Function::Load(
   else if (type == Type::kType4PostScript)
     pFunc = std::make_unique<CPDF_PSFunc>();
 
-  if (!pFunc || !pFunc->Init(pFuncObj, pVisited))
+  if (!pFunc || !pFunc->Init(std::move(pFuncObj), pVisited))
     return nullptr;
 
   return pFunc;
@@ -83,7 +83,7 @@ CPDF_Function::CPDF_Function(Type type) : m_Type(type) {}
 
 CPDF_Function::~CPDF_Function() = default;
 
-bool CPDF_Function::Init(const CPDF_Object* pObj,
+bool CPDF_Function::Init(RetainPtr<const CPDF_Object> pObj,
                          std::set<const CPDF_Object*>* pVisited) {
   const CPDF_Stream* pStream = pObj->AsStream();
   const CPDF_Dictionary* pDict =
@@ -116,7 +116,7 @@ bool CPDF_Function::Init(const CPDF_Object* pObj,
   }
 
   uint32_t old_outputs = m_nOutputs;
-  if (!v_Init(pObj, pVisited))
+  if (!v_Init(std::move(pObj), pVisited))
     return false;
 
   if (!m_Ranges.empty() && m_nOutputs > old_outputs) {

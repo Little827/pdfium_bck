@@ -122,7 +122,7 @@ WideString CPDF_ToUnicodeMap::StringToWideString(ByteStringView str) {
 
 void CPDF_ToUnicodeMap::Load(const CPDF_Stream* pStream) {
   CIDSet cid_set = CIDSET_UNKNOWN;
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(pStream));
   pAcc->LoadAllDataFiltered();
   CPDF_SimpleParser parser(pAcc->GetSpan());
   while (true) {

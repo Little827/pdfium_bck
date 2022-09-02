@@ -297,7 +297,7 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
     return nullptr;
 
   // TODO(tsepez): make CPDF_StreamAcc constructor take retained argument.
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream.Get());
+  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   pAcc->LoadAllDataFiltered();
 
   auto pImageFileRead =

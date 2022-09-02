@@ -40,7 +40,7 @@ class CPDF_MeshStream {
  public:
   CPDF_MeshStream(ShadingType type,
                   const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
-                  const CPDF_Stream* pShadingStream,
+                  RetainPtr<const CPDF_Stream> pShadingStream,
                   const RetainPtr<CPDF_ColorSpace>& pCS);
   ~CPDF_MeshStream();
 

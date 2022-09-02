@@ -262,11 +262,11 @@ FPDFAttachment_GetFile(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return false;
 
-  CPDF_Stream* pFileStream = CPDF_FileSpec(pFile).GetFileStream();
+  RetainPtr<CPDF_Stream> pFileStream(CPDF_FileSpec(pFile).GetFileStream());
   if (!pFileStream)
     return false;
 
-  *out_buflen =
-      DecodeStreamMaybeCopyAndReturnLength(pFileStream, buffer, buflen);
+  *out_buflen = DecodeStreamMaybeCopyAndReturnLength(std::move(pFileStream),
+                                                     buffer, buflen);
   return true;
 }

@@ -1225,8 +1225,8 @@ FPDF_GetXFAPacketContent(FPDF_DOCUMENT document,
   if (static_cast<size_t>(index) >= xfa_packets.size())
     return false;
 
-  *out_buflen = DecodeStreamMaybeCopyAndReturnLength(xfa_packets[index].data,
-                                                     buffer, buflen);
+  *out_buflen = DecodeStreamMaybeCopyAndReturnLength(
+      pdfium::WrapRetain(xfa_packets[index].data), buffer, buflen);
   return true;
 }
 

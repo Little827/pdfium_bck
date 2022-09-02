@@ -476,7 +476,7 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
       if (!pPDFObj->IsReference())
         continue;
 
-      const CPDF_Stream* pStream = ToStream(pPDFObj->GetDirect());
+      RetainPtr<const CPDF_Stream> pStream(ToStream(pPDFObj->GetDirect()));
       if (!pStream)
         continue;
       if (pPrePDFObj->GetString() == "form") {

@@ -1124,9 +1124,9 @@ uint32_t CPDF_SeparationCS::v_Load(CPDF_Document* pDoc,
   if (m_pBaseCS->IsSpecial())
     return 0;
 
-  const CPDF_Object* pFuncObj = pArray->GetDirectObjectAt(3);
+  RetainPtr<const CPDF_Object> pFuncObj(pArray->GetDirectObjectAt(3));
   if (pFuncObj && !pFuncObj->IsName()) {
-    auto pFunc = CPDF_Function::Load(pFuncObj);
+    auto pFunc = CPDF_Function::Load(std::move(pFuncObj));
     if (pFunc && pFunc->CountOutputs() >= m_pBaseCS->CountComponents())
       m_pFunc = std::move(pFunc);
   }
@@ -1191,7 +1191,8 @@ uint32_t CPDF_DeviceNCS::v_Load(CPDF_Document* pDoc,
     return 0;
 
   m_pBaseCS = Load(pDoc, pAltCS, pVisited);
-  m_pFunc = CPDF_Function::Load(pArray->GetDirectObjectAt(3));
+  m_pFunc =
+      CPDF_Function::Load(pdfium::WrapRetain(pArray->GetDirectObjectAt(3)));
   if (!m_pBaseCS || !m_pFunc)
     return 0;
 

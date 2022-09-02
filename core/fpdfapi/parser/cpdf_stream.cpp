@@ -108,7 +108,7 @@ RetainPtr<CPDF_Object> CPDF_Stream::CloneNonCyclic(
     bool bDirect,
     std::set<const CPDF_Object*>* pVisited) const {
   pVisited->insert(this);
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
+  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(this));
   pAcc->LoadAllDataRaw();
 
   uint32_t streamSize = pAcc->GetSize();
@@ -184,19 +184,17 @@ bool CPDF_Stream::HasFilter() const {
 }
 
 WideString CPDF_Stream::GetUnicodeText() const {
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
+  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(this));
   pAcc->LoadAllDataFiltered();
   return PDF_DecodeText(pAcc->GetSpan());
 }
 
 bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive,
                           const CPDF_Encryptor* encryptor) const {
-  const bool is_metadata = IsMetaDataStreamDictionary(GetDict());
-  CPDF_FlateEncoder encoder(this, !is_metadata);
-
   DataVector<uint8_t> encrypted_data;
+  const bool is_metadata = IsMetaDataStreamDictionary(GetDict());
+  CPDF_FlateEncoder encoder(pdfium::WrapRetain(this), !is_metadata);
   pdfium::span<const uint8_t> data = encoder.GetSpan();
-
   if (encryptor && !is_metadata) {
     encrypted_data = encryptor->Encrypt(data);
     data = encrypted_data;

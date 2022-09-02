@@ -264,10 +264,10 @@ CPDF_DIB::LoadState CPDF_DIB::ContinueLoadDIBBase(PauseIndicatorIface* pPause) {
   if (!m_pJbig2Context) {
     m_pJbig2Context = std::make_unique<Jbig2Context>();
     if (m_pStreamAcc->GetImageParam()) {
-      const CPDF_Stream* pGlobals =
-          m_pStreamAcc->GetImageParam()->GetStreamFor("JBIG2Globals");
+      RetainPtr<const CPDF_Stream> pGlobals(
+          m_pStreamAcc->GetImageParam()->GetStreamFor("JBIG2Globals"));
       if (pGlobals) {
-        m_pGlobalAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pGlobals);
+        m_pGlobalAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pGlobals));
         m_pGlobalAcc->LoadAllDataFiltered();
       }
     }
@@ -728,7 +728,7 @@ bool CPDF_DIB::LoadInternal(const CPDF_Dictionary* pFormResources,
   if (!src_size.IsValid())
     return false;
 
-  m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(m_pStream.Get());
+  m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(m_pStream);
   m_pStreamAcc->LoadAllDataImageAcc(src_size.ValueOrDie());
   if (m_pStreamAcc->GetSize() == 0 || !m_pStreamAcc->GetData())
     return false;

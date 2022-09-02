@@ -167,7 +167,7 @@ TEST_F(HintTablesTest, FirstPageOffset) {
   auto hint_tables = std::make_unique<CPDF_HintTables>(validator.Get(),
                                                        linearized_header.get());
   // Check that hint table will load.
-  ASSERT_TRUE(hint_tables->LoadHintStream(stream.Get()));
+  ASSERT_TRUE(hint_tables->LoadHintStream(stream));
   // Check that hint table have correct first page offset.
   // 127546 is predefined real value from original file.
   EXPECT_EQ(127546, hint_tables->GetFirstPageObjOffset());

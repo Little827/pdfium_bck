@@ -84,12 +84,13 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
       return nullptr;
 
     for (uint32_t i = 0; i < 3; ++i) {
-      pFuncs[2 - i] = CPDF_Function::Load(pArray->GetDirectObjectAt(i));
+      pFuncs[2 - i] =
+          CPDF_Function::Load(pdfium::WrapRetain(pArray->GetDirectObjectAt(i)));
       if (!pFuncs[2 - i])
         return nullptr;
     }
   } else {
-    pFuncs[0] = CPDF_Function::Load(pObj);
+    pFuncs[0] = CPDF_Function::Load(pdfium::WrapRetain(pObj));
     if (!pFuncs[0])
       return nullptr;
   }

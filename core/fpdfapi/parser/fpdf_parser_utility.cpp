@@ -242,9 +242,9 @@ std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj) {
       break;
     }
     case CPDF_Object::kStream: {
-      const CPDF_Stream* p = pObj->AsStream();
+      RetainPtr<const CPDF_Stream> p(pObj->AsStream());
       buf << p->GetDict() << "stream\r\n";
-      auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(p);
+      auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(p));
       pAcc->LoadAllDataRaw();
       buf.write(reinterpret_cast<const char*>(pAcc->GetData()),
                 pAcc->GetSize());

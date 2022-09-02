@@ -4,6 +4,8 @@
 
 #include "public/fpdf_thumbnail.h"
 
+#include <utility>
+
 #include "core/fpdfapi/page/cpdf_dib.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -33,22 +35,26 @@ FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFPage_GetDecodedThumbnailData(FPDF_PAGE page,
                                  void* buffer,
                                  unsigned long buflen) {
-  const CPDF_Stream* thumb_stream = CPDFStreamForThumbnailFromPage(page);
+  RetainPtr<const CPDF_Stream> thumb_stream(
+      CPDFStreamForThumbnailFromPage(page));
   if (!thumb_stream)
     return 0u;
 
-  return DecodeStreamMaybeCopyAndReturnLength(thumb_stream, buffer, buflen);
+  return DecodeStreamMaybeCopyAndReturnLength(std::move(thumb_stream), buffer,
+                                              buflen);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFPage_GetRawThumbnailData(FPDF_PAGE page,
                              void* buffer,
                              unsigned long buflen) {
-  const CPDF_Stream* thumb_stream = CPDFStreamForThumbnailFromPage(page);
+  RetainPtr<const CPDF_Stream> thumb_stream(
+      CPDFStreamForThumbnailFromPage(page));
   if (!thumb_stream)
     return 0u;
 
-  return GetRawStreamMaybeCopyAndReturnLength(thumb_stream, buffer, buflen);
+  return GetRawStreamMaybeCopyAndReturnLength(std::move(thumb_stream), buffer,
+                                              buflen);
 }
 
 FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV

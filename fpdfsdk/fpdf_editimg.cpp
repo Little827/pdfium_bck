@@ -17,6 +17,7 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
+#include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/render/cpdf_imagerenderer.h"
 #include "core/fpdfapi/render/cpdf_rendercontext.h"
@@ -275,11 +276,12 @@ FPDFImageObj_GetImageDataDecoded(FPDF_PAGEOBJECT image_object,
   if (!pImg)
     return 0;
 
-  const CPDF_Stream* pImgStream = pImg->GetStream();
+  RetainPtr<const CPDF_Stream> pImgStream(pImg->GetStream());
   if (!pImgStream)
     return 0;
 
-  return DecodeStreamMaybeCopyAndReturnLength(pImgStream, buffer, buflen);
+  return DecodeStreamMaybeCopyAndReturnLength(std::move(pImgStream), buffer,
+                                              buflen);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
@@ -294,11 +296,12 @@ FPDFImageObj_GetImageDataRaw(FPDF_PAGEOBJECT image_object,
   if (!pImg)
     return 0;
 
-  const CPDF_Stream* pImgStream = pImg->GetStream();
+  RetainPtr<const CPDF_Stream> pImgStream(pImg->GetStream());
   if (!pImgStream)
     return 0;
 
-  return GetRawStreamMaybeCopyAndReturnLength(pImgStream, buffer, buflen);
+  return GetRawStreamMaybeCopyAndReturnLength(std::move(pImgStream), buffer,
+                                              buflen);
 }
 
 FPDF_EXPORT int FPDF_CALLCONV

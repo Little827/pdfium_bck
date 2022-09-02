@@ -277,17 +277,19 @@ unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
 // stream's data as stored in the PDF without applying any filters. If |buffer|
 // is non-nullptr and |buflen| is large enough to contain the raw data, then
 // the raw data is copied into |buffer|.
-unsigned long GetRawStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
-                                                   void* buffer,
-                                                   unsigned long buflen);
+unsigned long GetRawStreamMaybeCopyAndReturnLength(
+    RetainPtr<const CPDF_Stream> stream,
+    void* buffer,
+    unsigned long buflen);
 
 // Return the length of the decoded stream data of |stream|. The decoded data is
 // the uncompressed stream data, i.e. the raw stream data after having all
 // filters applied. If |buffer| is non-nullptr and |buflen| is large enough to
 // contain the decoded data, then the decoded data is copied into |buffer|.
-unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
-                                                   void* buffer,
-                                                   unsigned long buflen);
+unsigned long DecodeStreamMaybeCopyAndReturnLength(
+    RetainPtr<const CPDF_Stream> stream,
+    void* buffer,
+    unsigned long buflen);
 
 void SetPDFSandboxPolicy(FPDF_DWORD policy, FPDF_BOOL enable);
 FPDF_BOOL IsPDFSandboxPolicyEnabled(FPDF_DWORD policy);

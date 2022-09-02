@@ -35,9 +35,8 @@ TEST(ObjectStreamTest, StreamDictNormal) {
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", kNormalStreamContentOffset);
 
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
-      ByteStringView(kNormalStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(pdfium::MakeRetain<CPDF_Stream>(
+      ByteStringView(kNormalStreamContent).raw_span(), dict));
   ASSERT_TRUE(obj_stream);
 
   EXPECT_THAT(obj_stream->object_info(),
@@ -80,7 +79,7 @@ TEST(ObjectStreamTest, StreamDictNormal) {
 TEST(ObjectStreamTest, StreamNoDict) {
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), /*pDict=*/nullptr);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictNoType) {
@@ -90,7 +89,7 @@ TEST(ObjectStreamTest, StreamDictNoType) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictWrongType) {
@@ -101,7 +100,7 @@ TEST(ObjectStreamTest, StreamDictWrongType) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictWrongTypeValue) {
@@ -112,7 +111,7 @@ TEST(ObjectStreamTest, StreamDictWrongTypeValue) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictNoCount) {
@@ -122,7 +121,7 @@ TEST(ObjectStreamTest, StreamDictNoCount) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictFloatCount) {
@@ -133,7 +132,7 @@ TEST(ObjectStreamTest, StreamDictFloatCount) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictNegativeCount) {
@@ -144,7 +143,7 @@ TEST(ObjectStreamTest, StreamDictNegativeCount) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictCountTooBig) {
@@ -155,7 +154,7 @@ TEST(ObjectStreamTest, StreamDictCountTooBig) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictNoOffset) {
@@ -165,7 +164,7 @@ TEST(ObjectStreamTest, StreamDictNoOffset) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictFloatOffset) {
@@ -176,7 +175,7 @@ TEST(ObjectStreamTest, StreamDictFloatOffset) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictNegativeOffset) {
@@ -187,7 +186,7 @@ TEST(ObjectStreamTest, StreamDictNegativeOffset) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  EXPECT_FALSE(CPDF_ObjectStream::Create(stream.Get()));
+  EXPECT_FALSE(CPDF_ObjectStream::Create(stream));
 }
 
 TEST(ObjectStreamTest, StreamDictOffsetTooBig) {
@@ -199,7 +198,7 @@ TEST(ObjectStreamTest, StreamDictOffsetTooBig) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   EXPECT_THAT(obj_stream->object_info(),
@@ -221,7 +220,7 @@ TEST(ObjectStreamTest, StreamDictTooFewCount) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   EXPECT_THAT(obj_stream->object_info(),
@@ -252,7 +251,7 @@ TEST(ObjectStreamTest, StreamDictTooManyObject) {
 
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kNormalStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   // TODO(thestig): Can this avoid finding object 2?
@@ -279,7 +278,7 @@ TEST(ObjectStreamTest, StreamDictGarbageObjNum) {
   const char kStreamContent[] = "10 0 hi 14 12 21<</Name /Foo>>[1 2 3]4";
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   EXPECT_THAT(obj_stream->object_info(),
@@ -296,7 +295,7 @@ TEST(ObjectStreamTest, StreamDictGarbageObjectOffset) {
   const char kStreamContent[] = "10 0 11 hi 12 21<</Name /Foo>>[1 2 3]4";
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   // TODO(thestig): Should object 11 be rejected?
@@ -328,7 +327,7 @@ TEST(ObjectStreamTest, StreamDictNegativeObjectOffset) {
   const char kStreamContent[] = "10 0 11 -1 12 21<</Name /Foo>>[1 2 3]4";
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   // TODO(thestig): Should object 11 be rejected?
@@ -350,7 +349,7 @@ TEST(ObjectStreamTest, StreamDictObjectOffsetTooBig) {
   const char kStreamContent[] = "10 0 11 999 12 21<</Name /Foo>>[1 2 3]4";
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   // TODO(thestig): Should object 11 be rejected?
@@ -372,7 +371,7 @@ TEST(ObjectStreamTest, StreamDictDuplicateObjNum) {
   const char kStreamContent[] = "10 0 10 14 12 21<</Name /Foo>>[1 2 3]4";
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   EXPECT_THAT(obj_stream->object_info(),
@@ -414,7 +413,7 @@ TEST(ObjectStreamTest, StreamDictUnorderedObjectNumbers) {
   const char kStreamContent[] = "11 0 12 14 10 21<</Name /Foo>>[1 2 3]4";
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   EXPECT_THAT(obj_stream->object_info(),
@@ -455,7 +454,7 @@ TEST(ObjectStreamTest, StreamDictUnorderedObjectOffsets) {
   const char kStreamContent[] = "10 21 11 0 12 14<</Name /Foo>>[1 2 3]4";
   auto stream = pdfium::MakeRetain<CPDF_Stream>(
       ByteStringView(kStreamContent).raw_span(), dict);
-  auto obj_stream = CPDF_ObjectStream::Create(stream.Get());
+  auto obj_stream = CPDF_ObjectStream::Create(stream);
   ASSERT_TRUE(obj_stream);
 
   EXPECT_THAT(obj_stream->object_info(),

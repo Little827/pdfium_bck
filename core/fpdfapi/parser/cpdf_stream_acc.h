@@ -45,7 +45,7 @@ class CPDF_StreamAcc final : public Retainable {
   std::unique_ptr<uint8_t, FxFreeDeleter> DetachData();
 
  private:
-  explicit CPDF_StreamAcc(const CPDF_Stream* pStream);
+  explicit CPDF_StreamAcc(RetainPtr<const CPDF_Stream> pStream);
   ~CPDF_StreamAcc() override;
 
   void LoadAllData(bool bRawAccess, uint32_t estimated_size, bool bImageAcc);

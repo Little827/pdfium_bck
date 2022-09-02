@@ -18,7 +18,7 @@ class CPDF_ExpIntFunc final : public CPDF_Function {
   ~CPDF_ExpIntFunc() override;
 
   // CPDF_Function:
-  bool v_Init(const CPDF_Object* pObj,
+  bool v_Init(RetainPtr<const CPDF_Object> pObj,
               std::set<const CPDF_Object*>* pVisited) override;
   bool v_Call(pdfium::span<const float> inputs,
               pdfium::span<float> results) const override;

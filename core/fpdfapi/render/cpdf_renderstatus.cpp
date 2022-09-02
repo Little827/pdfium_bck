@@ -1407,7 +1407,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
   const CPDF_Object* pFuncObj =
       pSMaskDict->GetDirectObjectFor(pdfium::transparency::kTR);
   if (pFuncObj && (pFuncObj->IsDictionary() || pFuncObj->IsStream()))
-    pFunc = CPDF_Function::Load(pFuncObj);
+    pFunc = CPDF_Function::Load(pdfium::WrapRetain(pFuncObj));
 
   CFX_Matrix matrix = mtMatrix;
   matrix.Translate(-pClipRect->left, -pClipRect->top);
