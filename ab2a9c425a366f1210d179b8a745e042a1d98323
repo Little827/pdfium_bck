@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97bdf48_8a6b0f53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-02T16:01:41Z",
+      "side": 1,
+      "message": "Did ya mean CR+1 instead of CQ+1 by any chance?",
+      "revId": "ab2a9c425a366f1210d179b8a745e042a1d98323",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
