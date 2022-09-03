@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82f5b168_b9f8142c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-03T02:28:25Z",
+      "side": 1,
+      "message": "Not sure if the dust is fully settled 😊, but I\u0027ve expanded on this some as well.  I also elaborated a little bit more on the exposed flag in the pdfium_test sample as well.",
+      "parentUuid": "bc67cb09_a80a1f49",
+      "revId": "d6c452429d001313bdb79c43f2f916f6609fbdf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17bb0941_f74ef12e",
         "filename": "core/fxge/cfx_defaultrenderdevice.h",
         "patchSetId": 10
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-03T00:00:27Z",
       "side": 1,
       "message": "No longer need then?",
+      "revId": "d6c452429d001313bdb79c43f2f916f6609fbdf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ee54fe_e727a300",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-03T02:28:25Z",
+      "side": 1,
+      "message": "Of course, must have missed it on the last patchset.",
+      "parentUuid": "17bb0941_f74ef12e",
       "revId": "d6c452429d001313bdb79c43f2f916f6609fbdf0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-02T23:54:50Z",
       "side": 1,
       "message": "Should the public documentation mention the consequences of passing in an invalid value?",
+      "revId": "d6c452429d001313bdb79c43f2f916f6609fbdf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75fd33d3_99299c3a",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-03T02:28:25Z",
+      "side": 1,
+      "message": "That\u0027s a good idea, done in fpdfview.h.",
+      "parentUuid": "183e36f9_919c3de4",
       "revId": "d6c452429d001313bdb79c43f2f916f6609fbdf0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
