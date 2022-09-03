@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "021c01fb_471db975",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-03T00:00:27Z",
+      "side": 1,
+      "message": "Sorry, my brain is still stuck on making sure the exact values are the same. If the //public and //core values can be decoupled, that\u0027s fine, but please clarify what \"stay in sync\" means exactly.",
+      "parentUuid": "2257fa66_74c94ae8",
+      "revId": "8a1fe77a0dc9a905fef081ca857accd24afc5976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eca7511a_cd66a8e5",
         "filename": "public/fpdfview.h",
         "patchSetId": 8
