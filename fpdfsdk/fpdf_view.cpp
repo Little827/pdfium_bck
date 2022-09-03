@@ -47,6 +47,7 @@
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
@@ -99,6 +100,25 @@ static_assert(
 namespace {
 
 bool g_bLibraryInitialized = false;
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+CFX_DefaultRenderDevice::RendererType PublicToInternalRendererType(
+    FPDF_RENDERER_TYPE public_type) {
+  // Internal definition of renderer types must stay updated with respect to
+  // the public definition, such that all public definitions are mapped to an
+  // internal definition.
+#if defined(_SKIA_SUPPORT_)
+  if (public_type == FPDF_RENDERERTYPE_SKIA)
+    return CFX_DefaultRenderDevice::RendererType::kSkia;
+#endif
+#if defined(_SKIA_SUPPORT_PATHS_)
+  if (public_type == FPDF_RENDERERTYPE_SKIAPATHS)
+    return CFX_DefaultRenderDevice::RendererType::kSkiaPaths;
+#endif
+  CHECK_EQ(public_type, FPDF_RENDERERTYPE_AGG);
+  return CFX_DefaultRenderDevice::RendererType::kAgg;
+}
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
 
 const CPDF_Object* GetXFAEntryFromDocument(const CPDF_Document* doc) {
   const CPDF_Dictionary* root = doc->GetRoot();
@@ -193,6 +213,13 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
     void* platform = config->version >= 3 ? config->m_pPlatform : nullptr;
     IJS_Runtime::Initialize(config->m_v8EmbedderSlot, config->m_pIsolate,
                             platform);
+
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    if (config->version >= 4) {
+      CFX_DefaultRenderDevice::SetDefaultRenderer(
+          PublicToInternalRendererType(config->m_RendererType));
+    }
+#endif
   }
   g_bLibraryInitialized = true;
 }
