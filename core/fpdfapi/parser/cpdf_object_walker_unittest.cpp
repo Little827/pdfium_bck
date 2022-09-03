@@ -7,6 +7,7 @@
 #include <sstream>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_boolean.h"
@@ -17,6 +18,7 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
+#include "core/fxcrt/data_vector.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace {
@@ -71,7 +73,7 @@ TEST(ObjectWalkerTest, CombinedObject) {
   array->Append(pdfium::MakeRetain<CPDF_Reference>(nullptr, 0));
   array->Append(pdfium::MakeRetain<CPDF_Null>());
   array->Append(pdfium::MakeRetain<CPDF_Stream>(
-      nullptr, 0, pdfium::MakeRetain<CPDF_Dictionary>()));
+      pdfium::span<const uint8_t>(), pdfium::MakeRetain<CPDF_Dictionary>()));
   dict->SetFor("3", std::move(array));
   // The last number for stream length.
   EXPECT_EQ(Walk(dict.Get()), "Dict Str Bool Arr Ref Null Stream Dict Num");
@@ -81,8 +83,9 @@ TEST(ObjectWalkerTest, GetParent) {
   auto level_4 = pdfium::MakeRetain<CPDF_Number>(0);
   auto level_3 = pdfium::MakeRetain<CPDF_Dictionary>();
   level_3->SetFor("Length", std::move(level_4));
-  auto level_2 =
-      pdfium::MakeRetain<CPDF_Stream>(nullptr, 0, std::move(level_3));
+  DataVector<uint8_t> empty_data;
+  auto level_2 = pdfium::MakeRetain<CPDF_Stream>(std::move(empty_data),
+                                                 std::move(level_3));
   auto level_1 = pdfium::MakeRetain<CPDF_Array>();
   level_1->Append(std::move(level_2));
   auto level_0 = pdfium::MakeRetain<CPDF_Dictionary>();

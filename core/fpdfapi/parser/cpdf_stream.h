@@ -14,7 +14,6 @@
 
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fxcrt/data_vector.h"
-#include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/fx_string_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
@@ -78,10 +77,6 @@ class CPDF_Stream final : public CPDF_Object {
   CPDF_Stream(pdfium::span<const uint8_t> pData,
               RetainPtr<CPDF_Dictionary> pDict);
   CPDF_Stream(DataVector<uint8_t> pData, RetainPtr<CPDF_Dictionary> pDict);
-  // TODO(crbug.com/pdfium/1872): Replace with vector version above.
-  CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
-              size_t size,
-              RetainPtr<CPDF_Dictionary> pDict);
   ~CPDF_Stream() override;
 
   RetainPtr<CPDF_Object> CloneNonCyclic(

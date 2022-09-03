@@ -7,13 +7,14 @@
 #include <iterator>
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "core/fpdfapi/page/cpdf_transferfunc.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
-#include "core/fxcrt/fx_memory_wrappers.h"
+#include "core/fxcrt/data_vector.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace {
@@ -87,12 +88,9 @@ RetainPtr<CPDF_Stream> CreateType0FunctionStream() {
 
   func_dict->SetNewFor<CPDF_Number>("BitsPerSample", 8);
 
-  static const char content[] = "1234";
-  size_t len = std::size(content);
-  std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, len));
-  memcpy(buf.get(), content, len);
-  return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), len,
-                                         std::move(func_dict));
+  static constexpr uint8_t kContents[] = "1234";
+  DataVector<uint8_t> buf(std::begin(kContents), std::end(kContents));
+  return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), std::move(func_dict));
 }
 
 RetainPtr<CPDF_Dictionary> CreateType2FunctionDict() {
@@ -129,12 +127,9 @@ RetainPtr<CPDF_Stream> CreateType4FunctionStream() {
   range_array->AppendNew<CPDF_Number>(-1);
   range_array->AppendNew<CPDF_Number>(1);
 
-  static const char content[] = "{ 360 mul sin 2 div }";
-  size_t len = std::size(content);
-  std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, len));
-  memcpy(buf.get(), content, len);
-  return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), len,
-                                         std::move(func_dict));
+  static constexpr uint8_t kContents[] = "{ 360 mul sin 2 div }";
+  DataVector<uint8_t> buf(std::begin(kContents), std::end(kContents));
+  return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), std::move(func_dict));
 }
 
 RetainPtr<CPDF_Stream> CreateBadType4FunctionStream() {
@@ -149,12 +144,9 @@ RetainPtr<CPDF_Stream> CreateBadType4FunctionStream() {
   range_array->AppendNew<CPDF_Number>(-1);
   range_array->AppendNew<CPDF_Number>(1);
 
-  static const char content[] = "garbage";
-  size_t len = std::size(content);
-  std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, len));
-  memcpy(buf.get(), content, len);
-  return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), len,
-                                         std::move(func_dict));
+  static constexpr uint8_t kContents[] = "garbage";
+  DataVector<uint8_t> buf(std::begin(kContents), std::end(kContents));
+  return pdfium::MakeRetain<CPDF_Stream>(std::move(buf), std::move(func_dict));
 }
 
 class TestDocRenderData : public CPDF_DocRenderData {

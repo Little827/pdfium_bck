@@ -10,6 +10,7 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
+#include "core/fxcrt/data_vector.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -73,8 +74,9 @@ TEST(CStretchEngine, OverflowInCtor) {
   RetainPtr<CPDF_Dictionary> dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
   dict_obj->SetNewFor<CPDF_Number>("Width", 71000);
   dict_obj->SetNewFor<CPDF_Number>("Height", 12500);
-  RetainPtr<CPDF_Stream> stream =
-      pdfium::MakeRetain<CPDF_Stream>(nullptr, 0, std::move(dict_obj));
+  DataVector<uint8_t> empty_data;
+  auto stream = pdfium::MakeRetain<CPDF_Stream>(std::move(empty_data),
+                                                std::move(dict_obj));
   auto dib_source = pdfium::MakeRetain<CPDF_DIB>(nullptr, stream.Get());
   dib_source->Load();
   CStretchEngine engine(nullptr, FXDIB_Format::k8bppRgb, 500, 500, clip_rect,
