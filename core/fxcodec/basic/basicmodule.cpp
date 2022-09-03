@@ -230,23 +230,20 @@ std::unique_ptr<ScanlineDecoder> BasicModule::CreateRunLengthDecoder(
 }
 
 // static
-bool BasicModule::RunLengthEncode(
-    pdfium::span<const uint8_t> src_span,
-    std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-    uint32_t* dest_size) {
+DataVector<uint8_t> BasicModule::RunLengthEncode(
+    pdfium::span<const uint8_t> src_span) {
+  DataVector<uint8_t> result;
   // Check inputs
-  if (src_span.empty() || !dest_buf || !dest_size)
-    return false;
+  if (src_span.empty())
+    return result;
 
   // Edge case
   if (src_span.size() == 1) {
-    *dest_size = 3;
-    dest_buf->reset(FX_Alloc(uint8_t, *dest_size));
-    auto dest_buf_span = pdfium::make_span(dest_buf->get(), *dest_size);
-    dest_buf_span[0] = 0;
-    dest_buf_span[1] = src_span[0];
-    dest_buf_span[2] = 128;
-    return true;
+    result.resize(3);
+    result[0] = 0;
+    result[1] = src_span[0];
+    result[2] = 128;
+    return result;
   }
 
   // Worst case: 1 nonmatch, 2 match, 1 nonmatch, 2 match, etc. This becomes
@@ -257,10 +254,10 @@ bool BasicModule::RunLengthEncode(
   estimated_size /= 3;
   estimated_size *= 4;
   estimated_size += 1;
-  dest_buf->reset(FX_Alloc(uint8_t, estimated_size.ValueOrDie()));
+  result.resize(estimated_size.ValueOrDie());
 
-  // Set up pointers.
-  uint8_t* out = dest_buf->get();
+  // Set up span and counts.
+  auto result_span = pdfium::make_span(result);
   uint32_t run_start = 0;
   uint32_t run_end = 1;
   uint8_t x = src_span[run_start];
@@ -277,42 +274,42 @@ bool BasicModule::RunLengthEncode(
         y = src_span[run_end];
     }
     if (run_end - run_start > 1) {  // Matched run but not at end of input.
-      out[0] = 257 - (run_end - run_start);
-      out[1] = x;
+      result_span[0] = 257 - (run_end - run_start);
+      result_span[1] = x;
       x = y;
       run_start = run_end;
       run_end++;
       if (run_end < src_span.size())
         y = src_span[run_end];
-      out += 2;
+      result_span = result_span.subspan(2);
       continue;
     }
     // Mismatched run
     while (x != y && run_end <= run_start + max_len) {
-      out[run_end - run_start] = x;
+      result_span[run_end - run_start] = x;
       x = y;
       run_end++;
       if (run_end == src_span.size()) {
         if (run_end <= run_start + max_len) {
-          out[run_end - run_start] = x;
+          result_span[run_end - run_start] = x;
           run_end++;
         }
         break;
       }
       y = src_span[run_end];
     }
-    out[0] = run_end - run_start - 2;
-    out += run_end - run_start;
+    result_span[0] = run_end - run_start - 2;
+    result_span = result_span.subspan(run_end - run_start);
     run_start = run_end - 1;
   }
   if (run_start < src_span.size()) {  // 1 leftover character
-    out[0] = 0;
-    out[1] = x;
-    out += 2;
+    result_span[0] = 0;
+    result_span[1] = x;
+    result_span = result_span.subspan(2);
   }
-  *out = 128;
-  *dest_size = pdfium::base::checked_cast<uint32_t>(out + 1 - dest_buf->get());
-  return true;
+  result_span[0] = 128;
+  result.resize(result.size() - result_span.size() - 1);
+  return result;
 }
 
 // static

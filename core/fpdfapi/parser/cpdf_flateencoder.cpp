@@ -6,9 +6,6 @@
 
 #include "core/fpdfapi/parser/cpdf_flateencoder.h"
 
-#include <memory>
-#include <utility>
-
 #include "constants/stream_dict_common.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
@@ -17,6 +14,7 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "third_party/base/check.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
                                      bool bFlateEncode)
@@ -28,28 +26,24 @@ CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
     auto pDestAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
     pDestAcc->LoadAllDataFiltered();
 
-    m_dwSize = pDestAcc->GetSize();
-    m_pData = pDestAcc->DetachData();
+    m_Data = m_pAcc->GetSpan();
     m_pClonedDict = ToDictionary(pStream->GetDict()->Clone());
     m_pClonedDict->RemoveFor("Filter");
     DCHECK(!m_pDict);
     return;
   }
   if (bHasFilter || !bFlateEncode) {
-    m_pData = m_pAcc->GetData();
-    m_dwSize = m_pAcc->GetSize();
+    m_Data = m_pAcc->GetSpan();
     m_pDict.Reset(pStream->GetDict());
     DCHECK(!m_pClonedDict);
     return;
   }
 
-  // TODO(thestig): Move to Init() and check return value.
-  std::unique_ptr<uint8_t, FxFreeDeleter> buffer;
-  ::FlateEncode(m_pAcc->GetSpan(), &buffer, &m_dwSize);
-
-  m_pData = std::move(buffer);
+  // TODO(thestig): Move to Init() and check for empty return value?
+  m_Data = ::FlateEncode(m_pAcc->GetSpan());
   m_pClonedDict = ToDictionary(pStream->GetDict()->Clone());
-  m_pClonedDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(m_dwSize));
+  m_pClonedDict->SetNewFor<CPDF_Number>(
+      "Length", pdfium::base::checked_cast<int>(GetSpan().size()));
   m_pClonedDict->SetNewFor<CPDF_Name>("Filter", "FlateDecode");
   m_pClonedDict->RemoveFor(pdfium::stream::kDecodeParms);
   DCHECK(!m_pDict);
@@ -80,4 +74,10 @@ const CPDF_Dictionary* CPDF_FlateEncoder::GetDict() const {
   }
 
   return m_pDict.Get();
+}
+
+pdfium::span<const uint8_t> CPDF_FlateEncoder::GetSpan() const {
+  if (is_owned())
+    return absl::get<DataVector<uint8_t>>(m_Data);
+  return absl::get<pdfium::span<const uint8_t>>(m_Data);
 }
