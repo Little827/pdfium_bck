@@ -67,7 +67,17 @@ void BinaryBuffer::Clear() {
   m_DataSize = 0;
 }
 
-std::unique_ptr<uint8_t, FxFreeDeleter> BinaryBuffer::DetachBuffer() {
+DataVector<uint8_t> BinaryBuffer::DetachBuffer() {
+  size_t size = GetSize();
+  m_DataSize = 0;
+  m_AllocSize = 0;
+  std::unique_ptr<uint8_t, FxFreeDeleter> data = std::move(m_pBuffer);
+  DataVector<uint8_t> result(size);
+  memcpy(result.data(), data.get(), result.size());
+  return result;
+}
+
+std::unique_ptr<uint8_t, FxFreeDeleter> BinaryBuffer::DetachBufferDeprecated() {
   m_DataSize = 0;
   m_AllocSize = 0;
   return std::move(m_pBuffer);
