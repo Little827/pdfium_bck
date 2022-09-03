@@ -3018,7 +3018,8 @@ TEST_F(FPDFEditEmbedderTest, LoadCIDType0Font) {
   EXPECT_EQ(1u, descendant_array->size());
 
   // Check the CIDFontDict
-  const CPDF_Dictionary* cidfont_dict = descendant_array->GetDictAt(0);
+  RetainPtr<const CPDF_Dictionary> cidfont_dict =
+      descendant_array->GetDictAt(0);
   EXPECT_EQ("Font", cidfont_dict->GetNameFor("Type"));
   EXPECT_EQ("CIDFontType0", cidfont_dict->GetNameFor("Subtype"));
   EXPECT_EQ("Tinos-Regular", cidfont_dict->GetNameFor("BaseFont"));
@@ -3034,7 +3035,7 @@ TEST_F(FPDFEditEmbedderTest, LoadCIDType0Font) {
   EXPECT_EQ(CPDF_Object::kString, ordering->GetType());
   EXPECT_EQ("Identity", ordering->GetString());
   EXPECT_EQ(0, cidinfo_dict->GetNumberFor("Supplement"));
-  CheckFontDescriptor(cidfont_dict, FPDF_FONT_TYPE1, false, false, span);
+  CheckFontDescriptor(cidfont_dict.Get(), FPDF_FONT_TYPE1, false, false, span);
 
   // Check widths
   const CPDF_Array* widths_array = cidfont_dict->GetArrayFor("W");
@@ -3066,7 +3067,8 @@ TEST_F(FPDFEditEmbedderTest, LoadCIDType2Font) {
   EXPECT_EQ(1u, descendant_array->size());
 
   // Check the CIDFontDict
-  const CPDF_Dictionary* cidfont_dict = descendant_array->GetDictAt(0);
+  RetainPtr<const CPDF_Dictionary> cidfont_dict =
+      descendant_array->GetDictAt(0);
   EXPECT_EQ("Font", cidfont_dict->GetNameFor("Type"));
   EXPECT_EQ("CIDFontType2", cidfont_dict->GetNameFor("Subtype"));
   EXPECT_EQ("Arimo-Italic", cidfont_dict->GetNameFor("BaseFont"));
@@ -3076,7 +3078,8 @@ TEST_F(FPDFEditEmbedderTest, LoadCIDType2Font) {
   EXPECT_EQ("Adobe", cidinfo_dict->GetStringFor("Registry"));
   EXPECT_EQ("Identity", cidinfo_dict->GetStringFor("Ordering"));
   EXPECT_EQ(0, cidinfo_dict->GetNumberFor("Supplement"));
-  CheckFontDescriptor(cidfont_dict, FPDF_FONT_TRUETYPE, false, true, span);
+  CheckFontDescriptor(cidfont_dict.Get(), FPDF_FONT_TRUETYPE, false, true,
+                      span);
 
   // Check widths
   const CPDF_Array* widths_array = cidfont_dict->GetArrayFor("W");
