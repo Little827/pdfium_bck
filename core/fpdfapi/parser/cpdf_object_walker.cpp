@@ -132,7 +132,7 @@ CPDF_ObjectWalker::CPDF_ObjectWalker(const CPDF_Object* root)
 
 CPDF_ObjectWalker::~CPDF_ObjectWalker() = default;
 
-const CPDF_Object* CPDF_ObjectWalker::GetNext() {
+RetainPtr<const CPDF_Object> CPDF_ObjectWalker::GetNext() {
   while (!stack_.empty() || next_object_) {
     if (next_object_) {
       auto new_iterator = MakeIterator(next_object_.Get());
@@ -140,7 +140,7 @@ const CPDF_Object* CPDF_ObjectWalker::GetNext() {
         // Schedule walk within composite objects.
         stack_.push(std::move(new_iterator));
       }
-      auto* result = next_object_.Get();
+      RetainPtr<const CPDF_Object> result = std::move(next_object_);
       next_object_ = nullptr;
       return result;
     }
