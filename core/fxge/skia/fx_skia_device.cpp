@@ -39,6 +39,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagerenderer.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
+#include "core/fxge/dib/cstretchengine.h"
 #include "core/fxge/text_char_pos.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
@@ -2584,8 +2585,16 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
         }
       }
     } else {
+      // Whether to use the linear sampling option is set by
+      // `options.bInterpolateBilinear` to adjust the smoothness of an image
+      // rendering result. It can also be set to true to mimic the optimization
+      // process in CStretchEngine.
+      bool use_linear_sampling_option =
+          options.bInterpolateBilinear ||
+          CStretchEngine::UseLinearSamplingOption(options, matrix.a, matrix.d,
+                                                  width, height);
       SkSamplingOptions sampling_options =
-          options.bInterpolateBilinear
+          use_linear_sampling_option
               ? SkSamplingOptions(SkFilterMode::kLinear, SkMipmapMode::kLinear)
               : SkSamplingOptions();
       m_pCanvas->drawImageRect(skBitmap.asImage(),
