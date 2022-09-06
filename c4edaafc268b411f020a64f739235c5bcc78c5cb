@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb0fcec_6ad209fe",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:03:10Z",
+      "side": 1,
+      "message": "Do we want if (!(pAnnot-\u003e...)) { ?\n\nIt reads a little odd to say \"No Rotate\" then apply more rotational matrices.",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fda6f5_b7ec7e44",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:03:10Z",
+      "side": 1,
+      "message": "nit: wrap at 80 cols.",
+      "range": {
+        "startLine": 58,
+        "startChar": 72,
+        "endLine": 58,
+        "endChar": 85
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
