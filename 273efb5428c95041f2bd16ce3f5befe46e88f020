@@ -424,6 +424,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3538c6_2ec72ee8",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T21:53:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc125367_ed92b4aa",
+      "range": {
+        "startLine": 600,
+        "startChar": 10,
+        "endLine": 600,
+        "endChar": 16
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ade3a883_29c9d234",
@@ -461,6 +485,30 @@
       "side": 1,
       "message": "The only caller doesn\u0027t try to encode when the input is less than 1 KB.\n\nI didn\u0027t check, but many compression algorithms will still output a header of some kind when the input is empty.",
       "parentUuid": "ade3a883_29c9d234",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77508a3_265bf033",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T21:53:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0f0b4a4_89dc8c66",
       "range": {
         "startLine": 48,
         "startChar": 2,
