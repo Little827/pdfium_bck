@@ -189,6 +189,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2499c500_f83b3b55",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:52:07Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/97572",
+      "parentUuid": "fd1950ea_401a612a",
+      "range": {
+        "startLine": 259,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 47
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a25bbc2_d4e23e66",
@@ -366,6 +390,30 @@
       "writtenOn": "2022-09-06T17:42:51Z",
       "side": 1,
       "message": "follow-on: I smell a spancpy() in our future.",
+      "range": {
+        "startLine": 600,
+        "startChar": 10,
+        "endLine": 600,
+        "endChar": 16
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56dd9342_c2c551b7",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:52:07Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/97593",
+      "parentUuid": "fc125367_ed92b4aa",
       "range": {
         "startLine": 600,
         "startChar": 10,
