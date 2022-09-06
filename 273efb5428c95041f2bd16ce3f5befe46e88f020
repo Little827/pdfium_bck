@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc49f05_0baf8cdc",
+        "filename": "core/fpdfapi/parser/cpdf_flateencoder.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "nit: Comment that this must come after m_pAcc, right? Since the span variant might point back into it.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faecb79d_b2538f18",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "nit: maybe we can return a list-initialized vector like \n  return {0, src_span[0], 128};",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 18
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97b59b7_752e11a3",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "... and if the previous suggestion, works, declare `result` here like\n  DataVector result(estimated_size.ValueOrDie());",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 45
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8200561_5ef49335",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "can we do this as a follow-up? I\u0027d hate to see the data vector reverted because of some subtle thing we missed here .... OTOH, it is cleaner. As you like.",
+      "range": {
+        "startLine": 259,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 47
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a25bbc2_d4e23e66",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "nit: Do we want to CHECK() that this is a resize to smaller, eh?",
+      "range": {
+        "startLine": 310,
+        "startChar": 2,
+        "endLine": 310,
+        "endChar": 56
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2140b4c4_675c0222",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "D\u0027ya want to do this as a quick change in a separate precursor CL?\n\n(I think using unsigned long is good enough, though it looks like the formal type is uLong (whatever that is) but called through a K\u0026R prototype, which mean ... I don\u0027t want to think about it).",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f9a496c_a790e4cb",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "nit: maybe early return like\n\n  if (!FlateCompress(...))\n    return DataVector\u003cuint8_t\u003e();`",
+      "range": {
+        "startLine": 876,
+        "startChar": 1,
+        "endLine": 878,
+        "endChar": 10
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a563590_96ebc51d",
+        "filename": "core/fxcodec/flate/flatemodule.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "Yes, this is exactly the function signature I want for these. Yay!.",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 74
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc125367_ed92b4aa",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "follow-on: I smell a spancpy() in our future.",
+      "range": {
+        "startLine": 600,
+        "startChar": 10,
+        "endLine": 600,
+        "endChar": 16
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade3a883_29c9d234",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "How doe we distinguish in the new code, say, successfully encoding an empty span into an empty vector vs. error cases?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac158c07_c95a7f0d",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:42:51Z",
+      "side": 1,
+      "message": "nit: do we want to  `\u003d delete` the copy constructor and copy-assign operator? Or does this happen automatically as a result of some incomprehensible C++ spec rules?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
