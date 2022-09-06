@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e06ac494_dfd59170",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T18:16:34Z",
+      "side": 1,
+      "message": "pre-existing: boogedy! probably needs safe arithmetic.",
+      "range": {
+        "startLine": 850,
+        "startChar": 6,
+        "endLine": 850,
+        "endChar": 20
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cb67d84_e1a61ead",
         "filename": "core/fxge/win32/cfx_psrenderer.h",
         "patchSetId": 4
