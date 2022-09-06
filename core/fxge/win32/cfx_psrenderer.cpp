@@ -20,6 +20,7 @@
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_stream.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_fontcache.h"
@@ -586,18 +587,21 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
       int src_pitch = width * bpp;
       output_size = height * src_pitch;
       output_buf = FX_Alloc(uint8_t, output_size);
+      pdfium::span<uint8_t> dest_buf_span(output_buf, output_size);
       for (int row = 0; row < height; row++) {
-        const uint8_t* src_scan = pConverted->GetScanline(row).data();
-        uint8_t* dest_scan = output_buf + row * src_pitch;
+        pdfium::span<const uint8_t> src_span = pConverted->GetScanline(row);
+        pdfium::span<uint8_t> dest_span =
+            dest_buf_span.subspan(row * src_pitch, src_pitch);
         if (bpp == 3) {
           for (int col = 0; col < width; col++) {
-            *dest_scan++ = src_scan[2];
-            *dest_scan++ = src_scan[1];
-            *dest_scan++ = *src_scan;
-            src_scan += 3;
+            dest_span[0] = src_span[2];
+            dest_span[1] = src_span[1];
+            dest_span[2] = src_span[0];
+            src_span = src_span.subspan(3);
+            dest_span = dest_span.subspan(3);
           }
         } else {
-          memcpy(dest_scan, src_scan, src_pitch);
+          fxcrt::spancpy(dest_span, src_span.subspan(0, src_pitch));
         }
       }
       compress_result = PSCompressData({output_buf, output_size});
