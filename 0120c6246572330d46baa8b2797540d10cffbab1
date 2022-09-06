@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "097ecaa1_474da5bc",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4213de00_1bcfbc14",
+      "revId": "0120c6246572330d46baa8b2797540d10cffbab1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1248d697_68206466",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17aef869_5a126f25",
+        "filename": "core/fpdfapi/parser/cpdf_object_avail.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:59:04Z",
+      "side": 1,
+      "message": "Done. Yeah, ok, I was a little squeamish about a move on the far side of a || expression, but not sure why.",
+      "parentUuid": "1248d697_68206466",
+      "range": {
+        "startLine": 100,
+        "startChar": 29,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "0120c6246572330d46baa8b2797540d10cffbab1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87aac1e9_6dc61f98",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-03T03:21:38Z",
       "side": 1,
       "message": "More std::move() calls in the test code here and for `level_0` below.",
+      "range": {
+        "startLine": 77,
+        "startChar": 17,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "0120c6246572330d46baa8b2797540d10cffbab1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fbc7281_d0181288",
+        "filename": "core/fpdfapi/parser/cpdf_object_walker_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T17:59:04Z",
+      "side": 1,
+      "message": "It\u0027s a test, so there isn\u0027t a meaningful performance hit in calling the copy ctor, which might be helpful when running in the debugger if we do \u0027print dict\u0027 after Walk() returns.",
+      "parentUuid": "87aac1e9_6dc61f98",
       "range": {
         "startLine": 77,
         "startChar": 17,
