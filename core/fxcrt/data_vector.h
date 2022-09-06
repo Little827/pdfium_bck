@@ -5,13 +5,15 @@
 #ifndef CORE_FXCRT_DATA_VECTOR_H_
 #define CORE_FXCRT_DATA_VECTOR_H_
 
+#include <type_traits>
 #include <vector>
 
 #include "core/fxcrt/fx_memory_wrappers.h"
 
 namespace fxcrt {
 
-template <typename T>
+template <typename T,
+          typename = std::enable_if_t<std::is_arithmetic<T>::value, T>>
 using DataVector = std::vector<T, FxAllocAllocator<T>>;
 
 }  // namespace fxcrt
