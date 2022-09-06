@@ -148,7 +148,7 @@ RetainPtr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
       const CPDF_Array* pParams =
           pDict->GetArrayFor(pdfium::stream::kDecodeParms);
       if (pParams)
-        pParam = pParams->GetDictAt(0);
+        pParam = pParams->GetDictAt(0).Get();
     } else {
       decoder = pFilter->GetString();
       pParam = pDict->GetDictFor(pdfium::stream::kDecodeParms);
