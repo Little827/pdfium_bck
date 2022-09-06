@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368cfcb0_91edff47",
+        "filename": "core/fpdfapi/parser/cpdf_stream.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T18:20:14Z",
+      "side": 1,
+      "message": "nit: make private and friend class CPDF_StreamACC ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "870ca345f189808626d8b3a64f0c1b739931f3d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
