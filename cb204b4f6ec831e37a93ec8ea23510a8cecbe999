@@ -33,6 +33,23 @@
       "message": "Curly braces",
       "revId": "cb204b4f6ec831e37a93ec8ea23510a8cecbe999",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0782add9_b003c76d",
+        "filename": "core/fpdfapi/parser/cpdf_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:19:29Z",
+      "side": 1,
+      "message": "Make this consistent with ToReference() and friends?",
+      "revId": "cb204b4f6ec831e37a93ec8ea23510a8cecbe999",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
