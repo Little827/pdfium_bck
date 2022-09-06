@@ -46,6 +46,30 @@
       },
       "revId": "edabf0f9acf5c583ddda8a9389adc8364aa8bfa5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "541b86ff_081f1c3a",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T22:26:33Z",
+      "side": 1,
+      "message": "Guess not.  Doesn\u0027t have raw ptrs,anymore, say/",
+      "parentUuid": "c68e81ca_ca66c36f",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "edabf0f9acf5c583ddda8a9389adc8364aa8bfa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
