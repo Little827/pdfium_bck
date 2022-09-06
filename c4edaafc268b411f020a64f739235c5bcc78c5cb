@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f1ea93_aa4dc86e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T23:53:50Z",
+      "side": 1,
+      "message": "b",
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adb0fcec_6ad209fe",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-09-06T17:03:10Z",
       "side": 1,
       "message": "Do we want if (!(pAnnot-\u003e...)) { ?\n\nIt reads a little odd to say \"No Rotate\" then apply more rotational matrices.",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130011e8_dbe4b4eb",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T23:53:50Z",
+      "side": 1,
+      "message": "Does this work when a page has /Rotate 90, like in the test file, by undoing the rotate? Should this code be skilled when the page effectively have /Rotate 0?\n\nIt would be good to cover more cases in the test. Do you need help writing a less complicated test with an .in file? https://pdfium.googlesource.com/pdfium/+/main/README.md#files",
+      "parentUuid": "adb0fcec_6ad209fe",
       "range": {
         "startLine": 57,
         "startChar": 6,
