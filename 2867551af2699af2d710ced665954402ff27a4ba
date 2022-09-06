@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd73121_4d1e8bc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T19:03:28Z",
+      "side": 1,
+      "message": "Same as previous abandoned CL, but one layer lower.",
+      "revId": "2867551af2699af2d710ced665954402ff27a4ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
