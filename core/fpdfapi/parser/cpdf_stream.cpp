@@ -83,13 +83,11 @@ void CPDF_Stream::InitStream(pdfium::span<const uint8_t> pData,
 
 void CPDF_Stream::InitStreamFromFile(RetainPtr<IFX_SeekableReadStream> pFile,
                                      RetainPtr<CPDF_Dictionary> pDict) {
-  m_bMemoryBased = false;
-  m_pDataBuf.reset();
-  m_pFile = std::move(pFile);
+  const size_t size = pdfium::base::checked_cast<size_t>(pFile->GetSize());
+  m_Data.emplace<FileStream>(std::move(pFile), size);
   m_pDict = std::move(pDict);
-  m_dwSize = pdfium::base::checked_cast<size_t>(m_pFile->GetSize());
   m_pDict->SetNewFor<CPDF_Number>("Length",
-                                  pdfium::base::checked_cast<int>(m_dwSize));
+                                  pdfium::base::checked_cast<int>(size));
 }
 
 RetainPtr<CPDF_Object> CPDF_Stream::Clone() const {
@@ -151,10 +149,7 @@ void CPDF_Stream::TakeData(DataVector<uint8_t> data) {
 void CPDF_Stream::TakeDataInternal(
     std::unique_ptr<uint8_t, FxFreeDeleter> pData,
     size_t size) {
-  m_bMemoryBased = true;
-  m_pFile = nullptr;
-  m_pDataBuf = std::move(pData);
-  m_dwSize = size;
+  m_Data = pdfium::MakeRetain<CFX_MemoryStream>(std::move(pData), size);
   if (!m_pDict)
     m_pDict = pdfium::MakeRetain<CPDF_Dictionary>();
   m_pDict->SetNewFor<CPDF_Number>("Length",
@@ -173,8 +168,9 @@ void CPDF_Stream::SetDataFromStringstream(fxcrt::ostringstream* stream) {
 bool CPDF_Stream::ReadRawData(FX_FILESIZE offset,
                               uint8_t* buf,
                               size_t size) const {
-  CHECK(!m_bMemoryBased);
-  return m_pFile->ReadBlockAtOffset(buf, offset, size);
+  CHECK(IsFileBased());
+  return absl::get<FileStream>(m_Data).file->ReadBlockAtOffset(buf, offset,
+                                                               size);
 }
 
 bool CPDF_Stream::HasFilter() const {
@@ -222,7 +218,22 @@ bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive,
   return true;
 }
 
+size_t CPDF_Stream::GetRawSize() const {
+  if (IsFileBased())
+    return absl::get<FileStream>(m_Data).size;
+  if (IsMemoryBased())
+    return absl::get<RetainPtr<CFX_MemoryStream>>(m_Data)->GetSize();
+  DCHECK(IsUninitialized());
+  return 0;
+}
+
 const uint8_t* CPDF_Stream::GetInMemoryRawData() const {
   DCHECK(IsMemoryBased());
-  return m_pDataBuf.get();
+  return absl::get<RetainPtr<CFX_MemoryStream>>(m_Data)->GetBuffer();
 }
+
+CPDF_Stream::FileStream::FileStream(RetainPtr<IFX_SeekableReadStream> file,
+                                    size_t size)
+    : file(std::move(file)), size(size) {}
+
+CPDF_Stream::FileStream::~FileStream() = default;
