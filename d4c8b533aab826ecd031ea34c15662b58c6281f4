@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1959afa_19b296f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T18:15:35Z",
+      "side": 1,
+      "message": "nit: Sentence fragment, but I think I see what you mean - DetachBuffer() now does a copy underneath, which we\u0027ll fix in a later CL.",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57543ad2_b364d636",
+        "filename": "core/fxcrt/binary_buffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T18:15:35Z",
+      "side": 1,
+      "message": "nit: Can avoid constructing with 0\u0027s and then copying over with memcpy via\n  return DataVector\u003cuint8_t\u003e(data.get(), data.get() + size);\nOtherwise we might have to short-circuit on pSize \u003d\u003d 0 to avoid \n  memcpy(0, 0, 0);\nas that keeps coming up as something not allowed (though should be!). I expect there\u0027s a pile of this around.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 16
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c57c223_38d74897",
+        "filename": "core/fxcrt/binary_buffer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T18:15:35Z",
+      "side": 1,
+      "message": "nit: maybe the comment goes here about \u0027currently does a copy until we fix the todo below.",
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb67d84_e1a61ead",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-06T18:15:35Z",
+      "side": 1,
+      "message": "do we need `\u003d delete` for copy ctor and and copy assign?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
