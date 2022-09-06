@@ -5,6 +5,7 @@
 #ifndef CORE_FXCRT_DATA_VECTOR_H_
 #define CORE_FXCRT_DATA_VECTOR_H_
 
+#include <type_traits>
 #include <vector>
 
 #include "core/fxcrt/fx_memory_wrappers.h"
