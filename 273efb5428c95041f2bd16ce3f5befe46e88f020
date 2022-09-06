@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d039fb1_9c651380",
+        "filename": "core/fpdfapi/parser/cpdf_flateencoder.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afc49f05_0baf8cdc",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faecb79d_b2538f18",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d883c989_c0019c68",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faecb79d_b2538f18",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 18
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b97b59b7_752e11a3",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-06T17:42:51Z",
       "side": 1,
       "message": "... and if the previous suggestion, works, declare `result` here like\n  DataVector result(estimated_size.ValueOrDie());",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 45
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc770e8_c49d1ed7",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b97b59b7_752e11a3",
       "range": {
         "startLine": 256,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd1950ea_401a612a",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "Will save for a later CL.",
+      "parentUuid": "d8200561_5ef49335",
+      "range": {
+        "startLine": 259,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 47
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a25bbc2_d4e23e66",
         "filename": "core/fxcodec/basic/basicmodule.cpp",
         "patchSetId": 12
@@ -106,6 +202,30 @@
       "writtenOn": "2022-09-06T17:42:51Z",
       "side": 1,
       "message": "nit: Do we want to CHECK() that this is a resize to smaller, eh?",
+      "range": {
+        "startLine": 310,
+        "startChar": 2,
+        "endLine": 310,
+        "endChar": 56
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "778afefb_0cd0c7bf",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a25bbc2_d4e23e66",
       "range": {
         "startLine": 310,
         "startChar": 2,
@@ -139,6 +259,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c944d8ae_95298733",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/97591",
+      "parentUuid": "2140b4c4_675c0222",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f9a496c_a790e4cb",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-09-06T17:42:51Z",
       "side": 1,
       "message": "nit: maybe early return like\n\n  if (!FlateCompress(...))\n    return DataVector\u003cuint8_t\u003e();`",
+      "range": {
+        "startLine": 876,
+        "startChar": 1,
+        "endLine": 878,
+        "endChar": 10
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6772a8e7_1857f555",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f9a496c_a790e4cb",
       "range": {
         "startLine": 876,
         "startChar": 1,
@@ -233,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0f0b4a4_89dc8c66",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "The only caller doesn\u0027t try to encode when the input is less than 1 KB.\n\nI didn\u0027t check, but many compression algorithms will still output a header of some kind when the input is empty.",
+      "parentUuid": "ade3a883_29c9d234",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac158c07_c95a7f0d",
         "filename": "core/fxge/win32/cfx_psrenderer.h",
         "patchSetId": 12
@@ -244,6 +436,30 @@
       "writtenOn": "2022-09-06T17:42:51Z",
       "side": 1,
       "message": "nit: do we want to  `\u003d delete` the copy constructor and copy-assign operator? Or does this happen automatically as a result of some incomprehensible C++ spec rules?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "273efb5428c95041f2bd16ce3f5befe46e88f020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c89c8527_c7ab1d0e",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T21:29:02Z",
+      "side": 1,
+      "message": "It\u0027s the last implicit deletion rule on https://en.cppreference.com/w/cpp/language/copy_constructor\n\nBut I added it explicitly to be clearer, and added noexcept keywords.",
+      "parentUuid": "ac158c07_c95a7f0d",
       "range": {
         "startLine": 124,
         "startChar": 0,
