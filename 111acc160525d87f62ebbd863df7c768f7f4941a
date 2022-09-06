@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2036afe4_74707e31",
+        "filename": "core/fxcodec/basic/basicmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-06T22:08:16Z",
+      "side": 1,
+      "message": "Will split this out.",
+      "revId": "111acc160525d87f62ebbd863df7c768f7f4941a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
