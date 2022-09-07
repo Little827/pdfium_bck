@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "000d691c_4025c8db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T01:09:37Z",
+      "side": 1,
+      "message": "Thanks. I\u0027ll make some separate comments.",
+      "parentUuid": "82f5b168_b9f8142c",
+      "revId": "d6c452429d001313bdb79c43f2f916f6609fbdf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17bb0941_f74ef12e",
