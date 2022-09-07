@@ -71,14 +71,15 @@ RetainPtr<CPDF_Object> CPDF_Dictionary::CloneNonCyclic(
   return pCopy;
 }
 
-const CPDF_Object* CPDF_Dictionary::GetObjectFor(const ByteString& key) const {
-  auto it = m_Map.find(key);
-  return it != m_Map.end() ? it->second.Get() : nullptr;
+RetainPtr<const CPDF_Object> CPDF_Dictionary::GetObjectFor(
+    const ByteString& key) const {
+  return const_cast<CPDF_Dictionary*>(this)->GetMutableObjectFor(key);
 }
 
 RetainPtr<CPDF_Object> CPDF_Dictionary::GetMutableObjectFor(
     const ByteString& key) {
-  return pdfium::WrapRetain(const_cast<CPDF_Object*>(GetObjectFor(key)));
+  auto it = m_Map.find(key);
+  return it != m_Map.end() ? it->second : nullptr;
 }
 
 RetainPtr<const CPDF_Object> CPDF_Dictionary::GetDirectObjectFor(
@@ -93,51 +94,51 @@ RetainPtr<CPDF_Object> CPDF_Dictionary::GetMutableDirectObjectFor(
 }
 
 ByteString CPDF_Dictionary::GetStringFor(const ByteString& key) const {
-  const CPDF_Object* p = GetObjectFor(key);
+  RetainPtr<const CPDF_Object> p = GetObjectFor(key);
   return p ? p->GetString() : ByteString();
 }
 
 ByteString CPDF_Dictionary::GetStringFor(const ByteString& key,
                                          const ByteString& def) const {
-  const CPDF_Object* p = GetObjectFor(key);
+  RetainPtr<const CPDF_Object> p = GetObjectFor(key);
   return p ? p->GetString() : ByteString(def);
 }
 
 WideString CPDF_Dictionary::GetUnicodeTextFor(const ByteString& key) const {
-  const CPDF_Object* p = GetObjectFor(key);
-  if (const CPDF_Reference* pRef = ToReference(p))
-    p = pRef->GetDirect().Get();
+  RetainPtr<const CPDF_Object> p = GetObjectFor(key);
+  if (const CPDF_Reference* pRef = ToReference(p.Get()))
+    p = pRef->GetDirect();
   return p ? p->GetUnicodeText() : WideString();
 }
 
 ByteString CPDF_Dictionary::GetNameFor(const ByteString& key) const {
-  const CPDF_Name* p = ToName(GetObjectFor(key));
+  RetainPtr<const CPDF_Name> p = ToName(GetObjectFor(key));
   return p ? p->GetString() : ByteString();
 }
 
 bool CPDF_Dictionary::GetBooleanFor(const ByteString& key,
                                     bool bDefault) const {
-  const CPDF_Object* p = GetObjectFor(key);
+  const CPDF_Object* p = GetObjectFor(key).Get();
   return ToBoolean(p) ? p->GetInteger() != 0 : bDefault;
 }
 
 int CPDF_Dictionary::GetIntegerFor(const ByteString& key) const {
-  const CPDF_Object* p = GetObjectFor(key);
+  const CPDF_Object* p = GetObjectFor(key).Get();
   return p ? p->GetInteger() : 0;
 }
 
 int CPDF_Dictionary::GetIntegerFor(const ByteString& key, int def) const {
-  const CPDF_Object* p = GetObjectFor(key);
+  const CPDF_Object* p = GetObjectFor(key).Get();
   return p ? p->GetInteger() : def;
 }
 
 int CPDF_Dictionary::GetDirectIntegerFor(const ByteString& key) const {
-  const CPDF_Number* p = ToNumber(GetObjectFor(key));
+  RetainPtr<const CPDF_Number> p = ToNumber(GetObjectFor(key));
   return p ? p->GetInteger() : 0;
 }
 
 float CPDF_Dictionary::GetNumberFor(const ByteString& key) const {
-  const CPDF_Object* p = GetObjectFor(key);
+  RetainPtr<const CPDF_Object> p = GetObjectFor(key);
   return p ? p->GetNumber() : 0;
 }
 

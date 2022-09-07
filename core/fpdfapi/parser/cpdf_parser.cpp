@@ -273,7 +273,7 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal() {
       return eRet;
   }
   if (m_pSecurityHandler && !m_pSecurityHandler->IsMetadataEncrypted()) {
-    const CPDF_Reference* pMetadata =
+    RetainPtr<const CPDF_Reference> pMetadata =
         ToReference(GetRoot()->GetObjectFor("Metadata"));
     if (pMetadata)
       m_MetadataObjnum = pMetadata->GetRefObjNum();
@@ -866,15 +866,16 @@ const CPDF_Dictionary* CPDF_Parser::GetEncryptDict() const {
   if (!GetTrailer())
     return nullptr;
 
-  const CPDF_Object* pEncryptObj = GetTrailer()->GetObjectFor("Encrypt");
+  RetainPtr<const CPDF_Object> pEncryptObj =
+      GetTrailer()->GetObjectFor("Encrypt");
   if (!pEncryptObj)
     return nullptr;
 
+  // TODO(tsepez): return retained object throughout.
   if (pEncryptObj->IsDictionary())
-    return ToDictionary(pEncryptObj);
+    return pEncryptObj->AsDictionary();
 
   if (pEncryptObj->IsReference()) {
-    // TODO(tsepez): return retained object.
     return ToDictionary(m_pObjectsHolder->GetOrParseIndirectObject(
                             pEncryptObj->AsReference()->GetRefObjNum()))
         .Get();
@@ -901,18 +902,22 @@ RetainPtr<CPDF_Dictionary> CPDF_Parser::GetCombinedTrailer() const {
 }
 
 uint32_t CPDF_Parser::GetInfoObjNum() const {
-  const CPDF_Reference* pRef =
-      ToReference(m_CrossRefTable->trailer()
-                      ? m_CrossRefTable->trailer()->GetObjectFor("Info")
-                      : nullptr);
+  const CPDF_Dictionary* pTrailer = m_CrossRefTable->trailer();
+  if (!pTrailer)
+    return CPDF_Object::kInvalidObjNum;
+
+  RetainPtr<const CPDF_Reference> pRef =
+      ToReference(pTrailer->GetObjectFor("Info"));
   return pRef ? pRef->GetRefObjNum() : CPDF_Object::kInvalidObjNum;
 }
 
 uint32_t CPDF_Parser::GetRootObjNum() const {
-  const CPDF_Reference* pRef =
-      ToReference(m_CrossRefTable->trailer()
-                      ? m_CrossRefTable->trailer()->GetObjectFor("Root")
-                      : nullptr);
+  const CPDF_Dictionary* pTrailer = m_CrossRefTable->trailer();
+  if (!pTrailer)
+    return CPDF_Object::kInvalidObjNum;
+
+  RetainPtr<const CPDF_Reference> pRef =
+      ToReference(pTrailer->GetObjectFor("Root"));
   return pRef ? pRef->GetRefObjNum() : CPDF_Object::kInvalidObjNum;
 }
 
@@ -1092,7 +1097,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   }
 
   if (m_pSecurityHandler && m_pSecurityHandler->IsMetadataEncrypted()) {
-    const CPDF_Reference* pMetadata =
+    RetainPtr<const CPDF_Reference> pMetadata =
         ToReference(GetRoot()->GetObjectFor("Metadata"));
     if (pMetadata)
       m_MetadataObjnum = pMetadata->GetRefObjNum();

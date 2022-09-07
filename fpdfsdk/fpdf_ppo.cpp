@@ -149,6 +149,7 @@ NupPageSettings NupState::CalculateNewPagePosition(const CFX_SizeF& pagesize) {
   return CalculatePageEdit(iSubX, iSubY, pagesize);
 }
 
+// TODO(tsepez): return retained object.
 const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
                                              const ByteString& bsSrcTag) {
   if (!pDict || bsSrcTag.IsEmpty())
@@ -169,11 +170,11 @@ const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
     return nullptr;
 
   if (pDict->KeyExist(bsSrcTag))
-    return pDict->GetObjectFor(bsSrcTag);
+    return pDict->GetObjectFor(bsSrcTag).Get();
 
   while (pp) {
     if (pp->KeyExist(bsSrcTag))
-      return pp->GetObjectFor(bsSrcTag);
+      return pp->GetObjectFor(bsSrcTag).Get();
     if (!pp->KeyExist(pdfium::page_object::kParent))
       break;
     pp = ToDictionary(
