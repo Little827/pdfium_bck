@@ -39,6 +39,11 @@ class CStretchEngine {
     return static_cast<uint8_t>(fixed >> kFixedPointBits);
   }
 
+  static bool UseInterpolateBilinear(const FXDIB_ResampleOptions& options,
+                                     int dest_width,
+                                     int dest_height,
+                                     int src_width,
+                                     int src_height);
   struct PixelWeight {
     static size_t TotalBytesForWeightCount(size_t weight_count);
 
