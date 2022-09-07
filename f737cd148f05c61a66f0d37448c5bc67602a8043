@@ -127,6 +127,30 @@
       },
       "revId": "f737cd148f05c61a66f0d37448c5bc67602a8043",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3f2290_9298fc18",
+        "filename": "core/fpdfapi/parser/cpdf_stream.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T17:49:13Z",
+      "side": 1,
+      "message": "If I were to use a single IFX_SeekableReadStream, it would require a cast to CFX_MemoryStream. \"trust me\"\n\nAlternatively, hold 2 pointers. 1 for IFX_SeekableReadStream and 1 for CFX_MemoryStream. Use the CFX_MemoryStream pointer only when needed.\n\nOr keep going with absl::variant, which is what I did.\n\nStill updating the rest of this CL chain to see how well this plays out.",
+      "parentUuid": "41d8078c_b9a9a5c1",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "f737cd148f05c61a66f0d37448c5bc67602a8043",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
