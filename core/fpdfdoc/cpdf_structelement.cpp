@@ -93,12 +93,12 @@ bool CPDF_StructElement::UpdateKidIfElement(const CPDF_Dictionary* pDict,
 }
 
 void CPDF_StructElement::LoadKids(const CPDF_Dictionary* pDict) {
-  const CPDF_Object* pObj = pDict->GetObjectFor("Pg");
+  RetainPtr<const CPDF_Object> pObj = pDict->GetObjectFor("Pg");
   uint32_t PageObjNum = 0;
-  if (const CPDF_Reference* pRef = ToReference(pObj))
+  if (RetainPtr<const CPDF_Reference> pRef = ToReference(pObj))
     PageObjNum = pRef->GetRefObjNum();
 
-  const CPDF_Object* pKids = pDict->GetDirectObjectFor("K");
+  RetainPtr<const CPDF_Object> pKids = pDict->GetDirectObjectFor("K");
   if (!pKids)
     return;
 
@@ -115,7 +115,9 @@ void CPDF_StructElement::LoadKids(const CPDF_Dictionary* pDict) {
   }
 
   m_Kids.resize(1);
-  LoadKid(PageObjNum, pKids, &m_Kids[0]);
+
+  // TODO(tsepez): pass retained arguments.
+  LoadKid(PageObjNum, pKids.Get(), &m_Kids[0]);
 }
 
 void CPDF_StructElement::LoadKid(uint32_t PageObjNum,
@@ -138,9 +140,10 @@ void CPDF_StructElement::LoadKid(uint32_t PageObjNum,
   if (!pKidDict)
     return;
 
-  if (const CPDF_Reference* pRef = ToReference(pKidDict->GetObjectFor("Pg")))
+  if (RetainPtr<const CPDF_Reference> pRef =
+          ToReference(pKidDict->GetObjectFor("Pg"))) {
     PageObjNum = pRef->GetRefObjNum();
-
+  }
   ByteString type = pKidDict->GetNameFor("Type");
   if ((type == "MCR" || type == "OBJR") &&
       m_pTree->GetPage()->GetObjNum() != PageObjNum) {
@@ -149,7 +152,8 @@ void CPDF_StructElement::LoadKid(uint32_t PageObjNum,
 
   if (type == "MCR") {
     pKid->m_Type = Kid::kStreamContent;
-    const CPDF_Reference* pRef = ToReference(pKidDict->GetObjectFor("Stm"));
+    RetainPtr<const CPDF_Reference> pRef =
+        ToReference(pKidDict->GetObjectFor("Stm"));
     pKid->m_RefObjNum = pRef ? pRef->GetRefObjNum() : 0;
     pKid->m_PageObjNum = PageObjNum;
     pKid->m_ContentId = pKidDict->GetIntegerFor("MCID");
@@ -158,7 +162,8 @@ void CPDF_StructElement::LoadKid(uint32_t PageObjNum,
 
   if (type == "OBJR") {
     pKid->m_Type = Kid::kObject;
-    const CPDF_Reference* pObj = ToReference(pKidDict->GetObjectFor("Obj"));
+    RetainPtr<const CPDF_Reference> pObj =
+        ToReference(pKidDict->GetObjectFor("Obj"));
     pKid->m_RefObjNum = pObj ? pObj->GetRefObjNum() : 0;
     pKid->m_PageObjNum = PageObjNum;
     return;

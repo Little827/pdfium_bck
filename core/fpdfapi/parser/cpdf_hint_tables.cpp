@@ -446,7 +446,10 @@ bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
     return false;
 
   const CPDF_Dictionary* pDict = pHintStream->GetDict();
-  const CPDF_Object* pOffset = pDict ? pDict->GetObjectFor("S") : nullptr;
+  if (!pDict)
+    return false;
+
+  RetainPtr<const CPDF_Object> pOffset = pDict->GetObjectFor("S");
   if (!pOffset || !pOffset->IsNumber())
     return false;
 

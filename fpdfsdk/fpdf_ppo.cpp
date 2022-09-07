@@ -149,6 +149,7 @@ NupPageSettings NupState::CalculateNewPagePosition(const CFX_SizeF& pagesize) {
   return CalculatePageEdit(iSubX, iSubY, pagesize);
 }
 
+// TODO(tsepez): return retained object.
 const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
                                              const ByteString& bsSrcTag) {
   if (!pDict || bsSrcTag.IsEmpty())
@@ -169,11 +170,11 @@ const CPDF_Object* PageDictGetInheritableTag(const CPDF_Dictionary* pDict,
     return nullptr;
 
   if (pDict->KeyExist(bsSrcTag))
-    return pDict->GetObjectFor(bsSrcTag);
+    return pDict->GetObjectFor(bsSrcTag).Get();
 
   while (pp) {
     if (pp->KeyExist(bsSrcTag))
-      return pp->GetObjectFor(bsSrcTag);
+      return pp->GetObjectFor(bsSrcTag).Get();
     if (!pp->KeyExist(pdfium::page_object::kParent))
       break;
     pp = ToDictionary(
@@ -600,7 +601,7 @@ ByteString CPDF_NPageToOneExporter::AddSubPage(
 CPDF_Stream* CPDF_NPageToOneExporter::MakeXObjectFromPageRaw(
     const RetainPtr<CPDF_Page>& pSrcPage) {
   const CPDF_Dictionary* pSrcPageDict = pSrcPage->GetDict();
-  const CPDF_Object* pSrcContentObj =
+  RetainPtr<const CPDF_Object> pSrcContentObj =
       pSrcPageDict->GetDirectObjectFor(pdfium::page_object::kContents);
 
   CPDF_Stream* pNewXObject = dest()->NewIndirect<CPDF_Stream>(
@@ -623,7 +624,7 @@ CPDF_Stream* CPDF_NPageToOneExporter::MakeXObjectFromPageRaw(
 
   if (pSrcContentObj) {
     ByteString bsSrcContentStream;
-    const CPDF_Array* pSrcContentArray = ToArray(pSrcContentObj);
+    const CPDF_Array* pSrcContentArray = pSrcContentObj->AsArray();
     if (pSrcContentArray) {
       for (size_t i = 0; i < pSrcContentArray->size(); ++i) {
         RetainPtr<const CPDF_Stream> pStream = pSrcContentArray->GetStreamAt(i);
