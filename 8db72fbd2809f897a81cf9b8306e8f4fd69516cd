@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48375f38_fdac4da5",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T20:35:08Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 1503,
+        "startChar": 40,
+        "endLine": 1503,
+        "endChar": 47
+      },
+      "revId": "8db72fbd2809f897a81cf9b8306e8f4fd69516cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
