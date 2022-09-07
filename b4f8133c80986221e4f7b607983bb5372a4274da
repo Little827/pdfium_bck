@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be9f47d_207d108a",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-07T00:14:49Z",
+      "side": 1,
+      "message": "Did it now, propagated to DecodeInlineStream,too.",
+      "parentUuid": "18cc07d8_de162ffc",
+      "revId": "b4f8133c80986221e4f7b607983bb5372a4274da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a880c40_3bbff5f7",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-06T23:31:14Z",
       "side": 1,
       "message": "Should this use AsDictionary() like before, since line 146 already made checked null-ness?",
+      "range": {
+        "startLine": 148,
+        "startChar": 37,
+        "endLine": 148,
+        "endChar": 49
+      },
+      "revId": "b4f8133c80986221e4f7b607983bb5372a4274da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f2dd1f_3c3d6487",
+        "filename": "core/fpdfapi/parser/cpdf_array.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-07T00:14:49Z",
+      "side": 1,
+      "message": "yes. The AsMethods() are going to become more useful when we want unowned synonyms of a different type that exist for the same lifetime of the owned local. Here we\u0027re going to have to tolerate some ref churn to return owned synonym tho.",
+      "parentUuid": "2a880c40_3bbff5f7",
       "range": {
         "startLine": 148,
         "startChar": 37,
