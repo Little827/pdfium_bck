@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "407366e6_cbd9ded5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T05:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1959afa_19b296f8",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57543ad2_b364d636",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a30d78_3cad8db5",
+        "filename": "core/fxcrt/binary_buffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T05:08:37Z",
+      "side": 1,
+      "message": "Done. I oftentimes forget about that ctor.",
+      "parentUuid": "57543ad2_b364d636",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 16
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c57c223_38d74897",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-09-06T18:15:35Z",
       "side": 1,
       "message": "nit: maybe the comment goes here about \u0027currently does a copy until we fix the todo below.",
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f45514b_e03432a5",
+        "filename": "core/fxcrt/binary_buffer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T05:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c57c223_38d74897",
       "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "411e1dc3_2f981d38",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T05:08:37Z",
+      "side": 1,
+      "message": "Will put it in the caller in a follow-up.",
+      "parentUuid": "e06ac494_dfd59170",
+      "range": {
+        "startLine": 850,
+        "startChar": 6,
+        "endLine": 850,
+        "endChar": 20
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cb67d84_e1a61ead",
         "filename": "core/fxge/win32/cfx_psrenderer.h",
         "patchSetId": 4
@@ -100,6 +190,30 @@
       "writtenOn": "2022-09-06T18:15:35Z",
       "side": 1,
       "message": "do we need `\u003d delete` for copy ctor and and copy assign?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "d4c8b533aab826ecd031ea34c15662b58c6281f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478956fb_5e9bb60d",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T05:08:37Z",
+      "side": 1,
+      "message": "Only to be clearer. Made this consistent with PSCompressResult.",
+      "parentUuid": "1cb67d84_e1a61ead",
       "range": {
         "startLine": 120,
         "startChar": 4,
