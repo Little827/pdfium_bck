@@ -22,6 +22,30 @@
       },
       "revId": "eab9e6811001cb946bc97d69604d98b772ef75c8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b5acc9_517572cb",
+        "filename": "core/fxge/win32/cfx_psrenderer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T16:00:42Z",
+      "side": 1,
+      "message": "Maybe after the dust settles.",
+      "parentUuid": "f4419279_45101891",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "eab9e6811001cb946bc97d69604d98b772ef75c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
