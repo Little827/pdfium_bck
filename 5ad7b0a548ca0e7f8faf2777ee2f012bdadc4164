@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8260af9c_8b2cb70b",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T01:00:45Z",
+      "side": 1,
+      "message": "Maybe more straight-forward to say RendererType must maintain a 1:1 mapping with FPDF_RENDERER_TYPE?",
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4680e474_a472ca90",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-07T01:00:45Z",
+      "side": 1,
+      "message": "Please phrase this so that someone proficient in C programming can understand it.\n\n- CHECK() is not a general concept that exists in C programming.\n- This phrase does not make sense for someone who only knows the dictionary definition of \"check\".",
+      "range": {
+        "startLine": 280,
+        "startChar": 39,
+        "endLine": 280,
+        "endChar": 65
+      },
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
