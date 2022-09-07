@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6016cf6b_4a45bafa",
+        "filename": "core/fxcodec/fax/faxmodule.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-07T18:12:05Z",
+      "side": 1,
+      "message": "follow-up: strikes me that this 3-tuple of width, height, pitch might become its own class and CHECK() invariants during construction that, say,\nwidth \u003c\u003d pitch and that height * pitch fits in a size_t.  I\u0027d be this crops up in a buncha places.",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "0674218092fb0e9f2fc0b72c5e7a83da2865d8f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
