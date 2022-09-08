@@ -1010,7 +1010,8 @@ bool CFX_RenderDevice::StartDIBitsWithBlend(
     std::unique_ptr<CFX_ImageRenderer>* handle,
     BlendMode blend_mode) {
   return m_pDeviceDriver->StartDIBits(pBitmap, bitmap_alpha, argb, matrix,
-                                      options, handle, blend_mode);
+                                      options, handle, blend_mode,
+                                      /*optimize_image_smoothness=*/true);
 }
 
 bool CFX_RenderDevice::ContinueDIBits(CFX_ImageRenderer* handle,

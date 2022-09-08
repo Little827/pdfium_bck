@@ -120,7 +120,8 @@ bool CTextOnlyPrinterDriver::StartDIBits(
     const CFX_Matrix& matrix,
     const FXDIB_ResampleOptions& options,
     std::unique_ptr<CFX_ImageRenderer>* handle,
-    BlendMode blend_type) {
+    BlendMode blend_type,
+    bool optimize_image_smoothness) {
   return false;
 }
 

@@ -66,7 +66,8 @@ class CPSPrinterDriver final : public RenderDeviceDriverIface {
                    const CFX_Matrix& matrix,
                    const FXDIB_ResampleOptions& options,
                    std::unique_ptr<CFX_ImageRenderer>* handle,
-                   BlendMode blend_type) override;
+                   BlendMode blend_type,
+                   bool optimize_image_smoothness) override;
   bool DrawDeviceText(pdfium::span<const TextCharPos> pCharPos,
                       CFX_Font* pFont,
                       const CFX_Matrix& mtObject2Device,

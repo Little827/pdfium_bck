@@ -189,7 +189,8 @@ bool CPSPrinterDriver::StartDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
                                    const CFX_Matrix& matrix,
                                    const FXDIB_ResampleOptions& options,
                                    std::unique_ptr<CFX_ImageRenderer>* handle,
-                                   BlendMode blend_type) {
+                                   BlendMode blend_type,
+                                   bool optimize_image_smoothness) {
   if (blend_type != BlendMode::kNormal)
     return false;
 
