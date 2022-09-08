@@ -14,7 +14,7 @@
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
-#include "core/fxcrt/fx_memory_wrappers.h"
+#include "core/fxcrt/data_vector.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
 
@@ -175,10 +175,8 @@ TEST(cpdf_filespec, GetFileStream) {
       // Set the file stream.
       auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
       size_t buf_len = strlen(streams[i]) + 1;
-      std::unique_ptr<uint8_t, FxFreeDeleter> buf(
-          FX_AllocUninit(uint8_t, buf_len));
-      memcpy(buf.get(), streams[i], buf_len);
-      file_dict->SetNewFor<CPDF_Stream>(keys[i], std::move(buf), buf_len,
+      DataVector<uint8_t> buf(streams[i], streams[i] + buf_len);
+      file_dict->SetNewFor<CPDF_Stream>(keys[i], std::move(buf),
                                         std::move(pDict));
 
       // Check that the file content stream is as expected.
@@ -212,10 +210,9 @@ TEST(cpdf_filespec, GetParamsDict) {
     // Add a file stream to the embedded files dictionary.
     RetainPtr<CPDF_Dictionary> file_dict = dict_obj->GetMutableDictFor("EF");
     auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
-    std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_AllocUninit(uint8_t, 6));
-    memcpy(buf.get(), "hello", 6);
-    file_dict->SetNewFor<CPDF_Stream>("UF", std::move(buf), 6,
-                                      std::move(pDict));
+    DataVector<uint8_t> buf(6);
+    memcpy(buf.data(), "hello", 6);
+    file_dict->SetNewFor<CPDF_Stream>("UF", std::move(buf), std::move(pDict));
 
     // Add a params dictionary to the file stream.
     RetainPtr<CPDF_Stream> stream = file_dict->GetMutableStreamFor("UF");
