@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66c15d3_b9d9a149",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-08T18:33:55Z",
+      "side": 1,
+      "message": "Oops. I added that in the commit message but only 2 min before the comment came in.",
+      "parentUuid": "a7a5ab56_8a4ff86b",
+      "revId": "68c5fda45d421e6a9f9ae5200ce09d9a52786b4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ebadb38_4f7bb786",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-08T18:15:06Z",
       "side": 1,
       "message": "Looking at this changelog, don\u0027t we also have to roll libc++ to avoid the bot troubles we had last week?",
+      "revId": "68c5fda45d421e6a9f9ae5200ce09d9a52786b4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28941205_51eb8672",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-08T18:33:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ebadb38_4f7bb786",
       "revId": "68c5fda45d421e6a9f9ae5200ce09d9a52786b4e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
