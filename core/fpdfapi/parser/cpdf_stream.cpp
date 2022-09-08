@@ -46,16 +46,14 @@ CPDF_Stream::CPDF_Stream(pdfium::span<const uint8_t> pData,
 
 CPDF_Stream::CPDF_Stream(DataVector<uint8_t> pData,
                          RetainPtr<CPDF_Dictionary> pDict)
-    : dict_(std::move(pDict)) {
-  // TODO(crbug.com/pdfium/1872): Avoid copying.
-  SetData(pData);
-}
+    : data_(std::move(pData)), dict_(std::move(pDict)) {}
 
 CPDF_Stream::CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
                          size_t size,
                          RetainPtr<CPDF_Dictionary> pDict)
     : dict_(std::move(pDict)) {
-  TakeDataInternal(std::move(pData), size);
+  DataVector<uint8_t> buffer(pData.get(), pData.get() + size);
+  TakeData(std::move(buffer));
 }
 
 CPDF_Stream::~CPDF_Stream() {
@@ -132,24 +130,13 @@ void CPDF_Stream::SetDataFromStringstreamAndRemoveFilter(
 }
 
 void CPDF_Stream::SetData(pdfium::span<const uint8_t> pData) {
-  std::unique_ptr<uint8_t, FxFreeDeleter> data_copy;
-  if (!pData.empty()) {
-    data_copy.reset(FX_AllocUninit(uint8_t, pData.size()));
-    auto copy_span = pdfium::make_span(data_copy.get(), pData.size());
-    fxcrt::spancpy(copy_span, pData);
-  }
-  TakeDataInternal(std::move(data_copy), pData.size());
+  DataVector<uint8_t> data_copy(pData.begin(), pData.end());
+  TakeData(std::move(data_copy));
 }
 
 void CPDF_Stream::TakeData(DataVector<uint8_t> data) {
-  // TODO(crbug.com/pdfium/1872): Avoid copying.
-  SetData(data);
-}
-
-void CPDF_Stream::TakeDataInternal(
-    std::unique_ptr<uint8_t, FxFreeDeleter> pData,
-    size_t size) {
-  data_ = pdfium::MakeRetain<CFX_MemoryStream>(std::move(pData), size);
+  const size_t size = data.size();
+  data_ = std::move(data);
   if (!dict_)
     dict_ = pdfium::MakeRetain<CPDF_Dictionary>();
   dict_->SetNewFor<CPDF_Number>("Length",
@@ -223,15 +210,13 @@ size_t CPDF_Stream::GetRawSize() const {
     return pdfium::base::checked_cast<size_t>(
         absl::get<RetainPtr<IFX_SeekableReadStream>>(data_)->GetSize());
   }
-  if (IsMemoryBased()) {
-    return pdfium::base::checked_cast<size_t>(
-        absl::get<RetainPtr<CFX_MemoryStream>>(data_)->GetSize());
-  }
+  if (IsMemoryBased())
+    return absl::get<DataVector<uint8_t>>(data_).size();
   DCHECK(IsUninitialized());
   return 0;
 }
 
 const uint8_t* CPDF_Stream::GetInMemoryRawData() const {
   DCHECK(IsMemoryBased());
-  return absl::get<RetainPtr<CFX_MemoryStream>>(data_)->GetBuffer();
+  return absl::get<DataVector<uint8_t>>(data_).data();
 }

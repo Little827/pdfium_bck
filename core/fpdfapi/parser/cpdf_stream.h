@@ -19,7 +19,6 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/abseil-cpp/absl/types/variant.h"
 
-class CFX_MemoryStream;
 class IFX_SeekableReadStream;
 
 class CPDF_Stream final : public CPDF_Object {
@@ -82,13 +81,9 @@ class CPDF_Stream final : public CPDF_Object {
       bool bDirect,
       std::set<const CPDF_Object*>* pVisited) const override;
 
-  // TODO(crbug.com/pdfium/1872): Replace with vector version.
-  void TakeDataInternal(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
-                        size_t size);
-
   absl::variant<absl::monostate,
                 RetainPtr<IFX_SeekableReadStream>,
-                RetainPtr<CFX_MemoryStream>>
+                DataVector<uint8_t>>
       data_;
   RetainPtr<CPDF_Dictionary> dict_;
 };
