@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748f105f_e942ce2b",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "nit: can we get away with just {} here?",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 35
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54dd6575_5c949443",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "Is this temporary? I\u0027d expect to see a CPDF_Stream ctor that takes a moved buf.",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 36
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c254d0c_21748233",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "I thought I\u0027d cobbled together Vector2d or some other drek to deal with these unsafe multiplications\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fxcrt/stl_util.h;drc\u003d8f5a0068093ca141dcff03a13ba7b12fdd915648;l\u003d41\n\nMaybe DataVector should provide DataVector2D() filling in the `typename A` of that template function.",
+      "range": {
+        "startLine": 233,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 22
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761666fb_f10f0127",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 275,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 44
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb72859_16a5c20d",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "I didn\u0027t think this would compile: unsigned char vs. char. Hmm.",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a5acf7_f7c48366",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "this is probably legit even if kContents is char because of promotion during the per-element assignment or some such.",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 49
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61902111_d04f996b",
+        "filename": "core/fpdfapi/parser/cpdf_object_walker_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "nit: might be able to get away with {} here.",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 69
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210aa5bf_bf5a7d61",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "nit: spancpy?",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a972052_6f6eb31e",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "nit: as you like but we might avoid the local and just assign\n  m_Data \u003d DataVector\u003cuint8_t\u003e(pDecodedData.Get(), ...);",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 30
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e826a9_bfcd7d9b",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "nit: prefer return DataVector\u003c\u003e(), since clear() leaves the buffer in place, merely resetting length to 0 (for efficiency should it get resized or push_back\u0027d later).  So we\u0027d free the buffer immediately on error rather than waiting for the caller to do it as a result of the returned result going out of scope.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd00c36_1d927567",
+        "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "and somehow moving the buf seems clearer rather than avoiding the local by passing DataVector\u003cuint8_t\u003e(...) directly.",
+      "range": {
+        "startLine": 179,
+        "startChar": 49,
+        "endLine": 179,
+        "endChar": 62
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745f230f_361eb7aa",
+        "filename": "core/fxge/dib/cstretchengine_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "nit: maybe {} here, too?",
+      "range": {
+        "startLine": 78,
+        "startChar": 48,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12cc2d93_d8df5694",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T22:28:29Z",
+      "side": 1,
+      "message": "nit: not sure how you feel about {}, but it comes up here again.",
+      "range": {
+        "startLine": 186,
+        "startChar": 6,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
