@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66424159_a26818bf",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T17:24:19Z",
+      "side": 0,
+      "message": "https://pdfium-review.googlesource.com/96213 will put this back.",
+      "revId": "e0dcb6bcd5f1ae80d9b6dac2487052bf162abd27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

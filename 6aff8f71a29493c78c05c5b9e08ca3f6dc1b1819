@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9363b071_8df9123e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T17:24:19Z",
+      "side": 1,
+      "message": "Still have some red bots further down the chain, but please take another look, as the CL has changed a bit.",
+      "revId": "6aff8f71a29493c78c05c5b9e08ca3f6dc1b1819",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
