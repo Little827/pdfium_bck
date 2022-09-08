@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "224bc9ec_dd9cd871",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-09-08T17:12:33Z",
+      "side": 1,
+      "message": "Tom, in this case, we make a turn to counteract the page rotation (we compensate for the page rotation - see 12.5.3 Annotation flags, Figure 78 — Coordinate adjustment with the NoRotate flag).\nLei, indeed, this code has a fictitious action at /Rotate 0, supplemented the condition. It looks like I need your help when adding test cases for this code.\nThe error in the newly added text is probably related to the different hashes of the images on the current version of pdfium and the version on which I generated the hash",
+      "parentUuid": "130011e8_dbe4b4eb",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62fda6f5_b7ec7e44",
         "filename": "core/fpdfdoc/cpdf_annot.cpp",
         "patchSetId": 2
@@ -95,6 +119,30 @@
       "writtenOn": "2022-09-06T17:03:10Z",
       "side": 1,
       "message": "nit: wrap at 80 cols.",
+      "range": {
+        "startLine": 58,
+        "startChar": 72,
+        "endLine": 58,
+        "endChar": 85
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883bea36_edd13173",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-09-08T17:12:33Z",
+      "side": 1,
+      "message": "Oh, really...",
+      "parentUuid": "62fda6f5_b7ec7e44",
       "range": {
         "startLine": 58,
         "startChar": 72,
