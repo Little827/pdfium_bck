@@ -51,15 +51,6 @@ CPDF_Stream::CPDF_Stream(DataVector<uint8_t> pData,
       absl::get<DataVector<uint8_t>>(data_).size()));
 }
 
-CPDF_Stream::CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
-                         size_t size,
-                         RetainPtr<CPDF_Dictionary> pDict)
-    : data_(DataVector<uint8_t>(pData.get(), pData.get() + size)),
-      dict_(std::move(pDict)) {
-  SetLengthInDict(pdfium::base::checked_cast<int>(
-      absl::get<DataVector<uint8_t>>(data_).size()));
-}
-
 CPDF_Stream::~CPDF_Stream() {
   m_ObjNum = kInvalidObjNum;
   if (dict_ && dict_->GetObjNum() == kInvalidObjNum)
@@ -102,7 +93,6 @@ RetainPtr<CPDF_Object> CPDF_Stream::CloneNonCyclic(
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
   pAcc->LoadAllDataRaw();
 
-  uint32_t streamSize = pAcc->GetSize();
   const CPDF_Dictionary* pDict = GetDict();
   RetainPtr<CPDF_Dictionary> pNewDict;
   if (pDict && !pdfium::Contains(*pVisited, pDict)) {
@@ -110,7 +100,7 @@ RetainPtr<CPDF_Object> CPDF_Stream::CloneNonCyclic(
         ToDictionary(static_cast<const CPDF_Object*>(pDict)->CloneNonCyclic(
             bDirect, pVisited));
   }
-  return pdfium::MakeRetain<CPDF_Stream>(pAcc->DetachData(), streamSize,
+  return pdfium::MakeRetain<CPDF_Stream>(pAcc->DetachData(),
                                          std::move(pNewDict));
 }
 
