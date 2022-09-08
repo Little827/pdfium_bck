@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49e5ad7_9e9ea87f",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T19:23:35Z",
+      "side": 1,
+      "message": "Check `!dict` for consistency with lines 126-128? Same for line 156.",
+      "revId": "d5c2aaf53ff3089ecc556954b2892b66e59d93e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
