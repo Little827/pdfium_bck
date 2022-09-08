@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64deee69_3d523f9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T18:18:27Z",
+      "side": 1,
+      "message": "The .gn update is worth a brief mention.",
+      "revId": "a85db00ddbf14a83081a2825eaf9e1770e598c89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
