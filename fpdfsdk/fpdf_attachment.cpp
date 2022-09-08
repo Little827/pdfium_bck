@@ -35,10 +35,8 @@ namespace {
 constexpr char kChecksumKey[] = "CheckSum";
 
 ByteString CFXByteStringHexDecode(const ByteString& bsHex) {
-  std::unique_ptr<uint8_t, FxFreeDeleter> result;
-  uint32_t size = 0;
-  HexDecode(bsHex.raw_span(), &result, &size);
-  return ByteString(result.get(), size);
+  DataAndBytesConsumed result = HexDecode(bsHex.raw_span());
+  return ByteString(ByteStringView(result.data));
 }
 
 ByteString GenerateMD5Base16(const void* contents, const unsigned long len) {

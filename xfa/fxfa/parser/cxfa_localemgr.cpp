@@ -1069,14 +1069,12 @@ CXFA_XMLLocale* GetLocaleFromBuffer(cppgc::Heap* heap,
   if (src_span.empty())
     return nullptr;
 
-  std::unique_ptr<uint8_t, FxFreeDeleter> output;
-  uint32_t dwSize;
-  FlateModule::FlateOrLZWDecode(false, src_span, true, 0, 0, 0, 0, 0, &output,
-                                &dwSize);
-  if (!output)
+  DataVector<uint8_t> output;
+  FlateModule::FlateOrLZWDecode(false, src_span, true, 0, 0, 0, 0, 0, &output);
+  if (output.empty())
     return nullptr;
 
-  return CXFA_XMLLocale::Create(heap, pdfium::make_span(output.get(), dwSize));
+  return CXFA_XMLLocale::Create(heap, output);
 }
 
 CXFA_LocaleMgr::LangID GetLanguageID(WideString wsLanguage) {

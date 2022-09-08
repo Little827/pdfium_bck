@@ -201,17 +201,14 @@ TEST(ParserDecodeTest, A85Decode) {
       STR_IN_OUT_CASE("FCfN8FCfN8vw", "testtest", 11),
   };
   for (const auto& test_case : kTestData) {
-    std::unique_ptr<uint8_t, FxFreeDeleter> result;
-    uint32_t result_size = 0;
-    EXPECT_EQ(test_case.processed_size,
-              A85Decode({test_case.input, test_case.input_size}, &result,
-                        &result_size))
+    DataAndBytesConsumed result =
+        A85Decode({test_case.input, test_case.input_size});
+    EXPECT_EQ(test_case.processed_size, result.bytes_consumed)
         << "for case " << test_case.input;
-    ASSERT_EQ(test_case.expected_size, result_size);
-    const uint8_t* result_ptr = result.get();
-    for (size_t j = 0; j < result_size; ++j) {
-      EXPECT_EQ(test_case.expected[j], result_ptr[j])
-          << "for case " << test_case.input << " char " << j;
+    ASSERT_EQ(test_case.expected_size, result.data.size());
+    for (size_t i = 0; i < result.data.size(); ++i) {
+      EXPECT_EQ(test_case.expected[i], result.data[i])
+          << "for case " << test_case.input << " char " << i;
     }
   }
 }
@@ -242,16 +239,12 @@ TEST(FPDFParserDecodeEmbedderTest, FlateDecode) {
 
   for (size_t i = 0; i < std::size(flate_decode_cases); ++i) {
     const pdfium::DecodeTestData& data = flate_decode_cases[i];
-    std::unique_ptr<uint8_t, FxFreeDeleter> buf;
-    uint32_t buf_size;
-    EXPECT_EQ(data.processed_size,
-              FlateDecode({data.input, data.input_size}, &buf, &buf_size))
-        << " for case " << i;
-    ASSERT_TRUE(buf);
-    EXPECT_EQ(data.expected_size, buf_size) << " for case " << i;
-    if (data.expected_size != buf_size)
+    DataAndBytesConsumed result = FlateDecode({data.input, data.input_size});
+    EXPECT_EQ(data.processed_size, result.bytes_consumed) << " for case " << i;
+    EXPECT_EQ(data.expected_size, result.data.size()) << " for case " << i;
+    if (data.expected_size != result.data.size())
       continue;
-    EXPECT_EQ(0, memcmp(data.expected, buf.get(), data.expected_size))
+    EXPECT_EQ(0, memcmp(data.expected, result.data.data(), data.expected_size))
         << " for case " << i;
   }
 }
@@ -305,17 +298,14 @@ TEST(ParserDecodeTest, HexDecode) {
       STR_IN_OUT_CASE("12AcED3c3456", "\x12\xac\xed\x3c\x34\x56", 12),
   };
   for (const auto& test_case : kTestData) {
-    std::unique_ptr<uint8_t, FxFreeDeleter> result;
-    uint32_t result_size = 0;
-    EXPECT_EQ(test_case.processed_size,
-              HexDecode({test_case.input, test_case.input_size}, &result,
-                        &result_size))
+    DataAndBytesConsumed result =
+        HexDecode({test_case.input, test_case.input_size});
+    EXPECT_EQ(test_case.processed_size, result.bytes_consumed)
         << "for case " << test_case.input;
-    ASSERT_EQ(test_case.expected_size, result_size);
-    const uint8_t* result_ptr = result.get();
-    for (size_t j = 0; j < result_size; ++j) {
-      EXPECT_EQ(test_case.expected[j], result_ptr[j])
-          << "for case " << test_case.input << " char " << j;
+    ASSERT_EQ(test_case.expected_size, result.data.size());
+    for (size_t i = 0; i < result.data.size(); ++i) {
+      EXPECT_EQ(test_case.expected[i], result.data[i])
+          << "for case " << test_case.input << " char " << i;
     }
   }
 }

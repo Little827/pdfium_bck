@@ -87,16 +87,12 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
   DCHECK(decoder != "LZW");
   DCHECK(decoder != "RL");
 
-  std::unique_ptr<uint8_t, FxFreeDeleter> ignored_result;
-  uint32_t ignored_size;
   if (decoder == "FlateDecode") {
-    return FlateOrLZWDecode(false, src_span, pParam.Get(), orig_size,
-                            &ignored_result, &ignored_size);
+    return FlateOrLZWDecode(false, src_span, pParam.Get(), orig_size)
+        .bytes_consumed;
   }
-  if (decoder == "LZWDecode") {
-    return FlateOrLZWDecode(true, src_span, pParam.Get(), 0, &ignored_result,
-                            &ignored_size);
-  }
+  if (decoder == "LZWDecode")
+    return FlateOrLZWDecode(true, src_span, pParam.Get(), 0).bytes_consumed;
   if (decoder == "DCTDecode") {
     std::unique_ptr<ScanlineDecoder> pDecoder = JpegModule::CreateDecoder(
         src_span, width, height, 0,
@@ -110,11 +106,11 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
   }
 
   if (decoder == "ASCII85Decode")
-    return A85Decode(src_span, &ignored_result, &ignored_size);
+    return A85Decode(src_span).bytes_consumed;
   if (decoder == "ASCIIHexDecode")
-    return HexDecode(src_span, &ignored_result, &ignored_size);
+    return HexDecode(src_span).bytes_consumed;
   if (decoder == "RunLengthDecode")
-    return RunLengthDecode(src_span, &ignored_result, &ignored_size);
+    return RunLengthDecode(src_span).bytes_consumed;
 
   return FX_INVALID_OFFSET;
 }
