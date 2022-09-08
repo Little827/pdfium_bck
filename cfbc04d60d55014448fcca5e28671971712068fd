@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db06785_7a4318bc",
+        "filename": "core/fxcrt/cfx_memorystream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T17:43:57Z",
+      "side": 1,
+      "message": "Will switch to span in a follow-up CL.",
+      "revId": "cfbc04d60d55014448fcca5e28671971712068fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
