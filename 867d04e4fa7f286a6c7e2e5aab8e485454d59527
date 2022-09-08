@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b337b9_aa9cb758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-08T19:47:56Z",
+      "side": 1,
+      "message": "It dawns on me that we already have a safe way to avoid generating ref ptrs when we are just extracting information from a dictionary or array.  Note that for second level objects, the retain ptrs are still required.",
+      "revId": "867d04e4fa7f286a6c7e2e5aab8e485454d59527",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
