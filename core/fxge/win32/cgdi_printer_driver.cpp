@@ -137,7 +137,8 @@ bool CGdiPrinterDriver::StartDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                     const CFX_Matrix& matrix,
                                     const FXDIB_ResampleOptions& options,
                                     std::unique_ptr<CFX_ImageRenderer>* handle,
-                                    BlendMode blend_type) {
+                                    BlendMode blend_type,
+                                    bool optimize_image_smoothness) {
   if (bitmap_alpha < 255 || pSource->IsAlphaFormat() ||
       (pSource->IsMaskFormat() && (pSource->GetBPP() != 1))) {
     return false;

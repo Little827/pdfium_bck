@@ -144,7 +144,8 @@ class CFX_RenderDevice {
                    uint32_t color,
                    const CFX_Matrix& matrix,
                    const FXDIB_ResampleOptions& options,
-                   std::unique_ptr<CFX_ImageRenderer>* handle) {
+                   std::unique_ptr<CFX_ImageRenderer>* handle,
+                   bool optimize_image_smoothness) {
     return StartDIBitsWithBlend(pBitmap, bitmap_alpha, color, matrix, options,
                                 handle, BlendMode::kNormal);
   }

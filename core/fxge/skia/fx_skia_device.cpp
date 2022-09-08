@@ -39,6 +39,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagerenderer.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
+#include "core/fxge/dib/cstretchengine.h"
 #include "core/fxge/text_char_pos.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
@@ -2468,7 +2469,7 @@ bool CFX_SkiaDeviceDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
       pBitmap->GetWidth(), pBitmap->GetHeight(), left, top);
   std::unique_ptr<CFX_ImageRenderer> dummy;
   return StartDIBits(pBitmap, 0xFF, argb, m, FXDIB_ResampleOptions(), &dummy,
-                     blend_type);
+                     blend_type, /*optimize_image_smoothness=*/false);
 #endif
 
 #if defined(_SKIA_SUPPORT_PATHS_)
@@ -2507,7 +2508,7 @@ bool CFX_SkiaDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   m_pCanvas->clipRect(skClipRect, SkClipOp::kIntersect, true);
   std::unique_ptr<CFX_ImageRenderer> dummy;
   return StartDIBits(pSource, 0xFF, argb, m, FXDIB_ResampleOptions(), &dummy,
-                     blend_type);
+                     blend_type, /*optimize_image_smoothness=*/false);
 #endif  // defined(_SKIA_SUPPORT_)
 
 #if defined(_SKIA_SUPPORT_PATHS_)
@@ -2541,7 +2542,8 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
     const CFX_Matrix& matrix,
     const FXDIB_ResampleOptions& options,
     std::unique_ptr<CFX_ImageRenderer>* handle,
-    BlendMode blend_type) {
+    BlendMode blend_type,
+    bool optimize_image_smoothness) {
 #if defined(_SKIA_SUPPORT_)
   m_pCache->FlushForDraw();
   DebugValidate(m_pBitmap, m_pBackdropBitmap);
@@ -2584,8 +2586,16 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
         }
       }
     } else {
+      int dest_width = pdfium::base::checked_cast<int>(
+          ceil(FXSYS_sqrt2(matrix.a, matrix.b)));
+      int dest_height = pdfium::base::checked_cast<int>(
+          ceil(FXSYS_sqrt2(matrix.c, matrix.d)));
+
       SkSamplingOptions sampling_options =
-          options.bInterpolateBilinear
+          (options.bInterpolateBilinear ||
+           (optimize_image_smoothness &&
+            CStretchEngine::UseInterpolateBilinear(options, dest_width,
+                                                   dest_height, width, height)))
               ? SkSamplingOptions(SkFilterMode::kLinear, SkMipmapMode::kLinear)
               : SkSamplingOptions();
       m_pCanvas->drawImageRect(skBitmap.asImage(),

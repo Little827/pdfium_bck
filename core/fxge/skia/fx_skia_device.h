@@ -123,7 +123,8 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                    const CFX_Matrix& matrix,
                    const FXDIB_ResampleOptions& options,
                    std::unique_ptr<CFX_ImageRenderer>* handle,
-                   BlendMode blend_type) override;
+                   BlendMode blend_type,
+                   bool optimize_image_smoothness) override;
 
   bool ContinueDIBits(CFX_ImageRenderer* handle,
                       PauseIndicatorIface* pPause) override;

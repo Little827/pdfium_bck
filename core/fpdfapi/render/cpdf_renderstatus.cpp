@@ -1288,7 +1288,8 @@ void CPDF_RenderStatus::CompositeDIBitmap(
           CFX_Matrix m = CFX_RenderDevice::GetFlipMatrix(
               pDIBitmap->GetWidth(), pDIBitmap->GetHeight(), left, top);
           m_pDevice->StartDIBits(pDIBitmap, bitmap_alpha, 0, m,
-                                 FXDIB_ResampleOptions(), &dummy);
+                                 FXDIB_ResampleOptions(), &dummy,
+                                 /*optimize_image_smoothness=*/false);
           return;
         }
         pDIBitmap->MultiplyAlpha(bitmap_alpha);

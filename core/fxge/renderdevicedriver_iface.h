@@ -93,7 +93,8 @@ class RenderDeviceDriverIface {
                            const CFX_Matrix& matrix,
                            const FXDIB_ResampleOptions& options,
                            std::unique_ptr<CFX_ImageRenderer>* handle,
-                           BlendMode blend_type) = 0;
+                           BlendMode blend_type,
+                           bool optimize_image_smoothness) = 0;
   virtual bool ContinueDIBits(CFX_ImageRenderer* handle,
                               PauseIndicatorIface* pPause);
   virtual bool DrawDeviceText(pdfium::span<const TextCharPos> pCharPos,
