@@ -54,6 +54,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c308ac_91dfb4cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8951
+      },
+      "writtenOn": "2022-09-08T05:42:36Z",
+      "side": 1,
+      "message": "MSVC support should be available in PA as of Chromium revision 8b4c845b11a03d060fcaa1eaf3f88023bb0a61a7. Some details in crbug.com/1351310, but I don\u0027t think any additional care / feeding steps are necessary.",
+      "revId": "f84e18e71167b59e1613d9129000b72d7d362e2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1852936f_249915e0",
