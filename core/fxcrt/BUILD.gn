@@ -23,6 +23,8 @@ source_set("fxcrt") {
     "cfx_bitstream.h",
     "cfx_datetime.cpp",
     "cfx_datetime.h",
+    "cfx_memorystream.cpp",
+    "cfx_memorystream.h",
     "cfx_read_only_span_stream.cpp",
     "cfx_read_only_span_stream.h",
     "cfx_read_only_string_stream.cpp",
@@ -148,12 +150,6 @@ source_set("fxcrt") {
       "cfx_fileaccess_windows.cpp",
       "cfx_fileaccess_windows.h",
       "fx_folder_windows.cpp",
-    ]
-  }
-  if (pdf_enable_xfa) {
-    sources += [
-      "cfx_memorystream.cpp",
-      "cfx_memorystream.h",
     ]
   }
 }
