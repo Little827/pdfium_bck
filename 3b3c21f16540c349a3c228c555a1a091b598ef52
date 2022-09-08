@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3c033b_2faae972",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T19:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a95439f_7519259f",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 12
+      },
+      "revId": "3b3c21f16540c349a3c228c555a1a091b598ef52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3de277f8_a7a9fb39",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1383ee78_73e1c946",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T19:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3de277f8_a7a9fb39",
+      "range": {
+        "startLine": 810,
+        "startChar": 2,
+        "endLine": 810,
+        "endChar": 8
+      },
+      "revId": "3b3c21f16540c349a3c228c555a1a091b598ef52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5566a84_188ef654",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-08T18:03:11Z",
       "side": 1,
       "message": "No on state manipulation in a check macro. Someone might make it a DCHECK() then we lose, or it might multi-expand, or whatever.",
+      "range": {
+        "startLine": 811,
+        "startChar": 26,
+        "endLine": 811,
+        "endChar": 50
+      },
+      "revId": "3b3c21f16540c349a3c228c555a1a091b598ef52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631b77b3_4f5a3282",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-08T19:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5566a84_188ef654",
       "range": {
         "startLine": 811,
         "startChar": 26,
