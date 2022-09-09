@@ -2534,15 +2534,14 @@ bool CFX_SkiaDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
 #endif  // defined(_SKIA_SUPPORT_PATHS_)
 }
 
-bool CFX_SkiaDeviceDriver::StartDIBits(
+#if defined(_SKIA_SUPPORT_)
+bool CFX_SkiaDeviceDriver::StartDIBitsSkia(
     const RetainPtr<CFX_DIBBase>& pSource,
     int bitmap_alpha,
     uint32_t argb,
     const CFX_Matrix& matrix,
     const FXDIB_ResampleOptions& options,
-    std::unique_ptr<CFX_ImageRenderer>* handle,
     BlendMode blend_type) {
-#if defined(_SKIA_SUPPORT_)
   m_pCache->FlushForDraw();
   DebugValidate(m_pBitmap, m_pBackdropBitmap);
   // Storage vectors must outlive `skBitmap`.
@@ -2594,6 +2593,21 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
     }
   }
   DebugValidate(m_pBitmap, m_pBackdropBitmap);
+  return true;
+}
+#endif  // defined(_SKIA_SUPPORT_)
+
+bool CFX_SkiaDeviceDriver::StartDIBits(
+    const RetainPtr<CFX_DIBBase>& pSource,
+    int bitmap_alpha,
+    uint32_t argb,
+    const CFX_Matrix& matrix,
+    const FXDIB_ResampleOptions& options,
+    std::unique_ptr<CFX_ImageRenderer>* handle,
+    BlendMode blend_type) {
+#if defined(_SKIA_SUPPORT_)
+  return StartDIBitsSkia(pSource, bitmap_alpha, argb, matrix, options,
+                         blend_type);
 #endif  // defined(_SKIA_SUPPORT_)
 
 #if defined(_SKIA_SUPPORT_PATHS_)
@@ -2604,8 +2618,8 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
   *handle = std::make_unique<CFX_ImageRenderer>(
       m_pBitmap, m_pClipRgn.get(), pSource, bitmap_alpha, argb, matrix, options,
       m_bRgbByteOrder);
-#endif  // defined(_SKIA_SUPPORT_PATHS_)
   return true;
+#endif  // defined(_SKIA_SUPPORT_PATHS_)
 }
 
 bool CFX_SkiaDeviceDriver::ContinueDIBits(CFX_ImageRenderer* handle,

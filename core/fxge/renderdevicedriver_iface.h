@@ -109,6 +109,13 @@ class RenderDeviceDriverIface {
                            int alpha,
                            bool bAlphaMode);
 #if defined(_SKIA_SUPPORT_)
+  virtual bool StartDIBitsSkia(const RetainPtr<CFX_DIBBase>& pBitmap,
+                               int bitmap_alpha,
+                               uint32_t color,
+                               const CFX_Matrix& matrix,
+                               const FXDIB_ResampleOptions& options,
+                               BlendMode blend_type);
+
   virtual bool SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                                const RetainPtr<CFX_DIBBase>& pMask,
                                int left,
