@@ -49,4 +49,15 @@ inline const CPDF_Number* ToNumber(const CPDF_Object* obj) {
   return obj ? obj->AsNumber() : nullptr;
 }
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
+=======
+inline RetainPtr<CPDF_Number> ToNumber(RetainPtr<CPDF_Object> obj) {
+  return RetainPtr<CPDF_Number>(ToNumber(obj.Get()));
+}
+
+inline RetainPtr<const CPDF_Number> ToNumber(RetainPtr<const CPDF_Object> obj) {
+  return RetainPtr<const CPDF_Number>(ToNumber(obj.Get()));
+}
+
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
 #endif  // CORE_FPDFAPI_PARSER_CPDF_NUMBER_H_

@@ -279,7 +279,12 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
   if (count == 0)
     return nullptr;
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
   CPDF_Object* pObject = name_tree->LookupValue(WideString(wsName));
+=======
+  RetainPtr<const CPDF_Object> pObject =
+      name_tree->LookupValue(WideString(wsName));
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   if (!pObject) {
     for (size_t i = 0; i < count; ++i) {
       WideString wsTemp;
@@ -291,11 +296,16 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(WideStringView wsName,
     }
   }
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
   CPDF_Stream* pStream = ToStream(pObject);
+=======
+  RetainPtr<const CPDF_Stream> pStream = ToStream(pObject);
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   if (!pStream)
     return nullptr;
 
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+  // TODO(tsepez): make CPDF_StreamAcc constructor take retained argument.
+  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream.Get());
   pAcc->LoadAllDataFiltered();
 
   auto pImageFileRead =

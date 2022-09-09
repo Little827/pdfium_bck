@@ -170,7 +170,11 @@ bool UpdateNodesAndLimitsUponDeletion(CPDF_Dictionary* pNode,
 // will be the index of |csName| in |ppFind|. If |csName| is not found, |ppFind|
 // will be the leaf array that |csName| should be added to, and |pFindIndex|
 // will be the index that it should be added at.
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
 CPDF_Object* SearchNameNodeByNameInternal(
+=======
+RetainPtr<const CPDF_Object> SearchNameNodeByNameInternal(
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
     const RetainPtr<CPDF_Dictionary>& pNode,
     const WideString& csName,
     int nLevel,
@@ -217,7 +221,7 @@ CPDF_Object* SearchNameNodeByNameInternal(
         continue;
 
       *nIndex += i;
-      return pNames->GetDirectObjectAt(i * 2 + 1);
+      return pdfium::WrapRetain(pNames->GetDirectObjectAt(i * 2 + 1));
     }
     *nIndex += dwCount;
     return nullptr;
@@ -233,7 +237,11 @@ CPDF_Object* SearchNameNodeByNameInternal(
     if (!pKid)
       continue;
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
     CPDF_Object* pFound = SearchNameNodeByNameInternal(
+=======
+    RetainPtr<const CPDF_Object> pFound = SearchNameNodeByNameInternal(
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
         pKid, csName, nLevel + 1, nIndex, ppFind, pFindIndex);
     if (pFound)
       return pFound;
@@ -243,10 +251,18 @@ CPDF_Object* SearchNameNodeByNameInternal(
 
 // Wrapper for SearchNameNodeByNameInternal() so callers do not need to know
 // about the details.
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
 CPDF_Object* SearchNameNodeByName(const RetainPtr<CPDF_Dictionary>& pNode,
                                   const WideString& csName,
                                   RetainPtr<CPDF_Array>* ppFind,
                                   int* pFindIndex) {
+=======
+RetainPtr<const CPDF_Object> SearchNameNodeByName(
+    const RetainPtr<CPDF_Dictionary>& pNode,
+    const WideString& csName,
+    RetainPtr<CPDF_Array>* ppFind,
+    int* pFindIndex) {
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   size_t nIndex = 0;
   return SearchNameNodeByNameInternal(pNode, csName, 0, &nIndex, ppFind,
                                       pFindIndex);
@@ -344,24 +360,42 @@ size_t CountNamesInternal(CPDF_Dictionary* pNode, int nLevel) {
   return nCount;
 }
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
 CPDF_Array* GetNamedDestFromObject(CPDF_Object* obj) {
   if (!obj)
     return nullptr;
   CPDF_Array* array = obj->AsArray();
+=======
+RetainPtr<const CPDF_Array> GetNamedDestFromObject(
+    RetainPtr<const CPDF_Object> obj) {
+  RetainPtr<const CPDF_Array> array = ToArray(obj);
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   if (array)
     return array;
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
   CPDF_Dictionary* dict = obj->AsDictionary();
+=======
+  RetainPtr<const CPDF_Dictionary> dict = ToDictionary(obj);
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   if (dict)
-    return dict->GetArrayFor("D");
+    return pdfium::WrapRetain(dict->GetArrayFor("D"));
   return nullptr;
 }
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
 CPDF_Array* LookupOldStyleNamedDest(CPDF_Document* pDoc,
                                     const ByteString& name) {
   CPDF_Dictionary* pDests = pDoc->GetRoot()->GetDictFor("Dests");
+=======
+RetainPtr<const CPDF_Array> LookupOldStyleNamedDest(CPDF_Document* pDoc,
+                                                    const ByteString& name) {
+  const CPDF_Dictionary* pDests = pDoc->GetRoot()->GetDictFor("Dests");
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   if (!pDests)
     return nullptr;
-  return GetNamedDestFromObject(pDests->GetDirectObjectFor(name));
+  // TODO(tsepez): return const retained objects from CPDF object getters.
+  return GetNamedDestFromObject(
+      pdfium::WrapRetain(pDests->GetDirectObjectFor(name)));
 }
 
 }  // namespace
@@ -424,9 +458,16 @@ std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateForTesting(
 }
 
 // static
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
 CPDF_Array* CPDF_NameTree::LookupNamedDest(CPDF_Document* pDoc,
                                            const ByteString& name) {
   CPDF_Array* dest_array = nullptr;
+=======
+RetainPtr<const CPDF_Array> CPDF_NameTree::LookupNamedDest(
+    CPDF_Document* pDoc,
+    const ByteString& name) {
+  RetainPtr<const CPDF_Array> dest_array;
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   std::unique_ptr<CPDF_NameTree> name_tree = Create(pDoc, "Dests");
   if (name_tree)
     dest_array = name_tree->LookupNewStyleNamedDest(name);
@@ -526,10 +567,20 @@ CPDF_Object* CPDF_NameTree::LookupValueAndName(size_t nIndex,
   return result.value().value;
 }
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
 CPDF_Object* CPDF_NameTree::LookupValue(const WideString& csName) const {
+=======
+RetainPtr<const CPDF_Object> CPDF_NameTree::LookupValue(
+    const WideString& csName) const {
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   return SearchNameNodeByName(m_pRoot, csName, nullptr, nullptr);
 }
 
+<<<<<<< HEAD   (3466cc M102: Retain nodes when manipulating their dictionaries in C)
 CPDF_Array* CPDF_NameTree::LookupNewStyleNamedDest(const ByteString& sName) {
+=======
+RetainPtr<const CPDF_Array> CPDF_NameTree::LookupNewStyleNamedDest(
+    const ByteString& sName) {
+>>>>>>> CHANGE (d51720 Return retained const objects from SearchNameNodeByNameInter)
   return GetNamedDestFromObject(LookupValue(PDF_DecodeText(sName.raw_span())));
 }
