@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c3f6e7_6866c856",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T21:36:31Z",
+      "side": 1,
+      "message": "Include retain_ptr.h",
+      "revId": "b9c74e590524093cd24b8415a0f7de794e0b14a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c0e965_ce11ff90",
+        "filename": "testing/fuzzers/pdf_cpdf_tounicodemap_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T21:36:31Z",
+      "side": 1,
+      "message": "#include \u003cutility\u003e",
+      "revId": "b9c74e590524093cd24b8415a0f7de794e0b14a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
