@@ -165,9 +165,11 @@ class PDFObjectsTest : public testing::Test {
         if (!Equal(stream1->GetDict(), stream2->GetDict()))
           return false;
 
-        auto streamAcc1 = pdfium::MakeRetain<CPDF_StreamAcc>(stream1);
+        auto streamAcc1 =
+            pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(stream1));
         streamAcc1->LoadAllDataRaw();
-        auto streamAcc2 = pdfium::MakeRetain<CPDF_StreamAcc>(stream2);
+        auto streamAcc2 =
+            pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(stream2));
         streamAcc2->LoadAllDataRaw();
         pdfium::span<const uint8_t> span1 = streamAcc1->GetSpan();
         pdfium::span<const uint8_t> span2 = streamAcc2->GetSpan();
