@@ -183,6 +183,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "040b4737_b9749c05",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T01:21:03Z",
+      "side": 1,
+      "message": "No, it appears that I had missed hitting the \"Save\" button in the editor before uploading.  (sigh)  Done now.",
+      "parentUuid": "6362dfe1_f6eb6c61",
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad470b78_fbe47967",
