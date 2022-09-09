@@ -146,7 +146,7 @@ int CPDF_Dictionary::GetDirectIntegerFor(const ByteString& key) const {
   return p ? p->GetInteger() : 0;
 }
 
-float CPDF_Dictionary::GetNumberFor(const ByteString& key) const {
+float CPDF_Dictionary::GetFloatFor(const ByteString& key) const {
   const CPDF_Object* p = GetObjectFor(key);
   return p ? p->GetNumber() : 0;
 }
@@ -200,6 +200,10 @@ const CPDF_Stream* CPDF_Dictionary::GetStreamFor(const ByteString& key) const {
 RetainPtr<CPDF_Stream> CPDF_Dictionary::GetMutableStreamFor(
     const ByteString& key) {
   return pdfium::WrapRetain(const_cast<CPDF_Stream*>(GetStreamFor(key)));
+}
+
+const CPDF_Number* CPDF_Dictionary::GetNumberFor(const ByteString& key) const {
+  return ToNumber(GetObjectForInternal(key));
 }
 
 CFX_FloatRect CPDF_Dictionary::GetRectFor(const ByteString& key) const {
