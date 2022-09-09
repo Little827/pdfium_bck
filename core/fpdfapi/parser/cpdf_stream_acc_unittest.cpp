@@ -4,6 +4,8 @@
 
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 
+#include <utility>
+
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fxcrt/fx_stream.h"
@@ -15,7 +17,7 @@ TEST(StreamAccTest, ReadRawDataFailed) {
   stream->InitStreamFromFile(
       pdfium::MakeRetain<InvalidSeekableReadStream>(1024),
       pdfium::MakeRetain<CPDF_Dictionary>());
-  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream.Get());
+  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(stream));
   stream_acc->LoadAllDataRaw();
   EXPECT_TRUE(stream_acc->GetSpan().empty());
 }
