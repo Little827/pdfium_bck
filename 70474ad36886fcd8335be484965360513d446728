@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a4c109_4dd97c3a",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-09T16:22:42Z",
+      "side": 1,
+      "message": "Add \"  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\"",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be417d15_769cd406",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-09T16:22:42Z",
+      "side": 1,
+      "message": "Also mention \"1:1 mapping with the public type\" just like the other comment in core/fxge/cfx_defaultrenderdevice.h.",
+      "range": {
+        "startLine": 126,
+        "startChar": 38,
+        "endLine": 127,
+        "endChar": 25
+      },
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c3ce4a_4b0104d2",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-09T16:22:42Z",
+      "side": 1,
+      "message": "PDF renderer types?",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 16
+      },
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
