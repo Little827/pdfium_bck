@@ -23,6 +23,10 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/span.h"
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+#include "core/fxge/cfx_defaultrenderdevice.h"
+#endif
+
 class TestLoader;
 
 // The loading time of the CFGAS_FontMgr is linear in the number of times it is
@@ -212,6 +216,25 @@ class EmbedderTest : public ::testing::Test,
 
   // Return bytes for each of the FPDFBitmap_* format types.
   static int BytesPerPixelForFormat(int format);
+
+  // Support for parameterized renderer type testing.
+#if defined(_SKIA_SUPPORT_)
+  typedef CFX_DefaultRenderDevice::RendererType RendererParameterType;
+  static constexpr RendererParameterType kRendererParams[]{
+      CFX_DefaultRenderDevice::RendererType::kAgg,
+      CFX_DefaultRenderDevice::RendererType::kSkia,
+  };
+#elif defined(_SKIA_SUPPORT_PATHS_)
+  typedef CFX_DefaultRenderDevice::RendererType RendererParameterType;
+  static constexpr RendererParameterType kRendererParams[]{
+      CFX_DefaultRenderDevice::RendererType::kAgg,
+      CFX_DefaultRenderDevice::RendererType::kSkiaPaths,
+  };
+#else
+  // AGG is the only renderer supported.
+  typedef bool RendererParameterType;
+  static constexpr RendererParameterType kRendererParams[]{true};
+#endif
 
  protected:
   using PageNumberToHandleMap = std::map<int, FPDF_PAGE>;
