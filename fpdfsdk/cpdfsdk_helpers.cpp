@@ -375,9 +375,10 @@ void ReportUnsupportedFeatures(const CPDF_Document* pDoc) {
   }
 
   // SharedForm
-  const CPDF_Stream* pStream = pRootDict->GetStreamFor("Metadata");
+  RetainPtr<const CPDF_Stream> pStream = pRootDict->GetStreamFor("Metadata");
   if (pStream) {
-    CPDF_Metadata metadata(pStream);
+    // TODO(tsepez): pass retained arguments.
+    CPDF_Metadata metadata(pStream.Get());
     for (const UnsupportedFeature& feature : metadata.CheckForSharedForm())
       RaiseUnsupportedError(static_cast<int>(feature));
   }
