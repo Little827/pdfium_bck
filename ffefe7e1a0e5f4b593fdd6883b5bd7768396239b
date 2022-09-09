@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6c004b_41b468e6",
+        "filename": "testing/resources/pixel/bug_1356149.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T22:02:03Z",
+      "side": 1,
+      "message": "Please indent this so the first \u00275\u0027 lines up with the first \u00276\u0027 on the previous line. Similarly below when wrapping.",
+      "revId": "ffefe7e1a0e5f4b593fdd6883b5bd7768396239b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17279ae4_533d7c3e",
+        "filename": "testing/resources/pixel/bug_1356149.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T22:02:03Z",
+      "side": 1,
+      "message": "Can the value have spaces like line 57?",
+      "revId": "ffefe7e1a0e5f4b593fdd6883b5bd7768396239b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
