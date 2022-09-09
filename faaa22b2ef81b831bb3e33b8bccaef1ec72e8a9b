@@ -22,6 +22,30 @@
       },
       "revId": "faaa22b2ef81b831bb3e33b8bccaef1ec72e8a9b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b79112_e89acfb7",
+        "filename": "core/fpdfapi/page/cpdf_tilingpattern.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-09T21:34:09Z",
+      "side": 1,
+      "message": "I really hope there isn\u0027t some strange precision issue :).",
+      "parentUuid": "4f2b7c70_b82431db",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "faaa22b2ef81b831bb3e33b8bccaef1ec72e8a9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
