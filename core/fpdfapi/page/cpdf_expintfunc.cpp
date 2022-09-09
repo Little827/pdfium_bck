@@ -25,19 +25,20 @@ bool CPDF_ExpIntFunc::v_Init(const CPDF_Object* pObj,
   if (!pDict)
     return false;
 
-  const CPDF_Number* pExponent = ToNumber(pDict->GetObjectFor("N"));
+  CPDF_DictionaryLocker locked_dict(pDict);
+  const CPDF_Number* pExponent = ToNumber(locked_dict.GetObjectFor("N"));
   if (!pExponent)
     return false;
 
   m_Exponent = pExponent->GetNumber();
 
-  const CPDF_Array* pArray0 = pDict->GetArrayFor("C0");
+  const CPDF_Array* pArray0 = locked_dict.GetArrayFor("C0");
   if (pArray0 && m_nOutputs == 0)
     m_nOutputs = fxcrt::CollectionSize<uint32_t>(*pArray0);
   if (m_nOutputs == 0)
     m_nOutputs = 1;
 
-  const CPDF_Array* pArray1 = pDict->GetArrayFor("C1");
+  const CPDF_Array* pArray1 = locked_dict.GetArrayFor("C1");
   m_BeginValues = fxcrt::Vector2D<float>(m_nOutputs, 2);
   m_EndValues = fxcrt::Vector2D<float>(m_nOutputs, 2);
   for (uint32_t i = 0; i < m_nOutputs; i++) {
