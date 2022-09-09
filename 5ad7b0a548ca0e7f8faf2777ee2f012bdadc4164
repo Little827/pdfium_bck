@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c09391_6601cdfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09595186_30c598da",
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e172351_cb22698c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-07T23:35:27Z",
       "side": 1,
       "message": "There are multiple \"double spaces\" in the commit message.",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249579ce_6f7cea91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "7e172351_cb22698c",
       "range": {
         "startLine": 10,
         "startChar": 11,
@@ -64,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d120925_b845aeb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acf8dfff_9559b809",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8260af9c_8b2cb70b",
@@ -81,6 +147,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa61d4f_f6b09c8e",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Done.  With the wording done this way, I added back some `static_assert` lines in fpdf_view.cpp for that.",
+      "parentUuid": "8260af9c_8b2cb70b",
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad470b78_fbe47967",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-09-07T07:03:57Z",
       "side": 1,
       "message": "So what are embedders suppose to do in a build without multi-renderer support?\n1) Never use config version 4.\n2) Use config version 4 and not set this.\n3) Use config version 4 and set this to FPDF_RENDERERTYPE_AGG always.\n\n- samples/pdfium_test.cc does (2).\n- testing/embedder_test_environment.cpp does (3).",
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db099a7_231e3929",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Comment updated.\n\nI think samples/pdfium_test.cc does 3), due to its use of `value_or(BuildDefaultRendererType())`.",
+      "parentUuid": "ad470b78_fbe47967",
       "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -121,6 +223,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b6d3f7_bd98c06e",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "4680e474_a472ca90",
+      "range": {
+        "startLine": 280,
+        "startChar": 39,
+        "endLine": 280,
+        "endChar": 65
+      },
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93bf3b2b_c99b6258",
@@ -138,6 +264,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa9f284_9afa2471",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93bf3b2b_c99b6258",
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df196a61_d2fd0c1b",
@@ -151,6 +295,30 @@
       "writtenOn": "2022-09-07T07:03:57Z",
       "side": 1,
       "message": "BTW, there\u0027s a pre-existing typo here as well.",
+      "range": {
+        "startLine": 1186,
+        "startChar": 52,
+        "endLine": 1186,
+        "endChar": 55
+      },
+      "revId": "5ad7b0a548ca0e7f8faf2777ee2f012bdadc4164",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d7552c_65f067d2",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-09T00:52:20Z",
+      "side": 1,
+      "message": "Cleaned up.",
+      "parentUuid": "df196a61_d2fd0c1b",
       "range": {
         "startLine": 1186,
         "startChar": 52,
