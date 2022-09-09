@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434149c2_d8f5716b",
+        "filename": "testing/resources/pixel/bug_1356149.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T21:08:27Z",
+      "side": 1,
+      "message": "Wrap at 80 columns when possible.",
+      "revId": "549e6f9f540d269cea4cc9d793eb38748dc1d88b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b26eeb2_65d1a506",
+        "filename": "testing/resources/pixel/bug_1356149.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T21:08:27Z",
+      "side": 1,
+      "message": "Swap object 6 0 and 7 0. Then object 5 0 refers to 6 0 and 7 0 in order, and 7 0 refers to 8 0.",
+      "revId": "549e6f9f540d269cea4cc9d793eb38748dc1d88b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb38ed77_1dc2da94",
+        "filename": "testing/resources/pixel/bug_1356149.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T21:08:27Z",
+      "side": 1,
+      "message": "Excess blank lines.",
+      "revId": "549e6f9f540d269cea4cc9d793eb38748dc1d88b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
