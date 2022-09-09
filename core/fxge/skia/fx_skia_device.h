@@ -94,6 +94,13 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                  int dest_top,
                  BlendMode blend_type) override;
 #if defined(_SKIA_SUPPORT_)
+  bool StartDIBitsSkia(const RetainPtr<CFX_DIBBase>& pBitmap,
+                       int bitmap_alpha,
+                       uint32_t color,
+                       const CFX_Matrix& matrix,
+                       const FXDIB_ResampleOptions& options,
+                       BlendMode blend_type) override;
+
   bool SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                        const RetainPtr<CFX_DIBBase>& pMask,
                        int dest_left,
