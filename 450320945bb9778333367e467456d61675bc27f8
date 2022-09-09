@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b89af1_28fe4694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-09T17:17:38Z",
+      "side": 1,
+      "message": "Merge conflict was in third_party/libopenjpeg/README.pdfium.",
+      "revId": "450320945bb9778333367e467456d61675bc27f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
