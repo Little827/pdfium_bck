@@ -38,8 +38,17 @@ const char* AnnotationStampWithApBaseContentChecksum() {
 
 }  // namespace
 
-class FPDFProgressiveRenderEmbedderTest : public EmbedderTest {
+class FPDFProgressiveRenderEmbedderTest
+    : public EmbedderTest,
+      public testing::WithParamInterface<EmbedderTest::RendererParameterType> {
  public:
+  void SetUp() override {
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+    CFX_DefaultRenderDevice::SetDefaultRenderer(GetParam());
+#endif
+    EmbedderTest::SetUp();
+  }
+
   class FakePause : public IFSDK_PAUSE {
    public:
     explicit FakePause(bool should_pause) : should_pause_(should_pause) {
@@ -224,7 +233,12 @@ FPDFProgressiveRenderEmbedderTest::RenderPageWithForcedColorScheme(
   return FinishRenderPageWithForms(page, form_handle());
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithoutPause) {
+INSTANTIATE_TEST_SUITE_P(
+    /* no prefix */,
+    FPDFProgressiveRenderEmbedderTest,
+    testing::ValuesIn(EmbedderTest::kRendererParams));
+
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderWithoutPause) {
   // Test rendering of page content using progressive render APIs
   // without pausing the rendering.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
@@ -238,7 +252,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithoutPause) {
   UnloadPage(page);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithPause) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderWithPause) {
   // Test rendering of page content using progressive render APIs
   // with pause in rendering.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
@@ -257,7 +271,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithPause) {
   UnloadPage(page);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderAnnotWithPause) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderAnnotWithPause) {
   // Test rendering of the page with annotations using progressive render APIs
   // with pause in rendering.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
@@ -276,7 +290,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderAnnotWithPause) {
   UnloadPage(page);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderFormsWithPause) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderFormsWithPause) {
   // Test rendering of the page with forms using progressive render APIs
   // with pause in rendering.
   ASSERT_TRUE(OpenDocument("text_form.pdf"));
@@ -314,7 +328,7 @@ void FPDFProgressiveRenderEmbedderTest::VerifyRenderingWithColorScheme(
   UnloadPage(page);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderTextWithColorScheme) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderTextWithColorScheme) {
   // Test rendering of text with forced color scheme on.
   const char* content_with_text_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
@@ -333,7 +347,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderTextWithColorScheme) {
                                  kBlack, 200, 200, content_with_text_checksum);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderPathWithColorScheme) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderPathWithColorScheme) {
   // Test rendering of paths with forced color scheme on.
   const char* rectangles_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ||
@@ -350,7 +364,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderPathWithColorScheme) {
                                  kBlack, 200, 300, rectangles_checksum);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest,
+TEST_P(FPDFProgressiveRenderEmbedderTest,
        RenderPathWithColorSchemeAndConvertFillToStroke) {
   // Test rendering of paths with forced color scheme on and conversion from
   // fill to stroke enabled. The fill paths should be rendered as stroke.
@@ -370,7 +384,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest,
                                  rectangles_checksum);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderHighlightWithColorScheme) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderHighlightWithColorScheme) {
   // Test rendering of highlight with forced color scheme on.
   //
   // Note: The fill color rendered for highlight is different from the normal
@@ -396,7 +410,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderHighlightWithColorScheme) {
                                  content_with_highlight_fill_checksum);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest,
+TEST_P(FPDFProgressiveRenderEmbedderTest,
        RenderHighlightWithColorSchemeAndConvertFillToStroke) {
   // Test rendering of highlight with forced color and converting fill to
   // stroke. The highlight should be rendered as a stroke of the rect.
@@ -425,7 +439,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest,
       kBlue, 612, 792, md5_content_with_highlight);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderInkWithColorScheme) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderInkWithColorScheme) {
   // Test rendering of multiple ink with forced color scheme on.
   const char* content_with_ink_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ||
@@ -442,7 +456,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderInkWithColorScheme) {
                                  kBlack, 612, 792, content_with_ink_checksum);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
   // Test rendering of static annotation with forced color scheme on.
   const char* content_with_stamp_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ||
@@ -463,7 +477,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
                                  kWhite, 595, 842, content_with_stamp_checksum);
 }
 
-TEST_F(FPDFProgressiveRenderEmbedderTest, RenderFormWithColorScheme) {
+TEST_P(FPDFProgressiveRenderEmbedderTest, RenderFormWithColorScheme) {
   // Test rendering of form does not change with forced color scheme on.
   const char* content_with_form_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ||
