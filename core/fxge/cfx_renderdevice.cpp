@@ -1009,8 +1009,14 @@ bool CFX_RenderDevice::StartDIBitsWithBlend(
     const FXDIB_ResampleOptions& options,
     std::unique_ptr<CFX_ImageRenderer>* handle,
     BlendMode blend_mode) {
+#if defined(_SKIA_SUPPORT_)
+  return m_pDeviceDriver->StartDIBitsSkia(pBitmap, bitmap_alpha, argb, matrix,
+                                          options, blend_mode,
+                                          /*optimize_sampling_option=*/true);
+#else
   return m_pDeviceDriver->StartDIBits(pBitmap, bitmap_alpha, argb, matrix,
                                       options, handle, blend_mode);
+#endif
 }
 
 bool CFX_RenderDevice::ContinueDIBits(CFX_ImageRenderer* handle,
