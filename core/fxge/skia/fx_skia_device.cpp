@@ -69,6 +69,7 @@
 #endif
 
 #if defined(_SKIA_SUPPORT_)
+#include "core/fxge/dib/cstretchengine.h"
 #include "third_party/skia/include/core/SkColorFilter.h"
 #include "third_party/skia/include/core/SkMaskFilter.h"
 #include "third_party/skia/include/core/SkPictureRecorder.h"
@@ -2541,7 +2542,8 @@ bool CFX_SkiaDeviceDriver::StartDIBitsSkia(
     uint32_t argb,
     const CFX_Matrix& matrix,
     const FXDIB_ResampleOptions& options,
-    BlendMode blend_type) {
+    BlendMode blend_type,
+    bool optimize_sampling_option) {
   m_pCache->FlushForDraw();
   DebugValidate(m_pBitmap, m_pBackdropBitmap);
   // Storage vectors must outlive `skBitmap`.
@@ -2583,8 +2585,16 @@ bool CFX_SkiaDeviceDriver::StartDIBitsSkia(
         }
       }
     } else {
+      int dest_width = pdfium::base::checked_cast<int>(
+          ceil(FXSYS_sqrt2(matrix.a, matrix.b)));
+      int dest_height = pdfium::base::checked_cast<int>(
+          ceil(FXSYS_sqrt2(matrix.c, matrix.d)));
+
       SkSamplingOptions sampling_options =
-          options.bInterpolateBilinear
+          (options.bInterpolateBilinear ||
+           (optimize_sampling_option &&
+            CStretchEngine::UseInterpolateBilinear(options, dest_width,
+                                                   dest_height, width, height)))
               ? SkSamplingOptions(SkFilterMode::kLinear, SkMipmapMode::kLinear)
               : SkSamplingOptions();
       m_pCanvas->drawImageRect(skBitmap.asImage(),
@@ -2607,7 +2617,7 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
     BlendMode blend_type) {
 #if defined(_SKIA_SUPPORT_)
   return StartDIBitsSkia(pSource, bitmap_alpha, argb, matrix, options,
-                         blend_type);
+                         blend_type, /*optimize_sampling_option=*/false);
 #endif  // defined(_SKIA_SUPPORT_)
 
 #if defined(_SKIA_SUPPORT_PATHS_)
