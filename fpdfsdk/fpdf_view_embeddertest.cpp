@@ -1706,7 +1706,7 @@ TEST_F(PostScriptLevel2EmbedderTest, Image) {
       "q\n"
       "281 106.7 m 331 106.7 l 331 56.7 l 281 56.7 l 281 106.7 l h W* n\n"
       "q\n"
-      "[49.9 0 0 -50 281.1 106.6]cm 50 50 8[50 0 0 -50 0 "
+      "[50 0 0 -51 281 107]cm 50 50 8[50 0 0 -50 0 "
       "50]currentfile/ASCII85Decode filter /DCTDecode filter false 3 "
       "colorimage\n"
       "s4IA0!\"_al8O`[\\!<<*#!!*'\"s4[N@!!ic5#6k>;#6tJ?#m^kH'FbHY$Odmc'+Yct)"
@@ -1773,7 +1773,7 @@ Q
 q
 281 106.7 m 331 106.7 l 331 56.7 l 281 56.7 l 281 106.7 l h W* n
 q
-[49.9 0 0 -50 281.1 106.6]cm 50 50 8[50 0 0 -50 0 50]currentfile/ASCII85Decode filter /FlateDecode filter false 3 colorimage
+[50 0 0 -51 281 107]cm 50 50 8[50 0 0 -50 0 50]currentfile/ASCII85Decode filter /FlateDecode filter false 3 colorimage
 Gb"0;0`_7S!5bE%:[N')TE"rlzGQSs[!!*~>
 Q
 Q
