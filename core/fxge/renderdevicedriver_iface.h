@@ -114,7 +114,8 @@ class RenderDeviceDriverIface {
                                uint32_t color,
                                const CFX_Matrix& matrix,
                                const FXDIB_ResampleOptions& options,
-                               BlendMode blend_type);
+                               BlendMode blend_type,
+                               bool optimize_sampling_option);
 
   virtual bool SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                                const RetainPtr<CFX_DIBBase>& pMask,

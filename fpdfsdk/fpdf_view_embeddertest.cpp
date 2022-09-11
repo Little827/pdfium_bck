@@ -1706,7 +1706,11 @@ TEST_F(PostScriptLevel2EmbedderTest, Image) {
       "q\n"
       "281 106.7 m 331 106.7 l 331 56.7 l 281 56.7 l 281 106.7 l h W* n\n"
       "q\n"
+#if defined(_SKIA_SUPPORT_)
+      "[50 0 0 -51 281 107]cm 50 50 8[50 0 0 -50 0 "
+#else
       "[49.9 0 0 -50 281.1 106.6]cm 50 50 8[50 0 0 -50 0 "
+#endif
       "50]currentfile/ASCII85Decode filter /DCTDecode filter false 3 "
       "colorimage\n"
       "s4IA0!\"_al8O`[\\!<<*#!!*'\"s4[N@!!ic5#6k>;#6tJ?#m^kH'FbHY$Odmc'+Yct)"
@@ -1755,37 +1759,48 @@ TEST_F(PostScriptLevel2EmbedderTest, Image) {
 }
 
 TEST_F(PostScriptLevel3EmbedderTest, Image) {
-  const char kExpected[] = R"(
-save
-/im/initmatrix load def
-/n/newpath load def/m/moveto load def/l/lineto load def/c/curveto load def/h/closepath load def
-/f/fill load def/F/eofill load def/s/stroke load def/W/clip load def/W*/eoclip load def
-/rg/setrgbcolor load def/k/setcmykcolor load def
-/J/setlinecap load def/j/setlinejoin load def/w/setlinewidth load def/M/setmiterlimit load def/d/setdash load def
-/q/gsave load def/Q/grestore load def/iM/imagemask load def
-/Tj/show load def/Ff/findfont load def/Fs/scalefont load def/Sf/setfont load def
-/cm/concat load def/Cm/currentmatrix load def/mx/matrix load def/sm/setmatrix load def
-0 792 m 0 0 l 612 0 l 612 792 l 0 792 l h W n
-q
-0 792 m 0 0 l 612 0 l 612 792 l 0 792 l h W n
-q
-Q
-q
-281 106.7 m 331 106.7 l 331 56.7 l 281 56.7 l 281 106.7 l h W* n
-q
-[49.9 0 0 -50 281.1 106.6]cm 50 50 8[50 0 0 -50 0 50]currentfile/ASCII85Decode filter /FlateDecode filter false 3 colorimage
-Gb"0;0`_7S!5bE%:[N')TE"rlzGQSs[!!*~>
-Q
-Q
-q
-q
-Q
-Q
-Q
-Q
-
-restore
-)";
+  const char kExpected[] =
+      "\n"
+      "save\n"
+      "/im/initmatrix load def\n"
+      "/n/newpath load def/m/moveto load def/l/lineto load def/c/curveto load "
+      "def/h/closepath load def\n"
+      "/f/fill load def/F/eofill load def/s/stroke load def/W/clip load "
+      "def/W*/eoclip load def\n"
+      "/rg/setrgbcolor load def/k/setcmykcolor load def\n"
+      "/J/setlinecap load def/j/setlinejoin load def/w/setlinewidth load "
+      "def/M/setmiterlimit load def/d/setdash load def\n"
+      "/q/gsave load def/Q/grestore load def/iM/imagemask load def\n"
+      "/Tj/show load def/Ff/findfont load def/Fs/scalefont load def/Sf/setfont "
+      "load def\n"
+      "/cm/concat load def/Cm/currentmatrix load def/mx/matrix load "
+      "def/sm/setmatrix load def\n"
+      "0 792 m 0 0 l 612 0 l 612 792 l 0 792 l h W n\n"
+      "q\n"
+      "0 792 m 0 0 l 612 0 l 612 792 l 0 792 l h W n\n"
+      "q\n"
+      "Q\n"
+      "q\n"
+      "281 106.7 m 331 106.7 l 331 56.7 l 281 56.7 l 281 106.7 l h W* n\n"
+      "q\n"
+#if defined(_SKIA_SUPPORT_)
+      "[50 0 0 -51 281 107]cm 50 50 8[50 0 0 -50 0 "
+#else
+      "[49.9 0 0 -50 281.1 106.6]cm 50 50 8[50 0 0 -50 0 "
+#endif
+      "50]currentfile/ASCII85Decode filter /FlateDecode filter false 3 "
+      "colorimage\n"
+      "Gb\"0;0`_7S!5bE%:[N')TE\"rlzGQSs[!!*~>\n"
+      "Q\n"
+      "Q\n"
+      "q\n"
+      "q\n"
+      "Q\n"
+      "Q\n"
+      "Q\n"
+      "Q\n"
+      "\n"
+      "restore\n";
 
   ASSERT_TRUE(OpenDocument("tagged_alt_text.pdf"));
   FPDF_PAGE page = LoadPage(0);

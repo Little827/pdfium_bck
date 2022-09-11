@@ -99,7 +99,8 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                        uint32_t color,
                        const CFX_Matrix& matrix,
                        const FXDIB_ResampleOptions& options,
-                       BlendMode blend_type) override;
+                       BlendMode blend_type,
+                       bool optimize_sampling_option) override;
 
   bool SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                        const RetainPtr<CFX_DIBBase>& pMask,
