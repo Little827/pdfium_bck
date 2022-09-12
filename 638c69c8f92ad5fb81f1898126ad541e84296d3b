@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352295f9_fb7cd2ec",
+        "filename": "core/fxcrt/cfx_memorystream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-12T19:20:43Z",
+      "side": 0,
+      "message": "drive-by: now that I\u0027m scrutinizing these cls, did we lose \u0027offset\u0027 here, eg. pdfium::make_span(m_data).subspan(offset) ??",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 43
+      },
+      "revId": "638c69c8f92ad5fb81f1898126ad541e84296d3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
