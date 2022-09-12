@@ -49,6 +49,23 @@ class CFX_DefaultRenderDevice final : public CFX_RenderDevice {
   // Runtime check to see if SkiaPaths is the renderer variant in use.
   static bool SkiaPathsIsDefaultRenderer();
 
+#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+  // These values need to maintain a 1:1 mapping with the public type
+  // `FPDF_RENDERER_TYPE`.
+  enum class RendererType {
+    kAgg = 0,
+#if defined(_SKIA_SUPPORT_)
+    kSkia = 1,
+#endif
+#if defined(_SKIA_SUPPORT_PATHS_)
+    kSkiaPaths = 2,
+#endif
+  };
+
+  // Update default renderer.
+  static void SetDefaultRenderer(RendererType renderer_type);
+#endif  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
+
  private:
   bool AttachImpl(RetainPtr<CFX_DIBitmap> pBitmap,
                   bool bRgbByteOrder,
