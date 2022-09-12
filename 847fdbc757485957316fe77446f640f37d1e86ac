@@ -52,6 +52,24 @@
       "parentUuid": "56c52ef8_8a632ffd",
       "revId": "847fdbc757485957316fe77446f640f37d1e86ac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982bc044_f7fe6fbb",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 8906
+      },
+      "writtenOn": "2022-09-12T16:29:15Z",
+      "side": 1,
+      "message": "Done. Thanks for investigating!",
+      "parentUuid": "f14f73c3_b893508e",
+      "revId": "847fdbc757485957316fe77446f640f37d1e86ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
