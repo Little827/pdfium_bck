@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cffebf_099217a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-12T21:51:27Z",
+      "side": 1,
+      "message": "It does make sense to split fx_skia_device.cpp into 3 files. \n\nJust a personal preference: If our final goal is to get rid of SkiaPaths when Skia is ready (assume early next year?), then this could become unnecessary work load. Right now it\u0027s kind of nice to see SkiaPaths and Skia code side by side when debugging. But this is not a deal breaker.",
+      "parentUuid": "297a4d2c_92dff96f",
+      "revId": "6c49b7ba0b945c767e9eec52ce5cac8f70c5e86a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "937d5e19_73217cbb",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-12T21:15:07Z",
       "side": 1,
       "message": "nit: newline after",
+      "revId": "6c49b7ba0b945c767e9eec52ce5cac8f70c5e86a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae294a5_2c5fac8d",
+        "filename": "core/fxge/skia/fx_skia_device.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-12T21:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "937d5e19_73217cbb",
       "revId": "6c49b7ba0b945c767e9eec52ce5cac8f70c5e86a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
