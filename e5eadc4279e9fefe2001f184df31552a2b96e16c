@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82dba48a_4d70ebff",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T16:42:56Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s necessary to expose this in RenderDeviceDriverIface. I looked at the next CL in the CL chain, and I believe https://pdfium-review.googlesource.com/c/pdfium/+/97791/9/core/fxge/cfx_renderdevice.cpp#1012 makes https://pdfium-review.googlesource.com/c/pdfium/+/97791/9/core/fxge/skia/fx_skia_device.cpp#2619 dead code.",
+      "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
