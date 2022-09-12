@@ -37,7 +37,7 @@ EmbedderTestEnvironment* EmbedderTestEnvironment::GetInstance() {
 
 void EmbedderTestEnvironment::SetUp() {
   FPDF_LIBRARY_CONFIG config;
-  config.version = 3;
+  config.version = 4;
   config.m_pUserFontPaths = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pPlatform = nullptr;
@@ -51,6 +51,18 @@ void EmbedderTestEnvironment::SetUp() {
   config.m_pIsolate = nullptr;
   config.m_pPlatform = nullptr;
 #endif  // PDF_ENABLE_V8
+
+  // Make an initial choice of renderer type based on the build configuration.
+  // This can be overridden at runtime by tests.
+  // TODO(crbug.com/pdfium/1878) Update embedder tests to exercise runtime
+  // selection of renderer types.
+#if defined(_SKIA_SUPPORT_)
+  config.m_RendererType = FPDF_RENDERERTYPE_SKIA;
+#elif defined(_SKIA_SUPPORT_PATHS_)
+  config.m_RendererType = FPDF_RENDERERTYPE_SKIAPATHS;
+#else
+  config.m_RendererType = FPDF_RENDERERTYPE_AGG;
+#endif
 
   FPDF_InitLibraryWithConfig(&config);
 
