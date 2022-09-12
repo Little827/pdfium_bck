@@ -70,6 +70,54 @@
       },
       "revId": "cef45b85c802da18d774d132b662fca7786d27c7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f769b0_ab39e26c",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-12T19:16:33Z",
+      "side": 1,
+      "message": "I think `bNoSmoothing` is handled by Skia in the form of SkSamplingOptions.\n\nBy looking into PDFium code, we can tell that `bNoSmoothing` affects pixel weight for SkiaPaths and AGG but Skia rendering does not have an equivalent concept due to not using a real CFX_ImageRenderer.\n\nBut if we look at how `bNoSmoothing` is used in core/fxge/win32/cgdi_plus_ext.cpp, it affects the interpolate options to be set to K-Nearest (which is the default algorithm for SkSamplingOptions).",
+      "parentUuid": "cf0dc8d9_f2b1f8e7",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 66
+      },
+      "revId": "cef45b85c802da18d774d132b662fca7786d27c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16aeacc5_f5e3c134",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-12T19:16:33Z",
+      "side": 1,
+      "message": "`bNoSmoothing` is affecting SkPaint, which is outside the control of sampling options.",
+      "parentUuid": "cf0dc8d9_f2b1f8e7",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 66
+      },
+      "revId": "cef45b85c802da18d774d132b662fca7786d27c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
