@@ -16,6 +16,24 @@
       "message": "Is it possible to just omit these empty `sources`?",
       "revId": "847fdbc757485957316fe77446f640f37d1e86ac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c52ef8_8a632ffd",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 8906
+      },
+      "writtenOn": "2022-09-12T15:42:09Z",
+      "side": 1,
+      "message": "I am not sure. In any case, this change mirrors what I did in Chrome. https://chromium-review.googlesource.com/c/chromium/src/+/3888599",
+      "parentUuid": "c926ee69_f8d4a377",
+      "revId": "847fdbc757485957316fe77446f640f37d1e86ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
