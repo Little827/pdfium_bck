@@ -70,6 +70,24 @@
       "parentUuid": "fd783789_68eb9356",
       "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d514eea8_d2c2ef72",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T19:39:34Z",
+      "side": 1,
+      "message": "The proposal still eventually exposes StartDIBitsSkia() in RenderDeviceDriverIface, but I\u0027m suggesting that exposure is not necessary. Why can\u0027t CFX_RenderDevice::StartDIBitsWithBlend() stay the same and just call StartDIBits(). Then change the behavior inside the Skia renderer\u0027s StartDIBits()?",
+      "parentUuid": "5530b7a8_ae2daf1c",
+      "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
