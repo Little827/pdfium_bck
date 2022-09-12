@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca2923b3_cfa33d47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "Including \"into\" hopefully helps this to parse better?",
+      "parentUuid": "181baa36_df2b5885",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a5e214b_bf2205ea",
         "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
         "patchSetId": 14
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-09T18:45:09Z",
       "side": 1,
       "message": "Not used?",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30490688_c0cf8b20",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "Ah, yes this should have gone away as of patchset 8.",
+      "parentUuid": "4a5e214b_bf2205ea",
       "revId": "70474ad36886fcd8335be484965360513d446728",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bb8c0a_6bc407b4",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "Fair point.\n\nI had a notion in my head that we probably didn\u0027t want to have `m_RendererType` be conditionally compiled in the public config structure.  That\u0027s what ultimately led to this discrepancy.\n\nPerhaps that was a faulty assumption?  This problem resolves itself by conditioning this over in fpdfview.h in a similar way as done here.",
+      "parentUuid": "98e6ea58_a382b34a",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02a4c109_4dd97c3a",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-09T16:22:42Z",
       "side": 1,
       "message": "Add \"  // defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)\"",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3633f9a2_c24c6d2a",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a4c109_4dd97c3a",
       "revId": "70474ad36886fcd8335be484965360513d446728",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -86,6 +158,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e2b120_4e6003fb",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "`CFX_DefaultRenderDevice::RendererType::kSkia` isn\u0027t defined when `_SKIA_SUPPORT_PATHS_` is the build variant, it\u0027s only available for `_SKIA_SUPPORT_`.",
+      "parentUuid": "63fb4adc_8a7bd8e8",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be417d15_769cd406",
@@ -99,6 +189,30 @@
       "writtenOn": "2022-09-09T16:22:42Z",
       "side": 1,
       "message": "Also mention \"1:1 mapping with the public type\" just like the other comment in core/fxge/cfx_defaultrenderdevice.h.",
+      "range": {
+        "startLine": 126,
+        "startChar": 38,
+        "endLine": 127,
+        "endChar": 25
+      },
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62cefc5e_8bed4c5c",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be417d15_769cd406",
       "range": {
         "startLine": 126,
         "startChar": 38,
@@ -132,6 +246,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8d3a77_56487c19",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14c3ce4a_4b0104d2",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 16
+      },
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c495ea5_aac82837",
@@ -145,6 +283,30 @@
       "writtenOn": "2022-09-09T18:45:09Z",
       "side": 1,
       "message": "\"set\"",
+      "range": {
+        "startLine": 282,
+        "startChar": 69,
+        "endLine": 283,
+        "endChar": 14
+      },
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc3d8b6_b817b87b",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-12T20:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c495ea5_aac82837",
       "range": {
         "startLine": 282,
         "startChar": 69,
