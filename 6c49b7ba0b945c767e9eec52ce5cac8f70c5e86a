@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "297a4d2c_92dff96f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T21:15:07Z",
+      "side": 1,
+      "message": "Looking at the number of ifdefs inside fx_skia_device.cpp, do you think it makes sense to split fx_skia_device.cpp into 3 files? (Skia-only, SkiaPaths-only, shared code)",
+      "revId": "6c49b7ba0b945c767e9eec52ce5cac8f70c5e86a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "937d5e19_73217cbb",
+        "filename": "core/fxge/skia/fx_skia_device.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T21:15:07Z",
+      "side": 1,
+      "message": "nit: newline after",
+      "revId": "6c49b7ba0b945c767e9eec52ce5cac8f70c5e86a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
