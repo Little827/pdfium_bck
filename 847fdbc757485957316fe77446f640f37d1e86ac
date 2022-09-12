@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c926ee69_f8d4a377",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T15:38:35Z",
+      "side": 1,
+      "message": "Is it possible to just omit these empty `sources`?",
+      "revId": "847fdbc757485957316fe77446f640f37d1e86ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
