@@ -34,6 +34,24 @@
       "parentUuid": "82dba48a_4d70ebff",
       "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd783789_68eb9356",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T19:18:27Z",
+      "side": 1,
+      "message": "Since Code Search doesn\u0027t know about the Skia-enabled PDFium, build, its missing some call sites in its cross references.\n\nEven if it\u0027s not dead code, I think it can be make internal to CFX_SkiaDeviceDriver, since the callers I did not see before are all withinCFX_SkiaDeviceDriver.",
+      "parentUuid": "289b941c_dd637de2",
+      "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
