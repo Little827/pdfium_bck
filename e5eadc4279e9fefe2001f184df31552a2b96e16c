@@ -52,6 +52,24 @@
       "parentUuid": "289b941c_dd637de2",
       "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5530b7a8_ae2daf1c",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-12T19:26:56Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/97791/10/core/fxge/cfx_renderdevice.cpp#1013\nThis caller is the only one outside CFX_SkiaDeviceDriver which requires `optimize_sampling_option` to be true. This is why StartDIBitsSkia() eventually needs to be in RenderDeviceDriverIface.\n\nA proposal will be: \nIn this CL(97772), we keep StartDIBitsSkia() internal to CFX_SkiaDeviceDriver. And in the follow-up CL (97791), we add the extra parameter and expose StartDIBitsSkia() to RenderDeviceDriverIface.\n\nWDYT?",
+      "parentUuid": "fd783789_68eb9356",
+      "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
