@@ -179,7 +179,8 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                        uint32_t color,
                        const CFX_Matrix& matrix,
                        const FXDIB_ResampleOptions& options,
-                       BlendMode blend_type);
+                       BlendMode blend_type,
+                       bool optimize_sampling_option);
 #endif
 
   RetainPtr<CFX_DIBitmap> m_pBitmap;
