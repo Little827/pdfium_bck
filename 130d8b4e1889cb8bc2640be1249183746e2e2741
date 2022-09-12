@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a00ef8_3c4abf10",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-12T23:30:27Z",
+      "side": 1,
+      "message": "Kinda want to cut down on calls to that outside of CPDF_Object classes, instead use ctor vs. assignment\n   RetainPtr\u003cconst CPDF_Stream\u003e pMapStream(pmap-\u003easStream());",
+      "parentUuid": "cb037c3e_c12e50f9",
+      "range": {
+        "startLine": 483,
+        "startChar": 46,
+        "endLine": 483,
+        "endChar": 54
+      },
+      "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3bc905_157c2b45",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-12T22:22:27Z",
       "side": 1,
       "message": "Wrap here?",
+      "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b077587a_35a73298",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-12T23:30:27Z",
+      "side": 1,
+      "message": "There\u0027s another cl coming to pass retained arguments.  But OK, lets do this for now.",
+      "parentUuid": "4e3bc905_157c2b45",
       "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f913f1_1b1aa925",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-12T23:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47a165e4_d6f03b19",
+      "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10323eef_9a5cdfd8",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-09-12T22:22:27Z",
       "side": 1,
       "message": "Wrap here?",
+      "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "640cf215_ca95edd9",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-12T23:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10323eef_9a5cdfd8",
       "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -98,6 +176,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caabf27d_8966999e",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-12T23:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2407408_41ebccbd",
+      "range": {
+        "startLine": 31,
+        "startChar": 61,
+        "endLine": 31,
+        "endChar": 67
+      },
+      "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58ff6239_63b89577",
@@ -111,6 +213,24 @@
       "writtenOn": "2022-09-12T22:22:27Z",
       "side": 1,
       "message": "Could also wrap here and std::move().",
+      "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9578fa_40657088",
+        "filename": "core/fpdfapi/parser/fpdf_parser_utility.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-12T23:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58ff6239_63b89577",
       "revId": "130d8b4e1889cb8bc2640be1249183746e2e2741",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
