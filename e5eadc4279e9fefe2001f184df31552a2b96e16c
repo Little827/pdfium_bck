@@ -16,6 +16,24 @@
       "message": "I don\u0027t think it\u0027s necessary to expose this in RenderDeviceDriverIface. I looked at the next CL in the CL chain, and I believe https://pdfium-review.googlesource.com/c/pdfium/+/97791/9/core/fxge/cfx_renderdevice.cpp#1012 makes https://pdfium-review.googlesource.com/c/pdfium/+/97791/9/core/fxge/skia/fx_skia_device.cpp#2619 dead code.",
       "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289b941c_dd637de2",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-12T18:52:09Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/97791/9/core/fxge/skia/fx_skia_device.cpp#2619 will not become dead code since where StartDIBits() is called, StartDIBitsSkia() will be called with \"optimize_sampling_option \u003d false\".\n\nI also explored the option to add `optimize_sampling_option` to RenderDeviceDriverIface::StartDIBits(), but it will end up changing all derived classes of RenderDeviceDriverIface. I think it would be much cleaner to have a method that\u0027s for Skia only without changing all existing StartDIBits() callers.",
+      "parentUuid": "82dba48a_4d70ebff",
+      "revId": "e5eadc4279e9fefe2001f184df31552a2b96e16c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
