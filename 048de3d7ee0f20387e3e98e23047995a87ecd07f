@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e55333_5d0f987c",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T22:28:49Z",
+      "side": 1,
+      "message": "BTW, can we change the keys to \"dict\" and \"array\", etc? Then it\u0027s really obvious what\u0027s what.",
+      "revId": "048de3d7ee0f20387e3e98e23047995a87ecd07f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
