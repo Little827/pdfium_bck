@@ -80,7 +80,8 @@ bool CPDF_SampledFunc::v_Init(const CPDF_Object* pObj,
     return false;
 
   m_SampleMax = 0xffffffff >> (32 - m_nBitsPerSample);
-  m_pSampleStream = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+  m_pSampleStream =
+      pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(pStream));
   m_pSampleStream->LoadAllDataFiltered();
   if (nTotalSampleBytes.ValueOrDie() > m_pSampleStream->GetSize())
     return false;
