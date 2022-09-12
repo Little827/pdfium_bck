@@ -118,6 +118,30 @@
       },
       "revId": "cef45b85c802da18d774d132b662fca7786d27c7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb080c0_190647a4",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-12T19:18:21Z",
+      "side": 1,
+      "message": "Please ignore the previous comment \"bNoSmoothing  is affecting SkPaint, which is outside the control of sampling options.\" That was a wrong rendering option I was looking at.",
+      "parentUuid": "a5f769b0_ab39e26c",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 66
+      },
+      "revId": "cef45b85c802da18d774d132b662fca7786d27c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
