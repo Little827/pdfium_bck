@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f6051ef_9d1822cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T20:54:28Z",
+      "side": 1,
+      "message": "How does s/into/in/ sound to you?",
+      "parentUuid": "ca2923b3_cfa33d47",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a5e214b_bf2205ea",
         "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
         "patchSetId": 14
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Fair point.\n\nI had a notion in my head that we probably didn\u0027t want to have `m_RendererType` be conditionally compiled in the public config structure.  That\u0027s what ultimately led to this discrepancy.\n\nPerhaps that was a faulty assumption?  This problem resolves itself by conditioning this over in fpdfview.h in a similar way as done here.",
       "parentUuid": "98e6ea58_a382b34a",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a212a37d_39b47335",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-12T20:54:28Z",
+      "side": 1,
+      "message": "This could have been done in several different ways. IMO, there was not enough design ahead of time, so there ended up being a lot of churn.\n\nSo... should the definitions in //public be heavily ifdefed like it is in the latest patch set? Should it be free of ifdefs? What are the advantages of one vs. the other?",
+      "parentUuid": "03bb8c0a_6bc407b4",
       "revId": "70474ad36886fcd8335be484965360513d446728",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
