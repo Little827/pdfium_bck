@@ -4513,8 +4513,8 @@ void CFXJSE_FormCalcContext::Get(
   FX_FILESIZE size = pFile->GetSize();
   DataVector<uint8_t> dataBuf(size);
   pFile->ReadBlock(dataBuf.data(), size);
-  info.GetReturnValue().Set(
-      fxv8::NewStringHelper(info.GetIsolate(), ByteStringView(dataBuf)));
+  info.GetReturnValue().Set(fxv8::NewStringHelper(
+      info.GetIsolate(), ByteStringView(pdfium::make_span(dataBuf))));
 }
 
 // static
