@@ -46,6 +46,7 @@ class CPDF_Reference final : public CPDF_Object {
   RetainPtr<const CPDF_Object> SafeGetDirect() const;
 
   UnownedPtr<CPDF_IndirectObjectHolder> m_pObjList;
+  std::vector<RetainPtr<CPDF_Object>> m_Bindings;
   uint32_t m_RefObjNum;
 };
 

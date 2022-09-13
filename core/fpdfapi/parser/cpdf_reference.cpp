@@ -72,8 +72,14 @@ void CPDF_Reference::SetRef(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum) {
 }
 
 RetainPtr<CPDF_Object> CPDF_Reference::GetMutableDirect() {
-  return m_pObjList ? m_pObjList->GetOrParseIndirectObject(m_RefObjNum)
-                    : nullptr;
+  if (!m_pObjList)
+    return nullptr;
+
+  RetainPtr<CPDF_Object> referred =
+      m_pObjList->GetOrParseIndirectObject(m_RefObjNum);
+  if (m_Bindings.empty() || m_Bindings.back() != referred)
+    m_Bindings.push_back(referred);
+  return referred;
 }
 
 bool CPDF_Reference::WriteTo(IFX_ArchiveStream* archive,
