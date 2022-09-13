@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6315cf95_ce2cb0ab",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2737,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-13T07:42:27Z",
+      "side": 1,
+      "message": "Instead of adding a new parameter, why not just adjust the `options` argument the callers pass in to properly set `sampling_options`?",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d75fe4d_07e5287a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-13T07:42:27Z",
+      "side": 1,
+      "message": "I don\u0027t understand the calculations here. For instance, if `matrix` is the identity matrix, then the dest size is 1x1? This size result does not make sense to me.",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
