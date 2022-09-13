@@ -7,6 +7,7 @@
 #include <limits>
 
 #include "build/build_config.h"
+#include "core/fxcrt/data_vector.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace {
@@ -100,6 +101,30 @@ TEST(fxcrt, AllocZeroesMemory) {
   for (size_t i = 0; i < 32; ++i)
     EXPECT_EQ(0, ptr[i]);
   FX_Free(ptr);
+}
+
+namespace {
+
+constexpr size_t kKB = 1024;
+constexpr size_t kMB = kKB * 1024;
+constexpr size_t kGB = kMB * 1024;
+constexpr size_t kSizes[] = {32,       kKB,      640 * kKB, kMB,
+                             10 * kMB, 64 * kMB, 128 * kMB, kGB};
+
+}  // namespace
+
+TEST(fxcrt, AllocZeroesMemoryFasterThanVector) {
+  for (size_t size : kSizes) {
+    uint8_t* ptr = FX_Alloc(uint8_t, size);
+    ASSERT_TRUE(ptr);
+    FX_Free(ptr);
+  }
+}
+
+TEST(fxcrt, ZeroingMemorySlowerForVector) {
+  for (size_t size : kSizes) {
+    DataVector<uint8_t> vec(size);
+  }
 }
 
 TEST(fxcrt, FXAlign) {
