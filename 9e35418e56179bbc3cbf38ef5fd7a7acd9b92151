@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bb1d05_f7d01892",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-13T19:48:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a709e52_8d0fd480",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "9e35418e56179bbc3cbf38ef5fd7a7acd9b92151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7330a1f6_5c6e07ce",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-13T19:38:37Z",
       "side": 1,
       "message": "Can this happen? I would expect all initialized CPDF_Streams to have a dictionary.",
+      "revId": "9e35418e56179bbc3cbf38ef5fd7a7acd9b92151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8c4ca2_3c2189a0",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-13T19:48:31Z",
+      "side": 1,
+      "message": "Right, previously no check so no need for new one here.",
+      "parentUuid": "7330a1f6_5c6e07ce",
       "revId": "9e35418e56179bbc3cbf38ef5fd7a7acd9b92151",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

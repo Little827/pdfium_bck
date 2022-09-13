@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb89bf4f_9ac46de1",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-13T19:48:31Z",
+      "side": 1,
+      "message": "FYI, this becomes a CPDF_DictionaryLocker helper method in the other CL.  Will rebase one past the other depending on which happens to land first.",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 48
+      },
+      "revId": "fc8ed7f4e98d719054d7cdd749a69bb93f41d967",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
