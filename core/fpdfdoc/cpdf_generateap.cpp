@@ -319,35 +319,34 @@ ByteString GetColorStringWithDefault(const CPDF_Array* pColor,
   return GenerateColorAP(crDefaultColor, nOperation);
 }
 
-float GetBorderWidth(const CPDF_DictionaryLocker& locked_dict) {
-  const CPDF_Dictionary* pBorderStyleDict = locked_dict.GetDictFor("BS");
+float GetBorderWidth(const CPDF_Dictionary* pDict) {
+  const CPDF_Dictionary* pBorderStyleDict = pDict->GetDictFor("BS");
   if (pBorderStyleDict && pBorderStyleDict->KeyExist("W"))
     return pBorderStyleDict->GetFloatFor("W");
 
   const CPDF_Array* pBorderArray =
-      locked_dict.GetArrayFor(pdfium::annotation::kBorder);
+      pDict->GetArrayFor(pdfium::annotation::kBorder);
   if (pBorderArray && pBorderArray->size() > 2)
     return pBorderArray->GetFloatAt(2);
 
   return 1;
 }
 
-RetainPtr<const CPDF_Array> GetDashArray(
-    const CPDF_DictionaryLocker& locked_dict) {
-  const CPDF_Dictionary* pBorderStyleDict = locked_dict.GetDictFor("BS");
+RetainPtr<const CPDF_Array> GetDashArray(const CPDF_Dictionary* pDict) {
+  const CPDF_Dictionary* pBorderStyleDict = pDict->GetDictFor("BS");
   if (pBorderStyleDict && pBorderStyleDict->GetStringFor("S") == "D")
     return pdfium::WrapRetain(pBorderStyleDict->GetArrayFor("D"));
 
   const CPDF_Array* pBorderArray =
-      locked_dict.GetArrayFor(pdfium::annotation::kBorder);
+      pDict->GetArrayFor(pdfium::annotation::kBorder);
   if (pBorderArray && pBorderArray->size() == 4)
     return pBorderArray->GetArrayAt(3);
 
   return nullptr;
 }
 
-ByteString GetDashPatternString(const CPDF_DictionaryLocker& locked_dict) {
-  RetainPtr<const CPDF_Array> pDashArray = GetDashArray(locked_dict);
+ByteString GetDashPatternString(const CPDF_Dictionary* pDict) {
+  RetainPtr<const CPDF_Array> pDashArray = GetDashArray(pDict);
   if (!pDashArray || pDashArray->IsEmpty())
     return ByteString();
 
@@ -530,26 +529,24 @@ bool GenerateCircleAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   ByteString sExtGSDictName = "GS";
   sAppStream << "/" << sExtGSDictName << " gs ";
   {
-    CPDF_DictionaryLocker locked_dict(pAnnotDict);
-    const CPDF_Array* pInteriorColor = locked_dict.GetArrayFor("IC");
+    const CPDF_Array* pInteriorColor = pAnnotDict->GetArrayFor("IC");
     sAppStream << GetColorStringWithDefault(
         pInteriorColor, CFX_Color(CFX_Color::Type::kTransparent),
         PaintOperation::kFill);
 
     sAppStream << GetColorStringWithDefault(
-        locked_dict.GetArrayFor(pdfium::annotation::kC),
+        pAnnotDict->GetArrayFor(pdfium::annotation::kC),
         CFX_Color(CFX_Color::Type::kRGB, 0, 0, 0), PaintOperation::kStroke);
 
-    float fBorderWidth = GetBorderWidth(locked_dict);
+    float fBorderWidth = GetBorderWidth(pAnnotDict);
     bool bIsStrokeRect = fBorderWidth > 0;
 
     if (bIsStrokeRect) {
       sAppStream << fBorderWidth << " w ";
-      sAppStream << GetDashPatternString(locked_dict);
+      sAppStream << GetDashPatternString(pAnnotDict);
     }
 
-    CFX_FloatRect rect =
-        locked_dict.GetUnderlying()->GetRectFor(pdfium::annotation::kRect);
+    CFX_FloatRect rect = pAnnotDict->GetRectFor(pdfium::annotation::kRect);
     rect.Normalize();
 
     if (bIsStrokeRect) {
@@ -642,19 +639,18 @@ bool GenerateInkAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   ByteString sExtGSDictName = "GS";
   fxcrt::ostringstream sAppStream;
   {
-    CPDF_DictionaryLocker locked_dict(pAnnotDict);
-    fBorderWidth = GetBorderWidth(locked_dict);
+    fBorderWidth = GetBorderWidth(pAnnotDict);
     const bool bIsStroke = fBorderWidth > 0;
     if (!bIsStroke)
       return false;
 
     sAppStream << "/" << sExtGSDictName << " gs ";
     sAppStream << GetColorStringWithDefault(
-        locked_dict.GetArrayFor(pdfium::annotation::kC),
+        pAnnotDict->GetArrayFor(pdfium::annotation::kC),
         CFX_Color(CFX_Color::Type::kRGB, 0, 0, 0), PaintOperation::kStroke);
 
     sAppStream << fBorderWidth << " w ";
-    sAppStream << GetDashPatternString(locked_dict);
+    sAppStream << GetDashPatternString(pAnnotDict);
   }
 
   // Set inflated rect as a new rect because paths near the border with large
@@ -787,21 +783,20 @@ bool GenerateSquareAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   fxcrt::ostringstream sAppStream;
   sAppStream << "/" << sExtGSDictName << " gs ";
   {
-    CPDF_DictionaryLocker locked_dict(pAnnotDict);
-    const CPDF_Array* pInteriorColor = locked_dict.GetArrayFor("IC");
+    const CPDF_Array* pInteriorColor = pAnnotDict->GetArrayFor("IC");
     sAppStream << GetColorStringWithDefault(
         pInteriorColor, CFX_Color(CFX_Color::Type::kTransparent),
         PaintOperation::kFill);
 
     sAppStream << GetColorStringWithDefault(
-        locked_dict.GetArrayFor(pdfium::annotation::kC),
+        pAnnotDict->GetArrayFor(pdfium::annotation::kC),
         CFX_Color(CFX_Color::Type::kRGB, 0, 0, 0), PaintOperation::kStroke);
 
-    float fBorderWidth = GetBorderWidth(locked_dict);
+    float fBorderWidth = GetBorderWidth(pAnnotDict);
     const bool bIsStrokeRect = fBorderWidth > 0;
     if (bIsStrokeRect) {
       sAppStream << fBorderWidth << " w ";
-      sAppStream << GetDashPatternString(locked_dict);
+      sAppStream << GetDashPatternString(pAnnotDict);
     }
 
     CFX_FloatRect rect = pAnnotDict->GetRectFor(pdfium::annotation::kRect);
