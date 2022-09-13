@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09972316_de33e7de",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-13T06:26:22Z",
+      "side": 1,
+      "message": "I\u0027ll attempt to craft a test PDF for use here in a few days. It\u0027s looking like a busy week.",
+      "parentUuid": "224bc9ec_dd9cd871",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62fda6f5_b7ec7e44",
         "filename": "core/fpdfdoc/cpdf_annot.cpp",
         "patchSetId": 2
@@ -143,6 +167,30 @@
       "side": 1,
       "message": "Oh, really...",
       "parentUuid": "62fda6f5_b7ec7e44",
+      "range": {
+        "startLine": 58,
+        "startChar": 72,
+        "endLine": 58,
+        "endChar": 85
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74d1f5e_4858276e",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-13T06:26:22Z",
+      "side": 1,
+      "message": "For context: https://google.github.io/styleguide/cppguide.html#Line_Length",
+      "parentUuid": "883bea36_edd13173",
       "range": {
         "startLine": 58,
         "startChar": 72,
