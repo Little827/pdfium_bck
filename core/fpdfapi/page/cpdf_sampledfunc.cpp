@@ -48,18 +48,20 @@ bool CPDF_SampledFunc::v_Init(const CPDF_Object* pObj,
   if (!pStream)
     return false;
 
-  const CPDF_Dictionary* pDict = pStream->GetDict();
-  const CPDF_Array* pSize = pDict->GetArrayFor("Size");
+  CPDF_DictionaryLocker locked_dict(pStream->GetDict());
+  const CPDF_Array* pSize = locked_dict.GetArrayFor("Size");
   if (!pSize || pSize->IsEmpty())
     return false;
 
-  m_nBitsPerSample = pDict->GetIntegerFor("BitsPerSample");
+  m_nBitsPerSample =
+      locked_dict.GetUnderlying()->GetIntegerFor("BitsPerSample");
   if (!IsValidBitsPerSample(m_nBitsPerSample))
     return false;
 
   FX_SAFE_UINT32 nTotalSampleBits = m_nBitsPerSample;
   nTotalSampleBits *= m_nOutputs;
-  const CPDF_Array* pEncode = pDict->GetArrayFor("Encode");
+
+  const CPDF_Array* pEncode = locked_dict.GetArrayFor("Encode");
   m_EncodeInfo.resize(m_nInputs);
   for (uint32_t i = 0; i < m_nInputs; i++) {
     int size = pSize->GetIntegerAt(i);
@@ -87,7 +89,7 @@ bool CPDF_SampledFunc::v_Init(const CPDF_Object* pObj,
   if (nTotalSampleBytes.ValueOrDie() > m_pSampleStream->GetSize())
     return false;
 
-  const CPDF_Array* pDecode = pDict->GetArrayFor("Decode");
+  const CPDF_Array* pDecode = locked_dict.GetArrayFor("Decode");
   m_DecodeInfo.resize(m_nOutputs);
   for (uint32_t i = 0; i < m_nOutputs; i++) {
     if (pDecode) {
