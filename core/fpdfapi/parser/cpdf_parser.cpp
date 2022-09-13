@@ -729,18 +729,19 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   if (!pStream)
     return false;
 
-  const CPDF_Dictionary* pDict = pStream->GetDict();
-  int32_t prev = pDict->GetIntegerFor("Prev");
+  CPDF_DictionaryLocker locked_dict(pStream->GetDict());
+  int32_t prev = locked_dict.GetIntegerFor("Prev");
   if (prev < 0)
     return false;
 
-  int32_t size = pDict->GetIntegerFor("Size");
+  int32_t size = locked_dict.GetIntegerFor("Size");
   if (size < 0)
     return false;
 
   *pos = prev;
 
-  RetainPtr<CPDF_Dictionary> pNewTrailer = ToDictionary(pDict->Clone());
+  RetainPtr<CPDF_Dictionary> pNewTrailer =
+      ToDictionary(locked_dict.GetUnderlying()->Clone());
   if (bMainXRef) {
     m_CrossRefTable =
         std::make_unique<CPDF_CrossRefTable>(std::move(pNewTrailer));
@@ -752,9 +753,10 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   }
 
   std::vector<CrossRefV5IndexEntry> indices =
-      GetCrossRefV5Indices(pDict->GetArrayFor("Index"), size);
+      GetCrossRefV5Indices(locked_dict.GetArrayFor("Index"), size);
 
-  std::vector<uint32_t> field_widths = GetFieldWidths(pDict->GetArrayFor("W"));
+  std::vector<uint32_t> field_widths =
+      GetFieldWidths(locked_dict.GetArrayFor("W"));
   if (field_widths.size() < kMinFieldCount)
     return false;
 
@@ -854,10 +856,11 @@ const CPDF_Array* CPDF_Parser::GetIDArray() const {
   return GetTrailer() ? GetTrailer()->GetArrayFor("ID") : nullptr;
 }
 
+// TODO(tsepez): return retained object, though not clear if it can change.
 const CPDF_Dictionary* CPDF_Parser::GetRoot() const {
   RetainPtr<CPDF_Object> obj =
       m_pObjectsHolder->GetOrParseIndirectObject(GetRootObjNum());
-  return obj ? obj->GetDict() : nullptr;
+  return obj ? obj->GetDict().Get() : nullptr;
 }
 
 const CPDF_Dictionary* CPDF_Parser::GetEncryptDict() const {

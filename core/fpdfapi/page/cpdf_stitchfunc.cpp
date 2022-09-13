@@ -29,19 +29,20 @@ bool CPDF_StitchFunc::v_Init(const CPDF_Object* pObj,
   if (m_nInputs != kRequiredNumInputs)
     return false;
 
-  const CPDF_Dictionary* pDict = pObj->GetDict();
+  RetainPtr<const CPDF_Dictionary> pDict = pObj->GetDict();
   if (!pDict)
     return false;
 
-  const CPDF_Array* pFunctionsArray = pDict->GetArrayFor("Functions");
+  CPDF_DictionaryLocker locked_dict(std::move(pDict));
+  const CPDF_Array* pFunctionsArray = locked_dict.GetArrayFor("Functions");
   if (!pFunctionsArray)
     return false;
 
-  const CPDF_Array* pBoundsArray = pDict->GetArrayFor("Bounds");
+  const CPDF_Array* pBoundsArray = locked_dict.GetArrayFor("Bounds");
   if (!pBoundsArray)
     return false;
 
-  const CPDF_Array* pEncodeArray = pDict->GetArrayFor("Encode");
+  const CPDF_Array* pEncodeArray = locked_dict.GetArrayFor("Encode");
   if (!pEncodeArray)
     return false;
 

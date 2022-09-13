@@ -2196,8 +2196,8 @@ bool CFX_SkiaDeviceDriver::DrawShading(const CPDF_ShadingPattern* pPattern,
   size_t nFuncs = pFuncs.size();
   if (nFuncs > 1)  // TODO(caryclark) remove this restriction
     return false;
-  const CPDF_Dictionary* pDict = pPattern->GetShadingObject()->GetDict();
-  const CPDF_Array* pCoords = pDict->GetArrayFor("Coords");
+  CPDF_DictionaryLocker locked_dict(pPattern->GetShadingObject()->GetDict());
+  const CPDF_Array* pCoords = locked_dict.GetArrayFor("Coords");
   if (!pCoords && kCoonsPatchMeshShading != shadingType)
     return false;
   // TODO(caryclark) Respect Domain[0], Domain[1]. (Don't know what they do
@@ -2227,7 +2227,7 @@ bool CFX_SkiaDeviceDriver::DrawShading(const CPDF_ShadingPattern* pPattern,
       return false;
     }
   }
-  const CPDF_Array* pArray = pDict->GetArrayFor("Extend");
+  const CPDF_Array* pArray = locked_dict.GetArrayFor("Extend");
   bool clipStart = !pArray || !pArray->GetIntegerAt(0);
   bool clipEnd = !pArray || !pArray->GetIntegerAt(1);
   SkPaint paint;
