@@ -8,6 +8,8 @@
 
 #include <math.h>
 
+#include <utility>
+
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
@@ -21,23 +23,24 @@ CPDF_ExpIntFunc::~CPDF_ExpIntFunc() = default;
 
 bool CPDF_ExpIntFunc::v_Init(const CPDF_Object* pObj,
                              std::set<const CPDF_Object*>* pVisited) {
-  const CPDF_Dictionary* pDict = pObj->GetDict();
+  RetainPtr<const CPDF_Dictionary> pDict = pObj->GetDict();
   if (!pDict)
     return false;
 
-  RetainPtr<const CPDF_Number> pExponent = pDict->GetNumberFor("N");
+  CPDF_DictionaryLocker locked_dict(std::move(pDict));
+  const CPDF_Number* pExponent = locked_dict.GetNumberFor("N");
   if (!pExponent)
     return false;
 
   m_Exponent = pExponent->GetNumber();
 
-  const CPDF_Array* pArray0 = pDict->GetArrayFor("C0");
+  const CPDF_Array* pArray0 = locked_dict.GetArrayFor("C0");
   if (pArray0 && m_nOutputs == 0)
     m_nOutputs = fxcrt::CollectionSize<uint32_t>(*pArray0);
   if (m_nOutputs == 0)
     m_nOutputs = 1;
 
-  const CPDF_Array* pArray1 = pDict->GetArrayFor("C1");
+  const CPDF_Array* pArray1 = locked_dict.GetArrayFor("C1");
   m_BeginValues = fxcrt::Vector2D<float>(m_nOutputs, 2);
   m_EndValues = fxcrt::Vector2D<float>(m_nOutputs, 2);
   for (uint32_t i = 0; i < m_nOutputs; i++) {

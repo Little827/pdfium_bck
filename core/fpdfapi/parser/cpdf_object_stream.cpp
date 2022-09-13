@@ -27,12 +27,12 @@ bool IsObjectStream(const CPDF_Object* object) {
     return false;
 
   // See ISO 32000-1:2008 spec, table 16.
-  const CPDF_Dictionary* stream_dict = stream->GetDict();
-  if (!ValidateDictType(stream_dict, "ObjStm"))
+  RetainPtr<const CPDF_Dictionary> stream_dict = stream->GetDict();
+  if (!ValidateDictType(stream_dict.Get(), "ObjStm"))
     return false;
 
-  RetainPtr<const CPDF_Number> number_of_objects =
-      stream_dict->GetNumberFor("N");
+  CPDF_DictionaryLocker locked_dict(std::move(stream_dict));
+  const CPDF_Number* number_of_objects = locked_dict.GetNumberFor("N");
   if (!number_of_objects || !number_of_objects->IsInteger() ||
       number_of_objects->GetInteger() < 0 ||
       number_of_objects->GetInteger() >=
@@ -40,8 +40,7 @@ bool IsObjectStream(const CPDF_Object* object) {
     return false;
   }
 
-  RetainPtr<const CPDF_Number> first_object_offset =
-      stream_dict->GetNumberFor("First");
+  const CPDF_Number* first_object_offset = locked_dict.GetNumberFor("First");
   if (!first_object_offset || !first_object_offset->IsInteger() ||
       first_object_offset->GetInteger() < 0) {
     return false;

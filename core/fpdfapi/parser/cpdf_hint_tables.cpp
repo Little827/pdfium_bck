@@ -7,6 +7,7 @@
 #include "core/fpdfapi/parser/cpdf_hint_tables.h"
 
 #include <limits>
+#include <utility>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
@@ -445,8 +446,12 @@ bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
   if (!pHintStream || !m_pLinearized->HasHintTable())
     return false;
 
-  const CPDF_Dictionary* pDict = pHintStream->GetDict();
-  const CPDF_Object* pOffset = pDict ? pDict->GetObjectFor("S") : nullptr;
+  RetainPtr<const CPDF_Dictionary> pDict = pHintStream->GetDict();
+  if (!pDict)
+    return false;
+
+  CPDF_DictionaryLocker locked_dict(std::move(pDict));
+  const CPDF_Object* pOffset = locked_dict.GetObjectFor("S");
   if (!pOffset || !pOffset->IsNumber())
     return false;
 

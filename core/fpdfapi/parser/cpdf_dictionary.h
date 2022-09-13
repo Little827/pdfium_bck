@@ -35,7 +35,7 @@ class CPDF_Dictionary final : public CPDF_Object {
   // CPDF_Object:
   Type GetType() const override;
   RetainPtr<CPDF_Object> Clone() const override;
-  const CPDF_Dictionary* GetDict() const override;
+  RetainPtr<const CPDF_Dictionary> GetDict() const override;
   CPDF_Dictionary* AsMutableDictionary() override;
   bool WriteTo(IFX_ArchiveStream* archive,
                const CPDF_Encryptor* encryptor) const override;
@@ -170,6 +170,9 @@ class CPDF_DictionaryLocker {
     CHECK(m_pDictionary->IsLocked());
     return m_pDictionary->GetObjectForInternal(key);
   }
+  // TODO(tsepez): suspicious, pointer could be to object in the
+  // indirect object holder and could be replaced even if owning
+  // dict is locked.
   const CPDF_Object* GetDirectObjectFor(const ByteString& key) const {
     CHECK(m_pDictionary->IsLocked());
     return m_pDictionary->GetDirectObjectForInternal(key);
@@ -189,6 +192,14 @@ class CPDF_DictionaryLocker {
   const CPDF_Stream* GetStreamFor(const ByteString& key) const {
     CHECK(m_pDictionary->IsLocked());
     return m_pDictionary->GetStreamForInternal(key);
+  }
+
+  // Convenience methods.
+  int GetIntegerFor(const ByteString& key) const {
+    return m_pDictionary->GetIntegerFor(key);
+  }
+  float GetFloatFor(const ByteString& key) const {
+    return m_pDictionary->GetFloatFor(key);
   }
 
  private:

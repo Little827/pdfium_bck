@@ -368,12 +368,12 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
     if (!pAPStream)
       continue;
 
-    const CPDF_Dictionary* pAPDict = pAPStream->GetDict();
+    CPDF_DictionaryLocker locked_dict(pAPStream->GetDict());
     CFX_FloatRect rcStream;
-    if (pAPDict->KeyExist("Rect"))
-      rcStream = pAPDict->GetRectFor("Rect");
-    else if (pAPDict->KeyExist("BBox"))
-      rcStream = pAPDict->GetRectFor("BBox");
+    if (locked_dict.GetUnderlying()->KeyExist("Rect"))
+      rcStream = locked_dict.GetUnderlying()->GetRectFor("Rect");
+    else if (locked_dict.GetUnderlying()->KeyExist("BBox"))
+      rcStream = locked_dict.GetUnderlying()->GetRectFor("BBox");
     rcStream.Normalize();
 
     if (rcStream.IsEmpty())
@@ -405,7 +405,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
       pAcc->LoadAllDataFiltered();
       sStream = ByteString(pAcc->GetSpan());
     }
-    CFX_Matrix matrix = pAPDict->GetMatrixFor("Matrix");
+    CFX_Matrix matrix = locked_dict.GetUnderlying()->GetMatrixFor("Matrix");
     CFX_Matrix m = GetMatrix(rcAnnot, rcStream, matrix);
     m.b = 0;
     m.c = 0;

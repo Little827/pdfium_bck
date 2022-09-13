@@ -32,10 +32,10 @@ CPDF_TilingPattern* CPDF_TilingPattern::AsTilingPattern() {
 }
 
 std::unique_ptr<CPDF_Form> CPDF_TilingPattern::Load(CPDF_PageObject* pPageObj) {
-  const CPDF_Dictionary* pDict = pattern_obj()->GetDict();
-  m_bColored = pDict->GetIntegerFor("PaintType") == 1;
-  m_XStep = fabsf(pDict->GetFloatFor("XStep"));
-  m_YStep = fabsf(pDict->GetFloatFor("YStep"));
+  CPDF_DictionaryLocker locked_dict(pattern_obj()->GetDict());
+  m_bColored = locked_dict.GetIntegerFor("PaintType") == 1;
+  m_XStep = fabsf(locked_dict.GetFloatFor("XStep"));
+  m_YStep = fabsf(locked_dict.GetFloatFor("YStep"));
 
   CPDF_Stream* pStream = pattern_obj()->AsMutableStream();
   if (!pStream)
@@ -51,6 +51,6 @@ std::unique_ptr<CPDF_Form> CPDF_TilingPattern::Load(CPDF_PageObject* pPageObj) {
   allStates.m_TextState.Emplace();
   allStates.m_GeneralState = pPageObj->m_GeneralState;
   form->ParseContent(&allStates, &matrix, nullptr);
-  m_BBox = pDict->GetRectFor("BBox");
+  m_BBox = locked_dict.GetUnderlying()->GetRectFor("BBox");
   return form;
 }

@@ -112,9 +112,12 @@ CPDF_MeshStream::~CPDF_MeshStream() = default;
 bool CPDF_MeshStream::Load() {
   m_pStream->LoadAllDataFiltered();
   m_BitStream = std::make_unique<CFX_BitStream>(m_pStream->GetSpan());
-  const CPDF_Dictionary* pDict = m_pShadingStream->GetDict();
-  m_nCoordBits = pDict->GetIntegerFor("BitsPerCoordinate");
-  m_nComponentBits = pDict->GetIntegerFor("BitsPerComponent");
+
+  CPDF_DictionaryLocker locked_dict(m_pShadingStream->GetDict());
+  m_nCoordBits =
+      locked_dict.GetUnderlying()->GetIntegerFor("BitsPerCoordinate");
+  m_nComponentBits =
+      locked_dict.GetUnderlying()->GetIntegerFor("BitsPerComponent");
   if (ShouldCheckBPC(m_type)) {
     if (!IsValidBitsPerCoordinate(m_nCoordBits))
       return false;
@@ -122,7 +125,7 @@ bool CPDF_MeshStream::Load() {
       return false;
   }
 
-  m_nFlagBits = pDict->GetIntegerFor("BitsPerFlag");
+  m_nFlagBits = locked_dict.GetUnderlying()->GetIntegerFor("BitsPerFlag");
   if (ShouldCheckBitsPerFlag(m_type) && !IsValidBitsPerFlag(m_nFlagBits))
     return false;
 
@@ -131,7 +134,7 @@ bool CPDF_MeshStream::Load() {
     return false;
 
   m_nComponents = m_funcs.empty() ? nComponents : 1;
-  const CPDF_Array* pDecode = pDict->GetArrayFor("Decode");
+  const CPDF_Array* pDecode = locked_dict.GetArrayFor("Decode");
   if (!pDecode || pDecode->size() != 4 + m_nComponents * 2)
     return false;
 
