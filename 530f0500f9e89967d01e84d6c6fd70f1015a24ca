@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2430811a_d99c58dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-13T08:22:15Z",
+      "side": 1,
+      "message": "CL to illustrate the issue: https://pdfium-review.googlesource.com/97933\n\nLocal testing with Linux Perf tool, which is not super accurate, but good enough for this case:\n\n$ testing/tools/safetynet_measure_hack.py --build-dir out/debug --profiler perfstat -- --gtest_filter\u003dfxcrt.AllocZeroesMemoryFasterThanVector\n219529714\n$ testing/tools/safetynet_measure_hack.py --build-dir out/debug --profiler perfstat -- --gtest_filter\u003dfxcrt.ZeroingMemorySlowerForVector\n164988715172\n$ testing/tools/safetynet_measure_hack.py --build-dir out/release --profiler perfstat -- --gtest_filter\u003dfxcrt.AllocZeroesMemoryFasterThanVector\n32816063\n$ testing/tools/safetynet_measure_hack.py --build-dir out/release --profiler perfstat -- --gtest_filter\u003dfxcrt.ZeroingMemorySlowerForVector\n32782338\n",
+      "revId": "530f0500f9e89967d01e84d6c6fd70f1015a24ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
