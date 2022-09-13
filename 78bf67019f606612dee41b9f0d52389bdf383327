@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e98af16_df413437",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2737,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-13T16:45:02Z",
+      "side": 1,
+      "message": "Do you mean adding an element to struct FXDIB_ResampleOptions?\n\nFXDIB_ResampleOptions is used by AGG, SkiaPaths and Skia and all of its attributes come from parsing the PDF. `optimize_sampling_option` is for Skia only and it does not directly come reading the PDF. This was a main reason that I added a new parameter for it.\n\nIf we want to move it into FXDIB_ResampleOptions, one way to do it is that we add `optimize_sampling_option` into FXDIB_ResampleOptions but keep it guarded by _SKIA_SUPPORT_. So that we can avoid adding unused attributes for AGG and SkiaPaths.\n\nWDYT?",
+      "parentUuid": "6315cf95_ce2cb0ab",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d75fe4d_07e5287a",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 15
