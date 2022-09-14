@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676c41c6_b6b84a14",
+        "filename": "core/fpdfdoc/cpdf_generateap.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-14T00:19:13Z",
+      "side": 1,
+      "message": "This looks indented funny?",
+      "revId": "79108d76805e7edf1e5086f16a7287371011be98",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e03138c_8724f93b",
+        "filename": "core/fpdfdoc/cpdf_generateap.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-14T00:19:13Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "79108d76805e7edf1e5086f16a7287371011be98",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
