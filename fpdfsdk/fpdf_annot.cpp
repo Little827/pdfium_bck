@@ -164,6 +164,75 @@ static_assert(static_cast<int>(CPDF_Object::Type::kReference) ==
                   FPDF_OBJECT_REFERENCE,
               "CPDF_Object::kReference value mismatch");
 
+// These checks ensure the consistency of annotation additional action event
+// values across core/ and public.
+static_assert(static_cast<int>(CPDF_AAction::kCursorEnter) ==
+                  FPDF_ANNOT_AACTION_CURSOR_ENTER,
+              "CPDF_AAction::kCursorEnter value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kCursorExit) ==
+                  FPDF_ANNOT_AACTION_CURSOR_EXIT,
+              "CPDF_AAction::kCursorExit value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kButtonDown) ==
+                  FPDF_ANNOT_AACTION_BUTTON_DOWN,
+              "CPDF_AAction::kButtonDown value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kButtonUp) ==
+                  FPDF_ANNOT_AACTION_BUTTON_UP,
+              "CPDF_AAction::kButtonUp value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kGetFocus) ==
+                  FPDF_ANNOT_AACTION_GET_FOCUS,
+              "CPDF_AAction::kGetFocus value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kLoseFocus) ==
+                  FPDF_ANNOT_AACTION_LOSE_FOCUS,
+              "CPDF_AAction::kLoseFocus value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kPageOpen) ==
+                  FPDF_ANNOT_AACTION_PAGE_OPEN,
+              "CPDF_AAction::kPageOpen value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kPageClose) ==
+                  FPDF_ANNOT_AACTION_PAGE_CLOSE,
+              "CPDF_AAction::kPageClose value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kPageVisible) ==
+                  FPDF_ANNOT_AACTION_PAGE_VISIBLE,
+              "CPDF_AAction::kPageVisible value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kPageInvisible) ==
+                  FPDF_ANNOT_AACTION_PAGE_INVISIBLE,
+              "CPDF_AAction::kPageInvisible value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kOpenPage) ==
+                  FPDF_ANNOT_AACTION_OPEN_PAGE,
+              "CPDF_AAction::kOpenPage value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kClosePage) ==
+                  FPDF_ANNOT_AACTION_CLOSE_PAGE,
+              "CPDF_AAction::kClosePage value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kKeyStroke) ==
+                  FPDF_ANNOT_AACTION_KEY_STROKE,
+              "CPDF_AAction::kKeyStroke value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kFormat) ==
+                  FPDF_ANNOT_AACTION_FORMAT,
+              "CPDF_AAction::kFormat value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kValidate) ==
+                  FPDF_ANNOT_AACTION_VALIDATE,
+              "CPDF_AAction::kValidate value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kCalculate) ==
+                  FPDF_ANNOT_AACTION_CALCULATE,
+              "CPDF_AAction::kCalculate value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kCloseDocument) ==
+                  FPDF_ANNOT_AACTION_CLOSE_DOCUMENT,
+              "CPDF_AAction::kCloseDocument value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kSaveDocument) ==
+                  FPDF_ANNOT_AACTION_SAVE_DOCUMENT,
+              "CPDF_AAction::kSaveDocument value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kDocumentSaved) ==
+                  FPDF_ANNOT_AACTION_DOCUMENT_SAVED,
+              "CPDF_AAction::kDocumentSaved value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kPrintDocument) ==
+                  FPDF_ANNOT_AACTION_PRINT_DOCUMENT,
+              "CPDF_AAction::kPrintDocument value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kDocumentPrinted) ==
+                  FPDF_ANNOT_AACTION_DOCUMENT_PRINTED,
+              "CPDF_AAction::kDocumentPrinted value mismatch");
+static_assert(static_cast<int>(CPDF_AAction::kDocumentOpen) ==
+                  FPDF_ANNOT_AACTION_DOCUMENT_OPEN,
+              "CPDF_AAction::kDocumentOpen value mismatch");
+
 bool HasAPStream(CPDF_Dictionary* pAnnotDict) {
   return !!GetAnnotAP(pAnnotDict, CPDF_Annot::AppearanceMode::kNormal);
 }
@@ -1221,6 +1290,23 @@ FPDF_EXPORT int FPDF_CALLCONV
 FPDFAnnot_GetFormFieldType(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
   const CPDF_FormField* pFormField = GetFormField(hHandle, annot);
   return pFormField ? static_cast<int>(pFormField->GetFieldType()) : -1;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAnnot_GetFormAdditionalActionJavaScript(FPDF_FORMHANDLE hHandle,
+                                            FPDF_ANNOTATION annot,
+                                            int event,
+                                            FPDF_WCHAR* buffer,
+                                            unsigned long buflen) {
+  const CPDF_FormField* pFormField = GetFormField(hHandle, annot);
+  if (!pFormField)
+    return 0;
+
+  auto type = static_cast<CPDF_AAction::AActionType>(event);
+  CPDF_AAction additional_action = pFormField->GetAdditionalAction();
+  CPDF_Action action = additional_action.GetAction(type);
+  return Utf16EncodeMaybeCopyAndReturnLength(action.GetJavaScript(), buffer,
+                                             buflen);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
