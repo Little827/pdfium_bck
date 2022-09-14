@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6fd401b_d964717c",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-14T19:46:46Z",
+      "side": 1,
+      "message": "we need to range-check this, otherwise we get an OOB read at, say, https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fpdfdoc/cpdf_aaction.cpp;drc\u003d5abffc9bbab0296c39d03cc4b894388a0b7f3258;l\u003d57 on line 1037",
+      "range": {
+        "startLine": 1305,
+        "startChar": 53,
+        "endLine": 1305,
+        "endChar": 58
+      },
+      "revId": "7120bf580a8f9659f1ad920ec283fc1382a3a048",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c8202f_2279fda9",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-14T19:46:46Z",
+      "side": 1,
+      "message": "nit: explain \"denoting the size of the null terminator in the buffer\", otherwise this just sounds odd.",
+      "range": {
+        "startLine": 525,
+        "startChar": 63,
+        "endLine": 525,
+        "endChar": 76
+      },
+      "revId": "7120bf580a8f9659f1ad920ec283fc1382a3a048",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0bbcf5_8315f101",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-14T19:46:46Z",
+      "side": 1,
+      "message": "nit: add \"including the 2-byte null terminator.\"",
+      "range": {
+        "startLine": 535,
+        "startChar": 45,
+        "endLine": 535,
+        "endChar": 51
+      },
+      "revId": "7120bf580a8f9659f1ad920ec283fc1382a3a048",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "926f6dfe_8d53fd7e",
         "filename": "testing/resources/annot_javascript.in",
         "patchSetId": 2
