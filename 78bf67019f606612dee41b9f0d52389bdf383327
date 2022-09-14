@@ -105,6 +105,24 @@
       "parentUuid": "deff943c_87b005fe",
       "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e323ee_3e253e57",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-14T02:23:51Z",
+      "side": 1,
+      "message": "The inspiration comes from CFX_ImageTransformer ctor (See [1]) where AGG and SkiaPaths does some simplified calculation to get the `dest_height` and `dest_width`. Besides the simplified calculation, the most generic way to calculate the image rectangle width and height was to do the sqrt operation.\n\nSince SkCanvas::drawImageRect() takes the image rect as it is rather than doing the GetUnitRect().GetClosesetRect() like AGG (which the image rect will look bigger), I think Skia does not have to follow the exact scale up operation as AGG.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fxge/dib/cfx_imagetransformer.cpp;drc\u003d3111d4025e2ed2450600445a7207ef22bb03a12f;l\u003d177",
+      "parentUuid": "9ad53f4b_999d9ded",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
