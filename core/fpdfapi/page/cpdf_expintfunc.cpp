@@ -8,6 +8,8 @@
 
 #include <math.h>
 
+#include <utility>
+
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
@@ -21,7 +23,7 @@ CPDF_ExpIntFunc::~CPDF_ExpIntFunc() = default;
 
 bool CPDF_ExpIntFunc::v_Init(const CPDF_Object* pObj,
                              std::set<const CPDF_Object*>* pVisited) {
-  const CPDF_Dictionary* pDict = pObj->GetDict();
+  RetainPtr<const CPDF_Dictionary> pDict = pObj->GetDict();
   if (!pDict)
     return false;
 
