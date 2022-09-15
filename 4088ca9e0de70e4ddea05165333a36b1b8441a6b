@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59bf9083_09be578d",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-15T23:24:19Z",
+      "side": 1,
+      "message": "FYI, this should probably be `const pdfium::span\u003cconst U\u003e\u0026 other` but even making that change doesn\u0027t help with the implicit conversions.",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "4088ca9e0de70e4ddea05165333a36b1b8441a6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "931f1d99_4449fed2",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 5
