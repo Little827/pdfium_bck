@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "365005cb_c16ddc93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-15T20:18:37Z",
+      "side": 1,
+      "message": "This CL is now chained to https://pdfium-review.googlesource.com/98070",
+      "parentUuid": "274c52f8_d98134b0",
+      "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "90c4f1bd_6a76be7e",
         "filename": "core/fxcrt/fixed_uninit_data_vector.h",
         "patchSetId": 7
@@ -83,6 +101,24 @@
       "writtenOn": "2022-09-15T19:11:59Z",
       "side": 1,
       "message": "follow-on: probably want to provide begin() and end() so this can play with range-based for loops.",
+      "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c972d60_147e7482",
+        "filename": "core/fxcrt/fixed_uninit_data_vector.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-15T20:18:37Z",
+      "side": 1,
+      "message": "Callers can get that by taking a span?",
+      "parentUuid": "29961595_0cd3bb39",
       "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
