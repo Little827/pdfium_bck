@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ed150229_1c9943a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-15T19:14:39Z",
+      "side": 1,
+      "message": "LG otherwise.",
+      "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "90c4f1bd_6a76be7e",
         "filename": "core/fxcrt/fixed_uninit_data_vector.h",
         "patchSetId": 7
@@ -31,6 +48,24 @@
       "writtenOn": "2022-09-15T19:09:06Z",
       "side": 1,
       "message": "FixedDataVector will come later when needed.",
+      "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6863e77a_f7fb9eb8",
+        "filename": "core/fxcrt/fixed_uninit_data_vector.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-15T19:14:39Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "90c4f1bd_6a76be7e",
       "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
