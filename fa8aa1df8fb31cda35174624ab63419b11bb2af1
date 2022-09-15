@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf6b407_1cf37500",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8946
+      },
+      "writtenOn": "2022-09-15T08:40:28Z",
+      "side": 1,
+      "message": "One little comment about `partition_alloc.gni`.",
+      "revId": "fa8aa1df8fb31cda35174624ab63419b11bb2af1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de311e23_b14e648d",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8946
+      },
+      "writtenOn": "2022-09-15T08:40:28Z",
+      "side": 1,
+      "message": "I think this file can be made as short as 6 lines:\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/base/allocator/partition_allocator/external_builds.md\n\nAs Bartek has mentioned, most of these features don\u0027t actually exist in PartitionAlloc. They can safely be jammed to `false`.\n\nThe only real subtlety here is if you want *San, in which case you would simply have to `#define MEMORY_TOOL_REPLACES_ALLOCATOR` - the plumbing here only affects the allocator shim, which PDFium does not use.",
+      "revId": "fa8aa1df8fb31cda35174624ab63419b11bb2af1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
