@@ -16,6 +16,24 @@
       "message": "Should ParseIndirectObject() become pure virtual at this point?",
       "revId": "12a2ae2954c3820e624959947b7ec021fb58353e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2176db9a_d2890615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-15T22:15:42Z",
+      "side": 1,
+      "message": "Some tests instantiate CPDF_IndirectObjectHolder directly rather than making a test sub-class when the test doesn\u0027t actually need to parse anything, and rely on the no-op default impl.",
+      "parentUuid": "1275275b_28c8299d",
+      "revId": "12a2ae2954c3820e624959947b7ec021fb58353e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
