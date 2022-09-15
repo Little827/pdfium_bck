@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ebee24_7216fb57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-15T07:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f6051ef_9d1822cb",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a5e214b_bf2205ea",
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "Okay, here\u0027s my thoughts on options here:\n\n1) If the public definition is not ifdefed like the internal parts then it presents embedders the ability to generate invalid configurations that only surface at runtime.  Without any ifdefing then AGG, Skia, and SkiaPaths could all be available as types to choose.  An embedder which happens to choose experimental config version 4 could end up asking for something like SkiaPaths, only to find out at runtime that it isn\u0027t allowed.  (That\u0027s not ideal.)\n\n2) A slight improvement to assist developers in not generating invalid configs would be to conditionally compile the renderer types in the enum, and the configuration structure field is always available.  This makes it easier for a developer scanning the config structure to not have to deal with the extra thought of parsing the ifdefs.  There is always at least one type of renderer available in a build, so the ability to explicitly specify a valid choice is possible.  The need to specify a valid entry for this field if choosing the config version 4 doesn\u0027t seem to be a significant ask of embedders (IMO).\n\n3) Including ifdefs in the public config structure means that embedders that choose version 4 only have to specify a choice if the build explicitly includes a Skia build.  There\u0027s really not much benefit here, unless the config structure versions were even further extended.  In that case, an embedder could effectively ignore this experimental field so long as their builds are AGG-only.\n\nConsidering the future...:\n\nThe way we do API configuration is expected to be reworked, and this will all get redone.  The new API would likely still need to similarly consider what to conditionally compile, so this all still is applicable to that.\n\nAt some point Skia use in PDFium should become production quality and be able to become the default renderer instead of AGG.  If AGG gets deprecated, then we could shift build defaults to chose Skia instead of AGG.\n\nWith option 3), if an embedder had updated to config version 4 (or higher), but otherwise didn\u0027t have to do anything to specify the preferred renderer, then that embedder could unexpectedly be using a different renderer without any indication of the change.  That seems undesirable; I think that is sufficient to rule out 3).\n\nBetween 1) and 2), I think 2) provides a better balance of clarity \u0026 simplicity to embedders.  That would need to impact the comments about how to keep public vs. internal \"in sync\".\n\nYour thoughts?",
       "parentUuid": "a212a37d_39b47335",
+      "revId": "70474ad36886fcd8335be484965360513d446728",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acbdab8e_c2ac9b0a",
+        "filename": "core/fxge/cfx_defaultrenderdevice.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-15T07:19:25Z",
+      "side": 1,
+      "message": "Updated to match offline discussion captured in https://crbug.com/pdfium/1878#c24.",
+      "parentUuid": "785b4abf_e10a22b6",
       "revId": "70474ad36886fcd8335be484965360513d446728",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
