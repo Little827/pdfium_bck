@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed46ccb3_39325f02",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-15T20:12:37Z",
+      "side": 1,
+      "message": "This can be:\n#if BUILDFLAG(IS_APPLE)\n    if (!CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() \u0026\u0026\n        !CFX_DefaultRenderDevice::SkiaPathsIsDefaultRenderer()) {\n      return \"41debc60cf2a8f74c710ec6082d77b18\";\n    }\n#endif\n    return \"0832157462ea70fbbf053e14b1d6457f\";",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "6b3b50e38040ed54479f2cbd340212884f69d42d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
