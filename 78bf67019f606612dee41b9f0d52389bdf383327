@@ -159,6 +159,24 @@
       "parentUuid": "9ad53f4b_999d9ded",
       "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c84887_af67c729",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-15T01:16:17Z",
+      "side": 1,
+      "message": "I looked at CFX_ImageStretcher ctor calls and see several ways of calculating these values:\n\n1) matrix.GetUnitRect().GetClosestRect();\n2) matrix.GetUnitRect().GetOuterRect();\n3) sqrt operations\n4) Actually having a provide rect to stretch into.\n\nIgnoring (4), comparing the rest, I see for the matrix [11.2, 11.2, 0, 11.2, 0, 0], (1) and (2) returns 12x23, while (3) returns 16x12. Given this discrepancy, which is actually correct?",
+      "parentUuid": "d6e323ee_3e253e57",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
