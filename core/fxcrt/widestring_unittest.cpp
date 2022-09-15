@@ -1294,25 +1294,6 @@ TEST(WideString, FromDefANSI) {
                                              "y"));
 }
 
-TEST(WideStringView, FromVector) {
-  std::vector<WideStringView::UnsignedType> null_vec;
-  WideStringView null_string(null_vec);
-  EXPECT_EQ(0u, null_string.GetLength());
-
-  std::vector<WideStringView::UnsignedType> lower_a_vec(
-      10, static_cast<WideStringView::UnsignedType>(L'a'));
-  WideStringView lower_a_string(lower_a_vec);
-  EXPECT_EQ(10u, lower_a_string.GetLength());
-  EXPECT_EQ(L"aaaaaaaaaa", lower_a_string);
-
-  std::vector<WideStringView::UnsignedType> cleared_vec;
-  cleared_vec.push_back(42);
-  cleared_vec.pop_back();
-  WideStringView cleared_string(cleared_vec);
-  EXPECT_EQ(0u, cleared_string.GetLength());
-  EXPECT_FALSE(cleared_string.raw_str());
-}
-
 TEST(WideStringView, ElementAccess) {
   WideStringView abc(L"abc");
   EXPECT_EQ(L'a', static_cast<wchar_t>(abc[0]));
