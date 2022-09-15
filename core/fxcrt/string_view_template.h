@@ -12,7 +12,6 @@
 #include <algorithm>
 #include <iterator>
 #include <type_traits>
-#include <vector>
 
 #include "core/fxcrt/fx_system.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
@@ -77,12 +76,6 @@ class StringViewTemplate {
   // NOLINTNEXTLINE(runtime/explicit)
   constexpr StringViewTemplate(const CharType& ch) noexcept
       : m_Span(reinterpret_cast<const UnsignedType*>(&ch), 1) {}
-
-  // Any changes to |vec| invalidate the string.
-  template <typename AllocType>
-  explicit StringViewTemplate(
-      const std::vector<UnsignedType, AllocType>& vec) noexcept
-      : m_Span(!vec.empty() ? vec.data() : nullptr, vec.size()) {}
 
   StringViewTemplate& operator=(const CharType* src) {
     m_Span = pdfium::span<const UnsignedType>(
