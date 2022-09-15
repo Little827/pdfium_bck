@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "274c52f8_d98134b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-15T19:11:59Z",
+      "side": 1,
+      "message": "I\u0027m going to strongly suggest splitting out the addition of the new data vector class and its test into its own CL, so we don\u0027t lose it if we revert.  Thanks.",
+      "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "90c4f1bd_6a76be7e",
         "filename": "core/fxcrt/fixed_uninit_data_vector.h",
         "patchSetId": 7
@@ -14,6 +31,23 @@
       "writtenOn": "2022-09-15T19:09:06Z",
       "side": 1,
       "message": "FixedDataVector will come later when needed.",
+      "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29961595_0cd3bb39",
+        "filename": "core/fxcrt/fixed_uninit_data_vector.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-15T19:11:59Z",
+      "side": 1,
+      "message": "follow-on: probably want to provide begin() and end() so this can play with range-based for loops.",
       "revId": "63970c0c1c4abba6011f4999e47dded59bf44378",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
