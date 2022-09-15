@@ -82,6 +82,30 @@ extern "C" {
 #define FPDF_FORMFLAG_CHOICE_EDIT (1 << 18)
 #define FPDF_FORMFLAG_CHOICE_MULTI_SELECT (1 << 21)
 
+#define FPDF_ANNOT_AACTION_CURSOR_ENTER 0
+#define FPDF_ANNOT_AACTION_CURSOR_EXIT 1
+#define FPDF_ANNOT_AACTION_BUTTON_DOWN 2
+#define FPDF_ANNOT_AACTION_BUTTON_UP 3
+#define FPDF_ANNOT_AACTION_GET_FOCUS 4
+#define FPDF_ANNOT_AACTION_LOSE_FOCUS 5
+#define FPDF_ANNOT_AACTION_PAGE_OPEN 6
+#define FPDF_ANNOT_AACTION_PAGE_CLOSE 7
+#define FPDF_ANNOT_AACTION_PAGE_VISIBLE 8
+#define FPDF_ANNOT_AACTION_PAGE_INVISIBLE 9
+#define FPDF_ANNOT_AACTION_OPEN_PAGE 10
+#define FPDF_ANNOT_AACTION_CLOSE_PAGE 11
+#define FPDF_ANNOT_AACTION_KEY_STROKE 12
+#define FPDF_ANNOT_AACTION_FORMAT 13
+#define FPDF_ANNOT_AACTION_VALIDATE 14
+#define FPDF_ANNOT_AACTION_CALCULATE 15
+#define FPDF_ANNOT_AACTION_CLOSE_DOCUMENT 16
+#define FPDF_ANNOT_AACTION_SAVE_DOCUMENT 17
+#define FPDF_ANNOT_AACTION_DOCUMENT_SAVED 18
+#define FPDF_ANNOT_AACTION_PRINT_DOCUMENT 19
+#define FPDF_ANNOT_AACTION_DOCUMENT_PRINTED 20
+#define FPDF_ANNOT_AACTION_DOCUMENT_OPEN 21
+#define FPDF_ANNOT_AACTION_COUNT 22
+
 typedef enum FPDFANNOT_COLORTYPE {
   FPDFANNOT_COLORTYPE_Color = 0,
   FPDFANNOT_COLORTYPE_InteriorColor
@@ -493,6 +517,31 @@ FPDFAnnot_GetBorder(FPDF_ANNOTATION annot,
                     float* horizontal_radius,
                     float* vertical_radius,
                     float* border_width);
+
+// Experimental API.
+// Get the JavaScript of an event of the annotation's additional actions.
+// |buffer| is only modified if |buflen| is large enough to hold the whole
+// JavaScript string. If |buflen| is smaller, the total size of the JavaScript
+// is still returned, but nothing is copied.  If there is no JavaScript for
+// |event| in |annot|, an empty string is written to |buf| and 2 is returned,
+// denoting the size of the null terminator in the buffer.  On other errors,
+// nothing is written to |buffer| and 0 is returned.
+//
+//    hHandle     -   handle to the form fill module, returned by
+//                    FPDFDOC_InitFormFillEnvironment().
+//    annot       -   handle to an interactive form annotation.
+//    event       -   event type, one of the FPDF_ANNOT_AACTION_* values.
+//    buffer      -   buffer for holding the value string, encoded in UTF-16LE.
+//    buflen      -   length of the buffer in bytes.
+//
+// Returns the length of the string value in bytes, including the 2-byte
+// null terminator.
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAnnot_GetFormAdditionalActionJavaScript(FPDF_FORMHANDLE hHandle,
+                                            FPDF_ANNOTATION annot,
+                                            int event,
+                                            FPDF_WCHAR* buffer,
+                                            unsigned long buflen);
 
 // Experimental API.
 // Check if |annot|'s dictionary has |key| as a key.
