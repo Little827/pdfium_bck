@@ -88,7 +88,8 @@ TEST_F(FMStringExpressionTest, Long) {
   WideTextBuffer accumulator;
   std::vector<WideStringView::UnsignedType> vec(140000, L'A');
   auto* exp = cppgc::MakeGarbageCollected<CXFA_FMStringExpression>(
-      heap()->GetAllocationHandle(), WideString(WideStringView(vec)));
+      heap()->GetAllocationHandle(),
+      WideString(WideStringView(pdfium::make_span(vec))));
   exp->ToJavaScript(&accumulator,
                     CXFA_FMAssignExpression::ReturnType::kInferred);
   EXPECT_EQ(140000u, accumulator.GetLength());

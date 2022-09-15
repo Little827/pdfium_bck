@@ -245,7 +245,7 @@ WideString CPDFSDK_FormFillEnvironment::JS_fieldBrowse() {
   pBuff.resize(nActualLen - 1);
 
   // Use FromDefANSI() per "local encoding" comment in fpdf_formfill.h.
-  return WideString::FromDefANSI(ByteStringView(pBuff));
+  return WideString::FromDefANSI(ByteStringView(pdfium::make_span(pBuff)));
 }
 
 void CPDFSDK_FormFillEnvironment::JS_docmailForm(
@@ -321,7 +321,7 @@ WideString CPDFSDK_FormFillEnvironment::GetFilePath() const {
   pBuff.resize(nActualLen - 1);
 
   // Use FromDefANSI() per "local encoding" comment in fpdf_formfill.h.
-  return WideString::FromDefANSI(ByteStringView(pBuff));
+  return WideString::FromDefANSI(ByteStringView(pdfium::make_span(pBuff)));
 }
 
 void CPDFSDK_FormFillEnvironment::SubmitForm(

@@ -1271,24 +1271,6 @@ TEST(ByteStringView, FromChar) {
   EXPECT_NE(longer_string, lower_a_string_from_char);
 }
 
-TEST(ByteStringView, FromVector) {
-  std::vector<uint8_t> null_vec;
-  ByteStringView null_string(null_vec);
-  EXPECT_EQ(0u, null_string.GetLength());
-
-  std::vector<uint8_t> lower_a_vec(10, static_cast<uint8_t>('a'));
-  ByteStringView lower_a_string(lower_a_vec);
-  EXPECT_EQ(static_cast<size_t>(10), lower_a_string.GetLength());
-  EXPECT_EQ("aaaaaaaaaa", lower_a_string);
-
-  std::vector<uint8_t> cleared_vec;
-  cleared_vec.push_back(42);
-  cleared_vec.pop_back();
-  ByteStringView cleared_string(cleared_vec);
-  EXPECT_EQ(0u, cleared_string.GetLength());
-  EXPECT_FALSE(cleared_string.raw_str());
-}
-
 TEST(ByteStringView, GetID) {
   ByteStringView null_string;
   EXPECT_EQ(0u, null_string.GetID());
