@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec572bdd_b6000b12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-15T17:33:39Z",
+      "side": 1,
+      "message": "Reworked per our offline discussion (https://crbug.com/pdfium/1878#c24).  Local testing illustrated a couple of missing spots that hadn\u0027t been runtime parameterized, so it fails when a Skia build is run with `--use-renderer\u003dagg`.\n\nThat discovery just holds up a follow-on CL to update the recipes with the extra test run.  I.e., I don\u0027t think it blocks this CL.  The recipes update should be unblocked after https://pdfium-review.googlesource.com/c/pdfium/+/98030 and https://pdfium-review.googlesource.com/c/pdfium/+/98031 land.",
+      "revId": "4c368a34e86290a57a8fef30dfd50b0d55df1319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

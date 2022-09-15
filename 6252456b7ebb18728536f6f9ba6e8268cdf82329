@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c90ff79_5de661d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-15T17:33:39Z",
+      "side": 1,
+      "message": "Capturing the gist of this thought for future readers, per our offline discussion:\n\nThe idea is this can be better handled by not using parameterization.  Instead, update the embedder_tests executable to include a new command line parameter, and use that to specify the renderer to use for the test run.  With that we can then update the recipes to add this as extra testing stage for the applicable build types.  This gets the testing coverage with a small code change -- i.e., without having to touch all of the tests and switch them to TEST_P from TEST_F.",
+      "parentUuid": "6990afbb_e8a8c5af",
+      "revId": "6252456b7ebb18728536f6f9ba6e8268cdf82329",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d83f690_91b00ab7",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-09-09T21:42:01Z",
       "side": 1,
       "message": "Switch to `using` statements.",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 9
+      },
+      "revId": "6252456b7ebb18728536f6f9ba6e8268cdf82329",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "846d6478_db7ccec0",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-15T17:33:39Z",
+      "side": 1,
+      "message": "N/A after rework.",
+      "parentUuid": "7d83f690_91b00ab7",
       "range": {
         "startLine": 222,
         "startChar": 2,
