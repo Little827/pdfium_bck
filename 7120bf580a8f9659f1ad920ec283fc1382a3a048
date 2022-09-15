@@ -224,6 +224,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d714eff7_5e44edf1",
+        "filename": "testing/resources/annot_javascript.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2022-09-15T07:03:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb3bcf9_7521a4fe",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "7120bf580a8f9659f1ad920ec283fc1382a3a048",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cb6543e_6c6365d5",
