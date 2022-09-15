@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b2fc82_77d9bca4",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-15T22:43:11Z",
+      "side": 1,
+      "message": "Do we need this check? Seems like WriteSpan() needs to be immune to empty spans if it isn\u0027t already.",
+      "range": {
+        "startLine": 216,
+        "startChar": 6,
+        "endLine": 216,
+        "endChar": 20
+      },
+      "revId": "8c2d9f564ae5a854037b99412dec58cd8c6155f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
