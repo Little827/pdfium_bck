@@ -10,6 +10,7 @@
 #include "public/fpdfview.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_fonts.h"
+#include "third_party/abseil-cpp/absl/types/optional.h"
 
 class EmbedderTestEnvironment : public testing::Environment {
  public:
@@ -31,6 +32,7 @@ class EmbedderTestEnvironment : public testing::Environment {
  private:
   void AddFlag(const std::string& flag);
 
+  absl::optional<FPDF_RENDERER_TYPE> renderer_type_;
   bool write_pngs_ = false;
   TestFonts test_fonts_;
 };
