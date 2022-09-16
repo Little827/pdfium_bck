@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84697b17_5f2cd7ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T17:23:43Z",
+      "side": 1,
+      "message": "Generally LGTM.",
+      "revId": "a24e81526f6893d76e6c483c2320aaa9ea761b04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc927bdc_530202da",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T17:23:43Z",
+      "side": 1,
+      "message": "Needs curly braces.",
+      "revId": "a24e81526f6893d76e6c483c2320aaa9ea761b04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
