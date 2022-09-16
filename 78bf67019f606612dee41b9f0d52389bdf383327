@@ -177,6 +177,24 @@
       "parentUuid": "d6e323ee_3e253e57",
       "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a51f2d_af833fb5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-16T05:02:49Z",
+      "side": 1,
+      "message": "Simply choosing 1 or 2 is not going to work as it\u0027s proved to cause regression when it comes to image stretch:\n\noption 3)sqrt is used for image transforming, calculating stretch_width and stretch_height, which is a regular use case\n\nExample 1: testing/resources/rotated_image.pdf, in which [30, 30, 40, -40] returns 43 x 57;\nExample 2: testing/resources/pixel/image_transformer_other.in, [-16, 64, 64, 0] returns 66 x 64)\n\noption 1,2 can be used for directly rendering a rectangular image. They work all the time if the image is not \"twisted\", but it will cause \"twisted\" image such as example 2 to have regression as the rectangle area is not as tight or even the longer side is on a different direction.\n\noption 3 does not cause any regression in our existing tests.\n\nI will see whether I can create any rect that matrix.b, matrix.c are not 0 and still trigger the ImageRenderer rendering paths instead of the ImageTransforming rendering path, then I will post the update here.\n\nMy current guess is: a combination of option 3 and option 1 would be a good choice for Skia since Skia renders the bitmap using its original dimensions, which usually results in rendering a tighter rectangle area compared to AGG.",
+      "parentUuid": "19c84887_af67c729",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
