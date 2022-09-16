@@ -16,6 +16,24 @@
       "message": "From https://pdfium-review.googlesource.com/c/pdfium/+/97852/2/core/fxcrt/cfx_memorystream.cpp#b90 - Looks like we lost the offset.",
       "revId": "a5112bdf3e9fbb1bb772527f29e6f441ea1f61ca",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effff344_e6bce1cb",
+        "filename": "core/fxcrt/cfx_memorystream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T01:48:22Z",
+      "side": 1,
+      "message": "I added a unit test in https://pdfium-review.googlesource.com/98074 and chained this CL to that one. Then fixed the failing test.",
+      "parentUuid": "2f0b4679_39761ce7",
+      "revId": "a5112bdf3e9fbb1bb772527f29e6f441ea1f61ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
