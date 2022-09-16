@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222078b4_68e41514",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-16T20:32:10Z",
+      "side": 1,
+      "message": "I might be OK with segv here, given {nullptr, 0} is safe per line 77 and that\u0027s the only nullptr case we can tolerate.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "9e25d69d531d02077e1bac449c972e84b9f9648e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
