@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68cdede5_b0e2fbea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-16T01:26:29Z",
+      "side": 1,
+      "message": "see also https://pdfium-review.googlesource.com/c/pdfium/+/98072 but I\u0027m not 100% convinced it\u0027s safe.  ",
+      "revId": "4088ca9e0de70e4ddea05165333a36b1b8441a6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59bf9083_09be578d",
