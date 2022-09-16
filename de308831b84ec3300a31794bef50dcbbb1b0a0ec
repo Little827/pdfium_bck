@@ -52,6 +52,24 @@
       "parentUuid": "e5897b02_e818233c",
       "revId": "de308831b84ec3300a31794bef50dcbbb1b0a0ec",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "453f781e_e839e1ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T01:44:28Z",
+      "side": 1,
+      "message": "i.e. Just abandon this CL and wait for a bit. Then the Chromium version of this change will be incorporated into PDFium without any more action on your part.",
+      "parentUuid": "56803a98_1226b421",
+      "revId": "de308831b84ec3300a31794bef50dcbbb1b0a0ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
