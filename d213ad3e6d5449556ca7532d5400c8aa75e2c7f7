@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "77049e56_342ec823",
+        "filename": "core/fxcrt/binary_buffer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T20:12:53Z",
+      "side": 1,
+      "message": "Is there a better way to phrase the comment?",
+      "revId": "d213ad3e6d5449556ca7532d5400c8aa75e2c7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "37b6b439_006b3894",
@@ -36,6 +53,29 @@
         "startChar": 11,
         "endLine": 54,
         "endChar": 49
+      },
+      "revId": "d213ad3e6d5449556ca7532d5400c8aa75e2c7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd1d1d3_97ff8157",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T20:12:53Z",
+      "side": 1,
+      "message": "nit: Be consistent with `len` on line 51 one way or the other.",
+      "range": {
+        "startLine": 56,
+        "startChar": 63,
+        "endLine": 56,
+        "endChar": 67
       },
       "revId": "d213ad3e6d5449556ca7532d5400c8aa75e2c7f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
