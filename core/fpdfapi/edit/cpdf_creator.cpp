@@ -74,8 +74,11 @@ bool CFX_FileBufferArchive::Flush() {
 }
 
 bool CFX_FileBufferArchive::WriteBlock(const void* pBuf, size_t size) {
-  DCHECK(pBuf);
-  DCHECK(size > 0);
+  if (size == 0)
+    return true;
+
+  if (!pBuf)
+    return false;
 
   auto* pSrc = reinterpret_cast<const uint8_t*>(pBuf);
   pdfium::span<const uint8_t> src_span(pSrc, size);
