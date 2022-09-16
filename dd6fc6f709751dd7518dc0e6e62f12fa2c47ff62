@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa470b05_b8246066",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T21:53:32Z",
+      "side": 1,
+      "message": "Ah, I see CPDF_Reference::SafeGetDirect() calls GetDirect(), which then calls GetMutableDirect()...",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "dd6fc6f709751dd7518dc0e6e62f12fa2c47ff62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
