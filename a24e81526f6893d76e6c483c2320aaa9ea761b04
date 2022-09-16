@@ -33,6 +33,24 @@
       "message": "Needs curly braces.",
       "revId": "a24e81526f6893d76e6c483c2320aaa9ea761b04",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de6df9d_d5eda645",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2022-09-16T17:29:51Z",
+      "side": 1,
+      "message": "Oh, fixed that now.",
+      "parentUuid": "bc927bdc_530202da",
+      "revId": "a24e81526f6893d76e6c483c2320aaa9ea761b04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
