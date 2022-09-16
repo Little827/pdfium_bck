@@ -35,6 +35,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45aa0f7a_92ad5ea4",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2022-09-16T12:02:37Z",
+      "side": 1,
+      "message": "You\u0027re right. The bugdoc has additional actions on an annotation/form field, so only the 4 action in table 196 are relevant. The FPDFDOC_AACTION_* values are document additional actions and probably should not be exposed here. I removed these now.",
+      "parentUuid": "e2175b2e_da590ab6",
+      "revId": "6bfea0dbef8722f7ef2acdbafbb1a139a92c5a19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d521c47b_d7fd1543",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2022-09-16T12:02:37Z",
+      "side": 1,
+      "message": "Done, similar to how FPDFDOC_AACTION_* is documented.",
+      "parentUuid": "eaf31459_53f445f8",
+      "revId": "6bfea0dbef8722f7ef2acdbafbb1a139a92c5a19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e91f7092_88479ca2",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-15T18:44:36Z",
       "side": 1,
       "message": "Either here, in the FPDFAnnot_GetFormAdditionalActionJavaScript(), or maybe both, there  should be a comment to explain this is not a valid value.",
+      "revId": "6bfea0dbef8722f7ef2acdbafbb1a139a92c5a19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c459731_8925a3ef",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2022-09-16T12:02:37Z",
+      "side": 1,
+      "message": "I removed _COUNT completely, to make sure that the FPDF_ANNOT_AACTION_* constants and the rows in table 196 is a 1:1 match.",
+      "parentUuid": "e91f7092_88479ca2",
       "revId": "6bfea0dbef8722f7ef2acdbafbb1a139a92c5a19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
