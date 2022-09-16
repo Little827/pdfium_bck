@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0909268_4fa45400",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-16T00:43:13Z",
+      "side": 1,
+      "message": "I think when build args has skia but runtime is AGG, this condition can be true.",
+      "parentUuid": "9b68feb8_5736ac26",
+      "revId": "6b3b50e38040ed54479f2cbd340212884f69d42d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed46ccb3_39325f02",
         "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
         "patchSetId": 1
