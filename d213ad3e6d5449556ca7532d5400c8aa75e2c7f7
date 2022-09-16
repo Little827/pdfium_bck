@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa15287a_57f0f6b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-16T19:55:33Z",
+      "side": 1,
+      "message": "I think this does what we want, and obsoletes your other CL.",
+      "revId": "d213ad3e6d5449556ca7532d5400c8aa75e2c7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b6b439_006b3894",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-16T19:55:33Z",
+      "side": 1,
+      "message": "this syntax is saner and simpler. E canonically stands for \"Enable",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "d213ad3e6d5449556ca7532d5400c8aa75e2c7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3db1379_ef4dc930",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-16T19:55:33Z",
+      "side": 1,
+      "message": "just to pass a unit test that checks ptr is null.",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 63,
+        "endChar": 29
+      },
+      "revId": "d213ad3e6d5449556ca7532d5400c8aa75e2c7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ffa6e9_30d4925a",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-16T19:55:33Z",
+      "side": 1,
+      "message": "could also add an override for \u003cUnsignedType\u003e, since it has a hard time deducing this is ok given vector\u003cuint8_t\u003e instead of \u003cconst uint8_t\u003e. Which is why I un-overloaded the binary buffer, so that this conversion wasn\u0027t hit in one spot when we get a mutable vector from mutable binary buf.",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "d213ad3e6d5449556ca7532d5400c8aa75e2c7f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
