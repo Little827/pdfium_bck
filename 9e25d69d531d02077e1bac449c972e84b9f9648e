@@ -22,6 +22,30 @@
       },
       "revId": "9e25d69d531d02077e1bac449c972e84b9f9648e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac81510_aca3d9bb",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T23:44:23Z",
+      "side": 1,
+      "message": "SGTM. That\u0027s more consistent anyway. Removed a similar check in CFX_MemoryStream::WriteBlockAtOffset() and documented this in fx_stream.h.",
+      "parentUuid": "222078b4_68e41514",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "9e25d69d531d02077e1bac449c972e84b9f9648e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
