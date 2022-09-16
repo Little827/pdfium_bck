@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66989f91_c4ada92b",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-16T01:37:40Z",
+      "side": 1,
+      "message": "Exactly.  I discovered this when trying that out the changes for https://pdfium-review.googlesource.com/c/pdfium/+/97030 locally.",
+      "parentUuid": "c0909268_4fa45400",
+      "revId": "6b3b50e38040ed54479f2cbd340212884f69d42d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed46ccb3_39325f02",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-09-15T20:12:37Z",
       "side": 1,
       "message": "This can be:\n#if BUILDFLAG(IS_APPLE)\n    if (!CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() \u0026\u0026\n        !CFX_DefaultRenderDevice::SkiaPathsIsDefaultRenderer()) {\n      return \"41debc60cf2a8f74c710ec6082d77b18\";\n    }\n#endif\n    return \"0832157462ea70fbbf053e14b1d6457f\";",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "6b3b50e38040ed54479f2cbd340212884f69d42d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94aa4864_5865395d",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-16T01:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed46ccb3_39325f02",
       "range": {
         "startLine": 85,
         "startChar": 0,
