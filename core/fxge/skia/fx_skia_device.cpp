@@ -69,6 +69,7 @@
 #endif
 
 #if defined(_SKIA_SUPPORT_)
+#include "core/fxge/dib/cstretchengine.h"
 #include "third_party/skia/include/core/SkColorFilter.h"
 #include "third_party/skia/include/core/SkMaskFilter.h"
 #include "third_party/skia/include/core/SkPictureRecorder.h"
@@ -2466,8 +2467,12 @@ bool CFX_SkiaDeviceDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
 #if defined(_SKIA_SUPPORT_)
   CFX_Matrix m = CFX_RenderDevice::GetFlipMatrix(
       pBitmap->GetWidth(), pBitmap->GetHeight(), left, top);
-  return StartDIBitsSkia(pBitmap, 0xFF, argb, m, FXDIB_ResampleOptions(),
-                         blend_type);
+
+  // `bNoSmoothing` prevents linear sampling when rendering bitmaps.
+  FXDIB_ResampleOptions sampling_options;
+  sampling_options.bNoSmoothing = true;
+
+  return StartDIBitsSkia(pBitmap, 0xFF, argb, m, sampling_options, blend_type);
 #endif
 
 #if defined(_SKIA_SUPPORT_PATHS_)
@@ -2504,8 +2509,12 @@ bool CFX_SkiaDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   SkRect skClipRect = SkRect::MakeLTRB(pClipRect->left, pClipRect->bottom,
                                        pClipRect->right, pClipRect->top);
   m_pCanvas->clipRect(skClipRect, SkClipOp::kIntersect, true);
-  return StartDIBitsSkia(pSource, 0xFF, argb, m, FXDIB_ResampleOptions(),
-                         blend_type);
+
+  // `bNoSmoothing` prevents linear sampling when rendering bitmaps.
+  FXDIB_ResampleOptions sampling_options;
+  sampling_options.bNoSmoothing = true;
+
+  return StartDIBitsSkia(pSource, 0xFF, argb, m, sampling_options, blend_type);
 #endif  // defined(_SKIA_SUPPORT_)
 
 #if defined(_SKIA_SUPPORT_PATHS_)
@@ -2774,8 +2783,15 @@ bool CFX_SkiaDeviceDriver::StartDIBitsSkia(
         }
       }
     } else {
+      int dest_width = pdfium::base::checked_cast<int>(
+          ceil(FXSYS_sqrt2(matrix.a, matrix.b)));
+      int dest_height = pdfium::base::checked_cast<int>(
+          ceil(FXSYS_sqrt2(matrix.c, matrix.d)));
+
       SkSamplingOptions sampling_options =
-          options.bInterpolateBilinear
+          (options.bInterpolateBilinear ||
+           CStretchEngine::UseInterpolateBilinear(options, dest_width,
+                                                  dest_height, width, height))
               ? SkSamplingOptions(SkFilterMode::kLinear, SkMipmapMode::kLinear)
               : SkSamplingOptions();
       m_pCanvas->drawImageRect(skBitmap.asImage(),
