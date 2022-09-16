@@ -195,6 +195,24 @@
       "parentUuid": "19c84887_af67c729",
       "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2d6755_d55c7121",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-16T14:32:55Z",
+      "side": 1,
+      "message": "If (3) is the calculation method to use, then can this code switch to using CFX_Matrix::GetXUnit() and GetYUnit()?",
+      "parentUuid": "45a51f2d_af833fb5",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
