@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e30805_f8d54e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-16T19:59:19Z",
+      "side": 1,
+      "message": "Will wait til we get a pdfium -\u003e chrome roll + G3 copy-in before landing.",
+      "revId": "6e39442937c1f3a85186092542e9a440ec5a447e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
