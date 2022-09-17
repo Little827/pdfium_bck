@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1f4c0f_4e4a3529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-17T01:04:10Z",
+      "side": 1,
+      "message": "Annoyingly, Skia\u0027s rendering is close, but not pixel perfect.",
+      "revId": "684bb2aabfd3a69db88736389b1a71f19fe32319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
