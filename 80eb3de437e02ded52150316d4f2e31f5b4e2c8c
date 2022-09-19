@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88954b2f_f277dbd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8621
+      },
+      "writtenOn": "2022-09-19T20:43:28Z",
+      "side": 1,
+      "message": "The changes look good. I, however, am not sure what to do next. Vote for Commit-Queue?",
+      "revId": "80eb3de437e02ded52150316d4f2e31f5b4e2c8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
