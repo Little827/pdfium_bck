@@ -22,6 +22,30 @@
       },
       "revId": "a59c7be73be0c0c3126697a74ad6b4ddd211d1b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22e7fa8_c3af8014",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-19T19:02:14Z",
+      "side": 1,
+      "message": "I wrote it out for clarity, so the reader can better see the units in the equation make sense. Do you find it helpful at the cost of 1 extra line and 1 extra variable?\n\nIn the existing code, if one starts out with `nBytesToRead` and then writes out the units for each variable more explicitly, it would have come out to:\n\n```\nconst uint32_t block_size_in_bytes \u003d std::min(nBytesToRead, 1024u);\nconst uint32_t bytes_to_read \u003d block_size_in_bytes * kEntrySizeInBytes;\n```\n\nThen a reader can see the LHS unit is bytes, but the RHS is bytes^2, and that does not make sense. Which is why I created this CL, as `nBytesToRead` was misleading.",
+      "parentUuid": "1a0c3763_ed9f299e",
+      "range": {
+        "startLine": 521,
+        "startChar": 30,
+        "endLine": 521,
+        "endChar": 43
+      },
+      "revId": "a59c7be73be0c0c3126697a74ad6b4ddd211d1b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
