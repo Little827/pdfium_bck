@@ -190,8 +190,9 @@ const CPDF_Array* CPDF_Dictionary::GetArrayForInternal(
   return ToArray(GetDirectObjectForInternal(key));
 }
 
-const CPDF_Array* CPDF_Dictionary::GetArrayFor(const ByteString& key) const {
-  return GetArrayForInternal(key);
+RetainPtr<const CPDF_Array> CPDF_Dictionary::GetArrayFor(
+    const ByteString& key) const {
+  return pdfium::WrapRetain(GetArrayForInternal(key));
 }
 
 RetainPtr<CPDF_Array> CPDF_Dictionary::GetMutableArrayFor(
@@ -235,7 +236,7 @@ RetainPtr<const CPDF_Number> CPDF_Dictionary::GetNumberFor(
 
 CFX_FloatRect CPDF_Dictionary::GetRectFor(const ByteString& key) const {
   CFX_FloatRect rect;
-  const CPDF_Array* pArray = GetArrayFor(key);
+  RetainPtr<const CPDF_Array> pArray = GetArrayFor(key);
   if (pArray)
     rect = pArray->GetRect();
   return rect;
@@ -243,7 +244,7 @@ CFX_FloatRect CPDF_Dictionary::GetRectFor(const ByteString& key) const {
 
 CFX_Matrix CPDF_Dictionary::GetMatrixFor(const ByteString& key) const {
   CFX_Matrix matrix;
-  const CPDF_Array* pArray = GetArrayFor(key);
+  RetainPtr<const CPDF_Array> pArray = GetArrayFor(key);
   if (pArray)
     matrix = pArray->GetMatrix();
   return matrix;
