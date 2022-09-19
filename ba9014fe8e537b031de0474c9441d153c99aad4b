@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c67defa_7e447152",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-19T18:09:40Z",
+      "side": 1,
+      "message": "nit: maybe early return and no else?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 10
+      },
+      "revId": "ba9014fe8e537b031de0474c9441d153c99aad4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
