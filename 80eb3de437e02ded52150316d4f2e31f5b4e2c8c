@@ -16,6 +16,24 @@
       "message": "The changes look good. I, however, am not sure what to do next. Vote for Commit-Queue?",
       "revId": "80eb3de437e02ded52150316d4f2e31f5b4e2c8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca135ef_c251e095",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-19T20:45:04Z",
+      "side": 1,
+      "message": "Positive written feedback is all I was looking for. Thanks!",
+      "parentUuid": "88954b2f_f277dbd4",
+      "revId": "80eb3de437e02ded52150316d4f2e31f5b4e2c8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
