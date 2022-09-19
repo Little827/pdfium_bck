@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0c3763_ed9f299e",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-19T18:30:27Z",
+      "side": 1,
+      "message": "Omit this? `bytes_to_read` is used only once after declaration.",
+      "range": {
+        "startLine": 521,
+        "startChar": 30,
+        "endLine": 521,
+        "endChar": 43
+      },
+      "revId": "a59c7be73be0c0c3126697a74ad6b4ddd211d1b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
