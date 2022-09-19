@@ -213,6 +213,24 @@
       "parentUuid": "45a51f2d_af833fb5",
       "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb74d70_deaa49d5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-19T22:53:03Z",
+      "side": 1,
+      "message": "Thanks! GetXUnit() and GetYUnit() are way better.\n\nAlso I did a skiapaths/AGG test on rendering an image of matrix (86, 0, 0, -29), when b and c are both 0, the rendering path doesn\u0027t trigger image stretching since it is a perfect rectangle of 86 x 29. But once b is set to non-zero (I used (86, -30, 0, -29)), image stretching process is involved and the dest_width and dest_height are 91 and 29.\n\nIn this case, we should be using option 3 for calculation.",
+      "parentUuid": "df2d6755_d55c7121",
+      "revId": "78bf67019f606612dee41b9f0d52389bdf383327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
