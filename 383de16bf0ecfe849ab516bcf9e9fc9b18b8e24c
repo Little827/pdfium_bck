@@ -22,6 +22,30 @@
       },
       "revId": "383de16bf0ecfe849ab516bcf9e9fc9b18b8e24c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8cd02c3_4c7b1270",
+        "filename": "core/fpdfapi/page/cpdf_transferfunc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-19T18:15:01Z",
+      "side": 1,
+      "message": "(I know we don\u0027t want to give begin()/end() raw ptr access to FUDV which would make this happen automagically, so we might need an implicit operator span\u003cT\u003e())",
+      "parentUuid": "81508793_306796f6",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "383de16bf0ecfe849ab516bcf9e9fc9b18b8e24c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
