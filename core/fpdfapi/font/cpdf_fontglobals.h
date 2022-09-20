@@ -65,7 +65,8 @@ class CPDF_FontGlobals {
   std::unique_ptr<CPDF_CID2UnicodeMap> m_CID2UnicodeMaps[CIDSET_NUM_SETS];
   pdfium::span<const FXCMAP_CMap> m_EmbeddedCharsets[CIDSET_NUM_SETS];
   pdfium::span<const uint16_t> m_EmbeddedToUnicodes[CIDSET_NUM_SETS];
-  std::map<CPDF_Document*, std::unique_ptr<CFX_StockFontArray>> m_StockMap;
+  std::map<UnownedPtr<CPDF_Document>, std::unique_ptr<CFX_StockFontArray>>
+      m_StockMap;
 };
 
 #endif  // CORE_FPDFAPI_FONT_CPDF_FONTGLOBALS_H_
