@@ -70,6 +70,30 @@
       },
       "revId": "383de16bf0ecfe849ab516bcf9e9fc9b18b8e24c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e139b7_caef77a3",
+        "filename": "core/fpdfapi/page/cpdf_transferfunc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-20T18:12:15Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "cb29d52a_01f67b66",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "383de16bf0ecfe849ab516bcf9e9fc9b18b8e24c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
