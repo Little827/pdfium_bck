@@ -520,11 +520,11 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
     ProcessNonbCJK(pBaseDict, pFont->IsBold(), pFont->IsItalic(), basefont,
                    std::move(pWidths));
   } else {
-    pFontDict = ProcessbCJK(
+    pFontDict.Reset(ProcessbCJK(
         pBaseDict, charset, basefont,
         [&pFont, &pEncoding](wchar_t start, wchar_t end, CPDF_Array* widthArr) {
           InsertWidthArray1(pFont.get(), pEncoding.get(), start, end, widthArr);
-        });
+        }));
   }
   int italicangle = pFont->GetSubstFontItalicAngle();
   FX_RECT bbox = pFont->GetBBox().value_or(FX_RECT());
