@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 
-#include "core/fxcrt/data_vector.h"
+#include "core/fxcrt/fixed_data_vector.h"
 #include "third_party/base/span.h"
 
 class CBC_BarcodeRow final {
@@ -18,10 +18,10 @@ class CBC_BarcodeRow final {
   ~CBC_BarcodeRow();
 
   void AddBar(bool black, size_t width);
-  pdfium::span<const uint8_t> GetRow() const { return row_; }
+  pdfium::span<const uint8_t> GetRow() const { return row_.span(); }
 
  private:
-  DataVector<uint8_t> row_;
+  FixedDataVector<uint8_t> row_;
   size_t offset_ = 0;
 };
 
