@@ -680,31 +680,47 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
   int rowBytes = pSource->GetPitch();
   switch (pSource->GetBPP()) {
     case 1: {
-      dst8_storage = DataVector<uint8_t>(Fx2DSizeOrDie(width, height));
-      pdfium::span<uint8_t> dst8_pixels(dst8_storage);
       // By default, the two colors for grayscale are 0xFF and 0x00 unless they
       // are specified in the palette.
-      uint8_t color1 = 0x00;
-      uint8_t color2 = 0xFF;
+      uint8_t color0 = 0x00;
+      uint8_t color1 = 0xFF;
+      bool use_two_colors = true;
       if (pSource->GetFormat() == FXDIB_Format::k1bppRgb &&
           pSource->HasPalette()) {
-        color1 = FXARGB_R(pSource->GetPaletteArgb(0));
-        color2 = FXARGB_R(pSource->GetPaletteArgb(1));
-        DCHECK_EQ(color1, FXARGB_G(pSource->GetPaletteArgb(0)));
-        DCHECK_EQ(color1, FXARGB_B(pSource->GetPaletteArgb(0)));
-        DCHECK_EQ(color2, FXARGB_G(pSource->GetPaletteArgb(1)));
-        DCHECK_EQ(color2, FXARGB_B(pSource->GetPaletteArgb(1)));
+        uint8_t r0 = FXARGB_R(pSource->GetPaletteArgb(0));
+        uint8_t g0 = FXARGB_G(pSource->GetPaletteArgb(0));
+        uint8_t b0 = FXARGB_B(pSource->GetPaletteArgb(0));
+        uint8_t r1 = FXARGB_R(pSource->GetPaletteArgb(1));
+        uint8_t g1 = FXARGB_G(pSource->GetPaletteArgb(1));
+        uint8_t b1 = FXARGB_B(pSource->GetPaletteArgb(1));
+
+        // When `pSource` format is 1 bit per pixel, its palette usually
+        // contains 2 colors. However, it's still possible that more than 2
+        // colors are provided. We need to detect such situations and handle the
+        // color palette differently.
+        use_two_colors = r0 == g0 && g0 == b0 && r1 == g1 && g1 == b1;
+        if (use_two_colors) {
+          color0 = r0;
+          color1 = r1;
+        }
+
+        // TODO(pdfium:1810): Handle upsampling when more than 2 colors are
+        // provided in the palette.
       }
 
-      for (int y = 0; y < height; ++y) {
-        const uint8_t* srcRow =
-            static_cast<const uint8_t*>(buffer) + y * rowBytes;
-        pdfium::span<uint8_t> dst_row = dst8_pixels.subspan(y * width);
-        for (int x = 0; x < width; ++x)
-          dst_row[x] = srcRow[x >> 3] & (1 << (~x & 0x07)) ? color2 : color1;
+      if (use_two_colors) {
+        dst8_storage = DataVector<uint8_t>(Fx2DSizeOrDie(width, height));
+        pdfium::span<uint8_t> dst8_pixels(dst8_storage);
+        for (int y = 0; y < height; ++y) {
+          const uint8_t* srcRow =
+              static_cast<const uint8_t*>(buffer) + y * rowBytes;
+          pdfium::span<uint8_t> dst_row = dst8_pixels.subspan(y * width);
+          for (int x = 0; x < width; ++x)
+            dst_row[x] = srcRow[x >> 3] & (1 << (~x & 0x07)) ? color1 : color0;
+        }
+        buffer = dst8_storage.data();
+        rowBytes = width;
       }
-      buffer = dst8_storage.data();
-      rowBytes = width;
       break;
     }
     case 8:
