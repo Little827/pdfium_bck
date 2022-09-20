@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af44d7c3_9da2edaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-20T22:54:00Z",
+      "side": 1,
+      "message": "follow-on: maybe it should be called FixedZeroedDataVector",
+      "revId": "61795246afc7042dcc374ddf3220671350a93e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1d078c6_000fea34",
