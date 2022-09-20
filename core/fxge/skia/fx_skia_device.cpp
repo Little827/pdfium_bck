@@ -79,6 +79,10 @@
 
 namespace {
 
+#if defined(_SKIA_SUPPORT_)
+constexpr size_t kMaxPaletteSize = 256;
+#endif
+
 #if defined(_SKIA_SUPPORT_PATHS_)
 void RgbByteOrderTransferBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap,
                                 int dest_left,
@@ -685,11 +689,18 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
       uint8_t color0 = 0x00;
       uint8_t color1 = 0xFF;
       bool use_two_colors = true;
+
+      // If more than 2 colors are provided, calculate the range of colors and
+      // store them in `new_palette`
+      FX_ARGB new_palette[kMaxPaletteSize];
+
       if (pSource->GetFormat() == FXDIB_Format::k1bppRgb &&
           pSource->HasPalette()) {
+        uint8_t a0 = FXARGB_A(pSource->GetPaletteArgb(0));
         uint8_t r0 = FXARGB_R(pSource->GetPaletteArgb(0));
         uint8_t g0 = FXARGB_G(pSource->GetPaletteArgb(0));
         uint8_t b0 = FXARGB_B(pSource->GetPaletteArgb(0));
+        uint8_t a1 = FXARGB_A(pSource->GetPaletteArgb(1));
         uint8_t r1 = FXARGB_R(pSource->GetPaletteArgb(1));
         uint8_t g1 = FXARGB_G(pSource->GetPaletteArgb(1));
         uint8_t b1 = FXARGB_B(pSource->GetPaletteArgb(1));
@@ -702,10 +713,15 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
         if (use_two_colors) {
           color0 = r0;
           color1 = r1;
+        } else {
+          for (int i = 0; i < 256; ++i) {
+            int a = a0 + (a1 - a0) * i / 255;
+            int r = r0 + (r1 - r0) * i / 255;
+            int g = g0 + (g1 - g0) * i / 255;
+            int b = b0 + (b1 - b0) * i / 255;
+            new_palette[i] = ArgbEncode(a, r, g, b);
+          }
         }
-
-        // TODO(pdfium:1810): Handle upsampling when more than 2 colors are
-        // provided in the palette.
       }
 
       if (use_two_colors) {
@@ -720,7 +736,27 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
         }
         buffer = dst8_storage.data();
         rowBytes = width;
+        break;
       }
+
+      DCHECK(!use_two_colors);
+      dst32_storage = DataVector<uint32_t>(Fx2DSizeOrDie(width, height));
+      pdfium::span<SkPMColor> dst32_pixels(dst32_storage);
+      for (int y = 0; y < height; ++y) {
+        const uint8_t* srcRow =
+            static_cast<const uint8_t*>(buffer) + y * rowBytes;
+        pdfium::span<uint32_t> dst_row = dst32_pixels.subspan(y * width);
+        for (int x = 0; x < width; ++x) {
+          unsigned index = srcRow[x];
+          if (index >= kMaxPaletteSize) {
+            index = 0;
+          }
+          dst_row[x] = new_palette[index];
+        }
+      }
+      buffer = dst32_storage.data();
+      rowBytes = width * sizeof(uint32_t);
+      colorType = Get32BitSkColorType(bRgbByteOrder);
       break;
     }
     case 8:
