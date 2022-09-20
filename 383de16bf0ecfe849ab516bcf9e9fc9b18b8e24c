@@ -46,6 +46,30 @@
       },
       "revId": "383de16bf0ecfe849ab516bcf9e9fc9b18b8e24c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb29d52a_01f67b66",
+        "filename": "core/fpdfapi/page/cpdf_transferfunc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-20T17:03:51Z",
+      "side": 1,
+      "message": "I cobbled a separate CL for this.  Should be able to remove the span calls after rebasing.",
+      "parentUuid": "c8cd02c3_4c7b1270",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "383de16bf0ecfe849ab516bcf9e9fc9b18b8e24c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
