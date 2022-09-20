@@ -490,9 +490,9 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   return true;
 }
 
-CPDF_Dictionary* CPDF_Document::GetInfo() {
+RetainPtr<CPDF_Dictionary> CPDF_Document::GetInfo() {
   if (m_pInfoDict)
-    return m_pInfoDict.Get();
+    return m_pInfoDict;
 
   if (!m_pParser)
     return nullptr;
@@ -503,10 +503,10 @@ CPDF_Dictionary* CPDF_Document::GetInfo() {
 
   auto ref = pdfium::MakeRetain<CPDF_Reference>(this, info_obj_num);
   m_pInfoDict = ToDictionary(ref->GetMutableDirect());
-  return m_pInfoDict.Get();
+  return m_pInfoDict;
 }
 
-const CPDF_Array* CPDF_Document::GetFileIdentifier() const {
+RetainPtr<const CPDF_Array> CPDF_Document::GetFileIdentifier() const {
   return m_pParser ? m_pParser->GetIDArray() : nullptr;
 }
 
