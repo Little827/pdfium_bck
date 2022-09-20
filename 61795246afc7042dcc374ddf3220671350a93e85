@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c20e9095_317a3da6",
+        "filename": "core/fxcrt/fixed_data_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-20T22:50:45Z",
+      "side": 1,
+      "message": "FWIW, the only difference between this and the uninit version is this one call, right?  Maybe combine in a template later?\n\nIn principle, I should be able to move-assign or move-construct the init from uninit and vice versa, since they all get freed the same way, no?",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "61795246afc7042dcc374ddf3220671350a93e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ce454c5_d981416b",
         "filename": "core/fxcrt/fixed_data_vector.h",
         "patchSetId": 1
