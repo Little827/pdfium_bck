@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b49de5_6e153a71",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-20T23:56:26Z",
+      "side": 1,
+      "message": "Is it possible to reuse the existing `kPaletteSize` constant inside core/fxge/dib/cfx_dibbase.cpp?",
+      "revId": "bf93604d7289bc6b86c229fbdc31796b9b8f96ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45c7b65_0e7ee864",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-20T23:56:26Z",
+      "side": 1,
+      "message": "Use std::size(new_palette) here? (Cast to an int?)",
+      "range": {
+        "startLine": 719,
+        "startChar": 30,
+        "endLine": 719,
+        "endChar": 33
+      },
+      "revId": "bf93604d7289bc6b86c229fbdc31796b9b8f96ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6d1c7d_628484f4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-20T23:56:26Z",
+      "side": 1,
+      "message": "This code looks similar to existing code. Is it possible to refactor and reuse?",
+      "revId": "bf93604d7289bc6b86c229fbdc31796b9b8f96ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e5758d_2c162a29",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-20T23:56:26Z",
+      "side": 1,
+      "message": "Is this similar enough to combine with lines 767-786 somehow?",
+      "revId": "bf93604d7289bc6b86c229fbdc31796b9b8f96ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
