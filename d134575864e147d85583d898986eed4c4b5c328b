@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d36eac1_08f725d0",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T22:37:12Z",
+      "side": 1,
+      "message": "Rename being done as part of moving this into separate CL https://pdfium-review.googlesource.com/c/pdfium/+/98311.",
+      "parentUuid": "3a7e7e9f_0f9b8434",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2674b94_ccd5a20f",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da05922_306b6928",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T22:37:12Z",
+      "side": 1,
+      "message": "Doing this in a separate CL https://pdfium-review.googlesource.com/c/pdfium/+/98311.",
+      "parentUuid": "b2674b94_ccd5a20f",
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8591db19_55ed6868",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-09-21T17:17:19Z",
       "side": 1,
       "message": "Declare closer to where used. No need to declare at the top since this is not early 90s C. In non-Skia builds, this is just an unused variable. If the code gets more flags with values later, then it can move around as needed.",
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b33f57_9ec7a8e9",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T22:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8591db19_55ed6868",
       "revId": "d134575864e147d85583d898986eed4c4b5c328b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -81,6 +141,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d9bc2f_5581289c",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T22:37:12Z",
+      "side": 1,
+      "message": "It had been that way (erroneously) in that CL too, but I caught it as part of a late touchup.  I simply missed catching it in this one as well.  Updated.",
+      "parentUuid": "44d10c03_0f6ad0cb",
+      "range": {
+        "startLine": 108,
+        "startChar": 74,
+        "endLine": 108,
+        "endChar": 79
+      },
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8b8ee2e_5374e669",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-09-21T17:17:19Z",
       "side": 1,
       "message": "Will the code behave the same if this was instead of type FPDF_RENDERER_TYPE (not optional) and initialized in the ctor?",
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fbbcb98_218f6ac9",
+        "filename": "testing/embedder_test_environment.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T22:37:12Z",
+      "side": 1,
+      "message": "Yup - updated.",
+      "parentUuid": "a8b8ee2e_5374e669",
       "revId": "d134575864e147d85583d898986eed4c4b5c328b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
