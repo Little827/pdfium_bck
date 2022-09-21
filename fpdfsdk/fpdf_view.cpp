@@ -47,6 +47,7 @@
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
+#include "third_party/base/notreached.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
@@ -96,9 +97,50 @@ static_assert(
     "WindowsPrintMode::kPostScript3Type42PassThrough value mismatch");
 #endif  // BUILDFLAG(IS_WIN)
 
+#if defined(_SKIA_SUPPORT_)
+// These checks are here because core/ and public/ cannot depend on each other.
+static_assert(static_cast<int>(CFX_DefaultRenderDevice::RendererType::kAgg) ==
+                  FPDF_RENDERERTYPE_AGG,
+              "CFX_DefaultRenderDevice::RendererType::kAGG value mismatch");
+static_assert(static_cast<int>(CFX_DefaultRenderDevice::RendererType::kSkia) ==
+                  FPDF_RENDERERTYPE_SKIA,
+              "CFX_DefaultRenderDevice::RendererType::kSkia value mismatch");
+#endif  // defined(_SKIA_SUPPORT_)
+
 namespace {
 
 bool g_bLibraryInitialized = false;
+
+void UseRendererType(FPDF_RENDERER_TYPE public_type) {
+  // Internal definition of renderer types must stay updated with respect to
+  // the public definition, such that all public definitions can be mapped to
+  // an internal definition in `CFX_DefaultRenderDevice`. A public definition
+  // value might not be meaningful for a particular build configuration, which
+  // would mean use of that value is an error for that build.
+  switch (public_type) {
+    // Set of valid definitions for this build configuration:
+    // AGG is always present in a build. |FPDF_RENDERERTYPE_SKIA| is valid to
+    // use only if it is included in the build.
+#if defined(_SKIA_SUPPORT_)
+    case FPDF_RENDERERTYPE_AGG:
+    case FPDF_RENDERERTYPE_SKIA:
+      // This build configuration has the option for runtime renderer selection.
+      CFX_DefaultRenderDevice::SetDefaultRenderer(
+          public_type == FPDF_RENDERERTYPE_SKIA
+              ? CFX_DefaultRenderDevice::RendererType::kSkia
+              : CFX_DefaultRenderDevice::RendererType::kAgg);
+      break;
+#else
+    case FPDF_RENDERERTYPE_AGG:
+      // This is used for fully AGG builds as well as for the
+      // _SKIA_SUPPORT_PATHS_ build configuration.
+      break;
+#endif
+    // Values which are garbage or just invalid for this build configuration.
+    default:
+      CHECK(false);
+  }
+}
 
 const CPDF_Object* GetXFAEntryFromDocument(const CPDF_Document* doc) {
   const CPDF_Dictionary* root = doc->GetRoot();
@@ -196,6 +238,9 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
     void* platform = config->version >= 3 ? config->m_pPlatform : nullptr;
     IJS_Runtime::Initialize(config->m_v8EmbedderSlot, config->m_pIsolate,
                             platform);
+
+    if (config->version >= 4)
+      UseRendererType(config->m_RendererType);
   }
   g_bLibraryInitialized = true;
 }
