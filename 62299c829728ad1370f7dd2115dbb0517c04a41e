@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc630cf1_ae1e57e4",
+        "filename": "testing/command_line_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-21T23:51:10Z",
+      "side": 1,
+      "message": "1 extra space here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "62299c829728ad1370f7dd2115dbb0517c04a41e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
