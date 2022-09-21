@@ -50,6 +50,23 @@
       "message": "Hello Nicolás/Tom, we are backporting this to the 102 LTS branch, could you please review/submit it since we don\u0027t have the permissions?",
       "revId": "de5e7e68137e0ed4253097ab347312ace0417a80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4394765_7503e011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2022-09-21T15:08:46Z",
+      "side": 1,
+      "message": "Thanks for reviewing Nicolás, do you think that running the pdfunit_tests locally is enough to check if the CL is ok?\n\nI think we may be unable to merge it using the CQ, when we merged this one back on M90 it was submitted without running the tryjobs: https://pdfium-review.googlesource.com/c/pdfium/+/86230/2..4/core/fxge/dib/cfx_bitmapcomposer.cpp#b114\n\nit was said that pdfium doesn\u0027t have branch trybots, they run with trunk config and I think it won\u0027t pass for any change in 102",
+      "revId": "de5e7e68137e0ed4253097ab347312ace0417a80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
