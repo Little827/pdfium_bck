@@ -1,0 +1,15 @@
+// Copyright 2022 PDFium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+#include "testing/command_line_helpers.h"
+
+bool ParseSwitchKeyValue(const std::string& arg,
+                         const std::string& key,
+                         std::string* value) {
+  if (arg.size() <= key.size() || arg.compare(0, key.size(), key) != 0)
+    return false;
+
+  *value = arg.substr(key.size());
+  return true;
+}

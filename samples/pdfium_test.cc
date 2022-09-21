@@ -37,6 +37,7 @@
 #include "samples/pdfium_test_dump_helper.h"
 #include "samples/pdfium_test_event_helper.h"
 #include "samples/pdfium_test_write_helper.h"
+#include "testing/command_line_helpers.h"
 #include "testing/font_renamer.h"
 #include "testing/fx_string_testhelpers.h"
 #include "testing/test_loader.h"
@@ -412,17 +413,6 @@ void ExampleUnsupportedHandler(UNSUPPORT_INFO*, int type) {
       break;
   }
   printf("Unsupported feature: %s.\n", feature.c_str());
-}
-
-// |arg| is expected to be "--key=value", and |key| is "--key=".
-bool ParseSwitchKeyValue(const std::string& arg,
-                         const std::string& key,
-                         std::string* value) {
-  if (arg.size() <= key.size() || arg.compare(0, key.size(), key) != 0)
-    return false;
-
-  *value = arg.substr(key.size());
-  return true;
 }
 
 bool ParseCommandLine(const std::vector<std::string>& args,
