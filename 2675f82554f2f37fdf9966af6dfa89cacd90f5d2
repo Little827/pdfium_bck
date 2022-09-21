@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4694b648_a5bc4fbc",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T04:17:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1d6ed7a_46736faa",
+      "range": {
+        "startLine": 13,
+        "startChar": 65,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5826d570_7e0afd49",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "I think -Wimplicit-fallthrough isn\u0027t triggering because the FPDF_RENDERERTYPE_AGG case has no code inside. At the same time, this isn\u0027t as easy to read as:\n\n```\ncase FPDF_RENDERERTYPE_AGG:\ncase FPDF_RENDERERTYPE_SKIA:\n  // Do stuff\n```\n\nAn alternative is to not fall through, and have 2 CFX_DefaultRenderDevice::SetDefaultRenderer() calls.",
       "parentUuid": "5826d570_7e0afd49",
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a30d04_57fbf151",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T04:17:33Z",
+      "side": 1,
+      "message": "Yeah, I intentionally avoided adding the `[[fallthrough]]` annotation because the style guide mentioned the common exception of consecutive case labels without intervening code.\n\nSince reading clarity is the main concern with your comment, I\u0027m inclined to have two blocks -- one for Skia defined, and the other for not.  There would still only be one `CFX_DefaultRenderDevice::SetDefaultRenderer()` call though, as that\u0027s only for when Skia builds.  I think that\u0027s more clear than nestling a `[[fallthrough]]` after an `#if defined` line.",
+      "parentUuid": "7f48574c_1eacaccf",
       "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -105,6 +147,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc1858f_9116ea08",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T04:17:33Z",
+      "side": 1,
+      "message": "Agreed, wording it that way would be clearer - done.",
+      "parentUuid": "c4ce9724_81e66bf4",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2f7fc6_42dc027f",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T04:17:33Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "bdfb7bf3_61203ce7",
+      "range": {
+        "startLine": 127,
+        "startChar": 56,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d368b3c5_dc691b29",
@@ -118,6 +208,24 @@
       "writtenOn": "2022-09-21T00:27:04Z",
       "side": 1,
       "message": "The public API documentation promised a crash, but this doesn\u0027t crash in release builds.",
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58161995_43b50062",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T04:17:33Z",
+      "side": 1,
+      "message": "Ah, right - NOTREACHED() is matches DCHECK, not CHECK.\n\nIf we promise a crash, we gotta crash!!  Updated.",
+      "parentUuid": "d368b3c5_dc691b29",
       "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -187,6 +295,54 @@
         "startChar": 33,
         "endLine": 238,
         "endChar": 46
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5494d43_6894dc11",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T04:17:33Z",
+      "side": 1,
+      "message": "Ack, good point.  Went with your suggestion.",
+      "parentUuid": "cf6a303c_1aed914c",
+      "range": {
+        "startLine": 238,
+        "startChar": 33,
+        "endLine": 238,
+        "endChar": 46
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b193b7_17565af9",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T04:17:33Z",
+      "side": 1,
+      "message": "Even more clear, done.",
+      "parentUuid": "b2029ca3_ecfc5fe8",
+      "range": {
+        "startLine": 238,
+        "startChar": 16,
+        "endLine": 238,
+        "endChar": 23
       },
       "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
