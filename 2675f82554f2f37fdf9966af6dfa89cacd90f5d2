@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d6ed7a_46736faa",
+        "filename": "core/fxge/cfx_defaultrenderdevice.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T00:27:04Z",
+      "side": 1,
+      "message": "\"but\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 65,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5826d570_7e0afd49",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T00:27:04Z",
+      "side": 1,
+      "message": "A `[[fallthrough]]` can make it more obvious that it\u0027s doing just that.",
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ce9724_81e66bf4",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T00:27:04Z",
+      "side": 1,
+      "message": "I think this really means FPDF_RENDERERTYPE_SKIA and not Skia the library?",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfb7bf3_61203ce7",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T00:27:04Z",
+      "side": 1,
+      "message": "\"a build\" / \"the build\" ?",
+      "range": {
+        "startLine": 127,
+        "startChar": 56,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d368b3c5_dc691b29",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T00:27:04Z",
+      "side": 1,
+      "message": "The public API documentation promised a crash, but this doesn\u0027t crash in release builds.",
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2029ca3_ecfc5fe8",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T00:27:04Z",
+      "side": 1,
+      "message": "2D graphics library?",
+      "range": {
+        "startLine": 238,
+        "startChar": 16,
+        "endLine": 238,
+        "endChar": 23
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8ee88a_41395ac6",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T00:27:04Z",
+      "side": 1,
+      "message": "Between here and line 276, this CL introduced \"core rendering\" as a term, but I\u0027m not sure if that\u0027s well defined.",
+      "range": {
+        "startLine": 238,
+        "startChar": 33,
+        "endLine": 238,
+        "endChar": 46
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
