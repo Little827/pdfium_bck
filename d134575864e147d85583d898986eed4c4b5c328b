@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7e7e9f_0f9b8434",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T17:17:19Z",
+      "side": 1,
+      "message": "Build is often used with the builder pattern and it means the code constructs something. Nothing is being constructed here. Yes, I just realized there\u0027s another function of the same name checked into samples/pdfium_test.cc.",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2674b94_ccd5a20f",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T17:17:19Z",
+      "side": 1,
+      "message": "Consider moving the existing copy of ParseSwitchKeyValue() to somewhere more accessible instead of adding an identical copy. Same for BuildDefaultRendererType().",
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8591db19_55ed6868",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T17:17:19Z",
+      "side": 1,
+      "message": "Declare closer to where used. No need to declare at the top since this is not early 90s C. In non-Skia builds, this is just an unused variable. If the code gets more flags with values later, then it can move around as needed.",
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d10c03_0f6ad0cb",
+        "filename": "testing/embedder_test_environment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T17:17:19Z",
+      "side": 1,
+      "message": "In https://pdfium-review.googlesource.com/c/pdfium/+/96904/21/samples/pdfium_test.cc, this message said \"agg or skia\". Why flip it around here?",
+      "range": {
+        "startLine": 108,
+        "startChar": 74,
+        "endLine": 108,
+        "endChar": 79
+      },
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b8ee2e_5374e669",
+        "filename": "testing/embedder_test_environment.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T17:17:19Z",
+      "side": 1,
+      "message": "Will the code behave the same if this was instead of type FPDF_RENDERER_TYPE (not optional) and initialized in the ctor?",
+      "revId": "d134575864e147d85583d898986eed4c4b5c328b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
