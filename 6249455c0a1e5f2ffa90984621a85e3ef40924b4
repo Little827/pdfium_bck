@@ -16,6 +16,24 @@
       "message": "Needs to be updated.",
       "revId": "6249455c0a1e5f2ffa90984621a85e3ef40924b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a73e23_3c93526e",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-21T05:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a96498_e1f2b2a6",
+      "revId": "6249455c0a1e5f2ffa90984621a85e3ef40924b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
