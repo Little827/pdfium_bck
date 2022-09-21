@@ -16,6 +16,23 @@
       "message": "Tests are passing locally:\n\n\n[----------] Global test environment tear-down\n[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] 1103 tests from 163 test suites ran. (21807 ms total)\n[  PASSED  ] 1103 tests.\n",
       "revId": "b2f1496bc98af9f33708a20067f8e481e54a4238",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84958be_0cd3c88d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2022-09-21T07:12:38Z",
+      "side": 1,
+      "message": "Hello Nicolás/Tom, we are backporting this to the 102 LTS branch, could you please review/submit it since we don\u0027t have the permissions?",
+      "revId": "b2f1496bc98af9f33708a20067f8e481e54a4238",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
