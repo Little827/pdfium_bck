@@ -166,6 +166,30 @@
       },
       "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6a303c_1aed914c",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-21T01:23:20Z",
+      "side": 1,
+      "message": "How about: Choice of 2D graphics libraries to use for rendering to FPDF_BITMAPs.\n\nKeep in mind that PostScript / GDI rendering do not use AGG, but they render to HDCs and not FPDF_BITMAPs.",
+      "parentUuid": "de8ee88a_41395ac6",
+      "range": {
+        "startLine": 238,
+        "startChar": 33,
+        "endLine": 238,
+        "endChar": 46
+      },
+      "revId": "2675f82554f2f37fdf9966af6dfa89cacd90f5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
