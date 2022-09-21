@@ -33,6 +33,23 @@
       "message": "Hello Nicolás/Tom, we are backporting this to the 102 LTS branch, could you please review/submit it since we don\u0027t have the permissions?",
       "revId": "b2f1496bc98af9f33708a20067f8e481e54a4238",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f05cbc_49e32f0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2022-09-21T13:14:00Z",
+      "side": 1,
+      "message": "Tom, could you also submit it? Looks like I also don\u0027t have permissions for that",
+      "revId": "b2f1496bc98af9f33708a20067f8e481e54a4238",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
