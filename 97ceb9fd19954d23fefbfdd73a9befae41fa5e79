@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2404049_d5d4a2ec",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-21T18:21:40Z",
+      "side": 1,
+      "message": "drive-by: did you mean to expand from uint16_t to int for these?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 14
+      },
+      "revId": "97ceb9fd19954d23fefbfdd73a9befae41fa5e79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
