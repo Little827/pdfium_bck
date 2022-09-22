@@ -22,6 +22,30 @@
       },
       "revId": "62299c829728ad1370f7dd2115dbb0517c04a41e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdd89bf6_8441d2cd",
+        "filename": "testing/command_line_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2022-09-22T00:51:23Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "dc630cf1_ae1e57e4",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "62299c829728ad1370f7dd2115dbb0517c04a41e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
