@@ -11,6 +11,11 @@
 
 #include "third_party/base/template_util.h"
 
+// Modifications from base:
+// Does not instantiate linear search fallback when a container has a
+// find() function of any kind, not just one suitable for the given
+// Element type.
+
 namespace pdfium {
 
 namespace internal {
@@ -34,10 +39,10 @@ template <typename Container, typename Element>
 struct HasFindWithEnd<
     Container,
     Element,
-    std::void_t<decltype(std::declval<const Container&>().find(
-                             std::declval<const Element&>()) !=
-                         std::declval<const Container&>().end())>>
-    : std::true_type {};
+    std::void_t<
+        decltype(std::declval<const Container&>().find(
+                     std::declval<const typename Container::key_type&>()) !=
+                 std::declval<const Container&>().end())>> : std::true_type {};
 
 template <typename Container, typename Element, typename = void>
 struct HasContains : std::false_type {};

@@ -418,13 +418,15 @@ TEST(RetainPtr, SetContains) {
 
   RetainPtr<PseudoRetainable> ptr1(&obj1);
   RetainPtr<PseudoRetainable> ptr2(&obj2);
-  EXPECT_TRUE(pdfium::Contains(the_set, ptr1));
-  EXPECT_FALSE(pdfium::Contains(the_set, ptr2));
+
+  // TODO(tsepez): fix std::less to work with RetainPtr and remove Get().
+  EXPECT_TRUE(pdfium::Contains(the_set, ptr1.Get()));
+  EXPECT_FALSE(pdfium::Contains(the_set, ptr2.Get()));
 
   RetainPtr<const PseudoRetainable> const_ptr1(&obj1);
   RetainPtr<const PseudoRetainable> const_ptr2(&obj2);
-  EXPECT_TRUE(pdfium::Contains(the_set, const_ptr1));
-  EXPECT_FALSE(pdfium::Contains(the_set, const_ptr2));
+  EXPECT_TRUE(pdfium::Contains(the_set, const_ptr1.Get()));
+  EXPECT_FALSE(pdfium::Contains(the_set, const_ptr2.Get()));
 }
 
 TEST(RetainPtr, VectorContains) {
