@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1406fa75_66d1c11c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-22T23:23:04Z",
+      "side": 1,
+      "message": "Lei, looks like base has revised their copy to balk at this exact situation, and ours is out of date. Want to try pulling a new version instead?",
+      "revId": "7359f674232d1def6359399bfc037fe0f5813b8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
