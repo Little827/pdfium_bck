@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e8d147_c57c4617",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-22T15:49:44Z",
+      "side": 1,
+      "message": "cfx_dibbase.h - it was already inside CFX_DIBBase.",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "8d24168cf17534d6f2a00198781c7e51f283c89c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27d0f3c_a13fbc50",
+        "filename": "core/fxge/dib/cfx_imagestretcher.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-22T15:49:44Z",
+      "side": 1,
+      "message": "Does passing `pal` not work? How about `pdfium::make_span(pan)` ?",
+      "range": {
+        "startLine": 91,
+        "startChar": 42,
+        "endLine": 91,
+        "endChar": 74
+      },
+      "revId": "8d24168cf17534d6f2a00198781c7e51f283c89c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c37c3c8_4da962b1",
+        "filename": "core/fxge/dib/cfx_imagestretcher.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-22T15:49:44Z",
+      "side": 1,
+      "message": "Place after the ctor, since this static method is not a factory method.",
+      "revId": "8d24168cf17534d6f2a00198781c7e51f283c89c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ee7e81_4dd39b77",
+        "filename": "core/fxge/dib/cfx_imagestretcher.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-22T15:49:44Z",
+      "side": 1,
+      "message": "Please add some comments to explain the requirements the caller has to follow.",
+      "revId": "8d24168cf17534d6f2a00198781c7e51f283c89c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
