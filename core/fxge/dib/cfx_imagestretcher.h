@@ -29,6 +29,17 @@ class CFX_ImageStretcher {
                      const FXDIB_ResampleOptions& options);
   ~CFX_ImageStretcher();
 
+  // Builds a new palette with a size of `CFX_DIBBase::kPaletteSize` from the
+  // existing palette of `source`. The caller must make sure the following
+  // conditions are met:
+  // `source` -       The format must be `FXDIB_Format::k1bppRgb` and it must
+  //                  have a palette
+  // `palette_span` - The size must be `CFX_DIBBase::kPaletteSize` to be able
+  //                  to hold the new palette.
+  static void BuildPaletteFrom1BppSource(
+      const RetainPtr<const CFX_DIBBase>& source,
+      pdfium::span<FX_ARGB> palette_span);
+
   bool Start();
   bool Continue(PauseIndicatorIface* pPause);
 
