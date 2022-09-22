@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d30cda7c_968fb11a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-22T18:12:25Z",
+      "side": 1,
+      "message": "It\u0027s not necessary to check the alpha channel because alpha channels do not exist in this PDF (of which the format was k1bppRgb)\nAn example would be:\ncolor0 \u003d 0x336699\ncolor1 \u003d 0xFFFFFF\n\nAlpha channel was added when the source palette was initialized as 0xFF in BuildPalette().",
+      "parentUuid": "c6a8ecdb_3d26c187",
+      "revId": "d7c05a3dbddef61b6d518686bb73067b79b93039",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b459fce_64d03643",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-20T23:48:54Z",
       "side": 1,
       "message": "Maybe add a helper function to check if a palette color is grayscale?",
+      "revId": "d7c05a3dbddef61b6d518686bb73067b79b93039",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055bf16c_70dd61f6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-22T18:12:25Z",
+      "side": 1,
+      "message": "Added helper IsRGBColorGrayScale().",
+      "parentUuid": "5b459fce_64d03643",
       "revId": "d7c05a3dbddef61b6d518686bb73067b79b93039",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
