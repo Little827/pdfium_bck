@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286a5986_9fe07f49",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-22T22:02:47Z",
+      "side": 1,
+      "message": "I mentioned earlier in the week that in an ideal world, functions can have just 1 in-parameter and a return value. Not sure if we can get to that, but having 9 parameters (5 in, 3 in-out, 1 out) is probably a sign that this single function is trying to do too much.",
+      "revId": "a739fc755ee04dc3b72d2d9842304926ce9c0808",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
