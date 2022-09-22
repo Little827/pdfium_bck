@@ -22,6 +22,30 @@
       },
       "revId": "b55a3406319e68b2c78b0280b15f3917a8080c83",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de85fc55_be4bc492",
+        "filename": "fxbarcode/datamatrix/BC_DefaultPlacement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-22T01:47:18Z",
+      "side": 1,
+      "message": "I did a bit more cleanup here, and uploaded another CL here: https://pdfium-review.googlesource.com/98312",
+      "parentUuid": "84ccead5_ec934db6",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 9
+      },
+      "revId": "b55a3406319e68b2c78b0280b15f3917a8080c83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
