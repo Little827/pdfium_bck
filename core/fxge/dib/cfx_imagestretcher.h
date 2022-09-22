@@ -21,6 +21,10 @@ class PauseIndicatorIface;
 
 class CFX_ImageStretcher {
  public:
+  static void BuildPaletteFrom1BppSource(
+      const RetainPtr<const CFX_DIBBase>& source,
+      pdfium::span<FX_ARGB> palette_span);
+
   CFX_ImageStretcher(ScanlineComposerIface* pDest,
                      const RetainPtr<const CFX_DIBBase>& pSource,
                      int dest_width,
