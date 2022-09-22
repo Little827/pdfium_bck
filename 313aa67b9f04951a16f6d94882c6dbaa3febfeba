@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b613752_77f59ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-22T23:36:37Z",
+      "side": 1,
+      "message": "Anyways, base\u0027s version has dependencies we don\u0027t yet have, so I just snarfed the important section (which gives a better error message). \n\nI think we should go with this for now.  Please doublecheck.",
+      "revId": "313aa67b9f04951a16f6d94882c6dbaa3febfeba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
