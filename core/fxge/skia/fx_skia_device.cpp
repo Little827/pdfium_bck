@@ -79,6 +79,10 @@
 
 namespace {
 
+SkColorType Get32BitSkColorType(bool is_rgb_byte_order) {
+  return is_rgb_byte_order ? kRGBA_8888_SkColorType : kBGRA_8888_SkColorType;
+}
+
 #if defined(_SKIA_SUPPORT_PATHS_)
 void RgbByteOrderTransferBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap,
                                 int dest_left,
@@ -292,6 +296,39 @@ bool IsRGBColorGrayScale(uint32_t color) {
          FXARGB_R(color) == FXARGB_B(color);
 }
 
+// Called by Upsample(), fills the destination 32 bit-per-pixel buffer with
+// colors from `palette`. `palette_size` sets the number of colors which can be
+// used from `palette` since the actual size of `palette` can be larger than
+// `palette_size`.
+void Fill32BppDestStorageWithPalette(pdfium::span<const uint32_t> palette,
+                                     size_t palette_size,
+                                     int width,
+                                     int height,
+                                     bool rgb_byte_order,
+                                     DataVector<uint32_t>& dst32_storage,
+                                     void** buffer,
+                                     int* row_bytes,
+                                     SkColorType* color_type) {
+  dst32_storage = DataVector<uint32_t>(Fx2DSizeOrDie(width, height));
+  pdfium::span<SkPMColor> dst32_pixels(dst32_storage);
+  for (int y = 0; y < height; ++y) {
+    const uint8_t* src_row =
+        static_cast<const uint8_t*>(*buffer) + y * (*row_bytes);
+    pdfium::span<uint32_t> dst_row = dst32_pixels.subspan(y * width);
+    for (int x = 0; x < width; ++x) {
+      unsigned index = src_row[x];
+      if (index >= palette_size) {
+        index = 0;
+      }
+      dst_row[x] = palette[index];
+    }
+  }
+
+  *buffer = dst32_storage.data();
+  *row_bytes = width * sizeof(uint32_t);
+  *color_type = Get32BitSkColorType(rgb_byte_order);
+}
+
 static void DebugValidate(const RetainPtr<CFX_DIBitmap>& bitmap,
                           const RetainPtr<CFX_DIBitmap>& device) {
   if (bitmap) {
@@ -308,10 +345,6 @@ static void DebugValidate(const RetainPtr<CFX_DIBitmap>& bitmap,
   }
 }
 #endif  // defined(_SKIA_SUPPORT_)
-
-SkColorType Get32BitSkColorType(bool is_rgb_byte_order) {
-  return is_rgb_byte_order ? kRGBA_8888_SkColorType : kBGRA_8888_SkColorType;
-}
 
 SkPathFillType GetAlternateOrWindingFillType(
     const CFX_FillRenderOptions& fill_options) {
@@ -690,6 +723,13 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
       uint8_t color0 = 0x00;
       uint8_t color1 = 0xFF;
       bool use_two_colors = true;
+
+      // If more than 2 colors are provided, calculate the range of colors and
+      // store them in `new_palette`
+      FX_ARGB new_palette[CFX_DIBBase::kPaletteSize];
+      // pdfium::span<FX_ARGB> new_palette_span(new_palette,
+      //                                      CFX_DIBBase::kPaletteSize);
+
       if (pSource->GetFormat() == FXDIB_Format::k1bppRgb &&
           pSource->HasPalette()) {
         // When `pSource` has 1 bit per pixel, its palette will contain 2
@@ -705,10 +745,9 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
         if (use_two_colors) {
           color0 = FXARGB_R(palette_color0);
           color1 = FXARGB_R(palette_color1);
+        } else {
+          CFX_ImageStretcher::BuildPaletteFrom1BppSource(pSource, new_palette);
         }
-
-        // TODO(pdfium:1810): Handle upsampling when a range of colors (more
-        // than 2 colors) are provided in the source palette.
       }
 
       if (use_two_colors) {
@@ -723,32 +762,25 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
         }
         buffer = dst8_storage.data();
         rowBytes = width;
+        break;
       }
+
+      DCHECK(!use_two_colors);
+      Fill32BppDestStorageWithPalette(
+          new_palette, CFX_DIBBase::kPaletteSize, width, height, bRgbByteOrder,
+          dst32_storage, &buffer, &rowBytes, &colorType);
       break;
     }
     case 8:
       // we upscale ctables to 32bit.
       if (pSource->HasPalette()) {
-        dst32_storage = DataVector<uint32_t>(Fx2DSizeOrDie(width, height));
-        pdfium::span<SkPMColor> dst32_pixels(dst32_storage);
         const size_t src_palette_size = pSource->GetRequiredPaletteSize();
         pdfium::span<const uint32_t> src_palette = pSource->GetPaletteSpan();
         CHECK_LE(src_palette_size, src_palette.size());
-        for (int y = 0; y < height; ++y) {
-          const uint8_t* srcRow =
-              static_cast<const uint8_t*>(buffer) + y * rowBytes;
-          pdfium::span<uint32_t> dst_row = dst32_pixels.subspan(y * width);
-          for (int x = 0; x < width; ++x) {
-            unsigned index = srcRow[x];
-            if (index >= src_palette_size) {
-              index = 0;
-            }
-            dst_row[x] = src_palette[index];
-          }
-        }
-        buffer = dst32_storage.data();
-        rowBytes = width * sizeof(uint32_t);
-        colorType = Get32BitSkColorType(bRgbByteOrder);
+
+        Fill32BppDestStorageWithPalette(src_palette, src_palette_size, width,
+                                        height, bRgbByteOrder, dst32_storage,
+                                        &buffer, &rowBytes, &colorType);
       }
       break;
     case 24: {
