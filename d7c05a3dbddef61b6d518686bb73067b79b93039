@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab3a494_e9136dee",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-22T21:49:04Z",
+      "side": 1,
+      "message": "Does that mean the code in CFX_ImageStretcher can also stop checking the alpha channel and just assume it\u0027s 0xFF? (For another CL...)",
+      "parentUuid": "d30cda7c_968fb11a",
+      "revId": "d7c05a3dbddef61b6d518686bb73067b79b93039",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b459fce_64d03643",
