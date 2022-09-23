@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ccb50d_ca25f073",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-23T22:01:36Z",
+      "side": 1,
+      "message": "Replace with `palette.size()`.",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8432ba3_d1d2fb14",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-23T22:01:36Z",
+      "side": 1,
+      "message": "Return this instead?",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59ae3e2_2aa394f5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-23T22:01:36Z",
+      "side": 1,
+      "message": "The in part is just `pSource-\u003eGetBuffer()`.\nThe out part is something the caller can take care of.",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
