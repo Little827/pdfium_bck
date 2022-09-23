@@ -60,6 +60,18 @@ class RetainPtr {
     Unleak(that.Leak());
   }
 
+  RetainPtr& operator=(const RetainPtr& that) {
+    if (*this != that)
+      Reset(that.Get());
+    return *this;
+  }
+
+  // Move-assign a RetainPtr. After assignment, |that| will be NULL.
+  RetainPtr& operator=(RetainPtr&& that) noexcept {
+    Unleak(that.Leak());
+    return *this;
+  }
+
   template <class U>
   RetainPtr<U> As() const {
     return RetainPtr<U>(static_cast<U*>(Get()));
@@ -80,18 +92,6 @@ class RetainPtr {
   // Useful for passing notion of object ownership across a C API.
   T* Leak() { return m_pObj.release(); }
   void Unleak(T* ptr) { m_pObj.reset(ptr); }
-
-  RetainPtr& operator=(const RetainPtr& that) {
-    if (*this != that)
-      Reset(that.Get());
-    return *this;
-  }
-
-  // Move-assign a RetainPtr. After assignment, |that| will be NULL.
-  RetainPtr& operator=(RetainPtr&& that) noexcept {
-    Unleak(that.Leak());
-    return *this;
-  }
 
   bool operator==(const RetainPtr& that) const { return Get() == that.Get(); }
   bool operator!=(const RetainPtr& that) const { return !(*this == that); }
