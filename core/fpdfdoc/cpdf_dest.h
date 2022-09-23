@@ -15,7 +15,7 @@ class CPDF_Object;
 
 class CPDF_Dest {
  public:
-  explicit CPDF_Dest(const CPDF_Array* pArray);
+  explicit CPDF_Dest(RetainPtr<const CPDF_Array> pArray);
   CPDF_Dest(const CPDF_Dest& that);
   ~CPDF_Dest();
 
