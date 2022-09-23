@@ -27,24 +27,24 @@ struct ReleaseDeleter {
 template <class T>
 class RetainPtr {
  public:
-  explicit RetainPtr(T* pObj) : m_pObj(pObj) {
-    if (m_pObj)
-      m_pObj->Retain();
-  }
-
-  RetainPtr() = default;
-
-  // Copy-construct a RetainPtr.
-  // Required in addition to copy conversion constructor below.
-  RetainPtr(const RetainPtr& that) : RetainPtr(that.Get()) {}
-
-  // Move-construct a RetainPtr. After construction, |that| will be NULL.
-  // Required in addition to move conversion constructor below.
-  RetainPtr(RetainPtr&& that) noexcept { Unleak(that.Leak()); }
+  RetainPtr() noexcept = default;
 
   // Deliberately implicit to allow returning nullptrs.
   // NOLINTNEXTLINE(runtime/explicit)
   RetainPtr(std::nullptr_t ptr) {}
+
+  explicit RetainPtr(T* pObj) noexcept : m_pObj(pObj) {
+    if (m_pObj)
+      m_pObj->Retain();
+  }
+
+  // Copy-construct a RetainPtr.
+  // Required in addition to copy conversion constructor below.
+  RetainPtr(const RetainPtr& that) noexcept : RetainPtr(that.Get()) {}
+
+  // Move-construct a RetainPtr. After construction, |that| will be NULL.
+  // Required in addition to move conversion constructor below.
+  RetainPtr(RetainPtr&& that) noexcept { Unleak(that.Leak()); }
 
   // Copy conversion constructor.
   template <class U,
@@ -59,6 +59,21 @@ class RetainPtr {
   RetainPtr(RetainPtr<U>&& that) noexcept {
     Unleak(that.Leak());
   }
+
+  // Copy-assing a RetainPtr.
+  RetainPtr& operator=(const RetainPtr& that) {
+    if (*this != that)
+      Reset(that.Get());
+    return *this;
+  }
+
+  // Move-assign a RetainPtr. After assignment, |that| will be NULL.
+  RetainPtr& operator=(RetainPtr&& that) noexcept {
+    Unleak(that.Leak());
+    return *this;
+  }
+
+  ~RetainPtr() = default;
 
   template <class U>
   RetainPtr<U> As() const {
@@ -80,18 +95,6 @@ class RetainPtr {
   // Useful for passing notion of object ownership across a C API.
   T* Leak() { return m_pObj.release(); }
   void Unleak(T* ptr) { m_pObj.reset(ptr); }
-
-  RetainPtr& operator=(const RetainPtr& that) {
-    if (*this != that)
-      Reset(that.Get());
-    return *this;
-  }
-
-  // Move-assign a RetainPtr. After assignment, |that| will be NULL.
-  RetainPtr& operator=(RetainPtr&& that) noexcept {
-    Unleak(that.Leak());
-    return *this;
-  }
 
   bool operator==(const RetainPtr& that) const { return Get() == that.Get(); }
   bool operator!=(const RetainPtr& that) const { return !(*this == that); }
@@ -168,7 +171,8 @@ RetainPtr<T> MakeRetain(Args&&... args) {
   return RetainPtr<T>(new T(std::forward<Args>(args)...));
 }
 
-// Type-deducing wrapper to make a RetainPtr from an ordinary pointer.
+// Type-deducing wrapper to make a RetainPtr from an ordinary pointer,
+// since equivalent constructor is explicit.
 template <typename T>
 RetainPtr<T> WrapRetain(T* that) {
   return RetainPtr<T>(that);
