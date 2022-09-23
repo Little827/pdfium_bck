@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca09c301_600f0374",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-23T18:33:29Z",
+      "side": 1,
+      "message": "Sure. I\u0027ll work on templating separately. I put back the old patchset and then renamed.",
+      "parentUuid": "9bfa6756_8682a778",
+      "revId": "ff53f1b64936f5198d0283834cfc922e3028f763",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7c0486b_fd2e7dd8",
