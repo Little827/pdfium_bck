@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84a171b_6cdb4747",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-23T17:47:35Z",
+      "side": 1,
+      "message": "I think we can make it work by providing another ctor: explicit CPDF_DictionaryLocker(RetainPtr\u003cCPDF_Dictionary\u003e pDictionary);",
+      "revId": "19a0993c68c7a3270b409500f8b3bfd8c4354c35",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
