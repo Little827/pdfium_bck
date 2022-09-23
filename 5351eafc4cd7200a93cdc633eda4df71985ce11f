@@ -16,6 +16,75 @@
       "message": "This was the motivation for all the earlier churn ...",
       "revId": "5351eafc4cd7200a93cdc633eda4df71985ce11f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b242c60f_6191eab1",
+        "filename": "core/fpdfapi/font/cpdf_fontglobals.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T00:38:08Z",
+      "side": 1,
+      "message": "This now compiles without change.",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "5351eafc4cd7200a93cdc633eda4df71985ce11f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90fb8c20_c003b28a",
+        "filename": "core/fpdfapi/font/cpdf_fontglobals.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T00:38:08Z",
+      "side": 1,
+      "message": "we can\u0027t get away with a raw ptr here, need full-up smart ptr.",
+      "range": {
+        "startLine": 82,
+        "startChar": 14,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "5351eafc4cd7200a93cdc633eda4df71985ce11f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc91ffd_638e48cf",
+        "filename": "core/fpdfapi/font/cpdf_fontglobals.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T00:38:08Z",
+      "side": 1,
+      "message": "Grumble grumble grumble.",
+      "range": {
+        "startLine": 87,
+        "startChar": 46,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "5351eafc4cd7200a93cdc633eda4df71985ce11f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
