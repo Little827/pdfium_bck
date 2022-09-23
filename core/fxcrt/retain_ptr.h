@@ -27,24 +27,24 @@ struct ReleaseDeleter {
 template <class T>
 class RetainPtr {
  public:
-  explicit RetainPtr(T* pObj) : m_pObj(pObj) {
-    if (m_pObj)
-      m_pObj->Retain();
-  }
-
-  RetainPtr() = default;
-
-  // Copy-construct a RetainPtr.
-  // Required in addition to copy conversion constructor below.
-  RetainPtr(const RetainPtr& that) : RetainPtr(that.Get()) {}
-
-  // Move-construct a RetainPtr. After construction, |that| will be NULL.
-  // Required in addition to move conversion constructor below.
-  RetainPtr(RetainPtr&& that) noexcept { Unleak(that.Leak()); }
+  RetainPtr() noexcept = default;
 
   // Deliberately implicit to allow returning nullptrs.
   // NOLINTNEXTLINE(runtime/explicit)
   RetainPtr(std::nullptr_t ptr) {}
+
+  explicit RetainPtr(T* pObj) noexcept : m_pObj(pObj) {
+    if (m_pObj)
+      m_pObj->Retain();
+  }
+
+  // Copy-construct a RetainPtr.
+  // Required in addition to copy conversion constructor below.
+  RetainPtr(const RetainPtr& that) noexcept : RetainPtr(that.Get()) {}
+
+  // Move-construct a RetainPtr. After construction, |that| will be NULL.
+  // Required in addition to move conversion constructor below.
+  RetainPtr(RetainPtr&& that) noexcept { Unleak(that.Leak()); }
 
   // Copy conversion constructor.
   template <class U,
@@ -60,6 +60,7 @@ class RetainPtr {
     Unleak(that.Leak());
   }
 
+  // Copy-assing a RetainPtr.
   RetainPtr& operator=(const RetainPtr& that) {
     if (*this != that)
       Reset(that.Get());
@@ -71,6 +72,8 @@ class RetainPtr {
     Unleak(that.Leak());
     return *this;
   }
+
+  ~RetainPtr() = default;
 
   template <class U>
   RetainPtr<U> As() const {
@@ -168,7 +171,8 @@ RetainPtr<T> MakeRetain(Args&&... args) {
   return RetainPtr<T>(new T(std::forward<Args>(args)...));
 }
 
-// Type-deducing wrapper to make a RetainPtr from an ordinary pointer.
+// Type-deducing wrapper to make a RetainPtr from an ordinary pointer,
+// since equivalent constructor is explicit.
 template <typename T>
 RetainPtr<T> WrapRetain(T* that) {
   return RetainPtr<T>(that);
