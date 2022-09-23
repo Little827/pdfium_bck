@@ -16,6 +16,24 @@
       "message": "I mentioned earlier in the week that in an ideal world, functions can have just 1 in-parameter and a return value. Not sure if we can get to that, but having 9 parameters (5 in, 3 in-out, 1 out) is probably a sign that this single function is trying to do too much.",
       "revId": "a739fc755ee04dc3b72d2d9842304926ce9c0808",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d9557a_f0317aef",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-23T18:32:21Z",
+      "side": 1,
+      "message": "Sorry I took the line numbers in a previous comment too literally 😄. I have the same thought that this helper was getting too many parameters.\n\nNow it has 3 in, 2 in-out.\n\nI was debating on whether to use a `pSource` input parameter to replace `width`,`height` and `row_byte`. Since the GetWidth(), GetHeight() and GetPitch() calls are not expensive, I think it\u0027s OK to call them again in this helper.",
+      "parentUuid": "286a5986_9fe07f49",
+      "revId": "a739fc755ee04dc3b72d2d9842304926ce9c0808",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
