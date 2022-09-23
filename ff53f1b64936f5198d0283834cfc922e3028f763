@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bfa6756_8682a778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T15:33:44Z",
+      "side": 1,
+      "message": "Just to land this, let\u0027s go back to the non-template approach, and we\u0027ll bang out a template later. Otherwise, there are some changes.",
+      "revId": "ff53f1b64936f5198d0283834cfc922e3028f763",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c0486b_fd2e7dd8",
+        "filename": "core/fxcrt/fixed_size_data_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T15:33:44Z",
+      "side": 1,
+      "message": "maybe\ntemplate \u003ctypename T, bool INITIALIZE \u003d true\u003e",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "ff53f1b64936f5198d0283834cfc922e3028f763",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6dbee2_7f6352fe",
+        "filename": "core/fxcrt/fixed_size_data_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T15:33:44Z",
+      "side": 1,
+      "message": "then this becomes \ntemplate \u003cbool OTHER_INITIALIZE\u003e\nixedSizeDataVector\u0026 operator\u003d(FixedSizeDataVector\u003cT, OTHER_INITIALIZE\u003e\u0026\u0026 that)",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "ff53f1b64936f5198d0283834cfc922e3028f763",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a8cf07_16b06867",
+        "filename": "core/fxcrt/fixed_size_data_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T15:33:44Z",
+      "side": 1,
+      "message": "still want to be able to cross-assign, since cleanup is the same, and this would introduce a cast. The go away once the bool becomes a template parameter.",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "ff53f1b64936f5198d0283834cfc922e3028f763",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09602c78_d421681a",
+        "filename": "core/fxcrt/fixed_size_data_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-23T15:33:44Z",
+      "side": 1,
+      "message": "these then become template usings\ntemplate \u003ctypename T\u003e\nusing FixedUninitDataVector \u003d\u003d fxcrt::FixedDataVector\u003cT, false\u003e;",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "ff53f1b64936f5198d0283834cfc922e3028f763",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
