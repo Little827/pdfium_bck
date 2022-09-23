@@ -60,16 +60,6 @@ class UnownedPtr {
   // NOLINTNEXTLINE(runtime/explicit)
   constexpr UnownedPtr(std::nullptr_t ptr) noexcept {}
 
-  ~UnownedPtr() {
-    ProbeForLowSeverityLifetimeIssue();
-    m_pObj = nullptr;
-  }
-
-  void Reset(T* obj = nullptr) {
-    ProbeForLowSeverityLifetimeIssue();
-    m_pObj = obj;
-  }
-
   UnownedPtr& operator=(T* that) noexcept {
     Reset(that);
     return *this;
@@ -86,6 +76,16 @@ class UnownedPtr {
     if (*this != that)
       Reset(that.Release());
     return *this;
+  }
+
+  ~UnownedPtr() {
+    ProbeForLowSeverityLifetimeIssue();
+    m_pObj = nullptr;
+  }
+
+  void Reset(T* obj = nullptr) {
+    ProbeForLowSeverityLifetimeIssue();
+    m_pObj = obj;
   }
 
   bool operator==(std::nullptr_t ptr) const { return Get() == nullptr; }
