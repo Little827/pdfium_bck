@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e57e22f_a3e348e3",
+        "filename": "third_party/base/win/scoped_select_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-23T01:45:55Z",
+      "side": 1,
+      "message": "This deviates from Chromium\u0027s scoped_select_object.h, because PDFium\u0027s DCHECK() is not that fancy.",
+      "revId": "e15b3aead1d3bfcd870d915a9401f1f7ae01e31a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
