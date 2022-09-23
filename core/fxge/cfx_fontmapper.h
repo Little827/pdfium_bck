@@ -20,7 +20,7 @@
 #include "third_party/abseil-cpp/absl/types/optional.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "core/fxcrt/fixed_uninit_data_vector.h"
+#include "core/fxcrt/fixed_size_data_vector.h"
 #endif
 
 class CFX_FontMgr;
