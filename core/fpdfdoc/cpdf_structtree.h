@@ -7,6 +7,7 @@
 #ifndef CORE_FPDFDOC_CPDF_STRUCTTREE_H_
 #define CORE_FPDFDOC_CPDF_STRUCTTREE_H_
 
+#include <functional>
 #include <map>
 #include <memory>
 #include <vector>
@@ -33,8 +34,9 @@ class CPDF_StructTree {
   const CPDF_Dictionary* GetTreeRoot() const { return m_pTreeRoot.Get(); }
 
  private:
-  using StructElementMap =
-      std::map<const CPDF_Dictionary*, RetainPtr<CPDF_StructElement>>;
+  using StructElementMap = std::map<RetainPtr<const CPDF_Dictionary>,
+                                    RetainPtr<CPDF_StructElement>,
+                                    std::less<>>;
 
   void LoadPageTree(const CPDF_Dictionary* pPageDict);
   RetainPtr<CPDF_StructElement> AddPageNode(const CPDF_Dictionary* pDict,
