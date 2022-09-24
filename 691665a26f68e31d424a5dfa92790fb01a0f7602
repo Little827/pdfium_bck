@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f99076_32b4fe8d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-24T01:48:48Z",
+      "side": 1,
+      "message": "Group with `width`/`height`?",
+      "revId": "691665a26f68e31d424a5dfa92790fb01a0f7602",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab011b0e_67d910ab",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-24T01:48:48Z",
+      "side": 1,
+      "message": "Over parenthesized.",
+      "range": {
+        "startLine": 313,
+        "startChar": 50,
+        "endLine": 313,
+        "endChar": 51
+      },
+      "revId": "691665a26f68e31d424a5dfa92790fb01a0f7602",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
