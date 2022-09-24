@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a7f031_a63d4403",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-24T01:41:48Z",
+      "side": 1,
+      "message": "It cannot be replaced since sometimes `palette_size` can be smaller than palette.size(). See the caller under \"case 8:\".",
+      "parentUuid": "a9ccb50d_ca25f073",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8432ba3_d1d2fb14",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b6f2e5_2bd85cac",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-24T01:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8432ba3_d1d2fb14",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f59ae3e2_2aa394f5",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-23T22:01:36Z",
       "side": 1,
       "message": "The in part is just `pSource-\u003eGetBuffer()`.\nThe out part is something the caller can take care of.",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "314f7a3e_f5b2977e",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-24T01:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f59ae3e2_2aa394f5",
       "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
