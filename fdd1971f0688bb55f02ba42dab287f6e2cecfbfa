@@ -16,6 +16,24 @@
       "message": "I wonder if cpdf_dest.h should include this instead. There\u0027s no obvious CPDF_Array usage here.",
       "revId": "fdd1971f0688bb55f02ba42dab287f6e2cecfbfa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f31ddec_056e8ad4",
+        "filename": "core/fpdfdoc/cpdf_bookmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-24T01:40:10Z",
+      "side": 1,
+      "message": "probably.  Including cpdf_array.h in the failed compilation unit is just the obvious band-aid I took.",
+      "parentUuid": "5d53693a_8eb9dd3e",
+      "revId": "fdd1971f0688bb55f02ba42dab287f6e2cecfbfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
