@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1773f0_6fc93a27",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-25T02:55:00Z",
+      "side": 1,
+      "message": "I think this section of code may flow better if this block gets combined with the `CFX_ImageStretcher::BuildPaletteFrom1BppSource()` call. Then negate line 737 and go from there.",
+      "revId": "bd1f295eecc0ade60761c1da5a27dd7f602861e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2734fab0_aa852760",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-25T02:55:00Z",
+      "side": 1,
+      "message": "`subspan(0, N)` is the same as `first(N)`, right?",
+      "range": {
+        "startLine": 774,
+        "startChar": 36,
+        "endLine": 774,
+        "endChar": 43
+      },
+      "revId": "bd1f295eecc0ade60761c1da5a27dd7f602861e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
