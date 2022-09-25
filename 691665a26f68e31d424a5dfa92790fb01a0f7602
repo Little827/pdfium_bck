@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44798cd_47762cd2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-25T00:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f99076_32b4fe8d",
+      "revId": "691665a26f68e31d424a5dfa92790fb01a0f7602",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab011b0e_67d910ab",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-24T01:48:48Z",
       "side": 1,
       "message": "Over parenthesized.",
+      "range": {
+        "startLine": 313,
+        "startChar": 50,
+        "endLine": 313,
+        "endChar": 51
+      },
+      "revId": "691665a26f68e31d424a5dfa92790fb01a0f7602",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e88949_4e3a6284",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-25T00:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab011b0e_67d910ab",
       "range": {
         "startLine": 313,
         "startChar": 50,
