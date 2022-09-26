@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e795e2c_bbe7333b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-26T20:23:54Z",
+      "side": 1,
+      "message": "As we store more RetainedPtrs in various classes, are we concerned about circular references potentially creating objects that cannot be freed?",
+      "revId": "73d75ab4e7679cb2aadda08b7212862e55062f46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533d39a9_78b15b02",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-26T20:23:54Z",
+      "side": 1,
+      "message": "This one is formatted funny.",
+      "revId": "73d75ab4e7679cb2aadda08b7212862e55062f46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
