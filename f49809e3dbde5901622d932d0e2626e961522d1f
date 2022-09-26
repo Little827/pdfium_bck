@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d441e859_44d30800",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-26T19:39:07Z",
+      "side": 1,
+      "message": "packed bool with friends, mutli-line template class easier to read when no following lines.",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 6
+      },
+      "revId": "f49809e3dbde5901622d932d0e2626e961522d1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
