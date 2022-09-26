@@ -72,6 +72,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d87c7a_0599f3aa",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-26T17:01:06Z",
+      "side": 1,
+      "message": "The way to look at this is:\n- a span is data pointer + size.\n- span + size expands to (data pointer + size) + size. Why 2 sizes?",
+      "parentUuid": "710e51e9_de181cd7",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8432ba3_d1d2fb14",
