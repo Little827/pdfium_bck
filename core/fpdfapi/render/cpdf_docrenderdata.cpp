@@ -49,7 +49,7 @@ RetainPtr<CPDF_Type3Cache> CPDF_DocRenderData::GetCachedType3(
     return pdfium::WrapRetain(it->second.Get());
 
   auto pCache = pdfium::MakeRetain<CPDF_Type3Cache>(pFont);
-  m_Type3FaceMap[pFont].Reset(pCache.Get());
+  m_Type3FaceMap[pdfium::WrapUnowned(pFont)].Reset(pCache.Get());
   return pCache;
 }
 
@@ -63,7 +63,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
     return pdfium::WrapRetain(it->second.Get());
 
   auto pFunc = CreateTransferFunc(pObj);
-  m_TransferFuncMap[pObj].Reset(pFunc.Get());
+  m_TransferFuncMap[pdfium::WrapRetain(pObj)].Reset(pFunc.Get());
   return pFunc;
 }
 
