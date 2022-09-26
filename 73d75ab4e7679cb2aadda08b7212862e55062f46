@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a2822d4_678a1133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-26T20:52:35Z",
+      "side": 1,
+      "message": "Not for these parser objects.  CPDF_Object and its subclasses only have owning/retained references to other CPDF_Objects and the subclasses.",
+      "parentUuid": "7e795e2c_bbe7333b",
+      "revId": "73d75ab4e7679cb2aadda08b7212862e55062f46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2df74f65_f21aa936",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-26T20:23:54Z",
       "side": 1,
       "message": "This one is formatted funny.",
+      "revId": "73d75ab4e7679cb2aadda08b7212862e55062f46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0099948b_33356f07",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-26T20:52:35Z",
+      "side": 1,
+      "message": "Git CL format did this to us.  I\u0027ll go see if I can outsmart it. In fact, adding a const to the key made the line longer so it formats properly and still compiles.",
+      "parentUuid": "533d39a9_78b15b02",
       "revId": "73d75ab4e7679cb2aadda08b7212862e55062f46",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
