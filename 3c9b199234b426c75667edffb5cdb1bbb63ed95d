@@ -90,6 +90,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ef655c_f8d407d8",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-26T17:08:36Z",
+      "side": 1,
+      "message": "Gotcha~ Thanks!",
+      "parentUuid": "f7d87c7a_0599f3aa",
+      "revId": "3c9b199234b426c75667edffb5cdb1bbb63ed95d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8432ba3_d1d2fb14",
