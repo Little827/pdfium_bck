@@ -22,6 +22,30 @@
       },
       "revId": "ddc95aeb0ad39d70a155821f1c56ada34eccf7e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f901a9_d6d06b43",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-27T16:58:42Z",
+      "side": 1,
+      "message": "I\u0027ll massage this code some more in a follow-up CL.",
+      "parentUuid": "7e9d9eb6_63783706",
+      "range": {
+        "startLine": 358,
+        "startChar": 33,
+        "endLine": 358,
+        "endChar": 63
+      },
+      "revId": "ddc95aeb0ad39d70a155821f1c56ada34eccf7e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
