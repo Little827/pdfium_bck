@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this be a retained ptr?",
       "revId": "7374621533f101d5d11c815186e036f3a3ba6aee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b50389_88c28aa2",
+        "filename": "fpdfsdk/fpdf_attachment.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-27T21:45:39Z",
+      "side": 1,
+      "message": "Yep, and making this mistake without a compilation error is one of the consequences of getting transparent comparison to work via implicit .Get(). Sigh.",
+      "parentUuid": "cd386b39_90665e61",
+      "revId": "7374621533f101d5d11c815186e036f3a3ba6aee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
