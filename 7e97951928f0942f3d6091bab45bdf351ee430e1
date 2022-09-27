@@ -18,6 +18,47 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5e5253_6e3ce50f",
+        "filename": "core/fxcrt/retain_ptr_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-27T18:22:52Z",
+      "side": 1,
+      "message": "Gah, find n replace.",
+      "parentUuid": "2a42c4ad_fcd00624",
+      "revId": "7e97951928f0942f3d6091bab45bdf351ee430e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c083ba_e217efa3",
+        "filename": "core/fxcrt/retain_ptr_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-27T18:22:52Z",
+      "side": 1,
+      "message": "Changed to raw assign here. Gah.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 16
+      },
+      "revId": "7e97951928f0942f3d6091bab45bdf351ee430e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "325f5eff_2c6f468e",
@@ -35,6 +76,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24bd0f15_551d2f08",
+        "filename": "core/fxcrt/unowned_ptr_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-27T18:22:52Z",
+      "side": 1,
+      "message": "Gah. Done",
+      "parentUuid": "325f5eff_2c6f468e",
+      "revId": "7e97951928f0942f3d6091bab45bdf351ee430e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fab473b2_eb3b2410",
@@ -48,6 +107,24 @@
       "writtenOn": "2022-09-27T16:28:41Z",
       "side": 1,
       "message": "Check `ptr2` actually points to `obj`. Also lines 95, 103, and 111.",
+      "revId": "7e97951928f0942f3d6091bab45bdf351ee430e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd564d5a_883ff9d8",
+        "filename": "core/fxcrt/unowned_ptr_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-27T18:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab473b2_eb3b2410",
       "revId": "7e97951928f0942f3d6091bab45bdf351ee430e1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
