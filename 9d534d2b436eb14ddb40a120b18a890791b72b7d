@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96036b08_318188d7",
+        "filename": "core/fpdfapi/page/cpdf_allstates.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T23:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25382bed_f1747a5d",
+      "range": {
+        "startLine": 100,
+        "startChar": 50,
+        "endLine": 100,
+        "endChar": 57
+      },
+      "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "549dc630_e1c4b7f7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-28T22:31:19Z",
       "side": 1,
       "message": "std::move()",
+      "range": {
+        "startLine": 1129,
+        "startChar": 37,
+        "endLine": 1129,
+        "endChar": 45
+      },
+      "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f167bb0a_314301a9",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T23:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549dc630_e1c4b7f7",
       "range": {
         "startLine": 1129,
         "startChar": 37,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d7a501_c8277c2c",
+        "filename": "core/fpdfapi/page/cpdf_function.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T23:41:41Z",
+      "side": 1,
+      "message": "Wouldn\u0027t hurt. Introduced a typedef (err, using) to keep it consistent.",
+      "parentUuid": "98b71174_b60bf869",
+      "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "233592dc_87f97561",
@@ -81,6 +147,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e879a90e_033bc302",
+        "filename": "core/fpdfapi/page/cpdf_function.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T23:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "233592dc_87f97561",
+      "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fd53657_f8f12721",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-09-28T22:31:19Z",
       "side": 1,
       "message": "Existing: This would be clearer as nullptr.",
+      "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3de7c3_8fcbc711",
+        "filename": "core/fpdfapi/page/cpdf_occontext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T23:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd53657_f8f12721",
       "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -121,6 +223,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc89ab1_db631eb8",
+        "filename": "core/fpdfapi/page/cpdf_shadingpattern.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T23:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af98a79b_0d8d8c58",
+      "range": {
+        "startLine": 70,
+        "startChar": 49,
+        "endLine": 70,
+        "endChar": 54
+      },
+      "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15cb4528_168cc576",
@@ -134,6 +260,24 @@
       "writtenOn": "2022-09-28T22:31:19Z",
       "side": 1,
       "message": "Switch the Reset() to operator\u003d",
+      "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31079602_20140cc2",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T23:41:41Z",
+      "side": 1,
+      "message": "Nope. We\u0027re calling ObservedPtr\u003c\u003e::Reset() on RetainPtr\u003c\u003e::Get().",
+      "parentUuid": "15cb4528_168cc576",
       "revId": "9d534d2b436eb14ddb40a120b18a890791b72b7d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
