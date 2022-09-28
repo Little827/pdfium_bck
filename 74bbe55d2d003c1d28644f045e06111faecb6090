@@ -16,6 +16,24 @@
       "message": "Technically correct per the API, but I worry about breaking embedders who (mistakenly) look for the previously-present terminator ignoring the length.",
       "revId": "74bbe55d2d003c1d28644f045e06111faecb6090",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519ce89c_cfa387fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-28T16:25:21Z",
+      "side": 1,
+      "message": "NM, looks like we make a string out of it ourselves first.",
+      "parentUuid": "4cd9728f_690ba710",
+      "revId": "74bbe55d2d003c1d28644f045e06111faecb6090",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
