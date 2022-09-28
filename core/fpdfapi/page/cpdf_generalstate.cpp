@@ -159,13 +159,13 @@ void CPDF_GeneralState::SetSoftMask(RetainPtr<CPDF_Dictionary> pDict) {
   m_Ref.GetPrivateCopy()->m_pSoftMask = std::move(pDict);
 }
 
-const CPDF_Object* CPDF_GeneralState::GetTR() const {
+RetainPtr<const CPDF_Object> CPDF_GeneralState::GetTR() const {
   const StateData* pData = m_Ref.GetObject();
-  return pData ? pData->m_pTR.Get() : nullptr;
+  return pData ? pData->m_pTR : nullptr;
 }
 
-void CPDF_GeneralState::SetTR(const CPDF_Object* pObject) {
-  m_Ref.GetPrivateCopy()->m_pTR.Reset(pObject);
+void CPDF_GeneralState::SetTR(RetainPtr<const CPDF_Object> pObject) {
+  m_Ref.GetPrivateCopy()->m_pTR = std::move(pObject);
 }
 
 RetainPtr<CPDF_TransferFunc> CPDF_GeneralState::GetTransferFunc() const {

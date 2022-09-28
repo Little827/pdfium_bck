@@ -34,9 +34,8 @@ bool HasIntent(const CPDF_Dictionary* pDict,
   return bsIntent == "All" || bsIntent == csElement;
 }
 
-// TODO(tsepez): return retained object.
-const CPDF_Dictionary* GetConfig(CPDF_Document* pDoc,
-                                 const CPDF_Dictionary* pOCGDict) {
+RetainPtr<const CPDF_Dictionary> GetConfig(CPDF_Document* pDoc,
+                                           const CPDF_Dictionary* pOCGDict) {
   DCHECK(pOCGDict);
   RetainPtr<const CPDF_Dictionary> pOCProperties =
       pDoc->GetRoot()->GetDictFor("OCProperties");
@@ -53,14 +52,14 @@ const CPDF_Dictionary* GetConfig(CPDF_Document* pDoc,
   RetainPtr<const CPDF_Dictionary> pConfig = pOCProperties->GetDictFor("D");
   RetainPtr<const CPDF_Array> pConfigs = pOCProperties->GetArrayFor("Configs");
   if (!pConfigs)
-    return pConfig.Get();
+    return nullptr;
 
   for (size_t i = 0; i < pConfigs->size(); i++) {
     RetainPtr<const CPDF_Dictionary> pFind = pConfigs->GetDictAt(i);
     if (pFind && HasIntent(pFind.Get(), "View", ""))
-      return pFind.Get();
+      return pFind;
   }
-  return pConfig.Get();
+  return pConfig;
 }
 
 ByteString GetUsageTypeString(CPDF_OCContext::UsageType eType) {
@@ -94,7 +93,8 @@ CPDF_OCContext::~CPDF_OCContext() = default;
 bool CPDF_OCContext::LoadOCGStateFromConfig(
     const ByteString& csConfig,
     const CPDF_Dictionary* pOCGDict) const {
-  const CPDF_Dictionary* pConfig = GetConfig(m_pDocument.Get(), pOCGDict);
+  RetainPtr<const CPDF_Dictionary> pConfig =
+      GetConfig(m_pDocument.Get(), pOCGDict);
   if (!pConfig)
     return true;
 
