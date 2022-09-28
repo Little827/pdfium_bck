@@ -72,8 +72,8 @@ bool CPDF_StitchFunc::v_Init(const CPDF_Object* pObj,
       if (pSub == pObj)
         return false;
 
-      std::unique_ptr<CPDF_Function> pFunc(
-          CPDF_Function::Load(pSub.Get(), pVisited));
+      std::unique_ptr<CPDF_Function> pFunc =
+          CPDF_Function::Load(std::move(pSub), pVisited);
       if (!pFunc)
         return false;
 

@@ -1006,7 +1006,7 @@ FPDF_VIEWERREF_GetPrintPageRange(FPDF_DOCUMENT document) {
   if (!pDoc)
     return nullptr;
   CPDF_ViewerPreferences viewRef(pDoc);
-  return FPDFPageRangeFromCPDFArray(viewRef.PrintPageRange());
+  return FPDFPageRangeFromCPDFArray(viewRef.PrintPageRange().Get());
 }
 
 FPDF_EXPORT size_t FPDF_CALLCONV

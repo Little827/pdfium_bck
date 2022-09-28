@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/page/cpdf_function.h"
 
+#include <utility>
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_expintfunc.h"
@@ -40,14 +41,14 @@ CPDF_Function::Type IntegerToFunctionType(int iType) {
 
 // static
 std::unique_ptr<CPDF_Function> CPDF_Function::Load(
-    const CPDF_Object* pFuncObj) {
+    RetainPtr<const CPDF_Object> pFuncObj) {
   std::set<const CPDF_Object*> visited;
-  return Load(pFuncObj, &visited);
+  return Load(std::move(pFuncObj), &visited);
 }
 
 // static
 std::unique_ptr<CPDF_Function> CPDF_Function::Load(
-    const CPDF_Object* pFuncObj,
+    RetainPtr<const CPDF_Object> pFuncObj,
     std::set<const CPDF_Object*>* pVisited) {
   if (!pFuncObj)
     return nullptr;
