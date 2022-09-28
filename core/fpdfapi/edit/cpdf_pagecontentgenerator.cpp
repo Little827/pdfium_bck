@@ -340,7 +340,7 @@ void CPDF_PageContentGenerator::ProcessForm(fxcrt::ostringstream* buf,
     return;
   }
 
-  const CPDF_Stream* pStream = pFormObj->form()->GetStream();
+  RetainPtr<const CPDF_Stream> pStream = pFormObj->form()->GetStream();
   if (!pStream)
     return;
 
