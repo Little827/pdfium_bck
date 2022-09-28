@@ -222,18 +222,18 @@ class span {
   // [span.sub], span subviews
   const span first(size_t count) const {
     CHECK(count <= size_);
-    return span(data_.Get(), count);
+    return span(data_.get(), count);
   }
 
   const span last(size_t count) const {
     CHECK(count <= size_);
-    return span(data_.Get() + (size_ - count), count);
+    return span(data_.get() + (size_ - count), count);
   }
 
   const span subspan(size_t pos, size_t count = dynamic_extent) const {
     CHECK(pos <= size_);
     CHECK(count == dynamic_extent || count <= size_ - pos);
-    return span(data_.Get() + pos,
+    return span(data_.get() + pos,
                 count == dynamic_extent ? size_ - pos : count);
   }
 
@@ -245,7 +245,7 @@ class span {
   // [span.elem], span element access
   T& operator[](size_t index) const noexcept {
     CHECK(index < size_);
-    return data_.Get()[index];
+    return data_.get()[index];
   }
 
   constexpr T& front() const noexcept {
@@ -258,11 +258,11 @@ class span {
     return *(data() + size() - 1);
   }
 
-  constexpr T* data() const noexcept { return data_.Get(); }
+  constexpr T* data() const noexcept { return data_.get(); }
 
   // [span.iter], span iterator support
-  constexpr iterator begin() const noexcept { return data_.Get(); }
-  constexpr iterator end() const noexcept { return data_.Get() + size_; }
+  constexpr iterator begin() const noexcept { return data_.get(); }
+  constexpr iterator end() const noexcept { return data_.get() + size_; }
 
   constexpr const_iterator cbegin() const noexcept { return begin(); }
   constexpr const_iterator cend() const noexcept { return end(); }
