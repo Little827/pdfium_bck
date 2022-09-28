@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18232a63_f4ed97dc",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-28T17:51:34Z",
+      "side": 1,
+      "message": "Aleksei, friendly reminder to look at the test case I created.",
+      "parentUuid": "82239413_28a2d498",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62fda6f5_b7ec7e44",
         "filename": "core/fpdfdoc/cpdf_annot.cpp",
         "patchSetId": 2
