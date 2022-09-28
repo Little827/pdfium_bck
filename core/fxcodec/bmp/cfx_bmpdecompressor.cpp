@@ -338,11 +338,11 @@ bool CFX_BmpDecompressor::ValidateFlag() const {
 
 BmpDecoder::Status CFX_BmpDecompressor::DecodeImage() {
   if (decode_status_ == DecodeStatus::kDataPre) {
-    input_buffer_->Seek(0);
     if (!GetDataPosition(header_offset_)) {
       decode_status_ = DecodeStatus::kTail;
       return BmpDecoder::Status::kFail;
     }
+    input_buffer_->Seek(header_offset_);
 
     row_num_ = 0;
     SaveDecodingStatus(DecodeStatus::kData);
