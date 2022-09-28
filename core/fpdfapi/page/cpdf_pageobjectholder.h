@@ -68,7 +68,7 @@ class CPDF_PageObjectHolder {
   void ContinueParse(PauseIndicatorIface* pPause);
   ParseState GetParseState() const { return m_ParseState; }
 
-  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+  CPDF_Document* GetDocument() const { return m_pDocument; }
   const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
   RetainPtr<CPDF_Dictionary> GetMutableDict() { return m_pDict; }
   const CPDF_Dictionary* GetResources() const { return m_pResources.Get(); }

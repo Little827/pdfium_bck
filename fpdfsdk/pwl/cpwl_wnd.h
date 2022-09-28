@@ -201,7 +201,7 @@ class CPWL_Wnd : public Observable {
   void RemoveFlag(uint32_t dwFlags);
   void SetClipRect(const CFX_FloatRect& rect);
 
-  CPWL_Wnd* GetParentWindow() const { return m_pParent.Get(); }
+  CPWL_Wnd* GetParentWindow() const { return m_pParent; }
   IPWL_FillerNotify::PerWindowData* GetAttachedData() const {
     return m_pAttachedData.get();
   }
@@ -238,7 +238,7 @@ class CPWL_Wnd : public Observable {
     return m_CreationParams.pTimerHandler.Get();
   }
   IPWL_FillerNotify* GetFillerNotify() const {
-    return m_CreationParams.pFillerNotify.Get();
+    return m_CreationParams.pFillerNotify;
   }
 
   CPWL_ScrollBar* GetVScrollBar() const;
@@ -265,7 +265,7 @@ class CPWL_Wnd : public Observable {
   CFX_PointF GetCenterPoint() const;
   const CFX_FloatRect& GetClipRect() const;
 
-  IPVT_FontMap* GetFontMap() const { return m_CreationParams.pFontMap.Get(); }
+  IPVT_FontMap* GetFontMap() const { return m_CreationParams.pFontMap; }
 
  private:
   void DrawChildAppearance(CFX_RenderDevice* pDevice,

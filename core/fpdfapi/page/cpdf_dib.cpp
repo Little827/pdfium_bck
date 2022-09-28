@@ -349,7 +349,7 @@ bool CPDF_DIB::LoadColorInfo(const CPDF_Dictionary* pFormResources,
   if (!pCSObj)
     return false;
 
-  auto* pDocPageData = CPDF_DocPageData::FromDocument(m_pDocument.Get());
+  auto* pDocPageData = CPDF_DocPageData::FromDocument(m_pDocument);
   if (pFormResources)
     m_pColorSpace = pDocPageData->GetColorSpace(pCSObj.Get(), pFormResources);
   if (!m_pColorSpace)
@@ -802,7 +802,7 @@ bool CPDF_DIB::IsJBigImage() const {
 
 CPDF_DIB::LoadState CPDF_DIB::StartLoadMaskDIB(
     RetainPtr<const CPDF_Stream> mask_stream) {
-  m_pMask = pdfium::MakeRetain<CPDF_DIB>(m_pDocument.Get(), mask_stream.Get());
+  m_pMask = pdfium::MakeRetain<CPDF_DIB>(m_pDocument, mask_stream.Get());
   LoadState ret = m_pMask->StartLoadDIBBase(
       false, nullptr, nullptr, true, CPDF_ColorSpace::Family::kUnknown, false);
   if (ret == LoadState::kContinue) {

@@ -41,7 +41,7 @@ CPDFSDK_Annot::UnsafeInputHandlers* CPDFSDK_BAAnnot::GetUnsafeInputHandlers() {
 }
 
 CPDF_Annot* CPDFSDK_BAAnnot::GetPDFAnnot() const {
-  return m_pAnnot.Get();
+  return m_pAnnot;
 }
 
 CPDF_Annot* CPDFSDK_BAAnnot::GetPDFPopupAnnot() const {

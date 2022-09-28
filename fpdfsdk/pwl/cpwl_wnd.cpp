@@ -82,7 +82,7 @@ class CPWL_MsgControl final : public Observable {
   void KillFocus() {
     ObservedPtr<CPWL_MsgControl> observed_ptr(this);
     if (!m_KeyboardPaths.empty()) {
-      CPWL_Wnd* pWnd = m_KeyboardPaths.front().Get();
+      CPWL_Wnd* pWnd = m_KeyboardPaths.front();
       if (pWnd)
         pWnd->OnKillFocus();
     }
@@ -483,7 +483,7 @@ const CPWL_Dash& CPWL_Wnd::GetBorderDash() const {
 }
 
 CPWL_ScrollBar* CPWL_Wnd::GetVScrollBar() const {
-  return HasFlag(PWS_VSCROLL) ? m_pVScrollBar.Get() : nullptr;
+  return HasFlag(PWS_VSCROLL) ? m_pVScrollBar : nullptr;
 }
 
 void CPWL_Wnd::CreateScrollBar(const CreateParams& cp) {

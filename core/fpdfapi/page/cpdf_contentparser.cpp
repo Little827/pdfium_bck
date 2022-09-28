@@ -204,7 +204,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
     m_pParser = std::make_unique<CPDF_StreamContentParser>(
         m_pObjectHolder->GetDocument(),
         m_pObjectHolder->GetMutablePageResources(), nullptr, nullptr,
-        m_pObjectHolder.Get(), m_pObjectHolder->GetMutableResources(),
+        m_pObjectHolder, m_pObjectHolder->GetMutableResources(),
         m_pObjectHolder->GetBBox(), nullptr, &m_ParsedSet);
     m_pParser->GetCurStates()->m_ColorState.SetDefault();
   }
