@@ -145,7 +145,7 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
   }
 
-  auto stream = CreateXFAMultiStream(m_pPDFDoc.Get());
+  auto stream = CreateXFAMultiStream(m_pPDFDoc);
   if (!stream) {
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);
     return false;
@@ -160,8 +160,8 @@ bool CPDFXFA_Context::LoadXFADoc() {
 
   AutoNuller<cppgc::Persistent<CXFA_FFDoc>> doc_nuller(&m_pXFADoc);
   m_pXFADoc = cppgc::MakeGarbageCollected<CXFA_FFDoc>(
-      m_pGCHeap->GetAllocationHandle(), m_pXFAApp, m_pDocEnv.get(),
-      m_pPDFDoc.Get(), m_pGCHeap.get());
+      m_pGCHeap->GetAllocationHandle(), m_pXFAApp, m_pDocEnv.get(), m_pPDFDoc,
+      m_pGCHeap.get());
 
   if (!m_pXFADoc->OpenDoc(m_pXML.get())) {
     FXSYS_SetLastError(FPDF_ERR_XFALOAD);
@@ -257,7 +257,7 @@ RetainPtr<CPDFXFA_Page> CPDFXFA_Context::GetXFAPage(
 }
 
 CPDF_Document* CPDFXFA_Context::GetPDFDoc() const {
-  return m_pPDFDoc.Get();
+  return m_pPDFDoc;
 }
 
 void CPDFXFA_Context::DeletePage(int page_index) {

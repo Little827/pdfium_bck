@@ -58,7 +58,7 @@ class CPDF_Document : public Observable,
         RetainPtr<const CPDF_Stream> pFontStream) = 0;
 
     void SetDocument(CPDF_Document* pDoc) { m_pDoc = pDoc; }
-    CPDF_Document* GetDocument() const { return m_pDoc.Get(); }
+    CPDF_Document* GetDocument() const { return m_pDoc; }
 
    private:
     UnownedPtr<CPDF_Document> m_pDoc;
@@ -70,7 +70,7 @@ class CPDF_Document : public Observable,
     virtual ~RenderDataIface();
 
     void SetDocument(CPDF_Document* pDoc) { m_pDoc = pDoc; }
-    CPDF_Document* GetDocument() const { return m_pDoc.Get(); }
+    CPDF_Document* GetDocument() const { return m_pDoc; }
 
    private:
     UnownedPtr<CPDF_Document> m_pDoc;

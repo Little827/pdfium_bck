@@ -137,7 +137,7 @@ class CPDF_FormField {
   bool UseSelectedIndicesObject() const;
 
   const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
-  CPDF_InteractiveForm* GetForm() const { return m_pForm.Get(); }
+  CPDF_InteractiveForm* GetForm() const { return m_pForm; }
 
   WideString GetCheckValue(bool bDefault) const;
 

@@ -90,8 +90,8 @@ class CPDF_InteractiveForm {
   void SetNotifierIface(NotifierIface* pNotify);
   void FixPageFields(CPDF_Page* pPage);
 
-  NotifierIface* GetFormNotify() const { return m_pFormNotify.Get(); }
-  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+  NotifierIface* GetFormNotify() const { return m_pFormNotify; }
+  CPDF_Document* GetDocument() const { return m_pDocument; }
   const CPDF_Dictionary* GetFormDict() const { return m_pFormDict.Get(); }
   RetainPtr<CPDF_Dictionary> GetMutableFormDict() { return m_pFormDict; }
 

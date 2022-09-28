@@ -54,7 +54,7 @@ class CFFL_InteractiveFormFiller final : public IPWL_FillerNotify {
   explicit CFFL_InteractiveFormFiller(CallbackIface* pCallbackIface);
   ~CFFL_InteractiveFormFiller() override;
 
-  CallbackIface* GetCallbackIface() const { return m_pCallbackIface.Get(); }
+  CallbackIface* GetCallbackIface() const { return m_pCallbackIface; }
   bool Annot_HitTest(const CPDFSDK_Widget* pWidget, const CFX_PointF& point);
   FX_RECT GetViewBBox(const CPDFSDK_PageView* pPageView,
                       CPDFSDK_Widget* pWidget);
