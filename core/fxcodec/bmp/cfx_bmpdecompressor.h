@@ -75,6 +75,7 @@ class CFX_BmpDecompressor {
   DataVector<uint8_t> out_row_buffer_;
   std::vector<uint32_t> palette_;
   uint32_t header_offset_ = 0;
+  uint32_t data_offset_ = 0;
   uint32_t width_ = 0;
   uint32_t height_ = 0;
   uint32_t compress_flag_ = 0;
