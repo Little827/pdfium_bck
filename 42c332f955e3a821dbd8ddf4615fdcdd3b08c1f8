@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e02d489_71351eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-29T20:41:44Z",
+      "side": 1,
+      "message": "The Skia and the AGG rendering results are attached in https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1651#c8",
+      "revId": "42c332f955e3a821dbd8ddf4615fdcdd3b08c1f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
