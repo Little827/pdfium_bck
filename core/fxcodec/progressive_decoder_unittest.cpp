@@ -20,6 +20,10 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/span.h"
 
+#ifdef PDF_ENABLE_XFA_BMP
+#include "core/fxcodec/bmp/bmp_decoder.h"
+#endif  // PDF_ENABLE_XFA_BMP
+
 #ifdef PDF_ENABLE_XFA_GIF
 #include "core/fxcodec/gif/gif_decoder.h"
 #endif  // PDF_ENABLE_XFA_GIF
@@ -40,6 +44,42 @@ FXCODEC_STATUS DecodeToBitmap(ProgressiveDecoder& decoder,
 }
 
 }  // namespace
+
+#ifdef PDF_ENABLE_XFA_BMP
+TEST(ProgressiveDecoder, Bmp) {
+  static constexpr uint8_t kInput[] = {
+      0x42, 0x4d, 0x3e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3a,
+      0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+      0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00,
+      0x00, 0x04, 0x00, 0x00, 0x00, 0x13, 0x0b, 0x00, 0x00, 0x13, 0x0b,
+      0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xc0,
+      0x80, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+  auto decoder = std::make_unique<ProgressiveDecoder>();
+
+  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  CFX_DIBAttribute attr;
+  FXCODEC_STATUS status =
+      decoder->LoadImageInfo(source, FXCODEC_IMAGE_BMP, &attr, true);
+  ASSERT_EQ(FXCODEC_STATUS::kFrameReady, status);
+
+  ASSERT_EQ(1, decoder->GetWidth());
+  ASSERT_EQ(1, decoder->GetHeight());
+
+  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  bitmap->Create(decoder->GetWidth(), decoder->GetHeight(),
+                 FXDIB_Format::kArgb);
+
+  size_t frames;
+  std::tie(status, frames) = decoder->GetFrames();
+  ASSERT_EQ(FXCODEC_STATUS::kDecodeReady, status);
+  ASSERT_EQ(1u, frames);
+
+  status = DecodeToBitmap(*decoder, bitmap);
+  EXPECT_EQ(FXCODEC_STATUS::kDecodeFinished, status);
+  EXPECT_THAT(bitmap->GetScanline(0), ElementsAre(0xc0, 0x80, 0x40, 0xff));
+}
+#endif  // PDF_ENABLE_XFA_BMP
 
 #ifdef PDF_ENABLE_XFA_GIF
 TEST(ProgressiveDecoder, Gif87a) {
