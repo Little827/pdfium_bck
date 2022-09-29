@@ -7,6 +7,7 @@
 #include <memory>
 
 #include "core/fxcrt/widestring.h"
+#include "core/fxge/cfx_defaultrenderdevice.h"
 #include "public/fpdf_ext.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
@@ -254,41 +255,33 @@ TEST_F(CFWLEditEmbedderTest, MAYBE_DateTimePickerTest) {
   }
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_ImageEditTest DISABLED_ImageEditTest
-#else
-#define MAYBE_ImageEditTest ImageEditTest
-#endif
-TEST_F(CFWLEditEmbedderTest, MAYBE_ImageEditTest) {
+TEST_F(CFWLEditEmbedderTest, ImageEditTest) {
   CreateAndInitializeFormPDF("xfa/xfa_image_edit.pdf");
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
-
-  const char kFilledMD5[] = "101cf6223fa2403fba4c413a8310ab02";
-  {
-    ScopedFPDFBitmap page_bitmap =
-        RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
-    CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
-  }
+  const char* filled_checksum = []() {
+    if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+      return "062ad65614888e4f114b99f3396be3e8";
+    return "101cf6223fa2403fba4c413a8310ab02";
+  }();
+  ScopedFPDFBitmap page_bitmap = RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
+  CompareBitmap(page_bitmap.get(), 612, 792, filled_checksum);
 }
 
-// TODO(crbug.com/pdfium/11): Fix this test and enable.
-#if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATHS_)
-#define MAYBE_ComboBoxTest DISABLED_ComboBoxTest
-#else
-#define MAYBE_ComboBoxTest ComboBoxTest
-#endif
-TEST_F(CFWLEditEmbedderTest, MAYBE_ComboBoxTest) {
+TEST_F(CFWLEditEmbedderTest, ComboBoxTest) {
   CreateAndInitializeFormPDF("xfa/xfa_combobox.pdf");
 
   // Give focus to widget.
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
   FORM_OnLButtonUp(form_handle(), page(), 0, 115, 58);
   {
+    const char* filled_checksum = []() {
+      if (CFX_DefaultRenderDevice::SkiaVariantIsDefaultRenderer())
+        return "8c555487e09ee4acf3ace77db5929bdc";
+      return "dad642ae8a5afce2591ffbcabbfc58dd";
+    }();
     ScopedFPDFBitmap page_bitmap =
         RenderLoadedPageWithFlags(page(), FPDF_ANNOT);
-    const char kFilledMD5[] = "dad642ae8a5afce2591ffbcabbfc58dd";
-    CompareBitmap(page_bitmap.get(), 612, 792, kFilledMD5);
+    CompareBitmap(page_bitmap.get(), 612, 792, filled_checksum);
   }
 
   // Click on down-arrow button, dropdown list appears.
