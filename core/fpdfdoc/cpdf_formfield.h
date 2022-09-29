@@ -69,9 +69,6 @@ class CPDF_FormField {
     kSign
   };
 
-  CPDF_FormField(CPDF_InteractiveForm* pForm, CPDF_Dictionary* pDict);
-  ~CPDF_FormField();
-
   static absl::optional<FormFieldType> IntToFormFieldType(int value);
 
   static const CPDF_Object* GetFieldAttr(const CPDF_Dictionary* pFieldDict,
@@ -80,6 +77,9 @@ class CPDF_FormField {
                                    const ByteString& name);
 
   static WideString GetFullNameForDict(const CPDF_Dictionary* pFieldDict);
+
+  CPDF_FormField(CPDF_InteractiveForm* pForm, RetainPtr<CPDF_Dictionary> pDict);
+  ~CPDF_FormField();
 
   WideString GetFullName() const;
   Type GetType() const { return m_Type; }
