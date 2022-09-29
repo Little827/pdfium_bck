@@ -16,6 +16,24 @@
       "message": "Thanks for fixing this broken argument!",
       "revId": "5ede03b1bb7f9f23819a66e099fd5b59d65e077d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5be9421_92d58200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-29T17:41:22Z",
+      "side": 1,
+      "message": "No problem! Just to clarify, it wasn\u0027t broken, it just wasn\u0027t documented in --help.",
+      "parentUuid": "0e4f1fc2_6e8c4175",
+      "revId": "5ede03b1bb7f9f23819a66e099fd5b59d65e077d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
