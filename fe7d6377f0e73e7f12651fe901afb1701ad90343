@@ -34,6 +34,24 @@
       "parentUuid": "78c3a3ed_8b632775",
       "revId": "fe7d6377f0e73e7f12651fe901afb1701ad90343",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6280a9e5_be9b9411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2022-09-30T18:20:46Z",
+      "side": 1,
+      "message": "It looks like that was addressed in the Chromium roll script with https://chromium-review.googlesource.com/c/chromium/src/+/1078942/ .",
+      "parentUuid": "33ecea6f_423c0f4a",
+      "revId": "fe7d6377f0e73e7f12651fe901afb1701ad90343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
