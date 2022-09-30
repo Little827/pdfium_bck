@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714c7c1e_04147a1e",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-30T00:30:43Z",
+      "side": 1,
+      "message": "Thoughts on filing a separate bug instead of using this metabug?",
+      "range": {
+        "startLine": 541,
+        "startChar": 14,
+        "endLine": 541,
+        "endChar": 18
+      },
+      "revId": "f3d011bfe644a55ae81398c7bd263ed812733e3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

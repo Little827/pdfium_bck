@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c44953_c5a8722f",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_bmp_image.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-30T00:30:43Z",
+      "side": 0,
+      "message": "Is the existing BMP here worth keeping? e.g. Move to page 2, or into another PDF?",
+      "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
