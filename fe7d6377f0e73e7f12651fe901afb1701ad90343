@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c3a3ed_8b632775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T17:13:42Z",
+      "side": 1,
+      "message": "Looks like the roll script had an issue, investigating.",
+      "revId": "fe7d6377f0e73e7f12651fe901afb1701ad90343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
