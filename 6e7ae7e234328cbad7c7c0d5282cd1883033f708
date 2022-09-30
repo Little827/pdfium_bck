@@ -16,6 +16,23 @@
       "message": "Need to do the libc++ roll first. See changelog.",
       "revId": "6e7ae7e234328cbad7c7c0d5282cd1883033f708",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5670657_b31b7df9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-30T15:49:13Z",
+      "side": 1,
+      "message": "Might need to match buildtools\u0027s or build\u0027s abseil version to avoid the red bot.",
+      "revId": "6e7ae7e234328cbad7c7c0d5282cd1883033f708",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
