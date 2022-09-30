@@ -22,6 +22,30 @@
       },
       "revId": "d807ac3a7dc7cfaa0048ee88a623e585744d5894",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d74525a_da4f1c5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T23:33:34Z",
+      "side": 1,
+      "message": "That seems reasonable.\n\nSkTDArray is actually a private Skia API, so I think it\u0027s problematic that we\u0027re using it in the first place. I didn\u0027t want to address that in the roll, though.",
+      "parentUuid": "55f54dfa_de5a8b71",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 74
+      },
+      "revId": "d807ac3a7dc7cfaa0048ee88a623e585744d5894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
