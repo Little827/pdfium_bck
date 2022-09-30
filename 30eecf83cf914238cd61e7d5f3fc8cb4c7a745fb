@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa32d671_8fab07d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T21:48:40Z",
+      "side": 1,
+      "message": "Looks like this needs to roll together with libc++, so probably going to abandon this change.",
+      "revId": "30eecf83cf914238cd61e7d5f3fc8cb4c7a745fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
