@@ -3182,6 +3182,10 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
 #endif  // BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
 
 TEST_F(FPDFEditEmbedderTest, SaveAndRender) {
+  // TODO(crbug.com/pdfium/1651): Fix this issue and enable the test for Skia.
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
+
   const char* checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
       return "9a78649e85e69d220c22e0fc316da740";
