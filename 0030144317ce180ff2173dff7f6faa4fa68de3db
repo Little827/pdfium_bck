@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4feed6c0_cb35723f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T18:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07aac300_69dd584b",
+      "revId": "0030144317ce180ff2173dff7f6faa4fa68de3db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b35527_96da0ee3",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1186619b_db562422",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T18:49:44Z",
+      "side": 1,
+      "message": "Fixed in next CL.",
+      "parentUuid": "c0b35527_96da0ee3",
+      "revId": "0030144317ce180ff2173dff7f6faa4fa68de3db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "561563bb_01db6863",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-09-30T18:26:23Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 967,
+        "startChar": 23,
+        "endLine": 967,
+        "endChar": 38
+      },
+      "revId": "0030144317ce180ff2173dff7f6faa4fa68de3db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b3217b_5f39f283",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T18:49:44Z",
+      "side": 1,
+      "message": "Removed in next CL. I\u0027ll save some bot cycles by submitting as is.",
+      "parentUuid": "561563bb_01db6863",
       "range": {
         "startLine": 967,
         "startChar": 23,
