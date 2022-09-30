@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07aac300_69dd584b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-30T18:26:23Z",
+      "side": 1,
+      "message": "Wrap",
+      "revId": "0030144317ce180ff2173dff7f6faa4fa68de3db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b35527_96da0ee3",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-30T18:26:23Z",
+      "side": 1,
+      "message": "Assign?",
+      "revId": "0030144317ce180ff2173dff7f6faa4fa68de3db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "561563bb_01db6863",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-30T18:26:23Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 967,
+        "startChar": 23,
+        "endLine": 967,
+        "endChar": 38
+      },
+      "revId": "0030144317ce180ff2173dff7f6faa4fa68de3db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
