@@ -16,6 +16,24 @@
       "message": "I know existing tests in this file do this, but why not just declare this on the stack?",
       "revId": "08071b22512c86fbdc775e77690cfe7d4999d418",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd6c329_361b229b",
+        "filename": "core/fxcodec/progressive_decoder_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T07:09:30Z",
+      "side": 1,
+      "message": "Done\n\nThanks for the suggestion!",
+      "parentUuid": "34629eab_9fb47647",
+      "revId": "08071b22512c86fbdc775e77690cfe7d4999d418",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
