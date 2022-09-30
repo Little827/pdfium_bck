@@ -52,6 +52,24 @@
       "parentUuid": "d4844a49_7d69b428",
       "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b3ad8d_c6b4a6ec",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_bmp_image.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-30T18:47:58Z",
+      "side": 0,
+      "message": "Strange. It renders with Reader on Windows.",
+      "parentUuid": "2a7d6969_2ee359f9",
+      "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
