@@ -52,6 +52,24 @@
       "parentUuid": "33ecea6f_423c0f4a",
       "revId": "fe7d6377f0e73e7f12651fe901afb1701ad90343",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8fca30_5115e45b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-09-30T18:23:42Z",
+      "side": 1,
+      "message": "Thanks. We found that too and created https://pdfium-review.googlesource.com/c/pdfium/+/98732",
+      "parentUuid": "6280a9e5_be9b9411",
+      "revId": "fe7d6377f0e73e7f12651fe901afb1701ad90343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
