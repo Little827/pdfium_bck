@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92cb433_6f5c5862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T19:38:49Z",
+      "side": 1,
+      "message": "Is there any remaining reason to block this change? It\u0027s required to submitting anything else in the chain.",
+      "revId": "8c8bdb2cd7fc79129e205c963ec2f1c5f77c41b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

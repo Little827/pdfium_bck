@@ -70,6 +70,24 @@
       "parentUuid": "2a7d6969_2ee359f9",
       "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdea9344_24113b07",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_bmp_image.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T19:38:49Z",
+      "side": 0,
+      "message": "I suspect Reader on Windows is using the Windows bitmap APIs, while they had to replace those on macOS.\n\nThe XFA spec says no particular image formats actually have to be supported, but that Adobe supports a certain list. The XFA spec also says there\u0027s no formal BMP specification to reference. 🤷 I suspect they didn\u0027t try very hard to ensure cross-platform consistency...",
+      "parentUuid": "a9b3ad8d_c6b4a6ec",
+      "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
