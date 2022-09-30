@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e550cd4_33bf29c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T16:10:08Z",
+      "side": 1,
+      "message": "Closing draft comments on the abandoned CL to get it out of the queue.",
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2829d1e1_72f664e0",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-08-31T21:25:33Z",
       "side": 1,
       "message": "Stay with GetFieldAttr() and WrapRetain()?",
+      "range": {
+        "startLine": 131,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 41
+      },
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc17c9d_07b79694",
+        "filename": "core/fpdfdoc/cpdf_annotlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T16:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2829d1e1_72f664e0",
       "range": {
         "startLine": 131,
         "startChar": 22,
@@ -41,6 +82,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d61917_bc464ed8",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T16:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dcf095f_8dcaace4",
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bc88f1f_7e0a0c38",
@@ -58,6 +117,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac682fbd_72345e71",
+        "filename": "core/fpdfdoc/cpdf_generateap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T16:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bc88f1f_7e0a0c38",
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e65c587_83934d2b",
@@ -71,6 +148,24 @@
       "writtenOn": "2022-08-31T21:25:33Z",
       "side": 1,
       "message": "Can these all be const?",
+      "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb2fc1d2_7938cf1d",
+        "filename": "core/fpdfdoc/cpdf_generateap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T16:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e65c587_83934d2b",
       "revId": "8d528cc0ffd6b57ee230f333b2520bf040583af7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
