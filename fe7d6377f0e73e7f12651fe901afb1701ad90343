@@ -16,6 +16,24 @@
       "message": "Looks like the roll script had an issue, investigating.",
       "revId": "fe7d6377f0e73e7f12651fe901afb1701ad90343",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ecea6f_423c0f4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T17:18:12Z",
+      "side": 1,
+      "message": "macOS version of sed doesn\u0027t seem to like the roll-freetype.sh script. Re-ran on Linux.",
+      "parentUuid": "78c3a3ed_8b632775",
+      "revId": "fe7d6377f0e73e7f12651fe901afb1701ad90343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
