@@ -3181,13 +3181,11 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
 }
 #endif  // BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
 
-// TODO(crbug.com/pdfium/1651): Fix this issue and enable the test for Skia.
-#if defined(_SKIA_SUPPORT_)
-#define MAYBE_SaveAndRender DISABLED_SaveAndRender
-#else
-#define MAYBE_SaveAndRender SaveAndRender
-#endif
-TEST_F(FPDFEditEmbedderTest, MAYBE_SaveAndRender) {
+TEST_F(FPDFEditEmbedderTest, SaveAndRender) {
+  // TODO(crbug.com/pdfium/1651): Fix this issue and enable the test for Skia.
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
+
   const char* checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaVariantIsDefaultRenderer())
       return "0e8b079e349e34f64211c495845a3529";
