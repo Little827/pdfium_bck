@@ -106,6 +106,24 @@
       "parentUuid": "bdea9344_24113b07",
       "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31196eeb_71264123",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_bmp_image.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T19:59:36Z",
+      "side": 0,
+      "message": "Possibly the original author just generated a 50x50 red BMP using the latest version of the BMP specification (with color profile information). There doesn\u0027t seem to be anything otherwise exceptional about it.",
+      "parentUuid": "9cdaf33d_0b985380",
+      "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

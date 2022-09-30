@@ -34,6 +34,41 @@
       "parentUuid": "e92cb433_6f5c5862",
       "revId": "8c8bdb2cd7fc79129e205c963ec2f1c5f77c41b5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a5de80_d481aaaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T19:59:36Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "8c8bdb2cd7fc79129e205c963ec2f1c5f77c41b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338f98ac_6ca56dc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T19:59:36Z",
+      "side": 1,
+      "message": "The direction of the other thread seemed mostly informational, so I wasn\u0027t sure.",
+      "parentUuid": "63e305c4_258d9fea",
+      "revId": "8c8bdb2cd7fc79129e205c963ec2f1c5f77c41b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
