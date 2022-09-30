@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "605a9fda_84eb3f69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-30T22:21:52Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "1683e6ff863f7c3e9cf22a8e1e2f77380c60ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2963bae_a710a50e",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3187,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-09-30T22:21:52Z",
+      "side": 1,
+      "message": "This test was enabled for Skia which caused the previous merge conflict.\nThis TODO is no longer needed.",
+      "range": {
+        "startLine": 3185,
+        "startChar": 2,
+        "endLine": 3187,
+        "endChar": 11
+      },
+      "revId": "1683e6ff863f7c3e9cf22a8e1e2f77380c60ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
