@@ -62,6 +62,18 @@ void CPDF_FlateEncoder::CloneDict() {
   m_pDict.Reset();
 }
 
+void CPDF_FlateEncoder::UpdateLength(size_t size) {
+  if (static_cast<size_t>(GetDict()->GetIntegerFor("Length")) != size) {
+    CloneDict();
+    GetClonedDict()->SetNewFor<CPDF_Number>("Length", static_cast<int>(size));
+  }
+}
+
+bool CPDF_FlateEncoder::WriteDictTo(IFX_ArchiveStream* archive,
+                                    const CPDF_Encryptor* encryptor) const {
+  return GetDict()->WriteTo(archive, encryptor);
+}
+
 CPDF_Dictionary* CPDF_FlateEncoder::GetClonedDict() {
   DCHECK(!m_pDict);
   return m_pClonedDict.Get();
