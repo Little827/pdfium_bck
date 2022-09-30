@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f85107_d85a1b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T16:10:41Z",
+      "side": 1,
+      "message": "resolving draft comments on this abandoned CL to get it out of the queue",
+      "revId": "d5c2aaf53ff3089ecc556954b2892b66e59d93e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a49e5ad7_9e9ea87f",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-09-08T19:23:35Z",
       "side": 1,
       "message": "Check `!dict` for consistency with lines 126-128? Same for line 156.",
+      "revId": "d5c2aaf53ff3089ecc556954b2892b66e59d93e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8359d06b_bb2388f7",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-09-30T16:10:41Z",
+      "side": 1,
+      "message": "Right.  Saves constructing and destructing a null RetainPtr\u003c\u003e.",
+      "parentUuid": "a49e5ad7_9e9ea87f",
       "revId": "d5c2aaf53ff3089ecc556954b2892b66e59d93e2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
