@@ -16,6 +16,24 @@
       "message": "Is the existing BMP here worth keeping? e.g. Move to page 2, or into another PDF?",
       "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4844a49_7d69b428",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_bmp_image.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-09-30T07:30:09Z",
+      "side": 0,
+      "message": "It doesn\u0027t decode (due to the ValidateColorIndex() bug), so I think moving it to page 2 wouldn\u0027t be useful for the purpose of un-suppressing the file.\n\nThis BMP is a red 50x50 square using direct 24-bit color vs. a red 50x50 square using indexed 8-bit color, so not much different there. This BMP also uses the V4 format, but we don\u0027t support the V4 header fields anyway. (The headers are backwards-compatible.) I think these kind of differences are better exercised in the ProgressiveDecoder unit tests.\n\nIt\u0027d probably be more useful to introduce a new 32-bit color test case, as that would exercise a new path in XFA_GetDIBFormat(), but I don\u0027t think it makes sense to do that in this change. (Also, ideally it would exercise the alpha component.)",
+      "parentUuid": "d2c44953_c5a8722f",
+      "revId": "6d8dfa196057712ec2bd7ecb26383bbe77e42a37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
