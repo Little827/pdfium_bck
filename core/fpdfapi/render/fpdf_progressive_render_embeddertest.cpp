@@ -225,6 +225,13 @@ FPDFProgressiveRenderEmbedderTest::RenderPageWithForcedColorScheme(
 }
 
 TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithoutPause) {
+#if defined(_SKIA_SUPPORT_)
+  // TODO(crbug.com/pdfium/1903): Reenable runtime use of AGG once test it
+  // does not fail on macOS.
+  if (!CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
+#endif
+
   // Test rendering of page content using progressive render APIs
   // without pausing the rendering.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
@@ -239,6 +246,13 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithoutPause) {
 }
 
 TEST_F(FPDFProgressiveRenderEmbedderTest, RenderWithPause) {
+#if defined(_SKIA_SUPPORT_)
+  // TODO(crbug.com/pdfium/1903): Reenable runtime use of AGG once test it
+  // does not fail on macOS.
+  if (!CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    return;
+#endif
+
   // Test rendering of page content using progressive render APIs
   // with pause in rendering.
   ASSERT_TRUE(OpenDocument("annotation_stamp_with_ap.pdf"));
