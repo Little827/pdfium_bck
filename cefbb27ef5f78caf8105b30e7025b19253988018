@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc916aa_386c123c",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-04T23:12:53Z",
+      "side": 1,
+      "message": "Curly braces.",
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633e0490_d370d719",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-04T23:12:53Z",
+      "side": 1,
+      "message": "Matbe name this original_position?",
+      "range": {
+        "startLine": 658,
+        "startChar": 9,
+        "endLine": 658,
+        "endChar": 20
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65379dd_f0ddf908",
+        "filename": "core/fxcodec/cfx_codec_memory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-04T23:12:53Z",
+      "side": 1,
+      "message": "How about renaming this to GetUnconsumedSpan() to make it more descriptive? In some other classes, we have similarly named methods where GetSpan() is the same as GetBuffer() + GetSize(), but it is not safe to assume CFX_CodecMemory follows that same convention.",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913c7287_8a01e194",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-04T23:12:53Z",
+      "side": 1,
+      "message": "With the usage in this CL, this is more like dwConsumable, right?",
+      "range": {
+        "startLine": 1474,
+        "startChar": 11,
+        "endLine": 1474,
+        "endChar": 21
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de6df93_c9c0a93c",
+        "filename": "core/fxcodec/progressive_decoder_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-04T23:12:53Z",
+      "side": 1,
+      "message": "Maybe use CalculatePitch32OrDie() here?",
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb357902_de6eeb85",
+        "filename": "core/fxcodec/progressive_decoder_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-04T23:12:53Z",
+      "side": 1,
+      "message": "std::move()",
+      "range": {
+        "startLine": 206,
+        "startChar": 61,
+        "endLine": 206,
+        "endChar": 66
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
