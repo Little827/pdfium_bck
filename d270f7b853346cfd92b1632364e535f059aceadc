@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0e7ea9_e5b3cbbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-05T21:28:41Z",
+      "side": 1,
+      "message": "LG % comment",
+      "revId": "d270f7b853346cfd92b1632364e535f059aceadc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20b016f_8b1315cd",
+        "filename": "fpdfsdk/cpdfsdk_annotiteration.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-05T21:28:41Z",
+      "side": 1,
+      "message": "I\u0027d lose the \"forward\" designation altogether and just call this CPDFSDK_AnnotIteration (less is more, and to match the .h file name).",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "d270f7b853346cfd92b1632364e535f059aceadc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
