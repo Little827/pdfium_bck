@@ -22,6 +22,30 @@
       },
       "revId": "80cfc5e86db862c7f03f3bf816f3deda6fc21977",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd92ca89_28a9bcd0",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-05T21:09:42Z",
+      "side": 0,
+      "message": "Clean up CL chained.",
+      "parentUuid": "ee19a545_de93524f",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "80cfc5e86db862c7f03f3bf816f3deda6fc21977",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
