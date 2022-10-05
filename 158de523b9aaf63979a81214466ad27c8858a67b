@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8786ee0b_3281d308",
+        "filename": "core/fpdfdoc/cpdf_structelement.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-05T23:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "787f576a_4c0dd6d5",
+      "revId": "158de523b9aaf63979a81214466ad27c8858a67b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c881629e_6fdb5b0c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-05T22:49:50Z",
       "side": 1,
       "message": "IWYU for ByteString.",
+      "revId": "158de523b9aaf63979a81214466ad27c8858a67b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0800067_226f0601",
+        "filename": "core/fpdfdoc/cpdf_structtree.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-05T23:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c881629e_6fdb5b0c",
       "revId": "158de523b9aaf63979a81214466ad27c8858a67b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
