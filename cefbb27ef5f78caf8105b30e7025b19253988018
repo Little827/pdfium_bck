@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66c6480_10fa5db7",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-05T06:56:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddc916aa_386c123c",
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "633e0490_d370d719",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-04T23:12:53Z",
       "side": 1,
       "message": "Matbe name this original_position?",
+      "range": {
+        "startLine": 658,
+        "startChar": 9,
+        "endLine": 658,
+        "endChar": 20
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df12ec3c_d4d1de5c",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-05T06:56:43Z",
+      "side": 1,
+      "message": "Done\n\nWas just cutting and pasting CFX_GifContext::ReadAllOrNone().",
+      "parentUuid": "633e0490_d370d719",
       "range": {
         "startLine": 658,
         "startChar": 9,
@@ -64,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d798b41_74c64bd3",
+        "filename": "core/fxcodec/cfx_codec_memory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-05T06:56:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65379dd_f0ddf908",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "913c7287_8a01e194",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-10-04T23:12:53Z",
       "side": 1,
       "message": "With the usage in this CL, this is more like dwConsumable, right?",
+      "range": {
+        "startLine": 1474,
+        "startChar": 11,
+        "endLine": 1474,
+        "endChar": 21
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2ea8d1_2badc432",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-05T06:56:43Z",
+      "side": 1,
+      "message": "Done\n\nI think that\u0027s a fair characterization.",
+      "parentUuid": "913c7287_8a01e194",
       "range": {
         "startLine": 1474,
         "startChar": 11,
@@ -104,6 +194,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb6a48d_cf2f10db",
+        "filename": "core/fxcodec/progressive_decoder_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-05T06:56:43Z",
+      "side": 1,
+      "message": "It\u0027s not constexpr, so it won\u0027t work here, unfortunately. (In particular, this value later is used as a template parameter.) The computations are small, so we don\u0027t need the extra safety, at least.",
+      "parentUuid": "0de6df93_c9c0a93c",
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb357902_de6eeb85",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-10-04T23:12:53Z",
       "side": 1,
       "message": "std::move()",
+      "range": {
+        "startLine": 206,
+        "startChar": 61,
+        "endLine": 206,
+        "endChar": 66
+      },
+      "revId": "cefbb27ef5f78caf8105b30e7025b19253988018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4674bf_443ba65c",
+        "filename": "core/fxcodec/progressive_decoder_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-05T06:56:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb357902_de6eeb85",
       "range": {
         "startLine": 206,
         "startChar": 61,
