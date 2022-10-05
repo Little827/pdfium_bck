@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9525a942_fed2ae7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9011
+      },
+      "writtenOn": "2022-10-05T20:20:27Z",
+      "side": 1,
+      "message": "Yeah this should be fine to land. The builds on the new builder should have empty resultdb invocations and you may see an empty \"Test Results\" tab on milo for them. Other than that it will be the same as your other builders.\n\nJFYI, go/resultdb (and its subpages) will be helpful documentations for enabling resultdb on pdfium (although you may have known it 😊 )",
+      "parentUuid": "42a7723b_d8156f84",
+      "revId": "408abac37e5310fc8ff3034d1ae059010134f29b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27d5f25b_708af9cb",
