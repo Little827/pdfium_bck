@@ -190,6 +190,7 @@ def pdfium_internal_builder(name, bucket):
         notifies = notifies,
         properties = properties,
         service_account = service_account,
+        resultdb_settings = resultdb.settings(enable = True),
         triggered_by = triggered_by,
     )
 
