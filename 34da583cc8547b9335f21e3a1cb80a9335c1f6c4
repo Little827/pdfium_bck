@@ -33,6 +33,24 @@
       "message": "https://pdfium-review.googlesource.com/c/pdfium_tests/+/98890",
       "revId": "34da583cc8547b9335f21e3a1cb80a9335c1f6c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fac24c8_05a234e2",
+        "filename": "DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-05T17:20:34Z",
+      "side": 1,
+      "message": "Are we going to replace this with a real hash once that CL lands?",
+      "parentUuid": "f73e4e2a_9f33a48c",
+      "revId": "34da583cc8547b9335f21e3a1cb80a9335c1f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
