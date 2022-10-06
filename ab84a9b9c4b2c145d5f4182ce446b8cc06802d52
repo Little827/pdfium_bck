@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff9edf3_99f6aa1d",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-06T18:25:05Z",
+      "side": 1,
+      "message": "might cobble some arguments here that are then thrown away, but notifier always present in practice (except for tests).",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 23
+      },
+      "revId": "ab84a9b9c4b2c145d5f4182ce446b8cc06802d52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab570b3_2d8d7864",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-06T18:25:05Z",
+      "side": 1,
+      "message": "We can deal with removing the superfluous null checks later, left for now just for consistency.  As it turns out, this might be null in tests.",
+      "range": {
+        "startLine": 1003,
+        "startChar": 0,
+        "endLine": 1003,
+        "endChar": 77
+      },
+      "revId": "ab84a9b9c4b2c145d5f4182ce446b8cc06802d52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
