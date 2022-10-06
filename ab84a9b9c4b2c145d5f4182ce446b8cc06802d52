@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f011497a_be7ed751",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-06T20:46:39Z",
+      "side": 1,
+      "message": "Ack. I see NotifyListOrComboBoxBeforeChange() may get called, but that conditional will already return true if there is no notifier, and thus not affect code flow.",
+      "parentUuid": "fff9edf3_99f6aa1d",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 23
+      },
+      "revId": "ab84a9b9c4b2c145d5f4182ce446b8cc06802d52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ab570b3_2d8d7864",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-06T18:25:05Z",
       "side": 1,
       "message": "We can deal with removing the superfluous null checks later, left for now just for consistency.  As it turns out, this might be null in tests.",
+      "range": {
+        "startLine": 1003,
+        "startChar": 0,
+        "endLine": 1003,
+        "endChar": 77
+      },
+      "revId": "ab84a9b9c4b2c145d5f4182ce446b8cc06802d52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbff1646_dff3a4a7",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-06T20:46:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ab570b3_2d8d7864",
       "range": {
         "startLine": 1003,
         "startChar": 0,
