@@ -92,8 +92,6 @@ class CPDF_InteractiveForm {
 
   NotifierIface* GetFormNotify() const { return m_pFormNotify.Get(); }
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  const CPDF_Dictionary* GetFormDict() const { return m_pFormDict.Get(); }
-  RetainPtr<CPDF_Dictionary> GetMutableFormDict() { return m_pFormDict; }
 
   const std::vector<UnownedPtr<CPDF_FormControl>>& GetControlsForField(
       const CPDF_FormField* pField);
