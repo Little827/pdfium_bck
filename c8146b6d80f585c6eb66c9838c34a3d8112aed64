@@ -16,6 +16,24 @@
       "message": "I\u0027ll updating the rolling documentation once this lands.",
       "revId": "c8146b6d80f585c6eb66c9838c34a3d8112aed64",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "438ec4d9_976815e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-06T19:45:29Z",
+      "side": 1,
+      "message": "I went ahead and updated the documentation provisionally.",
+      "parentUuid": "354a245e_a061f2fd",
+      "revId": "c8146b6d80f585c6eb66c9838c34a3d8112aed64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
