@@ -80,6 +80,11 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
   const CFX_SizeF& GetPageSize() const { return m_PageSize; }
   const CFX_Matrix& GetPageMatrix() const { return m_PageMatrix; }
   int GetPageRotation() const;
+
+  RetainPtr<CPDF_Array> GetOrCreateAnnotsArray();
+  RetainPtr<CPDF_Array> GetMutableAnnotsArray();
+  RetainPtr<const CPDF_Array> GetAnnotsArray() const;
+
   RenderCacheIface* GetRenderCache() const { return m_pRenderCache.get(); }
   void SetRenderCache(std::unique_ptr<RenderCacheIface> pCache) {
     m_pRenderCache = std::move(pCache);
