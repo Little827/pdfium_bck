@@ -57,6 +57,10 @@ FXCODEC_STATUS DecodeToBitmap(ProgressiveDecoder& decoder,
 
 }  // namespace
 
+TEST(ProgressiveDecoder, Fail) {
+  FAIL() << "DO NOT SUBMIT";
+}
+
 #ifdef PDF_ENABLE_XFA_BMP
 TEST(ProgressiveDecoder, Indexed8Bmp) {
   static constexpr uint8_t kInput[] = {
