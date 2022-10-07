@@ -129,7 +129,7 @@ CPDFSDK_Widget* CPDFSDK_InteractiveForm::GetWidget(
   if (pWidget)
     return pWidget;
 
-  const CPDF_Dictionary* pControlDict = pControl->GetWidget();
+  RetainPtr<const CPDF_Dictionary> pControlDict = pControl->GetWidgetDict();
   CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
   CPDFSDK_PageView* pPage = nullptr;
 
