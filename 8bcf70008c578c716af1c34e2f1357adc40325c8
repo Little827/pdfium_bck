@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59bfe04b_a4ea58c6",
+        "filename": "core/fpdfdoc/cpdf_dest.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-07T23:28:29Z",
+      "side": 1,
+      "message": "yea, I played with whitespace a bit.  I like where the new blank lines are.",
+      "revId": "8bcf70008c578c716af1c34e2f1357adc40325c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2e4dfd_734d329f",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-07T23:28:29Z",
+      "side": 1,
+      "message": "Grr, need an lvalue for magical promotion to span in the next line.",
+      "range": {
+        "startLine": 891,
+        "startChar": 21,
+        "endLine": 891,
+        "endChar": 30
+      },
+      "revId": "8bcf70008c578c716af1c34e2f1357adc40325c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
