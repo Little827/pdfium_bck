@@ -36,6 +36,10 @@ class NoLinearSearchSet : public std::set<T, C> {
 
 }  // namespace
 
+TEST(RetainPtr, Fail) {
+  EXPECT_TRUE(true) << "DO NOT SUBMIT";
+}
+
 TEST(RetainPtr, DefaultCtor) {
   RetainPtr<PseudoRetainable> ptr;
   EXPECT_FALSE(ptr.Get());
