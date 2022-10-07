@@ -20,7 +20,7 @@ namespace pdfium {
 
 constexpr size_t dynamic_extent = static_cast<size_t>(-1);
 
-template <typename T>
+template <typename T, typename P = UnownedPtr<T>>
 class span;
 
 namespace internal {
@@ -175,7 +175,7 @@ using EnableIfConstSpanCompatibleContainer =
 // - using size_t instead of ptrdiff_t for indexing
 
 // [span], class template span
-template <typename T>
+template <typename T, typename P>
 class span {
  public:
   using value_type = typename std::remove_cv<T>::type;
@@ -289,7 +289,7 @@ class span {
       data_.ReleaseBadPointer();
   }
 
-  UnownedPtr<T> data_;
+  P data_;
   size_t size_;
 };
 
