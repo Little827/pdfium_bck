@@ -22,6 +22,30 @@
       },
       "revId": "76f9f60fd5b0abc64e8f128327ddbf1610fd716f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f37f1d_9a41d4ce",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-07T20:24:58Z",
+      "side": 1,
+      "message": "These have become implicit, alas, and matches raw_ptr\u003c\u003e behaviour.  I think .Get() may end up going away.",
+      "parentUuid": "a850bde3_bf6febf8",
+      "range": {
+        "startLine": 179,
+        "startChar": 41,
+        "endLine": 179,
+        "endChar": 55
+      },
+      "revId": "76f9f60fd5b0abc64e8f128327ddbf1610fd716f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
