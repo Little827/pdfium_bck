@@ -36,6 +36,11 @@ class NoLinearSearchSet : public std::set<T, C> {
 
 }  // namespace
 
+TEST(RetainPtr, Fail) {
+  // Trigger diff.
+  FAIL() << "DO NOT SUBMIT";
+}
+
 TEST(RetainPtr, DefaultCtor) {
   RetainPtr<PseudoRetainable> ptr;
   EXPECT_FALSE(ptr.Get());
