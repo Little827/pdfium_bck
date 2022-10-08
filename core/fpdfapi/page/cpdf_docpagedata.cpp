@@ -444,7 +444,11 @@ RetainPtr<CPDF_StreamAcc> CPDF_DocPageData::GetFontFileStreamAcc(
 }
 
 void CPDF_DocPageData::MaybePurgeFontFileStreamAcc(
-    RetainPtr<const CPDF_Stream> pFontStream) {
+    RetainPtr<CPDF_StreamAcc> pStreamAcc) {
+  if (!pStreamAcc)
+    return;
+
+  RetainPtr<const CPDF_Stream> pFontStream = std::move(pStreamAcc)->GetStream();
   if (!pFontStream)
     return;
 
