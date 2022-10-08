@@ -76,7 +76,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       const char* name = GetAdobeCharName(base_encoding, m_CharNames, charcode);
       if (!name) {
         m_GlyphIndex[charcode] =
-            m_pFontFile ? FT_Get_Char_Index(face, charcode) : -1;
+            m_pFontStreamAcc ? FT_Get_Char_Index(face, charcode) : -1;
         continue;
       }
       m_Encoding.SetUnicode(charcode, UnicodeFromAdobeName(name));
@@ -142,13 +142,13 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       m_GlyphIndex[charcode] = FT_Get_Char_Index(face, charcode);
       m_Encoding.SetUnicode(charcode, UnicodeFromAppleRomanCharCode(charcode));
     }
-    if (m_pFontFile || HasAnyGlyphIndex())
+    if (m_pFontStreamAcc || HasAnyGlyphIndex())
       return;
   }
   if (FXFT_Select_Charmap(face, FT_ENCODING_UNICODE) == 0) {
     const uint16_t* pUnicodes = UnicodesForPredefinedCharSet(base_encoding);
     for (uint32_t charcode = 0; charcode < 256; charcode++) {
-      if (m_pFontFile) {
+      if (m_pFontStreamAcc) {
         m_Encoding.SetUnicode(charcode, charcode);
       } else {
         const char* name =
@@ -195,7 +195,7 @@ CPDF_TrueTypeFont::CharmapType CPDF_TrueTypeFont::DetermineCharmapType() const {
 }
 
 FontEncoding CPDF_TrueTypeFont::DetermineEncoding() const {
-  if (!m_pFontFile || !FontStyleIsSymbolic(m_Flags) ||
+  if (!m_pFontStreamAcc || !FontStyleIsSymbolic(m_Flags) ||
       !IsWinAnsiOrMacRomanEncoding(m_BaseEncoding)) {
     return m_BaseEncoding;
   }

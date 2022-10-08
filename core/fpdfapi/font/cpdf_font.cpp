@@ -55,10 +55,10 @@ CPDF_Font::CPDF_Font(CPDF_Document* pDocument,
       m_BaseFontName(m_pFontDict->GetByteStringFor("BaseFont")) {}
 
 CPDF_Font::~CPDF_Font() {
-  if (m_pFontFile) {
+  if (m_pFontStreamAcc) {
     auto* pPageData = m_pDocument->GetPageData();
     if (pPageData)
-      pPageData->MaybePurgeFontFileStreamAcc(m_pFontFile->GetStream());
+      pPageData->MaybePurgeFontFileStreamAcc(m_pFontStreamAcc->GetStream());
   }
 }
 
@@ -200,23 +200,23 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
     m_FontBBox.top = pBBox->GetIntegerAt(3);
   }
 
-  RetainPtr<const CPDF_Stream> pFontFile = pFontDesc->GetStreamFor("FontFile");
-  if (!pFontFile)
-    pFontFile = pFontDesc->GetStreamFor("FontFile2");
-  if (!pFontFile)
-    pFontFile = pFontDesc->GetStreamFor("FontFile3");
-  if (!pFontFile)
+  RetainPtr<const CPDF_Stream> pFontStrem = pFontDesc->GetStreamFor("FontFile");
+  if (!pFontStrem)
+    pFontStrem = pFontDesc->GetStreamFor("FontFile2");
+  if (!pFontStrem)
+    pFontStrem = pFontDesc->GetStreamFor("FontFile3");
+  if (!pFontStrem)
     return;
 
-  const uint64_t key = pFontFile->KeyForCache();
+  const uint64_t key = pFontStrem->KeyForCache();
   auto* pData = m_pDocument->GetPageData();
-  m_pFontFile = pData->GetFontFileStreamAcc(std::move(pFontFile));
-  if (!m_pFontFile)
+  m_pFontStreamAcc = pData->GetFontFileStreamAcc(std::move(pFontStrem));
+  if (!m_pFontStreamAcc)
     return;
 
-  if (!m_Font.LoadEmbedded(m_pFontFile->GetSpan(), IsVertWriting(), key)) {
-    pData->MaybePurgeFontFileStreamAcc(m_pFontFile->GetStream());
-    m_pFontFile = nullptr;
+  if (!m_Font.LoadEmbedded(m_pFontStreamAcc->GetSpan(), IsVertWriting(), key)) {
+    pData->MaybePurgeFontFileStreamAcc(m_pFontStreamAcc->GetStream());
+    m_pFontStreamAcc = nullptr;
   }
 }
 
@@ -344,7 +344,7 @@ uint32_t CPDF_Font::GetNextChar(ByteStringView pString, size_t* pOffset) const {
 bool CPDF_Font::IsStandardFont() const {
   if (!IsType1Font())
     return false;
-  if (m_pFontFile)
+  if (m_pFontStreamAcc)
     return false;
   return AsType1Font()->IsBase14Font();
 }
