@@ -68,7 +68,7 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
   }
   int glyph_index = m_GlyphIndex[charcode];
   if (glyph_index == 0xffff) {
-    if (!m_pFontFile && charcode != 32) {
+    if (!m_pFontStreamAcc && charcode != 32) {
       LoadCharMetrics(32);
       m_CharBBox[charcode] = m_CharBBox[32];
       if (m_bUseFontWidth) {
@@ -226,7 +226,7 @@ bool CPDF_SimpleFont::LoadCommon() {
   if (pFontDesc)
     LoadFontDescriptor(pFontDesc.Get());
   LoadCharWidths(pFontDesc.Get());
-  if (m_pFontFile) {
+  if (m_pFontStreamAcc) {
     if (m_BaseFontName.GetLength() > 8 && m_BaseFontName[7] == '+')
       m_BaseFontName = m_BaseFontName.Last(m_BaseFontName.GetLength() - 8);
   } else {
@@ -234,7 +234,7 @@ bool CPDF_SimpleFont::LoadCommon() {
   }
   if (!FontStyleIsSymbolic(m_Flags))
     m_BaseEncoding = FontEncoding::kStandard;
-  LoadPDFEncoding(!!m_pFontFile, m_Font.IsTTFont());
+  LoadPDFEncoding(!!m_pFontStreamAcc, m_Font.IsTTFont());
   LoadGlyphMap();
   m_CharNames.clear();
   if (!m_Font.GetFaceRec())
@@ -246,7 +246,7 @@ bool CPDF_SimpleFont::LoadCommon() {
     for (size_t range = 0; range < std::size(kLowercases); ++range) {
       const auto& lower = kLowercases[range];
       for (int i = lower[0]; i <= lower[1]; ++i) {
-        if (m_GlyphIndex[i] != 0xffff && m_pFontFile)
+        if (m_GlyphIndex[i] != 0xffff && m_pFontStreamAcc)
           continue;
 
         int j = i - 32;
