@@ -22,6 +22,30 @@
       },
       "revId": "bcaa539facaf2438356e6af6569ae38915133733",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9614214_626936e6",
+        "filename": "fpdfsdk/cpdfsdk_annotiteration.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-10T17:48:00Z",
+      "side": 1,
+      "message": "Probably \"ForHitTest\", but I\u0027ll do that later when things settle down.",
+      "parentUuid": "ce28f838_102d42cb",
+      "range": {
+        "startLine": 15,
+        "startChar": 47,
+        "endLine": 15,
+        "endChar": 63
+      },
+      "revId": "bcaa539facaf2438356e6af6569ae38915133733",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
