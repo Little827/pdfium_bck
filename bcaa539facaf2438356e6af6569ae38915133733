@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce28f838_102d42cb",
+        "filename": "fpdfsdk/cpdfsdk_annotiteration.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-10T16:39:51Z",
+      "side": 1,
+      "message": "follow-up: for consistency, maybe make the ctor private and add another static method called CreateForFoo(), where {Foo} is replaced by whatever the non-drawing case might be.",
+      "range": {
+        "startLine": 15,
+        "startChar": 47,
+        "endLine": 15,
+        "endChar": 63
+      },
+      "revId": "bcaa539facaf2438356e6af6569ae38915133733",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
