@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3dba25_83f1fb10",
+        "filename": "testing/tools/pdfium_root.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-10T22:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eae21434_065924f9",
+      "revId": "b794cb6afad6cea7db6c3d57e8badfb5e06e89c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ee76360_21e9942c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-10T21:19:26Z",
       "side": 1,
       "message": "Is this parameter necessary?",
+      "range": {
+        "startLine": 19,
+        "startChar": 21,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "b794cb6afad6cea7db6c3d57e8badfb5e06e89c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c89dd2_e55627d6",
+        "filename": "testing/tools/pdfium_root.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-10T22:22:04Z",
+      "side": 1,
+      "message": "Done\n\nNot really, although I thought it could allow using a different testing/tools directory as the root.",
+      "parentUuid": "9ee76360_21e9942c",
       "range": {
         "startLine": 19,
         "startChar": 21,
@@ -64,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "832149c8_1e3f2f85",
+        "filename": "testing/tools/pdfium_root.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-10T22:22:04Z",
+      "side": 1,
+      "message": "Done\n\nThis was a carryover from the old implementations; I definitely agree it can be improved.",
+      "parentUuid": "7d3ddc2a_447be904",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "b794cb6afad6cea7db6c3d57e8badfb5e06e89c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4285ad0_a59a8591",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-10-10T21:19:26Z",
       "side": 1,
       "message": "Do you think it would be clearer if this was a single list parameter?",
+      "range": {
+        "startLine": 35,
+        "startChar": 30,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "b794cb6afad6cea7db6c3d57e8badfb5e06e89c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a799a02f_ed29cf55",
+        "filename": "testing/tools/pdfium_root.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-10T22:22:04Z",
+      "side": 1,
+      "message": "Done\n\nI think it\u0027s about as readable either way. Single parameter makes it obvious that the parameter is a sequence, while I think varargs looks a little tidier at the call site.",
+      "parentUuid": "e4285ad0_a59a8591",
       "range": {
         "startLine": 35,
         "startChar": 30,
