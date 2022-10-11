@@ -40,14 +40,13 @@ class CPDF_ColorState {
   CPDF_Color* GetMutableStrokeColor();
   bool HasStrokeColor() const;
 
-  void SetFillColor(const RetainPtr<CPDF_ColorSpace>& pCS,
-                    const std::vector<float>& values);
-  void SetStrokeColor(const RetainPtr<CPDF_ColorSpace>& pCS,
-                      const std::vector<float>& values);
-  void SetFillPattern(const RetainPtr<CPDF_Pattern>& pattern,
-                      const std::vector<float>& values);
-  void SetStrokePattern(const RetainPtr<CPDF_Pattern>& pattern,
-                        const std::vector<float>& values);
+  void SetFillColor_(RetainPtr<CPDF_ColorSpace> pCS, std::vector<float> values);
+  void SetStrokeColor_(RetainPtr<CPDF_ColorSpace> pCS,
+                       std::vector<float> values);
+  void SetFillPattern_(RetainPtr<CPDF_Pattern> pattern,
+                       std::vector<float> values);
+  void SetStrokePattern_(RetainPtr<CPDF_Pattern> pattern,
+                         std::vector<float> values);
 
   bool HasRef() const { return !!m_Ref; }
 
@@ -71,14 +70,14 @@ class CPDF_ColorState {
     ~ColorData() override;
   };
 
-  void SetColor(const RetainPtr<CPDF_ColorSpace>& pCS,
-                const std::vector<float>& values,
-                CPDF_Color* color,
-                FX_COLORREF* colorref);
-  void SetPattern(const RetainPtr<CPDF_Pattern>& pPattern,
-                  const std::vector<float>& values,
-                  CPDF_Color* color,
-                  FX_COLORREF* colorref);
+  void SetColor_(RetainPtr<CPDF_ColorSpace> pCS,
+                 std::vector<float> values,
+                 CPDF_Color* color,
+                 FX_COLORREF* colorref);
+  void SetPattern_(RetainPtr<CPDF_Pattern> pPattern,
+                   std::vector<float> values,
+                   CPDF_Color* color,
+                   FX_COLORREF* colorref);
 
   SharedCopyOnWrite<ColorData> m_Ref;
 };

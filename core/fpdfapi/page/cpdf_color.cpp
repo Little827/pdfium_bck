@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/page/cpdf_color.h"
 
+#include <utility>
+
 #include "core/fpdfapi/page/cpdf_patterncs.h"
 #include "third_party/base/check.h"
 
@@ -25,33 +27,33 @@ bool CPDF_Color::IsPatternInternal() const {
   return m_pCS->GetFamily() == CPDF_ColorSpace::Family::kPattern;
 }
 
-void CPDF_Color::SetColorSpace(const RetainPtr<CPDF_ColorSpace>& pCS) {
-  m_pCS = pCS;
+void CPDF_Color::SetColorSpace_(RetainPtr<CPDF_ColorSpace> pCS) {
+  m_pCS = std::move(pCS);
   if (IsPatternInternal()) {
     m_Buffer.clear();
     m_pValue = std::make_unique<PatternValue>();
   } else {
-    m_Buffer = pCS->CreateBufAndSetDefaultColor();
+    m_Buffer = m_pCS->CreateBufAndSetDefaultColor();
     m_pValue.reset();
   }
 }
 
-void CPDF_Color::SetValueForNonPattern(const std::vector<float>& values) {
+void CPDF_Color::SetValueForNonPattern_(std::vector<float> values) {
   DCHECK(!IsPatternInternal());
   DCHECK(m_pCS->CountComponents() <= values.size());
-  m_Buffer = values;
+  m_Buffer = std::move(values);
 }
 
-void CPDF_Color::SetValueForPattern(const RetainPtr<CPDF_Pattern>& pPattern,
-                                    const std::vector<float>& values) {
+void CPDF_Color::SetValueForPattern_(RetainPtr<CPDF_Pattern> pPattern,
+                                     std::vector<float> values) {
   if (values.size() > kMaxPatternColorComps)
     return;
 
   if (!IsPattern()) {
-    SetColorSpace(
+    SetColorSpace_(
         CPDF_ColorSpace::GetStockCS(CPDF_ColorSpace::Family::kPattern));
   }
-  m_pValue->SetPattern(pPattern);
+  m_pValue->SetPattern(std::move(pPattern));
   m_pValue->SetComps(values);
 }
 
