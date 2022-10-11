@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0018887b_677df1f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-11T18:47:55Z",
+      "side": 1,
+      "message": "Only saves about 4KB since these are based on spans/ptrs that were already improved in the previous CLS.",
+      "revId": "f6a21a99a572e0a6507354023ea11ecde8d3c1f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
