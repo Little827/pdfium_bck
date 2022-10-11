@@ -10,10 +10,12 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "third_party/base/compiler_specific.h"
+
 namespace fxcrt {
 
 template <typename CharType>
-class StringDataTemplate {
+class TRIVIAL_ABI StringDataTemplate {
  public:
   static StringDataTemplate* Create(size_t nLen);
   static StringDataTemplate* Create(const CharType* pStr, size_t nLen);

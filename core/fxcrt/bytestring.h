@@ -23,13 +23,14 @@
 #include "core/fxcrt/string_view_template.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/check.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/span.h"
 
 namespace fxcrt {
 
 // A mutable string with shared buffers using copy-on-write semantics that
 // avoids the cost of std::string's iterator stability guarantees.
-class ByteString {
+class TRIVIAL_ABI ByteString {
  public:
   using CharType = char;
   using const_iterator = const CharType*;
