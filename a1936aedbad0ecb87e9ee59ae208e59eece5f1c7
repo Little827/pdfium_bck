@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d51b1a8_3ee62334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-11T18:10:25Z",
+      "side": 1,
+      "message": "Seems to save about 64KB in a stripped/release build of pdfium_test.",
+      "revId": "a1936aedbad0ecb87e9ee59ae208e59eece5f1c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
