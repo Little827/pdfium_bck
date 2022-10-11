@@ -15,6 +15,7 @@
 
 #include "core/fxcrt/fx_system.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/span.h"
 
 namespace fxcrt {
@@ -31,7 +32,7 @@ namespace fxcrt {
 // must return an empty string view in those cases. The aim here is allowing
 // callers to avoid range-checking first.
 template <typename T>
-class StringViewTemplate {
+class TRIVIAL_ABI GSL_POINTER StringViewTemplate {
  public:
   using CharType = T;
   using UnsignedType = typename std::make_unsigned<CharType>::type;

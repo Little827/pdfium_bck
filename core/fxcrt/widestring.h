@@ -22,6 +22,7 @@
 #include "core/fxcrt/string_view_template.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/check.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/span.h"
 
 namespace fxcrt {
@@ -30,7 +31,7 @@ class ByteString;
 
 // A mutable string with shared buffers using copy-on-write semantics that
 // avoids the cost of std::string's iterator stability guarantees.
-class WideString {
+class TRIVIAL_ABI WideString {
  public:
   using CharType = wchar_t;
   using const_iterator = const CharType*;
