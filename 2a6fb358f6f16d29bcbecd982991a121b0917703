@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6dc3a0e_26d8bedf",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-12T15:46:31Z",
+      "side": 1,
+      "message": "If I had kept the pCS local, we\u0027d have had:\n  return rvalue from call\n  assign rvalue to lvalue\n  make rvalue from lvalue via std::move().\nso instead just pass rvalue.",
+      "range": {
+        "startLine": 881,
+        "startChar": 6,
+        "endLine": 881,
+        "endChar": 21
+      },
+      "revId": "2a6fb358f6f16d29bcbecd982991a121b0917703",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab71186_a9fadcd0",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-12T15:46:31Z",
+      "side": 1,
+      "message": "Need lvalue for automatic conversion of vector to span on next line.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 21,
+        "endLine": 1056,
+        "endChar": 27
+      },
+      "revId": "2a6fb358f6f16d29bcbecd982991a121b0917703",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
