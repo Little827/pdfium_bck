@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6570d36e_e94a0e32",
+        "filename": "core/fpdfapi/page/cpdf_colorstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-12T19:21:21Z",
+      "side": 1,
+      "message": "Pointer can be const.",
+      "revId": "5c5571e655489df17e8f48089f312f7251692488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a3c6002_243c1003",
+        "filename": "core/fpdfapi/page/cpdf_colorstate.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-12T19:21:21Z",
+      "side": 1,
+      "message": "Return FX_COLORREF in a follow-up?",
+      "revId": "5c5571e655489df17e8f48089f312f7251692488",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c428d41b_f3cb471d",
