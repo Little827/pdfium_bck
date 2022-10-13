@@ -130,8 +130,8 @@ class CFXJSE_Engine final : public CFX_V8 {
 
   CXFA_Object* GetThisObject() const { return m_pThisObject; }
   CFXJSE_Class* GetJseNormalClass() const { return m_pJsClass.Get(); }
-  CFXJSE_Context* GetJseContext() const { return m_JsContext.get(); }
   CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
+  CFXJSE_Context* GetJseContextForTest() const { return GetJseContext(); }
 
   void SetNodesOfRunScript(std::vector<cppgc::Persistent<CXFA_Node>>* pArray);
   void AddNodesOfRunScript(CXFA_Node* pNode);
@@ -162,6 +162,7 @@ class CFXJSE_Engine final : public CFX_V8 {
                         v8::Local<v8::Value> pValue,
                         Mask<XFA_ResolveFlag> dwFlag);
   bool IsStrictScopeInJavaScript();
+  CFXJSE_Context* GetJseContext() const { return m_JsContext.get(); }
   CXFA_Object* GetVariablesThis(CXFA_Object* pObject);
   CXFA_Object* GetVariablesScript(CXFA_Object* pObject);
   CFXJSE_Context* VariablesContextForScriptNode(CXFA_Script* pScriptNode);
