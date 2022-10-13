@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ffd9f0_5637cff1",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-13T00:00:12Z",
+      "side": 1,
+      "message": "Here too.",
+      "revId": "f712d3132d8f50d53e08a44291396e5e905b72cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6de700_3e4d2776",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-13T00:00:12Z",
+      "side": 1,
+      "message": "Same to remove?",
+      "revId": "f712d3132d8f50d53e08a44291396e5e905b72cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
