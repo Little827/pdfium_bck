@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b285fd_e518b174",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-13T17:50:03Z",
+      "side": 1,
+      "message": "I\u0027m a lot less clear on whether this is a win or not for this particular usage.",
+      "revId": "f26196714f048012654e1b4789b2c6167f889ea2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
