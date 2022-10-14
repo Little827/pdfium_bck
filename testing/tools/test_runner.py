@@ -10,11 +10,11 @@ import argparse
 from dataclasses import dataclass
 import multiprocessing
 import os
-import platform
 import re
 import shutil
 import subprocess
 import sys
+import time
 
 import common
 import pdfium_root
@@ -288,12 +288,17 @@ class TestRunner:
 
     if self.resultdb:
       # TODO(crbug.com/pdfium/1916): Populate more ResultDB fields.
-      self.resultdb.Post(
-          test_id=test_result.test_id,
-          status=result_status,
-          duration=None,
-          test_log=None,
-          test_file=None)
+      start = time.perf_counter_ns()
+      try:
+        self.resultdb.Post(
+            test_id=test_result.test_id,
+            status=result_status,
+            duration=None,
+            test_log=None,
+            test_file=None)
+      finally:
+        elapsed = (time.perf_counter_ns() - start) * 1e-9
+        print(f'POST: {test_result.test_id} {elapsed}')
 
   def Run(self):
     # Running a test defines a number of attributes on the fly.
@@ -433,11 +438,6 @@ class TestRunner:
     if self.resultdb:
       print('Detected ResultSink environment')
 
-      # TODO(crbug.com/pdfium/1921): Fix performance on Windows.
-      if platform.system() == 'Windows':
-        self.resultdb = None
-        print('Disabled ResultDB support due to https://crbug.com/pdfium/1921')
-
     # Collect test cases.
     walk_from_dir = finder.TestingDir(relative_test_dir)
 
@@ -481,7 +481,8 @@ class TestRunner:
     with multiprocessing.Pool(self.options.num_workers) as pool:
       skia_gold_test_cases = TestCaseManager()
       for result in pool.imap(
-          _WrapKeyboardInterrupt(self.GenerateAndTest), self.test_cases):
+          _WrapKeyboardInterrupt(self.GenerateAndTest),
+          list(self.test_cases)[:10]):
         self.HandleResult(self.test_cases.GetTestCase(result.test_id), result)
 
         if self.test_type not in TEXT_TESTS and self.options.run_skia_gold:
