@@ -312,7 +312,8 @@ class TestRunner:
 
     parser.add_argument(
         '-j',
-        default=multiprocessing.cpu_count(),
+        default=max(1,
+                    multiprocessing.cpu_count() - 1),
         dest='num_workers',
         type=int,
         help='run NUM_WORKERS jobs in parallel')
