@@ -287,12 +287,7 @@ class TestRunner:
 
     if self.resultdb:
       # TODO(crbug.com/pdfium/1916): Populate more ResultDB fields.
-      self.resultdb.Post(
-          test_id=test_result.test_id,
-          status=result_status,
-          duration=None,
-          test_log=None,
-          test_file=None)
+      print('result_status', result_status)
 
   def Run(self):
     # Running a test defines a number of attributes on the fly.
