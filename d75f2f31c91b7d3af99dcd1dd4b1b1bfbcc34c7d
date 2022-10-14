@@ -34,6 +34,24 @@
       "parentUuid": "3e70b3eb_51ef0dea",
       "revId": "d75f2f31c91b7d3af99dcd1dd4b1b1bfbcc34c7d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1242703_88202e5e",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-14T12:28:51Z",
+      "side": 1,
+      "message": "I had to do a fair bit of research before deciding I should change the order; here\u0027s my thinking:\n\n1. PEP 8 has a rule for grouping imports, but actually says nothing about order (other than the examples, which aren\u0027t normative).\n\n2. The Google style guide _does_ have a rule for import ordering:\n  \"Within each grouping, imports should be sorted lexicographically, ignoring case, according to each module’s full package path (the \u0027path\u0027 in \u0027from path import ...\u0027).\"\n\n3. Although also not normative, the Google style guide\u0027s examples also are consistent about sorting imports strictly by package path, so ignoring the \"import ...\"/\"from ...\" difference does seem to be the sanctioned interpretation of this rule.\n\n4. Chromium\u0027s style guide states that we follow PEP 8, and encourages (but does not require) also following the Google style guide (https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/python/python.md).\n\nGiven that PEP 8 doesn\u0027t address import ordering, I came to the conclusion that this is the \"right\" way to order imports, but the Chromium guide technically allows arbitrary ordering.",
+      "parentUuid": "e01ae7a2_0200c3ff",
+      "revId": "d75f2f31c91b7d3af99dcd1dd4b1b1bfbcc34c7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
