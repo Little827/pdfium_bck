@@ -16,6 +16,24 @@
       "message": "Why not negate this conditional and handle the error in the if-block like before?",
       "revId": "7e64ffd6f6b741a63c50c037dc4a1c9b912ae623",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0c3a8c_ec111252",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-14T16:57:33Z",
+      "side": 1,
+      "message": "1. Internal go/tott/530 prefers positive booleans.\n2. This makes the code on line 444 look a little more like line 456.\n\nThis is in tension with the recommendation for guard clauses, so I can be convinced to go the other way on this if you think it\u0027s better. (I\u0027d probably want to reorganize the code on line 454-457 to use \"continue\", though.)",
+      "parentUuid": "220c4e79_f11d1c17",
+      "revId": "7e64ffd6f6b741a63c50c037dc4a1c9b912ae623",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
