@@ -15,6 +15,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
+#include "third_party/abseil-cpp/absl/types/optional.h"
 
 class CFX_Matrix;
 class CPDF_Dictionary;
@@ -54,8 +55,6 @@ class CPDFSDK_BAAnnot : public CPDFSDK_Annot,
   virtual void DrawAppearance(CFX_RenderDevice* pDevice,
                               const CFX_Matrix& mtUser2Device,
                               CPDF_Annot::AppearanceMode mode);
-
-  CPDF_Annot* GetPDFPopupAnnot() const;
 
   void SetAnnotName(const WideString& sName);
   WideString GetAnnotName() const;
