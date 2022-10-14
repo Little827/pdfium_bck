@@ -52,6 +52,24 @@
       "parentUuid": "e01ae7a2_0200c3ff",
       "revId": "d75f2f31c91b7d3af99dcd1dd4b1b1bfbcc34c7d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1d88b7_493bc3a5",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-14T15:27:01Z",
+      "side": 1,
+      "message": "Thanks for sharing your thoughts. I see lots of files ordering imports the same way you decided to and that\u0027s fine. My comment from yesterday was just to explain why the existing code ordered in a different way and I did not expect this to be a subject that required deep research.",
+      "parentUuid": "d1242703_88202e5e",
+      "revId": "d75f2f31c91b7d3af99dcd1dd4b1b1bfbcc34c7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

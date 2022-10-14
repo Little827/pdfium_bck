@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220c4e79_f11d1c17",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-14T15:27:01Z",
+      "side": 1,
+      "message": "Why not negate this conditional and handle the error in the if-block like before?",
+      "revId": "7e64ffd6f6b741a63c50c037dc4a1c9b912ae623",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
