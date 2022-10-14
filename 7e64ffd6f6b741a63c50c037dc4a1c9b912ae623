@@ -34,6 +34,24 @@
       "parentUuid": "220c4e79_f11d1c17",
       "revId": "7e64ffd6f6b741a63c50c037dc4a1c9b912ae623",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78365735_18f8550e",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-14T17:06:17Z",
+      "side": 1,
+      "message": "Done\n\nI tried it with guard clauses, and I\u0027m not convinced it\u0027s dramatically better, but I think it\u0027s probably at least a little better.",
+      "parentUuid": "1e0c3a8c_ec111252",
+      "revId": "7e64ffd6f6b741a63c50c037dc4a1c9b912ae623",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
