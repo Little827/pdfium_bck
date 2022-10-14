@@ -52,6 +52,24 @@
       "parentUuid": "1e0c3a8c_ec111252",
       "revId": "7e64ffd6f6b741a63c50c037dc4a1c9b912ae623",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da063e3a_1cd9e5f6",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-14T17:15:40Z",
+      "side": 1,
+      "message": "I agree with go/tott/530, but I thinking go/tott/553 is slightly more applicable due to the `return`. It is indeed not a big difference either way in this case, but the control flow does look a little better to me in the latest patchset.",
+      "parentUuid": "78365735_18f8550e",
+      "revId": "7e64ffd6f6b741a63c50c037dc4a1c9b912ae623",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
