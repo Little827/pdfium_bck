@@ -10,7 +10,6 @@ import argparse
 from dataclasses import dataclass
 import multiprocessing
 import os
-import platform
 import re
 import shutil
 import subprocess
@@ -23,7 +22,8 @@ from skia_gold import skia_gold
 import suppressor
 
 pdfium_root.add_source_directory_to_import_path(os.path.join('build', 'util'))
-from lib.results import result_sink, result_types
+from lib.results import result_types
+import result_sink_fork as result_sink
 
 
 # Arbitrary timestamp, expressed in seconds since the epoch, used to make sure
@@ -432,11 +432,6 @@ class TestRunner:
     self.resultdb = result_sink.TryInitClient()
     if self.resultdb:
       print('Detected ResultSink environment')
-
-      # TODO(crbug.com/pdfium/1921): Fix performance on Windows.
-      if platform.system() == 'Windows':
-        self.resultdb = None
-        print('Disabled ResultDB support due to https://crbug.com/pdfium/1921')
 
     # Collect test cases.
     walk_from_dir = finder.TestingDir(relative_test_dir)
