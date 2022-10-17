@@ -47,7 +47,7 @@ TEST(FXFontTest, ReadFontNameFromMicrosoftEntries) {
         (test_data_dir + PATH_SEPARATOR + "font_tests").c_str());
 
     font_mapper.SetSystemFontInfo(
-        CFX_GEModule::Get()->GetPlatform()->CreateDefaultSystemFontInfo());
+        CFX_GEModule::Get()->CreateDefaultSystemFontInfo());
     ASSERT_TRUE(folder_font_info.EnumFontList(&font_mapper));
   }
 
