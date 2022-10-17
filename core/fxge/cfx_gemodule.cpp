@@ -17,14 +17,6 @@ CFX_GEModule* g_pGEModule = nullptr;
 
 }  // namespace
 
-CFX_GEModule::CFX_GEModule(const char** pUserFontPaths)
-    : m_pPlatform(PlatformIface::Create()),
-      m_pFontMgr(std::make_unique<CFX_FontMgr>()),
-      m_pFontCache(std::make_unique<CFX_FontCache>()),
-      m_pUserFontPaths(pUserFontPaths) {}
-
-CFX_GEModule::~CFX_GEModule() = default;
-
 // static
 void CFX_GEModule::Create(const char** pUserFontPaths) {
   DCHECK(!g_pGEModule);
@@ -46,3 +38,22 @@ CFX_GEModule* CFX_GEModule::Get() {
   DCHECK(g_pGEModule);
   return g_pGEModule;
 }
+
+CFX_GEModule::CFX_GEModule(const char** pUserFontPaths)
+    : m_pPlatform(PlatformIface::Create()),
+      m_pFontMgr(std::make_unique<CFX_FontMgr>()),
+      m_pFontCache(std::make_unique<CFX_FontCache>()),
+      m_pUserFontPaths(pUserFontPaths) {}
+
+CFX_GEModule::~CFX_GEModule() = default;
+
+std::unique_ptr<SystemFontInfoIface>
+CFX_GEModule::CreateDefaultSystemFontInfo() {
+  return m_pPlatform->CreateDefaultSystemFontInfo();
+}
+
+#if BUILDFLAG(IS_APPLE)
+void* CFX_GEModule::CreatePlatformFont(pdfium::span<const uint8_t> font_span) {
+  return m_pPlatform->CreatePlatformFont(font_span);
+}
+#endif

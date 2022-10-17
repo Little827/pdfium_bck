@@ -42,8 +42,13 @@ class CFX_GEModule {
 
   CFX_FontCache* GetFontCache() const { return m_pFontCache.get(); }
   CFX_FontMgr* GetFontMgr() const { return m_pFontMgr.get(); }
-  PlatformIface* GetPlatform() const { return m_pPlatform.get(); }
   const char** GetUserFontPaths() const { return m_pUserFontPaths; }
+
+  // PlatformIface wrappers.
+  std::unique_ptr<SystemFontInfoIface> CreateDefaultSystemFontInfo();
+#if BUILDFLAG(IS_APPLE)
+  void* CreatePlatformFont(pdfium::span<const uint8_t> font_span);
+#endif
 
  private:
   explicit CFX_GEModule(const char** pUserFontPaths);
