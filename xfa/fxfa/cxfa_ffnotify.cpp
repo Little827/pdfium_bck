@@ -245,13 +245,21 @@ void CXFA_FFNotify::AddCalcValidate(CXFA_Node* pNode) {
   pDocView->AddValidateNode(pNode);
 }
 
-CXFA_FFApp::CallbackIface* CXFA_FFNotify::GetAppProvider() {
-  return m_pDoc->GetApp()->GetAppProvider();
+void CXFA_FFNotify::HandleWidgetEvent(CXFA_Node* pNode,
+                                      CXFA_EventParam* pParam) {
+  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
+  if (!pDocView)
+    return;
+
+  CXFA_FFWidgetHandler* pHandler = pDocView->GetWidgetHandler();
+  if (!pHandler)
+    return;
+
+  pHandler->ProcessEvent(pNode, pParam);
 }
 
-CXFA_FFWidgetHandler* CXFA_FFNotify::GetWidgetHandler() {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  return pDocView ? pDocView->GetWidgetHandler() : nullptr;
+CXFA_FFApp::CallbackIface* CXFA_FFNotify::GetAppProvider() {
+  return m_pDoc->GetApp()->GetAppProvider();
 }
 
 void CXFA_FFNotify::OpenDropDownList(CXFA_Node* pNode) {
