@@ -22,6 +22,30 @@
       },
       "revId": "c43dae45aeca2fc7e3b09a0232768911142c96c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5cdf7ad_2aa8a7d7",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-18T21:59:09Z",
+      "side": 1,
+      "message": "Meant to say \"we might need to clear them\" above.",
+      "parentUuid": "c54c57c3_4134caf1",
+      "range": {
+        "startLine": 288,
+        "startChar": 7,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "c43dae45aeca2fc7e3b09a0232768911142c96c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
