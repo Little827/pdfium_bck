@@ -1740,3 +1740,13 @@ TEST_F(FPDFViewEmbedderTest, GetTrailerEndsWhitespace) {
   ASSERT_EQ(size, FPDF_GetTrailerEnds(document(), ends.data(), size));
   EXPECT_EQ(kExpectedEnds, ends);
 }
+
+TEST_F(FPDFViewEmbedderTest, NoSmoothTextItalicOverlappingGlyphs) {
+  ASSERT_TRUE(OpenDocument("bug_1919.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  TestRenderPageBitmapWithFlags(page, FPDF_RENDER_NO_SMOOTHTEXT,
+                                "9d5cc1b0913da3b0463e5a80f1bdac7b");
+  UnloadPage(page);
+}
