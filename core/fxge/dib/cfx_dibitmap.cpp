@@ -284,7 +284,7 @@ void CFX_DIBitmap::TransferEqualFormatsOneBPP(
       int dest_idx = dest_left + col;
       if (src_scan[(src_idx) / 8] & (1 << (7 - (src_idx) % 8)))
         dest_scan[(dest_idx) / 8] |= 1 << (7 - (dest_idx) % 8);
-      else
+      else if (dest_scan[(dest_idx) / 8] == 0)
         dest_scan[(dest_idx) / 8] &= ~(1 << (7 - (dest_idx) % 8));
     }
   }
