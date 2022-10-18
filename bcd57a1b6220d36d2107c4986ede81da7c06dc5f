@@ -39,6 +39,30 @@
       },
       "revId": "bcd57a1b6220d36d2107c4986ede81da7c06dc5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1961e4b5_7542fed9",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-18T18:30:31Z",
+      "side": 1,
+      "message": "The majority of TODOs in PDFium don\u0027t have the protocol. Same in Chromium. In Code Search, this style of URLs is clickable. Is there some other context where having the protocol helps?",
+      "parentUuid": "864ae4d8_228b8968",
+      "range": {
+        "startLine": 202,
+        "startChar": 14,
+        "endLine": 202,
+        "endChar": 19
+      },
+      "revId": "bcd57a1b6220d36d2107c4986ede81da7c06dc5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
