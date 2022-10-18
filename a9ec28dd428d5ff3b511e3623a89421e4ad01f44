@@ -16,6 +16,24 @@
       "message": "Contemplating how to make the delta for this easier to review. Don\u0027t have any great ideas, although I think maybe duplicating the to-be-deleted code, then deleting it later, might work. Open to suggestions.",
       "revId": "a9ec28dd428d5ff3b511e3623a89421e4ad01f44",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ca7817_5d4d0654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-18T19:52:38Z",
+      "side": 1,
+      "message": "Patchset 4 seems more comprehensible, although it triggers a bunch of presubmit warnings due to the code that hasn\u0027t been updated. It runs because the code is never executed, but it\u0027ll still need to be deleted before submit.",
+      "parentUuid": "421e0887_e47c875c",
+      "revId": "a9ec28dd428d5ff3b511e3623a89421e4ad01f44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
