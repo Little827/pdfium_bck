@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421e0887_e47c875c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-18T19:45:46Z",
+      "side": 1,
+      "message": "Contemplating how to make the delta for this easier to review. Don\u0027t have any great ideas, although I think maybe duplicating the to-be-deleted code, then deleting it later, might work. Open to suggestions.",
+      "revId": "a9ec28dd428d5ff3b511e3623a89421e4ad01f44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
