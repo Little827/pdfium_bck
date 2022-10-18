@@ -64,6 +64,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c320f4b_804f2f6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-18T21:39:07Z",
+      "side": 1,
+      "message": "The `pdfium:` prefix is necessary because Gerrit currently auto-links to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1919, which is not the right URL.",
+      "parentUuid": "289ef301_b0ff471a",
+      "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5688660c_873c91d5",
