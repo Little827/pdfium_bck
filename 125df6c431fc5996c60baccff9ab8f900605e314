@@ -16,6 +16,24 @@
       "message": "Dead code now?",
       "revId": "125df6c431fc5996c60baccff9ab8f900605e314",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac3adf5_dbaf2128",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-18T20:40:44Z",
+      "side": 1,
+      "message": "Yes, I added it back in patchset 3-4 to make it easier to review. I plan to make any necessary fixes, then delete the dead code before submission.",
+      "parentUuid": "91b6bfcb_29b8e000",
+      "revId": "125df6c431fc5996c60baccff9ab8f900605e314",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
