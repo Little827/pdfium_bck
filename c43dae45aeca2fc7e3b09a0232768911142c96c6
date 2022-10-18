@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54c57c3_4134caf1",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-18T21:56:48Z",
+      "side": 1,
+      "message": "since we know this is 0 from the previous line, note that 0 \u0026\u003d anything is still 0.  So what we\u0027ve done is only flip 0\u0027s to 1\u0027s in the dest_scan. In other words, we could lose the entire else clause, no?\n\nYet if the destination scan is pre-filled with some 1 values, we might clear them.  That is what I think the intent of the method should be. \n\nWhich implies what\u0027s more likely going on is some sort of indexing botch when computing where to write some region. But that\u0027s just a guess.",
+      "range": {
+        "startLine": 288,
+        "startChar": 7,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "c43dae45aeca2fc7e3b09a0232768911142c96c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
