@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2d8e1c4_462f4f31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-18T23:40:17Z",
+      "side": 1,
+      "message": "It looks like you did do that, so please use the \"Done\" button in Gerrit to mark that as done. Same goes for other unresolved comments.",
+      "parentUuid": "423fa139_30fdbc38",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "289ef301_b0ff471a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -102,6 +126,24 @@
       "side": 1,
       "message": "The `pdfium:` prefix is necessary because Gerrit currently auto-links to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1919, which is not the right URL.",
       "parentUuid": "289ef301_b0ff471a",
+      "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfdc92e_d2ebcdf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-18T23:40:17Z",
+      "side": 1,
+      "message": "Please also change the equal sign to match the preferred format.",
+      "parentUuid": "3c320f4b_804f2f6d",
       "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -137,6 +179,24 @@
       "side": 1,
       "message": "Yes, for the CLA\nShould I add my name to the AUTHORS file?",
       "parentUuid": "5688660c_873c91d5",
+      "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2d7195_587dad76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-18T23:40:17Z",
+      "side": 1,
+      "message": "Yes please.",
+      "parentUuid": "90ecee38_27bc5de6",
       "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
