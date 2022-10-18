@@ -64,6 +64,7 @@ def DeleteFiles(files):
       os.remove(f)
 
 
+# TODO(crbug.com/pdfium/1641): Don't pickle TestRunner.
 class TestRunner:
 
   def __init__(self, dirname):
@@ -75,23 +76,6 @@ class TestRunner:
     self.test_type = dirname
     self.delete_output_on_success = False
     self.enforce_expected_images = False
-    self.skia_tester = None
-
-  def GetSkiaGoldTester(self):
-    if not self.skia_tester:
-      self.skia_tester = skia_gold.SkiaGoldTester(
-          source_type=self.test_type,
-          skia_gold_args=self.options,
-          process_name=multiprocessing.current_process().name)
-    return self.skia_tester
-
-  def RunSkia(self, test_case):
-    skia_success = self.GetSkiaGoldTester().UploadTestResultToSkiaGold(
-        test_case.test_id, test_case.input_path)
-    sys.stdout.flush()
-
-    return test_case.NewResult(
-        result_types.PASS if skia_success else result_types.FAIL)
 
   def GenerateAndTest(self, test_case):
     """Generate test input and run pdfium_test."""
@@ -472,7 +456,10 @@ class TestRunner:
       # Clear out and create top level gold output directory before starting
       skia_gold.clear_gold_output_dir(self.options.gold_output_dir)
 
-    with multiprocessing.Pool(self.options.num_workers) as pool:
+    with multiprocessing.Pool(
+        processes=self.options.num_workers,
+        initializer=_WorkerProcessState,
+        initargs=[self.test_type, self.options]) as pool:
       skia_gold_test_cases = TestCaseManager()
       for result in pool.imap(
           _WrapKeyboardInterrupt(self.GenerateAndTest), self.test_cases):
@@ -486,7 +473,7 @@ class TestRunner:
             skia_gold_test_cases.NewTestCase(artifact.image_path)
 
       for result in pool.imap(
-          _WrapKeyboardInterrupt(self.RunSkia), skia_gold_test_cases):
+          _WrapKeyboardInterrupt(_RunSkiaTest), skia_gold_test_cases):
         if result.IsPass():
           test_case = skia_gold_test_cases.GetTestCase(result.test_id)
           if self.test_suppressor.IsResultSuppressed(test_case.input_path):
@@ -555,7 +542,7 @@ class TestRunner:
       print('  Skia Gold Successes:', number_gold_successes)
       print('  Skia Gold Surprises:', number_gold_surprises)
       print('  Skia Gold Failures:', number_gold_failures)
-      skia_tester = self.GetSkiaGoldTester()
+      skia_tester = _NewSkiaGoldTester(self.test_type, self.options)
       if self.skia_gold_failures and skia_tester.IsTryjobRun():
         cl_triage_link = skia_tester.GetCLTriageLink()
         print('  Triage link for CL:', cl_triage_link)
@@ -570,6 +557,52 @@ class TestRunner:
   def SetEnforceExpectedImages(self, new_value):
     """Set whether to enforce that each test case provide an expected image."""
     self.enforce_expected_images = new_value
+
+
+def _RunSkiaTest(test_case):
+  """Runs a Skia Gold test case."""
+  skia_tester = _worker_process_state.GetSkiaGoldTester()
+  skia_success = skia_tester.UploadTestResultToSkiaGold(test_case.test_id,
+                                                        test_case.input_path)
+  sys.stdout.flush()
+
+  return test_case.NewResult(
+      result_types.PASS if skia_success else result_types.FAIL)
+
+
+# `_WorkerProcessState` singleton. `multiprocessing.Pool()` initializes the
+# singleton when it constructs `_WorkerProcessState`.
+_worker_process_state = None
+
+
+class _WorkerProcessState:
+  """State defined per worker process."""
+
+  def __init__(self, test_type, options):
+    global _worker_process_state
+    assert not _worker_process_state
+    _worker_process_state = self
+
+    self.test_type = test_type
+    self.options = options
+    self.skia_tester = None
+
+  def __getstate__(self):
+    raise RuntimeError('Cannot pickle per-worker process state')
+
+  def GetSkiaGoldTester(self):
+    """Gets the `SkiaGoldTester` singleton for this worker."""
+    if not self.skia_tester:
+      self.skia_tester = _NewSkiaGoldTester(self.test_type, self.options)
+    return self.skia_tester
+
+
+def _NewSkiaGoldTester(source_type, skia_gold_args):
+  """Constructs a `SkiaGoldTester` for this process."""
+  return skia_gold.SkiaGoldTester(
+      source_type=source_type,
+      skia_gold_args=skia_gold_args,
+      process_name=multiprocessing.current_process().name)
 
 
 @dataclass
