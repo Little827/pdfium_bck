@@ -16,6 +16,24 @@
       "message": "Is this one for the main thread, while _InitializePerProcessState() creates the objects for the worker threads?",
       "revId": "4fc1117f938a33bf32accf182201d4ebfc0a836a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92bf33b4_bd849a3f",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-18T19:28:18Z",
+      "side": 1,
+      "message": "Yes (s/thread/process/). The main process turns out to want some of these things in very similar ways, so it\u0027s less duplication to have an instance in the main process, too. (It shouldn\u0027t be a singleton in case you want to use TestRunner or TestRunner.Run() multiple times, though.)",
+      "parentUuid": "254af23c_c5e37614",
+      "revId": "4fc1117f938a33bf32accf182201d4ebfc0a836a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
