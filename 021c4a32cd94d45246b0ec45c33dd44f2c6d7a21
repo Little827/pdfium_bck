@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75806db0_e19910c8",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-19T17:34:44Z",
+      "side": 1,
+      "message": "follow-up: after the dust settles, this should likely do all the work and be the only method that remains.",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "021c4a32cd94d45246b0ec45c33dd44f2c6d7a21",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
