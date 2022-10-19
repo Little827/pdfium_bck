@@ -110,6 +110,11 @@ class CPDF_Document : public Observable,
   PageDataIface* GetPageData() const { return m_pDocPage.get(); }
   RenderDataIface* GetRenderData() const { return m_pDocRender.get(); }
 
+  // PageDataIface wrappers, try to avoid explicit getter calls.
+  RetainPtr<CPDF_StreamAcc> GetFontFileStreamAcc(
+      RetainPtr<const CPDF_Stream> pFontStream);
+  void MaybePurgeFontFileStreamAcc(RetainPtr<CPDF_StreamAcc>&& pStreamAcc);
+
   void SetPageObjNum(int iPage, uint32_t objNum);
 
   JBig2_DocumentContext* GetOrCreateCodecContext();
