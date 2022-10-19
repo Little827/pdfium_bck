@@ -41,12 +41,6 @@ CPDF_Stream::CPDF_Stream() = default;
 CPDF_Stream::CPDF_Stream(RetainPtr<CPDF_Dictionary> pDict)
     : CPDF_Stream(DataVector<uint8_t>(), std::move(pDict)) {}
 
-CPDF_Stream::CPDF_Stream(pdfium::span<const uint8_t> pData,
-                         RetainPtr<CPDF_Dictionary> pDict)
-    : dict_(std::move(pDict)) {
-  SetData(pData);
-}
-
 CPDF_Stream::CPDF_Stream(DataVector<uint8_t> pData,
                          RetainPtr<CPDF_Dictionary> pDict)
     : data_(std::move(pData)), dict_(std::move(pDict)) {
@@ -72,10 +66,9 @@ CPDF_Stream* CPDF_Stream::AsMutableStream() {
   return this;
 }
 
-void CPDF_Stream::InitStream(pdfium::span<const uint8_t> pData,
-                             RetainPtr<CPDF_Dictionary> pDict) {
+void CPDF_Stream::InitStreamWithEmptyData(RetainPtr<CPDF_Dictionary> pDict) {
   dict_ = std::move(pDict);
-  SetData(pData);
+  TakeData({});
 }
 
 void CPDF_Stream::InitStreamFromFile(RetainPtr<IFX_SeekableReadStream> pFile,
@@ -132,8 +125,6 @@ void CPDF_Stream::SetData(pdfium::span<const uint8_t> pData) {
 void CPDF_Stream::TakeData(DataVector<uint8_t> data) {
   const size_t size = data.size();
   data_ = std::move(data);
-  if (!dict_)
-    dict_ = pdfium::MakeRetain<CPDF_Dictionary>();
   SetLengthInDict(pdfium::base::checked_cast<int>(size));
 }
 
@@ -206,5 +197,7 @@ pdfium::span<const uint8_t> CPDF_Stream::GetInMemoryRawData() const {
 }
 
 void CPDF_Stream::SetLengthInDict(int length) {
+  if (!dict_)
+    dict_ = pdfium::MakeRetain<CPDF_Dictionary>();
   dict_->SetNewFor<CPDF_Number>("Length", length);
 }
