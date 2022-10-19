@@ -24,6 +24,7 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_test_document.h"
+#include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -385,8 +386,8 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessText) {
 TEST_F(CPDF_PageContentGeneratorTest, ProcessEmptyForm) {
   auto pDoc = std::make_unique<CPDF_TestDocument>();
   pDoc->CreateNewDoc();
-  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
-  auto pStream = pdfium::MakeRetain<CPDF_Stream>(nullptr, 0, std::move(pDict));
+  auto pStream = pdfium::MakeRetain<CPDF_Stream>(
+      DataVector<uint8_t>(), pdfium::MakeRetain<CPDF_Dictionary>());
 
   // Create an empty form.
   auto pTestForm = std::make_unique<CPDF_Form>(pDoc.get(), nullptr, pStream);
