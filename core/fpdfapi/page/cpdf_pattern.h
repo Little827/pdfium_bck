@@ -28,7 +28,6 @@ class CPDF_Pattern : public Retainable, public Observable {
   virtual CPDF_ShadingPattern* AsShadingPattern();
 
   // All the getters that return pointers return non-NULL pointers.
-  CPDF_Document* document() const { return m_pDocument.Get(); }
   RetainPtr<CPDF_Object> pattern_obj() const { return m_pPatternObj; }
   const CFX_Matrix& pattern_to_form() const { return m_Pattern2Form; }
   const CFX_Matrix& parent_matrix() const { return m_ParentMatrix; }
@@ -38,6 +37,7 @@ class CPDF_Pattern : public Retainable, public Observable {
                RetainPtr<CPDF_Object> pObj,
                const CFX_Matrix& parentMatrix);
 
+  CPDF_Document* document() const { return m_pDocument.Get(); }
   void SetPatternToFormMatrix();
 
  private:
