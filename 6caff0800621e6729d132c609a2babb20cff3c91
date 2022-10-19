@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a173a30_3b603868",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T19:36:15Z",
+      "side": 1,
+      "message": "I explained in the CL description why the compiler currently cannot deduce it. Maybe if we get rid of the span ctor in the near future, then it can. Or with the 1-arg constructor.",
+      "parentUuid": "f201d810_8e759e36",
+      "range": {
+        "startLine": 390,
+        "startChar": 6,
+        "endLine": 390,
+        "endChar": 27
+      },
+      "revId": "6caff0800621e6729d132c609a2babb20cff3c91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c135f90e_937efdc8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-19T19:03:38Z",
       "side": 1,
       "message": "do we want a no-arg form of stream ctor that does this for us?   Seems like a common pattern now.",
+      "range": {
+        "startLine": 683,
+        "startChar": 37,
+        "endLine": 684,
+        "endChar": 60
+      },
+      "revId": "6caff0800621e6729d132c609a2babb20cff3c91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa812408_375c0332",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T19:36:15Z",
+      "side": 1,
+      "message": "It would have to be an 1-arg form, as CPDF_Stream cannot create the dictionary with the proper CPDF_IndirectObjectHolder if there needs to be one.",
+      "parentUuid": "c135f90e_937efdc8",
       "range": {
         "startLine": 683,
         "startChar": 37,
