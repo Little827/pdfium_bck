@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55d9dff_f5f142a1",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Nay. I moved those changes to a separate CL in front of this one in the chain and explained the ambiguity issue in that CL.",
+      "parentUuid": "748f105f_e942ce2b",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 35
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54dd6575_5c949443",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-08T22:28:29Z",
       "side": 1,
       "message": "Is this temporary? I\u0027d expect to see a CPDF_Stream ctor that takes a moved buf.",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 36
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4e9a68_81c55a1d",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Changed to the ctor.",
+      "parentUuid": "54dd6575_5c949443",
       "range": {
         "startLine": 410,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3dcf046_f173d855",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Fx2DSizeOrDie() it is.",
+      "parentUuid": "9c254d0c_21748233",
+      "range": {
+        "startLine": 233,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 22
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "761666fb_f10f0127",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-08T22:28:29Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 275,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 44
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133c41a5_900314ef",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "761666fb_f10f0127",
       "range": {
         "startLine": 275,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdf1f64_9e28082f",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Back to `char`.",
+      "parentUuid": "4bb72859_16a5c20d",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65a5acf7_f7c48366",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-08T22:28:29Z",
       "side": 1,
       "message": "this is probably legit even if kContents is char because of promotion during the per-element assignment or some such.",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 49
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "145d1b5e_5b372094",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65a5acf7_f7c48366",
       "range": {
         "startLine": 77,
         "startChar": 28,
@@ -162,6 +306,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfc0164_ec9e3edc",
+        "filename": "core/fpdfapi/parser/cpdf_object_walker_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Same ambiguity issue.",
+      "parentUuid": "61902111_d04f996b",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 69
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "210aa5bf_bf5a7d61",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-09-08T22:28:29Z",
       "side": 1,
       "message": "nit: spancpy?",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df75373_fb456137",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Just constructed a DataVector directly from the span instead.",
+      "parentUuid": "210aa5bf_bf5a7d61",
       "range": {
         "startLine": 94,
         "startChar": 2,
@@ -208,6 +400,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb3eeac_273823cf",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a972052_6f6eb31e",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 30
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6e826a9_bfcd7d9b",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-09-08T22:28:29Z",
       "side": 1,
       "message": "nit: prefer return DataVector\u003c\u003e(), since clear() leaves the buffer in place, merely resetting length to 0 (for efficiency should it get resized or push_back\u0027d later).  So we\u0027d free the buffer immediately on error rather than waiting for the caller to do it as a result of the returned result going out of scope.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5d6e16_390f2d66",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6e826a9_bfcd7d9b",
       "range": {
         "startLine": 172,
         "startChar": 0,
@@ -254,6 +494,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a57e48bd_d6b84a2d",
+        "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd00c36_1d927567",
+      "range": {
+        "startLine": 179,
+        "startChar": 49,
+        "endLine": 179,
+        "endChar": 62
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "745f230f_361eb7aa",
@@ -277,6 +541,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf9d258_1d9178e7",
+        "filename": "core/fxge/dib/cstretchengine_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Same ambiguity issue.",
+      "parentUuid": "745f230f_361eb7aa",
+      "range": {
+        "startLine": 78,
+        "startChar": 48,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12cc2d93_d8df5694",
@@ -290,6 +578,30 @@
       "writtenOn": "2022-09-08T22:28:29Z",
       "side": 1,
       "message": "nit: not sure how you feel about {}, but it comes up here again.",
+      "range": {
+        "startLine": 186,
+        "startChar": 6,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "dd98a8f6ed299b0badfc229a6d27c20bdc21df3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b699520_b937a49a",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-19T18:50:59Z",
+      "side": 1,
+      "message": "Same answer.",
+      "parentUuid": "12cc2d93_d8df5694",
       "range": {
         "startLine": 186,
         "startChar": 6,
