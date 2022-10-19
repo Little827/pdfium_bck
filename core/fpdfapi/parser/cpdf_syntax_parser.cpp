@@ -25,6 +25,7 @@
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/cfx_read_only_vector_stream.h"
+#include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fixed_uninit_data_vector.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
@@ -803,8 +804,7 @@ RetainPtr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
     pStream->InitStreamFromFile(std::move(data_as_stream), std::move(pDict));
   } else {
     DCHECK(!len);
-    pStream = pdfium::MakeRetain<CPDF_Stream>(pdfium::span<const uint8_t>(),
-                                              std::move(pDict));
+    pStream = pdfium::MakeRetain<CPDF_Stream>(std::move(pDict));
   }
   const FX_FILESIZE end_stream_offset = GetPos();
   memset(m_WordBuffer, 0, kEndObjStr.GetLength() + 1);
