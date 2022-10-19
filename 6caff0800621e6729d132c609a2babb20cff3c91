@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f201d810_8e759e36",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-19T19:03:38Z",
+      "side": 1,
+      "message": "curious, can we write {} here instead and have the compiler deduce it somehow? Would that be a good thing?",
+      "range": {
+        "startLine": 390,
+        "startChar": 6,
+        "endLine": 390,
+        "endChar": 27
+      },
+      "revId": "6caff0800621e6729d132c609a2babb20cff3c91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c135f90e_937efdc8",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-19T19:03:38Z",
+      "side": 1,
+      "message": "do we want a no-arg form of stream ctor that does this for us?   Seems like a common pattern now.",
+      "range": {
+        "startLine": 683,
+        "startChar": 37,
+        "endLine": 684,
+        "endChar": 60
+      },
+      "revId": "6caff0800621e6729d132c609a2babb20cff3c91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
