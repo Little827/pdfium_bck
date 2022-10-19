@@ -10,6 +10,7 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
+#include "core/fxcrt/data_vector.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
