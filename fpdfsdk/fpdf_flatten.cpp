@@ -184,7 +184,7 @@ RetainPtr<CPDF_Reference> NewIndirectContentsStreamReference(
     CPDF_Document* pDocument,
     const ByteString& contents) {
   auto pNewContents = pDocument->NewIndirect<CPDF_Stream>(
-      nullptr, 0, pDocument->New<CPDF_Dictionary>());
+      DataVector<uint8_t>(), pDocument->New<CPDF_Dictionary>());
   pNewContents->SetData(contents.raw_span());
   return pNewContents->MakeReference(pDocument);
 }
@@ -296,7 +296,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
   RetainPtr<CPDF_Dictionary> pRes =
       pPageDict->GetOrCreateDictFor(pdfium::page_object::kResources);
   auto pNewXObject = pDocument->NewIndirect<CPDF_Stream>(
-      nullptr, 0, pDocument->New<CPDF_Dictionary>());
+      DataVector<uint8_t>(), pDocument->New<CPDF_Dictionary>());
   RetainPtr<CPDF_Dictionary> pPageXObject = pRes->GetOrCreateDictFor("XObject");
 
   ByteString key;
