@@ -16,6 +16,24 @@
       "message": "Need a b: or b/ prefix so it auto-links correctly.",
       "revId": "060e3f498cec6534ccd6d8923ffb569f35772c2d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f72181e_78bc0539",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 8766
+      },
+      "writtenOn": "2022-10-20T19:58:28Z",
+      "side": 1,
+      "message": "Maybe that\u0027s right?  I\u0027m not sure.",
+      "parentUuid": "9852f7c2_3dfb47f4",
+      "revId": "060e3f498cec6534ccd6d8923ffb569f35772c2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
