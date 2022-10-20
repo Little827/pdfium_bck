@@ -22,6 +22,30 @@
       },
       "revId": "889904b58cc6e2b67e103782b995447ddcfc0be1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875f4041_c7b7c465",
+        "filename": "core/fpdfapi/parser/cpdf_object_stream_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-20T16:08:10Z",
+      "side": 1,
+      "message": "There\u0027s a subtle difference. Given kFoo[] \u003d \"abc\"\n\nByteStringView(kFoo).raw_span() returns \"abc\"\nstd::begin(kFoo) / std::end(kFoo) return \"abc\\0\"",
+      "parentUuid": "158f4525_5b258315",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 68
+      },
+      "revId": "889904b58cc6e2b67e103782b995447ddcfc0be1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
