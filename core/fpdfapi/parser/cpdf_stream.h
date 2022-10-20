@@ -72,10 +72,6 @@ class CPDF_Stream final : public CPDF_Object {
   // Initializes with empty data.
   explicit CPDF_Stream(RetainPtr<CPDF_Dictionary> pDict);
 
-  // Copies `pData`.
-  CPDF_Stream(pdfium::span<const uint8_t> pData,
-              RetainPtr<CPDF_Dictionary> pDict);
-
   CPDF_Stream(DataVector<uint8_t> pData, RetainPtr<CPDF_Dictionary> pDict);
   // TODO(crbug.com/pdfium/1872): Replace with vector version above.
   CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
