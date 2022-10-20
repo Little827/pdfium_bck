@@ -67,6 +67,24 @@
       "message": "Sorry, I missed the last messages.\nCan you explain if I should wait for this PR to be completed or should I reuse these files in my branch?",
       "revId": "684bb2aabfd3a69db88736389b1a71f19fe32319",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "729ebb19_56ec0070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-20T14:24:40Z",
+      "side": 1,
+      "message": "Also, apparently, I don\u0027t have permission to approve changes, so only Tom can approve",
+      "parentUuid": "a700be39_37261606",
+      "revId": "684bb2aabfd3a69db88736389b1a71f19fe32319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
