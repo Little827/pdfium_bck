@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9852f7c2_3dfb47f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-20T19:50:30Z",
+      "side": 1,
+      "message": "Need a b: or b/ prefix so it auto-links correctly.",
+      "revId": "060e3f498cec6534ccd6d8923ffb569f35772c2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
