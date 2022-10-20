@@ -78,9 +78,11 @@ source_set("parser") {
   deps = [
     "../../../constants",
     "../../fdrm",
-    "../../fxcodec",
   ]
-  public_deps = [ "../../fxcrt" ]
+  public_deps = [
+    "../../fxcodec",
+    "../../fxcrt",
+  ]
   allow_circular_includes_from = []
   visibility = [ "../../../*" ]
 
