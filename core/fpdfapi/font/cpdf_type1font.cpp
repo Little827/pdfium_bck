@@ -20,7 +20,7 @@
 #include "core/fxge/fx_font.h"
 
 #if BUILDFLAG(IS_APPLE)
-#include <Carbon/Carbon.h>
+#include <CoreGraphics/CoreGraphics.h>
 #endif  // BUILDFLAG(IS_APPLE)
 
 namespace {
