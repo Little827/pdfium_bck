@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c82291_ffe4596a",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 0,
+      "message": "wherefore can we get away without nul-termination?",
+      "range": {
+        "startLine": 547,
+        "startChar": 30,
+        "endLine": 547,
+        "endChar": 37
+      },
+      "revId": "ead911e2b23debbec9e4ffe86e202d2e07cae9d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "093a7a8c_4ff1534d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "nit: add maybe\n\n-- Return result struct in place of out parameters.",
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dc5bd437_e55e3ad6",
@@ -14,6 +31,339 @@
       "writtenOn": "2022-10-20T17:35:03Z",
       "side": 1,
       "message": "This CL is a bit on the big side because all the decoder code are tied together. I plumbed it all the way through in one go, instead of doing copies in the middle to make the CL smaller.",
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b43cb9c9_32345f50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "I don\u0027t suppose this splits into smaller pieces nicely by any chance?",
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751b2a4b_522da719",
+        "filename": "core/fpdfapi/parser/BUILD.gn",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "Or DataAndBytesConsumed moves to fxcrt/ ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 20
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48dc8947_19e9f8ae",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "Ok, I\u0027ve managed to convince myself that this is equivalent since we never malloc(0), so a zero-length span is \"unallocated\".",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 22
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385eeb4b_9e6c0e23",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "this should now be defaulted to zero per previous suggestions, or you might need to keep if we default to FX_INVALID_OFFSET",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5048dd1c_da1db4f2",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "at which point, move result down and just return DataAndBytesConsumed();",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 18
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7423d251_10e28fdb",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "return DataAndBytesConsumed() if we don\u0027t care about data (hard to tell othetwise if we do).",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb8a413_f9d2d8dd",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "nit: DCHECK() always resizes smaller.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 33
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02bc1e41_8f174ac5",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "see previous comment",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f72892_0567604d",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "follow-up: this argues for the function to return absl::optional\u003cDataVector\u003e and lose the out parameter?",
+      "range": {
+        "startLine": 477,
+        "startChar": 3,
+        "endLine": 478,
+        "endChar": 14
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ddb261_577b85a2",
+        "filename": "core/fxcodec/data_and_bytes_consumed.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "It might be evil, but one could template this type - but does say, \nDataAndConsumed\u003cuint32_t\u003e make any sense? (the word \"bytes\u0027 then gets dropped in members and other names). Not sure if that buys us anything.",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8229e70_2218ee18",
+        "filename": "core/fxcodec/data_and_bytes_consumed.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "should probably be a size_t, but I guess that would require a bunch of checked casts?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68addbad_8b211c90",
+        "filename": "core/fxcodec/data_and_bytes_consumed.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "\u003d 0; for default init. Or should it init to FX_INVALID_OFFSET ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf678cfe_949b68c3",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "or you could do it as before, then DCHECK(size \u003d\u003d 0) upon loop exit.",
+      "range": {
+        "startLine": 440,
+        "startChar": 7,
+        "endLine": 440,
+        "endChar": 9
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1890bbc0_c6e37913",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "kinda argues for creating the buffer itself and returning it to caller.",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 519,
+        "endChar": 20
+      },
+      "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0173ba_acfc6abd",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T18:28:34Z",
+      "side": 1,
+      "message": "nit: no longer need blank line here.",
       "revId": "9996fcdc64ece9d1aad9f4c713b423d808d04f7e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
