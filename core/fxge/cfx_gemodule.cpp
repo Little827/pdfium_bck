@@ -46,3 +46,14 @@ CFX_GEModule* CFX_GEModule::Get() {
   DCHECK(g_pGEModule);
   return g_pGEModule;
 }
+
+std::unique_ptr<SystemFontInfoIface>
+CFX_GEModule::CreateDefaultSystemFontInfo() {
+  return m_pPlatform->CreateDefaultSystemFontInfo();
+}
+
+#if BUILDFLAG(IS_APPLE)
+void* CFX_GEModule::CreatePlatformFont(pdfium::span<const uint8_t> font_span) {
+  return m_pPlatform->CreatePlatformFont(font_span);
+}
+#endif
