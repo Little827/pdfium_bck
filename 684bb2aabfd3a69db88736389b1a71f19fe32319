@@ -33,6 +33,23 @@
       "message": "Alexsei, PTAL.",
       "revId": "684bb2aabfd3a69db88736389b1a71f19fe32319",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c06ef7_cc1538e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T00:31:30Z",
+      "side": 1,
+      "message": "stampity.",
+      "revId": "684bb2aabfd3a69db88736389b1a71f19fe32319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
