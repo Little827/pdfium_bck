@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70934184_0c1223b3",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-20T16:00:17Z",
+      "side": 0,
+      "message": "alternatively, color_table_span \u003d color_table_span.subspan(3) if you want to avoid the index variable. As you like.",
+      "range": {
+        "startLine": 248,
+        "startChar": 7,
+        "endLine": 248,
+        "endChar": 17
+      },
+      "revId": "a3c920fb3d74e7bbb56a3e99f8d888aff0bdaedd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
