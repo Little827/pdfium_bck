@@ -22,6 +22,7 @@
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfdoc/cpdf_filespec.h"
 #include "core/fpdfdoc/cpdf_nametree.h"
+#include "core/fxcodec/data_and_bytes_consumed.h"
 #include "core/fxcrt/cfx_datetime.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_extension.h"
@@ -34,10 +35,8 @@ namespace {
 constexpr char kChecksumKey[] = "CheckSum";
 
 ByteString CFXByteStringHexDecode(const ByteString& bsHex) {
-  std::unique_ptr<uint8_t, FxFreeDeleter> result;
-  uint32_t size = 0;
-  HexDecode(bsHex.raw_span(), &result, &size);
-  return ByteString(result.get(), size);
+  DataAndBytesConsumed result = HexDecode(bsHex.raw_span());
+  return ByteString(ByteStringView(result.data));
 }
 
 ByteString GenerateMD5Base16(const void* contents, const unsigned long len) {
