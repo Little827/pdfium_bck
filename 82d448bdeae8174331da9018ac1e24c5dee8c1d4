@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee076a6_835cfa06",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 8766
+      },
+      "writtenOn": "2022-10-20T18:22:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2e1d4ae8_c1d13cc3",
+      "revId": "82d448bdeae8174331da9018ac1e24c5dee8c1d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42bd8986_28b9aa61",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-20T18:08:33Z",
       "side": 1,
       "message": "There\u0027s actually no CFString usage in this header. Same for CoreGraphics.h. Remove from this file, and include where actually used instead?",
+      "revId": "82d448bdeae8174331da9018ac1e24c5dee8c1d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3e851e_66a2a982",
+        "filename": "core/fxge/apple/fx_quartz_device.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 8766
+      },
+      "writtenOn": "2022-10-20T18:22:33Z",
+      "side": 1,
+      "message": "Removed CFString.  This file does use CGPoint, which is defined in CoreGraphics.h.  I did also add the CoreGraphics.h include to the fx_quartz_device.cpp file, where it\u0027s used.",
+      "parentUuid": "42bd8986_28b9aa61",
       "revId": "82d448bdeae8174331da9018ac1e24c5dee8c1d4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
