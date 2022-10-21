@@ -52,6 +52,24 @@
       "parentUuid": "355af0e5_9c83708f",
       "revId": "f85078a3a2b168428afab757d150f8e9ddc49f1c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e4413c_e249a6f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T20:10:49Z",
+      "side": 1,
+      "message": "In the last year, PDFium started to use fonts from third_party/test_fonts when running tests. This made the tests much more consistent across different machines, as system fonts no longer caused random differences. This is a good improvement. \n\nHowever, it made just about every test output different, and Gold is noticing that difference. Nobody has taken the time to sort that out, so Gold is a bit noisy.",
+      "parentUuid": "41fe5b5f_65e9d186",
+      "revId": "f85078a3a2b168428afab757d150f8e9ddc49f1c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
