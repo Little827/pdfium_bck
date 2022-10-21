@@ -46,6 +46,30 @@
       },
       "revId": "deba3a79b749627c4aaf022f857e891e2d0366bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7943bc_59bdfed4",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-21T22:37:29Z",
+      "side": 0,
+      "message": "(I just tried this, and the KeyboardInterrupt terminates the main process pretty much immediately, as it\u0027s generally blocked waiting to receive results from the workers.)",
+      "parentUuid": "1bebad8a_5289fcf9",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "deba3a79b749627c4aaf022f857e891e2d0366bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
