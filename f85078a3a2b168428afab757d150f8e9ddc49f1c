@@ -34,6 +34,24 @@
       "parentUuid": "f9e29c60_fb5ffa85",
       "revId": "f85078a3a2b168428afab757d150f8e9ddc49f1c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fe5b5f_65e9d186",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-21T20:06:48Z",
+      "side": 1,
+      "message": "No, I\u0027m talking about the Gold test. For example file 5.2.pdf.0 from https://pdfium-gold.skia.org/search?issue\u003d97171\u0026crs\u003dgerrit\u0026patchsets\u003d6\u0026corpus\u003dcorpus\nGenerally speaking, it has nothing to do with this review. I\u0027m just asking this out of interest.",
+      "parentUuid": "355af0e5_9c83708f",
+      "revId": "f85078a3a2b168428afab757d150f8e9ddc49f1c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
