@@ -25,14 +25,12 @@ class CPDF_Page;
 class CPDF_Stream;
 class PauseIndicatorIface;
 
-class CPDF_PageImageCache final : public CPDF_Page::RenderCacheIface {
+class CPDF_PageImageCache {
  public:
   explicit CPDF_PageImageCache(CPDF_Page* pPage);
-  ~CPDF_PageImageCache() override;
+  ~CPDF_PageImageCache();
 
-  // CPDF_Page::RenderCacheIface:
-  void ResetBitmapForImage(RetainPtr<CPDF_Image> pImage) override;
-
+  void ResetBitmapForImage(RetainPtr<CPDF_Image> pImage);
   void CacheOptimization(int32_t dwLimitCacheSize);
   uint32_t GetTimeCount() const { return m_nTimeCount; }
   CPDF_Page* GetPage() const { return m_pPage.Get(); }
