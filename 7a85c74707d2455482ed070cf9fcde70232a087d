@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f3aebc_74f4a9ff",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T23:26:37Z",
+      "side": 1,
+      "message": "Existing: Shouldn\u0027t be const since it hands out a non-const pointer?",
+      "range": {
+        "startLine": 82,
+        "startChar": 43,
+        "endLine": 82,
+        "endChar": 48
+      },
+      "revId": "7a85c74707d2455482ed070cf9fcde70232a087d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2a3a35_73288592",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T23:26:37Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "revId": "7a85c74707d2455482ed070cf9fcde70232a087d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a645b6ac_8ac4bbfc",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T23:26:37Z",
+      "side": 1,
+      "message": "BTW, all the foo_page-\u003eSetPageImageCache() callers pass in foo_page to CPDF_PageImageCache. Maybe that can be simplified later?",
+      "revId": "7a85c74707d2455482ed070cf9fcde70232a087d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
