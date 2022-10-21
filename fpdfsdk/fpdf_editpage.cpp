@@ -30,7 +30,7 @@
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
-#include "core/fpdfapi/render/cpdf_pagerendercache.h"
+#include "core/fpdfapi/render/cpdf_pageimagecache.h"
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fpdfdoc/cpdf_annotlist.h"
 #include "core/fxcrt/fx_extension.h"
